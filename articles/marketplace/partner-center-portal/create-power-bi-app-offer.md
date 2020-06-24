@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 6ddf3db422a192b82b8d67e8e532a9ae0030d6f7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849102"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212538"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource için Power BI uygulaması oluşturma
 
@@ -26,7 +26,7 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
 3. Genel Bakış sayfasında **+ yeni teklif**  >  **Power BI hizmet uygulaması**' nı seçin.
 
-   ![Sol gezinti menüsünü gösterir.](./media/new-offer-pbi-app.png)
+   ![Sol gezinti menüsünü gösterir.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
 > Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
@@ -145,6 +145,24 @@ Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama ve görün
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] bölümünde kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesinde kullanılan bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
+Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasına yönelik değildir):
+
+:::image type="content" source="media/example-power-bi-app.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Logo
+2. Ürünler
+3. Kategoriler
+4. Sektörler
+5. Destek adresi (bağlantı)
+6. Kullanım koşulları
+7. Gizlilik ilkesi
+8. Teklif adı
+9. Özet
+10. Description
+11. Ekran görüntüleri/videolar
+
 ### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
@@ -159,7 +177,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -199,14 +217,14 @@ PDF biçiminde en az bir ve en çok üç ilgili pazarlama belgesi sağlayın. Ö
 
 ### <a name="marketplace-images"></a>Market görüntüleri
 
-Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin. png biçiminde olması gerekir. Bulanık görüntüler reddedilir.
+Teklifinizle birlikte kullanılacak logo ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir. Bulanık görüntüler reddedilir.
 
 >[!NOTE]
->Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın `https://upload.xboxlive.com` Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 
-Teklifinizin logosunun. png dosyalarını iki piksel boyutunda sağlayın:
+Teklifinizin logosunun PNG dosyalarını iki piksel boyutunda sağlar:
 - **Küçük** (48 x 48)
 - **Büyük** (216 x 216)
 
@@ -214,11 +232,11 @@ Her iki logo de gereklidir ve Market listesindeki farklı yerlerde kullanılır.
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
-Teklifinizin nasıl çalıştığını gösteren en az bir ve en fazla beş ekran görüntüsü ekleyin. Her biri, boyut ve. png biçiminde 1280 x 720 piksel olmalıdır.
+Teklifinizin nasıl çalıştığını gösteren en az bir ve en fazla beş ekran görüntüsü ekleyin. Her biri, boyut ve PNG biçiminde 1280 x 720 piksel olmalıdır.
 
 #### <a name="videos-optional"></a>Videolar (isteğe bağlı)
 
-Teklifinizi gösteren en fazla beş video ekleyin. Videonun adını, Web adresini ve video Thumbnail. png görüntüsünü 1280 x 720 piksel boyutunda girin.
+Teklifinizi gösteren en fazla beş video ekleyin. Videonun adını, Web adresini ve videonun küçük resim PNG görüntüsünü 1280 x 720 piksel boyutunda girin.
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 

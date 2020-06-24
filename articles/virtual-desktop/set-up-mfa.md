@@ -4,16 +4,16 @@ description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure Mu
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a769b5584abbd6da89ccb6032e5f0c5ac8ea1cb1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 468597c82ae6c99aadeb33fafae78e3b3ed343cd
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930531"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213678"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Multi-Factor Authentication 'yi etkinleştirme
 
@@ -23,7 +23,7 @@ Windows sanal masaüstü için Windows istemcisi, Windows sanal masaüstünü ye
 
 Kimlik bilgilerini hatırlarken, kurumsal senaryolarda veya kişisel cihazlarda dağıtımları daha az güvenli hale da olabilir. Kullanıcılarınızı korumak için, istemcinin Azure Multi-Factor Authentication (MFA) kimlik bilgilerini sormayı sürdürdüğünden emin olmanız gerekir. Bu makalede, Windows sanal masaüstü için koşullu erişim ilkesinin bu ayarı etkinleştirmek üzere nasıl yapılandırılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için yapmanız gerekenler şunlardır:
 
@@ -47,7 +47,7 @@ Bu bölümde, Windows sanal masaüstüne bağlanırken çok faktörlü kimlik do
    - **Done** (Bitti) öğesini seçin.
 6. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **Uygulama Seç**' i seçin.
    - **Windows sanal masaüstü** (uygulama kimliği 9cdead84-a844-4324-93f2-b2e6bb768d07) öğesini seçin, sonra ve sonra **Tamam**' ı **seçin**.
-   
+
      ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise.png)
 
      >[!NOTE]

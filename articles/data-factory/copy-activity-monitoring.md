@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 3ed1a952cb640fcd64808ba49e1a0937d71d769f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655652"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249729"
 ---
 # <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
 
@@ -58,8 +58,8 @@ Kopyalama etkinliği yürütme ayrıntıları ve performans özellikleri, **Copy
 | yazılan Files | Dosya tabanlı havuza yazılan/kaydedilen dosya sayısı. | Int64 değeri (birim yok) |
 | Kaynakcepeakconnections | Kopyalama etkinliği sırasında kaynak veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim yok) |
 | sinkPeakConnections | Kopyalama etkinliği sırasında havuz veri deposuna kurulan en yüksek eşzamanlı bağlantı sayısı. | Int64 değeri (birim yok) |
-| rowsRead | Kaynaktan okunan satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim yok) |
-| rowscop | Havuza kopyalanmış satır sayısı (ikili kopya için geçerli değildir). | Int64 değeri (birim yok) |
+| rowsRead | Kaynaktan okunan satır sayısı. Bu ölçüm, dosyalar ayrıştırılmadan olduğu gibi kopyalanırken uygulanmaz; Örneğin, kaynak ve havuz veri kümeleri ikili biçim türü veya aynı ayarlara sahip başka biçim türüdür. | Int64 değeri (birim yok) |
+| rowscop | Havuza kopyalanmış satır sayısı. Bu ölçüm, dosyalar ayrıştırılmadan olduğu gibi kopyalanırken uygulanmaz; Örneğin, kaynak ve havuz veri kümeleri ikili biçim türü veya aynı ayarlara sahip başka biçim türüdür.  | Int64 değeri (birim yok) |
 | rowsSkipped | Atlanan uyumsuz satır sayısı. Doğru ayarı yaparak, uyumsuz satırların atlanmasını sağlayabilirsiniz `enableSkipIncompatibleRow` . | Int64 değeri (birim yok) |
 | copyDuration | Kopya çalıştırmasının süresi. | Int32 değeri, saniye cinsinden |
 | aktarım hızı | Veri aktarımı oranı. | Kayan nokta sayısı, KBps cinsinden |

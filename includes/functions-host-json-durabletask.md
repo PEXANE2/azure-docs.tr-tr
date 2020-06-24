@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
@@ -92,7 +92,7 @@ ms.locfileid: "80117138"
 
 Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, bir işlev uygulaması için varsayılan görev hub 'ı adı **Durablefunctionshub**olur. Daha fazla bilgi için bkz. [görev hub 'ları](../articles/azure-functions/durable-functions-task-hubs.md).
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Diğer [görev hub 'ı](../articles/azure-functions/durable-functions-task-hubs.md) adları, aynı depolama arka ucunu kullanıyor olsalar dahi, birden çok dayanıklı işlevler uygulamayı birbirinden yalıtmak için kullanılabilir.|
 |controlQueueBatchSize|32|Denetim sırasından tek seferde çekilecek ileti sayısı.|
@@ -105,14 +105,14 @@ Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan o
 |Maxqueuepollingınterval|30 saniye|*SS: DD: ss* biçiminde maksimum denetim ve iş öğesi kuyruğu yoklama aralığı. Daha yüksek değerler ileti işleme gecikmelerinin oluşmasına neden olabilir. Daha düşük değerler, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.|
 |Azurestoraygeconnectionstringname |AzureWebJobsStorage|Temel Azure depolama kaynaklarını yönetmek için kullanılan Azure depolama bağlantı dizesine sahip uygulama ayarının adı.|
 |trackingStoreConnectionStringName||Geçmiş ve örnekler tabloları için kullanılacak bağlantı dizesinin adı. Belirtilmemişse, `azureStorageConnectionStringName` bağlantı kullanılır.|
-|trackingStoreNamePrefix||Belirtildiğinde `trackingStoreConnectionStringName` , geçmiş ve örnekleri tabloları için kullanılacak ön ek. Ayarlanmamışsa, varsayılan ön ek değeri olacaktır `DurableTask`. `trackingStoreConnectionStringName` Belirtilmemişse, geçmiş ve örnekler tabloları ön ekler olarak `hubName` değeri kullanır ve için `trackingStoreNamePrefix` herhangi bir ayar yok sayılır.|
+|trackingStoreNamePrefix||Belirtildiğinde, geçmiş ve örnekleri tabloları için kullanılacak ön ek `trackingStoreConnectionStringName` . Ayarlanmamışsa, varsayılan ön ek değeri olacaktır `DurableTask` . `trackingStoreConnectionStringName`Belirtilmemişse, geçmiş ve örnekler tabloları `hubName` ön ekler olarak değeri kullanır ve için herhangi bir ayar `trackingStoreNamePrefix` yok sayılır.|
 |traceInputsAndOutputs |yanlış|İşlev çağrılarının giriş ve çıkışları takip edilip edilmeyeceğini belirten bir değer. İşlev yürütme olaylarının izlenirken, işlev çağrılarının seri hale getirilmiş giriş ve çıkışlarındaki bayt sayısını eklemek varsayılan davranıştır. Bu davranış, girişlerin ve çıktıların günlüğe kaydetmeksizin veya farkında olmadan hassas bilgileri açığa çıkarmadan nasıl göründüğünü öğrenmek için en az bilgi sağlar. Bu özelliğin true olarak ayarlanması, işlev girişlerinin ve çıktıların tüm içeriğini günlüğe kaydetmek için varsayılan işlev günlüğe kaydetmenin oluşmasına neden olur.|
 |Günlüğe kaydetme Yevents|yanlış|Application Insights için düzenleme yeniden yürütme olaylarının yazılacağını belirten bir değer.|
 |eventGridTopicEndpoint ||Azure Event Grid özel konu uç noktasının URL 'SI. Bu özellik ayarlandığında, düzenleme yaşam döngüsü bildirim olayları bu uç noktada yayımlanır. Bu özellik uygulama ayarları çözümlemesini destekler.|
-|eventGridKeySettingName ||Üzerinde `EventGridTopicEndpoint`Azure Event Grid özel konu ile kimlik doğrulaması için kullanılan anahtarı içeren uygulama ayarının adı.|
+|eventGridKeySettingName ||Üzerinde Azure Event Grid özel konu ile kimlik doğrulaması için kullanılan anahtarı içeren uygulama ayarının adı `EventGridTopicEndpoint` .|
 |eventGridPublishRetryCount|0|Event Grid konusunda yayımlama başarısız olursa kaç kez yeniden deneneceği.|
 |Eventgridpublishretryınterval|5 dakika|Event Grid, *HH: mm: ss* biçiminde yeniden deneme aralığı yayımlar.|
-|eventGridPublishEventTypes||Event Grid yayımlanacak olay türlerinin listesi. Belirtilmezse, tüm olay türleri yayımlanır. İzin verilen değerler `Started`şunlardır `Completed` `Failed`,, `Terminated`,.|
+|eventGridPublishEventTypes||Event Grid yayımlanacak olay türlerinin listesi. Belirtilmezse, tüm olay türleri yayımlanır. İzin verilen değerler şunlardır,,, `Started` `Completed` `Failed` `Terminated` .|
 |useGracefulShutdown|yanlış|Önizle İşlem sırasında işlev yürütmelerinin başarısız olmasına neden olan konak kapanmalarının olasılığını azaltmak için düzgün bir şekilde kapatmayı etkinleştirin.|
 
 Bu ayarların birçoğu performansı iyileştirmek için kullanılır. Daha fazla bilgi için bkz. [performans ve ölçek](../articles/azure-functions/durable-functions-perf-and-scale.md).

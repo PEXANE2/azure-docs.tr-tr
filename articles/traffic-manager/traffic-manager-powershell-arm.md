@@ -6,17 +6,17 @@ documentationcenter: na
 author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de637bc30420ce494e553100a9f1126e88027bd2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938505"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704157"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager yönetmek için PowerShell kullanma
 
@@ -61,7 +61,7 @@ Aşağıdaki tabloda parametreler açıklanmaktadır:
 
 | Parametre | Açıklama |
 | --- | --- |
-| Adı |Traffic Manager profili kaynağı için kaynak adı. Aynı kaynak grubundaki profillerin benzersiz adlara sahip olması gerekir. Bu ad DNS sorguları için kullanılan DNS adından ayrıdır. |
+| Name |Traffic Manager profili kaynağı için kaynak adı. Aynı kaynak grubundaki profillerin benzersiz adlara sahip olması gerekir. Bu ad DNS sorguları için kullanılan DNS adından ayrıdır. |
 | ResourceGroupName |Profil kaynağını içeren kaynak grubunun adı. |
 | TrafficRoutingMethod |DNS sorgusunun yanıt olarak hangi uç noktanın döndürüleceğini belirleyen trafik yönlendirme yöntemini belirtir. Olası değerler ' Performance ', ' ağırlıklı ' veya ' Priority ' değerleridir. |
 | RelativeDnsName |Bu Traffic Manager profili tarafından belirtilen DNS adının ana bilgisayar adı bölümünü belirtir. Bu değer, profilin tam etki alanı adını (FQDN) oluşturmak için Azure Traffic Manager tarafından kullanılan DNS etki alanı adıyla birleştirilir. Örneğin, ' contoso ' değerinin ayarlanması ' contoso.trafficmanager.net. ' olur. |
@@ -86,9 +86,9 @@ Bu cmdlet bir Traffic Manager profili nesnesi döndürür.
 
 Traffic Manager profillerinin değiştirilmesi 3 adımlı bir işlem izler:
 
-1. Kullanarak `Get-AzTrafficManagerProfile` profili alın veya tarafından `New-AzTrafficManagerProfile`döndürülen profili kullanın.
+1. Kullanarak profili alın `Get-AzTrafficManagerProfile` veya tarafından döndürülen profili kullanın `New-AzTrafficManagerProfile` .
 2. Profili değiştirin. Uç noktaları ekleyebilir ve kaldırabilir veya Endpoint veya profil parametrelerini değiştirebilirsiniz. Bu değişiklikler çevrimdışı işlemlerdir. Yalnızca, profili temsil eden bellekteki yerel nesneyi değiştiriyorsunuz.
-3. `Set-AzTrafficManagerProfile` Cmdlet 'ini kullanarak değişikliklerinizi işleyin.
+3. Cmdlet 'ini kullanarak değişikliklerinizi işleyin `Set-AzTrafficManagerProfile` .
 
 Profilin RelativeDnsName 'ı dışında tüm profil özellikleri değiştirilebilir. RelativeDnsName 'yi değiştirmek için profili ve yeni bir adla yeni bir profili silmeniz gerekir.
 
@@ -120,14 +120,14 @@ Azure 'da barındırılan Azure uç noktaları başvuru hizmetleri. İki tür Az
 
 Her durumda:
 
-* Hizmet, `Add-AzTrafficManagerEndpointConfig` veya `New-AzTrafficManagerEndpoint`' targetresourceıd ' parametresi kullanılarak belirtilir.
+* Hizmet, veya ' Targetresourceıd ' parametresi kullanılarak belirtilir `Add-AzTrafficManagerEndpointConfig` `New-AzTrafficManagerEndpoint` .
 * ' Target ' ve ' EndpointLocation ', Targetresourceıd tarafından kapsanıyor.
 * ' Weight ' belirtildiğinde isteğe bağlı. Ağırlıklar yalnızca profil ' ağırlıklı ' trafik-yönlendirme yöntemini kullanacak şekilde yapılandırıldıysa kullanılır. Aksi takdirde, bunlar yok sayılır. Belirtilmişse değer 1 ile 1000 arasında bir sayı olmalıdır. Varsayılan değer ' 1 '.
 * ' Priority ' belirtildiğinde isteğe bağlıdır. Öncelikler yalnızca profil ' Priority ' trafik-yönlendirme yöntemini kullanacak şekilde yapılandırıldıysa kullanılır. Aksi takdirde, bunlar yok sayılır. Geçerli değerler 1 ile 1000 arasında, daha düşük değerler daha yüksek önceliğe işaret eden değerlerdir. Bir uç nokta için belirtilmişse, bunların tüm uç noktalar için belirtilmesi gerekir. Atlanırsa, ' 1 ' den başlayan varsayılan değerler bitiş noktalarının listelendiği sırada uygulanır.
 
 ### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>Örnek 1: kullanarak App Service uç noktaları ekleme`Add-AzTrafficManagerEndpointConfig`
 
-Bu örnekte, bir Traffic Manager profili oluşturur ve `Add-AzTrafficManagerEndpointConfig` cmdlet 'ini kullanarak iki App Service uç noktası ekler.
+Bu örnekte, bir Traffic Manager profili oluşturur ve cmdlet 'ini kullanarak iki App Service uç noktası ekler `Add-AzTrafficManagerEndpointConfig` .
 
 ```powershell
 $TmProfile = New-AzTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -148,7 +148,7 @@ New-AzTrafficManagerEndpoint -Name MyIpEndpoint -ProfileName MyProfile -Resource
 
 ## <a name="adding-external-endpoints"></a>Dış Uç Noktalar ekleme
 
-Traffic Manager, trafiği Azure dışında barındırılan hizmetlere yönlendirmek için dış uç noktaları kullanır. Azure uç noktalarında olduğu gibi dış uç noktalar, ya `Add-AzTrafficManagerEndpointConfig` `Set-AzTrafficManagerProfile` `New-AzTrafficManagerEndpoint`da tarafından kullanılarak eklenebilir.
+Traffic Manager, trafiği Azure dışında barındırılan hizmetlere yönlendirmek için dış uç noktaları kullanır. Azure uç noktalarında olduğu gibi dış uç noktalar `Add-AzTrafficManagerEndpointConfig` , ya da tarafından kullanılarak eklenebilir `Set-AzTrafficManagerProfile` `New-AzTrafficManagerEndpoint` .
 
 Dış uç noktaları belirtirken:
 
@@ -156,7 +156,7 @@ Dış uç noktaları belirtirken:
 * ' Performance ' trafik-yönlendirme yöntemi kullanılırsa, ' EndpointLocation ' gereklidir. Aksi takdirde, isteğe bağlıdır. Değerin [geçerli bir Azure bölge adı](https://azure.microsoft.com/regions/)olması gerekir.
 * ' Weight ' ve ' Priority ' isteğe bağlıdır.
 
-### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Örnek 1: ve kullanarak `Add-AzTrafficManagerEndpointConfig` dış uç noktaları ekleme`Set-AzTrafficManagerProfile`
+### <a name="example-1-adding-external-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Örnek 1: ve kullanarak dış uç noktaları ekleme `Add-AzTrafficManagerEndpointConfig``Set-AzTrafficManagerProfile`
 
 Bu örnekte, bir Traffic Manager profili oluşturur, iki dış uç nokta ekler ve değişiklikleri işleyin.
 
@@ -186,7 +186,7 @@ Her Traffic Manager profili tek bir trafik yönlendirme yöntemini belirtir. Anc
 * Azure uç noktaları için ' Weight ' ve ' Priority ' isteğe bağlıdır.
 * ' MinChildEndpoints ' parametresi isteğe bağlıdır. Varsayılan değer ' 1 '. Kullanılabilir uç noktaların sayısı bu eşiğin altına düşerse, üst profil alt profilini ' düşürülmüş ' olarak değerlendirir ve trafiği üst profildeki diğer uç noktalara göre değerlendirir.
 
-### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Örnek 1: ve kullanarak `Add-AzTrafficManagerEndpointConfig` iç içe geçmiş uç noktaları ekleme`Set-AzTrafficManagerProfile`
+### <a name="example-1-adding-nested-endpoints-using-add-aztrafficmanagerendpointconfig-and-set-aztrafficmanagerprofile"></a>Örnek 1: ve kullanarak iç içe geçmiş uç noktaları ekleme `Add-AzTrafficManagerEndpointConfig``Set-AzTrafficManagerProfile`
 
 Bu örnekte, yeni Traffic Manager alt ve üst profiller oluşturur, alt öğeyi üst öğeye iç içe geçmiş bir uç nokta olarak ekler ve değişiklikleri işleyin.
 
@@ -224,10 +224,10 @@ New-AzTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -Reso
 
 Mevcut bir Traffic Manager uç noktasını güncelleştirmenin iki yolu vardır:
 
-1. Kullanarak `Get-AzTrafficManagerProfile`Traffic Manager profilini alın, profil içindeki uç nokta özelliklerini güncelleştirin ve kullanarak `Set-AzTrafficManagerProfile`değişiklikleri işleyin. Bu yöntem, tek bir işlemde birden fazla uç noktayı güncelleştirebilmekte olan avantajına sahiptir.
-2. Traffic Manager uç noktasını kullanarak `Get-AzTrafficManagerEndpoint`alın, uç nokta özelliklerini güncelleştirin ve değişiklikleri kullanarak `Set-AzTrafficManagerEndpoint`işleyin. Bu yöntem, profilde bitiş noktaları dizisine dizin oluşturulmasını gerektirmediğinden daha basittir.
+1. Kullanarak Traffic Manager profilini alın `Get-AzTrafficManagerProfile` , profil içindeki uç nokta özelliklerini güncelleştirin ve kullanarak değişiklikleri işleyin `Set-AzTrafficManagerProfile` . Bu yöntem, tek bir işlemde birden fazla uç noktayı güncelleştirebilmekte olan avantajına sahiptir.
+2. Traffic Manager uç noktasını kullanarak alın `Get-AzTrafficManagerEndpoint` , uç nokta özelliklerini güncelleştirin ve değişiklikleri kullanarak işleyin `Set-AzTrafficManagerEndpoint` . Bu yöntem, profilde bitiş noktaları dizisine dizin oluşturulmasını gerektirmediğinden daha basittir.
 
-### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>Örnek 1: ve kullanarak `Get-AzTrafficManagerProfile` uç noktaları güncelleştirme`Set-AzTrafficManagerProfile`
+### <a name="example-1-updating-endpoints-using-get-aztrafficmanagerprofile-and-set-aztrafficmanagerprofile"></a>Örnek 1: ve kullanarak uç noktaları güncelleştirme `Get-AzTrafficManagerProfile``Set-AzTrafficManagerProfile`
 
 Bu örnekte, var olan bir profil içindeki iki uç nokta için önceliği değiştiririz.
 
@@ -238,7 +238,7 @@ $TmProfile.Endpoints[1].Priority = 1
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>Örnek 2: ve kullanarak `Get-AzTrafficManagerEndpoint` bir uç nokta güncelleştirme`Set-AzTrafficManagerEndpoint`
+### <a name="example-2-updating-an-endpoint-using-get-aztrafficmanagerendpoint-and-set-aztrafficmanagerendpoint"></a>Örnek 2: ve kullanarak bir uç nokta güncelleştirme `Get-AzTrafficManagerEndpoint``Set-AzTrafficManagerEndpoint`
 
 Bu örnekte, var olan bir profildeki tek bir uç noktanın ağırlığını değiştiririz.
 
@@ -255,7 +255,7 @@ Bu değişiklikler, uç nokta veya profil kaynakları alınıyor/güncelleştiri
 
 ### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>Örnek 1: Traffic Manager profilini etkinleştirme ve devre dışı bırakma
 
-Bir Traffic Manager profilini etkinleştirmek için kullanın `Enable-AzTrafficManagerProfile`. Profil, profil nesnesi kullanılarak belirtilebilir. Profil nesnesi işlem hattı aracılığıyla veya '-TrafficManagerProfile ' parametresi kullanılarak geçirilebilir. Bu örnekte profili profil ve kaynak grubu adı ile belirttik.
+Bir Traffic Manager profilini etkinleştirmek için kullanın `Enable-AzTrafficManagerProfile` . Profil, profil nesnesi kullanılarak belirtilebilir. Profil nesnesi işlem hattı aracılığıyla veya '-TrafficManagerProfile ' parametresi kullanılarak geçirilebilir. Bu örnekte profili profil ve kaynak grubu adı ile belirttik.
 
 ```powershell
 Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
@@ -271,7 +271,7 @@ Disable-AzTrafficManagerProfile cmdlet 'i onay ister. Bu istem '-zorla ' paramet
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Örnek 2: Traffic Manager uç noktasını etkinleştirme ve devre dışı bırakma
 
-Traffic Manager uç noktası etkinleştirmek için kullanın `Enable-AzTrafficManagerEndpoint`. Uç noktasını belirtmek için iki yol vardır
+Traffic Manager uç noktası etkinleştirmek için kullanın `Enable-AzTrafficManagerEndpoint` . Uç noktasını belirtmek için iki yol vardır
 
 1. İşlem hattı aracılığıyla veya '-TrafficManagerEndpoint ' parametresi kullanılarak geçirilen bir TrafficManagerEndpoint nesnesi kullanma
 2. Uç nokta adı, uç nokta türü, profil adı ve kaynak grubu adını kullanma:
@@ -286,7 +286,7 @@ Benzer şekilde, bir Traffic Manager uç noktasını devre dışı bırakmak iç
 Disable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG -Force
 ```
 
-İle `Disable-AzTrafficManagerProfile`olduğu gibi `Disable-AzTrafficManagerEndpoint` cmdlet de onay ister. Bu istem '-zorla ' parametresi kullanılarak gizlenebilir.
+İle olduğu gibi `Disable-AzTrafficManagerProfile` `Disable-AzTrafficManagerEndpoint` cmdlet de onay ister. Bu istem '-zorla ' parametresi kullanılarak gizlenebilir.
 
 ## <a name="delete-a-traffic-manager-endpoint"></a>Traffic Manager uç noktasını silme
 
@@ -300,7 +300,7 @@ Bu cmdlet onay ister. Bu istem '-zorla ' parametresi kullanılarak gizlenebilir.
 
 ## <a name="delete-a-traffic-manager-profile"></a>Traffic Manager profilini silme
 
-Bir Traffic Manager profilini silmek için, profili ve `Remove-AzTrafficManagerProfile` kaynak grubu adlarını belirterek cmdlet 'ini kullanın:
+Bir Traffic Manager profilini silmek için, `Remove-AzTrafficManagerProfile` profili ve kaynak grubu adlarını belirterek cmdlet 'ini kullanın:
 
 ```powershell
 Remove-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG [-Force]

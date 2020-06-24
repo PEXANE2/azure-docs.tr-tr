@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 14c3dde4a86e36a4015a319e608ab8543302932f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 725e8165f8a7bdb654f61d7257867a2d0bf17110
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791298"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213576"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Veri depolamaya yönelik sürekli tümleştirme ve dağıtım
 
@@ -50,7 +50,7 @@ Bu noktada, kaynak denetimi depo ana dalınızdaki tüm iadelerinizin, veritaban
 
       ![Dağıtım görevi](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Dağıtım görevi")
 
-2. Kendi kendine barındırılan bir aracı kullanıyorsanız, ortam değişkeninizi SQL veri ambarı için doğru SqlPackage. exe ' yi kullanacak şekilde ayarladığınızdan emin olun. Yol şuna benzemelidir:
+2. Kendi kendine barındırılan bir aracı kullanıyorsanız, ortam değişkeninizi SQL veri ambarı için doğru SqlPackage.exe kullanacak şekilde ayarladığınızdan emin olun. Yol şuna benzemelidir:
 
       ![Ortam değişkeni](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Ortam değişkeni")
 

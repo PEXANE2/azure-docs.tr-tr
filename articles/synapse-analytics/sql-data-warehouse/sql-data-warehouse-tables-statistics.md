@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3684b9b87dce24ba7ac1a9b672f7fd6dd446ab46
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985873"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213916"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki tablo istatistikleri
 
@@ -156,7 +156,7 @@ Veri yükü, tabloların en sık boyutunu ve/veya değerlerinin dağılımını 
 - JOIN, GROUP BY, ORDER BY ve DISTINCT yan tümcelerinde yer alan sütunlara odaklanın.
 - Bu değerler istatistik histogramı içinde yer alacağından, işlem tarihleri daha sık olan "artan anahtar" sütunlarını güncelleştirmeyi göz önünde bulundurun.
 - Statik dağıtım sütunlarını daha az sıklıkta güncelleştirmeyi göz önünde bulundurun.
-- Her istatistik nesnesinin sırayla güncelleştirildiğini unutmayın. Özellikle çok `UPDATE STATISTICS <TABLE_NAME>` sayıda istatistik nesnesi olan geniş tablolar için her zaman ideal bir uygulama değildir.
+- Her istatistik nesnesinin sırayla güncelleştirildiğini unutmayın. `UPDATE STATISTICS <TABLE_NAME>`Özellikle çok sayıda istatistik nesnesi olan geniş tablolar için her zaman ideal bir uygulama değildir.
 
 Daha fazla bilgi için bkz. [kardinalite tahmini](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
@@ -236,13 +236,13 @@ Tam başvuru için bkz. [Istatistik oluşturma](/sql/t-sql/statements/create-sta
 > [!NOTE]
 > Sorgu sonucundaki satır sayısını tahmin etmek için kullanılan histogramı yalnızca istatistik nesne tanımında listelenen ilk sütunda kullanılabilir.
 
-Bu örnekte, histogram *ürün\_kategorisinde*bulunur. Çapraz sütun istatistikleri *ürün\_kategorisinde* ve *ürün\_sub_category*hesaplanır:
+Bu örnekte, histogram *ürün \_ kategorisinde*bulunur. Çapraz sütun istatistikleri *ürün \_ kategorisinde* ve *ürün \_ sub_category*hesaplanır:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-*Ürün\_kategorisi* ile *\_ürün alt\_kategorisi*arasında bir bağıntı olduğundan, bu sütunlara aynı anda erişildiğinde çok sütunlu bir istatistik nesnesi yararlı olabilir.
+*Ürün \_ kategorisi* ile *ürün \_ alt \_ kategorisi*arasında bir bağıntı olduğundan, bu sütunlara aynı anda erişildiğinde çok sütunlu bir istatistik nesnesi yararlı olabilir.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Tablodaki tüm sütunlarda istatistik oluşturma
 
@@ -418,7 +418,7 @@ GÜNCELLEŞTIRME ISTATISTIKLERI bildiriminin kullanımı kolaydır. Yalnızca ta
 > [!NOTE]
 > Bir tablodaki tüm İstatistikleri güncelleştirirken, SQL havuzu her bir istatistik nesnesi için tabloyu örneklemek üzere bir tarama yapar. Tablo büyükse ve çok sayıda sütun ve birçok istatistik içeriyorsa, her bir istatistiği ihtiyaya göre güncelleştirmek daha verimli olabilir.
 
-Bir `UPDATE STATISTICS` yordamın uygulanması için bkz. [geçici tablolar](sql-data-warehouse-tables-temporary.md). Uygulama yöntemi önceki `CREATE STATISTICS` yordamdan biraz farklıdır, ancak sonuç aynıdır.
+Bir yordamın uygulanması için `UPDATE STATISTICS` bkz. [geçici tablolar](sql-data-warehouse-tables-temporary.md). Uygulama yöntemi önceki yordamdan biraz farklıdır `CREATE STATISTICS` , ancak sonuç aynıdır.
 
 Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
@@ -430,7 +430,7 @@ Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statement
 
 Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
-| Katalog görünümü | Açıklama |
+| Katalog görünümü | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her sütun için bir satır. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Veritabanındaki her nesne için bir satır. |
@@ -444,7 +444,7 @@ Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
 Bu sistem işlevleri, istatistiklerle çalışmak için faydalıdır:
 
-| Sistem işlevi | Açıklama |
+| Sistem işlevi | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesinin son güncelleştirilme tarihi. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesi tarafından anlaşıldıkça değerlerin dağılımı hakkında özet düzeyi ve ayrıntılı bilgiler. |

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2020
+ms.date: 06/23/2020
 ms.author: shvija
-ms.openlocfilehash: 32b08e565b86af8f6373c9848211646128bb346d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3f5e7ab5ca0d47d18c802dadbcac902ed12e147
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677363"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299407"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Apache Kafka ekosistemleri için Azure Event Hubs 'e geçiş
 Azure Event Hubs, Kafka protokolünü kullanarak Event Hubs bağlanmanızı sağlayan bir Apache Kafka uç noktası sunar. Mevcut Kafka uygulamanızda en az değişiklik yaparak Azure Event Hubs bağlanabilir ve Azure ekosisteminin avantajlarından yararlanabilirsiniz. Kafka Apache Kafka desteği için Event Hubs [sürüm 1,0](https://kafka.apache.org/10/documentation.html) ve üzeri.
@@ -38,15 +38,15 @@ Ayrıca, Olay Hub 'ı ad alanınızı işaret eden FQDN 'ye de ihtiyacınız ola
 
 `Endpoint=sb://`**`mynamespace.servicebus.windows.net`**`/;SharedAccessKeyName=XXXXXX;SharedAccessKey=XXXXXX`
 
-Event Hubs ad alanınız genel olmayan bir buluta dağıtılmışsa, etki alanı adınız farklı olabilir (örneğin, \*. ServiceBus.chinacloudapi.cn, \*. ServiceBus.usgovcloudapi.NET veya \*. ServiceBus.cloudapi.de).
+Event Hubs ad alanınız genel olmayan bir buluta dağıtılmışsa, etki alanı adınız farklı olabilir (örneğin, \* . ServiceBus.chinacloudapi.cn, \* . ServiceBus.usgovcloudapi.NET veya \* . ServiceBus.cloudapi.de).
 
 ## <a name="migration"></a>Geçiş 
 
 ### <a name="update-your-kafka-client-configuration"></a>Kafka istemci yapılandırmanızı güncelleştirme
 
-Kafka etkin bir olay hub 'ına bağlanmak için, Kafka istemci yapılandırmasını güncelleştirmeniz gerekir. Sizinki bulmakta sorun yaşıyorsanız, uygulamanızda nerede `bootstrap.servers` ayarlandığını aramayı deneyin.
+Kafka etkin bir olay hub 'ına bağlanmak için, Kafka istemci yapılandırmasını güncelleştirmeniz gerekir. Sizinki bulmakta sorun yaşıyorsanız, uygulamanızda nerede ayarlandığını aramayı deneyin `bootstrap.servers` .
 
-Uygulamanızda anlatacakları her yerde aşağıdaki yapılandırmaları ekleyin. İstemcisini, doğru kimlik doğrulamasıyla `bootstrap.servers` Event Hubs `sasl.jaas.config` Kafka uç noktasına yönlendirmek için ve değerlerini güncelleştirdiğinizden emin olun. 
+Uygulamanızda anlatacakları her yerde aşağıdaki yapılandırmaları ekleyin. `bootstrap.servers` `sasl.jaas.config` İstemcisini, doğru kimlik doğrulamasıyla Event Hubs Kafka uç noktasına yönlendirmek için ve değerlerini güncelleştirdiğinizden emin olun. 
 
 ```
 bootstrap.servers={MYNAMESPACE}.servicebus.windows.net:9093
@@ -56,7 +56,7 @@ sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING TO YOUR NAMESPACE}";
 ``` 
 
-Ortamınızda `sasl.jaas.config` desteklenen bir yapılandırma DEĞILSE, SASL Kullanıcı adı ve parolasını ayarlamak için kullanılan yapılandırmaları bulun ve bunun yerine bunları kullanın. Kullanıcı adını `$ConnectionString` ve parolayı Event Hubs bağlantı dizeniz olarak ayarlayın.
+`sasl.jaas.config`Ortamınızda desteklenen bir yapılandırma değilse, SASL Kullanıcı adı ve parolasını ayarlamak için kullanılan yapılandırmaları bulun ve bunun yerine bunları kullanın. Kullanıcı adını `$ConnectionString` ve parolayı Event Hubs bağlantı dizeniz olarak ayarlayın.
 
 ## <a name="post-migration"></a>Geçiş sonrası
 Olayları Olay Hub 'ına gönderen Kafka uygulamanızı çalıştırın. Daha sonra, Olay Hub 'ının Azure portal kullanarak olayları aldığını doğrulayın. Event Hubs ad alanının **genel bakış** sayfasında, **ölçümler** bölümünde **iletiler** görünümüne geçin. Grafiği güncelleştirmek için sayfayı yenileyin. İletilerin alındığını göstermesi birkaç saniye sürebilir. 

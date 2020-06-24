@@ -10,12 +10,12 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 65f395197256132b6b92b234932fd17ec5ba552c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433196"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981855"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Azure Machine Learning 'de değişiklik gizliliğini kullanın
 
@@ -25,7 +25,10 @@ Whitenoıse Python paketlerini kullanarak Azure Machine Learning modellere yöne
 
 Değişiklik gizliliği, altın standart gizlilik tanımıdır. Bu Gizlilik tanımına bağlı olan sistemler, daha fazla veri yeniden oluşturma ve yeniden tanımlama saldırılarına karşı, yardımcı bilgilere sahip olan saldırgan saldırıları da dahil olmak üzere güçlü bir iş yelpazesi sunar. [Değişiklik gizliliği 'nin nasıl çalıştığı](./concept-differential-privacy.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+> [!NOTE]
+> Araç takımını yeniden adlandırdığımızda, gelecek haftalarda yeni adı tanıtılacağını lütfen unutmayın. 
+
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 - [Python 3](https://www.python.org/downloads/)

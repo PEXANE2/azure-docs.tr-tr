@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: 4802e9e6fa2fdd918266d3ddc58b783bdb6bb83e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258496"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297877"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU tabanlı modelden Azure SQL veritabanı 'nı sanal çekirdek tabanlı modele geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Sanal çekirdekler (mantıksal CPU 'Lar) ve donanım oluşturma sayısının yan
 - Aynı donanım oluşturma ve sanal çekirdek veritabanları için aynı sayıda sanal çekirdek, ıOPS ve işlem günlüğü verimlilik kaynak sınırları, DTU veritabanlarının genellikle daha yüksektir. GÇ bağlantılı iş yükleri için, sanal çekirdek modelindeki sanal çekirdek sayısını, aynı performans düzeyine ulaşmak için düşürmek mümkün olabilir. Mutlak değerlerde DTU ve sanal çekirdek veritabanlarının kaynak sınırları, [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünde kullanıma sunulur. Bu değerleri geçirilecek DTU veritabanı ile, yaklaşık olarak eşleşen bir hizmet hedefi kullanan bir vCore veritabanı arasında karşılaştırmak, sanal çekirdek hizmeti hedefini daha kesin bir şekilde seçmenize yardımcı olur.
 - Eşleme sorgusu Ayrıca, geçirilecek DTU veritabanı veya elastik havuz için çekirdek başına bellek miktarını ve sanal çekirdek modelindeki her donanım oluşturma için de döndürür. Sanal çekirdeğe geçiş sonrasında, büyük bir bellek veri önbelleğinin veya sorgu işleme için büyük bellek izni gerektiren iş yüklerine ihtiyaç duymasını gerektiren iş yükleri için, vCore 'a geçişten sonra benzer veya daha yüksek toplam bellek sağlamak önemlidir. Gerçek performansa bağlı olarak, bu tür iş yükleri için, yeterli miktarda bellek almak üzere sanal çekirdek sayısını artırmak gerekebilir.
 - DTU veritabanının [Geçmiş kaynak kullanımı](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , sanal çekirdek hizmeti hedefi seçerken göz önünde bulundurulmalıdır. Sürekli olarak kullanılan CPU kaynaklarıyla DTU veritabanlarının, eşleme sorgusunun döndürdüğü sayıdan daha az sayıda sanal çekirdeğe ihtiyacı olabilir. Buna karşılık, tutarlı olarak yüksek CPU kullanımının yetersiz iş yükü performansına neden olduğu DTU veritabanları, sorgu tarafından döndürülenden daha fazla sanal çekirdek gerektirebilir.
-- Veritabanlarını aralıklı veya öngörülemeyen kullanım desenleriyle geçiriyorsanız [sunucusuz](serverless-tier-overview.md) işlem katmanının kullanımını göz önünde bulundurun.
+- Veritabanlarını aralıklı veya öngörülemeyen kullanım desenleriyle geçiriyorsanız [sunucusuz](serverless-tier-overview.md) işlem katmanının kullanımını göz önünde bulundurun.  Sunucusuz 'ta en fazla eş zamanlı çalışan sayısı (istek), yapılandırılan en fazla sayıda sanal çekirdek için sağlanan işlem sınırının %75 olduğunu unutmayın.  Ayrıca, sunucusuz 'ta bulunan en fazla bellek, yapılandırılan maksimum sanal çekirdek sayısına 3 GB olur; Örneğin, en fazla 40 maksimum sanal çekirdek yapılandırıldığında maksimum bellek 120 GB 'dir.   
 - Sanal çekirdek modelinde, desteklenen en büyük veritabanı boyutu, donanım oluşturmaya bağlı olarak farklılık gösterebilir. Büyük veritabanları için, [tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için sanal çekirdek modelinde desteklenen en büyük boyutları denetleyin.
 - Elastik havuzlar için [DTU](resource-limits-dtu-elastic-pools.md) ve [sanal çekirdek](resource-limits-vcore-elastic-pools.md) modellerinin havuz başına desteklenen en fazla veritabanı sayısına göre farkları vardır. Bu, çok sayıda veritabanına sahip elastik havuzlar geçirilirken göz önünde bulundurulmalıdır.
 - Bazı donanım oluşturmaları, her bölgede kullanılamayabilir. [Donanım nesilleri](service-tiers-vcore.md#hardware-generations)altında kullanılabilirliği denetleyin.

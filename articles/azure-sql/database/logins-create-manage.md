@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: e56b526dff9e18f19275cb248fd6955dd680324f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: ebd55151a4b1656ec1187117b7c4b6da9d37e161
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605107"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298473"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -34,7 +34,7 @@ Bu makalede şunları öğreneceksiniz:
 > [!IMPORTANT]
 > Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE ' deki veritabanları, bu makalenin geri kalanında veritabanı olarak ve sunucu, Azure SQL veritabanı ve Azure SYNAPSE için veritabanlarını yöneten [sunucuya](logical-servers.md) başvurmaktadır.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
 [**Kimlik doğrulama**](security-overview.md#authentication) , kullanıcının talep ettikleri kim olduğunu kanıtlama işlemidir. Kullanıcı bir kullanıcı hesabı kullanarak bir veritabanına bağlanır.
 Bir Kullanıcı bir veritabanına bağlanmaya çalıştığında, bir kullanıcı hesabı ve kimlik doğrulama bilgileri sağlarlar. Kullanıcının kimliği, aşağıdaki iki kimlik doğrulama yönteminden birini kullanarak doğrulanır:
@@ -91,7 +91,7 @@ Bu noktada, sunucunuz veya yönetilen örneğiniz yalnızca tek bir SQL oturum a
 
   - Ana veritabanında ek bir SQL oturum açma oluşturun.
   - Ana veritabanında bu yeni oturum açmayla ilişkili bir kullanıcı hesabı oluşturun.
-  - `dbmanager` `loginmanager` Alter Server role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) SYNAPSE için [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
+  - `dbmanager` `loginmanager` Alter role deyimini kullanarak veritabanında, role veya her ikisine de Kullanıcı hesabını ekleyin `master` (Azure SYNAPSE [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) için [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) deyimini kullanın).
 
   > [!NOTE]
   > `dbmanager`ve `loginmanager` rolleri, SQL yönetilen örnek dağıtımlarıyla ilgili **değildir** .
@@ -155,7 +155,7 @@ Bir veritabanında bir oturum açma ya da kapsanan Kullanıcı olarak bir kullan
 
 Verimli erişim yönetimi, bireysel kullanıcılar yerine Active Directory güvenlik gruplarına ve sabit veya özel rollere atanan izinleri kullanır.
 
-- Azure Active Directory kimlik doğrulaması kullanırken, Azure Active Directory Kullanıcıları Azure Active Directory güvenlik grubuna yerleştirin. Grup için bir bağımsız veritabanı kullanıcısı oluşturun. Bir veya daha fazla veritabanı kullanıcıyı, bu kullanıcı grubuna uygun belirli izinlerle özel bir veritabanı rolüne yerleştirin.
+- Azure Active Directory kimlik doğrulaması kullanırken, Azure Active Directory Kullanıcıları Azure Active Directory güvenlik grubuna yerleştirin. Grup için bir bağımsız veritabanı kullanıcısı oluşturun. Özel veya yerleşik veritabanı rollerine üye olarak bir veya daha fazla veritabanı kullanıcısı ekleyin bu kullanıcı grubuna uygun olan belirli izinlerle.
 
 - SQL kimlik doğrulaması kullanırken, veritabanında kapsanan veritabanı kullanıcıları oluşturun. Bir veya daha fazla veritabanı kullanıcıyı, bu kullanıcı grubuna uygun belirli izinlerle özel bir veritabanı rolüne yerleştirin.
 

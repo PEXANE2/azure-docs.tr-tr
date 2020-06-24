@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 558f7ef250c99d85cb957162b6d098e586bc0fc4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/17/2020
+ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433250"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981957"
 ---
 # <a name="text-split-cognitive-skill"></a>Metin bölünmüş Bilişsel Beceri
 
@@ -31,23 +31,23 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Description |
 |--------------------|-------------|
-| textSplitMode      | "Pages" veya "cümleler" | 
-| maximumPageLength | TextSplitMode, "Pages" olarak ayarlandıysa, bu, ile ölçülen en fazla sayfa uzunluğuna başvurur `String.Length` . Minimum değer 300 ' dir.  TextSplitMode değeri "Pages" olarak ayarlandıysa, algoritma metni en çok "maximumPageLength" boyutunda olan parçalara bölmeye çalışır. Bu durumda, algoritma bir cümle sınırında tümceyi bölmek için en iyi şekilde yapılır, bu nedenle öbek boyutu "maximumPageLength" değerinden biraz daha az olabilir. | 
-| defaultLanguageCode   | seçim Aşağıdaki dil kodlarından biri: `da, de, en, es, fi, fr, it, ko, pt` . Varsayılan değer Ingilizce 'dir (en). Göz önünde bulundurulması gereken birkaç nokta vardır:<ul><li>LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.</li><li>Dil önceki listede değilse, bölünmüş beceri metin karakter sınırlarındaki metni keser.</li><li>Bir dil kodu sağlamak, Çince, Japonca ve Korece gibi boşluk olmayan diller için bir sözcüğün yarısını kesmemek için yararlıdır.</li><li>Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), İngilizce (en) varsayılan değer yeterli olmalıdır. </li></ul>  |
+| `textSplitMode`    | "Pages" veya "cümleler" | 
+| `maximumPageLength` | TextSplitMode, "Pages" olarak ayarlandıysa, bu, ile ölçülen en fazla sayfa uzunluğuna başvurur `String.Length` . Minimum değer 300 ' dir.  TextSplitMode değeri "Pages" olarak ayarlandıysa, algoritma metni en çok "maximumPageLength" boyutunda olan parçalara bölmeye çalışır. Bu durumda, algoritma bir cümle sınırında tümceyi bölmek için en iyi şekilde yapılır, bu nedenle öbek boyutu "maximumPageLength" değerinden biraz daha az olabilir. | 
+| `defaultLanguageCode` | seçim Aşağıdaki dil kodlarından biri: `da, de, en, es, fi, fr, it, ko, pt` . Varsayılan değer Ingilizce 'dir (en). Göz önünde bulundurulması gereken birkaç nokta vardır:<ul><li>LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.</li><li>Dil önceki listede değilse, bölünmüş beceri metin karakter sınırlarındaki metni keser.</li><li>Bir dil kodu sağlamak, Çince, Japonca ve Korece gibi boşluk olmayan diller için bir sözcüğün yarısını kesmemek için yararlıdır.</li><li>Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), İngilizce (en) varsayılan değer yeterli olmalıdır. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
 | Parametre adı       | Description      |
 |----------------------|------------------|
-| metin  | Alt dizeden bölünecek metin. |
-| languageCode  | Seçim Belge için dil kodu. Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), bu girişin kaldırılması güvenlidir.  |
+| `text`    | Alt dizeden bölünecek metin. |
+| `languageCode`    | Seçim Belge için dil kodu. Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), bu girişin kaldırılması güvenlidir.  |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları 
 
 | Parametre adı     | Description |
 |--------------------|-------------|
-| Textıtems | Ayıklanan alt dizeler dizisi. |
+| `textItems`   | Ayıklanan alt dizeler dizisi. |
 
 
 ##  <a name="sample-definition"></a>Örnek tanım

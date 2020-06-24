@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: functions
 author: ggailey777
 ms.service: azure-functions
@@ -19,25 +19,25 @@ ms.locfileid: "75564808"
 
 HTTP ve Zamanlayıcı Tetikleyicileri hariç olmak üzere, çalışma zamanı sürüm 2. x ve üzeri içindeki Işlev bağlamaları uzantı paketleri olarak uygulanır. Azure Işlevleri çalışma zamanının 2. x ve sonraki sürümlerinde, işlevleriniz içinde kullanılan bağlama türleri için uzantıları açıkça kaydetmeniz gerekir. Bunun özel durumları, uzantılar gerektirmeyen HTTP bağlamaları ve Zamanlayıcı tetikleyiclarıdır.
 
-Bağlama uzantılarını ayrı ayrı yüklemeyi seçebilir veya Host. JSON proje dosyasına Uzantı paketi başvurusu ekleyebilirsiniz. Uzantı demeti, birden çok bağlama türü kullanırken paket uyumluluk sorunları olma olasılığını ortadan kaldırır. Bağlama uzantılarını kaydetmek için önerilen yaklaşımdır. Uzantı paketleri de .NET Core 2. x SDK yükleme gereksinimini ortadan kaldırır. 
+Bağlama uzantılarını tek tek yüklemeyi seçebilir veya proje dosyasında host.jsbir uzantı paketi başvurusu ekleyebilirsiniz. Uzantı demeti, birden çok bağlama türü kullanırken paket uyumluluk sorunları olma olasılığını ortadan kaldırır. Bağlama uzantılarını kaydetmek için önerilen yaklaşımdır. Uzantı paketleri de .NET Core 2. x SDK yükleme gereksinimini ortadan kaldırır. 
 
 ### <a name="extension-bundles"></a>Uzantı demeti
 
 [!INCLUDE [Register extensions](functions-extension-bundles.md)]
 
-Daha fazla bilgi için bkz. [Azure işlevleri bağlama uzantılarını kaydetme](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Function. JSON dosyasına bağlama eklemeden önce, Host. JSON öğesine uzantı paketleri eklemeniz gerekir.
+Daha fazla bilgi için bkz. [Azure işlevleri bağlama uzantılarını kaydetme](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Dosyadaki function.jsbağlama eklemeden önce host.jsuzantı paketleri eklemeniz gerekir.
 
 ### <a name="register-individual-extensions"></a>Tek tek uzantıları Kaydet
 
 Bir paket içinde olmayan uzantıları yüklemeniz gerekiyorsa, belirli bağlamalar için bağımsız uzantı paketleri el ile kaydedebilirsiniz. 
 
 > [!NOTE]
-> Kullanarak `func extensions install`uzantıları el ile kaydetmek Için .NET Core 2. x SDK 'sının yüklü olması gerekir.
+> Kullanarak uzantıları el ile kaydetmek için `func extensions install` .NET Core 2. x SDK 'sının yüklü olması gerekir.
 
-İşlevinizin ihtiyaç duyacağı tüm bağlamaları dahil etmek için *function. JSON* dosyanızı güncelleştirdikten sonra proje klasöründe aşağıdaki komutu çalıştırın.
+Dosyanızdaki *function.js* , işlevinizin ihtiyaç duyacağı tüm bağlamaları içerecek şekilde güncelleştirdikten sonra, proje klasöründe aşağıdaki komutu çalıştırın.
 
 ```bash
 func extensions install
 ```
 
-Komut, hangi paketlere ihtiyacınız olduğunu görmek için *function. JSON* dosyasını okur, bunları yüklerse ve uzantılar projesini yeniden oluşturur. Geçerli sürümde yeni bağlamalar ekler ancak mevcut bağlamaları güncelleştirmez. Yeni yenilerini `--force` yüklerken mevcut bağlamaları en son sürüme güncelleştirmek için seçeneğini kullanın.
+Komut, hangi paketlere ihtiyacınız olduğunu görmek için dosyadaki *function.js* okur, bunları yüklerse ve uzantılar projesini yeniden oluşturur. Geçerli sürümde yeni bağlamalar ekler ancak mevcut bağlamaları güncelleştirmez. `--force`Yeni yenilerini yüklerken mevcut bağlamaları en son sürüme güncelleştirmek için seçeneğini kullanın.

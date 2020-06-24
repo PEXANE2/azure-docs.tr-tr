@@ -6,21 +6,21 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742646"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213984"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda vekil anahtarlar oluşturmak için KIMLIK kullanma
 
-SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğini kullanma önerileri ve örnekleri.
+Bu makalede, SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğini kullanmaya yönelik öneriler ve örnekler bulacaksınız.
 
 ## <a name="what-is-a-surrogate-key"></a>Vekil anahtar nedir?
 
@@ -44,7 +44,7 @@ WITH
 ;
 ```
 
-Daha sonra tabloyu doldurmak `INSERT..SELECT` için öğesini kullanabilirsiniz.
+Daha sonra `INSERT..SELECT` tabloyu doldurmak için öğesini kullanabilirsiniz.
 
 Bu bölümün geri kalanında, bunları daha fazla anlamanıza yardımcı olmak için uygulamanın nuslarını vurgular.  
 
@@ -77,11 +77,11 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-Yukarıdaki örnekte, dağıtım 1 ' de iki satır oluşturulmuş. İlk satırda, sütununda `C1`1 vekil değeri bulunur ve ikinci satırda 61 yedek değeri bulunur. Bu değerlerin her ikisi de ıDENTITY özelliği tarafından oluşturulmuştur. Ancak, değerlerin ayrılması bitişik değildir. Bu davranış tasarım gereğidir.
+Yukarıdaki örnekte, dağıtım 1 ' de iki satır oluşturulmuş. İlk satırda, sütununda 1 vekil değeri bulunur `C1` ve ikinci satırda 61 yedek değeri bulunur. Bu değerlerin her ikisi de ıDENTITY özelliği tarafından oluşturulmuştur. Ancak, değerlerin ayrılması bitişik değildir. Bu davranış tasarım gereğidir.
 
 ### <a name="skewed-data"></a>Eğilmiş veriler
 
-Veri türü için değer aralığı, dağıtımlar arasında eşit olarak yayılır. Dağıtılmış bir tablo, asimetrik verilerden bulunursa, veri türü için kullanılabilir olan değer aralığı zamanından önce tükenebilir. Örneğin, tüm veriler tek bir dağıtım içinde sona ererse, etkin şekilde tablo, veri türü değerlerinin yalnızca tek altılarına erişim sağlar. Bu nedenle, ıDENTITY özelliği yalnızca `INT` ve `BIGINT` veri türleriyle sınırlıdır.
+Veri türü için değer aralığı, dağıtımlar arasında eşit olarak yayılır. Dağıtılmış bir tablo, asimetrik verilerden bulunursa, veri türü için kullanılabilir olan değer aralığı zamanından önce tükenebilir. Örneğin, tüm veriler tek bir dağıtım içinde sona ererse, etkin şekilde tablo, veri türü değerlerinin yalnızca tek altılarına erişim sağlar. Bu nedenle, ıDENTITY özelliği `INT` `BIGINT` yalnızca ve veri türleriyle sınırlıdır.
 
 ### <a name="selectinto"></a>Seç.. BIRLEŞTIRIN
 
@@ -96,11 +96,11 @@ Bu koşullardan herhangi biri doğru ise, sütun KIMLIK özelliğini devralma ye
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-SELECT (CTAS) olarak CREATE TABLE, SELECT için belgelenen aynı SQL Server davranışını izler. Birleştirin. Ancak, deyimin `CREATE TABLE` bölümünün sütun TANıMıNDA bir Identity özelliği belirtemezsiniz. CTAS 'nin `SELECT` bölümünde de Identity işlevini kullanamazsınız. Bir tabloyu doldurmak için, tabloyu ve ardından doldurmak `CREATE TABLE` `INSERT..SELECT` üzere öğesini tanımlamak için kullanmanız gerekir.
+SELECT (CTAS) olarak CREATE TABLE, SELECT için belgelenen aynı SQL Server davranışını izler. Birleştirin. Ancak, deyimin bölümünün sütun tanımında bir ıDENTITY özelliği belirtemezsiniz `CREATE TABLE` . `SELECT`CTAS 'nin bölümünde de Identity işlevini kullanamazsınız. Bir tabloyu doldurmak için, `CREATE TABLE` tabloyu ve ardından doldurmak üzere öğesini tanımlamak için kullanmanız gerekir `INSERT..SELECT` .
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Bir KIMLIK sütununa açıkça değer ekleme
 
-SYNAPSE SQL havuzu sözdizimini `SET IDENTITY_INSERT <your table> ON|OFF` destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
+SYNAPSE SQL havuzu `SET IDENTITY_INSERT <your table> ON|OFF` sözdizimini destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
 
 Birçok veri modu, boyutları içindeki belirli satırlar için önceden tanımlanmış negatif değerler kullanmak gibidir. Örnek,-1 veya "bilinmeyen üye" satırıdır.
 
@@ -123,7 +123,7 @@ FROM    dbo.T1
 ;
 ```
 
-## <a name="loading-data"></a>Veri yükleme
+## <a name="loading-data"></a>Verileri yükleme
 
 IDENTITY özelliğinin varlığı, veri yükleme kodunuzda bazı etkileri vardır. Bu bölümde, KIMLIK kullanarak tablolara veri yüklemeye yönelik bazı temel desenler vurgulanmıştır.
 
@@ -158,7 +158,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> KIMLIK sütunu olan bir tabloya veri `CREATE TABLE AS SELECT` yüklerken şu anda kullanılamaz.
+> `CREATE TABLE AS SELECT`Kimlik sütunu olan bir tabloya veri yüklerken şu anda kullanılamaz.
 >
 
 Verileri yükleme hakkında daha fazla bilgi için bkz. [SYNAPSE SQL havuzu Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
@@ -212,7 +212,7 @@ C1 sütunu, aşağıdaki tüm görevlerdeki KIMLIKTIR.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>Bir tablo için ayrılan en yüksek değeri bulma
 
-Dağıtılmış bir `MAX()` tablo için ayrılan en yüksek değeri öğrenmek için işlevini kullanın:
+`MAX()`Dağıtılmış bir tablo için ayrılan en yüksek değeri öğrenmek için işlevini kullanın:
 
 ```sql
 SELECT MAX(C1)

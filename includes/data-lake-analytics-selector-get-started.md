@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell

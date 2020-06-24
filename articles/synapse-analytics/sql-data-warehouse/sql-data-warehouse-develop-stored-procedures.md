@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ffdf7a66c2562b43fc2ed02bb088ab1095118fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87c7eaa57f9da87bd83f89953afc09632d42b1f8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416168"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213406"
 ---
 # <a name="using-stored-procedures-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda saklı yordamları kullanma
 
@@ -72,9 +72,9 @@ GO
 EXEC prc_nesting
 ```
 
-SQL havuzu şu anda [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)öğesini desteklemiyor. Bu nedenle, iç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür. Ancak bunu yaparsanız, kodunuzu bu sınırın içinde iç içe geçmiş düzeylerine uyacak şekilde yeniden güncelleştirmeniz gerekir.
+SQL havuzu şu anda [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)öğesini desteklemiyor. Bu nedenle, iç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür. Ancak bunu yaparsanız, kodunuzu bu sınırın içinde iç içe geçmiş düzeylerine uyacak şekilde yeniden güncelleştirmeniz gerekir.
 
-## <a name="insertexecute"></a>Ekle.. YÜRÜTME
+## <a name="insertexecute"></a>INSERT..EXECUTE
 
 SQL havuzu, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Bununla birlikte, kullanabileceğiniz alternatif bir yaklaşım vardır. Bir örnek için [geçici tablolardaki](sql-data-warehouse-tables-temporary.md)makaleye bakın.
 

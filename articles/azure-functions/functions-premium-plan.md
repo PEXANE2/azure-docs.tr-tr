@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276913"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298523"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-Bu örnekte, kaynak grubu `<RESOURCE_GROUP>` ile ve `<PLAN_NAME>` plan için kaynak grubunda benzersiz olan bir adla değiştirin. [Desteklenen `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions)bir belirtin. Linux destekleyen bir Premium planı oluşturmak için, `--is-linux` seçeneğini dahil edin.
+Bu örnekte, kaynak grubu `<RESOURCE_GROUP>` ile ve `<PLAN_NAME>` plan için kaynak grubunda benzersiz olan bir adla değiştirin. [Desteklenen `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions)bir belirtin. Linux destekleyen bir Premium planı oluşturmak için, seçeneğini dahil edin `--is-linux` .
 
 Oluşturma planı ile, işlev uygulamanızı oluşturmak için [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) kullanabilirsiniz. Portalda hem plan hem de uygulama aynı anda oluşturulur. Azure CLı komut dosyasının tamamı hakkında bir örnek için bkz. [Premium planda işlev uygulaması oluşturma](scripts/functions-cli-create-premium-plan.md).
 
@@ -61,11 +61,13 @@ Daha fazla bilgi için bkz. [işlev uygulamanızı VNET ile tümleştirme](funct
 
 ### <a name="rapid-elastic-scale"></a>Hızlı elastik ölçek
 
-Tüketim planıyla aynı hızlı ölçeklendirme mantığı kullanılarak uygulamanız için ek işlem örnekleri otomatik olarak eklenir.  Ölçeklendirmenin nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [işlev ölçeği ve barındırma](./functions-scale.md#how-the-consumption-and-premium-plans-work).
+Tüketim planıyla aynı hızlı ölçeklendirme mantığı kullanılarak uygulamanız için ek işlem örnekleri otomatik olarak eklenir. Aynı App Service plan içindeki uygulamalar, tek bir uygulamanın ihtiyaçlarına göre birbirinden bağımsız olarak ölçeklendirilir. Ancak, aynı App Service uygulamalar, mümkün olduğunda maliyetleri azaltmaya yardımcı olmak için VM kaynaklarını paylaşır. Bir VM ile ilişkili uygulama sayısı, her uygulamanın ayak izine ve VM 'nin boyutuna bağlıdır.
+
+Ölçeklendirmenin nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [işlev ölçeği ve barındırma](./functions-scale.md#how-the-consumption-and-premium-plans-work).
 
 ### <a name="longer-run-duration"></a>Uzun çalışma süresi
 
-Bir tüketim planındaki Azure Işlevleri tek bir yürütme için 10 dakikaya sınırlandırılmıştır.  Premium planda, yürütme süresi, ard ların önlenmesi için en az 30 dakika olur. Ancak, bunu Premium plan uygulamaları için sınırlandırılmamış hale getirmek üzere [Host. JSON yapılandırmasını değiştirebilirsiniz](./functions-host-json.md#functiontimeout) (garantili 60 dakika).
+Bir tüketim planındaki Azure Işlevleri tek bir yürütme için 10 dakikaya sınırlandırılmıştır.  Premium planda, yürütme süresi, ard ların önlenmesi için en az 30 dakika olur. Ancak, bunu, Premium plan uygulamaları için sınırlandırılmamış hale getirmek üzere [yapılandırma host.jsdeğiştirebilirsiniz](./functions-host-json.md#functiontimeout) (garantili 60 dakika).
 
 ## <a name="plan-and-sku-settings"></a>Plan ve SKU ayarları
 
@@ -97,7 +99,7 @@ Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından
 ### <a name="memory-utilization-considerations"></a>Bellek kullanımı konuları
 Daha fazla belleğe sahip bir makinede çalıştırmak, işlev uygulamanızın kullanılabilir tüm belleği kullanacağı her zaman anlamına gelmez.
 
-Örneğin, bir JavaScript işlev uygulaması Node. js ' de varsayılan bellek sınırı ile kısıtlanır. Bu sabit bellek sınırını artırmak için, bir değeri olan uygulama `languageWorkers:node:arguments` ayarını ekleyin `--max-old-space-size=<max memory in MB>`.
+Örneğin, JavaScript işlev uygulaması Node.js varsayılan bellek sınırı ile kısıtlanır. Bu sabit bellek sınırını artırmak için, `languageWorkers:node:arguments` bir değeri olan uygulama ayarını ekleyin `--max-old-space-size=<max memory in MB>` .
 
 ## <a name="region-max-scale-out"></a>Bölge maksimum ölçeği genişletme
 

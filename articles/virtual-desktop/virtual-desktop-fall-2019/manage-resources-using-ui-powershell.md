@@ -4,16 +4,16 @@ description: PowerShell kullanarak Windows sanal masaüstü için yönetim arac�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d9aea1f56b742d87df769a3206f15024afdf87b3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5a500ef44170f23c8acdf752393389a4af06a798
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983100"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214188"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>PowerShell ile bir Yönetim Aracı dağıtma
 
@@ -24,7 +24,7 @@ Bu makalede, PowerShell kullanarak yönetim aracının nasıl dağıtılacağı 
 
 ## <a name="important-considerations"></a>Önemli noktalar
 
-Her Azure Active Directory (Azure AD) kiracının aboneliği, yönetim aracının ayrı bir dağıtımına ihtiyaç duyuyor. Bu araç Azure AD Işletmeden Işletmeye (B2B) senaryolarını desteklemez. 
+Her Azure Active Directory (Azure AD) kiracının aboneliği, yönetim aracının ayrı bir dağıtımına ihtiyaç duyuyor. Bu araç Azure AD Işletmeden Işletmeye (B2B) senaryolarını desteklemez.
 
 Bu yönetim aracı bir örnektir. Microsoft, önemli güvenlik ve kalite güncelleştirmeleri sağlayacaktır. [Kaynak kodu GitHub ' da kullanılabilir](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Bir müşteri veya iş ortağı olun, bu aracı İşletmenizin ihtiyaçlarını karşılayacak şekilde özelleştirmenizi öneririz.
 
@@ -93,7 +93,7 @@ Azure AD uygulama kaydını tamamladığınıza göre, yönetim aracını dağı
 ## <a name="deploy-the-management-tool"></a>Yönetim aracını dağıtma
 
 Yönetim aracını dağıtmak ve yeni oluşturduğunuz hizmet sorumlusu ile ilişkilendirmek için aşağıdaki PowerShell komutlarını çalıştırın:
-     
+
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
@@ -120,7 +120,7 @@ Web uygulaması URL 'sini almak için aşağıdaki PowerShell komutlarını çal
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri
 ```
 
 Yeniden yönlendirme URI 'SI eklemişseniz, yönetim aracının API arka uç hizmetiyle etkileşime geçmesini sağlamak için bir sonraki API URL 'sini güncelleştirmeniz gerekir.
@@ -143,12 +143,12 @@ Azure AD uygulama yapılandırmasını doğrulamak ve izin sağlamak için:
 2. Azure portal en üstündeki arama çubuğundan **uygulama kayıtları** arayın ve **Hizmetler**altında öğeyi seçin.
 3. **Tüm uygulamalar** ' ı seçin ve [Azure Active Directory uygulama kaydı oluşturma](#create-an-azure-active-directory-app-registration)bölümünde PowerShell betiği için verdiğiniz benzersiz uygulama adını arayın.
 4. Tarayıcının sol tarafındaki panelde **kimlik doğrulaması** ' nı seçin ve aşağıdaki görüntüde gösterildiği gibi yeniden yönlendirme URI 'sinin yönetim aracının Web uygulaması URL 'siyle aynı olduğundan emin olun.
-   
-   [![Girilen yeniden yönlendirme URI 'si](../media/management-ui-redirect-uri-inline.png) ile kimlik doğrulama sayfası](../media/management-ui-redirect-uri-expanded.png#lightbox)
+
+   [![Girilen yeniden yönlendirme URI 'si ](../media/management-ui-redirect-uri-inline.png) ile kimlik doğrulama sayfası](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
 5. Sol bölmede, izinlerin eklendiğini doğrulamak için **API izinleri** ' ni seçin. Genel yöneticileriniz varsa, **yönetici için `tenantname` izin ver** düğmesini seçin ve kuruluşunuz için yönetici onayı sağlamak üzere iletişim istemini izleyin.
-    
-    [![API izinleri sayfası](../media/management-ui-permissions-inline.png)](../media/management-ui-permissions-expanded.png#lightbox)
+
+    [![API izinleri sayfası ](../media/management-ui-permissions-inline.png)](../media/management-ui-permissions-expanded.png#lightbox)
 
 Artık yönetim aracını kullanmaya başlayabilirsiniz.
 
@@ -158,13 +158,13 @@ Yönetim aracını dilediğiniz zaman ayarladığınıza göre, her yerde diledi
 
 1. Web uygulamasının URL 'sini bir Web tarayıcısında açın. URL 'YI anımsamıyorsanız Azure 'da oturum açabilir, yönetim aracı için dağıttığınız App Service 'i bulabilir ve ardından URL 'YI seçebilirsiniz.
 2. Windows sanal masaüstü kimlik bilgilerinizi kullanarak oturum açın.
-   
+
    > [!NOTE]
    > Yönetim aracını yapılandırırken yönetici izni sağlamazsanız, oturum açan her kullanıcının aracı kullanabilmesi için kendi Kullanıcı onayını sağlaması gerekir.
 
 3. Bir kiracı grubu seçmeniz istendiğinde, açılan listeden **varsayılan kiracı grubu** ' nu seçin.
 4. **Varsayılan kiracı grubu**' nu seçtiğinizde, pencerenizin sol tarafında bir menü görünür. Bu menüde, kiracı grubunuzun adını bulun ve seçin.
-   
+
    > [!NOTE]
    > Özel bir kiracı grubunuz varsa, açılan listeden seçim yapmak yerine adı el ile girin.
 

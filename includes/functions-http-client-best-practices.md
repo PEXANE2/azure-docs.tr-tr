@@ -13,4 +13,4 @@ ms.locfileid: "67188139"
 ---
 > [!TIP]
 >
-> HTTP veya Web kancası bağlamalarını kullanmayı planlıyorsanız, yanlış örneklemesinin neden olduğu bir bağlantı noktası tükenmesi olmaması için plan yapın `HttpClient`. Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](../articles/azure-functions/manage-connections.md).
+> HTTP veya Web kancası bağlamalarını kullanmayı planlıyorsanız, yanlış örneklemesinin neden olduğu bir bağlantı noktası tükenmesi olmaması için plan yapın `HttpClient` . Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](../articles/azure-functions/manage-connections.md).

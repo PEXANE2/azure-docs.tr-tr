@@ -10,18 +10,21 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 42edccf0530e0b8041bfb0a182126bc7cd1a9d65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/12/2020
+ms.openlocfilehash: 2088f007be1542defed6f8c1a3aa42233b3ef9ee
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043334"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743431"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>Azure SQL veritabanı 'nın Akıllı İçgörüler Performans Tanılama günlüğünü ve Azure SQL yönetilen örnek performans sorunlarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu sayfa, Azure SQL veritabanı 'nın [akıllı içgörüler](intelligent-insights-overview.md) ve Azure SQL yönetilen örnek performans sorunları, biçimi ve özel geliştirme gereksinimleriniz için içerdiği veriler tarafından oluşturulan Performans Tanılama günlüğünü kullanma hakkında bilgi sağlar. Bu tanılama günlüğünü, özel DevOps uyarısı ve raporlama özellikleri için [Azure izleyici günlüklerine](../../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)'ya veya üçüncü taraf bir çözüme gönderebilirsiniz.
+
+> [!NOTE]
+> Akıllı Öngörüler şu bölgelerde kullanılamayan bir önizleme özelliğidir: Batı Avrupa, Kuzey Avrupa, Batı ABD 1 ve Doğu ABD 1.
 
 ## <a name="log-header"></a>Günlük üst bilgisi
 

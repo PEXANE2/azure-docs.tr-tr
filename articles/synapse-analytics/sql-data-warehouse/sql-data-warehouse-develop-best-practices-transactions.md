@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7fa9336a7a90ab73d3dc60c6c865ebadfb2af1e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633555"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213508"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>SYNAPSE SQL 'de işlemleri iyileştirme
 
@@ -85,7 +85,7 @@ Verilerin kümelenmiş bir dizine sahip boş olmayan bir tabloya yüklenmesi gen
 
 ## <a name="optimizing-deletes"></a>Silmeleri iyileştirme
 
-SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle tutmak istediğiniz verilere daha anlamlı `SELECT` hale gelir ve bu, en düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](sql-data-warehouse-develop-ctas.md)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ' ı kullanın.
+SILME işlemi tam olarak günlüğe kaydedilir.  Tablodaki veya bir bölümdeki büyük miktarda veriyi silmeniz gerekiyorsa, genellikle tutmak istediğiniz verilere daha anlamlı hale gelir ve bu, en `SELECT` düşük düzeyde günlüğe kaydedilmiş bir işlem olarak çalıştırılabilir.  Verileri seçmek için [CTAS](sql-data-warehouse-develop-ctas.md)ile yeni bir tablo oluşturun.  Oluşturulduktan sonra, eski tablonuzu yeni oluşturulan tabloyla değiştirmek için [Yeniden Adlandır](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ' ı kullanın.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -410,7 +410,7 @@ END
 SYNAPSE SQL, istek üzerine SQL havuzunu [duraklatmanıza, sürdürmenize ve ölçeklendirmenize](sql-data-warehouse-manage-compute-overview.md) olanak tanır. SQL havuzunuzu duraklattığınızda veya ölçeklendirirseniz, tüm uçuş işlemleri hemen sonlandırıldığını anlamak önemlidir; açık işlemlerin geri alınmasına neden olur. İş yükünüz, duraklatma veya ölçeklendirme işleminden önce uzun süre çalışan ve tamamlanmamış veri değişikliği yaptıysanız, bu işin geri yüklenmesi gerekir. Bu geri alma, SQL havuzunuzu duraklatmak veya ölçeklendirmek için gereken süreyi etkileyebilir.
 
 > [!IMPORTANT]
-> Her `UPDATE` ikisi `DELETE` ve tamamen günlüğe kaydedilir ve bu geri alma/yineleme işlemleri, eşdeğer en düşük düzeyde günlüğe kaydedilmiş işlemden çok daha uzun sürebilir.
+> Her ikisi `UPDATE` ve `DELETE` tamamen günlüğe kaydedilir ve bu geri alma/yineleme işlemleri, eşdeğer en düşük düzeyde günlüğe kaydedilmiş işlemden çok daha uzun sürebilir.
 
 En iyi senaryo, SQL havuzunu duraklatmadan veya ölçeklendirmeden önce uçuş verileri değiştirme işlemlerinin tamamlanmasını sağlar. Ancak, bu senaryo her zaman pratik olmayabilir. Uzun geri alma riskini azaltmak için aşağıdaki seçeneklerden birini göz önünde bulundurun:
 

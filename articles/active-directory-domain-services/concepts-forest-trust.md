@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5c0878a5999f1d7d716d8caaf9f3fffa5e401dc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476442"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982381"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Güven ilişkilerinin Azure Active Directory Domain Services içindeki kaynak ormanları için nasıl çalıştığı
 
@@ -70,7 +70,7 @@ Orman güveni, yalnızca bir ormandaki bir orman kök etki alanı ve başka bir 
 
 Aşağıdaki diyagramda tek bir kuruluşta üç AD DS ormanı arasında iki ayrı orman güven ilişkisi gösterilmektedir.
 
-![Tek bir kuruluş içindeki orman güvenleri ilişkilerinin diyagramı](./media/concepts-forest-trust/forest-trusts.png)
+![Tek bir kuruluş içindeki orman güvenleri ilişkilerinin diyagramı](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 Bu örnek yapılandırma aşağıdaki erişimi sağlar:
 
@@ -162,7 +162,7 @@ Bir ormandaki bir iş istasyonu, başka bir ormandaki bir kaynak bilgisayardaki 
 
 Aşağıdaki diyagram ve adımlar, Windows çalıştıran bilgisayarlar başka bir ormanda bulunan bir bilgisayardan kaynaklara erişmeyi denediklerinde kullanılan Kerberos kimlik doğrulama işleminin ayrıntılı bir açıklamasını sağlar.
 
-![Bir orman güveni üzerinden Kerberos işleminin diyagramı](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![Bir orman güveni üzerinden Kerberos işleminin diyagramı](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
 1. *Kullanıcı1* , *Europe.tailspintoys.com* etki alanındaki kimlik bilgilerini kullanarak *işistasyonda* oturum açar. Kullanıcı daha sonra *USA.wingtiptoys.com* ormanında bulunan *FileServer1* üzerinde paylaşılan bir kaynağa erişmeyi dener.
 
@@ -276,7 +276,7 @@ Yöneticiler, güvenleri göstermek, oluşturmak, kaldırmak veya değiştirmek 
 
 Kaynak ormanları hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS orman güvenleri nasıl çalışır?][concepts-trust]
 
-Kaynak ormanı ile Azure AD DS yönetilen etki alanı oluşturmaya başlamak için bkz. [azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Ardından, [bir şirket içi etki alanına (Önizleme) giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
+Kaynak ormanı ile yönetilen bir etki alanı oluşturmaya başlamak için bkz. [Azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Ardından, [bir şirket içi etki alanına (Önizleme) giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

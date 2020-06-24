@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 02a6bba2dd4162a1cd9f05249174c2174a85b931
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a13a873fff8f471f7c82775736a34ef9f74aaea2
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043691"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743533"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için Azure portal otomatik ayarlamayı etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,6 @@ ms.locfileid: "84043691"
 Azure SQL veritabanı, sorgularınızı sürekli olarak izleyen veri hizmetlerini otomatik olarak yönetir ve iş yükünüzün performansını artırmak için gerçekleştirebileceğiniz eylemi tanımlar. Önerileri gözden geçirebilir ve bunları el ile uygulayabilir ya da Azure SQL veritabanı 'nın düzeltici eylemleri otomatik olarak uygulamasını sağlayabilirsiniz. Bu, **otomatik ayarlama modu**olarak bilinir.
 
 Otomatik ayarlama, sunucuda veya veritabanı düzeyinde şu şekilde etkinleştirilebilir:
-
 
 - [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) çağrılar
@@ -42,7 +41,7 @@ Otomatik ayarlama, sunucuda veya veritabanı düzeyinde şu şekilde etkinleşti
 Sunucu düzeyinde, otomatik ayarlama yapılandırmasını "Azure Varsayılanları" ndan devralmayı veya yapılandırmayı devralma seçeneğini belirleyebilirsiniz. Azure Varsayılanları FORCE_LAST_GOOD_PLAN etkindir, CREATE_INDEX devre dışıdır ve DROP_INDEX devre dışıdır.
 
 > [!IMPORTANT]
-> Mart 2020 itibariyle, otomatik ayarlama için Azure varsayılan ayarları aşağıdaki gibidir:
+> Mart itibariyle, 2020 ' den başlayarak otomatik ayarlama için yeni Azure Varsayılanları aşağıdaki gibidir:
 >
 > - FORCE_LAST_GOOD_PLAN = etkin, CREATE_INDEX = devre dışı ve DROP_INDEX = devre dışı.
 > - Yapılandırılmış otomatik ayarlama tercihleri olmayan mevcut sunucular, Azure varsayılanlarını DEVRALACAK şekilde otomatik olarak yapılandırılır. Bu, şu anda tanımsız bir durumda otomatik ayarlama için sunucu ayarlarına sahip olan tüm müşteriler için geçerlidir.

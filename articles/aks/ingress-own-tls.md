@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde kendi sertifikalarınız�
 services: container-service
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: dce3cf4e7db45b00b29469524d7576f6065ebaf4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: e909a65488ff2651ed3a16943a81747fac6ece0f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561939"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298540"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service'te (AKS) HTTPS giriş denetleyicisi oluşturma ve kendi TLS sertifikalarınızı kullanma
 
@@ -38,10 +38,10 @@ Giriş denetleyicisini oluşturmak için, `Helm` *NGINX-giriş*yüklemek üzere 
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
 > [!TIP]
-> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, helk komutlarına ekleyin `--set rbac.create=false` .
+> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, `--set rbac.create=false` helk komutlarına ekleyin.
 
 > [!TIP]
-> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, Helm install komutuna ekleyin `--set controller.service.externalTrafficPolicy=Local` . İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
+> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, `--set controller.service.externalTrafficPolicy=Local` Helm install komutuna ekleyin. İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
 
 ```console
 # Create a namespace for your ingress resources
@@ -57,7 +57,13 @@ helm install nginx-ingress stable/nginx-ingress \
 
 Yükleme sırasında, giriş denetleyicisi için bir Azure genel IP adresi oluşturulur. Bu genel IP adresi, giriş denetleyicisinin yaşam döngüsü için statiktir. Giriş denetleyicisini silerseniz, genel IP adresi ataması kaybedilir. Daha sonra ek bir giriş denetleyicisi oluşturursanız, yeni bir genel IP adresi atanır. Genel IP adresinin kullanımını sürdürmek istiyorsanız, bunun yerine [statik bir genel IP adresi olan bir giriş denetleyicisi oluşturabilirsiniz][aks-ingress-static-tls].
 
-Genel IP adresini almak için `kubectl get service` komutunu kullanın. IP adresinin hizmete atanması birkaç dakika sürer.
+Genel IP adresini almak için `kubectl get service` komutunu kullanın.
+
+```console
+kubectl get service -l app=nginx-ingress --namespace ingress-basic
+```
+
+IP adresinin hizmete atanması birkaç dakika sürer.
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -73,11 +79,11 @@ Henüz giriş kuralı oluşturulmadı. Genel IP adresine gözattığınızda NG�
 
 ## <a name="generate-tls-certificates"></a>TLS sertifikaları oluşturma
 
-Bu makalede, ile `openssl`otomatik olarak imzalanan bir sertifika oluşturalım. Üretim kullanımı için, bir sağlayıcı veya kendi sertifika yetkiliniz (CA) aracılığıyla güvenilir ve imzalı bir sertifika istemeniz gerekir. Bir sonraki adımda, bir Kubernetes *gizli* anahtarını, OpenSSL tarafından oluşturulan TLS sertifikasını ve özel anahtarı kullanarak oluşturabilirsiniz.
+Bu makalede, ile otomatik olarak imzalanan bir sertifika oluşturalım `openssl` . Üretim kullanımı için, bir sağlayıcı veya kendi sertifika yetkiliniz (CA) aracılığıyla güvenilir ve imzalı bir sertifika istemeniz gerekir. Bir sonraki adımda, bir Kubernetes *gizli* anahtarını, OpenSSL tarafından oluşturulan TLS sertifikasını ve özel anahtarı kullanarak oluşturabilirsiniz.
 
 Aşağıdaki örnek, *aks-ingress-TLS. CRT*adlı 365 gün için geçerli 2048 BITLIK bir RSA x509 sertifikası üretir. Özel anahtar dosyası *aks-ingress-TLS. Key*olarak adlandırılmıştır. Bir Kubernetes TLS parolası, bu dosyaların her ikisini de gerektirir.
 
-Bu makale, *demo.Azure.com* konu ortak adı ile birlikte çalışarak, değiştirilmesi gerekmez. Üretim kullanımı için, `-subj` parametre için kendi kuruluş değerlerinizi belirtin:
+Bu makale, *demo.Azure.com* konu ortak adı ile birlikte çalışarak, değiştirilmesi gerekmez. Üretim kullanımı için, parametre için kendi kuruluş değerlerinizi belirtin `-subj` :
 
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -103,7 +109,7 @@ kubectl create secret tls aks-ingress-tls \
 
 Bir giriş denetleyicisi ve sertifikanız ile gizli dizi yapılandırıldı. Şimdi AKS kümenizde iki tanıtım uygulaması çalıştıralım. Bu örnekte, HELI basit bir ' Hello World ' uygulamasının iki örneğini dağıtmak için kullanılır.
 
-Giriş denetleyicisini çalışır durumda görmek için AKS kümenizde iki tanıtım uygulaması çalıştırın. Bu örnekte, basit bir `kubectl apply` *Hello World* uygulamasının iki örneğini dağıtmak için kullanırsınız.
+Giriş denetleyicisini çalışır durumda görmek için AKS kümenizde iki tanıtım uygulaması çalıştırın. Bu örnekte, `kubectl apply` basit bir *Hello World* uygulamasının iki örneğini dağıtmak için kullanırsınız.
 
 Bir *aks-HelloWorld. YAML* dosyası oluşturun ve aşağıdaki örnekte bulunan YAML 'yi kopyalayın:
 
@@ -181,7 +187,7 @@ spec:
     app: ingress-demo
 ```
 
-Kullanarak `kubectl apply`iki demo uygulamayı çalıştırın:
+Kullanarak iki demo uygulamayı çalıştırın `kubectl apply` :
 
 ```console
 kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
@@ -190,16 +196,16 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 
 ## <a name="create-an-ingress-route"></a>Giriş yolu oluşturma
 
-Her iki uygulama da artık Kubernetes kümenizde çalışıyor, ancak bunlar türünde `ClusterIP`bir hizmetle yapılandırılmış. Bu nedenle, uygulamalara internet 'ten erişilemez. Bunları herkese açık hale getirmek için bir Kubernetes giriş kaynağı oluşturun. Giriş kaynağı, trafiği iki uygulamadan birine yönlendiren kuralları yapılandırır.
+Her iki uygulama da artık Kubernetes kümenizde çalışıyor, ancak bunlar türünde bir hizmetle yapılandırılmış `ClusterIP` . Bu nedenle, uygulamalara internet 'ten erişilemez. Bunları herkese açık hale getirmek için bir Kubernetes giriş kaynağı oluşturun. Giriş kaynağı, trafiği iki uygulamadan birine yönlendiren kuralları yapılandırır.
 
-Aşağıdaki örnekte, adrese `https://demo.azure.com/` olan trafik adlı `aks-helloworld`hizmete yönlendirilir. Adrese `https://demo.azure.com/hello-world-two` giden trafik `ingress-demo` hizmete yönlendirilir. Bu makalede, bu demo ana bilgisayar adlarını değiştirmeniz gerekmez. Üretim kullanımı için, sertifika isteği ve oluşturma sürecinin bir parçası olarak belirtilen adları sağlayın.
+Aşağıdaki örnekte, adrese `https://demo.azure.com/` olan trafik adlı hizmete yönlendirilir `aks-helloworld` . Adrese giden trafik `https://demo.azure.com/hello-world-two` `ingress-demo` hizmete yönlendirilir. Bu makalede, bu demo ana bilgisayar adlarını değiştirmeniz gerekmez. Üretim kullanımı için, sertifika isteği ve oluşturma sürecinin bir parçası olarak belirtilen adları sağlayın.
 
 > [!TIP]
 > Sertifika isteği işlemi sırasında belirtilen ana bilgisayar adı, CN adı, giriş rotasında tanımlanan konakla eşleşmiyorsa, denetleyici bir *Kubernetes ınress denetleyicisi sahte sertifika* uyarısı görüntüler. Sertifikanızın ve giriş yolu ana bilgisayar adlarının eşleştiğinden emin olun.
 
 *TLS* bölümü, giriş yoluna, ana bilgisayar *demo.Azure.com*için *aks-giriş-TLS* adlı gizli dizi kullanımını söyler. Daha sonra, üretim kullanımı için kendi ana bilgisayar adresinizi belirtin.
 
-Adlı `hello-world-ingress.yaml` bir dosya oluşturun ve aşağıdaki örnekteki YAML 'yi kopyalayın.
+Adlı bir dosya oluşturun `hello-world-ingress.yaml` ve aşağıdaki örnekteki YAML 'yi kopyalayın.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -229,7 +235,13 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-`kubectl apply -f hello-world-ingress.yaml` Komutunu kullanarak giriş kaynağını oluşturun.
+Komutunu kullanarak giriş kaynağını oluşturun `kubectl apply -f hello-world-ingress.yaml` .
+
+```console
+kubectl apply -f hello-world-ingress.yaml
+```
+
+Örnek çıkış, giriş kaynağının oluşturulduğunu gösterir.
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -245,7 +257,7 @@ Sahte *demo.Azure.com* barındırımızda sertifikaları test etmek için kullan
 curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 ```
 
-Adresle birlikte ek bir yol sağlanmadı, bu nedenle giriş denetleyicisi */* rotayı varsayılan olarak alır. İlk demo uygulaması aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi döndürülür:
+Adresle birlikte ek bir yol sağlanmadı, bu nedenle giriş denetleyicisi rotayı varsayılan olarak alır */* . İlk demo uygulaması aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi döndürülür:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
@@ -259,7 +271,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-Komutumuz `curl` *-v* parametresi, alınan TLS sertifikası da dahil olmak üzere ayrıntılı bilgiler verir. Kıvrımlı çıkışınızla yarım yönlü, kendi TLS sertifikanızın kullanıldığını doğrulayabilirsiniz. Otomatik olarak imzalanan bir sertifika kullanıyor olsanız da *-k* parametresi sayfayı yüklemeye devam eder. Aşağıdaki örnek *veren: CN = demo. Azure. com; O = aks-ingress-TLS* sertifikası kullanıldı:
+Komutumuz *-v* parametresi `curl` , alınan TLS sertifikası da dahil olmak üzere ayrıntılı bilgiler verir. Kıvrımlı çıkışınızla yarım yönlü, kendi TLS sertifikanızın kullanıldığını doğrulayabilirsiniz. Otomatik olarak imzalanan bir sertifika kullanıyor olsanız da *-k* parametresi sayfayı yüklemeye devam eder. Aşağıdaki örnek *veren: CN = demo. Azure. com; O = aks-ingress-TLS* sertifikası kullanıldı:
 
 ```
 [...]
@@ -272,7 +284,7 @@ Komutumuz `curl` *-v* parametresi, alınan TLS sertifikası da dahil olmak üzer
 [...]
 ```
 
-Şimdi adrese */Hello-World-iki* yolu ekleyin, örneğin `https://demo.azure.com/hello-world-two`. Aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi, özel başlığa sahip ikinci demo uygulaması döndürülür:
+Şimdi adrese */Hello-World-iki* yolu ekleyin, örneğin `https://demo.azure.com/hello-world-two` . Aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi, özel başlığa sahip ikinci demo uygulaması döndürülür:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two
@@ -300,7 +312,13 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>Kaynakları tek tek Sil
 
-Alternatif olarak, oluşturulan kaynakları tek tek silmek daha ayrıntılı bir yaklaşımdır. `helm list` Komut Ile Held sürümlerini listeleyin. Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX-ingress* adlı grafiği arayın:
+Alternatif olarak, oluşturulan kaynakları tek tek silmek daha ayrıntılı bir yaklaşımdır. Komut ile Held sürümlerini listeleyin `helm list` . 
+
+```console
+helm list --namespace ingress-basic
+```
+
+Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX-ingress* adlı grafiği arayın:
 
 ```
 $ helm list --namespace ingress-basic
@@ -309,7 +327,13 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1 
 ```
 
-`helm uninstall` Komutuyla yayınları kaldırın. Aşağıdaki örnek NGıNX giriş dağıtımını kaldırır.
+Komutuyla yayınları kaldırın `helm uninstall` . 
+
+```console
+helm uninstall nginx-ingress --namespace ingress-basic
+```
+
+Aşağıdaki örnek NGıNX giriş dağıtımını kaldırır.
 
 ```
 $ helm uninstall nginx-ingress --namespace ingress-basic
@@ -336,7 +360,7 @@ Sertifika gizliliğini silin:
 kubectl delete secret aks-ingress-tls
 ```
 
-Son olarak, kendi ad alanını silebilirsiniz. `kubectl delete` Komutunu kullanın ve ad alanı adınızı belirtin:
+Son olarak, kendi ad alanını silebilirsiniz. Komutunu kullanın `kubectl delete` ve ad alanı adınızı belirtin:
 
 ```console
 kubectl delete namespace ingress-basic

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
 ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253916"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704004"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>VM uzantılarını içeren kaynak gruplarını dışarı aktarma
 
@@ -78,7 +78,7 @@ Kaynak grubu verildiğinde,, dışarıya aktarılmış korumalı ayarlara bir de
 
 Korunan her ayarın gerekli özellikler kümesi olduğundan, bu özelliklerin bir listesinin toplanması gerekir. Korumalı ayarlar yapılandırmasının her parametresi, [GitHub 'daki Azure Resource Manager şemasında](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json)bulunabilir. Bu şema yalnızca bu belgenin genel bakış bölümünde listelenen uzantıların parametre kümelerini içerir. 
 
-Şema deposu içinden, bu örnek `IaaSDiagnostics`için istenen uzantıyı arayın. Uzantılar `protectedSettings` nesnesi olduktan sonra her bir parametreye göz atın. `IaasDiagnostic` Uzantı örneğinde, gerektir parametreleri, ve `storageAccountEndPoint`' dir `storageAccountName` `storageAccountKey`.
+Şema deposu içinden, bu örnek için istenen uzantıyı arayın `IaaSDiagnostics` . Uzantılar nesnesi olduktan sonra `protectedSettings` her bir parametreye göz atın. Uzantı örneğinde, `IaasDiagnostic` gerektir parametreleri, ve ' dir `storageAccountName` `storageAccountKey` `storageAccountEndPoint` .
 
 ```json
 "protectedSettings": {
@@ -104,9 +104,9 @@ Korunan her ayarın gerekli özellikler kümesi olduğundan, bu özelliklerin bi
 
 ### <a name="step-3---re-create-the-protected-configuration"></a>3. adım-korumalı yapılandırmayı yeniden oluşturma
 
-İçe aktarılmış şablonda, için `protectedSettings` ' i arayın ve bu korumalı ayar nesnesini, gerekli uzantı parametrelerini ve her biri için bir değeri içeren yeni bir ile değiştirin.
+İçe aktarılmış şablonda, için ' i arayın `protectedSettings` ve bu korumalı ayar nesnesini, gerekli uzantı parametrelerini ve her biri için bir değeri içeren yeni bir ile değiştirin.
 
-`IaasDiagnostic` Uzantı örneğinde, yeni korumalı ayar yapılandırması aşağıdaki örnekteki gibi görünür:
+`IaasDiagnostic`Uzantı örneğinde, yeni korumalı ayar yapılandırması aşağıdaki örnekteki gibi görünür:
 
 ```json
 "protectedSettings": {
@@ -148,9 +148,9 @@ Son uzantı kaynağı aşağıdaki JSON örneğine benzer şekilde görünür:
 }
 ```
 
-Özellik değerleri sağlamak için şablon parametreleri kullanılıyorsa, bunların oluşturulması gerekir. Korumalı ayar değerleri için şablon parametreleri oluştururken, hassas değerlerin güvenliğini sağlamak için `SecureString` parametre türünü kullandığınızdan emin olun. Parametreleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md).
+Özellik değerleri sağlamak için şablon parametreleri kullanılıyorsa, bunların oluşturulması gerekir. Korumalı ayar değerleri için şablon parametreleri oluştururken, `SecureString` hassas değerlerin güvenliğini sağlamak için parametre türünü kullandığınızdan emin olun. Parametreleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md).
 
-`IaasDiagnostic` Uzantı örneğinde, Kaynak Yöneticisi şablonunun parametreler bölümünde aşağıdaki parametreler oluşturulur.
+`IaasDiagnostic`Uzantı örneğinde, Kaynak Yöneticisi şablonunun parametreler bölümünde aşağıdaki parametreler oluşturulur.
 
 ```json
 "storageAccountName": {

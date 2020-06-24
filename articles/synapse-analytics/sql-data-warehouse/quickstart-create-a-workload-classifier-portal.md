@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9b67d3205e95fe7cca6cacaab7e82a1a7e71f3f3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794108"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213032"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak SYNAPSE SQL havuzu iş yükü Sınıflandırıcısı oluşturma
 
-Bu hızlı başlangıçta, bir iş yükü grubuna sorgu atamak için bir [iş yükü Sınıflandırıcısı](sql-data-warehouse-workload-classification.md) oluşturacaksınız.  Sınıflandırıcı, `ELTLogin` SQL kullanıcısının `DataLoads` iş yükü grubuna istek atayacaktır.   [Hızlı başlangıç: iş yükü yalıtımını yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini `DataLoads` izleyin.  Bu öğreticide, istekleri doğru şekilde sınıflandırmasına yardımcı olmak için WLM_LABEL seçeneği ile bir iş yükü Sınıflandırıcısı oluşturulur.  Sınıflandırıcı, bu isteklere `HIGH` de [iş yükü önem derecesini](sql-data-warehouse-workload-importance.md) atayacaktır.
+Bu hızlı başlangıçta, bir iş yükü grubuna sorgu atamak için bir [iş yükü Sınıflandırıcısı](sql-data-warehouse-workload-classification.md) oluşturacaksınız.  Sınıflandırıcı, `ELTLogin` SQL kullanıcısının `DataLoads` iş yükü grubuna istek atayacaktır.   [Hızlı başlangıç: iş yükü yalıtımını yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini izleyin `DataLoads` .  Bu öğreticide, istekleri doğru şekilde sınıflandırmasına yardımcı olmak için WLM_LABEL seçeneği ile bir iş yükü Sınıflandırıcısı oluşturulur.  Sınıflandırıcı, `HIGH` Bu isteklere de [iş yükü önem derecesini](sql-data-warehouse-workload-importance.md) atayacaktır.
 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 Bu hızlı başlangıç, SYNAPSE SQL 'de zaten bir SQL havuzu örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
 <br><br>
-Bir iş yükü `DataLoads` grubu var.  İş yükü grubunu oluşturmak için [hızlı başlangıç: iş yükü yalıtımı yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini inceleyin.
+Bir iş yükü grubu `DataLoads` var.  İş yükü grubunu oluşturmak için [hızlı başlangıç: iş yükü yalıtımı yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini inceleyin.
 <br><br>
 >[!IMPORTANT] 
 >İş yükü yönetimini yapılandırmak için SQL havuzunuzun çevrimiçi olması gerekir. 
@@ -45,7 +45,7 @@ Bir iş yükü `DataLoads` grubu var.  İş yükü grubunu oluşturmak için [h�
 
 ## <a name="create-a-login-for-eltlogin"></a>ELTLogin için oturum açma oluşturma
 
-İçin `master` `ELTLogin` [oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanarak veritabanında SQL Server kimlik doğrulaması oturumu oluşturun.
+`master`IÇIN [oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanarak veritabanında SQL Server kimlik doğrulaması oturumu oluşturun `ELTLogin` .
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -57,7 +57,7 @@ END
 
 ## <a name="create-user-and-grant-permissions"></a>Kullanıcı oluşturma ve izin verme
 
-Oturum açma oluşturulduktan sonra, veritabanında bir kullanıcının oluşturulması gerekir.  **Mysampledatawarehouse**içinde SQL kullanıcısını `ELTRole` oluşturmak için [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ' yı kullanın.  Bu öğretici sırasında sınıflandırmayı test edeceğiz, **Mysampledatawarehouse**için `ELTLogin` izin verin. 
+Oturum açma oluşturulduktan sonra, veritabanında bir kullanıcının oluşturulması gerekir.  Mysampledatawarehouse içinde SQL kullanıcısını oluşturmak için [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ' yı kullanın `ELTRole` . **mySampleDataWarehouse**  Bu öğretici sırasında sınıflandırmayı test edeceğiz, `ELTLogin` **Mysampledatawarehouse**için izin verin. 
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -69,7 +69,7 @@ END
 ```
 
 ## <a name="configure-workload-classification"></a>İş yükü sınıflandırmasını yapılandırma
-Sınıflandırma, istekleri bir dizi kurala göre iş yükü grubuna yönlendirmenize olanak tanır.  [Hızlı başlangıç: iş yükü yalıtımı yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini `DataLoads` iş yükü grubunu oluşturduk.  Artık sorguları `DataLoads` iş yükü grubuna yönlendirmek için bir iş yükü Sınıflandırıcısı oluşturacaksınız.
+Sınıflandırma, istekleri bir dizi kurala göre iş yükü grubuna yönlendirmenize olanak tanır.  [Hızlı başlangıç: iş yükü yalıtımı yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini `DataLoads` iş yükü grubunu oluşturduk.  Artık sorguları iş yükü grubuna yönlendirmek için bir iş yükü Sınıflandırıcısı oluşturacaksınız `DataLoads` .
 
 
 1.  Azure portal sol sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
@@ -78,7 +78,7 @@ Sınıflandırma, istekleri bir dizi kurala göre iş yükü grubuna yönlendirm
 
     ![Tıklama menüsü](./media/quickstart-create-a-workload-classifier-portal/menu.png)
 
-4.  `DataLoads` İş yükü grubunun sağ tarafındaki **Ayarlar & sınıflandırıcılar** ' ne tıklayın.
+4.  İş yükü grubunun sağ tarafındaki **ayarlar & sınıflandırıcılar** ' ne tıklayın `DataLoads` .
 
     ![Oluştur’a tıklayın](./media/quickstart-create-a-workload-classifier-portal/settings-classifiers.png)
 
@@ -87,17 +87,17 @@ Sınıflandırma, istekleri bir dizi kurala göre iş yükü grubuna yönlendirm
 
     ![Ekle'ye tıklayın.](./media/quickstart-create-a-workload-classifier-portal/add-wc.png)
 
-7.  Ad `ELTLoginDataLoads` için **Name**girin.
-8.  Üye `ELTLogin` için **Member**girin.
+7.  `ELTLoginDataLoads` **Ad**için girin.
+8.  `ELTLogin` **Üye**için girin.
 9.  `High` **İstek önemi**için seçin.  *Isteğe bağlı*, normal önem varsayılandır.
-10. Etiket `fact_loads` için **Label**girin.
+10. `fact_loads` **Etiket**için girin.
 11. **Ekle**'ye tıklayın.
 12. **Kaydet**’e tıklayın.
 
     ![Yapılandırma ' ya tıklayın](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
 ## <a name="verify-and-test-classification"></a>Doğrulama ve test sınıflandırması
-Sınıflandırıcının varlığını doğrulamak için [sys. workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) katalog görünümünü denetleyin. `ELTLoginDataLoads`
+Sınıflandırıcının varlığını doğrulamak için [sys. workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) katalog görünümünü denetleyin `ELTLoginDataLoads` .
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers WHERE name = 'ELTLoginDataLoads'
@@ -113,7 +113,7 @@ SELECT c.[name], c.group_name, c.importance, cd.classifier_type, cd.classifier_v
   WHERE c.name = 'ELTLoginDataLoads'
 ```
 
-Sınıflandırmayı test etmek için aşağıdaki deyimlerini çalıştırın.  Olarak ``ELTLogin`` bağlı olduğunuzdan ve ``Label`` sorgusunda kullanıldığından emin olun.
+Sınıflandırmayı test etmek için aşağıdaki deyimlerini çalıştırın.  Olarak bağlı olduğunuzdan ``ELTLogin`` ve ``Label`` sorgusunda kullanıldığından emin olun.
 ```sql
 CREATE TABLE factstaging (ColA int)
 INSERT INTO factstaging VALUES(0)
@@ -127,7 +127,7 @@ SELECT * FROM factstaging
 OPTION (LABEL='fact_loads')
 ```
 
-İş yükü `CREATE TABLE` sınıflandırıcısını kullanarak `DataLoads` `ELTLoginDataLoads` iş yükü grubuna sınıflandırılan ifadeyi doğrulayın.
+İş yükü `CREATE TABLE` `DataLoads` sınıflandırıcısını kullanarak iş yükü grubuna sınıflandırılan ifadeyi doğrulayın `ELTLoginDataLoads` .
 ```sql 
 SELECT TOP 1 request_id, classifier_name, group_name, resource_allocation_percentage, submit_time, [status], [label], command 
 FROM sys.dm_pdw_exec_requests 
@@ -139,14 +139,14 @@ ORDER BY submit_time DESC
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide `ELTLoginDataLoads` oluşturulan iş yükü sınıflandırıcısını silmek için:
+`ELTLoginDataLoads`Bu öğreticide oluşturulan iş yükü sınıflandırıcısını silmek için:
 
-1. `DataLoads` İş yükü grubunun sağ tarafında bulunan **1 sınıflandırıcıya** tıklayın.
+1. İş yükü grubunun sağ tarafında bulunan **1 sınıflandırıcıya** tıklayın `DataLoads` .
 
     ![Sil 'e tıklayın](./media/quickstart-create-a-workload-classifier-portal/delete-wc.png)
 
 2. **Sınıflandırıcılar**' ne tıklayın.
-3. `ELTLoginDataLoads` İş yükü sınıflandırıcıya sağ tarafındaki **`...`** öğesine tıklayın.
+3. **`...`** `ELTLoginDataLoads` İş yükü sınıflandırıcıya sağ tarafındaki öğesine tıklayın.
 4. **Sil**' e tıklayın.
 5. **Kaydet**'e tıklayın.
 

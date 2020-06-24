@@ -7,17 +7,17 @@ author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82130759"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704072"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager’da düşürülmüş durum için sorun giderme
 
@@ -35,7 +35,7 @@ Traffic Manager sistem durumu **etkin olmayan** bir durum görüntülüyorsa, he
 * Bu işlemi Traffic Manager profilinizin [beklenen durum kodu aralıklarında](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) geçerli bir yanıt kodu olarak belirtmediğiniz sürece, 30 kata yeniden yönlendirme yanıtı hata olarak değerlendirilir. Traffic Manager yeniden yönlendirme hedefini araştırmaz.
 * HTTPs araştırmaları için Sertifika hataları yok sayılır.
 * Bir 200 döndürüldüğünde, araştırma yolunun gerçek içeriği ne kadar büyük değildir. "/Ayrıcalıklı icon.exe" gibi bazı statik içeriklere bir URL 'YI yoklama yaygın bir tekniktir. ASP sayfaları gibi dinamik içerik, uygulama sağlıklı olsa bile her zaman 200 döndürmeyebilir.
-* En iyi uygulama, araştırma yolunu, sitenin yukarı veya aşağı olduğunu anlamak için yeterli mantığa sahip bir şeye ayarlamaya yönelik bir uygulamadır. Önceki örnekte, yolu "/ayrıcalıklı icon.exe" olarak ayarlayarak yalnızca W3wp. exe ' nin yanıt verdiğini test edersiniz. Bu araştırma Web uygulamanızın sağlıklı olduğunu göstermeyebilir. Daha iyi bir seçenek, sitenin sistem durumunu belirleme mantığı olan "/Probe.aspx" gibi bir şey için bir yol ayarlamak olacaktır. Örneğin, performans sayaçlarını CPU kullanımı için kullanabilir veya başarısız isteklerin sayısını ölçebilir. Ya da Web uygulamasının çalıştığından emin olmak için veritabanı kaynaklarına veya oturum durumuna erişmeyi deneyebilirsiniz.
+* En iyi uygulama, araştırma yolunu, sitenin yukarı veya aşağı olduğunu anlamak için yeterli mantığa sahip bir şeye ayarlamaya yönelik bir uygulamadır. Önceki örnekte, yolu "/ayrıcalıklı icon.exe" olarak ayarlayarak yalnızca w3wp.exe yanıt verdiğini test edersiniz. Bu araştırma Web uygulamanızın sağlıklı olduğunu göstermeyebilir. Daha iyi bir seçenek, sitenin sistem durumunu belirleme mantığı olan "/Probe.aspx" gibi bir şey için bir yol ayarlamak olacaktır. Örneğin, performans sayaçlarını CPU kullanımı için kullanabilir veya başarısız isteklerin sayısını ölçebilir. Ya da Web uygulamasının çalıştığından emin olmak için veritabanı kaynaklarına veya oturum durumuna erişmeyi deneyebilirsiniz.
 * Bir profildeki tüm uç noktalar düşerse, Traffic Manager tüm uç noktaları sağlıklı olarak değerlendirir ve trafiği tüm uç noktalara yönlendirir. Bu davranış, araştırma mekanizmasıyla ilgili sorunların hizmetinizin tamamen kesintiye neden olmamasını sağlar.
 
 ## <a name="troubleshooting"></a>Sorun giderme
@@ -48,7 +48,7 @@ Bir araştırma hatasıyla ilgili sorunları gidermek için, araştırma URL 'si
 
 Ayrıca, HTTP yanıtlarını görüntülemek için Internet Explorer 'daki F12 hata ayıklama araçlarının ağ sekmesini de kullanabilirsiniz.
 
-Bu örnekte, araştırma URL 'imizden gelen yanıtı görmek istiyoruz: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Aşağıdaki PowerShell örneğinde sorun gösterilmektedir.
+Bu örnekte, araştırma URL 'imizden gelen yanıtı görmek istiyoruz: http: \/ /watestsdp2008r2.cloudapp.net:80/Probe. Aşağıdaki PowerShell örneğinde sorun gösterilmektedir.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 7b90748ae29a98038d96e5e3a827413637a98d47
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668245"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982008"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -73,7 +73,13 @@ V2 SKU 'SU için genel IP kaynağını açın ve **yapılandırma**' yı seçin.
 
 *Canlı tutma zaman aşımı* , Application Gateway bir istemcinin yeniden kullanmadan veya kapatmadan önce kalıcı bir bağlantıda başka bir http isteği göndermesini ne kadar bekleyeceğini yönetir. *TCP boşta kalma zaman aşımı* , bir TCP bağlantısının bir etkinlik olmaması durumunda açık tutulacağı süreyi yönetir. 
 
-Application Gateway v1 SKU 'sunda *canlı tut zaman aşımı süresi* 120 saniyedir ve v2 sku 'sunda 75 saniyedir. *TCP boşta kalma zaman aşımı* , Application Gateway hem v1 hem de v2 SKU 'SU sanal IP 'SINDE (VIP) 4 dakikalık bir varsayılandır. Bu değerleri değiştiremezsiniz.
+Application Gateway v1 SKU 'sunda *canlı tut zaman aşımı süresi* 120 saniyedir ve v2 sku 'sunda 75 saniyedir. *TCP boşta kalma zaman aşımı* , Application Gateway hem v1 hem de v2 SKU 'SU sanal IP 'SINDE (VIP) 4 dakikalık bir varsayılandır. V1 ve v2 uygulama ağ geçitlerinde TCP boşta kalma zaman aşımı değerini 4 dakika ile 30 dakika arasında bir süre olacak şekilde yapılandırabilirsiniz. V1 ve v2 uygulama ağ geçitleri için, Application Gateway genel IP 'ye gitmeniz ve portalda genel IP 'nin "yapılandırma" dikey penceresinde TCP boşta kalma zaman aşımını değiştirmeniz gerekir. Aşağıdaki komutları çalıştırarak genel IP 'nin TCP boşta kalma zaman aşımı değerini PowerShell aracılığıyla ayarlayabilirsiniz: 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Uygulama ağ geçidinin ömrü boyunca IP veya DNS adı değişsin mi?
 

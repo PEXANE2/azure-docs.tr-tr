@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
-ms.openlocfilehash: 051187a7dde7bf0ee04f8323cdecba01760de13d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5449bb335232d3c7a6f2b97c5cce41a8bd2cf0f4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046687"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249780"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma-Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -245,13 +245,13 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 > [!IMPORTANT]
 > Bu Transact-SQL komutları yalnızca etkin coğrafi çoğaltma için geçerlidir ve yük devretme grupları için geçerli değildir. Bu nedenle, yalnızca yük devretme gruplarını desteklediklerinden, SQL yönetilen örnek örnekleri için de uygulanmazlar.
 
-| Komut | Açıklama |
+| Komut | Description |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Var olan bir veritabanı için ikincil bir veritabanı oluşturmak ve veri çoğaltmasını açmak için sunucu bağımsız değişkeni Ekle öğesini kullanın |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Yük devretmeyi başlatmak için ikincil bir veritabanını birincil olacak şekilde değiştirmek için yük devretme veya FORCE_FAILOVER_ALLOW_DATA_LOSS kullanma |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |SQL veritabanı ve belirtilen ikincil veritabanı arasında bir veri çoğaltmasını sonlandırmak için sunucuda IKINCILI kaldır 'ı kullanın. |
 | [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Bir sunucudaki her bir veritabanı için varolan tüm çoğaltma bağlantılarıyla ilgili bilgileri döndürür. |
-| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Belirli bir SQL veritabanının çoğaltma bağlantısı ile ilgili son çoğaltma zamanını, son çoğaltma gecikmesini ve diğer bilgileri alır. |
+| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Son çoğaltma zamanını, son çoğaltma gecikmesini ve belirli bir veritabanı için çoğaltma bağlantısıyla ilgili diğer bilgileri alır. |
 | [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Çoğaltma bağlantılarının durumu da dahil olmak üzere tüm veritabanı işlemlerinin durumunu gösterir. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |uygulamanın tüm kaydedilmiş işlemler etkin ikincil veritabanı tarafından çoğaltılıncaya ve onaylanana kadar bekleyip beklememesine neden olur. |
 |  | |
@@ -262,7 +262,7 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-| Cmdlet | Açıklama |
+| Cmdlet | Description |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Bir veya daha fazla veritabanını alır. |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Mevcut bir veritabanı için ikincil bir veritabanı oluşturur ve veri çoğaltmaya başlar. |
@@ -276,14 +276,14 @@ Daha önce anlatıldığı gibi, etkin coğrafi çoğaltma Azure PowerShell ve R
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: tek ve havuza alınmış veritabanlarının yük devretmesini yönetme
 
-| API | Açıklama |
+| API | Description |
 | --- | --- |
 | [Veritabanı oluştur veya güncelleştir (createMode = restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Birincil veya ikincil bir veritabanını oluşturur, güncelleştirir veya geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Oluşturma işlemi sırasında durumu döndürür. |
 | [Ikincil veritabanını birincil olarak ayarla (planlı yük devretme)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Geçerli birincil veritabanından yük devreterek hangi ikincil veritabanının birincil olduğunu ayarlar. **Bu seçenek SQL yönetilen örneği için desteklenmez.**|
 | [Ikincil veritabanını birincil olarak ayarla (planlanmamış yük devretme)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Geçerli birincil veritabanından yük devreterek hangi ikincil veritabanının birincil olduğunu ayarlar. Bu işlem, veri kaybına neden olabilir. **Bu seçenek SQL yönetilen örneği için desteklenmez.**|
-| [Çoğaltma bağlantısını al](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Coğrafi çoğaltma ortaklığı içindeki belirli bir SQL veritabanı için belirli bir çoğaltma bağlantısını alır. Sys. geo_replication_links katalog görünümünde görünen bilgileri alır. **Bu seçenek SQL yönetilen örneği için desteklenmez.**|
-| [Çoğaltma bağlantıları-veritabanına göre liste](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Coğrafi çoğaltma ortaklığında belirli bir SQL veritabanı için tüm çoğaltma bağlantılarını alır. Sys. geo_replication_links katalog görünümünde görünen bilgileri alır. |
+| [Çoğaltma bağlantısını al](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Coğrafi çoğaltma ortaklığı içindeki belirli bir veritabanı için belirli bir çoğaltma bağlantısını alır. Sys. geo_replication_links katalog görünümünde görünen bilgileri alır. **Bu seçenek SQL yönetilen örneği için desteklenmez.**|
+| [Çoğaltma bağlantıları-veritabanına göre liste](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Coğrafi çoğaltma ortaklığında belirli bir veritabanı için tüm çoğaltma bağlantılarını alır. Sys. geo_replication_links katalog görünümünde görünen bilgileri alır. |
 | [Çoğaltma bağlantısını sil](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Bir veritabanı çoğaltma bağlantısını siler. Yük devretme sırasında gerçekleştirilemez. |
 |  | |
 

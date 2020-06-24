@@ -6,16 +6,16 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 558b16fc348728c507af1fa0260a67ccacefed0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416142"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213389"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki işlemleri kullanma
 
@@ -93,7 +93,7 @@ Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için lüt
 SQL havuzu,-2 değerini kullanarak başarısız bir işlemi raporlamak için XACT_STATE () işlevini kullanır. Bu değer, işlemin başarısız olduğu ve yalnızca geri alma için işaretlenen anlamına gelir.
 
 > [!NOTE]
-> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server farklı davranışları temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin, `SELECT 1/0` bir hataya neden olur ancak bir işlemi committable durumuna zorlamaz.
+> Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server farklı davranışları temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin, bir `SELECT 1/0` hataya neden olur ancak bir işlemi committable durumuna zorlamaz.
 
 SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak, SQL havuzu bunu yapmanızı sağlar. Bir SQL havuzu işlemi içinde bir hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız.
 

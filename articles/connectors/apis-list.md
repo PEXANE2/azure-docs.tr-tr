@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: ede385670dec6629cc3e75a9d09c0ceb14362bdc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/11/2020
+ms.openlocfilehash: 7d631698f7c00a838f28d55b6b26055e686d27db
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119393"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977008"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -106,7 +106,7 @@ Logic Apps, mantıksal uygulamanızın iş akışında kendi kodunuzu çalışt�
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API simgesi ][azure-functions-icon]<br> **Azure işlevleri**][azure-functions-doc] | Mantıksal uygulamalarınızdan özel kod parçacıkları (C# veya Node. js) çalıştıran Azure işlevlerini çağırın. | [![API simgesi ][inline-code-icon]<br> **satır içi kod**][inline-code-doc] | Mantıksal uygulamalarınızdan JavaScript kod parçacıklarını ekleyin ve çalıştırın. |
+| [![API simgesi ][azure-functions-icon]<br> **Azure işlevleri**][azure-functions-doc] | Mantıksal uygulamalarınızdan özel kod parçacıkları (C# veya Node.js) çalıştıran Azure işlevlerini çağırın. | [![API simgesi ][inline-code-icon]<br> **satır içi kod**][inline-code-doc] | Mantıksal uygulamalarınızdan JavaScript kod parçacıklarını ekleyin ve çalıştırın. |
 |||||
 
 ### <a name="control-workflow"></a>Denetim iş akışı
@@ -243,6 +243,12 @@ Bağlantılar, hizmet veya sistem izin verdiği sürece hedef hizmete veya siste
 > Bir ıSE içinde oluşturulan özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Ancak bu bağlayıcılar, ıSE 'yi barındıran bir Azure sanal ağına bağlı şirket içi veri kaynaklarına doğrudan erişebilir. Bu nedenle, bir ıSE içindeki Logic Apps, bu kaynaklarla iletişim kurarken veri ağ geçidine ihtiyaç duymamasından kaynaklanıyor olabilir.
 >
 > Sesleri oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps Azure sanal ağlarına bağlanma](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+<a name="block-connections"></a>
+
+## <a name="block-creating-connections"></a>Bağlantı oluşturmayı engelle
+
+Kuruluşunuz Azure Logic Apps bağlayıcılarını kullanarak belirli kaynaklara bağlanmasına izin vermezse, [Azure ilkesi](../governance/policy/overview.md)kullanarak mantıksal uygulama iş akışlarında belirli bağlayıcılar için [Bu bağlantıları oluşturma özelliğini engelleyebilirsiniz](../logic-apps/block-connections-connectors.md) . Daha fazla bilgi için bkz. [Azure Logic Apps içindeki belirli bağlayıcılar tarafından oluşturulan bağlantıları engelleyin](../logic-apps/block-connections-connectors.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -476,4 +482,3 @@ Bağlantılar, hizmet veya sistem izin verdiği sürece hedef hizmete veya siste
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 protokolünü kullanan iletileri kodla"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML iletilerini dönüştürme"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML iletilerini doğrula"
-

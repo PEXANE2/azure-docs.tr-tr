@@ -4,16 +4,16 @@ description: Android istemcisini kullanarak Windows sanal masaüstüne bağlanma
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 636a31cdb657ca95ea9ea0da6bb85caa61425e5a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 802e957c9473276dfa73a3ffd93fdd7c526dbf26
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614999"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213253"
 ---
 # <a name="connect-with-the-android-client"></a>Android istemcisiyle bağlanma
 
@@ -37,9 +37,9 @@ Android cihazınıza erişebileceğiniz yönetilen kaynakların listesini almak 
 
 Bir akışa abone olmak için:
 
-1. Bağlantı merkezi 'nde **+**, ve ardından **uzak kaynak akışı**' na dokunun.
+1. Bağlantı merkezi 'nde **+** , ve ardından **uzak kaynak akışı**' na dokunun.
 2. Akış **URL 'si alanına AKıŞ** URL 'sini girin. Akış URL 'SI ya bir URL ya da bir e-posta adresi olabilir.
-   - URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın <https://rdweb.wvd.microsoft.com>.
+   - URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın <https://rdweb.wvd.microsoft.com> .
    - E-posta kullanmak için e-posta adresinizi girin. Yöneticiniz sunucuyu bu şekilde yapılandırdıysa istemci, e-posta adresinizle ilişkili bir URL arar.
 3. **İleri**' ye dokunun.
 4. İstendiğinde kimlik bilgilerinizi sağlayın.

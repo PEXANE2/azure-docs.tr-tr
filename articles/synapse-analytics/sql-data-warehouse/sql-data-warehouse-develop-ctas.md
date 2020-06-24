@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6550ff9bc3a7cec3d9c50b6c60a02ef1af851f5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633544"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213491"
 ---
 # <a name="create-table-as-select-ctas"></a>SELECT OLARAK CREATE TABLE (CTAS)
 
@@ -38,7 +38,7 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-Seç... ' De, dağıtım yöntemini veya dizin türünü işlemin bir parçası olarak değiştirmenize izin vermez. ROUND_ROBIN varsayılan `[dbo].[FactInternetSales_new]` dağıtım türünü ve KÜMELENMIŞ columnstore dizininin varsayılan tablo yapısını kullanarak oluşturursunuz.
+Seç... ' De, dağıtım yöntemini veya dizin türünü işlemin bir parçası olarak değiştirmenize izin vermez. `[dbo].[FactInternetSales_new]`ROUND_ROBIN varsayılan dağıtım türünü ve KÜMELENMIŞ columnstore dizininin varsayılan tablo yapısını kullanarak oluşturursunuz.
 
 CTAS ile, diğer yandan tablo verilerinin hem dağıtımını hem de tablo yapısı türünü belirtebilirsiniz. Önceki örneği CTAS 'ya dönüştürmek için:
 
@@ -59,9 +59,9 @@ FROM    [dbo].[FactInternetSales];
 
 ## <a name="use-ctas-to-copy-a-table"></a>Bir tabloyu kopyalamak için CTAS kullanma
 
-Belki de en yaygın CTAS kullanımları, DDL 'yi değiştirmek için bir tablonun bir kopyasını oluşturuyor. İlk olarak tablonuzu olarak `ROUND_ROBIN`oluşturduğunuzu ve şimdi bir sütunda dağıtılan bir tabloyla değiştirmek istediğinizi varsayalım. CTAS, dağıtım sütununu değiştirme. Ayrıca, CTAS 'yi bölümleme, dizin oluşturma veya sütun türlerini değiştirmek için de kullanabilirsiniz.
+Belki de en yaygın CTAS kullanımları, DDL 'yi değiştirmek için bir tablonun bir kopyasını oluşturuyor. İlk olarak tablonuzu olarak oluşturduğunuzu `ROUND_ROBIN` ve şimdi bir sütunda dağıtılan bir tabloyla değiştirmek istediğinizi varsayalım. CTAS, dağıtım sütununu değiştirme. Ayrıca, CTAS 'yi bölümleme, dizin oluşturma veya sütun türlerini değiştirmek için de kullanabilirsiniz.
 
-' De bir dağıtım sütunu belirtmeksizin, varsayılan dağıtım türünü `ROUND_ROBIN`kullanarak bu tabloyu oluşturduğunuzu varsayalım. `CREATE TABLE`
+' `ROUND_ROBIN` De bir dağıtım sütunu belirtmeksizin, varsayılan dağıtım türünü kullanarak bu tabloyu oluşturduğunuzu varsayalım `CREATE TABLE` .
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -91,7 +91,7 @@ CREATE TABLE FactInternetSales
     CustomerPONumber nvarchar(25));
 ```
 
-Artık bu tablonun yeni bir `Clustered Columnstore Index`kopyasını oluşturmak istiyorsunuz, bu nedenle kümelenmiş columnstore tablolarının performansının avantajlarından yararlanabilirsiniz. Bu sütunda benimsemeyi bekleme birleşimler olduğu ve üzerinde `ProductKey` `ProductKey`birleştirme sırasında veri hareketini önlemek istediğiniz için bu tabloyu üzerine dağıtmak da istiyorsunuz. Son olarak, üzerinde `OrderDateKey`bölümleme eklemek istersiniz, böylece eski bölümleri bırakarak eski verileri hızlıca silebilirsiniz. Eski tablonuzu yeni bir tabloya kopyalayan CTAS deyimleri aşağıda verilmiştir.
+Artık bu tablonun yeni bir kopyasını oluşturmak istiyorsunuz `Clustered Columnstore Index` , bu nedenle kümelenmiş columnstore tablolarının performansının avantajlarından yararlanabilirsiniz. Bu `ProductKey` sütunda benimsemeyi bekleme birleşimler olduğu ve üzerinde birleştirme sırasında veri hareketini önlemek istediğiniz için bu tabloyu üzerine dağıtmak da istiyorsunuz `ProductKey` . Son olarak, üzerinde bölümleme eklemek istersiniz `OrderDateKey` , böylece eski bölümleri bırakarak eski verileri hızlıca silebilirsiniz. Eski tablonuzu yeni bir tabloya kopyalayan CTAS deyimleri aşağıda verilmiştir.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SYNAPSE SQL, bir `FROM` `UPDATE` deyimin yan tümcesinde ANSI birleştirmeleri desteklemez, bu nedenle önceki örneği değiştirmeden kullanamazsınız.
+SYNAPSE SQL `FROM` , bir deyimin yan TÜMCESINDE ANSI birleştirmeleri desteklemez `UPDATE` , bu nedenle önceki örneği değiştirmeden kullanamazsınız.
 
 Önceki örneği değiştirmek için CTAS ve örtük bir birleşimin birleşimini kullanabilirsiniz:
 
@@ -208,9 +208,9 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Delete deyimleri için ANSI JOIN değiştirme
 
-Bazen, verileri silmenin en iyi yaklaşımı, özellikle ANSI JOIN söz dizimini kullanan deyimler `DELETE` için CTAS kullanmaktır. Bunun nedeni, SYNAPSE SQL 'in bir `FROM` `DELETE` deyimin yan tümcesinde ANSI birleştirmelerini desteklemedir. Verileri silmek yerine, tutmak istediğiniz verileri seçin.
+Bazen, verileri silmenin en iyi yaklaşımı, özellikle `DELETE` ANSI JOIN söz dizimini kullanan deyimler IÇIN CTAS kullanmaktır. Bunun nedeni, SYNAPSE SQL 'in `FROM` bir deyimin yan TÜMCESINDE ANSI birleştirmelerini desteklemedir `DELETE` . Verileri silmek yerine, tutmak istediğiniz verileri seçin.
 
-Aşağıda, dönüştürülmüş `DELETE` ifadeye bir örnek verilmiştir:
+Aşağıda, dönüştürülmüş ifadeye bir örnek verilmiştir `DELETE` :
 
 ```sql
 CREATE TABLE dbo.DimProduct_upsert
@@ -232,9 +232,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 
 ## <a name="replace-merge-statements"></a>Merge deyimlerini Değiştir
 
-Birleştirme deyimlerini CTAS kullanarak en az kısmen bir şekilde değiştirebilirsiniz. `INSERT` Ve `UPDATE` öğesini tek bir ifadede birleştirebilirsiniz. Silinen tüm kayıtlar, `SELECT` sonuçlardan itibaren atlamak için deyimden kısıtlanması gerekir.
+Birleştirme deyimlerini CTAS kullanarak en az kısmen bir şekilde değiştirebilirsiniz. `INSERT`Ve öğesini `UPDATE` tek bir ifadede birleştirebilirsiniz. Silinen tüm kayıtlar, `SELECT` sonuçlardan itibaren atlamak için deyimden kısıtlanması gerekir.
 
-Aşağıdaki örnek bir `UPSERT`:
+Aşağıdaki örnek bir `UPSERT` :
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -387,7 +387,7 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-Sorgu sorunsuz bir şekilde çalışır. Bu sorun, Bölüm anahtarını yapmayı denediğinizde gönderilir. Tablo tanımları eşleşmiyor. Tablo tanımlarının eşleşmesini sağlamak için CTAS ' yi, sütunun null olabilme `ISNULL` özniteliğini korumak için bir işlev eklemek üzere değiştirin.
+Sorgu sorunsuz bir şekilde çalışır. Bu sorun, Bölüm anahtarını yapmayı denediğinizde gönderilir. Tablo tanımları eşleşmiyor. Tablo tanımlarının eşleşmesini sağlamak için CTAS ' yi, `ISNULL` sütunun null olabilme özniteliğini korumak için bir işlev eklemek üzere değiştirin.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]

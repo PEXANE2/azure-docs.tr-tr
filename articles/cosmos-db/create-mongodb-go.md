@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: ad7baea087cd6073659929cc41f626b597bbae63
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0c03c4f163ef36335dacdc3c28340164dcd23fba
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650350"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299203"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: bir Go uygulamasını MongoDB için Azure Cosmos DB API 'sine bağlama
 
@@ -422,7 +422,7 @@ Azure Cosmos DB depolanan veriler, Azure portal görüntülemek ve sorgulamak i�
 
 Üst arama kutusuna **Azure Cosmos DB**girin. Cosmos hesabı dikey penceresi açıldığında, Cosmos hesabınızı seçin. Sol gezinti bölmesinde **Veri Gezgini**' yi seçin. Koleksiyonlar bölmesinde koleksiyonunuzu genişletin; bundan sonra koleksiyondaki belgeleri görüntüleyebilir, verileri sorgulayabilir ve hatta saklı yordam, tetikleyici ve UDF’ler oluşturup çalıştırabilirsiniz. 
 
-![Yeni oluşturulan belgeyi görüntüleyen Veri Gezgini](./media/create-mongodb-go/go-cosmos-db-data-explorer.jpg)
+:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="Yeni oluşturulan belgeyi görüntüleyen Veri Gezgini":::
 
 
 KIMLIĞI kullanarak bir öğesini silme `todo`

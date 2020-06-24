@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56416b540072359169e4eb6da67f15588fc4daf4
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632396"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298693"
 ---
 # <a name="http-application-routing"></a>HTTP uygulaması yönlendirme
 
@@ -31,14 +31,14 @@ Eklenti iki bileşeni dağıtır: bir [Kubernetes giriş denetleyicisi][ingress]
 
 ## <a name="deploy-http-routing-cli"></a>HTTP yönlendirmeyi dağıtma: CLı
 
-HTTP uygulama yönlendirme eklentisi, bir AKS kümesi dağıtımında Azure CLı ile etkinleştirilebilir. Bunu yapmak için, [az aks Create][az-aks-create] komutunu `--enable-addons` bağımsız değişkeniyle birlikte kullanın.
+HTTP uygulama yönlendirme eklentisi, bir AKS kümesi dağıtımında Azure CLı ile etkinleştirilebilir. Bunu yapmak için, [az aks Create][az-aks-create] komutunu bağımsız değişkeniyle birlikte kullanın `--enable-addons` .
 
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
 
 > [!TIP]
-> Çoklu eklentileri etkinleştirmek istiyorsanız, bunları virgülle ayrılmış bir liste olarak sağlayın. Örneğin, HTTP uygulama yönlendirmeyi ve izlemeyi etkinleştirmek için biçimini `--enable-addons http_application_routing,monitoring`kullanın.
+> Çoklu eklentileri etkinleştirmek istiyorsanız, bunları virgülle ayrılmış bir liste olarak sağlayın. Örneğin, HTTP uygulama yönlendirmeyi ve izlemeyi etkinleştirmek için biçimini kullanın `--enable-addons http_application_routing,monitoring` .
 
 [Az aks Enable-addons][az-aks-enable-addons] komutunu kullanarak var olan bir aks kümesinde http yönlendirmeyi de etkinleştirebilirsiniz. Mevcut bir kümede HTTP yönlendirmeyi etkinleştirmek için `--addons` parametreyi ekleyin ve aşağıdaki örnekte gösterildiği gibi *http_application_routing* belirtin:
 
@@ -46,16 +46,17 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-Küme dağıtıldıktan veya güncelleştirildikten sonra, DNS bölgesi adını almak için [az aks Show][az-aks-show] komutunu kullanın. Bu ad, uygulamaları AKS kümesine dağıtmak için gereklidir.
+Küme dağıtıldıktan veya güncelleştirildikten sonra, DNS bölgesi adını almak için [az aks Show][az-aks-show] komutunu kullanın. 
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-Sonuç
+Bu ad, uygulamaları AKS kümesine dağıtmak için gereklidir ve aşağıdaki örnek çıktıda gösterilir:
 
+```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
-
+```
 
 ## <a name="deploy-http-routing-portal"></a>HTTP Yönlendirme dağıtımı: Portal
 
@@ -76,8 +77,7 @@ annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-**Samples-http-Application-Routing. YAML** adlı bir dosya oluşturun ve aşağıdaki YAML 'ye kopyalayın. Satır 43 ' de, `<CLUSTER_SPECIFIC_DNS_ZONE>` Bu makalenin önceki ADıMıNDA toplanan DNS bölge adıyla güncelleştirin.
-
+**Samples-http-Application-Routing. YAML** adlı bir dosya oluşturun ve aşağıdaki YAML 'ye kopyalayın. Satır 43 ' de, `<CLUSTER_SPECIFIC_DNS_ZONE>` Bu makalenin önceki adımında toplanan DNS bölge adıyla güncelleştirin.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -136,6 +136,12 @@ spec:
 ```
 
 Kaynakları oluşturmak için [kubectl Apply][kubectl-apply] komutunu kullanın.
+
+```bash
+kubectl apply -f samples-http-application-routing.yaml
+```
+
+Aşağıdaki örnek oluşturulan kaynakları göstermektedir:
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -204,7 +210,7 @@ Kaynakları silmek için [kubectl Delete][kubectl-delete] komutunu kullanın. Ka
 kubectl delete configmaps addon-http-application-routing-nginx-configuration --namespace kube-system
 ```
 
-Kümenizde kalan tüm `kubectl delete` *addon-http-Application-Routing* kaynakları için önceki adımı tekrarlayın.
+`kubectl delete`Kümenizde kalan tüm *addon-http-Application-Routing* kaynakları için önceki adımı tekrarlayın.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
@@ -221,7 +227,7 @@ Bu kayıtlar, Azure portal DNS bölge kaynağında de görülebilir.
 
 ![DNS kayıtlarını al](media/http-routing/clippy.png)
 
-NGINX giriş denetleyicisinin uygulama günlüklerini görüntülemek için [kubectl logs][kubectl-logs] komutunu kullanın. Günlükler, bir giriş kaynağını `CREATE` ve denetleyicinin yeniden yüklenmesini doğrulayabilmelidir. Tüm HTTP etkinlikleri günlüğe kaydedilir.
+NGINX giriş denetleyicisinin uygulama günlüklerini görüntülemek için [kubectl logs][kubectl-logs] komutunu kullanın. Günlükler, `CREATE` bir giriş kaynağını ve denetleyicinin yeniden yüklenmesini doğrulayabilmelidir. Tüm HTTP etkinlikleri günlüğe kaydedilir.
 
 ```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system
@@ -262,7 +268,13 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>Temizleme
 
-Bu makalede oluşturulan ilişkili Kubernetes nesnelerini kaldırın.
+Bu makalede oluşturulan ilişkili Kubernetes nesnelerini kullanarak kaldırın `kubectl delete` .
+
+```bash
+kubectl delete -f samples-http-application-routing.yaml
+```
+
+Örnek çıkış, Kubernetes nesnelerinin kaldırıldığını gösterir.
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml

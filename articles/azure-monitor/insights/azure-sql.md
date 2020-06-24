@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116546"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249440"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics kullanarak Azure SQL veritabanını izleme (Önizleme)
 
@@ -31,7 +31,7 @@ Azure SQL Analytics çözümü kullanmaya ve tipik kullanım senaryolarına yön
 
 Azure SQL Analytics, tüm Azure SQL veritabanlarınızda tanılama telemetrisi akışını destekleyen bir yalnızca bulut izleme çözümüdür. Azure SQL Analytics Azure Izleyici 'ye bağlanmak için aracıları kullanmadığından, şirket içinde veya sanal makinelerde barındırılan SQL Server izlemeyi desteklemez.
 
-| Bağlı Kaynak | Destekleniyor | Açıklama |
+| Bağlı Kaynak | Destekleniyor | Description |
 | --- | --- | --- |
 | [Tanılama ayarları](../platform/diagnostic-settings.md) | **Evet** | Azure ölçümü ve günlük verileri Azure Izleyici günlüklerine doğrudan Azure tarafından gönderilir. |
 | [Azure depolama hesabı](../platform/collect-azure-metrics-logs.md) | No | Azure Izleyici, bir depolama hesabındaki verileri okuyamıyor. |
@@ -43,14 +43,14 @@ Azure SQL Analytics, tüm Azure SQL veritabanlarınızda tanılama telemetrisi a
 
 Aşağıdaki tabloda, biri Azure SQL veritabanı ve diğeri de Azure SQL yönetilen örnek veritabanları için Azure SQL Analytics panosunun iki sürümü için desteklenen seçenekler özetlenmektedir.
 
-| Azure SQL Analytics seçeneği | Açıklama | SQL veritabanı desteği | SQL yönetilen örnek desteği |
+| Azure SQL Analytics seçeneği | Description | SQL veritabanı desteği | SQL yönetilen örnek desteği |
 | --- | ------- | ----- | ----- |
 | Türe göre kaynak | İzlenen tüm kaynakları sayan perspektif. | Yes | Yes |
 | Insights | Akıllı İçgörüler, performans için hiyerarşik ayrıntıya gitme sağlar. | Yes | Yes |
 | Hatalar | Veritabanlarında gerçekleşen SQL hatalarına hiyerarşik ayrıntıya gitme sağlar. | Yes | Yes |
-| Zaman aşımları | Veritabanlarında gerçekleşen SQL zaman aşımları için hiyerarşik ayrıntıya gitme sağlar. | Yes | Hayır |
-| Blok | Veritabanlarında gerçekleşen SQL blokları için hiyerarşik ayrıntıya gitme sağlar. | Yes | Hayır |
-| Veritabanı bekleme süresi | Veritabanı düzeyinde SQL bekleme istatistikleri için hiyerarşik ayrıntıya gitme sağlar. Bekleme türü başına düşen toplam bekleme süresinin ve bekleme zamanının özetlerini içerir. |Yes | Hayır |
+| Zaman aşımları | Veritabanlarında gerçekleşen SQL zaman aşımları için hiyerarşik ayrıntıya gitme sağlar. | Evet | Hayır |
+| Blok | Veritabanlarında gerçekleşen SQL blokları için hiyerarşik ayrıntıya gitme sağlar. | Evet | Hayır |
+| Veritabanı bekleme süresi | Veritabanı düzeyinde SQL bekleme istatistikleri için hiyerarşik ayrıntıya gitme sağlar. Bekleme türü başına düşen toplam bekleme süresinin ve bekleme zamanının özetlerini içerir. |Evet | Hayır |
 | Sorgu süresi | Sorgu süresi, CPU kullanımı, veri GÇ kullanımı, günlük GÇ kullanımı gibi sorgu yürütme istatistiklerinde hiyerarşik ayrıntıya gitme sağlar. | Yes | Yes |
 | Sorgu beklemeleri | Bekleme kategorisine göre sorgu bekleme istatistikleri için hiyerarşik ayrıntıya gitme sağlar. | Yes | Yes |
 
@@ -58,11 +58,11 @@ Aşağıdaki tabloda, biri Azure SQL veritabanı ve diğeri de Azure SQL yöneti
 
 Log Analytics çalışma alanınıza Azure SQL Analytics (Önizleme) eklemek için [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md) bölümünde açıklanan işlemi kullanın.
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>Azure SQL veritabanlarını, tanılama telemetrisini akışa yönelik olarak yapılandırma
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Azure SQL veritabanını, tanılama telemetrisini akışa almak için yapılandırma
 
 Çalışma alanınızda Azure SQL Analytics çözüm oluşturduktan sonra, tanılama telemetrisini Azure SQL Analytics akışa almak için izlemek istediğiniz **her kaynağı yapılandırmanız** gerekir. Bu sayfadaki ayrıntılı yönergeleri izleyin:
 
-- [Tanılama telemetrisini Azure SQL Analytics akışa](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)almak IÇIN Azure SQL veritabanınızın Azure tanılama etkinleştirin.
+- [Tanılama telemetrisini Azure SQL Analytics akışa](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)almak için veritabanınızın Azure tanılama etkinleştirin.
 
 Yukarıdaki sayfada, tek bir Azure SQL Analytics çalışma alanındaki birden çok Azure aboneliğini tek bir cam bölmesi olarak izleme desteğinin etkinleştirilmesi hakkında yönergeler de sağlanmaktadır.
 

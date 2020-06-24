@@ -5,19 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: ef7c5644ad8ec1e3816f20d4e5db9ad7d39a4609
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 06/22/2020
+ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634598"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213695"
 ---
 # <a name="logical-decoding"></a>Mantıksal kod çözme
  
 [PostgreSQL Içindeki mantıksal kod çözme](https://www.postgresql.org/docs/current/logicaldecoding.html) , dış tüketicilerle veri değişiklikleri akışına olanak sağlar. Mantıksal kod çözme, olay akışı ve değişiklik verilerini yakalama senaryoları için popudöngüsel olarak kullanılır.
 
-Mantıksal kod çözme, Postgres 'nin yazma sonrası günlüğünü (WAL) okunabilir bir biçime dönüştürmek için bir çıktı eklentisi kullanır. PostgreSQL için Azure veritabanı iki çıkış eklentileri sağlar: [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) ve [wal2json](https://github.com/eulerto/wal2json).
+Mantıksal kod çözme, Postgres 'nin yazma sonrası günlüğünü (WAL) okunabilir bir biçime dönüştürmek için bir çıktı eklentisi kullanır. PostgreSQL için Azure veritabanı [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) ve pgoutput çıkış eklentilerini sağlar. pgoutput, Postgres sürüm 10 ve üzerinde Postgres tarafından kullanılabilir hale getirilir.
+
+Postgres mantıksal kod çözmenin nasıl çalıştığına genel bakış için [blogumuzu ziyaret edin](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421). 
 
 > [!NOTE]
 > Mantıksal kod çözme, PostgreSQL için Azure veritabanı-tek sunucu genel önizlemede.
@@ -48,7 +50,7 @@ Bu parametrenin bir değişikliğinden sonra sunucunun yeniden başlatılması g
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-1. Azure çoğaltma desteğini **mantıksal**olarak ayarlayın. **Kaydet**'i seçin.
+1. Azure çoğaltma desteğini **mantıksal**olarak ayarlayın. **Kaydet**’i seçin.
 
    ![PostgreSQL için Azure veritabanı-çoğaltma-Azure çoğaltma desteği](./media/concepts-logical/replication-support.png)
 
@@ -77,7 +79,7 @@ Aşağıdaki örnekte, SQL arabirimini wal2json eklentisi ile kullanıyoruz.
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL komutları verin. Örnek:
+2. SQL komutları verin. Örneğin:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

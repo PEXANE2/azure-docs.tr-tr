@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006478"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977935"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -32,7 +32,7 @@ Her ağ geçidinin iki örneği vardır; bölünmüş durum, her bir ağ geçidi
 P2S istemcileri için DNS sunucuları eklemenin iki seçeneği vardır.
 
 1. Microsoft ile bir destek bileti açın ve bunları hub 'a DNS sunucularınızı ekleyin
-2. Ya da Windows 10 için Azure VPN istemcisini kullanıyorsanız, indirilen profil XML dosyasını değiştirebilir ve ** \<dnsservers>\< \<dnserver>/DNSServer>\</dnsservers>** etiketlerini içeri aktarmadan önce ekleyebilirsiniz.
+2. Ya da Windows 10 için Azure VPN istemcisini kullanıyorsanız, indirilen profil XML dosyasını değiştirebilir ve içeri aktarmadan önce ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** etiketleri ekleyebilirsiniz.
 
 ```
 <azvpnprofile>
@@ -135,7 +135,7 @@ Evet. Bkz. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>İlk iş ortağı listenizde yer almayan yeni iş ortakları nasıl eklenir?
 
-Tüm sanal WAN API 'Leri açık API. Teknik bir bilimme değerlendirmek için belgelere gidebilirsiniz. Sorunuz varsa, adresine azurevirtualwan@microsoft.combir e-posta gönderin. İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır.
+Tüm sanal WAN API 'Leri açık API. Teknik bir bilimme değerlendirmek için belgelere gidebilirsiniz. Sorunuz varsa, adresine bir e-posta gönderin azurevirtualwan@microsoft.com . İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır.
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Kullandığım bir cihaz sanal WAN iş ortağı listesinde yoksa ne olur? Azure sanal WAN VPN 'e bağlanmak için kullanmaya devam edebilir miyim?
 
@@ -212,9 +212,14 @@ Bir sanal hub, bağlantıda ' Enabled ' olduğunda, bir sanal ağ/siteden siteye
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Sanal bir WAN 'daki sanal hub, birden çok hub 'dan bir yol için en iyi yolu nasıl seçer?
 
 Bir sanal hub birden fazla uzak hub 'dan aynı rotayı öğrenirse, karar verdiği sıra aşağıdaki gibidir
-1) Yol kaynağı a) ağ rotaları – VNET ön ekleri sanal hub ağ geçitleri b) hub RouteTable (statik olarak yapılandırılmış rotalar) c) BGP d) ınterhub rotaları tarafından doğrudan öğrendi
-2)  Yol ölçümü: sanal WAN, VPN üzerinden ExpressRoute 'u tercih eder. ExpressRoute eşi, VPN eşi ile karşılaştırıldığında daha yüksek bir ağırlık sahiptir
-3)  AS yol uzunluğu
+1. En uzun önek eşleşmesi
+2. Interhub üzerinden yerel yollar
+3. BGP üzerinden statik yollar
+4. VPN üzerinden ExpressRoute (ER)
+5. AS yol uzunluğu
+
+Ise ile er arasındaki geçiş, isteğin bir hub 'da ER aracılığıyla geldiği ve uzak hub 'da bir VPN ve ER olduğu için uzak bir hub 'dan bir VPN ve Ise ile bağlı bir uç noktasına ulaşmak
+
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Sanal WAN 'da IPv6 desteği var mı?
 

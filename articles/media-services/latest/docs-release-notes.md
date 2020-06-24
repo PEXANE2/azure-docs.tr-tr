@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8619366580dd77ae12c4c101c183532fec4da04a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 40a2510fcb6fd5fe51cebc702604e2d09df7b061
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430844"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982178"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>Azure Media Services v3 belge güncelleştirmeleri
 
@@ -26,7 +26,11 @@ Bu makale, en son Media Services v3 belge güncelleştirmeleriyle ilgilidir.
 
 ## <a name="june-2020"></a>Haziran 2020
 
-IoT Edge canlı video analizinin önizlemesi herkese açık oldu. [IoT Edge belgelerinde canlı video analizinin](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) ayrıntılarına bakın.
+* IoT Edge canlı video analizinin önizlemesi herkese açık oldu. [IoT Edge belgelerinde canlı video analizinin](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) ayrıntılarına bakın.
+* Yeni hızlı başlangıç:
+
+    * [Portal kullanarak içeriği karşıya yükleme, kodlama ve akışını yapma](manage-assets-quickstart.md)
+    * [Portal kullanarak içeriği şifreleme](encrypt-content-quickstart.md)
 
 ## <a name="april-2020"></a>Nisan 2020
 

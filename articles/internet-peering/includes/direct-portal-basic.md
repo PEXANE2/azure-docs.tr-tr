@@ -1,7 +1,7 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 titleSuffix: Azure
-description: include dosyası
+description: dosya dahil etme
 services: internet-peering
 author: derekolo
 ms.service: internet-peering

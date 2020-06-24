@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b07ffe92a5dd0c105188fab55bc679c04f660ed2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d8f03d714ab44dc01d9e138a63a89892ead60fe9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300969"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249474"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Hızlı başlangıç: Windows üzerinde Azure App Service Java uygulaması oluşturma
 
@@ -38,7 +38,7 @@ ms.locfileid: "84300969"
 Aşağıdaki Maven komutunu Cloud Shell istemine yürütün, adlı yeni bir uygulama oluşturun `helloworld` :
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp -Dversion=1.0-SNAPSHOT
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" "-Dversion=1.0-SNAPSHOT"
 ```
 
 Sonra çalışma dizininizi proje klasörü olarak değiştirin:
@@ -49,6 +49,8 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Maven eklentisini yapılandırma
 
+Azure App Service dağıtım işlemi, Azure CLı 'dan Azure CLı 'dan otomatik olarak tanıtım edebilir. Azure CLı yüklü değilse, Maven eklentisi OAuth veya cihaz oturum açma bilgilerini kullanarak oturumunuzu açacaktır. Gerekirse [Maven eklentilerle kimlik doğrulama](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) ayrıntılarını denetleyin.
+
 Dağıtımı yapılandırmak için komut Isteminde aşağıdaki Maven komutunu çalıştırabilirsiniz, ilk adımda **Windows** işletim sistemi için **' 2 '** seçeneğini belirleyin, ardından **onay (Y/N)** **istemi görünene kadar** varsayılan yapılandırmaları kabul edin ve ardından **' Y '** tuşuna basın ve yapılandırma yapılır. 
 
 ```bash
@@ -57,7 +59,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 
 Örnek bir işlem şöyle görünür:
 
-```cmd
+```console
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 [INFO] Scanning for projects...
 [INFO]

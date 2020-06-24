@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162353"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982025"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Metin birleştirme Bilişsel Beceri
 
@@ -29,10 +29,10 @@ Microsoft. yetenekler. Text. Mergeskıll
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Parametre adı     | Açıklama |
+| Parametre adı     | Description |
 |--------------------|-------------|
-| ınsertpretag  | Her ekleme işleminden önce eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için değerini olarak `""`ayarlayın.  |
-| ınsertposttag | Her ekleme işleminden sonra eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için değerini olarak `""`ayarlayın.  |
+| `insertPreTag`    | Her ekleme işleminden önce eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için değerini olarak ayarlayın `""` .  |
+| `insertPostTag`   | Her ekleme işleminden sonra eklenecek dize. Varsayılan değer: `" "`. Alanı atlamak için değerini olarak ayarlayın `""` .  |
 
 
 ##  <a name="sample-input"></a>Örnek giriş
@@ -55,7 +55,7 @@ Bu yetenek için kullanılabilir giriş sağlayan bir JSON belgesi şu olabilir:
 ```
 
 ##  <a name="sample-output"></a>Örnek çıktı
-Bu örnek, *ınsertpretag* öğesinin olarak ayarlandığı `" "`ve *ınsertposttag* 'in olarak `""`ayarlandığı varsayıldığında, önceki girdinin çıktısını gösterir. 
+Bu örnek, *ınsertpretag* öğesinin olarak ayarlandığı `" "` ve *ınsertposttag* 'in olarak ayarlandığı varsayıldığında, önceki girdinin çıktısını gösterir `""` . 
 
 ```json
 {
@@ -108,18 +108,22 @@ Aşağıdaki örnek Beceri, belgeye katıştırılmış görüntülerden metin a
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text", 
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset" 
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset" 
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: fcb1e5f45bc4f8d234952e338052a18d4b03ee0f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9d8a973e04618e4223f90ffb9a3004d0fe40bbf7
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344688"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743520"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hibrit Avantajı-Azure SQL veritabanı & SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,11 @@ Sanal çekirdek tabanlı satın alma modelinin sağlanan işlem katmanında, [Az
 
 Azure Hibrit Avantajı ile, yalnızca SQL Server veritabanı altyapısının kendisi için mevcut SQL Server lisansınızı kullanarak (temel Işlem fiyatlandırması) yalnızca temel alınan Azure altyapısı için ödeme yapmayı seçebilirsiniz veya hem temel alınan altyapı hem de SQL Server Lisansı (lisans dahil fiyatlandırması) için ödeme yapabilirsiniz.
 
-Azure portal kullanarak veya aşağıdaki API 'lerden birini kullanarak lisanslama modelinizi seçebilir veya değiştirebilirsiniz:
+Azure portal lisans modelinizi seçebilir veya değiştirebilirsiniz: 
+- Yeni veritabanları için, oluşturma sırasında **temel bilgiler** sekmesinde **Veritabanını yapılandır** ' ı seçin ve para tasarrufu seçeneğini belirleyin.
+- Mevcut veritabanları için, **Ayarlar** menüsünde **Yapılandır** ' ı seçin ve para tasarrufu seçeneğini belirleyin.
+
+Ayrıca, aşağıdaki API 'lerden birini kullanarak yeni veya mevcut bir veritabanını da yapılandırabilirsiniz:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

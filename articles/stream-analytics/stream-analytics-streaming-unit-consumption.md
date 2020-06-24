@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/27/2020
 ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267358"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704191"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Akış Birimlerini anlama ve ayarlama
 
@@ -78,7 +78,7 @@ Aşağıdaki etmenler, Stream Analytics işlere göre kullanılan belleği (akı
 Bir pencereli toplama için tüketilen bellek (durum boyutu), pencere boyutuyla her zaman doğrudan orantılı değildir. Bunun yerine, tüketilen bellek, verilerin kardinalitesiyle veya her zaman penceredeki grup sayısından orantılıdır.
 
 
-Örneğin, aşağıdaki sorguda, ile `clusterid` ilişkili sayı sorgunun kardinalitedir. 
+Örneğin, aşağıdaki sorguda, ile ilişkili sayı `clusterid` sorgunun kardinalitedir. 
 
    ```sql
    SELECT count(*)
@@ -86,7 +86,7 @@ Bir pencereli toplama için tüketilen bellek (durum boyutu), pencere boyutuyla 
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Önceki sorgudaki yüksek kardinalite neden olan herhangi bir sorunu azaltmak için, Olay Hub 'ına olayları ve aşağıdaki örnekte gösterildiği gibi `clusterid`, sistem **tarafından bölüm** kullanarak her giriş bölümünü ayrı olarak işlemeye izin vererek sorguyu ölçeklendirebilirsiniz.
+Önceki sorgudaki yüksek kardinalite neden olan herhangi bir sorunu azaltmak için, Olay Hub 'ına olayları `clusterid` ve aşağıdaki örnekte gösterildiği gibi, SISTEM **tarafından bölüm** kullanarak her giriş bölümünü ayrı olarak işlemeye izin vererek sorguyu ölçeklendirebilirsiniz.
 
    ```sql
    SELECT count(*) 
@@ -94,7 +94,7 @@ Bir pencereli toplama için tüketilen bellek (durum boyutu), pencere boyutuyla 
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 
-Sorgu bölümlere ayrıldıktan sonra birden çok düğüme dağıtılır. Sonuç olarak, her düğüme gelen `clusterid` değer sayısı azaltılır ve Group By işlecinin kardinalitesini azaltır. 
+Sorgu bölümlere ayrıldıktan sonra birden çok düğüme dağıtılır. Sonuç olarak, `clusterid` her düğüme gelen değer sayısı azaltılır ve Group By işlecinin kardinalitesini azaltır. 
 
 Azaltma adımının gereksinimini ortadan kaldırmak için, Olay Hub 'ı bölümlerinin gruplandırma anahtarına göre bölümlenmesi gerekir. Daha fazla bilgi için bkz. [Event Hubs genel bakış](../event-hubs/event-hubs-what-is-event-hubs.md). 
 

@@ -8,20 +8,21 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: menchi
-ms.openlocfilehash: b065135715868094b7e248aebfca35f3b55a4c48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9b5a549d550f117e080fc64193fbe29658f401d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77675149"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298234"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>Cihaz sağlama hizmeti için müşteri tarafından yönetilen anahtarlarla bekleyen verilerin şifrelenmesi
 
 ## <a name="overview"></a>Genel Bakış
 
-Cihaz sağlama hizmeti (DPS), müşteri tarafından yönetilen anahtarlarla (CMK) kalan verilerin şifrelenmesini destekler (BYOK) olarak da bilinir. DPS, bekleyen ve aktarım sırasında veri şifrelemesini sağlar. Varsayılan olarak, DPS verileri şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. CMK desteğiyle, müşteriler artık [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)kullanarak müşterilerin yönettiği bir anahtar şifreleme anahtarıyla bekleyen verileri şifreleme seçeneği vardır.
+Cihaz sağlama hizmeti (DPS), müşteri tarafından yönetilen anahtarlarla (CMK) kalan verilerin şifrelenmesini destekler (BYOK) olarak da bilinir. DPS, veri merkezlerimizde yazıldığı sırada verilerin geri kalanı ve aktarım sırasında şifrelenmesini sağlar ve siz de ona erişirken şifresini çözer. Varsayılan olarak, DPS, bekleyen verileri şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. CMK ile, bekleyen verileri bir anahtar şifreleme anahtarıyla şifrelemeyi, [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)aracılığıyla yönetilen varsayılan platform şifrelemesi üzerinde ek bir şifreleme katmanı edinebilirsiniz. Bu, anahtarları oluşturma, döndürme, devre dışı bırakma ve iptal etme esnekliği sağlar. DPS için CMK yapılandırılmışsa, verilerinizi etkin bir şekilde koruyan iki koruma katmanı ile çift şifrelemenin etkin hale gelir. 
 
-Bu yetenek, şu bölgelerden birinde yeni bir DPS oluşturulmasını gerektirir: Doğu ABD, Batı ABD 2 veya Orta Güney ABD. Bu özelliği denemek için [Microsoft desteği](https://azure.microsoft.com/support/create-ticket/)ile bizimle iletişim kurun. Microsoft Destek ile iletişim kurarken şirketinizin adını ve abonelik KIMLIĞINIZI paylaşabilirsiniz.
+Bu özellik yeni bir DPS oluşturulmasını gerektirir. Bu özelliği denemek için [Microsoft desteği](https://azure.microsoft.com/support/create-ticket/)ile bizimle iletişim kurun. Microsoft Destek ile iletişim kurarken şirketinizin adını ve abonelik KIMLIĞINIZI paylaşabilirsiniz.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

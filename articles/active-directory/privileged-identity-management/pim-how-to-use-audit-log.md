@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329535"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742275"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için denetim geçmişini görüntüleme
 
@@ -88,9 +88,9 @@ Azure AD rollerinin denetim geçmişini görüntülemek için bu adımları izle
 
     Sayfanın en altında, kullanılabilir denetim geçmişinde her eylem hakkında bilgi içeren bir tablo görüntülenir. Sütunlar aşağıdaki anlamlara sahiptir:
 
-    | Sütun | Açıklama |
+    | Sütun | Description |
     | --- | --- |
-    | Zaman | Eylem oluştuğunda. |
+    | Saat | Eylem oluştuğunda. |
     | Requestor | Rol etkinleştirmeyi veya değiştirmeyi isteyen kullanıcı. Değer **Azure sistemise**daha fazla bilgi için Azure denetim geçmişini kontrol edin. |
     | Eylem | İstek sahibi tarafından gerçekleştirilen eylemler. Eylemler, atama, atamayı kaldırma, etkinleştirme, devre dışı bırakma veya AddedOutsidePIM içerebilir. |
     | Üye | Rolü etkinleştiren veya bir role atanan kullanıcı. |

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201080"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212641"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>İstemci uygulamasından gelen istekleri yetkilendirmek için Azure AD 'den bir belirteç alın
 
@@ -58,7 +58,7 @@ Daha sonra, uygulamanıza Azure depolama API 'Lerini çağırma izni verin. Bu a
 
     ![Depolama için izinleri gösteren ekran görüntüsü](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-**API izinleri** bölmesi artık KAYıTLı Azure AD uygulamanızın hem Microsoft Graph hem de Azure depolama 'ya erişimi olduğunu gösterir. Uygulamanızı Azure AD 'ye ilk kez kaydettiğinizde izinler otomatik olarak Microsoft Graph verilir.
+**API izinleri** bölmesi artık KAYıTLı Azure AD uygulamanızın hem Microsoft Graph hem de Azure Storage API 'lerine erişimi olduğunu gösterir. Uygulamanızı Azure AD 'ye ilk kez kaydettiğinizde izinler otomatik olarak Microsoft Graph verilir.
 
 ![Uygulama kaydetme izinlerini gösteren ekran görüntüsü](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
@@ -213,7 +213,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
     properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
                                                  scopes.Union(additionalBuildInScopes).ToList());
@@ -245,7 +245,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ### <a name="provide-values-in-the-settings-file"></a>Ayarlar dosyasında değer sağlama
 
-Ardından, *appSettings. JSON* dosyasını aşağıdaki gibi kendi değerlerinizle güncelleştirin:
+Sonra, dosyadaki *appsettings.js* aşağıdaki gibi kendi değerlerinizle güncelleştirin:
 
 ```json
 {
@@ -284,8 +284,8 @@ CloudBlockBlob blob = new CloudBlockBlob(
 Örneği çalıştırmak için, uygulama kaydınız için örtük verme akışını yapılandırmanız gerekebilir. Şu adımları uygulayın:
 
 1. Azure portal uygulama kaydınız ' ne gidin.
-1. Yönet bölümünde **kimlik doğrulama** ayarını seçin.
-1. **Gelişmiş ayarlar**altında, **örtük izin** bölümünde, aşağıdaki görüntüde gösterildiği gibi, erişim belirteçlerini ve kimlik belirteçlerini etkinleştirmek için onay kutularını seçin:
+1. **Yönet** bölümünde **kimlik doğrulama** ayarını seçin.
+1. **Örtük izin** bölümünde, aşağıdaki görüntüde gösterildiği gıbı, kimlik belirteçlerini etkinleştirmek için onay kutusunu seçin:
 
     ![Örtük izin akışı için ayarların nasıl etkinleştirileceğini gösteren ekran görüntüsü](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
@@ -294,13 +294,13 @@ CloudBlockBlob blob = new CloudBlockBlob(
 Örneği çalıştırdığınızda, çalışma zamanında atanan *localhost* bağlantı noktasını kullanmak için uygulama kaydın belirtilen YENIDEN yönlendirme URI 'sini güncelleştirmeniz gerektiğini görebilirsiniz. Atanan bağlantı noktasını kullanmak üzere yeniden yönlendirme URI 'sini güncelleştirmek için şu adımları izleyin:
 
 1. Azure portal uygulama kaydınız ' ne gidin.
-1. Yönet bölümünde **kimlik doğrulama** ayarını seçin.
+1. **Yönet** bölümünde **kimlik doğrulama** ayarını seçin.
 1. **Yeniden yönlendirme URI 'leri**altında, aşağıdaki görüntüde gösterildiği gibi, örnek uygulama tarafından kullanılan bağlantı noktasını düzenleyin:
 
     ![Uygulama kaydı için yeniden yönlendirme URI 'Lerini gösteren ekran görüntüsü](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Microsoft Identity platformu hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/).
-- Azure depolama için RBAC rolleri hakkında daha fazla bilgi edinmek için bkz. [RBAC ile depolama verileri için erişim haklarını yönetme](storage-auth-aad-rbac.md).
-- Azure depolama ile Azure kaynakları için Yönetilen kimlikler kullanma hakkında bilgi edinmek için bkz. [Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile bloblara ve kuyruklara erişim kimlik doğrulaması](storage-auth-aad-msi.md).
+- [Microsoft kimlik platformu](https://docs.microsoft.com/azure/active-directory/develop/)
+- [RBAC ile depolama verilerine erişim haklarını yönetme](storage-auth-aad-rbac.md)
+- [Azure kaynakları için Azure Active Directory ve yönetilen kimliklerle blob 'lara ve kuyruklara erişim kimlik doğrulamasını yapın](storage-auth-aad-msi.md)

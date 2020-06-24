@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 17c0e02aa091d1271967b5a238f71123cc7aeede
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322678"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249287"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Bulutta yeni DBA: geçişten sonra Azure SQL veritabanı 'nı yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -133,7 +133,7 @@ Sunucu düzeyinde veya veritabanı düzeyinde güvenlik duvarı kuralları oluş
 
 #### <a name="service-endpoints"></a>Hizmet uç noktaları
 
-Varsayılan olarak, SQL veritabanınız "Azure hizmetlerinin sunucuya erişmesine Izin ver" olarak yapılandırılmıştır. Bu, Azure 'daki herhangi bir sanal makinenin veritabanınıza bağlanmayı deneyebileceği anlamına gelir. Bu girişimlere yine de kimlik doğrulaması yapmaya devam edin. Ancak, veritabanınızın herhangi bir Azure IP tarafından erişilebilmesini istemiyorsanız, "Azure hizmetlerinin sunucuya erişmesine Izin ver" seçeneğini devre dışı bırakabilirsiniz. Ayrıca, [VNET hizmet uç noktalarını](vnet-service-endpoint-rule-overview.md)yapılandırabilirsiniz.
+Varsayılan olarak, veritabanınız "Azure hizmetlerinin sunucuya erişmesine Izin ver" olarak yapılandırılmıştır. Bu, Azure 'daki herhangi bir sanal makinenin veritabanınıza bağlanmayı deneyebileceği anlamına gelir. Bu girişimlere yine de kimlik doğrulaması yapmaya devam edin. Ancak, veritabanınızın herhangi bir Azure IP tarafından erişilebilmesini istemiyorsanız, "Azure hizmetlerinin sunucuya erişmesine Izin ver" seçeneğini devre dışı bırakabilirsiniz. Ayrıca, [VNET hizmet uç noktalarını](vnet-service-endpoint-rule-overview.md)yapılandırabilirsiniz.
 
 Hizmet uç noktaları (o), kritik Azure kaynaklarınızı yalnızca Azure 'daki özel sanal ağınıza sunmanıza olanak tanır. Bunu yaparak kaynaklarınıza genel erişimi ortadan kaldırabilirsiniz. Azure ile sanal ağınız arasındaki trafik Azure omurga ağında kalır. Zorunlu olmadan Zorlamalı tünel paket yönlendirmesi edinirsiniz. Sanal ağınız, internet trafiğini kuruluşunuza ve Azure hizmet trafiğine aynı rotaya göre devam etmeye zorlar. Hizmet uç noktaları ile, paketlerin sanal ağınızdan Azure omurga ağı üzerindeki hizmetine doğrudan akışı nedeniyle bunu iyileştirebilirsiniz.
 
@@ -285,7 +285,7 @@ Son 14 günün geçmişini döndürmek için son saatten ve [sys. resource_stats
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Yaşıyorsanız performans sorunları: SQL veritabanı sorun giderme yöntemlerimin SQL Server farklıdır
 
-Sorgu ve veritabanı performans sorunlarını tanılamak için kullanacağınız sorun giderme tekniklerinin büyük bir bölümü aynı kalır. Aynı SQL veritabanı altyapısı, bulutu güçlendirir. Ancak platform-Azure SQL veritabanı, ' Intelligence ' içinde yerleşik olarak bulunur. Performans sorunlarını daha kolay bir şekilde gidermenize ve tanılamanıza yardımcı olabilir. Ayrıca, bu düzeltme eylemlerinin bazılarını sizin adınıza gerçekleştirebilir ve bazı durumlarda onları otomatik olarak yeniden düzeltir.
+Sorgu ve veritabanı performans sorunlarını tanılamak için kullanacağınız sorun giderme tekniklerinin büyük bir bölümü aynı kalır. Aynı veritabanı altyapısının tümü bulutu güçlendirir. Ancak platform-Azure SQL veritabanı, ' Intelligence ' içinde yerleşik olarak bulunur. Performans sorunlarını daha kolay bir şekilde gidermenize ve tanılamanıza yardımcı olabilir. Ayrıca, bu düzeltme eylemlerinin bazılarını sizin adınıza gerçekleştirebilir ve bazı durumlarda onları otomatik olarak yeniden düzeltir.
 
 Performans sorunlarını giderme yaklaşımınız, [sorgu performansı içgörüleri (QPı)](query-performance-insight-use.md) ve [veritabanı Danışmanı](database-advisor-implement-performance-recommendations.md) gibi akıllı özellikleri kullanarak önemli ölçüde faydalanabilir ve bu nedenle metodolojide farklılık fark etmenize yardımcı olabilecek önemli ayrıntıları el ile yapmak zorunda değilsiniz. Platform, sizin için sabit bir iş yapar. Yani QPı olan bir örnek. QPı ile, sorgu düzeyine kadar tüm şekilde ayrıntıya gidebilir ve geçmiş eğilimlerini arayabilir ve tam olarak sorgu ne zaman gerilediğini belirleyebilirsiniz. Veritabanı Danışmanı, genel performansında eksik dizinler, dizin bırakma, sorgularınızın parametreleştirilmesi gibi genel performansı artırmanıza yardımcı olabilecek şeylere yönelik öneriler sağlar.
 

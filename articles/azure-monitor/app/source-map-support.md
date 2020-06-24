@@ -4,18 +4,18 @@ description: Application Insights kullanarak, kendi depolama hesabı blobu kapsa
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
-ms.date: 03/04/2020
-ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d5f01bb3034ab060227230071a21284177840e83
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474892"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249746"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript uygulamaları için kaynak eşleme desteği
 
 Application Insights, kaynak eşlemelerinin kendi depolama hesabı blobu kapsayıcınıza yüklenmesini destekler.
-Kaynak haritaları, uçtan uca işlem ayrıntıları sayfasında bulunan çağrı yığınlarını kaldırmak için kullanılabilir. [JavaScript SDK 'sı][ApplicationInsights-JS] veya [Node. js SDK 'sı][ApplicationInsights-Node.js] tarafından gönderilen herhangi bir özel durum, kaynak eşlemeleriyle korumasız olabilir.
+Kaynak haritaları, uçtan uca işlem ayrıntıları sayfasında bulunan çağrı yığınlarını kaldırmak için kullanılabilir. [JavaScript SDK 'sı][ApplicationInsights-JS] veya [Node.js SDK 'sı][ApplicationInsights-Node.js] tarafından gönderilen herhangi bir özel durum, kaynak eşlemeleriyle korumasız olabilir.
 
 ![Bir depolama hesabıyla bağlantı kurarak çağrı yığınını geri alma](./media/source-map-support/details-unminify.gif)
 
@@ -24,14 +24,16 @@ Kaynak haritaları, uçtan uca işlem ayrıntıları sayfasında bulunan çağr�
 Zaten mevcut bir depolama hesabınız veya blob kapsayıcınız varsa, bu adımı atlayabilirsiniz.
 
 1. [Yeni depolama hesabı oluşturma][create storage account]
-2. Depolama hesabınızda [bir blob kapsayıcısı oluşturun][create blob container] . Kaynak Haritalarınızın genel olarak erişilebilir olmamasını sağlamak için "genel `Private`erişim düzeyi" seçeneğini olarak ayarladığınızdan emin olun.
+2. Depolama hesabınızda [bir blob kapsayıcısı oluşturun][create blob container] . `Private`Kaynak Haritalarınızın genel olarak erişilebilir olmamasını sağlamak için "genel erişim düzeyi" seçeneğini olarak ayarladığınızdan emin olun.
 
 > [!div class="mx-imgBorder"]
 >![Kapsayıcı erişim düzeyiniz özel olarak ayarlanmalıdır](./media/source-map-support/container-access-level.png)
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>Kaynak haritalarınızı blob kapsayıcınıza gönderin
 
-Kaynak haritalarınızı yapılandırılan blob kapsayıcısına otomatik olarak yükleyecek şekilde yapılandırarak, sürekli dağıtım işlem hattınızı depolama hesabınızla tümleştirmelisiniz. Kaynak haritalarınızı blob kapsayıcısındaki bir alt klasöre yüklememelisiniz; Şu anda kaynak eşleme yalnızca kök klasörden alınacaktır.
+Kaynak haritalarınızı yapılandırılan blob kapsayıcısına otomatik olarak yükleyecek şekilde yapılandırarak, sürekli dağıtım işlem hattınızı depolama hesabınızla tümleştirmelisiniz.
+
+Kaynak haritaları, ile dağıtılan & derlenen aynı klasör yapısıyla BLOB depolama kapsayıcınıza yüklenebilir. Yaygın olarak kullanılan bir kullanım durumu, bir dağıtım klasörünün sürümü ile önekidir. Örneğin, `1.2.3/static/js/main.js` . Bir Azure Blob kapsayıcısı aracılığıyla çağrıldığında `sourcemaps` , ' de bulunan bir kaynak eşlemesi getirmeye çalışır `sourcemaps/1.2.3/static/js/main.js.map` .
 
 ### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Kaynak haritalarını Azure Pipelines aracılığıyla karşıya yükle (önerilir)
 
@@ -74,7 +76,7 @@ Bu özelliği kullanan portaldaki herhangi bir kullanıcının blob kapsayıcıs
 ### <a name="source-map-not-found"></a>Kaynak eşlemesi bulunamadı
 
 1. Karşılık gelen kaynak eşlemesinin doğru blob kapsayıcısına yüklendiğini doğrulayın
-2. Kaynak eşleme dosyasının eşlendiği JavaScript dosyasından sonra adlandırılmış olduğunu doğrulayın `.map`.
+2. Kaynak eşleme dosyasının eşlendiği JavaScript dosyasından sonra adlandırılmış olduğunu doğrulayın `.map` .
     - Örneğin, `/static/js/main.4e2ca5fa.chunk.js` adlı blobu arama yapılacak`main.4e2ca5fa.chunk.js.map`
 3. Günlüğe yazılan herhangi bir hata olup olmadığını görmek için tarayıcınızın konsoluna bakın. Bunu herhangi bir destek biletinde ekleyin.
 

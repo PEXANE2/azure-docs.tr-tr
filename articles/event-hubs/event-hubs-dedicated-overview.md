@@ -3,24 +3,19 @@ title: Adanmış Olay Hub 'larına genel bakış-Azure Event Hubs | Microsoft Do
 description: Bu makalede, özel Azure Event Hubs, Olay Hub 'larının tek kiracılı dağıtımlarını sunan bir genel bakış sunulmaktadır.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
+author: spelluru
 ms.assetid: ''
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 145fc759b236019630b8942c677dbdd562331e4c
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72516753"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298744"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Ayrılmış genel bakış
 
@@ -53,7 +48,7 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 | Özellik | Standart | Ayrılmış |
 | --- |:---:|:---:|
 | Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
-| Ad Alanları |  1 | CU başına 50 |
+| Ad alanları |  1 | CU başına 50 |
 | Event Hubs |  ad alanı başına 10 | ad alanı başına 1000 |
 | Giriş olayları | Milyon olay başına ödeme | Dahil |
 | İleti boyutu | 1.000.000 bayt | 1.000.000 bayt |

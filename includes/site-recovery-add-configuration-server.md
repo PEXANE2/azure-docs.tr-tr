@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -52,4 +52,4 @@ ms.locfileid: "67188085"
 
     ![Özet](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
-Kayıt tamamlandıktan sonra, sunucu kasadaki **Ayarlar** > **sunucular** dikey penceresinde görüntülenir.
+Kayıt tamamlandıktan sonra, sunucu kasadaki **Ayarlar**  >  **sunucular** dikey penceresinde görüntülenir.

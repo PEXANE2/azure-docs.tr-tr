@@ -13,9 +13,9 @@ ms.locfileid: "73832043"
 ---
 ### <a name="record-names"></a>Kayıt adları
 
-Azure DNS’de, kayıtlar göreli adlar kullanılarak belirtilir. *Tam* etki alanı adında (FQDN) bölge adı varken *göreli* adda bu yoktur. Örneğin, bölgedeki `www` `contoso.com` göreli kayıt adı tam olarak nitelenmiş kayıt adını `www.contoso.com`verir.
+Azure DNS’de, kayıtlar göreli adlar kullanılarak belirtilir. *Tam* etki alanı adında (FQDN) bölge adı varken *göreli* adda bu yoktur. Örneğin, bölgedeki göreli kayıt adı `www` `contoso.com` tam olarak nitelenmiş kayıt adını verir `www.contoso.com` .
 
-*Tepe* kaydı, bir DNS bölgesinin kökündeki (veya *tepesindeki*) DNS kaydıdır. Örneğin, DNS bölgesinde `contoso.com`, bir tepesinde kaydının tam adı `contoso.com` da vardır (buna bazen *çıplak* etki alanı denir).  Kural gereği, '\@' göreli adı tepesinde kayıtlarını temsil etmek için kullanılır.
+*Tepe* kaydı, bir DNS bölgesinin kökündeki (veya *tepesindeki*) DNS kaydıdır. Örneğin, DNS bölgesinde `contoso.com` , bir tepesinde kaydının tam adı da vardır `contoso.com` (buna bazen *çıplak* etki alanı denir).  Kural gereği, ' ' göreli adı \@ tepesinde kayıtlarını temsil etmek için kullanılır.
 
 ### <a name="record-types"></a>Kayıt türleri
 

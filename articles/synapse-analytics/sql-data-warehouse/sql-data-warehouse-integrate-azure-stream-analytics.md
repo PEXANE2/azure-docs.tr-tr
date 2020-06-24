@@ -6,19 +6,19 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633293"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213355"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Azure Stream Analytics kullanma
+# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Synapse Analytics ile Azure Stream Analytics’i kullanma
 
 Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, yüksek oranda kullanılabilir ve ölçeklenebilir karmaşık olay işleme sağlayan, tam olarak yönetilen bir hizmettir. [Azure Stream Analytics tanıtım](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bilgilerini okuyarak temelleri öğrenebilirsiniz. Daha sonra, Azure Stream Analytics öğreticisini [kullanmaya başlarken](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ' i izleyerek Stream Analytics ile uçtan uca bir çözüm oluşturmayı öğrenebilirsiniz.
 
@@ -36,7 +36,7 @@ Bu makalede, veri Ambarınızı Azure Stream Analytics işleriniz için çıkı�
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Veri ambarınıza işaret etmek için akış çıkışı belirtme
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 Azure portal, Stream Analytics işinize gidin ve **iş topolojisi** menüsünde **çıktılar** ' e tıklayın.
 
@@ -102,7 +102,7 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 Stream Analytics Azure portal işi için, iş adı ' na tıklayın.  ***Çıkış ayrıntıları*** bölmesindeki ***Test*** düğmesine tıklayın.
 
-![Outpout ayrıntılarında](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) test düğmesi veritabanı bağlantısı başarılı olduğunda portalda bir bildirim görürsünüz.
+![Outpout ayrıntılarında test düğmesi ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) veritabanı bağlantısı başarılı olduğunda portalda bir bildirim görürsünüz.
 
 ### <a name="step-6"></a>6. Adım
 

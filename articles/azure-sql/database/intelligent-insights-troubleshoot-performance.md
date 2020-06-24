@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 9b92454abcb985a21952389f9f618c1f58d45182
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/12/2020
+ms.openlocfilehash: da29b5427b2258a32e87977289689949a47f3d8e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344790"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743448"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler ile Azure SQL veritabanı ve Azure SQL yönetilen örnek performans sorunlarını giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,6 +25,8 @@ Bu sayfada Azure SQL veritabanı hakkında bilgi ve [akıllı içgörüler](inte
 
 > [!NOTE]
 > Akıllı İçgörüler kullanarak hızlı bir performans sorun giderme kılavuzu için, bu belgede [Önerilen sorun giderme akış](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) Akış Çizelgesine bakın.
+>
+> Akıllı Öngörüler şu bölgelerde kullanılamayan bir önizleme özelliğidir: Batı Avrupa, Kuzey Avrupa, Batı ABD 1 ve Doğu ABD 1.
 
 ## <a name="detectable-database-performance-patterns"></a>Algılanabilir veritabanı performans desenleri
 
@@ -35,7 +37,7 @@ Akıllı İçgörüler, sorgu yürütme bekleme süreleri, hatalar veya zaman a�
 | [Kaynak sınırlarına ulaşma](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Görüntülenen abonelikte kullanılabilir kaynakların (DTU), veritabanı çalışan iş parçacıklarının veya veritabanı oturum açma oturumlarının tüketimi, kaynak sınırlarına ulaştı. Bu, performansı etkiliyor. | CPU kaynaklarının tüketimi, kaynak sınırlarına ulaşıyor. Bu, veritabanı performansını etkiliyor. |
 | [İş yükü artışı](intelligent-insights-troubleshoot-performance.md#workload-increase) | İş yükü artışı veya veritabanındaki iş yükünün sürekli birikmesi algılandı. Bu, performansı etkiliyor. | İş yükü artışı algılandı. Bu, veritabanı performansını etkiliyor. |
 | [Bellek baskısı](intelligent-insights-troubleshoot-performance.md#memory-pressure) | İstenen bellek verdiği çalışanlar, istatistiksel olarak önemli miktarda süre için bellek ayırmaları beklemek ya da bellek isteyen çalışanların daha yüksek bir birikmesi sağlar. Bu, performansı etkiliyor. | Bellek izni isteyen çalışanlar, istatistiksel olarak önemli bir süre için bellek ayırmaları bekliyor. Bu, veritabanı performansını etkiliyor. |
-| [Lemeye](intelligent-insights-troubleshoot-performance.md#locking) | Performansı etkileyen aşırı veritabanı kilitlemesi algılandı. | Veritabanı performansını etkileyen aşırı veritabanı kilitleme algılandı. |
+| [Kilitleme](intelligent-insights-troubleshoot-performance.md#locking) | Performansı etkileyen aşırı veritabanı kilitlemesi algılandı. | Veritabanı performansını etkileyen aşırı veritabanı kilitleme algılandı. |
 | [Artan MAXDOP](intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Maksimum paralellik derecesi seçeneği (MAXDOP), sorgu yürütme verimliliğini etkileyecek şekilde değiştirildi. Bu, performansı etkiliyor. | Maksimum paralellik derecesi seçeneği (MAXDOP), sorgu yürütme verimliliğini etkileyecek şekilde değiştirildi. Bu, performansı etkiliyor. |
 | [Pagemandal çekişmesi](intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Birden çok iş parçacığı aynı anda, daha fazla bekleme süreleriyle sonuçlanan ve pagemanmaya neden olan bellek içi veri arabelleği sayfalarına erişmeyi deniyor. Bu, performansı etkiliyor. | Birden çok iş parçacığı aynı anda, daha fazla bekleme süreleriyle sonuçlanan ve pagemanmaya neden olan bellek içi veri arabelleği sayfalarına erişmeyi deniyor. Bu, performansı veritabanını etkiliyor. |
 | [Eksik dizin](intelligent-insights-troubleshoot-performance.md#missing-index) | Performansı etkileyen eksik dizin algılandı. | Veritabanı performansını etkileyen eksik dizin algılandı. |

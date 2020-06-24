@@ -4,16 +4,16 @@ description: Windows sanal masaüstü 'nde yerleşik uygulamaları yayımlama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a02bf514ff76f5528bc46f0a60642163c9278ebf
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7a453ef44a1ede86290f4130a6147eaaad09fa97
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615142"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214154"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Windows sanal masaüstünde yerleşik uygulamaları yayımlama
 
@@ -28,14 +28,14 @@ Yerleşik bir uygulama yayımlamak için:
 
 1. Konak havuzunuzdaki sanal makinelerden birine bağlanın.
 2. [Bu makaledeki](/powershell/module/appx/get-appxpackage?view=win10-ps/)yönergeleri izleyerek yayımlamak Istediğiniz uygulamanın **PackageFamilyName** alın.
-3. Son olarak, önceki adımda bulduğunuz `<PackageFamilyName>` **PackageFamilyName** ile değiştirilmiş aşağıdaki cmdlet 'i çalıştırın:
-   
+3. Son olarak, `<PackageFamilyName>` önceki adımda bulduğunuz **PackageFamilyName** ile değiştirilmiş aşağıdaki cmdlet 'i çalıştırın:
+
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:appsFolder\<PackageFamilyName>!App"
    ```
 
 >[!NOTE]
-> Windows sanal masaüstü, uygulamaları yalnızca ile `C:\Program Files\Windows Apps`başlayan bir konum yüklerken yayımlamayı destekler.
+> Windows sanal masaüstü, uygulamaları yalnızca ile başlayan bir konum yüklerken yayımlamayı destekler `C:\Program Files\Windows Apps` .
 
 ## <a name="update-app-icons"></a>Uygulama simgelerini Güncelleştir
 
@@ -46,7 +46,7 @@ Bir uygulamayı yayımladıktan sonra, normal simge resmi yerine varsayılan Win
 Microsoft Edge 'i yayımlamak için kullandığınız işlem, diğer uygulamalar için yayımlama işleminden biraz farklıdır. Microsoft Edge 'i varsayılan giriş sayfası ile yayımlamak için şu cmdlet 'i çalıştırın:
 
 ```powershell
-New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 
+New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

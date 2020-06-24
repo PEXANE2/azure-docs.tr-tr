@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7815b8180c29b66b12eddbff88e4728b6784be66
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 51df588b1ccd41bf05d8851f00399b61292b0736
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672774"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214119"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
 
@@ -26,7 +26,7 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
 3. Genel Bakış sayfasında, **+ New offer**  >  **PowerApps & müşteri katılımı için**+ yeni teklif Dynamics 365 ' i seçin.
 
-    ![Sol gezinti menüsünü gösterir.](./media/new-offer-dynamics-365-cepa.png)
+    ![Sol gezinti menüsünü gösterir.](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
 > [!NOTE]
 > Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
@@ -60,7 +60,7 @@ Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başla
 
 #### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
 
-Ücretsiz bir deneme bağlantısı olan müşterilere teklifinizi, bir deneme sunabileceği geçerli bir URL ( *http* veya *https*ile başlayarak) sunarak listeleyin.  Örneğin, `https://contoso.com/trial/my-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
+Ücretsiz bir deneme bağlantısı olan müşterilere teklifinizi `http` `https` , bir deneme sunabileceği GEÇERLI bir URL (veya ' den başlayarak) sunarak listeleyin.  Örneğin, `https://contoso.com/trial/my-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
 
 > [!NOTE]
 > Uygulamanızın deneme bağlantınız aracılığıyla alacağı belirteçler, uygulamanızda hesap oluşturmayı otomatikleştirmek için yalnızca Azure Active Directory (Azure AD) aracılığıyla Kullanıcı bilgilerini almak üzere kullanılabilir. Bu belirteci kullanarak kimlik doğrulaması için Microsoft hesapları desteklenmez.
@@ -139,9 +139,24 @@ Buradaki teklif adı, açıklama ve görüntüler gibi her bir dil/Pazar için M
 > [!NOTE]
 > Teklif açıklaması (Açıklama, belgeler, ekran görüntüleri ve kullanım koşulları gibi) sunan teklif listesinin Ingilizce olması gerekmez, "Bu uygulama yalnızca [Ingilizce olmayan dilde] kullanılabilir". Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
+Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasına yönelik değildir):
+
+:::image type="content" source="media/example-azure-marketplace-d365-customer-engagement.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
+
+#### <a name="call-out-descriptions"></a>Çağrı açıklamaları
+
+1. Logo
+2. Ürünler
+3. Kategoriler
+4. Destek adresi (bağlantı)
+5. Kullanım koşulları adresi (bağlantı)
+6. Teklif adı
+7. Description
+8. Ekran görüntüleri/videolar
+
 ### <a name="name"></a>Name
 
-Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
+Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
 ### <a name="short-description"></a>Kısa açıklama
 

@@ -2,14 +2,14 @@
 title: Azure blok zinciri hizmetini izleme (ABS)
 description: Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76293258"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214052"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Izleyici aracılığıyla Azure blok zinciri hizmetini izleme  
 
@@ -79,7 +79,7 @@ Tüm kaynak günlükleri, blok zinciri hizmetine özgü birkaç benzersiz özell
 Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da toplandıklarında Azure blok zinciri ara sunucu günlüklerinin özellikleri listelenmektedir.  
 
 
-| Özellik adı  | Açıklama |
+| Özellik adı  | Description |
 |:---|:---|
 | time | İşlem gerçekleştiği tarih ve saat (UTC). |
 | RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.  |
@@ -89,7 +89,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 | NodeLocation  | Blok zinciri üyesinin dağıtıldığı Azure bölgesi.  |
 | BlockchainNodeName  | İşlemin gerçekleştirileceği Azure blok zinciri hizmeti üyesinin düğümünün adı.   |
 | Etmi yöntemi  | Temel alınan blok zinciri protokolü tarafından çağrılan yöntem, çekirdekte eth_sendTransactions, eth_getBlockByNumber vb. olabilir.  |
-| Aracı  | Web tarayıcısı Mozilla, Edge vb. gibi bir kullanıcı adına davranan Kullanıcı Aracısı. Değer örnekleri şunlardır: "Mozilla/5.0 (Linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
+| Aracı  | Web tarayıcısı Mozilla, Edge vb. gibi bir kullanıcı adına davranan Kullanıcı Aracısı. Değer örnekleri şunlardır: "Mozilla/5.0 (Linux x64) node.js/8.16.0 V8/6.2.414.77"  |
 | Kod   | HTTP hata kodları. Genellikle 4XX ve 5XX hata koşullarıdır.  |
 | NodeHost  | Düğümün DNS adı.   |
 | RequestMethodName | HTTP yöntemi çağrıldı, buradaki olası değerler üye Oluştur, var olan üyenin ayrıntılarını alma, silme üyesi için SILME, üyeyi güncelleştirmek için Düzeltme Eki.   |
@@ -105,7 +105,7 @@ Aşağıdaki tabloda, Azure Izleyici günlüklerinde veya Azure Storage 'da topl
 Aşağıdaki tabloda, Azure blok zinciri uygulama günlüklerinin özellikleri listelenmektedir.
 
 
-| Özellik adı  | Açıklama |
+| Özellik adı  | Description |
 |:---|:---|
 | time | İşlem gerçekleştiği tarih ve saat (UTC). |
 | RESOURCEID  | Günlüklerin etkinleştirildiği Azure blok zinciri hizmeti kaynağı.|
@@ -115,7 +115,7 @@ Aşağıdaki tabloda, Azure blok zinciri uygulama günlüklerinin özellikleri l
 | NodeLocation  | Blok zinciri üyesinin dağıtıldığı Azure bölgesi.  |
 | BlockchainNodeName  | İşlemin gerçekleştirileceği Azure blok zinciri hizmeti üyesinin düğümünün adı.   |
 | BlockchainMessage    | Bu alan, veri düz günlükleri olan blok zinciri uygulama günlüğünü içerecektir. ABS-Quorum için, bu çekirdek günlüklerine sahip olur. Bu, bilgi, hata, uyarı ve yürütülen eylem hakkında daha fazla bilgi veren bir dize olan günlük girdisi türü hakkında bilgi içerir.   |
-| Değerine    | Azure blok zinciri hizmeti 'nin bölgeye özgü kiracısı. Bu alanın biçimi https://westlake-rp-prod. <region>. cloudapp.Azure.com WHERE bölgesi, dağıtılan üyenin Azure bölgesini belirtir.       |
+| Değerine    | Azure blok zinciri hizmeti 'nin bölgeye özgü kiracısı. Bu alanın biçimi https://westlake-rp-prod . <region> . cloudapp.azure.com WHERE bölgesi, dağıtılan üyenin Azure bölgesini belirtir.       |
 | SourceSystem   | Bu durumda **Azure**olan Günlükler, sistem tarafından doldurulur.    |
 
 
@@ -131,7 +131,7 @@ Azure Izleyici tarafından desteklenen tüm ölçümlerin (Azure blok zinciri hi
 Aşağıdaki tablo, Azure blok zinciri hizmeti üye kaynağı için toplanan blok zinciri ölçümlerinin listesini belirtir.
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
+| Ölçüm adı | Birim  |  Toplama türü| Description   |
 |---|---|---|---|
 | Bekleyen Işlemler   | Sayı  |  Ortalama | Mined bekleniyor işlem sayısı.   |
 | İşlenen bloklar   | Sayı  | Toplam  |  Her zaman aralığında işlenen blokların sayısı. Şu anda blok boyutu 5 saniyedir, bu nedenle her düğüm 12 blok ve 60 blok 5 dakika içinde işlem görür.   |
@@ -143,10 +143,10 @@ Aşağıdaki tablo, Azure blok zinciri hizmeti üye kaynağı için toplanan blo
 Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan farklı bağlantı ölçümleri listelenmektedir. Bunlar NGıNX ara sunucu ölçümleridir.
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama |
+| Ölçüm adı | Birim  |  Toplama türü| Description |
 |---|---|---|---|
 | Kabul edilen bağlantılar   | Sayı  |  Toplam | Kabul edilen istemci bağlantılarının toplam sayısı.   |
-| Etkin bağlantılar  | Sayı  | Ortalama  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
+| Etkin Bağlantılar  | Sayı  | Ortalama  |  Bekleyen bağlantılar dahil etkin istemci bağlantılarının geçerli sayısı.    |
 |İşlenmiş bağlantılar    | Sayı  | Toplam  | İşlenen bağlantıların toplam sayısı. Genellikle, bazı kaynak sınırlarına ulaşılmadığı sürece parametre değeri kabul edilen bağlantılarla aynıdır.     |
 |İşlenmiş Istekler     |  Sayı | Toplam  | İstemci isteklerinin toplam sayısı.  |
 
@@ -156,7 +156,7 @@ Aşağıdaki tabloda, Azure blok zinciri hizmeti üye kaynağı için toplanan f
 Aşağıdaki tabloda, Azure blok zinciri üye kaynağı düğümlerinin her biri için toplanan performans ölçümleri listelenmektedir.  
 
 
-| Ölçüm adı | Birim  |  Toplama türü| Açıklama   |
+| Ölçüm adı | Birim  |  Toplama türü| Description   |
 |---|---|---|---|
 | CPU kullanım yüzdesi   | Yüzde  |  Maks | CPU kullanımının yüzdesi.     |
 | GÇ okuma baytları   | KB   | Toplam  |  Blok zinciri üye kaynağının tüm düğümlerinde GÇ okuma baytlarının toplamı.      |

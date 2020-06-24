@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 06/17/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 61dd98028b7342290984615ea19b561b48aaeadb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d9712026daab63a002793adf2e17b9db943f94
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74792226"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976906"
 ---
 # <a name="supported-postgresql-major-versions"></a>Desteklenen PostgreSQL ana sürümleri
 Microsoft amaçlar, PostgreSQL için Azure veritabanı 'nda PostgreSQL altyapısının n-2 sürümlerini desteklemeye yöneliktir-tek sunucu. Sürümler, Azure 'daki geçerli ana sürümdür (n) ve önceki iki ana sürüm (-2) olacaktır.
@@ -20,16 +20,16 @@ Microsoft amaçlar, PostgreSQL için Azure veritabanı 'nda PostgreSQL altyapıs
 PostgreSQL için Azure veritabanı şu anda aşağıdaki ana sürümleri desteklemektedir:
 
 ## <a name="postgresql-version-11"></a>PostgreSQL sürüm 11
-Geçerli küçük yayın 11,5 ' dir. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/11/static/release-11-5.html) bakın.
+Geçerli küçük yayın 11,6 ' dir. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/11/static/release-11-6.html) bakın.
 
 ## <a name="postgresql-version-10"></a>PostgreSQL sürüm 10
-Geçerli küçük yayın 10,10 ' dir. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/10/static/release-10-10.html) bakın.
+Geçerli küçük yayın 10,11 ' dir. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/10/static/release-10-11.html) bakın.
 
 ## <a name="postgresql-version-96"></a>PostgreSQL sürüm 9,6
-Geçerli ikincil sürüm 9.6.15. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/9.6/static/release-9-6-15.html) bakın.
+Geçerli ikincil sürüm 9.6.16. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html) bakın.
 
 ## <a name="postgresql-version-95"></a>PostgreSQL sürüm 9,5
-Geçerli ikincil sürüm 9.5.19. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/9.5/static/release-9-5-19.html) bakın.
+Geçerli ikincil sürüm 9.5.20. Bu küçük sürümdeki geliştirmeler ve düzeltmeler hakkında bilgi edinmek için [PostgreSQL belgelerine](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) bakın.
 
 ## <a name="managing-upgrades"></a>Yükseltmeleri yönetme
 PostgreSQL projesi, bildirilen hataları çözmek için düzenli olarak küçük yayınlar yayınlar. PostgreSQL için Azure veritabanı, hizmetin aylık dağıtımları sırasında küçük yayınlar içeren sunucuları otomatik olarak ekler. 

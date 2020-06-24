@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: functions
 author: ggailey777
 ms.service: azure-functions
@@ -19,7 +19,7 @@ ms.locfileid: "84231518"
 
 1. **Bir yayımlama hedefi seçin**alanında, aşağıdaki tabloda belirtilen yayımlama seçeneklerini kullanın: 
 
-    | Seçenek      | Açıklama                                |
+    | Seçenek      | Description                                |
     | ------------ |  -------------------------------------------------- |
     | **Azure Işlevleri tüketim planı** | Bir [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir Azure bulut ortamında bir işlev uygulaması oluşturun. Bir tüketim planı kullandığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur. Tüketim planı dışında bir planda çalıştırırsanız, [işlev uygulamanızın ölçeklendirmesini](../articles/azure-functions/functions-scale.md)yönetmeniz gerekir.| 
     | **Yeni oluştur** | Azure 'da, ilgili kaynaklarla yeni bir işlev uygulaması oluşturulur. <br/>**Varolanı Seç**' i seçerseniz, mevcut Işlev uygulamasındaki Azure 'daki tüm dosyaların yerel projedeki dosyalarla üzerine yazılır. Bu seçeneği yalnızca, var olan bir işlev uygulamasına güncelleştirmeleri yeniden yayımladığınızda kullanın. |
@@ -32,7 +32,7 @@ ms.locfileid: "84231518"
 
 1. **App Service: Yeni oluştur**' da, aşağıdaki tabloda belirtilen değerleri kullanın:
 
-    | Ayar      | Değer  | Açıklama                                |
+    | Ayar      | Değer  | Description                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı benzersiz şekilde tanımlayan ad. Bu adı kabul edin veya yeni bir ad girin. Geçerli karakterler şunlardır: `a-z` , `0-9` , ve `-` . |
     | **Abonelik** | Aboneliğiniz | Kullanılacak Azure aboneliği. Bu aboneliği kabul edin veya açılan listeden yeni bir tane seçin. |

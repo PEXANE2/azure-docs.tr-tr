@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 133ca6503a2e0fa9ff19fa55cf126b9556b741e0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/12/2020
+ms.openlocfilehash: 937eee69c17d207dc348a25fe2a5e6611480db0f
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344059"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743465"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler (Önizleme)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -77,6 +77,9 @@ Kullanılabilir Akıllı İçgörüler seçenekleri şunlardır:
 | **Azure SQL Analytics** içgörüler için Azure SQL Analytics Stream Insights. | Yes | Yes |
 | Daha fazla özel Tümleştirmeler için Event Hubs **Azure Event Hubs** Stream öngörülerini edinin. | Yes | Yes |
 | **Azure depolama** hakkında bilgi edinin-daha fazla analiz ve uzun süreli arşivleme Için Azure depolama ile akış öngörüleri. | Yes | Yes |
+
+> [!NOTE]
+> Akıllı Öngörüler şu bölgelerde kullanılamayan bir önizleme özelliğidir: Batı Avrupa, Kuzey Avrupa, Batı ABD 1 ve Doğu ABD 1.
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Akıllı İçgörüler günlüğünün dışarı aktarılmasını yapılandırma
 

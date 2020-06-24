@@ -16,7 +16,7 @@ ms.locfileid: "75469342"
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type |Type özelliği: **Azurestorage** olarak ayarlanmalıdır |Yes |
+| tür |Type özelliği: **Azurestorage** olarak ayarlanmalıdır |Yes |
 | Dizisi |ConnectionString özelliği için Azure depolama 'ya bağlanmak için gereken bilgileri belirtin. |Yes |
 
 Depolama hesabı erişim anahtarlarını alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../articles/storage/common/storage-account-keys-manage.md).
@@ -49,7 +49,7 @@ Azure Storage SAS bağlı hizmeti, bir Azure Depolama hesabını, paylaşılan e
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type |Type özelliği: **Azurestorampasas** olarak ayarlanmalıdır |Yes |
+| tür |Type özelliği: **Azurestorampasas** olarak ayarlanmalıdır |Yes |
 | sasUri |Blob, kapsayıcı veya tablo gibi Azure depolama kaynakları için paylaşılan erişim Imzası URI 'SI belirtin.  |Yes |
 
 **Örneğinde**

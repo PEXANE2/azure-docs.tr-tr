@@ -11,12 +11,12 @@ ms.author: larryfr
 author: blackmist
 ms.date: 06/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 30b6412ed5a8462b1ce0d8351e9e86a16b2082da
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670047"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743523"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Uç noktanın çıkış verilerini ve yanıtını toplamaya ek olarak şunları 
 ## <a name="web-service-metadata-and-response-data"></a>Web hizmeti meta verileri ve yanıt verileri
 
 > [!IMPORTANT]
-> Azure Application Insights, yalnızca 64 KB 'a kadar olan yükleri günlüğe kaydeder. Bu sınıra ulaşıldığında, yalnızca modelin en son çıkışları günlüğe kaydedilir. 
+> Azure Application Insights, yalnızca 64 KB 'a kadar olan yükleri günlüğe kaydeder. Bu sınıra ulaşıldığında, yetersiz bellek gibi hatalarla karşılaşabilirsiniz veya hiçbir bilgi günlüğe kaydedilmez.
 
 Web hizmetine bir isteğin bilgilerini günlüğe kaydetmek için, `print` Score.py dosyanıza deyimler ekleyin. Her `print` bir ifade, ileti altındaki Application Insights izleme tablosunda bir girdiye neden olur `STDOUT` . Deyimin içerikleri, `print` `customDimensions` ve ardından `Contents` izleme tablosunda yer alır. Bir JSON dizesi yazdırırsanız, altındaki izleme çıkışında hiyerarşik bir veri yapısı üretir `Contents` .
 
@@ -76,7 +76,7 @@ Bu verilere erişmek için doğrudan Azure Application Insights sorgulayabilir v
 1. Çıkarım sırasında Application Insights veri göndermek için, Print deyimlerini ekleyerek Puanlama dosyasını güncelleştirin. İstek verileri ve yanıt gibi daha karmaşık bilgileri günlüğe kaydetmek için bir JSON yapısı. Aşağıdaki örnek score.py dosyası, modelin başlatıldığı süreyi, çıkarım sırasında giriş ve çıktıyı ve hata meydana gelir:
 
     > [!IMPORTANT]
-    > Azure Application Insights, yalnızca 64 KB 'a kadar olan yükleri günlüğe kaydeder. Bu sınıra ulaşıldığında, yalnızca modelin en son çıkışları günlüğe kaydedilir. Günlüğe kaydetmek istediğiniz veriler 64 KB veya daha büyükse, [üretim içindeki modeller Için veri toplama](how-to-enable-data-collection.md)bölümündeki bilgileri kullanarak BLOB depolama alanına depolamanız gerekir.
+    > Azure Application Insights, yalnızca 64 KB 'a kadar olan yükleri günlüğe kaydeder. Bu sınıra ulaşılırsa, yetersiz bellek gibi hatalarla karşılaşabilirsiniz veya hiçbir bilgi günlüğe kaydedilmez. Günlüğe kaydetmek istediğiniz veriler 64 KB veya daha büyükse, [üretim içindeki modeller Için veri toplama](how-to-enable-data-collection.md)bölümündeki bilgileri kullanarak BLOB depolama alanına depolamanız gerekir.
     
     ```python
     import pickle

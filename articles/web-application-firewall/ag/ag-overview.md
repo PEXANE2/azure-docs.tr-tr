@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0631bc0e3e83564b2d77d4f67b418780d933215e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747760"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212913"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı
 
 Azure Application Gateway Azure Web uygulaması güvenlik duvarı (WAF), Web uygulamalarınızın genel güvenlik açıklarından ve güvenlik açıklarından merkezi bir şekilde korunmasını sağlar. Web uygulamaları, yaygın olarak bilinen güvenlik açıklarından yararlanan kötü amaçlı saldırılara karşı giderek daha da yöneliktir. SQL ekleme ve siteler arası komut dosyası oluşturma en yaygın saldırı arasındadır.
 
-Application Gateway WAF, açık Web uygulaması güvenlik projesinden (OWASP) [çekirdek kural kümesi (sp_configure)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 veya 2.2.9 tabanlıdır. WAF, ek yapılandırma gerekmeden yeni güvenlik açıklarına karşı koruma içerecek şekilde otomatik olarak güncelleştirilir. 
+Application Gateway WAF, açık Web uygulaması güvenlik projesinden (OWASP) [çekirdek kural kümesi (sp_configure)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3,1, 3,0 veya 2.2.9 tabanlıdır. WAF, ek yapılandırma gerekmeden yeni güvenlik açıklarına karşı koruma içerecek şekilde otomatik olarak güncelleştirilir. 
 
 Aşağıda listelenen tüm WAF özellikleri bir WAF Ilkesi içinde mevcuttur. Birden çok ilke oluşturabilirsiniz ve bir Application Gateway, tek tek dinleyiciler veya bir Application Gateway yol tabanlı yönlendirme kuralları ile ilişkilendirilebilen. Bu şekilde, gerekirse Application Gateway ardındaki her bir site için ayrı ilkelere sahip olabilirsiniz. WAF Ilkeleri hakkında daha fazla bilgi için bkz. [WAF Ilkesi oluşturma](create-waf-policy-ag.md).
 
@@ -160,7 +160,7 @@ Yerleşik Azure WAF güvenlik duvarı olayları çalışma kitabı ile WAF 'nizi
 
 ![Sentinel](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>Günlüğe kaydetme
+#### <a name="logging"></a>Günlüğe Kaydetme
 
 WAF Application Gateway algıladığı her tehdit üzerinde ayrıntılı raporlama sağlar. Günlüğe kaydetme, Azure Tanılama günlükleriyle tümleşiktir. Uyarılar. JSON biçiminde kaydedilir. Bu Günlükler, [Azure izleyici günlükleri](../../azure-monitor/insights/azure-networking-analytics.md)ile tümleştirilebilir.
 

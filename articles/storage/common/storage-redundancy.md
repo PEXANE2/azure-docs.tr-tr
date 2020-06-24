@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5bc433615b19b36681796056ff4baf95d080d457
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629413"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214001"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -120,13 +120,15 @@ Fiyatlandırma hakkında daha fazla bilgi için bkz. [Bloblar](https://azure.mic
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>İkincil bölgedeki verilere yönelik okuma erişimi
 
-Coğrafi olarak yedekli depolama (GRS veya GZRS ile), bölgesel kesintilere karşı koruma sağlamak için verilerinizi ikincil bölgedeki başka bir fiziksel konuma çoğaltır. Ancak, bu veriler yalnızca müşteri veya Microsoft birincili ikincil bölgeye yük devretme işlemi başlattığında okunabilir. İkincil bölgeye okuma erişimini etkinleştirdiğinizde, birincil bölge kullanılamaz hale gelirse verileriniz okunabilir. İkincil bölgeye okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolamayı (RA-GZRS) etkinleştirin.
+Coğrafi olarak yedekli depolama (GRS veya GZRS ile), bölgesel kesintilere karşı koruma sağlamak için verilerinizi ikincil bölgedeki başka bir fiziksel konuma çoğaltır. Ancak, bu veriler yalnızca müşteri veya Microsoft birincili ikincil bölgeye yük devretme işlemi başlattığında okunabilir. İkincil bölgeye okuma erişimini etkinleştirdiğinizde, verileriniz her zaman okunabilir ve birincil bölgenin kullanılamaz hale geldiği bir durum da dahil olmak üzere kullanılabilir. İkincil bölgeye okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolamayı (RA-GZRS) etkinleştirin.
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Uygulamalarınızı ikincil için okuma erişimi için tasarlama
 
-Depolama Hesabınız ikincil bölgeye okuma erişimi için yapılandırılmışsa, birincil bölge herhangi bir nedenden dolayı kullanılamaz hale gelirse, uygulamalarınızı ikincil bölgeden verileri okumak için sorunsuz bir şekilde kaydırma yapmak üzere tasarlayabilirsiniz. İkincil bölge, her zaman okuma erişimi için kullanılabilir olduğundan, bir kesinti durumunda ikincinden okunmasını sağlamak için uygulamanızı test edebilirsiniz. Uygulamalarınızı yüksek kullanılabilirliğe göre tasarlamak hakkında daha fazla bilgi için bkz. [coğrafi artıklığı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](geo-redundant-design.md).
+Depolama Hesabınız ikincil bölgeye okuma erişimi için yapılandırılmışsa, birincil bölge herhangi bir nedenden dolayı kullanılamaz hale gelirse, uygulamalarınızı ikincil bölgeden verileri okumak için sorunsuz bir şekilde kaydırma yapmak üzere tasarlayabilirsiniz. 
 
-İkinciye okuma erişimi etkinleştirildiğinde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, BLOB depolama için birincil uç noktanız ise `myaccount.blob.core.windows.net` İkincil uç nokta olur `myaccount-secondary.blob.core.windows.net` . Depolama hesabınızın hesap erişim anahtarları, hem birincil hem de ikincil uç noktalar için aynıdır.
+RA-GRS veya RA-GZRS etkinleştirildikten sonra ikincil bölge, okuma erişimi için kullanılabilir. böylece, bir kesinti durumunda ikinciye doğru şekilde okunabilmesi için uygulamanızı önceden test edebilirsiniz. Uygulamalarınızı yüksek kullanılabilirliğe göre tasarlamak hakkında daha fazla bilgi için bkz. [coğrafi artıklığı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](geo-redundant-design.md).
+
+İkincil öğesine okuma erişimi etkinleştirildiğinde, uygulamanız ikincil uç noktadan ve birincil uç noktadan okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, BLOB depolama için birincil uç noktanız ise `myaccount.blob.core.windows.net` İkincil uç nokta olur `myaccount-secondary.blob.core.windows.net` . Depolama hesabınızın hesap erişim anahtarları, hem birincil hem de ikincil uç noktalar için aynıdır.
 
 ### <a name="check-the-last-sync-time-property"></a>Son Eşitleme Zamanı özelliğini denetleme
 
