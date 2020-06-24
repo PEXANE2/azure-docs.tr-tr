@@ -2,22 +2,21 @@
 title: Azure AD Uygulama Ara Sunucusu ile şirket içi API 'Lere erişme
 description: Azure Active Directory uygulama proxy 'Si, yerel uygulamaların şirket içinde veya bulut VM 'Lerinde barındırmanıza olanak sağlayan API 'Lere ve iş mantığına güvenli bir şekilde erişmesini sağlar.
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: has-adal-ref
-ms.openlocfilehash: c3efd94e741124d5e662ac17e9c1daaf66d4c1c5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168818"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206454"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile şirket içi API 'lere güvenli erişim
 
@@ -35,7 +34,7 @@ Aşağıdaki diyagramda, herhangi bir gelen bağlantı noktasını açmadan API 
 
 ![Azure AD Uygulama Ara Sunucusu API erişimi](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-Azure AD Uygulama Ara Sunucusu, API erişimi için genel bir uç nokta olarak çalışarak ve kimlik doğrulama ve yetkilendirme sağlayarak çözümün omurgasını oluşturur. [Adal](/azure/active-directory/develop/active-directory-authentication-libraries) kitaplıklarını kullanarak, büyük bir platform dizisinden API 'lerinize erişebilirsiniz.
+Azure AD Uygulama Ara Sunucusu, API erişimi için genel bir uç nokta olarak çalışarak ve kimlik doğrulama ve yetkilendirme sağlayarak çözümün omurgasını oluşturur. [Microsoft kimlik doğrulama kitaplığı (msal)](/azure/active-directory/develop/active-directory-authentication-libraries) kitaplıklarını kullanarak çok sayıda platformda API 'lerinize erişebilirsiniz.
 
 Azure AD Uygulama Ara Sunucusu kimlik doğrulaması ve yetkilendirme, Azure AD 'de oluşturulduğundan, yalnızca güvenilen cihazların uygulama proxy 'Si aracılığıyla yayınlanan API 'Lere erişebildiğinden emin olmak için Azure AD koşullu erişim 'i kullanabilirsiniz. Azure AD JOIN veya masaüstleri için Azure AD hibrit ve cihazlar için Intune ile yönetilen ' i kullanın. Ayrıca Azure Multi-Factor Authentication gibi Azure Active Directory Premium özelliklerden ve [Azure kimlik koruması](/azure/active-directory/active-directory-identityprotection)'nın makine öğrenimi ile desteklenen güvenliğinin avantajlarından yararlanabilirsiniz.
 
@@ -137,7 +136,7 @@ AppProxyNativeAppSample uygulamasını şimdi Azure Active Directory kaydettiniz
 
 ## <a name="configure-the-native-app-code"></a>Yerel uygulama kodunu yapılandırma
 
-Son adım, yerel uygulamayı yapılandırmaktır. NativeClient örnek uygulamasındaki *Form1.cs* dosyasındaki aşağıdaki kod parçacığı, adal kitaplığının API çağrısını istemek için belirteci almasına ve uygulama üstbilgisine taşıyıcı olarak iliştirmesine neden olur.
+Son adım, yerel uygulamayı yapılandırmaktır. NativeClient örnek uygulamasındaki *Form1.cs* dosyasındaki aşağıdaki kod parçacığı, msal kitaplığının API çağrısını isteme belirtecini almasına ve uygulama üstbilgisine taşıyıcı olarak iliştirmesine neden olur.
 
    ```
    // Acquire Access Token from AAD for Proxy Application
@@ -172,7 +171,7 @@ if (authResult != null)
  }
 ```
 
-Yerel uygulamayı Azure Active Directory bağlanacak şekilde yapılandırmak ve API uygulama ara sunucusunu çağırmak için, NativeClient örnek uygulamasının *app. config* dosyasındaki yer tutucu DEğERLERINI Azure AD ile güncelleştirin:
+Yerel uygulamayı Azure Active Directory bağlanacak ve API uygulama ara sunucusunu çağıracak şekilde yapılandırmak için, NativeClient Sample uygulamasının *App.config* dosyasındaki yer tutucu DEğERLERINI Azure AD ile güncelleştirin:
 
 - Alan içindeki **Dizin (kiracı) kimliğini** yapıştırın `<add key="ida:Tenant" value="" />` . Bu değeri (bir GUID), uygulamalarınızdan birinin **genel bakış** sayfasından bulabilir ve kopyalayabilirsiniz.
 

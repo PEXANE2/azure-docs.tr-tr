@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75610072"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079343"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric tek başına küme dağıtımınızı planlayın ve hazırlayın
 
@@ -22,7 +22,7 @@ ms.locfileid: "75610072"
 ## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Hata etki alanları ve yükseltme etki alanı sayısını belirleme
 Bir [ *hata etki alanı* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) , fiziksel bir hata birimidir ve veri merkezlerindeki fiziksel altyapıyla doğrudan ilgilidir. Hata etki alanı, tek bir başarısızlık noktasını paylaşan donanım bileşenlerinden (bilgisayarlar, anahtarlar, ağlar ve daha fazlası) oluşur. Hata etki alanları ve dolaplar arasında 1:1 eşleme olmamasına karşın, gevşekçe, her raf bir hata etki alanı olarak kabul edilebilir.
 
-Kümeconfig. JSON içinde FDs belirttiğinizde, her bir FD için adı seçebilirsiniz. Service Fabric hiyerarşik FDs 'yi desteklediğinden, bu sayede altyapı topolojinizi yansıtabilmenizi sağlayabilirsiniz.  Örneğin, aşağıdaki FDs geçerlidir:
+ClusterConfig.jsüzerinde FDs belirttiğinizde her bir FD için adı seçebilirsiniz. Service Fabric hiyerarşik FDs 'yi desteklediğinden, bu sayede altyapı topolojinizi yansıtabilmenizi sağlayabilirsiniz.  Örneğin, aşağıdaki FDs geçerlidir:
 
 * "faultDomain": "FD:/room1/raf1/Machine1"
 * "faultDomain": "FD:/FD1"
@@ -32,7 +32,7 @@ Kümeconfig. JSON içinde FDs belirttiğinizde, her bir FD için adı seçebilir
 
 Bu kavramları düşünmek için en basit yol, planlı bakım birimi olarak bir plansız hata ve UDs birimi olarak FDs 'yi göz önünde bulundurmaktır.
 
-Kümeconfig. JSON içinde UDs belirttiğinizde, her bir UD için adı seçebilirsiniz. Örneğin, aşağıdaki adlar geçerlidir:
+ClusterConfig.jsüzerinde UDs belirttiğinizde, her bir UD için adı seçebilirsiniz. Örneğin, aşağıdaki adlar geçerlidir:
 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
@@ -51,7 +51,7 @@ Durum bilgisiz iş yükleri çalıştıran test kümelerinde üç düğüm olmal
 
 ## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Düğüm olarak kullanılacak makineleri hazırlama
 
-Kümeye eklemek istediğiniz her makine için önerilen bazı özellikler şunlardır:
+Bir Service Fabric kümesindeki makineler için önerilen özellikler aşağıda verilmiştir:
 
 * En az 16 GB RAM
 * En az 40 GB kullanılabilir disk alanı
@@ -61,20 +61,22 @@ Kümeye eklemek istediğiniz her makine için önerilen bazı özellikler şunla
 * [.NET Framework 4.5.1 veya üzeri](https://www.microsoft.com/download/details.aspx?id=40773), tam yüklemesi
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * [RemoteRegistry hizmetinin](https://technet.microsoft.com/library/cc754820) tüm makinelerde çalışıyor olması gerekir
-* Service Fabric yükleme sürücüsü NTFS dosya sistemi olmalıdır
+* **Service Fabric yükleme sürücüsü NTFS dosya sistemi olmalıdır**
+* **Windows Hizmetleri *performans günlükleri & uyarıları* ve *Windows olay günlüğü* [etkin](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))olmalıdır**.
 
-Kümeyi dağıtan ve yapılandıran küme yöneticisinin her makinede [yönetici ayrıcalıklarına](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) sahip olması gerekir. Service Fabric’i bir etki alanı denetleyicisine yükleyemezsiniz.
+> [!IMPORTANT]
+> Kümeyi dağıtan ve yapılandıran küme yöneticisinin her makinede [yönetici ayrıcalıklarına](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) sahip olması gerekir. Service Fabric’i bir etki alanı denetleyicisine yükleyemezsiniz.
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Windows Server için Service Fabric tek başına paketini indirin
 [Bağlantı Service Fabric tek başına paketini indirin-Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) ve paketin bir parçası olmayan bir dağıtım makinesine ya da kümenizin bir parçası olacak makinelerden birine ayıklayın.
 
 ## <a name="modify-cluster-configuration"></a>Küme yapılandırmasını değiştirme
-Tek başına küme oluşturmak için, kümenin belirtimini açıklayan bir tek başına küme yapılandırması ClusterConfig. JSON dosyası oluşturmanız gerekir. Yapılandırma dosyasını aşağıdaki bağlantıda bulunan şablonlarda temel alabilirsiniz. <br>
+Tek başına küme oluşturmak için, bir tek başına küme ClusterConfig.jsyapılandırması oluşturmanız gerekir ve bu küme, kümenin belirtimini açıklar. Yapılandırma dosyasını aşağıdaki bağlantıda bulunan şablonlarda temel alabilirsiniz. <br>
 [Tek başına küme yapılandırması](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 Bu dosyadaki bölümlerle ilgili ayrıntılar için bkz. [tek başına Windows kümesi Için yapılandırma ayarları](service-fabric-cluster-manifest.md).
 
-İndirdiğiniz paketten Kümeconfig. JSON dosyalarından birini açın ve aşağıdaki ayarları değiştirin:
+İndirdiğiniz paketteki dosyalardaki ClusterConfig.jsbirini açın ve aşağıdaki ayarları değiştirin:
 
 | **Yapılandırma ayarı** | **Açıklama** |
 | --- | --- |
@@ -115,21 +117,21 @@ Bir Küme Yöneticisi Service Fabric tek başına kümesi yapılandırdığında
 
 | **Virüsten koruma hariç tutulan süreçler** |
 | --- |
-| Fabric. exe |
-| FabricHost. exe |
-| Fabricınstallerservice. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| Imagebuilder. exe |
-| FabricGateway. exe |
-| FabricDCA. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| FileStoreService. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
 
 ## <a name="validate-environment-using-testconfiguration-script"></a>TestConfiguration betiği kullanarak ortamı doğrulama
-TestConfiguration. ps1 betiği tek başına pakette bulunabilir. Yukarıdaki ölçütlerden bazılarını doğrulamak için bir en iyi yöntemler Çözümleyicisi olarak kullanılır ve bir kümenin belirli bir ortamda dağıtılıp dağıtılamayacağını doğrulamak için bir sağlamlık denetimi olarak kullanılmalıdır. Herhangi bir hata varsa, sorun giderme için [ortam kurulumu](service-fabric-cluster-standalone-deployment-preparation.md) altındaki listeye bakın.
+TestConfiguration.ps1 betiği tek başına pakette bulunabilir. Yukarıdaki ölçütlerden bazılarını doğrulamak için bir en iyi yöntemler Çözümleyicisi olarak kullanılır ve bir kümenin belirli bir ortamda dağıtılıp dağıtılamayacağını doğrulamak için bir sağlamlık denetimi olarak kullanılmalıdır. Herhangi bir hata varsa, sorun giderme için [ortam kurulumu](service-fabric-cluster-standalone-deployment-preparation.md) altındaki listeye bakın.
 
 Bu betik, küme yapılandırma dosyasında düğüm olarak listelenen tüm makinelere yönetici erişimi olan herhangi bir makinede çalıştırılabilir. Bu betiğin çalıştırıldığı makinenin kümenin bir parçası olması gerekmez.
 

@@ -8,12 +8,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7540c5a82220eef61b8f1cf470697315496cd6bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127599"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194799"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Tek cihazların veya ölçekteki otomatik dağıtımları IoT Edge anlayın
 
@@ -61,7 +61,7 @@ Hedef koşul, dağıtımın kullanım ömrü boyunca sürekli olarak değerlendi
 
 Örneğin, hedef koşul etiketleriyle bir dağıtımınız vardır. ortam = ' prod '. Dağıtımı başlattığınızda 10 üretim cihazı vardır. Modüller bu 10 cihaza başarıyla yüklenir. IoT Edge Aracısı durumu 10 toplam cihaz, 10 başarılı yanıt, 0 hata yanıtı ve 0 bekleyen yanıt gösterir. Artık etiketlere sahip beş cihaz ekleyin. ortam = ' prod '. Hizmet değişikliği algılar ve IoT Edge Aracı durumu 15 toplam cihaz, 10 başarılı yanıt, 0 hata yanıtı ve beş yeni cihaza dağıtırken 5 bekleyen yanıt olur.
 
-Hedef cihazları seçmek için Device ikizi etiketlerindeki herhangi bir Boole koşulunu, Device ikizi bildirilen özellikleri veya DeviceID 'yi kullanın. Koşulu etiketleriyle birlikte kullanmak istiyorsanız, Device ikizi 'ın özellikler ile aynı düzey altında "Etiketler"{} : bölümüne eklemeniz gerekir. [Cihaz ikizi Etiketler hakkında daha fazla bilgi edinin](../iot-hub/iot-hub-devguide-device-twins.md)
+Hedef cihazları seçmek için Device ikizi etiketlerindeki herhangi bir Boole koşulunu, Device ikizi bildirilen özellikleri veya DeviceID 'yi kullanın. Koşulu etiketleriyle birlikte kullanmak istiyorsanız, {} Device ikizi 'ın özellikler ile aynı düzey altında "Etiketler": bölümüne eklemeniz gerekir. [Cihaz ikizi Etiketler hakkında daha fazla bilgi edinin](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Hedef koşulları örnekleri:
 
@@ -69,15 +69,15 @@ Hedef koşulları örnekleri:
 * Tags. Environment = ' prod '
 * Tags. Environment = ' prod ' ve Tags. Location = ' westus '
 * Tags. Environment = ' prod ' veya Tags. Location = ' westus '
-* Tags. operator = ' John ' ve Tags. Environment = ' prod ' NOT DeviceID = ' linuxprod1 '
+* Tags. operator = ' John ' ve Tags. Environment = ' prod ' ve NOT DeviceID = ' linuxprod1 '
 * Properties. bildirilen. devicemodel = ' 4000x '
 
 Bir hedef koşul oluştururken bu kısıtlamaları göz önünde bulundurun:
 
 * Device ikizi 'da, yalnızca etiketleri, bildirilen özellikleri veya DeviceID 'yi kullanarak bir hedef koşul oluşturabilirsiniz.
 * Hedef koşulun herhangi bir bölümünde çift tırnak işaretlerine izin verilmez. Tek tırnakları kullanın.
-* Tek tırnak işaretleri, hedef koşulun değerlerini temsil eder. Bu nedenle, cihaz adının bir parçası ise, tek tırnağa başka bir teklifle kaçış yapmanız gerekir. Örneğin, adlı `operator'sDevice`bir cihazı hedeflemek için yazın `deviceId='operator''sDevice'`.
-* Hedef koşul değerlerinde sayılar, harfler ve aşağıdaki karakterlere izin verilir: `-:.+%_#*?!(),=@;$`.
+* Tek tırnak işaretleri, hedef koşulun değerlerini temsil eder. Bu nedenle, cihaz adının bir parçası ise, tek tırnağa başka bir teklifle kaçış yapmanız gerekir. Örneğin, adlı bir cihazı hedeflemek için `operator'sDevice` yazın `deviceId='operator''sDevice'` .
+* Hedef koşul değerlerinde sayılar, harfler ve aşağıdaki karakterlere izin verilir: `-:.+%_#*?!(),=@;$` .
 
 ### <a name="priority"></a>Öncelik
 
@@ -142,7 +142,7 @@ Dağıtım bildiriminde Module ikizi istenen özellikleri ekleyebilirsiniz. Stan
 }
 ```
 
-Aynı cihazların bazılarını veya tümünü hedefleyen katmanlı bir dağıtımda, sanal algılayıcının 1000 ileti göndermesini ve sonra durdurmasını söyleyen bir özellik ekleyebilirsiniz. Var olan özelliklerin üzerine yazmak istemezsiniz, bu nedenle, istenen özellikler `layeredProperties`içinde yeni özelliği içeren yeni bir bölüm oluşturursunuz:
+Aynı cihazların bazılarını veya tümünü hedefleyen katmanlı bir dağıtımda, sanal algılayıcının 1000 ileti göndermesini ve sonra durdurmasını söyleyen bir özellik ekleyebilirsiniz. Var olan özelliklerin üzerine yazmak istemezsiniz, bu nedenle, istenen özellikler içinde yeni özelliği içeren yeni bir bölüm oluşturursunuz `layeredProperties` :
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -166,7 +166,7 @@ Her iki dağıtımda de uygulanmış bir cihaz, sanal sıcaklık algılayıcıs�
 }
 ```
 
-İkizi modülünün `properties.desired` alanını katmanlı bir dağıtımda ayarlarsanız, daha düşük öncelikli dağıtımlarda Bu modülün istenen özelliklerinin üzerine yazar.
+`properties.desired`İkizi modülünün alanını katmanlı bir dağıtımda ayarlarsanız, daha düşük öncelikli dağıtımlarda Bu modülün istenen özelliklerinin üzerine yazar.
 
 ## <a name="phased-rollout"></a>Aşamalı dağıtım
 
@@ -174,7 +174,7 @@ Aşamalı bir dağıtım, bir işlecin bir dizi IoT Edge cihaza değişiklikleri
 
 Aşamalı bir dağıtım aşağıdaki aşamalar ve adımlarda yürütülür:
 
-1. IoT Edge cihazların bir test ortamı oluşturun ve gibi `tag.environment='test'`bir cihaz ikizi etiketi ayarlayarak.Test ortamı, dağıtımın sonunda hedeflenecek üretim ortamını yansıtmalıdır.
+1. IoT Edge cihazların bir test ortamı oluşturun ve gibi bir cihaz ikizi etiketi ayarlayarak `tag.environment='test'` .Test ortamı, dağıtımın sonunda hedeflenecek üretim ortamını yansıtmalıdır.
 2. İstenen modülleri ve konfigürasyonları içeren bir dağıtım oluşturun. Hedefleme koşulu, test IoT Edge cihaz ortamını hedeflemelidir.
 3. Test ortamında yeni modül yapılandırmasını doğrulayın.
 4. Hedefleme koşuluna yeni bir etiket ekleyerek dağıtımı, üretim IoT Edge cihazlarının bir alt kümesini içerecek şekilde güncelleştirin. Ayrıca, dağıtım önceliğin o cihazları hedefleyen diğer dağıtımlardan daha yüksek olduğundan emin olun

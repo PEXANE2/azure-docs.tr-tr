@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ece49d0c1537e345b1ccb1f44f907252a5a7b4e1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738770"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203903"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C 'de telefon numarası talep dönüşümlerini tanımlayın
 
@@ -37,7 +37,7 @@ Veri türünü `phoneNumber` `string` veri türüne dönüştürür.
 
 Bu örnekte, değer türü olan cellPhoneNumber talebi, `phoneNumber` değer türü olan bir cellPhone talebine dönüştürülür `string` .
 
-```XML
+```xml
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
@@ -72,7 +72,7 @@ Bu talep dönüştürmesi telefon numarasının biçimini doğrular. Geçerli bi
 
 Bu talep dönüşümünü, belirtilen dize talebinin geçerli bir telefon numarası olduğundan emin olmak için kullanabilirsiniz. Aksi takdirde, bir hata iletisi oluşturulur. Aşağıdaki örnek **Phonestring** ClaimType 'ın gerçekten geçerli bir telefon numarası olduğunu denetler ve ardından standart Azure AD B2C biçimindeki telefon numarasını döndürür. Aksi takdirde, bir hata iletisi oluşturulur.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
@@ -86,7 +86,7 @@ Bu talep dönüşümünü, belirtilen dize talebinin geçerli bir telefon numara
 
 Bu talep dönüşümünü içeren doğrulama teknik profilini çağıran kendi kendini onaylanan teknik profil, hata iletisini tanımlayabilir.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationInvalidPhoneNumber">Custom error message if the phone number is not valid.</Item>
@@ -132,7 +132,7 @@ Bu talep dönüşümünü, tam telefon numarasını ülke/bölge koduna ve ulusa
 
 Aşağıdaki örnek telefon numarasını Ulusal numara ve ülke/bölge koduna bölmeye çalışır. Telefon numarası geçerliyse, telefon numarası Ulusal numara tarafından geçersiz kılınır. Telefon numarası geçerli değilse, bir özel durum oluşturulmaz ve telefon numarası hala özgün değerine sahip olur.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="phoneNumber" />
@@ -150,7 +150,7 @@ Aşağıdaki örnek telefon numarasını Ulusal numara ve ülke/bölge koduna b�
 
 Bu talep dönüşümünü içeren doğrulama teknik profilini çağıran kendi kendini onaylanan teknik profil, hata iletisini tanımlayabilir.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfPhoneNumberParseFailure">Custom error message if the phone number is not valid.</Item>

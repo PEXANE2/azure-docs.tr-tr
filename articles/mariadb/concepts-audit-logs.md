@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: e8d5abd81feb86ba48fc442ee95615cb52230a24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: 9b577b12250f1a600c91776e64ecaf65be5d8476
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063823"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100893"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda denetim günlükleri
 
@@ -22,15 +22,19 @@ MariaDB için Azure veritabanı 'nda, denetim günlüğü kullanıcılar tarafı
 
 ## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
 
-Varsayılan olarak, denetim günlüğü devre dışıdır. Etkinleştirmek için, açık olarak `audit_log_enabled` ayarlayın.
+>[!NOTE]
+> Sunucunuzun performansının yoğun bir şekilde etkilenmemesini sağlamak için, yalnızca denetim amaçlarıyla gerekli olay türlerini ve kullanıcıları günlüğe kaydetmek önerilir.
+
+Varsayılan olarak, denetim günlüğü devre dışıdır. Etkinleştirmek için, `audit_log_enabled` Açık olarak ayarlayın.
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
 - `audit_log_events`: günlüğe kaydedilecek olayları denetler. Belirli denetim olayları için aşağıdaki tabloya bakın.
-- `audit_log_include_users`: Günlükler için dahil edilecek MariaDB kullanıcıları. Bu parametre için varsayılan değer boştur; bu, günlüğe kaydedilecek tüm kullanıcıları içerir. Bunun önceliği daha yüksektir `audit_log_exclude_users`. Parametrenin uzunluk üst sınırı 512 karakterdir.
-> [!Note]
-> `audit_log_include_users`daha yüksek önceliğe sahiptir `audit_log_exclude_users`. Örneğin `audit_log_include_users`  =  `demouser` , `audit_log_exclude_users`ve  = ise, Kullanıcı daha yüksek önceliğe sahip olduğu `audit_log_include_users` için denetim günlüklerine dahil edilir. `demouser`
+- `audit_log_include_users`: Günlükler için dahil edilecek MariaDB kullanıcıları. Bu parametre için varsayılan değer boştur; bu, günlüğe kaydedilecek tüm kullanıcıları içerir. Bunun önceliği daha yüksektir `audit_log_exclude_users` . Parametrenin uzunluk üst sınırı 512 karakterdir.
 - `audit_log_exclude_users`: MariaDB kullanıcıları günlük kaydı dışında tutulacak. En fazla dört Kullanıcı için izin verir. Parametrenin uzunluk üst sınırı 256 karakterdir.
+
+> [!Note]
+> `audit_log_include_users`daha yüksek önceliğe sahiptir `audit_log_exclude_users` . Örneğin, ve ise `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` , Kullanıcı `audit_log_include_users` daha yüksek önceliğe sahip olduğu için denetim günlüklerine dahil edilir.
 
 | **Olay** | **Açıklama** |
 |---|---|
@@ -79,6 +83,9 @@ Aşağıdaki bölümlerde, olay türüne göre MariaDB denetim günlükleri tara
 ### <a name="general"></a>Genel
 
 Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıcı olay türleri için geçerlidir.
+
+> [!NOTE]
+> İçin `sql_text` , 2048 karakteri aşarsa günlük kesilecek.
 
 | **Özellik** | **Açıklama** |
 |---|---|

@@ -2,24 +2,19 @@
 title: 'Hızlı başlangıç: Python uygulamasından yakalanan verileri okuma-Azure Event Hubs'
 description: "Hızlı başlangıç: Event Hubs yakalama özelliğini göstermek için Azure Python SDK 'sını kullanan betikler."
 services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-editor: ''
+author: spelluru
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18, tracking-python
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 658bfc95e9d7ef2954d245ac9bd7eafb56ebaaa1
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561560"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296602"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Hızlı başlangıç: Event Hubs Capture izlenecek yol: Python (Azure-eventhub sürüm 1)
 

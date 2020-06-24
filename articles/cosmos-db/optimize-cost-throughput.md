@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afbf0bee86a3d600892ed562ee939d48168ddfdc
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501474"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112949"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
 
@@ -65,7 +65,7 @@ Farklı düzeylerde üretilen iş yükünü sağlarken, iş yükünüzün özell
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>İsteklerin hız sınırlaması ile en iyileştirin
 
-Gecikme süresine duyarlı olmayan iş yükleri için daha az üretilen iş sağlayabilir ve gerçek aktarım hızı sağlanan aktarım hızını aştığında uygulamanın hız sınırlaması olmasını sağlayabilirsiniz. Sunucu isteği preemptively (http durum kodu 429 `RequestRateTooLarge` ) ile sona erecektir ve kullanıcının isteği yeniden `x-ms-retry-after-ms` denemeden önce beklemesi gereken süreyi milisaniye olarak belirten üst bilgiyi döndürür. 
+Gecikme süresine duyarlı olmayan iş yükleri için daha az üretilen iş sağlayabilir ve gerçek aktarım hızı sağlanan aktarım hızını aştığında uygulamanın hız sınırlaması olmasını sağlayabilirsiniz. Sunucu isteği preemptively `RequestRateTooLarge` (http durum kodu 429) ile sona erecektir ve `x-ms-retry-after-ms` kullanıcının isteği yeniden denemeden önce beklemesi gereken süreyi milisaniye olarak belirten üst bilgiyi döndürür. 
 
 ```html
 HTTP Status 429, 
@@ -75,9 +75,9 @@ HTTP Status 429,
 
 ### <a name="retry-logic-in-sdks"></a>SDK 'larda yeniden deneme mantığı 
 
-Yerel SDK 'lar (.NET/.NET Core, Java, Node. js ve Python), bu yanıtı dolaylı olarak yakalayıp sunucu tarafından belirtilen yeniden deneme üst bilgisine göre yakalar ve isteği yeniden dener. Hesabınız birden çok istemci tarafından aynı anda erişilmediği takdirde, sonraki yeniden deneme başarılı olur.
+Yerel SDK 'lar (.NET/.NET Core, Java, Node.js ve Python), bu yanıtı, sunucu tarafından belirtilen yeniden deneme üst bilgisine göre dolaylı olarak yakalar ve isteği yeniden dener. Hesabınız birden çok istemci tarafından aynı anda erişilmediği takdirde, sonraki yeniden deneme başarılı olur.
 
-İstek hızının sürekli olarak birden fazla istemciniz varsa, o anda 9 ' a ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Bu gibi durumlarda, istemci uygulamaya 429 durum `RequestRateTooLargeException` kodu ile bir oluşturur. Varsayılan yeniden deneme sayısı, `RetryOptions` connectionpolicy örneğinde ayarlanarak değiştirilebilir. Varsayılan olarak, isteğin `RequestRateTooLargeException` istek hızının üzerinde çalışmaya devam etmesi durumunda 429 durum kodu ile toplam 30 saniyelik bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
+İstek hızının sürekli olarak birden fazla istemciniz varsa, o anda 9 ' a ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Bu gibi durumlarda, istemci `RequestRateTooLargeException` uygulamaya 429 durum kodu ile bir oluşturur. Varsayılan yeniden deneme sayısı, `RetryOptions` ConnectionPolicy örneğinde ayarlanarak değiştirilebilir. Varsayılan olarak, `RequestRateTooLargeException` isteğin istek hızının üzerinde çalışmaya devam etmesi durumunda 429 durum kodu ile toplam 30 saniyelik bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
 
@@ -117,7 +117,7 @@ Varsayılan olarak, Azure Cosmos DB her kaydın her bir özelliğini otomatik ol
 
 Sağlanan toplam RUs sayısını, hız sınırlı isteklerin sayısını ve Azure portal kullandığınız ru sayısını izleyebilirsiniz. Aşağıdaki görüntüde örnek kullanım ölçümü gösterilmektedir:
 
-![Azure portal istek birimlerini izleme](./media/optimize-cost-throughput/monitoring.png)
+:::image type="content" source="./media/optimize-cost-throughput/monitoring.png" alt-text="Azure portal istek birimlerini izleme":::
 
 Ayrıca, hız sınırlı isteklerin sayısının belirli bir eşiği aşıp aşmadığını denetlemek için uyarılar da ayarlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Cosmos DB makalesini izleme](use-metrics.md) . Bu uyarılar, sağlanan aktarım hızını otomatik olarak artırmak için hesap yöneticilerine e-posta gönderebilir veya özel bir HTTP Web kancası veya bir Azure Işlevi çağırabilir. 
 
@@ -139,7 +139,7 @@ Yeni bir iş yükünün sağlanan verimini öğrenmek için aşağıdaki adımla
 
 2. Kapsayıcıları beklenenden daha yüksek aktarım hızı ile oluşturmanız ve ardından gerektikçe ölçeklendirilmesi önerilir. 
 
-3. İsteklerin hız sınırlı olduğunda otomatik yeniden denemelerden yararlanmak için yerel Azure Cosmos DB SDK 'Lardan birini kullanmanız önerilir. Desteklenmeyen bir platformda çalışıyorsanız Cosmos DB REST API kullanın, `x-ms-retry-after-ms` üstbilgiyi kullanarak kendi yeniden deneme ilkenizi uygulayın. 
+3. İsteklerin hız sınırlı olduğunda otomatik yeniden denemelerden yararlanmak için yerel Azure Cosmos DB SDK 'Lardan birini kullanmanız önerilir. Desteklenmeyen bir platformda çalışıyorsanız Cosmos DB REST API kullanın, üstbilgiyi kullanarak kendi yeniden deneme ilkenizi uygulayın `x-ms-retry-after-ms` . 
 
 4. Tüm yeniden denemeler başarısız olduğunda uygulama kodunuzun düzgün şekilde desteklediğinden emin olun. 
 

@@ -1,14 +1,14 @@
 ---
 title: En iyi uygulamalar
 description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1d482eeb8b3da94e8af0a597ade1a1d834ccf6a0
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d91804b91b50ee1ba4015456438c9f153ed12ada
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677790"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201727"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -121,6 +121,9 @@ Ortak bir örnek, dosyaları bir işlem düğümüne kopyalamak için kullanıla
 
 Yalnızca bir ile iki saniye çalışan görevler ideal değildir. Tek bir görevde önemli miktarda iş yapmayı denemelisiniz (en az 10 saniye, saat veya güne kadar). Her görev bir dakika (veya daha fazla) boyunca yürütülüyordur, genel işlem zamanının bir bölümü olarak zamanlama yükü küçüktür.
 
+### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>Windows düğümlerinde kısa görevler için havuz kapsamını kullanma
+
+Toplu Iş düğümlerinde bir görevi zamanlarken, görev kapsamı veya havuz kapsamıyla çalıştırmayı seçebilirsiniz. Görev yalnızca kısa bir süre için çalışıyorsa, bu görevin otomatik Kullanıcı hesabını oluşturmak için gereken kaynaklar nedeniyle görev kapsamı verimsiz olabilir. Daha fazla verimlilik için, bu görevleri havuz kapsamına ayarlamayı göz önünde bulundurun. Daha fazla bilgi için bkz. [bir görevi havuz kapsamı ile otomatik Kullanıcı olarak çalıştırma](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope).
 
 ## <a name="nodes"></a>Düğümler
 

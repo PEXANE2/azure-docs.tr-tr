@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277784"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697699"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure İşlevleri’nin performansını ve güvenilirliğini iyileştirme
 
@@ -24,7 +24,7 @@ Azure Işlevleri 'ni kullanarak sunucusuz çözümlerinizi oluşturma ve mimarin
 
 Büyük ve uzun süre çalışan işlevler, beklenmeyen zaman aşımı sorunlarına neden olabilir. Belirli bir barındırma planının zaman aşımları hakkında daha fazla bilgi edinmek için bkz. [işlev uygulaması zaman aşımı süresi](functions-scale.md#timeout). 
 
-Birçok Node. js bağımlılığı nedeniyle bir işlev büyük olabilir. Bağımlılıkları içeri aktarmak, beklenmedik zaman aşımları ile sonuçlanan daha fazla yükleme süresi de oluşmasına neden olabilir. Bağımlılıklar hem açık hem de örtük olarak yüklenir. Kodunuz tarafından yüklenen tek bir modül kendi ek modüllerini yükleyebilir. 
+Birçok Node.js bağımlılığı nedeniyle bir işlev büyük olabilir. Bağımlılıkları içeri aktarmak, beklenmedik zaman aşımları ile sonuçlanan daha fazla yükleme süresi de oluşmasına neden olabilir. Bağımlılıklar hem açık hem de örtük olarak yüklenir. Kodunuz tarafından yüklenen tek bir modül kendi ek modüllerini yükleyebilir. 
 
 Mümkün olduğunda, büyük işlevleri birlikte çalışarak daha küçük işlev kümelerine yeniden düzenleyin ve yanıtları hızlı bir şekilde geri döndürün. Örneğin, bir Web kancası veya HTTP tetikleyici işlevi belirli bir zaman sınırı içinde bir bildirim yanıtı gerektirebilir; Web kancalarının anında yanıt gerektirmesi için yaygındır. HTTP tetikleyici yükünü bir kuyruk tetikleyicisi işlevi tarafından işlenmek üzere bir kuyruğa geçirebilirsiniz. Bu yaklaşım, gerçek işi ertelemenizi ve anında yanıt döndürmenizi sağlar.
 
@@ -44,7 +44,7 @@ Olay Hub 'ları, yüksek hacimli iletişimleri desteklemek için faydalıdır.
 
 ### <a name="write-functions-to-be-stateless"></a>İşlevleri durum bilgisiz olacak şekilde yaz 
 
-İşlevler, mümkünse durum bilgisiz ve ıdempotent olmalıdır. Gerekli durum bilgilerini verileriniz ile ilişkilendirin. Örneğin, işlenen bir sıra, muhtemelen ilişkili `state` bir üyeye sahip olabilir. İşlev durum bilgisiz olmaya devam ederken bir işlev bu duruma göre bir sırayı işleyebilir. 
+İşlevler, mümkünse durum bilgisiz ve ıdempotent olmalıdır. Gerekli durum bilgilerini verileriniz ile ilişkilendirin. Örneğin, işlenen bir sıra, muhtemelen ilişkili bir üyeye sahip olabilir `state` . İşlev durum bilgisiz olmaya devam ederken bir işlev bu duruma göre bir sırayı işleyebilir. 
 
 Idempotent işlevleri, özellikle Zamanlayıcı tetikleyicilerle önerilir. Örneğin, her gün bir kez çalışması gereken bir şeydir varsa, aynı sonuçlarla her zaman çalışacak şekilde bu şekilde yazın. Belirli bir gün için iş olmadığında işlev çıkabilir. Ayrıca, önceki bir çalıştırmanın tamamlanmadıysa, sonraki çalıştırmanın kaldığınız yerden devam etmesi gerekir.
 
@@ -92,7 +92,7 @@ Bir işlev uygulaması oluşturduğunuzda, bunu bir depolama hesabıyla ilişkil
 
 Zaman uyumsuz programlama, özellikle ı/O işlemlerini engellemeye yönelik önerilen en iyi uygulamadır.
 
-C# dilinde her zaman bir `Result` `Wait` `Task` örnek üzerinde özelliğe veya çağırma yöntemine başvurulmaktan kaçının. Bu yaklaşım iş parçacığı tükenmesine yol açabilir.
+C# dilinde her zaman `Result` bir örnek üzerinde özelliğe veya çağırma yöntemine başvurulmaktan kaçının `Wait` `Task` . Bu yaklaşım iş parçacığı tükenmesine yol açabilir.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -104,17 +104,17 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Mümkün olduğunda toplu iş içinde ileti alma
 
-Olay Hub 'ı gibi bazı Tetikleyiciler tek bir çağrıdan bir toplu ileti almayı sağlar.  Toplu işlem iletilerinin çok daha iyi performansı vardır.  `host.json` Dosyadaki en büyük toplu iş boyutunu, [Host. JSON başvuru belgelerinde](functions-host-json.md) açıklandığı şekilde yapılandırabilirsiniz.
+Olay Hub 'ı gibi bazı Tetikleyiciler tek bir çağrıdan bir toplu ileti almayı sağlar.  Toplu işlem iletilerinin çok daha iyi performansı vardır.  Dosyadaki en büyük toplu iş boyutunu `host.json` [başvuru belgelerindekihost.js](functions-host-json.md) ayrıntılı şekilde yapılandırabilirsiniz.
 
-C# işlevleri için türü türü kesin belirlenmiş bir dizi olarak değiştirebilirsiniz.  Örneğin, yöntem imzası yerine `EventData sensorEvent` olabilir `EventData[] sensorEvent`.  Diğer diller için, [burada gösterildiği gibi](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)toplu işi etkinleştirmek için ' de `function.json` `many` kardinalite özelliğini açık olarak ayarlamanız gerekir.
+C# işlevleri için türü türü kesin belirlenmiş bir dizi olarak değiştirebilirsiniz.  Örneğin, `EventData sensorEvent` Yöntem imzası yerine olabilir `EventData[] sensorEvent` .  Diğer diller için, `function.json` `many` [burada gösterildiği gibi](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)toplu işi etkinleştirmek için ' de kardinalite özelliğini açık olarak ayarlamanız gerekir.
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Eşzamanlılık daha iyi işlemek için konak davranışlarını yapılandırın
 
-İşlev `host.json` uygulamasındaki dosya, ana bilgisayar çalışma zamanı ve tetikleyici davranışları yapılandırmasına izin verir.  İşleme davranışlarına ek olarak, bir dizi tetikleyici için eşzamanlılık yönetebilirsiniz. Genellikle bu seçeneklerdeki değerlerin ayarlanması, her bir örneğin, çağrılan işlevlerin taleplerine uygun şekilde ölçeklendirilmesine yardımcı olabilir.
+`host.json`İşlev uygulamasındaki dosya, ana bilgisayar çalışma zamanı ve tetikleyici davranışları yapılandırmasına izin verir.  İşleme davranışlarına ek olarak, bir dizi tetikleyici için eşzamanlılık yönetebilirsiniz. Genellikle bu seçeneklerdeki değerlerin ayarlanması, her bir örneğin, çağrılan işlevlerin taleplerine uygun şekilde ölçeklendirilmesine yardımcı olabilir.
 
-Host. JSON dosyasındaki ayarlar, işlevin *tek bir örneği* içinde, uygulamadaki tüm işlevler arasında geçerlidir. Örneğin, iki HTTP işlevi olan bir işlev uygulamanız varsa ve [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) istekler 25 olarak AYARLANDıYSA, http tetikleyicisine yönelik bir istek paylaşılan 25 eşzamanlı istek için doğru sayılır.  Bu işlev uygulaması 10 örneğe ölçeklenirse, iki işlev 250 eşzamanlı istek (10 örnek * örnek başına 25 eşzamanlı istek) etkin bir şekilde izin verir. 
+Dosyadaki host.jsayarları, işlevin *tek bir örneği* içinde, uygulamadaki tüm işlevler arasında geçerlidir. Örneğin, iki HTTP işlevi olan bir işlev uygulamanız varsa ve [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) istekler 25 olarak ayarlandıysa, http tetikleyicisine yönelik bir istek paylaşılan 25 eşzamanlı istek için doğru sayılır.  Bu işlev uygulaması 10 örneğe ölçeklenirse, iki işlev 250 eşzamanlı istek (10 örnek * örnek başına 25 eşzamanlı istek) etkin bir şekilde izin verir. 
 
-Diğer konak yapılandırma seçenekleri [Host. JSON yapılandırma makalesinde](functions-host-json.md)bulunur.
+Diğer konak yapılandırma seçenekleri, [host.jsyapılandırma makalesinde](functions-host-json.md)bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b85859e6294fa24731bc13e9edd5fe2610e8fb6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77612737"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733968"
 ---
-# <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanıyla hesap oturum açma sorunlarını giderme
+# <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanıyla hesap oturum açma sorunlarını giderme
 
-Bir kullanıcı hesabının Azure AD DS yönetilen bir etki alanında oturum açması için en yaygın nedenleri aşağıdaki senaryolar içerir:
+Bir kullanıcı hesabının Azure Active Directory Domain Services (Azure AD DS) tarafından yönetilen bir etki alanında oturum açmasını sağlayan en yaygın nedenleri aşağıdaki senaryolar içerir:
 
 * [Hesap henüz Azure AD DS ile eşitlenmedi.](#account-isnt-synchronized-into-azure-ad-ds-yet)
 * [Azure AD DS hesabının oturum açmasını sağlamak için parola karmalarını yoktur.](#azure-ad-ds-doesnt-have-the-password-hashes)
@@ -47,19 +47,19 @@ Azure AD, kiracınız için Azure AD DS etkinleştirene kadar NTLM veya Kerberos
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Şirket içi eşitlemeyle karma ortamlar
 
-Şirket içi AD DS ortamından eşitlenmek üzere Azure AD Connect kullanan karma ortamlarda, gerekli NTLM veya Kerberos parola karmalarını yerel olarak oluşturup Azure AD 'ye eşitleyebilir. Azure AD DS yönetilen etki alanınızı oluşturduktan sonra, [Azure Active Directory Domain Services için Parola karması eşitlemesini etkinleştirin][azure-ad-connect-phs]. Bu parola karması eşitleme adımını tamamlamadan, Azure AD DS kullanarak bir hesapta oturum açamazsınız. Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, bu adımları yeniden izlemeniz gerekir.
+Şirket içi AD DS ortamından eşitlenmek üzere Azure AD Connect kullanan karma ortamlarda, gerekli NTLM veya Kerberos parola karmalarını yerel olarak oluşturup Azure AD 'ye eşitleyebilir. Yönetilen etki alanınızı oluşturduktan sonra, [Azure Active Directory Domain Services için Parola karması eşitlemesini etkinleştirin][azure-ad-connect-phs]. Bu parola karması eşitleme adımını tamamlamadan, Azure AD DS kullanarak bir hesapta oturum açamazsınız. Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, bu adımları yeniden izlemeniz gerekir.
 
 Daha fazla bilgi için bkz. [Parola karması eşitlemesi Azure AD DS Için nasıl kullanılır][phs-process].
 
 ### <a name="cloud-only-environments-with-no-on-premises-synchronization"></a>Şirket içi eşitleme olmadan yalnızca bulutta bulunan ortamlar
 
-Şirket içi eşitleme olmadan Azure AD DS yönetilen etki alanları, yalnızca Azure AD 'de bulunan hesapların gerekli NTLM veya Kerberos parola karmalarını üretmesine de ihtiyacı vardır. Yalnızca bulut hesabı oturum açamıyor, Azure AD DS etkinleştirildikten sonra hesap için bir parola değiştirme işlemi başarıyla tamamlandı mı?
+Şirket içi eşitleme olmadan yönetilen etki alanları, yalnızca Azure AD 'de bulunan hesapların gerekli NTLM veya Kerberos parola karmalarını üretmesine de gerek vardır. Yalnızca bulut hesabı oturum açamıyor, Azure AD DS etkinleştirildikten sonra hesap için bir parola değiştirme işlemi başarıyla tamamlandı mı?
 
 * **Hayır, parola değiştirilmedi.**
     * Gerekli parola karmalarını oluşturmak için [hesabın parolasını değiştirin][enable-user-accounts] , sonra yeniden oturum açmayı denemeden önce 15 dakika bekleyin.
     * Azure AD DS devre dışı bırakıp yeniden etkinleştirirseniz, her hesabın, parolasını değiştirmek ve gerekli parola karmalarını oluşturmak için adımları yeniden izlemesi gerekir.
 * **Evet, Parola değiştirildi.**
-    * Gibi *sAMAccountName* formatı yerine `AADDSCONTOSO\deeriley` *UPN* biçimini `driley@aaddscontoso.com`kullanarak oturum açmayı deneyin.
+    * Gibi sAMAccountName formatı yerine *UPN* biçimini kullanarak oturum açmayı deneyin `driley@aaddscontoso.com` *SAMAccountName* `AADDSCONTOSO\deeriley` .
     * *SAMAccountName* , UPN ön eki aşırı uzun olan veya yönetilen etki alanındaki başka bir kullanıcıyla aynı olan kullanıcılar için otomatik olarak oluşturulabilir. *UPN* biçiminin BIR Azure AD kiracısı içinde benzersiz olması garanti edilir.
 
 ## <a name="the-account-is-locked-out"></a>Hesap kilitli
@@ -72,7 +72,7 @@ Hesap kilitleme sorunlarını giderme hakkında daha fazla bilgi için bkz. [Azu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM 'nize Azure AD DS yönetilen etki alanına katılma sorunları yaşıyorsanız, [yardım bulun ve Azure Active Directory için bir destek bileti açın][azure-ad-support].
+VM 'nize yönetilen etki alanına katılma sorunları yaşamaya devam ediyorsanız Yardım ' ı [bulun ve Azure Active Directory için bir destek bileti açın][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md

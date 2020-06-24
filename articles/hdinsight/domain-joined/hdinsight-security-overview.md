@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996321"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771130"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
-Azure HDInsight, kurumsal güvenlik ihtiyaçlarınızı karşılamak için çeşitli yöntemler sunar. Bu çözümlerin çoğu varsayılan olarak etkinleştirilmez. Bu esneklik, sizin için en önemli güvenlik özelliklerini seçmenize olanak sağlar. Ve istemediğiniz özellikler için ödeme yapmaktan kaçınmanızı sağlar. Bu esneklik Ayrıca, kurulum ve ortamınız için doğru çözümlerin etkinleştirildiğinden emin olmak için sizin sorumluluğunuzdadır.
+Azure HDInsight, kurumsal güvenlik ihtiyaçlarınızı karşılamak için çeşitli yöntemler sunar. Bu çözümlerin çoğu varsayılan olarak etkinleştirilmez. Bu esneklik, sizin için en önemli olan güvenlik özelliklerini seçmenizi sağlar ve istemediğiniz özellikler için ödeme yapmaktan kaçınmanıza yardımcı olur. Bu esneklik Ayrıca, kurulum ve ortamınız için doğru çözümlerin etkinleştirildiğinden emin olmak için sizin sorumluluğunuzdadır.
 
 Bu makale, güvenlik çözümlerini dört geleneksel güvenlik, kimlik doğrulaması, yetkilendirme ve şifreleme ile ayırarak güvenlik çözümlerine bakar.
 
@@ -33,7 +33,7 @@ HDInsight 'ta çevre güvenliği [sanal ağlar](../hdinsight-plan-virtual-networ
 
 VNET 'te dağıtılan tüm kümelerin özel bir uç noktası da olur. Uç noktası, küme ağ geçitlerine özel HTTP erişimi için VNET 'in içindeki özel bir IP 'ye çözümlenir.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 HDInsight 'tan [Kurumsal güvenlik paketi](apache-domain-joined-architecture.md) , Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi sağlar. Active Directory tümleştirme [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)kullanılarak elde edilir. Bu özelliklerde, bir Active Directory etki alanına katılmış bir HDInsight kümesi oluşturabilirsiniz. Daha sonra, kuruluş içinden kümeye kimlik doğrulayabilecek çalışanların bir listesini yapılandırın.
 
@@ -53,7 +53,7 @@ Denetim kümesi kaynak erişimi, kaynakların yetkisiz veya istenmeden erişimin
 
 Yönetici, HDInsight kümesi kaynaklarına ve verilerine yönelik tüm erişimi görüntüleyebilir ve rapor edebilir. Yönetici, erişim denetimi ilkelerine değişiklikleri görüntüleyip rapor edebilir.
 
-Apache Ranger ve ambarı denetim günlüklerine ve SSH erişim günlüklerine erişmek için [Azure izleyicisini etkinleştirin](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing). Ve denetim kayıtları sağlayan tabloları görüntüleyin.
+Apache Ranger ve ambarı denetim günlüklerine ve SSH erişim günlüklerine erişmek için [Azure izleyicisini etkinleştirin](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) ve denetim kayıtları sağlayan tabloları görüntüleyin.
 
 ### <a name="encryption"></a>Şifreleme
 

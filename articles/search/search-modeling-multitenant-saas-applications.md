@@ -8,20 +8,24 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549021"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081110"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Çok kiracılı SaaS uygulamaları ve Azure Bilişsel Arama için tasarım desenleri
+
 Çok kiracılı bir uygulama, başka bir kiracının verilerini görebilen veya paylaşabilen birçok kiracı için aynı hizmetleri ve özellikleri sağlayan bir uygulamadır. Bu belgede, Azure Bilişsel Arama ile oluşturulan çok kiracılı uygulamalar için kiracı yalıtımı stratejileri ele alınmaktadır.
 
 ## <a name="azure-cognitive-search-concepts"></a>Azure Bilişsel Arama kavramları
-Bir hizmet olarak arama çözümü olan Azure Bilişsel Arama, geliştiricilerin herhangi bir altyapıyı yönetmeksizin veya bilgi alma konusunda uzman hale gelmeden uygulamalara zengin arama deneyimleri eklemesine olanak tanır. Veriler hizmete yüklenir ve ardından bulutta depolanır. Azure Bilişsel Arama API 'sine yönelik basit istekleri kullanarak veriler daha sonra değiştirilebilir ve aranabilir. [Bu makalede](https://aka.ms/whatisazsearch)hizmete genel bakış bulabilirsiniz. Tasarım düzenlerini tartışmadan önce, Azure Bilişsel Arama 'de bazı kavramların anlaşılması önemlidir.
+Bir hizmet olarak arama çözümü olan [Azure bilişsel arama](search-what-is-azure-search.md) , geliştiricilerin herhangi bir altyapıyı yönetmeksizin veya bilgi alma konusunda uzman hale gelmeden uygulamalara zengin arama deneyimleri eklemesine olanak tanır. Veriler hizmete yüklenir ve ardından bulutta depolanır. Azure Bilişsel Arama API 'sine yönelik basit istekleri kullanarak veriler daha sonra değiştirilebilir ve aranabilir. 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Hizmetleri, dizinleri, alanları ve belgeleri arayın
+
+Tasarım düzenlerini tartışmadan önce, birkaç temel kavramın anlaşılması önemlidir.
+
 Azure Bilişsel Arama kullanırken bir *arama hizmetine*abone olur. Veriler Azure Bilişsel Arama karşıya yüklendiği için arama hizmeti içindeki bir *dizinde* depolanır. Tek bir hizmet içinde çok sayıda dizin olabilir. Veritabanlarının tanıdık kavramlarını kullanmak için, bir hizmet içindeki dizinler bir veritabanı içindeki tablolara beğenilirken arama hizmeti bir veritabanına eklenebilir.
 
 Bir arama hizmeti içindeki her dizin kendi şemasına sahiptir ve bu bir dizi özelleştirilebilir *alan*tarafından tanımlanır. Veriler bir Azure Bilişsel Arama dizinine tek tek *Belgeler*biçiminde eklenir. Her belge belirli bir dizine yüklenmelidir ve bu dizinin şemasına sığması gerekir. Azure Bilişsel Arama kullanarak veri ararken tam metin arama sorguları belirli bir dizine göre verilir.  Bu kavramları bir veritabanınızla karşılaştırmak için, alanlar bir tablodaki sütunlara eklenebilir ve belgeler satırlara eklenebilir.
@@ -127,5 +131,5 @@ Bu yöntem ayrı kullanıcı hesaplarının işlevselliğini, farklı izin düze
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Bilişsel Arama birçok uygulama için etkileyici bir seçimdir. Çok kiracılı uygulamalar için çeşitli tasarım düzenlerini değerlendirirken, Azure Bilişsel Arama en iyi şekilde her boyuttaki uygulama iş yüklerine ve mimarilerine sığması için [çeşitli fiyatlandırma katmanlarını](https://azure.microsoft.com/pricing/details/search/) ve ilgili [hizmet sınırlarını](search-limits-quotas-capacity.md) göz önünde bulundurun.
 
-Azure Bilişsel Arama ve çoklu kiracı senaryolarıyla ilgili herhangi bir soru, öğesine azuresearch_contact@microsoft.comyönlendirilebilir.
+Azure Bilişsel Arama ve çoklu kiracı senaryolarıyla ilgili herhangi bir soru, öğesine yönlendirilebilir azuresearch_contact@microsoft.com .
 

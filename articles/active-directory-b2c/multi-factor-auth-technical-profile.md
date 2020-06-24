@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b5d6787a41e59511267dd9e7f9048a0431e26a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332813"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204124"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde Azure MFA teknik profili tanımlama
 
@@ -34,7 +34,7 @@ Bu teknik profil:
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `Proprietary` **Name** özniteliğinin olarak ayarlanması gerekir. **Handler** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:
+**Protokol** öğesinin **Name** özniteliğinin olarak ayarlanması gerekir `Proprietary` . **Handler** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:
 
 ```
 Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -42,7 +42,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 Aşağıdaki örnekte bir Azure MFA teknik profili gösterilmektedir:
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
     <DisplayName>Send Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -61,22 +61,22 @@ Bu teknik profilin ilk modu, bir kod oluşturmak ve göndermek için kullanılı
 | --------- | -------- | ----------- |
 | userPrincipalName | Yes | Telefon numarasına sahip kullanıcı için tanımlayıcı. |
 | phoneNumber | Yes | SMS kodu göndermek için kullanılacak telefon numarası. |
-| Tadı | Hayır |SMS 'deki şirket adı. Sağlanmazsa, uygulamanızın adı kullanılır. |
-| yerel ayar | Hayır | SMS 'nin yerel ayarı. Sağlanmazsa, kullanıcının tarayıcı yerel ayarı kullanılır. |
+| Tadı | No |SMS 'deki şirket adı. Sağlanmazsa, uygulamanızın adı kullanılır. |
+| locale | No | SMS 'nin yerel ayarı. Sağlanmazsa, kullanıcının tarayıcı yerel ayarı kullanılır. |
 
 **Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya Azure MFA hizmetine göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
 ### <a name="output-claims"></a>Çıkış talepleri
 
-Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, `DefaultValue` özniteliği ayarladığınız sürece Azure MFA kimlik sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz.
+Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, özniteliği ayarladığınız sürece Azure MFA kimlik sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz `DefaultValue` .
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Yes | **Onewaysms**olmalıdır.  |
+| Çalışma | Yes | **Onewaysms**olmalıdır.  |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
@@ -84,16 +84,16 @@ Aşağıdaki meta veriler SMS hatası gönderdikten sonra görüntülenecek hata
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageif, Dntsendsms | Hayır | Girilen telefon numarası SMS 'yi kabul etmezse Kullanıcı hata iletisi. |
-| Usermessageifınvalidformat | Hayır | Girilen telefon numarası geçerli bir telefon numarası değilse Kullanıcı hata iletisi. |
-| UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
-| Usermessageifkısıtlanıyor| Hayır | İstek kısıtlanmışsa, Kullanıcı hata iletisi.|
+| Usermessageif, Dntsendsms | No | Girilen telefon numarası SMS 'yi kabul etmezse Kullanıcı hata iletisi. |
+| Usermessageifınvalidformat | No | Girilen telefon numarası geçerli bir telefon numarası değilse Kullanıcı hata iletisi. |
+| UserMessageIfServerError | No | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
+| Usermessageifkısıtlanıyor| No | İstek kısıtlanmışsa, Kullanıcı hata iletisi.|
 
 ### <a name="example-send-an-sms"></a>Örnek: SMS gönder
 
 Aşağıdaki örnekte, SMS aracılığıyla kod göndermek için kullanılan bir Azure MFA teknik profili gösterilmektedir.
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
   <DisplayName>Send Sms</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -128,15 +128,15 @@ Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için aşağıdak
 
 ### <a name="output-claims"></a>Çıkış talepleri
 
-Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, `DefaultValue` özniteliği ayarladığınız sürece Azure MFA kimlik sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz.
+Azure MFA protokol sağlayıcısı herhangi bir **Outputclaim**döndürmüyor, bu nedenle çıkış taleplerini belirtmeniz gerekmez. Ancak, özniteliği ayarladığınız sürece Azure MFA kimlik sağlayıcısı tarafından döndürülmeyen talepleri dahil edebilirsiniz `DefaultValue` .
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Yes | **Verify** olmalıdır |
+| Çalışma | Yes | **Verify** olmalıdır |
 
 #### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
@@ -144,16 +144,16 @@ Aşağıdaki meta veriler, kod doğrulama hatası üzerine görüntülenecek hat
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageifmaxallowedcoderetr'e ulaşıldı| Hayır | Kullanıcı bir doğrulama kodunu çok fazla kez denediğinde Kullanıcı hata iletisi. |
-| UserMessageIfServerError | Hayır | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
-| Usermessageifkısıtlanıyor| Hayır | İstek kısıtlanmamışsa Kullanıcı hata iletisi.|
-| Usermessageifyanlışlıkla Gcodegirildi| Hayır| Doğrulama için girilen kod yanlış ise Kullanıcı hata iletisi.|
+| Usermessageifmaxallowedcoderetr'e ulaşıldı| No | Kullanıcı bir doğrulama kodunu çok fazla kez denediğinde Kullanıcı hata iletisi. |
+| UserMessageIfServerError | No | Sunucu bir iç hatayla karşılaştıysa Kullanıcı hata iletisi. |
+| Usermessageifkısıtlanıyor| No | İstek kısıtlanmamışsa Kullanıcı hata iletisi.|
+| Usermessageifyanlışlıkla Gcodegirildi| No| Doğrulama için girilen kod yanlış ise Kullanıcı hata iletisi.|
 
 ### <a name="example-verify-a-code"></a>Örnek: bir kodu doğrulama
 
 Aşağıdaki örnekte, kodu doğrulamak için kullanılan bir Azure MFA teknik profili gösterilmektedir.
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-VerifySms">
     <DisplayName>Verify Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

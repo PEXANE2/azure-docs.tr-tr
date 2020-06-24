@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Değişiklik İzleme ve stoku yönetme
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini izlemek için Değişiklik İzleme ve envanterin nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 07/03/2018
+ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2738605680a7035e4e2da95b0f53b4d5e227304b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170299"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781200"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
@@ -141,9 +141,9 @@ Windows bilgisayarlarda kayıt defteri anahtarı izlemeyi yapılandırmak için 
 
 Değişiklik kayıtları için Azure Izleyici günlüklerinde çeşitli aramalar yapabilirsiniz. Değişiklik izleme sayfası açıkken, Günlükler sayfasını açmak için **Log Analytics** ' a tıklayın. Aşağıdaki tabloda değişiklik kayıtları için örnek günlük aramaları sunulmaktadır.
 
-|Sorgu  |Açıklama  |
+|Sorgu  |Description  |
 |---------|---------|
-|`ConfigurationData`<br>&#124;`where ConfigDataType == "Microsoft services" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Otomatik olarak ayarlanan ancak durdurulma olarak bildirilen Microsoft Hizmetleri için en son envanter kayıtlarını gösterir. Sonuçlar, belirtilen yazılım adı ve bilgisayar için en son kayıtla sınırlıdır.    |
+|`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Otomatik olarak ayarlanan ancak durdurulma olarak bildirilen Microsoft Hizmetleri için en son envanter kayıtlarını gösterir. Sonuçlar, belirtilen yazılım adı ve bilgisayar için en son kayıtla sınırlıdır.    |
 |`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Kaldırılan yazılım için değişiklik kayıtlarını gösterir.|
 
 ## <a name="create-alerts-on-changes"></a>Değişiklikler üzerinde uyarı oluştur

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b0362f9bb80af9f98dad032790a9e88651284a1
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b5d1f44b35b89607fecf6875b1e56be97f37d0fa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298882"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203648"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C ile Azure API Management API 'sinin güvenliğini sağlama
 
 Azure API Management (APıM) API 'nize erişimi, Azure Active Directory B2C (Azure AD B2C) ile kimliği doğrulanan istemcilere nasıl kısıtlayacağınızı öğrenin. Bu makaledeki adımları izleyerek, erişimi yalnızca geçerli bir Azure AD B2C verilen erişim belirteci içeren isteklerle sınırlayan APıM 'de bir gelen ilke oluşturun ve test edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki kaynaklara sahip olmanız gerekir:
 
@@ -171,7 +171,7 @@ Erişim belirteci ve APıM abonelik anahtarı kaydedildiğinde, artık API 'ye g
 
 1. İsteği yürütmek için Postman 'daki **Gönder** düğmesini seçin. Her şeyi doğru şekilde yapılandırdıysanız, bir konferans hoparlörleri koleksiyonu ile bir JSON yanıtı (burada kesilmiş olarak gösterilir) sunulur:
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ Başarılı *bir istek* YAPTıK, API 'nize yapılan çağrıların beklenen şek
 
 1. İsteği yürütmek için **Gönder** düğmesini seçin. Geçersiz bir belirteçle, beklenen sonuç `401` yetkisiz bir durum kodudur:
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ Başarılı *bir istek* YAPTıK, API 'nize yapılan çağrıların beklenen şek
 
 Birçok uygulama genellikle tek bir REST API etkileşim kurar. API 'nizin birden çok uygulama için tasarlanan belirteçleri kabul etmesine olanak tanımak için, uygulama kimliklerini `<audiences>` APIM gelen ilkesindeki öğesine ekleyin.
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ Birçok uygulama genellikle tek bir REST API etkileşim kurar. API 'nizin birden
 
 Benzer şekilde, birden çok belirteç verenler desteklemek için, `<issuers>` APIM gelen ilkesindeki öğesine kendi uç nokta URI 'lerini ekleyin.
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ Aşamalı bir geçiş gerçekleştirmek için bu genel işlemi izleyebilirsiniz:
 
 Aşağıdaki örnek APıM gelen ilkesi, hem b2clogin.com hem de login.microsoftonline.com tarafından verilen belirteçlerin nasıl kabul edileceği gösterilmektedir. Ayrıca, iki uygulamadan API isteklerini destekler.
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

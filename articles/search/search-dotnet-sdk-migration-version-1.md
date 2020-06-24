@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 159aaa8424c3d7a711b587464b80696929f02186
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cecb7b2a669b47bb79b022df786add65f5648f2
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72792392"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080971"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK sürüm 1,1 ' e yükseltin
 
-[Azure Search .NET SDK 'sının](https://aka.ms/search-sdk)sürüm 1.0.2-Preview veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı 1,1 sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
+[Azure Search .NET SDK 'sının](https://docs.microsoft.com/dotnet/api/overview/azure/search)sürüm 1.0.2-Preview veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı 1,1 sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
 
 Örnek içeren SDK hakkında daha genel bir anlatım için bkz. [.NET uygulamasından Azure Search kullanma](search-howto-dotnet-sdk.md).
 
@@ -26,7 +26,7 @@ ms.locfileid: "72792392"
 > Sürüm 1,1 ' e yükselttikten sonra veya 1,1 ile 2,0-Önizleme arasında zaten bir sürüm kullanıyorsanız, sürüm 3 ' e yükseltmeniz gerekir. Yönergeler için bkz. [.NET SDK sürüm 3 Azure Search yükseltme](search-dotnet-sdk-migration.md) .
 >
 
-İlk olarak, NuGet ' i paket `Microsoft.Azure.Search` Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
+İlk olarak, NuGet ' i `Microsoft.Azure.Search` Paket Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
 
 NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin.
 
@@ -41,7 +41,7 @@ Daha önce 0.13.0-Preview veya daha eski sürümü kullanıyorsanız, aşağıda
 
 Sonraki adım derleme hatalarını tek tek düzeltemedi. Çoğu, SDK 'da yeniden adlandırılmış bazı sınıf ve yöntem adlarının değiştirilmesini gerektirir. [Sürüm 1,1 ' deki son değişikliklerin listesi](#ListOfChangesV1) , bu ad değişikliklerinin bir listesini içerir.
 
-Belgelerinizi modellemek için özel sınıflar kullanıyorsanız ve bu sınıfların null yapılamayan temel türlerin özellikleri varsa (örneğin, ya `int` `bool` da C# ' de), bilmeniz gereken SDK 'nın 1,1 sürümünde bir hata düzeltildi. Daha fazla bilgi için bkz. [sürüm 1,1 ' de hata düzeltmeleri](#BugFixesV1) .
+Belgelerinizi modellemek için özel sınıflar kullanıyorsanız ve bu sınıfların null yapılamayan temel türlerin özellikleri varsa (örneğin, `int` ya da `bool` C# ' de), bılmenız gereken SDK 'nın 1,1 sürümünde bir hata düzeltildi. Daha fazla bilgi için bkz. [sürüm 1,1 ' de hata düzeltmeleri](#BugFixesV1) .
 
 Son olarak, herhangi bir yapı hatasını düzelttikten sonra, isterseniz yeni işlevlerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz.
 
@@ -51,9 +51,9 @@ Son olarak, herhangi bir yapı hatasını düzelttikten sonra, isterseniz yeni i
 Aşağıdaki liste, değişikliğin uygulama kodunuzu etkileyeceğine göre sıralanır.
 
 ### <a name="indexbatch-and-indexaction-changes"></a>Indexbatch ve ındexaction değişiklikleri
-`IndexBatch.Create`, olarak `IndexBatch.New` yeniden adlandırıldı ve artık bir `params` bağımsız değişkeni yoktur. Farklı eylem türlerini `IndexBatch.New` (birleştirme, silme, vb.) karıştıraş toplu işler için kullanabilirsiniz. Ayrıca, tüm eylemlerin aynı olduğu durumlarda toplu iş oluşturmak için yeni statik yöntemler vardır `Delete`:, `Merge` `MergeOrUpload`, ve. `Upload`
+`IndexBatch.Create`, olarak yeniden adlandırıldı `IndexBatch.New` ve artık bir `params` bağımsız değişkeni yoktur. `IndexBatch.New`Farklı eylem türlerini (birleştirme, silme, vb.) karıştıraş toplu işler için kullanabilirsiniz. Ayrıca, tüm eylemlerin aynı olduğu durumlarda toplu iş oluşturmak için yeni statik yöntemler vardır: `Delete` ,, `Merge` `MergeOrUpload` ve `Upload` .
 
-`IndexAction`Artık ortak oluşturucular yoktur ve özellikleri artık sabit değildir. Farklı amaçlara yönelik eylemler oluşturmak için yeni statik yöntemleri kullanmanız gerekir `Delete`:, `Merge` `MergeOrUpload`, ve. `Upload` `IndexAction.Create`kaldırıldı. Yalnızca bir belge alan aşırı yüklemeyi kullandıysanız, `Upload` bunun yerine kullandığınızdan emin olun.
+`IndexAction`Artık ortak oluşturucular yoktur ve özellikleri artık sabit değildir. Farklı amaçlara yönelik eylemler oluşturmak için yeni statik yöntemleri kullanmanız gerekir:,, `Delete` `Merge` `MergeOrUpload` ve `Upload` . `IndexAction.Create`kaldırıldı. Yalnızca bir belge alan aşırı yüklemeyi kullandıysanız, bunun yerine kullandığınızdan emin olun `Upload` .
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -72,7 +72,7 @@ Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştir
     indexClient.Documents.Index(batch);
 
 ### <a name="indexbatchexception-changes"></a>Indexbatchexception değişiklikleri
-`IndexBatchException.IndexResponse` Özelliği olarak `IndexingResults`yeniden adlandırıldı ve türü artık `IList<IndexingResult>`.
+`IndexBatchException.IndexResponse`Özelliği olarak yeniden adlandırıldı `IndexingResults` ve türü artık `IList<IndexingResult>` .
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -148,11 +148,11 @@ Sürüm 1,1 ' de aynı işleme yönelik yöntem imzaları şuna benzer:
 Sürüm 1,1 ' den başlayarak, .NET SDK Azure Search işlem yöntemlerini farklı şekilde düzenler:
 
 * İsteğe bağlı parametreler artık ek yöntem aşırı yüklemeleri yerine varsayılan parametreler olarak modellenir. Bu, bazen önemli ölçüde önemli ölçüde yöntem aşırı yükleme sayısını azaltır.
-* Uzantı yöntemleri artık, çağıranın çok sayıda HTTP ayrıntılarını gizler. Örneğin, SDK 'nın eski sürümleri, genellikle bir hata belirten herhangi bir durum kodu `CloudException` için işlem yöntemleri oluşturduğundan, bir http durum kodu ile bir yanıt nesnesi döndürdü. Yeni uzantı yöntemleri yalnızca model nesnelerini döndürmekte ve bunları kodunuzda sarmalamak zorunda kalmadan yapmanız gereken bir sorun yaşıyor.
-* Buna karşılık, çekirdek arabirimler artık ihtiyacınız olduğunda HTTP düzeyinde daha fazla denetim sağlayan yöntemleri kullanıma sunar. Artık isteklere dahil edilecek özel HTTP üstbilgilerini geçirebilir ve yeni `AzureOperationResponse<T>` dönüş türü, `HttpRequestMessage` işlem için ve `HttpResponseMessage` için doğrudan erişim sağlar. `AzureOperationResponse``Microsoft.Rest.Azure` ad alanında tanımlanır ve değiştirilir `Hyak.Common.OperationResponse`.
+* Uzantı yöntemleri artık, çağıranın çok sayıda HTTP ayrıntılarını gizler. Örneğin, SDK 'nın eski sürümleri, genellikle `CloudException` bir hata belirten herhangi bir durum kodu için işlem yöntemleri oluşturduğundan, BIR http durum kodu ile bir yanıt nesnesi döndürdü. Yeni uzantı yöntemleri yalnızca model nesnelerini döndürmekte ve bunları kodunuzda sarmalamak zorunda kalmadan yapmanız gereken bir sorun yaşıyor.
+* Buna karşılık, çekirdek arabirimler artık ihtiyacınız olduğunda HTTP düzeyinde daha fazla denetim sağlayan yöntemleri kullanıma sunar. Artık isteklere dahil edilecek özel HTTP üstbilgilerini geçirebilir ve yeni `AzureOperationResponse<T>` dönüş türü, `HttpRequestMessage` işlem için ve için doğrudan erişim sağlar `HttpResponseMessage` . `AzureOperationResponse``Microsoft.Rest.Azure`ad alanında tanımlanır ve değiştirilir `Hyak.Common.OperationResponse` .
 
 ### <a name="scoringparameters-changes"></a>Değişiklikleri ScoringParameters
-Bir arama sorgusunda Puanlama `ScoringParameter` profillerine parametre sağlamayı kolaylaştırmak için en son SDK 'ya adlı yeni bir sınıf eklenmiştir. Daha önce `ScoringProfiles` `SearchParameters` sınıfının özelliği olarak `IList<string>`yazılmış; Artık olarak `IList<ScoringParameter>`yazılmış.
+`ScoringParameter`Bir arama sorgusunda Puanlama profillerine parametre sağlamayı kolaylaştırmak için en son SDK 'ya adlı yeni bir sınıf eklenmiştir. Daha önce `ScoringProfiles` `SearchParameters` sınıfının özelliği olarak yazılmış `IList<string>` ; Artık olarak yazılmış `IList<ScoringParameter>` .
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -178,11 +178,11 @@ Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştir
 * `IndexDefinitionResponse`değiştirdi`AzureOperationResponse<Index>`
 * `DocumentSearchResponse`, `DocumentSearchResult` olarak yeniden adlandırıldı
 * `IndexResult`, `IndexingResult` olarak yeniden adlandırıldı
-* `Documents.Count()``long` şimdi bir değil, belge sayısı`DocumentCountResponse`
+* `Documents.Count()`Şimdi `long` bir değil, belge sayısı`DocumentCountResponse`
 * `IndexGetStatisticsResponse`, `IndexGetStatisticsResult` olarak yeniden adlandırıldı
 * `IndexListResponse`, `IndexListResult` olarak yeniden adlandırıldı
 
-Özetlemek gerekirse, `OperationResponse`yalnızca bir model nesnesini kaydırmak için varolan türetilmiş sınıflar kaldırılmıştır. Kalan sınıfların soneki `Response` olarak `Result`değiştirildi.
+Özetlemek gerekirse, `OperationResponse` yalnızca bir model nesnesini kaydırmak için varolan türetilmiş sınıflar kaldırılmıştır. Kalan sınıfların soneki `Response` olarak değiştirildi `Result` .
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -218,7 +218,7 @@ Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştir
     IndexerExecutionResult lastResult = status.LastResult;
 
 #### <a name="response-classes-and-ienumerable"></a>Yanıt sınıfları ve IEnumerable
-Kodunuzu etkileyebilecek ek bir değişiklik, koleksiyonları tutan yanıt sınıflarının artık uygulamalarıdır `IEnumerable<T>`. Bunun yerine, doğrudan koleksiyon özelliğine erişebilirsiniz. Örneğin, kodunuz şuna benziyorsa:
+Kodunuzu etkileyebilecek ek bir değişiklik, koleksiyonları tutan yanıt sınıflarının artık uygulamalarıdır `IEnumerable<T>` . Bunun yerine, doğrudan koleksiyon özelliğine erişebilirsiniz. Örneğin, kodunuz şuna benziyorsa:
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response)
@@ -235,7 +235,7 @@ Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştir
     }
 
 #### <a name="special-case-for-web-applications"></a>Web uygulamaları için özel durum
-`DocumentSearchResponse` Doğrudan tarayıcıya arama sonuçları göndermek için seri hale getirilen bir Web uygulamanız varsa, kodunuzu değiştirmeniz gerekir, aksi takdirde sonuçlar doğru serileştirmez. Örneğin, kodunuz şuna benziyorsa:
+`DocumentSearchResponse`Doğrudan tarayıcıya arama sonuçları göndermek için seri hale getirilen bir Web uygulamanız varsa, kodunuzu değiştirmeniz gerekir, aksi takdirde sonuçlar doğru serileştirmez. Örneğin, kodunuz şuna benziyorsa:
 
     public ActionResult Search(string q = "")
     {
@@ -250,7 +250,7 @@ Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştir
         };
     }
 
-Arama sonucu işlemesini onarmak için arama yanıtının `.Results` özelliğini alarak bunu değiştirebilirsiniz:
+`.Results`Arama sonucu işlemesini onarmak için arama yanıtının özelliğini alarak bunu değiştirebilirsiniz:
 
     public ActionResult Search(string q = "")
     {
@@ -265,17 +265,17 @@ Arama sonucu işlemesini onarmak için arama yanıtının `.Results` özelliğin
         };
     }
 
-Kodunuzda bu tür durumları aramanız gerekecektir; Bir tür `JsonResult.Data` `object`olduğundan **derleyici sizi uyarmaz** .
+Kodunuzda bu tür durumları aramanız gerekecektir; Bir tür olduğundan **derleyici sizi uyarmaz** `JsonResult.Data` `object` .
 
 ### <a name="cloudexception-changes"></a>CloudException değişiklikleri
-`CloudException` Sınıf `Hyak.Common` ad alanından ad `Microsoft.Rest.Azure` alanına taşındı. Ayrıca, `Error` özelliği olarak `Body`yeniden adlandırıldı.
+`CloudException`Sınıf ad alanından ad alanına taşındı `Hyak.Common` `Microsoft.Rest.Azure` . Ayrıca, `Error` özelliği olarak yeniden adlandırıldı `Body` .
 
 ### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient ve Searchındexclient değişiklikleri
-`Credentials` Özelliğin türü, `ServiceClientCredentials`temel sınıfı olan `SearchCredentials` olarak değiştirildi. `SearchCredentials` Bir veya `SearchIndexClient` `SearchServiceClient`' a erişmeniz gerekiyorsa, lütfen yeni `SearchCredentials` özelliği kullanın.
+`Credentials`Özelliğin türü, temel sınıfı olan olarak değiştirildi `SearchCredentials` `ServiceClientCredentials` . `SearchCredentials`Bir veya ' a erişmeniz gerekiyorsa `SearchIndexClient` `SearchServiceClient` , lütfen yeni `SearchCredentials` özelliği kullanın.
 
-SDK 'nın eski sürümlerinde `SearchServiceClient` ve `SearchIndexClient` bir `HttpClient` parametre alan oluşturucular vardı. Bunlar, bir `HttpClientHandler` dizi `DelegatingHandler` nesne alan oluşturucular ile değiştirilmiştir. Bu, gerekirse HTTP isteklerini önceden işlemek için özel işleyiciler yüklemeyi kolaylaştırır.
+SDK 'nın eski sürümlerinde `SearchServiceClient` ve `SearchIndexClient` bir parametre alan oluşturucular vardı `HttpClient` . Bunlar, bir dizi nesne alan oluşturucular ile değiştirilmiştir `HttpClientHandler` `DelegatingHandler` . Bu, gerekirse HTTP isteklerini önceden işlemek için özel işleyiciler yüklemeyi kolaylaştırır.
 
-Son olarak, `Uri` ve `SearchCredentials` kullanan oluşturucular değişmiştir. Örneğin, aşağıdakine benzer bir kodunuz varsa:
+Son olarak, ve kullanan oluşturucular `Uri` `SearchCredentials` değişmiştir. Örneğin, aşağıdakine benzer bir kodunuz varsa:
 
     var client =
         new SearchServiceClient(
@@ -289,10 +289,10 @@ Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştir
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-Ayrıca, kimlik bilgileri parametresinin türünün olarak `ServiceClientCredentials`değiştirildiğini unutmayın. Bu, öğesinden `SearchCredentials` `ServiceClientCredentials`türetildiğinden kodunuzun etkilenmemesi olası değildir.
+Ayrıca, kimlik bilgileri parametresinin türünün olarak değiştirildiğini unutmayın `ServiceClientCredentials` . Bu, öğesinden türetildiğinden kodunuzun etkilenmemesi olası değildir `SearchCredentials` `ServiceClientCredentials` .
 
 ### <a name="passing-a-request-id"></a>İstek KIMLIĞI geçirme
-SDK 'nın eski sürümlerinde, `SearchServiceClient` veya `SearchIndexClient` ' de bir istek kimliği ayarlayabilir ve REST API her isteğine dahil edilebilir. Bu, desteğe başvurmanız gerekirse arama hizmetinizdeki sorunları gidermeye yarar. Ancak, tüm işlemler için aynı KIMLIĞI kullanmak yerine her işlem için benzersiz bir istek KIMLIĞI ayarlamak daha yararlıdır. Bu nedenle, `SetClientRequestId` `SearchServiceClient` ve `SearchIndexClient` yöntemleri kaldırılmıştır. Bunun yerine, isteğe bağlı `SearchRequestOptions` parametre aracılığıyla her bir işlem yöntemine BIR istek kimliği geçirebilirsiniz.
+SDK 'nın eski sürümlerinde, veya ' de bir istek KIMLIĞI ayarlayabilir `SearchServiceClient` `SearchIndexClient` ve REST API her isteğine dahil edilebilir. Bu, desteğe başvurmanız gerekirse arama hizmetinizdeki sorunları gidermeye yarar. Ancak, tüm işlemler için aynı KIMLIĞI kullanmak yerine her işlem için benzersiz bir istek KIMLIĞI ayarlamak daha yararlıdır. Bu nedenle, `SetClientRequestId` `SearchServiceClient` ve yöntemleri `SearchIndexClient` kaldırılmıştır. Bunun yerine, isteğe bağlı parametre aracılığıyla her bir işlem yöntemine bir istek KIMLIĞI geçirebilirsiniz `SearchRequestOptions` .
 
 > [!NOTE]
 > SDK 'nın gelecek bir sürümünde, diğer Azure SDK 'Ları tarafından kullanılan yaklaşımla tutarlı olan istemci nesnelerinde bir istek KIMLIĞINI genel olarak ayarlamaya yönelik yeni bir mekanizma ekleyeceğiz.
@@ -313,10 +313,10 @@ Herhangi bir derleme hatasını çözebilmeniz için bunu bu şekilde değiştir
 ### <a name="interface-name-changes"></a>Arabirim adı değişiklikleri
 İşlem grubu arabirim adlarının hepsi karşılık gelen özellik adlarıyla tutarlı olacak şekilde değişti:
 
-* Türü `ISearchServiceClient.Indexes` , `IIndexOperations` olarak `IIndexesOperations`yeniden adlandırıldı.
-* Türü `ISearchServiceClient.Indexers` , `IIndexerOperations` olarak `IIndexersOperations`yeniden adlandırıldı.
-* Türü `ISearchServiceClient.DataSources` , `IDataSourceOperations` olarak `IDataSourcesOperations`yeniden adlandırıldı.
-* Türü `ISearchIndexClient.Documents` , `IDocumentOperations` olarak `IDocumentsOperations`yeniden adlandırıldı.
+* Türü, `ISearchServiceClient.Indexes` olarak yeniden adlandırıldı `IIndexOperations` `IIndexesOperations` .
+* Türü, `ISearchServiceClient.Indexers` olarak yeniden adlandırıldı `IIndexerOperations` `IIndexersOperations` .
+* Türü, `ISearchServiceClient.DataSources` olarak yeniden adlandırıldı `IDataSourceOperations` `IDataSourcesOperations` .
+* Türü, `ISearchIndexClient.Documents` olarak yeniden adlandırıldı `IDocumentOperations` `IDocumentsOperations` .
 
 Bu arabirimlerin test amaçları doğrultusunda bu arabirimlerin bir listesini oluşturmadığınız müddetçe bu değişiklik, kodunuzun etkilenmemesi için olası bir olasılıktır.
 
@@ -326,9 +326,9 @@ Bu arabirimlerin test amaçları doğrultusunda bu arabirimlerin bir listesini o
 Azure Search .NET SDK 'sının özel model sınıflarının serileştirilmesi ile ilgili eski sürümlerinde bir hata oluştu. Null olamayan bir değer türünün özelliği ile özel bir model sınıfı oluşturduysanız hata oluşabilir.
 
 ### <a name="steps-to-reproduce"></a>Yeniden oluşturma adımları
-Null olamayan değer türünde bir özelliği olan özel bir model sınıfı oluşturun. Örneğin, yerine türünde `UnitCount` `int` bir public özelliği ekleyin. `int?`
+Null olamayan değer türünde bir özelliği olan özel bir model sınıfı oluşturun. Örneğin, yerine türünde bir public `UnitCount` özelliği ekleyin `int` `int?` .
 
-Bir belgeyi bu türün varsayılan değeriyle dizinederseniz (örneğin, için `int`0), alan Azure Search null olur. `Search` Bu belgeyi daha sonra arıyorsanız çağrı, dönüştüremeyecek `JsonSerializationException` `null` şikayetler oluşturur. `int`
+Bir belgeyi bu türün varsayılan değeriyle dizinederseniz (örneğin, için 0 `int` ), alan Azure Search null olur. Bu belgeyi daha sonra arıyorsanız `Search` çağrı, `JsonSerializationException` dönüştüremeyecek şikayetler oluşturur `null` `int` .
 
 Ayrıca, istenen değer yerine null dizine yazıldığı için filtreler beklendiği gibi çalışmayabilir.
 

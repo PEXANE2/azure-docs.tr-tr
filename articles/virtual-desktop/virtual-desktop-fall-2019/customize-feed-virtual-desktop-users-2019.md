@@ -4,16 +4,16 @@ description: PowerShell cmdlet 'leri ile Windows sanal masaüstü kullanıcılar
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a93aa35353940cfdbded1634448d4f6d2865c365
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f6b956981269bca83140e4d1d08067b2d0db0d1d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614843"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204787"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Windows Sanal Masaüstü kullanıcıları için akışı özelleştirme
 
@@ -67,6 +67,6 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık kullanıcıların akışını özelleştirdiğinize göre, test etmek için bir Windows sanal masaüstü istemcisinde oturum açabilirsiniz. Bunu yapmak için, Windows sanal masaüstü nasıl yapılır-TOS ' a bağlanma konusuna geçin:
-    
+
  * [Windows 10 veya Windows 7'den bağlanma](../connect-windows-7-and-10.md)
- * [Web tarayıcısından bağlanma](connect-web-2019.md) 
+ * [Web tarayıcısından bağlanma](connect-web-2019.md)

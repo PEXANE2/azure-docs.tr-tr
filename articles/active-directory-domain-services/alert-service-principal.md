@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f72e98213977a09b97cab9966ec69194cd8439e8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845976"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735005"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services hizmet sorumlusu uyarıları
 
-[Hizmet sorumluları](../active-directory/develop/app-objects-and-service-principals.md) , Azure platformunun Azure AD DS yönetilen bir etki alanını yönetmek, güncelleştirmek ve sürdürmek için kullandığı uygulamalardır. Bir hizmet sorumlusu silinirse, Azure AD DS yönetilen etki alanındaki işlevler etkilenir.
+[Hizmet sorumluları](../active-directory/develop/app-objects-and-service-principals.md) , azure platformunun Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanını yönetmek, güncelleştirmek ve sürdürmek için kullandığı uygulamalardır. Bir hizmet sorumlusu silinirse, yönetilen etki alanındaki işlevsellik etkilenir.
 
 Bu makale, hizmet sorumlusu ile ilgili yapılandırma uyarılarını gidermenize ve çözmenize yardımcı olur.
 
@@ -30,7 +30,7 @@ Bu makale, hizmet sorumlusu ile ilgili yapılandırma uyarılarını gidermenize
 
 *Azure AD Domain Services çalışması için gereken bir hizmet sorumlusu Azure AD dizininden silindi. Bu yapılandırma, Microsoft 'un yönetilen etki alanınızı izleme, yönetme, düzeltme eki uygulama ve eşitlemeye yönelik yeteneğini etkiler.*
 
-Gerekli bir hizmet sorumlusu silinirse, Azure platformu otomatik yönetim görevleri gerçekleştiremez. Azure AD DS yönetilen etki alanı güncelleştirmeleri doğru bir şekilde uygulayamaz veya yedeklemeleri alamaz.
+Gerekli bir hizmet sorumlusu silinirse, Azure platformu otomatik yönetim görevleri gerçekleştiremez. Yönetilen etki alanı güncelleştirmeleri doğru bir şekilde uygulayamayabilir veya yedeklemeleri alamaz.
 
 ### <a name="check-for-missing-service-principals"></a>Eksik hizmet sorumlularını denetle
 
@@ -64,18 +64,18 @@ Uygulama KIMLIĞI *2565bd9d-dad50-47d4-8B85-4c97f669dc36* Azure AD dizininizde y
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
+Yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
 
 ### <a name="re-register-the-microsoft-aad-namespace"></a>Microsoft AAD ad alanını yeniden kaydetme
 
 Azure AD dizininizde uygulama KIMLIĞI *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022*veya *D87DCBC6-A371-462e-88E3-28AD15EC4E64* eksikse, *Microsoft. AAD* kaynak sağlayıcısını yeniden kaydetmek için aşağıdaki adımları izleyin:
 
 1. Azure portal, **abonelikleri**arayıp seçin.
-1. Azure AD DS yönetilen etki alanınız ile ilişkili aboneliği seçin.
+1. Yönetilen etki alanınız ile ilişkili aboneliği seçin.
 1. Sol taraftaki gezinmede **kaynak sağlayıcıları**' nı seçin.
 1. *Microsoft. AAD*araması yapın ve ardından **yeniden kaydet**' i seçin.
 
-Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
+Yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Uyarı AADDS105: parola eşitleme uygulaması güncel değil
 
@@ -105,7 +105,7 @@ Kimlik bilgileri eşitleme için kullanılan Azure AD uygulamasını yeniden olu
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
 
-Her iki uygulamayı da sildikten sonra, Azure platformu onları otomatik olarak yeniden oluşturur ve parola eşitlemesini sürdürmeye çalışır. Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
+Her iki uygulamayı da sildikten sonra, Azure platformu onları otomatik olarak yeniden oluşturur ve parola eşitlemesini sürdürmeye çalışır. Yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

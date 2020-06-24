@@ -2,13 +2,13 @@
 title: Azure Geçişi aleti mimarisi
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: 0752f7afa7ff8d25f938084fd9e6e863d885f9aa
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80389027"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770909"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Geçişi aleti mimarisi
 
@@ -48,11 +48,11 @@ Gereç çok sayıda bileşene sahiptir.
 
 Gereç kurulumu sırasında gereci Azure geçişi ile kaydedersiniz ve tabloda özetlenen eylemler oluşur.
 
-**Eylem** | **Bilgileri** | **İzinler**
+**Eylem** | **Ayrıntılar** | **İzinler**
 --- | --- | ---
 **Kaynak sağlayıcılarını Kaydet** | Bu kaynak sağlayıcıları, Gereç kurulumu sırasında seçtiğiniz aboneliğe kaydedilir: Microsoft. OffAzure, Microsoft. Migrate ve Microsoft. Keykasası.<br/><br/> Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. | Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.
-**Azure AD uygulaması oluşturma-iletişim** | Azure geçişi, Gereç üzerinde çalışan aracılar ve Azure üzerinde çalışan ilgili hizmetleri arasında iletişim için bir Azure Active Directory (Azure AD) uygulaması oluşturur.<br/><br/> Bu uygulamanın herhangi bir kaynakta Azure Resource Manager çağrısı yapma ayrıcalıkları yoktur veya erişim izni yoktur. | Uygulamayı oluşturmak için Azure geçişi için [Bu izinlere](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) ihtiyacınız vardır.
-**Azure AD uygulamaları oluşturma-Anahtar Kasası** | Bu uygulama yalnızca VMware VM 'lerinin Azure 'a aracısız geçişi için oluşturulmuştur.<br/><br/> Bu, özel olarak, kullanıcının aracısız geçiş için Kullanıcı aboneliğinde oluşturulan anahtar kasasına erişmek için kullanılır.<br/><br/> Bu, gereçden bulma başlatıldığında Azure Anahtar Kasası 'nda (müşterinin kiracısında oluşturulur | Uygulamayı oluşturmak için Azure geçişi için [Bu izinlere](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) ihtiyacınız vardır.
+**Azure AD uygulaması oluşturma-iletişim** | Azure geçişi, Gereç üzerinde çalışan aracılar ve Azure üzerinde çalışan ilgili hizmetleri arasında iletişim için bir Azure Active Directory (Azure AD) uygulaması oluşturur.<br/><br/> Bu uygulamanın herhangi bir kaynakta Azure Resource Manager çağrısı yapma ayrıcalıkları yoktur veya erişim izni yoktur. | Uygulamayı oluşturmak için Azure geçişi için [Bu izinlere](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps) ihtiyacınız vardır.
+**Azure AD uygulamaları oluşturma-Anahtar Kasası** | Bu uygulama yalnızca VMware VM 'lerinin Azure 'a aracısız geçişi için oluşturulmuştur.<br/><br/> Bu, özel olarak, kullanıcının aracısız geçiş için Kullanıcı aboneliğinde oluşturulan anahtar kasasına erişmek için kullanılır.<br/><br/> Bu, gereçden bulma başlatıldığında Azure Anahtar Kasası 'nda (müşterinin kiracısında oluşturulur | Uygulamayı oluşturmak için Azure geçişi için [Bu izinlere](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) ihtiyacınız vardır.
 
 
 

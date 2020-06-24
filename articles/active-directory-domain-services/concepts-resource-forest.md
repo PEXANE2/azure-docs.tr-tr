@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e0e5dde246dbcd5e5cb2e4ae923872a59a539d87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f34ba9b9ebdc395338ef65b696fa9748417e20e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476412"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734920"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için kaynak ormanı kavramları ve özellikleri
 
-Azure Active Directory Domain Services (AD DS), eski, şirket içi ve iş kolu uygulamaları için bir oturum açma deneyimi sağlar. Şirket içi ve bulut kullanıcılarının kullanıcıları, grupları ve parola karmaları Azure AD DS yönetilen etki alanıyla eşitlenir. Bu eşitlenmiş parola karmaları, kullanıcılara şirket içi AD DS, Office 365 ve Azure Active Directory için kullanabilecekleri tek bir kimlik bilgileri kümesi sağlar.
+Azure Active Directory Domain Services (Azure AD DS), eski, şirket içi ve iş kolu uygulamaları için bir oturum açma deneyimi sağlar. Şirket içi ve bulut kullanıcılarının kullanıcıları, grupları ve parola karmaları Azure AD DS yönetilen etki alanıyla eşitlenir. Bu eşitlenmiş parola karmaları, kullanıcılara şirket içi AD DS, Office 365 ve Azure Active Directory için kullanabilecekleri tek bir kimlik bilgileri kümesi sağlar.
 
 Güvenli ve ek güvenlik avantajları sunmakla birlikte, bazı kuruluşlar bu kullanıcı parolası karmalarını Azure AD veya Azure AD DS ile eşitleyemez. Kuruluştaki kullanıcılar, yalnızca akıllı kart kimlik doğrulamasını kullandıkları için parolasını bilmiyor olabilir. Bu sınırlamalar, bazı kuruluşların şirket içi klasik uygulamaları Azure 'a taşımak ve bunlara geçiş yapmak için Azure AD DS kullanmasını engeller.
 
-Bu ihtiyaçları ve kısıtlamaları gidermek için, kaynak ormanı kullanan bir Azure AD DS yönetilen etki alanı oluşturabilirsiniz. Bu kavramsal makalede, ormanların ne olduğu ve güvenli bir kimlik doğrulama yöntemi sağlamak üzere diğer kaynaklara nasıl güvendikleri açıklanmaktadır. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
+Bu ihtiyaçları ve kısıtlamaları ele almak için, kaynak ormanı kullanan bir yönetilen etki alanı oluşturabilirsiniz. Bu kavramsal makalede, ormanların ne olduğu ve güvenli bir kimlik doğrulama yöntemi sağlamak üzere diğer kaynaklara nasıl güvendikleri açıklanmaktadır. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
 
 > [!IMPORTANT]
 > Azure AD DS kaynak ormanları Şu anda Azure HDInsight veya Azure dosyalarını desteklememektedir. Varsayılan Azure AD DS kullanıcı ormanları bu ek hizmetlerden her ikisini de destekler.
@@ -34,7 +34,7 @@ Bu ihtiyaçları ve kısıtlamaları gidermek için, kaynak ormanı kullanan bir
 
 Azure AD DS, orman yalnızca bir etki alanı içerir. Şirket içi AD DS ormanları genellikle birçok etki alanı içerir. Büyük kuruluşlarda, özellikle Birleşmeler ve alımlar sonrasında, her biri birden çok etki alanı içeren birden çok şirket içi ormana sahip olabilirsiniz.
 
-Varsayılan olarak, Azure AD DS yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılmış bir VM 'de oturum açmak gibi Azure AD DS yönetilen etki alanında doğrudan kimlik doğrulaması yapabilir. Parola karmaları eşitlenecekse ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemlerini kullanmadığı zaman bir Kullanıcı ormanı işe yarar.
+Varsayılan olarak, yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılmış bir VM 'de oturum açmak gibi, yönetilen etki alanında doğrudan kimlik doğrulaması yapabilir. Parola karmaları eşitlenecekse ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemlerini kullanmadığı zaman bir Kullanıcı ormanı işe yarar.
 
 Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü bir orman *güveni* üzerinden kimlik doğrular. Bu yaklaşımda, Kullanıcı nesneleri ve parola karmaları Azure AD DS ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS bulunur. Bu yaklaşım, kuruluşların Azure 'da, LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı olan kaynakları ve uygulama platformlarını barındırmasına, ancak tüm kimlik doğrulama sorunları veya kaygıları kaldırılmasına olanak sağlar. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
 

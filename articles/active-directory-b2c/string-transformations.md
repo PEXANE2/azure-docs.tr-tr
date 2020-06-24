@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c2291d4d2eca2abd11ef9c0f18f3fda52424ab93
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d22d0da692516c89f6dd5ca7377ec83d7c430280
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739116"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203444"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -41,7 +41,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) öğesinde kimlik deneyim
 
 Bu talep dönüşümünü, iki ClaimTypes değerinin aynı değere sahip olduğundan emin olmak için kullanabilirsiniz. Aksi takdirde, bir hata iletisi oluşturulur. Aşağıdaki örnek, **Strongauthenticationemapostaadresi** ClaimType 'ın **e-posta** ClaimType değerine eşit olduğunu denetler. Aksi takdirde bir hata iletisi oluşturulur.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim1" />
@@ -55,7 +55,7 @@ Bu talep dönüşümünü, iki ClaimTypes değerinin aynı değere sahip olduğu
 
 
 **Oturum açma etkileşimli** doğrulama teknik profili **Assertemaılandstrongauthenticationemaıladdressareeþitclaim** dönüşümünü çağırır.
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -66,7 +66,7 @@ Bu talep dönüşümünü, iki ClaimTypes değerinin aynı değere sahip olduğu
 
 Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz** teknik profilini çağırır.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationStringsAreNotEqual">Custom error message the email addresses you provided are not the same.</Item>
@@ -98,7 +98,7 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 
 Herhangi bir dize ClaimType 'ı küçük veya büyük harfle değiştirmek için bu talep dönüşümünü kullanın.
 
-```XML
+```xml
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim1" />
@@ -132,7 +132,7 @@ Dönüşümde belirtilen giriş parametresinden bir dize talebi oluşturur.
 
 Bir dize ClaimType değeri ayarlamak için bu talep dönüşümünü kullanın.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
   <InputParameters>
     <InputParameter Id="value" DataType="string" Value="Contoso terms of service..." />
@@ -164,7 +164,7 @@ Tek bir dize talebinin diğerine eşit olup olmadığını belirleme. Sonuç, ve
 
 Bir talebin başka bir talebe eşit olup olmadığını denetlemek için bu talep dönüşümünü kullanın. Örneğin, aşağıdaki talep dönüştürmesi, **e-posta** talebinin değerinin **doğrulanmış. email** talebine eşit olup olmadığını denetler.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="Email" TransformationClaimType="inputClaim1" />
@@ -205,7 +205,7 @@ Bir talep değerinin giriş parametresi değerine eşit olup olmadığını beli
 
 Bu talep dönüşümünü, bir talebin belirttiğiniz değere eşit olup olmadığını denetlemek için kullanabilirsiniz. Örneğin, aşağıdaki talep dönüştürmesi **Termsofuseconsentversion** talebinin değerinin değerine eşit olup olmadığını denetler `v1` .
 
-```XML
+```xml
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim1" />
@@ -246,7 +246,7 @@ Rastgele sayı oluşturucuyu kullanarak rastgele bir dize oluşturur. Rastgele s
 
 Aşağıdaki örnek, genel benzersiz bir KIMLIK üretir. Bu talep dönüştürmesi, rastgele UPN (Kullanıcı asıl adı) oluşturmak için kullanılır.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="GUID" />
@@ -265,7 +265,7 @@ Aşağıdaki örnek, genel benzersiz bir KIMLIK üretir. Bu talep dönüştürme
 
 Aşağıdaki örnek 0 ile 1000 arasında bir tamsayı rastgele değeri üretir. Değer, {Random Value} OTP_ olarak biçimlendirilir.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="INTEGER" />
@@ -302,7 +302,7 @@ Bir talebi, belirtilen biçim dizesine göre biçimlendirin. Bu dönüşüm C# y
 
 Herhangi bir dizeyi tek bir parametreyle biçimlendirmek için bu talep dönüşümünü kullanın {0} . Aşağıdaki örnek bir **userPrincipalName**oluşturur. Tüm sosyal kimlik sağlayıcısı teknik profillerinin `Facebook-OAUTH` bir **userPrincipalName**oluşturmak için **createuserprincipalname** çağrısı.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="upnUserName" TransformationClaimType="inputClaim" />
@@ -338,7 +338,7 @@ Belirtilen biçim dizesine göre iki talebi biçimlendirin. Bu dönüşüm C# y�
 
 İki parametreli dizeleri biçimlendirmek için bu talep dönüşümünü kullanın {0} ve {1} . Aşağıdaki örnek, belirtilen biçimde bir **DisplayName** oluşturuyor:
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="inputClaim1" />
@@ -385,7 +385,7 @@ Aşağıdaki örnekte e-posta konusu, gövde, kod iletiniz ve e-postanın imzas�
 
 Ingilizce (varsayılan) ve Ispanyolca için yerelleştirilmiş dizeleri tanımlayın.
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
     <SupportedLanguage>en</SupportedLanguage>
@@ -413,7 +413,7 @@ Ingilizce (varsayılan) ve Ispanyolca için yerelleştirilmiş dizeleri tanımla
 
 Talep dönüştürmesi, email_subject değeri ile *ilgili* talep türü değerini ayarlar `StringId` *email_subject*.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
@@ -444,7 +444,7 @@ Talep **kısıtlama** koleksiyonundan bir öğe aranıyor.
 
 Aşağıdaki örnek hata anahtarına bağlı olarak hata iletisi açıklamasını arar. **Responsemsg** talebi, son kullanıcıya sunmak veya bağlı olan tarafa gönderilmek üzere bir hata iletileri koleksiyonu içerir.
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>
@@ -458,7 +458,7 @@ Aşağıdaki örnek hata anahtarına bağlı olarak hata iletisi açıklamasın�
 ```
 Talep dönüştürmesi öğenin metnini arar ve değerini döndürür. Kısıtlama kullanılarak yerelleştirildiği takdirde `<LocalizedCollection>` , talep dönüştürmesi yerelleştirilmiş değeri döndürür.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
@@ -489,7 +489,7 @@ Bir değer listesinden, başka bir talebin değerine göre bir talep değeri ara
 
 Aşağıdaki örnek, InputParameters koleksiyonlarından birinde etki alanı adını arar. Talep dönüştürmesi, Tanımlayıcıdaki etki alanı adını arar ve değerini (bir uygulama KIMLIĞI) döndürür.
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -524,7 +524,7 @@ Aşağıdaki örnek, InputParameters koleksiyonlarından birinde etki alanı ad�
 
 Aşağıdaki örnek, InputParameters koleksiyonlarından birinde etki alanı adını arar. Talep dönüştürmesi, Tanımlayıcıdaki etki alanı adını arar ve değerini (bir uygulama KIMLIĞI) döndürür ya da bir hata mesajı oluşturur.
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -564,7 +564,7 @@ Belirli bir talebin değerini temizleyin.
 
 Bu talep dönüşümünü, oturum tanımlama bilgisinin daha küçük olması için talep özelliği çantasından gereksiz verileri kaldırmak için kullanın. Aşağıdaki örnek, `TermsOfService` talep türünün değerini kaldırır.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
   <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="TermsOfService" TransformationClaimType="claim_to_null" />
@@ -588,7 +588,7 @@ Bir e-posta adresinin etki alanı kısmını alır.
 
 Kullanıcının @ simgesinden sonra etki alanı adını ayrıştırmak için bu talep dönüşümünü kullanın. Aşağıdaki talep dönüşümünde, bir **e-posta** talebinde etki alanı adının nasıl ayrıştırılacağını gösterilmektedir.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="emailAddress" />
@@ -624,7 +624,7 @@ Bir dize talebi `claimToMatch` ve `matchTo` giriş parametresinin eşit olduğun
 
 Telefon numarası normal ifade düzenine göre, girilen telefon numarasının geçerli olup olmadığını denetler.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
@@ -653,7 +653,7 @@ Telefon numarası normal ifade düzenine göre, girilen telefon numarasının ge
 
 Belirtilen e-posta adresinin geçerli olup olmadığını denetler ve e-posta diğer adını döndürür.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
@@ -699,7 +699,7 @@ Bir dize talebi ve `matchTo` giriş parametresinin eşit olduğunu denetler ve �
 
 Bu talep dönüşümünü, bir talebin belirttiğiniz değere eşit olup olmadığını denetlemek için kullanabilirsiniz. Örneğin, aşağıdaki talep dönüştürmesi **Termsofuseconsentversion** talebinin değerinin değerine eşit olup olmadığını denetler `v1` . Yanıt Evet ise, değerini olarak değiştirin `v2` .
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim" />
@@ -746,7 +746,7 @@ Bir dize talebi ve `matchTo` giriş parametresinin eşit olduğunu denetler ve g
 
 Örneğin, aşağıdaki talep dönüştürmesi, **Agegroup** talebinin değerinin değerine eşit olup olmadığını denetler `Minor` . Yanıt Evet ise, değerini öğesine döndürün `B2C_V1_90001` .
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="ageGroup" TransformationClaimType="claimToMatch" />
@@ -789,7 +789,7 @@ Belirtilen bir alt dizenin giriş talebi içinde oluşup oluşmadığını belir
 
 Bir dize talep türünün bir alt dize içerip içermesinin olup olmadığını denetlemek için bu talep dönüşümünü kullanın. Aşağıdaki örnek, `roles` dize talep türünün **yönetici**değerini içerip içermediğini denetler.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -828,7 +828,7 @@ Bir dize talep türünün parçalarını, belirtilen konumdaki karakterden başl
 Örneğin, telefon numarası ülke/bölge ön eki alın.
 
 
-```XML
+```xml
 <ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -866,7 +866,7 @@ Belirtilen değer için bir talep türü dizesi arar ve geçerli dizedeki belirt
 Örneğin, karakterleri kaldırarak bir telefon numarasını normalleştirin `-`
 
 
-```XML
+```xml
 <ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -902,7 +902,7 @@ Her öğe veya üye arasındaki belirtilen ayırıcıyı kullanarak belirtilen d
 
 Aşağıdaki örnek, bir Kullanıcı rolleri dize koleksiyonunu alır ve bunu bir virgül sınırlayıcı dizesine dönüştürür. Bu yöntemi, bir dize koleksiyonunu Azure AD Kullanıcı hesabında depolamak için kullanabilirsiniz. Daha sonra, dizinden hesabı okuduğunuzda, `StringSplit` virgülle sınırlayıcı dizeyi dize koleksiyonuna geri dönüştürmek için öğesini kullanın.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
   <InputClaims>
    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
@@ -938,7 +938,7 @@ Bu örnekte belirtilen bir dizenin öğeleriyle ayrılmış alt dizeleri içeren
 
 Aşağıdaki örnek, Kullanıcı rollerinin virgül sınırlayıcısı dizesini alır ve bunu bir dize koleksiyonuna dönüştürür.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />

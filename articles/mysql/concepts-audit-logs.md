@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: 00e4ef2452d2048f386d48e994ba1051ca81ec75
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062554"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100951"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda denetim günlükleri
 
@@ -22,18 +22,19 @@ MySQL için Azure veritabanı 'nda, denetim günlüğü kullanıcılar tarafınd
 
 ## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
 
-Varsayılan olarak, denetim günlüğü devre dışıdır. Etkinleştirmek için, açık olarak `audit_log_enabled` ayarlayın.
+>[!NOTE]
+> Sunucunuzun performansının yoğun bir şekilde etkilenmemesini sağlamak için, yalnızca denetim amaçlarıyla gerekli olay türlerini ve kullanıcıları günlüğe kaydetmek önerilir.
+
+Varsayılan olarak, denetim günlüğü devre dışıdır. Etkinleştirmek için, `audit_log_enabled` Açık olarak ayarlayın.
 
 Ayarlayabileceğiniz diğer parametreler şunlardır:
 
 - `audit_log_events`: günlüğe kaydedilecek olayları denetler. Belirli denetim olayları için aşağıdaki tabloya bakın.
-- `audit_log_include_users`: Günlük kaydına eklenecek MySQL kullanıcıları. Bu parametre için varsayılan değer boştur; bu, günlüğe kaydedilecek tüm kullanıcıları içerir. Bunun önceliği daha yüksektir `audit_log_exclude_users`. Parametrenin uzunluk üst sınırı 512 karakterdir.
-> [!Note]
-> `audit_log_include_users`daha yüksek önceliğe sahiptir `audit_log_exclude_users`. Örneğin `audit_log_include_users`  =  `demouser` , `audit_log_exclude_users`ve  = ise, Kullanıcı daha yüksek önceliğe sahip olduğu `audit_log_include_users` için denetim günlüklerine dahil edilir. `demouser`
+- `audit_log_include_users`: Günlük kaydına eklenecek MySQL kullanıcıları. Bu parametre için varsayılan değer boştur; bu, günlüğe kaydedilecek tüm kullanıcıları içerir. Bunun önceliği daha yüksektir `audit_log_exclude_users` . Parametrenin uzunluk üst sınırı 512 karakterdir.
 - `audit_log_exclude_users`: MySQL kullanıcılarının günlüğe kaydetme dışında tutulması. Parametrenin uzunluk üst sınırı 512 karakterdir.
 
-> [!Note]
-> İçin `sql_text`, 2048 karakteri aşarsa günlük kesilecek.
+> [!NOTE]
+> `audit_log_include_users`daha yüksek önceliğe sahiptir `audit_log_exclude_users` . Örneğin, ve ise `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` , Kullanıcı `audit_log_include_users` daha yüksek önceliğe sahip olduğu için denetim günlüklerine dahil edilir.
 
 | **Olay** | **Açıklama** |
 |---|---|
@@ -73,7 +74,7 @@ Aşağıdaki bölümlerde, olay türüne göre MySQL denetim günlükleri taraf�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (yalnızca MySQL 5,7 için kullanılabilir) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT` , `CHANGE USER` (yalnızca MySQL 5,7 için kullanılabilir) |
 | `connection_id_d` | MySQL tarafından oluşturulan benzersiz bağlantı KIMLIĞI |
 | `host_s` | Boş |
 | `ip_s` | MySQL 'e bağlanan istemcinin IP adresi |
@@ -84,6 +85,9 @@ Aşağıdaki bölümlerde, olay türüne göre MySQL denetim günlükleri taraf�
 ### <a name="general"></a>Genel
 
 Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıcı olay türleri için geçerlidir.
+
+> [!NOTE]
+> İçin `sql_text` , 2048 karakteri aşarsa günlük kesilecek.
 
 | **Özellik** | **Açıklama** |
 |---|---|
@@ -101,7 +105,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (yalnızca MySQL 5,6 için kullanılabilir) |
+| `event_subclass_s` | `LOG`, `ERROR` , `RESULT` (yalnızca MySQL 5,6 için kullanılabilir) |
 | `event_time` | UTC zaman damgasında sorgu başlangıç saati |
 | `error_code_d` | Sorgu başarısız olduysa hata kodu. `0`hata yok demektir |
 | `thread_id_d` | Sorguyu yürüten iş parçacığının KIMLIĞI |
@@ -114,7 +118,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 ### <a name="table-access"></a>Tablo erişimi
 
 > [!NOTE]
-> Tablo erişim günlükleri yalnızca MySQL 5,7 için çıkışlardır.
+> Tablo erişim günlükleri yalnızca MySQL 5,7 için çıkışlardır.<br>İçin `sql_text` , 2048 karakteri aşarsa günlük kesilecek.
 
 | **Özellik** | **Açıklama** |
 |---|---|
@@ -132,7 +136,7 @@ Aşağıdaki şema genel, DML_SELECT, DML_NONSELECT, DML, DDL, DCL ve yönetıc�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Sunucunun adı |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ``UPDATE`, `INSERT`, veya`DELETE` |
+| `event_subclass_s` | `READ`, `INSERT` , `UPDATE` veya`DELETE` |
 | `connection_id_d` | MySQL tarafından oluşturulan benzersiz bağlantı KIMLIĞI |
 | `db_s` | Erişilen veritabanının adı |
 | `table_s` | Erişilen tablonun adı |

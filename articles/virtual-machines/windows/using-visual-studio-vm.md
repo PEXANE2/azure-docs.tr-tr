@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 134f0202b4b18e96b9f089460f4235c6b5c0fe4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ecec05da3904782199e68cfdca917a8c451edec6
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652666"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105989"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 'da Visual Studio görüntüleri
 Visual Studio 'Yu önceden yapılandırılmış bir Azure sanal makinesinde (VM) kullanmak, herhangi bir şey için bir şeyi çalışır duruma getirmenin bir geliştirme ortamına hızlı ve kolay bir yoludur. Farklı Visual Studio yapılandırmalarına sahip sistem görüntüleri [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)'nde kullanılabilir.
@@ -31,7 +31,7 @@ En son ana sürümlere ait görüntüler, Visual Studio 2019, Visual Studio 2017
 | Yayın sürümü                                                                                                                                                | Sürümler              | Ürün sürümü   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019: en son (sürüm 16,5)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Kuruluş, topluluk | Sürüm 16.5.4    |
-| Visual Studio 2019: RTW                         | Kurumsal | Sürüm 16.0.13    |
+| Visual Studio 2019: RTW                         | Enterprise | Sürüm 16.0.13    |
 | Visual Studio 2017: en son (sürüm 15,9)           | Kuruluş, topluluk | Sürüm 15.9.22   |
 | Visual Studio 2017: RTW                             | Kuruluş, topluluk | Sürüm 15.0.28  |
 | Visual Studio 2015: latest (güncelleştirme 3)               | Kuruluş, topluluk | Sürüm 14.0.25431.01 |
@@ -104,7 +104,7 @@ Daha fazla bilgi için bkz. [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen
 > [!NOTE]
 > Görüntülerin depolanması için yine de bazı maliyetlerle karşılaşmanız gerekir, ancak bu artımlı maliyet, bir tane gerektiren her ekip üyesi için VM 'nin sıfırdan yeniden derlenmesi için ek gider maliyetlerine kıyasla çok önemli olabilir. Örneğin, tüm ekibiniz tarafından yeniden kullanılabilen bir ayda 127 GB görüntüsünü oluşturmak ve depolamak için birkaç dolar maliyeti vardır. Ancak, bu maliyetler her bir çalışanın, bireysel kullanımları için düzgün yapılandırılmış bir dev kutusunu oluşturmak ve doğrulamak üzere her çalışanın yatırım yaptıkları saatlere kıyasla önem altına alınır.
 
-Ayrıca, geliştirme görevleriniz veya teknolojilerinizin, geliştirme yapılandırmalarının ve birden çok makine yapılandırmasının değişen özellikleri gibi daha fazla ölçeği olması gerekebilir. "Altın görüntü" oluşturmayı otomatikleştiren _Tarifler_ oluşturmak için Azure DevTest Labs kullanabilirsiniz. Takımınızın çalışan VM 'Lerinin ilkelerini yönetmek için DevTest Labs de kullanabilirsiniz. [Geliştiriciler için Azure DevTest Labs kullanmak](/azure/devtest-lab/devtest-lab-developer-lab) , DevTest Labs hakkında daha fazla bilgi için en iyi kaynaktır.
+Ayrıca, geliştirme görevleriniz veya teknolojilerinizin, geliştirme yapılandırmalarının ve birden çok makine yapılandırmasının değişen özellikleri gibi daha fazla ölçeği olması gerekebilir. "Altın görüntü" oluşturmayı otomatikleştiren _Tarifler_ oluşturmak için Azure DevTest Labs kullanabilirsiniz. Takımınızın çalışan VM 'Lerinin ilkelerini yönetmek için DevTest Labs de kullanabilirsiniz. [Geliştiriciler için Azure DevTest Labs kullanmak](../../devtest-labs/devtest-lab-developer-lab.md) , DevTest Labs hakkında daha fazla bilgi için en iyi kaynaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Önceden yapılandırılmış Visual Studio görüntülerini öğrenmiş olduğunuza göre, sonraki adım yeni bir VM oluşturmaktır:

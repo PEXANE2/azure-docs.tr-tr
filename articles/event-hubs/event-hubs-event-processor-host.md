@@ -3,23 +3,19 @@ title: Olay Işleyicisi ana bilgisayarı 'nı kullanarak olayları alma-Azure Ev
 description: Bu makalede, Azure Event Hubs 'daki olay Işleyicisi ana bilgisayarı açıklanmaktadır. Bu, denetim noktası oluşturma, kiralama ve okuma olaylarının paralel olarak yönetilmesini basitleştirir.
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
+author: spelluru
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/10/2020
-ms.author: shvija
-ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: f3d6a5e77c3c1c5e8b8dceb44e5bcbe9cb5f93ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372223"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299305"
 ---
 # <a name="event-processor-host"></a>Olay işlemcisi konağı
 > [!NOTE]
@@ -104,15 +100,15 @@ Son olarak, tüketiciler [Eventprocessorhost](/dotnet/api/microsoft.azure.eventh
 
 Örnek olarak, olayları tüketmek için ayrılmış 5 sanal makine (VM) ve her bir VM 'de, gerçek tüketim işini yapan basit bir konsol uygulaması olduğunu düşünün. Ardından, her bir konsol uygulaması bir [Eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) örneği oluşturur ve Event Hubs hizmetine kaydeder.
 
-Bu örnek senaryoda, 5 **Eventprocessorhost** örneklerine 16 Bölüm ayrıldığınızı varsayalım. Bazı **Eventprocessorhost** örnekleri diğerlerinden daha fazla bölümden oluşabilir. Bir **Eventprocessorhost** örneğinin sahip olduğu her bölüm için, `SimpleEventProcessor` sınıfının bir örneğini oluşturur. Bu nedenle, her bir bölüme atanmış `SimpleEventProcessor` olan, genel olarak 16 örnek vardır.
+Bu örnek senaryoda, 5 **Eventprocessorhost** örneklerine 16 Bölüm ayrıldığınızı varsayalım. Bazı **Eventprocessorhost** örnekleri diğerlerinden daha fazla bölümden oluşabilir. Bir **Eventprocessorhost** örneğinin sahip olduğu her bölüm için, sınıfının bir örneğini oluşturur `SimpleEventProcessor` . Bu nedenle, `SimpleEventProcessor` her bir bölüme atanmış olan, genel olarak 16 örnek vardır.
 
 Aşağıdaki listede bu örnek özetlenmektedir:
 
 - 16 Event Hubs bölüm.
-- Her VM 'de 5 VM, 1 tüketici uygulaması (örneğin, tüketici. exe).
-- 5 EPH örneği, her VM 'de tüketici. exe tarafından kaydedilir.
-- 5 `SimpleEventProcessor` EPH örneği tarafından oluşturulan 16 nesne.
-- 1 EPH örneği 4 bölümden daha olabileceğinden `SimpleEventProcessor` , 1 tüketici. exe uygulaması 4 nesne içerebilir.
+- Her VM 'de 5 VM, 1 tüketici uygulaması (örneğin, Consumer.exe).
+- 5 EPH örneği kaydedilir, her VM 'de Consumer.exe tarafından 1.
+- `SimpleEventProcessor`5 EPH örneği tarafından oluşturulan 16 nesne.
+- 1 Consumer.exe uygulaması 4 nesne içerebilir `SimpleEventProcessor` , çünkü 1 EPH örneği 4 bölümden oluşabilir.
 
 ## <a name="partition-ownership-tracking"></a>Bölüm sahipliği izleme
 
@@ -120,12 +116,12 @@ Bir bölümün bir EPH örneğine (veya bir tüketiciye) sahipliği, izleme içi
 
 | **Tüketici grubu adı** | **Bölüm Kimliği** | **Ana bilgisayar adı (sahip)** | **Kira (veya sahiplik) Alım Süresi** | **Bölümdeki konum (kontrol noktası)** |
 | --- | --- | --- | --- | --- |
-| $Default | 0 | Tüketici\_VM3 | 2018-04-15T01:23:45 | 156 |
-| $Default | 1 | Tüketici\_VM4 | 2018-04-15T01:22:13 | 734 |
-| $Default | 2 | Tüketici\_VM0 | 2018-04-15T01:22:56 | 122 |
+| $Default | 0 | Tüketici \_ VM3 | 2018-04-15T01:23:45 | 156 |
+| $Default | 1 | Tüketici \_ VM4 | 2018-04-15T01:22:13 | 734 |
+| $Default | 2 | Tüketici \_ VM0 | 2018-04-15T01:22:56 | 122 |
 | : |   |   |   |   |
 | : |   |   |   |   |
-| $Default | 15 | Tüketici\_VM3 | 2018-04-15T01:22:56 | 976 |
+| $Default | 15 | Tüketici \_ VM3 | 2018-04-15T01:22:56 | 976 |
 
 Burada, her ana bilgisayar belirli bir süre (kira süresi) için bir bölümün sahipliğini alır. Bir ana bilgisayar başarısız olursa (VM kapatılırsa) kira süresi dolar. Diğer konaklar bölümün sahipliğini almaya çalışır ve konaklardan biri başarılı olur. Bu işlem, bölüm üzerindeki kirayı yeni bir sahibe sıfırlar. Bu şekilde, bir seferde yalnızca tek bir okuyucu bir tüketici grubu içindeki belirli bir bölümden okuyabilir.
 
@@ -206,7 +202,7 @@ Artık olay Işlemcisi konağını öğrenolduğunuza göre Event Hubs hakkında
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-node-send-v2.md)
 * [Event Hubs programlama kılavuzu](event-hubs-programming-guide.md)
 * [Event Hubs’da kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)

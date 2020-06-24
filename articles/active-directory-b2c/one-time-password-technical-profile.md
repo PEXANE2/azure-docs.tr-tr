@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: c94e0f7e2f39eb6002bc2fd1076b78f4579fbe01
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900389"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203991"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
 
@@ -28,15 +28,15 @@ Bir kerelik parola teknik profili, kod doğrulama sırasında de bir hata mesaj�
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `Proprietary` **Name** özniteliğinin olarak ayarlanması gerekir. **Handler** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:
+**Protokol** öğesinin **Name** özniteliğinin olarak ayarlanması gerekir `Proprietary` . **Handler** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:
 
-```XML
+```xml
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
 Aşağıdaki örnekte bir kerelik parola teknik profili gösterilmektedir:
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Validate user input verification code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -67,24 +67,24 @@ Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabi
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 Kod oluşturma modunu yapılandırmak için aşağıdaki ayarlar kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Codeexpirationınseconds | No | Süre sonuna kadar saniye cinsinden süre. En az `60`:; En fazla `1200`:; Varsayılan: `600`. |
+| Codeexpirationınseconds | No | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . |
 | Kod uzunluğu | No | Kodun uzunluğu. Varsayılan değer: `6`. |
 | CharacterSet | No | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
 | NumRetryAttempts | No | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
-| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode`. |
+| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
 | ReuseSameCode | No | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
 
 ### <a name="example"></a>Örnek
 
 Aşağıdaki örnek `TechnicalProfile` bir kod oluşturmak için kullanılır:
 
-```XML
+```xml
 <TechnicalProfile Id="GenerateCode">
   <DisplayName>Generate Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -126,13 +126,13 @@ Bu protokol sağlayıcısının kod doğrulaması sırasında belirtilen çıkı
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 Aşağıdaki ayarlar, doğrulama modunu kod için kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode`. |
+| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
@@ -151,7 +151,7 @@ Aşağıdaki meta veriler, kod doğrulama hatası üzerine görüntülenecek hat
 
 Aşağıdaki örnek `TechnicalProfile` bir kodu doğrulamak için kullanılır:
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Verify Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

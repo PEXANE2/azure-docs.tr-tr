@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 05/04/2020
-ms.openlocfilehash: 909485ea3c4e143ce93579d1bfea5e13cf94c575
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/18/2020
+ms.openlocfilehash: 6e570c100a30f18a843f50cb8dc93572bb62d0f7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660038"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080741"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
@@ -1168,6 +1168,7 @@ Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişe
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
 > | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/*/Read |  |
 > | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/kullanılabilirliği Bilitysets/* |  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/proximityPlacementGroups/* |  |
 > | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Virtual, ines/* |  |
 > | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Disks/* |  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/*/Read |  |
@@ -1207,6 +1208,7 @@ Traffic Manager profillerini yönetmenizi sağlar, ancak bunlara kimlerin erişe
         "Microsoft.Authorization/*/read",
         "Microsoft.Compute/*/read",
         "Microsoft.Compute/availabilitySets/*",
+        "Microsoft.Compute/proximityPlacementGroups/*",
         "Microsoft.Compute/virtualMachines/*",
         "Microsoft.Compute/disks/*",
         "Microsoft.Network/*/read",
@@ -2767,7 +2769,7 @@ Web sitelerini yönetmenizi sağlar, ancak bunlara erişemez.
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Certificates/* | Web sitesi sertifikaları oluşturma ve yönetme |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Listsitesassignedtohostname/Read | Ana bilgisayar adına atanan sitelerin adlarını alın. |
-> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Join/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Join/Action | Bir App Service planına katılır |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Read | App Service planında özellikleri al |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Sites/* | Web siteleri oluşturma ve yönetme (site oluşturma, ayrıca ilişkili App Service planına yazma izinleri gerektirir) |
 > | **NotActions** |  |
@@ -5623,7 +5625,7 @@ Mantıksal uygulamaları yönetmenize izin verir, ancak bunlara erişimi değiş
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connectiongateways/* | Bir bağlantı ağ geçidi oluşturun ve yönetir. |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connections/* | Bir bağlantı oluşturun ve yönetir. |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/* | Özel bir API oluşturur ve yönetir. |
-> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Join/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Join/Action | Bir App Service planına katılır |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Serverfarms/Read | App Service planında özellikleri al |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Sites/Functions/listsecrets/Action | Işlev gizli dizileri listeleyin. |
 > | **NotActions** |  |
@@ -6342,7 +6344,7 @@ Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güve
 
 ### <a name="devtest-labs-user"></a>DevTest Labs kullanıcısı
 
-Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. [Daha fazla bilgi edinin](../lab-services/devtest-lab-add-devtest-user.md)
+Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. [Daha fazla bilgi edinin](../devtest-labs/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6446,7 +6448,7 @@ Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden b
 
 ### <a name="lab-creator"></a>Laboratuvar Oluşturucu
 
-Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar. [Daha fazla bilgi edinin](../lab-services/classroom-labs/add-lab-creator.md)
+Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar. [Daha fazla bilgi edinin](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |

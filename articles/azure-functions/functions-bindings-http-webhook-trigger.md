@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: d8eb4abb600e1164e6de00d3abca190d019be011
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 44b9b060be7ec707444ddf409848be1a16addb83
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560619"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298625"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -56,9 +56,9 @@ public static async Task<IActionResult> Run(
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki ve bağlamayı kullanan bir [C# betik işlevindeki](functions-reference-csharp.md) tetikleyici bağlamayı gösterir. İşlevi `name` sorgu dizesinde veya http isteğinin gövdesinde bir parametre arar.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir tetikleyiciyi ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi `name` sorgu dizesinde veya http isteğinin gövdesinde bir parametre arar.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -132,9 +132,9 @@ public class Person {
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi `name` sorgu dizesinde veya http isteğinin gövdesinde bir parametre arar.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir tetikleyiciyi ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi `name` sorgu dizesinde veya http isteğinin gövdesinde bir parametre arar.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -181,9 +181,9 @@ module.exports = function(context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir tetikleyici bağlamayı ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlevi `name` sorgu dizesinde veya http isteğinin gövdesinde bir parametre arar.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir tetikleyiciyi ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlevi `name` sorgu dizesinde veya http isteğinin gövdesinde bir parametre arar.
 
-İşte *function. JSON* dosyası:
+Dosyada *function.js* :
 
 ```json
 {
@@ -478,11 +478,11 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#example).
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `HttpTrigger` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `HttpTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-| **tür** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
+| **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
 | **ada** | yok| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |, Varsa, işlevi çağırmak için istekte hangi anahtarların mevcut olması gerektiğini belirler. Yetkilendirme düzeyi aşağıdaki değerlerden biri olabilir: <ul><li><code>anonymous</code>&mdash;API anahtarı gerekli değildir.</li><li><code>function</code>&mdash;İşleve özgü bir API anahtarı gereklidir. Hiçbiri sağlanmazsa varsayılan değer budur.</li><li><code>admin</code>&mdash;Ana anahtar gereklidir.</li></ul> Daha fazla bilgi için [Yetkilendirme anahtarları](#authorization-keys)hakkında bölümüne bakın. |
@@ -500,7 +500,7 @@ Varsayılan olarak, bir HTTP tetikleyicisi için bir işlev oluşturduğunuzda, 
 
     http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 
-Bu yolu `route` , http tetikleyicisinin giriş bağlamasındaki isteğe bağlı özelliği kullanarak özelleştirebilirsiniz. Örnek olarak, aşağıdaki *function. JSON* dosyası bir `route` http tetikleyicisi için bir özelliği tanımlar:
+Bu yolu `route` , http tetikleyicisinin giriş bağlamasındaki isteğe bağlı özelliği kullanarak özelleştirebilirsiniz. Örnek olarak, aşağıdaki *function.js* DOSYADAKI bir `route` http tetikleyicisi için bir özelliği tanımlar:
 
 ```json
 {
@@ -635,7 +635,7 @@ public class HttpTriggerJava {
 
 ---
 
-Varsayılan olarak, tüm işlev yollarına *API*ön eki eklenir. Ayrıca, `extensions.http.routePrefix` [Host. JSON](functions-host-json.md) dosyanızdaki özelliğini kullanarak ön eki özelleştirebilir veya kaldırabilirsiniz. Aşağıdaki örnek, *Host. JSON* dosyasındaki önek için boş bir dize kullanarak *API* yol önekini kaldırır.
+Varsayılan olarak, tüm işlev yollarına *API*ön eki eklenir. Ayrıca, `extensions.http.routePrefix` dosyadaki [host.js](functions-host-json.md) özelliğini kullanarak ön eki özelleştirebilir veya kaldırabilirsiniz. Aşağıdaki örnek, dosyasındaki *host.js* önek için boş bir dize kullanarak *API* yol önekini kaldırır.
 
 ```json
 {
@@ -752,9 +752,6 @@ Kimliği doğrulanmış kullanıcı [http üstbilgileri](../app-service/app-serv
 
 ## <a name="function-access-keys"></a><a name="authorization-keys"></a>İşlev erişim tuşları
 
-> [!IMPORTANT]
-> Anahtarlar geliştirme sırasında HTTP uç noktalarınızı gizleme konusunda yardımcı olabilir, ancak üretimde bir HTTP tetikleyicisini güvenli hale getirmenin bir yolu olarak tasarlanmamıştır. Daha fazla bilgi edinmek için bkz. [üretimde BIR HTTP uç noktası güvenli hale getirme](#secure-an-http-endpoint-in-production).
-
 [!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>Anahtarları edinme
@@ -815,7 +812,7 @@ Web kancası yetkilendirmesi, HTTP tetikleyicisinin bir parçası olan Web kanca
 
 ## <a name="limits"></a>Sınırlar
 
-HTTP istek uzunluğu 100 MB (104.857.600 bayt) ile sınırlıdır ve URL uzunluğu 4 KB (4.096 bayt) ile sınırlıdır. Bu sınırlar, `httpRuntime` çalışma zamanının [Web. config dosyasının](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)öğesi tarafından belirtilir.
+HTTP istek uzunluğu 100 MB (104.857.600 bayt) ile sınırlıdır ve URL uzunluğu 4 KB (4.096 bayt) ile sınırlıdır. Bu sınırlar, `httpRuntime` çalışma zamanının [Web.config dosyasının](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)öğesi tarafından belirtilir.
 
 HTTP tetikleyicisini kullanan bir işlev 230 saniye içinde tamamlanmazsa, [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) zaman aşımına uğrar ve bir HTTP 502 hatası döndürür. İşlev çalışmaya devam edecektir, ancak HTTP yanıtı dönemeyecektir. Uzun süre çalışan işlevlerde, zaman uyumsuz desenleri izlemenizi ve isteğin durumuna ping ekleyebileceğiniz bir konum döndürmenizi öneririz. Bir işlevin ne kadar süreyle çalıştırılabilmesini hakkında bilgi için bkz. [ölçek ve barındırma-tüketim planı](functions-scale.md#timeout).
 

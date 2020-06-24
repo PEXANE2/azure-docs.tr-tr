@@ -2,21 +2,21 @@
 title: Karantina uygulama sağlama durumu | Microsoft Docs
 description: Otomatik Kullanıcı sağlama için bir uygulama yapılandırdığınızda, karantinanın sağlama durumunun ne anlama geldiğini ve nasıl temizleyeceğinizi öğrenin.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/28/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c1e0039133b7f9a7ae827e348640f6379b7f10ac
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d8b50bfdd894d36b96fb3a53eab7c43c5b1fe11a
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593939"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782118"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda uygulama sağlama
 
@@ -28,11 +28,11 @@ Karantinaya alma sırasında, artımlı döngülerin sıklığı günde bir kez 
 
 Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vardır:
   
-- Azure Portal, **Azure Active Directory** > **Kurumsal uygulamalar** > &lt;*uygulama adı*&gt; > **sağlama** ' ya gidin ve karantina iletisi için ilerleme çubuğunu gözden geçirin.   
+- Azure Portal, **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  &lt; *uygulama adı*sağlama ' ya gidin &gt;  >  **Provisioning** ve karantina iletisi için ilerleme çubuğunu gözden geçirin.   
 
   ![Karantina durumunu gösteren sağlama durumu çubuğu](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- Azure Portal, **Azure Active Directory** > **Denetim günlüklerine** gidin > etkinliğe filtre uygula **:** karantinaya alma ve karantina geçmişini gözden geçirme. Yukarıda açıklanan ilerleme çubuğundaki görünüm, sağlama işleminin şu anda karantinada olup olmadığını gösterir. denetim günlükleri, bir uygulamanın karantina geçmişini görmenizi sağlar. 
+- Azure Portal, **Azure Active Directory**  >  **Denetim günlüklerine** gidin > **etkinliğe** filtre uygula: karantinaya alma ve karantina geçmişini gözden geçirme. Yukarıda açıklanan ilerleme çubuğundaki görünüm, sağlama işleminin şu anda karantinada olup olmadığını gösterir. denetim günlükleri, bir uygulamanın karantina geçmişini görmenizi sağlar. 
 
 - Sağlama işinin durumunu programlı bir şekilde almak için Microsoft Graph isteği [Al işini](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) kullanın:
 
@@ -46,7 +46,7 @@ Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vard�
 
 ## <a name="why-is-my-application-in-quarantine"></a>Uygulamamın neden karantinaya alınsın?
 
-|Açıklama|Önerilen Eylem|
+|Description|Önerilen Eylem|
 |---|---|
 |**SCIM uyumluluk sorunu:** Beklenen HTTP/200 Tamam yanıtı yerine bir HTTP/404 bulunamadı yanıtı döndürüldü. Bu durumda, Azure AD sağlama hizmeti hedef uygulamaya bir istek yaptı ve beklenmeyen bir yanıt aldı.|Uygulamanın kiracı URL 'sini belirtmesini gerektirip gerektirmediğini ve URL 'nin doğru olduğundan emin olmak için yönetici kimlik bilgileri bölümüne bakın. Bir sorun görmüyorsanız, hizmetin SCıM uyumlu olduğundan emin olmak için lütfen uygulama geliştiricisine başvurun. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Geçersiz kimlik bilgileri:** Hedef uygulamaya erişim yetkisi verme girişiminde, belirtilen kimlik bilgilerinin geçersiz olduğunu belirten hedef uygulamadan bir yanıt aldık.|Lütfen sağlama yapılandırma Kullanıcı arabiriminin yönetici kimlik bilgileri bölümüne gidin ve geçerli kimlik bilgileriyle erişime yeniden yetki verin. Uygulama Galeri 'de ise, gereken ek adımlar için uygulama yapılandırma öğreticisini gözden geçirin.|
@@ -66,7 +66,7 @@ Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vard�
 
 - [Geçerli yönetici kimlik bilgilerini girdiğinizden](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)emin olmak için uygulamanın sağlama ayarlarını kontrol edin. Azure AD, hedef uygulamayla bir güven kurabilmesi gerekir. Geçerli kimlik bilgilerini girdiğinizden ve hesabınızda gerekli izinlere sahip olduğunuzdan emin olun.
 
-- Hangi hataların karantinaya neden olduğunu araştırmak ve hatayı gidermek için [sağlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) gözden geçirin. **Etkinlik** bölümündeki **Azure Active Directory** &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** bölümüne giderek Azure Portal sağlama günlüklerine erişin.
+- Hangi hataların karantinaya neden olduğunu araştırmak ve hatayı gidermek için [sağlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) gözden geçirin. Etkinlik bölümündeki **Azure Active Directory** &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** bölümüne **Activity** giderek Azure Portal sağlama günlüklerine erişin.
 
 Sorunu çözdükten sonra, sağlama işini yeniden başlatın. Uygulamanın sağlama ayarlarında öznitelik eşlemeleri veya kapsam filtreleri gibi bazı değişiklikler, sağlamayı sizin için otomatik olarak yeniden başlatacak. Uygulamanın **sağlama** sayfasındaki ilerleme çubuğu, sağlamanın en son ne zaman başlatıldığını gösterir. Sağlama işini el ile yeniden başlatmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:  
 

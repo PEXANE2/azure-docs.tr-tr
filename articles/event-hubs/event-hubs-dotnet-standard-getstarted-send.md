@@ -4,21 +4,18 @@ description: Bu makalede, Azure Event Hubs eski Microsoft. Azure. EventHubs pake
 services: event-hubs
 documentationcenter: na
 author: spelluru
-editor: ''
 ms.assetid: ''
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: shvija
+ms.openlocfilehash: abe6a5d2cd4432b5b9dc387940a4d48f4be2aa92
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025178"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296585"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>.NET Core (Microsoft. Azure. EventHubs) kullanarak Azure Event Hubs olay gönderme veya olayları alma
 Bu hızlı başlangıçta, **Microsoft. Azure. EventHubs** .NET Core kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir.
@@ -51,7 +48,7 @@ Visual Studio’yu çalıştırın. **Dosya** menüsünde **Yeni**' ye ve ardın
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet paketini ekleme
 
-Aşağıdaki adımları [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) izleyerek projenize .NET Core Library NuGet paketini ekleyin: 
+[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)Aşağıdaki adımları izleyerek projenize .NET Core Library NuGet paketini ekleyin: 
 
 1. Yeni oluşturulan projeye sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
 2. **Gözat** sekmesine tıklayın, "Microsoft.Azure.EventHubs" için arama yapın ve **Microsoft.Azure.EventHubs** paketini seçin. Yüklemeyi tamamlamak için **Yükle**'ye tıklayın, ardından bu iletişim kutusunu kapatın.
@@ -201,7 +198,7 @@ Aşağıdaki adımları [`Microsoft.Azure.EventHubs`](https://www.nuget.org/pack
 ## <a name="receive-events"></a>Olayları alma
 Bu bölümde, olay [Işlemcisi Konağı](event-hubs-event-processor-host.md)kullanarak bir olay hub 'ından iletiler alan bir .NET Core konsol uygulamasının nasıl yazılacağı gösterilmektedir. [Olay İşleyicisi Ana Bilgisayarı](event-hubs-event-processor-host.md), olay hub’larına ait kalıcı denetim noktalarını ve paralel alımları yöneterek bu olay hub’larına ait alma olaylarını basitleştiren bir .NET sınıfıdır. Olay İşleyicisi Ana Bilgisayarı’nı kullanarak, farklı düğümlerde barındırıldığında bile birden çok alıcı arasında olayları bölebilirsiniz. Bu örnek, tek alıcı için Olay İşleyicisi Ana Bilgisayarı'nın nasıl kullanıldığını göstermektedir.
 > [!NOTE]
-> Bu hızlı başlangıcı [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)'dan bir örnek olarak indirebilir,,,, `EventHubConnectionString` ve `EventHubName` `StorageContainerName` dizelerini `StorageAccountName`olay `StorageAccountKey`hub değerlerinizle değiştirebilir ve çalıştırabilirsiniz. Alternatif olarak bu öğreticideki adımları izleyerek kendi çözümünüzü de oluşturabilirsiniz.
+> Bu hızlı başlangıcı [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)'dan bir örnek olarak indirebilir,,,, `EventHubConnectionString` `EventHubName` `StorageAccountName` `StorageAccountKey` ve `StorageContainerName` dizelerini Olay Hub değerlerinizle değiştirebilir ve çalıştırabilirsiniz. Alternatif olarak bu öğreticideki adımları izleyerek kendi çözümünüzü de oluşturabilirsiniz.
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 

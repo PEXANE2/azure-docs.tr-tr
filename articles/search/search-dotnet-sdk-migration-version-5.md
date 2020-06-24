@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32749037ac0abe3c55878c3adaaeff48183ae685
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793032"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080408"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK sürüm 5 ' e yükseltme
 
-[Azure Search .NET SDK 'sının](https://aka.ms/search-sdk)sürüm 4,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 5 ' i kullanacak şekilde yükseltmenize yardımcı olur.
+[.NET SDK 'sının](https://docs.microsoft.com/dotnet/api/overview/azure/search)4,0-Preview veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 5 ' i kullanacak şekilde yükseltmenize yardımcı olur.
 
 Örnek içeren SDK hakkında daha genel bir anlatım için bkz. [.NET uygulamasından Azure Search kullanma](search-howto-dotnet-sdk.md).
 
@@ -35,14 +35,14 @@ Azure Search .NET SDK 'sının 5. sürümü önceki sürümlerden bazı değişi
 Azure Search .NET SDK 'nın 5. sürümü, Azure Search REST API, özellikle 2017-11-11 olan en son genel kullanıma sunulan sürümü hedefler. Bu, aşağıdakiler de dahil olmak üzere bir .NET uygulamasından Azure Search yeni özelliklerini kullanmayı mümkün kılar:
 
 * [Eş anlamlılar](search-synonyms.md).
-* Artık, Dizin Oluşturucu yürütme geçmişinde uyarılara programlı olarak erişebilirsiniz (daha fazla `Warning` ayrıntı için `IndexerExecutionResult` bkz. [.net Reference](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) içindeki özelliği).
+* Artık, Dizin Oluşturucu yürütme geçmişinde uyarılara programlı olarak erişebilirsiniz ( `Warning` `IndexerExecutionResult` daha fazla ayrıntı için bkz. [.net Reference](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) içindeki özelliği).
 * .NET Core 2 desteği.
 * Yeni paket yapısı yalnızca ihtiyacınız olan SDK bölümlerinin kullanılmasını destekler (Ayrıntılar için [sürüm 5 ' teki son değişikliklere](#ListOfChanges) bakın).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
-İlk olarak, NuGet ' i paket `Microsoft.Azure.Search` Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
+İlk olarak, NuGet ' i `Microsoft.Azure.Search` Paket Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
 
 NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin. Kodunuzun nasıl yapılandırıldığına bağlı olarak, başarıyla yeniden oluşturulabilir. Öyleyse başlamaya hazırsınız demektir!
 
@@ -67,8 +67,8 @@ Herhangi bir derleme hatasını veya uyarıyı düzelttikten sonra, isterseniz y
 Sürüm 5 ' teki en önemli önemli değişiklik, `Microsoft.Azure.Search` derlemenin ve içeriğinin artık dört ayrı NuGet paketi olarak dağıtılan dört ayrı derlemeye bölündüğü gibidir:
 
  - `Microsoft.Azure.Search`: Bu, tüm diğer Azure Search paketlerini bağımlılık olarak içeren bir meta pakettir. SDK 'nın önceki bir sürümünden yükseltiyorsanız, bu paketin yükseltilmesi ve yeniden oluşturulması yeni sürümü kullanmaya başlamak için yeterli olmalıdır.
- - `Microsoft.Azure.Search.Data`: Azure Search kullanarak bir .NET uygulaması geliştiriyorsanız bu paketi kullanın ve yalnızca dizininizdeki belgeleri sorgulayıp güncelleştirmeniz yeterlidir. Ayrıca dizinleri, eş anlamlı haritaları veya diğer hizmet düzeyi kaynaklarını oluşturmanız ya da güncelleştirmeniz gerekiyorsa, bunun yerine `Microsoft.Azure.Search` paketini kullanın.
- - `Microsoft.Azure.Search.Service`: Azure Search dizinleri, eş anlamlı haritaları, Dizin oluşturucuyu, veri kaynaklarını veya diğer hizmet düzeyi kaynakları yönetmek için .NET 'te Otomasyon geliştiriyorsanız bu paketi kullanın. Dizininizdeki belgeleri sorgulamak veya güncelleştirmek istiyorsanız, bunun yerine `Microsoft.Azure.Search.Data` paketini kullanın. Tüm Azure Search işlevselliğine ihtiyacınız varsa, bunun yerine `Microsoft.Azure.Search` paketini kullanın.
+ - `Microsoft.Azure.Search.Data`: Azure Search kullanarak bir .NET uygulaması geliştiriyorsanız bu paketi kullanın ve yalnızca dizininizdeki belgeleri sorgulayıp güncelleştirmeniz yeterlidir. Ayrıca dizinleri, eş anlamlı haritaları veya diğer hizmet düzeyi kaynaklarını oluşturmanız ya da güncelleştirmeniz gerekiyorsa, `Microsoft.Azure.Search` bunun yerine paketini kullanın.
+ - `Microsoft.Azure.Search.Service`: Azure Search dizinleri, eş anlamlı haritaları, Dizin oluşturucuyu, veri kaynaklarını veya diğer hizmet düzeyi kaynakları yönetmek için .NET 'te Otomasyon geliştiriyorsanız bu paketi kullanın. Dizininizdeki belgeleri sorgulamak veya güncelleştirmek istiyorsanız, `Microsoft.Azure.Search.Data` bunun yerine paketini kullanın. Tüm Azure Search işlevselliğine ihtiyacınız varsa, `Microsoft.Azure.Search` bunun yerine paketini kullanın.
  - `Microsoft.Azure.Search.Common`: Azure Search .NET kitaplıkları için gereken ortak türler. Bu paketi uygulamanızda doğrudan kullanmanız gerekmez; Yalnızca bir bağımlılık olarak kullanılmak üzere tasarlanmıştır.
  
 Bu değişiklik, derlemeler arasında çok sayıda tür taşındığı için teknik olarak kesiliyor. Bu, SDK sürüm 5 ' e yükseltmek için uygulamanızı yeniden derleme işlemi için gereklidir.
@@ -77,18 +77,18 @@ Sürüm 5 ' te, uygulamanızı yeniden oluşturmak için ek olarak kod değişik
 
 ### <a name="change-to-suggesters"></a>Öneri araçları olarak değiştir 
 
-`Suggester` Oluşturucunun için `enum` `SuggesterSearchMode`parametresi artık yoktur. Bu Enum yalnızca bir değer içeriyordu ve bu nedenle yedekli. Bunun sonucunda derleme hataları görürseniz, yalnızca `SuggesterSearchMode` parametreye başvuruları kaldırın.
+`Suggester`Oluşturucunun `enum` için parametresi artık yoktur `SuggesterSearchMode` . Bu Enum yalnızca bir değer içeriyordu ve bu nedenle yedekli. Bunun sonucunda derleme hataları görürseniz, yalnızca parametreye başvuruları kaldırın `SuggesterSearchMode` .
 
 ### <a name="removed-obsolete-members"></a>Artık kullanılmayan Üyeler kaldırıldı
 
 Önceki sürümlerde eski olarak işaretlenen ve daha sonra sürüm 5 ' te kaldırılan yöntemlerle veya özelliklerle ilgili derleme hataları görebilirsiniz. Bu tür hatalarla karşılaşırsanız, bu sorunları çözmek için aşağıdaki adımları uygulayın:
 
-- `IndexingParametersExtensions.IndexStorageMetadataOnly` Yöntemini kullanıyorsanız bunun yerine kullanın `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` .
-- `IndexingParametersExtensions.SkipContent` Yöntemini kullanıyorsanız bunun yerine kullanın `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` .
+- `IndexingParametersExtensions.IndexStorageMetadataOnly`Yöntemini kullanıyorsanız `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` bunun yerine kullanın.
+- `IndexingParametersExtensions.SkipContent`Yöntemini kullanıyorsanız `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` bunun yerine kullanın.
 
 ### <a name="removed-preview-features"></a>Önizleme özellikleri kaldırıldı
 
-Sürüm 4,0 ' den sürüm 5 ' e yükseltiyorsanız, bu özellikler hala önizlemede olduğundan blob Dizin oluşturucular için JSON dizisinin ve CSV ayrıştırma desteğinin kaldırıldığını unutmayın. Özellikle, `IndexingParametersExtensions` sınıfının aşağıdaki yöntemleri kaldırılmıştır:
+Sürüm 4,0 ' den sürüm 5 ' e yükseltiyorsanız, bu özellikler hala önizlemede olduğundan blob Dizin oluşturucular için JSON dizisinin ve CSV ayrıştırma desteğinin kaldırıldığını unutmayın. Özellikle, sınıfının aşağıdaki yöntemleri `IndexingParametersExtensions` kaldırılmıştır:
 
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`

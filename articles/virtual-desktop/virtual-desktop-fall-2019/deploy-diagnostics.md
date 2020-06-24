@@ -4,16 +4,16 @@ description: Windows sanal masaüstü için tanılama UX aracı 'nı dağıtma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6635fff957512b601fe0927769e4ea91e9270450
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0660947907b26e1a86bbd68bb32d1ac5d211b20e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615181"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206062"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -68,7 +68,7 @@ Bu bölümde, bir hizmet sorumlusu ile Azure Active Directory uygulamasını olu
    ```powershell
    Connect-AzureAD
    ```
-4. [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'de **Createuyarlanpregistrationfordiagnostics. ps1** betiğini çalıştırın.
+4. [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'de **CreateADAppRegistrationforDiagnostics.ps1** betiğini çalıştırın.
 5.  Betik sizden uygulamanızı girmenizi istediğinde, benzersiz bir uygulama adı girin.
 
 
@@ -93,7 +93,7 @@ Bir Log Analytics çalışma alanı oluşturmak ve Kullanıcı deneyimini ve uyg
 PowerShell betiğini çalıştırmak için:
 
 1.  PowerShell 'i yönetici olarak açın.
-2.  [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'de **Createloganalticsworkspace fordiagnostics. ps1** betiğini çalıştırın.
+2.  [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'de **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** betiğini çalıştırın.
 3. Parametreler için aşağıdaki değerleri girin:
 
     - **Resourcegroupname**için kaynak grubunun adını girin.
@@ -115,13 +115,13 @@ Bu bölüm, önceki bölümde PowerShell betiği olmadan oluşturulan mevcut bir
 1. Internet tarayıcınızı açın ve [Azure Portal](https://portal.azure.com/) Yönetici hesabınızla oturum açın.
 2. Sonra, yapılandırılan Windows performans sayaçlarını gözden geçirmek için **Log Analytics çalışma alanlarına** gidin.
 3. **Ayarlar** bölümünde **Gelişmiş ayarlar**' ı seçin.
-4. Bundan sonra, **veri** > **Windows performans sayaçları** ' na gidin ve aşağıdaki sayaçları ekleyin:
+4. Bundan sonra, **veri**  >  **Windows performans sayaçları** ' na gidin ve aşağıdaki sayaçları ekleyin:
 
-    -   MantıksalDisk\*(\\)% boş alan
-    -   MantıksalDisk (C\\:) ort. disk kuyruğu uzunluğu
-    -   Bellek (\*)\\kullanılabilir MBayt
-    -   İşlemci bilgileri (\*)\\işlemci zamanı
-    -   Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi
+    -   MantıksalDisk ( \* ) \\ % boş alan
+    -   MantıksalDisk (C:) \\ Ort. disk kuyruğu uzunluğu
+    -   Bellek ( \* ) \\ kullanılabilir MBayt
+    -   İşlemci bilgileri ( \* ) \\ İşlemci Zamanı
+    -   Oturum başına kullanıcı girişi gecikmesi ( \* ) \\ en fazla giriş gecikmesi
 
 [Azure izleyici 'de Windows ve Linux performans verileri kaynaklarında](/azure/azure-monitor/platform/data-sources-performance-counters)performans sayaçları hakkında daha fazla bilgi edinin.
 
@@ -147,14 +147,14 @@ Log Analytics çalışma alanınızın önceden yapılandırılmış Windows per
 
 1. [Azure Portal](https://portal.azure.com/), yapılandırılmış Windows performans sayaçlarını gözden geçirmek için **Log Analytics çalışma alanları** ' na gidin.
 2. **Ayarlar**altında **Gelişmiş ayarlar**' ı seçin.
-3. Bundan sonra, **veri** > **Windows performans sayaçları**' na gidin.
+3. Bundan sonra, **veri**  >  **Windows performans sayaçları**' na gidin.
 4. Aşağıdaki sayaçların önceden yapılandırılmış olduğundan emin olun:
 
-   - MantıksalDisk\*(\\)% boş alan: diskte bulunan toplam kullanılabilir alanın boş alan miktarını yüzde olarak görüntüler.
-   - MantıksalDisk (C\\:) ort. disk kuyruğu uzunluğu: C sürücünüz için disk aktarım isteği uzunluğu. Değer, kısa bir süre için 2 ' den fazla olamaz.
-   - Bellek (\*)\\kullanılabilir MBayt: sistem için megabayt cinsinden kullanılabilir bellek.
-   - İşlemci bilgileri (\*)\\işlemci zamanı: işlemcinin boş olmayan bir iş parçacığını yürütmek için harcadığı geçen sürenin yüzdesi.
-   - Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi
+   - MantıksalDisk ( \* ) \\ % boş alan: diskte bulunan toplam kullanılabilir alanın boş alan miktarını yüzde olarak görüntüler.
+   - MantıksalDisk (C:) \\ Ort. disk kuyruğu uzunluğu: C sürücünüz için disk aktarım isteği uzunluğu. Değer, kısa bir süre için 2 ' den fazla olamaz.
+   - Bellek ( \* ) \\ kullanılabilir MBayt: sistem için megabayt cinsinden kullanılabilir bellek.
+   - İşlemci bilgileri ( \* ) \\ İşlemci Zamanı: işlemcinin boş olmayan bir iş parçacığını yürütmek için harcadığı geçen sürenin yüzdesi.
+   - Oturum başına kullanıcı girişi gecikmesi ( \* ) \\ en fazla giriş gecikmesi
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Log Analytics çalışma alanınızdaki VM 'lere bağlanma
 
@@ -164,7 +164,7 @@ VM 'lerin sistem durumunu görüntüleyebilmek için Log Analytics bağlantısı
 2. Log Analytics çalışma alanınıza gidin.
 3. Sol bölmede, çalışma alanı veri kaynakları altında **sanal makineler**' i seçin.
 4. Bağlanmak istediğiniz VM 'nin adını seçin.
-5. **Bağlan**’ı seçin.
+5. **Bağlan**'ı seçin.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -197,7 +197,7 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 
    ![Yeniden yönlendirme URI 'SI sayfası](../media/redirect-uri-page.png)
 
-8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda kullandığınız uygulama adı ise `contosoapp45`, ilişkili URL 'niz <https://contosoapp45.azurewebsites.net>).
+8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda kullandığınız uygulama adı ise `contosoapp45` , ILIŞKILI URL 'niz <https://contosoapp45.azurewebsites.net> ).
 9. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.
 10.   **Kabul Et**’i seçin.
 
@@ -226,7 +226,7 @@ Etkinlikler zaman damgasına göre sıralanır ve öncelikle en son etkinliklerd
 
 Bağlantı etkinliklerinin birden fazla hatası olabilir. Kullanıcı tarafından gelen diğer hataları görmek için etkinlik türünü genişletebilirsiniz. Hakkında daha fazla bilgi görmek için bir iletişim kutusu açmak üzere hata kodunun adını seçin.
 
-### <a name="investigate-the-session-host"></a>Oturum konağını araştırın 
+### <a name="investigate-the-session-host"></a>Oturum konağını araştırın
 
 Arama sonuçlarında hakkında bilgi edinmek istediğiniz oturum konağını bulun ve seçin.
 
@@ -242,26 +242,26 @@ Oturum ana bilgisayarındaki kullanıcılarla da etkileşim kurabilirsiniz:
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows performans sayacı eşikleri
 
-- MantıksalDisk\*(\\)% boş alan:
+- MantıksalDisk ( \* ) \\ % boş alan:
 
     - Boş olan mantıksal disk üzerindeki toplam kullanılabilir alan yüzdesini görüntüler.
     - Eşik: %20 ' den az, sağlıksız olarak işaretlendi.
 
-- MantıksalDisk (C\\:) ortalama disk sırası uzunluğu:
+- MantıksalDisk (C:) \\ Ortalama Disk sırası uzunluğu:
 
     - Depolama sistemi koşullarını temsil eder.
     - Eşik: 5 ' ten yüksek, sağlıksız olarak işaretlendi.
 
-- Bellek (\*)\\kullanılabilir MBayt:
+- Bellek ( \* ) \\ kullanılabilir MBayt:
 
     - Sistem için kullanılabilir bellek.
     - Eşik: 500 megabayttan az, sağlıksız olarak işaretlendi.
 
-- İşlemci bilgileri (\*)\\işlemci zamanı:
+- İşlemci bilgileri ( \* ) \\ İşlemci Zamanı:
 
     - Eşik: %80 ' den yüksek, sağlıksız olarak işaretlendi.
 
-- [Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
+- [Oturum başına kullanıcı girişi gecikmesi ( \* ) \\ en fazla giriş gecikmesi](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Eşik: 2000 MS 'den yüksek, sağlıksız olarak işaretlendi.
 

@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 32f8f157abaf5076911c3908a83be4a644e09656
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8109b7b1f6cd8477d49bafd114be24b91530d123
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655592"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734971"
 ---
-# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Mevcut Azure AD Domain Services yönetilen bir etki alanı için SKU 'YU değiştirme
+# <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Mevcut Azure Active Directory Domain Services yönetilen bir etki alanı için SKU 'YU değiştirme
 
 Azure Active Directory Domain Services (Azure AD DS) ' de, kullanılabilir performans ve Özellikler SKU türünü temel alır. Bu özellik farkları, tek yönlü giden orman güvenlerini (Şu anda önizleme aşamasında) yedekleme sıklığını veya en yüksek sayıyı içerir. Yönetilen etki alanını oluştururken bir SKU seçersiniz ve yönetilen etki alanı dağıtıldıktan sonra iş gereksinimleriniz değiştikçe STB 'leri yukarı veya aşağı doğru değiştirebilirsiniz. İş Gereksinimlerdeki değişiklikler, daha sık yedekleme ihtiyacını veya ek orman güvenleri oluşturmayı içerebilir. Farklı SKU 'ların sınırları ve fiyatları hakkında daha fazla bilgi için bkz. [azure AD DS SKU kavramlarına][concepts-sku] ve [Azure AD DS fiyatlandırma][pricing] sayfalarına bakın.
 
@@ -32,11 +32,11 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 * Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, [Azure Active Directory Domain Services bir örnek oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
+    * Gerekirse, [yönetilen bir etki alanı oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
 
 ## <a name="sku-change-limitations"></a>SKU değişiklik sınırlamaları
 
-Azure AD DS yönetilen etki alanı dağıtıldıktan sonra SKU 'Ları yukarı veya aşağı çevirin. Ancak, bir kaynak ormanı (Şu anda önizleme aşamasında) kullanıyorsanız ve Azure AD DS 'den şirket içi AD DS ortamına tek yönlü bir giden orman güveni oluşturduysanız, SKU değişiklik işlemi için bazı sınırlamalar vardır. *Premium* ve *Kurumsal* SKU 'lar, oluşturabileceğiniz güven sayısı için bir sınır tanımlar. Yapılandırılmış olan en düşük sınıra sahip bir SKU 'ya geçiş yapamazsınız.
+Yönetilen etki alanı dağıtıldıktan sonra SKU 'Ları yukarı veya aşağı doğru değiştirebilirsiniz. Ancak, bir kaynak ormanı (Şu anda önizleme aşamasında) kullanıyorsanız ve Azure AD DS 'den şirket içi AD DS ortamına tek yönlü bir giden orman güveni oluşturduysanız, SKU değişiklik işlemi için bazı sınırlamalar vardır. *Premium* ve *Kurumsal* SKU 'lar, oluşturabileceğiniz güven sayısı için bir sınır tanımlar. Yapılandırılmış olan en düşük sınıra sahip bir SKU 'ya geçiş yapamazsınız.
 
 Örneğin:
 
@@ -47,14 +47,14 @@ Bu limitlerin hakkında daha fazla bilgi için bkz. [Azure AD DS SKU özellikler
 
 ## <a name="select-a-new-sku"></a>Yeni bir SKU seçin
 
-Azure AD DS yönetilen bir etki alanının SKU 'sunu Azure portal kullanarak değiştirmek için aşağıdaki adımları izleyin:
+Azure portal kullanarak yönetilen bir etki alanının SKU 'sunu değiştirmek için aşağıdaki adımları izleyin:
 
 1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. Listeden yönetilen etki alanınızı seçin, örneğin, *aaddscontoso.com*.
 1. Azure AD DS sayfanın sol tarafındaki menüde, **SKU > ayarlar**' ı seçin.
 
     ![Azure portal Azure AD DS yönetilen etki alanınız için SKU menü seçeneğini seçin](media/change-sku/overview-change-sku.png)
 
-1. Açılan menüden Azure AD DS yönetilen etki alanınız için istediğiniz SKU 'YU seçin. Bir kaynak ormanınız varsa, orman güvenleri yalnızca *Kurumsal* SKU veya daha yüksek sürümlerde kullanılabildiği sürece *Standart* SKU 'yu seçemezsiniz.
+1. Açılan menüden, yönetilen etki alanınız için istediğiniz SKU 'YU seçin. Bir kaynak ormanınız varsa, orman güvenleri yalnızca *Kurumsal* SKU veya daha yüksek sürümlerde kullanılabildiği sürece *Standart* SKU 'yu seçemezsiniz.
 
     Açılan menüden istediğiniz SKU 'yu seçin ve ardından **Kaydet**' i seçin.
 

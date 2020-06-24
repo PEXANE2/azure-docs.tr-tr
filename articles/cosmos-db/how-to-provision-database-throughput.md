@@ -3,15 +3,15 @@ title: Azure Cosmos DB’de veritabanı aktarım hızını sağlama
 description: Azure portal, CLı, PowerShell ve çeşitli diğer SDK 'Ları kullanarak Azure Cosmos DB veritabanı düzeyinde aktarım hızı sağlamayı öğrenin.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 63f8d408d76cfce86c254ad3840c2f0eefb09fd4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655332"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263648"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB bir veritabanında standart (el ile) aktarım hızı sağlama
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Cosmos DB bir veritabanında standart (el ile) işleme sağla
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API'si
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Cosmos DB bir veritabanında standart (el ile) işleme sağla
    * Bir üretilen iş girin (örneğin, 1000 ru).
    * **Tamam**’ı seçin.
 
-    ![Yeni veritabanı iletişim kutusunun ekran görüntüsü](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="Yeni veritabanı iletişim kutusunun ekran görüntüsü":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Azure CLı veya PowerShell kullanarak verimlilik sağlama
 

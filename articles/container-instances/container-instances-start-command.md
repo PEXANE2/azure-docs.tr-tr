@@ -4,15 +4,15 @@ description: Bir Azure Container Instance dağıtırken bir kapsayıcı görünt
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247130"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693065"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Varsayılan komut satırı işlemini geçersiz kılmak için bir kapsayıcı örneğindeki komut satırını ayarlayın
 
-Bir kapsayıcı örneği oluşturduğunuzda, isteğe bağlı olarak kapsayıcı görüntüsüne bakmış varsayılan komut satırı yönergesini geçersiz kılmak için bir komut belirtin. Bu davranış, `--entrypoint` komut satırı bağımsız değişkenine benzerdir `docker run`.
+Bir kapsayıcı örneği oluşturduğunuzda, isteğe bağlı olarak kapsayıcı görüntüsüne bakmış varsayılan komut satırı yönergesini geçersiz kılmak için bir komut belirtin. Bu davranış, `--entrypoint` komut satırı bağımsız değişkenine benzerdir `docker run` .
 
 Kapsayıcı örnekleri için [ortam değişkenlerini](container-instances-environment-variables.md) ayarlamak gibi, bir başlangıç komut satırı belirtmek, her kapsayıcıyı göreve özgü yapılandırmayla dinamik olarak hazırlamanız gereken toplu işler için yararlıdır.
 
@@ -32,7 +32,7 @@ Kapsayıcı örnekleri için [ortam değişkenlerini](container-instances-enviro
 
 * Kapsayıcı yapılandırmasına bağlı olarak, komut satırı yürütülebilir dosyası veya bağımsız değişkenlerin tam yolunu ayarlamanız gerekebilir.
 
-* Komut satırının uzun süre çalışan bir görevi mi yoksa bir kez çalıştır görevini mi belirttiğinden bağımsız olarak kapsayıcı örneği için uygun bir [yeniden başlatma ilkesi](container-instances-restart-policy.md) ayarlayın. Örneğin, bir `Never` veya `OnFailure` bir kez çalıştır görevi için bir yeniden başlatma ilkesi önerilir. 
+* Komut satırının uzun süre çalışan bir görevi mi yoksa bir kez çalıştır görevini mi belirttiğinden bağımsız olarak kapsayıcı örneği için uygun bir [yeniden başlatma ilkesi](container-instances-restart-policy.md) ayarlayın. Örneğin, bir `Never` veya bir `OnFailure` kez çalıştır görevi için bir yeniden başlatma ilkesi önerilir. 
 
 * Bir kapsayıcı görüntüsünde varsayılan giriş noktası kümesi hakkında bilgiye ihtiyacınız varsa [Docker Image İnceleme](https://docs.docker.com/engine/reference/commandline/image_inspect/) komutunu kullanın.
 
@@ -40,13 +40,13 @@ Kapsayıcı örnekleri için [ortam değişkenlerini](container-instances-enviro
 
 Komut satırı sözdizimi, örnekleri oluşturmak için kullanılan Azure API veya aracına bağlı olarak değişir. Bir kabuk ortamı belirtirseniz, kabuğun komut sözdizimi kurallarını da gözlemleyin.
 
-* [az Container Create][az-container-create] komutu: `--command-line` parametresiyle bir dize geçirin. Örnek: `--command-line "python myscript.py arg1 arg2"`).
+* [az Container Create][az-container-create] komutu: parametresiyle bir dize geçirin `--command-line` . Örnek: `--command-line "python myscript.py arg1 arg2"` ).
 
-* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell cmdlet 'i: `-Command` parametresi ile bir dize geçirin. Örnek: `-Command "echo hello"`.
+* [New-AzureRmContainerGroup][new-azurermcontainergroup] Azure PowerShell cmdlet 'i: parametresi ile bir dize geçirin `-Command` . Örnek: `-Command "echo hello"`.
 
-* Azure portal: kapsayıcı yapılandırmasının **komut geçersiz kılma** özelliğinde, tırnak işaretleri olmadan, virgülle ayrılmış dizelerin bir listesini sağlayın. Örnek: `python, myscript.py, arg1, arg2`). 
+* Azure portal: kapsayıcı yapılandırmasının **komut geçersiz kılma** özelliğinde, tırnak işaretleri olmadan, virgülle ayrılmış dizelerin bir listesini sağlayın. Örnek: `python, myscript.py, arg1, arg2` ). 
 
-* Kaynak Yöneticisi Template veya YAML dosyası ya da Azure SDK 'larından biri: komut satırı özelliğini dize dizisi olarak belirtin. Örnek: Kaynak Yöneticisi şablonunda JSON `["python", "myscript.py", "arg1", "arg2"]` dizisi. 
+* Kaynak Yöneticisi Template veya YAML dosyası ya da Azure SDK 'larından biri: komut satırı özelliğini dize dizisi olarak belirtin. Örnek: `["python", "myscript.py", "arg1", "arg2"]` Kaynak Yöneticisi ŞABLONUNDA JSON dizisi. 
 
   [Dockerfile](https://docs.docker.com/engine/reference/builder/) söz dizimine alışkın değilseniz, bu biçim cmd yönergesinin *Exec* biçimine benzer.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7fa2dd335e457307dd6d7e4ecdc787015b742b32
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148285"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100384"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Ön betikleri ve son betikleri yönetme
 
@@ -90,6 +90,9 @@ Tüm özelliklere sahip tam bir örnek şurada bulunabilir: [ada göre yazılım
 
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext`Nesne, makineler için yinelenen girdiler içerebilir. Bu, ön betiklerin ve betiklerin aynı makinede birden fazla kez çalışmasına neden olabilir. Bu davranışı geçici olarak çözmek için, `Sort-Object -Unique` yalnızca BENZERSIZ VM adlarını seçmek üzere kullanın.
+
+> [!NOTE]
+> Şu anda yalnızca PowerShell runbook 'ları, ön/sonrası betikleri olarak desteklenmektedir. Python, grafik, PowerShell Iş akışı, grafik PowerShell Iş akışı gibi diğer runbook türleri şu anda ön/sonrası betikleri olarak desteklenmemektedir.
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Bir dağıtımda ön betik veya komut dosyası kullanma
 

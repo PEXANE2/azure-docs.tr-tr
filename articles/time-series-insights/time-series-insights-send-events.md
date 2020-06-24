@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
 ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254254"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698844"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Olayları bir olay hub 'ı kullanarak Time Series Insights ortamına gönderme
 
@@ -55,13 +55,13 @@ Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma 
 
 ## <a name="add-a-time-series-insights-instance"></a>Time Series Insights örneği ekleme
 
-Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal verileri eklemek için örnekleri kullanır. Veriler, **zaman SERISI kimliği**kullanılarak sorgu zamanına birleştirilir. Bu makalede daha sonra kullandığımız örnek **wınıdmills projesi Için zaman serisi kimliği** `id`. Zaman serisi Insight örnekleri ve **zaman SERISI kimliği**hakkında daha fazla bilgi edinmek Için [zaman serisi modellerini](./time-series-insights-update-tsm.md)okuyun.
+Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal verileri eklemek için örnekleri kullanır. Veriler, **zaman SERISI kimliği**kullanılarak sorgu zamanına birleştirilir. Bu makalede daha sonra kullandığımız örnek **wınıdmills projesi Için zaman serisi kimliği** `id` . Zaman serisi Insight örnekleri ve **zaman SERISI kimliği**hakkında daha fazla bilgi edinmek Için [zaman serisi modellerini](./time-series-insights-update-tsm.md)okuyun.
 
 ### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights olay kaynağı oluşturma
 
 1. Bir olay kaynağı oluşturmadıysanız, [bir olay kaynağı oluşturma](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)adımlarını izleyin.
 
-1. İçin `timeSeriesId`bir değer ayarlayın. **Zaman SERISI kimliği**hakkında daha fazla bilgi edinmek Için [zaman serisi modellerini](./time-series-insights-update-tsm.md)okuyun.
+1. İçin bir değer ayarlayın `timeSeriesId` . **Zaman SERISI kimliği**hakkında daha fazla bilgi edinmek Için [zaman serisi modellerini](./time-series-insights-update-tsm.md)okuyun.
 
 ### <a name="push-events-to-windmills-sample"></a>Olayları, wınte milfrels örneğine gönder
 
@@ -69,7 +69,7 @@ Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal ver
 
 1. Olay Hub örneğinizi seçin.
 
-1. **Paylaşılan erişim ilkeleri** > **mysendpolicy**bölümüne gidin. **Bağlantı dizesi-birincil anahtar**değerini kopyalayın.
+1. **Paylaşılan erişim ilkeleri**  >  **mysendpolicy**bölümüne gidin. **Bağlantı dizesi-birincil anahtar**değerini kopyalayın.
 
     [![Birincil anahtar bağlantı dizesinin değerini kopyalayın](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
@@ -105,7 +105,7 @@ Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal ver
 
 * **Çıkış**: bir olay.
 
-    |id|timestamp|
+    |kimlik|timestamp|
     |--------|---------------|
     |cihaz1|2016-01-08T01:08:00Z|
 
@@ -128,7 +128,7 @@ Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal ver
 
 * **Çıkış**: iki olay.
 
-    |id|timestamp|
+    |kimlik|timestamp|
     |--------|---------------|
     |cihaz1|2016-01-08T01:08:00Z|
     |cihaz2|2016-01-08T01:17:00Z|

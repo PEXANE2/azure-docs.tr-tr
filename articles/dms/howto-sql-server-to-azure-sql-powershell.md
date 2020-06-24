@@ -1,7 +1,7 @@
 ---
 title: 'PowerShell: SQL Server SQL veritabanına geçirme'
 titleSuffix: Azure Database Migration Service
-description: Azure veritabanı geçiş hizmeti ile Azure PowerShell kullanarak SQL Server bir datagbase 'i Azure SQL veritabanı 'na geçirmeyi öğrenin.
+description: Azure veritabanı geçiş hizmeti ile Azure PowerShell kullanarak SQL Server bir veritabanını Azure SQL veritabanı 'na geçirmeyi öğrenin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 494ef67938df161915390d9adc74093bafa550f5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a092ec3d211ed3fafadd73c37b3e58c353b618d6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192655"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253418"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell kullanarak SQL Server veritabanını Azure SQL veritabanı 'na geçirme
 
-Bu makalede, Microsoft Azure PowerShell kullanarak bir Azure SQL veritabanına SQL Server 2016 veya üzeri bir şirket içi örneğine geri yüklenen **Adventureworks2012** veritabanını geçirolursunuz. Microsoft Azure PowerShell modülünü kullanarak bir SQL Server örneğinden Azure SQL veritabanı 'na veritabanlarını geçirebilirsiniz `Az.DataMigration` .
+Bu makalede, Microsoft Azure PowerShell kullanarak SQL Server 2016 veya üzeri bir şirket içi örneğine geri yüklenen **Adventureworks2012** VERITABANıNı Azure SQL veritabanı 'na geçirolursunuz. Microsoft Azure PowerShell modülünü kullanarak bir SQL Server örneğinden Azure SQL veritabanı 'na veritabanlarını geçirebilirsiniz `Az.DataMigration` .
 
 Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
@@ -31,14 +31,14 @@ Bu makalede şunları öğreneceksiniz:
 > * Azure veritabanı geçiş hizmeti örneğinde bir geçiş projesi oluşturun.
 > * Geçişi çalıştırma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 
 * [SQL Server 2016 veya üzeri](https://www.microsoft.com/sql-server/sql-server-downloads) (herhangi bir sürüm)
 * SQL Server Express yükleme ile varsayılan olarak devre dışı bırakılan TCP/IP protokolünü etkinleştirmek için. [Sunucu ağ protokolünü etkinleştirme veya devre dışı bırakma](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)MAKALESINI izleyerek TCP/IP protokolünü etkinleştirin.
 * [Windows Güvenlik duvarınızı veritabanı altyapısı erişimi için](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)yapılandırmak için.
-* Bir Azure SQL Veritabanı örneği. [Azure Portal Azure SQL veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)makalesindeki ayrıntıyı Izleyerek BIR Azure SQL veritabanı örneği oluşturabilirsiniz.
+* Bir Azure SQL Veritabanı örneği. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)makalesindeki ayrıntıyı Izleyerek BIR Azure SQL veritabanı örneği oluşturabilirsiniz.
 * [Data Migration Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 veya üzeri.
 * Azure veritabanı geçiş hizmeti 'ni, [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınız için siteden siteye bağlantı ile sağlayan Azure Resource Manager dağıtım modelini kullanarak Microsoft Azure sanal ağ oluşturma.
 * [SQL Server geçiş değerlendirmesi gerçekleştirme](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) makalesinde açıklandığı gibi Data Migration Yardımcısı kullanarak şirket içi veritabanınızın ve şema geçişinizin değerlendirmesini tamamlamış olması için

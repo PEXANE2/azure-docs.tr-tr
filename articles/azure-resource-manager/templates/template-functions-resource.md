@@ -2,13 +2,13 @@
 title: Şablon işlevleri-kaynaklar
 description: Kaynaklarla ilgili değerleri almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: b04861e0d3c1b96b77e3865652a4300213b49a09
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 06/18/2020
+ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676735"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099251"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -108,7 +108,7 @@ Aşağıdaki örnek, bir kaynak grubu kilidinin kaynak KIMLIĞINI döndürür.
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama, bir liste işlemini destekleyen kaynak türünün değerlerini döndürür. İşlem adı ile başlamalıdır `list` . Bazı yaygın kullanımlar `listKeys` ve ' `listKeyValue` dir `listSecrets` .
+Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama, bir liste işlemini destekleyen kaynak türünün değerlerini döndürür. İşlem adı ile başlamalıdır `list` . Bazı yaygın kullanımlar `listKeys` , `listKeyValue` ve ' dir `listSecrets` .
 
 ### <a name="parameters"></a>Parametreler
 
@@ -120,7 +120,9 @@ Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
-Liste işlevleri yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, `input` ifadesi Resource özelliğine atandığı için liste işlevlerini kullanabilirsiniz. `count`Liste işlevi çözümlenmeden önce Count belirlenmesi gerektiğinden, bunları ile kullanamazsınız.
+Liste işlevleri bir kaynak tanımının özelliklerinde kullanılabilir. Bir şablonun çıktılar bölümünde hassas bilgiler sunan bir liste işlevi kullanmayın. Çıkış değerleri dağıtım geçmişinde depolanır ve kötü niyetli bir kullanıcı tarafından alınabilir.
+
+[Özellik yinelemesi](copy-properties.md)ile kullanıldığında, `input` ifadesi Resource özelliğine atandığı için liste işlevlerini kullanabilirsiniz. `count`Liste işlevi çözümlenmeden önce Count belirlenmesi gerektiğinden, bunları ile kullanamazsınız.
 
 ### <a name="implementations"></a>Uygulamalar
 
@@ -284,71 +286,31 @@ Koşullu olarak dağıtılan bir kaynakta bir **liste** işlevi kullanıyorsanı
 
 ### <a name="list-example"></a>Liste örneği
 
-Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) , çıktılar bölümündeki bir depolama hesabından birincil ve ikincil anahtarların nasıl döndürülayarlanacağı gösterilmektedir. Ayrıca depolama hesabı için bir SAS belirteci döndürür.
-
-SAS belirtecini almak için bir nesneyi süre sonu zamanına geçirin. Süre sonu zamanı gelecekte olmalıdır. Bu örnek, List işlevlerini nasıl kullanacağınızı göstermek için tasarlanmıştır. Genellikle, SAS belirtecini bir çıkış değeri olarak döndürmek yerine bir kaynak değerinde kullanırsınız. Çıkış değerleri dağıtım geçmişinde depolanır ve güvenli değildir.
+Aşağıdaki örnek, [dağıtım betikleri](deployment-script-template.md)için bir değer ayarlarken ListKeys kullanır.
 
 ```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagename": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "southcentralus"
-        },
-        "accountSasProperties": {
-            "type": "object",
-            "defaultValue": {
-                "signedServices": "b",
-                "signedPermission": "r",
-                "signedExpiry": "2018-08-20T11:00:00Z",
-                "signedResourceTypes": "s"
-            }
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2018-02-01",
-            "name": "[parameters('storagename')]",
-            "location": "[parameters('location')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "StorageV2",
-            "properties": {
-                "supportsHttpsTrafficOnly": false,
-                "accessTier": "Hot",
-                "encryption": {
-                    "services": {
-                        "blob": {
-                            "enabled": true
-                        },
-                        "file": {
-                            "enabled": true
-                        }
-                    },
-                    "keySource": "Microsoft.Storage"
-                }
-            },
-            "dependsOn": []
-        }
-    ],
-    "outputs": {
-        "keys": {
-            "type": "object",
-            "value": "[listKeys(parameters('storagename'), '2018-02-01')]"
-        },
-        "accountSAS": {
-            "type": "object",
-            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties'))]"
+"storageAccountSettings": {
+    "storageAccountName": "[variables('storageAccountName')]",
+    "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+}
+```
+
+Sonraki örnekte bir parametre alan bir liste işlevi gösterilmektedir. Bu durumda, işlev **Listaccountsas**olur. Sona erme saati için bir nesne geçirin. Süre sonu zamanı gelecekte olmalıdır.
+
+```json
+"parameters": {
+    "accountSasProperties": {
+        "type": "object",
+        "defaultValue": {
+            "signedServices": "b",
+            "signedPermission": "r",
+            "signedExpiry": "2020-08-20T11:00:00Z",
+            "signedResourceTypes": "s"
         }
     }
-}
+},
+...
+"sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
 ListKeyValue örneği için bkz. [hızlı başlangıç: uygulama yapılandırması ve Kaynak Yöneticisi şablonuyla OTOMATIK VM dağıtımı](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
@@ -527,7 +489,7 @@ Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile 
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Örnek:
+Örneğin:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt``Microsoft.Compute/virtualMachines/extensions/myVM/myExt`doğru değil
 

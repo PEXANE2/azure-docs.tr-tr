@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f4a90859831e6134530b94dfa80c11eb740301a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72754987"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113322"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'si
 
@@ -24,7 +24,7 @@ Azure Cosmos DB Cassandra, MongoDB, Gremlin ve Azure tabloları depolama dahil o
 
 Varsayılan olarak, MongoDB için Azure Cosmos DB API 'SI kullanılarak oluşturulan yeni hesaplar MongoDB tel protokolünün 3,6 sürümü ile uyumludur. Bu protokol sürümünü anlayan tüm MongoDB istemci sürücüleri Cosmos DB yerel olarak bağlanabiliyor olmalıdır.
 
-![MongoDB için Azure Cosmos DB API'si](./media/mongodb-introduction/cosmosdb-mongodb.png)
+:::image type="content" source="./media/mongodb-introduction/cosmosdb-mongodb.png" alt-text="MongoDB için Azure Cosmos DB API’si" border="false":::
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 
@@ -40,7 +40,7 @@ Cosmos DB, tam olarak yönetilen, genel olarak dağıtılmış, hizmet olarak ve
 
 Hızlı Başlangıç ' i izleyerek bir Azure Cosmos hesabı oluşturun ve mevcut MongoDB uygulamanızı Azure Cosmos DB kullanacak şekilde geçirin veya yenisini oluşturun:
 
-* [Mevcut bir MongoDB Node. js web uygulamasını geçirin](create-mongodb-nodejs.md).
+* [Mevcut bir MongoDB Node.js Web uygulamasını geçirin](create-mongodb-nodejs.md).
 * [MongoDB ve .NET SDK için Azure Cosmos DB API 'sini kullanarak bir Web uygulaması oluşturma](create-mongodb-dotnet.md)
 * [MongoDB ve Java SDK için Azure Cosmos DB API 'sini kullanarak bir konsol uygulaması oluşturma](create-mongodb-java.md)
 

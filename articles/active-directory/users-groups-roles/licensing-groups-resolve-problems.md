@@ -8,25 +8,25 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: e6d754b02566c3026b908ab0a3254db3113cd225
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582686"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727441"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
 Azure Active Directory (Azure AD) içindeki grup tabanlı lisanslama, Kullanıcı kavramını bir lisanslama hata durumunda sunmaktadır. Bu makalede, kullanıcıların bu durumda nasıl bitebileceği nedenleri açıkladık.
 
-Lisansları, grup tabanlı lisanslama kullanmadan, bireysel kullanıcılara doğrudan atadığınızda, atama işlemi başarısız olabilir. Örneğin, bir kullanıcı sisteminde PowerShell cmdlet 'ini `Set-MsolUserLicense` çalıştırdığınızda, cmdlet 'i iş mantığı ile ilgili birçok nedenden dolayı başarısız olabilir. Örneğin, yeterli sayıda lisans veya aynı anda atanmayan iki hizmet planı arasında bir çakışma olabilir. Sorun hemen size geri bildirilir.
+Lisansları, grup tabanlı lisanslama kullanmadan, bireysel kullanıcılara doğrudan atadığınızda, atama işlemi başarısız olabilir. Örneğin, bir kullanıcı sisteminde PowerShell cmdlet 'ini çalıştırdığınızda `Set-MsolUserLicense` , cmdlet 'i iş mantığı ile ilgili birçok nedenden dolayı başarısız olabilir. Örneğin, yeterli sayıda lisans veya aynı anda atanmayan iki hizmet planı arasında bir çakışma olabilir. Sorun hemen size geri bildirilir.
 
 Grup tabanlı lisanslama kullanırken aynı hatalar oluşabilir, ancak Azure AD hizmeti lisansları atarken arka planda gerçekleşirler. Bu nedenle, hatalar size anında iletilenmelidir. Bunun yerine, kullanıcı nesnesine kaydedilir ve sonra yönetim portalı aracılığıyla raporlanır. Kullanıcıya lisans vermek için özgün amaç hiçbir zaman kaybedilmez, ancak gelecekteki araştırma ve çözümleme için bir hata durumunda kaydedilir.
 
@@ -56,7 +56,7 @@ Aşağıdaki bölümlerde olası her bir sorunun açıklaması ve bunu çözme y
 
 **Sorun:** Grupta belirtilen ürünlerden biri için yeterli kullanılabilir lisans yok. Ürün için daha fazla lisans satın almanız veya diğer kullanıcılardan veya gruplardan kullanılmayan lisanslar boşaltmanız gerekir.
 
-Kaç lisans kullanılabildiğini görmek için, **Azure Active Directory** > **Lisansları** > **Tüm ürünler**' e gidin.
+Kaç lisans kullanılabildiğini görmek için, **Azure Active Directory**  >  **Lisansları**  >  **Tüm ürünler**' e gidin.
 
 Hangi kullanıcıların ve grupların lisans tükettiğini görmek için bir ürün seçin. **Lisanslı kullanıcılar**altında, lisanslarına doğrudan veya bir veya daha fazla grup aracılığıyla atanmış olan tüm kullanıcıların listesini görürsünüz. **Lisanslı gruplar**altında, bu ürünlerin atandığı tüm grupları görürsünüz.
 
@@ -87,7 +87,7 @@ Bu sorunu çözmek için, gerekli planın başka bir yöntem aracılığıyla ku
 
 ## <a name="usage-location-isnt-allowed"></a>Kullanım konumuna izin verilmiyor
 
-**Sorun:** Bazı Microsoft Hizmetleri, yerel yasalar ve yönetmelikler nedeniyle tüm konumlarda kullanılamaz. Bir kullanıcıya lisans atayabilmeniz için önce Kullanıcı için **Kullanım konumu** özelliğini belirtmeniz gerekir. Konumu, Azure Portal **Kullanıcı** > **profili** > **ayarları** bölümünde belirtebilirsiniz.
+**Sorun:** Bazı Microsoft Hizmetleri, yerel yasalar ve yönetmelikler nedeniyle tüm konumlarda kullanılamaz. Bir kullanıcıya lisans atayabilmeniz için önce Kullanıcı için **Kullanım konumu** özelliğini belirtmeniz gerekir. Konumu, Azure Portal **Kullanıcı**  >  **profili**  >  **ayarları** bölümünde belirtebilirsiniz.
 
 Azure AD, kullanım konumu desteklenmeyen bir kullanıcıya bir grup lisansı atamayı denediğinde, başarısız olur ve kullanıcıya bir hata kaydeder.
 

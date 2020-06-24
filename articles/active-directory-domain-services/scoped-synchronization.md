@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 9ef7e14cc2a290cc5583e3e599e278f98882152c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f2c823b0932db42876be6ab04ebcd82783729aa
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654733"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734430"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Azure AD 'den kapsamlı eşitlemeyi Azure Active Directory Domain Services olarak yapılandırma
 
@@ -24,75 +24,75 @@ Azure Active Directory Domain Services (Azure AD DS), kimlik doğrulama hizmetle
 
 Varsayılan olarak, bir Azure AD dizininden tüm kullanıcılar ve gruplar Azure AD DS yönetilen bir etki alanıyla eşitlenir. Belirli gereksinimleriniz varsa, bunun yerine yalnızca tanımlı bir kullanıcı kümesini eşitlemeyi tercih edebilirsiniz.
 
-Bu makalede, kapsamlı eşitleme kullanan bir Azure AD DS yönetilen etki alanı oluşturma ve ardından kapsamlı kullanıcı kümesini değiştirme veya devre dışı bırakma işlemlerinin nasıl yapılacağı gösterilir.
+Bu makalede, kapsamlı eşitleme kullanan yönetilen bir etki alanı oluşturma ve ardından kapsamlı kullanıcı kümesini değiştirme veya devre dışı bırakma işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="scoped-synchronization-overview"></a>Kapsamlı eşitlemeye genel bakış
 
-Varsayılan olarak, bir Azure AD dizininden tüm kullanıcılar ve gruplar Azure AD DS yönetilen bir etki alanıyla eşitlenir. Yönetilen etki alanına yalnızca birkaç kullanıcının erişmesi gerekiyorsa yalnızca bu kullanıcı hesaplarını eşitlemeniz yeterlidir. Bu kapsamlı eşitleme grup tabanlıdır. Grup tabanlı kapsamlı eşitleme yapılandırdığınızda, yalnızca belirttiğiniz gruplara ait olan kullanıcı hesapları Azure AD DS tarafından yönetilen etki alanına eşitlenir.
+Varsayılan olarak, bir Azure AD dizininden tüm kullanıcılar ve gruplar yönetilen bir etki alanıyla eşitlenir. Yönetilen etki alanına yalnızca birkaç kullanıcının erişmesi gerekiyorsa yalnızca bu kullanıcı hesaplarını eşitlemeniz yeterlidir. Bu kapsamlı eşitleme grup tabanlıdır. Grup tabanlı kapsamlı eşitleme yapılandırdığınızda, yalnızca belirttiğiniz gruplara ait olan kullanıcı hesapları yönetilen etki alanına eşitlenir.
 
 Aşağıdaki tabloda kapsamlı eşitlemenin nasıl kullanılacağı özetlenmektedir:
 
 | Geçerli durum | İstenen durum | Gerekli yapılandırma |
 | --- | --- | --- |
-| Mevcut bir yönetilen etki alanı, tüm Kullanıcı hesaplarını ve grupları eşitleyecek şekilde yapılandırılır. | Yalnızca belirli gruplara ait olan kullanıcı hesaplarını eşleştirmek istiyorsunuz. | Tüm kullanıcıları, kapsamlı eşitleme kullanarak eşitlemeye geçiş yapamazsınız. [Mevcut yönetilen etki alanını silin](delete-aadds.md)ve ardından bu makaledeki adımları izleyerek Azure AD DS yönetilen bir etki alanını kapsamlı eşitleme yapılandırılmış bir şekilde yeniden oluşturun. |
-| Mevcut bir yönetilen etki alanı yok. | Yeni bir yönetilen etki alanı oluşturmak ve yalnızca belirli gruplara ait kullanıcı hesaplarını eşleştirmek istiyorsunuz. | Kapsamlı eşitleme yapılandırılmış bir Azure AD DS yönetilen etki alanı oluşturmak için bu makaledeki adımları izleyin. |
-| Mevcut bir yönetilen etki alanı, yalnızca belirli gruplara ait olan hesapları eşitleyecek şekilde yapılandırılır. | Kullanıcıları Azure AD DS tarafından yönetilen etki alanına eşitlenmesi gereken grupların listesini değiştirmek istiyorsunuz. | Kapsamlı eşitlemeyi değiştirmek için bu makaledeki adımları izleyin. |
+| Mevcut bir yönetilen etki alanı, tüm Kullanıcı hesaplarını ve grupları eşitleyecek şekilde yapılandırılır. | Yalnızca belirli gruplara ait olan kullanıcı hesaplarını eşleştirmek istiyorsunuz. | Tüm kullanıcıları, kapsamlı eşitleme kullanarak eşitlemeye geçiş yapamazsınız. [Mevcut yönetilen etki alanını silin](delete-aadds.md)ve ardından bu makaledeki adımları izleyerek yönetilen bir etki alanını kapsamlı eşitleme yapılandırılmış bir şekilde yeniden oluşturun. |
+| Mevcut bir yönetilen etki alanı yok. | Yeni bir yönetilen etki alanı oluşturmak ve yalnızca belirli gruplara ait kullanıcı hesaplarını eşleştirmek istiyorsunuz. | Kapsamlı eşitleme yapılandırılmış bir yönetilen etki alanı oluşturmak için bu makaledeki adımları izleyin. |
+| Mevcut bir yönetilen etki alanı, yalnızca belirli gruplara ait olan hesapları eşitleyecek şekilde yapılandırılır. | Kullanıcıları yönetilen etki alanına eşitlenmesi gereken grupların listesini değiştirmek istiyorsunuz. | Kapsamlı eşitlemeyi değiştirmek için bu makaledeki adımları izleyin. |
 
 Kapsamlı eşitleme ayarlarını yapılandırmak için Azure portal veya PowerShell kullanın:
 
 | Eylem | | |
 |--|--|--|
-| Azure AD DS yönetilen etki alanı oluşturma ve kapsamlı eşitlemeyi yapılandırma | [Azure portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Yönetilen bir etki alanı oluşturun ve kapsamlı eşitlemeyi yapılandırın | [Azure portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | Kapsamlı eşitlemeyi değiştirme | [Azure portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
 | Kapsamlı eşitlemeyi devre dışı bırak | [Azure portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> Eşitleme kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Aşağıdaki noktalara dikkat edilmelidir:
+> Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Aşağıdaki noktalara dikkat edilmelidir:
 > 
->  * Azure AD DS yönetilen bir etki alanının eşitleme kapsamını değiştirdiğinizde, tam bir yeniden eşitleme gerçekleşir.
->  * Azure AD DS yönetilen etki alanında artık gerekli olmayan nesneler silinir. Yönetilen etki alanında yeni nesneler oluşturulur.
->  * Yeniden eşitlemenin tamamlanması uzun zaman alabilir. Eşitleme süresi, Azure AD DS yönetilen etki alanındaki ve Azure AD dizinindeki kullanıcılar, gruplar ve grup üyelikleri gibi nesne sayısına bağlıdır. Yüzlerce binlerce nesne içeren büyük dizinler için yeniden eşitleme işlemi birkaç gün sürebilir.
+>  * Yönetilen bir etki alanı için eşitleme kapsamını değiştirdiğinizde, tam bir yeniden eşitleme gerçekleşir.
+>  * Yönetilen etki alanında artık gerekli olmayan nesneler silinir. Yönetilen etki alanında yeni nesneler oluşturulur.
+>  * Yeniden eşitlemenin tamamlanması uzun zaman alabilir. Eşitleme süresi, yönetilen etki alanındaki ve Azure AD dizinindeki kullanıcılar, gruplar ve grup üyelikleri gibi nesne sayısına bağlıdır. Yüzlerce binlerce nesne içeren büyük dizinler için yeniden eşitleme işlemi birkaç gün sürebilir.
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Azure portal kullanarak kapsamlı eşitlemeyi etkinleştirme
 
 Azure portal kapsamlı eşitlemeyi etkinleştirmek için aşağıdaki adımları izleyin:
 
-1. [Azure AD DS örneği oluşturmak ve yapılandırmak için öğreticiyi](tutorial-create-instance-advanced.md)izleyin. Eşitleme kapsamı dışında tüm önkoşulları ve dağıtım adımlarını doldurun.
-1. Eşitleme adımında **kapsam** ' ı seçin, ardından Azure AD DS örneğiyle EŞITLENECEK Azure AD gruplarını seçin.
+1. [Yönetilen bir etki alanı oluşturmak ve yapılandırmak için öğreticiyi](tutorial-create-instance-advanced.md)izleyin. Eşitleme kapsamı dışında tüm önkoşulları ve dağıtım adımlarını doldurun.
+1. Eşitleme adımında **kapsam** ' ı seçin ve ardından yönetilen etki alanı Ile EŞITLENECEK Azure AD gruplarını seçin.
 
-Azure AD DS yönetilen etki alanının, dağıtımın tamamlanması bir saate kadar sürebilir. Azure portal Azure AD DS yönetilen etki alanınız için **genel bakış** sayfasında, bu dağıtım aşamasının tamamında geçerli durum gösterilir.
+Yönetilen etki alanının, dağıtımın tamamlanması bir saate kadar sürebilir. Azure portal, yönetilen etki alanınız için **genel bakış** sayfasında, bu dağıtım aşamasının tamamında geçerli durum gösterilir.
 
-Azure portal Azure AD DS yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteriyorsa, aşağıdaki görevlerin tamamlanması gerekir:
+Azure portal yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteriyorsa, aşağıdaki görevlerin tamamlanması gerekir:
 
 * Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
-    * DNS 'yi yapılandırmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
+    * DNS 'yi yapılandırmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
 * Son kullanıcıların şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açmasını sağlamak [için parola eşitlemesini Azure AD Domain Services etkinleştirin](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) .
 
 ## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>Azure portal kullanarak kapsamlı eşitlemeyi değiştirme
 
-Kullanıcıları Azure AD DS yönetilen etki alanı ile eşitlenmesi gereken grupların listesini değiştirmek için aşağıdaki adımları izleyin:
+Kullanıcıları yönetilen etki alanıyla eşitlenmesi gereken grupların listesini değiştirmek için aşağıdaki adımları izleyin:
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi örneğinizi seçin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
 1. Sol taraftaki menüden **eşitleme** ' yi seçin.
 1. Bir grup eklemek için üstteki **grupları + seç** ' i seçin ve ardından eklenecek grupları seçin.
 1. Bir grubu eşitleme kapsamından kaldırmak için, şu anda eşitlenmiş gruplar listesinden seçin ve **grupları kaldır**' ı seçin.
 1. Tüm değişiklikler yapıldığında, **eşitleme kapsamını kaydet**' i seçin.
 
-Eşitleme kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Azure AD DS tarafından yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitleme işleminin tamamlanması uzun sürebilir.
+Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitlemenin tamamlanması uzun zaman alabilir.
 
 ## <a name="disable-scoped-synchronization-using-the-azure-portal"></a>Azure portal kullanarak kapsamlı eşitlemeyi devre dışı bırakma
 
-Azure AD DS yönetilen bir etki alanı için grup tabanlı kapsamlı eşitlemeyi devre dışı bırakmak için aşağıdaki adımları izleyin:
+Yönetilen bir etki alanı için grup tabanlı kapsamlı eşitlemeyi devre dışı bırakmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi örneğinizi seçin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
 1. Sol taraftaki menüden **eşitleme** ' yi seçin.
 1. Eşitleme kapsamını kapsam dışında tümü **olarak** ayarlayın **All**ve ardından **eşitleme kapsamını kaydet**' i seçin.
 
-Eşitleme kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Azure AD DS tarafından yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitleme işleminin tamamlanması uzun sürebilir.
+Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitlemenin tamamlanması uzun zaman alabilir.
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>Kapsamlı eşitleme için PowerShell betiği
 
-PowerShell kullanarak kapsamlı eşitlemeyi yapılandırmak için, önce aşağıdaki betiği adlı `Select-GroupsToSync.ps1`bir dosyaya kaydedin. Bu betik, Azure AD DS seçili grupları Azure AD 'den eşitleyecek şekilde yapılandırır. Belirtilen grupların parçası olan tüm Kullanıcı hesapları Azure AD DS yönetilen etki alanına eşitlenir.
+PowerShell kullanarak kapsamlı eşitlemeyi yapılandırmak için, önce aşağıdaki betiği adlı bir dosyaya kaydedin `Select-GroupsToSync.ps1` . Bu betik, Azure AD DS seçili grupları Azure AD 'den eşitleyecek şekilde yapılandırır. Belirtilen grupların parçası olan tüm Kullanıcı hesapları yönetilen etki alanıyla eşitlenir.
 
 Bu komut dosyası, bu makaledeki ek adımlarda kullanılır.
 
@@ -177,7 +177,7 @@ Write-Output "******************************************************************
 
 Aşağıdaki adım kümesini gerçekleştirmek için PowerShell 'i kullanın. [PowerShell kullanarak Azure Active Directory Domain Services etkinleştirme](powershell-create-instance.md)yönergelerine bakın. Bu makaledeki birkaç adım kapsamlı eşitlemeyi yapılandırmak için biraz değiştirilmiştir.
 
-1. Azure AD DS PowerShell kullanarak etkinleştirmek için aşağıdaki görevleri makalesini doldurun. Yönetilen etki alanını gerçekten oluşturmak için bu adımı durdurun. Kapsamlı eşitlemeyi, Azure AD DS yönetilen etki alanını oluşturduğunuz şekilde yapılandırırsınız.
+1. Azure AD DS PowerShell kullanarak etkinleştirmek için aşağıdaki görevleri makalesini doldurun. Yönetilen etki alanını gerçekten oluşturmak için bu adımı durdurun. Yönetilen etki alanını oluşturduğunuz kapsamlı eşitlemeyi yapılandırırsınız.
 
    * [Gerekli PowerShell modüllerini yükler](powershell-create-instance.md#prerequisites).
    * [Yönetici erişimi için gerekli hizmet sorumlusu ve Azure AD grubunu oluşturun](powershell-create-instance.md#create-required-azure-ad-resources).
@@ -188,13 +188,13 @@ Aşağıdaki adım kümesini gerçekleştirmek için PowerShell 'i kullanın. [P
 1. [Önceki bölümden betiği](#powershell-script-for-scoped-synchronization) çalıştırın ve *-groupstoadd* parametresini kullanarak, eşitlenmek üzere grupların listesini geçirin.
 
    > [!WARNING]
-   > Kapsamlı eşitleme için grup listesine *AAD DC Administrators* grubunu dahil etmeniz gerekir. Bu grubu eklemezseniz, Azure AD DS yönetilen etki alanı kullanılamaz.
+   > Kapsamlı eşitleme için grup listesine *AAD DC Administrators* grubunu dahil etmeniz gerekir. Bu grubu eklemezseniz, yönetilen etki alanı kullanılamaz olur.
 
    ```powershell
    .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
    ```
 
-1. Şimdi Azure AD DS yönetilen etki alanını oluşturun ve grup tabanlı kapsamlı eşitlemeyi etkinleştirin. *-Properties* parametresinde *"filteredsync" = "Enabled"* ekleyin.
+1. Şimdi yönetilen etki alanını oluşturun ve grup tabanlı kapsamlı eşitlemeyi etkinleştirin. *-Properties* parametresinde *"filteredsync" = "Enabled"* ekleyin.
 
     Azure abonelik KIMLIĞINIZI ayarlayın ve ardından yönetilen etki alanı için *aaddscontoso.com*gibi bir ad sağlayın. [Get-AzSubscription][Get-AzSubscription] cmdlet 'ini kullanarak abonelik kimliğinizi alabilirsiniz. Destekleyici Azure kaynaklarını oluşturmak için kaynak grubu adı, sanal ağ adı ve bölgeyi önceki adımlarda kullanılan değerlere ayarlayın:
 
@@ -213,32 +213,32 @@ Aşağıdaki adım kümesini gerçekleştirmek için PowerShell 'i kullanın. [P
    -Force -Verbose
    ```
 
-Kaynağın oluşturulması ve denetimin PowerShell istemine döndürülmesi birkaç dakika sürer. Azure AD DS yönetilen etki alanı arka planda sağlanmaya devam eder ve dağıtımın tamamlanması bir saate kadar sürebilir. Azure portal Azure AD DS yönetilen etki alanınız için **genel bakış** sayfasında, bu dağıtım aşamasının tamamında geçerli durum gösterilir.
+Kaynağın oluşturulması ve denetimin PowerShell istemine döndürülmesi birkaç dakika sürer. Yönetilen etki alanı arka planda sağlanmaya devam eder ve dağıtımın tamamlanması bir saate kadar sürebilir. Azure portal, yönetilen etki alanınız için **genel bakış** sayfasında, bu dağıtım aşamasının tamamında geçerli durum gösterilir.
 
-Azure portal Azure AD DS yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteriyorsa, aşağıdaki görevlerin tamamlanması gerekir:
+Azure portal yönetilen etki alanının sağlamayı bitirmiş olduğunu gösteriyorsa, aşağıdaki görevlerin tamamlanması gerekir:
 
 * Sanal makinelerin, etki alanına katılması veya kimlik doğrulaması için yönetilen etki alanını bulabileceği şekilde sanal ağ için DNS ayarlarını güncelleştirin.
-    * DNS 'yi yapılandırmak için portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
-* Kullanılabilirlik Alanları destekleyen bir bölgede Azure AD DS yönetilen etki alanı oluşturduysanız, Azure AD DS yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturun. Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
-    * Ağ güvenlik grubunu ve gerekli kuralları oluşturmak için, portalda Azure AD DS yönetilen etki alanınızı seçin. **Genel bakış** penceresinde ağ güvenlik grubunu otomatik olarak oluşturmanız ve yapılandırmanız istenir.
+    * DNS 'yi yapılandırmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde, bu DNS ayarlarını otomatik olarak yapılandırmanız istenir.
+* Kullanılabilirlik Alanları destekleyen bir bölgede yönetilen bir etki alanı oluşturduysanız, yönetilen etki alanı için sanal ağdaki trafiği kısıtlamak üzere bir ağ güvenlik grubu oluşturun. Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir.
+    * Ağ güvenlik grubu ve gerekli kuralları oluşturmak için portalda yönetilen etki alanınızı seçin. **Genel bakış** penceresinde ağ güvenlik grubunu otomatik olarak oluşturmanız ve yapılandırmanız istenir.
 * Son kullanıcıların şirket kimlik bilgilerini kullanarak yönetilen etki alanında oturum açmasını sağlamak [için parola eşitlemesini Azure AD Domain Services etkinleştirin](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) .
 
 ## <a name="modify-scoped-synchronization-using-powershell"></a>PowerShell kullanarak kapsamlı eşitlemeyi değiştirme
 
-Kullanıcıları Azure AD DS yönetilen etki alanı ile eşitlenmesi gereken grupların listesini değiştirmek için, [PowerShell betiğini](#powershell-script-for-scoped-synchronization) yeniden çalıştırın ve yeni grup listesini belirtin. Aşağıdaki örnekte, eşitlenmesi yapılacak gruplar artık *GroupName2*içermez ve artık *GroupName3*' yi içerir.
+Kullanıcıları yönetilen etki alanıyla eşitlenmesi gereken grupların listesini değiştirmek için, [PowerShell betiğini](#powershell-script-for-scoped-synchronization) yeniden çalıştırın ve yeni grup listesini belirtin. Aşağıdaki örnekte, eşitlenmesi yapılacak gruplar artık *GroupName2*içermez ve artık *GroupName3*' yi içerir.
 
 > [!WARNING]
-> Kapsamlı eşitleme için grup listesine *AAD DC Administrators* grubunu dahil etmeniz gerekir. Bu grubu eklemezseniz, Azure AD DS yönetilen etki alanı kullanılamaz.
+> Kapsamlı eşitleme için grup listesine *AAD DC Administrators* grubunu dahil etmeniz gerekir. Bu grubu eklemezseniz, yönetilen etki alanı kullanılamaz olur.
 
 ```powershell
 .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName3")
 ```
 
-Eşitleme kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Azure AD DS tarafından yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitleme işleminin tamamlanması uzun sürebilir.
+Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitlemenin tamamlanması uzun zaman alabilir.
 
 ## <a name="disable-scoped-synchronization-using-powershell"></a>PowerShell kullanarak kapsamlı eşitlemeyi devre dışı bırakma
 
-Azure AD DS yönetilen bir etki alanı için grup tabanlı kapsamlı eşitlemeyi devre dışı bırakmak için, Azure AD DS kaynağında *"Filteredsync" = "Disabled"* seçeneğini belirleyin ve ardından yönetilen etki alanını güncelleştirin. Bu tamamlandığında, tüm kullanıcılar ve gruplar Azure AD 'den eşitlenmek üzere ayarlanır.
+Yönetilen bir etki alanı için grup tabanlı kapsamlı eşitlemeyi devre dışı bırakmak için, Azure AD DS kaynağında *"Filteredsync" = "Disabled"* seçeneğini belirleyin ve ardından yönetilen etki alanını güncelleştirin. Bu tamamlandığında, tüm kullanıcılar ve gruplar Azure AD 'den eşitlenmek üzere ayarlanır.
 
 ```powershell
 // Retrieve the Azure AD DS resource.
@@ -251,7 +251,7 @@ $disableScopedSync = @{"filteredSync" = "Disabled"}
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
 ```
 
-Eşitleme kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Azure AD DS tarafından yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitleme işleminin tamamlanması uzun sürebilir.
+Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitlemenin tamamlanması uzun zaman alabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

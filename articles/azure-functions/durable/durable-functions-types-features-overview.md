@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277888"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697716"
 ---
 # <a name="durable-functions-types-and-features"></a>Türler ve Özellikler Dayanıklı İşlevler
 
@@ -36,7 +36,7 @@ Orchestrator işlevlerinin aksine, etkinlik işlevleri, bunlarda yapabileceğini
 > [!NOTE]
 > Etkinlik işlevleri yalnızca *en az bir kez* yürütmeyi garanti ettiğinden, mümkün olduğunda Etkinlik işlevi mantığınızı *ıdempotent* yapmanızı öneririz.
 
-Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-functions-bindings.md#activity-trigger) kullanın. .NET işlevleri bir parametresi `DurableActivityContext` olarak bir alır. Ayrıca, bu tetikleyiciyi işleve geçirilecek diğer JSON-serializlenebilir nesnesine da bağlayabilirsiniz. JavaScript 'te, `<activity trigger binding name>` [ `context.bindings` nesne](../functions-reference-node.md#bindings)üzerindeki özelliği aracılığıyla bir girişe erişebilirsiniz. Etkinlik işlevlerine yalnızca tek bir değer geçirilmiş olabilir. Birden çok değer geçirmek için, tanımlama grupları, diziler veya karmaşık türler kullanmanız gerekir.
+Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-functions-bindings.md#activity-trigger) kullanın. .NET işlevleri bir `DurableActivityContext` parametresi olarak bir alır. Ayrıca, bu tetikleyiciyi işleve geçirilecek diğer JSON-serializlenebilir nesnesine da bağlayabilirsiniz. JavaScript 'te, `<activity trigger binding name>` [ `context.bindings` nesne](../functions-reference-node.md#bindings)üzerindeki özelliği aracılığıyla bir girişe erişebilirsiniz. Etkinlik işlevlerine yalnızca tek bir değer geçirilmiş olabilir. Birden çok değer geçirmek için, tanımlama grupları, diziler veya karmaşık türler kullanmanız gerekir.
 
 > [!NOTE]
 > Bir etkinlik işlevini yalnızca bir Orchestrator işlevinden tetikleyebilirsiniz.

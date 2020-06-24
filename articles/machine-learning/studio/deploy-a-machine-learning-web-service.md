@@ -5,17 +5,17 @@ description: Bir eğitim denemesini tahmine dayalı bir deneyiye dönüştürme,
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: e1efa4fa3a222a11c35f642f68310109c4f32712
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118518"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696397"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasik) Web hizmeti dağıtma
 
@@ -210,7 +210,7 @@ Fiyatlandırma bölgeye özeldir, bu nedenle Web hizmetini dağıtacağınız he
 6. **Kaynak grubu** açılır listesinden plan için bir kaynak grubu seçin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md).
 7. **Plan adı** ' nda planın adını yazın.
 8. **Plan seçenekleri**altında, yeni plan için faturalandırma düzeyine tıklayın.
-9. **Oluştur**' a tıklayın.
+9. **Oluştur**'a tıklayın.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Web hizmetini başka bir bölgeye dağıtma
 

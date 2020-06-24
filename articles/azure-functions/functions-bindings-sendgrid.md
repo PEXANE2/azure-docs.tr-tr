@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277472"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697366"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
 
@@ -32,7 +32,7 @@ SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https:/
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, Service Bus kuyruğu tetikleyicisi kullanan bir [C# işlevini](functions-dotnet-class-library.md) ve SendGrid çıkış bağlamayı gösterir.
 
@@ -98,13 +98,13 @@ public class OutgoingEmail
 }
 ```
 
-"AzureWebJobsSendGridApiKey" adlı bir uygulama ayarında `ApiKey` API anahtarınıza sahipseniz özniteliğin özelliğinin ayarını atlayabilirsiniz.
+`ApiKey`"AzureWebJobsSendGridApiKey" adlı bir uygulama AYARıNDA API anahtarınıza sahipseniz özniteliğin özelliğinin ayarını atlayabilirsiniz.
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SendGrid çıkış bağlamasını ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir.
+Aşağıdaki örnek, bir *function.js* dosyadaki bir SendGrid çıkış bağlamasını ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json 
 {
@@ -161,9 +161,9 @@ public class Message
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir SendGrid çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
+Aşağıdaki örnekte, bir *function.js* dosyadaki bir SendGrid çıkış bağlaması ve bağlamayı kullanan bir [JavaScript işlevi](functions-reference-node.md) gösterilmektedir.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json 
 {
@@ -203,7 +203,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, SendGrid bağlamasını kullanarak bir e-posta gönderen HTTP ile tetiklenen bir işlev gösterir. Bağlama yapılandırmasında varsayılan değerleri sağlayabilirsiniz. Örneğin, *from* e-posta adresi *function. JSON*içinde yapılandırılır. 
+Aşağıdaki örnek, SendGrid bağlamasını kullanarak bir e-posta gönderen HTTP ile tetiklenen bir işlev gösterir. Bağlama yapılandırmasında varsayılan değerleri sağlayabilirsiniz. Örneğin, *Kimden* e-posta adresi *üzerindefunction.js*yapılandırılır. 
 
 ```json
 {
@@ -260,7 +260,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki örnek, SendGrid `@SendGridOutput` çıkış bağlamasını kullanarak e-posta göndermek için [Java işlevleri çalışma zamanı kitaplığından](/java/api/overview/azure/functions/runtime) ek açıklamayı kullanır.
+Aşağıdaki örnek, `@SendGridOutput` SendGrid çıkış bağlamasını kullanarak e-posta göndermek Için [Java işlevleri çalışma zamanı kitaplığından](/java/api/overview/azure/functions/runtime) ek açıklamayı kullanır.
 
 ```java
 package com.function;
@@ -314,11 +314,11 @@ public class HttpTriggerSendGrid {
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıf kitaplıklarında](functions-dotnet-class-library.md) [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) özniteliğini kullanın.
 
-Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). Bir yöntem imzasında `SendGrid` bir öznitelik örneği aşağıda verilmiştir:
+Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). `SendGrid`Bir yöntem imzasında bir öznitelik örneği aşağıda verilmiştir:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -352,14 +352,14 @@ Tüm örnek için bkz. [C# örneği](#example).
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `SendGrid` özniteliği/ek açıklamasında kullanılabilen bağlama yapılandırma özellikleri listelenmektedir.
+Aşağıdaki tabloda, dosyasında *function.js* bulunan bağlama yapılandırma özellikleri ve `SendGrid` özniteliği/ek açıklaması listelenmektedir.
 
-| *function. JSON* özelliği | Öznitelik/ek açıklama özelliği | Açıklama | İsteğe Bağlı |
+| *function.js* özelliği | Öznitelik/ek açıklama özelliği | Description | İsteğe Bağlı |
 |--------------------------|-------------------------------|-------------|----------|
-| type |yok| Olarak `sendGrid`ayarlanmalıdır.| Hayır |
-| yön |yok| Olarak `out`ayarlanmalıdır.| Hayır |
-| ad |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Bu değer yalnızca `$return` bir dönüş değeri olduğunda geçerlidir. | Hayır |
-| apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| Hayır |
+| tür |yok| Olarak ayarlanmalıdır `sendGrid` .| No |
+| yön |yok| Olarak ayarlanmalıdır `out` .| No |
+| name |yok| İstek veya istek gövdesi için işlev kodunda kullanılan değişken adı. Bu değer `$return` yalnızca bir dönüş değeri olduğunda geçerlidir. | No |
+| apiKey | ApiKey | API anahtarınızı içeren bir uygulama ayarının adı. Ayarlanmamışsa, varsayılan uygulama ayarı adı *AzureWebJobsSendGridApiKey*olur.| No |
 | -| Alıcı | Alıcının e-posta adresi. | Yes |
 | Kaynak| Başlangıç | Gönderenin e-posta adresi. |  Yes |
 | Konu| Özne | E-postanın konusu. | Yes |
@@ -371,12 +371,12 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `SendGrid` özniteliği/ek
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>Host. JSON ayarları
+## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
-Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için Host. JSON başvurusu](functions-host-json.md).
+Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada örnek host.js, bu bağlamanın yalnızca sürüm 2. x + ayarlarını içerir. 2. x ve daha ötesi sürümlerindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri için başvuruhost.js](functions-host-json.md).
 
 > [!NOTE]
-> 1. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
+> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -389,7 +389,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```  
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 

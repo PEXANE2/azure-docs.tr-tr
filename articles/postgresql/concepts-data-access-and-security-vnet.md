@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965838"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099657"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı-tek sunucu için sanal ağ hizmet uç noktalarını ve kurallarını kullanın
 
@@ -45,7 +45,7 @@ Bir sanal ağ kuralı, PostgreSQL için Azure veritabanı 'na, alt ağdaki her d
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Bir sanal ağ kuralının avantajları
 
@@ -69,7 +69,7 @@ Ancak, statik IP yaklaşımının yönetilmesi zor olabilir ve ölçekteki tamam
 
 Ancak, Ağustos 2018 itibariyle PostgreSQL için Azure veritabanı hizmeti henüz bir alt ağa atanabilen hizmetler arasında değil.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Sanal ağ kuralları hakkında ayrıntılar
 
@@ -89,8 +89,8 @@ Her bir sanal ağ kuralı, yalnızca sunucudaki belirli bir veritabanına değil
 
 Sanal ağ hizmet uç noktalarının yönetiminde güvenlik rollerinin bir ayrımı vardır. Aşağıdaki rollerden her biri için eylem gereklidir:
 
-- **Ağ Yöneticisi:** &nbsp; uç noktayı açın.
-- **Veritabanı Yöneticisi:** &nbsp; verilen alt ağı PostgreSQL için Azure veritabanı sunucusuna eklemek üzere erişim denetim listesini (ACL) güncelleştirin.
+- **Ağ Yöneticisi:** &nbsp; Uç noktasını açın.
+- **Veritabanı Yöneticisi:** &nbsp; Verilen alt ağı PostgreSQL için Azure veritabanı sunucusuna eklemek üzere erişim denetim listesini (ACL) güncelleştirin.
 
 *RBAC alternatifi:*
 
@@ -102,7 +102,7 @@ Azure 'da [rol tabanlı erişim denetimi (RBAC)][rbac-what-is-813s] kullanarak y
 > Bazı durumlarda PostgreSQL için Azure veritabanı ve sanal ağ alt ağı farklı aboneliklerde bulunur. Bu durumlarda, aşağıdaki yapılandırmalardan emin olmanız gerekir:
 > - Her iki abonelik da aynı Azure Active Directory kiracısında olmalıdır.
 > - Kullanıcı, hizmet uç noktalarını etkinleştirme ve verilen sunucuya VNet-subnet ekleme gibi işlemleri başlatmak için gerekli izinlere sahiptir.
-> - Her iki aboneliğin de **Microsoft. SQL** kaynak sağlayıcısı 'nın kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
+> - Her iki abonelikte da **Microsoft. SQL** ve **Microsoft. DBforPostgreSQL** kaynak sağlayıcısının kayıtlı olduğundan emin olun. Daha fazla bilgi için [Resource-Manager-kayıt][resource-manager-portal] bölümüne bakın
 
 ## <a name="limitations"></a>Sınırlamalar
 

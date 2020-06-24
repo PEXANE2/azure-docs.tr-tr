@@ -4,15 +4,15 @@ description: Artık Kaynak Yöneticisi modeli tarafından değiştirilen klasik 
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afdb8b2b677321239f240e74d49711195ac186c1
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76835630"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763916"
 ---
 # <a name="classic-deployment-model"></a>Klasik dağıtım modeli
 

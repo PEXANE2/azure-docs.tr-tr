@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6d0cde3d3615350658a06cf118ff38cebf8952c9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71257996"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735022"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services ağ yapılandırması uyarıları
 
@@ -30,15 +30,15 @@ Bu makale, ağ güvenlik grubu yapılandırma sorunları için genel uyarıları
 
 *Microsoft bu yönetilen etki alanı için etki alanı denetleyicilerine ulaşamıyor. Sanal ağınızda yapılandırılan bir ağ güvenlik grubu (NSG), yönetilen etki alanına erişimi engelliyorsa bu durum oluşabilir. Olası bir neden, internet 'ten gelen trafiği engelleyen Kullanıcı tanımlı bir yol olup olmalarıdır.*
 
-Azure AD DS için ağ hatalarının en yaygın nedeni geçersiz ağ güvenlik grubu kuralları. Sanal ağ için ağ güvenlik grubu, belirli bağlantı noktalarına ve protokollere erişime izin vermelidir. Bu bağlantı noktaları engellenirse Azure platformu, yönetilen etki alanını izleyemez veya güncelleştiremez. Azure AD dizini ile Azure AD DS yönetilen etki alanı arasındaki eşitleme de etkilenir. Hizmette kesintiye uğramasını önlemek için varsayılan bağlantı noktalarını açık tutmanız gerekir.
+Azure AD DS için ağ hatalarının en yaygın nedeni geçersiz ağ güvenlik grubu kuralları. Sanal ağ için ağ güvenlik grubu, belirli bağlantı noktalarına ve protokollere erişime izin vermelidir. Bu bağlantı noktaları engellenirse Azure platformu, yönetilen etki alanını izleyemez veya güncelleştiremez. Azure AD dizini ile Azure AD DS arasındaki eşitleme de bundan etkilenir. Hizmette kesintiye uğramasını önlemek için varsayılan bağlantı noktalarını açık tutmanız gerekir.
 
 ## <a name="default-security-rules"></a>Varsayılan güvenlik kuralları
 
-Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, Azure AD DS yönetilen bir etki alanı için ağ güvenlik grubuna uygulanır. Bu kurallar Azure AD DS güvende tutar ve Azure platformunun yönetilen etki alanını izlemesine, yönetmesine ve güncelleştirmesine izin verir. Ayrıca, [GÜVENLI LDAP yapılandırırsanız][configure-ldaps]gelen trafiğe izin veren ek bir kuralınız olabilir.
+Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, yönetilen bir etki alanı için ağ güvenlik grubuna uygulanır. Bu kurallar Azure AD DS güvende tutar ve Azure platformunun yönetilen etki alanını izlemesine, yönetmesine ve güncelleştirmesine izin verir. Ayrıca, [GÜVENLI LDAP yapılandırırsanız][configure-ldaps]gelen trafiğe izin veren ek bir kuralınız olabilir.
 
 ### <a name="inbound-security-rules"></a>Gelen güvenlik kuralları
 
-| Öncelik | Adı | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
+| Öncelik | Name | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Herhangi biri | İzin Ver |
 | 201      | AllowRD | 3389 | TCP | Corpnetgördünüz | Herhangi biri | İzin Ver |
@@ -49,7 +49,7 @@ Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, Azure AD DS yönet
 
 ### <a name="outbound-security-rules"></a>Giden güvenlik kuralları
 
-| Öncelik | Adı | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
+| Öncelik | Name | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | Allvnetoutbağlanmadı | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
 | 65001    | AllowAzureLoadBalancerOutBound | Herhangi biri | Herhangi biri |  Herhangi biri | Internet | İzin Ver |
@@ -68,7 +68,7 @@ Mevcut güvenlik kurallarını doğrulamak ve varsayılan bağlantı noktaların
 
     Gelen ve giden kurallarını gözden geçirin ve önceki bölümde gerekli kuralların listesiyle karşılaştırın. Gerekirse, gerekli trafiği engelleyen tüm özel kuralları seçin ve silin. Gerekli kuralların herhangi biri eksikse, sonraki bölümde bir kural ekleyin.
 
-    Gerekli trafiğe izin veren kuralları ekledikten veya sildikten sonra, Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
+    Gerekli trafiğe izin veren kuralları ekledikten veya sildikten sonra, yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
 
 ### <a name="add-a-security-rule"></a>Güvenlik kuralı ekleme
 

@@ -5,17 +5,17 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 06/18/2020
 ms.author: spelluru
-ms.openlocfilehash: a13b9339c55d4d70c19ce737e81f34106dd3d6f6
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 69c7c7f361a930ab1dc2e0437365d2f4457b57e2
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168008"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85101054"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Yönetilen bir kimlikle olay teslimi
-Bu makalede bir Azure Event Grid konusu veya etki alanı için [yönetilen hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.
+Bu makalede, Azure Event Grid konuları veya etki alanları için [yönetilen bir hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.
 
 Bu makalede ayrıntılı olarak ele alınan adımlar aşağıda verilmiştir:
 1. Bir sistem tarafından atanan kimliğe sahip bir konu veya etki alanı oluşturun ya da kimliği etkinleştirmek için mevcut bir konuyu veya etki alanını güncelleştirin. 
@@ -45,10 +45,13 @@ Benzer şekilde, `az eventgrid domain create` sistem tarafından yönetilen kiml
 
 ### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 1. [Azure Portal](https://portal.azure.com)gidin.
-2. Arama çubuğundaki **olay Kılavuzu konularını** arayın.
+2. Üstteki arama çubuğunda **olay Kılavuzu konularını** arayın.
 3. Yönetilen kimliği etkinleştirmek istediğiniz **konuyu** seçin. 
 4. **Kimlik** sekmesine geçin. 
-5. Kimliği etkinleştirmek için anahtarı açın. 
+5. Kimliği **etkinleştirmek için anahtarı açın.** 
+1. Ayarları kaydetmek için araç çubuğunda **Kaydet** ' i seçin. 
+
+    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="Konunun kimlik sayfası"::: 
 
 Event Grid etki alanı için bir kimlik etkinleştirmek üzere benzer adımları kullanabilirsiniz.
 

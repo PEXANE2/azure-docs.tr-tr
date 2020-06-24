@@ -7,21 +7,21 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274586"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696975"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Tanılama sorunlarını giderme
 Bu makalede Azure Tanılama kullanımı ile ilgili sorun giderme bilgileri açıklanmaktadır. Azure Tanılama hakkında daha fazla bilgi için bkz. [Azure tanılama genel bakış](diagnostics-extension-overview.md).
 
 ## <a name="logical-components"></a>Mantıksal bileşenler
-**Tanılama eklentisi Başlatıcısı (DiagnosticsPluginLauncher. exe)**: Azure tanılama uzantısını başlatır. Giriş noktası işlemi olarak görev yapar.
+**Tanılama eklentisi Başlatıcısı (DiagnosticsPluginLauncher.exe)**: Azure tanılama uzantısını başlatır. Giriş noktası işlemi olarak görev yapar.
 
-**Tanılama eklentisi (DiagnosticsPlugin. exe)**: izleme aracısının ömrünü yapılandırır, başlatır ve yönetir. Bu, başlatıcı tarafından başlatılan ana işlemdir.
+**Tanılama eklentisi (DiagnosticsPlugin.exe)**: izleme aracısının ömrünü yapılandırır, başlatır ve yönetir. Bu, başlatıcı tarafından başlatılan ana işlemdir.
 
-**Izleme Aracısı (MonAgent\*. exe işlemleri)**: tanılama verilerini izler, toplar ve aktarır.  
+**Izleme Aracısı (MonAgent \* . exe işlemleri)**: tanılama verilerini izler, toplar ve aktarır.  
 
 ## <a name="logartifact-paths"></a>Günlük/yapıt yolları
 Bazı önemli günlüklerin ve yapıtların yolları aşağıda verilmiştir. Belgenin geri kalanı boyunca bu bilgilere değintik.
@@ -29,48 +29,48 @@ Bazı önemli günlüklerin ve yapıtların yolları aşağıda verilmiştir. Be
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Yapıt | Yol |
 | --- | --- |
-| **Azure Tanılama yapılandırma dosyası** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<sürümü> \Config.txt |
-| **Günlük dosyaları** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<sürümü> \ |
-| **Tanılama verileri için yerel depo** | C:\Resources\Directory\<cloudservicedeploymentıd>. \<Rolename>. DiagnosticStore\WAD0107\Tables |
-| **İzleme Aracısı yapılandırma dosyası** | C:\Resources\Directory\<cloudservicedeploymentıd>. \<Rolename>. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure Tanılama uzantısı paketi** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<sürüm> |
+| **Azure Tanılama yapılandırma dosyası** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version>\Config.txt |
+| **Günlük dosyaları** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
+| **Tanılama verileri için yerel depo** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName> . DiagnosticStore\WAD0107\Tables |
+| **İzleme Aracısı yapılandırma dosyası** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Azure Tanılama uzantısı paketi** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **Günlük toplama yardımcı programı yolu** | %SystemDrive%\Packages\GuestAgent\ |
-| **Monme Thost günlük dosyası** | C:\Resources\Directory\<cloudservicedeploymentıd>. \<Rolename>. Diagnosticstore\wad0107\configuration\monbir Thost. <seq_num>. log |
+| **Monme Thost günlük dosyası** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName> . Diagnosticstore\wad0107\configuration\monbir Thost. <seq_num>. log |
 
 ### <a name="virtual-machines"></a>Sanal makineler
 | Yapıt | Yol |
 | --- | --- |
-| **Azure Tanılama yapılandırma dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<sürüm> \RuntimeSettings |
-| **Günlük dosyaları** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<diagnosticsversion> \ |
-| **Tanılama verileri için yerel depo** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<diagnosticsversion> \WAD0107\Tables |
-| **İzleme Aracısı yapılandırma dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<diagnosticsversion> \wad0107\configuration\maconfig.xml |
-| **Durum dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<sürümü> \ durum |
-| **Azure Tanılama uzantısı paketi** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<diagnosticsversion>|
+| **Azure Tanılama yapılandırma dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \Runtimesettings |
+| **Günlük dosyaları** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
+| **Tanılama verileri için yerel depo** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \Wad0107\tables |
+| **İzleme Aracısı yapılandırma dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **Durum dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \Status |
+| **Azure Tanılama uzantısı paketi** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **Günlük toplama yardımcı programı yolu** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **Monme Thost günlük dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<diagnosticsversion> \Wad0107\configuration\monbir thost. <seq_num>. log |
+| **Monme Thost günlük dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \Wad0107\configuration\monk\thost. <seq_num>. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Ölçüm verileri Azure portal görünmüyor
-Azure Tanılama, Azure portal görüntülenebilecek ölçüm verileri sağlar. Portalda verileri görmekte sorun yaşıyorsanız, ilgili ölçüm kayıtlarının orada olup olmadığını ve Microsoft\* . Insights [kaynak sağlayıcısının](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) kayıtlı olduğundan emin olmak Için Azure tanılama depolama hesabındaki wadmetric tablosuna bakın.
+Azure Tanılama, Azure portal görüntülenebilecek ölçüm verileri sağlar. Portalda verileri görmekte sorun yaşıyorsanız, \* ilgili ölçüm kayıtlarının orada olup olmadığını ve Microsoft. Insights [kaynak sağlayıcısının](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) kayıtlı olduğundan emin olmak için Azure tanılama depolama hesabındaki wadmetric tablosuna bakın.
 
 Burada, tablonun **Partitionkey** 'ı kaynak kimliği, sanal makine veya sanal makine ölçek kümesidir. **Rowkey** ölçüm adıdır (performans sayacı adı olarak da bilinir).
 
-Kaynak kimliği yanlışsa, kaynak kimliğinin doğru şekilde ayarlandığından emin olmak için **Tanılama** **yapılandırması** > **ölçümleri** > **RESOURCEID** ' yi kontrol edin.
+Kaynak kimliği yanlışsa, **Diagnostics** **Configuration**  >  **Metrics**  >  kaynak kimliğinin doğru şekilde ayarlandığından emin olmak için tanılama yapılandırması ölçümleri**RESOURCEID** ' yi kontrol edin.
 
-Belirli bir ölçüm için veri yoksa, metriğin (performans sayacı) dahil edilip edilmediğini öğrenmek için **Tanılama yapılandırması** > **PerformanceCounter** bakın. Varsayılan olarak aşağıdaki sayaçları etkinliyoruz:
+Belirli bir ölçüm için veri yoksa, **Diagnostics Configuration**  >  metriğin (performans sayacı) dahil edilip edilmediğini öğrenmek için tanılama yapılandırması**PerformanceCounter** bakın. Varsayılan olarak aşağıdaki sayaçları etkinliyoruz:
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ ASP.NET uygulamaları (__Toplam__) \ Istek/sn
 - \ ASP.NET uygulamaları (__Toplam__)/toplam hata/sn
 - \ASP.NET\Requests kuyruğa alındı
 - \ASP.NET\Requests reddedildi
-- \ İşlemci (W3wp)\% işlemci zamanı
+- \ İşlemci (W3wp) \% Işlemci zamanı
 - \Process (W3wp) \ özel baytlar
-- \Process (WaIISHost)\% işlemci zamanı
+- \Process (WaIISHost) \% Işlemci zamanı
 - \Process (WaIISHost) \Özel baytlar
-- \ Process (WaWorkerHost)\% işlemci zamanı
+- \ Process (WaWorkerHost) \% Işlemci zamanı
 - \Process (WaWorkerHost) \Özel baytlar
 - \Bellek\sayfa hatası/sn
-- \.GC 'de net clr_Global_belleği (\% genel) süresi
+- \.GC 'de NET CLR belleği (_genel_) \% süresi
 - \Mantıksaldisk (C:) \Disk yazma bayt/sn
 - \Mantıksaldisk (C:) \Disk okuma bayt/sn
 - \Mantıksaldisk (D:) \Disk yazma bayt/sn
@@ -82,7 +82,7 @@ Yapılandırma doğru şekilde ayarlandıysa ancak ölçüm verilerini göremiyo
 ## <a name="azure-diagnostics-is-not-starting"></a>Azure Tanılama başlamıyor
 Azure Tanılama başlamamasının nedeni hakkında daha fazla bilgi için daha önce sağlanmış olan günlük dosyaları konumundaki **Diagnosticspluginlauncher. log** ve **Diagnosticsplugin. log** dosyalarına bakın.
 
-Bu Günlükler gösteriyorsa `Monitoring Agent not reporting success after launch`, Monure thost. exe ' yi başlatırken bir hata olduğu anlamına gelir. Önceki bölümde için `MonAgentHost log file` belirtilen konumdaki günlüklere bakın.
+Bu Günlükler gösteriyorsa `Monitoring Agent not reporting success after launch` , MonAgentHost.exe başlatılırken bir hata olduğu anlamına gelir. Önceki bölümde için belirtilen konumdaki günlüklere bakın `MonAgentHost log file` .
 
 Günlük dosyalarının son satırında çıkış kodu bulunur.  
 
@@ -95,14 +95,14 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 Verilerin hiçbirinin görünmediğine veya bazı verilerin görünmediğine göre belirlenir.
 
 ### <a name="diagnostics-infrastructure-logs"></a>Tanılama altyapı günlükleri
-Tanılama, tanılama altyapı günlüklerinde tüm hataları günlüğe kaydeder. [Yapılandırmanızda tanılama altyapı günlükleri yakalama özelliğinin](#how-to-check-diagnostics-extension-configuration)etkinleştirildiğinden emin olun. Daha sonra, yapılandırılan Depolama hesabınızdaki `DiagnosticInfrastructureLogsTable` tabloda görüntülenen ilgili hatalara hızlı bir şekilde bakabilirsiniz.
+Tanılama, tanılama altyapı günlüklerinde tüm hataları günlüğe kaydeder. [Yapılandırmanızda tanılama altyapı günlükleri yakalama özelliğinin](#how-to-check-diagnostics-extension-configuration)etkinleştirildiğinden emin olun. Daha sonra, `DiagnosticInfrastructureLogsTable` yapılandırılan Depolama hesabınızdaki tabloda görüntülenen ilgili hatalara hızlı bir şekilde bakabilirsiniz.
 
 ### <a name="no-data-is-appearing"></a>Hiçbir veri görünmüyor
 Olay verilerinin hiç görünmamasının en yaygın nedeni, depolama hesabı bilgilerinin yanlış tanımlanmadır.
 
 Çözüm: Tanılama yapılandırmanızı düzeltip tanılamayı yeniden yükleyin.
 
-Depolama hesabı doğru şekilde yapılandırıldıysa, makineye uzaktan erişin ve *Diagnosticsplugin. exe* ve *monagentcore. exe* ' nin çalıştığını doğrulayın. Çalışmıyorsa, [Azure tanılama başlatılmayan](#azure-diagnostics-is-not-starting)adımları izleyin.
+Depolama hesabı doğru şekilde yapılandırıldıysa makineye uzaktan erişim *DiagnosticsPlugin.exe* ve *MonAgentCore.exe* çalıştığını doğrulayın. Çalışmıyorsa, [Azure tanılama başlatılmayan](#azure-diagnostics-is-not-starting)adımları izleyin.
 
 İşlem çalışıyorsa, [veri yerel olarak yakalanarak](#is-data-getting-captured-locally) ' a gidin ve görüntülenen yönergeleri izleyin.
 
@@ -122,34 +122,34 @@ Tanılama yapılandırması, toplanacak belirli bir veri türü için yönergele
 #### <a name="is-the-host-generating-data"></a>Ana bilgisayar veri oluşturuyor mu?
 - **Performans sayaçları**: Perfmon ' yı açın ve sayacı denetleyin.
 
-- **İzleme günlükleri**: VM 'ye uzaktan erişim ve uygulamanın yapılandırma dosyasına bir TextWriterTraceListener ekleme.  Metin https://msdn.microsoft.com/library/sk36c28t.aspx dinleyicisini ayarlamak için bkz..  `<trace>` Öğesinin olduğundan emin olun `<trace autoflush="true">`.<br />
+- **İzleme günlükleri**: VM 'ye uzaktan erişim ve uygulamanın yapılandırma dosyasına bir TextWriterTraceListener ekleme.  https://msdn.microsoft.com/library/sk36c28t.aspxMetin dinleyicisini ayarlamak için bkz..  Öğesinin olduğundan emin olun `<trace>` `<trace autoflush="true">` .<br />
 İzleme günlüklerinin oluşturulmayı görmüyorsanız izleme günlükleri eksik hakkında daha fazla bilgi için bkz..
 
-- **ETW izlemeleri**: VM 'ye uzaktan erişim ve PerfView 'ı yükler.  PerfView içinde, **Dosya** > **Kullanıcı komutu** > **dinleme etwprovder1** > **etwprovider2**vb. komutunu çalıştırın. **Listen** komutu büyük/küçük harfe DUYARLıDıR ve ETW sağlayıcılarının virgülle ayrılmış listesi arasında boşluk olamaz. Komut çalışamazsa, nelerin çalıştırılacağını ve sonucun ne olduğunu görmek için PerfView aracının sağ alt kısmındaki **günlük** düğmesini seçebilirsiniz.  Girişin doğru olduğu varsayıldığında, yeni bir pencere açılır. Birkaç saniye içinde ETW izlemelerini görmeye başlayabilirsiniz.
+- **ETW izlemeleri**: VM 'ye uzaktan erişim ve PerfView 'ı yükler.  PerfView içinde, **Dosya**  >  **Kullanıcı komutu**  >  **dinleme etwprovder1**  >  **etwprovider2**vb. komutunu çalıştırın. **Listen** komutu büyük/küçük harfe DUYARLıDıR ve ETW sağlayıcılarının virgülle ayrılmış listesi arasında boşluk olamaz. Komut çalışamazsa, nelerin çalıştırılacağını ve sonucun ne olduğunu görmek için PerfView aracının sağ alt kısmındaki **günlük** düğmesini seçebilirsiniz.  Girişin doğru olduğu varsayıldığında, yeni bir pencere açılır. Birkaç saniye içinde ETW izlemelerini görmeye başlayabilirsiniz.
 
-- **Olay günlükleri**: VM 'ye uzaktan erişim. Öğesini `Event Viewer`açın ve ardından olayların mevcut olduğundan emin olun.
+- **Olay günlükleri**: VM 'ye uzaktan erişim. `Event Viewer`Öğesini açın ve ardından olayların mevcut olduğundan emin olun.
 
 #### <a name="is-data-getting-captured-locally"></a>Veriler yerel olarak yakalanarak mı?
 Sonra, verilerin yerel olarak yakalandığından emin olun.
-Veriler, tanılama verileri için yerel `*.tsf` depodaki dosyalarda yerel olarak depolanır. Farklı türlerdeki Günlükler farklı türlerde toplanır `.tsf` . Adlar, Azure Storage 'daki tablo adlarına benzerdir.
+Veriler, `*.tsf` Tanılama verileri için yerel depodaki dosyalarda yerel olarak depolanır. Farklı türlerdeki Günlükler farklı türlerde toplanır `.tsf` . Adlar, Azure Storage 'daki tablo adlarına benzerdir.
 
-Örneğin, `Performance Counters` ' de `PerformanceCountersTable.tsf`toplanan Get. Olay günlükleri ' de `WindowsEventLogsTable.tsf`toplanır. Yerel koleksiyon dosyalarını açmak için [yerel günlük ayıklama](#local-log-extraction) bölümündeki yönergeleri kullanın ve bunları diskte toplandığını doğrulayın.
+Örneğin, ' `Performance Counters` de toplanan Get `PerformanceCountersTable.tsf` . Olay günlükleri ' de toplanır `WindowsEventLogsTable.tsf` . Yerel koleksiyon dosyalarını açmak için [yerel günlük ayıklama](#local-log-extraction) bölümündeki yönergeleri kullanın ve bunları diskte toplandığını doğrulayın.
 
 Yerel olarak toplanan günlükleri görmüyorsanız ve konağın veri oluşturduğunu zaten doğruladıysanız, büyük olasılıkla bir yapılandırma sorununuz olur. Yapılandırmanızı dikkatlice gözden geçirin.
 
-Ayrıca, MonitoringAgent MaConfig. xml için oluşturulan yapılandırmayı gözden geçirin. İlgili günlük kaynağını açıklayan bir bölüm olduğunu doğrulayın. Daha sonra, tanılama yapılandırması ve izleme Aracısı yapılandırması arasındaki çeviride kaybolmamasını doğrulayın.
+Ayrıca, MonitoringAgent MaConfig.xml için oluşturulan yapılandırmayı gözden geçirin. İlgili günlük kaynağını açıklayan bir bölüm olduğunu doğrulayın. Daha sonra, tanılama yapılandırması ve izleme Aracısı yapılandırması arasındaki çeviride kaybolmamasını doğrulayın.
 
 #### <a name="is-data-getting-transferred"></a>Veriler aktarıldı mı?
 Verilerin yerel olarak yakalandığını, ancak depolama hesabınızda görmemenizi doğruladıysanız, aşağıdaki adımları uygulayın:
 
-- Doğru bir depolama hesabı sağladıysanız ve belirtilen depolama hesabı için anahtarları devralmadıysanız emin olun. Azure Cloud Services için bazen kişilerin güncelleştirmemenizi `useDevelopmentStorage=true`görüyoruz.
+- Doğru bir depolama hesabı sağladıysanız ve belirtilen depolama hesabı için anahtarları devralmadıysanız emin olun. Azure Cloud Services için bazen kişilerin güncelleştirmemenizi görüyoruz `useDevelopmentStorage=true` .
 
 - Belirtilen depolama hesabının doğru olduğundan emin olun. Bileşenlerin genel depolama uç noktalarına ulaşmasını önleyen ağ kısıtlamalarına sahip olmadığınızdan emin olun. Bunu yapmanın bir yolu, makineye uzaktan erişim sağlar ve ardından aynı depolama hesabına kendiniz yazmaya çalışır.
 
-- Son olarak, izleme Aracısı tarafından hangi hatalara bildirilmekte olduğuna bakabilirsiniz. İzleme Aracısı, tanılama verileri için yerel `maeventtable.tsf`depoda bulunan içindeki günlüklerini yazar. Bu dosyayı açmak için [yerel günlük ayıklama](#local-log-extraction) bölümündeki yönergeleri izleyin. Ardından, `errors` depolama alanına yazarken yerel dosyalara okuma hatalarının olduğunu belirten bir olup olmadığını belirlemeyi deneyin.
+- Son olarak, izleme Aracısı tarafından hangi hatalara bildirilmekte olduğuna bakabilirsiniz. İzleme Aracısı, `maeventtable.tsf` Tanılama verileri için yerel depoda bulunan içindeki günlüklerini yazar. Bu dosyayı açmak için [yerel günlük ayıklama](#local-log-extraction) bölümündeki yönergeleri izleyin. Ardından, `errors` depolama alanına yazarken yerel dosyalara okuma hatalarının olduğunu belirten bir olup olmadığını belirlemeyi deneyin.
 
 ### <a name="capturing-and-archiving-logs"></a>Günlükleri yakalama ve arşivleme
-Destek ile iletişim kurmayı düşünüyorsanız, bu durum, makinenizden günlükleri toplamaktır. Kendiniz yaparak zamandan tasarruf edebilirsiniz. Günlük toplama `CollectGuestLogs.exe` yardımcı programı yolunda yardımcı programı çalıştırın. Aynı klasörde tüm ilgili Azure günlükleri ile bir. zip dosyası oluşturur.
+Destek ile iletişim kurmayı düşünüyorsanız, bu durum, makinenizden günlükleri toplamaktır. Kendiniz yaparak zamandan tasarruf edebilirsiniz. `CollectGuestLogs.exe`Günlük toplama yardımcı programı yolunda yardımcı programı çalıştırın. Aynı klasörde tüm ilgili Azure günlükleri ile bir. zip dosyası oluşturur.
 
 ## <a name="diagnostics-data-tables-not-found"></a>Tanılama veri tabloları bulunamadı
 ETW olaylarını tutan Azure Storage tablolarının tabloları aşağıdaki kod kullanılarak adlandırılır:
@@ -165,7 +165,7 @@ ETW olaylarını tutan Azure Storage tablolarının tabloları aşağıdaki kod 
             tableName = "WAD" + eventDestination;
 ```
 
-Örnek aşağıda verilmiştir:
+Aşağıda bir örnek verilmiştir:
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -207,10 +207,10 @@ Bu kod dört tablo üretir:
 
 | Olay | Tablo adı |
 | --- | --- |
-| Provider = "prov1" &lt;olay kimliği = "1"/&gt; |WADEvent + MD5 ("prov1") + "1" |
-| Provider = "prov1" &lt;olay kimliği = "2" eventdestination = "dest1"/&gt; |WADdest1 |
-| Provider = "prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("prov1") |
-| Provider = "prov2" &lt;DefaultEvents eventdestination = "dest2"/&gt; |WADdest2 |
+| Provider = "prov1" &lt; olay kimliği = "1"/&gt; |WADEvent + MD5 ("prov1") + "1" |
+| Provider = "prov1" &lt; olay kimliği = "2" eventDestination = "dest1"/&gt; |WADdest1 |
+| Provider = "prov1" &lt; DefaultEvents/&gt; |WADDefault + MD5 ("prov1") |
+| Provider = "prov2" &lt; DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
 ## <a name="references"></a>Başvurular
 
@@ -228,7 +228,7 @@ Bulut hizmeti rolü için, yapılandırmayı diskten seçerseniz, veriler Base64
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure Tanılama eklentisi çıkış kodları
 Eklenti aşağıdaki çıkış kodlarını döndürür:
 
-| Çıkış kodu | Açıklama |
+| Çıkış kodu | Description |
 | --- | --- |
 | 0 |Başarılı. |
 | -1 |Genel hata. |
@@ -251,24 +251,24 @@ Eklenti aşağıdaki çıkış kodlarını döndürür:
 | -112 |Genel hata |
 
 ### <a name="local-log-extraction"></a>Yerel günlük ayıklama
-İzleme Aracısı, günlükleri ve yapıtları dosya `.tsf` olarak toplar. `.tsf` Dosya okunabilir değil ancak aşağıdaki gibi bir `.csv` öğesine dönüştürebilirsiniz:
+İzleme Aracısı, günlükleri ve yapıtları dosya olarak toplar `.tsf` . `.tsf`Dosya okunabilir değil ancak aşağıdaki gibi bir öğesine dönüştürebilirsiniz `.csv` :
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
-Adlı `<relevantLogFile>.csv` yeni bir dosya, karşılık gelen `.tsf` dosyayla aynı yolda oluşturulur.
+Adlı yeni bir dosya, `<relevantLogFile>.csv` karşılık gelen dosyayla aynı yolda oluşturulur `.tsf` .
 
 >[!NOTE]
-> Bu yardımcı programı yalnızca Main. TSF dosyasına (örneğin, PerformanceCountersTable. TSF) karşı çalıştırmanız gerekir. Eşlik eden dosyalar (örneğin\*\*, PerformanceCountersTables_ 001. TSF, PerformanceCountersTables_\*\*002. TSF vb.) otomatik olarak işlenir.
+> Bu yardımcı programı yalnızca Main. TSF dosyasına (örneğin, PerformanceCountersTable. TSF) karşı çalıştırmanız gerekir. Eşlik eden dosyalar (örneğin, PerformanceCountersTables_ \* \* 001. tsf, PerformanceCountersTables_ \* \* 002. TSF vb.) otomatik olarak işlenir.
 
 ### <a name="more-about-missing-trace-logs"></a>Eksik izleme günlükleri hakkında daha fazla bilgi
 
 >[!NOTE]
 > IaaS VM 'niz üzerinde çalışan bir uygulamada DiagnosticsMonitorTraceListener ' i yapılandırmadığınız sürece aşağıdaki bilgiler çoğunlukla Azure Cloud Services geçerlidir.
 
-- Web. config veya App. config dosyasında **Diagnosticmonitortracelistener** ' ın yapılandırıldığından emin olun.  Bu, bulut hizmeti projelerinde varsayılan olarak yapılandırılır. Bununla birlikte, bazı müşteriler bunu Yorumlar ve izleme deyimlerinin tanılama tarafından toplanmamasını sağlar.
+- web.config veya app.config **Diagnosticmonitortracelistener** ' ın yapılandırıldığından emin olun.  Bu, bulut hizmeti projelerinde varsayılan olarak yapılandırılır. Bununla birlikte, bazı müşteriler bunu Yorumlar ve izleme deyimlerinin tanılama tarafından toplanmamasını sağlar.
 
-- Günlükler **OnStart** veya **Run** yönteminden yazılmadığından, **diagnosticmonitortracelistener** uygulamasının App. config dosyasında bulunduğundan emin olun.  Varsayılan olarak, Web. config içindedir, ancak yalnızca W3wp. exe içinde çalışan kod için geçerlidir. Bu nedenle, WaIISHost. exe ' de çalışan izlemeleri yakalamak için App. config içinde ihtiyacınız vardır.
+- Günlükler **OnStart** veya **Run** yönteminden yazılmadığından, **diagnosticmonitortracelistener** 'ın app.config olduğundan emin olun.  Varsayılan olarak web.config olur, ancak bu yalnızca w3wp.exe içinde çalışan kod için geçerlidir. Bu nedenle, WaIISHost.exe çalıştıran izlemeleri yakalamak için app.config gerekir.
 
 - Diagnostics. **Debug. WriteXXX** yerine **Diagnostics. Trace. tracexxx** kullandığınızdan emin olun. Hata ayıklama deyimleri, bir yayın derlemesinden kaldırılır.
 
@@ -283,7 +283,7 @@ Windows Azure Tanılama uzantısı, .NET 4,5 Framework veya üzeri sürümlerde 
 
 Windows Azure Tanılama uzantısını .NET 4,5 veya üzeri olmayan bir makinede çalıştırmayı denediğinizde yine de olası bir durumla karşılaşabilirsiniz. Bu durum, makinenizi eski bir görüntüden veya anlık görüntüsünden oluşturduğunuzda ya da kendi özel diskinizi getirdiğinizde oluşur.
 
-Bu genel olarak, **Diagnosticspluginlauncher. exe** çalıştırılırken **255** çıkış kodu olarak bildirim yapılır. Aşağıdaki işlenmeyen özel durum nedeniyle hata oluşur:
+Bu,DiagnosticsPluginLauncher.exe çalıştırılırken genellikle çıkış kodu **255** olarak bildirimler **.** Aşağıdaki işlenmeyen özel durum nedeniyle hata oluşur:
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
@@ -294,7 +294,7 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 Sanal makinelerdeki Portal deneyimi, varsayılan olarak belirli performans sayaçlarını gösterir. Performans sayaçlarını görmüyorsanız ve verilerin depolama alanında kullanılabilir olduğu için oluşturulduğunu biliyorsanız, aşağıdakileri denetleyin:
 
-- Depolama alanındaki verilerin Ingilizce 'de sayaç adları olup olmadığı. Sayaç adları Ingilizce değilse, Portal ölçüm grafiği bunu tanıyamaz. **Risk azaltma**: makinenin dilini sistem hesapları için İngilizce olarak değiştirin. Bunu yapmak için, **Denetim Masası** > **bölgesi** > **Yönetim** > **kopyası ayarları**' nı seçin. Ardından, özel dilin sistem hesabına uygulanmaması için **hoş geldiniz ekranının ve sistem hesaplarının** seçimini kaldırın.
+- Depolama alanındaki verilerin Ingilizce 'de sayaç adları olup olmadığı. Sayaç adları Ingilizce değilse, Portal ölçüm grafiği bunu tanıyamaz. **Risk azaltma**: makinenin dilini sistem hesapları için İngilizce olarak değiştirin. Bunu yapmak için, **Denetim Masası**  >  **bölgesi**  >  **Yönetim**  >  **kopyası ayarları**' nı seçin. Ardından, özel dilin sistem hesabına uygulanmaması için **hoş geldiniz ekranının ve sistem hesaplarının** seçimini kaldırın.
 
-- Performans sayacı adlarında joker karakterler (\*) kullanıyorsanız, Portal, performans sayaçları Azure depolama havuzuna gönderildiğinde yapılandırılan ve toplanan sayacı ilişkilendiremez. **Risk azaltma**: Ana anlamlı karakter ve portalın (\*) genişletmesine sahip olduğunuzdan emin olmak Için performans Sayaçlarınızı Azure izleyici havuzuna yönlendirin.
+- Performans sayacı adlarında joker karakterler ( \* ) kullanıyorsanız, Portal, performans sayaçları Azure depolama havuzuna gönderildiğinde yapılandırılan ve toplanan sayacı ilişkilendiremez. **Risk azaltma**: Ana anlamlı karakter ve portalın () genişletmesine sahip olduğunuzdan emin olmak için \* performans Sayaçlarınızı Azure izleyici havuzuna yönlendirin.
 

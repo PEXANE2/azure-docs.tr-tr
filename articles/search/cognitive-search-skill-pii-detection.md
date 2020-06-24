@@ -7,13 +7,13 @@ author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 1/27/2020
-ms.openlocfilehash: f21200bc6f5b25f3330f5bb87c0843caa5a84e56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298889"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080758"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>PII algılama Bilişsel Beceri
 
@@ -25,40 +25,40 @@ ms.locfileid: "80298889"
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)açıklanmaktadır.
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. yetenekler. Text. PIIDetectionSkill
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, tarafından [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Verileri beceriye göndermeden önce bölmeniz gerekirse, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
+Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Verileri beceriye göndermeden önce bölmeniz gerekirse, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
-| Parametre adı     | Açıklama |
+| Parametre adı     | Description |
 |--------------------|-------------|
-| defaultLanguageCode |    Giriş metninin dil kodu. Şimdilik yalnızca `en` desteklenir. |
-| minimumPrecision | 0,0 ile 1,0 arasında bir değer. Güven puanı ( `piiEntities` çıktıda), ayarlanan `minimumPrecision` değerden düşükse, varlık döndürülmez veya maskelenmez. Varsayılan değer 0,0 ' dir. |
-| maskingMode | Giriş metninde algılanan PII 'yi maskelemek için çeşitli yollar sağlayan bir parametre. Aşağıdaki seçenekler desteklenir: <ul><li>`none`(varsayılan): Bu, `maskedText` hiçbir maskeleme gerçekleştirilmeyeceği ve çıkış döndürülmeyeceği anlamına gelir. </li><li> `redact`: Bu seçenek, algılanan varlıkları giriş metinden kaldırır ve bunları hiçbir şeyle değiştirmez. Bu durumda, `piiEntities` çıktıda bulunan uzaklığa, maskelenmiş metin değil, özgün metinle ilgili olarak sahip olacağını unutmayın. </li><li> `replace`: Bu seçenek, algılanan varlıkların `maskingCharacter` parametresinde verilen karakterle yerini alır.  Karakter, algılanan varlığın uzunluğuna yinelenir, böylece uzaklıklar hem giriş metnine hem de çıktının `maskedText`sonuna doğru şekilde karşılık gelir.</li></ul> |
-| maskingCharacter | `maskingMode` Parametresi olarak `replace`ayarlandıysa metni maskelenecek olan karakter. Aşağıdaki seçenekler desteklenir: `*` (varsayılan), `#`,. `X` Bu parametre yalnızca olarak `null` `maskingMode` `replace`ayarlanmamışsa olabilir. |
+| `defaultLanguageCode` |    Giriş metninin dil kodu. Şimdilik yalnızca `en` desteklenir. |
+| `minimumPrecision` | 0,0 ile 1,0 arasında bir değer. Güven puanı ( `piiEntities` çıktıda), ayarlanan `minimumPrecision` değerden düşükse, varlık döndürülmez veya maskelenmez. Varsayılan değer 0,0 ' dir. |
+| `maskingMode` | Giriş metninde algılanan PII 'yi maskelemek için çeşitli yollar sağlayan bir parametre. Aşağıdaki seçenekler desteklenir: <ul><li>`none`(varsayılan): Bu, hiçbir maskeleme gerçekleştirilmeyeceği ve `maskedText` Çıkış döndürülmeyeceği anlamına gelir. </li><li> `redact`: Bu seçenek, algılanan varlıkları giriş metinden kaldırır ve bunları hiçbir şeyle değiştirmez. Bu durumda, çıktıda bulunan uzaklığa, `piiEntities` maskelenmiş metin değil, özgün metinle ilgili olarak sahip olacağını unutmayın. </li><li> `replace`: Bu seçenek, algılanan varlıkların parametresinde verilen karakterle yerini alır `maskingCharacter` .  Karakter, algılanan varlığın uzunluğuna yinelenir, böylece uzaklıklar hem giriş metnine hem de çıktının sonuna doğru şekilde karşılık gelir `maskedText` .</li></ul> |
+| `maskingCharacter` | Parametresi olarak ayarlandıysa metni maskelenecek olan karakter `maskingMode` `replace` . Aşağıdaki seçenekler desteklenir: `*` (varsayılan), `#` , `X` . Bu parametre yalnızca `null` `maskingMode` olarak ayarlanmamışsa olabilir `replace` . |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                   |
+| Giriş adı      | Description                   |
 |---------------|-------------------------------|
-| languageCode    | İsteğe bağlı. `en` varsayılan değerdir.  |
-| metin          | Çözümlenecek metin.          |
+| `languageCode`    | İsteğe bağlı. `en` varsayılan değerdir.  |
+| `text`          | Çözümlenecek metin.          |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı      | Açıklama                   |
+| Çıkış adı      | Description                   |
 |---------------|-------------------------------|
-| piiEntities | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>metin (ayıklanan olarak gerçek PII)</li> <li>type</li><li>subType</li><li>Score (daha yüksek değer, gerçek bir varlık olma olasılığı daha yüksektir)</li><li>fark (giriş metnine)</li><li>length</li></ul> </br> [Olası türler ve alt türler burada bulunabilir.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
-| maskedText | `maskingMode` , Dışında bir değere ayarlanırsa `none`, bu çıktı, seçili `maskingMode`tarafından açıklandığı şekilde giriş metninde gerçekleştirilen maskelemenin dize sonucu olacaktır.  `maskingMode` Olarak `none`ayarlanırsa, bu çıkış mevcut olmayacaktır. |
+| `piiEntities` | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>metin (ayıklanan olarak gerçek PII)</li> <li>tür</li><li>subType</li><li>Score (daha yüksek değer, gerçek bir varlık olma olasılığı daha yüksektir)</li><li>fark (giriş metnine)</li><li>length</li></ul> </br> [Olası türler ve alt türler burada bulunabilir.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| `maskedText` | , Dışında `maskingMode` bir değere ayarlanırsa `none` , bu çıktı, seçili tarafından açıklandığı şekilde giriş metninde gerçekleştirilen maskelemenin dize sonucu olacaktır `maskingMode` .  `maskingMode`Olarak ayarlanırsa `none` , bu çıkış mevcut olmayacaktır. |
 
 ##    <a name="sample-definition"></a>Örnek tanım
 

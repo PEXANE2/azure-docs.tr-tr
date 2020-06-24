@@ -4,16 +4,16 @@ description: Windows sanal masaüstü 'nde Windows 10 çoklu oturum VM 'Leri iç
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c40df9d821e069e2cd5ff0c42d5841f6b9041c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d05c1222ff43537ab8dad34588b80fe537fd0a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80634041"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200418"
 ---
 # <a name="install-language-packs"></a>Dil paketlerini yükleme
 
@@ -32,7 +32,7 @@ Dil paketlerini yüklemek için:
 
 1. Yönetici olarak oturum açın.
 2. En son Windows ve Windows Mağazası güncelleştirmelerini yüklediğinizden emin olun.
-3. **Ayarlar** > **zaman & dil** > **bölgesine**gidin.
+3. **Ayarlar**  >  **zaman & dil**  >  **bölgesine**gidin.
 4. **Ülke veya bölge**altında, açılır menüden tercih ettiğiniz ülkeyi veya bölgeyi seçin.
     Bu örnekte, aşağıdaki ekran görüntüsünde gösterildiği gibi **Fransa**seçeceğiz:
 
@@ -40,7 +40,7 @@ Dil paketlerini yüklemek için:
 
 5. Bundan sonra **dil**' i seçin ve ardından **Dil ekle**' yi seçin. Listeden yüklemek istediğiniz dili seçin ve ardından **İleri**' yi seçin.
 6. **Dil özelliklerini yükler** penceresi açıldığında, **dil paketini yükler ve Windows görüntüleme dili olarak ayarla**etiketli onay kutusunu seçin.
-7. **Yükle**’yi seçin.
+7. **Yükle**'yi seçin.
 8. Aynı anda birden çok dil eklemek için **Dil ekle**' yi seçin ve ardından 5 ve 6. adımlarda bir dil eklemek için işlemi tekrarlayın. Yüklemek istediğiniz her dil için bu işlemi tekrarlayın. Ancak, tek seferde yalnızca bir dil görüntüleme diliniz olarak ayarlayabilirsiniz.
 
     Hızlı bir görsel tanıtım aracılığıyla çalıştıralım. Aşağıdaki resimlerde, Fransızca ve Felemenkçe dil paketlerinin nasıl yükleneceği gösterilmektedir ve ardından, görüntüleme dili olarak Fransızca ayarlanır.
@@ -57,7 +57,7 @@ Dil paketlerini yüklemek için:
 
 9. Oturumunuz oturumunuzu kapatmak isteyip istemediğinizi soran bir pencere görünürse. Oturumu kapatın ve yeniden oturum açın. Görüntüleme diliniz artık seçtiğiniz dilde olmalıdır.
 
-10.  **Denetim Masası** > **saat ve bölge** > **bölgesi**' ne gidin.
+10.  **Denetim Masası**  >  **saat ve bölge**  >  **bölgesi**' ne gidin.
 
 11.  **Bölge** penceresi açıldığında, **Yönetim** sekmesini seçin ve ardından **Ayarları Kopyala**' yı seçin.
 
@@ -67,7 +67,7 @@ Dil paketlerini yüklemek için:
 
 14.  Bir pencere açılır ve oturumunuzu yeniden başlatmanızı söyleyecektir. **Şimdi yeniden Başlat**' ı seçin.
 
-15.  Oturum açtıktan sonra, **Denetim Masası** > **saat ve bölge** > **bölgesi**' ne geri dönün.
+15.  Oturum açtıktan sonra, **Denetim Masası**  >  **saat ve bölge**  >  **bölgesi**' ne geri dönün.
 
 16.  **Yönetim** sekmesini seçin.
 
@@ -89,13 +89,13 @@ Makinenize Sysprep eklemek için:
 
 1. Yönetici olarak PowerShell’i açın.
 2. Doğru dizine gitmek için aşağıdaki cmdlet 'i çalıştırın:
-   
+
     ```powershell
     cd Windows\System32\Sysprep
     ```
 
 3. Sonra, aşağıdaki cmdlet 'i çalıştırın:
-    
+
     ```powershell
     .\sysprep.exe
     ```
@@ -109,7 +109,7 @@ Makinenize Sysprep eklemek için:
 
 Sysprep işlemi sırasında bir hata iletisi görürseniz şunları yapmanız gerekir:
 
-1. **C sürücüsünü** açın ve **Windows** > **System32 Sysprep** > **Panther**adresine gidip **Setuperr** dosyasını açın.
+1. **C sürücüsünü** açın ve **Windows**  >  **System32 Sysprep**  >  **Panther**adresine gidip **Setuperr** dosyasını açın.
 
    Hata dosyasındaki metinde, aşağıdaki görüntüde gösterildiği gibi belirli bir dil paketini kaldırmanız gerektiğini söyleyecektir. Sonraki adım için dil paketi adını kopyalayın.
 
@@ -121,9 +121,9 @@ Sysprep işlemi sırasında bir hata iletisi görürseniz şunları yapmanız ge
    Remove-AppxPackage <package name>
    ```
 
-3. `Remove-AppxPackage` Cmdlet 'i yeniden çalıştırarak paketi kaldırdığınızdan emin olun. Paketi başarıyla kaldırdıysanız, kaldırmaya çalıştığınız paketin orada olmadığını belirten bir ileti görmeniz gerekir.
+3. Cmdlet 'i yeniden çalıştırarak paketi kaldırdığınızdan emin olun `Remove-AppxPackage` . Paketi başarıyla kaldırdıysanız, kaldırmaya çalıştığınız paketin orada olmadığını belirten bir ileti görmeniz gerekir.
 
-4. `sysprep.exe` Cmdlet 'i yeniden çalıştırın.
+4. `sysprep.exe`Cmdlet 'i yeniden çalıştırın.
 
 ## <a name="capture-the-image"></a>Görüntüyü yakala
 
@@ -139,7 +139,7 @@ Bir görüntü yakalamak için:
 
    ![Görüntü oluştur penceresinin ekran görüntüsü. Kullanıcının bu test görüntüsüne verdiği ad "vmwvd-Image-fr" dır ve bunu "testwvdimagerg" kaynak grubuna atamıştır.](media/create-image.png)
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
 5. Yakalama işleminin tamamlanabilmesi için birkaç dakika bekleyin. Görüntü hazırsa, bildirim merkezinde görüntünün yakalandığını bildiren bir ileti görmeniz gerekir.
 

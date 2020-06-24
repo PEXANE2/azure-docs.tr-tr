@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4125d7ea17c6ebab28ef8e5fde5af5475d07002d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72755008"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113390"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB veri modellemesi
 
@@ -33,7 +33,7 @@ Azure Cosmos DB ' de modelleme verileri başlattığınızda varlıklarınızı 
 
 Karşılaştırma için, bir ilişkisel veritabanındaki verileri modelliyoruz. Aşağıdaki örnek, bir kişinin ilişkisel veritabanında nasıl depolandığını gösterir.
 
-![İlişkisel veritabanı modeli](./media/sql-api-modeling-data/relational-data-model.png)
+:::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="İlişkisel veritabanı modeli" border="false":::
 
 İlişkisel veritabanlarıyla çalışırken, strateji tüm verilerinizi normalleştirilemiyor. Verilerinizin normalleştirilmesi, genellikle kişi gibi bir varlık almayı ve ayrı bileşenlere doğru bir şekilde bölünmesini içerir. Yukarıdaki örnekte, bir kişi birden fazla kişi ayrıntısı kaydına ve birden çok adres kaydına sahip olabilir. İletişim ayrıntıları, bir tür gibi ortak alanlar daha fazla ayıklanarak daha fazla ayrılabilir. Aynı adres için de geçerlidir, her bir kayıt *Ev* veya *iş*türünde olabilir.
 
@@ -282,7 +282,8 @@ Yukarıdaki örnekte, yayımcı belgesinde, sınırlandırılmamış koleksiyonu
 
 İlişkisel bir veritabanında *birçok: birçok* ilişki genellikle kayıtları diğer tablolardan birlikte birleştiren JOIN tablolarıyla modellenir.
 
-![Tabloları Birleştir](./media/sql-api-modeling-data/join-table.png)
+
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Tabloları Birleştir" border="false":::
 
 Belgeleri kullanarak aynı şeyi çoğaltmak ve aşağıdakine benzer bir veri modeli oluşturmak isteyebilirsiniz.
 
@@ -373,7 +374,7 @@ Aşağıdaki JSON 'ı göz önünde bulundurun.
 
 Burada (çoğunlukla), diğer varlıklardaki verilerin en üst düzey belgeye katıştırıldığı, ancak diğer verilere başvurulduğu, gömülü modeli izliyoruz.
 
-Kitap belgesine bakarsanız, yazarların dizisine baktığımızda birkaç ilginç alan görebiliriz. Bir yazar belgesine `id` , Normalleştirilmemiş `name` bir modelde standart uygulamaya geri başvurmak için kullandığımız alanın bir alanı vardır, ancak ve ayrıca, ve `thumbnailUrl`. "LINK" kullanarak ilgili `id` yazar belgesinden gereken ek bilgileri almak için uygulamayla birlikte kalmış ve bu uygulamadan ayrıldık, ancak uygulamamız yazarın adını ve bir küçük resim resmini her kitapta görüntülenecek şekilde görüntülediğimiz için, yazardaki **bazı** verileri kaldırarak bir listedeki kitap başına sunucuya gidiş dönüş tasarrufu yapabilirsiniz.
+Kitap belgesine bakarsanız, yazarların dizisine baktığımızda birkaç ilginç alan görebiliriz. Bir `id` Yazar belgesine, Normalleştirilmemiş bir modelde standart uygulamaya geri başvurmak için kullandığımız alanın bir alanı vardır, ancak ve ayrıca, `name` ve `thumbnailUrl` . `id`"LINK" kullanarak ilgili yazar belgesinden gereken ek bilgileri almak için uygulamayla birlikte kalmış ve bu uygulamadan ayrıldık, ancak uygulamamız yazarın adını ve bir küçük resim resmini her kitapta görüntülenecek şekilde görüntülediğimiz için, yazardaki **bazı** verileri kaldırarak bir listedeki kitap başına sunucuya gidiş dönüş tasarrufu yapabilirsiniz.
 
 Yazarın adı değiştiyse ya da fotoğraflarını güncelleştirmek istiyorlarsa, yazarların adlarını sık değiştirmeme varsayımına bağlı olarak, bu, tüm kullanıcıların yayımladıkları her kitabı, ancak uygulamamız için bir yandan güncelleştirmemiz gerekir. Bu, kabul edilebilir bir tasarım karardır.  
 
@@ -383,7 +384,7 @@ Azure Cosmos DB **çok belgeli işlemleri**desteklediğinden, önceden hesaplanm
 
 ## <a name="distinguishing-between-different-document-types"></a>Farklı belge türleri arasında ayrım
 
-Bazı senaryolarda, aynı koleksiyonda farklı belge türlerini karıştırmak isteyebilirsiniz; Bu, genellikle birden çok, ilişkili belgenin aynı [bölümde](partitioning-overview.md)yer olmasını istediğiniz durumdur. Örneğin, hem kitap hem de kitap incelemelerini aynı koleksiyona yerleştirebilir ve bölümü ile `bookId`bölümleyebilirsiniz. Böyle bir durumda, genellikle bunları ayırt etmek için türlerini tanımlayan bir alan ile belgelerinize eklemek istersiniz.
+Bazı senaryolarda, aynı koleksiyonda farklı belge türlerini karıştırmak isteyebilirsiniz; Bu, genellikle birden çok, ilişkili belgenin aynı [bölümde](partitioning-overview.md)yer olmasını istediğiniz durumdur. Örneğin, hem kitap hem de kitap incelemelerini aynı koleksiyona yerleştirebilir ve bölümü ile bölümleyebilirsiniz `bookId` . Böyle bir durumda, genellikle bunları ayırt etmek için türlerini tanımlayan bir alan ile belgelerinize eklemek istersiniz.
 
     Book documents:
     {

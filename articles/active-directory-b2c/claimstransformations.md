@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529139"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202968"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -59,7 +59,7 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 ```
 
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | -------- | ----------- |
 | Inputclaims | 0:1 | Talep dönüşümüne girdi olarak alınan talep türlerini belirten **ınputclaim** öğelerinin listesi. Bu öğelerin her biri, ilkedeki ClaimsSchema bölümünde zaten tanımlanmış olan bir ClaimType başvurusu içerir. |
 | InputParameters | 0:1 | Talep dönüşümüne giriş olarak sunulan **InputParameter** öğelerinin listesi.
@@ -69,7 +69,7 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 
 **Inputclaim** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Inputclaim | 1: n | Beklenen giriş talep türü. |
 
@@ -86,7 +86,7 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 
 **InputParameters** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | InputParameter | 1: n | Beklenen giriş parametresi. |
 
@@ -102,7 +102,7 @@ Kullanıcı yolculuğuyla kullanılabilecek talep dönüştürme işlevlerinin l
 
 **Outputclaim** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | Beklenen çıkış talep türü. |
 
@@ -121,7 +121,7 @@ Giriş talebi ve çıkış talebi aynı türde (dize veya Boole) ise, çıkış 
 
 Örneğin, kullanıcının kabul ettiği hizmet koşullarınızın son sürümünü depolayabiliriz. Hizmet koşullarını güncelleştirdiğinizde, kullanıcıdan yeni sürümü kabul etmesini isteyebilirsiniz. Aşağıdaki örnekte, **Hastosversionchanged** talep dönüştürmesi, **Tosversion** talebinin değerini **Lasttosacceptedversion** talebinin değeriyle karşılaştırır ve sonra Boole **tosversionchanged** talebini döndürür.
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="TOSVersionChanged">
@@ -160,7 +160,7 @@ Giriş talebi ve çıkış talebi aynı türde (dize veya Boole) ise, çıkış 
 Talep dönüştürmelerinin örnekleri için aşağıdaki başvuru sayfalarına bakın:
 
 - [Boole](boolean-transformations.md)
-- [Tarih](date-transformations.md)
+- [Date](date-transformations.md)
 - [Tamsayı](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Telefon numarası](phone-number-claims-transformations.md)

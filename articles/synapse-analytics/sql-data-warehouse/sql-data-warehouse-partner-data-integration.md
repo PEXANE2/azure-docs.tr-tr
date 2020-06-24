@@ -6,17 +6,17 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b3d77a84aa5206257f82bc5d634e1a3eae1a7790
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996439"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296398"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure SYNAPSE Analytics veri tümleştirme iş ortakları
 
@@ -24,7 +24,7 @@ Azure SYNAPSE 'ın SYNAPSE SQL havuzu özelliğini kullanarak veri ambarı çöz
 
 ## <a name="data-integration-partners"></a>Veri tümleştirme iş ortakları
 
-| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma, veri ekiplerinin çeşitli veri silolarını gerçek zamanlı olarak bir Azure SYNAPSE veri ambarına tümleştirmesini, zenginleştirmesini ve akışını sağlayan bir ayıklama, dönüştürme ve yükleme (ETL) çözümüdür. |[Ürün sayfası](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer, geleneksel yaklaşımlardan tipik olarak değil, saatlerde daha derin Öngörüler elde eden, self servis veri analizine yönelik yinelenebilir bir iş akışı sağlar! Alteryx Designer, aynı sezgisel kullanıcı arabirimini kullanarak veri hazırlama, veri karıştırma ve analitik – tahmine dayalı, istatistiksel ve uzamsal bir şekilde veri analistlerine yardımcı olur. |[Ürün sayfası](https://www.alteryx.com/partners/microsoft/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
@@ -36,8 +36,8 @@ Azure SYNAPSE 'ın SYNAPSE SQL havuzu özelliğini kullanarak veri ambarı çöz
 | ![Bilgi oluşturucuları](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**Bilgi oluşturucuları (OMNI-gen Veri Yönetimi)**<br>Bilgi oluşturucunun OMNI-gen veri yönetimi platformu veri tümleştirme, veri kalitesi ve ana veri yönetimi çözümleri sağlar. Biçim, konum, birim veya gecikme süresi ne olduğuna bakılmaksızın tüm verilerin kolayca erişmesini, taşınmasını ve karışmasını kolaylaştırır.|[Ürün sayfası](https://www.informationbuilders.com/3i-platform)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
 | ![Matillion](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**Matillion**<br>Matillion, bulut veri ambarları için veri dönüştürme yazılımıdır. Azure SYNAPSE için yalnızca Matillion amacı, işletmelerin yeni kolaylık, hız, ölçek ve tasarruf seviyeleri elde etmelerini olanaklı hale getirecek şekilde oluşturulmuştur. Matillion ürünleri, veri tümleştirme ve dönüştürme ihtiyaçlarını karşılamak üzere her boyuttaki şirketler tarafından yüksek oranda derecelendirilir ve güvenilirdir. Matillion 'un veri dönüşümüne yönelik bulut tabanlı yaklaşımla birlikte verilerinizin potansiyelini nasıl açabilebileceğinizi öğrenin.| [Ürün sayfası](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [Azure Market](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/matillion.matillion-etl-azure-synapse?tab=Overview) |
 | ![oh22 HEDDA. IO](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**oh22 HEDDA <span></span> . IO**<br>oh22's HEDDA <span></span> . GÇ, Microsoft Azure için tasarlanmış bilgi odaklı bir veri kalitesi ürünüdür. Bu, Bilgi Bankası oluşturmanızı ve verilerinizi düzeltme, zenginleştirme ve standartlaştırma dahil çeşitli kritik veri kalitesi görevlerini gerçekleştirmek için kullanmanızı sağlar. HEDDA <span></span> . GÇ Ayrıca, başvuru veri sağlayıcıları tarafından sunulan veya geliştirilmiş ve sizin tarafınızdan sunulan bulut tabanlı başvuru veri hizmetlerini kullanarak veri temizleme işlemi gerçekleştirmenizi sağlar.| [Ürün sayfası](https://hedda.io)<br> [Azure Market]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oh22.hedda-io) |
-| ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole, kullanıcıların ETL, Analytics ve AI/ML iş yüklerini gerçekleştirmesine olanak tanıyan bir bulutta yerel platform sağlar. Farklı türlerde açık kaynaklı altyapıları destekler-Apache Spark, TensorFlow, Presto, Airflow, Hadoop, Hive ve daha fazlası. SQL sorgu araçları, dizüstü bilgisayarlar ve güçlü açık kaynaklı altyapılardan yararlanan panolar için veri işlemeye yönelik kullanımı kolay Son Kullanıcı araçları sağlar.|[Ürün sayfası](https://www.qubole.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
-| ![Segment](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**Deki**<br>Segment, çeşitli kaynaklardan gelen müşteri verilerinin anlamlı olmasını sağlamanıza yardımcı olan bir veri yönetimi ve analiz çözümüdür. Daha iyi kararlar, ürünler ve deneyimler oluşturmak için verilerinizi 200 ' den fazla araca bağlamanıza olanak tanır. Segment, yerleşik veri bağlayıcılarını kullanarak birden çok veri kaynağını sizin için ambarınıza dönüştürür ve yükler|[Ürün sayfası](https://segment.com/)<br> |
+| ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole, kullanıcıların ETL, Analytics ve AI/ML iş yüklerini gerçekleştirmesine olanak tanıyan bir bulutta yerel platform sağlar. Farklı türlerde açık kaynaklı altyapıları destekler-Apache Spark, TensorFlow, Presto, Airflow, Hadoop, Hive ve daha fazlası. SQL sorgu araçları, dizüstü bilgisayarlar ve güçlü açık kaynaklı altyapılardan yararlanan panolar için veri işlemeye yönelik kullanımı kolay Son Kullanıcı araçları sağlar.|[Ürün sayfası](https://www.qubole.com/company/partners/partners-microsoft-azure/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
+| ![Segment](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**Segment**<br>Segment, çeşitli kaynaklardan gelen müşteri verilerinin anlamlı olmasını sağlamanıza yardımcı olan bir veri yönetimi ve analiz çözümüdür. Daha iyi kararlar, ürünler ve deneyimler oluşturmak için verilerinizi 200 ' den fazla araca bağlamanıza olanak tanır. Segment, yerleşik veri bağlayıcılarını kullanarak birden çok veri kaynağını sizin için ambarınıza dönüştürür ve yükler|[Ürün sayfası](https://segment.com/)<br> |
 | ![İle ufuk](./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png) |**Ufuk aracılığıyla (veri tümleştirme)**<br>Veri tümleştirmesi aracılığıyla kullanılan, veri içeri aktarmaları otomatikleştiren bir sihirbaz sağlar. Bu sihirbaz, farklı kaynak türleri (CRMs, uygulama veritabanı, CSV dosyaları vb.) arasında veri geçirmenize olanak sağlar. |[Ürün sayfası](https://skyvia.com/)<br> |
 | ![Anlık görüntü mantığı](./media/sql-data-warehouse-partner-data-integration/snaplogic_logo.png) |**Anlık görüntü mantığı**<br>Anlık görüntü mantığı platformu, müşterilerin Azure SYNAPSE veri ambarı 'na ve dışına hızla veri aktarmasına olanak sağlar. Tek bir çözümde yüzlerce uygulama, hizmet ve IoT senaryosunu tümleştirmenize olanak sağlar.|[Ürün sayfası](https://www.snaplogic.com/)<br>[Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/snaplogic.snaplogic-elastic-integration-windows)<br> |
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>StreamSets, DataOps için bir veri tümleştirme platformu sağlar. BT, verileri bir Azure SYNAPSE veri ambarına tümleştirme tam tasarım-dağıtma-çalışma yaşam döngüsünü sonlandırır. Akış, toplu iş veya değiştirilen veri yakalama verileri teslim yöntemleri aracılığıyla verileri hızla alabilir ve ambardan tümleştirebilirsiniz. Ayrıca, uçtan uca veri akışı görünürlüğü ve dayanıklılığı sağlayan akıllı veri işlem hatları ile sürekli işlemler sağlayabilirsiniz.|[Ürün sayfası](https://streamsets.com/partners/microsoft)|
@@ -48,4 +48,4 @@ Azure SYNAPSE 'ın SYNAPSE SQL havuzu özelliğini kullanarak veri ambarı çöz
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Diğer iş ortakları hakkında daha fazla bilgi edinmek için bkz. [Iş zekası ortakları](sql-data-warehouse-partner-business-intelligence.md) ve [veri yönetimi iş ortakları](sql-data-warehouse-partner-data-management.md).
+Diğer iş ortakları hakkında daha fazla bilgi için bkz. [Iş zekası iş ortakları](sql-data-warehouse-partner-business-intelligence.md), [veri yönetimi iş ortakları](sql-data-warehouse-partner-data-management.md) ve [Machine Learning ve AI ortakları](sql-data-warehouse-partner-machine-learning-ai.md).

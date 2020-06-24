@@ -4,15 +4,15 @@ description: Windows sanal masaüstü 'nde GPU hızlandırmalı işleme ve kodla
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: cf602a858d74e4038cddc463b159f100afe2263f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 33bc63887b73adaf570b385d2a289fcd97ff1632
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614986"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206113"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
 
@@ -52,7 +52,7 @@ Varsayılan olarak, çoklu oturum yapılandırmalarında çalışan uygulamalar 
 
 1. Yerel yönetici ayrıcalıklarına sahip bir hesap kullanarak VM 'nin masaüstüne bağlanın.
 2. Başlat menüsünü açın ve grup ilkesi düzenleyicisini açmak için "gpedit. msc" yazın.
-3.  > **Yönetim Şablonları**,**uzak oturum ortamı****Uzak Masaüstü oturumu ana bilgisayarı** >  > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** >  **bilgisayar yapılandırması**' na gidin.
+3. **Computer Configuration**  >  **Yönetim Şablonları**,  >  **Windows Components**  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **uzak oturum ortamı**Uzak Masaüstü oturumu ana bilgisayarı Windows bileşenleri Uzak Masaüstü Hizmetleri Bilgisayar Yapılandırması ' na gidin.
 4. İlke ' yi seçin **tüm Uzak Masaüstü Hizmetleri oturumları için donanım varsayılan grafik bağdaştırıcısını kullanın** ve bu ilkeyi, uzak oturumda GPU oluşturmayı etkinleştirmek için **etkin** olarak ayarlayın.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını yapılandırma
@@ -77,7 +77,7 @@ Uzak Masaüstü, uzak masaüstü istemcilerine iletilmek üzere uygulamalar ve m
 
 Uygulamaların işleme için GPU 'YU kullandığını doğrulamak için aşağıdakilerden birini deneyin:
 
-* NVıDıA GPU ile Azure VM 'Leri için, uygulamalarınızı çalıştırırken `nvidia-smi` GPU kullanımını denetlemek üzere [Sürücü yüklemesini doğrulama](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) bölümünde açıklandığı gibi yardımcı programını kullanın.
+* NVıDıA GPU ile Azure VM 'Leri için, `nvidia-smi` uygulamalarınızı ÇALıŞTıRıRKEN GPU kullanımını denetlemek üzere [Sürücü yüklemesini doğrulama](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) bölümünde açıklandığı gibi yardımcı programını kullanın.
 * Desteklenen işletim sistemi sürümlerinde, Görev Yöneticisi 'Ni kullanarak GPU kullanımını kontrol edebilirsiniz. Uygulamaların GPU 'YU kullanıp kullanmadığını görmek için "performans" sekmesindeki GPU 'YU seçin.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU hızlandırmalı çerçeve kodlamasını doğrulama
@@ -85,7 +85,7 @@ Uygulamaların işleme için GPU 'YU kullandığını doğrulamak için aşağı
 Uzak Masaüstü 'Nün GPU hızlandırmalı kodlama kullandığını doğrulamak için:
 
 1. Windows sanal masaüstü istemcisi 'ni kullanarak VM 'nin masaüstüne bağlanın.
-2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulamalar ve hizmetler günlükleri** > **Microsoft** > **Windows** > **RemoteDesktopServices-rdpcorecdv** > **operasyonel**
+2. Olay Görüntüleyicisi başlatın ve şu düğüme gidin: **uygulamalar ve hizmetler günlükleri**  >  **Microsoft**  >  **Windows**  >  **RemoteDesktopServices-rdpcorecdv**  >  **operasyonel**
 3. GPU hızlandırmalı kodlamanın kullanıldığını anlamak için, olay KIMLIĞI 170 ' i arayın. "AVC donanım Kodlayıcısı etkin: 1" görürseniz, GPU kodlaması kullanılır.
 4. AVC 444 modunun kullanıldığını anlamak için, olay KIMLIĞI 162 ' yi arayın. "AVC kullanılabilir: 1 başlangıç profili: 2048" görürseniz, AVC 444 kullanılır.
 

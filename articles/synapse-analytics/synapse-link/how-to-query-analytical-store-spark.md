@@ -5,20 +5,20 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c19a3f808b85ba9e34d3304251fe8acb21204ce
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 399aa00be3d585b1d37bab95d8108ee8a09a8791
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700194"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85195020"
 ---
 # <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için Apache Spark analitik mağaza (Önizleme) Azure Cosmos DB sorgulama
 
-Bu makalede, SYNAPSE hareketlerinden analitik depoyla nasıl etkileşim kurabileceğine ilişkin bazı örnekler verilmektedir. Bir kapsayıcıya sağ tıkladığınızda hareketler görünür. Hareketlerle hızlı bir şekilde kod oluşturabilir ve gereksinimlerinize uyarlayabilirsiniz. Hareketler, tek bir tıklama ile verileri bulmak için de mükemmeldir.
+Bu makalede, SYNAPSE hareketlerinden analitik depoyla nasıl etkileşime girebileceği hakkında örnekler verilmektedir. Hareketleri görmek için kapsayıcıya sağ tıklamanız gerekir. Hareketler sayesinde hızlı bir şekilde kod oluşturabilir ve ihtiyaçlarınıza göre düzenleyebilirsiniz. Hareketler ayrıca tek tıklamayla verileri keşfetmek için de idealdir.
 
 ## <a name="load-to-dataframe"></a>DataFrame 'e yükle
 

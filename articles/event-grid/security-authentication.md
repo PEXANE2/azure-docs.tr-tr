@@ -2,18 +2,17 @@
 title: Azure Event Grid güvenlik ve kimlik doğrulaması
 description: Bu makalede, Event Grid kaynaklarınıza (Web kancası, abonelikler, özel konular) erişimin kimliklerinin nasıl doğrulanmasıyla ilgili farklı yollar açıklanmaktadır
 services: event-grid
-author: femila
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: femila
-ms.openlocfilehash: 8335d5a41dc2f322623c163e08f8a4a2c1be8360
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.author: spelluru
+ms.openlocfilehash: d028367b82e8529d5260c086f2e4afa609582b00
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559005"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100224"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid kaynaklarına erişim izni doğrulanıyor
 Bu makalede aşağıdaki senaryolar hakkında bilgi verilmektedir:  
@@ -85,8 +84,21 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 Event Grid hizmeti tarafından diske yazılan tüm olaylar veya veriler, bekleyen bir şekilde şifrelendiğinden emin olmak için Microsoft tarafından yönetilen bir anahtarla şifrelenir. Ayrıca, olayların veya verilerin saklanacağı en uzun süre, [Event Grid yeniden deneme ilkesiyle](delivery-and-retry.md)ilgili olarak 24 saat olur. Event Grid, 24 saat sonra tüm olayları veya verileri otomatik olarak siler veya olayın yaşam süresi (hangisi daha az) olur.
 
+## <a name="use-system-assigned-identities-for-event-delivery"></a>Olay teslimi için sistem tarafından atanan kimlikleri kullanma
+Bir konu veya etki alanı için sistem tarafından atanan yönetilen kimliği etkinleştirebilir ve olayları Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kimliğini kullanabilirsiniz.
+
+Adımlar şunlardır: 
+
+1. Bir sistem tarafından atanan kimliğe sahip bir konu veya etki alanı oluşturun ya da kimliği etkinleştirmek için mevcut bir konuyu veya etki alanını güncelleştirin. 
+1. Kimliği, hedef üzerinde (örneğin, bir Service Bus kuyruğu) uygun bir role (örneğin, Service Bus veri gönderici) ekleyin.
+1. Olay abonelikleri oluşturduğunuzda, hedefe olayları iletmek için kimliğin kullanımını etkinleştirin. 
+
+Ayrıntılı adım adım yönergeler için bkz. [yönetilen kimlik Ile olay teslimi](managed-service-identity.md).
+
+
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>Web kancası uç noktalarına olay teslimi kimlik doğrulaması
 Aşağıdaki bölümlerde, Web kancası uç noktalarına olay tesliminin nasıl doğrulanabilmesi anlatılmaktadır. Kullandığınız yöntemden bağımsız olarak bir doğrulama el sıkışma mekanizması kullanmanız gerekir. Ayrıntılar için bkz. [Web kancası olay teslimi](webhook-event-delivery.md) . 
+
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Azure Active Directory kullanma (Azure AD)
 Azure AD 'yi kullanarak Event Grid olayları almak için kullanılan Web kancası uç noktasının güvenliğini sağlayabilirsiniz. Bir Azure AD uygulaması oluşturmanız, uygulamanızda yetkilendirme Event Grid bir rol ve hizmet sorumlusu oluşturmanız ve olay aboneliğini Azure AD uygulamasını kullanacak şekilde yapılandırmanız gerekir. [Event Grid Azure Active Directory yapılandırmayı](secure-webhook-delivery.md)öğrenin.

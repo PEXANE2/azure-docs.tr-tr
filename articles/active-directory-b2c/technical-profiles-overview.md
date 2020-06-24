@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 504f8288ad6bf7565a0cae91c11a14ea65b6e160
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556461"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203223"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde teknik profiller hakkında
 
@@ -70,7 +70,7 @@ Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için 
 
 Örneğin, **AAD-userreadusingalternativesecurityıd-NoError** teknik profili **AAD-userreadusingalternativesecurityıd**' yi içerir. Bu teknik profil, `RaiseErrorIfClaimsPrincipalDoesNotExist` meta veri öğesini olarak ayarlar `true` ve bir sosyal hesap dizinde yoksa bir hata oluşturur. **AAD-Userreadusingalternativesecurityıd-NoError** bu davranışı geçersiz kılar ve bu hata iletisini devre dışı bırakır.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
   <Metadata>
     <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
@@ -81,7 +81,7 @@ Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için 
 
 **AAD-Userreadusingalternativesecurityıd** `AAD-Common` Teknik profili içerir.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -105,7 +105,7 @@ Teknik bir profil, ayarları değiştirmek veya yeni işlevsellik eklemek için 
 
 Hem **AAD-Userreadusingalternativesecurityıd-NoError** ve **AAD-Userreadusingalternativesecurityıd** , AAD **ortak** teknik profilinde belirtildiği için gerekli **protokol** öğesini belirtmiyor.
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

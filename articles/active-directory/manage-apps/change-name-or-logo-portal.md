@@ -3,25 +3,25 @@ title: Azure AD 'de kurumsal uygulamanın adını veya logosunu değiştirme
 description: Azure Active Directory içindeki özel bir kurumsal uygulamanın adını veya logosunu değiştirme
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f8902f306f50659725bc4b12fbbb6fee7563c4b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138510"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763678"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Azure Active Directory bir kurumsal uygulamanın adını veya logosunu değiştirme
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) içinde özel bir kurumsal uygulama için adı
 7. Dosya seçicide yeni logo olarak istediğiniz dosyayı seçin. Dosyanın adı geçerli logo resminin altındaki kutuda görüntülenir.
 
    > [!NOTE]
-   > Azure, logo resminin bir PNG dosyası olmasını gerektirir ve genişlik, yükseklik ve dosya boyutu sınırlarını uygular. Özel logolar tam olarak 215 &times; 215 piksel boyutunda OLMALıDıR ve PNG biçiminde olmalıdır. Kullanıcılara en iyi şekilde görünebilmeniz için uygulama logonuzda saydamlık olmadan bir düz renk arka planı kullanmanızı öneririz.
+   > Azure, logo resminin bir PNG dosyası olmasını gerektirir ve genişlik, yükseklik ve dosya boyutu sınırlarını uygular. Özel logolar tam olarak 215 &times; 215 piksel boyutunda olmalıdır ve PNG biçiminde olmalıdır. Kullanıcılara en iyi şekilde görünebilmeniz için uygulama logonuzda saydamlık olmadan bir düz renk arka planı kullanmanızı öneririz.
 8. **Kaydet**’i seçin. Yeni bir logo seçerseniz, **logo** alanının görüntüsü yeni logo dosyasını yansıtacak şekilde değişir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

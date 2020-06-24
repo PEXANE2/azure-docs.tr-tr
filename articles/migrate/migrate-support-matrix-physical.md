@@ -3,12 +3,12 @@ title: Azure geçişi 'nde fiziksel sunucu değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile fiziksel sunucu değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 058a438d722454368f3275216c92d0a2692b359c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: e60dc12b1f710fe771b90352872eb7113951a65d
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324326"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080516"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Fiziksel sunucu değerlendirmesi için destek matrisi 
 
@@ -24,7 +24,7 @@ Fiziksel sunucuları değerlendirmek için bir Azure geçişi projesi oluşturun
 --- | ---
 **Değerlendirme limitleri** | Tek bir [Azure geçişi projesinde](migrate-support-matrix.md#azure-migrate-projects)35.000 fiziksel sunucuyu bulabilir ve değerlendirebilirsiniz.
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz. Fiziksel sunuculara ek olarak bir proje, VMware VM 'leri ve Hyper-V VM 'lerini, her biri için değerlendirme sınırlarına kadar içerebilir.
-**Keşfini** | Azure geçişi gereci en fazla 250 fiziksel sunucu bulabilir.
+**Keşfini** | Azure geçişi gereci en fazla 1000 fiziksel sunucu bulabilir.
 **Değerlendirmesini** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede en fazla 35.000 makine değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, değerlendirme için bağlantı noktası gereksinimleri ö
 **Cihaz** | **Bağlantı**
 --- | ---
 **Elektrikli** | TCP bağlantı noktası 3389 ' deki gelen bağlantılar, Gereç ile Uzak Masaüstü bağlantılarına izin vermek için.<br/><br/> Bağlantı noktası 44368 ' de, URL 'YI kullanarak gereç yönetimi uygulamasına uzaktan erişmek için gelen bağlantılar:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Azure geçişi 'ne bulma ve performans meta verileri göndermek için 443 (HTTPS) bağlantı noktalarında giden bağlantılar.
-**Fiziksel sunucular** | **Windows:** WinRM bağlantı noktaları 5985 (HTTP) ve 5986 (HTTPS) üzerinde gelen bağlantılar, Windows sunucularından yapılandırma ve performans meta verilerini çekme. <br/><br/> **Linux:**  22 (TCP) bağlantı noktasındaki gelen bağlantılar, Linux sunucularından yapılandırma ve performans meta verilerini çekme. |
+**Fiziksel sunucular** | **Windows:** Windows sunucularından yapılandırma ve performans meta verileri çekmek için WinRM bağlantı noktası 5985 (HTTP) üzerinde gelen bağlantı. <br/><br/> **Linux:**  22 (TCP) bağlantı noktasındaki gelen bağlantılar, Linux sunucularından yapılandırma ve performans meta verilerini çekme. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Aracı tabanlı bağımlılık Analizi gereksinimleri
 

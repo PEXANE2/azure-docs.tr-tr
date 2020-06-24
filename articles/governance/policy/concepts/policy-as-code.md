@@ -3,12 +3,12 @@ title: İlkeyi Kod iş akışları olarak tasarklama
 description: Azure Ilke tanımlarınızı kod olarak dağıtmak ve kaynakları otomatik olarak doğrulamak için iş akışları tasarlamayı öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 04ec27216a3e9d59da21ef80948ef8620234e575
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684275"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194425"
 ---
 # <a name="design-policy-as-code-workflows"></a>İlkeyi Kod iş akışları olarak tasarklama
 
@@ -19,7 +19,7 @@ Bulut yönetimi ile yolculukta ilerleyerek, Azure portal her bir ilke tanımın�
 
 Kod olarak ilke, bu fikirlerin birleşimidir. Temelde, ilke tanımlarınızı kaynak denetiminde tutun, her değişiklik yapıldığında, test edin ve bu değişikliği doğrulayın. Bununla birlikte, kod veya DevOps ile altyapıyla ilke katılımı olması gerekmez.
 
-Doğrulama adımı aynı zamanda diğer sürekli tümleştirme veya sürekli dağıtım iş akışlarının bir bileşeni olmalıdır. Örnek olarak bir uygulama ortamının veya sanal altyapının dağıtımı sayılabilir. Azure Ilke doğrulamasını derleme ve dağıtım sürecinin erken bir bileşeni haline getirerek uygulama ve operasyon ekipleri, değişiklikleri çok geç olmayan ve üretimde dağıtmaya çalıştıkları zaman, daha uzun bir süre boyunca, daha fazla zaman uyumlu olup olmadığını bulur.
+Doğrulama adımı aynı zamanda diğer sürekli tümleştirme veya sürekli dağıtım iş akışlarının bir bileşeni olmalıdır. Örnek olarak bir uygulama ortamının veya sanal altyapının dağıtımı sayılabilir. Azure Ilke doğrulamasını derleme ve dağıtım sürecinin erken bir bileşeni yaparak, uygulama ve operasyon ekipleri, değişikliklerin uyumsuz olup olmadığı ve üretimde dağıtmaya çalıştıkları durumlarda bulur.
 
 ## <a name="workflow-overview"></a>İş akışına genel bakış
 

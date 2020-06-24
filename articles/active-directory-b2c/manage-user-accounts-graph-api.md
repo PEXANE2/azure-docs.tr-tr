@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 249acaad66bdfd8b5d6b8420d22a9090e44beb41
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637340"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204107"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme
 
@@ -57,17 +57,17 @@ Bir tüketici, iş ortağı veya vatandaşlık olabilecek bir müşteri hesabı 
 
 Müşteri hesabı olan bir Kullanıcı birden çok kimlik ile oturum açabilir. Örneğin, Kullanıcı adı, e-posta, çalışan KIMLIĞI, kamu KIMLIĞI ve diğerleri. Tek bir hesabın aynı parolayla hem yerel hem de sosyal birden çok kimliği olabilir.
 
-Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, [Objectıdentity][graph-objectIdentity]türünde `identities` olan User özniteliğinde depolanır. Koleksiyon `identities` , bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar.
+Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities` [Objectıdentity][graph-objectIdentity]türünde olan User özniteliğinde depolanır. `identities`Koleksiyon, bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar.
 
-| Özellik   | Tür |Açıklama|
+| Özellik   | Tür |Description|
 |:---------------|:--------|:----------|
-|Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için: `emailAddress`, `emailAddress1` `emailAddress2` `emailAddress3` `userName`,,, veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak `federated`ayarlanması gerekir.|
-|yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated`), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin `contoso.onmicrosoft.com`,). Sosyal kimlik (burada **Signıntype** `federated`) için değer verenin adıdır, örneğin`facebook.com`|
-|ıssueratandıd|string|Kullanıcıya veren tarafından atanan benzersiz tanımlayıcıyı belirtir. **Issuer** ve **ıssueratanmadı** birleşimi kiracınız dahilinde benzersiz olmalıdır. Yerel hesap için, **Signıntype** veya `emailAddress` `userName`olarak ayarlandığında, Kullanıcı için oturum açma adını temsil eder.<br>**Signıntype** şu şekilde ayarlandığında: <ul><li>`emailAddress`(veya `emailAddress` benzer şekilde `emailAddress1`başlar) **ıssueratana** geçerli bir e-posta adresi olmalıdır</li><li>`userName`(veya başka bir değer), **ıssueratandıd** [bir e-posta adresinin geçerli bir yerel parçası](https://tools.ietf.org/html/rfc3696#section-3) olmalıdır</li><li>`federated`, **ıssueratanmadı** Federal hesap benzersiz tanımlayıcısını temsil ediyor</li></ul>|
+|Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için:,,,, `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3` `userName` veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak ayarlanması gerekir `federated` .|
+|yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated` ), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin,) `contoso.onmicrosoft.com` . Sosyal kimlik (burada **Signıntype** ) için `federated` değer verenin adıdır, örneğin`facebook.com`|
+|ıssueratandıd|string|Kullanıcıya veren tarafından atanan benzersiz tanımlayıcıyı belirtir. **Issuer** ve **ıssueratanmadı** birleşimi kiracınız dahilinde benzersiz olmalıdır. Yerel hesap için, **Signıntype** veya olarak ayarlandığında `emailAddress` `userName` , Kullanıcı için oturum açma adını temsil eder.<br>**Signıntype** şu şekilde ayarlandığında: <ul><li>`emailAddress`(veya `emailAddress` benzer şekilde başlıyor `emailAddress1` ) **ıssueratandıd** geçerli bir e-posta adresi olmalıdır</li><li>`userName`(veya başka bir değer), **ıssueratandıd** [bir e-posta adresinin geçerli bir yerel parçası](https://tools.ietf.org/html/rfc3696#section-3) olmalıdır</li><li>`federated`, **ıssueratanmadı** Federal hesap benzersiz tanımlayıcısını temsil ediyor</li></ul>|
 
 Aşağıdaki **kimlikler** özelliği, oturum açma adı ile yerel hesap kimliği, oturum açma olarak bir e-posta adresi ve sosyal kimlik ile birlikte. 
 
- ```JSON
+ ```json
  "identities": [
      {
        "signInType": "userName",
@@ -91,11 +91,11 @@ Federal kimlikler için, kimlik sağlayıcısına bağlı olarak, **ıssueratand
 
 ### <a name="password-profile-property"></a>Parola profili özelliği
 
-Yerel bir kimlik için **Passwordprofile** özelliği gereklidir ve kullanıcının parolasını içerir. `forceChangePasswordNextSignIn` Özelliği olarak `false`ayarlanmalıdır.
+Yerel bir kimlik için **Passwordprofile** özelliği gereklidir ve kullanıcının parolasını içerir. `forceChangePasswordNextSignIn`Özelliği olarak ayarlanmalıdır `false` .
 
 Bir federal (sosyal) kimlik için **Passwordprofile** özelliği gerekli değildir.
 
-```JSON
+```json
 "passwordProfile" : {
     "password": "password-value",
     "forceChangePasswordNextSignIn": false
@@ -106,9 +106,9 @@ Bir federal (sosyal) kimlik için **Passwordprofile** özelliği gerekli değild
 
 Azure AD B2C parola ilkesi (yerel hesaplar için) Azure Active Directory [güçlü parola gücü](../active-directory/authentication/concept-sspr-policy.md) ilkesini temel alır. Azure AD B2C kaydolma veya oturum açma ve parola sıfırlama ilkeleri için bu güçlü parola gücü gerekir ve parolaların süreleri dolmaz.
 
-Kullanıcı geçişi senaryolarında, geçirmek istediğiniz hesapların Azure AD B2C tarafından zorlanan [güçlü parola kuvvetinden](../active-directory/authentication/concept-sspr-policy.md) daha zayıf olması halinde güçlü parola gereksinimini devre dışı bırakabilirsiniz. Varsayılan parola ilkesini değiştirmek için `passwordPolicies` özelliğini olarak `DisableStrongPassword`ayarlayın. Örneğin, kullanıcı oluştur isteğini aşağıdaki şekilde değiştirebilirsiniz:
+Kullanıcı geçişi senaryolarında, geçirmek istediğiniz hesapların Azure AD B2C tarafından zorlanan [güçlü parola kuvvetinden](../active-directory/authentication/concept-sspr-policy.md) daha zayıf olması halinde güçlü parola gereksinimini devre dışı bırakabilirsiniz. Varsayılan parola ilkesini değiştirmek için `passwordPolicies` özelliğini olarak ayarlayın `DisableStrongPassword` . Örneğin, kullanıcı oluştur isteğini aşağıdaki şekilde değiştirebilirsiniz:
 
-```JSON
+```json
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
@@ -116,9 +116,9 @@ Kullanıcı geçişi senaryolarında, geçirmek istediğiniz hesapların Azure A
 
 Müşterilere yönelik her uygulamanın, toplanacak bilgiler için benzersiz gereksinimleri vardır. Azure AD B2C kiracınız, belirtilen ad, soyadı, şehir ve posta kodu gibi özelliklerde depolanan yerleşik bir bilgi kümesiyle gelir. Azure AD B2C, her müşteri hesabında depolanan özellikler kümesini genişletebilirsiniz. Özel öznitelikler tanımlama hakkında daha fazla bilgi için bkz. [özel öznitelikler (Kullanıcı akışları)](user-flow-custom-attributes.md) ve [özel öznitelikler (özel ilkeler)](custom-policy-custom-attributes.md).
 
-Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, kuralı `extension_ApplicationObjectID_attributename`kullanılarak adlandırılır. Örneğin:
+Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, kuralı kullanılarak adlandırılır `extension_ApplicationObjectID_attributename` . Örneğin:
 
-```JSON
+```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
@@ -135,8 +135,8 @@ Kod örneğini aldıktan sonra, ortamınız için yapılandırın ve ardından p
 
 1. Projeyi [Visual Studio](https://visualstudio.microsoft.com) 'da veya [Visual Studio Code](https://code.visualstudio.com)açın.
 1. `src/appsettings.json` dosyasını açın.
-1. `appSettings` Bölümünde, kiracınızın adıyla `your-b2c-tenant` ve `Application (client) ID` ve `Client secret` yönetim uygulaması kaydınızın değerleriyle değiştirin (Bu makalenin [yönetim uygulaması kaydetme](#register-a-management-application) bölümüne bakın).
-1. Deponun yerel kopyanızda bir konsol penceresi açın, `src` dizine geçin ve ardından projeyi derleyin:
+1. Bölümünde, `appSettings` `your-b2c-tenant` kiracınızın adıyla ve `Application (client) ID` ve `Client secret` yönetim uygulaması kaydınızın değerleriyle değiştirin (Bu makalenin [yönetim uygulaması kaydetme](#register-a-management-application) bölümüne bakın).
+1. Deponun yerel kopyanızda bir konsol penceresi açın, dizine geçin ve `src` ardından projeyi derleyin:
     ```console
     cd src
     dotnet build
@@ -155,9 +155,9 @@ Uygulama, yürütebilmeniz için kullanabileceğiniz komutların bir listesini g
 
 Microsoft Graph API 'sine yönelik herhangi bir istek, kimlik doğrulaması için bir erişim belirteci gerektirir. Çözüm, Microsoft Graph SDK ile kullanmak üzere Microsoft kimlik doğrulama kitaplığı 'nın (MSAL) kimlik doğrulama senaryosu tabanlı bir sarmalayıcı sağlayan [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet paketini kullanır.
 
-Program.cs `RunAsync` dosyasındaki yöntemi: _Program.cs_
+`RunAsync` _Program.cs_ dosyasındaki yöntemi:
 
-1. _AppSettings. JSON_ dosyasından uygulama ayarlarını okur
+1. _appsettings.js_ dosyadaki uygulama ayarlarını okur
 1. Kimlik doğrulama sağlayıcısını [OAuth 2,0 istemci kimlik bilgileri verme](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) akışı kullanarak başlatır. İstemci kimlik bilgileri verme akışı ile, uygulama Microsoft Graph API 'sini çağırmak için bir erişim belirteci alabilir.
 1. Kimlik doğrulama sağlayıcısına Microsoft Graph hizmeti istemcisini ayarlar:
 
@@ -202,7 +202,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Microsoft Graph SDK 'ları kullanarak API çağrıları yapın](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph bilgileri okuma ve yazma hakkında bilgiler içerir, döndürülen özellikleri denetlemek, `$select` özel sorgu parametreleri sağlamak ve `$filter` ve `$orderBy` sorgu parametrelerini kullanmak için kullanın.
+[Microsoft Graph SDK 'ları kullanarak API çağrıları yapın](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph bilgileri okuma ve yazma hakkında bilgiler içerir, `$select` döndürülen özellikleri denetlemek, özel sorgu parametreleri sağlamak ve `$filter` ve sorgu parametrelerini kullanmak için kullanın `$orderBy` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

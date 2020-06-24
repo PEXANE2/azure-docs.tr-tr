@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253890"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698606"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tasarım kavramları
 Bu belgenin amacı, Azure AD Connect uygulama tasarımı sırasında düşünülmesi gereken alanların tanımlanmasıdır. Bu belge, bazı alanlarda ayrıntılı bir bakış ve bu kavramlar diğer belgelerde kısaca açıklanmıştır.
@@ -62,7 +62,7 @@ Birden çok ormanınız varsa ve kullanıcıları ormanlar ve etki alanları ara
 
 Kullanıcıları ormanlar ve etki alanları arasında taşırsanız, taşıma sırasında kullanıcılardan değişmez veya taşınabilecek bir öznitelik bulmanız gerekir. Önerilen bir yaklaşım yapay bir öznitelik oluşturmaktır. GUID gibi görünen bir şeyi tutan bir öznitelik uygun olacaktır. Nesne oluşturma sırasında kullanıcı üzerinde yeni bir GUID oluşturulur ve damgalı olur. Bu değeri **Objectguıd** öğesine göre oluşturmak ve Ekle ' de seçili özniteliği güncelleştirmek için, eşitleme altyapısı sunucusunda özel bir eşitleme kuralı oluşturulabilir. Nesneyi taşıdığınızda, bu değerin içeriğini de kopyalamadığınızdan emin olun.
 
-Başka bir çözüm, değişmediğini bildiğiniz mevcut bir özniteliği seçeceğdir. Yaygın olarak kullanılan öznitelikler **EmployeeID**içerir. Harf içeren bir özniteliği düşünüyorsanız, (büyük/küçük harf ve küçük harf) özniteliğin değeri için değişiklik yapabilme olanağı olmadığından emin olun. Kullanılması gereken hatalı öznitelikler kullanıcı adına sahip olan öznitelikleri içerir. Evlilik veya Divorce içinde, bu öznitelik için izin verilmeyen adın değiştirilmesi beklenir. Bu Ayrıca, **userPrincipalName**, **mail**ve **targetAddress** gibi özniteliklerin Azure AD Connect Yükleme sihirbazında seçim yapmak için de mümkün olmasa da bir neden olur. Bu özniteliklere Ayrıca, Sourcetutturucu\@içinde izin verilmeyen "" karakteri de bulunur.
+Başka bir çözüm, değişmediğini bildiğiniz mevcut bir özniteliği seçeceğdir. Yaygın olarak kullanılan öznitelikler **EmployeeID**içerir. Harf içeren bir özniteliği düşünüyorsanız, (büyük/küçük harf ve küçük harf) özniteliğin değeri için değişiklik yapabilme olanağı olmadığından emin olun. Kullanılması gereken hatalı öznitelikler kullanıcı adına sahip olan öznitelikleri içerir. Evlilik veya Divorce içinde, bu öznitelik için izin verilmeyen adın değiştirilmesi beklenir. Bu Ayrıca, **userPrincipalName**, **mail**ve **targetAddress** gibi özniteliklerin Azure AD Connect Yükleme sihirbazında seçim yapmak için de mümkün olmasa da bir neden olur. Bu özniteliklere Ayrıca \@ , Sourcetutturucu içinde izin verilmeyen "" karakteri de bulunur.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Sourcetutturucu özniteliğini değiştirme
 Sourcetutturucu öznitelik değeri, nesne Azure AD 'de oluşturulduktan ve kimlik eşitlendikten sonra değiştirilemez.
@@ -119,7 +119,7 @@ Express yüklemesi tamamlandıktan sonra sihirbaz, kaynak bağlantısı öznitel
 
 ![Özel yükleme-Sourcetutturucu yapılandırması](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| Ayar | Açıklama |
+| Ayar | Description |
 | --- | --- |
 | Kaynak bağlantısını benim için Azure yönetsin | Azure AD’nin sizin için özniteliği seçmesini istiyorsanız bu seçeneği belirleyin. Bu seçeneği belirlerseniz, Azure AD Connect Sihirbazı [hızlı yükleme sırasında kullanılan Sourcetutturucu öznitelik seçim mantığını](#express-installation)uygular. Hızlı yüklemeye benzer şekilde, sihirbaz özel yükleme tamamlandıktan sonra kaynak bağlantısı özniteliği olarak hangi özniteliğin çekilileceğini bildirir. |
 | Belirli bir öznitelik | SourceAnchor özniteliği olarak mevcut bir AD özniteliğini belirtmek istiyorsanız bu seçeneği belirleyin. |
@@ -180,7 +180,7 @@ Azure AD Connect, bu GUID özelliğini etkin olarak dağıttığınızı ve şim
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>UserPrincipalName özniteliği seçiliyor
 Azure 'da kullanılmak üzere UPN değerinin sağlanması için özniteliği seçerken şunlardan emin olunması gerekir
 
-* Öznitelik değerleri UPN söz dizimine (RFC 822) uygundur, bu, Kullanıcı adı\@biçiminde olmalıdır.
+* Öznitelik değerleri UPN söz dizimine (RFC 822) uygundur, bu, Kullanıcı adı biçiminde olmalıdır. \@
 * Değer içindeki sonek, Azure AD 'de doğrulanmış özel etki alanlarından biriyle eşleşiyor
 
 Hızlı Ayarlar ' da öznitelik için kabul edilen seçenek userPrincipalName ' dir. UserPrincipalName özniteliği kullanıcılarınızın Azure 'da oturum açmasını istediğiniz değeri içermiyorsa, **özel yükleme**' yi seçmeniz gerekir.
@@ -188,7 +188,7 @@ Hızlı Ayarlar ' da öznitelik için kabul edilen seçenek userPrincipalName ' 
 ### <a name="custom-domain-state-and-upn"></a>Özel etki alanı durumu ve UPN
 UPN soneki için doğrulanmış bir etki alanı olduğundan emin olmak önemlidir.
 
-John, contoso.com 'deki bir kullanıcı. Kullanıcıları Azure AD Directory contoso.onmicrosoft.com ile eşitledikten sonra Azure 'da\@oturum açmak için John 'ın ŞIRKET içi UPN John contoso.com kullanmasını istiyorsunuz. Bunu yapmak için, kullanıcıları eşitlemeye başlayabilmeniz için önce Azure AD 'de özel etki alanı olarak contoso.com eklemeniz ve doğrulamanız gerekir. John 'un UPN soneki, örneğin contoso.com, Azure AD 'de doğrulanmış bir etki alanıyla eşleşmezse Azure AD, UPN sonekini contoso.onmicrosoft.com ile değiştirir.
+John, contoso.com 'deki bir kullanıcı. \@Kullanıcıları Azure AD directory contoso.onmicrosoft.com ile eşitledikten sonra Azure 'da oturum açmak Için John 'ın şirket ıçı UPN john contoso.com kullanmasını istiyorsunuz. Bunu yapmak için, kullanıcıları eşitlemeye başlayabilmeniz için önce Azure AD 'de özel etki alanı olarak contoso.com eklemeniz ve doğrulamanız gerekir. John 'un UPN soneki, örneğin contoso.com, Azure AD 'de doğrulanmış bir etki alanıyla eşleşmezse Azure AD, UPN sonekini contoso.onmicrosoft.com ile değiştirir.
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Azure AD için yönlendirilebilir olmayan şirket içi etki alanları ve UPN
 Bazı kuruluşların contoso. Local gibi yönlendirilebilir olmayan etki alanları ya da contoso gibi basit tek etiketli etki alanları vardır. Azure AD 'de yönlendirilemeyen bir etki alanını doğrulayameyebilirsiniz. Azure AD Connect, Azure AD 'de yalnızca doğrulanmış bir etki alanıyla eşitlenebilir. Bir Azure AD dizini oluşturduğunuzda, Azure AD 'niz için varsayılan etki alanı haline gelen bir yönlendirilebilir etki alanı oluşturur. Örneğin, contoso.onmicrosoft.com. Bu nedenle, varsayılan onmicrosoft.com etki alanına eşitlemek istemediğiniz durumlarda böyle bir senaryoda, diğer yönlendirilebilir etki alanını doğrulamak gerekli hale gelir.

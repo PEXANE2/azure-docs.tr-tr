@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250627"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698521"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -85,14 +85,14 @@ Desteklenen tüm korumalı yapılandırma parametreleri aşağıda verilmiştir:
 ## <a name="scenarios"></a>Senaryolar
 
 ### <a name="register-an-azure-automation-account"></a>Azure Otomasyonu hesabı kaydetme
-Protected. JSON
+Üzerinde protected.js
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-public. JSON
+Üzerinde public.js
 ```json
 {
   "ExtensionAction" : "Register",
@@ -121,7 +121,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>SANAL makineye bir MOF yapılandırma dosyası (Azure Storage hesabında) uygulama
 
-Protected. JSON
+Üzerinde protected.js
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -129,7 +129,7 @@ Protected. JSON
 }
 ```
 
-public. JSON
+Üzerinde public.js
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -153,7 +153,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>SANAL makineye bir MOF yapılandırma dosyası (ortak depolamada) uygulama
 
-public. JSON
+Üzerinde public.js
 ```json
 {
   "FileUri": "<mof-file-uri>"
@@ -169,7 +169,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>VM 'ye bir meta MOF yapılandırma dosyası (bir Azure depolama hesabında) uygulama
 
-Protected. JSON
+Üzerinde protected.js
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -177,7 +177,7 @@ Protected. JSON
 }
 ```
 
-public. JSON
+Üzerinde public.js
 ```json
 {
   "ExtensionAction": "Pull",
@@ -199,7 +199,7 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>VM 'ye bir meta MOF yapılandırma dosyası (genel depolamada) uygulama
-public. JSON
+Üzerinde public.js
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
@@ -215,14 +215,14 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>VM 'ye özel bir kaynak modülü (bir Azure depolama hesabına ZIP dosyası) yüklemek
-Protected. JSON
+Üzerinde protected.js
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-public. JSON
+Üzerinde public.js
 ```json
 {
   "ExtensionAction": "Install",
@@ -244,7 +244,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>VM 'ye özel bir kaynak modülü (ortak depolamaya bir ZIP dosyası) yüklemek
-public. JSON
+Üzerinde public.js
 ```json
 {
   "ExtensionAction": "Install",
@@ -260,7 +260,7 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Özel bir kaynak modülünü VM 'den kaldırma
-public. JSON
+Üzerinde public.js
 ```json
 {
   "ResourceName": "<resource-name>",
@@ -287,7 +287,7 @@ Azure Resource Manager şablonu hakkında daha fazla bilgi için bkz. [yazma Azu
 ## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 
 ### <a name="use-azure-cliazure-cli"></a>[Azure CLı] [Azure-CLI] kullanın
-DSCForLinux uzantısını dağıtmadan önce, Bölüm 3 ' teki `public.json` farklı `protected.json` senaryolara göre ve ' yi yapılandırın.
+DSCForLinux uzantısını dağıtmadan önce, `public.json` `protected.json` Bölüm 3 ' teki farklı senaryolara göre ve ' yi yapılandırın.
 
 #### <a name="classic"></a>Klasik
 

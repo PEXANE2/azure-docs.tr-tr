@@ -5,16 +5,16 @@ services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f4919bb6856703c5bb5f1c798a8bcf5b2a108cc7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747662"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206521"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) içinde dış tablolar oluşturma ve kullanma
 
@@ -63,7 +63,7 @@ Bu makaledeki sorgular, örnek veritabanınızda yürütülecektir ve bu nesnele
 
 Azure depolama hesabındaki verilere erişen, Azure AD kimlik veya SAS anahtarı olan kullanıcılara erişim sağlayan dış tablolar oluşturabilirsiniz. Dış tabloları, normal SQL Server dış tablolar oluşturduğunuz şekilde oluşturabilirsiniz. 
 
-Aşağıdaki sorgu, veri kaynağı kullanılarak başvurulan ve çağrılan veritabanı kapsamlı kimlik bilgileriyle korunan SynapseSQL demo Azure Storage hesabından *popülasyon. csv* dosyasını okuyan bir dış tablo oluşturur `sqlondemanddemo` `sqlondemand` . 
+Aşağıdaki sorgu, veri kaynağı kullanılarak başvurulan *population.csv* `sqlondemanddemo` ve çağrılan veritabanı kapsamlı kimlik bilgileriyle korunan SynapseSQL demo Azure depolama hesabındanpopulation.csvdosyayı okuyan bir dış tablo oluşturur `sqlondemand` . 
 
 Veri kaynağı ve veritabanı kapsamlı kimlik bilgileri [Kurulum komut](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)dosyasında oluşturulur.
 

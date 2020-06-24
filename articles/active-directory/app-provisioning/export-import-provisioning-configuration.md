@@ -2,20 +2,20 @@
 title: Sağlama yapılandırmasını dışarı aktarın ve olağanüstü durum kurtarma için bilinen iyi duruma geri alın
 description: Sağlama yapılandırmanızı dışarı aktarmayı ve olağanüstü durum kurtarma için bilinen iyi duruma geri almayı öğrenin.
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
-ms.author: chmutali
-ms.openlocfilehash: acc14cf9fc544a15dfb9ac4ffd74e5ed0ac56108
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: kenwith
+ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593769"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781731"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Nasıl yapılır: sağlama yapılandırmasını dışarı aktarma ve bilinen iyi bir duruma geri alma
 
@@ -97,7 +97,7 @@ Microsoft Graph Gezgini 'nde, aşağıdaki PUT sorgusunu, [Serviceprincipalıd] 
 
 "Istek gövdesi" sekmesinde, JSON Şema dosyasının içeriğini kopyalayın.
 
-   [![İstek gövdesi](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
+   [![İstek Gövdesi](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
 
 "Istek üstbilgileri" sekmesinde, Içerik türü üst bilgi özniteliğini "Application/JSON" değeriyle ekleyin
 

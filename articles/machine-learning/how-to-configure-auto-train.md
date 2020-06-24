@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 06889f3df0200535e9b011fd87378e6f7803e668
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6759f7769d106e9adca5fcd01a454195a758634f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552297"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204476"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -58,12 +58,10 @@ Sınıflandırma | Regresyon | Zaman Serileri Tahmini
 [Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Rastgele orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Son derece rastgele ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN doğrusal sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Doğrusal gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Doğrusal gerileme](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Hızlı doğrusal gerileme sor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Otomatik ARıMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Stochastic gradyan (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Çevrimiçi gradyan açıklama gerileme](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
-|[Ortalama Perceptron sınıflandırıcı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||Forekaletcn
-|[Doğrusal SVM Sınıflandırıcısı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
+[Ortalama Perceptron sınıflandırıcı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)|[Çevrimiçi gradyan açıklama gerileme](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest) |[Otomatik ARıMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* ||[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Stochastic gradyan (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||Forekaletcn
+|[Doğrusal SVM Sınıflandırıcısı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)*||
 
 `task` `AutoMLConfig` Deneme türünü belirtmek için oluşturucuda parametresini kullanın.
 
@@ -117,13 +115,14 @@ Uzaktan yürütmeler için eğitim verilerine uzaktan işlem üzerinden erişile
 
 ## <a name="train-and-validation-data"></a>Eğitim ve doğrulama verileri
 
-Doğrudan oluşturucuda ayrı tren ve doğrulama kümeleri belirtebilirsiniz `AutoMLConfig` .
+Aşağıdaki seçeneklerle doğrudan oluşturucuda ayrı tren ve doğrulama kümeleri belirtebilirsiniz `AutoMLConfig` . [Data bölmelerini yapılandırma ve](how-to-configure-cross-validation-data-splits.md) oto ml denemeleri için çapraz doğrulama hakkında daha fazla bilgi edinin. 
 
 ### <a name="k-folds-cross-validation"></a>K-Fold çapraz doğrulama
 
 `n_cross_validations`Çapraz doğrulama sayısını belirtmek için ayarı kullanın. Eğitim veri kümesi rastgele `n_cross_validations` eşit büyüklükte katlara bölünecektir. Her bir çapraz doğrulama işleminde, katların biri, kalan katlara eğitilen modelin doğrulanması için kullanılacaktır. Bu işlem `n_cross_validations` , her katlama, doğrulama kümesi olarak bir kez kullanılıncaya kadar yuvarlanır. Tüm yuvarlamalar arasındaki ortalama puanlar `n_cross_validations` raporlanır ve ilgili model tüm eğitim verileri kümesinde yeniden alınacaktır.
 
 Oto [içi modelleri engellemek](concept-manage-ml-pitfalls.md#prevent-over-fitting)için, oto ml 'nin çapraz doğrulamayı nasıl uyguladığı hakkında daha fazla bilgi edinin.
+
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo çapraz doğrulama (yinelenen rastgele alt örnekleme)
 
 `validation_size`Doğrulama için kullanılması gereken eğitim veri kümesinin yüzdesini belirtmek için kullanın ve `n_cross_validations` çapraz doğrulama sayısını belirtmek için kullanın. Her çapraz doğrulama işleminde, `validation_size` kalan veriler üzerinde eğitilen modelin doğrulanması için bir boyut alt kümesi rastgele seçilir. Son olarak, tüm yuvarlamalar genelinde ortalama puanlar `n_cross_validations` raporlanır ve ilgili model tüm eğitim verileri kümesine geri alınacaktır. Monte Carlo, zaman serisi tahmin için desteklenmez.
@@ -425,7 +424,7 @@ Daha fazlasını anlamak için, bu 2 API 'Leri, monte edilecek modelin ilk adım
 
    Konumlar:
 
-   |Çıktı|Tanım|
+   |Çıkış|Tanım|
    |----|--------|
    |RawFeatureName|Girilen veri kümesindeki giriş özelliği/sütun adı.|
    |Typedetesiyonu|Giriş özelliğinin veri türü algılandı.|
@@ -511,6 +510,9 @@ Model yorumlamalar, modellerinizin tahmin yaptığını ve temel alınan özelli
 Özellikle otomatik makine öğrenimi ['nin içindeki](how-to-machine-learning-interpretability-automl.md) yorumlu özelliklerin nasıl etkinleştirileceği hakkında kod örneklerine bakın.
 
 Model açıklamalarının ve özelliklerinin önem derecesine ilişkin genel bilgiler için otomatik makine öğrenimi dışında SDK 'nın diğer alanlarında nasıl etkinleştirilecekleri hakkında genel bilgi edinmek için bkz. yorumda bulunan [kavram](how-to-machine-learning-interpretability.md) makalesi.
+
+> [!NOTE]
+> Forekaletcn modeli şu anda açıklama Istemcisi tarafından desteklenmiyor. Bu model, en iyi model olarak döndürülürse bir açıklama panosu döndürmez ve isteğe bağlı açıklama çalıştırmalarını desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
