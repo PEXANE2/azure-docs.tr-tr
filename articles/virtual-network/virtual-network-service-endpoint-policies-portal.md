@@ -7,23 +7,23 @@ documentationcenter: virtual-network
 author: RDhillon
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77651271"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708187"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portal kullanarak hizmet uç noktası ilkesi oluşturma, değiştirme veya silme
 
 Hizmet uç noktası ilkeleri, sanal ağ trafiğini hizmet uç noktaları üzerinden belirli Azure kaynaklarına filtrelemenizi sağlar. Hizmet uç noktası ilkelerine alışkın değilseniz, daha fazla bilgi edinmek için [hizmet uç noktası ilkelerine genel bakış](virtual-network-service-endpoint-policies-overview.md) bölümüne bakın.
 
- Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Hizmet uç noktası ilkesi oluşturma

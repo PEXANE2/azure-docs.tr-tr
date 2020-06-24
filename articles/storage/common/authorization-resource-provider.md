@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e93343708ce8a89e9c6e8f57c6cebb198578e325
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972358"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805669"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Yönetim kaynaklarına erişmek için Azure depolama kaynak sağlayıcısını kullanma
 
@@ -44,7 +44,7 @@ Azure, arama yönetimi işlemlerine izin veren yerleşik roller sağlar. Azure d
 
 Depolama yönetimi işlemlerini çağırma izinleri veren yerleşik roller, aşağıdaki tabloda açıklanan rolleri içerir:
 
-|    RBAC rolü    |    Açıklama    |    Hesap anahtarlarına erişim de dahil edilsin mi?    |
+|    RBAC rolü    |    Description    |    Hesap anahtarlarına erişim de dahil edilsin mi?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Sahibi** | , Tüm depolama kaynaklarını yönetebilir ve kaynaklara erişebilir.  | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |
 | **Katkıda Bulunan**  | Tüm depolama kaynaklarını yönetebilir, ancak kaynaklara ata 'yı yönetemez. | Evet, depolama hesabı anahtarlarını görüntülemek ve yeniden oluşturmak için izinler sağlar. |

@@ -5,15 +5,15 @@ description: Bu makale, Azure Application Gateway oturum benzeşimi sorunların�
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5acf4ac1ec75d5cec057e4b66e3c6cbd8a463271
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202545"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808024"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway oturum benzeşimi sorunlarını giderme
 
@@ -97,7 +97,7 @@ Bu sorun, Internet Explorer ve diğer tarayıcıların tanımlama bilgisini kıs
 
 #### <a name="resolution"></a>Çözüm
 
-Bu sorunu gidermek için Application Gateway'e FQDN kullanarak erişmeniz gerekir. Örneğin, veya [http://appgw.website.com](http://website.com/) kullanın [http://website.com](https://website.com/) .
+Bu sorunu gidermek için Application Gateway'e FQDN kullanarak erişmeniz gerekir. Örneğin, veya kullanın [http://website.com](https://website.com/) [http://appgw.website.com](http://website.com/) .
 
 ## <a name="additional-logs-to-troubleshoot"></a>Sorun gidermek için ek Günlükler
 
@@ -161,7 +161,7 @@ Fiddler gibi Web hata ayıklama araçları, Internet ve test bilgisayarları ara
 
 Seçtiğiniz Web hata ayıklayıcıyı kullanın. Bu örnekte, Fiddler 'ı kullanarak http veya https traffics yakalayın ve analiz edeceğiz, yönergeleri izleyin:
 
-1. Konumundaki <https://www.telerik.com/download/fiddler>Fiddler aracını indirin.
+1. Konumundaki Fiddler aracını indirin <https://www.telerik.com/download/fiddler> .
 
     > [!NOTE]
     > Yakalama bilgisayarında .NET 4 yüklüyse Fiddler4 öğesini seçin. Aksi takdirde Fiddler2 öğesini seçin.
@@ -174,7 +174,7 @@ Seçtiğiniz Web hata ayıklayıcıyı kullanın. Bu örnekte, Fiddler 'ı kulla
 
     ![sorun giderme-oturum benzeşimi-sorunlar-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. Büyük olasılıkla, şifresi çözülmüş https trafiğiyle ilgilenirsiniz ve **Araçlar** > **Fiddler seçeneklerini**belirleyerek https şifre çözmeyi etkinleştirebilir ve " **https trafiğinin şifresini çöz**" kutusunu işaretleyin.
+4. Büyük olasılıkla, şifresi çözülmüş https trafiğiyle ilgilenirsiniz ve **Araçlar**  >  **Fiddler seçeneklerini**belirleyerek https şifre çözmeyi etkinleştirebilir ve " **https trafiğinin şifresini çöz**" kutusunu işaretleyin.
 
     ![sorun giderme-oturum benzeşimi-sorunlar-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
@@ -182,7 +182,7 @@ Seçtiğiniz Web hata ayıklayıcıyı kullanın. Bu örnekte, Fiddler 'ı kulla
 
     ![sorun giderme-oturum benzeşimi-sorunlar-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. Sorunu yeniden oluşturduktan sonra **Dosya** > **Save** > **tüm oturumları**Kaydet ' i seçerek dosyayı gözden geçirme için kaydedin... 
+6. Sorunu yeniden oluşturduktan sonra **Dosya**  >  **Save**  >  **tüm oturumları**Kaydet ' i seçerek dosyayı gözden geçirme için kaydedin... 
 
     ![sorun giderme-oturum benzeşimi-sorunlar-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 

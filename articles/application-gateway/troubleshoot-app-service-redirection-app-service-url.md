@@ -5,15 +5,15 @@ description: Bu makalede, Azure Application Gateway ile kullanıldığında yeni
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 961ed17bcef19b445c2546a557725bb6bd8653cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293531"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806488"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway App Service sorunlarını giderme
 
@@ -77,7 +77,7 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-Önceki örnekte, Yanıt üstbilgisinin yeniden yönlendirme için 301 durum koduna sahip olduğuna dikkat edin. Konum üst bilgisi, özgün ana bilgisayar adı `www.contoso.com`yerine App Service 'in ana bilgisayar adına sahiptir.
+Önceki örnekte, Yanıt üstbilgisinin yeniden yönlendirme için 301 durum koduna sahip olduğuna dikkat edin. Konum üst bilgisi, özgün ana bilgisayar adı yerine App Service 'in ana bilgisayar adına sahiptir `www.contoso.com` .
 
 ## <a name="solution-rewrite-the-location-header"></a>Çözüm: konum başlığını yeniden yazın
 
@@ -98,9 +98,9 @@ App Service artık uygulama ağ geçidine işaret eden aynı orijinal ana bilgis
 
     ![App Service özel etki alanı listesi](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- App Service, ana bilgisayar adını `www.contoso.com`kabul etmeye hazırlanıyor. DNS 'de CNAME girdinizi, uygulama ağ geçidinin FQDN 'sine (örneğin, `appgw.eastus.cloudapp.azure.com`) geri işaret etmek üzere değiştirin.
+- App Service, ana bilgisayar adını kabul etmeye hazırlanıyor `www.contoso.com` . DNS 'de CNAME girdinizi, uygulama ağ geçidinin FQDN 'sine (örneğin,) geri işaret etmek üzere değiştirin `appgw.eastus.cloudapp.azure.com` .
 
-- DNS sorgusu yaptığınızda etki alanının `www.contoso.com` uygulama ağ geçidinin FQDN 'sine çözümlendiğinden emin olun.
+- DNS sorgusu yaptığınızda etki alanının `www.contoso.com` uygulama ağ GEÇIDININ FQDN 'sine çözümlendiğinden emin olun.
 
 - Özel araştırmasını **arka uç http ayarlarından seçim ana bilgisayar adını**devre dışı bırakacak şekilde ayarlayın. Azure portal, araştırma ayarlarındaki onay kutusunun işaretini kaldırın. PowerShell 'de, **set-AzApplicationGatewayProbeConfig** komutunda **-pickhostnamefrombackendhttpsettings** anahtarını kullanmayın. Araştırmanın konak adı alanında App Service 'in FQDN 'SI olan example.azurewebsites.net girin. Application Gateway 'den gönderilen araştırma istekleri bu FQDN 'yi konak üstbilgisine taşır.
 
@@ -111,7 +111,7 @@ App Service artık uygulama ağ geçidine işaret eden aynı orijinal ana bilgis
 
 - Özel araştırmayı arka uç HTTP ayarlarına geri ilişkilendirin ve arka ucun sağlıklı olduğunu doğrulayın.
 
-- Uygulama ağ geçidi artık aynı ana bilgisayar adını `www.contoso.com`App Service 'e iletmelidir. Yeniden yönlendirme aynı ana bilgisayar adı üzerinde gerçekleşir. Aşağıdaki örnek istek ve yanıt üst bilgilerini denetleyin.
+- Uygulama ağ geçidi artık aynı ana bilgisayar adını `www.contoso.com` App Service 'e iletmelidir. Yeniden yönlendirme aynı ana bilgisayar adı üzerinde gerçekleşir. Aşağıdaki örnek istek ve yanıt üst bilgilerini denetleyin.
 
 Mevcut bir kurulum için PowerShell 'i kullanarak önceki adımları uygulamak için aşağıdaki örnek PowerShell betiğini kullanın. Araştırma ve HTTP ayarları yapılandırmasındaki **-pickhostname** anahtarlarını nasıl kullandığımızda aklınızda olduğunu öğrenin.
 

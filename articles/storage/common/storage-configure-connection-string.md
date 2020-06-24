@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 681723ee9370f889ef86e6eae0878b148c17606b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 250fcdeb2f1e69f8d15ada3a6767e885672c3a53
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176371"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807569"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage bağlantı dizelerini yapılandırma
 
@@ -34,7 +34,7 @@ Hesap erişim anahtarlarınızı görüntüleme ve bir bağlantı dizesini kopya
 Azure depolama 'ya yapılan istekleri yetkilendirmek için uygulamanızın çalışma zamanında bağlantı dizesine erişmesi gerekir. Bağlantı dizenizi depolamak için çeşitli seçenekleriniz vardır:
 
 * Bağlantı dizenizi bir ortam değişkeninde saklayabilirsiniz.
-* Masaüstünde veya cihazda çalışan bir uygulama, bağlantı dizesini **app. config** veya **Web. config** dosyasında saklayabilir. Bağlantı dizesini bu dosyalardaki **appSettings** bölümüne ekleyin.
+* Masaüstünde veya cihazda çalışan bir uygulama, bağlantı dizesini bir **app.config** veya **web.config** dosyasında saklayabilir. Bağlantı dizesini bu dosyalardaki **appSettings** bölümüne ekleyin.
 * Azure bulut hizmetinde çalışan bir uygulama, bağlantı dizesini [Azure hizmet yapılandırma şeması (. cscfg) dosyasında](https://msdn.microsoft.com/library/ee758710.aspx)saklayabilir. Bağlantı dizesini hizmet yapılandırma dosyasının **ConfigurationSettings** bölümüne ekleyin.
 
 Bağlantı dizenizi bir yapılandırma dosyasında depolamak, depolama öykünücüsü ile buluttaki bir Azure depolama hesabı arasında geçiş yapmak için bağlantı dizesini güncelleştirmeyi kolaylaştırır. Yalnızca hedef ortamınıza işaret etmek için bağlantı dizesini düzenlemeniz gerekir.
@@ -49,7 +49,7 @@ Depolama öykünücüsü hakkında daha fazla bilgi için bkz. [geliştirme ve t
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Azure depolama hesabı için bağlantı dizesi yapılandırma
 
-Azure depolama hesabınız için bir bağlantı dizesi oluşturmak için aşağıdaki biçimi kullanın. HTTPS (önerilen) veya HTTP üzerinden depolama hesabına bağlanmak isteyip istemediğinizi belirtin, depolama hesabınızın adıyla değiştirin `myAccountName` ve öğesini hesap erişim anahtarınızla değiştirin: `myAccountKey`
+Azure depolama hesabınız için bir bağlantı dizesi oluşturmak için aşağıdaki biçimi kullanın. HTTPS (önerilen) veya HTTP üzerinden depolama hesabına bağlanmak isteyip istemediğinizi belirtin, `myAccountName` depolama hesabınızın adıyla değiştirin ve öğesini `myAccountKey` hesap erişim anahtarınızla değiştirin:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
 
@@ -60,7 +60,7 @@ Azure depolama hesabınız için bir bağlantı dizesi oluşturmak için aşağ�
 Azure Storage bir bağlantı dizesinde hem HTTP hem de HTTPS destekler, ancak *https kesinlikle önerilir*.
 
 > [!TIP]
-> Depolama hesabınızın bağlantı dizelerini [Azure Portal](https://portal.azure.com)bulabilirsiniz. Birincil ve ikincil erişim anahtarlarına yönelik bağlantı dizelerini görmek için, depolama hesabınızın menü dikey penceresindeki **Ayarlar** > **erişim anahtarlarına** gidin.
+> Depolama hesabınızın bağlantı dizelerini [Azure Portal](https://portal.azure.com)bulabilirsiniz. **SETTINGS**  >  Birincil ve ikincil erişim anahtarlarına yönelik bağlantı dizelerini görmek için, depolama hesabınızın menü dikey penceresindeki ayarlar**erişim anahtarlarına** gidin.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Paylaşılan erişim imzasını kullanarak bağlantı dizesi oluşturma
@@ -111,12 +111,12 @@ Bir bağlantı dizesindeki uç nokta değerleri, depolama hizmetlerine istek URI
 Bir depolama uç noktasını özel bir etki alanına eşleştirdiyseniz ve bu uç noktayı bir bağlantı dizesinden atlarsanız, bu bağlantı dizesini kodınızdan bu hizmette bulunan verilere erişmek için kullanamazsınız.
 
 > [!IMPORTANT]
-> Bağlantı dizelerinizdeki hizmet uç noktası değerlerinin (önerilir) veya `https://` `http://`dahil doğru biçimlendirilmiş URI 'ler olması gerekir. Azure Storage özel etki alanları için HTTPS 'yi desteklemediği için, özel bir *must* etki alanına `http://` işaret eden herhangi bir uç nokta URI 'si belirtmeniz gerekir.
+> Bağlantı dizelerinizdeki hizmet uç noktası değerlerinin `https://` (önerilir) veya dahil doğru biçimlendirilmiş URI 'ler olması gerekir `http://` . Azure Storage özel etki alanları için HTTPS 'yi desteklemediği için, *must* `http://` özel bir etki alanına işaret eden herhangi BIR uç nokta URI 'si belirtmeniz gerekir.
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Uç nokta sonekine sahip bir bağlantı dizesi oluşturma
 
-Azure Çin 21Vianet veya Azure Kamu gibi farklı uç nokta son eklerine sahip bölgelerde veya örneklerde bulunan bir depolama hizmeti için bağlantı dizesi oluşturmak için aşağıdaki bağlantı dizesi biçimini kullanın. HTTPS (önerilen) veya HTTP üzerinden depolama hesabına bağlanmak isteyip istemediğinizi belirtin, depolama hesabınızın adıyla değiştirin `myAccountName` , hesap erişim anahtarınızla DEĞIŞTIRIN `myAccountKey` ve URI sonekiyle değiştirin: `mySuffix`
+Azure Çin 21Vianet veya Azure Kamu gibi farklı uç nokta son eklerine sahip bölgelerde veya örneklerde bulunan bir depolama hizmeti için bağlantı dizesi oluşturmak için aşağıdaki bağlantı dizesi biçimini kullanın. HTTPS (önerilen) veya HTTP üzerinden depolama hesabına bağlanmak isteyip istemediğinizi belirtin, `myAccountName` depolama hesabınızın adıyla değiştirin, `myAccountKey` hesap erişim anahtarınızla DEĞIŞTIRIN ve `mySuffix` URI sonekiyle değiştirin:
 
 ```
 DefaultEndpointsProtocol=[http|https];

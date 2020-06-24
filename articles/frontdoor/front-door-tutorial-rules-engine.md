@@ -1,23 +1,23 @@
 ---
-title: Azure ön kapısı | Microsoft Docs
-description: Bu makalede Azure Front Door’a genel bir bakış sağlanır. Uygulamanız için Yük Dengeleme Kullanıcı trafiği için doğru seçim olup olmadığını öğrenin.
+title: Kural altyapısını Yapılandırma-Azure ön kapısından
+description: Bu makalede, Azure ön kapısının kural altyapılarınızın nasıl yapılandırılacağı açıklanmaktadır
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4574597c0b93f2985953bfbc815cca220ecc4f28
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ed54f26f37617d420fae1aaf3f51853b0439a349
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515604"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743567"
 ---
 # <a name="configure-your-rules-engine"></a>Kurallar altyapısını yapılandırma 
 
@@ -34,7 +34,7 @@ ms.locfileid: "82515604"
 
 3. İlk kuralınızı oluşturmak için **Kural Ekle** ' ye tıklayın. Ardından, **Koşul Ekle** veya **Eylem Ekle** ' ye tıklayarak kuralınızı tanımlayabilirsiniz. 
     
-    *Larını*
+    *Notlar:*
     - Kuraldan bir koşul veya eylem silmek için, belirli koşulun veya eylemin sağ tarafında çöp kutusu ' nu kullanın.
     - Tüm gelen trafiğe uygulanan bir kural oluşturmak için herhangi bir koşul belirtmeyin. 
     - İlk eşleşme koşulu karşılandığında kuralları değerlendirmeyi durdurmak için **kural değerlendirmeyi durdur**' u işaretleyin. 
@@ -45,7 +45,7 @@ ms.locfileid: "82515604"
 
 5. Bir veya daha fazla kural oluşturduktan sonra **Kaydet**' e basın. Bu eylem, kural altyapısı yapılandırmanızı oluşturur. 
 
-6. Bir veya daha fazla yapılandırma oluşturduktan sonra, bir kural altyapısı yapılandırmasını bir yol kuralıyla ilişkilendirin. Tek bir yapılandırma birçok yol kuralına uygulanamadığından, bir yol kuralında yalnızca bir kural Altyapısı yapılandırması bulunabilir. İlişkilendirmeyi yapmak için **ön kapılı tasarımcı** > **yol kurallarınızın**bölümüne gidin. Kural altyapısı yapılandırmasını eklemek istediğiniz yol kuralını seçin, **yol ayrıntıları** > **kuralları altyapı yapılandırması**' na gidin ve ilişkilendirmek istediğiniz yapılandırmayı seçin. 
+6. Bir veya daha fazla yapılandırma oluşturduktan sonra, bir kural altyapısı yapılandırmasını bir yol kuralıyla ilişkilendirin. Tek bir yapılandırma birçok yol kuralına uygulanamadığından, bir yol kuralında yalnızca bir kural Altyapısı yapılandırması bulunabilir. İlişkilendirmeyi yapmak için **ön kapılı tasarımcı**  >  **yol kurallarınızın**bölümüne gidin. Kural altyapısı yapılandırmasını eklemek istediğiniz yol kuralını seçin, **yol ayrıntıları**  >  **kuralları altyapı yapılandırması**' na gidin ve ilişkilendirmek istediğiniz yapılandırmayı seçin. 
 
 ![kural altyapısını bul](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 

@@ -9,15 +9,15 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 962c884eb8adc05e5d50b6b254d5c3f0b18af556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471515"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743584"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Yaygın yönlendirme sorunlarını giderme
 
@@ -39,7 +39,7 @@ Bu belirti, arka ucunuz ön kapıdan gelen isteği almak için zaman aşımı ya
 
 - İsteği doğrudan arka ucunuza gönderin (ön kapıya geçmeden) ve arka ucunuzun yanıt vermesi için ne kadar zaman aldığını öğrenin.
 - İsteği ön kapıdan gönderin ve 503 yanıt görüyor olup olmadığını görün. Aksi takdirde, bu bir zaman aşımı sorunu olmayabilir. Lütfen desteğe başvurun.
-- Ön kapıdan ilerleyip 503 hata yanıt kodu ile sonuçlanırsa, ön kapasitenizin sendReceiveTimeout alanını, varsayılan zaman aşımını 4 dakikaya (240 saniye) kadar uzatmak üzere yapılandırın. Ayarı öğesinin altında bulunur `backendPoolSettings` ve çağrılır. `sendRecvTimeoutSeconds` 
+- Ön kapıdan ilerleyip 503 hata yanıt kodu ile sonuçlanırsa, ön kapasitenizin sendReceiveTimeout alanını, varsayılan zaman aşımını 4 dakikaya (240 saniye) kadar uzatmak üzere yapılandırın. Ayarı öğesinin altında bulunur `backendPoolSettings` ve çağrılır `sendRecvTimeoutSeconds` . 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>Özel etki alanına gönderilen istekler 400 durum kodunu döndürür
 

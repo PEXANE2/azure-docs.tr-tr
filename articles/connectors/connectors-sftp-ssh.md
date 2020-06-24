@@ -6,18 +6,27 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
+ms.date: 06/17/2020
 tags: connectors
-ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927454"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807743"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
-[Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokolünü kullanarak [güvenli bir Dosya Aktarım Protokolü (SFTP)](https://www.ssh.com/ssh/sftp/) sunucusunda dosyaları izleyen, oluşturan, gönderen ve alan görevleri otomatik hale getirmek için Azure Logic Apps ve SFTP-SSH bağlayıcısını kullanarak tümleştirme iş akışları oluşturabilir ve otomatikleştirebilirsiniz. SFTP, herhangi bir güvenilir veri akışı üzerinde dosya erişimi, dosya aktarımı ve dosya yönetimi sağlayan bir ağ protokolüdür. Otomatikleştirebileceğiniz bazı örnek görevler şunlardır:
+[Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokolünü kullanarak [güvenli bir Dosya Aktarım Protokolü (SFTP)](https://www.ssh.com/ssh/sftp/) sunucusunda dosyaları izleyen, oluşturan, gönderen ve alan görevleri otomatik hale getirmek için Azure Logic Apps ve SFTP-SSH bağlayıcısını kullanarak tümleştirme iş akışları oluşturabilir ve otomatikleştirebilirsiniz. SFTP, herhangi bir güvenilir veri akışı üzerinde dosya erişimi, dosya aktarımı ve dosya yönetimi sağlayan bir ağ protokolüdür.
+
+> [!NOTE]
+> SFTP-SSH Bağlayıcısı Şu anda bu SFTP sunucularını desteklememektedir:
+> 
+> * IBM veri gücü
+> * OpenText güvenli MFT
+> * OpenText GXS
+
+Otomatikleştirebileceğiniz bazı örnek görevler şunlardır:
 
 * Dosya eklendiğinde veya değiştirildiğinde izleyin.
 * Dosyaları alın, oluşturun, kopyalayın, yeniden adlandırın, güncelleştirin, listeleyin ve silin.
@@ -42,7 +51,7 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
 
   | Eylem | Öbek oluşturma desteği | Öbek boyutu desteğini geçersiz kıl |
   |--------|------------------|-----------------------------|
-  | **Dosyayı Kopyala** | No | Uygulanamaz |
+  | **Dosyayı Kopyala** | Hayır | Geçerli değil |
   | **Dosya oluştur** | Yes | Yes |
   | **Klasör oluştur** | Uygulanamaz | Uygulanamaz |
   | **Dosyayı Sil** | Uygulanamaz | Uygulanamaz |
@@ -53,7 +62,7 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
   | **Klasördeki dosyaları Listele** | Uygulanamaz | Uygulanamaz |
   | **Dosyayı yeniden adlandır** | Uygulanamaz | Uygulanamaz |
-  | **Güncelleştirme dosyası** | No | Uygulanamaz |
+  | **Güncelleştirme dosyası** | Hayır | Geçerli değil |
   ||||
 
 * SFTP-SSH Tetikleyicileri ileti parçalama desteği vermez. Dosya içeriği istenirken Tetikleyiciler yalnızca 15 MB veya daha küçük olan dosyaları seçer. 15 MB 'tan büyük dosyaları almak için, bunun yerine şu modele uyun:
@@ -105,8 +114,8 @@ SFTP-SSH Tetikleyicileri SFTP dosya sistemini yoklayarak ve Son yoklamadan bu ya
 
 | SFTP istemcisi | Eylem |
 |-------------|--------|
-| WinSCP | **Seçenekler** > **Tercihler** > **Edit****Transfer** > **Disable** **Preserve timestamp**aktarım düzenleme > zaman damgası devre dışı bırak ' a gidin >  |
-| FileZilla | **Aktarım** > ' a > git**aktarılan dosyaların zaman damgalarını koru****devre dışı bırak** |
+| WinSCP | **Seçenekler**  >  **Tercihler**  >  **Aktarım**  >  **düzenleme**  >  **zaman damgası**  >  **devre dışı bırak** ' a gidin |
+| FileZilla | **Aktarım**' a git  >  **aktarılan dosyaların zaman damgalarını koru**  >  **devre dışı bırak** |
 |||
 
 Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
@@ -133,7 +142,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 ### <a name="windows-os"></a>Windows İşletim Sistemi
 
-1. Daha önce yapmadıysanız, [en son PuTTY Oluşturucu (PuTTYgen. exe) aracını indirin](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)ve ardından aracı başlatın.
+1. Henüz yapmadıysanız, [en son PuTTY Oluşturucu (puttygen.exe) aracını indirin](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)ve ardından aracı başlatın.
 
 1. Bu ekranda **Yükle**' yi seçin.
 
@@ -155,7 +164,7 @@ Bu bölümde, bu bağlayıcının Tetikleyiciler ve eylemleri için gözden geç
 
 ### <a name="create-file"></a>Dosya oluştur
 
-SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemini kullanabilirsiniz. Bu eylem dosyayı oluşturduğunda, Logic Apps hizmeti Ayrıca, dosyanın meta verilerini almak için SFTP sunucunuzu otomatik olarak çağırır. Ancak, Logic Apps hizmeti meta verileri almak için çağrı yapmadan önce yeni oluşturulan dosyayı taşırsanız, bir `404` hata iletisi alırsınız. `'A reference was made to a file or folder which does not exist'` Dosya oluşturulduktan sonra dosyanın meta verilerini okumayı atlamak için, [ **tüm dosya meta verilerini al** özelliğini **Hayır**olarak eklemek ve ayarlamak](#file-does-not-exist)için adımları izleyin.
+SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemini kullanabilirsiniz. Bu eylem dosyayı oluşturduğunda, Logic Apps hizmeti Ayrıca, dosyanın meta verilerini almak için SFTP sunucunuzu otomatik olarak çağırır. Ancak, Logic Apps hizmeti meta verileri almak için çağrı yapmadan önce yeni oluşturulan dosyayı taşırsanız, bir `404` hata iletisi alırsınız `'A reference was made to a file or folder which does not exist'` . Dosya oluşturulduktan sonra dosyanın meta verilerini okumayı atlamak için, [ **tüm dosya meta verilerini al** özelliğini **Hayır**olarak eklemek ve ayarlamak](#file-does-not-exist)için adımları izleyin.
 
 <a name="connect"></a>
 
@@ -165,13 +174,13 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş Logic Apps için, arama kutusuna filtreniz olarak girin `sftp ssh` . Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin.
+1. Boş Logic Apps için, arama kutusuna `sftp ssh` filtreniz olarak girin. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin.
 
    -veya-
 
-   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak yazın `sftp ssh` . Eylemler listesi altında istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna `sftp ssh` filtreniz olarak yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Bağlantınız için gerekli ayrıntıları sağlayın.
 
@@ -179,13 +188,13 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
    >
    > **SSH özel anahtar ÖZELLIĞINDE SSH** özel anahtarınızı girdiğinizde, bu özellik için tüm ve doğru değeri sağladığınızdan emin olmanıza yardımcı olan bu ek adımları izleyin. Geçersiz bir anahtar bağlantının başarısız olmasına neden olur.
 
-   Herhangi bir metin düzenleyicisini kullanabilseniz de, örnek olarak Notepad. exe ' yi kullanarak anahtarınızın doğru şekilde kopyalanıp yapıştırılacağını gösteren örnek adımlar aşağıda verilmiştir.
+   Herhangi bir metin düzenleyicisini kullanabilseniz de, bir örnek olarak Notepad.exe kullanarak anahtarınızı doğru şekilde kopyalamayı ve yapıştırmayı gösteren örnek adımlar aşağıda verilmiştir.
 
    1. SSH özel anahtar dosyanızı bir metin düzenleyicisinde açın. Bu adımlar örnek olarak not defteri 'Ni kullanır.
 
    1. Not defteri **düzenleme** menüsünde **Tümünü Seç**' i seçin.
 
-   1. Kopyayı **Düzenle** > **Copy**' yi seçin.
+   1. Kopyayı **Düzenle**' yi seçin  >  **Copy**.
 
    1. Eklediğiniz SFTP-SSH tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *tam* anahtarı yapıştırın.  Anahtarı ***yapıştırdığınızdan emin olun*** . ***Anahtarı el ile girmeyin veya düzenleyemezsiniz***.
 
@@ -203,7 +212,7 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
 
    ![SFTP-SSH ayarlarını aç](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. **Içerik aktarımı**altında, **öbek boyutu** özelliğinde, için `5` `50`' den bir tamsayı değeri girin, örneğin: 
+1. **Içerik aktarımı**altında, **öbek boyutu** özelliğinde, için ' den bir tamsayı değeri girin `5` `50` , örneğin: 
 
    ![Bunun yerine kullanılacak öbek boyutunu belirtin](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
@@ -235,7 +244,7 @@ Bu bölümde, yaygın hataların veya sorunların olası çözümleri açıklanm
 
 ### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 hatası: "varolmayan bir dosya veya klasör için bir başvuru yapıldı"
 
-Bu hata, mantıksal uygulamanız SFTP-SSH **dosya oluştur** eylemi aracılığıyla SFTP sunucunuzda yeni bir dosya oluşturduğunda meydana gelir, ancak yeni oluşturulan dosya daha sonra Logic Apps hizmeti dosyanın meta verilerini alabilmek için hemen taşınır. Mantıksal uygulamanız **dosya oluştur** eylemini çalıştırdığında, Logic Apps hizmeti, dosyanın meta verilerini almak için SFTP sunucunuzu da otomatik olarak çağırır. Bununla birlikte, dosya taşınırsa, `404` hata iletisini almak için Logic Apps hizmeti artık dosyayı bulamıyor olabilir.
+Bu hata, mantıksal uygulamanız SFTP-SSH **dosya oluştur** eylemi aracılığıyla SFTP sunucunuzda yeni bir dosya oluşturduğunda meydana gelir, ancak yeni oluşturulan dosya daha sonra Logic Apps hizmeti dosyanın meta verilerini alabilmek için hemen taşınır. Mantıksal uygulamanız **dosya oluştur** eylemini çalıştırdığında, Logic Apps hizmeti, dosyanın meta verilerini almak için SFTP sunucunuzu da otomatik olarak çağırır. Bununla birlikte, dosya taşınırsa, hata iletisini almak için Logic Apps hizmeti artık dosyayı bulamıyor olabilir `404` .
 
 Dosyanın taşınmasını önlemek veya bu işlemleri ertelerseniz, aşağıdaki adımları izleyerek Dosya oluşturulduktan sonra dosyanın meta verilerini okumayı atlayabilirsiniz:
 

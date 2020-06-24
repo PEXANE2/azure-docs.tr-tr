@@ -4,15 +4,15 @@ description: Azure dosya paylaşımını Windows ve Windows Server ile kullanmay
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4fef6102ac2ee69926c1c56af338b6e92670dd71
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 014b980470ee8d0a25df2d6c10f9aa37270d83ab
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773109"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214352"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları, Windows ve Windows Server’da sorunsuz bir şekilde kullanılabilir. Bu makalede Azure dosya paylaşımını Windows ve Windows Server ile kullanma konusunda dikkat edilmesi gerekenler anlatılmaktadır.
@@ -30,8 +30,8 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 | Windows 8.1 | SMB 3.0 | Yes | Yes |
 | Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
 | Windows Server 2012 | SMB 3.0 | Yes | Yes |
-| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Hayır |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Hayır |
+| Windows 7<sup>3</sup> | SMB 2.1 | Evet | Hayır |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Evet | Hayır |
 
 <sup>1</sup> Windows 10, sürüm 1507, 1607, 1709, 1803, 1809, 1903 ve 1909.  
 <sup>2</sup> Windows Server, sürüm 1809, 1903 ve 1909.  
@@ -41,41 +41,8 @@ Azure VM üzerinde veya şirket içinde çalışan bir Windows yüklemesinde Azu
 > Her zaman Windows sürümünüz için en yeni KB’yi almanızı öneririz.
 
 ## <a name="prerequisites"></a>Ön koşullar 
-* **Depolama hesabı adı**: Azure dosya paylaşımını bağlayabilmeniz için depolama hesabınızın adı gerekir.
 
-* **Depolama hesabı anahtarı**: Azure dosya paylaşımını bağlayabilmeniz için birincil (veya ikincil) depolama anahtarı gerekir. SAS anahtarları şu an bağlama için desteklenmemektedir.
-
-* **445 numaralı bağlantı noktasının açık olduğundan emin olun**: SMB protokolü için 445 numaralı TCP bağlantı noktasının açık olması gerekir. 445 numaralı bağlantı noktasının açık olmaması halinde bağlantı gerçekleştirilemez. `Test-NetConnection` cmdlet'ini kullanarak 445 numaralı bağlantı noktasının güvenlik duvarınız tarafından engellenip engellenmediğini görebilirsiniz. [Geçici çözüm 445 bağlantı noktası ' i engelleyen çeşitli yollar](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)hakkında bilgi edinebilirsiniz.
-
-    Aşağıdaki PowerShell kodunda Azure PowerShell modülünün yüklü olduğu varsayılır, daha fazla bilgi için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps) . `<your-storage-account-name>` ile `<your-resource-group-name>` yerine depolama hesabınızla ilgili bilgileri yazmayı unutmayın.
-
-    ```powershell
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
-
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-    ```
-
-    Bağlantı başarılı olursa şu çıktıyı görmeniz gerekir:
-
-    ```
-    ComputerName     : <storage-account-host-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
-    ```
-
-    > [!Note]  
-    > Yukarıdaki komut, depolama hesabının geçerli IP adresini döndürür. Bu IP adresinin aynı kalacağı garanti edilmez ve bu adres herhangi bir zamanda değişebilir. Bu IP adresini betiklere veya güvenlik duvarına sabit şekilde kodlamayın. 
+445 numaralı bağlantı noktasının açık olduğundan emin olun: SMB protokolü için 445 numaralı TCP bağlantı noktasının açık olması gerekir. 445 numaralı bağlantı noktasının açık olmaması halinde bağlantı gerçekleştirilemez. Güvenlik duvarınızın, cmdlet ile 445 bağlantı noktasını engelleyip engellemediğini kontrol edebilirsiniz `Test-NetConnection` . Engellenen 445 bağlantı noktasına geçici çözüm yolları hakkında bilgi edinmek için, Windows sorun giderme kılavuzumuzdan [1: bağlantı noktası 445 engellendi](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) bölümüne bakın.
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Azure dosya paylaşımını Windows'da kullanma
 Bir Azure dosya paylaşımını Windows'da kullanmak için bağlayarak bir sürücü harfi veya bağlama noktası yolu atamanız veya [UNC adı](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) aracılığıyla erişmeniz gerekir. 
@@ -84,97 +51,31 @@ Bu makale, dosya paylaşımıyla erişmek için depolama hesabı anahtarını ku
 
 Azure'da SMB dosya paylaşımına ihtiyaç duyan iş kolu (LOB) uygulamalarını kullanıma sunmak için sıklıkla kullanılan model, Azure dosya paylaşımını Azure VM'de ayrılmış bir Windows dosya sunucusu çalıştırmaya alternatif olarak kullanmaktır. Bir iş kolu uygulamasını, Azure dosya paylaşımını kullanacak şekilde yapılandırma sırasında dikkat edilmesi gereken önemli noktalardan biri, çoğu iş kolu uygulamasının VM'nin yönetici hesabı yerine sınırlı sistem izinlerine sahip adanmış hizmet hesabı bağlamında çalıştığıdır. Bu nedenle Azure dosya paylaşımında yönetici hesabı yerine hizmet hesabı bağlamında bağlama yaptığınızdan/kimlik bilgilerini kaydettiğinizden emin olun.
 
-### <a name="persisting-azure-file-share-credentials-in-windows"></a>Azure dosya paylaşımı kimlik bilgilerinin Windows'da kalıcı olmasını sağlama  
-[cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) yardımcı programı, depolama hesabı kimlik bilgilerinizi Windows'a kaydetmenizi sağlar. Bu da bir Azure dosya paylaşımına UNC adını kullanarak erişmeye veya Azure dosya paylaşımını bağlamaya çalıştığınızda kimlik bilgilerini belirtmek zorunda kalmayacağınız anlamına gelir. Depolama hesabınızın kimlik bilgilerini kaydetmek için aşağıdaki PowerShell komutlarını çalıştırın ve `<your-storage-account-name>` ile `<your-resource-group-name>` yerine uygun bilgileri girin.
+### <a name="mount-the-azure-file-share"></a>Azure dosya paylaşımından bağlama
 
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
+Azure portal, dosya paylaşımınızı doğrudan bir konağa bağlamak için kullanabileceğiniz bir betik sağlar. Bu belirtilen betiği kullanmanızı öneririz.
 
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+Bu betiği almak için:
 
-# The cmdkey utility is a command-line (rather than PowerShell) tool. We use Invoke-Expression to allow us to 
-# consume the appropriate values from the storage account variables. The value given to the add parameter of the
-# cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
-# Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
-# clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
-```
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Bağlamak istediğiniz dosya paylaşımının bulunduğu depolama hesabına gidin.
+1. **Dosya paylaşımları**' nı seçin.
+1. Bağlamak istediğiniz dosya payını seçin.
 
-cmdkey yardımcı programının depolama hesabınızın kimlik bilgilerini kaydedip kaydetmediğini doğrulamak için list parametresini kullanabilirsiniz:
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="örneğinde":::
 
-```powershell
-cmdkey /list
-```
+1. **Bağlan**'ı seçin.
 
-Azure dosya paylaşımınızın kimlik bilgileri başarıyla kaydedildiyse beklenen çıktı aşağıdaki şekilde olacaktır (listeye kaydedilmiş ek anahtarlar olabilir):
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Dosya paylaşımınız için Bağlan simgesinin ekran görüntüsü.":::
 
-```
-Currently stored credentials:
+1. Paylaşımın bağlanması için sürücü harfini seçin.
+1. Belirtilen betiği kopyalayın.
 
-Target: Domain:target=<storage-account-host-name>
-Type: Domain Password
-User: AZURE\<your-storage-account-name>
-```
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Örnek metin":::
 
-Artık kimlik bilgilerini kullanmadan paylaşımı bağlayabilmeniz veya paylaşıma erişebilmeniz gerekir.
+1. Betiği, dosya paylaşımının üzerine bağlamak istediğiniz konaktaki bir kabuğa yapıştırın ve çalıştırın.
 
-#### <a name="advanced-cmdkey-scenarios"></a>Gelişmiş cmdkey senaryoları
-cmdkey ile kullanılabilecek iki ek senaryo daha vardır. Bunlardan biri makineye hizmet hesabı gibi farklı bir kullanıcının kimlik bilgilerini kaydetme, diğeri ise PowerShell uzaktan iletişim özellikleriyle kimlik bilgilerini uzaktaki bir makineye kaydetmedir.
-
-Bilgisayardaki başka bir kullanıcı için kimlik bilgilerinin depolanması kolaydır: hesabınızda oturum açıldığında aşağıdaki PowerShell komutunu yürütün:
-
-```powershell
-$password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
-Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
-```
-
-Bu komut hizmet hesabınızın (veya kullanıcı hesabınızın) kullanıcı bağlamında yeni bir PowerShell penceresi açar. Pencere açıldıktan sonra cmdkey yardımcı programını [yukarıda](#persisting-azure-file-share-credentials-in-windows) anlatılan şekilde kullanabilirsiniz.
-
-cmdkey yardımcı programı, kullanıcı PowerShell uzaktan iletişim özellikleriyle oturum açtığında ekleme işlemleri için dahi kimlik bilgisi deposuna erişime izin vermediğinden kimlik bilgilerinin PowerShell uzaktan iletişim özellikleri kullanılarak uzak makineye kaydedilmesi mümkün değildir. Makinede [Uzak Masaüstü](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows) ile oturum açmanızı öneririz.
-
-### <a name="mount-the-azure-file-share-with-powershell"></a>Azure dosya paylaşımını PowerShell ile bağlama
-Azure dosya paylaşımının bağlanması için normal (yükseltilmiş bir) PowerShell oturumundan aşağıdaki komutları çalıştırın. `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` ve `<desired-drive-letter>` yerine gerekli bilgileri eklemeyi unutmayın.
-
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
-$fileShareName = "<your-file-share-name>"
-
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object { 
-    $_.Name -eq $fileShareName -and $_.IsSnapshot -eq $false
-}
-
-if ($fileShare -eq $null) {
-    throw [System.Exception]::new("Azure file share not found")
-}
-
-# The value given to the root parameter of the New-PSDrive cmdlet is the host address for the storage account, 
-# <storage-account>.file.core.windows.net for Azure Public Regions. $fileShare.StorageUri.PrimaryUri.Host is 
-# used because non-Public Azure regions, such as sovereign clouds or Azure Stack deployments, will have different 
-# hosts for Azure file shares (and other storage resources).
-$password = ConvertTo-SecureString -String $storageAccountKeys[0].Value -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "AZURE\$($storageAccount.StorageAccountName)", $password
-New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($fileShare.StorageUri.PrimaryUri.Host)\$($fileShare.Name)" -Credential $credential -Persist
-```
-
-> [!Note]  
-> `New-PSDrive` cmdlet'inde `-Persist` seçeneğini kullanmak yalnızca kimlik bilgilerinin kaydedilmiş olması durumunda açılışta dosya paylaşımının yeniden bağlanmasını sağlar. Kimlik bilgilerini kaydetmek için cmdkey'i [yukarıda anlatılan şekilde](#persisting-azure-file-share-credentials-in-windows) kullanabilirsiniz. 
-
-İsterseniz aşağıdaki PowerShell cmdlet'ini kullanarak Azure dosya paylaşımını çıkarabilirsiniz.
-
-```powershell
-Remove-PSDrive -Name <desired-drive-letter>
-```
+Azure dosya paylaşımınızı artık taktıysanız.
 
 ### <a name="mount-the-azure-file-share-with-file-explorer"></a>Azure dosya paylaşımını Dosya Gezgini ile bağlama
 > [!Note]  
@@ -182,7 +83,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. Dosya Gezgini'ni açın. Başlat Menüsünden veya Win+E kısayoluna basarak açılabilir.
 
-1. Pencerenin sol tarafındaki **Bu bilgisayar** öğesine gidin. Bu, şeritteki kullanılabilir menüleri değiştirir. Bilgisayar menüsünde, **Ağ Sürücüsüne Bağlan**' ı seçin.
+1. Pencerenin sol tarafındaki **Bu bilgisayara** gidin. Bu, şeritteki kullanılabilir menüleri değiştirir. Bilgisayar menüsünde, **Ağ Sürücüsüne Bağlan**' ı seçin.
     
     ![“Ağ sürücüsüne bağlan” açılan menüsünün ekran görüntüsü](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
@@ -201,7 +102,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 1. Azure Dosya paylaşımını çıkarmaya hazır olduğunuzda, Dosya Gezgini’ndeki **Ağ konumları**'nın altında bulunan girdiye sağ tıklayıp **Bağlantıyı kes**'i seçerek bunu yapabilirsiniz.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows'dan paylaşım anlık görüntülerine erişme
-El ile veya betik ya da Azure Backup gibi bir hizmet aracılığıyla otomatik olarak paylaşım anlık görüntüsü aldıysanız Windows'da dosya paylaşımından bir paylaşımın, dizinin veya belirli bir dosyanın önceki sürümlerini görüntüleyebilirsiniz. [Azure Portal](storage-how-to-use-files-portal.md), [Azure POWERSHELL](storage-how-to-use-files-powershell.md)ve [Azure CLI](storage-how-to-use-files-cli.md)'den bir paylaşma anlık görüntüsü alabilirsiniz.
+El ile veya betik ya da Azure Backup gibi bir hizmet aracılığıyla otomatik olarak paylaşım anlık görüntüsü aldıysanız Windows'da dosya paylaşımından bir paylaşımın, dizinin veya belirli bir dosyanın önceki sürümlerini görüntüleyebilirsiniz. [Azure PowerShell](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md)veya [Azure Portal](storage-how-to-use-files-portal.md)kullanarak bir paylaşma anlık görüntüsü alabilirsiniz.
 
 #### <a name="list-previous-versions"></a>Önceki sürümleri listeleme
 Geri yüklemek istediğiniz öğeye veya üst öğeye gidin. Çift tıklayarak istenen dizine gidin. Sağ tıklayın ve açılan menüden **Özellikler**'i seçin.
@@ -237,7 +138,7 @@ Aşağıdaki tabloda tüm Windows sürümlerinde SMB 1 protokolünün durumu hak
 | Windows 8.1                               | Etkin              | Windows özelliği ile kaldırma | 
 | Windows Server 2012                       | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
 | Windows Server 2008 R2                    | Etkin              | Kayıt defteri ile devre dışı bırakma       |
-| Windows 7                                 | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
+| Windows 7                                 | Etkin              | Kayıt defteri ile devre dışı bırakma       | 
 
 ### <a name="auditing-smb-1-usage"></a>SMB 1 kullanımını denetleme
 > Windows Server 2019, Windows Server yarı yıllık kanal (sürüm 1709 ve 1803), Windows Server 2016, Windows 10 (sürümler 1507, 1607, 1703, 1709 ve 1803), Windows Server 2012 R2 ve Windows 8.1 için geçerlidir.

@@ -24,7 +24,7 @@ ms.locfileid: "84708508"
 
 İşlem çoğaltma, Azure SQL yönetilen örneği 'nin bir özelliğidir ve Azure SQL yönetilen örneğindeki bir tablodan veya bir SQL Server örneğindeki verileri uzak veritabanlarına yerleştirilmiş tablolara çoğaltmanıza olanak tanıyan SQL Server. Bu özellik, farklı veritabanlarındaki birden çok tabloyu eşitlemenize olanak tanır.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Azure SQL yönetilen örneğinde yapılan değişiklikleri şu şekilde göndermek için işlem çoğaltmayı kullanabilirsiniz:
 

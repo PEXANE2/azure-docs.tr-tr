@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6c8c93c8721527d506847e394a02fc4eb5a98c47
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118594"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248369"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Öğretici: Data Factory kullanarak blob depolamadan SQL veritabanına veri kopyalama
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Bu öğreticiye başlamadan önce aşağıdaki önkoşullara sahip olmanız gere
 
 * **Azure aboneliği**.  Bir aboneliğiniz yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılar için [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) makalesine bakın.
 * **Azure depolama hesabı**. Bu öğreticide BLOB depolama alanını **kaynak** veri deposu olarak kullanırsınız. bir Azure depolama hesabınız yoksa, oluşturma adımları için [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
-* **Azure SQL veritabanı**. Bu öğreticide bir Azure SQL veritabanını **hedef** veri deposu olarak kullanırsınız. Öğreticide kullanabileceğiniz bir Azure SQL veritabanınız yoksa, bir [Azure SQL veritabanı oluşturma ve yapılandırma hakkında](../../sql-database/sql-database-get-started.md) bilgi almak için bkz..
+* **Azure SQL veritabanı**. Bu öğreticide Azure SQL veritabanını **hedef** veri deposu olarak kullanırsınız. Azure SQL veritabanı 'nda öğreticide kullanabileceğiniz bir veritabanınız yoksa bir veritabanı oluşturmak için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma ve yapılandırma](../../sql-database/sql-database-get-started.md) .
 * **SQL Server 2012/2014 veya Visual Studio 2013**. Örnek veritabanı oluşturmak ve sonuç verilerini veritabanında görüntülemek için SQL Server Management Studio veya Visual Studio 'Yu kullanırsınız.  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>BLOB depolama hesabı adını ve anahtarını topla
@@ -66,7 +66,7 @@ Bu öğreticiyi yapmak için Azure depolama hesabınızın hesap adı ve hesap a
 7. **X**simgesini tıklayarak tüm dikey pencereleri kapatın.
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL Server, veritabanı, Kullanıcı adlarını toplayın
-Bu öğreticiyi yapmak için mantıksal SQL Server, veritabanı ve kullanıcı adlarına ihtiyacınız vardır. Azure SQL veritabanınız için **sunucu**, **veritabanı**ve **kullanıcının** adlarını aklınızda edin.
+Bu öğreticiyi yapmak için mantıksal SQL Server, veritabanı ve kullanıcı adlarına ihtiyacınız vardır. **Sunucu**, **VERITABANı**ve Azure SQL veritabanı için **Kullanıcı** adlarını aklınızda edin.
 
 1. **Azure Portal**, sol taraftaki **tüm hizmetler** ' e tıklayın ve **SQL veritabanları**' nı seçin.
 2. **SQL veritabanları dikey**penceresinde, bu öğreticide kullanmak istediğiniz **veritabanını** seçin. **Veritabanı adını**aklınızda edin.  
@@ -85,13 +85,13 @@ Data Factory hizmetinin sunucunuza erişebilmesi için sunucunuz için **Azure h
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob depolamayı ve SQL veritabanını hazırlama
 Şimdi aşağıdaki adımları gerçekleştirerek Azure Blob depolama alanınızı ve Azure SQL veritabanınızı öğreticiye hazırlayın:  
 
-1. Not Defteri'ni başlatın. Aşağıdaki metni kopyalayın ve sabit sürücünüzdeki **C:\adfgetstarted** klasörüne **ılation. txt** olarak kaydedin.
+1. Not Defteri'ni başlatın. Aşağıdaki metni kopyalayın ve sabit sürücünüzdeki **C:\adfgetstarted** klasörüne **emp.txt** olarak kaydedin.
 
     ```
     John, Doe
     Jane, Doe
     ```
-2. **Adföğreticisi** kapsayıcısını oluşturmak ve **. txt** dosyasını kapsayıcıya yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
+2. **Adföğreticisi** kapsayıcısını oluşturmak ve **emp.txt** dosyasını kapsayıcıya yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 
 3. Azure SQL Veritabanı’nınizde **emp** tablosu oluşturmak için aşağıdaki SQL betiğini kullanın.  
 

@@ -4,14 +4,14 @@ description: Azure Container Instances bir kapsayıcı görüntüsü oluşturma,
 ms.topic: article
 ms.date: 03/18/2020
 ms.custom: ''
-ms.openlocfilehash: 13397cee8197afc65b93c587ae1505e59cfdebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80258048"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744009"
 ---
-# <a name="configure-a-github-action-to-create-a-container-instance"></a>Bir kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
+# <a name="configure-a-github-action-to-create-a-container-instance"></a>Kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
 
 [GitHub eylemleri](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) , yazılım geliştirme iş akışlarınızı aynı yerde otomatik hale getirmek için GitHub 'daki bir özellik paketidir. böylece, çekme istekleri ve sorunları üzerinde kod depolar ve işbirliği yapın.
 
@@ -26,14 +26,14 @@ Bu makalede, bir GitHub deposunda aşağıdaki eylemleri gerçekleştiren bir i�
 Bu makalede, iş akışını kurmanın iki yolu gösterilmektedir:
 
 * Azure Container Instances dağıt eylemini ve diğer eylemleri kullanarak bir GitHub deposunda iş akışını kendiniz yapılandırın.  
-* Azure CLı `az container app up` 'de Azure 'da [dağıtma](https://github.com/Azure/deploy-to-azure-cli-extension) uzantısında komutunu kullanın. Bu komut GitHub iş akışını ve dağıtım adımlarını oluşturmayı kolaylaştırır.
+* `az container app up`Azure CLI 'de Azure 'Da [dağıtma](https://github.com/Azure/deploy-to-azure-cli-extension) uzantısında komutunu kullanın. Bu komut GitHub iş akışını ve dağıtım adımlarını oluşturmayı kolaylaştırır.
 
 > [!IMPORTANT]
 > Azure Container Instances için GitHub eylemi şu anda önizlemededir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **GitHub hesabı** -henüz yoksa bir hesap https://github.com oluşturun.
+* **GitHub hesabı** -henüz yoksa bir hesap oluşturun https://github.com .
 * **Azure CLI** -Azure CLI adımlarını tamamlayabilmeniz için Azure Cloud Shell veya yerel BIR Azure CLI yüklemesi kullanabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 * **Azure Container Registry** -Azure [CLI](../container-registry/container-registry-get-started-azure-cli.md), [Azure Portal](../container-registry/container-registry-get-started-portal.md)veya diğer yöntemleri kullanarak temel katmanda bir Azure Container Registry oluşturun. Dağıtım için kullanılan kaynak grubunu, GitHub iş akışı için kullanılan bir yere göz atın.
 
@@ -45,7 +45,7 @@ Bu makalede, iş akışını kurmanın iki yolu gösterilmektedir:
 
   ![GitHub’daki Çatal düğmesinin (vurgulanmış) ekran görüntüsü](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Deponuz için eylemlerin etkinleştirildiğinden emin olun. Komut deponuza gidin ve **Ayarlar** > **Eylemler**' i seçin. **Eylemler izinlerinde**, **Bu depo için yerel ve üçüncü taraf eylemlerin etkinleştir** ' in seçildiğinden emin olun.
+* Deponuz için eylemlerin etkinleştirildiğinden emin olun. Komut deponuza gidin ve **Ayarlar**  >  **Eylemler**' i seçin. **Eylemler izinlerinde**, **Bu depo için yerel ve üçüncü taraf eylemlerin etkinleştir** ' in seçildiğinden emin olun.
 
 ## <a name="configure-github-workflow"></a>GitHub iş akışını yapılandırma
 
@@ -53,7 +53,7 @@ Bu makalede, iş akışını kurmanın iki yolu gösterilmektedir:
 
 GitHub iş akışında Azure CLı kimlik doğrulaması için Azure kimlik bilgilerini sağlamanız gerekir. Aşağıdaki örnek, kapsayıcı kayıt defteriniz için kaynak grubu kapsamındaki katkıda bulunan rolüne sahip bir hizmet sorumlusu oluşturur.
 
-İlk olarak, kaynak grubunuzun kaynak KIMLIĞINI alın. Aşağıdaki [az Group Show][az-acr-show] komutunda grubunuzun adını değiştirin:
+İlk olarak, kaynak grubunuzun kaynak KIMLIĞINI alın. Aşağıdaki [az Group Show][az-group-show] komutunda grubunuzun adını değiştirin:
 
 ```azurecli
 groupId=$(az group show \
@@ -87,7 +87,7 @@ az ad sp create-for-rbac \
 }
 ```
 
-Sonraki bir adımda kullanıldığından JSON çıkışını kaydedin. Ayrıca, sonraki bölümde hizmet sorumlusunu `clientId`güncelleştirmeniz gereken öğesini de göz önünde bulabilirsiniz.
+Sonraki bir adımda kullanıldığından JSON çıkışını kaydedin. Ayrıca, `clientId` sonraki bölümde hizmet sorumlusunu güncelleştirmeniz gereken öğesini de göz önünde bulabilirsiniz.
 
 ### <a name="update-service-principal-for-registry-authentication"></a>Kayıt defteri kimlik doğrulaması için hizmet sorumlusu güncelleştirme
 
@@ -112,7 +112,7 @@ az role assignment create \
 
 ### <a name="save-credentials-to-github-repo"></a>Kimlik bilgilerini GitHub deposuna Kaydet
 
-1. GitHub Kullanıcı arabiriminde, gizli deponuza gidin ve **Ayarlar** > **gizli**dizileri ' ni seçin. 
+1. GitHub Kullanıcı arabiriminde, gizli deponuza gidin ve **Ayarlar**gizli dizileri ' ni seçin  >  **Secrets**. 
 
 1. Aşağıdaki gizli dizileri eklemek için **Yeni bir parola Ekle** ' yi seçin:
 
@@ -120,15 +120,15 @@ az role assignment create \
 |---------|---------|
 |`AZURE_CREDENTIALS`     | Hizmet sorumlusu oluşturma işleminden tüm JSON çıkışı |
 |`REGISTRY_LOGIN_SERVER`   | Kayıt defterinizin oturum açma sunucusu adı (tümü küçük harf). Örnek: *myregistry.Azure.CR.io*        |
-|`REGISTRY_USERNAME`     |  Hizmet `clientId` sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından       |
-|`REGISTRY_PASSWORD`     |  Hizmet `clientSecret` sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından |
+|`REGISTRY_USERNAME`     |  `clientId`Hizmet sorumlusu oluşturma işleminden gelen JSON çıktısından       |
+|`REGISTRY_PASSWORD`     |  `clientSecret`Hizmet sorumlusu oluşturma işleminden gelen JSON çıktısından |
 | `RESOURCE_GROUP` | Hizmet sorumlusu kapsamında kullanılan kaynak grubunun adı |
 
 ### <a name="create-workflow-file"></a>İş akışı dosyası oluştur
 
-1. GitHub Kullanıcı arabiriminde **Eylemler** > **yeni iş akışı**' nı seçin.
+1. GitHub Kullanıcı arabiriminde **Eylemler**  >  **yeni iş akışı**' nı seçin.
 1. **Bir iş akışını kendiniz ayarlayın**öğesini seçin.
-1. **Yeni dosyayı Düzenle**' de, örnek kodun üzerine yazmak için aşağıdaki YAML içeriğini yapıştırın. Varsayılan dosya adını `main.yml`kabul edin veya seçtiğiniz bir dosya adı sağlayın.
+1. **Yeni dosyayı Düzenle**' de, örnek kodun üzerine yazmak için aşağıdaki YAML içeriğini yapıştırın. Varsayılan dosya adını kabul edin `main.yml` veya seçtiğiniz bir dosya adı sağlayın.
 1. **Yürütmeyi Başlat**' ı seçin, isteğe bağlı olarak işlemeniz için kısa ve genişletilmiş açıklamaları sağlayın ve **Yeni Dosya Yürüt**' ü seçin
 
 ```yml
@@ -173,7 +173,7 @@ jobs:
 
 ### <a name="validate-workflow"></a>İş akışını doğrula
 
-İş akışı dosyası kaydedildikten sonra iş akışı tetiklenir. İş akışı ilerlemesini gözden geçirmek için **Eylemler** > **iş akışları**' na gidin. 
+İş akışı dosyası kaydedildikten sonra iş akışı tetiklenir. İş akışı ilerlemesini gözden geçirmek için **Eylemler**  >  **iş akışları**' na gidin. 
 
 ![İş akışı ilerlemesini görüntüleme](./media/container-instances-github-action/github-action-progress.png)
 
@@ -203,7 +203,7 @@ aci-action01.westus.azurecontainer.io  Succeeded
 
 ## <a name="use-deploy-to-azure-extension"></a>Azure 'a dağıt uzantısını kullanma
 
-Alternatif olarak, iş akışını yapılandırmak için Azure CLı 'da [Azure 'Da dağıtma uzantısı](https://github.com/Azure/deploy-to-azure-cli-extension) ' nı kullanın. Uzantıdaki `az container app up` komut, Azure Container Instances dağıtmak üzere bir iş akışı ayarlamak için sizin giriş parametrelerini alır. 
+Alternatif olarak, iş akışını yapılandırmak için Azure CLı 'da [Azure 'Da dağıtma uzantısı](https://github.com/Azure/deploy-to-azure-cli-extension) ' nı kullanın. `az container app up`Uzantıdaki komut, Azure Container Instances dağıtmak üzere bir iş akışı ayarlamak için sizin giriş parametrelerini alır. 
 
 Azure CLı tarafından oluşturulan iş akışı, [GitHub kullanarak el ile oluşturabileceğiniz](#configure-github-workflow)iş akışına benzer.
 

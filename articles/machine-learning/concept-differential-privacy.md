@@ -9,18 +9,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9570724fdff3018c1dbcf76c15a9db8db0d68364
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447837"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982671"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Değişiklik gizliliği ve Whitenoıse paketini kullanarak veri gizliliğini koruma
 
 Değişiklik gizliliğinin ne olduğunu ve duman paketinin farklı bir özel sistem uygulamanıza nasıl yardımcı olabileceğini öğrenin.
 
 Kuruluşun analizler için topladığı ve kullandığı veri miktarı arttıkça, gizlilik ve güvenlikle ilgili endişeler de vardır. Çözümlemeler için veri gerekir. Genellikle, modelleri eğitmek için kullanılan veriler daha doğru olur. Bu çözümlemeler için kişisel bilgiler kullanıldığında, verilerin kullanımı boyunca özel olarak kalması özellikle önemlidir.
+
+> [!NOTE]
+> Araç takımını yeniden adlandırdığımızda, gelecek haftalarda yeni adı tanıtılacağını lütfen unutmayın. 
 
 ## <a name="how-differential-privacy-works"></a>Değişiklik gizliliği nasıl kullanılır?
 
@@ -60,7 +63,7 @@ Farklı şekilde özel sistemlerin uygulanması zordur. Whitenoıse, küresel fa
 
 Çekirdek kitaplık, farklı bir özel sistem uygulamak için aşağıdaki Gizlilik mekanizmalarını içerir:
 
-|Bileşen  |Açıklama  |
+|Bileşen  |Description  |
 |---------|---------|
 |Analiz     | Rastgele hesaplamaların grafik açıklaması. |
 |Doğrulayıcı     | Bir çözümlemenin farklı bir şekilde özel olması için gerekli koşulları denetlemeye ve türetmede kullanılabilecek bir araç kümesi içeren bir Rust kitaplığı.          |
@@ -71,7 +74,7 @@ Farklı şekilde özel sistemlerin uygulanması zordur. Whitenoıse, küresel fa
 
 Sistem kitaplığı, tablolu ve ilişkisel verilerle çalışmaya yönelik aşağıdaki araçları ve hizmetleri sağlar:
 
-|Bileşen  |Açıklama  |
+|Bileşen  |Description  |
 |---------|---------|
 |Veri Erişimi     | SQL sorgularını karşılar ve işleyen ve rapor üreten kitaplık. Bu kitaplık Python 'da uygulanır ve aşağıdaki ODBC ve DBAPı veri kaynaklarını destekler:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandas</li></ul>|
 |Hizmet     | Paylaşılan veri kaynaklarına karşı istekleri veya sorguları sunan bir REST uç noktası sağlayan yürütme hizmeti. Hizmet, heterojen istekler olarak da bilinen farklı Delta ve Epsilon değerleri içeren isteklerde çalışan değişiklik gizlilik modüllerinin bulunmasına olanak tanımak üzere tasarlanmıştır. Bu başvuru, bağıntılı verilere ilişkin sorgulardan daha fazla etki için uygulama hesaplar. |

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 3087b964ff5f9754d6552fc95625541ce94a6535
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 555230499ebda106cbca616b779ae632d65349ab
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147991"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807866"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Hızlı başlangıç: Azure Logic Apps Azure portal kullanarak ilk iş akışınızı oluşturun
 
@@ -43,16 +43,16 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
    ![Yeni mantıksal uygulama için ayrıntıları sağlayın](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | Özellik | Değer | Açıklama |
+   | Özellik | Değer | Description |
    |----------|-------|-------------|
-   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa`-`çizgi (), alt çizgi (`_`), parantez (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
+   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi ( `-` ), alt çizgi ( `_` ), parantez ( `(` , `)` ) ve nokta ( `.` ) içerebilir. Bu örnek "My-First-Logic-App" kullanır. <p><p>**Note**: mantıksal uygulamalar için adların bölgeler arasında benzersiz olması gerekir. |
    | **Abonelik** | <*Azure-abonelik-adı*> | Azure abonelik adınız |
-   | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
+   | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. <p><p>**Note**: kaynak gruplarının adları bölgeler arasında benzersiz olmalıdır. |
    | **Konum** | <*Azure-bölge*> | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |
    | **Log Analytics** | Kapalı | Tanılama günlüğüne kaydetme ayarını **Kapalı** durumda bırakın. |
    ||||
 
-1. Azure, uygulamanızı dağıttıktan sonra Azure araç çubuğunda **Bildirimler** > ' i seçerek dağıtılan mantıksal uygulamanız için**kaynağa gidin** .
+1. Azure, uygulamanızı dağıttıktan sonra Azure araç çubuğunda bildirimler ' i seçerek **Notifications**  >  dağıtılan mantıksal uygulamanız için**kaynağa gidin** .
 
    ![Yeni oluşturulan mantıksal uygulama kaynağına git](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -70,7 +70,7 @@ Sonra, yeni bir RSS akışı öğesi göründüğünde tetiklenen bir [tetikleyi
 
 1. **Mantıksal uygulama Tasarımcısı**' nda, arama kutusunda, **Tümü**' nü seçin.
 
-1. Arama kutusuna RSS bağlayıcısını bulmak için `rss` yazın. Tetikleyiciler listesinden **bir akış öğesi yayımlandığında** tetikleyicisi ' ni seçin.
+1. Arama kutusuna `rss` RSS bağlayıcısını bulmak için yazın. Tetikleyiciler listesinden **bir akış öğesi yayımlandığında** tetikleyicisi ' ni seçin.
 
    !["Akış öğesi yayımlandığında" tetikleyicisini seçin](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -78,7 +78,7 @@ Sonra, yeni bir RSS akışı öğesi göründüğünde tetiklenen bir [tetikleyi
 
    ![Tetikleyicinin RSS akışı, sıklık ve aralık ayarını yapma](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | Özellik | Değer | Açıklama |
+   | Özellik | Değer | Description |
    |----------|-------|-------------|
    | **RSS akışının URL'si** | `http://feeds.reuters.com/reuters/topNews` | İzlemek istediğiniz RSS akışının bağlantısı |
    | **Interval** | 1 | Denetimler arasında beklenecek aralık sayısı |
@@ -105,7 +105,7 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
 
 1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin.
 
-1. Bu eylemi sunan bağlayıcılar bulmak için `send an email` arama kutusuna yazın. Eylemler listesinden, kullanmak istediğiniz e-posta hizmeti için "e-posta gönder" eylemini seçin. Bu örnek, **e-posta gönder** eylemi olan Office 365 Outlook bağlayıcısını kullanır.
+1. `send an email`Bu eylemi sunan bağlayıcılar bulmak için arama kutusuna yazın. Eylemler listesinden, kullanmak istediğiniz e-posta hizmeti için "e-posta gönder" eylemini seçin. Bu örnek, **e-posta gönder** eylemi olan Office 365 Outlook bağlayıcısını kullanır.
 
    ![Office 365 Outlook için "e-posta gönder" eylemini seçin](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 

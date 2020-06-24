@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152899"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807855"
 ---
 # <a name="durable-functions-versions-overview"></a>Dayanıklı İşlevler sürümlere genel bakış
 
@@ -50,19 +50,19 @@ Bu bölümde, yeni özelliklerden yararlanmak için mevcut sürüm 1. x Dayanık
 
 Dayanıklı İşlevler 2. x birkaç önemli değişiklik sunar. Dayanıklı İşlevler 1. x uygulamaları, kod değişikliği olmadan Dayanıklı İşlevler 2. x ile uyumlu değildir. Bu bölümde, sürüm 1. x işlevinizi 2. x olarak yükseltirken yapmanız gereken bazı değişiklikler listelenmiştir.
 
-#### <a name="hostjson-schema"></a>Host. JSON şeması
+#### <a name="hostjson-schema"></a>Şemada Host.js
 
-Dayanıklı İşlevler 2. x yeni bir Host. JSON şeması kullanır. 1. x üzerindeki ana değişiklikler şunları içerir:
+Dayanıklı İşlevler 2. x, şema üzerinde yeni bir host.jskullanır. 1. x üzerindeki ana değişiklikler şunları içerir:
 
-* `"storageProvider"`depolama birimine özgü `"azureStorage"` yapılandırma için (ve alt bölümü).
+* `"storageProvider"``"azureStorage"`depolama birimine özgü yapılandırma için (ve alt bölümü).
 * `"tracing"`izleme ve günlük yapılandırma için.
-* `"notifications"`olay Kılavuzu bildirim `"eventGrid"` yapılandırması için (ve alt bölümü).
+* `"notifications"``"eventGrid"`olay Kılavuzu bildirim yapılandırması için (ve alt bölümü).
 
-Ayrıntılar için [dayanıklı işlevler Host. JSON başvurusu belgelerine](durable-functions-bindings.md#durable-functions-2-0-host-json) bakın.
+Ayrıntılar için [başvuru belgelerindeki Dayanıklı İşlevler host.js](durable-functions-bindings.md#durable-functions-2-0-host-json) bakın.
 
 #### <a name="default-taskhub-name-changes"></a>Varsayılan taskhub adı değişiklikleri
 
-Sürüm 1. x içinde, Host. JSON içinde bir görev hub 'ı adı belirtilmemişse, varsayılan olarak "DurableFunctionsHub" olarak kabul edildi. Sürüm 2. x ' de, varsayılan görev merkezi adı artık işlev uygulamasının adından türetilir. Bu nedenle, 2. x sürümüne yükseltirken bir görev hub 'ı adı belirtmiyorsanız, kodunuz yeni görev hub 'ı ile çalışır ve tüm uçuş düzenlemeleri artık bunları işleyen bir uygulamaya sahip olmayacaktır. Bu sorunu geçici olarak çözmek için, görev hub 'ınızın adını "DurableFunctionsHub" nin varsayılan değeri olan v1. x varsayılan olarak ayarlayabilir veya kesintiye neden olan değişiklikleri nasıl işleyebileceğine ilişkin ayrıntılar için [sıfır kesinti dağıtım kılavuzumuzu](durable-functions-zero-downtime-deployment.md) takip edebilirsiniz.
+Sürüm 1. x ' te, üzerinde host.jsbir görev hub 'ı adı belirtilmemişse, varsayılan olarak "DurableFunctionsHub" olarak kabul edildi. Sürüm 2. x ' de, varsayılan görev merkezi adı artık işlev uygulamasının adından türetilir. Bu nedenle, 2. x sürümüne yükseltirken bir görev hub 'ı adı belirtmiyorsanız, kodunuz yeni görev hub 'ı ile çalışır ve tüm uçuş düzenlemeleri artık bunları işleyen bir uygulamaya sahip olmayacaktır. Bu sorunu geçici olarak çözmek için, görev hub 'ınızın adını "DurableFunctionsHub" nin varsayılan değeri olan v1. x varsayılan olarak ayarlayabilir veya kesintiye neden olan değişiklikleri nasıl işleyebileceğine ilişkin ayrıntılar için [sıfır kesinti dağıtım kılavuzumuzu](durable-functions-zero-downtime-deployment.md) takip edebilirsiniz.
 
 #### <a name="public-interface-changes-net-only"></a>Ortak arabirim değişiklikleri (yalnızca .NET)
 
@@ -77,8 +77,12 @@ Aşağıdaki tablo, ana değişiklikleri temsil eder:
 | `DurableActivityContext` veya `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-Soyut bir temel sınıfın sanal yöntemler içerdiği durumlarda, bu sanal yöntemler ' de `DurableContextExtensions`tanımlanan genişletme yöntemleriyle değiştirilmiştir.
+Soyut bir temel sınıfın sanal yöntemler içerdiği durumlarda, bu sanal yöntemler ' de tanımlanan genişletme yöntemleriyle değiştirilmiştir `DurableContextExtensions` .
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>function. JSON değişiklikleri (JavaScript ve C# betiği)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>Değişiklikler üzerinde function.js(JavaScript ve C# betiği)
 
-Dayanıklı İşlevler 1. x içinde Orchestration istemci bağlaması ' a `type` kullanır. `orchestrationClient` Bunun yerine sürüm 2. `durableClient` x kullanır.
+Dayanıklı İşlevler 1. x içinde Orchestration istemci bağlaması ' a kullanır `type` `orchestrationClient` . Bunun yerine sürüm 2. x kullanır `durableClient` .
+
+#### <a name="raise-event-changes"></a>Olay değişikliklerini yükselt
+
+Dayanıklı İşlevler 1. x içinde, oluşturma [olayı](durable-functions-external-events.md#send-events) API 'sini çağırmak ve var olmayan bir örneği belirtmek sessiz bir hata ile sonuçlandı. 2. x ' den başlayarak, bir olayı var olmayan bir düzenlemeye yükseltmek bir özel durumla sonuçlanır.

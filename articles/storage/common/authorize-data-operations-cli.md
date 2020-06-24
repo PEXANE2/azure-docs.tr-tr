@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c7091592f8806b6f6655315ae1faace286c2c1f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78207699"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805490"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Azure CLı ile blob veya kuyruk verilerine erişim yetkisi verme
 
@@ -28,13 +28,13 @@ Azure depolama, Azure CLı için, blob veya kuyruk verilerinde işlemleri nasıl
 
 Blob ve kuyruk verilerini okumak ve yazmak için Azure CLı komutları isteğe bağlı `--auth-mode` parametresini içerir. Bir veri işleminin nasıl yetkilendirildiğini göstermek için bu parametreyi belirtin:
 
-- Bir Azure `--auth-mode` ad güvenlik `login` sorumlusu kullanarak oturum açmak için parametresini ayarlayın (önerilir).
-- Yetkilendirme için `--auth-mode` kullanılacak hesap erişim anahtarını `key` almayı denemek için parametreyi eski değere ayarlayın. `--auth-mode` Parametresini atlarsanız, Azure CLI de erişim anahtarını almaya çalışır.
+- `--auth-mode` `login` BIR Azure AD güvenlik sorumlusu kullanarak oturum açmak için parametresini ayarlayın (önerilir).
+- `--auth-mode` `key` Yetkilendirme için kullanılacak hesap erişim anahtarını almayı denemek için parametreyi eski değere ayarlayın. `--auth-mode`Parametresini atlarsanız, Azure CLI de erişim anahtarını almaya çalışır.
 
-`--auth-mode` Parametresini kullanmak IÇIN Azure CLI sürüm 2.0.46 veya üstünü yüklediğinizden emin olun. Yüklü `az --version` sürümünüzü denetlemek için ' i çalıştırın.
+Parametresini kullanmak için `--auth-mode` Azure CLI sürüm 2.0.46 veya üstünü yüklediğinizden emin olun. `az --version`Yüklü sürümünüzü denetlemek için ' i çalıştırın.
 
 > [!IMPORTANT]
-> `--auth-mode` Parametresini atlarsanız veya olarak `key`ayarlarsanız, Azure CLI yetkilendirme için hesap erişim anahtarını kullanmaya çalışır. Bu durumda, Microsoft, erişim anahtarını komuta veya **AZURE_STORAGE_KEY** ortam değişkenine sağlamanızı önerir. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [yetkilendirme parametreleri için ortam değişkenlerini ayarlama](#set-environment-variables-for-authorization-parameters)başlıklı Bölüm.
+> `--auth-mode`Parametresini atlarsanız veya olarak ayarlarsanız `key` , Azure CLI yetkilendirme için hesap erişim anahtarını kullanmaya çalışır. Bu durumda, Microsoft, erişim anahtarını komuta veya **AZURE_STORAGE_KEY** ortam değişkenine sağlamanızı önerir. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [yetkilendirme parametreleri için ortam değişkenlerini ayarlama](#set-environment-variables-for-authorization-parameters)başlıklı Bölüm.
 >
 > Erişim anahtarını sağlamazsanız Azure CLı, Azure depolama kaynak sağlayıcısı 'nı her bir işlem için almak üzere çağırmayı dener. Kaynak sağlayıcısına çağrı gerektiren çok sayıda veri işlemi gerçekleştirmek, azaltma işlemine neden olabilir. Kaynak sağlayıcısı limitleri hakkında daha fazla bilgi için bkz. [Azure depolama kaynak sağlayıcısı Için ölçeklenebilirlik ve performans hedefleri](scalability-targets-resource-provider.md).
 
@@ -59,7 +59,7 @@ Aşağıdaki örnekte Azure AD kimlik bilgilerinizi kullanarak Azure CLı 'dan n
     > [!IMPORTANT]
     > RBAC rol atamalarının yayılması birkaç dakika sürebilir.
 
-1. Azure AD kimlik bilgilerinizi kullanarak kapsayıcıyı oluşturmak için `--auth-mode` parametresi olarak `login` ayarlanmış [az Storage Container Create](/cli/azure/storage/container#az-storage-container-create) komutunu çağırın. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+1. [az storage container create](/cli/azure/storage/container#az-storage-container-create) `--auth-mode` `login` Azure AD kimlik bilgilerinizi kullanarak kapsayıcıyı oluşturmak için parametresi olarak ayarlanmış az Storage Container Create komutunu çağırın. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
     ```azurecli
     az storage container create \
@@ -97,13 +97,13 @@ az storage container create \
 
 Her bir Azure depolama veri işlemine yapılan her çağrıya dahil etmek için, ortam değişkenlerinde yetkilendirme parametreleri belirtebilirsiniz. Aşağıdaki tabloda kullanılabilir ortam değişkenleri açıklanmaktadır.
 
-| Ortam değişkeni                  | Açıklama                                                                                                                                                                                                                                                                                                                                                                     |
+| Ortam değişkeni                  | Description                                                                                                                                                                                                                                                                                                                                                                     |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    AZURE_STORAGE_ACCOUNT              |    Depolama hesabı adı. Bu değişken, depolama hesabı anahtarı veya SAS belirteci ile birlikte kullanılmalıdır. Hiçbiri yoksa, Azure CLı kimliği doğrulanmış Azure AD hesabını kullanarak depolama hesabı erişim anahtarını almaya çalışır. Tek seferde çok sayıda komut yürütülürse, Azure depolama kaynak sağlayıcısı azaltma sınırına ulaşılmış olabilir. Kaynak sağlayıcısı limitleri hakkında daha fazla bilgi için bkz. [Azure depolama kaynak sağlayıcısı Için ölçeklenebilirlik ve performans hedefleri](scalability-targets-resource-provider.md).             |
 |    AZURE_STORAGE_KEY                  |    Depolama hesabı anahtarı. Bu değişkenin depolama hesabı adıyla birlikte kullanılması gerekir.                                                                                                                                                                                                                                                                          |
 |    AZURE_STORAGE_CONNECTION_STRING    |    Depolama hesabı anahtarını veya SAS belirtecini içeren bir bağlantı dizesi. Bu değişkenin depolama hesabı adıyla birlikte kullanılması gerekir.                                                                                                                                                                                                                       |
 |    AZURE_STORAGE_SAS_TOKEN            |    Paylaşılan erişim imzası (SAS) belirteci. Bu değişkenin depolama hesabı adıyla birlikte kullanılması gerekir.                                                                                                                                                                                                                                                            |
-|    AZURE_STORAGE_AUTH_MODE            |    Komutun çalıştırılacağı yetkilendirme modu. İzin verilen değerler `login` (önerilir) veya `key`. Belirtirseniz `login`, Azure CLI veri işlemini yetkilendirmek IÇIN Azure AD kimlik bilgilerinizi kullanır. Eski `key` modu belirtirseniz, Azure CLI hesap erişim anahtarını sorgulamaya çalışır ve anahtarı anahtarla yetkilendiremez.    |
+|    AZURE_STORAGE_AUTH_MODE            |    Komutun çalıştırılacağı yetkilendirme modu. İzin verilen değerler `login` (önerilir) veya `key` . Belirtirseniz `login` , Azure CLI veri işlemini yetkilendirmek Için Azure AD kimlik bilgilerinizi kullanır. Eski `key` modu belirtirseniz, Azure CLI hesap erişim anahtarını sorgulamaya çalışır ve anahtarı anahtarla yetkilendiremez.    |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

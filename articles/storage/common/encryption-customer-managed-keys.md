@@ -8,14 +8,14 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50d889faa4d5b6659ac5358ba49cc49c8531a914
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456830"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805366"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma
 
@@ -80,12 +80,12 @@ Anahtarın döndürülmesi, depolama hesabındaki verilerin yeniden şifrelenmes
 
 Depolama hesabının müşterinin yönettiği anahtara erişimini istediğiniz zaman iptal edebilirsiniz. Müşteri tarafından yönetilen anahtarlara erişim iptal edildiğinde veya anahtar devre dışı bırakıldıktan veya silindikten sonra istemciler, bir Blobun veya meta verilerinden okuma veya yazma işlemlerini çağıramaz. Aşağıdaki işlemlerden herhangi birini çağırma girişimleri, tüm kullanıcılar için 403 (yasak) hata kodu ile başarısız olur:
 
-- İstek URI 'sindeki `include=metadata` parametresiyle çağrıldığında [Blobları Listele](/rest/api/storageservices/list-blobs)
+- İstek URI 'sindeki parametresiyle çağrıldığında [Blobları Listele](/rest/api/storageservices/list-blobs) `include=metadata`
 - [Blob al](/rest/api/storageservices/get-blob)
 - [BLOB özelliklerini Al](/rest/api/storageservices/get-blob-properties)
 - [Blob meta verilerini al](/rest/api/storageservices/get-blob-metadata)
 - [Blob meta verilerini ayarla](/rest/api/storageservices/set-blob-metadata)
-- `x-ms-meta-name` İstek üstbilgisiyle çağrıldığında [anlık görüntü blobu](/rest/api/storageservices/snapshot-blob)
+- İstek üstbilgisiyle çağrıldığında [anlık görüntü blobu](/rest/api/storageservices/snapshot-blob) `x-ms-meta-name`
 - [İkili Büyük Nesneyi Kopyalama](/rest/api/storageservices/copy-blob)
 - [Blob 'U URL 'Den Kopyala](/rest/api/storageservices/copy-blob-from-url)
 - [Blob Katmanını Ayarla](/rest/api/storageservices/set-blob-tier)
@@ -113,4 +113,4 @@ Azure yönetilen disklerin şifrelenmesini yönetmek için müşteri tarafından
 - [Azure portal Azure depolama şifrelemesi için Key Vault ile müşteri tarafından yönetilen anahtarları yapılandırın](storage-encryption-keys-portal.md)
 - [Azure depolama şifrelemesi için Key Vault ile müşteri tarafından yönetilen anahtarları PowerShell 'den yapılandırma](storage-encryption-keys-powershell.md)
 - [Azure CLı 'dan Azure depolama şifrelemesi için Key Vault ile müşteri tarafından yönetilen anahtarları yapılandırma](storage-encryption-keys-cli.md)
-- [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md)
+- [Bekleyen veri için Azure Depolama şifrelemesi](storage-service-encryption.md)

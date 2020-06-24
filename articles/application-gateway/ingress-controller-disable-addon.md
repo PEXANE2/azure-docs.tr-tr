@@ -4,15 +4,15 @@ description: Bu makalede, AKS kümeniz için AGIC eklentisinin devre dışı bı
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 45c30a874b161301e3e9c1dafc33e495bbafb2de
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: fe4da0435731c536a723cb2cb43428166456360b
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670960"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807949"
 ---
 # <a name="disable-and-re-enable-agic-add-on-for-your-aks-cluster"></a>AKS kümeniz için AGIC eklentisini devre dışı bırakıp yeniden etkinleştirin
 AKS eklentisi olarak dağıtılan Application Gateway giriş denetleyicisi (AGIC), eklentiyi Azure CLı 'de tek bir satırla etkinleştirmenizi ve devre dışı bırakmanızı sağlar. Application Gateway yaşam döngüsü, belirsiz eklentiyi devre dışı bıraktığınızda, Application Gateway AGIC eklentisi tarafından oluşturulup oluşturulamadığını veya AGIC eklentisi 'nden ayrı olarak dağıtılıp dağıtılmadığını fark eder. Yeniden devre dışı bıraktığınızda veya var olan bir AKS kümesini kullanarak AGIC eklentisini etkinleştirmek veya Application Gateway için aynı komutu çalıştırabilirsiniz.

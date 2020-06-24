@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: efb25a16b5a3ae7de831436d255358aca19b828f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042193"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250723"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Çok kiracılı SaaS veritabanı Kiracı desenleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Her kiracı veritabanı tek bir veritabanı olarak dağıtılır.  Bu model, en 
 
 #### <a name="vendor-management"></a>Satıcı yönetimi
 
-Satıcı, uygulama örnekleri farklı kiracı aboneliklerine yüklense bile, tüm tek başına uygulama örneklerinde bulunan tüm veritabanlarına erişebilir.  Erişim, SQL bağlantıları aracılığıyla gerçekleştirilir.  Bu çapraz örnek erişimi, satıcının, raporlama veya analiz amaçları için şema yönetimini ve çapraz veritabanı sorgusunu merkezileştirme olanağı sağlayabilir.  Bu tür bir merkezi yönetim isteniyorsa, kiracı tanımlayıcılarını veritabanı URI 'leriyle eşleyen bir katalog dağıtılmalıdır.  Azure SQL veritabanı, bir katalog sağlamak için SQL veritabanıyla birlikte kullanılan bir parça kitaplığı sağlar.  Parçalı kitaplık, [elastik veritabanı Istemci kitaplığı][docu-elastic-db-client-library-536r]olarak adlandırılır.
+Satıcı, uygulama örnekleri farklı kiracı aboneliklerine yüklense bile, tüm tek başına uygulama örneklerinde bulunan tüm veritabanlarına erişebilir.  Erişim, SQL bağlantıları aracılığıyla gerçekleştirilir.  Bu çapraz örnek erişimi, satıcının, raporlama veya analiz amaçları için şema yönetimini ve çapraz veritabanı sorgusunu merkezileştirme olanağı sağlayabilir.  Bu tür bir merkezi yönetim isteniyorsa, kiracı tanımlayıcılarını veritabanı URI 'leriyle eşleyen bir katalog dağıtılmalıdır.  Azure SQL veritabanı, bir katalog sağlamak için birlikte kullanılan bir parça kitaplığı sağlar.  Parçalı kitaplık, [elastik veritabanı Istemci kitaplığı][docu-elastic-db-client-library-536r]olarak adlandırılır.
 
 ## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. Kiracı başına veritabanı ile çok kiracılı uygulama
 

@@ -15,14 +15,14 @@ ms.locfileid: "69014699"
 
 Azure Media Services en son sürümüne göz atın! 
 
-* [Genel bakış](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Genel Bakış](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
 * [Kavramlar](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
 * [Geliştirmeye başlama](https://docs.microsoft.com/azure/media-services/latest/developers-guide)
 * [v2’den v3’e geçiş kılavuzu](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3)
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (eski)
 
-* [Genel bakış](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
+* [Genel Bakış](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
 * [Hesap oluşturma](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
 * [İsteğe bağlı olarak sunun](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
 * [Canlı sunma](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)

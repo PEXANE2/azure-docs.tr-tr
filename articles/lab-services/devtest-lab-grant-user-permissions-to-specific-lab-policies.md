@@ -22,7 +22,7 @@ ms.lasthandoff: 06/11/2020
 ms.locfileid: "84710431"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Belirli laboratuvar ilkelerine Kullanıcı izinleri verme
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 Bu makalede, PowerShell kullanarak kullanıcılara belirli bir laboratuvar ilkesi için izinler verme konusu gösterilmektedir. Bu şekilde, izinler her kullanıcının ihtiyaçlarına göre uygulanabilir. Örneğin, belirli bir kullanıcıya VM ilkesi ayarlarını değiştirme yeteneği vermek isteyebilirsiniz, ancak maliyet ilkelerini etkilemez.
 
 ## <a name="policies-as-resources"></a>Kaynaklar olarak ilkeler

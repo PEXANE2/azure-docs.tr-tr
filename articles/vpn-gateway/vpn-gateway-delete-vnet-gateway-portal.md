@@ -6,13 +6,13 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.topic: conceptual
-ms.openlocfilehash: fba213be2de3b747d3ba962674a03c0bc7df3ed5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 68856a4c5218232943ac657bbd67759d5ab4b804
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863674"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983164"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Portalı kullanarak bir sanal ağ geçidini silme
 
@@ -60,5 +60,5 @@ Bu noktada, sanal ağ geçidi silinir. Sonraki adımlar artık kullanılmayan ka
 Kaynak grubunda kaynaklarınızdan herhangi birini tutmanın endişeniz yoksa ve yalnızca baştan başlamak istiyorsanız, bir kaynak grubunun tamamını silebilirsiniz. Bu, her şeyi kaldırmanın hızlı bir yoludur. Aşağıdaki adımlar yalnızca Kaynak Yöneticisi dağıtım modeli için geçerlidir.
 
 1. **Tüm kaynaklarda**, kaynak grubunu bulun ve dikey pencereyi açmak için tıklayın.
-2. **Sil**' e tıklayın. Sil dikey penceresinde etkilenen kaynakları görüntüleyin. Tüm bu kaynakları silmek istediğinizden emin olun. Aksi takdirde, bu makalenin üst kısmındaki VPN Gateway 'i silme bölümündeki adımları kullanın.
+2. **Sil**'e tıklayın. Sil dikey penceresinde etkilenen kaynakları görüntüleyin. Tüm bu kaynakları silmek istediğinizden emin olun. Aksi takdirde, bu makalenin üst kısmındaki VPN Gateway 'i silme bölümündeki adımları kullanın.
 3. Devam etmek için, silmek istediğiniz kaynak grubunun adını yazın ve **Sil**' e tıklayın.

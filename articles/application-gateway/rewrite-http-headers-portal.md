@@ -4,16 +4,16 @@ description: Azure portal kullanarak, ağ geçidinden gelen isteklerinize ve yan
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: b90736b3ed1c1f69488fde4a386cf215d751c362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74012851"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807892"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP isteği ve yanıt üst bilgilerini Azure Application Gateway yeniden yazma-Azure portal
 
@@ -99,7 +99,7 @@ Bu örnekte, bir arka uç uygulaması tarafından gönderilen HTTP yanıtında k
 
    - **İşleç** listesinde, **eşittir (=)** seçeneğini belirleyin.
 
-   - Normal ifade deseninin girin. Bu örnekte, bu kalıbı `(https?):\/\/.*azurewebsites\.net(.*)$`kullanacağız.
+   - Normal ifade deseninin girin. Bu örnekte, bu kalıbı kullanacağız `(https?):\/\/.*azurewebsites\.net(.*)$` .
 
    - **Tamam**’ı seçin.
 
@@ -115,7 +115,7 @@ Bu örnekte, bir arka uç uygulaması tarafından gönderilen HTTP yanıtında k
 
    - **Ortak üst bilgi** listesinde **konum**' u seçin.
 
-   - Üst bilgi değerini girin. Bu örnekte, üst bilgi değeri `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` olarak kullanacağız. Bu değer, *azurewebsites.net* konum üstbilgisindeki *contoso.com* ile değiştirilir.
+   - Üst bilgi değerini girin. Bu örnekte, `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` üst bilgi değeri olarak kullanacağız. Bu değer, *azurewebsites.net* konum üstbilgisindeki *contoso.com* ile değiştirilir.
 
    - **Tamam**’ı seçin.
 

@@ -7,26 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840647"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807677"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Açık kaynak araçları kullanarak Azure Ağ İzleyicisi NSG akış günlüklerini görselleştirme
 
 Ağ güvenlik grubu akış günlükleri, ağ güvenlik gruplarında giriş ve çıkış IP trafiğini anlamak için kullanılabilecek bilgiler sağlar. Bu akış günlükleri, her kural için giden ve gelen akışları gösterir, akışın geçerli olduğu NIC (kaynak/hedef IP, kaynak/hedef bağlantı noktası, protokol) ve trafiğe izin verildiyse veya reddedildiyse.
 
 Bu akış günlüklerinin el ile ayrıştırılması ve öngörüleri elde edilmesi zor olabilir. Ancak, bu verileri görselleştirmeye yardımcı olabilecek çeşitli açık kaynaklı araçlar vardır. Bu makalede, bir kibana panosunda akış günlüklerinizi hızlı bir şekilde dizinleyecek ve görselleştirmenize olanak tanıyan esnek yığını kullanarak bu günlükleri görselleştirmeye yönelik bir çözüm sağlanmaktadır.
-
-> [!Warning]  
-> Aşağıdaki adımlar akış günlükleri sürüm 1 ile birlikte çalışır. Ayrıntılar için bkz. [ağ güvenlik grupları için akış günlüğüne giriş](network-watcher-nsg-flow-logging-overview.md). Aşağıdaki yönergeler, değişiklik yapılmadan günlük dosyalarının 2. sürümüyle birlikte çalışmayacaktır.
 
 ## <a name="scenario"></a>Senaryo
 
@@ -44,7 +41,7 @@ NSG akış günlüklerini elastik Stack ile bağlayarak, günlüklerimize ilişk
 
 #### <a name="install-elasticsearch"></a>Elaa aramasını yükleme
 
-1. 5,0 ve üzeri sürümler için esnek yığın Java 8 gerektirir. Sürümünüzü denetlemek için `java -version` komutunu çalıştırın. Java yüklü değilse, [Azure-suppored JDKs](https://aka.ms/azure-jdks)ile ilgili belgelere başvurun.
+1. 5,0 ve üzeri sürümler için esnek yığın Java 8 gerektirir. `java -version`Sürümünüzü denetlemek için komutunu çalıştırın. Java yüklü değilse, [Azure-suppored JDKs](https://aka.ms/azure-jdks)ile ilgili belgelere başvurun.
 2. Sisteminiz için doğru ikili paketi indirin:
 
    ```bash
@@ -138,6 +135,11 @@ Elastik arama yükleme hakkında daha fazla yönerge için [yükleme yönergeler
                   "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
                   "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
                   "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+                  "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+                   "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+                   "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+                   "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+                   "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
                    }
       convert => {"unixtimestamp" => "integer"}
       convert => {"srcPort" => "integer"}

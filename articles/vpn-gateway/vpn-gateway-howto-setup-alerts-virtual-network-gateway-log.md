@@ -4,15 +4,15 @@ description: VPN Gateway tanılama kaynak günlüğü olaylarında uyarı yapıl
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 95c55242baf2ceb3620ed71026af2bad0195c22d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3417d2b6e105626bceb992db088a4d0113aa798f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127970"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983096"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway kaynak günlüğü olayları üzerinde uyarı ayarlama
 
@@ -45,7 +45,7 @@ Aşağıdaki örnek adımlarda, siteden siteye VPN tünelini içeren bir bağlan
 
    ![Log Analytics çalışma alanı oluşturma ayrıntıları](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Şunu seçin:")
 
-4. **Tanılama ayarlarını** **İzle** > dikey penceresinde VPN ağ geçidinizi bulun.
+4. **Monitor**  >  **Tanılama ayarlarını** izle dikey penceresinde VPN ağ geçidinizi bulun.
 
    ![Tanılama ayarlarında VPN ağ geçidini bulma seçimleri](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Şunu seçin:")
 

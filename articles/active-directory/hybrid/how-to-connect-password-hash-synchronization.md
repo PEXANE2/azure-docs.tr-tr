@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e37095a964e656160edbbbc4a325feceb1e48e74
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331362"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749636"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makale, Kullanıcı parolalarınızı şirket içi Active Directory örneğinden bulut tabanlı Azure Active Directory (Azure AD) örneğine eşitlemeniz için gereken bilgileri sağlar.
@@ -63,7 +63,7 @@ Aşağıdaki bölümde, parola karma eşitlemesinin Active Directory ile Azure A
 > [!NOTE]
 > Özgün MD4 karması Azure AD 'ye aktarılmaz. Bunun yerine, özgün MD4 karmasının SHA256 karması iletilir. Sonuç olarak, Azure AD 'de depolanan karma değer elde edilmişse, şirket içi bir karma geçişi saldırısında kullanılamaz.
 
-### <a name="security-considerations"></a>Güvenlik konuları
+### <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Parolaları eşitlerken, parolanızın düz metin sürümü Parola karması eşitleme özelliğine, Azure AD 'ye veya ilişkili hizmetlerden herhangi birine gösterilmez.
 
@@ -89,14 +89,13 @@ Bir kullanıcı parola karması eşitleme kapsamınsa, varsayılan olarak, bulut
 
 Şirket içi ortamınızda kullanım dışı olan eşitlenmiş bir parolayı kullanarak bulut hizmetlerinize oturum açmaya devam edebilirsiniz. Şirket içi ortamda parolayı bir sonraki değiştirişinizde bulut parolanız güncelleştirilir.
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>*Enforcechoparlör Passwordpolicyforpasswordsyncedusers* özelliğinin genel önizlemesi
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>Enforcechoparlör Passwordpolicyforpasswordsyncedusers
 
 Yalnızca Azure AD ile tümleşik hizmetler ile etkileşime geçen eşitlenmiş kullanıcılar varsa ve bir parola süre sonu ilkesiyle uyumlu olması gerekiyorsa, *Enforcechoparlör Passwordpolicyforpasswordsyncedusers* özelliğini etkinleştirerek BUNLARı Azure AD parola süre sonu ilkenize uygun hale getirebilirsiniz.
 
 *Enforcecıpasswordpolicyforpasswordsyncedusers* devre dışı bırakıldığında (varsayılan ayar), Azure AD Connect eşitlenen kullanıcıların passwordpolicies özniteliğini "Disablepasswordexpidıma" olarak ayarlar. Bu, bir kullanıcının parolasının her eşitlenilişinde yapılır ve Azure AD 'yi bu kullanıcı için bulut parolası süre sonu ilkesini yoksayacak şekilde yönlendirir. Aşağıdaki komutla Azure AD PowerShell modülünü kullanarak özniteliğin değerini kontrol edebilirsiniz:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 Enforcechoparlör Passwordpolicyforpasswordsyncedusers özelliğini etkinleştirmek için aşağıda gösterildiği gibi MSOnline PowerShell modülünü kullanarak aşağıdaki komutu çalıştırın. Enable parametresi için aşağıda gösterildiği gibi Yes yazmanız gerekir:
 
@@ -110,15 +109,15 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Etkinleştirildikten sonra Azure AD, PasswordPolicies özniteliğinden `DisablePasswordExpiration` değeri kaldırmak için eşitlenmiş her kullanıcıya gitmez. Bunun yerine, Kullanıcı şirket içi AD `None` 'de parolasını değiştirdiklerinde, her kullanıcı için bir sonraki parola eşitlemesi sırasında değeri olarak ayarlanır.  
+Etkinleştirildikten sonra Azure AD, PasswordPolicies özniteliğinden değeri kaldırmak için eşitlenmiş her kullanıcıya gitmez `DisablePasswordExpiration` . Bunun yerine, `None` Kullanıcı şirket ıçı ad 'de parolasını değiştirdiklerinde, her kullanıcı için bir sonraki parola eşitlemesi sırasında değeri olarak ayarlanır.  
 
-Parola karma eşitlemesi etkinleştirilmeden önce Enforcechoparlör Passwordpolicyforpasswordsyncedusers ' ı etkinleştirmeniz önerilir, böylece parola karmalarının ilk eşitlenmesi, kullanıcılar için PasswordPolicies özniteliğine `DisablePasswordExpiration` değeri eklemez.
+Parola karma eşitlemesi etkinleştirilmeden önce Enforcechoparlör Passwordpolicyforpasswordsyncedusers ' ı etkinleştirmeniz önerilir, böylece parola karmalarının ilk eşitlenmesi, `DisablePasswordExpiration` Kullanıcılar Için PasswordPolicies özniteliğine değeri eklemez.
 
 Varsayılan Azure AD parola ilkesi, kullanıcıların parolalarının her 90 günde bir değiştirilmesini gerektirir. AD 'deki ilkeniz da 90 gün ise, iki ilke eşleşmelidir. Ancak, AD ilkesi 90 gün değilse, Set-MsolPasswordPolicy PowerShell komutunu kullanarak Azure AD parola ilkesini eşleşecek şekilde güncelleştirebilirsiniz.
 
 Azure AD, kayıtlı etki alanı başına ayrı bir parola süre sonu ilkesini destekler.
 
-Desteklenmediği uyarısıyla: Azure AD 'de süresi dolmayan parolalara sahip olması gereken eşitlenmiş hesaplar varsa, `DisablePasswordExpiration` değeri, Azure AD 'de Kullanıcı nesnesinin passwordpolicies özniteliğine açıkça eklemeniz gerekir.  Bunu, aşağıdaki komutu çalıştırarak yapabilirsiniz.
+Desteklenmediği uyarısıyla: Azure AD 'de süresi dolmayan parolalara sahip olması gereken eşitlenmiş hesaplar varsa, `DisablePasswordExpiration` değeri, Azure AD 'de Kullanıcı nesnesinin PasswordPolicies özniteliğine açıkça eklemeniz gerekir.  Bunu, aşağıdaki komutu çalıştırarak yapabilirsiniz.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
@@ -126,7 +125,7 @@ Desteklenmediği uyarısıyla: Azure AD 'de süresi dolmayan parolalara sahip ol
 > Bu özellik şu anda genel önizlemede.
 > Set-MsolPasswordPolicy PowerShell komutu, Federasyon etki alanlarında çalışmayacaktır. 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Geçici parolaların eşitlenmesinin genel önizlemesi ve "bir sonraki oturumda parola değişikliğini zorla"
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Geçici parolalar eşitleniyor ve "bir sonraki oturumda parola değişikliğini zorla"
 
 Bir kullanıcıyı ilk oturum açma sırasında, özellikle de yönetici parolası sıfırlama oluştuktan sonra parolalarını değiştirmeye zorlamak normaldir.  Genellikle "geçici" bir parola ayarı olarak bilinir ve Active Directory (AD) içindeki bir kullanıcı nesnesi üzerinde "Kullanıcı bir sonraki oturum açışında parolayı değiştirmeli" bayrağıyla tamamlanır.
   
@@ -216,7 +215,7 @@ Sunucunuz Federal bilgi Işleme standardı (FIPS) uyarınca kilitliyse, MD5 devr
 **Parola karması eşitlemesi için MD5 etkinleştirmek üzere aşağıdaki adımları uygulayın:**
 
 1. %Programfiles%\Azure AD Sync\Bin. 'e gidin
-2. Mııver. exe. config dosyasını açın.
+2. miiserver.exe.config açın.
 3. Dosyanın sonundaki yapılandırma/çalışma zamanı düğümüne gidin.
 4. Aşağıdaki düğümü ekleyin:`<enforceFIPSPolicy enabled="false"/>`
 5. Yaptığınız değişiklikleri kaydedin.

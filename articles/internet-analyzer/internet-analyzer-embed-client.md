@@ -4,15 +4,15 @@ description: Bu makalede, uygulamanıza Internet Çözümleyicisi JavaScript ist
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: f9ecb8d731945847160b49c68c554fafdd7285d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d4b27b85ac7bc61e14a79f29e4e26ec4973ced1
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74896377"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744060"
 ---
 # <a name="embed-the-internet-analyzer-client"></a>Internet çözümleyici istemcisini katıştırma
 
@@ -24,7 +24,7 @@ Bu makalede JavaScript istemcisini uygulamanıza nasıl katıştırabileceğiniz
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Internet Çözümleyicisi 'nin doğru çalışması için Azure 'a ve diğer Microsoft hizmetlerine erişimi olması gerekir. İstemciyi gömmeden önce lütfen `fpc.msedge.net` ve önceden yapılandırılmış tüm uç nokta URL 'Lerine ( [CLI](internet-analyzer-cli.md)aracılığıyla görünür) ağ erişimine izin verin.
+Internet Çözümleyicisi 'nin doğru çalışması için Azure 'a ve diğer Microsoft hizmetlerine erişimi olması gerekir. `fpc.msedge.net`İstemciyi gömmeden önce lütfen ve önceden yapılandırılmış tüm uç nokta URL 'lerine ( [CLI](internet-analyzer-cli.md)aracılığıyla görünür) ağ erişimine izin verin.
 
 ## <a name="find-the-client-script-url"></a>İstemci komut dosyası URL 'sini bulma
 
@@ -44,7 +44,7 @@ Betik, özel olarak profil ve testleriniz için oluşturulur. Yüklendikten sonr
 
 ## <a name="client-examples"></a>İstemci örnekleri
 
-Bu örneklerde, istemci JavaScript 'ı Web sayfanıza veya uygulamanıza eklemek için birkaç temel yöntem gösterilmektedir. Betik URL `0bfcb32638b44927935b9df86dcfe397` 'si için örnek BIR profil kimliği olarak kullanıyoruz.
+Bu örneklerde, istemci JavaScript 'ı Web sayfanıza veya uygulamanıza eklemek için birkaç temel yöntem gösterilmektedir. `0bfcb32638b44927935b9df86dcfe397`Betik URL 'si için örnek bir PROFIL kimliği olarak kullanıyoruz.
 
 ### <a name="run-on-page-load"></a>Sayfa yükleme sırasında Çalıştır
 En basit yöntem, meta etiketi bloğunun içindeki komut dosyası etiketini kullanmaktır. Bu etiket, sayfa yüküne göre betiği çalıştırır.

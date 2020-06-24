@@ -4,18 +4,18 @@ description: 'Application Gateway sunucu hatası giderme hakkında bilgi edinin:
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: a48ed39af243296bcb76cb61f1fe64e4e95ab7e7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801765"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808148"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway’deki hatalı ağ geçidi hataları ile ilgili sorunları giderme
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'>Start</a></span><span class="has-padding-small"> <b>Otomatikleştirilmiş tanılamayı</b> çalıştırmak için sanal aracımızı kullanarak sorununuzu hızlı bir şekilde çözmeyi başlatın.</span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Gizlilik <div align="right">bildirimi</div></a></span></p>
+
 Azure Application Gateway kullanılırken hatalı ağ geçidi (502) ile ilgili sorunların nasıl giderileceği hakkında bilgi edinin.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -82,7 +82,7 @@ Bir uygulama ağ geçidi örneği sağlandığında, BackendHttpSetting 'in öze
 
 Aşağıdaki tabloda, varsayılan sistem durumu araştırmasıyla ilişkili değerler listelenmektedir:
 
-| Araştırma özelliği | Değer | Açıklama |
+| Araştırma özelliği | Değer | Description |
 | --- | --- | --- |
 | Araştırma URL 'SI |`http://127.0.0.1/` |URL yolu |
 | Interval |30 |Saniye cinsinden yoklama aralığı |
@@ -93,7 +93,7 @@ Aşağıdaki tabloda, varsayılan sistem durumu araştırmasıyla ilişkili değ
 
 * Varsayılan bir sitenin yapılandırıldığından ve 127.0.0.1 ' de dinleme yapıldığından emin olun.
 * BackendHttpSetting, 80 dışında bir bağlantı noktası belirtiyorsa, varsayılan site bu bağlantı noktasını dinlemek üzere yapılandırılmalıdır.
-* Çağrısı `http://127.0.0.1:port` , 200 http sonuç kodunu döndürmelidir. Bu, 30 saniyelik zaman aşımı süresi içinde döndürülmelidir.
+* Çağrısı, `http://127.0.0.1:port` 200 http sonuç kodunu döndürmelidir. Bu, 30 saniyelik zaman aşımı süresi içinde döndürülmelidir.
 * Yapılandırılmış bağlantı noktasının açık olduğundan ve yapılandırılmış bağlantı noktasındaki gelen veya giden trafiği engelleyen güvenlik duvarı kuralları veya Azure ağ güvenlik grupları olmadığından emin olun.
 * Azure klasik VM 'Ler veya bulut hizmeti bir FQDN veya genel IP ile kullanılıyorsa, karşılık gelen [bitiş noktasının](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) açık olduğundan emin olun.
 * VM, Azure Resource Manager aracılığıyla yapılandırıldıysa ve uygulama ağ geçidinin dağıtıldığı VNet dışındaysa, istenen bağlantı noktasında erişime izin verecek şekilde bir [ağ güvenlik grubu](../virtual-network/security-overview.md) yapılandırılmalıdır.
@@ -106,12 +106,12 @@ Aşağıdaki tabloda, varsayılan sistem durumu araştırmasıyla ilişkili değ
 
 Aşağıdaki ek özellikler eklenmiştir:
 
-| Araştırma özelliği | Açıklama |
+| Araştırma özelliği | Description |
 | --- | --- |
 | Name |Araştırmanın adı. Bu ad, arka uç HTTP ayarlarındaki araştırmayı ifade etmek için kullanılır. |
 | Protokol |Araştırmayı göndermek için kullanılan protokol. Araştırma, arka uç HTTP ayarlarında tanımlanan protokolü kullanır |
-| Ana bilgisayar |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
-| Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. \<Araştırma, protokol\>://\<ana bilgisayar\>:\<bağlantı noktası\>\<yoluna gönderilir\> |
+| Host |Araştırmanın gönderileceği ana bilgisayar adı. Yalnızca uygulama ağ geçidinde birden çok site yapılandırıldığında geçerlidir. Bu, VM ana bilgisayar adından farklıdır. |
+| Yol |Araştırmanın göreli yolu. Geçerli yol '/' öğesinden başlar. Araştırma \<protocol\> ://: öğesine gönderiliyor \<host\>\<port\>\<path\> |
 | Interval |Saniye cinsinden yoklama aralığı. Bu iki ardışık yoklama arasındaki zaman aralığıdır. |
 | Zaman aşımı |Saniye cinsinden araştırma zaman aşımı. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmadıysa, araştırma başarısız olarak işaretlenir. |
 | Sağlıksız durum eşiği |Araştırma yeniden deneme sayısı. Arka uç sunucusu, ardışık araştırma hatası sayısı uygun olmayan eşiğe ulaştığında aşağı olarak işaretlenir. |
@@ -121,8 +121,8 @@ Aşağıdaki ek özellikler eklenmiştir:
 Özel durum araştırmasının önceki tablo olarak doğru şekilde yapılandırıldığını doğrulayın. Yukarıdaki sorun giderme adımlarına ek olarak, aşağıdakileri de doğrulayın:
 
 * Araştırmanın [kılavuza](application-gateway-create-probe-ps.md)göre doğru belirtildiğinden emin olun.
-* Uygulama ağ geçidi, tek bir site için yapılandırılmışsa, varsayılan olarak, özel araştırmata yapılandırılmadığı sürece konak `127.0.0.1`adı olarak belirtilmelidir.
-* Http://\<\>Host:\<bağlantı noktası\>\<yolu\> çağrısı için 200 olan bir http sonuç kodu döndürdüğünden emin olun.
+* Uygulama ağ geçidi, tek bir site için yapılandırılmışsa, varsayılan olarak, `127.0.0.1` özel araştırmata yapılandırılmadığı sürece konak adı olarak belirtilmelidir.
+* Http://: için bir çağrının \<host\> \<port\> \<path\> 200 http sonuç kodunu döndürdüğünden emin olun.
 * Aralık, zaman aşımı ve Unhealtrivı eşiğinin kabul edilebilir aralıklar içinde olduğundan emin olun.
 * HTTPS araştırması kullanıyorsanız, arka uç sunucusunun arka uç sunucusu üzerinde bir geri dönüş sertifikası yapılandırarak SNı gerektirmediğinden emin olun.
 

@@ -4,15 +4,15 @@ description: Şirket içi ağınız ile klasik Azure sanal ağı arasında genel
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f096993645aca6999667af88c91d3f55f79d914
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244452"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983062"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure portalını (klasik) kullanarak Siteden Siteye bağlantı oluşturma
 
@@ -157,7 +157,7 @@ Bu adımda, paylaşılan anahtarı ayarlayabilir ve bağlantıyı oluşturabilir
 > Şu anda, bu yapılandırma Azure portalında mevcut değildir. Azure PowerShell cmdlet’lerinin Hizmet Yönetimi (SM) sürümünü kullanmanız gerekir. Bu cmdlet 'leri yükleme hakkında bilgi için [başlamadan önce](#before) bölümüne bakın.
 >
 
-### <a name="step-1-connect-to-your-azure-account"></a>1. Adım. Azure hesabınıza bağlanma
+### <a name="step-1-connect-to-your-azure-account"></a>Adım 1. Azure hesabınıza bağlanma
 
 PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak çalıştırmanız gerekir. 
 
@@ -182,7 +182,7 @@ PowerShell hizmeti yönetim modülünü kullanarak bu komutları yerel olarak ç
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
    ```
 
-### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>2. Adım Paylaşılan anahtarı ayarlama ve bağlantıyı oluşturma
+### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>Adım 2. Paylaşılan anahtarı ayarlama ve bağlantıyı oluşturma
 
 Portalda klasik bir sanal ağ oluşturduğunuzda (PowerShell kullanarak), Azure Kaynak grubu adını kısa ada ekler. Örneğin, Azure 'a göre, bu alıştırma için oluşturduğunuz VNet 'in adı "TestVNet1" değil "Group TestRG1 TestVNet1" dır. PowerShell, portalda görünen kısa adı değil, sanal ağın tam adını gerektirir. Uzun ad portalda görünmez. Aşağıdaki adımlar, sanal ağ adının tam değerlerini almak için ağ yapılandırma dosyasını dışarı aktarmaya yardımcı olur. 
 

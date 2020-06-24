@@ -2,18 +2,18 @@
 title: Azure Blockchain Workbench verilerini Microsoft Power BI’da kullanma
 description: Azure Blockchain Workbench SQL DB verilerini Microsoft Power BI’da yüklemeyi ve görüntülemeyi öğrenin.
 ms.date: 04/22/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: sunri
-ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082535"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214239"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Azure Blockchain Workbench verilerini Microsoft Power BI ile kullanma
 
-Microsoft Power BI, Power BI Desktop kullanarak SQL DB veritabanlarından kolayca güçlü raporlar oluşturma ve bunları ' de yayımlama olanağı sağlar [https://www.powerbi.com](https://www.powerbi.com).
+Microsoft Power BI, Power BI Desktop kullanarak SQL DB veritabanlarından kolayca güçlü raporlar oluşturma ve bunları ' de yayımlama olanağı sağlar [https://www.powerbi.com](https://www.powerbi.com) .
 
 Bu makale, Azure Blockchain Workbench'in SQL Veritabanı’na PowerBI Desktop’ın içinden bağlanma, bir rapor oluşturma ve raporu powerbi.com’a dağıtma sürecine ilişkin adım adım bir kılavuz içerir.
 
@@ -23,7 +23,7 @@ Bu makale, Azure Blockchain Workbench'in SQL Veritabanı’na PowerBI Desktop’
 
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Azure blok zinciri çalışma ekranı 'ndaki verilere Power BI bağlama
 
-1.  Power BI Desktop’ı açın.
+1.  Power BI Desktop'ı açın.
 2.  **Veri Al**’ı seçin.
 
     ![Verileri alma](./media/data-powerbi/get-data.png)

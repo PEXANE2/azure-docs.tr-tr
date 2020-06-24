@@ -4,15 +4,15 @@ description: Bu makalede, aks Pod 'ye bir Application Gateway ile sistem durumu 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 3ef0f89d7011da1f86032202f408aaae83dcf160
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 8c8b8b0090877db7abc8fae0e44f928e8b10dcf5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675263"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808000"
 ---
 # <a name="add-health-probes-to-your-service"></a>Hizmetinize sistem durumu araştırmaları ekleyin
 Varsayılan olarak, giriş denetleyicisi, sunulan pods 'ler için bir HTTP GET araştırması sağlayacak.

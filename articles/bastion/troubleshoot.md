@@ -4,15 +4,15 @@ description: Bu makalede, Azure savunma sorunlarını giderme hakkında bilgi ed
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 749d7125c013f419197ef8243d2475e612dc81b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab4cc288f2a505baaa8f3a70db0a1fe76fb20c96
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619179"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744077"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion sorunlarını giderme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure savunma sorunlarını giderme işlemi gösterilmektedir.
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>AzureBastionSubnet üzerinde NSG oluşturulamıyor
 
-**S:** Azure savunma alt ağında bir NSG oluşturmayı denediğimde şu hatayı alıyorum: *' ağ güvenlik <NSG name> grubu, Azure savunma alt ağı için gerekli kurallara sahip değil AzureBastionSubnet "*.
+**S:** Azure savunma alt ağında bir NSG oluşturmayı denediğimde şu hatayı alıyorum: *' ağ güvenlik grubu, <NSG name> Azure savunma alt ağı için gerekli kurallara sahip değil AzureBastionSubnet "*.
 
 Y **:** *AzureBastionSubnet*'e BIR NSG oluşturup uygularsanız, NSG 'nize aşağıdaki kuralları eklediğinizden emin olun. Bu kuralları eklemedikçe NSG oluşturma/güncelleştirme başarısız olur.
 
@@ -39,7 +39,7 @@ Y **:** Azure savunma yalnızca RSA SSH anahtarlarını destekler, bu noktada za
 
 Örnek olarak, yeni bir RSA SSH anahtarı oluşturmak için aşağıdaki komutu kullanabilirsiniz:
 
-**SSH-keygen-t RSA-b 4096-C "email@domain.com"**
+**SSH-keygen-t RSA-b 4096-C " email@domain.com "**
 
 Çıktı:
 
@@ -71,7 +71,7 @@ The key's randomart image is:
 
 **S:** Etki alanına katılmış Windows sanal makinmem ile bağlantı kuramıyor.
 
-Y **:** Azure savunma, etki alanına katılmış VM 'nin Kullanıcı adı için oturum açmasını destekler-yalnızca parola tabanlı etki alanı oturum açma. Azure portal etki alanı kimlik bilgilerini belirtirken, oturum açmak içinusername@domain *etkialanı \ KULLANıCıADı* biçiminde değil UPN () biçimini kullanın. Bu, etki alanına katılmış veya hibrit katılmış (hem etki alanına katılmış hem de Azure AD 'ye katılmış) sanal makineler için desteklenir. Yalnızca Azure AD 'ye katılmış sanal makinelerde desteklenmez.
+Y **:** Azure savunma, etki alanına katılmış VM 'nin Kullanıcı adı için oturum açmasını destekler-yalnızca parola tabanlı etki alanı oturum açma. Azure portal etki alanı kimlik bilgilerini belirtirken, username@domain oturum açmak için *etkialanı \ KullanıcıAdı* biçiminde değil UPN () biçimini kullanın. Bu, etki alanına katılmış veya hibrit katılmış (hem etki alanına katılmış hem de Azure AD 'ye katılmış) sanal makineler için desteklenir. Yalnızca Azure AD 'ye katılmış sanal makinelerde desteklenmez.
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Dosya aktarımı sorunları
 

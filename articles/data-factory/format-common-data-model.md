@@ -5,14 +5,14 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/16/2020
 ms.author: daperlov
-ms.openlocfilehash: 1764036413d6e4f634ed156f7cfb441b4a2bb1e6
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604975"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807810"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory ortak veri modeli biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,14 +32,14 @@ Ortak veri modeli, kaynak ve havuz olarak eşleme verilerinde bir [satır içi](
 
 Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **kaynak seçenekleri** sekmesinde düzenleyebilirsiniz.
 
-| Name | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| Name | Description | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Biçimlendir | Biçim olmalıdır`cdm` | evet | `cdm` | biçim |
-| Meta veri biçimi | Verilerin Varlık başvurusunun bulunduğu yer. CDM sürüm 1,0 kullanıyorsanız, bildirim ' ı seçin. 1,0 öncesi bir CDM sürümü kullanıyorsanız, model. json ' ı seçin. | Yes | `'manifest'` veya `'model'` | manifestType |
+| Meta veri biçimi | Verilerin Varlık başvurusunun bulunduğu yer. CDM sürüm 1,0 kullanıyorsanız, bildirim ' ı seçin. 1,0 öncesi bir CDM sürümü kullanıyorsanız, üzerinde model.js' yi seçin. | Yes | `'manifest'` veya `'model'` | manifestType |
 | Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | evet | Dize | Biçimlendiri |
 | Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | evet | Dize | folderPath |
 | Bildirim dosyası: varlık yolu | Kök klasör içindeki varlığın klasör yolu | hayır | Dize | entityPath |
-| Bildirim dosyası: bildirim adı | Bildirim dosyasının adı. Varsayılan değer ' default ' değeridir  | Hayır | Dize | manifestName |
+| Bildirim dosyası: bildirim adı | Bildirim dosyasının adı. Varsayılan değer ' default ' değeridir  | No | Dize | manifestName |
 | Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Zaman damgası | Modıfıedafter <br> modifiedBefore | 
 | Şemaya bağlı hizmet | Yapı 'nin bulunduğu bağlı hizmet | Evet, bildirim kullanılıyorsa | `'adlsgen2'` veya `'github'` | corpusStore | 
 | Varlık başvurusu kapsayıcısı | Kapsayıcı yapı | Evet, bildirim ve yapı ADLS 2. kullanılıyorsa | Dize | adlsgen2_fileSystem |
@@ -53,35 +53,28 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 
 CDM yalnızca satır içi veri kümesi olarak kullanılabilir ve varsayılan olarak ilişkili bir şemaya sahip değildir. Sütun meta verilerini almak için **İzdüşüm** sekmesindeki **şemayı içeri aktar** düğmesine tıklayın. Bu, Corpus tarafından belirtilen sütun adlarına ve veri türlerine başvuruda bulunmak için izin verir. Şemayı içeri aktarmak için bir [veri akışı hata ayıklama oturumunun](concepts-data-flow-debug-mode.md) etkin olması gerekir.
 
-![Şemayı içeri aktar](media/format-common-data-model/import-schema-source.png)
 
-### <a name="cdm-source-example"></a>CDM kaynak örneği
-
-Aşağıdaki görüntü, veri akışları eşleme içindeki bir CDM kaynak yapılandırmasına örnektir.
-
-![CDM kaynağı](media/format-common-data-model/data-flow-source.png)
-
-İlişkili veri akışı betiği:
+### <a name="cdm-source-data-flow-script-example"></a>CDM kaynak veri akışı betiği örneği
 
 ```
 source(output(
-        ServingSizeId as integer,
-        ServingSize as integer,
-        ServingSizeUomId as string,
-        ServingSizeNote as string,
+        ProductSizeId as integer,
+        ProductColor as integer,
+        CustomerId as string,
+        Note as string,
         LastModifiedDate as timestamp
     ),
     allowSchemaDrift: true,
     validateSchema: false,
-    entity: 'ServingSize.cdm.json/ServingSize',
+    entity: 'Product.cdm.json/Product',
     format: 'cdm',
     manifestType: 'manifest',
-    manifestName: 'ServingSizeManifest',
-    entityPath: 'ServingSize',
-    corpusPath: 'ProductAhold_Updated',
+    manifestName: 'ProductManifest',
+    entityPath: 'Product',
+    corpusPath: 'Products',
     corpusStore: 'adlsgen2',
     adlsgen2_fileSystem: 'models',
-    folderPath: 'ServingSizeData',
+    folderPath: 'ProductData',
     fileSystem: 'data') ~> CDMSource
 ```
 
@@ -89,13 +82,13 @@ source(output(
 
 Aşağıdaki tabloda bir CDM havuzu tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **Ayarlar** sekmesinde düzenleyebilirsiniz.
 
-| Name | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| Name | Description | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Biçimlendir | Biçim olmalıdır`cdm` | evet | `cdm` | biçim |
 | Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | evet | Dize | Biçimlendiri |
 | Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | evet | Dize | folderPath |
 | Bildirim dosyası: varlık yolu | Kök klasör içindeki varlığın klasör yolu | hayır | Dize | entityPath |
-| Bildirim dosyası: bildirim adı | Bildirim dosyasının adı. Varsayılan değer ' default ' değeridir | Hayır | Dize | manifestName |
+| Bildirim dosyası: bildirim adı | Bildirim dosyasının adı. Varsayılan değer ' default ' değeridir | No | Dize | manifestName |
 | Şemaya bağlı hizmet | Yapı 'nin bulunduğu bağlı hizmet | evet | `'adlsgen2'` veya `'github'` | corpusStore | 
 | Varlık başvurusu kapsayıcısı | Kapsayıcı yapı | Evet, yapı ADLS 2. | Dize | adlsgen2_fileSystem |
 | Varlık başvuru deposu | GitHub deposu adı | Evet, GitHub 'da yapı | Dize | github_repository |
@@ -108,24 +101,20 @@ Aşağıdaki tabloda bir CDM havuzu tarafından desteklenen özellikler listelen
 | Sütun sınırlayıcısı | DelimitedText 'e yazıyorsanız sütunları sınırlandırmak | Evet, DelimitedText 'e yazıyorsanız | Dize | columnDelimiter |
 | Üst bilgi olarak ilk satır | DelimitedText kullanılıyorsa, sütun adlarının üst bilgi olarak eklenip eklenmeyeceğini belirtir | hayır | `true` veya `false` | columnNamesAsHeader |
 
-### <a name="cdm-sink-example"></a>CDM havuz örneği
-
-Aşağıdaki görüntü, veri akışları eşleme içindeki bir CDM havuz yapılandırması örneğidir.
-
-![CDM kaynağı](media/format-common-data-model/data-flow-sink.png)
+### <a name="cdm-sink-data-flow-script-example"></a>CDM havuz veri akışı betiği örneği
 
 İlişkili veri akışı betiği:
 
 ```
 CDMSource sink(allowSchemaDrift: true,
     validateSchema: false,
-    entity: 'ServingSize.cdm.json/ServingSize',
+    entity: 'Product.cdm.json/Product',
     format: 'cdm',
-    entityPath: 'ServingSize',
-    manifestName: 'ServingSizeManifest',
-    corpusPath: 'ProductAhold_Updated',
+    entityPath: 'ProductSize',
+    manifestName: 'ProductSizeManifest',
+    corpusPath: 'Products',
     partitionPath: 'adf',
-    folderPath: 'ServingSizeData',
+    folderPath: 'ProductSizeData',
     fileSystem: 'cdm',
     subformat: 'parquet',
     corpusStore: 'adlsgen2',

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b46e8efb252224f83603000777b2e342f7e7ab9d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684432"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250358"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure 'da isteğe bağlı Red Hat Enterprise Linux VM 'Ler için Red Hat güncelleştirme altyapısı
  [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (rhuı), Azure gibi bulut sağlayıcılarının Red Hat ile barındırılan depo içeriğini yansıtmasını, Azure 'a özgü içerikle özel depolar oluşturmasını ve Son Kullanıcı VM 'leri için kullanılabilir olmasını sağlar.
@@ -83,7 +83,7 @@ Genişletilmiş güncelleştirme desteği (EUS) depoları, VM sağlamaktan sonra
 >[!NOTE]
 > RHEL ek özellikleri üzerinde EUS desteklenmez. Bu, genellikle RHEL ek özellikler kanalından kullanılabilen bir paketi yüklüyorsanız, duyurken bunu yapamazsınız. Red Hat ek özellikleri ürün yaşam döngüsü [burada](https://access.redhat.com/support/policy/updates/extras/)ayrıntılı olarak verilmiştir.
 
-Bu yazma sırasında, RHEL <= 7,4 için EUS desteği sona ermiştir. Daha fazla bilgi için [Red Hat belgelerindeki](https://access.redhat.com/support/policy/updates/errata/) "daha uzun destek eklentileri Red Hat Enterprise Linux" bölümüne bakın.
+Bu yazma sırasında, RHEL <= 7,4 için EUS desteği sona ermiştir. Daha fazla bilgi için [Red Hat belgelerindeki](https://access.redhat.com/support/policy/updates/errata/#Long_Support) "genişletilmiş bakım Red Hat Enterprise Linux" bölümüne bakın.
 * RHEL 7,4 EUS desteği 31 Ağustos 2019 ' de bitiyor
 * RHEL 7,5 EUS desteği 30 Nisan 2020 ' de bitiyor
 * RHEL 7,6 EUS desteği 31 Ekim 2020 ' de bitiyor
@@ -164,13 +164,18 @@ RHEL PAYG VM 'lerinden erişimi daha fazla kısıtlamak için bir ağ yapıland�
 51.5.243.77
 51.4.228.145
 ```
+>[!NOTE]
+>Yeni Azure ABD kamu görüntüleri, Ocak 2020 itibariyle yukarıdaki Azure genel üst bilgisinde bahsedilen genel IP 'yi kullanacaktır.
+
+>[!NOTE]
+>Ayrıca, Azure Almanya 'nın genel Almanya bölgelerinde kullanım dışı olduğunu unutmayın. Azure Almanya müşterileri için öneri [buradaki](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)adımları kullanarak public rhuı 'a işaret ediyor.
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUı altyapısı
 
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>VM 'de RHUı istemci sertifikasını güncelleştirme zaman aşımına uğradı
 
-Daha eski bir RHEL VM görüntüsü kullanıyorsanız (örneğin, RHEL 7,4 (görüntü URN: `RedHat:RHEL:7.4:7.4.2018010506` ), süresi dolan BIR TLS/SSL istemci sertifikası nedenıyle rhuı ile bağlantı sorunlarıyla karşılaşırsınız. Gördüğünüz hata _"SSL eşi sertifikanıza süre geçmiş olarak reddedildi"_ veya _"hata: depo meta verileri (repomd. xml) depo için alınamıyor:... Lütfen yolunu doğrulayıp yeniden deneyin "_. Bu sorunu çözmek için lütfen aşağıdaki komutu kullanarak VM 'deki RHUı istemci paketini güncelleştirin:
+Daha eski bir RHEL VM görüntüsü kullanıyorsanız (örneğin, RHEL 7,4 (görüntü URN: `RedHat:RHEL:7.4:7.4.2018010506` ), süresi dolan BIR TLS/SSL istemci sertifikası nedenıyle rhuı ile bağlantı sorunlarıyla karşılaşırsınız. Gördüğünüz hata _"SSL eşi sertifikanıza süre geçmiş olarak reddedildi"_ veya _"hata: depo meta verileri alınamıyor (repomd.xml):... Lütfen yolunu doğrulayıp yeniden deneyin "_. Bu sorunu çözmek için lütfen aşağıdaki komutu kullanarak VM 'deki RHUı istemci paketini güncelleştirin:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'

@@ -4,15 +4,15 @@ description: Bu makalede, Azure savunma kullanarak Linux sanal makinesine nasıl
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596836"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744298"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure savunma kullanarak bir Linux sanal makinesine SSH kullanarak bağlanma
 
@@ -23,7 +23,7 @@ SSH kullanarak bir Linux sanal makinesine bağlanmak için Azure savunma kullana
 * El ile girdiğiniz özel bir anahtar
 * Özel anahtar bilgilerini içeren bir dosya
 
-SSH özel anahtarı ile başlayan `"-----BEGIN RSA PRIVATE KEY-----"` ve ile biten bir biçimde olmalıdır. `"-----END RSA PRIVATE KEY-----"`
+SSH özel anahtarı ile başlayan ve ile biten bir biçimde olmalıdır `"-----BEGIN RSA PRIVATE KEY-----"` `"-----END RSA PRIVATE KEY-----"` .
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

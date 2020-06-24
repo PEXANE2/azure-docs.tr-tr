@@ -4,15 +4,15 @@ description: Bu makalede, bir sanal makineden Azure savunma ana bilgisayarı olu
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
-ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619264"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743992"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Hızlı başlangıç: özel IP adresi ve Azure savunma kullanarak bir sanal makineye bağlanma
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıç makalesinde, özel bir IP adresi kullanarak bir sanal ma
 
 |**Adı** | **Değer** |
 | --- | --- |
-| Adı |  VNet1Bastion |
+| Name |  VNet1Bastion |
 | Bölge | eastus |
 | Sanal ağ |  VNet1 |
 | + Alt ağ adı | AzureBastionSubnet |
@@ -37,7 +37,7 @@ Bu hızlı başlangıç makalesinde, özel bir IP adresi kullanarak bir sanal ma
 | Genel IP adresi SKU 'SU |  Standart  |
 | Atama  | Statik |
 
-## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Bastion konağı oluşturma
+## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Savunma Konağı oluşturma
 
 Portalda var olan bir sanal makineyi kullanarak bir savunma ana bilgisayarı oluşturduğunuzda, sanal makinenize ve/veya sanal ağınıza karşılık gelen farklı ayarlar otomatik olarak varsayılan olarak değişir.
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 32543dffa492770d7217fb07652e41baf603ebcc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195553"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250919"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -295,7 +295,7 @@ Yük devretme grubunuzu ikincil sunucuya devreder ve Azure portal kullanarak yen
 1. Elastik havuzunuzu içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin.
 1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin.
 
-   ![SQL veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/auto-failover-group-configure/failover-sql-db.png)
+   ![Veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/auto-failover-group-configure/failover-sql-db.png)
 
 1. Hangi sunucunun birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır.
 1. Yük devretme grubundan özgün ayarlara geri dönmek için **Yük devretmeyi** yeniden seçin.
@@ -382,7 +382,7 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Adı** | Sanal ağ geçidinizin adı. |
-    | **Bölge** | Birincil yönetilen örneğinizin bulunduğu bölge. |
+    | **Geli** | Birincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
     | **SKU**| Varsayılan bırakın `VpnGw1` . |
@@ -444,7 +444,7 @@ Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken 
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
    | **Adı** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . |
-   | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
+   | **Geli** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |
    | **SKU**| Varsayılan bırakın `VpnGw1` . |

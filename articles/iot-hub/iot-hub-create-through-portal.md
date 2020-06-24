@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284739"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708119"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure portal kullanarak IoT Hub 'ı oluşturma
 
@@ -86,7 +86,7 @@ Depolama hesabı ve kapsayıcısını seçmek için **kapsayıcı Seç** ' e tı
 
 **Veri kaynağı**Için cihaz telemetri iletileri ' ni seçin. 
 
-Sonra, bir yönlendirme sorgusu ekleyin. Bu örnekte, bir değeri değerine eşit `level` `critical` olan adlı bir uygulama özelliğine sahip iletiler depolama hesabına yönlendirilir.
+Sonra, bir yönlendirme sorgusu ekleyin. Bu örnekte, bir değeri değerine eşit olan adlı bir uygulama özelliğine sahip iletiler `level` `critical` depolama hesabına yönlendirilir.
 
 ![Yeni bir yönlendirme kuralının kaydedilmesini gösteren ekran görüntüsü](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
 
@@ -112,7 +112,7 @@ Aboneliğinizde belirli bir IoT Hub 'ı bulmanın iki yolu vardır:
 
 1. IoT Hub 'ının ait olduğu kaynak grubunu biliyorsanız, **kaynak grupları**' na tıklayın ve ardından listeden kaynak grubunu seçin. Kaynak grubu ekranında, IoT Hub 'ları dahil olmak üzere bu gruptaki tüm kaynaklar gösterilir. Aradığınız hub 'a tıklayın.
 
-2. **Tüm kaynaklar**'a tıklayın. **Tüm kaynaklar** bölmesinde, varsayılan olarak kullanılacak `All types`bir açılan liste vardır. Açılan listeye tıklayın, işaretini kaldırın `Select all`. Bulun `IoT Hub` ve denetleyin. Açılır liste kutusuna tıklayarak bu kutuyu kapatın ve yalnızca IoT Hub 'larınızı gösteren girişler filtrelenecektir.
+2. **Tüm kaynaklar**'a tıklayın. **Tüm kaynaklar** bölmesinde, varsayılan olarak kullanılacak bir açılan liste vardır `All types` . Açılan listeye tıklayın, işaretini kaldırın `Select all` . Bulun `IoT Hub` ve denetleyin. Açılır liste kutusuna tıklayarak bu kutuyu kapatın ve yalnızca IoT Hub 'larınızı gösteren girişler filtrelenecektir.
 
 ## <a name="delete-the-iot-hub"></a>IoT Hub 'ı silme
 

@@ -4,20 +4,20 @@ description: Azure portal kullanarak var olan bir ön kapıya bir kök veya tepe
 services: front-door
 author: sharad4u
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878893"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743601"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Ön kapıya bir kök veya tepesinde etki alanı ekleme
 Azure ön kapısı, özel etki alanlarını eklemek için etki alanı sahipliğini doğrulamak üzere CNAME kayıtlarını kullanır. Ayrıca, ön kapı, ön kapı profilinizle ilişkili ön uç IP adresini kullanıma sunmaz ve amaç Azure ön kapısına eklemek için tepesinde etki alanınızı bir IP adresiyle eşleyemezsiniz.
 
-DNS protokolü, CNAME kayıtlarının tepesinde bölgesinde atanmasını engeller. Örneğin, etki alanınız ise `contoso.com` için `somelabel.contoso.com`CNAME kayıtları oluşturabilirsiniz; Ancak kendisi için `contoso.com` CNAME oluşturamazsınız. Bu kısıtlama, Azure ön kapısının arkasında yük dengeli uygulamalara sahip olan uygulama sahipleri için bir sorun gösterir. Bir ön kapı profili kullanmak için bir CNAME kaydı oluşturulması gerektiğinden, bölge tepesinde ön kapı profilini işaret etmek mümkün değildir.
+DNS protokolü, CNAME kayıtlarının tepesinde bölgesinde atanmasını engeller. Örneğin, etki alanınız ise `contoso.com` ; IÇIN CNAME kayıtları oluşturabilirsiniz, `somelabel.contoso.com` ancak kendısı için CNAME oluşturamazsınız `contoso.com` . Bu kısıtlama, Azure ön kapısının arkasında yük dengeli uygulamalara sahip olan uygulama sahipleri için bir sorun gösterir. Bir ön kapı profili kullanmak için bir CNAME kaydı oluşturulması gerektiğinden, bölge tepesinde ön kapı profilini işaret etmek mümkün değildir.
 
 Bu sorun Azure DNS diğer ad kayıtları kullanılarak çözülebilir. CNAME kayıtlarının aksine, diğer ad kayıtları bölge tepesinde kayıtlarını ortak uç noktalara sahip bir ön kapılı profile işaret etmek için kullanabilir. Uygulama sahipleri, DNS bölgesi içindeki diğer etki alanı için kullanılan aynı ön kapı profilini işaret. Örneğin, `contoso.com` ve `www.contoso.com` aynı ön kapı profilini işaret edebilir. 
 
@@ -48,12 +48,12 @@ Bu makalede şunları öğreneceksiniz:
 
     ![Bölge tepesinde için diğer ad kaydı](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. Yukarıdaki adım, ön kapı kaynağınızı ve ayrıca ön kapı profilinizde etki alanını eklemek `afdverify.contosonews.com` `afdverify.<name>.azurefd.net` için kullanılacak CNAME kaydı eşlemesi ' afdverify ' (örnek-) olan bir bölge tepesinde kaydı oluşturacaktır.
+6. Yukarıdaki adım, ön kapı kaynağınızı ve ayrıca `afdverify.contosonews.com` `afdverify.<name>.azurefd.net` ön kapı profilinizde etki alanını eklemek IÇIN kullanılacak CNAME kaydı eşlemesi ' afdverify ' (örnek-) olan bir bölge tepesinde kaydı oluşturacaktır.
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>Özel etki alanını ön kapıya ekleme
 
 1. Ön kapı Tasarımcısı sekmesinde, ön uç konaklar bölümünde ' + ' simgesine tıklayarak yeni bir özel etki alanı ekleyin.
-2. Özel ana bilgisayar adı alanına kök veya tepesinde etki alanı adını girin, örneğin `contosonews.com`.
+2. Özel ana bilgisayar adı alanına kök veya tepesinde etki alanı adını girin, örneğin `contosonews.com` .
 3. Etki alanından ön kapıya yönelik CNAME eşlemesi doğrulandıktan sonra, özel etki alanını eklemek için **Ekle** ' ye tıklayın.
 4. Değişiklikleri göndermek için **Kaydet** ' e tıklayın.
 

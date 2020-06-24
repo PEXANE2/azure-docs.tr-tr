@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 850ace7af15ab37ab9a4a124d20ed4588771f4d4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594543"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242219"
 ---
 ## <a name="common-scenarios"></a>Yaygın senaryolar
 Aşağıdaki senaryolar büyük ölçüde patlanabilir:
@@ -24,9 +24,11 @@ Aşağıdaki senaryolar büyük ölçüde patlanabilir:
 ## <a name="bursting-flow"></a>Patlama akışı
 Gereksiz kredi sistemi, hem sanal makine düzeyinde hem de disk düzeyinde aynı şekilde geçerlidir. Kaynağınız, bir VM ya da disk, tamamen stoksiz kredilerle başlar. Bu krediler, en fazla patlama hızında 30 dakika boyunca veri bloğu yapmanıza olanak sağlayacak. Patlama kredileri, kaynağınız performans disk depolama sınırları altında çalışırken biriktirir. Kaynağınızın, kaynağın altında kullandığı tüm ıOPS ve MB/sn 'ler için kredileri biriktirmek için başlarsınız. Kaynağınız, patlama için kullanılmak üzere tahakkuk eden krediler içeriyorsa ve iş yükünüzün ek performansa ihtiyacı varsa, kaynağınız bu kredileri kullanarak, talebi karşılamak için ihtiyaç duyması gereken disk GÇ performansını sağlamak için bu kredilerin performans sınırınızı üzerine gidebilirler.
 
+
+
 ![Patlama demeti diyagramı](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Veri bloğu birikmesi konusunda bir şey, kullanılmayan ıOPS 'yi temel alan ve performans tutarlarının altındaki MB/s değerlerini temel aldığı için her kaynak için farklı olmasıdır. Bu, daha yüksek temel performans ürünlerinin, en düşük temel performanslı ürünlerden daha hızlı bir şekilde patlama miktarlarını tahakkuk alabileceği anlamına gelir. Örneğin, hiçbir etkinlik olmadan bir P1 disk kimliği, bir P20 disk 2.300 tahakkuk ederken saniyede 120 ıOPS tahakkuk eder.
+En fazla 30 dakikalık bir kaç dakika kullanmak istediğinize kadar. Bunu günde 30 dakika boyunca art arda veya sporda kullanabilirsiniz. Ürün dağıtıldığında, tüm kredileri gelir ve kredilerin tam olarak tamamen stoklanması için bir günden daha az sürdüğü krediler. Ani kredilerini biriktiribilmeniz ve harcamanız ve 30 dakikalık demet 'in, veri bloğu için yeniden tam olarak tam olması gerekmez. Veri bloğu birikmesi konusunda bir şey, kullanılmayan ıOPS 'yi temel alan ve performans tutarlarının altındaki MB/s değerlerini temel aldığı için her kaynak için farklı olmasıdır. Bu, daha yüksek temel performans ürünlerinin, en düşük temel performanslı ürünlerden daha hızlı bir şekilde patlama miktarlarını tahakkuk alabileceği anlamına gelir. Örneğin, hiçbir etkinlik olmadan bir P1 disk kimliği, bir P20 disk 2.300 tahakkuk ederken saniyede 120 ıOPS tahakkuk eder.
 
 ## <a name="bursting-states"></a>Gereksiz durumlar
 Kaynağınız, yazılabilir özelliği etkin olan üç durum vardır:
@@ -70,7 +72,7 @@ Sonra uygulamanın 192 MB/s gerektiren bir toplu işi işlemesi gerekir. 2 MB/s,
 - 2 P10 veri diski 
     - Sağlanan MB/s: 250
 
- İlk önyüklemeden sonra, sanal makinede bir uygulama çalıştırılır ve kritik olmayan bir iş yüküne sahiptir. Bu iş yükü, tüm diskler arasında eşit olarak yayılan 30 MB/s gerektirir: ![gereksiz VM diske alınmamış disk boşta](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ İlk önyüklemeden sonra, sanal makinede bir uygulama çalıştırılır ve kritik olmayan bir iş yüküne sahiptir. Bu iş yükü, tüm diskler arasında eşit olarak yayılan 30 MB/s gerektirir: ![ gereksiz VM diske alınmamış disk boşta](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
 Sonra uygulamanın 600 MB/s gerektiren bir toplu işi işlemesi gerekir. Standard_L8s_v2, bu talebi karşılamak ve ardından disklere yönelik istekler, P50 disklere eşit bir şekilde yayılmak üzere daha fazla bilgi alır:
 

@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 334f239ea8382a67add9655d4a25f98d254567d3
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205033"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743958"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rol ayarlarını yapılandırma
 
@@ -44,7 +44,7 @@ Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin
 
 1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolündeki bir kullanıcıyla [Azure Portal](https://portal.azure.com/) için oturum açın.
 gt
-1. **Azure AD rolleri** &gt; **rol ayarlarını** **Azure AD Privileged Identity Management** &gt; açın.
+1. **Azure AD Privileged Identity Management** &gt; **Azure AD rolleri** &gt; **rol ayarlarını**Azure AD Privileged Identity Management açın.
 
     ![Rol ayarları sayfası Azure AD rollerini listeleme](./media/pim-how-to-change-default-settings/role-settings.png)
 
@@ -131,7 +131,7 @@ Bir Azure AD rolünün ayarlarını açmak için aşağıdaki adımları izleyin
 
 1. **Azure AD rolleri**' ni seçin.
 
-1. **Ayarlar**' ı seçin.
+1. **Ayarlar**'ı seçin.
 
     ![Azure AD rolleri-ayarlar](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -167,7 +167,7 @@ Uygun yöneticilerin rolünü etkinleştirdiklerinde bilet numarası içermesini
 
 Kullanıcıların rollerini etkinleştirebilmeleri için önce MFA ile kimliklerini doğrulamaları gerekip gerekmediğini belirtmek için **Multi-Factor Authentication** anahtarını kullanın. Her bir rolü etkinleştirdiklerinde değil, her oturum için kimliklerini yalnızca bir kez doğrulamalıdır. MFA 'yı etkinleştirdiğinizde göz önünde bulundurmanız gereken iki ipucu vardır:
 
-- Kendi e-posta adresleri (genellikle @outlook.com, ancak her zaman değil) için Microsoft hesabı olan kullanıcılar Azure Multi-Factor Authentication için kayıt olamaz. Kullanıcılara Microsoft hesaplarıyla roller atamak istiyorsanız, bu rol için kalıcı Yöneticiler yapmanız veya Multi-Factor Authentication 'ı devre dışı bırakmanız gerekir.
+- Kendi e-posta adresleri (genellikle @outlook.com , ancak her zaman değil) Için Microsoft hesabı olan kullanıcılar Azure Multi-Factor Authentication için kayıt olamaz. Kullanıcılara Microsoft hesaplarıyla roller atamak istiyorsanız, bu rol için kalıcı Yöneticiler yapmanız veya Multi-Factor Authentication 'ı devre dışı bırakmanız gerekir.
 - Azure AD ve Office 365 için yüksek ayrıcalıklı roller için Azure Multi-Factor Authentication 'yi devre dışı bırakamezsiniz. Bu güvenlik özelliği aşağıdaki rollerin korunmasına yardımcı olur:  
   
   - Azure Information Protection Yöneticisi
@@ -186,7 +186,7 @@ Kullanıcıların rollerini etkinleştirebilmeleri için önce MFA ile kimlikler
   - Güvenlik yöneticisi
   - SharePoint yöneticisi
   - Skype Kurumsal yöneticisi
-  - Kullanıcı Yöneticisi
+  - Kullanıcı yöneticisi
 
 Daha fazla bilgi için bkz. [Multi-Factor Authentication ve Privileged Identity Management](pim-how-to-require-mfa.md).
 

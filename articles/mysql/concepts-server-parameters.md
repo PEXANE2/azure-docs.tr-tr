@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/5/2020
-ms.openlocfilehash: f78e6969c98545ec0b9b3e0a0822d4b9ae35903a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 198e23065603d58a9b1386b7c16792a1d8140f55
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84562010"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250511"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda sunucu parametreleri
 
@@ -123,6 +123,9 @@ Bağlantılar sınırı aştığında, şu hatayı alabilirsiniz:
 > En iyi deneyim için, bağlantıları verimli bir şekilde yönetmek üzere ProxySQL gibi bir bağlantı havuzlayıcı kullanmanızı öneririz.
 
 MySQL 'e yeni istemci bağlantıları oluşturma zaman alır ve bir kez kurulduktan sonra bile bu bağlantılar veritabanı kaynaklarını kaplar. Çoğu uygulama, bu durumu çözer birçok kısa süreli bağlantı ister. Sonuç olarak gerçek iş yükünüz için daha az kaynak kullanılabilir ve performansı azaltıldı. Boştaki bağlantıları azaltan ve var olan bağlantıları yeniden kullanan bir bağlantı havuzlayıcı bunun önlenmesine yardımcı olur. ProxySQL 'i ayarlama hakkında bilgi edinmek için [Blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)ziyaret edin.
+
+>[!Note]
+>ProxySQL açık kaynaklı bir topluluk aracıdır. En iyi çaba temelinde Microsoft tarafından desteklenir. Yetkili kılavuzlarla üretime yönelik destek almak için, [Proxysql ürün desteğini](https://proxysql.com/services/support/)değerlendirebilir ve bunlarla iletişime ulaşabilirsiniz.
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 

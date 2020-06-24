@@ -8,17 +8,17 @@ manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: e4197923fa71c719611bea7603113cab331d4ba8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 819b6af0d336e454aeeb67a9be62109cb6b08bb8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147791"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708238"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell kullanarak sanal makinelere birden çok IP adresi atama
 
@@ -35,7 +35,7 @@ Bu makalede, PowerShell kullanarak Azure Resource Manager dağıtım modeli arac
 Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi ile örnek VM oluşturma açıklanmaktadır. Değer değerlerini uygulamanız için gereken şekilde değiştirin.
 
 1. Bir PowerShell komut istemi açın ve bu bölümün içindeki kalan adımları tek bir PowerShell oturumunda doldurun. Zaten PowerShell 'i yükleyip yapılandırdıysanız, [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/overview) makalesindeki adımları uygulayın.
-2. `Connect-AzAccount` Komutuyla hesabınızda oturum açın.
+2. Komutuyla hesabınızda oturum açın `Connect-AzAccount` .
 3. *Myresourcegroup* ve *westus* değerini, seçtiğiniz bir ad ve konum ile değiştirin. Bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
    ```powershell
@@ -92,9 +92,9 @@ Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi i
     -SecurityRules $NSGRule
     ```
 
-6. NIC için birincil IP yapılandırmasını tanımlayın. Daha önce tanımlanan değeri kullanmıyorsanız, 10.0.0.4 öğesini oluşturduğunuz alt ağda geçerli bir adrese değiştirin. Statik bir IP adresi atamadan önce, ilk olarak zaten kullanımda olmadığından emin olmanız önerilir. Komutunu `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`girin. Adres kullanılabiliyorsa, çıkış *true*değerini döndürür. Kullanılabilir değilse, çıkış *yanlış* değerini ve kullanılabilir adreslerin bir listesini döndürür. 
+6. NIC için birincil IP yapılandırmasını tanımlayın. Daha önce tanımlanan değeri kullanmıyorsanız, 10.0.0.4 öğesini oluşturduğunuz alt ağda geçerli bir adrese değiştirin. Statik bir IP adresi atamadan önce, ilk olarak zaten kullanımda olmadığından emin olmanız önerilir. Komutunu girin `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet` . Adres kullanılabiliyorsa, çıkış *true*değerini döndürür. Kullanılabilir değilse, çıkış *yanlış* değerini ve kullanılabilir adreslerin bir listesini döndürür. 
 
-    Aşağıdaki komutlarda, replace- **WITH \<-unique-Name> DEĞERINI kullanılacak benzersiz DNS adıyla değiştirin.** Ad, bir Azure bölgesi içindeki tüm genel IP adresleri arasında benzersiz olmalıdır. Bu, isteğe bağlı bir parametredir. Yalnızca genel IP adresini kullanarak VM 'ye bağlanmak istiyorsanız, bu, kaldırılabilir.
+    Aşağıdaki komutlarda, öğesini ** \<replace-with-your-unique-name> kullanmak IÇIN benzersiz DNS adıyla değiştirin.** Ad, bir Azure bölgesi içindeki tüm genel IP adresleri arasında benzersiz olmalıdır. Bu, isteğe bağlı bir parametredir. Yalnızca genel IP adresini kullanarak VM 'ye bağlanmak istiyorsanız, bu, kaldırılabilir.
 
     ```powershell
     
@@ -242,7 +242,7 @@ Aşağıdaki adımları tamamlayarak Azure ağ arabirimine özel ve genel IP adr
 
    **Özel IP adresi ekle**
 
-   Bir NIC 'ye özel bir IP adresi eklemek için bir IP yapılandırması oluşturmanız gerekir. Aşağıdaki komut, kısmına 10.0.0.7 statik IP adresine sahip bir yapılandırma oluşturur. Statik bir IP adresi belirtirken, alt ağ için kullanılmayan bir adres olmalıdır. `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` Komutu girerek kullanılabilir olduğundan emin olmak için ilk olarak adresi test etmeniz önerilir. IP adresi kullanılabiliyorsa, çıkış *true*değerini döndürür. Kullanılabilir değilse, çıkış *false*değerini ve kullanılabilir adreslerin bir listesini döndürür.
+   Bir NIC 'ye özel bir IP adresi eklemek için bir IP yapılandırması oluşturmanız gerekir. Aşağıdaki komut, kısmına 10.0.0.7 statik IP adresine sahip bir yapılandırma oluşturur. Statik bir IP adresi belirtirken, alt ağ için kullanılmayan bir adres olmalıdır. Komutu girerek kullanılabilir olduğundan emin olmak için ilk olarak adresi test etmeniz önerilir `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` . IP adresi kullanılabiliyorsa, çıkış *true*değerini döndürür. Kullanılabilir değilse, çıkış *false*değerini ve kullanılabilir adreslerin bir listesini döndürür.
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `

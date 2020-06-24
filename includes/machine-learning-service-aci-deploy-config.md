@@ -11,11 +11,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "79485929"
 ---
-`deploymentconfig.json` Belgedeki girişler [aciwebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
+`deploymentconfig.json`Belgedeki girişler [Aciwebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
-| JSON varlığı | Yöntem parametresi | Açıklama |
+| JSON varlığı | Yöntem parametresi | Description |
 | ----- | ----- | ----- |
-| `computeType` | NA | Bilgi işlem hedefi. ACI için değer olmalıdır `ACI`. |
+| `computeType` | NA | Bilgi işlem hedefi. ACI için değer olmalıdır `ACI` . |
 | `containerResourceRequirements` | NA | CPU ve bellek varlıklarının kapsayıcısı. |
 | &emsp;&emsp;`cpu` | `cpu_cores` | Ayrılacak CPU çekirdeklerinin sayısı. Olarak`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden). Varsayılanını`0.5` |

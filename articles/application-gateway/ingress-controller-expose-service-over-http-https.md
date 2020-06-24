@@ -4,15 +4,15 @@ description: Bu makalede, Application Gateway kullanarak bir AKS hizmetini HTTP 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: c664141a8c89ccbdf37bd3f9a19cfa659982a47d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2f3f871ccd29456b086d939277d94b5e4eac23c6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795581"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807938"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Application Gateway kullanarak bir AKS hizmetini HTTP veya HTTPS üzerinden kullanıma sunma 
 
@@ -20,19 +20,19 @@ Bu öğreticiler, HTTP veya HTTPS üzerinden [Azure Application Gateway](https:/
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Held grafiği yüklendi `ingress-azure` .
+- `ingress-azure`Held grafiği yüklendi.
   - [**Doğa alanı dağıtımı**](ingress-controller-install-new.md): sıfırdan başlatıyorsanız, aks kümesine Application Gateway ve uygulama ağ geçidi denetleyicisi yükleme adımlarını özetleyen bu yükleme yönergelerine bakın.
   - [**Brownfield dağıtımı**](ingress-controller-install-existing.md): mevcut bir aks kümeniz ve Application Gateway varsa, aks kümesine uygulama ağ geçidi denetleyicisi yüklemek için bu yönergelere başvurun.
 - Bu uygulamada HTTPS kullanmak istiyorsanız, bir x509 sertifikasına ve özel anahtarına ihtiyacınız olacaktır.
 
-## <a name="deploy-guestbook-application"></a>Uygulama `guestbook` dağıtma
+## <a name="deploy-guestbook-application"></a>`guestbook`Uygulama dağıtma
 
-Konuk defteri uygulaması, bir Web UI ön ucu, arka uç ve Redsıs veritabanını oluşturan kurallı bir Kubernetes uygulamasıdır. Varsayılan olarak, `guestbook` kendi uygulamasını bağlantı noktasında `frontend` `80`adı olan bir hizmet üzerinden kullanıma sunar. Kubernetes giriş kaynağı olmadan, hizmet AKS kümesi dışından erişilebilir değildir. Uygulamaya HTTP ve HTTPS aracılığıyla erişmek için uygulama ve Kurulum kaynakları 'nı kullanacağız.
+Konuk defteri uygulaması, bir Web UI ön ucu, arka uç ve Redsıs veritabanını oluşturan kurallı bir Kubernetes uygulamasıdır. Varsayılan olarak, `guestbook` kendi uygulamasını bağlantı noktasında adı olan bir hizmet üzerinden kullanıma sunar `frontend` `80` . Kubernetes giriş kaynağı olmadan, hizmet AKS kümesi dışından erişilebilir değildir. Uygulamaya HTTP ve HTTPS aracılığıyla erişmek için uygulama ve Kurulum kaynakları 'nı kullanacağız.
 
 Konuk defteri uygulamasını dağıtmak için aşağıdaki yönergeleri izleyin.
 
-1. Buradan `guestbook-all-in-one.yaml` indirin [here](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml)
-1. Şunu `guestbook-all-in-one.yaml` çalıştırarak aks kümenize dağıtın
+1. `guestbook-all-in-one.yaml` [Buradan](https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml) indirin
+1. Şunu `guestbook-all-in-one.yaml` çalıştırarak AKS kümenize dağıtın
 
   ```bash
   kubectl apply -f guestbook-all-in-one.yaml
@@ -62,7 +62,7 @@ spec:
 
 Bu giriş, `frontend` `guestbook-all-in-one` dağıtım hizmetinin Application Gateway varsayılan bir arka ucu olarak kullanıma sunulacak.
 
-Yukarıdaki giriş kaynağını olarak `ing-guestbook.yaml`kaydedin.
+Yukarıdaki giriş kaynağını olarak kaydedin `ing-guestbook.yaml` .
 
 1. Şunu `ing-guestbook.yaml` çalıştırarak dağıt:
 
@@ -86,7 +86,7 @@ Ana bilgisayar adı belirtmeden, Konuk defteri hizmeti uygulama ağ geçidine i�
     kubectl create secret tls <guestbook-secret-name> --key <path-to-key> --cert <path-to-cert>
     ```
 
-1. Aşağıdaki girişi tanımlayın. Giriş bölümünde, `secretName` bölümünde gizli dizi adını belirtin.
+1. Aşağıdaki girişi tanımlayın. Giriş bölümünde, bölümünde gizli dizi adını belirtin `secretName` .
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -107,7 +107,7 @@ Ana bilgisayar adı belirtmeden, Konuk defteri hizmeti uygulama ağ geçidine i�
     ```
 
     > [!NOTE] 
-    > Yukarıdaki `<guestbook-secret-name>` giriş kaynağında gizli anahtar adı ile değiştirin. Yukarıdaki giriş kaynağını bir dosya adında `ing-guestbook-tls.yaml`depolayın.
+    > `<guestbook-secret-name>`Yukarıdaki giriş kaynağında gizli anahtar adı ile değiştirin. Yukarıdaki giriş kaynağını bir dosya adında depolayın `ing-guestbook-tls.yaml` .
 
 1. Çalıştırarak--Konuk-TLS. YAML 'yi dağıtın
 
@@ -117,7 +117,7 @@ Ana bilgisayar adı belirtmeden, Konuk defteri hizmeti uygulama ağ geçidine i�
 
 1. Dağıtım durumu için giriş denetleyicisinin günlüğünü kontrol edin.
 
-`guestbook` Uygulama artık hem http hem de HTTPS üzerinde kullanılabilir olacaktır.
+Uygulama artık `guestbook` hem http hem de HTTPS üzerinde kullanılabilir olacaktır.
 
 ### <a name="with-specified-hostname"></a>Belirtilen ana bilgisayar adı ile
 
@@ -125,7 +125,7 @@ Ayrıca, TLS yapılandırmalarının ve hizmetlerinin çoğullanması için giri
 Ana bilgisayar adı belirtilerek, Konuk defteri hizmeti yalnızca belirtilen konakta kullanılabilir.
 
 1. Aşağıdaki girişi tanımlayın.
-    Giriş bölümünde, `secretName` bölümünde gizli dizi adını belirtin ve `hosts` bölümdeki ana bilgisayar adını uygun şekilde değiştirin.
+    Giriş bölümünde, bölümünde gizli dizi adını belirtin `secretName` ve bölümdeki ana bilgisayar adını `hosts` uygun şekilde değiştirin.
 
     ```yaml
     apiVersion: extensions/v1beta1
@@ -148,7 +148,7 @@ Ana bilgisayar adı belirtilerek, Konuk defteri hizmeti yalnızca belirtilen kon
               servicePort: 80
     ```
 
-1. Çalıştırarak `ing-guestbook-tls-sni.yaml` dağıtın
+1. `ing-guestbook-tls-sni.yaml`Çalıştırarak dağıtın
 
     ```bash
     kubectl apply -f ing-guestbook-tls-sni.yaml
@@ -156,7 +156,7 @@ Ana bilgisayar adı belirtilerek, Konuk defteri hizmeti yalnızca belirtilen kon
 
 1. Dağıtım durumu için giriş denetleyicisinin günlüğünü kontrol edin.
 
-Artık `guestbook` uygulama yalnızca belirtilen konakta (`<guestbook.contoso.com>` Bu örnekte) hem http hem de https üzerinden kullanılabilir.
+Artık `guestbook` uygulama yalnızca belirtilen konakta (Bu örnekte) hem http hem de https üzerinden kullanılabilir `<guestbook.contoso.com>` .
 
 ## <a name="integrate-with-other-services"></a>Diğer hizmetlerle tümleştirme
 

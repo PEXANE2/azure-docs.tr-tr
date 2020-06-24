@@ -5,15 +5,15 @@ description: Bu makalede, Application Gateway özel bir ön uç IP adresi ile na
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535613"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808120"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>İç yük dengeleyici (ıLB) uç noktası ile uygulama ağ geçidi yapılandırma
 
@@ -59,7 +59,7 @@ Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir san
 10. **Arka uç Havuzu Ekle**' yi seçin.
 11. **Ad**Için *Appgatewaybackendpool*yazın.
 12. **Hedefleri olmayan arka uç havuzu ekleme**için **Evet**' i seçin. Hedefleri daha sonra ekleyeceksiniz.
-13. **Add (Ekle)** seçeneğini belirleyin.
+13. **Ekle**'yi seçin.
 14. Ileri 'yi seçin **: yapılandırma**.
 15. **Yönlendirme kuralları**altında **Kural Ekle**' yi seçin.
 16. **Kural adı**Için *rrule-01*yazın.

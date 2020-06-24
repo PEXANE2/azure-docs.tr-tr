@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 1413035c879198cf333aeeb5d8fe993162939172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e95d25e4f26abc48f2a734cf8456739e6ef55b84
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460575"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807686"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir RBAC rolü atamak üzere PowerShell 'i kullanma
 
@@ -61,7 +61,7 @@ Bir güvenlik sorumlusuna RBAC rolü atamak için, [New-Azroleatama](/powershell
 
 ### <a name="container-scope"></a>Kapsayıcı kapsamı
 
-Bir kapsayıcıya kapsamlı bir rol atamak için, `--scope` parametre için kapsayıcının kapsamını içeren bir dize belirtin. Kapsayıcının kapsamı şu biçimdedir:
+Bir kapsayıcıya kapsamlı bir rol atamak için, parametre için kapsayıcının kapsamını içeren bir dize belirtin `--scope` . Kapsayıcının kapsamı şu biçimdedir:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
@@ -77,7 +77,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="queue-scope"></a>Sıra kapsamı
 
-Bir sıraya kapsamlı bir rol atamak için, `--scope` parametre için kuyruğun kapsamını içeren bir dize belirtin. Bir kuyruğun kapsamı şu biçimdedir:
+Bir sıraya kapsamlı bir rol atamak için, parametre için kuyruğun kapsamını içeren bir dize belirtin `--scope` . Bir kuyruğun kapsamı şu biçimdedir:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
@@ -93,7 +93,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="storage-account-scope"></a>Depolama hesabı kapsamı
 
-Depolama hesabına kapsamlı bir rol atamak için, `--scope` parametresi için depolama hesabı kaynağının kapsamını belirtin. Depolama hesabının kapsamı şu biçimdedir:
+Depolama hesabına kapsamlı bir rol atamak için, parametresi için depolama hesabı kaynağının kapsamını belirtin `--scope` . Depolama hesabının kapsamı şu biçimdedir:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
@@ -109,7 +109,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="resource-group-scope"></a>Kaynak grubu kapsamı
 
-Kaynak grubuna kapsamlı bir rol atamak için, `--resource-group` parametresinin kaynak grubu adını veya kimliğini belirtin. Aşağıdaki örnek, **depolama kuyruğu veri okuyucusu** rolünü, kaynak grubunun düzeyindeki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun: 
+Kaynak grubuna kapsamlı bir rol atamak için, parametresinin kaynak grubu adını veya KIMLIĞINI belirtin `--resource-group` . Aşağıdaki örnek, **depolama kuyruğu veri okuyucusu** rolünü, kaynak grubunun düzeyindeki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -119,7 +119,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 ### <a name="subscription-scope"></a>Abonelik kapsamı
 
-Aboneliğe kapsamlı bir rol atamak için, `--scope` parametresi için abonelik kapsamını belirtin. Bir aboneliğin kapsamı şu biçimdedir:
+Aboneliğe kapsamlı bir rol atamak için, parametresi için abonelik kapsamını belirtin `--scope` . Bir aboneliğin kapsamı şu biçimdedir:
 
 ```
 /subscriptions/<subscription>

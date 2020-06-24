@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276484"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807770"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure sözlüğü: Azure platformunda bulut terminolojisi sözlüğü
 
@@ -31,7 +31,7 @@ Microsoft Azure sözlüğü, Azure platformunun bulut terminolojisi için kısa 
 
 ## <a name="account"></a>account
 Bir Azure aboneliğine erişmek ve bunları yönetmek için kullanılan bir hesap. Genellikle bir hesap şu şekilde olabilir: mevcut bir iş, okul veya kişisel Microsoft hesabı ya da Office 365 Kullanıcı adı ve parolası. [Ücretsiz denemeye](https://azure.microsoft.com)kaydolduğunuzda bir Azure aboneliğini yönetmek için de bir hesap oluşturabilirsiniz.  
-[Oturum açmak için kullanabileceğiniz](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) [Office 365 hesabınız ve hesaplarınız ile bir Azure aboneliğine kaydolma](cost-management-billing/manage/office-365-account-for-azure-subscription.md) konusuna bakın.
+[Oturum açmak için kullanabileceğiniz](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) [Microsoft 365 hesabı ve hesaplarınız ile bir Azure aboneliğine kaydolma](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) konusuna bakın.
 
 ## <a name="api-app"></a>API uygulaması
 [App Service uygulama](#app-service-app)için başka bir ad.

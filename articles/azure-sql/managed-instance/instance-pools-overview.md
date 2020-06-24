@@ -3,7 +3,7 @@ title: Azure SQL yönetilen örnek havuzu nedir?
 titleSuffix: Azure SQL Managed Instance
 description: Daha küçük SQL Server veritabanlarını ölçekli buluta geçirmek için kullanışlı ve uygun maliyetli bir yol sağlayan Azure SQL yönetilen örnek havuzları (Önizleme) hakkında bilgi edinin ve birden çok yönetilen örneği yönetin.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: b5d992d9067e1a232a0a78cf499bdebc34ee8563
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219173"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708850"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL yönetilen örnek Havuzu (Önizleme) nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

@@ -11,18 +11,18 @@ Customer intent: I want only specific Azure Storage account to be allowed access
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78271176"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708221"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLı kullanarak sanal ağ hizmeti uç noktası ilkeleriyle Azure depolama hesaplarına veri alımını yönetme
 
@@ -114,7 +114,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Her ağ güvenlik grubu, çeşitli [varsayılan güvenlik kuralları](security-overview.md#default-security-rules)içerir. Aşağıdaki kural, tüm genel IP adreslerine giden erişime izin veren bir varsayılan güvenlik kuralını geçersiz kılar. `destination-address-prefix "Internet"` Seçeneği tüm genel IP adreslerine giden erişimi reddeder. Önceki kural, Azure depolama 'nın genel IP adreslerine erişim sağlayan daha yüksek öncelikli bir nedenle bu kuralı geçersiz kılar.
+Her ağ güvenlik grubu, çeşitli [varsayılan güvenlik kuralları](security-overview.md#default-security-rules)içerir. Aşağıdaki kural, tüm genel IP adreslerine giden erişime izin veren bir varsayılan güvenlik kuralını geçersiz kılar. `destination-address-prefix "Internet"`Seçeneği tüm genel IP adreslerine giden erişimi reddeder. Önceki kural, Azure depolama 'nın genel IP adreslerine erişim sağlayan daha yüksek öncelikli bir nedenle bu kuralı geçersiz kılar.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -263,7 +263,7 @@ az network service-endpoint policy create \
   --location eastus
 ```
 
-Bir değişkende izin verilen depolama hesabı için kaynak URI 'sini kaydedin. Aşağıdaki komutu yürütmeden önce * \<-Subscription-ID>* , abonelik kimliğinizin gerçek değeri ile değiştirin.
+Bir değişkende izin verilen depolama hesabı için kaynak URI 'sini kaydedin. Aşağıdaki komutu yürütmeden önce, *\<your-subscription-id>* ABONELIK kimliğinizin gerçek değeriyle değiştirin.
 
 ```azurecli-interactive
 $serviceResourceId="/subscriptions/<your-subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/allowedstorageacc"
@@ -313,7 +313,7 @@ Sanal makinenin oluşturulması birkaç dakika sürer. Oluşturulduktan sonra, d
 
 ### <a name="confirm-access-to-storage-account"></a>Depolama hesabına erişimi onaylama
 
-*MyVmPrivate* VM 'ye SSH. * \<Publicıpaddress>* değerini *myVmPrivate* sanal makinenizin genel IP adresiyle değiştirin.
+*MyVmPrivate* VM 'ye SSH. *\<publicIpAddress>* *MyVmPrivate* sanal makinenizin genel IP adresi ile değiştirin.
 
 ```bash 
 ssh <publicIpAddress>
@@ -325,13 +325,13 @@ Bağlama noktası için bir klasör oluşturun:
 sudo mkdir /mnt/MyAzureFileShare1
 ```
 
-Azure dosya paylaşımından oluşturduğunuz dizine bağlayın. Aşağıdaki komutu yürütmeden önce, **$saConnectionString 1**' den *accountkey* değeri ile * \<depolama hesabı-anahtar>* değiştirin.
+Azure dosya paylaşımından oluşturduğunuz dizine bağlayın. Aşağıdaki komutu yürütmeden önce, *\<storage-account-key>* **$saConnectionString 1**' den *accountkey* değeri ile değiştirin.
 
 ```bash
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-`user@myVmPrivate:~$` İstemi alırsınız. Azure dosya paylaşımı, */mnt/myazurefileshare*öğesine başarıyla bağlandı.
+`user@myVmPrivate:~$`İstemi alırsınız. Azure dosya paylaşımı, */mnt/myazurefileshare*öğesine başarıyla bağlandı.
 
 ### <a name="confirm-access-is-denied-to-storage-account"></a>Depolama hesabına erişimin reddedildiğini onaylama
 
@@ -343,13 +343,13 @@ sudo mkdir /mnt/MyAzureFileShare2
 
 Azure dosya paylaşımından *notallowedstorageacc* depolama hesabından oluşturduğunuz dizine bağlama girişimi. Bu makalede Ubuntu 'ın en son sürümünü dağıttığınız varsayılmaktadır. Ubuntu 'nun önceki sürümlerini kullanıyorsanız, dosya paylaşımları bağlama hakkında ek yönergeler için bkz. [Linux üzerinde bağlama](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . 
 
-Aşağıdaki komutu yürütmeden önce, **$saConnectionString 2**' den *accountkey* değeri ile * \<depolama hesabı-anahtar>* değiştirin.
+Aşağıdaki komutu yürütmeden önce, *\<storage-account-key>* **$saConnectionString 2**' den *accountkey* değeri ile değiştirin.
 
 ```bash
 sudo mount --types cifs //notallowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare2 --options vers=3.0,username=notallowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Erişim engellendi ve bu depolama hesabı, alt `mount error(13): Permission denied` ağa uyguladığımız hizmet uç noktası ilkesinin izin verilenler listesinde olmadığından bir hata alıyorsunuz. 
+Erişim engellendi ve `mount error(13): Permission denied` Bu depolama hesabı, alt ağa uyguladığımız hizmet uç noktası ilkesinin izin verilenler listesinde olmadığından bir hata alıyorsunuz. 
 
 SSH oturumundan *myVmPublic* VM 'sine çıkın.
 

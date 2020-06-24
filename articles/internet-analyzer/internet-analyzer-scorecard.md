@@ -4,15 +4,15 @@ description: Azure Internet çözümleyici hakkında SSS.
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
-ms.topic: guide
+ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: a05c704f62d93bdc110d8a5943dd266ca22eb5f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ed8621fbfd1528bfffeaa986fa9c2e17c19f82b
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73512892"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744043"
 ---
 # <a name="interpreting-your-scorecard"></a>Karnenizi yorumlama
 
@@ -21,7 +21,7 @@ Karne sekmesi, testlerinizin toplanan ve analiz edilen sonuçlarını içerir. H
 Karne sekmesi Internet çözümleyici kaynak menüsünde bulunabilir. 
 
 
-## <a name="filters"></a>FilTReleri
+## <a name="filters"></a>Filtreler
 
 * ***Test:*** Sonuçlarını görüntülemek istediğiniz testi seçin-her bir testin kendi karnesi vardır. Analizi tamamlamaya yetecek kadar veri olduğunda test verileri görüntülenir; çoğu durumda bu, 24 saat içinde olmalıdır. 
 * ***Zaman aralığı & bitiş tarihi:*** Üç karne günlük olarak oluşturulur: her bir karne, bir önceki 24 saat (gün), önceki yedi gün (hafta) ve 30 gün önce (ay), farklı bir toplama dönemi yansıtır. Görmek istediğiniz dönemin son gününü seçmek için "bitiş tarihi" filtresini kullanın. 

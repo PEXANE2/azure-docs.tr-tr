@@ -7,17 +7,17 @@ documentationcenter: na
 author: steveesp
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60743096"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708255"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Bant genişliği/Işleme testi (NTTTCP)
 
@@ -30,7 +30,7 @@ Bu testin amaçları doğrultusunda, iç IP 'lerini kullanabilmeniz ve yük deng
 
 ALıCıNıN IP adresini bir yere getirin. "A. b. c. r" IP 'si arayalım
 
-VM 'deki çekirdek sayısını unutmayın. Bu "\#NUM\_çekirdekleri" arayalım
+VM 'deki çekirdek sayısını unutmayın. Bu " \# num \_ çekirdekleri" arayalım
 
 Sender VM ve alıcı VM 'de 300 saniye (veya 5 dakika) boyunca NTTTCP testini çalıştırın.
 
@@ -54,35 +54,35 @@ Gönderen parametreleri: NTttcp-s 10.27.33.7-t 10-n 1-P 1
 
 En son sürümü indirin:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
-Ya da, taşındıysanız arama yapın <https://www.bing.com/search?q=ntttcp+download> \< :--ilk isabet edilmelidir
+Ya da, taşındıysanız arama yapın: <https://www.bing.com/search?q=ntttcp+download> \< --ilk isabet edilmelidir
 
-NTTTCP 'yi c:\\araçları gibi ayrı bir klasöre yerleştirmeyi düşünün
+NTTTCP 'yi c: araçları gibi ayrı bir klasöre yerleştirmeyi düşünün \\
 
 #### <a name="allow-ntttcp-through-the-windows-firewall"></a>Windows Güvenlik Duvarı üzerinden NTTTCP 'ye izin ver
 ALıCıDA, Windows Güvenlik Duvarı 'nda NTTTCP trafiğinin gelmesini sağlamak için bir Izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine NTTTCP programının tamamına ada göre izin vermek en kolay yoldur.
 
 Windows Güvenlik Duvarı üzerinden şu şekilde NTttcp 'ye izin ver:
 
-netsh advfirewall firewall add rule program =\<Path\>\\NTttcp. exe name = "NTttcp" protokol = any dir = in Action = Allow Enable = Yes profile = any
+netsh advfirewall firewall add rule program = \<PATH\> \\ntttcp.exe Name = "NTttcp" protokol = any dır = in Action = Allow Enable = Yes PROFILE = any
 
-Örneğin, NTttcp. exe ' yi "c:\\Tools" klasörüne kopyaladıysanız şu komut olacaktır: 
+Örneğin, ntttcp.exe "c: \\ Tools" klasörüne kopyaladıysanız şu komut olacaktır: 
 
-netsh advfirewall firewall add rule program = c:\\Araçlar\\NTttcp. exe name = "NTttcp" protokol = any dir = in Action = Allow Enable = Yes profile = any
+netsh advfirewall firewall add rule program = c: \\ araçlar \\ntttcp.exe Name = "NTttcp" protokol = any dir = in Action = Allow Enable = Yes PROFILE = any
 
 #### <a name="running-ntttcp-tests"></a>NTTTCP testleri çalıştırılıyor
 
 ALıCıDA NTTTCP 'yi başlatın (PowerShell 'den değil,**cmd 'den çalıştırın**):
 
-NTttcp-r – m [2\*\#NUM\_çekirdekler]\*,, a. b. c. r-t 300
+NTttcp-r – m [2 \* \# num \_ çekirdekler], \* , a. b. c. r-t 300
 
 VM 'de dört çekirdek ve IP adresi 10.0.0.4 varsa, şöyle görünür:
 
-NTttcp-r – m 8,\*, 10.0.0.4-t 300
+NTttcp-r – m 8, \* , 10.0.0.4-t 300
 
 
 GÖNDERENDEN NTTTCP 'yi başlatın (PowerShell 'den değil,**cmd 'den çalıştırın**):
 
-NTttcp-s – a 8,\*, 10.0.0.4-t 300 
+NTttcp-s – a 8, \* , 10.0.0.4-t 300 
 
 Sonuçları bekle.
 
@@ -132,13 +132,13 @@ Bu senaryolarda, testin çalışabilmesi için hiçbir eşitleme modunu etkinle�
 
 #### <a name="from-linux-to-windows"></a>Linux 'tan Windows 'a:
 
-Alıcı \<Windows>:
+Alıcı \<Windows> :
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-Sender \<Linux>:
+Gönderen \<Linux> :
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,13 +146,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>Windows 'dan Linux 'a:
 
-Alıcı \<Linux>:
+Alıcı \<Linux> :
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-Gönderen \<Windows>:
+Gönderen \<Windows> :
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

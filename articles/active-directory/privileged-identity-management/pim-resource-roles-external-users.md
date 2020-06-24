@@ -7,7 +7,7 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74021933"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743788"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management ' de Konuk kullanıcıları davet edin ve Azure Kaynak rolleri atayın
 
@@ -55,7 +55,7 @@ Konukları kuruluşa davet edebilmeniz için, Konuk işbirliği ayarlarınızı 
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
 
-1. **Azure Active Directory** > **Kullanıcı ayarları**' nı seçin.
+1. **Azure Active Directory**  >  **Kullanıcı ayarları**' nı seçin.
 
 1. **Dış işbirliği ayarlarını yönet**' i seçin.
 
@@ -157,7 +157,7 @@ Konukların neler yaptığını izlemek için Denetim günlüklerini görüntül
 
     ![Azure kaynakları-saat, istek sahibi ve eylemi listeleme kaynak denetimi sayfası](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. Konuğun etkinliğini görüntülemek için **Azure Active Directory** > **kullanıcıları** > *Konuk adı*' nı seçin.
+1. Konuğun etkinliğini görüntülemek için **Azure Active Directory**  >  **kullanıcıları**  >  *Konuk adı*' nı seçin.
 
 1. Kuruluş için Denetim günlüklerini görmek üzere **Denetim günlükleri** ' ni seçin. Gerekirse, filtreler belirtebilirsiniz.
 

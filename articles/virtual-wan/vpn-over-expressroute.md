@@ -4,15 +4,15 @@ description: Bu öğreticide, ExpressRoute özel eşlemesi üzerinden siteden si
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059295"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749591"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute şifrelemesi: sanal WAN için ExpressRoute üzerinden IPSec
 
@@ -140,7 +140,7 @@ Cihaz yapılandırma dosyası, şirket içi VPN cihazınızı yapılandırırken
            ```
            "ConnectedSubnets":["10.51.231.0/24"]
             ```
-    * Sanal hub 'ın VPN ağ geçidinin IP adresleri. Her VPN Ağ Geçidi bağlantısı etkin-etkin yapılandırmada iki tünelde bulunduğundan, bu dosyada her iki IP adresinin de listelendiğini görürsünüz. Bu örnekte, ve her site `Instance0` için `Instance1` ve genel IP adresleri yerine özel IP adresleri görürsünüz.<br>Örnek:
+    * Sanal hub 'ın VPN ağ geçidinin IP adresleri. Her VPN Ağ Geçidi bağlantısı etkin-etkin yapılandırmada iki tünelde bulunduğundan, bu dosyada her iki IP adresinin de listelendiğini görürsünüz. Bu örnekte, `Instance0` ve `Instance1` her site için ve genel IP adresleri yerıne özel IP adresleri görürsünüz.<br>Örnek:
            ``` 
            "Instance0":"10.51.230.4"
            "Instance1":"10.51.230.5"
@@ -231,7 +231,7 @@ Bir Azure sanal makinesi (VM) ile uzak site arasındaki iletişimi izlemeye yön
 
 ## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. Kaynakları Temizleme
 
-Bu kaynaklara artık ihtiyacınız kalmadığında, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. Aşağıdaki PowerShell komutunu çalıştırın ve yerine kaynak grubunuzun `myResourceGroup` adını koyun:
+Bu kaynaklara artık ihtiyacınız kalmadığında, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. Aşağıdaki PowerShell komutunu çalıştırın ve yerine `myResourceGroup` kaynak grubunuzun adını koyun:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
