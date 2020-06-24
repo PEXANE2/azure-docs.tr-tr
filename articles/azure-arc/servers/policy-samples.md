@@ -1,25 +1,25 @@
 ---
 title: Sunucular için Azure Arc için yerleşik ilke tanımları
 description: Sunucular için Azure Arc için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 ms.custom: subject-policy-samples
-ms.openlocfilehash: b1e0417b10f460a7818b3d76c1c7791dce3eddae
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: d0a8f0c83cd03edd8435015f090573f7fe4f5f29
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236131"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888772"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-arc-for-servers"></a>Sunucular için Azure Arc için Azure Ilkesi yerleşik ilke tanımları
+# <a name="azure-policy-built-in-definitions-for-azure-arc-for-servers"></a>Sunucular için Azure Arc için Azure Ilke yerleşik tanımları
 
 Bu sayfa, Azure [ilkesi](../../governance/policy/overview.md) Için Azure Arc 'ın sunucular için yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
 ## <a name="azure-arc-for-servers"></a>Sunucular için Azure Arc
 

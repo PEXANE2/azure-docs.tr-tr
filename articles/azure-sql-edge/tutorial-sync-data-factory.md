@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: cc81784d4ad3613cf46176912625cf980c44f064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 91bf2ba0957104b7ccba330f914734a362c3e309
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235039"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255441"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak SQL Edge 'den Azure Blob depolama 'ya veri eşitleme
 
@@ -25,10 +25,10 @@ Bu öğreticide, Azure SQL Edge örneğindeki bir tablodan verileri artımlı ol
 Azure SQL Edge dağıtımınızda henüz bir veritabanı veya tablo oluşturmadıysanız, bir tane oluşturmak için aşağıdaki yöntemlerden birini kullanın:
 
 * SQL Edge 'e bağlanmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms/) veya [Azure Data Studio](/sql/azure-data-studio/download/) kullanın. Veritabanı ve tablo oluşturmak için bir SQL betiği çalıştırın.
-* SQL Edge modülüne doğrudan bağlanarak [sqlcmd](/sql/tools/sqlcmd-utility/) kullanarak bir SQL veritabanı ve tablo oluşturun. Daha fazla bilgi için bkz. [sqlcmd kullanarak Database Engine 'e bağlanma](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
-* SQL Edge kapsayıcısına bir DAC paket dosyası dağıtmak için SQLPackage. exe ' yi kullanın. Modülün istenen özellikler yapılandırmasının bir parçası olarak SqlPackage dosya URI 'sini belirterek, bu işlemi otomatikleştirebilirsiniz. Ayrıca, SQL Edge 'e bir DAC paketi dağıtmak için SqlPackage. exe istemci aracını doğrudan kullanabilirsiniz.
+* SQL Edge modülüne doğrudan bağlanarak [sqlcmd](/sql/tools/sqlcmd-utility/) kullanarak bir veritabanı ve tablo oluşturun. Daha fazla bilgi için bkz. [sqlcmd kullanarak Database Engine 'e bağlanma](/sql/ssms/scripting/sqlcmd-connect-to-the-database-engine/).
+* Bir DAC paket dosyasını SQL Edge kapsayıcısına dağıtmak için SQLPackage.exe kullanın. Modülün istenen özellikler yapılandırmasının bir parçası olarak SqlPackage dosya URI 'sini belirterek, bu işlemi otomatikleştirebilirsiniz. Ayrıca, bir DAC paketini SQL Edge 'e dağıtmak için SqlPackage.exe istemci aracını doğrudan kullanabilirsiniz.
 
-    SqlPackage. exe ' yi indirme hakkında daha fazla bilgi için bkz. [SqlPackage 'ı indirme ve yükleme](/sql/tools/sqlpackage-download/). Aşağıda, SqlPackage. exe ' nin bazı örnek komutları verilmiştir. Daha fazla bilgi için SqlPackage. exe belgelerine bakın.
+    SqlPackage.exe indirme hakkında daha fazla bilgi için bkz. [SqlPackage 'ı indirme ve yükleme](/sql/tools/sqlpackage-download/). SqlPackage.exe için bazı örnek komutlar aşağıda verilmiştir. Daha fazla bilgi için SqlPackage.exe belgelerine bakın.
 
     **DAC paketi oluşturma**
 
@@ -103,7 +103,7 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
     5. SQL Edge örneğiyle bağlantıyı test etmek için **Bağlantıyı Sına**' yı seçin.
 
-    6. **Oluştur**’u seçin.
+    6. **Oluştur**'u seçin.
 
     ![Bağlı hizmet oluşturma](media/tutorial-sync-data-factory/create-linked-service.png)
 
@@ -195,7 +195,7 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
     2. Saklı yordam parametrelerinin değerlerini belirtmek için, **parametreyi Içeri aktar** ' ı seçin ve parametreler için şu değerleri girin:
 
-    |Adı|Tür|Değer|
+    |Name|Tür|Değer|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@ {Activity (' Newfiligran '). Output. firstRow. Newsulu Markvalue}|
     |TableName|Dize|@ {Activity (' Oldfiligran '). Output. firstRow. TableName}|

@@ -9,14 +9,14 @@ ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: f77aacbddc5b3dcb5da62e5e87405477d47e7001
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672332"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945656"
 ---
 # <a name="secure-access-to-application-data"></a>Uygulama verilerine güvenli erişim
 
@@ -135,11 +135,13 @@ Yukarıdaki görevde, aşağıdaki sınıflar, özellikler ve yöntemler kullan�
 |[UriBuilder](/dotnet/api/system.uribuilder) | [Sorgu](/dotnet/api/system.uribuilder.query) |  |
 |[Liste](/dotnet/api/system.collections.generic.list-1) | | [Ekle](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>Sunucu tarafı şifrelemesi
+## <a name="azure-storage-encryption"></a>Azure Depolama şifrelemesi
 
-[Azure Depolama Hizmeti Şifrelemesi (SSE)](../common/storage-service-encryption.md), verilerinizi korumanıza ve muhafaza etmenize yardımcı olur. SSE, bekleyen verileri şifreleyerek şifreleme, şifre çözme ve anahtar yönetimini işler. Verilerin tamamı, mevcut en güçlü blok şifreleme özelliklerinden biri olan 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) ile şifrelenir.
+[Azure depolama şifrelemesi](../common/storage-service-encryption.md) , bekleyen verileri şifreleyerek ve şifreleme ve şifre çözme işlemlerini gerçekleştirerek verilerinizi korumanıza ve korumanıza yardımcı olur. Verilerin tamamı, mevcut en güçlü blok şifreleme özelliklerinden biri olan 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) ile şifrelenir.
 
-SSE tüm performans katmanları (Standart ve Premium), tüm dağıtım modelleri (Azure Resource Manager ve Klasik) ve tüm Azure Depolama hizmetlerinde (Blob, Kuyruk, Tablo ve Dosya) verileri otomatik olarak şifreler. 
+Microsoft 'un şifreleme anahtarlarını yönetmesine veya Azure Key Vault ile müşteri tarafından yönetilen anahtarlarla kendi anahtarlarınızı getirebileceğini seçebilirsiniz. Daha fazla bilgi için bkz. [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](../common/encryption-customer-managed-keys.md).
+
+Azure depolama şifrelemesi, tüm performans katmanlarında (Standart ve Premium) verileri, tüm dağıtım modellerini (Azure Resource Manager ve klasik) ve tüm Azure depolama hizmetlerini (blob, kuyruk, tablo ve dosya) otomatik olarak şifreler.
 
 ## <a name="enable-https-only"></a>Yalnızca HTTPS'yi etkinleştirme
 

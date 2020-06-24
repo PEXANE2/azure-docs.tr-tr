@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128838"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982059"
 ---
 # <a name="monitor-published-apis"></a>Yayımlanan API’leri izleme
 
 Azure İzleyici ile Azure kaynaklarından gelen ölçüm ve günlükleri görselleştirebilir, sorgulayabilir, yönlendirebilir, arşivleyebilir ve bunlar üzerinde işlem uygulayabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etkinlik günlüklerini görüntüleme
@@ -43,14 +43,13 @@ Aşağıdaki videoda, Azure İzleyici'yi kullanarak API Management’ı izleme i
 
 ## <a name="view-metrics-of-your-apis"></a>API'lerinizin ölçümlerini görüntüleme
 
-API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu hakkında neredeyse gerçek zamanlı görünürlük sağlar. Bazı kullanılabilir ölçümlerin özeti aşağıda verilmiştir:
+API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu hakkında neredeyse gerçek zamanlı görünürlük sağlar. En sık kullanılan iki ölçüm aşağıda verilmiştir. Tüm kullanılabilir ölçümlerin bir listesi için bkz. [desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice).
 
 * Kapasite: APıM hizmetlerinizi yükseltme/eski sürüme düşürme hakkında kararlar almanıza yardımcı olur. Ölçüm, dakika başına yayılır ve raporlama zamanındaki ağ geçidi kapasitesini yansıtır. Ölçüm, CPU ile bellek kullanımı gibi ağ geçidi kaynakları temel alınarak hesaplanan 0-100 aralığında değişir.
-* Toplam Ağ Geçidi İsteği: dönem içindeki API isteklerinin sayısı. 
-* Başarılı Ağ Geçidi İstekleri: 304, 307 ve 301’den küçük herhangi bir kod (örneğin, 200) dahil olmak üzere başarılı HTTP yanıt kodları almış API isteklerinin sayısı.
-* Başarısız Ağ Geçidi İstekleri: 400 ve 500’den büyük herhangi bir kod dahil olmak üzere hatalı HTTP yanıt kodları almış API isteklerinin sayısı.
-* Yetkisiz Ağ Geçidi İstekleri: 401, 403 ve 429 dahil olmak üzere HTTP yanıt kodları almış API isteklerinin sayısı.
-* Diğer Ağ Geçidi İstekleri: Yukarıdaki kategorilerin hiçbirine ait olmayan HTTP yanıt kodları (örneğin, 418) almış API isteklerinin sayısı.
+* İstekler: APıM hizmetleriniz aracılığıyla API trafiğini çözümlemenize yardımcı olur. Ölçüm, dakika başına yayılır ve yanıt kodları, konum, ana bilgisayar adı ve hatalar dahil olmak üzere boyutlara sahip ağ geçidi isteklerinin sayısını raporlar. 
+
+> [!IMPORTANT]
+> Aşağıdaki ölçümler 2019 Mayıs 'Tan itibaren kullanımdan kaldırılmıştır ve 2023 Ağustos 'ta kullanımdan kaldırılacak: toplam ağ geçidi Isteği, başarılı ağ geçidi Istekleri, yetkisiz ağ geçidi Istekleri, başarısız ağ geçidi istekleri, diğer ağ geçidi Istekleri. Lütfen eşdeğer işlevselliği sağlayan Istek ölçüsüne geçiş yapın.
 
 ![ölçüm grafiği](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
@@ -60,9 +59,9 @@ API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu ha
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. Açılan listeden ilgilendiğiniz ölçümleri seçin. Örneğin, **istekler**. 
-1. Grafikte, API çağrılarının toplam sayısı gösterilmektedir.
-1. Grafik, **istek** ölçümünün boyutları kullanılarak filtrelenebilir. Örneğin, **Filtre Ekle**' ye tıklayın, **arka uç yanıt kodu**' nu seçin, değer olarak 500 girin. Artık grafik, API arka ucunda başarısız olan isteklerin sayısını gösterir.   
+2. Açılan listeden ilgilendiğiniz ölçümleri seçin. Örneğin, **istekler**. 
+3. Grafikte, API çağrılarının toplam sayısı gösterilmektedir.
+4. Grafik, **istek** ölçümünün boyutları kullanılarak filtrelenebilir. Örneğin, **Filtre Ekle**' ye tıklayın, **arka uç yanıt kodu**' nu seçin, değer olarak 500 girin. Artık grafik, API arka ucunda başarısız olan isteklerin sayısını gösterir.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Yetkisiz istekler için uyarı kuralı ayarlama
 
@@ -177,7 +176,7 @@ API Management Şu anda her bir girdiyle aşağıdaki şemaya sahip her bir API 
 }  
 ```
 
-| Özellik  | Tür | Açıklama |
+| Özellik  | Tür | Description |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | boole | HTTP isteği, 2xx veya 3xx aralığı içinde yanıt durum koduyla tamamlandıysa true olur |
 | time | date-time | Ağ geçidinin başladığı zaman zaman damgası isteği işleme |
@@ -188,8 +187,8 @@ API Management Şu anda her bir girdiyle aşağıdaki şemaya sahip her bir API 
 | correlationId | string | API Management tarafından atanmış benzersiz http isteği tanımlayıcısı |
 | location | string | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
 | httpStatusCodeCategory | string | Http yanıtı durum kodunun kategorisi: Başarılı (301 veya daha küçük ya da 304 ya da 307), Yetkisiz (401, 403, 429), Hatalı (400, 500 ve 600 arası), Diğer |
-| resourceId | string | /SUBSCRIPTIONS/\<aboneliğinin>/RESOURCEGROUPS/\<Resource-Group>/providers/microsoftAPI Management kaynağının kimliği. ICLAIMANA/HIZMET/\<ad> |
-| properties | object | Geçerli isteğin özellikleri |
+| resourceId | string | /SUBSCRIPTIONS/ \<subscription> /ResourceGroups/ \<resource-group> /providers/microsoftAPI Management kaynağının kimliği. ıMANAGEMENTPACK/HIZMET/\<name> |
+| properties | nesne | Geçerli isteğin özellikleri |
 | method | string | Gelen isteğin HTTP yöntemi |
 | url | string | Gelen isteğin URL’si |
 | clientProtocol | string | Gelen isteğin HTTP protokolü sürümü |
@@ -210,9 +209,9 @@ API Management Şu anda her bir girdiyle aşağıdaki şemaya sahip her bir API 
 | userId | string | Geçerli istek için kullanıcı varlığı tanımlayıcısı | 
 | apimSubscriptionId | string | Geçerli istek için abonelik varlığı tanımlayıcısı | 
 | backendId | string | Geçerli istek için arka uç varlığı tanımlayıcısı | 
-| LastError | object | Son istek işleme hatası | 
+| LastError | nesne | Son istek işleme hatası | 
 | elapsed | integer | Ağ geçidinin isteği aldığı ve hatanın gerçekleştiği sırada geçen milisaniye sayısı | 
-| source | string | İlke veya işleme iç işleyicisinin adı hataya neden oldu | 
+| kaynak | dize | İlke veya işleme iç işleyicisinin adı hataya neden oldu | 
 | scope | string | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
 | section | string | Hataya neden olan ilkeyi içeren ilke belgesinin bölümü | 
 | reason | string | Hata nedeni | 

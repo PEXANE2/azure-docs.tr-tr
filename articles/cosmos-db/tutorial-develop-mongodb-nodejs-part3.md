@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75444733"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114393"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-kullanıcı arabirimini angular ile derleme
 
-Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
+Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 Öğreticinin 3. bölümünde [2. bölümdeki](tutorial-develop-mongodb-nodejs-part2.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
@@ -51,7 +51,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
     Terminal penceresi yeni bileşenlerin onayını görüntüler.
 
-    ![Hero bileşenini yükleme](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png" alt-text="Hero bileşenini yükleme":::
 
     Oluşturulan ve güncelleştirilen dosyalara bir göz atalım. 
 
@@ -62,7 +62,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
 4. Aynı klasörde **app.module.ts** dosyasını açın. 5. ve 10. satırdaki bildirimlere `HeroesComponent` bileşeninin eklendiğine dikkat edin.
 
-    ![app-module.ts dosyasını açın](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="app-module.ts dosyasını açın":::
 
 5. **heroes.component.html** dosyasına dönün ve bu kodları kopyalayın. `<div>`, tüm sayfaya yönelik kapsayıcıdır. Kapsayıcı içinde, oluşturmamız gereken hero'ların bir listesi vardır. Kullanıcı arabiriminde bunları tıklayarak seçebilir, düzenleyebilir veya silebilirsiniz. HTML'de hangisinin seçili olduğunu anlayabilmeniz için bazı stil farklılıkları vardır. Ayrıca yeni hero’yu eklemenizi veya mevcut bir hero’yu düzenlemenizi sağlayan bir düzenleme alanı bulunur. 
 
@@ -394,7 +394,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
 5. `Hero` terimine sol tıkladığınızda Visual Studio, kod bloğunun sol tarafında bir ampul simgesi görüntüler. 
 
-    ![Visual Studio Code'da Ampul](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code'da Ampul":::
 
 6. Ampule ve ardından **Import Hero from "/app/hero".** ("/uygulama/hero"dan Hero İçeri Aktar) seçeneğine tıklayın. veya **Import Hero from "./hero".** ("./hero"dan Hero İçeri Aktar.) seçeneğine tıklayın. (İleti, kurulumunuza bağlı olarak değişebilir)
 
@@ -490,7 +490,7 @@ Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış
 
 3. Şimdi bir İnternet tarayıcısı açın ve **localhost:3000** adresine giderek yerel olarak çalışan uygulamayı görüntüleyin.
 
-     ![Yerel olarak çalışan Hero uygulaması](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Yerel olarak çalışan Hero uygulaması":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

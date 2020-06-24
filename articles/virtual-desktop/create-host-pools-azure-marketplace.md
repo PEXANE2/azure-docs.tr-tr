@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6ac2fd0ef3414f5b9d7f6551628264b4724b037
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234339"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100854"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -41,7 +41,7 @@ Ayrıca aşağıdaki işlemleri de bilmeniz gerekir:
 - Kullanmak istediğiniz görüntünün kaynağı. Azure galerisinden mi veya özel bir görüntü mi?
 - Etki alanınıza katılarak kimlik bilgileri.
 
-Ayrıca, Microsoft. DesktopVirtualization kaynak sağlayıcısını kaydettiğinizden emin olun. Henüz yapmadıysanız, **abonelikler** ' e gidin, alanınızda aboneliğinin adını seçin ve ardından **Azure kaynak sağlayıcıları**' nı seçin.
+Ayrıca, Microsoft. DesktopVirtualization kaynak sağlayıcısını kaydettiğinizden emin olun. Henüz yapmadıysanız, **abonelikler**' e gidin, aboneliğinizin adını seçin ve ardından **Azure kaynak sağlayıcıları**' nı seçin.
 
 Azure Resource Manager şablonuyla bir Windows sanal masaüstü konak havuzu oluşturduğunuzda, Azure Galerisi 'nden, yönetilen bir görüntüden veya yönetilmeyen görüntüden bir sanal makine oluşturabilirsiniz. VM görüntülerini oluşturma hakkında daha fazla bilgi edinmek için bkz. Azure ['a yüklemek için bir WINDOWS VHD veya vhdx hazırlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md) ve [Azure 'DA genelleştirilmiş bir VM 'Nin yönetilen görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md).
 
@@ -111,7 +111,7 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
     - **Galeri**' yi seçerseniz, açılan menüden önerilen görüntülerden birini seçin:
 
-      - Windows 10 Enterprise çoklu oturum, sürüm 1909 + Office 365 ProPlus – Gen 1
+      - Windows 10 Enterprise çoklu oturum, sürüm 1909 + kurumsal için Microsoft 365 uygulamalar – Gen 1
       - Windows 10 Enterprise multi-session, sürüm 1909 – Gen 1
       - Windows Server 2019 Datacenter-Gen1
 
@@ -169,7 +169,7 @@ Masaüstü uygulama grubunu bir çalışma alanına kaydetmek için:
      >[!NOTE]
      >İnceleme + doğrulama oluştur işlemi, parolanızın güvenlik standartlarını karşılayıp karşılamadığını veya mimarinizin doğru olup olmadığını kontrol etmez. bu nedenle, bunlardan herhangi biriyle ilgili sorunları denetlemeniz gerekir. 
 
-5. Her şeyin doğru göründüğünden emin olmak için dağıtımınız hakkındaki bilgileri gözden geçirin. İşiniz bittiğinde **Oluştur**’u seçin. Bu, aşağıdaki nesneleri oluşturan dağıtım işlemini başlatır:
+5. Her şeyin doğru göründüğünden emin olmak için dağıtımınız hakkındaki bilgileri gözden geçirin. İşiniz bittiğinde **Oluştur**'u seçin. Bu, aşağıdaki nesneleri oluşturan dağıtım işlemini başlatır:
 
      - Yeni konak havuzunuz.
      - Bir masaüstü uygulama grubu.

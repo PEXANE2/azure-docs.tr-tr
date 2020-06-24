@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6b446fe83ad37dfe9edbe55fcb1b5b42aa578274
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81258754"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100367"
 ---
 # <a name="transform-and-protect-your-api"></a>API’nizi dönüştürme ve koruma
 
@@ -26,7 +26,7 @@ ms.locfileid: "81258754"
 
 Bu öğreticide size Azure API Yönetimi ile hız sınırı yapılandırarak arka uç API’niz için koruma eklemenin ne kadar kolay olduğu gösterilmektedir. Örneğin, geliştiriciler tarafından aşırı kullanılmaması için API çağrısı sayısını sınırlamak isteyebilirsiniz. Daha fazla bilgi için bkz. [API Yönetimi ilkeleri](api-management-policies.md)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -75,12 +75,12 @@ Bu bölümde, kullanıcılarınıza göstermek istemediğiniz HTTP üst bilgiler
 2. Ekranın üst kısmında **Tasarım** sekmesini seçin.
 3. **Tüm işlemler**’i seçin.
 4. **Giden işleme** bölümünde **</>** simgesine tıklayın.
-5. İmleci ** &lt;giden&gt; ** öğesinin içine konumlandırın.
+5. İmleci ** &lt; giden &gt; ** öğesinin içine konumlandırın.
 6. Sağ pencerede **Dönüştürme ilkeleri** bölümünde **+ HTTP üst bilgisini ayarla** seçeneğine iki defa tıklayın (iki ilke kod parçacığı eklemek için).
 
    ![İlkeler](./media/transform-api/transform-api.png)
 
-7. Giden>kodunuzu değiştirin, şöyle görünür: ** \<**
+7. **\<outbound>** Kodunuzu aşağıdaki gibi görünecek şekilde değiştirin:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -112,11 +112,8 @@ Bu bölümde, API’lerin HTTP yanıt gövdesinde görüntülenen özgün URL’
 2.  **Tüm işlemler**’i seçin.
 3.  Ekranın üst kısmında **Tasarım** sekmesini seçin.
 4.  **Giden işleme** bölümünde **</>** simgesine tıklayın.
-5.  İmleci ** &lt;&gt; giden** öğesinin içine konumlandırın ve sağ üst köşedeki **ilke Ekle** düğmesine tıklayın.
-6.  Sağ pencerede **Dönüştürme ilkeleri** bölümünde **+ Gövdedeki dizeyi bul ve değiştir** seçeneğine tıklayın.
-7.  URL’yi APIM ağ geçidinizle eşleşecek şekilde değiştirmek için **find-and-replace** kodunuzu (**\<giden\>** öğesinde) değiştirin. Örneğin:
-
-        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+5.  İmleci ** &lt; giden &gt; ** öğesinin içine konumlandırın ve sağ üst köşedeki **kod parçacıklarını göster** düğmesine tıklayın.
+6.  Sağ taraftaki pencerede, **dönüştürme ilkeleri**altında, **Içerikte maske URL 'leri**' ne tıklayın.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Hız sınırı ilkesi ekleyerek (azaltma) bir API’yi koruma
 
@@ -128,9 +125,9 @@ Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nas
 2.  **Tüm işlemler**’i seçin.
 3.  Ekranın üst kısmında **Tasarım** sekmesini seçin.
 4.  **Gelen işleme** bölümünde **</>** simgesine tıklayın.
-5.  İmleci ** &lt;gelen&gt; ** öğesinin içine konumlandırın.
+5.  İmleci ** &lt; gelen &gt; ** öğesinin içine konumlandırın.
 6.  Sağ pencerede **Erişim kısıtlama ilkeleri** bölümünde **+ Anahtar başına çağrıyı sınırla** seçeneğine tıklayın.
-7.  **rate-limit-by-key** kodunuzu (**\<gelen\>** öğesinde) aşağıdaki kodla değiştirin:
+7.  **Oran-limit anahtar** kodunuzu ( **\<inbound\>** öğesinde) aşağıdaki kodla değiştirin:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 

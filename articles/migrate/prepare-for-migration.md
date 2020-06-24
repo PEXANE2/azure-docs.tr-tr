@@ -2,92 +2,101 @@
 title: Azure geçişi ile makineleri geçişe hazırlama
 description: Azure geçişi ile geçiş için şirket içi makineleri nasıl hazırlayacağınızı öğrenin.
 ms.topic: tutorial
-ms.date: 02/17/2020
+ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: eba177a254606bb847e0866ae48281a889c53f9b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5ac4ded59a69e57de02779b0ba8ade9d7b48b26
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78927481"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106370"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
-Bu makalede, [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool)' ni kullanarak şirket Içi makineleri Azure 'a geçirmeye başlamadan önce nasıl hazırlayacağınız açıklanır.
+Bu makalede, [Azure geçişi: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) aracı 'nı kullanarak şirket Içi makinelerin Azure 'a geçirmeden önce hazırlanması açıklanmaktadır.
 
 Bu makalede şunları yapacaksınız:
 > [!div class="checklist"]
-> * Geçiş sınırlamalarını doğrulayın.
-> * İşletim sistemi gereksinimlerini ve destek sınırlamalarını denetleyin.
+> * Geçiş sınırlamalarını gözden geçirin.
+> * VMware VM 'lerini geçirmek için bir yöntem seçin
+> * Geçirmek istediğiniz makineler için hiper yönetici ve işletim sistemi gereksinimlerini denetleyin.
 > * Geçirmek istediğiniz makineler için URL ve bağlantı noktası erişimini gözden geçirin.
 > * Geçişe başlamadan önce yapmanız gerekebilecek değişiklikleri gözden geçirin.
-> * Sürücü harflerinin geçişten sonra korunması için ayarları yapılandırın.
+> * Geçirilen makineler için Azure VM gereksinimlerini denetleme
 > * Geçiş sonrasında Azure VM 'lerine bağlanabilmeniz için makineleri hazırlayın.
+
+
 
 ## <a name="verify-migration-limitations"></a>Geçiş sınırlamalarını doğrulama
 
-- Azure geçişi sunucu geçişini kullanarak tek bir Azure geçişi projesinde en fazla 35.000 VMware VM/Hyper-V VM 'yi değerlendirebilirsiniz. Bir proje, VMware VM 'lerini ve Hyper-V VM 'lerini her biri için sınırlara kadar birleştirebilir.
-- Geçiş için bir seferde en fazla 10 VM seçebilirsiniz. Daha fazla çoğaltma yapmanız gerekiyorsa, 10 ' un gruplar halinde çoğaltın.
-- VMware aracısız geçiş için aynı anda en fazla 100 çoğaltma çalıştırabilirsiniz.
+Tablo, Azure geçişi için bulma, değerlendirme ve geçiş sınırlarını özetler. Geçiş işleminden önce makineleri değerlendirmenizi öneririz, ancak şunları yapmanız gerekmez.
+
+**Senaryo** | **Project** | **Bulma/değerlendirme** | **Geçiş**
+--- | --- | --- | ---
+**VMware Sanal Makineleri** | Tek bir Azure geçişi projesinde 35.000 adede kadar VM bulun ve değerlendirin. | VMware için tek bir [Azure geçişi](common-questions-appliance.md) gereci ile en fazla 10.000 VMware VM bulun. | **Aracısız geçiş**: en fazla 300 VM 'yi eşzamanlı olarak çoğaltabilirsiniz. En iyi performansı elde etmek için 50 'den daha fazla sanal makine oluşturmanız önerilir.<br/><br/> **Aracı tabanlı geçiş**: büyük sayıda VM çoğaltmak için [çoğaltma](migrate-replication-appliance.md) gerecini [ölçeklendirebilirsiniz](./agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
+**Hyper-V Sanal Makineleri** | Tek bir Azure geçişi projesinde 35.000 adede kadar VM bulun ve değerlendirin. | Tek bir Azure geçişi gereci ile 5.000 adede kadar Hyper-V VM 'lerini keşfetme | Hyper-V geçişi için bir gereç kullanılmaz. Bunun yerine, Hyper-V çoğaltma sağlayıcısı her Hyper-V konağında çalışır.<br/><br/> Çoğaltma kapasitesi, sanal makine karmaşıklığı gibi performans faktörlerine göre etkilenerek çoğaltma verileri için bant genişliğini karşıya yükler.<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
+**Fiziksel makineler** | Tek bir Azure geçişi projesinde en fazla 35.000 makine bulun ve değerlendirin. | Fiziksel sunucular için tek bir Azure geçişi gereci ile 250 adede kadar fiziksel sunucu bulun. | Çok sayıda sunucuyu çoğaltmak için [çoğaltma](migrate-replication-appliance.md) gerecini [ölçeklendirebilirsiniz](/agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
+
+## <a name="select-a-vmware-migration-method"></a>Bir VMware geçiş yöntemi seçin
+
+VMware VM 'lerini Azure 'a geçiriyorsanız, sizin için ne kadar uygun olduğuna karar vermek üzere aracısız ve aracı tabanlı geçiş yöntemlerini [karşılaştırın](server-migrate-overview.md#compare-migration-methods) .
+
+## <a name="verify-hypervisor-requirements"></a>Hiper yönetici gereksinimlerini doğrulama
+
+- [VMware aracısız](migrate-support-matrix-vmware-migration.md#vmware-requirements-agentless)veya [VMware Agent tabanlı](migrate-support-matrix-vmware-migration.md#vmware-requirements-agent-based) gereksinimleri doğrulayın.
+- [Hyper-V konağı](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) gereksinimlerini doğrulayın.
+
 
 ## <a name="verify-operating-system-requirements"></a>İşletim sistemi gereksinimlerini doğrulama
 
+Geçiş için desteklenen işletim sistemlerini doğrulayın:
+
+- VMware VM 'lerini veya Hyper-V VM 'lerini geçiriyorsanız, [aracısız](migrate-support-matrix-vmware-migration.md#vm-requirements-agentless)ve [aracı tabanlı](migrate-support-matrix-vmware-migration.md#vm-requirements-agent-based) geçiş için VMware VM gereksinimlerini ve [Hyper-V VM](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)'lerinin gereksinimlerini doğrulayın.
 - [Windows işletim sistemlerinin](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) Azure 'da desteklendiğini doğrulayın.
-- Azure 'da [Linux dağıtımlarınızın](../virtual-machines/linux/endorsed-distros.md) desteklendiğini doğrulayın.
-
-## <a name="see-whats-supported"></a>Bkz. desteklenen özellikler
-
-VMware VM 'Leri için, sunucu geçişi [aracısız veya aracı tabanlı geçişi](server-migrate-overview.md)destekler.
-
-- **VMware VM 'leri**: VMware VM 'leri için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-vmware-migration.md) doğrulayın.
-- **Hyper-v VM 'leri**: Hyper-v VM 'lerinin [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-hyper-v-migration.md) doğrulayın.
-- **Fiziksel makineler**: şirket içi fiziksel makineler ve diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-physical-migration.md) doğrulayın. 
+- Azure 'da desteklenen [Linux dağıtımlarını](../virtual-machines/linux/endorsed-distros.md) doğrulayın.
 
 ## <a name="review-url-and-port-access"></a>URL ve bağlantı noktası erişimini gözden geçirin
 
-Makinelerin geçiş sırasında internet erişimi olması gerekebilir.
+Geçiş sırasında hangi URL 'Lerin ve bağlantı noktalarına erişildiğini gözden geçirin.
 
-- **Azure geçişi**gereci: Azure geçişi gerecinin aracısız geçiş sırasında erişmesi Için gereken [URL 'leri](migrate-appliance.md#url-access) ve [bağlantı noktalarını](migrate-support-matrix-vmware-migration.md#agentless-ports) gözden geçirin.
-- **VMware VM Aracısı tabanlı geçiş**: VMware VM Aracısı tabanlı geçiş sırasında çoğaltma gerecinin kullandığı [URL 'leri](migrate-replication-appliance.md#url-access) ve [bağlantı noktalarını](migrate-replication-appliance.md#port-access) gözden geçirin. 
-- **Hyper-v Konakları**: Hyper-v konaklarının geçiş sırasında erişmesi gereken [URL 'leri ve bağlantı noktalarını](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) gözden geçirin. 
-- **Fiziksel sunucular**: fiziksel sunucu geçişi sırasında çoğaltma gerecinin kullandığı [URL 'leri](migrate-replication-appliance.md#url-access) ve [bağlantı noktalarını](migrate-replication-appliance.md#port-access) gözden geçirin.
+**Senaryo** | **Ayrıntılar** |  **URL’ler** | **Bağlantı noktaları**
+--- | --- | --- | ---
+**VMware aracısız geçişi** | Geçiş için [Azure geçişi gereç](migrate-appliance-architecture.md) kullanır. VMware VM 'lerinde hiçbir şey yüklü değil. | Gereçle keşif, değerlendirme ve geçiş için gereken genel bulutu ve kamu [URL 'lerini](migrate-appliance.md#url-access) gözden geçirin. | Aracısız geçiş için bağlantı noktası gereksinimlerini [gözden geçirin](migrate-support-matrix-vmware-migration.md#port-requirements-agentless) .
+**VMware Aracısı tabanlı geçiş** | Geçiş için [çoğaltma gereç](migrate-replication-appliance.md) kullanır. Mobility hizmeti Aracısı VM 'Lere yüklendi. | Çoğaltma gerecinin erişmesi gereken [genel bulutu](migrate-replication-appliance.md#url-access) ve [Azure Kamu](migrate-replication-appliance.md#azure-government-url-access) URL 'lerini gözden geçirin. | Aracı tabanlı geçiş sırasında kullanılan bağlantı noktalarını [gözden geçirin](migrate-replication-appliance.md#port-access) .
+**Hyper-V geçişi** | Geçiş için Hyper-V konaklarında yüklü bir sağlayıcı kullanır. Hyper-V VM 'lerinde hiçbir şey yüklü değil. | Konaklar üzerinde çalışan çoğaltma sağlayıcısının erişmesi gereken [genel bulutu](migrate-support-matrix-hyper-v-migration.md#url-access-public-cloud) ve [Azure Kamu](migrate-support-matrix-hyper-v-migration.md#url-access-azure-government) URL 'lerini gözden geçirin. | Hyper-V konağındaki çoğaltma sağlayıcısı, VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443 üzerinde giden bağlantıları kullanır.
+**Fiziksel makineler** | Geçiş için [çoğaltma gereç](migrate-replication-appliance.md) kullanır. Mobility hizmet Aracısı fiziksel makinelere yüklenir. | Çoğaltma gerecinin erişmesi gereken [genel bulutu](migrate-replication-appliance.md#url-access) ve [Azure Kamu](migrate-replication-appliance.md#azure-government-url-access) URL 'lerini gözden geçirin. | Fiziksel geçiş sırasında kullanılan bağlantı noktalarını [gözden geçirin](migrate-replication-appliance.md#port-access) .
 
 ## <a name="verify-required-changes-before-migrating"></a>Geçirmeden önce gerekli değişiklikleri doğrulayın
 
-Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik yapılmasını gerektirebilir. Azure geçişi, bu işletim sistemlerini çalıştıran VM 'Ler için bu değişiklikleri otomatik olarak yapar:
+Azure 'a geçirmeden önce VM 'lerde gereken bazı değişiklikler vardır.
 
-- Red Hat Enterprise Linux 7.0 +, 6.5 +
-- CentOS 7.0 +, 6.5 +
-- SUSE Linux Enterprise Server 12 SP1 +
-- Ubuntu 18.04 LTS, 16.04 LTS, 14.04 LTS
-- 8, 7
+- Bazı işletim sistemleri için Azure geçişi, çoğaltma/geçiş işlemi sırasında otomatik olarak değişiklik yapar.
+- Diğer işletim sistemleri için ayarları el ile yapılandırmanız gerekir.
+- Geçişe başlamadan önce ayarların el ile yapılandırılması önemlidir. Değişikliği yapmadan önce VM 'yi geçirirseniz, VM Azure 'da önyüklenemeyebilir.
 
-Diğer işletim sistemleri için, geçiş işleminden önce makineleri el ile hazırlamanız gerekir. 
+Yapmanız gereken değişiklikleri belirlemek için tabloları gözden geçirin.
 
-### <a name="prepare-windows-machines"></a>Windows makinelerini hazırlama
+### <a name="windows-machines"></a>Windows makineleri
 
-Bir Windows makinesini geçiriyorsanız geçişten önce aşağıdaki değişiklikleri yapın. Değişiklikleri yapmadan önce VM 'yi geçirirseniz, VM Azure 'da önyüklenemeyebilir.
+Gerekli değişiklikler tabloda özetlenmiştir.
 
-1. Azure VM için [Azure seri konsolunu etkinleştirin](../virtual-machines/troubleshooting/serial-console-windows.md) . Konsolunun etkinleştirilmesi, sorun gidermenize yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir. 
-2. Windows Server 2003 çalıştıran makineleri geçiriyorsanız, Hyper-V Konuk Tümleştirme Hizmetleri 'ni VM işletim sistemine yükleyebilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
+**Eylem** | **VMware (aracısız geçiş)** | **VMware (aracı tabanlı)/fiziksel makineler** | **Hyper-V üzerinde Windows** 
+--- | --- | --- | ---
+**SAN ilkesini çevrimiçi olarak yapılandırma**<br/><br/> Bu, Azure VM 'deki Windows birimlerinin, şirket içi VM ile aynı sürücü harfi atamalarını kullanmasını sağlar. | Windows Server 2008 R2 veya üstünü çalıştıran makineler için otomatik olarak ayarlayın.<br/><br/> Daha önceki işletim sistemleri için el ile yapılandırın. | Çoğu durumda otomatik olarak ayarlayın. | El ile yapılandırın.
+**Hyper-V Konuk tümleştirmesi 'ni yükler** | Windows Server 2003 çalıştıran makinelere [El Ile yükler](prepare-windows-server-2003-migration.md#install-on-vmware-vms) . | Windows Server 2003 çalıştıran makinelere [El Ile yükler](prepare-windows-server-2003-migration.md#install-on-vmware-vms) . | Windows Server 2003 çalıştıran makinelere [El Ile yükler](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) .
+**Azure seri konsolunu etkinleştirin**.<br/><br/>Sorun gidermeye yardımcı olması için Azure VM 'lerinde [konsolunu etkinleştirin](../virtual-machines/troubleshooting/serial-console-windows.md) . VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir. | El ile etkinleştir | El ile etkinleştir | El ile etkinleştir
+**Geçişten sonra Bağlan**<br/><br/> Geçişten sonra bağlanmak için, geçirmeden önce yapmanız gereken birkaç adım vardır. | El ile [ayarlayın](#prepare-to-connect-to-azure-windows-vms) . | El ile [ayarlayın](#prepare-to-connect-to-azure-windows-vms) . | El ile [ayarlayın](#prepare-to-connect-to-azure-windows-vms) .
 
-### <a name="prepare-linux-machines"></a>Linux makinelerini hazırlama
 
-1. Hyper-V Linux Tümleştirme Hizmetleri 'ni yükler. Linux dağıtımların çoğu yeni sürümü, varsayılan olarak Hyper-V Linux Tümleştirme Hizmetleri içerir.
-2. Linux init görüntüsünü, gerekli Hyper-V sürücülerini içerecek şekilde yeniden derleyin. İnit görüntüsünü yeniden oluşturmak, sanal makinenin Azure 'da önyüklenmesini sağlar (yalnızca bazı dağıtımlarla gereklidir).
-3. [Azure seri konsol günlüğünü etkinleştirin](../virtual-machines/troubleshooting/serial-console-linux.md). Konsol günlüğünü etkinleştirmek, sorun gidermenize yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir.
-4. Cihaz eşleme dosyasını cihaz adı-birim ilişkilendirmeleriyle güncelleştirin, böylece kalıcı cihaz tanımlayıcılarını kullanırsınız.
-5. Kalıcı birim tanımlayıcılarını kullanmak için fstab dosyasındaki girişleri güncelleştirin.
-6. Arabirim adlarını ayrılan udev kurallarını MAC adresine göre kaldırın ve bu şekilde devam edin.
-7. DHCP 'den bir IP adresi almak için ağ arabirimlerini güncelleştirin.
+#### <a name="configure-san-policy"></a>SAN ilkesini yapılandırma
 
-[Azure 'da bir LINUX VM çalıştırma adımları](../virtual-machines/linux/create-upload-generic.md)hakkında daha fazla bilgi edinin ve popüler Linux dağıtımlarından bazılarına ilişkin yönergeler edinin.
+Varsayılan olarak, Azure VM 'Leri, geçici depolama olarak kullanılmak üzere D sürücüsüne atanır.
 
-## <a name="preserve-drive-letters-after-migration"></a>Geçişten sonra sürücü harflerini koru
+- Bu sürücü ataması, diğer tüm bağlı depolama sürücüsü atamalarının bir harfle artımına neden olur.
+- Örneğin, şirket içi yüklemeniz uygulama yüklemeleri için D sürücüsüne atanan bir veri diski kullanıyorsa, VM 'yi Azure 'a geçirdikten sonra, bu sürücüye yönelik atama E sürücüsüne kadar artar. 
+- Bu otomatik atamayı engellemek ve Azure 'un bir sonraki boş sürücü harfini geçici birimine atamasını sağlamak için, depolama alanı ağı (SAN) ilkesini * * OnlineAll olarak ayarlayın:
 
-Şirket içi bir makineyi Microsoft Azure geçirdiğinizde, ek veri disklerinin sürücü harfleri özgün değerlerinden değişebilir. 
-
-Varsayılan olarak, Azure VM 'Leri, geçici depolama olarak kullanılmak üzere D sürücüsüne atanır. Bu sürücü ataması, diğer tüm bağlı depolama sürücüsü atamalarının bir harfle artımına neden olur. Örneğin, şirket içi yüklemeniz uygulama yüklemeleri için D sürücüsüne atanan bir veri diski kullanıyorsa, VM 'yi Azure 'a geçirdikten sonra, bu sürücüye yönelik atama E sürücüsüne kadar artar. Bu otomatik atamayı engellemek ve Azure 'un bir sonraki boş sürücü harfini geçici birimine atamasını sağlamak için, depolama alanı ağı (SAN) ilkesini **OnlineAll**olarak ayarlayın:
+Bu ayarı aşağıdaki şekilde el ile yapılandırın:
 
 1. Şirket içi makinede (ana sunucu değil), yükseltilmiş bir komut istemi açın.
 2. **DiskPart**girin.
@@ -95,9 +104,40 @@ Varsayılan olarak, Azure VM 'Leri, geçici depolama olarak kullanılmak üzere 
 4. **DISKPART** Isteminde **San Ilkesi = OnlineAll**yazın. Bu ayar, disklerin çevrimiçi hale gelmesini sağlar ve her iki diski de okuyup yazabilmenizi sağlar.
 5. Test geçişi sırasında, sürücü harflerinin korunacağını doğrulayabilirsiniz.
 
+
+### <a name="linux-machines"></a>Linux makineleri
+
+Azure geçişi bu işlemleri bu sürümler için otomatik olarak tamamlar
+
+- Red Hat Enterprise Linux 7.0 +, 6.5 +
+- CentOS 7.0 +, 6.5 +
+- SUSE Linux Enterprise Server 12 SP1 +
+- Ubuntu 18.04 LTS, 16.04 LTS, 14.04 LTS
+- 8, 7
+
+Diğer sürümler için, makineleri tabloda özetlenen şekilde hazırlayın.  
+
+
+**Eylem** | **Ayrıntılar** | **Linux sürümü**
+--- | --- | ---
+**Hyper-V Linux Tümleştirme Hizmetleri 'ni yükler** | Linux init görüntüsünü, gerekli Hyper-V sürücülerini içerecek şekilde yeniden derleyin. İnit görüntüsünü yeniden oluşturmak, VM 'nin Azure 'da önyüklenebilmesini sağlar. | Linux dağıtımların çoğu yeni sürümü bu varsayılan olarak eklenmiştir.<br/><br/> Dahil edilmedikçe, yukarıda çağrılanlar hariç tüm sürümler için el ile yükleyebilirsiniz.
+**Azure seri konsol günlüğünü etkinleştirme** | Konsol günlüğünü etkinleştirmek, sorun gidermenize yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir. Disk görüntüsü önyüklemesi, yeni VM için bir yeniden başlatma ile eşdeğerdir.<br/><br/> ' İ etkinleştirmek için [Bu yönergeleri](../virtual-machines/troubleshooting/serial-console-linux.md) izleyin.
+**Cihaz eşleme dosyasını güncelleştir** | Cihaz eşleme dosyasını cihaz adı-birim ilişkilendirmeleriyle güncelleştirin, böylece kalıcı cihaz tanımlayıcılarını kullanırsınız. | Yukarıdaki çağrılanlar hariç tüm sürümler için el ile yükler.
+**Fstab girdilerini Güncelleştir** |  Kalıcı birim tanımlayıcılarını kullanmak için girişleri güncelleştirin.    | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile güncelleştirin.
+**Uıdev kuralını kaldır** | Arabirim adlarını ayrılmış olan tüm udev kurallarını MAC adresine göre kaldırın vb. | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile kaldırın.
+**Ağ arabirimlerini Güncelleştir** | Ağ arabirimlerini DHCP. NST tabanlı IP adresini alacak şekilde Güncelleştir | Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile güncelleştirin.
+**SSH 'yi etkinleştirme** | SSH 'nin etkinleştirildiğinden ve SSHD hizmetinin yeniden başlatma sırasında otomatik olarak başlayacak şekilde ayarlandığından emin olun.<br/><br/> Gelen SSH bağlantı isteklerinin işletim sistemi güvenlik duvarı veya komut dosyası kuralları tarafından engellenmediğinden emin olun.| Yukarıdaki çağrılanlar dışındaki tüm sürümler için el ile etkinleştirin.
+
+[Azure 'Da LINUX VM çalıştırma](../virtual-machines/linux/create-upload-generic.md)adımları hakkında daha fazla bilgi edinin ve popüler Linux dağıtımlarından bazılarına yönelik yönergeler edinin.
+
+
 ## <a name="check-azure-vm-requirements"></a>Azure VM gereksinimlerini denetleme
 
-Azure 'a çoğaltılan şirket içi makineler, işletim sistemi ve mimari, diskler, ağ ayarları ve VM adlandırması için Azure VM gereksinimleriyle uyumlu olmalıdır. Geçirmeden önce [VMware VM 'leri ve fiziksel sunucular](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)ve [Hyper-V VM](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) 'lerinin gereksinimlerini doğrulayın.
+Azure 'a çoğaltılan şirket içi makineler, işletim sistemi ve mimari, diskler, ağ ayarları ve VM adlandırması için Azure VM gereksinimleriyle uyumlu olmalıdır.
+
+Geçirmeden önce, [VMware](migrate-support-matrix-vmware-migration.md#azure-vm-requirements), [Hyper-V](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)ve [fiziksel sunucu](migrate-support-matrix-physical-migration.md#azure-vm-requirements) geçişi için Azure VM gereksinimlerini gözden geçirin.
+
+
 
 ## <a name="prepare-to-connect-after-migration"></a>Geçişten sonra bağlanmaya hazırlanma
 
@@ -114,6 +154,7 @@ Azure VM 'Leri Azure 'a geçiş sırasında oluşturulur. Geçişten sonra, yeni
 5. Geçişten sonra siteden siteye VPN üzerinden bir Azure VM 'ye erişmek istiyorsanız, şirket içi makinedeki Windows Güvenlik Duvarı 'nda etki alanı ve özel profiller için RDP 'ye izin verin. [RDP trafiğine nasıl izin vereceğinizi](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)öğrenin. 
 6. Geçiş yaparken şirket içi VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Varsa, güncelleştirmeler geçiş sonrasında Azure VM 'ye yüklenmeye başlayabilir ve güncelleştirmeler tamamlanana kadar VM 'de oturum açamazsınız.
 
+
 ### <a name="prepare-to-connect-with-linux-azure-vms"></a>Linux Azure VM 'leriyle bağlanmaya hazırlanma
 
 Şirket içi Linux makinelerde:
@@ -129,9 +170,15 @@ Geçişten sonra, oluşturulan Azure VM 'lerde şu adımları uygulayın:
 2. VM 'deki ağ güvenlik grubu (NSG) kurallarının RDP veya SSH bağlantı noktasına gelen bağlantılara izin verin.
 3. VM 'yi görüntülemek için [önyükleme tanılamalarını](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) denetleyin.
 
-> [!NOTE]
-> Azure savunma hizmeti, Azure VM 'lerine özel RDP ve SSH erişimi sağlar. Bu hizmet hakkında [daha fazla bilgi edinin](../bastion/bastion-overview.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [VMware VM](server-migrate-overview.md) 'lerini Azure 'a geçirmek için kullanmak istediğiniz yöntemi belirleyin veya [Hyper-V VM](tutorial-migrate-hyper-v.md) 'lerini veya [fiziksel sunucuları ya da sanallaştırılmış veya bulut VM](tutorial-migrate-physical-virtual-machines.md)'lerini geçirmeye başlayın.
+
+## <a name="see-whats-supported"></a>Bkz. desteklenen özellikler
+
+VMware VM 'Leri için, sunucu geçişi [aracısız veya aracı tabanlı geçişi](server-migrate-overview.md)destekler.
+
+- **VMware VM 'leri**: VMware VM 'leri için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-vmware-migration.md) doğrulayın.
+- **Hyper-v VM 'leri**: Hyper-v VM 'lerinin [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-hyper-v-migration.md) doğrulayın.
+- **Fiziksel makineler**: şirket içi fiziksel makineler ve diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-physical-migration.md) doğrulayın. 

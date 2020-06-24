@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abf7e864398d48742e0cbf99a9a7b7dae56b9c5d
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82105582"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100933"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Öğretici: Azure Key Vault sertifikayı Içeri aktarma
 
@@ -26,8 +26,9 @@ Azure Key Vault, gizli diziler için güvenli bir depolama sağlayan bulut hizme
 
 > [!div class="checklist"]
 > * Bir anahtar kasası oluşturma.
-> * Portalı kullanarak anahtar kasasında bir sertifikayı içeri aktarın.
-> * CLı kullanarak Anahtar Kasası 'nda bir sertifikayı içeri aktarın.
+> * Portalı kullanarak Key Vault bir sertifikayı içeri aktarın.
+> * CLı kullanarak Key Vault bir sertifikayı içeri aktarın.
+> * PowerShell kullanarak Key Vault bir sertifikayı içeri aktarın.
 
 
 Başlamadan önce [temel kavramları Key Vault](../general/basic-concepts.md)okuyun. 
@@ -66,7 +67,7 @@ Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleşti
 Bir sertifikayı kasaya aktarmak için diskte olması gereken bir ped veya PFX Sertifika dosyası olması gerekir. Bu durumda, **örnek sertifika**adlı dosya adına sahip bir sertifikayı içeri aktaracağız.
 
 > [!IMPORTANT]
-> Azure Key Vault, desteklenen sertifika biçimleri PFX ve PEı ' dir. 
+> Azure Key Vault'ta PFX ve PEM biçimindeki sertifikalar desteklenir. 
 > - . pek dosya biçimi bir veya daha fazla x509 sertifika dosyası içeriyor.
 > - . pfx dosya biçimi, birden çok şifreleme nesnesini tek bir dosyada (etki alanınız için verilir), eşleşen bir özel anahtarla depolamak için bir arşiv dosyası biçimidir ve isteğe bağlı olarak bir ara CA 'yı içerebilir.  
 
@@ -77,7 +78,7 @@ Bir sertifikayı kasaya aktarmak için diskte olması gereken bir ped veya PFX S
     - **Sertifika adı**: örnek sertifikası.
     - **Sertifika dosyasını karşıya yükle**: diskten sertifika dosyasını seçin
     - **Parola** : parola korumalı bir sertifika dosyası yüklüyorsanız, bu parolayı burada belirtin. Aksi takdirde, boş bırakın. Sertifika dosyası başarıyla alındıktan sonra Anahtar Kasası bu parolayı kaldırır.
-4. **Oluştur**' a tıklayın.
+4. **Oluştur**'a tıklayın.
 
 ![Sertifika Özellikleri](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -102,7 +103,8 @@ az keyvault certificate import --file
                                [--subscription]
                                [--tags]
 ```
-[Burada](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) parametreler hakkında daha fazla bilgi edinin
+
+[Parametreler](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)hakkında daha fazla bilgi edinin.
 
 Sertifikayı içeri aktardıktan sonra sertifika [göster](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) 'i kullanarak sertifikayı görüntüleyebilirsiniz
 
@@ -116,9 +118,25 @@ az keyvault certificate show [--id]
                              [--version]
 ```
 
-
-
 Şimdi bir Anahtar Kasası oluşturdunuz, bir sertifika içeri aktardı ve sertifikanın özellikleri görüntülendi.
+
+## <a name="import-a-certificate-using-azure-powershell"></a>Azure PowerShell kullanarak bir sertifikayı içeri aktarma
+
+```
+Import-AzureKeyVaultCertificate
+      [-VaultName] <String>
+      [-Name] <String>
+      -FilePath <String>
+      [-Password <SecureString>]
+      [-Tag <Hashtable>]
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
+```
+
+[Parametreler](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)hakkında daha fazla bilgi edinin.
+
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

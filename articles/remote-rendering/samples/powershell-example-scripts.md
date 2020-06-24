@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80891501"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052290"
 ---
 # <a name="example-powershell-scripts"></a>Örnek PowerShell betikleri
 
@@ -37,7 +37,7 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
 
 1. Azure uzaktan Işleme hesabınızı içeren aboneliğinizde oturum açın:
     1. Bir PowerShell açın
-    1. Şunu çalıştırın `Connect-AzAccount` : ve ekrandaki yönergeleri izleyin.
+    1. Şunu çalıştırın: `Connect-AzAccount` ve ekrandaki yönergeleri izleyin.
 
 > [!NOTE]
 > Kuruluşunuzun birden fazla aboneliğine sahip olması durumunda, SubscriptionID ve Tenant bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
@@ -46,7 +46,7 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
 
 ## <a name="configuration-file"></a>Yapılandırma dosyası
 
-Dosyaların yanında, `.ps1` doldurmanız gereken bir `arrconfig.json` sorun var:
+Dosyaların yanında, `.ps1` doldurmanız gereken bir sorun var `arrconfig.json` :
 
 ```json
 {
@@ -74,36 +74,39 @@ Dosyaların yanında, `.ps1` doldurmanız gereken bir `arrconfig.json` sorun var
 ```
 
 > [!CAUTION]
-> Çift ters eğik çizgi kullanarak localassetdirectorypath yolundaki ters eğik çizgileri doğru bir şekilde atladığınızdan emin\\\\olun: "" ve ınputfolderpath ve ınputassetpath gibi tüm diğer yollarda eğik çizgileri "/" kullanın.
+> Çift ters eğik çizgi kullanarak LocalAssetDirectoryPath yolundaki ters eğik çizgileri doğru bir şekilde atladığınızdan emin olun: " \\ \\ " ve ınputfolderpath ve ınputassetpath gibi tüm diğer yollarda eğik çizgileri "/" kullanın.
+
+> [!CAUTION]
+> İsteğe bağlı değerler doldurulmalıdır veya anahtar ve değeri tamamen kaldırmanız gerekir. Örneğin, `"outputAssetFileName"` parametresini kullanmazsanız, içindeki tüm satırı silmeniz gerekir `arrconfig.json` .
 
 ### <a name="accountsettings"></a>accountSettings
 
-Ve `arrAccountId` `arrAccountKey`Için bkz. [Azure uzaktan işleme hesabı oluşturma](../how-tos/create-an-account.md).
+`arrAccountId`Ve için `arrAccountKey` bkz. [Azure uzaktan işleme hesabı oluşturma](../how-tos/create-an-account.md).
 İçin `region` [kullanılabilir bölgelerin listesini](../reference/regions.md)görüntüleyin.
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-**Renderingsession. ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
+**RenderingSession.ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
 
 - **VMSize:** Sanal makinenin boyutunu seçer. *Standart* veya *Premium*' u seçin. Artık ihtiyacınız olmadığında işleme oturumlarını kapatın.
 - **Maxleasetime:** VM 'nin kiralanmasını istediğiniz süre. Kira süresi dolarsa kapatılacak. Kira süresi daha sonra genişletilebilir (aşağıya bakın).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
-**Dönüştürme. ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
+**Conversion.ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
 
 Ayrıntılar için bkz. [Azure Storage hesabı hazırlama](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
 
-## <a name="script-renderingsessionps1"></a>Betik: RenderingSession. ps1
+## <a name="script-renderingsessionps1"></a>Betik: RenderingSession.ps1
 
 Bu betik, işleme oturumlarını oluşturmak, sorgulamak ve durdurmak için kullanılır.
 
 > [!IMPORTANT]
-> ARRConfig. JSON içindeki *accountsettings* ve *Renderingsessionsettings* bölümlerini doldurduğunuzdan emin olun.
+> Üzerinde arrconfig.js*Accountsettings* ve *Renderingsessionsettings* bölümlerinin doldurulduğundan emin olun.
 
 ### <a name="create-a-rendering-session"></a>İşleme oturumu oluşturma
 
-Tamamen doldurulan ARRConfig. JSON ile normal kullanım:
+Üzerinde tamamen doldurulmuş arrconfig.jsnormal kullanım:
 
 ```PowerShell
 .\RenderingSession.ps1
@@ -139,7 +142,7 @@ Bir oturumun özelliklerini almak için şunu çalıştırın:
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-Oturum `-Poll` *başlamaya* veya bir hata oluşuncaya kadar beklemek için kullanın.
+`-Poll`Oturum *başlamaya* veya bir hata oluşuncaya kadar beklemek için kullanın.
 
 ### <a name="list-active-sessions"></a>Etkin oturumları listeleme
 
@@ -164,12 +167,12 @@ Oturum `-Poll` *başlamaya* veya bir hata oluşuncaya kadar beklemek için kulla
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
 ```
 
-## <a name="script-conversionps1"></a>Betik: dönüştürme. ps1
+## <a name="script-conversionps1"></a>Betik: Conversion.ps1
 
 Bu betik, giriş modellerini Azure uzaktan Işleme özel çalışma zamanı biçimine dönüştürmek için kullanılır.
 
 > [!IMPORTANT]
-> ARRConfig. JSON içindeki *accountsettings* ve *assetconversionsettings* bölümlerini doldurduğunuzdan emin olun.
+> Üzerinde arrconfig.js*accountsettings* ve *assetconversionsettings* bölümlerinin doldurulduğundan emin olun.
 
 Betik, depolama hesaplarını hizmeti ile birlikte kullanmak için iki seçeneği gösterir:
 
@@ -178,7 +181,7 @@ Betik, depolama hesaplarını hizmeti ile birlikte kullanmak için iki seçeneğ
 
 ### <a name="linked-storage-account"></a>Bağlı depolama hesabı
 
-ARRConfig. json ' ı tamamen doldurduktan ve bir depolama hesabını bağladıktan sonra aşağıdaki komutu kullanabilirsiniz. Depolama hesabınızı bağlama, [Hesap oluşturma](../how-tos/create-an-account.md#link-storage-accounts)bölümünde açıklanmaktadır.
+Bir depolama hesabını tam olarak doldurduktan sonra arrconfig.jsve bağlı olduktan sonra aşağıdaki komutu kullanabilirsiniz. Depolama hesabınızı bağlama, [Hesap oluşturma](../how-tos/create-an-account.md#link-storage-accounts)bölümünde açıklanmaktadır.
 
 Bağlı depolama hesabı kullanmak, paylaşılan erişim Imzaları oluşturmaya gerek olmadığı için dönüştürme hizmetinin kullanılması için tercih edilen yoldur.
 
@@ -186,7 +189,7 @@ Bağlı depolama hesabı kullanmak, paylaşılan erişim Imzaları oluşturmaya 
 .\Conversion.ps1
 ```
 
-1. İçinde yer alan tüm dosyaları verilen `assetConversionSettings.modelLocation` ' ın altındaki giriş blobu kapsayıcısına yükleyin`inputFolderPath`
+1. İçinde yer alan tüm dosyaları `assetConversionSettings.modelLocation` verilen ' ın altındaki giriş blobu kapsayıcısına yükleyin`inputFolderPath`
 1. Model [dönüştürmeyi](../how-tos/conversion/model-conversion.md) kapatmak için [model dönüştürme REST API](../how-tos/conversion/conversion-rest-api.md) çağırın
 1. Dönüştürme başarılı veya başarısız olana kadar dönüştürme durumunu yoklayın
 1. Dönüştürülmüş dosya konumunun çıkış ayrıntıları (depolama hesabı, çıkış kapsayıcısı, kapsayıcıdaki dosya yolu)
@@ -264,7 +267,7 @@ Bu dönüştürmenin dönüştürme durumunu şu şekilde alabilirsiniz:
 .\Conversion.ps1 -GetConversionStatus -Id <conversionId> [-Poll]
 ```
 
-Dönüştürme `-Poll` işlemi tamamlanana veya bir hata oluştuğundan beklemek için kullanın.
+`-Poll`Dönüştürme işlemi tamamlanana veya bir hata oluştuğundan beklemek için kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

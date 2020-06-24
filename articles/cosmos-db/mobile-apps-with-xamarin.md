@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fbcbf1be29031596201774ae5ebb40cb1a3b89a2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985567"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113458"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Öğretici: Xamarin ve Azure Cosmos DB ile mobil uygulamalar oluşturun
 
@@ -31,7 +31,7 @@ Bu makalede, Xamarin ve Azure Cosmos DB ile mobil uygulamalar oluşturma öğret
 ## <a name="azure-cosmos-db-capabilities-for-mobile-apps"></a>Mobil uygulamalar için Azure Cosmos DB özellikleri
 Azure Cosmos DB mobil uygulama geliştiricileri için aşağıdaki anahtar yetenekleri sağlar:
 
-![Mobil uygulamalar için Azure Cosmos DB özellikleri](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-for-mobile.png" alt-text="Mobil uygulamalar için Azure Cosmos DB özellikleri":::
 
 * Şemasız veriler üzerinde zengin sorgular. Azure Cosmos DB verileri heterojen koleksiyonlarda şemasız JSON belgeleri olarak depolar. Şemalar veya dizinler hakkında endişelenmeye gerek kalmadan [zengin ve hızlı sorguları](how-to-sql-query.md) sunar.
 * İşlem hızı yüksektir. Azure Cosmos DB ile belgeleri okumak ve yazmak yalnızca birkaç milisaniye alır. Geliştiriciler ihtiyaçları olan işlem hızını belirtebilir ve Azure Cosmos DB, rahat bir tutarlılıkla tek tek tüm bölge hesapları ve çok bölgeli tüm hesaplar için %99,99 kullanılabilirlik SLA'sı ve çok bölgeli tüm veritabanı hesaplarında %99,999 okunabilirlik sağlar.
@@ -44,10 +44,10 @@ Azure Cosmos DB mobil uygulama geliştiricileri için aşağıdaki anahtar yeten
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Azure Cosmos DB ve Xamarin öğreticisi
 Aşağıdaki öğreticide Xamarin ve Azure Cosmos DB kullanarak bir mobil uygulamanın nasıl oluşturulacağı gösterilmiştir. Öğreticinin tam kaynak kodunu [GitHub'da Xamarin ve Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) altında bulabilirsiniz.
 
-### <a name="get-started"></a>Kullanmaya başlayın
+### <a name="get-started"></a>başlarken
 Azure Cosmos DB ile çalışmaya başlamak kolaydır. Azure portala gidin ve yeni bir Azure Cosmos DB hesabı oluşturun. **Hızlı başlangıç** sekmesine tıklayın. Azure Cosmos DB hesabınıza zaten bağlı olan Xamarin Forms yapılacaklar listesi örneğini indirin. 
 
-![Mobil uygulamalar için Azure Cosmos DB hızlı başlangıcı](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="Mobil uygulamalar için Azure Cosmos DB hızlı başlangıcı":::
 
 Bir Xamarin uygulamanız zaten varsa [Azure Cosmos DB NuGet paketini](sql-api-sdk-dotnet-core.md) ekleyebilirsiniz. Azure Cosmos DB; Xamarin.IOS, Xamarin.Android ve Xamarin Forms paylaşılan kitaplıklarını destekler.
 
@@ -85,19 +85,19 @@ Yapılacaklar listesi uygulamasını çok kullanıcılı bir yapılacaklar liste
 
 Bu öğreticinin tam kod örneğini [GitHub'da Kaynak Belirteç Aracısı](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)’nda bulabilirsiniz. Bu diyagramda çözüm gösterilir:
 
-![Azure Cosmos DB kullanıcılar ve izinler aracısı](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="Azure Cosmos DB kullanıcılar ve izinler aracısı" border="false":::
 
 İki kullanıcının aynı yapılacaklar listesine erişmesini isterseniz Kaynak Belirteç Aracısında erişim belirtecine ek izinler ekleyebilirsiniz.
 
 ### <a name="scale-on-demand"></a>İsteğe bağlı olarak ölçeklendirme
 Azure Cosmos DB yönetilen bir hizmet olarak veritabanıdır. Kullanıcı sayınız arttığında VM sağlama veya çekirdek sayısını artırma konularında endişelenmeniz gerekmez. Azure Cosmos DB’ye tüm bildirmeniz gereken, uygulamanızın saniyede kaç işlem sayısına ihtiyacı olduğudur. İşlem sayısını **Ölçek** sekmesinde saniye başına istek birimleri (RUs) adlı bir ölçü kullanarak belirtebilirsiniz. Örneğin, 1 KB boyutundaki bir belgede okuma işlemi için 1 RU gerekir. Ayrıca trafik büyümesini izlemek ve uyarılar tetiklendiğinde işlem sayısını programlı olarak değiştirmek için **İşlem sayısı** ölçümüne uyarılar ekleyebilirsiniz.
 
-![Azure Cosmos DB talebe göre işlem sayısını ölçeklendirir](media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png" alt-text="Azure Cosmos DB talebe göre işlem sayısını ölçeklendirir":::
 
 ### <a name="go-planet-scale"></a>Dünya çapında ölçeğe geçin
 Uygulamanızın popülerliği arttıkça dünya çapında kullanıcılarınız olabilir. Ayrıca beklenmedik olaylar için hazır olmak isteyebilirsiniz. Azure portala gidin ve Azure Cosmos DB hesabınızı açın. Verilerinizin dünya genelinde istediğiniz sayıda bölgeye çoğaltılması için haritaya tıklayın. Bu özellik, kullanıcılarınız nerede olursa olsun verilerinizi kullanılabilir hale getirir. Ayrıca beklenmedik durumlara karşı hazırlıklı olmak için yük devretme ilkeleri de ekleyebilirsiniz.
 
-![Azure Cosmos DB coğrafi bölgelerde ölçeklenir](media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png)
+:::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png" alt-text="Azure Cosmos DB coğrafi bölgelerde ölçeklenir" border="false":::
 
 Tebrikler. Çözümü tamamladınız, artık Xamarin ve Azure Cosmos DB kullanan bir mobil uygulamanız var. Azure Cosmos DB JavaScript SDK'si kullanarak Cordova uygulamaları ve Azure Cosmos DB REST API'lerini kullanarak yerel iOS/Android uygulamaları geliştirmek için benzer adımları izleyin.
 

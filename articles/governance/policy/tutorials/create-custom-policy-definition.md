@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
-ms.date: 05/20/2020
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683247"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888151"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -171,6 +171,9 @@ Bir Azure kaynağı için diğer adları belirlemenin birkaç yolu vardır. Bu �
 ### <a name="get-aliases-in-vs-code-extension"></a>VS Code uzantılı diğer adları al
 
 VS Code uzantısının Azure Ilke uzantısı, kaynaklarınıza gözatmayı ve [diğer adları bulmayı](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)kolaylaştırır.
+
+> [!NOTE]
+> VS Code uzantısı yalnızca Kaynak Yöneticisi modu özelliklerini gösterir ve herhangi bir [kaynak sağlayıcısı modu](../concepts/definition-structure.md#mode) özelliği görüntülemez.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -348,7 +351,7 @@ Artık, yönetmeyi planladığımız özellikler için özellik ayrıntıları v
 }
 ```
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veri
 
 İlk üç bileşen ilke meta verilersidir. Bu bileşenlerin, için kural oluşturduğumuz öğrendiğimiz için değerleri sağlaması kolaydır. [Mod](../concepts/definition-structure.md#mode) öncelikli olarak Etiketler ve kaynak konumu ile ilgilidir. Etiketleri destekleyen kaynaklarla değerlendirmeyi sınırlandırmaya gerek olmadığı için, **mod**için _Tüm_ değeri kullanacağız.
 

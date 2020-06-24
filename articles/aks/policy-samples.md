@@ -1,25 +1,21 @@
 ---
 title: Azure Kubernetes hizmeti için yerleşik ilke tanımları
 description: Azure Kubernetes hizmeti için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: d3a0dfa115f622e4ab1160587fa8bbd7ee7d3e2c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: f52050ebe587e2fd5281a3441811f8b4f9a54c69
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236245"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945537"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-kubernetes-service"></a>Azure, Azure Kubernetes hizmeti için Azure Ilkesi yerleşik ilke tanımları
+# <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Policy Azure Kubernetes hizmeti için yerleşik tanımlar
 
 Bu sayfa, Azure Kubernetes hizmeti için [Azure ilkesi](../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
-
-## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
-
-[!INCLUDE [azure-policy-samples-rp-aks-kubernetes](../../includes/policy/samples/byrp/microsoft.kubernetes.md)]
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
 ## <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
 

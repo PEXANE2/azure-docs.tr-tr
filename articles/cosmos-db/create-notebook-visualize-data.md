@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743587"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115287"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 
@@ -30,7 +30,7 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
 
 1. **Not** defterleri sekmesine gidin, `…` **Not Defterlerimin** Ileri ' yi seçin ve **Yeni bir not defteri**oluşturun. Varsayılan Çekirdek olarak **Python 3 ' ü** seçin.
 
-   ![Yeni not defteri oluşturma](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Yeni bir not defteri oluşturun":::
 
 1. Yeni bir not defteri oluşturulduktan sonra, bunu **Visualizere, Data. ipynb** gibi bir şekilde yeniden adlandırabilirsiniz.
 
@@ -49,7 +49,7 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
 
    Bir hücreyi çalıştırmak için, `Shift + Enter` hücreyi seçin veya seçin ve veri Gezgini gezinti çubuğunda **etkin hücreyi Çalıştır** seçeneğini belirleyin.
 
-   ![Etkin hücreyi Çalıştır](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Etkin hücreyi Çalıştır":::
 
    Veritabanı ve kapsayıcı, geçerli Azure Cosmos hesabınızda oluşturulur. Kapsayıcı, 400 RU/s ile sağlanır. Veritabanı ve kapsayıcı oluşturulduktan sonra aşağıdaki çıktıyı görürsünüz. 
 
@@ -60,7 +60,7 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
 
    Ayrıca, **veri** sekmesini yenileyebilir ve yeni oluşturulan kaynakları görebilirsiniz:
 
-   ![Yeni kapsayıcıyı görmek için veri sekmesini yenileyin](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Yeni kapsayıcıyı görmek için veri sekmesini yenileyin":::
 
 1. Ardından, örnek perakende verilerini Azure Cosmos kapsayıcısına içeri aktaracaksınız. Perakende verilerinden bir öğenin biçimi aşağıda verilmiştir:
 
@@ -135,7 +135,7 @@ Yeni bir not defteri hücresinde, çıktısından ilk 10 öğeyi okumak için a�
 df_cosmos.head(10)
 ```
 
-![İlk 10 öğeyi almak için sorguyu Çalıştır](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="İlk 10 öğeyi almak için sorguyu Çalıştır":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Sorguları çalıştırın ve verilerinizi çözümleyin
 
@@ -148,7 +148,7 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    display(df_revenue.head(5))
    ```
 
-   ![Toplam satış geliri çıkışı](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Toplam satış geliri çıkışı":::
 
 * **Query2:** Satın alınan beş öğenin bir listesini almak için yeni bir not defteri hücresi açın ve aşağıdaki kodu çalıştırın:
 
@@ -159,7 +159,7 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![İlk beş satın alınan öğe](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="İlk beş satın alınan öğe":::
 
 ## <a name="visualize-your-data"></a>Verilerinizi görselleştirme  
 
@@ -286,7 +286,7 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
    show(p)
    ```
 
-   ![Satın alma dönüştürme oranını görselleştirin](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Satın alma dönüştürme oranını görselleştirin":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

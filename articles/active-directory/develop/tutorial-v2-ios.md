@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/30/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640560"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904771"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Kullanıcıları oturum açın ve iOS veya macOS uygulamasından Microsoft Graph çağırın
 
@@ -48,7 +48,7 @@ Bu öğretici hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adıml
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Bu kılavuzda uygulamayı derlemek için XCode sürümü 11. x veya üzeri gereklidir. , [İTunes web sitesinden](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode Indirme URL 'SI")Xcode indirebilirsiniz.
+- Bu kılavuzda uygulamayı derlemek için XCode sürümü 11. x veya üzeri gereklidir. XCode 'u [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode Indirme URL 'SI")'dan indirebilirsiniz.
 - Microsoft kimlik doğrulama kitaplığı ([msal. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Bir bağımlılık Yöneticisi kullanabilir veya kitaplığı el ile ekleyebilirsiniz. Aşağıdaki yönergelerde nasıl yapılacağı gösterilmektedir.
 
 Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi indirmek isterseniz, kodu indirin:
@@ -624,9 +624,9 @@ Güncelleştirilmiş bir belirteci sessizce almak için, sınıfına aşağıdak
 
 Belirteciniz olduktan sonra uygulamanız bunu HTTP üstbilgisinde kullanarak Microsoft Graph yetkili bir istek yapabilir:
 
-| üst bilgi anahtarı    | value                 |
+| üst bilgi anahtarı    | değer                 |
 | ------------- | --------------------- |
-| Yetkilendirme | Taşıyıcı \< erişim-belirteç> |
+| Yetkilendirme | Taşıyıcı\<access-token> |
 
 Sınıfına aşağıdaki kodu ekleyin `ViewController` :
 

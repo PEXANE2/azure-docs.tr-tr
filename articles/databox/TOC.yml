@@ -46,8 +46,12 @@
                   href: data-box-system-requirements-rest.md
             - name: Sınırları anlama
               href: data-box-limits.md
-            - name: Güvenliği gözden geçirme
-              href: data-box-security.md
+            - name: Güvenlik
+              items:
+                - name: Güvenlik temeli
+                  href: security-baseline.md
+                - name: Güvenliği gözden geçirme
+                  href: data-box-security.md
             - name: SSS
               href: data-box-faq.md
         - name: Nasıl yapılır

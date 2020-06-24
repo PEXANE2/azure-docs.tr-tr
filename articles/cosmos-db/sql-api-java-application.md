@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6f8431bfd3be75651f3a08fe9b07fc3902436331
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d29f97bf421804fb234ce8d86c66c12b01854681
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657302"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113815"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma
 
@@ -32,7 +32,7 @@ Bu Java web uygulaması öğreticisi, Azure App Service Web Apps’te barındır
 
 Bu Java uygulaması öğreticisi görevleri oluşturmanızı, almanızı ve aşağıdaki görüntüde gösterilen şekilde tamamlandı olarak işaretlemenizi sağlayan bir web tabanlı görev yönetimi uygulamasını nasıl oluşturacağınızı gösterir. Yapılacaklar listesindeki görevlerin her biri, Azure Cosmos DB'de JSON belgeleri olarak depolanır.
 
-![Yapılacaklar Listesi Java uygulamam](./media/sql-api-java-application/image1.png)
+:::image type="content" source="./media/sql-api-java-application/image1.png" alt-text="Yapılacaklar Listesi Java uygulamam":::
 
 > [!TIP]
 > Bu uygulama geliştirme öğreticisi, Java kullanımına ilişkin deneyim sahibi olduğunuzu varsayar. Java veya [önkoşul araçlarında](#Prerequisites) yeniyseniz GitHub'dan [yapılacaklar](https://github.com/Azure-Samples/documentdb-java-todo-app) projesinin tamamını indirmenizi ve [bu makalenin sonundaki yönergeleri](#GetProject) kullanarak projeyi oluşturmanızı öneririz. Oluşturduktan sonra, proje bağlamında kodu daha iyi kavramak için makaleyi inceleyebilirsiniz.  
@@ -66,7 +66,7 @@ JSP uygulaması oluşturmak için:
 
 1. İlk olarak, bir Java projesi oluşturarak başlayacağız. Eclipse'i başlatın, ardından **Dosya**'ya tıklayın, **Yeni**'ye tıklayın ve ardından **Dinamik Web Projesi**'ne tıklayın. Kullanılabilir bir proje olarak listelenen **dinamik Web projesini** görmüyorsanız şunları yapın: **Dosya**, **Yeni**, **Proje**..., **Web**' i genişletin, **dinamik Web projesi**' ne tıklayın ve **İleri**' ye tıklayın.
    
-    ![JSP Java Uygulaması Geliştirme](./media/sql-api-java-application/image10.png)
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java Uygulaması Geliştirme":::
 
 1. **Proje adı** kutusuna bir proje adı girin ve **Hedef Çalışma Zamanı** açılan menüsünde isteğe bağlı olarak bir değer seçin (ör. Apache Tomcat v7.0) ve ardından **Son**'a tıklayın. Bir hedef çalışma zamanının seçilmesi, projenizi Eclipse aracılığıyla yerel olarak çalıştırmanızı sağlar.
 
@@ -74,11 +74,11 @@ JSP uygulaması oluşturmak için:
 
 1. **Yeni JSP Dosyası** iletişim kutusunda dosyaya **index.jsp** adını verin. Üst klasörü aşağıdaki resimde gösterildiği gibi **WebContent** olarak tutun ve ardından **İleri**'ye tıklayın.
    
-    ![Yeni bir JSP Dosyası Oluşturma - Java Web Uygulaması Öğreticisi](./media/sql-api-java-application/image11.png)
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Yeni bir JSP Dosyası Oluşturma - Java Web Uygulaması Öğreticisi":::
 
 1. **Select JSP Template (JSP Şablon Seçme)** iletişim kutusunda bu öğreticinin amacı doğrultusunda **New JSP File (html) (Yeni JSP Dosyası (html))** seçeneğini belirleyin ve ardından **Finish (Son)** düğmesine tıklayın.
 
-1. *İndex. jsp* dosyası çakışan küreler 'da açıldığında, Merhaba Dünya görüntülenecek metni ekleyin **!** `<body>`Hello World! (Merhaba Dünya!) ifadesinin görüntülenmesi için metni ekleyin. Güncelleştirilmiş `<body>` içeriği aşağıdaki kod gibi görünmelidir:
+1. *index.jsp* dosyası tutulma 'de açıldığında, Merhaba Dünya görüntülenecek metni ekleyin **!** `<body>`Hello World! (Merhaba Dünya!) ifadesinin görüntülenmesi için metni ekleyin. Güncelleştirilmiş `<body>` içeriği aşağıdaki kod gibi görünmelidir:
 
    ```html
    <body>
@@ -86,7 +86,7 @@ JSP uygulaması oluşturmak için:
    </body>
    ```
 
-1. *İndex. jsp* dosyasını kaydedin.
+1. *index.jsp* dosyasını kaydedin.
 
 1. 2 adımda bir hedef çalışma zamanı ayarlarsanız **Proje**'ye ve ardından **Çalıştır**'a tıklayıp JSP uygulamanızı yerel olarak çalıştırabilirsiniz:
 
@@ -110,7 +110,7 @@ JSP uygulaması oluşturmak için:
    * **Yapıt kimliği** kutusuna, girin `azure-cosmos` .
    * **Sürüm** kutusuna yazın `4.0.1-beta.1` .
   
-   Ya da, Grup KIMLIĞI ve yapıt KIMLIĞI için bağımlılık XML 'ini doğrudan *Pod. xml* dosyasına ekleyebilirsiniz:
+   Ya da, Grup KIMLIĞI ve yapıt KIMLIĞI için bağımlılık XML 'sini doğrudan *pom.xml* dosyasına ekleyebilirsiniz:
 
    ```xml
    <dependency>
@@ -120,7 +120,7 @@ JSP uygulaması oluşturmak için:
    </dependency>
    ```
 
-1. **Tamam** ' a tıklayın ve Maven SQL Java SDK 'sını yükler veya Pod. xml dosyasını kaydeder.
+1. **Tamam** ' a tıklayın ve Maven SQL Java SDK 'sını yükler veya pom.xml dosyasını kaydeder.
 
 ## <a name="use-the-azure-cosmos-db-service-in-your-java-application"></a><a id="UseService"></a>Java uygulamanızda Azure Cosmos DB hizmetini kullanma
 
@@ -174,7 +174,7 @@ Daha sonra, HTTP isteklerini denetleyiciye yönlendirmeye yönelik bir servlet o
 
 Eğlenceli bitleri tamamladığımıza göre, her şey hızlı bir kullanıcı arabirimi oluşturmak ve bunu DAO 'ıza bağlamak.
 
-1. Kullanıcıya görüntülenecek bir Web Kullanıcı arabirimine ihtiyacınız vardır. Şimdi aşağıdaki kodla, daha önce oluşturduğumuz *index. jsp* ' i yeniden yazalım:
+1. Kullanıcıya görüntülenecek bir Web Kullanıcı arabirimine ihtiyacınız vardır. Daha önce oluşturduğumuz *index.jsp* 'yi aşağıdaki kodla yeniden yazalım:
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/index.jsp":::
 
@@ -251,4 +251,4 @@ Bu öğreticideki tüm örnekler GitHub'daki [todo](https://github.com/Azure-Sam
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB bir Node. js uygulaması oluşturma](sql-api-nodejs-application.md)
+> [Azure Cosmos DB node.js uygulama oluşturma](sql-api-nodejs-application.md)

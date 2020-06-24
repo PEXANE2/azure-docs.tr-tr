@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422595"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211402"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -43,7 +43,7 @@ Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](overview.md)
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
 * Kullanmakta olduğunuz var olan bir anahtar kasası.  
-* En düşük 1.0.0 sürümü Azure PowerShell. Azure PowerShell'i yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview). Azure PowerShell zaten yüklediyseniz ve sürümü bilmiyorsanız, Azure PowerShell konsolundan yazın `$PSVersionTable.PSVersion`.  
+* En düşük 1.0.0 sürümü Azure PowerShell. Azure PowerShell'i yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview). Azure PowerShell zaten yüklediyseniz ve sürümü bilmiyorsanız, Azure PowerShell konsolundan yazın `$PSVersionTable.PSVersion` .  
 * Anahtar Kasası günlükleriniz için Azure'da yeterli depolama.
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Anahtar Kasası aboneliğinize bağlanma
@@ -95,7 +95,7 @@ Daha fazla yönetim kolaylığı için, anahtar kasasını içeren kaynakla ayn�
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging"></a><a id="enable"></a>Günlü kaydını etkinleştir
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Azure PowerShell kullanarak günlüğü etkinleştirme
 
 Key Vault için günlüğe kaydetmeyi etkinleştirmek üzere, **set-AzDiagnosticSetting** cmdlet 'ini yeni depolama hesabı ve Anahtar Kasası için oluşturduğumuz değişkenlerle birlikte kullanacağız. Ayrıca, **-Enabled** bayrağını **$true** ve kategoriyi **auditevent** (Key Vault günlük için tek kategori) olarak ayarlayacağız:
 
@@ -131,6 +131,25 @@ Günlüğe kaydedilenler:
   * Bu anahtarları veya parolaları oluşturma, değiştirme veya silme.
   * Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, sarmalama ve kaldırma, gizli dizileri alma ve anahtarları ve gizli dizileri (ve bunların sürümlerini) listeleme.
 * Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnek olarak, hatalı biçimlendirilmiş veya geçerliliği olmayan ya da geçersiz bir belirtece sahip bir taşıyıcı belirteci olmayan isteklerdir.  
+
+## <a name="enable-logging-using-azure-cli"></a>Azure CLı kullanarak günlüğü etkinleştirme
+
+```azurecli
+az login
+
+az account set --subscription {AZURE SUBSCRIPTION ID}
+
+az provider register -n Microsoft.KeyVault
+
+az monitor diagnostic-settings create  \
+--name KeyVault-Diagnostics \
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
 
 ## <a name="access-your-logs"></a><a id="access"></a>Günlüklerinize erişme
 
@@ -187,7 +206,7 @@ Blob 'ları hedef klasöre indirmek için **Get-AzStorageBlobContent** aracılı
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Bu ikinci komutu çalıştırdığınızda, blob adlarındaki **/** sınırlayıcı, hedef klasör altında tam bir klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
+Bu ikinci komutu çalıştırdığınızda, **/** BLOB adlarındaki sınırlayıcı, hedef klasör altında tam bir klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
 
 Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
 
@@ -203,7 +222,7 @@ Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* 2019 Ocak ayının tüm günlüklerini indirmek istiyorsanız şunu kullanın `-Blob '*/year=2019/m=01/*'`:
+* 2019 Ocak ayının tüm günlüklerini indirmek istiyorsanız şunu kullanın `-Blob '*/year=2019/m=01/*'` :
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
@@ -214,15 +233,10 @@ Artık günlüklerin içinde neler olduğuna bakmaya başlamak için hazırsın�
 * Anahtar kasası kaynağınızın tanılama ayarlarının durumunu sorgulamak için: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Anahtar kasası kaynağınızın günlüğe kaydetmesini devre dışı bırakmak için: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
+
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>Anahtar Kasası günlüklerinizi yorumlama
 
-Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Bir örnek günlük girişine bakalım. Şu komutu çalıştırın:
-
-```powershell
-Get-AzKeyVault -VaultName 'contosokeyvault'`
-```
-
-Şuna benzer bir günlük girdisi döndürür:
+Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Bir örnek günlük girişine bakalım. 
 
 ```json
     {
@@ -249,9 +263,9 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 
 Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
-| **time** |UTC olarak tarih ve saat. |
+| **ışınızda** |UTC olarak tarih ve saat. |
 | **RESOURCEID** |Azure Resource Manager kaynak KIMLIĞI. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
 | **operationName** |Sonraki tabloda belirtildiği gibi işlemin adı. |
 | **operationVersion** |İstemci tarafından istenen sürümü REST API. |
@@ -267,15 +281,15 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
 **OperationName** alan değerleri *objectverb* biçimindedir. Örneğin:
 
-* Tüm Anahtar Kasası işlemleri, `Vault<action>` `VaultGet` ve `VaultCreate`gibi biçimdedir.
-* Tüm anahtar işlemleri, `Key<action>` `KeySign` ve `KeyList`gibi biçimdedir.
-* Tüm gizli işlemler, `Secret<action>` `SecretGet` ve `SecretListVersions`gibi biçimdedir.
+* Tüm Anahtar Kasası işlemleri `Vault<action>` , ve gibi biçimdedir `VaultGet` `VaultCreate` .
+* Tüm anahtar işlemleri `Key<action>` , ve gibi biçimdedir `KeySign` `KeyList` .
+* Tüm gizli işlemler `Secret<action>` , ve gibi biçimdedir `SecretGet` `SecretListVersions` .
 
 Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API komutları listelenmektedir:
 
 | operationName | REST API komutu |
 | --- | --- |
-| **Kimlik Doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
+| **Kimlik doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
 | **VaultGet** |[Bir anahtar kasası hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Bir anahtar kasası oluşturma veya güncelleştirme](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Bir anahtar kasasını silme](https://msdn.microsoft.com/library/azure/mt620022.aspx) |

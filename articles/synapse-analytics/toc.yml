@@ -106,6 +106,8 @@
               href: ./spark/apache-spark-history-server.md
     - name: Güvenlik
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Ağ Güvenliği
           items:
             - name: Synapse çalışma alanı IP güvenlik duvarı kuralları

@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561099"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906862"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Öğretici: özel bir görüntü oluşturma ve özel bir kayıt defterinden App Service çalıştırma
 
-[App Service](app-service-linux-intro.md) , LINUX 'ta PHP 7,3 ve Node. js 10,14 gibi belirli sürümleri destekleyen yerleşik Docker görüntüleri sağlar. App Service, yerleşik görüntüleri ve özel görüntüleri bir hizmet olarak platform olarak barındırmak için Docker kapsayıcı teknolojisini kullanır. Bu öğreticide, özel bir görüntü oluşturmayı ve App Service içinde çalıştırmayı öğreneceksiniz. Bu desen, yerleşik görüntülerin sizin tercih ettiğiniz dili içermediği veya uygulamanızın yerleşik görüntülerde sağlanmayan belirli bir yapılandırma gerektirdiği durumlarda yararlı olur.
+[App Service](app-service-linux-intro.md) , LINUX 'ta PHP 7,3 ve Node.js 10,14 gibi belirli sürümleri destekleyen yerleşik Docker görüntüleri sağlar. App Service, yerleşik görüntüleri ve özel görüntüleri bir hizmet olarak platform olarak barındırmak için Docker kapsayıcı teknolojisini kullanır. Bu öğreticide, özel bir görüntü oluşturmayı ve App Service içinde çalıştırmayı öğreneceksiniz. Bu desen, yerleşik görüntülerin sizin tercih ettiğiniz dili içermediği veya uygulamanızın yerleşik görüntülerde sağlanmayan belirli bir yapılandırma gerektirdiği durumlarda yararlı olur.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Özel bir kapsayıcı kayıt defterine özel bir görüntü dağıtma
@@ -236,23 +236,33 @@ Web uygulamasına göz atarak uygulamanın çalıştığını doğrulayın (`htt
 
 ## <a name="change-web-app-and-redeploy"></a>Web uygulamasını değiştirme ve yeniden dağıtma
 
-Git deponuzda app/templates/app/index.html dosyasını açın. İlk HTML öğesini bulun ve şöyle değiştirin.
+Yerel git deponuzda *App/Templates/App/index.html*' yi açın. İlk HTML öğesini aşağıdaki kodla eşleşecek şekilde değiştirin.
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-Python dosyasını değiştirdikten ve kaydettikten sonra, yeni Docker görüntüsünü yeniden oluşturup göndermeniz gerekir. Ardından değişikliklerin geçerlilik kazanması için web uygulamasını yeniden başlatın. Bu öğreticide daha önce kullandığınız komutları kullanın. [Docker dosyasından görüntü oluşturma](#build-the-image-from-the-docker-file) ve [Azure Container Registry için görüntü gönderme](#push-image-to-azure-container-registry)bölümüne başvurabilirsiniz. [Web uygulamasını test etme](#test-the-web-app) başlığı altındaki yönergeleri izleyerek web uygulamasını test edin.
+Değişikliklerinizi kaydettikten sonra, bu öğreticide daha önce kullandığınız komutları kullanarak yeni Docker görüntüsünü yeniden oluşturun ve gönderin. [Docker dosyasından görüntü oluşturma](#build-the-image-from-the-docker-file) ve [Azure Container Registry için görüntü gönderme](#push-image-to-azure-container-registry)bölümüne başvurabilirsiniz.
+
+Yeni görüntüyü gönderdikten sonra, değişikliklerin etkili olması için aşağıdaki komutu kullanarak Web uygulamasını yeniden başlatın:
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+`<app_name>`Daha önce kullanılan özel adla değiştirin.
+
+Uygulama yeniden başlatıldıktan sonra, [Web uygulamasını test](#test-the-web-app)etme bölümündeki yönergeleri izleyerek test edin.
 
 ## <a name="access-diagnostic-logs"></a>Tanılama günlüklerine erişim
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>SSH bağlantılarını etkinleştir
 
