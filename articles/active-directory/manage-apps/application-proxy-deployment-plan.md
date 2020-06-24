@@ -3,8 +3,8 @@ title: Azure Active Directory Uygulama Ara Sunucusu dağıtımı planlayın
 description: Kuruluşunuz içinde uygulama proxy 'si dağıtımını planlamaya yönelik uçtan uca kılavuz
 services: active-directory
 documentationcenter: azure
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: baselden
-ms.custom: has-adal-ref
-ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: kenwith
+ms.openlocfilehash: a1cf2b57665cad4dd09639579b42b29a288eeca1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169517"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975580"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlayın
 
@@ -254,7 +253,7 @@ Uygulamalarınızı yapılandırırken en uygun SSO yöntemini seçmenize yardı
 
 ###  <a name="working-with-other-types-of-applications"></a>Diğer uygulama türleriyle çalışma
 
-Azure AD Uygulama Ara Sunucusu, Microsoft kimlik doğrulama kitaplığı 'nı ([msal](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)) kullanmak üzere geliştirilmiş uygulamaları da destekleyebilir. Kullanıcı adına ön kimlik doğrulaması gerçekleştirmek üzere istemci isteğinin üstbilgi bilgilerinde alınan Azure AD tarafından verilen belirteçleri tüketen yerel istemci uygulamalarını destekler.
+Azure AD Uygulama Ara Sunucusu, [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)kullanmak üzere geliştirilmiş uygulamaları da destekleyebilir. Kullanıcı adına ön kimlik doğrulaması gerçekleştirmek üzere istemci isteğinin üstbilgi bilgilerinde alınan Azure AD tarafından verilen belirteçleri tüketen yerel istemci uygulamalarını destekler.
 
 Uygulama proxy 'sinin kullanılabilir yapılandırması hakkında bilgi edinmek için [yerel ve mobil istemci uygulamalarını](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) ve [talep tabanlı uygulamaları](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) yayımlama makalesini okuyun.
 

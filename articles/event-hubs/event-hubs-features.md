@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c16dd4345e62fa9e826e657cce9a752186ec1b82
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: bca8ccaf06fb63b9029b93a8c59a6304139c8ff1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628666"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976889"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -56,7 +56,7 @@ Event Hubs aynı bölüm anahtarı değerini paylaşan tüm olayların sırayla 
 Event Hubs, *yayımcı ilkeleri* aracılığıyla olay yayımcıları üzerinde ayrıntılı denetim sağlar. Yayımcı ilkeleri çok sayıda bağımsız olay yayımcısını kolaylaştırmak için tasarlanmış çalışma zamanı özellikleridir. Yayımcı ilkeleriyle her yayımcı, olayları aşağıdaki mekanizmayı kullanarak bir olay hub'ında yayımlarken kendi benzersiz tanımlayıcısını kullanır:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 ```
 
 Yayımcı adlarını önceden oluşturmanız gerekli değildir, ancak bunlar bağımsız yayımcı kimlikleri sağlamak amacıyla bir olayı yayımlarken kullanılan SAS belirteci ile eşleşmelidir. Yayımcı ilkelerini kullanırken **PartitionKey** değeri yayımcı adına ayarlanır. Bu hizmetin düzgün çalışması için bu değerlerin eşleşmesi gerekir.
@@ -85,12 +85,13 @@ Bir akış işleme mimarisinde her bir aşağı akış uygulaması bir tüketici
 
 Tüketici grubu başına bölüm üzerinde en fazla 5 eşzamanlı okuyucu olabilir; Ancak **, Tüketici grubu başına bir bölümde yalnızca bir etkin alıcı olması önerilir**. Tek bir bölüm içinde her okuyucu tüm iletileri alır. Aynı bölümde birden fazla okuyucu varsa, yinelenen iletileri işleyebilirsiniz. Kodunuzda bu, önemsiz olmayan bir işlem yapmanız gerekir. Ancak, bazı senaryolarda bu geçerli bir yaklaşımdır.
 
+Azure SDK 'Ları tarafından sunulan bazı istemciler, her bir bölümün tek bir okuyucu içerdiğinden ve bir olay hub 'ının tüm bölümlerinin okunmakta olduğundan emin olmanın ayrıntılarını otomatik olarak yöneten akıllı tüketici aracılarıdır. Bu, kodunuzun, bölümlerin ayrıntılarının çoğunu yoksayabilmesi için Olay Hub 'ından okunan olayların işlenmesine odaklanmasını sağlar. Daha fazla bilgi için bkz. [bir bölüme bağlanma](#connect-to-a-partition).
 
-Tüketici grubu URI kuralının örnekleri aşağıda verilmiştir:
+Aşağıdaki örneklerde, Tüketici grubu URI kuralı gösterilmektedir:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
 ```
 
 Aşağıdaki şekilde Event Hubs akış işleme mimarisi gösterilmektedir:
@@ -122,7 +123,12 @@ Tüm Event Hubs tüketicileri, durum algılayan çift yönlü iletişim kanalı 
 
 #### <a name="connect-to-a-partition"></a>Bir bölüme bağlanma
 
-Bölümlere doğrudan bağlanırken okuyucu bağlantılarının belirli bölümlerle koordine edilmesi için bir kiralama mekanizmasının kullanılması yaygın bir uygulamadır. Bu şekilde, bir tüketici grubundaki her bölümün yalnızca bir etkin okuyucuya sahip olması mümkündür. Denetim noktası oluşturma, kiralama ve okuyucuları yönetme işlemleri, .NET istemcileri için [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) sınıfı kullanılarak basitleştirilir. Event Processor Host, akıllı bir tüketici aracısıdır.
+Bölümlere bağlanırken, okuyucu bağlantılarını belirli bölümlerle koordine etmek için bir kiralama mekanizması kullanılması yaygın bir uygulamadır. Bu şekilde, bir tüketici grubundaki her bölümün yalnızca bir etkin okuyucu olması mümkündür. Akıllı tüketici aracıları işlevi gören Event Hubs SDK 'lar içindeki istemcileri kullanarak denetim noktası oluşturma, kiralama ve yönetme, okuyucuları basitleştirilir. Bunlar:
+
+- .NET için [Eventprocessorclient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
+- Java için [Eventprocessorclient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)
+- Python için [Eventhubconsumerclient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
+- JavaScript/TypeScript için [Eventhubsonkısaerclient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
 
 #### <a name="read-events"></a>Olayları okuma
 
@@ -142,13 +148,11 @@ Uzaklığın yönetilmesi sizin sorumluluğunuzdadır.
 Event Hubs hakkında daha fazla bilgi için şu bağlantıları ziyaret edin:
 
 - Event Hubs kullanmaya başlayın
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [.NET](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
     - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs programlama kılavuzu](event-hubs-programming-guide.md)
 * [Event Hubs’da kullanılabilirlik ve tutarlılık](event-hubs-availability-and-consistency.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
-* [Event Hubs örnekleri][]
-
-[Event Hubs örnekleri]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+* [Event Hubs örnekleri](event-hubs-samples.md)

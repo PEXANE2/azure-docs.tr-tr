@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8fa352d81a6df70634c00978a3db155d5fb0d7e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d2242dc3a80287b36554298fa1a15afb894c9ac1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216997"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976209"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -2095,8 +2095,6 @@ Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS 
 
 OpenID 'deki güncelleştirmemizden, ön kimlik doğrulama protokoliz için OAuth 2,0 kod verme protokolüne bağlanın, artık uygulama proxy 'Si ile Tableau kullanmak için ek yapılandırma yapmanız gerekmez. Bu protokol değişikliği Ayrıca, JavaScript ve HTML etiketlerinde yaygın olarak desteklenen yalnızca HTTP yeniden yönlendirmeleri kullanarak, uygulama proxy 'Sinin daha modern uygulamaları daha iyi desteklemesini sağlar.
 
-Tableau için yerel destek hakkında daha fazla bilgi için bkz. [Yerel Tableau desteğiyle Azure AD uygulama ara sunucusu](https://blogs.technet.microsoft.com/applicationproxyblog/2018/08/14/azure-ad-application-proxy-now-with-native-tableau-support).
-
 ---
 
 ### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) içinde B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google eklemek üzere yeni destek
@@ -3022,7 +3020,7 @@ Azure AD Connect, Windows Server Active Directory ve LDAP dahil olmak üzere Azu
 
 Bu sürümde aşağıdaki güncelleştirmeler ve değişiklikler bulunur:
 
-**Düzeltilen sorunlar**
+**Sorun düzeltildi**
 
 - Sonraki sayfaya geçiş yaparken bölüm filtreleme sayfasına yönelik arka plan görevlerinde zamanlama penceresini düzeltir.
 
@@ -3032,7 +3030,7 @@ Bu sürümde aşağıdaki güncelleştirmeler ve değişiklikler bulunur:
 
 - SAN joker karakterlerinden oluşan sertifikaların ön REQ denetimi başarısız olduğu bir hata düzeltildi.
 
-- AAD Bağlayıcısı dışarı aktarma sırasında mııver. exe kilitlenmesine neden olan bir hata düzeltildi.
+- AAD Bağlayıcısı dışarı aktarma sırasında miiserver.exe kilitlenmeye neden olan bir hata düzeltildi.
 
 - Çalışırken DC 'de hatalı parola denemesinin oturum açtığı bir hata düzeltildi
 

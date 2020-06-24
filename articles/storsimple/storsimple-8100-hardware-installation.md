@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267592"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699133"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızın paketini açma, raf bağlama ve kablo oluşturma
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 Microsoft Azure StorSimple 8100, tek bir kutu, rafa takılan bir aygıttır. Bu öğreticide, StorSimple cihazını yapılandırıp dağıtmadan önce StorSimple 8100 cihaz donanımının paketini açma, raf bağlama ve kablonun nasıl yapılacağı açıklanmaktadır.
 
 ## <a name="unpack-your-storsimple-8100-device"></a>StorSimple 8100 cihazınızın paketini açın
@@ -27,7 +27,7 @@ Aşağıdaki adımlarda, StorSimple 8100 depolama cihazınızın paketini açma 
 ### <a name="prepare-to-unpack-your-device"></a>Cihazınızın paketini açmaya hazırlanma
 Cihazınızı paketten yapılandırmadan önce aşağıdaki bilgileri gözden geçirin.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır ağırlık simgesi](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
+![Uyarı simgesi ](./media/storsimple-safety/IC740879.png)![ ağır ağırlık simgesi ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
 
 1. El ile idare ediyorsanız, kutunun ağırlığını yönetmek için iki kişiye sahip olduğunuzdan emin olun. Tam olarak yapılandırılmış bir kutu 32 kg 'a (70 lbs) ağırlık verebilir.
 2. Kutuyu düz ve sabit bir yüzeye yerleştirin.
@@ -42,7 +42,7 @@ Ardından, cihazınızın paketini açmak için aşağıdaki adımları izleyin.
    
     **Depolama cihazınızın paketi açılmış görünümü**
    
-   | Etiketle | Açıklama |
+   | Etiketle | Description |
    | --- | --- |
    |   1 |Paketleme kutusu |
    |   2 |Alt fohar |
@@ -83,7 +83,7 @@ Cihaz, hem ön hem de arka gönderilere sahip standart 19 inç bir rafa yüklenm
 2. Ayarlamayı planladığınız sitenin, bağımsız bir kaynaktan veya kesintisiz güç kaynağı (UPS) olan bir raf güç dağıtım biriminden (PDU) standart AC gücüne sahip olduğunu doğrulayın.
 3. Cihazı bağlamak istediğiniz rafta bir 2U yuvasının bulunduğundan emin olun.
 
-![Uyarı simgesi](./media/storsimple-safety/IC740879.png)![ağır ağırlık simgesi](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
+![Uyarı simgesi ](./media/storsimple-safety/IC740879.png)![ ağır ağırlık simgesi ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **uyarısı!**
 
 Cihaz kurulumunu el ile işliyorsa ağırlığı yönetmek için iki kişiye sahip olduğunuzdan emin olun. Tam olarak yapılandırılmış bir kutu 32 kg 'a (70 lbs) ağırlık verebilir.
 
@@ -104,7 +104,7 @@ Bir bağlama rayları kümesi, 19 inç raf dolabı ile kullanılmak üzere sağl
 
     **İç demiryolu slaytlarını kutunun kenarlarına ekleme**
    
-    Etiketle | Açıklama
+    Etiketle | Description
     ----- | -----------
     1     | A 3x4 düğme-baş vida
     2     | Kasa slaytları
@@ -118,7 +118,7 @@ Bir bağlama rayları kümesi, 19 inç raf dolabı ile kullanılmak üzere sağl
    
     **Dış demiryolu derlemelerini rafa ekleme**
    
-   | Etiketle | Açıklama |
+   | Etiketle | Description |
    | --- | --- |
    |   1 |Clamping vidalı |
    |   2 |Kare deliği ön dolap gönderisi vidalı |
@@ -144,7 +144,7 @@ Yeni yüklenen raf raylarını kullanarak cihazı rafa bağlamak için aşağıd
    
     **Flanş Cap 'i yükleme**
    
-   | Etiketle | Açıklama |
+   | Etiketle | Description |
    | --- | --- |
    |   1 |Kutu birleşme vidalı |
 
@@ -184,7 +184,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
    
     **Veri bağlantı noktalarını gösteren cihazın geri dönmesi**
    
-   | Etiketle | Açıklama |
+   | Etiketle | Description |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE ağ arabirimleri |
    |   2, 3 |10 GbE ağ arabirimleri |
@@ -195,7 +195,7 @@ Bu yedekli denetleyici yük devretmesini desteklemek için, aşağıdaki adımla
 
     **Cihazınız için ağ kablolaması**
 
-   |Etiketle | Açıklama |
+   |Etiketle | Description |
    |----- | ----------- |
    | A    | Internet erişimi olan LAN |
    | B    | Denetleyici 0 |

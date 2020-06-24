@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 971ec1fcda87a9db61147133604dd0e28cc4d102
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714058"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976175"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle ilgili SSS ve bilinen sorunlar
 
@@ -32,6 +32,24 @@ ms.locfileid: "83714058"
 
 > [!NOTE]
 > Azure kaynakları için yönetilen kimlikler, Yönetilen Hizmet Kimliği (MSI) olarak bilinen hizmetin yeni adıdır.
+
+
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>Yönetilen bir kimliğe sahip kaynakları nasıl bulabilirsiniz?
+
+Aşağıdaki Azure CLı komutunu kullanarak, sistem tarafından atanan yönetilen kimliğe sahip kaynakların listesini bulabilirsiniz: 
+
+`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
+
+
+
+
+### <a name="do-managed-identities-have-a-backing-app-object"></a>Yönetilen kimliklerin bir yedekleme uygulaması nesnesi var mı?
+
+Hayır. Yönetilen kimlikler ve Azure AD Uygulaması kayıtları, dizinde aynı şey değildir. 
+
+Uygulama kayıtları iki bileşeni vardır: uygulama nesnesi + bir hizmet sorumlusu nesnesi. Azure kaynakları için Yönetilen kimlikler şu bileşenlerden yalnızca birine sahiptir: bir hizmet sorumlusu nesnesi. 
+
+Yönetilen kimliklerin dizinde uygulama nesnesi yoktur, bu da genellikle MS Graph için uygulama izinleri vermek için kullanılır. Bunun yerine, Yönetilen kimlikler için MS Graph izinlerinin doğrudan hizmet sorumlusuna verilmesi gerekir.  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure kaynakları için Yönetilen kimlikler Azure Cloud Services ile çalışır mi?
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655311"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119418"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
 
@@ -23,19 +23,19 @@ Değişiklik akışı işlemci kitaplığının ana avantajı, değişiklik akı
 
 ## <a name="components-of-the-change-feed-processor"></a>Değişiklik akışı işlemcisinin bileşenleri
 
-Değişiklik akışı işlemcisini uygulayan dört ana bileşen vardır:
+Değişiklik akışı işlemcisi uygulama sürecinin dört ana bileşeni vardır:
 
-1. **İzlenen kapsayıcı:** İzlenen kapsayıcı, değişiklik beslemenin oluşturulduğu verileri içerir. İzlenen kapsayıcıya yapılan tüm ekler ve güncelleştirmeler kapsayıcının değişiklik akışına yansıtılır.
+1. **İzlenen kapsayıcı:** İzlenen kapsayıcı, değişiklik akışının oluşturulduğu verileri içerir. İzlenen kapsayıcıda yapılan eklemeler veya güncelleştirmeler, kapsayıcının değişiklik akışına yansıtılır.
 
-1. **Kira kapsayıcısı:** Kira kapsayıcısı, bir durum depolaması görevi görür ve değişiklik akışını birden fazla çalışan genelinde işlemeyi düzenler. Kira kapsayıcısı, izlenen kapsayıcı veya ayrı bir hesapta aynı hesapta depolanabilir.
+1. **Kira kapsayıcısı:** Kira kapsayıcısı, durum depolama alanı olarak görev yapar ve birden fazla çalışanda gerçekleştirilen değişiklik akışı işleme sürecini koordine eder. Kira kapsayıcısı, izlenen kapsayıcı ile aynı hesapta veya ayrı bir hesapta depolanabilir.
 
-1. **Ana bilgisayar:** Ana bilgisayar, değişiklikleri dinlemek için akış işlemcisini Değiştir ' i kullanan bir uygulama örneğidir. Aynı kira yapılandırmasına sahip birden çok örnek paralel olarak çalıştırılabilir, ancak her örnek farklı bir **örnek adına**sahip olmalıdır.
+1. **Konak:** Konak, değişiklikleri dinlemek için değişiklik akışı işlemcisini kullanan bir uygulama örneğidir. Aynı kira yapılandırmasına sahip birden fazla örnek paralel olarak çalıştırılabilir ancak her örnek farklı bir **örnek adına** sahip olmalıdır.
 
-1. **Temsilci:** Temsilci, geliştirici tarafından değişiklik akışı işlemcisinin okuduğu her değişiklik kümesi için ne yapmak istediğinizi tanımlayan koddur. 
+1. **Temsilci:** Temsilci, geliştirici olarak değişiklik akışı işlemcisinin okuduğu her toplu değişiklik sonrasında yapmak istediğiniz işlemi tanımlayan koddur. 
 
 Bu dört öğelerin değişiklik akışı işlemcisi ile birlikte nasıl çalıştığını anlamak için aşağıdaki diyagramda bir örneğe bakalım. İzlenen kapsayıcı belgeleri depolar ve bölüm anahtarı olarak ' City ' kullanır. Bölüm anahtarı değerlerinin öğeler içeren aralıklarda dağıtıldığını görüyoruz. İki ana bilgisayar örneği bulunur ve değişiklik akışı işlemcisi, işlem dağıtımını en üst düzeye çıkarmak için her örneğe farklı bölüm anahtarı değerlerini atanıyor. Her Aralık paralel olarak okunmakta ve ilerleme durumu kira kapsayıcısındaki diğer aralıklardan ayrı olarak korunur.
 
-![Akış işlemcisi örneğini değiştirme](./media/change-feed-processor/changefeedprocessor.png)
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Akış işlemcisi örneğini değiştirme" border="false":::
 
 ## <a name="implementing-the-change-feed-processor"></a>Değişiklik akışı işlemcisini uygulama
 
@@ -56,7 +56,7 @@ Son olarak bu işlemci örneği için `WithInstanceName` ve ile kira durumunun b
 
 ## <a name="processing-life-cycle"></a>İşlem yaşam döngüsü
 
-Bir konak örneğinin normal yaşam döngüsü şu şekilde olur:
+Bir konak örneğinin normal yaşam döngüsü şu şekildedir:
 
 1. Değişiklik akışını okuyun.
 1. Değişiklik yoksa, önceden tanımlanmış bir süre (Oluşturucu içinde özelleştirilebilir) için uyku moduna `WithPollInterval` geçin ve #1 gidin.
@@ -83,7 +83,7 @@ Daha önce belirtildiği gibi, bir dağıtım birimi içinde bir veya daha fazla
 
 1. Tüm örneklerin aynı kira kapsayıcı yapılandırmasına sahip olması gerekir.
 1. Tüm örneklerin aynı olması gerekir `processorName` .
-1. Her örneğin farklı bir örnek adı () olması gerekir `WithInstanceName` .
+1. Her örneğin farklı bir örnek adına (`WithInstanceName`) sahip olması gerekir.
 
 Bu üç koşul geçerliyse, değişiklik akışı işlemcisi, eşit bir dağıtım algoritması kullanarak, bu dağıtım birimi ve paralel hale getirmek işlem örneklerinin tüm çalışan örnekleri genelinde kira kapsayıcısındaki tüm kiraları dağıtır. Tek bir kiralamanın belirli bir zamanda yalnızca bir örneğe ait olması, en fazla örnek sayısının kira sayısına eşit olması için.
 

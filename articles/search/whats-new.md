@@ -7,19 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/08/2020
+ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344212"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736093"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
 ## <a name="feature-announcements"></a>Özellik Duyuruları
+
+### <a name="june-2020"></a>Haziran 2020
+
+Azure Machine Learning Beceri, bir ının bir uç noktasını Azure Machine Learning tümleştirmede yeni yetenek türüdür Portal deneyimi, Azure Machine Learning uç noktasının Bilişsel Arama bir beceri içinde bulunmasını ve tümleştirilmesini destekler. Bulma Bilişsel Arama ve Azure ML hizmetlerinin aynı abonelikte dağıtılması gerekir. AML beceri önizlemesine kaydolmak için [lütfen formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın.
 
 ### <a name="may-2020-microsoft-build"></a>Mayıs 2020 (Microsoft derleme)
 

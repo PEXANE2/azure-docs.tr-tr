@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282269"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699830"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Durum Bilgisi Olan Reliable Services için tanılama işlevi
 Azure Service Fabric durum bilgisi olan Reliable Services StatefulServiceBase sınıfı, hizmette hata ayıklamak, çalışma zamanının nasıl çalıştığı hakkında Öngörüler sağlamak ve sorun gidermeye yardımcı olmak için kullanılan [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını yayar.
@@ -20,7 +20,7 @@ Durum bilgisi olan Reliable Services StatefulServiceBase sınıfının EventSour
 
 EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı olan araç ve teknolojilerin örnekleri, [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md)ve [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)' dir.
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 | Olay adı | Olay Kimliği | Düzey | Olay açıklaması |
 | --- | --- | --- | --- |
 | Statefulrunasyncınvocation |1 |Bilgilendirici |Service RunAsync görevi başlatıldığında yayılır |
@@ -41,7 +41,7 @@ RunAsync görevi için bir iptal isteği dört saniyeden uzun sürdiğinde State
 ## <a name="performance-counters"></a>Performans sayaçları
 Reliable Services çalışma zamanı aşağıdaki performans sayacı kategorilerini tanımlar:
 
-| Kategori | Açıklama |
+| Kategori | Description |
 | --- | --- |
 | Işlem çoğaltıcı Service Fabric |Azure Service Fabric Işlemsel çoğaltıcıya özel sayaçlar |
 | Service Fabric TStore |Azure Service Fabric TStore 'a özel sayaçlar |
@@ -56,26 +56,26 @@ Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Per
 Çok sayıda güvenilir hizmet veya güvenilir hizmet bölümü olan bir küme, çok sayıda işlem çoğaltıcı performans sayacı örneğine sahip olacaktır. Bu Ayrıca, TStore performans sayaçları için de kullanılır, ancak aynı zamanda kullanılan güvenilir sözlüklerin ve güvenilir sıraların sayısıyla çarpılır. Performans sayacı örneği adları, TStore durumunda performans sayacı örneğinin ilişkilendirildiği belirli [bölümü](service-fabric-concepts-partitioning.md), hizmet çoğaltmasını ve durum sağlayıcısını tanımlamaya yardımcı olabilir.
 
 #### <a name="service-fabric-transactional-replicator-category"></a>Işlem çoğaltıcı kategorisini Service Fabric
-Kategori `Service Fabric Transactional Replicator`için, sayaç örneği adları aşağıdaki biçimdedir:
+Kategori için `Service Fabric Transactional Replicator` , sayaç örneği adları aşağıdaki biçimdedir:
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili "D" biçim belirticisi [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) ile birlikte oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" biçim belirticisi ile birlikte oluşturulur.
 
 *Servicefabricreplicaıd* , güvenilir bir hizmetin belirli bir çoğaltmasından ILIŞKILI olan kimliğidir. Benzersizlik sağlamak ve aynı bölüm tarafından oluşturulan diğer performans sayacı örnekleriyle çakışmadan kaçınmak için, çoğaltma KIMLIĞI performans sayacı örneği adına dahil edilir. Çoğaltmalarla ilgili daha fazla ayrıntı ve güvenilir hizmetlerde rolü [burada](service-fabric-concepts-replica-lifecycle.md)bulabilirsiniz.
 
-Aşağıdaki sayaç örneği adı, `Service Fabric Transactional Replicator` kategori altındaki bir sayaç için tipik olarak verilmiştir:
+Aşağıdaki sayaç örneği adı, kategori altındaki bir sayaç için tipik olarak verilmiştir `Service Fabric Transactional Replicator` :
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571`
 
-Yukarıdaki örnekte, `00d0126d-3e36-4d68-98da-cc4f7195d85e` SERVICE fabrıc bölüm kimliğinin dize gösterimidir ve `131652217797162571` çoğaltma kimliği olur.
+Yukarıdaki örnekte, `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric bölüm kimliğinin dize gösterimidir ve `131652217797162571` çoğaltma kimliği olur.
 
 #### <a name="service-fabric-tstore-category"></a>Service Fabric TStore kategorisi
-Kategori `Service Fabric TStore`için, sayaç örneği adları aşağıdaki biçimdedir:
+Kategori için `Service Fabric TStore` , sayaç örneği adları aşağıdaki biçimdedir:
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili "D" biçim belirticisi [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) ile birlikte oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" biçim belirticisi ile birlikte oluşturulur.
 
 *Servicefabricreplicaıd* , güvenilir bir hizmetin belirli bir çoğaltmasından ILIŞKILI olan kimliğidir. Benzersizlik sağlamak ve aynı bölüm tarafından oluşturulan diğer performans sayacı örnekleriyle çakışmadan kaçınmak için, çoğaltma KIMLIĞI performans sayacı örneği adına dahil edilir. Çoğaltmalarla ilgili daha fazla ayrıntı ve güvenilir hizmetlerde rolü [burada](service-fabric-concepts-replica-lifecycle.md)bulabilirsiniz.
 
@@ -85,17 +85,17 @@ Kategori `Service Fabric TStore`için, sayaç örneği adları aşağıdaki biç
 
 *Stateprovidername* , güvenilir bir hizmet içindeki bir durum sağlayıcısıyla ilişkili addır. Durum sağlayıcısı adı, kullanıcıların hangi durumu sağladığını kolayca belirlemek için performans sayacı örnek adına dahil edilir.
 
-Aşağıdaki sayaç örneği adı, `Service Fabric TStore` kategori altındaki bir sayaç için tipik olarak verilmiştir:
+Aşağıdaki sayaç örneği adı, kategori altındaki bir sayaç için tipik olarak verilmiştir `Service Fabric TStore` :
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-Yukarıdaki örnekte `00d0126d-3e36-4d68-98da-cc4f7195d85e` , SERVICE fabrıc bölüm kimliğinin dize gösterimidir `131652217797162571` , çoğaltma KIMLIĞI, `142652217797162571` durum sağlayıcı kimliğidir ve `1337` performans sayacı örneği farklıdır. `urn:MyReliableDictionary/dataStore`, adlı `urn:MyReliableDictionary`koleksiyon için veri depolayan durum sağlayıcısının adıdır.
+Yukarıdaki örnekte, `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric bölüm kimliğinin dize gösterimidir, `131652217797162571` çoğaltma kimliği, `142652217797162571` durum sağlayıcı kimliğidir ve `1337` performans sayacı örneği farklıdır. `urn:MyReliableDictionary/dataStore`, adlı koleksiyon için veri depolayan durum sağlayıcısının adıdır `urn:MyReliableDictionary` .
 
 ### <a name="transactional-replicator-performance-counters"></a>İşlem çoğaltıcı performans sayaçları
 
-Reliable Services Runtime, `Service Fabric Transactional Replicator` kategori altında aşağıdaki olayları yayar
+Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Service Fabric Transactional Replicator`
 
- Sayaç adı | Açıklama |
+ Sayaç adı | Description |
 | --- | --- |
 | Başlangıç TXN Işlemi/sn | Saniye başına oluşturulan yeni yazma işlemi sayısı.|
 | TXN Işlemi/sn | Saniye başına güvenilir koleksiyonlar üzerinde gerçekleştirilen ekleme/güncelleştirme/silme işlemlerinin sayısı.|
@@ -106,9 +106,9 @@ Reliable Services Runtime, `Service Fabric Transactional Replicator` kategori al
 
 ### <a name="tstore-performance-counters"></a>TStore performans sayaçları
 
-Reliable Services Runtime, `Service Fabric TStore` kategori altında aşağıdaki olayları yayar
+Reliable Services Runtime, kategori altında aşağıdaki olayları yayar `Service Fabric TStore`
 
- Sayaç adı | Açıklama |
+ Sayaç adı | Description |
 | --- | --- |
 | Öğe sayısı | Depodaki öğelerin sayısı.|
 | Disk Boyutu | Mağaza için denetim noktası dosyalarının bayt cinsinden toplam disk boyutu.|

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1acb01ceb9747fa833e998bd5501ce8a8a51babb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674344"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119469"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Önizleme) için Azure SYNAPSE bağlantısı nedir?
 
@@ -25,7 +25,7 @@ Tam yalıtılmış bir sütun deposu olan [Azure Cosmos DB analitik depo](analyt
 
 Aşağıdaki görüntüde Azure Cosmos DB ve Azure SYNAPSE Analytics ile Azure SYNAPSE bağlantısı tümleştirmesi gösterilmektedir: 
 
-![Azure Cosmos DB ile Azure SYNAPSE Analytics tümleştirmesi için mimari diyagramı](./media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Azure Cosmos DB ile Azure SYNAPSE Analytics tümleştirmesi için mimari diyagramı" border="false":::
 
 ## <a name="benefits"></a><a id="synapse-link-benefits"></a>Larından
 
@@ -105,7 +105,7 @@ Azure Cosmos DB için Azure SYNAPSE Analytics çalışma zamanı desteği hakkı
 
 SYNAPSE bağlantısı aşağıdaki durumlarda önerilir:
 
-* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örnek:
+* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örneğin:
 
   * Azure Cosmos DB işletimsel verilerinize doğrudan ayrı bağlayıcılar kullanarak analiz veya bı çalıştırıyorsanız veya
 
@@ -134,12 +134,12 @@ Azure SYNAPSE bağlantısının faturalandırma modeli, Azure Cosmos DB analitik
 
 Daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* [Azure Cosmos DB analitik depoya genel bakış](analytical-store-introduction.md)
+* [Azure Cosmos DB analiz deposuna genel bakış](analytical-store-introduction.md)
 
-* [Azure Cosmos DB için Azure SYNAPSE bağlantısı ile çalışmaya başlama](configure-synapse-link.md)
+* [Azure Cosmos DB için Azure Synapse Link'i kullanmaya başlama](configure-synapse-link.md)
  
-* [Azure SYNAPSE Analytics çalışma zamanında desteklenen özellikler](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
+* [Azure Synapse Analytics çalışma zamanı tarafından desteklenen özellikler](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
-* [Azure Cosmos DB için Azure SYNAPSE bağlantısı hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
+* [Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular](synapse-link-frequently-asked-questions.md)
 
-* [Azure Cosmos DB kullanım örnekleri için Azure SYNAPSE bağlantısı](synapse-link-use-cases.md)
+* [Azure Cosmos DB için Azure Synapse Link kullanım örnekleri](synapse-link-use-cases.md)

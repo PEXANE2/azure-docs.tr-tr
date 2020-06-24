@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65c6045378c72722f5adc2262bf7bd644e8fe387
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137731"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251844"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Dosya Eşitleme’yi dağıtma
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server 'da bulunan herhangi bir protokolü kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -23,14 +23,14 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
 * Azure Dosya Eşitleme dağıtmak istediğiniz bölgedeki bir Azure dosya paylaşımıdır. Daha fazla bilgi için bkz.
     - Azure Dosya Eşitleme için [bölge kullanılabilirliği](storage-sync-files-planning.md#azure-file-sync-region-availability) .
     - Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım bir açıklama için [dosya paylaşma oluşturun](storage-how-to-create-file-share.md) .
-* Azure Dosya Eşitleme eşitlenecek Windows Server veya Windows Server kümesinin en az bir desteklenen örneği. Desteklenen Windows Server sürümleri hakkında daha fazla bilgi için bkz. [Windows Server Ile birlikte çalışabilirlik](storage-sync-files-planning.md#windows-file-server-considerations).
+* Azure Dosya Eşitleme eşitlenecek Windows Server veya Windows Server kümesinin en az bir desteklenen örneği. Windows Server 'ın desteklenen sürümleri ve önerilen sistem kaynakları hakkında daha fazla bilgi için bkz. [Windows dosya sunucusu konuları](storage-sync-files-planning.md#windows-file-server-considerations).
 * Az PowerShell modülü, PowerShell 5,1 ya da PowerShell 6 + ile birlikte kullanılabilir. Windows olmayan sistemler de dahil olmak üzere desteklenen herhangi bir sistemde Azure Dosya Eşitleme için az PowerShell modülünü kullanabilirsiniz, ancak sunucu kayıt cmdlet 'i her zaman kaydolduğunuz Windows Server örneğinde çalıştırılmalıdır (Bu işlem doğrudan veya PowerShell uzaktan iletişim yoluyla yapılabilir). Windows Server 2012 R2 'de, en az PowerShell 5,1 kullandığınızı doğrulayabilirsiniz. \* **$PSVersionTable** nesnesinin **psversion** özelliğinin değerine bakarak:
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    PSVersion değeri 5,1 ' den küçükse. \*, windows Server 2012 R2 'nin en yeni yüklemelerinde olduğu gibi, [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)' i indirerek ve yükleyerek kolayca yükseltebilirsiniz. Windows Server 2012 R2 için indirmek ve yüklemek üzere uygun paket **\*\*\*\*\*\*\*Win 8.1 andw2k12r2-KB-x64. msu**' dir. 
+    PSVersion değeri 5,1 ' den küçükse \* , Windows Server 2012 R2 'nin en yeni yüklemelerinde olduğu gibi, [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)indirip yükleyerek kolayca yükseltebilirsiniz. Windows Server 2012 R2 için indirmek ve yüklemek üzere uygun paket **Win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64. msu**' dir. 
 
     PowerShell 6 + desteklenen herhangi bir sistemle birlikte kullanılabilir ve [GitHub sayfası](https://github.com/PowerShell/PowerShell#get-powershell)aracılığıyla indirilebilir. 
 
@@ -40,7 +40,7 @@ Bu makalede açıklanan adımları tamamlamadan önce bir [Azure dosyaları dağ
 * PowerShell 5,1 kullanmayı tercih ettiyseniz, en az .NET 4.7.2 'ın yüklü olduğundan emin olun. Sisteminizde [.NET Framework sürümleri ve bağımlılıklar](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) hakkında daha fazla bilgi edinin.
 
     > [!Important]  
-    > Windows Server Core üzerinde .NET 4.7.2 + yüklüyorsanız, `quiet` ve `norestart` bayraklarıyla yüklemeniz gerekir, aksi takdirde yükleme başarısız olur. Örneğin, .NET 4,8 ' i yüklüyorsanız, komut aşağıdaki gibi görünür:
+    > Windows Server Core üzerinde .NET 4.7.2 + yüklüyorsanız, ve bayraklarıyla yüklemeniz gerekir, `quiet` `norestart` Aksi takdirde yükleme başarısız olur. Örneğin, .NET 4,8 ' i yüklüyorsanız, komut aşağıdaki gibi görünür:
     > ```PowerShell
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
@@ -109,7 +109,7 @@ Açılan bölmeye aşağıdaki bilgileri girin:
 İşiniz bittiğinde, depolama eşitleme hizmeti 'ni dağıtmak için **Oluştur** ' u seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-`<RG_Name>`, Ve `<my_storage_sync_service>` değerlerini kendi değerlerinizle değiştirin `<Az_Region>`, ardından bir depolama eşitleme hizmeti oluşturmak ve dağıtmak için aşağıdaki komutları kullanın:
+, `<Az_Region>` `<RG_Name>` Ve `<my_storage_sync_service>` değerlerini kendi değerlerinizle değiştirin, ardından bir depolama eşitleme hizmeti oluşturmak ve dağıtmak için aşağıdaki komutları kullanın:
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -257,14 +257,14 @@ Açılan bölmede, bulut uç noktası olan bir eşitleme grubu oluşturmak için
 - **Azure dosya paylaşma**: eşitlemek istediğiniz Azure dosya paylaşımının adı.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Eşitleme grubunu oluşturmak için aşağıdaki PowerShell 'i yürütün. Eşitleme grubunun istenen `<my-sync-group>` adıyla değiştirmeyi unutmayın.
+Eşitleme grubunu oluşturmak için aşağıdaki PowerShell 'i yürütün. `<my-sync-group>`Eşitleme grubunun istenen adıyla değiştirmeyi unutmayın.
 
 ```powershell
 $syncGroupName = "<my-sync-group>"
 $syncGroup = New-AzStorageSyncGroup -ParentObject $storageSync -Name $syncGroupName
 ```
 
-Eşitleme grubu başarıyla oluşturulduktan sonra, bulut uç noktanızı oluşturabilirsiniz. Ve `<my-file-share>` değerlerini beklenen değerlerle `<my-storage-account>` değiştirdiğinizden emin olun.
+Eşitleme grubu başarıyla oluşturulduktan sonra, bulut uç noktanızı oluşturabilirsiniz. `<my-storage-account>`Ve `<my-file-share>` değerlerini beklenen değerlerle değiştirdiğinizden emin olun.
 
 ```powershell
 # Get or create a storage account with desired name
@@ -321,7 +321,7 @@ Sunucu uç noktası eklemek için yeni oluşturulan eşitleme grubuna gidin ve *
 Sunucu uç noktasını eklemek için **Oluştur**' u seçin. Dosyalarınız artık Azure dosya paylaşımınızda ve Windows Server 'da eşitlenmiş durumda tutulur. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Sunucu uç noktasını oluşturmak için aşağıdaki PowerShell komutlarını yürütün ve ve `<your-server-endpoint-path>` `<your-volume-free-space>` değerlerini istenen değerlerle değiştirdiğinizden emin olun.
+Sunucu uç noktasını oluşturmak için aşağıdaki PowerShell komutlarını yürütün ve `<your-server-endpoint-path>` ve değerlerini istenen değerlerle değiştirdiğinizden emin olun `<your-volume-free-space>` .
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"

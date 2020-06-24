@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68d41e14806a74dfc0b6e58cec9629704bad928c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77917239"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734495"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için yaygın kullanım örnekleri ve senaryolar
 
@@ -28,19 +28,19 @@ Bu makalede, Azure AD DS 'nin değer sağladığı ve bu ihtiyaçları karşıla
 
 Tek bir AD kimlik bilgileri kümesi kullanmanıza olanak sağlamak için Azure sanal makineleri (VM 'Ler) Azure AD DS yönetilen bir etki alanına katılabilir. Bu yaklaşım, her VM 'de yerel yönetici hesaplarının veya ortamlar arasında ayrı hesap ve parolaların saklanması gibi kimlik bilgisi yönetimi sorunlarını azaltır.
 
-Azure AD DS tarafından yönetilen bir etki alanına katılmış VM 'Ler de Grup İlkesi kullanılarak yönetilebilir ve güvenliği sağlanabilir. Gerekli güvenlik temelleri, kurumsal güvenlik yönergelerine uygun olarak onları kilitlemek için VM 'lere uygulanabilir. Örneğin, VM 'de başlatılabilen uygulama türlerini kısıtlamak için Grup İlkesi yönetimi özelliklerini kullanabilirsiniz.
+Yönetilen bir etki alanına katılmış VM 'Ler, Grup İlkesi kullanılarak da yönetilebilir ve güvenli hale getirilir. Gerekli güvenlik temelleri, kurumsal güvenlik yönergelerine uygun olarak onları kilitlemek için VM 'lere uygulanabilir. Örneğin, VM 'de başlatılabilen uygulama türlerini kısıtlamak için Grup İlkesi yönetimi özelliklerini kullanabilirsiniz.
 
 ![Azure sanal makinelerinin kolaylaştırılmış yönetimi](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
 Ortak bir örnek senaryoya göz atalım. Sunucular ve diğer altyapılar yaşam sonuna ulaştığında, contoso Şu anda şirket içinde barındırılan uygulamaları buluta taşımak istiyor. Şirket uygulamalarını barındıran sunucuların, etki alanına katılmış ve Grup İlkesi kullanılarak yönetilmesi gereken geçerli BT standardı. Contoso BT Yöneticisi, kullanıcıların kurumsal kimlik bilgilerini kullanarak oturum açmasını kolaylaştırmak için Azure 'da dağıtılan VM 'Lere etki alanına katılmayı tercih edebilir. Etki alanına katılmış olduğunda, VM 'Ler Grup İlkesi nesneleri (GPO 'Lar) kullanılarak gerekli güvenlik temellerine uymak üzere de yapılandırılabilir. Contoso, Azure 'da kendi etki alanı denetleyicilerini dağıtmayı, izlemeyi ve yönetmeyi tercih edebilir.
 
-Azure AD DS bu kullanım örneği için harika bir fırsattır. Azure AD DS yönetilen bir etki alanı, VM 'Leri etki alanına katmanıza, tek bir kimlik bilgileri kümesi kullanmanıza ve Grup İlkesi uygulamanıza olanak tanır. Yönetilen bir etki alanı olarak, etki alanı denetleyicilerini kendiniz yapılandırmak ve bakımını yapmak zorunda kalmazsınız.
+Azure AD DS bu kullanım örneği için harika bir fırsattır. Yönetilen bir etki alanı, VM 'Lere etki alanına katılıp, tek bir kimlik bilgileri kümesi kullanmanıza ve Grup İlkesi uygulamanıza olanak tanır. Yönetilen bir etki alanı olarak, etki alanı denetleyicilerini kendiniz yapılandırmak ve bakımını yapmak zorunda kalmazsınız.
 
 ### <a name="deployment-notes"></a>Dağıtım notları
 
 Aşağıdaki dağıtım konuları bu örnek kullanım örneği için geçerlidir:
 
-* Azure AD DS yönetilen etki alanları, varsayılan olarak tek bir düz kuruluş birimi (OU) yapısı kullanır. Etki alanına katılmış tüm VM 'Ler tek bir OU 'da bulunur. İsterseniz, özel OU 'Lar oluşturabilirsiniz.
+* Yönetilen etki alanları varsayılan olarak tek bir düz kuruluş birimi (OU) yapısı kullanır. Etki alanına katılmış tüm VM 'Ler tek bir OU 'da bulunur. İsterseniz, özel OU 'Lar oluşturabilirsiniz.
 * Azure AD DS, her biri Kullanıcı ve bilgisayar kapsayıcıları için yerleşik GPO kullanır. Ek denetim için özel GPO 'Lar oluşturabilir ve bunları özel OU 'Lara hedefleyebilirsiniz.
 * Azure AD DS, temel AD bilgisayar nesne şemasını destekler. Bilgisayar nesnesinin şemasını genişletemezsiniz.
 
@@ -58,8 +58,8 @@ Bu senaryoda, Azure AD DS, uygulamaların kimlik doğrulama işleminin bir parç
 
 Aşağıdaki dağıtım konuları bu örnek kullanım örneği için geçerlidir:
 
-* Uygulamanın dizin üzerinde değişiklik yapması ve dizine yazma ihtiyacı olmadığından emin olun. Azure AD DS yönetilen bir etki alanına LDAP yazma erişimi desteklenmez.
-* Parolaları doğrudan Azure AD DS yönetilen bir etki alanına karşı değiştiremezsiniz. Son kullanıcılar, Azure AD 'nin self servis parola değiştirme mekanizmasını veya şirket içi dizine karşı parolalarını değiştirebilir. Bu değişiklikler daha sonra otomatik olarak eşitlenir ve Azure AD DS yönetilen etki alanında kullanılabilir.
+* Uygulamanın dizin üzerinde değişiklik yapması ve dizine yazma ihtiyacı olmadığından emin olun. Yönetilen bir etki alanına LDAP yazma erişimi desteklenmiyor.
+* Parolaları doğrudan yönetilen bir etki alanına karşı değiştiremezsiniz. Son kullanıcılar, Azure AD 'nin self servis parola değiştirme mekanizmasını veya şirket içi dizine karşı parolalarını değiştirebilir. Bu değişiklikler daha sonra otomatik olarak eşitlenir ve yönetilen etki alanında kullanılabilir.
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>Dizine erişmek için LDAP Read kullanan şirket içi uygulamaları kaldırın ve taşıyın
 
@@ -73,7 +73,7 @@ Azure AD DS, bu senaryoya yardımcı olmak için uygulamaların, ihtiyaç duyaca
 
 Aşağıdaki dağıtım konuları bu örnek kullanım örneği için geçerlidir:
 
-* Uygulamanın dizin üzerinde değişiklik yapması ve dizine yazma ihtiyacı olmadığından emin olun. Azure AD DS yönetilen bir etki alanına LDAP yazma erişimi desteklenmez.
+* Uygulamanın dizin üzerinde değişiklik yapması ve dizine yazma ihtiyacı olmadığından emin olun. Yönetilen bir etki alanına LDAP yazma erişimi desteklenmiyor.
 * Uygulamanın özel/genişletilmiş Active Directory şemasına ihtiyacı olmadığından emin olun. Şema uzantıları Azure AD DS desteklenmez.
 
 ## <a name="migrate-an-on-premises-service-or-daemon-application-to-azure"></a>Şirket içi hizmet veya Daemon uygulamasını Azure 'a geçirme
@@ -84,14 +84,14 @@ Bazı uygulamalar, katmanların bir veritabanı gibi bir arka uç katmanına kim
 
 Bu örnek senaryoda contoso, Web ön ucu, SQL Server ve arka uç FTP sunucusu içeren özel olarak oluşturulmuş bir yazılım Kasası uygulamasına sahiptir. Windows-tümleşik kimlik doğrulaması hizmet hesaplarını kullanan Web ön ucunun FTP sunucusuna kimliğini doğrular. Web ön ucu bir hizmet hesabı olarak çalışacak şekilde ayarlanır. Arka uç sunucusu, Web ön ucunun hizmet hesabından erişim yetkisi verecek şekilde yapılandırılmıştır. Contoso, bu uygulamayı Azure 'a taşımak için bulutta kendi etki alanı denetleyicisi sanal makinelerini dağıtıp yönetmek istemiyor.
 
-Bu senaryo için, Web ön ucu, SQL Server ve FTP sunucusunu barındıran sunucular Azure sanal makinelerine geçirilebilir ve Azure AD DS yönetilen bir etki alanına eklenebilir. VM 'Ler daha sonra Azure AD aracılığıyla Azure AD Connect kullanılarak eşitlenen, uygulamanın kimlik doğrulama amaçları için şirket içi dizininde aynı hizmet hesabını kullanabilir.
+Bu senaryoda, Web ön ucu, SQL Server ve FTP sunucusunu barındıran sunucular Azure sanal makinelerine geçirilebilir ve yönetilen bir etki alanına eklenebilir. VM 'Ler daha sonra Azure AD aracılığıyla Azure AD Connect kullanılarak eşitlenen, uygulamanın kimlik doğrulama amaçları için şirket içi dizininde aynı hizmet hesabını kullanabilir.
 
 ### <a name="deployment-notes"></a>Dağıtım notları
 
 Aşağıdaki dağıtım konuları bu örnek kullanım örneği için geçerlidir:
 
 * Uygulamalarda kimlik doğrulaması için bir Kullanıcı adı ve parola kullandığınızdan emin olun. Sertifika veya akıllı kart tabanlı kimlik doğrulaması Azure AD DS tarafından desteklenmez.
-* Parolaları doğrudan Azure AD DS yönetilen bir etki alanına karşı değiştiremezsiniz. Son kullanıcılar, Azure AD 'nin self servis parola değiştirme mekanizmasını veya şirket içi dizine karşı parolalarını değiştirebilir. Bu değişiklikler daha sonra otomatik olarak eşitlenir ve Azure AD DS yönetilen etki alanında kullanılabilir.
+* Parolaları doğrudan yönetilen bir etki alanına karşı değiştiremezsiniz. Son kullanıcılar, Azure AD 'nin self servis parola değiştirme mekanizmasını veya şirket içi dizine karşı parolalarını değiştirebilir. Bu değişiklikler daha sonra otomatik olarak eşitlenir ve yönetilen etki alanında kullanılabilir.
 
 ## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Azure 'da Windows Server Uzak Masaüstü Hizmetleri dağıtımları
 
@@ -99,13 +99,13 @@ Azure AD DS, Azure 'da dağıtılan uzak masaüstü sunucularına yönetilen etk
 
 ## <a name="domain-joined-hdinsight-clusters"></a>Etki alanına katılmış HDInsight kümeleri
 
-Apache Ranger etkin olan Azure AD DS tarafından yönetilen bir etki alanına katılmış bir Azure HDInsight kümesi oluşturabilirsiniz. Apache Ranger aracılığıyla Hive ilkeleri oluşturup uygulayabilir ve veri bilimcileri gibi kullanıcıların Excel veya Tableau gibi ODBC tabanlı araçları kullanarak Hive 'a bağlanmasına izin verebilirsiniz. Etki alanına katılmış HDInsight 'a HBase, Spark ve fırtınası gibi diğer iş yüklerini eklemek için çalışmaya devam ediyoruz.
+Apache Ranger etkin olan yönetilen bir etki alanına katılmış bir Azure HDInsight kümesi ayarlayabilirsiniz. Apache Ranger aracılığıyla Hive ilkeleri oluşturup uygulayabilir ve veri bilimcileri gibi kullanıcıların Excel veya Tableau gibi ODBC tabanlı araçları kullanarak Hive 'a bağlanmasına izin verebilirsiniz. Etki alanına katılmış HDInsight 'a HBase, Spark ve fırtınası gibi diğer iş yüklerini eklemek için çalışmaya devam ediyoruz.
 
 Bu dağıtım senaryosu hakkında daha fazla bilgi için bkz. [etki alanına katılmış HDInsight kümelerini yapılandırma][hdinsight]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için [Azure Active Directory Domain Services bir örnek oluşturun ve yapılandırın][tutorial-create-instance]
+Başlamak için [Azure Active Directory Domain Services yönetilen bir etki alanı oluşturun ve yapılandırın][tutorial-create-instance]
 
 <!-- INTERNAL LINKS -->
 [hdinsight]: ../hdinsight/domain-joined/apache-domain-joined-configure.md

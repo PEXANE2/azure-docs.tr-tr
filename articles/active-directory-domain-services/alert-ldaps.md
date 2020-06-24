@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71258043"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735039"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Güvenli LDAP uyarılar
 
@@ -32,7 +32,7 @@ Bu makale, Azure AD DS 'da Güvenli LDAP erişimiyle genel uyarıları anlamanı
 
 ### <a name="resolution"></a>Çözüm
 
-Güvenli LDAP etkinleştirdiğinizde, gelen LDAPS erişimini belirli IP adreslerine kısıtlayan ek kurallar oluşturmanız önerilir. Bu kurallar, Azure AD DS yönetilen etki alanını deneme yanılma saldırılarına karşı korur. Güvenli LDAP için TCP bağlantı noktası 636 erişimini kısıtlamak üzere ağ güvenlik grubunu güncelleştirmek için aşağıdaki adımları izleyin:
+Güvenli LDAP etkinleştirdiğinizde, gelen LDAPS erişimini belirli IP adreslerine kısıtlayan ek kurallar oluşturmanız önerilir. Bu kurallar, yönetilen etki alanını deneme yanılma saldırılarına karşı korur. Güvenli LDAP için TCP bağlantı noktası 636 erişimini kısıtlamak üzere ağ güvenlik grubunu güncelleştirmek için aşağıdaki adımları izleyin:
 
 1. Azure portal **ağ güvenlik grupları**' nı arayıp seçin.
 1. Yönetilen etki alanınız ile ilişkili ağ güvenlik grubunu seçin (örneğin, *Aeklemesine-contoso.com-NSG*) ve ardından **gelen güvenlik kuralları** ' nı seçin.
@@ -43,7 +43,7 @@ Güvenli LDAP etkinleştirdiğinizde, gelen LDAPS erişimini belirli IP adresler
 1. Kural için öncelik belirtin ve *RestrictLDAPS*gibi bir ad girin.
 1. Hazırsanız, kuralı oluşturmak için **Ekle** ' yi seçin.
 
-Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
+Yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
 
 > [!TIP]
 > TCP bağlantı noktası 636, Azure AD DS sorunsuz bir şekilde çalışması için gerekli tek kural değildir. Daha fazla bilgi edinmek için bkz. [Azure AD DS ağ güvenlik grupları ve gerekli bağlantı noktaları](network-considerations.md#network-security-groups-and-required-ports).

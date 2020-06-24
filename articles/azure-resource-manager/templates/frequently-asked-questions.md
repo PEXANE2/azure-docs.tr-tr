@@ -5,18 +5,18 @@ ms.topic: conceptual
 ms.date: 05/30/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 380e65d3f3d659d8fa6f339a9dfd45263f711541
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325904"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296874"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM şablonları hakkında sık sorulan sorular
 
 Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan soruları yanıtlar.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 * **ARM şablonları nedir ve neden kullanmalıyım?**
 
@@ -128,7 +128,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 * **Özel Betik uzantıları ve istenen durum yapılandırması (DSC) kullanmaya devam edebilir miyim?**
 
-  Bu seçenekler hala kullanılabilir ve değiştirilmez. Dağıtım betikleri, VM konuğılile ilgili olmayan eylemleri gerçekleştirecek şekilde tasarlanmıştır. Bir VM 'de konak işletim sisteminde bir betik çalıştırmanız gerekiyorsa, müşteri betiği uzantısı ve/veya DSC daha iyi bir seçenek olacaktır. Ancak, dağıtım betiklerinin zaman aşımı süresini ayarlama gibi avantajları vardır.
+  Bu seçenekler hala kullanılabilir ve değiştirilmez. Dağıtım betikleri, VM konuğılile ilgili olmayan eylemleri gerçekleştirecek şekilde tasarlanmıştır. Bir VM 'de konak işletim sisteminde bir betik çalıştırmanız gerekiyorsa, Özel Betik uzantısı ve/veya DSC daha iyi bir seçenek olacaktır. Ancak, dağıtım betiklerinin zaman aşımı süresini ayarlama gibi avantajları vardır.
 
 * **Dağıtım betikleri Azure Kamu 'da destekleniyor mu?**
 

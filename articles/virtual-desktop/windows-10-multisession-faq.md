@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612002"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735107"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
@@ -53,7 +53,7 @@ Windows 10 Enterprise çok oturumu şu anda karma Azure AD 'ye katılmış olara
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise çoklu oturum görüntüsünü nerede bulabilirim?
 
-Windows 10 Enterprise çoklu oturum, Azure galerisidir. Bunu bulmak için Azure portal gidin ve sanal masaüstleri için Windows 10 Enterprise sürümünü arayın. Office Pro Plus ile tümleştirilmiş bir görüntü için Azure portal gidin ve Microsoft Windows 10 + Office 365 ProPlus ' ı arayın.
+Windows 10 Enterprise çoklu oturum, Azure galerisidir. Bunu bulmak için Azure portal gidin ve sanal masaüstleri için Windows 10 Enterprise sürümünü arayın. Kurumsal Microsoft 365 uygulamalarla tümleşik bir görüntü için Azure portal gidin ve **Enterprise Için Microsoft Windows 10 + Microsoft 365 uygulamalarını**arayın.
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>Hangi Windows 10 Kurumsal Çoklu oturum görüntüsünü kullanmalıyım?
 
@@ -92,7 +92,7 @@ Kullanıcıların daha önce sağladığınız uygulamaların ötesinde ek uygul
 Mağaza uygulamasını devre dışı bırakmak için:
 
 1. Yeni bir grup ilkesi oluşturun.
-2. **Windows bileşenleri****Yönetim Şablonları** >  **bilgisayar yapılandırması** > ' nı seçin.
+2. **Computer Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**Yönetim Şablonları bilgisayar yapılandırması ' nı seçin.
 3. **Mağaza**' ı seçin.
 4. **Mağaza uygulamasını**seçin.
 5. **Devre dışı**seçeneğini belirleyip **Tamam**' ı seçin.
