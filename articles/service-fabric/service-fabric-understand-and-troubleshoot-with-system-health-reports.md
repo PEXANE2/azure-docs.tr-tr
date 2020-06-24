@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282022"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692487"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Sorun gidermek için sistem durum raporlarını kullanma
 Azure Service Fabric bileşenleri, kümedeki tüm varlıklarda sistem durumu raporlarını doğrudan kutudan çıkar. Sistem [durumu deposu](service-fabric-health-introduction.md#health-store) , sistem raporlarına göre varlıkları oluşturur ve siler. Ayrıca, bunları varlık etkileşimleri yakalayan bir hiyerarşide düzenler.
@@ -380,7 +380,7 @@ Her çoğaltma için sistem durumu raporu şunları içerir:
 - Çoğaltmanın çalıştığı düğüm
 - Çoğaltma KIMLIĞI
 
-Örnek gibi bir durumda, daha fazla araştırma yapmanız gerekir. Önceki örnekte, ve `Primary` `Secondary` (131482789658160654 ve 131482789688598467) olarak işaretlenen yinelemelerle başlayarak her bir çoğaltmanın sistem durumunu araştırın.
+Örnek gibi bir durumda, daha fazla araştırma yapmanız gerekir. `Primary` `Secondary` Önceki örnekte, ve (131482789658160654 ve 131482789688598467) olarak işaretlenen yinelemelerle başlayarak her bir çoğaltmanın sistem durumunu araştırın.
 
 ### <a name="replica-constraint-violation"></a>Çoğaltma kısıtlaması ihlali
 **System. PLB** , bir çoğaltma kısıtlaması ihlali algılarsa bir uyarı bildirir ve tüm bölüm çoğaltmalarını yerleştiremiyor. Rapor ayrıntıları hangi kısıtlamaların ve özelliklerin çoğaltma yerleşimini engellediğini gösterir.
@@ -428,7 +428,7 @@ Bu sistem durumu uyarıları, eyleme yerel olarak birkaç kez yeniden denendikte
 * **Özellik**: **replicaopenstatus**, **Replicaclosestatus**ve **replicachangerolestatus**.
 * **Sonraki adımlar**: işlemin neden başarısız olduğunu belirlemek için hizmet kodunu veya kilitlenme dökümlerini araştırın.
 
-Aşağıdaki örnek, Open yönteminden `TargetInvocationException` alınan bir çoğaltmanın sistem durumunu gösterir. Açıklama hata noktasını, **Istatefulservicereplica. Open**, **TargetInvocationException**özel durum türünü ve yığın izlemesini içerir.
+Aşağıdaki örnek, Open yönteminden alınan bir çoğaltmanın sistem durumunu gösterir `TargetInvocationException` . Açıklama hata noktasını, **Istatefulservicereplica. Open**, **TargetInvocationException**özel durum türünü ve yığın izlemesini içerir.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
@@ -639,30 +639,30 @@ HealthEvents          :
 
 Özellik ve metin hangi API 'nin takılı olduğunu gösterir. Farklı takılmış API 'Ler için gerçekleştirilecek sonraki adımlar farklıdır. *Istatefulservicereplica* veya *Istatelessserviceınstance* üzerinde herhangi bir API genellikle hizmet kodundaki bir hatadır. Aşağıdaki bölümde [Reliable Services modeline](service-fabric-reliable-services-lifecycle.md)nasıl çevireceği açıklanmaktadır:
 
-- **İstatefulservicereplica. Open**: Bu uyarı,, veya `CreateServiceInstanceListeners` `ICommunicationListener.OpenAsync` `OnOpenAsync` üzerine bir çağrının takıldığını gösterir.
+- **Istatefulservicereplica. Open**: Bu uyarı,, veya üzerine bir `CreateServiceInstanceListeners` çağrının `ICommunicationListener.OpenAsync` `OnOpenAsync` takıldığını gösterir.
 
-- **Istatefulservicereplica. Close** ve **Istatefulservicereplica. Abort**: en yaygın durum, ' a geçirilen iptal belirtecini temel alan bir hizmettir `RunAsync`. Ayrıca, ya da geçersiz `ICommunicationListener.CloseAsync`kılınırsa, `OnCloseAsync` bu da olabilir.
+- **Istatefulservicereplica. Close** ve **Istatefulservicereplica. Abort**: en yaygın durum, ' a geçirilen iptal belirtecini temel alan bir hizmettir `RunAsync` . Ayrıca, `ICommunicationListener.CloseAsync` ya da geçersiz kılınırsa, bu da olabilir `OnCloseAsync` .
 
-- **Istatefulservicereplica. ChangeRole (S)** ve **istatefulservicereplica. Changerole (N)**: en yaygın durum, ' a geçirilen iptal belirtecini temel alan bir hizmettir `RunAsync`. Bu senaryoda, en iyi çözüm çoğaltmayı yeniden başlatmasıdır.
+- **Istatefulservicereplica. ChangeRole (S)** ve **istatefulservicereplica. Changerole (N)**: en yaygın durum, ' a geçirilen iptal belirtecini temel alan bir hizmettir `RunAsync` . Bu senaryoda, en iyi çözüm çoğaltmayı yeniden başlatmasıdır.
 
-- **Istatefulservicereplica. ChangeRole (P)**: en yaygın durum, hizmetin öğesinden `RunAsync`bir görev döndürmediğinde olur.
+- **Istatefulservicereplica. ChangeRole (P)**: en yaygın durum, hizmetin öğesinden bir görev döndürmediğinde olur `RunAsync` .
 
 Takılmış olan diğer API çağrıları **ıreplicator** arabirimidir. Örneğin:
 
-- **Ireplicator. catch Upreplicaset**: Bu uyarı iki işlemlerden birini gösterir. Yetersiz çoğaltma yok. Bu durumun bu olup olmadığını görmek için, bir veya daha fazla yeniden yapılandırma için bölümdeki çoğaltmaların çoğaltma durumuna veya System.FM sistem durumu raporuna bakın. Veya çoğaltmalar, işleme işlemleri değildir. PowerShell cmdlet 'i `Get-ServiceFabricDeployedReplicaDetail` Tüm çoğaltmaların ilerlemesini belirlemede kullanılabilir. Sorun, `LastAppliedReplicationSequenceNumber` değeri birincil `CommittedSequenceNumber` değerinin arkasında olan çoğaltmalarla birlikte kalıyor.
+- **Ireplicator. catch Upreplicaset**: Bu uyarı iki işlemlerden birini gösterir. Yetersiz çoğaltma yok. Bu durumun bu olup olmadığını görmek için, bir veya daha fazla yeniden yapılandırma için bölümdeki çoğaltmaların çoğaltma durumuna veya System.FM sistem durumu raporuna bakın. Veya çoğaltmalar, işleme işlemleri değildir. PowerShell cmdlet 'i `Get-ServiceFabricDeployedReplicaDetail` Tüm çoğaltmaların ilerlemesini belirlemede kullanılabilir. Sorun, `LastAppliedReplicationSequenceNumber` değeri birincil değerinin arkasında olan çoğaltmalarla birlikte kalıyor `CommittedSequenceNumber` .
 
-- **Ireplicator. BuildReplica (\<uzaktan yineleme kimliği>)**: Bu uyarı, derleme işlemindeki bir sorunu gösterir. Daha fazla bilgi için bkz. [çoğaltma yaşam döngüsü](service-fabric-concepts-replica-lifecycle.md). Bunun nedeni, Replicator adresinin yanlış yapılandırılması olabilir. Daha fazla bilgi için bkz. [durum bilgisi Reliable Services yapılandırma](service-fabric-reliable-services-configuration.md) ve [hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md). Uzak düğümde de sorun olabilir.
+- **Ireplicator. BuildReplica ( \<Remote ReplicaId> )**: Bu uyarı, derleme işlemindeki bir sorunu gösterir. Daha fazla bilgi için bkz. [çoğaltma yaşam döngüsü](service-fabric-concepts-replica-lifecycle.md). Bunun nedeni, Replicator adresinin yanlış yapılandırılması olabilir. Daha fazla bilgi için bkz. [durum bilgisi Reliable Services yapılandırma](service-fabric-reliable-services-configuration.md) ve [hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md). Uzak düğümde de sorun olabilir.
 
 ### <a name="replicator-system-health-reports"></a>Çoğaltıcı sistem durumu raporları
-**Çoğaltma sırası dolu:**
-**System. Replicator** , çoğaltma kuyruğu dolduğunda bir uyarı bildirir. Birincil üzerinde, bir veya daha fazla ikincil çoğaltmanın işlemleri bildirmek için yavaş olduğu için çoğaltma kuyruğu genellikle tam hale gelir. İkincil üzerinde bu durum genellikle hizmetin işlemleri uygulamak için yavaş olduğu durumlarda oluşur. Sıra artık dolduğunda uyarı temizlenir.
+**Çoğaltma sırası dolu:** 
+ **System. Replicator** , çoğaltma kuyruğu dolduğunda bir uyarı bildirir. Birincil üzerinde, bir veya daha fazla ikincil çoğaltmanın işlemleri bildirmek için yavaş olduğu için çoğaltma kuyruğu genellikle tam hale gelir. İkincil üzerinde bu durum genellikle hizmetin işlemleri uygulamak için yavaş olduğu durumlarda oluşur. Sıra artık dolduğunda uyarı temizlenir.
 
 * **SourceId**: System. Replicator
 * **Özellik**: çoğaltma rolüne bağlı olarak **primaryreplicationqueuestatus** veya **secondaryreplicationqueuestatus**.
 * **Sonraki adımlar**: rapor birincil ise, kümedeki düğümler arasındaki bağlantıyı denetleyin. Tüm bağlantılar sağlıklı ise, işlemleri uygulamak için yüksek disk gecikmesi olan en az bir adet yavaş ikincil olabilir. Rapor ikincikse, önce düğüm üzerinde disk kullanımı ve performansını denetleyin. Ardından yavaş düğümden birincil bağlantı bağlantısını birincil olarak denetleyin.
 
-**Remoterepereptorconnectionstatus:**
-ikincil (uzak) çoğaltıcının bağlantısı sağlıklı olmadığında birincil çoğaltmadaki**System. Replicator** bir uyarı bildirir. Uzak çoğaltıcı adresi raporun iletisinde gösterilir, bu, yanlış yapılandırmanın geçtiğini veya replicators arasında ağ sorunları olup olmadığını algılamaya daha kolay hale getirir.
+**Remoterepereptorconnectionstatus:** 
+ Birincil çoğaltmadaki **System. Replicator** , ikincil (uzak) çoğaltıcının bağlantısı sağlıklı olmadığında bir uyarı bildirir. Uzak çoğaltıcı adresi raporun iletisinde gösterilir, bu, yanlış yapılandırmanın geçtiğini veya replicators arasında ağ sorunları olup olmadığını algılamaya daha kolay hale getirir.
 
 * **SourceId**: System. Replicator
 * **Özellik**: **remoterepereptorconnectionstatus**.
@@ -773,7 +773,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>İndirme
+### <a name="download"></a>İndir
 Uygulama paketi indirmesi başarısız olursa System. Hosting bir hata bildirir.
 
 * **SourceId**: System. Hosting
@@ -851,7 +851,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>İndirme
+### <a name="download"></a>İndir
 System. Hosting, hizmet paketi indirmesi başarısız olursa bir hata bildiriyor.
 
 * **SourceId**: System. Hosting

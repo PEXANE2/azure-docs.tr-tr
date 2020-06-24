@@ -4,15 +4,15 @@ description: Azure Izleyici ile her kaynak türü için kullanılabilen ölçüm
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 04/06/2020
+ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 09aa3a5febe9ea25d8614a99ec3f832cc2d0309f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 7ed55200db72879f7ec7323b5c165998944688a5
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456955"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906794"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
 
@@ -43,7 +43,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/sunucuları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Sayı|Ortalama|QPU. S1 için 0-100 aralığı, S2 için 0-200 ve S4 için 0-400|Sunucuresourcetype|
 |memory_metric|Bellek|Bayt|Ortalama|Bellek. S1 için 0-25 GB, S2 için 0-50 GB ve S4 için 0-100 GB|Sunucuresourcetype|
@@ -96,7 +96,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |TotalRequests|Toplam ağ geçidi Isteği sayısı (kullanım dışı)|Sayı|Toplam|Ağ Geçidi isteklerinin sayısı-çok boyutlu istek ölçüsünü GatewayResponseCodeCategory boyutuyla kullanın|Konum, ana bilgisayar adı|
 |SuccessfulRequests|Başarılı ağ geçidi Istekleri (kullanım dışı)|Sayı|Toplam|Başarılı ağ geçidi isteklerinin sayısı-çok boyutlu istek ölçüsünü GatewayResponseCodeCategory boyutuyla kullanın|Konum, ana bilgisayar adı|
@@ -120,7 +120,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/Configurationmağazaları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Httpıncomingrequestcount|Httpıncomingrequestcount|Sayı|Sayı|Gelen http isteklerinin toplam sayısı.|Durum|
 |Httpıncomingrequestduration|Httpıncomingrequestduration|Sayı|Ortalama|Http isteğinde gecikme süresi.|Durum|
@@ -128,7 +128,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/yay
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |SystemCpuUsagePercentage|Sistem CPU kullanım yüzdesi|Yüzde|Ortalama|Tüm sistem için en son CPU kullanımı|AppName, Pod|
 |AppCpuUsagePercentage|Uygulama CPU kullanım yüzdesi|Yüzde|Ortalama|Uygulama JVM CPU kullanım yüzdesi|AppName, Pod|
@@ -158,16 +158,16 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |TotalJob|Toplam Iş sayısı|Sayı|Toplam|Toplam iş sayısı|Runbook, durum|
 |TotalUpdateDeploymentRuns|Toplam güncelleştirme dağıtımı çalıştırmaları|Sayı|Toplam|Toplam yazılım güncelleştirme dağıtımı çalıştırmaları|SoftwareUpdateConfigurationName, durum|
 |Totalupdatedeploymentmachinerçalıştırır|Toplam güncelleştirme dağıtım makinesi çalıştırması|Sayı|Toplam|Yazılım güncelleştirme dağıtımı çalıştırmasında toplam yazılım güncelleştirme dağıtımı makinesi|SoftwareUpdateConfigurationName, Status, TargetComputer, Softwareupdateconfigurationrunıd|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft. Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CoreCount|Adanmış çekirdek sayısı|Sayı|Toplam|Batch hesabındaki toplam adanmış çekirdek sayısı|Yok|
 |TotalNodeCount|Adanmış düğüm sayısı|Sayı|Toplam|Batch hesabındaki toplam ayrılmış düğüm sayısı|Yok|
@@ -202,9 +202,9 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |JobTerminateStartEvent|İş sonlandırma başlangıç olayları|Sayı|Toplam|Sonlandırılması istenen toplam iş sayısı.|No|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft. Batchaı/çalışma alanları
+## <a name="microsoftbatchaiworkspaces"></a>ChAI/çalışma alanlarını Microsoft.Bat
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |İş gönderildi|İş gönderildi|Sayı|Toplam|Gönderilen iş sayısı|Senaryo, ClusterName|
 |İş tamamlandı|İş tamamlandı|Sayı|Toplam|Tamamlanan iş sayısı|Senaryo, ClusterName, ResultType|
@@ -224,7 +224,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockzincirine/blockchainMembers
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CpuUsagePercentageInDouble|CPU kullanım yüzdesi|Yüzde|Maksimum|CPU kullanım yüzdesi|Node|
 |MemoryUsage|Bellek Kullanımı|Bayt|Ortalama|Bellek Kullanımı|Node|
@@ -246,7 +246,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcacheredis"></a>Microsoft. Cache/redsıs
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |connectedistemcileri|Bağlı İstemciler|Sayı|Maksimum||Parça|
 |totalcommandsişlendi|Toplam İşlem Sayısı|Sayı|Toplam||Parça|
@@ -434,14 +434,14 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Web uygulaması güvenlik duvarı Istek sayısı|Sayı|Toplam|Web uygulaması güvenlik duvarı tarafından işlenen istemci isteklerinin sayısı|PolicyName, RuleName, eylem|
 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. ClassicCompute/virtualMachines
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CPU yüzdesi|CPU yüzdesi|Yüzde|Ortalama|Şu anda sanal makineler tarafından kullanılan ayrılmış işlem birimlerinin yüzdesi.|Yok|
 |Ağ Girişi|Ağ Girişi|Bayt|Toplam|Sanal makineler tarafından tüm ağ arabirimlerinde alınan bayt sayısı (gelen trafik).|Yok|
@@ -454,7 +454,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft. ClassicCompute/domainNames/yuvalar/roller
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CPU yüzdesi|CPU yüzdesi|Yüzde|Ortalama|Şu anda sanal makineler tarafından kullanılan ayrılmış işlem birimlerinin yüzdesi.|Roleınstanceıd|
 |Ağ Girişi|Ağ Girişi|Bayt|Toplam|Sanal makineler tarafından tüm ağ arabirimlerinde alınan bayt sayısı (gelen trafik).|Roleınstanceıd|
@@ -468,7 +468,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft. ClassicStorage/storageAccounts
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |UsedCapacity|Kullanılan kapasite|Bayt|Ortalama|Hesabın kullanılan kapasitesi|Yok|
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
@@ -480,7 +480,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft. ClassicStorage/storageAccounts/blobServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob kapasitesi|Bayt|Ortalama|Depolama hesabının blob hizmeti tarafından bayt olarak kullanılan depolama miktarı.|BlobType, katman|
 |BlobCount|BLOB sayısı|Sayı|Ortalama|Depolama hesabının blob hizmetindeki BLOB sayısı.|BlobType, katman|
@@ -495,7 +495,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft. ClassicStorage/storageAccounts/tableServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Tablokapasitesi|Tablo kapasitesi|Bayt|Ortalama|Bayt olarak depolama hesabının tablo hizmeti tarafından kullanılan depolama miktarı.|Yok|
 |Tablosayısı|Tablo sayısı|Sayı|Ortalama|Depolama hesabının tablo hizmetindeki tablo sayısı.|Yok|
@@ -509,7 +509,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft. ClassicStorage/storageAccounts/fileServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Dosya kapasitesi|Dosya kapasitesi|Bayt|Ortalama|Bayt olarak depolama hesabının dosya hizmeti tarafından kullanılan depolama miktarı.|FileShare|
 |FileCount|Dosya sayısı|Sayı|Ortalama|Depolama hesabının dosya hizmetindeki dosya sayısı.|FileShare|
@@ -526,7 +526,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft. ClassicStorage/storageAccounts/queueServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |QueueCapacity|Kuyruk kapasitesi|Bayt|Ortalama|Depolama hesabının Kuyruk hizmeti bayt cinsinden kullandığı depolama miktarı.|Yok|
 |QueueCount|Sıra sayısı|Sayı|Ortalama|Depolama hesabının Kuyruk hizmeti sıra sayısı.|Yok|
@@ -541,7 +541,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. Biliveservices/hesapları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Toplam çağrılar|Toplam çağrı sayısı|Sayı|Toplam|Toplam çağrı sayısı.|ApiName, OperationName, bölge|
 |Başarılı çağrılar|Başarılı çağrılar|Sayı|Toplam|Başarılı çağrı sayısı.|ApiName, OperationName, bölge|
@@ -561,7 +561,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CPU yüzdesi|CPU yüzdesi|Yüzde|Ortalama|Şu anda sanal makineler tarafından kullanılan ayrılmış işlem birimlerinin yüzdesi|Yok|
 |Ağ Girişi|Faturalanabilir (kullanım dışı) ağ|Bayt|Toplam|Sanal makineler tarafından tüm ağ arabirimlerinde alınan faturalandırılabilir bayt sayısı (gelen trafik) (kullanım dışı)|Yok|
@@ -606,7 +606,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CPU yüzdesi|CPU yüzdesi|Yüzde|Ortalama|Şu anda sanal makineler tarafından kullanılan ayrılmış işlem birimlerinin yüzdesi|VMName|
 |Ağ Girişi|Faturalanabilir (kullanım dışı) ağ|Bayt|Toplam|Sanal makineler tarafından tüm ağ arabirimlerinde alınan faturalandırılabilir bayt sayısı (gelen trafik) (kullanım dışı)|VMName|
@@ -651,7 +651,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CPU yüzdesi|CPU yüzdesi|Yüzde|Ortalama|Şu anda sanal makineler tarafından kullanılan ayrılmış işlem birimlerinin yüzdesi|Yok|
 |Ağ Girişi|Faturalanabilir (kullanım dışı) ağ|Bayt|Toplam|Sanal makineler tarafından tüm ağ arabirimlerinde alınan faturalandırılabilir bayt sayısı (gelen trafik) (kullanım dışı)|Yok|
@@ -695,7 +695,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft. Containerınstance/containerGroups
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CpuUsage|CPU Kullanımı|Sayı|Ortalama|Miliçekirdekte tüm çekirdekler üzerinde CPU kullanımı.|Adı|
 |MemoryUsage|Bellek Kullanımı|Bayt|Ortalama|Bayt cinsinden toplam bellek kullanımı.|Adı|
@@ -704,7 +704,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/kayıt defterleri
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |TotalPullCount|Toplam çekme sayısı|Sayı|Ortalama|Toplam görüntü sayısı|Yok|
 |Başarılı sayı|Başarılı çekme sayısı|Sayı|Ortalama|Başarılı görüntü sayısı|Yok|
@@ -715,7 +715,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/Managedkümeler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |kube_node_status_allocatable_cpu_cores|Yönetilen kümede toplam kullanılabilir CPU çekirdeği sayısı|Sayı|Ortalama|Yönetilen kümede toplam kullanılabilir CPU çekirdeği sayısı|Yok|
 |kube_node_status_allocatable_memory_bytes|Yönetilen kümede toplam kullanılabilir bellek miktarı|Bayt|Ortalama|Yönetilen kümede toplam kullanılabilir bellek miktarı|Yok|
@@ -727,14 +727,14 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Başarılı Istek sayısı|Başarılı Istekler|Sayı|Toplam|Özel sağlayıcı tarafından yapılan başarılı istekler|HttpMethod, CallPath, StatusCode|
 |FailedRequests|Başarısız İstekler|Sayı|Toplam|Özel kaynak sağlayıcıları için kullanılabilir günlükleri alır|HttpMethod, CallPath, StatusCode|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft. DataBoxEdge/dataBoxEdgeDevices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Nicreadüretilen Iş|Okuma performansı (ağ)|BytesPerSecond|Ortalama|Cihazdaki ağ arabiriminin, ağ geçidinde bulunan tüm birimler için raporlama döneminde okuma performansı.|InstanceName|
 |Nicwriteüretilen Iş|Yazma Işleme (ağ)|BytesPerSecond|Ortalama|Cihazdaki ağ arabiriminin, ağ geçidinde bulunan tüm birimler için raporlama döneminde yazma aktarım hızı.|InstanceName|
@@ -752,7 +752,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft. DataCatalog/datacatalogs
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|Sınıflandırmayla varlık dağıtımı|Sayı|Toplam|Belirli bir sınıflandırmanın atandığı varlıkların sayısını gösterir, yani bu etiketle sınıflandırılmaktadır.|Sınıflandırma, kaynak|
 |AssetDistributionByStorageType|Depolama türüne göre varlık dağıtımı|Sayı|Toplam|Belirli bir depolama türüne sahip varlıkların sayısını belirtir.|StorageType|
@@ -767,7 +767,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/DataFactory
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Failedçalıştırmaları|Başarısız çalıştırmalar|Sayı|Toplam||Ardışık düzen ınename, activityName|
 |Başarılı çalıştırmalar|Başarılı çalıştırmalar|Sayı|Toplam||Ardışık düzen ınename, activityName|
@@ -775,7 +775,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/Factory
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Pipelinefailedçalıştırmaları|Başarısız işlem hattı çalıştırmaları ölçümleri|Sayı|Toplam||Failuıyeniden yazma, ad|
 |Ardışık düzen Inesucceededçalıştırmaları|Başarılı işlem hattı çalışma ölçümleri|Sayı|Toplam||Failuıyeniden yazma, ad|
@@ -798,7 +798,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/hesapları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |JobEndedSuccess|Başarılı Işler|Sayı|Toplam|Başarılı iş sayısı.|Yok|
 |JobEndedFailure|Başarısız Işler|Sayı|Toplam|Başarısız iş sayısı.|Yok|
@@ -811,7 +811,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/accounts
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |TotalStorage|Toplam Depolama Alanı|Bayt|Maksimum|Hesapta depolanan toplam veri miktarı.|Yok|
 |Veri yazıldı|Yazılan veriler|Bayt|Toplam|Hesaba yazılan toplam veri miktarı.|Yok|
@@ -822,7 +822,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/hesapları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ShareCount|Gönderilen paylaşımlar|Sayı|Maksimum|Hesaptaki gönderilen paylaşım sayısı|Madı|
 |ShareSubscriptionCount|Alınan paylaşımlar|Sayı|Maksimum|Hesaptaki alınan paylaşım sayısı|ShareSubscriptionName|
@@ -834,7 +834,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. Dbformarıdb/sunucular
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Yok|
 |memory_percent|Bellek yüzdesi|Yüzde|Ortalama|Bellek yüzdesi|Yok|
@@ -855,7 +855,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. Dbformyısql/sunucuları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Yok|
 |memory_percent|Bellek yüzdesi|Yüzde|Ortalama|Bellek yüzdesi|Yok|
@@ -876,7 +876,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/sunucuları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Yok|
 |memory_percent|Bellek yüzdesi|Yüzde|Ortalama|Bellek yüzdesi|Yok|
@@ -898,7 +898,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Yok|
 |memory_percent|Bellek yüzdesi|Yüzde|Ortalama|Bellek yüzdesi|Yok|
@@ -912,7 +912,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft. DBforPostgreSQL/singleservers
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Yok|
 |memory_percent|Bellek yüzdesi|Yüzde|Ortalama|Bellek yüzdesi|Yok|
@@ -932,7 +932,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |D2C. telemetri. ınress. allProtocol|Telemetri iletisi gönderme denemeleri|Sayı|Toplam|IoT Hub 'ınıza gönderilmeye çalışılan cihazdan buluta telemetri iletisi sayısı|Yok|
 |D2C. telemetri. giriş. başarılı|Gönderilen telemetri iletileri|Sayı|Toplam|IoT Hub 'ınıza başarıyla gönderilen cihazdan buluta telemetri iletisi sayısı|Yok|
@@ -1005,7 +1005,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Registrationdenemeleri|Kayıt denemeleri|Sayı|Toplam|Denenen cihaz kaydı sayısı|ProvisioningServiceName, IotHubName, durum|
 |Deviceasyleri|Atanan cihazlar|Sayı|Toplam|IoT Hub 'ına atanan cihazların sayısı|ProvisioningServiceName, IotHubName|
@@ -1014,9 +1014,9 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>UmentDB/databaseAccounts Microsoft.Doc
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |AddRegion|Eklenen bölge|Sayı|Sayı|Eklenen bölge|Bölge|
 |AvailableStorage|Kullanılabilir Depolama Alanı|Bayt|Toplam|5 dakika ayrıntı düzeyinde raporlanan toplam kullanılabilir depolama alanı|CollectionName, DatabaseName, bölgesi|
@@ -1082,7 +1082,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft. EnterpriseKnowledgeGraph/hizmetler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Işlem sayısı|İşlem sayısı|Sayı|Sayı|Toplam Işlem sayısı|Işlem sayısı|
 |Başarılı sayısı|Başarılı İşlem Sayısı|Sayı|Sayı|Başarılı Işlem sayısı|Başarılı sayısı|
@@ -1091,7 +1091,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/Domains
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Konu başlığı|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|Konu, ErrorType, hata|
@@ -1105,7 +1105,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/konuları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Yok|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|ErrorType, hata|
@@ -1120,7 +1120,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/Systemkonuları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Yok|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|ErrorType, hata|
@@ -1135,7 +1135,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/Eventabonelikleri
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |MatchedEventCount|Eşleşen olaylar|Sayı|Toplam|Bu olay aboneliğiyle eşleşen toplam olay sayısı|Yok|
 |Ityattemptfailcount|Teslim başarısız olaylar|Sayı|Toplam|Bu olay aboneliğine teslim edilemedi toplam olay sayısı|Hata, ErrorType|
@@ -1146,7 +1146,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/Extensionkonuları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Publishbaşarılı sayısı|Yayımlanan olaylar|Sayı|Toplam|Bu konuda yayınlanan toplam olay sayısı|Yok|
 |PublishFailCount|Başarısız olayları Yayımla|Sayı|Toplam|Bu konuda yayımlanamadı toplam olay sayısı|ErrorType, hata|
@@ -1158,7 +1158,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/ad alanları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Başarılı Istekler|Sayı|Toplam|Microsoft. EventHub için başarılı Istekler.|EntityName, OperationResult|
 |ServerErrors|Sunucu hataları.|Sayı|Toplam|Microsoft. EventHub için sunucu hataları.|EntityName, OperationResult|
@@ -1197,7 +1197,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofteventhubclusters"></a>Microsoft. EventHub/kümeler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Başarılı Istekler|Sayı|Toplam|Microsoft. EventHub için başarılı Istekler.|OperationResult|
 |ServerErrors|Sunucu hataları.|Sayı|Toplam|Microsoft. EventHub için sunucu hataları.|OperationResult|
@@ -1222,7 +1222,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft. HDInsight/kümeler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |GatewayRequests|Ağ Geçidi Istekleri|Sayı|Toplam|Ağ Geçidi isteklerinin sayısı|Http durumu|
 |Kategorizedgatewayrequests|Kategorilere ayrılmış ağ geçidi Istekleri|Sayı|Toplam|Kategorilere göre ağ geçidi isteklerinin sayısı (1xx/2xx/3xx/4xx/5xx)|Http durumu|
@@ -1231,7 +1231,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/oto Scalesettings
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ObservedMetricValue|Gözlemlenen ölçüm değeri|Sayı|Ortalama|Yürütüldüğünde otomatik ölçeklendirme tarafından hesaplanan değer|MetricTriggerSource|
 |MetricThreshold|Ölçüm eşiği|Sayı|Ortalama|Otomatik ölçeklendirme çalıştırıldığında yapılandırılan otomatik ölçeklendirme eşiği.|MetricTriggerRule|
@@ -1240,7 +1240,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/bileşenler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Kullanılabilirlik sonuçları/kullanılabilirliği yüzdesi|Kullanılabilirlik|Yüzde|Ortalama|Başarıyla tamamlanan kullanılabilirlik testlerinin yüzdesi|Kullanılabilirlik sonucu/adı, kullanılabilirlik sonucu/konumu|
 |Kullanılabilirlik sonuçları/sayısı|Kullanılabilirlik testleri|Sayı|Sayı|Kullanılabilirlik testlerinin sayısı|Kullanılabilirlik sonucu/adı, kullanılabilirlik sonucu/konumu, kullanılabilirlik sonucu/başarısı|
@@ -1276,7 +1276,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftiotcentraliotapps"></a>Microsoft. ıotcentral/ıotapps
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |connectedDeviceCount|Toplam bağlı cihaz sayısı|Sayı|Ortalama|IoT Central bağlı cihazların sayısı|Yok|
 |C2D. Property. Read. Success|IoT Central 'den başarılı cihaz özelliği okumaları|Sayı|Toplam|IoT Central başlatılan tüm başarılı Özellik okuma sayısı|Yok|
@@ -1291,7 +1291,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. Keykasası/kasa
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ServiceApiHit|Toplam hizmet API 'Si Isabet sayısı|Sayı|Sayı|Toplam hizmet API 'si isabet sayısı|ActivityType, ActivityName|
 |Hizmet Apilatesi|Genel hizmet API 'Si gecikmesi|Mayacak|Ortalama|Hizmet API 'si isteklerinin genel gecikmesi|ActivityType, ActivityName, StatusCode, StatusCodeClass|
@@ -1301,7 +1301,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. kusto/kümeler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Cachekullanım|Önbellek kullanımı|Yüzde|Ortalama|Küme kapsamındaki kullanım düzeyi|Yok|
 |QueryDuration|Sorgu süresi|Mayacak|Ortalama|Sorgu süresi (saniye)|QueryStatus|
@@ -1313,7 +1313,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |Inestionresult|Alım sonucu|Sayı|Sayı|Alma işlemlerinin sayısı|Inestionresultdetails|
 |CPU|CPU|Yüzde|Ortalama|CPU kullanım düzeyi|Yok|
 |Continuousexportnumofrecordsexports|Sürekli dışa aktarma – dışarı aktarılmış kayıtların sayısı|Sayı|Toplam|Dışarı aktarma işlemi sırasında yazılan her depolama yapıtı için tetiklenen, dışarı aktarılmış kayıt sayısı|Devamousexportname, veritabanı|
-|Dışarı Aktaramstilileştirme|Kullanım verme|Yüzde|Maksimum|Kullanım verme|Yok|
+|Dışarı Aktaramstilileştirme|Dışarı Aktarma Kullanımı|Yüzde|Maksimum|Kullanım verme|Yok|
 |ContinuousExportPendingCount|Sürekli dışarı aktarma bekleyen sayısı|Sayı|Maksimum|Yürütmeye hazırlamış bekleyen sürekli dışarı aktarma işlerinin sayısı|Yok|
 |ContinuousExportMaxLatenessMinutes|Sürekli dışarı aktarma maksimum değeri|Sayı|Maksimum|Kümedeki sürekli dışarı aktarma işleri tarafından raporlanan süre (dakika cinsinden)|Yok|
 |ContinuousExportResult|Sürekli dışarı aktarma sonucu|Sayı|Sayı|Sürekli dışarı aktarmanın başarılı veya başarısız olup olmadığını belirtir|Devamousexportname, sonuç, veritabanı|
@@ -1330,7 +1330,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/iş akışları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |RunsStarted|Çalışma başlatıldı|Sayı|Toplam|Başlatılan iş akışı çalıştırma sayısı.|Yok|
 |RunsCompleted|Tamamlanan çalıştırmalar|Sayı|Toplam|Tamamlanan iş akışı çalıştırma sayısı.|Yok|
@@ -1369,7 +1369,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. Logic/ıntegrationserviceortamortamları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |RunsStarted|Çalışma başlatıldı|Sayı|Toplam|Başlatılan iş akışı çalıştırma sayısı.|Yok|
 |RunsCompleted|Tamamlanan çalıştırmalar|Sayı|Toplam|Tamamlanan iş akışı çalıştırma sayısı.|Yok|
@@ -1406,7 +1406,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/çalışma alanları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |İptal edilen çalıştırmalar|İptal edilen çalıştırmalar|Sayı|Toplam|Bu çalışma alanı için iptal edilen çalıştırma sayısı|Senaryo, RunType, Publishedpipelineıd, ComputeType, PipelineStepType|
 |Istenen çalıştırmaları iptal et|Istenen çalıştırmaları iptal et|Sayı|Toplam|Bu çalışma alanı için iptal edilen çalıştırma sayısı|Senaryo, RunType, Publishedpipelineıd, ComputeType, PipelineStepType|
@@ -1446,14 +1446,14 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft. Maps/hesaplar
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Kullanım|Kullanım|Sayı|Sayı|API çağrısı sayısı|ApiCategory, ApiName, ResultType, ResponseCode|
 |Kullanılabilirlik|Kullanılabilirlik|Yüzde|Ortalama|API 'lerin kullanılabilirliği|ApiCategory, ApiName|
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft. Media/mediaservices/streamingEndpoints
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Çıkış|Çıkış|Bayt|Toplam|Bayt cinsinden çıkış verisi miktarı.|OutputFormat|
 |SuccessE2ELatency|Başarılı uçtan uca gecikme süresi|Mayacak|Ortalama|Başarılı istekler için milisaniye cinsinden ortalama gecikme süresi.|OutputFormat|
@@ -1462,7 +1462,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/mediaservices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |AssetQuota|Varlık kotası|Sayı|Ortalama|Geçerli medya hizmeti hesabı için kaç kıymete izin veriliyor?|Yok|
 |AssetCount|Varlık sayısı|Sayı|Ortalama|Geçerli medya hizmeti hesabında kaç varlık zaten oluşturuldu|Yok|
@@ -1477,14 +1477,14 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft. MixedReality/remoteRenderingAccounts
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Assetsdönüştürüldü|Dönüştürülen varlıklar|Sayı|Toplam|Dönüştürülen toplam varlık sayısı|AppID, RESOURCEID, SDKVersion|
 |ActiveRenderingSessions|Etkin Işleme oturumları|Sayı|Toplam|Toplam etkin işleme oturumu sayısı|AppID, RESOURCEID, SessionType, SDKVersion|
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft. NetApp/netAppAccounts/Capacityhavuzları/birimleri
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |AverageReadLatency|Ortalama okuma gecikmesi|Mayacak|Ortalama|İşlem başına milisaniye cinsinden ortalama okuma gecikmesi|Yok|
 |AverageWriteLatency|Ortalama yazma gecikmesi|Mayacak|Ortalama|İşlem başına milisaniye cinsinden ortalama yazma gecikmesi|Yok|
@@ -1495,14 +1495,14 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft. NetApp/netAppAccounts/Capacityhavuzları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |VolumePoolAllocatedUsed|Birim boyutuna ayrılan havuz|Bayt|Ortalama|Havuzun ayrılan boyutu ayrılmış|Yok|
 |VolumePoolTotalLogicalSize|Kullanılan havuz boyutu|Bayt|Ortalama|Havuza ait tüm birimlerin mantıksal boyutunun toplamı|Yok|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft. Network/NetworkInterfaces
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |BytesSentRate|Gönderilen bayt|Bayt|Toplam|Ağ arabiriminin gönderdiği bayt sayısı|Yok|
 |BytesReceivedRate|Alınan bayt|Bayt|Toplam|Ağ arabiriminin aldığı bayt sayısı|Yok|
@@ -1511,7 +1511,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |VipAvailability|Veri yolu kullanılabilirliği|Sayı|Ortalama|Süre başına ortalama Load Balancer veri yolu kullanılabilirliği|Frontendıaddress, FrontendPort|
 |DipAvailability|Durum araştırma durumu|Sayı|Ortalama|Süre başına ortalama Load Balancer sistem durumu araştırma durumu|ProtocolType, BackendPort, Frontendıbaddress, FrontendPort, Backendıdıaddress|
@@ -1524,7 +1524,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft. Network/dnszones
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |QueryVolume|Sorgu hacmi|Sayı|Toplam|Bir DNS bölgesi için sunulan sorgu sayısı|Yok|
 |Kayıt kümesi sayısı|Kayıt kümesi sayısı|Sayı|Maksimum|Bir DNS bölgesindeki kayıt kümesi sayısı|Yok|
@@ -1533,7 +1533,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/Publicıpaddresses
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |PacketsInDDoS|Gelen paketler DDoS|Sayaçpersaniye|Maksimum|Gelen paketler DDoS|Yok|
 |PacketsDroppedDDoS|DDoS bırakılan gelen paketler|Sayaçpersaniye|Maksimum|DDoS bırakılan gelen paketler|Yok|
@@ -1566,7 +1566,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|Bir VM 'ye ping için gidiş dönüş süresi|Mayacak|Ortalama|Hedef VM 'ye gönderilen pingler için gidiş dönüş süresi|SourceCustomerAddress, DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|VM 'ye ping işlemi başarısız oldu|Yüzde|Ortalama|Hedef VM 'nin gönderilen toplam ping Pinglerine yönelik başarısız Ping sayısı yüzdesi|SourceCustomerAddress, DestinationCustomerAddress|
@@ -1574,7 +1574,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ApplicationRuleHit|Uygulama kuralları isabet sayısı|Sayı|Toplam|Uygulama kurallarının isabet sayısı|Durum, neden, protokol|
 |NetworkRuleHit|Ağ kuralları isabet sayısı|Sayı|Toplam|Ağ kurallarının isabet sayısı|Durum, neden, protokol|
@@ -1585,7 +1585,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/Applicationgateway 'ler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Aktarım hızı|Aktarım hızı|BytesPerSecond|Ortalama|Application Gateway saniyede hizmet verilen bayt sayısı|Yok|
 |Unhealthyıhostcount|Sağlıksız konak sayısı|Sayı|Ortalama|Sağlıklı olmayan arka uç Konakları sayısı|BackendSettingsPool|
@@ -1617,7 +1617,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/Virtualnetworkgateway 'ler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |AverageBandwidth|Ağ Geçidi S2S bant genişliği|BytesPerSecond|Ortalama|Bayt/saniye cinsinden bir ağ geçidinin ortalama siteden siteye bant genişliği|Yok|
 |P2SBandwidth|Ağ Geçidi P2S bant genişliği|BytesPerSecond|Ortalama|Bayt/saniye cinsinden bir ağ geçidinin ortalama Noktadan siteye bant genişliği|Yok|
@@ -1633,7 +1633,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |RxLightLevel|RxLightLevel|Sayı|Ortalama|DBm 'de RX hafif düzeyi|Bağlantı, kulvar|
 |TxLightLevel|TxLightLevel|Sayı|Ortalama|DBm 'de TX hafif düzeyi|Bağlantı, kulvar|
@@ -1646,7 +1646,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/Expressroutedevreleri
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|Sayaçpersaniye|Ortalama|Saniye başına Azure 'da BITS giriş|PeeringType|
 |BitsOutPerSecond|BitsOutPerSecond|Sayaçpersaniye|Ortalama|Saniye başına Azure 'da BITS yumursan|PeeringType|
@@ -1659,28 +1659,28 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/Expressroutedevreleri/eşayarları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|Sayaçpersaniye|Ortalama|Saniye başına Azure 'da BITS giriş|Yok|
 |BitsOutPerSecond|BitsOutPerSecond|Sayaçpersaniye|Ortalama|Saniye başına Azure 'da BITS yumursan|Yok|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|Sayaçpersaniye|Ortalama|Saniye başına Azure 'da BITS giriş|Yok|
 |BitsOutPerSecond|BitsOutPerSecond|Sayaçpersaniye|Ortalama|Saniye başına Azure 'da BITS yumursan|Yok|
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/Expressroutegateway 'ler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|Sayaçpersaniye|Ortalama|Saniye başına Azure 'da BITS giriş|ConnectionName|
 |ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|Sayaçpersaniye|Ortalama|Saniye başına Azure 'da BITS yumursan|ConnectionName|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |QpsByEndpoint|Bitiş noktasına göre sorgular döndürüldü|Sayı|Toplam|Verilen zaman çerçevesinde Traffic Manager uç noktasının döndürüldüğü sayı|Uçnoktaadı|
 |Probeagentcurrentendpointstatebyprofileresourceıd|Uç nokta tarafından uç nokta durumu|Sayı|Maksimum|1 bir uç noktanın araştırma durumu "etkin" ise, 0 yoksa.|Uçnoktaadı|
@@ -1689,7 +1689,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft. Network/networkWatchers/Connectionmonitörleri
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ProbesFailedPercent|% Yoklama başarısız oldu|Yüzde|Ortalama|Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu|Yok|
 |AverageRoundtripMs|Ort. gidiş dönüş süresi (MS)|Mayacak|Ortalama|Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ gidiş dönüş süresi (MS)|Yok|
@@ -1699,7 +1699,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontkapaklı
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Istek sayısı|İstek Sayısı|Sayı|Toplam|HTTP/S proxy tarafından hizmet verilen istemci isteklerinin sayısı|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |RequestSize|İstek boyutu|Bayt|Toplam|İstemcilerden HTTP/S proxy 'sine istek olarak gönderilen bayt sayısı|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
@@ -1714,7 +1714,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnetworkprivatednszones"></a>Microsoft. Network/privateDnsZones
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |QueryVolume|Sorgu hacmi|Sayı|Toplam|Bir Özel DNS bölgesi için sunulan sorgu sayısı|Yok|
 |Kayıt kümesi sayısı|Kayıt kümesi sayısı|Sayı|Maksimum|Özel DNS bölgesindeki kayıt kümesi sayısı|Yok|
@@ -1726,7 +1726,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub 'Lar
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |kayıt. tümü|Kayıt Işlemleri|Sayı|Toplam|Tüm başarılı kayıt işlemlerinin sayısı (güncelleştirme sorguları ve silmeleri oluşturma). |Yok|
 |kayıt. oluştur|Kayıt oluşturma Işlemleri|Sayı|Toplam|Tüm başarılı kayıt oluşturma işlemlerinin sayısı.|Yok|
@@ -1793,7 +1793,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. Operationalınsights/çalışma alanları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Average_% boş ınomdes|% Boş ınomdes|Sayı|Ortalama|Average_% boş ınomdes|Bilgisayar, ObjectName, InstanceName, CounterPath, dir|
 |% Average_ boş alan|% Boş alan|Sayı|Ortalama|% Average_ boş alan|Bilgisayar, ObjectName, InstanceName, CounterPath, dir|
@@ -1856,18 +1856,18 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 |Toplam Average_Bytes/sn|Toplam bayt/sn|Sayı|Ortalama|Toplam Average_Bytes/sn|Bilgisayar, ObjectName, InstanceName, CounterPath, dir|
 |Average_Processor kuyruğu uzunluğu|İşlemci kuyruğu uzunluğu|Sayı|Ortalama|Average_Processor kuyruğu uzunluğu|Bilgisayar, ObjectName, InstanceName, CounterPath, dir|
 |Sinyal|Sinyal|Sayı|Toplam|Sinyal|Bilgisayar, OSType, sürüm, Sourcecomputerıd|
-|Güncelleştir|Güncelleştir|Sayı|Ortalama|Güncelleştir|Bilgisayar, ürün, sınıflandırma, UpdateState, Isteğe bağlı, onaylanan|
+|Güncelleştir|Güncelleştir|Sayı|Ortalama|Güncelleştirme|Bilgisayar, ürün, sınıflandırma, UpdateState, Isteğe bağlı, onaylanan|
 |Olay|Olay|Sayı|Ortalama|Olay|Kaynak, olay günlüğü, bilgisayar, EventCategory, EventLevel, EventLevelName, EventID|
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. eşleme/peeringServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |PrefixLatency|Ön ek gecikmesi|Mayacak|Ortalama|Ortanca ön ek gecikmesi|PrefixName|
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft. eşleme/eşlemeler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |SessionAvailabilityV4|Oturum kullanılabilirliği v4|Yüzde|Ortalama|V4 oturumunun kullanılabilirliği|ConnectionID|
 |SessionAvailabilityV6|Oturum kullanılabilirliği V6|Yüzde|Ortalama|V6 oturumunun kullanılabilirliği|ConnectionID|
@@ -1877,7 +1877,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. Powerbiadanmış/kapasiteler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |QueryDuration|Sorgu Süresi|Mayacak|Ortalama|Son aralıktaki DAX sorgu süresi|Boyut yok|
 |QueryPoolJobQueueLength|İş parçacıkları: sorgu havuzu iş kuyruğu uzunluğu|Sayı|Ortalama|Sorgu iş parçacığı havuzu kuyruğundaki iş sayısı.|Boyut yok|
@@ -1888,7 +1888,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/hesaplar
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|Sınıflandırmayla varlık dağıtımı|Sayı|Toplam|Belirli bir sınıflandırmanın atandığı varlıkların sayısını gösterir, yani bu etiketle sınıflandırılmaktadır.|Sınıflandırma, kaynak, RESOURCEID|
 |AssetDistributionByStorageType|Depolama türüne göre varlık dağıtımı|Sayı|Toplam|Belirli bir depolama türüne sahip varlıkların sayısını belirtir.|StorageType, RESOURCEID|
@@ -1905,7 +1905,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/Namespace
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ListenerConnections-başarılı|ListenerConnections-başarılı|Sayı|Toplam|Microsoft. Relay için başarılı bir ListenerConnections.|EntityName, OperationResult|
 |ListenerConnections-ClientError|ListenerConnections-ClientError|Sayı|Toplam|Microsoft. Relay için ListenerConnections 'da ClientError.|EntityName, OperationResult|
@@ -1924,7 +1924,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |SearchLatency|Arama gecikmesi|Saniye|Ortalama|Arama hizmeti için Ortalama arama gecikmesi|Yok|
 |SearchQueriesPerSecond|Sorgu arama/saniye|Sayaçpersaniye|Ortalama|Arama hizmeti için saniye başına arama sorgusu|Yok|
@@ -1933,7 +1933,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/ad alanları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Başarılı Istekler|Sayı|Toplam|Bir ad alanı için toplam başarılı istek sayısı|EntityName, OperationResult|
 |ServerErrors|Sunucu hataları.|Sayı|Toplam|Microsoft. ServiceBus için sunucu hataları.|EntityName, OperationResult|
@@ -1958,7 +1958,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft. Servicefabrickafes/uygulamaları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Ayrılatedcpu|Ayrılatedcpu|Sayı|Ortalama|Milli çekirdekleri içinde bu kapsayıcıya ayrılan CPU|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |Ayrılan bellek|Ayrılan bellek|Bayt|Ortalama|Bu kapsayıcıya MB cinsinden ayrılan bellek|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
@@ -1974,7 +1974,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/SignalR
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ConnectionCount|Bağlantı sayısı|Sayı|Maksimum|Kullanıcı bağlantısı miktarı.|Uç Nokta|
 |MessageCount|İleti Sayısı|Sayı|Toplam|Toplam ileti miktarı.|Yok|
@@ -1987,7 +1987,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/Servers/veritabanları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Yok|
 |physical_data_read_percent|Veri G/Ç yüzdesi|Yüzde|Ortalama|Veri G/Ç yüzdesi|Yok|
@@ -2046,7 +2046,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/Servers/Elaun havuzları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Yok|
 |database_cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|DatabaseResourceId|
@@ -2085,20 +2085,9 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 <sup>2</sup> Bu ölçüm, 2 sanal çekirdek ve üzeri Ile Vcore satın alma modelini kullanan veritabanları IÇIN, DTU tabanlı satın alma modelleri IÇIN 200 DTU ve üzeri ile kullanılabilir. Bu ölçüm, hiper ölçekli veritabanları için şu anda kullanılamıyor.
 
-
-## <a name="microsoftsqlservers"></a>Microsoft. SQL/sunucuları
-
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
-|---|---|---|---|---|---|
-|dtu_consumption_percent|DTU yüzdesi|Yüzde|Ortalama|DTU yüzdesi|Elaun Poolresourceıd|
-|database_dtu_consumption_percent|DTU yüzdesi|Yüzde|Ortalama|DTU yüzdesi|DatabaseResourceId, Elaun Poolresourceıd|
-|storage_used|Kullanılan veri alanı|Bayt|Ortalama|Kullanılan veri alanı|Elaun Poolresourceıd|
-|database_storage_used|Kullanılan veri alanı|Bayt|Ortalama|Kullanılan veri alanı|DatabaseResourceId, Elaun Poolresourceıd|
-|dtu_used|Kullanılan DTU|Sayı|Ortalama|Kullanılan DTU|DatabaseResourceId|
-
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/ManagedInstances
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |virtual_core_count|Sanal çekirdek sayısı|Sayı|Ortalama|Sanal çekirdek sayısı|Yok|
 |avg_cpu_percent|Ortalama CPU yüzdesi|Yüzde|Ortalama|Ortalama CPU yüzdesi|Yok|
@@ -2112,7 +2101,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft. Storage/storageAccounts
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |UsedCapacity|Kullanılan kapasite|Bayt|Ortalama|Hesabın kullanılan kapasitesi|Yok|
 |İşlemler|İşlemler|Sayı|Toplam|Bir depolama hizmetine yapılan isteklerin veya belirtilen API işlemi sayısı. Bu sayı, başarılı ve başarısız isteklerin yanı sıra hata üreten istekleri içerir. Farklı yanıt türü sayısı için ResponseType boyutunu kullanın.|Yanıt türü, coğrafi tür, ApiName, kimlik doğrulama|
@@ -2124,7 +2113,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob kapasitesi|Bayt|Ortalama|Depolama hesabının blob hizmeti tarafından bayt olarak kullanılan depolama miktarı.|BlobType, katman|
 |BlobCount|BLOB sayısı|Sayı|Ortalama|Depolama hesabının blob hizmetindeki BLOB sayısı.|BlobType, katman|
@@ -2139,7 +2128,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Tablokapasitesi|Tablo kapasitesi|Bayt|Ortalama|Bayt olarak depolama hesabının tablo hizmeti tarafından kullanılan depolama miktarı.|Yok|
 |Tablosayısı|Tablo sayısı|Sayı|Ortalama|Depolama hesabının tablo hizmetindeki tablo sayısı.|Yok|
@@ -2153,7 +2142,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Dosya kapasitesi|Dosya kapasitesi|Bayt|Ortalama|Bayt olarak depolama hesabının dosya hizmeti tarafından kullanılan depolama miktarı.|FileShare|
 |FileCount|Dosya sayısı|Sayı|Ortalama|Depolama hesabının dosya hizmetindeki dosya sayısı.|FileShare|
@@ -2170,7 +2159,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |QueueCapacity|Kuyruk kapasitesi|Bayt|Ortalama|Depolama hesabının Kuyruk hizmeti bayt cinsinden kullandığı depolama miktarı.|Yok|
 |QueueCount|Sıra sayısı|Sayı|Ortalama|Depolama hesabının Kuyruk hizmeti sıra sayısı.|Yok|
@@ -2188,7 +2177,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragecachecaches"></a>Microsoft. StorageCache/önbellekler
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Clienentiops|Toplam Istemci ıOPS 'si|Sayı|Ortalama|Önbellek tarafından işlenen istemci dosyası işlemlerinin oranı.|Yok|
 |ClientLatency|Ortalama Istemci gecikmesi|Mayacak|Ortalama|Depolama önbelleğine yönelik istemci dosyası işlemlerinin ortalama gecikme süresi.|Yok|
@@ -2216,7 +2205,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>Microsoft. storagessync/storageSyncServices
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ServerSyncSessionResult|Eşitleme oturumu sonucu|Sayı|Ortalama|Sunucu uç noktası, bulut uç noktası ile eşitleme oturumunu başarıyla tamamladığında 1 değerini günlüğe kaydeden ölçüm|SyncGroupName, ServerEndpointName, SyncDirection|
 |StorageSyncSyncSessionAppliedFilesCount|Eşitlenen dosyalar|Sayı|Toplam|Eşitlenen dosya sayısı|SyncGroupName, ServerEndpointName, SyncDirection|
@@ -2230,7 +2219,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>Microsoft. storagessync/storageSyncServices/syncGroups
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |SyncGroupSyncSessionAppliedFilesCount|Eşitlenen dosyalar|Sayı|Toplam|Eşitlenen dosya sayısı|SyncGroupName, ServerEndpointName, SyncDirection|
 |SyncGroupSyncSessionPerItemErrorsCount|Dosyalar eşitlenmiyor|Sayı|Toplam|Eşitleme başarısız olan dosya sayısı|SyncGroupName, ServerEndpointName, SyncDirection|
@@ -2238,7 +2227,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>Microsoft. storagessync/storageSyncServices/syncGroups/serverEndpoints
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |ServerEndpointSyncSessionAppliedFilesCount|Eşitlenen dosyalar|Sayı|Toplam|Eşitlenen dosya sayısı|ServerEndpointName, SyncDirection|
 |ServerEndpointSyncSessionPerItemErrorsCount|Dosyalar eşitlenmiyor|Sayı|Toplam|Eşitleme başarısız olan dosya sayısı|ServerEndpointName, SyncDirection|
@@ -2246,7 +2235,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>Microsoft. storagessync/storageSyncServices/registeredServers
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Sunucusinyal|Sunucu çevrimiçi durumu|Sayı|Maksimum|Yeniden sigvbulunan sunucu, bulut uç noktasıyla bir sinyal başarıyla kaydetilişinde 1 değerini günlüğe kaydeden ölçüm|Sunucuresourceıd, ServerName|
 |Sunucu yeniden hesaplama Liototalsizebytes|Bulut katmanlama geri çağırma|Bayt|Toplam|Sunucu tarafından geri çekilen toplam veri boyutu|Sunucuresourceıd, ServerName|
@@ -2255,7 +2244,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Resourcekullanım|SU kullanımı yüzdesi|Yüzde|Maksimum|SU kullanımı yüzdesi|LogicalName, PartitionID|
 |Inputevents|Giriş olayları|Sayı|Toplam|Giriş olayları|LogicalName, PartitionID|
@@ -2276,7 +2265,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. SYNAPSE/çalışma alanları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Orchestrationardışık düzen eylemsizlik|İşlem hattı çalıştırmaları sona erdi|Sayı|Toplam|Başarılı, başarısız veya iptal edilen düzenleme işlem hattı çalıştırmaları sayısı|Sonuç, Failuyeniden yazma, işlem hattı|
 |OrchestrationActivityRunsEnded|Etkinlik çalıştırmaları sona erdi|Sayı|Toplam|Başarılı, başarısız veya iptal edilen düzenleme etkinliği sayısı|Sonuç, Failuyeniden yazma, etkinlik, ActivityType, işlem hattı|
@@ -2287,7 +2276,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. SYNAPSE/Workspaces/bigDataPools
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Parlak iş|Sonlandırılan uygulamalar|Sayı|Toplam|Sonlandırılan uygulamaların sayısı|JobType, JobResult|
 |CoresCapacity|Çekirdek kapasitesi|Sayı|Maksimum|Çekirdek kapasitesi|Yok|
@@ -2295,7 +2284,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |DWULimit|DWU sınırı|Sayı|Maksimum|SQL havuzunun hizmet düzeyi hedefi|Yok|
 |Kullanılan DWU|Kullanılan DWU|Sayı|Maksimum|SQL havuzu genelinde kullanım üst düzey gösterimini temsil eder. DWU sınırına göre ölçülür * DWU yüzdesi|Yok|
@@ -2316,7 +2305,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. Timeseriesınsights/ortamlar
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Inressreceived Iletileri|Giriş alınan Iletiler|Sayı|Toplam|Tüm Olay Hub 'ından veya IoT Hub olay kaynaklarından okunan ileti sayısı|Yok|
 |Inressreceiveınvalidmessages|Giriş geçersiz Iletiler aldı|Sayı|Toplam|Tüm Olay Hub 'ından veya IoT Hub olay kaynaklarından okunan geçersiz ileti sayısı|Yok|
@@ -2332,7 +2321,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. Timeseriesınsights/ortamlar/EventSources
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Inressreceived Iletileri|Giriş alınan Iletiler|Sayı|Toplam|Olay kaynağından okunan ileti sayısı|Yok|
 |Inressreceiveınvalidmessages|Giriş geçersiz Iletiler aldı|Sayı|Toplam|Olay kaynağından okunan geçersiz ileti sayısı|Yok|
@@ -2346,7 +2335,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft. Vmwarechoparlör basit/virtualMachines
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |DiskReadBytesPerSecond|Disk okuma bayt/sn|BytesPerSecond|Ortalama|Örnek süre içinde okuma işlemleri nedeniyle ortalama disk aktarım hızı.|Yok|
 |DiskWriteBytesPerSecond|Disk yazma bayt/sn|BytesPerSecond|Ortalama|Örnek süre içinde yazma işlemleri nedeniyle ortalama disk aktarım hızı.|Yok|
@@ -2370,7 +2359,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft. Web/sunucugrupları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |Cpuyüzdesi|CPU Yüzdesi|Yüzde|Ortalama|CPU Yüzdesi|Örnek|
 |MemoryPercentage|Bellek yüzdesi|Yüzde|Ortalama|Bellek yüzdesi|Örnek|
@@ -2396,7 +2385,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 > [!IMPORTANT]
 > Ölçüm toplamalarının karışmasını önlemek için **Ortalama yanıt süresi** kullanım dışı olacaktır. **Yanıt süresini** değiştirme olarak kullanın.
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CpuTime|CPU süresi|Saniye|Toplam|CPU süresi|Örnek|
 |İstekler|İstekler|Sayı|Toplam|İstekler|Örnek|
@@ -2440,7 +2429,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 > [!NOTE]
 > **Dosya sistemi kullanımı** , genel olarak alınan yeni bir ölçümdür, özel önizleme için beyaz listeye alınmadığınız takdirde hiçbir veri beklenmez.
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |BytesReceived|Içindeki veriler|Bayt|Toplam|Içindeki veriler|Örnek|
 |BytesSent|Giden veriler|Bayt|Toplam|Giden veriler|Örnek|
@@ -2468,7 +2457,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Yuvaları
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |CpuTime|CPU süresi|Saniye|Toplam|CPU süresi|Örnek|
 |İstekler|İstekler|Sayı|Toplam|İstekler|Örnek|
@@ -2511,7 +2500,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft. Web/hostingEnvironments/multiRolePools
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |İstekler|İstekler|Sayı|Toplam|İstekler|Örnek|
 |BytesReceived|Içindeki veriler|Bayt|Toplam|Içindeki veriler|Örnek|
@@ -2538,7 +2527,7 @@ Ne yönlendirileceğine ve depolandıkları forma ilişkin bazı sınırlamalar 
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft. Web/hostingEnvironments/workerPools
 
-|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|Ölçüm|Ölçüm görünen adı|Birim|Toplama Türü|Description|Boyutlar|
 |---|---|---|---|---|---|
 |WorkersTotal|Toplam çalışan sayısı|Sayı|Ortalama|Toplam çalışan sayısı|Yok|
 |WorkersAvailable|Kullanılabilir çalışanlar|Sayı|Ortalama|Kullanılabilir çalışanlar|Yok|

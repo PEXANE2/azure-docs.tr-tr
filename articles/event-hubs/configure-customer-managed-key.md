@@ -6,14 +6,15 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: shvija
+ms.openlocfilehash: 055422f4067b7f27ee046a3a00b168db14d13046
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459143"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297418"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -41,7 +42,7 @@ Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için
 1. Event Hubs ad alanının **Ayarlar** sayfasında **şifreleme**' yi seçin. 
 1. Aşağıdaki görüntüde gösterildiği gibi **geri kalan müşteri tarafından yönetilen anahtar şifrelemesini** seçin. 
 
-    ![Müşteri tarafından yönetilen anahtarı etkinleştir](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Müşteri tarafından yönetilen anahtarı etkinleştirme](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Anahtarlar içeren bir Anahtar Kasası ayarlama
 Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri tarafından yönetilen anahtarı Azure Event Hubs ad alanınız ile ilişkilendirmeniz gerekir. Event Hubs yalnızca Azure Key Vault destekler. Önceki bölümde, **müşteri tarafından yönetilen anahtar seçeneğiyle şifrelemeyi** etkinleştirirseniz, anahtarın Azure Key Vault içine aktarılması gerekir. Ayrıca, anahtarlar için **yumuşak silme** ve anahtar Için de **Temizleme** yapılandırması olmalıdır. Bu ayarlar, [PowerShell](../key-vault/general/soft-delete-powershell.md) veya [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
@@ -99,15 +100,15 @@ Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek �
 ## <a name="log-schema"></a>Günlük şeması 
 Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
 
-| Adı | Açıklama |
+| Name | Description |
 | ---- | ----------- | 
 | Silinecek | Başarısız olan görevin açıklaması. |
 | Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |
 | category | Görevin sınıflandırmasını tanımlar. Örneğin, anahtar kasanızın anahtarı devre dışı bırakılmışsa, bir bilgi kategorisi olur veya bir anahtarın sarmalanmamış olması durumunda hataya neden olabilir. |
 | resourceId | Azure Resource Manager kaynak KIMLIĞI |
 | keyVault | Anahtar kasasının tam adı. |
-| anahtar | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
-| version | Kullanılan anahtarın sürümü. |
+| key | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
+| sürüm | Kullanılan anahtarın sürümü. |
 | çalışmasını | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
 | kod | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
 | message | İşlemle ilişkili herhangi bir hata iletisi |
@@ -155,7 +156,7 @@ Bu bölümde **Azure Resource Manager şablonlar**kullanılarak aşağıdaki gö
 ### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Yönetilen hizmet kimliğiyle bir Event Hubs kümesi ve ad alanı oluşturma
 Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yönetilen hizmet kimliğiyle Azure Event Hubs ad alanı oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir. 
 
-1. Yönetilen hizmet kimliğiyle bir Event Hubs ad alanı oluşturmak için Azure Resource Manager şablonu oluşturun. Dosyayı adlandırın: **Createeventhubclusterandnamespace. JSON**: 
+1. Yönetilen hizmet kimliğiyle bir Event Hubs ad alanı oluşturmak için Azure Resource Manager şablonu oluşturun. Dosyayı şu şekilde adlandırın: **CreateEventHubClusterAndNamespace.js**: 
 
     ```json
     {
@@ -224,7 +225,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
        }
     }
     ```
-2. **Createeventhubclusterandnamespaceparams. JSON**adlı bir şablon parametre dosyası oluşturun. 
+2. **ÜzerindeCreateEventHubClusterAndNamespaceParams.js**adlı bir şablon parametre dosyası oluşturun. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
@@ -250,7 +251,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
     }
     
     ```
-3. Event Hubs bir ad alanı oluşturmak üzere şablonu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Ardından, daha sonra kullanmak üzere Event Hubs ad alanının KIMLIĞINI alın. Komutu `{MyRG}` çalıştırmadan önce kaynak grubunun adıyla değiştirin.  
+3. Event Hubs bir ad alanı oluşturmak üzere şablonu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Ardından, daha sonra kullanmak üzere Event Hubs ad alanının KIMLIĞINI alın. `{MyRG}`Komutu çalıştırmadan önce kaynak grubunun adıyla değiştirin.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -289,7 +290,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
 
 Bu adımda, Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleirsiniz. 
 
-1. Aşağıdaki içeriğe sahip **Createeventhubclusterandnamespace. JSON** ADLı bir JSON dosyası oluşturun: 
+1. Aşağıdaki içerikle **CreateEventHubClusterAndNamespace.js** ADLı bir JSON dosyası oluşturun: 
 
     ```json
     {
@@ -361,7 +362,7 @@ Bu adımda, Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleirsini
     }
     ``` 
 
-2. Şablon parametre dosyası oluştur: **Updateeventhubclusterandnamespaceparams. JSON**. 
+2. Şablon parametre dosyası oluşturma: **üzerindeUpdateEventHubClusterAndNamespaceParams.js**. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
@@ -394,7 +395,7 @@ Bu adımda, Event Hubs ad alanını Anahtar Kasası bilgileriyle güncelleirsini
        }
     }
     ```             
-3. Kaynak Yöneticisi şablonunu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Komutu `{MyRG}` çalıştırmadan önce kaynak grubunuzun adıyla değiştirin. 
+3. Kaynak Yöneticisi şablonunu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. `{MyRG}`Komutu çalıştırmadan önce kaynak grubunuzun adıyla değiştirin. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
@@ -423,7 +424,7 @@ Aşağıda, BYOK şifrelemesi etkinleştirildiğinde aranacak ortak hatalar kodl
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 - [Event Hubs genel bakış](event-hubs-about.md)
-- [Anahtar Kasasına genel bakış](../key-vault/general/overview.md)
+- [Key Vault genel bakış](../key-vault/general/overview.md)
 
 
 

@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1f7d0d411ffbff6aad7d134711a0190251f68aa8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 3a359e4b3523615623c76d48c1aafd7aa95a5277
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324445"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255050"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,10 +91,11 @@ Fsv2-Series yalnızca Genel Amaçlı katmanında desteklenir.  Fsv2-Series 'in k
 - D serisi, 5. nesil tarafından sağlanenden daha fazla bellek ve daha fazla işlem sınırı gerektiren iş yükleri için bellek için iyileştirilmiş bir donanım seçeneğidir.
 - A serisi, vCore başına 29 GB ve 128 sanal çekirdek sağlar. bu da, 5. nesil ile 8X arasındaki bellek sınırını neredeyse 4 TB 'a yükseltir.
 
-A serisi yalnızca İş Açısından Kritik katmanında desteklenir ve bölge yedekliliği desteklemez.
+A serisi yalnızca İş Açısından Kritik katmanında desteklenir ve bölge yedekliliği desteklemez.  Abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır.  D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
 
-Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir destek isteği açılmalıdır. Abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır.  Destek talebi onaylanırsa, e serisi seçme ve sağlama deneyimi diğer donanım oluşumları için aynı düzeni izler. D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
-
+<!--
+To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+-->
 
 ### <a name="compute-and-memory-specifications"></a>İşlem ve bellek belirtimleri
 
@@ -112,7 +113,7 @@ Kaynak limitleri hakkında daha fazla bilgi için bkz. [tek veritabanları (sana
 
 ### <a name="selecting-a-hardware-generation"></a>Donanım oluşturma seçme
 
-Azure portal, oluşturma sırasında SQL veritabanında bir veritabanı veya havuz için donanım oluşturmayı seçebilir veya var olan bir SQL veritabanının veya havuzunun donanım oluşturma işlevini değiştirebilirsiniz.
+Azure portal, oluşturma sırasında SQL veritabanında bir veritabanı veya havuz için donanım oluşturmayı seçebilir veya var olan bir veritabanının veya havuzun donanım üretimini değiştirebilirsiniz.
 
 **Bir SQL veritabanı veya havuzu oluştururken bir donanım oluşturma seçmek için**
 
@@ -193,32 +194,33 @@ Fsv2 serisi şu bölgelerde kullanılabilir: Avustralya Orta, Avustralya Orta 2,
 #### <a name="m-series"></a>M serisi
 
 A serisi şu bölgelerde kullanılabilir: Doğu ABD, Kuzey Avrupa, Batı Avrupa, Batı ABD 2.
-Ayrıca, ek bölgelerde da sınırlı kullanılabilirlik olabilir. Burada listelenenden farklı bir bölge isteyebilirsiniz, ancak farklı bir bölgede yerine getirilmesi mümkün olmayabilir.
+<!--
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-Bir abonelikte d serisi kullanılabilirliği etkinleştirmek için [Yeni bir destek isteği](#create-a-support-request-to-enable-m-series)kaydederek erişim istenmesi gerekir.
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>D serisini etkinleştirmek için bir destek isteği oluşturun: 
+##### Create a support request to enable M-series: 
 
-1. Portalda **Yardım + Destek** ' i seçin.
-2. **Yeni destek isteği**’ni seçin.
+1. Select **Help + support** in the portal.
+2. Select **New support request**.
 
-**Temel bilgiler** sayfasında, aşağıdakileri sağlayın:
+On the **Basics** page, provide the following:
 
-1. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
-2. **Abonelik** Için = e serisi etkinleştirmek üzere aboneliği seçin.
-3. **Kota türü**için **SQL veritabanı**' nı seçin.
-4. **Ayrıntılar** sayfasına gitmek için **İleri ' yi** seçin.
+1. For **Issue type**, select **Service and subscription limits (quotas)**.
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
 
-**Ayrıntılar** sayfasında, aşağıdakileri sağlayın:
+On the **Details** page, provide the following:
 
-1. **Sorun ayrıntıları** bölümünde, **ayrıntıları sağla** bağlantısını seçin. 
-2. **SQL veritabanı kota türü** Için, **ı serisi**seçin.
-3. **Bölge**Için, e serisi etkinleştirmek üzere bölgeyi seçin.
-    D serisi kullanılabilir olan bölgelerde, bkz. [d serisi kullanılabilirlik](#m-series).
+1. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+2. For **SQL Database quota type** select **M-series**.
+3. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
 
-Onaylanan destek istekleri genellikle 5 iş günü içinde yerine getirilir.
-
+Approved support requests are typically fulfilled within 5 business days.
+-->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

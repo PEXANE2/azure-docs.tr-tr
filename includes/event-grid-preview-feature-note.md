@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: event-grid
 author: tfitzmac
 ms.service: event-grid
@@ -28,9 +28,9 @@ Azure CLı için [Event Grid uzantıya](/cli/azure/azure-cli-extensions-list)iht
 
 Yerel yükleme için:
 
-1. [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli). İle `az --version`kontrol ederek en son sürüme sahip olduğunuzdan emin olun.
+1. [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli). İle kontrol ederek en son sürüme sahip olduğunuzdan emin olun `az --version` .
 1. Uzantının önceki sürümlerini Kaldır`az extension remove -n eventgrid`
-1. `eventgrid` Uzantıyı ile birlikte yükler`az extension add -n eventgrid`
+1. `eventgrid`Uzantıyı ile birlikte yükler`az extension add -n eventgrid`
 
 ### <a name="install-module-for-powershell"></a>PowerShell için modülü yükler
 
@@ -45,7 +45,7 @@ Yerel yükleme için:
 1. PowerShell konsolunu yönetici olarak aç
 1. Modülü yükler`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
-`-AllowPrerelease` Parametre kullanılamıyorsa, aşağıdaki adımları kullanın:
+`-AllowPrerelease`Parametre kullanılamıyorsa, aşağıdaki adımları kullanın:
 
 1. `Install-Module PowerShellGet -Force` öğesini çalıştırın
 1. `Update-Module PowerShellGet` öğesini çalıştırın

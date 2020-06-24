@@ -7,19 +7,19 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734188"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791206"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portal kullanarak Azure özel rolleri oluşturun veya güncelleştirin
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portalını kullanarak Azure özel rollerini oluşturma veya güncelleştirme
 
 [Azure yerleşik rolleri](built-in-roles.md) kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi Azure özel rollerinizi de oluşturabilirsiniz. Yerleşik rollerde olduğu gibi, abonelik ve kaynak grubu kapsamları 'nda kullanıcılara, gruplara ve hizmet sorumlularına özel roller atayabilirsiniz. Özel Roller bir Azure Active Directory (Azure AD) dizininde depolanır ve abonelikler arasında paylaşılabilir. Her bir dizin en fazla 5000 özel role sahip olabilir. Özel roller Azure portal, Azure PowerShell, Azure CLı veya REST API kullanılarak oluşturulabilir. Bu makalede, Azure portal kullanarak nasıl özel rol oluşturulacağı açıklanır.
 
@@ -33,7 +33,7 @@ ms.locfileid: "82734188"
 
 Azure 'da, özel rolünüzün potansiyel olarak içerebileceği binlerce izin vardır. Özel rolünüze eklemek istediğiniz izinleri belirleyebilmeniz için kullanabileceğiniz dört yol aşağıda verilmiştir:
 
-| Yöntem | Açıklama |
+| Yöntem | Description |
 | --- | --- |
 | Mevcut rollere bakın | Hangi izinlerin kullanıldığını görmek için mevcut rollere bakabilirsiniz. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](built-in-roles.md). |
 | Anahtar sözcüğe göre izinleri ara | Azure portal kullanarak özel bir rol oluşturduğunuzda, anahtar sözcüğe göre izinler araması yapabilirsiniz. Örneğin, *sanal makine* veya *faturalandırma* izinleri için arama yapabilirsiniz. Bu arama işlevi, [4. Adım: izinler](#step-4-permissions)bölümünde daha sonra açıklanmaktadır. |
@@ -196,7 +196,7 @@ Mevcut bir rol gerekli izinlere sahip değilse, onu kopyalayabilir ve sonra izin
 
 1. İzin listenize izin eklemek için **Ekle** ' ye tıklayın.
 
-    İzin bir `Actions` veya olarak eklenir `DataActions`.
+    İzin bir veya olarak eklenir `Actions` `DataActions` .
 
     ![İzin eklendi](./media/custom-roles-portal/permissions-list-add.png)
 
@@ -204,7 +204,7 @@ Mevcut bir rol gerekli izinlere sahip değilse, onu kopyalayabilir ve sonra izin
 
 ### <a name="add-wildcard-permissions"></a>Joker karakter izinleri ekleme
 
-Başlatma isteğinize bağlı olarak, izin listenizde joker karakterler (\*) ile izinleriniz olabilir. Bir joker karakter\*(), sağladığınız dizeyle eşleşen her şeye bir izni genişletir. Örneğin, Azure maliyet yönetimi ve dışarı aktarma ile ilgili tüm izinleri eklemek istediğinizi varsayalım. Tüm bu izinleri ekleyebilirsiniz:
+Başlatma isteğinize bağlı olarak, izin listenizde joker karakterler () ile izinleriniz olabilir \* . Bir joker karakter ( \* ), sağladığınız dizeyle eşleşen her şeye bir izni genişletir. Örneğin, Azure maliyet yönetimi ve dışarı aktarma ile ilgili tüm izinleri eklemek istediğinizi varsayalım. Tüm bu izinleri ekleyebilirsiniz:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -224,7 +224,7 @@ Yeni bir joker karakter izni eklemek istiyorsanız, **Izinleri Ekle** bölmesini
 
 ### <a name="exclude-permissions"></a>Dışlama izinleri
 
-Rolünüzün bir joker karakter (\*) izni varsa ve bu joker karakter izninden belirli izinleri dışlamak ya da çıkarmak istiyorsanız, bunları dışarıda bırakabilirsiniz. Örneğin, aşağıdaki joker karakter iznine sahip olduğunu varsayalım:
+Rolünüzün bir joker karakter ( \* ) izni varsa ve bu joker karakter izninden belirli izinleri dışlamak ya da çıkarmak istiyorsanız, bunları dışarıda bırakabilirsiniz. Örneğin, aşağıdaki joker karakter iznine sahip olduğunu varsayalım:
 
 ```
 Microsoft.CostManagement/exports/*
@@ -236,7 +236,7 @@ Bir dışarı aktarmanın silinmesine izin vermek istemiyorsanız, aşağıdaki 
 Microsoft.CostManagement/exports/delete
 ```
 
-Bir izni dışladığınızda, `NotActions` veya `NotDataActions`olarak eklenir. Etkin yönetim izinleri, tüm `Actions` ' ı eklenerek ve ardından tüm öğesinin çıkarılmasıyla hesaplanır. `NotActions` Etkin veri izinleri, tüm `DataActions` ' ı eklenerek ve ardından tüm öğesinin çıkarılmasıyla hesaplanır. `NotDataActions`
+Bir izni dışladığınızda, veya olarak eklenir `NotActions` `NotDataActions` . Etkin yönetim izinleri, tüm `Actions` ' ı eklenerek ve ardından tüm öğesinin çıkarılmasıyla hesaplanır `NotActions` . Etkin veri izinleri, tüm `DataActions` ' ı eklenerek ve ardından tüm öğesinin çıkarılmasıyla hesaplanır `NotDataActions` .
 
 > [!NOTE]
 > İznin dışlanması bir reddetme ile aynı değildir. İzinlerin dışlanması, izinleri bir joker karakter izninden çıkarmak için kullanışlı bir yoldur.
@@ -249,7 +249,7 @@ Bir izni dışladığınızda, `NotActions` veya `NotDataActions`olarak eklenir.
 
     ![İzinleri dışlama bölmesi-izin seçildi](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    İzin `NotActions` veya `NotDataActions`olarak eklenir.
+    İzin veya olarak eklenir `NotActions` `NotDataActions` .
 
     ![İzin dışlandı](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
@@ -269,7 +269,7 @@ Bir izni dışladığınızda, `NotActions` veya `NotDataActions`olarak eklenir.
 
 ## <a name="step-6-json"></a>6. Adım: JSON
 
-**JSON** sekmesinde, özel rolünüzün JSON içinde biçimlendirildiğini görürsünüz. İsterseniz JSON 'u doğrudan düzenleyebilirsiniz. Joker karakter (\*) izni eklemek istiyorsanız, bu sekmeyi kullanmanız gerekir.
+**JSON** sekmesinde, özel rolünüzün JSON içinde biçimlendirildiğini görürsünüz. İsterseniz JSON 'u doğrudan düzenleyebilirsiniz. Joker karakter ( \* ) izni eklemek istiyorsanız, bu sekmeyi kullanmanız gerekir.
 
 1. JSON 'u düzenlemek için **Düzenle**' ye tıklayın.
 

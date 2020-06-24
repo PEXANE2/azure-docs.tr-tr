@@ -4,15 +4,15 @@ description: Azure PowerShell kullanarak bir Azure özel bağlantı hizmeti olu�
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89269fe8c291a0c5303ff58cd728e02d4907be0a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76932074"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737317"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma
 Bu makalede, Azure 'da Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma gösterilmektedir.
@@ -115,7 +115,7 @@ Ardından, PowerShell kullanarak bu hizmeti farklı VNet 'teki özel bir uç nok
 
 ## <a name="create-a-private-endpoint"></a>Özel Uç Nokta oluşturma
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel uç noktanız için bir sanal ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubunda *vnetpe* adlı bir sanal ağ oluşturur:
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel uç noktanız için bir sanal ağ oluşturun. Bu örnek *vnetPE*   , *Myresourcegroup*adlı kaynak grubunda vnetpe adlı bir sanal ağ oluşturur:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>Özel uç nokta al
-Özel uç noktanın IP adresini aşağıdaki `Get-AzPrivateEndpoint` gibi alın:
+Özel uç noktanın IP adresini `Get-AzPrivateEndpoint` aşağıdaki gibi alın:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 

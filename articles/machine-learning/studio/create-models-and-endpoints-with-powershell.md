@@ -5,17 +5,17 @@ description: Aynı algoritmaya ancak farklı eğitim veri kümelerine sahip bird
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 145ee5b458927fc4e3cda5277de614383181eed5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 43f797981c6e3d32cdd5083f4ee1e16359667bdd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465703"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696499"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>ML Studio (klasik) ve PowerShell ile bir deneyden birden çok Web hizmeti uç noktası oluşturma
 
@@ -42,7 +42,7 @@ Neyse ki, [Azure Machine Learning Studio (klasik) yeniden eğitim API 'sini](/az
 > 
 > 
 
-Deneme, bir Azure Storage hesabından *customer001. csv* veri kümesini içeri aktarmak Için **veri alma** modülünü kullanır. Eğitim veri kümelerini tüm Bisiklet Kiralama konumlarından topladığınızı ve *rentalloc001. csv* ' den *rentalloc10. csv*' ye kadar dosya adlarıyla aynı BLOB depolama konumunda depoladığınız varsayıyoruz.
+Deneme, Azure depolama hesabından *customer001.csv* eğitim veri kümesini içeri aktarmak Için **veri alma** modülünü kullanır. Eğitim veri kümelerini tüm Bisiklet Kiralama konumlarından topladığınızı ve bunları *rentalloc001.csv* dosya adlarıyla aynı BLOB depolama konumunda depoladığınızı varsayın *rentalloc10.csv*.
 
 ![Okuyucu modülü verileri bir Azure blobundan içeri aktarır](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
@@ -54,7 +54,7 @@ Bunu yaptığınız başka yollar vardır. Azure SQL veritabanı 'ndaki bir veri
 
 ![Eğitilen model modülü bir Web hizmeti çıkış modülüne çıkış verir](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Şimdi, eğitim veri kümesi olarak *rental001. csv* varsayılan değerini kullanarak bu eğitim denemesini çalıştıralım. **Değerlendirme** modülünün çıkışını (çıktıyı tıklatın ve **Görselleştir**' i seçin) görürseniz, *AUC* = 0,91 performans performansınızı görebilirsiniz. Bu noktada, bu eğitim denemenizin dışına bir Web hizmeti dağıtmaya hazırsınız demektir.
+Şimdi, eğitim veri kümesi olarak *rental001.csv* varsayılan değeri kullanarak bu eğitim denemesini çalıştıralim. **Değerlendirme** modülünün çıkışını (çıktıyı tıklatın ve **Görselleştir**' i seçin) görürseniz, *AUC* = 0,91 performans performansınızı görebilirsiniz. Bu noktada, bu eğitim denemenizin dışına bir Web hizmeti dağıtmaya hazırsınız demektir.
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>Eğitim ve Puanlama Web hizmetlerini dağıtma
 Eğitim Web hizmetini dağıtmak için deneme tuvalinin altındaki **Web hizmeti ayarla** düğmesine tıklayın ve **Web Hizmeti Dağıt**' ı seçin. Bu Web hizmetini "Bisiklet Kiralama eğitimi" olarak çağırın.
@@ -87,7 +87,7 @@ Ardından, aşağıdaki PowerShell komutunu çalıştırın:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-Artık 10 uç noktası oluşturdunuz ve hepsi, *customer001. csv*üzerinde eğitilen eğitilen modeli içeriyor. Bunları Azure portal görüntüleyebilirsiniz.
+Artık 10 uç noktası oluşturdunuz ve hepsi *customer001.csv*eğitilen modeli içerir. Bunları Azure portal görüntüleyebilirsiniz.
 
 ![Portalda eğitilen modellerin listesini görüntüleyin](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 

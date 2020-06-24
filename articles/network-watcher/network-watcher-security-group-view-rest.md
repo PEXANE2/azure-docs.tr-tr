@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c9c76e9c06d4c45a096cff79dac82bb80ebe25d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bf3086d255a6aacfe4001879b3a3f00df2ba219
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840749"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738743"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>REST API kullanarak, sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
 
@@ -61,7 +61,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Aşağıdaki örnekte görüldüğü gibi, gereken bilgiler **id** , yanıt olarak tür `Microsoft.Compute/virtualMachines` ' ün altında yer alan kimliğidir:
+**id** `Microsoft.Compute/virtualMachines` Aşağıdaki örnekte görüldüğü gibi, gereken bilgiler, yanıt olarak tür ' ün altında yer alan kimliğidir:
 
 ```json
 ...,

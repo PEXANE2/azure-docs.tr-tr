@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 3141bb3652cfa44c42125fe95f038582108a963f
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5ea5a94c73adda1328b97c3e985c4b6ac614d1b9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637140"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255033"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda sunucu parametreleri
 
@@ -84,8 +84,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|262144|128|268435455|
 |Genel Amaçlı|4|262144|128|536870912|
 |Genel Amaçlı|8|262144|128|1073741824|
@@ -124,14 +124,17 @@ Bağlantılar sınırı aştığında, şu hatayı alabilirsiniz:
 
 MariaDB 'ye yeni istemci bağlantıları oluşturma zaman alır ve bir kez kurulduktan sonra bile bu bağlantılar veritabanı kaynaklarını kaplar. Çoğu uygulama, bu durumu çözer birçok kısa süreli bağlantı ister. Sonuç olarak gerçek iş yükünüz için daha az kaynak kullanılabilir ve performansı azaltıldı. Boştaki bağlantıları azaltan ve var olan bağlantıları yeniden kullanan bir bağlantı havuzlayıcı bunun önlenmesine yardımcı olur. ProxySQL 'i ayarlama hakkında bilgi edinmek için [Blog gönderimizi](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)ziyaret edin.
 
+>[!Note]
+>ProxySQL açık kaynaklı bir topluluk aracıdır. En iyi çaba temelinde Microsoft tarafından desteklenir. Yetkili kılavuzlarla üretime yönelik destek almak için, [Proxysql ürün desteğini](https://proxysql.com/services/support/)değerlendirebilir ve bunlarla iletişime ulaşabilirsiniz.
+
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
 Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) gözden geçirin.
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|16777216|16384|268435455|
 |Genel Amaçlı|4|16777216|16384|536870912|
 |Genel Amaçlı|8|16777216|16384|1073741824|
@@ -152,8 +155,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|* * En büyük değer * *|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|0|0|16777216|
 |Genel Amaçlı|4|0|0|33554432|
 |Genel Amaçlı|8|0|0|67108864|
@@ -172,8 +175,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|524288|32768|4194304|
 |Genel Amaçlı|4|524288|32768|8388608|
 |Genel Amaçlı|8|524288|32768|16777216|
@@ -192,8 +195,8 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 
 |**Fiyatlandırma Katmanı**|**Sanal çekirdek**|**Varsayılan değer (bayt)**|**En az değer (bayt)**|**En büyük değer (bayt)**|
 |---|---|---|---|---|
-|Temel|1|Temel katmanda yapılandırılamaz|YOK|YOK|
-|Temel|2|Temel katmanda yapılandırılamaz|YOK|YOK|
+|Temel|1|Temel katmanda yapılandırılamaz|Yok|Yok|
+|Temel|2|Temel katmanda yapılandırılamaz|Yok|Yok|
 |Genel Amaçlı|2|16777216|1024|67108864|
 |Genel Amaçlı|4|16777216|1024|134217728|
 |Genel Amaçlı|8|16777216|1024|268435456|

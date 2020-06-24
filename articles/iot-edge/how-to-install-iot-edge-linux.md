@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 06/22/2020
 ms.author: kgremban
-ms.openlocfilehash: 947f224426b3a70c39cbf94ee888c5c353b3993b
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5c3c9c7a061fd4c471b1ef159388deb1a851dd57
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857343"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297163"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure IoT Edge çalışma zamanını x64, ARM32 veya ARM64 Linux ci
 > [!NOTE]
 > Linux yazılım depolarındaki paketler, her pakette bulunan lisans koşullarına tabidir (/usr/share/doc/*Package-Name*). Paketi kullanmadan önce lisans koşullarını okuyun. Paketi yüklemeniz ve kullanmanız, bu şartlarınızın kabul edildiğini oluşturur. Lisans koşullarını kabul etmiyorsanız, paketini kullanmayın.
 
-## <a name="install-the-latest-runtime-version"></a>En son çalışma zamanı sürümünü yükler
+## <a name="install-iot-edge-and-container-runtimes"></a>IoT Edge ve kapsayıcı çalışma zamanlarını yükleyip
 
 Azure IoT Edge çalışma zamanının en son sürümünü cihazınıza yüklemek için aşağıdaki bölümleri kullanın.
 
@@ -62,14 +62,14 @@ Oluşturulan listeyi kopyalayın.
    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
    ```
 
-Microsoft GPG ortak anahtarını yükler
+Microsoft GPG ortak anahtarını yükler.
 
    ```bash
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
 
-### <a name="install-the-container-runtime"></a>Kapsayıcı çalışma zamanını yükler
+### <a name="install-a-container-runtime"></a>Kapsayıcı çalışma zamanı yükleme
 
 Azure IoT Edge, [OCI uyumlu](https://www.opencontainers.org/) bir kapsayıcı çalışma zamanına bağlıdır. Üretim senaryolarında aşağıda belirtilen [Moby tabanlı](https://mobyproject.org/) altyapıyı kullanmanızı öneririz. Moby motoru, Azure IoT Edge ile resmi olarak desteklenen tek kapsayıcı altyapısıdır. Docker CE/EE kapsayıcı görüntüleri Moby çalışma zamanına göre uyumludur.
 
@@ -97,73 +97,39 @@ Moby kapsayıcı çalışma zamanını yüklerken hata alırsanız, bu makalede 
 
 **IoT Edge güvenlik arka plan programı** , IoT Edge cihazında güvenlik standartları sağlar ve korur. Arka plan programı her önyüklemede başlar ve IoT Edge çalışma zamanının geri kalanını başlatarak cihazı önyükleme.
 
-Yükleme komutu, zaten mevcut değilse **libiothsm** 'nin standart sürümünü de yüklüyor.
-
 Cihazınızdaki paket listelerini güncelleştirin.
 
    ```bash
    sudo apt-get update
    ```
 
-Güvenlik cini 'nı yükler. Paketi konumunda `/etc/iotedge/`yüklüdür.
+Hangi IoT Edge sürümlerinin kullanılabilir olduğunu görmek için denetleyin.
+
+   ```bash
+   apt list -a iotedge
+   ```
+
+Güvenlik arka plan programının en son sürümünü yüklemek isterseniz, aşağıdaki komutu kullanarak **libiothsm-STD** paketinin en son sürümünü de yükler:
 
    ```bash
    sudo apt-get install iotedge
    ```
 
-IoT Edge başarıyla yüklendikten sonra, çıkış sizden yapılandırma dosyasını güncelleştirmenizi ister. Cihaz sağlamayı tamamlamaya yönelik [güvenlik cini 'Nı yapılandırma](#configure-the-security-daemon) bölümündeki adımları izleyin.
+Güvenlik arka plan programının belirli bir sürümünü yüklemek istiyorsanız, apt liste çıktısından sürümü belirtin. Ayrıca, **libiothsm-STD** paketi için aynı sürümü belirtin, aksi takdirde en son sürümünü yükler. Örneğin, aşağıdaki komut 1.0.8 sürümünün en son sürümünü yüklüyor:
 
-## <a name="install-a-specific-runtime-version"></a>Belirli bir çalışma zamanı sürümünü yükler
+   ```bash
+   sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
+   ```
 
-En son sürümleri kullanmak yerine Moby 'nin belirli bir sürümünü ve Azure IoT Edge çalışma zamanını yüklemek isterseniz, bileşen dosyalarını doğrudan IoT Edge GitHub deposundan hedefleyebilirsiniz. Cihazlarınızın tüm IoT Edge bileşenlerini almak için aşağıdaki adımları kullanın: Moby Engine ve CLı, libiothsm ve son olarak IoT Edge güvenlik arka plan programı. Bir sonraki bölüme atlayın, belirli bir çalışma zamanı sürümüne geçmek istemiyorsanız [güvenlik cini](#configure-the-security-daemon)' nı yapılandırın.
+Yüklemek istediğiniz sürüm listede yoksa, [Sürüm varlıklarını kullanarak çalışma zamanında yüklemeyi çalıştırma](#install-runtime-using-release-assets)bölümündeki adımları uygulayın. Bu bölümde, IoT Edge güvenlik arka plan programının veya sürüm adayı sürümlerinin önceki bir sürümünün nasıl hedeflenecek gösterilmektedir.
 
-1. [Azure IoT Edge yayınlarına](https://github.com/Azure/azure-iotedge/releases)gidin ve hedeflemek istediğiniz yayın sürümünü bulun.
-
-2. Bu sürümün **varlıklar** bölümünü genişletin.
-
-3. Verilen herhangi bir yayında Moby altyapısına yönelik güncelleştirmeler olabilir veya olmayabilir. **Moby-Engine** ve **Moby-CLI**ile başlayan dosyaları görürseniz, bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın. Herhangi bir Moby dosyası görmüyorsanız, en son sürümü bulana kadar eski sürüm varlıkları aracılığıyla geri dönün.
-
-   1. IoT Edge cihazınızın mimarisiyle eşleşen **Moby-Engine** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
-
-   2. Moby altyapısının bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın:
-
-      ```bash
-      curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
-      ```
-
-   3. IoT Edge cihazınızın mimarisiyle eşleşen **Moby-CLI** dosyasını bulun. Moby CLı isteğe bağlı bir bileşendir, ancak geliştirme sırasında yararlı olabilir. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
-
-   4. Moby CLı 'nın bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın:
-
-      ```bash
-      curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
-      ```
-
-4. Her yayında IoT Edge güvenlik Daemon ve hsmlib için yeni dosyalar olmalıdır. Bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın.
-
-   1. IoT Edge cihazınızın mimarisiyle eşleşen **libiothsm-STD** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
-
-   2. Hsmlib 'in bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın:
-
-      ```bash
-      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
-      ```
-
-   3. IoT Edge cihazınızın mimarisiyle eşleşen **iotedge** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
-
-   4. IoT Edge güvenlik arka plan programının bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın.
-
-      ```bash
-      curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
-      ```
-
-IoT Edge başarıyla yüklendikten sonra, çıkış sizden yapılandırma dosyasını güncelleştirmenizi ister. Cihaz sağlamayı tamamlamaya yönelik sonraki bölümdeki adımları izleyin.
+IoT Edge başarılı bir şekilde yüklendikten sonra `/etc/iotedge/` çıktı, yapılandırma dosyasını güncelleştirmenizi ister. Cihaz sağlamayı tamamlamaya yönelik bir sonraki bölüme geçin.
 
 ## <a name="configure-the-security-daemon"></a>Güvenlik cini yapılandırma
 
 Fiziksel cihazınızı Azure IoT Hub 'ında bulunan bir cihaz kimliğiyle bağlamak için IoT Edge çalışma zamanını yapılandırın.
 
-Daemon, konumundaki `/etc/iotedge/config.yaml`yapılandırma dosyası kullanılarak yapılandırılabilir. Dosya varsayılan olarak yazma korumalı, düzenlemek için yükseltilmiş izinlere sahip olabilirsiniz.
+Daemon, konumundaki yapılandırma dosyası kullanılarak yapılandırılabilir `/etc/iotedge/config.yaml` . Dosya varsayılan olarak yazma korumalı, düzenlemek için yükseltilmiş izinlere sahip olabilirsiniz.
 
 Tek bir IoT Edge cihaz, IoT Hub tarafından sağlanan bir cihaz bağlantı dizesi kullanılarak el ile sağlanabilir. Veya, cihaz sağlama hizmeti 'ni kullanarak cihazları otomatik olarak temin edebilir, bu da birçok cihaza sahip olduğunuzda yararlı olur. Sağlama seçiminize bağlı olarak, uygun yükleme betiğini seçin.
 
@@ -186,7 +152,7 @@ provisioning:
   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
 ```
 
-Pano içeriğini nano `Shift+Right Click` veya Press `Shift+Insert`'e yapıştırmak için.
+Pano içeriğini nano `Shift+Right Click` veya Press 'e yapıştırmak için `Shift+Insert` .
 
 Dosyayı kaydedin ve kapatın.
 
@@ -200,7 +166,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>Seçenek 2: otomatik sağlama
 
-IoT Edge cihazlar [Azure IoT Hub cihaz sağlama hizmeti (DPS)](../iot-dps/index.yml)kullanılarak otomatik olarak sağlanabilir. Şu anda, otomatik sağlama kullanılırken IoT Edge iki kanıtlama mekanizmasını destekler, ancak donanım gereksinimleriniz seçimlerinizi etkileyebilir. Örneğin, Raspberry PI cihazları varsayılan olarak Güvenilir Platform Modülü (TPM) yongasıyla birlikte gelmiyor. Daha fazla bilgi için aşağıdaki makalelere bakın:
+IoT Edge cihazlar [Azure IoT Hub cihaz sağlama hizmeti (DPS)](../iot-dps/index.yml)kullanılarak otomatik olarak sağlanabilir. Şu anda, otomatik sağlama kullanılırken IoT Edge iki kanıtlama mekanizmasını destekler, ancak donanım gereksinimleriniz seçimlerinizi etkileyebilir. Örneğin, Raspberry PI cihazları varsayılan olarak Güvenilir Platform Modülü (TPM) yongasıyla birlikte gelmiyor. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Linux VM 'de sanal TPM ile IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-simulated-device-linux.md)
 * [X. 509.440 sertifikalarını kullanarak bir IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-x509-certs.md)
@@ -258,7 +224,7 @@ provisioning:
     symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-Pano içeriğini nano `Shift+Right Click` veya Press `Shift+Insert`'e yapıştırmak için.
+Pano içeriğini nano `Shift+Right Click` veya Press 'e yapıştırmak için `Shift+Insert` .
 
 Dosyayı kaydedin ve kapatın. `CTRL + X`, `Y`, `Enter`
 
@@ -290,7 +256,7 @@ En yaygın yapılandırma ve ağ hatalarını denetlemek için [sorun giderme ar
 sudo iotedge check
 ```
 
-Cihazınızda IoT Edge için ilk modülünüzü dağıtana kadar, **$edgeHub** sistem modülü cihaza dağıtılmayacak. Sonuç olarak, otomatik denetim `Edge Hub can bind to ports on host` bağlantı denetimi için bir hata döndürür. Bu hata, cihaza bir modül dağıttıktan sonra gerçekleşmediği takdirde yoksayılabilir.
+Cihazınızda IoT Edge için ilk modülünüzü dağıtana kadar, **$edgeHub** sistem modülü cihaza dağıtılmayacak. Sonuç olarak, otomatik denetim bağlantı denetimi için bir hata döndürür `Edge Hub can bind to ports on host` . Bu hata, cihaza bir modül dağıttıktan sonra gerçekleşmediği takdirde yoksayılabilir.
 
 Son olarak, çalışan modülleri listeleyin:
 
@@ -302,7 +268,7 @@ Cihazınıza IoT Edge yükledikten sonra, çalıştırmayı görmeniz gereken te
 
 ## <a name="tips-and-troubleshooting"></a>İpuçları ve sorun giderme
 
-`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Çalışma zamanını yükledikten sonra, makinenizde oturumunuzu kapatın ve izinlerinizi otomatik olarak güncelleştirmek için yeniden oturum açın. Bundan sonra, herhangi bir `iotedge` komutun önünde **sudo** kullanın.
+`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Çalışma zamanını yükledikten sonra, makinenizde oturumunuzu kapatın ve izinlerinizi otomatik olarak güncelleştirmek için yeniden oturum açın. Bundan sonra, herhangi bir komutun önünde **sudo** kullanın `iotedge` .
 
 Kaynak kısıtlı cihazlarda, [sorun giderme kılavuzunda](troubleshoot.md)her yönerge Için *Optimizeforperformance* ortam değişkenini *false* olarak ayarlamanız kesinlikle önerilir.
 
@@ -318,7 +284,55 @@ Birçok katıştırılmış cihaz üreticisi, kapsayıcı çalışma zamanı uyu
    ./check-config.sh
    ```
 
-Bu komut, Moby çalışma zamanı tarafından kullanılan çekirdek özelliklerinin durumunu içeren ayrıntılı bir çıktı sağlar. Çekirdeğin, Moby çalışma zamanına tamamen uyumlu olduğundan `Generally Necessary` emin `Network Drivers` olmak için, ve altındaki tüm öğelerin etkinleştirildiğinden emin olmak isteyeceksiniz.  Eksik özellikleri belirlediyseniz, çekirdeğini kaynaktan yeniden oluşturarak ve uygun çekirdek. config dosyasına eklenmek üzere ilişkili modülleri seçerek etkinleştirin.  Benzer şekilde, veya `defconfig` `menuconfig`gibi bir çekirdek yapılandırma Oluşturucu kullanıyorsanız ilgili özellikleri bulup etkinleştirin ve çekirdeğini uygun şekilde yeniden oluşturun.  Yeni değiştirilen çekirdeğini dağıttıktan sonra, gerekli tüm özelliklerin başarıyla etkinleştirildiğini doğrulamak için Check-config betiğini yeniden çalıştırın.
+Bu komut, Moby çalışma zamanı tarafından kullanılan çekirdek özelliklerinin durumunu içeren ayrıntılı bir çıktı sağlar. `Generally Necessary` `Network Drivers` Çekirdeğin, Moby çalışma zamanına tamamen uyumlu olduğundan emin olmak için, ve altındaki tüm öğelerin etkinleştirildiğinden emin olmak isteyeceksiniz.  Eksik özellikleri belirlediyseniz, çekirdeğini kaynaktan yeniden oluşturarak ve uygun çekirdek. config dosyasına eklenmek üzere ilişkili modülleri seçerek etkinleştirin.  Benzer şekilde, veya gibi bir çekirdek yapılandırma Oluşturucu kullanıyorsanız `defconfig` `menuconfig` ilgili özellikleri bulup etkinleştirin ve çekirdeğini uygun şekilde yeniden oluşturun.  Yeni değiştirilen çekirdeğini dağıttıktan sonra, gerekli tüm özelliklerin başarıyla etkinleştirildiğini doğrulamak için Check-config betiğini yeniden çalıştırın.
+
+## <a name="install-runtime-using-release-assets"></a>Sürüm varlıklarını kullanarak çalışma zamanını yükler
+
+Moby 'nin belirli bir sürümünü ve aracılığıyla kullanılamayan Azure IoT Edge çalışma zamanını yüklemek istiyorsanız bu bölümdeki adımları kullanın `apt-get install` . Microsoft paket listesi yalnızca sınırlı sayıda yeni sürümü ve alt sürümlerini içerir, bu nedenle bu adımlar daha eski bir sürüm veya sürüm adayı sürümü yüklemek isteyen herkese yöneliktir.
+
+Kıvrımlı komutlarını kullanarak bileşen dosyalarını doğrudan IoT Edge GitHub deposundan hedefleyebilirsiniz. Cihazlarınızın tüm IoT Edge bileşenlerini almak için aşağıdaki adımları kullanın: Moby Engine ve CLı, libiothsm ve son olarak IoT Edge güvenlik arka plan programı.
+
+1. [Azure IoT Edge yayınlarına](https://github.com/Azure/azure-iotedge/releases)gidin ve hedeflemek istediğiniz yayın sürümünü bulun.
+
+2. Bu sürümün **varlıklar** bölümünü genişletin.
+
+3. Verilen herhangi bir yayında Moby altyapısına yönelik güncelleştirmeler olabilir veya olmayabilir. **Moby-Engine** ve **Moby-CLI**ile başlayan dosyaları görürseniz, bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın. Herhangi bir Moby dosyası görmüyorsanız, en son sürümü bulana kadar eski sürüm varlıkları aracılığıyla geri dönün.
+
+   1. IoT Edge cihazınızın mimarisiyle eşleşen **Moby-Engine** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
+
+   2. Moby altyapısının bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın:
+
+      ```bash
+      curl -L <moby-engine link> -o moby_engine.deb && sudo dpkg -i ./moby_engine.deb
+      ```
+
+   3. IoT Edge cihazınızın mimarisiyle eşleşen **Moby-CLI** dosyasını bulun. Moby CLı isteğe bağlı bir bileşendir, ancak geliştirme sırasında yararlı olabilir. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
+
+   4. Moby CLı 'nın bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın:
+
+      ```bash
+      curl -L <moby-cli link> -o moby_cli.deb && sudo dpkg -i ./moby_cli.deb
+      ```
+
+4. Her yayında IoT Edge güvenlik Daemon ve hsmlib için yeni dosyalar olmalıdır. Bu bileşenleri güncelleştirmek için aşağıdaki komutları kullanın.
+
+   1. IoT Edge cihazınızın mimarisiyle eşleşen **libiothsm-STD** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
+
+   2. Hsmlib 'in bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın:
+
+      ```bash
+      curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
+      ```
+
+   3. IoT Edge cihazınızın mimarisiyle eşleşen **iotedge** dosyasını bulun. Dosya bağlantısına sağ tıklayıp bağlantı adresini kopyalayın.
+
+   4. IoT Edge güvenlik arka plan programının bu sürümünü yüklemek için aşağıdaki komutta bulunan kopyalanmış bağlantıyı kullanın.
+
+      ```bash
+      curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+      ```
+
+IoT Edge başarılı bir şekilde yüklendikten sonra `/etc/iotedge` çıktı, yapılandırma dosyasını güncelleştirmenizi ister. Cihaz sağlamayı tamamlamaya yönelik [güvenlik cini 'Nı yapılandırma](#configure-the-security-daemon) bölümündeki adımları izleyin.
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge kaldır
 

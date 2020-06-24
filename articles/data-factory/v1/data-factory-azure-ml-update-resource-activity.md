@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930463"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254931"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
 
@@ -47,18 +47,18 @@ Zaman içinde, Azure ML Puanlama denemeleri 'in tahmine dayalı modellerinin yen
 Aşağıdaki tabloda, bu örnekte kullanılan Web Hizmetleri açıklanmaktadır.  Ayrıntılar için bkz. [Machine Learning Studio (klasik) modellerini yeniden eğitme](../../machine-learning/studio/retrain-machine-learning-model.md) .
 
 - **Eğitim Web hizmeti** -eğitim verilerini alır ve eğitilen modeller üretir. Yeniden eğitimin çıktısı bir Azure Blob depolama alanındaki. ilearner dosyasıdır. **Varsayılan uç nokta** , Eğitim denemesini bir Web hizmeti olarak yayımladığınızda sizin için otomatik olarak oluşturulur. Daha fazla uç nokta oluşturabilirsiniz, ancak örnek yalnızca varsayılan uç noktayı kullanır.
-- **Puanlama Web hizmeti** -etiketsiz veri örneklerini alır ve tahminler yapar. Tahmin çıkışının, deneme yapılandırmasına bağlı olarak, bir Azure SQL veritabanında. csv dosyası veya satırları gibi çeşitli formları olabilir. Varsayılan uç nokta, tahmine dayalı denemeyi Web hizmeti olarak yayımladığınızda sizin için otomatik olarak oluşturulur. 
+- **Puanlama Web hizmeti** -etiketsiz veri örneklerini alır ve tahminler yapar. Tahmin çıkışının, deneme yapılandırmasına bağlı olarak, Azure SQL veritabanı 'nda. csv dosyası veya satırları gibi çeşitli formları olabilir. Varsayılan uç nokta, tahmine dayalı denemeyi Web hizmeti olarak yayımladığınızda sizin için otomatik olarak oluşturulur. 
 
 Aşağıdaki resimde, Azure ML 'deki eğitim ve Puanlama uç noktaları arasındaki ilişki gösterilmektedir.
 
-![Web Hizmetleri](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
+![Web hizmetleri](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
 **Azure ML Batch yürütme etkinliğini**kullanarak **eğitim Web hizmetini** çağırabilirsiniz. Eğitim Web hizmetini çağırmak, Puanlama verileri için bir Azure ML Web hizmeti 'ni (Puanlama Web hizmeti) çağırmada de aynıdır. Yukarıdaki bölümlerde, bir Azure ML Web hizmetinin Azure Data Factory bir işlem hattından ayrıntılı bir şekilde nasıl çağrılcağı ele alınmaktadır. 
 
 Web hizmetini yeni eğitilen modelle güncelleştirmek için **Azure ML güncelleştirme kaynağı etkinliğini** kullanarak **Puanlama Web hizmetini** çağırabilirsiniz. Aşağıdaki örnekler bağlı hizmet tanımları sağlar: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Puanlama Web hizmeti, klasik bir Web hizmetidir
-Puanlama Web hizmeti **Klasik bir Web hizmeti**ise, Azure Portal kullanarak ikinci **varsayılan olmayan ve güncelleştirilebilir uç noktası** oluşturun. Adımlar için bkz. [uç nokta oluşturma](../../machine-learning/machine-learning-create-endpoint.md) makalesi. Varsayılan olmayan güncelleştirilebilir uç noktasını oluşturduktan sonra aşağıdaki adımları uygulayın:
+Puanlama Web hizmeti **Klasik bir Web hizmeti**ise, Azure Portal kullanarak ikinci **varsayılan olmayan ve güncelleştirilebilir uç noktası** oluşturun. Adımlar için bkz. [uç nokta oluşturma](../../machine-learning/studio/create-endpoint.md) makalesi. Varsayılan olmayan güncelleştirilebilir uç noktasını oluşturduktan sonra aşağıdaki adımları uygulayın:
 
 * **MlEndpoint** JSON ÖZELLIĞI için URI değerini almak üzere **Batch yürütmesi** ' ne tıklayın.
 * **Updateresourceendpoint** JSON ÖZELLIĞI için URI değerini almak üzere **kaynak bağlantısını Güncelleştir** ' e tıklayın. API anahtarı uç nokta sayfasının kendisindedir (sağ alt köşede).

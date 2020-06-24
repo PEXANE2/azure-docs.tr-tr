@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ae20a0372c5808cc2265a4fae63b79ef2bb71605
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c3f3eddf57b559d9e8f4837db453232308869767
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125511"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118058"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
 Azure Cosmos DB, verilerinizi Cosmos hesabınızla ilişkili tüm Azure bölgelerinde saydam olarak çoğaltır. Cosmos DB, aşağıdaki görüntüde gösterildiği gibi verileriniz için birden çok yedeklik katmanı kullanır:
 
-![Fiziksel bölümlendirme](./media/high-availability/cosmosdb-data-redundancy.png)
+:::image type="content" source="./media/high-availability/cosmosdb-data-redundancy.png" alt-text="Fiziksel bölümlendirme" border="false":::
 
 - Cosmos kapsayıcılarındaki veriler [yatay olarak bölümlenmiştir](partitioning-overview.md).
 
@@ -128,7 +128,7 @@ az cosmosdb create \
 
 Azure Cosmos hesabı oluştururken Azure portal kullanarak Kullanılabilirlik Alanları etkinleştirebilirsiniz. Bir hesap oluşturduğunuzda, **coğrafi yedeklilik**, **çok bölgeli yazmaları**etkinleştirdiğinizden emin olun ve kullanılabilirlik alanları desteklendiği bir bölge seçin:
 
-![Azure portal kullanarak Kullanılabilirlik Alanları etkinleştirme](./media/high-availability/enable-availability-zones-using-portal.png) 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Azure portal kullanarak Kullanılabilirlik Alanları etkinleştirme"::: 
 
 ## <a name="building-highly-available-applications"></a>Yüksek oranda kullanılabilir uygulamalar oluşturma
 

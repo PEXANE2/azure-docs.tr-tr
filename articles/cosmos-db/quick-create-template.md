@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324054"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118007"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
 
@@ -23,7 +23,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
@@ -41,11 +41,11 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablo
 
 Şablonda üç Azure kaynağı tanımlanmıştır:
 
-* [Microsoft. DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): bir Azure Cosmos hesabı oluşturun.
+* [Microsoft.DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): bir Azure Cosmos hesabı oluşturun.
 
-* [Microsoft. DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): bir Azure Cosmos veritabanı oluşturma.
+* [Microsoft.DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): bir Azure Cosmos veritabanı oluşturma.
 
-* [Microsoft. DocumentDB/databaseAccounts/sqlDatabases/kapsayıcılar](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): bir Azure Cosmos kapsayıcısı oluşturun.
+* [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/kapsayıcılar](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): bir Azure Cosmos kapsayıcısı oluşturun.
 
 Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb)bulunabilir.
 
@@ -53,11 +53,11 @@ Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galer
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Cosmos hesabı, veritabanı ve bir kapsayıcı oluşturur.
 
-   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
+   [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. Aşağıdaki değerleri seçin veya girin.
 
-   ![Kaynak Yöneticisi şablonu, Azure Cosmos DB tümleştirme, Portal dağıtma](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Kaynak Yöneticisi şablonu, Azure Cosmos DB tümleştirme, Portal dağıtma":::
 
     Belirtilmediği takdirde, Azure Cosmos kaynaklarını oluşturmak için varsayılan değerleri kullanın.
 
@@ -78,7 +78,7 @@ Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galer
 
 3. **Satın al**'ı seçin. Azure Cosmos hesabı başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
-   ![Kaynak Yöneticisi şablonu, Cosmos DB tümleştirme, Portal dağıtma bildirimi](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Kaynak Yöneticisi şablonu, Cosmos DB tümleştirme, Portal dağıtma bildirimi":::
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -108,7 +108,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Sonraki ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmak isteyebilirsiniz.
+Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmak isteyebilirsiniz.
 Artık gerekli değilse, Azure Cosmos hesabını ve ilgili kaynakları silen kaynak grubunu silin. Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silmek için:
 
 # <a name="cli"></a>[CLI](#tab/CLI)

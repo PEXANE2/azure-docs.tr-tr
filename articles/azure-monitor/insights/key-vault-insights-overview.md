@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 542861afe49d03a179a9740d5a58b9d27e0d7f20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300452"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945469"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Key Vault için Azure Izleyici ile Anahtar Kasası hizmetinizi izleme (Önizleme)
 Key Vault için Azure Izleyici (Önizleme), Key Vault isteklerinizin, performanlarınızın, hatalarından ve gecikmelerinden oluşan Birleşik bir görünüm sunarak anahtar kasalarınızın kapsamlı bir şekilde izlenmesini sağlar.
@@ -158,29 +158,25 @@ Aşağıdaki adımları gerçekleştirerek, çoklu abonelik ve Anahtar Kasası g
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
+Genel sorun giderme kılavuzu için, adanmış çalışma kitabı tabanlı Öngörüler [sorun giderme makalesine](troubleshoot-workbooks.md)bakın.
+
 Bu bölüm, Key Vault için Azure Izleyicisi 'ni (Önizleme) kullanırken karşılaşabileceğiniz yaygın sorunlardan bazılarının tanılama ve sorunlarını gidermenize yardımcı olur. Belirli sorununuzla ilgili bilgileri bulmak için aşağıdaki listeyi kullanın.
 
 ### <a name="resolving-performance-issues-or-failures"></a>Performans sorunlarını veya başarısızlıklarını çözme
 
 Key Vault (Önizleme) için Azure Izleyici ile belirttiğiniz anahtar kasasıyla ilgili sorunları gidermeye yardımcı olmak için [Azure Key Vault belgelerine](https://docs.microsoft.com/azure/key-vault/)bakın.
 
-### <a name="why-can-i-only-see-200-key-vaults"></a>Neden 200 Anahtar Kasası görmem gerekiyor?
+### <a name="why-can-i-only-see-200-key-vaults"></a>Neden yalnızca 200 anahtar kasalarını görebilirim?
 
 Seçilebileceğini ve görüntülenebilecek 200 anahtar kasalarının bir sınırı vardır. Seçili aboneliklerin sayısından bağımsız olarak, seçili anahtar kasalarının sayısında 200 limiti vardır.
 
-### <a name="what-will-happen-when-a-pinned-item-is-clicked"></a>Sabitlenmiş bir öğeye tıklandığında ne olur?
-
-Panodaki sabitlenmiş bir öğeye tıklandığında, bu iki işlemlerden birini açar:
-* Öngörüler kaydedilmişse, PIN 'in kaydedildiği Öngörüler örneğini açar.
-* Öngörüler kaydedilmemiş ise, yeni bir varsayılan Öngörüler örneği açar.
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Abonelik seçicideki tüm aboneliklerimi neden görmüyorum?
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Abonelik seçicide neden tüm aboneliklerimi görmüyorum?
 
 Yalnızca Azure portal üstbilgisindeki "Dizin + abonelik" bölümünde seçilen abonelik filtresinden seçtiğiniz anahtar kasalarını içeren abonelikler gösteriliyor.
 
 ![Abonelik filtresi ekran görüntüsü](./media/key-vaults-insights-overview/Subscriptions.png)
 
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>"Sorgunun izin verilen en fazla çalışma alanı/bölge sayısını aştığını", ne yapacakdığına ilişkin bir hata mesajı alıyorum.
+### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>"Sorgunun izin verilen en fazla çalışma alanı sayısını/bölgeyi aştığını", şimdi ne yapacakdığına ilişkin bir hata mesajı alıyorum
 
 Şu anda, 25 bölge ve 200 çalışma alanı için bir sınır vardır. verilerinizi görüntülemek için, aboneliklerin ve/veya kaynak gruplarının sayısını azaltmanız gerekir.
 
@@ -192,15 +188,15 @@ Değişiklik yapmak için, çalışma kitabını değiştirmek üzere "düzenlem
 
 "Auto" zaman dilimi ' ni kullanıyoruz, bu nedenle hangi zaman aralığının seçili olduğuna bağlıdır.
 
-### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Çalışma kitabının herhangi bir parçası sabitlendiğinde zaman aralığı ne olur?
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Çalışma kitabının herhangi bir bölümünün sabitlendiği zaman aralığı nedir?
 
 Zaman aralığı, pano ayarlarına bağlı olarak değişir.
 
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Işlemler & gecikme bölümlerinde neden Key Vault hiç veri görmüyorum?
+### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>Işlemler & gecikme bölümleri bölümünde Key Vault için hiçbir veri görmüyorum
 
 Günlük tabanlı verilerinizi görüntülemek için, izlemek istediğiniz her Anahtar Kasası için günlükleri etkinleştirmeniz gerekir. Bu, her Anahtar Kasası için Tanılama ayarları altında yapılabilir. Verilerinizi belirlenen bir Log Analytics çalışma alanına göndermeniz gerekir.
 
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Key Vault için günlükleri zaten etkinleştirdim, neden hala Işlemlerimi & gecikme süresi altında göremiyorum?
+### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Key Vault için günlükleri zaten etkinleştirdim, neden hala verileri "gecikme süresi altında göremem gerekir &
 
 Şu anda, tanılama günlükleri geriye dönük olarak çalışmaz, bu nedenle yalnızca anahtar kasalarınıza yapılan eylemler yapıldıktan sonra, veriler görünmeye başlar. Bu nedenle, anahtar kasanızın ne kadar etkin olduğuna bağlı olarak saatlerce bir güne kadar zaman alabilir.
 

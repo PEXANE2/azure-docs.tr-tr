@@ -8,17 +8,17 @@ manager: dcscontentpm
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8c35604af9780fb4299bbd7bfd87c3d93ac537
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459160"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702848"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Konak adlarını görüntüleme ve değiştirme
 Rol örneklerinizin konak adı tarafından başvurulduğundan izin vermek için, her rol için hizmet yapılandırma dosyasında ana bilgisayar adı için değeri ayarlamanız gerekir. Bunu, istenen ana bilgisayar adını **rol** öğesinin **VMName** özniteliğine ekleyerek yapabilirsiniz. **VMName** özniteliğinin değeri, her rol örneğinin ana bilgisayar adı için temel olarak kullanılır. Örneğin, **VMName** *WebRole* ise ve bu rolün üç örneği varsa, örneklerin ana bilgisayar adları *webrole0*, *webrole1*ve *webrole2*olacaktır. Bir sanal makinenin ana bilgisayar adı sanal makine adına göre doldurulduğundan, yapılandırma dosyasındaki sanal makineler için bir konak adı belirtmeniz gerekmez. Microsoft Azure hizmeti yapılandırma hakkında daha fazla bilgi için bkz [. Azure hizmet yapılandırma şeması (. cscfg dosyası)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -41,7 +41,7 @@ REST istemcisinde şu yönergeleri izleyin:
 
 1. Azure portal bağlanmak için bir istemci sertifikasına sahip olduğunuzdan emin olun. İstemci sertifikası almak için [nasıl yapılır: yayımlama ayarları ve abonelik bilgilerini indirme ve Içeri aktarma](https://msdn.microsoft.com/library/dn385850.aspx)bölümünde sunulan adımları izleyin. 
 2. X-MS-Version adlı bir başlık girişini 2013-11-01 değeriyle ayarlayın.
-3. Şu biçimde bir istek gönder:\/https:/Management.Core.Windows.net/\<subscrition-id\>/Services/hostedservices/\<Service-Name\>? Merge-Detail = true
+3. Şu biçimde bir istek gönder: https: \/ /Management.Core.Windows.net/ \<subscrition-id\> /Services/hostedservices/ \<service-name\> ? embed-Detail = true
 4. Her **Roleınstance** öğesi için **hostname** öğesini arayın.
 
 > [!WARNING]

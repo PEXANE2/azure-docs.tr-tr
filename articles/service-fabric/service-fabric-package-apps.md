@@ -4,11 +4,11 @@ description: Azure Service Fabric uygulaması paketleme ve bir kümeye dağıtı
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258349"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701056"
 ---
 # <a name="package-an-application"></a>Uygulamaları paketleme
 
@@ -45,7 +45,7 @@ Klasörler, karşılık gelen her öğenin **ad** öznitelikleriyle eşleşecek 
 
 **Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örneğin:
 
-* Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin, NPM. exe ' nin bir Node. js uygulamasını dağıtmak için yapılandırılmış bazı ortam değişkenlerine ihtiyacı vardır.
+* Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin npm.exe, bir node.js uygulamasının dağıtımı için yapılandırılmış bazı ortam değişkenlerine ihtiyaç duyuyor.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.
 
 **Setupentrypoint**yapılandırma hakkında daha fazla bilgi için bkz [. bir hizmet kurulumu giriş noktası için ilkeyi yapılandırma](service-fabric-application-runas-security.md)
@@ -66,7 +66,7 @@ Paketleme tamamlandığında, paketin konumunu **Çıkış** penceresinde bulabi
 
 ### <a name="build-a-package-by-command-line"></a>Komut satırı ile paket oluşturma
 
-Kullanarak `msbuild.exe`uygulamanızı programlı bir şekilde paketlemek da mümkündür. Aynı şekilde, Visual Studio bunu çalıştırırken çıktının aynı olması gerekir.
+Kullanarak uygulamanızı programlı bir şekilde paketlemek da mümkündür `msbuild.exe` . Aynı şekilde, Visual Studio bunu çalıştırırken çıktının aynı olması gerekir.
 
 ```shell
 D:\Temp> msbuild HelloWorld.sfproj /t:Package
@@ -88,7 +88,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-Bu hata, kod paketinde **Setupentrypoint** hizmet bildiriminde başvurulan *MySetup. bat* dosyasının eksik olduğunu gösterir. Eksik dosya eklendikten sonra, uygulama doğrulaması geçirilir:
+Bu hata, kod paketinde **Setupentrypoint** hizmet bildiriminde başvurulan *MySetup.bat* dosyasının eksik olduğunu gösterir. Eksik dosya eklendikten sonra, uygulama doğrulaması geçirilir:
 
 ```
 tree /f .\MyApplicationType
@@ -122,7 +122,7 @@ True
 
 Uygulamanızda tanımlanmış [uygulama parametreleri](service-fabric-manage-multiple-environment-app-configuration.md) varsa, doğru doğrulama Için bunları [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) içinde geçirebilirsiniz.
 
-Uygulamanın dağıtılacağı kümeyi biliyorsanız, `ImageStoreConnectionString` parametresinde geçiş yapmanız önerilir. Bu durumda, paket, zaten kümede çalışmakta olan uygulamanın önceki sürümleriyle da onaylanır. Örneğin, doğrulama aynı sürüme sahip ancak farklı içeriğe sahip bir paketin zaten dağıtılıp dağıtılmadığını algılayabilir.  
+Uygulamanın dağıtılacağı kümeyi biliyorsanız, parametresinde geçiş yapmanız önerilir `ImageStoreConnectionString` . Bu durumda, paket, zaten kümede çalışmakta olan uygulamanın önceki sürümleriyle da onaylanır. Örneğin, doğrulama aynı sürüme sahip ancak farklı içeriğe sahip bir paketin zaten dağıtılıp dağıtılmadığını algılayabilir.  
 
 Uygulama doğru şekilde paketlendikten ve doğrulamayı geçtiğinde, daha hızlı dağıtım işlemleri için paketi sıkıştırmayı göz önünde bulundurun.
 
@@ -134,10 +134,10 @@ Sıkıştırılmış bir uygulama paketi için, özellikle de bir kopyanın par�
 Dağıtım mekanizması, sıkıştırılmış ve sıkıştırılmamış paketler için aynıdır. Paket sıkıştırılmışsa, küme görüntü deposunda olduğu gibi depolanır ve uygulama çalıştırılmadan önce düğüm üzerinde sıkıştırılmamış olur.
 Sıkıştırma geçerli Service Fabric paketinin sıkıştırılmış sürümle yerini almıştır. Klasör yazma izinlerine izin vermelidir. Zaten sıkıştırılmış bir pakette sıkıştırma çalıştırmak hiçbir değişiklik vermez.
 
-Anahtar ile `CompressPackage` [Copy-Servicefabricapplicationpackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) PowerShell komutunu çalıştırarak bir paketi sıkıştırabilirsiniz. Anahtarı kullanarak `UncompressPackage` paketin sıkıştırmasını aynı komutla açabilirsiniz.
+Anahtar ile [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) PowerShell komutunu çalıştırarak bir paketi sıkıştırabilirsiniz `CompressPackage` . Anahtarı kullanarak paketin sıkıştırmasını aynı komutla açabilirsiniz `UncompressPackage` .
 
-Aşağıdaki komut, paketi görüntü deposuna kopyalamadan sıkıştırır. Bir veya daha fazla Service Fabric kümesine, `SkipCopy` bayrak olmadan [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) kullanarak, bir veya daha fazla kümeye kopyalayabilirsiniz.
-Paket artık `code`, `config`, ve `data` paketleri için daraltılmış dosyalar içeriyor. Birçok iç işlem için gerekli olduklarından, uygulama bildirimi ve hizmet bildirimleri sıkıştırıldı. Örneğin, belirli doğrulamaları için paket paylaşımı, uygulama türü adı ve sürüm ayıklama tüm bildirimlere erişmesi gerekir. Bildirimleri sıkıştırma işlemi bu işlemleri verimsiz hale getirir.
+Aşağıdaki komut, paketi görüntü deposuna kopyalamadan sıkıştırır. Bir veya daha fazla Service Fabric kümesine, bayrak olmadan [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) kullanarak, bir veya daha fazla kümeye kopyalayabilirsiniz `SkipCopy` .
+Paket artık,, ve paketleri için daraltılmış dosyalar içeriyor `code` `config` `data` . Birçok iç işlem için gerekli olduklarından, uygulama bildirimi ve hizmet bildirimleri sıkıştırıldı. Örneğin, belirli doğrulamaları için paket paylaşımı, uygulama türü adı ve sürüm ayıklama tüm bildirimlere erişmesi gerekir. Bildirimleri sıkıştırma işlemi bu işlemleri verimsiz hale getirir.
 
 ```
 tree /f .\MyApplicationType
@@ -187,13 +187,13 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType
 
 Dahili olarak, Service Fabric doğrulama için uygulama paketleri için sağlama toplamlarını hesaplar. Sıkıştırma kullanılırken, sağlama toplamı her bir paketin daraltılmış sürümlerinde hesaplanır. Aynı uygulama paketinden yeni bir ZIP oluşturulması farklı sağlama toplamı oluşturur. Doğrulama hatalarını engellemek için, [fark sağlamayı](service-fabric-application-upgrade-advanced.md)kullanın. Bu seçenekle, değiştirilmemiş paketleri yeni sürüme eklemeyin. Bunun yerine, doğrudan yeni hizmet bildiriminden başvuru yapın.
 
-Fark sağlama bir seçenek değilse ve paketleri dahil etmeniz gerekiyorsa, sağlama toplamı uyuşmazlığından kaçınmak için `code`, `config`, ve `data` paketleri için yeni sürümler oluşturun. Önceki sürümün sıkıştırma kullanıp kullanmadığını bağımsız olarak, sıkıştırılmış bir paket kullanıldığında, değiştirilmemiş paketler için yeni sürümler oluşturulması gerekir.
+Fark sağlama bir seçenek değilse ve paketleri dahil etmeniz gerekiyorsa, `code` `config` `data` sağlama toplamı uyuşmazlığından kaçınmak için,, ve paketleri için yeni sürümler oluşturun. Önceki sürümün sıkıştırma kullanıp kullanmadığını bağımsız olarak, sıkıştırılmış bir paket kullanıldığında, değiştirilmemiş paketler için yeni sürümler oluşturulması gerekir.
 
 Paket artık doğru bir şekilde paketlendi, doğruladı ve sıkıştırılmış (gerekliyse), bu nedenle bir veya daha fazla Service Fabric kümesine [dağıtım](service-fabric-deploy-remove-applications.md) için hazırdır.
 
 ### <a name="compress-packages-when-deploying-using-visual-studio"></a>Visual Studio kullanarak dağıtım yaparken paketleri sıkıştır
 
-Yayımlama profilinize `CopyPackageParameters` öğe ekleyerek ve `CompressPackage` özniteliğini olarak `true`ayarlayarak, Visual Studio 'yu dağıtımdaki paketleri sıkıştırmak üzere söyleyebilirsiniz.
+`CopyPackageParameters`Yayımlama profilinize öğe ekleyerek ve özniteliğini olarak ayarlayarak, Visual Studio 'yu dağıtımdaki paketleri sıkıştırmak üzere söyleyebilirsiniz `CompressPackage` `true` .
 
 ``` xml
     <PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
@@ -206,23 +206,23 @@ Yayımlama profilinize `CopyPackageParameters` öğe ekleyerek ve `CompressPacka
 ## <a name="create-an-sfpkg"></a>Bir sfpkg oluşturma
 
 Sürüm 6,1 ' den başlayarak, Service Fabric bir dış depodan sağlama yapılmasına izin verir.
-Bu seçenekle, uygulama paketinin görüntü deposuna kopyalanması gerekmez. Bunun yerine, oluşturup bir `sfpkg` dış depoya yükleyebilir ve sonra sağlama sırasında Service Fabric IÇIN indirme URI 'sini sağlayabilirsiniz. Aynı paket birden çok kümeye sağlanabilir. Dış depodan sağlama, paketi her kümeye kopyalamak için gereken süreyi kaydeder.
+Bu seçenekle, uygulama paketinin görüntü deposuna kopyalanması gerekmez. Bunun yerine, oluşturup bir `sfpkg` dış depoya yükleyebilir ve sonra sağlama sırasında Service Fabric için INDIRME URI 'sini sağlayabilirsiniz. Aynı paket birden çok kümeye sağlanabilir. Dış depodan sağlama, paketi her kümeye kopyalamak için gereken süreyi kaydeder.
 
-`sfpkg` Dosya, ilk uygulama paketini içeren ve ". sfpkg" uzantısına sahip bir zip dosyasıdır.
+`sfpkg`Dosya, ilk uygulama paketini içeren ve ". sfpkg" uzantısına sahip bir zip dosyasıdır.
 ZIP içinde, uygulama paketi sıkıştırılabilir veya sıkıştırılmamış olabilir. ZIP içindeki uygulama paketinin sıkıştırması, [daha önce belirtildiği](service-fabric-package-apps.md#compress-a-package)gibi kod, yapılandırma ve veri paketi düzeylerinde yapılır.
 
-Oluşturmak için `sfpkg`, sıkıştırılmış veya olmayan özgün uygulama paketini içeren bir klasör ile başlayın. Sonra, ". sfpkg" uzantısına sahip klasörü ZIP için herhangi bir yardımcı programı kullanın. Örneğin, [ZipFile. CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx)kullanın.
+Oluşturmak için `sfpkg` , sıkıştırılmış veya olmayan özgün uygulama paketini içeren bir klasör ile başlayın. Sonra, ". sfpkg" uzantısına sahip klasörü ZIP için herhangi bir yardımcı programı kullanın. Örneğin, [ZipFile. CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx)kullanın.
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 ```
 
-`sfpkg` Service Fabric dışında, bant dışı dış depoya yüklenmelidir. Dış depo, REST http veya HTTPS uç noktası sunan herhangi bir mağaza olabilir. Sağlama sırasında, Service Fabric `sfpkg` uygulama paketini indirmek IÇIN bir get işlemi yürütür, bu nedenle mağaza paket için okuma erişimine izin vermelidir.
+`sfpkg`Service Fabric dışında, bant dışı dış depoya yüklenmelidir. Dış depo, REST http veya HTTPS uç noktası sunan herhangi bir mağaza olabilir. Sağlama sırasında, Service Fabric uygulama paketini indirmek için bir GET işlemi yürütür `sfpkg` , bu nedenle mağaza paket IÇIN okuma erişimine izin vermelidir.
 
 Paketi sağlamak için, indirme URI 'SI ve uygulama türü bilgilerini gerektiren harici sağlama kullanın.
 
 >[!NOTE]
-> Görüntü deposu göreli yolu temelinde sağlama Şu anda dosyaları desteklemiyor `sfpkg` . `sfpkg` Bu nedenle, görüntü deposuna kopyalanmamalıdır.
+> Görüntü deposu göreli yolu temelinde sağlama Şu anda dosyaları desteklemiyor `sfpkg` . Bu nedenle, `sfpkg` Görüntü deposuna kopyalanmamalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396918"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803978"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici günlüklerini sorgulama
 
@@ -112,7 +112,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 |:--|:--|
 |MaliciousIp |Remoteıp adresi |
 |Indicatorthreadtype |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem*değerlerinden biridir.   |
-|Açıklama |Gözlemlenen tehdit açıklaması. |
+|Description |Gözlemlenen tehdit açıklaması. |
 |TLPLevel |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
 |Güvenilirlik |Değerler *0 – 100*' dir. |
 |Severity |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
@@ -233,14 +233,14 @@ Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunu
 |Grup | İşlem grubu adı. Aynı gruptaki süreçler mantıksal olarak ilişkilidir, ör. aynı ürün veya sistem bileşeninin bir parçasıdır. |
 |StartTime | İşlem havuzu başlangıç zamanı |
 |FirstPid | İşlem havuzundaki ilk PID |
-|Açıklama | İşlem açıklaması |
+|Description | İşlem açıklaması |
 |CompanyName | Şirketin adı |
 |InternalName | İç ad |
 |ProductName | Ürünün adı |
 |ProductVersion | Ürünün sürümü |
 |FileVersion | Dosyanın sürümü |
 |ExecutablePath |Yürütülebilir dosyanın yolu |
-|Komut satırı | Komut satırı |
+|CommandLine | Komut satırı |
 |Başlangıç | Çalışma dizini |
 |Hizmetler | İşlemin üzerinde yürütüldüğü hizmet dizisi |
 |UserName | İşlemin üzerinde yürütüldüğü hesap |
@@ -442,7 +442,7 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 |Bilgisayar | Bilgisayar FQDN 'SI | 
 |Kaynak | *vm.azm.ms* |
 |Ad Alanı | Performans sayacının kategorisi | 
-|Adı | Performans sayacının adı |
+|Name | Performans sayacının adı |
 |Acil | Toplanan değer | 
 |Etiketler | Kayıtla ilgili ayrıntılar. Farklı kayıt türleriyle kullanılan etiketler için aşağıdaki tabloya bakın.  |
 |AgentId | Her bilgisayar aracısının benzersiz tanımlayıcısı |
@@ -451,10 +451,10 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 
 Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan performans sayaçları listelenmiştir:
 
-| Ad Alanı | Adı | Açıklama | Birim | Etiketler |
+| Ad Alanı | Name | Description | Birim | Etiketler |
 |:---|:---|:---|:---|:---|
 | Bilgisayar    | Sinyal             | Bilgisayar sinyali                        | | |
-| Bellek      | AvailableMB           | Kullanılabilir bellek baytları                    | Bayt          | memorySizeMB-toplam bellek boyutu|
+| Bellek      | AvailableMB           | Kullanılabilir bellek baytları                    | TI      | memorySizeMB-toplam bellek boyutu|
 | Ağ     | WriteBytesPerSecond   | Ağ yazma bayt/saniye            | BytesPerSecond | Networkdeviceıd-cihazın kimliği<br>bayt-gönderilen toplam bayt sayısı |
 | Ağ     | ReadBytesPerSecond    | Ağ okuma bayt/saniye             | BytesPerSecond | Networkdeviceıd-cihazın kimliği<br>bayt-alınan toplam bayt |
 | İşlemci   | Kullanımı Zalationpercentage | İşlemci kullanım yüzdesi          | Yüzde        | Totalcpu 'Lar-toplam CPU sayısı |
@@ -467,7 +467,7 @@ Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan per
 | MantıksalDisk | Readlatsms         | Mantıksal disk okuma gecikme süresi milisaniyelik     | Mayacak   | Mountıd-cihazın bağlama KIMLIĞI |
 | MantıksalDisk | ReadBytesPerSecond    | Mantıksal disk okuma bayt/saniye        | BytesPerSecond | Mountıd-cihazın bağlama KIMLIĞI |
 | MantıksalDisk | FreeSpacePercentage   | Mantıksal disk boş alan yüzdesi        | Yüzde        | Mountıd-cihazın bağlama KIMLIĞI |
-| MantıksalDisk | FreeSpaceMB           | Mantıksal disk boş alan baytları             | Bayt          | Mountıd-cihazın bağlama KIMLIĞI<br>diskSizeMB-toplam disk boyutu |
+| MantıksalDisk | FreeSpaceMB           | Mantıksal disk boş alan baytları             | TI      | Mountıd-cihazın bağlama KIMLIĞI<br>diskSizeMB-toplam disk boyutu |
 | MantıksalDisk | BytesPerSecond        | Mantıksal disk bayt/saniye             | BytesPerSecond | Mountıd-cihazın bağlama KIMLIĞI |
 
 

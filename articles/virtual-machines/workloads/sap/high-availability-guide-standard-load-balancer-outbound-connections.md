@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660165"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907474"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -165,7 +165,7 @@ Mimari şöyle görünür:
    Güvenlik duvarı kuralı şöyle görünebilir: ![ Azure Güvenlik Duvarı ile giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM 'nizin alt ağından, **Myazurefirewall**özel IP 'Sinden Kullanıcı tanımlı yol oluşturun.
-   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Add (Ekle) seçeneğini belirleyin. 
+   1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Ekle'yi seçin. 
    1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0**. Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4**.  
    1. Kaydet
 
@@ -222,7 +222,10 @@ Pacemaker 'ın Azure Yönetim API 'siyle iletişim kurmasına izin vermek için 
 
 ## <a name="other-solutions"></a>Diğer çözümler
 
-Giden trafik üçüncü taraf güvenlik duvarı aracılığıyla yönlendirildiğinden, Güvenlik Duvarı yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve `https://login.microsoftonline.com` .  
+Giden trafik üçüncü taraf güvenlik duvarı aracılığıyla yönlendirilmemişse:
+
+- Azure sınır Aracısı 'nı kullanıyorsanız, Güvenlik Duvarı yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve`https://login.microsoftonline.com`   
+- SUSE 'un güncelleştirmeleri ve düzeltme eklerini uygulamak için Azure genel bulut güncelleştirme altyapısını kullanıyorsanız bkz. [Azure genel bulut güncelleştirme altyapısı 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

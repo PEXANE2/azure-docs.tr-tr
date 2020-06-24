@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 59c1b6e6c281a736a79d110bd7d943344bcd5130
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10abd1065fe47556109ed69d36493c165dec1418
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840987"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738235"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure ağ Izleyicisi güvenlik grubu görünümü ile NSG denetimini otomatikleştirin
 
@@ -47,7 +47,7 @@ Bu senaryoda şunları yapmanız gerekir:
 
 ## <a name="retrieve-rule-set"></a>Kural kümesini al
 
-Bu örnekteki ilk adım, var olan bir taban çizgisiyle çalışır. Aşağıdaki örnek, bu örnek için taban çizgisi olarak kullanılan `Get-AzNetworkSecurityGroup` cmdlet 'ini kullanarak var olan bir ağ güvenlik grubundan ayıklanan bir JSON örneğidir.
+Bu örnekteki ilk adım, var olan bir taban çizgisiyle çalışır. Aşağıdaki örnek, `Get-AzNetworkSecurityGroup` Bu örnek için taban çizgisi olarak kullanılan cmdlet 'ini kullanarak var olan bir ağ güvenlik grubundan ayıklanan bir JSON örneğidir.
 
 ```json
 [
@@ -124,7 +124,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Ağ İzleyicisini al
 
-Sonraki adım, ağ Izleyicisi örneğini almak için kullanılır. `$networkWatcher` Değişkeni `AzNetworkWatcherSecurityGroupView` cmdlet 'e geçirilir.
+Sonraki adım, ağ Izleyicisi örneğini almak için kullanılır. `$networkWatcher`Değişkeni cmdlet 'e geçirilir `AzNetworkWatcherSecurityGroupView` .
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -132,7 +132,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>VM al
 
-`Get-AzNetworkWatcherSecurityGroupView` Cmdlet 'ini çalıştırmak için bir sanal makine gerekir. Aşağıdaki örnek bir VM nesnesini alır.
+Cmdlet 'ini çalıştırmak için bir sanal makine gerekir `Get-AzNetworkWatcherSecurityGroupView` . Aşağıdaki örnek bir VM nesnesini alır.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
@@ -150,7 +150,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 Yanıt, ağ arabirimlerine göre gruplandırılır. Döndürülen farklı kural türleri, etkili ve varsayılan güvenlik kurallarıdır. Sonuç, bir alt ağda veya sanal NIC 'de nasıl uygulandığı tarafından daha da bölünür.
 
-Aşağıdaki PowerShell betiği, güvenlik grubu görünümünün sonuçlarını bir NSG 'nin mevcut çıkışıyla karşılaştırır. Aşağıdaki örnek, sonuçların cmdlet ile `Compare-Object` nasıl karşılaştırıladığına ilişkin basit bir örnektir.
+Aşağıdaki PowerShell betiği, güvenlik grubu görünümünün sonuçlarını bir NSG 'nin mevcut çıkışıyla karşılaştırır. Aşağıdaki örnek, sonuçların cmdlet ile nasıl karşılaştırıladığına ilişkin basit bir örnektir `Compare-Object` .
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `

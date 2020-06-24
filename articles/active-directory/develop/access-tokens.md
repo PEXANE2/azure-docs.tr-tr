@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ebb751826f0495f378c2df4118b3ad2008fd418f
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772242"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905026"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -71,7 +71,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 
 ### <a name="header-claims"></a>Üst bilgi talepleri
 
-|İste | Biçimlendir | Açıklama |
+|İste | Biçimlendir | Description |
 |--------|--------|-------------|
 | `typ` | Dize-Always "JWT" | Belirtecin JWT olduğunu gösterir.|
 | `nonce` | Dize | Belirteç yeniden yürütme saldırılarına karşı korumak için kullanılan benzersiz bir tanımlayıcı. Kaynağınız, yeniden oynacak şekilde korumak için bu değeri kaydedebilir. |
@@ -81,7 +81,7 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 
 ### <a name="payload-claims"></a>Yük talepleri
 
-| İste | Biçimlendir | Açıklama |
+| İste | Biçimlendir | Description |
 |-----|--------|-------------|
 | `aud` | Dize, uygulama KIMLIĞI URI 'SI | Belirtecin amaçlanan alıcısını tanımlar. KIMLIK belirteçlerinde hedef kitle, uygulamanızın Azure portal uygulamanıza atanan uygulama KIMLIĞIDIR. Uygulamanızın bu değeri doğrulaması ve değer eşleşmezse belirteci reddetmesi gerekir. |
 | `iss` | Dize, STS URI 'SI | Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) ve kullanıcının kimlik doğrulamasının bulunduğu Azure AD kiracısını tanımlar. Verilen belirteç bir v 2.0 belirteci ise ( `ver` talebe bakın), URI sona ermeyecektir `/v2.0` . Kullanıcının Microsoft hesabı bir tüketici kullanıcısı olduğunu gösteren GUID `9188040d-6c67-4c5b-b112-36a304b66dad` . Uygulamanız, varsa uygulamada oturum açmak için gereken kiracılar kümesini kısıtlamak için talebin GUID kısmını kullanmalıdır. |
@@ -139,7 +139,7 @@ Belirteç boyutunun HTTP üst bilgi boyutu sınırlarını aşmadığından emin
 
 Aşağıdaki talepler varsa v 1.0 belirteçlerine dahil edilir, ancak varsayılan olarak v 2.0 belirteçlerine dahil edilmez. V 2.0 kullanıyorsanız ve bu taleplerden birine ihtiyacınız varsa, bunları [isteğe bağlı talepler](active-directory-optional-claims.md)kullanarak isteyin.
 
-| İste | Biçimlendir | Açıklama |
+| İste | Biçimlendir | Description |
 |-----|--------|-------------|
 | `ipaddr`| Dize | Kullanıcının kimliği doğrulanan IP adresi. |
 | `onprem_sid`| Dize, [SID biçiminde](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Kullanıcının şirket içi kimlik doğrulamasına sahip olduğu durumlarda, bu talep SID 'leri sağlar. `onprem_sid`Eski uygulamalarda yetkilendirme için ' i kullanabilirsiniz.|
@@ -155,7 +155,7 @@ Aşağıdaki talepler varsa v 1.0 belirteçlerine dahil edilir, ancak varsayıla
 
 Microsoft kimlikleri, uygulamanız için uygun olabilecek farklı yollarla kimlik doğrulaması yapabilir. `amr`Talep, `["mfa", "rsa", "pwd"]` hem parola hem de doğrulayıcı uygulaması kullanan bir kimlik doğrulaması için gibi birden çok öğe içerebilen bir dizidir.
 
-| Değer | Açıklama |
+| Değer | Description |
 |-----|-------------|
 | `pwd` | Parola kimlik doğrulaması, kullanıcının Microsoft parolası veya bir uygulamanın istemci gizli anahtarı. |
 | `rsa` | Kimlik doğrulaması, örneğin [Microsoft Authenticator uygulamasına](https://aka.ms/AA2kvvu)sahıp bir RSA anahtarı kanıtını temel alır. Bu, kimlik doğrulamasının, hizmetin sahip olduğu x509 sertifikası ile kendinden imzalı bir JWT tarafından gerçekleştirilip yapılmadığını içerir. |
@@ -230,11 +230,13 @@ Uygulamanızın iş mantığı bu adımı dikte edecek, bazı yaygın yetkilendi
 
 ## <a name="user-and-application-tokens"></a>Kullanıcı ve uygulama belirteçleri
 
-Uygulamanız, bir kullanıcı adına (normal akış) veya doğrudan bir uygulamadan (istemci kimlik bilgileri akışı ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) belirteç alabilir. Bu yalnızca uygulama belirteçleri, bu çağrının bir uygulamadan geldiğini ve bunu yedekleyen bir kullanıcıya sahip olmadığını gösterir. Bu belirteçler büyük ölçüde aynı şekilde işlenir ve bazı farklılıklar vardır:
+Uygulamanız kullanıcı (genellikle tartışılan akış) veya doğrudan bir uygulamadan ( [istemci kimlik bilgileri akışı](v1-oauth2-client-creds-grant-flow.md)aracılığıyla) belirteç alabilir. Bu yalnızca uygulama belirteçleri, bu çağrının bir uygulamadan geldiğini ve bunu yedekleyen bir kullanıcıya sahip olmadığını gösterir. Bu belirteçler büyük ölçüde aynı şekilde işlenir:
 
-* Yalnızca uygulama belirteçlerinin `scp` talebi olmayacaktır ve bunun yerine bir `roles` talep olabilir. Bu, uygulama izninin (temsilci izinlerin aksine) kaydedileceği yerdir. Temsilci ve uygulama izinleri hakkında daha fazla bilgi için bkz. izin ve onay ([v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).
-* Birçok insana özel talep eksik olacaktır, örneğin `name` veya `upn` .
-* `sub`Ve `oid` talepleri aynı olacaktır.
+* `roles`Belirtecin konusuna verilen izinleri (Bu durumda bir kullanıcı yerine hizmet sorumlusu) görmek için kullanın.
+* `oid` `sub` Çağıran hizmet sorumlusunun beklenen bir hizmet olduğunu doğrulamak için veya kullanın.
+
+Uygulamanızın, kullanıcılar için yalnızca uygulama erişim belirteçleri ve erişim belirteçleri arasında ayrım yapması gerekiyorsa, `idtyp` [isteğe bağlı talebi](active-directory-optional-claims.md)kullanın.  `idtyp`Alana talep ekleyerek `accessToken` ve değeri denetleyerek `app` , yalnızca uygulama erişim belirteçlerini tespit edebilirsiniz.  Kullanıcılar için KIMLIK belirteçleri ve erişim belirteçlerine `idtyp` talep dahil edilmez.
+
 
 ## <a name="token-revocation"></a>Belirteç iptali
 

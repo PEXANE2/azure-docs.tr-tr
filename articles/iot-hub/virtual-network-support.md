@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7d7e04c526f7327a000ac26e255d2c8363c01f5c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: bf193859c140001def83a18ca7965d9cbd312b02
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871245"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907542"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Özel bağlantı ve yönetilen kimlik ile sanal ağlar için IoT Hub desteği
 
@@ -91,6 +91,76 @@ Diğer hizmetlerin IoT Hub 'ınızı güvenilir bir Microsoft hizmeti olarak bul
 1. **Durum**altında, **Açık**' ı seçin ve ardından **Kaydet**' e tıklayın.
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub için yönetilen kimliği açmayı gösteren ekran görüntüsü":::
+
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM şablonunu kullanarak oluşturma sırasında IoT Hub yönetilen kimlik atama
+
+Kaynak sağlama zamanında IoT Hub 'ınıza yönetilen kimlik atamak için aşağıdaki ARM şablonunu kullanın:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Devices/IotHubs",
+      "apiVersion": "2020-03-01",
+      "name": "<provide-a-valid-resource-name>",
+      "location": "<any-of-supported-regions>",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "<your-hubs-SKU-name>",
+        "tier": "<your-hubs-SKU-tier>",
+        "capacity": 1
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-02-01",
+      "name": "updateIotHubWithKeyEncryptionKey",
+      "dependsOn": [
+        "<provide-a-valid-resource-name>"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "0.9.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Devices/IotHubs",
+              "apiVersion": "2020-03-01",
+              "name": "<provide-a-valid-resource-name>",
+              "location": "<any-of-supported-regions>",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "sku": {
+                "name": "<your-hubs-SKU-name>",
+                "tier": "<your-hubs-SKU-tier>",
+                "capacity": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+Kaynağınızın değerlerini değiştirdikten sonra, `name` `location` `SKU.name` ve `SKU.tier` kullanarak kaynağı var olan bir kaynak grubuna dağıtmak için Azure CLI kullanabilirsiniz:
+
+```azurecli-interactive
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+```
+
+Kaynak oluşturulduktan sonra, Azure CLı kullanarak hub 'ınıza atanan yönetilen hizmet kimliğini alabilirsiniz:
+
+```azurecli-interactive
+az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
+```
 
 ### <a name="pricing-for-managed-identity"></a>Yönetilen kimlik fiyatlandırması
 
@@ -196,11 +266,11 @@ await registryManager.ExportDevicesAsync(
     cancellationToken);
 ```
 
-C#, Java ve Node. js için sanal ağ desteğiyle Azure IoT SDK 'larının bu sürümünü kullanmak için:
+C#, Java ve Node.js için sanal ağ desteğiyle Azure IoT SDK 'larının bu sürümünü kullanmak için:
 
 1. Adlı bir ortam değişkeni oluşturun `EnableStorageIdentity` ve değerini olarak ayarlayın `1` .
 
-2. SDK 'yı indirin: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node. js](https://aka.ms/vnetnodesdk)
+2. SDK 'yı indirin: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node.js](https://aka.ms/vnetnodesdk)
  
 Python için, GitHub 'dan sınırlı sürümümüzü indirin.
 

@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 56288a65dc9e5b12a12393965b9670e394146181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9460208d66e859f5fe1ce0e9ae4d62087ea3f4ff
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234967"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696027"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Azure CLı kullanarak bir sanal ağ ile çalışma
 
@@ -28,7 +28,7 @@ Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi b
 
 ## <a name="create-a-virtual-network-tap-resource"></a>Sanal ağ dokunma kaynağı oluşturma
 
-Sanal ağ TAP kaynağı oluşturmadan önce [önkoşulları](virtual-network-tap-overview.md#prerequisites) okuyun. [Azure Cloud Shell](https://shell.azure.com/bash), veya bilgisayarınızdan Azure komut satırı arabirimi 'NI (CLI) çalıştırarak bu komutları çalıştırabilirsiniz. Azure Cloud Shell, bilgisayarınızda Azure CLı yüklemesi gerektirmeyen ücretsiz bir etkileşimli kabuktur. Azure 'da uygun [izinlere](virtual-network-tap-overview.md#permissions)sahip bir hesapla oturum açmalısınız. Bu makale, Azure CLı sürüm 2.0.46 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI 2.0 yükleme](/cli/azure/install-azure-cli). Sanal ağ dokunma Şu anda bir uzantı olarak kullanılabilir. Çalıştırmanız `az extension add -n virtual-network-tap`gereken uzantıyı yüklemek için. Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bir bağlantı oluşturmak için çalıştırmanız `az login` da gerekir.
+Sanal ağ TAP kaynağı oluşturmadan önce [önkoşulları](virtual-network-tap-overview.md#prerequisites) okuyun. [Azure Cloud Shell](https://shell.azure.com/bash), veya bilgisayarınızdan Azure komut satırı arabirimi 'NI (CLI) çalıştırarak bu komutları çalıştırabilirsiniz. Azure Cloud Shell, bilgisayarınızda Azure CLı yüklemesi gerektirmeyen ücretsiz bir etkileşimli kabuktur. Azure 'da uygun [izinlere](virtual-network-tap-overview.md#permissions)sahip bir hesapla oturum açmalısınız. Bu makale, Azure CLı sürüm 2.0.46 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI 2.0 yükleme](/cli/azure/install-azure-cli). Sanal ağ dokunma Şu anda bir uzantı olarak kullanılabilir. Çalıştırmanız gereken uzantıyı yüklemek için `az extension add -n virtual-network-tap` . Azure CLı 'yi yerel olarak çalıştırıyorsanız, `az login` Azure ile bir bağlantı oluşturmak için çalıştırmanız da gerekir.
 
 1. Aboneliğinizin KIMLIĞINI sonraki bir adımda kullanılan bir değişkene alın:
 

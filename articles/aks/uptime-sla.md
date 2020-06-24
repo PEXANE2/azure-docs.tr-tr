@@ -5,23 +5,30 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b360f36dfc80033ac95e4face438b66eed33cec4
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299562"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945520"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes hizmeti (AKS) çalışma süresi SLA 'Sı
 
 Çalışma süresi SLA 'Sı, bir küme için mali olarak desteklenen ve daha yüksek SLA 'yı etkinleştirmeye yönelik isteğe bağlı bir özelliktir Çalışma süresi SLA, Kullanılabilirlik Alanları kullanmayan kümeler için [kullanılabilirlik alanları][availability-zones] ve% 99,9 ' i kullanan kümeler Için Kubernetes API sunucu uç noktasının% 99,95 kullanılabilirliğini garanti eder. AKS, SLA gereksinimlerinin karşılanmasını sağlamak için güncelleştirme ve hata etki alanları genelinde ana düğüm çoğaltmaları kullanır.
 
-Uyumluluk gereksinimlerini karşılamak için SLA 'ya ihtiyaç duyan veya son kullanıcılar için SLA genişletmeyi gerektiren müşterilerin bu özelliği etkinleştirmesi gerekir. Kritik iş yükleri olan müşteriler, daha yüksek bir çalışma süresi SLA 'Sı üzerinden faydalanabilir. Çalışma süresi SLA özelliğinin Kullanılabilirlik Alanları ile kullanılması, Kubernetes API sunucusunun çalışma süresi için daha yüksek bir kullanılabilirlik sağlar.  
+Uyumluluk gereksinimlerini karşılamak için SLA 'ya ihtiyaç duyan veya son kullanıcıları için SLA genişletmeyi gerektiren müşterilerin bu özelliği etkinleştirmesi gerekir. Kritik iş yükleri olan müşteriler, daha yüksek bir çalışma süresi SLA 'Sı üzerinden faydalanabilir. Çalışma süresi SLA özelliğinin Kullanılabilirlik Alanları ile kullanılması, Kubernetes API sunucusunun çalışma süresi için daha yüksek bir kullanılabilirlik sağlar.  
 
 Müşteriler, bir hizmet düzeyi hedefi (SLO 99,5) olan sınırsız sayıda ücretsiz küme oluşturabilir ve tercih edilen SLO veya SLA çalışma süresini gerektiği gibi kabul edebilir.
 
 > [!Important]
 > Çıkış kilidi olan kümeler için bkz. uygun bağlantı noktalarını açmak için [çıkış trafiğini sınırlayın](limit-egress-traffic.md) .
+
+## <a name="region-availability"></a>Bölge kullanılabilirliği
+
+Çalışma süresi SLA 'Sı, [aks 'nin desteklendiği](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)Genel bölgelerde kullanılabilir.
+
+* Azure Kamu Şu anda desteklenmiyor.
+* Azure Çin 21Vianet Şu anda desteklenmemektedir.
 
 ## <a name="sla-terms-and-conditions"></a>SLA hüküm ve koşulları
 
@@ -29,7 +36,7 @@ Müşteriler, bir hizmet düzeyi hedefi (SLO 99,5) olan sınırsız sayıda ücr
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure CLı sürüm 2.7.0 veya üzeri
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sürüm 2.7.0 veya üstünü yükler
 
 ## <a name="creating-a-cluster-with-uptime-sla"></a>Çalışma süresi SLA 'Sı ile küme oluşturma
 

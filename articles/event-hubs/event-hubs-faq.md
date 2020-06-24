@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 0ff1f19a30be8c4ca40a980459901fd9224a6626
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: cee131030b47320a51e54f8b8bed70b0e4d677b0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996627"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738031"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -97,9 +97,9 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
 2. **Yetkili olmayan yanıt** bölümündeki adı aşağıdaki biçimlerden birinde olan bir yere göz önünde edin: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Her biri için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırarak üç kullanılabilirlik alanında çalışan üç örnek için IP adreslerini alın. 
 
@@ -127,15 +127,15 @@ Ardından [tanılama günlüklerini etkinleştirme](event-hubs-diagnostic-logs.m
 Event Hubs, mevcut Apache Kafka tabanlı uygulamalarınız tarafından kullanılabilecek bir Kafka uç noktası sağlar. PaaS Kafka deneyimine sahip olmak için gereken bir yapılandırma değişikliği vardır. Kendi Kafka kümenizi çalıştırmaya bir alternatif sağlar. Event Hubs, Apache Kafka 1,0 ve daha yeni istemci sürümlerini destekler ve var olan Kafka uygulamalarınız, araçlarınızla ve çerçevelerinizdeki ile birlikte kullanılabilir. Daha fazla bilgi için bkz. [Kafka for Event Hubs deposu](https://github.com/Azure/azure-event-hubs-for-kafka).
 
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Mevcut uygulamamın Event Hubs ile iletişim kurmasını sağlamak için hangi yapılandırma değişikliklerinin yapılması gerekir?
-Bir olay hub 'ına bağlanmak için Kafka istemci yapılandırması ' nı güncelleştirmeniz gerekir. Event Hubs bir ad alanı oluşturarak ve [bağlantı dizesi](event-hubs-get-connection-string.md)elde ederek yapılır. Önyükleme. sunucuları Event Hubs FQDN ve bağlantı noktası 9093 ' ye işaret etmek üzere değiştirin. Kafka istemcisini aşağıda gösterildiği gibi doğru kimlik doğrulamasıyla Event Hubs uç noktanıza (aldığınız bağlantı dizesi) yönlendirmek için SASL. jaas. config ' i güncelleştirin:
+Bir olay hub 'ına bağlanmak için Kafka istemci yapılandırması ' nı güncelleştirmeniz gerekir. Event Hubs bir ad alanı oluşturarak ve [bağlantı dizesi](event-hubs-get-connection-string.md)elde ederek yapılır. Önyükleme. sunucuları Event Hubs FQDN ve bağlantı noktası 9093 ' ye işaret etmek üzere değiştirin. Kafka istemcisini, aşağıda gösterildiği gibi doğru kimlik doğrulamasıyla Event Hubs uç noktanıza (aldığınız bağlantı dizesi) yönlendirmek için sasl.jaas.config güncelleştirin:
 
-Bootstrap. Servers = {sızın. EVENTHUBS. FQDN}: 9093 Request. Timeout. MS = 60.000 karaktere Security. Protocol = SASL_SSL SASL. düzenek = düz SASL. jaas. config = org. Apache. Kafka. Common. Security. düz. PlainLoginModule gerekli username = "$ConnectionString" Password = "{sıze. EVENTHUBS. Bağlanma. DIZE} ";
+Bootstrap. Servers = {sızın. EVENTHUBS. FQDN}: 9093 Request. Timeout. MS = 60.000 karaktere Security. Protocol = SASL_SSL SASL. düzeneði = düz sasl.jaas.config= org. Apache. Kafka. Common. Security. düz. PlainLoginModule istenen Kullanıcı adı = "$ConnectionString" Password = "{sıze. EVENTHUBS. Bağlanma. DIZE} ";
 
 Örnek:
 
-Bootstrap. Servers = dummynamespace. ServiceBus. Windows. net: 9093 Request. Timeout. MS = 60.000 karaktere Security. Protocol = SASL_SSL SASL. düzenek = düz SASL. jaas. config = org. Apache. Kafka. Common. Security. düz. PlainLoginModule gerekli kullanıcıadı = "$ConnectionString" Password = "Endpoint = SB://dummynamespace.ServiceBus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+Bootstrap. Servers = dummynamespace. ServiceBus. Windows. net: 9093 Request. Timeout. MS = 60.000 karaktere Security. Protocol = SASL_SSL SASL. düzenek = düz sasl.jaas.config= org. Apache. Kafka. Common. Security. düz. PlainLoginModule gerekli kullanıcıadı = "$ConnectionString" Password = "Endpoint = SB://dummynamespace.ServiceBus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Note: SASL. jaas. config, ortamınızda desteklenen bir yapılandırma değilse, SASL Kullanıcı adı ve parolasını ayarlamak için kullanılan yapılandırmaları bulun ve bunun yerine bunları kullanın. Kullanıcı adını $ConnectionString ve parolayı Event Hubs bağlantı dizeniz olarak ayarlayın.
+Note: sasl.jaas.config ortamınızda desteklenen bir yapılandırma değilse, SASL Kullanıcı adı ve parolasını ayarlamak için kullanılan yapılandırmaları bulun ve bunların yerine kullanın. Kullanıcı adını $ConnectionString ve parolayı Event Hubs bağlantı dizeniz olarak ayarlayın.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Event Hubs için ileti/olay boyutu nedir?
 Event Hubs için izin verilen en büyük ileti boyutu 1 MB 'tır.

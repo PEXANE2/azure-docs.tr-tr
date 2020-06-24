@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266877"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701890"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure’da Windows VM’si için belirli RDP hata iletileri sorunları giderme
 Azure 'da bir Windows sanal makinesine (VM) Uzak Masaüstü bağlantısı kullanırken, belirli bir hata iletisi alabilirsiniz. Bu makalede, karşılaşılan daha yaygın hata iletilerinin bazıları ve bunları çözmek için sorun giderme adımlarıyla birlikte ayrıntılar verilmektedir. VM 'nize RDP kullanarak bağlanma sorunları yaşıyorsanız ancak belirli bir hata iletisiyle karşılaşmayın, [Uzak Masaüstü için sorun giderme kılavuzuna](troubleshoot-rdp-connection.md)bakın.
@@ -69,7 +69,7 @@ Bu RDP dosyasının adres kısmı şunlardır:
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Bir kimlik doğrulama hatası oluştu. Yerel güvenlik yetkilisine ulaşılamıyor.
 Neden: hedef VM, kimlik bilgilerinizin Kullanıcı adı bölümünde güvenlik yetkilisini bulamıyor.
 
-Kullanıcı adınız *securityauthority*\\*Kullanıcı* adı (örnek: CORP\User1) biçiminde olduğunda, *securityauthority* bölümü sanal makinenin bilgisayar adı (yerel güvenlik yetkilisi için) veya Active Directory etki alanı adıdır.
+Kullanıcı adınız *securityauthority* \\ *Kullanıcı* adı (örnek: CORP\User1) biçiminde olduğunda, *securityauthority* bölümü sanal makinenin bilgisayar adı (yerel güvenlik yetkilisi için) veya Active Directory etki alanı adıdır.
 
 Olası çözümler:
 
@@ -84,8 +84,8 @@ Neden: hedef VM, hesap adınızı ve parolanızı doğrulayamıyor.
 
 Windows tabanlı bir bilgisayar, yerel bir hesabın veya bir etki alanı hesabının kimlik bilgilerini doğrulayabilir.
 
-* Yerel hesaplar için *ComputerName*\\*Kullanıcı adı* sözdizimini kullanın (örnek: SQL1\Admin4798).
-* Etki alanı hesapları için *DomainName*\\*Kullanıcı adı* sözdizimini kullanın (örnek: CONTOSO\peterodman).
+* Yerel hesaplar için *ComputerName* \\ *Kullanıcı adı* sözdizimini kullanın (örnek: SQL1\Admin4798).
+* Etki alanı hesapları için *DomainName* \\ *Kullanıcı adı* sözdizimini kullanın (örnek: CONTOSO\peterodman).
 
 VM 'nizi yeni bir Active Directory ormanında bir etki alanı denetleyicisine yükseltdüyseniz, ile oturum açtığınız yerel yönetici hesabı, yeni orman ve etki alanında aynı parolaya sahip eşdeğer bir hesaba dönüştürülür. Yerel hesap daha sonra silinir.
 

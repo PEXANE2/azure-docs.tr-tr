@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271531"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691637"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Sağlama geliştirmeyi basitleştirmek için SDK 'larda sunulan araçları kullanma
 Cihaz sağlama hizmeti IoT Hub, güvenli ve ölçeklenebilir bir şekilde, tam zamanında [Otomatik sağlama](concepts-auto-provisioning.md) sağlayan, sağlama sürecini basitleştirir.  X. 509.440 sertifikası veya Güvenilir Platform Modülü (TPM) biçiminde güvenlik kanıtlama gereklidir.  Microsoft, IoT dağıtımını güvenli hale getirmek için [diğer güvenlik donanımı ortaklarıyla](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) de işbirliği yapıyor. Donanım güvenlik gereksinimini anlamak geliştiriciler için oldukça zor olabilir. Geliştiricilerin sağlama hizmeti ile iletişim kuran istemcileri yazmak için kullanışlı bir katman kullanabilmesi için bir Azure IoT sağlama hizmeti SDK 'Sı kümesi sunulmaktadır. SDK 'lar Ayrıca yaygın senaryolar için örnekler ve geliştirmede güvenlik kanıtlamasını basitleştirecek bir araç kümesi sağlar.
@@ -25,8 +25,8 @@ TPM simülatörünü kullanma adımları şunlardır:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
-2. Altındaki ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```TPM simülatörü klasörüne gidin.
-3. Cihaz sağlamak için herhangi bir istemci uygulamasını çalıştırmadan önce simülatör. exe ' yi çalıştırın.
+2. Altındaki TPM simülatörü klasörüne gidin ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/``` .
+3. Cihaz sağlamak için herhangi bir istemci uygulamasını çalıştırmadan önce Simulator.exe çalıştırın.
 4. Kayıt KIMLIĞI ve onay anahtarı almak için sağlama işlemi boyunca benzeticinin arka planda çalışmasına izin verin.  Her iki değer de yalnızca bir çalıştırmanın bir örneği için geçerlidir.
 
 ## <a name="x509-certificate-generator"></a>X. 509.440 sertifika Oluşturucu
@@ -50,8 +50,8 @@ Bu oluşturucuyu kullanarak X. 509.440 sertifikası oluşturmak için:
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
 2. Kökü Azure-IoT-SDK-Java olarak değiştirin.
-3. Tüm ```mvn install -DskipTests=true``` gerekli paketleri indirmek ve SDK 'yı derlemek için Çalıştır
-4. ' De ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```X. 509.440 sertifika Oluşturucu köküne gidin.
+3. ```mvn install -DskipTests=true```Tüm gerekli paketleri indirmek ve SDK 'yı derlemek için Çalıştır
+4. ' De X. 509.440 sertifika Oluşturucu köküne gidin ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator``` .
 5. İle derleme```mvn clean install```
 6. Aşağıdaki komutları kullanarak aracı çalıştırın:
    ```

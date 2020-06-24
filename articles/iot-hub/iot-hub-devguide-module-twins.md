@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d45da11b26a3c16c2be544fa449bdf36c0bcd25
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303605"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737742"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub modül TWINS 'i anlayın ve kullanın
 
-Bu makalede, önce [IoT Hub ' de anlaşılması ve cihaz TWINS kullandığınızı varsaymış](iot-hub-devguide-device-twins.md) olursunuz. IoT Hub, her bir cihaz kimliği altında, en fazla 20 modül kimliği oluşturabilirsiniz. Her modül kimliği dolaylı olarak ikizi bir modül üretir. Cihaz ikikine benzer şekilde, modül TWINS 'i meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere modül durum bilgilerini depolayan JSON belgelerdir. Azure IoT Hub, IoT Hub bağlandığınız her modül için bir modül ikizi tutar. 
+Bu makalede, önce [IoT Hub ' de anlaşılması ve cihaz TWINS kullandığınızı varsaymış](iot-hub-devguide-device-twins.md) olursunuz. IoT Hub, her bir cihaz kimliği altında, en fazla 50 modül kimliği oluşturabilirsiniz. Her modül kimliği dolaylı olarak ikizi bir modül üretir. Cihaz ikikine benzer şekilde, modül TWINS 'i meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere modül durum bilgilerini depolayan JSON belgelerdir. Azure IoT Hub, IoT Hub bağlandığınız her modül için bir modül ikizi tutar. 
 
 Cihaz tarafında IoT Hub cihaz SDK 'Ları, her birinin IoT Hub için bağımsız bir bağlantı açtığı modüller oluşturmanızı sağlar. Bu işlevsellik, cihazınızdaki farklı bileşenler için ayrı ad alanları kullanmanıza olanak sağlar. Örneğin, üç farklı algılayıcı içeren bir havalandırma makineniz vardır. Her algılayıcı, şirketinizdeki farklı departmanlar tarafından denetlenir. Her algılayıcı için bir modül oluşturabilirsiniz. Bu şekilde, her departman yalnızca kontrol ettikleri sensöre iş veya doğrudan yöntemleri gönderebilir, çakışmaların ve Kullanıcı hatalarından kaçınırlar.
 
@@ -102,18 +102,18 @@ Aşağıdaki örnek bir Module ikizi JSON belgesi göstermektedir:
 }
 ```
 
-Kök nesnede modül kimliği özellikleri ve hem de hem de `tags` `reported` `desired` özellikleri için kapsayıcı nesneleri bulunur. `properties` Kapsayıcı, [ikizi meta verileri](iot-hub-devguide-module-twins.md#module-twin-metadata) ve [iyimser eşzamanlılık](iot-hub-devguide-device-twins.md#optimistic-concurrency) bölümlerinde`$metadata`açıklanan `$etag`bazı salt `$version`okunurdur (,, ve) öğeleri içerir.
+Kök nesnede modül kimliği özellikleri ve `tags` hem de hem de özellikleri için kapsayıcı nesneleri bulunur `reported` `desired` . `properties`Kapsayıcı, `$metadata` `$etag` `$version` [ikizi meta verileri](iot-hub-devguide-module-twins.md#module-twin-metadata) ve [iyimser eşzamanlılık](iot-hub-devguide-device-twins.md#optimistic-concurrency) bölümlerinde açıklanan bazı salt okunurdur (,, ve) öğeleri içerir.
 
 ### <a name="reported-property-example"></a>Bildirilen özellik örneği
 
-Önceki örnekte modül ikizi Module uygulaması tarafından bildirilen bir `batteryLevel` özelliği içerir. Bu özellik, en son bildirilen pil düzeyine dayanarak modüller üzerinde sorgu ve işlem yapmayı mümkün kılar. Diğer örneklerde modül uygulaması raporlama modülü özellikleri veya bağlantı seçenekleri bulunur.
+Önceki örnekte modül ikizi Module `batteryLevel` uygulaması tarafından bildirilen bir özelliği içerir. Bu özellik, en son bildirilen pil düzeyine dayanarak modüller üzerinde sorgu ve işlem yapmayı mümkün kılar. Diğer örneklerde modül uygulaması raporlama modülü özellikleri veya bağlantı seçenekleri bulunur.
 
 > [!NOTE]
 > Bildirilen özellikler, çözüm arka ucunun bir özelliğin bilinen son değeri ile ilgilendiği senaryoları basitleştirir. Çözüm arka ucunun, zaman serisi gibi zaman damgası bulunan olayların dizileri biçiminde modül telemetrisini işlemesi gerekiyorsa [cihazdan buluta iletileri](iot-hub-devguide-messages-d2c.md) kullanın.
 
 ### <a name="desired-property-example"></a>İstenen özellik örneği
 
-Önceki örnekte, `telemetryConfig` modül ikizi istenen ve bildirilen özellikler, Bu modülün telemetri yapılandırmasını eşitleyecek şekilde çözüm arka ucu ve modül uygulaması tarafından kullanılır. Örneğin:
+Önceki örnekte, `telemetryConfig` Modül ikizi istenen ve bildirilen özellikler, Bu modülün telemetri yapılandırmasını eşitleyecek şekilde çözüm arka ucu ve modül uygulaması tarafından kullanılır. Örneğin:
 
 1. Çözüm arka ucu istenen özelliği istenen yapılandırma değeriyle ayarlar. Belge, istenen özellik kümesine sahip olan bölümüdür:
 
@@ -128,7 +128,7 @@ Kök nesnede modül kimliği özellikleri ve hem de hem de `tags` `reported` `de
     ...
     ```
 
-2. Modül uygulamasına, bağlantı kurulduktan sonra veya ilk kez yeniden bağlandıklarında bildirim gönderilir. Modül uygulaması daha sonra güncelleştirilmiş yapılandırmayı (veya `status` özelliğini kullanarak bir hata koşulunu) raporlar. Bildirilen özelliklerin bölümü aşağıda verilmiştir:
+2. Modül uygulamasına, bağlantı kurulduktan sonra veya ilk kez yeniden bağlandıklarında bildirim gönderilir. Modül uygulaması daha sonra güncelleştirilmiş yapılandırmayı (veya özelliğini kullanarak bir hata koşulunu) raporlar `status` . Bildirilen özelliklerin bölümü aşağıda verilmiştir:
 
     ```json
     "reported": {
@@ -152,7 +152,7 @@ Kök nesnede modül kimliği özellikleri ve hem de hem de `tags` `reported` `de
 
 * **Modül ikizi by ID olarak alın**. Bu işlem, Etiketler ve istenen ve bildirilen sistem özellikleri dahil olmak üzere Module ikizi belgesini döndürür.
 
-* **Modül Ikizi kısmen güncelleştirme**. Bu işlem, çözüm arka ucunun, ikizi modülündeki etiketlerin veya istenen özelliklerin kısmen güncelleştirilmesini sağlar. Kısmi güncelleştirme, herhangi bir özelliği ekleyen veya güncelleştiren bir JSON belgesi olarak ifade edilir. Olarak `null` ayarlanan özellikler kaldırılır. Aşağıdaki örnek, yeni bir `{"newProperty": "newValue"}`istenen özelliği değeri ile oluşturur, var olan değerinin `existingProperty` `"otherNewValue"`üzerine yazar ve kaldırır. `otherOldProperty` İstenen varolan özellikler veya etiketlere başka bir değişiklik yapılmaz:
+* **Modül Ikizi kısmen güncelleştirme**. Bu işlem, çözüm arka ucunun, ikizi modülündeki etiketlerin veya istenen özelliklerin kısmen güncelleştirilmesini sağlar. Kısmi güncelleştirme, herhangi bir özelliği ekleyen veya güncelleştiren bir JSON belgesi olarak ifade edilir. Olarak ayarlanan özellikler `null` kaldırılır. Aşağıdaki örnek, yeni bir istenen özelliği değeri ile oluşturur `{"newProperty": "newValue"}` , var olan değerinin üzerine yazar `existingProperty` `"otherNewValue"` ve kaldırır `otherOldProperty` . İstenen varolan özellikler veya etiketlere başka bir değişiklik yapılmaz:
 
     ```json
     {
@@ -168,15 +168,15 @@ Kök nesnede modül kimliği özellikleri ve hem de hem de `tags` `reported` `de
     }
     ```
 
-* **İstenen özellikleri değiştirin**. Bu işlem, çözüm arka ucunun, tüm mevcut özellikleri tümüyle üzerine yazmasına ve için `properties/desired`yenı bir JSON belgesi yerine geçecek şekilde olanak sağlar.
+* **İstenen özellikleri değiştirin**. Bu işlem, çözüm arka ucunun, tüm mevcut özellikleri tümüyle üzerine yazmasına ve için yeni bir JSON belgesi yerine geçecek şekilde olanak sağlar `properties/desired` .
 
-* **Etiketleri değiştirin**. Bu işlem, çözüm arka ucunun tüm mevcut etiketlerin üzerine yazılmasına ve yeni bir JSON belgesini yerine kullanmasına olanak sağlar `tags`.
+* **Etiketleri değiştirin**. Bu işlem, çözüm arka ucunun tüm mevcut etiketlerin üzerine yazılmasına ve yeni bir JSON belgesini yerine kullanmasına olanak sağlar `tags` .
 
 * **İkizi bildirimleri alın**. Bu işlem, ikizi değiştirildiğinde çözüm arka ucunun bildirilmesini sağlar. Bunu yapmak için, IoT çözümünüzün bir rota oluşturması ve veri kaynağını *twinChangeEvents*' e eşit olarak ayarlaması gerekir. Varsayılan olarak, hiçbir ikizi bildirimi gönderilmez, diğer bir deyişle, böyle bir yol önceden mevcut değildir. Değişiklik hızı çok yüksekse veya iç arızalar gibi diğer nedenlerden dolayı IoT Hub tüm değişiklikleri içeren yalnızca bir bildirim gönderebilir. Bu nedenle, uygulamanızın tüm ara durumların güvenilir denetim ve günlüğe kaydetme ihtiyacı varsa cihazdan buluta iletileri kullanmanız gerekir. İkizi bildirim iletisi, özellikleri ve gövdesi içerir.
 
   - Özellikler
 
-    | Adı | Değer |
+    | Name | Değer |
     | --- | --- |
     $content türü | uygulama/json |
     $iothub-enqueuedtime |  Bildirimin gönderildiği zaman |
@@ -189,7 +189,7 @@ Kök nesnede modül kimliği özellikleri ve hem de hem de `tags` `reported` `de
     ıothub-Message-Schema | twinChangeNotification |
     opType | "yeniden kazan" veya "updateTwin" |
 
-    İleti sistemi özelliklerine `$` sembol ön eki eklenir.
+    İleti sistemi özelliklerine sembol ön eki eklenir `$` .
 
   - Gövde
         
@@ -236,7 +236,7 @@ Modül uygulaması, aşağıdaki atomik işlemleri kullanarak ikizi modülü üz
 
 Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve aşağıdaki kısıtlamalara sahiptir:
 
-* **Anahtarlar**: JSON nesnelerindeki tüm anahtarlar büyük/küçük harfe duyarlı 64 bayt UTF-8 UNICODE dizeleridir. İzin verilen karakterler UNICODE denetim karakterlerini hariç tutar (C0 ve C1 kesimleri) `.`ve, SP ve `$`.
+* **Anahtarlar**: JSON nesnelerindeki tüm anahtarlar büyük/küçük harfe duyarlı 64 bayt UTF-8 UNICODE dizeleridir. İzin verilen karakterler UNICODE denetim karakterlerini hariç tutar (C0 ve C1 kesimleri) ve `.` , SP ve `$` .
 
 * **Değerler**: JSON nesnelerindeki tüm değerler şu JSON türlerine sahip olabilir: Boolean, Number, String, Object. Dizilere izin verilmiyor.
 
@@ -268,7 +268,7 @@ Etiketler, istenen özellikler ve bildirilen özellikler, JSON nesneleridir ve a
 
 ## <a name="module-twin-size"></a>Modül ikizi boyutu
 
-IoT Hub değerinde `tags`8 KB boyutunda bir boyut sınırı ve `properties/desired` and `properties/reported`değeri üzerinde her biri 32 KB boyut sınırı zorlar. Bu toplamlar, `$etag` `$version`ve `$metadata/$lastUpdated`gibi salt yazılır öğelerin dışlanmalıdır.
+IoT Hub değerinde 8 KB boyutunda bir boyut sınırı `tags` ve and değeri üzerinde her biri 32 KB boyut sınırı zorlar `properties/desired` `properties/reported` . Bu toplamlar, ve gibi salt yazılır öğelerin dışlanmalıdır `$etag` `$version` `$metadata/$lastUpdated` .
 
 İkizi boyutu şu şekilde hesaplanır:
 
@@ -286,7 +286,7 @@ IoT Hub, sınırın üzerinde bu belgelerin boyutunu arttırabilecek tüm işlem
 
 ## <a name="module-twin-metadata"></a>Module ikizi meta verileri
 
-IoT Hub, modüldeki her JSON nesnesi için son güncelleştirmenin zaman damgasını ikizi istenen ve bildirilen özellikleri tutar. Zaman damgaları UTC biçimindedir ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) biçiminde `YYYY-MM-DDTHH:MM:SS.mmmZ`kodlanır.
+IoT Hub, modüldeki her JSON nesnesi için son güncelleştirmenin zaman damgasını ikizi istenen ve bildirilen özellikleri tutar. Zaman damgaları UTC biçimindedir ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) biçiminde kodlanır `YYYY-MM-DDTHH:MM:SS.mmmZ` .
 Örneğin:
 
 ```json
@@ -341,7 +341,7 @@ Bu bilgiler, nesne anahtarlarını kaldırma güncelleştirmelerini korumak içi
 Etiketler, istenen ve raporlanan Özellikler iyimser eşzamanlılık desteği.
 Etiketler, etiketin JSON gösterimini temsil eden, [RFC7232](https://tools.ietf.org/html/rfc7232)başına bir ETag öğesine sahiptir. Tutarlılık sağlamak için çözüm arka ucundan koşullu güncelleştirme işlemlerinde ETags kullanabilirsiniz.
 
-İkizi modülü istenen ve bildirilen özelliklerin ETags yoktur, ancak artımlı olması garantilenmiş `$version` bir değer vardır. Bir ETag 'e benzer şekilde, sürüm, güncelleştirmelerin tutarlılığını zorlamak için güncelleştirme partisi tarafından kullanılabilir. Örneğin, bildirilen bir özellik için modül uygulaması veya istenen özellik için çözüm arka ucu.
+İkizi modülü istenen ve bildirilen özelliklerin ETags yoktur, ancak `$version` artımlı olması garantilenmiş bir değer vardır. Bir ETag 'e benzer şekilde, sürüm, güncelleştirmelerin tutarlılığını zorlamak için güncelleştirme partisi tarafından kullanılabilir. Örneğin, bildirilen bir özellik için modül uygulaması veya istenen özellik için çözüm arka ucu.
 
 Sürümler Ayrıca bir gözlemleme aracısının (modül uygulaması istenen özellikleri gözlemleme gibi), bir alma işleminin sonucu ve bir güncelleştirme bildirimi arasındaki engelleri bağdaştırmak gerektiğinde de yararlıdır. Cihaz yeniden [bağlantı akışı](iot-hub-devguide-device-twins.md#device-reconnection-flow) bölümü daha fazla bilgi sağlar. 
 

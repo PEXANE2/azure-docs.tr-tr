@@ -8,18 +8,18 @@ author: asudbring
 keywords: IPv6, Azure yük dengeleyici, çift yığın, genel IP, yerel IPv6, mobil, IoT
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: bff6a7ca6eb1a6859ec25d488f564c66946a780b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aecd7f0b8408083b682bb6fe8c33154e9ec9ec3e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045415"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803657"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLı kullanarak IPv6 ile genel yük dengeleyici oluşturma
 
@@ -282,7 +282,7 @@ VM 'Ler oluşturmak için bir depolama hesabınız olmalıdır. Yük Dengeleme i
     ```
 
     > [!WARNING]
-    > Bu örnekte, sanal makinelerin Kullanıcı adı ve parolası, şifresiz metin olarak kullanılmaktadır. Bu kimlik bilgilerini düz metin olarak kullandığınızda uygun bir işlem yapın. PowerShell 'de kimlik bilgilerini işlemenin daha güvenli bir yöntemi için, [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) cmdlet 'e bakın.
+    > Bu örnekte, sanal makinelerin Kullanıcı adı ve parolası, şifresiz metin olarak kullanılmaktadır. Bu kimlik bilgilerini düz metin olarak kullandığınızda uygun bir işlem yapın. PowerShell 'de kimlik bilgilerini işlemenin daha güvenli bir yöntemi için, cmdlet 'e bakın [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) .
 
 2. Kullanılabilirlik kümesini oluşturun:
 

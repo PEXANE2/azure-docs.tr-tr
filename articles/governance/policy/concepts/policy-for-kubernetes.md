@@ -1,14 +1,14 @@
 ---
 title: Önizleme-Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin. Bu bir önizleme özelliğidir.
-ms.date: 05/20/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9969bed9cb7c84faf9736bff2fb8337dc05d1bb0
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ab18b85fc24deb58a6c65ca038d47120056eaa75
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221152"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791716"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes kümeleri için Azure Ilkesini anlama (Önizleme)
 
@@ -25,7 +25,7 @@ Kubernetes için Azure Ilkesi aşağıdaki küme ortamlarını destekler:
 - [AKS altyapısı](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Kubernetes için Azure Ilkesi önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler. Yerleşik ilke tanımları **Kubernetes** kategorisinde bulunur. **Enforceregopolicy** efektli sınırlı önizleme ilkesi tanımları ve Ilgili **Kubernetes hizmet** kategorisi _kullanım dışıdır_. Bunun yerine, güncelleştirilmiş [Enforceopaconstraint](./effects.md#enforceopaconstraint) efektini kullanın.
+> Kubernetes için Azure Ilkesi önizlemededir ve yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler. Yerleşik ilke tanımları **Kubernetes** kategorisinde bulunur. **Enforceopaconstraint** ve **Enforceregopolicy** efektli sınırlı önizleme Ilkesi tanımları ve Ilgili **Kubernetes hizmet** kategorisi _kullanım dışıdır_. Bunun yerine, efekt _denetimi_ ve kaynak sağlayıcısı ile _reddetme_ modunu kullanın `Microsoft.Kubernetes.Data` .
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -370,7 +370,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>İlke dili
 
-Kubernetes yönetimine yönelik Azure Ilke dil yapısı, mevcut ilke tanımlarından sonra takip eder. Etkin _Ceopaconstraint kısıtlaması_ , Kubernetes kümelerinizi yönetmek için kullanılır ve [Opa kısıtlama çerçevesi](https://github.com/open-policy-agent/frameworks/tree/master/constraint) ve ağ geçidi denetleyicisi v3 ile çalışmaya özgü ayrıntılar özellikleri alır. Ayrıntılar ve örnekler için bkz. [Enforceopaconstraint](./effects.md#enforceopaconstraint) etkisi.
+Kubernetes yönetimine yönelik Azure Ilke dil yapısı, mevcut ilke tanımlarından sonra takip eder. [Kaynak sağlayıcısı moduyla](./definition-structure.md#resource-provider-modes) `Microsoft.Kubernetes.Data` , Kubernetes kümelerinizi yönetmek için etkiler [Denetim](./effects.md#audit) ve [reddetme](./effects.md#deny) kullanılır. _Denetim_ ve _reddetme_ , [Opa kısıtlama çerçevesi](https://github.com/open-policy-agent/frameworks/tree/master/constraint) ve Gatekeeper v3 ile çalışmaya özgü **Ayrıntılar** özellikleri sağlamalıdır.
 
 İlke tanımındaki _details. constraintTemplate_ ve _details. Constraint_ özelliklerinin bir parçası olarak Azure Ilkesi, bu [customresourcedefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) URI 'lerini eklentiye geçirir. Rego, Kubernetes kümesine yönelik bir isteği doğrulamak için OPA ve Gatekeeper desteğinin desteklediği dildir. Azure Ilkesi, Kubernetes yönetimi için mevcut bir standardı destekleyerek, mevcut kuralları yeniden kullanmayı ve birleştirilmiş bir bulut uyumluluk raporlama deneyimi için bunları Azure Ilkesiyle eşleştirmeye olanak tanır. Daha fazla bilgi için bkz. [rego nedir?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
@@ -433,7 +433,7 @@ Her 15 dakikada bir eklenti, kümenin tam taramasını çağırır. Kümede değ
 > [!NOTE]
 > Kubernetes kümeleriniz için Azure Ilkesindeki her uyumluluk raporu, son 45 dakika içindeki tüm ihlalleri içerir. Zaman damgası, bir ihlalin ne zaman oluştuğunu gösterir.
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 Bir Kubernetes denetleyicisi/kapsayıcısı olarak, _Azure-Policy_ ve _Gatekeeper_ Pod, Kubernetes kümesinde Günlükler tutar. Günlükler, Kubernetes kümesinin **Öngörüler** sayfasında gösterilebilir.
 Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici Ile Kubernetes küme Performansınızı izleme](../../../azure-monitor/insights/container-insights-analyze.md).

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370466"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790526"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -35,13 +35,21 @@ IoT Hub 'ı, Event Hubs ile uyumlu bir varsayılan yerleşik uç noktaya (**ilet
 
 Her ileti, yönlendirme sorguları eşleşen tüm uç noktalara yönlendirilir. Diğer bir deyişle, bir ileti birden çok uç noktaya yönlendirilebilir.
 
-IoT Hub Şu anda özel uç noktalar olarak aşağıdaki hizmetleri desteklemektedir:
+
+Özel uç noktanıza güvenlik duvarı yapılandırmalarına sahipseniz, IoT Hub belirli bir uç nokta [Azure depolama](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing), [azure Event Hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) ve [Azure Service Bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)için erişim sağlamak üzere Microsoft 'un güvendiği ilk taraf özel durumunu kullanmayı düşünün. Bu, [yönetilen hizmet kimliği](./virtual-network-support.md)olan IoT Hub 'ları için seçim bölgelerinde kullanılabilir.
+
+IoT Hub Şu anda aşağıdaki uç noktaları desteklemektedir:
+
+ - Yerleşik uç nokta
+ - Azure Depolama
+ - Service Bus kuyrukları ve Service Bus konuları
+ - Event Hubs
 
 ### <a name="built-in-endpoint"></a>Yerleşik uç nokta
 
 Yerleşik uç noktadan (**iletiler/olaylar**) cihazdan buluta iletileri almak için standart [Event Hubs tümleştirme ve SDK](iot-hub-devguide-messages-read-builtin.md) 'lar kullanabilirsiniz. Bir yol oluşturulduktan sonra, bu uç nokta için bir yol oluşturulmadığı takdirde veriler yerleşik uç noktaya akar.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 İki depolama hizmeti vardır IoT Hub-- [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md) ve [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md) (ADLS 2.) hesaplarına iletileri yönlendirebilir. Azure Data Lake Storage hesapları, BLOB depolama alanı üzerinde oluşturulmuş [hiyerarşik ad alanı](../storage/blobs/data-lake-storage-namespace.md)etkinleştirilmiş depolama hesaplarıdır. Bunların her ikisi de depolama alanı için blob 'ları kullanır.
 
@@ -75,9 +83,6 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
-> [!NOTE]
-> Depolama hesabınızda IoT Hub bağlantısını kısıtlayan güvenlik duvarı yapılandırmalarına sahipseniz, [Microsoft 'un güvendiği ilk taraf özel durumunu](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) (yönetilen hizmet kimliğiyle IoT Hub 'ları için seçim bölgelerinde kullanılabilir) kullanmayı göz önünde bulundurun.
-
 Azure Data Lake Gen2 uyumlu bir depolama hesabı oluşturmak için yeni bir v2 depolama hesabı oluşturun ve aşağıdaki görüntüde gösterildiği gibi **Gelişmiş** sekmesinde *hiyerarşik ad alanı* alanında *etkin* ' i seçin:
 
 ![Azure Date Lake Gen2 Storage seçin](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -87,17 +92,9 @@ Azure Data Lake Gen2 uyumlu bir depolama hesabı oluşturmak için yeni bir v2 d
 
 IoT Hub uç noktaları olarak kullanılan Service Bus kuyrukları ve konuları, **oturumlara** veya **yinelenen algılamanın** etkin olmasını gerektirmemelidir. Bu seçeneklerden biri etkinse, uç nokta Azure portal **ulaşılamaz** olarak görünür.
 
-> [!NOTE]
-> Service Bus kaynağınız, IoT Hub bağlantısını kısıtlayan güvenlik duvarı yapılandırmalarına sahipse, [Microsoft 'un güvendiği ilk taraf özel durumunu](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing) (yönetilen hizmet kimliğiyle IoT Hub 'ları için bölge Seç bölümünde bulunur) kullanmayı göz önünde bulundurun.
-
-
 ### <a name="event-hubs"></a>Event Hubs
 
 Yerleşik Event Hubs uyumlu uç noktasından ayrı olarak, verileri Event Hubs türündeki özel uç noktalara de yönlendirebilirsiniz. 
-
-> [!NOTE]
-> Olay Hub 'larınız, IoT Hub bağlantısını kısıtlayan güvenlik duvarı yapılandırmalarına sahipse, [Microsoft 'un güvendiği ilk taraf özel durumunu](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) (yönetilen hizmet kimliğiyle IoT Hub 'ları için Select bölgelerinde kullanılabilir) kullanmayı göz önünde bulundurun.
-
 
 ## <a name="reading-data-that-has-been-routed"></a>Yönlendirilen verileri okuma
 
@@ -146,11 +143,9 @@ Yerleşik uç noktaları kullanarak cihazdan buluta telemetri iletilerini yönle
 
 ## <a name="monitoring-and-troubleshooting"></a>İzleme ve sorun giderme
 
-IoT Hub, Yönlendirme ve uç noktalarla ilgili olarak, hub 'ınızın ve gönderilen iletilerinizin sistem durumuna ilişkin bir genel bakış sunan çeşitli ölçümler sağlar. Sorunların temel nedenini belirlemek için birden fazla ölçüden bilgi birleştirebilirsiniz. Örneğin, ölçüm yönlendirmesi kullanın **: bırakılan telemetri iletileri** veya **D2C. telemetri. çıkış.** bırakılan telemetri iletileri ve geri dönüş rotası devre dışı bırakılmışsa yapılan sorgularla eşleşmediği zaman bırakılan ileti sayısını belirlemek için bırakıldı. [IoT Hub ölçümler](iot-hub-metrics.md) , IoT Hub varsayılan olarak etkinleştirilen tüm ölçümleri listeler.
+IoT Hub, Yönlendirme ve uç noktalarla ilgili olarak, hub 'ınızın ve gönderilen iletilerinizin sistem durumuna ilişkin bir genel bakış sunan çeşitli ölçümler sağlar. [IoT Hub ölçümler](iot-hub-metrics.md) , IoT Hub varsayılan olarak etkinleştirilen tüm ölçümleri listeler. Azure Izleyici [Tanılama ayarları](../iot-hub/iot-hub-monitor-resource-health.md)' nda tanılama günlüklerini **rotalar** ' ı kullanarak, bir yönlendirme sorgusunun değerlendirmesi sırasında oluşan hataları ve IoT Hub tarafından algılanan bitiş noktası durumunu izleyebilirsiniz. Uç noktaların [sistem durumunu](iot-hub-devguide-endpoints.md#custom-endpoints) almak Için [uç nokta durumu Al](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) REST API kullanabilirsiniz. 
 
-Uç noktaların [sistem durumunu](iot-hub-devguide-endpoints.md#custom-endpoints) almak Için [uç nokta durumu Al](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) REST API kullanabilirsiniz. Uç nokta durumu ölü veya sağlıksız olduğunda hataları tanımlamak ve hatalarını ayıklamak için ileti gecikmesini yönlendirme ile ilgili [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanmanızı öneririz. Örneğin, Event Hubs uç nokta türü için, **D2C. endpoints. Latency. eventHubs**' ı izleyebilirsiniz. Sağlıklı olmayan bir uç noktanın durumu, IoT Hub sonunda tutarlı bir sistem durumu oluşturulduğunda sağlıklı olarak güncelleştirilecektir.
-
-Azure Izleyici [Tanılama ayarlarındaki](../iot-hub/iot-hub-monitor-resource-health.md)tanılama günlüklerini **rotalar** ' ı kullanarak, bir yönlendirme sorgusunun değerlendirmesi sırasında oluşan hataları ve IoT Hub tarafından algılanan bitiş noktası durumunu (örneğin, bir uç nokta yok edildiğinde) izleyebilirsiniz. Bu tanılama günlükleri, Azure Izleyici günlüklerine, Event Hubs veya özel işleme için Azure depolama 'ya gönderilebilir.
+Yönlendirme [için sorun giderme kılavuzunu](troubleshoot-message-routing.md) , daha fazla ayrıntı ve sorun giderme için destek için kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

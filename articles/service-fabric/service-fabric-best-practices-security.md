@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478747"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944330"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric güvenliği 
 
@@ -70,7 +70,7 @@ Service Fabric kümesi işlemleriniz için sertifikalarınızı bir ACL uygulama
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Ortak ada göre Service Fabric kümesi sertifikasını güvenli hale getirme
 
-Service Fabric kümenizin sertifikaya `Common Name`göre güvenliğini sağlamak Için [certificatecommonnames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)Kaynak Yöneticisi şablon özelliğini aşağıdaki gibi kullanın:
+Service Fabric kümenizin sertifikaya göre güvenliğini sağlamak için `Common Name` [Certificatecommonnames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)Kaynak Yöneticisi şablon özelliğini aşağıdaki gibi kullanın:
 
 ```json
 "certificateCommonNames": {
@@ -87,16 +87,16 @@ Service Fabric kümenizin sertifikaya `Common Name`göre güvenliğini sağlamak
 > [!NOTE]
 > Service Fabric kümeler, ana bilgisayarınızın sertifika deposunda bulduğu ilk geçerli sertifikayı kullanır. Bu, Windows 'ta, ortak ad ve veren parmak iziyle eşleşen son geçerlilik tarihi olan sertifika olacaktır.
 
-*\<Sizin alt etki alanı\>. cloudapp.Azure.com veya \<alt etki alanı\>. trafficmanager.NET gibi Azure etki alanları Microsoft 'a aittir. Sertifika yetkilileri, yetkisiz kullanıcılara etki alanları için sertifika yayınmayacak. Çoğu kullanıcının, bir sertifika yetkilisinin bu ortak ada sahip bir sertifika vermesi için bir kayıt grubundan bir etki alanı satın alması veya yetkili bir etki alanı yöneticisi olması gerekir.
+* \<YOUR SUBDOMAIN\> . Cloudapp.Azure.com veya. trafficmanager.NET gibi Azure etki alanları \<YOUR SUBDOMAIN\> Microsoft 'a aittir. Sertifika yetkilileri, yetkisiz kullanıcılara etki alanları için sertifika yayınmayacak. Çoğu kullanıcının, bir sertifika yetkilisinin bu ortak ada sahip bir sertifika vermesi için bir kayıt grubundan bir etki alanı satın alması veya yetkili bir etki alanı yöneticisi olması gerekir.
 
 DNS hizmetini, etki alanınızı bir Microsoft IP adresine çözümlemek üzere yapılandırma hakkında daha fazla bilgi için, [etki alanınızı barındırmak üzere Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)yapılandırma konusunu gözden geçirin.
 
 > [!NOTE]
 > Etki alanı adı sunucularınızın Azure DNS bölge adı sunucularınıza yetkisini aldıktan sonra, DNS bölgenize aşağıdaki iki kaydı ekleyin:
-> - Özel etki alanınız için bir `Alias record set` IP adresi olmayan etkı alanı tepesinde için bir ' A ' kaydı.
-> - Sağladığınız Microsoft alt etki alanları için bir `Alias record set`' C ' kaydı. Örneğin, Traffic Manager veya Load Balancer DNS adını kullanabilirsiniz.
+> - `Alias record set`Özel etki alanınız için BIR IP adresı olmayan etki alanı tepesinde için bir ' A ' kaydı.
+> - Sağladığınız Microsoft alt etki alanları için bir ' C ' kaydı `Alias record set` . Örneğin, Traffic Manager veya Load Balancer DNS adını kullanabilirsiniz.
 
-Portalınızı Service Fabric kümeniz `"managementEndpoint"`için özel bir DNS adı görüntüleyecek şekilde güncelleştirmek için, Service Fabric kümesini izle Kaynak Yöneticisi şablon özelliklerini güncelleştirin:
+Portalınızı Service Fabric kümeniz için özel bir DNS adı görüntüleyecek şekilde güncelleştirmek için `"managementEndpoint"` , Service Fabric kümesini izle Kaynak Yöneticisi şablon özelliklerini güncelleştirin:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -157,7 +157,7 @@ Uygulamanıza gizli dizi erişimi sağlamak için, uygulama bildirimine bir **Se
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Yönetilen Hizmet Kimliği (MSI) kullanarak Azure kaynaklarında Service Fabric uygulamalarının kimliğini doğrulama
 
-Azure kaynakları için Yönetilen kimlikler hakkında bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
+Azure kaynakları için Yönetilen kimlikler hakkında bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../active-directory/managed-identities-azure-resources/overview.md).
 Azure Service Fabric kümeleri, [yönetilen hizmet kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)destekleyen sanal makine ölçek kümelerinde barındırılır.
 Üzerinde kimlik doğrulaması yapmak için MSI tarafından kullanılabilecek hizmetlerin bir listesini almak için, bkz. [Azure Active Directory kimlik doğrulamasını destekleyen Azure hizmetleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
@@ -217,7 +217,12 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 Bu güvenlik duvarı kuralları, sanal ağınızdan izin verilen hedefler olarak ServiceFabric ve Storage dahil olmak üzere izin verilen giden ağ güvenlik gruplarınızı tamamlar.
 
 ## <a name="tls-12"></a>TLS 1.2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+Microsoft Azure, tüm müşterilerin Aktarım Katmanı Güvenliği (TLS) 1,2 ' i destekleyen ve varsayılan olarak TLS 1,2 ' nin kullanıldığından emin olmak için tüm müşterilerin tüm kullanıcılara tüm geçişi [gerçekleştirmesini öneriyor](https://azure.microsoft.com/updates/azuretls12/) .
+
+[Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)dahil olmak üzere Azure HIZMETLERI, TLS 1.0/1.1 protokollerine bağımlılığı kaldırmak için mühendislik işini tamamladı ve iş yüklerinin yalnızca TLS 1,2 bağlantılarını kabul edip başlatacak şekilde yapılandırılmasını isteyen müşterilere tam destek sağlar.
+
+Müşteriler, Azure 'da barındırılan iş yüklerini ve şirket içi uygulamaları, varsayılan olarak TLS 1,2 kullanması için Azure hizmetleri ile etkileşim kurarken yapılandırmalıdır. Aşağıda, belirli bir TLS sürümünü kullanmak üzere [Service Fabric küme düğümlerinin ve uygulamalarının nasıl yapılandırılacağı](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md) açıklanmaktadır.
 
 ## <a name="windows-defender"></a>Windows Defender 
 

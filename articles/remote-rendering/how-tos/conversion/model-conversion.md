@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681499"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808617"
 ---
 # <a name="convert-models"></a>Modelleri dönüştürme
 
@@ -38,6 +38,11 @@ Dönüştürme hizmeti şu biçimleri destekler:
     - veya *paylaşılan erişim imzası (SAS)* sağlar.
 
 Tüm model verileri (giriş ve çıkış) Kullanıcı tarafından sağlanmış Azure Blob depolama alanında depolanır. Azure uzaktan Işleme, varlık yönetibilme üzerinde tam denetim sağlar.
+
+## <a name="pricing"></a>Fiyatlandırma
+
+Dönüştürme fiyatlandırması hakkında daha fazla bilgi için, [Uzaktan işleme fiyatlandırma](https://azure.microsoft.com/pricing/details/remote-rendering) sayfasına bakın.
+
 
 ## <a name="conversion-parameters"></a>Dönüştürme parametreleri
 

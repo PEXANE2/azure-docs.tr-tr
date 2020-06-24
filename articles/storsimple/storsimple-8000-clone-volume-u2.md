@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255008"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702252"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure portalında StorSimple Cihaz Yöneticisi'ni kullanarak bir birimi kopyalama
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Bu öğreticide, yedekleme **kataloğu** dikey penceresi aracılığıyla tek bir birimi kopyalamak için bir yedekleme kümesini nasıl kullanabileceğiniz açıklanmaktadır. Ayrıca *geçici* ve *kalıcı* kopyalar arasındaki farkı açıklar. Bu öğreticideki kılavuz, güncelleştirme 3 veya sonraki sürümleri çalıştıran tüm StorSimple 8000 serisi cihazlar için geçerlidir.
 

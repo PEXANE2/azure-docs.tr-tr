@@ -10,11 +10,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279513"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702831"
 ---
 # <a name="private-cloud-vmware-components"></a>Özel bulut VMware bileşenleri
 
@@ -48,7 +48,7 @@ vCenter Server gereci (VCSA), CloudSimple tarafından VMware çözümü için ki
 
 ### <a name="vcenter-single-sign-on"></a>vCenter çoklu oturum açma
 
-VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter çoklu oturum açma etki alanıyla**ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz **CloudOwner@cloudsimple.com** için varsayılan bir Kullanıcı oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
+VCSA 'daki katıştırılmış platform hizmetleri denetleyicisi bir **vCenter çoklu oturum açma etki alanıyla**ilişkilendirilir.  Etki alanı adı **cloudsimple. Local**' dir.  VCenter 'a erişmeniz için varsayılan bir Kullanıcı **CloudOwner@cloudsimple.com** oluşturulur.  VCenter için şirket içi/Azure Active Directory [kimlik kaynaklarınızı](set-vcenter-identity.md)ekleyebilirsiniz.
 
 ## <a name="vsan-storage"></a>vSAN depolaması
 
@@ -82,7 +82,7 @@ NSX veri merkezi, özel bulutunuzda ağ sanallaştırma, mikro segmentleme ve a�
 
 ## <a name="vsphere-cluster"></a>vSphere kümesi
 
-ESXi Konakları, özel bulutun yüksek oranda kullanılabilirliğini sağlamak için bir küme olarak yapılandırılır.  Özel bir bulut oluşturduğunuzda, vSphere Yönetim bileşenleri ilk kümede dağıtılır.  Yönetim bileşenleri için bir kaynak havuzu oluşturulur ve tüm yönetim VM 'Leri bu kaynak havuzunda dağıtılır. İlk küme, özel bulutu daraltmak için silinemez.  vSphere kümesi, **VSPHERE ha**kullanan VM 'ler için yüksek kullanılabilirlik sağlar.  Tolerans sorunları, kümedeki kullanılabilir düğümlerin sayısını temel alır.  Kabul edilecek başarısızlık sayısı ```Number of nodes = 2N+1``` ```N``` olan formülünü kullanabilirsiniz.
+ESXi Konakları, özel bulutun yüksek oranda kullanılabilirliğini sağlamak için bir küme olarak yapılandırılır.  Özel bir bulut oluşturduğunuzda, vSphere Yönetim bileşenleri ilk kümede dağıtılır.  Yönetim bileşenleri için bir kaynak havuzu oluşturulur ve tüm yönetim VM 'Leri bu kaynak havuzunda dağıtılır. İlk küme, özel bulutu daraltmak için silinemez.  vSphere kümesi, **VSPHERE ha**kullanan VM 'ler için yüksek kullanılabilirlik sağlar.  Tolerans sorunları, kümedeki kullanılabilir düğümlerin sayısını temel alır.  Kabul ```Number of nodes = 2N+1``` ```N``` edilecek başarısızlık sayısı olan formülünü kullanabilirsiniz.
 
 ### <a name="vsphere-cluster-limits"></a>vSphere kümesi sınırları
 

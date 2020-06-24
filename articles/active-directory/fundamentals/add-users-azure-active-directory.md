@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262119"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692164"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory kullanarak Kullanıcı ekleme veya silme
 
@@ -44,7 +44,7 @@ Yeni bir kullanıcı eklemek için şu adımları izleyin:
 
    - **Kullanıcı adı**. Gereklidir. Yeni kullanıcının Kullanıcı adı. Örneğin, `mary@contoso.com`.
 
-     Kullanıcı adının etki alanı bölümü, ilk varsayılan etki alanı adı, * \<etkialanıadınız>. onmicrosoft.com*ya da *contoso.com*gibi özel bir etki alanı adı kullanmalıdır. Özel etki alanı adı oluşturma hakkında daha fazla bilgi için, [Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme](add-custom-domain.md)bölümüne bakın.
+     Kullanıcı adının etki alanı bölümü, ilk varsayılan etki alanı adı, * \<yourdomainname> . onmicrosoft.com*veya *contoso.com*gibi özel bir etki alanı adı kullanmalıdır. Özel etki alanı adı oluşturma hakkında daha fazla bilgi için, [Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme](add-custom-domain.md)bölümüne bakın.
 
    - **Gruplar**. İsteğe bağlı olarak, kullanıcıyı bir veya daha fazla var olan gruba ekleyebilirsiniz. Kullanıcıyı daha sonra gruplara da ekleyebilirsiniz. Gruplara kullanıcı ekleme hakkında daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](active-directory-groups-create-azure-portal.md).
 
@@ -54,7 +54,7 @@ Yeni bir kullanıcı eklemek için şu adımları izleyin:
 
 1. **Parola** kutusunda belirtilen otomatik oluşturulan parolayı kopyalayın. İlk kez oturum açmak için kullanıcıya bu parolayı vermeniz gerekir.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 Kullanıcı oluşturulup Azure AD kuruluşunuza eklenir.
 

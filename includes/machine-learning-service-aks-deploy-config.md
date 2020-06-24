@@ -11,28 +11,28 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "79485994"
 ---
-`deploymentconfig.json` Belgedeki girişler, [akswebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
+Belgedeki girişler, `deploymentconfig.json` [Akswebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
-| JSON varlığı | Yöntem parametresi | Açıklama |
+| JSON varlığı | Yöntem parametresi | Description |
 | ----- | ----- | ----- |
-| `computeType` | NA | Bilgi işlem hedefi. AKS için değer olmalıdır `aks`. |
+| `computeType` | NA | Bilgi işlem hedefi. AKS için değer olmalıdır `aks` . |
 | `autoScaler` | NA | Otomatik ölçeklendirme için yapılandırma öğelerini içerir. Bkz. otomatik Scaler tablosu. |
-| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Web hizmeti için otomatik ölçeklendirmenin etkinleştirilip etkinleştirilmeyeceğini belirtir. `numReplicas`  = IF `0`, `True`; Aksi takdirde `False`,. |
-| &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı alt sınırı. Varsayılan, `1`. |
-| &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı üst sınırı. Varsayılan, `10`. |
-| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Otomatik Scaler, bu Web hizmetini ölçeklendirmeye ne sıklıkta çalışır. Varsayılan, `1`. |
-| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Otomatik Scaler 'nın bu Web hizmeti için bakımını denemesi gereken hedef kullanım (100 ' dan fazla). Varsayılan, `70`. |
+| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Web hizmeti için otomatik ölçeklendirmenin etkinleştirilip etkinleştirilmeyeceğini belirtir. Eğer `numReplicas`  =  `0` ,, yoksa `True` , `False` . |
+| &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı alt sınırı. Varsayılan, `1` . |
+| &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı üst sınırı. Varsayılan, `10` . |
+| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Otomatik Scaler, bu Web hizmetini ölçeklendirmeye ne sıklıkta çalışır. Varsayılan, `1` . |
+| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Otomatik Scaler 'nın bu Web hizmeti için bakımını denemesi gereken hedef kullanım (100 ' dan fazla). Varsayılan, `70` . |
 | `dataCollection` | NA | Veri toplama için yapılandırma öğelerini içerir. |
-| &emsp;&emsp;`storageEnabled` | `collect_model_data` | Web hizmeti için model veri toplamayı etkinleştirip etkinleştirmeyeceğinizi belirtir. Varsayılan, `False`. |
-| `authEnabled` | `auth_enabled` | Web hizmeti için anahtar kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Her ikisi de `tokenAuthEnabled` olamaz `True` `authEnabled` Varsayılan, `True`. |
-| `tokenAuthEnabled` | `token_auth_enabled` | Web hizmeti için belirteç kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Her ikisi de `tokenAuthEnabled` olamaz `True` `authEnabled` Varsayılan, `False`. |
+| &emsp;&emsp;`storageEnabled` | `collect_model_data` | Web hizmeti için model veri toplamayı etkinleştirip etkinleştirmeyeceğinizi belirtir. Varsayılan, `False` . |
+| `authEnabled` | `auth_enabled` | Web hizmeti için anahtar kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Her ikisi de olamaz `tokenAuthEnabled` `authEnabled` `True` . Varsayılan, `True` . |
+| `tokenAuthEnabled` | `token_auth_enabled` | Web hizmeti için belirteç kimlik doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtir. Her ikisi de olamaz `tokenAuthEnabled` `authEnabled` `True` . Varsayılan, `False` . |
 | `containerResourceRequirements` | NA | CPU ve bellek varlıklarının kapsayıcısı. |
 | &emsp;&emsp;`cpu` | `cpu_cores` | Bu Web hizmeti için ayrılacak CPU çekirdeklerinin sayısı. Olarak`0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden). Varsayılanını`0.5` |
-| `appInsightsEnabled` | `enable_app_insights` | Web hizmeti için Application Insights günlüğü etkinleştirilip etkinleştirilmeyeceğini belirtir. Varsayılan, `False`. |
-| `scoringTimeoutMs` | `scoring_timeout_ms` | Web hizmetine yönelik Puanlama çağrılarına zorlamak için zaman aşımı. Varsayılan, `60000`. |
-| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Bu Web hizmeti için düğüm başına en fazla eşzamanlı istek. Varsayılan, `1`. |
-| `maxQueueWaitMs` | `max_request_wait_time` | Bir 503 hatası döndürülmeden önce bir isteğin en uzun süre (milisaniye cinsinden) kalacağız. Varsayılan, `500`. |
+| `appInsightsEnabled` | `enable_app_insights` | Web hizmeti için Application Insights günlüğü etkinleştirilip etkinleştirilmeyeceğini belirtir. Varsayılan, `False` . |
+| `scoringTimeoutMs` | `scoring_timeout_ms` | Web hizmetine yönelik Puanlama çağrılarına zorlamak için zaman aşımı. Varsayılan, `60000` . |
+| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Bu Web hizmeti için düğüm başına en fazla eşzamanlı istek. Varsayılan, `1` . |
+| `maxQueueWaitMs` | `max_request_wait_time` | Bir 503 hatası döndürülmeden önce bir isteğin en uzun süre (milisaniye cinsinden) kalacağız. Varsayılan, `500` . |
 | `numReplicas` | `num_replicas` | Bu Web hizmeti için ayrılacak kapsayıcı sayısı. Varsayılan değer yoktur. Bu parametre ayarlanmamışsa otomatik olarak varsayılan olarak etkindir. |
 | `keys` | NA | Anahtarlar için yapılandırma öğelerini içerir. |
 | &emsp;&emsp;`primaryKey` | `primary_key` | Bu Web hizmeti için kullanılacak birincil bir kimlik doğrulama anahtarı |

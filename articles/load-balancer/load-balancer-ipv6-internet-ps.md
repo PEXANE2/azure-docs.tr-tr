@@ -9,17 +9,17 @@ keywords: IPv6, Azure yük dengeleyici, çift yığın, genel IP, yerel IPv6, mo
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 79fc74cc946578ffe91629065ddd03e43aa76957
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 8553c54b60d1d4e60e28bcb3006bcc804dbc39ad
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629482"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803699"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Kaynak Yöneticisi için PowerShell kullanarak Internet 'e yönelik yük dengeleyici oluşturmaya başlama
 
@@ -102,7 +102,7 @@ PowerShell için Azure Resource Manager modülünün en son üretim sürümüne 
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Ön uç IP adresi havuzu için Azure genel IP adresi (PıP) kaynaklarını oluşturun. Aşağıdaki komutları çalıştırmadan `-DomainNameLabel` önce değerini değiştirdiğinizden emin olun. Değer, Azure bölgesi içinde benzersiz olmalıdır.
+2. Ön uç IP adresi havuzu için Azure genel IP adresi (PıP) kaynaklarını oluşturun. `-DomainNameLabel`Aşağıdaki komutları çalıştırmadan önce değerini değiştirdiğinizden emin olun. Değer, Azure bölgesi içinde benzersiz olmalıdır.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4

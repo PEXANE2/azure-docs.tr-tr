@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734119"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790255"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure reddetme atamalarını listeleyin
 
@@ -59,7 +59,7 @@ Abonelik veya yönetim grubu kapsamındaki atamaları Reddet ' i listelemek içi
     | **Adı** | Reddetme atamasının adı. |
     | **Sorumlu türü** | Kullanıcı, Grup, sistem tanımlı grup veya hizmet sorumlusu. |
     | **Reddedildi**  | Reddetme atamasında bulunan güvenlik sorumlusunun adı. |
-    | **Kimlik** | Reddetme ataması için benzersiz tanımlayıcı. |
+    | **Numarasını** | Reddetme ataması için benzersiz tanımlayıcı. |
     | **Dışlanan sorumlular** | Reddetme atamasından dışlanan güvenlik sorumluları olup olmadığı. |
     | **Alt öğeler için uygulanmıyor** | Reddetme atamasının alt kapsamlara devralınıp alınmayacağını belirtir. |
     | **Korunan sistem** | Reddetme atamasının Azure tarafından yönetilip yönetilmediği. Şu anda her zaman Evet. |
@@ -90,7 +90,7 @@ Reddetme atama hakkında ek ayrıntıları listelemek için aşağıdaki adımla
 
     ![Atama reddi Izinlerini Reddet](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Eylem türü | Açıklama |
+    | Eylem türü | Description |
     | --- | --- |
     | **Eylemler**  | Yönetim işlemleri reddedildi. |
     | **NotActions** | Yönetim işlemleri Reddedilenler yönetim işleminden dışlandı. |

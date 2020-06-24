@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: ebc30f995c44685dfd58e627706e4ca60e8ecfd5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556827"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738303"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -124,16 +124,11 @@ Azure depolama hesabınız, işlem hedefleri ve diğer kaynaklarınız, modeller
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Temel & Enterprise sürümleri
 
 Azure Machine Learning, Machine Learning gereksinimleriniz için tasarlanmış iki sürüm sunar:
-+ Temel (genel olarak kullanılabilir)
-+ Kurumsal (Önizleme)
++ **Temel**: bir kod ilk deneyimiyle bulut ölçeğinde açık kaynaklı geliştirme için harika.
 
-Bu sürümler, geliştiricilerin ve veri bilimcilerinin çalışma alanından hangi makine öğrenimi araçlarının kullanılabilir olduğunu tespit.   
++ **Enterprise**: tüm temel ve bir Web arabirimi (Studio) + güvenli ve tüm beceri düzeyleri IÇIN kapsamlı ml yaşam döngüsü yönetimi.
 
-Temel çalışma alanları, Azure Machine Learning kullanmaya devam edip yalnızca makine öğrenimi sürecinde tüketilen Azure kaynakları için ödeme yapmanıza olanak tanır. Enterprise Edition çalışma alanları, sürüm önizlemedeyken yalnızca Azure tüketimine göre ücretlendirilir. Azure Machine Learning [sürüme genel bakış & fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/machine-learning/)neler mevcuttur hakkında daha fazla bilgi edinin. 
-
-Her çalışma alanı oluşturduğunuzda sürümü atarsınız. Ve önceden var olan çalışma alanları sizin için temel sürüme dönüştürüldü. Temel sürüm, 2019 Ekim itibariyle zaten genel kullanıma sunulan tüm özellikleri içerir. Enterprise Edition özellikleri kullanılarak oluşturulan bu çalışma alanlarında bulunan tüm denemeleri, kurumsal sürüme yükseltilene kadar Salt okunabilir olmaya devam edecektir. [Temel bir çalışma alanını Enterprise Edition 'a yükseltmeyi](how-to-manage-workspace.md#upgrade)öğrenin. 
-
-Müşteriler, bu süre boyunca işlem ve diğer Azure kaynakları üzerinden oluşan maliyetlerden sorumludur.
+Bu sürümler hakkında daha fazla bilgi edinmek ve hangi özellikleri kilitleyeceğinizi öğrenmek için, ["Azure Machine Learning sürümleri" makalesini](concept-editions.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,15 +4,15 @@ description: Azure CLı kullanarak iç Web trafiğini uygun havuza yönlendiren 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b671af46d34e3b45796186cd10282d060fa8c537
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74011602"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804662"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Azure CLı kullanarak dış yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma
 
@@ -88,7 +88,7 @@ Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ 
 
 ### <a name="add-the-redirection-configuration"></a>Yeniden yönlendirme yapılandırmasını ekleyin
 
-[Az Network Application-Gateway Redirect-config Create](/cli/azure/network/application-gateway/redirect-config)komutunu kullanarak *www\.consoto.org* *\.* 'ten uygulama ağ geçidine giden trafiği gönderen yeniden yönlendirme yapılandırmasını ekleyin.
+[Az Network Application-Gateway Redirect-config Create](/cli/azure/network/application-gateway/redirect-config)komutunu kullanarak *www \. consoto.org* 'ten uygulama ağ *geçidine giden trafiği \. * gönderen yeniden yönlendirme yapılandırmasını ekleyin.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

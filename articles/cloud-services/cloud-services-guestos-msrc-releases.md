@@ -10,39 +10,75 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/2/2020
+ms.date: 6/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: 89344c38c719a06d8241ec34136a75c96de9f901
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322881"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737470"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
+
+## <a name="june-2020-guest-os"></a>Haziran 2020 Konuk işletim sistemi
+">[!NOTE]
+>Haziran Konuk işletim sistemi şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine devredilir. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Nisan Konuk işletim sisteminde aşağıdaki düzeltme ekleri bulunmaktadır. Bu liste değişebilir. "
+
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2,99, 3,86, 4,79  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561616]  |  En son toplu güncelleştirme (LCU)  |  5,44  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561608]  |  En son toplu güncelleştirme (LCU)  |  6,20  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562030]  |  Hizmet yığını güncelleştirmesi  |  2,99  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561643]  |  Aylık toplu  |  2,99  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562252]  |  Hizmet yığını güncelleştirmesi  |  3,86  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561612]  |  Aylık toplu  |  3,86  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561600]  |  In  |  3,86, 4,79, 5,44, 6,20  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562253]  |  Hizmet yığını güncelleştirmesi  |  4,79  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4561666]  |  Aylık toplu  |  4,79  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562561]  |  Hizmet yığını güncelleştirmesi  |  5,44  |  9 Haz, 2020  |
+|  Rel 20-06  |  [4562562]  |  Hizmet yığını güncelleştirmesi  |  6,20  |  9 Haz, 2020  |
+
+
+
+[4561603]: https://support.microsoft.com/kb/4561603
+[4561616]: https://support.microsoft.com/kb/4561616
+[4561608]: https://support.microsoft.com/kb/4561608
+[4562030]: https://support.microsoft.com/kb/4562030
+[4561643]: https://support.microsoft.com/kb/4561643
+[4562252]: https://support.microsoft.com/kb/4562252
+[4561612]: https://support.microsoft.com/kb/4561612
+[4561600]: https://support.microsoft.com/kb/4561600
+[4562253]: https://support.microsoft.com/kb/4562253
+[4561666]: https://support.microsoft.com/kb/4561666
+[4562561]: https://support.microsoft.com/kb/4562561
+[4562562]: https://support.microsoft.com/kb/4562562
+
 
 ## <a name="may-2020-guest-os"></a>Mayıs 2020 Konuk işletim sistemi
 
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4556813]  |  En son toplu güncelleştirme (LCU)   |  [5,43]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4551853]  |  En son toplu güncelleştirme (LCU)   |  [6,19]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552940]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4556836]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4555449]  |  Hizmet yığını güncelleştirmesi   |  [2,98]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552920]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552979]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4556840]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552947]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552982]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4552946]  |  Aylık toplu   |  [4,78]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4556846]  |  Aylık toplu   |  [4,78]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4550994]  |  Hizmet yığını güncelleştirmesi   |  [5,43]  |  14 Nisan 2020  |
-|  Rel 20-05   |  [4552924]  |  Aylık toplu   |  [6,19]  |  12 Mayıs 2020  |
-|  Rel 20-05   |  [4549947]  |  Hizmet yığını güncelleştirmesi   |  [6,19]  |  14 Nisan 2020  |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4556813]  |  En son toplu güncelleştirme (LCU)   |  [5,43]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4551853]  |  En son toplu güncelleştirme (LCU)   |  [6,19]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4552940]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4556836]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4555449]  |  Hizmet yığını güncelleştirmesi   |  [2,98]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4552920]  |  Aylık toplu   |  [2,98]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4552979]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4556840]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4552947]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4552982]  |  Aylık toplu   |  [3,85]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4552946]  |  Aylık toplu   |  [4,78]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4556846]  |  Aylık toplu   |  [4,78]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4550994]  |  Hizmet yığını güncelleştirmesi   |  [5,43]  |  14 Nisan 2020  |
+|  Rel 20-05  |  [4552924]  |  Aylık toplu   |  [6,19]  |  12 Mayıs 2020  |
+|  Rel 20-05  |  [4549947]  |  Hizmet yığını güncelleştirmesi   |  [6,19]  |  14 Nisan 2020  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -66,6 +102,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
 [5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
 [6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+
 
 ## <a name="april-2020-guest-os"></a>Nisan 2020 Konuk işletim sistemi
 
@@ -1375,7 +1412,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS16-065 |[3156757] |.NET Framework için güvenlik güncelleştirmesi |4,32, 3,39, 2,51 |10 Mayıs 2016 |
 | MS16-067 |[3155784] |Volume Manager sürücüsü için güvenlik güncelleştirmesi |4,32, 3,39 |10 Mayıs 2016 |
 | Yok |[3148851] |Windows 'da Rusya için saat dilimi değişiklikleri  |4,32, 3,39, 2,51 |10 Mayıs 2016 |
-| Yok |[3133977] |Windows 7 veya Windows Server 2008 R2 'de Svchost. exe işleminde hizmet Kilitlenmelerinde BitLocker sürücüleri şifreleyemez  |2,51 |10 Mayıs 2016 |
+| Yok |[3133977] |Windows 7 veya Windows Server 2008 R2 'de svchost.exe işlemde hizmet Kilitlenmelerinde BitLocker sürücüleri şifreleyemez  |2,51 |10 Mayıs 2016 |
 | Yok |[3133681] |Sanal makineler, Windows Server 2012 R2 'de SCVMM 'deki işleme yanıt vermez  |4,32 |10 Mayıs 2016 |
 | Yok |[3123245] |Güncelleştirme, Windows Server 2012 R2 'de bağlantı noktası Tükenme kimliğini geliştirir  |4,32 |10 Mayıs 2016 |
 | Yok |[RC4 devre dışı bırak] | Microsoft Güvenlik Danışma belgesi: RC4 devre dışı bırakmak için güncelleştirme  |4,32, 3,39, 2,51 |10 Mayıs 2016 |
@@ -1544,7 +1581,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 ## <a name="april-2015-guest-os"></a>Nisan 2015 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-| [MS15-034] |[3042553] |HTTP. sys dosyasındaki güvenlik açığı uzaktan kod yürütmeye izin verebilir |4,19, 3,26, 2,38 |17 Nisan 2015 |
+| [MS15-034] |[3042553] |HTTP.sys güvenlik açığı uzaktan kod yürütmeye izin verebilir |4,19, 3,26, 2,38 |17 Nisan 2015 |
 
 ## <a name="march-2015-guest-os"></a>Mart 2015 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |

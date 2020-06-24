@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651124"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944704"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Depolama geçişi hakkında sık sorulan sorular
 
@@ -144,7 +144,7 @@ Verileri taşımak için AzCopy kullanın. Daha fazla bilgi için bkz. [Windows 
     $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ```
 
-Bir sanal makinenin yönetilen bir diskten nasıl dağıtılacağı hakkında daha fazla bilgi için bkz. [Createvmfrommanagedosdisk. ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
+Bir sanal makinenin yönetilen bir diskten nasıl dağıtılacağı hakkında daha fazla bilgi için bkz. [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
 
 **Nasıl yaparım? bir depolama hesabından verileri taşımak veya indirmek mi istiyorsunuz?**
 
@@ -215,19 +215,20 @@ Yedekleme çözümü yok. Bununla birlikte, Azure dosyaları da zaman uyumsuz ko
 - Bir paylaşımdan bir depolama hesabı içindeki blob kapsayıcısına veya farklı bir depolama hesabına.
 
 Daha fazla bilgi için bkz. [Windows üzerinde AzCopy ile veri aktarma](storage-use-azcopy.md).
+
 ## <a name="configuration"></a>Yapılandırma
 
 **Nasıl yaparım?, ikincil konumu bir depolama hesabı için Avrupa bölgesine değiştirmek istiyor musunuz?**
 
 Bir depolama hesabı oluşturduğunuzda, hesabın birincil bölgesini seçersiniz. İkincil bölgenin seçimi birincil bölgeye dayalıdır ve değiştirilemez. Daha fazla bilgi için bkz. [coğrafi olarak yedekli depolama (GRS): Azure depolama Için çapraz bölgesel çoğaltma](storage-redundancy.md).
 
-**Azure Depolama Hizmeti Şifrelemesi (SSE) hakkında daha fazla bilgiyi nereden edinebilirim?**  
+**Azure depolama şifrelemesi hakkında nereden daha fazla bilgi edinebilirim?**  
 
 Aşağıdaki makalelere bakın:
 
--  [Azure Depolama güvenlik kılavuzu](../blobs/security-recommendations.md)
-
--  [Bekleyen Veri için Azure Storage Hizmeti Şifreleme](storage-service-encryption.md)
+- [Bekleyen veri için Azure Depolama şifrelemesi](storage-service-encryption.md)
+- [Azure depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanma](encryption-customer-managed-keys.md)
+- [BLOB depolama (Önizleme) isteğinde bir şifreleme anahtarı sağlayın](encryption-customer-provided-keys.md)
 
 **Nasıl yaparım? bir depolama hesabındaki verileri şifreliyor musunuz?**
 
@@ -253,21 +254,21 @@ Sanal makineleriniz varsa, depolama hesabı verilerini geçirmeden önce ek adı
 
 Diğer kişilere depolama kaynaklarına erişim sağlamak için:
 
--   Bir kaynağa erişim sağlamak için paylaşılan erişim imzası (SAS) belirteci kullanın.
+- Bir kaynağa erişim sağlamak için paylaşılan erişim imzası (SAS) belirteci kullanın.
 
--   Depolama hesabı için birincil veya ikincil anahtarı olan bir Kullanıcı sağlayın. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](storage-account-keys-manage.md).
+- Depolama hesabı için birincil veya ikincil anahtarı olan bir Kullanıcı sağlayın. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](storage-account-keys-manage.md).
 
--   Erişim ilkesini anonim erişime izin verecek şekilde değiştirin. Daha fazla bilgi için bkz. [kapsayıcılar ve bloblara anonim kullanıcı Izinleri verme](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
+- Erişim ilkesini anonim erişime izin verecek şekilde değiştirin. Daha fazla bilgi için bkz. [kapsayıcılar ve bloblara anonim kullanıcı Izinleri verme](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 
 **AzCopy nereye yüklenir?**
 
--   AzCopy komutunu Microsoft Azure Depolama komut satırından eriştiğinizde **AzCopy**yazın. Komut satırı AzCopy ile birlikte yüklenir.
+- AzCopy komutunu Microsoft Azure Depolama komut satırından eriştiğinizde **AzCopy**yazın. Komut satırı AzCopy ile birlikte yüklenir.
 
--   32 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles (x86)% \\ Microsoft SDK 'ları \\ Azure \\ AzCopy**.
+- 32 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles (x86)% \\ Microsoft SDK 'ları \\ Azure \\ AzCopy**.
 
--   64 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles% \\ Microsoft SDK 'ları \\ Azure \\ AzCopy**.
+- 64 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles% \\ Microsoft SDK 'ları \\ Azure \\ AzCopy**.
 
-**Depolama hesabımın bulunduğu HTTPS özel etki alanını kullanmak Nasıl yaparım? mı? Örneğin, "https: \/ /mystorageaccountname.blob.Core.Windows.net/images/image.gif" nasıl "https:/www.contoso.com/images/image.gif" olarak görünirim \/ ?**
+**Depolama hesabımın bulunduğu HTTPS özel etki alanını kullanmak Nasıl yaparım? mı? Örneğin, "https: \/ /mystorageaccountname.blob.core.windows.net/images/image.gif" öğesini "https: \/ /www.contoso.com/images/image.gif" olarak nasıl görünirim?**
 
 TLS/SSL Şu anda özel etki alanları olan depolama hesaplarında desteklenmemektedir.
 Ancak HTTPS olmayan özel etki alanlarını kullanabilirsiniz. Daha fazla bilgi için bkz. [BLOB depolama uç noktanız için özel bir etki alanı adı yapılandırma](../blobs/storage-custom-domain-name.md).
@@ -284,15 +285,15 @@ Yedekli depolamaya erişmek için Okuma Erişimli Coğrafi olarak yedekli depola
 
 **Çoğaltılan depolama hesabı için (bölgesel olarak yedekli depolama, coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama gibi), ikincil bölgede depolanan verilere nasıl erişebilirim?**
 
--   Bölgesel olarak yedekli depolama veya coğrafi olarak yedekli depolama kullanıyorsanız, bu bölgeye bir yük devretme işlemi başlatmadığınız takdirde ikincil bölgedeki verilere erişemezsiniz. Yük devretme işlemi hakkında daha fazla bilgi için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](storage-disaster-recovery-guidance.md).
+- Bölgesel olarak yedekli depolama veya coğrafi olarak yedekli depolama kullanıyorsanız, bu bölgeye bir yük devretme işlemi başlatmadığınız takdirde ikincil bölgedeki verilere erişemezsiniz. Yük devretme işlemi hakkında daha fazla bilgi için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](storage-disaster-recovery-guidance.md).
 
--   Okuma Erişimli Coğrafi olarak yedekli depolama kullanıyorsanız, verileri istediğiniz zaman ikincil bölgeden erişebilirsiniz. Aşağıdaki yöntemlerden birini kullanın:  
+- Okuma Erişimli Coğrafi olarak yedekli depolama kullanıyorsanız, verileri istediğiniz zaman ikincil bölgeden erişebilirsiniz. Aşağıdaki yöntemlerden birini kullanın:  
 
-    - **AzCopy**: ikincil uç noktaya erışmek için URL 'deki depolama hesabı adına Append **-Secondary** . Örnek:  
+  - **AzCopy**: ikincil uç noktaya erışmek için URL 'deki depolama hesabı adına Append **-Secondary** . Örneğin:  
 
       `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
-    - **SAS belirteci**: uç noktadan veriye erişmek IÇIN bir SAS belirteci kullanın. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](storage-sas-overview.md).
+  - **SAS belirteci**: uç noktadan veriye erişmek IÇIN bir SAS belirteci kullanın. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](storage-sas-overview.md).
 
 **Nasıl yaparım?, bir depolama hesabındaki verilere erişmek için FTP 'yi kullanmak mı istiyorsunuz?**
 
@@ -300,6 +301,6 @@ Bir depolama hesabına doğrudan FTP kullanarak erişmenin bir yolu yoktur. Anca
 
 Yalnızca Depolama Gezgini veya benzer bir uygulama kullanmak zorunda kalmadan verileri indirmek isterseniz, bir SAS belirteci kullanabilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](storage-sas-overview.md).
 
-## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 
 Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

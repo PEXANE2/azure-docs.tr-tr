@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 198cbb9f66ec5c6b84ed3cc4f20898495d8c126f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1d3441847fc47146418265804457c37c693bd60b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560836"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297027"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Service Bus
 
@@ -38,9 +38,9 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnekte, bir *function. JSON* dosyasında bir Service Bus çıktı bağlaması ve bağlamayı kullanan bir [C# betik işlevi](functions-reference-csharp.md) gösterilmektedir. İşlevi, 15 saniyede bir sıra iletisi göndermek için bir Zamanlayıcı tetikleyicisi kullanır.
+Aşağıdaki örnek, bir *function.js* dosyasında bir Service Bus çıktı bağlamayı ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi, 15 saniyede bir sıra iletisi göndermek için bir Zamanlayıcı tetikleyicisi kullanır.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -89,9 +89,9 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Service Bus çıktı bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, 15 saniyede bir sıra iletisi göndermek için bir Zamanlayıcı tetikleyicisi kullanır.
+Aşağıdaki örnek, bir *function.js* dosyasında bir Service Bus çıkış bağlamayı ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, 15 saniyede bir sıra iletisi göndermek için bir Zamanlayıcı tetikleyicisi kullanır.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -143,7 +143,7 @@ module.exports = function (context, myTimer) {
 
 Aşağıdaki örnek, Python 'da Service Bus kuyruğuna nasıl yazılacağını gösterir.
 
-Service Bus bağlama tanımı, *türünün* olarak ayarlandığı *function. JSON* içinde tanımlanır `serviceBus` .
+Service Bus bağlama tanımı, *türünün türü* olarak ayarlandığı *function.js* tanımlanmıştır `serviceBus` .
 
 ```json
 {
@@ -278,9 +278,9 @@ Tam bir örnek için bkz. [Çıkış-örnek](#example).
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBus` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `ServiceBus` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "ServiceBus" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -305,7 +305,7 @@ Azure Işlevleri 1. x içinde, çalışma zamanı yoksa kuyruğu oluşturur ve `
 * `out byte[]`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
 * `out BrokeredMessage`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (1. x Işlevleri için)
 * `out Message`-İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz (2. x ve üzeri Işlevler için)
-* `ICollector<T>`ya da `IAsyncCollector<T>` birden çok ileti oluşturmak için. Yöntemini çağırdığınızda bir ileti oluşturulur `Add` .
+* `ICollector<T>`ya da `IAsyncCollector<T>` (zaman uyumsuz metotlar için)-birden çok ileti oluşturmak için. Yöntemini çağırdığınızda bir ileti oluşturulur `Add` .
 
 C# işlevleriyle çalışırken:
 
@@ -353,12 +353,12 @@ Yerleşik çıkış bağlaması yerine [Azure Service Bus SDK 'sını](https://d
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>Host. JSON ayarları
+## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
-Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki örnek Host. JSON dosyası yalnızca bu bağlamanın ayarlarını içerir. Genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürümü için Host. JSON başvurusu](functions-host-json.md).
+Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Aşağıdaki dosyada host.jsörnek yalnızca bu bağlamanın ayarlarını içerir. Genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürümü için başvuruhost.js](functions-host-json.md).
 
 > [!NOTE]
-> 1. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
+> 1. x Işlevleri içindeki host.jsbaşvurusu için bkz. [Azure işlevleri için başvuru üzerindehost.js, 1. x](functions-host-json-v1.md).
 
 ```json
 {

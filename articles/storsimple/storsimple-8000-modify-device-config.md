@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267696"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702235"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple cihaz yapılandırmanızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 **Ayarlar** dikey penceresindeki Azure Portal **cihaz ayarları** bölümü, StorSimple aygıt yöneticisi hizmeti tarafından yönetilen bir StorSimple cihazında yeniden yapılandırabilmeniz için tüm cihaz parametrelerini içerir. Bu öğreticide, aşağıdaki cihaz düzeyindeki görevleri gerçekleştirmek için **Ayarlar** dikey penceresini nasıl kullanabileceğiniz açıklanmaktadır:
 
@@ -65,7 +65,7 @@ Cihazınızın, bulut depolama hizmeti sağlayıcınızda kimlik doğrulaması i
 
  Aşağı açılan listeden saat diliminizi seçin. En fazla iki ağ zaman Protokolü (NTP) sunucusu belirtebilirsiniz:
 
- - **BIRINCIL NTP sunucusu** -yapılandırma gereklidir ve cihazınızı yapılandırmak için StorSimple için Windows PowerShell kullandığınızda belirtilir. Varsayılan Windows Server **Time.Windows.com** 'i NTP sunucunuz olarak belirtebilirsiniz. Birincil NTP sunucusu yapılandırmasını Azure portal aracılığıyla görüntüleyebilirsiniz, ancak bunu değiştirmek için Windows PowerShell arabirimini kullanmanız gerekir. Cihazınızın birincil `Set-HcsNTPClientServerAddress` NTP sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için, [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet sözdizimi ' ne gidin.
+ - **BIRINCIL NTP sunucusu** -yapılandırma gereklidir ve cihazınızı yapılandırmak için StorSimple için Windows PowerShell kullandığınızda belirtilir. Varsayılan Windows Server **Time.Windows.com** 'i NTP sunucunuz olarak belirtebilirsiniz. Birincil NTP sunucusu yapılandırmasını Azure portal aracılığıyla görüntüleyebilirsiniz, ancak bunu değiştirmek için Windows PowerShell arabirimini kullanmanız gerekir. `Set-HcsNTPClientServerAddress`Cihazınızın BIRINCIL NTP sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için, [set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet sözdizimi ' ne gidin.
 
 - **IKINCIL NTP sunucusu** -yapılandırma isteğe bağlıdır. İkincil bir NTP sunucusunu yapılandırmak için portalı kullanabilirsiniz.
 
@@ -85,9 +85,9 @@ Cihazınız bulut depolama hizmeti sağlayıcınızla iletişim kurmaya çalış
 
 Yüksek kullanılabilirlik için, ilk cihaz dağıtımı sırasında hem birincil hem de ikincil DNS sunucularını yapılandırmanız gerekir.
 
-**BIRINCIL DNS sunucusu** -ilk kurulum SıRASıNDA birincil DNS sunucusunu belirtmek için StorSimple için Windows PowerShell kullanırsınız. Birincil DNS sunucusunu yalnızca Windows PowerShell arabirimi aracılığıyla yeniden yapılandırabilirsiniz. Cihazınızın birincil `Set-HcsDNSClientServerAddress` DNS sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için [set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet sözdizimi ' ne gidin.
+**BIRINCIL DNS sunucusu** -ilk kurulum SıRASıNDA birincil DNS sunucusunu belirtmek için StorSimple için Windows PowerShell kullanırsınız. Birincil DNS sunucusunu yalnızca Windows PowerShell arabirimi aracılığıyla yeniden yapılandırabilirsiniz. `Set-HcsDNSClientServerAddress`Cihazınızın BIRINCIL DNS sunucusunu değiştirmek için cmdlet 'ini kullanın. Daha fazla bilgi için [set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet sözdizimi ' ne gidin.
 
-**IKINCIL DNS sunucusu** -ikincil DNS sunucusunu değiştirmek için, Azure Portal StorSimple `Set-HcsDNSClientServerAddress` cihazınızın Windows PowerShell arabirimindeki cmdlet 'ini kullanın. **Network settings**
+**IKINCIL DNS sunucusu** -ikincil DNS sunucusunu değiştirmek için, `Set-HcsDNSClientServerAddress` Azure Portal StorSimple cihazınızın Windows PowerShell arabirimindeki cmdlet 'ini kullanın. **Network settings**
 
 Azure portal ikincil DNS sunucusunu değiştirmek için aşağıdaki adımları gerçekleştirin.
 

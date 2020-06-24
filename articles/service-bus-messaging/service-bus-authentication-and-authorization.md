@@ -11,35 +11,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 06/11/2020
 ms.author: aschhab
-ms.openlocfilehash: 7234e33c04e742c77630f8d87481c7831fb00bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc5f81d55f3a9dd337cc56305cf04979e6f00d92
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70013237"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738456"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus kimlik doğrulaması ve yetkilendirme
-
-Uygulamalar, paylaşılan erişim Imzası (SAS) belirteci kimlik doğrulamasını kullanarak Azure Service Bus kaynaklarına erişim kazanır. SAS ile uygulamalar, hem belirteç veren hem de Service Bus (Bu nedenle "paylaşılan") olarak bilinen simetrik bir anahtarla imzalanmış Service Bus için bir belirteç sunar ve bu anahtar, ileti alma/dinleme veya gönderme izni gibi belirli erişim hakları veren bir kuralla doğrudan ilişkilendirilir. SAS kuralları, ad alanı üzerinde veya doğrudan kuyruk veya konu gibi varlıklarda yapılandırılır ve bu da hassas erişim denetimi sağlar.
-
-SAS belirteçleri doğrudan bir Service Bus istemcisi tarafından oluşturulabilir veya istemcinin etkileşime girdiği ara belirteç veren bir uç nokta tarafından oluşturulabilir. Örneğin, bir sistem istemcinin kimliğini ve sistem erişim haklarını kanıtlamak için Active Directory yetkilendirmesi korumalı bir Web hizmeti uç noktası aramasını gerektirebilir ve Web hizmeti, uygun Service Bus belirtecini döndürür. Bu SAS belirteci, Azure SDK 'sına dahil olan Service Bus belirteç sağlayıcısı kullanılarak kolayca oluşturulabilir. 
-
-> [!IMPORTANT]
-> Service Bus ile Azure Active Directory Access Control (Access Control Service veya ACS olarak da bilinir) kullanıyorsanız, bu yöntemin desteğinin artık sınırlı olduğunu ve uygulamanızı SAS kullanacak şekilde geçirmeniz gerektiğini unutmayın. Daha fazla bilgi için [Bu blog gönderisine](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/) ve [Bu makaleye](service-bus-migrate-acs-sas.md)bakın.
+Azure Service Bus kaynaklarına erişimin kimliğini doğrulamak ve bunlara yetki vermek için iki yol vardır: Azure etkinlik dizini (Azure AD) ve paylaşılan erişim Imzaları (SAS). Bu makale, bu iki tür güvenlik mekanizmasını kullanma hakkında ayrıntılı bilgi sağlar. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Service Bus kaynakları için Azure Active Directory (Azure AD) tümleştirmesi, bir istemcinin kaynaklara erişimi üzerinde ayrıntılı denetim için rol tabanlı erişim denetimi (RBAC) sağlar. Rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç, bir Service Bus kaynağına (kuyruk, konu vb.) erişim isteğine yetki vermek için kullanılabilir.
+Service Bus kaynakları için Azure AD tümleştirmesi, bir istemcinin kaynaklara erişimi üzerinde ayrıntılı denetim için rol tabanlı erişim denetimi (RBAC) sağlar. Rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç, bir Service Bus kaynağına (kuyruk, konu vb.) erişim isteğine yetki vermek için kullanılabilir.
 
 Azure AD ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Yönetilen kimliklerle kimlik doğrulaması](service-bus-managed-service-identity.md)
 - [Uygulamadan kimlik doğrulaması yapma](authenticate-application.md)
 
+> [!NOTE]
+> [Service Bus REST API](/rest/api/servicebus/) , OAuth kimlik DOĞRULAMASıNı Azure AD ile destekler.
+
 > [!IMPORTANT]
 > Azure AD tarafından döndürülen OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, belirteçlerin kodunuzda depolanması ve olası güvenlik açıklarına karşı risk altında olması gerekmez. Mümkün olduğunda Azure AD 'yi Azure Service Bus uygulamalarınızla kullanmanızı öneririz. 
-
 
 ## <a name="shared-access-signature"></a>Paylaşılan erişim imzası
 [SAS kimlik doğrulaması](service-bus-sas.md) , bir kullanıcıya belirli haklara sahip Service Bus kaynaklarına erişim izni vermenizi sağlar. Service Bus SAS kimlik doğrulaması, bir Service Bus kaynağında ilişkili haklara sahip bir şifreleme anahtarı yapılandırmasını içerir. İstemciler, erişilmekte olan kaynak URI 'sinden ve yapılandırılan anahtarla imzalanmış bir süre sonu olan bir SAS belirteci sunarak bu kaynağa erişim elde edebilir.
@@ -59,10 +55,15 @@ Bir varlığa erişmek için, istemci belirli bir [Sharedaccessauthorizationrule
 
 Service Bus için SAS kimlik doğrulama desteği, Azure .NET SDK 2,0 ve üzeri sürümlerine dahildir. SAS, [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)için destek içerir. Parametre olarak bir bağlantı dizesini kabul eden tüm API 'Ler SAS bağlantı dizeleri için destek içerir.
 
+> [!IMPORTANT]
+> Service Bus ile Azure Active Directory Access Control (Access Control Service veya ACS olarak da bilinir) kullanıyorsanız, bu yöntemin desteğinin artık sınırlı olduğunu ve [UYGULAMANıZı SAS kullanacak şekilde geçirmeniz](service-bus-migrate-acs-sas.md) ya da Azure AD ile OAuth 2,0 kimlik doğrulaması kullanmanızı (önerilir) unutmayın. ACS 'nin kullanımdan kaldırılması hakkında daha fazla bilgi için [Bu blog gönderisine](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)bakın.
+
 ## <a name="next-steps"></a>Sonraki adımlar
+Azure AD ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- SAS hakkında daha fazla bilgi için [paylaşılan erişim imzalarıyla Service Bus kimlik doğrulaması](service-bus-sas.md) okumaya devam edin.
-- [Azure Active Directory Access Control (ACS) Ile paylaşılan erişim imzası yetkilendirmesi arasında geçiş](service-bus-migrate-acs-sas.md)yapma.
-- [ACS etkin ad alanlarında yapılan değişiklikler](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
-- Azure Relay kimlik doğrulaması ve yetkilendirme hakkında ilgili bilgiler için bkz. [Azure Relay kimlik doğrulaması ve yetkilendirme](../service-bus-relay/relay-authentication-and-authorization.md). 
+- [Yönetilen kimliklerle kimlik doğrulaması](service-bus-managed-service-identity.md)
+- [Uygulamadan kimlik doğrulama](authenticate-application.md)
 
+SAS ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+
+- [SAS ile kimlik doğrulama](service-bus-sas.md)

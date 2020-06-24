@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 680c1b036b9b41edb1115f478fd5dc8f63ea1d02
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b853817b670f59bbfeef9ecd81c70dc63cbd367b
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688038"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804610"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -43,7 +43,7 @@ Azure depolama, üç tür paylaşılan erişim imzasını destekler:
 Paylaşılan erişim imzası, iki formdan birini alabilir:
 
 - Geçici **SAS:** Bir geçici SAS oluşturduğunuzda, sa 'lar için başlangıç zamanı, süre sonu zamanı ve izin izinleri SAS URI 'sinde belirtilmiştir (veya başlangıç saati atlanırsa ima edilir). Her tür SAS bir geçici SAS olabilir.
-- **Depolanan erişim Ilkesiyle HIZMET SAS:** Depolanan erişim ilkesi, bir blob kapsayıcısı, tablo, kuyruk veya dosya paylaşma olabilecek bir kaynak kapsayıcısında tanımlanır. Depolanan erişim ilkesi, bir veya daha fazla hizmet paylaşılan erişim imzalarının kısıtlamalarını yönetmek için kullanılabilir. Bir hizmet SAS 'sini depolanan bir erişim ilkesiyle ilişkilendirdiğinizde, SAS, depolama erişim ilkesi için&mdash;tanımlanan başlangıç zamanı, süre sonu zamanı ve izinleri&mdash;devralır.
+- **Depolanan erişim Ilkesiyle HIZMET SAS:** Depolanan erişim ilkesi, bir blob kapsayıcısı, tablo, kuyruk veya dosya paylaşma olabilecek bir kaynak kapsayıcısında tanımlanır. Depolanan erişim ilkesi, bir veya daha fazla hizmet paylaşılan erişim imzalarının kısıtlamalarını yönetmek için kullanılabilir. Bir hizmet SAS 'sini depolanan bir erişim ilkesiyle ilişkilendirdiğinizde, SAS, &mdash; &mdash; depolama erişim ilkesi için tanımlanan başlangıç zamanı, süre sonu zamanı ve izinleri devralır.
 
 > [!NOTE]
 > Kullanıcı temsili SAS veya hesap SA 'ları bir geçici SAS olmalıdır. Depolanan erişim ilkeleri, Kullanıcı temsili SAS veya hesap SAS 'ları için desteklenmez.

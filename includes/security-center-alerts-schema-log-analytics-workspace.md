@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: data-factory
 author: memildin
 ms.service: data-factory
@@ -17,7 +17,7 @@ ms.locfileid: "79538837"
 ---
 ### <a name="the-data-model-of-the-schema"></a>Şemanın veri modeli
 
-|Alan|Açıklama|
+|Alan|Description|
 |----|----|
 |**AlertName**|Uyarı görünen adı|
 |**AlertType**|benzersiz uyarı tanımlayıcısı|

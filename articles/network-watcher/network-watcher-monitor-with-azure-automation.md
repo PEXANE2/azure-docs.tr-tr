@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845043"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738224"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Ağ Izleyicisi sorunlarını giderme ile VPN ağ geçitlerini izleme
 
@@ -33,7 +33,7 @@ Bağlantı tüneli durumunu denetlemek için kaynak sorun giderme API 'sini kull
 
 Bu senaryo şunları olacaktır:
 
-- Bağlantı durumu sorunlarını gidermek için `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet 'i çağıran bir runbook oluşturma
+- `Start-AzureRmNetworkWatcherResourceTroubleshooting`Bağlantı durumu sorunlarını gidermek için cmdlet 'i çağıran bir runbook oluşturma
 - Bir zamanlamayı runbook 'a bağlama
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -53,7 +53,7 @@ Bu senaryoya başlamadan önce, aşağıdaki önkoşulların olması gerekir:
 
 Örneği yapılandırmanın ilk adımı, runbook 'u oluşturmaktır. Bu örnek, bir farklı çalıştır hesabı kullanır. Farklı Çalıştır hesapları hakkında bilgi edinmek için bkz. [Azure farklı çalıştır hesabı Ile runbook 'Ları kimlik doğrulama](../automation/automation-create-runas-account.md)
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 [Azure Portal](https://portal.azure.com) Azure Otomasyonu ' na gidin ve **runbook 'lar** ' a tıklayın.
 
@@ -79,7 +79,7 @@ Bu adımda, runbook 'a bir ad veriyoruz; Örneğin, **Get-VPNGatewayStatus**olar
 
 ### <a name="step-5"></a>5. Adım
 
-Bu adımda, runbook oluşturulur, aşağıdaki kod örneği örnek için gereken tüm kodu sağlar. \<Değer\> içeren koddaki öğelerin, aboneliğinizdeki değerlerle değiştirilmesini gerekir.
+Bu adımda, runbook oluşturulur, aşağıdaki kod örneği örnek için gereken tüm kodu sağlar. İçeren koddaki öğelerin \<value\> , aboneliğinizdeki değerlerle değiştirilmesini gerekir.
 
 **Kaydet** ' e tıklayarak aşağıdaki kodu kullanın
 
@@ -155,7 +155,7 @@ Yeni bir zamanlamanın oluşturulması gerekir. **Runbook 'a bir zamanlama bağl
 
 ![7. Adım][7]
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 **Zamanlama** dikey penceresinde **Yeni Zamanlama Oluştur ' a** tıklayın.
 
