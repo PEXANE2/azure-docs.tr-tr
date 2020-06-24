@@ -70,8 +70,6 @@
           href: redirect-overview.md
         - name: HTTP üst bilgilerini yeniden üretme
           href: rewrite-http-headers.md
-        - name: Özel hata sayfaları
-          href: custom-error.md
     - name: SSL
       items:
         - name: SSL sonlandırması ve uçtan uca SSL
@@ -240,6 +238,8 @@
           href: log-analytics.md
         - name: Arka uç sistem durumu sorunları
           href: application-gateway-backend-health-troubleshooting.md
+    - name: Özel hata sayfaları
+      href: custom-error.md
     - name: v1'den v2'ye geçiş
       href: migrate-v1-v2.md
 - name: Başvuru

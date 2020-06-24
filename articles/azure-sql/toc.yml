@@ -498,7 +498,7 @@
           items:
             - name: SQL Veritabanına geçiş
               href: database/migrate-to-database-from-sql-server.md
-            - name: Geçişten sonra SQL veritabanını yönetme
+            - name: Geçişten sonra SQL Veritabanını yönetme
               href: database/manage-data-after-migrating-to-database.md
             - name: İçeri/dışarı aktarma (Azure hizmetlerinin devre dışı çalışmasına izin verme)
               href: database/database-import-export-azure-services-off.md
@@ -664,12 +664,15 @@
     - name: Hızlı Başlangıçlar
       href: managed-instance/quickstart-content-reference-guide.md
       items:
-        - name: Oluştur
+        - name: SQL Yönetilen Örnek oluşturma
           items:
-            - name: Azure portalını kullanma
+            - name: Azure portal
               href: managed-instance/instance-create-quickstart.md
-            - name: PowerShell’i kullanma
+            - name: PowerShell
               href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: ARM şablonu
+              displayName: Resource Manager
+              href: managed-instance/create-template-quickstart.md
             - name: Örnek havuzları oluşturma
               href: managed-instance/instance-pools-configure.md
         - name: Yapılandırma
