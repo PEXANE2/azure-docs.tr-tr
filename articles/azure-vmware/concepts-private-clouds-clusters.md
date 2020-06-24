@@ -3,12 +3,12 @@ title: Kavramlar-özel bulutlar ve kümeler
 description: VMware tarafından Azure 'da VMware çözümünde Azure VMware yazılım tanımlı veri merkezlerinin ve vSphere kümelerinin temel özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f51b76b654a43d690aa5c97fa9df99fad1f47d7a
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740388"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906998"
 ---
 # <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware çözümü (AVS) önizleme özel bulut ve küme kavramları
 
@@ -38,7 +38,7 @@ Hiper yakınsama, çıplak altyapı düğümleri, AVS özel bulut kümelerinde k
 
 | Ana Bilgisayar Türü              |             CPU             |   RAM (GB)   |  vSAN NVMe önbellek katmanı (TB, RAW)  |  vSAN SSD kapasite katmanı (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| Yüksek uç (BT)          |  Çift Intel 18 çekirdek 2,3 GHz  |     576      |                3,2               |                15,20               |
+| Yüksek uç (BT)          |  Çift Intel 18 çekirdek 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 Kümeleri derlemek veya ölçeklendirmek için kullanılan konaklar, yalıtılmış bir ana bilgisayar havuzundan elde edilir. Bu konaklar donanım testlerini geçti ve tüm verileri Flash disklerinden güvenli bir şekilde sildi. Bir konağı kümeden kaldırdığınızda, iç diskler güvenli bir şekilde temizlenir ve konaklar, ana bilgisayarların yalıtılmış havuzuna yerleştirilir. Bir kümeye bir konak eklediğinizde, yalıtılmış havuzdan ayıklanmış bir konak kullanılır.
 
@@ -51,7 +51,7 @@ AVS özel bulut kümelerinde kullanılan VMware yazılımının geçerli yazıl�
 | VCSA/vSphere/ESXi |    6,7 U2    | 
 | ESXi                  |    6,7 U2    | 
 | vSAN                  |    6,7 U2    |
-| NSX-T                 |      2,5     |
+| NSX-T                 |      2.5     |
 
 Özel buluttaki herhangi bir yeni küme için, yazılımın sürümü şu anda özel bulutta çalışmakta olan ile eşleşmeyecektir. Bir müşteri aboneliğinde yeni bir özel bulut için, yazılım yığınının en son sürümü yüklenir.
 
@@ -61,10 +61,10 @@ AVS platformu yazılımının genel yükseltme ilkeleri ve işlemleri, yükseltm
 
 Konak bakımı ve yaşam döngüsü yönetimi, özel bulut kümelerinin kapasitesine veya performansına etkilenmeden yapılır. Otomatik ana bilgisayar bakımı örnekleri, bellenim yükseltmeleri ve donanım onarımı ya da değişikliği içerir.
 
-Microsoft, NSX-T Manager ve NSX-T kenarları gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve Kuzey-Güney yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmadan da sorumludur. AVS özel bulutunuzun Yöneticisi olarak ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler gibi NSX-T SDN yapılandırmasından sorumlusunuz.
+Microsoft, NSX-T Manager ve NSX-T Edge gibi NSX-T gereçlerinin yaşam döngüsü yönetiminden sorumludur. Microsoft, katman-0 ağ geçidini oluşturma ve Kuzey-Güney yönlendirmeyi etkinleştirme gibi önyükleme ağ yapılandırmadan da sorumludur. AVS özel bulutunuzun Yöneticisi olarak ağ kesimleri, dağıtılmış güvenlik duvarı kuralları, katman 1 ağ geçitleri ve yük dengeleyiciler gibi NSX-T SDN yapılandırmasından sorumlusunuz.
 
 > [!IMPORTANT]
-> Bir AVS yöneticisinin NSX-T kenarları veya Katman-0 ağ geçidi yapılandırmasını değiştirmemesi gerekir. Bu durum hizmet kaybına neden olabilir.
+> Bir AVS Yöneticisi NSX-T Edge veya Katman-0 ağ geçidi yapılandırmasını değiştirmemelidir. Bu durum hizmet kaybına neden olabilir.
 
 ## <a name="backup-and-restoration"></a>Yedekleme ve geri yükleme
 

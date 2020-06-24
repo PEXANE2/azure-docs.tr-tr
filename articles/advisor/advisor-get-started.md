@@ -3,12 +3,12 @@ title: Azure Advisor’ı kullanmaya başlama
 description: Azure Advisor 'ı kullanmaya başlayın.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: f40aa9d3177f251787d60f3087c5f85b6d982b6e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509126"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117871"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor’ı kullanmaya başlama
 
@@ -27,7 +27,7 @@ Azure portal aracılığıyla Advisor 'a erişmeyi öğrenin, öneriler alın ve
 
 1. Danışman panosu, seçilen tüm abonelikler için önerilerinizin özetini görüntüler.  Abonelik filtresi açılan listesini kullanarak önerilerin görüntülenmesini istediğiniz abonelikleri seçebilirsiniz.
 
-1. Belirli bir kategoriye ilişkin öneriler almak için sekmelerden birine tıklayın: **yüksek kullanılabilirlik**, **güvenlik**, **performans**veya **Maliyet**. 
+1. Belirli bir kategoriye ilişkin öneriler almak için, sekmelerden birine tıklayın: **güvenilirlik**, **güvenlik**, **performans**veya **Maliyet**. 
 
    ![Azure Advisor panosu](./media/advisor-overview/advisor-dashboard.png)
 
@@ -124,7 +124,8 @@ Danışman, önerilerinizi bir Özet indirmenizi sağlar.  Önerilerinizi bir PD
 Advisor hakkında daha fazla bilgi edinmek için bkz.:
 
 - [Azure Advisor 'a giriş](advisor-overview.md)
-- [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
+- [Advisor güvenilirlik önerileri](advisor-high-availability-recommendations.md)
 - [Danışman güvenlik önerileri](advisor-security-recommendations.md)
 - [Advisor performans önerileri](advisor-performance-recommendations.md)
 - [Danışman maliyet önerileri](advisor-cost-recommendations.md)
+- [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)

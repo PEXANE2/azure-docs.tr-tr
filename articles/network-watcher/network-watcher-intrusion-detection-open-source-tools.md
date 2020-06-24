@@ -8,23 +8,23 @@ author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474917"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737368"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Ağ Izleyicisi ve açık kaynak araçları ile ağ üzerinden izinsiz bir algılama gerçekleştirme
 
 Paket yakalamaları, ağ izinsiz giriş algılama sistemleri (KIMLIKLER) uygulamak ve ağ güvenliği Izleme (NSM) gerçekleştirmek için önemli bir bileşendir. Paket yakalamalarını işleyen ve olası ağ yetkisiz ve kötü amaçlı etkinliklerin imzalarını gösteren çeşitli açık kaynak KIMLIĞI araçları vardır. Ağ Izleyicisi tarafından sunulan paket yakalamalarını kullanarak ağınızı herhangi bir zararlı yetkisiz kullanım veya güvenlik açığına karşı çözümleyebilirsiniz.
 
-Bu tür açık kaynaklı bir araç, ağ trafiğini izlemek için RuleSets kullanan ve şüpheli olaylar gerçekleştiğinde uyarıları tetikleyen bir KIMLIK altyapısı olan Suricata ' dır. Suricata, çok iş parçacıklı bir altyapı sunar, yani ağ trafiği analizini daha yüksek hız ve verimlilik ile gerçekleştirebiliyor. Suricata ve özellikleri hakkında daha fazla ayrıntı için, adresindeki https://suricata-ids.org/Web sitesini ziyaret edin.
+Bu tür açık kaynaklı bir araç, ağ trafiğini izlemek için RuleSets kullanan ve şüpheli olaylar gerçekleştiğinde uyarıları tetikleyen bir KIMLIK altyapısı olan Suricata ' dır. Suricata, çok iş parçacıklı bir altyapı sunar, yani ağ trafiği analizini daha yüksek hız ve verimlilik ile gerçekleştirebiliyor. Suricata ve özellikleri hakkında daha fazla ayrıntı için, adresindeki Web sitesini ziyaret edin https://suricata-ids.org/ .
 
 ## <a name="scenario"></a>Senaryo
 
@@ -48,7 +48,7 @@ Tüm diğer yükleme yöntemleri için bkz.https://suricata.readthedocs.io/en/su
     sudo sudo apt-get install suricata
     ```
 
-1. Yüklemenizi doğrulamak için komutunu `suricata -h` çalıştırarak komutların tam listesini görüntüleyin.
+1. Yüklemenizi doğrulamak için komutunu çalıştırarak `suricata -h` komutların tam listesini görüntüleyin.
 
 ### <a name="download-the-emerging-threats-ruleset"></a>Gelişen tehditler kural kümesini indirin
 
@@ -80,7 +80,7 @@ Surıata 'nın ürettiği Günlükler, ağımızda neler olduğu hakkında değe
 
 #### <a name="install-elasticsearch"></a>Elaa aramasını yükleme
 
-1. 5,0 ve üzeri sürümler için esnek yığın Java 8 gerektirir. Sürümünüzü denetlemek için `java -version` komutunu çalıştırın. Java yüklü değilse, [Azure-suppored JDKs](https://aka.ms/azure-jdks)ile ilgili belgelere başvurun.
+1. 5,0 ve üzeri sürümler için esnek yığın Java 8 gerektirir. `java -version`Sürümünüzü denetlemek için komutunu çalıştırın. Java yüklü değilse, [Azure-suppored JDKs](https://aka.ms/azure-jdks)ile ilgili belgelere başvurun.
 
 1. Sisteminiz için doğru ikili paketi indirin:
 
@@ -125,13 +125,13 @@ Elastik arama yükleme hakkında daha fazla yönerge için, sayfa [yüklemeye](h
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. Sıradaki. json dosyasının çıktısından okumak için Logstash yapılandırması gerekir. Şunu kullanarak bir logstash. conf dosyası oluşturun:
+1. Daha sonra, dosyadaki eve.jsçıktısından okumak için Logstash yapılandırması gerekir. Şunu kullanarak bir logstash. conf dosyası oluşturun:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Dosyasına aşağıdaki içeriği ekleyin (arif. json dosyasının yolunun doğru olduğundan emin olun):
+1. Dosyasına aşağıdaki içeriği ekleyin (eve.jsdosyadaki yolun doğru olduğundan emin olun):
 
     ```ruby
     input {
@@ -203,7 +203,7 @@ Elastik arama yükleme hakkında daha fazla yönerge için, sayfa [yüklemeye](h
     }
     ```
 
-1. Logstash 'in dosyayı alabilmesi için, bu JSON dosyasına doğru izinleri verdiğinizden emin olun.
+1. Logstash 'in dosyayı alabilmesi için eve.jsdosyasına doğru izinleri verdiğinizden emin olun.
     
     ```
     sudo chmod 775 /var/log/suricata/eve.json

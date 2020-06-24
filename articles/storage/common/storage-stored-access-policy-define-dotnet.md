@@ -1,26 +1,27 @@
 ---
-title: .NET-Azure depolama ile depolanan bir erişim ilkesi tanımlama
-description: .NET istemci kitaplığını kullanarak depolanan bir erişim ilkesini nasıl tanımlayacağınızı öğrenin.
+title: .NET ile depolanan bir erişim ilkesi oluşturma
+titleSuffix: Azure Storage
+description: .NET istemci kitaplığını kullanarak depolanan bir erişim ilkesi oluşturmayı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 06/16/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b56851929cafa7d5fd1266e4500056de5329919
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68990747"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974424"
 ---
-# <a name="define-a-stored-access-policy-with-net"></a>.NET ile depolanan bir erişim ilkesi tanımlama
+# <a name="create-a-stored-access-policy-with-net"></a>.NET ile depolanan bir erişim ilkesi oluşturma
 
 Depolanan erişim ilkesi, sunucu tarafında hizmet düzeyi paylaşılan erişim imzaları (SAS) üzerinde ek bir denetim düzeyi sağlar. Depolanan erişim ilkesini tanımlama, paylaşılan erişim imzalarını gruplamak ve ilke tarafından bağlanan paylaşılan erişim imzaları için ek kısıtlamalar sağlamak için kullanılır. Bir SAS için başlangıç zamanını, süre sonu zamanını veya izinleri değiştirmek ya da verildikten sonra iptal etmek için bir saklı erişim ilkesi kullanabilirsiniz.
   
- Aşağıdaki depolama kaynakları, depolanan erişim ilkelerini destekler:  
+Aşağıdaki Azure depolama kaynakları, depolanan erişim ilkelerini destekler:  
   
 - Blob kapsayıcıları  
 - Dosya paylaşımları  
@@ -32,9 +33,73 @@ Depolanan erişim ilkesi, sunucu tarafında hizmet düzeyi paylaşılan erişim 
 >
 > Depolanan erişim ilkeleri yalnızca bir hizmet SAS için desteklenir. Saklı erişim ilkeleri, hesap SAS veya Kullanıcı temsili SAS için desteklenmez.  
 
+Saklı erişim ilkeleri hakkında daha fazla bilgi için bkz. [depolanan erişim Ilkesi tanımlama](/rest/api/storageservices/define-stored-access-policy).
+
 ## <a name="create-a-stored-access-policy"></a>Depolanan erişim ilkesi oluşturma
 
-Aşağıdaki kod, bir kapsayıcıda depolanan erişim ilkesi oluşturur. Kapsayıcıda veya Bloblarında bir hizmet sa 'Sı kısıtlamalarını belirtmek için erişim ilkesini kullanabilirsiniz.
+Depolanan bir erişim ilkesi oluşturmak için temeldeki REST işlemi [kapsayıcı ACL 'si olarak ayarlanır](/rest/api/storageservices/set-container-acl). Bir bağlantı dizesindeki hesap erişim anahtarlarını kullanarak, paylaşılan anahtar aracılığıyla saklı bir erişim ilkesi oluşturma işlemini yetkilendirmelisiniz. Azure AD kimlik bilgileriyle **set Container ACL 'si** işlemini yetkilendirme desteklenmiyor. Daha fazla bilgi için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+
+Aşağıdaki kod örnekleri bir kapsayıcıda depolanan erişim ilkesi oluşturur. Kapsayıcıda veya Bloblarında bir hizmet sa 'Sı kısıtlamalarını belirtmek için erişim ilkesini kullanabilirsiniz.
+
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+Azure depolama için .NET istemci kitaplığı sürüm 12 ' ye sahip bir kapsayıcıda saklı erişim ilkesi oluşturmak için aşağıdaki yöntemlerden birini çağırın:
+
+- [BlobContainerClient. SetAccessPolicy](/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicy)
+- [BlobContainerClient. SetAccessPolicyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicyasync)
+
+Aşağıdaki örnek, bir gün için geçerli olan ve okuma/yazma izinleri veren bir depolanmış erişim ilkesi oluşturur:
+
+```csharp
+async static Task CreateStoredAccessPolicyAsync(string containerName)
+{
+    string connectionString = "";
+
+    // Use the connection string to authorize the operation to create the access policy.
+    // Azure AD does not support the Set Container ACL operation that creates the policy.
+    BlobContainerClient containerClient = new BlobContainerClient(connectionString, containerName);
+
+    try
+    {
+        await containerClient.CreateIfNotExistsAsync();
+
+        // Create one or more stored access policies.
+        List<BlobSignedIdentifier> signedIdentifiers = new List<BlobSignedIdentifier>
+        {
+            new BlobSignedIdentifier
+            {
+                Id = "mysignedidentifier",
+                AccessPolicy = new BlobAccessPolicy
+                {
+                    StartsOn = DateTimeOffset.UtcNow.AddHours(-1),
+                    ExpiresOn = DateTimeOffset.UtcNow.AddDays(1),
+                    Permissions = "rw"
+                }
+            }
+        };
+        // Set the container's access policy.
+        await containerClient.SetAccessPolicyAsync(permissions: signedIdentifiers);
+    }
+    catch (RequestFailedException e)
+    {
+        Console.WriteLine(e.ErrorCode);
+        Console.WriteLine(e.Message);
+    }
+    finally
+    {
+        await containerClient.DeleteAsync();
+    }
+}
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+Azure depolama için .NET istemci kitaplığı sürüm 12 ' ye sahip bir kapsayıcıda saklı erişim ilkesi oluşturmak için aşağıdaki yöntemlerden birini çağırın:
+
+- [CloudBlobContainer. SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [CloudBlobContainer. SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
+
+Aşağıdaki örnek, bir gün için geçerli olan ve okuma, yazma ve listeleme izinleri veren bir depolanmış erişim ilkesi oluşturur:
 
 ```csharp
 private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer container, string policyName)
@@ -46,7 +111,7 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
         // When the start time for the SAS is omitted, the start time is assumed to be the time when Azure Storage receives the request.
         SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
         Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.List |
-            SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Create | SharedAccessBlobPermissions.Delete
+            SharedAccessBlobPermissions.Write
     };
 
     // Get the container's existing permissions.
@@ -58,8 +123,10 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 }
 ```
 
+---
+
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md)
 - [Depolanan erişim ilkesi tanımlama](/rest/api/storageservices/define-stored-access-policy)
-
+- [Azure depolama bağlantı dizelerini yapılandırma](storage-configure-connection-string.md)

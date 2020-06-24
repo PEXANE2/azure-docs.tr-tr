@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 9f9b6614c586d9c7c721dfc59da9c4a9c342b57c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 25a93377c1594fd1f45229ed2d837f02e9c0a46b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062087"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118304"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Hızlı başlangıç: Java SDK ve Azure Cosmos DB Gremlin API 'SI ile bir grafik veritabanı oluşturma
 
@@ -31,7 +31,7 @@ Bu hızlı başlangıçta, Azure portal bir Azure Cosmos DB Gremlin (Graf) API h
 
 ## <a name="prerequisites"></a>Ön koşullar
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Ortam değişkeninizi `JAVA_HOME` JDK 'nin yüklü olduğu klasöre işaret edin.
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). `JAVA_HOME`Ortam değişkeninizi JDK 'nin yüklü olduğu klasöre işaret edin.
 - [Maven ikili Arşivi](https://maven.apache.org/download.cgi). 
 - [Git](https://www.git-scm.com/downloads). 
 
@@ -75,7 +75,7 @@ Aşağıdaki kod parçacıklarının tamamı, *C:\git-samples\azure-Cosmos-DB-Gr
 
 Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/) sürücüsüyle [GREMLIN API](graph-introduction.md) veritabanını kullanır. 
 
-- Gremlin `Client` , *C:\git-samples\azure-Cosmos-DB-Graph-Java-getting-started\src\remote.YAML* dosyasındaki yapılandırmadan başlatılır.
+- Gremlin, `Client` *C:\git-samples\azure-Cosmos-DB-Graph-Java-getting-started\src\remote.YAML* dosyasındaki yapılandırmadan başlatılır.
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -104,8 +104,9 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
     URI değerinin ilk parçasını kopyalayın.
 
-    ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası](./media/create-graph-java/copy-access-key-azure-portal.png)
-2. *Src/Remote. YAML* dosyasını açın ve benzersiz kimlik değerini `$name$` içine `hosts: [$name$.graphs.azure.com]`yapıştırın.
+    :::image type="content" source="./media/create-graph-java/copy-access-key-azure-portal.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
+
+2. *Src/Remote. YAML* dosyasını açın ve benzersiz kimlik değerini `$name$` içine yapıştırın `hosts: [$name$.graphs.azure.com]` .
 
     *Uzak. YAML* 'nin 1. satırı şuna benzer görünmelidir 
 
@@ -168,23 +169,23 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
 1. Azure portal Azure Cosmos DB hesabınızda, **Veri Gezgini**, **örnek grafik**' i ve **Graf**' ı seçin ve ardından **Filtre Uygula**' yı seçin. 
 
-   ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Azure portalındaki Veri Gezgini'nde yeni belge oluşturma":::
 
 2. **Sonuç listesinde**, grafiğe yeni kullanıcıların eklendiğini görürsünüz. **Ben**’i seçin ve kullanıcının robin’e bağlı olduğuna dikkat edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
 
-   ![Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler":::
 
 3. Şimdi birkaç yeni kullanıcı ekleyelim. Grafiğinize veri eklemek için **Yeni köşe** ' ı seçin.
 
-   ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Azure portalındaki Veri Gezgini'nde yeni belge oluşturma":::
 
 4. Etiket kutusuna *kişi* yazın.
 
 5. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin. Graftaki her kişi için benzersiz özellikler oluşturabileceğinizi görürsünüz. Yalnızca kimliği anahtarı gereklidir.
 
-    anahtar|value|Notlar
+    key|değer|Notlar
     ----|----|----
-    id|ashley|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
+    kimlik|ashley|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     cinsiyet|kadın| 
     teknoloji | java | 
 
@@ -199,29 +200,29 @@ Bu Java konsol uygulaması, OSS [Apache TinkerPop](https://tinkerpop.apache.org/
 
 9. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin:
 
-    anahtar|value|Notlar
+    key|değer|Notlar
     ----|----|----
-    id|rakesh|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
+    kimlik|rakesh|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     cinsiyet|erkek| 
     okul|MIT| 
 
 10. **Tamam**’ı seçin. 
 
-11. Grafikteki tüm değerleri göstermek için varsayılan `g.V()` filtreyle **Filtre Uygula** düğmesini seçin. Tüm kullanıcılar **Sonuç listesinde** gösterilir. 
+11. Grafikteki tüm değerleri göstermek için varsayılan filtreyle **Filtre Uygula** düğmesini seçin `g.V()` . Tüm kullanıcılar **Sonuç listesinde** gösterilir. 
 
     Daha fazla veri ekledikçe sonuçlarınızı sınırlamak için filtreleri kullanabilirsiniz. Veri Gezgini, varsayılan olarak bir grafikteki tüm köşeleri almak için `g.V()` kullanır. JSON biçimindeki bir grafikteki tüm köşelerin sayımını döndürmek için, bu değeri `g.V().count()` gibi farklı bir [grafik sorgusu](tutorial-query-graph.md) olarak değiştirebilirsiniz. Filtreyi değiştirdiyseniz, filtreyi olarak `g.V()` yeniden değiştirin ve tüm sonuçları yeniden göstermek Için **Filtreyi Uygula** ' yı seçin.
 
-12. Artık rakesh ve ashley arasında bağlantı kurabilirsiniz. Sonuçlar listesinde **Ashley** ' in seçili **Results** olduğundan emin olun, sonra ![sağ alt köşedeki **hedefler** ' in yanında bulunan bir](./media/create-graph-java/edit-pencil-button.png) grafikteki bir köşenin hedefini Değiştir ' i seçin. Düğmeyi görmek için pencerenizi genişletmeniz gerekebilir.
+12. Artık rakesh ve ashley arasında bağlantı kurabilirsiniz. **Sonuçlar** listesinde **Ashley** ' in seçili olduğundan emin olun, sonra sağ alt köşedeki **hedefler** ' in yanında bulunan bir grafikteki bir köşenin :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="hedefini Değiştir"::: ' i seçin. Düğmeyi görmek için pencerenizi genişletmeniz gerekebilir.
 
-    ![Grafikteki bir köşenin hedefini değiştirme-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Grafikteki bir köşenin hedefini değiştirme-Azure CosmosDB":::
 
 13. **Hedef** kutusunda *Rakesh*girin ve **kenar etiketi** kutusuna *bilir*yazın ve onay kutusunu seçin.
 
-    ![Veri Gezgini bağlantı ekleme-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="Veri Gezgini bağlantı ekleme-Azure CosmosDB":::
 
 14. Sonuç listesinden **rakesh**’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
 
-    ![Veri Gezgini bağlı iki köşe-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-graph-explorer.png" alt-text="Veri Gezgini bağlı iki köşe-Azure CosmosDB":::
 
 Bu işlemle birlikte, bu öğreticideki kaynak oluşturma bölümünü tamamladınız. Grafiğinize köşe eklemeye, var olan köşeleri veya sorguları değiştirmeye devam edebilirsiniz. Şimdi, Azure Cosmos DB’nin sağladığı ölçümleri gözden geçirip kaynakları temizleyelim. 
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: aded023c9f4c045f612e33d32c1e3ac71afddf02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77530308"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974849"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip Redsıs işlem kaynakları için Azure önbelleği için ön ödeme
 
@@ -30,15 +30,15 @@ Kurumsal müşterilerin ve kullandıkça öde müşterilerinin rezervasyon satı
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>Satın almadan önce doğru önbellek boyutunu belirle
 
-Ayırma boyutu, belirli bir bölgedeki ve aynı hizmet katmanını kullanan, var olan veya hemen dağıtılmış bir önbellek tarafından kullanılan işlem Toplam miktarına bağlı olmalıdır.
+Ayırma boyutu, belirli bir bölgedeki mevcut veya hemen dağıtılmış önbellek tarafından kullanılan ve aynı hizmet katmanını kullanan toplam bellek boyutu miktarına bağlı olmalıdır.
 
-Örneğin, bir genel amaç, 5. nesil – 32 sanal çekirdek önbelleği ve iki bellek için iyileştirilmiş, 5. nesil – 16 sanal çekirdek önbelleğinizi kullandığınızı varsayalım. Ayrıca, bir sonraki ay içinde, ek bir genel amaç, 5. nesil – 32 sanal çekirdek veritabanı sunucusu ve bir bellek için iyileştirilmiş, 5. nesil – 16 sanal çekirdek veritabanı sunucusu arasında dağıtmayı planladığınızı varsayalım. En az 1 yılda bu kaynaklara ihtiyacınız olacağını bildiğinizi varsayalım. Bu durumda, tek veritabanı belleği için iyileştirilmiş-5. nesil için 64 (2x32) sanal çekirdekleri, tek veritabanı için 1 yıl ayırma genel amaçlı-5. nesil ve 48 (2x16 + 16) sanal çekirdek 1 yıl ayırması satın almalısınız
+Örneğin, 13 GB ve diğeri de 26 GB olmak üzere iki önbellek kullandığınızı varsayalım. Her ikisine de en az bir yıl gerek duyarsınız. Ayrıca, bir ay boyunca mevcut 13 GB önbellekler için, dönemsel taleplerinizi karşılayacak şekilde ölçeklendirediğinizi ve sonra geri ölçeklendirmenizi varsayalım. Bu durumda, tasarrufları en üst düzeye çıkarmak için 1 P1 önbellek ve 1 P2 önbellek veya 3 P1 önbellekler tek yıllık bir ayırma üzerinde satın alabilirsiniz. Bu miktarın önbelleğiniz arasında nasıl ayrılacağını bağımsız olarak, ayırmış olduğunuz toplam önbellek belleği miktarına göre indirim alacaksınız.
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Redsıs ayrılmış kapasitesi için Azure önbelleği satın alın
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. **Tüm hizmet** > **ayırmaları**' ni seçin.
+2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde önbelleğiniz için yeni bir ayırma satın almak üzere **Redsıs için Azure önbelleği** ' ni seçin.
 4. Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İndirimin alınacağı Redsıs örnekleri için Azure önbelleğinizin gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
 
@@ -48,18 +48,18 @@ Ayırma boyutu, belirli bir bölgedeki ve aynı hizmet katmanını kullanan, var
 
 Aşağıdaki tablo gerekli alanları açıklar.
 
-| Alan | Açıklama |
+| Alan | Description |
 | :------------ | :------- |
 | Abonelik   | Reda için Azure önbelleği için ödeme yapmak üzere kullanılan abonelik, ayrılmış kapasite ayırması. Abonelik üzerindeki ödeme yöntemi, Red, ayrılmış kapasite rezervasyonu için Azure önbelleğinin ön maliyetlerini ücretlendirilmiştir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
 | Kapsam | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Rezervasyon**indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan redsıs örnekleri Için Azure önbelleğine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, rezervasyon indirimi Bu abonelikteki redsıs örnekleri Için Azure önbelleğine uygulanır. </br></br> **Tek kaynak grubu**, ayırma indirimi seçili abonelikteki redsıs örnekleri ve bu abonelik içindeki seçili kaynak grubu Için Azure önbelleğine uygulanır.
 | Bölge | Reddir için Azure önbelleğinin kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
 | Fiyatlandırma katmanı | Redsıs sunucuları için Azure önbelleğinin hizmet katmanı.
-| Sözleşme Dönemi | Bir yıl veya üç yıl
+| Terim | Bir yıl veya üç yıl
 | Miktar | Reda için Azure önbelleği içinde satın alınan işlem kaynakları miktarı, ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve hizmet katmanındaki ayrılan ve fatura iskontosunu alacak olan bir dizi önbelleklerdir. Örneğin, Doğu ABD bölgesinde toplam önbellek kapasitesi olan Redsıs sunucuları için bir Azure önbelleği çalıştırıyorsanız veya çalıştırmayı planlıyorsanız, tüm önbellekler için avantajı en üst düzeye çıkarmak üzere miktarı 26 olarak belirtirsiniz.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
 ## <a name="cache-size-flexibility"></a>Önbellek boyutu esnekliği
 
@@ -77,7 +77,7 @@ Rezervasyon indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen Redsıs ö
 
 * Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-    * [Azure ayırmaları nelerdir?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+    * [Azure Ayrılmış Sanal Makine Örnekleri nedir?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
     * [Azure Ayırmalarını yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
     * [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
     * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)

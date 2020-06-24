@@ -5,16 +5,16 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 70c36f9a18a85b90bb3a66d4083a71a00f61f14e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aa2b82e70b1a1372076483c7405c32b66da377af
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016381"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974441"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service'ten Azure Container Registry ile Kimlik Doğrulaması Yapma
 
-Azure Kubernetes Service (AKS) ile Azure Container Registry (ACR) kullanırken, bir kimlik doğrulama mekanizmasının kurulması gerekir. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulaması yapılandırmak için örnekler sağlanmaktadır. 
+Azure Kubernetes Service (AKS) ile Azure Container Registry (ACR) kullanırken, bir kimlik doğrulama mekanizmasının kurulması gerekir. Bu işlem, ACR 'nize gerekli izinler verilerek CLı ve Portal deneyiminin bir parçası olarak uygulanır. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulaması yapılandırmak için örnekler sağlanmaktadır. 
 
 Azure CLı ile birkaç basit komutlarda ACR tümleştirmesi için AKS tümleştirmesini ayarlayabilirsiniz. Bu tümleştirme, AKS kümesiyle ilişkili hizmet sorumlusuna AcrPull rolünü atar.
 
@@ -23,7 +23,7 @@ Azure CLı ile birkaç basit komutlarda ACR tümleştirmesi için AKS tümleşti
 Bu örneklerde şunlar gerekir:
 
 * **Azure aboneliğinde** **sahip** veya **Azure Hesap Yöneticisi** rolü
-* Azure CLı sürüm 2.0.73 veya üzeri
+* Azure CLı sürüm 2.7.0 veya üzeri
 
 Bir **sahip** veya **Azure Hesap Yöneticisi** rolüne gerek duymamak için bir hizmet sorumlusunu el ile yapılandırabilir veya mevcut bir hizmet sorumlusunu kullanarak aks 'ten ACR 'nin kimliğini doğrulayabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumluları Ile ACR kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md) veya [çekme gizli anahtarı Ile Kubernetes kimlik doğrulaması](../container-registry/container-registry-auth-kubernetes.md).
 
@@ -142,6 +142,10 @@ NAME                                 READY   STATUS    RESTARTS   AGE
 nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
+
+### <a name="troubleshooting"></a>Sorun giderme
+* [ACR tanılama](../container-registry/container-registry-diagnostics-audit-logs.md) hakkında daha fazla bilgi edinin
+* [ACR sistem durumu](../container-registry/container-registry-check-health.md) hakkında daha fazla bilgi edinin
 
 <!-- LINKS - external -->
 [AKS AKS CLI]:  https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create

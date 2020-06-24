@@ -3,12 +3,12 @@ title: Azure portal ile kaynak dağıtma
 description: Kaynaklarınızı aboneliğinizdeki bir kaynak grubuna dağıtmak için Azure portal ve Azure Kaynak yönetme 'yi kullanın.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153446"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255271"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM şablonları ve Azure portal kaynak dağıtma
 
@@ -82,11 +82,11 @@ Bir dağıtımı yürütmek, ancak Market 'teki şablonlardan hiçbirini kullanm
 
    ![Arama şablonu dağıtımı](./media/deploy-portal/search-template.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 1. Şablon oluşturmak için çeşitli seçenekler görürsünüz:
 
     - **Düzenleyicide kendi şablonunuzu**oluşturun: Portal şablonu düzenleyicisini kullanarak şablon oluşturma.  Düzenleyici, bir kaynak şablonu şeması ekleyebilir.
-    - **Ortak şablonlar**: bir Linux sanal makinesi, Windows sanal makinesi, bir Web uygulaması ve bır Azure SQL veritabanı oluşturmak için dört ortak şablon vardır.
+    - **Ortak şablonlar**: bir Linux sanal makinesi, Windows sanal makinesi, bir Web uygulaması ve Azure SQL veritabanı 'nda veritabanı oluşturmak için dört ortak şablon vardır.
     - **GitHub hızlı başlangıç şablonu yükleme**: mevcut bir [Hızlı Başlangıç şablonlarını](https://azure.microsoft.com/resources/templates/)kullanın.
 
    ![Görüntüleme seçenekleri](./media/deploy-portal/see-options.png)

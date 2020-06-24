@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 161927e02782a294165b0304c259a63f8336067c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74872137"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118143"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB ile küresel veri dağıtımı-
 
 Azure Cosmos DB, Azure 'daki temel bir hizmettir, bu nedenle dünya çapında genel, bağımsız, Savunma Bakanlığı (DoD) ve kamu bulutları dahil tüm Azure bölgelerinde dağıtılır. Bir veri merkezinde, her biri ayrılmış yerel depolama alanı olan çok büyük bir makine Damgalarında Azure Cosmos DB dağıtıp yönetiyoruz. Bir veri merkezi içinde Azure Cosmos DB, her biri çok sayıda donanımı çalıştıran birçok kümeye dağıtılır. Bir küme içindeki makineler genellikle bölge içinde yüksek kullanılabilirlik için 10-20 hata etki alanı arasında yayılır. Aşağıdaki görüntüde genel dağıtım sistemi topolojisi Cosmos DB gösterilmektedir:
 
-![Sistem topolojisi](./media/global-dist-under-the-hood/distributed-system-topology.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distributed-system-topology.png" alt-text="Sistem topolojisi" border="false":::
 
 **Azure Cosmos DB genel dağıtım, anahtar:** Her zaman, birkaç tıklamayla veya tek bir API çağrısıyla programlama yoluyla, Cosmos veritabanızla ilişkili coğrafi bölgeleri ekleyebilir veya kaldırabilirsiniz. Cosmos veritabanı, sırasıyla bir Cosmos kapsayıcıları kümesinden oluşur. Cosmos DB, kapsayıcılar mantıksal dağıtım ve ölçeklenebilirlik birimleri olarak görev yapar. Oluşturduğunuz koleksiyonlar, tablolar ve grafikler yalnızca Cosmos kapsayıcılarıdır. Kapsayıcılar tamamen şematik ve bir sorgu için kapsam sağlar. Cosmos kapsayıcısındaki veriler, alma sırasında otomatik olarak dizinlenir. Otomatik Dizin oluşturma, kullanıcıların, özellikle de genel olarak dağıtılmış bir kurulumda şema veya dizin yönetimi kurtulur olmadan verileri sorgulamasına olanak sağlar.  
 
@@ -30,7 +30,7 @@ Cosmos DB esnek kullanan bir uygulama, Cosmos kapsayıcısındaki üretilen işi
 
 Aşağıdaki görüntüde gösterildiği gibi, bir kapsayıcı içindeki veriler iki boyut boyunca dağıtılır: bir bölgedeki ve bölgeler arasında, dünya çapındaki:  
 
-![fiziksel bölümler](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fiziksel bölümler" border="false":::
 
 Fiziksel bir bölüm, *çoğaltma kümesi*olarak adlandırılan bir çoğaltmalar grubu tarafından uygulanır. Her makine, yukarıdaki görüntüde gösterildiği gibi, sabit bir işlem kümesi içindeki çeşitli fiziksel bölümlere karşılık gelen yüzlerce çoğaltma barındırır. Fiziksel bölümlere karşılık gelen çoğaltmalar, bir bölgedeki makineler ve bir bölgedeki veri merkezleri arasında dinamik olarak yerleştirildiğinden ve yük dengelemesi yapılır.  
 
@@ -52,7 +52,7 @@ Fiziksel bir bölüm, çoğaltma kümesi olarak adlandırılan birden çok hata 
 
 Her biri Cosmos veritabanı bölgeleriyle yapılandırılmış olan bir grup fiziksel bölüm, yapılandırılan tüm bölgelerde çoğaltılan aynı anahtar kümesini yönetmek için oluşturulur. Bu daha yüksek düzenleme temel yapısına, belirli bir anahtar kümesini yöneten, coğrafi olarak dağıtılmış fiziksel bölümlerin coğrafi olarak dağıtılmış dinamik bir kaplaması olan *bölüm kümesi* adı verilir. Belirli bir fiziksel bölüm (bir çoğaltma kümesi) bir küme içinde kapsamlandırılaken, Bölüm kümesi aşağıdaki görüntüde gösterildiği gibi kümelere, veri merkezlerine ve coğrafi bölgelere yayılabilir:  
 
-![Bölüm kümeleri](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Bölüm kümeleri" border="false":::
 
 Bölüm kümesini, coğrafi olarak dağınık bir "süper çoğaltma-kümesi" olarak düşünebilirsiniz, bu, aynı anahtar kümesine sahip birden fazla çoğaltma kümesinden oluşur. Bir çoğaltma kümesine benzer şekilde, Bölüm kümesinin üyeliği de dinamik olur. belirli bir bölüm kümesine/kaynağından yeni bölümler eklemek/kaldırmak (örneğin, bir kapsayıcıda bir kapsayıcıyı ölçeklendirirseniz, Cosmos veritabanınıza bölge eklemek/kaldırmak, ya da başarısızlık oluştuğunda) için örtük fiziksel bölüm yönetimi işlemlerine göre dalgalanmaktadır. Her bölümün (Bölüm kümesi), Bölüm kümesi üyeliğini kendi çoğaltma kümesi içinde yönetmesine sahip olan sanallaştırmaya göre, üyelik tamamen açık ve yüksek oranda kullanılabilir olur. Bölüm kümesini yeniden yapılandırma sırasında fiziksel bölümler arasındaki kaplamanın topolojisi de oluşturulur. Topoloji, kaynak ve hedef fiziksel bölümler arasındaki tutarlılık düzeyine, coğrafi mesafeye ve kullanılabilir ağ bant genişliğine göre dinamik olarak seçilir.  
 

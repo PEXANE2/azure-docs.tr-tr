@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 893c953562e0d150bd5e8110e5473fd24a2aff83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6924c324c60261fde9a815072ef001fefd868228
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176354"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804783"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Azure CLı kullanarak, müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırma
 
@@ -92,7 +92,7 @@ Azure depolama şifrelemesi ile yalnızca 2048 bit RSA ve RSA-HSM anahtarları d
 
 Varsayılan olarak, Azure depolama şifrelemesi Microsoft tarafından yönetilen anahtarları kullanır. Azure depolama hesabınızı müşteri tarafından yönetilen anahtarlar için yapılandırın ve depolama hesabıyla ilişkilendirilecek anahtarı belirtin.
 
-Depolama hesabının şifreleme ayarlarını güncelleştirmek için, aşağıdaki örnekte gösterildiği gibi [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)' i çağırın. `--encryption-key-source` Parametresini ekleyin ve depolama hesabı için müşteri `Microsoft.Keyvault` tarafından yönetilen anahtarları etkinleştirmek üzere olarak ayarlayın. Örnek, anahtarı depolama hesabıyla ilişkilendirmek için gereken her iki değerin de Anahtar Kasası URI 'sini ve en son anahtar sürümünü sorgular. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Depolama hesabının şifreleme ayarlarını güncelleştirmek için, aşağıdaki örnekte gösterildiği gibi [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update)' i çağırın. Parametresini ekleyin `--encryption-key-source` ve `Microsoft.Keyvault` depolama hesabı için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere olarak ayarlayın. Örnek, anahtarı depolama hesabıyla ilişkilendirmek için gereken her iki değerin de Anahtar Kasası URI 'sini ve en son anahtar sürümünü sorgular. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -134,7 +134,7 @@ az keyvault delete-policy \
 
 ## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı bırak
 
-Müşteri tarafından yönetilen anahtarları devre dışı bıraktığınızda, depolama hesabınız Microsoft tarafından yönetilen anahtarlarla yeniden şifrelenir. Müşteri tarafından yönetilen anahtarları devre dışı bırakmak için, aşağıdaki örnekte gösterildiği gibi [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update) 'i çağırın ve öğesini `--encryption-key-source parameter` olarak `Microsoft.Storage`ayarlayın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
+Müşteri tarafından yönetilen anahtarları devre dışı bıraktığınızda, depolama hesabınız Microsoft tarafından yönetilen anahtarlarla yeniden şifrelenir. Müşteri tarafından yönetilen anahtarları devre dışı bırakmak için, aşağıdaki örnekte gösterildiği gibi [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update) 'i çağırın ve `--encryption-key-source parameter` öğesini olarak ayarlayın `Microsoft.Storage` . Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi ve önceki örneklerde tanımlanan değişkenleri kullanmayı unutmayın.
 
 ```azurecli-interactive
 az storage account update
@@ -145,5 +145,5 @@ az storage account update
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md) 
+- [Bekleyen veri için Azure Depolama şifrelemesi](storage-service-encryption.md) 
 - [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

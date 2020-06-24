@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: tracking-python
-ms.openlocfilehash: 4722e8adadf59f8a4ad7b36a73fad5a6cff3370f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3b5c48053f7015e2bd46045d376cde27ca07d4a7
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560891"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907049"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Python 'da ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -62,10 +62,12 @@ TwiML, bir çağrıyı veya SMS 'yi nasıl işleyebileceğini bilgilendirmek iç
 
 Örnek olarak, aşağıdaki TwiML metin **Merhaba Dünya** konuşmaya dönüştürür.
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-      <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+  <Response>
+    <Say>Hello World</Say>
+  </Response>
+```
 
 Uygulamanız Twilio API 'sini çağırdığında, API parametrelerinden biri TwiML yanıtını döndüren URL 'dir. Geliştirme amacıyla, uygulamalarınız tarafından kullanılan TwiML yanıtlarını sağlamak için Twilio tarafından sağlanmış URL 'Leri kullanabilirsiniz. Ayrıca, TwiML yanıtlarını oluşturmak için kendi URL 'nizi barındırmanıza ve başka bir seçenek de `TwiMLResponse` nesneyi kullanmaktır.
 
@@ -100,17 +102,17 @@ Uygulamanızı Python için Twilio kitaplığını iki şekilde kullanacak şeki
 
 * Python için Twilio kitaplığını bir PIP paketi olarak yükler. Aşağıdaki komutlarla yüklenebilir:
    
-        $ pip install twilio
+  `$ pip install twilio`
 
     -VEYA-
 
 * GitHub () öğesinden Python için Twilio kitaplığını indirin [https://github.com/twilio/twilio-python][twilio_python] ve şu şekilde yükleyin:
 
-        $ python setup.py install
+  `$ python setup.py install`
 
 Python için Twilio kitaplığını yükledikten sonra `import` Python dosyalarınızda bunu yapabilirsiniz:
 
-        import twilio
+  `import twilio`
 
 Daha fazla bilgi için bkz. [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md).
 

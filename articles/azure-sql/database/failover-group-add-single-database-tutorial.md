@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 4df537e8cce51cc7358784fc72ef8ae077614df7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 53645b6ba9f1463eac14ea974a17c356c1791db6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344569"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255322"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Öğretici: bir Azure SQL veritabanını bir oto yük devretme grubuna ekleme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84344569"
 > - İki sunucu arasında veritabanı için bir yük devretme grubu oluşturun.
 > - Yük devretme testi.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 # <a name="the-portal"></a>[Portal](#tab/azure-portal)
 
@@ -225,7 +225,7 @@ Azure portal kullanarak yük devretmeyi test edin.
 1. Örnek veritabanınızı içeren yük devretme grubunuzun yükünü devretmek için görev bölmesinden **Yük devretmeyi** seçin.
 1. TDS oturumlarının kesileceğini bildiren uyarıda **Evet** ' i seçin.
 
-   ![SQL veritabanı 'nda veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
+   ![Veritabanınızı içeren yük devretme grubunuzun yükünü devreder](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
 1. Hangi sunucunun artık birincil olduğunu ve hangi sunucunun ikincil olduğunu gözden geçirin. Yük devretme başarılı olursa iki sunucu, bulunan rolleri değiştirmiş olmalıdır.
 1. Sunucuları özgün rollerine geri dönmek için **Yük devretmeyi** yeniden seçin.
