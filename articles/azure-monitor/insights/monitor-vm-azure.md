@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216435"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945401"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -105,9 +105,9 @@ Tek bir Windows sanal makinesi için tanılama uzantısı 'nı, VM menüsündeki
 Linux sanal makinelerinde telegraf aracılarını yapılandırma hakkında daha fazla bilgi için bkz. [telegraf for Install and configure](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf) . **Tanılama ayarı** menü seçeneği Linux için kullanılabilir, ancak yalnızca Azure Storage 'a veri göndermenize izin verir.
 
 ### <a name="collect-platform-metrics-and-activity-log"></a>Platform ölçümlerini ve etkinlik günlüğünü toplayın
-Azure portal her bir sanal makine konağı için toplanan platform ölçümlerini ve etkinlik günlüğünü görüntüleyebilirsiniz. Bu verileri, sanal makine için toplanan diğer izleme verileriyle çözümlemek için VM'ler için Azure İzleyici aynı Log Analytics çalışma alanına toplayın. Bu koleksiyon bir [Tanılama ayarıyla](../platform/diagnostic-settings.md)yapılandırıldı. [Abonelik için bir tanılama ayarıyla](../platform/diagnostic-settings.md#create-diagnostic-settings-in-azure-portal)etkinlik günlüğünü toplayın.
+Azure portal her bir sanal makine konağı için toplanan platform ölçümlerini ve etkinlik günlüğünü görüntüleyebilirsiniz. Bu verileri, sanal makine için toplanan diğer izleme verileriyle çözümlemek için VM'ler için Azure İzleyici aynı Log Analytics çalışma alanına toplayın. Bu koleksiyon bir [Tanılama ayarıyla](../platform/diagnostic-settings.md)yapılandırıldı. [Abonelik için bir tanılama ayarıyla](../platform/diagnostic-settings.md#create-in-azure-portal)etkinlik günlüğünü toplayın.
 
-Sanal makine için bir tanılama ayarıyla platform ölçümleri toplayın. Diğer Azure kaynaklarından farklı olarak, Azure portal bir sanal makine için tanılama ayarı oluşturamazsınız, ancak [başka bir yöntem](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell)kullanmanız gerekir. Aşağıdaki örneklerde, PowerShell ve CLı kullanarak bir sanal makine için ölçümlerin nasıl toplanacağı gösterilmektedir.
+Sanal makine için bir tanılama ayarıyla platform ölçümleri toplayın. Diğer Azure kaynaklarından farklı olarak, Azure portal bir sanal makine için tanılama ayarı oluşturamazsınız, ancak [başka bir yöntem](../platform/diagnostic-settings.md#create-using-powershell)kullanmanız gerekir. Aşağıdaki örneklerde, PowerShell ve CLı kullanarak bir sanal makine için ölçümlerin nasıl toplanacağı gösterilmektedir.
 
 ```powershell
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
@@ -130,7 +130,7 @@ Bir sanal makine için izleme verileri koleksiyonunu yapılandırdıktan sonra, 
 
 ![Azure portal izleme](media/monitor-vm-azure/monitor-menu.png)
 
-| Menü seçeneği | Açıklama |
+| Menü seçeneği | Description |
 |:---|:---|
 | Genel Bakış | Sanal makine konağı için [Platform ölçümlerini](../platform/data-platform-metrics.md) görüntüler. [Ölçüm Gezgini](../platform/metrics-getting-started.md)'nde bu verilerle çalışmak için bir grafiğe tıklayın. |
 | Etkinlik günlüğü | Geçerli sanal makine için filtrelenmiş [etkinlik günlüğü](../platform/activity-log-view.md) girdileri. |
@@ -148,7 +148,7 @@ Sanal makine menüsünden **ölçümler** ' i açarak, Ölçüm Gezgini 'ni kull
 
 Ölçümler için sanal makineler tarafından kullanılan üç ad alanı vardır:
 
-| Ad Alanı | Açıklama | Gereksinim |
+| Ad Alanı | Description | Gereksinim |
 |:---|:---|:---|
 | Sanal Makine Ana Bilgisayarı | Tüm Azure sanal makineleri için otomatik olarak toplanan konak ölçümleri. [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines)'teki ayrıntılı ölçüm listesi. | Yapılandırma gerekmeden otomatik olarak toplanır. |
 | Konuk (klasik) | Sınırlı bir konuk işletim sistemi ve uygulama performansı verileri kümesi. Ölçüm uyarıları gibi diğer Azure Izleyici özellikleriyle Ölçüm Gezgini 'nde kullanılabilir.  | [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) yüklendi. Veriler Azure depolama alanından okundu.  |

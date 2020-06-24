@@ -1,19 +1,19 @@
 ---
 title: Windows için Azure N serisi AMD GPU sürücü kurulumu
 description: Azure 'da Windows Server veya Windows çalıştıran N serisi VM 'Ler için AMD GPU sürücülerini ayarlama
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: c53396b26d649ba3b6f9adf2409c7c3695bb1822
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4ab6f8dd1c2484ca560fd570f88476f31897b28
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606148"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975205"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere AMD GPU sürücülerini yükler
 
@@ -52,7 +52,7 @@ Aygıt Yöneticisi ' de sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki 
 
 Video RAM dahil GPU görüntüleme özelliklerini doğrulamak için dxdiag 'ı kullanabilirsiniz. Aşağıdaki örnekte, bir Azure NVv4 VM üzerinde Radeon Instinct MI25 kartının 1/2 bölümü gösterilmektedir.
 <br />
-![GPU sürücüsü özellikleri](./media/n-series-amd-driver-setup/dxdiag-output.png)
+![GPU sürücüsü özellikleri](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 Windows 10 derleme 1903 veya sonraki bir sürümü çalıştırıyorsanız, dxdiag ' görüntü ' sekmesinde hiçbir bilgi göstermez. Lütfen en alttaki ' tüm bilgileri Kaydet ' seçeneğini kullanın ve çıkış dosyasında AMD MI25 GPU ile ilgili bilgiler gösterilir.
 

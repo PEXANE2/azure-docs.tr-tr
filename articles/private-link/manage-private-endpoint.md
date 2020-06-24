@@ -4,15 +4,15 @@ description: Azure 'da özel uç nokta bağlantılarını yönetmeyi öğrenin
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75452975"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737504"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Özel Uç Nokta bağlantısını yönetme
 Azure özel bağlantısı, özel bağlantı hizmeti tüketicisinin hizmeti tüketmesi için hizmet sağlayıcısına bir bağlantı isteyebildiğini bir onay çağrı akışı modelinde çalışmaktadır. Hizmet sağlayıcı, tüketicinin bağlanmasına izin verip vermeyeceğine karar verebilir. Azure özel bağlantısı, hizmet sağlayıcılarının kaynakları üzerinde özel uç nokta bağlantısını yönetmesine olanak sağlar. Bu makale, Özel uç nokta bağlantılarının nasıl yönetileceği hakkında yönergeler sağlar.
@@ -26,11 +26,11 @@ Azure özel bağlantısı, özel bağlantı hizmeti tüketicisinin hizmeti tüke
 Aşağıdaki tabloda, çeşitli hizmet sağlayıcısı eylemleri ve özel uç noktalar için ortaya çıkan bağlantı durumları gösterilmektedir.  Hizmet sağlayıcı ayrıca, Özel uç nokta bağlantısının bağlantı durumunu daha sonra tüketici müdahalesi olmadan değiştirebilir. Bu eylem, tüketici tarafındaki uç noktanın durumunu güncelleştirir. 
 
 
-|Hizmet sağlayıcı eylemi   |Hizmet tüketicisi özel uç nokta durumu   |Açıklama   |
+|Hizmet sağlayıcı eylemi   |Hizmet tüketicisi özel uç nokta durumu   |Description   |
 |---------|---------|---------|
-|Hiçbiri    |    Beklemede     |    Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.       |
+|Yok    |    Beklemede     |    Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.       |
 |Onaylama    |  Onaylandı       |  Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir.     |
-|Reddet     | Reddedilen        | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.        |
+|Reddet     | Reddedildi        | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.        |
 |Kaldır    |  Bağlantı kesildi       | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizleme için silinmelidir.        |
 |   |         |         |
    
@@ -51,14 +51,14 @@ Azure PowerShell ve Azure CLı, Microsoft Iş ortağı hizmetlerinde veya müşt
   
 Özel uç nokta bağlantılarını yönetmek için aşağıdaki PowerShell komutlarını kullanın.  
 #### <a name="get-private-link-connection-states"></a>Özel bağlantı bağlantı durumlarını al 
-Özel uç `Get-AzPrivateLinkService` nokta bağlantılarını ve bunların durumlarını almak için cmdlet 'ini kullanın.  
+`Get-AzPrivateLinkService`Özel uç nokta bağlantılarını ve bunların durumlarını almak için cmdlet 'ini kullanın.  
 ```azurepowershell
 Get-AzPrivateLinkService -Name myPrivateLinkService -ResourceGroupName myResourceGroup 
  ```
  
 #### <a name="approve-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama 
  
-Özel bir `Approve-AzPrivateEndpointConnection` uç nokta bağlantısını onaylamak için cmdlet 'ini kullanın. 
+`Approve-AzPrivateEndpointConnection`Özel bir uç nokta bağlantısını onaylamak için cmdlet 'ini kullanın. 
  
 ```azurepowershell
 Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService
@@ -66,20 +66,20 @@ Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceG
  
 #### <a name="deny-private-endpoint-connection"></a>Özel uç nokta bağlantısını reddet 
  
-Özel bir `Deny-AzPrivateEndpointConnection` uç nokta bağlantısını reddetmek için cmdlet 'ini kullanın. 
+`Deny-AzPrivateEndpointConnection`Özel bir uç nokta bağlantısını reddetmek için cmdlet 'ini kullanın. 
 ```azurepowershell
 Deny-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService 
 ```
 #### <a name="remove-private-endpoint-connection"></a>Özel uç nokta bağlantısını kaldır 
  
-Özel bir `Remove-AzPrivateEndpointConnection` uç nokta bağlantısını kaldırmak için cmdlet 'ini kullanın. 
+`Remove-AzPrivateEndpointConnection`Özel bir uç nokta bağlantısını kaldırmak için cmdlet 'ini kullanın. 
 ```azurepowershell
 Remove-AzPrivateEndpointConnection -Name myPrivateEndpointConnection1 -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkServiceName 
 ```
  
 ### <a name="azure-cli"></a>Azure CLI 
  
-Özel `az network private-link-service update` uç nokta bağlantılarınızı yönetmek için kullanın. Bağlantı durumu ```azurecli connection-status``` parametresinde belirtilir. 
+`az network private-link-service update`Özel uç nokta bağlantılarınızı yönetmek için kullanın. Bağlantı durumu ```azurecli connection-status``` parametresinde belirtilir. 
 ```azurecli
 az network private-link-service connection update -g myResourceGroup -n myPrivateEndpointConnection1 --service-name myPLS --connection-status Approved 
 ```

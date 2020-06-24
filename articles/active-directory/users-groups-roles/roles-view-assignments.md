@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20e566a450768fca81e29692f7c8d2da3ccf5201
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259714"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731571"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory özel rol atamalarını görüntüleme
 
@@ -31,7 +31,7 @@ Bu makalede, Azure Active Directory (Azure AD) ' de atadığınız özel rolleri
 
 Bu yordam, bir rolün kurumsal çapta kapsama sahip atamalarını görüntülemeyi açıklar.
 
-1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
+1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com)oturum açın   .
 1. **Azure Active Directory**seçin, **Roller ve yöneticiler**' i seçin ve ardından bu rolü açmak ve özelliklerini görüntülemek için bir rol seçin.
 1. Rolün atamalarını görüntülemek için **atamalar** ' ı seçin.
 
@@ -104,7 +104,7 @@ HTTP/1.1 200 OK
 
 Bu bölümde, tek uygulama kapsamıyla bir rolün atamalarının görüntülenmesi açıklanmaktadır. Bu özellik şu anda genel önizleme aşamasındadır.
 
-1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
+1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com)oturum açın   .
 1. **Uygulama kayıtları**' yi seçin ve ardından özelliklerini görüntülemek için uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
 
     ![Uygulama kayıtları sayfasından uygulama kayıtları oluşturma veya düzenleme](./media/roles-create-custom/appreg-all-apps.png)

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 06/09/2020
+ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7e03f8436d432ffb4e20a442261ccf18c57a3934
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628174"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944787"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,7 +33,7 @@ VNet kavramları, En Iyi uygulamalar ve çok daha fazlası hakkında daha fazla 
 
 Sanal ağ oluşturma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak sanal ağ oluşturma](../../virtual-network/quick-create-portal.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 VNet veya güvenlik duvarının arkasındaki bir depolama hesabına yazma denetimi için aşağıdaki Önkoşullar gereklidir:
 
@@ -145,6 +145,18 @@ SQL denetimini, bir VNet veya güvenlik duvarının arkasındaki bir depolama he
 
 - [Veritabanı denetim Ilkesi oluştur veya güncelleştir (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Sunucu denetim Ilkesi oluştur veya güncelleştir (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
+
+## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
+
+Aşağıdaki örnekte gösterildiği gibi [Azure Resource Manager](../../azure-resource-manager/management/overview.md) şablonu kullanarak sanal ağ ve güvenlik duvarının arkasındaki bir depolama hesabında veritabanı olaylarını yazmak için denetim yapılandırabilirsiniz:
+
+> [!IMPORTANT]
+> Sanal ağın ve güvenlik duvarının arkasındaki depolama hesabını kullanmak için **isStorageBehindVnet** parametresini true olarak ayarlamanız gerekir
+
+- [Denetim günlüklerini blob depolamaya yazmak için etkin denetim ile Azure SQL Server dağıtma](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+
+> [!NOTE]
+> Bağlantılı örnek, bir dış ortak havuzda bulunur ve ' olduğu gibi ', garanti olmadan ve herhangi bir Microsoft destek programı/hizmeti kapsamında desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

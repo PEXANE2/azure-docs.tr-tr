@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258492"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692607"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code için Service Fabric
 
@@ -56,7 +56,7 @@ Java geliştirmesi için aşağıdaki önkoşulların yüklü olması gerekir:
 2. VS Code sol tarafındaki **etkinlik çubuğunda** uzantılar simgesine tıklayın. "Service Fabric" araması yapın. Service Fabric Reliable Services uzantısı için **yüklensin** ' e tıklayın.
 
 ## <a name="commands"></a>Komutlar
-VS Code için Service Fabric Reliable Services uzantısı, geliştiricilerin Service Fabric projeleri oluşturup dağıtmalarına yardımcı olmak için birçok komut sağlar. **Komut paletinden** komutları çağırarak `(Ctrl + Shift + p)`, giriş çubuğuna komut adını yazarak ve istem listesinden istenen komutu seçebilirsiniz. 
+VS Code için Service Fabric Reliable Services uzantısı, geliştiricilerin Service Fabric projeleri oluşturup dağıtmalarına yardımcı olmak için birçok komut sağlar. **Komut paletinden** komutları çağırarak `(Ctrl + Shift + p)` , giriş çubuğuna komut adını yazarak ve istem listesinden istenen komutu seçebilirsiniz. 
 
 * Service Fabric: uygulama oluştur 
 * Service Fabric: uygulama yayımlama 
@@ -87,10 +87,10 @@ VS Code için Service Fabric Reliable Services uzantısı, geliştiricilerin Ser
 5.  Yeni hizmet, proje dizininizde görüntülenir. 
 
 ### <a name="service-fabric-publish-application"></a>Service Fabric: uygulama yayımlama
-**Service Fabric: Publish Application** komutu, Service Fabric uygulamanızı uzak bir kümede dağıtır. Hedef küme güvenli ya da güvensiz bir küme olabilir. Cloud. JSON içinde parametreler ayarlanmamışsa, uygulama yerel kümeye dağıtılır.
+**Service Fabric: Publish Application** komutu, Service Fabric uygulamanızı uzak bir kümede dağıtır. Hedef küme güvenli ya da güvensiz bir küme olabilir. Parametreler on üzerinde Cloud.jsayarlanmamışsa, uygulama yerel kümeye dağıtılır.
 
-1.  Uygulama ilk kez oluşturulduğunda, proje dizininde bir Cloud. JSON dosyası oluşturulur.
-2.  Cloud. json dosyasında bağlanmak istediğiniz kümenin değerlerini girin.
+1.  Uygulama ilk kez oluşturulduğunda, proje dizininde bir Cloud.jsdosyası oluşturulur.
+2.  Cloud.jsdosyaya bağlanmak istediğiniz küme için değerleri girin.
 3.  **Service Fabric: uygulamayı Yayımla** komutunu seçin.
 4.  Uygulamanın yüklendiğini onaylamak için hedef kümeyi Service Fabric Explorer görüntüleyin. 
 
@@ -98,8 +98,8 @@ VS Code için Service Fabric Reliable Services uzantısı, geliştiricilerin Ser
 **Service Fabric: Deploy Application** komutu, Service Fabric uygulamanızı yerel kümenize dağıtır. Komutunu kullanmadan önce yerel kümenizin çalıştığından emin olun. 
 
 1. **Service Fabric: uygulamayı dağıt** komutunu seçin
-2. Uygulamanın yüklendiğini onaylamak için Service Fabric Explorer yerel kümeyi (http\/:/localhost: 19080/Explorer) ile görüntüleyin. Bu işlem biraz zaman alabilir, bu nedenle sabırlı olun.
-3. Ayrıca, yerel bir kümeye dağıtılacak Cloud. json dosyasında hiçbir parametre ayarlanmamış **Service Fabric: Publish Application** komutunu da kullanabilirsiniz.
+2. Uygulamanın yüklendiğini onaylamak için Service Fabric Explorer yerel kümeyi (http: \/ /localhost: 19080/Explorer) ile görüntüleyin. Bu işlem biraz zaman alabilir, bu nedenle sabırlı olun.
+3. Ayrıca, yerel bir kümeye dağıtmak için Cloud.jsüzerinde hiçbir parametre ayarlanmamış **Service Fabric: Publish Application** komutunu da kullanabilirsiniz.
 
 > [!NOTE]
 > Java uygulamalarını yerel kümeye dağıtmak Windows makinelerinde desteklenmez.

@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/30/2020
-ms.openlocfilehash: 5549f9eaf2bc44dfa7e99df04fd7864dd4b655ce
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.date: 6/11/2020
+ms.openlocfilehash: 0b23b01faf1b6ba09f1c55db2ddabd1696e452be
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610908"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738116"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda Gelen Verileri Çoğaltma yapılandırma
 
-Bu makalede, ana ve çoğaltma sunucularını yapılandırarak MariaDB için Azure veritabanı 'nda Gelen Verileri Çoğaltma nasıl ayarlanacağı açıklanır. Bu makalede, MariaDB sunucuları ve veritabanları ile ilgili bir önceki deneyim olduğunu varsaymaktadır.
+Bu makalede, ana ve çoğaltma sunucularını yapılandırarak MariaDB için Azure veritabanı 'nda [gelen verileri çoğaltma](concepts-data-in-replication.md) nasıl ayarlanacağı açıklanır. Bu makalede, MariaDB sunucuları ve veritabanları ile ilgili bir önceki deneyim olduğunu varsaymaktadır.
 
-MariaDB hizmeti için Azure veritabanı hizmetinde bir çoğaltma oluşturmak için, Gelen Verileri Çoğaltma verileri şirket içinde, sanal makinelerde (VM) veya bulut veritabanı hizmetlerinde bulunan ana MariaDB sunucusundan eşitler.
+MariaDB hizmeti için Azure veritabanı hizmetinde bir çoğaltma oluşturmak için, [gelen verileri çoğaltma](concepts-data-in-replication.md) verileri şirket içinde, sanal makinelerde (VM) veya bulut veritabanı hizmetlerinde bulunan ana MariaDB sunucusundan eşitler. Gelen Verileri Çoğaltma, MariaDB’de yerel olan ikili günlük (binlog) dosya konumuna dayalı çoğaltmayı temel alır. Binlog çoğaltma hakkında daha fazla bilgi edinmek için bkz. [binlog Çoğaltmaya genel bakış](https://mariadb.com/kb/en/library/replication-overview/).
 
 Bu makaledeki adımları gerçekleştirmeden önce, verileri çoğaltmanın [sınırlamalarını ve gereksinimlerini](concepts-data-in-replication.md#limitations-and-considerations) gözden geçirin.
 

@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77619928"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738507"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG akış günlüklerini okuma
 
@@ -96,7 +96,7 @@ $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscription
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-`$blockList` Değişken, blob içindeki blokların bir listesini döndürür. Her Blok Blobu en az iki blok içerir.  İlk blok `12` bayt uzunluğuna sahiptir, bu blok JSON günlüğünün sol köşeli ayracını içerir. Diğer blok, kapanış ayraçları ve `2` bayt uzunluğuna sahiptir.  Aşağıdaki örnek günlükte, her biri tek bir giriş olmak üzere, burada yedi giriş olduğunu görebilirsiniz. Günlükteki tüm yeni girişler son bloğundan önce son sağa eklenir.
+`$blockList`Değişken, blob içindeki blokların bir listesini döndürür. Her Blok Blobu en az iki blok içerir.  İlk blok bayt uzunluğuna sahiptir `12` , bu blok JSON günlüğünün sol köşeli ayracını içerir. Diğer blok, kapanış ayraçları ve bayt uzunluğuna sahiptir `2` .  Aşağıdaki örnek günlükte, her biri tek bir giriş olmak üzere, burada yedi giriş olduğunu görebilirsiniz. Günlükteki tüm yeni girişler son bloğundan önce son sağa eklenir.
 
 ```
 Name                                         Length Committed
@@ -114,7 +114,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>Blok Blobu okuyun
 
-Sonra, verileri almak için `$blocklist` değişkeni okumanız gerekir. Bu örnekte, blok listesinden yineliyoruz, her bloktaki baytları okur ve bunları bir dizi içinde hikaye. Verileri almak için [Downloadrangetobytearray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) metodunu kullanın.
+Sonra, `$blocklist` verileri almak için değişkeni okumanız gerekir. Bu örnekte, blok listesinden yineliyoruz, her bloktaki baytları okur ve bunları bir dizi içinde hikaye. Verileri almak için [Downloadrangetobytearray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) metodunu kullanın.
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
@@ -158,7 +158,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Artık `$valuearray` dizi her bloğun dize değerini içerir. Girişi doğrulamak için, öğesini çalıştırarak `$valuearray[$valuearray.Length-2]`dizideki son değeri alın. Son değeri, kapanış ayracı olduğu için istemezsiniz.
+Artık `$valuearray` dizi her bloğun dize değerini içerir. Girişi doğrulamak için, öğesini çalıştırarak dizideki son değeri alın `$valuearray[$valuearray.Length-2]` . Son değeri, kapanış ayracı olduğu için istemezsiniz.
 
 Bu değerin sonuçları aşağıdaki örnekte gösterilmiştir:
 

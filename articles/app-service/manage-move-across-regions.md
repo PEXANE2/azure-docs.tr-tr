@@ -4,18 +4,18 @@ description: App Service kaynaklarını bir bölgeden diğerine taşımayı öğ
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77925715"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945486"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service uygulamasını başka bir bölgeye taşıma
 
 Bu makalede App Service kaynaklarının farklı bir Azure bölgesine nasıl taşınacağı açıklanır. Birkaç nedenden dolayı kaynaklarınızı başka bir bölgeye taşıyabilirsiniz. Örneğin, yeni bir Azure bölgesinden yararlanmak için, yalnızca belirli bölgelerde bulunan özellikleri veya hizmetleri dağıtmak, iç ilke ve idare gereksinimlerini karşılamak veya kapasite planlama gereksinimlerine yanıt vermek için.
 
-App Service kaynaklar bölgeye özeldir ve bölgeler arasında taşınamaz. Hedef bölgede mevcut App Service kaynaklarınızın bir kopyasını oluşturmanız ve içeriğinizi yeni uygulamaya taşımanız gerekir. Kaynak uygulamanız özel bir etki alanı kullanıyorsa, işiniz bittiğinde [hedef bölgedeki yeni uygulamaya geçirebilirsiniz](manage-custom-dns-migrate-domain.md) .
+App Service kaynaklar bölgeye özeldir ve bölgeler arasında taşınamaz. Hedef bölgede mevcut App Service kaynaklarınızın bir kopyasını oluşturmanız ve ardından içeriğinizi yeni uygulamaya taşımanız gerekir. Kaynak uygulamanız özel bir etki alanı kullanıyorsa, işiniz bittiğinde [hedef bölgedeki yeni uygulamaya geçirebilirsiniz](manage-custom-dns-migrate-domain.md) .
 
 Uygulamanızı daha kolay bir şekilde kopyalamak için, [tek bir App Service uygulamasını](app-service-web-app-cloning.md) başka bir bölgedeki bir App Service planına kopyalayabilirsiniz, ancak özellikle de Linux uygulamalarını desteklemeyen [kısıtlamalar](app-service-web-app-cloning.md#current-restrictions)vardır.
 
@@ -46,7 +46,7 @@ Kullanmakta olduğunuz tüm App Service kaynaklarını belirler. Örneğin:
 1. [Kaynak uygulamanın yedeklemesini oluşturun](manage-backup.md).
 1. [Hedef bölgede yeni bir App Service planında bir uygulama oluşturun](app-service-plan-manage.md#create-an-app-service-plan).
 2. [Hedef uygulamada yedeklemeyi geri yükleme](web-sites-restore.md)
-2. Özel bir etki alanı kullanıyorsanız, preemptively ile `awverify.` [hedef uygulamaya bağlayın](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively) ve [Hedef uygulamadaki etki alanını etkinleştirin](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app).
+2. Özel bir etki alanı kullanıyorsanız, [preemptively ile hedef uygulamaya bağlayın](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively) `awverify.` ve [Hedef uygulamadaki etki alanını etkinleştirin](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app).
 3. Hedef uygulamanızdaki diğer her şeyi, kaynak uygulamayla aynı olacak şekilde yapılandırın ve yapılandırmanızı doğrulayın.
 4. Özel etki alanı için hedef uygulamayı işaret etmeye hazırsanız, [etki alanı adını yeniden eşleyin](manage-custom-dns-migrate-domain.md#remap-the-active-dns-name).
 

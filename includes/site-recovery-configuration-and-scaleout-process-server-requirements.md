@@ -1,20 +1,20 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/10/2018
+ms.date: 06/23/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 1aaec104e9130eeef723c6505e04e3317271566b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234220"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85292096"
 ---
 **Yapılandırma ve işlem sunucusu gereksinimleri**
 
@@ -37,7 +37,7 @@ Boş disk alanı (bekletme diski) | 600 GB
 İşletim sistemi | Windows Server 2012 R2 <br> Windows Server 2016
 İşletim sistemi yerel ayarı | İngilizce (en-*)
 Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V 
-Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazlasını öğrenin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Önceden var olan varsayılan Web sitesi yok <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir 
 FIPS (Federal bilgi Işleme standartları) | FIPS modunu etkinleştirmeyin
 |
@@ -52,15 +52,13 @@ NIC türü | VMXNET3 (yapılandırma sunucusu bir VMware sanal makinesi ise)
  |
 **Internet erişimi** (sunucunun doğrudan veya proxy aracılığıyla aşağıdaki URL 'lere erişmesi gerekir):|
 \*.backup.windowsazure.com | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
-\*.store.core.windows.net | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
-\*.blob.core.windows.net | Çoğaltılan verileri depolayan depolama hesabına erişmek için kullanılır
+\*.blob.core.windows.net | Çoğaltılan verileri depolayan depolama hesabına erişmek için kullanılır. Önbellek depolama hesabınızın belirli bir URL 'sini sağlayabilirsiniz.
 \*.hypervrecoverymanager.windowsazure.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır
-https:\//management.azure.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır 
-*.services.visualstudio.com | Telemetri amaçları için kullanılır (isteğe bağlı)
+https:\//login.microsoftonline.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır 
 time.nist.gov | Sistem ve genel saat arasındaki saat eşitlemesini denetlemek için kullanılır
 time.windows.com | Sistem ve genel saat arasındaki saat eşitlemesini denetlemek için kullanılır
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//Login.Live.com </li><li> https:\//Graph.Windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.Live.com </li><li> https:\//www.Microsoft.com </li></ul> | OVF kurulumunun bu URL 'lere erişmesi gerekiyor. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır.
-https:\//dev.MySQL.com/Get/downloads/MySQLInstaller/MySQL-installer-Community-5.7.20.0.msi  | MySQL indirme işleminin tamamlanmasını sağlar. </br> Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da beyaz listeye eklendiğinden emin olun.
+| <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https: \/ /login.Live.com </li><li> https: \/ /Graph.Windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com (Isteğe bağlı) </li><li> https: \/ /www.Live.com </li><li> https: \/ /www.Microsoft.com </li></ul> | OVF kurulumunun bu ek URL 'lere erişmesi gerekiyor. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL indirme işleminin tamamlanmasını sağlar. </br> Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da beyaz listeye eklendiğinden emin olun.
 |
 
 ## <a name="required-software"></a>Gerekli yazılımlar

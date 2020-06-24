@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 208f0d73b4c8bb11adc9c73796ebc6a622f5ed50
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797369"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118177"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB etcd API 'sine giriş (Önizleme)
 
@@ -31,7 +31,7 @@ Azure Cosmos DB, etcd sürüm 3 ' ün kablo protokolünü uygular ve [ana düğ�
 
 Aşağıdaki diyagramda bir Kubernetes kümesinin bileşenleri gösterilmektedir. Küme yöneticisinde, API sunucusu yerel olarak yüklü etcd yerine Azure Cosmos DB etcd API 'sini kullanır. 
 
-![Etcd tel protokolünü uygulama Azure Cosmos DB](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
+:::image type="content" source="./media/etcd-api-introduction/etcd-api-wire-protocol.png" alt-text="Etcd tel protokolünü uygulama Azure Cosmos DB" border="false":::
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 

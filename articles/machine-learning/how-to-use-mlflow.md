@@ -11,24 +11,27 @@ ms.reviewer: nibaccam
 ms.topic: how-to
 ms.date: 06/04/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 5d6e4bfb3c99d2fb570fea7aaebc7150088f1036
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6dd3efb3e8bbe902d3c8267aff714a8e7f77acc0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559372"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738847"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning (Önizleme) ile model ölçümlerini izleyin ve ML modellerini dağıtın
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, mlflow denemeleri ve Azure Machine Learning bağlamak için mlflow izleme URI 'SI ve günlük API 'si ve [Mlflow izleme](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)olarak bilinen günlüğe kaydetme API 'sinin nasıl etkinleştirileceği gösterilmektedir. Bunun yapılması, şunları yapmanızı sağlar
+Bu makalede, mlflow denemeleri ve Azure Machine Learning bağlamak için mlflow izleme URI 'SI ve günlük API 'si ve [Mlflow izleme](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)olarak bilinen günlüğe kaydetme API 'sinin nasıl etkinleştirileceği gösterilmektedir.  Bunun yapılması, şunları yapmanızı sağlar
 
 + [Azure Machine Learning çalışma](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)alanınızdaki deneme ölçümlerini ve yapıtları izleyin ve günlüğe kaydedin. Denemeleri için MLflow Izlemeyi zaten kullanıyorsanız, çalışma alanı eğitim ölçümlerini ve modellerini depolamak için merkezi, güvenli ve ölçeklenebilir bir konum sağlar.
 
 + MLflow denemeleri 'nizi Azure Machine Learning Web hizmeti olarak dağıtın. Web hizmeti olarak dağıtarak, Azure Machine Learning izleme ve veri DRI algılama işlevlerini üretim modellerinize uygulayabilirsiniz. 
 
 [Mlflow](https://www.mlflow.org) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izleme, bir MLflow bileşeni olan ve denemenizin ortamınız tarafından, uzak bir işlem hedefinde, bir sanal makinede veya Azure Databricks kümesinde yerel olarak, kendi ortamınızda olduğu gibi, eğitim çalıştırma ölçümleri ve model yapıtlarını kaydeder ve izler. 
+
+>[!NOTE]
+> Açık kaynak kitaplığı olarak MLflow sık sık değişir. Bu nedenle, Azure Machine Learning ve MLflow tümleştirmesiyle sunulan işlevlerin Microsoft tarafından tam olarak desteklenmeden bir önizleme olarak değerlendirilmesi gerekir.
 
 Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning çalışma alanınızda bir deneyin çalışma ölçümlerini ve mağaza modeli yapılarını izlersiniz.
 
@@ -44,7 +47,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
  MLflow Izleme yalnızca [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)aracılığıyla kullanılabilen ölçüm günlüğü ve yapıt depolama işlevleri sunar.
 
 
-| | MLflow &nbsp; izleme <!--& Deployment--> | Python SDK Azure Machine Learning |  Azure Machine Learning CLı | Azure Machine Learning Studio|
+| | MLflow &nbsp; izleme & dağıtımı | Python SDK Azure Machine Learning |  Azure Machine Learning CLı | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Çalışma alanını yönet |   | ✓ | ✓ | ✓ |
 | Veri depolarını kullanma  |   | ✓ | ✓ | |
@@ -52,11 +55,10 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 | Yapıtları karşıya yükle | ✓ | ✓ |   | |
 | Ölçümleri görüntüle     | ✓ | ✓ | ✓ | ✓ |
 | İşlemi yönetme   |   | ✓ | ✓ | ✓ |
+| Modelleri dağıtma    | ✓ | ✓ | ✓ | ✓ |
+|Model performansını izleme||✓|  |   |
+| Veri değişikliklerini algılama |   | ✓ |   | ✓ |
 
-<!--| Deploy models    | ✓ | ✓ | ✓ | ✓ |
-|Monitor model performance||✓|  |   |
-| Detect data drift |   | ✓ |   | ✓ |
--->
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [MLflow 'ı yükler.](https://mlflow.org/docs/latest/quickstart.html)
@@ -72,9 +74,6 @@ Azure Machine Learning ile MLflow Izleme, yerel çalıştırmanıza ait günlü�
 ```shell
 pip install azureml-mlflow
 ```
-
->[!NOTE]
->Hizmetin geliştirilmesi için çalışdığımız için, azureml. contrib ad alanı sıklıkla değişir. Bu nedenle, bu ad alanındaki her şey Microsoft tarafından tam olarak desteklenmez ve önizleme olarak değerlendirilmelidir.
 
 `mlflow` [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) Mlflow 'un izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258518"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701209"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Yerel makine geliştirme kurulumundaki hizmetleri izleme ve tanılama
 > [!div class="op_single_selector"]
@@ -40,16 +40,16 @@ Service Fabric, uygulama geliştiricilerinin platformda neler olduğunu anlamala
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>Kendi özel izlemelerinizi uygulama koduna ekleyin
 Service Fabric Visual Studio proje şablonları örnek kod içerir. Kod, Service Fabric 'den sistem izlemelerinin yanı sıra Visual Studio ETW görüntüleyicisinde görüntülenen özel uygulama kodu ETW izlemelerinin nasıl ekleneceğini gösterir. Bu yöntemin avantajı, meta verilerin izlemelere otomatik olarak eklendiğine ve Visual Studio tanılama olayları Görüntüleyicisi 'nin bunları görüntülemesi için zaten yapılandırılmış olması.
 
-**Hizmet şablonlarından** oluşturulan projeler (durum bilgisiz veya durum bilgisi) için yalnızca `RunAsync` uygulamayı arayın:
+**Hizmet şablonlarından** oluşturulan projeler (durum bilgisiz veya durum bilgisi) için yalnızca uygulamayı arayın `RunAsync` :
 
-1. `RunAsync` Yönteminde öğesine `ServiceEventSource.Current.ServiceMessage` yapılan çağrı, uygulama kodundan özel bir ETW izleme örneği gösterir.
-2. **ServiceEventSource.cs** dosyasında, Performans nedenlerinden dolayı yüksek frekanslı olaylar için kullanılması `ServiceEventSource.ServiceMessage` gereken yöntemi için bir aşırı yükleme bulacaksınız.
+1. Yönteminde öğesine yapılan çağrı, `ServiceEventSource.Current.ServiceMessage` `RunAsync` uygulama kodundan özel bir ETW izleme örneği gösterir.
+2. **ServiceEventSource.cs** dosyasında, `ServiceEventSource.ServiceMessage` Performans nedenlerinden dolayı yüksek frekanslı olaylar için kullanılması gereken yöntemi için bir aşırı yükleme bulacaksınız.
 
 **Aktör şablonlarından** oluşturulan projeler için (durum bilgisiz veya Stateful):
 
 1. *ProjectName* 'In Visual Studio projeniz için seçtiğiniz ad olduğu **"ProjectName". cs** dosyasını açın.  
 2. `ActorEventSource.Current.ActorMessage(this, "Doing Work");` *Doworkasync* yönteminde kodu bulun.  Bu, uygulama kodundan yazılmış özel bir ETW izleme örneğidir.  
-3. Dosya **ActorEventSource.cs**' de, Performans nedenlerinden dolayı yüksek frekanslı `ActorEventSource.ActorMessage` olaylar için kullanılması gereken yöntemi için bir aşırı yükleme bulacaksınız.
+3. Dosya **ActorEventSource.cs**' de, `ActorEventSource.ActorMessage` Performans nedenlerinden dolayı yüksek frekanslı olaylar için kullanılması gereken yöntemi için bir aşırı yükleme bulacaksınız.
 
 Hizmet kodunuza özel ETW izleme ekledikten sonra, tanılama olayları görüntüleyicisinde olaylarınızı görmek için uygulamayı yeniden oluşturabilir, dağıtabilir ve çalıştırabilirsiniz. **F5**ile uygulamada hata ayıklaması yaparsanız, tanılama olayları Görüntüleyicisi otomatik olarak açılır.
 

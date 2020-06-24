@@ -8,18 +8,18 @@ author: asudbring
 keywords: IPv6, Azure yük dengeleyici, çift yığın, genel IP, yerel IPv6, mobil, IoT
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045440"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803729"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bir şablon kullanarak IPv6 ile Internet 'e yönelik yük dengeleyici çözümü dağıtma
 
@@ -115,8 +115,8 @@ Bu makalede kullanılan örnek şablon aşağıdaki değişkenleri ve parametrel
 | --- | --- |
 | adminUsername |Sanal makinelerde oturum açmak için kullanılan yönetici hesabının adını belirtin. |
 | adminPassword |Sanal makinelerde oturum açmak için kullanılan yönetici hesabının parolasını belirtin. |
-| dnsNameforIPv4LbIP |Yük dengeleyicinin ortak adı olarak atamak istediğiniz DNS ana bilgisayar adını belirtin. Bu ad, yük dengeleyicinin genel IPv4 adresine çözümlenir. Ad küçük harfle yazılmalıdır ve Regex ile eşleşmelidir: ^ [a-z] [a-Z0-9-]{1,61}[a-Z0-9] $. |
-| dnsNameforIPv6LbIP |Yük dengeleyicinin ortak adı olarak atamak istediğiniz DNS ana bilgisayar adını belirtin. Bu ad, yük dengeleyicinin genel IPv6 adresine çözümlenir. Ad küçük harfle yazılmalıdır ve Regex ile eşleşmelidir: ^ [a-z] [a-Z0-9-]{1,61}[a-Z0-9] $. Bu, IPv4 adresiyle aynı ada sahip olabilir. İstemci bu ad için bir DNS sorgusu gönderdiğinde, ad paylaşıldığında Azure hem A hem de AAAA kayıtlarını döndürür. |
+| dnsNameforIPv4LbIP |Yük dengeleyicinin ortak adı olarak atamak istediğiniz DNS ana bilgisayar adını belirtin. Bu ad, yük dengeleyicinin genel IPv4 adresine çözümlenir. Ad küçük harfle yazılmalıdır ve Regex ile eşleşmelidir: ^ [a-z] [a-Z0-9-] {1,61} [a-Z0-9] $. |
+| dnsNameforIPv6LbIP |Yük dengeleyicinin ortak adı olarak atamak istediğiniz DNS ana bilgisayar adını belirtin. Bu ad, yük dengeleyicinin genel IPv6 adresine çözümlenir. Ad küçük harfle yazılmalıdır ve Regex ile eşleşmelidir: ^ [a-z] [a-Z0-9-] {1,61} [a-Z0-9] $. Bu, IPv4 adresiyle aynı ada sahip olabilir. İstemci bu ad için bir DNS sorgusu gönderdiğinde, ad paylaşıldığında Azure hem A hem de AAAA kayıtlarını döndürür. |
 | vmNamePrefix |VM adı önekini belirtin. Şablon, VM 'Ler oluşturulduğunda ada bir sayı (0, 1, vb.) ekler. |
 | nicNamePrefix |Ağ arabirimi adı ön ekini belirtin. Şablon, ağ arabirimleri oluşturulduğunda ada (0, 1, vb.) bir sayı ekler. |
 | storageAccountName |Var olan bir depolama hesabının adını girin veya şablon tarafından oluşturulacak yeni bir ad belirtin. |

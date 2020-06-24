@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de çıkış trafiğini denetlemek
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 724d270b5ea18dbbd30ff2587e8bea5ee126a9ec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 88be26bb22cf539309ce67716101d7386d9d0513
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264418"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945571"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme düğümleri için çıkış trafiğini denetleme
 
@@ -173,7 +173,7 @@ Windows Server tabanlı düğüm havuzlarını kullanmak için aşağıdaki FQDN
 | FQDN                                    | Bağlantı noktası      | Kullanım      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | Windows ile ilgili ikili dosyaları yüklemek için |
-| mp.microsoft.com, www <span></span> . msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows ile ilgili ikili dosyaları yüklemek için |
+| *. mp.microsoft.com, www <span></span> . msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows ile ilgili ikili dosyaları yüklemek için |
 | kms.core.windows.net | TCP: 1688 | Windows ile ilgili ikili dosyaları yüklemek için |
 
 ## <a name="next-steps"></a>Sonraki adımlar

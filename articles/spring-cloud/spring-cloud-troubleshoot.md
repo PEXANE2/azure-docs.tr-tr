@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277576"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791665"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Yaygın Azure Spring Cloud sorunlarını giderme
 
@@ -49,7 +49,7 @@ Uygulama kilitlenmelerinden hata ayıklaması yaparken, uygulamanın çalışma 
 
   - `TomcatErrorCount`(_Tomcat. Global. Error_): tüm Spring Application özel durumları burada sayılır. Bu sayı büyükse, uygulama günlüklerinizi incelemek için Azure Log Analytics 'ye gidin.
 
-  - `AppMemoryMax`(_JVM. Memory. Max_): uygulama için kullanılabilir maksimum bellek miktarı. Miktar tanımsız olabilir veya tanımlanmışsa zaman içinde değişebilir. Tanımlı ise, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşittir. Ancak, ayrılan *> kullanılan*belleği artırmayı denerse, `OutOfMemoryError` *<= Max* hala doğru olsa bile, bellek ayırma bir iletiyle başarısız olabilir. Böyle bir durumda, `-Xmx` parametresini kullanarak en büyük yığın boyutunu artırmayı deneyin.
+  - `AppMemoryMax`(_JVM. Memory. Max_): uygulama için kullanılabilir maksimum bellek miktarı. Miktar tanımsız olabilir veya tanımlanmışsa zaman içinde değişebilir. Tanımlı ise, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşittir. Ancak, `OutOfMemoryError` ayrılan *> kullanılan*belleği artırmayı denerse, *<= Max* hala doğru olsa bile, bellek ayırma bir iletiyle başarısız olabilir. Böyle bir durumda, parametresini kullanarak en büyük yığın boyutunu artırmayı deneyin `-Xmx` .
 
   - `AppMemoryUsed`(_JVM. Memory. kullanılan_): uygulama tarafından şu anda kullanılmakta olan bellek miktarı (bayt cinsinden). Normal bir Java uygulaması için, bu ölçüm serisi, bellek kullanımı artmasıyla küçük artışlarla arttığı ve azaldıkça ve daha sonra model yinelenirse bir *testere dişi* modelini oluşturur. Bu ölçüm serisi, Java sanal makinesi içindeki çöp toplama işlemi nedeniyle, koleksiyon eylemlerinin testere dişi deseninin düştüğini gösterdiği yerdir.
     
@@ -111,7 +111,7 @@ Ancak Azure [CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cl
 
 Azure yay bulut hizmeti örneğini Kaynak Yöneticisi şablonunu kullanarak ayarlamak istiyorsanız, önce [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlamak](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)için bölümüne bakın.
 
-Azure Spring Cloud Service örneğinin adı, altında `azureapps.io`bir alt etki alanı adı istemek için kullanılır, bu nedenle ad var olan bir adla çakışırsa kurulum başarısız olur. Etkinlik günlüklerinde daha fazla ayrıntı bulabilirsiniz.
+Azure Spring Cloud Service örneğinin adı, altında bir alt etki alanı adı istemek için kullanılır, bu `azureapps.io` nedenle ad var olan bir adla çakışırsa kurulum başarısız olur. Etkinlik günlüklerinde daha fazla ayrıntı bulabilirsiniz.
 
 ### <a name="i-cant-deploy-a-jar-package"></a>JAR paketini dağıtamıyorum
 
@@ -160,7 +160,7 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek uygulaman
 
 1. `https://<your application test endpoint>/actuator/health` kısmına gidin.  
     - Aşağıdakine benzer bir yanıt `{"status":"UP"}` , uç noktanın etkinleştirildiğini gösterir.
-    - Yanıt negatifse, *POI. xml* dosyanıza aşağıdaki bağımlılığı ekleyin:
+    - Yanıt negatifse, *POM.xml* dosyanıza aşağıdaki bağımlılığı ekleyin:
 
         ```xml
             <dependency>
@@ -169,7 +169,7 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek uygulaman
             </dependency>
         ```
 
-1. Spring Boot çalıştırıcı uç noktası etkinken Azure portal gidin ve uygulamanızın yapılandırma sayfasına bakın.  Adı `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` ve değeri `*` olan bir ortam değişkeni ekleyin. 
+1. Spring Boot çalıştırıcı uç noktası etkinken Azure portal gidin ve uygulamanızın yapılandırma sayfasına bakın.  Adı ve değeri olan bir ortam değişkeni ekleyin `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` `*` . 
 
 1. Uygulamanızı yeniden başlatın.
 
@@ -189,16 +189,18 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek uygulaman
     }
     ```
 
-Adlı `systemEnvironment`alt düğümü arayın.  Bu düğüm, uygulamanızın ortam değişkenlerini içerir.
+Adlı alt düğümü arayın `systemEnvironment` .  Bu düğüm, uygulamanızın ortam değişkenlerini içerir.
 
 > [!IMPORTANT]
-> Uygulamanızı herkese açık hale getirmeden önce ortam değişkenlerinizin görünürlüğünü ters çevirmeyi unutmayın.  Azure portal gidin, uygulamanızın yapılandırma sayfasına bakın ve bu ortam değişkenini silin: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
+> Uygulamanızı herkese açık hale getirmeden önce ortam değişkenlerinizin görünürlüğünü ters çevirmeyi unutmayın.  Azure portal gidin, uygulamanızın yapılandırma sayfasına bakın ve bu ortam değişkenini silin: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Uygulamamın ölçütlerini veya günlüklerini bulamıyorum
 
 Uygulama durumlarının _çalıştığından_ ve _en güncel_olduğundan emin olmak için **uygulama yönetimi** 'ne gidin.
 
-_JVM_ 'den ölçümleri görebiliyorsanız ancak _Tomcat_'ten ölçüm yoksa, `spring-boot-actuator` bağımlılığın uygulama paketinizdeki etkinleştirilip etkinleştirilmediğini ve başarıyla önyükleme yapıp yapmadığını kontrol edin.
+Uygulama paketinizdeki _JMX_ 'in etkin olduğunu görmek için işaretleyin. Bu özellik yapılandırma özelliği ile etkinleştirilebilir `spring.jmx.enabled=true` .  
+
+`spring-boot-actuator`Bağımlılığın uygulama paketinizdeki etkinleştirilip etkinleştirilmediğini ve başarıyla önyükleme yapıp görmediğini denetleyin.
 
 ```xml
 <dependency>

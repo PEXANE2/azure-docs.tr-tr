@@ -4,15 +4,15 @@ description: Bu hızlı başlangıçta, Redsıs için Azure önbelleği ile bir 
 author: yegu-ms
 ms.service: cache
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 06/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 904e15611ae3032c0523d5132fea9973fbfe3f3f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: c9dfc7c9b396ec6ecd27891298ba0b0f1fc3e186
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457125"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117854"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasıyla Redsıs için Azure önbelleğini kullanma 
 
@@ -59,13 +59,13 @@ Daha sonra, uygulama için önbellek oluşturursunuz.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>*CacheSecrets.config* dosyasını düzenlemek için
 
-1. Bilgisayarınızda *Cachegizlilikler. config*adlı bir dosya oluşturun. Örnek uygulamanızın kaynak koduyla iade edilmeyeceği bir konuma koyun. Bu hızlı başlangıç için *CacheSecrets.config* dosyası şu konumda bulunur: *C:\AppSecrets\CacheSecrets.config*.
+1. Bilgisayarınızda *CacheSecrets.config*adlı bir dosya oluşturun. Örnek uygulamanızın kaynak koduyla iade edilmeyeceği bir konuma koyun. Bu hızlı başlangıç için *CacheSecrets.config* dosyası şu konumda bulunur: *C:\AppSecrets\CacheSecrets.config*.
 
 1. *CacheSecrets.config* dosyasını düzenleyin. Ardından aşağıdaki içeriği ekleyin:
 
     ```xml
     <appSettings>
-        <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<access-key>"/>
+        <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
     </appSettings>
     ```
 
@@ -89,7 +89,7 @@ Bu bölümde, Redsıs için Azure önbelleğine yönelik basit bir testi görün
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>Önbellek için uygulama ayarı ile web.config dosyasını güncelleştirme
 
-Uygulamayı yerel olarak çalıştırdığınızda, *Cachegizlilikler. config* dosyasındaki bilgiler redsıs örneği Için Azure önbelleğinize bağlanmak için kullanılır. Daha sonra bu uygulamayı Azure’a dağıtırsınız. O aşamada, uygulamanın bu dosya yerine önbellek bağlantı bilgilerini almak için kullandığı Azure’daki bir uygulama ayarını yapılandırırsınız. 
+Uygulamayı yerel olarak çalıştırdığınızda *CacheSecrets.config* Içindeki bilgiler redsıs örneği Için Azure önbelleğinize bağlanmak için kullanılır. Daha sonra bu uygulamayı Azure’a dağıtırsınız. O aşamada, uygulamanın bu dosya yerine önbellek bağlantı bilgilerini almak için kullandığı Azure’daki bir uygulama ayarını yapılandırırsınız. 
 
 *CacheSecrets.config* dosyası uygulamanızla Azure’a dağıtılmadığından bunu yalnızca uygulamayı yerel olarak test ederken kullanırsınız. Önbellek verilerinize kötü amaçlı erişimi önlemek için bu bilgileri olabildiğince güvende tutun.
 
@@ -103,7 +103,7 @@ Uygulamayı yerel olarak çalıştırdığınızda, *Cachegizlilikler. config* d
 * Önce: `<appSettings>`
 * Sonra`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip harici dosyasının içeriğini birleştirir. Belirtilen dosya bulunamazsa, çalışma zamanı dosya özniteliğini yok sayar. Gizli anahtarlarınız (önbelleğinize bağlantı dizisi) uygulamanız için kaynak kodun bir parçası olarak dahil edilmez. Web uygulamanızı Azure 'a dağıttığınızda, *Cachegizlilikler. config* dosyası dağıtılmaz.
+ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip harici dosyasının içeriğini birleştirir. Belirtilen dosya bulunamazsa, çalışma zamanı dosya özniteliğini yok sayar. Gizli anahtarlarınız (önbelleğinize bağlantı dizisi) uygulamanız için kaynak kodun bir parçası olarak dahil edilmez. Web uygulamanızı Azure 'a dağıttığınızda *CacheSecrets.config* dosyası dağıtılmaz.
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>Uygulamayı StackExchange.Redis kullanacak şekilde yapılandırmak için
 
@@ -131,49 +131,73 @@ ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip 
 3. Yeni önbellekte bazı komutları çalıştıran yeni bir `RedisCache` eylemini desteklemek için `HomeController` sınıfına aşağıdaki yöntemi ekleyin.
 
     ```csharp
-        public ActionResult RedisCache()
+    public ActionResult RedisCache()
+    {
+        ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
+
+        var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
         {
-            ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
+            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+            return ConnectionMultiplexer.Connect(cacheConnection);
+        });
 
-            var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-            {
-                string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-                return ConnectionMultiplexer.Connect(cacheConnection);
-            });
-
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
+        // Connection refers to a property that returns a ConnectionMultiplexer
+        // as shown in the previous example.
             
-            using (ConnectionMultiplexer redis = lazyConnection.Value)
+        using (ConnectionMultiplexer redis = lazyConnection.Value)
+        {
+            IDatabase cache = redis.GetDatabase();
+
+            // Perform cache operations using the cache object...
+
+            // Simple PING command
+            ViewBag.command1 = "PING";
+            ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
+
+            // Simple get and put of integral data types into the cache
+            ViewBag.command2 = "GET Message";
+            ViewBag.command2Result = cache.StringGet("Message").ToString();
+
+            ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
+            ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
+
+            // Demonstrate "SET Message" executed as expected...
+            ViewBag.command4 = "GET Message";
+            ViewBag.command4Result = cache.StringGet("Message").ToString();
+
+            // Get the client list, useful to see if connection list is growing...
+            ViewBag.command5 = "CLIENT LIST";
+            StringBuilder sb = new StringBuilder();
+
+            var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
+            var server = Connection.GetServer(endpoint.Host, endpoint.Port);
+            var clients = server.ClientList();
+
+            sb.AppendLine("Cache response :");
+            foreach (var client in clients)
             {
-               IDatabase cache = redis.GetDatabase();
-
-
-               // Perform cache operations using the cache object...
-
-               // Simple PING command
-               ViewBag.command1 = "PING";
-               ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
-
-               // Simple get and put of integral data types into the cache
-               ViewBag.command2 = "GET Message";
-               ViewBag.command2Result = cache.StringGet("Message").ToString();
-
-               ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
-               ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
-
-               // Demonstrate "SET Message" executed as expected...
-               ViewBag.command4 = "GET Message";
-               ViewBag.command4Result = cache.StringGet("Message").ToString();
-
-               // Get the client list, useful to see if connection list is growing...
-               ViewBag.command5 = "CLIENT LIST";
-               ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
-
+                sb.AppendLine(client.Raw);
             }
 
-            return View();
+            ViewBag.command5Result = sb.ToString();
+
+        return View();
+    }
+                
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+        return ConnectionMultiplexer.Connect(cacheConnection);
+    });
+
+    public static ConnectionMultiplexer Connection
+    {
+        get
+        {
+            return lazyConnection.Value;
         }
+    }
+
     ```
 
 4. **Çözüm Gezgini**'nde, **Görünümler** > **Paylaşılan** klasörünü genişletin. Ardından *_Layout.cshtml* dosyasını açın.
@@ -263,7 +287,7 @@ Uygulamayı yerel olarak başarıyla test ettikten sonra Azure’a dağıtabilir
 
 3. **Uygulama Hizmetini Oluştur** iletişim kutusunda aşağıdaki değişiklikleri yapın:
 
-    | Ayar | Önerilen değer | Açıklama |
+    | Ayar | Önerilen değer | Description |
     | ------- | :---------------: | ----------- |
     | **Uygulama adı** | Varsayılan değeri kullanın. | Uygulama adı, Azure’a dağıtıldığında uygulamanın ana bilgisayar adı olur. Gerekirse adı benzersiz hale getirmek için ada bir zaman damgası soneki eklenebilir. |
     | **Abonelik** | Azure aboneliğinizi seçin. | Tüm ilgili barındırma maliyetleri bu aboneliğe yansıtılır. Birden çok Azure aboneliğiniz varsa, istediğiniz aboneliğin seçildiğini doğrulayın.|

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258401"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701175"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Birden çok kapsayıcılı uygulama ve hizmet bildirimi örnekleri
 Aşağıda, çok Kapsayıcılı Service Fabric bir uygulama için uygulama ve hizmet bildirimlerinin örnekleri verilmiştir. Bu örneklerin amacı, hangi ayarların kullanılabildiğini ve bunların nasıl kullanılacağını gösterir. Bu uygulama ve hizmet bildirimleri [Windows Server 2016 kapsayıcı örnek](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) bildirimlerini temel alır.
@@ -269,7 +269,7 @@ Bu bildirimde kullanılacak bir uygulama parametresi. Parametre değeri uygulama
 Hizmet geliştiricisi tarafından oluşturulan bir hizmet bildirimini içeri aktarır. Uygulamadaki her bir bileşen hizmeti için bir hizmet bildirimi içeri aktarılmalıdır. Yapılandırma geçersiz kılmaları ve ilkeler hizmet bildirimi için bildirilebilecek. Daha fazla bilgi için bkz. [Servicemanifestımport öğesi](service-fabric-service-model-schema-elements.md#ServiceManifestImportElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
 ### <a name="servicemanifestref-element"></a>ServiceManifestRef öğesi
-Hizmet bildirimini başvuruya göre içeri aktarır. Şu anda hizmet bildirim dosyası (ServiceManifest. xml) yapı paketinde mevcut olmalıdır. Daha fazla bilgi için bkz. [Servicemanifestref öğesi](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
+Hizmet bildirimini başvuruya göre içeri aktarır. Şu anda hizmet bildirim dosyası (ServiceManifest.xml) yapı paketinde mevcut olmalıdır. Daha fazla bilgi için bkz. [Servicemanifestref öğesi](service-fabric-service-model-schema-elements.md#ServiceManifestRefElementServiceManifestRefTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="policies-element"></a>Policies öğesi
 İçeri aktarılan hizmet bildirimine uygulanacak ilkeleri (bitiş noktası bağlama, paket paylaşımı, farklı çalıştır ve güvenlik erişimi) açıklar. Daha fazla bilgi için bkz. [Policies öğesi](service-fabric-service-model-schema-elements.md#PoliciesElementServiceManifestImportPoliciesTypeComplexTypeDefinedInServiceManifestImportelement)
@@ -342,7 +342,7 @@ Giriş noktası tarafından belirtilen yürütülebilir dosya genellikle uzun s�
  Daha fazla bilgi için bkz. [Containerhost öğesi](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>GörüntüAdı öğesi
-[https://hub.docker.com](https://hub.docker.com) Veya Azure Container Registry için depo ve görüntü. Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Veya Azure Container Registry için depo ve görüntü [https://hub.docker.com](https://hub.docker.com) . Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables öğesi
 Ortam değişkenlerini kapsayıcısına veya exe 'ye geçirin.  Daha fazla bilgi için bkz. [EnvironmentVariables öğesi](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -351,7 +351,7 @@ Ortam değişkenlerini kapsayıcısına veya exe 'ye geçirin.  Daha fazla bilgi
 Ortam değişkeni. Daha fazla bilgi için bkz. [Environmentvariable öğesi](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage öğesi
-Bir Settings. xml dosyası içeren name özniteliğiyle adlandırılan bir klasörü bildirir. Bu dosya, işlemin çalışma zamanında okuyabildiği Kullanıcı tanımlı, anahtar-değer çifti ayarlarının bölümlerini içerir. Yükseltme sırasında, yalnızca ConfigPackage sürümü değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Daha fazla bilgi için bkz. [Configpackage öğesi](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+Bir Settings.xml dosyası içeren name özniteliğiyle adlandırılan bir klasörü bildirir. Bu dosya, işlemin çalışma zamanında okuyabildiği Kullanıcı tanımlı, anahtar-değer çifti ayarlarının bölümlerini içerir. Yükseltme sırasında, yalnızca ConfigPackage sürümü değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Daha fazla bilgi için bkz. [Configpackage öğesi](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="datapackage-element"></a>DataPackage öğesi
 Statik veri dosyalarını içeren name özniteliğiyle adlandırılan bir klasörü bildirir. Service Fabric, hizmet bildiriminde listelenen veri paketlerinden herhangi biri yükseltildiğinde konak ve destek paketlerinde belirtilen tüm EXEs ve Dllkonakları geri dönüştürecek. Daha fazla bilgi için bkz. [DataPackage öğesi](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
@@ -386,7 +386,7 @@ Giriş noktası tarafından belirtilen yürütülebilir dosya genellikle uzun s�
 Daha fazla bilgi için bkz. [Containerhost öğesi](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>GörüntüAdı öğesi
-[https://hub.docker.com](https://hub.docker.com) Veya Azure Container Registry için depo ve görüntü. Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Veya Azure Container Registry için depo ve görüntü [https://hub.docker.com](https://hub.docker.com) . Daha fazla bilgi için bkz. [GörüntüAdı öğesi](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Commands Öğesi
 Kapsayıcıya virgülle ayrılmış komutların bir listesini geçirin. Daha fazla bilgi için bkz. [Commands öğesi](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
@@ -398,7 +398,7 @@ Ortam değişkenlerini kapsayıcısına veya exe 'ye geçirin.  Daha fazla bilgi
 Ortam değişkeni. Daha fazla bilgi için bkz. [Environmentvariable öğesi](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage öğesi
-Bir Settings. xml dosyası içeren name özniteliğiyle adlandırılan bir klasörü bildirir. Bu dosya, işlemin çalışma zamanında okuyabildiği Kullanıcı tanımlı, anahtar-değer çifti ayarlarının bölümlerini içerir. Yükseltme sırasında, yalnızca ConfigPackage sürümü değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Daha fazla bilgi için bkz. [Configpackage öğesi](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+Bir Settings.xml dosyası içeren name özniteliğiyle adlandırılan bir klasörü bildirir. Bu dosya, işlemin çalışma zamanında okuyabildiği Kullanıcı tanımlı, anahtar-değer çifti ayarlarının bölümlerini içerir. Yükseltme sırasında, yalnızca ConfigPackage sürümü değiştiyse, çalışan işlem yeniden başlatılmaz. Bunun yerine, bir geri çağırma işlemi, dinamik olarak yeniden yüklenmesi için yapılandırma ayarlarının değiştiği süreci bilgilendirir. Daha fazla bilgi için bkz. [Configpackage öğesi](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Resources öğesi
 Bu hizmet tarafından kullanılan ve derlenen kodu değiştirmeden bildirilebilecek ve hizmet dağıtıldığında değiştirilebilen kaynakları açıklar. Bu kaynaklara erişim, uygulama bildiriminin asıl ve Ilke bölümleri aracılığıyla denetlenir. Daha fazla bilgi için bkz. [Resources öğesi](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)

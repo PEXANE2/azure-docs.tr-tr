@@ -3,15 +3,15 @@ title: Depolama için Azure Izleyici ile Azure depolama hizmetlerini izleme | Mi
 description: Bu makalede, Azure depolama hesaplarıyla ilgili performans ve kullanım sorunlarını hızlı bir şekilde anlamak için depolama yöneticileri sağlayan depolama için Azure Izleyici özelliği açıklanır.
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: e69e00eb9db43a76af1d6e541f44f750452cf858
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800066"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944500"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme
 
@@ -46,7 +46,7 @@ Azure Izleyici 'den, aboneliğinizdeki birden çok depolama hesabından işlem, 
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve kullanılabilirliğini görüntülemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Azure portal sol bölmeden **izleyici** ' yi seçin ve **Öngörüler** bölümünde **depolama hesapları**' nı seçin.
 
@@ -228,6 +228,8 @@ Bu örnekte, depolama hesabı kapasite çalışma kitabıyla birlikte çalışı
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
+Genel sorun giderme kılavuzu için, adanmış çalışma kitabı tabanlı Öngörüler [sorun giderme makalesine](troubleshoot-workbooks.md)bakın.
+
 Bu bölüm, depolama için Azure Izleyicisi 'ni kullanırken karşılaşabileceğiniz bazı yaygın sorunların tanılanması ve sorun gidermede size yardımcı olur. Belirli sorununuzla ilgili bilgileri bulmak için aşağıdaki listeyi kullanın.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Performans, kapasite veya kullanılabilirlik sorunlarını çözme
@@ -237,24 +239,6 @@ Depolama için Azure Izleyici ile belirttiğiniz depolamayla ilgili sorunları g
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Neden 200 depolama hesabı görmem yeterlidir?
 
 Seçilen depolama hesaplarının sayısı, seçilen aboneliklerin sayısından bağımsız olarak 200 sınırına sahiptir.
-
-### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Panoda son sabitlenmiş bir kutucuğa tıkladığımda ne olur?
-
-* Kutucukta herhangi bir yere tıkladığınızda, sizi kutucuğun sabitlendiği sekmeye götürür. Örneğin, "depolama hesabına genel bakış" sekmesinde bir grafiği sabitleyebilir, panoda bu kutucuğa tıkladığınızda bu varsayılan görünümü açılır. ancak, kendi kayıtlı kopyaınızdan bir grafiği sabitleyebilir, kaydettiğiniz kopya görünümü açılır.
-* Başlığın sol üst kısmındaki filtre simgesi "kutucuk ayarlarını yapılandır" sekmesini açar.
-* Sağ üst köşedeki elips simgesi size "başlık verilerini özelleştirme", "özelleştirme", "Yenile" ve "Panodan kaldır" seçeneklerini verecektir.
-
-### <a name="what-happens-when-i-save-a-workbook"></a>Çalışma kitabını kaydettiğimde ne olur?
-
-* Bir çalışma kitabını kaydettiğinizde, düzenlemelerinizle çalışma kitabının yeni bir kopyasını oluşturmanıza ve başlığı değiştirmenize olanak sağlar. Kaydetme, çalışma kitabının üzerine yazmaz, geçerli çalışma kitabı her zaman varsayılan görünüm olacaktır.
-* **Kaydedilmemiş** bir çalışma kitabı yalnızca varsayılan görünümüdür.
-
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>Portalda tüm aboneliklerimi neden görmüyorum?
-
-Portal, yalnızca Portal başlatıldığında seçili abonelikler için verileri gösterir. Hangi aboneliklerin seçili olduğunu değiştirmek için sağ üst kısımdaki ' a gidin ve filtre simgesi olan not defterine tıklayın. Bu, Dizin + abonelikler sekmesini gösterir.
-
-![Dizin + abonelik](./media/storage-insights-overview/fqa3.png)
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Kullanılabilirlik için renklendirme ve eşik nasıl değiştirilir?
 
@@ -273,7 +257,7 @@ Kullanılabilirliği ve eşikleri kullanılabilirlik için değiştirme hakkınd
 
     ![Ölçümler 'e gidin ve "Işlemler, toplamlar" üzerinde Düzenle ' ye tıklayın.](./media/storage-insights-overview/fqa7.png)
 
-1. Ardından bölme sayısını değiştirin.
+3. Ardından bölme sayısını değiştirin.
 
     ![Ölçüm parametrelerini seçin "](./media/storage-insights-overview/fqa7-2.png)
 
@@ -282,37 +266,6 @@ Hatalı hata türlerini n + 1 olarak, geriye kalan hatalar için de n + 1 olarak
 ###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Çalışma kitabımı bazı depolama hesabı sırasında kaydettik. Neden şimdi bulamıyorum?
 
 Her çalışma kitabı, bu dosyayı kaydettiğiniz depolama hesabına kaydedilir. Kullanıcının çalışma kitabını kaydettiği belirli bir depolama hesabını bulmayı deneyin. Aksi takdirde, kaynağı (depolama hesabı) bilmeden belirli bir çalışma kitabını bulmanın bir yolu yoktur.
-
-### <a name="what-is-time-range"></a>Zaman aralığı nedir?
-
-Zaman aralığı, belirli bir zaman çerçevesinde verileri gösterir. Örneğin, zaman aralığı 24 saat ise, son 24 saat içindeki verileri gösterir.
-
-### <a name="what-is-time-granularity-time-grain"></a>Zaman ayrıntı düzeyi (zaman çizgisi) nedir?
-
-Zaman ayrıntı düzeyi iki veri noktası arasındaki zaman farkındır. Örneğin, zaman dilimi 1 saniye olarak ayarlandıysa, her saniye ölçüm toplanır.
-
-### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Çalışma kitaplarının herhangi bir bölümünü bir panoya sabitledikten sonra zaman ayrıntı düzeyi nedir?
-
-Varsayılan zaman ayrıntı düzeyi otomatik olarak ayarlanmıştır, şu anda şu anda değiştirilemez.
-
-### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Panodaki çalışma kitabı adımının TimeSpan/Time aralığını değiştirmek Nasıl yaparım? mı?
-
-Varsayılan olarak, pano kutucuğlarınızdaki TimeSpan/Time aralığı 24 saat olarak ayarlanır, bunu değiştirmek için sağ üst köşedeki üç noktaya tıklayın, **kutucuk verilerini Özelleştir**' i seçin, "başlık düzeyinde Pano zaman ayarlarını geçersiz kıl" kutusunu işaretleyin ve ardından açılan menüyü kullanarak bir zaman aralığı seçin.  
-
-![Kutucuğun sağ köşesindeki üç noktayı seçin ve bu verileri Özelleştir ' i seçin](./media/storage-insights-overview/fqa-data-settings.png)
-
-![Kutucuk ayarlarını yapılandır bölümünde, TimeSpan/saat aralığını değiştirmek için TimeSpan açılan listesini seçin](./media/storage-insights-overview/fqa-timespan.png)
-
-### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Çalışma kitabının başlığını veya bir panoya sabitlenmiş bir çalışma kitabı adımını değiştirmek Nasıl yaparım??
-
-Bir panoya sabitlenmiş çalışma kitabının veya çalışma kitabı adımının başlığı, çalışma kitabındaki aynı adı korur. Başlığı değiştirmek için çalışma kitabının kendi kopyasını kaydetmeniz gerekir. Ardından, Kaydet 'e tıklamadan önce çalışma kitabını adlandırın.
-
-![Çalışma kitabının bir kopyasını kaydetmek ve adını değiştirmek için üst kısımdaki Kaydet ' i seçin](./media/storage-insights-overview/fqa-change-workbook-name.png)
-
-Kaydettiğiniz çalışma kitabınızdaki bir adımın adını değiştirmek için adım altında Düzenle ' yi seçin ve ardından ayarların en altındaki dişli ' ı seçin.
-
-![Çalışma kitabı adımının altındaki Düzenle ](./media/storage-insights-overview/fqa-edit.png)
- ![ ' yi seçerek, adım adını değiştirebilmek için ayarların altındaki dişli ' ı seçin.](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

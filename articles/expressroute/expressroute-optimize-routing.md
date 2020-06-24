@@ -4,15 +4,15 @@ description: Bu sayfa, Microsoft ve şirket ağınız arasında bağlanan birden
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: charwen
-ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3a658d4b02501994437691308810ffb9cabcb6d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74080129"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738864"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute Yönlendirmeyi En iyi Duruma Getirme
 Birden çok ExpressRoute bağlantı hattına sahip olduğunuzda, Microsoft'a bağlanmak için birden fazla yolunuz vardır. Sonuç olarak, yetersiz yönlendirme olabilir, diğer bir deyişle, trafiğinizin Microsoft’a ulaşması ve Microsoft’un ağınıza ulaşması daha uzun bir yol alabilir. Ne kadar uzun ağ yolu, o kadar yüksek gecikme. Gecikmenin uygulama performansı ve kullanıcı deneyimi üzerinde doğrudan etkisi vardır. Bu makale, bu sorunu gösterir ve standart yönlendirme teknolojilerini kullanarak yönlendirmenin nasıl iyileştirileceğini açıklar.

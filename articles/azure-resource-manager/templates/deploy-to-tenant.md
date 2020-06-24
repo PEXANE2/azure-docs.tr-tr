@@ -2,13 +2,13 @@
 title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 46e8db865b022e4fa1294c96843553a0480e559f
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 05/08/2020
+ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485455"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945452"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Kiracı düzeyinde kaynaklar oluşturma
 
@@ -90,7 +90,7 @@ REST API için dağıtımları kullanın [-kiracı kapsamında oluşturun veya g
 
 Kiracı düzeyinde dağıtımlar için dağıtım için bir konum sağlamanız gerekir. Dağıtımın konumu, dağıttığınız kaynakların konumundan ayrıdır. Dağıtım konumu, dağıtım verilerinin depolanacağı konumu belirtir.
 
-Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **azuredeploy. JSON** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
+Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **üzerindeazuredeploy.js** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
 Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 

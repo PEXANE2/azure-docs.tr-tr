@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258011"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700894"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure Site Recovery ile Azure ExpressRoute
 
@@ -38,7 +38,7 @@ Yapılandırma sunucusu için [ağ gereksinimlerinin](vmware-azure-configuration
 Şirket içinde ara sunucu kullanıyorsanız ve çoğaltma trafiği için ExpressRoute 'u kullanmak istiyorsanız, yapılandırma sunucusu ve Işlem sunucularında proxy atlama listesini yapılandırmanız gerekir. Aşağıdaki adımları izleyin:
 
 - Sistem Kullanıcı bağlamına erişmek için PsExec aracını [buradan](https://aka.ms/PsExec) indirin.
-- Aşağıdaki komut satırı PsExec-s-i "%ProgramFiles%\Internet Explorer\iexplore.exe" komut satırını çalıştırarak Internet Explorer 'ı sistem kullanıcı bağlamında açın
+- Aşağıdaki komut satırı PsExec-s-i "%ProgramFiles%\Internet Explorer\iexplore.exe" komutunu çalıştırarak Internet Explorer 'ı sistem kullanıcı bağlamında açın
 - IE 'de proxy ayarları ekleme
 - Atlama listesinde, Azure depolama URL 'SI *. blob.core.windows.net ' yi ekleyin
 
@@ -46,7 +46,7 @@ Bu, iletişim proxy üzerinden ilerleirken yalnızca çoğaltma trafiğinin Expr
 
 Sanal makineler veya sunucular bir Azure sanal ağına yük devreden sonra, [özel eşleme](../expressroute/expressroute-circuit-peerings.md#privatepeering)kullanarak bunlara erişebilirsiniz. 
 
-Birleşik senaryo şu diyagramda temsil edilir: ![ExpressRoute ile şirket Içi-Azure arası](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+Birleşik senaryo şu diyagramda temsil edilir: ![ ExpressRoute ile şirket içi-Azure arası](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>ExpressRoute ile Azure 'dan Azure 'a çoğaltma
 

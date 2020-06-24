@@ -4,15 +4,15 @@ description: Azure portal kullanarak HTTP 'den HTTPS 'ye yeniden yönlendirilen 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312091"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804344"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal kullanarak HTTP ile HTTPS yönlendirmesi arasında bir uygulama ağ geçidi oluşturma
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu öğretici, bir sertifika oluşturmak ve IIS yüklemek için Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). Bu öğreticideki komutları çalıştırmak için, Azure ile bağlantı oluşturmak için komutunu `Login-AzAccount` da çalıştırmanız gerekir.
+Bu öğretici, bir sertifika oluşturmak ve IIS yüklemek için Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). Bu öğreticideki komutları çalıştırmak için, `Login-AzAccount` Azure ile bağlantı oluşturmak için komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 
@@ -126,7 +126,7 @@ Oluşturduğunuz kaynaklar arasında iletişim için bir sanal ağ gerekir. Bu �
 6. **Yeniden yönlendirme hedefi**için **dinleyici**' i seçin.
 7. **Hedef dinleyicinin** **Appgatewayhttplistener**olarak ayarlandığından emin olun.
 8. **İçerme sorgu dizesi** ve **Içerme yolu** için *Evet*' i seçin.
-9. **Add (Ekle)** seçeneğini belirleyin.
+9. **Ekle**'yi seçin.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi oluşturma
 
@@ -146,7 +146,7 @@ Bu örnekte uygulama ağ geçidinde arka uç havuzu için sunucu sağlayan bir s
 12. **Ağ**altında, **Yük Dengeleme seçeneklerini seçme** seçeneğinin **Application Gateway**olarak ayarlandığından emin olun.
 13. **Application Gateway** 'In **myappgateway**olarak ayarlandığından emin olun.
 14. **Alt ağın** **mybackendsubnet**olarak ayarlandığından emin olun.
-15. **Oluştur**’u seçin.
+15. **Oluştur**'u seçin.
 
 ### <a name="associate-the-scale-set-with-the-proper-backend-pool"></a>Ölçek kümesini uygun arka uç havuzuyla ilişkilendir
 

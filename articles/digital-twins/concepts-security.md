@@ -1,5 +1,5 @@
 ---
-title: Azure dijital TWINS çözümleri için güvenlik
+title: Azure Digital Twins çözümleri için güvenlik
 titleSuffix: Azure Digital Twins
 description: Azure dijital TWINS ile en iyi güvenlik uygulamalarını anlayın.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1464d1b8da4b9f0389b192f0876ed52ad5e4ad44
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 1a54ec54823d8d002344e26f97db7043433f6da0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613015"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736858"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Rol tabanlı erişim denetimi ile Azure dijital TWINS güvenliğini sağlama
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS güvenliği için, dağıtımınızdaki belirli veriler, kaynaklar ve eylemler üzerinde kesin erişim denetimi imkanı sunar. Bu, **rol tabanlı erişim denetimi (RBAC)** adlı ayrıntılı bir rol ve izin yönetimi stratejisi aracılığıyla yapılır. Azure için RBAC 'in genel ilkelerine [buradan](../role-based-access-control/overview.md)ulaşabilirsiniz.
 
@@ -24,7 +27,7 @@ RBAC, Azure dijital TWINS 'e [Azure Active Directory](../active-directory/fundam
 
 Bir *güvenlik sorumlusu*için, bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek izinler vermek için RBAC kullanabilirsiniz. Güvenlik sorumlusu Azure AD tarafından doğrulanır ve döndürülen bir OAuth 2,0 belirteci alır. Bu belirteç, bir Azure dijital TWINS örneğine erişim isteği yetkilendirmek için kullanılabilir.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 
 Azure AD ile, erişim iki adımlı bir işlemdir. Bir güvenlik sorumlusu (bir Kullanıcı, Grup veya uygulama) Azure dijital TWINS 'e erişmeyi denediğinde, isteğin *kimliğinin doğrulanması* ve *yetkilendirilmiş*olması gerekir. 
 

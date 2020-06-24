@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: f12e9e90b99a055945c34398ff5351334c344253
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bcce08285c7412644de22f19ddd9d821ad3adea7
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77666761"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124406"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)
 Bu makalede, Azure Izleyici 'ye bir REST API istemcisinden günlük verileri göndermek için HTTP Veri Toplayıcı API 'sinin nasıl kullanılacağı gösterilmektedir.  Betik veya uygulamanız tarafından toplanan verilerin nasıl biçimlendirileceğini, bir isteğe dahil edileceğini ve bu isteğin Azure Izleyici tarafından yetkilendirildiğini açıklar.  PowerShell, C# ve Python için örnekler verilmiştir.
@@ -38,7 +38,7 @@ HTTP Veri Toplayıcı API 'sini kullanmak için, JavaScript Nesne Gösterimi (JS
 | Öznitelik | Özellik |
 |:--- |:--- |
 | Yöntem |POST |
-| URI |https://\<customerıd\>. ods.opinsights.Azure.com/api/logs?api-Version=2016-04-01 |
+| URI |https:// \<CustomerId\> . ods.opinsights.Azure.com/api/logs?api-Version=2016-04-01 |
 | İçerik türü |uygulama/json |
 
 ### <a name="request-uri-parameters"></a>İstek URI parametreleri
@@ -49,7 +49,7 @@ HTTP Veri Toplayıcı API 'sini kullanmak için, JavaScript Nesne Gösterimi (JS
 | API Sürümü |Bu istekle birlikte kullanılacak API sürümü. Şu anda 2016-04-01. |
 
 ### <a name="request-headers"></a>İstek üst bilgileri
-| Üst bilgi | Açıklama |
+| Üst bilgi | Description |
 |:--- |:--- |
 | Yetkilendirme |Yetkilendirme imzası. Makalenin ilerleyen kısımlarında, HMAC-SHA256 üst bilgisi oluşturma hakkında bilgi edinebilirsiniz. |
 | Günlük türü |Gönderilen verilerin kayıt türünü belirtin. Yalnızca harf, rakam ve alt çizgi (_) içerebilir ve 100 karakterden uzun olamaz. |
@@ -180,7 +180,7 @@ HTTP durum kodu 200, isteğin işlenmek üzere alındığı anlamına gelir. Bu 
 
 Bu tabloda, hizmetin döndürebileceğini belirten tüm durum kodları listelenmektedir:
 
-| Kod | Durum | Hata kodu | Açıklama |
+| Kod | Durum | Hata kodu | Description |
 |:--- |:--- |:--- |:--- |
 | 200 |Tamam | |İstek başarıyla kabul edildi. |
 | 400 |Hatalı istek |Inactivecustomer |Çalışma alanı kapatıldı. |
@@ -199,7 +199,7 @@ Bu tabloda, hizmetin döndürebileceğini belirten tüm durum kodları listelenm
 | 503 |Hizmet kullanılamıyor |ServiceUnavailable |Hizmet şu anda istekleri almak için kullanılamıyor. Lütfen isteğinizi yeniden deneyin. |
 
 ## <a name="query-data"></a>Verileri sorgulama
-Azure Izleyici HTTP Veri Toplayıcı API 'SI tarafından gönderilen verileri sorgulamak için, belirttiğiniz **LogType** değerine **eşit olan,** **_CL**eklenen kayıtları arayın. Örneğin, **Mycustomlog**kullandıysanız, tüm kayıtları ile `MyCustomLog_CL`döndürün.
+Azure Izleyici HTTP Veri Toplayıcı API 'SI tarafından gönderilen verileri sorgulamak için, belirttiğiniz **LogType** değerine **eşit olan,** **_CL**eklenen kayıtları arayın. Örneğin, **Mycustomlog**kullandıysanız, tüm kayıtları ile döndürün `MyCustomLog_CL` .
 
 ## <a name="sample-requests"></a>Örnek istekler
 Sonraki bölümlerde, farklı programlama dilleri kullanarak Azure Izleyici HTTP Veri Toplayıcı API 'sine nasıl veri göndertireceğiz örnekleri bulacaksınız.
@@ -225,7 +225,7 @@ $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 $LogType = "MyRecordType"
 
 # You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
-$TimeStampField = "DateValue"
+$TimeStampField = ""
 
 
 # Create two records with the same set of properties to create
@@ -467,7 +467,7 @@ post_data(customer_id, shared_key, body, log_type)
 ## <a name="alternatives-and-considerations"></a>Alternatifler ve önemli noktalar
 Veri Toplayıcı API 'SI, Azure günlüklerine serbest biçimli veriler toplamak için gereksinimlerinizin çoğunu kapsasa da, API 'nin bazı sınırlamalarını aşmak için alternatif gerekebilecek örnekler vardır. Tüm seçenekleriniz aşağıda verilmiştir:
 
-| Yapıyı | Açıklama | En uygun |
+| Yapıyı | Description | En uygun |
 |---|---|---|
 | [Özel olaylar](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): APPLICATION INSIGHTS yerel SDK tabanlı alma | Genellikle uygulamanızdaki bir SDK aracılığıyla belgelenmiş olan Application Insights özel olaylar aracılığıyla özel veri göndermenize olanak sağlar. | <ul><li> Uygulamanızda oluşturulan, ancak varsayılan veri türlerinden biri (istekler, bağımlılıklar, özel durumlar vb.) aracılığıyla SDK tarafından çekilmemiş veriler.</li><li> Application Insights ' deki diğer uygulama verileriyle en sık bağıntılı veriler </li></ul> |
 | Azure Izleyici günlüklerinde veri toplayıcı API 'SI | Azure Izleyici günlüklerinde veri toplayıcı API 'SI, verileri almak için tamamen açık uçlu bir yoldur. JSON nesnesinde biçimlendirilen tüm veriler buraya gönderilebilir. Gönderildikten sonra işlenir ve günlüklerde bulunan diğer verilerle bağıntılı veya diğer Application Insights verilerine yönelik Günlükler kullanılabilir. <br/><br/> Verileri bir Azure Blob blob 'una dosya olarak yüklemek oldukça kolaydır, bu dosyaların nerede işleneceğini ve Log Analytics karşıya yükleneceğini buradan yükleyebilirsiniz. Bu tür bir işlem hattının örnek bir uygulanması için lütfen [Bu](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) makaleye bakın. | <ul><li> Application Insights içinde belgelenmiş bir uygulama içinde oluşturulmayan veriler.</li><li> Arama ve olgu tablolarını, başvuru verilerini, ön toplanmış istatistikleri ve benzeri örnekleri içerir. </li><li> Diğer Azure Izleyici verileri (Application Insights, diğer günlük veri türleri, Güvenlik Merkezi, kapsayıcılar/VM 'Ler için Azure Izleyici vb.) için çapraz başvurulacak verilere yöneliktir. </li></ul> |

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 23355abdced3a4073cf90ccf60c14af088a4e564
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324174"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126170"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Eşleme veri akışında derleme ifadeleri
 
@@ -129,6 +129,10 @@ Süreyi dönem 'den bir tarih veya zaman damgasına dönüştürmek için kullan
 ```toTimestamp(1574127407*1000l)```
 
 Önceki ifadenin sonundaki "l" ifadesi, uzun bir tür için satır içi sözdizimi olarak dönüştürmeyi belirtir.
+
+## <a name="find-time-from-epoch-or-unix-time"></a>Dönem veya Unix saatinden zaman bulma
+
+toLong (currentTimestamp ()-toTimestamp (' 1970-01-01 00:00:00.000 ', ' yyyy-AA-GG SS: DD: ss. SSS ')) * 1000L
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

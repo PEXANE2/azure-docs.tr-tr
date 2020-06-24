@@ -10,17 +10,17 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ac5c19866a164bbc927d23495e9d6ec9a1ef6bfe
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996588"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790713"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure rol atamaları ile ilgili sorunlar
 
-- **Add** > **Rol Ekle ataması** Ekle seçeneği devre dışı olduğundan veya `Microsoft.Authorization/roleAssignments/write` **erişim denetimi 'ne (IAM)** Azure Portal bir rol ataması ekleyemezse ya da "nesne kimliği olan istemci, eylemi gerçekleştirmek için yetkilendirmeye izin vermiyor" hatası alırsanız, rolü atamaya çalıştığınız kapsamda [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi izne sahip bir rol atanmış kullanıcıyla oturum açtığınızdan emin olun.
+- Rol Ekle ataması Ekle seçeneği devre dışı olduğundan veya **erişim denetimi 'ne (IAM)** Azure Portal bir rol ataması ekleyemezse **Add**  >  **Add role assignment** ya da "nesne kimliği olan istemci, eylemi gerçekleştirmek için yetkilendirmeye izin vermiyor" hatası alırsanız, `Microsoft.Authorization/roleAssignments/write` rolü atamaya çalıştığınız kapsamda [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi izne sahip bir rol atanmış kullanıcıyla oturum açtığınızdan emin olun.
 
 ## <a name="problems-with-custom-roles"></a>Özel rollerle ilgili sorunlar
 
@@ -63,8 +63,8 @@ $ras.Count
 
 ## <a name="custom-roles-and-management-groups"></a>Özel roller ve yönetim grupları
 
-- Özel bir rol içinde `AssignableScopes` yalnızca bir yönetim grubu tanımlayabilirsiniz. ' Ye `AssignableScopes` bir yönetim grubu eklemek Şu anda önizlemededir.
-- Yönetim grubu kapsamında `DataActions` özel roller atanamaz.
+- Özel bir rol içinde yalnızca bir yönetim grubu tanımlayabilirsiniz `AssignableScopes` . ' Ye bir yönetim grubu eklemek `AssignableScopes` Şu anda önizlemededir.
+- `DataActions`Yönetim grubu kapsamında özel roller atanamaz.
 - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz.
 - Özel roller ve yönetim grupları hakkında daha fazla bilgi için bkz. [Azure Yönetim gruplarıyla kaynaklarınızı düzenleme](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment).
 
@@ -81,7 +81,7 @@ $ras.Count
 ## <a name="access-denied-or-permission-errors"></a>Erişim engellendi veya izin hataları
 
 - "Nesne kimliğine sahip istemcinin kapsam üzerinde işlemi gerçekleştirme yetkisi yok (kod: AuthorizationFailed)" izin hatasını kaynak oluşturmaya çalıştığınızda alıyorsanız, seçilen kapsamda kaynak için yazma iznine sahip bir rolün atanmış olduğu kullanıcı hesabıyla oturum açmış olduğunuzdan emin olun. Örneğin bir kaynak grubundaki sanal makineleri yönetmek için kaynak grubunda (veya üst kapsamda) [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolüne sahip olmanız gerekir. Yerleşik her rolün izinlerinin listesi için bkz. [Azure yerleşik rolleri](built-in-roles.md).
-- "Destek talebi oluşturma izniniz yok" hatasını alırsanız bir destek bileti oluşturmayı veya güncelleştirmeyi denediğinizde şu anda oturum açmış olan bir kullanıcı ile oturum açtığınızdan emin olun, örneğin destek `Microsoft.Support/supportTickets/write` [isteği katılımcısı](built-in-roles.md#support-request-contributor)gibi bir rol atanmış olan
+- "Destek talebi oluşturma izniniz yok" hatasını alırsanız bir destek bileti oluşturmayı veya güncelleştirmeyi denediğinizde şu anda oturum açmış olan bir kullanıcı ile oturum açtığınızdan emin olun `Microsoft.Support/supportTickets/write` , örneğin destek [isteği katılımcısı](built-in-roles.md#support-request-contributor)gibi bir rol atanmış olan
 
 ## <a name="role-assignments-with-identity-not-found"></a>Kimliği olan rol atamaları bulunamadı
 
@@ -112,7 +112,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüyor olmanız halinde boş `principalName`bir durum görebilirsiniz. Örneğin, [az role atama listesi](/cli/azure/role/assignment#az-role-assignment-list) aşağıdaki çıktıya benzer bir rol ataması döndürür:
+Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüyor olmanız halinde boş bir durum görebilirsiniz `principalName` . Örneğin, [az role atama listesi](/cli/azure/role/assignment#az-role-assignment-list) aşağıdaki çıktıya benzer bir rol ataması döndürür:
 
 ```
 {
@@ -143,7 +143,7 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-Bu hata iletisini alırsanız, `-Scope` veya `-ResourceGroupName` parametrelerini de belirttiğinizden emin olun.
+Bu hata iletisini alırsanız, veya parametrelerini de belirttiğinizden emin olun `-Scope` `-ResourceGroupName` .
 
 ```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -153,7 +153,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 Azure Resource Manager bazen, performansı geliştirmek için yapılandırma ve verileri önbelleğe alır. Rol atamaları eklediğinizde veya kaldırdığınızda, değişikliklerin etkili olması 30 dakika kadar sürebilir. Azure portal, Azure PowerShell veya Azure CLı kullanıyorsanız, oturum kapatarak ve oturum açarak rol atama yaptığınız değişiklikleri yenilemeye zorlayabilirsiniz. REST API çağrılarında rol ataması değişikliği yapıyorsanız, erişim belirtecinizi yenileyerek yenilemeye zorlayabilirsiniz.
 
-Yönetim grubu kapsamında bir rol ataması ekler veya kaldırırsanız ve rol varsa `DataActions`, veri düzleminde erişim birkaç saat boyunca güncelleştirilmemiş olabilir. Bu yalnızca yönetim grubu kapsamı ve veri düzlemi için geçerlidir.
+Yönetim grubu kapsamında bir rol ataması ekler veya kaldırırsanız ve rol varsa `DataActions` , veri düzleminde erişim birkaç saat boyunca güncelleştirilmemiş olabilir. Bu yalnızca yönetim grubu kapsamı ve veri düzlemi için geçerlidir.
 
 ## <a name="web-app-features-that-require-write-access"></a>Yazma erişimi gerektiren Web uygulaması özellikleri
 
@@ -205,7 +205,7 @@ Bu öğeler, **sanal makineye** **yazma** erişimi gerektirir:
 * Uç Noktalar  
 * IP adresleri  
 * Diskler  
-* Uzantıları  
+* Uzantılar  
 
 Bunlar, hem **sanal makineye**hem de **kaynak grubuna** (etki alanı adıyla birlikte) **yazma** erişimi gerektirir:  
 

@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 ms.topic: include
 ms.custom: include file
 services: time-series-insights
@@ -16,7 +16,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "76984598"
 ---
-1. [Azure Portal](https://ms.portal.azure.com/)**Yeni kayıt****uygulama kayıtları** >  **Azure Active Directory** > seçin.
+1. [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory**  >  **App registrations**  >  **Yeni kayıt**uygulama kayıtları Azure Active Directory seçin.
 
    [![Azure Active Directory yeni uygulama kaydı](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
@@ -66,11 +66,11 @@ ms.locfileid: "76984598"
    > [!NOTE]
    > Bunun yerine bir sertifikayı içeri aktarma olanağınız vardır. Gelişmiş güvenlik için bir sertifika önerilir. Bir sertifika kullanmak için **sertifikayı karşıya yükle**' yi seçin.
 
-1. Azure Active Directory uygulamanızı Azure zaman serisi öngörülerini ilişkilendirin. **API izinlerini** > **Add a permission** > seçin**Kuruluşumun kullandığı izin API 'leri**ekleyin. 
+1. Azure Active Directory uygulamanızı Azure zaman serisi öngörülerini ilişkilendirin. **API izinlerini**seçin  >  **Add a permission**  >  **Kuruluşumun kullandığı izin API 'leri**ekleyin. 
 
     [![Azure Active Directory uygulamanızla bir API 'YI ilişkilendirme](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 
-   Arama `Azure Time Series Insights` çubuğuna yazın ve ardından öğesini seçin `Azure Time Series Insights`.
+   `Azure Time Series Insights`Arama çubuğuna yazın ve ardından öğesini seçin `Azure Time Series Insights` .
 
 1. Ardından, uygulamanızın gerektirdiği tür API iznini belirtin. Varsayılan olarak, **temsilci izinleri** vurgulanacaktır. Bir izin türü seçin, sonra **Izin Ekle**' yi seçin.
 

@@ -4,11 +4,11 @@ description: Service Fabric kümesine istemci erişiminin kimliğini doğrulamak
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258583"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701228"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Güvenli bir kümeye bağlanma
 
@@ -20,7 +20,7 @@ ms.locfileid: "79258583"
 
 Service Fabric CLı (sfctl) kullanarak güvenli bir kümeye bağlanmanın birkaç farklı yolu vardır. Kimlik doğrulaması için bir istemci sertifikası kullanıyorsanız sertifika bilgilerinin küme düğümlerine dağıtılmış olan bir sertifikayla eşleşmesi gerekir. Sertifikanızın sertifika yetkilileri (CA) varsa, güvenilen CA 'Ları da belirtmeniz gerekir.
 
-`sfctl cluster select` Komutunu kullanarak bir kümeye bağlanabilirsiniz.
+Komutunu kullanarak bir kümeye bağlanabilirsiniz `sfctl cluster select` .
 
 İstemci sertifikaları, sertifika ve anahtar çifti olarak ya da tek bir PFX dosyası olarak iki farklı Fashions içinde belirtilebilir. Parola korumalı ped dosyaları için otomatik olarak parolayı girmeniz istenir. İstemci sertifikasını bir PFX dosyası olarak aldıysanız, önce aşağıdaki komutu kullanarak PFX dosyasını bir PEı dosyasına dönüştürün. 
 
@@ -30,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 . Pfx dosyanız parola korumalı değilse, son parametre için-passin pass: kullanın.
 
-İstemci sertifikasını bir pek dosyası olarak belirtmek için, `--pem` bağımsız değişkeninde dosya yolunu belirtin. Örneğin:
+İstemci sertifikasını bir pek dosyası olarak belirtmek için, bağımsız değişkeninde dosya yolunu belirtin `--pem` . Örneğin:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -38,16 +38,16 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 Parola korumalı ped dosyaları, herhangi bir komut çalıştırılmadan önce parola ister.
 
-Bir sertifika belirtmek için, anahtar çifti her ilgili `--cert` dosyanın `--key` dosya yollarını belirtmek için ve bağımsız değişkenlerini kullanın.
+Bir sertifika belirtmek için, anahtar çifti `--cert` `--key` her ilgili dosyanın dosya yollarını belirtmek için ve bağımsız değişkenlerini kullanın.
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için, `--no-verify` seçeneğini belirtin. Örneğin:
+Bazen test veya geliştirme kümelerinin güvenliğini sağlamak için kullanılan sertifikaların sertifika doğrulaması başarısız olur. Sertifika doğrulamayı atlamak için, seçeneğini belirtin `--no-verify` . Örneğin:
 
 > [!WARNING]
-> Üretim Service Fabric kümelerine bağlanırken `no-verify` seçeneğini kullanmayın.
+> `no-verify`Üretim Service Fabric kümelerine bağlanırken seçeneğini kullanmayın.
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify

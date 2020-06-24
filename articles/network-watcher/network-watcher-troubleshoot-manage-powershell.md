@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 0723ddc9b0e2f15d5c8e51c96d51f58f1313493a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1461f7f9811145553da6c200111d4db1f013060e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673662"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738694"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Azure ağ Izleyicisi PowerShell kullanarak sanal ağ geçidi ve bağlantıları sorunlarını giderme
 
@@ -44,7 +44,7 @@ Kaynak sorunlarını giderme, sanal ağ geçitleri ve bağlantılarıyla ortaya 
 
 ## <a name="retrieve-network-watcher"></a>Ağ İzleyicisini al
 
-İlk adım, ağ Izleyicisi örneğini almak için kullanılır. `$networkWatcher` Değişken, adım 4 ' teki `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 'e geçirilir.
+İlk adım, ağ Izleyicisi örneğini almak için kullanılır. `$networkWatcher`Değişken, `Start-AzNetworkWatcherResourceTroubleshooting` Adım 4 ' teki cmdlet 'e geçirilir.
 
 ```powershell
 $networkWatcher = Get-AzNetworkWatcher -Location "WestCentralUS" 
@@ -70,10 +70,10 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Ağ Izleyicisi kaynak sorunlarını giderme
 
-`Start-AzNetworkWatcherResourceTroubleshooting` Cmdlet 'iyle kaynak sorunlarını giderin. Cmdlet 'i ağ Izleyicisi nesnesi, bağlantının kimliği veya sanal ağ geçidi, depolama hesabı kimliği ve sonuçları depolayacak yol geçiririz.
+Cmdlet 'iyle kaynak sorunlarını giderin `Start-AzNetworkWatcherResourceTroubleshooting` . Cmdlet 'i ağ Izleyicisi nesnesi, bağlantının kimliği veya sanal ağ geçidi, depolama hesabı kimliği ve sonuçları depolayacak yol geçiririz.
 
 > [!NOTE]
-> `Start-AzNetworkWatcherResourceTroubleshooting` Cmdlet uzun çalışıyor ve tamamlanması birkaç dakika sürebilir.
+> `Start-AzNetworkWatcherResourceTroubleshooting`Cmdlet uzun çalışıyor ve tamamlanması birkaç dakika sürebilir.
 
 ```powershell
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"

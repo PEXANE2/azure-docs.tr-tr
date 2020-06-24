@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845059"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738762"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
 
@@ -65,51 +65,51 @@ Cmdlet tamamlandıktan sonra, sorun ve Günlükler hakkında ayrıntılı bilgi 
 
 ![1][1]
 
-Ikeerrors. txt adlı dosyayı açın ve şirket içi ıKE ayarı yanlış yapılandırmayla ilgili bir sorun olduğunu belirten aşağıdaki hatayı görüntüler.
+IKEErrors.txt adlı dosyayı açın ve şirket içi ıKE ayarı yanlış yapılandırma ile ilgili bir sorun olduğunu belirten aşağıdaki hatayı görüntüler.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-Scrubbed-wfpdiag. txt dosyasından hata hakkında ayrıntılı bilgi edinebilirsiniz. Bu durumda, bağlantının düzgün şekilde çalışmadığını `ERROR_IPSEC_IKE_POLICY_MATCH` belirten bir bahsetmektedir.
+Hata hakkında Scrubbed-wfpdiag.txt ayrıntılı bilgiler elde edebilirsiniz. Bu durumda, `ERROR_IPSEC_IKE_POLICY_MATCH` bağlantının düzgün şekilde çalışmadığını belirten bir bahsetmektedir.
 
-Diğer bir yaygın yanlış yapılandırma yanlış paylaşılan anahtarlar belirtmektir. Yukarıdaki örnekte farklı paylaşılan anahtarlar belirttiyseniz, ıkeerrors. txt dosyasında şu hata görüntülenir: `Error: Authentication failed. Check shared key`.
+Diğer bir yaygın yanlış yapılandırma yanlış paylaşılan anahtarlar belirtmektir. Yukarıdaki örnekte farklı paylaşılan anahtarlar belirttiyseniz, IKEErrors.txt aşağıdaki hatayı gösterir: `Error: Authentication failed. Check shared key` .
 
 Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı basit bir PowerShell cmdlet 'i ile tanılamanıza ve gidermenize olanak sağlar. Şu anda aşağıdaki koşulları tanılamayı destekliyoruz ve daha fazla koşul eklemeye yönelik çalışıyor.
 
 ### <a name="gateway"></a>Ağ geçidi
 
-| Hata Türü | Neden | Günlük|
+| Hata Türü | Nedeni | Günlük|
 |---|---|---|
 | NoFault | Hata saptanmadı. |Yes|
-| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
-| PlannedMaintenance |  Ağ geçidi örneği bakım aşamasında.  |Hayır|
-| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | Hayır |
-| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
-| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |No|
+| PlannedMaintenance |  Ağ geçidi örneği bakım aşamasında.  |No|
+| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | No |
+| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | No |
+| PlatformInActive | Platform ile ilgili bir sorun var. | No|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
+| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| No|
 | ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Yes|
 | Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Yes |
 
 ### <a name="connection"></a>Bağlantı
 
-| Hata Türü | Neden | Günlük|
+| Hata Türü | Nedeni | Günlük|
 |---|---|---|
 | NoFault | Hata saptanmadı. |Yes|
-| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
-| PlannedMaintenance | Ağ geçidi örneği bakım aşamasında.  |Hayır|
-| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | Hayır |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
+| GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |No|
+| PlannedMaintenance | Ağ geçidi örneği bakım aşamasında.  |No|
+| UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | No |
+| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | No |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | No |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |No|
 | ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
 | ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Yes|
+| Kimlik doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Yes|
 | Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
 | Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
-| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
+| WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

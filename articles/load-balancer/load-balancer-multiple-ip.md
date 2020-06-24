@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74076998"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803626"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure portal kullanarak birden çok IP yapılandırmasında Yük Dengeleme
 
@@ -62,7 +62,7 @@ Bu makalede özetlenen senaryoya ulaşmak için aşağıdaki adımları izleyin.
 
 Sanal ağınızdaki her VM için, ikincil NIC için IP yapılandırmasını ekleyin:  
 
-1. Azure portal gidin: https://portal.azure.com. Azure hesabınızla oturum açın.
+1. Azure portal gidin: https://portal.azure.com . Azure hesabınızla oturum açın.
 
 2. Ekranın sol üst kısmında **kaynak grubu** simgesini seçin. Ardından sanal makinelerinizin bulunduğu kaynak grubunu seçin (örneğin, **contosofabrikam**). **Kaynak grupları** bölmesi VM 'ler için tüm kaynakları ve NIC 'leri görüntüler.
 
@@ -86,9 +86,9 @@ Sanal ağınızdaki her VM için, ikincil NIC için IP yapılandırmasını ekle
 
 Yapılandırma için yük dengeleyiciyi oluşturun:
 
-1. Azure portal gidin: https://portal.azure.com. Azure hesabınızla oturum açın.
+1. Azure portal gidin: https://portal.azure.com . Azure hesabınızla oturum açın.
 
-2. Ekranın sol üst kısmında, **kaynak** > oluştur**ağ** > **Load Balancer**' ı seçin. Sonra **Oluştur**' u seçin.
+2. Ekranın sol üst kısmında, **kaynak oluştur**  >  **ağ**  >  **Load Balancer**' ı seçin. Sonra **Oluştur**' u seçin.
 
 3. **Yük dengeleyici oluştur**altında yük dengeleyiciniz için bir ad yazın. Bu senaryoda, **mylb**adını kullanacağız.
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Izleyici 'de Günlükler için ölçüm uyarıları oluşturma
 description: Popüler Günlük Analizi verilerinde neredeyse gerçek zamanlı ölçüm uyarıları oluşturma hakkında öğretici.
-author: yanivlavi
-ms.author: yalavi
+author: harelbr
+ms.author: harelbr
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c9998488013ce89b17a30a6c3948a02407d06bb
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80055172"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945333"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Izleyici 'de Günlükler için ölçüm uyarıları oluşturma
 
@@ -19,7 +19,7 @@ ms.locfileid: "80055172"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Izleyici, [Klasik uyarılarla](../../azure-monitor/platform/alerts-classic-portal.md)avantajları olan [ölçüm uyarı türünü](../../azure-monitor/platform/alerts-metric-near-real-time.md) destekler. Ölçümler, [büyük Azure hizmetleri listesi](../../azure-monitor/platform/metrics-supported.md)için kullanılabilir. Bu makalede, kaynağı için bir alt küme (yani) kullanımı açıklanmaktadır `Microsoft.OperationalInsights/workspaces`.
+Azure Izleyici, [Klasik uyarılarla](../../azure-monitor/platform/alerts-classic-portal.md)avantajları olan [ölçüm uyarı türünü](../../azure-monitor/platform/alerts-metric-near-real-time.md) destekler. Ölçümler, [büyük Azure hizmetleri listesi](../../azure-monitor/platform/metrics-supported.md)için kullanılabilir. Bu makalede, kaynağı için bir alt küme (yani) kullanımı açıklanmaktadır `Microsoft.OperationalInsights/workspaces` .
 
 Azure 'daki veya Şirket içindeki kaynaklar dahil olmak üzere günlüklerdeki ölçümlerin bir parçası olarak ayıklanan popüler Log Analytics günlüklerinde ölçüm uyarılarını kullanabilirsiniz. Desteklenen Log Analytics çözümleri aşağıda listelenmiştir:
 
@@ -163,7 +163,7 @@ Aynı şekilde elde etmek için, bir statik eşik ölçüm uyarısının oluştu
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -299,7 +299,7 @@ Aynı şekilde elde etmek için, bir statik eşik ölçüm uyarısının oluştu
 }
 ```
 
-Yukarıdaki JSON 'un Metricfromlogsalcertstatic. JSON olarak kaydedildiğini varsayalım; kaynak şablonu tabanlı oluşturma için bir parametre JSON dosyası ile bağlanabilir. Örnek parametre JSON dosyası aşağıda listelenmiştir:
+Yukarıdaki JSON 'ın metricfromLogsAlertStatic.jsolarak kaydedildiğinden, kaynak şablonu tabanlı oluşturma için bir parametre JSON dosyasıyla birlikte erişilebilir olduğunu varsayalım. Örnek parametre JSON dosyası aşağıda listelenmiştir:
 
 ```json
 {
@@ -355,7 +355,7 @@ Yukarıdaki JSON 'un Metricfromlogsalcertstatic. JSON olarak kaydedildiğini var
 }
 ```
 
-Yukarıdaki parametre dosyasının Metricfromlogsalcertstatic. Parameters. JSON olarak kaydedildiği varsayıldığında daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
+Yukarıdaki parametre dosyasının metricfromLogsAlertStatic.parameters.jsolarak kaydedildiği varsayıldığında; daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
 
 Alternatif olarak, bir diğeri aşağıdaki Azure PowerShell komutunu da kullanabilir:
 
@@ -452,7 +452,7 @@ Aynı sağlamak için, bunlardan biri aşağıdaki örnek Azure Resource Manager
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -609,7 +609,7 @@ Aynı sağlamak için, bunlardan biri aşağıdaki örnek Azure Resource Manager
 }
 ```
 
-Yukarıdaki JSON 'un, Metricfromlogsalcertdynamic. JSON olarak kaydedildiğini varsayalım; kaynak şablonu tabanlı oluşturma için bir parametre JSON dosyası ile bağlanabilir. Örnek parametre JSON dosyası aşağıda listelenmiştir:
+Yukarıdaki JSON 'ın metricfromLogsAlertDynamic.jsolarak kaydedildiğinden, kaynak şablonu tabanlı oluşturma için bir parametre JSON dosyasıyla birlikte erişilebilir olduğunu varsayalım. Örnek parametre JSON dosyası aşağıda listelenmiştir:
 
 ```json
 {
@@ -671,7 +671,7 @@ Yukarıdaki JSON 'un, Metricfromlogsalcertdynamic. JSON olarak kaydedildiğini v
 }
 ```
 
-Yukarıdaki parametre dosyasının Metricfromlogsalcertdynamic. Parameters. JSON olarak kaydedildiği varsayıldığında daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
+Yukarıdaki parametre dosyasının metricfromLogsAlertDynamic.parameters.jsolarak kaydedildiği varsayıldığında; daha sonra, [Azure Portal oluşturma Için kaynak şablonu](../../azure-resource-manager/templates/deploy-portal.md)kullanılarak Günlükler için ölçüm uyarısı oluşturabilir.
 
 Alternatif olarak, bir diğeri aşağıdaki Azure PowerShell komutunu da kullanabilir:
 

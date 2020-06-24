@@ -2,23 +2,23 @@
 title: Şirket içi uygulamalara uzaktan erişim-Azure AD Uygulama Ara Sunucusu
 description: Azure Active Directory uygulama proxy 'Si, şirket içi Web uygulamalarına güvenli uzaktan erişim sağlar. Azure AD 'de çoklu oturum açma işleminden sonra, kullanıcılar harici bir URL veya dahili uygulama portalı aracılığıyla hem buluta hem de şirket içi uygulamalara erişebilir. Örneğin, uygulama proxy 'Si Uzak Masaüstü, SharePoint, takımlar, Tableau, Qlik ve iş kolu (LOB) uygulamaları için uzaktan erişim ve çoklu oturum açma sağlayabilir.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5ba82b34da8e4c3156d6854934ad873428bf121a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 20b186c75358344e6e995b24b8e54e308c8653d2
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168735"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975427"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory uygulama proxy 'Si aracılığıyla şirket içi uygulamalara uzaktan erişim
 
@@ -60,7 +60,7 @@ Aşağıdaki diyagramda, şirket içi uygulamalarda çoklu oturum açma sağlama
 5. Bağlayıcı, isteği şirket içi uygulamaya gönderir.
 6. Yanıt, kullanıcıya bağlayıcı ve uygulama proxy hizmeti üzerinden gönderilir.
 
-| Bileşen | Açıklama |
+| Bileşen | Description |
 | --------- | ----------- |
 | Uç Nokta  | Uç nokta bir URL veya [Son Kullanıcı portalıdır](end-user-experiences.md). Kullanıcılar, dış bir URL 'ye erişerek ağınızın dışından uygulamalara erişebilir. Ağınızdaki kullanıcılar bir URL veya Son Kullanıcı Portalı aracılığıyla uygulamaya erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD 'de kimlik doğrular ve ardından bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilir.|
 | Azure AD | Azure AD, bulutta depolanan kiracı dizinini kullanarak kimlik doğrulamasını gerçekleştirir. |
@@ -71,5 +71,3 @@ Aşağıdaki diyagramda, şirket içi uygulamalarda çoklu oturum açma sağlama
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uygulama proxy 'Sini kullanmaya başlamak için bkz. [öğretici: uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md).
-
-En son haberler ve güncelleştirmeler için bkz. [uygulama proxy blogu](https://blogs.technet.com/b/applicationproxyblog/)

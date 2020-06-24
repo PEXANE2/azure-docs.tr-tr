@@ -1,18 +1,18 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 06/15/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 64433f3233e249059c1c2d180a03e0a221924f15
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317685"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84793666"
 ---
 Spot VM 'Lerin kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
 
@@ -43,9 +43,22 @@ Aşağıdaki VM boyutları, spot VM 'Ler için desteklenmez:
  - B serisi
  - Her boyuttaki promosyon sürümleri (dv2, NV, NC, H promosyon boyutları gibi)
 
-Spot VM 'Ler Şu anda kısa ömürlü işletim sistemi disklerini kullanamaz.
-
 Spot sanal makineler, Microsoft Azure Çin 21Vianet dışında herhangi bir bölgeye dağıtılabilir.
+
+Bazı abonelik kanalları desteklenmez:
+
+<a name="channel"></a>
+
+| Azure kanalları               | Azure spot VM kullanılabilirliği       |
+|------------------------------|-----------------------------------|
+| Kurumsal Anlaşma         | Yes                               |
+| Kullandıkça Öde                | Yes                               |
+| Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Avantajlar                     | Kullanılamaz                     |
+| Sponsorlu                    | Kullanılamaz                     |
+| Ücretsiz Deneme                   | Kullanılamaz                     |
+
+
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -75,23 +88,6 @@ Y **:** Spot VM 'Lerin ayrı bir kota havuzu olacaktır. Spot kota, VM 'Ler ve �
 **S:** Nokta için ek kota isteyebilir miyim?
 
 Y **:** Evet, [Standart kota isteği işlemi](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)aracılığıyla spot VM 'lerle ilgili kotayı artırmak için isteği gönderebileceksiniz.
-
-
-**S:** Hangi kanallar spot VM 'Leri destekliyor?
-
-Y **:** Nokta VM kullanılabilirliği için aşağıdaki tabloya bakın.
-
-<a name="channel"></a>
-
-| Azure kanalları               | Azure spot VM kullanılabilirliği       |
-|------------------------------|-----------------------------------|
-| Kurumsal Anlaşma         | Yes                               |
-| Kullandıkça Öde                | Yes                               |
-| Bulut hizmeti sağlayıcısı (CSP) | [İş ortağınızla iletişime geçin](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Microsoft Müşteri Sözleşmesi | Yes                               |
-| Avantajlar                     | Kullanılamaz                     |
-| Sponsorlu                    | Yes                               |
-| Ücretsiz Deneme                   | Kullanılamaz                     |
 
 
 **S:** Sorularınızı nereden gönderebilirim?

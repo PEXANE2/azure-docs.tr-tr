@@ -8,18 +8,18 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 04165398b65bcaa6751c83c77c21266ee1b64be8
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 81fc8de7e5a70ebb95e06a8e362cda41f8bfe1aa
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610636"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945027"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal Azure Data Box Disk için kendi kendine yönetilen dağıtımı kullanın
 
 Bu makalede, Azure Data Box Disk sipariş, çekme ve bırakma işlemleri için kendi kendine yönetilen sevkıyat görevleri açıklanmaktadır. Azure portal kullanarak Data Box Disk yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Azure Data Box disk sipariş](data-box-disk-deploy-ordered.md)ettiğinizde kendi kendine yönetilen sevkıyat bir seçenek olarak kullanılabilir. Otomatik olarak yönetilen kargo yalnızca aşağıdaki bölgelerde kullanılabilir:
 
@@ -28,6 +28,7 @@ Bu makalede, Azure Data Box Disk sipariş, çekme ve bırakma işlemleri için k
 * Japonya
 * Singapur
 * Güney Kore
+* Hindistan (Önizleme)
 
 ## <a name="use-self-managed-shipping"></a>Otomatik gönderimi kullanma
 

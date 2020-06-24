@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: d0f12274f3cbc0cd2726097e0507079cb858d59f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/11/2020
+ms.openlocfilehash: c7bc818133a0bd708f9f850f0ad258dccc6c02cc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116567"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737997"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -23,61 +23,57 @@ Bu makalede **en son** Azure HDInsight sürüm güncelleştirmeleri hakkında bi
 
 Azure HDInsight, Azure üzerinde açık kaynaklı analizler için kurumsal müşteriler arasındaki en popüler hizmetlerden biridir.
 
-## <a name="release-date-01092020"></a>Yayın tarihi: 01/09/2020
+## <a name="release-date-06112020"></a>Yayın tarihi: 06/11/2020
 
-Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, lütfen bölgenizde bir kaç gün içinde etkin olmasını bekleyin.
-
-> [!IMPORTANT]  
-> Linux, HDInsight sürüm 3.4 ve üzerinde kullanılan tek işletim sistemidir. Daha fazla bilgi için bkz. [HDInsight sürüm oluşturma makalesi](hdinsight-component-versioning.md).
+Bu sürüm yalnızca HDInsight 3,6 ve 4,0 için geçerlidir. HDInsight yayını, birkaç gün boyunca tüm bölgeler için kullanılabilir hale getirilir. Burada Yayımlanma tarihi, ilk bölgenin yayın tarihini gösterir. Değişiklikleri aşağıda görmüyorsanız, bölgenin bölgeniz için birkaç gün içinde canlı olmasını bekleyin.
 
 ## <a name="new-features"></a>Yeni özellikler
-### <a name="tls-12-enforcement"></a>TLS 1.2 zorlaması
-Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir. [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)hakkında daha fazla bilgi edinin. HDInsight, genel HTTPs uç noktalarında TLS 1,2 kullanır, ancak geriye dönük uyumluluk için TLS 1,1 hala desteklenmektedir. 
-
-Bu sürümde, müşteriler yalnızca genel küme uç noktası üzerinden tüm bağlantılar için TLS 1,2 ' i kabul edebilir. Bunu desteklemek için, **Minsupportedtlsversion** yeni özelliği tanıtılmıştır ve küme oluşturma sırasında belirlenebilir. Özellik ayarlanmamışsa, küme yine de bugün davranışıyla aynı olan TLS 1,0, 1,1 ve 1,2 ' i destekler. Müşteriler bu özelliğin değerini "1,2" olarak ayarlayabilir, bu da kümenin yalnızca TLS 1,2 ve üstünü desteklediği anlamına gelir. Daha fazla bilgi için bkz. [Aktarım Katmanı Güvenliği](./transport-layer-security.md).
-
-### <a name="bring-your-own-key-for-disk-encryption"></a>Disk şifrelemesi için kendi anahtarınızı getirin
-HDInsight 'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunmaktadır. Bu disklerdeki veriler, varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifrelenir. Bu sürümden itibaren, disk şifrelemesi için Kendi Anahtarını Getir (BYOK) ve Azure Key Vault kullanarak yönetebilirsiniz. BYOK şifrelemesi, küme oluşturma sırasında ek bir ücret olmadan tek adımlı bir yapılandırmadır. HDInsight 'ı Azure Key Vault ile yönetilen kimlik olarak kaydedin ve kümenizi oluştururken şifreleme anahtarını eklemeniz yeterlidir. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtar disk şifrelemesi](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
-
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
+HDInsight, kümeyi şimdi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden, yeni oluşturulan HDInsight kümeleri Azure sanal makine ölçek kümesini kullanmaya başlar. Değişiklik kademeli olarak kullanıma alınıyor. Hiç bir değişiklik olmaması beklenmelidir. [Azure sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)hakkında daha fazla bilgi için bkz..
+ 
+### <a name="reboot-vms-in-hdinsight-cluster"></a>HDInsight kümesinde VM 'Leri yeniden başlatma
+Bu sürümde, yanıt vermeyen düğümleri yeniden başlatmak için HDInsight kümesindeki sanal makinelerin yeniden başlatılmasını destekliyoruz. Şu anda yalnızca API aracılığıyla yapabilirsiniz, PowerShell ve CLı desteği bu şekilde yapılır. API hakkında daha fazla bilgi için [Bu belgeye](https://github.com/Azure/azure-rest-api-specs/codeowners/master/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2018-06-01-preview/virtualMachines.json)bakın.
+ 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
-Bu yayının kullanım dışı bırakılmasıyla ilgili değildir. Yakında kullanım dışı bırakılmaya hazırlanmak için, [yaklaşan değişikliklere](#upcoming-changes)bakın.
-
+### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3.6 Spark kümesinde Spark 2.1 ile 2.2’nin kullanımdan kaldırılması
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 3,6 üzerinde Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 3,6 ' ye 30 2020 göre Spark 2,3 ' ye geçmek için göz önünde bulundurun.
+ 
+### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4.0 Spark kümesinde Spark 2.3’ün kullanımdan kaldırılması
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için 30 Haziran 2020’ye kadar HDInsight 4.0’da Spark 2.4’e geçmeyi göz önünde bulundurun.
+ 
+### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4.0 Kafka kümesinde Kafka 1.1’i kullanımdan kaldırma
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için 30 Haziran 2020’ye kadar HDInsight 4.0’da Kafka 2.1’e geçmeyi göz önünde bulundurun.
+ 
 ## <a name="behavior-changes"></a>Davranış değişiklikleri
-Bu sürümde hiçbir davranış değişikliği yok. Yaklaşan değişikliklere hazırlanmak için, [yaklaşan değişikliklere](#upcoming-changes)bakın.
-
-## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
-Gelecek sürümlerde aşağıdaki değişiklikler olur. 
-
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3,6 Spark kümesinde Spark 2,1 ve 2,2 ' nin kullanımdan kaldırılması
-1 Temmuz 2020 ' den itibaren, müşteriler HDInsight 3,6 ' te Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 3,6 ' ye kadar Spark 2,3 ' ye geçerek 30 Haziran 2020 ' ye geçmeyi düşünün. Daha fazla bilgi için bkz. [Apache Spark 2,1 ve 2,2 iş yüklerini 2,3 ve 2,4 Için geçirme](./spark/migrate-versions.md).
-
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4,0 Spark kümesinde Spark 2,3 kullanımdan kaldırılması
-1 Temmuz 2020 ' den itibaren, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye kadar Spark 2,4 ' ye geçerek 30 Haziran 2020 ' ye geçmeyi düşünün. Daha fazla bilgi için bkz. [Apache Spark 2,1 ve 2,2 iş yüklerini 2,3 ve 2,4 Için geçirme](./spark/migrate-versions.md).
-
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4,0 Kafka kümesi 'nde Kafka 1,1 kullanımdan kaldırılması
-1 2020 Temmuz 'da, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 30 2020 4,0 ' de Kafka 2,1 ' ye geçmeyi göz önünde bulundurun. Daha fazla bilgi için bkz. [Apache Kafka iş yüklerini Azure HDInsight 'A geçirme 4,0](./kafka/migrate-versions.md).
-
-### <a name="hbase-20-to-216"></a>HBase 2,0 2.1.6
-Yaklaşan HDInsight 4,0 sürümünde, HBase sürümü 2,0 sürümünden 2.1.6 sürümüne yükseltilir.
-
-### <a name="spark-240-to-244"></a>Spark 2.4.0 to 2.4.4
-Yakında düzenlenecek HDInsight 4,0 sürümünde Spark sürümü 2.4.0 sürümünden 2.4.4 sürümüne yükseltilir.
-
-### <a name="kafka-210-to-211"></a>Kafka 2.1.0 to 2.1.1
-Yakında düzenlenecek HDInsight 4,0 sürümünde Kafka sürümü 2.1.0 sürümünden 2.1.1 sürümüne Yükseltilecek
-
+### <a name="esp-spark-cluster-head-node-size-change"></a>ESP Spark kümesi baş düğüm boyutu değişikliği 
+ESP Spark kümesi için izin verilen en düşük baş düğüm boyutu Standard_D13_V2 olarak değiştirilir. Düşük çekirdekler ve bellek ile baş düğümü olan VM 'Ler görece düşük CPU ve bellek kapasitesi nedeniyle ESP kümesi sorunlarına neden olabilir. Yayından başlayarak, Standard_D13_V2 ve ESP Spark kümeleri için baş düğüm olarak Standard_E16_V3 SKU 'Ları kullanın.
+ 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Baş düğüm için en az 4 çekirdekli bir VM gereklidir 
 Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek kullanılabilirliğini ve güvenilirliğini güvence altına almak için gereklidir. Müşteriler, 6 2020 Nisan 'dan başlayarak yeni HDInsight kümeleri için yalnızca 4 çekirdekli veya VM 'nin üzerinde baş düğüm olarak seçim yapabilir. Mevcut kümeler beklenen şekilde çalışmaya devam edecektir. 
-
-### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark kümesi düğüm boyutu değişikliği 
-Yaklaşan sürümde, ESP Spark kümesi için izin verilen en düşük düğüm boyutu Standard_D13_V2 olarak değiştirilecektir. A serisi VM 'Ler görece düşük CPU ve bellek kapasitesi nedeniyle ESP kümesi sorunlarına neden olabilir. Yeni ESP kümeleri oluşturmak için A serisi VM 'Ler kullanım dışı olacaktır.
-
-### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Yaklaşan sürümde, HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. Azure sanal makine ölçek kümeleri hakkında daha fazla bilgi için bkz..
-
+ 
+### <a name="cluster-worker-node-provisioning-change"></a>Küme çalışan düğümü sağlama değişikliği
+Çalışan düğümlerinin %80 ' u hazır olduğunda, küme **İşlemsel** aşamasına girer. Bu aşamada, müşteriler betikleri ve işleri çalıştırmak gibi tüm veri düzlemi işlemlerini gerçekleştirebilir. Ancak müşteriler ölçeği artırma/azaltma gibi denetim düzlemi işlemlerini yapamıyor. Yalnızca silme desteklenir.
+ 
+**İşletimsel** aşamada, küme kalan %20 çalışan düğümü için başka bir 60 dakika bekler. Bu 60 dakikanın sonunda, tüm çalışan düğümleri hala kullanılabilir olmasa bile küme **çalışan** aşamaya geçer. Bir küme **çalışan** aşamasına girdiğinde, normal olarak kullanabilirsiniz. Her ikisi de ölçeği artırma/azaltma gibi denetim planı işlemleri ve komut dosyaları ve işler gibi veri planı işlemleri kabul edilir. İstenen çalışan düğümlerinden bazıları yoksa, küme kısmen başarılı olarak işaretlenir. Başarıyla dağıtılan düğümler için ücretlendirilirsiniz. 
+ 
+### <a name="create-new-service-principal-through-hdinsight"></a>HDInsight ile yeni hizmet sorumlusu oluşturma
+Daha önce, küme oluşturma ile müşteriler, Azure portal bağlı ADLS Gen 1 hesabına erişmek için yeni bir hizmet sorumlusu oluşturabilir. 15 2020 Haziran 'dan itibaren müşteriler HDInsight oluşturma iş akışında yeni hizmet sorumlusu oluşturamaz, yalnızca mevcut hizmet sorumlusu desteklenir. Bkz. [Azure Active Directory kullanarak hizmet sorumlusu ve sertifikaları oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+ 
+## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
+Dikkat etmeniz gereken yaklaşan Son değişiklik yok.
+ 
 ## <a name="bug-fixes"></a>Hata düzeltmeleri
 HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 
-
+ 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
-Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini burada bulabilirsiniz.
+### <a name="hbase-20-to-216"></a>HBase 2,0 2.1.6
+HBase sürümü 2,0 sürümünden 2.1.6 sürümüne yükseltilir.
+ 
+### <a name="spark-240-to-244"></a>Spark 2.4.0 to 2.4.4
+Spark sürümü, 2.4.0 sürümünden 2.4.4 sürümüne yükseltilir.
+ 
+### <a name="kafka-210-to-211"></a>Kafka 2.1.0 to 2.1.1
+Kafka sürümü 2.1.0 sürümünden 2.1.1 sürümüne yükseltilir.
+ 
+HDInsight 4,0 ad HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) bulabilirsiniz
 

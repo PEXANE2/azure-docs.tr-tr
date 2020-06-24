@@ -4,19 +4,19 @@ description: Bu sayfa, Azure ağ bağlantısı performansını test etmek için 
 services: expressroute
 author: tracsman
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74869655"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738252"
 ---
 # <a name="troubleshooting-network-performance"></a>Ağ performansı sorunlarını giderme
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 Azure şirket içi ağınızdan Azure’a bağlanmak için kararlı ve hızlı yollar sağlar. Siteler Arası VPN ve ExpressRoute, büyük ve küçük müşteriler tarafından Azure’da işlerini yürütmek için başarıyla kullanılır. Ancak performans beklentilerinizi veya önceki deneyiminizi karşılamıyorsa ne olur? Bu belge, belirli ortamınızı test etme ve temel getirme şeklini standartlaşmanız için yardımcı olabilir.
 
 Bu belgede, iki ana bilgisayar arasında ağ gecikmesini ve bant genişliğini nasıl kolayca ve tutarlı bir şekilde test edebileceğiniz gösterilmektedir. Bu belge Ayrıca, Azure ağı 'na bakmak ve sorun noktalarını yalıtmak için kullanabileceğiniz bazı öneriler sağlar. Ele alınan PowerShell betiği ve araçları ağ üzerinde iki ana bilgisayar gerektirir (test edilmekte olan bağlantının sonunda). Bir konağın Windows Server veya masaüstü olması gerekir, diğeri Windows veya Linux olabilir. 

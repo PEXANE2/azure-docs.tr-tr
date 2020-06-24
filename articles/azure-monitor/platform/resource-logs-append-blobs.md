@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 582e7ea4e954a1aa5ee27314d038601f7e26c61e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418774"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803937"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Azure Izleyici kaynak günlüklerinde bir depolama hesabına arşivlenen biçim değişikliğine hazırlanma
+# <a name="format-of-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Bir depolama hesabına arşivlenen Azure Izleyici kaynak günlüklerinin biçimi
 
-> [!WARNING]
-> [Kaynak tanılama ayarlarını veya etkinlik günlüklerini kullanarak bir depolama hesabına Azure Kaynak kaynağı günlükleri veya ölçümleri](./../../azure-monitor/platform/archive-diagnostic-logs.md) , [günlük profillerini kullanarak](./../../azure-monitor/platform/archive-activity-log.md)gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, Kasım 'da JSON satırları olarak değişir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır. 
+> [!NOTE]
+> Kaynak tanılama ayarlarını ya da [günlük profillerini kullanarak bir depolama hesabına yönelik etkinlik günlüklerini](./../../azure-monitor/platform/archive-activity-log.md) [kullanarak Azure Kaynak kaynağı günlüklerini veya ölçümlerini bir depolama hesabına](./../../azure-monitor/platform/archive-diagnostic-logs.md) gönderiyorsanız, depolama hesabındaki verilerin BIÇIMI, kas 'de JSON satırları olarak değiştirilmiştir. 1, 2018. Aşağıdaki yönergeler etkisini ve yeni biçimi işlemek için araçlarınızın nasıl güncelleşmesini açıklamaktadır. 
 >
 > 
 
@@ -26,7 +26,7 @@ ms.locfileid: "84418774"
 Azure Izleyici, Azure Izleyici 'de bir Azure depolama hesabına, Event Hubs ad alanına veya bir Log Analytics çalışma alanına kaynak Tanılama verileri ve etkinlik günlüğü verileri göndermenizi sağlayan bir özellik sunar. Bir sistem performansı sorununa yönelik olarak, **1 kasım 2018 ' de 12:00 gece yarısı UTC** , blob depolamaya gönderilen günlük verilerinin biçimi değişecektir. Blob depolamadan veri okuyan bir araç varsa, yeni veri biçimini anlamak için araç araçlarınızı güncelleştirmeniz gerekir.
 
 * Salı günü, 1 Kasım 2018, 12:00 gece UTC 'de, blob biçimi de [JSON satırları](http://jsonlines.org/)olacak şekilde değişir. Bu, her kaydın bir yeni satır tarafından sınırlandırıldığından, dış kayıt dizisi olmadan ve JSON kayıtları arasında virgül olmaması anlamına gelir.
-* Blob biçimi tüm abonelikler genelinde tüm Tanılama ayarları için aynı anda değişir. 1 Kasım 1 için yayılan ilk PT1H. JSON dosyası bu yeni biçimi kullanacaktır. Blob ve kapsayıcı adları aynı kalır.
+* Blob biçimi tüm abonelikler genelinde tüm Tanılama ayarları için aynı anda değişir. 1 Kasım 'a göre yayılan ilk PT1H.jsbu yeni biçimi kullanacaktır. Blob ve kapsayıcı adları aynı kalır.
 * Şu an ve 1 Kasım arasında bir tanılama ayarı ayarlanması, verileri geçerli biçimde 1 Kasım 'a kadar yaymaya devam eder.
 * Bu değişiklik, tüm genel bulut bölgelerinde bir kez gerçekleşir. Bu değişiklik, 21Vianet tarafından çalıştırılan Microsoft Azure, Azure Almanya veya Azure Kamu bulutlarında henüz gerçekleşmeyecektir.
 * Bu değişiklik aşağıdaki veri türlerini etkiler:
@@ -56,7 +56,7 @@ Bu kaynak tanılama ayarlarını kullanarak bir depolama hesabına veri göndere
 
 ### <a name="details-of-the-format-change"></a>Biçim değişikliğinin ayrıntıları
 
-Azure Blob depolama 'daki PT1H. json dosyasının geçerli biçimi, bir JSON dizi kayıt kullanır. İşte şu anda bir Keykasası günlük dosyası örneği:
+Azure Blob depolama alanındaki PT1H.jsdosyanın geçerli biçimi, bir JSON dizi kayıt kullanır. İşte şu anda bir Keykasası günlük dosyası örneği:
 
 ```json
 {
@@ -117,7 +117,7 @@ Azure Blob depolama 'daki PT1H. json dosyasının geçerli biçimi, bir JSON diz
 }
 ```
 
-Yeni biçim, her olayın bir satır olduğu ve yeni bir olayı gösterdiği yeni bir olayı gösteren [JSON hatlarını](http://jsonlines.org/)kullanır. Yukarıdaki örnek, PT1H. json dosyasında değişiklikten sonra şöyle görünür:
+Yeni biçim, her olayın bir satır olduğu ve yeni bir olayı gösterdiği yeni bir olayı gösteren [JSON hatlarını](http://jsonlines.org/)kullanır. Yukarıdaki örnek, değişiklikten sonra dosyada PT1H.jsşöyle görünür:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}

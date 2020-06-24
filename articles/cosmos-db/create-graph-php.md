@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
-ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4a979fd4b3947be62f77bbd6d7c046c6af78466c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68736641"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118313"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Hızlı başlangıç: PHP ve Azure portal kullanarak Azure Cosmos DB grafik veritabanı oluşturma
 
@@ -34,7 +34,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatif olarak, [Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)’yi ücretsiz olarak, Azure aboneliği olmadan ve herhangi bir taahhütte bulunmadan deneyebilirsiniz.
 
-Buna ek olarak:
+Bunlara ek olarak:
 * [PHP](https://php.net/) 5.6 veya daha yeni
 * [Oluşturucu](https://getcomposer.org/download/)
 
@@ -106,7 +106,8 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
     URI değerinin ilk parçasını kopyalayın.
 
-    ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası](./media/create-graph-php/keys.png)
+    :::image type="content" source="./media/create-graph-php/keys.png" alt-text="Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası":::
+
 2. `connect.php` dosyasını açın ve 8. satırdaki URI değerini `your_server_address` üzerine yapıştırın.
 
     Bağlantı nesnesini başlatma işlemi şu kod gibi görünmelidir:
@@ -192,15 +193,15 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
 1. **Veri Gezgini**’ne tıklayın, **sample-graph** öğesini genişletin, **Graph**’a ve son olarak **Filtre Uygula**’ya tıklayın. 
 
-   ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="Azure portalındaki Veri Gezgini'nde yeni belge oluşturma":::
 
 2. **Sonuç listesinde**, grafiğe yeni kullanıcıların eklendiğini görürsünüz. **Ben** ' i seçin ve bir kez denendiğine dikkat edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
 
-   ![Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler":::
 
 3. Şimdi birkaç yeni kullanıcı ekleyelim. Grafa veri eklemek için **yeni köşe** düğmesine tıklayın.
 
-   ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png)
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Azure portalındaki Veri Gezgini'nde yeni belge oluşturma":::
 
 4. *Kişi* etiketi girin.
 
@@ -237,15 +238,15 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
 12. Artık rakesh ve ashley arasında bağlantı kurabilirsiniz. **Sonuç listesinde****ashley**’nin seçili olduğundan emin olun ve ardından sağ alttaki **Hedefler**’in yanında bulunan Düzenle düğmesine tıklayın. **Özellikler** alanını görmek için pencerenizi genişletmeniz gerekebilir.
 
-    ![Hedef grafikteki bir köşeyi değiştirme](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Hedef grafikteki bir köşeyi değiştirme":::
 
 13. **Hedef** kutusunda *rakesh* yazın, **Kenar etiketi** kutusunda *tanıyor* yazın ve ardından onay işaretine tıklayın.
 
-    ![Veri Gezgininde ashley ve rakesh arasında bir bağlantı ekleyin](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="Veri Gezgininde ashley ve rakesh arasında bir bağlantı ekleyin":::
 
 14. Sonuç listesinden **rakesh**’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
 
-    ![Veri Gezgini'nde bağlı iki köşe](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="Veri Gezgini'nde bağlı iki köşe":::
 
     Bu işlemle birlikte, bu hızlı başlangıçtaki kaynak oluşturma bölümünü tamamladınız. Grafiğinize köşe eklemeye, var olan köşeleri veya sorguları değiştirmeye devam edebilirsiniz. Şimdi, Azure Cosmos DB’nin sağladığı ölçümleri gözden geçirip kaynakları temizleyelim. 
 

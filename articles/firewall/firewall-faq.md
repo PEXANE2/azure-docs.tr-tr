@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: f8bfc163fbf32a2083b6e9250daaf5ea2629d10a
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509245"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791495"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -215,3 +215,7 @@ Evet. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar
 ## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Bir IP grubunu başka bir kaynak grubuna taşıyabilir miyim?
 
 Hayır, bir IP grubunu başka bir kaynak grubuna taşımak Şu anda desteklenmiyor.
+
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure Güvenlik Duvarı için TCP boşta kalma zaman aşımı nedir?
+
+Ağ güvenlik duvarının standart bir davranışı, TCP bağlantılarının etkin tutulmasını ve etkinlik olmaması durumunda bunları hemen kapatmalarını sağlamaktır. Azure Güvenlik Duvarı TCP boşta kalma zaman aşımı dört dakikadır. Bu ayar yapılandırılabilir değildir. İşlem yapılmayan bir süre, zaman aşımı değerinden uzunsa, TCP veya HTTP oturumunun korunduğundan emin olmaz. Ortak bir uygulama, TCP etkin tutma özelliğini kullanmaktır. Bu uygulama, bağlantının daha uzun bir süre için etkin kalmasını önler. Daha fazla bilgi için bkz. [.NET örnekleri](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7dbce3f2645a1ae4e01dc52d516962297ea07df6
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: b4ac25d6fca78962e9da4f7dd79476b8e8b9c2d5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488860"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738269"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Portal kullanarak MySQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -173,7 +173,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     |||
 
     > [!Note] 
-    > Hizmetiniz için önceden tanımlanmış özel DNS bölgesini kullanın veya yeni bir tane oluşturun. Ayrıntılar için [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md) ' na bakın.
+    > Hizmetiniz için önceden tanımlanmış özel DNS bölgesini kullanın veya tercih ettiğiniz DNS bölge adını sağlayın. Ayrıntılar için [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md) ' na bakın.
 
 1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
 2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 

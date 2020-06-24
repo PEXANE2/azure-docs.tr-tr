@@ -6,48 +6,62 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 98fc339e473ffb2bf54e7119634e93046cca1ef3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28a6ea4ed40df909b4d74ff52703babb8e8cd949
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79415650"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791765"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik olaylarını yönetme
 
-Güvenlik uyarılarını önceliklendirme ve araştırmak, en nitelikli Güvenlik analistleri için zaman alabilir ve birçok büyük olasılıkla nereden başlayabileceğinizi bilmelidir. Farklı [güvenlik uyarıları](security-center-managing-and-responding-alerts.md) arasındaki bilgileri bağlamak için [Analiz](security-center-detection-capabilities.md) özelliğini kullanan Güvenlik Merkezi, bir saldırı kampanyasını ve tüm ilgili uyarıları tek bir yerde görmenizi sağlayabilir; saldırganın hangi işlemleri yaptığını ve hangi kaynakların etkilendiğini hızlıca görebilirsiniz.
+Güvenlik uyarılarını önceliklendirme ve araştırmak, en nitelikli Güvenlik analistlerinin bile zaman alıcı olabilir. Çoğu için nereden başlayabileceğinizi bilirsiniz. 
 
-Bu konu başlığında Güvenlik Merkezi 'ndeki olaylar ve bunların uyarılarını düzeltme kullanımı açıklanmaktadır.
+Güvenlik Merkezi, farklı [güvenlik uyarıları](security-center-managing-and-responding-alerts.md)arasındaki bilgileri bağlamak için [Analytics](security-center-detection-capabilities.md) 'i kullanır. Güvenlik Merkezi bu bağlantıları kullanarak, saldırganın eylemlerini ve etkilenen kaynakları anlamanıza yardımcı olmak için bir saldırı kampanyasının ve ilgili uyarıların tek bir görünümünü sağlayabilir.
+
+Bu sayfa güvenlik merkezi 'ndeki olaylara genel bir bakış sağlar.
 
 ## <a name="what-is-a-security-incident"></a>Güvenlik olayı nedir?
 
-Güvenlik Merkezi'nde bir güvenlik olayı, bir kaynağın [sonlandırma zinciri](alerts-reference.md#intentions) desenleri ile hizalanan tüm uyarılarının toplamıdır. Olaylar [güvenlik uyarıları](security-center-managing-and-responding-alerts.md) listesinde görünür. Her oluşum hakkında daha fazla bilgi edinmenizi sağlayan ilgili uyarıları görüntülemek için bir olaya tıklayın.
+Güvenlik Merkezi'nde bir güvenlik olayı, bir kaynağın [sonlandırma zinciri](alerts-reference.md#intentions) desenleri ile hizalanan tüm uyarılarının toplamıdır. Olaylar [güvenlik uyarıları](security-center-managing-and-responding-alerts.md) sayfasında görünür. İlgili uyarıları görüntülemek ve daha fazla bilgi almak için bir olay seçin.
 
 ## <a name="managing-security-incidents"></a>Güvenlik olaylarını yönetme
 
-1. Güvenlik Merkezi panosunda **güvenlik uyarıları** kutucuğuna tıklayın. Olaylar ve uyarılar listelenir. Güvenlik olayı açıklamasının diğer uyarılardan farklı bir simgeye sahip olduğuna dikkat edin.
+1. Güvenlik Merkezi Genel Bakış sayfasında **güvenlik uyarıları** kutucuğunu seçin. Olaylar ve uyarılar listelenir. Güvenlik olaylarının güvenlik uyarılarına farklı bir simgesi olduğuna dikkat edin.
 
     ![Güvenlik olaylarını görüntüle](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-1. Ayrıntıları görüntülemek için bir olaya tıklayın. **Güvenlik olayı algılanan** dikey pencerede daha fazla ayrıntı görüntülenir. **Genel bilgiler** bölümü, güvenlik uyarısının tetiklendiği konusunda bir öngörü sunabilir. Hedef kaynak, kaynak IP adresi (varsa), uyarı hala etkinse ve nasıl düzeltileceğine ilişkin öneriler gibi bilgileri görüntüler.  
+1. Ayrıntıları görüntülemek için bir olay seçin. **Güvenlik olay** sayfasında daha fazla ayrıntı gösterilmektedir. 
 
-    ![Azure Güvenlik Merkezi 'nde güvenlik olaylarına yanıt verme](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
+    [![Azure Güvenlik Merkezi 'nde güvenlik olaylarına yanıt verme](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 
-1. Her uyarı hakkında daha fazla bilgi edinmek için bir uyarıya tıklayın. Güvenlik Merkezi tarafından önerilen düzeltme, güvenlik uyarısına göre farklılık gösterir.
+    Güvenlik olayı sayfasının sol bölmesi, güvenlik olayı: Başlık, önem derecesi, durum, etkinlik süresi, açıklama ve etkilenen kaynak hakkında üst düzey bilgileri gösterir. Etkilenen kaynağın yanında ilgili Azure etiketlerini görebilirsiniz. Uyarıyı araştırırken kaynağın kuruluş bağlamını anlamak için bu etiketleri kullanın.
+
+    Sağ bölme, bu olayın bir parçası olarak bağıntılı güvenlik uyarılarını içeren **Uyarılar** sekmesini içerir. 
+
+    >[!TIP]
+    > Belirli bir uyarı hakkında daha fazla bilgi için bunu seçin. 
+
+    [![Olayın eylem al sekmesi](media/security-center-incident/incident-take-action-tab.png)](media/security-center-incident/incident-take-action-tab.png#lightbox)
+
+    **Eylem al** sekmesine geçiş yapmak için sağ bölmenin altındaki sekmeyi veya düğmeyi seçin. Aşağıdaki gibi eylemler gerçekleştirmek için bu sekmeyi kullanın:
+    - *Tehdidi azaltma* -bu güvenlik olayı için el ile düzeltme adımları sağlar
+    - *Gelecekteki saldırıları önleme* -saldırı yüzeyini azaltmaya, güvenlik duruşunu artırmaya ve gelecekteki saldırıları önlemeye yardımcı olmak için güvenlik önerileri sağlar
+    - *Otomatik yanıtı Tetikle* -bu güvenlik olayına yanıt olarak bir mantıksal uygulamayı tetikleme seçeneği sağlar
+    - *Benzer Uyarıları Gizle* -uyarı kuruluşunuza uygun değilse, benzer özelliklerle gelecekteki uyarıları gösterme seçeneği sağlar 
 
    > [!NOTE]
    > Aynı uyarı, bir olayın parçası olarak ve tek başına bir uyarı olarak görülebilmesi için de bulunabilir.
 
-    ![Uyarı ayrıntıları](./media/security-center-incident/security-center-incident-alert.png)
-
-1. Her uyarı için verilen düzeltme adımlarını izleyin.
+1. Olaydaki tehditleri düzeltmek için, her uyarıyla birlikte sunulan düzeltme adımlarını izleyin.
 
 
-## <a name="see-also"></a>Ayrıca bkz.
-Bu belgede, Güvenlik Merkezi'nde güvenlik olayı özelliğini nasıl kullanacağınız hakkında bilgi edindiniz. İlgili bilgiler için aşağıdakilere bakın:
+## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Güvenlik Merkezi’nde tehdit koruması](threat-protection.md)
-* [Azure Güvenlik Merkezi'nde güvenlik uyarıları](security-center-alerts-overview.md)
-* [Güvenlik uyarılarını yönetme](security-center-managing-and-responding-alerts.md)
+Bu sayfa güvenlik merkezi 'nin güvenlik olayı yeteneklerini açıklandı. İlgili bilgiler için, aşağıdaki sayfalara bakın:
+
+* [Güvenlik Merkezi 'nde tehdit koruması](threat-protection.md)
+* [Güvenlik Merkezi 'nde güvenlik uyarıları](security-center-alerts-overview.md)
+* [Güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md)

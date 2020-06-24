@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198396"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737011"
 ---
-# <a name="orchestration-mode-preview"></a>Düzenleme modu (Önizleme)
+# <a name="orchestration-modes-preview"></a>Düzenleme modları (Önizleme)
+
+> [!CAUTION]
+> Bu genel önizlemeye katılmış herkes için teşekkür ederiz. Topluluğumuza değerli geri bildirim toplayabildik. Bu önizleme, geri bildirimleri bütünleştirmek için artık yeni katılımcılar için **kapalıdır** . Bu alanı yeni bilgilerle güncelleştireceğiz.
 
 Sanal Makine Ölçek Kümeleri, platform tarafından yönetilen sanal makinelerin mantıksal bir gruplandırmasını sağlar. Ölçek kümeleri ile, bir sanal makine yapılandırma modeli oluşturur, CPU veya bellek yüküne göre ek örnekler ekler veya kaldırır ve otomatik olarak en son işletim sistemi sürümüne yükseltilir. Geleneksel olarak, ölçek kümeleri, ölçek kümesi oluşturma sırasında sağlanmış bir VM yapılandırma modeli kullanarak sanal makineler oluşturmanıza izin verir ve ölçek kümesi yalnızca yapılandırma modeline göre örtük olarak oluşturulan sanal makineleri yönetebilir.
 

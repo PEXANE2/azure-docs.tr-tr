@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127620"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701159"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Nasıl yapılır: Visual Studio 2019 kullanarak Azure Service Fabric Windows kapsayıcılarında hata ayıklama
 
@@ -27,7 +27,7 @@ Visual Studio 2019 ile kapsayıcılardaki .NET uygulamalarında Service Fabric H
 
 1. Kapsayıcılar arasındaki DNS çözümlemesini desteklemek için, makine adını kullanarak yerel geliştirme kümenizi ayarlamanız gerekir. Bu adımlar, Hizmetleri ters proxy üzerinden ele almak istiyorsanız da gereklidir.
    1. PowerShell 'i yönetici olarak aç
-   2. Genellikle `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`SDK küme kurulum klasörüne gidin.
+   2. Genellikle SDK küme kurulum klasörüne gidin `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup` .
    3. Betiği Çalıştır`DevClusterSetup.ps1`
 
       ``` PowerShell
@@ -35,7 +35,7 @@ Visual Studio 2019 ile kapsayıcılardaki .NET uygulamalarında Service Fabric H
       ```
 
       > [!NOTE]
-      > Tek düğümlü bir küme `-CreateOneNodeCluster` kurmak için öğesini kullanabilirsiniz. Varsayılan olarak yerel bir beş düğümlü küme oluşturulur.
+      > `-CreateOneNodeCluster`Tek düğümlü bir küme kurmak için öğesini kullanabilirsiniz. Varsayılan olarak yerel bir beş düğümlü küme oluşturulur.
       >
 
       Service Fabric 'deki DNS hizmeti hakkında daha fazla bilgi edinmek için bkz. [Azure Service Fabric 'de DNS hizmeti](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Bir kapsayıcıda çalışan hizmetlerden Service Fabric ters proxy kullanma hakkında daha fazla bilgi edinmek için bkz. [kapsayıcılar üzerinde çalışan hizmetler Için ters proxy özel işleme](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).

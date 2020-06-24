@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 38187bef1d9c73b20c3b1930f97e7dae2468c889
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 125132aec8e822bf6694076e9ff6029744608c1a
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673454"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975325"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -63,7 +63,7 @@ Bağlantılarınız için beyaz listeye doğru IP adreslerini bulmak için şu a
 1. Komut isteminden aşağıdaki komutu çalıştırın: 
 
     ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
+    nslookup <YourNamespaceName>.cloudapp.net
     ```
 2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . Bu IP adresi statiktir. Ad alanını farklı bir kümeye geri yükledikten sonra değişikliğin değiştirileceği tek zaman nokta.
 
@@ -72,14 +72,14 @@ Ad alanınız için bölge yedekliliği kullanırsanız, birkaç ek adım yapman
 1. İlk olarak, ad alanında Nslookup ' ı çalıştırırsınız.
 
     ```
-    nslookup <yournamespace>.servicebus.windows.net
+    nslookup <yournamespace>.cloudapp.net
     ```
 2. **Yetkili olmayan yanıt** bölümündeki adı aşağıdaki biçimlerden birinde olan bir yere göz önünde edin: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Her biri için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırarak üç kullanılabilirlik alanında çalışan üç örnek için IP adreslerini alın. 
 

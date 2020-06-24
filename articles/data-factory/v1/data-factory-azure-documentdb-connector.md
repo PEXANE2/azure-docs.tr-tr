@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260520"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702303"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Cosmos DB veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -58,7 +58,7 @@ Aşağıdaki tabloda Azure Cosmos DB bağlı hizmetine özgü JSON öğeleri iç
 
 | **Özellik** | **Açıklama** | **Gerekli** |
 | --- | --- | --- |
-| type |Type özelliği: **DocumentDb** olarak ayarlanmalıdır |Yes |
+| tür |Type özelliği: **DocumentDb** olarak ayarlanmalıdır |Yes |
 | Dizisi |Azure Cosmos DB veritabanına bağlanmak için gereken bilgileri belirtin. |Yes |
 
 Örnek:
@@ -123,16 +123,16 @@ Kaynak **Documentdbcollectionsource** türünde olduğunda kopyalama etkinliği 
 
 | **Özellik** | **Açıklama** | **İzin verilen değerler** | **Gerekli** |
 | --- | --- | --- | --- |
-| sorgu |Verileri okumak için sorguyu belirtin. |Sorgu dizesi Azure Cosmos DB tarafından destekleniyor. <br/><br/>Örnek: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Hayır <br/><br/>Belirtilmemişse, çalıştırılan SQL deyimidir:`select <columns defined in structure> from mycollection` |
-| nestingSeparator |Belgenin iç içe olduğunu belirten özel karakter |Herhangi bir karakter. <br/><br/>Azure Cosmos DB, iç içe yapılara izin verilen JSON belgeleri için bir NoSQL deposudur. Azure Data Factory, kullanıcının, "." olan nestingSeparator aracılığıyla hiyerarşiyi görüntülemesine olanak sağlar. Yukarıdaki örneklerde. Ayırıcı ile kopyalama etkinliği, tablo tanımındaki "ad. First", "Name. Middle" ve "Name. Last" öğelerine göre Ilk olarak üç alt öğe içeren "ad" nesnesini oluşturur. |Hayır |
+| sorgu |Verileri okumak için sorguyu belirtin. |Sorgu dizesi Azure Cosmos DB tarafından destekleniyor. <br/><br/>Örnek: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Belirtilmemişse, çalıştırılan SQL deyimidir:`select <columns defined in structure> from mycollection` |
+| nestingSeparator |Belgenin iç içe olduğunu belirten özel karakter |Herhangi bir karakter. <br/><br/>Azure Cosmos DB, iç içe yapılara izin verilen JSON belgeleri için bir NoSQL deposudur. Azure Data Factory, kullanıcının, "." olan nestingSeparator aracılığıyla hiyerarşiyi görüntülemesine olanak sağlar. Yukarıdaki örneklerde. Ayırıcı ile kopyalama etkinliği, tablo tanımındaki "ad. First", "Name. Middle" ve "Name. Last" öğelerine göre Ilk olarak üç alt öğe içeren "ad" nesnesini oluşturur. |No |
 
 **Documentdbcollectionsink** aşağıdaki özellikleri destekler:
 
 | **Özellik** | **Açıklama** | **İzin verilen değerler** | **Gerekli** |
 | --- | --- | --- | --- |
-| nestingSeparator |İç içe geçmiş belgenin gerekli olduğunu göstermek için kaynak sütun adında özel bir karakter. <br/><br/>Örneğin, yukarıdaki: `Name.First` çıkış tablosunda, Cosmos DB BELGESINDE aşağıdaki JSON yapısını üretir:<br/><br/>"Ad": {<br/>    "İlk": "John"<br/>}, |İç içe geçme düzeylerini ayırmak için kullanılan karakterdir.<br/><br/>Varsayılan değer `.` (nokta). |İç içe geçme düzeylerini ayırmak için kullanılan karakterdir. <br/><br/>Varsayılan değer `.` (nokta). |
+| nestingSeparator |İç içe geçmiş belgenin gerekli olduğunu göstermek için kaynak sütun adında özel bir karakter. <br/><br/>Örneğin, yukarıdaki: `Name.First` Çıkış tablosunda, Cosmos DB belgesinde AŞAĞıDAKI JSON yapısını üretir:<br/><br/>"Ad": {<br/>    "İlk": "John"<br/>}, |İç içe geçme düzeylerini ayırmak için kullanılan karakterdir.<br/><br/>Varsayılan değer `.` (nokta). |İç içe geçme düzeylerini ayırmak için kullanılan karakterdir. <br/><br/>Varsayılan değer `.` (nokta). |
 | writeBatchSize |Azure Cosmos DB hizmetine belge oluşturmak için paralel istek sayısı.<br/><br/>Bu özelliği kullanarak Cosmos DB veri kopyalarken performansı ayarlayabilirsiniz. Cosmos DB için daha fazla paralel istek gönderildiği için writeBatchSize ' i artırdığınızda daha iyi bir performans sağlayabilirsiniz. Bununla birlikte, hata iletisini oluşturabilecek azaltmaktan kaçınmanız gerekir: "Istek hızı çok büyük".<br/><br/>Daraltma, belge boyutu, belgelerdeki terim sayısı, hedef koleksiyonun dizin oluşturma ilkesi vb. dahil olmak üzere bir dizi etkene karar vermiştir. Kopyalama işlemleri için, en fazla üretilen iş (2.500 istek birimi/saniye) sağlamak üzere daha iyi bir koleksiyon (ör. S3) kullanabilirsiniz. |Tamsayı |Hayır (varsayılan: 5) |
-| writeBatchTimeout |İşlemin zaman aşımına uğramadan önce tamamlanmasını bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
+| writeBatchTimeout |İşlemin zaman aşımına uğramadan önce tamamlanmasını bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |No |
 
 ## <a name="importexport-json-documents"></a>JSON belgelerini içeri/dışarı aktarma
 Bu Cosmos DB bağlayıcısını kullanarak kolayca yapabilirsiniz

@@ -1,20 +1,19 @@
 ---
 title: Azure IoT Hub sistem durumunu izleyin | Microsoft Docs
 description: IoT Hub izlemek ve sorunları hızla tanılamak için Azure Izleyici ve Azure Kaynak Durumu kullanın
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: kgremban
+ms.date: 04/21/2020
+ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732439"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792056"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub durumunu izleyin ve sorunları hızla tanılayın
 
@@ -32,8 +31,6 @@ IoT Hub, IoT kaynaklarınızın durumunu anlamak için kullanabileceğiniz kendi
 ## <a name="use-azure-monitor"></a>Azure İzleyici’yi kullanma
 
 Azure Izleyici, Azure kaynakları için tanılama bilgileri sağlar. Bu, IoT Hub 'ınız içinde gerçekleşen işlemleri izleyebilmeniz anlamına gelir.
-
-Azure Izleyici 'nin Tanılama ayarları IoT Hub işlemler izleyicisinin yerini alır. Şu anda işlem izlemeyi kullanıyorsanız, iş akışlarınızı geçirmeniz gerekir. Daha fazla bilgi için bkz. [Operations Monitoring 'tan tanılama ayarlarına geçiş](iot-hub-migrate-to-diagnostics-settings.md).
 
 Azure Monitor 'un izleyen belirli ölçümler ve olaylar hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md) ve [Azure tanılama günlükleri için desteklenen hizmetler, şemalar ve Kategoriler](../azure-monitor/platform/diagnostic-logs-schema.md).
 
@@ -121,11 +118,11 @@ Cihaz kimliği işlemler kategorisi, IoT Hub 'ının kimlik kayıt defterinde bi
 
 #### <a name="routes"></a>Yollar
 
-İleti yönlendirme kategorisi, IoT Hub tarafından algılanan ileti yolu değerlendirmesi ve uç nokta durumu sırasında oluşan hataları izler. Bu kategori, şunlar gibi olayları içerir:
+[İleti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) kategorisi, IoT Hub tarafından algılanan ileti yolu değerlendirmesi ve uç nokta durumu sırasında oluşan hataları izler. Bu kategori, şunlar gibi olayları içerir:
 
 * Bir kural "tanımsız" olarak değerlendirilir,
 * IoT Hub bir uç noktayı ölü olarak işaretler veya
-* Bir uç noktadan alınan hatalar. 
+* Bir uç noktadan alınan hatalar.
 
 Bu kategori, "cihaz telemetrisi" kategorisi altında bildirilen iletiler hakkındaki belirli hataları (cihaz azaltma hataları gibi) içermez.
 
@@ -134,17 +131,24 @@ Bu kategori, "cihaz telemetrisi" kategorisi altında bildirilen iletiler hakkın
     "records":
     [
         {
-            "time": "UTC timestamp",
-            "resourceId": "Resource Id",
-            "operationName": "endpointUnhealthy",
-            "category": "Routes",
-            "level": "Error",
-            "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
-            "location": "Resource location"
+            "time":"2019-12-12T03:25:14Z",
+            "resourceId":"/SUBSCRIPTIONS/91R34780-3DEC-123A-BE2A-213B5500DFF0/RESOURCEGROUPS/ANON-TEST/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/ANONHUB1",
+            "operationName":"endpointUnhealthy",
+            "category":"Routes",
+            "level":"Error",
+            "resultType":"403004",
+            "resultDescription":"DeviceMaximumQueueDepthExceeded",
+            "properties":"{\"deviceId\":null,\"endpointName\":\"anon-sb-1\",\"messageId\":null,\"details\":\"DeviceMaximumQueueDepthExceeded\",\"routeName\":null,\"statusCode\":\"403\"}",
+            "location":"westus"
         }
     ]
 }
 ```
+
+Yönlendirme tanılama günlükleri hakkında daha fazla ayrıntı aşağıda verilmiştir:
+
+* [Yönlendirme tanılama günlüğü hata kodlarının listesi](troubleshoot-message-routing.md#diagnostics-error-codes)
+* [Yönlendirme tanılama günlükleri operationNames listesi](troubleshoot-message-routing.md#diagnostics-operation-names)
 
 #### <a name="device-telemetry"></a>Cihaz telemetrisi
 
@@ -315,7 +319,7 @@ Doğrudan Yöntemler kategorisi, bireysel cihazlara gönderilen istek-yanıt etk
 
 Dağıtılmış izleme kategorisi, izleme bağlam üstbilgisini taşıyan iletiler için bağıntı kimliklerini izler. Bu günlükleri tam olarak etkinleştirmek için, istemci tarafı kodu, [IoT Hub dağıtılmış izleme (Önizleme) ile uçtan uca olan IoT uygulamalarını çözümleyin ve tanılayın](iot-hub-distributed-tracing.md).
 
-[W3C Trace bağlam](https://github.com/w3c/trace-context) teklifine, ve ' a ve ' `trace-id` a sahip olduğunu `span-id` `correlationId` unutmayın.
+`correlationId` [W3C Trace bağlam](https://github.com/w3c/trace-context) teklifine, ve ' a ve ' a sahip olduğunu unutmayın `trace-id` `span-id` .
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (cihazdan buluta) günlükleri
 
@@ -342,9 +346,9 @@ IoT Hub, geçerli izleme özellikleri içeren bir ileti IoT Hub geldiğinde bu g
 }
 ```
 
-Burada, `durationMs` IoT Hub saatinin cihaz saatiyle eşitlenmiş olmaması ve bu nedenle bir süre hesaplamasının yanıltıcı olması için hesaplanmaz. Cihazdan buluta gecikme süresini yakalamak için `properties` bölümündeki zaman damgalarını kullanarak mantık yazma öneririz.
+Burada, `durationMs` IoT Hub saatinin cihaz saatiyle eşitlenmiş olmaması ve bu nedenle bir süre hesaplamasının yanıltıcı olması için hesaplanmaz. `properties`Cihazdan buluta gecikme süresini yakalamak için bölümündeki zaman damgalarını kullanarak mantık yazma öneririz.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Tamsayı | Cihazdan buluta iletinin bayt cinsinden boyutu |
 | **deviceId** | ASCII 7 bit alfasayısal karakter dizesi | Cihazın kimliği |
@@ -376,9 +380,9 @@ IoT Hub, geçerli izleme özellikleri içeren ileti iç veya yerleşik Olay Hub 
 }
 ```
 
-`properties` Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
+`properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Dize | True veya false, IoT Hub ileti yönlendirmenin etkin olup olmadığını gösterir |
 | **Parentspanıd** | Dize | Bu durumda D2C ileti izlemesi olacak üst iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
@@ -408,9 +412,9 @@ IoT Hub [yönlendirme](iot-hub-devguide-messages-d2c.md) etkinken ve ileti bir [
 }
 ```
 
-`properties` Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
+`properties`Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Uçnoktaadı** | Dize | Yönlendirme uç noktasının adı |
 | **endpointType** | Dize | Yönlendirme uç noktasının türü |
@@ -543,7 +547,7 @@ IoT Hub 'larınızın sistem durumunu denetlemek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. **Hizmet sistem durumu** > **kaynak sistem durumu**' na gidin.
+2. **Hizmet sistem durumu**  >  **kaynak sistem durumu**' na gidin.
 
 3. Aşağı açılan kutularda, aboneliğinizi seçin ve kaynak türü olarak **IoT Hub** ' yi seçin.
 

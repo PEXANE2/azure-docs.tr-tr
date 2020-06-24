@@ -5,121 +5,111 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 06/10/2020
 ms.author: dsindona
-ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0201ea7b207b7d4c0eaa56de1ee062ea405f0bbb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792964"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119248"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
 
-Bu makalede, Microsoft [Azure Portal](https://portal.azure.com/)kullanarak bir SaaS uygulamasının nasıl kaydedileceği açıklanmaktadır.  Başarılı bir kayıt sonrasında SaaS 'e yönelik API 'Lere erişmek için kullanabileceğiniz bir Azure Active Directory (Azure AD) güvenlik belirteci alacaksınız.  Azure AD hakkında daha fazla bilgi için bkz. [kimlik doğrulaması nedir?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
+Bu makalede, Microsoft [Azure Portal](https://portal.azure.com/) kullanarak bir SaaS uygulamasının nasıl kaydedileceği ve yayımcının erişim belirtecinin (Azure Active Directory erişim belirtecinin) nasıl alınacağı açıklanmaktadır. Yayımcı, SaaS uygulamasının kimliğini bir şekilde karşılama API 'Lerini çağırarak kimlik doğrulamak için bu belirteci kullanır.  Yerine getirme API 'Leri, hizmet-hizmet erişim belirteci isteği oluşturmak için Azure Active Directory (v 1.0) uç noktalarına akış vermek üzere OAuth 2,0 istemci kimlik bilgilerini kullanır.
 
-## <a name="service-to-service-authentication-flow"></a>Hizmetten hizmete kimlik doğrulama akışı
+Azure Marketi, SaaS hizmetinizin son kullanıcılar için kullandığı kimlik doğrulama yönteminde herhangi bir kısıtlama uygulamaz. Aşağıdaki akış yalnızca Azure Marketi 'nde SaaS hizmetinin kimlik doğrulaması için gereklidir.
 
-Aşağıdaki diyagramda, yeni bir müşterinin abonelik akışı ve bu API 'Ler kullanıldığında gösterilmektedir:
-
-![SaaS teklifi API akışı](./media/saas-offer-publish-api-flow-v1.png)
-
-Azure, SaaS hizmetinin son kullanıcılarına sunduğu kimlik doğrulaması üzerinde herhangi bir kısıtlama uygulamaz. Bununla birlikte, SaaS yerine getirme API 'Leri ile kimlik doğrulaması, genellikle SaaS uygulamasını Azure portal aracılığıyla kaydederek elde edilen bir Azure AD güvenlik belirteciyle gerçekleştirilir. 
+Azure AD (Active Directory) hakkında daha fazla bilgi için bkz. [kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)nedir?
 
 ## <a name="register-an-azure-ad-secured-app"></a>Azure AD ile güvenli bir uygulamayı kaydetme
 
-Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD kiracısı olarak kaydedilmelidir. Bu kayıt işlemi, uygulamanız hakkında, bulunduğu URL gibi Azure AD ayrıntılarının yanı sıra bir kullanıcının kimlik doğrulamasından sonra yanıtların gönderileceği URL 'yi, uygulamayı tanımlayan URI 'yi ve benzerlerini içerir.  Azure portal kullanarak yeni bir uygulama kaydetmek için aşağıdaki adımları uygulayın:
+Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD kiracısı olarak kaydedilmelidir. Bu kayıt işlemi, uygulamanız hakkında Azure AD bazı ayrıntıları vermeyi içerir. Azure portal kullanarak yeni bir uygulama kaydetmek için aşağıdaki adımları uygulayın:
 
-1.  [Azure Portal](https://portal.azure.com/) oturum açın.
-2.  Hesabınız birden fazla erişim veriyorsa, sağ üst köşedeki hesabınıza tıklayın ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
-3.  Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetine tıklayın, **uygulama kayıtları**' a tıklayın ve **Yeni uygulama kaydı**' na tıklayın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. Hesabınız birden fazla erişim veriyorsa, sağ üst köşedeki hesabınıza tıklayın ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
+3. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetine tıklayın, **uygulama kayıtları**' a tıklayın ve **Yeni uygulama kaydı**' na tıklayın.
 
     ![SaaS AD uygulama kayıtları](./media/saas-offer-app-registration-v1.png)
 
-4.  Oluştur sayfasında, uygulamanızın\'kayıt bilgilerini girin:
+4. Oluştur sayfasında, uygulamanızın \' kayıt bilgilerini girin:
     -   **Ad**: anlamlı bir uygulama adı girin
-    -   **Uygulama türü**: 
-        - Bir cihaza yerel olarak yüklenen [istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) için **Yerel**'i seçin. Bu ayar OAuth ortak [yerel istemcileri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client) için kullanılır.
-        - Güvenli bir sunucuda yüklü olan [istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) ve [kaynak/API uygulamaları](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) IÇIN **Web uygulaması/API** ' yi seçin. Bu ayar, OAuth gizli [Web istemcileri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) ve genel [Kullanıcı Aracısı tabanlı istemciler](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)için kullanılır.
+    -   **Uygulama türü**:  
+        
+        Güvenli bir sunucuda yüklü olan [istemci uygulamaları](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) ve [kaynak/API uygulamaları](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) IÇIN **Web uygulaması/API** ' yi seçin. Bu ayar, OAuth gizli [Web istemcileri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) ve genel [Kullanıcı Aracısı tabanlı istemciler](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)için kullanılır.
         Aynı uygulama gerek bir istemciyi, gerekse kaynağı/API'yi sunabilir.
-    -   **Oturum açma URL 'si**: Web UYGULAMASı/API uygulamaları için uygulamanızın temel URL 'sini sağlayın. Örneğin, **http://localhost:31544** yerel makinenizde çalışan bir Web uygulamasının URL 'si olabilir. Kullanıcılar bu URL 'yi bir Web istemcisi uygulamasında oturum açmak için kullanır.
-    -   **Yeniden yönlendirme URI 'si**: yerel uygulamalar için, belirteç yanıtlarını döndürmek üzere Azure AD tarafından kullanılan URI 'yi sağlayın. Uygulamanıza özgü bir değer girin, örneğin **http://MyFirstAADApp**.
 
-        ![SaaS AD uygulama kayıtları](./media/saas-offer-app-registration-v1-2.png)
+        Belirli Web uygulamalarına örnek olarak, [Azure AD geliştiricileri Kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/)' nu [kullanmaya başlama](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) bölümünde bulunan hızlı başlangıç destekli kurulumları inceleyin.
 
-        Web uygulamaları veya yerel uygulamalar için belirli örnekler için, [Azure AD geliştiricileri Kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)' nu *kullanmaya başlama* bölümünde bulunan hızlı başlangıç destekli kurulumları inceleyin.
+5. İşiniz bittiğinde **Kaydet**' e tıklayın.  Azure AD, yeni uygulamanıza benzersiz bir *uygulama kimliği* atar. Yalnızca API 'ye ve tek bir kiracıya erişen bir uygulamanın kaydolmalarını öneririz.
 
-5.  Tamamladığınızda **Oluştur**’a tıklayın. Azure AD uygulamanıza benzersiz bir *uygulama kimliği* atar ve uygulama\'ana kayıt sayfasına\'yeniden yönlendirilirsiniz. Web uygulaması ya da yerel uygulama olmasına bağlı olarak uygulamanıza ek özellikler eklemek için değişik seçenekler sunulur.
+6. İstemci parolası oluşturmak için **sertifikalar & gizlilikler sayfasına** gidin ve **+ yeni istemci parolası**' na tıklayın.  Kodunuzda kullanmak için gizli değeri kopyalamadığınızdan emin olun.
+
+**Azure AD uygulama kimliği** , yayımcı Kimliğinizle ilişkilidir, bu nedenle tüm tekliflerinizi aynı *uygulama kimliğinin* kullanıldığından emin olun.
 
 >[!Note]
->Varsayılan olarak, yeni kaydedilen uygulama, yalnızca aynı Kiracıdaki kullanıcıların uygulamanızda oturum açmasını sağlamak üzere yapılandırılmıştır.
+>Bir yayımcının Iş Ortağı Merkezi 'nde iki farklı hesabı varsa, iki farklı Azure AD uygulama kimliği kullanılması gerekir.  Iş Ortağı Merkezi 'ndeki her iş ortağı hesabı, bu hesap aracılığıyla yayınlanan tüm SaaS teklifleri için benzersiz bir Azure AD uygulama KIMLIĞI kullanmalıdır.
 
-## <a name="using-the-azure-ad-security-token"></a>Azure AD güvenlik belirtecini kullanma
+## <a name="how-to-get-the-publishers-authorization-token"></a>Yayımcının yetkilendirme belirtecini alma
 
-Uygulamanızı kaydettikten sonra programlı bir şekilde Azure AD güvenlik belirteci isteyebilirsiniz.  Yayımcının bu belirteci kullanması bekleniyordu ve çözümü çözümlemek için bir istek oluşturun.  Çeşitli karşılama API 'Leri kullanılırken, Kullanıcı Azure 'dan SaaS Web sitesine yeniden yönlendirildiğinde belirteç sorgu parametresi URL 'de bulunur.  Bu belirteç yalnızca bir saat için geçerlidir.  Ayrıca, kullanmadan önce tarayıcıdan belirteç değerinin kodunu çözmelisiniz.
+Uygulamanızı kaydettikten sonra, program aracılığıyla yayımcının yetkilendirme belirtecini (Azure AD v1 uç noktasını kullanarak Azure AD erişim belirteci) isteyebilirsiniz. Yayımcının çeşitli SaaS karşılama API 'Lerini çağırırken bu belirteci kullanması gerekir. Bu belirteç yalnızca bir saat için geçerlidir. 
 
-Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).  Aşağıdaki akışta v1 uç noktası belirtecinin kullanıldığını unutmayın.
 
+### <a name="get-the-token-with-an-http-post"></a>Belirteci bir HTTP GÖNDERIMIYLE al
 
-### <a name="get-a-token-based-on-the-azure-ad-app"></a>Azure AD uygulaması 'nı temel alan bir belirteç alın
+#### <a name="http-method"></a>HTTP yöntemi
 
-HTTP yöntemi
+Gönderi<br>
 
-`POST`
+##### <a name="request-url"></a>*İstek URL’si* 
 
-*İstek URL'si*
+`https://login.microsoftonline.com/*{tenantId}*/oauth2/token`
 
-**https://login.microsoftonline.com/*{Tenantıd}*/OAuth2/Token**
+##### <a name="uri-parameter"></a>*URI parametresi*
 
-*URI parametresi*
+|  Parametre adı    |  Gerekli         |  Açıklama |
+|  ---------------   |  ---------------  | ------------ |
+|  `tenantId`        |  True      |  Kayıtlı AAD uygulamasının kiracı KIMLIĞI. |
 
-|  **Parametre adı**  | **Gerekli**  | **Açıklama**                               |
-|  ------------------  | ------------- | --------------------------------------------- |
-| Değerine             | True          | Kayıtlı AAD uygulamasının kiracı KIMLIĞI   |
-|  |  |  |
+##### <a name="request-header"></a>*İstek üst bilgisi*
 
+|  Üst bilgi adı       |  Gerekli         |  Açıklama |
+|  ---------------   |  ---------------  | ------------ |
+|  `content-type`    |  True      |  İstekle ilişkilendirilmiş içerik türü. Varsayılan değer: `application/x-www-form-urlencoded`. |
 
-*İstek üst bilgisi*
+##### <a name="request-body"></a>*İstek gövdesi*
 
-|  **Üst bilgi adı**  | **Gerekli** |  **Açıklama**                                   |
-|  --------------   | ------------ |  ------------------------------------------------- |
-|  İçerik Türü     | True         | İstekle ilişkilendirilmiş içerik türü. Varsayılan değer: `application/x-www-form-urlencoded`.  |
-|  |  |  |
+|  Özellik adı     |  Gerekli         |  Açıklama |
+|  ---------------   |  ---------------  | ------------ |
+|  `grant-type`      |  True      |  Verme türü. `"client_credentials"` adresini kullanın. |
+|  `client_id`       |  True      |  Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı. |
+|  `client_secret`   |  True      |  Azure AD uygulamasıyla ilişkili gizli dizi. |
+|  `resource`        |  True      |  Belirtecin istendiği hedef kaynak. `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`Bu durumda Market SaaS API 'si her zaman hedef kaynak olduğundan kullanın. |
 
+##### <a name="response"></a>*Yanıtıyla*
 
-*İstek gövdesi*
+|  Name     |  Tür         |  Description |
+|  ------   |  ---------------  | ------------ |
+|  200 TAMAM   |  TokenResponse    |  İstek başarılı oldu. |
 
-| **Özellik adı**   | **Gerekli** |  **Açıklama**                                                          |
-| -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True         | Verme türü. Varsayılan değer: `client_credentials`.                    |
-|  Client_id          | True         |  Azure AD uygulamasıyla ilişkili istemci/uygulama tanımlayıcısı.                  |
-|  client_secret      | True         |  Azure AD uygulamasıyla ilişkili parola.                               |
-|  Kaynak           | True         |  Belirtecin istendiği hedef kaynak. Varsayılan değer: `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
-|  |  |  |
+##### <a name="tokenresponse"></a>*TokenResponse*
 
+Örnek yanıt:
 
-*Yanıtıyla*
-
-|  **Adı**  | **Tür**       |  **Açıklama**    |
-| ---------- | -------------  | ------------------- |
-| 200 TAMAM    | TokenResponse  | İstek başarılı oldu   |
-|  |  |  |
-
-*TokenResponse*
-
-Örnek yanıt belirteci:
-
-``` json
-  {
+```json
+{
       "token_type": "Bearer",
       "expires_in": "3600",
       "ext_expires_in": "0",
       "expires_on": "15251…",
       "not_before": "15251…",
-      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
+      "resource": "20e940b3-4c77-4b0b-9a53-9e16a1b010a7",
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
-  }               
+  }
 ```
+
+`"access_token"`Yanıttaki alan değeri, `<access_token>` Tüm Saas karşılama ve Market ölçüm API 'lerini çağırırken yetkilendirme parametresi olarak geçilecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

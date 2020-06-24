@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0e46905ad280cd76d66befb1156e428b23f35664
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0d16823f920695f84db74122c9a2ac07de0abdb2
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235639"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907083"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
-Azure Load Balancer, bazı farklı mekanizmalarda müşteri dağıtımları için giden bağlantı sağlar. Bu makalede senaryoların ne olduğu, ne zaman uygulandığı, nasıl çalıştığı ve nasıl yönetileceği açıklanmaktadır. Azure Load Balancer aracılığıyla giden bağlantılarla ilgili sorun yaşıyorsanız, bkz. [giden bağlantılar için sorun giderme kılavuzu] (.. /load-balancer/troubleshoot-outbound-connection.md).
+Azure Load Balancer, bazı farklı mekanizmalarda müşteri dağıtımları için giden bağlantı sağlar. Bu makalede senaryoların ne olduğu, ne zaman uygulandığı, nasıl çalıştığı ve nasıl yönetileceği açıklanmaktadır. Azure Load Balancer aracılığıyla giden bağlantılarla ilgili sorun yaşıyorsanız, [giden bağlantılar için sorun giderme kılavuzuna](../load-balancer/troubleshoot-outbound-connection.md)bakın.
 
 >[!NOTE] 
 >Bu makalede yalnızca Kaynak Yöneticisi dağıtımları ele alınmaktadır. Azure 'daki tüm klasik dağıtım senaryoları için [giden bağlantıları (klasik)](load-balancer-outbound-connections-classic.md) gözden geçirin.
@@ -40,7 +40,7 @@ Birden çok [giden senaryo](#scenarios)vardır. Bu senaryoları gerektiğinde bi
 
 Azure Load Balancer ve ilgili kaynaklar [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)kullanırken açıkça tanımlanır.  Azure Şu anda Azure Resource Manager kaynaklarına giden bağlantı sağlamak için üç farklı yöntem sunmaktadır. 
 
-| SKU'lar | Senaryo | Yöntem | IP protokolleri | Açıklama |
+| SKU'lar | Senaryo | Yöntem | IP protokolleri | Description |
 | --- | --- | --- | --- | --- |
 | Standart, temel | [1. örnek düzeyi genel IP adresine sahip VM (Load Balancer ile veya olmayan)](#ilpip) | SNAT, bağlantı noktası aşağı olarak kullanılmıyor | TCP, UDP, ıCMP, ESP | Azure, örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. Standart Load Balancer kullanırken, sanal makineye genel IP atanmışsa [giden kuralları](load-balancer-outbound-rules-overview.md) desteklenmez. |
 | Standart, temel | [2. bir VM ile ilişkili ortak Load Balancer (örnekte genel IP adresi yok)](#lb) | Load Balancer ön uçları kullanarak bağlantı noktası geçici olarak (PAT) SNAT | TCP, UDP |Azure, genel Load Balancer ön uçlarının genel IP adresini birden çok özel IP adresi ile paylaşır. Azure, ön uçların kısa ömürlü bağlantı noktalarını kullanır. Standart Load Balancer kullanırken, giden bağlantıyı açıkça tanımlamak için [giden kurallarını](load-balancer-outbound-rules-overview.md) kullanmanız gerekir. |

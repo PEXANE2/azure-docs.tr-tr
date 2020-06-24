@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 30244a426b6f934ef66261c6dccbb46e72f28488
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 9f6b2b9b0ec2fa497d2de4d69cae58d834654e7c
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485206"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944841"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -69,11 +69,11 @@ Bir performans kıyaslama testi çalıştırmak için aşağıdaki komutu kullan
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **Örneğinde** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Örnek** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
-> Bu örnek tek tırnak (' ') ile yol bağımsız değişkenlerini barındırır. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
+> Bu örnek tek tırnak (' ') ile yol bağımsız değişkenlerini barındırır. Windows komut kabuğu (cmd.exe) hariç tüm komut kabukta tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 Bu komut test verilerini belirtilen bir hedefe yükleyerek bir performans kıyaslaması çalıştırır. Test verileri bellekte oluşturulur, hedefe yüklenir ve ardından test tamamlandıktan sonra hedefteki silinir. İsteğe bağlı komut parametrelerini kullanarak oluşturulacak dosya sayısını ve bunların kaç boyutunu istediğinizi belirtebilirsiniz.
 
@@ -83,7 +83,7 @@ Bu komutla ilgili ayrıntılı yardım kılavuzunu görüntülemek için yazın 
 
 ### <a name="optimize-throughput"></a>Aktarım hızını iyileştirme
 
-`cap-mbps`İş hızı veri hızına bir tavan koymak için komutlarınızın bayrağını kullanabilirsiniz. Örneğin, aşağıdaki komut, bir işi sürdürür ve `10` saniye başına megabayt (MB) cinsinden bir işleme devam eder. 
+`cap-mbps`İş hızı veri hızına bir tavan koymak için komutlarınızın bayrağını kullanabilirsiniz. Örneğin, aşağıdaki komut bir işi sürdürür ve `10` saniye başına megabit (MB) cinsinden bir işleme devam eder. 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
@@ -179,7 +179,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 > [!TIP]
-> SAS belirteci gibi yol bağımsız değişkenlerini tek tırnak işareti (' ') ile çevrele. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
+> SAS belirteci gibi yol bağımsız değişkenlerini tek tırnak işareti (' ') ile çevrele. Windows komut kabuğu (cmd.exe) hariç tüm komut kabukta tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 Bir işi sürdürürseniz AzCopy iş planı dosyasına bakar. Plan dosyası, iş ilk oluşturulduğunda işleme için tanımlanan tüm dosyaları listeler. Bir işi sürdürürseniz AzCopy, önceden aktarılmayan plan dosyasında listelenen tüm dosyaları aktarmaya çalışır.
 

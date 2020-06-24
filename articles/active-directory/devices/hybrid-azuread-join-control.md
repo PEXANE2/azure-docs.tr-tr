@@ -4,19 +4,19 @@ description: Tek seferde tüm kuruluş genelinde etkinleştirmeden önce karma A
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "80049991"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252721"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılıma yönelik denetimli doğrulama
 
@@ -42,7 +42,7 @@ AD 'deki SCP nesnelerini değiştirmek için Active Directory Hizmetleri arabiri
 
 1. Şirket Yöneticisi olarak ve yönetim iş istasyonundan veya bir etki alanı denetleyicisinden **ADSI düzenleme** masaüstü uygulamasını başlatın.
 1. Etki alanınız için **yapılandırma adlandırma bağlamına** bağlanın.
-1. **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = cihaz kayıt yapılandırması** ' na gidin
+1. **CN = Configuration, DC = contoso, DC = com**  >  **CN = Services**  >  **CN = cihaz kayıt yapılandırması** ' na gidin
 1. **CN = 62a0ff2e-97B9-4513-943F-0d221bd30080** yaprak nesnesine sağ tıklayın ve **Özellikler** ' i seçin
    1. **Öznitelik Düzenleyicisi** penceresinde **anahtar sözcükler** ' i seçin ve **Düzenle** ' ye tıklayın.
    1. **Azureadıd** ve **azureadname** değerlerini (tek seferde bir kez) seçip **Kaldır** ' a tıklayın.
@@ -55,24 +55,24 @@ Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir ka
 
 1. Grup ilkesi bir Yönetim Konsolu açın ve etki alanında yeni bir grup ilkesi nesnesi oluşturun.
    1. Yeni oluşturduğunuz GPO 'YU bir ad sağlayın (örneğin, ClientSideSCP).
-1. GPO 'yu düzenleyin ve şu yolu bulun: **bilgisayar yapılandırma** > **tercihleri** > **Windows ayarları** > **kayıt defteri**
-1. Kayıt defterine sağ tıklayıp **Yeni** > **kayıt defteri öğesi** ' ni seçin
+1. GPO 'yu düzenleyin ve şu yolu bulun: **bilgisayar yapılandırma**  >  **tercihleri**  >  **Windows ayarları**  >  **kayıt defteri**
+1. Kayıt defterine sağ tıklayıp **Yeni**  >  **kayıt defteri öğesi** ' ni seçin
    1. **Genel** sekmesinde, aşağıdakileri yapılandırın
       1. Eylem: **Güncelleştir**
       1. Hive: **HKEY_LOCAL_MACHINE**
       1. Anahtar yolu: **Software\microsoft\windows\currentversion\cdj\aad**
       1. Değer adı: **Tenantıd**
       1. Değer türü: **REG_SZ**
-      1. Değer verileri: Azure AD örneğinizin GUID veya **dizin kimliği** (Bu değer **Azure Portal** > **Azure Active Directory** > **Özellikler** > **Dizin kimliğinde**bulunabilir)
+      1. Değer verileri: Azure AD örneğinizin GUID veya **dizin kimliği** (Bu değer **Azure Portal**  >  **Azure Active Directory**  >  **Özellikler**  >  **Dizin kimliğinde**bulunabilir)
    1. **Tamam 'a** tıklayın
-1. Kayıt defterine sağ tıklayıp **Yeni** > **kayıt defteri öğesi** ' ni seçin
+1. Kayıt defterine sağ tıklayıp **Yeni**  >  **kayıt defteri öğesi** ' ni seçin
    1. **Genel** sekmesinde, aşağıdakileri yapılandırın
       1. Eylem: **Güncelleştir**
       1. Hive: **HKEY_LOCAL_MACHINE**
       1. Anahtar yolu: **Software\microsoft\windows\currentversion\cdj\aad**
       1. Değer adı: **TenantName**
       1. Değer türü: **REG_SZ**
-      1. Değer verileri: AD FS gibi federe ortam kullanıyorsanız, doğrulanmış **etki alanı adınız** . Yönetilen ortam kullanıyorsanız, `contoso.onmicrosoft.com` doğrulanmış **etki alanı adınız** veya onmicrosoft.com etki alanı adınız
+      1. Değer verileri: AD FS gibi federe ortam kullanıyorsanız, doğrulanmış **etki alanı adınız** . Yönetilen ortam kullanıyorsanız, doğrulanmış **etki alanı adınız** veya onmicrosoft.com etki alanı adınız `contoso.onmicrosoft.com`
    1. **Tamam 'a** tıklayın
 1. Yeni oluşturulan GPO için Düzenleyiciyi Kapat
 1. Yeni oluşturulan GPO 'YU, denetimli dağıtım popülasyona ait olan, etki alanına katılmış bilgisayarları içeren istenen OU 'ya bağlayın

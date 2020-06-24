@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842946"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738065"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Uyarılar ve Azure Işlevleri ile öngörülü ağ izleme için paket yakalamayı kullanma
 
@@ -68,13 +68,13 @@ Bu senaryo şunları yapar:
 
 İlk adım, uyarıyı işlemek ve bir paket yakalama oluşturmak için bir Azure işlevi oluşturmaktır.
 
-1. [Azure Portal](https://portal.azure.com) **kaynak** > oluşturma**işlem** > **işlev uygulaması**seçin.
+1. [Azure Portal](https://portal.azure.com) **kaynak oluşturma**  >  **işlem**  >  **işlev uygulaması**seçin.
 
     ![İşlev uygulaması oluşturma][1-1]
 
 2. **İşlev uygulaması** dikey penceresinde aşağıdaki değerleri girin ve ardından uygulamayı oluşturmak için **Tamam** ' ı seçin:
 
-    |**Ayar** | **Deeri** | **Bilgileri** |
+    |**Ayar** | **Değer** | **Ayrıntılar** |
     |---|---|---|
     |**Uygulama adı**|PacketCaptureExample|İşlev uygulamasının adı.|
     |**Abonelik**|[Aboneliğiniz] İşlev uygulamasının oluşturulacağı abonelik.||
@@ -83,11 +83,11 @@ Bu senaryo şunları yapar:
     |**Konum**|Orta ABD| İşlev uygulamasının oluşturulacağı bölge.|
     |**Depolama hesabı**|otomatik olarak oluşturulan| Azure Işlevlerinin genel amaçlı depolama için ihtiyaç duyacağı depolama hesabı.|
 
-3. **Packetcaptureexample işlevi uygulamalar** dikey penceresinde **işlevler** > **özel işlev** >**+**' i seçin.
+3. **Packetcaptureexample işlevi uygulamalar** dikey penceresinde **işlevler**  >  **özel işlev**' i seçin  > **+** .
 
 4. **Httptrigger-PowerShell**' i seçin ve ardından kalan bilgileri girin. Son olarak, işlevi oluşturmak için **Oluştur**' u seçin.
 
-    |**Ayar** | **Deeri** | **Bilgileri** |
+    |**Ayar** | **Değer** | **Ayrıntılar** |
     |---|---|---|
     |**Senaryo**|Deneysel|Senaryonun türü|
     |**İşlevinizi adlandırma**|AlertPacketCapturePowerShell|İşlevin adı|
@@ -120,7 +120,7 @@ Ağ Izleyicisi PowerShell cmdlet 'lerini kullanmak için, işlev uygulamasına e
 
      ![PowerShell klasörleri][functions5]
 
-1. **İşlev uygulaması ayarları** > seçin**App Service Düzenleyicisi git**.
+1. **İşlev uygulaması ayarları**seçin  >  **App Service Düzenleyicisi git**.
 
     ![İşlev uygulaması ayarları][functions2]
 
@@ -148,7 +148,7 @@ Ağ Izleyicisi PowerShell cmdlet 'lerini kullanmak için, işlev uygulamasına e
 
     ![PowerShell dosyaları][functions7]
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 PowerShell cmdlet 'lerini kullanmak için kimlik doğrulaması yapmanız gerekir. İşlev uygulamasında kimlik doğrulamasını yapılandırırsınız. Kimlik doğrulamasını yapılandırmak için, ortam değişkenlerini yapılandırmanız ve şifrelenmiş bir anahtar dosyasını işlev uygulamasına yüklemeniz gerekir.
 
@@ -225,7 +225,7 @@ Aşağıdaki PowerShell örneğini çalıştırarak kiracı KIMLIĞINI edinin:
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-AzureCredPassword ortam değişkeninin değeri, aşağıdaki PowerShell örneğini çalıştırmadan aldığınız değerdir. Bu örnek, önceki **şifreli kimlik bilgileri** bölümünde gösterilen bir örnektir. Gereken değer, `$Encryptedpassword` değişkenin çıktıdır.  Bu, PowerShell betiğini kullanarak şifrelediğiniz hizmet sorumlusu parolasıdır.
+AzureCredPassword ortam değişkeninin değeri, aşağıdaki PowerShell örneğini çalıştırmadan aldığınız değerdir. Bu örnek, önceki **şifreli kimlik bilgileri** bölümünde gösterilen bir örnektir. Gereken değer, değişkenin çıktıdır `$Encryptedpassword` .  Bu, PowerShell betiğini kullanarak şifrelediğiniz hizmet sorumlusu parolasıdır.
 
 ```powershell
 #Variables
@@ -246,7 +246,7 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>Ortam değişkenlerini depolayın
 
-1. İşlev uygulamasına gidin. Ardından **işlev uygulama ayarları** > **uygulama ayarlarını yapılandır**' ı seçin.
+1. İşlev uygulamasına gidin. Ardından **işlev uygulama ayarları**  >  **uygulama ayarlarını yapılandır**' ı seçin.
 
     ![Uygulama ayarlarını yapılandırma][functions11]
 
@@ -342,7 +342,7 @@ Uyarılar, belirli bir ölçüm kendisine atanan bir eşiğe girdiğinde bireyle
 
 Var olan bir sanal makineye gidin ve bir uyarı kuralı ekleyin. Uyarıları yapılandırma hakkında daha ayrıntılı belgeler, [Azure hizmetleri Için Azure izleyici 'de uyarı oluşturma ' da bulunabilir-Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). **Uyarı kuralı** dikey penceresinde aşağıdaki değerleri girin ve **Tamam**' ı seçin.
 
-  |**Ayar** | **Deeri** | **Bilgileri** |
+  |**Ayar** | **Değer** | **Ayrıntılar** |
   |---|---|---|
   |**Adı**|TCP_Segments_Sent_Exceeded|Uyarı kuralının adı.|
   |**Açıklama**|Gönderilen TCP kesimleri eşiği aştı|Uyarı kuralının açıklaması.|
@@ -350,7 +350,7 @@ Var olan bir sanal makineye gidin ve bir uyarı kuralı ekleyin. Uyarıları yap
   |**Koşul**|Büyüktür| Ölçüm değerlendirilirken kullanılacak koşul.|
   |**Eşiği**|100| Uyarıyı tetikleyen ölçümün değeri. Bu değer, ortamınız için geçerli bir değer olarak ayarlanmalıdır.|
   |**Dönem**|Son beş dakika boyunca| Ölçüm üzerindeki eşiğin aranacağı süreyi belirler.|
-  |**Web kancası**|[işlev uygulamasından Web kancası URL 'SI]| Önceki adımlarda oluşturulan işlev uygulamasındaki Web kancası URL 'SI.|
+  |**Web Kancası**|[işlev uygulamasından Web kancası URL 'SI]| Önceki adımlarda oluşturulan işlev uygulamasındaki Web kancası URL 'SI.|
 
 > [!NOTE]
 > TCP kesimleri ölçümü varsayılan olarak etkin değildir. [İzleme ve tanılamayı etkinleştir ' i](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)ziyaret ederek ek ölçümleri etkinleştirme hakkında daha fazla bilgi edinin.

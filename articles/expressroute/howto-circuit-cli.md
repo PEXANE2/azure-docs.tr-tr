@@ -4,15 +4,15 @@ description: Bu makalede, CLı kullanarak bir ExpressRoute bağlantı hattı olu
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56af984ef83d2e237f0aa05af5cfef4dd6205256
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476160"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738337"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI kullanarak ExpressRoute bağlantı hattını oluşturma ve değiştirme
 
@@ -118,7 +118,7 @@ Yanıt aşağıdaki örneğe benzer:
 
 Bağlantı sağlayıcınızın listelenip listelenmediğini görmek için yanıtı denetleyin. Bir devre oluşturduğunuzda ihtiyacınız olacak aşağıdaki bilgileri unutmayın:
 
-* Adı
+* Name
 * PeeringLocations
 * BandwidthsOffered
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5330c427088734b049b2cb4f7735ac0099a52b47
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966681"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736681"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -62,7 +62,7 @@ Azure Güvenlik Merkezi standardı ile şunları yapabilirsiniz:
 
 Daha fazla bilgi edinmek için bkz. [Azure aboneliğinizi Güvenlik Merkezi standardına](../security-center/security-center-get-started.md)ekleme.
 
-### <a name="improve-your-secure-score"></a>Güvenli puanınızı geliştirme
+### <a name="improve-your-secure-score"></a>Güvenlik Puanınızı İyileştirme
 
 Güvenli puan, genel güvenliği iyileştirmeye yönelik öneriler ve en iyi uygulama önerileri sağlar. Bu öneriler, en önemli olanları seçmenize yardımcı olmak için önceliklendirilir ve hızlı onarım seçenekleri olası güvenlik açıklarını hızla gidermeye yardımcı olur. Bu öneriler zaman içinde günceldir ve ortamınızın güvenliğini sağlamanın en iyi yolları hakkında sizi güncel tutar. Daha fazla bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'Nde güvenli puanınızı geliştirme](../security-center/security-center-secure-score.md).
 

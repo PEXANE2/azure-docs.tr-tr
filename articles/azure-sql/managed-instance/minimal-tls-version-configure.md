@@ -2,7 +2,7 @@
 title: Minimum TLS sürümü ile yönetilen örneği yapılandırma
 description: Yönetilen örnek için en düşük TLS sürümünü yapılandırmayı öğrenin
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: ''
 ms.topic: conceptual
@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 309649fe099d5226ba6a4972e22a4e3d7ff0e526
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7982cb80c253ec3966319528e39390920c653e38
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267129"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974271"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde en düşük TLS sürümünü yapılandırma
 Minimum [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) sürümü ayarı, MÜŞTERILERIN Azure SQL yönetilen örneği tarafından kullanılan TLS sürümünü denetlemesine olanak tanır.
 
-Şu anda TLS 1,0, 1,1 ve 1,2 destekliyoruz. Minimum TLS sürümü ayarlandığında, daha yeni olan TLS sürümlerinin desteklenmesini sağlar. Örneğin, örneğin, 1,1 'den büyük bir TLS sürümü seçme. Yalnızca TLS 1,1 ve 1,2 arasındaki bağlantıların kabul edildiği ve TLS 1,0 reddedildiği anlamına gelir. Uygulamalarınızın bu uygulamayı desteklediğini doğrulamak için test ettikten sonra, önceki sürümlerde bulunan güvenlik açıklarına yönelik düzeltmeler içerdiğinden ve Azure SQL yönetilen örneği 'nde desteklenen en yüksek TLS sürümüne sahip olduğundan, en az TLS sürümünü 1,2 olarak ayarlamayı öneririz.
+Şu anda TLS 1,0, 1,1 ve 1,2 destekliyoruz. Minimum TLS sürümü ayarlandığında, daha yeni olan TLS sürümlerinin desteklenmesini sağlar. Örneğin, örneğin, 1,1 'den büyük bir TLS sürümü seçme. Yalnızca TLS 1,1 ve 1,2 arasındaki bağlantıların kabul edildiği ve TLS 1,0 reddedildiği anlamına gelir. Uygulamalarınızın bu uygulamayı desteklediğini doğrulamak için test ettikten sonra, önceki sürümlerde bulunan güvenlik açıklarına yönelik düzeltmeler içerdiğinden ve Azure SQL yönetilen örneği 'nde desteklenen en yüksek TLS sürümüne sahip olduğundan, en düşük TLS sürümünü 1,2 olarak ayarlamayı öneririz.
 
 TLS 'nin eski sürümlerini kullanan uygulamalar için, uygulamalarınızın gereksinimlerine göre en düşük TLS sürümünü ayarlamayı öneririz. Şifrelenmemiş bir bağlantı kullanarak bağlanmak için uygulamalara bağlı olan müşteriler için, en az TLS sürümü ayarlamamız önerilir. 
 

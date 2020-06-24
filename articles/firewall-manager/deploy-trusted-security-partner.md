@@ -1,33 +1,33 @@
 ---
-title: Azure Güvenlik Duvarı Yöneticisi güvenilen güvenlik iş ortağı dağıtma
-description: Azure portal kullanarak bir Azure Güvenlik Duvarı Yöneticisi güvenilen güvenliği dağıtmayı öğrenin.
+title: Azure Güvenlik Duvarı Yöneticisi güvenlik iş ortağı sağlayıcısı dağıtma
+description: Azure portal kullanarak bir Azure Güvenlik Duvarı Yöneticisi güvenlik iş ortağı sağlayıcısını dağıtmayı öğrenin.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e06f8e3adaedbc8847aacba0ca4ad9c6a172c9b7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73931314"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791699"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>Güvenilen güvenlik iş ortağı dağıtma (önizleme)
+# <a name="deploy-a-security-partner-provider-preview"></a>Güvenlik iş ortağı sağlayıcısı dağıtma (Önizleme)
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Güvenlik Duvarı Yöneticisi 'ndeki *güvenilir güvenlik iş ortakları* , kullanıcılarınız için Internet erişimini korumak üzere tanıdık, en uygun, yerleşik üçüncü taraf güvenlik (SECaaS) tekliflerini kullanmanıza olanak sağlar.
+Azure Güvenlik Duvarı Yöneticisi 'ndeki *güvenlik iş ortağı sağlayıcıları* , kullanıcılarınız için Internet erişimini korumak üzere tanıdık, en uygun, yerleşik üçüncü taraf güvenlik (SECaaS) tekliflerini kullanmanıza olanak sağlar.
 
 Desteklenen senaryolar ve en iyi yöntem yönergeleri hakkında daha fazla bilgi edinmek için bkz. [Güvenilen güvenlik ortakları (Önizleme) nedir?](trusted-security-partners.md).
 
-Desteklenen güvenlik iş ortakları, bu önizleme için **Zscaler** ve **ıpatron** . Desteklenen bölgeler şunlardır WestCentralUS, kuzeydoğu, WestUS, WestUS2 ve EastUS.
+Desteklenen güvenlik iş ortakları, bu önizleme için **Zscaler**, **Check Point**ve **ıpatron** . Desteklenen bölgeler şunlardır WestCentralUS, kuzeydoğu, WestUS, WestUS2 ve EastUS.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!IMPORTANT]
-> Azure Güvenlik Duvarı Yöneticisi önizlemesi, `Register-AzProviderFeature` PowerShell komutu kullanılarak açıkça etkinleştirilmelidir.
+> Azure Güvenlik Duvarı Yöneticisi önizlemesi, PowerShell komutu kullanılarak açıkça etkinleştirilmelidir `Register-AzProviderFeature` .
 
 PowerShell komut isteminden aşağıdaki komutları çalıştırın:
 
@@ -41,6 +41,8 @@ Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace M
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>Yeni bir hub 'da üçüncü taraf güvenlik sağlayıcısı dağıtma
 
+Mevcut bir hub 'a üçüncü taraf bir sağlayıcı dağıtıyorsanız bu bölümü atlayın.
+
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 2. **Ara**bölümünde **güvenlik duvarı Yöneticisi** yazın ve **Hizmetler**altında seçin.
 3. **Başlarken**' e gidin. **Güvenli sanal hub oluştur**' u seçin. 
@@ -51,8 +53,8 @@ Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace M
    > Güvenilen güvenlik iş ortakları, VPN Gateway tünellerini kullanarak hub 'ınıza bağlanır. VPN Gateway silerseniz, güvenilen güvenlik iş ortaklarınıza olan bağlantılar kaybedilir.
 7. Internet trafiğini filtrelemek için üçüncü taraf hizmet sağlayıcısıyla birlikte özel trafiği filtrelemek üzere Azure Güvenlik Duvarı dağıtmak istiyorsanız, Azure Güvenlik Duvarı için bir ilke seçin. [Desteklenen senaryolar](trusted-security-partners.md#key-scenarios)bölümüne bakın.
 8. Hub 'da yalnızca bir üçüncü taraf güvenlik sağlayıcısını dağıtmak istiyorsanız, **Azure Güvenlik Duvarı: etkin/devre** **dışı olarak**ayarlamak için devre dışı seçeneğini belirleyin. 
-9. **İleri ' yi seçin: güvenilen güvenlik Iş ortakları**.
-10. **Etkin**olarak ayarlamak Için **güvenilir güvenlik ortağı** ' nı seçin. Bir iş ortağı seçin. 
+9. **İleri ' yi seçin: güvenlik Iş ortağı sağlayıcısı**.
+10. **Etkin**olarak ayarlamak Için **güvenlik iş ortağı sağlayıcısını** seçin. Bir iş ortağı seçin. 
 11. **İleri**’yi seçin. 
 12. İçeriği gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -75,20 +77,25 @@ Mevcut bir hub 'ı, üçüncü taraf sağlayıcılardan oluşan güvenli hub 'a 
 
 Sanal hub 'ın VPN Gateway tünellerini ayarlamak için, üçüncü taraf sağlayıcılarının hub 'ınız için erişim hakları olması gerekir. Bunu yapmak için, bir hizmet sorumlusunu aboneliğiniz veya kaynak grubuyla ilişkilendirin ve erişim hakları verin. Daha sonra bu kimlik bilgilerini, portalını kullanarak üçüncü tarafa vermeniz gerekir.
 
+### <a name="create-and-authorize-a-service-principal"></a>Hizmet sorumlusu oluşturma ve yetkilendirme
+
 1. Azure Active Directory (AD) hizmet sorumlusu oluşturma: yeniden yönlendirme URL 'sini atlayabilirsiniz. 
 
-   [Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
 2. Hizmet sorumlusu için erişim hakları ve kapsamı ekleyin.
-   [Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
 
    > [!NOTE]
    > Daha ayrıntılı denetim için, erişimi yalnızca kaynak grubunuza göre sınırlayabilirsiniz.
-3. [Zscaler: Microsoft Azure sanal WAN tümleştirme yönergelerini yapılandırmak](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) için şu adımları izleyin:
 
-   - İş ortağı portalında oturum açın ve güvenilen hub 'ınıza güvenilir iş ortağı erişimi sağlamak için kimlik bilgilerinizi ekleyin.
-   - İş ortağı portalındaki sanal hub 'ları eşitleyin ve sanal hub 'a tüneli ayarlayın. Azure AD kimlik doğrulama kimlik bilgileriniz doğrulandıktan sonra bunu yapabilirsiniz.
+### <a name="visit-partner-portal"></a>İş ortağı portalını ziyaret edin
+
+1. Kurulumu tamamladıktan sonra iş ortağınızdan gelen yönergeleri izleyin. Bu, hubı algılayıp bağlanmak, çıkış ilkelerini güncelleştirmek ve bağlantı durumunu ve günlükleri denetlemek için AAD bilgilerini göndermeyi içerir.
+
+   - [Zscaler: Microsoft Azure sanal WAN tümleştirmesini yapılandırın](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration).
+   - [Check Point: Microsoft Azure sanal WAN tümleştirmesini yapılandırın](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm).
    
-4. Azure 'da Azure sanal WAN portalındaki tünel oluşturma durumuna bakabilirsiniz. Tüneller hem Azure 'da hem de iş ortağı portalında **bağlı** olduktan sonra, hangi dalların ve sanal ağların Iş ortağına Internet trafiği gönderebilmelidir.
+2. Azure 'da Azure sanal WAN portalındaki tünel oluşturma durumuna bakabilirsiniz. Tüneller hem Azure 'da hem de iş ortağı portalında **bağlı** olduktan sonra, hangi dalların ve sanal ağların Iş ortağına Internet trafiği gönderebilmelidir.
 
 ## <a name="configure-route-settings"></a>Yol ayarlarını yapılandırma
 
@@ -116,7 +123,3 @@ Yol ayarı adımlarını tamamladıktan sonra, sanal ağ ve şube siteleri de bi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Öğretici: Azure portal kullanarak bulut ağınızı Azure Güvenlik Duvarı Yöneticisi önizleme ile koruyun](secure-cloud-network.md)
-
-
-
-

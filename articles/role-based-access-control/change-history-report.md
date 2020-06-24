@@ -8,19 +8,19 @@ manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2024bd14241184338195ed635039bae774da816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68b1cdede5fddd0bf74571da1924e0059a21d3af
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78161812"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791818"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC değişiklikleri için etkinlik günlüklerini görüntüleme
 
@@ -46,7 +46,7 @@ Portaldaki etkinlik günlüğünde birkaç filtre vardır. Azure RBAC ile ilgili
 | Filtre | Değer |
 | --------- | --------- |
 | Olay kategorisi | <ul><li>Yönetim</li></ul> |
-| İşlem | <ul><li>Rol ataması oluştur</li><li>Rol atamasını Sil</li><li>Özel rol tanımı oluştur veya güncelleştir</li><li>Özel rol tanımını sil</li></ul> |
+| Çalışma | <ul><li>Rol ataması oluştur</li><li>Rol atamasını Sil</li><li>Özel rol tanımı oluştur veya güncelleştir</li><li>Özel rol tanımını sil</li></ul> |
 
 Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
