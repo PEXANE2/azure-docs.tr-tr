@@ -5,12 +5,12 @@ ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 056c96807fed7d5acca85635440c8fe4d989c933
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 4f3b9966e1d146479ef6aa57e13cbb4ddadb415f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592409"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205858"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure’da ASP.NET Framework web uygulaması oluşturma
 
@@ -26,8 +26,8 @@ Bu öğreticiyi tamamlayabilmeniz için, **ASP.net ve Web geliştirme** iş yük
 
 Visual Studio 2019 zaten yüklüyse:
 
-- **Help** > **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
-- **Araçlar** > **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
+- **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
+- **Araçlar**  >  **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web uygulaması oluşturma<a name="create-and-publish-the-web-app"></a>
 
@@ -43,11 +43,11 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 4. Azure’a herhangi bir türde ASP.NET web uygulaması dağıtabilirsiniz. Bu hızlı başlangıç için **MVC** şablonunu seçin.
 
-5. Kimlik doğrulamanın **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**’u seçin.
+5. Kimlik doğrulamanın **kimlik doğrulaması yok**olarak ayarlandığından emin olun. **Oluştur**'u seçin.
 
    ![ASP.NET Web uygulaması oluşturma](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
-6. Web uygulamasını yerel olarak çalıştırmak için Visual Studio **menüsünden hata ayıklama** > **olmadan Başlat** ' ı seçin.
+6. **Debug**  >  Web uygulamasını yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama**olmadan Başlat** ' ı seçin.
 
    ![Uygulamayı yerel olarak çalıştırma](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
@@ -80,7 +80,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 1. **Barındırma planını Yapılandır** iletişim kutusunda, aşağıdaki tablodaki değerleri girin ve ardından **Tamam**' ı seçin.
 
-   | Ayar | Önerilen Değer | Açıklama |
+   | Ayar | Önerilen Değer | Description |
    |-|-|-|
    | Barındırma Planı| myAppServicePlan | App Service planının adı. |
    | Konum | Batı Avrupa | Web uygulamasının barındırıldığı veri merkezi. |
@@ -88,7 +88,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
    ![App Service planı oluşturma](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
-1. **Ad**alanına,, `a-z`, ve `A-Z` `0-9` `-`yalnızca geçerli karakterleri içeren benzersiz bir uygulama adı girin. Otomatik olarak oluşturulan benzersiz adı kabul edebilirsiniz. Web uygulamasının URL'si `http://<app-name>.azurewebsites.net` şeklindedir; burada `<app-name>`, uygulamanızın adıdır.
+1. **Ad**alanına,,, ve yalnızca geçerli karakterleri içeren benzersiz bir uygulama adı girin `a-z` `A-Z` `0-9` `-` . Otomatik olarak oluşturulan benzersiz adı kabul edebilirsiniz. Web uygulamasının URL'si `http://<app-name>.azurewebsites.net` şeklindedir; burada `<app-name>`, uygulamanızın adıdır.
 
 2. Azure kaynaklarını oluşturmaya başlamak için **Oluştur**’u seçin.
 
@@ -100,17 +100,17 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
     ![Azure’da yayımlanmış ASP.NET web uygulaması](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
-**App Service yeni oluştur** sayfasında belirtilen uygulama adı, biçimdeki `http://<app-name>.azurewebsites.net`URL ön eki olarak kullanılır.
+**App Service yeni oluştur** sayfasında belirtilen uygulama adı, biçimdeki URL ön eki olarak kullanılır `http://<app-name>.azurewebsites.net` .
 
 **Tebrikler!** ASP.NET Web uygulamanız Azure App Service ' de canlı olarak çalışıyor.
 
 ## <a name="update-the-app-and-redeploy"></a>Uygulamayı güncelleştirme ve yeniden dağıtma
 
-1. **Çözüm Gezgini**, projenizin altında, **views** > **Home** > **Index. cshtml**dosyasını açın.
+1. **Çözüm Gezgini**, projenizin altında, **views**  >  **Home**  >  **Index. cshtml**dosyasını açın.
 
 1. Üst kısımda `<div class="jumbotron">` HTML etiketini bulun ve tüm öğeyi aşağıdaki kodla değiştirin:
 
-   ```HTML
+   ```html
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
        <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
@@ -145,3 +145,6 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
 
 > [!div class="nextstepaction"]
 > [SQL Veritabanı ile ASP.NET](app-service-web-tutorial-dotnet-sqldatabase.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET uygulamasını yapılandırma](configure-language-dotnet-framework.md)

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 0aa09ffe5b5dd9dd0f49204495ecdd7179a0f36f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 2cf997cbe16f7ff4bfe75f90d3797ec97e7d5069
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660035"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808745"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -105,7 +105,7 @@ Bu iki adım yardımcı olduysa, video çerçevelerinin istemci tarafından alı
 
 **Model, seçilen VM 'nin sınırlarını, özellikle de en yüksek sayıda poligonu aşıyor:**
 
-Bkz. belirli [VM boyut sınırlamaları](../reference/limits.md#overall-number-of-polygons).
+Belirli [VM boyut sınırlarına](../reference/limits.md#overall-number-of-polygons)bakın.
 
 **Model, bu kameranın Frustum içinde değil:**
 
@@ -146,6 +146,10 @@ Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu
 
 ![Unity çerçevesi hata ayıklayıcısı](./media/troubleshoot-unity-pipeline.png)
 
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Dama tahtası stili, model yüklendikten sonra işlenir
+
+İşlenmiş görüntü şuna benzer: ![ dama tahtası, ](../reference/media/checkerboard.png) [Standart VM boyutu için Çokgen sınırlarına](../reference/vm-sizes.md)rastlanıyor. Azaltmak için **PREMIUM VM** boyutuna geçin veya görünür çokgenler sayısını azaltın.
+
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity 'de işlenen görüntü, baş aşağı
 
 [Proje kurulum kılavuzunu](../tutorials/unity/project-setup.md) tam olarak izlediğinizden emin olun. Ters bir görüntü, Unity 'nin bir ekran oluşturma hedefi oluşturmak için gerekli olduğunu gösterir. Bu davranış Şu anda desteklenmiyor ve HoloLens 2 ' de büyük bir performans etkisi oluşturuyor.
@@ -168,6 +172,10 @@ HoloLens 2 için Unity örneklerini (hızlı başlangıç, ShowCaseApp,..) derle
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>AudioPluginMsHRTF.dll eksik olduğundan Unity projeleri için Arm64 derlemeleri başarısız oluyor
+
+`AudioPluginMsHRTF.dll`For Arm64, 3.0.1 sürümündeki *Windows Mixed Reality* paketine *(com. Unity. xr. windowsmr. metro)* eklenmiştir. Unity paket Yöneticisi aracılığıyla sürüm 3.0.1 veya daha yeni bir sürümün yüklü olduğundan emin olun. Unity menü çubuğundan *pencere > Paket Yöneticisi* ' ne gidin ve *Windows Mixed Reality* paketini bulun.
+
 ## <a name="unstable-holograms"></a>Dengesiz Hologragram
 
 İşlenen nesnelerin baş hareketlerle birlikte taşınması gibi görünse de, *geç aşama yeniden projeksiyonu* (LSR) ile ilgili sorunlarla karşılaşıyor olabilirsiniz. Böyle bir duruma yaklaşıma ilişkin yönergeler için, [geç aşama yeniden projeksiyonunun](../overview/features/late-stage-reprojection.md) bölümüne bakın.

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e32a0a876928e9430f9127299e6b7e657d7743c
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74113007"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077461"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Bilişsel Arama Azure Tablo depolamadaki tabloları dizin oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede, Azure Tablo depolamada depolanan verileri indekslemek için Azure B
 
 * [Azure portal](https://ms.portal.azure.com)
 * Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure Bilişsel Arama [.NET SDK](https://aka.ms/search-sdk)
+* Azure Bilişsel Arama [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
 Burada, REST API kullanarak akışı gösteririz. 
 
@@ -37,11 +37,11 @@ Bir veri kaynağı, hangi verilerin dizine alınacağı, verilere erişmek için
 Tablo dizini oluşturma için, veri kaynağı aşağıdaki özelliklere sahip olmalıdır:
 
 - **ad** , arama hizmetinizin içindeki veri kaynağının benzersiz adıdır.
-- **tür** olmalıdır `azuretable`.
+- **tür** olmalıdır `azuretable` .
 - **kimlik bilgileri** parametresi, depolama hesabı bağlantı dizesini içerir. Ayrıntılar için [kimlik bilgilerini belirtin](#Credentials) bölümüne bakın.
 - **kapsayıcı** , tablo adını ve isteğe bağlı bir sorguyu ayarlar.
-    - `name` Parametresini kullanarak tablo adını belirtin.
-    - İsteğe bağlı olarak, `query` parametresini kullanarak bir sorgu belirtin. 
+    - Parametresini kullanarak tablo adını belirtin `name` .
+    - İsteğe bağlı olarak, parametresini kullanarak bir sorgu belirtin `query` . 
 
 > [!IMPORTANT] 
 > Mümkün olduğunda, daha iyi performans için PartitionKey üzerinde bir filtre kullanın. Diğer herhangi bir sorgu tam tablo taraması yapar ve bu da büyük tablolar için düşük performansa neden olur. [Performans konuları](#Performance) bölümüne bakın.
@@ -67,7 +67,7 @@ DataSource API 'SI oluşturma hakkında daha fazla bilgi için bkz. [veri kayna�
 
 Aşağıdaki yollarla tablo için kimlik bilgilerini sağlayabilirsiniz: 
 
-- **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` **depolama hesabı dikey** > **ayarları** > **anahtarlarına** (klasik depolama hesapları için) veya **Ayarlar** > **erişim anahtarlarına** (Azure Resource Manager depolama hesapları için) giderek bağlantı dizesini Azure Portal alabilirsiniz.
+- **Tam erişimli depolama hesabı bağlantı dizesi**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` **depolama hesabı dikey**penceresi  >  **ayarları**  >  **anahtarlarına** (klasik depolama hesapları için) veya **Ayarlar**  >  **erişim anahtarlarına** (Azure Resource Manager depolama hesapları için) giderek bağlantı dizesini Azure Portal alabilirsiniz.
 - **Depolama hesabı paylaşılan erişim imzası bağlantı dizesi**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` paylaşılan erişim imzası, kapsayıcılar (Bu durumda tablolar) ve nesneler (tablo satırları) üzerinde liste ve okuma izinlerine sahip olmalıdır.
 -  **Tablo paylaşılan erişim imzası**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` paylaşılan erişim imzası tabloda sorgu (okuma) izinlerine sahip olmalıdır.
 
@@ -121,19 +121,19 @@ Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için 
 Bazen, var olan dizininizdeki alan adları, tablonuzdaki Özellik adlarından farklı olabilir. Alan eşlemelerini, tablodaki özellik adlarını, arama dizininizdeki alan adlarıyla eşlemek için kullanabilirsiniz. Alan eşlemeleri hakkında daha fazla bilgi edinmek için bkz. [Azure bilişsel arama Dizin Oluşturucu alan eşlemeleri köprü kaynakları ve arama dizinleri arasındaki farklılıklar](search-indexer-field-mappings.md).
 
 ## <a name="handle-document-keys"></a>Belge anahtarlarını işle
-Azure Bilişsel Arama 'de belge anahtarı bir belgeyi benzersiz şekilde tanımlar. Her arama dizininin türünde `Edm.String`tam olarak bir anahtar alanı olmalıdır. Dizine eklenmekte olan her belge için anahtar alanı gereklidir. (Aslında, tek gerekli alandır.)
+Azure Bilişsel Arama 'de belge anahtarı bir belgeyi benzersiz şekilde tanımlar. Her arama dizininin türünde tam olarak bir anahtar alanı olmalıdır `Edm.String` . Dizine eklenmekte olan her belge için anahtar alanı gereklidir. (Aslında, tek gerekli alandır.)
 
-Tablo satırları bileşik bir anahtara sahip olduğundan Azure Bilişsel Arama, bölüm anahtarı ve satır anahtarı `Key` değerlerinin birleşimi olan adlı bir yapay alan oluşturur. `PK1` Örneğin, bir satırın partitionkey ve rowkey `RK1`ise `Key` alanın değeri olur. `PK1RK1`
+Tablo satırları bileşik bir anahtara sahip olduğundan Azure Bilişsel Arama, `Key` bölüm anahtarı ve satır anahtarı değerlerinin birleşimi olan adlı bir yapay alan oluşturur. Örneğin, bir satırın PartitionKey `PK1` ve RowKey ise `RK1` `Key` alanın değeri olur `PK1RK1` .
 
 > [!NOTE]
-> `Key` Değer, çizgiler gibi belge anahtarlarında geçersiz olan karakterler içeriyor olabilir. `base64Encode` [Alan eşleme işlevini](search-indexer-field-mappings.md#base64EncodeFunction)kullanarak geçersiz karakterlerle işlem yapabilirsiniz. Bunu yaparsanız, Arama gibi API çağrılarında belge anahtarlarını geçirirken de güvenli URL Base64 kodlamasını kullanmayı unutmayın.
+> `Key`Değer, çizgiler gibi belge anahtarlarında geçersiz olan karakterler içeriyor olabilir. `base64Encode` [Alan eşleme işlevini](search-indexer-field-mappings.md#base64EncodeFunction)kullanarak geçersiz karakterlerle işlem yapabilirsiniz. Bunu yaparsanız, Arama gibi API çağrılarında belge anahtarlarını geçirirken de güvenli URL Base64 kodlamasını kullanmayı unutmayın.
 >
 >
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Artımlı dizin oluşturma ve silme algılaması
-Bir zamanlamaya göre çalıştırılacak bir tablo dizin oluşturucuyu ayarlarken, bir satırın `Timestamp` değeri tarafından belirlendiği şekilde yalnızca yeni veya güncelleştirilmiş satırları yeniden dizinleyebilirsiniz. Değişiklik algılama ilkesi belirtmeniz gerekmez. Artımlı dizin oluşturma sizin için otomatik olarak etkinleştirilir.
+Bir zamanlamaya göre çalıştırılacak bir tablo dizin oluşturucuyu ayarlarken, bir satırın değeri tarafından belirlendiği şekilde yalnızca yeni veya güncelleştirilmiş satırları yeniden dizinleyebilirsiniz `Timestamp` . Değişiklik algılama ilkesi belirtmeniz gerekmez. Artımlı dizin oluşturma sizin için otomatik olarak etkinleştirilir.
 
-Belirli belgelerin dizinden kaldırılması gerektiğini belirtmek için, bir geçici silme stratejisi kullanabilirsiniz. Bir satırı silmek yerine, silindiğini göstermek için bir özellik ekleyin ve DataSource üzerinde bir geçici silme algılama ilkesi ayarlayın. Örneğin, aşağıdaki ilke, satırın değeri `IsDeleted` `"true"`olan bir özelliği varsa, bir satırın silindiğini kabul eder:
+Belirli belgelerin dizinden kaldırılması gerektiğini belirtmek için, bir geçici silme stratejisi kullanabilirsiniz. Bir satırı silmek yerine, silindiğini göstermek için bir özellik ekleyin ve DataSource üzerinde bir geçici silme algılama ilkesi ayarlayın. Örneğin, aşağıdaki ilke, satırın değeri olan bir özelliği varsa, bir satırın silindiğini kabul eder `IsDeleted` `"true"` :
 
     PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
@@ -150,19 +150,19 @@ Belirli belgelerin dizinden kaldırılması gerektiğini belirtmek için, bir ge
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
-Azure Bilişsel Arama, varsayılan olarak aşağıdaki sorgu filtresini kullanır: `Timestamp >= HighWaterMarkValue`. Azure tablolarının `Timestamp` alan üzerinde ikincil bir dizini olmadığından, bu tür bir sorgu tam tablo taraması gerektirir ve bu nedenle büyük tablolar için yavaş olur.
+Azure Bilişsel Arama, varsayılan olarak aşağıdaki sorgu filtresini kullanır: `Timestamp >= HighWaterMarkValue` . Azure tablolarının alan üzerinde ikincil bir dizini olmadığından `Timestamp` , bu tür bir sorgu tam tablo taraması gerektirir ve bu nedenle büyük tablolar için yavaş olur.
 
 
 Tablo dizinleme performansını iyileştirmeye yönelik iki olası yaklaşım aşağıda verilmiştir. Bu yaklaşımların her ikisi de tablo bölümlerinin kullanılmasına bağımlıdır: 
 
-- Verileriniz doğal olarak çeşitli bölüm aralıklarında bölümlenebilir, her bölüm aralığı için bir veri kaynağı ve karşılık gelen bir Dizin Oluşturucu oluşturun. Her bir dizin oluşturucunun şimdi yalnızca belirli bir bölüm aralığını işlemesi gerekir ve bu, daha iyi sorgu performansına neden olur. Dizine alınması gereken verilerin az sayıda sabit bölümü varsa ve daha iyi: her bir Dizin Oluşturucu yalnızca bir bölüm taraması yapar. Örneğin, ile arasında `000` anahtarlarla bir bölüm aralığını işlemeye yönelik bir veri kaynağı oluşturmak için `100`, şöyle bir sorgu kullanın: 
+- Verileriniz doğal olarak çeşitli bölüm aralıklarında bölümlenebilir, her bölüm aralığı için bir veri kaynağı ve karşılık gelen bir Dizin Oluşturucu oluşturun. Her bir dizin oluşturucunun şimdi yalnızca belirli bir bölüm aralığını işlemesi gerekir ve bu, daha iyi sorgu performansına neden olur. Dizine alınması gereken verilerin az sayıda sabit bölümü varsa ve daha iyi: her bir Dizin Oluşturucu yalnızca bir bölüm taraması yapar. Örneğin, ile arasında anahtarlarla bir bölüm aralığını işlemeye yönelik bir veri kaynağı oluşturmak için `000` `100` , şöyle bir sorgu kullanın: 
     ```
     "container" : { "name" : "my-table", "query" : "PartitionKey ge '000' and PartitionKey lt '100' " }
     ```
 
 - Verileriniz zamana göre bölümlense (örneğin, her gün veya hafta için yeni bir bölüm oluşturursanız) aşağıdaki yaklaşımı göz önünde bulundurun: 
-    - Şu biçimde bir sorgu kullanın: `(PartitionKey ge <TimeStamp>) and (other filters)`. 
-    - Dizin Oluşturucu [durum API 'sini](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kullanarak dizin oluşturucunun ilerlemesini izleyin ve en son başarılı `<TimeStamp>` yüksek su işaretine göre sorgunun koşulunu düzenli olarak güncelleştirin. 
+    - Şu biçimde bir sorgu kullanın: `(PartitionKey ge <TimeStamp>) and (other filters)` . 
+    - Dizin Oluşturucu [durum API 'sini](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kullanarak dizin oluşturucunun ilerlemesini izleyin ve `<TimeStamp>` en son başarılı yüksek su işaretine göre sorgunun koşulunu düzenli olarak güncelleştirin. 
     - Bu yaklaşım sayesinde, bir yeniden dizin oluşturmayı tetiklemeniz gerekiyorsa, Dizin oluşturucuyu sıfırlamaya ek olarak DataSource sorgusunu sıfırlamanız gerekir. 
 
 

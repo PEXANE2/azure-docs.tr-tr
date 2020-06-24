@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259077"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711043"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLı (sfctl) kullanarak bir Azure Service Fabric uygulamasını yönetme
 
@@ -51,7 +51,7 @@ Uygulama oluşturmadan önce, uygulama paketini Service Fabric görüntü deposu
 sfctl application upload --path ~/app_package_dir
 ```
 
-Büyük uygulama paketleri için karşıya yükleme işleminin ilerlemesini görüntüleme `--show-progress` seçeneğini belirtebilirsiniz.
+Büyük uygulama paketleri için `--show-progress` karşıya yükleme işleminin ilerlemesini görüntüleme seçeneğini belirtebilirsiniz.
 
 ### <a name="provision-the-application-type"></a>Uygulama türünü sağlama
 
@@ -61,7 +61,7 @@ Karşıya yükleme tamamlandığında, uygulamayı sağlayın. Uygulamayı sağl
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
-Değeri `application-type-build-path` , uygulama paketinizi yüklediğiniz dizinin adıdır.
+Değeri, `application-type-build-path` uygulama paketinizi yüklediğiniz dizinin adıdır.
 
 ### <a name="delete-the-application-package"></a>Uygulama paketini silme
 
@@ -85,7 +85,7 @@ sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app
 
 `app-name`, uygulama örneği için kullanmak istediğiniz addır. Daha önce sağlanan uygulama bildiriminden ek parametreler edinebilirsiniz.
 
-Uygulama adının önekiyle `fabric:/`başlaması gerekir.
+Uygulama adının önekiyle başlaması gerekir `fabric:/` .
 
 ### <a name="create-services-for-the-new-application"></a>Yeni uygulama için hizmet oluşturma
 
@@ -112,7 +112,7 @@ sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-Sağlıklı hizmetler ve uygulamaların `HealthState` değeri vardır. `Ok`
+Sağlıklı hizmetler ve uygulamaların değeri vardır `HealthState` `Ok` .
 
 ## <a name="remove-an-existing-application"></a>Mevcut bir uygulamayı kaldır
 
@@ -158,7 +158,7 @@ Yükseltmeler, var olan parametreleri herhangi bir ayarla belirtilen şekilde ge
 
 Daha önce belirtilen parametreleri almak için `sfctl application info` komutunu kullanabilirsiniz.
 
-Uygulama yükseltmesi devam ederken, bu durum `sfctl application upgrade-status` komutu kullanılarak alınabilir.
+Uygulama yükseltmesi devam ederken, bu durum komutu kullanılarak alınabilir `sfctl application upgrade-status` .
 
 Son olarak, bir yükseltme devam ediyorsa ve iptal edilmesi gerekiyorsa, `sfctl application upgrade-rollback` yükseltme işlemini geri almak için kullanabilirsiniz.
 

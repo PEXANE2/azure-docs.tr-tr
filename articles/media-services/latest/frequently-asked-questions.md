@@ -11,18 +11,24 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 713acbd098255af2869d7a462c9990f3d7e10bf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309181"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987230"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
 Bu makalede, Azure Media Services v3 hakkında sık sorulan sorulara yanıtlar verilmektedir.
 
 ## <a name="general"></a>Genel
+
+### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Media Services v3 için Azure portal sınırlamaları nelerdir?
+
+V3 canlı olaylarını yönetmek, v3 varlıklarını ve işleri görüntülemek, API 'Lere erişme hakkında bilgi almak, içeriği şifrelemek için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. <br/>Diğer tüm yönetim görevleri için (örneğin, dönüşümleri ve işleri yönetme veya v3 içeriğini çözümleme), [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+
+Videonuz daha önce Media Services v3 API kullanılarak Media Services hesabına yüklenmişse veya içerik canlı bir çıkışa göre oluşturulduysa, Azure portal **kodlama**, **Çözümleme**veya **şifreleme** düğmelerini görmezsiniz. Bu görevleri gerçekleştirmek için Media Services v3 API 'Lerini kullanın.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure Media Services kaynaklarda hangi Azure rolleri eylemler gerçekleştirebilir? 
 
@@ -95,7 +101,7 @@ PlayReady, Widevine ve FairPlay gibi DRM sistemleri, bir AES-128 şifresiz anaht
 
 Azure Active Directory (Azure AD) gibi belirli bir belirteç sağlayıcısını kullanmak zorunda değilsiniz. Asimetrik anahtar şifrelemesi kullanarak kendi [JWT](https://jwt.io/) sağlayıcınızı (yani, güvenli belirteç HIZMETI veya STS olarak adlandırılır) oluşturabilirsiniz. Özel STS 'de iş mantığınızı temel alarak talep ekleyebilirsiniz.
 
-Verenin, hedef kitlesi ve taleplerin tümünün JWT içindeki ve ' de `ContentKeyPolicyRestriction` `ContentKeyPolicy`kullanılan değer arasında tam olarak eşleştiğinden emin olun.
+Verenin, hedef kitlesi ve taleplerin tümünün JWT içindeki ve `ContentKeyPolicyRestriction` ' de kullanılan değer arasında tam olarak eşleştiğinden emin olun `ContentKeyPolicy` .
 
 Daha fazla bilgi için bkz. [Media Services dinamik şifrelemeyi kullanarak Içeriğinizi koruma](content-protection-overview.md).
 
@@ -109,7 +115,7 @@ STS 'yi bir simetrik anahtarla veya asimetrik anahtarla çalıştırmanın bir �
 
 ### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>Nasıl yaparım?, AES şifrelemesi ile videoları akışa almak için istekleri yetkilendirir mi?
 
-Doğru yaklaşım, güvenli belirteç hizmeti kullanmaktır. STS 'de, Kullanıcı profiline bağlı olarak farklı talepler ("Premium Kullanıcı," "temel Kullanıcı," "ücretsiz deneme kullanıcısı") ekleyin. JWT içindeki farklı talepler sayesinde kullanıcı farklı içerikleri görebilir. Farklı içerik veya varlıklar için karşılık `ContentKeyPolicyRestriction` gelen `RequiredClaims` değer olacaktır.
+Doğru yaklaşım, güvenli belirteç hizmeti kullanmaktır. STS 'de, Kullanıcı profiline bağlı olarak farklı talepler ("Premium Kullanıcı," "temel Kullanıcı," "ücretsiz deneme kullanıcısı") ekleyin. JWT içindeki farklı talepler sayesinde kullanıcı farklı içerikleri görebilir. Farklı içerik veya varlıklar için `ContentKeyPolicyRestriction` karşılık gelen `RequiredClaims` değer olacaktır.
 
 Lisans/anahtar teslimini yapılandırmak ve varlıklarınızı şifrelemek için Azure Media Services API 'Leri kullanın ( [Bu örnekte](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)gösterildiği gibi).
 
@@ -140,7 +146,7 @@ Bir programla ilişkili varlığı bir VOD varlığı olarak düşünerek Media 
 Genellikle, müşteriler bir lisans sunucu grubuna kendi veri merkezinde veya DRM hizmet sağlayıcıları tarafından barındırılan bir şekilde yatırım yapmış olur. Media Services içerik korumasıyla karma modda çalıştırabilirsiniz. Media Services, DRM lisansları Media Services dışındaki sunucular tarafından teslim edilirken, içerik barındırılabilir ve dinamik olarak korunabilir. Bu durumda, aşağıdaki değişiklikleri göz önünde bulundurun:
 
 * STS 'nin kabul edilebilir ve lisans sunucusu grubu tarafından doğrulanabildiği belirteçleri vermesi gerekir. Örneğin, Axinom tarafından sunulan Widevine lisans sunucuları, bir yetkilendirme iletisi içeren belirli bir JWT gerektirir. Bu tür bir JWT vermek için bir STS 'ye sahip olmanız gerekir. 
-* Artık Media Services lisans teslim hizmetini yapılandırmanız gerekmez. ' I yapılandırırken `ContentKeyPolicy`lisans alımı URL 'Lerini (PlayReady, Widevine ve FairPlay için) sağlamanız gerekir.
+* Artık Media Services lisans teslim hizmetini yapılandırmanız gerekmez. ' I yapılandırırken lisans alımı URL 'Lerini (PlayReady, Widevine ve FairPlay için) sağlamanız gerekir `ContentKeyPolicy` .
 
 > [!NOTE]
 > Widevine, Google tarafından sunulan ve Google 'ın hizmet koşullarına ve gizlilik ilkesine tabi olan bir hizmettir.
@@ -159,7 +165,7 @@ Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transform
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>V3 'de bir AssetFile kavramı var mı?
 
-Kavram `AssetFile` , depolama SDK bağımlılığıyla Media Services ayırmak IÇIN Media Services API 'sinden kaldırılmıştır. Azure depolama, Media Services değil, depolama SDK 'sına ait bilgileri korur. 
+`AssetFile`Kavram, depolama SDK bağımlılığıyla Media Services ayırmak için MEDIA SERVICES API 'sinden kaldırılmıştır. Azure depolama, Media Services değil, depolama SDK 'sına ait bilgileri korur. 
 
 Daha fazla bilgi için bkz. [Media Services v3 'ye geçirme](media-services-v2-vs-v3.md).
 
@@ -191,13 +197,13 @@ Bu belge, FPS sunucu SDK 'Sı sürüm 4 ' te birleştirildiğinden "FairPlay str
 
 #### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>İOS cihazlarında indirilen/OFFLINE dosya yapısı nedir?
 
-Bir iOS cihazında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer şekilde görünür. `_keys` Klasör, indirilen fps lisanslarını, her bir lisans hizmeti ana bilgisayarı için bir depolama dosyası ile depolar. Klasör `.movpkg` , ses ve video içeriğini depolar. 
+Bir iOS cihazında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer şekilde görünür. `_keys`Klasör, INDIRILEN fps lisanslarını, her bir lisans hizmeti ana bilgisayarı için bir depolama dosyası ile depolar. `.movpkg`Klasör, ses ve video içeriğini depolar. 
 
-Bir kısa çizgi ile biten bir ada sahip ilk klasörün ardından bir sayı, video içeriği içerir. Sayısal değer, video yorumlamaları için en yoğun bant genişliğidir. Bir kısa çizgi ile biten bir ada sahip ikinci klasör, izleyen 0 ile ses içeriği içerir. Adlı `Data` üçüncü klasör, FPS içeriğinin ana çalma listesini içerir. Son olarak, Boot. xml, `.movpkg` klasör içeriğinin tamamının bir açıklamasını sağlar. 
+Bir kısa çizgi ile biten bir ada sahip ilk klasörün ardından bir sayı, video içeriği içerir. Sayısal değer, video yorumlamaları için en yoğun bant genişliğidir. Bir kısa çizgi ile biten bir ada sahip ikinci klasör, izleyen 0 ile ses içeriği içerir. Adlı üçüncü klasör, `Data` fps içeriğinin ana çalma listesini içerir. Son olarak, boot.xml klasör içeriğinin tamamını açıklama sağlar `.movpkg` . 
 
 ![FairPlay iOS örnek uygulaması için çevrimdışı dosya yapısı](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
 
-Örnek bir Boot. xml dosyası aşağıda verilmiştir:
+Örnek bir boot.xml dosyası aşağıda verilmiştir:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -231,11 +237,11 @@ Bir kısa çizgi ile biten bir ada sahip ilk klasörün ardından bir sayı, vid
 
 #### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>Bazı istemciler/kullanıcılar ve kalıcı olmayan lisanslar (çevrimdışı olarak devre dışı) için, diğerleri için kalıcı lisanslar (çevrimdışı etkin) teslim etme. İçeriği çoğaltmalıyım ve ayrı içerik anahtarları kullanmalıdır mi?
 
-Media Services v3 bir varlığın birden çok `StreamingLocator` örneğe sahip olmasına izin verdiğinden, şunları yapabilirsiniz:
+Media Services v3 bir varlığın birden çok örneğe sahip olmasına izin verdiğinden `StreamingLocator` , şunları yapabilirsiniz:
 
-* İle `ContentKeyPolicy` `license_type = "persistent"`bir örnek, `ContentKeyPolicyRestriction` talebe açık `"persistent"`ve `StreamingLocator`.
-* İle `ContentKeyPolicy` `license_type="nonpersistent"`başka bir örnek `ContentKeyPolicyRestriction` , `"nonpersistent`"ve" talebiyle birlikte `StreamingLocator`.
-* Farklı `StreamingLocator` `ContentKey` değerlere sahip iki örnek.
+* `ContentKeyPolicy`İle bir örnek `license_type = "persistent"` , `ContentKeyPolicyRestriction` talebe açık `"persistent"` ve `StreamingLocator` .
+* İle başka bir `ContentKeyPolicy` örnek `license_type="nonpersistent"` , `ContentKeyPolicyRestriction` `"nonpersistent` "ve" talebiyle birlikte `StreamingLocator` .
+* `StreamingLocator`Farklı değerlere sahip iki örnek `ContentKey` .
 
 Özel STS iş mantığına bağlı olarak, JWT belirtecinde farklı talepler verilir. Belirteç ile yalnızca ilgili lisans alınabilir ve yalnızca ilgili URL oynatılabilir.
 
@@ -243,7 +249,7 @@ Media Services v3 bir varlığın birden çok `StreamingLocator` örneğe sahip 
 
 Google 'ın "Widevine DRM mimarisine genel bakış" üç güvenlik düzeyi tanımlar. Ancak, [Widevine lisans şablonunda Azure Media Services belge](widevine-license-template-overview.md) , beş güvenlik düzeyi (kayıttan yürütme için istemci sağlamlık gereksinimleri) özetlenmektedir. Bu bölümde güvenlik düzeylerinin nasıl eşlendiği açıklanmaktadır.
 
-Her iki güvenlik düzeyi kümesi de Google Widevine tarafından tanımlanır. Fark kullanım düzeyidir: mimari veya API. Wdevine API 'sinde beş güvenlik düzeyi kullanılır. Öğesini `content_key_specs` içeren `security_level`nesne, serisi kaldırıldı ve Azure Media Services Widevine lisans hizmeti tarafından Widevine küresel teslim hizmetine geçirilir. Aşağıdaki tabloda, iki güvenlik düzeyi kümesi arasındaki eşleme gösterilmektedir.
+Her iki güvenlik düzeyi kümesi de Google Widevine tarafından tanımlanır. Fark kullanım düzeyidir: mimari veya API. Wdevine API 'sinde beş güvenlik düzeyi kullanılır. `content_key_specs`Öğesini içeren nesne, `security_level` serisi kaldırıldı ve Azure Media Services Widevine lisans hizmeti tarafından Widevine küresel teslim hizmetine geçirilir. Aşağıdaki tabloda, iki güvenlik düzeyi kümesi arasındaki eşleme gösterilmektedir.
 
 | **Widevine mimarisinde tanımlanan güvenlik düzeyleri** |**Widevine API 'de kullanılan güvenlik düzeyleri**|
 |---|---| 

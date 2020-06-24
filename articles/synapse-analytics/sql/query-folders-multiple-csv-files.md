@@ -1,22 +1,22 @@
 ---
-title: İsteğe bağlı SQL (Önizleme) kullanarak sorgu klasörleri ve birden çok CSV dosyası
+title: İsteğe bağlı SQL (Önizleme) kullanarak klasörleri ve birden çok dosyayı sorgulama
 description: İsteğe bağlı SQL (Önizleme), Windows işletim sisteminde kullanılan Joker karakterlere benzer bir joker karakter kullanarak birden çok dosya/klasör okumayı destekler.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cb136fa9a3dc63144d26820b7170250b3598ba77
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235421"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207640"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>Sorgu klasörleri ve birden çok CSV dosyası  
+# <a name="query-folders-and-multiple-files"></a>Klasörleri ve birden çok dosyayı sorgulama  
 
 Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz.
 

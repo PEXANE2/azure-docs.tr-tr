@@ -4,15 +4,15 @@ description: Azure sanal WAN 'a geçiş yapmayı öğrenin.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 61f98d7de6c278416b4bb46074cad9f9e143d468
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8dfcdd8195824cb732df2c0c70c338e69630c5cd
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341074"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753130"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure sanal WAN 'a geçiş
 

@@ -4,23 +4,23 @@ description: Windows sanal masaüstü tanılama özelliği ile Log Analytics 'i 
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 05bb7274fe598df45ce14bfc89b606aec3f869c9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615545"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205977"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir. Spring 2020 güncelleştirmesinde tanıtılan Azure Resource Manager Windows sanal masaüstü nesnelerini yönetmeye çalışıyorsanız, [Bu makaleye](../diagnostics-log-analytics.md)bakın.
 
-Windows sanal masaüstü, yöneticinin sorunları tek bir arabirim üzerinden belirlemesine izin veren bir tanılama özelliği sunar. Bu özellik, her biri Windows sanal masaüstü rolü atanan hizmeti kullandığında tanılama bilgilerini günlüğe kaydeder. Her günlük, etkinlikte hangi Windows sanal masaüstü rolünün söz konusu olduğunu, oturum sırasında görünen tüm hata iletilerini, kiracı bilgilerini ve Kullanıcı bilgilerini içerir. Tanılama özelliği, hem Kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü üç ana kategoride yer düşer: 
+Windows sanal masaüstü, yöneticinin sorunları tek bir arabirim üzerinden belirlemesine izin veren bir tanılama özelliği sunar. Bu özellik, her biri Windows sanal masaüstü rolü atanan hizmeti kullandığında tanılama bilgilerini günlüğe kaydeder. Her günlük, etkinlikte hangi Windows sanal masaüstü rolünün söz konusu olduğunu, oturum sırasında görünen tüm hata iletilerini, kiracı bilgilerini ve Kullanıcı bilgilerini içerir. Tanılama özelliği, hem Kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü üç ana kategoride yer düşer:
 
 - Akış aboneliği etkinlikleri: bir Kullanıcı, Microsoft Uzak Masaüstü uygulamalar aracılığıyla akışına bağlanmayı denediğinde.
 - Bağlantı etkinlikleri: bir Kullanıcı, Microsoft Uzak Masaüstü uygulamalar aracılığıyla masaüstüne veya RemoteApp 'e bağlanmayı denediğinde.
@@ -36,37 +36,37 @@ Azure istemcisinde, tek kullanıcılı sorun gidermeyi aşan tanılama verilerin
 
 Tanılama özelliğiyle Log Analytics kullanabilmeniz için önce [bir çalışma alanı oluşturmanız](../../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)gerekir.
 
-Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) bölümündeki yönergeleri izleyin: 
+Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) bölümündeki yönergeleri izleyin:
 
 - Çalışma alanı KIMLIĞI
 - Çalışma alanınızın birincil anahtarı
 
 Bu bilgilere kurulum sürecinde daha sonra ihtiyacınız olacak.
 
-## <a name="push-diagnostics-data-to-your-workspace"></a>Tanılama verilerini çalışma alanınıza gönderin 
+## <a name="push-diagnostics-data-to-your-workspace"></a>Tanılama verilerini çalışma alanınıza gönderin
 
 Windows sanal masaüstü kiracınızdan tanılama verilerini, çalışma alanınız için Log Analytics gönderebilirsiniz. Bu özelliği, çalışma alanınızı kiracınıza bağlayarak kiracınızı ilk kez oluşturduğunuzda veya daha sonra mevcut bir kiracı ile ayarlarsanız ayarlayabilirsiniz.
 
-Yeni kiracınızı ayarlarken kiracınızı Log Analytics çalışma alanınıza bağlamak için aşağıdaki cmdlet 'i çalıştırarak Windows sanal masaüstü 'nde TenantCreator Kullanıcı hesabınızla oturum açın: 
+Yeni kiracınızı ayarlarken kiracınızı Log Analytics çalışma alanınıza bağlamak için aşağıdaki cmdlet 'i çalıştırarak Windows sanal masaüstü 'nde TenantCreator Kullanıcı hesabınızla oturum açın:
 
 ```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com 
+Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
 ```
 
-Yeni bir kiracı yerine var olan bir kiracıyı bağlayacaksanız bunun yerine bu cmdlet 'i çalıştırın: 
+Yeni bir kiracı yerine var olan bir kiracıyı bağlayacaksanız bunun yerine bu cmdlet 'i çalıştırın:
 
 ```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
+Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String>
 ```
 
-Log Analytics bağlamak istediğiniz her kiracı için bu cmdlet 'leri çalıştırmanız gerekir. 
+Log Analytics bağlamak istediğiniz her kiracı için bu cmdlet 'leri çalıştırmanız gerekir.
 
 >[!NOTE]
->Kiracı oluştururken Log Analytics çalışma alanını bağlamak istemiyorsanız `New-RdsTenant` cmdlet 'ini çalıştırın. 
+>Kiracı oluştururken Log Analytics çalışma alanını bağlamak istemiyorsanız `New-RdsTenant` cmdlet 'ini çalıştırın.
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>Tanılama olaylarını göndermek için temposunda
 
-Tanılama olayları tamamlandığında Log Analytics gönderilir.  
+Tanılama olayları tamamlandığında Log Analytics gönderilir.
 
 ## <a name="example-queries"></a>Örnek sorgular
 
@@ -75,65 +75,65 @@ Aşağıdaki örnek sorgularda, tanılama özelliğinin sisteminizdeki en sık e
 Bu ilk örnek, desteklenen uzak masaüstü istemcilerine sahip kullanıcılar tarafından başlatılan bağlantı etkinliklerini gösterir:
 
 ```powershell
-WVDActivityV1_CL 
+WVDActivityV1_CL
 
-| where Type_s == "Connection" 
+| where Type_s == "Connection"
 
-| join kind=leftouter ( 
+| join kind=leftouter (
 
-    WVDErrorV1_CL 
+    WVDErrorV1_CL
 
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
+    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g   
+    ) on $left.Id_g  == $right.ActivityId_g 
 
-| join  kind=leftouter (  
+| join  kind=leftouter (
 
-    WVDCheckpointV1_CL 
+    WVDCheckpointV1_CL
 
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
+    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g  
+    ) on $left.Id_g  == $right.ActivityId_g
 
-|project-away ActivityId_g, ActivityId_g1 
+|project-away ActivityId_g, ActivityId_g1
 ```
 
 Bu sonraki örnek sorgu, kiracılardaki yöneticilere göre yönetim etkinliklerini gösterir:
 
 ```powershell
-WVDActivityV1_CL 
+WVDActivityV1_CL
 
-| where Type_s == "Management" 
+| where Type_s == "Management"
 
-| join kind=leftouter ( 
+| join kind=leftouter (
 
-    WVDErrorV1_CL 
+    WVDErrorV1_CL
 
-    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g 
+    | summarize Errors = makelist(pack('Time', Time_t, 'Code', ErrorCode_s , 'CodeSymbolic', ErrorCodeSymbolic_s, 'Message', ErrorMessage_s, 'ReportedBy', ReportedBy_s , 'Internal', ErrorInternal_s )) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g   
+    ) on $left.Id_g  == $right.ActivityId_g 
 
-| join  kind=leftouter (  
+| join  kind=leftouter (
 
-    WVDCheckpointV1_CL 
+    WVDCheckpointV1_CL
 
-    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g 
+    | summarize Checkpoints = makelist(pack('Time', Time_t, 'ReportedBy', ReportedBy_s, 'Name', Name_s, 'Parameters', Parameters_s) ) by ActivityId_g
 
-    ) on $left.Id_g  == $right.ActivityId_g  
+    ) on $left.Id_g  == $right.ActivityId_g
 
-|project-away ActivityId_g, ActivityId_g1 
+|project-away ActivityId_g, ActivityId_g1
 ```
- 
-## <a name="stop-sending-data-to-log-analytics"></a>Log Analytics veri göndermeyi durdur 
+
+## <a name="stop-sending-data-to-log-analytics"></a>Log Analytics veri göndermeyi durdur
 
 Mevcut bir kiracıdan Log Analytics veri göndermeyi durdurmak için aşağıdaki cmdlet 'i çalıştırın ve boş dizeleri ayarlayın:
 
 ```powershell
-Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
+Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String>
 ```
 
-Verilerin gönderilmesini durdurmak istediğiniz her kiracı için bu cmdlet 'i çalıştırmanız gerekir. 
+Verilerin gönderilmesini durdurmak istediğiniz her kiracı için bu cmdlet 'i çalıştırmanız gerekir.
 
-## <a name="next-steps"></a>Sonraki adımlar 
+## <a name="next-steps"></a>Sonraki adımlar
 
 Tanılama özelliğinin sizin için tanımlayabilen yaygın hata senaryolarını gözden geçirmek için bkz. [sorunları tanımlama ve tanılama](diagnostics-role-service-2019.md#common-error-scenarios).

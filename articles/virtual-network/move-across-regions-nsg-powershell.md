@@ -3,15 +3,15 @@ title: Azure ağ güvenlik grubu (NSG) Azure PowerShell kullanarak başka bir Az
 description: Azure PowerShell kullanarak Azure ağ güvenlik grubunu bir Azure bölgesinden diğerine taşımak için Azure Resource Manager şablonu kullanın.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75641522"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688458"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure ağ güvenlik grubu (NSG) Azure PowerShell kullanarak başka bir bölgeye taşıma
 
@@ -61,7 +61,7 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. İndirilen dosya, kaynağın öğesinden verildikten sonra adı alınacaktır.  ** \<Resource-Group-Name>. JSON** adlı komuttan aktarılmış dosyayı bulun ve seçtiğiniz bir düzenleyicide açın:
+4. İndirilen dosya, kaynağın öğesinden verildikten sonra adı alınacaktır.  ** \<resource-group-name> . JSON** adlı komuttan aktarılmış dosyayı bulun ve seçtiğiniz bir düzenleyicide açın:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
     Get-AzLocation | format-table
     
     ```
-8. Ayrıca, isterseniz ** \<kaynak-grup-adı>. JSON** ' daki diğer parametreleri değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
+8. Ayrıca, isterseniz ** \<resource-group-name> . JSON** içindeki diğer parametreleri değiştirebilirsiniz ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **Güvenlik kuralları** - ** \<Resource-Group-Name>. JSON** dosyasındaki **SecurityRules** bölümüne kural ekleyerek veya kaldırarak hedef NSG 'ye dağıtılan kuralları düzenleyebilirsiniz:
+    * **Güvenlik kuralları** - ** \<resource-group-name> . JSON** dosyasındaki **SecurityRules** bölümüne kural ekleyerek veya kaldırarak hedef NSG 'ye dağıtılan kuralları düzenleyebilirsiniz:
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
             
         ```
 
-        Hedef NSG 'deki kuralların eklenmesini veya kaldırılmasını tamamlamaya yönelik olarak, ** \<kaynak-grup-adı>. JSON** dosyasının sonundaki özel kural türlerini aşağıdaki örnekte de düzenlemeniz gerekir:
+        Hedef NSG 'deki kuralların eklenmesini veya kaldırılmasını bitirmek için, Ayrıca, ** \<resource-group-name> . JSON** dosyasının sonundaki özel kural türlerini aşağıdaki örnekte yer alarak düzenlemeniz gerekir:
 
         ```json
            {
@@ -171,7 +171,7 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
             }
         ```
 
-9. **Resource-Group-Name>. json dosyasını kaydedin. \<**
+9. ** \<resource-group-name> . JSON** dosyasını kaydedin.
 
 10. Target NSG 'nin [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılması için hedef bölgede bir kaynak grubu oluşturun:
     
@@ -179,7 +179,7 @@ Aşağıdaki adımlarda, ağ güvenlik grubunun yapılandırma ve güvenlik kura
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Düzenlenmiş ** \<kaynak-grup adı>. JSON** dosyasını, önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+11. Düzenlenen ** \<resource-group-name> . JSON** dosyasını önceki adımda oluşturulan kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 

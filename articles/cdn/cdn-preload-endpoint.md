@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: c45d0a9195a719d830753a9614cfa7efb6f1c23d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260284"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887567"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN uç noktasında varlıkları önceden yükleme
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -44,7 +44,7 @@ Bu öğretici, tüm Azure CDN Edge düğümlerinde önbelleğe alınmış içeri
     **Yükleme** bölmesi açılır.
    
     ![CDN yükleme bölmesi](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. **İçerik yolu**için, yüklemek istediğiniz her varlığın tam yolunu girin (örneğin, `/pictures/kitten.png`).
+4. **İçerik yolu**için, yüklemek istediğiniz her varlığın tam yolunu girin (örneğin, `/pictures/kitten.png` ).
    
    > [!TIP]
    > Metin girmeyi başlattıktan sonra, birden fazla varlık listesi oluşturmanıza izin veren daha fazla **içerik yolu** metin kutusu görünür. Listeden varlıkları silmek için üç nokta (...) düğmesini seçin ve **Sil**' i seçin.

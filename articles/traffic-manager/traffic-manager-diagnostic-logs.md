@@ -3,20 +3,19 @@ title: Azure Traffic Manager kaynak günlüğünü etkinleştirme
 description: Traffic Manager profiliniz için kaynak günlüğünü etkinleştirmeyi ve sonuç olarak oluşturulan günlük dosyalarına erişmeyi öğrenin.
 services: traffic-manager
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133913"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711689"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager kaynak günlüğünü etkinleştirme
 
@@ -28,7 +27,7 @@ Azure Traffic Manager kaynak günlükleri, Traffic Manager profili kaynağının
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, 1.0.0 veya sonraki bir sürümü gerekir. Yüklü sürümü bulmak `Get-Module -ListAvailable Az` için ' i çalıştırabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure 'da oturum açmak için çalıştırmanız `Login-AzAccount` da gerekir.
+[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, 1.0.0 veya sonraki bir sürümü gerekir. `Get-Module -ListAvailable Az`Yüklü sürümü bulmak için ' i çalıştırabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Login-AzAccount` Azure 'da oturum açmak için çalıştırmanız da gerekir.
 
 1. **Traffic Manager profilini alın:**
 
@@ -58,7 +57,7 @@ Azure Traffic Manager kaynak günlükleri, Traffic Manager profili kaynağının
 1. [Azure Portal](https://portal.azure.com) oturum açın. 
 1. Portalda Azure depolama hesabınıza gidin.
 2. Azure depolama hesabınızın **genel bakış** sayfasında, **Hizmetler** ' in altında **Bloblar**' ı seçin.
-3. **Kapsayıcılar**için, **Öngörüler-logs-probehealthkara sevents**' i seçin ve PT1H. JSON dosyasına gidin ve bu günlük dosyasının bir kopyasını indirip kaydetmek için **İndir** ' e tıklayın.
+3. **Kapsayıcılar**için, **Öngörüler-logs-probehealthkara sevents**' i seçin ve dosyadaki PT1H.jsaşağı gidin ve bu günlük dosyasının bir kopyasını indirip kaydetmek için **İndir** ' e tıklayın.
 
     ![Traffic Manager profilinizin günlük dosyalarına blob depolamadan erişin](./media/traffic-manager-logs/traffic-manager-logs.png)
 
@@ -71,7 +70,7 @@ Aşağıdaki tabloda, Azure Traffic Manager profili kaynağına özgü Günlükl
 
 |||||
 |----|----|---|---|
-|**Alan adı**|**Alan türü**|**Tanım**|**Örneğinde**|
+|**Alan adı**|**Alan türü**|**Tanım**|**Örnek**|
 |Uçnoktaadı|Dize|Sistem durumu kaydedilirken Traffic Manager uç noktasının adı.|*myPrimaryEndpoint*|
 |Durum|Dize|Araştırılan Traffic Manager uç noktasının sistem durumu. Durum **yukarı** veya **aşağı**olabilir.|**Yukarı**|
 |||||

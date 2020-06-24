@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 30bf5d3eaa034c033cf32e26c3229a028f036313
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cacf4c21e92b434aeb73cd76e6dda26508f41d77
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613141"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261367"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS 'in temel özellikleri, kendi sözlüğünüzü tanımlayabilir ve ikizi grafınızı işletmenizin otomatik olarak tanımlanan koşullarında oluşturabilir. Bu özellik Kullanıcı tanımlı **modeller**aracılığıyla sağlanır. Modellerinizi, dünyanın bir açıklamasında adlar olarak düşünebilirsiniz. 
 
@@ -109,7 +112,7 @@ Aşağıda, bir DTDL arabirimi olarak yazılmış tipik bir modele örnek verilm
 
 Modelin alanları şunlardır:
 
-| Alan | Açıklama |
+| Alan | Description |
 | --- | --- |
 | `@id` | Model için bir tanımlayıcı. Biçiminde olmalıdır `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | Açıklanmakta olan bilgi türünü tanımlar. Bir arabirim için tür *arabirimdir*. |
@@ -197,7 +200,7 @@ Genişletme arabirimi üst arabirimlerin tanımlarından hiçbirini değiştirem
 
 ## <a name="validating-models"></a>Modelleri doğrulama
 
-DTDL 'nin geçerli olduğundan emin olmak için model belgelerini doğrulamak üzere kullanılabilecek bir örnek vardır. DTDL ayrıştırıcısı kitaplığı üzerine kurulmuştur ve dilden bağımsızdır. Buradan bulabilirsiniz: [Dtdl Doğrulayıcı örneği](https://github.com/Azure-Samples/DTDL-Validator).
+DTDL 'nin geçerli olduğundan emin olmak için model belgelerini doğrulamak üzere kullanılabilecek bir örnek vardır. DTDL ayrıştırıcısı kitaplığı üzerine kurulmuştur ve dilden bağımsızdır. Buradan bulabilirsiniz: [Dtdl Doğrulayıcı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
 Ya da, doğrudan nasıl kullanılacağına ilişkin bir örnek de dahil olmak üzere ayrıştırıcı Kitaplığı hakkında daha fazla bilgi için bkz. [nasıl yapılır: modelleri ayrıştırma ve doğrulama](how-to-use-parser.md).
 

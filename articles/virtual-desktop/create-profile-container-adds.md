@@ -4,16 +4,16 @@ description: Bu makalede, Azure dosyaları ve Azure Active Directory Domain Serv
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7159eac0e71819fd75abef07cae979d5425fc07c
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 3348920260b6c256b25d0ff2419cdfd2a00dea35
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484625"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207320"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure dosyaları ve Azure AD DS bir profil kapsayıcısı oluşturma
 
@@ -41,7 +41,7 @@ Yönetici eklemek için:
 
 ## <a name="set-up-an-azure-storage-account"></a>Azure depolama hesabı ayarlama
 
-Artık, sunucu Ileti bloğu (SMB) üzerinden Azure AD DS kimlik doğrulamasını etkinleştirme zamanı. 
+Artık, sunucu Ileti bloğu (SMB) üzerinden Azure AD DS kimlik doğrulamasını etkinleştirme zamanı.
 
 Kimlik doğrulamasını etkinleştirmek için:
 
@@ -73,7 +73,7 @@ Kullanıcılara erişim izinleri atamak için:
 
 6. Hedef Azure Active Directory kimliği için bir ad veya e-posta adresi seçin.
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 ## <a name="get-the-storage-account-access-key"></a>Depolama hesabı erişim anahtarını al
 
@@ -108,8 +108,8 @@ Depolama hesabı erişim anahtarını almak için:
     - `<share-name>`Daha önce oluşturduğunuz paylaşımın adıyla değiştirin.
     - `<storage-account-key>`Azure 'daki depolama hesabı anahtarıyla değiştirin.
 
-    Örneğin:  
-  
+    Örneğin:
+
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
@@ -124,7 +124,7 @@ Depolama hesabı erişim anahtarını almak için:
     - `<user-email>`Oturum ana bilgisayar VM 'lerine erişmek için bu profili kullanacak olan kullanıcının UPN 'si ile değiştirin.
 
     Örneğin:
-     
+
      ```cmd
      icacls y: /grant john.doe@contoso.com:(f)
      ```
@@ -137,7 +137,7 @@ FSLogix profil kapsayıcısını yapılandırmak için:
 
 1. Bu makalenin başlangıcında yapılandırdığınız oturum ana bilgisayarında oturum açın, ardından [FSLogix aracısını indirip yükleyin](/fslogix/install-ht/).
 
-2. İndirdiğiniz fslogix aracı dosyasını açın ve **x64**  >  **sürümleri**' ne gidin ve ardından **fslogixappssetup. exe**' yi açın.
+2. İndirdiğiniz fslogix aracı dosyasını açın ve **x64**  >  **sürümleri**' ne gidin ve ardından **FSLogixAppsSetup.exe**açın.
 
 3. Yükleyici başlatıldıktan sonra **Lisans hüküm ve koşullarını kabul** ediyorum ' u seçin. Uygulanabiliyorsa, yeni bir anahtar sağlayın.
 
@@ -203,13 +203,13 @@ Kullanıcıları atamak için:
 
      ```powershell
      $pool1 = "contoso"
-     
+
      $tenant = "contoso"
-     
+
      $appgroup = "Desktop Application Group"
-     
+
      $user1 = "jane.doe@contoso.com"
-     
+
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 

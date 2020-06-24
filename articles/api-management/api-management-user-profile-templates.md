@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243958"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690073"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management Kullanıcı profili şablonları
 Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Bu şablonları kullanarak uygun gördüğünüz şekilde, sayfanın içeriğini yapılandırmak için [dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)ile birlikte kullanabilirsiniz.  
@@ -105,9 +105,9 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 > [!NOTE]
 >  [Profil](#Profile), [uygulamalar](#Applications)ve [abonelikler](#Subscriptions) şablonları aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Geçerli kullanıcının adı.|  
+|`firstName`|dize|Geçerli kullanıcının adı.|  
 |`lastName`|string|Geçerli kullanıcının soyadı.|  
 |`companyName`|string|Geçerli kullanıcının şirket adı.|  
 |`addresserEmail`|string|Geçerli kullanıcının e-posta adresi.|  
@@ -326,9 +326,9 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 > [!NOTE]
 >  [Profil](#Profile), [uygulamalar](#Applications)ve [abonelikler](#Subscriptions) şablonları aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Geçerli kullanıcının adı.|  
+|`firstName`|dize|Geçerli kullanıcının adı.|  
 |`lastName`|string|Geçerli kullanıcının soyadı.|  
 |`companyName`|string|Geçerli kullanıcının şirket adı.|  
 |`addresserEmail`|string|Geçerli kullanıcının e-posta adresi.|  
@@ -489,9 +489,9 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 > [!NOTE]
 >  [Profil](#Profile), [uygulamalar](#Applications)ve [abonelikler](#Subscriptions) şablonları aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|string|Geçerli kullanıcının adı.|  
+|`firstName`|dize|Geçerli kullanıcının adı.|  
 |`lastName`|string|Geçerli kullanıcının soyadı.|  
 |`companyName`|string|Geçerli kullanıcının şirket adı.|  
 |`addresserEmail`|string|Geçerli kullanıcının e-posta adresi.|  

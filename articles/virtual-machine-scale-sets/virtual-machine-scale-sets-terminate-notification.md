@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makine ölçek kümesi örnekleri için sonlandırma bildirimi
+title: Azure sanal makine ölçek kümesi örnekleri için bildirimi sonlandırma
 description: Azure sanal makine ölçek kümesi örnekleri için sonlandırma bildirimini nasıl etkinleştireceğinizi öğrenin
 author: avirishuv
 ms.author: avverma
@@ -9,14 +9,14 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125188"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207524"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure sanal makine ölçek kümesi örnekleri için sonlandırma bildirimi
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure sanal makine ölçek kümesi örnekleri için bildirimi sonlandırma
 Ölçek kümesi örnekleri, örnek sonlandırma bildirimleri almak için kabul edebilir ve Sonlandırma işlemine önceden tanımlanmış bir gecikme zaman aşımı kümesi ayarlayabilir. Sonlandırma bildirimi, yeniden başlatmalar ve yeniden dağıtım gibi kesin işlemleri bildirimleri ve ertelerini sağlayan Azure Metadata Service – [zamanlanan olaylar](../virtual-machines/windows/scheduled-events.md)aracılığıyla gönderilir. Çözüm başka bir olay – Terminate – Zamanlanan Olaylar listesine ekler ve Terminate olayının ilişkili gecikmesi, kullanıcılar tarafından ölçek kümesi modeli yapılandırmalarında belirtilen gecikme sınırına bağlıdır.
 
 Özelliğe kaydolduktan sonra, ölçek kümesi örneklerinin, örnek silinmeden önce belirtilen zaman aşımı süresinin dolmasını beklemeniz gerekmez. Sonlandırma bildirimi aldıktan sonra, sonlandırma zaman aşımı süresi dolmadan, örnek herhangi bir zamanda silinebilir.
@@ -178,7 +178,7 @@ POST isteği gövdesinde beklenen JSON aşağıdadır. İstek bir StartRequests 
 
 Ölçek kümesindeki her VM 'nin yalnızca o VM için ilgili EventID 'yi onaylamasından emin olun. VM, [örnek meta verileri aracılığıyla](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name)kendi VM adını alabilir. Bu ad "{Scale-set-name} _ {Instance-id}" formunu alır ve yukarıda açıklanan sorgu yanıtının ' Resources ' bölümünde görüntülenir.
 
-Ayrıca, [PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample) ve [Python](../virtual-machines/linux/scheduled-events.md#python-sample)kullanarak olaylara sorgulama ve yanıt verme için örnekler betiklerine başvurabilirsiniz.
+Ayrıca, [Python](../virtual-machines/linux/scheduled-events.md#python-sample)olaylarını sorgulamak ve yanıtlamak için örnekler betiklerine başvurabilirsiniz.
 
 ## <a name="tips-and-best-practices"></a>İpuçları ve en iyi yöntemler
 -   Yalnızca ' silme ' işlemlerinde bildirimleri Sonlandır – ölçek kümesinde *scheduledEventsProfile* etkinse, tüm silme işlemleri (el ile silme veya otomatik ölçeklendirme ile başlatılan ölçek), sonlandırma olayları oluşturur. Yeniden başlatma, yeniden görüntü, yeniden dağıtma ve durdurma/serbest bırakma gibi diğer işlemler sonlandırma olayları oluşturmaz. Düşük öncelikli VM 'Ler için sonlandırma bildirimleri etkinleştirilemez.

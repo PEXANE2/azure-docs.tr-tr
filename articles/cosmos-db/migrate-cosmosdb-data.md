@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 0eabb3c226a444d872e6f3e5c85ae1a9fa377de3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465771"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263553"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 
@@ -45,7 +45,7 @@ Yukarıdaki bölümde açıklanan zorluklar, birden çok örneğe kolayca ölçe
 Aşağıdaki görüntüde, bu özel aracı kullanan geçiş işlemi açıklanmaktadır. Araç bir sanal makine kümesi üzerinde çalışıyor ve her sanal makine, kaynak veri bölümlerinden birinde kira almak için Azure Cosmos DB 'de izleme koleksiyonunu sorgular. Bu işlem yapıldıktan sonra, kaynak veri bölümü araç tarafından okunarak toplu yürütücü kitaplığı kullanılarak Azure Cosmos DB alınır. Daha sonra, izleme koleksiyonu veri alımı ilerlemesini ve karşılaşılan hatalarla karşılaştıracak şekilde güncelleştirilir. Bir veri bölümü işlendikten sonra araç, bir sonraki kullanılabilir kaynak bölümü sorgulamaya çalışır. Tüm veriler geçirilene kadar sonraki kaynak bölümü işlemeye devam eder. Araç için kaynak kodu [buradan](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)edinebilirsiniz.  
 
  
-![Geçiş Aracı Kurulumu](./media/migrate-cosmosdb-data/migrationsetup.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Geçiş Aracı Kurulumu" border="false":::
  
 
  
@@ -145,7 +145,7 @@ Geçiş tamamlandıktan sonra, Azure Cosmos DB içindeki belge sayısı, kaynak 
 ## <a name="contact-the-azure-cosmos-db-team"></a>Azure Cosmos DB ekibine başvurun
 Büyük veri kümelerini Azure Cosmos DB başarılı bir şekilde geçirmek için bu kılavuzu takip edebilir, ancak büyük ölçekli geçişler için, veri modellemeyi ve genel mimari incelemesini doğrulamak üzere Azure Cosmos DB ürün ekibine ulaşmanıza önerilir. Veri kümeniz ve iş yükünüze göre, ürün ekibi sizin için geçerli olabilecek diğer performans ve maliyet iyileştirmeleri de önerebilir. Büyük ölçekli geçişlerle yardım için Azure Cosmos DB ekibine başvurmak için, aşağıda gösterildiği gibi "genel danışmanlık" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açabilirsiniz.
 
-![Geçiş desteği konusu](./media/migrate-cosmosdb-data/supporttopic.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Geçiş desteği konusu":::
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

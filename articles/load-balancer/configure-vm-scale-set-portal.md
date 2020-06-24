@@ -4,14 +4,14 @@ description: Bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer n
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: b2a83b226a4b2ddbbd554783de6a2b5c85c92f0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349718"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809451"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırma
 
@@ -36,9 +36,9 @@ Bu bölümde, mevcut bir Azure yük dengeleyicisiyle Azure portal bir sanal maki
 > [!NOTE]
 > Aşağıdaki adımlarda, **Myvnet** adlı bir sanal ağ ve **Myloadbalancer** adlı bir Azure yük dengeleyici daha önce dağıtıldı.
 
-1. Ekranın sol üst kısmında, **kaynak** > **işlem** > **sanal makine ölçek kümesi** oluştur veya Market aramasında **sanal makine ölçek kümesini** ara ' ya tıklayın.
+1. Ekranın sol üst kısmında, **kaynak**  >  **işlem**  >  **sanal makine ölçek kümesi** oluştur veya Market aramasında **sanal makine ölçek kümesini** ara ' ya tıklayın.
 
-2. **Oluştur**’u seçin.
+2. **Oluştur**'u seçin.
 
 3. **Sanal makine ölçek kümesi oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 

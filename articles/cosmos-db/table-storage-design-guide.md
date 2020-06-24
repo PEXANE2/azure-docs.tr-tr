@@ -3,17 +3,17 @@ title: Ölçek ve performans için Azure Cosmos DB tabloları tasarlama
 description: 'Azure Tablo depolama tasarım kılavuzu: Azure Cosmos DB ve Azure Tablo depolamadaki ölçeklenebilir ve performanslı tablolar'
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: conceptual
-ms.date: 05/21/2019
+ms.topic: how-to
+ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 78a38938ad31bb349b7215f0a26dda69f4fec966
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: beb80390bdeacd6775ccfb0b712fe6dd260fbce0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651930"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261095"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo depolama tablosu Tasarım Kılavuzu: ölçeklenebilir ve performank tabloları
 
@@ -630,7 +630,7 @@ Bu seçenek için aşağıdaki verileri depolayan Dizin varlıklarını kullanı
 
 ![Aynı soyadı taşıyan çalışan kimliklerinin bir listesini içeren bir dize içeren çalışan varlığı gösteren grafik][15]
 
-`EmployeeIDs`Özelliği, içinde depolanan son ada sahip çalışanlar için çalışan kimliklerinin bir listesini içerir `RowKey` .  
+`EmployeeIDs`Özelliği, ve içinde depolanan son ada sahip çalışanlar için çalışan kimliklerinin bir listesini içerir `RowKey` `PartitionKey` .  
 
 Dizin varlıkları çalışan varlıklarından ayrı bir bölümde olduğundan tutarlılığı sağlamak için Yumurtları kullanamazsınız. Dizin varlıklarının en sonunda çalışan varlıklarıyla tutarlı olduğundan emin olun.  
 
@@ -663,7 +663,7 @@ Tek bir nokta sorgusuyla ihtiyacınız olan tüm verileri almanızı sağlamak i
 ![Departman varlığı ve çalışan varlığı grafiği][16]
 
 #### <a name="solution"></a>Çözüm
-Verileri iki ayrı varlıkta depolamak yerine, verileri yeniden oluşturup, Bölüm varlığındaki yöneticinin ayrıntılarının bir kopyasını saklayın. Örnek:  
+Verileri iki ayrı varlıkta depolamak yerine, verileri yeniden oluşturup, Bölüm varlığındaki yöneticinin ayrıntılarının bir kopyasını saklayın. Örneğin:  
 
 ![Yoğun ve birleştirilmiş departman varlığının grafiği][17]
 

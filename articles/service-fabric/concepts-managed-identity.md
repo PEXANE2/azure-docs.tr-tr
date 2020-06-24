@@ -4,12 +4,12 @@ description: Service Fabric ile Azure için Yönetilen kimlikler kullanma hakkı
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461455"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710312"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Service Fabric ile Azure için Yönetilen kimlikler kullanma
 
@@ -35,7 +35,7 @@ Azure için Yönetilen kimlikler çeşitli önemli kavramlara dayalıdır:
 - **Sistem tarafından atanan yönetilen kimlik** doğrudan bir Azure hizmeti örneği üzerinde etkinleştirilir.  Sistem tarafından atanan kimliğin yaşam döngüsü, etkinleştirilmiş olduğu Azure hizmet örneği için benzersizdir.
 - **Kullanıcı tarafından atanan yönetilen kimlik**, tek başına bir Azure kaynağı olarak oluşturulur. Kimlik bir veya daha fazla Azure hizmet örneğine atanabilir ve bu örneklerin yaşam döngülerinden ayrı olarak yönetilir.
 
-Yönetilen kimlik türleri arasındaki farkı daha fazla anlamak için bkz. [Azure kaynakları için Yönetilen kimlikler nasıl çalışır?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)
+Yönetilen kimlik türleri arasındaki farkı daha fazla anlamak için bkz. [Azure kaynakları için Yönetilen kimlikler nasıl çalışır?](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric uygulamalar için desteklenen senaryolar
 

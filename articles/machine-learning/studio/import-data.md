@@ -5,17 +5,17 @@ description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 10ff7b4f031934f2f7432e53efc3031272574d0e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: bf8d869582031d5bfa627edabac6a231e9cf8a74
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195328"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711145"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarın
 
@@ -44,7 +44,7 @@ Denemenizin herhangi bir noktasında, çıkış bağlantı noktasına tıklayara
 Verileri içeri aktarmak için kullandığınız mekanizmaya ve nereden geldiğini bağlı olarak denemenize bir dizi veri türü aktarabilirsiniz:
 
 * Düz metin (. txt)
-* Üst bilgiyle (. csv) veya (. NH. csv) olmayan virgülle ayrılmış değerler (CSV)
+* Üst bilgi (. csv) veya olmadan (.nh.csv) virgülle ayrılmış değerler (CSV)
 * Üst bilgi (. TSV) veya (. NH. TSV) içermeyen sekmeyle ayrılmış değerler (TSV)
 * Excel dosyası
 * Azure tablosu
@@ -156,7 +156,7 @@ Desteklenen çevrimiçi veri kaynakları aşağıdaki tabloda listelenir. Bu tab
 ### <a name="supported-online-data-sources"></a>Desteklenen çevrimiçi veri kaynakları
 Azure Machine Learning Studio (klasik) **veri alma** modülü aşağıdaki veri kaynaklarını destekler:
 
-| veri kaynağı | Açıklama | Parametreler |
+| veri kaynağı | Description | Parametreler |
 | --- | --- | --- |
 | HTTP aracılığıyla Web URL 'SI |HTTP kullanan herhangi bir Web URL 'sinden, virgülle ayrılmış değerler (CSV), sekmeyle ayrılmış değerler (TSV), öznitelik ilişkisi dosya biçimi (ARFF) ve destek vektör makineleri (SVM-Light) biçimleri içindeki verileri okur |<b>URL</b>: herhangi bir uzantıya sahip site URL 'si ve dosya adı da dahil olmak üzere dosyanın tam adını belirtir. <br/><br/><b>Veri biçimi</b>: desteklenen veri biçimlerinden birini BELIRTIR: CSV, TSV, arff veya SVM-Light. Verilerin bir başlık satırı varsa, sütun adlarını atamak için kullanılır. |
 | Hadoop/bir |Hadoop 'daki dağıtılmış depolama alanından verileri okur. SQL benzeri bir sorgu dili olan HiveQL kullanarak istediğiniz verileri belirtirsiniz. HiveQL, verileri toplamak ve verileri Studio 'ya (klasik) eklemeden önce veri filtrelemeyi gerçekleştirmek için de kullanılabilir. |<b>Hive veritabanı sorgusu</b>: verileri oluşturmak Için kullanılan Hive sorgusunu belirtir.<br/><br/><b>Hcatalog sunucusu URI 'si</b> : Kümenizin adı, * &lt; Kümenizin adı &gt; . azurehdinsight.net* biçimi kullanılarak belirtildi.<br/><br/><b>Hadoop Kullanıcı hesabı adı</b>: kümeyi sağlamak Için kullanılan Hadoop Kullanıcı hesabının adını belirtir.<br/><br/><b>Hadoop Kullanıcı hesabı parolası</b> : küme sağlanırken kullanılan kimlik bilgilerini belirtir. Daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop kümeleri oluşturma](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Çıkış verilerinin konumu</b>: verilerin bir Hadoop Dağıtılmış dosya sistemi 'nde mi yoksa Azure 'da mı depolandığını belirtir. <br/><ul>Çıktı verilerini bir olarak depoladığınızda,,,,, bir sunucu URI 'sini belirtin. (HDInsight kümesi adını HTTPS://ön eki olmadan kullandığınızdan emin olun). <br/><br/>Çıktı verilerinizi Azure 'da depolarsanız, Azure depolama hesabı adı, depolama erişim anahtarı ve depolama kapsayıcısı adı ' nı belirtmeniz gerekir.</ul> |

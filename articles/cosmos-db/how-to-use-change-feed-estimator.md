@@ -3,15 +3,15 @@ title: Değişiklik akışı tahmini Azure Cosmos DB kullanın
 description: Değişiklik akışı işlemcinizin ilerlemesini çözümlemek için değişiklik akışı tahmin aracı 'ı nasıl kullanacağınızı öğrenin
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90ae7951196d424b59d3780469cb7e01519c51f9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585297"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263587"
 ---
 # <a name="use-the-change-feed-estimator"></a>Değişiklik akışı tahmin aracı 'ı kullanın
 
@@ -35,11 +35,11 @@ Bu senaryonun belirlenmesi, değişiklik akışı işlemci dağıtımınızı ö
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
-İşlemcinin şu şekilde kullanılması `GetChangeFeedEstimatorBuilder` için bir tahmin aracı başlatmanın doğru yolu:
+İşlemcinin şu şekilde kullanılması için bir tahmin aracı başlatmanın doğru yolu `GetChangeFeedEstimatorBuilder` :
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 
-Hem işlemcinin hem de tahmin aracı aynı adı `leaseContainer` ve aynı adı paylaşır.
+Hem işlemcinin hem de tahmin aracı aynı `leaseContainer` adı ve aynı adı paylaşır.
 
 Diğer iki parametre, işlemci tarafından **okunmayı bekleyen kaç değişiklik** olduğunu ve bu ölçümün alınmasını istediğiniz zaman aralığını temsil eden bir sayı alacak olan temsilcidir.
 

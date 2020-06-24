@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 95f8c2a3b47b59bab7df909be43dacdb1f9c58f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 607afa4b8411af9b960a251d5f9d4688d3edeb10
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479286"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686911"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus için ağ güvenliği 
 Bu makalede, Azure Service Bus ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
@@ -37,6 +37,9 @@ Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu te
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ServiceBus** | Premium hizmet katmanını kullanan trafiği Azure Service Bus. | Giden | Yes | Yes |
 
+
+> [!NOTE]
+> Yalnızca **Premium** ad alanları için hizmet etiketlerini kullanabilirsiniz. **Standart** bir ad alanı kullanıyorsanız, aşağıdaki komutu ÇALıŞTıRDıĞıNıZDA gördüğünüz IP adresini kullanın: `nslookup <host name for the namespace>` . Örneğin: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
 Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Service Bus ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.

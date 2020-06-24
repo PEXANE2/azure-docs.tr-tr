@@ -1,5 +1,5 @@
 ---
-title: Verileri işlemek için bir Azure işlevi ayarlama
+title: Veri işleme için bir Azure işlevi ayarlama
 titleSuffix: Azure Digital Twins
 description: Bkz. dijital TWINS tarafından erişebilen ve tetiklenebilecek bir Azure işlevi oluşturma.
 author: cschormann
@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 51e2560a7ad8d62965474082633d4cb66c1d6592
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613197"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725911"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Önizleme süresince verileri temel alarak dijital TWINS güncelleştirme, [Azure işlevleri](../azure-functions/functions-overview.md)gibi işlem kaynakları aracılığıyla [**olay rotaları**](concepts-route-events.md) kullanılarak işlenir. Bir Azure işlevi, yanıt olarak bir dijital ikizi güncelleştirmek için kullanılabilir:
 * IoT Hub gelen cihaz telemetri verileri

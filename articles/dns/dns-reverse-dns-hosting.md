@@ -3,16 +3,16 @@ title: Azure DNS 'de ters DNS arama bölgeleri barındırma
 description: IP aralıklarınız için ters DNS arama bölgelerini barındırmak üzere Azure DNS nasıl kullanacağınızı öğrenin
 author: rohinkoul
 ms.service: dns
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 78fc3428274be5e1998abe9189bea996f15e278c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454270"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709207"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS 'de ters DNS arama bölgeleri barındırma
 
@@ -29,7 +29,7 @@ Bu makale, Azure portal, Azure PowerShell, Azure klasik CLı veya Azure CLı kul
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Geriye doğru arama DNS bölgesi oluşturma
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Hub** menüsünde **Yeni** > **ağ**' ı ve ardından **DNS bölgesi**' ni seçin.
+1. **Hub** menüsünde **Yeni**  >  **ağ**' ı ve ardından **DNS bölgesi**' ni seçin.
 
    !["DNS bölgesi" seçimi](./media/dns-reverse-dns-hosting/figure1.png)
 
@@ -37,16 +37,16 @@ Bu makale, Azure portal, Azure PowerShell, Azure klasik CLı veya Azure CLı kul
 
 ### <a name="ipv4"></a>IPv4
 
-IPv4 geriye doğru arama bölgesinin adı, temsil ettiği IP aralığını temel alır. Şu biçimde olmalıdır: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Örnekler için bkz. [Azure 'da ters DNS ve desteğe genel bakış](dns-reverse-dns-overview.md#ipv4).
+IPv4 geriye doğru arama bölgesinin adı, temsil ettiği IP aralığını temel alır. Şu biçimde olmalıdır: `<IPv4 network prefix in reverse order>.in-addr.arpa` . Örnekler için bkz. [Azure 'da ters DNS ve desteğe genel bakış](dns-reverse-dns-overview.md#ipv4).
 
 > [!NOTE]
-> Azure DNS ' de sınıfsız ters DNS arama bölgeleri oluştururken, bölge adında eğik çizgi (`-``/`) yerine kısa çizgi () kullanmanız gerekir.
+> Azure DNS ' de sınıfsız ters DNS arama bölgeleri oluştururken, `-` bölge adında eğik çizgi () yerine kısa çizgi () kullanmanız gerekir `/` .
 >
-> Örneğin, 192.0.2.128/26 IP aralığı için yerine bölge adı olarak kullanmanız `128-26.2.0.192.in-addr.arpa` gerekir. `128/26.2.0.192.in-addr.arpa`
+> Örneğin, 192.0.2.128/26 IP aralığı için `128-26.2.0.192.in-addr.arpa` yerine bölge adı olarak kullanmanız gerekir `128/26.2.0.192.in-addr.arpa` .
 >
-> DNS standartları her iki yöntemi de desteklese de Azure DNS, eğik çizgi (`/`) KARAKTERI içeren DNS bölge adlarını desteklemez.
+> DNS standartları her iki yöntemi de desteklese de Azure DNS, eğik çizgi () karakteri içeren DNS bölge adlarını desteklemez `/` .
 
-Aşağıdaki örnek, Azure portal aracılığıyla Azure DNS adlı `2.0.192.in-addr.arpa` bir sınıf C ters DNS bölgesinin nasıl oluşturulacağını gösterir:
+Aşağıdaki örnek, Azure portal aracılığıyla Azure DNS adlı bir sınıf C ters DNS bölgesinin nasıl oluşturulacağını gösterir `2.0.192.in-addr.arpa` :
 
  !["DNS bölgesi oluşturma" bölmesi, kutular doldurulmuş](./media/dns-reverse-dns-hosting/figure2.png)
 
@@ -74,10 +74,10 @@ az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-IPv6 geriye doğru arama bölgesinin adı şu biçimde olmalıdır: `<IPv6 network prefix in reverse order>.ip6.arpa`.  Örnekler için bkz. [Azure 'da ters DNS ve desteğe genel bakış](dns-reverse-dns-overview.md#ipv6).
+IPv6 geriye doğru arama bölgesinin adı şu biçimde olmalıdır: `<IPv6 network prefix in reverse order>.ip6.arpa` .  Örnekler için bkz. [Azure 'da ters DNS ve desteğe genel bakış](dns-reverse-dns-overview.md#ipv6).
 
 
-Aşağıdaki örnek, Azure portal aracılığıyla Azure DNS adlı `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` bir ıPV6 ters DNS arama bölgesinin nasıl oluşturulacağını gösterir:
+Aşağıdaki örnek, Azure portal aracılığıyla Azure DNS adlı bir IPv6 ters DNS arama bölgesinin nasıl oluşturulacağını gösterir `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` :
 
  !["DNS bölgesi oluşturma" bölmesi, kutular doldurulmuş](./media/dns-reverse-dns-hosting/figure3.png)
 

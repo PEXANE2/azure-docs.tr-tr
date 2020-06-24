@@ -8,19 +8,19 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fedb9375ec7ac7e7c7ac7a3ebf91166f70b6a05b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583005"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728835"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory için self servis kaydolma nedir?
 
@@ -52,12 +52,12 @@ Bir yönetici, aşağıdaki Azure AD cmdlet Set-MsolCompanySettings parametreler
 AllowEmailVerifiedUsers ve Allowadhocabonelikleri, yönetilen veya yönetilmeyen bir dizine uygulanabilecek Dizin genelinde ayarlar. İşte şöyle bir örnek:
 
 * Contoso.com gibi doğrulanmış bir etki alanı ile bir dizin yönetebilirsiniz.
-* Contoso.com giriş dizininde zaten mevcut olmayan (userdoesnotexist@contoso.com) bir kullanıcıyı davet etmek için farklı bır dizinden B2B işbirliği kullanıyorsunuz
+* Contoso.com giriş dizininde zaten mevcut olmayan () bir kullanıcıyı davet etmek için farklı bir dizinden B2B işbirliği kullanıyorsunuz userdoesnotexist@contoso.com
 * Ana dizinde AllowEmailVerifiedUsers açıktır
 
 Yukarıdaki koşullar doğru ise, ana dizinde bir üye Kullanıcı oluşturulur ve davet edilen dizinde bir B2B Konuk Kullanıcı oluşturulur.
 
-Flow ve PowerApps deneme oturum açma işlemleri, **Allowadhocabonelikler** ayarı tarafından denetlenmez. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Flow ve PowerApps deneme oturum açma işlemleri, **Allowadhocabonelikler** ayarı tarafından denetlenmez. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Mevcut kullanıcılarımın Power BI'ı kullanmaya başlamasını nasıl önleyebilirim?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [Kuruluşunuzda Flow ile ilgili soru-cevap](https://docs.microsoft.com/flow/organization-q-and-a)

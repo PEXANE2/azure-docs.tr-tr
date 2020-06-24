@@ -3,16 +3,16 @@ title: Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
 description: Toplu yürütücü kitaplığı tarafından sunulan toplu içeri aktarma ve toplu güncelleştirme API 'Leri aracılığıyla Azure Cosmos DB toplu işlemler gerçekleştirin.
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985601"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260619"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
  
@@ -42,7 +42,7 @@ Toplu yürütücü kitaplığı bu muazzam işlem hızı ve depolamadan yararlan
 
 Belgeleri içeri veya dışarı aktarmaya yönelik toplu bir işlem, bir dizi varlıkla tetiklendiğinde, başlangıçta Azure Cosmos DB bölüm anahtarı aralığına karşılık gelen demetlere bölünmüştür. Bölüm anahtar aralığına karşılık gelen her bir demet içinde, bunlar mini toplu işlemlere bölünür ve her mini yığın sunucu tarafında yürütülen bir yük olarak davranır. Toplu yürütücü kitaplığı, bu mini işlerin içinde ve bölüm anahtarı aralıklarında aynı anda yürütülmesi için iyileştirmelere sahiptir. Aşağıdaki görüntüde toplu yürütücü verilerinin farklı bölüm anahtarlarına nasıl toplu olarak alınacağını gösterir:  
 
-![Toplu yürütücü mimarisi](./media/bulk-executor-overview/bulk-executor-architecture.png)
+:::image type="content" source="./media/bulk-executor-overview/bulk-executor-architecture.png" alt-text="Toplu yürütücü mimarisi" :::
 
 Toplu yürütücü kitaplığı, bir koleksiyona ayrılan üretilen işi büyük ölçüde kullanmaya özen açar. Hız sınırlandırma ve zaman aşımlarını verimli bir şekilde işlemek için her bir Azure Cosmos DB bölüm anahtarı aralığı için bir [Aimd stili tıkanıklık denetim mekanizması](https://tools.ietf.org/html/rfc5681) kullanır. 
 

@@ -2,14 +2,14 @@
 title: Hızlı başlangıç-kayıt defteri oluşturma-Azure CLı
 description: Azure CLI ile hızlıca özel bir Docker kapsayıcısı kayıt defteri oluşturmayı öğrenin.
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 888daa53b719151b4362597c7a300e82fe26860e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 31e917fa306330ca579266e21560d7d42c7f2bc7
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682745"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752458"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel kapsayıcı kayıt defteri oluşturma
 
@@ -38,7 +38,8 @@ Bu hızlı başlangıçta, Azure Container Registry hakkında bilgi edinmek içi
 [az act create][az-acr-create] komutunu kullanarak bir ACR örneği oluşturun. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Aşağıdaki örnekte *myContainerRegistry007* komutu kullanılmıştır. Bunu benzersiz bir değerle güncelleştirin.
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry007 --sku Basic
 ```
 
 Kayıt defteri oluşturulduğunda çıkış aşağıdakilere benzer:
@@ -64,14 +65,14 @@ Kayıt defteri oluşturulduğunda çıkış aşağıdakilere benzer:
 }
 ```
 
-`loginServer`Tam kayıt defteri adı (tümü küçük harf) olan çıktıda konusuna göz atın. Bu hızlı başlangıcın geri kalanında `<acrName>`, kapsayıcı kayıt defteri adı için bir yer tutucudur.
+`loginServer`Tam kayıt defteri adı (tümü küçük harf) olan çıktıda konusuna göz atın. Bu hızlı başlangıç boyunca, `<registry-name>` kapsayıcı kayıt defteri adı için bir yer tutucudur ve `<login-server>` kayıt defterinin oturum açma sunucusu adı için bir yer tutucudur.
 
 ## <a name="log-in-to-registry"></a>Kayıt defterinde oturum açma
 
 Kapsayıcı görüntülerini göndermeden ve çekmeden önce, kayıt defterinde oturum açmalısınız. Bunu yapmak için [az acr login][az-acr-login] komutunu kullanın.
 
 ```azurecli
-az acr login --name <acrName>
+az acr login --name <registry-name>
 ```
 
 Bu komut tamamlandığında `Login Succeeded` iletisi döndürülür.
@@ -83,7 +84,7 @@ Bu komut tamamlandığında `Login Succeeded` iletisi döndürülür.
 Aşağıdaki örnek, kayıt defterinizde bulunan depoları listeler:
 
 ```azurecli
-az acr repository list --name <acrName> --output table
+az acr repository list --name <registry-name> --output table
 ```
 
 Çıktı:
@@ -97,7 +98,7 @@ hello-world
 Aşağıdaki örnekte, **Merhaba-Dünya** deposundaki Etiketler listelenmektedir.
 
 ```azurecli
-az acr repository show-tags --name <acrName> --repository hello-world --output table
+az acr repository show-tags --name <registry-name> --repository hello-world --output table
 ```
 
 Çıktı:
@@ -123,7 +124,10 @@ az group delete --name myResourceGroup
 Bu hızlı başlangıçta Azure CLı ile bir Azure Container Registry oluşturdunuz, kayıt defterine bir kapsayıcı görüntüsü gönderdi ve görüntüyü kayıt defterinden çekmiş ve çalıştırdınız. ACR 'ye daha ayrıntılı bir bakış için Azure Container Registry öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry öğreticileri][container-registry-tutorial-quick-task]
+> [Azure Container Registry öğreticileri][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Azure Container Registry görevleri öğreticileri][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -143,3 +147,4 @@ Bu hızlı başlangıçta Azure CLı ile bir Azure Container Registry oluşturdu
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257153"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711961"
 ---
 # <a name="scale-with-additional-process-servers"></a>Ek işlem sunucularıyla ölçeklendirme
 
@@ -52,9 +52,9 @@ Ek işlem sunucusu Önkoşulları aşağıdaki tabloda özetlenmiştir.
 İşlem sunucusu için yükleme dosyasını aşağıdaki gibi indirin:
 
 1. Azure portal oturum açın ve kurtarma hizmetleri kasanıza gidin.
-2. **Site Recovery altyapı** > **VMware ve fiziksel makineler** > **yapılandırma sunucularını** açın (VMware & fiziksel makineleri için altında).
+2. **Site Recovery altyapı**  >  **VMware ve fiziksel makineler**  >  **yapılandırma sunucularını** açın (VMware & fiziksel makineleri için altında).
 3. Sunucu ayrıntılarının detayına gitmek için yapılandırma sunucusunu seçin. Ardından **+ Işlem sunucusu**' na tıklayın.
-4. İşlem sunucusu **Ekle** >  ' de,**işlem sunucunuzu dağıtmak istediğiniz yeri seçin**' de, **Şirket içi genişleme işlem sunucusu dağıt**' ı seçin.
+4. İşlem sunucusu **Ekle**' de  >   ,**işlem sunucunuzu dağıtmak istediğiniz yeri seçin**' de, **Şirket içi genişleme işlem sunucusu dağıt**' ı seçin.
 
    ![Sunucu ekleme sayfası](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. **Birleşik kurulum Site Recovery Microsoft Azure indir**' e tıklayın. Bu, yükleme dosyasının en son sürümünü indirir.

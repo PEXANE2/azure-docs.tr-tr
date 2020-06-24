@@ -4,23 +4,23 @@ description: PowerShell cmdlet 'leriyle Windows sanal masaüstü için RDP özel
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 04/30/2020
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 66b76fcdd9729b2a92ea2d561c740dbe148e0bbe
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611560"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207218"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
 
 >[!IMPORTANT]
 >Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)bakın.
 >
-> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Çoklu izleyici deneyimi ve ses yeniden yönlendirme gibi bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirmek, kullanıcılarınız için gereksinimlerinize göre en iyi deneyimi sunmanızı sağlar. Windows sanal masaüstündeki RDP özelliklerini, Azure portal kullanarak veya **Update-AzWvdHostPool** cmdlet 'inde *-customrdpproperty* parametresini kullanarak özelleştirebilirsiniz.
@@ -47,16 +47,16 @@ Konak havuzu için tanımladığınız tüm özel özellikler, bu Varsayılanlar
 
 Azure portal RDP özelliklerini yapılandırmak için:
 
-1. Adresinden <https://portal.azure.com>Azure 'da oturum açın.
+1. Adresinden Azure 'da oturum açın <https://portal.azure.com> .
 2. Arama çubuğuna **Windows sanal masaüstü 'nü** girin.
 3. Hizmetler altında **Windows sanal masaüstü**' nü seçin.
 4. Windows sanal masaüstü sayfasında, ekranın sol tarafındaki menüden **konak havuzları** ' nı seçin.
 5. Güncelleştirmek istediğiniz **konak havuzunun adını** seçin.
 6. Ekranın sol tarafındaki menüden **Özellikler** ' i seçin.
-7. RDP özelliklerini düzenlemeyle başlamak için **RDP ayarları** ' nı seçin.
+7. **Özellikler** sekmesinde, RDP özelliklerini düzenlemeyle başlamak için **RDP ayarları** ' na gidin. Özellikler, PowerShell örnekleri gibi bir virgülle ayrılmış biçimde olmalıdır.
 8. İşiniz bittiğinde, değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 
-RDP ayarları menüsünde görmemenizi düzenlemek istediğiniz bir ayar varsa, PowerShell 'de cmdlet 'leri çalıştırarak el ile düzenlemeniz gerekir. Sonraki bölümlerde, PowerShell 'de özel RDP özelliklerinin el ile nasıl düzenleneceği açıklanır.
+Sonraki bölümlerde, PowerShell 'de özel RDP özelliklerinin el ile nasıl düzenleneceği açıklanır.
 
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>Tek bir özel RDP özelliği ekleme veya düzenleme
 
@@ -89,14 +89,14 @@ CustomRdpProperty : audiocapturemode:i:1;
 Birden çok özel RDP özelliği eklemek veya düzenlemek için, Özel RDP özelliklerini noktalı virgülle ayrılmış bir dize olarak sağlayarak aşağıdaki PowerShell cmdlet 'lerini çalıştırın:
 
 ```powershell
-$properties="<property1>;<property2>;<property3>" 
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty $properties 
+$properties="<property1>;<property2>;<property3>"
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
 
 Aşağıdaki cmdlet 'i çalıştırarak RDP özelliğinin eklendiğinden emin olmak için kontrol edebilirsiniz:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty
 
 Name              : <hostpoolname>
 CustomRdpProperty : <customRDPpropertystring>
@@ -105,9 +105,9 @@ CustomRdpProperty : <customRDPpropertystring>
 Önceki cmdlet örnekimize göre 0301HP ana bilgisayar havuzunda birden çok RDP özelliği ayarlarsanız, cmdlet 'niz şöyle görünür:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty
 
-Name              : 0301HP 
+Name              : 0301HP
 CustomRdpProperty : audiocapturemode:i:1;audiomode:i:0;
 ```
 
@@ -122,9 +122,9 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 Ayarı başarıyla kaldırmış olduğunuzdan emin olmak için şu cmdlet 'i girin:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty
 
-Name              : <hostpoolname> 
+Name              : <hostpoolname>
 CustomRdpProperty : <CustomRDPpropertystring>
 ```
 

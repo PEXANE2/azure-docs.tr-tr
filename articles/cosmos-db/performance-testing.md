@@ -3,16 +3,16 @@ title: Azure Cosmos DB ile performans ve ölçek testi
 description: Azure Cosmos DB ile ölçek ve performans testi yapmayı öğrenin. Daha sonra, yüksek performanslı uygulama senaryoları için Azure Cosmos DB işlevlerini değerlendirebilirsiniz.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4b2394f48f9bf3ec436cda92e87fd99ad915474
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76313765"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262574"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB ile performans ve ölçek testi
 
@@ -39,7 +39,7 @@ Kullanmaya başlamanın en hızlı yolu, aşağıdaki adımlarda açıklandığ�
 
 **1. Adım:** Projeyi [Azure Cosmos DB performans testi örneğinden](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)Indirin veya GitHub deposunu çatalla.
 
-**2. Adım:** App. config dosyasında EndpointUrl, AuthorizationKey, Collectionüretilen Iş ve DocumentTemplate (isteğe bağlı) ayarlarını değiştirin.
+**2. Adım:** App.config 'de EndpointUrl, AuthorizationKey, Collectionüretilen Iş ve DocumentTemplate (isteğe bağlı) ayarlarını değiştirin.
 
 > [!NOTE]
 > Yüksek aktarım hızı ile koleksiyonlar sağlamadan önce, koleksiyon başına maliyetleri tahmin etmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. , Faturalandırılır ve üretilen iş üretimini her saat temelinde bağımsız olarak Azure Cosmos DB. Test ettikten sonra Azure Cosmos kapsayıcılarınızın verimini silerek veya azaltarak maliyetleri tasarruf edebilirsiniz.
@@ -94,7 +94,7 @@ Kullanmaya başlamanın en hızlı yolu, aşağıdaki adımlarda açıklandığ�
 Uygulamayı çalıştırdıktan sonra, aktarım hızı ve gecikme süresi üzerinde etkilerini anlamak için farklı [Dizin oluşturma ilkeleri](index-policy.md) ve [tutarlılık düzeyleri](consistency-levels.md) deneyebilirsiniz. Ayrıca, kaynak kodu gözden geçirebilir ve kendi test paketleriniz veya üretim uygulamalarınıza benzer konfigürasyonlar uygulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, .NET konsol uygulaması kullanarak Azure Cosmos DB nasıl performans ve ölçek testi gerçekleştirekullanabileceğinizi inceledik. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makalede, .NET konsol uygulaması kullanarak Azure Cosmos DB nasıl performans ve ölçek testi gerçekleştirekullanabileceğinizi inceledik. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Azure Cosmos DB performans testi örneği](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [Azure Cosmos DB performansını geliştirmek için istemci yapılandırma seçenekleri](performance-tips.md)

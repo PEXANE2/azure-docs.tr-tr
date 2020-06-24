@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
-ms.openlocfilehash: f29e29f809faeeb486e5b6b9bacc84a61380a012
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144468"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709972"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Bir Azure VM 'den genel IP adresinin ilişkilendirmesini kaldırma 
 
@@ -44,7 +44,7 @@ Bir VM 'den ortak IP adresinin ilişkilendirmesini kaldırmak için [Azure Porta
 
 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)'yi veya Azure Cloud Shell kullanın. Azure Cloud Shell doğrudan Azure portalının içinde çalıştırabileceğiniz ücretsiz bir Bash kabuğudur. Azure CLI, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Aşağıdaki CLı komutlarında **deneyin** düğmesini seçin. **Dene** ' nin seçilmesi, ile Azure hesabınızda oturum açmak için kullanabileceğiniz bir Cloud Shell çağırır.
 
-1. CLı 'yi Bash içinde yerel olarak kullanıyorsanız, ile `az login`Azure 'da oturum açın.
+1. CLı 'yi Bash içinde yerel olarak kullanıyorsanız, ile Azure 'da oturum açın `az login` .
 2. Genel IP adresi, bir VM 'ye bağlı bir ağ arabiriminin IP yapılandırmasıyla ilişkilendirilir. Genel IP adresinin bir IP yapılandırmasından ilişkilendirmesini kaldırmak için [az Network Nic-ip-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı bir VM 'ye bağlı olan *myvmvmnıc* adlı mevcut bir ağ arabiriminin *ıpconfigmyvm* adlı bir IP yapılandırmasından *myVMPublicIP* adlı genel IP adresini ilişkilendirmesini geri ayırır.
   
    ```azurecli-interactive
@@ -86,7 +86,7 @@ Bir VM 'den ortak IP adresinin ilişkilendirmesini kaldırmak için [Azure Porta
 
 [PowerShell](/powershell/azure/install-az-ps)'i yükleyip Azure Cloud Shell kullanın. Azure Cloud Shell doğrudan Azure portalının içinde çalıştırabileceğiniz ücretsiz bir kabuktur. PowerShell 'in önceden yüklenmiş ve hesabınızla birlikte kullanılmak üzere yapılandırılmış olması. İzleyen PowerShell komutlarında **deneyin** düğmesini seçin. **Dene** ' nin seçilmesi, ile Azure hesabınızda oturum açmak için kullanabileceğiniz bir Cloud Shell çağırır.
 
-1. PowerShell 'i yerel olarak kullanıyorsanız, ile `Connect-AzAccount`Azure 'da oturum açın.
+1. PowerShell 'i yerel olarak kullanıyorsanız, ile Azure 'da oturum açın `Connect-AzAccount` .
 2. Genel IP adresi, bir VM 'ye bağlı bir ağ arabiriminin IP yapılandırmasıyla ilişkilendirilir. Ağ arabirimi almak için [Get-Aznetworkınterface](/powershell/module/Az.Network/Get-AzNetworkInterface) komutunu kullanın. Genel IP adresi değerini null olarak ayarlayın ve ardından [set-Aznetworkınterface](/powershell/module/Az.Network/Set-AzNetworkInterface) komutunu kullanarak yeni IP yapılandırmasını ağ arabirimine yazın.
 
    Aşağıdaki örnek, *Myvm*ADLı bir VM 'ye bağlı olan *Myvmvmnıc* adlı bir ağ ARABIRIMINDEN *myVMPublicIP* adlı genel IP adresini ilişkilendirmesini geri ayırır. Tüm kaynaklar *Myresourcegroup*adlı bir kaynak grubunda bulunur.

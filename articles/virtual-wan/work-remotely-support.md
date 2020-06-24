@@ -4,15 +4,15 @@ description: Bu sayfada COVıD-19 pandemıc nedeniyle uzaktan çalışmayı etki
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ce212b5da90906966025674b58884d0e2f5bb064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337136"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753776"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure sanal WAN ve uzak çalışmayı destekleme
 
@@ -49,9 +49,9 @@ Burada iki seçeneğiniz vardır:
 
 Temel sanal WAN yalnızca siteden siteye VPN sağlar. Uzak kullanıcıların bağlanabilmesi için, sanal WAN 'ı standart sanal WAN 'a yükseltmeniz gerekir. Bir sanal WAN yükseltme adımları için bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md)
 
-## <a name="additional-information"></a><a name="other considerations"></a>Ek bilgiler
+## <a name="additional-information"></a><a name="other considerations"></a>Ek bilgi
 
-Sanal WAN, bölge/konum başına bir hub destekler. Konum bilgileri için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi. Her Hub 10.000 adede kadar uzak kullanıcı bağlantısını, 1.000 dal bağlantısını, dört ExpressRoute devresine ve en fazla 500 sanal ağ bağlantısını destekler. Uzak kullanıcıları ölçeklendirirseniz, sorularınız varsa, ' e bir e-posta göndererek yardım arama hakkında daha fazla araştırma yapmayın azurevirtualwan@microsoft.com. Teknik desteğe ihtiyacınız varsa, Azure portal bir destek bileti açın ve yardım 'ın bu şekilde olacağını unutmayın.
+Sanal WAN, bölge/konum başına bir hub destekler. Konum bilgileri için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi. Her Hub 10.000 adede kadar uzak kullanıcı bağlantısını, 1.000 dal bağlantısını, dört ExpressRoute devresine ve en fazla 500 sanal ağ bağlantısını destekler. Uzak kullanıcıları ölçeklendirirseniz, sorularınız varsa, ' e bir e-posta göndererek yardım arama hakkında daha fazla araştırma yapmayın azurevirtualwan@microsoft.com . Teknik desteğe ihtiyacınız varsa, Azure portal bir destek bileti açın ve yardım 'ın bu şekilde olacağını unutmayın.
 
 ## <a name="faq"></a><a name="faq"></a>SSS
 

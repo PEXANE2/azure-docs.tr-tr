@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyicisini etkinleştirme | Microsoft Docs
 description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunları nasıl tanımladığınızı anlayabilmeniz için kapsayıcılar için Azure Izleyicisini etkinleştirme ve yapılandırma açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 0348d580a42d4a522ac05f929c96547a47e831a9
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 06/15/2020
+ms.openlocfilehash: a765c601682eb594d40ba98b8b4ef1853f35fb37
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147911"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886003"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
@@ -24,6 +24,8 @@ Bu makalede, Kubernetes ortamlarına dağıtılan ve üzerinde barındırılan i
 
 - [Red Hat OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) sürüm 4. x
 
+- [Yay etkin Kubernetes kümesi](../../azure-arc/kubernetes/overview.md)
+
 Kapsayıcılar için Azure Izleyici, aşağıdaki desteklenen yöntemleri kullanarak yeni veya var olan bir veya daha fazla Kubernetes dağıtımı için etkinleştirilebilir:
 
 - Azure portal, Azure PowerShell veya Azure CLı ile
@@ -38,17 +40,17 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
 - **Log Analytics çalışma alanı.**
 
-    Kapsayıcılar için Azure Izleyici, [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler.
+   Kapsayıcılar için Azure Izleyici, [bölgeye göre Azure ürünlerinde](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)listelenen bölgelerde bir Log Analytics çalışma alanını destekler.
 
-    Yeni AKS kümenizi izlemeyi etkinleştirdiğinizde bir çalışma alanı oluşturabilir veya ekleme deneyiminin AKS küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturmasına izin verin. Kendiniz oluşturmayı seçerseniz, [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md) [Azure Resource Manager](../platform/template-workspace-configuration.md)aracılığıyla oluşturabilirsiniz. Varsayılan çalışma alanı için kullanılan desteklenen eşleme çiftlerinin bir listesi için bkz. [kapsayıcılar Için Azure izleyici Için bölge eşleme](container-insights-region-mapping.md).
+   Yeni AKS kümenizi izlemeyi etkinleştirdiğinizde bir çalışma alanı oluşturabilir veya ekleme deneyiminin AKS küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturmasına izin verin. Kendiniz oluşturmayı seçerseniz, [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)aracılığıyla veya [Azure Portal](../learn/quick-create-workspace.md) [Azure Resource Manager](../platform/template-workspace-configuration.md)aracılığıyla oluşturabilirsiniz. Varsayılan çalışma alanı için kullanılan desteklenen eşleme çiftlerinin bir listesi için bkz. [kapsayıcılar Için Azure izleyici Için bölge eşleme](container-insights-region-mapping.md).
 
 - Kapsayıcı izlemeyi etkinleştirmek için **Log Analytics katkıda bulunan rolünün** bir üyesisiniz. Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi için bkz. [çalışma alanlarını yönetme](../platform/manage-access.md).
 
 - AKS küme kaynağında **[sahip](../../role-based-access-control/built-in-roles.md#owner)** rolünün bir üyesisiniz.
 
-[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+   [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-* Prometheus ölçümleri varsayılan olarak toplanmaz. Aracıyı toplamak üzere [yapılandırmadan](container-insights-prometheus-integration.md) önce, nelerin desteklenebilir olduğunu ve yöntemlerin desteklenip desteklenmediğini anlamak Için Prometheus [belgelerini](https://prometheus.io/) gözden geçirmeniz önemlidir.
+- Prometheus ölçümleri varsayılan olarak toplanmaz. Aracıyı toplamak üzere [yapılandırmadan](container-insights-prometheus-integration.md) önce, nelerin desteklenebilir olduğunu ve yöntemlerin desteklenip desteklenmediğini anlamak Için Prometheus [belgelerini](https://prometheus.io/) gözden geçirmeniz önemlidir.
 
 ## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
 
@@ -63,27 +65,27 @@ Aşağıdaki tablodaki bilgiler Kapsayıcılı aracının kapsayıcılar için A
 
 |Aracı Kaynağı|Bağlantı noktaları |
 |--------------|------|
-| *.ods.opinsights.azure.com | 443 |  
-| *.oms.opinsights.azure.com | 443 |
-| dc.services.visualstudio.com | 443 |
-| *. monitoring.azure.com | 443 |
-| login.microsoftonline.com | 443 |
+| `*.ods.opinsights.azure.com` | 443 |  
+| `*.oms.opinsights.azure.com` | 443 |
+| `dc.services.visualstudio.com` | 443 |
+| `*.monitoring.azure.com` | 443 |
+| `login.microsoftonline.com` | 443 |
 
-Aşağıdaki tablodaki bilgiler, Azure Çin için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
+Aşağıdaki tablodaki bilgiler, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
 
-|Aracı Kaynağı|Bağlantı noktaları |Açıklama | 
+|Aracı Kaynağı|Bağlantı noktaları |Description | 
 |--------------|------|-------------|
-| *. ods.opinsights.azure.cn | 443 | Veri alımı |
-| *. oms.opinsights.azure.cn | 443 | OMS ekleme |
-| dc.services.visualstudio.com | 443 | Azure genel bulut Application Insights kullanan aracı telemetri için. |
+| `*.ods.opinsights.azure.cn` | 443 | Veri alımı |
+| `*.oms.opinsights.azure.cn` | 443 | OMS ekleme |
+| `dc.services.visualstudio.com` | 443 | Azure genel bulut Application Insights kullanan aracı telemetri için. |
 
 Aşağıdaki tablodaki bilgiler, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
 
-|Aracı Kaynağı|Bağlantı noktaları |Açıklama | 
+|Aracı Kaynağı|Bağlantı noktaları |Description | 
 |--------------|------|-------------|
-| *. ods.opinsights.azure.us | 443 | Veri alımı |
-| *. oms.opinsights.azure.us | 443 | OMS ekleme |
-| dc.services.visualstudio.com | 443 | Azure genel bulut Application Insights kullanan aracı telemetrisi için. |
+| `*.ods.opinsights.azure.us` | 443 | Veri alımı |
+| `*.oms.opinsights.azure.us` | 443 | OMS ekleme |
+| `dc.services.visualstudio.com` | 443 | Azure genel bulut Application Insights kullanan aracı telemetrisi için. |
 
 ## <a name="components"></a>Bileşenler
 
@@ -101,18 +103,19 @@ Aracının yeni bir sürümü yayınlandığında, Azure Kubernetes Service (AKS
 
 Aşağıdaki tabloda açıklanan aşağıdaki yöntemlerden birini kullanarak kapsayıcılar için Azure Izleyicisini etkinleştirirsiniz.
 
-| Dağıtım durumu | Yöntem | Açıklama |
+| Dağıtım durumu | Yöntem | Description |
 |------------------|--------|-------------|
-| Yeni AKS Kubernetes kümesi | [Azure CLı kullanarak AKS kümesi oluşturma](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLı ile oluşturduğunuz yeni bir AKS kümesinin izlenmesini etkinleştirebilirsiniz. |
+| Yeni Kubernetes kümesi | [Azure CLı kullanarak AKS kümesi oluşturma](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLı ile oluşturduğunuz yeni bir AKS kümesinin izlenmesini etkinleştirebilirsiniz. |
 | | [Terrayform kullanarak AKS kümesi oluşturma](container-insights-enable-new-cluster.md#enable-using-terraform)| Açık kaynak aracı Tertuform kullanarak oluşturduğunuz yeni bir AKS kümesinin izlenmesini etkinleştirebilirsiniz. |
 | | [Azure Resource Manager şablonu kullanarak OpenShift kümesi oluşturma](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | Önceden yapılandırılmış bir Azure Resource Manager şablonuyla oluşturduğunuz yeni bir OpenShift kümesinin izlenmesini etkinleştirebilirsiniz. |
 | | [Azure CLı kullanarak OpenShift kümesi oluşturma](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Azure CLı kullanarak yeni bir OpenShift kümesi dağıttığınızda izlemeyi etkinleştirebilirsiniz. |
-| Mevcut AKS Kubernetes kümesi | [Azure CLı kullanarak AKS kümesi için etkinleştirme](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLı kullanarak zaten dağıtılmış bir AKS kümesinin izlenmesini etkinleştirebilirsiniz. |
+| Mevcut Kubernetes kümesi | [Azure CLı kullanarak AKS kümesi için etkinleştirme](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLı kullanarak zaten dağıtılmış bir AKS kümesinin izlenmesini etkinleştirebilirsiniz. |
 | |[Tertuform kullanarak AKS kümesi için etkinleştirme](container-insights-enable-existing-clusters.md#enable-using-terraform) | Açık kaynaklı araç Tertuform kullanarak zaten dağıtılmış bir AKS kümesinin izlenmesini etkinleştirebilirsiniz. |
 | | [Azure Izleyici 'den AKS kümesi için etkinleştirme](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Izleyici 'de çok küme sayfasından zaten dağıtılmış bir veya daha fazla AKS kümesi izlemeyi etkinleştirebilirsiniz. |
 | | [AKS kümesinden etkinleştir](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| İzlemeyi, Azure portal doğrudan bir AKS kümesinden etkinleştirebilirsiniz. |
 | | [Azure Resource Manager şablonu kullanarak AKS kümesi için etkinleştirme](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| Bir AKS kümesinin önceden yapılandırılmış Azure Resource Manager şablonuyla izlenmesini etkinleştirebilirsiniz. |
 | | [Karma Kubernetes kümesi için etkinleştir](container-insights-hybrid-setup.md) | Azure Stack veya şirket içinde barındırılan Kubernetes için barındırılan bir AKS altyapısının izlenmesini etkinleştirebilirsiniz. |
+| | [Yay etkin Kubernetes kümesi Için etkinleştirin](container-insights-enable-arc-enabled-clusters.md). | Azure 'un dışında barındırılan Kubernetes kümelerinizin izlenmesini, Azure Arc ile etkin hale getirebilirsiniz. |
 | | [Azure Resource Manager şablonu kullanarak OpenShift kümesi için etkinleştirme](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | Mevcut bir OpenShift kümesini önceden yapılandırılmış Azure Resource Manager şablonuyla izlemeyi etkinleştirebilirsiniz. |
 | | [Azure Izleyici 'den OpenShift kümesi için etkinleştirme](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Azure Izleyici 'de çok küme sayfasından zaten dağıtılmış olan bir veya daha fazla OpenShift kümesi izlemeyi etkinleştirebilirsiniz. |
 
