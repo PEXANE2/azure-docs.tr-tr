@@ -1,5 +1,5 @@
 ---
-title: Bir AI zenginleştirme beceri hata ayıklama (Önizleme)
+title: Hata ayıklama oturumları kavramları (Önizleme)
 titleSuffix: Azure Cognitive Search
 description: Azure portal üzerinden erişilen hata ayıklama oturumları, AI zenginleştirme ardışık düzeninde hataları tanımlayabilir ve giderebileceğiniz, değişiklikleri doğrulayabileceğiniz ve değişiklikleri becerileri 'e ileten bir IDE sağlar. Hata ayıklama oturumları önizlemededir.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 04b221d772abf923d7aabfe767a6424b72ed8fb2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d325b65b01ea13cfcb141d28343d94866d9e05e2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664070"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751526"
 ---
-# <a name="debug-sessions"></a>Hata ayıklama oturumları
+# <a name="debug-sessions-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de hata ayıklama oturumları
 
 Hata ayıklama oturumları, Azure portal var olan bir beceri ile birlikte çalışarak bir görsel düzenleyicidir. Bir hata ayıklama oturumunda hataları tanımlayabilir ve çözümleyebilir, değişiklikleri doğrulayabilir ve değişiklikleri AI zenginleştirme ardışık düzeninde bir üretim beceri gönderebilirsiniz.
 

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: ff3b4799f42e85ad3df62ef18469a26120ae3021
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418091"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771028"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan açık hub aracılığıyla veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -53,9 +53,9 @@ SAP BW açık hub hedefi (OHD), SAP verilerinin geçirilme hedefini tanımlar. S
 
 ## <a name="delta-extraction-flow"></a>Değişim ayıklama akışı
 
-ADF SAP BW Open hub Bağlayıcısı iki isteğe bağlı özellik sunar `excludeLastRequest` : `baseRequestId` ve açık hub 'dan Delta yükünü işlemek için kullanılabilir. 
+ADF SAP BW Open hub Bağlayıcısı iki isteğe bağlı özellik sunar: `excludeLastRequest` ve `baseRequestId` Açık hub 'dan Delta yükünü işlemek için kullanılabilir. 
 
-- **Excludelastrequestıd**: son isteğin kayıtlarının dışlanıp dışlanmayacağı. Varsayılan değer true 'dur. 
+- **Excludelastrequestıd**: son isteğin kayıtlarının dışlanıp dışlanmayacağı. True varsayılan değerdir. 
 - **baseRequestId**: Delta yükleme isteğinin kimliği. Ayarlandıktan sonra yalnızca RequestId ile bu özelliğin değerinden büyük olan veriler alınır. 
 
 Genel olarak, SAP bilgi sağlayıcılarından Azure Data Factory (ADF) olarak ayıklama 2 adımdan oluşur: 
@@ -107,9 +107,13 @@ SAP Business Warehouse açık hub bağlı hizmeti için aşağıdaki özellikler
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **Sapopenhub** olarak ayarlanmalıdır | Yes |
+| tür | Type özelliği: **Sapopenhub** olarak ayarlanmalıdır | Yes |
 | sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | Yes |
 | systemNumber | SAP BW sisteminin sistem numarası.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | Yes |
+| messageServer | SAP ileti sunucusunun ana bilgisayar adı.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | No |
+| messageServerService | İleti sunucusunun hizmet adı veya bağlantı noktası numarası.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | No |
+| SystemId | Tablonun bulunduğu SAP sisteminin KIMLIĞI.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | No |
+| logonGroup | SAP sistemi için oturum açma grubu.<br/>Bir SAP ileti sunucusuna bağlanmak için kullanın. | No |
 | clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes |
 | language | SAP sisteminin kullandığı dil. | Hayır (varsayılan değer **en**)|
 | userName | SAP sunucusuna erişimi olan kullanıcının adı. | Yes |
@@ -149,10 +153,10 @@ Ve SAP BW açık hub 'a veri kopyalamak için, veri kümesinin Type özelliğini
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği **Sapopenhubtable**olarak ayarlanmalıdır.  | Yes |
+| tür | Type özelliği **Sapopenhubtable**olarak ayarlanmalıdır.  | Yes |
 | openHubDestinationName | Verilerin kopyalanacağı açık hub hedefinin adı. | Yes |
 
-Veri kümesinde ve `baseRequestId` ' `excludeLastRequest` i ayarlıyorsanız, hala olduğu gibi desteklenir, ancak etkinlik kaynağı ' nda yeni modeli kullanmanız önerilir.
+`excludeLastRequest`Veri kümesinde ve ' i ayarlıyorsanız, `baseRequestId` hala olduğu gibi desteklenir, ancak etkinlik kaynağı ' nda yeni modeli kullanmanız önerilir.
 
 **Örneğinde**
 
@@ -183,14 +187,14 @@ SAP BW açık hub 'dan veri kopyalamak için, etkinlik **kaynağını** kopyalam
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği **Sapopenhubsource**olarak ayarlanmalıdır. | Yes |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği **Sapopenhubsource**olarak ayarlanmalıdır. | Yes |
 | excludeLastRequest | Son isteğin kayıtlarının dışlanıp dışlanmayacağı. | Hayır (varsayılan değer **doğru**) |
-| baseRequestId | Delta yükleme isteğinin Kımlığı. Ayarlandıktan sonra yalnızca RequestId ile bu özelliğin değerinden **büyük** olan veriler alınır.  | Hayır |
+| baseRequestId | Delta yükleme isteğinin Kımlığı. Ayarlandıktan sonra yalnızca RequestId ile bu özelliğin değerinden **büyük** olan veriler alınır.  | No |
 
 >[!TIP]
 >Açık hub tablonuz yalnızca tek bir istek KIMLIĞI tarafından oluşturulan verileri içeriyorsa, her zaman tam yükleme yapın ve tablodaki mevcut verilerin üzerine yazar veya test için yalnızca DTP 'yi bir kez çalıştırırsanız, verileri dışarı kopyalamak için "excludeLastRequest" seçeneğinin işaretini kaldırmanız gerektiğini unutmayın.
 
-Veri yüklemeyi hızlandırmak için kopyalama etkinliğini, SAP BW açık hub [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 'dan paralel olarak yüklemek için ayarlayabilirsiniz. Örneğin, dört olarak ayarlarsanız `parallelCopies` Data Factory eşzamanlı olarak dört RFC çağrısını yürütür ve her RFC çağrısı, DTP istek kimliği ve paket kimliği tarafından bölümlenen SAP BW açık hub tablosundan verilerin bir kısmını alır. Bu, benzersiz DTP istek KIMLIĞI + paket KIMLIĞI sayısının değerinden büyük olduğunda geçerlidir `parallelCopies`. Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazmak da daha da iyidir. Bu durumda, performans tek bir dosyaya yazılmasından daha iyidir.
+Veri yüklemeyi hızlandırmak için [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğini, SAP BW açık hub 'dan paralel olarak yüklemek için ayarlayabilirsiniz. Örneğin, `parallelCopies` dört olarak ayarlarsanız Data Factory eşzamanlı olarak dört RFC çağrısını yürütür ve her RFC çağrısı, DTP Istek kimliği ve paket kimliği tarafından bölümlenen SAP BW açık hub tablosundan verilerin bir kısmını alır. Bu, benzersiz DTP istek KIMLIĞI + paket KIMLIĞI sayısının değerinden büyük olduğunda geçerlidir `parallelCopies` . Dosya tabanlı veri deposuna veri kopyalarken, bir klasöre birden çok dosya (yalnızca klasör adını belirt) olarak yazmak da daha da iyidir. Bu durumda, performans tek bir dosyaya yazılmasından daha iyidir.
 
 **Örneğinde**
 

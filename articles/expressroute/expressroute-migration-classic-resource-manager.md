@@ -4,15 +4,15 @@ description: Bu sayfada, devrenizi taşıdıktan sonra ExpressRoute ile ilişkil
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8033c80b72c19a9473ce7ecfaa8fe5a1da9f12ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85b0fdd56b51a89cfbf88fac58aec4cb2f110142
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77061329"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738898"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>ExpressRoute ile ilişkili sanal ağları klasik 'ten Kaynak Yöneticisi geçirme
 
@@ -29,7 +29,7 @@ Bu makalede, ExpressRoute bağlantı hattınızı taşıdıktan sonra ExpressRou
 * Kaynak Yöneticisi dağıtım modelinde oluşturulmuş bir kaynak grubuna sahip olduğunuzdan emin olun.
 * Aşağıdaki kaynak geçiş belgelerini gözden geçirin:
 
-    * [, IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
     * [SSS: IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [En yaygın geçiş hatalarını ve azaltmaları gözden geçirin](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -82,7 +82,7 @@ Bu bölümde, ExpressRoute devresi ile aynı abonelikte bir sanal ağ, ağ geçi
    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [, IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 * [SSS: IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [En yaygın geçiş hatalarını ve azaltmaları gözden geçirin](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
