@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281008"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710873"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Öğretici: yayımlama, olaylara yerel olarak abone olma
 
@@ -118,7 +118,7 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
 
 Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir. Azure Event Grid, bir konu, yayımcıların olay gönderebileceği bir uç noktaya başvurur.
 
-1. Aşağıdaki içerikle topic. JSON oluşturun. Yük hakkında daha fazla bilgi için bkz. [API](api.md)Belgelerimiz.
+1. Aşağıdaki içerikle birlikte topic.jsoluşturun. Yük hakkında daha fazla bilgi için bkz. [API](api.md)Belgelerimiz.
 
     ```json
         {
@@ -129,7 +129,7 @@ Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir
         }
     ```
 
-1. Bir olay Kılavuzu konusu oluşturmak için aşağıdaki komutu çalıştırın. HTTP durum kodunu görtığınızdan emin olun `200 OK`.
+1. Bir olay Kılavuzu konusu oluşturmak için aşağıdaki komutu çalıştırın. HTTP durum kodunu görtığınızdan emin olun `200 OK` .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -163,7 +163,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Aşağıdaki içerikle Subscription. JSON oluşturun. Yük hakkında daha fazla bilgi için [API belgelerimize](api.md) bakın
+1. Aşağıdaki içerikle birlikte subscription.jsoluşturun. Yük hakkında daha fazla bilgi için [API belgelerimize](api.md) bakın
 
     ```json
         {
@@ -180,7 +180,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
     >[!NOTE]
     > **EndpointType** özelliği, abonenin bir **Web kancası**olduğunu belirtir.  **EndpointUrl** , abonenin olayları dinlediği URL 'yi belirtir. Bu URL, daha önce dağıttığınız Azure abonesi örneğine karşılık gelir.
-2. Konusu için bir abonelik oluşturmak üzere aşağıdaki komutu çalıştırın. HTTP durum kodunu görtığınızdan emin olun `200 OK`.
+2. Konusu için bir abonelik oluşturmak üzere aşağıdaki komutu çalıştırın. HTTP durum kodunu görtığınızdan emin olun `200 OK` .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -212,7 +212,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 ## <a name="publish-an-event"></a>Olay yayımlama
 
-1. Aşağıdaki içerikle Event. JSON oluşturun. Yük hakkında daha fazla bilgi için bkz. [API](api.md)Belgelerimiz.
+1. Aşağıdaki içerikle birlikte event.jsoluşturun. Yük hakkında daha fazla bilgi için bkz. [API](api.md)Belgelerimiz.
 
     ```json
         [

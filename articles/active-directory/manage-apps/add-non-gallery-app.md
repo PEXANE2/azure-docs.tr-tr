@@ -2,22 +2,22 @@
 title: Galeri dışı bir uygulama ekleme-Microsoft Identity platform | Microsoft Docs
 description: Azure AD kiracınıza Galeri olmayan bir uygulama ekleyin.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9691ecb8d742952ba4364dcda2b62c3829f79d60
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063620"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760329"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza listelenmemiş (Galeri olmayan) bir uygulama ekleme
 
@@ -34,7 +34,7 @@ Bu makalede, kod yazmadan Azure portal Galeri olmayan bir uygulamanın **kurumsa
 
 1. Microsoft Identity Platform yönetici hesabınızı kullanarak [Azure Active Directory portalında](https://aad.portal.azure.com/) oturum açın.
 
-2. **Kurumsal uygulamalar** > **Yeni uygulama**' yı seçin.
+2. **Kurumsal uygulamalar**  >  **Yeni uygulama**' yı seçin.
 
 3. (İsteğe bağlı ancak önerilir) **Azure AD galerisine gözatıp** arama kutusuna uygulamanın görünen adını girin. 
 
@@ -54,7 +54,7 @@ Bu makalede, kod yazmadan Azure portal Galeri olmayan bir uygulamanın **kurumsa
    >* **Uygulama ara sunucusunu şirket içi bir uygulamaya güvenli uzaktan erişim için** yapılandırma, Azure AD uygulama ara sunucusu ve bağlayıcıları için yapılandırma sayfasını açar.
    >* **Azure AD ile tümleştirmek üzere çalıştığınız bir uygulamayı kaydedin** **uygulama kayıtları** sayfasını açar. Bu seçenek genellikle OpenID Connect uygulamaları için kullanılır.
 
-7. **Oluştur**’u seçin. Uygulamaya **genel bakış** sayfası açılır.
+7. **Oluştur**'u seçin. Uygulamaya **genel bakış** sayfası açılır.
 
 ## <a name="configure-user-sign-in-properties"></a>Kullanıcı oturum açma özelliklerini yapılandırma
 

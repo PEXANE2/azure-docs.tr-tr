@@ -4,15 +4,15 @@ description: Azure Container Instances çalıştırdığınız kapsayıcılarda 
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247234"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686748"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Kapsayıcı örneklerinde ortam değişkenlerini ayarlama
 
-Kapsayıcı örneklerinizde ortam değişkenleri ayarlamanız, kapsayıcı tarafından çalıştırılan uygulamanın veya betiğin dinamik yapılandırmasını sağlamanıza imkan tanır. Bu, `--env` için `docker run`komut satırı bağımsız değişkenine benzerdir. 
+Kapsayıcı örneklerinizde ortam değişkenleri ayarlamanız, kapsayıcı tarafından çalıştırılan uygulamanın veya betiğin dinamik yapılandırmasını sağlamanıza imkan tanır. Bu, `--env` için komut satırı bağımsız değişkenine benzerdir `docker run` . 
 
 Bir kapsayıcıda ortam değişkenlerini ayarlamak için, bir kapsayıcı örneği oluşturduğunuzda bunları belirtin. Bu makalede, [Azure CLI](#azure-cli-example), [Azure PowerShell](#azure-powershell-example)ve [Azure Portal](#azure-portal-example)ile bir kapsayıcı başlattığınızda ortam değişkenlerini ayarlama örnekleri gösterilmektedir. 
 
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Çıktıyı değiştirmek için, eklenen `--environment-variables` bağımsız değişkenle ikinci bir kapsayıcı başlatın, *NumWords* ve *minLength* değişkenlerinin değerlerini belirtin. (Bu örnek, bir bash kabuğunda veya Azure Cloud Shell CLı kullandığınızı varsayar. Windows komut Istemi 'ni kullanırsanız, gibi çift tırnak ile değişkenleri belirtin `--environment-variables "NumWords"="5" "MinLength"="8"`.)
+Çıktıyı değiştirmek için, eklenen bağımsız değişkenle ikinci bir kapsayıcı başlatın `--environment-variables` , *NumWords* ve *minLength* değişkenlerinin değerlerini belirtin. (Bu örnek, bir bash kabuğunda veya Azure Cloud Shell CLı kullandığınızı varsayar. Windows komut Istemi 'ni kullanırsanız, gibi çift tırnak ile değişkenleri belirtin `--environment-variables "NumWords"="5" "MinLength"="8"` .)
 
 ```azurecli-interactive
 az container create \
@@ -94,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-Şimdi aşağıdaki [New-AzContainerGroup][new-Azcontainergroup] komutunu çalıştırın. Bu, bir dizi değişkeni doldurulduktan sonra *NumWords* ve *minLength* ortam değişkenlerini belirtir `envVars`:
+Şimdi aşağıdaki [New-AzContainerGroup][new-Azcontainergroup] komutunu çalıştırın. Bu, bir dizi değişkeni doldurulduktan sonra *NumWords* ve *minLength* ortam değişkenlerini belirtir `envVars` :
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -144,7 +144,7 @@ Azure:\
 Azure portal bir kapsayıcıyı başlattığınızda ortam değişkenlerini ayarlamak için, kapsayıcıyı oluştururken bunu **Gelişmiş** sayfada belirtin.
 
 1. **Gelişmiş** sayfasında, **yeniden başlatma ilkesini** *hata durumunda* olarak ayarlayın
-2. **Ortam değişkenleri**' nın altında `NumWords` , ilk değişken `5` için değerini girin ve ikinci değişken `MinLength` `8` için değerini girin. 
+2. **Ortam değişkenleri**' nın altında, `NumWords` `5` ilk değişken için değerini girin ve `MinLength` `8` ikinci değişken için değerini girin. 
 1. Kapsayıcıyı doğrulamak ve sonra dağıtmak için **gözden geçir + oluştur** ' u seçin.
 
 ![Ortam değişkeni etkinleştir düğme ve metin kutularını gösteren Portal sayfası][portal-env-vars-01]
@@ -159,11 +159,11 @@ Güvenli değerlere sahip nesneler, uygulamanız için parola veya anahtarlar gi
 
 Güvenli değerlere sahip ortam değişkenleri, kapsayıcının özelliklerinde görünmez, ancak değerleri yalnızca kapsayıcının içinden erişilebilir. Örneğin, Azure portal veya Azure CLı 'de görüntülenen kapsayıcı özellikleri, değerini değil yalnızca güvenli bir değişkenin adını görüntüler.
 
-Değişkenin türü için normal `secureValue` `value` yerine özelliği belirterek güvenli bir ortam değişkeni ayarlayın. Aşağıdaki YAML 'de tanımlanan iki değişken iki değişken türünü gösterir.
+`secureValue`Değişkenin türü için normal yerine özelliği belirterek güvenli bir ortam değişkeni ayarlayın `value` . Aşağıdaki YAML 'de tanımlanan iki değişken iki değişken türünü gösterir.
 
 ### <a name="yaml-deployment"></a>YAML dağıtımı
 
-Aşağıdaki kod `secure-env.yaml` parçacığına sahip bir dosya oluşturun.
+`secure-env.yaml`Aşağıdaki kod parçacığına sahip bir dosya oluşturun.
 
 ```yaml
 apiVersion: 2018-10-01

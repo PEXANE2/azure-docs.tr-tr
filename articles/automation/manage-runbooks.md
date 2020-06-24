@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda runbook 'ları yönetme
 description: Bu makalede, Azure Otomasyonu 'nda runbook 'ların nasıl yönetileceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/14/2019
+ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834705"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718317"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -46,7 +46,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Runbook 'u içeri aktarma
 
-Kendi runbook 'unuzu oluşturmak için bir PowerShell veya PowerShell Iş akışı (**. ps1**) betiği, bir grafik runbook 'u (. graphrunbook) veya bir Python 2 betiği (**.****çıgrafı**) içeri aktarabilirsiniz.  İçeri aktarma sırasında oluşturulan [runbook 'un türünü](automation-runbook-types.md) belirtmeniz gerekir ve aşağıdaki noktaları dikkate alın.
+Kendi runbook 'unuzu oluşturmak için bir PowerShell veya PowerShell Iş akışı (**. ps1**) betiği, bir grafik runbook 'u (. graphrunbook) veya bir Python 2 betiği (**.****çıgrafı**) içeri aktarabilirsiniz. İçeri aktarma sırasında oluşturulan [runbook 'un türünü](automation-runbook-types.md) belirtmeniz gerekir ve aşağıdaki noktaları dikkate alın.
 
 * Bir [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) 'Una veya [PowerShell iş akışı runbook](automation-runbook-types.md#powershell-workflow-runbooks)'unda iş akışı içermeyen bir **. ps1** dosyasını içeri aktarabilirsiniz. Bir PowerShell Iş akışı runbook 'una içeri aktarırsanız, bir iş akışına dönüştürülür. Bu durumda, yapılan değişiklikleri anlatmak için Runbook 'a açıklamalar dahildir.
 
@@ -54,7 +54,7 @@ Kendi runbook 'unuzu oluşturmak için bir PowerShell veya PowerShell Iş akış
 
 * PowerShell betik altyapısı bunu tanıyamadığı için PowerShell Iş akışını içeren bir **. ps1** dosyasını [PowerShell runbook 'una](automation-runbook-types.md#powershell-runbooks)içeri aktarmayın.
 
-* Yalnızca bir **. graphrunbook** dosyasını yeni bir [grafik runbook 'una](automation-runbook-types.md#graphical-runbooks)aktarın. 
+* Yalnızca bir **. graphrunbook** dosyasını yeni bir [grafik runbook 'una](automation-runbook-types.md#graphical-runbooks)aktarın.
 
 ### <a name="import-a-runbook-from-the-azure-portal"></a>Azure portal runbook 'u içeri aktarma
 
@@ -69,7 +69,7 @@ Bir betik dosyasını Azure Otomasyonu 'na aktarmak için aşağıdaki yordamı 
 4. **Runbook dosyası** ' na tıklayın ve içeri aktarılacak dosyayı seçin.
 5. **Ad** alanı etkinleştirilirse, runbook adını değiştirme seçeneğiniz vardır. Ad bir harfle başlamalıdır ve harfler, rakamlar, alt çizgiler ve kısa çizgiler içerebilir.
 6. [Runbook türü](automation-runbook-types.md) otomatik olarak seçilir, ancak ilgili kısıtlamaları hesaba aldıktan sonra türü değiştirebilirsiniz.
-7. **Oluştur**' a tıklayın. Yeni runbook, Otomasyon hesabı için Runbook 'lar listesinde görüntülenir.
+7. **Oluştur**'a tıklayın. Yeni runbook, Otomasyon hesabı için Runbook 'lar listesinde görüntülenir.
 8. Çalıştırmak için [runbook 'u yayımlamanız](#publish-a-runbook) gerekir.
 
 > [!NOTE]
@@ -161,7 +161,7 @@ $connection = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 
-$AzContext = Select-AzSubscription -SubscriptionId $connection.SubscriptionID
+$AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
 
 # Check for already running or new runbooks
 $runbookName = "<RunbookName>"
@@ -192,7 +192,7 @@ Runbook 'larınız normalde bir zaman kısıtlaması içinde çalışıyorsa, y�
 
 ## <a name="work-with-multiple-subscriptions"></a>Birden fazla abonelik ile çalışma
 
-Runbook 'larınızın [aboneliklerle](automation-runbook-execution.md#subscriptions)çalışabilebilmesi gerekir. Örneğin, birden çok aboneliği işlemek için Runbook [devre dışı bırak-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) cmdlet 'ini kullanır. Bu cmdlet, kimlik doğrulama bağlamının aynı korumalı alanda çalışan başka bir runbook 'tan alınmamasını sağlar. Runbook, `AzContext` az Module cmdlet 'lerinde parametresini de kullanır ve uygun bağlamı geçirir.
+Runbook 'larınızın [aboneliklerle](automation-runbook-execution.md#subscriptions)çalışabilebilmesi gerekir. Örneğin, birden çok aboneliği işlemek için Runbook [devre dışı bırak-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) cmdlet 'ini kullanır. Bu cmdlet, kimlik doğrulama bağlamının aynı korumalı alanda çalışan başka bir runbook 'tan alınmamasını sağlar. Runbook aynı zamanda `Get-AzContext` cmdlet 'ini kullanarak geçerli oturumun bağlamını alır ve değişkenine atar `$AzureContext` .
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -204,7 +204,7 @@ Connect-AzAccount -ServicePrincipal `
 -ApplicationId $Conn.ApplicationID `
 -CertificateThumbprint $Conn.CertificateThumbprint
 
-$context = Get-AzContext
+$AzureContext = Get-AzContext
 
 $ChildRunbookName = 'ChildRunbookDemo'
 $AutomationAccountName = 'myAutomationAccount'
@@ -214,7 +214,7 @@ Start-AzAutomationRunbook `
     -ResourceGroupName $ResourceGroupName `
     -AutomationAccountName $AutomationAccountName `
     -Name $ChildRunbookName `
-    -DefaultProfile $context
+    -DefaultProfile $AzureContext
 ```
 
 ## <a name="work-with-a-custom-script"></a>Özel bir komut dosyasıyla çalışma

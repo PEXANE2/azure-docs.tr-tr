@@ -4,21 +4,19 @@ description: Azure CLı kullanarak DNS bölgelerini yönetebilirsiniz. Bu makale
 services: dns
 documentationcenter: na
 author: rohinkoul
-manager: timlt
-ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
-ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30b0d6ab3ff9fa96e33154907e329c28b7ae7e63
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76936921"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709088"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLı kullanarak Azure DNS DNS Bölgeleri Yönetme
 
@@ -86,7 +84,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Yardım alma
 
-Azure DNS ile ilgili tüm Azure CLı komutları ile `az network dns`başlar. Her komut için, `--help` seçeneği kullanılarak yardım vardır (kısa form `-h`).  Örneğin:
+Azure DNS ile ilgili tüm Azure CLı komutları ile başlar `az network dns` . Her komut için, seçeneği kullanılarak yardım vardır `--help` (kısa form `-h` ).  Örneğin:
 
 ```azurecli
 az network dns --help
@@ -106,7 +104,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>Etiketlerle bir DNS bölgesi oluşturmak için
 
-Aşağıdaki `--tags` örnek, parametresini kullanarak iki `-t` [Azure Resource Manager Tag](dns-zones-records.md#tags), *Project = demo* ve *env = test*ile bir DNS bölgesinin nasıl oluşturulacağını gösterir (kısa biçim):
+Aşağıdaki örnek, parametresini kullanarak iki [Azure Resource Manager Tag](dns-zones-records.md#tags), *Project = demo* ve *env = test*ile bir DNS bölgesinin nasıl oluşturulacağını gösterir `--tags` (kısa biçim `-t` ):
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
@@ -114,7 +112,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com -
 
 ## <a name="get-a-dns-zone"></a>DNS bölgesi al
 
-Bir DNS bölgesi almak için kullanın `az network dns zone show`. Yardım için bkz. `az network dns zone show --help`.
+Bir DNS bölgesi almak için kullanın `az network dns zone show` . Yardım için bkz. `az network dns zone show --help`.
 
 Aşağıdaki örnek, *Myresourcegroup*kaynak GRUBUNDAKI *contoso.com* DNS bölgesini ve onunla ilişkili verileri döndürür. 
 

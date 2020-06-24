@@ -5,17 +5,17 @@ description: Herhangi bir kod yazmadan Azure Machine Learning Web hizmetlerini d
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ae51ed2ce39705e66e82ee28442374e8bcd0f901
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118459"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211332"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri için Excel eklentisi
 
@@ -83,4 +83,4 @@ Web hizmetiniz için API anahtarını alın. Bu eylemi gerçekleştirdiğiniz du
 ## <a name="sharing-your-workbook"></a>Çalışma kitabınızı paylaşma
 Çalışma kitabınızı kaydederseniz, eklediğiniz Web hizmetlerinin API/birincil anahtarı da kaydedilir. Bu, çalışma kitabını yalnızca güvendiğiniz kişilerle paylaşmanız gerektiği anlamına gelir.
 
-Aşağıdaki yorum bölümünde veya [forumumuzda](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)soru sorun.
+Aşağıdaki yorum bölümünde veya [forumumuzda](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)soru sorun.

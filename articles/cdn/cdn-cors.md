@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63919d7770746025189f3d6e578919b2fc2799c3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74278124"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84884920"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS ile Azure CDN kullanma
 ## <a name="what-is-cors"></a>CORS nedir?
@@ -30,7 +30,7 @@ CORS (Cross-Origin kaynak paylaşımı), bir etki alanı altında çalışan bir
 
 ### <a name="for-simple-requests"></a>Basit istekler için:
 
-1. Tarayıcı, CORS isteğini ek bir **kaynak** http istek üstbilgisiyle gönderir. Bu üstbilginin değeri, üst sayfayı sunan, *protokol,* *etki alanı* ve *bağlantı noktası* birleşimi olarak tanımlanan başlangıç noktasıdır.  Https\://www.contoso.com 'deki bir sayfa, fabrikam.com kaynağından bir kullanıcının verilerine erişmeyi denediğinde, aşağıdaki istek üst bilgisi fabrikam.com 'e gönderilir:
+1. Tarayıcı, CORS isteğini ek bir **kaynak** http istek üstbilgisiyle gönderir. Bu üstbilginin değeri, üst sayfayı sunan, *protokol,* *etki alanı* ve *bağlantı noktası* birleşimi olarak tanımlanan başlangıç noktasıdır.  Https//www.contoso.com 'deki bir sayfa, \: fabrikam.com kaynağından bir kullanıcının verilerine erişmeyi denediğinde, aşağıdaki istek üst bilgisi fabrikam.com 'e gönderilir:
 
    `Origin: https://www.contoso.com`
 
@@ -48,7 +48,7 @@ CORS (Cross-Origin kaynak paylaşımı), bir etki alanı altında çalışan bir
 
 ### <a name="for-complex-requests"></a>Karmaşık istekler için:
 
-Karmaşık bir istek, tarayıcının gerçek CORS isteğini göndermeden önce bir *ön kontrol isteği* (yani bir ön araştırma) göndermesi için gereken bir CORS isteğidir. Özgün CORS isteği devam edebiliyorsa ve aynı URL 'ye bir `OPTIONS` istek ise, ön kontrol isteği sunucu iznini ister.
+Karmaşık bir istek, tarayıcının gerçek CORS isteğini göndermeden önce bir *ön kontrol isteği* (yani bir ön araştırma) göndermesi için gereken bir CORS isteğidir. Özgün CORS isteği devam edebiliyorsa ve aynı URL 'ye bir istek ise, ön kontrol isteği sunucu iznini ister `OPTIONS` .
 
 > [!TIP]
 > CORS akışları ve genel bilgiler hakkında daha fazla bilgi için, [REST API 'leri IÇIN CORS Kılavuzu](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/)' na bakın.

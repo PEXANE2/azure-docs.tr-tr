@@ -3,12 +3,12 @@ title: Hızlı başlangıç-derleme & çalıştırma kapsayıcı görüntüsü
 description: Bulutta bir Docker kapsayıcı görüntüsü derlemek ve çalıştırmak için Azure Container Registry ile görevleri hızlıca çalıştırın.
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680653"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753697"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Hızlı başlangıç: Azure Container Registry görevleri kullanarak kapsayıcı görüntüsü oluşturma ve çalıştırma
 
@@ -37,20 +37,21 @@ az group create --name myResourceGroup --location eastus
 [Az ACR Create][az-acr-create] komutunu kullanarak bir kapsayıcı kayıt defteri oluşturun. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Aşağıdaki örnekte, *myContainerRegistry008* kullanılır. Bunu benzersiz bir değerle güncelleştirin.
 
 ```azurecli-interactive
-az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry008 --sku Basic
 ```
 
 Bu örnek, Azure Container Registry hakkında bilgi edinmek için uygun maliyetli bir seçenek olan *temel* bir kayıt oluşturur. Kullanılabilir hizmet katmanları hakkında daha fazla bilgi için bkz. [kapsayıcı kayıt defteri hizmet katmanları][container-registry-skus].
 
-## <a name="build-an-image-from-a-dockerfile"></a>Dockerfile dosyasından görüntü oluşturma
+## <a name="build-and-push-image-from-a-dockerfile"></a>Dockerfile dosyasından görüntü oluşturma ve gönderme
 
-Şimdi bir görüntü oluşturmak için Azure Container Registry kullanın. İlk olarak, bir çalışma dizini oluşturun ve ardından aşağıdaki içerikle *dockerfile* adlı bir dockerfile oluşturun. Bu, Linux kapsayıcı görüntüsü oluşturmak için basit bir örnektir, ancak kendi standart Dockerfile dosyanızı oluşturabilir ve diğer platformlar için görüntü oluşturabilirsiniz. Bu makaledeki komut örnekleri bash kabuğu için biçimlendirilir.
+Şimdi bir görüntü derlemek ve göndermek için Azure Container Registry kullanın. İlk olarak, bir çalışma dizini oluşturun ve ardından tek satırlık *dockerfile* adlı bir dockerfile oluşturun: `FROM hello-world` . Bu, `hello-world` Docker Hub 'daki görüntüden Linux kapsayıcı görüntüsü oluşturmak için basit bir örnektir. Kendi standart Dockerfile dosyanızı oluşturabilir ve diğer platformlar için görüntü oluşturabilirsiniz. Bash kabuğu 'nda çalışıyorsanız, Dockerfile komutunu aşağıdaki komutla oluşturun:
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Görüntüyü derlemek için [az ACR Build][az-acr-build] komutunu çalıştırın. Başarıyla derlendiğinde, görüntü kayıt defterinize gönderilir. Aşağıdaki örnek `sample/hello-world:v1` görüntüyü iter. `.`Komutun sonundaki, Dockerfile dosyasının konumunu, bu durumda geçerli dizin olarak belirler.
+Görüntüyü oluşturan [az ACR Build][az-acr-build] komutunu çalıştırın ve görüntü başarıyla derlendikten sonra, Kayıt defterinize gönderin. Aşağıdaki örnek görüntüyü oluşturur ve gönderir `sample/hello-world:v1` . `.`Komutun sonundaki, Dockerfile dosyasının konumunu, bu durumda geçerli dizin olarak belirler.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \

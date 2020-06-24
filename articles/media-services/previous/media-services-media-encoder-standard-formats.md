@@ -15,11 +15,11 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251030"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712301"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard Biçimleri ve Kodlayıcılar
 
@@ -54,7 +54,7 @@ Media Encoder Standard, giriş kapsayıcılarında aşağıdaki ses biçimlerini
 
 * Araya eklemeli stereo veya 5,1 örnekleri ile ses parçaları bulunan MXF, GXF ve QuickTime dosyaları
 
-or
+veya
 
 * Sesin ayrı PCM parçaları olarak taşındığı, ancak kanal eşlemesinin (stero’ya veya 5.1’e) dosya meta verilerinden çıkarılabildiği MXF, GXF ve QuickTime dosyaları
 
@@ -69,7 +69,7 @@ or
 | MPEG-2 (422 Profili ve Yüksek Düzeye kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil) |422 Profiline kadar |
 | MPEG-1 |Yes |
 | VC-1/WMV9 |Yes |
-| Canopus HQ/HQX |Hayır |
+| Canopus HQ/HQX |No |
 | MPEG-4 Bölüm 2 |Yes |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |
 | YUV420 sıkıştırılmamış veya mezzanine |Yes |
@@ -93,10 +93,10 @@ or
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |Yes |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |
 | AMR (adaptive multi-rate) |Yes |
-| AES (SMPTE 331M ve 302M, AES3-2003) |Hayır |
-| Dolby® E |Hayır |
-| Dolby® Digital (AC3) |Hayır |
-| Dolby® Digital Plus (E-AC3) |Hayır |
+| AES (SMPTE 331M ve 302M, AES3-2003) |No |
+| Dolby® E |No |
+| Dolby® Digital (AC3) |No |
+| Dolby® Digital Plus (E-AC3) |No |
 
 ## <a name="output-formats-and-codecs"></a>Çıkış biçimleri ve codec bileşenleri
 Aşağıdaki tabloda, dışarı aktarma için desteklenen codec bileşenleri ve dosya biçimleri listelenmektedir.
@@ -109,7 +109,7 @@ Aşağıdaki tabloda, dışarı aktarma için desteklenen codec bileşenleri ve 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.

@@ -4,15 +4,15 @@ description: Kullanıcı VPN için Azure Active Directory kimlik doğrulamasın�
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059493"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753955"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Kullanıcı VPN için Azure Active Directory kimlik doğrulamasını yapılandırma
 
@@ -125,7 +125,7 @@ P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri t
 Bağlanmak için, Azure VPN Istemcisini indirmeniz ve sanal ağa bağlanmak isteyen her bilgisayarda önceki adımlarda indirilen VPN istemci profilini içeri aktarmanız gerekir.
 
 > [!NOTE]
-> Azure AD kimlik doğrulaması yalnızca OpenVPN&reg; Protokolü bağlantıları için desteklenir.
+> Azure AD kimlik doğrulaması yalnızca OpenVPN &reg; Protokolü bağlantıları için desteklenir.
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>Azure VPN istemcisini indirmek için

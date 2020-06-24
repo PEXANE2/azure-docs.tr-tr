@@ -4,11 +4,11 @@ description: Bu makalede, yükseltme modlarını seçme ve sistem durumu denetim
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259051"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710329"
 ---
 # <a name="service-fabric-application-upgrade"></a>Uygulama yükseltmesini Service Fabric
 Azure Service Fabric uygulaması, bir hizmet koleksiyonudur. Yükseltme sırasında, Service Fabric yeni [uygulama bildirimini](service-fabric-application-and-service-manifests.md) önceki sürümle karşılaştırır ve uygulamadaki hangi hizmetlerin güncelleştirme gerektirdiğini belirler. Service Fabric, hizmet bildirimlerinde sürüm numaralarını önceki sürümdeki sürüm numaralarıyla karşılaştırır. Bir hizmet değiştirilmemiştir, bu hizmet yükseltilmemiştir.
@@ -49,7 +49,7 @@ Uygulama yükseltmesi geri alındığında, yükseltme başlatılmadan önce var
 > Yukarıda bulunan kuralları 2) ve 3) üzerinde etkinleştirmek için [Enabledefaultservicesupgrade](service-fabric-cluster-fabric-settings.md) küme yapılandırma ayarı *doğru* olmalıdır (varsayılan hizmet güncelleştirmesi ve silme). Bu özellik Service Fabric sürüm 5,5 ' den itibaren desteklenir.
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>HTTPS uç noktaları ile birden çok uygulamayı yükseltme
-HTTP**S**kullanırken aynı uygulamanın farklı örnekleri için **aynı bağlantı noktasını** kullanmamaya dikkat etmeniz gerekir. Bunun nedeni Service Fabric uygulama örneklerinden biri için sertifikayı yükseltemeyecektir. Örneğin, uygulama 1 veya uygulama 2 ' nin her ikisi de CERT 1 ' i CERT 2 ' ye yükseltmek ister. Yükseltme gerçekleştiğinde, Service Fabric diğer uygulama hala kullandığından, http. sys ile CERT 1 kaydını temizlemiş olabilir. Bunu engellemek için Service Fabric, sertifika ile bağlantı noktasında kayıtlı olan başka bir uygulama örneğinin zaten bulunduğunu algılar (http. sys nedeniyle) ve işlem başarısız olur.
+HTTP**S**kullanırken aynı uygulamanın farklı örnekleri için **aynı bağlantı noktasını** kullanmamaya dikkat etmeniz gerekir. Bunun nedeni Service Fabric uygulama örneklerinden biri için sertifikayı yükseltemeyecektir. Örneğin, uygulama 1 veya uygulama 2 ' nin her ikisi de CERT 1 ' i CERT 2 ' ye yükseltmek ister. Yükseltme gerçekleştiğinde Service Fabric, diğer uygulama hala kullandığından bile sertifika 1 kaydını http.sys ile temizlemiş olabilir. Bunu engellemek için Service Fabric, sertifika ile bağlantı noktasında kayıtlı başka bir uygulama örneğinin zaten bulunduğunu algılar (http.sys) ve işlem başarısız olur.
 
 Bu nedenle Service Fabric, farklı uygulama örneklerinde **aynı bağlantı noktasını** kullanarak iki farklı hizmetin yükseltilmesini desteklemez. Diğer bir deyişle, aynı sertifikayı aynı bağlantı noktasında farklı hizmetlerde kullanamazsınız. Aynı bağlantı noktasında paylaşılan bir sertifikanız olması gerekiyorsa, hizmetlerin yerleştirme kısıtlamalarına sahip farklı makinelere yerleştirildiğinden emin olmanız gerekir. Ya da her bir uygulama örneğindeki her bir hizmet için mümkünse Service Fabric dinamik bağlantı noktaları kullanmayı düşünün. 
 

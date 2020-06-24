@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930497"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710448"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central 'e bağlanın
 
@@ -50,7 +50,7 @@ Bu yaklaşım, IoT Central veya test cihazlarıyla denemeler yaparken faydalıd�
 
 ![Tek bir cihaz için SAS anahtarları](./media/concepts-get-connected/single-device-sas.png)
 
-Daha fazla bilgi edinmek için bkz. [Node. js istemci uygulaması oluşturma ve Azure IoT Central uygulamanızın](./tutorial-connect-device-nodejs.md) öğreticisine bağlama öğreticisine bakın.
+Daha fazla bilgi edinmek için [Node.js istemci uygulaması oluşturma ve Azure IoT Central uygulamanızın](./tutorial-connect-device-nodejs.md) öğreticisine bağlama öğreticisine bakın.
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS kullanarak cihazları ölçeklendirmeye bağlama
 
@@ -93,11 +93,11 @@ Bir güvenlik ihlali varsa veya birincil sertifikanız süresi dolacak şekilde 
 
 X. 509.440 sertifikalarını kullanarak cihazları toplu bağlamak için, önce [cihaz kimliklerini ve cihaz adlarını içeri aktarmak](howto-manage-devices.md#import-devices)üzere bir CSV dosyası kullanarak uygulamanıza cihazları kaydedin. Cihaz kimliklerinin hepsi küçük olmalıdır.
 
-Karşıya yüklenen kök veya ara sertifikayı kullanarak cihazlarınız için X. 509.440 yaprak sertifikaları oluşturun. Yaprak sertifikalarındaki `CNAME` değer olarak **cihaz kimliğini** kullanın. Cihaz kodunuz, uygulamanız için **kimlik kapsamı** değeri, **cihaz kimliği**ve karşılık gelen cihaz sertifikası gerektirir.
+Karşıya yüklenen kök veya ara sertifikayı kullanarak cihazlarınız için X. 509.440 yaprak sertifikaları oluşturun. Yaprak sertifikalarındaki değer olarak **CIHAZ kimliğini** kullanın `CNAME` . Cihaz kodunuz, uygulamanız için **kimlik kapsamı** değeri, **cihaz kimliği**ve karşılık gelen cihaz sertifikası gerektirir.
 
 #### <a name="sample-device-code"></a>Örnek cihaz kodu
 
-[Azure IoT Node. js SDK 'sının](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) aşağıdaki örneği, bir Node. js cihaz istemcisinin bir IoT Central uygulamasına kaydolmak Için bir X. 509.952 yaprak SERTIFIKASı ve DPS nasıl kullandığını gösterir:
+[Azure ıot Node.JS SDK 'sının](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) aşağıdaki örneği, bir Node.js cihaz istemcisinin bir IoT Central uygulamasına kaydolmak üzere bir X. 509.952 yaprak SERTIFIKASı ve DPS nasıl kullandığını gösterir:
 
 :::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
 
@@ -107,7 +107,7 @@ Eşdeğer bir C örneği için bkz. [Azure IoT C sağlama aygıtı istemci SDK '
 
 Yalnızca test için, kök, ara ve cihaz sertifikaları oluşturmak üzere aşağıdaki yardımcı programları kullanabilirsiniz:
 
-- [Azure IoT cihaz sağlama cihaz SDK 'sı Için Araçlar](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): X. 509.440 sertifikalarını ve anahtarlarını oluşturmak ve doğrulamak için kullanabileceğiniz bir Node. js araçları koleksiyonu.
+- [Azure IoT cihaz sağlama cihaz SDK 'sı Için Araçlar](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): X. 509.440 sertifikalarını ve anahtarlarını oluşturmak ve doğrulamak için kullanabileceğiniz Node.js araçları koleksiyonu.
 - Bir DevKit cihazı kullanıyorsanız, bu [komut satırı aracı](https://aka.ms/iotcentral-docs-dicetool) , sertifikaları doğrulamak için IoT Central uygulamanıza EKLEYEBILECEĞINIZ bir CA sertifikası oluşturur.
 - [Örnek ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md): bir PowerShell ve Bash betikleri koleksiyonu:
   - Bir sertifika zinciri oluşturun.
@@ -148,7 +148,7 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
 1. IoT Central uygulamanıza [bir kök veya ara X. 509.440 sertifikası ekleyin ve doğrulayın](#connect-devices-using-x509-certificates) .
 
-1. IoT Central uygulamanıza eklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için yaprak sertifikaları oluşturun. Yaprak sertifikalarda, `CNAME` büyük/küçük harf cihaz kimliklerini kullanın.
+1. IoT Central uygulamanıza eklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için yaprak sertifikaları oluşturun. Yaprak sertifikalarda, büyük/küçük harf cihaz kimliklerini kullanın `CNAME` .
 
 1. OEM, cihaz KIMLIĞI, oluşturulan yaprak X. 509.440 sertifikası ve uygulama **kimliği kapsam** değeri olan her bir cihazı yanıp sönmez.
 
@@ -180,7 +180,7 @@ IoT Central, bireysel kayıtlar için aşağıdaki kanıtlama mekanizmalarını 
 - **X. 509.440 sertifikaları:** X. 509.440 sertifikalarıyla tek bir kayıt oluşturmak için, **cihaz bağlantısı** sayfasını açın, bağlantı yöntemi olarak **bireysel kayıt** ' ı ve **Sertifikalar (X. 509.440)** öğesini seçin. Tek bir kayıt girişiyle kullanılan cihaz sertifikalarının, veren ve Subject CN 'nin cihaz KIMLIĞINE ayarlandığı bir gereksinimi vardır.
 
     > [!TIP]
-    > Sınama için, otomatik olarak imzalanan bir sertifika oluşturmak için [Node. js Için Azure IoT cihaz sağlama cihaz SDK 'sı Için araçları](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) kullanabilirsiniz:`node create_test_cert.js device "mytestdevice"`
+    > Sınama için, otomatik olarak imzalanan bir sertifika oluşturmak üzere [Node.jsIçin Azure IoT cihaz sağlama cihaz SDK 'Sı araçlarını](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) kullanabilirsiniz:`node create_test_cert.js device "mytestdevice"`
 
 - **Güvenilir Platform Modülü (TPM) kanıtlama:** [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) , bir tür donanım güvenlik modülüdür. TPM kullanmak, bir cihazı bağlamak için en güvenli yöntemlerle biridir. Bu makalede ayrı, bellenim veya tümleşik TPM kullandığınız varsayılır. Yazılım öykünmesi, prototip oluşturma veya test etme için idealdir, ancak ayrık, bellenim veya tümleşik TPMs ile aynı güvenlik düzeyini sağlamalardır. Üretimde yazılım TPM 'Leri kullanmayın. TPM kullanan tek bir kayıt oluşturmak için, **cihaz bağlantısı** sayfasını açın, bağlantı yöntemi olarak **bireysel kayıt** ' ı ve, mekanizma olarak **TPM 'yi** seçin. TPM onay anahtarını girin ve cihaz bağlantı bilgilerini kaydedin.
 
@@ -261,7 +261,7 @@ Aşağıdaki tabloda Azure IoT Central cihaz özelliklerinin IoT Hub özellikler
 | Özellik (yazılabilir) | Cihaz ikizi istenen ve bildirilen özellikler |
 | Komut | Doğrudan yöntemler |
 
-Cihaz SDK 'larını kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Central uygulamanıza bir DevDiv Kit cihazını bağlama](howto-connect-devkit.md) örnek kodu.
+Cihaz SDK 'larını kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Central uygulamanıza bir Mxyonga IoT DevKit cihazını bağlama](howto-connect-devkit.md) örnek kodu.
 
 ### <a name="protocols"></a>Protokoller
 

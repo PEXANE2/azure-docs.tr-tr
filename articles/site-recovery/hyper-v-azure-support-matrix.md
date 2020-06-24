@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 62c7a3ecec3f941971cad552af2e36f63ab67c60
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 1fee761c8377824773fa56ba25edd2a779c33547
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485120"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710227"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -32,14 +32,13 @@ Virtual Machine Manager olmadan Hyper-V | Virtual Machine Manager tarafından y�
 
 **Sunucu** | **Gereksinimler** | **Ayrıntılar**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager olmadan çalışıyor) |  Windows Server 2019, Windows Server 2016, en son güncelleştirmeleri olan Windows Server 2012 R2 (Bu işletim sistemlerinin sunucu çekirdeği yüklemesi dahil) | Azure Site Recovery ile Windows Server 2012 R2 'yi/veya SCVMM 2012 R2 'yi zaten yapılandırdıysanız ve işletim sistemini yükseltmeyi planlarsanız, lütfen rehberlik [belgelerini izleyin.](upgrade-2012R2-to-2016.md)
-Hyper-V (Virtual Machine Manager ile çalışıyor) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (Bu işletim sistemlerinin sunucu çekirdeği yüklemesi dahil) | Virtual Machine Manager kullanılırsa, Windows Server 2019 Konakları Virtual Machine Manager 2019 ' de yönetilmelidir. Benzer şekilde, Windows Server 2016 Konakları Virtual Machine Manager 2016 ' de yönetilmelidir.
+Hyper-V (Virtual Machine Manager olmadan çalışıyor) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 en son güncelleştirmeleri (Bu işletim sistemlerinin sunucu çekirdeği yüklemesi dahil, Windows Server 2019 hariç) | Azure Site Recovery ile Windows Server 2012 R2 'yi/veya SCVMM 2012 R2 'yi zaten yapılandırdıysanız ve işletim sistemini yükseltmeyi planlarsanız, lütfen rehberlik [belgelerini izleyin.](upgrade-2012R2-to-2016.md)
+Hyper-V (Virtual Machine Manager ile çalışıyor) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (Bu işletim sistemlerinin sunucu çekirdeği yüklemesi dahil, Virtual Machine Manager 2019 dışında) | Virtual Machine Manager kullanılırsa, Windows Server 2019 Konakları Virtual Machine Manager 2019 ' de yönetilmelidir. Benzer şekilde, Windows Server 2016 Konakları Virtual Machine Manager 2016 ' de yönetilmelidir.
 
 > [!NOTE]
 >
 > - Şirket içi sunucuda .NET Framework 4.6.2 veya üzeri bulunduğundan emin olun.
-> - Windows Server 2019 Server Core sürümü için yeniden çalışma desteklenmez.
-> - Alternatif konuma yeniden çalışma Windows Server 2019 konakları için desteklenmez.
+> - Windows Server 2019 Server Core sürümünde veya Virtual Machine Manager olmadan çalışan alternatif konuma veya özgün konuma yük devretme ve yeniden çalışma desteklenmez.
 
 ## <a name="replicated-vms"></a>Çoğaltılan VM 'Ler
 
@@ -69,7 +68,7 @@ Konak ağı: IPv4 | Yes | Yes
 Konak ağı: IPv6 | Hayır | Hayır
 Konuk VM ağı: NIC ekibi oluşturma | Hayır | Hayır
 Konuk VM ağı: IPv4 | Yes | Yes
-Konuk VM ağı: IPv6 | Hayır | Evet
+Konuk VM ağı: IPv6 | No | Evet
 Konuk VM ağı: statik IP (Windows) | Yes | Yes
 Konuk VM ağı: statik IP (Linux) | Hayır | Hayır
 Konuk VM ağı: çoklu NIC | Yes | Yes
@@ -125,7 +124,7 @@ Dinamik disk Ekle/Kaldır | Hayır | Hayır
 Diski hariç tutma | Yes | Yes
 Çoklu yol (MPIO) | Yes | Yes
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 **Bileşen** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
@@ -140,7 +139,7 @@ Bekleyen şifreleme (CMK) <br></br> (Yalnızca yönetilen disklere yük devretme
 Premium depolama | Yes | Yes
 İçeri/dışarı aktarma hizmeti | Hayır | Hayır
 Güvenlik Duvarı etkin Azure depolama hesapları | Evet. Hedef depolama ve önbellek için. | Evet. Hedef depolama ve önbellek için.
-Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Değişiklik yapmak için, olağanüstü durum kurtarmayı devre dışı bırakıp yeniden etkinleştirin. | Hayır
+Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Değişiklik yapmak için, olağanüstü durum kurtarmayı devre dışı bırakıp yeniden etkinleştirin. | No
 
 
 ## <a name="azure-compute-features"></a>Azure işlem özellikleri

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77911732"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817709"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box güvenliği ve veri koruması
 
@@ -45,7 +45,6 @@ Data Box, verilerinizi yalnızca yetkili varlıkların görüntüleyebilmesini, 
 Data Box cihazı aşağıdaki özelliklerle korunur:
 
 - Şok, elverişsiz aktarım ve çevresel şartlara dayanıklı sağlam bir cihaz kasası. 
-- Taşıma sırasında gerçekleşen kurcalamaları gösteren kurcalama karşıtı mühürler.
 - Cihazın işlemesini engelleyen donanım ve yazılım kurcalama algılaması.
 - Yalnızca Data Box’a özgün yazılım çalıştırır.
 - Kilitli bir durumda önyüklenir.
@@ -57,7 +56,7 @@ Data Box cihazı aşağıdaki özelliklerle korunur:
 Data Box içine ve dışına akıtılan veriler şu özelliklerle korunur:
 
 - Bekleyen veriler için 256 bit AES şifreleme.
-- Kullanım halindeki veriler için şifrelenmiş protokoller kullanılabilir.
+- Kullanım halindeki veriler için şifrelenmiş protokoller kullanılabilir. Veri sunucularınızdan verileri korumak için şifreleme ile SMB 3,0 kullanmanızı öneririz.
 - Azure’a yapılan yüklenme tamamlandıktan sonra cihazdaki verilerin güvenli bir şekilde silinmesi. Data silinme, [NIST 800-88r1 standartlarında ata sabit disk sürücüleri için ek A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)'daki yönergelere göre belirlenir. Veri silinme olayı, [Sipariş geçmişine](data-box-logs.md#download-order-history)kaydedilir.
 
 ### <a name="data-box-service-protection"></a>Data Box hizmeti koruması
@@ -100,7 +99,7 @@ Daha fazla bilgi için, [Güven Merkezi](https://www.microsoft.com/trustcenter)�
 
 Data Box’da aşağıdaki güvenlik yönergeleri uygulanmıştır: 
 
-|Yönerge   |Açıklama   |
+|Yönerge   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Su ve toz koruması için         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Olumsuz taşıma koşullarına dayanıklılık için          |

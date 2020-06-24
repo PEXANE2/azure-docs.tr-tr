@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254488"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711723"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 1,1 güncelleştirmesini yükler
 
@@ -66,7 +66,7 @@ Microsoft Update kataloğundan güncelleştirme 1,1 ' ü indirmek için aşağı
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi indirmek için
 
-1. Internet Explorer 'ı başlatın ve adresine [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)gidin.
+1. Internet Explorer 'ı başlatın ve adresine gidin [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Bu bilgisayarda ilk kez Microsoft Update kataloğunu kullanıyorsanız, Microsoft Update Katalog eklentisini yüklemek isteyip istemediğiniz sorulduğunda **yüklensin** ' e tıklayın.
 
@@ -85,8 +85,8 @@ Microsoft Update kataloğundan güncelleştirme 1,1 ' ü indirmek için aşağı
     ![Paketteki dosyalar](./media/storsimple-virtual-array-install-update-11/update01folder.png)
 
     İki dosya görürsünüz:
-    -  Tek başına Microsoft Update paket dosyası `WindowsTH-KB3011067-x64`. Bu dosya, cihaz yazılımını güncelleştirmek için kullanılır.
-    - Haziran `Windows8.1-KB4284815-x64`için toplu güncelleştirmeleri içeren bir dosya. Bu toplamada nelerin dahil olduğu hakkında daha fazla bilgi için, [Haziran aylık güvenlik toplamasına](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815)gidin.
+    -  Tek başına Microsoft Update paket dosyası `WindowsTH-KB3011067-x64` . Bu dosya, cihaz yazılımını güncelleştirmek için kullanılır.
+    - Haziran için toplu güncelleştirmeleri içeren bir dosya `Windows8.1-KB4284815-x64` . Bu toplamada nelerin dahil olduğu hakkında daha fazla bilgi için, [Haziran aylık güvenlik toplamasına](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815)gidin.
 
 ### <a name="install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yükler
 
@@ -99,11 +99,11 @@ Bu yordamın tamamlandığı 4 dakika sürer. Güncelleştirmeyi veya düzeltmey
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yüklemek için
 
-1. Yerel Web Kullanıcı arabiriminde **bakım** > **yazılım güncelleştirmesi**' ne gidin. Çalıştırdığınız yazılım sürümünü bir yere unutmayın. **Bu güncelleştirmeye yalnızca güncelleştirme 1 (10.0.10296.0) çalıştırıyorsanız devam edin. Güncelleştirme 0,6 çalıştırıyorsanız, önce cihazınıza [güncelleştirme 1](storsimple-virtual-array-install-update-1.md) ' i yükleyip Güncelleştirme 1,1 ' yi uygulayın.**
+1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Çalıştırdığınız yazılım sürümünü bir yere unutmayın. **Bu güncelleştirmeye yalnızca güncelleştirme 1 (10.0.10296.0) çalıştırıyorsanız devam edin. Güncelleştirme 0,6 çalıştırıyorsanız, önce cihazınıza [güncelleştirme 1](storsimple-virtual-array-install-update-1.md) ' i yükleyip Güncelleştirme 1,1 ' yi uygulayın.**
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
-2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
+2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**'ya tıklayın.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
@@ -115,14 +115,14 @@ Bu yordamın tamamlandığı 4 dakika sürer. Güncelleştirmeyi veya düzeltmey
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım** > **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 1,1 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10307** olmalıdır.
+5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 1,1 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10307** olmalıdır.
    
    > [!NOTE]
    > Yazılım sürümlerini yerel Web Kullanıcı arabiriminde ve Azure portal biraz farklı bir şekilde raporlarız. Örneğin, yerel Web Kullanıcı arabirimi raporları **10.0.0.0.0.10307** ve aynı sürüm için **10.0.10307.0** raporlar Azure Portal.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
-6. Dosya `Windows8.1-KB4284815-x64`kullanarak Windows Güvenlik düzeltmesini yüklemek için 2-4 adımlarını yineleyin. Sanal dizi, yüklemeden sonra yeniden başlatılır ve yerel Web Kullanıcı arabiriminde oturum açmanız gerekir.
+6. Dosya kullanarak Windows Güvenlik düzeltmesini yüklemek için 2-4 adımlarını yineleyin `Windows8.1-KB4284815-x64` . Sanal dizi, yüklemeden sonra yeniden başlatılır ve yerel Web Kullanıcı arabiriminde oturum açmanız gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

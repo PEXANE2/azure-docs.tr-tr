@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 5199cf95452f93db2c2dd747fcabc67a6722d31e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38d55c14690a838e853c873a066eae6534d49c6f
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840902"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725078"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
 
@@ -46,7 +46,7 @@ Bu senaryoda, IP akışı doğrulama 'yı çalıştırmak için ağ Izleyicisi R
 
 Bu senaryo, ağ Izleyicisi oluşturmak için [ağ Izleyicisi oluşturma](network-watcher-create.md) bölümündeki adımları zaten izlediğinizi varsayar.
 
-> Paket yakalama, bir sanal makine uzantısı `AzureNetworkWatcherExtension`gerektirir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md)' nı ziyaret edin.
+> Paket yakalama, bir sanal makine uzantısı gerektirir `AzureNetworkWatcherExtension` . Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md)' nı ziyaret edin.
 
 ## <a name="log-in-with-armclient"></a>ARMClient ile oturum açma
 

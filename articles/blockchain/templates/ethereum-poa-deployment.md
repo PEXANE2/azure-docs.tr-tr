@@ -2,14 +2,14 @@
 title: Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
 description: Azure 'da çok siteli bir konsorsiyumum ağını dağıtmak ve yapılandırmak için Ethereum yetkili bir Konsorsiyumu çözümünü kullanın
 ms.date: 06/04/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 2be87dec252aa927c6b1acfc6cb1aa23bf7d2620
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434351"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210125"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 'da Ethereum yetki kanıtlama Konsorsiyumu çözüm şablonu dağıtma
 
@@ -78,11 +78,11 @@ Sonraki bölümlerde, ağdaki ilk üyenin parmak izini nasıl yapılandıracağ�
 
 **Blok zinciri**  >  **Ethereum yetki kanıtlama Konsorsiyumu (Önizleme)** öğesini seçin.
 
-### <a name="basics"></a>Temel bilgiler
+### <a name="basics"></a>Temel Bilgiler
 
 **Temel bilgiler**altında herhangi bir dağıtım için standart parametrelerin değerlerini belirtin.
 
-![Temel bilgiler](./media/ethereum-poa-deployment/basic-blade.png)
+![Temel Bilgiler](./media/ethereum-poa-deployment/basic-blade.png)
 
 Parametre | Açıklama | Örnek değer
 ----------|-------------|--------------
@@ -325,9 +325,9 @@ Güvenlik nedenleriyle, SSH bağlantı noktası erişimi varsayılan olarak bir 
 
     ![SSH etkinleştirme izin ver](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. **Kaydet**'i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
+1. **Kaydet**’i seçin. Değişikliklerin uygulanması birkaç dakika sürebilir.
 
-Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örnek:
+Belirtilen Yönetici Kullanıcı adı ve parola/SSH anahtarı ile SSH aracılığıyla Doğrulayıcı düğümlerine yönelik sanal makinelere uzaktan bağlanabilirsiniz. İlk Doğrulayıcı düğümüne erişmek için SSH komutu, şablon dağıtım çıktısında listelenir. Örneğin:
 
 ``` bash
 ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
@@ -555,10 +555,10 @@ Akıllı sözleşmeleri derlemek, dağıtmak ve test etmek için, Ethereum geli�
 
 Aşağıdaki örnekte basit bir akıllı sözleşme oluşturursunuz. Akıllı sözleşmeyi derlemek ve blok zinciri ağınıza dağıtmak için Truffle kullanırsınız. Dağıtıldıktan sonra bir işlem aracılığıyla akıllı sözleşme işlevini çağırabilirsiniz.
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)'i yükler. Truffle ve Web3 için Python gereklidir. Yolunuza Python eklemek için Install seçeneğini seçin.
-* Truffle v 5.0.5 'i yükler `npm install -g truffle@v5.0.5` . Truffle, [Node. js](https://nodejs.org), [Git](https://git-scm.com/)gibi çeşitli araçların yüklenmesini gerektirir. Daha fazla bilgi için bkz. [Truffle belgeleri](https://github.com/trufflesuite/truffle).
+* Truffle v 5.0.5 'i yükler `npm install -g truffle@v5.0.5` . Truffle, [Node.js](https://nodejs.org), [Git](https://git-scm.com/)gibi çeşitli araçların yüklenmesini gerektirir. Daha fazla bilgi için bkz. [Truffle belgeleri](https://github.com/trufflesuite/truffle).
 
 ### <a name="create-truffle-project"></a>Truffle projesi oluştur
 
@@ -648,7 +648,7 @@ Truffle, bir blok zinciri ağına akıllı sözleşmeleri dağıtmak için geçi
 Akıllı sözleşmeniz dağıtıldığına göre, bir işlevi çağırmak için bir işlem gönderebilirsiniz.
 
 1. Truffle proje dizininde adlı yeni bir dosya oluşturun `sendtransaction.js` .
-1. Aşağıdaki içerikleri **sendtransaction. js**' ye ekleyin.
+1. Aşağıdaki içerikleri **sendtransaction.js**ekleyin.
 
     ``` javascript
     var postBox = artifacts.require("postBox");

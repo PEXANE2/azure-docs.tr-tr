@@ -1,37 +1,39 @@
 ---
-title: Azure AD Kullanıcı akışları için özel öznitelikler ekleme
+title: Self Servis kaydolma akışlarına özel öznitelikler ekleme-Azure AD
 description: Self Servis kaydolma Kullanıcı akışlarınızın özniteliklerini özelleştirme hakkında bilgi edinin.
 services: active-directory
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/16/2020
 ms.author: mimart
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b0acd84112e9fd997cb0d60a914da9528cffd9a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: fbf5b758059dc44f17afba191e49fc170e38feef
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673046"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886409"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Kullanıcı akışları için özel öznitelikler tanımlayın (Önizleme)
-|     |
-| --- |
-| Özel Kullanıcı öznitelikleri özelliği, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+
+|      |
+| ---- |
+| Özel Kullanıcı öznitelikleri özelliği, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). |
+|      |
 
 Her uygulama için, kayıt sırasında toplamak istediğiniz bilgiler için farklı gereksinimlerinize sahip olabilirsiniz. Azure AD, belirli ad, soyadı, şehir ve posta kodu gibi özniteliklerde depolanan yerleşik bir bilgi kümesiyle gelir. Azure AD ile, dış Kullanıcı Kullanıcı akışından kaydolduğunda Konuk hesapta depolanan özniteliklerin kümesini genişletebilirsiniz.
 
-Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma Kullanıcı akışlarınızda kullanabilirsiniz. Ayrıca, [MICROSOFT Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, kuralı kullanılarak adlandırılır `extension_<aad-extensions-app-id>_attributename` . Örnek:
+Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma Kullanıcı akışlarınızda kullanabilirsiniz. Ayrıca, [MICROSOFT Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, kuralı kullanılarak adlandırılır `extension_<extensions-app-id>_attributename` . Örneğin:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-, `<aad-extensions-app-id>` Kiracınıza özeldir. Bu tanımlayıcıyı bulmak için, tüm uygulamaları > Uygulama kayıtları Azure Active Directory > gidin. "AAD-Extensions-App" ile başlayan uygulamayı arayın ve seçin. Uygulamanın genel bakış sayfasında, uygulama (istemci) KIMLIĞI ' ne göz atın.
+, `<extensions-app-id>` Kiracınıza özeldir. Bu tanımlayıcıyı bulmak için, tüm uygulamaları > Uygulama kayıtları Azure Active Directory > gidin. "AAD-Extensions-App" ile başlayan uygulamayı arayın ve seçin. Uygulamanın genel bakış sayfasında, uygulama (istemci) KIMLIĞI ' ne göz atın.
 
 ## <a name="create-a-custom-attribute"></a>Özel öznitelik oluştur
 

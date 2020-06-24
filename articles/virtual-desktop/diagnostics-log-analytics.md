@@ -4,46 +4,46 @@ description: Windows sanal masaüstü tanılama özelliği ile Log Analytics 'i 
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b18b596e0be0e410f1d868f405e2a30105276d8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456462"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209394"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
 >[!IMPORTANT]
 >Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)bakın.
 >
-> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Windows sanal masaüstü, diğer birçok Azure hizmeti gibi izleme ve uyarılar için [Azure izleyicisini](../azure-monitor/overview.md) kullanır. Bu, yöneticilerin tek bir arabirim üzerinden sorunları belirlemesine olanak sağlar. Hizmet hem Kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü aşağıdaki kategoriler altında yer alıyorsa:  
+Windows sanal masaüstü, diğer birçok Azure hizmeti gibi izleme ve uyarılar için [Azure izleyicisini](../azure-monitor/overview.md) kullanır. Bu, yöneticilerin tek bir arabirim üzerinden sorunları belirlemesine olanak sağlar. Hizmet hem Kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü aşağıdaki kategoriler altında yer alıyorsa:
 
 - Yönetim etkinlikleri:
     - API veya PowerShell kullanarak Windows sanal masaüstü nesnelerini değiştirme girişimlerinin başarılı olup olmadığını izleyin. Örneğin, PowerShell kullanarak birisi bir konak havuzunu başarıyla oluşturabilir mi?
-- Bakış 
-    - Kullanıcılar çalışma alanlarına başarıyla abone olabilir mi? 
+- Bakış
+    - Kullanıcılar çalışma alanlarına başarıyla abone olabilir mi?
     - Kullanıcılar, uzak masaüstü istemcisinde yayınlanan tüm kaynakları görebilir mi?
-- Bağlantılar: 
-    - Kullanıcılar hizmet üzerinde bağlantı başlatan ve bu hizmetleri tamamlayacak zaman. 
-- Ana bilgisayar kaydı: 
+- Bağlantılar:
+    - Kullanıcılar hizmet üzerinde bağlantı başlatan ve bu hizmetleri tamamlayacak zaman.
+- Ana bilgisayar kaydı:
     - Oturum Ana bilgisayarı bağlandıktan sonra hizmete başarıyla kaydedildi mi?
-- Hatası 
+- Hatası
     - Kullanıcılar belirli etkinliklerle ilgili herhangi bir sorunla karşılaşıyor mu? Bu özellik, etkinlik verilerini takip eden, bilgiler etkinliklerle birleştirilebilecek şekilde izleyen bir tablo oluşturabilir.
-- Noktası  
+- Noktası
     - Bir etkinliğin ömrü boyunca belirli adımlar. Örneğin, bir oturum sırasında, bir Kullanıcı belirli bir konağa yük dengelemesi yapılmış, sonra Kullanıcı bir bağlantı sırasında oturum açtı ve bu şekilde devam eder.
 
 Tanılama rolü hizmeti Windows sanal masaüstü 'nün bir parçası olduğundan, Windows sanal masaüstüne ulaşmayacak bağlantılar tanılama sonuçlarında gösterilmez. Kullanıcı ağ bağlantısı sorunları yaşanıyorsa Windows sanal masaüstü bağlantısı sorunları oluşabilir.
 
-Azure Izleyici, Windows sanal masaüstü verilerini analiz etmenizi ve sanal makine (VM) performans sayaçlarını aynı araç içinde incelemenizi sağlar. Bu makalede, Windows sanal masaüstü ortamınız için tanılamayı etkinleştirme hakkında daha fazla bilgi bulabilirsiniz. 
+Azure Izleyici, Windows sanal masaüstü verilerini analiz etmenizi ve sanal makine (VM) performans sayaçlarını aynı araç içinde incelemenizi sağlar. Bu makalede, Windows sanal masaüstü ortamınız için tanılamayı etkinleştirme hakkında daha fazla bilgi bulabilirsiniz.
 
->[!NOTE] 
+>[!NOTE]
 >Azure 'da VM 'lerinizi izlemeyi öğrenmek için bkz. Azure [sanal makinelerini Azure izleyici Ile izleme](../azure-monitor/insights/monitor-vm-azure.md). Ayrıca, oturum ana bilgisayarında kullanıcı deneyiminizi daha iyi anlamak için [performans sayacı eşiklerini gözden geçirdiğinizden](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) emin olun.
 
 ## <a name="before-you-get-started"></a>Başlamadan önce
@@ -60,7 +60,7 @@ Log Analytics kullanabilmeniz için önce bir çalışma alanı oluşturmanız g
 
 Bu bilgilere kurulum sürecinde daha sonra ihtiyacınız olacak.
 
-Windows sanal masaüstü ortamınızı izleyen ve koruanlar için veri erişimini etkinleştirmek üzere Azure Izleyici için izin yönetimini gözden geçirdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md). 
+Windows sanal masaüstü ortamınızı izleyen ve koruanlar için veri erişimini etkinleştirmek üzere Azure Izleyici için izin yönetimini gözden geçirdiğinizden emin olun. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md).
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>Tanılama verilerini çalışma alanınıza gönderin
 
@@ -68,27 +68,27 @@ Tanılama verilerini Windows sanal masaüstü nesnelerinden çalışma alanını
 
 Yeni bir nesne için Log Analytics ayarlamak için:
 
-1. Azure portal oturum açın ve **Windows sanal masaüstü**' ne gidin. 
+1. Azure portal oturum açın ve **Windows sanal masaüstü**' ne gidin.
 
-2. Günlüklerini ve olaylarını yakalamak istediğiniz nesneye (bir konak havuzu, uygulama grubu veya çalışma alanı gibi) gidin. 
+2. Günlüklerini ve olaylarını yakalamak istediğiniz nesneye (bir konak havuzu, uygulama grubu veya çalışma alanı gibi) gidin.
 
-3. Ekranın sol tarafındaki menüden **Tanılama ayarları** ' nı seçin. 
+3. Ekranın sol tarafındaki menüden **Tanılama ayarları** ' nı seçin.
 
-4. Ekranın sağ tarafında görünen menüde **Tanılama ayarı Ekle** ' yi seçin. 
-   
+4. Ekranın sağ tarafında görünen menüde **Tanılama ayarı Ekle** ' yi seçin.
+
     Tanılama Ayarları sayfasında gösterilen seçenekler, düzenlemekte olduğunuz nesne türüne göre değişir.
 
-    Örneğin, bir uygulama grubu için tanılamayı etkinleştirirken denetim noktalarını, hataları ve yönetimi yapılandırma seçeneklerini görürsünüz. Çalışma alanları için, bu kategoriler kullanıcıların uygulama listesine ne zaman abone olduğunu izlemek üzere bir akış yapılandırır. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md). 
+    Örneğin, bir uygulama grubu için tanılamayı etkinleştirirken denetim noktalarını, hataları ve yönetimi yapılandırma seçeneklerini görürsünüz. Çalışma alanları için, bu kategoriler kullanıcıların uygulama listesine ne zaman abone olduğunu izlemek üzere bir akış yapılandırır. Tanılama ayarları hakkında daha fazla bilgi edinmek için bkz. [Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md).
 
-     >[!IMPORTANT] 
-     >İzlemek istediğiniz her bir Azure Resource Manager nesne için tanılamayı etkinleştirmeyi unutmayın. Tanılama etkinleştirildikten sonra veriler etkinlikler için kullanılabilir olacak. Bu işlem, ilk kez kurulduktan sonra birkaç saat sürebilir.  
+     >[!IMPORTANT]
+     >İzlemek istediğiniz her bir Azure Resource Manager nesne için tanılamayı etkinleştirmeyi unutmayın. Tanılama etkinleştirildikten sonra veriler etkinlikler için kullanılabilir olacak. Bu işlem, ilk kez kurulduktan sonra birkaç saat sürebilir.
 
 5. Ayarlar yapılandırmanız için bir ad girin ve **Log Analytics gönder**' i seçin. Kullandığınız ad boşluk içermemelidir ve [Azure adlandırma kurallarına](../azure-resource-manager/management/resource-name-rules.md)uymalıdır. Günlüklerin bir parçası olarak, Log Analytics eklenmesini istediğiniz tüm seçenekleri (denetim noktası, hata, yönetim vb.) seçebilirsiniz.
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 >[!NOTE]
->Log Analytics, verileri [Event Hubs](../event-hubs/event-hubs-about.md) veya depolama hesabında arşivlemek için veri akışı seçeneği sunar. Bu özellik hakkında daha fazla bilgi edinmek için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ve [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs-collect-storage.md). 
+>Log Analytics, verileri [Event Hubs](../event-hubs/event-hubs-about.md) veya depolama hesabında arşivlemek için veri akışı seçeneği sunar. Bu özellik hakkında daha fazla bilgi edinmek için bkz. [Azure izleme verilerini bir olay hub 'ına akış](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) ve [Azure Kaynak günlüklerini depolama hesabına arşivleme](../azure-monitor/platform/resource-logs-collect-storage.md).
 
 ## <a name="how-to-access-log-analytics"></a>Log Analytics erişme
 
@@ -98,23 +98,23 @@ Azure portal veya Azure Izleyici üzerinde Log Analytics çalışma alanına eri
 
 1. Azure Portal’da oturum açın.
 
-2. **Log Analytics çalışma alanı**araması yapın. 
+2. **Log Analytics çalışma alanı**araması yapın.
 
-3. Hizmetler ' in altında **Log Analytics çalışma alanları**' nı seçin. 
-   
+3. Hizmetler ' in altında **Log Analytics çalışma alanları**' nı seçin.
+
 4. Listeden, Windows sanal masaüstü nesneniz için yapılandırdığınız çalışma alanını seçin.
 
-5. Çalışma alanınızda bir kez, **Günlükler**' i seçin. **Arama** işleviyle menü listenizi filtreleyebilirsiniz. 
+5. Çalışma alanınızda bir kez, **Günlükler**' i seçin. **Arama** işleviyle menü listenizi filtreleyebilirsiniz.
 
 ### <a name="access-log-analytics-on-azure-monitor"></a>Azure Izleyici 'de Log Analytics erişim
 
 1. Azure portalda oturum açma
 
-2. **İzleme**araması yapın ve seçin. 
+2. **İzleme**araması yapın ve seçin.
 
 3. **Günlükleri**seçin.
 
-4. Sorgunuzun kapsamını ayarlamak için günlük sayfasındaki yönergeleri izleyin.  
+4. Sorgunuzun kapsamını ayarlamak için günlük sayfasındaki yönergeleri izleyin.
 
 5. Tanılamayı sorgulamaya hazırlanın. Tüm tanılama tablolarının "WVD" öneki vardır.
 
@@ -138,114 +138,114 @@ Aşağıdaki örnek sorgularda, tanılama özelliğinin sisteminizdeki en sık e
 Kullanıcılarınız tarafından yapılan bağlantıların bir listesini almak için şu cmdlet 'i çalıştırın:
 
 ```kusto
-WVDConnections 
-| project-away TenantId,SourceSystem 
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId 
-| join kind=leftouter ( 
-    WVDErrors 
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId 
-    ) on CorrelationId     
-| join kind=leftouter ( 
-   WVDCheckpoints 
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId 
-   | mv-apply Checkpoints on 
-    ( 
-        order by todatetime(Checkpoints['Time']) asc 
-        | summarize Checkpoints=makelist(Checkpoints) 
-    ) 
-   ) on CorrelationId 
-| project-away CorrelationId1, CorrelationId2 
-| order by  TimeGenerated desc 
+WVDConnections
+| project-away TenantId,SourceSystem
+| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
+| join kind=leftouter (
+    WVDErrors
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
+    ) on CorrelationId
+| join kind=leftouter (
+   WVDCheckpoints
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
+   | mv-apply Checkpoints on
+    (
+        order by todatetime(Checkpoints['Time']) asc
+        | summarize Checkpoints=makelist(Checkpoints)
+    )
+   ) on CorrelationId
+| project-away CorrelationId1, CorrelationId2
+| order by  TimeGenerated desc
 ```
 
 Kullanıcılarınızın akış etkinliğini görüntülemek için:
 
 ```kusto
-WVDFeeds  
-| project-away TenantId,SourceSystem  
-| join kind=leftouter (  
-    WVDErrors  
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId  
-    ) on CorrelationId      
-| join kind=leftouter (  
-   WVDCheckpoints  
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId  
-   | mv-apply Checkpoints on  
-    (  
-        order by todatetime(Checkpoints['Time']) asc  
-        | summarize Checkpoints=makelist(Checkpoints)  
-    )  
-   ) on CorrelationId  
-| project-away CorrelationId1, CorrelationId2  
-| order by  TimeGenerated desc 
+WVDFeeds
+| project-away TenantId,SourceSystem
+| join kind=leftouter (
+    WVDErrors
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
+    ) on CorrelationId
+| join kind=leftouter (
+   WVDCheckpoints
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
+   | mv-apply Checkpoints on
+    (
+        order by todatetime(Checkpoints['Time']) asc
+        | summarize Checkpoints=makelist(Checkpoints)
+    )
+   ) on CorrelationId
+| project-away CorrelationId1, CorrelationId2
+| order by  TimeGenerated desc
 ```
 
-Tek bir kullanıcıya ait tüm bağlantıları bulmak için: 
+Tek bir kullanıcıya ait tüm bağlantıları bulmak için:
 
 ```kusto
 WVDConnections
-|where UserName == "userupn" 
-|take 100 
-|sort by TimeGenerated asc, CorrelationId 
+|where UserName == "userupn"
+|take 100
+|sort by TimeGenerated asc, CorrelationId
 ```
- 
+
 
 Bir kullanıcının gün başına kaç kez bağlı olduğunu bulmak için:
 
 ```kusto
-WVDConnections 
-|where UserName == "userupn" 
-|take 100 
-|sort by TimeGenerated asc, CorrelationId 
-|summarize dcount(CorrelationId) by bin(TimeGenerated, 1d) 
+WVDConnections
+|where UserName == "userupn"
+|take 100
+|sort by TimeGenerated asc, CorrelationId
+|summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
- 
+
 
 Oturum süresini kullanıcıya göre bulmak için:
 
 ```kusto
-let Events = WVDConnections | where UserName == "userupn" ; 
-Events 
-| where State == "Connected" 
-| project CorrelationId , UserName, ResourceAlias , StartTime=TimeGenerated 
-| join (Events 
-| where State == "Completed" 
-| project EndTime=TimeGenerated, CorrelationId) 
-on CorrelationId 
-| project Duration = EndTime - StartTime, ResourceAlias 
-| sort by Duration asc 
+let Events = WVDConnections | where UserName == "userupn" ;
+Events
+| where State == "Connected"
+| project CorrelationId , UserName, ResourceAlias , StartTime=TimeGenerated
+| join (Events
+| where State == "Completed"
+| project EndTime=TimeGenerated, CorrelationId)
+on CorrelationId
+| project Duration = EndTime - StartTime, ResourceAlias
+| sort by Duration asc
 ```
 
 Belirli bir kullanıcıya ilişkin hataları bulmak için:
 
 ```kusto
 WVDErrors
-| where UserName == "userupn" 
+| where UserName == "userupn"
 |take 100
 ```
 
 Belirli bir hatanın oluşup oluşmadığını öğrenmek için:
 
 ```kusto
-WVDErrors 
-| where CodeSymbolic =="ErrorSymbolicCode" 
-| summarize count(UserName) by CodeSymbolic 
+WVDErrors
+| where CodeSymbolic =="ErrorSymbolicCode"
+| summarize count(UserName) by CodeSymbolic
 ```
 
 Tüm kullanıcılar genelinde bir hata oluşmasını bulmak için:
 
 ```kusto
-WVDErrors 
-| where ServiceError =="false" 
-| summarize usercount = count(UserName) by CodeSymbolic 
+WVDErrors
+| where ServiceError =="false"
+| summarize usercount = count(UserName) by CodeSymbolic
 | sort by usercount desc
-| render barchart 
+| render barchart
 ```
 
 Kullanıcıların açtığı uygulamaları sorgulamak için şu sorguyu çalıştırın:
 
 ```kusto
-WVDCheckpoints 
+WVDCheckpoints
 | where TimeGenerated > ago(7d)
 | where Name == "LaunchExecutable"
 | extend App = parse_json(Parameters).filename
@@ -259,6 +259,6 @@ WVDCheckpoints
 >- WVDErrors tablosu, yönetim hatalarını, ana bilgisayar kayıt sorunlarını ve Kullanıcı bir uygulama veya masaüstü bilgisayar listesine abone olduğunda gerçekleşen diğer sorunları gösterir.
 >- WVDErrors, yönetici görevleri tarafından çözümlenebilen sorunları belirlemenize yardımcı olur. ServiceError üzerindeki değer her zaman bu tür sorunlar için "false" diyor. ServiceError = "true" ise, sorunu Microsoft 'a ilerletebilirsiniz. Yönettiğiniz hatalar için CorrelationId sağladığınızdan emin olun.
 
-## <a name="next-steps"></a>Sonraki adımlar 
+## <a name="next-steps"></a>Sonraki adımlar
 
 Tanılama özelliğinin sizin için tanımlayabilen yaygın hata senaryolarını gözden geçirmek için bkz. [sorunları tanımlama ve tanılama](diagnostics-role-service.md#common-error-scenarios).

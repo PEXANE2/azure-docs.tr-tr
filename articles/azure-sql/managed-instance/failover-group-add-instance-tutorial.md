@@ -1,9 +1,9 @@
 ---
-title: 'Öğretici: bir yük devretme grubuna SQL yönetilen örneği için yönetilen bir örnek ekleme'
+title: 'Öğretici: yük devretme grubuna SQL yönetilen örneği ekleme'
 titleSuffix: Azure SQL Managed Instance
-description: Bu öğreticide, birincil ve ikincil olarak iki yönetilen örnek oluşturacak ve sonra bunları bir otomatik yük devretme grubuna ekleyecek.
+description: Bu öğreticide, birincil ve ikincil Azure SQL yönetilen örneği arasında bir yük devretme grubu oluşturmayı öğrenin.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 3b132fb5c718346462e43d161e4d85f07223df09
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: f1bf8eff4a6f518fc24c87c5fbd24984ef8f8b29
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667752"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718895"
 ---
-# <a name="tutorial-add-a-managed-instance-of-sql-managed-instance-to-a-failover-group"></a>Öğretici: bir yük devretme grubuna SQL yönetilen örneği için yönetilen bir örnek ekleme
+# <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Öğretici: yük devretme grubuna SQL yönetilen örneği ekleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL yönetilen örneği 'nin yönetilen örneklerini bir yük devretme grubuna ekleyin. Bu makalede şunları yapmayı öğreneceksiniz:

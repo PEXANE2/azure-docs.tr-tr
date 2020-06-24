@@ -7,17 +7,17 @@ author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152933"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725064"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure ağ Izleyicisi ile paket incelemesi
 
@@ -41,7 +41,7 @@ Bu senaryoda, iki uç nokta arasında gerçekleşen bir Iletim Denetim Protokol�
 
 TCP bağlantısı oluşturulduğunda, bağlantıda gönderilen ilk üç paket, genellikle üç yönlü el sıkışma olarak adlandırılan bir düzene uyar. Bu el sıkışma içinde gönderilen ilk iki paket, istemciden gelen bir başlangıç isteği ve sunucudan bir yanıt inceleyerek, bu bağlantı oluşturulduğunda gecikme süresini hesaplayabiliriz. Bu gecikme süresi, gidiş dönüş süresi (RTT) olarak adlandırılır. TCP protokolü ve üç yönlü el sıkışma hakkında daha fazla bilgi için aşağıdaki kaynağa bakın. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 WireShark Başlat
 
@@ -75,9 +75,9 @@ Azure 'da dağıttığınız bir sanal makine örneği üzerinde çalışan bir�
 
 Bu örnekte, makinenizde çalışan bir uygulamadan yetkisiz iletişimi gösterebilen istenmeyen protokoller için önceki bir çalıştırılan paket yakalamayı gözden geçiririz.
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
-Önceki senaryoda aynı yakalamanın kullanılması **istatistik** > **protokol hiyerarşisi** ' ne tıklayın.
+Önceki senaryoda aynı yakalamanın kullanılması **istatistik**  >  **protokol hiyerarşisi** ' ne tıklayın.
 
 ![protokol hiyerarşisi menüsü][2]
 
@@ -91,9 +91,9 @@ Aşağıdaki ekran yakalamada görebileceğiniz gibi, eşler arası dosya payla�
 
 Trafik türlerini, uç noktaları ve üzerinden iletilen bağlantı noktalarını anlamak, ağınızdaki uygulamaları ve kaynakları izlerken veya sorunlarını giderirken önemli bir öneme sahiptir. Yukarıdaki bir paket yakalama dosyasını kullanarak, sanal makinenizin iletişim kurduğu en üst hedefleri ve kullanılan bağlantı noktalarını hızlıca öğreniyoruz.
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
-Önceki senaryoda aynı yakalamanın kullanılması, **istatistik** > **IPv4 istatistik** > **hedefleri ve bağlantı noktaları** ' na tıklayın.
+Önceki senaryoda aynı yakalamanın kullanılması, **istatistik**  >  **IPv4 istatistik**  >  **hedefleri ve bağlantı noktaları** ' na tıklayın.
 
 ![paket yakalama penceresi][4]
 

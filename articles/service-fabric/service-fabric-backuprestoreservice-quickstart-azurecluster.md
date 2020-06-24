@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259012"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712471"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric kümesinde düzenli olarak yedekleme ve geri yükleme
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Service Fabric 'de yedekleme ve geri yükleme hizmeti, durum bilgisi olan hizmet
 Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağıdaki işlevlere ulaşmak için bir API kümesi sağlar:
 
 - Güvenilir durum bilgisi olan ve Reliable Actors yedekleme 'yi (harici) depolama konumlarına yükleme desteğiyle düzenli olarak durum bilgisi olan ve düzenli olarak yedekleyin. Desteklenen depolama konumları
-    - Azure Storage
+    - Azure Depolama
     - Dosya paylaşma (Şirket içi)
 - Yedeklemeleri listeleme
 - Bir bölümün geçici yedeklemesini tetikleyin
@@ -56,7 +56,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Microsoft. ServiceFabric. PowerShell. http `Connect-SFCluster` modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
+* `Connect-SFCluster`Microsoft. ServiceFabric. PowerShell. http modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
 ```powershell
 
@@ -68,7 +68,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-`Cluster Configuration` Sekmesinin `Include backup restore service` altındaki `+ Show optional settings` onay kutusunu etkinleştirin.
+`Include backup restore service`Sekmesinin altındaki onay kutusunu `+ Show optional settings` etkinleştirin `Cluster Configuration` .
 
 ![Portal Ile yedekleme geri yükleme hizmetini etkinleştir][1]
 
@@ -76,7 +76,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 ### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
 İlk olarak, kümenizde _yedekleme ve geri yükleme hizmetini_ etkinleştirmeniz gerekir. Dağıtmak istediğiniz kümenin şablonunu alın. [Örnek şablonları](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) kullanabilir ya da bir kaynak yöneticisi şablonu oluşturabilirsiniz. _Yedekleme ve geri yükleme hizmetini_ aşağıdaki adımlarla etkinleştirin:
 
-1. Kaynak için olarak **`2018-02-01`** ayarlanmış olup olmadığını denetleyin ve yoksa, aşağıdaki kod parçacığında gösterildiği gibi güncelleştirin: `apiversion` `Microsoft.ServiceFabric/clusters`
+1. `apiversion`Kaynak için olarak ayarlanmış olup olmadığını denetleyin **`2018-02-01`** ve yoksa `Microsoft.ServiceFabric/clusters` , aşağıdaki kod parçacığında gösterildiği gibi güncelleştirin:
 
     ```json
     {
@@ -88,7 +88,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
     }
     ```
 
-2. Şimdi aşağıdaki kod parçacığında gösterildiği gibi `addonFeatures` `properties` bölümüne aşağıdaki bölümü ekleyerek _yedekleme ve geri yükleme hizmetini_ etkinleştirin: 
+2. Şimdi _backup and restore service_ `addonFeatures` `properties` Aşağıdaki kod parçacığında gösterildiği gibi bölümüne aşağıdaki bölümü ekleyerek yedekleme ve geri yükleme hizmetini etkinleştirin: 
 
     ```json
         "properties": {
@@ -99,7 +99,7 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
         }
 
     ```
-3. Kimlik bilgilerinin şifrelenmesi için X. 509.440 sertifikasını yapılandırın. Bu, depolamaya bağlanmak için girilen kimlik bilgilerinin kalıcı olmadan önce şifrelenmesini sağlamak açısından önemlidir. Aşağıdaki kod parçacığında gösterildiği gibi `BackupRestoreService` `fabricSettings` bölümüne aşağıdaki bölümü ekleyerek şifreleme sertifikasını yapılandırın: 
+3. Kimlik bilgilerinin şifrelenmesi için X. 509.440 sertifikasını yapılandırın. Bu, depolamaya bağlanmak için girilen kimlik bilgilerinin kalıcı olmadan önce şifrelenmesini sağlamak açısından önemlidir. Aşağıdaki `BackupRestoreService` `fabricSettings` kod parçacığında gösterildiği gibi bölümüne aşağıdaki bölümü ekleyerek şifreleme sertifikasını yapılandırın: 
 
     ```json
     "properties": {
@@ -121,18 +121,18 @@ Service Fabric, düzenli yedekleme ve geri yükleme özelliğiyle ilgili aşağ�
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme
 Güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirme adımlarını inceleyelim. Bu adımlarda varsayılmaktadır
 - Küme, _yedekleme ve geri yükleme hizmeti_ile X. 509.440 Security kullanılarak ayarlanır.
-- Küme üzerinde güvenilir bir durum bilgisi olan hizmet dağıtılır. Bu hızlı başlangıç kılavuzunun amacı için uygulama URI 'si `fabric:/SampleApp` ve bu uygulamaya ait güvenilir durum bilgisi olan hizmet URI 'si. `fabric:/SampleApp/MyStatefulService` Bu hizmet tek bölüm ile dağıtılır ve bölüm KIMLIĞI olur `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
-- Yönetici rolüne sahip istemci sertifikası, aşağıdaki betiklerin çağrıldığı makinede bulunan _CurrentUser_ sertifika depolama konumunun (_Kişisel_) depolama _adı ' na_ yüklenir. Bu örnek, `1b7ebe2174649c45474a4819dafae956712c31d3` bu sertifikanın parmak izi olarak kullanır. İstemci sertifikaları hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri Için rol tabanlı erişim denetimi](service-fabric-cluster-security-roles.md).
+- Küme üzerinde güvenilir bir durum bilgisi olan hizmet dağıtılır. Bu hızlı başlangıç kılavuzunun amacı için uygulama URI 'si `fabric:/SampleApp` ve bu uygulamaya ait güvenilir durum bilgisi olan hizmet URI 'si `fabric:/SampleApp/MyStatefulService` . Bu hizmet tek bölüm ile dağıtılır ve bölüm KIMLIĞI olur `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
+- Yönetici rolüne sahip istemci sertifikası, aşağıdaki betiklerin çağrıldığı makinede bulunan _CurrentUser_ sertifika depolama konumunun (_Kişisel_) depolama _adı ' na_ yüklenir. Bu örnek `1b7ebe2174649c45474a4819dafae956712c31d3` , bu sertifikanın parmak izi olarak kullanır. İstemci sertifikaları hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri Için rol tabanlı erişim denetimi](service-fabric-cluster-security-roles.md).
 
 ### <a name="create-backup-policy"></a>Yedekleme İlkesi Oluştur
 
 İlk adım Yedekleme zamanlamasını açıklayan yedekleme ilkesi, yedekleme verileri için hedef depolama, ilke adı, yedekleme depolaması için tam yedekleme ve bekletme ilkesi tetiklemeden önce izin verilen maksimum artımlı yedeklemeler oluşturmaktır. 
 
-Yedekleme depolaması için yukarıda oluşturulan Azure Storage hesabını kullanın. Kapsayıcı `backup-container` yedeklemeleri depolamak için yapılandırılmış. Bu ada sahip bir kapsayıcı, zaten mevcut değilse, yedekleme karşıya yüklemesi sırasında oluşturulur. Azure `ConnectionString` depolama hesabı için geçerli bir bağlantı dizesiyle doldurun, depolama hesabınızın adıyla `account-name` ve `account-key` depolama hesabı anahtarınızla değiştirin.
+Yedekleme depolaması için yukarıda oluşturulan Azure Storage hesabını kullanın. Kapsayıcı `backup-container` yedeklemeleri depolamak için yapılandırılmış. Bu ada sahip bir kapsayıcı, zaten mevcut değilse, yedekleme karşıya yüklemesi sırasında oluşturulur. `ConnectionString`Azure depolama hesabı için geçerli bir bağlantı dizesiyle doldurun, `account-name` depolama hesabınızın adıyla ve `account-key` depolama hesabı anahtarınızla değiştirin.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
-Yeni yedekleme ilkesi oluşturmak için aşağıdaki PowerShell cmdlet 'lerini yürütün. Depolama `account-name` Hesabı adınızla ve `account-key` depolama hesabı anahtarınızla değiştirin.
+Yeni yedekleme ilkesi oluşturmak için aşağıdaki PowerShell cmdlet 'lerini yürütün. `account-name`Depolama hesabı adınızla ve `account-key` depolama hesabı anahtarınızla değiştirin.
 
 ```powershell
 
@@ -142,7 +142,7 @@ New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrem
 
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Yeni ilke oluşturmak için gerekli REST API çağırmak üzere aşağıdaki PowerShell betiğini yürütün. Depolama `account-name` Hesabı adınızla ve `account-key` depolama hesabı anahtarınızla değiştirin.
+Yeni ilke oluşturmak için gerekli REST API çağırmak üzere aşağıdaki PowerShell betiğini yürütün. `account-name`Depolama hesabı adınızla ve `account-key` depolama hesabı anahtarınızla değiştirin.
 
 ```powershell
 $StorageInfo = @{
@@ -198,7 +198,7 @@ Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupP
 ```
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Yedekleme ilkesini uygulama `BackupPolicy1` `SampleApp`ile yukarıdaki adımda oluşturulan adla ilişkilendirmek için gerekli REST API çağırmak üzere aşağıdaki PowerShell betiğini yürütün.
+Yedekleme ilkesini `BackupPolicy1` uygulama ile yukarıdaki adımda oluşturulan adla ilişkilendirmek için gerekli REST API çağırmak üzere aşağıdaki PowerShell betiğini yürütün `SampleApp` .
 
 ```powershell
 $BackupPolicyReference = @{
@@ -241,7 +241,7 @@ Get-SFApplicationBackupList -ApplicationId WordCount
 
 #### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-`SampleApp` Uygulamanın içindeki tüm bölümler için oluşturulan yedeklemeleri NUMARALANDıRMAK üzere HTTP API 'sini çağırmak Için aşağıdaki PowerShell betiğini yürütün.
+Uygulamanın içindeki tüm bölümler için oluşturulan yedeklemeleri numaralandırmak üzere HTTP API 'sini çağırmak için aşağıdaki PowerShell betiğini yürütün `SampleApp` .
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"

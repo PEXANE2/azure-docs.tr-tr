@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
 ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240299"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709938"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -20,10 +20,10 @@ Azure Backup hizmeti, Microsoft Azure bulutundaki verilerinizi yedekleyip kurtar
 ## <a name="what-can-i-back-up"></a>Neleri yedekleyebilirim?
 
 - **Şirket içi** - [Microsoft Azure kurtarma hizmetleri (mars) Aracısı](backup-support-matrix-mars-agent.md)'nı kullanarak dosyaları, klasörleri, sistem durumunu yedekleyin. Ya da şirket içi VM 'Leri ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) ve [VMware](backup-azure-backup-server-vmware.md)) ve diğer [Şirket ıçı iş yüklerini](backup-mabs-protection-matrix.md) korumak için DPM veya Azure Backup sunucusu (mabs) aracısını kullanın
-- **Azure VM 'leri** - ,[tüm Windows/Linux VM](backup-azure-vms-introduction.md) 'lerini (yedekleme uzantıları kullanarak) yedekleyebilir veya [Mars aracısını](backup-azure-manage-mars.md)kullanarak dosyaları, klasörleri ve sistem durumunu yedekleyebilir.
-- **Azure dosyaları** - ,[Azure dosya paylaşımlarını bir depolama hesabıyla yedekler](backup-afs.md)
-- **SQL Server in Azure VMs**Azure sanal makinelerinde SQL Server Azure VM 'lerinde[çalışan SQL Server veritabanları yedekleme](backup-azure-sql-database.md)  -  
-- **SAP HANA databases in Azure VMs** - Azure VM 'lerde[çalışan SAP HANA veritabanlarında](backup-azure-sap-hana-database.md) SAP HANA veritabanları yedekleme
+- **Azure VM 'leri**  -  [Mars Aracısı](backup-azure-manage-mars.md)'Nı kullanarak [Windows/Linux VM 'lerinin tamamını yedekleyin](backup-azure-vms-introduction.md) (yedekleme uzantıları kullanarak) veya dosyaları, klasörleri ve sistem durumunu yedekleyin.
+- **Azure dosya paylaşımları**  -  [Azure dosya paylaşımlarını bir depolama hesabına yedekleme](backup-afs.md)
+- **Azure VM**  -   'lerinde SQL Server [Azure VM 'lerinde çalışan SQL Server veritabanları yedekleme](backup-azure-sql-database.md)
+- **Azure VM**  -  'lerinde SAP HANA veritabanları [Azure VM 'lerinde çalışan SAP HANA veritabanları yedekleme](backup-azure-sap-hana-database.md)
 
 ![Azure Backup genel bakış](./media/backup-overview/azure-backup-overview.png)
 

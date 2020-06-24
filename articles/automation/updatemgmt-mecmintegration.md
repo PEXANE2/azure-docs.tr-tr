@@ -5,20 +5,23 @@ services: automation
 ms.subservice: update-management
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/11/2019
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2bcf2518ab7f4e5a3648b508e42868fd5bb1a863
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013206"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817218"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Windows uç noktası ile Güncelleştirme Yönetimi tümleştirme Configuration Manager
 
 Bilgisayarları, sunucuları ve mobil cihazları yönetmek için Microsoft uç nokta Configuration Manager yatırılmış müşteriler, yazılım güncelleştirme yönetimi (SUM) döngüsünün bir parçası olarak yazılım güncelleştirmelerini yönetme gücünden ve vadede yararlanır.
 
 Windows uç nokta Configuration Manager ' de yazılım güncelleştirme dağıtımları oluşturup hazırlama ve [güncelleştirme yönetimi](automation-update-management.md)kullanarak Tamamlanan güncelleştirme dağıtımlarının ayrıntılı durumunu almak yoluyla, yönetilen Windows sunucularını rapor edebilir ve güncelleştirebilirsiniz. Güncelleştirme uyumluluğu raporlaması için Windows uç nokta Configuration Manager kullanıyorsanız, ancak Windows sunucularınızla güncelleştirme dağıtımlarını yönetmek için, güvenlik güncelleştirmeleri Azure Otomasyonu Güncelleştirme Yönetimi ile yönetilirken Configuration Manager 'a raporlamaya devam edebilirsiniz.
+
+>[!NOTE]
+>Güncelleştirme Yönetimi, Windows Server 2008 R2 'nin güncelleştirme değerlendirmesini ve düzeltme eki uygulamayı desteklese de, bu işletim sistemini çalıştıran Configuration Manager uç nokta tarafından yönetilen istemcileri desteklemez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

@@ -4,23 +4,23 @@ description: Tepesinde bölgesinde yük dengeli Web uygulamaları barındırmak 
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937358"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710550"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Tepesinde bölgesinde yük dengeli Azure Web uygulamaları barındırın
 
-DNS protokolü, tepesinde bölgesinde bir veya AAAA kaydı dışında herhangi bir şeyin atanmasını engeller. Örnek bir bölge tepesinde contoso.com. Bu kısıtlama, Traffic Manager arkasındaki yük dengeli uygulamalara sahip olan uygulama sahipleri için bir sorun gösterir. Bölge tepesinde kaydından Traffic Manager profile işaret etmek mümkün değildir. Sonuç olarak, uygulama sahiplerinin geçici bir çözüm kullanması gerekir. Uygulama katmanında yeniden yönlendirme, Zone tepesinde 'tan başka bir etki alanına yeniden yönlendirmelidir. Örnek, contoso.com 'ten www\.contoso.com 'e yeniden yönlendirme örneğidir. Bu düzenleme, yeniden yönlendirme işlevi için tek bir hata noktası sunar.
+DNS protokolü, tepesinde bölgesinde bir veya AAAA kaydı dışında herhangi bir şeyin atanmasını engeller. Örnek bir bölge tepesinde contoso.com. Bu kısıtlama, Traffic Manager arkasındaki yük dengeli uygulamalara sahip olan uygulama sahipleri için bir sorun gösterir. Bölge tepesinde kaydından Traffic Manager profile işaret etmek mümkün değildir. Sonuç olarak, uygulama sahiplerinin geçici bir çözüm kullanması gerekir. Uygulama katmanında yeniden yönlendirme, Zone tepesinde 'tan başka bir etki alanına yeniden yönlendirmelidir. Örnek, contoso.com 'ten www contoso.com 'e yeniden yönlendirme örneğidir \. . Bu düzenleme, yeniden yönlendirme işlevi için tek bir hata noktası sunar.
 
 Diğer ad kayıtlarıyla, bu sorun artık yok. Artık uygulama sahipleri, bölge tepesinde kayıtlarını dış uç noktalara sahip bir Traffic Manager profiline işaret edebilir. Uygulama sahipleri, DNS bölgesi içindeki diğer etki alanı için kullanılan aynı Traffic Manager profilini işaret edebilir.
 
-Örneğin, contoso.com ve www\.contoso.com aynı Traffic Manager profilini işaret edebilir. Traffic Manager profilinin yalnızca yapılandırılmış dış uç noktaları olduğu sürece bu durum geçerlidir.
+Örneğin, contoso.com ve www \. contoso.com aynı Traffic Manager profilini işaret edebilir. Traffic Manager profilinin yalnızca yapılandırılmış dış uç noktaları olduğu sürece bu durum geçerlidir.
 
 Bu makalede, etki alanı tepesinde için bir diğer ad kaydı oluşturmayı ve Web uygulamalarınız için Traffic Manager profili uç noktalarınızı yapılandırmayı öğreneceksiniz.
 
@@ -43,7 +43,7 @@ Bu makalede kullanılan tüm kaynakları barındıracak bir kaynak grubu oluştu
 Yapılandırma bilgileri için aşağıdaki tabloyu kullanarak kaynak grubunuzda iki Web App Service planı oluşturun. App Service planı oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da App Service planını yönetme](../app-service/app-service-plan-manage.md).
 
 
-|Adı  |İşletim Sistemi  |Konum  |Fiyatlandırma Katmanı  |
+|Name  |İşletim Sistemi  |Konum  |Fiyatlandırma Katmanı  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|Doğu ABD|Geliştirme/test D1-paylaşılan|
 |ASP-02     |Windows|Orta ABD|Geliştirme/test D1-paylaşılan|
@@ -55,10 +55,10 @@ Her bir App Service planında bir tane olmak üzere iki Web uygulaması oluştur
 1. Azure portal sayfanın sol üst köşesinde **kaynak oluştur**' u seçin.
 2. Arama çubuğuna **Web uygulaması** yazın ve ENTER tuşuna basın.
 3. **Web uygulaması**' nı seçin.
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 5. Varsayılan değerleri kabul edin ve iki Web uygulaması yapılandırmak için aşağıdaki tabloyu kullanın:
 
-   |Adı<br>(. azurewebsites.net içinde benzersiz olmalıdır)|Kaynak Grubu |Çalışma zamanı yığını|Bölge|Plan/konum App Service
+   |Name<br>(. azurewebsites.net içinde benzersiz olmalıdır)|Kaynak Grubu |Çalışma zamanı yığını|Bölge|Plan/konum App Service
    |---------|---------|-|-|-------|
    |Uygulama-01|Mevcut olanı kullan<br>Kaynak grubunuzu seçin|.NET Core 2.2|Doğu ABD|ASP-01 (D1)|
    |Uygulama-02|Mevcut olanı kullan<br>Kaynak grubunuzu seçin|.NET Core 2.2|Orta ABD|ASP-02 (D1)|
@@ -84,13 +84,13 @@ Artık iki Web uygulaması için uç noktalar oluşturabilirsiniz.
 
 1. Kaynak grubunuzu açın ve Traffic Manager profilinizi seçin.
 2. Sol sütunda **bitiş noktaları**' nı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**'yi seçin.
 4. Uç noktaları yapılandırmak için aşağıdaki tabloyu kullanın:
 
-   |Tür  |Adı  |Hedef  |Konum  |Özel üstbilgi ayarları|
+   |Tür  |Name  |Hedef  |Konum  |Özel üstbilgi ayarları|
    |---------|---------|---------|---------|---------|
-   |Dış uç nokta     |Son-01|Uygulama için kaydettiğiniz IP adresi-01|Doğu ABD|Ana bilgisayar\<: App-01 IÇIN kaydettiğiniz URL\><br>Örnek: **Host: App-01.azurewebsites.net**|
-   |Dış uç nokta     |End-02|App-02 için kaydettiğiniz IP adresi|Orta ABD|Ana bilgisayar\<: App-02 IÇIN kaydettiğiniz URL\><br>Örnek: **Host: App-02.azurewebsites.net**
+   |Dış uç nokta     |Son-01|Uygulama için kaydettiğiniz IP adresi-01|Doğu ABD|konağının\<the URL you recorded for App-01\><br>Örnek: **Host: App-01.azurewebsites.net**|
+   |Dış uç nokta     |End-02|App-02 için kaydettiğiniz IP adresi|Orta ABD|konağının\<the URL you recorded for App-02\><br>Örnek: **Host: App-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS bölgesi oluştur
 
@@ -104,7 +104,7 @@ Web uygulamalarınıza özel bir ana bilgisayar adı eklediğinizde, etki alanı
 2. **Kayıt kümesi**’ni seçin.
 3. Aşağıdaki tabloyu kullanarak kayıt kümesini ekleyin. Değer için, daha önce kaydettiğiniz gerçek Web uygulaması URL 'sini kullanın:
 
-   |Adı  |Tür  |Değer|
+   |Name  |Tür  |Değer|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Her iki Web uygulaması için özel bir etki alanı ekleyin.
 2. **Kayıt kümesi**’ni seçin.
 3. Aşağıdaki tabloyu kullanarak kayıt kümesini ekleyin:
 
-   |Adı  |Tür  |Diğer ad kayıt kümesi  |Diğer ad türü  |Azure kaynağı|
+   |Name  |Tür  |Diğer ad kayıt kümesi  |Diğer ad türü  |Azure kaynağı|
    |---------|---------|---------|---------|-----|
    |@     |A|Yes|Azure kaynağı|Traffic Manager-profiliniz|
 

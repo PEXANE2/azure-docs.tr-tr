@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257621"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710720"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için kapasiteyi ve ölçeklendirmeyi planlayın
 
@@ -92,7 +92,7 @@ Sunucularınızı ölçeklendirmeniz, genişleme veya genişleme modeli için te
 
     ![Azure Backup özellikleri iletişim kutusunun ekran görüntüsü](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-Ayrıca, azaltma ayarı için [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) cmdlet'ini de kullanabilirsiniz. Bir örneği aşağıda verilmiştir:
+Ayrıca, azaltma ayarı için [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) cmdlet'ini de kullanabilirsiniz. İşte bir örnek:
 
     $mon = [System.DayOfWeek]::Monday
     $tue = [System.DayOfWeek]::Tuesday
@@ -124,7 +124,7 @@ Dağıtımınızı 200 kaynak makineden daha fazla ölçeklendirebilir veya 2 TB
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Yeni işlem sunucusunu kullanmak için makineleri geçirme
 
-1. **Sunucular Site Recovery** **ayarları** > ' nı seçin. Yapılandırma sunucusunu seçin ve ardından **işlem sunucuları**' nı genişletin.
+1. **Settings**  >  **Sunucular Site Recovery**ayarları ' nı seçin. Yapılandırma sunucusunu seçin ve ardından **işlem sunucuları**' nı genişletin.
 
     ![Işlem sunucusu iletişim kutusunun ekran görüntüsü](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
 2. Kullanımda olan işlem sunucusuna sağ tıklayın ve ardından **Değiştir**' i seçin.
@@ -144,12 +144,12 @@ Linux tabanlı bir sanal makine için ana hedef sunucu ekleme hakkında bilgi ed
 
 Windows tabanlı bir sanal makine için ana hedef sunucu eklemek için:
 
-1. **Kurtarma Hizmetleri Kasası** > **Site Recovery altyapı** > **yapılandırma sunucularına**gidin.
+1. **Kurtarma Hizmetleri Kasası**  >  **Site Recovery altyapı**  >  **yapılandırma sunucularına**gidin.
 2. Gerekli yapılandırma sunucusunu seçin ve ardından **ana hedef sunucusu**' nu seçin.
 
     ![Ana hedef sunucu Ekle düğmesini gösteren ekran görüntüsü](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
 3. Birleşik kurulum dosyasını indirin ve ardından ana hedef sunucuyu ayarlamak için dosyayı sanal makinede çalıştırın.
-4. **Ana hedefi** > yüklemeyi**İleri**' yi seçin.
+4. **Ana hedefi yüklemeyi**  >  **İleri**' yi seçin.
 
     ![Ana hedef Install seçeneğini seçen ekran görüntüsü](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
 5. Varsayılan yükleme konumunu seçin ve ardından **yükleme**' yi seçin.
@@ -163,7 +163,7 @@ Windows tabanlı bir sanal makine için ana hedef sunucu eklemek için:
     ![Yapılandırma sunucusu için IP adresinin ve parolanın nereye girdiğinin gösterildiği ekran görüntüsü](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. **Kaydol**’u seçin. Kayıt tamamlandığında **son**' u seçin.
 
-Kayıt başarıyla tamamlandığında, sunucu, yapılandırma sunucusunun ana hedef sunucularında, **Kurtarma Hizmetleri kasasındaki** > Azure Portal**Site Recovery altyapı** > **yapılandırma sunucularında**listelenir.
+Kayıt başarıyla tamamlandığında, sunucu, yapılandırma sunucusunun ana hedef sunucularında, **Kurtarma Hizmetleri kasasındaki**Azure Portal  >  **Site Recovery altyapı**  >  **yapılandırma sunucularında**listelenir.
 
  > [!NOTE]
  > [Windows için ana hedef sunucu Birleşik kurulum dosyasının](https://aka.ms/latestmobsvc)en son sürümünü indirin.

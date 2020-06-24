@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282425"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712199"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric sistem durumu izlemeye giriş
 Azure Service Fabric, zengin, esnek ve Genişletilebilir sistem durumu değerlendirmesi ve raporlama sağlayan bir sistem durumu modeli sunar. Model, küme durumunun ve üzerinde çalışan hizmetlerin neredeyse gerçek zamanlı olarak izlenmesine olanak tanır. Kolayca sistem durumu bilgilerini alabilir ve olası sorunları basamaklandırmadan ve büyük kesintilere neden olacak şekilde düzeltebilirsiniz. Tipik modelde, hizmetler raporları yerel görünümlerine göre gönderir ve bu bilgiler genel bir küme düzeyi görünüm sağlamak için toplanır.
@@ -101,7 +101,7 @@ Aşağıdaki örnek, bir küme bildiriminin alıntısıdır. Uygulama türü eş
 ```
 
 ### <a name="application-health-policy"></a>Uygulama sistem durumu ilkesi
-[Uygulama sistem durumu ilkesi](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) , uygulamalar ve bunların alt öğeleri için olay değerlendirmesinin ve alt durum toplama işlemlerinin nasıl yapıldığını açıklar. Uygulama paketindeki **ApplicationManifest. xml**uygulama bildiriminde tanımlanabilir. Hiçbir ilke belirtilmemişse Service Fabric, bir sistem durumu raporu veya uyarı ya da hata sistem durumunda alt öğe varsa varlığın sağlıksız olduğunu varsayar.
+[Uygulama sistem durumu ilkesi](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) , uygulamalar ve bunların alt öğeleri için olay değerlendirmesinin ve alt durum toplama işlemlerinin nasıl yapıldığını açıklar. Uygulama paketindeki **ApplicationManifest.xml**uygulama bildiriminde tanımlanabilir. Hiçbir ilke belirtilmemişse Service Fabric, bir sistem durumu raporu veya uyarı ya da hata sistem durumunda alt öğe varsa varlığın sağlıksız olduğunu varsayar.
 Yapılandırılabilir ilkeler şunlardır:
 
 * [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Sistem durumu değerlendirmesi sırasında uyarı durumu raporlarının hata olarak değerlendirilip değerlendirilmeyeceğini belirtir. Varsayılan: false.
@@ -179,7 +179,7 @@ Sistem durumu deposu tüm alt öğeleri değerlendirdikten sonra, sağlıksız a
 ## <a name="health-reporting"></a>Sistem durumu raporlaması
 Sistem bileşenleri, System Fabric uygulamaları ve iç/dış Watchdogs Service Fabric varlıklara göre rapor verebilir. Raporla, izlenmekte olan koşullara göre izlenen varlıkların sistem durumunu *Yereller* halinde yapar. Herhangi bir genel duruma veya toplama verilerine bakmaları gerekmez. İstenen davranış, hangi bilgilerin gönderileceğini belirlemek için birçok şeyi göz atabilmeniz gereken karmaşık organiler değildir.
 
-Sistem durumu deposuna sistem durumu verileri göndermek için, bir Raporlayıcı etkilenen varlığı belirleyip bir sistem durumu raporu oluşturur. Raporu göndermek için, `Partition` veya `CodePackageActivationContext` nesneleri, POWERSHELL cmdlet 'leri veya REST üzerinde kullanıma sunulan [FabricClient. Healthclient. reporthegizlilik](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API 'sini, rapor durumu API 'lerini kullanın.
+Sistem durumu deposuna sistem durumu verileri göndermek için, bir Raporlayıcı etkilenen varlığı belirleyip bir sistem durumu raporu oluşturur. Raporu göndermek için, veya nesneleri, PowerShell cmdlet 'leri veya REST üzerinde kullanıma sunulan [FabricClient. HealthClient. Reporthegizlilik](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API 'sini, rapor durumu API 'lerini kullanın `Partition` `CodePackageActivationContext` .
 
 ### <a name="health-reports"></a>Sistem durumu raporları
 Kümedeki varlıkların her biri için [sistem durumu raporları](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) aşağıdaki bilgileri içerir:

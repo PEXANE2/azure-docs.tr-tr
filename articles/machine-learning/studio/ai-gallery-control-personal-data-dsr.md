@@ -5,18 +5,18 @@ description: Arabirim veya AI Galerisi kataloğu API 'sini kullanarak Azure Yapa
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 429ba2ae44788430bfa9d308b8de5daff25954d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204554"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711179"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure Yapay Zeka Galerisi ürün içi kullanıcı verilerini görüntüleyin ve silin
 
@@ -38,7 +38,7 @@ Azure Yapay Zeka Galerisi Web sitesi kullanıcı arabirimi aracılığıyla yay�
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Verilerinizi görüntülemek için AI Galerisi katalog API 'sini kullanın
 
-Adresinden https://catalog.cortanaanalytics.com/entitieserişilebilen AI Galerisi katalog API 'si aracılığıyla toplanan verileri programlı bir şekilde görüntüleyebilirsiniz. Verileri görüntülemek için, yazar KIMLIĞINIZ gerekir. Listelenmemiş varlıkları katalog API 'SI aracılığıyla görüntülemek için bir erişim belirtecine ihtiyacınız vardır.
+Adresinden erişilebilen AI Galerisi katalog API 'SI aracılığıyla toplanan verileri programlı bir şekilde görüntüleyebilirsiniz https://catalog.cortanaanalytics.com/entities . Verileri görüntülemek için, yazar KIMLIĞINIZ gerekir. Listelenmemiş varlıkları katalog API 'SI aracılığıyla görüntülemek için bir erişim belirtecine ihtiyacınız vardır.
 
 Katalog yanıtları JSON biçiminde döndürülür.
 
@@ -47,7 +47,7 @@ Yazar KIMLIĞI, Azure Yapay Zeka Galerisi yayımlarken kullanılan e-posta adres
 
 1.    [Azure yapay zeka Galerisi](https://gallery.azure.ai/)oturum açın.
 2.    Sağ üst köşedeki profil resmine ve sonra profil sayfanızı yüklemek için hesap adına tıklayın.
-3.    Adres çubuğundaki URL aşağıdaki `authorId=`alfasayısal kimliği görüntüler. Örneğin, URL için:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+3.    Adres çubuğundaki URL aşağıdaki alfasayısal KIMLIĞI görüntüler `authorId=` . Örneğin, URL için:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Yazar KIMLIĞI:`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -55,17 +55,17 @@ Yazar KIMLIĞI, Azure Yapay Zeka Galerisi yayımlarken kullanılan e-posta adres
 
 Listelenmemiş varlıkları katalog API 'SI aracılığıyla görüntülemek için bir erişim belirtecine ihtiyacınız vardır. Kullanıcılar, erişim belirteci olmadan ortak varlıkları ve diğer Kullanıcı bilgilerini görüntülemeye devam edebilir.
 
-Erişim belirteci almak için, oturum açıkken tarayıcının katalog API 'sine `DataLabAccessToken` yaptığı http isteğinin üst bilgisini incelemeniz gerekir:
+Erişim belirteci almak için, `DataLabAccessToken` oturum açıkken tarayıcının katalog API 'sine yaptığı http isteğinin üst bilgisini incelemeniz gerekir:
 
 1.    [Azure yapay zeka Galerisi](https://gallery.azure.ai/)oturum açın.
 2.    Sağ üst köşedeki profil resmine ve sonra profil sayfanızı yüklemek için hesap adına tıklayın.
 3.    F12 tuşuna basarak tarayıcı Geliştirici Araçları bölmesini açın, ağ sekmesini seçin ve sayfayı yenileyin. 
 4. Filtre metin kutusuna yazarak dize *kataloğunda* istekleri filtreleyin.
-5.    URL `https://catalog.cortanaanalytics.com/entities`'de istekler ' de bir get isteği bulun ve *üstbilgiler* sekmesini seçin. aşağı kaydırarak *istek üst bilgileri* bölümüne gidin.
-6.    Üstbilginin `DataLabAccessToken` altında alfasayısal belirteç bulunur. Verilerinizin güvenliğini sağlamaya yardımcı olmak için bu belirteci paylaşmayın.
+5.    URL 'de istekler ' de `https://catalog.cortanaanalytics.com/entities` BIR get isteği bulun ve *üstbilgiler* sekmesini seçin. aşağı kaydırarak *Istek üst bilgileri* bölümüne gidin.
+6.    Üstbilginin altında `DataLabAccessToken` alfasayısal belirteç bulunur. Verilerinizin güvenliğini sağlamaya yardımcı olmak için bu belirteci paylaşmayın.
 
 ### <a name="view-user-information"></a>Kullanıcı bilgilerini görüntüle
-Önceki adımlarda aldığınız yazar KIMLIĞINI kullanarak, bir kullanıcının profilindeki bilgileri aşağıdaki URL 'de değiştirerek `[AuthorId]` görüntüleyin:
+Önceki adımlarda aldığınız yazar KIMLIĞINI kullanarak, bir kullanıcının profilindeki bilgileri `[AuthorId]` AŞAĞıDAKI URL 'de değiştirerek görüntüleyin:
 
     https://catalog.cortanaanalytics.com/users/[AuthorID]
 
@@ -82,7 +82,7 @@ Erişim belirteci almak için, oturum açıkken tarayıcının katalog API 'sine
 
 Katalog API 'SI, yayımlanan varlıklar hakkındaki bilgileri doğrudan [AI Galerisi Web sitesinde](https://gallery.azure.ai/)görüntüleyebileceğiniz Azure yapay zeka Galerisi depolar. 
 
-Yayınlanan varlıkları görüntülemek için aşağıdaki URL 'yi ziyaret edin ve yukarıdaki `[AuthorId]` yazar kimliğini [Al](#get-an-author-id) bölümünde elde edilen yazar kimliğiyle değiştirin.
+Yayınlanan varlıkları görüntülemek için aşağıdaki URL 'yi ziyaret edin ve yukarıdaki yazar kimliğini `[AuthorId]` [Al](#get-an-author-id) bölümünde elde edilen yazar kimliğiyle değiştirin.
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
@@ -95,7 +95,7 @@ Yayınlanan varlıkları görüntülemek için aşağıdaki URL 'yi ziyaret edin
 Bu sorgu yalnızca ortak varlıkları görüntüler. Listelenmemiş olanlar da dahil olmak üzere tüm varlıklarınızı görüntülemek için önceki bölümden elde edilen erişim belirtecini sağlayın.
 
 1.    [Postman](https://www.getpostman.com)gibi bir araç kullanarak, [erişim belirtecinizi edinme](#get-your-access-token)bölümünde açıklandığı gibi Katalog URL 'sine bir http get isteği oluşturun.
-2.    Erişim belirtecine ayarlanmış değer ile adlı `DataLabAccessToken`bir http istek üst bilgisi oluşturun.
+2.    Erişim belirtecine ayarlanmış değer ile adlı bir HTTP istek üst bilgisi oluşturun `DataLabAccessToken` .
 3.    HTTP isteğini gönderme.
 
 > [!TIP]

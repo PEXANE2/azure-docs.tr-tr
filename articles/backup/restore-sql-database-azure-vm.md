@@ -4,11 +4,11 @@ description: Bu makalede, bir Azure VM üzerinde çalışan ve Azure Backup yede
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252460"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687438"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 'lerinde SQL Server veritabanlarını geri yükleme
 
@@ -95,7 +95,7 @@ Aşağıdaki şekilde geri yükleyin:
 
 ### <a name="restore-and-overwrite"></a>Geri yükleme ve üzerine yazma
 
-1. **Geri yükleme yapılandırma** menüsünde, **geri yükleme yeri**' nin altında, **DB** > **Tamam**üzerine yaz ' ı seçin.
+1. **Geri yükleme yapılandırma** menüsünde, **geri yükleme yeri**' nin altında, **DB Tamam üzerine yaz**' ı seçin  >  **OK**.
 
     ![DB üzerine yaz seçeneğini belirleyin](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
@@ -114,10 +114,10 @@ Yedekleme verilerini bir veritabanı yerine. bak dosyaları olarak geri yükleme
 
     >Veritabanı yedekleme dosyalarını, hedef kayıtlı VM 'ye bağlanmış bir Azure dosya paylaşımında geri yüklemek için NT AUTHORITY\SYSTEM 'ın dosya paylaşımında erişime sahip olduğundan emin olun. VM 'de takılı olan AFS 'ye okuma/yazma izinleri vermek için aşağıda verilen adımları gerçekleştirebilirsiniz:
     >
-    >- NT `PsExec -s cmd` AUTHORITY\SYSTEM kabuğu 'na girmek için çalıştırın
+    >- `PsExec -s cmd`NT AUTHORITY\SYSTEM kabuğu 'na girmek için çalıştırın
     >   - `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` yürütme
     >   - Erişimi doğrulama`dir \\<storageacct>.file.core.windows.net\<filesharename>`
-    >- Yedekleme kasasından `\\<storageacct>.file.core.windows.net\<filesharename>` dosya olarak geri yüklemeyi başlatma<BR>
+    >- Yedekleme kasasından dosya olarak geri yüklemeyi başlatma `\\<storageacct>.file.core.windows.net\<filesharename>`<BR>
     İle PsExec indirebilirsiniz<https://docs.microsoft.com/sysinternals/downloads/psexec>
 
 4. **Tamam**’ı seçin.

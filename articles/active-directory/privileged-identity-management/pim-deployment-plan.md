@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233542"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886096"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management dağıtma (PıM)
 
@@ -52,13 +52,14 @@ Privileged Identity Management kullanmak için, dizininiz aşağıdaki ücretli 
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+- Microsoft 365 Eğitim A5
+- Microsoft 365 Kurumsal E5
 
 Daha fazla bilgi için bkz. [Privileged Identity Management kullanılacak lisans gereksinimleri](subscription-requirements.md).
 
 ### <a name="key-terminology"></a>Anahtar terminolojisi
 
-| Terim veya kavram | Açıklama |
+| Terim veya kavram | Description |
 | --- | --- |
 | lebilecek | Bir kullanıcının rolü kullanmak için bir veya daha fazla eylem gerçekleştirmesini gerektiren bir rol ataması. Bir Kullanıcı bir rol için uygun hale getirildiğinde, ayrıcalıklı görevleri gerçekleştirmeleri gerektiğinde rolü etkinleştirebilecekleri anlamına gelir. Kalıcı ve uygun bir rol atamasına karşılık gelen bir kişiye verilen erişimde fark yoktur. Tek fark, bazı kişilerin her zaman erişim gereksinimi yoktur. |
 | etkinleştirme | Kullanıcının uygun olduğu bir rolü kullanmak için bir veya daha fazla eylem gerçekleştirme işlemi. Eylemler, bir Multi-Factor Authentication (MFA) denetimi gerçekleştirmeye, iş gerekçesinin sağlanmasından veya belirlenen onaylayanlardan onay isteğinde bulunabilir. |
@@ -99,7 +100,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Paydaşlar: Azure AD rolleri Için Privileged Identity Management
 
-| Adı | Rol | Eylem |
+| Name | Rol | Eylem |
 | --- | --- | --- |
 | Ad ve e-posta | **Kimlik mimarı veya Azure genel Yöneticisi**<br/>Kimlik Yönetimi ekibinin, bu değişikliğin kuruluşunuzdaki temel kimlik yönetimi altyapısına nasıl hizalanacağını tanımlamaya yönelik bir temsilcisidir. | SO/R/ı |
 | Ad ve e-posta | **Hizmet sahibi/satır Yöneticisi**<br/>Bir hizmetin veya bir hizmet grubunun BT sahiplerine bir temsilci. Bunlar, kararlar verirken ve takımlarında Privileged Identity Management almaya yardımcı olan bir anahtarlardır. | SO/R/ı |
@@ -109,7 +110,7 @@ Aşağıdaki bölümde, projede yer alan tüm paydaşların belirlenmesi ve otur
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Paydaşlar: Azure Kaynak rolleri Için Privileged Identity Management
 
-| Adı | Rol | Eylem |
+| Name | Rol | Eylem |
 | --- | --- | --- |
 | Ad ve e-posta | **Abonelik/kaynak sahibi**<br/>Privileged Identity Management dağıtmak istediğiniz her abonelik veya kaynağın BT sahiplerine bir temsilci | SO/R/ı |
 | Ad ve e-posta | **Güvenlik sahibi**<br/>Güvenlik ekibinden, planın kuruluşunuzun güvenlik gereksinimlerini karşıladığı oturumu kapatan bir temsilcisidir. | SO/R |
@@ -179,7 +180,7 @@ En fazla izin sayısı olan Azure AD rollerinin korunmasını önceliklendirmek 
 
 1. Genel yönetici
 1. Güvenlik yöneticisi
-1. Kullanıcı Yöneticisi
+1. Kullanıcı yöneticisi
 1. Exchange yöneticisi
 1. SharePoint yöneticisi
 1. Intune yöneticisi
@@ -243,20 +244,20 @@ Privileged Identity Management çözümünüzü uygulamadan önce, kuruluşunuzu
 | Rol | MFA gerektirme | Bildirim | Olay bileti | Onay gerektir | Onaylayan | Etkinleştirme süresi | Kalıcı yönetici |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Genel Yönetici | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Diğer genel Yöneticiler | 1 Saat | Acil durum erişim hesapları |
-| Exchange Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | sayı | Hiçbiri | 2 saat | Hiçbiri |
-| Yardım Masası Yöneticisi | sayı | sayı | :heavy_check_mark: | sayı | Hiçbiri | 8 saat | Hiçbiri |
+| Exchange Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | sayı | Yok | 2 saat | Yok |
+| Yardım Masası Yöneticisi | sayı | sayı | :heavy_check_mark: | sayı | Yok | 8 saat | Yok |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Azure Kaynak rolleri için Privileged Identity Management ayarları
 
 | Rol | MFA gerektirme | Bildirim | Onay gerektir | Onaylayan | Etkinleştirme süresi | Etkin yönetici | Etkin süre sonu | Uygun süre sonu |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Kritik aboneliklerin sahibi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Aboneliğin diğer sahipleri | 1 Saat | Hiçbiri | yok | 3 ay |
-| Daha az kritik aboneliğin Kullanıcı erişimi Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | Hiçbiri | 1 Saat | Hiçbiri | yok | 3 ay |
-| Sanal Makine Katılımcısı | sayı | :heavy_check_mark: | sayı | Hiçbiri | 3 saat | Hiçbiri | yok | 6 ay |
+| Kritik aboneliklerin sahibi | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Aboneliğin diğer sahipleri | 1 Saat | Yok | yok | 3 ay |
+| Daha az kritik aboneliğin Kullanıcı erişimi Yöneticisi | :heavy_check_mark: | :heavy_check_mark: | sayı | Yok | 1 Saat | Yok | yok | 3 ay |
+| Sanal Makine Katılımcısı | sayı | :heavy_check_mark: | sayı | Yok | 3 saat | Yok | yok | 6 ay |
 
 Aşağıdaki tabloda ayarların her biri açıklanmaktadır.
 
-| Ayar | Açıklama |
+| Ayar | Description |
 | --- | --- |
 | Rol | Ayarlarını tanımladığınız rolün adı. |
 | MFA gerektirme | Rolü etkinleştirmeden önce uygun kullanıcının MFA gerçekleştirmesi gerekip gerekmediği.<br/><br/> : heavy_check_mark: Microsoft, özellikle rollerin Konuk kullanıcıları varsa, tüm yönetici rolleri için MFA 'yı zorunlu **kılmanızı önerir** . |

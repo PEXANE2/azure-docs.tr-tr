@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251628"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687455"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Azure Machine Learning’de gelişmiş analiz senaryoları
 Bu makalede, [ekip veri bilimi işlemi (TDSP)](overview.md)tarafından işlenebilen çeşitli örnek veri kaynakları ve hedef senaryolar özetlenmektedir. TDSP, ekiplerin akıllı uygulamalar oluşturma konusunda işbirliği yapmasına yönelik sistematik bir yaklaşım sağlar. Burada sunulan senaryolar, Azure 'daki veri özelliklerine, kaynak konumlarına ve hedef depolarına bağlı olan veri işleme iş akışında sunulan seçenekleri gösterir.
@@ -35,7 +35,7 @@ Aşağıdaki bölümlerin her biri örnek bir senaryo sunar. Her senaryo için, 
 > 
 > 
 
-## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>Senaryo \#1: yerel dosyalardaki küçük ve orta ölçekli tablo veri kümesi
+## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>Senaryo \# 1: yerel dosyalardaki küçük ve orta ölçekli tablo veri kümesi
 ![Küçük ve orta ölçekli yerel dosyalar][1]
 
 #### <a name="additional-azure-resources-none"></a>Ek Azure kaynakları: yok
@@ -43,7 +43,7 @@ Aşağıdaki bölümlerin her biri örnek bir senaryo sunar. Her senaryo için, 
 1. Bir veri kümesini karşıya yükleyin.
 1. Karşıya yüklenen veri kümeleri ile başlayan bir Azure Machine Learning deneme akışı oluşturun.
 
-## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>Senaryo \#2: yerel dosyaların Işlenmesi gereken küçük ve orta ölçekli veri kümesi
+## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>Senaryo \# 2: yerel dosyaların işlenmesi gereken küçük ve orta ölçekli veri kümesi
 ![İşleme sahip küçük ve orta ölçekli yerel dosyalar][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Ek Azure kaynakları: Azure sanal makinesi (IPython Not defteri sunucusu)
@@ -56,7 +56,7 @@ Aşağıdaki bölümlerin her biri örnek bir senaryo sunar. Her senaryo için, 
 1. [Verileri Içeri aktarma][import-data] modülünü kullanarak Azure Bloblarındaki verileri okuyun.
 1. Alınan veri kümeleri ile başlayan bir Azure Machine Learning deneme akışı oluşturun.
 
-## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>Senaryo \#3: yerel dosyaların büyük veri kümesi, Azure bloblarını hedefleme
+## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>Senaryo \# 3: yerel dosyaların büyük veri kümesi, Azure bloblarını hedefleme
 ![Büyük yerel dosyalar][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Ek Azure kaynakları: Azure sanal makinesi (IPython Not defteri sunucusu)
@@ -71,7 +71,7 @@ Aşağıdaki bölümlerin her biri örnek bir senaryo sunar. Her senaryo için, 
 1. [Verileri Içeri aktarma][import-data] modülünü kullanarak Azure Bloblarındaki verileri okuyun.
 1. Alınan veri kümeleri ile başlayan Azure Machine Learning deneme akışı oluşturun.
 
-## <a name="scenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>Senaryo \#4: Azure sanal makinesinde SQL Server hedefleme yerel dosyaların küçük ve orta ölçekli veri kümesi
+## <a name="scenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>Senaryo \# 4: Azure sanal makinesinde SQL Server hedefleme yerel dosyaların küçük ve orta ölçekli veri kümesi
 ![Azure 'da küçük ve orta ölçekli yerel dosyalar SQL DB 'ye][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Ek Azure kaynakları: Azure sanal makinesi (SQL Server/IPython Not defteri sunucusu)
@@ -82,14 +82,14 @@ Aşağıdaki bölümlerin her biri örnek bir senaryo sunar. Her senaryo için, 
 1. VM 'ler yerel dosyalara veri kaydetme (VM 'de IPython Not defteri çalışıyor, yerel sürücüler VM sürücülerine başvurur).
 1. Verileri bir Azure VM üzerinde çalışan SQL Server veritabanına yükleyin.
    
-   Seçenek \#1: SQL Server Management Studio kullanma.
+   Seçenek \# 1: SQL Server Management Studio kullanma.
    
    * SQL Server VM oturum açın
    * SQL Server Management Studio çalıştırın.
    * Veritabanı ve hedef tablolar oluşturun.
    * Verileri VM yerel dosyalarından yüklemek için toplu içeri aktarma yöntemlerinden birini kullanın.
    
-   Seçenek \#2: IPython Not defterini kullanma – orta ve daha büyük veri kümeleri için önerilmez
+   Seçenek \# 2: IPython Not defterini kullanma – orta ve daha büyük veri kümeleri için önerilmez
    
    <!-- -->    
    * VM 'deki SQL Server erişmek için ODBC bağlantı dizesi kullanın.
@@ -101,7 +101,7 @@ Aşağıdaki bölümlerin her biri örnek bir senaryo sunar. Her senaryo için, 
 1. Verileri [Içeri aktarma][import-data] modülünü kullanarak doğrudan SQL Server verileri okuyun. Doğrudan [Içeri aktarma verileri][import-data] sorgusunda alanları çıkaran, özellik oluşturan ve örnek verileri içeren gerekli sorguyu yapıştırın.
 1. Alınan veri kümeleri ile başlayan Azure Machine Learning deneme akışı oluşturun.
 
-## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>Senaryo \#5: yerel dosyalardaki büyük veri kümesi, Azure VM 'de hedef SQL Server
+## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>Senaryo \# 5: yerel dosyalardaki büyük veri kümesi, Azure VM 'de hedef SQL Server
 ![Azure 'da SQL DB 'ye büyük yerel dosyalar][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Ek Azure kaynakları: Azure sanal makinesi (SQL Server/IPython Not defteri sunucusu)
@@ -138,7 +138,7 @@ Aşağıdaki bölümlerin her biri örnek bir senaryo sunar. Her senaryo için, 
 1. Verileri [Içeri aktarma][import-data] modülünü kullanarak doğrudan SQL Server verileri okuyun. Doğrudan [Içeri aktarma verileri][import-data] sorgusunda alanları çıkaran, özellik oluşturan ve örnek verileri içeren gerekli sorguyu yapıştırın.
 1. Karşıya yüklenen veri kümesiyle başlayan basit Azure Machine Learning deneme akışı
 
-## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>Senaryo \#6: bir Azure sanal makinesinde SQL Server hedefleme, şirket içi SQL Server veritabanında büyük veri kümesi
+## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>Senaryo \# 6: bir Azure sanal makinesinde SQL Server hedefleme, şirket içi SQL Server veritabanında büyük veri kümesi
 ![Azure 'da büyük SQL DB-SQL DB 'ye şirket içi][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Ek Azure kaynakları: Azure sanal makinesi (SQL Server/IPython Not defteri sunucusu)
@@ -186,7 +186,7 @@ SQL Server veritabanının tamamını SQL Server VM çoğaltmak için bir verita
 
 [Ayırma ve Iliştirme kullanarak bir veritabanını taşıma (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>Senaryo \#7: yerel dosyalardaki büyük veri, Azure HDInsight Hadoop kümelerinde hedef Hive veritabanı
+## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>Senaryo \# 7: yerel dosyalardaki büyük veri, Azure HDInsight Hadoop kümelerinde hedef Hive veritabanı
 ![Yerel hedef Hive 'de büyük veri][9]
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Ek Azure kaynakları: Azure HDInsight Hadoop kümesi ve Azure sanal makinesi (IPython Not defteri sunucusu)
@@ -208,12 +208,12 @@ SQL Server veritabanının tamamını SQL Server VM çoğaltmak için bir verita
    
    b.  Hadoop komut satırını açın.
    
-   c.  Hadoop komut satırında komut `cd %hive_home%\bin` ile Hive kök dizinini girin.
+   c.  Hadoop komut satırında komut ile Hive kök dizinini girin `cd %hive_home%\bin` .
    
    d.  Veritabanı ve tablolar oluşturmak ve BLOB depolamadan Hive tablolarına veri yüklemek için Hive sorgularını çalıştırın.
    
    > [!NOTE]
-   > Veriler büyükse, kullanıcılar bölüm içeren Hive tablosunu oluşturabilir. Ardından kullanıcılar, Bölüm tarafından bölümlenen Hive tablosuna veri yüklemek için baş düğümdeki Hadoop komut satırında bir `for` döngüsü kullanabilir.
+   > Veriler büyükse, kullanıcılar bölüm içeren Hive tablosunu oluşturabilir. Ardından kullanıcılar, `for` bölüm tarafından bölümlenen Hive tablosuna veri yüklemek için baş düğümdeki Hadoop komut satırında bir döngüsü kullanabilir.
    > 
    > 
 1. Hadoop komut satırında gerektiğinde verileri bulun ve özellik oluşturun. Özelliklerin veritabanı tablolarında gerçekleştirilmiş olması gerekmez. Yalnızca bunları oluşturmak için gereken sorguyu aklınızda edin.
@@ -222,7 +222,7 @@ SQL Server veritabanının tamamını SQL Server VM çoğaltmak için bir verita
    
    b.  Hadoop komut satırını açın.
    
-   c.  Hadoop komut satırında komut `cd %hive_home%\bin` ile Hive kök dizinini girin.
+   c.  Hadoop komut satırında komut ile Hive kök dizinini girin `cd %hive_home%\bin` .
    
    d.  Verileri araştırmak ve gerektiğinde özellikler oluşturmak için Hadoop kümesinin baş düğümündeki Hadoop komut satırında Hive sorguları ' nı çalıştırın.
 1. Gerekirse ve/veya isteniyorsa, verileri Azure Machine Learning Studio sığacak şekilde örnekleyebilirsiniz.

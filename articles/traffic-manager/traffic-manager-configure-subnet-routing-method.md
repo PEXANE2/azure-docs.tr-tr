@@ -4,20 +4,19 @@ description: Bu makalede, belirli alt ağlardan gelen trafiği yönlendirmek üz
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: rohink
-ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938745"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711791"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager'ı kullanarak trafiği kullanıcı alt ağına göre belirli uç noktalara yönlendirme
 
@@ -47,7 +46,7 @@ Bu bölümde Traffic Manager profili için iki farklı Azure bölgesinde iki hiz
 #### <a name="create-vms-for-running-websites"></a>Web sitelerini çalıştırmak için VM oluşturma
 Bu bölümde, **Doğu ABD** **Batı Avrupa** ve Azure bölgelerinde *MyEndpointVMEastUS* ve *Myendpointvmweurope* adlı iki VM oluşturursunuz.
 
-1. Azure Portal sol üst köşesinde, **kaynak** > oluştur**işlem** > **Windows Server 2016 VM**' yi seçin.
+1. Azure Portal sol üst köşesinde, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2016 VM**' yi seçin.
 2. **Temel Bilgiler** için aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**’u seçin:
 
     |Ayar|Değer|
@@ -87,14 +86,14 @@ Bu bölümde, **Doğu ABD** **Batı Avrupa** ve Azure bölgelerinde *MyEndpointV
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>IIS yükleme ve varsayılan web sayfasını özelleştirme
 
-Bu bölümde, IIS sunucusunu iki VM 'ye yüklersiniz- *myIISVMEastUS*  & *myiisvmweurope*ve ardından varsayılan Web sitesi sayfasını güncelleştirmeniz gerekir. Özelleştirilmiş web sitesi sayfası, web sitesini bir web tarayıcısından ziyaret ettiğinizde bağlandığınız VM'nin adını gösterecek.
+Bu bölümde, IIS sunucusunu iki VM 'ye yüklersiniz- *myIISVMEastUS*   &  *myiisvmweurope*ve ardından varsayılan Web sitesi sayfasını güncelleştirmeniz gerekir. Özelleştirilmiş web sitesi sayfası, web sitesini bir web tarayıcısından ziyaret ettiğinizde bağlandığınız VM'nin adını gösterecek.
 
 1. Sol menüden **Tüm kaynaklar**’ı seçin ve kaynak listesinden, *myResourceGroupTM1* kaynak grubunda bulunan *myIISVMEastUS* öğesine tıklayın.
 2. **Genel Bakış** sayfasında **Bağlan**'a tıklayın ve **Sanal makineye bağlanma** bölümünde **RDP dosyasını indir**'i seçin.
 3. İndirilen rdp dosyasını açın. İstendiğinde **Bağlan**’ı seçin. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin. Sanal makineyi oluştururken girdiğiniz kimlik bilgilerini belirtmek için **Diğer seçenekler**’i ve sonra **Farklı bir hesap kullan** seçeneğini belirlemeniz gerekebilir.
 4. **Tamam**’ı seçin.
 5. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Uyarıyı alırsanız, bağlantıya devam etmek için **Evet** ' i veya **devam et**' i seçin.
-6. Sunucu masaüstünde **Windows Yönetim Araçları**>**Sunucu Yöneticisi**' na gidin.
+6. Sunucu masaüstünde **Windows Yönetim Araçları** > **Sunucu Yöneticisi**' na gidin.
 7. *MyIISVMEastUS* üzerinde Windows PowerShell 'i başlatın ve IIS sunucusunu yüklemek ve varsayılan htm dosyasını güncelleştirmek için aşağıdaki komutları kullanın.
     ```powershell-interactive
     # Install IIS
@@ -133,7 +132,7 @@ Traffic Manager, kullanıcı trafiğini hizmet uç noktalarının DNS adına gö
 
 Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**bir VM (*mVMEastUS* ve *myVMWestEurope*) oluşturursunuz. Bu VM'leri web sitesine göz attığınızda Traffic Manager'ın trafiği en yakın IIS sunucusuna nasıl yönlendirdiğini test etmek için kullanacaksınız.
 
-1. Azure Portal sol üst köşesinde, **kaynak** > oluştur**işlem** > **Windows Server 2016 VM**' yi seçin.
+1. Azure Portal sol üst köşesinde, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2016 VM**' yi seçin.
 2. **Temel Bilgiler** için aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**’u seçin:
 
     |Ayar|Değer|
@@ -170,7 +169,7 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**bir VM
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 İsteğin kaynak IP adresine göre belirli uç noktalar döndürmenizi sağlayacak bir Traffic Manager profili oluşturun.
 
-1. Ekranın sol üst kısmında,**profil** > **Oluştur**Traffic Manager **kaynak** > **ağı** > oluştur ' u seçin.
+1. Ekranın sol üst kısmında, **Create a resource**  >  **Networking**  >  **profil**  >  **Oluştur**Traffic Manager kaynak ağı oluştur ' u seçin.
 2. **Traffic Manager profili oluştur** ekranında aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**'u seçin:
 
     | Ayar                 | Değer                                              |
@@ -186,7 +185,7 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**bir VM
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
 
-Kullanıcı trafiğinin Kullanıcı sorgusunun alt ağına göre yönlendirilmesini sağlamak için IIS sunucularını çalıştıran iki VM 'yi ekleyin- *myIISVMEastUS* & *myiisvmweurope* .
+Kullanıcı *myIISVMEastUS*  &  trafiğinin Kullanıcı sorgusunun alt ağına göre yönlendirilmesini sağlamak için IIS sunucularını çalıştıran iki VM 'yi ekleyin-myIISVMEastUS*myiisvmweurope* .
 
 1. Portalın arama çubuğunda önceki bölümde oluşturduğunuz Traffic Manager profili adını arayın ve görüntülenen sonuçların arasından bu profili seçin.
 2. **Traffic Manager profili** sayfasının **Ayarlar** bölümünde **Uç noktalar**'a ve ardından **Ekle**'ye tıklayın.
@@ -195,7 +194,7 @@ Kullanıcı trafiğinin Kullanıcı sorgusunun alt ağına göre yönlendirilmes
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Tür                    | Azure uç noktası                                   |
-    | Adı           | myTestWebSiteEndpoint                                        |
+    | Name           | myTestWebSiteEndpoint                                        |
     | Hedef kaynak türü           | Genel IP Adresi                          |
     | Hedef kaynak          | Aynı abonelikte genel IP adreslerine sahip kaynakların listesini göstermek için **Genel BIR IP adresi seçin** . **Kaynak** bölümünde *myIISVMEastUS-ip* adlı genel IP adresini seçin. Bu, Doğu ABD bölgesindeki IIS sunucusu VM'sinin IP adresidir.|
     |  Alt ağ yönlendirme ayarları    |   *MyVMEastUS* test VM 'sinin IP adresini ekleyin. Bu VM 'den kaynaklanan herhangi bir Kullanıcı sorgusu, *Mytestwebsiteendpoint*öğesine yönlendirilir.    |

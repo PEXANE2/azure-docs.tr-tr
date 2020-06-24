@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267826"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711944"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple uyarılarını görüntülemek ve yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -48,11 +48,11 @@ StorSimple cihazlarınızın her biri için uyarı koşullarının e-postayla bi
 > [!NOTE]
 > Cihaz başına en fazla 20 e-posta adresi girebilirsiniz.
 
-Bir cihaz için e-posta bildirimini etkinleştirdikten sonra, bildirim listesinin üyeleri kritik bir uyarı oluştuğunda bir e-posta iletisi alır. Mesajlar *StorSimple-Alerts-\@noreply mail.windowsazure.com* 'dan gönderilir ve uyarı koşulunu tanımlarlar. Alıcılar e-posta bildirim listesinden kaldırmak için **abonelik kaldırma** ' ya tıklayabilir.
+Bir cihaz için e-posta bildirimini etkinleştirdikten sonra, bildirim listesinin üyeleri kritik bir uyarı oluştuğunda bir e-posta iletisi alır. Mesajlar *StorSimple-Alerts-noreply \@ mail.windowsazure.com* 'dan gönderilir ve uyarı koşulunu tanımlarlar. Alıcılar e-posta bildirim listesinden kaldırmak için **abonelik kaldırma** ' ya tıklayabilir.
 
 #### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>Bir cihaz için uyarıların e-posta bildirimini etkinleştirmek için
 1. StorSimple Cihaz Yöneticisi hizmetinize gidin. Cihazların listesinden, yapılandırmak istediğiniz cihazı seçin ve tıklatın.
-2. Cihaz için **Ayarlar** > **genel** ' e gidin.
+2. Cihaz için **Ayarlar**  >  **genel** ' e gidin.
 
    ![Uyarılar dikey penceresi](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
@@ -60,7 +60,7 @@ Bir cihaz için e-posta bildirimini etkinleştirdikten sonra, bildirim listesini
    
    1. **E-posta bildirimi gönder** alanında **Evet**' i seçin.
    2. **E-posta hizmeti yöneticileri** alanında, hizmet yöneticisinin ve tüm ortak yöneticilerin uyarı bildirimlerini almasını sağlamak için **Evet** ' i seçin.
-   3. **Diğer e-posta alıcıları** alanına, uyarı bildirimlerini alması gereken diğer tüm alıcıların e-posta adreslerini girin. Adları *birisi\@Somewhere.com*biçiminde girin. E-posta adreslerini ayırmak için noktalı virgül kullanın. Cihaz başına en fazla 20 e-posta adresi yapılandırabilirsiniz. 
+   3. **Diğer e-posta alıcıları** alanına, uyarı bildirimlerini alması gereken diğer tüm alıcıların e-posta adreslerini girin. Adları *birisi \@ Somewhere.com*biçiminde girin. E-posta adreslerini ayırmak için noktalı virgül kullanın. Cihaz başına en fazla 20 e-posta adresi yapılandırabilirsiniz. 
       
 3. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e**tıklayın. StorSimple Aygıt Yöneticisi hizmeti, test bildirimini ileten durum iletilerini görüntüler.
 
@@ -125,8 +125,8 @@ Aşağıdaki tablolarda karşılaşabileceğiniz Microsoft Azure StorSimple uyar
 
 | Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
 |:--- |:--- |:--- |
-| > <*bulut kimlik bilgisi adı* bağlantısı oluşturulamıyor. |Depolama hesabına bağlanılamıyor. |Aygıtınızla ilgili bir bağlantı sorunu olabilir. Sorunu tanımlamak ve `Test-HcsmConnection` onarmak için lütfen cihazınızdaki StorSimple Için Windows PowerShell arabiriminden cmdlet 'i çalıştırın. Ayarlar doğruysa, sorun, uyarının oluşturulduğu depolama hesabının kimlik bilgileri ile olabilir. Bu durumda, çözebilmeniz gereken `Test-HcsStorageAccountCredential` sorunlar olup olmadığını öğrenmek için cmdlet 'ini kullanın.<ul><li>Ağ ayarlarınızı denetleyin.</li><li>Depolama hesabınızın kimlik bilgilerini denetleyin.</li></ul> |
-| Son <*sayı*> dakika boyunca cihazınızdan sinyal almadık. |Cihaza bağlanılamıyor. |Cihazınızda bir bağlantı sorunu var gibi görünüyor. Sorunu belirleyip onarmak `Test-HcsmConnection` için lütfen cihazınızdaki StorSimple Için Windows PowerShell arabiriminden cmdlet 'i kullanın veya ağ yöneticinize başvurun. |
+| > <*bulut kimlik bilgisi adı* bağlantısı oluşturulamıyor. |Depolama hesabına bağlanılamıyor. |Aygıtınızla ilgili bir bağlantı sorunu olabilir. `Test-HcsmConnection`Sorunu tanımlamak ve onarmak için lütfen cihazınızdaki StorSimple Için Windows PowerShell arabiriminden cmdlet 'i çalıştırın. Ayarlar doğruysa, sorun, uyarının oluşturulduğu depolama hesabının kimlik bilgileri ile olabilir. Bu durumda, `Test-HcsStorageAccountCredential` çözebilmeniz gereken sorunlar olup olmadığını öğrenmek için cmdlet 'ini kullanın.<ul><li>Ağ ayarlarınızı denetleyin.</li><li>Depolama hesabınızın kimlik bilgilerini denetleyin.</li></ul> |
+| Son <*sayı*> dakika boyunca cihazınızdan sinyal almadık. |Cihaza bağlanılamıyor. |Cihazınızda bir bağlantı sorunu var gibi görünüyor. `Test-HcsmConnection`Sorunu belirleyip onarmak için lütfen cihazınızdaki StorSimple Için Windows PowerShell arabiriminden cmdlet 'i kullanın veya ağ yöneticinize başvurun. |
 
 ### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>Bulut bağlantısı başarısız olduğunda StorSimple davranışı
 
@@ -152,13 +152,13 @@ StorSimple üretim cihazınızda bulut bağlantısı başarısız olursa cihazı
 | Cihaz,> *Cihaz adı* <yük devretdi. |Diğer/bilinmeyen neden. |Bu uyarılardan çok sayıda görürseniz, Microsoft Desteği başvurun. Sorun çözümlendikten sonra uyarılar sayfasından bu uyarıyı temizleyin. |
 | Kritik bir cihaz hizmeti durumu başarısız olarak bildiriyor. |DataPath hizmet hatası. |Yardım için Microsoft Desteği başvurun. |
 | Ağ arabirimi için sanal IP adresi <*Data #*>, durumu başarısız olarak bildiriyor. |Diğer/bilinmeyen neden. |Bazen geçici koşullar Bu uyarıların oluşmasına neden olabilir. Bu durumda, bu uyarı bir süre sonra otomatik olarak temizlenir. Sorun devam ederse, Microsoft Desteği başvurun. |
-| Ağ arabirimi için sanal IP adresi <*Data #*>, durumu başarısız olarak bildiriyor. |Arabirim adı: ağ üzerinde yinelenen bir IP adresi `<IP address>` algılandığından <*Data #*> IP adresi çevrimiçi duruma getirilemiyor. |Yinelenen IP adresinin ağdan kaldırıldığından emin olun veya arabirimi farklı bir IP adresiyle yeniden yapılandırın. |
+| Ağ arabirimi için sanal IP adresi <*Data #*>, durumu başarısız olarak bildiriyor. |Arabirim adı: ağ üzerinde yinelenen bir IP adresi algılandığından <*Data #*> IP adresi `<IP address>` çevrimiçi duruma getirilemiyor. |Yinelenen IP adresinin ağdan kaldırıldığından emin olun veya arabirimi farklı bir IP adresiyle yeniden yapılandırın. |
 
 ### <a name="disaster-recovery-alerts"></a>Olağanüstü durum kurtarma uyarıları
 
 | Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
 |:--- |:--- |:--- |
-| Kurtarma işlemleri bu hizmetin tüm ayarlarını geri yükleyemedi. Cihaz yapılandırma verileri bazı cihazlar için tutarsız bir durumda. |Olağanüstü durum kurtarma sonrasında veri tutarsızlığı algılandı. |Hizmette şifrelenen veriler, cihazdaki ile eşitlenmez. <cihaz *adı*> storsimple Aygıt Yöneticisi, eşitleme işlemini başlatacak şekilde yetkilendirin. Güvenlik profilini geri yüklemek için bu cmdlet 'e giriş olarak eski `Restore-HcsmEncryptedServiceData` parolayı sağlamak üzere StorSimple Için Windows PowerShell arabirimini kullanın <*Cihaz adı*> cmdlet 'ini çalıştırın. Ardından, `Invoke-HcsmServiceDataEncryptionKeyChange` hizmet veri şifreleme anahtarını güncelleştirmek için cmdlet 'ini çalıştırın. Uygun eylemi gerçekleştirdikten sonra uyarılar sayfasından bu uyarıyı temizleyin. |
+| Kurtarma işlemleri bu hizmetin tüm ayarlarını geri yükleyemedi. Cihaz yapılandırma verileri bazı cihazlar için tutarsız bir durumda. |Olağanüstü durum kurtarma sonrasında veri tutarsızlığı algılandı. |Hizmette şifrelenen veriler, cihazdaki ile eşitlenmez. <cihaz *adı*> storsimple Aygıt Yöneticisi, eşitleme işlemini başlatacak şekilde yetkilendirin. `Restore-HcsmEncryptedServiceData`Güvenlik profilini geri yüklemek için bu cmdlet 'e giriş olarak eski parolayı sağlamak üzere StorSimple Için Windows PowerShell arabirimini kullanın <*cihaz adı*> cmdlet 'ini çalıştırın. Ardından, `Invoke-HcsmServiceDataEncryptionKeyChange` hizmet veri şifreleme anahtarını güncelleştirmek için cmdlet 'ini çalıştırın. Uygun eylemi gerçekleştirdikten sonra uyarılar sayfasından bu uyarıyı temizleyin. |
 
 ### <a name="hardware-alerts"></a>Donanım uyarıları
 
@@ -192,9 +192,9 @@ StorSimple üretim cihazınızda bulut bağlantısı başarısız olursa cihazı
 | Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
 |:--- |:--- |:--- |
 | StorSimple Hizmetleri başlatılamadı. |Veri yolu hatası |Sorun devam ederse Microsoft Desteği başvurun. |
-| ' Data0 ' için yinelenen IP adresi algılandı. | |Sistem, ' 10.0.0.1 ' IP adresi için bir çakışma algıladı. Cihaz * \<Device1>* ağ kaynağı ' data0 ' çevrimdışı. Bu IP adresinin bu ağdaki başka bir varlık tarafından kullanılmadığından emin olun. Ağ sorunlarını gidermek için [Get-NetAdapter cmdlet 'i Ile sorun giderme](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)bölümüne gidin. Bu sorunu çözmeye yardımcı olması için ağ yöneticinize başvurun. Sorun devam ederse Microsoft Desteği başvurun. |
-| ' Data0 ' için IPv4 (veya IPv6) adresi çevrimdışı. | |' 10.0.0.1 ' IP adresine sahip ' data0 ' ağ kaynağı ve cihaz * \<Device1>* ' 22 ' önek uzunluğu çevrimdışı. Bu arabirimin bağlı olduğu anahtar bağlantı noktalarının çalışır durumda olduğundan emin olun. Ağ sorunlarını gidermek için [Get-NetAdapter cmdlet 'i Ile sorun giderme](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)bölümüne gidin. |
-| Kimlik doğrulama hizmetine bağlanılamadı. |Veri yolu hatası |Kimlik doğrulaması için kullanılan URL 'ye ulaşılamıyor. Güvenlik Duvarı kurallarınızın StorSimple cihazı için belirtilen URL düzenlerini içerdiğinden emin olun. Azure portal URL desenleri hakkında daha fazla bilgi için https:\//aka.MS/SS-8000-Network-reqs adresine gidin. Azure Kamu Bulutu kullanıyorsanız, https:\//aka.MS/SS8000-gov-Network-REQS içindeki URL düzenlerine gidin.|
+| ' Data0 ' için yinelenen IP adresi algılandı. | |Sistem, ' 10.0.0.1 ' IP adresi için bir çakışma algıladı. Cihazdaki ' data0 ' ağ kaynağı *\<device1>* çevrimdışı. Bu IP adresinin bu ağdaki başka bir varlık tarafından kullanılmadığından emin olun. Ağ sorunlarını gidermek için [Get-NetAdapter cmdlet 'i Ile sorun giderme](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)bölümüne gidin. Bu sorunu çözmeye yardımcı olması için ağ yöneticinize başvurun. Sorun devam ederse Microsoft Desteği başvurun. |
+| ' Data0 ' için IPv4 (veya IPv6) adresi çevrimdışı. | |' 10.0.0.1 ' IP adresine sahip ' data0 ' ağ kaynağı ve cihazdaki önek uzunluğu ' 22 ' *\<device1>* çevrimdışı. Bu arabirimin bağlı olduğu anahtar bağlantı noktalarının çalışır durumda olduğundan emin olun. Ağ sorunlarını gidermek için [Get-NetAdapter cmdlet 'i Ile sorun giderme](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)bölümüne gidin. |
+| Kimlik doğrulama hizmetine bağlanılamadı. |Veri yolu hatası |Kimlik doğrulaması için kullanılan URL 'ye ulaşılamıyor. Güvenlik Duvarı kurallarınızın StorSimple cihazı için belirtilen URL düzenlerini içerdiğinden emin olun. Azure portal URL desenleri hakkında daha fazla bilgi için https: \/ /aka.MS/SS-8000-Network-reqs adresine gidin. Azure Kamu Bulutu kullanıyorsanız, https:/aka.ms/ss8000-gov-network-reqs içindeki URL düzenlerine gidin \/ .|
 
 ### <a name="performance-alerts"></a>Performans uyarıları
 
@@ -211,7 +211,7 @@ StorSimple üretim cihazınızda bulut bağlantısı başarısız olursa cihazı
 | <*öğesi*> parolasının süresi <> *süre* içinde dolacak. |Parola süre sonu yaklaşılıyor. |Parolanızı süresi dolmadan önce değiştirin. |
 | <*Öğesı kimliği*> için güvenlik yapılandırma bilgileri eksik. | |Bu birim kapsayıcısı ile ilişkili birimler, StorSimple yapılandırmanızı çoğaltmak için kullanılamaz. Verilerinizin güvenle depolandığından emin olmak için birim kapsayıcısını ve birim kapsayıcısıyla ilişkili tüm birimleri silmenizi öneririz. Uygun eylemi gerçekleştirdikten sonra uyarılar sayfasından bu uyarıyı temizleyin. |
 | <> <*Öğesı kimliği*> Için oturum açma girişimi *sayısı* başarısız oldu. |Birden çok başarısız oturum açma denemesi. |Cihazınız saldırıya açık veya yetkili bir Kullanıcı yanlış bir parolayla bağlanmaya çalışıyor olabilir.<ul><li>Yetkili kullanıcılarınıza başvurun ve bu denemelerin meşru bir kaynaktan olduğunu doğrulayın. Çok sayıda başarısız oturum açma denemesini görmeye devam ederseniz, uzaktan yönetimi devre dışı bırakmayı ve ağ yöneticinize başvurmayı düşünün. Uygun eylemi gerçekleştirdikten sonra uyarılar sayfasından bu uyarıyı temizleyin.</li><li>Snapshot Manager örneklerinizin doğru parolayla yapılandırılıp yapılandırılmadığını denetleyin. Uygun eylemi gerçekleştirdikten sonra uyarılar sayfasından bu uyarıyı temizleyin.</li></ul>Daha fazla bilgi için, [zaman aşımına uğradı bir cihaz parolasını değiştirme](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password)bölümüne gidin. |
-| Hizmet veri şifreleme anahtarı değiştirilirken bir veya daha fazla başarısızlık oluştu. | |Hizmet veri şifreleme anahtarı değiştirilirken hatalarla karşılaşıldı. Hata koşullarını doğruladıktan sonra, hizmeti güncelleştirmek için cihazınızda StorSimple için Windows PowerShell arabiriminden `Invoke-HcsmServiceDataEncryptionKeyChange` cmdlet 'ini çalıştırın. Bu sorun devam ederse Microsoft desteği 'ne başvurun. Sorunu çözdükten sonra, uyarılar sayfasından bu uyarıyı temizleyin. |
+| Hizmet veri şifreleme anahtarı değiştirilirken bir veya daha fazla başarısızlık oluştu. | |Hizmet veri şifreleme anahtarı değiştirilirken hatalarla karşılaşıldı. Hata koşullarını doğruladıktan sonra, `Invoke-HcsmServiceDataEncryptionKeyChange` hizmeti güncelleştirmek için cihazınızda StorSimple Için Windows PowerShell arabiriminden cmdlet 'ini çalıştırın. Bu sorun devam ederse Microsoft desteği 'ne başvurun. Sorunu çözdükten sonra, uyarılar sayfasından bu uyarıyı temizleyin. |
 
 ### <a name="support-package-alerts"></a>Destek paketi uyarıları
 

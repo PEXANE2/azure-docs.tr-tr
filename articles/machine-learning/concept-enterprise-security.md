@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e030bd1124a93c667070a2b58f2f0e1c10c7d3a6
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683063"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718566"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -26,7 +26,7 @@ Bir bulut hizmeti kullandığınızda, erişimi yalnızca ihtiyacı olan kullan�
 > [!NOTE]
 > Bu makaledeki bilgiler, Azure Machine Learning Python SDK sürümü 1.0.83.1 veya üzeri ile birlikte çalışmaktadır.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmışsa Multi-Factor Authentication desteklenir. Kimlik doğrulama işlemi şu şekildedir:
 
@@ -42,7 +42,7 @@ Daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışlar
 
 Azure Machine Learning, Web Hizmetleri için iki kimlik doğrulama biçimini destekler: anahtar ve belirteç. Her Web hizmeti tek seferde yalnızca bir kimlik doğrulama biçimi etkinleştirebilir.
 
-|Kimlik doğrulama yöntemi|Açıklama|Azure Container Instances|AKS|
+|Kimlik doğrulama yöntemi|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Anahtar|Anahtarlar statiktir ve yenilenmek zorunda değildir. Anahtarlar el ile yeniden oluşturulabilir.|Varsayılan olarak devre dışı| Varsayılan olarak etkindir|
 |Belirteç|Belirteçlerin süresi belirtilen süre geçtikten sonra ve yenilenmesi gerekiyor.| Kullanılamaz| Varsayılan olarak devre dışı |
@@ -146,7 +146,7 @@ Azure Cosmos DB örneğini şifrelemek için kendi (müşteri tarafından yönet
 
 Abonelikinizde müşteri tarafından yönetilen anahtarlarla Cosmos DB bir örnek sağlamayı etkinleştirmek için aşağıdaki eylemleri gerçekleştirin:
 
-* Henüz yapmadıysanız, Azure Machine Learning ve Azure Cosmos DB kaynak sağlayıcılarını aboneliğinize kaydedin.
+* Henüz yapılmadıysanız Microsoft. Machinöğrenim ve Microsoft.DocumentDB kaynak sağlayıcılarını aboneliğinize kaydedin.
 
 * Machine Learning uygulamayı (kimlik ve erişim yönetimi 'nde) aboneliğinizde katkıda bulunan izinlerle yetkilendirin.
 

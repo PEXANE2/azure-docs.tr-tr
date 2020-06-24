@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251212"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712403"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>İçerik anahtarı yetkilendirme ilkesini yapılandırma
 
@@ -38,7 +38,7 @@ Media Services, anahtar isteğinde bulunan kullanıcıların kimlik doğrulamas�
 
 Media Services STS sağlamıyor. Belirteçleri vermek için özel bir STS oluşturabilir veya Azure Access Control Service kullanabilirsiniz. STS, belirtilen anahtarla imzalanmış bir belirteç oluşturacak ve belirteç kısıtlama yapılandırmasında (Bu makalede açıklandığı gibi) belirttiğiniz talepler verecek şekilde yapılandırılmalıdır. Belirteç geçerliyse ve belirteçteki talepler içerik anahtarı için yapılandırılananlarla eşleşiyorsa, Media Services anahtar teslim hizmeti, istemciye şifreleme anahtarını döndürür.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [JWT belirteci kimlik doğrulaması](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 - [Azure Media Services OWIN MVC tabanlı uygulama Azure Active Directory ve JWT taleplerine göre içerik anahtarı teslimini tümleştirin](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
@@ -51,7 +51,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 * Anahtar teslim hizmeti, ContentKeyAuthorizationPolicy ve ilgili nesneleri (ilke seçenekleri ve kısıtlamalar) 15 dakika boyunca önbelleğe alır. ContentKeyAuthorizationPolicy oluşturup bir belirteç kısıtlaması kullanmayı belirtebilir, test edebilir ve ardından ilkeyi açık kısıtlama olarak güncelleştirebilirsiniz. Bu işlem, ilkenin, ilkenin açık sürümüne geçiş yapmadan yaklaşık 15 dakika sürer.
 * Varlığınızın teslim ilkesini ekler veya güncelleştirirseniz, varsa mevcut bulucuyu silip yeni bir bulucu oluşturmanız gerekir.
 * Şu anda aşamalı İndirmeleri şifreleyemez.
-* Media Services akış uç noktası, '\*' joker karakteri olarak ön kontrol yanıtında CORS ' Access-Control-Allow-Origin ' üst bilgisinin değerini ayarlar. Bu değer, Azure Media Player, Roku ve JWPlayer gibi birçok oyuncunun yanı sıra diğerleri için de geçerlidir. Bununla birlikte,, "içerme" olarak ayarlanmış kimlik bilgileri ile, bu arada, kendi çizgi js ' deki XMLHttpRequest, ' Access-Control-Allow-Origin '\*değeri olarak "" joker karakterine izin vermediğinden, WITH, Tek bir etki alanından istemcinizi barındırdıysanız, bu sınırlamaya yönelik bir geçici çözüm olarak, Media Services ön kontrol yanıt üstbilgisinde bu etki alanını belirtebilir. Yardım için Azure portal aracılığıyla bir destek bileti açın.
+* Media Services akış uç noktası, ' ' joker karakteri olarak ön kontrol yanıtında CORS ' Access-Control-Allow-Origin ' üst bilgisinin değerini ayarlar \* . Bu değer, Azure Media Player, Roku ve JWPlayer gibi birçok oyuncunun yanı sıra diğerleri için de geçerlidir. Bununla birlikte,, "içerme" olarak ayarlanmış kimlik bilgileri ile, bu arada, kendi çizgi js ' deki XMLHttpRequest, \* ' Access-Control-Allow-Origin ' değeri olarak "" joker karakterine izin vermediğinden, WITH, Tek bir etki alanından istemcinizi barındırdıysanız, bu sınırlamaya yönelik bir geçici çözüm olarak, Media Services ön kontrol yanıt üstbilgisinde bu etki alanını belirtebilir. Yardım için Azure portal aracılığıyla bir destek bileti açın.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 dinamik şifreleme
 ### <a name="open-restriction"></a>Açık kısıtlama
@@ -434,7 +434,7 @@ Anahtar yetkilendirme ilkesi için kullanılan belirteç kısıtlamasına dayal�
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar

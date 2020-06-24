@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251589"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710482"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Ekip veri bilimi Işlemi işlem içinde: SQL Server kullanma
 Bu öğreticide, SQL Server ve genel kullanıma açık bir veri kümesi ( [NYC TAXI gezileri](https://www.andresmh.com/nyctaxitrips/) veri kümesi) kullanarak makine öğrenimi modeli oluşturma ve dağıtma sürecini adım adım ilerleyebilirsiniz. Yordam standart bir veri bilimi iş akışını izler: verileri alma ve araştırma, eğitim kolaylaştırmak ve bir model derlemek ve dağıtmak için mühendislik özellikleri.
@@ -41,13 +41,13 @@ NYC TAXI seyahat verileri, 173.000.000 ' den fazla ayrı ve her seyahat için ö
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Seyahat\_verilerine ve seyahat\_tarifeli havayolu katılacak benzersiz anahtar alanlardan oluşur: medtalon, Hack\_lisans ve Pickup\_DateTime.
+Seyahat \_ verilerine ve seyahat tarifeli havayolu katılacak benzersiz anahtar \_ alanlardan oluşur: medtalon, Hack \_ Lisans ve Pickup \_ DateTime.
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Tahmin görevlerinin örnekleri
-*İpucu\_miktarına*göre üç tahmin sorunu oluşturacak, yani:
+*İpucu \_ miktarına*göre üç tahmin sorunu oluşturacak, yani:
 
-* İkili sınıflandırma: bir ucun seyahat için ödenip ödenmediğini tahmin edin, diğer bir deyişle, $0 'den büyük bir *tıp\_* miktarı pozitif bir örnektir, ancak $0 olan bir tıp *\_miktarı* negatif bir örnektir.
-* Birden çok Lass sınıflandırması: seyahat için ödenen ipucu aralığını tahmin etmek Için. *İpucu\_miktarını* beş bölmeye veya sınıfa böyoruz:
+* İkili sınıflandırma: bir ucun seyahat için ödenip ödenmediğini tahmin edin, diğer bir deyişle, $0 'den büyük bir *tıp \_ * miktarı pozitif bir örnektir, ancak $0 olan bir tıp * \_ miktarı* negatif bir örnektir.
+* Birden çok Lass sınıflandırması: seyahat için ödenen ipucu aralığını tahmin etmek Için. *İpucu \_ miktarını* beş bölmeye veya sınıfa böyoruz:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -75,11 +75,11 @@ Azure veri bilimi ortamınızı ayarlamak için:
    > 
    > * Örnek betikler:`C:\Users\<user_name>\Documents\Data Science Scripts`  
    > * Örnek IPython Not defterleri:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
-   >   `<user_name>` , sanal makinenizin Windows oturum açma adıdır. Örnek klasörlere örnek **betikler** ve örnek **IPython Not defterleri**olarak başvuracağız.
+   >   `<user_name>`, sanal makinenizin Windows oturum açma adıdır. Örnek klasörlere örnek **betikler** ve örnek **IPython Not defterleri**olarak başvuracağız.
    > 
    > 
 
-Veri kümesi boyutu, veri kaynağı konumu ve seçili Azure hedef ortamı temelinde, bu senaryo [Senaryo \#5 ' e benzer: yerel dosyalardaki büyük veri KÜMESI, Azure VM 'de hedef SQL Server](plan-sample-scenarios.md#largelocaltodb).
+Veri kümesi boyutu, veri kaynağı konumu ve seçili Azure hedef ortamı temelinde, bu senaryo Senaryo 5 ' e benzer [ \# : yerel dosyalardaki büyük veri kümesi, Azure VM 'de hedef SQL Server](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="get-the-data-from-public-source"></a><a name="getdata"></a>Genel kaynaktaki verileri al
 [NYC TAXI gidiş](https://www.andresmh.com/nyctaxitrips/) veri kümesini genel konumundan almak için, verileri yeni sanal makinenize kopyalamak üzere [Azure Blob Storage 'a veri taşıma](move-azure-blob.md) bölümünde açıklanan yöntemlerden herhangi birini kullanabilirsiniz.
@@ -92,8 +92,8 @@ AzCopy kullanarak verileri kopyalamak için:
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
    
-    AzCopy tamamlandığında, toplam 24 daraltılmış CSV dosyası (seyahat\_verileri için 12 ve seyahat\_tarifeli havayolu için 12) veri klasöründe olmalıdır.
-4. İndirilen dosyaları sıkıştırmayı açın. Sıkıştırılmamış dosyaların bulunduğu klasörü aklınızda edin. Bu\_klasör,\_veri\_dosyalarının\><yolu olarak adlandırılacaktır.
+    AzCopy tamamlandığında, toplam 24 daraltılmış CSV dosyası (seyahat verileri için 12 \_ ve seyahat tarifeli havayolu için 12 \_ ) veri klasöründe olmalıdır.
+4. İndirilen dosyaları sıkıştırmayı açın. Sıkıştırılmamış dosyaların bulunduğu klasörü aklınızda edin. Bu klasör, veri dosyalarının <yolu olarak adlandırılacaktır \_ \_ \_ \> .
 
 ## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>Verileri SQL Server veritabanına toplu olarak Içeri aktarma
 Bir SQL veritabanına büyük miktarlarda veri yükleme/aktarma performansı ve sonraki sorgularda *bölümlenmiş tablolar ve görünümler*kullanılarak iyileştirilen. Bu bölümde, yeni bir veritabanı oluşturmak ve verileri bölümlenmiş tablolara paralel olarak yüklemek için [SQL bölüm tablolarını kullanarak paralel toplu veri Içeri aktarma](parallel-load-sql-partitioned-tables.md) bölümünde açıklanan yönergeleri takip edeceğiz.
@@ -102,7 +102,7 @@ Bir SQL veritabanına büyük miktarlarda veri yükleme/aktarma performansı ve 
 2. Windows kimlik doğrulaması kullanarak bağlanın.
    
     ![SSMS bağlantısı][12]
-3. SQL Server kimlik doğrulama modunu henüz değiştirmediyseniz ve yeni bir SQL oturum açma kullanıcısı oluşturduysanız **örnek betikler** klasöründe **Change\_Auth. SQL** adlı komut dosyasını açın. Varsayılan Kullanıcı adını ve parolayı değiştirin. Betiği çalıştırmak için araç çubuğunda **Yürüt** ' e tıklayın.
+3. SQL Server kimlik doğrulama modunu henüz değiştirmediyseniz ve yeni bir SQL oturum açma kullanıcısı oluşturduysanız **örnek betikler** klasöründe **Change \_ Auth. SQL** adlı komut dosyasını açın. Varsayılan Kullanıcı adını ve parolayı değiştirin. Betiği çalıştırmak için araç çubuğunda **Yürüt** ' e tıklayın.
    
     ![Betiği Yürüt][13]
 4. Yeni oluşturulan veritabanlarının bir veri diskinde depolandığından emin olmak için SQL Server varsayılan veritabanı ve günlük klasörlerini doğrulayın ve/veya değiştirin. Veri ambarı yüklemeleri için en iyi duruma getirilmiş SQL Server VM görüntüsü, veri ve günlük disklerle önceden yapılandırılmıştır. VM 'niz bir veri diski içermiyorsa ve VM kurulum işlemi sırasında yeni sanal sabit diskler eklediyseniz, varsayılan klasörleri aşağıdaki gibi değiştirin:
@@ -114,37 +114,37 @@ Bir SQL veritabanına büyük miktarlarda veri yükleme/aktarma performansı ve 
    * **Veritabanı varsayılan konumlarını** doğrulayın ve/veya seçtiğiniz **veri diski** konumlarına göre değiştirin. Bu konum, varsayılan ayarlarla oluşturulduysa yeni veritabanlarının bulunduğu yerdir.
      
        ![SQL veritabanı Varsayılanları][15]  
-5. Yeni bir veritabanı ve bölümlenmiş tabloları tutacak bir dosya grubu kümesi oluşturmak için, **Create\_DB\_default. SQL**örnek betiğini açın. Betik, varsayılan veri konumunda **Taxınrivc** ve 12 dosya grupları adlı yeni bir veritabanı oluşturur. Her dosya grubu, seyahat\_verilerinin bir ayından birini ve\_seyahat tarifeli havayolu verilerini tutar. İsterseniz veritabanı adını değiştirin. Betiği çalıştırmak için **Yürüt** ' e tıklayın.
-6. Daha sonra, bir diğeri seyahat\_verileri için bir tane olmak üzere iki bölüm tablosu oluşturun,\_örneğin seyahat tarifeli havayolu. Örnek betiği, **bölümlenmiş\_tablo\_. SQL oluşturun**ve şunları yapın:
+5. Yeni bir veritabanı ve bölümlenmiş tabloları tutacak bir dosya grubu kümesi oluşturmak için, **Create \_ DB \_ default. SQL**örnek betiğini açın. Betik, varsayılan veri konumunda **Taxınrivc** ve 12 dosya grupları adlı yeni bir veritabanı oluşturur. Her dosya grubu, seyahat verilerinin bir ayından birini \_ ve seyahat \_ tarifeli havayolu verilerini tutar. İsterseniz veritabanı adını değiştirin. Betiği çalıştırmak için **Yürüt** ' e tıklayın.
+6. Daha sonra, bir diğeri seyahat verileri için bir tane olmak üzere iki bölüm tablosu oluşturun, \_ Örneğin seyahat \_ tarifeli havayolu. Örnek betiği, ** \_ bölümlenmiş \_ tablo. SQL oluşturun**ve şunları yapın:
    
    * Verileri aya bölmek için bir bölüm işlevi oluşturun.
    * Her ayın verisini farklı bir dosya grubuyla eşlemek için bir bölüm düzeni oluşturun.
-   * Bölüm düzenine eşlenmiş iki bölümlenmiş tablo oluşturun: **nyctaxi\_seyahat** seyahat\_verilerini tutar ve **nyctaxi\_tarifeli havayolu** seyahat\_tarifeli havayolu verilerini tutacaktır.
+   * Bölüm düzenine eşlenmiş iki bölümlenmiş tablo oluşturun: **nyctaxi \_ seyahat** seyahat \_ verilerini tutar ve **nyctaxi \_ tarifeli havayolu** seyahat \_ tarifeli havayolu verilerini tutacaktır.
      
      Betiği çalıştırmak ve bölümlenmiş tabloları oluşturmak için **Yürüt** ' e tıklayın.
 7. **Örnek komut dosyaları** klasöründe, SQL Server tablolarına paralel toplu veri içeri aktarmaları göstermek için Iki örnek PowerShell komut dosyası sağlanır.
    
-   * **BCP\_Parallel\_Generic. ps1** , paralel toplu içe verileri bir tabloya aktarmak için genel bir betiktir. Bu betiği, giriş ve hedef değişkenlerini betikteki yorum satırlarında gösterildiği gibi ayarlamak için değiştirin.
-   * **BCP\_Parallel\_nyctaxi. ps1** , genel betiğin önceden yapılandırılmış bir sürümüdür ve NYC TAXI verileri için her iki tabloyu da yüklemek üzere kullanılabilir.  
-8. **BCP\_Parallel\_nyctaxi. ps1** betik adına sağ tıklayın ve PowerShell 'de açmak için **Düzenle** ' ye tıklayın. Önceden ayarlanmış değişkenleri gözden geçirin ve seçtiğiniz veritabanı adı, giriş veri klasörü, hedef günlük klasörü ve örnek biçim dosyaları için **nyctaxi_trip. xml** ve **\_Nyctaxi tarifeli havayolu. xml** ( **örnek komut dosyaları** klasöründe verilmiştir).
+   * **BCP \_ Parallel \_generic.ps1** , bir tabloya paralel toplu veri aktarma için genel bir betiktir. Bu betiği, giriş ve hedef değişkenlerini betikteki yorum satırlarında gösterildiği gibi ayarlamak için değiştirin.
+   * **BCP \_ Parallel \_nyctaxi.ps1** , genel betiğin önceden yapılandırılmış bir sürümüdür ve NYC TAXI verileri için her iki tabloyu da yüklemek üzere kullanılabilir.  
+8. **BCP \_ paralel \_nyctaxi.ps1** betik adına sağ tıklayın ve PowerShell 'de açmak için **Düzenle** ' ye tıklayın. Önceden ayarlanmış değişkenleri gözden geçirin ve seçtiğiniz veritabanı adı, giriş veri klasörü, hedef günlük klasörü ve örnek biçim dosyalarının yollarına göre değiştirin **nyctaxi_trip.xml** ve **Nyctaxi \_fare.xml** ( **örnek betikler** klasöründe verilmiştir).
    
     ![Toplu Içeri aktarma verileri][16]
    
     Kimlik doğrulama modunu da seçebilirsiniz, varsayılan Windows kimlik doğrulamadır. Çalıştırmak için araç çubuğundaki yeşil oka tıklayın. Betik, her bölümlenmiş tablo için paralel, 12 ' de 24 toplu içeri aktarma işlemi başlatacaktır. Yukarıdaki SQL Server varsayılan veri klasörünü açarak veri alma ilerlemesini izleyebilirsiniz.
 9. PowerShell betiği başlangıç ve bitiş zamanlarını raporlar. Tüm toplu almalar tamamlandığında, bitiş saati raporlanır. Toplu içeri aktarmaların başarılı olduğunu, yani hedef günlük klasöründe bildirilen bir hata olmadığını doğrulamak için hedef günlük klasörünü denetleyin.
-10. Veritabanınız artık, istenen şekilde araştırma, özellik Mühendisliği ve diğer işlemler için hazırdır. Tablolar **\_toplama tarih saat** alanına göre bölümlendiğinden, **WHERE** yan tümcesindeki **toplama\_tarih saat** koşullarını içeren sorgular, bölüm düzeninden yarar olacaktır.
-11. **SQL Server Management Studio**' de, sunulan örnek betik **örnek\_sorguları. SQL**' i gezin. Örnek sorgulardan herhangi birini çalıştırmak için, sorgu satırlarını vurgulayın, ardından araç çubuğunda **Yürüt** ' e tıklayın.
-12. NYC TAXI gidiş verileri iki ayrı tabloya yüklenir. JOIN işlemlerini geliştirmek için tabloların dizinlemek kesinlikle önerilir. Örnek betik **bölümlenmiş\_\_dizin oluşturma. SQL** bileşik JOIN anahtarında **ıntalon, Hack\_lisansı ve Pickup Tarih/çekme\_** değeri üzerinde bölümlenmiş dizinler oluşturur.
+10. Veritabanınız artık, istenen şekilde araştırma, özellik Mühendisliği ve diğer işlemler için hazırdır. Tablolar **toplama \_ Tarih saat** alanına göre bölümlendiğinden, **WHERE** yan tümcesindeki **toplama \_ Tarih saat** koşullarını içeren sorgular, bölüm düzeninden yarar olacaktır.
+11. **SQL Server Management Studio**' de, sunulan örnek betik **örnek \_ sorguları. SQL**' i gezin. Örnek sorgulardan herhangi birini çalıştırmak için, sorgu satırlarını vurgulayın, ardından araç çubuğunda **Yürüt** ' e tıklayın.
+12. NYC TAXI gidiş verileri iki ayrı tabloya yüklenir. JOIN işlemlerini geliştirmek için tabloların dizinlemek kesinlikle önerilir. Örnek betik ** \_ bölümlenmiş dizin oluşturma \_ . SQL** bileşik JOIN anahtarında **ıntalon, Hack \_ lisansı ve Pickup \_ Tarih/çekme**değeri üzerinde bölümlenmiş dizinler oluşturur.
 
 ## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>SQL Server 'de veri araştırması ve özellik Mühendisliği
-Bu bölümde, daha önce oluşturulan SQL Server veritabanını kullanarak **SQL Server Management Studio** doğrudan SQL sorguları çalıştırarak veri keşif ve özellik oluşturmayı gerçekleştirecağız. Örnek **komut dosyaları** klasöründe **örnek\_sorgular. SQL** adlı örnek bir komut dosyası verilmiştir. Komut dosyasını, varsayılan: **Taxınyc**değerinden farklıysa veritabanı adını değiştirecek şekilde değiştirin.
+Bu bölümde, daha önce oluşturulan SQL Server veritabanını kullanarak **SQL Server Management Studio** doğrudan SQL sorguları çalıştırarak veri keşif ve özellik oluşturmayı gerçekleştirecağız. Örnek **komut dosyaları** klasöründe **örnek \_ sorgular. SQL** adlı örnek bir komut dosyası verilmiştir. Komut dosyasını, varsayılan: **Taxınyc**değerinden farklıysa veritabanı adını değiştirecek şekilde değiştirin.
 
 Bu alıştırmada şunları yapacağız:
 
 * Windows kimlik doğrulamasını veya SQL kimlik doğrulaması 'nı ve SQL oturum açma adını ve parolasını kullanarak **SQL Server Management Studio** bağlanın.
 * Değişen zaman pencereleri içinde birkaç alanın veri dağıtımlarını araştırma.
 * Boylam ve enlem alanlarının veri kalitesini araştırın.
-* **Tıp\_miktarına**göre ikili ve çoklu sınıf sınıflandırma etiketleri oluşturun.
+* **Tıp \_ miktarına**göre ikili ve çoklu sınıf sınıflandırma etiketleri oluşturun.
 * Özellik oluşturun ve seyahat mesafelerini karşılaştırın.
 * İki tabloyu birleştirin ve modelleri derlemek için kullanılacak rastgele bir örnek ayıklayın.
 
@@ -164,7 +164,7 @@ Daha önce paralel toplu içeri aktarma kullanılarak doldurulmuş tablolardaki 
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Araştırma: medtalon tarafından seyahat dağılımı
-Bu örnek, belirli bir süre içinde 100 ' den fazla dönüşle birlikte medalon (TAXI numaraları) tanımlar. Sorgu, **toplama\_tarih/saat değerinin**bölüm şeması tarafından koşullu olduğundan, bölümlenmiş tablo erişiminizden faydalanır. Tam veri kümesini sorgulamak bölümlenmiş tablo ve/veya dizin taramasını de kullanır.
+Bu örnek, belirli bir süre içinde 100 ' den fazla dönüşle birlikte medalon (TAXI numaraları) tanımlar. Sorgu, **toplama \_ Tarih/saat değerinin**bölüm şeması tarafından koşullu olduğundan, bölümlenmiş tablo erişiminizden faydalanır. Tam veri kümesini sorgulamak bölümlenmiş tablo ve/veya dizin taramasını de kullanır.
 
     SELECT medallion, COUNT(*)
     FROM nyctaxi_fare
@@ -233,7 +233,7 @@ Bu örnek, toplama ve, boylam ve enlem 'yi SQL Coğrafya noktalarına dönüşt�
 Etiket oluşturma ve Coğrafya dönüştürme araştırması sorguları, sayım bölümünü kaldırarak Etiketler/özellikler oluşturmak için de kullanılabilir. Ek özellik Mühendisliği SQL örnekleri, [IPython Not defteri 'Ndeki veri araştırma ve özellik Mühendisliği](#ipnb) bölümünde verilmiştir. Özellik oluşturma sorgularını tam veri kümesinde veya doğrudan SQL Server veritabanı örneğinde çalışan SQL sorgularını kullanarak büyük bir alt kümesinde çalıştırmak daha etkilidir. Sorgular **SQL Server Management Studio**, IPython Not defteri 'nde veya veritabanına yerel olarak veya uzaktan erişebilen herhangi bir geliştirme aracında veya ortamda çalıştırılabilir.
 
 #### <a name="preparing-data-for-model-building"></a>Model oluşturma için veriler hazırlanıyor
-Aşağıdaki sorgu **nyctaxi\_seyahat** ve **nyctaxi\_tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli**, çok sınıflı bir sınıflandırma etiketi **İpucu\_sınıfı**oluşturur ve tam olarak birleştirilmiş veri kümesinden bir %1 rastgele örnek ayıklar. Bu sorgu, doğrudan Azure 'daki SQL Server veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio](https://studio.azureml.net) [veri alma][import-data] modülüne doğrudan yapıştırılabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
+Aşağıdaki sorgu **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli**, çok sınıflı bir sınıflandırma etiketi **İpucu \_ sınıfı**oluşturur ve tam olarak birleştirilmiş veri kümesinden bir %1 rastgele örnek ayıklar. Bu sorgu, doğrudan Azure 'daki SQL Server veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio](https://studio.azureml.net) [veri alma][import-data] modülüne doğrudan yapıştırılabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -324,7 +324,7 @@ Aşağıdaki değişkenlerde veritabanı bağlantı ayarlarınızı başlatın:
 Alınan satır ve sütun sayısı = (84952, 21)
 
 #### <a name="descriptive-statistics"></a>Açıklayıcı Istatistikler
-Şimdi örneklenmiş verileri keşfetmeye hazır. **Seyahat\_mesafesi** (veya diğer) alanları için açıklayıcı istatistiklere bakmaya başlıyoruz:
+Şimdi örneklenmiş verileri keşfetmeye hazır. **Seyahat \_ mesafesi** (veya diğer) alanları için açıklayıcı istatistiklere bakmaya başlıyoruz:
 
     df1['trip_distance'].describe()
 
@@ -363,25 +363,25 @@ Yukarıdaki bin dağılımını aşağıda gösterildiği gibi bir çubukta veya
 ![#4 çiz][4]
 
 #### <a name="visualization-scatterplot-example"></a>Görselleştirme: dağınık Terçiz örneği
-Bir bağıntı olup olmadığını görmek **için\_seyahat\_süresi\_ile saniye cinsinden** seyahat **\_mesafesini** gösteren dağılım çizimi gösteriliyor
+Bir bağıntı olup olmadığını görmek için **seyahat \_ süresi ile \_ \_ saniye cinsinden** seyahat ** \_ mesafesini** gösteren dağılım çizimi gösteriliyor
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![#6 çiz][6]
 
-Benzer şekilde, **oran\_kodu** ve **seyahat\_mesafesi**arasındaki ilişkiyi kontrol edebilirsiniz.
+Benzer şekilde, **oran \_ kodu** ve **seyahat \_ mesafesi**arasındaki ilişkiyi kontrol edebilirsiniz.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
 ![#8 çiz][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>SQL 'de verileri alt örnekleme
-[Azure Machine Learning Studio](https://studio.azureml.net)model oluşturma için veri hazırlarken, verileri **içeri aktarma modülünde doğrudan kullanmak üzere SQL sorgusuna** karar verebilir veya yeni tablo **\_adınızın><\_\_basit bir SELECT * **ile [veri içeri aktarma][import-data] modülünde kullanabileceğiniz yeni bir tabloda, uygulanan ve örneklenmiş verileri kalıcı hale getirebiliriz.
+[Azure Machine Learning Studio](https://studio.azureml.net)model oluşturma için veri hazırlarken, verileri **içeri aktarma modülünde doğrudan kullanmak üzere SQL sorgusuna** karar verebilir veya yeni tablo ** \_ \_ \_ adınızın><basit bir SELECT * **ile [veri içeri aktarma][import-data] modülünde kullanabileceğiniz yeni bir tabloda, uygulanan ve örneklenmiş verileri kalıcı hale getirebiliriz.
 
 Bu bölümde, Örneklenmiş ve uygulanan verileri tutacak yeni bir tablo oluşturacağız. Model oluşturma için doğrudan SQL sorgusunun bir örneği, [SQL Server bölümündeki veri araştırma ve özellik Mühendisliği](#dbexplore) bölümünde verilmiştir.
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Örnek tablo oluşturun ve birleştirilmiş tabloların %1 ' iyle doldurun. Varsa tabloyu önce bırakın.
-Bu bölümde, **nyctaxi\_seyahat** ve **nyctaxi\_tarifeli havayolu**tablolarına katılıyoruz, %1 rastgele bir örnek ayıkladık ve örneklenen verileri yeni bir tablo adında kalıcı olarak **\_bir\_yüzde nyctaxi**:
+Bu bölümde, **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu**tablolarına katılıyoruz, %1 rastgele bir örnek ayıkladık ve örneklenen verileri yeni bir tablo adında kalıcı olarak ** \_ bir \_ yüzde nyctaxi**:
 
     cursor = conn.cursor()
 
@@ -405,7 +405,7 @@ Bu bölümde, **nyctaxi\_seyahat** ve **nyctaxi\_tarifeli havayolu**tablolarına
     cursor.commit()
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>IPython not defterindeki SQL sorguları kullanılarak veri araştırması
-Bu bölümde, yukarıda oluşturduğumuz yeni tabloda kalıcı olan 1% örneklenmiş verileri kullanarak veri dağıtımlarını araştırıyoruz. Benzer araştırmalar, özgün tablolar kullanılarak, isteğe bağlı olarak, araştırma örneğini sınırlamak için Ise kullanılarak veya SQL Server bölümündeki veri araştırması [ve özellik Mühendisliği](#dbexplore) bölümünde gösterildiği gibi, zaman değeri **\_alma tarih** **bölümleri kullanılarak sonuçları** belirli bir zaman süresiyle sınırlayarak gerçekleştirilebilir.
+Bu bölümde, yukarıda oluşturduğumuz yeni tabloda kalıcı olan 1% örneklenmiş verileri kullanarak veri dağıtımlarını araştırıyoruz. Benzer araştırmalar, özgün tablolar kullanılarak, isteğe bağlı olarak, araştırma örneğini sınırlamak için Ise kullanılarak veya SQL Server bölümündeki veri araştırması [ve özellik Mühendisliği](#dbexplore) bölümünde gösterildiği gibi, zaman değeri **alma \_ Tarih** **bölümleri kullanılarak sonuçları** belirli bir zaman süresiyle sınırlayarak gerçekleştirilebilir.
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Araştırma: günlük gidiş dağıtımı
     query = '''
@@ -432,7 +432,7 @@ Bu bölümde, önceki bölümde oluşturduğumuz 1% örnek tablosunda çalışan
 Aşağıdaki örnekte, modelleme için kullanılacak iki etiket kümesi oluşturacağız:
 
 1. İkili sınıf etiketleri **eğimli** (bir ipucu verildiyse tahmin edilir)
-2. Birden çok Lass **etiketleri\_ipucu sınıfı** (İpucu kutusu veya aralığını tahmin etme)
+2. Birden çok Lass etiketleri **İpucu \_ sınıfı** (İpucu kutusu veya aralığını tahmin etme)
    
         nyctaxi_one_percent_add_col = '''
             ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
@@ -586,7 +586,7 @@ Doğrudan SQL Server veritabanından veri okumayı denemek için ikili sınıfla
 ![Azure Machine Learning eğitme][10]
 
 > [!IMPORTANT]
-> Önceki bölümlerde sağlanan modelleme veri ayıklama ve örnekleme sorgusu örneklerinde, **üç modellemeye yönelik tüm Etiketler sorguya dahil**edilmiştir. Modelleme alýþtýrmalarının her birinde önemli (gerekli) bir adım, diğer iki soruna ve diğer **hedef sızıntılara**yönelik gereksiz etiketleri **dışlayamazsınız** . Örneğin, ikili sınıflandırma kullanırken, **eğimli** etiketini kullanın ve alanları **\_ipucu sınıfı**, **tıp\_tutarı**ve **Toplam\_miktarı**hariç tutun. İkincisi, ücretli olduğunu gösterdiğinden bu yana hedef sızıntılardır.
+> Önceki bölümlerde sağlanan modelleme veri ayıklama ve örnekleme sorgusu örneklerinde, **üç modellemeye yönelik tüm Etiketler sorguya dahil**edilmiştir. Modelleme alýþtýrmalarının her birinde önemli (gerekli) bir adım, diğer iki soruna ve diğer **hedef sızıntılara**yönelik gereksiz etiketleri **dışlayamazsınız** . Örneğin, ikili sınıflandırma kullanırken, **eğimli** etiketini kullanın ve alanları **İpucu \_ sınıfı**, **tıp \_ tutarı**ve **Toplam \_ miktarı**hariç tutun. İkincisi, ücretli olduğunu gösterdiğinden bu yana hedef sızıntılardır.
 > 
 > Gereksiz sütunları ve/veya hedef sızıntılarını dışlamak için, [veri kümesi modülünde sütunları seç][select-columns] veya [Veri Düzenle][edit-metadata]' yi kullanabilirsiniz. Daha fazla bilgi için bkz. [veri kümesindeki sütunları seçme][select-columns] ve [meta veri][edit-metadata] başvuru sayfalarını düzenleme.
 > 
@@ -619,7 +619,7 @@ Puanlama denemesi oluşturulduğunda, gözden geçirin ve gerektiğinde ayarlay�
 Bu kılavuzda, bu adım adım öğreticide, bir Azure veri bilimi ortamı oluşturdunuz ve bir Azure Machine Learning Web hizmeti, veri alımı ve bir Web hizmetinin dağıtılması için büyük bir genel veri kümesiyle çalıştık.
 
 ### <a name="license-information"></a>Lisans bilgileri
-Bu örnek izlenecek yol ve birlikte gelen betikler ve IPython Not defteri, Microsoft tarafından MıT lisansı kapsamında paylaşılır. Daha fazla ayrıntı için GitHub 'daki örnek kodun dizinindeki LICENSE. txt dosyasını denetleyin.
+Bu örnek izlenecek yol ve birlikte gelen betikler ve IPython Not defteri, Microsoft tarafından MıT lisansı kapsamında paylaşılır. Daha fazla ayrıntı için GitHub 'daki örnek kodun dizinindeki LICENSE.txt dosyasını denetleyin.
 
 ### <a name="references"></a>Başvurular
 • [Andr, Monroy NYC Taxi seyahatler Indirme sayfası](https://www.andresmh.com/nyctaxitrips/)  

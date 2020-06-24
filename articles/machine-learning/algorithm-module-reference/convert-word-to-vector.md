@@ -1,5 +1,5 @@
 ---
-title: Kelimeyi vector öğesine Dönüştür
+title: 'Kelimeyi vector öğesine Dönüştür: modül başvurusu'
 titleSuffix: Azure Machine Learning
 description: Bir sözlüğü ve ilgili sözcük içeriğini bir metin olarak ayıklayarak ayıklamak için üç adet sunulan Word2Vec modeli kullanmayı öğrenin.
 services: machine-learning
@@ -9,72 +9,79 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: e0e796b75690bcacc6be8ef29b8b490c7faa40af
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853774"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753884"
 ---
-# <a name="convert-word-to-vector"></a>Kelimeyi vector öğesine Dönüştür
+# <a name="convert-word-to-vector-module"></a>Kelimeyi vektör modülüne Dönüştür
 
-Bu makalede, giriş olarak belirttiğiniz metnin yapı 'ları üzerinde çeşitli farklı Word2Vec modellerini (Word2Vec, fasttext, Glove önceden eğitilen model) uygulamak için Azure Machine Learning Designer (Önizleme) içinde **Word 'e dönüştürme** modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, bu görevleri yapmak için Azure Machine Learning Tasarımcısı 'nda (Önizleme) sözcüğü vector öğesine Dönüştür modülünün nasıl kullanılacağı açıklanmaktadır:
 
-Bu modül, Gensim kitaplığını kullanır. Gensim hakkında daha fazla bilgi için, algoritmaların öğreticileri ve açıklaması içeren [Resmi Web sitesine](https://radimrehurek.com/gensim/apiref.html) bakın.
+- Giriş olarak belirttiğiniz metnin yapı 'ları üzerinde çeşitli Word2Vec modellerini (Word2Vec, fasttext, Glove preeğitilen model) uygulayın.
+- Sözcük katıştırile bir sözlük oluşturun.
 
-### <a name="more-about-convert-word-to-vector"></a>Kelimeyi vektöre dönüştürme hakkında daha fazla bilgi
+Bu modül, Gensim kitaplığını kullanır. Gensim hakkında daha fazla bilgi için, öğreticiler ve algoritmaların bir açıklamasını içeren [Resmi Web sitesine](https://radimrehurek.com/gensim/apiref.html)bakın.
 
-Genel olarak konuşma, sözcük vektöre veya sözcük vektörleştirmesi, sözcükleri vektör alanına eşlemek için dil modellerini veya tekniklerini kullanan, yani her bir sözcüğü gerçek sayı vektörü olarak temsil eden doğal bir dil işleme işlemidir.
+### <a name="more-about-converting-words-to-vectors"></a>Sözcükleri vektöre dönüştürme hakkında daha fazla bilgi
 
-Sözcük ekleme, metin sınıflandırması, yaklaşım Analizi vb. gibi, NLP akış aşağı akış görevleri için ilk giriş olarak kullanılabilir.
+Genellikle konuşma, sözcükleri vektörlere dönüştürme veya sözcük vektörleştirmesi, doğal dil işleme (NLP) işlemidir. İşlem, sözcükleri vektör alanına eşlemek için dil modellerini veya tekniklerini kullanır, diğer bir deyişle, her bir sözcüğü gerçek sayı vektörü ile temsil eder. Bu arada, benzer anlamlara sahip sözcüklerin benzer temsiller olmasına izin verir.
 
-Bu modüldeki çeşitli sözcük ekleme teknolojilerinin yanı sıra, iki çevrimiçi eğitim modeli, Word2Vec ve FastText ve önceden eğitilen bir model, Glove-wiki-gigaword-100 dahil olmak üzere, yaygın olarak kullanılan üç yöntemi uyguladık. Çevrimiçi eğitim modelleri giriş verilerinize göre eğitilirken, önceden eğitilen modeller daha büyük bir metin Corpus (örneğin, Viseı, Google News) genellikle yaklaşık 100.000.000.000 sözcük içerir, ardından Word gömme, sözcük vektörleştirme sırasında sabit kalır. Önceden eğitilen Word modelleri, daha az eğitim süresi, daha iyi sözcük vektörü kodlamalı ve gelişmiş genel performans gibi avantajlar sağlar.
+Sözcük ekleme, metin sınıflandırması ve yaklaşım analizi gibi NLP aşağı akış görevleri için ilk giriş olarak kullanılabilir.
 
-+ Word2Vec, basit sinir ağı kullanarak kelime ekleme hakkında bilgi edinmek için en popüler tekniklerin biridir. teorik, bir PDF indirmesi olarak sunulan bu kağıda tartışılır: [vektör alanı, Mikolov, Tomas, et al Içindeki sözcük temsillerinin verimli bir şekilde tahmini](https://arxiv.org/pdf/1301.3781.pdf). Bu modüldeki uygulama, [Word2Vec için gensim kitaplığını](https://radimrehurek.com/gensim/models/word2vec.html)temel alır.
+Bu modüldeki çeşitli sözcük ekleme teknolojilerinin yanı sıra, yaygın olarak kullanılan üç yöntemi uyguladık. İki, Word2Vec ve FastText, çevrimiçi eğitim modelleridir. Diğeri de önceden eğitilen bir modeldir, Glove-wiki-gigaword-100. 
 
-+ FastText teorisi, PDF indirmesi olarak kullanılabilen bu kağıda açıklanmaktadır: [Word vektörlerine, Subword Information, Bojanowski, Piotr, et al Ile zenginleştirme](https://arxiv.org/pdf/1607.04606.pdf). Bu modüldeki uygulama [FastText için gensim kitaplığını](https://radimrehurek.com/gensim/models/fasttext.html)temel alır.
+Çevrimiçi eğitim modelleri, giriş verilerinize göre eğitilir. Önceden eğitilen modeller, genellikle yaklaşık 100.000.000.000 kelimeleri içeren daha büyük bir metin yapı (örneğin, Vikipedi, Google News) üzerinde çevrimdışı olarak eğitilir. Word gömme, sözcük vektörleştirme sırasında sabit kalır. Önceden eğitilen Word modelleri, daha az eğitim süresi, daha iyi sözcük vektörü kodlamalı ve gelişmiş genel performans gibi avantajlar sağlar.
 
-+ Önceden eğitilen model: Glove-wiki-gigaword-100, 5.6 'daki metin Corpus 'ı temel alan, 5.6 B belirteçleri ve 400K sözlüğü, PDF kullanılabilir: [Glove: sözcük gösterimi Için küresel vektörler](https://nlp.stanford.edu/pubs/glove.pdf).
+Yöntemler hakkında bazı bilgiler aşağıda verilmiştir:
+
++ Word2Vec, bir basit sinir ağı kullanarak Word katıştırarak öğrenilen en popüler tekniklerin biridir. Bu, bir PDF indirmesi olarak sunulan bu kağıda ele alınmıştır: [Mikolov, Tomas, et, ve al, vektör alanında sözcük temsillerini verimli](https://arxiv.org/pdf/1301.3781.pdf)bir şekilde tahmin edin. Bu modüldeki uygulama, [Word2Vec Için Gensim kitaplığını](https://radimrehurek.com/gensim/models/word2vec.html)temel alır.
+
++ FastText teorisi, bir PDF indirmesi olarak sunulan bu kağıda açıklanmaktadır: [Bojanowski, Piotr, et al Ile Word vektörlerini zenginleştirme](https://arxiv.org/pdf/1607.04606.pdf). Bu modüldeki uygulama, [FastText Için Gensim kitaplığını](https://radimrehurek.com/gensim/models/fasttext.html)temel alır.
+
++ GloVe preeğitilen modeli, Glove-wiki-gigaword-100 ' dir. Bu, 5.600.000.000 belirteçleri ve 400.000 olmayan sözlük sözcüklerini içeren bir Visez metin Corpus ' i temel alan, önceden eğitilen bir vektör koleksiyonudur. PDF indirmesi kullanılabilir: [Glove: sözcük gösterimi Için genel vektörler](https://nlp.stanford.edu/pubs/glove.pdf).
 
 ## <a name="how-to-configure-convert-word-to-vector"></a>Sözcüğü vektöre Dönüştür ' ü yapılandırma
 
-Bu modül, metin sütunu içeren bir veri kümesi gerektirir, önceden işlenmiş metin daha iyidir.
+Bu modül bir metin sütunu içeren bir veri kümesi gerektiriyor. Önceden işlenmiş metin daha iyidir.
 
 1. **Word 'Ü vektör 'e dönüştürme** modülüne işlem hattınızı ekleyin.
 
-2. Modülün girişi olarak bir veya daha fazla metin sütunu içeren bir veri kümesi sağlayın.
+2. Modülün girişi olarak, bir veya daha fazla metin sütunu içeren bir veri kümesi sağlayın.
 
-3. **Hedef sütun**için yalnızca işlemek üzere metin içeren bir sütun seçin.
+3. **Hedef sütun**için, işlemek için metin içeren yalnızca bir sütun seçin.
 
-    Genel olarak, bu modül metinden bir sözlük oluşturduğundan farklı sütunların içeriği farklı sözlük içeriğine yol açar, bu nedenle modül yalnızca bir hedef sütunu kabul eder.
+    Bu modül metinden bir sözlük oluşturduğundan, sütunların içeriği farklılık gösterir, bu da farklı sözlük içeriğine yol açar. Modülün yalnızca bir hedef sütunu kabul ettiği bu budur.
 
-4. **Word2Vec stratejisi**için, ve seçeneklerinden birini belirleyin `GloVe pretrained English Model` `Gensim Word2Vec` `Gensim FastText` .
+4. **Word2Vec stratejisi**Için, **Glove önceden eğitilen İngilizce modeli**, **Gensım Word2Vec**ve **gensim fasttext**seçeneklerinden birini belirleyin.
 
-5. **Word2Vec stratejisi** veya ise `Gensim Word2Vec` `Gensim FastText` :
+5. **Word2Vec stratejisi** **gensim Word2Vec** veya **gensim fasttext**ise:
 
-    + **Word2Vec eğitim algoritması**. Ve arasından seçim yapın `Skip_gram` `CBOW` . Fark özgün [kağıda](https://arxiv.org/pdf/1301.3781.pdf)eklenmiştir.
+    + **Word2Vec eğitim algoritması**için **Skip_gram** ve **cfii**arasından seçim yapın. Fark [orijinal kağıda (PDF)](https://arxiv.org/pdf/1301.3781.pdf)eklenmiştir.
 
-        Varsayılan yöntem `Skip_gram` .
+        Varsayılan yöntem **Skip_gram**.
 
-    + **Sözcük katıştırma uzunluğu**. Sözcük vektörlerine boyutlılık belirleyin. `size`Gensim içindeki parametreye karşılık gelir.
+    + **Sözcük katıştırma uzunluğu**için sözcük vektörlerine ait boyutalyi belirtin. Bu ayar `size` Gensim içindeki parametreye karşılık gelir.
 
-        Varsayılan embedding_size 100 ' dir.
+        Varsayılan gömme boyutu 100 ' dir.
 
-    + **Bağlam penceresi boyutu**. Tahmin edilen sözcük ve geçerli sözcük arasındaki en fazla mesafeyi belirtin. `window`Gensim içindeki parametreye karşılık gelir.
+    + **Bağlam penceresi boyutu**için tahmin edilen sözcük ve geçerli sözcük arasındaki en fazla mesafeyi belirtin. Bu ayar `window` Gensim içindeki parametreye karşılık gelir.
 
         Varsayılan pencere boyutu 5 ' tir.
 
-    + **Dönemler sayısı**. Corpus üzerinden dönemler (yineleme) sayısını belirtin. `iter`Gensim içindeki parametreye karşılık gelir.
+    + **Dönemler sayısı**için, Corpus üzerinden dönemler (yineleme) sayısını belirtin. Bu ayar `iter` Gensim içindeki parametreye karşılık gelir.
 
-        Varsayılan dönemler numarası 5 ' tir.
+        Varsayılan dönem numarası 5 ' tir.
 
 6. **En büyük sözlük boyutu**için, oluşturulan sözlük içindeki en fazla sözcük sayısını belirtin.
 
-    Bundan daha benzersiz sözcükler varsa, sık sık seyrek görünenler 'i ayıklaın.
+    Bundan daha benzersiz sözcükler varsa, sık sık seyrek bir şekilde bilgi ayıklaın.
 
-    Varsayılan sözlük boyutu 10000 ' dir.
+    Varsayılan sözlük boyutu 10.000 ' dir.
 
-7. **Minimum sözcük sayısı**için, modülün bu değerden daha düşük bir sıklık değeri olan tüm sözcükleri yok sayması için en az bir sözcük sayısı girin.
+7. **Minimum sözcük sayısı**için en az bir sözcük sayısı girin. Modül, bu değerden daha düşük bir sıklık değeri olan tüm sözcükleri yok sayacaktır.
 
     Varsayılan değer 5 ' tir.
 
@@ -84,17 +91,15 @@ Bu modül, metin sütunu içeren bir veri kümesi gerektirir, önceden işlenmi�
 
 Modülün bir çıkışı vardır:
 
-+ **Birlikte bulunan sözlük**: oluşturulan sözlük, her sözcüğün gömülmesi ile birlikte bir sütun kaplar.
++ **Katıştırıla sahip sözlük**: oluşturulan sözlüğü, her sözcüğün gömülmesi ile birlikte içerir. Bir boyut bir sütun kaplar.
 
-### <a name="result-examples"></a>Sonuç örnekleri
+Aşağıdaki örnek, sözcüğü vektör modülünün nasıl çalıştığını gösterir. Bu modülü, Azure Machine Learning (Önizleme) ' de belirtilen önceden işlenmiş Vil. LIB SP 500 veri kümesine varsayılan ayarlarla uygular.
 
-**Sözcüğü vektör** modülünün nasıl çalıştığını göstermek için aşağıdaki örnek, Azure Machine Learning (Önizleme) ' de belirtilen önceden işlenmiş Vil. lıb SP 500 veri kümesine varsayılan ayarlarla bu modülü uygular.
+### <a name="source-dataset"></a>Kaynak veri kümesi
 
-#### <a name="source-dataset"></a>Kaynak veri kümesi
+Veri kümesi, Vikümesden alınan tam metin ile birlikte bir kategori sütunu içerir. Bu tabloda yalnızca birkaç temsili örnek gösterilmektedir.
 
-Veri kümesi, bir kategori sütunu, Ayrıca, Vikipden alınan tam metni içerir. Bu tabloda yalnızca birkaç temsili örnek gösterilmektedir.
-
-|metin|
+|Metin|
 |----------|
 |NASDAQ 100 bileşen s p 500 bileşen temeli konum şehir Apple kampüs 1 sonsuz döngüsü cadde sonsuz döngüsü Cupertino California Cupertino California location ülke Amerika Birleşik Devletleri...|
 |br NASDAQ 100 NASDAQ 100 Component 500 500 br, Charles Geschke br John Warnock location Adobe Systems...|
@@ -102,9 +107,9 @@ Veri kümesi, bir kategori sütunu, Ayrıca, Vikipden alınan tam metni içerir.
 |s p 500 s p 500 bileşen sektöründe şirket Conglomerate, şehir Fairfield Connecticut Fairfield Connecticut location ülke ABD alanı...|
 |br s p 500 s p 500 bileşen temeli 1903, William s Harley br Arthur Davidson Harley Davidson, Arthur Davidson br Walter Davidson br William bir Davidson konum...|
 
-#### <a name="output-vocabulary-with-embeddings"></a>Katıştırlarla çıkış sözlüğü
+### <a name="output-vocabulary-with-embeddings"></a>Katıştırlarla çıkış sözlüğü
 
-Aşağıdaki tabloda, Bu modülün Vil + 500 veri kümesini giriş olarak alan çıktısı yer almaktadır. En soldaki sütun, sözlük, katıştırma vektörünün aynı satırdaki kalan sütunların değerleriyle temsil edildiği anlamına gelir.
+Aşağıdaki tablo, Bu modülün çıktısını içerir ve Vivsp 500 veri kümesini giriş olarak alır. En soldaki sütun, sözlüğü gösterir. Gömme vektörü, aynı satırdaki kalan sütunların değerleriyle temsil edilir.
 
 |Sözlük|Gömme karartma 0|Gömme 1|Gömme karartma 2|Gömme karartma 3|Gömme 4|Gömme karartma 5|...|Gömme karartma 99|
 |-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
@@ -121,23 +126,23 @@ kamp|-0,281835|0,29312|0,106966|-0,031385|0,100777|-0,061452|...|0,05978
 FIN|-0,263074|0,245753|0,07058|-0,164666|0,162857|-0,027345|...|-0,0525
 loop|-0,391421|0,52366|0,141503|-0,105423|0,084503|-0,018424|...|-0,0521
 
-Bu örnekte, `Gensim Word2Vec` **Word2Vec stratejisi**olarak varsayılan değerini kullandık, **eğitim algoritması** , `Skip-gram` **sözcük katıştırma uzunluğu** 100, bu nedenle sütunları katıştırma 100 ' dir.
+Bu örnekte, varsayılan **Gensim Word2Vec** for **Word2Vec stratejisini**kullandık ve **eğitim algoritması** **Skip-gram**' dır. **Sözcük katıştırma uzunluğu** 100, bu nedenle sütunları katıştırma 100.
 
 ## <a name="technical-notes"></a>Teknik notlar
 
 Bu bölüm, sık sorulan soruların ipuçlarını ve yanıtlarını içerir.
 
-+ Çevrimiçi eğitim ve önceden eğitilen model arasındaki fark
++ Çevrimiçi eğitim ve önceden eğitilen model arasındaki fark:
 
-    Bu **sözcüğü vektör modülüne Dönüştür modülünde**üç farklı strateji, iki çevrimiçi eğitim modeli ve önceden eğitilen bir model sunuyoruz. Çevrimiçi eğitim modeli, giriş veri kümenizi eğitim verileri olarak kullanır, eğitim sırasında sözlük ve sözcük vektörlerini oluşturur, önceden eğitilen model, Vişe veya Twitter metni gibi çok daha büyük metin corpkiyle eğitilirken, önceden eğitilen model aslında bir (Word, katıştırma) çifti koleksiyonudur.  
+    Bu sözcüğü vektör modülüne Dönüştür modülünde üç farklı strateji sağladık: iki çevrimiçi eğitim modeli ve bir önceden eğitilen model. Çevrimiçi eğitim modelleri, giriş veri kümenizi eğitim verileri olarak kullanır ve eğitim sırasında sözlük ve sözcük vektörleri oluşturur. Önceden eğitilen model, Vipeus veya Twitter metni gibi çok daha büyük bir metin için zaten eğitilmiş. Önceden eğitilen model aslında bir sözcük/katıştırma çiftleri koleksiyonudur.  
 
-    Önceden eğitilen modeli, Word vektörleştirme stratejisi olarak seçilirse, giriş veri kümesinden bir sözlük özetler ve çevrimiçi eğitim olmadan, önceden eğitilen modelden her bir sözcük için ekleme vektörü oluşturur, önceden eğitilen modelin kullanımı eğitim süresini kaydedebilir ve özellikle giriş veri kümesi boyutu nispeten küçük olduğunda daha iyi bir performansa sahiptir.
+    Daha önceden eğitilen model sözcük vektörleştirme stratejisi olarak seçilirse, giriş veri kümesinden bir sözlük özetler ve bu, önceden eğitilen modelden her sözcük için bir gömme vektörü oluşturur. Çevrimiçi eğitim olmadan, önceden eğitilen bir modelin kullanımı eğitim süresini kaydedebilir. Özellikle, giriş veri kümesi boyutu nispeten küçük olduğunda daha iyi bir performansa sahiptir.
 
-+ Ekleme boyutu
++ Gömme boyutu:
 
-    Genel olarak, kısa bir yere kadar performans elde etmek için sözcük katıştırma uzunluğu birkaç yüz (örneğin, 100, 200, 300) olarak ayarlanır.  
+    Genel olarak, sözcük katıştırma uzunluğu, iyi performans elde etmek için birkaç yüz (örneğin, 100, 200, 300) olarak ayarlanır. Bunun nedeni, küçük bir gömme boyutunun küçük bir vektör alanı anlamına gelir ve bu da sözcük ekleme çakışmalarına neden olabilir.  
 
-    Önceden eğitilen modeller için, sözcük katlamaları 'nın uzunluğu düzeltildiğinde, bu uygulamada Glove-wiki-gigaword-100 ' in gömülme boyutu 100 ' dir.
+    Önceden eğitilen modeller için, sözcük katıştırlamaları düzeltilmelidir. Bu uygulamada, Glove-wiki-gigaword-100 katıştırma boyutu 100 ' dir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

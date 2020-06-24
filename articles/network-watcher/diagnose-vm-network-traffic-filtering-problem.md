@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b88a855f1f486a94bb591e3d2a72b49a9a8500db
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241601"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709224"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak sanal makine ağ trafiği filtreleme sorununu tanılama
 
@@ -44,7 +44,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
     |---|---|
     |Adı|myVm|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
-    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+    |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve tanımlanmış karmaşıklık gereksinimlerini karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
     |Konum| **Doğu ABD** seçin|
@@ -59,7 +59,7 @@ Ağ İzleyicisi ile ağ iletişimini test etmek için önce en az bir Azure böl
 
 ### <a name="enable-network-watcher"></a>Ağ izleyicisini etkinleştirme
 
-En az bir bölgede etkinleştirilmiş bir ağ izleyiciniz zaten varsa [IP akış doğrulamayı kullanma](#use-ip-flow-verify) bölümüne geçin.
+En az bir bölgede zaten etkinleştirilmiş bir ağ izleyicisine sahipseniz, [kullanılan IP akışı doğrulama](#use-ip-flow-verify)' ya atlayın.
 
 1. Portalda **Tüm hizmetler**’i seçin. **Filtre kutusu**’na *Ağ İzleyicisi* yazın. **Ağ İzleyicisi**, sonuçlarda görüntülendiğinde onu seçin.
 2. VM’nin önceki adımda dağıtıldığı bölge Doğu ABD bölgesi olduğu için bu bölgede bir ağ izleyicisi etkinleştirin. **Bölgeler**’i seçip genişletin ve sonra aşağıdaki resimde gösterildiği gibi **Doğu ABD**’nin sağındaki **...** öğesini seçin:
@@ -98,19 +98,19 @@ Hangi güvenlik kurallarının bir sanal makineye/sanal makineden trafiğe izin 
 
 ## <a name="view-details-of-a-security-rule"></a>Bir güvenlik kuralının ayrıntılarını görüntüleme
 
-1. [IP akışı doğrulamayı kullanma](#use-ip-flow-verify) bölümündeki 3-5. adımlarda yer alan kuralların iletişime neden izin verdiğini ya da reddettiğini belirlemek için, VM’deki ağ arabirimine yönelik etkili güvenlik kurallarını gözden geçirin. Portalın üst kısmındaki arama kutusuna *myvm* yazın. **myvm** (veya ağ arabiriminizin adı her neyse) ağ arabirimi arama sonuçlarında göründüğünde seçin.
+1. **IP akışı doğrulamayı kullanma** bölümündeki 3-5. adımlarda yer alan kuralların iletişime neden izin verdiğini ya da reddettiğini belirlemek için, VM’deki ağ arabirimine yönelik etkili güvenlik kurallarını gözden geçirin. Portalın üst kısmındaki arama kutusuna *myvm* yazın. **myvm** (veya ağ arabiriminizin adı her neyse) ağ arabirimi arama sonuçlarında göründüğünde seçin.
 2. Aşağıdaki resimde gösterildiği gibi **DESTEK VE SORUN GİDERME** altında **Etkili güvenlik kuralları**’nı seçin:
 
     ![Etkili güvenlik kuralları](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
 
-    [IP akışı doğrulamayı kullan](#use-ip-flow-verify) bölümündeki 3. adımda, **AllowInternetOutbound** kuralı nedeniyle iletişime izin verildiğini öğrendiniz. Yukarıdaki resimde kural için **HEDEF** değerinin **İnternet** olduğunu görebilirsiniz. [IP akışı doğrulamayı kullanma](#use-ip-flow-verify) bölümündeki 3. adımda test ettiğiniz 13.107.21.200 adresinin **İnternet** ile nasıl ilişkilendirildiği açık değildir.
+    **IP akışı doğrulamayı kullan** bölümündeki 3. adımda, **AllowInternetOutbound** kuralı nedeniyle iletişime izin verildiğini öğrendiniz. Yukarıdaki resimde kural için **HEDEF** değerinin **İnternet** olduğunu görebilirsiniz. **IP akışı doğrulamayı kullanma** bölümündeki 3. adımda test ettiğiniz 13.107.21.200 adresinin **İnternet** ile nasıl ilişkilendirildiği açık değildir.
 3. Aşağıdaki resimde gösterildiği gibi **AllowInternetOutBound** kuralını ve sonra **Hedef**’i seçin:
 
     ![Güvenlik kuralı ön ekleri](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)
 
     Listedeki ön eklerden biri **12.0.0.0/6**'dır ve IP adreslerinin 12.0.0.1-15.255.255.254 aralığını kapsar. 13.107.21.200 bu adres aralığı içinde yer aldığından **AllowInternetOutBound** kuralı, giden trafiğe izin verir. Ayrıca, 2. adımdaki resimde bu kuralı geçersiz kılan daha yüksek öncelikli (daha küçük numaralı) bir kural da gösterilmemektedir. **Adres ön ekleri** kutusunu kapatın. 13.107.21.200 adresine giden iletişimi reddetmek için, IP adresine giden 80 numaralı bağlantı noktasını reddeden, daha yüksek önceliğe sahip bir güvenlik kuralı ekleyebilirsiniz.
-4. [IP akışı doğrulama](#use-ip-flow-verify) bölümündeki 4. adımda 172.131.0.100 için giden denetimi çalıştırdığınızda iletişimi **DefaultOutboundDenyAll** kuralının reddettiğini öğrendiniz. Bu kural, 2. adımdaki resimde gösterilen ve **HEDEF** olarak **0.0.0.0/0** adresini gösteren **DenyAllOutBound** kuralına eşittir. Adres, resimde gösterilen diğer **Giden kurallardan** herhangi birinin **HEDEF** aralığında olmadığından, bu kural 172.131.0.100 ile iletişimi reddeder. Giden iletişime izin vermek için, 80 numaralı bağlantı noktasına giden trafiğe izin veren, 172.131.0.100 adresine yönelik daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
-5. [IP akışı doğrulama](#use-ip-flow-verify) bölümündeki 5. adımda 172.131.0.100 adresinden gelen denetimi çalıştırdığınızda iletişimi **DefaultInboundDenyAll** kuralının reddettiğini öğrendiniz. Bu kural, 2. adımdaki resimde gösterilen **DenyAllInBound** kuralına eşittir. **DenyAllInBound** kuralı, 172.31.0.100 adresinden 80 numaralı bağlantı noktasının VM’ye gitmesine izin veren başka bir yüksek öncelikli kural bulunmadığı için uygulanır. Gelen iletişime izin vermek için, 172.31.0.100 adresinden gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
+4. **IP akışı doğrulama** bölümündeki 4. adımda 172.131.0.100 için giden denetimi çalıştırdığınızda iletişimi **DefaultOutboundDenyAll** kuralının reddettiğini öğrendiniz. Bu kural, 2. adımdaki resimde gösterilen ve **HEDEF** olarak **0.0.0.0/0** adresini gösteren **DenyAllOutBound** kuralına eşittir. Adres, resimde gösterilen diğer **Giden kurallardan** herhangi birinin **HEDEF** aralığında olmadığından, bu kural 172.131.0.100 ile iletişimi reddeder. Giden iletişime izin vermek için, 80 numaralı bağlantı noktasına giden trafiğe izin veren, 172.131.0.100 adresine yönelik daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
+5. **IP akışı doğrulama** bölümündeki 5. adımda 172.131.0.100 adresinden gelen denetimi çalıştırdığınızda iletişimi **DefaultInboundDenyAll** kuralının reddettiğini öğrendiniz. Bu kural, 2. adımdaki resimde gösterilen **DenyAllInBound** kuralına eşittir. **DenyAllInBound** kuralı, 172.31.0.100 adresinden 80 numaralı bağlantı noktasının VM’ye gitmesine izin veren başka bir yüksek öncelikli kural bulunmadığı için uygulanır. Gelen iletişime izin vermek için, 172.31.0.100 adresinden gelen 80 numaralı bağlantı noktasına izin veren daha yüksek öncelikli bir güvenlik kuralı ekleyebilirsiniz.
 
 Bu hızlı başlangıçtaki denetimlerinde Azure yapılandırması test edilmiştir. Denetimler beklenen sonuçları döndürdüğü halde ağ sorunları yaşamaya devam ediyorsanız, sanal makineniz ve iletişim kurduğunuz uç nokta arasında bir güvenlik duvarı olmadığından ve sanal makinenizdeki işletim sisteminin, iletişime izin veren veya iletişimi reddeden bir güvenlik duvarının olmadığından emin olun.
 

@@ -4,15 +4,15 @@ description: Azure genel IP yapılandırmasını, Azure portal kullanarak bir Az
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: a4fd5da3c910b10c81caccde307df0fd36e2fa78
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235405"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711485"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Azure genel IP yapılandırmasını Azure portal kullanarak başka bir bölgeye taşıma
 
@@ -45,7 +45,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
 2. Kaynak ortak IP 'yi içeren kaynak grubunu bulun ve üzerine tıklayın.
 3. > **ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
-5. **Şablon**  >  **düzenleme parametreleri** ' ne tıklayarak **Parameters. JSON** dosyasını çevrimiçi düzenleyicide açın.
+5. **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya **parameters.js** açmak için şablon**düzenleme parametreleri** ' ne tıklayın.
 8. Genel IP adının parametresini düzenlemek için, **parametre**  >  **değeri** altındaki özelliği kaynak genel IP adından hedef ortak IP 'nizin adına değiştirin, adın tırnak içinde olduğundan emin olun:
 
     ```json
@@ -62,7 +62,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
     ```
 8.  Düzenleyicide **Kaydet** ' e tıklayın.
 
-9.  **TEMPLATE**  >  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için şablon**düzenleme** şablonu ' na tıklayın.
+9.  **TEMPLATE**  >  Çevrimiçi düzenleyicide dosya **template.js** açmak için şablon**düzenleme** şablonu ' na tıklayın.
 
 10. Genel IP 'nin taşınacağı hedef bölgeyi düzenlemek için **kaynaklar**altındaki **Location** özelliğini değiştirin:
 
@@ -94,7 +94,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
 
 12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
-    * **SKU** - **sku**  >  **şablon. JSON** dosyasındaki SKU**adı** özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
+    * **SKU** - **sku**  >  dosyadaki **template.js** SKU**adı** özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
 
         ```json
           "resources": [

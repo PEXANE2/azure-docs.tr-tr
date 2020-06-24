@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257972"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710686"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>İkincil siteye Hyper-V VM 'Leri için bir DR ayrıntısı çalıştırın
 
@@ -43,7 +43,7 @@ Birincil siteden ikincil siteye yük devretme testi çalıştırırsınız. Yaln
 
 Yük devretme testi çalıştırdığınızda, tabloda özetlenen test çoğaltma makineleri için ağ ayarları ' nı seçmeniz istenir.
 
-| **Seçeneği** | **Bilgileri** | |
+| **Seçeneği** | **Ayrıntılar** | |
 | --- | --- | --- |
 | **Yok** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez ve herhangi bir ağa bağlı değildir.<br/><br/> Oluşturulduktan sonra makinenin bir VM ağına bağlanmasını sağlayabilirsiniz.| |
 | **Mevcut olanı kullan** | Test VM 'si, çoğaltma sanal makinesinin bulunduğu konakta oluşturulur. Buluta eklenmez.<br/><br/>Üretim ağınızdan yalıtılmış bir VM ağı oluşturun.<br/><br/>VLAN tabanlı bir ağ kullanıyorsanız, bu amaçla VMM 'de ayrı bir mantıksal ağ (üretimde kullanılmamış) oluşturmanızı öneririz. Bu mantıksal ağ yük devretme testi için VM ağları oluşturmak için kullanılır.<br/><br/>Mantıksal ağ, sanal makineleri barındıran tüm Hyper-V sunucularının en az bir ağ bağdaştırıcısı ile ilişkilendirilmelidir.<br/><br/>VLAN mantıksal ağları için, mantıksal ağa eklediğiniz ağ siteleri yalıtılmalıdır.<br/><br/>Windows ağ sanallaştırma tabanlı bir mantıksal ağ kullanıyorsanız, Azure Site Recovery otomatik olarak yalıtılmış VM ağları oluşturur. | |
@@ -119,7 +119,7 @@ Yük devretme testi için bir DNS sunucusunu aşağıdaki şekilde hazırlayın:
 
 Bu yordam, bir kurtarma planı için yük devretme testi çalıştırma işlemini açıklar. Alternatif olarak, **sanal makineler** sekmesinde tek bir sanal makine için yük devretmeyi çalıştırabilirsiniz.
 
-1. **Kurtarma planlarını** > *recoveryplan_name*seçin. **Yük** > devretme**testi yük devretmesi**öğesine tıklayın.
+1. **Kurtarma planlarını**  >  *recoveryplan_name*seçin. **Yük**devretme  >  **testi yük devretmesi**öğesine tıklayın.
 2. **Yük devretme testi** dikey penceresinde, yük devretme testi sonrasında çoğaltma VM 'lerinin ağlara nasıl bağlanması gerektiğini belirtin.
 3. **İşler** sekmesinde yük devretme ilerlemesini izleyin.
 4. Yük devretme tamamlandıktan sonra, VM 'Lerin başarıyla başlatılacağını doğrulayın.

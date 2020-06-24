@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eecfebc90c28b650af0cef4ee0e4ddc227af0e8c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420538"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711502"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Genel IPv6 adresi ön ekini ayır
 Azure sanal ağ (VNet) için IPv6, Azure 'daki uygulamaları hem bir sanal ağ hem de Internet üzerinden IPv6 ve IPv4 bağlantısıyla barındırmanızı sağlar. Ayrı IPv6 adreslerini ayırmaya ek olarak, kullanım için Azure IPv6 adreslerinin (IP öneki olarak bilinir) bitişik aralıklarını ayırabilirsiniz. Bu makalelerde, Azure PowerShell ve CLı kullanarak IPv6 genel IP adresleri ve adres aralıklarının nasıl oluşturulacağı açıklanmaktadır.
@@ -87,7 +87,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 
- Azure PowerShell kullanarak genel IP oluştururken `-PublicIpPrefix` bağımsız değişkeni ekleyerek ayrılmış bir önekten statik bir IPv6 genel IP 'si oluşturursunuz. Aşağıdaki örnek, *$MyOwnIPv 6prefix*adlı bir PowerShell değişkenine bir ön ek oluşturulup depolandığını varsayar.
+ `-PublicIpPrefix`Azure PowerShell kullanarak genel IP oluştururken bağımsız değişkeni ekleyerek ayrılmış bir önekten statik bir IPv6 genel IP 'si oluşturursunuz. Aşağıdaki örnek, *$MyOwnIPv 6prefix*adlı bir PowerShell değişkenine bir ön ek oluşturulup depolandığını varsayar.
 
 ```azurepowershell:  
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257907"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710278"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Dağıtım Planlayıcısı raporunu analiz etme
 Bu makalede, Hyper-V’den Azure’a dağıtım senaryosu için Azure Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporunda bulunan sayfalar ele alınmaktadır.
@@ -187,7 +187,7 @@ Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporu, 
 * 1.025 GB ile 2.048 GB arası P40’tır.
 * 2.049 GB ile 4.095 GB arası P50’dir.
 
-Örneğin, bir diskin iş yükü özellikleri P20 veya P30 kategorisine yerleştiriyorsa, ancak boyut onu daha düşük bir Premium depolama disk türüne eşledikten sonra, araç bu VM 'yi **Evet**\*olarak işaretler. Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
+Örneğin, bir diskin iş yükü özellikleri P20 veya P30 kategorisine yerleştiriyorsa, ancak boyut onu daha düşük bir Premium depolama disk türüne eşledikten sonra, araç bu VM 'yi **Evet**olarak işaretler \* . Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
 
 **Depolama Türü**: Standart veya Premium.
 

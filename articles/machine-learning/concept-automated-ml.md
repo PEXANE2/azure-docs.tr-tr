@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cec4213cc9b4d40707607b00ef96761e69438ee2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119079"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210261"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -37,7 +37,7 @@ Sektörler genelinde veri bilimcileri, analistleri ve geliştiriciler otomatik M
 
 Sınıflandırma, ortak bir makine öğrenimi görevidir. Sınıflandırma, modellerin eğitim verilerini kullanarak öğreniminde denetlenen bir denetlenen öğrenme türüdür ve bu dersleri yeni verilere uygulanır. Azure Machine Learning, özellikle bu görevler için derin sinir ağ metni özellikleri sınıflandırıcılarıyla ilgili özellikler sunar. [Uygulanabilirlik seçenekleri](how-to-configure-auto-features.md#featurization)hakkında daha fazla bilgi edinin. 
 
-Sınıflandırma modellerinin ana amacı, yeni verilerin eğitim verilerinden dersleri göre hangi kategorilerin üzerine dönemeyeceğini tahmin etmeye yönelik olarak tasarlanmıştır. Ortak sınıflandırma örnekleri arasında sahtekarlık algılama, el yazısı tanıma ve nesne algılama sayılabilir.  Daha fazla bilgi edinin ve [otomatik makine öğrenimi ile sınıflandırma](tutorial-train-models-with-aml.md)örneği görüntüleyin.
+Sınıflandırma modellerinin ana amacı, yeni verilerin eğitim verilerinden dersleri göre hangi kategorilerin üzerine dönemeyeceğini tahmin etmeye yönelik olarak tasarlanmıştır. Ortak sınıflandırma örnekleri arasında sahtekarlık algılama, el yazısı tanıma ve nesne algılama sayılabilir. Daha fazla bilgi edinin ve [OTOMATIKLEŞTIRILMIŞ ml ile sınıflandırma modeli oluşturma konusunda](tutorial-first-experiment-automated-ml.md)bir örnek görüntüleyin.
 
 Bu Python not defterlerinde sınıflandırma ve otomatik makine öğrenimine yönelik örneklere bakın: [sahtekarlık algılama](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [Pazarlama tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)ve [haber grubu veri sınıflandırması](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
@@ -98,6 +98,10 @@ Ayrıca, çalıştırma sırasında toplanan [ölçümleri içeren](how-to-under
 
 Model oluşturma otomatikleştirilmiş olsa da, [önemli veya ilgili özelliklerin oluşturulan modellere nasıl olduğunu da öğrenebilirsiniz](how-to-configure-auto-train.md#explain) .
 
+[Uzaktan işlem hedefini](how-to-auto-train-remote.md)nasıl kullanacağınızı öğrenin.
+
+
+
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 
@@ -114,7 +118,7 @@ Otomatik makine öğrenimi denemeleri için, korleştirme otomatik olarak uygula
 
 Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek için verileriniz otomatik olarak ölçeklendirilir veya normalleştirilir. Model eğitimi sırasında, her bir modele aşağıdaki ölçeklendirmeden veya normalleştirme tekniklerinden biri uygulanır. Oto ml 'nin modellerinizde [fazla sığdırma ve ıdengeli verilerin nasıl engellenmesine](concept-manage-ml-pitfalls.md) yardımcı olduğunu öğrenin.
 
-|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Açıklama |
+|Normalleştirme ölçeklendiriliyor &nbsp; & &nbsp;| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Ortalama ve ölçeklendirerek birim sapması arasındaki özellikleri standartlaştırın  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Her bir özelliği sütuna en düşük ve en yüksek düzeyde ölçeklendirerek özellikleri dönüştürür  |
@@ -267,17 +271,30 @@ ONNX çalışma zamanı, C# ' yi de destekler, bu nedenle REST uç noktalarını
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. örnekler ve otomatik makine öğrenimi kullanarak modeller oluşturmayı öğrenme:
+Her ne kadar fazla kaynak vardır. 
 
-+ Otomatik eğitim denemenize yönelik ayarları yapılandırın:
-  + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-use-automated-ml-for-ml-models.md).
-  + Python SDK ile [Bu adımları kullanın](how-to-configure-auto-train.md).
+### <a name="tutorials-how-tos"></a>Öğreticiler/nasıl yapılır-TOS
+Öğreticiler, oto ml senaryolarından uçtan uca tanıtım örnekleridir.
++ **Kod ilk deneyimi Için** [öğreticiyi izleyin: bir gerileme MODELINI Azure Machine Learning Python SDK ile otomatik olarak eğitme](tutorial-auto-train-models.md).
 
-+ [Uzaktan işlem hedefini](how-to-auto-train-remote.md) nasıl kullanacağınızı öğrenin
+ + **Düşük veya kod içermeyen bir deneyim için**bkz. [öğretici: Azure Machine Learning STUDIO ile otomatik ml sınıflandırma modelleri oluşturma](tutorial-first-experiment-automated-ml.md).
 
-+ [Öğreticiyi izleyin: Azure Machine Learning ile regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md) 
+Nasıl yapılır makaleleri, oto ml 'nin sunduğu işlevselliğe ek ayrıntı sağlar. Örneğin, 
 
-+ Zaman serisi verilerini kullanarak otomatik eğitme yapmayı öğrenin, [Bu adımları kullanın](how-to-auto-train-forecast.md).
++ Otomatik eğitim denemeleri için ayarları yapılandırma
+    + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-use-automated-ml-for-ml-models.md). 
+    + Python SDK ile [Bu adımları kullanın](how-to-configure-auto-train.md).
 
-+ [Otomatik makine öğrenimi için Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/) deneyin
-* Otomatikleştirilmiş ML, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) ve [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) gibi diğer Microsoft çözümlerinde de kullanılabilir
++  Zaman serisi verilerini kullanarak [Bu adımlarla](how-to-auto-train-forecast.md)otomatik olarak eğitme hakkında bilgi edinin.
+
+### <a name="jupyter-notebook-samples"></a>Jupyter Not defteri örnekleri 
+
+[Otomatik makine öğrenimi örnekleri Için GitHub Not defteri deposundaki](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)ayrıntılı kod örneklerini ve kullanım örneklerini gözden geçirin.
+
+### <a name="python-sdk-reference"></a>Python SDK başvurusu 
+
+SDK Tasarım desenlerinin ve sınıf belirtimlerinizin uzmanlığınızı, [oto ml sınıfı başvuru belgeleriyle](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)deden çıkarır. 
+
+> [!Note]
+> Otomatik makine öğrenimi özellikleri, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) ve [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) gibi diğer Microsoft çözümlerinde de mevcuttur
+

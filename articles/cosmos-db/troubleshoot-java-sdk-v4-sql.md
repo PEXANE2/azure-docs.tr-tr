@@ -3,22 +3,22 @@ title: Java SDK v4 Azure Cosmos DB tanılama ve sorun giderme
 description: Java SDK v4 'daki Azure Cosmos DB sorunları tanımlamak, tanılamak ve sorunlarını gidermek için istemci tarafı günlüğe kaydetme ve diğer üçüncü taraf araçları gibi özellikleri kullanın.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/11/2020
+ms.date: 06/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: 2deec6f6753a03ab46260432c6faceab009e2911
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4663839ffa85af0be1de93e2834e1c89e97e95c7
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651877"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718045"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API hesaplarıyla Java SDK 'Sı v4 Azure Cosmos DB kullandığınızda karşılaşılan sorunları giderme
 
 > [!div class="op_single_selector"]
-> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Java SDK’sı v4](troubleshoot-java-sdk-v4-sql.md)
 > * [Zaman uyumsuz Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
@@ -95,57 +95,20 @@ Netty GÇ iş parçacıklarının yalnızca engelleyici olmayan Netty GÇ işler
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-readtimeout"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
-```java
-@Test
-public void badCodeWithReadTimeoutException() throws Exception {
-  int requestTimeoutInSeconds = 10;
-  ConnectionPolicy policy = new ConnectionPolicy();
-  policy.setRequestTimeout(Duration.ofMillis(requestTimeoutInSeconds * 1000));
-  AtomicInteger failureCount = new AtomicInteger();
-  // Max number of concurrent item inserts is # CPU cores + 1
-  Flux<Family> familyPub = 
-      Flux.just(Families.getAndersenFamilyItem(), Families.getWitherspoonFamilyItem(), Families.getCarltonFamilyItem());
-  familyPub.flatMap(family -> {
-      return container.createItem(family);
-  }).flatMap(r -> {
-      try {
-          // Time-consuming work is, for example,
-          // writing to a file, computationally heavy work, or just sleep.
-          // Basically, it's anything that takes more than a few milliseconds.
-          // Doing such operations on the IO Netty thread
-          // without a proper scheduler will cause problems.
-          // The subscriber will get a ReadTimeoutException failure.
-          TimeUnit.SECONDS.sleep(2 * requestTimeoutInSeconds);
-      } catch (Exception e) {
-      }
-      return Mono.empty();
-  }).doOnError(Exception.class, exception -> {
-      failureCount.incrementAndGet();
-  }).blockLast();
-  assert(failureCount.get() > 0);
-}
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootNeedsSchedulerAsync)]
 
 Geçici çözüm, zaman alan iş parçacığını değiştirmek için kullanılır. Uygulamanız için Scheduler 'ın tek bir örneğini tanımlayın.
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
-```java
-// Have a singleton instance of an executor and a scheduler.
-ExecutorService ex  = Executors.newFixedThreadPool(30);
-Scheduler customScheduler = Schedulers.fromExecutor(ex);
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootCustomSchedulerAsync)]
+
 Zaman alan, örneğin, yoğun bir iş veya GÇ 'yi engelleme gibi iş yapmanız gerekebilir. Bu durumda, API 'yi kullanarak iş parçacığını tarafından sağlanmış bir çalışana geçirin `customScheduler` `.publishOn(customScheduler)` .
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-apply-custom-scheduler"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
-```java
-container.createItem(family)
-    .publishOn(customScheduler) // Switches the thread.
-    .subscribe(
-        // ...
-    );
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootPublishOnSchedulerAsync)]
+
 Kullanarak `publishOn(customScheduler)` , netty GÇ iş parçacığını serbest bırakın ve özel Zamanlayıcı tarafından sağlanmış olan özel iş parçacığına geçiş yapın. Bu değişiklik sorunu çözer. Artık bir hata almazsınız `io.netty.handler.timeout.ReadTimeoutException` .
 
 ### <a name="request-rate-too-large"></a>İstek hızı çok büyük
@@ -165,7 +128,7 @@ Azure Cosmos DB Java SDK 'Sı bir dizi bağımlılığı çeker; Genellikle, pro
 
 Böyle bir sorun için geçici çözüm, proje bağımlılıklarınızın eski sürümde ne olduğunu belirlemektir ve bu eski sürümdeki geçişli bağımlılığı hariç tutabilir ve Java SDK 'nın daha yeni sürümü uygulamasına izin Azure Cosmos DB verir.
 
-Proje bağımlılıklarınızın hangisinin Azure Cosmos DB Java SDK 'sının bağımlı olduğunu belirlemek için, projenizin pom. xml dosyasında aşağıdaki komutu çalıştırın:
+Proje bağımlılıklarınızın hangisinin, Java SDK 'sının Azure Cosmos DB daha eski bir sürümünde olduğunu belirlemek için, proje pom.xml dosyanızda aşağıdaki komutu çalıştırın:
 ```bash
 mvn dependency:tree
 ```

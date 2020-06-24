@@ -8,11 +8,11 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243659"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710363"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda dağıtılmış veriler – hiper ölçek (Citus)
 
@@ -51,7 +51,7 @@ Yerel tablolar için iyi bir aday, JOIN sorgularına katılmayan küçük yönet
 
 Önceki bölümde, dağıtılmış tabloların çalışan düğümlerinde parçalar halinde nasıl depolandığı açıklanmıştır. Bu bölümde daha fazla teknik ayrıntı açıklanmaktadır.
 
-Düzenleyicinizdeki `pg_dist_shard` meta veri tablosu, sistemdeki her bir dağıtılmış tablonun her biri için bir satır içerir. Satır bir karma alanındaki (shardminvalue, shardmaxvalue) bir dizi tamsayının bulunduğu parça KIMLIĞIYLE eşleşir.
+`pg_dist_shard`Düzenleyicinizdeki meta veri tablosu, sistemdeki her bir dağıtılmış tablonun her biri için bir satır içerir. Satır bir karma alanındaki (shardminvalue, shardmaxvalue) bir dizi tamsayının bulunduğu parça KIMLIĞIYLE eşleşir.
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Düzenleyici düğümü, hangi parçanın bir satırı bulundurduğunu belirleme istiyorsa `github_events`, satırdaki dağıtım sütununun değerini karma hale getirir. Sonra düğüm, hangi\'parça aralığının karma değeri içerdiğini denetler. Aralıklar, karma işlevin görüntüsünün ayrık birleşimi olması için tanımlanır.
+Düzenleyici düğümü, hangi parçanın bir satırı bulundurduğunu belirleme istiyorsa `github_events` , satırdaki dağıtım sütununun değerini karma hale getirir. Sonra düğüm, hangi parça \' aralığının karma değeri içerdiğini denetler. Aralıklar, karma işlevin görüntüsünün ayrık birleşimi olması için tanımlanır.
 
 ### <a name="shard-placements"></a>Parça yerleştirme
 
-Parça 102027 ' nin söz konusu satırla ilişkili olduğunu varsayalım. Satır, çalışanlarından birinde çağrılan `github_events_102027` bir tabloda okunabilir veya yazılır. Hangi çalışan? Bu, tamamen meta veri tabloları tarafından belirlenir. Parça ile çalışan arasındaki eşleme, parça yerleşimi olarak bilinir.
+Parça 102027 ' nin söz konusu satırla ilişkili olduğunu varsayalım. Satır, çalışanlarından birinde çağrılan bir tabloda okunabilir veya yazılır `github_events_102027` . Hangi çalışan? Bu, tamamen meta veri tabloları tarafından belirlenir. Parça ile çalışan arasındaki eşleme, parça yerleşimi olarak bilinir.
 
-Düzenleyici düğümü, gibi `github_events_102027` belirli tablolara başvuran ve ilgili çalışanlar üzerinde bu parçaları çalıştıran parçalara sorguları yeniden yazar. Parça KIMLIĞI 102027 olan düğümü bulmak için arka planda çalıştırılan bir sorgu örneği aşağıda verilmiştir.
+Düzenleyici düğümü, gibi belirli tablolara başvuran `github_events_102027` ve ilgili çalışanlar üzerinde bu parçaları çalıştıran parçalara sorguları yeniden yazar. Parça KIMLIĞI 102027 olan düğümü bulmak için arka planda çalıştırılan bir sorgu örneği aşağıda verilmiştir.
 
 ```sql
 SELECT

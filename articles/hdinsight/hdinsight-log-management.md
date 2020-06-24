@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
 ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272311"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709258"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -87,11 +87,11 @@ Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya 
 
 ### <a name="view-the-script-action-logs"></a>Betik eylemi günlüklerini görüntüleme
 
-HDInsight [betik eylemleri](hdinsight-hadoop-customize-cluster-linux.md) , el ile veya belirtildiğinde bir kümede betikleri çalıştırır. Örneğin, betik eylemleri kümeye ek yazılım yüklemek veya varsayılan değerlerden yapılandırma ayarlarını değiştirmek için kullanılabilir. Betik eylemi günlükleri, kümenin kurulumu sırasında oluşan hatalara ilişkin Öngörüler ve ayrıca küme performansını ve kullanılabilirliğini etkileyebilecek yapılandırma ayarları ' değişikliklerini sağlayabilir.  Bir betik eyleminin durumunu görmek için, ambarı Kullanıcı arabiriminizdeki **Ops** düğmesini seçin veya varsayılan depolama hesabındaki durum günlüklerine erişin. Depolama günlükleri ' nde `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`kullanılabilir.
+HDInsight [betik eylemleri](hdinsight-hadoop-customize-cluster-linux.md) , el ile veya belirtildiğinde bir kümede betikleri çalıştırır. Örneğin, betik eylemleri kümeye ek yazılım yüklemek veya varsayılan değerlerden yapılandırma ayarlarını değiştirmek için kullanılabilir. Betik eylemi günlükleri, kümenin kurulumu sırasında oluşan hatalara ilişkin Öngörüler ve ayrıca küme performansını ve kullanılabilirliğini etkileyebilecek yapılandırma ayarları ' değişikliklerini sağlayabilir.  Bir betik eyleminin durumunu görmek için, ambarı Kullanıcı arabiriminizdeki **Ops** düğmesini seçin veya varsayılan depolama hesabındaki durum günlüklerine erişin. Depolama günlükleri ' nde kullanılabilir `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE` .
 
 ### <a name="view-ambari-alerts-status-logs"></a>Ambarı uyarıları durum günlüklerini görüntüle
 
-Apache ambarı, uyarı durumu değişikliklerini öğesine `ambari-alerts.log`yazar. Tam yol `/var/log/ambari-server/ambari-alerts.log`. Günlük için hata ayıklamayı etkinleştirmek üzere, Değiştir `/etc/ambari-server/conf/log4j.properties.` `# Log alert state changes` ' de bir özelliği şu şekilde değiştirin:
+Apache ambarı, uyarı durumu değişikliklerini öğesine yazar `ambari-alerts.log` . Tam yol `/var/log/ambari-server/ambari-alerts.log` . Günlük için hata ayıklamayı etkinleştirmek üzere, Değiştir ' de bir özelliği şu şekilde değiştirin `/etc/ambari-server/conf/log4j.properties.` `# Log alert state changes` :
 
 ```
 log4j.logger.alerts=INFO,alerts
@@ -131,7 +131,7 @@ Toplanan Günlükler, kapsayıcı tarafından dizini oluşturulmuş bir TFile ik
 
 #### <a name="yarn-cli-tools"></a>YARN CLı araçları
 
-YARN CLı araçlarını kullanmak için önce SSH kullanarak HDInsight kümesine bağlanmanız gerekir. Bu komutları `<applicationId>`çalıştırırken `<user-who-started-the-application>`, `<containerId>`, ve `<worker-node-address>` bilgilerini belirtin. Günlükleri aşağıdaki komutlardan birini kullanarak düz metin olarak görebilirsiniz:
+YARN CLı araçlarını kullanmak için önce SSH kullanarak HDInsight kümesine bağlanmanız gerekir. `<applicationId>` `<user-who-started-the-application>` `<containerId>` Bu komutları çalıştırırken,, ve `<worker-node-address>` bilgilerini belirtin. Günlükleri aşağıdaki komutlardan birini kullanarak düz metin olarak görebilirsiniz:
 
 ```bash
 yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
@@ -171,14 +171,14 @@ HDInsight kümesi için verileri tutan Azure depolama için oluşturulan günlü
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>Eski günlük dosyaları için yedek dizinlerin boyutunu ve sayısını denetleme
 
-Tutulan günlük dosyalarının boyutunu ve sayısını denetlemek için aşağıdaki özellikleri ayarlayın `RollingFileAppender`:
+Tutulan günlük dosyalarının boyutunu ve sayısını denetlemek için aşağıdaki özellikleri ayarlayın `RollingFileAppender` :
 
 * `maxFileSize`, dosyanın alındığı dosyanın kritik boyutudur. Varsayılan değer 10 MB 'tır.
 * `maxBackupIndex`oluşturulacak yedekleme dosyalarının sayısını, varsayılan 1 ' i belirtir.
 
 ### <a name="other-log-management-techniques"></a>Diğer günlük yönetimi teknikleri
 
-Disk alanının tükenmesinden kaçınmak için [logrotate](https://linux.die.net/man/8/logrotate) gibi bazı işletim sistemi araçlarını kullanarak günlük dosyalarının işlenmesini yönetebilirsiniz. Günlük dosyalarını sıkıştırmak `logrotate` ve eski olanları kaldırmak için, ' yi günlük olarak çalışacak şekilde yapılandırabilirsiniz. Yaklaşım, yerel düğümlerde günlük dosyalarının saklanacağı süre gibi gereksinimlerinize bağlıdır.  
+Disk alanının tükenmesinden kaçınmak için [logrotate](https://linux.die.net/man/8/logrotate) gibi bazı işletim sistemi araçlarını kullanarak günlük dosyalarının işlenmesini yönetebilirsiniz. Günlük `logrotate` dosyalarını sıkıştırmak ve eski olanları kaldırmak için, ' yi günlük olarak çalışacak şekilde yapılandırabilirsiniz. Yaklaşım, yerel düğümlerde günlük dosyalarının saklanacağı süre gibi gereksinimlerinize bağlıdır.  
 
 Ayrıca, çıkış günlüğü boyutunu büyük ölçüde artıran bir veya daha fazla hizmet için hata ayıklama günlüğü 'nün etkinleştirilip etkinleştirilmeyeceğini de denetleyebilirsiniz.  
 

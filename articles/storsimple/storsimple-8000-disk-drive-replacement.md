@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267917"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711774"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızın disk sürücüsünü değiştirme
 
@@ -46,7 +46,7 @@ Bu yordamda, bir disk sürücüsünü değiştirdiğiniz zaman StorSimple cihaz�
    
     **Şekil 1** Yetkisiz kilit, meşgul
    
-   | Etiketle | Açıklama |
+   | Etiketle | Description |
    |:--- |:--- |
    | 1 |Gösterge açıklık |
    | 2 |Antibir kilit |
@@ -103,7 +103,7 @@ StorSimple cihazınızda bir sürücü başarısız olduktan sonra dosyayı kald
     **Şekil 6**  Sürücü taşıyıcısı kasaya kaydırma
 3. Sürücü taşıyıcısı takıldığında sürücü taşıyıcısı, sürücü taşıyıcı tanıtıcısı kilitli bir konuma yaslanana kadar, sürücü taşıyıcısı gövdeye göndermeye devam ederken sürücü taşıyıcısı tanıtıcısını kapatın.
 4. Kilitleme vidalı 'yı saatin tersi yönde kapatarak, taşıyıcı tutamacının yerine getirmek için Microsoft tarafından sunulan kilit anahtarını kullanın.
-5. Değiştirme işleminin başarılı olduğunu ve sürücünün çalışır durumda olduğunu doğrulayın. Azure Portal erişin ve **cihaz ayarları** > **donanım sistem durumu**' na gidin. **Paylaşılan bileşenler** veya **ebod paylaşılan bileşenleri**altında sürücü durumu yeşil olmalıdır ve iyi durumda olduğunu gösterir.
+5. Değiştirme işleminin başarılı olduğunu ve sürücünün çalışır durumda olduğunu doğrulayın. Azure Portal erişin ve **cihaz ayarları**  >  **donanım sistem durumu**' na gidin. **Paylaşılan bileşenler** veya **ebod paylaşılan bileşenleri**altında sürücü durumu yeşil olmalıdır ve iyi durumda olduğunu gösterir.
 
    
    > [!NOTE]

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: 79efe3cef82a166ca6b56dea5cb07f15a5325083
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650332"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710958"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Kendi DNS sunucunuzda ana bilgisayar adlarını kaydetmek için dinamik DNS kullanma
 
@@ -35,7 +35,7 @@ Etki alanına katılmış Windows istemcileri, IP adreslerini güvenli DDNS kull
 ## <a name="linux-clients"></a>Linux istemcileri
 Linux istemcileri başlangıçta DNS sunucusuna kayıt yaptırmaz, DHCP sunucusunun bunu yaptığı varsayılmaktadır. Azure 'un DHCP sunucularının, DNS sunucunuzdaki kayıtları kaydetme kimlik bilgileri yoktur. `nsupdate`DDNS güncelleştirmelerini göndermek için, bağlama paketine dahil edilen adlı bir aracı kullanabilirsiniz. DDNS Protokolü standartlaştırılmış olduğundan, `nsupdate` DNS sunucusunda bağlama kullanmadığınız durumlarda bile kullanabilirsiniz.
 
-DHCP istemcisi tarafından, DNS sunucusunda ana bilgisayar adı girişini oluşturmak ve korumak için sunulan kancaları kullanabilirsiniz. DHCP çevrimi sırasında istemci, komut dosyalarını */etc/DHCP/dhclient-Exit-kancas.d/* içinde yürütür. Kullanarak yeni IP adresini kaydetmek için kancaları kullanabilirsiniz `nsupdate` . Örnek:
+DHCP istemcisi tarafından, DNS sunucusunda ana bilgisayar adı girişini oluşturmak ve korumak için sunulan kancaları kullanabilirsiniz. DHCP çevrimi sırasında istemci, komut dosyalarını */etc/DHCP/dhclient-Exit-kancas.d/* içinde yürütür. Kullanarak yeni IP adresini kaydetmek için kancaları kullanabilirsiniz `nsupdate` . Örneğin:
 
 ```bash
 #!/bin/sh

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77498373"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051735"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir dizini yeniden oluşturma
 
@@ -21,13 +21,23 @@ Bu makalede bir Azure Bilişsel Arama dizininin nasıl yeniden oluşturulduğu, 
 
 *Yeniden oluşturma* , tüm alan tabanlı ters dizinler de dahil olmak üzere bir dizinle ilişkili fiziksel veri yapılarını bırakmayı ve yeniden oluşturmayı gösterir. Azure Bilişsel Arama ' de tek tek alanları bırakamaz ve yeniden oluşturamazsınız. Bir dizini yeniden derlemek için, tüm alan depolamanın silinmesi, var olan veya düzeltilmiş bir dizin şemasına göre yeniden oluşturulması ve sonra dizine gönderilen veya dış kaynaklardan çekilmiş verilerle yeniden doldurulması gerekir. 
 
-Geliştirme sırasında dizinleri yeniden oluşturmak yaygındır, ancak karmaşık türler ekleme veya öneri araçları 'ye alan ekleme gibi yapısal değişikliklere uyum sağlamak için üretim düzeyinde bir dizini yeniden oluşturmanız gerekebilir.
+Dizin tasarımını yineleirken geliştirme sırasında dizinlerin yeniden oluşturulması yaygındır, ancak karmaşık türler ekleme veya öneri araçları 'ye alan ekleme gibi yapısal değişikliklere uyum sağlamak için de üretim düzeyinde bir dizin yeniden oluşturmanız gerekebilir.
+
+## <a name="rebuild-versus-refresh"></a>"Yeniden derle" ve "Yenile"
+
+Yeni, değiştirilmiş veya silinen belgelerle bir dizinin içeriklerinin yenilenmesi ile yeniden oluşturma karıştırılmamalıdır. Bir aramanın yenilenmesi, her bir arama uygulamasında neredeyse dakikalık güncelleştirmeler (örneğin, bir arama Corp'in bir çevrimiçi satış uygulamasındaki envanter değişikliklerini yansıtması için ihtiyaç duyduğunda) gerekir.
+
+Dizinin yapısını değiştirmiyorsanız, dizini ilk olarak yüklemek için kullandığınız tekniklerin aynısını kullanarak bir dizini yenileyebilirsiniz:
+
+* Gönderme modundaki dizin oluşturma için, değişiklikleri bir dizine göndermek üzere [Belge Ekle, Güncelleştir veya Sil](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ' i çağırın.
+
+* Dizin oluşturucular için, [Dizin Oluşturucu yürütmeyi zamanlayabilir](search-howto-schedule-indexers.md) ve Delta tanımlamak için değişiklik izleme veya zaman damgalarını kullanabilirsiniz. Güncelleştirmelerin bir Scheduler 'ın yönetebileceğinden daha hızlı yansıtılması gerekiyorsa, bunun yerine gönderim modu dizin oluşturma kullanabilirsiniz.
 
 ## <a name="rebuild-conditions"></a>Koşulları yeniden oluştur
 
 Aşağıdaki koşullardan herhangi biri doğru olduğunda bir dizini bırakıp yeniden oluşturun. 
 
-| Koşul | Açıklama |
+| Koşul | Description |
 |-----------|-------------|
 | Alan tanımını değiştirme | Bir alan adını, veri türünü veya belirli [Dizin özniteliklerini](https://docs.microsoft.com/rest/api/searchservice/create-index) (aranabilir, filtrelenebilir, sıralanabilir, çok yönlü tablo) yeniden düzeltme için tam yeniden oluşturma gerekir. |
 | Bir alana çözümleyici atama | [Çözümleyiciler](search-analyzers.md) bir dizinde tanımlanır ve alanlara atanır. Dizine dilediğiniz zaman yeni bir çözümleyici tanımı ekleyebilirsiniz, ancak alan oluşturulduğunda yalnızca bir çözümleyici *atayabilirsiniz* . Bu, hem **çözümleyici** hem de **ındexanalyzer** özellikleri için geçerlidir. **SearchAnalyzer** özelliği bir özel durumdur (Bu özelliği var olan bir alana atayabilirsiniz). |

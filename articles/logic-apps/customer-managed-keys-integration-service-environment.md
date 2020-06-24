@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458446"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687013"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
 
@@ -27,7 +27,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
 
 * Müşteri tarafından yönetilen bir anahtarı, daha sonra değil *yalnızca Ise 'nizi oluşturduğunuz zaman*belirtebilirsiniz. ISE oluşturulduktan sonra bu anahtarı devre dışı bırakabilirsiniz. Şu anda, bir ıSE için müşteri tarafından yönetilen bir anahtarı döndürmek için destek yok.
 
-* Müşteri tarafından yönetilen anahtarları desteklemek için, ıSE 'niz, [sistem tarafından atanan yönetilen kimliğin](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) etkinleştirilmesini gerektirir. Bu kimlik, ıSE, kimlik bilgilerinizle oturum açmanıza gerek kalmaması için diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişimi kimlik doğrulamasını sağlar.
+* Müşteri tarafından yönetilen anahtarları desteklemek için, ıSE 'niz, [sistem tarafından atanan yönetilen kimliğin](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) etkinleştirilmesini gerektirir. Bu kimlik, ıSE, kimlik bilgilerinizle oturum açmanıza gerek kalmaması için diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişimi kimlik doğrulamasını sağlar.
 
 * Şu anda, müşteri tarafından yönetilen anahtarları destekleyen ve sistem tarafından atanan kimliği etkin olan bir ıSE oluşturmak için, HTTPS PUT isteği kullanarak Logic Apps REST API çağırmanız gerekir.
 
@@ -80,7 +80,7 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
 
 İstek üstbilgisinde şu özellikleri ekleyin:
 
-* `Content-type`: Bu özellik değerini olarak `application/json`ayarlayın.
+* `Content-type`: Bu özellik değerini olarak ayarlayın `application/json` .
 
 * `Authorization`: Bu özellik değerini, kullanmak istediğiniz Azure aboneliğine veya kaynak grubuna erişimi olan müşterinin taşıyıcı belirtecine ayarlayın.
 
@@ -203,7 +203,7 @@ Bu görev için Azure PowerShell [set-AzKeyVaultAccessPolicy](https://docs.micro
 
 1. [Azure Portal](https://portal.azure.com)Azure anahtar kasanızı açın.
 
-1. Anahtar Kasası menüsünde erişim **ilkeleri** > **ekleme İlkesi Ekle**' yi seçin, örneğin:
+1. Anahtar Kasası menüsünde erişim **ilkeleri**  >  **ekleme İlkesi Ekle**' yi seçin, örneğin:
 
    ![Sistem tarafından atanan yönetilen kimlik için erişim ilkesi ekleme](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
@@ -219,7 +219,7 @@ Bu görev için Azure PowerShell [set-AzKeyVaultAccessPolicy](https://docs.micro
 
       !["Anahtar yönetimi" > "anahtar izinleri" ni seçin](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. **Asıl seçin**Için **Seçili hiçbiri**' ni seçin. **Asıl** bölmesi açıldıktan sonra arama kutusunda, Ise 'nizi bulun ve seçin. İşiniz bittiğinde > **Ekle**' **yi seçin.**
+   1. **Asıl seçin**Için **Seçili hiçbiri**' ni seçin. **Asıl** bölmesi açıldıktan sonra arama kutusunda, Ise 'nizi bulun ve seçin. İşiniz bittiğinde Ekle ' **yi seçin**  >  **Add**.
 
       ![Asıl öğe olarak kullanılacak ıSE 'yi seçin](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 

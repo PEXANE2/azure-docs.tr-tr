@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 217e48ab21439f03e0b52c894c9aace5b51b1502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 995339f91be37b71d73b409f3eaeafb3dd1777ab
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086180"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84754621"
 ---
 Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğundan emin olmak için aşağıdaki varsayılan sınırlara sahip çok kiracılı bir hizmettir. Sınırlandırmaları aboneliğinizin en büyük sınırına yükseltmek için desteğe başvurun.
 
@@ -46,7 +46,7 @@ Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğu
 | Dakikada izleme sorgusu sayısı | 1000 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Dakika başına varlık CRUD işlemleri | 50 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Veri akışı hata ayıklama oturumunun en uzun süresi | 8 saat | 8 saat |
-| Fabrika başına eşzamanlı veri akışı sayısı | 50 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Tümleştirme çalışma zamanı başına eşzamanlı veri akışı sayısı | 50 | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Her fabrika için Kullanıcı başına eşzamanlı veri akışı hata ayıklama oturumu sayısı | 3 | 3 |
 | Veri akışı Azure IR TTL sınırı | 4 saat | [Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 
@@ -64,7 +64,7 @@ Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğu
 
 ### <a name="version-1"></a>Sürüm 1
 
-| **Kaynak** | **Varsayılan limit** | **Maksimum sınır** |
+| **Kaynak** | **Varsayılan sınır** | **Üst sınır** |
 | --- | --- | --- |
 | Veri Fabrikası içindeki işlem hatları |2,500 |[Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Veri Fabrikası içindeki veri kümeleri |5.000 |[Desteğe başvurun](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |

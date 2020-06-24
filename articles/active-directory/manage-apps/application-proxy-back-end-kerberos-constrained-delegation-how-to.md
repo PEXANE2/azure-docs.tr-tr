@@ -3,25 +3,25 @@ title: Kerberos kısıtlamalı yetkilendirme sorunlarını giderme-uygulama prox
 description: Uygulama proxy 'Si için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275689"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760448"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Uygulama proxy 'Si için Kerberos kısıtlanmış temsil yapılandırmalarının sorunlarını giderme
 
@@ -66,7 +66,7 @@ Bu görüntülerin her ikisi de aynı belirtiyi gösterir: SSO hatası. Uygulama
 
 Sorunun nasıl giderileceği soruna ve gözlemlediğiniz belirtilere bağlıdır. Herhangi bir şekilde devam etmeden önce aşağıdaki makaleleri araştırın. Bunlar yararlı sorun giderme bilgileri sağlar:
 
-- [Uygulama proxy 'Si sorunlarını ve hata iletilerini sorun giderme](application-proxy-troubleshoot.md)
+- [Uygulama Proxy'si sorunlarını ve hata iletilerini giderme](application-proxy-troubleshoot.md)
 - [Kerberos hataları ve belirtileri](application-proxy-troubleshoot.md#kerberos-errors)
 - [Şirket içi ve bulut kimlikleri aynı olmadığında SSO ile çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
@@ -86,7 +86,7 @@ Daha önce belirtildiği gibi, tarayıcı hata iletileri neden başarısız oldu
 
 ![Örnek: yanlış KCD yapılandırma hatası](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Olay günlüğünde görülen karşılık gelen girişler, 13019 veya 12027 olaylarını gösterir. **Uygulama ve hizmet günlüklerinde** &gt; bağlayıcı olay günlüklerini bulma **Microsoft** &gt; **aadapplicationproxy** &gt; **bağlayıcı** &gt; **Yöneticisi**.
+Olay günlüğünde görülen karşılık gelen girişler, 13019 veya 12027 olaylarını gösterir. **Uygulama ve hizmet günlüklerinde** bağlayıcı olay günlüklerini bulma &gt; **Microsoft** &gt; **aadapplicationproxy** &gt; **bağlayıcı** &gt; **Yöneticisi**.
 
 ![Uygulama proxy 'Si olay günlüğünden olay 13019](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
@@ -94,7 +94,7 @@ Olay günlüğünde görülen karşılık gelen girişler, 13019 veya 12027 olay
 
 1. **CNAME**değil, uygulamanın adresi IÇIN iç DNS 'Niz içindeki **bir** kaydı kullanın.
 1. Bağlayıcı ana bilgisayarına belirtilen hedef hesabın SPN 'sine temsilci atanmış hakkı verildiğini yeniden onaylayın. **Herhangi bir kimlik doğrulama protokolünü kullan** ' ın seçili olduğunu yeniden onaylayın. Daha fazla bilgi için bkz. [SSO yapılandırma makalesi](application-proxy-configure-single-sign-on-with-kcd.md).
-1. Azure AD 'de mevcut olan SPN 'nin yalnızca bir örneğinin olduğunu doğrulayın. Herhangi `setspn -x` bir etki alanı üyesi konağında bir komut isteminden sorun.
+1. Azure AD 'de mevcut olan SPN 'nin yalnızca bir örneğinin olduğunu doğrulayın. `setspn -x`Herhangi bir etki alanı üyesi konağında bir komut isteminden sorun.
 1. [Verilen Kerberos belirteçlerinin maksimum boyutunu](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/)sınırlayan bir etki alanı ilkesinin zorlandığını denetleyin. Bu ilke, bağlayıcının aşırı olduğu bulunursa bir belirteç alınmasını engeller.
 
 Bağlayıcı ana bilgisayarı ve etki alanı KDC arasındaki alışverişleri yakalayan bir ağ izlemesi, sorunlar hakkında daha düşük düzeyde ayrıntı elde etmek için bir sonraki en iyi adımdır. Daha fazla bilgi için bkz. [ayrıntılı sorun giderme](https://aka.ms/proxytshootpaper)sayfası.

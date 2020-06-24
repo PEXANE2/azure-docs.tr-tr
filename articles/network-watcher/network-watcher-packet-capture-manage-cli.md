@@ -7,17 +7,17 @@ author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7a69610d1ac176354a9d7e388a12ccc7f064d848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382724"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724937"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Azure CLı kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
 
@@ -50,9 +50,9 @@ Bu makalede aşağıdaki kaynaklara sahip olduğunuz varsayılır:
 
 ## <a name="install-vm-extension"></a>VM uzantıları yükleme
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
-Konuk sanal `az vm extension set` makinesine paket yakalama Aracısı 'nı yüklemek için komutunu çalıştırın.
+`az vm extension set`Konuk sanal makinesine paket yakalama Aracısı 'nı yüklemek için komutunu çalıştırın.
 
 Windows sanal makineleri için:
 
@@ -108,7 +108,7 @@ Aşağıdaki örnek, çalıştırmanın yanıt örneğidir`az vm extension show`
 
 Yukarıdaki adımlar tamamlandıktan sonra, paket yakalama Aracısı sanal makineye yüklenir.
 
-### <a name="step-1"></a>1. Adım
+### <a name="step-1"></a>1\. Adım
 
 Bir depolama hesabı alın. Bu depolama hesabı, paket yakalama dosyasını depolamak için kullanılır.
 
@@ -124,7 +124,7 @@ Bu noktada, bir paket yakalama oluşturmaya hazırlarsınız.  İlk olarak, yap�
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-Aşağıdaki örnek, `az network watcher packet-capture create` komutunu çalıştırmanın beklenen çıktıdır.
+Aşağıdaki örnek, komutunu çalıştırmanın beklenen çıktıdır `az network watcher packet-capture create` .
 
 ```json
 {
@@ -179,13 +179,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>Paket yakalaması alma
 
-`az network watcher packet-capture show-status` Komutu çalıştırmak, çalışmakta olan veya tamamlanmış bir paket yakalama durumunu alır.
+Komutu çalıştırmak `az network watcher packet-capture show-status` , çalışmakta olan veya tamamlanmış bir paket yakalama durumunu alır.
 
 ```azurecli-interactive
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-Aşağıdaki örnek, `az network watcher packet-capture show-status` komutunun çıktıdır. Aşağıdaki örnek, yakalamanın durdurulma nedeni ile zaman aşımı ile durdurulduğunda oluşur.
+Aşağıdaki örnek, komutunun çıktıdır `az network watcher packet-capture show-status` . Aşağıdaki örnek, yakalamanın durdurulma nedeni ile zaman aşımı ile durdurulduğunda oluşur.
 
 ```
 {
@@ -204,7 +204,7 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>Paket yakalamayı durdur
 
-`az network watcher packet-capture stop` Komutu çalıştırarak bir yakalama oturumu devam ediyorsa, durdurulur.
+`az network watcher packet-capture stop`Komutu çalıştırarak bir yakalama oturumu devam ediyorsa, durdurulur.
 
 ```azurecli-interactive
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus

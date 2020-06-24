@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265590"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686231"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 
@@ -30,7 +30,7 @@ Bir Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri dosyala
 
 Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
 
@@ -56,7 +56,7 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
         Daha fazla bilgi için bkz. [Azure Data Lake Storage 1. verileri şifreleme](./data-lake-store-encryption.md).
 
-4. **Oluştur**' a tıklayın. Hesabı panoya sabitlemeyi seçtiyseniz, panoya geri götürülürsünüz ve Data Lake Storage 1. hesabı hazırlamanın ilerlemesini görebilirsiniz. Data Lake Storage 1. hesap sağlandıktan sonra hesap dikey penceresi görüntülenir.
+4. **Oluştur**'a tıklayın. Hesabı panoya sabitlemeyi seçtiyseniz, panoya geri götürülürsünüz ve Data Lake Storage 1. hesabı hazırlamanın ilerlemesini görebilirsiniz. Data Lake Storage 1. hesap sağlandıktan sonra hesap dikey penceresi görüntülenir.
 
 ## <a name="assign-permissions-to-azure-key-vault"></a><a name="assign-permissions-to-azure-key-vault"></a>Azure Key Vault’a izin atama
 

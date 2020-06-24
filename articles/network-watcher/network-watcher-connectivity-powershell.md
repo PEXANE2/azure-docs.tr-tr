@@ -5,20 +5,19 @@ description: PowerShell kullanarak Azure ağ Izleyicisi 'nde bağlantı sorunlar
 services: network-watcher
 documentationcenter: na
 author: damendo
-manager: twooley
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa5d7efed1ce1f41ebb67e2ec377e862ad14ed7a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842844"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725044"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>PowerShell kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
 
@@ -64,7 +63,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta, `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış, Kullanıcı tarafından `NetworkSecurityRule` yapılandırılan adlandırılmış **UserRule_Port80**nedeniyle bağlantı Sanal Gereç üzerinde başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
+Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta, `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. `NetworkSecurityRule`Bağlantı noktası 80 ' de gelen trafiği engellemek için yapılandırılmış, Kullanıcı tarafından yapılandırılan adlandırılmış **UserRule_Port80**nedeniyle bağlantı Sanal Gereç üzerinde başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +154,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnekte,, `ConnectionStatus` **ulaşılamaz**olarak gösterilir. `Hops` Ayrıntılarda, trafiğin bir `Issues` `UserDefinedRoute`nedeniyle engellenmiş olduğunu görebilirsiniz. 
+Aşağıdaki örnekte,, `ConnectionStatus` **ulaşılamaz**olarak gösterilir. `Hops`Ayrıntılarda, `Issues` trafiğin bir nedeniyle engellenmiş olduğunu görebilirsiniz `UserDefinedRoute` . 
 
 ```
 ConnectionStatus : Unreachable

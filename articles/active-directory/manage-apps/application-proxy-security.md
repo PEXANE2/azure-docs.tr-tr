@@ -3,8 +3,8 @@ title: Azure AD Uygulama Ara Sunucusu için güvenlik konuları | Microsoft Docs
 description: Azure AD Uygulama Ara Sunucusu kullanmaya yönelik güvenlik konularını ele alır
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0faf8ac776c043f2407e509c936d21f227664
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739977"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759897"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile uygulamalara uzaktan erişmenin güvenlik konuları
 
@@ -79,7 +79,7 @@ Bu raporların ve olayların birçoğu, güvenlik bilgileri ve olay yönetimi (S
 
 Çok sayıda saldırı için düzeltme eki yüklenmemiş yazılım hala hesaplar. Azure AD Uygulama Ara Sunucusu, Microsoft 'un sahip olduğu bir Internet ölçeklendirmiş hizmettir, bu nedenle her zaman en son güvenlik düzeltme eklerini ve yükseltmelerini alırsınız.
 
-Azure AD Uygulama Ara Sunucusu tarafından yayınlanan uygulamaların güvenliğini artırmak için Web Gezgini Robotlarınızın uygulamalarınızı dizinlemesini ve arşivlemesini engelliyoruz. Bir Web Gezgini robotu, yayımlanan bir uygulama için robot ayarlarını almaya çalıştığında, uygulama proxy 'Si içeren bir robots. txt dosyası ile yanıt verir `User-agent: * Disallow: /` .
+Azure AD Uygulama Ara Sunucusu tarafından yayınlanan uygulamaların güvenliğini artırmak için Web Gezgini Robotlarınızın uygulamalarınızı dizinlemesini ve arşivlemesini engelliyoruz. Bir Web Gezgini robotu, yayımlanan bir uygulama için robot ayarlarını almaya çalıştığında, uygulama proxy 'Si içeren bir robots.txt dosyası ile yanıt verir `User-agent: * Disallow: /` .
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS koruma hizmeti
 

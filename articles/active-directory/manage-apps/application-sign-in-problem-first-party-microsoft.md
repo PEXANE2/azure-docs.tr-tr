@@ -3,25 +3,25 @@ title: Microsoft uygulamasında oturum açma sorunları | Microsoft Docs
 description: Azure AD 'yi kullanarak ilk taraf Microsoft uygulamalarında oturum açarken karşılaşılan yaygın sorunları giderme (Office 365 gibi)
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67108310"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759292"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft uygulamasında oturum açma sorunları
 
@@ -512,19 +512,19 @@ Uygun izinler onay işlemi gerçekleşmediğinden uygulama erişimi engellenebil
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Herhangi bir uygulama için yönetici düzeyinde onay işlemi gerçekleştirin
 
--   **Yalnızca v1 uygulama modeli kullanılarak geliştirilmiş uygulamalarda**, bir uygulamanın oturum açma URL 'sinin sonuna "**? Prompt = admin\_onay**" ekleyerek bu yönetici düzeyi onayını ortaya çıkmaya zorlayabilirsiniz.
+-   **Yalnızca v1 uygulama modeli kullanılarak geliştirilmiş uygulamalarda**, bir uygulamanın oturum açma URL 'sinin sonuna "**? Prompt = admin \_ onay**" ekleyerek bu yönetici düzeyi onayını ortaya çıkmaya zorlayabilirsiniz.
 
 -   **V2 uygulama modeli kullanılarak geliştirilen herhangi bir uygulama**için, [Yönetici onay uç noktasını kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay oluşmasını zorunlu kılabilirsiniz.
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Tek kiracılı bir uygulama için yönetici düzeyinde onay gerçekleştirme
 
--   İzinleri isteyen **tek kiracılı uygulamalar** (kuruluşunuzda geliştirdiğinize veya sahibiyseniz), genel yönetici olarak oturum açarak ve **&gt; uygulama kayıt defteri-tüm uygulamalar&gt; &gt; ** ' ın en üstündeki **izin ver** düğmesine tıklayarak tüm kullanıcılar adına **yönetim düzeyinde onay** işlemi gerçekleştirebilirsiniz. uygulama için gerekli izinler bölmesini seçin.
+-   İzinleri isteyen **tek kiracılı uygulamalar** (kuruluşunuzda geliştirdiğinize veya sahibiyseniz), genel yönetici olarak oturum açarak ve **uygulama kayıt defteri-tüm uygulamalar ' ın en üstündeki izin ver düğmesine tıklayarak tüm kullanıcılar adına yönetim düzeyinde onay Işlemi gerçekleştirebilirsiniz. &gt; uygulama için &gt; &gt; gerekli izinler bölmesini seçin** . **administrative-level consent** **Grant permissions**
 
 -   **V1 veya v2 uygulama modeli kullanılarak geliştirilen herhangi bir uygulama**için, [Yönetici onay uç noktasını kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay oluşmasını zorunlu kılabilirsiniz.
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Çok kiracılı bir uygulama için yönetici düzeyinde onay gerçekleştirme
 
--   İzinler isteyen **çok kiracılı uygulamalar** (örneğin, üçüncü taraf veya Microsoft, geliştirir) için, **yönetim düzeyinde bir izin** işlemi gerçekleştirebilirsiniz. Genel yönetici olarak oturum açın ve **Kurumsal uygulamalar-&gt; tüm&gt; &gt; uygulamalar** altında **izin ver** düğmesine tıklayın. bir uygulama izinleri bölmesi (yakında kullanılabilir) seçin.
+-   İzinler isteyen **çok kiracılı uygulamalar** (örneğin, üçüncü taraf veya Microsoft, geliştirir) için, **yönetim düzeyinde bir izin** işlemi gerçekleştirebilirsiniz. Genel yönetici olarak oturum açın ve kurumsal uygulamalar-tüm uygulamalar altında **Izin ver** düğmesine tıklayın. ** &gt; &gt; bir uygulama &gt; izinleri** bölmesi (yakında kullanılabilir) seçin.
 
 -   Yönetici [onay uç noktasını kullanarak](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint) **bir dizin Yöneticisi 'nden izinleri iste** bölümündeki yönergeleri izleyerek bu yönetici düzeyinde onay uygulanmasını da zorunlu kılabilirsiniz.
 

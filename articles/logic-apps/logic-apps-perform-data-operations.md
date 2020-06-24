@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283946"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710380"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps veri işlemlerini gerçekleştirme
 
@@ -29,12 +29,12 @@ Bu tablolar, kullanabileceğiniz veri işlemlerini özetler ve işlemlerin üzer
 
 Bu eylemler, dizilerde verilerle çalışmanıza yardımcı olur.
 
-| Eylem | Açıklama |
+| Eylem | Description |
 |--------|-------------|
 | [**CSV tablosu oluştur**](#create-csv-table-action) | Bir diziden bir virgülle ayrılmış değer (CSV) tablosu oluşturun. |
 | [**HTML tablosu oluştur**](#create-html-table-action) | Diziden bir HTML tablosu oluşturun. |
 | [**Diziyi filtrele**](#filter-array-action) | Belirtilen filtre veya koşula göre diziden bir dizi alt kümesi oluşturun. |
-| [**Ayrılma**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturun ve her öğeyi belirtilen karakterle ayırın. |
+| [**Birleştir**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturun ve her öğeyi belirtilen karakterle ayırın. |
 | [**Şunu seçin:**](#select-action) | Farklı bir dizideki tüm öğeler için belirtilen özelliklerden bir dizi oluşturun. |
 ||| 
 
@@ -42,9 +42,9 @@ Bu eylemler, dizilerde verilerle çalışmanıza yardımcı olur.
 
 Bu eylemler JavaScript Nesne Gösterimi (JSON) biçimindeki verilerle çalışmanıza yardımcı olur.
 
-| Eylem | Açıklama |
+| Eylem | Description |
 |--------|-------------|
-| [**İletinizi**](#compose-action) | Çeşitli veri türlerine sahip olan birden fazla girişe bir ileti veya dize oluşturun. Daha sonra bu dizeyi, aynı girdileri tekrar tekrar girmek yerine tek bir girdi olarak kullanabilirsiniz. Örneğin, çeşitli girdilerden tek bir JSON iletisi oluşturabilirsiniz. |
+| [**Oluştur**](#compose-action) | Çeşitli veri türlerine sahip olan birden fazla girişe bir ileti veya dize oluşturun. Daha sonra bu dizeyi, aynı girdileri tekrar tekrar girmek yerine tek bir girdi olarak kullanabilirsiniz. Örneğin, çeşitli girdilerden tek bir JSON iletisi oluşturabilirsiniz. |
 | [**JSON Ayrıştır**](#parse-json-action) | Mantıksal uygulamalarınızda özellikleri daha kolay kullanabilmek için JSON içeriğindeki özellikler için Kullanıcı dostu veri belirteçleri oluşturun. |
 |||
 
@@ -90,9 +90,9 @@ Bir örnek denemek için, mantıksal uygulama Tasarımcısı ' nı kullanarak bu
 
      !["Oluştur" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
-   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti (**+**) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak girin `compose` . Eylemler listesinden, **oluşturma** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna `compose` filtreniz olarak girin. Eylemler listesinden, **oluşturma** eylemini seçin.
 
    !["Oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -148,9 +148,9 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek *
 
      !["CSV tablosu oluşturma" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti (**+**) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak girin `create csv table` . Eylemler listesinden **CSV tablosu oluştur** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna `create csv table` filtreniz olarak girin. Eylemler listesinden **CSV tablosu oluştur** eylemini seçin.
 
    !["CSV tablosu oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -219,11 +219,11 @@ Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda,
 
 #### <a name="work-in-code-view"></a>Kod görünümünde çalışma
 
-Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir dize olarak ayarlayın. Her `value` bir özellik için istediğiniz her bir dizi özelliğine başvuru yapın.
+Eylemin JSON tanımında, dizi içinde, `columns` `header` özelliği boş bir dize olarak ayarlayın. Her `value` bir özellik için istediğiniz her bir dizi özelliğine başvuru yapın.
 
 1. Tasarımcı araç çubuğunda **kod görünümü**' nü seçin.
 
-1. Kod düzenleyicisinde, eylemin `columns` dizisinde, istediğiniz dizi değerlerinin her sütunu için boş `header` özelliği ve bu `value` ifadeyi ekleyin:
+1. Kod düzenleyicisinde, eylemin `columns` dizisinde, `header` `value` istediğiniz dizi değerlerinin her sütunu için boş özelliği ve bu ifadeyi ekleyin:
 
    ```json
    {
@@ -299,9 +299,9 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek *
 
      !["HTML tablosu oluşturma" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti (**+**) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak girin `create html table` . Eylemler listesinden **HTML tablosu oluştur** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna `create html table` filtreniz olarak girin. Eylemler listesinden **HTML tablosu oluştur** eylemini seçin.
 
    !["HTML tablosu oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -370,11 +370,11 @@ Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda,
 
 #### <a name="work-in-code-view"></a>Kod görünümünde çalışma
 
-Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir dize olarak ayarlayın. Her `value` bir özellik için istediğiniz her bir dizi özelliğine başvuru yapın.
+Eylemin JSON tanımında, dizi içinde, `columns` `header` özelliği boş bir dize olarak ayarlayın. Her `value` bir özellik için istediğiniz her bir dizi özelliğine başvuru yapın.
 
 1. Tasarımcı araç çubuğunda **kod görünümü**' nü seçin.
 
-1. Kod düzenleyicisinde, eylemin `columns` dizisinde, istediğiniz dizi değerlerinin her sütunu için boş `header` özelliği ve bu `value` ifadeyi ekleyin:
+1. Kod düzenleyicisinde, eylemin `columns` dizisinde, `header` `value` istediğiniz dizi değerlerinin her sütunu için boş özelliği ve bu ifadeyi ekleyin:
 
    ```json
    {
@@ -464,9 +464,9 @@ Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **f
 
      !["Diziyi filtrele" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti (**+**) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `filter array` . Eylemler listesinden, **diziyi filtrele** eylemini seçin.
+1. Arama kutusuna `filter array` filtreniz olarak yazın. Eylemler listesinden, **diziyi filtrele** eylemini seçin.
 
    !["Diziyi filtrele" eylemini seçin](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -526,9 +526,9 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek *
 
      !["Yeni adım" eylemini "Birleştir" eylemi için seçin](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
-   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti (**+**) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `join` . Eylemler listesinden şu eylemi seçin: **Birleştir**
+1. Arama kutusuna `join` filtreniz olarak yazın. Eylemler listesinden şu eylemi seçin: **Birleştir**
 
    !["Birleştir" eylemini seçin](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
@@ -586,9 +586,9 @@ Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **J
 
      !["JSON ayrıştırma" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti (**+**) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `parse json` . Eylemler listesinden **JSON 'U Ayrıştır** eylemini seçin.
+1. Arama kutusuna `parse json` filtreniz olarak yazın. Eylemler listesinden **JSON 'U Ayrıştır** eylemini seçin.
 
    !["JSON ayrıştırma" eylemini seçin](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -661,9 +661,9 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örne
 
      !["Seç" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
-   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti (**+**) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
+   * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak yazın `select` . Eylemler listesinden, **seçme** eylemini seçin.
+1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna `select` filtreniz olarak yazın. Eylemler listesinden, **seçme** eylemini seçin.
 
    !["Seç" eylemini seçin](./media/logic-apps-perform-data-operations/select-select-action.png)
 
@@ -675,7 +675,7 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örne
 
 1. **Harita** kutusunun sol sütununda, kaynak dizide her bir değere atamak istediğiniz özellik adını sağlayın. Sağ sütunda, özelliği atamak istediğiniz değeri temsil eden bir ifade belirtin.
 
-   Bu örnek, her bir dizi öğesine erişen bir ifadede `item()` işlevini kullanarak tamsayı dizisindeki her değeri atamak için özellik adı olarak "Product_ID" belirtir. 
+   Bu örnek, `item()` her bir dizi öğesine erişen bir ifadede işlevini kullanarak tamsayı dizisindeki her değeri atamak için özellik adı olarak "Product_ID" belirtir. 
 
    ![Dizi oluşturmak için JSON nesnesi özelliğini ve değerlerini belirtin](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
@@ -697,7 +697,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    `@actionBody('Select')`
 
-   Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde `@actionBody('Select')` ifadeden çıkışları içerir:
+   Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve `@actionBody('Select')` e-postanın gövdesinde ifadeden çıkışları içerir:
 
    !["Select" eyleminden eylem çıkışları](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 

@@ -2,13 +2,13 @@
 title: DPM sunucusunu iş yüklerini yedekleyecek şekilde hazırlama
 description: Bu makalede, Azure Backup hizmetini kullanarak System Center Data Protection Manager (DPM) yedeklemelerini Azure 'a nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273468"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718334"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM ile iş yüklerini Azure 'a yedeklemeye hazırlanma
 
@@ -48,7 +48,7 @@ Desteklenen dosya türleri | Bu dosya türleri Azure Backup: şifreli (yalnızca
 Desteklenmeyen dosya türleri | Büyük/küçük harfe duyarlı dosya sistemlerindeki sunucular; sabit bağlantılar (atlandı); yeniden ayrıştırma noktaları (atlandı); şifrelenmiş ve sıkıştırılmış (atlandı); şifrelenmiş ve seyrek (atlandı); Sıkıştırılmış akış; akışı Ayrıştır.
 Yerel depolama | Yedeklemek istediğiniz her makinenin, yedeklenmekte olan verilerin boyutunun en az %5 ' i kadar yerel boş depolama alanı olmalıdır. Örneğin, 100 GB veri yedeklenirken karalama konumunda en az 5 GB boş alan gerekir.
 Kasa depolaması | Bir Azure Backup kasasına yedekleyebileceğiniz veri miktarına yönelik bir sınır yoktur, ancak bir veri kaynağının boyutu (örneğin bir sanal makine veya veritabanı) 54.400 GB 'ı aşmamalıdır.
-Azure ExpressRoute | Azure ExpressRoute özel veya Microsoft eşlemesiyle yapılandırılmışsa, verileri Azure 'a yedeklemek için kullanılamaz.<br/><br/> Azure ExpressRoute, genel eşleme ile yapılandırıldıysa, verileri Azure 'a yedeklemek için kullanılabilir.<br/><br/> **Note:** Ortak eşleme, yeni devreler için kullanım dışıdır.
+Azure ExpressRoute | Azure ExpressRoute üzerinden verilerinizi, genel eşleme (eski devreler için kullanılabilir) ve Microsoft eşlemesi ile birlikte yedekleyebilirsiniz. Özel eşleme üzerinde yedekleme desteklenmez.<br/><br/> **Ortak eşleme ile**: aşağıdaki etki alanlarına/adreslere erişim sağlayın:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Microsoft eşlemesi ile**aşağıdaki hizmetleri/bölgeleri ve ilgili topluluk değerlerini seçin:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure bölgesi (Kurtarma Hizmetleri kasanızın konumuna göre)<br/><br/>-Azure depolama (Kurtarma Hizmetleri kasanızın konumuna göre)<br/><br/>Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).<br/><br/>**Note**: genel eşleme, yeni devreler için kullanım dışıdır.
 Azure Backup aracısı | DPM, System Center 2012 SP1 üzerinde çalışıyorsa, DPM SP1 için paketi 2 veya sonraki bir sürümü çalıştırın. Bu, aracı yüklemesi için gereklidir.<br/><br/> Bu makalede, Microsoft Azure kurtarma hizmeti (MARS) Aracısı olarak da bilinen Azure Backup aracısının en son sürümünün nasıl dağıtılacağı açıklanır. Daha önceki bir sürümü dağıttıysanız yedeklemenin beklendiği gibi çalıştığından emin olmak için en son sürüme güncelleştirin.
 
 Başlamadan önce Azure Backup özelliği etkinleştirilmiş bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. [Azure Backup fiyatlandırması](https://azure.microsoft.com/pricing/details/backup/)hakkında bilgi edinin.
@@ -103,9 +103,9 @@ Kasa kimlik bilgileri dosyasını aşağıdaki gibi bir yerel makineye indirin:
 
     ![Kasa menüsünü açma](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. **Özellikler** > **yedekleme kimlik bilgileri**altında **İndir**' e tıklayın. Portal kasa adının ve geçerli tarihin bir birleşimini kullanarak kasa kimlik bilgileri dosyasını oluşturur ve bu dosyayı indirme için kullanılabilir hale getirir.
+4. **Özellikler**  >  **yedekleme kimlik bilgileri**altında **İndir**' e tıklayın. Portal kasa adının ve geçerli tarihin bir birleşimini kullanarak kasa kimlik bilgileri dosyasını oluşturur ve bu dosyayı indirme için kullanılabilir hale getirir.
 
-    ![İndirme](./media/backup-azure-dpm-introduction/vault-credentials.png)
+    ![İndir](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
 5. Kasa kimlik bilgilerini klasöre indirmek için **Kaydet** ' e tıklayın veya **farklı kaydedin** ve bir konum belirtin. Dosyanın oluşturulması bir dakika kadar sürer.
 
@@ -119,9 +119,9 @@ Azure Backup tarafından yedeklenen her makinede Yedekleme aracısı (Ayrıca, M
     ![Kasa menüsünü açma](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. **Özellikler** sayfasında Azure Backup aracısını indirin.
 
-    ![İndirme](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
+    ![İndir](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
-4. İndirmeden sonra Marsagentınstaller. exe ' yi çalıştırın. Aracıyı DPM makinesine yüklemek için.
+4. İndirdikten sonra MARSAgentInstaller.exe çalıştırın. Aracıyı DPM makinesine yüklemek için.
 5. Aracı için bir yükleme klasörü ve önbellek klasörü seçin. Önbellek konumu boş alanı, yedekleme verilerinin en az %5 ' i olmalıdır.
 6. İnternet 'e bağlanmak için bir proxy sunucu kullanıyorsanız, **proxy yapılandırması** ekranında ara sunucu ayrıntılarını girin. Kimliği doğrulanmış bir ara sunucu kullanıyorsanız, bu ekranda Kullanıcı adı ve parola ayrıntılarını girin.
 7. Azure Backup Aracısı yüklemeyi tamamlaması için .NET Framework 4,5 ve Windows PowerShell 'i (yüklenmemişse) yüklüyor.

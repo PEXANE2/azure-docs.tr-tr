@@ -4,23 +4,23 @@ description: Mevcut bir konak havuzunu Windows sanal masaüstündeki yeni oturum
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a60d34c73eed5d71599a90e463138186e21fdf7
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677908"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209360"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
 >[!IMPORTANT]
 >Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)bakın.
 >
-> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Konak havuzunuzdaki kullanımı artırın, yeni yükü işlemek için mevcut konak havuzunuzu yeni oturum konaklarıyla genişletmeniz gerekebilir.
@@ -57,12 +57,12 @@ Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 6. Temel bilgiler sekmesini yoksayın ve bunun yerine **VM ayrıntıları** sekmesini seçin. Burada, konak havuzuna eklemek istediğiniz sanal makinenin (VM) ayrıntılarını görüntüleyebilir ve düzenleyebilirsiniz.
 
 7. VM 'Leri oluşturmak istediğiniz kaynak grubunu seçin, ardından bölgeyi seçin. Kullanmakta olduğunuz geçerli bölgeyi veya yeni bir bölgeyi seçebilirsiniz.
-   
+
 8. Konak havuzunuza eklemek istediğiniz oturum ana bilgisayarlarının sayısını **VM sayısına**girin. Örneğin, ana bilgisayar havuzunuzu beş ana bilgisayar ile genişlettiğiniz takdirde **5**girin.
-   
+
     >[!NOTE]
     >Konak havuzundaki tüm VM 'Lerin aynı boyutta olduğundan emin olmak önemlidir çünkü VM 'lerin boyutunu veya görüntüsünü düzenleyemezsiniz.
-    
+
 9. Sanal **ağ bilgileri**için, sanal makinelerin katılmasını istediğiniz sanal ağı ve alt ağı seçin. Mevcut makinelerinizdeki aynı sanal ağı seçebilir veya adım 7 ' de seçtiğiniz bölgeye daha uygun olan farklı bir tane seçebilirsiniz.
 
 10. **Yönetici hesabı**için, seçtiğiniz sanal ağla ilişkili Active Directory etki alanı Kullanıcı adı ve parolasını girin. Bu kimlik bilgileri, sanal makineleri sanal ağa katmak için kullanılacaktır.
@@ -70,9 +70,9 @@ Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
       >[!NOTE]
       >Yönetici adlarınızın burada verilen bilgiyle uyumlu olduğundan emin olun. Hesapta etkin bir MFA yok.
 
-11. Sanal makineleri gruplandırmak istediğiniz etiketlere sahipseniz **etiket** sekmesini seçin. Aksi takdirde, bu sekmeyi atlayın. 
+11. Sanal makineleri gruplandırmak istediğiniz etiketlere sahipseniz **etiket** sekmesini seçin. Aksi takdirde, bu sekmeyi atlayın.
 
-12. **Gözden geçir + oluştur** sekmesini seçin. seçimlerinizi gözden geçirin ve her şey hassas görünüyorsa **Oluştur**' u seçin. 
+12. **Gözden geçir + oluştur** sekmesini seçin. seçimlerinizi gözden geçirin ve her şey hassas görünüyorsa **Oluştur**' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

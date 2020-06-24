@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257998"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710244"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell ve Azure Resource Manager kullanarak Hyper-V VM 'Leri için Azure 'da olağanüstü durum kurtarmayı ayarlama
 
@@ -44,7 +44,7 @@ Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahip
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>1. Adım: Azure hesabınızda oturum açın
 
-1. Bir PowerShell konsolu açın ve Azure hesabınızda oturum açmak için bu komutu çalıştırın. Cmdlet 'i bir Web sayfası getirir, sizden hesap kimlik bilgilerinizi ister: `Connect-AzAccount`.
+1. Bir PowerShell konsolu açın ve Azure hesabınızda oturum açmak için bu komutu çalıştırın. Cmdlet 'i bir Web sayfası getirir, sizden hesap kimlik bilgilerinizi ister: `Connect-AzAccount` .
    - Alternatif olarak, `Connect-AzAccount` **kimlik bilgisi** parametresini kullanarak hesap kimlik bilgilerinizi cmdlet 'e parametre olarak ekleyebilirsiniz.
    - Bir kiracı adına çalışan bir CSP iş ortağıysanız, istemci Tenantıd veya kiracı birincil etki alanı adını kullanarak müşteriyi kiracı olarak belirtin. Örneğin, `Connect-AzAccount -Tenant "fabrikam.com"`
 1. Hesap birden çok aboneliğe sahip olduğundan, hesapla birlikte kullanmak istediğiniz aboneliği ilişkilendirin:
@@ -73,7 +73,7 @@ Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahip
 
 ## <a name="step-2-set-up-the-vault"></a>2. Adım: kasayı ayarlama
 
-1. Kasanın oluşturulacağı bir Azure Resource Manager kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın. Yeni bir kaynak grubunu aşağıda gösterildiği gibi oluşturun. `$ResourceGroupName` Değişkeni, oluşturmak istediğiniz kaynak grubunun adını içerir ve $Geo değişkeni, kaynak grubunun oluşturulacağı Azure bölgesini içerir (örneğin, "Brezilya Güney").
+1. Kasanın oluşturulacağı bir Azure Resource Manager kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın. Yeni bir kaynak grubunu aşağıda gösterildiği gibi oluşturun. `$ResourceGroupName`Değişkeni, oluşturmak istediğiniz kaynak grubunun adını içerir ve $Geo değişkeni, kaynak grubunun oluşturulacağı Azure bölgesini içerir (örneğin, "Brezilya Güney").
 
    ```azurepowershell
    New-AzResourceGroup -Name $ResourceGroupName -Location $Geo
@@ -86,7 +86,7 @@ Ayrıca, bu makalede açıklanan belirli örnek aşağıdaki önkoşullara sahip
    $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
    ```
 
-`Get-AzRecoveryServicesVault` Cmdlet 'i ile mevcut kasaların bir listesini alabilirsiniz.
+Cmdlet 'i ile mevcut kasaların bir listesini alabilirsiniz `Get-AzRecoveryServicesVault` .
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>3. Adım: kurtarma hizmetleri Kasası bağlamını ayarlama
 
@@ -106,7 +106,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
    ```
 
 1. Bu cmdlet, siteyi oluşturmak için bir Site Recovery işi başlatır ve bir Site Recovery iş nesnesi döndürür. İşin tamamlanmasını bekleyin ve işin başarıyla tamamlandığını doğrulayın.
-1. İş nesnesini `Get-AzRecoveryServicesAsrJob` almak için cmdlet 'ini kullanın ve işin geçerli durumunu kontrol edin.
+1. `Get-AzRecoveryServicesAsrJob`İş nesnesini almak için cmdlet 'ini kullanın ve işin geçerli durumunu kontrol edin.
 1. Site için bir kayıt anahtarı oluşturun ve şu şekilde indirin:
 
    ```azurepowershell
@@ -130,7 +130,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 Hyper-V çekirdek sunucusu çalıştırıyorsanız, kurulum dosyasını indirin ve şu adımları izleyin:
 
-1. Şu komutu çalıştırarak dosyaları _AzureSiteRecoveryProvider. exe_ ' den yerel bir dizine ayıklayın:
+1. Şu komutu çalıştırarak dosyaları _AzureSiteRecoveryProvider.exe_ yerel bir dizine ayıklayın:
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
@@ -240,9 +240,9 @@ Başlamadan önce, belirtilen depolama hesabı kasayla aynı Azure bölgesinde o
 > Azure 'da CMK özellikli yönetilen disklere çoğaltmak istiyorsanız az PowerShell 3.3.0 onlıve sürümlerini kullanarak aşağıdaki adımları uygulayın:
 >
 > 1. VM özelliklerini güncelleştirerek yönetilen disklere yük devretmeyi etkinleştirme
-> 1. Korunan öğenin `Get-AzRecoveryServicesAsrReplicationProtectedItem` her bir diski IÇIN disk kimliğini getirmek üzere cmdlet 'ini kullanın
-> 1. Disk KIMLIĞININ disk şifreleme kümesine `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` eşlemesini içeren cmdlet 'i kullanarak bir sözlük nesnesi oluşturun. Bu disk şifreleme kümelerinin hedef bölgede sizin tarafınızdan önceden oluşturulması gerekir.
-> 1. `Set-AzRecoveryServicesAsrReplicationProtectedItem` **Diskidtodiskencryptionsetmap** parametresindeki sözlük nesnesini GEÇIREREK cmdlet 'ini kullanarak VM özelliklerini güncelleştirin.
+> 1. `Get-AzRecoveryServicesAsrReplicationProtectedItem`Korunan öğenin her bir diski için DISK kimliğini getirmek üzere cmdlet 'ini kullanın
+> 1. Disk `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` kimliğinin disk şifreleme kümesine eşlemesini içeren cmdlet 'i kullanarak bir sözlük nesnesi oluşturun. Bu disk şifreleme kümelerinin hedef bölgede sizin tarafınızdan önceden oluşturulması gerekir.
+> 1. `Set-AzRecoveryServicesAsrReplicationProtectedItem` **Diskidtodiskencryptionsetmap** parametresindeki sözlük nesnesini geçirerek CMDLET 'ini kullanarak VM özelliklerini güncelleştirin.
 
 ## <a name="step-8-run-a-test-failover"></a>8. Adım: yük devretme testi çalıştırma
 

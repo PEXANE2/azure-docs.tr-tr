@@ -3,25 +3,25 @@ title: Uygulama proxy 'Si uygulamasının yüklenmesi çok uzun sürüyor | Micr
 description: Azure AD Uygulama Ara Sunucusu sayfa yükleme performans sorunlarını giderme
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac1182d719d7c90129115e1fadf94f4f86a28e8
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: bff9873742d5d660f563eebcb58ff9bcca940d24
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65782640"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760192"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Uygulama proxy 'Si uygulamasının yüklenmesi çok uzun sürüyor
 
@@ -35,7 +35,7 @@ Ağ topolojisinin yanı sıra, şu anda performans ayarlaması için daha fazla 
 Uygulama proxy 'Si hizmeti olan veri merkezleri [bağlayıcı bağlantı noktaları test aracı](https://aadap-portcheck.connectorporttest.msappproxy.net/)ile bulunabilir. 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>Uygulama proxy 'Si veri merkezi konumları hakkında geri bildirim 
-Henüz uygulama proxy 'Si içermeyen Azure veri merkezleri olabilir, ancak sizin için harika bir gecikme süresine neden olur. Veri merkezinin konumunu konumuna aadapfeedback@microsoft.comgönderin. Microsoft, genişletme planları için geri bildirimlerinizi kullanır.
+Henüz uygulama proxy 'Si içermeyen Azure veri merkezleri olabilir, ancak sizin için harika bir gecikme süresine neden olur. Veri merkezinin konumunu konumuna gönderin aadapfeedback@microsoft.com . Microsoft, genişletme planları için geri bildirimlerinizi kullanır.
 
 Microsoft, gecikme süresini artırmaya yönelik ek yetenekler üzerinde çalışmaktadır. Bu geliştirmeler kullanılabilir duruma geldiğinde belgeler güncelleştirilir.
 

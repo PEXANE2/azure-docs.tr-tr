@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251173"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712505"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services ile Azure Işlevleri geliştirme
 
@@ -54,7 +54,7 @@ Bu makalede tanımlanan işlevi, uygulama ayarlarınızda aşağıdaki ortam de�
 
 **Amsclientsecret**: Azure AD uygulama istemci parolası.
 
-**Storageconnection**: Media Services hesabıyla ilişkili hesabın depolama bağlantısı. Bu değer, **function. JSON** dosyasında ve **. CSX** dosyasında (aşağıda açıklanmıştır) kullanılır.
+**Storageconnection**: Media Services hesabıyla ilişkili hesabın depolama bağlantısı. Bu değer, **function.js** File ve **Run. CSX** dosyasında (aşağıda açıklanmıştır) kullanılır.
 
 ## <a name="create-a-function"></a>İşlev oluşturma
 
@@ -70,22 +70,22 @@ Bu makalede tanımlanan işlevi, uygulama ayarlarınızda aşağıdaki ortam de�
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. **Oluştur**' a tıklayın. 
+4. **Oluştur**'a tıklayın. 
 
 ## <a name="files"></a>Dosyalar
 
-Azure işleviniz, bu bölümde açıklanan kod dosyaları ve diğer dosyalarla ilişkilidir. Bir işlev oluşturmak için Azure portal kullandığınızda, **function. JSON** ve **Run. CSX** sizin için oluşturulur. **Project. JSON** dosyası eklemeniz veya yüklemeniz gerekir. Bu bölümün geri kalanı her bir dosyanın kısa bir açıklamasını verir ve tanımlarını gösterir.
+Azure işleviniz, bu bölümde açıklanan kod dosyaları ve diğer dosyalarla ilişkilidir. Bir işlev oluşturmak için Azure portal kullandığınızda, **function.js** ve **Run. CSX** sizin için oluşturulur. Dosyaya bir **project.js** eklemeniz veya karşıya yüklemeniz gerekir. Bu bölümün geri kalanı her bir dosyanın kısa bir açıklamasını verir ve tanımlarını gösterir.
 
 ![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-Function. JSON dosyası, işlev bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Çalışma zamanı, izlenecek olayları ve işlev yürütmeden verilerin nasıl geçirileceğini ve geri döneceğini öğrenmek için bu dosyayı kullanır. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http ve Web kancası bağlamaları](../../azure-functions/functions-reference.md#function-code).
+Dosyadaki function.js, işlev bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Çalışma zamanı, izlenecek olayları ve işlev yürütmeden verilerin nasıl geçirileceğini ve geri döneceğini öğrenmek için bu dosyayı kullanır. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http ve Web kancası bağlamaları](../../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
 >İşlevin yürütülmesini engellemek için **devre dışı** özelliğini **true** olarak ayarlayın. 
 
-Mevcut function. json dosyasının içeriğini aşağıdaki kodla değiştirin:
+Dosyadaki mevcut function.jsiçeriğini aşağıdaki kodla değiştirin:
 
 ```json
 {
@@ -104,9 +104,9 @@ Mevcut function. json dosyasının içeriğini aşağıdaki kodla değiştirin:
 
 ### <a name="projectjson"></a>project.json
 
-Project. JSON dosyası bağımlılıklar içeriyor. NuGet 'den gerekli .NET Azure Media Services paketlerini içeren **Project. JSON** dosyası örneği aşağıda verilmiştir. Sürüm numaralarının paketlerin en son güncelleştirmeleriyle değişdiğine ve bu nedenle en son sürümleri onaylamanız gerekir. 
+project.jsdosya bağımlılıkları içerir. NuGet 'den gerekli .NET Azure Media Services paketlerini içeren dosya **project.js** bir örnektir. Sürüm numaralarının paketlerin en son güncelleştirmeleriyle değişdiğine ve bu nedenle en son sürümleri onaylamanız gerekir. 
 
-Aşağıdaki tanımı Project. json ' a ekleyin. 
+project.jsiçin aşağıdaki tanımı ekleyin. 
 
 ```json
 {
@@ -348,6 +348,6 @@ Bu noktada, bir Media Services uygulaması geliştirmeye başlamaya başlayabili
 
 Ayrıca bkz. [.NET ile Media Services iş bildirimlerini izlemek Için Azure Web kancalarını kullanma](media-services-dotnet-check-job-progress-with-webhooks.md). 
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Artımlı zenginleştirme (Önizleme)
+title: Artımlı zenginleştirme kavramları (Önizleme)
 titleSuffix: Azure Cognitive Search
 description: Mevcut işlenen belgelerdeki yatırımları korumak için Azure depolama 'daki AI zenginleştirme ardışık düzeninde bulunan ara içeriği ve artımlı değişiklikleri önbelleğe alma. Bu özellik şu anda genel önizleme aşamasındadır.
 manager: nitinme
@@ -7,20 +7,32 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 0fa152a2edc55067aa8a15a90766a9ad5f66149e
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77024152"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052058"
 ---
-# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme ve önbelleğe alma konusuna giriş
+# <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı zenginleştirme ve önbelleğe alma
 
 > [!IMPORTANT] 
 > Artımlı zenginleştirme Şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
-Artımlı zenginleştirme, bir zenginleştirme işlem hattına önbelleğe alma ve statefullik ekler ve yalnızca belirli bir değişiklikten etkilenen belgeleri değiştirirken, mevcut çıkışdaki yatırımınızı korur. Bu, yalnızca parasal yatırımınızın işleme (özellikle OCR ve görüntü işleme) yapılmamasını sağlar, ancak aynı zamanda daha verimli bir sistem için de geçerlidir. Yapılar ve içerik önbelleğe alındığında, bir Dizin Oluşturucu hangi yeteneklerin değiştirildiğini ve yalnızca değiştirilmiş olanları ve herhangi bir aşağı akış bağımlı becerileri tespit edebilir. 
+*Artımlı zenginleştirme* , [becerileri](cognitive-search-working-with-skillsets.md)hedefleyen bir özelliktir. Daha sonra bir zenginleştirme işlem hattı tarafından oluşturulan işleme çıkışını gelecekteki Dizin Oluşturucu çalıştırmalarının yeniden kullanmak üzere kaydetmek için Azure depolama 'dan yararlanır. Mümkün olan yerlerde, Dizin Oluşturucu halen geçerli olan önbelleğe alınmış çıktıyı yeniden kullanır. 
+
+Yalnızca artımlı zenginleştirme, işlem sırasında (özellikle OCR ve görüntü işleme) parasal yatırımınızı korumasına karşın daha verimli bir sistem de sağlar. Yapılar ve içerik önbelleğe alındığında, bir Dizin Oluşturucu hangi yeteneklerin değiştirildiğini ve yalnızca değiştirilmiş olanları ve herhangi bir aşağı akış bağımlı becerileri tespit edebilir. 
+
+Artımlı önbelleğe alma kullanan bir iş akışı aşağıdaki adımları içerir:
+
+1. Önbelleği depolamak için [bir Azure depolama hesabı oluşturun veya oluşturun](../storage/common/storage-account-create.md) .
+1. Dizin oluşturucuda [artımlı zenginleştirme özelliğini etkinleştirin](search-howto-incremental-index.md) .
+1. İşlem hattını çağırmak için bir [Dizin Oluşturucu](https://docs.microsoft.com/rest/api/searchservice/create-indexer) -Plus [beceri](https://docs.microsoft.com/rest/api/searchservice/create-skillset) -oluşturun. İşlem sırasında, enzenginleştirme aşamaları, daha sonra kullanılmak üzere BLOB depolama alanındaki her belge için kaydedilir.
+1. Kodunuzu test edin ve değişiklik yaptıktan sonra, bir tanımı değiştirmek için [Update beceri](https://docs.microsoft.com/rest/api/searchservice/update-skillset) kullanın.
+1. İşlem hattını çağırmak için [Dizin oluşturucuyu çalıştırın](https://docs.microsoft.com/rest/api/searchservice/run-indexer) , daha hızlı ve daha düşük maliyetli işleme için önbelleğe alınmış çıktıyı alır.
+
+Mevcut bir Dizin Oluşturucu ile çalışırken yapılan adımlar ve konular hakkında daha fazla bilgi için bkz. [artımlı zenginleştirme ayarlama](search-howto-incremental-index.md).
 
 ## <a name="indexer-cache"></a>Dizin Oluşturucu önbelleği
 
@@ -30,7 +42,7 @@ Fiziksel olarak, önbellek, Azure Depolama hesabınızdaki bir blob kapsayıcıs
 
 ## <a name="cache-configuration"></a>Önbellek yapılandırması
 
-Faydalanmasını, Dizin oluşturucudaki `cache` özelliğini artımlı zenginleştirme 'dan başlatmak için ayarlamanız gerekir. Aşağıdaki örnek, önbelleğe alma etkin olan bir dizin oluşturucuyu gösterir. Bu yapılandırmanın belirli kısımları aşağıdaki bölümlerde açıklanmıştır. Daha fazla bilgi için bkz. [artımlı zenginleştirme ayarlama](search-howto-incremental-index.md).
+`cache`Faydalanmasını, Dizin oluşturucudaki özelliğini artımlı zenginleştirme 'dan başlatmak için ayarlamanız gerekir. Aşağıdaki örnek, önbelleğe alma etkin olan bir dizin oluşturucuyu gösterir. Bu yapılandırmanın belirli kısımları aşağıdaki bölümlerde açıklanmıştır. Daha fazla bilgi için bkz. [artımlı zenginleştirme ayarlama](search-howto-incremental-index.md).
 
 ```json
 {
@@ -52,7 +64,7 @@ Mevcut bir dizin oluşturucuda bu özelliğin ayarlanması, Dizin oluşturucuyu 
 
 ## <a name="cache-management"></a>Önbellek yönetimi
 
-Önbelleğin yaşam döngüsü Dizin Oluşturucu tarafından yönetilir. Dizin oluşturucudaki `cache` özellik null olarak ayarlandıysa veya bağlantı dizesi değiştirilirse, varolan önbellek bir sonraki Dizin Oluşturucu çalıştırmasında silinir. Önbellek yaşam döngüsü Ayrıca Dizin Oluşturucu yaşam döngüsüne de bağlıdır. Bir Dizin Oluşturucu silinirse, ilişkili önbellek de silinir.
+Önbelleğin yaşam döngüsü Dizin Oluşturucu tarafından yönetilir. `cache`Dizin oluşturucudaki özellik null olarak ayarlandıysa veya bağlantı dizesi değiştirilirse, varolan önbellek bir sonraki Dizin Oluşturucu çalıştırmasında silinir. Önbellek yaşam döngüsü Ayrıca Dizin Oluşturucu yaşam döngüsüne de bağlıdır. Bir Dizin Oluşturucu silinirse, ilişkili önbellek de silinir.
 
 Artımlı zenginleştirme, sizin bölümleriniz üzerinde müdahale olmadan değişiklikleri tespit etmek ve bunlara yanıt vermek üzere tasarlanırken, varsayılan davranışları geçersiz kılmak için kullanabileceğiniz parametreler vardır:
 
@@ -63,18 +75,18 @@ Artımlı zenginleştirme, sizin bölümleriniz üzerinde müdahale olmadan değ
 
 ### <a name="prioritize-new-documents"></a>Yeni belgelerin önceliğini belirleme
 
-`enableReprocessing` Özelliği önbellekte zaten temsil edilen gelen belgelerde işlemeyi denetlemek için ayarlayın. `true` (Varsayılan), Dizin oluşturucuyu yeniden çalıştırdığınızda zaten önbellekte bulunan belgeler yeniden işlenir, böylece beceri güncelleştirmeniz bu belgeyi etkiler. 
+`enableReprocessing`Özelliği önbellekte zaten temsil edilen gelen belgelerde işlemeyi denetlemek için ayarlayın. `true`(Varsayılan), Dizin oluşturucuyu yeniden çalıştırdığınızda zaten önbellekte bulunan belgeler yeniden işlenir, böylece beceri güncelleştirmeniz bu belgeyi etkiler. 
 
-Ne `false`zaman, mevcut belgeler yeniden işlenmediği zaman, yeni, gelen içeriğin var olan içerik üzerinde etkin bir şekilde önceliklerini. Yalnızca geçici olarak `false` ' `enableReprocessing` i ayarlamanız gerekir. Corpus `enableReprocessing` genelinde tutarlılık sağlamak için, her iki yeni `true` ve var olan tüm belgelerin geçerli beceri tanımına göre geçerli olduğundan emin olmak için çoğu zaman olmalıdır.
+Ne zaman `false` , mevcut belgeler yeniden işlenmediği zaman, yeni, gelen içeriğin var olan içerik üzerinde etkin bir şekilde önceliklerini. Yalnızca geçici olarak ' i ayarlamanız gerekir `enableReprocessing` `false` . Corpus genelinde tutarlılık sağlamak için, `enableReprocessing` `true` her iki yeni ve var olan tüm belgelerin geçerli beceri tanımına göre geçerli olduğundan emin olmak için çoğu zaman olmalıdır.
 
 ### <a name="bypass-skillset-evaluation"></a>Beceri değerlendirmesini atla
 
 Bu beceri 'in bir beceri ve yeniden işlemesini değiştirmek genellikle el ile yapılır. Ancak, bir beceri üzerinde yapılan bazı değişiklikler yeniden işlemeye neden olmaz (örneğin, bir özel yeteneği yeni bir konuma veya yeni bir erişim anahtarıyla dağıtma). Büyük olasılıkla, Beceri 'in bir üyesi üzerinde orijinal etkisi olmayan çevresel değişiklikler vardır. 
 
-Beceri bir değişikliğin gerçekten yararlanmayan olduğunu biliyorsanız, `disableCacheReprocessingChangeDetection` parametreyi şu şekilde `true`ayarlayarak beceri değerlendirmesini geçersiz kılmanız gerekir:
+Beceri bir değişikliğin gerçekten yararlanmayan olduğunu biliyorsanız, parametreyi şu şekilde ayarlayarak beceri değerlendirmesini geçersiz kılmanız gerekir `disableCacheReprocessingChangeDetection` `true` :
 
 1. Update beceri 'i çağırın ve beceri tanımını değiştirin.
-1. İstek üzerine `disableCacheReprocessingChangeDetection=true` parametreyi ekleyin.
+1. `disableCacheReprocessingChangeDetection=true`İstek üzerine parametreyi ekleyin.
 1. Değişikliği gönder.
 
 Bu parametre ayarlandığında, yalnızca beceri tanımı güncelleştirmelerinin yürütülmesi ve değişikliğin mevcut Corpus üzerindeki etkiler için değerlendirilmemesi sağlanır.
@@ -87,7 +99,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 
 ### <a name="bypass-data-source-validation-checks"></a>Veri kaynağı doğrulama denetimlerini atla
 
-Bir veri kaynağı tanımında yapılan çoğu değişiklik önbelleği geçersiz kılar. Bununla birlikte, bir değişikliğin bir bağlantı dizesini değiştirme veya depolama hesabındaki anahtarı döndürme gibi bir değişikliği önbelleğin geçersiz kılamadı olduğunu bildiğiniz senaryolarda, veri kaynağı güncelleştirmesinde`ignoreResetRequirement` parametresini ekleyin. Bu parametreyi olarak `true` ayarlamak, işlemenin, tüm nesnelerin yeniden oluşturulmasına ve sıfırdan doldurulmasına neden olacak bir sıfırlama koşulu tetiklemeden, devam etmesine izin verir.
+Bir veri kaynağı tanımında yapılan çoğu değişiklik önbelleği geçersiz kılar. Bununla birlikte, bir değişikliğin bir bağlantı dizesini değiştirme veya depolama hesabındaki anahtarı döndürme gibi bir değişikliği önbelleğin geçersiz kılamadı olduğunu bildiğiniz senaryolarda, `ignoreResetRequirement` veri kaynağı güncelleştirmesinde parametresini ekleyin. Bu parametreyi olarak ayarlamak `true` , işlemenin, tüm nesnelerin yeniden oluşturulmasına ve sıfırdan doldurulmasına neden olacak bir sıfırlama koşulu tetiklemeden, devam etmesine izin verir.
 
 ```http
 PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
@@ -148,7 +160,7 @@ REST API sürüm `2019-05-06-Preview` , Dizin oluşturucular, becerileri ve veri
 
 + [Becerileri Sıfırlama (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ Veritabanı Dizin oluşturucular (Azure SQL, Cosmos DB). Bazı Dizin oluşturucular verileri sorgular aracılığıyla alır. Veri alan sorgular için [güncelleştirme veri kaynağı](https://docs.microsoft.com/rest/api/searchservice/update-data-source) , güncelleştirme eyleminiz önbelleği geçersiz kılamadığında olarak `true` ayarlanması gereken, **ıgnoreresetrequirement**isteği üzerinde yeni bir parametreyi destekler. 
++ Veritabanı Dizin oluşturucular (Azure SQL, Cosmos DB). Bazı Dizin oluşturucular verileri sorgular aracılığıyla alır. Veri alan sorgular için [güncelleştirme veri kaynağı](https://docs.microsoft.com/rest/api/searchservice/update-data-source) , güncelleştirme eyleminiz önbelleği geçersiz kılamadığında olarak ayarlanması gereken, **ıgnoreresetrequirement**isteği üzerinde yeni bir parametreyi destekler `true` . 
 
   , Verilerinizde kolayca algılanmayacak istenmeyen tutarsızlığa yol açacağından, **ıgnoreresetrequirement** 'ı gelişigüzel bir şekilde kullanın.
 

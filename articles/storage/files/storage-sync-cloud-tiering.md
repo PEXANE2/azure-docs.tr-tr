@@ -4,18 +4,18 @@ description: Azure Dosya Eşitleme Özellik bulutu katmanlama hakkında bilgi ed
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ad222c5fb5554698b6166b0b10a52221a31b360
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549171"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886202"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
-Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (Storagessync. sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.
+Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.
  
 Bir Kullanıcı katmanlı bir dosya açtığında, kullanıcının dosyanın Azure 'da depolandığını bilmeleri gerekmeden Azure dosyalarından dosya verilerini sorunsuzca geri çeker Azure Dosya Eşitleme. 
  
@@ -53,7 +53,7 @@ Bir birimde birden fazla sunucu uç noktası olduğunda, etkin birimde boş alan
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Tarih katmanlama ilkesi birim boş alanı katmanlama ilkesi ile birlikte nasıl çalışır? 
 Sunucu uç noktasında bulut katmanlamayı etkinleştirirken bir birimde boş alan ilkesi ayarlarsınız. Tarih ilkesi de dahil olmak üzere her zaman diğer ilkelere göre önceliklidir. İsteğe bağlı olarak, söz konusu birimdeki her bir sunucu uç noktası için bir tarih ilkesi etkinleştirebilirsiniz. Bu ilke, bu ilkenin açıkladığı gün aralığı içinde yalnızca erişilen (yani, okunan veya yazılan) dosyaların yerel olarak saklanacağını yönetir. Belirtilen gün sayısıyla erişilmeyen dosyalar katmanlı olacaktır. 
 
-Bulut katmanlaması, hangi dosyaların katmanlı olacağını belirleyen son erişim süresini kullanır. Bulut katmanlama filtresi sürücüsü (storagessync. sys) son erişim süresini izler ve bulut katmanlama ısı deposundaki bilgileri günlüğe kaydeder. Yerel bir PowerShell cmdlet 'i kullanarak ısı mağazasını görebilirsiniz.
+Bulut katmanlaması, hangi dosyaların katmanlı olacağını belirleyen son erişim süresini kullanır. Bulut katmanlama filtresi sürücüsü (storagesync.sys) son erişim süresini izler ve bulut katmanlama ısı deposundaki bilgileri günlüğe kaydeder. Yerel bir PowerShell cmdlet 'i kullanarak ısı mağazasını görebilirsiniz.
 
 ```powershell
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
@@ -92,15 +92,15 @@ Bir dosyanın Azure dosya paylaşımınıza katmanlı olup olmadığını denetl
         | A | Arşiv | Dosyanın yedekleme yazılımı tarafından yedeklenmesi gerektiğini gösterir. Bu öznitelik, dosyanın katmanlı veya tam disk üzerinde depolanmadığına bakılmaksızın her zaman ayarlanır. |
         | P | Seyrek dosya | Dosyanın seyrek bir dosya olduğunu gösterir. Seyrek dosya, NTFS 'nin disk akışındaki dosya genellikle boş olduğunda verimli kullanım için sunduğu özelleşmiş bir dosya türüdür. Azure Dosya Eşitleme, bir dosya tamamen katmanlı veya kısmen geri çekilmiş olduğundan seyrek dosyalar kullanır. Tam katmanlı bir dosyada, dosya akışı bulutta depolanır. Kısmen geri çekilmiş bir dosyada, dosyanın o bölümü zaten disk üzerinde. Bir dosya diske tamamen geri çekilir Azure Dosya Eşitleme, dosyayı seyrek bir dosyadan normal bir dosyaya dönüştürür. Bu öznitelik yalnızca Windows Server 2016 ve üzeri sürümlerde ayarlanır.|
         | M | Veri erişimi üzerinde geri çek | Dosyanın verilerinin yerel depolamada tam olarak mevcut olmadığını gösterir. Dosyayı okumak, dosya içeriğinin en az bir kısmının sunucu uç noktasının bağlı olduğu bir Azure dosya paylaşımından alınmasına neden olur. Bu öznitelik yalnızca Windows Server 2019 ' de ayarlanır. |
-        | L | Yeniden ayrıştırma noktası | Dosyanın bir yeniden ayrıştırma noktası olduğunu gösterir. Yeniden ayrıştırma noktası, bir dosya sistemi filtresi tarafından kullanılmak üzere özel bir işaretçisidir. Azure Dosya Eşitleme, dosyanın depolandığı bulut konumunu Azure Dosya Eşitleme dosya sistemi filtresine (Storagessync. sys) tanımlamak için yeniden ayrıştırma noktaları kullanır. Bu, sorunsuz erişimi destekler. Kullanıcıların Azure Dosya Eşitleme kullanıldığını veya Azure dosya paylaşımınızda dosyaya nasıl erişim alınacağını bilmeleri gerekmez. Bir dosya tamamen geri çekilir Azure Dosya Eşitleme, yeniden ayrıştırma noktasını dosyadan kaldırır. |
+        | L | Yeniden ayrıştırma noktası | Dosyanın bir yeniden ayrıştırma noktası olduğunu gösterir. Yeniden ayrıştırma noktası, bir dosya sistemi filtresi tarafından kullanılmak üzere özel bir işaretçisidir. Azure Dosya Eşitleme, dosyanın depolandığı bulut konumunu Azure Dosya Eşitleme dosya sistemi filtresine (StorageSync.sys) tanımlamak için yeniden ayrıştırma noktaları kullanır. Bu, sorunsuz erişimi destekler. Kullanıcıların Azure Dosya Eşitleme kullanıldığını veya Azure dosya paylaşımınızda dosyaya nasıl erişim alınacağını bilmeleri gerekmez. Bir dosya tamamen geri çekilir Azure Dosya Eşitleme, yeniden ayrıştırma noktasını dosyadan kaldırır. |
         | O | Çevrimdışı | Dosyanın içeriğinin bir kısmının veya tümünün diskte depolanmadığını belirtir. Bir dosya tamamen geri çekilir Azure Dosya Eşitleme, bu özniteliği kaldırır. |
 
         ![Ayrıntılar sekmesi seçiliyken bir dosyanın özellikler iletişim kutusu](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
         Dosya Gezgini 'nin tablo görüntüsüne **öznitelikler** alanını ekleyerek bir klasördeki tüm dosyaların özniteliklerini görebilirsiniz. Bunu yapmak için var olan bir sütuna (örneğin, **Boyut**) sağ tıklayın, **daha fazla**' yı seçin ve ardından açılan listeden **öznitelikler** ' i seçin.
         
-   * **Bir `fsutil` dosyadaki yeniden ayrıştırma noktalarını denetlemek için kullanın.**
-       Önceki seçenekte açıklandığı gibi, katmanlı bir dosya her zaman bir yeniden ayrıştırma noktası kümesine sahiptir. Yeniden ayrıştırma işaretçisi, Azure Dosya Eşitleme dosya sistemi filtresi (Storagessync. sys) için özel bir işaretçidir. Bir dosyanın yeniden ayrıştırma noktasına sahip olup olmadığını denetlemek için, yükseltilmiş bir komut Istemi veya PowerShell penceresinde, `fsutil` yardımcı programını çalıştırın:
+   * **`fsutil`Bir dosyadaki yeniden ayrıştırma noktalarını denetlemek için kullanın.**
+       Önceki seçenekte açıklandığı gibi, katmanlı bir dosya her zaman bir yeniden ayrıştırma noktası kümesine sahiptir. Yeniden ayrıştırma işaretçisi, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) için özel bir işaretçisidir. Bir dosyanın yeniden ayrıştırma noktasına sahip olup olmadığını denetlemek için, yükseltilmiş bir komut Istemi veya PowerShell penceresinde, `fsutil` yardımcı programını çalıştırın:
     
         ```powershell
         fsutil reparsepoint query <your-file-name>
@@ -109,12 +109,11 @@ Bir dosyanın Azure dosya paylaşımınıza katmanlı olup olmadığını denetl
         Dosyada bir yeniden ayrıştırma noktası varsa, **yeniden ayrıştırma etiketi değerini görmeyi bekleyebilir: 0x8000001E**. Bu onaltılık değer Azure Dosya Eşitleme sahip olan yeniden ayrıştırma noktası değeridir. Çıktı Ayrıca, Azure dosya paylaşımınızda dosyanızın yolunu temsil eden yeniden ayrıştırma verilerini içerir.
 
         > [!WARNING]  
-        > `fsutil reparsepoint` Yardımcı program komutunun aynı zamanda bir yeniden ayrıştırma noktasını silme yeteneği de vardır. Azure Dosya Eşitleme mühendislik ekibi sizi sormadığı müddetçe bu komutu yürütün. Bu komutun çalıştırılması, veri kaybına neden olabilir. 
+        > `fsutil reparsepoint`Yardımcı program komutunun aynı zamanda bir yeniden ayrıştırma noktasını silme yeteneği de vardır. Azure Dosya Eşitleme mühendislik ekibi sizi sormadığı müddetçe bu komutu yürütün. Bu komutun çalıştırılması, veri kaybına neden olabilir. 
 
 <a id="afs-recall-file"></a>
-
 ### <a name="a-file-i-want-to-use-has-been-tiered-how-can-i-recall-the-file-to-disk-to-use-it-locally"></a>Kullanmak istediğim bir dosya katmanlı. Dosyayı yerel olarak kullanmak için diske nasıl geri çekirim?
-Dosyayı diske geri çekmenin en kolay yolu dosyayı açmak. Azure Dosya Eşitleme dosya sistemi filtresi (Storagessync. sys), sizin bölüminizden herhangi bir iş yapmadan dosyayı Azure dosya paylaşımınızdan sorunsuz bir şekilde indirir. Multimedya veya. zip dosyaları gibi kısmen okunabilecek dosya türleri için bir dosyayı açmak dosyanın tamamını indirmez.
+Dosyayı diske geri çekmenin en kolay yolu dosyayı açmak. Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys), sizin bölüminizden herhangi bir iş yapmadan dosyayı Azure dosya paylaşımınızdan sorunsuz bir şekilde indirir. Multimedya veya. zip dosyaları gibi kısmen okunabilecek dosya türleri için bir dosyayı açmak dosyanın tamamını indirmez.
 
 Ayrıca, bir dosyanın geri çağrılamasını zorlamak için PowerShell kullanabilirsiniz. Bu seçenek, bir klasördeki tüm dosyalar gibi birden çok dosyayı aynı anda geri çağırmak istiyorsanız yararlı olabilir. Azure Dosya Eşitleme yüklendiği sunucu düğümünde bir PowerShell oturumu açın ve ardından aşağıdaki PowerShell komutlarını çalıştırın:
     
@@ -123,13 +122,22 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 İsteğe bağlı parametreler:
-* `-Order CloudTieringPolicy`en son değiştirilen dosyaları ilk olarak çağırır.  
+* `-Order CloudTieringPolicy`en son değiştirilen veya erişilen dosyaları ilk olarak çağırır ve geçerli katmanlama ilkesi tarafından izin verilir. 
+    * Birim boş alan ilkesi yapılandırılmışsa, birimde boş alan ilkesi ayarına ulaşılana kadar dosyalar geri alınacaktır. Örneğin, birim ücretsiz ilke ayarı %20 ise, birim boş alanı %20 ' ye ulaştıktan sonra geri çekme durdurulur.  
+    * Birim boş alanı ve tarih ilkesi yapılandırılmışsa, birimde boş alan veya tarih ilkesi ayarına ulaşılana kadar dosyalar geri alınacaktır. Örneğin, birim ücretsiz ilke ayarı %20 ise ve tarih ilkesi 7 gün ise, birim boş alanı %20 ' ye ulaşırsa veya 7 gün içinde erişilen veya değiştirilen tüm dosyalar yereldir.
 * `-ThreadCount`paralel olarak kaç dosya geri çağrılabileceğini belirler.
 * `-PerFileRetryCount`Şu anda engellenen bir dosya için bir geri çekmenin ne sıklıkta denenmeyeceğini belirler.
 * `-PerFileRetryDelaySeconds`yeniden çağırma denemeleri arasındaki saniye cinsinden süreyi belirler ve bir önceki parametreyle birlikte her zaman kullanılmalıdır.
 
+Örnek:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCount 8 -Order CloudTieringPolicy -PerFileRetryCount 3 -PerFileRetryDelaySeconds 10
+``` 
+
 > [!Note]  
-> Sunucuyu barındıran yerel birimde, tüm katmanlı verileri yeniden çağırmak için yeterli boş alan yoksa, `Invoke-StorageSyncFileRecall` cmdlet başarısız olur.  
+> - Invoke-StorageSyncFileRecall cmdlet 'i, var olan bir eşitleme grubuna yeni bir sunucu uç noktası eklerken dosya indirme performansını artırmak için de kullanılabilir.  
+>- Sunucuyu barındıran yerel birimde, tüm katmanlı verileri yeniden çağırmak için yeterli boş alan yoksa, `Invoke-StorageSyncFileRecall` cmdlet başarısız olur.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Azure Dosya Eşitleme, bir dosyanın *disk özelliği üzerindeki boyutu* neden bir dosya için *Boyut* özelliği ile eşleşmiyor? 
@@ -137,6 +145,10 @@ Windows Dosya Gezgini, bir dosyanın boyutunu temsil etmek için iki özellik **
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Nasıl yaparım? bir dosyanın veya dizinin katmanlanmasını zorlıyor musunuz?
+
+> [!NOTE]
+> Katmanlı olacak bir dizin seçtiğinizde, yalnızca şu anda dizindeki dosyalar katmanlı olur. Bu saatten sonra oluşturulan dosyalar otomatik olarak katmanlanmazlar.
+
 Bulut katmanlama özelliği etkinleştirildiğinde, bulut katmanlaması, dosyaları son erişime göre otomatik olarak katmanlarını ve bulut uç noktasında belirtilen birim boş alan yüzdesine ulaşmak için zaman sayısını değiştirir. Bazen bir dosyayı katmana el ile zorlamak isteyebilirsiniz. Bu, uzun bir süre için yeniden kullanmayı düşünmediğiniz büyük bir dosyayı kaydedip daha sonra biriminizdeki boş alanın diğer dosya ve klasörler için kullanmasını istediğiniz durumlarda yararlı olabilir. Aşağıdaki PowerShell komutlarını kullanarak, katmanlamayı zorlayabilirsiniz:
 
 ```powershell
@@ -149,6 +161,15 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 Katmanlı dosyalar için, küçük resimler ve önizlemeler sunucu uç noktanıza görünmez. Bu davranış, Windows 'daki küçük resim önbelleği özelliği, çevrimdışı özniteliği olan dosyaların okunmasına göre atlanmasından bu yana beklenmektedir. Bulut katmanlama özelliği etkinken katmanlı dosyalar aracılığıyla okuma, bunların indirilememesine (geri çekilir) neden olur.
 
 Bu davranış Azure Dosya Eşitleme özgü değildir, Windows Gezgini, çevrimdışı özniteliği ayarlanmış herhangi bir dosya için "gri X" görüntüler. SMB üzerinden dosyalara erişirken X simgesini görürsünüz. Bu davranışın ayrıntılı bir açıklaması için bkz.[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
+<a id="afs-tiering-disabled"></a>
+### <a name="i-have-cloud-tiering-disabled-why-are-there-tiered-files-in-the-server-endpoint-location"></a>Bulut katmanlama devre dışı, neden sunucu uç noktası konumunda katmanlı dosyalar var?
+
+Katmanlı dosyaların sunucu uç noktası konumunda bulunabilmesinin iki nedeni vardır:
+
+- Var olan bir eşitleme grubuna yeni bir sunucu uç noktası eklerken, meta veriler öncelikle sunucuya eşitlenir ve dosyalar daha sonra arka planda sunucuya indirilir. Dosyalar, yerel olarak indirilene kadar katmanlı olarak görünür. Bir eşitleme grubuna yeni bir sunucu eklerken dosya indirme performansını artırmak için [Invoke-StorageSyncFileRecall](storage-sync-cloud-tiering.md#afs-recall-file) cmdlet 'ini kullanın.
+
+- Bulut katmanlaması sunucu uç noktasında etkinleştirildiyse ve devre dışı bırakılmışsa, dosyalar erişilene kadar katmanlı olarak kalır.
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

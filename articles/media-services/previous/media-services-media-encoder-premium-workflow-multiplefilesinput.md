@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251004"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712352"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder ile birden çok giriş dosyası ve bileşen özellikleri kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -97,7 +97,7 @@ Videolarınızdaki metni kaplayan bir iş akışı tasarlamış olduğunuzu ve m
 ```
 
 ### <a name="property-with-an-xml-value"></a>XML değeri olan özellik
-XML değeri bekleyen bir özelliği ayarlamak için, kullanarak `<![CDATA[ and ]]>`kapsülleyebilirsiniz.
+XML değeri bekleyen bir özelliği ayarlamak için, kullanarak kapsülleyebilirsiniz `<![CDATA[ and ]]>` .
 
 Örnek:
 
@@ -131,7 +131,7 @@ XML değeri bekleyen bir özelliği ayarlamak için, kullanarak `<![CDATA[ and ]
 ```
 
 > [!NOTE]
-> Hemen sonra `<![CDATA[`bir satır başı yerleştirdiğinizden emin olun.
+> Hemen sonra bir satır başı yerleştirdiğinizden emin olun `<![CDATA[` .
 
 ### <a name="propertypath-value"></a>propertyPath değeri
 Önceki örneklerde, propertyPath "/Media File Input/filename" veya "/ınactivetimeout" veya "clipListXml" idi.
@@ -272,10 +272,10 @@ Ek çerçeveye doğru kırpma ile:
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Örnek 1: videonun üzerinde bir görüntünün üzerine bindirme
 
 ### <a name="presentation"></a>Sunum
-Video kodlanırken, giriş videosunda bir logo resminin kaplamasını istediğiniz bir örnek düşünün. Bu örnekte, giriş videosu "Microsoft_HoloLens_Possibilities_816p24. mp4" olarak adlandırılır ve logo "logo. png" olarak adlandırılmıştır. Aşağıdaki adımları gerçekleştirmeniz gerekir:
+Video kodlanırken, giriş videosunda bir logo resminin kaplamasını istediğiniz bir örnek düşünün. Bu örnekte, giriş videosunun "Microsoft_HoloLens_Possibilities_816p24.mp4" adı verilir ve logo "logo.png" olarak adlandırılmıştır. Aşağıdaki adımları gerçekleştirmeniz gerekir:
 
 * İş akışı dosyası ile bir Iş akışı varlığı oluşturun (aşağıdaki örneğe bakın).
-* İki dosya içeren bir medya varlığı oluşturun: birincil dosya olarak Myınputvideo. mp4 ve MyLogo. png.
+* İki dosya içeren bir medya varlığı oluşturun: birincil dosya ve MyLogo.png olarak MyInputVideo.mp4.
 * Yukarıdaki giriş varlıklarıyla Media Encoder Premium Workflow medya işlemcisine bir görev gönderin ve aşağıdaki yapılandırma dizesini belirtin.
 
 Yapılandırma:
@@ -299,7 +299,7 @@ Yukarıdaki örnekte, video dosyasının adı medya dosyası giriş bileşenine 
 ### <a name="step-by-step-workflow-creation"></a>Adım adım iş akışı oluşturma
 Aşağıda, giriş: video ve görüntü gibi iki dosya alan bir iş akışı oluşturma adımları verilmiştir. Videonun üzerinde görüntünün üst kısmında yer alır.
 
-**İş akışı Tasarımcısı** açın ve **Dosya** > **Yeni çalışma alanı** > **dönüştürme kodu şeması**' nı seçin.
+**İş akışı Tasarımcısı** açın ve **Dosya**  >  **Yeni çalışma alanı**  >  **dönüştürme kodu şeması**' nı seçin.
 
 Yeni iş akışı üç öğe gösterir:
 
@@ -442,7 +442,7 @@ Kodlamak için lütfen şu adımları izleyin:
 * MXF dosyası ve ses dosyalarıyla (0 ila 18 ses dosyası) Media Services bir varlık oluşturun.
 * MXF dosyasının birincil dosya olarak ayarlandığından emin olun.
 * Premium Iş akışı Kodlayıcısı işlemcisini kullanarak bir iş ve görev oluşturun. Belirtilen iş akışını kullanın (MultiMP4-1080p-19audio-v1. Workflow).
-* Setruntime. xml verilerini göreve geçirin (Azure Media Services Gezgini kullanıyorsanız, "XML verilerini iş akışına geçir" düğmesine basın.
+* setruntime.xml verilerini göreve geçirin (Azure Media Services Gezginini kullanıyorsanız "XML verilerini iş akışına geçir" düğmesine basın.
   * Lütfen doğru dosya adları ve diller etiketlerini belirtmek için XML verilerini güncelleştirin.
   * İş akışında, Audio 1 adlı ses bileşenleri 18 ' e sahiptir.
   * RFC5646, Language etiketi için desteklenir.
@@ -477,5 +477,5 @@ Kodlamak için lütfen şu adımları izleyin:
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

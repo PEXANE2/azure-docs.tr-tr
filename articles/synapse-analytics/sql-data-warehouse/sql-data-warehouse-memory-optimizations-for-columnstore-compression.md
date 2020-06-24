@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2cbe9b94c4698a93b93c032ee4dcb421a78e59b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743080"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211668"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Columnstore için satır grubu kalitesini en üst düzeye çıkarma
 
@@ -90,9 +90,9 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 Bir satır grubu 'un sıkıştırılması için gereken en fazla bellek yaklaşık olarak
 
 - 72 MB +
-- \#satır \* \#sütunları \* 8 bayt +
-- \#satırlar \* \#kısa dize-sütun \* 32 bayt +
-- \#sıkıştırma sözlüğü için uzun dize \* SÜTUNLARı 16 MB
+- \#satır \* \# sütunları \* 8 bayt +
+- \#satırlar \* \# kısa dize-sütun \* 32 bayt +
+- \#\*sıkıştırma sözlüğü için uzun dize sütunları 16 MB
 
 > [!NOTE]
 > Kısa dize sütunları <= 32 bayt ve uzun dize sütunlarındaki dize veri türlerini kullanır > 32 baytlık dize veri türlerini kullanır.
