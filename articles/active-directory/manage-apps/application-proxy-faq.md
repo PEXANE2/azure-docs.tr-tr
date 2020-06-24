@@ -3,24 +3,24 @@ title: Azure AD Uygulama Ara Sunucusu sık sorulan sorular | Microsoft Docs
 description: Şirket içi uygulamaları uzak kullanıcılara yayımlamak için Azure AD Uygulama Ara Sunucusu kullanma hakkında sık sorulan soruların (SSS) yanıtlarını öğrenin.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 454412bc20fef1a10a51e027b52b6d54df52e6c0
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583090"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764613"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -152,7 +152,7 @@ Hayır. Azure AD Uygulama Ara Sunucusu, Azure AD ile çalışacak şekilde tasar
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket desteği QlikSense dışındaki uygulamalar için çalışır mı?
 
-Şu anda WebSocket protokol desteği hala genel önizlemede ve diğer uygulamalar için çalışmayabilir. Bazı müşterilerin WebSocket protokolünü diğer uygulamalarla kullanarak karma başarısı vardı. Bu senaryoları test ediyorsanız, sonuçlarınızı duymak isteriz. Lütfen görüşlerinizi bize gönderin aadapfeedback@microsoft.com.
+Şu anda WebSocket protokol desteği hala genel önizlemede ve diğer uygulamalar için çalışmayabilir. Bazı müşterilerin WebSocket protokolünü diğer uygulamalarla kullanarak karma başarısı vardı. Bu senaryoları test ediyorsanız, sonuçlarınızı duymak isteriz. Lütfen görüşlerinizi bize gönderin aadapfeedback@microsoft.com .
 
 Windows Yönetim Merkezi (WAC) veya Uzak Masaüstü Web Istemcisi (HTML5) içindeki Özellikler (Eventlogs, PowerShell ve Uzak Masaüstü Hizmetleri) Şu anda Azure AD Uygulama Ara Sunucusu üzerinden çalışmaz.
 

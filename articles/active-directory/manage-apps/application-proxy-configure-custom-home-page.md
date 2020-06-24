@@ -3,25 +3,25 @@ title: Yayımlanan uygulamalar için özel ana sayfa-Azure AD Uygulama Ara Sunuc
 description: Azure AD Uygulama Ara Sunucusu bağlayıcıları hakkında temel bilgileri içerir
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1621b273f617955a374ed46d9c215ba99e5b2913
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275609"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764885"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu kullanarak yayımlanan uygulamalar için özel bir giriş sayfası ayarlama
 
@@ -31,10 +31,10 @@ Bir Kullanıcı uygulamayı başlattığında, varsayılan olarak yayımlanan uy
 
 Şirketinizin neden özel bir giriş sayfası ayarlayacağını anlatan bir senaryo aşağıda verilmiştir:
 
-- Şirket ağınızın içinde, bir Kullanıcı oturum açıp uygulamanıza `https://ExpenseApp/login/login.aspx` erişmek için ' a gider.
-- Uygulama proxy 'sinin klasör yapısının en üst düzeyinde erişmesi gereken diğer varlıklara (örneğin, görüntüler) sahip olduğunuzdan, uygulamayı iç URL 'SI `https://ExpenseApp` olarak yayımlayabilirsiniz.
-- Varsayılan dış URL `https://ExpenseApp-contoso.msappproxy.net`, oturum açma sayfasına bir dış Kullanıcı almaz.
-- Bunun yerine giriş sayfası `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` URL 'si olarak ayarlamak istiyorsunuz, bu nedenle bir dış Kullanıcı önce oturum açma sayfasını görür.
+- Şirket ağınızın içinde, bir Kullanıcı `https://ExpenseApp/login/login.aspx` oturum açıp uygulamanıza erişmek için ' a gider.
+- Uygulama proxy 'sinin klasör yapısının en üst düzeyinde erişmesi gereken diğer varlıklara (örneğin, görüntüler) sahip olduğunuzdan, uygulamayı `https://ExpenseApp` Iç URL 'si olarak yayımlayabilirsiniz.
+- Varsayılan dış URL, `https://ExpenseApp-contoso.msappproxy.net` oturum açma sayfasına bir dış Kullanıcı almaz.
+- `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx`Bunun yerine giriş sayfası URL 'si olarak ayarlamak istiyorsunuz, bu nedenle bir dış Kullanıcı önce oturum açma sayfasını görür.
 
 > [!NOTE]
 > Kullanıcılara yayımlanan uygulamalara erişim izni verdiğinizde, uygulamalar [Azure AD erişim panelinde](../user-help/my-apps-portal-end-user-access.md) ve [Office 365 uygulama başlatıcısı](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)'nda görüntülenir.
@@ -45,7 +45,7 @@ Giriş sayfası URL 'sini ayarlamadan önce aşağıdaki gereksinimleri göz ön
 
 - Belirttiğiniz yolun kök etki alanı URL 'sinin bir alt etki alanı yolu olması gerekir.
 
-  Örneğin, kök etki alanı URL 'SI ise `https://apps.contoso.com/app1/`, yapılandırdığınız giriş sayfası URL 'si ile `https://apps.contoso.com/app1/`başlamalıdır.
+  Örneğin, kök etki alanı URL 'SI ise `https://apps.contoso.com/app1/` , yapılandırdığınız giriş sayfası URL 'si ile başlamalıdır `https://apps.contoso.com/app1/` .
 
 - Yayımlanan uygulamada bir değişiklik yaparsanız, değişiklik giriş sayfası URL 'sinin değerini sıfırlayabilir. Uygulamayı gelecekte güncelleştirdiğinizde, gerekirse yeniden denetleyip giriş sayfası URL 'sini güncelleştirmeniz gerekir.
 
@@ -105,7 +105,7 @@ Uygulamayı görünen adına veya giriş sayfasına göre arayarak uygulamanın 
    Connect-AzureAD
    ```
 
-1. Uygulamayı bulun. Bu örnek, bir görünen adıyla uygulamayı arayarak ObjectID 'yi bulmak için PowerShell kullanır `SharePoint`.
+1. Uygulamayı bulun. Bu örnek, bir görünen adıyla uygulamayı arayarak ObjectID 'yi bulmak için PowerShell kullanır `SharePoint` .
 
    ```powershell
    Get-AzureADApplication | Where-Object { $_.DisplayName -eq "SharePoint" } | Format-List DisplayName, Homepage, ObjectId
@@ -127,7 +127,7 @@ Uygulamayı görünen adına veya giriş sayfasına göre arayarak uygulamanın 
 
 ### <a name="update-the-home-page-url"></a>Giriş sayfası URL 'sini güncelleştirme
 
-Giriş sayfası URL 'sini oluşturun ve uygulamanızı bu değerle güncelleştirin. Aynı PowerShell penceresini kullanmaya devam edin veya yeni bir PowerShell penceresi kullanıyorsanız, kullanarak `Connect-AzureAD`Azure AD modülünde tekrar oturum açın. Ardından aşağıdaki adımları izleyin:
+Giriş sayfası URL 'sini oluşturun ve uygulamanızı bu değerle güncelleştirin. Aynı PowerShell penceresini kullanmaya devam edin veya yeni bir PowerShell penceresi kullanıyorsanız, kullanarak Azure AD modülünde tekrar oturum açın `Connect-AzureAD` . Ardından aşağıdaki adımları izleyin:
 
 1. Önceki bölümde kopyaladığınız ObjectID değerini tutacak bir değişken oluşturun. (Bu SharePoint örneğinde için kullanılan ObjectID değerini uygulamanızın ObjectID değeriyle değiştirin.)
 
@@ -147,7 +147,7 @@ Giriş sayfası URL 'sini oluşturun ve uygulamanızı bu değerle güncelleşti
    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
    ```
 
-1. Giriş sayfası URL 'sini istediğiniz değere ayarlayın. Değer yayımlanmış uygulamanın bir alt etki alanı yolu olmalıdır. Örneğin, giriş sayfası URL 'sini `https://sharepoint-iddemo.msappproxy.net/` olarak `https://sharepoint-iddemo.msappproxy.net/hybrid/`değiştirirseniz, uygulama kullanıcıları doğrudan özel giriş sayfasına gider.
+1. Giriş sayfası URL 'sini istediğiniz değere ayarlayın. Değer yayımlanmış uygulamanın bir alt etki alanı yolu olmalıdır. Örneğin, giriş sayfası URL 'sini `https://sharepoint-iddemo.msappproxy.net/` olarak değiştirirseniz `https://sharepoint-iddemo.msappproxy.net/hybrid/` , uygulama kullanıcıları doğrudan özel giriş sayfasına gider.
 
    ```powershell
    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"

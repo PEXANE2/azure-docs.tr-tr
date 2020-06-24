@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310266"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765089"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
 
@@ -169,14 +169,7 @@ Bir kullanıcıya **tek** bir SQL veritabanına erişim izni vermek için şu ad
 > *db_datareader* ve *db_datawriter* , *db_owner* izin verilmesinin istenmeyen olması durumunda okuma/yazma izinleri için çalışabilir.
 > Spark kullanıcısının, bir SQL havuzundan doğrudan Spark 'tan/içinden okuması ve yazması için *db_owner* izin gerekir.
 
-Kullanıcıları oluşturduktan sonra, isteğe bağlı SQL 'in depolama hesabını sorgulayadiğini doğrulayın:
-
-- İsteğe bağlı SQL **ana** veritabanını hedefleyen aşağıdaki komutu çalıştırın:
-
-    ```sql
-    CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
-    WITH IDENTITY='User Identity';
-    ```
+Kullanıcıları oluşturduktan sonra, SQL isteğe bağlı, depolama hesabını sorgulayabilecek olduğunu doğrulayın.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmaları için erişim denetimi
 

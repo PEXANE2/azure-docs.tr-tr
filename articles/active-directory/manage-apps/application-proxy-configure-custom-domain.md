@@ -3,25 +3,25 @@ title: Azure AD Uygulama Ara Sunucusu özel etki alanları | Microsoft Docs
 description: Azure AD Uygulama Ara Sunucusu 'de özel etki alanlarını yapılandırın ve yönetin.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3958022a5947a04b8bca4db4bee3ad059c7e17
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331959"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764919"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
 

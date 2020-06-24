@@ -1,6 +1,6 @@
 ---
-title: REST-Azure AD kullanarak Azure VMSS 'de Yönetilen kimlikler yapılandırma
-description: REST API çağrısı yapmak için bir Azure VMSS 'de bir sistem ve Kullanıcı tarafından atanan Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
+title: REST kullanarak Azure sanal makine ölçek kümesindeki yönetilen kimlikleri Yapılandırma-Azure AD
+description: REST API çağrısı yapmak için KıVRıMLı kullanarak bir Azure sanal makine ölçek kümesi üzerinde sistem ve Kullanıcı tarafından atanan Yönetilen kimlikler yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec0744e4a682bd7ef2c9bb6027392eba2bf2322
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253344"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693712"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API çağrılarını kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -35,7 +35,7 @@ Bu makalede, Azure Resource Manager REST uç noktasına çağrı yapmak için K�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Bu makaledeki yönetim işlemlerini gerçekleştirmek için, hesabınız aşağıdaki Azure rol tabanlı erişim denetimi atamalarına ihtiyaç duyuyor:
 
@@ -47,7 +47,7 @@ Bu makalede, Azure Resource Manager REST uç noktasına çağrı yapmak için K�
     - Kullanıcı tarafından atanan bir kimliği ve sanal makine ölçek kümesine atamak ve kaldırmak için [yönetilen kimlik operatörü](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rolü.
 - Windows kullanıyorsanız, [Linux Için Windows alt sistemini](https://msdn.microsoft.com/commandline/wsl/about) yükledikten sonra Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın.
 - [Linux Için Windows alt sistemi](https://msdn.microsoft.com/commandline/wsl/about) veya [Linux dağıtım Işletim SISTEMI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)kullanıyorsanız [Azure CLI yerel konsolunu yükleyebilirsiniz](/cli/azure/install-azure-cli).
-- Azure CLı yerel Konsolu kullanıyorsanız, sistem veya Kullanıcı tarafından atanan yönetilen kimlikleri yönetmek `az login` istediğiniz Azure aboneliğiyle ilişkili bir hesapla Azure 'da oturum açın.
+- Azure CLı yerel Konsolu kullanıyorsanız, `az login` sistem veya Kullanıcı tarafından atanan yönetilen kimlikleri yönetmek Istediğiniz Azure aboneliğiyle ilişkili bir hesapla Azure 'da oturum açın.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -78,7 +78,7 @@ Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek küme
    az account get-access-token
    ``` 
 
-4. Azure Resource Manager REST uç noktasını çağırmak için KıVRıMLı kullanarak bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, değeri `"identity":{"type":"SystemAssigned"}`tarafından istek gövdesinde tanımlandığı gibi, *Myresourcegroup* içindeki *myvmss* adlı bir sanal makine ölçek kümesi oluşturur ve sistem tarafından atanan yönetilen kimlik. Bir `<ACCESS TOKEN>` taşıyıcı erişim belirteci ve ortamınız için uygun bir `<SUBSCRIPTION ID>` değer istediğinizde, önceki adımda aldığınız değerle değiştirin.
+4. Azure Resource Manager REST uç noktasını çağırmak için KıVRıMLı kullanarak bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, değeri tarafından istek gövdesinde tanımlandığı gibi, *Myresourcegroup* Içindeki *myvmss* adlı bir sanal makine ölçek kümesi oluşturur ve sistem tarafından atanan yönetilen kimlik `"identity":{"type":"SystemAssigned"}` . `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -93,7 +93,7 @@ Sistem tarafından atanan yönetilen kimlik etkin bir sanal makine ölçek küme
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -170,10 +170,10 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
    az account get-access-token
    ```
 
-2. Sanal makine ölçek kümesinde, `{"identity":{"type":"SystemAssigned"}` *myvmss*adlı bir sanal makine ölçek kümesi için değere göre belirlenmiş olan sistem tarafından atanan yönetilen KIMLIĞI etkinleştirmek üzere Azure Resource Manager REST uç noktasını çağırmak için aşağıdaki kıvrımlı komutunu kullanın.  Bir `<ACCESS TOKEN>` taşıyıcı erişim belirteci ve ortamınız için uygun bir `<SUBSCRIPTION ID>` değer istediğinizde, önceki adımda aldığınız değerle değiştirin.
+2. Sanal makine ölçek kümesinde, `{"identity":{"type":"SystemAssigned"}` *Myvmss*adlı bir sanal makine ölçek kümesi için değere göre belirlenmiş olan sistem tarafından atanan yönetilen kimliği ETKINLEŞTIRMEK üzere Azure Resource Manager REST uç noktasını ÇAĞıRMAK için aşağıdaki kıvrımlı komutunu kullanın.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
    
    > [!IMPORTANT]
-   > Sanal makine ölçek kümesine atanmış olan, Kullanıcı tarafından atanan yönetilen kimlikleri silmemenizi sağlamak için, bu KıVRıMLı komutunu kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri listeetmeniz gerekir: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Yanıttaki `identity` değerde tanımlandığı şekilde, sanal makine ölçek kümesine atanan kullanıcı tarafından atanan yönetilen kimlikleriniz varsa, sanal makine ölçek kümesinde sistem tarafından atanan yönetilen kimliği etkinleştirirken Kullanıcı tarafından atanan yönetilen kimliklerin nasıl tutulacağını gösteren 3. adıma atlayın.
+   > Sanal makine ölçek kümesine atanmış olan, Kullanıcı tarafından atanan yönetilen kimlikleri silmemenizi sağlamak için, bu KıVRıMLı komutunu kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri listeetmeniz gerekir: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Yanıttaki değerde tanımlandığı şekilde, sanal makine ölçek kümesine atanan kullanıcı tarafından atanan yönetilen kimlikleriniz varsa `identity` , sanal makine ölçek kümesinde sistem tarafından atanan yönetilen kimliği etkinleştirirken Kullanıcı tarafından atanan yönetilen kimliklerin nasıl tutulacağını gösteren 3. adıma atlayın.
 
    ```bash
     curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -188,7 +188,7 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -200,11 +200,11 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
     }
    ```
 
-3. Kullanıcı tarafından atanan yönetilen kimlikleri olan bir sanal makine ölçek kümesinde sistem tarafından atanan yönetilen kimliği etkinleştirmek için, `SystemAssigned` `type` değere eklemeniz gerekir.  
+3. Kullanıcı tarafından atanan yönetilen kimlikleri olan bir sanal makine ölçek kümesinde sistem tarafından atanan yönetilen kimliği etkinleştirmek için, değere eklemeniz gerekir `SystemAssigned` `type` .  
    
-   Örneğin, sanal makine ölçek kümesinde Kullanıcı tarafından atanan Yönetilen kimlikler `ID1` `ID2` varsa ve bu sanal makine ölçek kümesine sistem tarafından atanan yönetilen KIMLIK eklemek istiyorsanız aşağıdaki kıvrımlı çağrısını kullanın. Ve `<ACCESS TOKEN>` `<SUBSCRIPTION ID>` değerlerini ortamınıza uygun değerlerle değiştirin.
+   Örneğin, sanal makine ölçek kümesinde Kullanıcı tarafından atanan Yönetilen kimlikler varsa ve `ID1` `ID2` Bu sanal makine ölçek kümesine sistem tarafından atanan yönetilen kimlik eklemek ISTIYORSANıZ aşağıdaki kıvrımlı çağrısını kullanın. `<ACCESS TOKEN>`Ve `<SUBSCRIPTION ID>` değerlerini ortamınıza uygun değerlerle değiştirin.
 
-   API sürümü `2018-06-01` , Kullanıcı tarafından atanan yönetilen KIMLIKLERI, `userAssignedIdentities` API sürümünde `identityIds` `2017-12-01`kullanılan bir dizi biçimindeki değerin aksine bir sözlük biçiminde depolar.
+   API sürümü `2018-06-01` , Kullanıcı tarafından atanan yönetilen kimlikleri, `userAssignedIdentities` `identityIds` API sürümünde kullanılan bir dizi biçimindeki değerin aksine bir sözlük biçiminde depolar `2017-12-01` .
    
    **APı SÜRÜMÜ 2018-06-01**
 
@@ -221,7 +221,7 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. |
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
  
    **İstek gövdesi**
 
@@ -255,7 +255,7 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -273,7 +273,7 @@ Mevcut bir sanal makine ölçek kümesi üzerinde sistem tarafından atanan yön
 
 ### <a name="disable-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği devre dışı bırak
 
-Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimliği devre dışı bırakmak için, bir erişim belirteci edinmeniz ve ardından, kimlik türünü olarak `None`güncellemek üzere Kaynak Yöneticisi REST uç noktasını ÇAĞıRMAK için kıvrımlı kullanmanız gerekir.
+Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimliği devre dışı bırakmak için, bir erişim belirteci edinmeniz ve ardından, kimlik türünü olarak güncellemek üzere Kaynak Yöneticisi REST uç noktasını çağırmak için KıVRıMLı kullanmanız gerekir `None` .
 
 1. Sistem tarafından atanan yönetilen kimlik ile sanal makine ölçek kümesini oluşturmak için yetkilendirme üstbilgisindeki bir sonraki adımda kullanacağınız bir taşıyıcı erişim belirteci alın.
 
@@ -281,10 +281,10 @@ Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimli
    az account get-access-token
    ```
 
-2. Sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için Azure Resource Manager REST uç noktasını çağırmak üzere sanal makine ölçek kümesini KıVRıMLı kullanarak güncelleştirin.  Aşağıdaki örnek, sistem tarafından atanan yönetilen kimliği, *Myvmss*adlı bir sanal makine ölçek kümesindeki `{"identity":{"type":"None"}}` değere göre istek gövdesinde tanımlanan şekilde devre dışı bırakır.  Bir `<ACCESS TOKEN>` taşıyıcı erişim belirteci ve ortamınız için uygun bir `<SUBSCRIPTION ID>` değer istediğinizde, önceki adımda aldığınız değerle değiştirin.
+2. Sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için Azure Resource Manager REST uç noktasını çağırmak üzere sanal makine ölçek kümesini KıVRıMLı kullanarak güncelleştirin.  Aşağıdaki örnek, sistem tarafından atanan yönetilen kimliği, `{"identity":{"type":"None"}}` *Myvmss*adlı bir sanal makine ölçek kümesindeki değere göre istek gövdesinde tanımlanan şekilde devre dışı bırakır.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
 
    > [!IMPORTANT]
-   > Sanal makine ölçek kümesine atanmış olan, Kullanıcı tarafından atanan yönetilen kimlikleri silmemenizi sağlamak için, bu KıVRıMLı komutunu kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri listeetmeniz gerekir: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Sanal makine ölçek kümesine atanan kullanıcı tarafından atanan yönetilen Kimliğiniz varsa, sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği kaldırırken Kullanıcı tarafından atanan yönetilen kimliklerin nasıl tutulacağını gösteren 3. adıma atlayın.
+   > Sanal makine ölçek kümesine atanmış olan, Kullanıcı tarafından atanan yönetilen kimlikleri silmemenizi sağlamak için, bu KıVRıMLı komutunu kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri listeetmeniz gerekir: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Sanal makine ölçek kümesine atanan kullanıcı tarafından atanan yönetilen Kimliğiniz varsa, sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği kaldırırken Kullanıcı tarafından atanan yönetilen kimliklerin nasıl tutulacağını gösteren 3. adıma atlayın.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -299,7 +299,7 @@ Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimli
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -311,7 +311,7 @@ Var olan bir sanal makine ölçek kümesinde sistem tarafından atanan bir kimli
     }
    ```
 
-   Kullanıcı tarafından atanan yönetilen kimlikleri olan bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği kaldırmak için **API sürüm 2018-06-01**kullanıyorsanız `SystemAssigned` `{"identity":{"type:" "}}` `UserAssigned` değeri ve `userAssignedIdentities` sözlük değerlerini tutarken değeri kaldırın. **API sürüm 2017-12-01** veya önceki bir sürümünü kullanıyorsanız, `identityIds` diziyi saklayın.
+   Kullanıcı tarafından atanan yönetilen kimlikleri olan bir sanal makine ölçek kümesinden sistem tarafından atanan yönetilen kimliği kaldırmak için `SystemAssigned` `{"identity":{"type:" "}}` `UserAssigned` `userAssignedIdentities` **API sürüm 2018-06-01**kullanıyorsanız değeri ve sözlük değerlerini tutarken değeri kaldırın. **API sürüm 2017-12-01** veya önceki bir sürümünü kullanıyorsanız, `identityIds` diziyi saklayın.
 
 ## <a name="user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik
 
@@ -339,7 +339,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
 4. Burada bulunan yönergeleri kullanarak Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun: [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Azure Resource Manager REST uç noktasını çağırmak için KıVRıMLı kullanarak bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, bir kullanıcı tarafından atanan yönetilen kimlik `ID1` `"identity":{"type":"UserAssigned"}` *kaynak grubundaki* *myvmss* adlı bir sanal makine ölçek kümesi oluşturur ve bu değer tarafından istek gövdesinde tanımlanmıştır. Bir `<ACCESS TOKEN>` taşıyıcı erişim belirteci ve ortamınız için uygun bir `<SUBSCRIPTION ID>` değer istediğinizde, önceki adımda aldığınız değerle değiştirin.
+5. Azure Resource Manager REST uç noktasını çağırmak için KıVRıMLı kullanarak bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, bir kullanıcı tarafından atanan yönetilen kimlik *kaynak grubundaki* *myvmss* adlı bir sanal makine ölçek kümesi oluşturur ve bu `ID1` değer tarafından istek gövdesinde tanımlanmıştır `"identity":{"type":"UserAssigned"}` . `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
  
    **APı SÜRÜMÜ 2018-06-01**
 
@@ -356,7 +356,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -443,7 +443,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. |
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
  
    **İstek gövdesi**
 
@@ -537,12 +537,12 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. |   
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |   
  
 
 4. Sanal makine ölçek kümesine atanan kullanıcı veya sistem tarafından atanan yönetilen kimliğiniz yoksa, sanal makine ölçek kümesine ilk Kullanıcı tarafından atanan yönetilen kimliği atamak için Azure Resource Manager REST uç noktasını çağırmak üzere aşağıdaki KıVRıMLı komutunu kullanın.  Sanal makine ölçek kümesine atanan bir kullanıcı veya sistem tarafından atanan yönetilen Kimliğiniz varsa, bir sanal makine ölçek kümesine birden çok kullanıcı tarafından atanan yönetilen kimlik ekleme işlemini gösteren 5. adım ' a atlayın.
 
-   Aşağıdaki örnek, Kullanıcı tarafından atanan bir yönetilen kimliği, `ID1` *myresourcegroup*kaynak grubundaki *myvmss* adlı bir sanal makine ölçek kümesine atar.  Bir `<ACCESS TOKEN>` taşıyıcı erişim belirteci ve ortamınız için uygun bir `<SUBSCRIPTION ID>` değer istediğinizde, önceki adımda aldığınız değerle değiştirin.
+   Aşağıdaki örnek, Kullanıcı tarafından atanan bir yönetilen kimliği, `ID1` *myresourcegroup*kaynak grubundaki *myvmss* adlı bir sanal makine ölçek kümesine atar.  `<ACCESS TOKEN>`Bir taşıyıcı erişim belirteci ve ortamınız için uygun bir değer istediğinizde, önceki adımda aldığınız değerle değiştirin `<SUBSCRIPTION ID>` .
 
    **APı SÜRÜMÜ 2018-06-01**
 
@@ -559,7 +559,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -591,7 +591,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -610,9 +610,9 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    
    **APı SÜRÜMÜ 2018-06-01**
 
-   Kullanıcı tarafından atanan yönetilen kimliği `userAssignedIdentities` sözlük değerine ekleyin.
+   Kullanıcı tarafından atanan yönetilen kimliği `userAssignedIdentities` Sözlük değerine ekleyin.
 
-   Örneğin, sistem tarafından atanan yönetilen kimliğiniz ve sanal makine ölçeklendirmenize `ID1` Şu anda atanmış olan kullanıcı tarafından atanan yönetilen Kimliğiniz varsa ve Kullanıcı tarafından atanan yönetilen kimliği `ID2` eklemek istiyorsanız:
+   Örneğin, sistem tarafından atanan yönetilen kimliğiniz ve `ID1` sanal makine ölçeklendirmenize Şu anda atanmış olan kullanıcı tarafından atanan yönetilen Kimliğiniz varsa ve Kullanıcı tarafından atanan yönetilen kimliği eklemek istiyorsanız `ID2` :
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -627,7 +627,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -649,9 +649,9 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    **APı SÜRÜMÜ 2017-12-01**
 
-   Kullanıcı tarafından atanan yeni yönetilen kimliği eklerken `identityIds` dizi değerinde tutmak istediğiniz kullanıcı tarafından atanan yönetilen kimlikleri koruyun.
+   Kullanıcı tarafından `identityIds` atanan yeni yönetilen kimliği eklerken dizi değerinde tutmak istediğiniz kullanıcı tarafından atanan yönetilen kimlikleri koruyun.
 
-   Örneğin, sistem tarafından atanan kimliğiniz ve sanal makine ölçek kümesine Şu anda atanmış olan kullanıcı tarafından `ID1` atanan yönetilen Kimliğiniz varsa ve Kullanıcı tarafından atanan yönetilen kimliği `ID2` eklemek istiyorsanız:
+   Örneğin, sistem tarafından atanan kimliğiniz ve `ID1` sanal makine ölçek kümesine Şu anda atanmış olan kullanıcı tarafından atanan yönetilen Kimliğiniz varsa ve Kullanıcı tarafından atanan yönetilen kimliği eklemek istiyorsanız `ID2` :
 
     ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -666,7 +666,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -704,15 +704,15 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. |
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. |
    
    VM 'ye atanmış Yönetilen kimlikler varsa, bu `identity` değerler değerindeki yanıtta listelenir. 
     
-   Örneğin, Kullanıcı tarafından atanan yönetilen kimliklere `ID1` sahipseniz ve `ID2` sanal makine ölçek kümesine atadıysanız ve yalnızca `ID1` atanmış ve sistem tarafından atanan yönetilen kimliği tutmak istiyorsanız:
+   Örneğin, Kullanıcı tarafından atanan yönetilen kimliklere sahipseniz `ID1` ve `ID2` sanal makine ölçek kümesine atadıysanız ve yalnızca `ID1` atanmış ve sistem tarafından atanan yönetilen kimliği tutmak istiyorsanız:
 
    **APı SÜRÜMÜ 2018-06-01**
 
-   Kaldırmak `null` istediğiniz kullanıcı tarafından atanan yönetilen kimliğe ekleyin:
+   `null`Kaldırmak istediğiniz kullanıcı tarafından atanan yönetilen kimliğe ekleyin:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -727,7 +727,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -744,7 +744,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
 
    **APı SÜRÜMÜ 2017-12-01**
 
-   `identityIds` Dizide tutmak istediğiniz yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri koru:
+   Dizide tutmak istediğiniz yalnızca Kullanıcı tarafından atanan yönetilen kimlikleri koru `identityIds` :
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -759,7 +759,7 @@ Bu bölümde, Azure Resource Manager REST uç noktasına çağrı yapmak için K
    |İstek üst bilgisi  |Açıklama  |
    |---------|---------|
    |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-   |*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+   |*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
    **İstek gövdesi**
 
@@ -789,7 +789,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
 |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+|*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
 **İstek gövdesi**
 
@@ -816,7 +816,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
 |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın. | 
+|*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın. | 
 
 **İstek gövdesi**
 

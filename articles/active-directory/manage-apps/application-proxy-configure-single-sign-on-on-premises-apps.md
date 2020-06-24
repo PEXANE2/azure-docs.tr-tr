@@ -3,25 +3,25 @@ title: Azure AD Uygulaması Proxy ile şirket içi uygulamalar için SAML çoklu
 description: SAML kimlik doğrulamasıyla güvenliği sağlanan şirket içi uygulamalar için çoklu oturum açma sağlamayı öğrenin. Uygulama proxy 'Si ile şirket içi uygulamalara uzaktan erişim sağlama.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803306"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764834"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Uygulama proxy 'Si ile şirket içi uygulamalar için SAML çoklu oturum açma
 
@@ -74,7 +74,7 @@ Aşağıdaki protokol diyagramlarında, hem hizmet sağlayıcısı tarafından b
 
 2. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** başlığına gidin ve **düzenleme** simgesini (bir kurşun kalem) seçin. Uygulama ara sunucusu 'nda yapılandırdığınız **dış URL** 'nin **tanımlayıcı**, **yanıt URL 'SI**ve **oturum kapatma URL 'si** alanlarında doldurulduğundan emin olun. Uygulama proxy 'Sinin doğru çalışması için bu URL 'Ler gereklidir. 
 
-3. Daha önce yapılandırılan **yanıt URL** 'sini, etki alanının uygulama proxy 'si aracılığıyla İnternet üzerinde erişilebilir olacak şekilde düzenleyin. Örneğin, **dış URL** 'niz `https://contosotravel-f128.msappproxy.net` ve özgün **yanıt URL 'Si** ise `https://contosotravel.com/acs`, için `https://contosotravel-f128.msappproxy.net/acs`özgün **yanıt URL** 'sini güncelleştirmeniz gerekir.
+3. Daha önce yapılandırılan **yanıt URL** 'sini, etki alanının uygulama proxy 'si aracılığıyla İnternet üzerinde erişilebilir olacak şekilde düzenleyin. Örneğin, **dış URL** 'niz `https://contosotravel-f128.msappproxy.net` ve özgün **yanıt URL 'si** Ise `https://contosotravel.com/acs` , için özgün **yanıt URL** 'sini güncelleştirmeniz gerekir `https://contosotravel-f128.msappproxy.net/acs` .
 
     ![Temel SAML yapılandırma verilerini girin](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

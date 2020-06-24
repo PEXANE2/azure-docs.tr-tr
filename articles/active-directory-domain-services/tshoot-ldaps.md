@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d2cd98a9af75b5f3a6ca084dbfd4c144e06643d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77132161"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733798"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında güvenli LDAP bağlantısı sorunlarını giderme
 
@@ -26,18 +26,18 @@ Bu makale, Azure AD DS 'da Güvenli LDAP erişimiyle ilgili sorunları gidermeni
 
 ## <a name="common-connection-issues"></a>Yaygın bağlantı sorunları
 
-Güvenli LDAP kullanarak Azure AD DS yönetilen bir etki alanına bağlanmada sorun yaşıyorsanız, aşağıdaki sorun giderme adımlarını gözden geçirin. Her bir sorun giderme adımından sonra Azure AD DS yönetilen etki alanına yeniden bağlanmayı deneyin:
+Güvenli LDAP kullanarak Azure AD DS yönetilen bir etki alanına bağlanmada sorun yaşıyorsanız, aşağıdaki sorun giderme adımlarını gözden geçirin. Her bir sorun giderme adımından sonra, yönetilen etki alanına yeniden bağlanmayı deneyin:
 
 * Güvenli LDAP sertifikasının veren zincirinin istemcide güvenilir olması gerekir. Güven sağlamak için, kök sertifika yetkilisini (CA) istemcideki güvenilen kök sertifika deposuna ekleyebilirsiniz.
     * [Sertifikayı dışarı aktarıp istemci bilgisayarlara uyguladığınızdan][client-cert]emin olun.
 * Yönetilen etki alanınız için Güvenli LDAP sertifikasının *Konu* veya *Konu ALTERNATIF adları* özniteliğinde DNS adına sahip olduğunu doğrulayın.
     * [GÜVENLI LDAP sertifika gereksinimlerini][certs-prereqs] gözden geçirin ve gerekirse bir değiştirme sertifikası oluşturun.
-* *Ldp. exe* gibi LDAP ISTEMCISININ, IP adresi DEĞIL, DNS adı kullanarak Güvenli LDAP uç noktasına bağlandığını doğrulayın.
-    * Azure AD DS tarafından yönetilen etki alanına uygulanan sertifika, hizmetin IP adreslerini değil, yalnızca DNS adlarını içermez.
-* LDAP istemcisinin bağlandığı DNS adını denetleyin. Azure AD DS yönetilen etki alanında güvenli LDAP için genel IP adresine çözümlenmelidir.
+* *ldp.exe* gibi LDAP ISTEMCISININ, IP adresi DEĞIL, DNS adı kullanarak Güvenli LDAP uç noktasına bağlandığından emin olun.
+    * Yönetilen etki alanına uygulanan sertifika hizmetin IP adreslerini, yalnızca DNS adlarını içermez.
+* LDAP istemcisinin bağlandığı DNS adını denetleyin. Yönetilen etki alanında güvenli LDAP için genel IP adresine çözümlenmelidir.
     * DNS adı iç IP adresine çözümlenirse, DNS kaydını dış IP adresine çözülecek şekilde güncelleştirin.
 * Dış bağlantı için ağ güvenlik grubu, internet 'ten gelen TCP bağlantı noktası 636 trafiğine izin veren bir kural içermelidir.
-    * Sanal ağa doğrudan bağlı ancak dış bağlantılara sahip olmayan kaynaklardan Güvenli LDAP kullanarak Azure AD DS yönetilen etki alanına bağlanabiliyorsa, [GÜVENLI LDAP trafiğine izin veren bir ağ güvenlik grubu kuralı oluşturduğunuzdan][ldaps-nsg]emin olun.
+    * Sanal ağa doğrudan bağlı ancak dış bağlantıları olmayan kaynaklardan Güvenli LDAP kullanarak yönetilen etki alanına bağlanabiliyorsa, [GÜVENLI LDAP trafiğine izin veren bir ağ güvenlik grubu kuralı oluşturduğunuzdan][ldaps-nsg]emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

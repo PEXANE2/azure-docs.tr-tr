@@ -12,33 +12,69 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 06/12/2019
 ms.author: inhenkel
-ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193601"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765021"
 ---
 # <a name="live-transcription-preview"></a>Canlı döküm (Önizleme)
 
 Azure Medya hizmeti, farklı protokollerde video, ses ve metin sağlar. MPEG-DASH veya HLS/CMAF kullanarak canlı akışınızı yayımladığınızda ve video ve sesle birlikte hizmetimiz, IMSC 1.1 uyumlu TTML 'de el ile metin sağlar. Teslim, MPEG-4 Bölüm 30 (ISO/ıEC 14496-30) parçalarında paketlenmiştir. HLS/TS aracılığıyla teslim kullanılıyorsa, metin öbekli VTT olarak dağıtılır.
 
-Bu makalede, Azure Media Services v3 ile canlı bir olay akışı yapılırken canlı bir olay nasıl etkinleştirileceği açıklanır. Devam etmeden önce Media Services v3 REST API 'lerinin kullanımına alışkın olduğunuzdan emin olun (Ayrıntılar için [Bu öğreticiye](stream-files-tutorial-with-rest.md) bakın). Ayrıca, [canlı akış](live-streaming-overview.md) kavramı hakkında bilgi sahibi olmanız gerekir. [Media Services öğreticisiyle canlı akışı](stream-live-tutorial-with-api.md) doldurmanız önerilir.
+Canlı döküm açık olduğunda ek ücretler uygulanır. Lütfen [Media Services fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/media-services/)canlı video bölümündeki fiyatlandırma bilgilerini gözden geçirin.
 
-> [!NOTE]
-> Şu anda, canlı döküm yalnızca Batı ABD 2 bölgesinde önizleme özelliği olarak kullanılabilir. Okunan sözcüklerin Ingilizce olarak metne dökümünü destekler. Bu özellik için API başvurusu aşağıda bulunur: becasin önizleme aşamasındadır ve ayrıntılar, REST belgelerimizde kullanılamaz.
+Bu makalede, Azure Media Services ile canlı bir olay akışı yapılırken canlı döküm 'nin nasıl etkinleştirileceği açıklanır. Devam etmeden önce Media Services v3 REST API 'lerinin kullanımına alışkın olduğunuzdan emin olun (Ayrıntılar için [Bu öğreticiye](stream-files-tutorial-with-rest.md) bakın). Ayrıca, [canlı akış](live-streaming-overview.md) kavramı hakkında bilgi sahibi olmanız gerekir. [Media Services öğreticisiyle canlı akışı](stream-live-tutorial-with-api.md) doldurmanız önerilir.
 
-## <a name="creating-the-live-event"></a>Canlı etkinlik oluşturma
+## <a name="live-transcription-preview-regions-and-languages"></a>Canlı döküm önizleme bölgeleri ve dilleri
 
-Canlı etkinliği oluşturmak için, PUT işlemini 2019-05-01-Preview sürümüne gönderirsiniz, örneğin:
+Canlı döküm aşağıdaki bölgelerde kullanılabilir:
+
+- Güneydoğu Asya
+- Batı Avrupa
+- Kuzey Avrupa
+- Doğu ABD
+- Orta ABD
+- Orta Güney ABD
+- Batı ABD 2
+- Güney Brezilya
+
+Bu, kullanılabilir dillerin, API 'deki dil kodunu kullanan bir listesidir.
+
+| Dil | Dil kodu |
+| -------- | ------------- |
+| Katalanca  | ca-ES |
+| Danca (Danimarka) | da-DK |
+| Almanca (Almanya) | de-DE |
+| İngilizce (Avustralya) | En-AU |
+| İngilizce (Kanada) | en-CA |
+| İngilizce (İngiltere) | en-GB |
+| İngilizce (Hindistan) | En-ın |
+| İngilizce (Yeni Zelanda) | En-NZ |
+| İngilizce (ABD) | tr-TR |
+| İspanyolca (İspanya) | es-ES |
+| İspanyolca (Meksika) | es-MX |
+| Fince (Finlandiya) | fi-FI |
+| Fransızca (Kanada) | fr-CA |
+| Fransızca (Fransa) | fr-FR |
+| İtalyanca (İtalya) | it-IT |
+| Felemenkçe (Hollanda) | nl-NL |
+| Portekizce (Brezilya) | pt-BR |
+| Portekizce (Portekiz) | pt-PT |
+| İsveççe (İsviçre) | sv-SE |
+
+## <a name="create-the-live-event-with-live-transcription"></a>Canlı döküm ile canlı etkinlik oluşturma
+
+Döküm açıkken canlı bir olay oluşturmak için, PUT işlemini 2019-05-01-Preview API sürümüyle birlikte gönderin, örneğin:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-İşlem aşağıdaki gövdeye sahiptir (burada, bir geçiş canlı olayı, alma protokolü olarak RTMP ile oluşturulur). Döküm özelliğinin eklenmesini aklınızda edin. Dil için yalnızca izin verilen değer en-US ' dir.
+İşlem aşağıdaki gövdeye sahiptir (burada, bir geçiş canlı olayı, alma protokolü olarak RTMP ile oluşturulur). Döküm özelliğinin eklenmesini aklınızda edin.
 
 ```
 {
@@ -88,14 +124,14 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 }
 ```
 
-Canlı etkinliğin durumunu yoklayın "çalışıyor" durumuna gelene kadar, şimdi bir RTMP akışı gönderebilirsiniz. Artık, önizleme akışını denetleme ve canlı çıktılar oluşturma gibi bu öğreticideki adımların aynısını izleyebilirsiniz.
+## <a name="start-or-stop-transcription-after-the-live-event-has-started"></a>Canlı etkinlik başladıktan sonra yeniden başlatma veya durdurma
 
-## <a name="start-transcription-after-live-event-has-started"></a>Canlı etkinlik başlatıldıktan sonra dökümü Başlat
+Canlı olay çalışır durumda olduğunda canlı dökümü başlatabilir ve durdurabilirsiniz. Canlı olayları başlatma ve durdurma hakkında daha fazla bilgi için [Media Services v3 API 'leri Ile geliştirme](media-services-apis-overview.md#long-running-operations)konusundaki uzun süre çalışan işlemler bölümünü okuyun.
 
-Canlı döküm, canlı bir olay başladıktan sonra başlatılabilir. Canlı döküm 'yi açmak için canlı etkinliği "Transcriptions" özelliğini içerecek şekilde yama yapın. Canlı dökümleri devre dışı bırakmak için, "Transcriptions" özelliği canlı olay nesnesinden kaldırılacak.
+Canlı güncelleştirmeleri açmak veya döküm dilini güncelleştirmek için canlı olayı bir "döküm" özelliği içerecek şekilde yama yapın. Canlı dökümleri devre dışı bırakmak için, "Transcriptions" özelliğini canlı olay nesnesinden kaldırın.  
 
 > [!NOTE]
-> Canlı olay sırasında bir defadan fazla açma veya kapatma işlemi, desteklenen bir senaryo değildir.
+> Canlı olay sırasında **bir defadan fazla** açma veya kapatma işlemi, desteklenen bir senaryo değildir.
 
 Bu, canlı dökümlerini açmak için örnek çağrıdır.
 
@@ -160,10 +196,8 @@ Hizmetimizin, farklı protokollerde video, ses ve metin sunmak için dinamik pak
 
 Önizleme için, canlı dökümle ilgili bilinen sorunlar aşağıda verilmiştir:
 
-* Özelliği yalnızca Batı ABD 2 kullanılabilir.
-* Uygulamaların [Media Services v3 Openapı belirtiminde](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)açıklanan önizleme API 'lerini kullanması gerekir.
-* Desteklenen tek dil Ingilizce 'dir (en-US).
-* İçerik koruma ile yalnızca AES zarf şifrelemesi desteklenir.
+- Uygulamaların [Media Services v3 Openapı belirtiminde](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)açıklanan önizleme API 'lerini kullanması gerekir.
+- Dijital hak yönetimi (DRM) koruması metin parçası için uygulanmıyor, yalnızca AES zarf şifrelemesi mümkündür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

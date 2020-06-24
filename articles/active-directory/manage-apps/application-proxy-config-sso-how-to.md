@@ -3,32 +3,32 @@ title: Uygulama proxy 'Si uygulamasında çoklu oturum açmayı yapılandırma
 description: Uygulama ara sunucusu uygulamanızda kolayca çoklu oturum açmayı nasıl yapılandırabileceğinizi
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/12/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589b3e51f27147f0a0432b61c22a024c202e388b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb3d1d921be858531372130264e777f8c04a9328
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76712024"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764953"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Uygulama proxy 'Si uygulamasında çoklu oturum açmayı yapılandırma
 
 Çoklu oturum açma (SSO), kullanıcılarınızın birden çok kez kimlik doğrulaması yapmadan bir uygulamaya erişmesine olanak sağlar. Tek kimlik doğrulamanın bulutta oluşmasına, Azure Active Directory karşı, hizmetin veya bağlayıcının uygulamadan ek kimlik doğrulama sorunlarını tamamlaması için kullanıcının kimliğine bürünmesine izin verir.
 
 ## <a name="how-to-configure-single-sign-on"></a>Çoklu oturum açmayı yapılandırma
-SSO 'yu yapılandırmak için öncelikle uygulamanızın Azure Active Directory aracılığıyla ön kimlik doğrulaması için yapılandırıldığından emin olun.  - &gt; Bu yapılandırmayı yapmak için, - &gt;  - &gt; **uygulama - uygulamanızın &gt; ara sunucusunu** **Azure Active Directory** **Kurumsal uygulamalar** **tüm uygulamalar** ' a gidin. Bu sayfada, "ön kimlik doğrulama" alanını görürsünüz ve "Azure Active Directory olarak ayarlanmış olduğundan emin olun. 
+SSO 'yu yapılandırmak için öncelikle uygulamanızın Azure Active Directory aracılığıyla ön kimlik doğrulaması için yapılandırıldığından emin olun. Bu yapılandırmayı yapmak için, **Azure Active Directory**  - &gt; **Enterprise Applications**  - &gt; **All Applications**  - &gt; uygulama ** - &gt; uygulamanızın ara sunucusunu**Azure Active Directory Kurumsal uygulamalar tüm uygulamalar ' a gidin. Bu sayfada, "ön kimlik doğrulama" alanını görürsünüz ve "Azure Active Directory olarak ayarlanmış olduğundan emin olun. 
 
 Ön kimlik doğrulama yöntemleri hakkında daha fazla bilgi için bkz. [uygulama yayımlama belgesi](application-proxy-add-on-premises-application.md)adım 4.
 

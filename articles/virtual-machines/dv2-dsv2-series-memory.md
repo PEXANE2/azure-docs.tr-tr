@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: fb493154f81eb5ab63ed9593479356fe89552211
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678265"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694717"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Bellek için iyileştirilmiş dv2 ve Dsv2 serisi
 
-Özgün D serisi için bir takip olan dv2 ve Dsv2 serisi, daha güçlü bir CPU sunar. DSv2 serisi boyutlar Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+Özgün D serisi için bir takip olan dv2 ve Dsv2 serisi, daha güçlü bir CPU sunar. DSv2 serisi boyutlar Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel 2,3® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
 ## <a name="dv2-series-11-15"></a>Dv2 serisi 11-15
 
-Dv2 serisi boyutlar Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır.
+Dv2 serisi boyutlar Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel 2,3® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır.
 
 ACU: 210 - 250
 
@@ -41,7 +41,7 @@ Hızlandırılmış ağ ile <sup>2</sup> 25000 Mbps.
 
 ## <a name="dsv2-series-11-15"></a>DSv2 serisi 11-15
 
-DSv2 serisi boyutlar Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır.
+DSv2 serisi boyutlar Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel 2,3® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır.
 
 ACU: 210-250 <sup>1</sup>
 

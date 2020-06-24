@@ -2,21 +2,21 @@
 title: Uygulama proxy 'Si bağlayıcılarını ayıklama-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) uygulama proxy bağlayıcılarıyla ilgili sorunları ayıklayın.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9254e0ce9f27d95edb01359e53888078c1087381
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72311854"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764662"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Uygulama Ara Sunucusu bağlayıcı hatalarını ayıklama 
 
@@ -32,7 +32,7 @@ Uygulama proxy 'Si ve bağlayıcılarını kullanma hakkında daha fazla bilgi i
 - [Uygulama proxy 'Si aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md)
 - [Uygulama proxy bağlayıcıları](application-proxy-connectors.md)
 - [Bağlayıcı yükleyip kaydetme](application-proxy-add-on-premises-application.md)
-- [Uygulama proxy 'Si sorunlarını ve hata iletilerini sorun giderme](application-proxy-troubleshoot.md)
+- [Uygulama Proxy'si sorunlarını ve hata iletilerini giderme](application-proxy-troubleshoot.md)
 
 ## <a name="flowchart-for-connector-issues"></a>Bağlayıcı sorunları için akış çizelgesi
 
@@ -40,7 +40,7 @@ Bu akış çizelgesi, daha yaygın bağlayıcı sorunlarından bazılarının ha
 
 ![Bağlayıcının hatalarını ayıklama adımlarını gösteren akış çizelgesi](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Eylem | Açıklama | 
+|  | Eylem | Description | 
 |---------|---------|---------|
 |1 | Uygulamaya atanan bağlayıcı grubunu bulma | Büyük olasılıkla birden çok sunucuya yüklenmiş bir bağlayıcıya sahipsiniz, bu durumda bağlayıcılar [bağlayıcı gruplarına atanmalıdır](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Bağlayıcı grupları hakkında daha fazla bilgi edinmek için bkz. [bağlayıcı gruplarını kullanarak ayrı ağlarda ve konumlarda uygulama yayımlama](application-proxy-connector-groups.md). |
 |2 | Bağlayıcıyı yükleyip bir grup atayın | Yüklü bir Bağlayıcınız yoksa, bkz. [bağlayıcı yükleme ve kaydetme](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Bağlayıcıyı yükleme konusunda sorun yaşıyorsanız, bkz. [bağlayıcıyı yükleme sorunu](application-proxy-connector-installation-problem.md).<br></br> Bağlayıcı bir gruba atanmamışsa, bkz. [bağlayıcıyı bir gruba atama](application-proxy-connector-groups.md#create-connector-groups).<br></br>Uygulama bir bağlayıcı grubuna atanmamışsa, bkz. [uygulamayı bir bağlayıcı grubuna atama](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|

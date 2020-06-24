@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245011"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695088"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -80,7 +80,7 @@ VM 'lerle sahip olduğunuz denetim düzeyi nedeniyle, Azure 'da PaaS modeline s�
 
 #### <a name="azure-functions-serverless"></a>Azure Işlevleri (sunucusuz)
 
-Kodunuzu çalıştırmak için tüm uygulamayı veya altyapıyı oluşturma ve yönetme konusunda endişelenmek yerine, kodunuzu yazmak ve olaylara veya bir zamanlamaya yanıt olarak çalıştırmak için ne olur?  [Azure işlevleri](../../azure-functions/functions-overview.md) , yalnızca ihtiyacınız olan kodu yazmanızı sağlayan "sunucusuz" tarzı bir tekliftir. Işlevlerle, HTTP istekleri, Web kancaları, bulut hizmeti etkinlikleri veya bir zamanlamaya göre kod yürütmeyi tetikleyebilirsiniz. C\#, F\#, Node. js, Python veya PHP gibi tercih ettiğiniz geliştirme dilinizde kod oluşturabilirsiniz. Tüketim tabanlı faturalandırma sayesinde yalnızca kodunuzun yürütüldüğü süre için ödeme yaparsınız ve gerektiğinde Azure ölçeklendiriyor olursunuz.
+Kodunuzu çalıştırmak için tüm uygulamayı veya altyapıyı oluşturma ve yönetme konusunda endişelenmek yerine, kodunuzu yazmak ve olaylara veya bir zamanlamaya yanıt olarak çalıştırmak için ne olur?  [Azure işlevleri](../../azure-functions/functions-overview.md) , yalnızca ihtiyacınız olan kodu yazmanızı sağlayan "sunucusuz" tarzı bir tekliftir. Işlevlerle, HTTP istekleri, Web kancaları, bulut hizmeti etkinlikleri veya bir zamanlamaya göre kod yürütmeyi tetikleyebilirsiniz. C \# , F \# , Node.js, Python veya PHP gibi tercih ettiğiniz geliştirme dilinizde kod oluşturabilirsiniz. Tüketim tabanlı faturalandırma sayesinde yalnızca kodunuzun yürütüldüğü süre için ödeme yaparsınız ve gerektiğinde Azure ölçeklendiriyor olursunuz.
 
 > **Ne zaman kullanılır**: diğer Azure hizmetleri tarafından tetiklenen kodunuz varsa, Web tabanlı olaylara veya bir zamanlamaya göre Azure işlevleri 'ni kullanın. Ayrıca, tüm barındırılan bir projenin ek yüküne gerek duymadığınızda veya yalnızca kodunuzun çalıştığı zaman için ödeme yapmak istediğinizde Işlevleri de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Işlevlerine genel bakış](../../azure-functions/functions-overview.md).
 >
@@ -96,7 +96,7 @@ Azure Service Fabric, dağıtılmış bir sistem platformudur. Bu platform ölç
 * Dağıtılmasını
 * İzleme
 * Yükseltme/düzeltme eki uygulama
-* Silinmesinden
+* Siliniyor
 
 Paylaşılan bir makine havuzunda çalışan uygulamalar, gerektiğinde yüzlerce veya binlerce makineye kadar küçük ve ölçeklenebilir olabilir.
 
@@ -163,7 +163,7 @@ Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
   >
   > **Kullanmaya başlayın**: [Linux üzerinde App Service Için özel bir Docker görüntüsü kullanın](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 Yalnızca uygulamalarınızı kimin kullandığını ve ayrıca Kaynaklarınıza yetkisiz erişimi engellemek için çok önemlidir. Azure, uygulama istemcilerinizin kimliğini doğrulamak için çeşitli yollar sağlar.
 

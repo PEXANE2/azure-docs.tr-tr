@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254696"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694850"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple cihazlarını bağlamak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -31,9 +31,9 @@ ms.locfileid: "79254696"
 
 **Görünüm** seçimlerinize bağlı olarak, **sonuçlar** bölmesi her bir cihazla ilgili olarak aşağıdaki bilgileri gösterir. (Görünüm yapılandırma hakkında daha fazla bilgi için [Görünüm menüsüne](storsimple-use-snapshot-manager.md#view-menu)gidin.
 
-| Sonuç sütunu | Açıklama |
+| Sonuç sütunu | Description |
 |:--- |:--- |
-| Adı |Klasik Azure portalında yapılandırılan cihazın adı |
+| Name |Klasik Azure portalında yapılandırılan cihazın adı |
 | Model |Cihazın model numarası |
 | Sürüm |Cihazda yüklü yazılımın sürümü |
 | Durum |Cihazın kullanılabilir olup olmadığı |
@@ -166,7 +166,7 @@ StorSimple Snapshot Manager bir StorSimple cihazının kimliğini doğrulamak i�
 
 #### <a name="to-change-the-expired-password"></a>Süre biten parolayı değiştirmek için
 1. Klasik Azure portalında, StorSimple Yöneticisi hizmetini başlatın.
-2. Cihaz için **cihazlar** > **yapılandırması** ' na tıklayın.
+2. Cihaz için **cihazlar**  >  **yapılandırması** ' na tıklayın.
 3. StorSimple Snapshot Manager bölümüne gidin. 14-15 karakter olan bir parola girin. Parolanın büyük harf, küçük harf, sayısal ve özel karakterlerin bir karışımını içerdiğinden emin olun.
 4. Parolayı onaylamak için yeniden girin.
 5. Sayfanın alt kısmındaki **Kaydet**’e tıklayın.

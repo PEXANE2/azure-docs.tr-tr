@@ -6,16 +6,16 @@ keywords: Sık Kullanılanlar, Portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: d6b580accb02efb6a44c0c245af583d2e3850409
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310824"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764137"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Sık kullanılanları ekleme, kaldırma ve yeniden düzenleme
 
@@ -23,7 +23,7 @@ En sık kullandığınız hizmetlere hızla gidebilmeniz için **Sık Kullanıla
 
 ## <a name="add-a-favorite"></a>Sık kullanılan ekleme
 
-**Sık Kullanılanlar** altında listelenen öğeler **tüm hizmetlerden**seçilir. Hizmetle ilgili bilgi ve kaynakları göstermek için bir hizmet adının üzerine gelin. Hizmet adının](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) yanında doldurulmuş ![bir yıldız simgesi doldurulmuş yıldız simgesi öğenin **Sık Kullanılanlar** listesinde göründüğünü gösterir. **Sık Kullanılanlar** listesine bir hizmet eklemek için yıldız simgesini seçin.
+**Sık Kullanılanlar** altında listelenen öğeler **tüm hizmetlerden**seçilir. Hizmetle ilgili bilgi ve kaynakları göstermek için bir hizmet adının üzerine gelin. Hizmet adının yanında doldurulmuş bir yıldız simgesi ![ doldurulmuş yıldız simgesi ](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) öğenin **Sık Kullanılanlar** listesinde göründüğünü gösterir. **Sık Kullanılanlar** listesine bir hizmet eklemek için yıldız simgesini seçin.
 
 ### <a name="add-cost-management--billing-to-favorites"></a>Maliyet yönetimi ve sık kullanılanlara faturalama ekleme
 

@@ -3,19 +3,18 @@ title: Key Vault sertifikalarını kullanmaya başlama
 description: Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431949"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765106"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault sertifikalarını kullanmaya başlama
 Aşağıdaki senaryolarda, Anahtar Kasanızda ilk sertifikanızı oluşturmak için gereken ek adımlar da dahil olmak üzere Key Vault sertifika yönetimi hizmetinin birincil kullanımlarından bazıları ana hatlarıyla verilmiştir.
@@ -97,13 +96,19 @@ Bu süreç, 3,1. adım ile bir kerelik işlemidir.
 -   Ayrıca, Kullanıcı ilkeyi düzenleyebilir ve içeri aktarma sırasında işlevsel olan, ancak içeri aktarma sırasında hiçbir bilgi belirtilmediğinde varsayılanları içerir. Örn. veren bilgisi yok  
 
 ### <a name="formats-of-import-we-support"></a>Destekduğumuz Içeri aktarma biçimleri
+Azure Key Vault, sertifikaları anahtar kasasına aktarmak için. pek ve. pfx sertifika dosyalarını destekler.
 PEK dosya biçimi için aşağıdaki Içeri aktarma türünü destekliyoruz. PKCS # 8 kodlamalı, şifrelenmemiş bir anahtarla birlikte, aşağıdaki gibi tek bir pek kodlu sertifika
 
 -----SERTIFIKAYı----------SON SERTIFIKA-----BAŞLAT
 
 ÖZEL ANAHTAR----------SON ÖZEL ANAHTARA-----BAŞLA-----
 
-Sertifika birleştirmede 2 pek tabanlı biçimleri destekliyoruz. Tek bir PKCS # 8 kodlu sertifikayı veya Base64 kodlamalı bir P7B dosyasını birleştirebilirsiniz. -----SERTIFIKAYı----------SON SERTIFIKA-----BAŞLAT
+Sertifikayı içeri aktarırken, anahtarın dosyanın içine eklendiğinden emin olmanız gerekir. Özel anahtarınız farklı bir biçimde ayrı olarak varsa, anahtarı sertifikayla birleştirmeniz gerekir. Bazı sertifika yetkilileri sertifikaları farklı biçimlerde sağlar, bu nedenle sertifikayı içeri aktarmadan önce, bunların. ped veya. pfx biçiminde olduklarından emin olun. 
+
+### <a name="formats-of-merge-csr-we-support"></a>Destekdiğimiz birleştirme CSR biçimleri
+AKV, 2 PEM tabanlı biçimleri destekler. Tek bir PKCS # 8 kodlu sertifikayı veya Base64 kodlamalı bir P7B (CA tarafından imzalanan sertifika zinciri) birleştirebilirsiniz 
+
+-----SERTIFIKAYı----------SON SERTIFIKA-----BAŞLAT
 
 Şu anda pek biçimindeki EC anahtarlarını desteklemiyoruz.
 
@@ -123,4 +128,3 @@ Sertifika birleştirmede 2 pek tabanlı biçimleri destekliyoruz. Tek bir PKCS #
   (4)-seçtiğiniz CA, bir x509 sertifikası ile yanıt verir.  
 
   (5)-uygulamanız, CA 'nızdan x509 sertifikası birleşmesi ile yeni sertifika oluşturmayı tamamlar.
-

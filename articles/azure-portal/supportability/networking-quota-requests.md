@@ -4,15 +4,15 @@ description: Ağ sınırını artırma
 author: anavinahar
 ms.author: anavin
 ms.date: 01/23/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76547814"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764274"
 ---
 # <a name="networking-limit-increase"></a>Ağ sınırını artırma
 
@@ -69,7 +69,7 @@ Azure portal **Yardım + Destek** kullanarak bir destek isteği oluşturmak içi
 
 Azure portal **kullanım + kota** kullanarak bir destek isteği oluşturmak için bu yönergeleri izleyin.
 
-1. İçinden https://portal.azure.com, **abonelik**arayın ve seçin.
+1. İçinden https://portal.azure.com , **abonelik**arayın ve seçin.
 
     ![Abonelikler](./media/networking-quota-request/search-for-suscriptions.png)
 

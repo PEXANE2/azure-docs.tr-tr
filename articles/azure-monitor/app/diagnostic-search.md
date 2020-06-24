@@ -4,11 +4,11 @@ description: Web uygulamanız tarafından gönderilen ham Telemetriyi arayın ve
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275990"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695666"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights arama kullanma
 
@@ -56,12 +56,12 @@ Olay türleri ' açılan menüsünü açın ve görmek istediğiniz olay türler
 
 Olay türleri şunlardır:
 
-* **Trace** - Tracktrace, log4Net, NLog ve System. Diagnostics. Trace çağrılarını içeren[tanılama günlüklerini](../../azure-monitor/app/asp-net-trace-logs.md) izleyin.
+* **İzleme**  -  TrackTrace, log4Net, NLog ve System. Diagnostics. Trace çağrılarını içeren [tanılama günlükleri](../../azure-monitor/app/asp-net-trace-logs.md) .
 * **İstek** -sunucu uygulamanız tarafından alınan, sayfalar, betikler, görüntüler, stil dosyaları ve veriler dahil http istekleri. Bu olaylar, istek ve yanıt genel bakış grafiklerini oluşturmak için kullanılır.
-* **Page View** - Sayfa görüntüleme raporları oluşturmak için kullanılan[Web istemcisi tarafından gönderilen](../../azure-monitor/app/javascript.md)sayfa görünümü telemetrisi.
+* **Sayfa görünümü**  -  [Web istemcisi tarafından gönderilen telemetri](../../azure-monitor/app/javascript.md), sayfa görünümü raporları oluşturmak için kullanılır.
 * **Özel olay** - [kullanımı Izlemek](../../azure-monitor/app/api-custom-events-metrics.md)için trackevent () çağrıları eklediyseniz, burada arama yapabilirsiniz.
 * **Özel durum** - [sunucuda](../../azure-monitor/app/asp-net-exceptions.md)yakalanamayan özel durumlar ve trackexception () kullanarak oturum açmalarını sağlayabilirsiniz.
-* **Dependency** - [Sunucu uygulamanızdan](../../azure-monitor/app/asp-net-dependencies.md) REST API 'leri veya veritabanları gibi diğer hizmetlere bağımlılık çağrıları ve [istemci kodunuzun](../../azure-monitor/app/javascript.md)Ajax çağrıları.
+* **Bağımlılık**  -  [Sunucu UYGULAMANıZDAN](../../azure-monitor/app/asp-net-dependencies.md) REST API 'leri veya veritabanları gibi diğer hizmetlere çağrılar ve [istemci kodunuzun](../../azure-monitor/app/javascript.md)Ajax çağrıları.
 * **Kullanılabilirlik-** [kullanılabilirlik testlerinin](../../azure-monitor/app/monitor-web-app-availability.md)sonuçları.
 
 ## <a name="filter-on-property-values"></a>Özellik değerlerini filtrele
@@ -95,11 +95,11 @@ Alt dizeler değil, tüm sözcükleri arayın. Özel karakterleri kapsamak için
 | Dize | *Bulunamadı* | Bulundu |
 | --- | --- | --- |
 | HomeController. hakkında |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
-|Amerika Birleşik Devletleri|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
+|Birleşik Devletler|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Kullanabileceğiniz arama ifadeleri aşağıda verilmiştir:
 
-| Örnek sorgu | Etki |
+| Örnek sorgu | Efekt |
 | --- | --- |
 | `apple` |Alanları "Apple" sözcüğünü içeren zaman aralığındaki tüm olayları bul |
 | `apple AND banana` <br/>`apple banana` |Her iki sözcüğü de içeren olayları bulun. "Ve" değil, sermaye "ve" kullanın. <br/>Kısa biçim. |

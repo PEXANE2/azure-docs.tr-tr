@@ -2,21 +2,21 @@
 title: Uygulama proxy 'Si uygulamalarında hata ayıklama-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) uygulama proxy 'Si uygulamalarıyla ilgili sorunları ayıklayın.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: e944c25f39903f8a78a949206bc8037f34508698
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382070"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764664"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Uygulama Ara Sunucusu uygulama hatalarını ayıklama 
 
@@ -31,7 +31,7 @@ Uygulama proxy 'Si hakkında daha fazla bilgi için bkz.
 - [Uygulama proxy 'Si aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md)
 - [Uygulama proxy bağlayıcıları](application-proxy-connectors.md)
 - [Bağlayıcı yükleyip kaydetme](application-proxy-add-on-premises-application.md)
-- [Uygulama proxy 'Si sorunlarını ve hata iletilerini sorun giderme](application-proxy-troubleshoot.md)
+- [Uygulama Proxy'si sorunlarını ve hata iletilerini giderme](application-proxy-troubleshoot.md)
 
 ## <a name="flowchart-for-application-issues"></a>Uygulama sorunları için akış çizelgesi
 
@@ -39,7 +39,7 @@ Bu akış çizelgesi, uygulamaya bağlanma ile ilgili daha yaygın sorunlardan b
 
 ![Bir uygulamada hata ayıklama adımlarını gösteren akış çizelgesi](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Eylem | Açıklama | 
+|  | Eylem | Description | 
 |---------|---------|---------|
 |1 | Bir tarayıcı açın, uygulamaya erişin ve kimlik bilgilerinizi girin | Uygulamada oturum açmak için kimlik bilgilerinizi kullanmayı deneyin ve [Bu şirket uygulamasına erişilemediği](application-proxy-sign-in-bad-gateway-timeout-error.md)gibi kullanıcı ile ilgili herhangi bir hata olup olmadığını denetleyin. |
 |2 | Uygulamaya Kullanıcı atamasını doğrulama | Kullanıcı hesabınızın, kurumsal ağın içinden uygulamaya erişim izni olduğundan emin olun ve ardından [uygulamayı test](application-proxy-add-on-premises-application.md#test-the-application)etme bölümündeki adımları izleyerek uygulamada oturum açmayı sınayın. Oturum açma sorunları devam ederse bkz. [oturum açma hatalarıyla ilgili sorun giderme](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).  |

@@ -3,25 +3,25 @@ title: Azure AD Uygulama Ara Sunucusu ile Power BI uzaktan erişimi etkinleştir
 description: Şirket içi Power BI Azure AD Uygulama Ara Sunucusu ile tümleştirme hakkında temel bilgileri içerir.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 68993a460ba3d6a672a27eb8da5ced85b29d3d12
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610097"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764562"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil’e uzaktan erişimi etkinleştirme
 
@@ -50,7 +50,7 @@ Setspn komutunu-L seçeneğiyle çalıştırarak SPN 'nin eklendiğini doğrulay
 
 ### <a name="enable-negotiate-authentication"></a>Negotiate kimlik doğrulamasını etkinleştir
 
-Bir rapor sunucusunun Kerberos kimlik doğrulamasını kullanmasını sağlamak için rapor sunucusunun kimlik doğrulama türünü RSWindowsNegotiate olacak şekilde yapılandırın. RSReportServer. config dosyasını kullanarak bu ayarı yapılandırın.
+Bir rapor sunucusunun Kerberos kimlik doğrulamasını kullanmasını sağlamak için rapor sunucusunun kimlik doğrulama türünü RSWindowsNegotiate olacak şekilde yapılandırın. rsreportserver.config dosyasını kullanarak bu ayarı yapılandırın.
 
 ```xml
 <AuthenticationTypes>
@@ -63,43 +63,43 @@ Bir rapor sunucusunun Kerberos kimlik doğrulamasını kullanmasını sağlamak 
 Daha fazla bilgi için bkz. [Modify a Reporting Services Configuration File (Bir Reporting Services Yapılandırma Dosyasını değiştirme)](https://msdn.microsoft.com/library/bb630448.aspx) ve [Configure Windows Authentication on a Report Server (Bir Rapor Sunucusunda Windows Kimlik Doğrulamasını yapılandırma)](https://msdn.microsoft.com/library/cc281253.aspx).
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Bağlayıcının, Reporting Services uygulama havuzu hesabına eklenen SPN 'ye devredilmek için güvenilir olduğundan emin olun
-KCD 'YI, Azure AD Uygulama Ara Sunucusu hizmetinin Raporlama Hizmetleri uygulama havuzu hesabına Kullanıcı kimlikleri atayabilmesi için yapılandırın. Azure AD 'de kimlik doğrulamasından geçen kullanıcılarınız için Kerberos biletleri almak üzere uygulama proxy bağlayıcısını etkinleştirerek KCD 'yi yapılandırın. Bu durumda, bu sunucu bağlamı hedef uygulamaya veya Reporting Services 'e geçirir.
+KCD 'YI, Azure AD Uygulama Ara Sunucusu hizmetinin Raporlama Hizmetleri uygulama havuzu hesabına Kullanıcı kimlikleri atayabilmesi için yapılandırın. Uygulama Ara Sunucusu bağlayıcısının Azure AD’de kimliği doğrulanmış olan kullanıcılarınız için Kerberos biletleri almasını etkinleştirerek KCD’yi yapılandırın. Bu durumda, bu sunucu bağlamı hedef uygulamaya veya Reporting Services 'e geçirir.
 
 KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adımları yineleyin:
 
 1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından **Active Directory Kullanıcıları ve bilgisayarları**' nı açın.
-2. Bağlayıcının üzerinde çalıştığı bilgisayarı bulun.
-3. Bilgisayara çift tıklayın ve ardından **temsili** sekmesini seçin.
-4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
-5. **Ekle**' yi ve ardından **Kullanıcılar veya bilgisayarlar**' ı seçin.
+2. Bağlayıcının üzerinde çalıştırıldığı bilgisayarı bulun.
+3. Bilgisayara çift tıklayın ve ardından **Temsilci** sekmesini seçin.
+4. Temsilci ayarlarını **Bu bilgisayara yalnızca belirtilen hizmetlere temsilci seçmek için güven** olarak belirleyin. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
+5. **Ekle**’yi ve ardından **Kullanıcılar veya Bilgisayarlar**’ı seçin.
 6. Raporlama Hizmetleri için kullandığınız hizmet hesabını girin. Bu hesap, Reporting Services yapılandırmasında SPN'yi eklediğiniz hesaptır.
-7. **Tamam**'a tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
+7. **Tamam**'a tıklayın. Değişiklikleri kaydetmek için **Tamam**’a yeniden tıklayın.
 
 Daha fazla bilgi için bkz. [uygulama proxy 'si ile uygulamalarınızda çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
 
 ## <a name="step-2-publish-report-services-through-azure-ad-application-proxy"></a>2. Adım: Azure AD Uygulama Ara Sunucusu aracılığıyla rapor hizmetleri yayımlama
 
-Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
+Artık Azure AD Uygulaması Ara Sunucusu’nu yapılandırmaya hazırsınız.
 
-1. Aşağıdaki ayarlarla rapor hizmetlerini uygulama proxy 'Si aracılığıyla yayımlayın. Uygulama proxy 'Si aracılığıyla bir uygulamayı yayımlama hakkında adım adım yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
-   - **Iç URL**: bağlayıcının şirket ağında ulaşabileceği rapor sunucusunun URL 'sini girin. Bu URL 'ye bağlayıcının yüklendiği sunucudan erişilebildiğinden emin olun. En iyi yöntem, uygulama proxy 'Si aracılığıyla yayınlanan alt yollar ile `https://servername/` ilgili sorunlardan kaçınmak için gibi en üst düzey bir etki alanı kullanmaktır. Örneğin, veya `https://servername/` `https://servername/reports/` `https://servername/reportserver/`değil kullanın.
+1. Aşağıdaki ayarlarla rapor hizmetlerini uygulama proxy 'Si aracılığıyla yayımlayın. Uygulama Ara Sunucusu aracılığıyla uygulama yayımlama işleminin adım adım yönergeleri için bkz. [Azure AD Uygulama Ara Sunucusu’nu kullanarak uygulamaları yayımlama](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
+   - **Iç URL**: bağlayıcının şirket ağında ulaşabileceği rapor sunucusunun URL 'sini girin. Bağlayıcının yüklendiği sunucudan bu URL’ye ulaşılabildiğinden emin olun. Uygulama Ara Sunucusu aracılığıyla yayımlanan alt yollarla ilgili sorunlardan kaçınmak için `https://servername/` gibi bir üst düzey etki alanı kullanmak iyi bir yöntemdir. Örneğin `https://servername/` kullanın ama `https://servername/reports/` veya `https://servername/reportserver/` kullanmayın.
      > [!NOTE]
-     > Rapor sunucusuna güvenli bir HTTPS bağlantısı kullanmanızı öneririz. Hakkında bilgi için bkz. [yerel mod rapor sunucusunda SSL bağlantılarını yapılandırma](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) .
-   - **Dış URL**: Power BI Mobile App 'in bağlanacağı genel URL 'yi girin. Örneğin, özel bir etki alanı kullanılmış `https://reports.contoso.com` gibi görünebilir. Özel bir etki alanı kullanmak için, etki alanı için bir sertifika yükleyin ve uygulamanız için varsayılan msappproxy.net etki alanına bir DNS kaydı getirin. Ayrıntılı adımlar için bkz. [Azure AD uygulama ara sunucusu özel etki alanları Ile çalışma](application-proxy-configure-custom-domain.md).
+     > Rapor sunucusuna güvenli bir HTTPS bağlantısı kullanmanızı öneririz. Nasıl yapılacağına ilişkin bilgi için bkz. [Yerel moddaki rapor sunucusunda SSL bağlantılarını yapılandırma](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017).
+   - **Dış URL**: Power BI Mobile App 'in bağlanacağı genel URL 'yi girin. Özel etki alanı kullanılıyorsa örneğin `https://reports.contoso.com` gibi bir URL olabilir. Özel etki alanı kullanmak için etki alanının sertifikasını karşıya yükleyin ve bir DNS kaydının uygulamanız için varsayılan msappproxy.net etki alanına işaret etmesini sağlayın. Ayrıntılı adımlar için bkz. [Azure AD Uygulama Ara Sunucusu’nda özel etki alanlarıyla çalışma](application-proxy-configure-custom-domain.md).
 
    - **Ön kimlik doğrulama yöntemi**: Azure Active Directory
 
-2. Uygulamanız yayımlandıktan sonra, çoklu oturum açma ayarlarını aşağıdaki adımlarla yapılandırın:
+2. Uygulamanız yayımlandığında, aşağıdaki adımları kullanarak çoklu oturum açma ayarlarını yapılandırın:
 
-   a. Portaldaki uygulama sayfasında, **Çoklu oturum açma**' yı seçin.
+   a. Portaldaki uygulama sayfasında **Çoklu oturum açma**’yı seçin.
 
-   b. **Çoklu oturum açma modu**Için **Tümleşik Windows kimlik doğrulaması**' nı seçin.
+   b. **Çoklu Oturum Açma Modu** olarak **Tümleşik Windows Kimlik Doğrulaması**’nı seçin.
 
-   c. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın.
+   c. **İç Uygulama SPN'si** öğesini daha önce ayarladığınız değere ayarlayın.
 
-   d. Bağlayıcının Kullanıcı adına kullanması için **yetkilendirilmiş oturum açma kimliğini** seçin. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Bağlayıcıyı kullanıcılar adına kullanmak için **Temsilci Oturum Açma Kimliği**’ni seçin. Daha fazla bilgi için bkz. [Farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
-   e. Değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
+   e. Değişikliklerinizi kaydetmek için **Kaydet**’e tıklayın.
 
 Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın.
 
@@ -107,10 +107,10 @@ Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne
 
 Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi için önce adım 2 ' de otomatik olarak oluşturulan uygulama kaydını yapılandırmanız gerekir.
 
-1. Azure Active Directory **genel bakış** sayfasında **uygulama kayıtları**' i seçin.
+1. Azure Active Directory **Genel Bakış** sayfasında **Uygulama kayıtları**'nı seçin.
 2. **Tüm uygulamalar** sekmesinin altında 2. adımda oluşturduğunuz uygulamayı arayın.
-3. Uygulamayı seçin ve **kimlik doğrulaması**' nı seçin.
-4. Kullanmakta olduğunuz platforma göre aşağıdaki yeniden yönlendirme URI 'Lerini ekleyin.
+3. Uygulamayı seçin ve sonra da **Kimlik Doğrulaması**’nı seçin.
+4. Kullandığınız platforma bağlı olarak aşağıdaki Yeniden Yönlendirme URI’lerini ekleyin.
 
    Uygulamayı Power BI Mobil **iOS**için yapılandırırken, genel istemci türünde aşağıdaki yeniden yönlendirme URI 'lerini ekleyin (mobil & Masaüstü):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
@@ -125,7 +125,7 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
-   > Uygulamanın düzgün çalışması için yeniden yönlendirme URI 'Lerinin eklenmesi gerekir. Uygulamayı hem iOS hem de Android Power BI Mobil için yapılandırıyorsanız, genel Istemci türündeki aşağıdaki yeniden yönlendirme URI 'sini (mobil & Masaüstü) iOS için yapılandırılan yeniden yönlendirme URI 'Leri listesine ekleyin: `urn:ietf:wg:oauth:2.0:oob`.
+   > Uygulamanın düzgün çalışması için Yeniden Yönlendirme URI’lerinin eklenmesi gerekir. Uygulamayı hem iOS hem de Android Power BI Mobil için yapılandırıyorsanız, genel Istemci türündeki aşağıdaki yeniden yönlendirme URI 'sini (mobil & Masaüstü) iOS için yapılandırılan yeniden yönlendirme URI 'Leri listesine ekleyin: `urn:ietf:wg:oauth:2.0:oob` .
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>4. Adım: Power BI Mobil uygulamadan bağlanma
 
@@ -133,9 +133,9 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
 
    ![Dış URL ile mobil uygulama Power BI](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
-2. **Bağlan**’ı seçin. Azure Active Directory oturum açma sayfasına yönlendirilirsiniz.
+2. **Bağlan**'ı seçin. Azure Active Directory oturum açma sayfasına yönlendirilirsiniz.
 
-3. Kullanıcılarınız için geçerli kimlik bilgilerini girin ve **oturum aç '** ı seçin. Reporting Services sunucunuzdaki öğeleri görürsünüz.
+3. Kullanıcınızın geçerli kimlik bilgilerini girin ve **Oturum aç**’ı seçin. Reporting Services sunucunuzdaki öğeleri görürsünüz.
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>5. Adım: yönetilen cihazlar için Intune ilkesini yapılandırma (isteğe bağlı)
 

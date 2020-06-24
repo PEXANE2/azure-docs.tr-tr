@@ -3,24 +3,24 @@ title: Talep kullanan uygulamalar-Azure AD Uygulaması Proxy | Microsoft Docs
 description: Kullanıcılarınız tarafından güvenli uzaktan erişim için ADFS taleplerini kabul eden şirket içi ASP.NET uygulamalarını yayımlama.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 77d465b5900a3c36e6c6b957431b9d6ba56f50a4
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "68477251"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764868"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Uygulama proxy 'sinde talep kullanan uygulamalarla çalışma
 [Talep kullanan uygulamalar](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) , güvenlik belirteci hizmeti 'NE (STS) yeniden yönlendirme gerçekleştirir. STS, bir belirteç için Exchange 'deki kullanıcıdan kimlik bilgilerini ister ve sonra kullanıcıyı uygulamaya yönlendirir. Uygulama proxy 'Sinin bu yeniden yönlendirmelere çalışması için birkaç yol vardır. Talep kullanan uygulamalar için dağıtımınızı yapılandırmak üzere bu makaleyi kullanın. 
