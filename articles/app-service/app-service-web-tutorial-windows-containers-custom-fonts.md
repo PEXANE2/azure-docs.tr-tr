@@ -4,12 +4,12 @@ description: Özel bir Windows kapsayıcısını Azure App Service 'ye geçirmey
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046611"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205631"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows kapsayıcısı kullanarak bir ASP.NET uygulamasını Azure App Service'e geçirme (Önizleme)
 
@@ -25,8 +25,8 @@ Bu öğreticiyi tamamlamak için:
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows'u yükleyin</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
 - **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra. Visual Studio 2019 zaten yüklüyse:
-    - **Help** > **Güncelleştirmeler için yardım denetimi**' ne tıklayarak Visual Studio 'ya en son güncelleştirmeleri yüklersiniz.
-    - **Araçlar** > **ve Özellikler al**' a tıklayarak iş yüklerini Visual Studio 'da ekleyin.
+    - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ne tıklayarak Visual Studio 'ya en son güncelleştirmeleri yüklersiniz.
+    - **Araçlar**  >  **ve Özellikler al**' a tıklayarak iş yüklerini Visual Studio 'da ekleyin.
 
 ## <a name="set-up-the-app-locally"></a>Uygulamayı yerel ortamda oluşturma
 
@@ -61,7 +61,7 @@ Yüklenmiş olan bir yazı tipini kullandığından uygulama App Service korumal
 
 ![Yeni ASP.NET Projesi iletişim kutusu](media/app-service-web-tutorial-windows-containers-custom-fonts/enable-container-orchestration.png)
 
-**Docker Compose** > **Tamam ' ı**seçin.
+**Docker Compose**  >  **Tamam ' ı**seçin.
 
 Projeniz Windows kapsayıcısında çalışacak şekilde ayarlanır. **CustomFontSample** projesine bir _Dockerfile_ ve çözüme bir **docker-compose** projesi eklenir. 
 
@@ -69,13 +69,13 @@ Projeniz Windows kapsayıcısında çalışacak şekilde ayarlanır. **CustomFon
 
 [Desteklenen bir üst görüntü](app-service-web-get-started-windows-container.md#use-a-different-parent-image) kullanmanız gerekir. `FROM` satırını aşağıdaki kod ile değiştirerek üst görüntüyü değiştirin:
 
-```Dockerfile
+```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
 Dosyanın en sonuna şu satırı ekleyin ve dosyayı kaydedin:
 
-```Dockerfile
+```dockerfile
 RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 ```
 
@@ -97,7 +97,7 @@ _InstallFont.ps1_ dosyasını **CustomFontSample** projesinde bulabilirsiniz. Ya
 
 ### <a name="create-registry-and-publish"></a>Kayıt defterini oluşturma ve yayımlama
 
-Yayımla sihirbazında **Container Registry** > **yeni Azure Container Registry** > oluştur ' u**seçin.**
+Yayımla sihirbazında **Container Registry**  >  **yeni Azure Container Registry oluştur**' u seçin  >  **Publish**.
 
 ![Yeni ASP.NET Projesi iletişim kutusu](media/app-service-web-tutorial-windows-containers-custom-fonts/create-registry.png)
 
@@ -115,7 +115,7 @@ Yeni kapsayıcı kayıt defterini aşağıdaki tabloda bulunan değerleri kullan
 | ----------------- | ------------ | ----|
 |**DNS Ön Eki**| Oluşturulan kayıt defteri adını kullanın veya benzersiz bir adla değiştirin. |  |
 |**Kaynak grubu**| **Yeni**'ye tıklayın, **myResourceGroup** yazın ve **Tamam**'a tıklayın. |  |
-|**ISTEYIN**| Temel | [Fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**SKU**| Temel | [Fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Kayıt Defteri Konumu**| Batı Avrupa | |
 
 ![Azure Container Registry yapılandırması](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
@@ -128,7 +128,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
-Sol menüden **kaynak** > oluştur**Web** > **kapsayıcılar için Web App**seçin.
+Sol menüden **kaynak oluştur**  >  **Web**  >  **kapsayıcılar için Web App**seçin.
 
 ### <a name="configure-app-basics"></a>Uygulama temellerini yapılandırma
 
@@ -141,7 +141,7 @@ Sol menüden **kaynak** > oluştur**Web** > **kapsayıcılar için Web App**seç
 |**Adı**| Benzersiz bir ad yazın. | Web uygulamasının URL'si `http://<app-name>.azurewebsites.net` şeklindedir; burada `<app-name>`, uygulamanızın adıdır. |
 |**Yayımlama**| Docker kapsayıcısı | |
 |**İşletim Sistemi**| Windows | |
-|**Bölge**| Batı Avrupa | |
+|**Geli**| Batı Avrupa | |
 |**Windows Planı**| **Yeni oluştur**' u seçin, **myappserviceplan**yazın ve **Tamam**' a tıklayın. | |
 
 **Temel kavramlar** sekmesi şöyle görünmelidir:
@@ -185,7 +185,7 @@ Birkaç dakika bekleyin ve beklediğiniz güzel yazı tipine sahip giriş sayfas
 
 ## <a name="see-container-start-up-logs"></a>Kapsayıcı başlangıç günlüklerini inceleme
 
-Windows kapsayıcısının yüklenmesi biraz zaman alabilir. İlerleme durumunu görmek için * \<app-name>* uygulamanızın adıyla değiştirerek aşağıdaki URL 'ye gidin.
+Windows kapsayıcısının yüklenmesi biraz zaman alabilir. İlerleme durumunu görmek için uygulamanızın adıyla değiştirerek aşağıdaki URL 'ye gidin *\<app-name>* .
 ```
 https://<app-name>.scm.azurewebsites.net/api/logstream
 ```
@@ -201,4 +201,3 @@ Akışı yapılan günlükler şuna benzer:
 14/09/2018 23:18:03.823 INFO - Site: fonts-win-container - Container ready
 14/09/2018 23:18:03.823 INFO - Site: fonts-win-container - Container start-up and configuration completed successfully
 ```
-

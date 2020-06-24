@@ -2,18 +2,19 @@
 title: Öğretici-Azure Toolkit for IntelliJ (Spark uygulaması)
 description: Öğretici-Scala 'da yazılmış Spark uygulamaları geliştirmek ve bunları bir Apache Spark havuzuna (Önizleme) göndermek için Azure Toolkit for IntelliJ kullanın.
 services: synapse-analytics
-author: v-jiche
-ms.author: v-jiche
+author: hrasheed-msft
+ms.author: jejiang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
+ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 3971d49befd228c111b1a8da5fce44e25abfaa65
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: cd180996434463959cd6f40a115902db358a3091
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657841"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194970"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Öğretici: SYNAPSE çalışma alanı kullanarak IntelliJ ile Apache Spark uygulamaları oluşturma
 
@@ -146,7 +147,7 @@ Bir Scala uygulaması oluşturduktan sonra, uzaktan çalıştırabilirsiniz.
     |Komut satırı bağımsız değişkenleri|Gerekirse ana sınıf için boşlukla ayrılmış bağımsız değişkenler girebilirsiniz.|
     |Başvurulan Jliler ve başvurulan dosyalar|Varsa, başvurulan jars ve dosyalar için yollar girebilirsiniz. Yalnızca ADLS 2. kümesini destekleyen Azure sanal dosya sistemindeki dosyalara da gidebilirsiniz. Daha fazla bilgi için: yapılandırma ve [kaynakları kümeye yükleme](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) [Apache Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) .|
     |İş yükleme depolaması|Ek seçenekleri açığa çıkarmak için genişletin.|
-    |Depolama Türü|Açılan listeden **karşıya yüklemek Için Azure blobu kullan** ' ı seçin.|
+    |Depolama Türü|Karşıya yüklemek için **Azure Blob 'U kullan** ' ı seçin veya açılan listeden **karşıya yüklemek üzere küme varsayılan depolama hesabını kullanın** .|
     |Depolama Hesabı|Depolama hesabınızı girin.|
     |Depolama anahtarı|Depolama anahtarınızı girin.|
     |Depolama kapsayıcısı|**Depolama hesabı** ve **depolama anahtarı** girildikten sonra, açılan listeden depolama kapsayıcınızı seçin.|
@@ -250,6 +251,7 @@ Yalnızca IntelliJ 2018,2 ve 2018,3 ' de desteklenir.
 
     |Özellik |Değer |
     |----|----|
+    |Ana sınıf adı| Ana sınıf adını seçin.| 
     |Spark havuzları|Uygulamanızı çalıştırmak istediğiniz Spark havuzlarını seçin.|
     ||
 

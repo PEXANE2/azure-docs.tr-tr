@@ -4,7 +4,6 @@ description: Bu öğreticide, Traffic Manager ' de öncelik trafiği yönlendirm
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: ca223a19ff7ddeae95878f941f3cf295664e62b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c541f8318bd7e75de7526e6b7a9e3a32462782d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76938721"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706758"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Öğretici: Traffic Manager 'de öncelik trafiği yönlendirme yöntemini yapılandırma
 
@@ -34,7 +33,7 @@ Hizmet yük devretmesi için ortak bir model, bir birincil hizmete trafik gönde
     1. **Trafik yönlendirme yöntemi ayarları**için trafik yönlendirme yönteminin **öncelikli**olduğunu doğrulayın. Aksi takdirde, açılan listeden **Öncelik** ' e tıklayın.
     2. Bu profildeki tüm uç noktaları için aynı **uç nokta izleyici ayarlarını** aşağıdaki şekilde ayarlayın:
         1. Uygun **Protokolü**seçin ve **bağlantı noktası** numarasını belirtin. 
-        2. **Yol** için eğik çizgi */* yazın. Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. Eğik çizgi "/", göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu gösterir.
+        2. **Yol** için eğik çizgi yazın */* . Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. Eğik çizgi "/", göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu gösterir.
         3. Sayfanın üst kısmında **Kaydet**' e tıklayın.
 5. **Ayarlar** bölümünde **uç noktalar**' a tıklayın.
 6. **Uç noktalar** dikey penceresinde, uç noktalarınız için öncelik sırasını gözden geçirin. **Öncelik** trafiği yönlendirme yöntemini seçtiğinizde, seçilen uç noktaların sırası önemlidir. Uç noktaların öncelik sırasını doğrulayın.  Birincil uç nokta en üstte. Görüntülenme sırasını iki kez kontrol edin. Tüm istekler ilk uç noktaya yönlendirilir ve Traffic Manager sağlıksız olduğunu algılarsa trafik otomatik olarak sonraki uç noktaya devreder. 

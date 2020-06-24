@@ -1,7 +1,7 @@
 ---
-title: Özel komutlar (Önizleme)-konuşma hizmeti
+title: Özel komutlar-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Sesli uygulamalar oluşturmaya yönelik bir çözüm olan özel komutlar (Önizleme) için özelliklere, özelliklere ve sınırlamalara genel bakış.
+description: Özel komutların özelliklerine, özelliklerine ve kısıtlamalarına genel bir bakış, ses uygulamaları oluşturmaya yönelik bir çözümdür.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,46 +10,49 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9954e4fe739c055a00c2e3bc52b73200a7824a43
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266024"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299118"
 ---
-# <a name="what-is-custom-commands-preview"></a>Özel komutlar (Önizleme) nedir?
+# <a name="what-is-custom-commands"></a>Özel Komutlar nedir?
 
 [Sesli yardımcılar](voice-assistants.md) gibi sesli uygulamalar kullanıcıları dinler ve yanıt olarak bir işlem gerçekleştirebilir, genellikle geri konuşuyor. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir. Cihazlar, konuşma SDK 'sının nesnesiyle birlikte yardımcılar 'a bağlanır `DialogServiceConnector` .
 
-**Özel komutlar (Önizleme)** , sesli uygulamalar oluşturmaya yönelik kolaylaştırılmış bir çözümdür. Birleşik bir yazma deneyimi, bir otomatik barındırma modeli ve görece daha düşük karmaşıklığa karşı [doğrudan hat konuşma](direct-line-speech.md)gibi diğer seçeneklere kıyasla daha fazla karmaşıklık sağlar. Ancak bu basitleştirme, esneklik açısından bir düşüş ile birlikte gelir. Bu nedenle, özel komutlar (Önizleme) görev tamamlama veya komut ve denetim senaryoları için idealdir. Nesnelerin İnterneti (IoT) ve gözetimsiz cihazlar için oldukça iyi eşleştirilir.
+**Özel komutlar** , sesli ilk etkileşim deneyimleri için iyileştirilmiş zengin sesli uygulama uygulamaları oluşturmayı kolaylaştırır. Birleştirilmiş bir yazma deneyimi, otomatik barındırma modeli ve görece daha düşük karmaşıklık sağlar. böylece, sesli komutlama senaryolarınız için en iyi çözümü oluşturmaya odaklanmanıza yardımcı olur.
 
-Karmaşık konuşma etkileşimi ve [sanal yardımcı çözümü ve kurumsal şablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) gibi diğer çözümlerle tümleştirme Için doğrudan hat konuşmayı kullanmanız önerilir.
+Özel komutlar, görev tamamlama veya komut ve denetim senaryoları için özellikle iyi eşleşen Nesnelerin İnterneti (IoT) cihazları, çevresel ve gözetimsiz cihazlar için idealdir. Bu örnek, perakende ve otomobil sektörler için çözümler içerir. Bu, konuklarınız için en iyi şirket içi sesli denetimli deneyimleri oluşturmanıza, deponuzdaki envanterin yönetiminde ve hareket sırasında oto içi işlevselliği denetlemenize olanak tanır.
 
-Özel komutlar (Önizleme) için iyi adaylarda, iyi tanımlanmış değişken kümelerine sahip sabit bir sözlük vardır. Örneğin, bir termostat denetimi gibi ana otomasyon görevleri idealdir.
+> [!TIP]
+> Konumundaki giriş sayfamızda örnek tanıtımlarımızı görüntüleyin [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) .
+
+Karmaşık konuşma uygulamaları oluşturmaya ilgileniyorsanız, [sanal yardımcı çözümünü](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)kullanarak bot çerçevesini denemeniz önerilir. Doğrudan hat konuşmayı kullanarak, herhangi bir bot Framework bot 'a ses ekleyebilirsiniz.
+
+Özel komutlara yönelik iyi adaylar, iyi tanımlanmış değişken kümelerine sahip sabit bir sözlük 'e sahiptir. Örneğin, bir termostat denetimi gibi ana otomasyon görevleri idealdir.
 
    ![Görev tamamlama senaryolarına örnekler](media/voice-assistants/task-completion-examples.png "görev tamamlama örnekleri")
 
-## <a name="getting-started-with-custom-commands-preview"></a>Özel komutlarla çalışmaya başlama (Önizleme)
+## <a name="getting-started-with-custom-commands"></a>Özel komutlarla çalışmaya başlama
 
-Bir ses uygulaması oluşturmak için özel komutları (Önizleme) kullanmanın ilk adımı, [bir konuşma aboneliği anahtarı almak](get-started.md) ve [konuşma Studio](https://speech.microsoft.com)'Daki özel komutlar (Önizleme) oluşturucuya erişim kullanmaktır. Buradan, yeni bir özel komut (Önizleme) uygulaması yazabilir ve yayımlayabilirsiniz. bu sayede, bir cihaz üzerindeki uygulama konuşma SDK 'sını kullanarak onunla iletişim kurabilir.
+Özel komutlarla amamız, tüm farklı teknolojileri öğrenmesini ve sesli komut uygulamanızı oluşturmaya odaklanmanızı sağlamak için bilişsel yükün azaltılmaktır. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı <span class="docon docon-navigate-external x-hidden-focus"></span> oluşturmak </a>için özel komutlar kullanmanın ilk adımı. Özel komutlar uygulamanızı konuşma Studio 'da yazabilir ve yayınladıktan sonra bir cihaz üzerindeki uygulamanın konuşma SDK 'sını kullanarak onunla iletişim kurabilme.
 
-   ![Özel komutlar için yazma akışı (Önizleme)](media/voice-assistants/custom-commands-flow.png "Özel komutlar (Önizleme) yazma akışı")
+#### <a name="authoring-flow-for-custom-commands"></a>Özel komutlar için yazma akışı
+   ![Özel komutlar için yazma akışı](media/voice-assistants/custom-commands-flow.png "Özel komutlar yazma akışı")
 
-Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hızlı başlangıç sunuyoruz.
+İlk özel komutlar uygulamasının kodu 10 dakikadan kısa bir süre içinde çalıştırmak için hızlı başlangıç Öğreticimizi izleyin.
 
-* [Özel komutlar (Önizleme) uygulaması oluşturma](quickstart-custom-speech-commands-create-new.md)
-* [Parametrelerle özel komutlar (Önizleme) uygulaması oluşturma](quickstart-custom-speech-commands-create-parameters.md)
-* [Konuşma SDK 'Sı ile özel komutlar (Önizleme) uygulamasına bağlanma, C #](quickstart-custom-speech-commands-speech-sdk.md)
+* [Özel Komutlar kullanarak ses yardımcısı oluşturma](quickstart-custom-commands-application.md)
 
-Hızlı başlangıçlarla işiniz bittiğinde, nasıl yapılacağını inceleyin.
+Hızlı başlangıç ile işiniz bittiğinde, özel bir komutlar uygulaması tasarlama, geliştirme, hata ayıklama, dağıtma ve tümleştirmeyle ilgili ayrıntılı adımlar için nasıl yapılır kılavuzlarımızı araştırıyoruz.
 
-- [Özel komut parametrelerine doğrulama ekleme](./how-to-custom-speech-commands-validations.md)
-- [Konuşma SDK 'Sı ile istemcideki komutları yerine getirmek](./how-to-custom-speech-commands-fulfill-sdk.md)
-- [Özel Komuta onay ekleme](./how-to-custom-speech-commands-confirmations.md)
-- [Özel Komuta tek adımlı düzeltme ekleme](./how-to-custom-speech-commands-one-step-correction.md)
+## <a name="building-voice-assistants-with-custom-commands"></a>Özel komutlarla sesli yardımcılar oluşturma
+> [!VIDEO https://www.youtube.com/embed/1zr0umHGFyc]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ücretsiz bir konuşma hizmeti abonelik anahtarı alın](get-started.md)
-* [Özel komutları denemek için konuşma Studio 'ya gidin](https://speech.microsoft.com)
+* [Örnekler için GitHub 'da sesli yardımcılar deponuzu görüntüleyin](https://aka.ms/speech/cc-samples)
+* [Özel komutları denemek için konuşma Studio 'ya gidin](https://speech.microsoft.com/customcommands)
 * [Konuşma SDK 'sını alın](speech-sdk.md)

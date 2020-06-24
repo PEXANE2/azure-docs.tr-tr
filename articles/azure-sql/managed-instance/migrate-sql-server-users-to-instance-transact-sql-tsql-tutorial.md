@@ -2,7 +2,7 @@
 title: T-SQL kullanarak SQL Server Windows kullanıcılarını ve gruplarını SQL yönetilen örneği 'ne geçirme
 description: Windows kullanıcılarını ve gruplarını bir SQL Server örneğindeki Azure SQL yönetilen örneği 'ne geçirme hakkında bilgi edinin
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: a050e38f037ee0ed2741cfa2e509e21fa9e1151d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310232"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708695"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Öğretici: T-SQL DDL sözdizimini kullanarak bir SQL Server örneğindeki Windows kullanıcılarını ve gruplarını Azure SQL yönetilen örneği 'ne geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84310232"
 
 Bu makale, T-SQL söz dizimini kullanarak SQL Server şirket içi Windows kullanıcılarınızı ve gruplarınızı Azure SQL yönetilen örneği 'ne geçirme sürecinde size kılavuzluk ediyor.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Kullanıcıları ALTER USER söz dizimini kullanarak el ile MI?
 > - Yeni eşlenen kullanıcılarla kimlik doğrulamasını test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullar geçerlidir:
 

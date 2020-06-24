@@ -1,5 +1,5 @@
 ---
-title: İstemci uygulamasını kodlayın
+title: Bir istemci uygulaması kodlama
 titleSuffix: Azure Digital Twins
 description: .NET (C#) SDK 'SıNı kullanarak bir istemci uygulaması için en düşük kodu yazma öğreticisi.
 author: cschormann
@@ -7,18 +7,21 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 7e057d6d973eedd3ac53fd7b2ea228470e9123d7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613371"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298404"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Leri ile kodlama
 
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
+
 Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti örneğiyle etkileşim kurmak üzere bir istemci uygulaması yazmak için yaygındır. Bu geliştirici odaklı öğreticide, [.net Için Azure IoT Digital ikizi istemci kitaplığı (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)kullanılarak Azure dijital TWINS hizmetine karşı programlama hakkında bir giriş sunulmaktadır. Bir C# Konsolu istemci uygulaması adımını sıfırdan başlayarak adım adım yazma konusunda size kılavuzluk eder.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -99,8 +102,8 @@ Uygulamanızın yapması gereken ilk şey, Azure dijital TWINS hizmetinde kimlik
 
 Kimlik doğrulamak için üç parça bilgi gerekir:
 * Aboneliğiniz için *Dizin (kiracı) kimliği*
-* Daha önce hizmet örneğini ayarlarken oluşturulan *uygulama (istemci) kimliği*
-* Hizmet örneğinizin *konak adı*
+* Daha önce Azure Digital TWINS örneğini ayarlarken oluşturulan *uygulama (istemci) kimliği*
+* Azure dijital TWINS örneğinizin *ana bilgisayar adı*
 
 >[!TIP]
 > *Dizin (kiracı) kimliğinizi*bilmiyorsanız bu komutu [Azure Cloud Shell](https://shell.azure.com)' de çalıştırarak edinebilirsiniz:
@@ -148,7 +151,7 @@ Azure dijital TWINS 'in hiç iç etki alanı sözlüğü yok. Ortamınızdaki Az
 
 Azure dijital TWINS çözümü oluşturmanın ilk adımı, bir DTDL dosyasında en az bir model tanımlıyor.
 
-Projenizi oluşturduğunuz dizinde *Samplemodel. JSON*adlı yeni bir *. JSON* dosyası oluşturun. Aşağıdaki dosya gövdesine yapıştırın: 
+Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js*adlı yeni bir *. JSON* dosyası oluşturun. Aşağıdaki dosya gövdesine yapıştırın: 
 
 ```json
 {
@@ -174,7 +177,7 @@ Projenizi oluşturduğunuz dizinde *Samplemodel. JSON*adlı yeni bir *. JSON* do
 > Bu öğretici için Visual Studio kullanıyorsanız, yeni oluşturulan JSON dosyasını seçmek ve Özellik denetçisindeki *Çıkış Dizinine Kopyala* özelliğini, *daha yeniyse* veya *her zaman*kopyalamak üzere ayarlamak isteyebilirsiniz. Bu, öğreticinin geri kalanı sırasında program 'yu **F5** ile çalıştırdığınızda, Visual Studio 'nun varsayılan yol ile json dosyasını bulmasını sağlayacaktır.
 
 > [!TIP] 
-> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://github.com/Azure-Samples/DTDL-Validator) vardır. Bu, [nasıl yapılır: modellerinizi ayrıştırma ve doğrulama](how-to-use-parser.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
+> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [nasıl yapılır: modellerinizi ayrıştırma ve doğrulama](how-to-use-parser.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
 
 Daha sonra, yeni oluşturduğunuz modeli Azure dijital TWINS örneğinize yüklemek için *program.cs* 'e daha fazla kod ekleyin.
 
@@ -216,8 +219,7 @@ Komut pencerenizde, programı şu komutla çalıştırın:
 ```cmd/sh
 dotnet run
 ```
-
-Şimdi, çağrının başarılı olduğunu belirten bir çıkış olmadığını fark edeceksiniz. 
+"Bir modeli karşıya yükle" çıktıda yazdırılacaktır, ancak modellerin başarıyla yüklenip yüklenmediğini göstermek için henüz çıktı yok.
 
 Modellerin gerçekten başarıyla karşıya yüklenip yüklenmediğini belirten bir yazdırma ekstresi eklemek için önceki bölümden sonra aşağıdaki kodu ekleyin:
 
@@ -291,24 +293,19 @@ using System.Text.Json;
 Ardından, `Main` Bu modele göre üç dijital TWINS oluşturmak ve başlatmak için yönteminin sonuna aşağıdaki kodu ekleyin.
 
 ```csharp
-// Initialize twin metadata
-var meta = new Dictionary<string, object>
-{
-    { "$model", "dtmi:com:contoso:SampleModel;1" },
-};
-// Initialize the twin properties
-var initData = new Dictionary<string, object>
-{
-    { "$metadata", meta },
-    { "data", "Hello World!" }
-};
+// Initialize twin data
+BasicDigitalTwin twinData = new BasicDigitalTwin();
+twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+twinData.CustomProperties.Add("data", $"Hello World!");
+
 string prefix="sampleTwin-";
 for(int i=0; i<3; i++) {
     try {
-        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(initData));
+        twinData.Id = $"{prefix}{i}";
+        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
         Console.WriteLine($"Created twin: {prefix}{i}");
     } catch(RequestFailedException rex) {
-        Console.WriteLine($"Create twin: {rex.Status}:{rex.Message}");  
+        Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
     }
 }
 ```
@@ -449,6 +446,7 @@ namespace minimal
             var typeList = new List<string>();
             string dtdl = File.ReadAllText("SampleModel.json");
             typeList.Add(dtdl);
+
             // Upload the model to the service
             try {
                 await client.CreateModelsAsync(typeList);
@@ -462,21 +460,16 @@ namespace minimal
                 Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
             }
 
-            // Initialize twin metadata
-            var meta = new Dictionary<string, object>
-            {
-                { "$model", "dtmi:com:contoso:SampleModel;1" },
-            };
-            // Initialize the twin properties
-            var initData = new Dictionary<string, object>
-            {
-                { "$metadata", meta },
-                { "data", "Hello World!" }
-            };
+            // Initialize twin data
+            BasicDigitalTwin twinData = new BasicDigitalTwin();
+            twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+            twinData.CustomProperties.Add("data", $"Hello World!");
+    
             string prefix="sampleTwin-";
             for(int i=0; i<3; i++) {
                 try {
-                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(initData));
+                    twinData.Id = $"{prefix}{i}";
+                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
                     Console.WriteLine($"Created twin: {prefix}{i}");
                 } catch(RequestFailedException rex) {
                     Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  

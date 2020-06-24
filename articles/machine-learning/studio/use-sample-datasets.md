@@ -5,17 +5,17 @@ description: Machine Learning Studio (klasik) ' de bulunan örnek modellerde kul
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 0ecce4db01217bc182687818af365dff334e7d10
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115500"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705908"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) içinde örnek veri kümelerini kullanma
 
@@ -142,7 +142,7 @@ KDD Fin2009 müşteri ilişkisi tahmin sınamasına ait Etiketler (<a href="http
 <tr>
   <td>CRM veri kümesi paylaşıldı</td>
   <td>
-Bu veriler, KDD Kupa 2009 müşteri ilişkisi tahmin Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. Data. zip</a>) ' den gelir.
+Bu veriler, KDD Fin2009 müşteri ilişkisi tahmin Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>) ' den gelir.
 <p></p>
 Veri kümesi, Fransız telekomünikasyon şirketi turuncu 'dan 50K müşterileri içerir. Her müşterinin 230 anonim özelliği vardır, bunlar sayısal ve 40 kategorik olan 190 ' dir. Özellikler çok seyrek.
   </td>
@@ -359,48 +359,48 @@ Bazı şirketlerde bir makalenin bulunamadığını, bu nedenle kayıt sayısın
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
   <td>
 Veri kümesi, müşteri verileri ve doğrudan posta kampanyasına olan yanıtları hakkında göstergeler içerir. Her satır bir müşteriyi temsil eder. Veri kümesi, Kullanıcı demografları ve geçmiş davranışı ve üç etiket sütunu (ziyaret, dönüştürme ve harcamayı) hakkında dokuz özellik içerir.  Web sitesini ziyaret eden bir müşterinin pazarlama kampanyadan sonra ziyaret edildiğini gösteren bir ikili sütundur. Dönüştürme bir müşterinin bir şeyi satın aldığını gösterir. Harcama, harcanan tutardır.  Veri kümesi, Minetatdata e-posta Analizi ve veri araştırma sınaması için Kevin Teplstrom tarafından kullanılabilir hale getirilir.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
 RCV1-v2 Rebilgisayarlarda Haberler veri kümesindeki test örneklerinin özellikleri. Veri kümesinde, 50.000 1k haber makaleleri ve kimlikleri (veri kümesinin ilk sütunu) birlikte bulunur. Her makale simgeleştirilmiş, soluk ve stemmed 'dir. Veri kümesi David tarafından kullanılabilir hale getirilir. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
 RCV1-v2 yeniden bilgisayarları \ \ çalışanlar haber veri kümesindeki eğitim örneklerinin özellikleri. Veri kümesinde, kendi kimlikleri (veri kümesinin ilk sütunu) ile birlikte 23K haberleri makaleleri vardır. Her makale simgeleştirilmiş, soluk ve stemmed 'dir. Veri kümesi David tarafından kullanılabilir hale getirilir. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
-KDD Fin1999 bilgi bulma ve veri araştırma araçları yarışmasının (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>) veri kümesi.
+KDD Fin1999 bilgi bulma ve veri araştırma araçları yarışmasının (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>) veri kümesi.
 <p></p>
-Veri kümesi, Azure Blob depolama (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a>) ' de indirildi ve depolandı ve hem eğitim hem de test veri kümelerini içerir. Eğitim veri kümesinde, Etiketler dahil olmak üzere yaklaşık 126K satır ve 43 sütun vardır. Üç sütun etiket bilgisinin bir parçasıdır ve sayısal ve dize/kategorik özelliklerden oluşan 40 sütun, modeli eğitmek için kullanılabilir. Test verilerinde, eğitim verileriyle aynı 43 sütunlu, yaklaşık 22.5 K test örnekleri vardır.
+Veri kümesi, Azure Blob depolama (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) ' de indirildi ve depolandı ve hem eğitim hem de test veri kümelerini içerir. Eğitim veri kümesinde, Etiketler dahil olmak üzere yaklaşık 126K satır ve 43 sütun vardır. Üç sütun etiket bilgisinin bir parçasıdır ve sayısal ve dize/kategorik özelliklerden oluşan 40 sütun, modeli eğitmek için kullanılabilir. Test verilerinde, eğitim verileriyle aynı 43 sütunlu, yaklaşık 22.5 K test örnekleri vardır.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">RCV1-v2. konular. qrels. csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
 RCV1-v2 Rebilgisayarlarda Haberler veri kümesindeki haber makalelerine yönelik konu atamaları. Bir haber makalesi, birkaç konuya atanabilir. Her satırın biçimi " &lt; Konu adı &gt; &lt; belge kimliği &gt; 1" dir. Veri kümesi, 2.6/konu atamalarını içerir. Veri kümesi David tarafından kullanılabilir hale getirilir. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Bu veriler, KDD Fin2010 öğrenci performansı değerlendirme zorluğuyla (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">öğrenci performansı değerlendirmesi</a>) gelir. Kullanılan veriler Algebra_2008_2009 eğitim kümesidir (Stamper, J., Niculescu-mizil, A., Riur, S., Gordon, G.J., & Koednik, K.R. (2010). Algeköşeli ı 2008-2009. KDD Fin2010 eğitim veri madenciliği zorluğuyla sınama veri kümesi. <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">Downloads. jsp</a>' de bulun.
+Bu veriler, KDD Fin2010 öğrenci performansı değerlendirme zorluğuyla (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">öğrenci performansı değerlendirmesi</a>) gelir. Kullanılan veriler Algebra_2008_2009 eğitim kümesidir (Stamper, J., Niculescu-mizil, A., Riur, S., Gordon, G.J., & Koednik, K.R. (2010). Algeköşeli ı 2008-2009. KDD Fin2010 eğitim veri madenciliği zorluğuyla sınama veri kümesi. <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>'de bulun.
 <p></p>
-Veri kümesi, Azure Blob depolama (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) ' de indirildi ve depolandı ve bir öğrenci eğitim sisteminden günlük dosyaları içeriyor. Sağlanan özellikler sorun KIMLIĞI ve kısa açıklaması, öğrenci KIMLIĞI, zaman damgası ve sorunu doğru şekilde çözmeden önce kaç tane deneme yaptığını içerir. Özgün veri kümesinde 8.9 d kayıtları vardır; Bu veri kümesi, ilk 100K satırına örneklenir. Veri kümesinde, farklı türlerde 23 sekmeyle ayrılmış sütun vardır: sayısal, kategorik ve zaman damgası.
+Veri kümesi, Azure Blob depolama (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) olarak indirildi ve depolandı ve bir öğrenci eğitim sisteminden günlük dosyaları içeriyor. Sağlanan özellikler sorun KIMLIĞI ve kısa açıklaması, öğrenci KIMLIĞI, zaman damgası ve sorunu doğru şekilde çözmeden önce kaç tane deneme yaptığını içerir. Özgün veri kümesinde 8.9 d kayıtları vardır; Bu veri kümesi, ilk 100K satırına örneklenir. Veri kümesinde, farklı türlerde 23 sekmeyle ayrılmış sütun vardır: sayısal, kategorik ve zaman damgası.
   </td>
 </tr>
 

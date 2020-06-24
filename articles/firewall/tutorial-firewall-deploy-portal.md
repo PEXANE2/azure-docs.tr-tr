@@ -9,11 +9,11 @@ ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239577"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687200"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Öğretici: Azure portalı kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğreticide kolay dağıtım için üç alt ağa sahip tek bir basitleştiri
 
 ![Öğretici ağı altyapısı](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Test amaçlı ağ ortamı oluşturma
@@ -61,7 +61,7 @@ Kaynak grubu, bu öğreticideki tüm kaynakları içerir.
 3. **Kaynak grubu adı**için *Test-FW-RG*yazın.
 4. **Abonelik** bölümünde aboneliğinizi seçin.
 5. **Kaynak grubu konumu** bölümünde bir konum seçin. Oluşturduğunuz diğer tüm kaynaklar aynı konumda olmalıdır.
-6. **Oluştur**’u seçin.
+6. **Oluştur**'u seçin.
 
 ### <a name="create-a-vnet"></a>Sanal ağ oluşturma
 
@@ -71,7 +71,7 @@ Bu sanal ağda üç alt ağ bulunacaktır.
 > AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
-1. **Ağ** > **sanal ağını**seçin.
+1. **Ağ**  >  **sanal ağını**seçin.
 1. **Ad** alanına **Test-FW-VN** yazın.
 1. **Adres alanı** için **10.0.0.0/16** yazın.
 1. **Abonelik** bölümünde aboneliğinizi seçin.
@@ -87,7 +87,7 @@ Bir sonraki adımda atlama sunucusu için alt ağlar ve iş yükü sunucuları i
 
 1. Azure portal menüsünde, **kaynak grupları** ' nı seçin veya herhangi bir sayfadan *kaynak gruplarını* arayıp seçin. Ardından **Test-FW-RG**öğesini seçin.
 2. **Test-FW-VN** sanal ağını seçin.
-3. **Alt ağlar** > **+ alt ağ**' ı seçin.
+3. **Alt ağlar**  >  **+ alt ağ**' ı seçin.
 4. **Ad** alanına **Workload-SN** yazın.
 5. **Adres aralığı** için **10.0.2.0/24** yazın.
 6. **Tamam**’ı seçin.
@@ -140,9 +140,9 @@ Güvenlik duvarını sanal ağa dağıtın.
 
    |Ayar  |Değer  |
    |---------|---------|
-   |Abonelik     |\<aboneliğiniz\>|
+   |Abonelik     |\<your subscription\>|
    |Kaynak grubu     |**Test-ILT-RG** |
-   |Adı     |**Test-FW01**|
+   |Name     |**Test-FW01**|
    |Konum     |Önceden kullandığınız konumu seçin|
    |Bir sanal ağ seçin     |**Mevcut olanı kullan**: **Test-FW-vn**|
    |Genel IP adresi     |**Yeni Ekle**. Genel IP adresinin türü Standart SKU olmalıdır.|
@@ -160,15 +160,15 @@ Güvenlik duvarını sanal ağa dağıtın.
 
 1. Azure portal menüsünde **tüm hizmetler** ' i seçin veya herhangi bir sayfadan *tüm hizmetler* ' i arayın ve seçin.
 2. **Ağ**altında, **Rota tabloları**' nı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**'yi seçin.
 4. **Ad** alanına **Firewall-route** yazın.
 5. **Abonelik** bölümünde aboneliğinizi seçin.
 6. **Kaynak grubu**için **Test-FW-RG**öğesini seçin.
 7. **Konum** alanında önceden kullandığınız konumu seçin.
-8. **Oluştur**’u seçin.
+8. **Oluştur**'u seçin.
 9. **Yenile**' yi seçin ve ardından **güvenlik duvarı-rota** yol tablosunu seçin.
 10. **Alt ağları** seçip **ilişkilendir**' i seçin.
-11. **Sanal ağ** > **sınaması-İlt-vn**öğesini seçin.
+11. **Sanal ağ**  >  **sınaması-İlt-vn**öğesini seçin.
 12. **Alt ağ**Için **Iş yükü-sn**' ı seçin. Bu rota için yalnızca **Iş yükü-sn** alt ağını seçtiğinizden emin olun, aksi takdirde güvenlik duvarınız doğru çalışmaz.
 
 13. **Tamam**’ı seçin.
@@ -197,7 +197,7 @@ Bu, www.google.com 'e giden erişime izin veren uygulama kuralıdır.
 10. **Kaynak**için **10.0.2.0/24**yazın.
 11. **Protokol:bağlantı noktası** alanına **http, https** yazın.
 12. **Hedef FQDN 'ler**için **www.Google.com** yazın
-13. **Add (Ekle)** seçeneğini belirleyin.
+13. **Ekle**'yi seçin.
 
 Azure Güvenlik Duvarı'nda varsayılan olarak izin verilen altyapı FQDN'leri için yerleşik bir kural koleksiyonu bulunur. Bu FQDN'ler platforma özgüdür ve başka amaçlarla kullanılamaz. Daha fazla bilgi için bkz. [Altyapı FQDN'leri](infrastructure-fqdns.md).
 
@@ -218,7 +218,7 @@ Bu, bağlantı noktası 53’deki (DNS) iki IP adresine giden erişime izin vere
 
    Bunlar, CenturyLink tarafından çalıştırılan genel DNS sunucularıdır.
 1. **Hedef Bağlantı Noktaları** için **53** yazın.
-2. **Add (Ekle)** seçeneğini belirleyin.
+2. **Ekle**'yi seçin.
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>**Srv-Work** ağ arabiriminin birincil ve ikincil DNS adresini değiştirme
 
@@ -239,7 +239,7 @@ Bu öğreticide sınama amacıyla sunucunun birincil ve ikincil DNS adreslerini 
 1. Azure portalda **Srv-Work** sanal makinesinin ağ ayarlarını gözden geçirin ve özel IP adresini not edin.
 2. Uzak bir masaüstünü **SRV-atma** sanal makinesine bağlayın ve oturum açın. Buradan, **SRV iş** özel IP adresine bir Uzak Masaüstü bağlantısı açın.
 3. Internet Explorer'ı açın ve https://www.google.com adresine gidin.
-4. Internet Explorer güvenlik uyarıları 'nda **Tamam** > **Kapat** ' ı seçin.
+4. **OK**  >  Internet Explorer güvenlik uyarıları 'nda Tamam**Kapat** ' ı seçin.
 
    Google giriş sayfasını görmeniz gerekir.
 

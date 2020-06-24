@@ -8,11 +8,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239843"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691110"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Şirket içi Hyper-V sunucularını Azure’a olağanüstü durum kurtarma için hazırlama
 
@@ -84,8 +84,8 @@ Yük devretme senaryosu sırasında, çoğaltılan şirket içi ağınıza bağl
 
 Yük devretmeden sonra RDP kullanarak Windows VM 'lerine bağlanmak için aşağıdaki gibi erişime izin verin:
 
-1. İnternet üzerinden erişmek için, yük devretmeden önce şirket içi VM’de RDP’yi etkinleştirin. **Genel** profil için TCP ve UDP kurallarının eklendiğinden ve tüm profiller için **Windows Güvenlik Duvarı** > 'nda**izin verilen uygulamalarda** RDP 'ye izin verildiğinden emin olun.
-2. Siteden siteye VPN üzerinden erişmek için, şirket içi makinede RDP’yi etkinleştirin. **Etki alanı ve özel** ağlar için **Windows Güvenlik Duvarı** -> **izin verilen uygulamalar ve özelliklerde** RDP 'ye izin verilmelidir.
+1. İnternet üzerinden erişmek için, yük devretmeden önce şirket içi VM’de RDP’yi etkinleştirin. **Genel** profil için TCP ve UDP kurallarının eklendiğinden ve tüm profiller için **Windows Güvenlik Duvarı**'nda  >  **izin verilen uygulamalarda** RDP 'ye izin verildiğinden emin olun.
+2. Siteden siteye VPN üzerinden erişmek için, şirket içi makinede RDP’yi etkinleştirin. **Windows Firewall**  ->  **Etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve özelliklerde** RDP 'ye izin verilmelidir.
    İşletim sisteminin SAN ilkesinin **OnlineAll** olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135). Bir yük devretme tetiklediğinizde VM’de bekleyen Windows güncelleştirmelerinin olmaması gerekir. Varsa, güncelleştirme tamamlanana kadar sanal makinede oturum açamazsınız.
 3. Yük devretmeden sonra Windows Azure VM’sinde, VM’nin bir ekran görüntüsünü görmek için **Önyükleme tanılaması**’nı kontrol edin. Bağlanamıyorsanız, VM’nin çalıştığından emin olun ve şu [sorun giderme ipuçlarını](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) gözden geçirin.
 
@@ -94,5 +94,5 @@ Yük devretmeden sonra, çoğaltılan şirket içi VM ile aynı IP adresini veya
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hyper-v VM 'leri](tutorial-hyper-v-to-azure.md)
-> için Azure 'da olağanüstü durum kurtarmayı ayarlama[VMM bulutlarındaki Hyper-v VM 'leri için Azure 'da olağanüstü durum kurtarmayı ayarlama](tutorial-hyper-v-vmm-to-azure.md)
+> [Hyper-V VM 'leri Için Azure 'da olağanüstü durum kurtarmayı ayarlama](tutorial-hyper-v-to-azure.md) 
+>  [VMM bulutlarındaki Hyper-V VM 'leri Için Azure 'da olağanüstü durum kurtarmayı ayarlama](tutorial-hyper-v-vmm-to-azure.md)

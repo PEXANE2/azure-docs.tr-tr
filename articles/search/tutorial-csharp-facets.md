@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 7d91348b727c1c43f010ec9f60ae9abd33978ce8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780598"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257525"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak çok yönlü gezinti ekleme
 
@@ -21,12 +21,12 @@ Kullanıcılara, aramasına odaklanmak için kullanılacak bir bağlantı kümes
 
 Bu öğretici, C# öğreticisinde oluşturulan sayfalama projesi üzerinde oluşturulur [: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md) öğreticisi.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Model özelliklerini _ıscetable_ olarak ayarlama
 > * Uygulamanıza model gezintisi ekleyin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -109,7 +109,7 @@ Görünüme model listelerini geçirmek için denetleyiciye ihtiyacımız var. A
 
 Ana denetleyicinin, yeni bir eylem, **model**ve var olan **Dizin** ve **sayfa** eylemlerine yönelik güncelleştirmelerin yanı sıra **runqueryasync** yöntemine yönelik güncelleştirmeler olması gerekir.
 
-1. Giriş denetleyicisi dosyasını açın ve **using** ifadesini ekleyerek **liste&lt;dizesi&gt; ** yapısını etkinleştirin.
+1. Giriş denetleyicisi dosyasını açın ve **using** Ifadesini ekleyerek **liste &lt; dizesi &gt; ** yapısını etkinleştirin.
 
     ```cs
     using System.Collections.Generic;
@@ -344,7 +344,7 @@ Görünüm bazı önemli değişiklikler gerektirecektir.
     }
     ```
 
-2. Görünüm için çıktıyı, sol taraftaki model listelerini ve sağdaki sonuçları doğru şekilde hizalamak için bir tabloya düzenledik. İndex. cshtml dosyasını açın. HTML &lt;gövde&gt; etiketlerinin tüm içeriğini aşağıdaki kodla değiştirin.
+2. Görünüm için çıktıyı, sol taraftaki model listelerini ve sağdaki sonuçları doğru şekilde hizalamak için bir tabloya düzenledik. İndex. cshtml dosyasını açın. HTML &lt; gövde etiketlerinin tüm içeriğini &gt; aşağıdaki kodla değiştirin.
 
     ```cs
     <body>

@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238905"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699626"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure’da olağanüstü durum kurtarma tatbikatı çalıştırma
 
@@ -69,7 +69,7 @@ Yük devretme testi çalıştırdığınızda şunlar olur:
 
 Yük devretme testini aşağıdaki gibi çalıştırın:
 
-1. **Ayarlar** > **çoğaltılan öğeler**' de VM > **+ Yük devretme testi**' ne tıklayın.
+1. **Ayarlar**  >  **çoğaltılan öğeler**' de VM > **+ Yük devretme testi**' ne tıklayın.
 2. Bu öğretici için **Son işlenen** kurtarma noktasını seçin. Bu işlem VM yükünü zamandaki en son kullanılabilir noktaya devreder. Zaman damgası gösterilir. Bu seçenekte, verileri işlemek için zaman harcanmadığından düşük bir RTO (kurtarma süresi hedefi) sağlanır.
 3. **Yük Devretme Testi** bölümünde, yük devretme gerçekleştikten sonra Azure VM’lerinin bağlanacağı hedef Azure ağını seçin.
 4. Yük devretmeyi başlatmak için **Tamam**'a tıklayın. Sanal makine özelliklerini açmak için sanal makineye tıklayarak ilerleme durumunu izleyebilirsiniz. Ya da kasa adı > **Ayarlar** > **İşler** >
@@ -87,6 +87,6 @@ Yük devretmeden sonra RDP/SSH kullanarak Azure VM 'lerine bağlanmak istiyorsan
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [VMware VM 'leri için yük devretme ve yeniden çalışma çalıştırma,](vmware-azure-tutorial-failover-failback.md)
-> [Hyper-V VM 'leri](hyper-v-azure-failover-failback-tutorial.md)
-> için yük devretme ve yeniden çalışma çalıştırma,[fiziksel makinelerde yük devretme ve yeniden](physical-to-azure-failover-failback.md) çalışma
+> [VMware VM 'leri için yük devretme ve yeniden çalışma çalıştırma](vmware-azure-tutorial-failover-failback.md) 
+>  [Hyper-V VM 'leri için yük devretme ve yeniden çalışma çalıştırma](hyper-v-azure-failover-failback-tutorial.md) 
+>  [Fiziksel makineler için yük devretme ve yeniden çalışma çalıştırma](physical-to-azure-failover-failback.md)
