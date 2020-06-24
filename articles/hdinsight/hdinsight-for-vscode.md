@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 5c429da761c39ae6828eb5d79809b687e8a76bd3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a20cbf14ea2aa2475f25236615b85d6697ce252b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609106"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704871"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -21,7 +21,7 @@ Visual Studio Code için Apache Spark & Hive araçlarını kullanmayı öğrenin
 
 Spark & Hive araçları, Visual Studio Code tarafından desteklenen platformlar üzerine yüklenebilir. Farklı platformlar için aşağıdaki önkoşullara göz önünde edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
@@ -140,7 +140,7 @@ Visual Studio Code kümelerinize komut dosyaları gönderebilmeniz için önce A
 
 4. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
 
-5. Geçerli betik dosyası için varsayılan küme olarak bir küme seçin. Araçlar öğesini otomatik olarak güncelleştirir **. VSCode\settings.json** yapılandırma dosyası:
+5. Geçerli betik dosyası için varsayılan küme olarak bir küme seçin. Araçlar yapılandırma dosyasında **.VSCode\settings.js** otomatik olarak güncelleştirir:
 
    ![Varsayılan küme yapılandırmasını ayarla](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
@@ -249,6 +249,10 @@ Araç **Spark SQL** sorgusunu da destekler:
    ![ipynb sonuçlarını Çalıştır](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
 
+> [!NOTE]
+>
+>MS-Python >= 2020.5.78807 sürümü bu extentıon üzerinde desteklenmiyor, [bilinen bir sorundur](#known-issues).
+
 ## <a name="submit-pyspark-batch-job"></a>PySpark Batch işini gönder
 
 1. Daha önce, kapatılmışsa, [daha önce](#open-a-work-folder)tartışılan **hdex,** klasörünü yeniden açın.  
@@ -290,16 +294,16 @@ Bir Python işi gönderdikten sonra, gönderim günlükleri Visual Studio Code *
 
 ## <a name="apache-livy-configuration"></a>Apache Livy yapılandırması
 
-[Apache Livy](https://livy.incubator.apache.org/) yapılandırması desteklenir. İçinde yapılandırabilirsiniz **. Çalışma alanı klasöründeki VSCode\settings.json** dosyası. Şu anda, Livy yapılandırma yalnızca Python betiğini destekliyor. Daha fazla bilgi için bkz. [Livy Benioku](https://github.com/cloudera/livy/blob/master/README.rst ).
+[Apache Livy](https://livy.incubator.apache.org/) yapılandırması desteklenir. Bunu, çalışma alanı klasöründeki **.VSCode\settings.jsdosya üzerinde** yapılandırabilirsiniz. Şu anda, Livy yapılandırma yalnızca Python betiğini destekliyor. Daha fazla bilgi için bkz. [Livy Benioku](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**Livy yapılandırması tetiklenmesi**
 
 Yöntem 1  
 1. Menü çubuğundan **Dosya**  >  **tercihleri**  >  **ayarları**' na gidin.
 2. **Arama ayarları** kutusuna **HDInsight Iş gönderimi: Livy conf**yazın.  
-3. İlgili arama sonucu için **Settings. JSON Içinde Düzenle '** yi seçin.
+3. İlgili arama sonucu için **üzerinde settings.jsDüzenle** ' yi seçin.
 
-Yöntem 2 bir dosya gönderir ve `.vscode` klasörün otomatik olarak iş klasörüne eklendiğinden emin olun. **. Vscode\settings.JSON**öğesini seçerek Livy yapılandırmasını görebilirsiniz.
+Yöntem 2 bir dosya gönderir ve `.vscode` klasörün otomatik olarak iş klasörüne eklendiğinden emin olun. **.vscode\settings.jsaçık '** i seçerek Livy yapılandırmasını görebilirsiniz.
 
 + Proje ayarları:
 
@@ -448,9 +452,9 @@ Data Lake Storage 2. kullanarak bir HDInsight kümesine iş gönderme. Azure hes
 Menü çubuğundan **Görünüm**  >  **komut paleti**' ne gidin ve **Azure: oturumu Kapat**' ı girin.
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
-### <a name="python-on-2020580290-version-is-not-supported-on-this-extention"></a>2020.5.80290 Version üzerinde Python bu uzantı üzerinde desteklenmiyor 
+### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>MS-Python >= 2020.5.78807 sürümü bu uzantı üzerinde desteklenmiyor 
 
-"Jupyter not defteriyle bağlantı kurulamadı." , Python sürüm 2020.5.80290 için bilinen bir sorundur. Bu sorundan kaçınmak için kullanıcıların MS-Python **2020.4.76186** sürümünü kullanması önerilir.
+"Jupyter not defteriyle bağlantı kurulamadı." Python sürümü >= 2020.5.78807 için bilinen bir sorundur. Bu sorundan kaçınmak için kullanıcıların MS-Python **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** sürümünü kullanması önerilir.
 
 ![bilinen sorunlar](./media/hdinsight-for-vscode/known-issue.png)
 

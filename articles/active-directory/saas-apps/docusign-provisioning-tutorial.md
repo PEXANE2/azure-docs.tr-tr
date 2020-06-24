@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c0a6302383240f65d900369128337a41a13ecfa
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77058187"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805080"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için DocuSign 'ı yapılandırma
 
@@ -77,6 +77,9 @@ Bu bölümün amacı, Kullanıcı hesaplarının Active Directory Kullanıcı ta
     a. **Yönetici Kullanıcı adı** metin kutusuna Docusign.com atanmış **Sistem Yöneticisi** profiline sahip bir Docusign hesap adı yazın.
    
     b. **Yönetici parolası** metin kutusuna bu hesabın parolasını yazın.
+
+> [!NOTE]
+> Hem SSO hem de Kullanıcı sağlama kurulumu ise, sağlama için kullanılan yetkilendirme kimlik bilgilerinin hem SSO hem de Kullanıcı adı/parola ile çalışacak şekilde yapılandırılması gerekir.
 
 1. Azure portal, Azure AD 'nin DocuSign uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın.
 

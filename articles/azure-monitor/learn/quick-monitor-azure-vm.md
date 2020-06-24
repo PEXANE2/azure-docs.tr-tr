@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 12616fbc80468d35ebb8b0bc5cd12bfd5871e788
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79503660"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805113"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Azure sanal makinesini Izleme
 [Azure izleyici](../overview.md) , Azure sanal makinelerinden oluşturulan verilerin veri toplamaya başlar. Bu hızlı başlangıçta, bir Azure sanal makinesi için otomatik olarak toplanan verileri ve Azure portal nasıl görüntüleyekullanacağınızı gösteren kısa bir adım adım bulacaksınız. Daha sonra VM 'niz için [VM'ler için Azure izleyici](../insights/vminsights-overview.md) ETKINLEŞTIREREK, sanal makine üzerindeki aracıların süreçler ve bunların bağımlılıkları dahil Konuk işletim sisteminden veri toplayıp analiz etmesine olanak sağlar.
@@ -48,7 +48,7 @@ Konak VM 'si için ölçümler ve etkinlik günlükleri toplanırken, Konuk işl
 
 6. SANAL makinelerinizi aboneliğinizdeki eklendi olan diğer VM 'lerle görürsünüz. Aboneliğinizdeki eklendi olmayan sanal makineleri görüntülemek istiyorsanız **izlenmiyor** sekmesini seçin.
 
-    ![Kullanmaya başlayın](media/quick-monitor-azure-vm/get-started.png)
+    ![başlarken](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma
@@ -65,7 +65,7 @@ Yeni bir Log Analytics çalışma alanı oluşturduğunuzda, günlükleri toplam
 
 2. **Veri**’yi seçin ve ardından **Windows Olay Günlükleri**’ni seçin.
 
-3. Günlüğün adını yazarak bir olay günlüğü ekleyin.  **System** yazın ve ardından artı işaretini **+** seçin.
+3. Günlüğün adını yazarak bir olay günlüğü ekleyin.  **System** yazın ve ardından artı işaretini seçin **+** .
 
 4. Tabloda, **Hata** ve **Uyarı** önem derecelerini işaretleyin.
 
@@ -75,7 +75,7 @@ Yeni bir Log Analytics çalışma alanı oluşturduğunuzda, günlükleri toplam
 
 1. **Syslog**’u seçin.  
 
-2. Günlüğün adını yazarak bir olay günlüğü ekleyin.  **Syslog** yazın ve ardından artı işaretini **+** seçin.  
+2. Günlüğün adını yazarak bir olay günlüğü ekleyin.  **Syslog** yazın ve ardından artı işaretini seçin **+** .  
 
 3. Tabloda, önem derecesi **bilgileri**, **bildirim** ve **hata ayıklama**seçimlerini kaldırın. 
 
@@ -83,13 +83,13 @@ Yeni bir Log Analytics çalışma alanı oluşturduğunuzda, günlükleri toplam
 
 ## <a name="view-data-collected"></a>Toplanan verileri görüntüleyin
 
-7. Sanal makinenize tıklayın ve sonra **performans** sekmesini seçin. Bu, sanal makinenizin Konuk işletim sisteminden toplanan bir grup performans sayacını gösterir. Daha fazla sayaç görüntülemek için aşağı kaydırın ve ortalama ve yüzdebirlik değeri farklı zamanlarda görüntülemek için fareyi grafiğin üzerine taşıyın.
+7. Sanal makinenize tıklayın ve sonra **izleme** menüsü **öngörüleri** kutucuğunun altındaki **performans** sekmesini seçin. Bu, sanal makinenizin Konuk işletim sisteminden toplanan bir grup performans sayacını gösterir. Daha fazla sayaç görüntülemek için aşağı kaydırın ve ortalama ve yüzdebirlik değeri farklı zamanlarda görüntülemek için fareyi grafiğin üzerine taşıyın.
 
     ![Performans](media/quick-monitor-azure-vm/performance.png)
 
 9. Sanal makinede çalışan işlemlerin yanı sıra bağımlılıklarını gösteren haritalar özelliğini açmak için **eşle** ' yi seçin. Henüz açık değilse Özellik bölmesini açmak için **Özellikler** ' i seçin.
 
-    ![Eşleme](media/quick-monitor-azure-vm/map.png)
+    ![Harita](media/quick-monitor-azure-vm/map.png)
 
 11. Sanal makineniz için süreçler ' ı genişletin. Ayrıntılarını görüntülemek ve bağımlılıklarını vurgulamak için işlemlerden birini seçin.
 

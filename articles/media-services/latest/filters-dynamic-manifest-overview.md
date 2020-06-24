@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186209"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705211"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Dinamik Paketleyiciyi kullanarak bildirimlerinizi filtreleyin
 
@@ -36,13 +36,13 @@ Akışlarınızda farklı filtreler belirtme özelliği, hedef cihazlarınızda 
 
 ## <a name="overview-of-manifests"></a>Bildirimlere genel bakış
 
-Azure Media Services, HLS, MPEG DASH ve Kesintisiz Akış protokollerini destekler. [Dinamik paketleme](dynamic-packaging-overview.md)kapsamında, akış istemci bildirimleri (HLS ana çalma LISTESI, Dash medya sunusu AÇıKLAMASı [MPD] ve kesintisiz akış), URL 'deki biçim seçicisine göre dinamik olarak oluşturulur. Daha fazla bilgi için bkz. [ortak isteğe bağlı iş akışında](dynamic-packaging-overview.md#delivery-protocols)teslim protokolleri.
+Azure Media Services, HLS, MPEG DASH ve Kesintisiz Akış protokollerini destekler. [Dinamik paketleme](dynamic-packaging-overview.md)kapsamında, akış istemci bildirimleri (HLS ana çalma LISTESI, Dash medya sunusu AÇıKLAMASı [MPD] ve kesintisiz akış), URL 'deki biçim seçicisine göre dinamik olarak oluşturulur. Daha fazla bilgi için bkz. [ortak isteğe bağlı iş akışında](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery)teslim protokolleri.
 
 ### <a name="get-and-examine-manifest-files"></a>Bildirim dosyalarını al ve incele
 
 Akışlarınızın hangi izlemelerinizin (canlı veya video isteğe bağlı [VOD]) dinamik olarak oluşturulan bir bildirime eklenmesi gereken filtre izleme özelliği koşullarını bir liste olarak belirtirsiniz. İzlemelerin özelliklerini almak ve incelemek için öncelikle Kesintisiz Akış bildirimini yüklemeniz gerekir.
 
-[.NET öğreticisi Ile karşıya yükleme, kodlama ve akış dosyaları](stream-files-tutorial-with-api.md#get-streaming-urls) , .net Ile akış URL 'lerinin nasıl oluşturulacağını gösterir. Uygulamayı çalıştırırsanız, URL 'Lerden biri Kesintisiz Akış bildirimine işaret eder: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`.<br/> URL 'YI kopyalayıp bir tarayıcının adres çubuğuna yapıştırın. Dosya indirilecek. Bunu herhangi bir metin düzenleyicisinde açabilirsiniz.
+[.NET öğreticisi Ile karşıya yükleme, kodlama ve akış dosyaları](stream-files-tutorial-with-api.md#get-streaming-urls) , .net Ile akış URL 'lerinin nasıl oluşturulacağını gösterir. Uygulamayı çalıştırırsanız, URL 'Lerden biri Kesintisiz Akış bildirimine işaret eder: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest` .<br/> URL 'YI kopyalayıp bir tarayıcının adres çubuğuna yapıştırın. Dosya indirilecek. Bunu herhangi bir metin düzenleyicisinde açabilirsiniz.
 
 REST örneği için bkz. [rest ile dosyaları karşıya yükleme, kodlama ve akış](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls).
 
@@ -146,7 +146,7 @@ Daha fazla bilgi için [Bu blog gönderisine](https://azure.microsoft.com/blog/a
 - Müşterilerin bildirimi el ile indirmesi ve tam başlangıç zamanı damgası ve zaman ölçeğini ayrıştırması gerekir.
 
     - Bir varlık içindeki izlemelerin özelliklerini öğrenmek için [bildirim dosyasını alın ve inceleyin](#get-and-examine-manifest-files).
-    - Varlık filtresi zaman damgası özelliklerini ayarlamak için formül: <br/>StartTimestamp = &lt;beklenen bildirimde&gt; +  &lt;başlangıç zamanı saniye&gt; cinsinden filtre başlangıç zamanı * zaman ölçeği
+    - Varlık filtresi zaman damgası özelliklerini ayarlamak için formül: <br/>StartTimestamp = &lt; beklenen bildirimde başlangıç zamanı &gt;  +   &lt; saniye cinsinden filtre başlangıç zamanı &gt; * zaman ölçeği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

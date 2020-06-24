@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: aff2eca677bbacf16cf6de638547dd52b6985e02
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5ecf8ca6e6790b218216aed9a6ff82c8a7ac9dd2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170237"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250154"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -125,7 +125,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD 'de G Suite için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin. Kullanıcıların portal.azure.com 'de oturum açması ve aad.portal.azure.com kullanamayacak şekilde,
 
     ![Kurumsal uygulamalar dikey penceresi](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
 
@@ -159,7 +159,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
 

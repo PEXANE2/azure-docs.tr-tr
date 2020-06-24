@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271518"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705381"
 ---
 # <a name="symmetric-key-attestation"></a>Simetrik anahtar kanıtlama
 
@@ -46,9 +46,9 @@ SAS belirteçleri aşağıdaki biçimdedir:
 
 Her belirtecin bileşenleri şunlardır:
 
-| Değer | Açıklama |
+| Değer | Description |
 | --- | --- |
-| imza |HMAC-SHA256 imza dizesi. Bireysel kayıtlar için bu imza, karmayı gerçekleştirmek için simetrik anahtar (birincil veya ikincil) kullanılarak oluşturulur. Kayıt grupları için, karmayı gerçekleştirmek için kayıt grubu anahtarından türetilmiş bir anahtar kullanılır. Karma, Şu biçimdeki bir ileti üzerinde gerçekleştirilir: `URL-encoded-resourceURI + "\n" + expiry`. **Önemli**: Bu ANAHTARıN, HMAC-SHA256 hesaplamayı gerçekleştirmek için kullanılmadan önce Base64 'den kodu çözülmüş olması gerekir. Ayrıca, imza sonucu URL kodlamalı olmalıdır. |
+| imza |HMAC-SHA256 imza dizesi. Bireysel kayıtlar için bu imza, karmayı gerçekleştirmek için simetrik anahtar (birincil veya ikincil) kullanılarak oluşturulur. Kayıt grupları için, karmayı gerçekleştirmek için kayıt grubu anahtarından türetilmiş bir anahtar kullanılır. Karma, Şu biçimdeki bir ileti üzerinde gerçekleştirilir: `URL-encoded-resourceURI + "\n" + expiry` . **Önemli**: Bu ANAHTARıN, HMAC-SHA256 hesaplamayı gerçekleştirmek için kullanılmadan önce Base64 'den kodu çözülmüş olması gerekir. Ayrıca, imza sonucu URL kodlamalı olmalıdır. |
 | ResourceURI |Cihaz sağlama hizmeti örneği için kapsam KIMLIĞIYLE başlayarak bu belirteçle erişilebilen kayıt uç noktası URI 'SI. Örneğin, `{Scope ID}/registrations/{Registration ID}` |
 | kaç |Süre 00:00:00 UTC 'den bu yana 1 Ocak 1970 ' de geçen saniye sayısı için UTF8 dizeleri. |
 | {URL-Encoded-resourceURI} |Küçük harf URL 'SI-küçük harf Kaynak URI 'sinin kodlaması |

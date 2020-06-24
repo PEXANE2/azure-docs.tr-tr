@@ -5,20 +5,20 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681525"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805002"
 ---
 # <a name="get-information-about-a-converted-model"></a>Dönüştürülmüş bir model hakkında bilgi alma
 
-Dönüştürme hizmeti tarafından üretilen arrAsset dosyası yalnızca işleme hizmeti tarafından tüketimine yöneliktir. Ancak, bir işleme oturumu başlatmadan bir modelle ilgili bilgilere erişmek istediğinizde bazı zamanlar olabilir. Bu nedenle, dönüştürme hizmeti çıkış kapsayıcısındaki arrAsset dosyasının yanına bir JSON dosyası koyar. Örneğin, bir dosya `buggy.gltf` dönüştürülürse, çıkış kapsayıcısı, dönüştürülmüş varlığın `buggy.info.json` `buggy.arrAsset`yanında adlı bir dosya içerir. Kaynak modeli, dönüştürülmüş model ve dönüştürmenin kendisi hakkında bilgiler içerir.
+Dönüştürme hizmeti tarafından üretilen arrAsset dosyası yalnızca işleme hizmeti tarafından tüketimine yöneliktir. Ancak, bir işleme oturumu başlatmadan bir modelle ilgili bilgilere erişmek istediğinizde bazı zamanlar olabilir. Bu nedenle, dönüştürme hizmeti çıkış kapsayıcısındaki arrAsset dosyasının yanına bir JSON dosyası koyar. Örneğin, bir dosya `buggy.gltf` dönüştürülürse, çıkış kapsayıcısı, dönüştürülmüş varlığın yanında adlı bir dosya içerir `buggy.info.json` `buggy.arrAsset` . Kaynak modeli, dönüştürülmüş model ve dönüştürmenin kendisi hakkında bilgiler içerir.
 
 ## <a name="example-info-file"></a>Örnek *bilgi* dosyası
 
-Aşağıda adlı `buggy.gltf`bir dosya dönüştürülürken oluşturulan örnek bir *bilgi* dosyası verilmiştir:
+Aşağıda adlı bir dosya dönüştürülürken oluşturulan örnek bir *bilgi* dosyası verilmiştir `buggy.gltf` :
 
 ```JSON
 {
@@ -100,7 +100,7 @@ Bu bölüm, kaynak dosya biçimiyle ilgili bilgileri kaydeder.
 Bu bölüm, kaynak sahneyi hakkında bilgi sağlar. Bu bölümdeki değerler ve kaynak modeli oluşturan araçtaki eşdeğer değerler arasında genellikle tutarsızlıklar olur. Bu farklar beklenmektedir, çünkü model dışa aktarma ve dönüştürme adımları sırasında değiştirilir.
 
 * `numMeshes`: Her parçanın tek bir malzemeye başvurmasına neden olan kafes bölümlerinin sayısı.
-* `numFaces`: Tüm modeldeki _üçgenin_ toplam sayısı. Ağ dönüştürme sırasında triangulated olduğunu unutmayın.
+* `numFaces`: Tüm modeldeki _üçgenin_ toplam sayısı. Ağ dönüştürme sırasında triangulated olduğunu unutmayın. Bu sayı, [Standart Işleme VM boyutundaki](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)Çokgen sınırına katkıda bulunur.
 * `numVertices`: Tüm modeldeki köşelerin toplam sayısı.
 * `numMaterial`: Tüm modeldeki Toplam malzeme sayısı.
 * `numFacesSmallestMesh`: Modelin en küçük ağı içindeki üçgenin sayısı.
@@ -120,7 +120,7 @@ Bu bölüm, oluşturulan çıkış hakkındaki genel bilgileri kaydeder.
 
 Bu bölüm, dönüştürülmüş varlık tarafından hesaplanan bilgileri kaydeder.
 
-* `numMeshPartsCreated`: ArrAsset içindeki kafeslerin sayısı. Örnek, dönüştürme işleminden `numMeshes` etkilendiğinden `inputStatistics` , bölümünde farklılık gösterebilir.
+* `numMeshPartsCreated`: ArrAsset içindeki kafeslerin sayısı. `numMeshes` `inputStatistics` Örnek, dönüştürme işleminden etkilendiğinden, bölümünde farklılık gösterebilir.
 * `numMeshPartsInstanced`: ArrAsset içinde yeniden kullanılan kafeslerin sayısı.
 * `recenteringOffset`: `recenterToOrigin` [Conversionsettings](configure-model-conversion.md) seçeneği etkin olduğunda, bu değer dönüştürülen modeli özgün konumuna geri taşıyabilecek çevirmadır.
 * `boundingBox`: Modelin sınırları.

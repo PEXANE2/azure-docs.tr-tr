@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257205"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704395"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell ile Azure 'da VMware VM 'lerinin olağanüstü durum kurtarması ayarlama
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 Set-ASRVaultContext cmdlet 'ini kullanarak kasa bağlamını ayarlayın. Bir kez ayarlandıktan sonra, PowerShell oturumunda izleyen Azure Site Recovery işlemleri seçili kasa bağlamında gerçekleştirilir.
 
 > [!TIP]
-> Azure Site Recovery PowerShell modülü (az. RecoveryServices modülü) çoğu cmdlet için kullanımı kolay diğer adlarla birlikte gelir. Modüldeki cmdlet 'ler * \<>-**azrecoveryservicesasr**\<nesnesi>* form işlemini alır ve form * \<işlemini>-**ASR**\<nesne>* alan eşdeğer diğer adlara sahiptir. Kullanım kolaylığı için cmdlet diğer adlarını değiştirebilirsiniz.
+> Azure Site Recovery PowerShell modülü (az. RecoveryServices modülü) çoğu cmdlet için kullanımı kolay diğer adlarla birlikte gelir. Modüldeki cmdlet 'ler * \<Operation> - **azrecoveryservicesasr** \<Object> * formunu alır ve * \<Operation> - **ASR** \<Object> *formunu alan eşdeğer diğer adlara sahiptir. Kullanım kolaylığı için cmdlet diğer adlarını değiştirebilirsiniz.
 
 Aşağıdaki örnekte, $vault değişkeninden gelen kasa ayrıntıları, PowerShell oturumunun kasa bağlamını belirtmek için kullanılır.
 

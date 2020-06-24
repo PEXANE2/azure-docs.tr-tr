@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: acf329092d082b9e9cece451e90e96fc0e24fa5c
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 17cbf4f7b0ae31b0523a0fbea0c1cae8f83b234b
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447841"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982603"
 ---
 # <a name="responsible-machine-learning-ml"></a>Sorumlu Machine Learning (ML)
 
@@ -60,6 +60,9 @@ Analiz için veriler kullanıldığında, verilerin kullanımı boyunca özel ve
 Geleneksel senaryolarda, ham veriler dosya ve veritabanlarında depolanır. Kullanıcılar verileri çözümlerse genellikle ham verileri kullanır. Bu sorun, bir kişinin gizliliğine infringe olabileceğinden bir kaygıdır. Değişiklik gizliliği, kullanıcıların herhangi bir veri noktasını tanımlayamaması için verilere "gürültü" veya rasgelelik ekleyerek bu sorunla başa geçmeye çalışır.
 
 Farklı şekilde özel sistemlerin uygulanması zordur. [Whitenoıse](https://github.com/opendifferentialprivacy/whitenoise-core) , küresel farklı özel sistemler oluşturmak için farklı bileşenler içeren açık kaynaklı bir projem. Değişiklik gizliliği ve Whitenoıse projesi hakkında daha fazla bilgi edinmek için, [değişiklik gizliliği ve çalışırken veri gizliliğini koruma](./concept-differential-privacy.md) makalesini inceleyin.
+
+> [!NOTE]
+> Araç takımını yeniden adlandırdığımızda, gelecek haftalarda yeni adı tanıtılacağını lütfen unutmayın. 
 
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>Machine Learning yaşam döngüsünü veri sayfaları ile belgeleme
 
