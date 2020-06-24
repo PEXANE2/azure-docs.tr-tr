@@ -3,15 +3,15 @@ title: Azure Cosmos DB için Azure PowerShell örnekleri Tablo API'si
 description: Azure Cosmos DB tablo API hesaplarında çeşitli ortak görevleri gerçekleştirmek için Azure PowerShell örnekleri alın
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/13/2020
+ms.topic: how-to
+ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1790edd41426a7395705485d764682bd47f75186
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5d947c9f3f5aedd419662936c7007fc45a57b087
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649691"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262999"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB için Azure PowerShell örnekleri Tablo API'si
 
@@ -30,4 +30,5 @@ Aşağıdaki tabloda Tablo API'si için Azure Cosmos DB örnek Azure PowerShell 
 |[Yük devretme önceliğini değiştirme veya yük devretmeyi tetikleme](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos hesabının bölgesel yük devretme önceliğini değiştirin veya el ile yük devretme tetikleyin. |
 |[Hesap anahtarları veya bağlantı dizeleri](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Birincil ve ikincil anahtarları, bağlantı dizelerini alın veya bir Azure Cosmos hesabının hesap anahtarını yeniden oluşturun. |
 |[IP güvenlik duvarı ile Cosmos hesabı oluşturma](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| IP Güvenlik Duvarı etkinken bir Azure Cosmos hesabı oluşturun. |
+|[Kaynakları silinmeye karşı kilitle](scripts/powershell/table/powershell-table-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Kaynakların kaynak kilitleri ile silinmesini engelleyin. |
 |||

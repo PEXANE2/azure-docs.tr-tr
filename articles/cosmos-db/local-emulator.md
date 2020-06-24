@@ -2,16 +2,16 @@
 title: Azure Cosmos öykünücüsü ile yerel olarak geliştirme
 description: Azure Cosmos öykünücüsünü kullanarak, Azure aboneliği oluşturmadan uygulamanızı ücretsiz olarak ücretsiz olarak geliştirebilir ve test edebilirsiniz.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: cd7f1ba856cb2c58d14f7a2560a7716beff92076
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849017"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262438"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos öykünücüsünü kullanma
 
@@ -76,7 +76,7 @@ Azure Cosmos öykünücüsü varsayılan olarak ' ye yüklenir `C:\Program Files
 
 Azure Cosmos öykünücüsü başlatıldığında Azure Cosmos Veri Gezgini tarayıcınızda otomatik olarak açar. Adres, `https://localhost:8081/_explorer/index.html` olarak görüntülenir. Gezgin 'i kapatır ve daha sonra yeniden açmak isterseniz, URL 'YI tarayıcınızda açabilir veya aşağıda gösterildiği gibi Windows tepsi simgesindeki Azure Cosmos öykünücüsünde başlatabilirsiniz.
 
-![Azure Cosmos yerel öykünücü Veri Gezgini başlatıcısı](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos yerel öykünücü Veri Gezgini başlatıcısı":::
 
 ## <a name="checking-for-updates"></a>Güncelleştirmeleri denetleme
 
@@ -226,7 +226,7 @@ Windows Sertifika Deposu ile tümleştirilmeyen çalışma zamanları ve dillerl
 
 X.509 sertifikası, [Java CA Sertifika Deposuna Sertifika Ekleme](https://docs.microsoft.com/azure/java-add-certificate-ca-store) bölümündeki yönergeler izlenerek Java sertifika deposuna içeri aktarılabilir. Sertifika sertifika deposuna alındıktan sonra, SQL ve Azure Cosmos DB 's API istemcilerinin MongoDB için olan istemcileri Azure Cosmos öykünücüsünde bağlantı kurabiliyor.
 
-Python ve Node. js SDK 'larının öykünücüsüne bağlanırken TLS doğrulaması devre dışı bırakılır.
+Python ve Node.js SDK 'lardan öykünücüye bağlanılırken, TLS doğrulaması devre dışı bırakılır.
 
 ## <a name="command-line-tool-reference"></a><a id="command-line"></a>Komut satırı aracı başvurusu
 Yükleme konumundan, öykünücü başlatmak ve durdurmak, seçenekleri yapılandırmak ve diğer işlemleri gerçekleştirmek için komut satırını kullanabilirsiniz.
@@ -237,44 +237,44 @@ Yükleme konumundan, öykünücü başlatmak ve durdurmak, seçenekleri yapılan
 
 Seçenek listesini görüntülemek için komut satırına `Microsoft.Azure.Cosmos.Emulator.exe /?` yazın.
 
-|**Seçeneği** | **Açıklama** | **Komut**| **Bağımsız değişkenler**|
+|**Seçeneği** | **Açıklama** | **Komut**| **Arguments**|
 |---|---|---|---|
-|[Bağımsız değişken yok] | Azure Cosmos öykünücüsünü varsayılan ayarlarla başlatır. |Microsoft. Azure. Cosmos. öykünücü. exe| |
-|[Yardım] |Desteklenen komut satırı bağımsız değişkenleri listesini görüntüler.|Microsoft. Azure. Cosmos. öykünücü. exe/? | |
-| GetStatus |Azure Cosmos öykünücüsünün durumunu alır. Durum, çıkış kodu tarafından belirtilir: 1 = Başlatılıyor, 2 = Çalıştırılıyor, 3 = Durduruldu. Negatif çıkış kodu, bir hata oluştuğunu gösterir. Başka bir çıktı üretilmez. | Microsoft. Azure. Cosmos. öykünücü. exe/GetStatus| |
-| Kapat| Azure Cosmos öykünücüsünü kapatır.| Microsoft. Azure. Cosmos. öykünücü. exe/Shutdown | |
-|DataPath | Veri dosyalarının depolanacağı yolu belirtir. Varsayılan değer%LocalAppdata%\CosmosDBEmulator. | Microsoft. Azure. Cosmos. öykünücü. exe/DataPath = \< DataPath\> | \<datapath\>: Erişilebilir bir yol |
-|Bağlantı noktası | Öykünücü için kullanılacak bağlantı noktası numarasını belirtir. Varsayılan değer 8081 ' dir. |Microsoft. Azure. Cosmos. öykünücü. exe/Port = \< Port\> | \<port\>: Tek bir bağlantı noktası numarası |
-| ComputePort | Compute Interop Gateway hizmeti için kullanılacak bağlantı noktası numarası belirtildi. Ağ geçidinin HTTP uç nokta araştırması bağlantı noktası ComputePort + 79 olarak hesaplanır. Bu nedenle, ComputePort ve ComputePort + 79 açık ve kullanılabilir olmalıdır. Varsayılan değer 8900 ' dir. | Microsoft. Azure. Cosmos. öykünücü. exe/ComputePort = \< ComputePort\> | \<computeport \> : tek bağlantı noktası numarası |
-| EnableMongoDbEndpoint = 3.2 | MongoDB API 3,2 ' i sunar | Microsoft. Azure. Cosmos. öykünücü. exe/EnableMongoDbEndpoint = 3.2 | |
-| EnableMongoDbEndpoint = 3.6 | MongoDB API 3,6 ' i sunar | Microsoft. Azure. Cosmos. öykünücü. exe/EnableMongoDbEndpoint = 3.6 | |
-| MongoPort | MongoDB uyumluluk API’si için kullanılacak bağlantı noktası numarasını belirtir. Varsayılan değer 10255 ' dir. |Microsoft. Azure. Cosmos. öykünücü. exe/MongoPort = \< mongoport\>|\<mongoport\>: Tek bir bağlantı noktası numarası|
-| EnableCassandraEndpoint | Cassandra API etkinleştirilir | Microsoft. Azure. Cosmos. öykünücü. exe/EnableCassandraEndpoint | |
-| CassandraPort | Cassandra uç noktası için kullanılacak bağlantı noktası numarasını belirtir. Varsayılan değer 10350 ' dir. | Microsoft. Azure. Cosmos. öykünücü. exe/CassandraPort = \< cassandraport\> | \<cassandraport \> : tek bağlantı noktası numarası |
-| EnableGremlinEndpoint | Gremlin API 'sini sunar | Microsoft. Azure. Cosmos. öykünücü. exe/EnableGremlinEndpoint | |
-| GremlinPort | Gremlin uç noktası için kullanılacak bağlantı noktası numarası. Varsayılan değer 8901 ' dir. | Microsoft. Azure. Cosmos. öykünücü. exe/GremlinPort = \< bağlantı noktası\> | \<port\>: Tek bir bağlantı noktası numarası |
-|EnableTableEndpoint | Azure Tablo API'si etkinleştirilir | Microsoft. Azure. Cosmos. öykünücü. exe/EnableTableEndpoint | |
-|TablePort | Azure Tablo uç noktası için kullanılacak bağlantı noktası numarası. Varsayılan değer 8902 ' dir. | Microsoft. Azure. Cosmos. öykünücü. exe/TablePort = \< Port\> | \<port\>: Tek bir bağlantı noktası numarası|
-| Dosyasına | Belirtilen dosyadan yetkilendirme anahtarını okuyun. Bir keyfile oluşturmak için/GenKeyFile seçeneğini kullanın | Microsoft. Azure. Cosmos. öykünücü. exe/KeyFile = \< file_name\> | \<file_name \> : dosyanın yolu |
-| ResetDataPath | Belirtilen yoldaki tüm dosyaları yinelemeli olarak kaldırır. Bir yol belirtmezseniz, varsayılan olarak%LOCALAPPDATA%\CosmosDbEmulator olur | Microsoft. Azure. Cosmos. öykünücü. exe/ResetDataPath = \< yol> | \<yol \> : dosya yolu  |
-| Başlangıçizler  |  LOGMAN kullanarak hata ayıklama izleme günlüklerini toplamaya başla. | Microsoft. Azure. Cosmos. öykünücü. exe/Startizlemeler | |
-| Durma Izlemeleri     | LOGMAN kullanarak hata ayıklama izleme günlüklerini toplamayı durdur. | Microsoft. Azure. Cosmos. öykünücü. exe/Stopizlemeleri  | |
-| Startwprizleri  |  Windows performans kayıt aracı 'nı kullanarak hata ayıklama izleme günlüklerini toplamaya başlayın. | Microsoft. Azure. Cosmos. öykünücü. exe/Startwprizleri | |
-| Stopwprizleri     | Windows performans kayıt aracı 'nı kullanarak hata ayıklama izleme günlüklerini toplamayı durdurun. | Microsoft. Azure. Cosmos. öykünücü. exe/Stopwprizlemeleri  | |
-|Failonsslcertificatenameuyuşmazlığı | Varsayılan olarak, sertifika SAN 'ı öykünücü konağın etki alanı adı, yerel IPv4 adresi, ' localhost ' ve ' 127.0.0.1 ' içermiyorsa, öykünücü otomatik olarak imzalanan TLS/SSL sertifikasını yeniden oluşturur. Bu seçenekle öykünücü, bunun yerine başlangıçta başarısız olur. Ardından, otomatik olarak imzalanan yeni bir TLS/SSL sertifikası oluşturmak ve yüklemek için/GenCert seçeneğini kullanmanız gerekir. | Microsoft. Azure. Cosmos. öykünücü. exe/Failonsslcertificatenameuyuşmazlığı  | |
-| GenCert | Otomatik olarak imzalanan yeni bir TLS/SSL sertifikası oluşturun ve yükler. isteğe bağlı olarak, ağ üzerinden öykünücüye erişmek için ek DNS adlarının virgülle ayrılmış listesini de içeren bir liste. | Microsoft. Azure. Cosmos. öykünücü. exe/GenCert = \< DNS-adlar\> |\<DNS adları \> : ek DNS adlarının isteğe bağlı virgülle ayrılmış listesi  |
-| DirectPorts |Doğrudan bağlantı için kullanılacak bağlantı noktalarını belirtir. Varsayılan değerler: 10251,10252,10253,10254. | Microsoft. Azure. Cosmos. öykünücü. exe/DirectPorts: \< DirectPort\> | \<directports\>: 4 bağlantı noktasından oluşan virgülle ayrılmış liste |
-| Anahtar |Öykünücü için yetkilendirme anahtarı. Anahtar, 64 bayt vektörün base 64 kodlaması olmalıdır. | Microsoft. Azure. Cosmos. öykünücü. exe/Key: \< anahtar\> | \<key\>: Anahtar, 64 bayt vektörün base 64 kodlaması olmalıdır|
-| EnableRateLimiting | İstek oranını sınırlama davranışının etkinleştirildiğini belirtir. |Microsoft. Azure. Cosmos. öykünücü. exe/Enableratesýnýrlama | |
-| DisableRateLimiting |İstek oranını sınırlama davranışının devre dışı bırakıldığını belirtir. |Microsoft. Azure. Cosmos. öykünücü. exe/Disableratesýnýrlama | |
-| NoUI | Öykünücü kullanıcı arabirimini gösterme. | Microsoft. Azure. Cosmos. öykünücü. exe/NOUI | |
-| NoExplorer | Başlangıçta veri gezginini gösterme. |Microsoft. Azure. Cosmos. öykünücü. exe/NoExplorer | | 
-| PartitionCount | En fazla bölümlenmiş kapsayıcı sayısını belirtir. Daha fazla bilgi için bkz. [kapsayıcı sayısını değiştirme](#set-partitioncount) . | Microsoft. Azure. Cosmos. öykünücü. exe/PartitionCount = \< partitionCount\> | \<partitionCount \> : izin verilen en fazla tek bölüm kapsayıcısı sayısı. Varsayılan değer 25’tir. Maksimum izin verilen: 250.|
-| DefaultPartitionCount| Bölümlenmiş bir kapsayıcı için varsayılan bölüm sayısını belirtir. | Microsoft. Azure. Cosmos. öykünücü. exe/DefaultPartitionCount = \< defaultpartitioncount\> | \<defaultpartitioncount \> varsayılan değeri 25 ' tir.|
-| AllowNetworkAccess | Bir ağ üzerinden öykünücüye erişilmesini sağlar. Ağ erişimini etkinleştirmek için /Key=\<key_string\> veya /KeyFile=\<file_name\> öğesini de geçirmeniz gerekir. | Microsoft. Azure. Cosmos. öykünücü. exe/AllowNetworkAccess/Key = \< key_string \> veya Microsoft. Azure. Cosmos. Emulator. exe/AllowNetworkAccess/keyfile = \< file_name\>| |
-| NoFirewall | /AllowNetworkAccess seçeneği kullanıldığında güvenlik duvarı kurallarını ayarlamadığınızda. |Microsoft. Azure. Cosmos. öykünücü. exe/Nofireduvar | |
-| GenKeyFile | Yeni bir yetkilendirme anahtarı oluşturun ve belirtilen dosyaya kaydedin. Oluşturulan anahtar, /Key veya /KeyFile seçenekleri ile kullanılabilir. | Microsoft. Azure. Cosmos. öykünücü. exe/GenKeyFile = \< anahtar dosyasının yolu\> | |
-| Tutarlılık | Hesap için varsayılan tutarlılık düzeyini ayarlayın. | Microsoft. Azure. Cosmos. öykünücü. exe/tutarlılığı = \< tutarlılık\> | \<consistency\>: Değer, şu [tutarlılık düzeylerinden](consistency-levels.md) biri olmalıdır: Oturum, Güçlü, Son veya Sınırlanmış Eskime Durumu. Varsayılan değer: Oturum. |
+|[Bağımsız değişken yok] | Azure Cosmos öykünücüsünü varsayılan ayarlarla başlatır. |Microsoft.Azure.Cosmos.Emulator.exe| |
+|[Yardım] |Desteklenen komut satırı bağımsız değişkenleri listesini görüntüler.|Microsoft.Azure.Cosmos.Emulator.exe/? | |
+| GetStatus |Azure Cosmos öykünücüsünün durumunu alır. Durum, çıkış kodu tarafından belirtilir: 1 = Başlatılıyor, 2 = Çalıştırılıyor, 3 = Durduruldu. Negatif çıkış kodu, bir hata oluştuğunu gösterir. Başka bir çıktı üretilmez. | Microsoft.Azure.Cosmos.Emulator.exe/GetStatus| |
+| Kapat| Azure Cosmos öykünücüsünü kapatır.| Microsoft.Azure.Cosmos.Emulator.exe/Shutdown | |
+|DataPath | Veri dosyalarının depolanacağı yolu belirtir. Varsayılan değer%LocalAppdata%\CosmosDBEmulator. | Microsoft.Azure.Cosmos.Emulator.exe/DataPath =\<datapath\> | \<datapath\>: Erişilebilir bir yol |
+|Bağlantı noktası | Öykünücü için kullanılacak bağlantı noktası numarasını belirtir. Varsayılan değer 8081 ' dir. |Microsoft.Azure.Cosmos.Emulator.exe/Port =\<port\> | \<port\>: Tek bağlantı noktası numarası |
+| ComputePort | Compute Interop Gateway hizmeti için kullanılacak bağlantı noktası numarası belirtildi. Ağ geçidinin HTTP uç nokta araştırması bağlantı noktası ComputePort + 79 olarak hesaplanır. Bu nedenle, ComputePort ve ComputePort + 79 açık ve kullanılabilir olmalıdır. Varsayılan değer 8900 ' dir. | Microsoft.Azure.Cosmos.Emulator.exe/ComputePort =\<computeport\> | \<computeport\>: Tek bağlantı noktası numarası |
+| EnableMongoDbEndpoint = 3.2 | MongoDB API 3,2 ' i sunar | Microsoft.Azure.Cosmos.Emulator.exe/EnableMongoDbEndpoint = 3.2 | |
+| EnableMongoDbEndpoint = 3.6 | MongoDB API 3,6 ' i sunar | Microsoft.Azure.Cosmos.Emulator.exe/EnableMongoDbEndpoint = 3.6 | |
+| MongoPort | MongoDB uyumluluk API’si için kullanılacak bağlantı noktası numarasını belirtir. Varsayılan değer 10255 ' dir. |Microsoft.Azure.Cosmos.Emulator.exe/MongoPort =\<mongoport\>|\<mongoport\>: Tek bağlantı noktası numarası|
+| EnableCassandraEndpoint | Cassandra API etkinleştirilir | Microsoft.Azure.Cosmos.Emulator.exe/EnableCassandraEndpoint | |
+| CassandraPort | Cassandra uç noktası için kullanılacak bağlantı noktası numarasını belirtir. Varsayılan değer 10350 ' dir. | Microsoft.Azure.Cosmos.Emulator.exe/CassandraPort =\<cassandraport\> | \<cassandraport\>: Tek bağlantı noktası numarası |
+| EnableGremlinEndpoint | Gremlin API 'sini sunar | Microsoft.Azure.Cosmos.Emulator.exe/EnableGremlinEndpoint | |
+| GremlinPort | Gremlin uç noktası için kullanılacak bağlantı noktası numarası. Varsayılan değer 8901 ' dir. | Microsoft.Azure.Cosmos.Emulator.exe/GremlinPort =\<port\> | \<port\>: Tek bağlantı noktası numarası |
+|EnableTableEndpoint | Azure Tablo API'si etkinleştirilir | Microsoft.Azure.Cosmos.Emulator.exe/EnableTableEndpoint | |
+|TablePort | Azure Tablo uç noktası için kullanılacak bağlantı noktası numarası. Varsayılan değer 8902 ' dir. | Microsoft.Azure.Cosmos.Emulator.exe/TablePort =\<port\> | \<port\>: Tek bağlantı noktası numarası|
+| Dosyasına | Belirtilen dosyadan yetkilendirme anahtarını okuyun. Bir keyfile oluşturmak için/GenKeyFile seçeneğini kullanın | Microsoft.Azure.Cosmos.Emulator.exe/KeyFile =\<file_name\> | \<file_name\>: Dosyanın yolu |
+| ResetDataPath | Belirtilen yoldaki tüm dosyaları yinelemeli olarak kaldırır. Bir yol belirtmezseniz, varsayılan olarak%LOCALAPPDATA%\CosmosDbEmulator olur | Microsoft.Azure.Cosmos.Emulator.exe/ResetDataPath =\<path> | \<path\>: Dosya yolu  |
+| Başlangıçizler  |  LOGMAN kullanarak hata ayıklama izleme günlüklerini toplamaya başla. | Microsoft.Azure.Cosmos.Emulator.exe/Startizlemeler | |
+| Durma Izlemeleri     | LOGMAN kullanarak hata ayıklama izleme günlüklerini toplamayı durdur. | Microsoft.Azure.Cosmos.Emulator.exe/Stopizlemeleri  | |
+| Startwprizleri  |  Windows performans kayıt aracı 'nı kullanarak hata ayıklama izleme günlüklerini toplamaya başlayın. | Microsoft.Azure.Cosmos.Emulator.exe/Startwprizlemler | |
+| Stopwprizleri     | Windows performans kayıt aracı 'nı kullanarak hata ayıklama izleme günlüklerini toplamayı durdurun. | Microsoft.Azure.Cosmos.Emulator.exe/Stopwprizlemleri  | |
+|Failonsslcertificatenameuyuşmazlığı | Varsayılan olarak, sertifika SAN 'ı öykünücü konağın etki alanı adı, yerel IPv4 adresi, ' localhost ' ve ' 127.0.0.1 ' içermiyorsa, öykünücü otomatik olarak imzalanan TLS/SSL sertifikasını yeniden oluşturur. Bu seçenekle öykünücü, bunun yerine başlangıçta başarısız olur. Ardından, otomatik olarak imzalanan yeni bir TLS/SSL sertifikası oluşturmak ve yüklemek için/GenCert seçeneğini kullanmanız gerekir. | Microsoft.Azure.Cosmos.Emulator.exe/Failonsslcertificatenameuyuşmazlığı  | |
+| GenCert | Otomatik olarak imzalanan yeni bir TLS/SSL sertifikası oluşturun ve yükler. isteğe bağlı olarak, ağ üzerinden öykünücüye erişmek için ek DNS adlarının virgülle ayrılmış listesini de içeren bir liste. | Microsoft.Azure.Cosmos.Emulator.exe/GenCert =\<dns-names\> |\<dns-names\>: Ek DNS adlarının isteğe bağlı virgülle ayrılmış listesi  |
+| DirectPorts |Doğrudan bağlantı için kullanılacak bağlantı noktalarını belirtir. Varsayılan değerler: 10251,10252,10253,10254. | Microsoft.Azure.Cosmos.Emulator.exe/DirectPort:\<directports\> | \<directports\>: Virgülle ayrılmış 4 bağlantı noktası listesi |
+| Anahtar |Öykünücü için yetkilendirme anahtarı. Anahtar, 64 bayt vektörün base 64 kodlaması olmalıdır. | Microsoft.Azure.Cosmos.Emulator.exe/Key:\<key\> | \<key\>: Anahtar, 64 baytlık bir Vector öğesinin Base-64 kodlaması olmalıdır|
+| EnableRateLimiting | İstek oranını sınırlama davranışının etkinleştirildiğini belirtir. |Microsoft.Azure.Cosmos.Emulator.exe/Enableratesýnýrlama | |
+| DisableRateLimiting |İstek oranını sınırlama davranışının devre dışı bırakıldığını belirtir. |Microsoft.Azure.Cosmos.Emulator.exe/Disableratesýnýrlama | |
+| NoUI | Öykünücü kullanıcı arabirimini gösterme. | Microsoft.Azure.Cosmos.Emulator.exe/NOUI | |
+| NoExplorer | Başlangıçta veri gezginini gösterme. |Microsoft.Azure.Cosmos.Emulator.exe/NoExplorer | | 
+| PartitionCount | En fazla bölümlenmiş kapsayıcı sayısını belirtir. Daha fazla bilgi için bkz. [kapsayıcı sayısını değiştirme](#set-partitioncount) . | Microsoft.Azure.Cosmos.Emulator.exe/PartitionCount =\<partitioncount\> | \<partitioncount\>: İzin verilen en fazla tek bölüm kapsayıcısı sayısı. Varsayılan değer 25’tir. Maksimum izin verilen: 250.|
+| DefaultPartitionCount| Bölümlenmiş bir kapsayıcı için varsayılan bölüm sayısını belirtir. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\>Varsayılan değer 25 ' tir.|
+| AllowNetworkAccess | Bir ağ üzerinden öykünücüye erişilmesini sağlar. \<key_string\>Ağ erişimini etkinleştirmek için/Key = veya/KeyFile = geçişini de yapmanız gerekir \<file_name\> . | Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/Key = \<key_string\> veya Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/KeyFile =\<file_name\>| |
+| NoFirewall | /AllowNetworkAccess seçeneği kullanıldığında güvenlik duvarı kurallarını ayarlamadığınızda. |Microsoft.Azure.Cosmos.Emulator.exe/Nofireduvar | |
+| GenKeyFile | Yeni bir yetkilendirme anahtarı oluşturun ve belirtilen dosyaya kaydedin. Oluşturulan anahtar, /Key veya /KeyFile seçenekleri ile kullanılabilir. | Microsoft.Azure.Cosmos.Emulator.exe/GenKeyFile =\<path to key file\> | |
+| Tutarlılık | Hesap için varsayılan tutarlılık düzeyini ayarlayın. | Microsoft.Azure.Cosmos.Emulator.exe/tutarlılığı =\<consistency\> | \<consistency\>: Değer şu [tutarlılık düzeylerinden](consistency-levels.md)biri olmalıdır: oturum, güçlü, nihai veya sıçrama durumu. Varsayılan değer: Oturum. |
 | ? | Yardım iletisini gösterin.| | |
 
 ## <a name="change-the-number-of-containers"></a><a id="set-partitioncount"></a>Kapsayıcıların sayısını değiştirme
@@ -313,7 +313,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Sözdizimi**
+**Syntax**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -323,7 +323,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Start-CosmosDbEmulator`
 
-**Sözdizimi**
+**Syntax**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -333,7 +333,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Stop-CosmosDbEmulator`
 
-**Sözdizimi**
+**Syntax**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -343,7 +343,7 @@ Aşağıda, PowerShell’den öykünücüyü denetlemeye ilişkin komutların ö
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Sözdizimi**
+**Syntax**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 
@@ -482,7 +482,7 @@ Mac üzerinde çalışıyorsanız aşağıdaki adımları kullanın:
 
 1. Söz konusu öğe için bağlam menüsünü açın, *öğeyi al* ' ı seçin ve *güven*altında,  >  *Bu sertifikayı kullanırken* *her zaman güven*' i seçin. 
 
-   ![Söz konusu öğe için bağlam menüsünü açın, öğeyi Al ' ı seçin ve güven altında, bu sertifikayı kullanırken her zaman güven ' i seçin.](./media/local-emulator/mac-trust-certificate.png)
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Söz konusu öğe için bağlam menüsünü açın, öğeyi Al ' ı seçin ve güven altında, bu sertifikayı kullanırken her zaman güven ' i seçin.":::
 
 Bu adımları tamamladıktan sonra, ortamınız tarafından açığa çıkardığı IP adresine bağlanırken öykünücü tarafından kullanılan sertifikaya güvenecek `/AllowNetworkAccess` .
 

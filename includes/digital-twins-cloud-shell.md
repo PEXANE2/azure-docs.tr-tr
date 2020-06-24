@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 76480959d94b9e2a2e04857c85b7359105e73e4f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 4aa016294f0ef3bd26f7f3ef6fa374e9367b672d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612896"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296976"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
 ### <a name="set-up-cloud-shell-session"></a>Cloud Shell oturum ayarlama
 
-Cloud Shell bir pencere açtıktan sonra, ilk yapmanız gereken oturum açma ve kabuk bağlamını bu oturum için aboneliğinize ayarlamış. 
+Cloud Shell bir pencere açtıktan sonra, ilk yapmanız gereken oturum açma ve kabuk bağlamını bu oturum için aboneliğinize ayarlamış. Cloud Shell şu komutları çalıştırın:
 
 ```azurecli
 az login
@@ -29,16 +29,18 @@ Bu aboneliği Azure Digital TWINS ile ilk kez kullandıysanız, Azure Digital TW
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-Daha sonra, Azure CLı için Microsoft Azure IoT uzantısını eklemek üzere Cloud Shell Örneğinizde aşağıdaki komutu çalıştırın.
+Daha sonra, Azure dijital TWINS ve diğer IoT hizmetleriyle etkileşime yönelik komutları etkinleştirmek için [**Azure CLI için Microsoft Azure IoT uzantısını**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) Cloud Shell ekleyeceksiniz. Uzantıyı eklemek için bu komutu kullanın:
 
    ```azurecli-interactive
    az extension add --name azure-iot
    ```
 
-> [!NOTE]
-> Bu makalede, adlı Azure IoT uzantısının en yeni sürümü kullanılmıştır `azure-iot` . Eski sürüm çağrılır `azure-iot-cli-ext` . Aynı anda yalnızca bir sürümü yüklü olmalıdır. `az extension list`Şu anda yüklü olan uzantıları doğrulamak için komutunu kullanabilirsiniz.
-> `az extension remove --name azure-cli-iot-ext`Uzantının eski sürümünü kaldırmak için kullanın.
-> `az extension add --name azure-iot`Uzantının yeni sürümünü eklemek için kullanın. Yüklediğiniz uzantıları görmek için kullanın `az extension list` .
+Uzantıyı geçmişte yüklediyseniz, çıkış "Azure-IoT" uzantısı zaten yüklü olabilir. " Bu durumda, en son güncelleştirmeye sahip olduğunuzdan emin olmak için aşağıdakileri çalıştırın: 
 
-> [!TIP]
-> `az dt -h`En üst düzey Azure dijital TWINS komutlarını görmek için komutunu kullanabilirsiniz.
+   ```azurecli-interactive
+   az extension update --name azure-iot
+   ```
+
+Artık Cloud Shell Azure dijital TWINS ile çalışmaya hazırsınız.
+
+`az dt -h`Kullanılabilir en üst düzey Azure dijital TWINS komutlarının bir listesini görmek için bunu dilediğiniz zaman çalıştırabilirsiniz.

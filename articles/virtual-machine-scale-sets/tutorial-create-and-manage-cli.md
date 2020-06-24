@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 252b3b3ecf2de24410d046473ee2cfd2215254a9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198218"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736450"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi oluşturma ve yönetme
 Sanal makine ölçek kümesi, birbiriyle aynı ve otomatik olarak ölçeklendirilen sanal makine kümesi dağıtmanızı ve yönetmenizi sağlar. Sanal makine ölçek kümesinin yaşam döngüsü boyunca bir veya daha fazla yönetim görevi çalıştırmanız gerekebilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -167,6 +167,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 
 Belirli bir görüntüyü kullanan bir ölçek kümesini dağıtmak için *Urn* sütunundaki değeri kullanın. Görüntüyü belirttiğinizde, görüntü sürümü sayısı *en yeni* ile değiştirilerek dağıtımın en yeni sürümü seçilebilir. Aşağıdaki örnekte, bir CentOS 7.3 görüntüsünün son sürümünü belirtmek için `--image` bağımsız değişkeni kullanılmıştır.
 
+> [!IMPORTANT]
+> *En son* görüntü sürümünü kullanmanızı öneririz. Dağıtım zamanında kullanılabilen bir görüntünün en son sürümünü kullanmak için ' en son ' öğesini belirtin. Not, ' Latest ' kullansanız bile, yeni bir sürüm kullanılabilir olsa bile, dağıtım zamanından sonra VM görüntüsü otomatik olarak güncelleştirmez.
+
 Tüm ölçek kümesi kaynaklarının ve sanal makine örneklerinin oluşturulup yapılandırılması birkaç dakika süreceğinden, aşağıdaki ölçek kümesini dağıtmanız gerekmez:
 
 ```azurecli-interactive
@@ -185,7 +188,7 @@ Sanal makine örneğinin boyutu veya *SKU*, sanal makine örneği tarafından ku
 ### <a name="vm-instance-sizes"></a>Sanal makine örneği boyutları
 Aşağıdaki tabloda genel sanal makine boyutları, kullanım durumlarına göre kategorilere ayrılmıştır.
 
-| Tür                     | Ortak boyutlar           |    Açıklama       |
+| Tür                     | Ortak boyutlar           |    Description       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Genel amaçlı](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
 | [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |

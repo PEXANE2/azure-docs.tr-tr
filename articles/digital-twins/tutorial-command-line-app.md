@@ -1,5 +1,5 @@
 ---
-title: Örnek bir istemci uygulamasıyla ilgili temel bilgileri keşfet
+title: Örnek bir istemci uygulamasıyla temel kavramları inceleme
 titleSuffix: Azure Digital Twins
 description: Örnek bir komut satırı uygulaması kullanarak Azure dijital TWINS SDK 'larını keşfetmeye yönelik öğretici
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 070a65207bc1aa2cf754f3a0dca59f1a2950a339
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613551"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262368"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Örnek bir istemci uygulamasıyla Azure dijital TWINS 'i keşfet
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Bu öğreticide, bir Azure dijital TWINS örneğiyle etkileşim kurmak için bir komut satırı istemci uygulaması uygulayan örnek bir uygulama tanıtılmıştır. İstemci uygulaması, [öğretici: istemci uygulaması kodu](tutorial-code.md)olarak yazılmış birine benzer.
 
@@ -44,7 +47,7 @@ Modeller, nesne odaklı programlama dillerinde sınıflarla benzerdir; Bunlar, d
 
 _**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizde, *AdtSampleApp\SampleClientApp\Models* klasörüne gitmek için *Çözüm Gezgini* bölmesini kullanın. Bu klasör örnek modeller içerir.
 
-Dosyayı Düzenle penceresinde açmak için *oda. JSON* ' u seçin ve aşağıdaki yollarla değiştirin:
+Düzenle penceresinde açmak için *Room.js* seçin ve aşağıdaki yollarla değiştirin:
 
 * Bu modelin daha güncel bir sürümünü sağladıklarını belirtmek için **sürüm numarasını güncelleştirin**. Değerin sonundaki *1* `@id` değerini *2*olarak değiştirerek bunu yapın. Geçerli sürüm numarasından daha büyük bir sayı de çalışacaktır.
 * **Bir özelliği düzenleyin**. `Humidity`Özelliğin adını *Humidtylevel* (veya isterseniz farklı bir şey) olarak değiştirin. *Humidtylevel*' dan farklı bir şey kullanırsanız, kullandığınız şeyi hatırlayın ve öğretici genelinde *Humidtylevel* yerine bunu kullanmaya devam edin).
@@ -70,7 +73,7 @@ Dosyayı Düzenle penceresinde açmak için *oda. JSON* ' u seçin ve aşağıda
 
 İşiniz bittiğinde, güncelleştirilmiş modelin şöyle görünmesi gerekir:
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Güncelleştirilmiş sürüm numarası, Humidtylevel ve RoomName özellikleri ve ilişki içeren oda. JSON düzenlendi" border="false":::
+:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir" border="false":::
 
 Taşımadan önce dosyayı kaydettiğinizden emin olun.
 
@@ -78,7 +81,7 @@ Taşımadan önce dosyayı kaydettiğinizden emin olun.
 > Kendi modelinizi oluşturmayı denemek istiyorsanız, *Oda* modeli kodunu *AdtSampleApp\SampleClientApp\Models* klasöründe bir *. JSON* uzantısıyla kaydedeceğiniz yeni bir dosyaya yapıştırabilirsiniz. Ardından, istediğiniz şeyi temsil etmek üzere Özellikler ve ilişkiler ekleyerek bir adım adım oynayın. Ayrıca, bu klasördeki diğer örnek modellere fikir için göz atabilirsiniz.
 
 > [!TIP] 
-> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://github.com/Azure-Samples/DTDL-Validator) vardır. Bu, [nasıl yapılır: modellerinizi ayrıştırma ve doğrulama](how-to-use-parser.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
+> DTDL 'nin geçerli olduğundan emin olmak için model belgelerini denetlemek için kullanabileceğiniz dilden bağımsız bir [Dtdl doğrulayıcısı örneği](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) vardır. Bu, [nasıl yapılır: modellerinizi ayrıştırma ve doğrulama](how-to-use-parser.md)hakkında daha fazla bilgi edinmek için dtdl ayrıştırıcısı kitaplığı üzerine kurulmuştur.
 
 ### <a name="get-started-with-the-command-line-app"></a>Komut satırı uygulaması ile çalışmaya başlama
 

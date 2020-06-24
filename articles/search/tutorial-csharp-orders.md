@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 552f974b99b9430d82596a5a25265bb916cb4e25
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780615"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262200"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarını sıralama
 
@@ -21,14 +21,14 @@ Bu noktaya kadar öğretici serimize kadar, sonuçlar döndürülür ve varsayı
 
 Döndürülen sonuçları kolayca karşılaştırmak için, bu proje C# öğreticisinde oluşturulan sonsuz kayan proje üzerinde oluşturulur [: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md) öğreticisi.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Sonuçları bir özelliğe göre sıralama
 > * Birden çok özelliğe göre sıra sonuçları
 > * Sonuçları coğrafi noktadan bir uzaklığa göre filtrele
 > * Puanlama profili temelinde sonuçları sıralama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -128,7 +128,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Görünümü (index. cshtml) açın ve oluşturma döngüsünü (**&lt;!--otel verilerini göster.--&gt;**) aşağıdaki kodla değiştirin.
+5. Görünümü (index. cshtml) açın ve oluşturma döngüsünü (** &lt; !--otel verilerini göster.-- &gt; **) aşağıdaki kodla değiştirin.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -544,7 +544,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Profilleri karşılaştırmak için görünüme kod ekleyin
 
-1. İndex. cshtml dosyasını açın ve &lt;gövde&gt; bölümünü aşağıdaki kodla değiştirin.
+1. İndex. cshtml dosyasını açın ve &lt; gövde &gt; bölümünü aşağıdaki kodla değiştirin.
 
     ```cs
     <body>

@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 04/03/2019
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e1773ef81a5b727187a9a69ccc7ce7ad0421fb2c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80246781"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296211"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir Android uygulaması oluşturmaya yönelik adım adım yönergeler
 
@@ -28,19 +28,19 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
 ## <a name="getting-started"></a>Başlarken
 
-Android Studio başlatın. **Android Studio hoş geldiniz** penceresinde **Yeni bir Android Studio projesi Başlat ' a**tıklayın. Ya da zaten açık bir projeniz varsa **Dosya**->**Yeni proje**' yi seçin.
+Android Studio başlatın. **Android Studio hoş geldiniz** penceresinde **Yeni bir Android Studio projesi Başlat ' a**tıklayın. Ya da zaten açık bir projeniz varsa **Dosya** -> **Yeni proje**' yi seçin.
 
-**Yeni proje oluştur** penceresinde, **telefon ve tablet** bölümünde **boş etkinlik**' i seçin ve **İleri**' ye tıklayın. Daha sonra, **En düşük API düzeyi**altında `API 26: Android 8.0 (Oreo)`, öğesini seçin ve **dilin** olarak `Java`ayarlandığından emin olun. Proje adını & konumunu ve paket adını değiştirmek isteyebilirsiniz. Diğer seçenekleri oldukları gibi bırakın. **Son**'a tıklayın. **Bileşen yükleyicisi** çalışmaya çalışacaktır. İşiniz bittiğinde **son**' a tıklayın. Bazı işlemeden sonra, Android Studio IDE 'yi açar.
+**Yeni proje oluştur** penceresinde, **telefon ve tablet** bölümünde **boş etkinlik**' i seçin ve **İleri**' ye tıklayın. Daha sonra, **En düşük API düzeyi**altında, `API 26: Android 8.0 (Oreo)` öğesini seçin ve **dilin** olarak ayarlandığından emin olun `Java` . Proje adını & konumunu ve paket adını değiştirmek isteyebilirsiniz. Diğer seçenekleri oldukları gibi bırakın. **Son**'a tıklayın. **Bileşen yükleyicisi** çalışmaya çalışacaktır. İşiniz bittiğinde **son**' a tıklayın. Bazı işlemeden sonra, Android Studio IDE 'yi açar.
 
 ## <a name="trying-it-out"></a>Deneniyor
 
-Yeni uygulamanızı test etmek için, geliştirici özellikli cihazınızı bir USB kablosuyla geliştirme makinenize bağlayın. ->**' Uygulama '** **çalıştırmasını Çalıştır ' a tıklayın.** **Dağıtım hedefi seç** penceresinde cihazınızı seçin ve **Tamam**' ı tıklatın. Android Studio uygulamayı bağlı cihazınıza yükleyip başlatır. Şimdi "Merhaba Dünya!" görmeniz gerekir cihazınızda çalışan uygulamada gösterilir. **Çalıştır**->**' uygulamasını durdur**' a tıklayın.
+Yeni uygulamanızı test etmek için, geliştirici özellikli cihazınızı bir USB kablosuyla geliştirme makinenize bağlayın. **Run** -> **' Uygulama '** çalıştırmasını Çalıştır ' a tıklayın. **Dağıtım hedefi seç** penceresinde cihazınızı seçin ve **Tamam**' ı tıklatın. Android Studio uygulamayı bağlı cihazınıza yükleyip başlatır. Şimdi "Merhaba Dünya!" görmeniz gerekir cihazınızda çalışan uygulamada gösterilir. **Çalıştır** -> **' uygulamasını durdur**' a tıklayın.
 
 ## <a name="integrating-_arcore_"></a>_Arcore_ tümleştirme
 
 <a href="https://developers.google.com/ar/discover/" target="_blank">_Arcore_</a> , genişletmiş gerçeklik deneyimlerini oluşturmaya yönelik Google 'ın platformu olduğundan, cihazın taşırken kendi konumunu izlemesini sağlar ve gerçek dünyanın kendisini öğrendiğini oluşturur.
 
-Aşağıdaki `app\manifests\AndroidManifest.xml` girişleri kök `<manifest>` düğümüne dahil etmek için değiştirin. Bu kod parçacığı birkaç şeyi yapar:
+`app\manifests\AndroidManifest.xml`Aşağıdaki girişleri kök düğümüne dahil etmek için değiştirin `<manifest>` . Bu kod parçacığı birkaç şeyi yapar:
 
 - Bu, uygulamanızın cihaz kameranıza erişmesine izin verir.
 - Ayrıca, uygulamanızın yalnızca ARCore destekleyen cihazlara Google Play Store göründüğünden emin olur.
@@ -57,7 +57,7 @@ Aşağıdaki `app\manifests\AndroidManifest.xml` girişleri kök `<manifest>` d�
 </application>
 ```
 
-Aşağıdaki `Gradle Scripts\build.gradle (Module: app)` girişi içerecek şekilde değiştirin. Bu kod, uygulamanızın ARCore sürüm 1,8 ' i hedeflediğinden emin olur. Bu değişiklikten sonra, Gradle adresinden eşitleme isteyip istemediğinizi soran bir bildirim alabilirsiniz: **Şimdi Eşitle**' ye tıklayın.
+`Gradle Scripts\build.gradle (Module: app)`Aşağıdaki girişi içerecek şekilde değiştirin. Bu kod, uygulamanızın ARCore sürüm 1,8 ' i hedeflediğinden emin olur. Bu değişiklikten sonra, Gradle adresinden eşitleme isteyip istemediğinizi soran bir bildirim alabilirsiniz: **Şimdi Eşitle**' ye tıklayın.
 
 ```
 dependencies {
@@ -71,7 +71,7 @@ dependencies {
 
 [_Manzara_](https://developers.google.com/sceneform/develop/) , bir OpenGL öğrenmeden, genişletilmiş gerçeklik uygulamalarında gerçekçi 3B sahneler oluşturmayı basit hale getirir.
 
-Aşağıdaki `Gradle Scripts\build.gradle (Module: app)` girişleri içerecek şekilde değiştirin. Bu kod, uygulamanızın Java 8 ' den dil yapılarını kullanmasına izin verir ve bu `Sceneform` da gerektirir. Uygulamanızın kullandığı ARCore sürümüyle eşleşmesi gerektiğinden `Sceneform` , uygulamanızın sürüm 1,8 ' i hedeflemesini de güvence altına alacak. Bu değişiklikten sonra, Gradle adresinden eşitleme isteyip istemediğinizi soran bir bildirim alabilirsiniz: **Şimdi Eşitle**' ye tıklayın.
+`Gradle Scripts\build.gradle (Module: app)`Aşağıdaki girişleri içerecek şekilde değiştirin. Bu kod, uygulamanızın Java 8 ' den dil yapılarını kullanmasına izin verir ve bu da `Sceneform` gerektirir. Uygulamanızın `Sceneform` kullandığı ARCore sürümüyle eşleşmesi gerektiğinden, uygulamanızın sürüm 1,8 ' i hedeflemesini de güvence altına alacak. Bu değişiklikten sonra, Gradle adresinden eşitleme isteyip istemediğinizi soran bir bildirim alabilirsiniz: **Şimdi Eşitle**' ye tıklayın.
 
 ```
 android {
@@ -90,7 +90,7 @@ dependencies {
 }
 ```
 
-Dosyanızı `app\res\layout\activity_main.xml`açın ve var olan Hello Wolrd `<TextView>` öğesini aşağıdaki arfragment ile değiştirin. Bu kod, kamera beslemenin ekranda görüntülenmesine neden olur, çünkü taşırken cihaz konumunuzu izlemek için ARCore 'u etkinleştirir.
+Dosyanızı açın `app\res\layout\activity_main.xml` ve var olan Hello Wolrd `<TextView>` öğesini aşağıdaki arfragment ile değiştirin. Bu kod, kamera beslemenin ekranda görüntülenmesine neden olur, çünkü taşırken cihaz konumunuzu izlemek için ARCore 'u etkinleştirir.
 
 ```xml
 <fragment android:name="com.google.ar.sceneform.ux.ArFragment"
@@ -103,27 +103,27 @@ Uygulamanızı daha sonra doğrulamak için cihazınıza yeniden [dağıtın](#t
 
 ## <a name="place-an-object-in-the-real-world"></a>Gerçek dünyaya bir nesne yerleştirme
 
-Uygulamanızı kullanarak bir nesne oluşturalım &. İlk olarak, aşağıdaki içeri aktarmaları içine ekleyin `app\java\<PackageName>\MainActivity`:
+Uygulamanızı kullanarak bir nesne oluşturalım &. İlk olarak, aşağıdaki içeri aktarmaları içine ekleyin `app\java\<PackageName>\MainActivity` :
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=23-33)]
 
-Ardından, aşağıdaki üye değişkenlerini sınıfınıza `MainActivity` ekleyin:
+Ardından, aşağıdaki üye değişkenlerini `MainActivity` sınıfınıza ekleyin:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=52-57)]
 
-Ardından, aşağıdaki kodu `app\java\<PackageName>\MainActivity` `onCreate()` yöntemine ekleyin. Bu kod, kullanıcının cihazınızdaki ekrana dokunduğunda tespit `handleTap()`edilecek bir dinleyici () çağırılır. Tap 'ın izleme tarafından zaten tanınmış olan gerçek bir dünya yüzeyinde olması durumunda dinleyici çalışır.
+Ardından, aşağıdaki kodu `app\java\<PackageName>\MainActivity` `onCreate()` yöntemine ekleyin. Bu kod `handleTap()` , kullanıcının cihazınızdaki ekrana dokunduğunda tespit edilecek bir dinleyici () çağırılır. Tap 'ın izleme tarafından zaten tanınmış olan gerçek bir dünya yüzeyinde olması durumunda dinleyici çalışır.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=68-74,85&highlight=6-7)]
 
-Son olarak, her şeyi `handleTap()` bir araya bağlayan aşağıdaki yöntemi ekleyin. Bir Sphere oluşturacak ve bunu, dokunduğunuz konuma yerleştirmeyecektir. Şimdi sıfır olarak ayarlandığından Sphere başlangıçta siyah `this.recommendedSessionProgress` olur. Bu değer, daha sonra ayarlanacak.
+Son olarak, `handleTap()` her şeyi bir araya bağlayan aşağıdaki yöntemi ekleyin. Bir Sphere oluşturacak ve bunu, dokunduğunuz konuma yerleştirmeyecektir. Şimdi sıfır olarak ayarlandığından Sphere başlangıçta siyah olur `this.recommendedSessionProgress` . Bu değer, daha sonra ayarlanacak.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-171,174-182,198-199)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-172,175-183,199-200)]
 
 Uygulamanızı daha sonra doğrulamak için cihazınıza yeniden [dağıtın](#trying-it-out) . Bu kez, ortamınızı tanımayı başlatmaya başlayabilmeniz için cihazınızın etrafında gezinebilirsiniz. Daha sonra ekrana dokunarak siyah küetinizi istediğiniz yüzey üzerine yerleştirin & oluşturun.
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Yerel bir Azure uzamsal Bağlayıcısı ekleyin
 
-Aşağıdaki `Gradle Scripts\build.gradle (Module: app)` girişi içerecek şekilde değiştirin. Bu kod, uygulamanızın Azure uzamsal bağlantıları 2.2.0 sürümünü hedeflediğinden emin olur. Bu şekilde, Azure uzamsal Çıpaların son sürümüne başvurmak için çalışmanız gerekir. Sürüm notlarını [buradan bulabilirsiniz.](https://github.com/Azure/azure-spatial-anchors-samples/releases)
+`Gradle Scripts\build.gradle (Module: app)`Aşağıdaki girişi içerecek şekilde değiştirin. Bu kod, uygulamanızın Azure uzamsal bağlantıları 2.2.0 sürümünü hedeflediğinden emin olur. Bu şekilde, Azure uzamsal Çıpaların son sürümüne başvurmak için çalışmanız gerekir. Sürüm notlarını [buradan bulabilirsiniz.](https://github.com/Azure/azure-spatial-anchors-samples/releases)
 
 ```
 dependencies {
@@ -134,13 +134,13 @@ dependencies {
 }
 ```
 
-`app\java\<PackageName>` -> **New**Yeni->**Java sınıfı**' na sağ tıklayın. **Adı** _MyFirstApp_ve **üst sınıftan** _Android. app. Application_olarak ayarlayın. Diğer seçenekleri oldukları gibi bırakın. **Tamam**'a tıklayın. Çağrılan `MyFirstApp.java` bir dosya oluşturulacaktır. Aşağıdaki içeri aktarmayı ekleyin:
+`app\java\<PackageName>` -> **Yeni** -> **Java sınıfı**' na sağ tıklayın. **Adı** _MyFirstApp_ve **üst sınıftan** _Android. app. Application_olarak ayarlayın. Diğer seçenekleri oldukları gibi bırakın. **Tamam**'a tıklayın. Çağrılan bir dosya `MyFirstApp.java` oluşturulacaktır. Aşağıdaki içeri aktarmayı ekleyin:
 
 ```java
 import com.microsoft.CloudServices;
 ```
 
-Ardından, yeni `MyFirstApp` sınıfın içine aşağıdaki kodu ekleyin. Bu, Azure uzamsal bağlayıcıların uygulamanızın bağlamıyla başlatılmış olmasını sağlayacaktır.
+Ardından, yeni sınıfın içine aşağıdaki kodu ekleyin `MyFirstApp` . Bu, Azure uzamsal bağlayıcıların uygulamanızın bağlamıyla başlatılmış olmasını sağlayacaktır.
 
 ```java
     @Override
@@ -150,7 +150,7 @@ Ardından, yeni `MyFirstApp` sınıfın içine aşağıdaki kodu ekleyin. Bu, Az
     }
 ```
 
-Şimdi, kök `app\manifests\AndroidManifest.xml` `<application>` düğümüne aşağıdaki girdiyi eklemek için değiştirin. Bu kod, uygulamanızda oluşturduğunuz uygulama sınıfını yedekler.
+Şimdi, `app\manifests\AndroidManifest.xml` kök düğümüne aşağıdaki girdiyi eklemek için değiştirin `<application>` . Bu kod, uygulamanızda oluşturduğunuz uygulama sınıfını yedekler.
 
 ```xml
     <application
@@ -159,17 +159,17 @@ Ardından, yeni `MyFirstApp` sınıfın içine aşağıdaki kodu ekleyin. Bu, Az
     </application>
 ```
 
-`app\java\<PackageName>\MainActivity`Uygulamasına geri dönerek aşağıdaki içeri aktarmaları ekleyin:
+Uygulamasına geri dönerek `app\java\<PackageName>\MainActivity` aşağıdaki içeri aktarmaları ekleyin:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=33-40&highlight=2-8)]
 
-Ardından, aşağıdaki üye değişkenlerini sınıfınıza `MainActivity` ekleyin:
+Ardından, aşağıdaki üye değişkenlerini `MainActivity` sınıfınıza ekleyin:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=57-60&highlight=3-4)]
 
-Daha sonra, aşağıdaki `initializeSession()` yöntemi `mainActivity` sınıfınızın içine ekleyelim. Bir kez çağrıldıktan sonra, uygulamanızın başlatılması sırasında bir Azure uzamsal bağlayıcı oturumunun oluşturulduğundan ve düzgün başlatılmış olduğundan emin olur.
+Daha sonra, aşağıdaki `initializeSession()` yöntemi sınıfınızın içine ekleyelim `mainActivity` . Bir kez çağrıldıktan sonra, uygulamanızın başlatılması sırasında bir Azure uzamsal bağlayıcı oturumunun oluşturulduğundan ve düzgün başlatılmış olduğundan emin olur.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,146)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,147)]
 
 Şimdi, yönteminizi uygulamanıza verlim `initializeSession()` `onCreate()` . Ayrıca, kamera akışınızdan gelen çerçevelerin işlenmek üzere Azure uzamsal bağlayıcı SDK 'sına gönderilmesini de sağlamaktır.
 
@@ -177,37 +177,37 @@ Daha sonra, aşağıdaki `initializeSession()` yöntemi `mainActivity` sınıfı
 
 Son olarak, aşağıdaki kodu `handleTap()` yöntemine ekleyin. Gerçek dünyaya yerleştirdiğimiz siyah sphere öğesine yerel bir Azure uzamsal Bağlayıcısı ekler.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-182,198-199&highlight=12-13)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-183,199-200&highlight=12-13)]
 
 Uygulamanızı bir kez daha yeniden [dağıtın](#trying-it-out) . Cihazınızın etrafında ilerleyin, ekrana dokunun ve bir siyah küre yerleştirin. Bu süre, ancak kodunuz, kürenin yerel bir Azure uzamsal bağlayıcısını oluşturur ve iliştirir.
 
-Devam etmeden önce, henüz yoksa bir Azure uzamsal bağlayıcı hesap tanımlayıcısı ve anahtarı oluşturmanız gerekir. Elde etmek için aşağıdaki bölümü izleyin.
+Daha sonra devam etmeden önce, hesap tanımlayıcı, anahtar ve etki alanını daha önce yoksa, bir Azure uzamsal bağlayıcı hesabı oluşturmanız gerekir. Elde etmek için aşağıdaki bölümü izleyin.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="upload-your-local-anchor-into-the-cloud"></a>Yerel çıpası buluta yükleyin
 
-Azure uzamsal bağlayıcılarınızın hesap tanımlayıcısı ve anahtarınız olduktan sonra geri `app\java\<PackageName>\MainActivity`dönüp aşağıdaki içeri aktarmaları buna ekleyebiliriz:
+Azure uzamsal bağlayıcılarınızın hesap tanımlayıcısı, anahtarınız ve etki alanınız olduktan sonra geri dönüp `app\java\<PackageName>\MainActivity` içine aşağıdaki içeri aktarmaları ekleyebilirsiniz:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=40-45&highlight=3-6)]
 
-Ardından, aşağıdaki üye değişkenlerini sınıfınıza `MainActivity` ekleyin:
+Ardından, aşağıdaki üye değişkenlerini `MainActivity` sınıfınıza ekleyin:
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=60-65&highlight=3-6)]
 
-Şimdi aşağıdaki kodu `initializeSession()` yöntemine ekleyin. İlk olarak, bu kod uygulamanızın, kamera akışınızdan çerçeveler topladığı için Azure uzamsal bağlayıcı SDK 'sının yaptığı ilerlemeyi izlemesine izin verir. Bu şekilde, Sphere 'nizin rengi orijinal siyahtan gri olarak değiştirmeye başlayacaktır. Daha sonra, bağlayıcıyı buluta göndermek için yeterli sayıda çerçeve toplandıktan sonra bu işlem beyaz olur. İkincisi, bu kod, bulut arka ucu ile iletişim kurmak için gereken kimlik bilgilerini sağlar. Burada, uygulamanızı hesap tanımlayıcıyı ve anahtarınızı kullanacak şekilde yapılandıracaksınız. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
+Şimdi aşağıdaki kodu `initializeSession()` yöntemine ekleyin. İlk olarak, bu kod uygulamanızın, kamera akışınızdan çerçeveler topladığı için Azure uzamsal bağlayıcı SDK 'sının yaptığı ilerlemeyi izlemesine izin verir. Bu şekilde, Sphere 'nizin rengi orijinal siyahtan gri olarak değiştirmeye başlayacaktır. Daha sonra, bağlayıcıyı buluta göndermek için yeterli sayıda çerçeve toplandıktan sonra bu işlem beyaz olur. İkincisi, bu kod, bulut arka ucu ile iletişim kurmak için gereken kimlik bilgilerini sağlar. Burada, uygulamanızı hesap tanımlayıcıyı, anahtarınızı ve etki alanınızı kullanacak şekilde yapılandıracaksınız. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-146&highlight=11-36)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-148&highlight=11-37)]
 
-Ardından, aşağıdaki `uploadCloudAnchorAsync()` yöntemi `mainActivity` sınıfınızın içine ekleyin. Bu yöntem çağrıldıktan sonra zaman uyumsuz olarak cihazınızdan yeterli sayıda çerçeve toplanana kadar bekler. Yani, kürenin rengini sarıya dönüştürür ve ardından yerel Azure uzamsal bağlantı yayınınızı buluta yüklemeye başlar. Karşıya yükleme tamamlandıktan sonra kod bir bağlantı tanımlayıcısı döndürür.
+Ardından, aşağıdaki `uploadCloudAnchorAsync()` yöntemi sınıfınızın içine ekleyin `mainActivity` . Bu yöntem çağrıldıktan sonra zaman uyumsuz olarak cihazınızdan yeterli sayıda çerçeve toplanana kadar bekler. Yani, kürenin rengini sarıya dönüştürür ve ardından yerel Azure uzamsal bağlantı yayınınızı buluta yüklemeye başlar. Karşıya yükleme tamamlandıktan sonra kod bir bağlantı tanımlayıcısı döndürür.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=uploadCloudAnchorAsync)]
 
-Son olarak her şeyi bir araya alalım. `handleTap()` Yönteminde aşağıdaki kodu ekleyin. Sphere oluşturulduktan hemen sonra `uploadCloudAnchorAsync()` yönteminizi çağıracaktır. Yöntem döndüğünde, aşağıdaki kod Sphere ' de bir son güncelleştirme gerçekleştirir ve rengini mavi olarak değiştirir.
+Son olarak her şeyi bir araya alalım. `handleTap()`Yönteminde aşağıdaki kodu ekleyin. `uploadCloudAnchorAsync()`Sphere oluşturulduktan hemen sonra yönteminizi çağıracaktır. Yöntem döndüğünde, aşağıdaki kod Sphere ' de bir son güncelleştirme gerçekleştirir ve rengini mavi olarak değiştirir.
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-199&highlight=24-37)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-200&highlight=24-37)]
 
-Uygulamanızı bir kez daha yeniden [dağıtın](#trying-it-out) . Cihazınızın etrafında ilerleyin, ekrana dokunun ve Sphere 'nizi yerleştirin. Ancak, bu kez, fotoğraf makineniz, kamera kareleri toplandığı sırada rengi siyahtan beyaz olarak değiştirecek. Yeterli kare olduktan sonra Sphere, sarı olarak açılır ve bulut yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, uygulamanızın gönderdiği günlük `Logcat` iletilerini izlemek için Android Studio içindeki pencereyi de kullanabilirsiniz. Örneğin, çerçeve yakalamaları sırasında oturum ilerlemesi ve karşıya yükleme tamamlandıktan sonra bulutun döndürdüğü bağlayıcı tanımlayıcısı.
+Uygulamanızı bir kez daha yeniden [dağıtın](#trying-it-out) . Cihazınızın etrafında ilerleyin, ekrana dokunun ve Sphere 'nizi yerleştirin. Ancak, bu kez, fotoğraf makineniz, kamera kareleri toplandığı sırada rengi siyahtan beyaz olarak değiştirecek. Yeterli kare olduktan sonra Sphere, sarı olarak açılır ve bulut yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, `Logcat` uygulamanızın gönderdiği günlük iletilerini izlemek için Android Studio içindeki pencereyi de kullanabilirsiniz. Örneğin, çerçeve yakalamaları sırasında oturum ilerlemesi ve karşıya yükleme tamamlandıktan sonra bulutun döndürdüğü bağlayıcı tanımlayıcısı.
 
 ## <a name="locate-your-cloud-spatial-anchor"></a>Bulut uzamsal çıpası bulun
 
@@ -215,7 +215,7 @@ Bir bağlantı, buluta yüklendi, yeniden bulmaya başlamaya hazırız. İlk ola
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=45-48&highlight=3-4)]
 
-Ardından, aşağıdaki kodu `handleTap()` yönteminizin içine ekleyelim. Bu kod şu şekilde olur:
+Ardından, aşağıdaki kodu yönteminizin içine ekleyelim `handleTap()` . Bu kod şu şekilde olur:
 
 - Mevcut mavi kümizi ekrandan kaldırın.
 - Azure uzamsal Bağlayıcılarımızı oturumunuzu yeniden başlatın. Bu eylem, bulduğumuz bağlayıcının oluşturduğumuz yerel bağlantı yerine buluttan geldiğinden emin olur.
@@ -223,10 +223,10 @@ Ardından, aşağıdaki kodu `handleTap()` yönteminizin içine ekleyelim. Bu ko
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=handleTap&highlight=10-19)]
 
-Şimdi, sorgulamakta olduğumuz bağlayıcı bulunduğunda çağrılacak kodu açalım. `initializeSession()` Yönteminizin içinde aşağıdaki kodu ekleyin. Bu kod parçacığı, bulut uzamsal bağlayıcının bulunduğu bir yeşil Sphere oluşturacak & oluşturacaktır. Ayrıca, ekranı dokunarak bir kez daha yeniden etkinleştirerek tüm senaryoyu daha sonra tekrarlayabilirsiniz: başka bir yerel bağlayıcı oluşturun, karşıya yükleyin ve tekrar bulun.
+Şimdi, sorgulamakta olduğumuz bağlayıcı bulunduğunda çağrılacak kodu açalım. Yönteminizin içinde `initializeSession()` aşağıdaki kodu ekleyin. Bu kod parçacığı, bulut uzamsal bağlayıcının bulunduğu bir yeşil Sphere oluşturacak & oluşturacaktır. Ayrıca, ekranı dokunarak bir kez daha yeniden etkinleştirerek tüm senaryoyu daha sonra tekrarlayabilirsiniz: başka bir yerel bağlayıcı oluşturun, karşıya yükleyin ve tekrar bulun.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=initializeSession&highlight=34-53)]
 
-İşte bu kadar! Tüm senaryoyu sona erdirmek için uygulamanızı en son bir kez yeniden [dağıtın](#trying-it-out) . Cihazınızın etrafında ilerleyin ve siyah kürenin yer aldığı yere yerleştirin. Ardından, Sphere sarıya dönüşene kadar cihazınızı kamera çerçevelerini yakalamaya devam edin. Yerel çıpası karşıya yüklenecek ve Sphere 'niz mavi kullanacaktır. Son olarak, daha sonra ekranınızı bir kez daha dokunduktan sonra yerel çıpası kaldırıldıktan sonra bulut karşılığına yönelik sorgu yapacağız. Bulut uzamsal bağlantı noktası bulunana kadar cihazınızı etrafında taşımaya devam edin. Yeşil Sphere 'ın doğru konumda görünmesi gerekir ve tüm senaryoyu yeniden tekrarlayabilirsiniz &.
+Hepsi bu! Tüm senaryoyu sona erdirmek için uygulamanızı en son bir kez yeniden [dağıtın](#trying-it-out) . Cihazınızın etrafında ilerleyin ve siyah kürenin yer aldığı yere yerleştirin. Ardından, Sphere sarıya dönüşene kadar cihazınızı kamera çerçevelerini yakalamaya devam edin. Yerel çıpası karşıya yüklenecek ve Sphere 'niz mavi kullanacaktır. Son olarak, daha sonra ekranınızı bir kez daha dokunduktan sonra yerel çıpası kaldırıldıktan sonra bulut karşılığına yönelik sorgu yapacağız. Bulut uzamsal bağlantı noktası bulunana kadar cihazınızı etrafında taşımaya devam edin. Yeşil Sphere 'ın doğru konumda görünmesi gerekir ve tüm senaryoyu yeniden tekrarlayabilirsiniz &.
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-new-android-app-finished.md)]

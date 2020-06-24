@@ -12,14 +12,14 @@ ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 06/11/2020
 ms.author: allensu
-ms.openlocfilehash: b1ca26a63c910861d333f707d13946c5e046f599
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 717a9e9d3cc1dec350d0b4ace54687590f741768
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341023"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737300"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Öğretici: Azure CLı kullanarak bir NAT ağ geçidi oluşturma ve NAT hizmetini test etme
 
@@ -43,6 +43,7 @@ Aşağıdaki örnek **eastus2** konumunda **Myresourcegroupnat** adlı bir kayna
   az group create \
     --name myResourceGroupNAT \
     --location eastus2
+    
 ```
 
 ## <a name="create-the-nat-gateway"></a>NAT ağ geçidini oluşturma
@@ -56,6 +57,7 @@ Genel Internet 'e erişmek için NAT ağ geçidi için bir veya daha fazla genel
   --resource-group myResourceGroupNAT \
   --name myPublicIPsource \
   --sku standard
+  
 ```
 
 ### <a name="create-a-public-ip-prefix"></a>Genel IP öneki oluşturma
@@ -67,6 +69,7 @@ NAT ağ geçidiyle bir veya daha fazla genel IP adresi kaynağı, genel IP ön e
   --resource-group myResourceGroupNAT \
   --name myPublicIPprefixsource \
   --length 31
+  
 ```
 
 ### <a name="create-a-nat-gateway-resource"></a>NAT ağ geçidi kaynağı oluşturma
@@ -84,6 +87,7 @@ Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdak
     --public-ip-addresses myPublicIPsource \
     --public-ip-prefixes myPublicIPprefixsource \
     --idle-timeout 10       
+    
   ```
 
 Bu noktada, NAT ağ geçidi çalışır ve yok, bir sanal ağın hangi alt ağlarının bunu kullanması gerektiğini yapılandırmaktır.
@@ -101,11 +105,11 @@ Bir VM 'yi dağıtmadan ve NAT ağ geçidinizi test etmeden önce sanal ağı ol
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location eastus2 \
     --name myVnetsource \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetsource \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="configure-nat-service-for-source-subnet"></a>Kaynak alt ağ için NAT hizmetini yapılandırma
@@ -118,6 +122,7 @@ Bir VM 'yi dağıtmadan ve NAT ağ geçidinizi test etmeden önce sanal ağı ol
     --vnet-name myVnetsource \
     --name mySubnetsource \
     --nat-gateway myNATgateway
+    
 ```
 
 Internet hedeflerine giden tüm trafik artık NAT hizmetini kullanıyor.  UDR 'yi yapılandırmak gerekli değildir.
@@ -135,6 +140,7 @@ Kaynak VM 'ye erişmek için kullanılacak bir genel IP oluşturacağız. **Myre
     --resource-group myResourceGroupNAT \
     --name myPublicIPsourceVM \
     --sku standard
+    
 ```
 
 ### <a name="create-an-nsg-for-source-vm"></a>Kaynak VM için bir NSG oluşturma
@@ -145,6 +151,7 @@ Standart genel IP adresleri ' varsayılan olarak güvenli ' olduğundan, SSH eri
   az network nsg create \
     --resource-group myResourceGroupNAT \
     --name myNSGsource 
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>Kaynak VM 'de SSH uç noktasını kullanıma sunma
@@ -162,6 +169,7 @@ Kaynak VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH**adl�
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="create-nic-for-source-vm"></a>Kaynak VM için NIC oluşturma
@@ -176,6 +184,7 @@ Kaynak VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH**adl�
     --subnet mySubnetsource \
     --public-ip-address myPublicIPSourceVM \
     --network-security-group myNSGsource
+    
 ```
 
 ### <a name="create-a-source-vm"></a>Kaynak VM oluşturma
@@ -190,6 +199,7 @@ Kaynak VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH**adl�
     --image UbuntuLTS \
     --generate-ssh-keys \
     --no-wait
+    
 ```
 
 Komut hemen geri dönebilirken, VM 'nin dağıtılması birkaç dakika sürebilir.
@@ -207,11 +217,11 @@ Artık, NAT hizmeti tarafından, test yapmanıza olanak tanımak için çevrilmi
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location westus \
     --name myVnetdestination \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetdestination \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="create-public-ip-for-destination-vm"></a>Hedef VM için genel IP oluşturma
@@ -222,8 +232,8 @@ Kaynak VM 'ye erişmek için kullanılacak bir genel IP oluşturacağız. **Myre
   az network public-ip create \
   --resource-group myResourceGroupNAT \
   --name myPublicIPdestinationVM \
-  --sku standard \
-  --location westus
+  --sku standard
+  
 ```
 
 ### <a name="create-an-nsg-for-destination-vm"></a>Hedef VM için bir NSG oluşturma
@@ -233,8 +243,8 @@ Standart genel IP adresleri ' güvenli olarak güvenlidir ', SSH için gelen eri
 ```azurecli-interactive
     az network nsg create \
     --resource-group myResourceGroupNAT \
-    --name myNSGdestination \
-    --location westus
+    --name myNSGdestination
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>Hedef VM 'de SSH uç noktasını kullanıma sunma
@@ -252,6 +262,7 @@ Hedef VM 'ye SSH erişimi için NSG 'de bir kural oluşturacağız. **SSH**adlı
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>Hedef VM 'de HTTP uç noktasını kullanıma sunma
@@ -269,6 +280,7 @@ Hedef VM 'ye HTTP erişimi için NSG 'de bir kural oluşturacağız. **Myresourc
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 80
+    
 ```
 
 ### <a name="create-nic-for-destination-vm"></a>Hedef VM için NIC oluşturma
@@ -282,8 +294,8 @@ Hedef VM 'ye HTTP erişimi için NSG 'de bir kural oluşturacağız. **Myresourc
     --vnet-name myVnetdestination \
     --subnet mySubnetdestination \
     --public-ip-address myPublicIPdestinationVM \
-    --network-security-group myNSGdestination \
-    --location westus
+    --network-security-group myNSGdestination
+    
 ```
 
 ### <a name="create-a-destination-vm"></a>Hedef VM oluşturma
@@ -297,8 +309,8 @@ Hedef VM 'ye HTTP erişimi için NSG 'de bir kural oluşturacağız. **Myresourc
     --nics myNicdestination \
     --image UbuntuLTS \
     --generate-ssh-keys \
-    --no-wait \
-    --location westus
+    --no-wait
+    
 ```
 Komut hemen geri dönebilirken, VM 'nin dağıtılması birkaç dakika sürebilir.
 
@@ -312,6 +324,7 @@ Komut hemen geri dönebilirken, VM 'nin dağıtılması birkaç dakika sürebili
     --name myPublicIPdestinationVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -328,16 +341,14 @@ ssh <ip-address-destination>
 Oturum açtıktan sonra aşağıdaki komutları kopyalayıp yapıştırın.  
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get -y install nginx && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt -y install nginx && \
 sudo ln -sf /dev/null /var/log/nginx/access.log && \
 sudo touch /var/www/html/index.html && \
 sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
+
 ```
 
 Bu komutlar, sanal makinenizi güncelleştirir, NGINX 'i yükler ve bir 100 KB dosya oluşturur. Bu dosya, NAT hizmeti kullanılarak kaynak VM 'den alınacaktır.
@@ -354,6 +365,7 @@ Hedef VM ile SSH oturumunu kapatın.
     --name myPublicIPsourceVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -370,12 +382,9 @@ ssh <ip-address-source>
 NAT hizmetinin test edilmesine hazırlanmak için aşağıdaki komutları kopyalayıp yapıştırın.
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get install -y nload golang && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt install -y nload golang && \
 echo 'export GOPATH=${HOME}/go' >> .bashrc && \
 echo 'export PATH=${PATH}:${GOPATH}/bin' >> .bashrc && \
 . ~/.bashrc &&
@@ -411,6 +420,7 @@ Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) kom
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupNAT
+  
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

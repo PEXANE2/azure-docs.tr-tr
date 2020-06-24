@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: ad57fe01313957c4f3d23ef44d0e02ad11ab3fa8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780581"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262183"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarına sayfalama ekleme
 
 Sayfa numaralarına ve ikincinin sonsuz kaydırmasını temel alan iki farklı disk belleği sistemi uygulamayı öğrenin. Her iki sayfalama sistemi de yaygın olarak kullanılır ve sağ taraftaki seçim, sonuçlarla istediğiniz kullanıcı deneyimine bağlıdır. Bu öğretici, sayfalama sistemlerini [C# öğreticisinde oluşturulan projede oluşturur: ilk uygulamanızı oluşturma-Azure bilişsel arama](tutorial-csharp-create-first-app.md) öğreticisi.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Uygulamanızı numaralandırılmış sayfalama ile genişletin
 > * Sınırsız kaydırma ile uygulamanızı genişletme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -100,7 +100,7 @@ Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
 
 ### <a name="add-a-table-of-paging-options-to-the-view"></a>Görünüme bir sayfalama seçenekleri tablosu ekleyin
 
-1. İndex. cshtml dosyasını açın ve kapanış &lt;/Body&gt; etiketinden hemen önce aşağıdaki kodu ekleyin. Bu yeni kod, sayfalama seçeneklerinin bir tablosunu gösterir: ilk, önceki, 1, 2, 3, 4, 5, ileri, son.
+1. İndex. cshtml dosyasını açın ve kapanış/Body etiketinden hemen önce aşağıdaki kodu ekleyin &lt; &gt; . Bu yeni kod, sayfalama seçeneklerinin bir tablosunu gösterir: ilk, önceki, 1, 2, 3, 4, 5, ileri, son.
 
     ```cs
     @if (Model != null && Model.pageCount > 1)
@@ -181,7 +181,7 @@ Temel arama sayfası çözümünün açık olmasını sağlayabilirsiniz.
     }
     ```
 
-    Öğeleri düzgünce hizalamak için bir HTML tablosu kullanıyoruz. Ancak, her biri, denetleyiciyi daha @Html.ActionLink önce eklediğimiz **sayfalama** özelliğine göre farklı girdilerle oluşturulan **Yeni** bir modelle çağıran deyimlerden gelir.
+    Öğeleri düzgünce hizalamak için bir HTML tablosu kullanıyoruz. Ancak, @Html.ActionLink her biri, denetleyiciyi daha önce eklediğimiz **sayfalama** özelliğine göre farklı girdilerle oluşturulan **Yeni** bir modelle çağıran deyimlerden gelir.
 
     İlk ve son sayfa seçenekleri "First" ve "Last" gibi dizeler göndermez, bunun yerine doğru sayfa numaralarını gönderir.
 
@@ -424,7 +424,7 @@ Sonsuz kaydırma uygulamak için, sayfa numarası kaydırma öğelerinden herhan
 
 1. Sonuçları görüntüleyen index. cshtml dosyasının bölümünü bulun ( ** @if (model! = null)** ile başlar).
 
-2. Bölümünü aşağıdaki kodla değiştirin. Yeni ** &lt;&gt; div** bölümü, kaydırılabilir olması gereken alanı etrafında bulunur ve hem bir **overflow-y** özniteliği hem de "kaydırılabilir ()" adlı bir **OnScroll** işlevine çağrı ekler.
+2. Bölümünü aşağıdaki kodla değiştirin. Yeni ** &lt; div &gt; ** bölümü, kaydırılabilir olması gereken alanı etrafında bulunur ve hem bir **overflow-y** özniteliği hem de "kaydırılabilir ()" adlı bir **OnScroll** işlevine çağrı ekler.
 
     ```cs
         @if (Model != null)
@@ -447,7 +447,7 @@ Sonsuz kaydırma uygulamak için, sayfa numarası kaydırma öğelerinden herhan
         }
     ```
 
-3. Doğrudan döngünün altında, &lt;/div&gt; etiketinden sonra, **kaydırılan** işlevi ekleyin.
+3. Doğrudan döngünün altında, &lt; /div etiketinden sonra, &gt; **kaydırılan** işlevi ekleyin.
 
     ```javascript
         <script>
@@ -563,7 +563,7 @@ Denetleyiciye gönderilmesi gereken üç eylem vardır: uygulamanın ilk çalı�
         }
     ```
 
-4. **&lt;Liste dizesinde&gt;** sözdizimi hatası alıyorsanız, aşağıdaki **using** yönergesini denetleyici dosyasının baş üzerine ekleyin.
+4. **Liste &lt; &gt; dizesinde**sözdizimi hatası alıyorsanız, aşağıdaki **using** yönergesini denetleyici dosyasının baş üzerine ekleyin.
 
     ```cs
     using System.Collections.Generic;
@@ -578,7 +578,7 @@ Denetleyiciye gönderilmesi gereken üç eylem vardır: uygulamanın ilk çalı�
     !["Havuz" sonuçları aracılığıyla sonsuz kaydırma](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > İlk sayfada bir kaydırma çubuğunun göründüğünden emin olmak için sonuçların ilk sayfası, görüntülendikleri alanın yüksekliğini biraz daha aşmalıdır. Bizim örneğimizde **. Box1** , en fazla 30 piksel boyutunda, **. box2** , 100 piksel yüksekliğinde _ve_ 24 piksellik alt kenar boşluğuyla bulunur. Böylece her giriş 154 piksel kullanır. Üç giriş 3 x 154 = 462 piksel sürer. Dikey kaydırma çubuğunun göründüğünden emin olmak için, görüntüleme alanına yönelik bir yükseklik, 462 pikselden küçük, hatta 461 çalışıyor olmalıdır. Bu sorun yalnızca ilk sayfada, bir kaydırma çubuğu gösterildiğinizden emin olduktan sonra gerçekleşir. Güncelleştirilecek satır: ** &lt;div ID = "myDiv" Style = "width: 800px; height: 450px; overflow-y: kaydır;" OnScroll = "kaydırılan ()"&gt;**.
+    > İlk sayfada bir kaydırma çubuğunun göründüğünden emin olmak için sonuçların ilk sayfası, görüntülendikleri alanın yüksekliğini biraz daha aşmalıdır. Bizim örneğimizde **. Box1** , en fazla 30 piksel boyutunda, **. box2** , 100 piksel yüksekliğinde _ve_ 24 piksellik alt kenar boşluğuyla bulunur. Böylece her giriş 154 piksel kullanır. Üç giriş 3 x 154 = 462 piksel sürer. Dikey kaydırma çubuğunun göründüğünden emin olmak için, görüntüleme alanına yönelik bir yükseklik, 462 pikselden küçük, hatta 461 çalışıyor olmalıdır. Bu sorun yalnızca ilk sayfada, bir kaydırma çubuğu gösterildiğinizden emin olduktan sonra gerçekleşir. Güncelleştirilecek satır: ** &lt; div ID = "myDiv" Style = "width: 800px; height: 450px; overflow-y: kaydır;" OnScroll = "kaydırılan ()" &gt; **.
 
 2. Sonuçların sonuna kadar aşağı doğru kaydırın. Tüm bilgilerin artık tek bir görünüm sayfasında nasıl olduğunu fark edin. Herhangi bir sunucu çağrısı tetiklemeden, her şey için en üste doğru kaydırma yapabilirsiniz.
 

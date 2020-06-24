@@ -1,5 +1,5 @@
 ---
-title: Uçtan uca çözümü bağlama
+title: Uçtan uca çözüme bağlanma
 titleSuffix: Azure Digital Twins
 description: Cihaz verileri tarafından yönetilen uçtan uca bir Azure dijital TWINS çözümü oluşturmaya yönelik öğretici.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e824641f261fc920dd234ba8d4787fbd8ddffe48
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613389"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296993"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Uçtan uca çözüm oluşturma
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Ortamınızdaki canlı veriler tarafından yönetilen tam uçtan uca bir çözüm kurmak için, Azure dijital TWINS örneğinizi cihaz ve verilerin yönetimi için diğer Azure hizmetlerine bağlayabilirsiniz.
 
@@ -133,6 +136,8 @@ Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgile
 > [!NOTE]
 > Şu şekilde bir açılan pencere görebilirsiniz: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio 'Da Azure 'Da yayımlama işlevi: yayımlama kimlik bilgileri" border="false":::
 > Bu durumda, **Azure 'dan kimlik bilgilerini almayı dene** ve **Kaydet**' i seçin.
+>
+> *İşlevler çalışma zamanının sürümünün Azure 'da çalışan sürümle eşleşmediğinden*bir uyarı görürseniz, en son Azure işlevleri çalışma zamanı sürümüne yükseltmek için istemleri izleyin. Bu sorun, Bu öğreticinin başlangıcında *Önkoşullar* bölümünde önerilenden daha eski bir Visual Studio sürümü kullanıyorsanız meydana gelebilir.
 
 ### <a name="assign-permissions-to-the-function-app"></a>İşlev uygulamasına izin atama
 

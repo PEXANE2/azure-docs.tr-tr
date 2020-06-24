@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: ce3b3839319de38020b968ff8db1ee6713b29c47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 64cb864b50f44f70bb9ceccc9983641970116cc7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269971"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261452"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Öğretici: REST kullanarak Azure Storage 'dan JSON bloblarını dizine
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-+ [Azure depolama](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Depolama](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 + [Postman masaüstü uygulaması](https://www.getpostman.com/)
 + [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun 
 
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="download-files"></a>Dosyaları indirme
 
-[Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) Bu öğreticide kullanılan verileri içerir. Bu dosyayı kendi klasörüne indirip sıkıştırmasını açın. Veriler, bu öğretici için JSON 'a dönüştürüldü, [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)'tan kaynaklanır.
+[Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) Bu öğreticide kullanılan verileri içerir. Bu dosyayı kendi klasörüne indirip sıkıştırmasını açın. Veriler, bu öğretici için JSON 'a dönüştürüldü, [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)'tan kaynaklanır.
 
 ## <a name="1---create-services"></a>1-hizmet oluşturma
 
@@ -96,7 +96,7 @@ REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarın�
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
 ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
@@ -108,17 +108,17 @@ Postman’i başlatın ve bir HTTP isteği ayarlayın. Bu aracı hakkında bilgi
 
 Bu öğreticideki her çağrının istek yöntemleri **gönderi** ve **Get**' dir. Bir veri kaynağı, dizin ve Dizin Oluşturucu oluşturmak için arama hizmetinize üç API çağrısı yaparsınız. Veri kaynağı, depolama hesabınıza ve JSON verilerinize yönelik bir işaretçi içerir. Arama hizmetiniz, veriler yüklenirken bağlantı kurar.
 
-Üst bilgiler ' de, "Content-Type" `application/json` olarak ayarlayın `api-key` ve Azure bilişsel arama hizmetinizin yönetim API anahtarı olarak ayarlayın. Üst bilgileri ayarladıktan sonra bu alýþtýrmadaki her istek için kullanabilirsiniz.
+Üst bilgiler ' de, "Content-Type" olarak ayarlayın `application/json` ve `api-key` Azure bilişsel arama hizmetinizin yönetim API anahtarı olarak ayarlayın. Üst bilgileri ayarladıktan sonra bu alýþtýrmadaki her istek için kullanabilirsiniz.
 
   ![Postman istek URL 'SI ve üstbilgisi](media/search-get-started-postman/postman-url.png "Postman istek URL 'SI ve üstbilgisi")
 
-URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201**döndürmesi gerekir. JSON dizilerini kullanmak için genel olarak kullanılabilen api-Version vardır `2019-05-06`.
+URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201**döndürmesi gerekir. JSON dizilerini kullanmak için genel olarak kullanılabilen api-Version vardır `2019-05-06` .
 
 ## <a name="3---create-a-data-source"></a>3-veri kaynağı oluşturma
 
 [Veri kaynağı oluşturma API 'si](https://docs.microsoft.com/rest/api/searchservice/create-data-source) , hangi verilerin dizine oluşturulacağını belirten bir Azure bilişsel arama nesnesi oluşturur.
 
-1. Bu çağrının uç noktasını olarak `https://[service name].search.windows.net/datasources?api-version=2019-05-06`ayarlayın. `[service name]` değerini, arama hizmetinizin adıyla değiştirin. 
+1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/datasources?api-version=2019-05-06` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin. 
 
 1. Aşağıdaki JSON öğesini istek gövdesine kopyalayın.
 
@@ -161,7 +161,7 @@ URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201
     
 İkinci çağrı, tüm aranabilir verileri depolayan bir Azure Bilişsel Arama dizini oluşturan [Dizin API 'Si oluşturur](https://docs.microsoft.com/rest/api/searchservice/create-index). Dizin, tüm parametreleri ve parametrelerin özniteliklerini belirtir.
 
-1. Bu çağrının uç noktasını olarak `https://[service name].search.windows.net/indexes?api-version=2019-05-06`ayarlayın. `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
+1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/indexes?api-version=2019-05-06` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
 
 1. Aşağıdaki JSON öğesini istek gövdesine kopyalayın.
 
@@ -236,7 +236,7 @@ URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201
 
 Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine aktarır ve isteğe bağlı olarak veri yenilemeyi otomatikleştirmek için bir zamanlama sağlar. REST API [Dizin Oluşturucu oluşturur](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
+1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexers?api-version=2019-05-06` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
 
 1. Aşağıdaki JSON öğesini istek gövdesine kopyalayın.
 
@@ -281,7 +281,7 @@ Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine
 
 1. **Alınacak**fiili ' i değiştirin.
 
-1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true`. `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
+1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
 
 1. İsteği gönderin. Bu, bir belge sayısıyla birlikte, dizinde alınabilir olarak işaretlenmiş tüm alanları döndüren belirtilmemiş bir tam metin arama sorgusudur. Yanıt şöyle görünmelidir:
 
@@ -313,11 +313,11 @@ Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine
             . . . 
     ```
 
-1. Sonuçları daha `$select` az alanlarla sınırlamak için sorgu parametresini ekleyin: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`.  Bu sorgu için 100 belge eşleşir, ancak varsayılan olarak Azure Bilişsel Arama yalnızca sonuçlarda 50 ' i döndürür.
+1. `$select`Sonuçları daha az alanlarla sınırlamak için sorgu parametresini ekleyin: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true` .  Bu sorgu için 100 belge eşleşir, ancak varsayılan olarak Azure Bilişsel Arama yalnızca sonuçlarda 50 ' i döndürür.
 
    ![Parametre tabanlı sorgu](media/search-semi-structured-data/lastquery.png "Paramlanmış sorgu")
 
-1. Daha karmaşık sorguya örnek `$filter=MinimumAge ge 30 and MaximumAge lt 75`olarak, yalnızca en az bir parametre en az 30 ' a eşit veya daha büyük ve en az umage 75 ' den küçük olan sonuçları döndürür. `$select` İfadeyi `$filter` ifadesiyle değiştirin.
+1. Daha karmaşık sorguya örnek `$filter=MinimumAge ge 30 and MaximumAge lt 75` olarak, yalnızca en az bir parametre en az 30 ' a eşit veya daha büyük ve en az umage 75 ' den küçük olan sonuçları döndürür. `$select`İfadeyi `$filter` ifadesiyle değiştirin.
 
    ![Yarı yapılandırılmış arama](media/search-semi-structured-data/metadatashort.png)
 

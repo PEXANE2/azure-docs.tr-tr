@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: a105766b713ce44d800391e2e943f2ac864fa0df
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 4c96dfa078ec12e0681574629276c48af2c1760d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780632"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261469"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
 
 Azure Bilişsel Arama kullanarak bir dizinden arama sonuçlarını sorgulamak ve sunmak için bir Web arabirimi oluşturmayı öğrenin. Bu öğretici, bir arama sayfası oluşturmaya odaklanabilmeniz için mevcut, barındırılan bir dizinle başlar. Dizin, kurgusal otel verileri içeriyor. Temel bir sayfanız olduktan sonra, sayfalama, modeller ve bir tür ön deneyim dahil olmak üzere sonraki derslerde bunu geliştirebilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Geliştirme ortamı kurma
 > * Model veri yapıları
@@ -44,7 +44,7 @@ Bu bir çağrı Azure verilerinin bir aramasını başlatır ve sonuçları dön
 !["Havuz" aranıyor](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -81,7 +81,7 @@ Bu projeyi sıfırdan oluşturmak ve bu nedenle Azure Bilişsel Arama bileşenle
 
 Bu örnekte, genel kullanıma açık otel verileri kullanıyoruz. Bu veriler, yalnızca tanıtım verileri sağlamak amacıyla oluşturulan, 50 kurgusal otel adı ve açıklamalarının rastgele bir koleksiyonudur. Bu verilere erişebilmek için bir ad ve anahtar belirtmeniz gerekir.
 
-1. Yeni projenizde appSettings. json dosyasını açın ve varsayılan satırları aşağıdaki ad ve anahtarla değiştirin. Burada gösterilen API anahtarı bir anahtara örnek değildir, _yalnızca_ otel verilerine erişmeniz gereken anahtardır. AppSettings. JSON dosyanız şimdi şöyle görünmelidir.
+1. Yeni projenizde dosya appsettings.jsaçın ve varsayılan satırları aşağıdaki ad ve anahtarla değiştirin. Burada gösterilen API anahtarı bir anahtara örnek değildir, _yalnızca_ otel verilerine erişmeniz gereken anahtardır. Dosyanızdaki appsettings.jsşu şekilde görünmelidir.
 
     ```cs
     {
@@ -242,7 +242,7 @@ Modeller (C# sınıfları) istemci (görünüm), sunucu (denetleyici) ve ayrıca
     }
     ```
 
-    Bu sınıf kullanıcının girişini (**searchtext**) ve aramanın çıkışını (**resultlist**) içerir. Çıktının türü kritik, **documentsearchresult&lt;&gt;otel**, bu tür aramanın sonuçlarıyla tam olarak eşleştiğinden ve bu başvuruyu görünüme iletmemiz gerekiyor.
+    Bu sınıf kullanıcının girişini (**searchtext**) ve aramanın çıkışını (**resultlist**) içerir. Çıktının türü kritik, **Documentsearchresult &lt; otel &gt; **, bu tür aramanın sonuçlarıyla tam olarak eşleştiğinden ve bu başvuruyu görünüme iletmemiz gerekiyor.
 
 
 
@@ -252,7 +252,7 @@ Oluşturduğunuz proje varsayılan olarak bir dizi istemci görünümü oluştur
 
 Index. cshtml içeriğini tamamen silin ve aşağıdaki adımlarda dosyayı yeniden derleyin.
 
-1. Görünümde iki küçük resim kullanıyoruz. GitHub projesinden kendi kendinize veya görüntü genelinde kopyalayabilirsiniz: Azure-logo. png ve Search. png. Bu iki görüntü **Wwwroot/görüntüler** klasörüne yerleştirilmelidir.
+1. Görünümde iki küçük resim kullanıyoruz. GitHub projesinden kendi kendinize kullanabilir veya görüntü genelinde kopyalama yapabilirsiniz: azure-logo.png ve search.png. Bu iki görüntü **Wwwroot/görüntüler** klasörüne yerleştirilmelidir.
 
 2. Index. cshtml 'nin ilk satırı, istemci (görünüm) ve sunucu (denetleyici) arasında veri iletişim kurmak için kullanacağınız modele başvurmalıdır. Bu, oluşturduğumuz **Searchdata** modelidir. Bu satırı Index. cshtml dosyasına ekleyin.
 
@@ -502,7 +502,7 @@ Azure Bilişsel Arama çağrısı **Runqueryasync** yöntemi içinde kapsülleni
 
     Bu yöntemde, önce Azure yapılandırmanızın başlatılmış olduğundan emin olun, sonra bazı arama parametrelerini ayarlayın. **Select** parametresindeki alanların adları, **otel** sınıfındaki Özellik adlarıyla tamamen eşleşir. **Select** parametresini bırakmak mümkündür, bu durumda tüm özellikler döndürülür. Ancak, yalnızca verilerin bir alt kümesiyle ilgileniyorsanız, hiçbir **Select** parametresi ayarı verimsiz değildir. İlgilendiğiniz özellikleri belirterek, yalnızca bu özellikler döndürülür.
 
-    Arama için zaman uyumsuz çağrı (**model. resultList = await _indexClient. Documents. SearchAsync&lt;otel&gt;(model. searchtext, Parameters);**), bu öğretici ve uygulamanın her şeyi sağlar. **Documentsearchresult** sınıfı ilginç bir fikirdir ve iyi bir fikir (uygulama çalışırken) burada bir kesme noktası ayarlamak ve **model. resultlist**içeriğini incelemek için bir hata ayıklayıcı kullanmaktır. Bunun sezgisel olduğunu, daha fazla bilgi edinmek istediğiniz verileri sağlar.
+    Arama için zaman uyumsuz çağrı (**model. resultList = await _indexClient.Documstalar. SearchAsync &lt; otel &gt; (model. searchtext, Parameters);**), bu öğretici ve uygulamanın her şeyi ile ilgilidir. **Documentsearchresult** sınıfı ilginç bir fikirdir ve iyi bir fikir (uygulama çalışırken) burada bir kesme noktası ayarlamak ve **model. resultlist**içeriğini incelemek için bir hata ayıklayıcı kullanmaktır. Bunun sezgisel olduğunu, daha fazla bilgi edinmek istediğiniz verileri sağlar.
 
 Şimdi gerçeği.
 

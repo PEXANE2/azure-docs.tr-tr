@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 06/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01c239c30b24ad110d71c43b31448a0f5b29574b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72595042"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762592"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Öğretici: Azure AD için BlueJeans ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -88,10 +87,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.bluejeans.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.bluejeans.com`
+
+    a. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`http://samlsp.bluejeans.com`
+
+    a. **Yanıt URL** 'si metin kutusuna bir URL yazın:`https://bluejeans.com/sso/saml2/`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Azure AD istemci desteği ekibine yönelik BlueJeans](https://support.bluejeans.com/contact) ile iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Oturum açma URL 'SI değeri gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Azure AD istemci desteği ekibine yönelik BlueJeans](https://support.bluejeans.com/contact) ile iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+
+1. BlueJeans uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+
+    ![image](common/default-attributes.png)
+
+1. Daha fazlasına ek olarak, şema yanıtında aşağıda gösterilen bazı özniteliklerin daha fazla özniteliğe geri geçirilmesi beklenir. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+
+    | Name |  Kaynak özniteliği|
+    | ---------| --------- |
+    | Telefon | Kullanıcı. telephoneNumber |
+    | başlık | User. JobTitle |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -109,9 +123,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -163,9 +177,9 @@ Bu bölümde, Azure AD 'ye yönelik şema erişimi vererek Azure çoklu oturum a
 
     ![Değişiklikleri Kaydet](./media/bluejeans-tutorial/ic785874.png "Değişiklikleri Kaydet")
 
-    a. **Kullanıcı kimliği** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    a. **Kullanıcı kimliği** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
-    b. **E-posta** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. **E-posta** metin kutusuna yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     c. **Değişiklikleri Kaydet**' e tıklayın.
 
@@ -177,7 +191,7 @@ Bu bölümün amacı, Azure AD için şema olarak B. Simon adlı bir Kullanıcı
 
 1. **Azure AD** şirket sitenizde yönetici olarak şema olarak oturum açın.
 
-2. **Yönetıcı \> kullanıcıları \> Yönet Kullanıcı Ekle**' ye gidin.
+2. **Yönetıcı \> KULLANıCıLARı Yönet \> Kullanıcı Ekle**' ye gidin.
 
     ![Yönetici](./media/bluejeans-tutorial/ic785877.png "Yönetici")
 
@@ -198,9 +212,9 @@ Bu bölümün amacı, Azure AD için şema olarak B. Simon adlı bir Kullanıcı
 
     e. **Şirket** metin kutusuna şirketinizi girin.
 
-    f. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin `b.simon\@contoso.com`.
+    f. **E-posta adresi** metin kutusuna kullanıcının e-postasını girin `b.simon\@contoso.com` .
 
-    g. **Azure AD toplantısı için şema oluşturma ı. D** metin kutusuna toplantı kimliğinizi girin.
+    örneğin: **Azure AD toplantısı için şema oluşturma ı. D** metin kutusuna toplantı kimliğinizi girin.
 
     h. **Bir moderatör geçiş kodu seçin** metin kutusuna geçiş kodunuzu girin.
 
@@ -228,4 +242,3 @@ Erişim panelinde Azure AD kutucuğunun şeması ' nı tıklattığınızda, SSO
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Azure AD için BlueJeans 'ı deneyin](https://aad.portal.azure.com/)
-

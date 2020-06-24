@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: NAT ağ geçidi oluşturma-Azure portal'
+title: 'Öğretici: NAT Gateway oluşturma-Azure portal'
 titlesuffix: Azure Virtual Network NAT
 description: Bu hızlı başlangıçta Azure portal kullanarak NAT ağ geçidi oluşturma gösterilmektedir
 services: virtual-network
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 38cd4e9e7abdfe2d1548a8388a3f160cf3da1f1a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341244"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711417"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak NAT ağ geçidi oluşturma
+# <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak NAT ağ geçidi oluşturma
 
-Bu hızlı başlangıçta Azure sanal ağ NAT hizmetini nasıl kullanacağınız gösterilmektedir. Azure 'da bir sanal makine için giden bağlantı sağlamak üzere bir NAT ağ geçidi oluşturacaksınız. 
+Bu öğreticide, Azure sanal ağ NAT hizmetini nasıl kullanacağınız gösterilmektedir. Azure 'da bir sanal makine için giden bağlantı sağlamak üzere bir NAT ağ geçidi oluşturacaksınız. 
 
 Tercih ederseniz, [Azure CLI](quickstart-create-nat-gateway-cli.md)'yi kullanarak bu adımları uygulayabilirsiniz, [Azure PowerShell](quickstart-create-nat-gateway-powershell.md)veya Portal yerine bir [ARM şablonu](quickstart-create-nat-gateway-powershell.md) dağıtabilirsiniz.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
 

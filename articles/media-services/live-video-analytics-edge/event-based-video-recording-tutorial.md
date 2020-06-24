@@ -1,92 +1,98 @@
 ---
 title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanlı video kaydı-Azure
-description: Bu öğreticide, bulutta bulut ve kayıttan yürütmeye yönelik olay tabanlı bir video kaydı gerçekleştirmek için IoT Edge canlı video analizinin nasıl kullanılacağını öğreneceksiniz.
+description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 7ff8502688e2b507b8a576c177948f29c2248be4
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 938bae28b1a523e23ea9f8f1ba79bbe6c487d5db
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456681"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765208"
 ---
-# <a name="tutorial-event-based-video-recording-to-cloud-and-playback-from-cloud"></a>Öğretici: bulutta buluta ve kayıttan yürütmeye yönelik olay tabanlı video kaydı
+# <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 
-Bu öğreticide canlı video analizinin IoT Edge bulutta Media Services üzere seçmeli olarak kaydetmek için nasıl kullanılacağını öğreneceksiniz. Bu kullanım örneği, bu öğreticide [olay tabanlı video kaydı](event-based-video-recording-concept.md) (EVR) olarak adlandırılır. Bunu gerçekleştirmek için, videodaki nesneleri aramak ve video kliplerini yalnızca belirli bir nesne türü algılandığında kaydetmek için bir nesne algılama AI modeli kullanacaksınız. Ayrıca, Media Services kullanarak kayıtlı video kliplerini kayıttan yürütmeyi de öğreneceksiniz. Bu, ilgi çekici bir video klip Arşivi tutan çeşitli senaryolar için yararlıdır.
+Bu öğreticide, Bulutta Azure Media Services canlı bir video kaynağının bölümlerini seçmeli olarak kaydetmek için Azure IoT Edge Azure Live video analizlerinin nasıl kullanılacağını öğreneceksiniz. Bu kullanım örneği, bu öğreticide [olay tabanlı video kaydı](event-based-video-recording-concept.md) (EVR) olarak adlandırılır. Canlı videonun bölümlerini kaydetmek için bir nesne algılama AI modeli kullanarak videodaki nesneleri arayabilir ve video kliplerini yalnızca belirli bir nesne türü algılandığında kaydedebilirsiniz. Ayrıca, Media Services kullanarak kayıtlı video kliplerini nasıl kayıttan çalıştıracağınızı öğreneceksiniz. Bu özellik, ilgi çekici bir video klip Arşivi tutmanın gerektiği çeşitli senaryolar için yararlıdır. 
+
+Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * İlgili kaynakları ayarlayın
-> * EVR 'yi gerçekleştiren kodu inceleyin
-> * Örnek kodu çalıştırma
-> * Sonuçları İnceleme ve videoyu görüntüleme
+> * İlgili kaynakları ayarlayın.
+> * EVR 'yi gerçekleştiren kodu inceleyin.
+> * Örnek kodu çalıştırın.
+> * Sonuçları inceleyin ve videoyu görüntüleyin.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="suggested-pre-reading"></a>Önerilen önceden okuma  
 
-Aşağıdaki belge sayfalarını okumanız önerilir
+Başlamadan önce şu makaleleri okuyun:
 
 * [IoT Edge genel bakış üzerinde canlı video analizi](overview.md)
 * [IoT Edge terminolojisinde canlı video analizi](terminology.md)
 * [Medya grafiği kavramları](media-graph-concept.md) 
 * [Olay tabanlı video kaydı](event-based-video-recording-concept.md)
 * [Öğretici: IoT Edge modülünü geliştirme](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
-* [Dağıtım. *. Template. JSON nasıl düzenlenir](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
+* [Dağıtımı düzenleme. * .template.js](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * [IoT Edge dağıtım bildiriminde yolların nasıl bildirilemeyeceğini gösteren](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) bölüm
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticinin Önkoşulları aşağıdaki gibidir
+Bu öğreticinin önkoşulları şunlardır:
 
-* [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) uzantısı ve [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) uzantısı ile geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
+* [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) ve [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) uzantıları ile geliştirme makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
 
     > [!TIP]
-    > Docker 'ı yüklemek isteyip istemediğiniz sorulabilir. Bu istemi yoksayabilirsiniz.
+    > Docker 'ı yüklemek isteyip istemediğiniz sorulabilir. Bu istemi yoksayın.
 * Geliştirme makinenizde [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer) .
-* [Canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) doldurun ve [ortamı ayarlayın](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/detect-motion-emit-events-quickstart?branch=release-preview-media-services-lva#set-up-the-environment)
+* [Canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)doldurun ve [ortamı ayarlayın](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/detect-motion-emit-events-quickstart?branch=release-preview-media-services-lva#set-up-the-environment)
 
-Yukarıdaki adımların sonunda aşağıdakiler dahil olmak üzere Azure aboneliğine dağıtılan belirli Azure kaynakları olacaktır:
+Bu adımların sonunda, Azure aboneliğinizde ilgili Azure kaynaklarınızın dağıtılması gerekir:
 
-* IoT Hub
-* Depolama hesabı
+* Azure IoT Hub
+* Azure Storage hesabı
 * Azure Media Services hesabı
-* Azure 'da [IoT Edge Runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) yüklüyken Linux sanal makinesi
+* Azure 'da [IoT Edge çalışma zamanı](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) yüklü olan Linux VM
 
 ## <a name="concepts"></a>Kavramlar
 
-Olay tabanlı video kaydı (EVR), bir olay tarafından tetiklenen videoyu kaydetme sürecini ifade eder. Bu olay, video sinyalinin içinden (örneğin, videoda hareketli bir nesneyi algılayarak) veya bağımsız bir kaynaktan (örneğin, bir kapısının açılması) oluşturulabilir. Alternatif olarak, yalnızca bir ınpoger hizmeti belirli bir olayın oluştuğunu algıladığında kayıt tetikleyebilirsiniz.  Bu öğreticide, bir otobana hareket eden bir eğitim videosu kullanacaksınız ve her kamyon algılandığında video kliplerini kaydedecaksınız.
+Olay tabanlı video kaydı, bir olay tarafından tetiklenen videoyu kaydetme sürecini ifade eder. Bu olay şu kaynaktan oluşturulabilir:
+- Video sinyalinin kendisini işleme, örneğin, videoda hareketli bir nesne algılandıktan sonra.
+- Bağımsız bir kaynak, örneğin kapısının açılış. 
+
+Alternatif olarak, yalnızca bir ınpoger hizmeti belirli bir olayın oluştuğunu algıladığında kayıt tetikleyebilirsiniz. Bu öğreticide, bir otobana hareket eden bir eğitim videosunu kullanacaksınız ve her kamyon algılandığında video kliplerini kaydedeceksiniz.
 
 ![Medya grafiği](./media/event-based-video-recording-tutorial/overview.png)
 
-Yukarıdaki diyagramda bir [medya grafiğinin](media-graph-concept.md) bir resim gösterimi ve istenen senaryoyu gerçekleştiren ek modüller bulunur. Dahil dört IoT Edge modül vardır:
+Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
 
 * IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
-* Bu öğreticide derleyip dağıtacağınızı nesneleri saymak ve filtrelemek için özel bir modül (Yukarıdaki diyagramda nesne sayacı olarak adlandırılır).
+* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
+* Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
 * Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
     
-    Diyagramda gösterildiği gibi, sanal grafiklerde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanarak sanal bir canlı videoyu (bir otoyol üzerinde trafik) yakalayabilir ve bu videoyu iki yola gönderebilirsiniz.
+Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
 
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir ve bu da çerçeveleri (görüntü olarak) AI modülüne (bir nesne algılayıcısı olan YOLO v3 –) geçirir ve sonuçları alır. Bu, model tarafından algılanan nesneler (yani, trafikte araçlar) olacaktır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
-* Nesne sayaç modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Belirli bir türdeki nesneleri arayan bu iletileri denetler (bir ayar ile yapılandırılır). Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu "nesne bulundu" iletileri daha sonra medya grafiğinin IoT Hub kaynak düğümüne yönlendirilir. Böyle bir ileti alındığında, medya grafiğindeki IoT Hub kaynak düğümü, [sinyal kapısı işlemci](media-graph-concept.md#signal-gate-processor) düğümünü tetikleyip, ikincisinin yapılandırılmış bir süre için açılmasını sağlar. Video, o süre için varlık havuzu düğümüne ağ geçidi üzerinden akar. Canlı akışın bu bölümü daha sonra [varlık havuzu](media-graph-concept.md#asset-sink) düğümü aracılığıyla Azure Media Service hesabınızdaki bir [varlığa](terminology.md#asset) kaydedilir.
+* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
+* ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu "nesne bulundu" iletileri daha sonra medya grafiğinin IoT Hub kaynak düğümüne yönlendirilir. Böyle bir ileti alındığında, medya grafiğindeki IoT Hub kaynak düğümü, [sinyal kapısı işlemci](media-graph-concept.md#signal-gate-processor) düğümünü tetikler. Sinyal kapısı işlemci düğümü daha sonra yapılandırılan bir süre için açılır. Video, o süre için varlık havuzu düğümüne ağ geçidi üzerinden akar. Canlı akışın bu bölümü daha sonra [varlık havuzu](media-graph-concept.md#asset-sink) düğümü aracılığıyla Azure Media Services hesabınızdaki bir [varlığa](terminology.md#asset) kaydedilir.
 
 ## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 
-Başlamadan önce, [önkoşullardan](#prerequisites)3. madde işaretini tamamladığınızdan emin olun. Kaynak kurulum betiği bittikten sonra, klasör yapısını göstermek için küme ayraçları üzerine tıklayın. ~/CloudDrive/LVA-Sample dizininde oluşturulmuş birkaç dosya görürsünüz.
+Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini tamamladığınızdan emin olun. Kaynak kurulum betiği bittikten sonra, klasör yapısını göstermek için süslü ayraçları seçin. ~/CloudDrive/LVA-Sample dizininde oluşturulmuş birkaç dosya görürsünüz.
 
 ![Uygulama ayarları](./media/quickstarts/clouddrive.png)
 
-Bu öğreticide ilgilendiğiniz:
+Bu öğreticide ilgilendiğiniz dosyalar şunlardır:
 
-* ~/CloudDrive/LVA-Sample/Edge-Deployment/.exe-Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
-* ~/CloudDrive/LVA-Sample/AppSetting.exe-örnek kodu çalıştırmak için Visual Studio Code tarafından kullanılır.
+* **~/CloudDrive/LVA-Sample/Edge-Deployment/.exe**: Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
+* **~/CloudDrive/LVA-Sample/appsetting.json**: örnek kodu çalıştırmak için Visual Studio Code tarafından kullanılır.
 
-Aşağıdaki adımlarda bu dosyalara ihtiyacınız olacak.
+Bu adımlar için dosyalara ihtiyacınız olacaktır.
 
-1. Depoyu buradan kopyalayın https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
+1. GitHub bağlantısından depoyu kopyalayın https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp .
 1. Visual Studio Code başlatın ve depoyu indirdiğiniz klasörü açın.
-1. Visual Studio Code ' de, "src/buluttan cihaza-Console-App" klasörüne gidin ve "appSettings. JSON" adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
-1. İçeriği ~/CloudDrive/LVA-Sample/appSettings.json dosyasından kopyalayın. Metin şöyle görünmelidir:
+1. Visual Studio Code, src/buluttan cihaza-Console-App klasörüne gidin ve **üzerindeappsettings.js**adlı bir dosya oluşturun. Bu dosya, programı çalıştırmak için gereken ayarları içerir.
+1. Dosyadaki ~/CloudDrive/LVA-Sample/appsettings.jsiçeriğini kopyalayın. Metin şöyle görünmelidir:
 
     ```
     {  
@@ -98,8 +104,8 @@ Aşağıdaki adımlarda bu dosyalara ihtiyacınız olacak.
 
     IoT Hub bağlantı dizesi, Azure IoT Hub aracılığıyla Edge modüllerine komut göndermek için Visual Studio Code kullanmanıza olanak sağlar.
     
-1. Sonra, "src/Edge" klasörüne gidin ve ". env" adlı bir dosya oluşturun.
-1. İçeriği ~/CloudDrive/LVA-Sample/-env dosyasından kopyalayın. Metin şöyle görünmelidir:
+1. Ardından src/Edge klasörüne gidin ve **. env**adlı bir dosya oluşturun.
+1. ~/CloudDrive/LVA-Sample/.exe adlı dosyadaki içeriği kopyalayın. Metin şöyle görünmelidir:
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -118,77 +124,77 @@ Aşağıdaki adımlarda bu dosyalara ihtiyacınız olacak.
 
 ## <a name="examine-the-template-file"></a>Şablon dosyasını inceleyin 
 
-Önceki adımda Visual Studio Code başlattınız ve örnek kodu içeren klasörü açcaksınız.
+Önceki adımda Visual Studio Code başladıysanız ve örnek kodu içeren klasörü açtınız.
 
-Visual Studio Code, "src/Edge" e gidin. Oluşturduğunuz. env dosyasının yanı sıra birkaç dağıtım şablonu dosyası görürsünüz. Bu şablon, sınır cihazına (Azure Linux VM) hangi Edge modüllerinin dağıtım olacağını tanımlar. . Env dosyası, medya hizmeti kimlik bilgileri gibi bu şablonlarda kullanılan değişkenlerin değerlerini içerir.
+Visual Studio Code, src/Edge öğesine gidin. Oluşturduğunuz. env dosyası ve birkaç dağıtım şablonu dosyası görürsünüz. Bu şablon, sınır cihazına (Azure Linux VM) hangi Edge modüllerinin dağıtılacağını tanımlar. . Env dosyası, Media Services kimlik bilgileri gibi bu şablonlarda kullanılan değişkenlerin değerlerini içerir.
 
-"Src/Edge/Deployment. objectCounter. Template. JSON" öğesini açın. "Modüller" bölümünde listelenen öğelere (kavramlar bölümünde) karşılık gelen dört giriş olduğunu unutmayın:
+Src/Edge/deployment.objectCounter.template.jsaçın. **Modüller** bölümünde, önceki "kavramlar" bölümünde listelenen öğelere karşılık gelen dört giriş vardır:
 
-* lvaEdge: IoT Edge modülünde canlı video analizi
-* yolov3 – bu, YOLO v3 modeli kullanılarak oluşturulan AI modülüdür
-* rtspsim: Bu RTSP simülatör
-* objectCounter: yolov3 'deki sonuçlarda belirli nesneler için görünen modüldür
+* **Lvaedge**: bu, IoT Edge modülündeki canlı video analizinden.
+* **yolov3**: Bu, Yolo v3 modeli KULLANıLARAK oluşturulan AI modülüdür.
+* **rtspsim**: Bu RTSP simülatör.
+* **Objectcounter**: yolov3 'deki sonuçlarda belirli nesneler için görünen modüldür.
 
-ObjectCounter modülü için, "görüntü" değeri için kullanılan dizeye ($ {MODULES. objectCounter}) bakın; bu, IoT Edge bir modül geliştirmeye yönelik [öğreticiye](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux) dayanır. Visual Studio Code, nesne sayaç modülü için kodun "src/Edge/modules/objectCounter" altında olduğunu otomatik olarak tanır. 
+ObjectCounter modülü için, "görüntü" değeri için kullanılan dizeye ($ {MODULES. objectCounter}) bakın. Bu, IoT Edge modülünü geliştirmeye yönelik [öğreticiye](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux) dayanır. Visual Studio Code, objectCounter modülünün kodunun src/Edge/modules/objectCounter altında olduğunu otomatik olarak tanır. 
 
-IoT Edge dağıtım bildiriminde yolları bildirme hakkında [Bu](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) bölümü okuyun ve ardından şablon JSON dosyasındaki yolları inceleyin. Nasıl yapılacağını aklınızda edin:
+IoT Edge dağıtım bildiriminde yolları bildirme hakkında [Bu bölümü](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) okuyun. Ardından, şablon JSON dosyasındaki yolları inceleyin. Nasıl yapılacağını aklınızda edin:
 
 * LVAToObjectCounter, belirli olayları objectCounter modülündeki belirli bir uç noktaya göndermek için kullanılır.
 * ObjectCounterToLVA, lvaEdge modülünde belirli bir uç noktaya (IoT Hub kaynak düğümü olması gerekir) bir tetikleyici olayı göndermek için kullanılır.
 * objectCounterToIoTHub, bu öğreticiyi çalıştırdığınızda objectCounter 'dan çıktıyı görmenizi sağlayacak bir hata ayıklama aracı olarak kullanılır.
 
 > [!NOTE]
-> "Kamyon" olarak etiketlenen nesneleri en az %50 olan bir güvenilirlik düzeyi ile aramak üzere ayarlanan objectCounter modülünün istenen özelliklerini denetleyin.
+> "Kamyon" olarak etiketlenen nesneleri en az %50 olan bir güvenilirlik düzeyine bakmak üzere ayarlanan objectCounter modülünün istenen özelliklerini denetleyin.
 
 ## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>IoT Edge dağıtım bildirimini oluşturma ve dağıtma 
 
-Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığını ve bu modüllerin yapılandırma ayarlarını tanımlar. Şablon dosyasından böyle bir bildirim oluşturmak için bu adımları izleyin ve ardından bunu Edge cihazına dağıtın.
+Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığını ve bu modüllerin yapılandırma ayarlarını tanımlar. Şablon dosyasından bir bildirim oluşturmak ve ardından bunu Edge cihazına dağıtmak için bu adımları izleyin.
 
-Visual Studio Code kullanarak, Docker 'da oturum açmak ve "çözümü derlemek ve IoT Edge göndermek" için [Bu](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) yönergeleri izleyin, ancak bu adım için src/Edge/Deployment. objectcounter. Template. JSON kullanın.
+Visual Studio Code kullanarak Docker 'da oturum açmak için [Bu yönergeleri](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) izleyin. Ardından **IoT Edge çözüm oluştur ve Gönder '** i seçin. Bu adım için src/Edge/deployment.objectCounter.template.jskullanın.
 
 ![IoT Edge çözümü oluşturun ve gönderin](./media/event-based-video-recording-tutorial/build-push.png)
 
-Bu, nesne sayma için objectCounter modülünü oluşturur ve görüntüyü Azure Container Registry (ACR) ' e gönderir.
+Bu eylem nesne sayma için objectCounter modülünü oluşturur ve görüntüyü Azure Container Registry iter.
 
 * Ortam değişkenlerinin. env dosyasında tanımlı CONTAINER_REGISTRY_USERNAME_myacr ve CONTAINER_REGISTRY_PASSWORD_myacr sahip olup olmadığını denetleyin.
 
-Yukarıdaki adım src/Edge/config/Deployment. objectCounter. AMD64. JSON konumunda IoT Edge dağıtım bildirimini oluşturacaktır. Bu dosyaya sağ tıklayın ve "tek cihaz için dağıtım oluştur" düğmesine tıklayın.
+Bu adım, üzerinde src/Edge/config/deployment.objectCounter.amd64.jsüzerinde IoT Edge dağıtım bildirimi oluşturur. Bu dosyaya sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' u seçin.
 
-![Tek bir cihaz için dağıtım oluşturma](./media/quickstarts/create-deployment-single-device.png)
+![Tek cihaz için dağıtım oluştur](./media/quickstarts/create-deployment-single-device.png)
 
-IoT Edge, canlı video analiziyle ilgili ilk öğreticeniz varsa, Visual Studio Code ıothub bağlantı dizesini girmek isteyip isteirsiniz. Bunu appSettings. json dosyasından kopyalayabilirsiniz.
+IoT Edge üzerinde canlı video analiziyle ilgili ilk öğreticeniz varsa, Visual Studio Code IoT Hub bağlantı dizesini girmenizi ister. Dosyadaki appsettings.jskopyalayabilirsiniz.
 
-Ardından Visual Studio Code bir IoT Hub cihazı seçmenizi ister. IoT Edge cihazınızı seçin ("LVA-örnek-cihaz" olmalıdır).
+Sonra, Visual Studio Code IoT Hub bir cihaz seçmenizi ister. LVA-örnek-cihaz olması gereken IoT Edge cihazınızı seçin.
 
 Bu aşamada, Edge modüllerinin IoT Edge cihazınıza dağıtılması başladı.
-Yaklaşık 30 saniye içinde, Visual Studio Code sol alt bölümünde Azure IoT Hub yenileyin ve dağıtılan 4 modül olduğunu görmeniz gerekir (adları yeniden unutmayın: lvaEdge, rtspsim, yolov3 ve objectCounter).
+Yaklaşık 30 saniye içinde, Visual Studio Code sol alt bölümdeki Azure IoT Hub yenileyin. LvaEdge, rtspsim, yolov3 ve objectCounter adlı dört modülün dağıtıldığını görmeniz gerekir.
 
-![4 modül dağıtıldı](./media/event-based-video-recording-tutorial/iot-hub.png)
+![Dört modül dağıtıldı](./media/event-based-video-recording-tutorial/iot-hub.png)
 
 ## <a name="prepare-for-monitoring-events"></a>İzleme olaylarını hazırlama
 
-Nesne sayaç modülünün ve IoT Edge modülündeki canlı video analizinden olayları görmek için şu adımları izleyin:
+ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden olayları görmek için şu adımları izleyin:
 
-1. Visual Studio Code Gezgin bölmesini açın ve sol alt köşedeki Azure IoT Hub arayın.
-1. Cihazlar düğümünü genişletin.
-1. LVA-örnek-cihazında sağ-Clink ve **yerleşik olay Izlemeyi Izlemeye başla**seçeneğini seçti.
+1. Visual Studio Code Gezgin bölmesini açın ve sol alt köşedeki **Azure IoT Hub** arayın.
+1. **Cihazlar** düğümünü genişletin.
+1. LVA-örnek-cihaz dosyasına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
 
-![Yerleşik olay uç noktasını izlemeye başla](./media/quickstarts/start-monitoring-iothub-events.png)
+   ![Yerleşik olay uç noktasını Izlemeye başla](./media/quickstarts/start-monitoring-iothub-events.png)
 
 ## <a name="run-the-program"></a>Programı çalıştırma
 
-1. Visual Studio Code, "src/Cloud-to-Device-Console-App/Operations. JSON" öğesine gidin
+1. Visual Studio Code ' de, src/buluttan cihaza-Console-App/operations.json ' a gidin.
 
-1. GraphTopologySet düğümü altında aşağıdakileri düzenleyin:
+1. **Graphtopologyset** düğümü altında aşağıdakileri düzenleyin:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
     
-1. Ardından, Graphınstanceset ve Graphtopologyıdelete, Düzenle, düğümleri altında
+1. Ardından, **Graphınstanceset** ve **Graphtopologydelete** düğümlerinin altında şunları düzenleyin:
 
     `"topologyName" : "EVRtoAssetsOnObjDetect"`
-1. Bir hata ayıklama oturumu başlatın (F5 tuşuna basın). TERMINAL penceresinde yazdırılmış bazı iletileri görmeye başlayacaksınız.
+1. F5 ' i seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde yazdırılmış bazı iletiler görürsünüz.
 
-1. Operations. JSON, Graphtopologyılist ve Graphınstancelist çağrıları ile başlatılır. Önceki hızlı başlangıçlardan veya öğreticilerden sonra kaynakları temizlediyseniz, bu, boş listeler döndürür ve ardından ENTER tuşuna, aşağıdaki gibi bir giriş için duraklatırsınız:
+1. operations.jsdosya üzerinde Graphtopologyılist ve Graphınstancelist çağrıları ile başlatılır. Önceki hızlı başlangıçlardan veya öğreticilerden sonra kaynakları temizlediyseniz, bu eylem, gösterildiği gibi, **ENTER**' u seçmeniz için boş listeler ve duraklamalar döndürür:
 
     ```
     --------------------------------------------------------------------------
@@ -205,9 +211,10 @@ Nesne sayaç modülünün ve IoT Edge modülündeki canlı video analizinden ola
     Executing operation WaitForInput
     Press Enter to continue
     ```
-    1. TERMINAL penceresinde "Enter" tuşuna bastığınızda, bir sonraki doğrudan yöntem çağrısı kümesi yapılır.
-     * Yukarıdaki Topologyıurl 'yi kullanarak Graphtopologyıset öğesine çağrı.
-     * Aşağıdaki gövdeyi kullanarak Graphınstanceset öğesine çağrı.
+
+1. **TERMINAL** penceresinde **ENTER** seçeneğini belirledikten sonra, bir sonraki doğrudan yöntem çağrısı kümesi yapılır:
+   * Önceki Topologyıurl kullanarak Graphtopologyıset çağrısı
+   * Aşağıdaki gövdeyi kullanarak Graphınstanceset öğesine çağrı
      
         ```
         {
@@ -234,33 +241,33 @@ Nesne sayaç modülünün ve IoT Edge modülündeki canlı video analizinden ola
         }
         ```
     
-     * Graph örneğini başlatmak ve video akışını başlatmak için Graphınstanceactivate öğesine yapılan çağrı
-     * Grafik örneğinin gerçekten çalışır durumda olduğunu göstermek için Graphınstancelist öğesine yapılan ikinci bir çağrı
+   * Graf örneğini başlatmak ve video akışını başlatmak için Graphınstanceactivate çağrısı
+   * Grafik örneğinin çalışır durumda olduğunu göstermek için Graphınstancelist öğesine yapılan ikinci çağrı
      
-1. TERMINAL penceresindeki çıktı, şimdi ' devam etmek için ENTER tuşuna basın ' isteminde duraklatılır. Şu an "Enter" tuşuna basmayın. Daha sonra, çağrdığınız doğrudan yöntemler için JSON yanıtı yüklerini görmek üzere yukarı doğru gezinebilirsiniz.
+1. **TERMINAL** penceresindeki çıktı, şimdi **devam etmek Için ENTER tuşuna basarak** duraklatılır. Şu anda **ENTER** ' ı seçmeyin. Doğrudan çağrdığınız yöntemler için JSON yanıtı yüklerini görmek üzere yukarı kaydırın.
 
-1. Artık Visual Studio Code çıkış penceresine geçiş yaparsanız, IoT Edge modülündeki canlı video analizi tarafından IoT Hub gönderilen iletileri görürsünüz.
+1. Artık Visual Studio Code **Çıkış** penceresine geçerseniz, IoT Edge modülündeki canlı video analizi tarafından IoT Hub gönderilen iletileri görürsünüz.
 
-     * Bu iletiler aşağıdaki bölümde ele alınmıştır.
+   Bu iletiler aşağıdaki bölümde ele alınmıştır.
      
-1. Grafik örneği çalışmaya devam eder ve videoyu kaydeder; RTSP simülatörü kaynak videoyu döngüye sokacaktır. Aşağıdaki bölümde açıklandığı gibi iletileri gözden geçirin ve ardından örneği durdurmak için, TERMINAL penceresine dönün ve "Enter" tuşuna basın. Kaynakları temizlemek için sonraki çağrı dizisi yapılır:
+1. Grafik örneği çalışmaya devam eder ve videoyu kaydeder. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Aşağıdaki bölümde açıklandığı gibi iletileri gözden geçirin. Ardından, örneği durdurmak için, **TERMINAL** penceresine dönün ve **ENTER**' u seçin. Bir sonraki çağrı dizisi, kullanarak kaynakları temizlemek için yapılır:
 
-     * Grafik örneğini devre dışı bırakmak için Graphınstancedeactivate öğesine çağrı
-     * Örneği silmek için Graphınstancedelete öğesine çağrı
-     * Topolojiyi silmek için Graphtopologyıdelete çağrısı
-     * Listenin artık boş olduğunu göstermek için Graphtopologyılist öğesine yapılan son çağrı
+   * Graph örneğini devre dışı bırakmak için Graphınstancedeactivate öğesine bir çağrı.
+   * Örneği silmek için Graphınstancedelete öğesine çağrı.
+   * Topolojiyi silmek için Graphtopologyıdelete çağrısı.
+   * Listenin artık boş olduğunu göstermek için Graphtopologyılist öğesine yapılan son çağrı.
 
 ## <a name="interpret-the-results"></a>Sonuçları yorumlama 
 
-Medya grafiğini çalıştırdığınızda IoT Edge modülündeki canlı video analizi, IoT Edge hub 'ına belirli tanılama ve çalışma olayları gönderir. Bu olaylar, "gövde" bölümünü ve "applicationProperties" bölümünü içeren Visual Studio Code çıkış penceresinde gördüğünüz iletilerdir. Bu bölümlerin neyi temsil ettiğini anlamak için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+Medya grafiğini çalıştırdığınızda IoT Edge modülündeki canlı video analizi, IoT Edge hub 'ına belirli tanılama ve çalışma olayları gönderir. Bu olaylar, Visual Studio Code **Çıkış** penceresinde gördüğünüz iletilerdir. Bir gövde bölümü ve bir applicationProperties bölümü içerirler. Bu bölümlerin neyi temsil ettiğini anlamak için bkz. [IoT Hub Iletileri oluşturma ve okuma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
 
 Aşağıdaki iletilerde, uygulama özellikleri ve gövdenin içeriği canlı video analizi modülü tarafından tanımlanır.
 
-## <a name="diagnostic-events"></a>Tanılama olayları
+## <a name="diagnostics-events"></a>Tanılama olayları
 
 ### <a name="mediasessionestablished-event"></a>Mediasessionkurulduğu olayı 
 
-Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü RTSP simülatör kapsayıcısı üzerinde çalışan RTSP sunucusuna bağlanmaya çalışır. Başarılı olursa, bu olayı yazdıracaktır. Olay türünün Microsoft. Media. MediaGraph. Diagnostics. Mediasessionkurdu olduğunu unutmayın.
+Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü RTSP simülatör kapsayıcısı üzerinde çalışan RTSP sunucusuna bağlanmaya çalışır. Başarılı olursa, bu olay yazdırılır. Olay türü Microsoft. Media. MediaGraph. Diagnostics. Mediasessionsetup ' tur.
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -279,20 +286,16 @@ Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü RTSP simülatör k
 ```
 
 
-* İleti bir tanılama olayıdır, Mediasessionkurulan, RTSP kaynak düğümünün (konu) RTSP simülatörü ile bağlantı kurabildiğini ve (sanal) canlı bir akış almaya başlayabileceğini gösterir.
-
-* ApplicationProperties 'teki "Subject" değeri, iletinin oluşturulduğu grafik topolojisinde bulunan düğüme başvurur. Bu durumda, ileti RTSP kaynak düğümünden gönderilir.
-
-* applicationProperties 'teki "eventType" bir tanılama olayı olduğunu gösterir.
-
-* "eventTime" olayın gerçekleştiği saati gösterir. Bu, trafik videosu (MKV dosyası), bir canlı akış olarak modüle ulaşmak için başlatılır.
-
-* "gövde", bu durumda [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) ayrıntılarından oluşan tanılama olayı hakkındaki verileri içerir.
+* İleti bir tanılama olayıdır (Mediasessionkurdu). RTSP kaynak düğümünün (konu) RTSP simülatörü ile bağlantı kurmadığını ve (benzetimli) canlı akışını almaya başladığını gösterir.
+* ApplicationProperties 'teki konu bölümü, iletinin oluşturulduğu grafik topolojisinde bulunan düğüme başvurur. Bu durumda, ileti RTSP kaynak düğümünden gelmektedir.
+* ApplicationProperties 'teki eventType bölümü, bunun bir tanılama olayı olduğunu gösterir.
+* EventTime bölümü, olayın gerçekleştiği saati gösterir. Bu, trafik videosunun (MKV dosyası) modüle canlı bir akış olarak gelmesi için başladığı süredir.
+* Gövde bölümü, bu durumda [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) ayrıntıları olan tanılama olayı hakkındaki verileri içerir.
 
 
 ## <a name="operational-events"></a>İşletimsel olaylar
 
-Medya grafiği bir süre çalıştıktan sonra, sonuç olarak nesne sayacı modülünden bir olay alırsınız. 
+Medya grafiği bir süre çalıştıktan sonra, sonuç olarak objectCounter modülünden bir olay alırsınız. 
 
 ```
 [IoTHubMonitor] [5:53:44 PM] Message received from [lva-sample-device/objectCounter]:
@@ -306,13 +309,13 @@ Medya grafiği bir süre çalıştıktan sonra, sonuç olarak nesne sayacı mod�
 }
 ```
 
-ApplicationProperties, nesne sayaç modülünün, YOLO v3 modülünün sonuçlarının ilgilenme nesneleri (structuralks) içerdiğini gözlemlediği zaman olan eventTime değerini içerir.
+ApplicationProperties bölümünde olay saati bulunur. Bu, objectCounter modülünün yolov3 modülünün sonuçlarının ilgilendiğiniz nesneleri (structuralks) içerdiklerini gözlemlediği süredir.
 
 Videoda diğer structuralks algılandığında bu olaylardan daha fazla bilgi görebilirsiniz.
 
 ### <a name="recordingstarted-event"></a>RecordingStarted olayı
 
-Nesne sayacı olayı gönderdikten hemen hemen sonra, Microsoft. Media. Graph. Işletimsel. RecordingStarted türünde bir olay görürsünüz
+Nesne sayacı olayı gönderdikten hemen hemen sonra, Microsoft. Media. Graph. Işletimsel. RecordingStarted türünde bir olay görürsünüz:
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -331,11 +334,11 @@ Nesne sayacı olayı gönderdikten hemen hemen sonra, Microsoft. Media. Graph. I
 }
 ```
 
-ApplicationProperties 'teki "Subject", bu iletiyi oluşturan grafikteki varlık havuzu düğümüne başvurur. Gövde, çıkış konumuyla ilgili bilgiler içerir, bu durumda Videonun kaydedildiği Azure Media Service varlığının adıdır. Bu değeri görmeniz gerekir.
+ApplicationProperties 'teki konu bölümü, bu iletiyi oluşturan grafikteki varlık havuzu düğümüne başvurur. Gövde bölümü, çıkış konumuyla ilgili bilgiler içerir. Bu durumda, Videonun kaydedildiği Azure Media Services varlığın adıdır. Bu değeri bir yere getirin.
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable olayı
 
-Varlık havuzu düğümü, varlığa video yüklediğini, Microsoft. Media. Graph. Işletimsel. RecordingAvailable türünde bu olayı yayar
+Varlık havuzu düğümü, varlığa video yüklediğini, Microsoft. Media. Graph. Işletimsel. RecordingAvailable türünde bu olayı yayar:
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -354,11 +357,11 @@ Varlık havuzu düğümü, varlığa video yüklediğini, Microsoft. Media. Grap
 }
 ```
 
-Bu olay, oyuncuların/istemcilerin videonun kayıttan yürütmesini başlatması için varlığa yeterli miktarda veri yazıldığını gösterir. ApplicationProperties 'teki "Subject" değeri, bu iletiyi oluşturan grafikteki AssetSink düğümüne başvurur. Gövde, çıkış konumuyla ilgili bilgiler içerir, bu durumda Videonun kaydedildiği Azure Media Service varlığının adıdır.
+Bu olay, oyuncuların veya istemcilerin videonun kayıttan yürütmesini başlatması için varlığa yeterli miktarda veri yazıldığını gösterir. ApplicationProperties 'teki konu bölümü, bu iletiyi oluşturan grafikteki AssetSink düğümüne başvurur. Gövde bölümü, çıkış konumuyla ilgili bilgiler içerir. Bu durumda, Videonun kaydedildiği Azure Media Services varlığın adıdır.
 
 ### <a name="recordingstopped-event"></a>Recordingdurdurulan olay
 
-[Topolojide](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)sinyal kapısı işlemci düğümü için etkinleştirme ayarlarını (maximumActivationTime) incelerseniz, bu ağ geçidinin, üzerinden 30 saniyelik video gönderildikten sonra kapatılacak şekilde olduğunu görürsünüz. Bu nedenle, RecordingStarted olayından yaklaşık 30 saniye sonra, varlık havuzu düğümünün varlık için video kaydını durdurduğunu belirten Microsoft. Media. Graph. Operational. Recordındurdurultüründe bir olay görmeniz gerekir.
+[Topolojide](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)sinyal kapısı işlemci düğümü için etkinleştirme ayarlarını (maximumActivationTime) incelerseniz, bu ağ geçidinin, üzerinden 30 saniyelik video gönderildikten sonra kapatılacak şekilde ayarlandığını görürsünüz. Her ne kadar 30 saniye sonra, RecordingStarted olayından sonra, Microsoft. Media. Graph. Operational. Recordingdurduruldu türünde bir olay görmeniz gerekir. Bu olay, varlık havuzu düğümünün varlık için video kaydını durdurduğunu gösterir.
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -377,37 +380,37 @@ Bu olay, oyuncuların/istemcilerin videonun kayıttan yürütmesini başlatması
 }
 ```
 
-Bu olay, kaydın durdurulduğunu gösterir. ApplicationProperties 'teki "Subject" değeri, bu iletiyi oluşturan grafikteki AssetSink düğümüne başvurur. Gövde, çıkış konumuyla ilgili bilgiler içerir, bu durumda Videonun kaydedildiği Azure Media Service varlığının adıdır.
+Bu olay, kaydın durdurulduğunu gösterir. ApplicationProperties 'teki konu bölümü, bu iletiyi oluşturan grafikteki AssetSink düğümüne başvurur. Gövde bölümü, çıkış konumuyla ilgili bilgiler içerir. Bu durumda, Videonun kaydedildiği Azure Media Services varlığın adıdır.
 
 ## <a name="media-services-asset"></a>Media Services varlık  
 
-Azure portal oturum açarak ve videoyu görüntüleyerek grafik tarafından oluşturulan Media Services varlığını inceleyebilirsiniz.
+Grafik tarafından oluşturulan Media Services varlığını, Azure portal oturum açarak ve videoyu görüntüleyerek inceleyebilirsiniz.
 
 1. Web tarayıcınızı açın ve [Azure Portal](https://portal.azure.com/)gidin. Portalda oturum açmak için kimlik bilgilerinizi girin. Varsayılan görünüm hizmet panonuzu içerir.
-1. Aboneliğinizdeki kaynaklar arasında Media Services hesabınızı bulun ve hesap dikey penceresini açın
-1. Media Services listesinde varlıklar ' a tıklayın.
+1. Aboneliğinizdeki kaynaklar arasında Media Services hesabınızı bulun. Hesap bölmesini açın.
+1. **Media Services** listesinden **varlıklar** ' ı seçin.
 
     ![Varlıklar](./media/continuous-video-recording-tutorial/assets.png)
 1. SampleAssetFromEVR-LVAEdge-{DateTime} adıyla listelenmiş bir varlık bulacaksınız. Bu, RecordingStarted olayının outputLocation özelliğinde verilen addır. Topolojideki assetNamePattern, bu adın nasıl oluşturulduğunu belirler.
-1. Varlığa tıklayın.
-1. Varlık ayrıntıları sayfasında, akış URL 'SI altında **Yeni oluştur** metin kutusunu tıklatın.
+1. Varlığı seçin.
+1. Varlık ayrıntıları sayfasında **akış URL 'si** metin kutusunda **Yeni oluştur** ' u seçin.
 
     ![Yeni varlık](./media/continuous-video-recording-tutorial/new-asset.png)
 
-1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve "Ekle" düğmesine basın. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
+1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle**' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
 
     > [!TIP]
     > [Akış uç noktanızın çalıştığından](../latest/streaming-endpoint-concept.md)emin olun.
-1. Player Videoyu yüklemesi gerekir ve bunu görüntülemek için **Play** 'e ulaşabileceksiniz.
+1. Player Videoyu yüklemesi gerekir. Görüntülemek için **Yürüt** ' ü seçin.
 
 > [!NOTE]
-> Videonun kaynağı bir kamera akışını taklit eden bir kapsayıcı olduğundan, videodaki zaman damgaları grafik örneğini etkinleştirdiğinizde ve devre dışı bırakıldığında ile ilgilidir. [Kayıttan yürütme çoklu gün kayıtları](playback-multi-day-recordings-tutorial.md) öğreticisinde yerleşik olarak bulunan kayıttan yürütme denetimlerini kullanıyorsanız, ekranda görüntülenirken görünen zaman damgalarını görebilirsiniz.
+> Videonun kaynağı bir kamera akışını taklit eden bir kapsayıcı olduğundan, videodaki zaman damgaları grafik örneğini etkinleştirdiğinizde ve devre dışı bırakıldığında ile ilgilidir. [Multi-Day kayıt öğreticisinin kayıttan yürütülmesi](playback-multi-day-recordings-tutorial.md) içinde yerleşik olarak bulunan kayıttan yürütme denetimlerini kullanıyorsanız, videoda ekranda görüntülenen zaman damgalarını görebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer öğreticileri denemek istiyorsanız, oluşturulan kaynaklarda tutmanız gerekir. Aksi takdirde, Azure portal gidin, Kaynak gruplarınızı inceleyin, bu öğreticiyi çalıştırdığınız kaynak grubunu seçin ve kaynak grubunu silin.
+Diğer öğreticileri denemek istiyorsanız, oluşturduğunuz kaynaklara açık tutun. Aksi takdirde, Azure portal gidin, Kaynak gruplarınızı inceleyin, bu öğreticiyi çalıştırdığınız kaynak grubunu seçin ve kaynak grubunu silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * RTSP simülatörü kullanmak yerine RTSP desteğiyle bir [IP kamerası](https://en.wikipedia.org/wiki/IP_camera) kullanın. Profiller G, S veya T ile uyumlu cihazlar ' ı arayarak [ONVIF uyumlu ürünler sayfasında](https://www.onvif.org/conformant-products/) , RTSP desteğiyle IP kameralarını arayabilirsiniz.
-* AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux 'ta Azure IoT Edge çalışma zamanını Install](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) ' daki yönergeleri izleyebilir ve sonra Azure IoT Hub 'e kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyebilirsiniz.
+* AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyin.

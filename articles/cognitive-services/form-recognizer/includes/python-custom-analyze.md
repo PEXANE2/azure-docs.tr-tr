@@ -5,21 +5,21 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 426158945e609b2bb46dd9fbbbbe378f25cd93f1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446431"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206262"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Anahtar-değer çiftleri ve tablolar için formları analiz etme
 
-Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Yeni bir Python betiğine aşağıdaki kodu çalıştırarak **[analiz formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API 'sini çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
+Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Yeni bir Python betiğine aşağıdaki kodu çalıştırarak **[analiz formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)** API 'sini çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Formunuzun `<file path>` dosya yoluyla değiştirin (örneğin, C:\temp\file.exe). Bu, uzak bir dosyanın URL 'SI de olabilir. Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
-1. Önceki `<model_id>` bölümde ALDıĞıNıZ model kimliğiyle değiştirin.
-1. Form `<endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. Dosya `<file type>` türü ile değiştirin. Desteklenen türler: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
+1. `<file path>`Formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.pdf). Bu, uzak bir dosyanın URL 'SI de olabilir. Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
+1. `<model_id>`Önceki bölümde aldığınız model kimliğiyle değiştirin.
+1. `<endpoint>`Form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. `<file type>`Dosya türü ile değiştirin. Desteklenen türler: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
     ```python
@@ -32,7 +32,7 @@ Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, an
     endpoint = r"<endpoint>"
     apim_key = "<subsription key>"
     model_id = "<model_id>"
-    post_url = endpoint + "/formrecognizer/v2.0-preview/custom/models/%s/analyze" % model_id
+    post_url = endpoint + "/formrecognizer/v2.0/custom/models/%s/analyze" % model_id
     source = r"<file path>"
     params = {
         "includeTextDetails": True
@@ -62,7 +62,7 @@ Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, an
 1. Bir komut istemi penceresi açın.
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognizer-analyze.py`.
 
-**Analiz formu** API 'sini çağırdığınızda, bir **işlem konumu** üst bilgisine sahip `201 (Success)` bir yanıt alırsınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullanacağınız bir KIMLIĞIDIR. Yukarıdaki betik, bu üst bilginin değerini konsola yazdırır.
+**Analiz formu** API 'sini çağırdığınızda, bir `201 (Success)` **işlem konumu** üst bilgisine sahip bir yanıt alırsınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullanacağınız bir KIMLIĞIDIR. Yukarıdaki betik, bu üst bilginin değerini konsola yazdırır.
 
 ## <a name="get-the-analyze-results"></a>Analiz sonuçlarını al
 

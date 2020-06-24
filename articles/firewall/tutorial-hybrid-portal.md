@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298967"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750692"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma
 
@@ -29,7 +29,7 @@ Bu öğretici için üç sanal ağ oluşturursunuz:
 
 ![Hibrit ağda güvenlik duvarı](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Değişkenleri tanımlama
@@ -45,7 +45,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu yordamı gerçekleştirmek için Azure PowerShell kullanmak istiyorsanız, bkz. [Azure PowerShell kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma](tutorial-hybrid-ps.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Karma ağ, Azure sanal ağları ile şirket içi ağlar arasında trafiği yönlendirmek için hub ve bağlı bileşen mimarisi modelini kullanır. Hub ve bağlı bileşen mimarisi aşağıdaki gereksinimlere sahiptir:
 
@@ -54,7 +54,7 @@ Karma ağ, Azure sanal ağları ile şirket içi ağlar arasında trafiği yönl
    Ayrıca, ağ geçidi ile bağlantılı sanal ağlara veya şirket içi ağlara yapılan yollar, ağ geçidi geçişi kullanılarak eşlenen sanal ağlar için otomatik olarak yönlendirme tablolarına yayılır. Daha fazla bilgi için bkz. [sanal ağ eşlemesi IÇIN VPN ağ geçidi geçişi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
 
 - Sanal ağ hub 'ına sanal ağa bağlı olarak, **Useremotegateway** 'leri ayarlayın. **Useremotegateway** 'ler ayarlandıysa ve uzaktan eşleme üzerinde **allowgatewaytransit** da ayarlandıysa, bağlı olan sanal ağ, aktarım için uzak sanal ağın ağ geçitlerini kullanır.
-- Alt ağ trafiğini hub güvenlik duvarıyla yönlendirmek için, **sanal ağ geçidi yol yayma** seçeneği devre dışı olan güvenlik duvarını Işaret eden Kullanıcı tanımlı bir yol (UDR) gerekir. **Sanal ağ geçidi yol yayma** devre dışı seçeneği, bağlı olan alt ağlara yönlendirme dağıtımını önler. Bu, öğrenilen yolların UDR 'niz ile çakışmasını önler.
+- Alt ağ trafiğini hub güvenlik duvarıyla yönlendirmek için, **sanal ağ geçidi yol yayma** seçeneği devre dışı olan güvenlik duvarını işaret eden bir Kullanıcı tanımlı yol (UDR) kullanabilirsiniz. **Sanal ağ geçidi yol yayma** devre dışı seçeneği, bağlı olan alt ağlara yönlendirme dağıtımını önler. Bu, öğrenilen yolların UDR 'niz ile çakışmasını önler. **Sanal ağ geçidi yol yaymayı** devre dışı bırakmak ISTIYORSANıZ, BGP üzerinden şirket içinden yayımlananlar üzerine yazmak için güvenlik duvarına belirli yollar tanımladığınızdan emin olun.
 - Hub ağ geçidi alt ağında, bağlı olan ağların sonraki atlaması olarak güvenlik duvarı IP adresini işaret eden bir UDR yapılandırın. Azure Güvenlik Duvarı alt ağında BGP 'deki yolları öğrendiğinden dolayı UDR gerekmez.
 
 Bu yolların nasıl oluşturulduğunu görmek için [Yolları Oluşturma](#create-the-routes) bölümüne bakın.
@@ -79,7 +79,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 4. **Abonelik** bölümünde aboneliğinizi seçin.
 5. **Bölge**için **Doğu ABD**' yi seçin. Daha sonra oluşturduğunuz tüm kaynakların aynı konumda olması gerekir.
 6. **Gözden geçir + oluştur**' u seçin.
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
 Şimdi VNet 'i oluşturun:
 
@@ -182,7 +182,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 4. **Kaynak**için **192.168.1.0/24**yazın.
 5. **Hedef adres**için **10.6.0.0/16** yazın
 6. **Hedef bağlantı noktaları**için **3389**yazın.
-7. **Add (Ekle)** seçeneğini belirleyin.
+7. **Ekle**'yi seçin.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>VPN ağ geçitlerini oluşturma ve bağlama
 
@@ -230,7 +230,7 @@ Bu adımda, hub sanal ağından şirket içi sanal ağa bağlantı oluşturursun
 
 1. **İlt-hibrit-test** kaynak grubunu açın ve **GW-hub** ağ geçidini seçin.
 2. Sol sütundaki **Bağlantılar** ' ı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**'yi seçin.
 4. Bağlantı adı, **hub-Onpree**yazın.
 5. **Bağlantı türü**için **VNET-VNET** ' i seçin.
 6. **İkinci sanal ağ geçidi**için **GW-onpred**öğesini seçin.
@@ -241,7 +241,7 @@ Bu adımda, hub sanal ağından şirket içi sanal ağa bağlantı oluşturursun
 
 1. ILT- **hibrit-test** kaynak grubunu açın ve **GW-onprea** Gateway ' i seçin.
 2. Sol sütundaki **Bağlantılar** ' ı seçin.
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**'yi seçin.
 4. Bağlantı adı, **Onpree-hub**' ı yazın.
 5. **Bağlantı türü**için **VNET-VNET** ' i seçin.
 6. **İkinci sanal ağ geçidi**için **GW-hub**' ı seçin.
@@ -261,7 +261,7 @@ Artık hub ve bağlı bileşen sanal ağlarını eşler.
 
 1. **İlt-hibrit-test** kaynak grubunu açın ve **VNET hub** sanal ağını seçin.
 2. Sol sütunda, eşlemeler ' i **seçin.**
-3. **Add (Ekle)** seçeneğini belirleyin.
+3. **Ekle**'yi seçin.
 4. **Ad**Için **hubtokol**yazın.
 5. **Sanal ağ**için **VNET-bağlı bileşen** ' i seçin
 6. Sanal ağ hub 'ından VNet hub 'ına eşleme adı için **Spoketohub**yazın.
@@ -276,7 +276,7 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 2. Sol sütunda, eşlemeler ' i **seçin.**
 3. **Spoketohub** eşlemesini seçin.
 4. **VNET hub 'ından sanal ağa yönlendirilen trafiğe Izin ver**altında, **etkin**' i seçin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ## <a name="create-the-routes"></a>Yolları oluşturma
 
@@ -288,14 +288,14 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 5. Ad için **UDR-hub-kol**yazın.
 6. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum** alanında önceden kullandığınız konumu seçin.
-9. **Oluştur**’u seçin.
+9. **Oluştur**'u seçin.
 10. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 11. Sol sütundaki **rotalar** ' ı seçin.
-12. **Add (Ekle)** seçeneğini belirleyin.
+12. **Ekle**'yi seçin.
 13. Yol adı için, uzak **bileşene**yazın.
 14. Adres ön eki için **10.6.0.0/16**yazın.
 15. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
@@ -316,15 +316,15 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-5. **Oluştur**’u seçin.
+5. **Oluştur**'u seçin.
 6. Ad için **UDR-DG**yazın.
 7. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum** alanında önceden kullandığınız konumu seçin.
 4. **Sanal ağ geçidi yol yayma**Için **devre dışı**' yı seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 2. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 3. Sol sütundaki **rotalar** ' ı seçin.
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**'yi seçin.
 5. Yol adı için, **Tohub**yazın.
 6. Adres ön eki için **0.0.0.0/0**yazın.
 7. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
@@ -430,7 +430,7 @@ Ardından, güvenlik duvarı kurallarının beklendiği gibi çalıştığını 
 2. **Kurallar**' ı seçin.
 3. **Ağ kuralı koleksiyonu** sekmesini seçin ve **RCNet01** kural koleksiyonunu seçin.
 4. **Eylem**için **Reddet**' i seçin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 Değişen kuralları test etmeden önce var olan tüm uzak masaüstlerini kapatın. Şimdi testleri yeniden çalıştırın. Bu kez tümü başarısız olmalıdır.
 

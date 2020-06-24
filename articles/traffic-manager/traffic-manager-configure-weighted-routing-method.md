@@ -4,7 +4,6 @@ description: Bu öğreticide, Traffic Manager ' de hepsini bir kez deneme yönte
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: 8bdc710b36cae70d29d32333f431b8a9dda154cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b06df3814661b64f7fa46cd5e3b8f4dea9d51710
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76938704"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711675"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Öğretici: Traffic Manager ' de ağırlıklı trafik yönlendirme yöntemini yapılandırma
 
@@ -35,7 +34,7 @@ Ortak trafik yönlendirme yöntemi, bulut hizmetleri ve Web siteleri dahil olmak
     1. **Trafik yönlendirme yöntemi ayarları**için trafik yönlendirme yönteminin **ağırlıklı**olduğunu doğrulayın. Değilse, açılan listeden **ağırlıklı** ' a tıklayın.
     2. Bu profildeki tüm uç noktaları için aynı **uç nokta izleyici ayarlarını** aşağıdaki şekilde ayarlayın:
         1. Uygun **Protokolü**seçin ve **bağlantı noktası** numarasını belirtin. 
-        2. **Yol** için eğik çizgi */* yazın. Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. Eğik çizgi "/", göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu gösterir.
+        2. **Yol** için eğik çizgi yazın */* . Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. Eğik çizgi "/", göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu gösterir.
         3. Sayfanın üst kısmında **Kaydet**' e tıklayın.
 5. Yapılandırmanızda yaptığınız değişiklikleri aşağıdaki gibi test edin:
     1.  Portalın arama çubuğunda Traffic Manager profili adını arayın ve görüntülenen sonuçlarda Traffic Manager profiline tıklayın.

@@ -2,26 +2,29 @@
 title: VMware VM 'lerini geçirme aracısız Azure geçiş sunucusu geçişi
 description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl çalıştıracağınızı öğrenin.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 86f24b7fdfee30c182419023e4ed33f6228b3711
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ba0eda071bd677435e89fb2de57ce824574f1761
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509321"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769905"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
-Bu makalede, Azure geçişi sunucu geçiş aracı ile aracısız geçiş kullanarak şirket içi VMware VM 'lerini Azure 'a nasıl geçireceğiniz gösterilmektedir.
+Bu makalede, [Azure geçişi: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) Aracı kullanılarak aracısız geçiş ile şirket Içi VMware VM 'lerini Azure 'a nasıl geçireceğiniz gösterilmektedir. Ayrıca, aracı tabanlı geçiş kullanarak VMware VM 'Leri geçirebilirsiniz. Yöntemleri [karşılaştırın](server-migrate-overview.md#compare-migration-methods) .
 
-[Azure geçişi](migrate-services-overview.md) , şirket içi uygulamalarınızı ve iş yüklerinizi ve AWS/GCP sanal makine örneklerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
+Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serideki üçüncü bir seridir. 
 
-Bu öğretici, Azure geçiş sunucusu değerlendirmesini ve geçişini kullanarak VMware VM 'lerini Azure 'a nasıl değerlendirileceğini ve geçireceğinizi gösteren bir serinin üçüncü bir dizisidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+> [!NOTE]
+> Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir, böylece bir kavram kanıtı hızlı bir şekilde ayarlayabilmenizi sağlayabilirsiniz. Öğreticiler mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. 
+
+
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * VM 'Leri geçiş için hazırlayın.
-> * Azure geçiş sunucusu geçiş aracı 'nı ekleyin.
+> * Azure geçişi: sunucu geçiş aracı 'nı ekleyin.
 > * Geçirmek istediğiniz VM 'Leri bulun.
 > * VM 'Leri çoğaltmaya başlayın.
 > * Her şeyin beklendiği gibi çalıştığından emin olmak için bir test geçişi çalıştırın.
@@ -29,38 +32,17 @@ Bu öğretici, Azure geçiş sunucusu değerlendirmesini ve geçişini kullanara
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="migration-methods"></a>Geçiş yöntemleri
-
-Azure geçişi sunucu geçiş aracını kullanarak VMware VM 'lerini Azure 'a geçirebilirsiniz. Bu araç, VMware VM geçişi için birkaç seçenek sunar:
-
-- Aracısız çoğaltma kullanılarak geçiş. VM 'Leri bunlara hiçbir şey yüklemeye gerek kalmadan geçirin.
-- Çoğaltma için bir aracı ile geçiş. Çoğaltma için VM 'ye bir aracı yükler.
-
-Aracısız veya aracı tabanlı geçiş kullanmak isteyip istemediğinize karar vermek için şu makaleleri gözden geçirin:
-
-- Aracısız geçişin [nasıl çalıştığını öğrenin](server-migrate-overview.md) ve [geçiş yöntemlerini karşılaştırın](server-migrate-overview.md#compare-migration-methods).
-- Aracı tabanlı yöntemi kullanmak istiyorsanız [Bu makaleyi okuyun](tutorial-migrate-vmware-agent.md) .
-
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
-1. Geçiş için Azure ve VMware 'yi ayarlamak üzere bu serideki [ilk öğreticiyi doldurun](tutorial-prepare-vmware.md) . Özellikle, bu öğreticide şunları yapmanız gerekir:
-    - [Azure](tutorial-prepare-vmware.md#prepare-azure) 'u geçiş için hazırlayın.
-    - [Şirket içi ortamı](tutorial-prepare-vmware.md#prepare-for-agentless-vmware-migration) geçiş için hazırlayın.
-    
-2. VMware VM 'lerini Azure 'a geçirmeden önce Azure geçişi sunucu değerlendirmesi ile değerlendirmeyi denemeniz önerilir. Değerlendirmeyi ayarlamak için bu serideki [ikinci öğreticiyi doldurun](tutorial-assess-vmware.md) . VM 'Leri değerlendirmek istemiyorsanız bu öğreticiyi atlayabilirsiniz. Bir değerlendirme denemeniz önerilir, ancak geçiş yapmayı denemeden önce bir değerlendirme çalıştırmanız gerekmez.
-
+1. Geçiş için Azure ve VMware 'yi hazırlamak üzere [ilk öğreticiyi doldurun](tutorial-prepare-vmware.md) .
+2. [VMware VM](tutorial-assess-vmware.md) 'lerini Azure 'a geçirmeden önce değerlendirmek için ikinci öğreticiyi tamamlamanızı öneririz, ancak şunları yapmanız gerekmez. 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure geçiş sunucusu geçiş aracını ekleme
 
-Azure geçişi: sunucu geçiş aracı 'nı ekleyin.
-
-- [VMware VM 'lerini değerlendirmek](tutorial-assess-vmware.md)için ikinci öğreticiyi izlediyseniz, devam edebilir ve aracı ekleyebilirsiniz.
-- İkinci öğreticiyi izlemeden, bir Azure geçişi projesi ayarlamak için [Bu yönergeleri izleyin](how-to-add-tool-first-time.md) .  Projeyi oluştururken Azure geçişi: sunucu geçiş aracını eklersiniz.
-
-Ayarlanmış bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
+Henüz bir Azure geçişi projesi ayarlamadıysanız, aracı eklemeden önce [bunu yapın](how-to-add-tool-first-time.md) . Ayarlanmış bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
 
 1. Azure geçişi projesinde **Genel Bakış ' a**tıklayın. 
 2. **Bul, değerlendir ve geçiş sunucuları**' nda, **sunucuları değerlendir ve geçir**' e tıklayın.
@@ -71,63 +53,27 @@ Ayarlanmış bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
 
     ![Bir araç seçin](./media/tutorial-migrate-vmware/select-migration-tool.png)
 
-4. Araçlar listesinde **Azure geçişi: sunucu geçişi** > **ekleme aracı** ' nı seçin.
+4. Araçlar listesinde **Azure geçişi: sunucu geçişi**  >  **ekleme aracı** ' nı seçin.
 
     ![Sunucu Geçişi aracı](./media/tutorial-migrate-vmware/server-migration-tool.png)
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure geçişi gereç 'yi ayarlama
 
-Azure geçişi sunucu geçişi, hafif bir VMware VM gereci çalıştırır. Gereç, VM bulma işlemini gerçekleştirir ve VM meta verilerini ve performans verilerini Azure geçişi: sunucu geçişi 'ne gönderir. Aynı gereç Ayrıca, Azure geçişi: Sunucu değerlendirmesi aracı tarafından, VMware VM 'lerinin aracısız geçişini gerçekleştirmek için de kullanılır.
+Azure geçişi sunucu geçişi, VMware VM 'lerinin bulunması, değerlendirmesi ve aracısız geçirilmesi için kullanılan basit bir VMware VM gereci çalıştırır. [Değerlendirme öğreticisini](tutorial-assess-vmware.md)izlerseniz, zaten gereci ayarlamış olursunuz. Yapmadıysanız, şu yöntemlerden birini kullanarak şimdi ayarlayın:
 
-- [VMware VM 'lerini değerlendirmek için öğreticiyi](tutorial-assess-vmware.md)izlediyseniz, bu öğreticide zaten gereci ayarlamış olursunuz.
-- Bu öğreticiyi izlemeden, aşağıdaki yöntemlerden birini kullanarak gereci şimdi ayarlayabilirsiniz:
-    - İndirilen bir OVA şablonu kullanarak bir VMware VM 'de [ayarlayın](how-to-set-up-appliance-vmware.md) .
-    - Bir VMware VM 'de veya bir PowerShell yükleyici betiği ile fiziksel makinede ayarlama yapın. [Bu yöntem](deploy-appliance-script.md) , BIR ova şablonu kullanarak bir VM ayarlayamıyorum veya Azure Kamu kullanıyorsanız kullanılmalıdır.
+- **Ova şablonu**: indirilen bir ova şablonu kullanarak BIR VMware VM üzerinde [ayarlanır](how-to-set-up-appliance-vmware.md) .
+- **Betik**: BIR VMware VM 'de veya fiziksel makinede bir PowerShell yükleyici betiği kullanılarak [ayarlanır](deploy-appliance-script.md) . Bu yöntem, bir OVA şablonu kullanarak bir VM ayarlayamıyorum veya Azure Kamu kullanıyorsanız kullanılmalıdır.
 
 Gereci oluşturduktan sonra Azure geçişi 'ne bağlanıp bağlanamadıktan sonra sunucu değerlendirmesi yapın, ilk kez yapılandırın ve Azure geçişi projesine kaydedin.
 
-
-## <a name="prepare-vms-for-migration"></a>VM 'Leri geçiş için hazırlama
-
-Azure geçişi, VM 'Lerin Azure 'a geçirilmesini sağlamak için bazı VM değişiklikleri gerektirir.
-
-- Bazı işletim sistemleri için Azure geçişi bu değişiklikleri otomatik olarak yapar. [Daha fazlasını öğrenin](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)
-- Bu işletim sistemlerinden birine sahip olmayan bir VM 'yi geçiriyorsanız, sanal makineyi hazırlamak için yönergeleri izleyin.
-- Geçişe başlamadan önce bu değişiklikleri yapmak önemlidir. Değişikliği yapmadan önce VM 'yi geçirirseniz, VM Azure 'da önyüklenemeyebilir.
-- VM için çoğaltma etkinleştirildikten sonra şirket içi VM 'lerde yaptığınız yapılandırma değişiklikleri Azure 'a çoğaltılır. Değişikliklerin çoğaltılmasını sağlamak için, geçiş yaptığınız kurtarma noktasının şirket içinde yapılandırma değişikliklerinin gerçekleştirildiği zamandan daha geç olduğundan emin olun.
-
-
-### <a name="prepare-windows-server-vms"></a>Windows Server VM 'lerini hazırlama
-
-**Eylem** | **Bilgileri** | **Yönergeler**
---- | --- | ---
-Azure VM 'deki Windows birimlerinin, şirket içi VM ile aynı sürücü harfi atamalarını kullandığından emin olun. | SAN ilkesini çevrimiçi olarak yapılandırın. | 1. VM 'de bir yönetici hesabıyla oturum açın ve bir komut penceresi açın.<br/> 2. DiskPart yardımcı programını çalıştırmak için **DiskPart** yazın.<br/> 3. **San ilkesi = OnlineAll** yazın<br/> 4. DiskPart 'Tan çıkmak için exit yazın ve komut istemi 'ni kapatın.
-Azure VM için Azure seri erişim konsolunu etkinleştirme | Bu sorun gidermeye yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir ve bu, yeni VM için bir yeniden başlatmaya eşdeğerdir. | ' İ etkinleştirmek için [Bu yönergeleri](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) izleyin.
-Hyper-V Konuk tümleştirmesi 'ni yükler | Windows Server 2003 çalıştıran makineleri geçiriyorsanız, Hyper-V Konuk Tümleştirme Hizmetleri 'ni VM işletim sistemine yükleyebilirsiniz. | [Daha fazla bilgi edinin](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
-Uzak Masaüstü | SANAL makinede Uzak Masaüstü 'Nü etkinleştirin ve Windows Güvenlik Duvarı 'nın herhangi bir ağ profili üzerinde uzak masaüstü erişimini engellemediğinden emin olun. | [Daha fazla bilgi edinin](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-
-### <a name="prepare-linux-vms"></a>Linux VM 'lerini hazırlama
-
-**Eylem** | **Bilgileri** 
---- | --- | ---
-Hyper-V Linux Tümleştirme Hizmetleri 'ni yükler | Linux dağıtımların çoğu yeni sürümü bu varsayılan olarak eklenmiştir.
-Linux init görüntüsünü, gerekli Hyper-V sürücülerini içerecek şekilde yeniden oluşturun | Bu, VM 'nin Azure 'da önyüklenmesini sağlar ve yalnızca bazı dağıtımlarda gerekli olur.
-Azure seri konsol günlüğünü etkinleştirme | Bu sorun gidermeye yardımcı olur. VM 'yi yeniden başlatmanız gerekmez. Azure VM, disk görüntüsü kullanılarak önyüklenir ve bu, yeni VM için bir yeniden başlatmaya eşdeğerdir.<br/> ' İ etkinleştirmek için [Bu yönergeleri](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console) izleyin.
-Cihaz eşleme dosyasını güncelleştir | Kalıcı cihaz tanımlayıcılarını kullanmak için cihaz adı olan cihaz eşleme dosyasını birim ilişkilendirmeleriyle Güncelleştir
-Fstab girdilerini Güncelleştir | Kalıcı birim tanımlayıcılarını kullanmak için girişleri güncelleştirin.
-Uıdev kuralını kaldır | Arabirim adlarını ayrılmış olan tüm udev kurallarını MAC adresine göre kaldırın vb.
-Ağ arabirimlerini Güncelleştir | Ağ arabirimlerini DHCP tabanlı IP adresini alacak şekilde güncelleştirin.
-SSH 'yi etkinleştirme | SSH 'nin etkinleştirildiğinden ve SSHD hizmetinin yeniden başlatma sırasında otomatik olarak başlayacak şekilde ayarlandığından emin olun.<br/> Gelen SSH bağlantı isteklerinin işletim sistemi güvenlik duvarı veya komut dosyası kuralları tarafından engellenmediğinden emin olun.
-
-Azure 'da bir Linux sanal makinesi çalıştırmaya yönelik bu adımları açıklayan [Bu makaleyi izleyin](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) ve popüler Linux dağıtımlarından bazılarına yönelik yönergeleri dahil edin.  
-
-
 ## <a name="replicate-vms"></a>Sanal makineleri çoğaltma
 
-Bulma işlemi tamamlandığında VMware VM’lerini Azure’a çoğaltabilirsiniz. 
+Gereci ayarladıktan ve bulmayı tamamladıktan sonra, VMware VM 'lerinin Azure 'a çoğaltılmasını başlatabilirsiniz. 
 
-> [!NOTE]
-> En fazla 10 makineyi birbirine çoğaltabilirsiniz. Daha fazla çoğaltma yapmanız gerekiyorsa bunları aynı anda 10 ' da çoğaltın. Aracısız geçiş için 100 ' e kadar eşzamanlı çoğaltma gerçekleştirebilirsiniz.
+- Aynı anda 300 çoğaltma gerçekleştirebilirsiniz.
+- Portalda, geçiş için aynı anda en fazla 10 VM seçebilirsiniz. Daha fazla makine geçirmek için bunları 10 toplu iş gruplarına ekleyin.
+
+Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
 
 1. Azure geçişi proje > **sunucularında** **Azure geçişi: sunucu geçişi**' nde **Çoğalt**' a tıklayın.
 
@@ -138,72 +84,60 @@ Bulma işlemi tamamlandığında VMware VM’lerini Azure’a çoğaltabilirsini
 
     ![Kaynak ayarları](./media/tutorial-migrate-vmware/source-settings.png)
 
-    - Bu adım, öğreticiyi tamamladığınızda daha önce bir gereç ayarlamış olduğunuz varsayılır.
-    - Bir gereç ayarlamadıysanız, [Bu makaledeki](how-to-set-up-appliance-vmware.md)yönergeleri izleyin.
-
-4. **Sanal makineler** bölümünde çoğaltmak istediğiniz makineleri seçin.
-    - VM’ler için bir değerlendirme çalıştırırsanız değerlendirme sonuçlarından VM boyutlandırma ve disk türü (premium/standart) önerilerini uygulayabilirsiniz. Bunu yapmak için **Azure Geçişi değerlendirmesinden geçiş ayarları içe aktarılsın mı?** bölümünde **Evet**’i seçin.
-    - Bir değerlendirme çalıştırmadıysanız veya değerlendirme ayarlarını kullanmak istemiyorsanız **Hayır**’ı seçin.
-    - Değerlendirmeyi kullanmayı seçtiyseniz VM grubunu ve değerlendirme adını belirleyin.
-
+4. **Sanal makineler** bölümünde çoğaltmak istediğiniz makineleri seçin. VM boyutlandırma ve disk türünü bir değerlendirmede uygulamak için bir **Azure geçişi değerlendirmesinde geçiş ayarlarını Içeri aktarma**bölümünde, **Evet**' i seçin ve VM grubunu ve değerlendirme adını seçin. Değerlendirme ayarlarını kullanmıyorsanız **Hayır**' ı seçin.
+   
     ![Değerlendirme seçme](./media/tutorial-migrate-vmware/select-assessment.png)
 
-5. VM’leri **Sanal makineler** bölümünde gerektiği şekilde arayın ve geçirmek istediğiniz her bir VM’yi seçin. Ardından Ileri ' ye tıklayın **: hedef ayarlar**.
+5. **Sanal makineler**' de, geçirmek Istediğiniz VM 'leri seçin. Ardından Ileri ' ye tıklayın **: hedef ayarlar**.
 
     ![VM 'Leri seçin](./media/tutorial-migrate-vmware/select-vms.png)
 
-6. **Hedef ayarları**’nda aboneliği ve geçiş yapacağınız hedef bölgeyi seçin. Daha sonra Azure VM’lerinin geçişten sonra bulunacağı kaynak grubunu belirtin. **Sanal Ağ**’da Azure VM’lerinin geçişten sonra katılacağı Azure sanal ağını/alt ağını seçin.
+6. **Hedef ayarlar**' da, abonelik ve hedef bölge ' yi seçin. Azure VM 'lerinin geçişten sonra bulunduğu kaynak grubunu belirtin.
+7. **Sanal ağ**bölümünde, Azure VM 'lerinin geçişten sonra birleşme Azure VNET/alt ağını seçin.
 7. **Azure Hibrit Avantajı**’nda:
 
-    - Azure Hibrit Avantajı’nı uygulamak istemiyorsanız **Hayır**’ı seçin. Ardından **İleri**’ye tıklayın.
-    - Etkin Yazılım Güvencesi veya Windows Server abonelikleri kapsamında olan Windows Server makineleriniz varsa ve avantajı geçirdiğiniz makinelere uygulamak istiyorsanız **Evet**’i seçin. Ardından **İleri**’ye tıklayın.
+    - Azure Hibrit Avantajı’nı uygulamak istemiyorsanız **Hayır**’ı seçin. Ardından **İleri**'ye tıklayın.
+    - Etkin Yazılım Güvencesi veya Windows Server abonelikleri kapsamında olan Windows Server makineleriniz varsa ve avantajı geçirdiğiniz makinelere uygulamak istiyorsanız **Evet**’i seçin. Ardından **İleri**'ye tıklayın.
 
     ![Hedef ayarları](./media/tutorial-migrate-vmware/target-settings.png)
 
 8. **İşlem** bölümünde VM adını, boyutunu, İşletim Sistemi disk türünü ve kullanılabilirlik kümesini gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
-    - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu içerir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu **’nda el ile bir boyut seçin. 
+    - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu gösterir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu **’nda el ile bir boyut seçin. 
     - **Işletim sistemi diski**: VM için işletim sistemi (önyükleme) diskini belirtin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir. 
-    - **Kullanılabilirlik kümesi**: sanal makinenin geçişten sonra bir Azure kullanılabilirlik kümesinde olması gerekiyorsa, kümeyi belirtin. Küme, geçiş için belirttiğiniz hedef kaynak grubunda olmalıdır.
+    - **Kullanılabilirlik kümesi**: VM geçişten sonra bir Azure kullanılabilirlik kümesinde yer alıyorsa, kümeyi belirtin. Küme, geçiş için belirttiğiniz hedef kaynak grubunda olmalıdır.
 
     ![VM işlem ayarları](./media/tutorial-migrate-vmware/compute-settings.png)
 
-9. **Diskler** bölümünde, VM disklerinin Azure’a çoğaltılıp çoğaltılmayacağını belirtin ve Azure’da disk türünü (Standart SSD/HDD veya premium yönetilen diskler) seçin. Ardından **İleri**’ye tıklayın.
-    - Diskleri çoğaltmadan çıkarabilirsiniz.
-    - Diskleri çıkarırsanız bu diskler geçişten sonra Azure VM’de bulunmaz. 
-
+9. **Diskler** bölümünde, VM disklerinin Azure’a çoğaltılıp çoğaltılmayacağını belirtin ve Azure’da disk türünü (Standart SSD/HDD veya premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
+   
     ![Diskler](./media/tutorial-migrate-vmware/disks.png)
 
 10. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 
 > [!NOTE]
-> Çoğaltma ayarlarını, çoğaltma başlamadan önce istediğiniz zaman güncelleştirebilirsiniz, bu da çoğaltmayı **yönetme** > **bölümünde.** Çoğaltma başladıktan sonra ayarlar değiştirilemez.
+> Çoğaltma ayarlarını yineleme başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz (**Manage**  >  **çoğaltılan makineleri**yönetin). Çoğaltma başladıktan sonra ayarları değiştiremezsiniz.
 
 ### <a name="provisioning-for-the-first-time"></a>İlk kez sağlama
 
-Azure geçişi projesinde çoğaltmakta olduğunuz ilk sanal makine ise, Azure geçişi sunucu geçişi, bu kaynakları projeyle aynı kaynak grubunda otomatik olarak sağlar.
+Bu, projede çoğaltmakta olduğunuz ilk VM ise, sunucu geçişi bu kaynakları projeyle aynı kaynak grubunda otomatik olarak sağlar.
 
-- **Service Bus**: Azure geçişi sunucu geçişi, yüklemeye çoğaltma düzenleme iletileri göndermek için Service Bus 'ı kullanır.
+- **Service Bus**: sunucu geçişi, yüklemeye çoğaltma düzenleme iletileri göndermek için Service Bus 'ı kullanır.
 - **Ağ geçidi depolama hesabı**: sunucu geçişi, çoğaltılan VM 'ler hakkında durum bilgilerini depolamak için ağ geçidi depolama hesabını kullanır.
 - **Günlük depolama hesabı**: Azure geçişi gereci, VM 'ler için çoğaltma günlüklerini bir günlük depolama hesabına yükler. Azure geçişi, çoğaltma bilgilerini çoğaltma tarafından yönetilen disklere uygular.
-- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır. Hazırlandığınızda, anahtar kasasının depolama hesabına erişmesi için gereken izinleri ayarlamış olmanız gerekir. [Bu Izinleri gözden geçirin](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault).   
-
+- **Anahtar Kasası**: Azure geçişi gereci, hizmet veri yolu için bağlantı dizelerini yönetmek üzere anahtar kasasını ve Çoğaltmada kullanılan depolama hesapları için erişim anahtarlarını kullanır.
 
 ## <a name="track-and-monitor"></a>İzleme ve izleme
 
+1. Portal bildirimlerinde iş durumunu izleyin.
+2. **Azure geçişi: sunucu geçişi**'nde **sunucuları** çoğaltma ' ya tıklayarak çoğaltma durumunu izleyin.
 
-- **Çoğalt** ' a tıkladığınızda çoğaltma Başlat işi başlar. 
+     ![Çoğaltmayı izleme](./media/tutorial-migrate-vmware/replicating-servers.png)
+
+Çoğaltma aşağıdaki gibi gerçekleşir:
 - Çoğaltma Başlat işi başarıyla tamamlandığında, makineler ilk çoğaltmasını Azure 'a başlatır.
 - İlk çoğaltma sırasında VM anlık görüntüsü oluşturulur. Anlık görüntüdeki disk verileri, Azure 'da çoğaltma ile yönetilen disklere çoğaltılır.
 - İlk çoğaltma tamamlandıktan sonra Delta çoğaltma başlar. Şirket içi disklerde artımlı değişiklikler düzenli aralıklarla Azure 'daki çoğaltma disklerine çoğaltılır.
-
-Portal bildirimlerinde iş durumunu izleyebilirsiniz.
-
-Çoğaltma durumunu, **Azure geçişi: sunucu geçişi**' nde **sunucuları** çoğaltma ' ya tıklayarak izleyebilirsiniz.
-![Çoğaltmayı izleme](./media/tutorial-migrate-vmware/replicating-servers.png)
-
-
-
 
 ## <a name="run-a-test-migration"></a>Geçiş testi çalıştırma
 
@@ -217,7 +151,7 @@ Delta çoğaltma başladığında, Azure 'a tam geçiş çalıştırmadan önce 
 Test geçişini aşağıdaki şekilde yapın:
 
 
-1. **Geçiş hedefleri** > **sunucuları** > **Azure geçişi: sunucu geçişi**' nde **geçirilen sunucuları test et**' e tıklayın.
+1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: sunucu geçişi**' nde **geçirilen sunucuları test et**' e tıklayın.
 
      ![Geçirilen sunucuları test etme](./media/tutorial-migrate-vmware/test-migrated-servers.png)
 
@@ -233,16 +167,16 @@ Test geçişini aşağıdaki şekilde yapın:
     ![Geçişi temizleme](./media/tutorial-migrate-vmware/clean-up.png)
 
 
-## <a name="migrate-vms"></a>VM’leri geçirme
+## <a name="migrate-vms"></a>VM geçirme
 
 Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıktan sonra şirket içi makineleri geçirebilirsiniz.
 
-1. Azure geçişi proje > **sunucuları** > **Azure geçişi: sunucu geçişi**' nde, **sunucuları çoğaltma**' ya tıklayın.
+1. Azure geçişi proje > **sunucuları**  >  **Azure geçişi: sunucu geçişi**' nde, **sunucuları çoğaltma**' ya tıklayın.
 
     ![Sunucuları çoğaltma](./media/tutorial-migrate-vmware/replicate-servers.png)
 
 2. **Makineleri çoğaltma** bölümünde VM > **Geçir** üzerine sağ tıklayın.
-3. Sanal makineleri Kapat ' a **geçiş** > yapın**ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet** > **Tamam**' ı seçin.
+3. **Migrate**  >  **Sanal makineleri Kapat ' a geçiş yapın ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet**  >  **Tamam**' ı seçin.
     - Azure Geçişi, varsayılan olarak şirket içi VM’yi kapatır ve son çoğaltmadan bu yana gerçekleşen tüm VM değişikliklerini eşitlemek için bir isteğe bağlı çoğaltma çalıştırır. Bu, veri kaybı olmamasını sağlar.
     - VM’yi kapatmak istemiyorsanız, **Hayır** seçeneğini belirleyin
 4. VM için bir geçiş işlemi başlar. Azure bildirimlerinde işlemi izleyin.

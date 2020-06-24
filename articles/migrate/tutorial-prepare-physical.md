@@ -4,12 +4,12 @@ description: Azure geçişi ile fiziksel sunucuların değerlendirilmesi/geçiri
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: ed648458416bacb091212bb569a27ecdf13fe8ee
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901421"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771283"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Fiziksel sunucuların değerlendirmesi ve Azure 'a geçirilmesi için hazırlanma
 
@@ -17,7 +17,7 @@ Bu makalede, [Azure geçişi](migrate-services-overview.md)ile şirket içi fizi
 
 [Azure geçişi](migrate-overview.md) , Microsoft Azure için uygulamaları, altyapıyı ve iş yüklerini keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan araçların merkezini sağlar. Hub, Azure geçiş araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir. 
 
-Bu öğretici, Azure geçişi ile fiziksel sunucuları nasıl değerlendirmenizi gösteren bir serinin ilk ilkidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, Azure geçişi ile fiziksel sunucuları nasıl değerlendirmenizi gösteren bir serinin ilk ilkidir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure 'u hazırlayın. Azure hesabınız ve kaynaklarınızın Azure geçişi ile çalışması için izinleri ayarlayın.
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Azure 'ı Azure geçişi ile çalışacak şekilde ayarlayın. 
 
-**Görev** | **Bilgileri** 
+**Görev** | **Ayrıntılar** 
 --- | --- 
 **Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katkıda bulunan veya sahip izinlerinin olması gerekir. 
 **Kaynak sağlayıcılarını kaydetme (yalnızca değerlendirme)** | Azure geçişi, Azure geçişi: Sunucu değerlendirmesi ile makineler bulma ve değerlendirme için basit bir Azure geçiş gereci kullanır.<br/><br/> Gereç kaydı sırasında kaynak sağlayıcıları, Gereç içinde seçilen aboneliğe kaydedilir. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Kaynak sağlayıcılarını kaydetmek için abonelikte bir katkıda bulunan veya sahip rolü gerekir.
@@ -69,7 +69,7 @@ Aşağıdaki yöntemlerden birini kullanarak, Gereç kaydı sırasında Azure AD
 
 Kiracı/Genel yönetici, izinleri aşağıdaki gibi verebilir:
 
-1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory** > **Users** > Kullanıcı**Kullanıcı ayarları**' na gitmelidir.
+1. Azure AD 'de, kiracı/genel yönetici **Azure Active Directory**  >  **Kullanıcı**  >  **Kullanıcı ayarları**' na gitmelidir.
 2. Yönetici **uygulama kayıtları** **Evet**olarak ayarlanmalıdır.
 
     ![Azure AD izinleri](./media/tutorial-prepare-hyper-v/aad.png)
@@ -86,7 +86,7 @@ Kiracı/Genel yönetici, uygulama geliştirici rolünü bir hesaba atayabilir. [
 
 Sunucu geçişini kullanarak Azure 'u fiziksel sunucuları geçirmeye hazırlayın.
 
-**Görev** | **Bilgileri**
+**Görev** | **Ayrıntılar**
 --- | ---
 **Azure geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katılımcısı veya sahip izinlerine ihtiyacı vardır.
 **Azure hesabınız için izinleri doğrulama** | Azure hesabınızın bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinleri olması gerekir.
@@ -138,7 +138,7 @@ Sonraki öğreticide Azure geçişi gerecini ve değerlendirmeyi ayarlamadan ön
 
 Azure geçişi 'nin şirket içi sunucuları bulması için izinleri olması gerekir.
 
-- **Windows:** Bulmaya dahil etmek istediğiniz tüm Windows sunucularında yerel bir kullanıcı hesabı ayarlayın. Kullanıcı hesabının aşağıdaki gruplara eklenmesi gerekir:-uzaktan yönetim kullanıcıları-performans Izleyicisi kullanıcıları-performans günlüğü kullanıcıları
+- **Windows:** Keşfetmesini istediğiniz tüm Windows sunucularında bir etki alanı yöneticisi veya yerel yönetici olmanız gerekir. Kullanıcı hesabı şu gruplara eklenmelidir: uzak yönetim kullanıcıları, performans Izleyicisi kullanıcıları ve performans günlüğü kullanıcıları.
 - **Linux:** Bulunmasını istediğiniz Linux sunucularında bir kök hesabınız olması gerekir.
 
 ## <a name="prepare-for-physical-server-migration"></a>Fiziksel sunucu geçişine hazırlanma
@@ -148,12 +148,14 @@ Fiziksel sunucuların geçirilmesi için gereksinimleri gözden geçirin.
 > [!NOTE]
 > Fiziksel makineleri geçirirken Azure geçişi: sunucu geçişi, Azure Site Recovery hizmetinde aracı tabanlı olağanüstü durum kurtarma ile aynı çoğaltma mimarisini kullanır ve bazı bileşenler aynı kod tabanını paylaşır. Bazı içerikler Site Recovery belgelerine bağlantı verebilir.
 
-- Geçiş için fiziksel sunucu gereksinimlerini [gözden geçirin](migrate-support-matrix-physical-migration.md#physical-server-requirements) .
-- Azure geçişi: sunucu geçişi fiziksel sunucu geçişi için bir çoğaltma sunucusu kullanır:
+1. Geçiş için fiziksel sunucu gereksinimlerini [gözden geçirin](migrate-support-matrix-physical-migration.md#physical-server-requirements) .
+2. Azure geçişi: sunucu geçişi fiziksel sunucu geçişi için bir çoğaltma sunucusu kullanır:
     - Çoğaltma gereci için dağıtım gereksinimlerini ve gereçte MySQL yükleme [seçeneklerini](migrate-replication-appliance.md#mysql-installation) [gözden geçirin](migrate-replication-appliance.md#appliance-requirements) .
     - Çoğaltma gerecinin ortak ve kamu bulutları 'na erişmesi için gereken [Azure URL 'lerini](migrate-appliance.md#url-access) gözden geçirin.
     - Çoğaltma gereci için [port] (Migrate-Replication-gereci. MD # Port-Access) erişim gereksinimlerini gözden geçirin.
-
+3. Azure 'a geçirmeden önce VM 'lerde gereken bazı değişiklikler vardır.
+    - Geçişe başlamadan önce bu değişiklikleri yapmak önemlidir. Değişikliği yapmadan önce VM 'yi geçirirseniz, VM Azure 'da önyüklenemeyebilir.
+    - Yapmanız gereken [Windows](prepare-for-migration.md#windows-machines) ve [Linux](prepare-for-migration.md#linux-machines) değişikliklerini gözden geçirin.
 
 
 

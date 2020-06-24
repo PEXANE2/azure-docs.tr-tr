@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9804a44a29f4540c28ec4e1eb6927e65af70218c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbfa16223484928dda1004011d2e92295edd8b89
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682956"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297266"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Öğretici: Palo Alto Networks-admin kullanıcı arabirimi ile Azure Active Directory tümleştirme
 
@@ -106,14 +106,14 @@ Azure AD çoklu oturum açmayı Palo Alto Networks-admin kullanıcı arabirimine
 
     > **Tanımlayıcı** üzerinde 443 numaralı bağlantı noktası ve **yanıt URL 'si** , bu değerler Palo Alto güvenlik duvarına kodlandığı için gereklidir. Bağlantı noktası numarasının kaldırılması, kaldırıldığında oturum açma sırasında hata oluşmasına neden olur.
 
-1. Genesys uygulamasına göre Purecyüksek, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+1. Palo Alto Networks-admin kullanıcı arabirimi uygulaması SAML onaylamalarını belirli bir biçimde bekler, bu da SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektirir. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
    > [!NOTE]
    > Öznitelik değerleri yalnızca örnekler olduğundan, *Kullanıcı adı* ve *adminrole*için uygun değerleri eşleyin. Güvenlik duvarındaki belirli sanal sistemlere yönetici erişimini kısıtlamak için kullanılan başka bir isteğe bağlı öznitelik olan *accessdomain*.
 
-1. Genesys uygulamasına göre Purecsesli, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdaki ' a ek olarak, Palo Alto Networks-admin kullanıcı arabirimi uygulaması, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
     | Name |  Kaynak özniteliği|
     | --- | --- |
@@ -150,7 +150,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -188,7 +188,7 @@ Bu bölümde, Azure çoklu oturum açmayı kullanarak, Palo Alto Networks-admin 
 
     a. **Profil adı** kutusuna bir ad girin (örneğin, **AZUREAD admin kullanıcı arabirimi**).
 
-    b. **Kimlik sağlayıcısı meta verileri**altında, **Araştır**' ı seçin ve daha önce Azure Portal indirdiğiniz Metadata. xml dosyasını seçin.
+    b. **Kimlik sağlayıcısı meta verileri**altında, **Araştır**' ı seçin ve daha önce Azure Portal indirdiğiniz metadata.xml dosyasını seçin.
 
     c. **Kimlik sağlayıcısı sertifikasını doğrula** onay kutusunu temizleyin.
 
@@ -241,7 +241,7 @@ Bu bölümde, Azure çoklu oturum açmayı kullanarak, Palo Alto Networks-admin 
     f. **Tümü** onay kutusunu seçin veya bu profille kimlik doğrulayabilecek kullanıcıları ve grupları seçin.  
     Bir kullanıcı kimliğini doğruladığında, güvenlik duvarı ilgili Kullanıcı adı veya grupla bu listedeki girdilerle eşleşir. Girdi eklememeniz durumunda hiçbir kullanıcının kimlik doğrulaması yapabilmeleri gerekmez.
 
-    g. **Tamam**’ı seçin.
+    örneğin: **Tamam**’ı seçin.
 
 13. Yöneticilerin Azure kullanarak SAML SSO 'yu kullanmasını sağlamak için **cihaz**  >  **kurulumu**' nu seçin. **Kurulum** bölmesinde, **Yönetim** sekmesini seçin ve ardından **kimlik doğrulama ayarları**altında **Ayarlar** ("dişli") düğmesini seçin.
 

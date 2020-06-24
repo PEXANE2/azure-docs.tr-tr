@@ -54,8 +54,12 @@
       href: expressroute-global-reach.md
     - name: ExpressRoute şifrelemesi hakkında
       href: expressroute-about-encryption.md
-    - name: Güvenlik denetimleri
-      href: expressroute-security-controls.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
+        - name: Güvenlik öznitelikleri
+          href: expressroute-security-controls.md
     - name: Sanal ağ geçitleri hakkında
       href: expressroute-about-virtual-network-gateways.md
     - name: Azure'ı genel buluta bağlama
@@ -210,7 +214,7 @@
 - name: Başvuru
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#expressroute'
+      href: /powershell/module/az.network#expressroute
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST

@@ -4,19 +4,19 @@ description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçi
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331891"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771317"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Sunucu Değerlendirmesiyle VMware VM'lerini Değerlendirme
 
 Bu makalede, şirket içi VMware sanal makinelerini (VM 'Ler) [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracını kullanarak nasıl değerlenbileceğiniz gösterilmektedir.
 
 
-Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir Azure geçişi projesi ayarlayın.
 > * VM 'Leri değerlendirmek için şirket içinde çalışan bir Azure geçiş gereci ayarlayın.
@@ -29,12 +29,12 @@ Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geç
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bu serideki [ilk öğreticiyi doldurun](tutorial-prepare-vmware.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 - İlk öğreticide yapmanız gerekenler şunlardır:
     - Azure 'u Azure geçişi ile çalışacak şekilde [hazırlayın](tutorial-prepare-vmware.md#prepare-azure) .
-    - [VMware için değerlendirme değerlendirmesi hazırlayın](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) . Bu, VMware ayarlarının denetlenmesini ve Azure geçişi 'nin vCenter Server erişmek için kullanabileceği bir hesap ayarlamayı içerir.
+    - [VMware için değerlendirme değerlendirmesi hazırlayın](tutorial-prepare-vmware.md#prepare-for-assessment) . Bu, VMware ayarlarının denetlenmesini ve Azure geçişi 'nin vCenter Server erişmek için kullanabileceği bir hesap ayarlamayı içerir.
     - VMware değerlendirmesi için Azure geçişi gereci dağıtmak üzere gerekenleri [doğrulayın](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment) .
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure geçişi projesi ayarlama
@@ -99,7 +99,7 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
         --- | --- | ---
         VMware (10,9 GB) | [En son sürüm](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
-    - Azure hükümeti için:
+    - Azure Kamu için:
     
         **Algoritma** | **İndir** | **SHA256**
         --- | --- | ---
@@ -170,7 +170,7 @@ Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCente
 1. **VCenter Server ayrıntılarını belirtin**bölümünde vCenter Server örneğinin adını (FQDN) veya IP adresini belirtin. Varsayılan bağlantı noktasını bırakabilir veya vCenter Server dinlediği özel bir bağlantı noktası belirtebilirsiniz.
 2. **Kullanıcı adı** ve **parola**' da, gerecin vCenter Server örneğindeki VM 'leri bulması için kullanacağı vCenter Server hesabı kimlik bilgilerini belirtin. 
 
-    - [Önceki öğreticide](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)gerekli izinlere sahip bir hesap ayarlamış olmanız gerekir.
+    - [Önceki öğreticide](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)gerekli izinlere sahip bir hesap ayarlamış olmanız gerekir.
     - Bulma işlemini belirli VMware nesneleri (vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, bir konaklar klasörü veya ayrı VM 'Ler) olarak atamak istiyorsanız, Azure geçişi tarafından kullanılan hesabı kısıtlamak için [Bu makaledeki](set-discovery-scope.md) yönergeleri gözden geçirin.
 
 3. Gerecin vCenter Server bağlanabildiğini sağlamak için **bağlantıyı doğrula** ' yı seçin.
@@ -178,7 +178,7 @@ Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCente
 
     - [Uygulama bulma özelliği](how-to-discover-applications.md)veya [aracısız bağımlılık Analizi özelliği](how-to-create-group-machine-dependencies-agentless.md)için kullanmak üzere bir hesap oluşturduysanız, isteğe bağlı olarak burada kimlik bilgileri eklersiniz.
     - Bu özellikleri kullanmıyorsanız, bu ayarı atlayabilirsiniz.
-    - [Uygulama bulma](migrate-support-matrix-vmware.md#application-discovery)veya [aracısız analiz](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)için gereken kimlik bilgilerini gözden geçirin.
+    - [Uygulama bulma](migrate-support-matrix-vmware.md#application-discovery-requirements)veya [aracısız analiz](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)için gereken kimlik bilgilerini gözden geçirin.
 
 5. VM bulmayı **başlatmak için bulmayı kaydedin ve başlatın**.
 

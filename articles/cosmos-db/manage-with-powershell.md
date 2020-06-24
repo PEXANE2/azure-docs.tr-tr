@@ -1,18 +1,18 @@
 ---
 title: PowerShell kullanarak Azure Cosmos DB oluşturma ve yönetme
-description: Azure PowerShell 'i kullanarak Azure Cosmos hesaplarınızı, veritabanlarınızı, Kapsayıcılarınızı ve aktarım hızını yönetin.
+description: Azure Cosmos hesaplarınızı, veritabanlarınızı, Kapsayıcılarınızı ve aktarım hızını yönetmek Azure PowerShell kullanın.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 0ae3ff54e1060255913d8155b297c5d412ce345f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 494c5f0c3d7d0a4c8a388ce06143795fe5f12f20
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656295"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262285"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell kullanarak Azure Cosmos DB SQL API kaynaklarını yönetme
 
@@ -44,6 +44,7 @@ Aşağıdaki bölümlerde aşağıdakiler dahil olmak üzere Azure Cosmos hesab�
 * [Azure Cosmos hesabı için bağlantı dizelerini listeleme](#list-connection-strings)
 * [Azure Cosmos hesabı için yük devretme önceliğini değiştirme](#modify-failover-priority)
 * [Azure Cosmos hesabı için el ile yük devretme tetikleyin](#trigger-manual-failover)
+* [Azure Cosmos DB hesabındaki kaynak kilitlerini listeleme](#list-account-locks)
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Azure Cosmos hesabı oluşturma
 
@@ -327,6 +328,21 @@ Update-AzCosmosDBAccountFailoverPriority `
     -FailoverPolicy $locations
 ```
 
+### <a name="list-resource-locks-on-an-azure-cosmos-db-account"></a><a id="list-account-locks"></a>Azure Cosmos DB hesabındaki kaynak kilitlerini listeleme
+
+Kaynak kilitleri, veritabanları ve koleksiyonlar dahil olmak üzere Azure Cosmos DB kaynaklara yerleştirilebilir. Aşağıdaki örnekte, bir Azure Cosmos DB hesabındaki tüm Azure Kaynak kilitlerinin nasıl listelediği gösterilmektedir.
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceTypeAccount = "Microsoft.DocumentDB/databaseAccounts"
+$accountName = "mycosmosaccount"
+
+Get-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceTypeAccount `
+    -ResourceName $accountName
+```
+
 ## <a name="azure-cosmos-db-database"></a>Azure Cosmos DB veritabanı
 
 Aşağıdaki bölümlerde aşağıdakiler de dahil olmak üzere Azure Cosmos DB veritabanının nasıl yönetileceği gösterilmektedir:
@@ -337,6 +353,8 @@ Aşağıdaki bölümlerde aşağıdakiler de dahil olmak üzere Azure Cosmos DB 
 * [Bir hesaptaki tüm Azure Cosmos DB veritabanlarını listeleme](#list-db)
 * [Tek bir Azure Cosmos DB veritabanı al](#get-db)
 * [Azure Cosmos DB veritabanını silme](#delete-db)
+* [Silmeyi engellemek için Azure Cosmos DB veritabanında bir kaynak kilidi oluşturun](#create-db-lock)
+* [Azure Cosmos DB veritabanında kaynak kilidini kaldırma](#remove-db-lock)
 
 ### <a name="create-an-azure-cosmos-db-database"></a><a id="create-db"></a>Azure Cosmos DB veritabanı oluşturma
 
@@ -416,6 +434,42 @@ Remove-AzCosmosDBSqlDatabase `
     -Name $databaseName
 ```
 
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-database-to-prevent-delete"></a><a id="create-db-lock"></a>Silmeyi engellemek için Azure Cosmos DB veritabanında bir kaynak kilidi oluşturun
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-database"></a><a id="remove-db-lock"></a>Azure Cosmos DB veritabanında kaynak kilidini kaldırma
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$resourceName = "$accountName/$databaseName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
+```
+
 ## <a name="azure-cosmos-db-container"></a>Azure Cosmos DB kapsayıcı
 
 Aşağıdaki bölümlerde aşağıdakiler dahil Azure Cosmos DB kapsayıcısının nasıl yönetileceği gösterilmektedir:
@@ -430,6 +484,8 @@ Aşağıdaki bölümlerde aşağıdakiler dahil Azure Cosmos DB kapsayıcısın�
 * [Bir veritabanındaki tüm Azure Cosmos DB kapsayıcıları listeleme](#list-containers)
 * [Veritabanında tek bir Azure Cosmos DB kapsayıcısı edinme](#get-container)
 * [Azure Cosmos DB kapsayıcısını silme](#delete-container)
+* [Silmeyi engellemek için Azure Cosmos DB kapsayıcısı üzerinde bir kaynak kilidi oluşturun](#create-container-lock)
+* [Azure Cosmos DB kapsayıcısında kaynak kilidini kaldırma](#remove-container-lock)
 
 ### <a name="create-an-azure-cosmos-db-container"></a><a id="create-container"></a>Azure Cosmos DB kapsayıcısı oluşturma
 
@@ -667,6 +723,43 @@ Remove-AzCosmosDBSqlContainer `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+### <a name="create-a-resource-lock-on-an-azure-cosmos-db-container-to-prevent-delete"></a><a id="create-container-lock"></a>Silmeyi engellemek için Azure Cosmos DB kapsayıcısı üzerinde bir kaynak kilidi oluşturun
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+$lockLevel = "CanNotDelete"
+
+New-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName `
+    -LockLevel $lockLevel
+```
+
+### <a name="remove-a-resource-lock-on-an-azure-cosmos-db-container"></a><a id="remove-container-lock"></a>Azure Cosmos DB kapsayıcısında kaynak kilidini kaldırma
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$resourceType = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$resourceName = "$accountName/$databaseName/$containerName"
+$lockName = "myResourceLock"
+
+Remove-AzResourceLock `
+    -ResourceGroupName $resourceGroupName `
+    -ResourceType $resourceType `
+    -ResourceName $resourceName `
+    -LockName $lockName
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

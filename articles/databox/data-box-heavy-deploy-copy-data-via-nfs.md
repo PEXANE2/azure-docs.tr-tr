@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238989"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711264"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Öğretici: NFS aracılığıyla Azure Data Box Heavy verileri kopyalama
 
@@ -32,7 +32,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 1. [Öğreticiyi tamamladınız: Azure Data Box Heavy ayarlayın](data-box-heavy-deploy-set-up.md).
 2. Data Box Heavy aldınız ve portaldaki sipariş durumu **teslim edildi**.
-3. Data Box Heavy üzerinden kopyalamak istediğiniz verileri içeren bir ana bilgisayarınız var. Konak bilgisayarınızda:
+3. Data Box Heavy üzerinden kopyalamak istediğiniz verileri içeren bir ana bilgisayarınız var. Ana bilgisayarınız:
     - [Desteklenen bir işletim sistemi](data-box-heavy-system-requirements.md) çalıştırılmalıdır.
     - Yüksek hızlı bir ağa bağlı olmalıdır. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir. 
 
@@ -77,7 +77,7 @@ Bir Linux ana bilgisayar kullanıyorsanız, cihazınızı NFS istemcilerine eri�
 
     `sudo mount <Data Box Heavy device IP>:/<NFS share on Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Aşağıdaki örnekte, NFS aracılığıyla Data Box Heavy bir paylaşıma nasıl bağlanabileceği gösterilmektedir. Data Box Heavy IP `10.161.23.130`'si, paylaşımın `Mystoracct_Blob` ubuntuvm, bağlama noktasına bağlanır. `/home/databoxheavyubuntuhost/databoxheavy`
+    Aşağıdaki örnekte, NFS aracılığıyla Data Box Heavy bir paylaşıma nasıl bağlanabileceği gösterilmektedir. Data Box Heavy IP 'si, `10.161.23.130` paylaşımın `Mystoracct_Blob` ubuntuVM, bağlama noktasına bağlanır `/home/databoxheavyubuntuhost/databoxheavy` .
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
     
@@ -85,7 +85,7 @@ Bir Linux ana bilgisayar kullanıyorsanız, cihazınızı NFS istemcilerine eri�
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
 
-    **Her zaman, paylaşımın altında kopyalamak istediğiniz dosyalar için bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
+    **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
 
 ## <a name="copy-data-to-data-box-heavy"></a>Data Box Heavy’ye veri kopyalama
 
@@ -95,12 +95,12 @@ Data Box Heavy paylaşımlarına bağlandıktan sonra, bir sonraki adım veriler
 -  Verileri kopyalarken, veri boyutunun [Azure depolama ve Data Box Heavy limitlerde](data-box-heavy-limits.md)açıklanan boyut sınırlarına uyduğundan emin olun. 
 - Data Box Heavy tarafından yüklenen verilerin Data Box Heavy haricindeki başka bir uygulama tarafından da yüklenmesi durumunda yükleme işinde hata oluşabilir ve veri bozulması yaşanabilir.
 - Aynı anda hem SMB hem de NFS kullanmamanızı veya aynı verileri Azure'daki aynı uç hedefe kopyalamamanızı öneririz. Bu gibi durumlarda nihai sonucu kestirmek mümkün olmayabilir.
-- **Her zaman, paylaşımın altında kopyalamak istediğiniz dosyalar için bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
+- **Her zaman kopyalamayı düşündüğünüz dosyalar için paylaşımda bir klasör oluşturun ve ardından dosyaları bu klasöre kopyalayın**. Blok blobu ve sayfa blobu paylaşımları altında oluşturulan klasör, verilerin blob olarak karşıya yüklendiği kapsayıcıyı temsil eder. Dosyaları depolama hesabındaki *root* klasörüne doğrudan kopyalayamazsınız.
 - Büyük/küçük harfe duyarlı dizin ve dosya adlarını NFS paylaşımından Data Box Heavy: 
     - Durum, ad içinde korunur.
     - Dosyalar büyük/küçük harfe duyarlıdır.
     
-    Örneğin, ve `SampleFile.txt` `Samplefile.Txt`kopyalama yaptıysanız, bu durum cihaza kopyalanırken adı saklanır, ancak ikinci dosya aynı dosya olarak kabul edildiği sürece ikinci dosya birincisinin üzerine yazılır.
+    Örneğin, ve kopyalama yaptıysanız `SampleFile.txt` `Samplefile.Txt` , bu durum cihaza kopyalanırken adı saklanır, ancak ikinci dosya aynı dosya olarak kabul edildiği sürece ikinci dosya birincisinin üzerine yazılır.
 
 
 Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardımcı programı kullanabilirsiniz. Linux için kullanabileceğiniz bazı alternatifler: [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) veya [Ultracopier](https://ultracopier.first-world.info/).  
