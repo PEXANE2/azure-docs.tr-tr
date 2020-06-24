@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b7139c458d2cc2a59f4202e9cbc7d48433514f34
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996948"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792106"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Başvuru IoT Hub uç noktaları
 
@@ -24,7 +24,7 @@ ms.locfileid: "82996948"
 
 ## <a name="iot-hub-names"></a>IoT Hub adları
 
-Kuruluşunuzun **genel bakış** sayfasında uç noktalarınızı barındıran IoT Hub 'ın ana bilgisayar adını bulabilirsiniz. Varsayılan olarak, bir IoT Hub 'ının DNS adı şöyle görünür: `{your iot hub name}.azure-devices.net`.
+Kuruluşunuzun **genel bakış** sayfasında uç noktalarınızı barındıran IoT Hub 'ın ana bilgisayar adını bulabilirsiniz. Varsayılan olarak, bir IoT Hub 'ının DNS adı şöyle görünür: `{your iot hub name}.azure-devices.net` .
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Yerleşik IoT Hub uç noktaları listesi
 
@@ -85,14 +85,9 @@ IoT Hub Şu anda ek uç noktalar olarak aşağıdaki Azure hizmetlerini destekle
 
 Ekleyebileceğiniz uç nokta sayısıyla ilgili sınırlar için bkz. [Kotalar ve azaltma](iot-hub-devguide-quotas-throttling.md).
 
-Uç noktaların sistem durumunu almak için [uç nokta durumu al](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) REST API kullanabilirsiniz. Uç nokta bu durumlardan birinde olduğunda gecikme süresinin daha yüksek olması Beklendiğimiz için, uç nokta durumu ölü veya sağlıksız olduğunda hataları tanımlamak ve hatalarını ayıklamak için ileti gecikmesini yönlendirme ile ilgili [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanmanızı öneririz.
+## <a name="endpoint-health"></a>Uç nokta sistem durumu
 
-|Sistem Durumu|Açıklama|
-|---|---|
-|sağlıklı|Uç nokta iletileri beklendiği gibi kabul ediyor.|
-|sağlıksız|Uç nokta iletileri beklendiği gibi kabul etmiyor ve IoT Hub bu uç noktaya veri gönderilmeye yeniden deniyor. Sağlıklı olmayan bir uç noktanın durumu, IoT Hub sonunda tutarlı bir sistem durumu oluşturulduğunda sağlıklı olarak güncelleştirilecektir.|
-|bilinmeyen|IoT Hub uç noktayla bir bağlantı kurmadı. Bu uç noktaya gönderilen veya reddedilen ileti yok.|
-|teslim edilemeyen iletiler|Uç nokta, IoT Hub ileti göndermeyi yeniden denendikten sonra iletileri kabul etmez.|
+[!INCLUDE [iot-hub-endpoint-health](../../includes/iot-hub-include-endpoint-health.md)]
 
 ## <a name="field-gateways"></a>Alan ağ geçitleri
 

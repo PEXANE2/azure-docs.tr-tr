@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87da588806908566bd1980da4c3120c0d4537b4a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 89e1868d8e9a346d5a791c9fa8ae7682ca2b6807
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673148"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905145"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B’de konuk kullanıcı erişimi nedir?
 
@@ -99,9 +99,11 @@ Azure AD, Facebook, Microsoft hesapları, Google veya kurumsal kimlik sağlayıc
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Self Servis kaydolma Kullanıcı akışı oluşturma (Önizleme)
 
 Self Servis kaydolma Kullanıcı akışıyla, uygulamalarınıza erişmek isteyen dış kullanıcılar için bir kaydolma deneyimi oluşturabilirsiniz. Kaydolma akışının bir parçası olarak, farklı sosyal veya kurumsal kimlik sağlayıcılarının seçeneklerini sağlayabilir ve Kullanıcı hakkında bilgi toplayabilirsiniz. [Self servis kaydolma ve nasıl ayarlanacağı](self-service-sign-up-overview.md)hakkında bilgi edinin.
-<!-- You can also use [API connectors](api-connectors-overview.md) to integrate your user flows with external systems, for example user approval systems, user input validation systems, or custom business logic. -->
+
+Ayrıca, self servis kaydolma Kullanıcı akışlarınızı dış bulut sistemleriyle bütünleştirmek için [API bağlayıcıları](api-connectors-overview.md) kullanabilirsiniz. Özel onay iş akışlarıyla bağlanabilir, kimlik doğrulaması gerçekleştirebilir, Kullanıcı tarafından belirtilen bilgileri doğrulayabilir ve daha fazlasını yapabilirsiniz.
 
 ![Kullanıcı akışları sayfasını gösteren ekran görüntüsü](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
+<!--TODO: Add screenshot with API connectors -->
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

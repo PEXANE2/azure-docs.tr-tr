@@ -11,18 +11,18 @@ Customer intent: I need to diagnose virtual machine (VM) network routing problem
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 889db5cdcb1807b859339eaf326e3cec7ea64b84
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382911"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738830"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Bir sanal makine ağ yönlendirme sorununu tanılama-Azure CLı
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.28 veya üstünü çalıştırıyor olmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). Azure CLı sürümünü doğruladıktan sonra, Azure ile bağlantı `az login` oluşturmak için öğesini çalıştırın. Bu makaledeki Azure CLı komutları Bash kabuğunda çalışacak şekilde biçimlendirilir.
+Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.28 veya üstünü çalıştırıyor olmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). Azure CLı sürümünü doğruladıktan sonra, `az login` Azure ile bağlantı oluşturmak için öğesini çalıştırın. Bu makaledeki Azure CLı komutları Bash kabuğunda çalışacak şekilde biçimlendirilir.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
@@ -129,9 +129,9 @@ Döndürülen çıktıda aşağıdaki metin bulunur:
 },
 ```
 
-Bir `az network watcher show-next-hop` [sonraki atlamada](#use-next-hop)13.107.21.200 ile giden iletişimi test etmek için komutunu kullandığınızda, çıkışdaki başka bir yol adresi içerdiğinden, adresi adrese yönlendirmek için **addresspredüzeltmesini** 0.0.0.0/0 * * ile yönlendirme kullanılmıştır. Varsayılan olarak, başka bir yolun adres ön ekinde belirtilmeyen tüm adresler İnternet'e yönlendirilir.
+Bir `az network watcher show-next-hop` [sonraki atlamada](#use-next-hop)13.107.21.200 ile giden iletişimi test etmek için komutunu kullandığınızda, çıkışdaki başka bir yol adresi içerdiğinden, adresi adrese yönlendirmek Için **addresspredüzeltmesini** 0.0.0.0/0 * * ile yönlendirme kullanılmıştır. Varsayılan olarak, başka bir yolun adres ön ekinde belirtilmeyen tüm adresler İnternet'e yönlendirilir.
 
-Ancak 172.31.0.100 ile giden `az network watcher show-next-hop` iletişimi test etmek için komutunu kullandığınızda, sonuç bir sonraki atlama türü olmadığını bildirdi. Döndürülen çıktıda aşağıdaki metni de görürsünüz:
+`az network watcher show-next-hop`Ancak 172.31.0.100 ile giden iletişimi test etmek için komutunu kullandığınızda, sonuç bir sonraki atlama türü olmadığını bildirdi. Döndürülen çıktıda aşağıdaki metni de görürsünüz:
 
 ```
 {
@@ -149,7 +149,7 @@ Ancak 172.31.0.100 ile giden `az network watcher show-next-hop` iletişimi test 
 },
 ```
 
-`az network watcher nic show-effective-route-table` Komutun çıktısında görebileceğiniz gibi, 172.31.0.100 adresini de içeren 172.16.0.0/12 ön ekine varsayılan bir yol vardır ancak **nexthoptype** **none**olur. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, 172.16.0.0/12 adres aralığını sanal ağın adres alanına eklediyseniz Azure, **Nexthoptype** 'ı yol için **sanal ağ** olarak değiştirir. Ardından bir denetim, **sanal ağı** **nexthoptype**olarak gösterir.
+Komutun çıktısında görebileceğiniz gibi `az network watcher nic show-effective-route-table` , 172.31.0.100 adresini de içeren 172.16.0.0/12 ön ekine varsayılan bir yol vardır ancak **Nexthoptype** **none**olur. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, 172.16.0.0/12 adres aralığını sanal ağın adres alanına eklediyseniz Azure, **Nexthoptype** 'ı yol için **sanal ağ** olarak değiştirir. Ardından bir denetim, **sanal ağı** **nexthoptype**olarak gösterir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -3,13 +3,13 @@ title: Yaygın Azure Kubernetes hizmet sorunlarını giderme
 description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 services: container-service
 ms.topic: troubleshooting
-ms.date: 05/16/2020
-ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/20/2020
+ms.openlocfilehash: 36b3f20b866e7bad1d27f9fa92c02601ec21602c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725003"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125438"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -46,6 +46,19 @@ Pod 'un bu modda takılmasının çeşitli nedenleri olabilir. Şöyle görüneb
 
 Pod sorunlarını giderme hakkında daha fazla bilgi için bkz. [uygulamalarda hata ayıklama](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`TCP timeouts` `kubectl` API sunucusuna bağlanırken veya diğer üçüncü taraf araçları kullanırken alıyorum
+AKS 'in hizmet düzeyi hedeflerini (SLOs) ve hizmet düzeyi sözleşmelerini (SLA 'Lar) sağlamak için çekirdek sayısına göre dikey ölçeklendirilen HA denetim düzlemleri vardır. Bağlantı zaman aşımına uğradıysanız, aşağıdakileri denetleyin:
+
+- **Tüm API komutlarınız sürekli olarak mı yoksa yalnızca birkaç tane mi çalışıyor?** Yalnızca birkaç tane ise, `tunnelfront` `aks-link` düğüm > denetim düzlemi iletişiminden sorumlu olan Pod veya Pod 'niz çalışır durumda olmayabilir. Bu Pod 'un barındırıldığı düğümlerin aşırı veya stres altında olmadığından emin olun. Bunları kendi [ `system` düğüm havuzlarına](use-system-pools.md)taşımayı göz önünde bulundurun.
+- **[Aıks çıkış trafiği](limit-egress-traffic.md)belgeleriyle belirtilen tüm gerekli bağlantı noktalarını, FQDN 'Leri ve IP 'leri açtığınızdan emin misiniz?** Aksi takdirde birkaç komut çağrısı başarısız olabilir.
+- **[API IP yetkili aralıklarının](api-server-authorized-ip-ranges.md)geçerli IP 'si kapsanıyor mi?** Bu özelliği kullanıyorsanız ve IP 'niz aralığa dahil edilmemişse, çağrılarınız engellenir. 
+- **API sunucusuna sızan bir istemciniz ya da uygulamanız var mı?** Sık sık çağrı yapmak yerine izlemeler kullandığınızdan ve üçüncü taraf uygulamalarınızın bu tür çağrıları sızdırmadığından emin olun. Örneğin, yeni bir gizli dizi her okurken, Istio Mixer 'teki bir hata yeni bir API sunucusu izleme bağlantısının oluşturulmasına neden olur. Bu davranış düzenli bir aralıkta olduğundan, izleme bağlantıları hızlı bir şekilde birikir ve sonuç olarak, ölçeklendirme deseninin ne olduğuna bakılmaksızın API sunucusunun aşırı yüklenmiş olmasına neden olur. https://github.com/istio/istio/issues/19481
+- **Held dağıtımlarınızda çok sayıda yayın var mı?** Bu senaryo, her iki Tiller de düğümlerde çok fazla bellek kullanmasına neden olabilir ve bu da büyük miktarda `configmaps` , API sunucusunda gereksiz ani artışlar oluşmasına neden olabilir. `--history-max`' De yapılandırmayı düşünün `helm init` ve yeni helb 3 ' ü kullanın. Aşağıdaki sorunlar hakkında daha fazla bilgi: 
+    - https://github.com/helm/helm/issues/4821
+    - https://github.com/helm/helm/issues/3500
+    - https://github.com/helm/helm/issues/4543
+
+
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Var olan bir kümede rol tabanlı Access Control (RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
 
 Mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor, yeni kümeler oluşturulurken ayarlanmalıdır. Daha sonra CLı, portal veya API sürümü kullanılırken RBAC varsayılan olarak etkindir `2020-03-01` .
@@ -53,12 +66,6 @@ Mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu a
 ## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>RBAC etkinken bir küme oluşturdum ve şimdi Kubernetes panosunda birçok uyarı görüyorum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
 
 Uyarıların nedeni kümede RBAC 'nin etkinleştirilmiş ve panoya erişimi artık varsayılan olarak kısıtlıdır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
-
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmalıyım?
-
-Küme dışında hizmetinize erişmenin en kolay yolu `kubectl proxy` , ana bilgisayar bağlantı noktası 8001 Ile Kubernetes API sunucusuna gönderilen isteklerin proxy 'sidir. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` .
-
-Kubernetes panosunu görmüyorsanız, `kube-proxy` Pod 'un ad alanında çalışıp çalışmadığını denetleyin `kube-system` . Çalışır durumda değilse, Pod 'yi silin ve yeniden başlatılır.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmalıyım?
 

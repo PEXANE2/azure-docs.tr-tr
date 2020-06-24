@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278226"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698070"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
 
@@ -21,7 +21,7 @@ Orchestration tetikleyicisi, [dayanıklı Orchestrator işlevlerini](durable-fun
 
 Azure Işlevleri için Visual Studio Araçları 'nı kullandığınızda Orchestration tetikleyicisi, [Orchestrationtriggerattribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .net özniteliği kullanılarak yapılandırılır.
 
-Komut dosyası dillerinde Orchestrator işlevleri yazdığınızda (örneğin, JavaScript veya C# komut dosyası), düzenleme tetikleyicisi, `bindings` *function. JSON* dosyasının dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Komut dosyası dillerinde Orchestrator işlevleri yazdığınızda (örneğin, JavaScript veya C# komut dosyası), düzenleme tetikleyicisi `bindings` dosyadaki *function.js* dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -49,14 +49,14 @@ Düzenleme tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 > Orchestrator işlevleri, düzenleme tetikleyicisi bağlaması dışında herhangi bir giriş veya çıkış bağlamasını asla kullanmamalıdır. Bunun yapılması, bu bağlamalar tek iş parçacığı ve g/ç kurallarına uymadığı için dayanıklı görev uzantısıyla ilgili sorunlara neden olabilir. Diğer bağlamaları kullanmak istiyorsanız, bunları Orchestrator işlevinizden çağrılan bir etkinlik işlevine ekleyin.
 
 > [!WARNING]
-> JavaScript Orchestrator işlevleri asla bildirilmelidir `async`.
+> JavaScript Orchestrator işlevleri asla bildirilmelidir `async` .
 
 ### <a name="trigger-usage-net"></a>Kullanım tetiklemesi (.NET)
 
 Düzenleme tetikleyicisi bağlaması hem giriş hem de çıkışları destekler. Giriş ve çıkış işleme hakkında daha fazla bilgi edinmek için aşağıdaki noktalara dikkat edin:
 
-* **girişler** -.net Orchestration işlevleri yalnızca bir `DurableOrchestrationContext` parametre türü olarak desteklenir. Doğrudan işlev imzasında girişlerin serisini kaldırma desteklenmez. Kod, `GetInput<T>` Orchestrator işlev girişlerini getirmek için ( `getInput` .net) veya (JavaScript) yöntemini kullanmalıdır. Bu girişler JSON serileştirilebilir türler olmalıdır.
-* **çıktılar** -düzenleme Tetikleyicileri, çıkış değerlerinin yanı sıra girdileri de destekler. İşlevin dönüş değeri, çıkış değerini atamak için kullanılır ve JSON ile seri hale getirilebilir olmalıdır. Bir .NET işlevi veya `Task` `void`döndürürse, bir `null` değer çıktı olarak kaydedilir.
+* **girişler** -.net Orchestration işlevleri yalnızca `DurableOrchestrationContext` bir parametre türü olarak desteklenir. Doğrudan işlev imzasında girişlerin serisini kaldırma desteklenmez. Kod, `GetInput<T>` `getInput` Orchestrator işlev girişlerini getirmek için (.net) veya (JavaScript) yöntemini kullanmalıdır. Bu girişler JSON serileştirilebilir türler olmalıdır.
+* **çıktılar** -düzenleme Tetikleyicileri, çıkış değerlerinin yanı sıra girdileri de destekler. İşlevin dönüş değeri, çıkış değerini atamak için kullanılır ve JSON ile seri hale getirilebilir olmalıdır. Bir .NET işlevi veya döndürürse `Task` `void` , bir `null` değer çıktı olarak kaydedilir.
 
 ### <a name="trigger-sample"></a>Tetikleyici örneği
 
@@ -73,7 +73,7 @@ public static string Run([OrchestrationTrigger] IDurableOrchestrationContext con
 }
 ```
 > [!NOTE]
-> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableOrchestrationContext` gerekir. `IDurableOrchestrationContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 #### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
@@ -87,10 +87,10 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> JavaScript `context` içindeki nesne, DurableOrchestrationContext, ancak [işlev bağlamını bir bütün olarak](../functions-reference-node.md#context-object)temsil etmez. Düzenleme yöntemlerine `context` nesnenin `df` özelliği aracılığıyla erişebilirsiniz.
+> `context`JavaScript içindeki nesne, DurableOrchestrationContext, ancak [işlev bağlamını bir bütün olarak](../functions-reference-node.md#context-object)temsil etmez. Düzenleme yöntemlerine `context` nesnenin özelliği aracılığıyla erişebilirsiniz `df` .
 
 > [!NOTE]
-> JavaScript düzenleyicilerinin kullanması `return`gerekir. `durable-functions` Kitaplık, `context.done` yöntemi çağırma işlemini gerçekleştirir.
+> JavaScript düzenleyicilerinin kullanması gerekir `return` . `durable-functions`Kitaplık, yöntemi çağırma işlemini gerçekleştirir `context.done` .
 
 Çoğu Orchestrator işlevi etkinlik işlevlerini çağırır, bu nedenle bir etkinlik işlevinin nasıl çağrılacağını gösteren bir "Merhaba Dünya" örneği aşağıda verilmiştir:
 
@@ -108,7 +108,7 @@ public static async Task<string> Run(
 ```
 
 > [!NOTE]
-> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableOrchestrationContext` gerekir. `IDurableOrchestrationContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableOrchestrationContext` `IDurableOrchestrationContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 #### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
 
@@ -128,7 +128,7 @@ Etkinlik tetikleyicisi, [etkinlik işlevleri](durable-functions-types-features-o
 
 Visual Studio kullanıyorsanız, etkinlik tetikleyicisi `ActivityTriggerAttribute` .net özniteliği kullanılarak yapılandırılır.
 
-Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikleyicisi `bindings` *function. JSON*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikleyicisi `bindings` *üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -159,9 +159,9 @@ Etkinlik tetikleyicisiyle ilgili bazı notlar aşağıda verilmiştir:
 
 Etkinlik tetikleyicisi bağlaması, tıpkı düzenleme tetikleyicisi gibi giriş ve çıkışları destekler. Giriş ve çıkış işleme hakkında daha fazla bilgi edinmek için aşağıdaki noktalara dikkat edin:
 
-* **girişler** -.net etkinliği işlevleri yerel olarak `DurableActivityContext` parametre türü olarak kullanılır. Alternatif olarak, bir etkinlik işlevi JSON ile seri hale getirilebilir olan herhangi bir parametre türüyle bildirilebilecek. Kullandığınızda `DurableActivityContext`, etkinlik işlevi girişini getirmek ve `GetInput<T>` serisini kaldırmak için öğesini çağırabilirsiniz.
-* **çıktılar** -etkinlik işlevleri, çıkış değerlerinin yanı sıra girdileri de destekler. İşlevin dönüş değeri, çıkış değerini atamak için kullanılır ve JSON ile seri hale getirilebilir olmalıdır. Bir .NET işlevi veya `Task` `void`döndürürse, bir `null` değer çıktı olarak kaydedilir.
-* **meta veri** -.net etkinlik işlevleri, üst düzenleme `string instanceId` örnek kimliğini almak için bir parametreye bağlanabilir.
+* **girişler** -.net etkinliği işlevleri yerel `DurableActivityContext` olarak parametre türü olarak kullanılır. Alternatif olarak, bir etkinlik işlevi JSON ile seri hale getirilebilir olan herhangi bir parametre türüyle bildirilebilecek. Kullandığınızda `DurableActivityContext` , `GetInput<T>` etkinlik işlevi girişini getirmek ve serisini kaldırmak için öğesini çağırabilirsiniz.
+* **çıktılar** -etkinlik işlevleri, çıkış değerlerinin yanı sıra girdileri de destekler. İşlevin dönüş değeri, çıkış değerini atamak için kullanılır ve JSON ile seri hale getirilebilir olmalıdır. Bir .NET işlevi veya döndürürse `Task` `void` , bir `null` değer çıktı olarak kaydedilir.
+* **meta veri** -.net etkinlik işlevleri, `string instanceId` üst düzenleme örnek kimliğini almak için bir parametreye bağlanabilir.
 
 ### <a name="trigger-sample"></a>Tetikleyici örneği
 
@@ -179,9 +179,9 @@ public static string SayHello([ActivityTrigger] IDurableActivityContext helloCon
 ```
 
 > [!NOTE]
-> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableActivityContext` gerekir. `IDurableActivityContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız gerekir `DurableActivityContext` `IDurableActivityContext` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-.NET `ActivityTriggerAttribute` bağlaması için varsayılan parametre türü ' dir `IDurableActivityContext`. Ancak, .NET etkinliği Tetikleyicileri doğrudan JSON-serializlenebilir türlere (ilkel türler dahil) bağlamayı da destekler, bu nedenle aynı işlev aşağıdaki gibi basitleştirilebilir:
+.NET bağlaması için varsayılan parametre türü ' `ActivityTriggerAttribute` dir `IDurableActivityContext` . Ancak, .NET etkinliği Tetikleyicileri doğrudan JSON-serializlenebilir türlere (ilkel türler dahil) bağlamayı da destekler, bu nedenle aynı işlev aşağıdaki gibi basitleştirilebilir:
 
 ```csharp
 [FunctionName("SayHello")]
@@ -247,9 +247,9 @@ Orchestration istemci bağlaması, Orchestrator işlevleriyle etkileşime geçen
 * Olayları çalışırken onlara gönderin.
 * Örnek geçmişini temizle.
 
-Visual Studio kullanıyorsanız, Dayanıklı İşlevler 1,0 için `OrchestrationClientAttribute` .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz. Dayanıklı İşlevler 2,0 ' den başlayarak, `DurableClientAttribute` .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz.
+Visual Studio kullanıyorsanız, `OrchestrationClientAttribute` Dayanıklı İşlevler 1,0 için .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz. Dayanıklı İşlevler 2,0 ' den başlayarak, .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz `DurableClientAttribute` .
 
-Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` *function. JSON*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` *üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -269,7 +269,7 @@ Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kull
 
 ### <a name="client-usage"></a>İstemci kullanımı
 
-.NET işlevlerinde, genellikle Dayanıklı İşlevler tarafından desteklenen tüm `IDurableOrchestrationClient`Orchestration Istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. Daha eski Dayanıklı İşlevler 2. x sürümleriyle, bunun yerine `DurableOrchestrationClient` sınıfına bağlamanız gerekir. JavaScript 'te, aynı API 'Ler tarafından döndürülen nesne tarafından gösterilir `getClient`. İstemci nesnesindeki API 'Ler şunları içerir:
+.NET işlevlerinde, genellikle `IDurableOrchestrationClient` dayanıklı işlevler tarafından desteklenen tüm Orchestration Istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. Daha eski Dayanıklı İşlevler 2. x sürümleriyle, bunun yerine sınıfına bağlamanız gerekir `DurableOrchestrationClient` . JavaScript 'te, aynı API 'Ler tarafından döndürülen nesne tarafından gösterilir `getClient` . İstemci nesnesindeki API 'Ler şunları içerir:
 
 * `StartNewAsync`
 * `GetStatusAsync`
@@ -279,7 +279,7 @@ Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kull
 * `CreateCheckStatusResponse`
 * `CreateHttpManagementPayload`
 
-Alternatif olarak, .NET işlevleri, veya `IAsyncCollector<T>` `JObject`nerede `T` olduğunu `StartOrchestrationArgs` de bağlayabilir.
+Alternatif olarak, .NET işlevleri, `IAsyncCollector<T>` veya nerede `T` olduğunu de bağlayabilir `StartOrchestrationArgs` `JObject` .
 
 Bu işlemler hakkında daha fazla bilgi için `IDurableOrchestrationClient` API belgelerine bakın.
 
@@ -299,11 +299,11 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için `OrchestrationClient` özniteliği yerine özniteliği kullanmanız gerekir `DurableClient` ve `DurableOrchestrationClient` yerine parametre türünü kullanmanız gerekir `IDurableOrchestrationClient` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 ### <a name="client-sample-not-visual-studio"></a>İstemci örneği (Visual Studio değil)
 
-Geliştirme için Visual Studio kullanmıyorsanız, aşağıdaki *function. JSON* dosyasını oluşturabilirsiniz. Bu örnek, dayanıklı düzenleme istemci bağlamasını kullanan bir Queue-tetiklenen işlevin nasıl yapılandırılacağını gösterir:
+Geliştirme için Visual Studio kullanmıyorsanız, dosyasında aşağıdaki *function.js* oluşturabilirsiniz. Bu örnek, dayanıklı düzenleme istemci bağlamasını kullanan bir Queue-tetiklenen işlevin nasıl yapılandırılacağını gösterir:
 
 ```json
 {
@@ -324,7 +324,7 @@ Geliştirme için Visual Studio kullanmıyorsanız, aşağıdaki *function. JSON
 ```
 
 > [!NOTE]
-> Önceki JSON Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için, tetikleyici türü `orchestrationClient` `durableClient` olarak yerine kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki JSON Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için, `orchestrationClient` tetikleyici türü olarak yerine kullanmanız gerekir `durableClient` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 Yeni Orchestrator işlev örnekleri Başlatan dile özgü örnekler aşağıda verilmiştir.
 
@@ -344,7 +344,7 @@ public static Task Run(string input, IDurableOrchestrationClient starter)
 ```
 
 > [!NOTE]
-> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki kod Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için `DurableOrchestrationClient` yerine parametre türünü kullanmanız gerekir `IDurableOrchestrationClient` . Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 #### <a name="javascript-sample"></a>JavaScript örneği
 
@@ -385,27 +385,27 @@ Yürütme işlemi sırasında bir varlıkta yapılan herhangi bir durum değişi
 
 ### <a name="trigger-usage-net"></a>Kullanım tetiklemesi (.NET)
 
-Her varlık işlevinin `IDurableEntityContext`, aşağıdaki üyelere sahip olan parametre türü vardır:
+Her varlık işlevinin `IDurableEntityContext` , aşağıdaki üyelere sahip olan parametre türü vardır:
 
 * **EntityName**: Şu anda yürütülmekte olan varlığın adı.
 * **EntityKey**: Şu anda yürütülmekte olan varlığın anahtarı.
 * **EntityId**: Şu anda yürütülmekte olan varlığın kimliği.
 * **OperationName**: geçerli işlemin adı.
 * **Hasstate**: varlığın var olup olmadığı, yani bir durumu var. 
-* **GetState\<TState> ()**: varlığın geçerli durumunu alır. Zaten mevcut değilse, oluşturulur ve olarak `default<TState>`başlatılır. `TState` Parametre bir ILKEL veya JSON seri hale getirilen tür olmalıdır. 
-* **GetState\<TState> (ınitfunction)**: varlığın geçerli durumunu alır. Zaten mevcut değilse, belirtilen `initfunction` parametresi çağırarak oluşturulur. `TState` Parametre bir ILKEL veya JSON seri hale getirilen tür olmalıdır. 
-* **Setstate (arg)**: varlığın durumunu oluşturur veya güncelleştirir. `arg` Parametrenin JSON-serializlenebilir nesne veya ilkel olması gerekir.
+* **GetState \<TState> ()**: varlığın geçerli durumunu alır. Zaten mevcut değilse, oluşturulur ve olarak başlatılır `default<TState>` . `TState`Parametre bir ilkel veya JSON seri hale getirilen tür olmalıdır. 
+* **GetState \<TState> (ınitfunction)**: varlığın geçerli durumunu alır. Zaten mevcut değilse, belirtilen parametresi çağırarak oluşturulur `initfunction` . `TState`Parametre bir ilkel veya JSON seri hale getirilen tür olmalıdır. 
+* **Setstate (arg)**: varlığın durumunu oluşturur veya güncelleştirir. `arg`PARAMETRENIN JSON-serializlenebilir nesne veya ilkel olması gerekir.
 * **DeleteState ()**: varlığın durumunu siler. 
-* **Getınput\<TInput> ()**: geçerli işlem için girişi alır. Tür `TInput` parametresi, ILKEL veya JSON seri hale getirilen bir tür olmalıdır.
-* **Return (arg)**: işlemi çağıran düzenleme için bir değer döndürür. `arg` Parametre bir ILKEL veya JSON-serializlenebilir nesne olmalıdır.
-* **İmza (EntityId, scheduledTimeUtc, işlem, giriş)**: bir varlığa tek yönlü bir ileti gönderir. `operation` Parametre null olmayan bir dize olmalıdır; isteğe bağlı `scheduledTimeUtc` , işlemin çağıralınacağı UTC Tarih/saat olması gerekir ve `input` parametre bir basit veya JSON-serializlenebilir nesne olmalıdır.
-* **CreateNewOrchestration (Orchestratorfonksiyonadı, giriş)**: yeni bir düzenleme başlatır. `input` Parametre bir ILKEL veya JSON-serializlenebilir nesne olmalıdır.
+* **Getınput \<TInput> ()**: geçerli işlem için girişi alır. `TInput`Tür parametresi, ilkel veya JSON seri hale getirilen bir tür olmalıdır.
+* **Return (arg)**: işlemi çağıran düzenleme için bir değer döndürür. `arg`Parametre bir ilkel veya JSON-serializlenebilir nesne olmalıdır.
+* **İmza (EntityId, scheduledTimeUtc, işlem, giriş)**: bir varlığa tek yönlü bir ileti gönderir. `operation`Parametre null olmayan bir dize olmalıdır; isteğe bağlı, `scheduledTimeUtc` işlemin ÇAĞıRALıNACAĞı UTC Tarih/saat olması gerekir ve `input` parametre BIR basit veya JSON-serializlenebilir nesne olmalıdır.
+* **CreateNewOrchestration (Orchestratorfonksiyonadı, giriş)**: yeni bir düzenleme başlatır. `input`Parametre bir ilkel veya JSON-serializlenebilir nesne olmalıdır.
 
-Varlık `IDurableEntityContext` işlevine geçirilen nesneye `Entity.Current` Async-Local özelliği kullanılarak erişilebilir. Bu yaklaşım, sınıf tabanlı programlama modeli kullanılırken kullanışlıdır.
+`IDurableEntityContext`Varlık işlevine geçirilen nesneye `Entity.Current` Async-Local özelliği kullanılarak erişilebilir. Bu yaklaşım, sınıf tabanlı programlama modeli kullanılırken kullanışlıdır.
 
 ### <a name="trigger-sample-c-function-based-syntax"></a>Trigger örneği (C# işlev tabanlı sözdizimi)
 
-Aşağıdaki kod, dayanıklı bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, her biri bir `add`tamsayı `reset`durumu üzerinde `get`çalışan üç işlem,,, ve tanımlar.
+Aşağıdaki kod, dayanıklı bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `add` `reset` `get` her biri bir tamsayı durumu üzerinde çalışan üç işlem,,, ve tanımlar.
 
 ```csharp
 [FunctionName("Counter")]
@@ -430,7 +430,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="trigger-sample-c-class-based-syntax"></a>Trigger örneği (C# sınıf tabanlı sözdizimi)
 
-Aşağıdaki örnek, sınıfları ve yöntemleri kullanarak `Counter` varlığın eşdeğer bir uygulamasıdır.
+Aşağıdaki örnek, `Counter` sınıfları ve yöntemleri kullanarak varlığın eşdeğer bir uygulamasıdır.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -451,20 +451,20 @@ public class Counter
 }
 ```
 
-Bu varlığın durumu, sayacın geçerli değerini depolayan bir alan `Counter`içeren türünde bir nesnedir. Bu nesneyi depolamada kalıcı hale getirmek için, [JSON.net](https://www.newtonsoft.com/json) kitaplığı tarafından serileştirilmiş ve seri durumdan çıkarılmış olur. 
+Bu varlığın durumu `Counter` , sayacın geçerli değerini depolayan bir alan içeren türünde bir nesnedir. Bu nesneyi depolamada kalıcı hale getirmek için, [JSON.net](https://www.newtonsoft.com/json) kitaplığı tarafından serileştirilmiş ve seri durumdan çıkarılmış olur. 
 
 Sınıf tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [varlık sınıfları tanımlama](durable-functions-dotnet-entities.md#defining-entity-classes).
 
 > [!NOTE]
-> Varlık sınıfları kullanılırken `[FunctionName]` özniteliği olan işlev giriş noktası *yöntemi bildirilmelidir.* `static` Statik olmayan giriş noktası yöntemleri, birden fazla nesne başlatmaya ve olasılıkla diğer tanımsız davranışlara neden olabilir.
+> `[FunctionName]`Varlık sınıfları kullanılırken özniteliği olan işlev giriş noktası *must* yöntemi bildirilmelidir `static` . Statik olmayan giriş noktası yöntemleri, birden fazla nesne başlatmaya ve olasılıkla diğer tanımsız davranışlara neden olabilir.
 
 Varlık sınıfları bağlamalarla ve .NET bağımlılığı ekleme ile etkileşim kurmak için özel mekanizmalarda yer vardır. Daha fazla bilgi için bkz. [varlık oluşturma](durable-functions-dotnet-entities.md#entity-construction).
 
 ### <a name="trigger-sample-javascript"></a>Tetikleyici örneği (JavaScript)
 
-Aşağıdaki kod, JavaScript 'te yazılmış dayanıklı bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, her biri bir `add`tamsayı `reset`durumu üzerinde `get`çalışan üç işlem,,, ve tanımlar.
+Aşağıdaki kod, JavaScript 'te yazılmış dayanıklı bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `add` `reset` `get` her biri bir tamsayı durumu üzerinde çalışan üç işlem,,, ve tanımlar.
 
-**function. JSON**
+**Üzerindefunction.js**
 ```json
 {
   "bindings": [
@@ -478,7 +478,7 @@ Aşağıdaki kod, JavaScript 'te yazılmış dayanıklı bir işlev olarak uygul
 }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -500,18 +500,18 @@ module.exports = df.entity(function(context) {
 ```
 
 > [!NOTE]
-> Kalıcı varlıklar, `durable-functions` NPM paketinin **1.3.0** sürümünden başlayarak JavaScript 'te kullanılabilir.
+> Kalıcı varlıklar, NPM paketinin **1.3.0** sürümünden başlayarak JavaScript 'te kullanılabilir `durable-functions` .
 
 ## <a name="entity-client"></a>Varlık istemcisi
 
 Varlık istemci bağlaması, [varlık işlevlerini](#entity-trigger)zaman uyumsuz olarak tetiklemenize olanak sağlar. Bu işlevler bazen [istemci işlevleri](durable-functions-types-features-overview.md#client-functions)olarak adlandırılır.
 
-Visual Studio kullanıyorsanız, `DurableClientAttribute` .net özniteliğini kullanarak Entity Client 'a bağlanabilirsiniz.
+Visual Studio kullanıyorsanız, .net özniteliğini kullanarak Entity Client 'a bağlanabilirsiniz `DurableClientAttribute` .
 
 > [!NOTE]
 > `[DurableClientAttribute]` [Orchestration istemcisine](#orchestration-client)bağlamak için de kullanılabilir.
 
-Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, varlık tetikleyicisi, `bindings` *function. JSON*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, varlık tetikleyicisi, `bindings` *üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -531,9 +531,9 @@ Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kull
 
 ### <a name="entity-client-usage"></a>Varlık istemci kullanımı
 
-.NET işlevlerinde, genellikle, dayanıklı varlıkların desteklediği `IDurableEntityClient`tüm Istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. Ayrıca, her iki varlık ve `IDurableOrchestrationClient` düzenleme Için Istemci API 'lerine erişim sağlayan arabirimine de bağlanabilirsiniz. İstemci nesnesindeki API 'Ler şunları içerir:
+.NET işlevlerinde, genellikle `IDurableEntityClient` , dayanıklı varlıkların desteklediği tüm Istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. Ayrıca `IDurableOrchestrationClient` , her iki varlık ve düzenleme için Istemci API 'lerine erişim sağlayan arabirimine de bağlanabilirsiniz. İstemci nesnesindeki API 'Ler şunları içerir:
 
-* **Readentitystateasync\<T>**: bir varlığın durumunu okur. Hedef varlığın mevcut olup olmadığını ve Öyleyse durumunun ne olduğunu belirten bir yanıt döndürür.
+* **Readentitystateasync \<T> **: bir varlığın durumunu okur. Hedef varlığın mevcut olup olmadığını ve Öyleyse durumunun ne olduğunu belirten bir yanıt döndürür.
 * **Tiflentityasync**: bir varlığa tek yönlü bir ileti gönderir ve kuyruğa alınıp alınmasını bekler.
 * **Listentitiesasync**: birden çok varlığın durumu için sorgular. Varlıklar, *ad* ve *son işlem zamanına*göre sorgulanabilir.
 
@@ -561,7 +561,7 @@ public static Task Run(
 
 ### <a name="example-client-signals-entity-via-interface---c"></a>Örnek: istemci, bir arabirim-C aracılığıyla varlığa işaret eder #
 
-Mümkün olduğunda, daha fazla tür denetimi sağladığından [varlıklara arabirimler üzerinden erişmenizi](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) öneririz. Örneğin, daha önce bahsedilen `Counter` varlığın aşağıdaki gibi tanımlanmış bir `ICounter` arabirim uyguladığını varsayalım:
+Mümkün olduğunda, daha fazla tür denetimi sağladığından [varlıklara arabirimler üzerinden erişmenizi](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) öneririz. Örneğin, `Counter` daha önce bahsedilen varlığın `ICounter` aşağıdaki gibi tanımlanmış bir arabirim uyguladığını varsayalım:
 
 ```csharp
 public interface ICounter
@@ -577,7 +577,7 @@ public class Counter : ICounter
 }
 ```
 
-İstemci kodu daha sonra tür `SignalEntityAsync<ICounter>` açısından güvenli bir ara sunucu oluşturmak için kullanılabilir:
+İstemci kodu daha sonra `SignalEntityAsync<ICounter>` tür açısından güvenli bir ara sunucu oluşturmak için kullanılabilir:
 
 ```csharp
 [FunctionName("UserDeleteAvailable")]
@@ -591,18 +591,18 @@ public static async Task AddValueClient(
 }
 ```
 
-`proxy` Parametresi, ' nin `ICounter`çağrısını `Add` iç olarak eşdeğer (türsüz) çağrısına çeviren, dinamik olarak üretilmiş bir örneğidir `SignalEntityAsync`.
+`proxy`Parametresi, `ICounter` ' nin çağrısını iç olarak `Add` eşdeğer (türsüz) çağrısına çeviren, dinamik olarak üretilmiş bir örneğidir `SignalEntityAsync` .
 
 > [!NOTE]
-> `SignalEntityAsync` API 'ler tek yönlü işlemleri temsil eder. Bir varlık arabirimleri döndürürse `Task<T>`, `T` parametresinin değeri her zaman null veya `default`olur.
+> `SignalEntityAsync`API 'ler tek yönlü işlemleri temsil eder. Bir varlık arabirimleri döndürürse `Task<T>` , `T` parametresinin değeri her zaman null veya olur `default` .
 
-Özellikle, hiçbir değer döndürülmediğinden `Get` işlemin işaret etmek mantıklı değildir. Bunun yerine, istemciler sayaç durumuna `ReadStateAsync` doğrudan erişmek için ya da `Get` işlemi çağıran bir Orchestrator işlevini başlatabilir.
+Özellikle, `Get` hiçbir değer döndürülmediğinden işlemin işaret etmek mantıklı değildir. Bunun yerine, istemciler `ReadStateAsync` sayaç durumuna doğrudan erişmek için ya da işlemi çağıran bir Orchestrator işlevini başlatabilir `Get` .
 
 ### <a name="example-client-signals-entity---javascript"></a>Örnek: istemci sinyalleri varlığı-JavaScript
 
 JavaScript 'te bir "Counter" varlığına işaret eden örnek bir Queue-tetiklenen işlev aşağıda verilmiştir.
 
-**function. JSON**
+**Üzerindefunction.js**
 ```json
 {
     "bindings": [
@@ -622,7 +622,7 @@ JavaScript 'te bir "Counter" varlığına işaret eden örnek bir Queue-tetiklen
   }
 ```
 
-**index. js**
+**index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -634,10 +634,10 @@ module.exports = async function (context) {
 ```
 
 > [!NOTE]
-> Kalıcı varlıklar, `durable-functions` NPM paketinin **1.3.0** sürümünden başlayarak JavaScript 'te kullanılabilir.
+> Kalıcı varlıklar, NPM paketinin **1.3.0** sürümünden başlayarak JavaScript 'te kullanılabilir `durable-functions` .
 
 <a name="host-json"></a>
-## <a name="hostjson-settings"></a>Host. JSON ayarları
+## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 

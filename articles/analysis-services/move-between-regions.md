@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 32b310a2e74fc6f120dce90047da08380b776879
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680234"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699439"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services farklı bir bölgeye taşıma
 
@@ -45,7 +45,7 @@ Bir sunucuyu farklı bir bölgeye taşımadan önce ayrıntılı bir plan oluşt
 > Bu makalede, bir veritabanı yedeklemesinin kaynak sunucunun bölgesindeki bir depolama kapsayıcısından bir hedef sunucuya geri yüklenmesi açıklanmaktadır. Bazı durumlarda, farklı bir bölgeden yedeklemelerin geri yüklenmesi, özellikle büyük veritabanları için düşük performansa sahip olabilir. Veritabanı geri yükleme sırasında en iyi performansı elde etmek için hedef sunucu bölgesinde yeni bir depolama kapsayıcısı geçirin veya oluşturun. Veritabanını hedef sunucuya geri yüklemeden önce. abf yedekleme dosyalarını kaynak bölgesi depolama kapsayıcısından hedef bölge depolama kapsayıcısına kopyalayın. Bu makalede kapsam dışında, bazı durumlarda özellikle çok büyük veritabanlarında, kaynak sunucunuzdaki bir veritabanını komut dosyası haline getirmek, yeniden oluşturmak ve ardından hedef sunucuda veritabanı verilerini yüklemek için işlemek, yedekleme/geri yükleme kullanmaktan daha uygun maliyetli olabilir.
 
 > [!NOTE]
-> Veri kaynaklarına bağlanmak için şirket içi veri ağ geçidi kullanılıyorsa, ağ geçidi kaynağını da hedef sunucu bölgesine taşımanız gerekir. Daha fazla bilgi edinmek için bkz. Şirket [içi veri ağ geçidini yükleyip yapılandırma](analysis-services-gateway-install.md).
+> Veri kaynaklarına bağlanmak için bir şirket içi veri ağ geçidi kullanıyorsanız, ağ geçidi kaynağını da hedef sunucu bölgesine taşımanız gerekir. Daha fazla bilgi edinmek için bkz. Şirket [içi veri ağ geçidini yükleyip yapılandırma](analysis-services-gateway-install.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -70,7 +70,7 @@ Depolama ayarları yapılandırıldığında, depolama kapsayıcıda bir model v
 
 Azure portal kullanarak bir şablonu dışarı aktarmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynaklar**' ı seçin ve ardından Analysis Services sunucunuzu seçin.
 
@@ -202,7 +202,7 @@ Farklı bir bölgeye yeni bir sunucu kaynağı dağıtmak için, önceki bölüm
 
 7. Şablon düzenleyicisinin yeni hedef sunucunuz için doğru özellikleri gösterdiğini doğrulayın.
 
-8. **Kaydet**'i seçin.
+8. **Kaydet**’i seçin.
 
 9. Özellik değerlerini girin veya seçin:
 

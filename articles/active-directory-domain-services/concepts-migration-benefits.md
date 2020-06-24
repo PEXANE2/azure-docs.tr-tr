@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: iainfou
-ms.openlocfilehash: 29d7772ef688134e8fc9009ec32cffacc3f23ca7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 837ca3afaf014c41fded09fa8342eed1c13e5dcf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014460"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734937"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services içindeki klasik to Kaynak Yöneticisi dağıtım modelinden geçişin avantajları
 
-Azure Active Directory Domain Services (AD DS), klasik dağıtım modelini kullanan mevcut bir yönetilen etki alanını Kaynak Yöneticisi dağıtım modeline geçirebilmenizi sağlar. Kaynak Yöneticisi dağıtım modelini kullanan Azure AD DS yönetilen etki alanları, hassas parola ilkesi, denetim günlükleri ve hesap kilitleme koruması gibi ek özellikler sağlar.
+Azure Active Directory Domain Services (Azure AD DS), klasik dağıtım modelini kullanan mevcut bir yönetilen etki alanını Kaynak Yöneticisi dağıtım modeline geçirebilmenizi sağlar. Kaynak Yöneticisi dağıtım modelini kullanan Azure AD DS yönetilen etki alanları, hassas parola ilkesi, denetim günlükleri ve hesap kilitleme koruması gibi ek özellikler sağlar.
 
 Bu makalede geçiş avantajları özetlenmektedir. Başlamak için bkz. [Klasik sanal ağ modelinden Kaynak Yöneticisi Azure AD Domain Services geçirme][howto-migrate].
 
@@ -30,7 +30,7 @@ Bu makalede geçiş avantajları özetlenmektedir. Başlamak için bkz. [Klasik 
 
 ## <a name="migration-benefits"></a>Geçiş avantajları
 
-Geçiş işlemi, klasik dağıtım modelini kullanan mevcut bir Azure AD DS örneğini alır ve Kaynak Yöneticisi dağıtım modelini kullanacak şekilde geçer. Klasik Azure AD DS yönetilen bir etki alanını klasik ' ten Kaynak Yöneticisi dağıtım modeline geçirdiğinizde, makineleri yönetilen etki alanına yeniden ekleme veya Azure AD DS örneğini silme ve sıfırdan bir tane oluşturma ihtiyacını ortadan kaldırma. VM 'Ler, geçiş işleminin sonunda Azure AD DS tarafından yönetilen etki alanına katılalmaya devam eder.
+Geçiş işlemi, klasik dağıtım modelini kullanan mevcut bir yönetilen etki alanını alır ve Kaynak Yöneticisi dağıtım modelini kullanacak şekilde geçer. Yönetilen bir etki alanını klasik ' ten Kaynak Yöneticisi dağıtım modeline geçirdiğinizde, makineleri yönetilen etki alanına ekleme veya yönetilen etki alanını silme ve sıfırdan bir tane oluşturma ihtiyacını ortadan kaldırmak zorunda kalmaz. VM 'Ler, geçiş işleminin sonunda yönetilen etki alanına katılalmaya devam eder.
 
 Geçişten sonra Azure AD DS, yalnızca aşağıdaki gibi Kaynak Yöneticisi dağıtım modelini kullanan etki alanları için kullanılabilen birçok özellik sağlar:
 
@@ -46,7 +46,7 @@ Geçişten sonra Azure AD DS, yalnızca aşağıdaki gibi Kaynak Yöneticisi da�
 * Destek, daha fazla telemetri erişimine sahiptir ve daha etkili bir şekilde sorun gidermeye yardımcı olabilir.
 * Yönetilen etki alanı denetleyicilerindeki veriler için [Azure yönetilen disklerini][managed-disks] kullanarak bekleyen şifreleme.
 
-Kaynak Yöneticisi dağıtım modeli kullanan Azure AD DS yönetilen etki alanları, en son yeni özelliklerle güncel kalmanıza yardımcı olur. Klasik dağıtım modelini kullanan Azure AD DS yönetilen etki alanları için yeni özellikler kullanılamaz.
+Kaynak Yöneticisi dağıtım modeli kullanan yönetilen etki alanları, en son yeni özelliklerle güncel kalmanıza yardımcı olur. Klasik dağıtım modelini kullanan yönetilen etki alanları için yeni özellikler kullanılamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

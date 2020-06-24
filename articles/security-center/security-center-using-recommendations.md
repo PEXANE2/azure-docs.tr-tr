@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603272"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783240"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Güvenliği artırmaya yönelik Azure Güvenlik Merkezi önerileri
 Bir güvenlik ilkesi yapılandırarak ve ardından Azure Güvenlik Merkezi tarafından sunulan önerileri uygulayarak önemli bir güvenlik olayı olasılığını azaltabilirsiniz. Bu makalede bir güvenlik saldırısını azaltmaya yardımcı olmak için Güvenlik Merkezi 'nde güvenlik ilkelerinin ve önerilerin nasıl kullanılacağı gösterilmektedir. 
@@ -57,7 +57,7 @@ Günlük izleme etkinliklerinin bir parçası olarak, Jeff Azure 'da oturum aça
 
 2. Jeff, aboneliklerin ne kadar güvenli olduğunu gösteren genel bir bakış elde etmek için **güvenli puanı** denetler ve puanın 548 olduğunu görür.
 
-3. Jeff, ilk olarak hangi önerilerin işleneceğini belirlemek için gerekir. Jeff, güvenli puan ' i tıklatır ve [güvenli puan etkisini](security-center-secure-score.md)ne kadar geliştirdiğine göre önerileri işlemeye başlar.
+3. Jeff, ilk olarak hangi önerilerin işleneceğini belirlemek için gerekir. Jeff, güvenli puan ' i tıklatır ve [güvenli puanı](secure-score-security-controls.md)ne kadar geliştirdiğine göre önerileri işlemeye başlar.
 
 4. Jeff, çok sayıda bağlı VM ve sunucu içerdiğinden, Jeff **işlem ve uygulamalara**odaklanmaya karar verir.
 

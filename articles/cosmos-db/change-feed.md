@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cb3f7f3d641f33e4b4deb1775600595cc382f68e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873968"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119384"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı
 
@@ -25,12 +25,12 @@ Azure Cosmos DB’de değişiklik akışı desteği, Azure Cosmos kapsayıcısı
 
 Bu özellik şu anda aşağıdaki Azure Cosmos DB API 'Leri ve istemci SDK 'Ları tarafından desteklenmektedir.
 
-| **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API'si** | **Gremlin API**|**Tablo API’si** |
+| **İstemci sürücüleri** | **SQL APı 'SI** | **Cassandra için Azure Cosmos DB API 'SI** | **MongoDB için Azure Cosmos DB API’si** | **Gremlin API**|**Tablo API’si** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Yes | Yes | Yes | Yes | Hayır |
-|Java|Yes|Yes|Yes|Yes|Hayır|
-|Python|Yes|Yes|Yes|Yes|Hayır|
-|Node/JS|Yes|Yes|Yes|Yes|Hayır|
+| .NET | Yes | Yes | Yes | Evet | Hayır |
+|Java|Yes|Yes|Yes|Evet|Hayır|
+|Python|Yes|Yes|Yes|Evet|Hayır|
+|Node/JS|Yes|Yes|Yes|Evet|Hayır|
 
 ## <a name="change-feed-and-different-operations"></a>Akışı ve farklı işlemleri değiştirme
 
@@ -67,7 +67,7 @@ Değişiklik akışı ile aşağıdaki seçenekleri kullanarak çalışabilirsin
 
 Değişiklik akışı, kapsayıcı içindeki her mantıksal bölüm anahtarı için kullanılabilir ve aşağıdaki görüntüde gösterildiği gibi paralel işleme için bir veya daha fazla tüketiciye dağıtılabilir.
 
-![Azure Cosmos DB değişiklik akışını dağıtılmış işleme](./media/change-feed/changefeedvisual.png)
+:::image type="content" source="./media/change-feed/changefeedvisual.png" alt-text="Azure Cosmos DB değişiklik akışını dağıtılmış işleme" border="false":::
 
 ## <a name="features-of-change-feed"></a>Değişiklik akışı özellikleri
 

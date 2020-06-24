@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 4cba2c7e25b5f76b0638da1c551514f102247ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b87d076c12a40d84dc99ef5b48454afa3f0ffce0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840800"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738745"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>PowerShell kullanarak sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
 
@@ -33,7 +33,7 @@ Güvenlik grubu görünümü, bir sanal makineye uygulanan yapılandırılmış 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu senaryoda, güvenlik kuralı bilgilerini almak `Get-AzNetworkWatcherSecurityGroupView` için cmdlet 'ini çalıştırırsınız.
+Bu senaryoda, `Get-AzNetworkWatcherSecurityGroupView` güvenlik kuralı bilgilerini almak için cmdlet 'ini çalıştırırsınız.
 
 Bu senaryo, ağ Izleyicisi oluşturmak için [ağ Izleyicisi oluşturma](network-watcher-create.md) bölümündeki adımları zaten izlediğinizi varsayar.
 
@@ -43,7 +43,7 @@ Bu makalede ele alınan senaryo, belirli bir sanal makine için yapılandırılm
 
 ## <a name="retrieve-network-watcher"></a>Ağ İzleyicisini al
 
-İlk adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken `Get-AzNetworkWatcherSecurityGroupView` cmdlet 'e geçirilir.
+İlk adım, ağ Izleyicisi örneğini almak için kullanılır. Bu değişken cmdlet 'e geçirilir `Get-AzNetworkWatcherSecurityGroupView` .
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -51,7 +51,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>VM al
 
-`Get-AzNetworkWatcherSecurityGroupView` Cmdlet 'ini çalıştırmak için bir sanal makine gerekir. Aşağıdaki örnek bir VM nesnesini alır.
+Cmdlet 'ini çalıştırmak için bir sanal makine gerekir `Get-AzNetworkWatcherSecurityGroupView` . Aşağıdaki örnek bir VM nesnesini alır.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1

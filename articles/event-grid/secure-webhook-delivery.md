@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: femila
-ms.openlocfilehash: a3d67f3b1217aa7ab4c8122ae958685490a2ad34
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 7caa5a99f2d4ebdbe858c78c6e36be17aeb003ba
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559030"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126085"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Korunan uç noktalara Azure Active Directory olayları yayımlayın
 
@@ -29,7 +29,7 @@ Korumalı uç noktanız için bir Azure AD uygulaması oluşturarak başlayın. 
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Azure AD uygulamanızı kullanmak için Event Grid etkinleştirme
 
-Azure AD uygulamanızda bir rol ve hizmet ilkesi oluşturmak için aşağıdaki PowerShell betiğini kullanın. Azure AD uygulamanızdan kiracı KIMLIĞI ve nesne KIMLIĞI gerekir:
+Azure AD uygulamanızda bir rol ve hizmet sorumlusu oluşturmak için aşağıdaki PowerShell betiğini kullanın. Azure AD uygulamanızdan kiracı KIMLIĞI ve nesne KIMLIĞI gerekir:
 
    > [!NOTE]
    > Bu betiği yürütmek için [Azure AD uygulama Yöneticisi rolünün](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) bir üyesi olmanız gerekir.

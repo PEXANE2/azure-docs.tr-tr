@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: dc0aa8e6099a7ec017aead2fe0f16e9712e17936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2f9ba27410195b187ad7c8ae39c04a66da4c234
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840732"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738711"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Azure ağ Izleyicisi Azure CLı kullanarak sanal ağ geçidi ve bağlantıları sorunlarını giderme
 
@@ -79,7 +79,7 @@ Kaynak sorun giderme, kaynağın durumuyla ilgili verileri döndürür, ayrıca 
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Ağ Izleyicisi kaynak sorunlarını giderme
 
-`az network watcher troubleshooting` Cmdlet 'iyle kaynak sorunlarını giderin. Cmdlet 'i kaynak grubu, ağ izleyicisinin adı, bağlantı kimliği, depolama hesabının kimliği ve sorun giderme sonuçlarını depolamak için Blobun yolu geçiririz.
+Cmdlet 'iyle kaynak sorunlarını giderin `az network watcher troubleshooting` . Cmdlet 'i kaynak grubu, ağ izleyicisinin adı, bağlantı kimliği, depolama hesabının kimliği ve sorun giderme sonuçlarını depolamak için Blobun yolu geçiririz.
 
 ```azurecli
 az network watcher troubleshooting start --resource-group resourceGroupName --resource resourceName --resource-type {vnetGateway/vpnConnection} --storage-account storageAccountName  --storage-path https://{storageAccountName}.blob.core.windows.net/{containerName}

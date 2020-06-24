@@ -4,15 +4,15 @@ description: Bu makalede Azure PowerShell kullanarak Azure Application Gateway H
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64947198"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808248"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>HTTP isteği ve yanıt üst bilgilerini Azure Application Gateway yeniden yazma-Azure PowerShell
 
@@ -22,7 +22,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-- Bu makaledeki adımları tamamlayabilmeniz için Azure PowerShell yerel olarak çalıştırmanız gerekir. Ayrıca, az Module Version 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. ' `Import-Module Az` İ çalıştırın `Get-Module Az` ve ardından yüklediğiniz sürümü tespit edin. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
+- Bu makaledeki adımları tamamlayabilmeniz için Azure PowerShell yerel olarak çalıştırmanız gerekir. Ayrıca, az Module Version 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. `Import-Module Az`' İ çalıştırın ve ardından `Get-Module Az` yüklediğiniz sürümü tespit edin. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
 - Application Gateway v2 SKU örneğiniz olması gerekir. V1 SKU 'sunda üstbilgileri yeniden yazma desteklenmiyor. V2 SKU 'SU yoksa, başlamadan önce bir [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) örneği oluşturun.
 
 ## <a name="create-required-objects"></a>Gerekli nesneleri oluştur
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>HTTP üstbilgisi yeniden yazma kuralı yapılandırmasını belirtin
 
-Bu örnekte, konum üstbilgisi azurewebsites.net öğesine bir başvuru içerdiğinde HTTP yanıtında konum üstbilgisini yeniden yazarak bir yeniden yönlendirme URL 'sini değiştireceksiniz. Bunu yapmak için, yanıttaki konum üstbilgisinin azurewebsites.net içerip içermediğini değerlendirmek için bir koşul ekleyeceğiz. Bu kalıbı `(https?):\/\/.*azurewebsites\.net(.*)$`kullanacağız. Üst bilgi değeri `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` olarak kullanacağız. Bu değer, *azurewebsites.net* konum üstbilgisindeki *contoso.com* ile değiştirilir.
+Bu örnekte, konum üstbilgisi azurewebsites.net öğesine bir başvuru içerdiğinde HTTP yanıtında konum üstbilgisini yeniden yazarak bir yeniden yönlendirme URL 'sini değiştireceksiniz. Bunu yapmak için, yanıttaki konum üstbilgisinin azurewebsites.net içerip içermediğini değerlendirmek için bir koşul ekleyeceğiz. Bu kalıbı kullanacağız `(https?):\/\/.*azurewebsites\.net(.*)$` . `{http_resp_Location_1}://contoso.com{http_resp_Location_2}`Üst bilgi değeri olarak kullanacağız. Bu değer, *azurewebsites.net* konum üstbilgisindeki *contoso.com* ile değiştirilir.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"

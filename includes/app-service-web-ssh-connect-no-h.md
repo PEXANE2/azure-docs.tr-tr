@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -17,7 +17,7 @@ ms.locfileid: "67188850"
 ---
 Kapsayıcınıza doğrudan bir SSH oturumu açmak için uygulamanızın çalışıyor olması gerekir.
 
-Aşağıdaki URL 'YI tarayıcınıza yapıştırın ve App-Name \<> değerini uygulamanızın adıyla değiştirin:
+Aşağıdaki URL 'YI tarayıcınıza yapıştırın ve \< app-name> değerini uygulamanızın adıyla değiştirin:
 
 ```
 https://<app-name>.scm.azurewebsites.net/webssh/host

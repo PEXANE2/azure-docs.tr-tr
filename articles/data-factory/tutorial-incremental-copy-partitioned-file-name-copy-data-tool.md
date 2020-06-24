@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/17/2020
-ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 075c8b2670121e7d493d0d99397961155fd0de4b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409390"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736585"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak yeni dosyaları saat bölümlenmiş dosya adına göre artımlı olarak kopyalama
 
@@ -45,7 +45,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 
-1. **Kaynak**adlı bir kapsayıcı oluşturun.  Kapsayıcıda **2020/03/17/03** olarak bir klasör yolu oluşturun. Boş bir metin dosyası oluşturun ve **FILE1. txt**olarak adlandırın. FILE1. txt dosyasını depolama hesabınızda **kaynak/2020/03/17/03** klasörüne yükleyin.  Bu görevleri [Azure Depolama Gezgini](https://storageexplorer.com/) gibi çeşitli araçlar kullanarak gerçekleştirebilirsiniz.
+1. **Kaynak**adlı bir kapsayıcı oluşturun.  Kapsayıcıda **2020/03/17/03** olarak bir klasör yolu oluşturun. Boş bir metin dosyası oluşturun ve **file1.txt**olarak adlandırın. Depolama hesabınızda file1.txt **kaynak/2020/03/17/03** klasörüne yükleyin.  Bu görevleri [Azure Depolama Gezgini](https://storageexplorer.com/) gibi çeşitli araçlar kullanarak gerçekleştirebilirsiniz.
 
     ![dosyaları karşıya yükle](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
 
@@ -56,7 +56,7 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol taraftaki menüden > **veri ve analiz** >  **kaynak oluştur**' u seçin**Data Factory**:
+1. Sol taraftaki menüden veri ve analiz **kaynak oluştur**' u seçin  >  **Data + Analytics**  >  **Data Factory**:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -78,7 +78,7 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 
 5. **Sürüm** bölümünde **V2**'yi seçin.
 6. **Konum** bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanız tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 8. Oluşturma işlemi tamamlandıktan sonra **Data Factory** giriş sayfası görüntülenir.
 9. Azure Data Factory kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **Yazar ve İzleyici** kutucuğunu seçin.
 
@@ -155,16 +155,16 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 
 10. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin.  Otomatik olarak tetiklendiğinde işlem hattı çalıştırmasını beklemeniz gerekir (bir saatten sonra). Çalıştığında, etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için **Deltacopyfromblobpipeline** işlem hattı adı bağlantısına tıklayın. Listeyi yenilemek için **Yenile**’yi seçin.
 
-    ![İşlem hattı çalıştırmalarını izleme](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
-11. İşlem hattında yalnızca bir etkinlik (kopyalama etkinliği) olduğundan tek bir girdi görürsünüz. **Kaynak** ve **hedef** sütunlarının sütun genişliğini ayarla (gerekirse) daha fazla ayrıntı görüntülemek için kaynak dosyayı (FILE1. txt) *kaynak/2020/03/17/03/* ile *Destination/2020/03/17/* 03/ile aynı dosya adına kopyalanmış olduğunu görebilirsiniz. 
+    ![İşlem hattı çalıştırmalarını izleme](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
+11. İşlem hattında yalnızca bir etkinlik (kopyalama etkinliği) olduğundan tek bir girdi görürsünüz. **Kaynak** ve **hedef** sütunlarının sütun genişliğini ayarla (gerekirse) daha fazla ayrıntı görüntülemek için kaynak dosyayı (file1.txt) *kaynak/2020/03/17/03/* ile *Destination/2020/03/17/* 03/ile aynı dosya adına kopyalanmış olduğunu görebilirsiniz. 
 
     ![İşlem hattı çalıştırmalarını izleme](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
 
-    Ayrıca, Azure Depolama Gezgini (https://storageexplorer.com/) dosyaları taramak için) öğesini kullanarak da aynı şekilde doğrulayabilirsiniz.
+    Ayrıca, Azure Depolama Gezgini (dosyaları taramak için) öğesini kullanarak da aynı şekilde doğrulayabilirsiniz https://storageexplorer.com/) .
 
     ![İşlem hattı çalıştırmalarını izleme](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. **Dosya2. txt**gibi yeni adla başka bir boş metin dosyası oluşturun. Dosya2. txt dosyasını Depolama hesabınızdaki **kaynak/2020/03/17/04** klasörüne yükleyin. Bu görevleri [Azure Depolama Gezgini](https://storageexplorer.com/) gibi çeşitli araçlar kullanarak gerçekleştirebilirsiniz.
+12. **file2.txt**yeni adla başka bir boş metin dosyası oluşturun. file2.txt dosyasını Depolama hesabınızdaki **kaynak/2020/03/17/04** klasörüne yükleyin. Bu görevleri [Azure Depolama Gezgini](https://storageexplorer.com/) gibi çeşitli araçlar kullanarak gerçekleştirebilirsiniz.
 
     > [!NOTE]
     > Yeni bir klasör yolunun oluşturulması gerektiğini fark edebilirsiniz. Lütfen klasör adını UTC saat ile değiştirin.  Örneğin, geçerli UTC saati 4:20 ile 11.17., 2020 ise, **{year}/{month}/{Day}/{Hour}/** kuralına göre **kaynak/2020/03/17/04** /klasör yolunu oluşturabilirsiniz.
@@ -173,7 +173,7 @@ Bu adımları uygulayarak BLOB depolama alanınızı öğreticiye hazırlayın.
 
     ![İşlem hattı çalıştırmalarını izleme](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
-14. İkinci işlem hattı çalıştırıldığında, yeni **Deltacopyfromblobpipeline** bağlantısını seçin ve ayrıntıları gözden geçirmek için aynısını yapın. Kaynak dosya (dosya2. txt), **kaynak/2020/03/17/04/** ile **Destination/2020/03/17/04** /ile aynı dosya adına kopyalanmış olduğunu görürsünüz. Ayrıca, Azure Depolama Gezgini (https://storageexplorer.com/) **hedef** kapsayıcıdaki dosyaları taramak için) öğesini kullanarak da doğrulayabilirsiniz.
+14. İkinci işlem hattı çalıştırıldığında, yeni **Deltacopyfromblobpipeline** bağlantısını seçin ve ayrıntıları gözden geçirmek için aynısını yapın. Kaynak dosyayı (file2.txt) **kaynak/2020/03/17/04/** ile **Destination/2020/03/17/04** /ile aynı dosya adına kopyalanmış olduğunu görürsünüz. Ayrıca, Azure Depolama Gezgini ( https://storageexplorer.com/) **hedef** kapsayıcıdaki dosyaları taramak için) öğesini kullanarak da doğrulayabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

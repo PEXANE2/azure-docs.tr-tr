@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f58afa41a27427f8deabb945261d96763edb4bc
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436171"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126187"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Güvenlik Merkezi ile Azure Kubernetes Hizmetleri Tümleştirmesi
 
@@ -61,4 +61,4 @@ Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri hakkında daha fazla b
 
 * [Azure Container Registry ile tümleştirme](azure-container-registry-integration.md)
 
-* [Microsoft 'Ta veri yönetimi](https://www.microsoft.com/trust-center/privacy/data-management) -Microsoft hizmetlerinin (Azure, Intune ve Office 365 dahil) veri Ilkelerini, Microsoft 'un veri yönetiminin ayrıntılarını ve verilerinizi etkileyen bekletme ilkelerini açıklar
+* [Microsoft 'Ta veri yönetimi](https://www.microsoft.com/trust-center/privacy/data-management) -Microsoft hizmetlerinin (Azure, ıntune ve Microsoft 365 dahil) veri Ilkelerini, Microsoft 'un veri yönetimiyle ilgili ayrıntıları ve verilerinizi etkileyen bekletme ilkelerini açıklar

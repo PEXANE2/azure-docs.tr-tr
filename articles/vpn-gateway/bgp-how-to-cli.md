@@ -4,15 +4,15 @@ description: Bu makalede, Azure Resource Manager ve CLı kullanarak Azure VPN a�
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 42a07ac00fd8a26918164f6547bf57c2b021d14c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d71e8af607ac15c708ff18a2f2a91e11ed36a987
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863623"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987747"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>CLı kullanarak bir Azure VPN ağ geçidinde BGP 'yi yapılandırma
 
@@ -91,9 +91,9 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. AS numarasıyla VPN Gateway oluşturun
 
-TestVNet1 için sanal ağ geçidini oluşturun. BGP, rota tabanlı bir VPN Ağ Geçidi gerektirir. Ayrıca, TestVNet1 için otonom sistem `-Asn` numarası 'Nı (ASN) ayarlamak üzere ek parametreye ihtiyacınız vardır. Ağ geçidi oluşturma işleminin tamamlanması biraz zaman alabilir (45 dakika veya daha fazla). 
+TestVNet1 için sanal ağ geçidini oluşturun. BGP, rota tabanlı bir VPN Ağ Geçidi gerektirir. Ayrıca, `-Asn` TestVNet1 için otonom sistem numarası 'nı (ASN) ayarlamak üzere ek parametreye ihtiyacınız vardır. Ağ geçidi oluşturma işleminin tamamlanması biraz zaman alabilir (45 dakika veya daha fazla). 
 
-Bu komutu `--no-wait` parametresini kullanarak çalıştırırsanız, hiçbir geri bildirim veya çıkış görmezsiniz. `--no-wait` Parametresi, ağ geçidinin arka planda oluşturulmasına olanak tanır. VPN ağ geçidinin hemen oluşturulduğu anlamına gelmez.
+Bu komutu parametresini kullanarak çalıştırırsanız `--no-wait` , hiçbir geri bildirim veya çıkış görmezsiniz. `--no-wait`Parametresi, ağ geçidinin arka planda oluşturulmasına olanak tanır. VPN ağ geçidinin hemen oluşturulduğu anlamına gelmez.
 
 ```azurecli
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
@@ -103,7 +103,7 @@ az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP 
 
 Ağ Geçidi oluşturulduktan sonra, Azure VPN ağ geçidinde BGP eşi IP adresini edinmeniz gerekir. Bu adres, VPN ağ geçidini şirket içi VPN cihazlarınız için BGP eşi olarak yapılandırmak için gereklidir.
 
-Aşağıdaki komutu çalıştırın ve çıktının en üstündeki `bgpSettings` bölümünü kontrol edin:
+Aşağıdaki komutu çalıştırın ve `bgpSettings` çıktının en üstündeki bölümünü kontrol edin:
 
 ```azurecli
 az network vnet-gateway list -g TestBGPRG1 
@@ -133,7 +133,7 @@ Bu alıştırma diyagramda gösterilen yapılandırmayı oluşturmaya devam eder
 * Yerel ağ geçidi için bildirmeniz gereken en küçük ön ek, VPN cihazınızdaki BGP eşi IP adresinizin ana bilgisayar adresidir. Bu durumda, 10.51.255.254/32 ' nin bir/32 ön eki olur.
 * Bir anımsatıcı olarak, şirket içi ağlarınız ve Azure sanal ağı arasında farklı BGP 'ler kullanmanız gerekir. Aynı ise, şirket içi VPN cihazlarınız diğer BGP komşuları ile ASN 'yi zaten kullanıyorsa VNet ASN 'nizi değiştirmeniz gerekir.
 
-Devam etmeden önce, bu alıştırmanın [VPN Gateway IÇIN BGP 'Yi etkinleştir](#enablebgp) bölümünü tamamladığınızdan ve yine de 1. aboneliğe bağlı olduğunuzdan emin olun. Bu örnekte, yeni bir kaynak grubu oluşturduğunuz hakkında dikkat edin. Ayrıca, yerel ağ geçidi için iki ek parametreye de dikkat edin: `Asn` ve `BgpPeerAddress`.
+Devam etmeden önce, bu alıştırmanın [VPN Gateway IÇIN BGP 'Yi etkinleştir](#enablebgp) bölümünü tamamladığınızdan ve yine de 1. aboneliğe bağlı olduğunuzdan emin olun. Bu örnekte, yeni bir kaynak grubu oluşturduğunuz hakkında dikkat edin. Ayrıca, yerel ağ geçidi için iki ek parametreye de dikkat edin: `Asn` ve `BgpPeerAddress` .
 
 ```azurecli
 az group create -n TestBGPRG5 -l eastus2 
@@ -143,7 +143,7 @@ az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site5 -g T
 
 ### <a name="step-2-connect-the-vnet-gateway-and-local-network-gateway"></a>2. Adım: VNet ağ geçidini ve yerel ağ geçidini bağlama
 
-Bu adımda, TestVNet1 ile site5 arasındaki bağlantıyı oluşturacaksınız. Bu bağlantı için BGP `--enable-bgp` 'yi etkinleştirmek üzere parametresini belirtmeniz gerekir. 
+Bu adımda, TestVNet1 ile site5 arasındaki bağlantıyı oluşturacaksınız. `--enable-bgp`Bu bağlantı IÇIN BGP 'yi etkinleştirmek üzere parametresini belirtmeniz gerekir. 
 
 Bu örnekte, sanal ağ geçidi ve yerel ağ geçidi farklı kaynak gruplarıdır. Ağ geçitleri farklı kaynak gruplarında olduğunda, sanal ağlar arasında bir bağlantı kurmak için iki ağ geçidinin tüm kaynak KIMLIĞINI belirtmeniz gerekir.
 
@@ -174,7 +174,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
   "id": "/subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW",
 ```
 
-Bağlantıyı oluştururken kolayca yapıştırabilmeniz `"id":` Için Not Defteri gibi bir metin düzenleyicisinde değerleri kopyalayın. 
+`"id":`Bağlantıyı oluştururken kolayca yapıştırabilmeniz Için Not Defteri gibi bir metin düzenleyicisinde değerleri kopyalayın. 
 
 ```
 "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
@@ -222,7 +222,7 @@ Aşağıdaki yönergeler önceki bölümlerdeki adımlardan devam eder. BGP ile 
 
 Yeni sanal ağın IP adresi alanının, TestVNet2, VNet aralıklarından herhangi biriyle çakışmadığından emin olmak önemlidir.
 
-Bu örnekte, sanal ağlar aynı aboneliğe aittir. Farklı abonelikler arasında VNet-VNet bağlantıları ayarlayabilirsiniz. Daha fazla bilgi için bkz. [VNET 'Ten VNET 'e bağlantı yapılandırma](vpn-gateway-howto-vnet-vnet-cli.md). BGP 'yi etkinleştirmek için bağlantıları `-EnableBgp $True` oluştururken eklediğinizden emin olun.
+Bu örnekte, sanal ağlar aynı aboneliğe aittir. Farklı abonelikler arasında VNet-VNet bağlantıları ayarlayabilirsiniz. Daha fazla bilgi için bkz. [VNET 'Ten VNET 'e bağlantı yapılandırma](vpn-gateway-howto-vnet-vnet-cli.md). `-EnableBgp $True`BGP 'yi etkinleştirmek için bağlantıları oluştururken eklediğinizden emin olun.
 
 #### <a name="1-create-a-new-resource-group"></a>1. yeni bir kaynak grubu oluşturun
 
@@ -262,7 +262,7 @@ az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2
 
 ### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>2. Adım: TestVNet1 ve TestVNet2 ağ geçitlerini bağlama
 
-Bu adımda, TestVNet1 ile site5 arasındaki bağlantıyı oluşturacaksınız. Bu bağlantı için BGP 'yi etkinleştirmek üzere `--enable-bgp` parametresini belirtmeniz gerekir.
+Bu adımda, TestVNet1 ile site5 arasındaki bağlantıyı oluşturacaksınız. Bu bağlantı için BGP 'yi etkinleştirmek üzere parametresini belirtmeniz gerekir `--enable-bgp` .
 
 Aşağıdaki örnekte, sanal ağ geçidi ve yerel ağ geçidi farklı kaynak gruplarıdır. Ağ geçitleri farklı kaynak gruplarında olduğunda, sanal ağlar arasında bir bağlantı kurmak için iki ağ geçidinin tüm kaynak KIMLIĞINI belirtmeniz gerekir. 
 

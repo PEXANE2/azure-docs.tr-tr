@@ -11,25 +11,25 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 04/10/2020
-ms.openlocfilehash: 4ea4ad98fcea022a22196e359e24f56cb3d0f4d8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 06/15/2020
+ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321385"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986963"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için saydam veri şifrelemesi
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) , bekleyen verileri şifreleyerek kötü amaçlı çevrimdışı etkinlik tehditlerine KARŞı Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE analizlerinin korunmasına yardımcı olur. Bu özellik bütün bir veritabanı, yedekleri ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemlerini gerçekleştirir ve uygulamada değişiklik yapmayı gerektirmez. Varsayılan olarak, TDE tüm yeni dağıtılan veritabanları için etkinleştirilmiştir ve Azure SQL veritabanı, Azure SQL yönetilen örneği veya Azure SYNAPSE Analytics 'in daha eski veritabanları için el ile etkinleştirilmelidir.
+[Saydam veri şifrelemesi (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) , bekleyen verileri şifreleyerek kötü amaçlı çevrimdışı etkinlik tehditlerine KARŞı Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE analizlerinin korunmasına yardımcı olur. Bu özellik bütün bir veritabanı, yedekleri ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemlerini gerçekleştirir ve uygulamada değişiklik yapmayı gerektirmez. Varsayılan olarak, TDE, tüm yeni dağıtılan SQL veritabanları için etkinleştirilmiştir ve Azure SQL veritabanı, Azure SQL yönetilen örneği 'nin eski veritabanları için el ile etkinleştirilmelidir. TDE, Azure SYNAPSE Analytics için el ile etkinleştirilmelidir.
 
 TDE, verilerin sayfa düzeyindeki gerçek zamanlı g/ç şifrelemesini ve şifresini çözmeyi gerçekleştirir. Okunarak belleğe alınan her sayfanın şifresi çözülür ve sayfalar diske yazılmadan önce şifrelenir. TDE, veritabanı şifreleme anahtarı (DEK) adlı bir simetrik anahtar kullanarak veritabanının tamamının depolanmasını şifreler. Veritabanı başlangıcında, şifrelenen DEK şifresi çözülür ve veritabanı dosyalarının şifresini çözmek ve SQL Server veritabanı altyapısı işleminde yeniden şifrelemek için kullanılır. DEK, TDE koruyucusu tarafından korunur. TDE koruyucusu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifrelemesi) veya [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) depolanan bir asimetrik anahtardır (müşteri tarafından yönetilen saydam veri şifrelemesi).
 
 Azure SQL veritabanı ve Azure SYNAPSE için, TDE koruyucusu [sunucu](logical-servers.md) düzeyinde ayarlanır ve bu sunucuyla ilişkili tüm veritabanları tarafından devralınır. Azure SQL yönetilen örneği (önizlemede BYOK özelliği) için, TDE koruyucusu örnek düzeyinde ayarlanır ve bu örnekteki tüm şifreli veritabanları tarafından devralınır. *Sunucu* terimi, farklı belirtilmedikçe, bu belge boyunca hem sunucu hem de örneğe başvurur.
 
 > [!IMPORTANT]
-> SQL veritabanı ve Azure SYNAPSE ' deki yeni oluşturulan tüm veritabanları, hizmet tarafından yönetilen saydam veri şifrelemesi kullanılarak varsayılan olarak şifrelenir. 2017 Mayıs 'tan önce oluşturulan mevcut SQL veritabanları ve geri yükleme, coğrafi çoğaltma ve veritabanı kopyası kullanılarak oluşturulan SQL veritabanları varsayılan olarak şifrelenmez. 2019 Şubat 'tan önce oluşturulan mevcut SQL yönetilen örnek veritabanları varsayılan olarak şifrelenmez. Restore aracılığıyla oluşturulan SQL yönetilen örnek veritabanları, kaynaktan şifreleme durumunu devralma.
+> SQL veritabanı 'ndaki yeni oluşturulan tüm veritabanları, hizmet tarafından yönetilen saydam veri şifrelemesi kullanılarak varsayılan olarak şifrelenir. 2017 Mayıs 'tan önce oluşturulan mevcut SQL veritabanları ve geri yükleme, coğrafi çoğaltma ve veritabanı kopyası kullanılarak oluşturulan SQL veritabanları varsayılan olarak şifrelenmez. 2019 Şubat 'tan önce oluşturulan mevcut SQL yönetilen örnek veritabanları varsayılan olarak şifrelenmez. Restore aracılığıyla oluşturulan SQL yönetilen örnek veritabanları, kaynaktan şifreleme durumunu devralma.
 
 > [!NOTE]
 > TDE, SQL veritabanı 'nda **ana** veritabanını şifrelemek için kullanılamaz.  **Ana** veritabanı, Kullanıcı veritabanlarında TDE işlemleri gerçekleştirmek için gereken nesneleri içerir.
@@ -61,7 +61,7 @@ Azure 'daki işlemler için veritabanlarının şifresini çözmeniz gerekmez. K
 - Yedekleme dosyasını Azure SQL yönetilen örneğine geri yükleme
 
 > [!IMPORTANT]
-> Şifreleme için kullanılan sertifikaya erişilemediğinden, el ile kopya alma, Azure SQL yönetilen örneği 'nde yalnızca hizmet tarafından yönetilen TDE tarafından şifrelenen bir veritabanının yedeklemesi desteklenmez. Bu tür bir veritabanını başka bir SQL yönetilen örneğine taşımak için zaman içinde geri yükleme özelliğini kullanın.
+> Şifreleme için kullanılan sertifikaya erişilemediğinden, el ile kopya alma, Azure SQL yönetilen örneği 'nde yalnızca hizmet tarafından yönetilen TDE tarafından şifrelenen bir veritabanının yedeklemesi desteklenmez. Bu tür bir veritabanını başka bir SQL yönetilen örneğine taşımak veya müşteri tarafından yönetilen anahtara geçiş yapmak için zaman içinde geri yükleme özelliğini kullanın.
 
 Bir TDE korumalı veritabanını dışarı aktardığınızda, veritabanının dışarı aktarılmış içeriği şifrelenmez. Bu içe aktarılmış içerik şifrelenmemiş BACPAC dosyalarında depolanır. BACPAC dosyalarını uygun şekilde koruduğunuzdan emin olun ve yeni veritabanını içeri aktarma işlemi tamamlandıktan sonra TDE 'ı etkinleştirin.
 

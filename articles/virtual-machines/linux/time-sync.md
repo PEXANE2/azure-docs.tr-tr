@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c93c1f525713a90abd71c30a21401b9d1cfcb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460911"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782781"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 'da Linux VM 'Leri için zaman eşitleme
 
@@ -25,12 +25,12 @@ Zaman eşitleme, güvenlik ve olay bağıntısı açısından önemlidir. Bazen 
 
 Azure, Windows Server 2016 çalıştıran altyapıyla desteklenir. Windows Server 2016, saat ve durum durumunu düzeltmek için kullanılan ve UTC ile eşitlenmesi için geliştirilmiş algoritmalara sahiptir.  Windows Server 2016 doğru zaman özelliği, sanal makineleri doğru süre için konak ile yöneten Vmictimessync hizmetinin nasıl büyük ölçüde geliştirilmiştir. Geliştirmeler, VM başlatma veya VM geri yükleme ve kesme gecikme süresi düzeltmesinin daha doğru ilk zamanını içerir. 
 
->[!NOTE]
->Windows Saat hizmeti 'ne hızlı bir genel bakış için, bu [üst düzey genel bakış videosunu](https://aka.ms/WS2016TimeVideo)inceleyin.
+> [!NOTE]
+> Windows Saat hizmeti 'ne hızlı bir genel bakış için, bu [üst düzey genel bakış videosunu](https://aka.ms/WS2016TimeVideo)inceleyin.
 >
-> Daha fazla bilgi için bkz. [Windows Server 2016 Için doğru süre](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Daha fazla bilgi için bkz. [Windows Server 2016 Için doğru süre](/windows-server/networking/windows-time-service/accurate-time). 
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Bir bilgisayar saatinin doğruluğu, bilgisayar saatinin Eşgüdümlü Evrensel Saat (UTC) zaman standardına ne kadar yakın olduğunu gauged. UTC, 300 yıl içinde yalnızca bir saniye boyunca kapalı olabilecek, çok uluslu bir tam atomik saatler örneği tarafından tanımlanır. Ancak UTC okuma doğrudan özel donanım gerektirir. Bunun yerine, zaman sunucuları UTC ile eşitlenir ve ölçeklenebilirlik ve sağlamlık sağlamak için diğer bilgisayarlardan erişilir. Her bilgisayarda, hangi zaman sunucularının kullanılacağını bilen ve bilgisayar saatinin düzeltilmesi ve gerektiğinde zaman ayarlaması gerekip gerekmediğini bilen zaman eşitleme hizmeti çalışmaktadır. 
 
@@ -66,7 +66,7 @@ Varsayılan olarak, Linux için Azure Market görüntülerinin çoğu iki kaynak
 
 Daha yeni Linux dağıtımlarında, Vmictimessync hizmeti duyarlık Time Protocol (PTP) kullanır, ancak önceki dağıtımlar PTP 'i desteklemeyebilir ve konaktan zaman almak için NTP 'e geri dönecektir.
 
-NTP 'nin doğru şekilde eşitlenmesini onaylamak için `ntpq -p` komutunu çalıştırın.
+NTP 'nin doğru şekilde eşitlenmesini onaylamak için komutunu çalıştırın `ntpq -p` .
 
 ### <a name="host-only"></a>Yalnızca konak 
 
@@ -140,13 +140,13 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 Ubuntu ve NTP hakkında daha fazla bilgi için bkz. [zaman eşitleme](https://help.ubuntu.com/lts/serverguide/NTP.html).
 
-Red Hat ve NTP hakkında daha fazla bilgi için bkz. [NTP yapılandırma](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
+Red Hat ve NTP hakkında daha fazla bilgi için bkz. [NTP yapılandırma](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP). 
 
-Zaman hatası hakkında daha fazla bilgi için bkz. zaman [hatası kullanımı](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
+Zaman hatası hakkında daha fazla bilgi için bkz. zaman [hatası kullanımı](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
 Aynı anda hem Tarihçe hem de zaman eşitleme kaynakları etkinleştirilmişse, diğerini bir yedekleme olarak ayarlayan bir tane **tercih**edebilirsiniz. NTP Hizmetleri uzun bir süre sonra büyük bir eğriltin saatini güncelleştirmediğinden, Vmictimessync, saati yalnızca NTP tabanlı araçlardan daha hızlı bir şekilde duraklatılmış şekilde kurtaracaktır.
 
-Varsayılan olarak, Tarihçe her zaman drivi giderecek şekilde sistem saatini hızlandırır veya yavaşlatır. Drın çok büyük hale gelirse, zaman hatası, drmali 'i düzeltemedi. Bunu aşmak için,/etc/bir değeri, belirtilen eşiği aşarsa, bir zaman akmaya zorlamak üzere `makestep` **/etc/timesyı.exe** içindeki parametre değiştirilebilir.
+Varsayılan olarak, Tarihçe her zaman drivi giderecek şekilde sistem saatini hızlandırır veya yavaşlatır. Drın çok büyük hale gelirse, zaman hatası, drmali 'i düzeltemedi. Bunu aşmak için, `makestep` /etc/bir değeri, belirtilen eşiği aşarsa, bir zaman akmaya zorlamak üzere **/etc/timesyı.exe** içindeki parametre değiştirilebilir.
 
  ```bash
 makestep 1.0 -1
@@ -164,6 +164,6 @@ systemctl restart chronyd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [Windows Server 2016 Için doğru süre](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
+Daha fazla bilgi için bkz. [Windows Server 2016 Için doğru süre](/windows-server/networking/windows-time-service/accurate-time).
 
 

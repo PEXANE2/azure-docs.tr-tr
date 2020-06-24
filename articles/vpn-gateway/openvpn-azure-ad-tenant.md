@@ -4,17 +4,17 @@ description: Azure AD kimlik doğrulaması kullanarak sanal ağınıza bağlanma
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2020
 ms.author: alzam
-ms.openlocfilehash: 00db2ed05285a1637414aa1e3adbe3b047ff0568
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8658556c152c815b2846f93235e4049c66a7e354
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641341"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987187"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN Protokolü bağlantıları için Azure Active Directory kiracısı oluşturma
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN protokolü bağlantıları için Azure Active Directory kiracısı oluşturma
 
 Sanal ağınıza bağlanırken sertifika tabanlı kimlik doğrulama veya RADIUS kimlik doğrulaması kullanabilirsiniz. Ancak, açık VPN protokolünü kullandığınızda Azure Active Directory kimlik doğrulamasını da kullanabilirsiniz. Bu makale, P2S Open VPN kimlik doğrulaması için bir Azure AD kiracısı ayarlamanıza yardımcı olur.
 
@@ -73,7 +73,7 @@ Azure AD kiracınız için en az iki kullanıcı oluşturmak üzere [Bu makalede
     https://login-us.microsoftonline.de/common/oauth2/authorize?client_id=538ee9e6-310a-468d-afef-ea97365856a9&response_type=code&redirect_uri=https://portal.microsoftazure.de&nonce=1234&prompt=admin_consent
     ````
 
-    Azure Çin 21Vianet
+    Azure China 21Vianet
 
     ```
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
@@ -105,7 +105,7 @@ Azure AD kiracınız için en az iki kullanıcı oluşturmak üzere [Bu makalede
     ```
 
    > [!NOTE]
-   > `AadIssuerUri` Değerin sonuna eğik çizgi eklediğinizden emin olun. Aksi takdirde, komut başarısız olur.
+   > Değerin sonuna eğik çizgi eklediğinizden emin olun `AadIssuerUri` . Aksi takdirde, komut başarısız olur.
 
 10. Aşağıdaki komutları çalıştırarak profili oluşturun ve indirin. -ResourceGroupName ve-Name değerlerini kendi değerlerinizle eşleşecek şekilde değiştirin.
 
@@ -122,7 +122,7 @@ Azure AD kiracınız için en az iki kullanıcı oluşturmak üzere [Bu makalede
 
 13. Sıkıştırılmış olmayan "AzureVPN" klasörüne gidin.
 
-14. "Azurevpnconfig. xml" dosyasının konumunu bir yere unutmayın. Azurevpnconfig. xml, VPN bağlantısı ayarını içerir ve doğrudan Azure VPN Istemci uygulamasına aktarılabilir. Ayrıca, bu dosyayı e-posta veya başka yollarla bağlanması gereken tüm kullanıcılara dağıtabilirsiniz. Kullanıcının başarıyla bağlanması için geçerli bir Azure AD kimlik bilgilerine ihtiyacı olacak.
+14. "azurevpnconfig.xml" dosyasının konumunu bir yere göz önünde alın. azurevpnconfig.xml, VPN bağlantısı ayarını içerir ve doğrudan Azure VPN Istemci uygulamasına aktarılabilir. Ayrıca, bu dosyayı e-posta veya başka yollarla bağlanması gereken tüm kullanıcılara dağıtabilirsiniz. Kullanıcının başarıyla bağlanması için geçerli bir Azure AD kimlik bilgilerine ihtiyacı olacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

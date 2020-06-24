@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 3284db031214dfaa631efa6f9f40e6a069998843
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 6ebd13317940d131facfb36987fb37358260ec05
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677075"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119231"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Önceki nesil sanal makine boyutları
 
@@ -169,7 +169,7 @@ A8-A11 ve H Serisi boyutlar *yoğun işlem gücü kullanımlı örnekler* olarak
 
 ### <a name="d-series"></a>D Serisi  
 
-**Daha yeni boyut önerisi**: [Dv3-Series](dv3-dsv3-series.md)
+**Daha yeni boyut önerisi**: [Dav4-Series](dav4-dasv4-series.md), [dv4-Series](dv4-dsv4-series.md) ve [Ddv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -190,7 +190,7 @@ Premium depolama önbelleği: desteklenmiyor
 
 ### <a name="d-series---memory-optimized"></a>D serisi-bellek için iyileştirilmiş  
 
-**Daha yeni boyut önerisi**: [Dv3-Series](dv3-dsv3-series.md)
+**Daha yeni boyut önerisi**: [Dav4-Series](dav4-dasv4-series.md), [dv4-Series](dv4-dsv4-series.md) ve [Ddv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -231,7 +231,7 @@ DC Serisi, en son nesil 3.7 GHz Intel XEON E-2176G Işlemcisini SGX teknolojisin
 
 ### <a name="ds-series"></a>DS serisi  
 
-**Daha yeni boyut önerisi**: [Dsv3-Series](dv3-dsv3-series.md)
+**Daha yeni boyut önerisi**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-Series](dv4-dsv4-series.md) ve [Ddsv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -252,7 +252,7 @@ Premium depolama önbelleği: desteklenir
 
 ### <a name="ds-series---memory-optimized"></a>DS serisi bellek için iyileştirilmiş  
 
-**Daha yeni boyut önerisi**: [Dsv3-Series](dv3-dsv3-series.md)
+**Daha yeni boyut önerisi**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-Series](dv4-dsv4-series.md) ve [Ddsv4-Series](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1, 2</sup>
 
@@ -273,6 +273,8 @@ Premium depolama önbelleği: desteklenir
 <br>
 
 ### <a name="ls-series"></a>Ls serisi
+
+**Daha yeni boyut önerisi**: [Lsv2-Series](lsv2-series.md)
 
 Ls serisi, [Intel® Xeon İşlemci E5 v3 ailesi](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) ile 32’ye kadar vCPU kullanım olanağı sunar. Ls serisi, G/GS serisi ile aynı CPU performansı sunar ve her vCPU başına 8 GiB bellek içerir.
 
@@ -297,6 +299,8 @@ LS Serisi VM 'lerle mümkün olan en fazla disk aktarım hızı, ekli disklerin 
 
 ### <a name="gs-series"></a>GS serisi
 
+**Daha yeni boyut önerisi**: [Easv4-Series](eav4-easv4-series.md), [Esv4-serisi](ev4-esv4-series.md), [Edsv4-serisi](edv4-edsv4-series.md) ve [d serisi](m-series.md)
+
 ACU: 180-240 <sup>1</sup>
 
 Premium Depolama: desteklenir
@@ -320,6 +324,8 @@ Premium depolama önbelleği: desteklenir
 <br>
 
 ### <a name="g-series"></a>G Serisi
+
+**Daha yeni boyut önerisi**: [Eav4-Series](eav4-easv4-series.md), [Ev4-serisi](ev4-esv4-series.md) ve [Edv4-](edv4-edsv4-series.md) serisi ve [d serisi](m-series.md)
 
 ACU: 180 - 240
 

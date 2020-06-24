@@ -1,5 +1,5 @@
 ---
-title: Görüntü dizinine Dönüştür
+title: Görüntü Dizinine Dönüştürme
 titleSuffix: Azure Machine Learning
 description: Veri kümesini görüntü dizini biçimine dönüştürmek için görüntü dizinine dönüştürme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: dc40e0a644f692b397b1f2107b27b1d940d2b284
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450636"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904601"
 ---
-# <a name="convert-to-image-directory"></a>Görüntü dizinine Dönüştür
+# <a name="convert-to-image-directory"></a>Görüntü Dizinine Dönüştürme
 
 Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönüştürmeye yardımcı olmak üzere görüntü veri kümesini ' resim dizinine dönüştürme ' veya görüntü sınıflandırması (Önizleme) gibi görüntü Azure Machine Learning sınıflandırması gibi görüntüyle ilgili görevlere yönelik standart veri biçimi olan ' görüntü dizini ' için nasıl kullanılacağı açıklanır.
 
@@ -28,11 +28,21 @@ Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönü
     Aşağıdaki veri kümesi biçimleri desteklenir:
 
     - Şu Uzantılarda sıkıştırılmış dosya: '. zip ', '. tar ', '. gz ', '. bz2 '.
-    - Geçerli uzantılar üzerinde 1 sıkıştırılmış dosya içeren klasör. 
-    - Görüntüleri içeren klasör.
+    - Görüntüleri içeren klasör. **Öncelikle bu gibi bir klasörü sıkıştırmak ve sonra sıkıştırılmış dosyayı veri kümesi olarak kullanmak önerilir**.
 
     > [!NOTE]
-    > Görüntü kategorisi, bu görüntü veri kümesi torchvision ımagefolder biçiminde düzenleniyorsa modül çıktısına kaydedilebilir, lütfen daha fazla bilgi için [torchvision veri kümelerine](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) bakın. Aksi takdirde, yalnızca görüntüler kaydedilir.
+    > Denetimli öğreniminde görüntü veri kümesini kullanıyorsanız etiket gereklidir.
+    > Görüntü sınıflandırma görevi için, bu görüntü veri kümesi torchvision ımagefolder biçiminde düzenleniyorsa, etiket modül çıkışında ' Category ' görüntüsü olarak oluşturulabilir. Aksi halde, etiket olmadan yalnızca görüntüler kaydedilir. Etiketi almak için görüntü veri kümesini nasıl düzenleyecağınız hakkında bir örnek olarak, görüntü kategorisini alt klasör adı olarak kullanın. Daha fazla bilgi için lütfen [torchvision veri kümelerine](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) bakın.
+    >
+    > ```
+    > root/dog/xxx.png
+    > root/dog/xxy.png
+    > root/dog/xxz.png
+    >
+    > root/cat/123.png
+    > root/cat/nsdf3.png
+    > root/cat/asd932_.png
+    > ```
 
 3.  İşlem hattını gönderme.
 
@@ -44,13 +54,13 @@ Bu makalede görüntü veri kümesini ' görüntü dizini ' veri türüne dönü
 
 ###  <a name="expected-inputs"></a>Beklenen girişler  
 
-| Adı          | Tür                  | Açıklama   |
+| Name          | Tür                  | Description   |
 | ------------- | --------------------- | ------------- |
 | Giriş veri kümesi | AnyDirectory, ZipFile | Giriş veri kümesi |
 
-###  <a name="output"></a>Çıktı  
+###  <a name="output"></a>Çıkış  
 
-| Adı                   | Tür           | Açıklama            |
+| Name                   | Tür           | Description            |
 | ---------------------- | -------------- | ---------------------- |
 | Çıkış resmi dizini | ImageDirectory | Çıkış resmi dizini |
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: e7276dcfca6ba033942d62f347ac3a799524cac4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cdb75c821f45fe7fcf0f455145beb2b9be2a55
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519100"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734869"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure bulut çözümü sağlayıcıları için Azure Active Directory Domain Services dağıtımı ve yönetimi
 
@@ -78,11 +78,11 @@ Bu dağıtım modeli, bir ISV 'nin şirket içi uygulamalarının barındırıla
 
 Azure CSP aboneliğinde yönetilen bir etki alanını yönetirken aşağıdaki önemli konular geçerlidir:
 
-* **CSP yönetici aracıları, kimlik bilgilerini kullanarak yönetilen bir etki alanı sağlayabilir:** Azure AD DS, Azure CSP aboneliklerini destekler. CSP iş ortağının yönetici aracıları grubuna ait olan kullanıcılar yeni bir Azure AD DS yönetilen etki alanı sağlayabilir.
+* **CSP yönetici aracıları, kimlik bilgilerini kullanarak yönetilen bir etki alanı sağlayabilir:** Azure AD DS, Azure CSP aboneliklerini destekler. CSP iş ortağının yönetici aracıları grubuna ait olan kullanıcılar yeni bir yönetilen etki alanı sağlayabilir.
 
 * **CSP 'ler, PowerShell kullanarak müşterileri için yeni yönetilen etki alanlarının komut dosyası oluşturulmasına sahiptir:** Ayrıntılar için bkz. [PowerShell kullanarak Azure AD DS etkinleştirme](powershell-create-instance.md) .
 
-* **CSP yönetim aracıları, kimlik bilgilerini kullanarak yönetilen etki alanında devam eden yönetim görevleri gerçekleştiremez:** CSP yönetici kullanıcıları, kimlik bilgilerini kullanarak yönetilen etki alanı içinde rutin yönetim görevleri gerçekleştiremez. Bu kullanıcılar müşterinin Azure AD kiracısının dışında bulunur ve kimlik bilgileri müşterinin Azure AD kiracısı içinde kullanılamaz. Azure AD DS, bu kullanıcılar için Kerberos ve NTLM parola karmalarını erişimine sahip olmadığından, kullanıcıların kimliği Azure AD DS yönetilen etki alanlarında doğrulanabilir.
+* **CSP yönetim aracıları, kimlik bilgilerini kullanarak yönetilen etki alanında devam eden yönetim görevleri gerçekleştiremez:** CSP yönetici kullanıcıları, kimlik bilgilerini kullanarak yönetilen etki alanı içinde rutin yönetim görevleri gerçekleştiremez. Bu kullanıcılar müşterinin Azure AD kiracısının dışında bulunur ve kimlik bilgileri müşterinin Azure AD kiracısı içinde kullanılamaz. Azure AD DS, bu kullanıcılar için Kerberos ve NTLM parola karmalarını erişimine sahip olmadığından, kullanıcıların yönetilen etki alanlarında kimlik doğrulaması yapılamıyor.
 
   > [!WARNING]
   > Yönetilen etki alanında devam eden yönetim görevlerini gerçekleştirmek için müşterinin dizininde bir kullanıcı hesabı oluşturmanız gerekir.

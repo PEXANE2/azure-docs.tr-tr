@@ -15,12 +15,12 @@ ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4c3d8fdf4467a1a4c932ab6ec8fd6067d2d2ef34
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014375"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252738"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory geçişli kimlik doğrulama güvenliğini derinlemesine bakış
 
@@ -106,7 +106,7 @@ Kimlik doğrulama aracıları, kendilerini Azure AD 'ye kaydetmek için aşağı
     - CA yalnızca doğrudan kimlik doğrulama özelliği tarafından kullanılır. CA yalnızca kimlik doğrulama Aracısı kaydı sırasında CSR imzalamak için kullanılır.
     -  Diğer Azure AD hizmetlerinden hiçbiri bu CA 'yı kullanmaz.
     - Sertifikanın konusu (ayırt edici ad veya DN) kiracı KIMLIĞINIZ olarak ayarlanır. Bu DN, kiracınızı benzersiz bir şekilde tanımlayan bir GUID 'dir. Bu DN, sertifikayı yalnızca kiracınızla birlikte kullanılmak üzere kapsamlar.
-6. Azure AD, kimlik doğrulama aracısının ortak anahtarını yalnızca Azure AD 'nin erişimi olan bir Azure SQL veritabanında depolar.
+6. Azure AD, kimlik doğrulama aracısının ortak anahtarını Azure SQL veritabanı 'nda yalnızca Azure AD 'nin erişimi olan bir veritabanında depolar.
 7. Sertifika (5. adımda verilen), Windows sertifika deposundaki (özellikle [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) konumunda) Şirket içi sunucuda depolanır. Hem kimlik doğrulama Aracısı hem de Güncelleştirici uygulamalar tarafından kullanılır.
 
 ### <a name="authentication-agent-initialization"></a>Kimlik doğrulama Aracısı başlatma
@@ -139,7 +139,7 @@ Doğrudan kimlik doğrulaması, bir Kullanıcı oturum açma isteğini aşağıd
 4. Kullanıcı Kullanıcı adını **Kullanıcı oturum açma** sayfasına girer ve sonra **İleri** düğmesini seçer.
 5. Kullanıcı parolasını **Kullanıcı oturum açma** sayfasına girer ve ardından **oturum aç** düğmesini seçer.
 6. Kullanıcı adı ve parola, bir HTTPS POST isteğinde Azure AD STS 'ye gönderilir.
-7. Azure AD STS, kiracınızda kayıtlı tüm kimlik doğrulama aracılarının ortak anahtarlarını Azure SQL veritabanından alır ve parolayı kullanarak şifreler.
+7. Azure AD STS, Azure SQL veritabanından kiracınızda kayıtlı olan tüm kimlik doğrulama aracılarının ortak anahtarlarını alır ve parolayı kullanarak şifreler.
     - Kiracınızda kayıtlı "N" kimlik doğrulama aracıları için "N" şifrelenmiş parola değerleri üretir.
 8. Azure AD STS, Kullanıcı adı ve şifreli parola değerlerinden oluşan parola doğrulama isteğini kiracınıza özgü Service Bus kuyruğuna koyar.
 9. Başlatılmış kimlik doğrulama aracıları Service Bus kuyruğuna kalıcı olarak bağlandığından, kullanılabilir kimlik doğrulama aracılarından biri parola doğrulama isteğini alır.
@@ -178,7 +178,7 @@ Azure AD ile bir kimlik doğrulama aracısının güvenini yenilemek için:
 6. Mevcut sertifikanın süresi dolmuşsa Azure AD, kimlik doğrulama aracısını kiracınızın kayıtlı kimlik doğrulama aracıları listesinden siler. Daha sonra genel bir yöneticinin yeni bir kimlik doğrulama aracısını el ile yüklemesi ve kaydetmesi gerekir.
     - Sertifikayı imzalamak için Azure AD kök CA 'sını kullanın.
     - Kiracınızı benzersiz bir şekilde tanımlayan GUID olan kiracı KIMLIĞINIZLE sertifikanın konusunu (ayırt edici ad veya DN) ayarlayın. DN, sertifikayı yalnızca kiracınızla kapsamlar.
-6. Azure AD, kimlik doğrulama aracısının yeni ortak anahtarını yalnızca erişimi olan bir Azure SQL veritabanında depolar. Ayrıca, kimlik doğrulama aracısıyla ilişkili eski ortak anahtarı geçersiz kılar.
+6. Azure AD, kimlik doğrulama aracısının yeni ortak anahtarını Azure SQL veritabanı 'nda yalnızca erişimi olan bir veritabanında depolar. Ayrıca, kimlik doğrulama aracısıyla ilişkili eski ortak anahtarı geçersiz kılar.
 7. Yeni sertifika (5. adımda verilen), daha sonra Windows sertifika depolama alanındaki sunucuda (özellikle [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) konumunda) depolanır.
     - Güven yenileme yordamı etkileşimli olmayan bir şekilde yapıldığından (genel yönetici mevcut olmadığında), kimlik doğrulama aracısının artık CERT_SYSTEM_STORE_LOCAL_MACHINE konumdaki mevcut sertifikayı güncelleştirme erişimi yoktur. 
     

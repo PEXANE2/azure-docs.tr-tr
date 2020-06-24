@@ -4,16 +4,16 @@ description: VNet 'i Azure ExpressRoute bağlantı hattına bağlayın. Nasıl y
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272922"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737079"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Portalı kullanarak ExpressRoute bağlantı hattına bir sanal ağı bağlama
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Bu makale, Azure portal kullanarak bir sanal ağı Azure ExpressRoute bağlantı
 1. ExpressRoute devreniz ve Azure özel eşlerinizin başarıyla yapılandırıldığından emin olun. ExpressRoute bağlantı hattı [oluşturma](expressroute-howto-circuit-arm.md) ve [bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme](expressroute-howto-routing-arm.md)bölümündeki yönergeleri izleyin. ExpressRoute bağlantı hattınızı aşağıdaki görüntüde şöyle görünmelidir:
 
    [![ExpressRoute devresi ekran görüntüsü](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Devreyi görüntüle")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
-2. Artık sanal ağ geçidinizin ExpressRoute Devrenize bağlamak için bir bağlantı sağlamaya başlayabilirsiniz.  > **Add** Bağlantı **Ekle ' ye tıklayarak** **bağlantı ekle** sayfasını açın ve değerleri yapılandırın.
+2. Artık sanal ağ geçidinizin ExpressRoute Devrenize bağlamak için bir bağlantı sağlamaya başlayabilirsiniz. Bağlantı **Ekle ' ye tıklayarak**  >  **Add** **bağlantı ekle** sayfasını açın ve değerleri yapılandırın.
 
    [![Bağlantı ekran görüntüsü ekleme](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Bağlantı ekran görüntüsü ekleme")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Bağlantınız başarıyla yapılandırıldıktan sonra bağlantı nesneniz bağlantı bilgilerini gösterir.

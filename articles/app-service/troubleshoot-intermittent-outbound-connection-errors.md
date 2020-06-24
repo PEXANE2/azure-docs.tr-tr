@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80367557"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252449"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service zaman aralıklı giden bağlantı hatalarıyla ilgili sorunları giderme
 
@@ -62,7 +62,7 @@ Varsayılan olarak, NodeJS bağlantıları etkin tutulmaz. Aşağıda, bunların
 HTTP etkin tut
 
 * [Aracısız KeepAlive](https://www.npmjs.com/package/agentkeepalive)
-* [Node. js v 13.9.0 belgeleri](https://nodejs.org/api/http.html)
+* [Node.js v 13.9.0 belgeleri](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
@@ -111,7 +111,7 @@ Diğer ortamlarda, uygulamalarınızda bağlantı havuzu uygulamak için sağlay
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>Giden boşta kalma zaman aşımını sıfırlamak için keepcanlı tutmayı kullanın
 
-* Node. js uygulamaları için keepcanlı uygulamayı uygulamak için, [düğüm uygulamamın aşırı giden çağrılar yapmasını](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)inceleyin.
+* Node.js uygulamalar için keepcanlı uygulamayı uygulamak için, [düğüm uygulamamın aşırı giden çağrılar yapmasını](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)inceleyin.
 
 ### <a name="additional-guidance-specific-to-app-service"></a>App Service özgü ek rehberlik:
 
@@ -122,7 +122,7 @@ Diğer ortamlarda, uygulamalarınızda bağlantı havuzu uygulamak için sağlay
 
 Sınırlar, çalışanlarınızın boyutuna göre ayarlandığından, giden TCP sınırlarının çözülmesini daha kolay hale getirir. Sınır, [VM 'Ler arası sayısal sınırlara göre sınırları görebilir-TCP bağlantıları](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Sınır adı|Açıklama|Küçük (a1)|Orta (a2)|Büyük (a3)|Yalıtılmış katman (Ao)|
+|Sınır adı|Description|Küçük (a1)|Orta (a2)|Büyük (a3)|Yalıtılmış katman (Ao)|
 |---|---|---|---|---|---|
 |Bağlantılar|Tüm VM genelinde bağlantı sayısı|1920|3968|8064|16.000|
 
@@ -154,13 +154,13 @@ TCP bağlantıları ve SNAT bağlantı noktaları doğrudan ilgili değildir. TC
 * TCP bağlantı sınırı çalışan örneği düzeyinde gerçekleşir. Azure ağ giden Yük Dengeleme, SNAT bağlantı noktası sınırlaması için TCP bağlantıları ölçümünü kullanmaz.
 * TCP bağlantı sınırları, [korumalı alan çapraz VM 'de, TCP bağlantılarında](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) açıklanmaktadır
 
-|Sınır adı|Açıklama|Küçük (a1)|Orta (a2)|Büyük (a3)|Yalıtılmış katman (Ao)|
+|Sınır adı|Description|Küçük (a1)|Orta (a2)|Büyük (a3)|Yalıtılmış katman (Ao)|
 |---|---|---|---|---|---|
 |Bağlantılar|Tüm VM genelinde bağlantı sayısı|1920|3968|8064|16.000|
 
 ### <a name="webjobs-and-database-connections"></a>Web Işleri ve veritabanı bağlantıları
  
-Web Işlerinin Azure SQL veritabanı 'na bağlanamadığından SNAT bağlantı noktaları tükenirse, her bir Web uygulaması işlemi tarafından kaç bağlantı açıldığını göstermek için ölçüm yoktur. Sorunlu WebJob 'u bulmak için, birkaç Web Işini başka bir App Service planına taşıyarak durumun gelişip artmediğini veya bir sorun planlardan birinde kalırsa. Sorunlu WebJob 'u bulana kadar işlemi tekrarlayın.
+SNAT bağlantı noktaları tükenirse, WebJobs 'lar SQL veritabanı 'na bağlanamıyorsa, her bir Web uygulaması işlemi tarafından kaç bağlantı açıldığını göstermek için ölçüm yoktur. Sorunlu WebJob 'u bulmak için, birkaç Web Işini başka bir App Service planına taşıyarak durumun gelişip artmediğini veya bir sorun planlardan birinde kalırsa. Sorunlu WebJob 'u bulana kadar işlemi tekrarlayın.
 
 ### <a name="using-snat-ports-sooner"></a>SNAT bağlantı noktalarını daha erken kullanma
 

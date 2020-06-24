@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: fa0754505d887b77cc3d11ebde9c246d4a00eb59
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: d5e8f5e3939ade4e5344ef586a62b6a19082e34e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883320"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809032"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
 
@@ -35,7 +35,7 @@ Azure depolama 'dan Azure kimlik istemci kitaplığı ile kimlik doğrulama hakk
 
 ## <a name="add-using-directives"></a>Using yönergeleri ekleme
 
-Azure kimlik ve `using` Azure depolama istemci kitaplıklarını kullanmak için aşağıdaki yönergeleri kodunuza ekleyin.
+`using`Azure kimlik ve Azure depolama istemci kitaplıklarını kullanmak için aşağıdaki yönergeleri kodunuza ekleyin.
 
 ```csharp
 using System;

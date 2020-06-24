@@ -20,17 +20,17 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282893"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692810"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $filter söz dizimi
 
 Azure Bilişsel Arama, tam metin arama terimlerinin yanı sıra bir arama sorgusuna ek ölçütler uygulamak için [OData Filtre ifadelerini](query-odata-filter-orderby-syntax.md) kullanır. Bu makalede, filtrelerin ayrıntılı sözdizimi ayrıntıları açıklanmıştır. Filtrelerin ne olduğu ve belirli sorgu senaryolarına yönelik olarak nasıl kullanılacağı hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama filtreleri](search-filters.md).
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 OData dilinde bir filtre, aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından gösterildiği gibi, bir Boolean ifadedir ve bu da birçok ifade türünden biri olabilir:
 
@@ -60,15 +60,15 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 Boolean ifadelerinin türleri şunlardır:
 
-- Veya `any` `all`kullanan koleksiyon filtre ifadeleri. Bunlar koleksiyon alanlarına filtre ölçütlerini uygular. Daha fazla bilgi için bkz. [Azure bilişsel arama OData koleksiyon işleçleri](search-query-odata-collection-operators.md).
-- , Ve `and` `or` `not`işleçlerini kullanarak diğer Boolean ifadelerini birleştiren mantıksal ifadeler. Daha fazla bilgi için bkz. [Azure 'Da OData mantıksal işleçleri bilişsel arama](search-query-odata-logical-operators.md).
-- ,, `eq`,, Ve `ne` `gt` `lt` `ge` `le`işleçlerini kullanarak alanları veya Aralık değişkenlerini sabit değerlerle karşılaştıran Karşılaştırma ifadeleri. Daha fazla bilgi için bkz. [Azure 'Da OData karşılaştırma işleçleri bilişsel arama](search-query-odata-comparison-operators.md). Karşılaştırma ifadeleri, `geo.distance` işlevi kullanılarak coğrafi uzamsal koordinatlar arasındaki uzaklıkları karşılaştırmak için de kullanılır. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevleri](search-query-odata-geo-spatial-functions.md).
-- Boolean sabit değerleri `true` ve `false`. Program aracılığıyla filtre oluştururken bu sabitler yararlı olabilir, ancak Aksi takdirde uygulamada kullanılmayın.
+- Veya kullanan koleksiyon filtre `any` ifadeleri `all` . Bunlar koleksiyon alanlarına filtre ölçütlerini uygular. Daha fazla bilgi için bkz. [Azure bilişsel arama OData koleksiyon işleçleri](search-query-odata-collection-operators.md).
+- , Ve işleçlerini kullanarak diğer Boolean ifadelerini birleştiren mantıksal ifadeler `and` `or` `not` . Daha fazla bilgi için bkz. [Azure 'Da OData mantıksal işleçleri bilişsel arama](search-query-odata-logical-operators.md).
+- ,,,, Ve işleçlerini kullanarak alanları veya Aralık değişkenlerini sabit değerlerle karşılaştıran karşılaştırma `eq` ifadeleri `ne` `gt` `lt` `ge` `le` . Daha fazla bilgi için bkz. [Azure 'Da OData karşılaştırma işleçleri bilişsel arama](search-query-odata-comparison-operators.md). Karşılaştırma ifadeleri, işlevi kullanılarak coğrafi uzamsal koordinatlar arasındaki uzaklıkları karşılaştırmak için de kullanılır `geo.distance` . Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevleri](search-query-odata-geo-spatial-functions.md).
+- Boolean sabit değerleri `true` ve `false` . Program aracılığıyla filtre oluştururken bu sabitler yararlı olabilir, ancak Aksi takdirde uygulamada kullanılmayın.
 - Aşağıdakiler dahil olmak üzere, Boole işlevlerine yapılan çağrılar:
   - `geo.intersects`, belirli bir noktanın belirli bir çokgen içinde olup olmadığını test eder. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevleri](search-query-odata-geo-spatial-functions.md).
   - `search.in`bir alan veya Aralık değişkenini bir değer listesindeki her bir değerle karşılaştıran. Daha fazla bilgi için bkz [. `search.in` Azure bilişsel arama 'da OData işlevi](search-query-odata-search-in-function.md).
-  - `search.ismatch`ve `search.ismatchscoring`tam metin arama işlemlerini bir filtre bağlamında yürütür. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData tam metin arama işlevleri](search-query-odata-full-text-search-functions.md).
-- Türündeki `Edm.Boolean`alan yolları veya Aralık değişkenleri. Örneğin, dizininiz adlı `IsEnabled` bir Boole alanı varsa ve bu alanın olduğu tüm belgeleri döndürmek istiyorsanız `true`, filtre ifadeniz yalnızca ad `IsEnabled`olabilir.
+  - `search.ismatch`ve `search.ismatchscoring` tam metin arama işlemlerini bir filtre bağlamında yürütür. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData tam metin arama işlevleri](search-query-odata-full-text-search-functions.md).
+- Türündeki alan yolları veya Aralık değişkenleri `Edm.Boolean` . Örneğin, dizininiz adlı bir Boole alanı varsa `IsEnabled` ve bu alanın olduğu tüm belgeleri döndürmek istiyorsanız `true` , filtre ifadeniz yalnızca ad olabilir `IsEnabled` .
 - Parantez içinde Boole ifadeleri. Parantez kullanımı, bir filtredeki işlem sırasını açıkça belirlemede yardımcı olabilir. OData işleçlerinin varsayılan önceliği hakkında daha fazla bilgi için sonraki bölüme bakın.
 
 ### <a name="operator-precedence-in-filters"></a>Filtrelerdeki operatör önceliği
@@ -82,12 +82,12 @@ Alt ifadelerinin etrafında parantez olmadan bir filtre ifadesi yazarsanız Azur
 | Mantıksal işleçler | `and` |
 | Mantıksal işleçler | `or` |
 
-Yukarıdaki tabloda daha yüksek bir operatör, işlenenlerin diğer işleçlerden farklı olarak "daha sıkı bir şekilde bağlanması" olacaktır. Örneğin, `and` öğesinden `or`daha yüksek önceliğe sahip ve karşılaştırma işleçleri, bunlardan birinden daha yüksek önceliğe sahip olduğundan, aşağıdaki iki ifade eşdeğerdir:
+Yukarıdaki tabloda daha yüksek bir operatör, işlenenlerin diğer işleçlerden farklı olarak "daha sıkı bir şekilde bağlanması" olacaktır. Örneğin, `and` öğesinden daha yüksek önceliğe sahip `or` ve karşılaştırma işleçleri, bunlardan birinden daha yüksek önceliğe sahip olduğundan, aşağıdaki iki ifade eşdeğerdir:
 
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
 
-`not` İşleci, karşılaştırma işleçlerinden daha yüksek olan en yüksek önceliğe sahiptir. Bunun nedeni şöyle bir filtre yazmayı denerseniz:
+`not`İşleci, karşılaştırma işleçlerinden daha yüksek olan en yüksek önceliğe sahiptir. Bunun nedeni şöyle bir filtre yazmayı denerseniz:
 
     not Rating gt 5
 
@@ -95,7 +95,7 @@ Yukarıdaki tabloda daha yüksek bir operatör, işlenenlerin diğer işleçlerd
 
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 
-Bu hata, işleç yalnızca tür `Rating` `Edm.Int32`olan ve tüm karşılaştırma ifadesiyle birlikte olmayan alanla ilişkilendirildiğinden oluşur. Bu, işleneni parantez `not` içine koyulamıyor:
+Bu hata, işleç yalnızca `Rating` tür olan `Edm.Int32` ve tüm karşılaştırma ifadesiyle birlikte olmayan alanla ilişkilendirildiğinden oluşur. Bu, işleneni `not` parantez içine koyulamıyor:
 
     not (Rating gt 5)
 
@@ -134,7 +134,7 @@ Merkezlerini veya park alanı dahil olmak üzere tüm oteller bulun ve 5 derecel
 
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
 
-En az bir odada "WiFi" etiketine sahip tüm oteller bulun (her odada bir `Collection(Edm.String)` alanda depolanan Etiketler bulunur):  
+En az bir odada "WiFi" etiketine sahip tüm oteller bulun (her odada bir alanda depolanan Etiketler bulunur `Collection(Edm.String)` ):  
 
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
 
@@ -146,7 +146,7 @@ Oda olmayan tüm oteller bulun:
 
     $filter=not Rooms/any()
 
-Belirli bir başvuru noktasındaki 10 kiloters içindeki tüm oteller bul (burada `Location` , türünde `Edm.GeographyPoint`bir alandır):
+Belirli bir başvuru noktasındaki 10 kiloters içindeki tüm oteller bul (burada `Location` , türünde bir alandır `Edm.GeographyPoint` ):
 
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 
@@ -174,11 +174,11 @@ Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir kol
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile `search=waterfront`bir [arama isteğiyle](https://docs.microsoft.com/rest/api/searchservice/search-documents) özdeştir.
+"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile bir [arama isteğiyle](https://docs.microsoft.com/rest/api/searchservice/search-documents) özdeştir `search=waterfront` .
 
     $filter=search.ismatchscoring('waterfront')
 
-"Hostel" sözcüğünü içeren belgeleri bulun ve 4 ' e eşit veya daha büyük derecelendirme veya "Motel" sözcüğünü ve derecesi 5 ' e eşit olan belgeleri bulun. Bu istek, kullanarak `search.ismatchscoring` `or`filtre işlemleri ile tam metin aramasını birleştirilemediğinden, işlev olmadan ifade edilemedi.
+"Hostel" sözcüğünü içeren belgeleri bulun ve 4 ' e eşit veya daha büyük derecelendirme veya "Motel" sözcüğünü ve derecesi 5 ' e eşit olan belgeleri bulun. Bu istek, `search.ismatchscoring` kullanarak filtre işlemleri ile tam metin aramasını birleştirilemediğinden, işlev olmadan ifade edilemedi `or` .
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 
@@ -186,7 +186,7 @@ Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir kol
 
     $filter=not search.ismatch('luxury')
 
-"Okyanus görünümü" veya derecelendirme 5 ' e eşit olan belgeleri bulun. `search.ismatchscoring` Sorgu yalnızca alanlara `HotelName` ve ' `Description`a karşı yürütülür. Disbirleşimin yalnızca ikinci yan tümcesiyle eşleşen belgeler, 5 ' e eşit olan `Rating` çok--oteller olarak döndürülür. Bu belgeler, ifadenin puanlanmış parçalarından hiçbiriyle eşleşmediğinizden emin olmak için puanı sıfıra eşit olacak şekilde döndürülür.
+"Okyanus görünümü" veya derecelendirme 5 ' e eşit olan belgeleri bulun. `search.ismatchscoring`Sorgu yalnızca alanlara ve ' a karşı yürütülür `HotelName` `Description` . Disbirleşimin yalnızca ikinci yan tümcesiyle eşleşen belgeler, 5 ' e eşit olan çok--oteller olarak döndürülür `Rating` . Bu belgeler, ifadenin puanlanmış parçalarından hiçbiriyle eşleşmediğinizden emin olmak için puanı sıfıra eşit olacak şekilde döndürülür.
 
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
 
