@@ -1,5 +1,5 @@
 ---
-title: include dosyası
+title: dosya dahil etme
 description: ön koşul içeren dosyayı Ekle
 services: active-directory-ds
 documentationcenter: ''

@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250367"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707608"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Azure CLı ile VMAccess uzantısını kullanarak Linux VM 'lerinde yönetim kullanıcılarını, SSH 'yi yönetme ve diskleri denetleme veya onarma
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 Linux sanal makinenizde bulunan disk hataları gösteriyor. Linux VM 'niz için kök parolayı bir daha sıfırlayabilirsiniz veya yanlışlıkla SSH özel anahtarınızı silmiş olursunuz. Bu, veri merkezinin günlerindeki geri gerçekleştiyse, daha sonra sunucu konsoluna ulaşmak için KVM 'yi açmanız gerekir. Linux 'a erişimi sıfırlamak veya disk düzeyinde bakım gerçekleştirmek üzere konsola erişmenize izin veren bir KVM anahtarı olarak Azure VMAccess uzantısını düşünün.
 
 Bu makalede, Azure VMAccess uzantısını kullanarak bir diski denetleme veya onarma, Kullanıcı erişimini sıfırlama, yönetici kullanıcı hesaplarını yönetme veya Azure Resource Manager sanal makineler olarak çalışırken Linux üzerinde SSH yapılandırmasını güncelleştirme işlemlerinin nasıl yapılacağı gösterilir. Klasik sanal makineleri yönetmeniz gerekiyorsa, [klasık VM belgelerinde](../linux/classic/reset-access-classic.md)bulunan yönergeleri izleyebilirsiniz. 
@@ -56,7 +56,7 @@ Linux sanal makinelerinizdeki VMAccess uzantısını kullanmanın iki yolu vard�
 Aşağıdaki örneklerde [az VM User](/cli/azure/vm/user) komutları kullanılır. Bu adımları gerçekleştirmek için, en son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olması ve [az oturum açma](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açmış olması gerekir.
 
 ## <a name="update-ssh-key"></a>SSH anahtarını güncelleştirme
-Aşağıdaki örnek, adlı `azureuser` `myVM`sanal makinede Kullanıcı için SSH anahtarını güncelleştirir:
+Aşağıdaki örnek, adlı sanal makinede Kullanıcı için SSH anahtarını güncelleştirir `azureuser` `myVM` :
 
 ```azurecli-interactive
 az vm user update \
@@ -66,10 +66,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **Note:** `az vm user update` Komut, yeni ortak anahtar metnini VM 'deki Yönetici Kullanıcı `~/.ssh/authorized_keys` için dosyaya ekler. Bu, var olan SSH anahtarlarını değiştirmez veya kaldırmaz. Bu, dağıtım sırasında ayarlanan önceki anahtarları veya VMAccess uzantısı aracılığıyla sonraki güncelleştirmeleri kaldırmaz.
+> **Note:** `az vm user update`Komut, yeni ortak anahtar METNINI `~/.ssh/authorized_keys` VM 'deki yönetici kullanıcı için dosyaya ekler. Bu, var olan SSH anahtarlarını değiştirmez veya kaldırmaz. Bu, dağıtım sırasında ayarlanan önceki anahtarları veya VMAccess uzantısı aracılığıyla sonraki güncelleştirmeleri kaldırmaz.
 
 ## <a name="reset-password"></a>Parola sıfırlama
-Aşağıdaki örnek, adlı `azureuser` `myVM`sanal makinede Kullanıcı parolasını sıfırlar:
+Aşağıdaki örnek, adlı sanal makinede Kullanıcı parolasını sıfırlar `azureuser` `myVM` :
 
 ```azurecli-interactive
 az vm user update \
@@ -80,7 +80,7 @@ az vm user update \
 ```
 
 ## <a name="restart-ssh"></a>SSH'yi yeniden başlatma
-Aşağıdaki örnek, SSH arka plan programını yeniden başlatır ve SSH yapılandırmasını adlı `myVM`bir VM 'deki varsayılan değerlere sıfırlar:
+Aşağıdaki örnek, SSH arka plan programını yeniden başlatır ve SSH yapılandırmasını adlı bir VM 'deki varsayılan değerlere sıfırlar `myVM` :
 
 ```azurecli-interactive
 az vm user reset-ssh \
@@ -89,7 +89,7 @@ az vm user reset-ssh \
 ```
 
 ## <a name="create-an-administrativesudo-user"></a>Yönetici/sudo kullanıcısı oluşturma
-Aşağıdaki örnek, **sudo** izinleri ile `myNewUser` adlı bir kullanıcı oluşturur. Hesap, adlı `myVM`sanal makinede kimlik doğrulaması IÇIN bir SSH anahtarı kullanır. Bu yöntem, geçerli kimlik bilgilerinin kaybolması veya unutuldu durumunda bir VM 'ye erişimi yeniden elde etmenize yardımcı olmak için tasarlanmıştır. En iyi uygulama olarak, **sudo** izinleri olan hesaplar sınırlı olmalıdır.
+Aşağıdaki örnek, `myNewUser` **sudo** izinleri ile adlı bir kullanıcı oluşturur. Hesap, adlı sanal makinede kimlik doğrulaması için bir SSH anahtarı kullanır `myVM` . Bu yöntem, geçerli kimlik bilgilerinin kaybolması veya unutuldu durumunda bir VM 'ye erişimi yeniden elde etmenize yardımcı olmak için tasarlanmıştır. En iyi uygulama olarak, **sudo** izinleri olan hesaplar sınırlı olmalıdır.
 
 ```azurecli-interactive
 az vm user update \
@@ -100,7 +100,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Kullanıcı silme
-Aşağıdaki örnekte adlı `myNewUser` `myVM`VM 'de adlı bir Kullanıcı silinir:
+Aşağıdaki örnekte adlı VM 'de adlı bir Kullanıcı silinir `myNewUser` `myVM` :
 
 ```azurecli-interactive
 az vm user delete \
@@ -115,7 +115,7 @@ Aşağıdaki örnekler Ham JSON dosyalarını kullanır. Daha sonra JSON dosyala
 ### <a name="reset-user-access"></a>Kullanıcı erişimini Sıfırla
 Linux sanal makinenizde köke erişimi kaybettiyseniz, bir kullanıcının SSH anahtarını veya parolasını güncelleştirmek için bir VMAccess betiği başlatabilirsiniz.
 
-Bir kullanıcının SSH ortak anahtarını güncelleştirmek için adlı `update_ssh_key.json` bir dosya oluşturun ve aşağıdaki biçimde ayarlar ekleyin. `username` Ve `ssh_key` parametreleri için kendi değerlerinizi değiştirin:
+Bir kullanıcının SSH ortak anahtarını güncelleştirmek için adlı bir dosya oluşturun `update_ssh_key.json` ve aşağıdaki biçimde ayarlar ekleyin. Ve parametreleri için kendi değerlerinizi `username` değiştirin `ssh_key` :
 
 ```json
 {
@@ -136,7 +136,7 @@ az vm extension set \
   --protected-settings update_ssh_key.json
 ```
 
-Kullanıcı parolasını sıfırlamak için adlı `reset_user_password.json` bir dosya oluşturun ve aşağıdaki biçimde ayarlar ekleyin. `username` Ve `password` parametreleri için kendi değerlerinizi değiştirin:
+Kullanıcı parolasını sıfırlamak için adlı bir dosya oluşturun `reset_user_password.json` ve aşağıdaki biçimde ayarlar ekleyin. Ve parametreleri için kendi değerlerinizi `username` değiştirin `password` :
 
 ```json
 {
@@ -158,7 +158,7 @@ az vm extension set \
 ```
 
 ### <a name="restart-ssh"></a>SSH'yi yeniden başlatma
-SSH arka plan programını yeniden başlatmak ve SSH yapılandırmasını varsayılan değerlere sıfırlamak için adlı `reset_sshd.json`bir dosya oluşturun. Aşağıdaki içeriği ekleyin:
+SSH arka plan programını yeniden başlatmak ve SSH yapılandırmasını varsayılan değerlere sıfırlamak için adlı bir dosya oluşturun `reset_sshd.json` . Aşağıdaki içeriği ekleyin:
 
 ```json
 {
@@ -180,7 +180,7 @@ az vm extension set \
 
 ### <a name="manage-administrative-users"></a>Yönetici kullanıcıları yönetme
 
-Kimlik doğrulaması için SSH anahtarı kullanan **sudo** izinlerine sahip bir kullanıcı oluşturmak için, adlı `create_new_user.json` bir dosya oluşturun ve aşağıdaki biçimde ayarları ekleyin. `username` Ve `ssh_key` parametreleri için kendi değerlerinizi değiştirin. Bu yöntem, geçerli kimlik bilgilerinin kaybolması veya unutuldu durumunda bir VM 'ye erişimi yeniden elde etmenize yardımcı olmak için tasarlanmıştır. En iyi uygulama olarak, **sudo** izinleri olan hesaplar sınırlı olmalıdır.
+Kimlik doğrulaması için SSH anahtarı kullanan **sudo** izinlerine sahip bir kullanıcı oluşturmak için, adlı bir dosya oluşturun `create_new_user.json` ve aşağıdaki biçimde ayarları ekleyin. Ve parametreleri için kendi değerlerinizi `username` değiştirin `ssh_key` . Bu yöntem, geçerli kimlik bilgilerinin kaybolması veya unutuldu durumunda bir VM 'ye erişimi yeniden elde etmenize yardımcı olmak için tasarlanmıştır. En iyi uygulama olarak, **sudo** izinleri olan hesaplar sınırlı olmalıdır.
 
 ```json
 {
@@ -202,7 +202,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Bir kullanıcıyı silmek için adlı `delete_user.json` bir dosya oluşturun ve aşağıdaki içeriği ekleyin. `remove_user` Parametresi için kendi değerini değiştirin:
+Bir kullanıcıyı silmek için adlı bir dosya oluşturun `delete_user.json` ve aşağıdaki içeriği ekleyin. Parametresi için kendi değerini değiştirin `remove_user` :
 
 ```json
 {
@@ -225,7 +225,7 @@ az vm extension set \
 ### <a name="check-or-repair-the-disk"></a>Diski denetleme veya onarma
 VMAccess kullanarak, Linux VM 'ye eklediğiniz bir diski de denetleyebilir ve onarabilirsiniz.
 
-Diski denetleyip onarmak için, adlı `disk_check_repair.json` bir dosya oluşturun ve aşağıdaki biçimde ayarları ekleyin. Adı için kendi değerini değiştirin `repair_disk`:
+Diski denetleyip onarmak için, adlı bir dosya oluşturun `disk_check_repair.json` ve aşağıdaki biçimde ayarları ekleyin. Adı için kendi değerini değiştirin `repair_disk` :
 
 ```json
 {

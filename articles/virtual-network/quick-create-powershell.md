@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241447"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707472"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak sanal ağ oluşturma
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.c
 
 Bunun yerine PowerShell 'i yerel olarak yükleyip kullanmaya karar verirseniz, bu hızlı başlangıç, Azure PowerShell Module sürümü 1.0.0 veya üzerini kullanmanızı gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Bkz. Install and Upgrade Info için [Azure PowerShell Module](/powershell/azure/install-az-ps) .
 
-Son olarak, PowerShell 'i yerel olarak çalıştırıyorsanız de çalıştırmanız `Connect-AzAccount`gerekir. Bu komut Azure ile bir bağlantı oluşturur.
+Son olarak, PowerShell 'i yerel olarak çalıştırıyorsanız de çalıştırmanız gerekir `Connect-AzAccount` . Bu komut Azure ile bir bağlantı oluşturur.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Kaynak grubu ve sanal ağ oluşturma
 
@@ -94,7 +94,7 @@ New-AzVm `
     -AsJob
 ```
 
-`-AsJob` Seçeneği, sanal makineyi arka planda oluşturur. Sonraki adıma devam edebilirsiniz.
+`-AsJob`Seçeneği, sanal makineyi arka planda oluşturur. Sonraki adıma devam edebilirsiniz.
 
 Azure, arka planda VM oluşturmaya başladığında, bu geri doğru bir şey alacaksınız:
 
@@ -132,7 +132,7 @@ Get-AzPublicIpAddress `
   | Select IpAddress
 ```
 
-Yerel bilgisayarınızda bir komut istemi açın. `mstsc` komutunu çalıştırın. Son `<publicIpAddress>` adımdan döndürülen genel IP adresiyle değiştirin:
+Yerel bilgisayarınızda bir komut istemi açın. `mstsc` komutunu çalıştırın. `<publicIpAddress>`Son adımdan döndürülen genel IP adresiyle değiştirin:
 
 > [!NOTE]
 > Bu komutları yerel bilgisayarınızdaki bir PowerShell isteminden çalıştırıyorsanız ve az PowerShell modülü 1,0 veya sonraki bir sürümü kullanıyorsanız, bu arabirime devam edebilirsiniz.
@@ -145,7 +145,7 @@ mstsc /v:<publicIpAddress>
 1. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
     > [!NOTE]
-    > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+    > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 

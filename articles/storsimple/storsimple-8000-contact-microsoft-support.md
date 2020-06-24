@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254995"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706979"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft Desteği’ne başvurma
 
@@ -57,7 +57,7 @@ Destek isteği oluşturmadan önce [StorSimple 8000 serisi destek SLA 'larını 
 
    1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
    2. Iletişim bilgilerinde adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet** onay kutusunu seçin.
-   3. **Oluştur**' a tıklayın.
+   3. **Oluştur**'a tıklayın.
    
        ![Yeni Portal aracılığıyla MS desteği ile iletişim kurun](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -103,7 +103,7 @@ Bir destek oturumu başlatmak için aşağıdaki adımları gerçekleştirin:
 7. Bu dizeyi kaydedin ve Microsoft Desteği için bir e-posta iletisiyle gönderin.
 
 > [!IMPORTANT]
-> ' İ çalıştırarak `Disable-HcsSupportAccess`erişimi desteğini devre dışı bırakabilirsiniz. StorSimple cihazı, oturum başlatıldıktan sonra 8 saat erişimi desteğini devre dışı bırakmayı de dener. Bir destek oturumu başlattıktan sonra StorSimple cihaz kimlik bilgilerinizi değiştirmek en iyi uygulamadır.
+> ' İ çalıştırarak erişimi desteğini devre dışı bırakabilirsiniz `Disable-HcsSupportAccess` . StorSimple cihazı, oturum başlatıldıktan sonra 8 saat erişimi desteğini devre dışı bırakmayı de dener. Bir destek oturumu başlattıktan sonra StorSimple cihaz kimlik bilgilerinizi değiştirmek en iyi uygulamadır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

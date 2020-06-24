@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250081"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706605"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM'de ağ arabirimini sıfırlama 
 
@@ -117,7 +117,7 @@ Ağ arabirimini sıfırlamak için şu adımları izleyin:
 Makineye Uzak Masaüstü 'nü etkinleştirdikten sonra olası sorundan kaçınmak için eski NIC 'Leri silmeniz gerekir:
 
 1.  Cihaz Yöneticisi'ni açın.
-2.  **Görünüm** > **gizli cihazları göster**' i seçin.
+2.  **Görünüm**  >  **gizli cihazları göster**' i seçin.
 3.  **Ağ bağdaştırıcılarını**seçin. 
 4.  "Microsoft Hyper-V ağ bağdaştırıcısı" olarak adlandırılan bağdaştırıcıları denetleyin.
 5.  Gri kullanılamayan bir bağdaştırıcı görebilirsiniz. Bağdaştırıcıyı sağ tıklatın ve ardından Kaldır ' ı seçin.

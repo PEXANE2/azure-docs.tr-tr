@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885472"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253129"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran Daemon uygulaması
 
@@ -38,7 +38,7 @@ Daemon uygulamaları için kullanım örneklerinin bazı örnekleri aşağıda v
 - Toplu işler veya arka planda çalışan bir işletim sistemi hizmeti olan masaüstü uygulamaları (Windows üzerinde Windows Hizmetleri veya Linux üzerinde arka plan işlemleri gibi)
 - Belirli kullanıcıları değil, dizinleri işlemek zorunda olan Web API 'Leri
 
-Daemon olmayan uygulamaların istemci kimlik bilgilerini kullandıklarında bile, bir Web API 'sine veya bir kaynağa, teknik nedenlerden dolayı kendi kimlikleri altına erişmesi gerekir. Bir önbellek için Azure Key Vault veya bir Azure SQL veritabanındaki gizli dizi erişimine bir örnektir.
+Daemon olmayan uygulamaların istemci kimlik bilgilerini kullandıklarında bile, bir Web API 'sine veya bir kaynağa, teknik nedenlerden dolayı kendi kimlikleri altına erişmesi gerekir. Bir önbellek için Azure Key Vault veya Azure SQL veritabanı 'nda gizli dizi erişimine bir örnektir.
 
 Kendi kimlikleri için belirteç elde eden uygulamalar:
 

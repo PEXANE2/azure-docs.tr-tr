@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245986"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742870"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 'de Azure AD rolleri için yönetim özellikleri
 
@@ -56,9 +56,9 @@ Kullanıcı tarafından başlatılan eylemlerin her ikisi de genel yönetici vey
 
 ## <a name="api-changes"></a>API değişiklikleri
 
-Müşteriler, Azure AD kuruluşunun güncelleştirilmiş sürümüne sahip olduğunda, mevcut Graph API 'SI çalışmayı durdurur. [Azure Kaynak rolleri için Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)kullanmak için geçiş yapmanız gerekir. Azure AD rollerini bu API kullanarak yönetmek için imzayla değiştirin `/azureResources` `/aadroles` ve için dizin kimliğini kullanın `resourceId`.
+Müşteriler, Azure AD kuruluşunun güncelleştirilmiş sürümüne sahip olduğunda, mevcut Graph API 'SI çalışmayı durdurur. [Azure Kaynak rolleri için Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta)kullanmak için geçiş yapmanız gerekir. Azure AD rollerini bu API kullanarak yönetmek için imzayla değiştirin `/azureResources` `/aadroles` ve IÇIN dizin kimliğini kullanın `resourceId` .
 
-Önceki API 'yi kullanan tüm müşterilerine ulaşmak için en iyi zamanı öğrendiğimiz ve bu değişiklik hakkında daha fazla bilgi sahibi olmak için en iyi şekilde çalıştık. Azure AD kuruluşunuz yeni sürüme taşınmışsa ve hala eski API 'ye bağımlıysa, tarihinde pim_preview@microsoft.comekibe ulaşın.
+Önceki API 'yi kullanan tüm müşterilerine ulaşmak için en iyi zamanı öğrendiğimiz ve bu değişiklik hakkında daha fazla bilgi sahibi olmak için en iyi şekilde çalıştık. Azure AD kuruluşunuz yeni sürüme taşınmışsa ve hala eski API 'ye bağımlıysa, tarihinde ekibe ulaşın pim_preview@microsoft.com .
 
 ## <a name="powershell-change"></a>PowerShell değişikliği
 

@@ -9,11 +9,11 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267189"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706690"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Azure 'da birden çok ağ arabirim kartı ile Linux sanal makinesi oluşturma
 
@@ -79,7 +79,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>VM oluşturma ve NIC 'Leri iliştirme
-VM oluştururken, ile `--nics`oluşturduğunuz NIC 'leri belirtin. VM boyutunu seçerken de dikkatli olmanız gerekir. Bir VM 'ye ekleyebileceğiniz toplam NIC sayısı sınırı vardır. [LINUX VM boyutları](sizes.md)hakkında daha fazla bilgi edinin.
+VM oluştururken, ile oluşturduğunuz NIC 'Leri belirtin `--nics` . VM boyutunu seçerken de dikkatli olmanız gerekir. Bir VM 'ye ekleyebileceğiniz toplam NIC sayısı sınırı vardır. [LINUX VM boyutları](sizes.md)hakkında daha fazla bilgi edinin.
 
 [az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek *myVM* adlı bir VM oluşturur:
 
@@ -169,7 +169,7 @@ Azure Resource Manager şablonlar, ortamınızı tanımlamak için bildirim teme
 
 [ *Kopyayı*kullanarak birden çok örnek oluşturma](../../resource-group-create-multiple.md)hakkında daha fazla bilgi edinin. 
 
-Ayrıca, bir kaynak adına `copyIndex()` bir sayı eklemek için bir de kullanabilirsiniz. bu sayede, `myNic1` `myNic2`, vb. oluşturabilirsiniz. Aşağıda dizin değeri ekleme örneği gösterilmektedir:
+Ayrıca `copyIndex()` , bir kaynak adına bir sayı eklemek için bir de kullanabilirsiniz. bu sayede `myNic1` ,, `myNic2` vb. oluşturabilirsiniz. Aşağıda dizin değeri ekleme örneği gösterilmektedir:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -222,7 +222,7 @@ ssh azureuser@137.117.58.232
 
 Yönlendirme işletim sistemine eklenirken, ağ arabiriminin içinde bulunduğu alt ağ için ağ geçidi adresi *1* ' dir. Örneğin, ağ arabirimine *10.0.2.4*adresi atanmışsa, yol için belirttiğiniz ağ geçidi *10.0.2.1*olur. Arabirimin tüm trafiğinin belirtilen ağ geçidiyle gitmesini istiyorsanız yolun hedefi için belirli bir ağ tanımlayabilir veya *0.0.0.0*hedefini belirtebilirsiniz. Her alt ağ için ağ geçidi sanal ağ tarafından yönetilir.
 
-Bir ikincil arabirim için yolu ekledikten sonra, yolun yol tablonuzda olduğunu doğrulayın `route -n`. Aşağıdaki örnek çıktı, bu makaledeki sanal makineye iki ağ arabirimi eklenmiş olan rota tablosu içindir:
+Bir ikincil arabirim için yolu ekledikten sonra, yolun yol tablonuzda olduğunu doğrulayın `route -n` . Aşağıdaki örnek çıktı, bu makaledeki sanal makineye iki ağ arabirimi eklenmiş olan rota tablosu içindir:
 
 ```bash
 Kernel IP routing table

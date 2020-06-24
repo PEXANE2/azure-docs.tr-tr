@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1972ecc249e44bb99e4e9c903a7e097e8d304938
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255099"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253894"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Kayıtlı sunucuları Azure Dosya Eşitleme yönetme
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -35,7 +35,7 @@ Bir sunucuyu depolama eşitleme hizmeti ile kaydetmek için öncelikle sunucunuz
 * Azure PowerShell modülünün sunucunuzda yüklü olduğundan emin olun. Sunucunuz bir yük devretme kümesinin üyesiyse, kümedeki her düğüm az modül gerektirir. Az modülün nasıl yükleneceğine ilişkin daha fazla ayrıntı [Azure PowerShell yüklemek ve yapılandırmak](https://docs.microsoft.com/powershell/azure/install-Az-ps)için bulunabilir.
 
     > [!Note]  
-    > Bir sunucuyu kaydetmek/kaydını silmek için az PowerShell modülünün en yeni sürümünü kullanmanızı öneririz. Az Package bu sunucuya daha önce yüklenmişse (ve bu sunucudaki PowerShell sürümü 5. * veya daha büyükse), bu paketi güncelleştirmek için `Update-Module` cmdlet 'ini kullanabilirsiniz. 
+    > Bir sunucuyu kaydetmek/kaydını silmek için az PowerShell modülünün en yeni sürümünü kullanmanızı öneririz. Az Package bu sunucuya daha önce yüklenmişse (ve bu sunucudaki PowerShell sürümü 5. * veya daha büyükse), `Update-Module` Bu paketi güncelleştirmek için cmdlet 'ini kullanabilirsiniz. 
 * Ortamınızda bir ağ proxy sunucusu kullanıyorsanız, eşitleme aracısının kullanmasını sağlamak için sunucunuzdaki proxy ayarlarını yapılandırın.
     1. Proxy IP adresinizi ve bağlantı noktası numaranızı belirleme
     2. Şu iki dosyayı düzenleyin:
@@ -76,10 +76,7 @@ Bir sunucunun bir Azure Dosya Eşitleme *eşitleme grubunda* *sunucu uç noktas�
 > Sunucu bir yük devretme kümesinin üyesiyse, Azure Dosya Eşitleme aracısının kümedeki her düğüme yüklenmesi gerekir.
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>Sunucu kaydı kullanıcı arabirimini kullanarak sunucuyu kaydetme
-> [!Important]  
-> Bulut çözümü sağlayıcısı (CSP) abonelikleri, sunucu kaydı kullanıcı arabirimini kullanamaz. Bunun yerine PowerShell kullanın (Bu bölümün altında).
-
-1. Sunucu kaydı kullanıcı arabirimi, Azure Dosya Eşitleme aracısının yüklenmesi tamamlandıktan hemen sonra başlamazsa, yürüterek `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`el ile başlatılabilir.
+1. Sunucu kaydı kullanıcı arabirimi, Azure Dosya Eşitleme aracısının yüklenmesi tamamlandıktan hemen sonra başlamazsa, yürüterek el ile başlatılabilir `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` .
 2. Azure aboneliğinize erişmek için *oturum aç* ' a tıklayın. 
 
     ![Sunucu kaydı kullanıcı arabiriminin açma iletişim kutusu](media/storage-sync-files-server-registration/server-registration-ui-1.png)
@@ -96,7 +93,7 @@ Bir sunucunun bir Azure Dosya Eşitleme *eşitleme grubunda* *sunucu uç noktas�
 > Sunucu bir yük devretme kümesinin üyesiyse, her sunucunun sunucu kaydını çalıştırması gerekir. Azure portalında kayıtlı sunucuları görüntülediğinizde, Azure Dosya Eşitleme her bir düğümü aynı yük devretme kümesinin bir üyesi olarak otomatik olarak tanır ve bunları uygun şekilde gruplandırır.
 
 #### <a name="register-the-server-with-powershell"></a>Sunucuyu PowerShell 'e kaydetme
-Ayrıca, PowerShell aracılığıyla sunucu kaydı gerçekleştirebilirsiniz. Bu, bulut çözümü sağlayıcısı (CSP) abonelikleri için sunucu kaydı 'nın yalnızca desteklenen yoludur:
+Ayrıca, PowerShell aracılığıyla sunucu kaydı gerçekleştirebilirsiniz. 
 
 ```powershell
 Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
@@ -158,10 +155,10 @@ Azure Dosya Eşitleme, veri merkezinizde çalışan tek hizmet olduğundan, Azur
 > Sınırları çok düşük olarak ayarlamak, Azure Dosya Eşitleme eşitlemenin ve geri çekmenin performansını etkiler.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Azure Dosya Eşitleme ağ sınırlarını ayarla
-`StorageSyncNetworkLimit` Cmdlet 'lerini kullanarak Azure dosya eşitleme ağ kullanımını azallendirebilirsiniz.
+Cmdlet 'lerini kullanarak Azure Dosya Eşitleme ağ kullanımını azallendirebilirsiniz `StorageSyncNetworkLimit` .
 
 > [!Note]  
-> Katmanlı bir dosyaya erişildiğinde veya Invoke-StorageSyncFileRecall cmdlet 'i kullanıldığında ağ sınırları uygulanmaz.
+> Katmanlı bir dosyaya erişildiğinde ağ sınırları uygulanmaz.
 
 Örneğin, Azure Dosya Eşitleme çalışma haftası sırasında 9 ila 5 pm (17:00h) arasında 10 Mbps 'den fazlasını kullanmadığından emin olmak için yeni bir kısıtlama sınırı oluşturabilirsiniz: 
 
@@ -176,7 +173,7 @@ Aşağıdaki cmdlet 'i kullanarak sınırınızı görebilirsiniz:
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
-Ağ sınırlarını kaldırmak için kullanın `Remove-StorageSyncNetworkLimit`. Örneğin, aşağıdaki komut tüm ağ sınırlarını kaldırır:
+Ağ sınırlarını kaldırmak için kullanın `Remove-StorageSyncNetworkLimit` . Örneğin, aşağıdaki komut tüm ağ sınırlarını kaldırır:
 
 ```powershell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported

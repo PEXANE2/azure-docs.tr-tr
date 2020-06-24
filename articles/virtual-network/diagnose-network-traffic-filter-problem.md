@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240769"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704990"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Bir sanal makine ağ trafiği Filtreleme sorununu Tanıla
 
@@ -79,7 +79,7 @@ Etkin güvenlik kuralları VM aracılığıyla görüntülenmekle birlikte, geç
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, sürüm 1.0.0 veya sonraki bir sürümü gerekir. Yüklü `Get-Module -ListAvailable Az` sürümü bulmak için bilgisayarınızda çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Ayrıca, [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir `Connect-AzAccount` hesapla Azure 'da oturum açmak için çalıştırmanız gerekir.
+[Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, sürüm 1.0.0 veya sonraki bir sürümü gerekir. `Get-Module -ListAvailable Az`Yüklü sürümü bulmak için bilgisayarınızda çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Ayrıca, `Connect-AzAccount` [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla Azure 'da oturum açmak için çalıştırmanız gerekir.
 
 [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)ile bir ağ arabirimi için geçerli güvenlik kurallarını alın. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda bulunan *Myvmvmnıc*adlı bir ağ arabirimi için geçerli güvenlik kurallarını alır:
 
@@ -113,7 +113,7 @@ NetworkInterfaces
 
 ## <a name="diagnose-using-azure-cli"></a>Azure CLı kullanarak tanılama
 
-Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu makale, Azure CLı sürüm 2.0.32 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Ayrıca, [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla `az login` Azure 'da çalıştırmanız ve oturum açmanız gerekir.
+Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu makale, Azure CLı sürüm 2.0.32 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Ayrıca, `az login` [gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir hesapla Azure 'da çalıştırmanız ve oturum açmanız gerekir.
 
 [Az Network Nic List-etkilidir-NSG](/cli/azure/network/nic#az-network-nic-list-effective-nsg)ile bir ağ arabirimi için geçerli güvenlik kurallarını alın. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda bulunan *Myvmvmnıc* adlı bir ağ arabirimi için geçerli güvenlik kurallarını alır:
 
@@ -177,7 +177,7 @@ Bu makaledeki [senaryoda](#scenario) sunulan sorunu tanılamak için Azure [port
 | Protokol                | TCP                                                                                |
 | Eylem                  | İzin Ver                                                                              |
 | Öncelik                | 100                                                                                |
-| Adı                    | Allow-HTTP-All                                                                     |
+| Name                    | Allow-HTTP-All                                                                     |
 
 Kuralı oluşturduktan sonra, bağlantı noktası 80 internet 'ten gelen trafiğe izin verilir, çünkü kuralın önceliği, trafiği reddeden *Denyallinbound*adlı varsayılan güvenlik kuralından daha yüksektir. [Bir güvenlik kuralı oluşturmayı](manage-network-security-group.md#create-a-security-rule)öğrenin. Farklı NSG 'ler hem ağ arabirimiyle hem de alt ağ ile ilişkiliyse, her iki NSG 'de de aynı kuralı oluşturmanız gerekir.
 

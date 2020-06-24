@@ -2,25 +2,21 @@
 title: Şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: c00a3a1162ffec4ce89c43ef2f76796fb5943438
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156421"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254098"
 ---
 # <a name="arm-template-best-practices"></a>ARM şablonu en iyi uygulamaları
 
-Bu makale, Azure Resource Manager (ARM) şablonunuzun nasıl oluşturulacağı hakkında öneriler sağlar. Bu öneriler, bir çözümü dağıtmak için ARM şablonu kullanırken yaygın sorunlardan kaçınmanıza yardımcı olur.
-
-Azure aboneliklerinizi yönetme hakkında öneriler için bkz. [Azure Kurumsal yapı iskelesi: seçkin abonelik](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)İdaresi.
-
-Tüm Azure bulut ortamlarında çalışan şablonların nasıl oluşturulacağı hakkında öneriler için bkz. [bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](templates-cloud-consistency.md).
+Bu makalede, ARM şablonunuzu oluştururken önerilen uygulamaların nasıl kullanılacağı gösterilmektedir. Bu öneriler, bir çözümü dağıtmak için ARM şablonu kullanırken yaygın sorunlardan kaçınmanıza yardımcı olur.
 
 ## <a name="template-limits"></a>Şablon sınırları
 
-Şablonunuzun boyutunu 4 MB ve her bir parametre dosyası 64 KB olarak sınırlandırın. 4 MB sınırı, yineleme, yinelemeli kaynak tanımları ve değişkenler ve parametreler için genişletildikten sonra şablonun son durumuna uygulanır. 
+Şablonunuzun boyutunu 4 MB ve her bir parametre dosyası 64 KB olarak sınırlandırın. 4 MB sınırı, yineleme, yinelemeli kaynak tanımları ve değişkenler ve parametreler için genişletildikten sonra şablonun son durumuna uygulanır.
 
 Şunları da sınırlayabilirsiniz:
 
@@ -93,7 +89,7 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
 
 * Bir kaynak türü için API sürümü için bir parametre kullanmayın. Kaynak özellikleri ve değerleri, sürüm numarasına göre farklılık gösterebilir. API sürümü bir parametreye ayarlandığında, bir kod düzenleyicisinde IntelliSense doğru şemayı belirleyemiyor. Bunun yerine, şablondaki API sürümünü sabit kodlayın.
 
-* Gelişigüzel `allowedValues` kullanın. Yalnızca bazı değerlerin izin verilen seçeneklere dahil edilmediğinden emin olmanız gerektiğinde bunu kullanın. Çok geniş kullanıyorsanız `allowedValues` , listenizi güncel tutmayan geçerli dağıtımları engelleyebilirsiniz.
+* `allowedValues`Gelişigüzel kullanın. Yalnızca bazı değerlerin izin verilen seçeneklere dahil edilmediğinden emin olmanız gerektiğinde bunu kullanın. `allowedValues`Çok geniş kullanıyorsanız, listenizi güncel tutmayan geçerli dağıtımları engelleyebilirsiniz.
 
 * Şablonunuzda bir parametre adı PowerShell dağıtım komutundaki bir parametreyle eşleştiğinde Kaynak Yöneticisi, bu adlandırma çakışmasını, sonek **FromTemplate** 'i Şablon parametresine ekleyerek çözer. Örneğin, şablonunuza **resourcegroupname** adlı bir parametre eklerseniz, bu, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 'inin **resourcegroupname** parametresiyle çakışıyor. Dağıtım sırasında, **Resourcegroupnamefromtemplate**için bir değer sağlamanız istenir.
 
@@ -101,7 +97,7 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
 
 * Her zaman Kullanıcı adları ve parolalar (veya gizli diziler) için parametreleri kullanın.
 
-* Tüm `securestring` parolalar ve gizlilikler için kullanın. Gizli verileri bir JSON nesnesinde geçirirseniz, `secureObject` türü kullanın. Güvenli dize veya güvenli nesne türleri olan şablon parametreleri kaynak dağıtımdan sonra okunamaz. 
+* `securestring`Tüm parolalar ve gizlilikler için kullanın. Gizli verileri bir JSON nesnesinde geçirirseniz, `secureObject` türü kullanın. Güvenli dize veya güvenli nesne türleri olan şablon parametreleri kaynak dağıtımdan sonra okunamaz. 
    
    ```json
    "parameters": {
@@ -114,13 +110,13 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
    }
    ```
 
-* Kullanıcı adları, parolalar veya tür gerektiren herhangi bir `secureString` değer için varsayılan değerler sağlamaz.
+* Kullanıcı adları, parolalar veya tür gerektiren herhangi bir değer için varsayılan değerler sağlamaz `secureString` .
 
 * Uygulamanın saldırı yüzeyi alanını artıran özellikler için varsayılan değerler sağlamama.
 
 ### <a name="location-recommendations-for-parameters"></a>Parametrelerin konum önerileri
 
-* Kaynak konumunu belirtmek için bir parametre kullanın ve varsayılan değeri olarak `resourceGroup().location`ayarlayın. Bir konum parametresi sağlamak, şablon kullanıcılarının, dağıtma iznine sahip oldukları bir konum belirtmesini sağlar.
+* Kaynak konumunu belirtmek için bir parametre kullanın ve varsayılan değeri olarak ayarlayın `resourceGroup().location` . Bir konum parametresi sağlamak, şablon kullanıcılarının, dağıtma iznine sahip oldukları bir konum belirtmesini sağlar.
 
    ```json
    "parameters": {
@@ -134,7 +130,7 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
    },
    ```
 
-* Konum parametresi `allowedValues` için belirtmeyin. Belirttiğiniz konumlar tüm bulutlarda kullanılamayabilir.
+* `allowedValues`Konum parametresi için belirtmeyin. Belirttiğiniz konumlar tüm bulutlarda kullanılamayabilir.
 
 * Büyük olasılıkla aynı konumda olabilecek kaynaklar için konum parametresi değerini kullanın. Bu yaklaşım, kullanıcıların konum bilgilerini sağlaması için kaç kez sorulduğu sayısını en aza indirir.
 
@@ -150,7 +146,7 @@ Aşağıdaki bilgiler, [değişkenlerle](template-variables.md)çalışırken ya
 
 * Şablon işlevlerinin karmaşık bir düzenlemesini oluşturduğunuz değerler için değişkenleri kullanın. Karmaşık ifade yalnızca değişkenlerde göründüğünde şablonunuz daha kolay okunabilir.
 
-* Bir kaynakta için `apiVersion` değişkenler kullanmayın. API sürümü, kaynağın şemasını belirler. Genellikle, kaynağın özelliklerini değiştirmeden sürümü değiştiremezsiniz.
+* Bir kaynakta için değişkenler kullanmayın `apiVersion` . API sürümü, kaynağın şemasını belirler. Genellikle, kaynağın özelliklerini değiştirmeden sürümü değiştiremezsiniz.
 
 * Şablonun **değişkenler** bölümünde [başvuru](template-functions-resource.md#reference) işlevini kullanamazsınız. **Başvuru** işlevi, kaynağın çalışma zamanı durumundan değerini türetir. Ancak, değişkenler, şablonun ilk ayrıştırması sırasında çözümlenir. Şablonun **kaynaklar** veya **çıktılar** bölümünde **başvuru** işlevine ihtiyacı olan değerleri doğrudan oluşturun.
 
@@ -164,7 +160,7 @@ Aşağıdaki bilgiler, [değişkenlerle](template-variables.md)çalışırken ya
 
 Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken aşağıdaki yönergeleri kullanın:
 
-* Bir özelliği paylaşması gereken kaynaklar arasında örtük bir bağımlılık ayarlamak için **başvuru** işlevini kullanın ve kaynak adını geçirin. Örtük bir bağımlılığı zaten `dependsOn` tanımladıysanız açık bir öğe eklemeyin. Bu yaklaşım, gereksiz bağımlılıklara sahip olma riskini azaltır.
+* Bir özelliği paylaşması gereken kaynaklar arasında örtük bir bağımlılık ayarlamak için **başvuru** işlevini kullanın ve kaynak adını geçirin. `dependsOn`Örtük bir bağımlılığı zaten tanımladıysanız açık bir öğe eklemeyin. Bu yaklaşım, gereksiz bağımlılıklara sahip olma riskini azaltır.
 
 * Alt kaynağı üst kaynağına bağımlı olarak ayarlayın.
 
@@ -236,7 +232,7 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    * [PowerShell kullanarak sanal makinenize dış erişime izin verin](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Azure CLı kullanarak Linux VM 'nize dışarıdan erişime izin verin](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-* Genel IP adresleri için **Domainnamelabel** özelliği benzersiz olmalıdır. **Domainnamelabel** değeri 3 ila 63 karakter uzunluğunda olmalı ve bu normal ifade tarafından belirtilen kuralları izlemelidir: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. **Uniquestring** işlevi 13 karakter uzunluğunda bir dize oluşturduğundan, **Dnsprefixstring** parametresi 50 karakterle sınırlıdır:
+* Genel IP adresleri için **Domainnamelabel** özelliği benzersiz olmalıdır. **Domainnamelabel** değeri 3 ila 63 karakter uzunluğunda olmalı ve bu normal ifade tarafından belirtilen kuralları izlemelidir: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . **Uniquestring** işlevi 13 karakter uzunluğunda bir dize oluşturduğundan, **Dnsprefixstring** parametresi 50 karakterle sınırlıdır:
 
    ```json
    "parameters": {
@@ -275,7 +271,12 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    > [!NOTE]
    > VM 'Ler ve uzantılara parametre olarak geçirildiğinde gizli dizileri şifrelendiğinden emin olmak için ilgili uzantıların **Protectedsettings** özelliğini kullanın.
    > 
-   > 
+
+## <a name="use-test-toolkit"></a>Test araç setini kullanma
+
+ARM şablonu test araç seti, şablonunuzun önerilen uygulamalar kullanıp kullanmadığını denetleyen bir betiktir. Şablonunuz Önerilen uygulamalarla uyumlu olmadığında, önerilen değişikliklerle ilgili uyarıların bir listesini döndürür. Test araç seti, şablonunuzda en iyi uygulamaların nasıl uygulanacağını öğrenmenize yardımcı olabilir.
+
+Şablonunuzu tamamladıktan sonra, BT uygulamasını iyileştirebileceğinizi öğrenmek için test araç setini çalıştırın. Daha fazla bilgi için bkz. [ARM şablonu test araç seti](test-toolkit.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

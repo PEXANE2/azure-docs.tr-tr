@@ -5,17 +5,17 @@ description: Windows 10 veya Windows Server 2016 ' de otomatik olarak imzalanan 
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cherylmc
-ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9792f52ae60039ff4891ea95688f961e73283af
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279344"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983427"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>PowerShell kullanarak noktadan siteye sertifika oluşturma ve dışarı aktarma
+# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>PowerShell kullanarak noktadan siteye bağlantılar için sertifika oluşturma ve dışarı aktarma
 
 Noktadan siteye bağlantılar kimlik doğrulaması için sertifikaları kullanır. Bu makalede, otomatik olarak imzalanan bir kök sertifika oluşturma ve Windows 10 veya Windows Server 2016 ' de PowerShell kullanarak istemci sertifikaları oluşturma işlemlerinin nasıl yapılacağı gösterilir. Farklı sertifika yönergeleri arıyorsanız bkz. [Certificates-Linux](vpn-gateway-certificates-point-to-site-linux.md) veya [Certificates-MakeCert](vpn-gateway-certificates-point-to-site-makecert.md).
 

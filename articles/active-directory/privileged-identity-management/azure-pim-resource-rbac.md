@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf65ad595fb1ab70eb6613b6d54ac2a4f69141e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329645"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743159"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için etkinlik ve denetim geçmişini görüntüleme
 
@@ -88,7 +88,7 @@ Kaynak denetimi size bir kaynak için tüm rol etkinliklerinin görünümünü s
 
 1. **Denetim türü**için Etkinleştir ' i **(atanan + etkin)** seçin.
 
-    Etkinleştirme denetim türü tarafından filtrelenen denetim türü ![kaynak denetim listesi [![tarafından filtrelenen kaynak denetim listesi](media/azure-pim-resource-rbac/rbac-audit-activity.png "Etkinleştir tarafından filtrelenen kaynak denetim listesi")](media/azure-pim-resource-rbac/rbac-audit-activity.png)](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    [![Etkinleştirme denetim türüne](media/azure-pim-resource-rbac/rbac-audit-activity.png "Etkinleştir tarafından filtrelenen kaynak denetim listesi")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![ göre filtrelenen kaynak denetim listesi Etkinleştirme denetim türüne göre filtrelenen kaynak denetim listesi](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. **Eylem**' in altında, kullanıcının Azure kaynaklarında etkinlik ayrıntılarını görmek için **(etkinlik)** seçeneğine tıklayın.
 

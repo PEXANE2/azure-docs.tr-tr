@@ -4,19 +4,19 @@ description: Ortamınızdaki koşullu erişim ilkelerinizin etkisini nasıl anla
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 02/25/2020
+ms.topic: conceptual
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620677"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253146"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Koşullu erişimde What If aracını kullanarak sorun giderme
 
@@ -40,7 +40,7 @@ Bu makalede, koşullu erişim ilkelerinizi test etmek için bu aracı nasıl kul
      
 Bir sonraki adım olarak, ayarlarınızı değerlendiren bir simülasyon çalıştırması başlatabilirsiniz. Yalnızca etkinleştirilen ilkeler bir değerlendirme çalıştırmasının parçasıdır.
 
-Değerlendirme tamamlandığında, araç etkilenen ilkelerin bir raporunu oluşturur.
+Değerlendirme tamamlandığında, araç etkilenen ilkelerin bir raporunu oluşturur. Koşullu erişim bilgileri hakkında daha fazla bilgi toplamak için, [koşullu erişim öngörüleri ve raporlama çalışma kitabı](howto-conditional-access-insights-reporting.md) , yalnızca rapor modundaki ilkeler ve şu anda etkin olan ilkeler hakkında ek ayrıntılar verebilir.
 
 ## <a name="running-the-tool"></a>Aracı çalıştırma
 
@@ -104,6 +104,5 @@ Kullanıcılarınız için uygulanamadıkları ilkeler listesinde, bu ilkelerin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Koşullu erişim ilkesini nasıl yapılandıracağınızı öğrenmek isterseniz bkz. [koşullu erişim Azure Active Directory belirli uygulamalar IÇIN MFA gerektirme](app-based-mfa.md).
-- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [Azure Active Directory Koşullu erişim için en iyi yöntemlere](best-practices.md)bakın. 
-- Klasik ilkeleri geçirmek istiyorsanız, bkz [. Azure Portal klasik Ilkeleri geçirme](policy-migration.md)  
+- Koşullu erişim ilkesi uygulaması hakkında daha fazla bilgi, [koşullu erişim öngörülerini ve raporlamayı](howto-conditional-access-insights-reporting.md)kullanan ilkeler yalnızca rapor modu kullanılarak bulunabilir.
+- Ortamınız için koşullu erişim ilkelerini yapılandırmaya hazırsanız, [koşullu erişim ortak ilkelerine](concept-conditional-access-policy-common.md)bakın. 

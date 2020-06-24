@@ -4,22 +4,22 @@ description: Sanal makine tabanlı dosya paylaşımının kullanıldığı bir W
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250926"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211842"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
 
 Windows sanal masaüstü hizmeti, önerilen Kullanıcı profili çözümü olarak FSLogix profil kapsayıcıları sunar. Windows sanal masaüstü 'nün gelecek sürümlerinde kullanım dışı bırakılacak Kullanıcı profili diski (UPD) çözümünü kullanmanızı önermiyoruz.
 
-Bu makalede, sanal makine tabanlı dosya paylaşımından bir konak havuzu için bir FSLogix profil kapsayıcısı paylaşımının nasıl ayarlanacağı açıklanır. Daha fazla FSLogix belgeleri için bkz. [fslogix sitesi](https://docs.fslogix.com/).
+Bu makalede, sanal makine tabanlı dosya paylaşımından bir konak havuzu için bir FSLogix profil kapsayıcısı paylaşımının nasıl ayarlanacağı açıklanır. Dosya paylaşımları yerine Azure dosyaları kullanmanızı kesinlikle öneririz. Daha fazla FSLogix belgeleri için bkz. [fslogix sitesi](https://docs.fslogix.com/).
 
 >[!NOTE]
 >Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
@@ -60,13 +60,13 @@ Sanal makineleri FSLogix yazılımıyla yapılandırmak için, konak havuzuna ka
 
 1. Sanal makineyi oluştururken girdiğiniz kimlik bilgileriyle [sanal makineye bağlanın](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) .
 2. Bir internet tarayıcısı başlatın ve FSLogix aracısını indirmek için [Bu bağlantıya](https://go.microsoft.com/fwlink/?linkid=2084562) gidin.
-3. \\ \\. Zip dosyasında Win32\\yayını veya \\ \\x64\\sürümüne gidin ve fslogixappssetup ' ı çalıştırarak fslogix aracısını kurun. **FSLogixAppsSetup**  FSLogix 'i yükleme hakkında daha fazla bilgi edinmek için bkz. [Fslogix indirme ve yükleme](/fslogix/install-ht/).
-4. Aracının yüklendiğini doğrulamak için **Program Files** > **fslogix** > **uygulamalarına** gidin.
-5. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **Bilgisayar\\HKEY_LOCAL_MACHINE\\yazılım\\fslogix**sayfasına gidin.
+3. \\ \\ \\ . Zip dosyasında Win32 yayını veya \\ \\ x64 \\ sürümüne gidin ve Fslogixappssetup ' ı çalıştırarak fslogix aracısını kurun. **FSLogixAppsSetup**  FSLogix 'i yükleme hakkında daha fazla bilgi edinmek için bkz. [Fslogix indirme ve yükleme](/fslogix/install-ht/).
+4. Aracının yüklendiğini doğrulamak için **Program Files**  >  **fslogix**  >  **uygulamalarına** gidin.
+5. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **Bilgisayar \\ HKEY_LOCAL_MACHINE \\ yazılım \\ fslogix**sayfasına gidin.
 6. **Profiller**adlı bir anahtar oluşturun.
 7. Profiller anahtarı için aşağıdaki değerleri oluşturun:
 
-| Adı                | Tür               | Veri/değer                        |
+| Name                | Tür               | Veri/değer                        |
 |---------------------|--------------------|-----------------------------------|
 | Etkin             | DWORD              | 1                                 |
 | Vhdkonumları        | Çok dizeli değer | "Dosya paylaşımının ağ yolu"     |

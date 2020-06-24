@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897063"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253503"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Azure AD Connect performansını etkileyen faktörler
 
@@ -172,7 +172,7 @@ Kaynak Active Directory topolojinizin boyutu SQL veritabanı performansınızı 
 
 - 100.000 ' den fazla kullanıcısı olan kuruluşlar, SQL veritabanını ve sağlama altyapısını aynı sunucuda birleştirerek ağ gecikmelerinin azaltılmasına yönelik olabilir.
 - Eşitleme işleminin yüksek disk girişi ve çıkış (g/ç) gereksinimleri nedeniyle, en iyi sonuçlar için sağlama altyapısının SQL veritabanı için katı hal sürücüleri (SSD) kullanın, mümkün değilse RAID 0 veya RAID 1 konfigürasyonları değerlendirin.
-- Tam eşitleme ön önleyici yapmayın; gereksiz karmaşıklık ve daha yavaş yanıt sürelerine neden olur.
+- Tam eşitleme preemptively yapmayın; gereksiz karmaşıklık ve daha yavaş yanıt sürelerine neden olur.
 
 ## <a name="conclusion"></a>Sonuç
 

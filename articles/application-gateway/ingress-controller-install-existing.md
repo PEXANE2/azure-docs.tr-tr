@@ -4,15 +4,15 @@ description: Bu makalede, var olan bir Application Gateway Application Gateway g
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869888"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807095"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Mevcut bir Application Gateway kullanarak bir Application Gateway Ingcontroller (AGıC) yüklemesi
 
@@ -20,7 +20,7 @@ Application Gateway giriş denetleyicisi (AGIC), Kubernetes kümenizin içindeki
 AGIC, Kubernetes giriş [kaynaklarını izler](https://kubernetes.io/docs/concepts/services-networking/ingress/) ve Kubernetes kümesinin durumuna göre Application Gateway yapılandırması oluşturur ve uygular.
 
 ## <a name="outline"></a>Kod
-- [Ön koşullar](#prerequisites)
+- [Önkoşullar](#prerequisites)
 - [Azure Resource Manager kimlik doğrulaması (ARM)](#azure-resource-manager-authentication)
     - Seçenek 1: [AAD-Pod kimliği ayarlama](#set-up-aad-pod-identity) ve kolda Azure kimliği oluşturma
     - 2. seçenek: [hizmet sorumlusu kullanma](#using-a-service-principal)
@@ -32,19 +32,19 @@ Bu belgede aşağıdaki araçların ve altyapının yüklü olduğu varsayılır
 - [Gelişmiş ağ](https://docs.microsoft.com/azure/aks/configure-azure-cni) özellikli [aks](https://azure.microsoft.com/services/kubernetes-service/) 'lar
 - [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) 'yi aks ile aynı sanal ağda
 - AKS kümenizde yüklü [AAD Pod kimliği](https://github.com/Azure/aad-pod-identity)
-- [Cloud Shell](https://shell.azure.com/) , `az` CLI, `kubectl`ve `helm` yüklü olan Azure kabuk ortamıdır. Aşağıdaki komutlar için bu araçlar gereklidir.
+- [Cloud Shell](https://shell.azure.com/) , `az` CLI, `kubectl` ve yüklü olan Azure kabuk ortamıdır `helm` . Aşağıdaki komutlar için bu araçlar gereklidir.
 
 AGIC 'i yüklemeden önce lütfen __Application Gateway yapılandırmanızı yedekleyin__ :
   1. [Azure Portal](https://portal.azure.com/) kullanarak `Application Gateway` örneğinize gidin
-  2. `Export template` tıklama`Download`
+  2. `Export template`tıklama`Download`
 
 İndirdiğiniz ZIP dosyası, uygulama ağ geçidini geri yüklemek için kullanabileceğiniz JSON şablonlarına, bash ve PowerShell betiklerine sahip olur
 
 ## <a name="install-helm"></a>Held 'yi yükler
-[Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) , Kubernetes için bir paket yöneticisidir. `application-gateway-kubernetes-ingress` Paketi yüklemek için bunu kullanacağız.
+[Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) , Kubernetes için bir paket yöneticisidir. Paketi yüklemek için bunu kullanacağız `application-gateway-kubernetes-ingress` .
 Held 'yi yüklemek için [Cloud Shell](https://shell.azure.com/) kullanın:
 
-1. [Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) 'yi yükleyip hele paketi eklemek `application-gateway-kubernetes-ingress` için aşağıdakileri çalıştırın:
+1. [Held](https://docs.microsoft.com/azure/aks/kubernetes-helm) 'yi yükleyip hele paketi eklemek için aşağıdakileri çalıştırın `application-gateway-kubernetes-ingress` :
 
     - *RBAC etkin* AKS kümesi
 
@@ -79,19 +79,19 @@ Bu bileşeni AKS uygulamanıza eklemek için [AAD Pod kimlik yükleme yönergele
 Bir sonraki adımda Azure kimliği oluşturmanız ve BT izinleri Kolonu vermeniz gerekir.
 Aşağıdaki komutların tümünü çalıştırmak ve bir kimlik oluşturmak için [Cloud Shell](https://shell.azure.com/) kullanın:
 
-1. **AKS düğümleri ile aynı kaynak grubunda**bir Azure kimliği oluşturun. Doğru kaynak grubunu seçmek önemlidir. Aşağıdaki komutta gerekli olan kaynak grubu, AKS portalı bölmesinde başvurulan bir *değildir* . Bu, `aks-agentpool` sanal makinelerin kaynak grubudur. Genellikle bu kaynak grubu ile `MC_` başlar ve aks 'nizin adını içerir. Örneğin:`MC_resourceGroup_aksABCD_westus`
+1. **AKS düğümleri ile aynı kaynak grubunda**bir Azure kimliği oluşturun. Doğru kaynak grubunu seçmek önemlidir. Aşağıdaki komutta gerekli olan kaynak grubu, AKS portalı bölmesinde başvurulan bir *değildir* . Bu, `aks-agentpool` sanal makinelerin kaynak grubudur. Genellikle bu kaynak grubu ile başlar `MC_` ve AKS 'nizin adını içerir. Örneğin:`MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
     ```
 
-1. Aşağıdaki rol atama komutları için yeni oluşturulan kimliği edinmeniz `principalId` gerekir:
+1. Aşağıdaki rol atama komutları için `principalId` Yeni oluşturulan kimliği edinmeniz gerekir:
 
     ```azurecli
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Application Gateway kimlik `Contributor` erişimi verin. Bunun için Application Gateway KIMLIĞI gerekir ve şuna benzer şekilde görünecektir:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. `Contributor`Application Gateway kimlik erişimi verin. Bunun için Application Gateway KIMLIĞI gerekir ve şuna benzer şekilde görünecektir:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
     Aboneliğinizdeki Application Gateway kimliklerinin listesini ile alın:`az network application-gateway list --query '[].id'`
 
@@ -102,7 +102,7 @@ Aşağıdaki komutların tümünü çalıştırmak ve bir kimlik oluşturmak iç
         --scope <App-Gateway-ID>
     ```
 
-1. Application Gateway kaynak grubuna `Reader` kimlik erişimi verin. Kaynak grubu KIMLIĞI şöyle görünür: `/subscriptions/A/resourceGroups/B`. Tüm kaynak gruplarını şu ile edinebilirsiniz:`az group list --query '[].id'`
+1. `Reader`Application Gateway kaynak grubuna kimlik erişimi verin. Kaynak grubu KIMLIĞI şöyle görünür: `/subscriptions/A/resourceGroups/B` . Tüm kaynak gruplarını şu ile edinebilirsiniz:`az group list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -120,7 +120,7 @@ Ayrıca, bir Kubernetes gizli dizisi aracılığıyla ARM 'ye AGIC erişimi sağ
 az ad sp create-for-rbac --sdk-auth | base64 -w0
 ```
 
-2. Base64 ile kodlanmış JSON blobu `helm-config.yaml` dosyaya ekleyin. Hakkında daha fazla `helm-config.yaml` bilgi, sonraki bölümde yer alır.
+2. Base64 ile kodlanmış JSON blobu `helm-config.yaml` dosyaya ekleyin. Hakkında daha fazla bilgi, `helm-config.yaml` sonraki bölümde yer alır.
 ```yaml
 armAuth:
     type: servicePrincipal
@@ -130,7 +130,7 @@ armAuth:
 ## <a name="install-ingress-controller-as-a-helm-chart"></a>Giriş denetleyicisini Held grafiği olarak yükler
 İlk birkaç adımda, Kubernetes kümenize helk 'in Tiller yüklersiniz. AGIC helk paketini yüklemek için [Cloud Shell](https://shell.azure.com/) kullanın:
 
-1. `application-gateway-kubernetes-ingress` Held deposunu ekleme ve Held güncelleştirme gerçekleştirme
+1. `application-gateway-kubernetes-ingress`Held deposunu ekleme ve Held güncelleştirme gerçekleştirme
 
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
@@ -196,15 +196,15 @@ armAuth:
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. Held-config. YAML 'yi düzenleyin ve `appgw` ve `armAuth`değerlerini girin.
+1. Held-config. YAML 'yi düzenleyin ve ve değerlerini girin `appgw` `armAuth` .
     ```bash
     nano helm-config.yaml
     ```
 
     > [!NOTE] 
-    > Ve `<identity-resource-id>` `<identity-client-id>` , önceki bölümde kurulum yaptığınız Azure AD kimliğinin özellikleridir. Şu komutu çalıştırarak bu bilgileri alabilirsiniz: `az identity show -g <resourcegroup> -n <identity-name>`, burada `<resourcegroup>` , en üst düzey aks küme nesnesinin, Application Gateway ve yönetilen tanımlanmasının dağıtıldığı kaynak grubudur.
+    > `<identity-resource-id>`Ve, `<identity-client-id>` önceki bölümde kurulum YAPTıĞıNıZ Azure AD kimliğinin özellikleridir. Şu komutu çalıştırarak bu bilgileri alabilirsiniz: `az identity show -g <resourcegroup> -n <identity-name>` , burada, `<resourcegroup>` en üst düzey aks küme nesnesinin, Application Gateway ve yönetilen tanımlanmasının dağıtıldığı kaynak grubudur.
 
-1. Önceki adımdan `helm-config.yaml` yapılandırma Ile `application-gateway-kubernetes-ingress` Held grafiğini yükler
+1. `application-gateway-kubernetes-ingress`Önceki adımdan yapılandırma Ile Held grafiğini yükler `helm-config.yaml`
 
     ```bash
     helm install -f <helm-config.yaml> application-gateway-kubernetes-ingress/ingress-azure
@@ -239,7 +239,7 @@ Varsayılan olarak AGIC, bağlandığı Application Gateway tam sahipliğini var
 
 Bu ayarı etkinleştirmeden önce lütfen __Application Gateway yapılandırmanızı yedekleyin__ :
   1. [Azure Portal](https://portal.azure.com/) kullanarak `Application Gateway` örneğinize gidin
-  2. `Export template` tıklama`Download`
+  2. `Export template`tıklama`Download`
 
 İndirdiğiniz ZIP dosyası, geri yüklemek için kullanabileceğiniz JSON şablonlarına, bash ve PowerShell betiklerine sahip olacaktır Application Gateway
 
@@ -248,9 +248,9 @@ Bu ayarı etkinleştirmeden önce lütfen __Application Gateway yapılandırman�
   - `dev.contoso.com`-Application Gateway ve AGIC kullanarak yeni bir AKS 'de barındırılan
   - `prod.contoso.com`-bir [Azure sanal makine ölçek kümesi](https://azure.microsoft.com/services/virtual-machine-scale-sets/) üzerinde barındırılan
 
-Varsayılan ayarlarla AGIC, işaret ettiği Application Gateway %100 sahipliğini üstlenir. AGIC, tüm uygulama ağ geçidi yapılandırmasının üzerine yazar. (Application Gateway) için `prod.contoso.com` , Kubernetes girişi ile tanımlamadan el ile bir dinleyici oluştururuz, agic `prod.contoso.com` yapılandırmayı Saniyeler içinde silecek.
+Varsayılan ayarlarla AGIC, işaret ettiği Application Gateway %100 sahipliğini üstlenir. AGIC, tüm uygulama ağ geçidi yapılandırmasının üzerine yazar. `prod.contoso.com`(Application Gateway) için, Kubernetes girişi ile tanımlamadan el ile bir dinleyici oluştururuz, AGIC `prod.contoso.com` yapılandırmayı Saniyeler içinde silecek.
 
-AGIC 'yi yüklemek ve ayrıca sanal `prod.contoso.com` makine ölçek kümesi makinelerimizden de hizmeti sağlamak için AGC 'yi yalnızca yapılandırmayla `dev.contoso.com` sınırlandırmamız gerekir. Bu, aşağıdaki [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)'yi oluşturarak kolaylaştıralınmıştır:
+AGIC 'yi yüklemek ve ayrıca `prod.contoso.com` sanal makine ölçek kümesi makinelerimizden de hizmeti sağlamak IÇIN AGC 'yi yalnızca yapılandırmayla sınırlandırmamız gerekir `dev.contoso.com` . Bu, aşağıdaki [CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)'yi oluşturarak kolaylaştıralınmıştır:
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -263,12 +263,12 @@ spec:
 EOF
 ```
 
-Yukarıdaki komutu bir `AzureIngressProhibitedTarget` nesnesi oluşturur. Bu, (sürüm 0.8.0 ve üzeri) Application Gateway config 'in varlığını algılar `prod.contoso.com` ve bu ana bilgisayar adıyla ilgili herhangi bir yapılandırmanın değiştirilmesini önlemeye neden olur.
+Yukarıdaki komutu bir nesnesi oluşturur `AzureIngressProhibitedTarget` . Bu, (sürüm 0.8.0 ve üzeri) Application Gateway config 'in varlığını algılar `prod.contoso.com` ve bu ana bilgisayar adıyla ilgili herhangi bir yapılandırmanın değiştirilmesini önlemeye neden olur.
 
 
 ### <a name="enable-with-new-agic-installation"></a>Yeni AGIC yüklemesiyle etkinleştir
 AGIC 'i (Version 0.8.0 ve üzeri) Application Gateway yapılandırmasının bir alt kümesiyle sınırlamak için `helm-config.yaml` şablonu değiştirin.
-`appgw:` Bölümünün altına anahtar ekleyin `shared` ve öğesini olarak `true`ayarlayın.
+Bölümünün altına `appgw:` `shared` anahtar ekleyin ve öğesini olarak ayarlayın `true` .
 
 ```yaml
 appgw:
@@ -279,7 +279,7 @@ appgw:
 ```
 
 Held değişikliklerini Uygula:
-  1. `AzureIngressProhibitedTarget` CRD 'nin yüklü olduğundan emin olun:
+  1. CRD 'nin yüklü olduğundan emin olun `AzureIngressProhibitedTarget` :
       ```bash
       kubectl apply -f https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/ae695ef9bd05c8b708cedf6ff545595d0b7022dc/crds/AzureIngressProhibitedTarget.yaml
       ```
@@ -291,20 +291,20 @@ Held değişikliklerini Uygula:
           ingress-azure application-gateway-kubernetes-ingress/ingress-azure
       ```
 
-Sonuç olarak, AKS 'ler `AzureIngressProhibitedTarget` adlı `prohibit-all-targets`yeni bir örneğe sahip olur:
+Sonuç olarak, AKS 'ler adlı yeni bir örneğe sahip olur `AzureIngressProhibitedTarget` `prohibit-all-targets` :
 ```bash
 kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
 ```
 
-`prohibit-all-targets`Adından da anlaşılacağı gibi, *bir* ana bilgisayar ve yol için, agic 'in yapılandırmayı değiştirmesini yasaklar.
-İle `appgw.shared=true` helk YÜKLEMESI agic 'yi dağıtır, ancak Application Gateway hiçbir değişiklik yapmayacak.
+Adından da `prohibit-all-targets` anlaşılacağı gibi, *bir* ana bilgisayar ve yol IÇIN, agic 'in yapılandırmayı değiştirmesini yasaklar.
+İle helk yüklemesi `appgw.shared=true` AGIC 'yi dağıtır, ancak Application Gateway hiçbir değişiklik yapmayacak.
 
 
 ### <a name="broaden-permissions"></a>İzinleri genişletin
 Helk ile `appgw.shared=true` ve varsayılan `prohibit-all-targets` blokları hiçbir yapılandırmayı uygulamaktan itibaren.
 
 İle AGIC izinlerini genişletin:
-1. Özel kurulumla yeni `AzureIngressProhibitedTarget` bir oluşturma:
+1. Özel kurulumla yeni bir oluşturma `AzureIngressProhibitedTarget` :
     ```bash
     cat <<EOF | kubectl apply -f -
     apiVersion: "appgw.ingress.k8s.io/v1"
@@ -323,7 +323,7 @@ Helk ile `appgw.shared=true` ve varsayılan `prohibit-all-targets` blokları hi�
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Mevcut bir AGIC yüklemesi için etkinleştirme
-Zaten bir çalışan AKS, Application Gateway ve kümizdeki AGIC 'ler olduğunu varsayalım. İçin `prod.contosor.com` bir giriş yaptık ve aks 'ten gelen trafiğe başarıyla hizmet veriyor. Mevcut Application Gateway eklemek `staging.contoso.com` istiyoruz, ancak bunu bir [VM](https://azure.microsoft.com/services/virtual-machines/)'de barındırmamız gerekiyor. Var olan Application Gateway yeniden kullanacağız ve için `staging.contoso.com`bir dinleyici ve arka uç havuzlarını el ile yapılandıracağız. Ancak Application Gateway config ( [Portal](https://portal.azure.com), [ARM API 'leri](https://docs.microsoft.com/rest/api/resources/) veya [terkform](https://www.terraform.io/)aracılığıyla) için el ile davaklik, tam sahiplik varsayımlarıyla çakışır. Değişiklikler uygulandıktan sonra, AGIC onları üzerine yazar veya siler.
+Zaten bir çalışan AKS, Application Gateway ve kümizdeki AGIC 'ler olduğunu varsayalım. İçin bir giriş yaptık `prod.contosor.com` ve AKS 'ten gelen trafiğe başarıyla hizmet veriyor. Mevcut Application Gateway eklemek istiyoruz `staging.contoso.com` , ancak bunu bir [VM](https://azure.microsoft.com/services/virtual-machines/)'de barındırmamız gerekiyor. Var olan Application Gateway yeniden kullanacağız ve için bir dinleyici ve arka uç havuzlarını el ile yapılandıracağız `staging.contoso.com` . Ancak Application Gateway config ( [Portal](https://portal.azure.com), [ARM API 'leri](https://docs.microsoft.com/rest/api/resources/) veya [terkform](https://www.terraform.io/)aracılığıyla) için el ile davaklik, tam sahiplik varsayımlarıyla çakışır. Değişiklikler uygulandıktan sonra, AGIC onları üzerine yazar veya siler.
 
 AGC 'nin bir yapılandırma alt kümesinde değişiklik yapmasını yasaklayabiliriz.
 
@@ -344,4 +344,4 @@ AGC 'nin bir yapılandırma alt kümesinde değişiklik yapmasını yasaklayabil
     kubectl get AzureIngressProhibitedTargets
     ```
 
-3. Portal aracılığıyla Application Gateway yapılandırmasını değiştirme-dinleyicileri, yönlendirme kurallarını, arka uçları vb. ekleyin. Oluşturduğumuz yeni nesne (`manually-configured-staging-environment`), AGC 'nin ile ilgili yapılandırma Application Gateway üzerine yazılmasına izin `staging.contoso.com`vermez.
+3. Portal aracılığıyla Application Gateway yapılandırmasını değiştirme-dinleyicileri, yönlendirme kurallarını, arka uçları vb. ekleyin. Oluşturduğumuz yeni nesne ( `manually-configured-staging-environment` ), AGC 'nin ile ilgili yapılandırma Application Gateway üzerine yazılmasına izin vermez `staging.contoso.com` .

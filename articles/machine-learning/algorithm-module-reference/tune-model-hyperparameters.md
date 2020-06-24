@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 01e33f7b0133eb5d081e6e8f3c3c9497c11bae95
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064169"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983419"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hiper Parametrelerini Ayarlama
 
@@ -43,33 +43,35 @@ Bu bölümde, model hiper parametreleri ayarla modülünü kullanarak bir modeli
 
 2.  Eğitimli olmayan bir modeli en soldaki girişe bağlayın. 
 
+    > [!NOTE] 
+    > **Ayar modeli hiper parametreleri** yalnızca yerleşik makine öğrenimi algoritması modüllerine bağlanabilir ve **Python modeli oluşturma**içinde oluşturulmuş özelleştirilmiş modeli desteklemez.
 
 
-4.  Eğitim için kullanmak istediğiniz veri kümesini ekleyin ve bunu ayarlama modeli hiper parametrelerinin orta girişine bağlayın.  
+3.  Eğitim için kullanmak istediğiniz veri kümesini ekleyin ve bunu ayarlama modeli hiper parametrelerinin orta girişine bağlayın.  
 
     İsteğe bağlı olarak, etiketli bir veri kümeniz varsa, bunu en sağdaki giriş bağlantı noktasına (**Isteğe bağlı doğrulama veri kümesi**) bağlayabilirsiniz. Bu, eğitim ve ayarlama sırasında doğruluğu ölçmenize olanak tanır.
 
-5.  Model hiper parametrelerini ayarla ' nın sağ panelinde, **parametre swemodu**için bir değer seçin. Bu seçenek parametrelerin nasıl seçili olduğunu denetler.
+4.  Model hiper parametrelerini ayarla ' nın sağ panelinde, **parametre swemodu**için bir değer seçin. Bu seçenek parametrelerin nasıl seçili olduğunu denetler.
 
     - **Tüm ızgara**: Bu seçeneği belirlediğinizde, modül, sistem tarafından önceden tanımlanmış bir kılavuz üzerinde döngü gerçekleştirerek farklı birleşimler deneyebilir ve en iyi öğrenme kimliğini belirler. Bu seçenek, en iyi parametre ayarlarının ne olabileceğini bilmiyorsanız ve tüm olası değer birleşimlerini denemek istediğinizde faydalıdır.
 
     - **Rastgele tarama**: Bu seçeneği belirlediğinizde modül, sistem tarafından tanımlanan bir aralıktaki parametre değerlerini rastgele seçer. Modülün yürütmesini istediğiniz en fazla çalıştırma sayısını belirtmeniz gerekir. Bu seçenek, tercih ettiğiniz ölçümleri kullanarak model performansını artırmak, ancak bilgi işlem kaynaklarını korumak istediğinizde yararlıdır.    
 
-6.  **Etiket sütunu**için, tek bir etiket sütunu seçmek üzere sütun seçiciyi açın.
+5.  **Etiket sütunu**için, tek bir etiket sütunu seçmek üzere sütun seçiciyi açın.
 
-7.  Çalıştırma sayısını seçin:
+6.  Çalıştırma sayısını seçin:
 
-    1. **Rastgele tarama sırasında en fazla çalışma sayısı**: rastgele bir tarama seçerseniz, parametre değerlerinin rastgele bir birleşimini kullanarak modelin kaç kez eğitilmek gerektiğini belirtebilirsiniz.
+    - **Rastgele tarama sırasında en fazla çalışma sayısı**: rastgele bir tarama seçerseniz, parametre değerlerinin rastgele bir birleşimini kullanarak modelin kaç kez eğitilmek gerektiğini belirtebilirsiniz.
 
-8.  **Sıralama**için, modelleri derecelendirerek kullanılacak tek bir ölçüm seçin.
+7.  **Sıralama**için, modelleri derecelendirerek kullanılacak tek bir ölçüm seçin.
 
     Bir parametre süpürme çalıştırdığınızda modül, model türü için geçerli tüm ölçümleri hesaplar ve bunları **tarama sonuçları** raporunda döndürür. Modül, regresyon ve sınıflandırma modelleri için ayrı ölçümler kullanır.
 
     Ancak, seçtiğiniz ölçüm modellerin derecelendirme şeklini belirler. Yalnızca, seçili ölçüm tarafından derecelendirilen en üst model, Puanlama için kullanılacak eğitilen bir model olarak çıktı.
 
-9.  **Rastgele çekirdek**için, parametre süpürme başlatılırken kullanılacak bir sayı girin. 
+8.  **Rastgele çekirdek**için, parametre süpürme başlatılırken kullanılacak bir sayı girin. 
 
-10. İşlem hattını gönderme.
+9. İşlem hattını gönderme.
 
 ## <a name="results-of-hyperparameter-tuning"></a>Hiper parametre ayarlama sonuçları
 

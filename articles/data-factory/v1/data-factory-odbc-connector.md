@@ -13,11 +13,11 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281398"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707387"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak ODBC veri depolarından veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -66,12 +66,12 @@ Aşağıdaki tabloda ODBC bağlantılı hizmetine özgü JSON öğeleri için a�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesOdbc** olarak ayarlanmalıdır |Yes |
-| Dizisi |Bağlantı dizesinin erişim dışı kimlik bilgisi kısmı ve isteğe bağlı olarak şifrelenmiş kimlik bilgileri. Aşağıdaki bölümlerde bulunan örneklere bakın. <br/><br/>Bağlantı dizesini gibi `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`bir düzende belirtebilir veya ağ geçidi makinesinde AYARLADıĞıNıZ Sistem DSN 'Sini (veri kaynağı adı) kullanabilirsiniz `"DSN=<name of the DSN>;"` (yine de bağlı hizmette kimlik bilgisi bölümünü belirtmeniz gerekir). |Yes |
-| kimlik bilgisi |Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Örnek: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Hayır |
+| tür |Type özelliği: **OnPremisesOdbc** olarak ayarlanmalıdır |Yes |
+| Dizisi |Bağlantı dizesinin erişim dışı kimlik bilgisi kısmı ve isteğe bağlı olarak şifrelenmiş kimlik bilgileri. Aşağıdaki bölümlerde bulunan örneklere bakın. <br/><br/>Bağlantı dizesini gibi bir düzende belirtebilir `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` veya ağ geçidi makinesinde ayarladığınız SISTEM DSN 'sini (veri kaynağı adı) kullanabilirsiniz `"DSN=<name of the DSN>;"` (yine de bağlı hizmette kimlik bilgisi bölümünü belirtmeniz gerekir). |Yes |
+| kimlik bilgisi |Sürücüye özgü özellik-değer biçiminde belirtilen bağlantı dizesinin erişim kimlik bilgisi kısmı. Örnek: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |No |
 | authenticationType |ODBC veri deposuna bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim ve temel. |Yes |
-| userName |Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. |Hayır |
+| userName |Temel kimlik doğrulaması kullanıyorsanız Kullanıcı adını belirtin. |No |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabının parolasını belirtin. |No |
 | gatewayName |Data Factory hizmetinin ODBC veri deposuna bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ### <a name="using-basic-authentication"></a>Temel kimlik doğrulaması kullanma
@@ -357,7 +357,7 @@ Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme 
 ## <a name="troubleshoot-connectivity-issues"></a>Bağlantı sorunlarını giderme
 Bağlantı sorunlarını gidermek için **veri yönetimi ağ geçidi Configuration Manager** **Tanılama** sekmesini kullanın.
 
-1. **Veri yönetimi ağ geçidi Configuration Manager**başlatın. Aşağıdaki görüntüde gösterildiği gibi, "C:\Program Files\Microsoft Veri Yönetimi Gateway\1.0\Shared\ConfigManager.exe" doğrudan (veya) **Microsoft veri yönetimi ağ geçidi** uygulamasına bir bağlantı bulmak Için **ağ geçidini** ara olarak çalıştırabilirsiniz.
+1. **Veri yönetimi ağ geçidi Configuration Manager**başlatın. Aşağıdaki görüntüde gösterildiği gibi, **Microsoft veri yönetimi ağ geçidi** uygulamasına bir bağlantı bulmak için "C:\Program Files\Microsoft veri yönetimi Gateway\1.0\Shared\ConfigManager.exe" doğrudan (ya da) **ağ geçidini** ara olarak çalıştırabilirsiniz.
 
     ![Ağ geçidini ara](./media/data-factory-odbc-connector/search-gateway.png)
 2. **Tanılama** sekmesine geçin.

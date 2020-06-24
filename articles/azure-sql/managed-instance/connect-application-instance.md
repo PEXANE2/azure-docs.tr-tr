@@ -3,8 +3,8 @@ title: Uygulamanızı SQL yönetilen örneğine bağlama
 titleSuffix: Azure SQL Managed Instance
 description: Bu makalede, uygulamanızı Azure SQL yönetilen örneği 'ne nasıl bağlayabileceğinizi anlatmaktadır.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: fea16b3e1e5df056c241d07c0e1dd7a5a30819a5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219776"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706384"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uygulamanızı Azure SQL yönetilen örneğine bağlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -107,7 +107,7 @@ Bağlantı sorunlarını gidermek için aşağıdakileri gözden geçirin:
 
 - İstemci makinesinin (VPN istemcisini çalıştıran) erişmeniz gereken tüm sanal ağlar için rota girişlerine sahip olup olmadığını denetleyin. Yollar içinde depolanır `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
 
-   ![Route. txt](./media/connect-application-instance/route-txt.png)
+   ![route.txt](./media/connect-application-instance/route-txt.png)
 
    Bu görüntüde gösterildiği gibi, her bir sanal ağ için iki giriş ve portalda yapılandırılan VPN uç noktası için üçüncü bir giriş vardır.
 

@@ -4,19 +4,19 @@ description: Azure Active Directory ' de koşullu erişim ile Cloud App erişimi
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a215e2bb7d9d1cf9013414037383590456296cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480904"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253401"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Nasıl yapılır: koşullu erişim ile Cloud App erişimi için onaylanan istemci uygulamaları gerektirme
 
@@ -41,37 +41,37 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda kullanılmas
 **1. Adım: Exchange Online 'a erişirken onaylanan bir istemci uygulamasının kullanılması gereken Android ve iOS tabanlı modern kimlik doğrulama istemcilerine yönelik Ilke.**
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > **dahil**, **Office 365 (Önizleme)** öğesini seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 (Önizleme)** öğesini seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.
 1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **modern kimlik doğrulama istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
+1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
 **2. Adım: ActiveSync (EAS) ile Exchange Online için bir Azure AD koşullu erişim ilkesi yapılandırma**
 
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > **dahil**, **Office 365 Exchange Online**' ı seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online**' ı seçin.
 1. **Koşullar**altında:
    1. **İstemci uygulamaları (Önizleme)**:
       1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
       1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
+1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
@@ -88,37 +88,37 @@ Kuruluşlar, bir onaylanan istemci uygulamasının mobil cihazlarda ve Exchange 
 **1. Adım: Exchange Online ve SharePoint Online 'a erişirken onaylanan bir istemci uygulamasının kullanılması gereken Android ve iOS tabanlı modern kimlik doğrulama istemcilerine yönelik Ilke.**
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > **dahil**, **Office 365 Exchange Online** ve **Office 365 SharePoint Online**' ı seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online** ve **Office 365 SharePoint Online**' ı seçin.
 1. **Koşullar**' ın altında **cihaz platformları**' nı seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Android** ve **iOS**dahil edin.
 1. **Koşullar**' ın altında **istemci uygulamaları ' nı (Önizleme)** seçin.
    1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
    1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **modern kimlik doğrulama istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
+1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
 **2. Adım: onaylanmış bir istemci uygulamasının kullanılmasını gerektiren Exchange ActiveSync istemcileri için Ilke.**
 
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında, **tüm kullanıcılar** ' ı veya bu Ilkeyi uygulamak istediğiniz belirli **kullanıcıları ve grupları** seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > **dahil**, **Office 365 Exchange Online**' ı seçin.
+1. **Bulut uygulamaları veya eylemleri**  >  **dahil**, **Office 365 Exchange Online**' ı seçin.
 1. **Koşullar**altında:
    1. **İstemci uygulamaları (Önizleme)**:
       1. **Yapılandır** 'ı **Evet**olarak ayarlayın.
       1. **Mobil uygulamalar ve Masaüstü istemcileri** ve **Exchange ActiveSync istemcileri**' ni seçin.
-1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
+1. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **onaylı istemci uygulaması gerektir**' i seçin ve **Seç**' i seçin
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi oluşturmak ve etkinleştirmek için **Oluştur** ' u seçin.
 
@@ -132,4 +132,4 @@ Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [Uygul
 
 [Koşullu erişim bileşenleri](concept-conditional-access-policies.md)
 
-[Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)
+[Sık kullanılan Koşullu Erişim İlkeleri](concept-conditional-access-policy-common.md)

@@ -13,7 +13,7 @@ ms.locfileid: "68639156"
 ---
 Bağlama uzantılarını yüklemenin en kolay yolu, [uzantı](../articles/azure-functions/functions-bindings-register.md#extension-bundles)paketlerinin etkinleştirilme yöntemidir. Paketleri etkinleştirdiğinizde, önceden tanımlanmış bir uzantı paketleri kümesi otomatik olarak yüklenir.
 
-Uzantı paketleri 'ni etkinleştirmek için, Host. json dosyasını açın ve içeriğini aşağıdaki kodla eşleşecek şekilde güncelleştirin:
+Uzantı paketlerini etkinleştirmek için dosyadaki host.jsaçın ve içeriğini aşağıdaki kodla eşleşecek şekilde güncelleştirin:
 
 ```json
 {

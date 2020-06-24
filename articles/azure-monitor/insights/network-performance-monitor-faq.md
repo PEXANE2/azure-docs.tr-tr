@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c672caaedd3e5cc591659f24c73f54f399c73de
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096215"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194012"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -54,11 +54,11 @@ Windows masaüstleri/istemci işletim sistemi tabanlı düğümler için ıCMP �
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Bir düğümü TCP protokolünü kullanarak izlemeyi destekleyecek şekilde nasıl yapılandırabilirim?
 Düğümün TCP protokolünü kullanarak izlemeyi desteklemesi için: 
 * Düğüm platformunun Windows Server (2008 SP1 veya üzeri) olduğundan emin olun.
-* Düğümde [Enablerules. ps1](https://aka.ms/npmpowershellscript) PowerShell betiğini çalıştırın. Daha fazla ayrıntı için [yönergelere](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) bakın.
+* [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell betiğini düğümde çalıştırın. Daha fazla ayrıntı için [yönergelere](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) bakın.
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>NPM tarafından izleme için kullanılan TCP bağlantı noktasını nasıl değiştirebilirim?
-İzleme için, [Enablerules. ps1](https://aka.ms/npmpowershellscript) betiğini çalıştırarak, NPM tarafından kullanılan TCP bağlantı noktasını değiştirebilirsiniz. Parametre olarak kullanmayı düşündüğünüz bağlantı noktası numarasını girmeniz gerekir. Örneğin, 8060 numaralı bağlantı noktasında TCP 'yi etkinleştirmek için öğesini `EnableRules.ps1 8060`çalıştırın. İzleme için kullanılan tüm düğümlerde aynı TCP bağlantı noktasını kullandığınızdan emin olun.
+[EnableRules.ps1](https://aka.ms/npmpowershellscript) betiğini çalıştırarak NPM tarafından izleme IÇIN kullanılan TCP bağlantı noktasını değiştirebilirsiniz. Parametre olarak kullanmayı düşündüğünüz bağlantı noktası numarasını girmeniz gerekir. Örneğin, 8060 numaralı bağlantı noktasında TCP 'yi etkinleştirmek için öğesini çalıştırın `EnableRules.ps1 8060` . İzleme için kullanılan tüm düğümlerde aynı TCP bağlantı noktasını kullandığınızdan emin olun.
 
 Betik yalnızca Windows güvenlik duvarını yerel olarak yapılandırır. Ağ güvenlik duvarı veya ağ güvenlik grubu (NSG) kurallarınız varsa, NPM tarafından kullanılan TCP bağlantı noktasına giden trafiğe izin verdiklerinden emin olun.
 
@@ -149,19 +149,19 @@ MS eşleme düzeyi bilgileri için, günlük aramasında aşağıdaki belirtilen
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
     
 Özel eşleme düzeyi bilgileri için, günlük aramasında aşağıdaki belirtilen sorguyu kullanın
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
   
 Devre düzeyi bilgileri için, günlük aramasında aşağıdaki belirtilen sorguyu kullanın
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | project CircuitName, BitsInPerSecond, BitsOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>NPM 'nin performans Izleyicisi için hangi bölgeler desteklenir?
 NPM, dünyanın herhangi bir bölümündeki ağlar arasındaki bağlantıyı, [desteklenen bölgelerden](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) birinde barındırılan bir çalışma alanından izleyebilir
@@ -213,7 +213,7 @@ Bu durum, ana bilgisayar güvenlik duvarı veya ara güvenlik duvarının (ağ g
 * Bir ara ağ güvenlik duvarının veya Azure NSG 'nin gerekli bağlantı noktasındaki iletişimi engellemediğinden emin olmak için aşağıdaki yönergeleri kullanarak üçüncü taraf PsPing yardımcı programını kullanın:
   * psping yardımcı programı [buradan](https://technet.microsoft.com/sysinternals/psping.aspx) indirilebilir 
   * Kaynak düğümden aşağıdaki komutu çalıştırın.
-    * psping-n 15 \<hedef düğümü IPAddress\>:p, varsayılan NPM 8084 bağlantı noktasını kullanır. Bunu, EnableRules. ps1 betiğini kullanarak açıkça değiştirdiyseniz, kullanmakta olduğunuz özel bağlantı noktası numarasını girin. Bu, Azure makinesinden şirket içine bir ping işlemi sağlar
+    * psping-n 15 \<destination node IPAddress\> :P Ortsayı varsayılan NPM 8084 bağlantı noktasını kullanır. Bunu EnableRules.ps1 betiği kullanarak açıkça değiştirdiyseniz, kullanmakta olduğunuz özel bağlantı noktası numarasını girin). Bu, Azure makinesinden şirket içine bir ping işlemi sağlar
 * Pingler 'in başarılı olup olmadığını denetleyin. Aksi takdirde, bir ara ağ güvenlik duvarının veya Azure NSG 'nin Bu bağlantı noktasındaki trafiği engellediğini gösterir.
 * Şimdi, komutu hedef düğümden kaynak düğüm IP 'si olarak çalıştırın.
 
@@ -222,7 +222,7 @@ Bu durum, ana bilgisayar güvenlik duvarı veya ara güvenlik duvarının (ağ g
 A ile B arasındaki ağ yolları B ile arasında ağ yollarından farklı olabilir, kayıp ve gecikme süresinin farklı değerleri gözlemlenebilir.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Tüm ExpressRoute devreleri ve eşleme bağlantılarım neden bulunamadı?
-NPM artık kullanıcının erişimi olan tüm aboneliklerde ExpressRoute devreleri ve eşleme bağlantılarını bulur. Hızlı rota kaynaklarınızın bağlandığı tüm abonelikleri seçin ve bulunan her kaynak için izlemeyi etkinleştirin. NPM özel bir eşleme bulunurken bağlantı nesnelerine bakar, bu nedenle lütfen bir VNET 'in eşlemeden ilişkilendirildiğinden emin olun.
+NPM artık kullanıcının erişimi olan tüm aboneliklerde ExpressRoute devreleri ve eşleme bağlantılarını bulur. Hızlı rota kaynaklarınızın bağlandığı tüm abonelikleri seçin ve bulunan her kaynak için izlemeyi etkinleştirin. NPM özel bir eşleme bulunurken bağlantı nesnelerine bakar, bu nedenle lütfen bir VNET 'in eşlemeden ilişkilendirildiğinden emin olun. NPM Log Analytics çalışma alanından farklı bir kiracıda olan devreleri ve eşlemeyi algılamaz.
 
 ### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER Monitor özelliğinin bir tanılama iletisi vardır "trafik HERHANGI bir devrele geçirilmiyor". Bu ne anlama gelir?
 
@@ -233,6 +233,12 @@ Bu hata şu durumlarda oluşabilir:
 * ER devresi devre dışı.
 * Yol filtreleri, istenen ExpressRoute bağlantı hattı üzerinden diğer yollara (bir VPN bağlantısı veya başka bir ExpressRoute bağlantı hattı gibi) öncelik vertikleri şekilde yapılandırılır. 
 * İzleme yapılandırmasında ExpressRoute devresini izlemek için seçilen Şirket içi ve Azure düğümleri, hedeflenen ExpressRoute bağlantı hattı üzerinden birbirleriyle bağlantıya sahip değildir. İzlemek istediğiniz ExpressRoute bağlantı hattı üzerinden birbirlerine bağlantısı olan doğru düğümleri seçtiğinizden emin olun.
+
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>ExpressRoute Izleyicisi, kullanılabilir olduğunda ve veri geçirirken devre dışı/eşlenmesinin neden sağlıksız olduğunu bildirir.
+ExpressRoute Izleyicisi, aracılar/hizmet tarafından, yapılandırma sırasında ayarlanan eşiklerle bildirilen ağ performansı değerlerini (kayıp, gecikme süresi ve bant genişliği kullanımı) karşılaştırır. Bir devre için, bildirilen bant genişliği kullanımı, yapılandırmadaki eşik kümesinden büyükse, devre dışı olarak işaretlenir. Eşleme için, kayıp, gecikme veya bant genişliği kullanımı, yapılandırmadaki eşik kümesinden büyükse, eşleme sağlıksız olarak işaretlenir. NPM, sistem durumu için ölçüm veya başka bir veri biçimi sunmaz.
+
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>ExpressRoute 'ın Izleyiciye neden olan bant genişliği kullanımı raporu, ölçüm bitlerinin içindeki/giden bir değerin farklılaşmasını
+ExpressRoute Izleyicisi için bant genişliği kullanımı, son 20 dakikalık bir bit/sn cinsinden ifade edilen gelen ve giden bant genişliğinin ortalaması olarak belirlenir. Express Route ölçümleri için bit/çıkış, dakika başına veri noktası başına yapılır. Her ikisi için kullanılan veri kümesi de aynıdır, ancak NPM ve ER ölçümleri arasında toplama yapılır. Dakika izleme ve hızlı uyarılara göre ayrıntılı, dakikada bir uyarı için uyarıları doğrudan ER üzerinde ayarlamayı öneririz
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>ExpressRoute bağlantı hattını izleme yapılandırılırken Azure düğümleri algılanmaz.
 Azure düğümleri Operations Manager aracılığıyla bağlandığında bu durum oluşabilir. ExpressRoute Izleyici özelliği, yalnızca doğrudan aracılar olarak bağlı olan Azure düğümlerini destekler.
@@ -263,7 +269,7 @@ Hedef hizmet bir Web uygulaması değilse ancak test bir Web testi olarak yapıl
 NPM işlemi, ana bilgisayar CPU kaynaklarının %5 ' inden fazlasını kullanıyorsa durdurulacak şekilde yapılandırıldı. Bu, performansı etkilemeden olağan iş yükleri için düğümleri kullanmaya devam etmek zorunda kalmasından emin olmak içindir.
 
 ### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>İzleme için güvenlik duvarı kuralları düzenlensin mi?
-NPM yalnızca, aracıların belirtilen bağlantı noktasında birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için EnableRules. ps1 PowerShell betiğinin çalıştırıldığı düğümlerde yerel bir Windows güvenlik duvarı kuralı oluşturur. Çözüm herhangi bir ağ güvenlik duvarı veya ağ güvenlik grubu (NSG) kuralını değiştirmez.
+NPM yalnızca, aracıların belirtilen bağlantı noktasında birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için EnableRules.ps1 PowerShell betiğinin çalıştırıldığı düğümlerde yerel bir Windows güvenlik duvarı kuralı oluşturur. Çözüm herhangi bir ağ güvenlik duvarı veya ağ güvenlik grubu (NSG) kuralını değiştirmez.
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>İzleme için kullanılan düğümlerin sistem durumunu nasıl kontrol edebilirim?
 İzleme için kullanılan düğümlerin sistem durumunu şu görünümden görebilirsiniz: Ağ Performansı İzleyicisi-> yapılandırma-> düğümleri. Bir düğüm sağlıksız ise, hata ayrıntılarını görüntüleyebilir ve önerilen eylemi gerçekleştirebilirsiniz.

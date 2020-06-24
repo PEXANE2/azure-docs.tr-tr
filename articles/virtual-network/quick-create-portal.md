@@ -12,11 +12,11 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240075"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707421"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalını kullanarak bir sanal ağ oluşturma
 
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, Azure portal kullanarak bir sanal ağ oluşturmayı �
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-1. Azure portal menüsünde **kaynak oluştur**' u seçin. Azure Marketi ' nden **ağ** > **sanal ağı**' nı seçin.
+1. Azure portal menüsünde **kaynak oluştur**' u seçin. Azure Marketi ' nden **ağ**  >  **sanal ağı**' nı seçin.
 
 1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
@@ -40,7 +40,7 @@ Bu hızlı başlangıçta, Azure portal kullanarak bir sanal ağ oluşturmayı �
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
-    | Adı | *MyVirtualNetwork*girin. |
+    | Name | *MyVirtualNetwork*girin. |
     | Konum | **Doğu ABD**’yi seçin.|
 
 1. Ileri ' yi seçin **: IP adresleri**ve **IPv4 adres alanı**için *10.1.0.0/16*girin.
@@ -59,7 +59,7 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
 
 1. Azure portal menüsünde **kaynak oluştur**' u seçin.
 
-1. Azure Marketi 'nde **işlem** > **Windows Server 2019 Datacenter**' u seçin. **Oluştur**’u seçin.
+1. Azure Marketi 'nde **işlem**  >  **Windows Server 2019 Datacenter**' u seçin. **Oluştur**'u seçin.
 
 1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
 
@@ -144,7 +144,7 @@ Başka bir sanal makine oluşturmak için önceki bölümde bulunan yordamı tek
 1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
     > [!NOTE]
-    > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için > **farklı bir hesap kullan**' **ı seçmeniz gerekebilir**.
+    > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -171,7 +171,7 @@ Başka bir sanal makine oluşturmak için önceki bölümde bulunan yordamı tek
     Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
     ```
 
-    `ping` Başarısız olur, çünkü `ping` Internet Denetim ILETISI Protokolü 'nü (ICMP) kullanır. Varsayılan olarak, Windows Güvenlik Duvarı üzerinden ıCMP 'ye izin verilmez.
+    `ping`Başarısız olur, çünkü `ping` Internet Denetim Iletisi Protokolü 'NÜ (ICMP) kullanır. Varsayılan olarak, Windows Güvenlik Duvarı üzerinden ıCMP 'ye izin verilmez.
 
 1. *MyVm2* 'in daha sonraki bir *adımda ping yapmasına* izin vermek için şu komutu girin:
 

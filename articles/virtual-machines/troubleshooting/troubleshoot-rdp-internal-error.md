@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266929"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703800"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Azure VM'ye Uzak Masaüstü ile bağlanmaya çalıştığınızda dahili hata oluşuyor
 
@@ -59,7 +59,7 @@ Bu sorunu gidermek için, sanal makinenin işletim sistemi diskini bir kurtarma 
 ) kullanın:
 
         Netstat -anob |more
-2. TermService. exe 8080 bağlantı noktası kullanıyorsa, adım 2 ' ye gidin. TermService. exe ' den başka bir hizmet veya uygulama 8080 bağlantı noktası kullanıyorsa, aşağıdaki adımları izleyin:
+2. Termservice.exe 8080 bağlantı noktası kullanıyorsa adım 2 ' ye gidin. Termservice.exe dışında başka bir hizmet veya uygulama 8080 bağlantı noktası kullanıyorsa, aşağıdaki adımları izleyin:
 
     1. 3389 hizmetini kullanan uygulama için hizmeti durdurun:
 

@@ -5,18 +5,18 @@ services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bb5560164af2b573e6aaffd4e4c62bbe0dc24a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80350416"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211893"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Gen2 önbelleğini izleme
 
@@ -44,8 +44,8 @@ Aşağıdaki matris, önbellek ölçümlerinin değerlerine göre senaryolar anl
 
 |                                | **Yüksek önbellek isabet yüzdesi** | **Düşük önbellek isabet yüzdesi** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **Yüksek önbellek kullanılan yüzde** |          Senaryo 1           |          Senaryo 2          |
-| **Düşük önbellek kullanılan yüzde**  |          3. Senaryo           |          4. Senaryo          |
+| **Yüksek önbellek kullanılan yüzde** |          1\. Senaryo           |          2\. Senaryo          |
+| **Düşük önbellek kullanılan yüzde**  |          3\. Senaryo           |          4\. Senaryo          |
 
 **Senaryo 1:** Önbelleğinizi en iyi şekilde kullanıyorsunuz. Sorgularınızın yavaşlatılabilen diğer alanlarla [Ilgili sorunları giderin](sql-data-warehouse-manage-monitor.md) .
 

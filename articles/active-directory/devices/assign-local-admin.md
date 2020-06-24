@@ -4,19 +4,19 @@ description: Azure rollerini bir Windows cihazının yerel Yöneticiler grubuna 
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4285c7d8cd6c9feee84eaae3c49ffd1f21d5df27
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128890"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253095"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -26,7 +26,7 @@ Bu makalede, üyelik güncelleştirmesinin nasıl çalıştığı ve bir Azure A
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure AD JOIN kullanarak bir Windows cihazını Azure AD 'ye bağladığınızda, Azure AD, cihazdaki yerel Yöneticiler grubuna aşağıdaki güvenlik ilkelerini ekler:
+Azure AD JOIN kullanarak bir Windows cihazını Azure AD 'ye bağladığınızda, Azure AD aşağıdaki güvenlik sorumlularını cihazdaki yerel Yöneticiler grubuna ekler:
 
 - Azure AD Genel Yöneticisi rolü
 - Azure AD Cihaz Yöneticisi rolü 
@@ -79,7 +79,7 @@ Azure AD JOIN işlemini kullanmanın yanı sıra, düzenli bir kullanıcıyı be
  
 Ayrıca, komut istemi kullanarak da kullanıcı ekleyebilirsiniz:
 
-- Kiracı kullanıcılarınız şirket içi Active Directory eşitlendiğinde, kullanın `net localgroup administrators /add "Contoso\username"`.
+- Kiracı kullanıcılarınız şirket içi Active Directory eşitlendiğinde, kullanın `net localgroup administrators /add "Contoso\username"` .
 - Azure AD 'de kiracı kullanıcılarınız oluşturulduysa, şunu kullanın`net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler 

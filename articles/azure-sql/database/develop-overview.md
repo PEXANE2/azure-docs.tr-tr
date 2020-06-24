@@ -10,25 +10,26 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: 1d384bf4919589675dd6947fcb083585ebaf7e18
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344603"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254064"
 ---
-# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Uygulama geliştirmeye genel bakış-SQL veritabanı & SQL yönetilen örneği 
+# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Uygulama geliştirmeye genel bakış-SQL veritabanı & SQL yönetilen örneği
+
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Bu makalede, bir geliştiricinin Azure 'da veritabanınıza bağlanmak için kod yazarken dikkat edilmesi gereken temel noktalar anlatılmaktadır. Bu makale, Azure SQL veritabanı ve Azure SQL yönetilen örneği için geçerlidir.
 
 ## <a name="language-and-platform"></a>Dil ve platform
 
-Azure SQL veritabanı 'na bağlanmak ve veritabanını sorgulamak için çeşitli [programlama dillerini ve platformlarını](connect-query-content-reference-guide.md) kullanabilirsiniz. Azure SQL veritabanına bağlanmak için kullanabileceğiniz [örnek uygulamalar](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) bulabilirsiniz.
+Azure SQL veritabanı 'na bağlanmak ve veritabanını sorgulamak için çeşitli [programlama dillerini ve platformlarını](connect-query-content-reference-guide.md) kullanabilirsiniz. Veritabanına bağlanmak için kullanabileceğiniz [örnek uygulamalar](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) bulabilirsiniz.
 
 [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/)gibi açık kaynaklı araçlardan yararlanabilirsiniz. Ayrıca, Azure SQL Veritabanı [Visual Studio](https://www.visualstudio.com/downloads/) ve [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) gibi Microsoft araçlarıyla birlikte çalışır. Ayrıca, Azure portal, PowerShell ve REST API 'Lerini kullanarak ek üretkenlik elde etmenize yardımcı olabilirsiniz.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Azure SQL veritabanı 'na erişim, oturum açmalar ve güvenlik duvarları ile korunmaktadır. Azure SQL veritabanı hem SQL Server hem de [Azure Active Directory kimlik doğrulama](authentication-aad-overview.md) kullanıcılarını ve oturum açmaları destekler. Azure Active Directory oturum açma işlemleri yalnızca SQL yönetilen örneği 'nde kullanılabilir. 
 
@@ -44,7 +45,7 @@ Herhangi bir altyapı veya bağlantı hatası işlemi geri alabileceğinden uzun
 
 ## <a name="resiliency"></a>Dayanıklılık
 
-Azure SQL veritabanı, temeldeki altyapıda veya bulut varlıkları arasındaki iletişimde gerçekleşen geçici hataları beklebileceğiniz bir bulut hizmetidir. Azure SQL veritabanı geçişli altyapı hatalarında dayanıklı olsa da, bu arızalar bağlantınızı etkileyebilir. SQL veritabanına bağlanırken geçici bir hata oluştuğunda, kodunuzun [çağrıyı yeniden denemesi](troubleshoot-common-connectivity-issues.md)gerekir. Yeniden deneme mantığının geri alma mantığını kullanmasını öneririz. böylece, SQL veritabanını birden fazla istemciyi aynı anda yeniden dener. Yeniden deneme mantığı, [SQL veritabanı istemci programlarının hata iletilerine](troubleshoot-common-errors-issues.md)bağlıdır.
+Azure SQL veritabanı, temeldeki altyapıda veya bulut varlıkları arasındaki iletişimde gerçekleşen geçici hataları beklebileceğiniz bir bulut hizmetidir. Azure SQL veritabanı geçişli altyapı hatalarında dayanıklı olsa da, bu arızalar bağlantınızı etkileyebilir. SQL veritabanına bağlanırken geçici bir hata oluştuğunda, kodunuzun [çağrıyı yeniden denemesi](troubleshoot-common-connectivity-issues.md)gerekir. Aynı anda birden çok istemcisini yeniden denemeye yönelik hizmeti aşırı bir şekilde kapatmaması için, yeniden deneme mantığının geri alma mantığını kullanmasını öneririz. Yeniden deneme mantığı, [SQL veritabanı istemci programlarının hata iletilerine](troubleshoot-common-errors-issues.md)bağlıdır.
 
 Azure SQL veritabanınızda planlı bakım olaylarına hazırlanma hakkında daha fazla bilgi için bkz. Azure [SQL veritabanı 'Nda Azure bakım olaylarını planlama](planned-maintenance.md).
 

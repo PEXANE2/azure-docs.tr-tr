@@ -4,16 +4,16 @@ description: Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b065a79abe4a4f5c23e28be111b09e51e5e6484
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 0b2ef8a944af9f80dd65ce75869bcf4e3156c63f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667055"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254914"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
@@ -42,7 +42,7 @@ Bu bölümde, Windows 10 çoklu oturum veya Windows 10 Enterprise VM yansımanı
 
 ### <a name="prepare-your-image-for-teams"></a>Görüntünüzü takımlar için hazırlama
 
-Ekipte makine başına yüklemeyi etkinleştirmek için konakta aşağıdaki kayıt defteri anahtarını ayarlayın:
+Takımlar için medya iyileştirmesini etkinleştirmek üzere konakta aşağıdaki kayıt defteri anahtarını ayarlayın:
 
 1. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **HKEY_LOCAL_MACHINE \Software\microsoft\ekiplerine**gidin.
 2. Takımlar anahtarı için aşağıdaki değeri oluşturun:
@@ -57,29 +57,39 @@ Ekipte makine başına yüklemeyi etkinleştirmek için konakta aşağıdaki kay
 
 ### <a name="install-microsoft-teams"></a>Microsoft ekipleri 'nı yükler
 
-Ekipler masaüstü uygulamasını makine başına yükleme kullanarak dağıtabilirsiniz. Microsoft ekiplerinizi Windows sanal masaüstü ortamınıza yüklemek için:
+Ekipler masaüstü uygulamasını makine başına veya Kullanıcı başına yükleme kullanarak dağıtabilirsiniz. Microsoft ekiplerinizi Windows sanal masaüstü ortamınıza yüklemek için:
 
 1. Ortamınızla eşleşen [TAKıMLAR MSI paketini](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) indirin. 64 bitlik bir yükleyicinin bir 64 bit işletim sisteminde kullanılması önerilir.
 
       > [!NOTE]
       > Microsoft ekipleri için medya iyileştirmesi, takımlar masaüstü uygulaması sürüm 1.3.00.4461 veya üzerini gerektirir.
 
-2. MSI 'yi konak VM 'ye yüklemek için bu komutu çalıştırın.
+2. MSI 'yi konak VM 'ye yüklemek için aşağıdaki komutlardan birini çalıştırın:
 
-      ```console
-      msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
-      ```
+    - Kullanıcı başına yükleme
 
-      Bu, ekipleri 64 bitlik bir işletim sisteminde Program Files (x86) klasörüne ve 32 bit işletim sistemindeki Program Files klasörüne yüklenir. Bu noktada, altın görüntü kurulumu tamamlanmıştır. Kalıcı olmayan kurulum için makine başına takımlar yükleme gerekir.
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        ```
 
-      Ekipleri bir oturumda bir sonraki açışınızda kimlik bilgileriniz istenir.
+        Bu işlem, takımları **% AppData%** Kullanıcı klasörüne yükleyecek olan varsayılan yüklemedir. Ekipler, kalıcı olmayan bir kurulumda Kullanıcı başına yükleme ile düzgün çalışmaz.
 
-      > [!NOTE]
-      > Kullanıcılar ve Yöneticiler, oturum açma sırasında şu anda takımlar için otomatik başlatmayı devre dışı bırakamıyorum.
+    - Makine başına yükleme
 
-      MSI 'yi konak VM 'den kaldırmak için şu komutu çalıştırın:
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        ```
 
-      ```console
+        Bu, ekipleri 64 bitlik bir işletim sisteminde Program Files (x86) klasörüne ve 32 bit işletim sistemindeki Program Files klasörüne yüklenir. Bu noktada, altın görüntü kurulumu tamamlanmıştır. Kalıcı olmayan kurulum için makine başına takımlar yükleme gerekir.
+
+        Ekipleri bir oturumda bir sonraki açışınızda kimlik bilgileriniz istenir.
+
+        > [!NOTE]
+        > Kullanıcılar ve Yöneticiler, oturum açma sırasında şu anda takımlar için otomatik başlatmayı devre dışı bırakamıyorum.
+
+3. MSI 'yi konak VM 'den kaldırmak için şu komutu çalıştırın:
+
+      ```powershell
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
@@ -137,7 +147,7 @@ Windows sanal masaüstü ortamınızda takımlar masaüstü uygulamasıyla ilgil
 
 ## <a name="contact-microsoft-teams-support"></a>Microsoft ekipleri desteğiyle iletişim kurun
 
-Microsoft ekipleri desteğiyle iletişim kurmak için [Microsoft 365 yönetim merkezine](https://docs.microsoft.com/microsoft-365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=online)gidin.
+Microsoft ekipleri desteğiyle iletişim kurmak için [Microsoft 365 yönetim merkezine](/microsoft-365/admin/contact-support-for-business-products)gidin.
 
 ## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
 
@@ -145,7 +155,7 @@ Bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini, çok Monito
 
 Ekipleri medya iyileştirmesi ile kullanılırken cihaz yeniden yönlendirmelerini etkinleştirme gerekli değildir. Medya iyileştirmesi olmadan takımlar kullanıyorsanız, mikrofon ve kamera yeniden yönlendirmeyi etkinleştirmek için aşağıdaki RDP özelliklerini ayarlayın:
 
-- `audiocapturemode:i:1`Uzak oturumdaki yerel cihazdan ve redirets ses uygulamalarından ses yakalamaya izin vermez.
+- `audiocapturemode:i:1`Yerel cihazdan ses yakalamaya izin verebilir ve Uzak oturumdaki ses uygulamalarını yeniden yönlendirir.
 - `audiomode:i:0`Yerel bilgisayarda ses çalar.
 - `camerastoredirect:s:*`Tüm kameraları yeniden yönlendirir.
 

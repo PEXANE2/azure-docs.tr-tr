@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 2170a4d5f66cf6d1f699ae943f2a80b1b8127e39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc09cec1e6df9ec671fa98ae35562a639dce4cd8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146594"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707625"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Genel IP adresini bir sanal makineyle ilişkilendir
 
@@ -64,7 +64,7 @@ Genel IP adresini bir VM ile ilişkilendirmek için [Azure Portal](#azure-portal
 
 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)'yi veya Azure Cloud Shell kullanın. Azure Cloud Shell doğrudan Azure portalının içinde çalıştırabileceğiniz ücretsiz bir Bash kabuğudur. Azure CLI, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Aşağıdaki CLı komutlarında **deneyin** düğmesini seçin. **Dene** ' nin seçilmesi, ile Azure hesabınızda oturum açmak için kullanabileceğiniz bir Cloud Shell çağırır.
 
-1. CLı 'yi Bash içinde yerel olarak kullanıyorsanız, ile `az login`Azure 'da oturum açın.
+1. CLı 'yi Bash içinde yerel olarak kullanıyorsanız, ile Azure 'da oturum açın `az login` .
 2. Genel IP adresi, bir VM 'ye bağlı bir ağ arabiriminin IP yapılandırmasıyla ilişkilendirilir. Genel IP adresini bir IP yapılandırmasıyla ilişkilendirmek için [az Network Nic-ip-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) komutunu kullanın. Aşağıdaki örnek, *myVMPublicIP* adlı mevcut BIR genel IP adresini, *myresourcegroup*adlı bir kaynak grubunda bulunan *myvmvmnıc* adlı mevcut bir ağ ARABIRIMININ *ıpconfigmyvm* adlı IP yapılandırmasına ilişkilendirir.
   
    ```azurecli-interactive
@@ -119,7 +119,7 @@ Genel IP adresini bir VM ile ilişkilendirmek için [Azure Portal](#azure-portal
 
 [PowerShell](/powershell/azure/install-az-ps)'i yükleyip Azure Cloud Shell kullanın. Azure Cloud Shell doğrudan Azure portalının içinde çalıştırabileceğiniz ücretsiz bir kabuktur. PowerShell 'in önceden yüklenmiş ve hesabınızla birlikte kullanılmak üzere yapılandırılmış olması. İzleyen PowerShell komutlarında **deneyin** düğmesini seçin. **Dene** ' nin seçilmesi, ile Azure hesabınızda oturum açmak için kullanabileceğiniz bir Cloud Shell çağırır.
 
-1. PowerShell 'i yerel olarak kullanıyorsanız, ile `Connect-AzAccount`Azure 'da oturum açın.
+1. PowerShell 'i yerel olarak kullanıyorsanız, ile Azure 'da oturum açın `Connect-AzAccount` .
 2. Genel IP adresi, bir VM 'ye bağlı bir ağ arabiriminin IP yapılandırmasıyla ilişkilendirilir. Ağ arabiriminin içinde bulunduğu sanal ağı ve alt ağı almak için [Get-AzVirtualNetwork](/powershell/module/Az.Network/Get-AzVirtualNetwork) ve [Get-AzVirtualNetworkSubnetConfig](/powershell/module/Az.Network/Get-AzVirtualNetworkSubnetConfig) komutlarını kullanın. Ardından, var olan genel IP adresini almak için bir ağ arabirimi ve [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu almak üzere [Get-aznetworkınterface](/powershell/module/Az.Network/Get-AzNetworkInterface) komutunu kullanın. Daha sonra [set-Aznetworkınterfaceipconfig](/powershell/module/Az.Network/Set-AzNetworkInterfaceIpConfig) komutunu kullanarak genel IP adresini IP yapılandırmasıyla ve [set-aznetworkınterface](/powershell/module/Az.Network/Set-AzNetworkInterface) komutuyla ilişkilendirin ve ağ arabirimine yeni IP yapılandırmasını yazın.
 
    Aşağıdaki örnek, *myVMPublicIP* adlı mevcut BIR genel IP adresini, *myvmvnet*adlı bir sanal ağda *myvmsubnet* adlı bir alt ağda bulunan *myvmvmnıc* adlı mevcut BIR ağ arabiriminin *ıpconfigmyvm* adlı IP yapılandırmasına ilişkilendirir. Tüm kaynaklar *Myresourcegroup*adlı bir kaynak grubunda bulunur.
@@ -155,7 +155,7 @@ Genel IP adresini bir VM ile ilişkilendirmek için [Azure Portal](#azure-portal
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
      ```
 
-   - Ağ arabiriminin içinde bulunduğu sanal ağın veya alt ağın adını bilmiyorsanız, bu bilgileri görüntülemek için `Get-AzNetworkInterface` komutunu kullanın. Örneğin, aşağıdaki komut, *Myresourcegroup*adlı bir kaynak grubunda *Myvmvmnıc* adlı bir ağ arabirimi için sanal ağ ve alt ağ bilgilerini alır:
+   - Ağ arabiriminin içinde bulunduğu sanal ağın veya alt ağın adını bilmiyorsanız, bu `Get-AzNetworkInterface` bilgileri görüntülemek için komutunu kullanın. Örneğin, aşağıdaki komut, *Myresourcegroup*adlı bir kaynak grubunda *Myvmvmnıc* adlı bir ağ arabirimi için sanal ağ ve alt ağ bilgilerini alır:
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup

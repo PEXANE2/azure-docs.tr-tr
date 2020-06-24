@@ -2,7 +2,7 @@
 title: Machine Learning Services için önemli farklılıklar (Önizleme)
 description: Bu konuda, Azure SQL yönetilen örneği ve SQL Server Machine Learning Services arasındaki temel farklılıklar açıklanmaktadır Machine Learning Services.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: 02211a09df2d2744119ea8fbe6f0ecaa63dba020
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045112"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254757"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL yönetilen örneği ve SQL Server Machine Learning Services arasındaki önemli farklılıklar
 
@@ -48,7 +48,7 @@ SQL yönetilen örneği 'nde Machine Learning Services ve hem Python hem de R [g
   | SQL Yönetilen Örnek | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |
 
-- Aracılığıyla yapılandırmaya gerek yoktur `external scripts enabled` `sp_configure` . Önizlemeye [kaydolduktan](machine-learning-services-overview.md#signup) sonra, SQL veritabanınız için makine öğrenimi etkinleştirilmiştir.
+- Aracılığıyla yapılandırmaya gerek yoktur `external scripts enabled` `sp_configure` . Önizlemeye [kaydolduktan](machine-learning-services-overview.md#signup) sonra, makine öğrenimi Azure SQL yönetilen örneği için etkinleştirilir.
 
 ## <a name="packages"></a>Paketler
 
@@ -59,8 +59,8 @@ Python ve R paketi yönetimi, SQL yönetilen örneği ve SQL Server arasında fa
 
 Python ve R paketlerinin yönetilmesi hakkında daha fazla bilgi için bkz.:
 
-- [Python paket bilgilerini al](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
-- [R paketi bilgilerini al](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [Python paket bilgilerini alma](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [R paket bilgilerini alma](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
 
 ## <a name="resource-governance"></a>Kaynak idaresi
 

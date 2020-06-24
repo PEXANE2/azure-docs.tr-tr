@@ -4,15 +4,15 @@ description: Klasik dağıtım modelinde PowerShell kullanarak Application Gatew
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312545"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807283"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell kullanarak Azure Application Gateway (klasik) için özel bir araştırma oluşturma
 
@@ -136,32 +136,32 @@ Aşağıdaki örnek, bir yapılandırma dosyasının genel bağlantı noktası 8
 > [!IMPORTANT]
 > Http veya Https protokol öğesi büyük/küçük harf duyarlıdır.
 
-Özel araştırmaları yapılandırmak için \<yeni\> bir yapılandırma öğesi araştırması eklenmiştir.
+\<Probe\>Özel araştırmaları yapılandırmak için yeni bir yapılandırma öğesi eklenir.
 
 Yapılandırma parametreleri şunlardır:
 
 |Parametre|Açıklama|
 |---|---|
 |**Adı** |Özel araştırma için başvuru adı. |
-| **Protocol** | Protokol kullanıldı (olası değerler HTTP veya HTTPS 'DIR).|
-| **Ana bilgisayar** ve **yol** | Örnek sistem durumunu öğrenmek için uygulama ağ geçidi tarafından çağrılan URL yolunu doldurun. Örneğin, http:\//contoso.com/Web siteniz varsa, araştırma denetimleri için "http:\//contoso.com/path/custompath.htm" için özel ARAŞTıRMA, başarılı bir HTTP yanıtına sahip olacak şekilde yapılandırılabilir.|
+| **Protokol** | Protokol kullanıldı (olası değerler HTTP veya HTTPS 'DIR).|
+| **Ana bilgisayar** ve **yol** | Örnek sistem durumunu öğrenmek için uygulama ağ geçidi tarafından çağrılan URL yolunu doldurun. Örneğin, http:/contoso.com/Web siteniz varsa \/ , \/ araştırma denetimlerinin başarılı bir HTTP yanıtına sahip olması için "http:/contoso.com/path/custompath.htm" için özel araştırma yapılandırılabilir.|
 | **Interval** | Yoklama aralığı denetimlerini saniye cinsinden yapılandırır.|
-| **Aş** | Bir HTTP yanıt denetimi için araştırma zaman aşımını tanımlar.|
+| **Zaman aşımı** | Bir HTTP yanıt denetimi için araştırma zaman aşımını tanımlar.|
 | **Unhealthyıthreshold** | Arka uç örneğini *sağlıksız*olarak işaretlemek için gereken başarısız http yanıtlarının sayısı.|
 
-Hangi arka uç havuzunun özel araştırma ayarlarını \<kullanacağını atamak için backendhttpsettings\> yapılandırmasında Araştırma adına başvurulur.
+Yoklama adına, \<BackendHttpSettings\> hangi arka uç havuzunun özel araştırma ayarlarını kullanacağını atamak için yapılandırmada başvurulur.
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Mevcut bir Application Gateway 'e özel bir araştırma ekleyin
 
 Bir uygulama ağ geçidinin geçerli yapılandırmasını değiştirmek için üç adım gerekir: geçerli XML yapılandırma dosyasını alın, özel bir araştırmasını olacak şekilde değiştirin ve Application Gateway 'i yeni XML ayarlarıyla yapılandırın.
 
-1. Kullanarak `Get-AzureApplicationGatewayConfig`XML dosyasını alın. Bu cmdlet, araştırma ayarı eklemek için değiştirilecek yapılandırma XML 'sini dışa aktarır.
+1. Kullanarak XML dosyasını alın `Get-AzureApplicationGatewayConfig` . Bu cmdlet, araştırma ayarı eklemek için değiştirilecek yapılandırma XML 'sini dışa aktarır.
 
    ```powershell
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. XML dosyasını bir metin düzenleyicisinde açın. Öğesinden sonra `<probe>` `<frontendport>`bir bölüm ekleyin.
+1. XML dosyasını bir metin düzenleyicisinde açın. `<probe>`Öğesinden sonra bir bölüm ekleyin `<frontendport>` .
 
    ```xml
    <Probes>
@@ -192,7 +192,7 @@ Bir uygulama ağ geçidinin geçerli yapılandırmasını değiştirmek için ü
 
    XML dosyasını kaydedin.
 
-1. Kullanarak `Set-AzureApplicationGatewayConfig`, yeni XML dosyası ile uygulama ağ geçidi yapılandırmasını güncelleştirin. Bu cmdlet, uygulama ağ geçidinizi yeni yapılandırmayla güncelleştirir.
+1. Kullanarak, yeni XML dosyası ile uygulama ağ geçidi yapılandırmasını güncelleştirin `Set-AzureApplicationGatewayConfig` . Bu cmdlet, uygulama ağ geçidinizi yeni yapılandırmayla güncelleştirir.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"

@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732697"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254421"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory eşleme veri akışlarında SQL kesme hatası satırlarını işle
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Veri akışlarını eşleme kullanılırken Data Factory ortak bir senaryo, dönüştürülmüş verilerinizi bir Azure SQL veritabanına yazmaktır. Bu senaryoda, karşı engellemeniz gereken yaygın bir hata koşulunun olası sütun kesilmesi olabilir. Bir hedef dize sütununa sığmayan sütunların günlüğe kaydedilmesini sağlamak için bu adımları izleyin ve veri akışınız bu senaryolarda devam etmesine izin verir.
+Veri akışlarını eşleme kullanılırken Data Factory ortak bir senaryo, dönüştürülmüş verilerinizi Azure SQL veritabanı 'ndaki bir veritabanına yazmaktır. Bu senaryoda, karşı engellemeniz gereken yaygın bir hata koşulunun olası sütun kesilmesi olabilir. Bir hedef dize sütununa sığmayan sütunların günlüğe kaydedilmesini sağlamak için bu adımları izleyin ve veri akışınız bu senaryolarda devam etmesine izin verir.
 
 ## <a name="scenario"></a>Senaryo
 
-1. "Ad" adlı bir ```nvarchar(5)``` sütunu olan hedef BIR Azure SQL veritabanı tablosu sunuyoruz.
+1. "Ad" adlı bir sütunu olan bir hedef veritabanı tablosu sunuyoruz ```nvarchar(5)``` .
 
 2. Veri akışımız içinde, havuzumuzdaki film başlıklarını bu hedef "ad" sütununa eşlemek istiyoruz.
 
@@ -42,7 +42,7 @@ Bu video, veri akışınızda hata satırı işleme mantığını ayarlamaya ili
 
 2. Bu koşullu bölünmüş dönüşüm, en fazla "başlık" uzunluğunu beş olacak şekilde tanımlar. Beşten küçük veya buna eşit olan herhangi bir satır ```GoodRows``` akışa gider. Beşten büyük olan herhangi bir satır ```BadRows``` akışa gider.
 
-3. Şimdi başarısız olan satırları günlüğe kaydetmek istiyoruz. Günlüğe kaydetmek için ```BadRows``` akışa bir havuz dönüştürmesi ekleyin. Burada, tam işlem kaydının günlüğe kaydedilmesini sağlamak için tüm alanları "otomatik eşleme" yapacağız. Bu, blob depolamada tek bir dosyaya metin ile ayrılmış bir CSV dosya çıktıdır. "BadRows. csv" günlük dosyasını çağıracağız.
+3. Şimdi başarısız olan satırları günlüğe kaydetmek istiyoruz. ```BadRows```Günlüğe kaydetmek için akışa bir havuz dönüştürmesi ekleyin. Burada, tam işlem kaydının günlüğe kaydedilmesini sağlamak için tüm alanları "otomatik eşleme" yapacağız. Bu, blob depolamada tek bir dosyaya metin ile ayrılmış bir CSV dosya çıktıdır. "badrows.csv" günlük dosyasını çağıracağız.
 
     ![Hatalı satırlar](media/data-flow/error3.png)
     

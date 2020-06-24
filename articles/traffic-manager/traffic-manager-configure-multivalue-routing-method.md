@@ -4,20 +4,19 @@ description: Bu makalede, trafiği bir/AAAA uç noktalarına yönlendirmek üzer
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
-ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938772"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706826"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager çoklu değer yönlendirme yöntemini yapılandırma
 
@@ -38,7 +37,7 @@ Traffic Manager profili için bir kaynak grubu oluşturun.
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı trafiğini yönlendiren bir Traffic Manager profili oluşturun.
 
-1. Ekranın sol üst kısmında,**profil** > **Oluştur**Traffic Manager **kaynak** > **ağı** > oluştur ' u seçin.
+1. Ekranın sol üst kısmında, **Create a resource**  >  **Networking**  >  **profil**  >  **Oluştur**Traffic Manager kaynak ağı oluştur ' u seçin.
 2. **Traffic Manager profili oluştur**' da, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve **Oluştur**' u seçin:
     
     | Ayar                 | Değer                                              |
@@ -63,7 +62,7 @@ En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı traf
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Tür                    | Dış uç nokta                                   |
-    | Adı           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | Tam etki alanı adı (FQDN) veya IP           | Bu Traffic Manager profiline eklemek istediğiniz uç noktanın genel IP adresini yazın                         |
     |        |           |
 

@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: fdf726fd31e8b92a04a1c136eb5cd7110e0c6d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72333371"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707523"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Azure-PowerShell (Önizleme) ile standart Iç Load Balancer kullanarak IPv6 ikili yığın uygulaması dağıtma
 
@@ -38,9 +38,9 @@ IPv6 özellikli bir dahili Load Balancer oluşturma yordamı, [burada](virtual-n
 ```
 
 Yukarıdaki bir iç yük dengeleyici ön uç yapılandırmasını yapan değişiklikler şunlardır:
-- `PrivateIpAddressVersion` "IPv6" olarak belirtilir
-- `-PublicIpAddress` Bağımsız değişken atlanmış ya da ile `-PrivateIpAddress`değiştirildi. Özel adresin, iç yük dengeleyicinin dağıtılacağı alt ağ IP alanı aralığında olması gerektiğini unutmayın. Statik `-PrivateIpAddress` bir değer atlanırsa, Iç yük dengeleyicinin dağıtıldığı alt ağdan bir sonraki ücretsiz IPv6 adresi seçilir.
-- İç yük dengeleyicinin dağıtılacağı çift yığın alt ağı ya `-Subnet` `-SubnetId` da bir bağımsız değişkenle belirtilir.
+- `PrivateIpAddressVersion`"IPv6" olarak belirtilir
+- `-PublicIpAddress`Bağımsız değişken atlanmış ya da ile değiştirildi `-PrivateIpAddress` . Özel adresin, iç yük dengeleyicinin dağıtılacağı alt ağ IP alanı aralığında olması gerektiğini unutmayın. Statik bir `-PrivateIpAddress` değer atlanırsa, iç yük dengeleyicinin dağıtıldığı alt ağdan bir sonraki ücretsiz IPv6 adresi seçilir.
+- İç yük dengeleyicinin dağıtılacağı çift yığın alt ağı ya da bir `-Subnet` `-SubnetId` bağımsız değişkenle belirtilir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

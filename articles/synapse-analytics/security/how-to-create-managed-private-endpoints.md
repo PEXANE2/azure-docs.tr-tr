@@ -4,15 +4,16 @@ description: Bu makalede, Azure SYNAPSE çalışma alanından veri kaynakların�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983236"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193898"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Veri kaynağınıza yönetilen özel uç nokta oluşturma (Önizleme)
 
@@ -30,12 +31,12 @@ Azure SYNAPSE Studio 'da sol gezinti bölmesindeki **Yönet** sekmesini seçin. 
 
 ## <a name="step-3-select-the-data-source-type"></a>3. Adım: veri kaynağı türünü seçin
 
-Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS 2. hesabıdır. **Devam**'ı seçin.
+Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS 2. hesabıdır. **Devam**’ı seçin.
 ![Hedef veri kaynağı türü seçin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>4. Adım: veri kaynağıyla ilgili bilgileri girin
 
-Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, bir ADLS 2. hesabına yönetilen özel uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı**sağlayın. **Oluştur**’u seçin.
+Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, bir ADLS 2. hesabına yönetilen özel uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı**sağlayın. **Oluştur**'u seçin.
 ![Hedef veri kaynağı ayrıntılarını girin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>5. Adım: yönetilen özel uç noktanızın başarıyla oluşturulduğunu doğrulama

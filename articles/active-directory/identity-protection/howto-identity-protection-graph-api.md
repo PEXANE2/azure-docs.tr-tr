@@ -4,19 +4,19 @@ description: Microsoft Graph risk algılamalarını ve ilgili bilgileri nasıl s
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: reference
+ms.topic: how-to
 ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54b78526ea1409f22b000aed8b20db90dfc9d143
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671615"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253571"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
 
@@ -72,9 +72,9 @@ Başlamadan önce şunları yapmanız gerekir:
 
    1. **Tür**olarak, **Web uygulaması ve/veya Web API 'si**' ni seçin.
 
-   1. **Oturum açma URL 'si** metin kutusuna yazın `http://localhost`.
+   1. **Oturum açma URL 'si** metin kutusuna yazın `http://localhost` .
 
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 1. **Ayarlar** sayfasını açmak için, uygulamalar listesinde, yeni oluşturduğunuz uygulama kaydına tıklayın. 
 1. **Uygulama kimliğini**kopyalayın.
 
@@ -139,12 +139,12 @@ Bu noktada, şunları yapmanız gerekir:
 - İstemci KIMLIĞI 
 - Anahtar 
 
-Kimlik doğrulaması yapmak için, gövdesinde aşağıdaki parametrelerle `https://login.microsoft.com` öğesine bir post isteği gönderin:
+Kimlik doğrulaması yapmak için, gövdesinde aşağıdaki parametrelerle öğesine bir post isteği gönderin `https://login.microsoft.com` :
 
 - grant_type: "**client_credentials**"
 - Kaynak`https://graph.microsoft.com`
-- client_id: \<istemci kimliğiniz\>
-- client_secret: \<anahtarınız\>
+- client_id:\<your client ID\>
+- client_secret:\<your key\>
 
 Başarılı olursa, bir kimlik doğrulama belirteci döndürür.  
 API 'yi çağırmak için aşağıdaki parametreyle bir üst bilgi oluşturun:

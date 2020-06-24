@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126588"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704752"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki temel Zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -20,7 +20,7 @@ Bu en iyi yöntemler makalesi, küme işleçleri için temel Kubernetes zamanlam
 > [!div class="checklist"]
 > * Takımlara veya iş yüklerine sabit miktarda kaynak sağlamak için kaynak kotalarını kullanın
 > * Pod kesinti bütçelerini kullanarak zamanlanan bakımın etkisini sınırlayın
-> * `kube-advisor` Aracı kullanarak eksik Pod kaynak isteklerini ve sınırlarını denetleyin
+> * Aracı kullanarak eksik Pod kaynak isteklerini ve sınırlarını denetleyin `kube-advisor`
 
 ## <a name="enforce-resource-quotas"></a>Kaynak kotalarını zorla
 
@@ -77,7 +77,7 @@ Pod 'nin kaldırılmasına neden olan iki kesintiye neden olan olay vardır:
 
 Bir küme yükseltilmek veya bir dağıtım şablonu güncelleştiriliyorsa, Kubernetes Zamanlayıcı, isteğe bağlı kesinti olaylarının devam edebilmesi için diğer düğümlerde ek yığınların zamanlanmasını sağlar. Zamanlayıcı, tanımlanan düğüm sayısı kümedeki diğer düğümlerde başarıyla zamanlanana kadar bir düğüm yeniden başlatılmadan önce bekler.
 
-NGıNX çalıştıran beş Pod içeren bir çoğaltma kümesi örneğine göz atalım. Çoğaltma kümesindeki Dizin, etikete `app: nginx-frontend`atanır. Küme yükseltmesi gibi gönüllü bir kesinti olayı sırasında, en az üç Pod çalışmaya devam etmesini sağlamak istersiniz. *Pod kesintiler* için aşağıdaki YAML bildirimi, bu gereksinimleri tanımlar:
+NGıNX çalıştıran beş Pod içeren bir çoğaltma kümesi örneğine göz atalım. Çoğaltma kümesindeki Dizin, etikete atanır `app: nginx-frontend` . Küme yükseltmesi gibi gönüllü bir kesinti olayı sırasında, en az üç Pod çalışmaya devam etmesini sağlamak istersiniz. *Pod kesintiler* için aşağıdaki YAML bildirimi, bu gereksinimleri tanımlar:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -119,13 +119,13 @@ Pod kesinti bütçelerini kullanma hakkında daha fazla bilgi için bkz. [uygula
 
 ## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Kuin-Advisor ile küme sorunlarını düzenli olarak denetleme
 
-**En iyi Yöntem Kılavuzu** -kümenizdeki sorunları algılamak için `kube-advisor` açık kaynak aracının en son sürümünü düzenli olarak çalıştırın. Mevcut bir aks kümesinde kaynak kotaları uygularsanız, kaynak istekleri ve sınırları `kube-advisor` tanımlı olmayan bir pod bulmak için ilk olarak ' i çalıştırın.
+**En iyi Yöntem Kılavuzu** - `kube-advisor` kümenizdeki sorunları algılamak için açık kaynak aracının en son sürümünü düzenli olarak çalıştırın. Mevcut bir aks kümesinde kaynak kotaları uygularsanız, `kube-advisor` kaynak istekleri ve sınırları tanımlı olmayan bir pod bulmak için ilk olarak ' i çalıştırın.
 
 [Kuin-Advisor][kube-advisor] Aracı, bir Kubernetes kümesini tarayan ve bulduğu sorunlar hakkında rapor veren ilişkili bir aks açık kaynak projesidir. Tek bir faydalı denetim, kaynak istekleri ve sınırları olmayan Pod 'yi belirlemektir.
 
 Kumak-Advisor Aracı, Windows Uygulamaları ve Linux uygulamaları için pod özelliklerinin yanı sıra kaynak isteği ve limitleri rapor edebilir, ancak Kuto-Advisor aracının kendisi bir Linux pod üzerinde zamanlanmalıdır. Pod 'un yapılandırmasındaki [düğüm seçicisini][k8s-node-selector] kullanarak belirli bir işletim sistemine sahip bir düğüm havuzunda çalışacak bir pod zamanlayabilirsiniz.
 
-Birden çok geliştirme ekiplerini ve uygulamayı barındıran bir aks kümesinde, bu kaynak istekleri ve limitler kümesi olmadan Pod 'yi izlemek zor olabilir. En iyi uygulama olarak, özellikle de `kube-advisor` ad alanlarına kaynak kotaları atamadıysanız, aks kümelerinizde düzenli olarak çalışır.
+Birden çok geliştirme ekiplerini ve uygulamayı barındıran bir aks kümesinde, bu kaynak istekleri ve limitler kümesi olmadan Pod 'yi izlemek zor olabilir. En iyi uygulama olarak, `kube-advisor` özellikle de ad alanlarına kaynak kotaları atamadıysanız, AKS kümelerinizde düzenli olarak çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

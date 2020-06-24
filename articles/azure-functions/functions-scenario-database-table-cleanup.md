@@ -4,12 +4,12 @@ description: Düzenli aralıklarla satırları temizlemek için Azure SQL verita
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 18e310559cb0b88aac53b1020172847968616f97
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020345"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254285"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına bağlanma
 
@@ -21,15 +21,15 @@ C# işlevleriyle çalışırken ilk deneyiminize sahipseniz, [Azure Işlevleri C
 
 + Sürüm 2. x veya çalışma zamanının sonraki bir sürümünü hedefleyen bir yerel işlev uygulaması oluşturmak için [Visual Studio kullanarak ilk işlevinizi oluşturma](functions-create-your-first-function-visual-studio.md) makalesindeki adımları izleyin. Ayrıca, projenizi Azure 'da bir işlev uygulamasına yayımlamalısınız.
 
-+ Bu makalede, AdventureWorksLT örnek veritabanındaki **SalesOrderHeader** tablosunda toplu temizleme işlemini yürüten bir Transact-SQL komutu gösterilmektedir. AdventureWorksLT örnek veritabanını oluşturmak için [Azure Portal Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)makalesindeki adımları uygulayın.
++ Bu makalede, AdventureWorksLT örnek veritabanındaki **SalesOrderHeader** tablosunda toplu temizleme işlemini yürüten bir Transact-SQL komutu gösterilmektedir. AdventureWorksLT örnek veritabanını oluşturmak için [Azure Portal kullanarak Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)makalesindeki adımları uygulayın.
 
 + Bu hızlı başlangıç için kullandığınız bilgisayarın genel IP adresi için [sunucu düzeyinde bir güvenlik duvarı kuralı](../sql-database/sql-database-get-started-portal-firewall.md) eklemeniz gerekir. Bu kural, SQL veritabanı örneğine yerel bilgisayarınızdan erişebiliyor olması gerekir.  
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 
-[Azure Portal Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)işlemi tamamlandığında oluşturduğunuz veritabanı için bağlantı dizesini almanız gerekir.
+[Azure Portal kullanarak Azure SQL veritabanında veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)işlemi tamamlandığında oluşturduğunuz veritabanı için bağlantı dizesini almanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Sol taraftaki menüden **SQL veritabanları** ' nı seçin ve **SQL veritabanları** sayfasında veritabanınızı seçin.
 
@@ -51,11 +51,11 @@ Uygulamanızı daha önce Azure 'da yayımladınız. Daha önce yapmadıysanız,
 
     ![SQL bağlantı dizesi ayarı ekleyin.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
-    Bağlantı dizeleri Azure 'da (**uzak**) şifrelenmiş olarak depolanır. Sızan parolaların sızmasını engellemek için, yerel. Settings. JSON proje dosyası (**Yerel**),. gitignore dosyası kullanarak kaynak denetiminden dışlanmalıdır.
+    Bağlantı dizeleri Azure 'da (**uzak**) şifrelenmiş olarak depolanır. Sızan parolaların sızmasını engellemek için, proje dosyası (**Yerel**) üzerindeki local.settings.js,. gitignore dosyası kullanılarak olduğu gibi kaynak denetiminden dışlanmalıdır.
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>Projeye SqlClient paketini ekleme
 
-SqlClient kitaplığını içeren NuGet paketini eklemeniz gerekir. Bu veri erişim kitaplığı, bir SQL veritabanına bağlanmak için gereklidir.
+SqlClient kitaplığını içeren NuGet paketini eklemeniz gerekir. Bu veri erişim kitaplığı, SQL veritabanına bağlanmak için gereklidir.
 
 1. Visual Studio 2019 ' de yerel işlev uygulama projenizi açın.
 

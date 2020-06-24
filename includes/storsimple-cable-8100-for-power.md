@@ -25,7 +25,7 @@ ms.locfileid: "67188408"
    
     **8100 cihazda güç kabloları**
    
-   | Etiketle | Açıklama |
+   | Etiketle | Description |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |Denetleyici 1 |

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281203"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707319"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata 'tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -63,11 +63,11 @@ Aşağıdaki tabloda, Teradata bağlantılı hizmetine özgü JSON öğeleri iç
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **OnPremisesTeradata** olarak ayarlanmalıdır |Yes |
+| tür |Type özelliği: **OnPremisesTeradata** olarak ayarlanmalıdır |Yes |
 | sunucu |Teradata sunucusunun adı. |Yes |
 | authenticationType |Teradata veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: anonim, temel ve Windows. |Yes |
-| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |Hayır |
-| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |Hayır |
+| kullanıcı adı |Temel veya Windows kimlik doğrulamasını kullanıyorsanız Kullanıcı adını belirtin. |No |
+| password |Kullanıcı adı için belirttiğiniz kullanıcı hesabı için parola belirtin. |No |
 | gatewayName |Data Factory hizmetinin şirket içi Teradata veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
@@ -300,7 +300,7 @@ Verileri Teradata 'a taşırken, Teradata türünden .NET türüne aşağıdaki 
 | Sayı |Çift |
 | Small |Int16 |
 | Tarih |DateTime |
-| Zaman |TimeSpan |
+| Saat |TimeSpan |
 | Saat dilimiyle saat |Dize |
 | Zaman damgası |DateTime |
 | Saat dilimi Ile zaman damgası |DateTimeOffset |

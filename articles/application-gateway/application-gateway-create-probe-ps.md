@@ -5,15 +5,15 @@ description: PowerShell kullanarak Application Gateway için özel bir araştır
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a244cd17ecf1f6165936d86791f9b2e320666c2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312580"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807165"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure Resource Manager için PowerShell 'i kullanarak Azure Application Gateway için özel bir araştırma oluşturma
 
@@ -32,7 +32,7 @@ Bu makalede, var olan bir Application Gateway 'e PowerShell ile özel bir araşt
 
 ### <a name="sign-in-and-create-resource-group"></a>Oturum aç ve kaynak grubu oluştur
 
-1. Kimlik `Connect-AzAccount` doğrulamak için kullanın.
+1. `Connect-AzAccount`Kimlik doğrulamak için kullanın.
 
    ```powershell
    Connect-AzAccount
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Ön uç yapılandırma için genel bir IP adresi oluşturun
 
-Batı ABD bölgesi için **appgw-RG** kaynak grubunda genel bir IP kaynak **publicıp01** oluşturun. Bu örnek, uygulama ağ geçidinin ön uç IP adresi için genel bir IP adresi kullanır.  Application Gateway genel IP adresinin dinamik olarak oluşturulmuş bir DNS adına sahip olmasını gerektirir, `-DomainNameLabel` bu nedenle genel IP adresi oluşturma sırasında belirtilemez.
+Batı ABD bölgesi için **appgw-RG** kaynak grubunda genel bir IP kaynak **publicıp01** oluşturun. Bu örnek, uygulama ağ geçidinin ön uç IP adresi için genel bir IP adresi kullanır.  Application Gateway genel IP adresinin dinamik olarak oluşturulmuş bir DNS adına sahip olmasını gerektirir, bu nedenle `-DomainNameLabel` genel IP adresi oluşturma sırasında belirtilemez.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic

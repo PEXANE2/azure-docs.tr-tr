@@ -5,21 +5,19 @@ description: Azure Machine Learning Studio (klasik) sürümünde yeni eğitilen 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 601717ce487f8564ed2d431db9b31a3b43fcee75
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217928"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706095"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Makine öğrenimi modelini yeniden eğitme ve dağıtma
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Yeniden eğitim, makine öğrenimi modellerinin doğru kalmasını sağlamanın ve kullanılabilir en uygun verilere göre bir yoldur. Bu makalede, bir makine öğrenimi modelinin Studio 'da yeni bir Web hizmeti olarak nasıl yeniden eğitilmesi ve dağıtılması gösterilmektedir (klasik). Klasik bir Web hizmetini yeniden eğiteyorsanız, [Bu nasıl yapılır makalesini görüntüleyin.](retrain-classic-web-service.md)
 
@@ -61,14 +59,14 @@ Bu örnekte, yeniden eğitim uygulaması oluşturmak Için C# kullanıyoruz. Bu 
 
 Yeniden eğitim API 'Lerini çağırmak için aşağıdaki adımları kullanın:
 
-1. Visual Studio 'da bir C# konsol uygulaması oluşturun: **Yeni** > **Proje** > **Visual C#** > **Windows Klasik Masaüstü** > **konsol uygulaması (.NET Framework)**.
+1. Visual Studio 'da bir C# konsol uygulaması oluşturun: **Yeni**  >  **Proje**  >  **Visual C#**  >  **Windows Klasik Masaüstü**  >  **konsol uygulaması (.NET Framework)**.
 1. Machine Learning Web Hizmetleri portalında oturum açın.
 1. Üzerinde çalıştığınız Web hizmetine tıklayın.
 1. **Tüketme**' ye tıklayın.
 1. Kullanım **sayfasının en** altında, **örnek kod** bölümünde **toplu işlem**' e tıklayın.
 1. Toplu yürütme için örnek C# kodunu kopyalayın ve Program.cs dosyasına yapıştırın. Ad alanının bozulmadan kaldığından emin olun.
 
-Açıklamalarda belirtilen Microsoft. AspNet. WebApi. Client NuGet paketini ekleyin. Başvuruyu Microsoft. WindowsAzure. Storage. dll ' ye eklemek için [Azure Storage Hizmetleri için istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage)'nı yüklemeniz gerekebilir.
+Açıklamalarda belirtilen Microsoft. AspNet. WebApi. Client NuGet paketini ekleyin. Microsoft.WindowsAzure.Storage.dll başvurusunu eklemek için, [Azure depolama hizmetleri için istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage)'nı yüklemeniz gerekebilir.
 
 Aşağıdaki ekran görüntüsünde, Azure Machine Learning Web Hizmetleri portalındaki **kullanma sayfası gösterilmektedir** .
 
@@ -84,7 +82,7 @@ Kullanım sayfasının **temel tüketim bilgileri** bölümünde, birincil **Con
 
 ### <a name="update-the-azure-storage-information"></a>Azure depolama bilgilerini güncelleştirme
 
-BES örnek kodu, yerel sürücüden bir dosyayı (örneğin, "C:\temp\censusınput,CSV") Azure depolama 'ya yükler, işler ve sonuçları Azure depolama 'ya geri yazar.
+BES örnek kodu bir dosyayı yerel sürücüden (örneğin, "C:\temp\CensusInput.csv") Azure depolama 'ya yükler, işler ve sonuçları Azure depolama 'ya geri yazar.
 
 1. Azure portalda oturum açma
 1. Sol gezinti sütununda, **diğer hizmetler**' e tıklayın, **depolama hesapları**' nı arayın ve seçin.
@@ -104,7 +102,7 @@ Ayrıca, giriş dosyasının kodda belirttiğiniz konumda kullanılabilir olduğ
 
 ### <a name="specify-the-output-location"></a>Çıkış konumunu belirtin
 
-Istek yükünde çıkış konumunu belirttiğinizde, bu dosyanın *Relativelocation* 'da belirtilen uzantısının olarak `ilearner`belirtilmesi gerekir.
+Istek yükünde çıkış konumunu belirttiğinizde, bu dosyanın *Relativelocation* 'da belirtilen uzantısının olarak belirtilmesi gerekir `ilearner` .
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {

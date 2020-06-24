@@ -3,15 +3,15 @@ title: Azure 'dan SQL 'e aktarma Application Insights | Microsoft Docs
 description: Application Insights verileri sürekli olarak SQL 'e Stream Analytics kullanarak dışarı aktarın.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 811d86c0a9b8e55f548046402885e2ec5967c477
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536922"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254693"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>İzlenecek yol: Application Insights Stream Analytics kullanarak SQL 'e aktarma
-Bu makalede, [sürekli dışa aktarma][export] ve [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri VERILERINIZI [Azure Application Insights][start] Azure SQL veritabanına nasıl taşıyacağınız gösterilmektedir. 
+Bu makalede, [azure Application Insights][start] [sürekli dışa aktarma][export] ve [Azure Stream ANALYTICS](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri verilerinizi Azure SQL veritabanı 'na nasıl taşıyacağınız gösterilmektedir. 
 
 Sürekli dışarı aktarma, telemetri verilerinizi JSON biçiminde Azure depolama 'ya taşılar. Azure Stream Analytics kullanarak JSON nesnelerini ayrıştıracağız ve bir veritabanı tablosunda satır oluşturacak.
 
@@ -70,7 +70,7 @@ Sürekli dışarı aktarma, verileri her zaman bir Azure depolama hesabına çı
    
     Yol adının, uygulama adı ve izleme anahtarından türetilen ortak bölümünü bir yere göz önünde bir şekilde oluşturun. 
 
-Olaylar JSON biçimindeki blob dosyalarına yazılır. Her dosya bir veya daha fazla olay içerebilir. Bu nedenle, olay verilerini okumak ve istediğimiz alanları filtrelemek istiyoruz. Verilerle yaptığımız her türlü şey vardır, ancak bugün planımız, verileri bir SQL veritabanına taşımak için Stream Analytics kullanmaktır. Bu, çok sayıda ilginç sorgunun çalıştırılmasını kolaylaştırır.
+Olaylar JSON biçimindeki blob dosyalarına yazılır. Her dosya bir veya daha fazla olay içerebilir. Bu nedenle, olay verilerini okumak ve istediğimiz alanları filtrelemek istiyoruz. Verilerle yaptığımız her türlü şey vardır, ancak bugün planımız verileri SQL veritabanı 'na taşımak için Stream Analytics kullanmaktır. Bu, çok sayıda ilginç sorgunun çalıştırılmasını kolaylaştırır.
 
 ## <a name="create-an-azure-sql-database"></a>Azure SQL Veritabanı oluşturma
 [Azure Portal][portal]' de aboneliğinizden başladıktan sonra, verileri yazacağınız veritabanını (ve yeni bir sunucuyu) oluşturun.
@@ -220,7 +220,7 @@ Varsayılan sorguyu ile değiştirin:
 
 ![Stream Analytics 'te çıktılar ' i seçin.](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
-SQL veritabanını belirtin.
+Veritabanını belirtin.
 
 ![Veritabanınızın ayrıntılarını girin](./media/code-sample-export-sql-stream-analytics/SA007.png)
 

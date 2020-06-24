@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281073"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707166"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory zamanlama ve yürütme
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "79281073"
 Bu makalede Azure Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. Bu makalede etkinlik, işlem hatları, bağlı hizmetler ve veri kümeleri dahil olmak üzere Data Factory uygulama modeli kavramlarının temelleri anladığınızı varsaymaktadır. Azure Data Factory temel kavramları için aşağıdaki makalelere bakın:
 
 * [Data Factory'ye Giriş](data-factory-introduction.md)
-* [İşlem hatları](data-factory-create-pipelines.md)
+* [Pipelines](data-factory-create-pipelines.md)
 * [Veri kümeleri](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>İşlem hattının başlangıç ve bitiş zamanları
@@ -61,7 +61,7 @@ Bir Data Factory işlem hattındaki etkinlik sıfır veya daha fazla giriş **ve
 
 **Kullanılabilirlik** bölümündeki **Sıklık** , zaman birimini belirtir. Sıklık için izin verilen değerler şunlardır: dakika, saat, gün, hafta ve ay. Kullanılabilirlik bölümünde **Interval** özelliği sıklık için bir çarpan belirtir. Örneğin: sıklık gün olarak ayarlanmışsa ve Interval bir çıkış veri kümesi için 1 olarak ayarlandıysa, çıkış verileri günlük olarak üretilir. Sıklığı dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir. 
 
-Aşağıdaki örnekte, giriş verileri saatlik olarak kullanılabilir ve çıktı verileri saatlik (`"frequency": "Hour", "interval": 1`) üretilir. 
+Aşağıdaki örnekte, giriş verileri saatlik olarak kullanılabilir ve çıktı verileri saatlik ( `"frequency": "Hour", "interval": 1` ) üretilir. 
 
 **Giriş veri kümesi:** 
 
@@ -186,12 +186,12 @@ Aşağıdaki tabloda **kullanılabilirlik** bölümünde kullanabileceğiniz öz
 | --- | --- | --- | --- |
 | frequency |Veri kümesi dilimi üretiminin zaman birimini belirtir.<br/><br/><b>Desteklenen sıklık</b>: dakika, saat, gün, hafta, ay |Yes |NA |
 | interval |Sıklık için bir çarpan belirtir<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler.<br/><br/>Veri kümesinin saatlik olarak dilimlendirilecekliğine ihtiyaç duyuyorsanız <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/><b>Note</b>: sıklık değerini dakika olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız önerilir |Yes |NA |
-|  stili |Dilimin aralığın başlangıcında/sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul><br/><br/>Sıklık değeri month olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim ayın son gününde oluşturulur. Stil StartOfInterval olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>Sıklık, gün olarak ayarlanır ve stil, Endofınterval olarak ayarlanırsa, dilim günün son saati içinde oluşturulur.<br/><br/>Sıklık değeri Hour olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM – 2 dönemi için dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
-| anchorDateTime |Veri kümesi dilim sınırlarını hesaplamak için Zamanlayıcı tarafından kullanılan mutlak konumu tanımlar. <br/><br/><b>Note</b>: anchordatetime değerinin sıklığından daha ayrıntılı olan tarih bölümleri varsa, daha ayrıntılı parçalar yok sayılır. <br/><br/>Örneğin, <b>Aralık</b> <b>saatlik</b> (sıklık: Hour ve Interval: 1) ve <b>anchordatetime</b> değeri <b>dakika ve saniye</b>içeriyorsa, anchordatetime değerinin <b>dakika ve saniye</b> kısımları yok sayılır. |Hayır |01/01/0001 |
-| uzaklık |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/><b>Note</b>: hem anchordatetime hem de kaydır belirtilirse, sonuç Birleşik kaydırmadır. |Hayır |NA |
+| stil |Dilimin aralığın başlangıcında/sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul><br/><br/>Sıklık değeri month olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim ayın son gününde oluşturulur. Stil StartOfInterval olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>Sıklık, gün olarak ayarlanır ve stil, Endofınterval olarak ayarlanırsa, dilim günün son saati içinde oluşturulur.<br/><br/>Sıklık değeri Hour olarak ayarlanmışsa ve Style, Endofınterval olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM – 2 dönemi için dilim için dilim 2 PM 'de oluşturulur. |No |Endofınterval |
+| anchorDateTime |Veri kümesi dilim sınırlarını hesaplamak için Zamanlayıcı tarafından kullanılan mutlak konumu tanımlar. <br/><br/><b>Note</b>: anchordatetime değerinin sıklığından daha ayrıntılı olan tarih bölümleri varsa, daha ayrıntılı parçalar yok sayılır. <br/><br/>Örneğin, <b>Aralık</b> <b>saatlik</b> (sıklık: Hour ve Interval: 1) ve <b>anchordatetime</b> değeri <b>dakika ve saniye</b>içeriyorsa, anchordatetime değerinin <b>dakika ve saniye</b> kısımları yok sayılır. |No |01/01/0001 |
+| uzaklık |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/><b>Note</b>: hem anchordatetime hem de kaydır belirtilirse, sonuç Birleşik kaydırmadır. |No |NA |
 
 ### <a name="offset-example"></a>fark örneği
-Varsayılan olarak, günlük (`"frequency": "Day", "interval": 1`) dilimleri 12: UTC saat (gece yarısı) ile başlar. Başlangıç saatinin 6 ' dan UTC zamanı olmasını istiyorsanız, sapmayı aşağıdaki kod parçacığında gösterildiği gibi ayarlayın: 
+Varsayılan olarak, günlük ( `"frequency": "Day", "interval": 1` ) dilimleri 12: UTC saat (gece yarısı) ile başlar. Başlangıç saatinin 6 ' dan UTC zamanı olmasını istiyorsanız, sapmayı aşağıdaki kod parçacığında gösterildiği gibi ayarlayın: 
 
 ```json
 "availability":
@@ -202,7 +202,7 @@ Varsayılan olarak, günlük (`"frequency": "Day", "interval": 1`) dilimleri 12:
 }
 ```
 ### <a name="anchordatetime-example"></a>anchorDateTime örneği
-Aşağıdaki örnekte, veri kümesi her 23 saatte bir oluşturulur. İlk dilim, (UTC saati) olarak `2017-04-19T08:00:00` ayarlanan anchordatetime tarafından belirtilen saatte başlar.
+Aşağıdaki örnekte, veri kümesi her 23 saatte bir oluşturulur. İlk dilim, `2017-04-19T08:00:00` (UTC saati) olarak ayarlanan anchorDateTime tarafından belirtilen saatte başlar.
 
 ```json
 "availability":    
@@ -214,7 +214,7 @@ Aşağıdaki örnekte, veri kümesi her 23 saatte bir oluşturulur. İlk dilim, 
 ```
 
 ### <a name="offsetstyle-example"></a>fark/stil örneği
-Aşağıdaki veri kümesi aylık bir veri kümesidir ve 8:00 (`3.08:00:00`) adresindeki her ay üzerinde üretilir:
+Aşağıdaki veri kümesi aylık bir veri kümesidir ve 8:00 () adresindeki her ay üzerinde üretilir `3.08:00:00` :
 
 ```json
 "availability": {
@@ -230,10 +230,10 @@ Bir veri kümesinde, bir dilim yürütmesi tarafından oluşturulan verilerin t�
 
 DataSet tanımındaki **ilke** bölümü, veri kümesi dilimlerinin yerine getirilmesi gereken ölçütü veya koşulu tanımlar. Aşağıdaki tabloda, **ilke** bölümünde kullanabileceğiniz özellikler açıklanmaktadır:
 
-| İlke Adı | Açıklama | Uygulanan | Gerekli | Varsayılan |
+| İlke Adı | Description | Uygulanan | Gerekli | Varsayılan |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Bir **Azure blobundaki** verilerin en düşük boyut gereksinimlerini (megabayt cinsinden) karşıladığını doğrular. |Azure Blob |Hayır |NA |
-| minimumRows | Bir **Azure SQL veritabanındaki** veya bir **Azure tablosundaki** verilerin en az sayıda satırı içerdiğini doğrular. |<ul><li>Azure SQL Veritabanı</li><li>Azure Tablosu</li></ul> |Hayır |NA |
+| minimumSizeMB | Bir **Azure blobundaki** verilerin en düşük boyut gereksinimlerini (megabayt cinsinden) karşıladığını doğrular. |Azure Blob |No |NA |
+| minimumRows | Bir **Azure SQL veritabanındaki** veya bir **Azure tablosundaki** verilerin en az sayıda satırı içerdiğini doğrular. |<ul><li>Azure SQL Veritabanı</li><li>Azure Tablosu</li></ul> |No |NA |
 
 #### <a name="examples"></a>Örnekler
 **minimumSizeMB:**
@@ -266,7 +266,7 @@ Bu özellikler ve örnekler hakkında daha fazla bilgi için bkz. [veri kümesi 
 ## <a name="activity-policies"></a>Etkinlik ilkeleri
 İlkeler, özellikle bir tablonun dilimi işlendiğinde bir etkinliğin çalışma zamanı davranışını etkiler. Aşağıdaki tabloda ayrıntılar verilmektedir.
 
-| Özellik | İzin verilen değerler | Varsayılan Değer | Açıklama |
+| Özellik | İzin verilen değerler | Varsayılan değer | Description |
 | --- | --- | --- | --- |
 | eşzamanlılık |Tamsayı <br/><br/>En büyük değer: 10 |1 |Etkinliğin eşzamanlı yürütmelerinin sayısı.<br/><br/>Farklı dilimlerde gerçekleşebileceğini paralel etkinlik yürütmelerinin sayısını belirler. Örneğin, bir etkinliğin büyük bir kullanılabilir veri kümesiyle geçmesi gerekiyorsa daha büyük bir eşzamanlılık değeri, veri işlemeyi hızlandırır. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |İşlenmekte olan veri dilimlerinin sıralamasını belirler.<br/><br/>Örneğin, 2 dilimdeyse (4pm 'de bir diğeri, 5 pm 'de bir diğeri) ve her ikisi de yürütme bekleniyor. ExecutionPriorityOrder 'ı NewestFirst olarak ayarlarsanız, önce 5 PM 'deki dilim işlenir. Benzer şekilde, önce executionPriorityORder değerini Oldestolarak ayarlarsanız, 4 PM 'deki dilim işlenir. |

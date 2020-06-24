@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a9a3aaecc854ddb710f19bcb3d455c63b3a8bef
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195358"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706180"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma
 
@@ -39,9 +39,9 @@ Henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik olu�
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **Kullanıcı atandı** yazın ve **Kullanıcı tarafından atanan yönetilen kimlik**' e tıklayın.
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. Yönetilen Kimliğiniz için bir ad girin, doğru aboneliği, kaynak grubunu ve konumu seçin.
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 
 Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](hdinsight-managed-identities.md).
 
@@ -54,7 +54,7 @@ Azure Data Lake Storage 2. depolama hesabı oluşturun.
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol üst köşedeki **kaynak oluştur ' a**tıklayın.
 1. Arama kutusuna **depolama** yazın ve **depolama hesabı**' na tıklayın.
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. **Depolama hesabı oluştur** ekranında:
     1. Doğru aboneliği ve kaynak grubunu seçin.
     1. Data Lake Storage 2. hesabınız için bir ad girin.
@@ -100,7 +100,7 @@ Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne
 
 Örnek bir [şablon dosyası indirebilir](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) ve [örnek bir parametre dosyası indirebilirsiniz](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Aşağıdaki şablon ve Azure CLı kod parçacığını kullanmadan önce aşağıdaki yer tutucuları doğru değerlerle değiştirin:
 
-| Yer tutucu | Açıklama |
+| Yer tutucu | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Azure aboneliğinizin KIMLIĞI |
 | `<RESOURCEGROUPNAME>` | Yeni küme ve depolama hesabının oluşturulmasını istediğiniz kaynak grubu. |
@@ -116,7 +116,7 @@ Aşağıdaki kod parçacığı aşağıdaki ilk adımları yapar:
 1. Yeni dağıtım etkinlikleri için yeni bir kaynak grubu oluşturur.
 1. Kullanıcı tarafından atanan yönetilen kimlik oluşturur.
 1. Data Lake Storage 2. özelliklerini kullanmak için Azure CLı 'ya bir uzantı ekler.
-1. `--hierarchical-namespace true` Bayrağını kullanarak yeni bir Data Lake Storage 2. hesabı oluşturur.
+1. Bayrağını kullanarak yeni bir Data Lake Storage 2. hesabı oluşturur `--hierarchical-namespace true` .
 
 ```azurecli
 az login
@@ -167,9 +167,9 @@ ACL 'lerle ilgili dosya izinleri hakkında daha fazla bilgi için bkz. [dosya ve
 
 HDInsight kümenizin Data Lake Storage 2. içindeki dosyalara erişme özelliği, Yönetilen kimlikler aracılığıyla denetlenir. Yönetilen kimlik, kimlik bilgileri Azure tarafından yönetilen Azure Active Directory (Azure AD) ' de kayıtlı bir kimliktir. Yönetilen kimliklerle, hizmet sorumlularını Azure AD 'ye kaydetmeniz gerekmez. Ya da sertifikalar gibi kimlik bilgilerini saklayın.
 
-Azure hizmetlerinin iki tür yönetilen kimliği vardır: sistem tarafından atanan ve Kullanıcı tarafından atanan. HDInsight Data Lake Storage 2. erişmek için Kullanıcı tarafından atanan Yönetilen kimlikler kullanır. Tek `user-assigned managed identity` başına bir Azure kaynağı olarak oluşturulur. Bir oluşturma işlemi çerçevesinde, Azure kullanılan abonelik tarafından güvenilen Azure AD kiracısında bir kimlik oluşturur. Kimlik oluşturulduktan sonra, bir veya birden çok Azure hizmet örneğine atanabilir.
+Azure hizmetlerinin iki tür yönetilen kimliği vardır: sistem tarafından atanan ve Kullanıcı tarafından atanan. HDInsight Data Lake Storage 2. erişmek için Kullanıcı tarafından atanan Yönetilen kimlikler kullanır. `user-assigned managed identity`Tek başına bir Azure kaynağı olarak oluşturulur. Bir oluşturma işlemi çerçevesinde, Azure kullanılan abonelik tarafından güvenilen Azure AD kiracısında bir kimlik oluşturur. Kimlik oluşturulduktan sonra, bir veya birden çok Azure hizmet örneğine atanabilir.
 
-Kullanıcı tarafından atanan kimliğin yaşam döngüsü, bu kimliğin atandığı Azure hizmet örneklerinin yaşam döngüsünden ayrı olarak yönetilir. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nasıl çalışır?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work).
+Kullanıcı tarafından atanan kimliğin yaşam döngüsü, bu kimliğin atandığı Azure hizmet örneklerinin yaşam döngüsünden ayrı olarak yönetilir. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Nasıl yaparım?, Azure AD kullanıcılarının Hive veya diğer hizmetleri kullanarak Data Lake Storage 2. verileri sorgulaması için izinleri ayarlamak ister misiniz?
 
@@ -199,7 +199,7 @@ HDInsight kümesinden Data Lake Storage 2. dosyalara erişmek için çeşitli yo
 
 ### <a name="data-access-examples"></a>Veri erişimi örnekleri
 
-Örnekler, kümenin baş düğümüne bir [ssh bağlantısını](./hdinsight-hadoop-linux-use-ssh-unix.md) temel alır. Örneklerde, üç URI şeması da kullanılır. Ve `CONTAINERNAME` `STORAGEACCOUNT` değerlerini ilgili değerlerle değiştirin
+Örnekler, kümenin baş düğümüne bir [ssh bağlantısını](./hdinsight-hadoop-linux-use-ssh-unix.md) temel alır. Örneklerde, üç URI şeması da kullanılır. `CONTAINERNAME`Ve `STORAGEACCOUNT` değerlerini ilgili değerlerle değiştirin
 
 #### <a name="a-few-hdfs-commands"></a>Birkaç bir bu komut
 
@@ -235,7 +235,7 @@ HDInsight kümesinden Data Lake Storage 2. dosyalara erişmek için çeşitli yo
 
 #### <a name="creating-a-hive-table"></a>Hive tablosu oluşturma
 
-Üç dosya konumu tanım amacıyla gösterilmiştir. Gerçek yürütme için `LOCATION` girdilerden yalnızca birini kullanın.
+Üç dosya konumu tanım amacıyla gösterilmiştir. Gerçek yürütme için girdilerden yalnızca birini kullanın `LOCATION` .
 
 ```hql
 DROP TABLE myTable;

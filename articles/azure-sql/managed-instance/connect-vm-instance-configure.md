@@ -3,7 +3,7 @@ title: Azure VM bağlantısını yapılandırma
 titleSuffix: Azure SQL Managed Instance
 description: Azure sanal makinesinden SQL Server Management Studio kullanarak Azure SQL yönetilen örneğine bağlanın.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 9cfb8d2f9c7a04c519674856ca0e5603e0f9f782
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219750"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706367"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL yönetilen örneğine bağlanmak için bir Azure VM yapılandırma
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -49,14 +49,14 @@ Aşağıdaki adımlar, Azure sanal makinesinin yönetilen örneğe bağlanabilme
 
 3. Bu tablodaki bilgileri kullanarak formu doldurun:
 
-   | Ayar| Önerilen değer | Açıklama |
+   | Ayar| Önerilen değer | Description |
    | ---------------- | ----------------- | ----------- |
    | **Adı** | Geçerli bir ad|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming).|
    | **Adres aralığı (CIDR bloğu)** | Geçerli bir Aralık | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Ağ güvenlik grubu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Yol tablosu** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Ağ güvenlik grubu** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Yol tablosu** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
    | **Hizmet uç noktaları** | 0 seçili | Bu hızlı başlangıç için varsayılan değer iyidir.|
-   | **Alt ağ temsilcisi** | Hiçbiri | Bu hızlı başlangıç için varsayılan değer iyidir.|
+   | **Alt ağ temsilcisi** | Yok | Bu hızlı başlangıç için varsayılan değer iyidir.|
 
    ![İstemci VM için yeni SQL yönetilen örnek alt ağı](./media/connect-vm-instance-configure/new-subnet.png)
 
@@ -78,7 +78,7 @@ Tüm gerekli araçlarla istemci sanal makinesi oluşturmanın en kolay yolu Azur
 
 2. Aşağıdaki tabloda bulunan bilgileri kullanarak formu doldurun:
 
-   | Ayar| Önerilen değer | Açıklama |
+   | Ayar| Önerilen değer | Description |
    | ---------------- | ----------------- | ----------- |
    | **Abonelik** | Geçerli bir abonelik | Yeni kaynaklar oluşturmak için izninizin olduğu bir abonelik olmalıdır. |
    | **Kaynak grubu** |[SQL yönetilen örneği oluşturma](instance-create-quickstart.md) hızlı başlangıç bölümünde belirttiğiniz kaynak grubu|Bu kaynak grubu, VNet 'in bulunduğu bir kaynak olmalıdır.|

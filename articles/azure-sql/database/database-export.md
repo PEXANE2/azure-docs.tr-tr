@@ -1,7 +1,7 @@
 ---
 title: Bir Azure SQL veritabanını BACPAC dosyasına dışarı aktarma (Azure portal)
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: Azure portal kullanarak bir Azure SQL veritabanını BACPAC dosyasına aktarın.
+description: Azure portal kullanarak bir veritabanını BACPAC dosyasına dışarı aktarın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,20 +11,20 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22dd4286b77fd93ca595d48706cf5760808428a9
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: a8fb5675f086402bd5e5970fd856fce51220e8f4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322983"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253520"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC dosyasına aktarma-Azure SQL veritabanı ve Azure SQL yönetilen örneği
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Arşivleme için bir veritabanını dışarı veya başka bir platforma taşımak istediğinizde, veritabanı şemasını ve verileri [bacpac](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) dosyasına dışarı aktarabilirsiniz. BACPAC dosyası, bir BACPAC uzantısı olan ve veritabanından meta verileri ve verileri içeren bir ZIP dosyasıdır. BACPAC dosyası, Azure Blob depolama alanında veya yerel depolama alanında Şirket içi bir konumda depolanabilir ve daha sonra Azure SQL veritabanı, Azure SQL yönetilen örneği veya bir SQL Server örneğine geri alınabilir.
 
-## <a name="considerations"></a>Önemli noktalar
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 - Bir dışa aktarmanın işlem açısından tutarlı olması için, dışarı aktarma sırasında herhangi bir yazma etkinliğinin gerçekleşmemesini veya veritabanınızın [işlemsel olarak tutarlı bir kopyasından](database-copy.md) dışarı aktardığınız emin olmanız gerekir.
 - Blob depolamaya veriyorsanız, BACPAC dosyasının en büyük boyutu 200 GB 'tır. Daha büyük bir BACPAC dosyasını arşivlemek için yerel depolama alanına dışarı aktarın.
@@ -44,7 +44,7 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 [Azure SQL yönetilen örneğinden](../managed-instance/sql-managed-instance-paas-overview.md) bir veritabanının bacpac 'sini Azure Portal kullanarak dışarı aktarma işlemi şu anda desteklenmiyor. Bunun yerine SQL Server Management Studio veya SQLPackage kullanın.
 
 > [!NOTE]
-> Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve veri katmanı uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata vererek başarısız olabilir `There is not enough space on the disk` . Bu durumda geçici çözüm, SqlPackage. exe ' yi yeterli yerel disk alanına sahip bir makinede çalıştırmalıdır. Bu sorundan kaçınmak için, [SQL paketini](#sqlpackage-utility) 150gb 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
+> Azure portal veya PowerShell aracılığıyla gönderilen içeri/dışarı aktarma isteklerini işleyen makineler, BACPAC dosyasını ve veri katmanı uygulama çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları da depolaması gerekir. Gerekli disk alanı, aynı boyuta sahip veritabanları arasında önemli ölçüde farklılık gösterir ve veritabanı boyutunun 3 katına kadar disk alanı gerektirebilir. İçeri/dışarı aktarma isteği çalıştıran makinelerde yalnızca 450GB yerel disk alanı vardır. Sonuç olarak, bazı istekler hata vererek başarısız olabilir `There is not enough space on the disk` . Bu durumda, geçici çözüm yeterli yerel disk alanına sahip bir makinede sqlpackage.exe çalıştırmak olur. Bu sorundan kaçınmak için, [SQL paketini](#sqlpackage-utility) 150gb 'den büyük veritabanlarını içeri/dışarı aktarmak için kullanmayı öneririz.
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir veritabanını dışarı aktarmak için veritabanınızın sayfasını açın ve araç çubuğunda **dışarı aktar** ' a tıklayın.
 
@@ -66,7 +66,7 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 
 Çoğu üretim ortamında, ölçek ve performans için SQLPackage yardımcı programının kullanılmasını öneririz. BACPAC dosyalarını kullanarak geçiş hakkında bir SQL Server Müşteri Danışmanlık Ekibi blogu için bkz. [BACPAC Dosyalarını kullanarak SQL Server’dan Azure SQL Veritabanına Geçiş](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Bu örnek, Active Directory evrensel kimlik doğrulaması ile SqlPackage. exe kullanarak bir veritabanını dışarı aktarmayı gösterir:
+Bu örnek, Active Directory evrensel kimlik doğrulamasıyla SqlPackage.exe kullanarak bir veritabanını dışarı aktarmayı gösterir:
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=apptestserver.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"

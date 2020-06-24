@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d94f7219c5a29de9a707aa9ae4ed25ac4b2bf03e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042984"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254319"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı SaaS uygulamasını dağıtma ve araştırma
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Bu öğreticide, Wingtip bilet SaaS veritabanı kiracı başına uygulaması (Wingtip) dağıtıp araştırdığınızda. Uygulama, birden çok kiracının verilerini depolamak için kiracı başına veritabanı modelini kullanır. Uygulama, Azure SQL veritabanı 'nın SaaS senaryolarını etkinleştirmeyi kolaylaştıran özelliklerini göstermek üzere tasarlanmıştır.
 
-**Azure 'A dağıt**seçeneğini belirledikten beş dakika sonra, çok kiracılı bir SaaS uygulamanız vardır. Uygulama, bulutta çalışan bir SQL veritabanı içerir. Uygulama, her biri kendi veritabanına sahip olan üç örnek kiracıyla dağıtılır. Tüm veritabanları bir SQL elastik havuzuna dağıtılır. Uygulama, Azure aboneliğinize dağıtılır. Uygulamanın tek tek bileşenleriyle keşfetmeye ve bunlarla çalışmaya yönelik tam erişime sahip olursunuz. Uygulama C# kaynak kodu ve yönetim betikleri [Wingtipbilet ssaas-DbPerTenant GitHub][github-wingtip-dpt]deposunda mevcuttur.
+**Azure 'A dağıt**seçeneğini belirledikten beş dakika sonra, çok kiracılı bir SaaS uygulamanız vardır. Uygulama, Azure SQL veritabanı 'nda çalışan bir veritabanını içerir. Uygulama, her biri kendi veritabanına sahip olan üç örnek kiracıyla dağıtılır. Tüm veritabanları bir SQL elastik havuzuna dağıtılır. Uygulama, Azure aboneliğinize dağıtılır. Uygulamanın tek tek bileşenleriyle keşfetmeye ve bunlarla çalışmaya yönelik tam erişime sahip olursunuz. Uygulama C# kaynak kodu ve yönetim betikleri [Wingtipbilet ssaas-DbPerTenant GitHub][github-wingtip-dpt]deposunda mevcuttur.
 
 Bu öğreticide şunları öğrenirsiniz:
 
@@ -87,7 +88,7 @@ Uygulama dağıtıldıktan sonra, kaynak kodu ve yönetim betikleri ' ni indirin
 1. [Wingtipbilet ssaas-DbPerTenant GitHub][github-wingtip-dpt]deposuna göz atabilirsiniz.
 1. **Clone or download**'u (Kopyala veya indir) seçin.
 1. **ZIP 'ı indir**' i seçin ve dosyayı kaydedin.
-1. **WingtipTicketsSaaS-DbPerTenant-Master. zip** dosyasına sağ tıklayın ve ardından **Özellikler**' i seçin.
+1. **WingtipTicketsSaaS-DbPerTenant-master.zip** dosyasına sağ tıklayın ve ardından **Özellikler**' i seçin.
 1. **Genel** sekmesinde, Uygula **Kaldır**' ı seçin  >  **Apply**.
 1. **Tamam**' ı seçin ve dosyaları ayıklayın
 
@@ -107,7 +108,7 @@ Bu değerlere neredeyse her betikte başvurulur.
 
 Uygulama Vitrini olayları barındıran olaylar. Mekan türleri konser Halls, cakulüler ve spor sinek 'leri içerir. Wingtip biletlerinde, venler kiracılar olarak kaydedilir. Bir kiracıya, olayları listelemek ve müşterilerine bilet satmak için kolay bir yol sunar. Her bir mek, olaylarını listelemek ve bilet satmaya yönelik kişiselleştirilmiş bir Web sitesi alır.
 
-Uygulamada dahili olarak, her kiracı bir SQL elastik havuzuna dağıtılan bir SQL veritabanı alır.
+Uygulamada dahili olarak her kiracı, elastik bir havuza dağıtılan bir veritabanını alır.
 
 Merkezi bir **Olay Hub 'ı** sayfası, dağıtımınızdaki kiracılar için bağlantıların bir listesini sağlar.
 
@@ -117,7 +118,7 @@ Merkezi bir **Olay Hub 'ı** sayfası, dağıtımınızdaki kiracılar için ba�
 
 2. Olaylar hub 'ında **fabrikam Cakkulübü** seçin.
 
-    ![Olaylar](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Ekinlikler](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
@@ -127,7 +128,7 @@ Wingtip Application, gelen isteklerin dağıtımını denetlemek için [*Azure 
 
     Önceki biçimin parçaları aşağıdaki tabloda açıklanmıştır.
 
-    | URL bölümü        | Açıklama       |
+    | URL bölümü        | Description       |
     | :-------------- | :---------------- |
     | olaylar. Wingtip-DPT | Wingtip uygulamasının olaylar bölümü.<br /><br /> *-DPT* , Wingtip bilet 'nin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Bu örnek, *tek* kiracılı kiracı (*-sa*) veya *çok kiracılı veritabanı* (*-MT*) uygulamalarından örnektir. |
     | . * &lt; Kullanıcı &gt; * | örnekteki *AF1* . |
@@ -153,7 +154,7 @@ Artık uygulama dağıtıldığına göre, şimdi çalışmaya bakalım.
 
 *Demo-LoadGenerator* PowerShell betiği, tüm kiracı veritabanlarına karşı çalışan bir iş yükünü başlatır. Birçok SaaS uygulamasında gerçek dünyada yük, tek tek ve tahmin edilemez. Bu tür yükün benzetimini yapmak için Oluşturucu, her bir kiracıda rastgele ani artışlar veya etkinlik içeren bir yük oluşturur. Artışlarıyla rastgele aralıklarda oluşur. Yük deseninin ortaya geçmesi birkaç dakika sürer. Yüklemeyi izlemeye başlamadan önce oluşturucunun en az üç veya dört dakika çalışmasına izin verin.
 
-1. PowerShell ıSE 'de,... \\ öğesini açın. Öğrenme modülleri \\ yardımcı programları \\ *demo-LoadGenerator. ps1* betiği.
+1. PowerShell ıSE 'de,... \\ öğesini açın. Öğrenme modülleri \\ yardımcı programları \\ *Demo-LoadGenerator.ps1* betiği.
 2. Betiği çalıştırmak için F5 tuşuna basın ve yük oluşturucuyu başlatın. Varsayılan parametre değerlerini Şu anda bırakın.
 3. Azure hesabınızda oturum açın ve gerekirse kullanmak istediğiniz aboneliği seçin.
 
@@ -167,17 +168,17 @@ Arka plan işlerini denetlemek ve izlemek isterseniz, aşağıdaki cmdlet 'leri 
 - `Receive-Job`
 - `Stop-Job`
 
-### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator. ps1 eylemleri
+### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1 eylemleri
 
-*Demo-LoadGenerator. ps1* , müşteri işlemlerinin etkin iş yükünü taklit eder. Aşağıdaki adımlarda, *demo-LoadGenerator. ps1* ' nin başlattığı eylemlerin sırası açıklanır:
+*Demo-LoadGenerator.ps1* , müşteri işlemlerinin etkin iş yükünü taklit eder. Aşağıdaki adımlarda *Demo-LoadGenerator.ps1* başlattığı eylemlerin sırası açıklanır:
 
-1. *Demo-LoadGenerator. ps1* ön planda *loadgenerator. ps1* başlatır.
+1. *Demo-LoadGenerator.ps1* ön planda *LoadGenerator.ps1* başlar.
 
     - Her iki. ps1 dosyası de klasörler öğrenme modülleri \\ yardımcı programları altında depolanır \\ .
 
-2. , Katalogdaki tüm kiracı veritabanlarında *Loadgenerator. ps1* döngüleri.
+2. Katalogdaki tüm kiracı veritabanları aracılığıyla döngüleri *LoadGenerator.ps1* .
 
-3. *Loadgenerator. ps1* her kiracı veritabanı için bir arka plan PowerShell işi başlatır:
+3. *LoadGenerator.ps1* her kiracı veritabanı için bir arka plan PowerShell işi başlatır:
 
     - Varsayılan olarak, arka plan işleri 120 dakika boyunca çalışır.
     - Her iş, *sp_CpuLoadGenerator*yürüterek bir KIRACı veritabanında CPU tabanlı yüke neden olur. Yükün yoğunluğu ve süresi öğesine bağlı olarak değişir `$DemoScenario` .
@@ -199,7 +200,7 @@ Sonraki bölüme geçmeden önce, iş çağırma durumunda yük oluşturucuyu ç
 İlk dağıtım üç örnek kiracı oluşturur. Şimdi, dağıtılan uygulamanın etkisini görmek için başka bir kiracı oluşturursunuz. Wingtip App 'te yeni kiracılar sağlamak için iş akışı, [sağlama ve Katalog öğreticisinde](saas-dbpertenant-provision-and-catalog.md)açıklanmaktadır. Bu aşamada, bir dakikadan kısa süren yeni bir kiracı oluşturacaksınız.
 
 1. Yeni bir PowerShell ıSE açın.
-2. Aç... \\ \\*Demo-ProvisionAndCatalog. ps1*Learning/provision ve Catalog.
+2. Aç... \\ Modules\Provision ve Katalog \\ *Demo-ProvisionAndCatalog.ps1*öğrenme.
 3. Betiği çalıştırmak için F5 tuşuna basın. Şimdilik varsayılan değerleri bırakın.
 
    > [!NOTE]
@@ -239,7 +240,7 @@ Kiracıların koleksiyonuna karşı bir yük çalıştırmaya başladığınıza
 
 ## <a name="monitor-the-pool"></a>Havuzu izleme
 
-*Loadgenerator. ps1* birkaç dakika çalıştıktan sonra, bazı izleme özelliklerine bakmak için yeterli veri kullanılabilir olmalıdır. Bu yetenekler havuzlar ve veritabanları içinde yerleşik olarak bulunur.
+*LoadGenerator.ps1* birkaç dakika çalıştıktan sonra, bazı izleme özelliklerine bakmaya başlamak için yeterli veri bulunmalıdır. Bu yetenekler havuzlar ve veritabanları içinde yerleşik olarak bulunur.
 
 **Tenants1-DPT- &lt; &gt; User**sunucusuna gidin ve havuzun kaynak kullanımını görüntülemek için **Pool1** ' yi seçin. Aşağıdaki grafiklerde, yük Oluşturucu bir saat boyunca çalışır.
 

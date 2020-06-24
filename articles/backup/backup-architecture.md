@@ -4,11 +4,11 @@ description: Azure Backup hizmeti tarafından kullanılan mimariye, bileşenlere
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273624"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707932"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
@@ -52,7 +52,7 @@ Kurtarma Hizmetleri kasaları aşağıdaki özelliklere sahiptir:
 
 Azure Backup, ne tür bir makinenin yedeklendiğine bağlı olarak farklı yedekleme aracıları sağlar:
 
-**Aracı** | **Bilgileri**
+**Aracı** | **Ayrıntılar**
 --- | ---
 **MARS Aracısı** | <ul><li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için tek bir şirket içi Windows Server makinesi üzerinde çalışır.</li> <li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için Azure VM 'lerde çalışır.</li> <li>DPM/mabs sunucularında DPM/MABS yerel depolama diskini Azure 'a yedeklemek için çalışır.</li></ul>
 **Azure VM Uzantısı** | Azure VM 'lerde çalışarak bunları bir kasaya yedekler.
@@ -61,7 +61,7 @@ Azure Backup, ne tür bir makinenin yedeklendiğine bağlı olarak farklı yedek
 
 Aşağıdaki tabloda farklı yedekleme türleri ve ne zaman kullanıldıkları açıklanmaktadır:
 
-**Yedekleme türü** | **Bilgileri** | **Kullanımıyla**
+**Yedekleme türü** | **Ayrıntılar** | **Kullanım**
 --- | --- | ---
 **Tam** | Tam yedekleme, tüm veri kaynağını içerir. Değişiklik veya artımlı yedeklerden daha fazla ağ bant genişliği alır. | İlk yedekleme için kullanılır.
 **Di** |  Değişiklik yedeklemesi, ilk tam yedeklemeden bu yana değiştirilen blokları depolar. Daha küçük bir ağ ve depolama alanı kullanır ve değiştirilmemiş verilerin gereksiz kopyalarını tutar.<br/><br/> Daha sonraki yedeklemeler arasında değişmeyen veri blokları aktarıldığından ve depolandığından, verimsiz. | Azure Backup tarafından kullanılmıyor.
@@ -71,7 +71,7 @@ Aşağıdaki tabloda farklı yedekleme türleri ve ne zaman kullanıldıkları a
 
 Aşağıdaki tabloda SQL Server veritabanları için kullanılan farklı yedekleme türleri ve ne sıklıkta kullanıldıkları açıklanmaktadır:
 
-**Yedekleme türü** | **Bilgileri** | **Kullanımıyla**
+**Yedekleme türü** | **Ayrıntılar** | **Kullanım**
 --- | --- | ---
 **Tam yedekleme** | Tam bir veritabanı yedeklemesi tüm veritabanını yedekler. Belirli bir veritabanındaki veya bir dosya grubu ya da dosya kümesindeki tüm verileri içerir. Tam yedekleme Ayrıca bu verileri kurtarmak için yeterli günlük içerir. | En çok, günde bir tam yedekleme tetikleyebilirsiniz.<br/><br/> Günlük veya haftalık aralıkta tam yedekleme yapmayı tercih edebilirsiniz.
 **Değişiklik yedeği** | Değişiklik yedeklemesi, en son, önceki tam veri yedeklemesini temel alır.<br/><br/> Yalnızca tam yedeklemeden bu yana değiştirilen verileri yakalar. |  En çok, her gün bir değişiklik yedeklemesi tetikleyebilirsiniz.<br/><br/> Tam yedekleme ve değişiklik yedeklemesini aynı günde yapılandıramazsınız.

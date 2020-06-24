@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 0121f73da911a9346fd1f142d98246709631a742
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9fcb714e68548b95ed6d32bb16fb08c43ff0e5fa
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678112"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707642"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 ve Esv3 serisi
 
-Ev3 ve Esv3 serisi özelliği, bir hiper iş yükleri için Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş kapsamlı) işlemciyi veya diğer bulutların çoğu için daha iyi bir değer teklifi sağlar.  Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlandığı sürece (7 GiB/vCPU 'dan 8 GiB/vCPU 'ya kadar) bellek genişletilir. Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
+Ev3 ve Esv3 serisi, Intel® Xeon® Platinum 8272CL (Cascade Lake) üzerinde çalışır. ya da Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya bir hiper iş yükleri için Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) işlemcisi, çoğu genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlar ve Ev3 ' yi diğer bulutların genel amaçlı VM 'Leri ile hizalı hale getiriyor.  Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlandığı sürece (7 GiB/vCPU 'dan 8 GiB/vCPU 'ya kadar) bellek genişletilir. Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
 
 ## <a name="ev3-series"></a>Ev3 serisi
 
-Ev3 serisi örnekler Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) işlemci ve Intel Turbo Boost Technology 2,0 özelliğini temel alır. Ev3 serisi örnekleri, yoğun bellek kullanımlı kurumsal uygulamalar için idealdir.
+Ev3 serisi örnekler Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) işlemcileri ve Feature Intel Turbo Boost Technology 2,0 üzerinde çalışır. Ev3 serisi örnekleri, yoğun bellek kullanımlı kurumsal uygulamalar için idealdir.
 
 Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium depolama disklerini kullanmak için ESv3 boyutlarını kullanın. ESv3 boyutları için fiyatlandırma ve faturalandırma oranları Ev3 serisi ile aynıdır.
 
@@ -54,7 +54,7 @@ Güncelleştirmeleri koruyan bellek: desteklenir
 
 ## <a name="esv3-series"></a>Esv3 serisi
 
-Esv3 serisi örnekler, Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) işlemci, Intel Turbo Boost Technology 2,0 özelliğini temel alır ve Premium depolamayı kullanır. Esv3 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir.
+Esv3 serisi örnekler Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (çok Iyi) işlemci, özellik Intel Turbo Boost Technology 2,0 ve Premium Storage kullanma üzerinde çalışır. Esv3 serisi örnekler, bellek açısından yoğun kurumsal uygulamalar için idealdir.
 
 Esv3 serisi VM 'nin özelliği, hiper Iş parçacığı teknolojisinin Intel®.
 

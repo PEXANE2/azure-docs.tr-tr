@@ -4,17 +4,17 @@ description: Tahmin çözümü oluşturmak için R 'de Azure Machine Learning St
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 2c481fc2f435695b4b99b86411a2fcca27e97ab4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b2bd75750670a83409b0f5b8839144e55ef2c4d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117852"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706290"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R 'de Azure Machine Learning Studio (klasik) kullanmaya başlama
 
@@ -141,7 +141,7 @@ Bu bölümün tam kodu, [Machinelearningsamples-Notebook/Studio-Samples](https:/
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>Veri kümesini yükleme
 
-**Csdairydata. csv** dosyasını Azure Machine Learning Studio (klasik) dosyasına yükleyerek başlayacağız.
+**csdairydata.csv** dosyasını Azure Machine Learning Studio (klasik) içine yükleyerek başlayacağız.
 
 1. Azure Machine Learning Studio (klasik) ortamınızı başlatın.
 1. Ekranınızın sol alt kısmındaki **+ Yeni** ' yi seçin ve **veri kümesi**' ni seçin.
@@ -156,11 +156,11 @@ Artık Machine Learning Studio (klasik) ' de bazı verileriniz olduğuna göre, 
 
 1. Sol alt köşedeki **+ Yeni** ' yi seçin ve **denemeler**' i ve **boş deneme**' yı seçin.
 1. Sayfanın üst kısmındaki... başlığı altında **oluşturulan** denemeyi seçerek ve değiştirerek denemenizin adını verebilirsiniz. Örneğin, bunu **CA süt analizine**değiştirme.
-1. Deneme sayfasının sol tarafında, **kaydedilen veri kümeleri**' ni ve ardından **veri kümelerim**' i genişletin. Daha önce karşıya yüklediğiniz **cadairydata. csv** ' i görmeniz gerekir.
-1. **Csdairydata. csv veri kümesini** , denemenize sürükleyin ve bırakın.
+1. Deneme sayfasının sol tarafında, **kaydedilen veri kümeleri**' ni ve ardından **veri kümelerim**' i genişletin. Daha önce karşıya yüklediğiniz **cadairydata.csv** görmeniz gerekir.
+1. **csdairydata.csv veri kümesini** sürükleyin ve deney üzerine bırakın.
 1. Sol bölmenin üst kısmındaki **deneme öğelerini ara** kutusunda, [R betiği Yürüt][execute-r-script]yazın. Modülün arama listesinde göründüğünü görürsünüz.
 1. [Execute R betiği][execute-r-script] modülünü palete sürükleyin ve bırakın.  
-1. **Csdairydata. csv veri kümesinin** çıkışını, [Execute R betiğinin][execute-r-script]en soldaki giriş (**dataSet1**) öğesine bağlayın.
+1. **csdairydata.csv veri kümesinin** çıkışını, [Execute R betiğinin][execute-r-script]en soldaki giriş (**dataSet1**) öğesine bağlayın.
 1. **' Kaydet ' seçeneğini belirtmeyi unutmayın!**  
 
 Bu noktada, denemenizin şekil 3 gibi görünmesi gerekir.
@@ -171,11 +171,11 @@ Bu noktada, denemenizin şekil 3 gibi görünmesi gerekir.
 
 #### <a name="check-on-the-data"></a>Verileri denetleyin
 
-Deneyimize yüklediğimiz verilere göz atalım. Denemenin içinde **cadairydata. csv veri kümesinin** çıkışını seçin ve **Görselleştir**' i seçin. Şekil 4 gibi bir şey görmeniz gerekir.  
+Deneyimize yüklediğimiz verilere göz atalım. Deneyde **cadairydata.csv veri kümesinin** çıkışını seçin ve **Görselleştir**' i seçin. Şekil 4 gibi bir şey görmeniz gerekir.  
 
-![Cadairydata. csv veri kümesinin Özeti](./media/r-quickstart/fig4.png)
+![cadairydata.csv veri kümesinin Özeti](./media/r-quickstart/fig4.png)
 
-*Şekil 4. Cadairydata. csv veri kümesinin Özeti.*
+*Şekil 4. cadairydata.csv veri kümesinin Özeti.*
 
 Bu görünümde çok sayıda faydalı bilgi görüyoruz. Bu veri kümesinin ilk birkaç satırını görebiliriz. Bir sütun seçmemiz halinde, Istatistik bölümünde sütun hakkında daha fazla bilgi gösterilir. Örneğin, özellik türü satırı, hangi veri türleri Azure Machine Learning Studio (klasik) sütuna atandığını gösterir. Önemli bir iş yapmadan önce bu, iyi bir göz atalım.
 

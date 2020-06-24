@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201875"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703953"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alt ağ temsili ekleme veya kaldırma
 
@@ -33,7 +33,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Bu bölümde, bir sanal ağ ve daha sonra bir Azure hizmetine temsilci olarak kullanacağınız alt ağ oluşturursunuz.
 
-1. Ekranın sol üst kısmında **kaynak** > oluştur**ağ** > **sanal ağ**' ı seçin.
+1. Ekranın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **sanal ağ**' ı seçin.
 1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
@@ -50,7 +50,7 @@ Bu bölümde, bir sanal ağ ve daha sonra bir Azure hizmetine temsilci olarak ku
 
 ### <a name="permissions"></a>İzinler
 
-Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write`.
+Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
 
@@ -74,7 +74,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine d
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemeye ve kullanmaya karar verirseniz, bu makale Azure CLı sürüm 2.0.28 veya üstünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemeye ve kullanmaya karar verirseniz, bu makale Azure CLı sürüm 2.0.28 veya üstünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version` . Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 [az group create](https://docs.microsoft.com/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
@@ -103,7 +103,7 @@ Aşağıdaki örnek **eastus** konumunda **myresourcegroup** adlı bir kaynak gr
 ```
 ### <a name="permissions"></a>İzinler
 
-Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write`.
+Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
 
@@ -202,7 +202,7 @@ Myresourcegroup **adlı bir** alt ağ Ile **myvnet** adlı bir alt ağ ile **myr
 ```
 ### <a name="permissions"></a>İzinler
 
-Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write`.
+Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
 
