@@ -1,6 +1,6 @@
 ---
 title: PowerShell kullanarak birden çok tabloyu artımlı olarak kopyalama
-description: Bu öğreticide, Delta verileri bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'na artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
+description: Bu öğreticide, Delta verileri bir SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanı 'ndaki bir veritabanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/30/2020
-ms.openlocfilehash: ef756f1b9b96f0e8fe9b77e6ae8f00f077fd1b88
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/10/2020
+ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559614"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250970"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-powershell"></a>SQL Server içindeki birden çok tablodan verileri, PowerShell kullanarak bir Azure SQL veritabanına artımlı olarak yükleme
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell kullanarak SQL Server birden çok tablodan Azure SQL veritabanı 'na artımlı olarak veri yükleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -70,7 +70,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 ## <a name="prerequisites"></a>Ön koşullar
 
 * **SQL Server**. Bu öğreticide kaynak veri deposu olarak bir SQL Server veritabanı kullanırsınız. 
-* **Azure SQL veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md). 
+* **Azure SQL veritabanı**. Azure SQL veritabanı 'ndaki bir veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) . 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server veritabanınızda kaynak tabloları oluşturma
 
@@ -117,7 +117,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 2. **Sunucu Gezgini (SSMS)** veya **bağlantılar bölmesinde (Azure Data Studio)**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
-3. `customer_table` ve `project_table` adlı tabloları oluşturmak için aşağıdaki SQL komutunu SQL veritabanınızda çalıştırın:  
+3. `customer_table` ve `project_table` adlı tabloları oluşturmak için aşağıdaki SQL komutunu veritabanınızda çalıştırın:  
 
     ```sql
     create table customer_table
@@ -134,9 +134,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Üst eşik değerini depolamak için Azure SQL veritabanında başka bir tablo oluşturma
+### <a name="create-another-table-in-azure-sql-database-to-store-the-high-watermark-value"></a>Üst eşik değerini depolamak için Azure SQL veritabanında başka bir tablo oluşturma
 
-1. SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak eşik değerini depolamak için `watermarktable` adlı bir tablo oluşturun: 
+1. Eşik değerini depolamak için adlı bir tablo oluşturmak üzere veritabanınıza karşı aşağıdaki SQL komutunu çalıştırın `watermarktable` : 
     
     ```sql
     create table watermarktable
@@ -159,7 +159,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Azure SQL veritabanında bir saklı yordam oluşturma 
 
-SQL veritabanınızda bir saklı yordam oluşturmak için aşağıdaki komutu çalıştırın. Bu saklı yordam, her işlem hattı çalıştırmasından sonra eşik değerini güncelleştirir. 
+Veritabanınızda bir saklı yordam oluşturmak için aşağıdaki komutu çalıştırın. Bu saklı yordam, her işlem hattı çalıştırmasından sonra eşik değerini güncelleştirir. 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -175,9 +175,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Azure SQL veritabanında veri türleri ve ek saklı yordamlar oluşturma
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Azure SQL veritabanında veri türleri ve ek saklı yordamlar oluşturma
 
-SQL veritabanınızda iki saklı yordam ve iki veri türü oluşturmak için aşağıdaki sorguyu çalıştırın. Bunlar, kaynak tablodaki verileri hedef tablolarla birleştirmek için kullanılır. 
+Veritabanınızda iki saklı yordam ve iki veri türü oluşturmak için aşağıdaki sorguyu çalıştırın. Bunlar, kaynak tablodaki verileri hedef tablolarla birleştirmek için kullanılır. 
 
 Yolculuğun başlamasını kolaylaştırmak için, bu saklı yordamları doğrudan bir tablo değişkeni aracılığıyla içindeki Delta verileri geçirerek ve ardından bunları hedef depoda birleştirerek kullanırız. Bir "büyük" sayıda Delta satırı (100 ' den fazla) tablo değişkeninde depolanmasını beklemediğinden dikkatli olun.  
 
@@ -283,19 +283,19 @@ Aşağıdaki noktalara dikkat edin:
 
 * Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandığınız kullanıcı hesabı, katkıda bulunan veya sahip rollerinin üyesi ya da bir Azure aboneliğinin yöneticisi olmalıdır.
 
-* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, SQL Veritabanı vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
+* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri Fabrikası tarafından kullanılan veri depoları (Azure depolama, SQL veritabanı, SQL yönetilen örneği, vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
-Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, SQL Server veritabanınıza ve Azure SQL veritabanınıza bağlı hizmetler oluşturacaksınız. 
+Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, Azure SQL veritabanı 'nda SQL Server veritabanınıza ve veritabanınıza bağlı hizmetler oluşturacaksınız. 
 
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server bağlı hizmet oluşturma
 
 Bu adımda, SQL Server veritabanınızı veri fabrikasına bağlarsınız.
 
-1. C:\adftutorials\ınccopymultitabletutorial klasöründe **Sqlserverlinkedservice. JSON** ADLı bir JSON dosyası oluşturun (zaten mevcut değilse yerel klasörleri oluşturun) ve aşağıdaki içeriği yapın. SQL Server’a bağlanmak için kullandığınız kimlik doğrulaması yöntemine göre doğru bölümü seçin.  
+1. Aşağıdaki içerikle C:\adftutorials\ınccopymultitabletutorial klasöründe **SqlServerLinkedService.js** ADLı bir JSON dosyası oluşturun (zaten yoksa yerel klasörleri oluşturun). SQL Server’a bağlanmak için kullandığınız kimlik doğrulaması yöntemine göre doğru bölümü seçin.  
 
     > [!IMPORTANT]
     > SQL Server’a bağlanmak için kullandığınız kimlik doğrulaması yöntemine göre doğru bölümü seçin.
@@ -372,9 +372,9 @@ Bu adımda, SQL Server veritabanınızı veri fabrikasına bağlarsınız.
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerLinkedService
     ```
 
-### <a name="create-the-sql-database-linked-service"></a>SQL veritabanı bağlı hizmeti oluşturma
+### <a name="create-the-sql-database-linked-service"></a>SQL veritabanı bağlı hizmetini oluşturma
 
-1. C:\adftutorials\ınccopymultitabletutorial klasöründe aşağıdaki içeriğe sahip **Azuressqldatabaselinkedservice. JSON** ADLı bir JSON dosyası oluşturun. (Henüz yoksa ADF klasörünü oluşturun.) &lt; &gt; &lt; Dosyayı kaydetmeden önce sunucuadı, veritabanı adı &gt; , &lt; Kullanıcı adı &gt; ve &lt; parolayı &gt; SQL Server veritabanınızın adı, veritabanınızın adı, Kullanıcı adı ve parola ile değiştirin. 
+1. C:\adftutorials\ınccopymultitabletutorial klasöründe aşağıdaki içeriğe sahip **AzureSQLDatabaseLinkedService.js** ADLı bir JSON dosyası oluşturun. (Henüz yoksa ADF klasörünü oluşturun.) &lt; &gt; &lt; Dosyayı kaydetmeden önce sunucuadı, veritabanı adı &gt; , &lt; Kullanıcı adı &gt; ve &lt; parolayı &gt; SQL Server veritabanınızın adı, veritabanınızın adı, Kullanıcı adı ve parola ile değiştirin. 
 
     ```json
     {  
@@ -411,7 +411,7 @@ Bu adımda veri kaynağı, veri hedefi ve eşiğin depolanacağı yeri temsil ed
 
 ### <a name="create-a-source-dataset"></a>Kaynak veri kümesi oluşturma
 
-1. Aynı klasörde aşağıdaki içerikle **sourceDataset. JSON** ADLı bir JSON dosyası oluşturun: 
+1. Aynı klasörde aşağıdaki içerikle **SourceDataset.js** ADLı bir JSON dosyası oluşturun: 
 
     ```json
     {  
@@ -453,7 +453,7 @@ Bu adımda veri kaynağı, veri hedefi ve eşiğin depolanacağı yeri temsil ed
 
 ### <a name="create-a-sink-dataset"></a>Havuz veri kümesi oluşturma
 
-1. Aynı klasörde aşağıdaki içerikle **Sinkdataset. JSON** ADLı bir JSON dosyası oluşturun. TableName öğesi, çalışma zamanında dinamik olarak işlem hattı tarafından ayarlanır. İşlem hattındaki ForEach etkinliği, tablo adlarının bir listesi üzerinden yinelenir ve her yinelemede tablo adını bu veri kümesine geçirir. 
+1. Aynı klasörde aşağıdaki içerikle **SinkDataset.js** ADLı bir JSON dosyası oluşturun. TableName öğesi, çalışma zamanında dinamik olarak işlem hattı tarafından ayarlanır. İşlem hattındaki ForEach etkinliği, tablo adlarının bir listesi üzerinden yinelenir ve her yinelemede tablo adını bu veri kümesine geçirir. 
 
     ```json
     {  
@@ -502,7 +502,7 @@ Bu adımda veri kaynağı, veri hedefi ve eşiğin depolanacağı yeri temsil ed
 
 Bu adımda üst eşik değerini depolamak için bir veri kümesi oluşturacaksınız. 
 
-1. Aynı klasörde aşağıdaki içerikle **su Markdataset. JSON** ADLı bir JSON dosyası oluşturun: 
+1. Aynı klasörde aşağıdaki içerikle **WatermarkDataset.js** ADLı bir JSON dosyası oluşturun: 
 
     ```json
     {
@@ -549,7 +549,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. **Foreach etkin
 
 ### <a name="create-the-pipeline"></a>İşlem hattını oluşturma
 
-1. Aynı klasörde aşağıdaki içerikle **ıncrementalcopypipeline. JSON** ADLı bir JSON dosyası oluşturun: 
+1. Aynı klasörde aşağıdaki içerikle **IncrementalCopyPipeline.js** ADLı bir JSON dosyası oluşturun: 
 
     ```json
     {  
@@ -783,7 +783,7 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. **Foreach etkin
  
 ## <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
-1. Aynı klasörde aşağıdaki içerikle **Parameters. JSON** adlı bir parametre dosyası oluşturun:
+1. Aynı klasörde aşağıdaki içerikle **Parameters.js** adlı bir parametre dosyası oluşturun:
 
     ```json
     {

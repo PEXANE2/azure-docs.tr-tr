@@ -1,5 +1,5 @@
 ---
-title: Bilgi deposuna giriş (Önizleme)
+title: Bilgi deposu kavramları (Önizleme)
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama ve diğer uygulamalarda zenginleştirilmiş belgeleri görüntüleyebileceğiniz, yeniden şekillendirbileceğiniz ve kullanabileceğiniz Azure depolama 'ya zenginleştirilmiş belgeler gönderin. Bu özellik genel önizleme aşamasındadır.
 author: HeidiSteen
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a8f7aa18598dba41b33ea4964bd2967a8c2670ac
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858805"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752982"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi depolarına giriş
+# <a name="knowledge-store-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi deposu
 
 > [!IMPORTANT] 
 > Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
@@ -55,7 +55,7 @@ Numaralandırılmış, bilgi deposunun avantajları şunları içerir:
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
 
 
-Bilgi deposunun fiziksel ifadesi, Beceri içindeki bir `projections` `knowledgeStore` tanımın öğesi aracılığıyla ifade edilir. Projeksiyon, bir çıktının yapısını, amaçlanan kullanım ile eşleşecek şekilde tanımlar.
+Bilgi deposunun fiziksel ifadesi, `projections` beceri içindeki bir tanımın öğesi aracılığıyla ifade edilir `knowledgeStore` . Projeksiyon, bir çıktının yapısını, amaçlanan kullanım ile eşleşecek şekilde tanımlar.
 
 Projeksiyonlar tablo, nesne veya dosya olarak ifade edilebilir.
 
@@ -77,11 +77,11 @@ Projeksiyonlar tablo, nesne veya dosya olarak ifade edilebilir.
 
 Bu yapıda belirttiğiniz projeksiyonun türü, bilgi deposu tarafından kullanılan depolama türünü belirler.
 
-+ Tanımladığınız `tables`sırada tablo depolaması kullanılır. Analitik araçlara giriş veya diğer veri depolarına veri çerçeveleri olarak dışarı aktarma için tablo Raporlama yapılarına ihtiyacınız olduğunda tablo projeksiyonu tanımlayın. Zenginleştirilmiş belgelerin alt `tables` kümesini veya çapraz bölümünü almak için birden çok belirtebilirsiniz. Aynı projeksiyon grubu içinde, tüm bunlarla çalışabilmeniz için tablo ilişkileri korunur.
++ Tanımladığınız sırada tablo depolaması kullanılır `tables` . Analitik araçlara giriş veya diğer veri depolarına veri çerçeveleri olarak dışarı aktarma için tablo Raporlama yapılarına ihtiyacınız olduğunda tablo projeksiyonu tanımlayın. `tables`Zenginleştirilmiş belgelerin alt kümesini veya çapraz bölümünü almak için birden çok belirtebilirsiniz. Aynı projeksiyon grubu içinde, tüm bunlarla çalışabilmeniz için tablo ilişkileri korunur.
 
-+ Veya `objects` `files`tanımladığınızda BLOB depolama kullanılır. Öğesinin `object` fiziksel temsili, zenginleştirilmiş bir belgeyi temsil eden HIYERARŞIK bir JSON yapısıdır. `file` , Bir belgeden ayıklanan bir görüntüdür ve BLOB depolama alanına bozulmadan aktarılmıştır.
++ Veya tanımladığınızda BLOB depolama kullanılır `objects` `files` . Öğesinin fiziksel temsili, `object` zenginleştirilmiş bir belgeyi temsil eden hiyerarşik BIR JSON yapısıdır. `file`, Bir belgeden ayıklanan bir görüntüdür ve BLOB depolama alanına bozulmadan aktarılmıştır.
 
-Tek bir projeksiyon nesnesi bir `tables`, `objects` `files`, ve kümesi içerir ve birçok senaryo için, bir projeksiyon oluşturulması yeterli olabilir. 
+Tek bir projeksiyon nesnesi bir,, ve kümesi içerir `tables` `objects` `files` ve birçok senaryo için, bir projeksiyon oluşturulması yeterli olabilir. 
 
 Ancak, birden çok `table` - `object` - `file` projeksiyonun kümesi oluşturmak mümkündür ve farklı veri ilişkileri istiyorsanız bunu yapabilirsiniz. Bir küme içinde, bu ilişkilerin mevcut olduğu ve algılanabilmesi durumunda veriler birbiriyle ilgilidir. Ek kümeler oluşturursanız, her bir gruptaki belgeler hiçbir şekilde ilgili değildir. Birden çok projeksiyon grubu kullanmanın bir örneği, aynı verilerin bir çevrimiçi sisteminizle birlikte kullanılması ve belirli bir şekilde temsil edilebilmesi için aynı verilerin de aynı şekilde temsil edildiği bir veri bilimi ardışık düzeninde kullanılmak üzere de olmasını ister.
 
@@ -89,7 +89,7 @@ Ancak, birden çok `table` - `object` - `file` projeksiyonun kümesi oluşturmak
 
 [Azure depolama alanı](https://docs.microsoft.com/azure/storage/) gereklidir. Fiziksel depolama alanı sağlar. BLOB depolama, tablo depolama veya her ikisini de kullanabilirsiniz. BLOB depolama, genellikle çıkış aşağı akış işlemlerine giderken, genellikle zenginleştirilmiş belgeler için kullanılır. Tablo depolama, genellikle analiz ve raporlama için kullanılan, zenginleştirilmiş belgelerin dilimlerine yöneliktir.
 
-[Beceri](cognitive-search-working-with-skillsets.md) gereklidir. `knowledgeStore` Tanımı içerir ve zenginleştirilmiş bir belgenin yapısını ve birleşimini belirler. Boş bir beceri kullanarak bilgi deposu oluşturamazsınız. Beceri içinde en az bir beceriye sahip olmanız gerekir.
+[Beceri](cognitive-search-working-with-skillsets.md) gereklidir. `knowledgeStore`Tanımı içerir ve zenginleştirilmiş bir belgenin yapısını ve birleşimini belirler. Boş bir beceri kullanarak bilgi deposu oluşturamazsınız. Beceri içinde en az bir beceriye sahip olmanız gerekir.
 
 [Dizin Oluşturucu](search-indexer-overview.md) gereklidir. Bir beceri, yürütmeyi yönlendiren bir Dizin Oluşturucu tarafından çağrılır. Dizin oluşturucular kendi gereksinimler ve öznitelikleri kümesiyle gelir. Bu özniteliklerin birkaçı bir bilgi deposunda doğrudan bir pul alır:
 
@@ -103,7 +103,7 @@ Ancak, birden çok `table` - `object` - `file` projeksiyonun kümesi oluşturmak
 
 ## <a name="how-to-create-a-knowledge-store"></a>Bilgi deposu oluşturma
 
-Bilgi deposu oluşturmak için portalı veya önizleme REST API (`api-version=2019-05-06-Preview`) kullanın.
+Bilgi deposu oluşturmak için portalı veya önizleme REST API ( `api-version=2019-05-06-Preview` ) kullanın.
 
 ### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 

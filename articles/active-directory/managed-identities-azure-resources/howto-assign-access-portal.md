@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24c97909870c4d76b07ec837e5f624a509bd1f2
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 5930511fb5329e1a919a0e631c26c617fc3f5b52
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547280"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693949"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure portal kullanarak bir kaynağa yönetilen kimlik erişimi atama
 
@@ -30,12 +30,12 @@ Yönetilen kimlikle bir Azure kaynağı yapılandırdıktan sonra, herhangi bir 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Başka bir kaynağa yönetilen kimlik erişimi atamak için RBAC kullanma
 
-Azure [VM](qs-configure-portal-windows-vm.md) veya [Azure VMSS](qs-configure-portal-windows-vmss.md)gibi bir Azure kaynağında yönetilen kimlik etkinleştirildikten sonra:
+Azure [VM](qs-configure-portal-windows-vm.md) veya [Azure sanal makine ölçek kümesi](qs-configure-portal-windows-vmss.md)gibi bir Azure kaynağında yönetilen kimlik etkinleştirildikten sonra:
 
 1. Yönetilen kimliği yapılandırdığınız Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
 

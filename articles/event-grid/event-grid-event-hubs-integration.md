@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610827"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212216"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Öğretici: veri ambarına büyük veri akışı
 Azure [Event Grid](overview.md) , uygulamalardan ve hizmetlerden bildirimleri (olayları) tepki etmenizi sağlayan akıllı bir olay yönlendirme hizmetidir. Örneğin, bir Azure Işlevini Azure Blob depolama alanına veya Azure Data Lake Storage yakalanan Event Hubs verileri işleyecek şekilde tetikleyip verileri diğer veri depolarına geçirebilirler. Bu [Event Hubs ve Event Grid tümleştirme örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) , yakalanan Event Hubs verilerini blob DEPOLAMADAN bir SQL veri ambarına sorunsuzca geçirmek için Event Grid ile Event Hubs nasıl kullanacağınızı gösterir.
@@ -38,14 +38,14 @@ Bu makalede, aşağıdaki adımları uygulayın:
 > * Olay Hub 'ına veri gönderen uygulamayı çalıştırın.
 > * Veri ambarında geçirilen verileri görüntüleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* İçin iş yükleriyle [Visual studio 2019](https://www.visualstudio.com/vs/) : .net masaüstü geliştirme, Azure geliştirme, ASP.net ve Web geliştirme, Node. js geliştirme ve Python geliştirme.
+* İçin iş yükleriyle [Visual studio 2019](https://www.visualstudio.com/vs/) : .net masaüstü geliştirme, Azure geliştirme, ASP.net ve Web geliştirme, Node.js geliştirme ve Python geliştirme.
 * [Eventhubscaptureeventgriddemo örnek projesini](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) bilgisayarınıza indirin.
 
 ## <a name="deploy-the-infrastructure"></a>Altyapıyı dağıtma
@@ -60,7 +60,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure portal Azure Cloud Shell başlatma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Üstteki **Cloud Shell** düğmesini seçin.
 
     ![Azure portal](media/event-grid-event-hubs-integration/azure-portal.png)
@@ -173,7 +173,7 @@ Cloud Shell penceresinin sağ üst köşesindeki Portal (veya) **X** düğmesind
 2. SQL veri ambarı sayfasında sol menüdeki **sorgu Düzenleyicisi 'ni (Önizleme)** seçin. 
 
     ![SQL veri ambarı sayfası](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. SQL Server için **Kullanıcı** ve **parola** adını girip **Tamam**' ı seçin. SQL Server 'da başarılı bir şekilde oturum açmak için istemci IP adresiniz güvenlik duvarınızdan çok ihtiyacınız vardır. 
+2. SQL Server için **Kullanıcı** ve **parola** adını girip **Tamam**' ı seçin. SQL Server 'da başarılı bir şekilde oturum açmak için istemci IP adresinizi güvenlik duvarına eklemeniz gerekebilir. 
 
     ![SQL Server kimlik doğrulaması](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. Sorgu penceresinde aşağıdaki SQL betiğini kopyalayın ve çalıştırın: 
@@ -280,7 +280,7 @@ Olay hub’ı, SQL veri ambarı, Azure işlev uygulaması ve olay aboneliğinizi
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Çözümü derleyin. **WindTurbineGenerator. exe** uygulamasını çalıştırın. 
+6. Çözümü derleyin. **WindTurbineGenerator.exe** uygulamasını çalıştırın. 
 7. Birkaç dakika sonra, veri ambarınızdaki tabloda geçirilen verileri sorgulayın.
 
     ![Sorgu sonuçları](media/event-grid-event-hubs-integration/query-results.png)

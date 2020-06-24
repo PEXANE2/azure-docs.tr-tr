@@ -1,7 +1,7 @@
 ---
 title: "Öğretici: R 'de kümeleme gerçekleştirmek için veri hazırlama"
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Bu üç bölümden oluşan öğretici serisinin birinci bölümünde, Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme gerçekleştirmek üzere bir Azure SQL veritabanından veri hazırlarsınız.
+description: Bu üç bölümden oluşan öğretici serisinin birinci bölümünde, Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme gerçekleştirmek üzere Azure SQL veritabanındaki bir veritabanından verileri hazırlarsınız.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c06e1b13f87972cbcd50e888edf55158b77881d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a23dbd150dbe8ab05e0d4cf1f3decd67a856cbf4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053396"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251259"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme gerçekleştirmeye yönelik verileri hazırlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu üç bölümden oluşan öğretici serisinin birinci kısmında, verileri R kullanarak bir Azure SQL veritabanından içeri ve hazırlarsınız. Bu serinin ilerleyen kısımlarında, Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de bir kümeleme modeli eğitmek ve dağıtmak için bu verileri kullanacaksınız.
+Bu üç bölümden oluşan öğretici serisinin birinci kısmında, verileri R kullanarak Azure SQL veritabanındaki bir veritabanından içeri ve hazırlarsınız. Bu serinin ilerleyen kısımlarında, Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de bir kümeleme modeli eğitmek ve dağıtmak için bu verileri kullanacaksınız.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -32,7 +32,7 @@ Bu üç bölümden oluşan öğretici serisinin birinci kısmında, verileri R k
 Ürün satın alımlarının bir veri kümesinde müşteri kümelemesini gerçekleştirmek için **K-ortalıyorum** algoritmasını kullanacaksınız ve iade edersiniz. Kullanıcıları kümeleyerek, belirli grupları hedefleyerek pazarlama çabalarınızı daha verimli bir şekilde odaklabilirsiniz.
 K-kümeleme, benzerlere göre verilerde desenleri gösteren bir *öğrenme* algoritması olduğunu belirtir.
 
-Bu serinin bir ve ikinci kısımlarında, verilerinizi hazırlamak ve makine öğrenimi modelini eğtirecek RStudio 'da bazı R betikleri geliştirirsiniz. Ardından, üçüncü kısmında, saklı yordamları kullanarak bu R betiklerini bir SQL veritabanı içinde çalıştıracaksınız.
+Bu serinin bir ve ikinci kısımlarında, verilerinizi hazırlamak ve makine öğrenimi modelini eğtirecek RStudio 'da bazı R betikleri geliştirirsiniz. Ardından, üçüncü kısmında, saklı yordamları kullanarak bu R betiklerini veritabanı içinde çalıştırırsınız.
 
 Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
@@ -40,11 +40,11 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 >
 > * Örnek bir veritabanını Azure SQL veritabanı 'na aktarma
 > * R kullanarak müşterileri farklı boyutlarda ayır
-> * Verileri Azure SQL veritabanından R veri çerçevesine yükleme
+> * Veritabanından verileri bir R veri çerçevesine yükleme
 
 [İkinci bölümde](clustering-model-build-tutorial.md), R 'de K-bir kümeleme modeli oluşturma ve eğitme hakkında bilgi edineceksiniz.
 
-[Üçünde](clustering-model-deploy-tutorial.md), BIR Azure SQL veritabanında yeni verileri temel alan R 'de kümeleme gerçekleştirebilen bir saklı yordam oluşturmayı öğreneceksiniz.
+[Üçüncü kısmında](clustering-model-deploy-tutorial.md), yeni verilere göre R 'de kümeleme gerçekleştirebilen bir saklı yordam oluşturmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -60,7 +60,7 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="import-the-sample-database"></a>Örnek veritabanını içeri aktarma
 
@@ -68,7 +68,7 @@ Bu öğreticide kullanılan örnek veri kümesi, indirmeniz ve kullanmanız içi
 
 1. [Tpcxbb_1gb. bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac)dosyasını indirin.
 
-1. Aşağıdaki ayrıntıları kullanarak bir [Azure SQL veritabanı oluşturmak IÇIN BACPAC dosyasını Içeri aktarma](https://docs.microsoft.com/azure/sql-database/sql-database-import)bölümündeki yönergeleri izleyin:
+1. Aşağıdaki ayrıntıları kullanarak [BACPAC dosyasını Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanına aktarma](../../azure-sql/database/database-import.md)bölümündeki yönergeleri izleyin:
 
    * İndirdiğiniz **tpcxbb_1gb. bacpac** dosyasından içeri aktarın
    * Genel Önizleme sırasında yeni veritabanı için **5. nesil/sanal çekirdek** yapılandırmasını seçin
@@ -211,9 +211,9 @@ Azure portal, aşağıdaki adımları izleyin:
 
 Bu öğretici serisinin birinci kısmında, şu adımları tamamladınız:
 
-* Örnek bir veritabanını Azure SQL veritabanına aktarma
+* Örnek veritabanını Azure SQL veritabanı 'nda bir veritabanına aktarma
 * R kullanarak müşterileri farklı boyutlarda ayır
-* Verileri Azure SQL veritabanından R veri çerçevesine yükleme
+* Veritabanından verileri bir R veri çerçevesine yükleme
 
 Bu müşteri verilerini kullanan bir makine öğrenimi modeli oluşturmak için, bu öğretici serisinin ikinci bölümünü izleyin:
 

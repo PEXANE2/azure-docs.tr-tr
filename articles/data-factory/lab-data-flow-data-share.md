@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dac018db1737b0395f78955d16dd753c6ac2f359
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415918"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252687"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
 
@@ -22,9 +22,9 @@ Müşteriler modern veri ambarı ve analiz projelerini önemli ölçüde daha fa
 
 Veri üzerinde kapsamlı bir görünüm oluşturmak için Code-Free ETL/ELT etkinleştirildikten sonra, Azure Data Factory iyileştirmeler veri mühendislerinizi daha fazla veri almak ve bu nedenle kuruluşunuza daha fazla değer getirmek için güçlendirilecek. Azure veri paylaşımı, iş paylaşımını yönetilen bir şekilde yapmanıza olanak sağlar.
 
-Bu atölyde Azure Data Factory (ADF) kullanarak bir Azure SQL veritabanındaki (SQL DB) verileri Azure Data Lake Storage Gen2 (ADLS Gen2) içine alın. Verileri Gölü 'a ilettikten sonra veri akışlarını, Data Factory 'nin yerel dönüşüm hizmetini eşleyerek ve bunu Azure SYNAPSE Analytics 'e (eski adıyla SQL DW) kullanarak dönüştürebilirsiniz. Daha sonra, Azure veri paylaşımının kullanıldığı bazı ek verilerle birlikte dönüştürülmüş verilerle tabloyu paylaşabilirsiniz. 
+Bu atölyde Azure Data Factory (ADF) kullanarak Azure SQL veritabanındaki verileri Azure Data Lake Storage Gen2 (ADLS Gen2) içine alın. Verileri Gölü 'a ilettikten sonra veri akışlarını, Data Factory 'nin yerel dönüşüm hizmetini eşleyerek ve bunu Azure SYNAPSE Analytics 'e (eski adıyla SQL DW) kullanarak dönüştürebilirsiniz. Daha sonra, Azure veri paylaşımının kullanıldığı bazı ek verilerle birlikte dönüştürülmüş verilerle tabloyu paylaşabilirsiniz. 
 
-Bu laboratuvarda kullanılan veriler New York City TAXI verileri. Azure SQL veritabanınıza aktarmak için, [TAXI-Data bacpac dosyasını](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)indirin.
+Bu laboratuvarda kullanılan veriler New York City TAXI verileri. SQL veritabanı 'nda veritabanınıza içeri aktarmak için, [TAXI-Data bacpac dosyasını](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)indirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -62,7 +62,7 @@ Azure Data Factory bağlı hizmetler, dış kaynaklara yönelik bağlantı bilgi
 
     ![Portal](media/lab-data-flow-data-share/configure1.png)
 
-### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL veritabanı bağlı hizmeti oluşturma
+### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti oluşturma
 
 1. Yazma sayfası, işlem hatları, veri kümeleri, veri akışları, Tetikleyiciler ve bağlı hizmetler gibi veri fabrikası kaynaklarını oluşturduğunuz yerdir. Bağlı bir hizmet oluşturmak için sağ alt köşedeki **Bağlantılar** düğmesine tıklayın.
 
@@ -146,7 +146,7 @@ Kaynak veri kümenizi başarıyla oluşturdunuz. Kaynak ayarlarında, varsayıla
 1. Biçim seç bölmesinde, bir CSV dosyasına yazarken **Delimitedtext** ' i seçin. Devam ' a tıklayın.
 
     ![Portal](media/lab-data-flow-data-share/copy9.png)
-1. Havuz veri kümenizi ' Üçlü CSV ' olarak adlandırın. Bağlı hizmetiniz olarak ' ADLSGen2 ' seçeneğini belirleyin. CSV dosyanızı yazmak istediğiniz konumu girin. Örneğin, verilerinizi kapsayıcıda `trip-data.csv` `staging-container`dosyaya yazabilirsiniz. Çıktı verilerinizin üst bilgi olmasını istiyorsanız **ilk satırı üst bilgi olarak** ayarlayın. Hedefte henüz dosya olmadığından, **Içeri aktarma şemasını** **none**olarak ayarlayın. Bittiğinde Tamam ' a tıklayın.
+1. Havuz veri kümenizi ' Üçlü CSV ' olarak adlandırın. Bağlı hizmetiniz olarak ' ADLSGen2 ' seçeneğini belirleyin. CSV dosyanızı yazmak istediğiniz konumu girin. Örneğin, verilerinizi kapsayıcıda dosyaya yazabilirsiniz `trip-data.csv` `staging-container` . Çıktı verilerinizin üst bilgi olmasını istiyorsanız **ilk satırı üst bilgi olarak** ayarlayın. Hedefte henüz dosya olmadığından, **Içeri aktarma şemasını** **none**olarak ayarlayın. Bittiğinde Tamam ' a tıklayın.
 
     ![Portal](media/lab-data-flow-data-share/copy10.png)
 
@@ -169,7 +169,7 @@ Kaynak veri kümenizi başarıyla oluşturdunuz. Kaynak ayarlarında, varsayıla
 
 Verileri başarıyla Azure Data Lake Storage olarak kopyaladığınıza göre, bu verileri bir veri ambarına birleştirme ve toplama işlemi zaman alabilir. Azure Data Factory, verileri görsel olarak tasarlanan dönüştürme hizmeti olan eşleme veri akışını kullanacağız. Veri akışlarını eşleme, kullanıcıların dönüştürme mantığı kodu ücretsiz geliştirmesine olanak tanır ve bunları ADF hizmeti tarafından yönetilen Spark kümelerinde yürütür.
 
-Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü CSV" veri kümesini ' dbo ' tablosu ile birleştirir. Üçlü dört sütuna göre ' SQLDB ' içinde depolanan Üçlü Fares. Ardından veriler, belirli alanların ortalamasını hesaplamak ve `payment_type` bir Azure SYNAPSE Analytics tablosuna yazılmak üzere sütun temelinde toplanır.
+Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü CSV" veri kümesini ' dbo ' tablosu ile birleştirir. Üçlü dört sütuna göre ' SQLDB ' içinde depolanan Üçlü Fares. Ardından veriler, `payment_type` belirli alanların ortalamasını hesaplamak ve bir Azure SYNAPSE Analytics tablosuna yazılmak üzere sütun temelinde toplanır.
 
 ### <a name="add-a-data-flow-activity-to-your-pipeline"></a>İşlem hattınızı bir veri akışı etkinliği ekleyin
 
@@ -188,7 +188,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 1. Yapmak istediğiniz ilk şey, iki kaynak dönüştürmelerinizi yapılandırmaktır. İlk kaynak "Üçlü CSV" Demitedtext veri kümesini işaret eder. Bir kaynak dönüştürmesi eklemek için tuvaldeki **Kaynak Ekle** kutusuna tıklayın.
 
     ![Portal](media/lab-data-flow-data-share/dataflow4.png)
-1. Kaynağınızı ' Üçlü CSV ' olarak adlandırın ve kaynak açılan listesinden ' Üçlü Datacsv ' veri kümesini seçin. Hatırlamanız durumunda bu veri kümesini oluştururken başlangıçta bir şemayı içeri aktarmadınız. Şimdi `trip-data.csv` mevcut olduğundan, veri kümesi ayarları sekmesine gitmek için **Düzenle** ' ye tıklayın.
+1. Kaynağınızı ' Üçlü CSV ' olarak adlandırın ve kaynak açılan listesinden ' Üçlü Datacsv ' veri kümesini seçin. Hatırlamanız durumunda bu veri kümesini oluştururken başlangıçta bir şemayı içeri aktarmadınız. `trip-data.csv`Şimdi mevcut olduğundan, veri kümesi ayarları sekmesine gitmek Için **Düzenle** ' ye tıklayın.
 
     ![Portal](media/lab-data-flow-data-share/dataflow5.png)
 1. Sekme **şemasına** gidin ve **şemayı içeri aktar**' a tıklayın. Doğrudan dosya deposundan içeri aktarmak için **bağlantı/depolama alanından** seçim yapın. dize türünde 14 sütun görünmelidir.
@@ -226,7 +226,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
     ![Portal](media/lab-data-flow-data-share/join1.png)
 1. ' Innerjoinwithüçlü Fares ' JOIN dönüşümünüzü adlandırın. Sağ Akış açılan menüsünde ' Üçlü Faressql ' seçeneğini belirleyin. Birleşim türü olarak **iç** öğesini seçin. Eşleme veri akışı 'nda farklı JOIN türleri hakkında daha fazla bilgi edinmek için bkz. [JOIN Types](https://docs.microsoft.com/azure/data-factory/data-flow-join#join-types).
 
-    Her akıştan eşleştirmek istediğiniz sütunları, **JOIN koşulu** açılan kutusu aracılığıyla seçin. Ek bir JOIN koşulu eklemek için, var olan bir koşulun yanındaki artı simgesine tıklayın. Varsayılan olarak, tüm JOIN koşulları bir ve işleciyle birleştirilir ve bu, bir eşleşme için tüm koşulların karşılanması gerektiği anlamına gelir. Bu laboratuvarda,,, ve sütunları `medallion` `hack_license` `vendor_id`ile eşleştirmek istiyoruz`pickup_datetime`
+    Her akıştan eşleştirmek istediğiniz sütunları, **JOIN koşulu** açılan kutusu aracılığıyla seçin. Ek bir JOIN koşulu eklemek için, var olan bir koşulun yanındaki artı simgesine tıklayın. Varsayılan olarak, tüm JOIN koşulları bir ve işleciyle birleştirilir ve bu, bir eşleşme için tüm koşulların karşılanması gerektiği anlamına gelir. Bu laboratuvarda,,, ve sütunları ile eşleştirmek `medallion` istiyoruz `hack_license` `vendor_id``pickup_datetime`
 
     ![Portal](media/lab-data-flow-data-share/join2.png)
 1. Bir veri önizlemesiyle 25 sütunlarınızın başarıyla birleştirildiğini doğrulayın.
@@ -238,7 +238,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 1. Birleştirme dönüşümünüzü tamamladıktan sonra, ' ınnerjoinwithüçlü Fares ' nin yanındaki artı simgesine tıklayarak bir toplama dönüştürmesi ekleyin. **Şema değiştiricisi**altında **Toplam** ' ı seçin.
 
     ![Portal](media/lab-data-flow-data-share/agg1.png)
-1. ' AggregateByPaymentType ' toplama dönüştürmeinizi adlandırın. Gruplandırma `payment_type` ölçütü sütunu olarak seçin.
+1. ' AggregateByPaymentType ' toplama dönüştürmeinizi adlandırın. `payment_type`Gruplandırma ölçütü sütunu olarak seçin.
 
     ![Portal](media/lab-data-flow-data-share/agg2.png)
 1. **Toplamlar** sekmesine gidin. Burada iki toplama belirtirsiniz:
@@ -250,15 +250,15 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
     ![Portal](media/lab-data-flow-data-share/agg3.png)
 1. Toplama ifadesi girmek için, **ENTER ifadesi**etiketli mavi kutuya tıklayın. Bu işlem, giriş şeması, yerleşik işlevler ve işlemler ve Kullanıcı tanımlı parametreleri kullanarak görsel olarak veri akışı ifadeleri oluşturmak için kullanılan bir araç olan veri akışı ifade Oluşturucusu 'nu açar. İfade oluşturucusunun özellikleri hakkında daha fazla bilgi için bkz. [Expression Builder belgeleri](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder).
 
-    Ortalama tarifeli havayolu almak için `avg()` toplama işlevini kullanarak `total_amount` sütun için bir tamsayıya dönüştürme toplamını toplayın. `toInteger()` Veri akışı ifade dilinde, bu olarak `avg(toInteger(total_amount))`tanımlanmıştır. İşiniz bittiğinde Kaydet ' e tıklayın **ve son** ' a tıklayın.
+    Ortalama tarifeli havayolu almak için `avg()` toplama işlevini kullanarak `total_amount` sütun için bir tamsayıya dönüştürme toplamını toplayın `toInteger()` . Veri akışı ifade dilinde, bu olarak tanımlanmıştır `avg(toInteger(total_amount))` . İşiniz bittiğinde Kaydet ' e tıklayın **ve son** ' a tıklayın.
 
     ![Portal](media/lab-data-flow-data-share/agg4.png)
-1. Ek toplama ifadesi eklemek için yanındaki artı simgesine tıklayın `average_fare`. **Sütun Ekle**' yi seçin.
+1. Ek toplama ifadesi eklemek için yanındaki artı simgesine tıklayın `average_fare` . **Sütun Ekle**' yi seçin.
 
     ![Portal](media/lab-data-flow-data-share/agg5.png)
 1. **Sütun Ekle veya Seç**etiketli metin kutusunda ' total_trip_distance ' girin. Son adımda olduğu gibi, ifadeye girmek için ifade oluşturucuyu açın.
 
-    Toplam seyahat mesafesini almak için `sum()` toplama işlevini kullanarak `trip_distance` sütun için bir tamsayıya dönüştürme toplamını toplayın. `toInteger()` Veri akışı ifade dilinde, bu olarak `sum(toInteger(trip_distance))`tanımlanmıştır. İşiniz bittiğinde Kaydet ' e tıklayın **ve son** ' a tıklayın.
+    Toplam seyahat mesafesini almak için `sum()` toplama işlevini kullanarak `trip_distance` sütun için bir tamsayıya dönüştürme toplamını toplayın `toInteger()` . Veri akışı ifade dilinde, bu olarak tanımlanmıştır `sum(toInteger(trip_distance))` . İşiniz bittiğinde Kaydet ' e tıklayın **ve son** ' a tıklayın.
 
     ![Portal](media/lab-data-flow-data-share/agg6.png)
 1. **Veri önizleme** sekmesinde dönüştürme mantığınızı test edin. Gördüğünüz gibi, daha önce çok daha az sayıda satır ve sütun vardır. Bu dönüşümde tanımlanan üç gruplama ölçütü ve toplama sütunları aşağı yönde devam eder. Örnekte yalnızca beş ödeme türü grubu olduğundan, yalnızca beş satır silinir.
@@ -336,7 +336,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
     ![Ayrıntıları paylaşma](media/lab-data-flow-data-share/ads-details.png)
 
-1. **Devam**'ı seçin. 
+1. **Devam**’ı seçin. 
 
 1. **Veri kümesi Ekle** 'yi seçin 
 
@@ -390,13 +390,13 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
         ![Alıcı ekleme](media/lab-data-flow-data-share/add-recipients.png)
 
-    1. Adlı *janedoe@fabrikam.com*kurgusal veri tüketicisine ekleyin.
+    1. Adlı kurgusal veri tüketicisine ekleyin *janedoe@fabrikam.com* .
 
 1. Bu ekranda, veri tüketicinizin anlık görüntü ayarını yapılandırabilirsiniz. Bu, sizin tarafınızdan tanımlanan bir aralıkta verilerinizin düzenli güncelleştirmelerini almasına izin verir. 
 
 1. *Yinelenme* açılan listesini kullanarak **anlık görüntü zamanlamasını** denetleyin ve verilerinizin saatlik olarak yenilenmesini yapılandırın.  
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
     Artık etkin bir veri paylaşımınız var. Veri paylaşma oluştururken veri sağlayıcısı olarak neleri görebileceğinize ilişkin incelemeye izin verir. 
 
@@ -412,7 +412,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
     ![Bekleyen davetler](media/lab-data-flow-data-share/pending-invites.png)
 
-1. Davetini seçin *janedoe@fabrikam.com*. Sil’i seçin. Alıcının daveti henüz kabul etmediyse, artık bunu yapamayacaktır. 
+1. Davetini seçin *janedoe@fabrikam.com* . Sil’i seçin. Alıcının daveti henüz kabul etmediyse, artık bunu yapamayacaktır. 
 
 1. **Geçmiş** sekmesini seçin. Veri Tüketiciniz henüz davetinizi kabul etmediğinden ve bir anlık görüntü tetiklemediğinden hiçbir şey yapılmadı. 
 

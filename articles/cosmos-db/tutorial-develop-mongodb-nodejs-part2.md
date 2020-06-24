@@ -1,5 +1,5 @@
 ---
-title: MongoDB için Azure Cosmos DB API 'SI ile Node. js Express uygulaması oluşturma (part2)
+title: MongoDB için Azure Cosmos DB API 'siyle Node.js Express uygulaması oluşturma (part2)
 description: Azure Cosmos DB üzerinde Angular ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturma öğreticisi dizisinin 2. bölümü.
 author: johnpapa
 ms.service: cosmos-db
@@ -10,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75441142"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119180"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Node. js Express uygulaması oluşturma
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Node.js Express uygulaması oluşturma
 
-Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
+Bu çok parçalı öğreticide, Express ve angular ile Node.js yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 Öğreticinin 2. bölümünde [giriş bölümündeki](tutorial-develop-mongodb-nodejs.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
@@ -163,7 +163,7 @@ Bu öğretici için aşağıdakiler de gereklidir:
 
     Bu yanıt uygulamanın hazır ve yerel olarak çalışır durumda olduğunu gösterir. 
 
-    ![İsteği ve yanıtı gösteren postman](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png" alt-text="İsteği ve yanıtı gösteren postman":::
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

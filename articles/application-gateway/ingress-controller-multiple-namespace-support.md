@@ -4,15 +4,15 @@ description: Bu makalede, bir Kubernetes kümesinde Application Gateway giriş d
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c519792bcf9251f926d305c9611320a18b7c346
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279929"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806999"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway Ingress denetleyicisi ile bir AKS kümesinde birden çok ad alanı desteğini etkinleştirme
 
@@ -21,14 +21,14 @@ Kubernetes [ad alanları](https://kubernetes.io/docs/concepts/overview/working-w
 
 Sürüm 0,7 itibariyle [Azure Application Gateway Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) (AGIC), içindeki olayları alabilir ve birden çok ad alanını gözlemleyebilirsiniz. AKS Yöneticisi, [uygulama ağ geçidini](https://azure.microsoft.com/services/application-gateway/) bir giriş olarak kullanmaya karar verirse, tüm ad alanları Application Gateway aynı örneğini kullanır. Tek bir giriş denetleyicisi yüklemesi, erişilebilir ad alanlarını izleyecek ve ilişkilendirildiği Application Gateway yapılandıracaktır.
 
-Bağımsız olarak, Helm yapılandırmasındaki bir veya daha fazla farklı `default` ad alanına açıkça değiştirilmediği sürece agic sürüm 0,7, ad alanını özel olarak gözlemlemeye devam eder (aşağıdaki bölümüne bakın).
+Bağımsız `default` olarak, Helm yapılandırmasındaki bir veya daha fazla farklı ad alanına açıkça değiştirilmediği sürece AGIC sürüm 0,7, ad alanını özel olarak gözlemlemeye devam eder (aşağıdaki bölümüne bakın).
 
 ## <a name="enable-multiple-namespace-support"></a>Birden çok ad alanı desteğini etkinleştirme
 Birden çok ad alanı desteğini etkinleştirmek için:
 1. [Helm-config. YAML](#sample-helm-config-file) dosyasını aşağıdaki yollarla değiştirin:
-   - `watchNamespace` anahtarı tamamen [helk-config konumundan silin. YAML](#sample-helm-config-file) -agic tüm ad alanlarını gözlemleyecek
-   - boş `watchNamespace` bir dizeye ayarla-agic, tüm ad alanlarını gözlemleyecek
-   - virgülle ayrılmış birden çok ad alanı ekleme (`watchNamespace: default,secondNamespace`)-agic bu ad alanlarını özel olarak gözlemleyecek
+   - `watchNamespace`anahtarı tamamen [helk-config konumundan silin. YAML](#sample-helm-config-file) -agic tüm ad alanlarını gözlemleyecek
+   - `watchNamespace`boş bir dizeye ayarla-AGIC, tüm ad alanlarını gözlemleyecek
+   - virgülle ayrılmış birden çok ad alanı ekleme ( `watchNamespace: default,secondNamespace` )-agic bu ad alanlarını özel olarak gözlemleyecek
 2. ile Helmtemplate değişikliklerini Uygula:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
 Birden çok ad alanını gözlemleyebilme özelliği ile dağıtıldıktan sonra, AGIC şunları sağlar:
@@ -44,7 +44,7 @@ Hiyerarşinin en **üstünde (IP** adresi, bağlantı noktası ve ana bilgisayar
 
 Diğer yandan yollar, arka uç havuzları, HTTP ayarları ve TLS sertifikaları yalnızca bir ad alanı tarafından oluşturulabilir ve yinelemeler kaldırılır.
 
-Örneğin, aşağıdaki yinelenen giriş kaynakları tanımlı ad alanlarını `staging` ve `production` için `www.contoso.com`göz önünde bulundurun:
+Örneğin, aşağıdaki yinelenen giriş kaynakları tanımlı ad alanlarını ve için göz önünde bulundurun `staging` `production` `www.contoso.com` :
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -81,7 +81,7 @@ spec:
               servicePort: 80
 ```
 
-İki giriş kaynağına, ilgili Kubernetes ad alanlarına yönlendirilmek için trafik `www.contoso.com` talep etmekte olsa da, trafiğe yalnızca bir arka uç hizmet verebilir. AGIC, kaynaklardan biri için "ilk olarak ilk kez sunulan" temelinde bir yapılandırma oluşturur. Aynı anda iki giriş kaynağı oluşturulursa, alfabede daha önceki bir işlem öncelikli olur. Yukarıdaki örnekte, yalnızca giriş için `production` ayarları oluşturabileceksiniz. Application Gateway, aşağıdaki kaynaklarla yapılandırılacak:
+İki giriş kaynağına, ilgili `www.contoso.com` Kubernetes ad alanlarına yönlendirilmek için trafik talep etmekte olsa da, trafiğe yalnızca bir arka uç hizmet verebilir. AGIC, kaynaklardan biri için "ilk olarak ilk kez sunulan" temelinde bir yapılandırma oluşturur. Aynı anda iki giriş kaynağı oluşturulursa, alfabede daha önceki bir işlem öncelikli olur. Yukarıdaki örnekte, yalnızca giriş için ayarları oluşturabileceksiniz `production` . Application Gateway, aşağıdaki kaynaklarla yapılandırılacak:
 
   - Oluşturulurken`fl-www.contoso.com-80`
   - Yönlendirme kuralı:`rr-www.contoso.com-80`
@@ -89,11 +89,11 @@ spec:
   - HTTP ayarları:`bp-production-contoso-web-service-80-80-websocket-ingress`
   - Durum araştırması:`pb-production-contoso-web-service-80-websocket-ingress`
 
-*Dinleyici* ve *yönlendirme kuralı*haricinde oluşturulan Application Gateway kaynakları, oluşturuldukları ad alanının (`production`) adını içerir.
+*Dinleyici* ve *yönlendirme kuralı*haricinde oluşturulan Application Gateway kaynakları, oluşturuldukları ad alanının () adını içerir `production` .
 
-İki giriş kaynağı, zaman içinde farklı noktalarda AKS kümesine tanıtılıyorsa, AGC 'nin Application Gateway yeniden yapılandırdığı ve trafiği ' den `namespace-B` ' a yeniden yönlendirdiği bir senaryoya kadar sona erdirmek olasıdır. `namespace-A`
+İki giriş kaynağı, zaman içinde farklı noktalarda AKS kümesine tanıtılıyorsa, AGC 'nin Application Gateway yeniden yapılandırdığı ve trafiği ' den ' a yeniden yönlendirdiği bir senaryoya kadar sona erdirmek olasıdır `namespace-B` `namespace-A` .
 
-Örneğin, önce eklediyseniz `staging` , agic, trafiği hazırlama arka uç havuzuna yönlendirmek için Application Gateway yapılandırır. Daha sonraki bir aşamada, giriş `production` girişi, `production` arka uç havuzuna trafiği yönlendirmeyi Başlatan Application Gateway yeniden programmasına neden olur.
+Örneğin `staging` , önce eklediyseniz, AGIC, trafiği hazırlama arka uç havuzuna yönlendirmek için Application Gateway yapılandırır. Daha sonraki bir aşamada, giriş girişi `production` , `production` arka uç havuzuna trafiği yönlendirmeyi Başlatan Application Gateway yeniden programmasına neden olur.
 
 ## <a name="restrict-access-to-namespaces"></a>Ad alanlarına erişimi kısıtlama
 Varsayılan olarak AGIC, Application Gateway herhangi bir ad alanı içinde açıklamalı giriş temelli olarak yapılandırır. Bu davranışı sınırlandırmak istiyorsanız aşağıdaki seçeneklere sahip olursunuz:

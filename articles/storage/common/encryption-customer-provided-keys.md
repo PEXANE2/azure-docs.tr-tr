@@ -8,14 +8,14 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c8a5555c5c33255fdc5902a115e7e9103a4e936f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79410070"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805312"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>BLOB depolama (Önizleme) isteğinde bir şifreleme anahtarı sağlayın
 
@@ -25,7 +25,7 @@ Azure Blob depolamada istek yapan istemciler, istek başına temelinde (Önizlem
 
 İstemci uygulaması istekte bir şifreleme anahtarı sağlıyorsa, blob verilerini okurken ve yazarken Azure Storage şifreleme ve şifre çözme işlemlerini saydam bir şekilde gerçekleştirir. Azure depolama, blob içeriklerinin yanı sıra şifreleme anahtarının SHA-256 karmasını yazar. Karma, blob 'a yönelik tüm sonraki işlemlerin aynı şifreleme anahtarını kullanmasını doğrulamak için kullanılır.
 
-Azure depolama, istemcinin istekle birlikte gönderdiği şifreleme anahtarını depolamaz veya yönetemez. Şifreleme veya şifre çözme işlemi tamamlandıktan hemen sonra anahtar güvenle atılır.
+Azure depolama, istemcinin istekle birlikte gönderdiği şifreleme anahtarını depolamaz veya yönetemez. Şifreleme veya şifre çözme işlemi tamamlandıktan sonra anahtar güvenli bir şekilde atılır.
 
 Bir istemci istekte müşteri tarafından sağlanmış bir anahtar kullanarak bir blob oluşturduğunda veya güncelleştirayarlandığında, bu Blobun sonraki okuma ve yazma istekleri de anahtarı sağlamalıdır. Anahtar, zaten müşteri tarafından sağlanmış bir anahtarla şifrelenen bir blob isteği üzerinde sağlanmazsa, istek 409 (çakışma) hata koduyla başarısız olur.
 
@@ -39,7 +39,7 @@ Her blob anlık görüntüsünün kendi şifreleme anahtarı olabilir.
 
 İstemciler, REST çağrıları için aşağıdaki üst bilgileri kullanarak blob depolamaya yönelik bir istek üzerindeki şifreleme anahtarı bilgilerini güvenli bir şekilde geçirebilir:
 
-|İstek Başlığı | Açıklama |
+|İstek Başlığı | Description |
 |---------------|-------------|
 |`x-ms-encryption-key` |Hem yazma hem de okuma istekleri için gereklidir. Base64 kodlamalı AES-256 şifreleme anahtarı değeri. |
 |`x-ms-encryption-key-sha256`| Hem yazma hem de okuma istekleri için gereklidir. Şifreleme anahtarının Base64 ile kodlanmış SHA256. |
@@ -77,4 +77,4 @@ Bir blobu şifrelemek için kullanılan bir şifreleme anahtarını döndürmek 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [.NET ile BLOB depolama için istekte müşteri tarafından sağlanmış bir anahtar belirtin](../blobs/storage-blob-customer-provided-key.md)
-- [Bekleyen veriler için Azure depolama şifrelemesi](storage-service-encryption.md)
+- [Bekleyen veri için Azure Depolama şifrelemesi](storage-service-encryption.md)

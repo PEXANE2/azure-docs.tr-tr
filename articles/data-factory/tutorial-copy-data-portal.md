@@ -1,6 +1,6 @@
 ---
 title: Data Factory işlem hattı oluşturmak için Azure portal kullanma
-description: Bu öğreticide işlem hattıyla veri fabrikası oluşturmak için Azure portalını kullanmaya yönelik adım adım yönergeler sağlanır. İşlem hattı, Azure Blob depolama alanından Azure SQL veritabanına veri kopyalamak için kopyalama etkinliğini kullanır.
+description: Bu öğreticide işlem hattıyla veri fabrikası oluşturmak için Azure portalını kullanmaya yönelik adım adım yönergeler sağlanır. İşlem hattı, Azure Blob depolamadan Azure SQL veritabanı 'na veri kopyalamak için kopyalama etkinliğini kullanır.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248626"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253977"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolama alanında SQL veritabanına veri kopyalama
+# <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamadan Azure SQL veritabanı 'ndaki bir veritabanına veri kopyalama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, Azure Data Factory kullanıcı arabirimini (UI) kullanarak bir veri fabrikası oluşturursunuz. Bu veri fabrikasındaki işlem hattı, verileri Azure Blob depolama alanından Azure SQL veritabanına kopyalar. Bu öğreticideki yapılandırma düzeni, dosya tabanlı bir veri deposundan ilişkisel bir veri deposuna kopyalama için geçerlidir. Kaynak ve havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Bu öğreticide, Azure Data Factory kullanıcı arabirimini (UI) kullanarak bir veri fabrikası oluşturursunuz. Bu veri fabrikasındaki işlem hattı, verileri Azure Blob depolama alanından Azure SQL veritabanı 'ndaki bir veritabanına kopyalar. Bu öğreticideki yapılandırma düzeni, dosya tabanlı bir veri deposundan ilişkisel bir veri deposuna kopyalama için geçerlidir. Kaynak ve havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 > [!NOTE]
 > - İlk kez Data Factory kullanıyorsanız bkz. [Azure Data Factory'ye giriş](introduction.md).
@@ -41,7 +41,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 ## <a name="prerequisites"></a>Ön koşullar
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. Blob depolama alanını *kaynak* veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
-* **Azure SQL veritabanı**. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanınız yoksa, oluşturma adımları için bkz. [SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) .
+* **Azure SQL veritabanı**. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) bölümüne bakın.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
 
@@ -61,7 +61,7 @@ Aşağıdaki adımları uygulayarak öğretici için Blob depolama alanınızı 
 
 #### <a name="create-a-sink-sql-table"></a>Havuz SQL tablosu oluşturma
 
-1. SQL veritabanınızda **dbo.emp** tablosu oluşturmak için aşağıdaki SQL betiğini kullanın:
+1. Veritabanınızdaki **dbo.** bir tablosunu oluşturmak IÇIN aşağıdaki SQL betiğini kullanın:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -97,7 +97,7 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
 6. **Sürüm** bölümünde **V2**'yi seçin.
 7. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
-8. **Oluştur**’u seçin.
+8. **Oluştur**'u seçin.
 9. Oluşturma işlemi tamamlandıktan sonra, Bildirim Merkezi ' nde bildirimi görürsünüz. Data Factory sayfasına gitmek için **Kaynağa Git** ' i seçin.
 10. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle**’yi seçin.
 
@@ -139,7 +139,7 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 
 1. Bağlı hizmet oluşturulduktan sonra, **özelliği ayarla** sayfasına geri gidilmesini sağlar. **Dosya yolu**’nun yanındaki **Gözat** seçeneğini belirleyin.
 
-1. **Adföğreticisi/giriş** klasörüne gidin, **bu dosyayı seçin** ve ardından **Tamam**' ı seçin.
+1. **Adföğreticisi/giriş** klasörüne gidin, **emp.txt** dosyasını seçin ve ardından **Tamam**' ı seçin.
 
 1. **Tamam**’ı seçin. Otomatik olarak işlem hattı sayfasına gider. **Kaynak** sekmesinde **sourceblobdataset** ' in seçili olduğunu onaylayın. Bu sayfadaki verilerin önizlemesini görüntülemek için **Veri önizleme **‘yi seçin.
 
@@ -154,7 +154,7 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 
 1. **Yeni veri kümesi** iletişim kutusunda, bağlayıcılar filtrelemek için arama kutusuna "SQL" girin, **Azure SQL veritabanı**' nı seçin ve ardından **devam**' ı seçin. Bu öğreticide verileri bir SQL veritabanına kopyalayacaksınız.
 
-1. **Özellikleri ayarla** Iletişim kutusunda ad Için **outputsqldataset** girin. **Bağlı hizmet** açılan listesinden **+ Yeni**' yi seçin. Bağlı hizmeti bir veri kümesi ile ilişkilendirilmelidir. Bağlı hizmet, Data Factory’nin çalışma zamanında SQL veritabanına bağlanmak için kullandığı bağlantı dizesini içerir. Veri kümesi, verilerin kopyalanacağı kapsayıcıyı, klasörü ve dosyayı (isteğe bağlı) belirtilir.
+1. **Özellikleri ayarla** Iletişim kutusunda ad Için **outputsqldataset** girin. **Bağlı hizmet** açılan listesinden **+ Yeni**' yi seçin. Bağlı hizmeti bir veri kümesi ile ilişkilendirilmelidir. Bağlı hizmetin, Data Factory çalışma zamanında SQL veritabanına bağlanmak için kullandığı bağlantı dizesi vardır. Veri kümesi, verilerin kopyalanacağı kapsayıcıyı, klasörü ve dosyayı (isteğe bağlı) belirtilir.
 
 1. **Yeni bağlı hizmet (Azure SQL veritabanı)** iletişim kutusunda aşağıdaki adımları uygulayın:
 
@@ -162,7 +162,7 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 
     b. **Sunucu adı** bölümünde SQL Server örneğinizi seçin.
 
-    c. **Veritabanı adı** bölümünde SQL veritabanınızı seçin.
+    c. **Veritabanı adı**altında, veritabanınızı seçin.
 
     d. **Kullanıcı adı** bölümüne kullanıcının adını girin.
 
@@ -170,7 +170,7 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 
     f. Bağlantıyı test etmek için **Bağlantıyı sına**’yı seçin.
 
-    g. Bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.
+    örneğin: Bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.
 
     ![Yeni bağlı hizmeti kaydedin](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
@@ -209,7 +209,7 @@ Bu adımda, önceki adımda yayımladığınız işlem hattını el ile tetikler
 
     [![Etkinlik çalıştırmalarını izleme](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. SQL veritabanında **emp** tablosuna iki satır daha eklendiğinden emin olun.
+1. Veritabanındaki ısetable tablosuna iki satır daha eklendiğini **emp** doğrulayın.
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>İşlem hattını bir zamanlamaya göre tetikleme
 Bu zamanlamada, işlem hattı için bir zamanlayıcı tetikleyicisi oluşturacaksınız. Tetikleyici, işlem hattını saatlik veya günlük gibi belirli bir zamanlamaya göre çalıştırır. Burada, belirtilen bitiş tarih/saati kadar tetikleyiciyi her dakikada çalışacak şekilde ayarlarsınız.
@@ -234,7 +234,7 @@ Bu zamanlamada, işlem hattı için bir zamanlayıcı tetikleyicisi oluşturacak
 
     f. **Tamam**’ı seçin.
 
-    g. **Etkin** seçeneği için **Evet**' i seçin.
+    örneğin: **Etkin** seçeneği için **Evet**' i seçin.
 
     h. **Tamam**’ı seçin.
 

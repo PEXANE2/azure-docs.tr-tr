@@ -1,6 +1,6 @@
 ---
-title: Azure VM 'de oturum açmak için Yönetilen kimlikler kullanma-Azure AD
-description: Komut dosyası istemcisi oturum açma ve kaynak erişimi için Azure kaynakları hizmet sorumlusu için Azure VM tarafından yönetilen kimlikler kullanmaya yönelik adım adım yönergeler ve örnekler.
+title: Azure 'da oturum açmak için Azure sanal makinesinde Yönetilen kimlikler kullanma
+description: Komut dosyası istemcisi oturum açma ve kaynak erişimi için Azure kaynakları hizmet sorumlusu için Azure VM tarafından yönetilen bir kimlik kullanımı için adım adım yönergeler ve örnekler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 1f626b9e6626f5fe74796baf2b591214bfd98c85
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547380"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694209"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 'de oturum açmak üzere Azure kaynakları için Yönetilen kimlikler kullanma 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 'de oturum açma için Azure kaynakları için Yönetilen kimlikler kullanma 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 Bu makalede, Azure kaynakları hizmet sorumlusu için yönetilen kimlikleri kullanarak oturum açma için PowerShell ve CLı betik örnekleri ve hata işleme gibi önemli konularda rehberlik sağlanmıştır.
@@ -41,7 +41,7 @@ Bu makaledeki Azure PowerShell veya Azure CLı örneklerini kullanmayı planlıy
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure kaynakları için Yönetilen kimlikler, VM 'deki [Azure kaynakları için Yönetilen kimlikler etkinleştirildikten sonra oluşturulan](overview.md#how-does-the-managed-identities-for-azure-resources-work) bir [hizmet sorumlusu nesnesi](../develop/developer-glossary.md#service-principal-object) sağlar. Hizmet sorumlusuna Azure kaynaklarına erişim verilebilir ve oturum açma ve kaynak erişimi için betik/komut satırı istemcilerinin kimlik olarak kullanılması verilebilir. Geleneksel olarak, kendi kimliği altında güvenli kaynaklara erişmek için bir komut dosyası istemcisinin şunları yapması gerekir:  
+Azure kaynakları için Yönetilen kimlikler, VM 'deki [Azure kaynakları için Yönetilen kimlikler etkinleştirildikten sonra oluşturulan](overview.md) bir [hizmet sorumlusu nesnesi](../develop/developer-glossary.md#service-principal-object) sağlar. Hizmet sorumlusuna Azure kaynaklarına erişim verilebilir ve oturum açma ve kaynak erişimi için betik/komut satırı istemcilerinin kimlik olarak kullanılması verilebilir. Geleneksel olarak, kendi kimliği altında güvenli kaynaklara erişmek için bir komut dosyası istemcisinin şunları yapması gerekir:  
 
    - Azure AD 'ye bir gizli/Web istemci uygulaması olarak kaydolmuş ve bunlarla yarışmalıdır
    - uygulamanın kimlik bilgilerini (büyük olasılıkla betiğe gömülü) kullanarak hizmet sorumlusu altında oturum açın
@@ -53,7 +53,7 @@ Azure kaynakları için Yönetilen kimlikler sayesinde, komut dosyası istemcini
 Aşağıdaki betik, aşağıdakilerin nasıl yapılacağını göstermektedir:
 
 1. Azure kaynakları hizmet sorumlusu için VM 'nin yönetilen kimliği kapsamında Azure AD 'de oturum açın  
-2. Azure Resource Manager çağırın ve VM 'nin hizmet sorumlusu KIMLIĞINI alın. CLı, belirteç alımı/kullanımını sizin için otomatik olarak yönetme işlemini gerçekleştirir. İçin `<VM-NAME>`sanal makine adınızı seçtiğinizden emin olun.  
+2. Azure Resource Manager çağırın ve VM 'nin hizmet sorumlusu KIMLIĞINI alın. CLı, belirteç alımı/kullanımını sizin için otomatik olarak yönetme işlemini gerçekleştirir. İçin sanal makine adınızı seçtiğinizden emin olun `<VM-NAME>` .  
 
    ```azurecli
    az login --identity
@@ -87,7 +87,7 @@ Azure AD [kimlik doğrulamasını](services-support-managed-identities.md#azure-
 Aşağıdakiler gibi yanıtlar, sanal makinenin Azure kaynakları için yönetilen kimliğinin doğru şekilde yapılandırılmadığını gösterebilir:
 
 - PowerShell: *Invoke-WebRequest: uzak sunucuya bağlanılamıyor*
-- CLı: *MSI: ' HTTPConnectionPool (Host `http://localhost:50342/oauth2/token` = ' localhost ', bağlantı noktası = 50342) hatasından bir belirteç alınamadı* 
+- CLı: *MSI: `http://localhost:50342/oauth2/token` ' HTTPConnectionPool (Host = ' localhost ', bağlantı noktası = 50342) hatasından bir belirteç alınamadı* 
 
 Bu hatalardan birini alırsanız, [Azure Portal](https://portal.azure.com) Azure VM 'ye geri dönün ve:
 

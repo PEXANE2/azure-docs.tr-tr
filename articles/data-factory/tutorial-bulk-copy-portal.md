@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/22/2020
+ms.openlocfilehash: d7f6da930f797912ef0e91666082aa5654b7f1ab
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661056"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251786"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -58,7 +58,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 **Kaynak Azure SQL Veritabanı’nı hazırlama**:
 
-[Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesini izleyerek Adventure Works LT örnek verileriyle bir Azure SQL Veritabanı oluşturun. Bu öğretici bu örnek veritabanındaki tüm tabloları bir Azure SYNAPSE Analytics 'e (eski adıyla SQL DW) kopyalar.
+SQL veritabanı 'nda Adventure Works LT örnek verileriyle bir veritabanı oluşturun ve [Azure SQL veritabanı 'nda veritabanı oluşturun](../azure-sql/database/single-database-create-quickstart.md) makalesini takip edin. Bu öğretici bu örnek veritabanındaki tüm tabloları bir Azure SYNAPSE Analytics 'e (eski adıyla SQL DW) kopyalar.
 
 **Havuz Azure SYNAPSE Analytics (eski ADıYLA SQL DW) hazırlama**:
 
@@ -106,7 +106,7 @@ Veri depolarınızı ve işlemlerinizi veri fabrikasına bağlamak için bağlı
 Bu öğreticide, Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL DW) ve Azure Blob depolama veri depolarınızı veri fabrikanıza bağlarsınız. Azure SQL Veritabanı, kaynak veri deposudur. Azure SYNAPSE Analytics (eski adıyla SQL DW), havuz/hedef veri deposudur. Azure Blob depolama, verileri, PolyBase kullanılarak Azure SYNAPSE Analytics 'e (eski adıyla SQL DW) yüklenmeden önce verileri aşamalandırmaktır. 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Kaynak Azure SQL Veritabanı bağlı hizmetini oluşturma
-Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. 
+Bu adımda, Azure SQL veritabanı 'nda veritabanınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. 
 
 1. Sol bölmedeki [Yönet sekmesini](https://docs.microsoft.com/azure/data-factory/author-management-hub) açın.
 
@@ -120,13 +120,13 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağl�
 
     b. **Sunucu adı** için sunucunuzu seçin
     
-    c. **Veritabanı adı** için Azure SQL veritabanınızı seçin. 
+    c. **Veritabanı adı**için veritabanınızı seçin. 
     
-    d. Azure SQL veritabanına bağlanacak **kullanıcının adını** girin. 
+    d. Veritabanınıza bağlanacak **kullanıcının adını** girin. 
     
     e. Kullanıcının **parolasını** girin. 
 
-    f. Belirtilen bilgileri kullanarak Azure SQL veritabanına bağlantıyı test etmek için, **Bağlantıyı sına**'ya tıklayın.
+    f. Belirtilen bilgileri kullanarak veritabanınızın bağlantısını test etmek için **Bağlantıyı Sına**' ya tıklayın.
   
     örneğin: Bağlı hizmeti kaydetmek için **Oluştur** ' a tıklayın.
 
@@ -141,13 +141,13 @@ Bu adımda, Azure SQL veritabanınızı veri fabrikasına bağlamak için bağl�
      
     b. **Sunucu adı** için sunucunuzu seçin
      
-    c. **Veritabanı adı** için Azure SQL veritabanınızı seçin. 
+    c. **Veritabanı adı**için veritabanınızı seçin. 
      
-    d. Azure SQL veritabanı 'na bağlanmak için **Kullanıcı adı** girin. 
+    d. Veritabanınıza bağlanmak için **Kullanıcı adı** girin. 
      
     e. Kullanıcı için **parola** girin. 
      
-    f. Belirtilen bilgileri kullanarak Azure SQL veritabanına bağlantıyı test etmek için, **Bağlantıyı sına**'ya tıklayın.
+    f. Belirtilen bilgileri kullanarak veritabanınızın bağlantısını test etmek için **Bağlantıyı Sına**' ya tıklayın.
      
     örneğin: **Oluştur**'a tıklayın.
 
@@ -181,7 +181,7 @@ Bu öğreticide, kaynak ve hedef SQL tabloları veri kümesi tanımında sabit k
     
 1. **Özellikleri ayarla** penceresinde, **ad**' ın altına **azuressqldatabasedataset**adını girin. **Bağlı hizmet**altında **Azuressqldatabaselinkedservice**' i seçin. Ardından **Tamam**'a tıklayın.
 
-1. **Bağlantı** sekmesine geçin, **tablo**için herhangi bir tablo seçin. Bu tablo işlevsiz bir tablodur. İşlem hattını oluştururken kaynak veri kümesinde bir sorgu belirtirsiniz. Azure SQL veritabanından verileri ayıklamak için sorgu kullanılır. Alternatif olarak, **Düzenle** onay kutusunu tıklatabilir ve tablo adı olarak **dbo. dummyName** yazabilirsiniz. 
+1. **Bağlantı** sekmesine geçin, **tablo**için herhangi bir tablo seçin. Bu tablo işlevsiz bir tablodur. İşlem hattını oluştururken kaynak veri kümesinde bir sorgu belirtirsiniz. Sorgu, veritabanınızdaki verileri ayıklamak için kullanılır. Alternatif olarak, **Düzenle** onay kutusunu tıklatabilir ve tablo adı olarak **dbo. dummyName** yazabilirsiniz. 
  
 
 ### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>Havuz Azure SYNAPSE Analytics (eski adıyla SQL DW) için bir veri kümesi oluşturma
@@ -189,17 +189,18 @@ Bu öğreticide, kaynak ve hedef SQL tabloları veri kümesi tanımında sabit k
 1. Sol bölmedeki **+ (artı)** düğmesine ve **Veri Kümesi**'ne tıklayın. 
 1. **Yeni veri kümesi** penceresinde **Azure SYNAPSE Analytics (eskı adıyla SQL DW)** öğesini seçin ve ardından **devam**' a tıklayın.
 1. **Özellikleri ayarla** penceresinde, **ad**' ın altına **Azuresqldwdataset**adını girin. **Bağlı hizmet**altında **Azuresqldwlinkedservice**öğesini seçin. Ardından **Tamam**'a tıklayın.
-1. **Parametreler** sekmesine geçin, **+ Yeni**'ye tıklayın ve parametre adı olarak **DWTableName** girin. Bu adı sayfadan kopyalayıp yapıştırırsanız **Dwtablename**sonunda **boşluk karakteri** bulunmadığından emin olun.
+1. **Parametreler** sekmesine geçin, **+ Yeni**'ye tıklayın ve parametre adı olarak **DWTableName** girin. **+ Yeni** ' ye tekrar tıklayın ve parametre adı Için **dwschema** yazın. Bu adı sayfadan kopyalayıp yapıştırırsanız *Dwtablename* ve *dwschema*sonunda **boşluk karakteri** bulunmadığından emin olun. 
 1. **Bağlantı** sekmesine geçin, 
 
-    a. **Tablo**için **Düzenle** seçeneğini işaretleyin. İlk tablo adı giriş kutusuna **dbo** girin. Sonra ikinci giriş kutusunu seçin ve aşağıdaki **dinamik Içerik Ekle** bağlantısına tıklayın. 
+    1. **Tablo**için **Düzenle** seçeneğini işaretleyin. İlk giriş kutusunu seçin ve aşağıdaki **dinamik Içerik Ekle** bağlantısına tıklayın. **Dinamik Içerik Ekle** sayfasında, **Parametreler**altındaki **dwschema** ' a tıklayarak üstteki ifade metin kutusunu otomatik olarak doldurur `@dataset().DWSchema` ve ardından **son**' a tıklayın.  
+    
+        ![Veri kümesi bağlantısı TableName](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    ![Veri kümesi bağlantısı TableName](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+    1. İkinci giriş kutusunu seçin ve aşağıdaki **dinamik Içerik Ekle** bağlantısına tıklayın. **Dinamik Içerik Ekle** sayfasında, **Parametreler**altındaki **dwtablename** öğesine tıklayarak üstteki ifade metin kutusunu otomatik olarak doldurur `@dataset().DWTableName` ve ardından **son**' a tıklayın. 
+    
+    1. Veri kümesinin **TableName** özelliği, **Dwschema** ve **dwtablename** parametreleri için bağımsız değişken olarak geçirilen değerlere ayarlanır. ForEach etkinliği bir tablo listesi boyunca yinelenir ve birer birer Kopyalama etkinliğine geçirilir. 
+    
 
-    b. **Dinamik Içerik Ekle** sayfasında, **Parametreler**altındaki **dwtablename** öğesine tıklayarak üstteki ifade metin kutusunu otomatik olarak doldurur `@dataset().DWTableName` ve ardından **son**' a tıklayın. Veri kümesinin **tableName** özelliği, **DWTableName** parametresine bağımsız değişken olarak geçirilen değere ayarlanır. ForEach etkinliği bir tablo listesi boyunca yinelenir ve birer birer Kopyalama etkinliğine geçirilir. 
-
-    ![Veri kümesi parametresi derleyici](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
- 
 ## <a name="create-pipelines"></a>İşlem hattı oluşturma
 Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** ve **GetTableListAndTriggerCopyData**. 
 
@@ -257,7 +258,8 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
 1. **Havuz** sekmesine geçin ve aşağıdaki adımları izleyin: 
 
     1. **Havuz Veri Kümesi** olarak **AzureSqlDWDataset** seçin.
-    1. DWTableName parametresinin DEĞERI için giriş kutusuna tıklayın-> aşağıdan **dinamik Içerik Ekle** ' yi seçin, `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` komut dosyası olarak ifade girin,-> **son**' u seçin.
+    1. DWTableName parametresinin DEĞERI için giriş kutusuna tıklayın-> aşağıdan **dinamik Içerik Ekle** ' yi seçin, `@item().TABLE_NAME` komut dosyası olarak ifade girin,-> **son**' u seçin.
+    1. DWSchema parametresinin DEĞERI için giriş kutusuna tıklayın-> aşağıdan **dinamik Içerik Ekle** ' yi seçin, `@item().TABLE_SCHEMA` komut dosyası olarak ifade girin,-> **son**' u seçin.
     1. Copy yöntemi için **PolyBase**' i seçin. 
     1. **Varsayılan tür kullan** seçeneğini temizleyin. 
     1. **Betiği kopyala** giriş kutusuna tıklayın -> aşağıdaki **Dinamik içerik ekle**'yi seçin -> betik için aşağıdaki ifadeyi girin -> **Son**'u seçin. 
@@ -282,12 +284,12 @@ Bu işlem hattı iki eylem yapar:
 * Gerçek veri kopyalamayı yapmak için "IterateAndCopySQLTables" işlem hattını tetikler.
 
 1. Sol bölmede, **+ (artı)** düğmesine ve sonra da **İşlem Hattı**’na tıklayın.
-1. **Genel** sekmesinde, işlem hattının adını **Gettablelistandtriggercopydata**olarak değiştirin. 
+1. Genel panelinde **Özellikler**altında, işlem hattının adını **Gettablelistandtriggercopydata**olarak değiştirin. 
 
 1. **Etkinlikler** araç kutusunda **genel**' i genişletin ve **arama** etkinliğini, işlem hattı Tasarımcısı yüzeyine sürükleyip bırakın ve aşağıdaki adımları uygulayın:
 
     1. **Ad** olarak **LookupTableList** girin. 
-    1. **Açıklama** olarak **Tablo listesini Azure SQL veritabanından al** girin.
+    1. **Açıklama**için **Veritabanımın Tablo listesini al** yazın.
 
 1. **Ayarlar** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
@@ -310,10 +312,8 @@ Bu işlem hattı iki eylem yapar:
 1. İşlem **hattı yürütme** etkinliğinin **Ayarlar** sekmesine geçin ve aşağıdaki adımları uygulayın: 
 
     1. **Çağrılan işlem hattı** olarak **IterateAndCopySQLTables** seçin. 
-    1. **Gelişmiş** bölümünü genişletin ve **tamamlandığında bekle**onay kutusunu temizleyin.
-    1. **Parametreler** bölümünde **+ Yeni** öğesine tıklayın. 
-    1. Parametre **adı**Için **tablelist** girin.
-    1. DEĞER giriş kutusuna tıklayın -> altındaki **Dinamik içerik ekle**'yi seçin -> tablo adı değeri olarak `@activity('LookupTableList').output.value` girin -> **Son**' seçin. Sonuç listesini, arama etkinliğinden ikinci işlem hattına giriş olarak ayarlıyoruz. Sonuç listesinde yer alan tabloların içerdiği verilerin hedefe kopyalanması gerekir. 
+    1. **Tamamlanmasını beklemek**için onay kutusunu temizleyin.
+    1. **Parametreler** bölümünde, değer ' in altındaki giriş kutusuna tıklayın > aşağıdaki **dinamik içerik Ekle** ' yi seçin > `@activity('LookupTableList').output.value` tablo adı olarak girin-> **son**' u seçin. Sonuç listesini, arama etkinliğinden ikinci işlem hattına giriş olarak ayarlıyoruz. Sonuç listesinde yer alan tabloların içerdiği verilerin hedefe kopyalanması gerekir. 
 
         ![İşlem hattı yürütme etkinliği - ayarlar sayfası](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 

@@ -5,21 +5,21 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/05/2019
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a3a81cdfa9e3c6659c870b184cda4ebe6f7f805a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: ee8b8c2931d006dbb3d472b545030d3aff79c56a
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429675"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297996"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmaya yönelik adım adım yönergeler
 
 Bu öğreticide, Azure uzamsal bağlayıcılarla yeni bir HoloLens Unity uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
@@ -101,7 +101,7 @@ Uygulamanızı kullanarak bir nesne oluşturalım &. [Uygulamamızı dağıttı�
 
 Ardından, aşağıdaki üye değişkenlerini `AzureSpatialAnchorsScript` sınıfınıza ekleyin:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-42,48-52,60-79)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-47,53-57,65-84)]
 
 Devam etmeden önce, Spburprefab üye değişkenimizde oluşturduğumuz Sphere ön kümesini ayarlamanız gerekir. **Unity**'ye geri dönün.
 1. **Unity**'de **hiyerarşi** bölmesinde **mixedrealitycloud** nesnesini seçin.
@@ -111,15 +111,15 @@ Artık betiğinizdeki ön **küm** kümesine sahip olmanız gerekir. **Unity** '
 
 **Visual Studio**'da `AzureSpatialAnchorsScript.cs` yeniden açın. Aşağıdaki kodu `Start()` yöntemine ekleyin. Bu kod `GestureRecognizer` , bir AIR Tap ve Call olduğunda tespit edilecek `HandleTap` .
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-90,93&highlight=4-10)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=86-95,98&highlight=4-10)]
 
 Şimdi aşağıdaki yöntemi eklememiz gerekir `HandleTap()` `Update()` . Bu, bir Ray cast ve bir kürenin yerleştirileceği bir isabet noktası alır.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=273-283,305-306,310-318)]
 
 Şimdi Sphere öğesini oluşturuyoruz. Sphere başlangıçta beyaz olur, ancak bu değer daha sonra üzerinde ayarlanır. Aşağıdaki yöntemi ekleyin `CreateAndSaveSphere()` :
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-325,390)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-331,396)]
 
 Uygulamanızı bir kez daha doğrulamak için **Visual Studio** 'dan çalıştırın. Bu kez, beyaz küetinizi istediğiniz yüzey üzerine yerleştirmek & oluşturmak için ekrana dokunun.
 
@@ -129,15 +129,15 @@ Unity ile çalışırken, Kullanıcı arabirimi güncelleştirmelerini yapmak i�
 
 Bir eylem kuyruğu olan dispatchQueue olan bir üye değişkeni ekleyelim. Eylemleri sıraya göndereceğiz ve sonra ana iş parçacığında eylemleri yeniden kuyruğa alacak ve çalıştıracağız.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=38-51&highlight=6-9)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=43-56&highlight=6-9)]
 
 Ardından, kuyruğa eylem eklemenin bir yolunu ekleyelim. `QueueOnUpdate()`Hemen sonra Ekle `Update()` :
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=107-117)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=112-122)]
 
 Şimdi, kuyruğa alınmış bir eylem olup olmadığını denetlemek için Update () döngüsünü kullanalım. Varsa, eylemi sıradan çıkar ve çalıştıracağız.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=95-105&highlight=4-10)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=100-110&highlight=4-10)]
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure uzamsal çıpası SDK 'sını alın
 
@@ -165,37 +165,37 @@ Nugetforunity yükledikten **sonra NuGet**  >  **paketlerini Yönet**' i seçin.
 
 Ardından, aşağıdaki üye değişkenlerini `AzureSpatialAnchorsScript` sınıfınıza ekleyin:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=48-63&highlight=6-11)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=53-68&highlight=6-11)]
 
 ## <a name="attach-a-local-azure-spatial-anchor-to-the-local-anchor"></a>Yerel bağlantı noktasına yerel bir Azure uzamsal Bağlayıcısı ekleyin
 
 Azure uzamsal bağlayıcının CloudSpatialAnchorSession ayarlayalim. Aşağıdaki yöntemi sınıfınızın içine ekleyerek başlayacağız `InitializeSession()` `AzureSpatialAnchorsScript` . Bir kez çağrıldıktan sonra, uygulamanızın başlatılması sırasında bir Azure uzamsal bağlayıcı oturumunun oluşturulduğundan ve düzgün başlatılmış olduğundan emin olur.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=174-202,205-209)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=179-208,211-215)]
 
 Şimdi temsilci çağrılarını işlemek için kod yazdık. Devam ettiğimiz için bunlara daha fazla ekleyeceğiz.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=211-226)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=217-232)]
 
 Şimdi, yönteminizi uygulamanıza verlim `initializeSession()` `Start()` .
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-93&highlight=12)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=86-98&highlight=12)]
 
 Son olarak, aşağıdaki kodu `CreateAndSaveSphere()` yöntemine ekleyin. Gerçek dünyaya yerleştirdiğimiz sphere öğesine yerel bir Azure uzamsal Bağlayıcısı ekler.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-338,390&highlight=14-25)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-344,396&highlight=14-25)]
 
-Devam etmeden önce, henüz yoksa bir Azure uzamsal bağlayıcı hesap tanımlayıcısı ve anahtarı oluşturmanız gerekir. Elde etmek için aşağıdaki bölümü izleyin.
+Daha sonra devam etmeden önce, hesap tanımlayıcı, anahtar ve etki alanını daha önce yoksa, bir Azure uzamsal bağlayıcı hesabı oluşturmanız gerekir. Elde etmek için aşağıdaki bölümü izleyin.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="upload-your-local-anchor-into-the-cloud"></a>Yerel çıpası buluta yükleyin
 
-Azure uzamsal bağlayıcılarınızın hesap tanımlayıcısı ve anahtarınız olduktan sonra öğesine gidin ve içine `Account Id` `SpatialAnchorsAccountId` ve `Account Key` içine yapıştırın `SpatialAnchorsAccountKey` .
+Azure uzamsal bağlayıcılarınızın hesap tanımlayıcısı, anahtarınız ve etki alanınız olduktan sonra öğesine gidin ve içine, içine `Account Id` `SpatialAnchorsAccountId` ve içine yapıştırın `Account Key` `SpatialAnchorsAccountKey` `Account Domain` `SpatialAnchorsAccountDomain` .
 
 Son olarak her şeyi bir araya alalım. `SpawnNewAnchoredObject()`Yönteminde aşağıdaki kodu ekleyin. `CreateAnchorAsync()`Sphere oluşturulduktan hemen sonra yöntemi çağıracaktır. Yöntem döndüğünde, aşağıdaki kod Sphere ' de bir son güncelleştirme gerçekleştirir ve rengini mavi olarak değiştirir.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=314-391&highlight=26-77)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
 Uygulamanızı **Visual Studio** 'dan bir kez daha çalıştırın. Başlarınızın etrafında ilerleyin ve sonra kürenin yerleştirileceği yere dokunarak uçak yapın. Yeterli kare olduktan sonra Sphere, sarı olarak açılır ve bulut yüklemesi başlar. Karşıya yükleme tamamlandıktan sonra Sphere 'niz mavi olarak açılır. İsteğe bağlı olarak, uygulamanızın gönderdiği günlük iletilerini izlemek için **Visual Studio** içinde çıkış penceresini de kullanabilirsiniz. Oluşturma işleminin ilerleme durumunu ve karşıya yükleme tamamlandıktan sonra bulutun döndürdüğü bağlantı tanımlayıcısını izleyebilirsiniz.
 
@@ -210,20 +210,20 @@ Bir bağlantı, buluta yüklendi, yeniden bulmaya başlamaya hazırız. Aşağı
 * `CloudSpatialAnchorSession`Yeniden başlatın. Bu, bulduğumuz bağlayıcının, oluşturduğumuz yerel bağlantı yerine buluttan geldiğinden emin olduğumuz için biz.
 * Azure uzamsal bağlayıcılarında karşıya yüklemediğimiz bağlayıcıyı aramak için bir **izleyici** oluşturun.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-305&highlight=13-31,35-36)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=273-311&highlight=13-31,35-36)]
 
 Şimdi ve yöntemlerinizi ekleyelim `ResetSession()` `CleanupObjects()` . Bunları aşağıya yerleştirebilirsiniz`QueueOnUpdate()`
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=119-172)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=124-177)]
 
 Şimdi, sorgulamakta olduğumuz bağlayıcı bulunduğunda çağrılacak kodu yedeklemeniz gerekir. İçinde `InitializeSession()` , aşağıdaki geri çağırmaları ekleyin:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=200-206&highlight=4-5)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=206-212&highlight=4-5)]
 
 
 Şimdi, CloudSpatialAnchor bulunduğu bir yeşil Sphere & oluşturacak kodu ekleyebilmenizi sağlar. Ayrıca, ekranı dokunarak bir kez daha yeniden etkinleştirerek tüm senaryoyu daha sonra tekrarlayabilirsiniz: başka bir yerel bağlayıcı oluşturun, karşıya yükleyin ve tekrar bulun.
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=228-265)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=234-271)]
 
 Hepsi bu! Tüm senaryoyu uçtan uca denemek için uygulamanızı **Visual Studio** 'dan en son bir kez çalıştırın. Cihazınızın etrafında ilerleyin ve beyaz kürenin yerinizi koyun. Daha sonra, Sphere sarıya dönüşene kadar baş ortamınızı ortam verilerini yakalamaya devam ettirmeyi sürdürün. Yerel çıpası karşıya yüklenecek ve Sphere 'niz mavi kullanacaktır. Son olarak, daha sonra ekranınızı bir kez daha dokunduktan sonra yerel çıpası kaldırıldıktan sonra bulut karşılığına yönelik sorgu yapacağız. Bulut uzamsal bağlantı noktası bulunana kadar cihazınızı etrafında taşımaya devam edin. Yeşil Sphere 'ın doğru konumda görünmesi gerekir ve tüm senaryoyu yeniden tekrarlayabilirsiniz &.
 

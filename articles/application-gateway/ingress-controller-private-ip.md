@@ -4,19 +4,19 @@ description: Bu makalede, iç yönlendirme için özel IP 'Lerin nasıl kullanı
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795484"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806792"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Bir giriş uç noktası için iç yönlendirme için özel IP kullan 
 
-Bu özellik özel bir IP `Virtual Network` kullanarak giriş uç noktasını kullanıma sunmasına olanak tanır.
+Bu özellik `Virtual Network` Özel BIR IP kullanarak giriş uç noktasını kullanıma sunmasına olanak tanır.
 
 ## <a name="pre-requisites"></a>Ön koşullar  
 [Özel BIR IP yapılandırmasıyla](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip) Application Gateway
@@ -24,14 +24,14 @@ Bu özellik özel bir IP `Virtual Network` kullanarak giriş uç noktasını kul
 Denetleyiciyi, giriş için özel IP kullanmak üzere yapılandırmanın iki yolu vardır,
 
 ## <a name="assign-to-a-particular-ingress"></a>Belirli bir giriş için ata
-Özel IP üzerinden belirli bir girişi göstermek için, giriş bölümünde ek [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) açıklama kullanın.
+Özel IP üzerinden belirli bir girişi göstermek için, giriş bölümünde ek açıklama kullanın [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) .
 
 ### <a name="usage"></a>Kullanım
 ```yaml
 appgw.ingress.kubernetes.io/use-private-ip: "true"
 ```
 
-Özel IP olmayan uygulama ağ geçitleri için, ile `appgw.ingress.kubernetes.io/use-private-ip: "true"` ek açıklama eklenmiş olarak yoksayılır. Bu, giriş olayında ve AGIC Pod günlüğünde gösterilir.
+Özel IP olmayan uygulama ağ geçitleri için, ile ek açıklama eklenmiş olarak `appgw.ingress.kubernetes.io/use-private-ip: "true"` yoksayılır. Bu, giriş olayında ve AGIC Pod günlüğünde gösterilir.
 
 * Giriş olayında gösterildiği gibi hata
 
@@ -51,7 +51,7 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
 
 
 ## <a name="assign-globally"></a>Küresel olarak ata
-Bu durumda, tüm giriş ve özel IP üzerinden gösterilmesini sınırlamak için gereksinim, config içinde `appgw.usePrivateIP: true` `helm` kullanın.
+Bu durumda, tüm giriş ve özel IP üzerinden gösterilmesini sınırlamak için gereksinim, `appgw.usePrivateIP: true` config içinde kullanın `helm` .
 
 ### <a name="usage"></a>Kullanım
 ```yaml
@@ -63,7 +63,7 @@ appgw:
 ```
 
 Bu, giriş denetleyicisini, Application Gateway ön uç dinleyicilerini yapılandırırken özel bir IP için IP adresi yapılandırmalarını filtreleyecek hale getirir.
-AGIC, özel IP atanmadığı takdirde `usePrivateIP: true` , ve çöker.
+AGIC, `usePrivateIP: true` özel IP atanmadığı takdirde, ve çöker.
 
 > [!NOTE]
-> Application Gateway v2 SKU 'SU için genel bir IP gerekir. Application Gateway özel olması gerekir, trafiği kısıtlamak için Application Gateway alt [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) ağına bağlayın.
+> Application Gateway v2 SKU 'SU için genel bir IP gerekir. Application Gateway özel olması gerekir, [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) trafiği kısıtlamak için Application Gateway alt ağına bağlayın.

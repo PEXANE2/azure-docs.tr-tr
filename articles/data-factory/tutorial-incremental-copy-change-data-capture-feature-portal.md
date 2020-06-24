@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754fb27d03aebf6029d3ae2f22e748db87a89753
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325999"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249508"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Değişiklik verilerini yakalama (CDC) kullanarak Azure SQL yönetilen örneğinden Azure depolama 'ya artımlı olarak veri yükleme
 
@@ -51,11 +51,12 @@ Bu öğreticide, aşağıdaki işlemleri gerçekleştiren bir işlem hattı olu�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * **Azure SQL veritabanı yönetilen örneği**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Bir Azure SQL veritabanı yönetilen örneği yoksa, oluşturma adımları için [Azure SQL veritabanı yönetilen örneği oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **RAW**adlı bir kapsayıcı oluşturun. 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL veritabanınızda bir veri kaynağı tablosu oluşturma
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veri kaynağı tablosu oluşturma
+
 1. **SQL Server Management Studio**başlatın ve Azure SQL yönetilen örnekler sunucunuza bağlanın.
 2. **Sunucu Gezgini**’nde **veritabanınıza** sağ tıklayın ve **Yeni Sorgu**’yu seçin.
 3. Veri kaynağı deposu olarak adlandırılan bir tablo oluşturmak için Azure SQL yönetilen örnekler veritabanınızda aşağıdaki SQL komutunu çalıştırın `customers` .  
@@ -123,7 +124,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **GIT 'ı etkinleştir**seçimini kaldırın.     
-7. **Oluştur**' a tıklayın.
+7. **Oluştur**'a tıklayın.
 8. Dağıtım tamamlandıktan sonra **Kaynağa Git ' e** tıklayın.
 
    ![Data factory giriş sayfası](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)

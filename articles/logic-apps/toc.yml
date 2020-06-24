@@ -44,6 +44,10 @@
       href: connect-virtual-network-vnet-isolated-environment-overview.md
     - name: İş sürekliliği ve olağanüstü durum kurtarma
       href: business-continuity-disaster-recovery-guidance.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Geliştirme

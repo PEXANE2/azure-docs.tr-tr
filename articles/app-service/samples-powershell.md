@@ -6,12 +6,12 @@ ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
-ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81532434"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254489"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service için PowerShell örnekleri
 
@@ -32,7 +32,7 @@ Aşağıdaki tablo, Azure PowerShell kullanılarak oluşturulan PowerShell betik
 | [Uygulamayı el ile ölçeklendirme](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bir App Service uygulaması oluşturur ve 2 örnek boyunca ölçeklendirir. |
 | [Yüksek kullanılabilirlik mimarisi ile bir uygulamayı dünya genelinde ölçeklendirin](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | İki farklı coğrafi bölgede iki App Service uygulama oluşturur ve Azure Traffic Manager kullanarak tek bir uç nokta üzerinden kullanılabilir hale getirir. |
 |**Uygulamayı kaynaklara bağlama**||
-| [Bir uygulamayı SQL veritabanına bağlama](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir App Service uygulaması ve bir SQL veritabanı oluşturur, ardından veritabanı bağlantı dizesini uygulama ayarlarına ekler. |
+| [Bir uygulamayı SQL veritabanına bağlama](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure SQL veritabanı 'nda bir App Service uygulaması ve veritabanı oluşturur, ardından veritabanı bağlantı dizesini uygulama ayarlarına ekler. |
 | [Bir uygulamayı depolama hesabına bağlama](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir App Service uygulaması ve depolama hesabı oluşturur, ardından depolama bağlantı dizesini uygulama ayarlarına ekler. |
 |**Uygulamayı yedekleme ve geri yükleme**||
 | [Uygulama yedekleme](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bir App Service uygulaması oluşturur ve bu uygulama için bir kerelik yedekleme oluşturur. |

@@ -4,15 +4,15 @@ description: Azure CLI kullanarak web trafiğini yönetmek için sanal makine ö
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
-ms.openlocfilehash: 3064def2eac0aaee5c04f7ab736cf539ae372cb4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d4a72017b1ec86f10a746a9530a1ff9a2742fa20
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68359893"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806289"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Azure CLI kullanarak bir uygulama ağ geçidi ile web trafiğini yönetme
 

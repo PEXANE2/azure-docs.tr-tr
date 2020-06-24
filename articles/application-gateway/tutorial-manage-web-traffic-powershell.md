@@ -4,16 +4,16 @@ description: Azure PowerShell kullanarak web trafiğini yönetmek için sanal ma
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a313296a9a19aa762803652a3b139cdac7ca3a58
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: cb45f4a19cf36fe291ffe7299a46a44a245fbb8f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68359930"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806201"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Azure PowerShell kullanarak bir uygulama ağ geçidi ile web trafiğini yönetme
 

@@ -1,24 +1,24 @@
 ---
 title: MySQL için Azure veritabanı 'nın yerleşik ilke tanımları
 description: MySQL için Azure veritabanı 'nın Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: e3d89c2324c120d03a9497afa070ead369faea3b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: cf88bc39c09d53506ca777d0c7cd3c8fc359752b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234751"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887790"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure Ilkesi yerleşik ilke tanımları
+# <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure Ilkesi yerleşik tanımları
 
 Bu sayfa, MySQL için Azure veritabanı 'nın [Azure ilkesi](../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
 ## <a name="azure-database-for-mysql"></a>MySQL için Azure Veritabanı
 

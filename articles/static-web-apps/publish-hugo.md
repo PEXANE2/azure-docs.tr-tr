@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 697fe423d6f112dcd3a03ec739f7e11db3043c53
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207830"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297950"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
@@ -144,42 +144,6 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 1. Ayrıntıların tümünün doğru olduğunu doğrulamak için **gözden geçir + oluştur** düğmesine tıklayın.
 
 1. Azure statik Web Apps oluşturulmasını başlatmak ve dağıtıma yönelik bir GitHub eylemi sağlamak için **Oluştur** ' a tıklayın.
-
-1. Dağıtım tamamlandıktan sonra, terminale gidin ve kayıt işlemini makinenize GitHub eylemiyle çekin.
-
-   ```bash
-   git pull
-   ```
-
-1. Bir metin düzenleyicisinde Kugo uygulamasını açın ve _. GitHub/iş akışları/Azure-Pages-<WORKFLOW_NAME>. yıml_ dosyasını açın.
-
-1. `- uses: actions/checkout@v2`Kugo uygulamasını derlemek için çizgiyi (18. satır) aşağıdaki ile değiştirin. Hugo Extended gerektiriyorsa, açıklama kaldırın `extended: true` .
-
-   ```yml
-   - uses: actions/checkout@v2
-     with:
-       submodules: true  # Fetch Hugo themes (true OR recursive)
-       fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-   - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.11
-     with:
-       hugo-version: "latest"  # Hugo version: latest OR x.y.z
-       # extended: true
-
-   - name: Build
-     run: hugo
-   ```
-   
-   GitHub eylemleri Çalıştırıcısı 'na Kugo yükleme hakkında daha fazla bilgi için bkz. [peaceıris/Actions-Hugo](https://github.com/peaceiris/actions-hugo).
-
-1. Güncelleştirilmiş iş akışını işleyin ve GitHub 'a gönderin.
-
-   ```bash
-   git add -A
-   git commit -m "Updating GitHub Actions workflow"
-   git push
-   ```
 
 1. GitHub eyleminin tamamlanmasını bekleyin.
 

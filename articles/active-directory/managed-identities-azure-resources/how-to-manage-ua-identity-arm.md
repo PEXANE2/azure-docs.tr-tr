@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2ff31d603cc761c25645d80c4e2e7635ad05e00
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253383"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694374"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme ve silme
 
 
-Azure kaynakları için Yönetilen kimlikler, Azure Active Directory bir yönetilen kimliğe sahip Azure hizmetleri sağlar. Kodunuzda kimlik bilgileri gerekmeden Azure AD kimlik doğrulamasını destekleyen hizmetlere kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz. 
+Azure kaynakları için Yönetilen kimlikler, Azure Active Directory yönetilen bir kimlik ile Azure hizmetleri sağlar. Kodunuzda kimlik bilgileri gerekmeden Azure AD kimlik doğrulamasını destekleyen hizmetlere kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz. 
 
 Bu makalede, bir Azure Resource Manager kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturursunuz.
 
@@ -35,7 +35,7 @@ Bir Azure Resource Manager şablonu kullanarak Kullanıcı tarafından atanan y�
 - [Kullanıcı tarafından atanan yönetilen kimliği Sil](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
   ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="template-creation-and-editing"></a>Şablon oluşturma ve düzenlemesi
@@ -51,7 +51,7 @@ Azure portal ve betikte olduğu gibi Azure Resource Manager şablonlar, bir Azur
 
 Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza [yönetilen kimlik katılımcısı](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol ataması gerekir.
 
-Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için aşağıdaki şablonu kullanın. `<USER ASSIGNED IDENTITY NAME>` Değeri kendi değerlerinizle değiştirin:
+Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için aşağıdaki şablonu kullanın. `<USER ASSIGNED IDENTITY NAME>`Değeri kendi değerlerinizle değiştirin:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 

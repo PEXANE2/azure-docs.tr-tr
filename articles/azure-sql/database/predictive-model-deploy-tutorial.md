@@ -14,21 +14,22 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 86c73944753126aa3fb5c14c8d6626a449365c64
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84c0f6564fc9ab8abc43205b58d9445cda82a2da
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053330"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253826"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model dağıtma
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Üç bölümden oluşan Bu öğreticinin üçüncü kısmında, Azure SQL veritabanı Machine Learning Services (Önizleme) kullanarak R 'de geliştirilen bir tahmine dayalı modeli SQL veritabanına dağıtırsınız.
+Bu üç parçalı öğreticinin üçüncü kısmında, R 'de geliştirilen bir tahmine dayalı modeli Azure SQL veritabanı Machine Learning Services (Önizleme) kullanarak Azure SQL veritabanı 'nda bir veritabanına dağıtırsınız.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-Modeli kullanarak tahminleri yapan gömülü bir R betiği ile saklı bir yordam oluşturacaksınız. Modeliniz Azure SQL veritabanında yürütüldüğü için, veritabanında depolanan verilere karşı kolayca eğitim yapılabilir.
+Modeli kullanarak tahminleri yapan gömülü bir R betiği ile saklı bir yordam oluşturacaksınız. Modeliniz veritabanında yürütüldüğü için, veritabanında depolanan verilere karşı kolayca eğitim yapılabilir.
 
 Bu makalede, bir ve iki bölümde geliştirmiş olduğunuz R betiklerini kullanarak şunları yapmayı öğreneceksiniz:
 
@@ -200,7 +201,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-Bir Azure SQL veritabanında başarıyla bir model oluşturdunuz, eğitilen ve dağıttınız. Daha sonra bu modeli, değerleri yeni verilere göre tahmin etmek için bir saklı yordamda kullandınız.
+Azure SQL veritabanı 'nda bir veritabanında bir modeli başarıyla oluşturdunuz, eğitittınız ve dağıttıysanız. Daha sonra bu modeli, değerleri yeni verilere göre tahmin etmek için bir saklı yordamda kullandınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

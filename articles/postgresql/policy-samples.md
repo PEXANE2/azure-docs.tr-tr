@@ -1,24 +1,24 @@
 ---
 title: PostgreSQL için Azure veritabanı 'nda yerleşik ilke tanımları
 description: PostgreSQL için Azure veritabanı 'nda Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 148bafe65935ad358184d93cf994866ac87d24bf
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: fdc07730c7b8b1a7ff2c33a7b1625a4e313331a4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233033"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887317"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda Azure Ilkesi yerleşik ilke tanımları
+# <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda Azure Ilkesi yerleşik tanımları
 
 Bu sayfa, PostgreSQL için Azure veritabanı 'nda [Azure ilkesi](../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
 ## <a name="azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı
 

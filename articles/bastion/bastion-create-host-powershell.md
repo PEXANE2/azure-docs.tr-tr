@@ -4,15 +4,15 @@ description: Bu makalede, Azure savunma Konağı oluşturmayı öğrenin
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520510"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744264"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure savunma ana bilgisayarı oluşturma
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MS
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion konağı oluşturma
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Savunma Konağı oluşturma
 
 Bu bölüm Azure PowerShell kullanarak yeni bir Azure savunma kaynağı oluşturmanıza yardımcı olur.
 

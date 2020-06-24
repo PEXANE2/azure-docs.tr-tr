@@ -9,15 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7aa7c33a94980081efa3bc54422389aef7defa61
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235014"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254059"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Öğretici: SQL Data Sync kullanarak SQL Edge 'den Azure SQL veritabanı 'na veri eşitleme
-
 
 Bu öğreticide, Azure SQL Edge 'ten Azure SQL veritabanı 'na artımlı olarak veri eşitlemek için bir Azure SQL Data Sync *eşitleme grubu* kullanmayı öğreneceksiniz. SQL Data Sync, Azure SQL veritabanı 'nda yerleşik olarak bulunan ve Azure SQL veritabanı ve SQL Server örnekleri için birden çok veritabanı üzerinde seçtiğiniz verileri eşitlemenize olanak sağlayan bir hizmettir. SQL Data Sync hakkında daha fazla bilgi için bkz. [Azure SQL Data Sync](../azure-sql/database/sql-data-sync-data-sql-server-sql-database.md).
 
@@ -29,7 +28,7 @@ Bu öğretici, [Azure SQL Data Sync Için veri eşitleme aracısıyla](../azure-
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Bir Azure SQL veritabanı oluşturun. Azure portal kullanarak Azure SQL veritabanı oluşturma hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda tek bir veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
+* Azure SQL veritabanında bir veritabanı oluşturun. Azure portal kullanarak veritabanı oluşturma hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda tek bir veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
 
 * Azure SQL veritabanı dağıtımınızda tabloları ve diğer gerekli nesneleri oluşturun.
 
@@ -37,9 +36,9 @@ Bu öğretici, [Azure SQL Data Sync Için veri eşitleme aracısıyla](../azure-
 
 * Azure SQL Edge örneğini Azure SQL Data Sync için veri eşitleme aracısına kaydedin. Daha fazla bilgi için bkz. [SQL Server veritabanı ekleme](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-on-prem).
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-edge"></a>Azure SQL veritabanı ve SQL Edge arasında verileri eşitleme
+## <a name="sync-data-between-a-database-in-azure-sql-database-and-sql-edge"></a>Azure SQL veritabanı ve SQL Edge 'deki bir veritabanı arasında veri eşitleme
 
-SQL Data Sync kullanarak bir Azure SQL veritabanı ile SQL Edge örneği arasında eşitleme ayarlamak üç önemli adımı içerir:  
+SQL Data Sync kullanarak Azure SQL veritabanı 'ndaki bir veritabanı ile bir SQL Edge örneği arasında eşitleme ayarlamak üç temel adımdan oluşur:  
 
 
 1. Bir eşitleme grubu oluşturmak için Azure portal kullanın. Daha fazla bilgi için bkz. [eşitleme grubu oluşturma](../azure-sql/database/sql-data-sync-sql-server-configure.md#create-sync-group). Çeşitli SQL Edge örneklerinden verileri Azure SQL veritabanı 'ndaki bir veya daha fazla veritabanına eşitlemek için birden çok eşitleme grubu oluşturmak üzere tek bir *hub* veritabanı kullanabilirsiniz. 
@@ -48,7 +47,7 @@ SQL Data Sync kullanarak bir Azure SQL veritabanı ile SQL Edge örneği arasın
 
 3. Eşitlemenin parçası olacak tabloları seçmek için eşitleme grubunu ayarlayın. Daha fazla bilgi için bkz. [eşitleme grubunu yapılandırma](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-sync-members).
 
-Yukarıdaki adımları tamamladıktan sonra, bir Azure SQL veritabanı ve bir SQL Edge örneği içeren bir eşitleme grubunuz olacaktır.
+Yukarıdaki adımları tamamladıktan sonra, Azure SQL veritabanı 'nda bir veritabanı ve bir SQL Edge örneği içeren bir eşitleme grubunuz olacaktır.
 
 SQL Data Sync hakkında daha fazla bilgi için şu makalelere bakın:
 

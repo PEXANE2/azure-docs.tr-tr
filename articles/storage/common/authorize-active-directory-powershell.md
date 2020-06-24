@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/30/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 373b939ac63f31ccaf6a9f01fac92920e19074ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80ca5b63a91da31a5b226a589e15fb202eabd4ad
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75553455"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805768"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Blob veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma
 
@@ -62,7 +62,7 @@ Aşağıdaki örnek, Azure AD kimlik bilgilerinizi kullanarak Azure PowerShell y
       -Location $location `
     ```
 
-1. [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext)' i çağırarak yeni depolama hesabını belirten depolama hesabı bağlamını alın. Bir depolama hesabında davrandığında, kimlik bilgilerini tekrar tekrar geçirmek yerine bağlama başvurabilirsiniz. Azure AD `-UseConnectedAccount` kimlik bilgilerinizi kullanarak sonraki veri işlemlerini çağırmak için parametresini ekleyin:
+1. [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext)' i çağırarak yeni depolama hesabını belirten depolama hesabı bağlamını alın. Bir depolama hesabında davrandığında, kimlik bilgilerini tekrar tekrar geçirmek yerine bağlama başvurabilirsiniz. `-UseConnectedAccount`Azure AD kimlik bilgilerinizi kullanarak sonraki veri işlemlerini çağırmak için parametresini ekleyin:
 
     ```powershell
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount

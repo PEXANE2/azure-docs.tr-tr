@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7d0bc787f1ae4444849a1483d6323f8a098ae1e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 115688eeccab3a48bf4234f00124bcd6bc950853
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053414"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251446"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de kümeleme modeli oluşturma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, kümeleme gerçekleştirmek için R ' de bir K-anlamı modeli oluşturacaksınız. Bu serinin bir sonraki bölümünde, bu modeli Azure SQL veritabanı Machine Learning Services (Önizleme) ile bir SQL veritabanında dağıtacaksınız.
+Bu üç bölümden oluşan öğretici serisinin ikinci bölümünde, kümeleme gerçekleştirmek için R ' de bir K-anlamı modeli oluşturacaksınız. Bu serinin sonraki bölümünde, bu modeli Azure SQL veritabanı Machine Learning Services (Önizleme) ile Azure SQL veritabanı 'nda bir veritabanında dağıtacaksınız.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -36,9 +36,9 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 > * Kümeleme gerçekleştir
 > * Sonuçları analiz etme
 
-[Birinci bölümde](clustering-model-prepare-data-tutorial.md), verileri BIR Azure SQL veritabanından kümeleme gerçekleştirmek üzere nasıl hazırlayacağınızı öğrendiniz.
+[Birinci bölümde](clustering-model-prepare-data-tutorial.md), kümeleme gerçekleştirmek üzere bir veritabanından verileri nasıl hazırlayacağınızı öğrendiniz.
 
-[Üçünde](clustering-model-deploy-tutorial.md), BIR Azure SQL veritabanında yeni verileri temel alan R 'de kümeleme gerçekleştirebilen bir saklı yordam oluşturmayı öğreneceksiniz.
+[Üçüncü kısmında](clustering-model-deploy-tutorial.md), yeni verilere göre R 'de kümeleme gerçekleştirebilen bir saklı yordam oluşturmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

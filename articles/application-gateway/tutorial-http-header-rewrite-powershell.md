@@ -4,15 +4,15 @@ description: Bu makale, Azure Application Gateway oluşturma ve Azure PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173728"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806430"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Uygulama ağ geçidi oluşturma ve HTTP üstbilgilerini yeniden yazma
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makale, Azure PowerShell yerel olarak çalıştırmanızı gerektirir. Az Module Version 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. Sürümünü `Import-Module Az` çalıştırın ve`Get-Module Az` ardından sürümü bulun. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
+Bu makale, Azure PowerShell yerel olarak çalıştırmanızı gerektirir. Az Module Version 1.0.0 veya daha yeni bir sürümün yüklü olması gerekir. `Import-Module Az`Sürümünü çalıştırın ve ardından `Get-Module Az` sürümü bulun. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Login-AzAccount` komutunu çalıştırın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238457"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118925"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK'sı ile Azure Cosmos DB Tablo API'si'ni ve Azure Tablo depolama alanını kullanmaya başlama
 
@@ -43,13 +43,13 @@ Bu örneği başarıyla tamamlamak için aşağıdakiler gerekir:
 
 Visual Studio 'da yeni bir .NET konsol uygulaması oluşturun. Aşağıdaki adımlarda, Visual Studio 2019 ' de bir konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Azure Cosmos DB tablo kitaplığını, bir Azure bulut hizmeti veya Web uygulaması, masaüstü ve mobil uygulamalar dahil olmak üzere herhangi bir türde .NET uygulamasında kullanabilirsiniz. Bu kılavuzda, sadeleştirmek için konsol uygulaması kullanmaktayız.
 
-1. **Dosya** > **New**yeni > **Proje**' yi seçin.
+1. **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
 1. **Konsol uygulaması (.NET Core)** öğesini seçin ve ardından **İleri**' yi seçin.
 
 1. **Proje adı** alanında, uygulamanız Için **Cosmostablesamples**gibi bir ad girin. (Gerektiğinde farklı bir ad sağlayabilirsiniz.)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 Bu örnekteki tüm kod örnekleri konsol uygulamanızın **program.cs** dosyasının Main () yöntemine eklenebilir.
 
@@ -59,7 +59,7 @@ NuGet paketini edinmek için aşağıdaki adımları izleyin:
 
 1. **Çözüm Gezgini**'nde projenize sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
 
-1. , [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), [`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) Ve için [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration)çevrimiçi [`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json)olarak arama yapın ve Microsoft Azure Cosmos db tablo kitaplığını yüklemek için **yüklemeyi** seçin.
+1. ,, Ve için çevrimiçi olarak arama yapın [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) [`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json) [`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) ve Microsoft Azure Cosmos db tablo kitaplığını yüklemek için **yüklemeyi** seçin.
 
 ## <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
 
@@ -67,13 +67,13 @@ NuGet paketini edinmek için aşağıdaki adımları izleyin:
 
 1. **Bağlantı dizesini** veya **erişim tuşları** bölmesini açın. Pencerenin sağ tarafındaki kopyala düğmesini kullanarak **PRIMARY CONNECTION STRING**'i kopyalayın.
 
-   ![Bağlantı Dizesi bölmesindeki PRIMARY CONNECTION STRING’i görüntüleyin ve kopyalayın](./media/create-table-dotnet/connection-string.png)
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Bağlantı Dizesi bölmesindeki PRIMARY CONNECTION STRING’i görüntüleyin ve kopyalayın":::
    
 1. Bağlantı dizenizi yapılandırmak için, Visual Studio 'dan projenizin **Cosmostablesamples**öğesine sağ tıklayın.
 
-1. **Ekle** ' yi ve ardından **Yeni öğe**' yi seçin. **TYPESCRIPT JSON yapılandırma** dosyası olarak dosya türüne sahip yeni bir dosya **Settings. JSON** oluşturun. 
+1. **Ekle** ' yi ve ardından **Yeni öğe**' yi seçin. Dosya türü ile **TYPESCRIPT JSON yapılandırma** dosyası olarak **Settings.js** yeni bir dosya oluşturun. 
 
-1. Settings. JSON dosyasındaki kodu aşağıdaki kodla değiştirin ve birincil Bağlantı dizenizi atayın:
+1. Dosyadaki Settings.jskodundaki kodu aşağıdaki kodla değiştirin ve birincil Bağlantı dizenizi atayın:
 
    ```csharp
    {
@@ -83,7 +83,7 @@ NuGet paketini edinmek için aşağıdaki adımları izleyin:
 
 1. Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **appSettings.cs**adlı bir sınıf ekleyin.
 
-1. Aşağıdaki kodu AppSettings.cs dosyasına ekleyin. Bu dosya, Settings. json dosyasından bağlantı dizesini okur ve onu yapılandırma parametresine atar:
+1. Aşağıdaki kodu AppSettings.cs dosyasına ekleyin. Bu dosya Settings.jsdosyadaki bağlantı dizesini okur ve onu yapılandırma parametresine atar:
 
    ```csharp
    namespace CosmosTableSamples
@@ -108,7 +108,7 @@ NuGet paketini edinmek için aşağıdaki adımları izleyin:
 
 1. Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **Common.cs**adlı bir sınıf ekleyin. Bağlantı ayrıntılarını doğrulamak ve bu sınıf içinde bir tablo oluşturmak için kod yazacaksınız.
 
-1. Aşağıda gösterildiği gibi `CreateStorageAccountFromConnectionString` bir yöntem tanımlayın. Bu yöntem, bağlantı dizesi ayrıntılarını ayrıştırır ve "Settings. JSON" dosyasında sunulan hesap adı ve hesap anahtarı ayrıntılarının geçerli olduğunu doğrular. 
+1. `CreateStorageAccountFromConnectionString`Aşağıda gösterildiği gibi bir yöntem tanımlayın. Bu yöntem, bağlantı dizesi ayrıntılarını ayrıştırır ve "Settings.json" dosyasında sunulan hesap adı ve hesap anahtarı ayrıntılarının geçerli olduğunu doğrular. 
 
  ```csharp
 using System;
@@ -149,7 +149,7 @@ namespace CosmosTableSamples
 
 ## <a name="create-a-table"></a>Tablo oluşturma 
 
-[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) sınıfı, Tablo Depolamada depolanan tabloları ve varlıkları almanızı sağlar. Cosmos DB Tablo API'si hesabında hiç tablo olmadığı için, bir tablo oluşturmak üzere `CreateTableAsync` yöntemi **Common.cs** sınıfına ekleyelim:
+[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) sınıfı, Tablo Depolamada depolanan tabloları ve varlıkları almanızı sağlar. Cosmos DB Tablo API'si hesabında hiç tablo olmadığı `CreateTableAsync` için, bir tablo oluşturmak üzere yöntemi **Common.cs** sınıfına ekleyelim:
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)
@@ -218,7 +218,7 @@ Bu kod, satır anahtarı olarak müşterinin adını ve bölüm anahtarı olarak
 
 ## <a name="insert-or-merge-an-entity"></a>Varlık ekleme veya birleştirme
 
-Aşağıdaki kod örneği bir varlık nesnesi oluşturur ve onu tabloya ekler. [Tableoperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfı Içindeki ınsertormerge yöntemi bir varlık eklemek veya birleştirmek için kullanılır. İşlemi yürütmek için [Cloudtable. ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) yöntemi çağırılır. 
+Aşağıdaki kod örneği bir varlık nesnesi oluşturur ve onu tabloya ekler. [Tableoperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfı Içindeki ınsertormerge yöntemi bir varlık eklemek veya birleştirmek için kullanılır. İşlemi yürütmek için [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) yöntemi çağırılır. 
 
 Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **SamplesUtils.cs**adlı bir sınıf ekleyin. Bu sınıf, varlıklarda CRUD işlemleri gerçekleştirmek için gereken tüm kodu depolar. 
 
@@ -324,7 +324,7 @@ public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity dele
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>Örnek verilerde CRUD işlemlerini yürütün
 
-Tablo oluşturma, varlık ekleme veya birleştirme yöntemlerini tanımladıktan sonra, bu yöntemleri örnek verilerde çalıştırın. Bunu yapmak için, projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **BasicSamples.cs** adlı bir sınıf ekleyin ve bu sınıfa aşağıdaki kodu ekleyin. Bu kod, bir tablo oluşturur ve ona varlıklar ekler. Projenin sonundaki varlığı ve tabloyu silmek isterseniz, aşağıdaki koddan açıklamaları `table.DeleteIfExistsAsync()` ve `SamplesUtils.DeleteEntityAsync(table, customer)` yöntemleri kaldırın:
+Tablo oluşturma, varlık ekleme veya birleştirme yöntemlerini tanımladıktan sonra, bu yöntemleri örnek verilerde çalıştırın. Bunu yapmak için, projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni öğe** ' yi seçin ve **BasicSamples.cs** adlı bir sınıf ekleyin ve bu sınıfa aşağıdaki kodu ekleyin. Bu kod, bir tablo oluşturur ve ona varlıklar ekler. Projenin sonundaki varlığı ve tabloyu silmek isterseniz, `table.DeleteIfExistsAsync()` `SamplesUtils.DeleteEntityAsync(table, customer)` aşağıdaki koddan açıklamaları ve yöntemleri kaldırın:
 
 ```csharp
 using System;
@@ -422,9 +422,9 @@ namespace CosmosTableSamples
 
 Şimdi Çözümü derleyin ve F5 tuşuna basarak projeyi çalıştırın. Proje çalıştırıldığında, komut isteminde aşağıdaki çıktıyı görürsünüz:
 
-![Komut isteminden çıkış](./media/tutorial-develop-table-standard/output-from-sample.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="Komut isteminden çıkış":::
 
-Projeyi çalıştırırken Settings. json dosyasının bulunamadığını bildiren bir hata alırsanız, proje ayarlarına aşağıdaki XML girişini ekleyerek bu sorunu çözebilirsiniz. CosmosTableSamples öğesine sağ tıklayın, CosmosTableSamples. csproj öğesini Düzenle ' yi seçin ve şu ItemGroup 'u ekleyin: 
+Projeyi çalıştırırken Settings.jsdosya bulunamıyorsa bir hata alırsanız, proje ayarlarına aşağıdaki XML girişini ekleyerek bu sorunu çözebilirsiniz. CosmosTableSamples öğesine sağ tıklayın, CosmosTableSamples. csproj öğesini Düzenle ' yi seçin ve şu ItemGroup 'u ekleyin: 
 
 ```csharp
   <ItemGroup>
@@ -435,7 +435,7 @@ Projeyi çalıştırırken Settings. json dosyasının bulunamadığını bildir
 ```
 Artık Azure portal oturum açabilir ve verilerin tabloda var olduğunu doğrulayabilirsiniz. 
 
-![Portalda sonuçlar](./media/tutorial-develop-table-standard/results-in-portal.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Portalda sonuçlar":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

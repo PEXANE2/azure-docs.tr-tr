@@ -4,16 +4,16 @@ description: Bu makalede, Azure CLı kullanarak Web trafiğini URL 'ye göre öl
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68688187"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805897"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLı kullanarak Web trafiğini URL 'ye göre yönlendirme
 
@@ -98,7 +98,7 @@ az network application-gateway create \
  Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra şu yeni özellikleri görürsünüz:
 
 
-|Özellik  |Açıklama  |
+|Özellik  |Description  |
 |---------|---------|
 |appGatewayBackendPool     |Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.|
 |appGatewayBackendHttpSettings     |İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.|
@@ -236,7 +236,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için az network public-ip show komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. ,,, Veya `http://40.121.222.19:8080/video/test.htm`gibi. `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm`
+Uygulama ağ geçidinin genel IP adresini almak için az network public-ip show komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. ,,, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm` Veya gibi `http://40.121.222.19:8080/video/test.htm` .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -248,11 +248,11 @@ az network public-ip show \
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-URL 'YI IP adresi için&lt; &lt;&gt;ıp adresinizi http://&gt;IP adresi: 8080/images/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL 'YI IP adresi &lt; için IP adresinizi http://IP adresi &gt; : 8080/ımages/test.html olacak şekilde değiştirin &lt; &gt; ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-URL 'YI IP adresi için&lt; &lt;&gt;ıp adresinizi http://&gt;IP adresi: 8080/video/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir.
+URL 'YI IP adresi &lt; için IP adresinizi http://IP adresi &gt; : 8080/video/test.html olacak şekilde değiştirin &lt; &gt; ve aşağıdaki örneğe benzer bir şey görmeniz gerekir.
 
 ![Video URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 

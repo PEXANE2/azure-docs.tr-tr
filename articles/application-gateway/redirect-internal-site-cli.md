@@ -5,19 +5,19 @@ description: Azure CLı kullanarak iç Web trafiğini uygun havuza yönlendiren 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d889d0c13c911e02d73bb1de76b7c3d1aa240027
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74074562"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806813"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Azure CLı kullanarak iç yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma
 
-[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure CLI 'yi kullanabilirsiniz. Bu öğreticide, bir sanal makine ölçek kümesi kullanarak bir arka uç havuzu tanımlarsınız. Daha sonra, Web trafiğinin uygun havuza ulaştığınızdan emin olmak için sahip olduğunuz etki alanlarını temel alan dinleyicileri ve kuralları yapılandırırsınız. Bu öğreticide, birden çok etki alanına sahip olduğunuz ve *www\.contoso.com* ve *www\.contoso.org*örneklerini kullandığınız varsayılır.
+[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure CLI 'yi kullanabilirsiniz. Bu öğreticide, bir sanal makine ölçek kümesi kullanarak bir arka uç havuzu tanımlarsınız. Daha sonra, Web trafiğinin uygun havuza ulaştığınızdan emin olmak için sahip olduğunuz etki alanlarını temel alan dinleyicileri ve kuralları yapılandırırsınız. Bu öğreticide, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. contoso.org*örneklerini kullandığınız varsayılır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -97,7 +97,7 @@ Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ 
 
 ## <a name="add-listeners-and-rules"></a>Dinleyiciler ve kurallar ekleme 
 
-Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu öğreticide iki etki alanınız için iki dinleyici oluşturacaksınız. Bu örnekte, *www\.contoso.com* ve *www\.contoso.org*etki alanları için dinleyiciler oluşturulur.
+Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu öğreticide iki etki alanınız için iki dinleyici oluşturacaksınız. Bu örnekte, *www \. contoso.com* ve *www \. contoso.org*etki alanları için dinleyiciler oluşturulur.
 
 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) kullanarak gereken arka uç dinleyicilerini ekleyin.
 
@@ -120,7 +120,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Yeniden yönlendirme yapılandırmasını ekleyin
 
-[Az Network Application-Gateway Redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)komutunu kullanarak *www\.consoto.org* 'tan uygulama ağ geçidinde *www\.contoso.com* dinleyicisine trafik gönderen yeniden yönlendirme yapılandırmasını ekleyin.
+[Az Network Application-Gateway Redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)komutunu kullanarak *www \. consoto.org* 'tan uygulama ağ geçidinde *www \. contoso.com* dinleyicisine trafik gönderen yeniden yönlendirme yapılandırmasını ekleyin.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -209,11 +209,11 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Örneğin, http:\//www.contoso.com.
+Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Örneğin, http: \/ /www.contoso.com.
 
 ![Uygulama ağ geçidinde contoso test etme](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-Adresi diğer etki alanınız (örneğin, http:\//www.contoso.org) ile değiştirin ve trafiğin www\.contoso.com dinleyicisi için geri yönlendirildiğini görmeniz gerekir.
+Adresi diğer etki alanınız (örneğin, http: \/ /www.contoso.org) ile değiştirin ve trafiğin www contoso.com dinleyicisi için geri yönlendirildiğini görmeniz gerekir \. .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

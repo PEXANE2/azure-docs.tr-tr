@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 764d0131b0b8074a210bd9eb7f806f5d1a32fa1f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: b42dba59e061eee0472d39f324b7474d7d829310
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324241"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250732"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Azure SQL veritabanı 'na R paketi ekleme Machine Learning Services (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure SQL veritabanı Machine Learning Services (Önizleme) için b
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Yerel bilgisayarınıza [R](https://www.r-project.org) ve [rstudio Desktop](https://www.rstudio.com/products/rstudio/download/) 'ı yükler. R, Windows, macOS ve Linux için kullanılabilir. Bu makalede, Windows kullandığınızı varsaymaktadır.
 
@@ -39,7 +39,7 @@ Bu makalede, Azure SQL veritabanı Machine Learning Services (Önizleme) için b
 
 ## <a name="list-r-packages"></a>R paketlerinin listesi
 
-Microsoft, Azure SQL veritabanınızda Machine Learning Services önceden yüklenmiş bir dizi R paketi sağlar.
+Microsoft, Azure SQL veritabanı 'nda Machine Learning Services önceden yüklenmiş bir dizi R paketi sağlar.
 Azure Data Studio veya SSMS 'de aşağıdaki komutu çalıştırarak yüklü R paketlerinin bir listesini görebilirsiniz.
 
 1. Azure Data Studio veya SSMS 'yi açın ve Azure SQL veritabanınıza bağlanın.
@@ -60,7 +60,7 @@ Azure Data Studio veya SSMS 'de aşağıdaki komutu çalıştırarak yüklü R p
 
 Çıktı aşağıdakine benzer görünmelidir.
 
-**Sonucunun**
+**Sonuçlar**
 
 ![R içindeki yüklü paketler](./media/machine-learning-services-add-r-packages/r-installed-packages.png)
 
@@ -90,7 +90,7 @@ Aşağıdaki örnekte, dizeleri biçimlendirebilir ve enterpolacağımız **[bir
     ```
 
     > [!TIP]
-    > "' R" iç veya dış komut, çalıştırılabilir program veya toplu iş dosyası olarak tanınmıyor, büyük olasılıkla R. exe yolunun Windows 'daki **Path** ortam değişkenine dahil olmadığı anlamına gelir. Yolu ortam değişkenine ekleyebilir veya komut isteminde klasörüne gidebilir (örneğin `cd C:\Program Files\R\R-3.5.3\bin` ) ve sonra komutu yeniden deneyebilirsiniz.
+    > "' R" iç veya dış komut olarak tanınmıyor, çalıştırılabilir program veya Batch dosyası ", büyük olasılıkla R.exe yolunun Windows 'daki **yol** ortamı değişkenine dahil olmadığı anlamına gelir. Yolu ortam değişkenine ekleyebilir veya komut isteminde klasörüne gidebilir (örneğin `cd C:\Program Files\R\R-3.5.3\bin` ) ve sonra komutu yeniden deneyebilirsiniz.
 
 ### <a name="add-the-package"></a>Paketi ekleyin
 
@@ -121,7 +121,7 @@ r<-sql_installed.packages(connectionString = connection, fields=c("Package", "Ve
 View(r)
 ```
 
-**Sonucunun**
+**Sonuçlar**
 
 ![RTestData tablosunun içeriği](./media/machine-learning-services-add-r-packages/r-verify-package-install.png)
 
@@ -151,7 +151,7 @@ Paket yüklendikten sonra, **sp_execute_external_script**aracılığıyla bir R 
 
     **İletiler** sekmesinde aşağıdaki sonucu görürsünüz.
 
-    **Sonucunun**
+    **Sonuçlar**
 
     ```text
     My name is Fred, my age next year is 51, my anniversary is Sunday, June 14, 2020.
@@ -166,7 +166,7 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 ```
 
 > [!TIP]
-> R paketini Azure SQL veritabanınıza yüklemenin başka bir yolu da, **dış kitaplık** T-SQL Ifadesini kullanarak r paketini bir bayt akışından karşıya yüklemektir. [Dış kitaplık başvurusu oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) belgelerindeki bir [bayt akışından kitaplık oluşturma](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) bölümüne bakın.
+> R paketini Azure SQL veritabanına yüklemenin başka bir yolu da, **dış kitaplık** T-SQL Ifadesini kullanarak r paketini bir bayt akışından yüklemektir. [Dış kitaplık başvurusu oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) belgelerindeki bir [bayt akışından kitaplık oluşturma](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

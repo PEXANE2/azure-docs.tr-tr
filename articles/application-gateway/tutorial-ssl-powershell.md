@@ -5,16 +5,16 @@ description: Azure PowerShell kullanarak bir uygulama ağ geçidi oluşturma ve 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2bd625982ebd051b92df2f66515fd5b0d0612303
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af1ba6bdf8edc3ce8653c9ecf196a599fb984ae4
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311931"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805923"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Azure PowerShell kullanarak TLS sonlandırmasına sahip bir uygulama ağ geçidi oluşturma
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bir bağlantı oluşturmak için öğesini `Login-AzAccount` de çalıştırmanız gerekir.
+Bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Login-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
 
 ## <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 

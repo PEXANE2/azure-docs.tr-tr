@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: bb2679d0f681ae82bbe1a50671bd2ff70a239dfb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 3bd2744c651544fc7dfe41b350168a7f387c0928
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194514"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254472"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell kullanarak bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell kullanarak verileri Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak yükleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına delta veri yükleyen işlem hattına sahip bir Azure veri fabrikası oluşturacaksınız.
+Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına Delta verileri yükleyen bir işlem hattı ile Azure Veri Fabrikası oluşturacaksınız.
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -63,7 +63,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md).
+* **Azure SQL veritabanı**. Veritabanını kaynak veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı 'nda dataqbase oluşturma](../azure-sql/database/single-database-create-quickstart.md) .
 * **Azure depolama**. Blob depolamayı havuz veri deposu olarak kullanabilirsiniz. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md). adftutorial adlı bir kapsayıcı oluşturun. 
 * **Azure PowerShell**. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
 
@@ -192,11 +192,11 @@ Aşağıdaki noktalara dikkat edin:
     ```
 
 * Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandığınız kullanıcı hesabı, katkıda bulunan veya sahip rollerinin üyesi ya da bir Azure aboneliğinin yöneticisi olmalıdır.
-* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Depolama, SQL Veritabanı vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
+* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Data Factory tarafından kullanılan veri depoları (depolama, SQL veritabanı, Azure SQL yönetilen örneği, vb.) ve hesaplar (Azure HDInsight vb.) başka bölgelerde olabilir.
 
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
-Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, Depolama ve SQL veritabanı hesabınızla bağlı hizmetler oluşturacaksınız.
+Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, depolama hesabınıza ve SQL veritabanınıza bağlı hizmetler oluşturacaksınız.
 
 ### <a name="create-a-storage-linked-service"></a>Depolama bağlı hizmeti oluşturma
 1. C:\ADF klasöründe aşağıdaki içerikle AzureStorageLinkedService.json adlı bir JSON dosyası oluşturun. (Henüz yoksa ADF klasörünü oluşturun.) `<accountName>` `<accountKey>` Dosyayı kaydetmeden önce ve değerini depolama hesabınızın adı ve anahtarıyla değiştirin.
@@ -732,7 +732,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştirdiniz:
 > * İşlem hattını çalıştırma.
 > * İşlem hattı çalıştırmasını izleme.
 
-Bu öğreticide, işlem hattı SQL veritabanındaki tek bir tablodan Blob depolama alanına veri kopyalamıştır. SQL Server veritabanındaki birden çok tablodan SQL veritabanı 'na veri kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye ilerleyin.
+Bu öğreticide işlem hattı, verileri Azure SQL veritabanındaki tek bir tablodan BLOB depolama alanına kopyaladı. SQL Server veritabanındaki birden çok tablodan SQL veritabanı 'na veri kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 >[SQL Server’daki birden fazla tablodan Azure SQL Veritabanı’na artımlı olarak veri yükleme](tutorial-incremental-copy-multiple-tables-powershell.md)

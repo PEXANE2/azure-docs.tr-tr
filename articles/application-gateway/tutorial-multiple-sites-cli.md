@@ -5,20 +5,20 @@ description: Azure CLI kullanarak, birden çok web sitesi barındıran bir uygul
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74047350"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806261"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLı kullanarak birden çok Web sitesini barındıran bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](overview.md) oluştururken Azure CLI’sini [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www\.contoso.com* ve *www\.fabrikam.com*örneklerini kullanan varsayılmaktadır.
+Bir [uygulama ağ geçidi](overview.md) oluştururken Azure CLI’sini [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www \. contoso.com* ve *www \. fabrikam.com*örneklerini kullanan varsayılmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -236,7 +236,7 @@ Uygulama ağ geçidi yeniden başlatıldığında VIP değiştirebileceğinden, 
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Örneğin, http:\//www.contoso.com.
+Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Örneğin, http: \/ /www.contoso.com.
 
 ![Uygulama ağ geçidinde contoso test etme](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 

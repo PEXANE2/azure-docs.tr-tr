@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 06/23/2020
 ms.locfileid: "74672221"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service için PremiumV2 katmanını yapılandırma
@@ -91,7 +91,7 @@ Uygulamanız **PremiumV2** ' nin kullanılamadığı bir App Service dağıtım�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki komut _P1V2_içinde bir App Service planı oluşturur. Bunu Cloud Shell çalıştırabilirsiniz. Seçenekleri P1V2, `--sku` _P2V2_ve _P3V2_' dir.
+Aşağıdaki komut _P1V2_içinde bir App Service planı oluşturur. Bunu Cloud Shell çalıştırabilirsiniz. Seçenekleri `--sku` P1V2, _P2V2_ve _P3V2_' dir.
 
 ```azurecli-interactive
 az appservice plan create \

@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da7d56a0fd8571e796567331a7543074f0bf1eda
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76896439"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808699"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal makineye gelen ve sanal makineden giden ağ trafiğini günlüğe kaydetme
 
 > [!div class="op_single_selector"]
-> - [Azure portalı](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
-Ağ güvenlik grubu (NSG), bir sanal makineye gelen trafiği ve sanal makineden giden trafiği filtrelemenize olanak sağlar. Ağ İzleyicisinin NSG akış günlüğü özelliği ile NSG aracılığıyla akan trafiği günlüğe kaydedebilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Ağ güvenlik grubu (NSG), bir sanal makineye gelen trafiği ve sanal makineden giden trafiği filtrelemenize olanak sağlar. Ağ İzleyicisinin NSG akış günlüğü özelliği ile NSG aracılığıyla akan trafiği günlüğe kaydedebilirsiniz. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağ güvenlik grubu ile sanal makine oluşturma
@@ -123,8 +123,8 @@ NSG akış günlüğü kaydı için **Microsoft.Insights** sağlayıcısı gerek
    ![Akış günlüklerini indirme](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. [NSG akış günlüğünü etkinleştirme](#enable-nsg-flow-log) bölümünün 2. adımında yapılandırdığınız depolama hesabını seçin.
-4. **BLOB hizmeti**altında **Bloblar**' ı seçin ve ardından **Öngörüler-logs-networksecuritygroupflowevent** kapsayıcısını seçin.
-5. Kapsayıcıda, aşağıdaki resimde gösterildiği gibi, bir PT1H. JSON dosyasına ulaşana kadar klasör hiyerarşisine gidin. Günlük dosyaları, aşağıdaki adlandırma kuralını izleyen bir klasör hiyerarşisine yazılır: https://{storageAccountName}. blob. Core. Windows. net/Insights-logs-networksecuritygroupflowevent/RESOURCEID =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/Pt1h.exe JSON
+4. **BLOB hizmeti**altında **kapsayıcılar**' ı seçin ve ardından **Öngörüler-logs-networksecuritygroupflowevent** kapsayıcısını seçin.
+5. Kapsayıcıda, aşağıdaki resimde gösterildiği gibi bir PT1H.jsdosyaya gelene kadar klasör hiyerarşisine gidin. Günlük dosyaları şu adlandırma kuralını izleyen bir klasör hiyerarşisine yazılır: https://{storageAccountName}. blob. Core. Windows. net/Insights-logs-networksecuritygroupflowevent/RESOURCEID =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {month}/d = {Day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
 
    ![Akış günlüğü](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 

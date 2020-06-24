@@ -6,13 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: c577859f6e8a44dd3573537aecadba638a5f6fa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059380"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806024"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Azure PowerShell kullanarak URL yolu tabanlı yönlendirme ile bir uygulama ağ geçidi oluşturma
 
@@ -491,7 +491,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanabilirsiniz. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin,,, veya `http://52.168.55.24:8081/images/test.htm` `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm` `http://52.168.55.24:8080/video/test.htm`
+Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanabilirsiniz. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin,, `http://52.168.55.24` , `http://52.168.55.24:8080/images/test.htm` `http://52.168.55.24:8080/video/test.htm` veya `http://52.168.55.24:8081/images/test.htm` .
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

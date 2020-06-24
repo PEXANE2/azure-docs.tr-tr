@@ -1,25 +1,25 @@
 ---
 title: Azure SQL veritabanı için yerleşik ilke tanımları
 description: Azure SQL veritabanı ve SQL yönetilen örneği için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-samples
-ms.openlocfilehash: ff131f93df07325aec99e6e3e7aa3a9ddd284e28
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: fc768870e02098e208b55aabd854093d9d66ba1d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231343"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887276"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için Azure Ilkesi yerleşik ilke tanımları
+# <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için Azure Ilkesi yerleşik tanımları
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Bu sayfa, Azure SQL veritabanı ve SQL yönetilen örneği için [Azure ilkesi](../../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
 ## <a name="azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği 
 

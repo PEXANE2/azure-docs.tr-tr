@@ -1,6 +1,6 @@
 ---
 title: REST kullanarak Kullanıcı tarafından atanan yönetilen kimlikleri yönetme-Azure AD
-description: REST API çağrısı yapmak için Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme ve silme konusunda adım adım yönergeler.
+description: REST API çağrısı yapmak için Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme ve silme hakkında adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,29 +15,29 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e108451e4c19e77e01b5bcc5d8dd21e86ad73a
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 6a2a5df011cd074bbccc0c13570b2f49d902a0c3
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547422"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694340"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>REST API çağrılarını kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Azure kaynakları için Yönetilen kimlikler, Azure hizmetleri 'nin kodunuzda kimlik bilgilerine gerek duymadan Azure AD kimlik doğrulamasını destekleyen hizmetlere kimlik doğrulaması yapma yeteneği sağlar. 
+Azure kaynakları için Yönetilen kimlikler, Azure hizmetlerine, kodunuzda kimlik bilgileri gerekmeden Azure AD kimlik doğrulamasını destekleyen hizmetlerde kimlik doğrulaması yapma yeteneği sağlar. 
 
 Bu makalede, REST API çağrısı yapmak için KıVRıMLı kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturmayı, listeleyeceğinizi ve silmeyi öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 - Windows kullanıyorsanız, [Linux Için Windows alt sistemini](https://msdn.microsoft.com/commandline/wsl/about) yükledikten sonra Azure Portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın.
 - [Linux Için Windows alt sistemi](https://msdn.microsoft.com/commandline/wsl/about) veya [Linux dağıtım Işletim SISTEMI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)kullanıyorsanız [Azure CLI yerel konsolunu yükleyebilirsiniz](/cli/azure/install-azure-cli).
-- Azure CLı yerel Konsolu kullanıyorsanız, dağıtmak veya Kullanıcı tarafından atanan yönetilen kimlik bilgilerini `az login` almak istediğiniz Azure aboneliğiyle ilişkili bir hesapla Azure 'da oturum açın.
-- Aşağıdaki Kullanıcı tarafından atanan yönetilen kimlik `az account get-access-token` işlemlerini gerçekleştirmek için kullanarak bir taşıyıcı erişim belirteci alın.
+- Azure CLı yerel Konsolu kullanıyorsanız, `az login` dağıtmak veya Kullanıcı tarafından atanan yönetilen kimlik bilgilerini almak Istediğiniz Azure aboneliğiyle ilişkili bir hesapla Azure 'da oturum açın.
+- `az account get-access-token`Aşağıdaki kullanıcı tarafından atanan yönetilen kimlik işlemlerini gerçekleştirmek için kullanarak bir taşıyıcı erişim belirteci alın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -63,11 +63,11 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
 |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın.        |
+|*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
 **İstek gövdesi**
 
-|Adı  |Açıklama  |
+|Name  |Description  |
 |---------|---------|
 |location     | Gereklidir. Kaynak konumu.        |
 
@@ -86,7 +86,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
 |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın.        |
+|*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimliği silme
 
@@ -106,7 +106,7 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |İstek üst bilgisi  |Açıklama  |
 |---------|---------|
 |*İçerik türü*     | Gereklidir. `application/json` olarak ayarlayın.        |
-|*Yetkisi*     | Gereklidir. Geçerli `Bearer` bir erişim belirtecine ayarlayın.        |
+|*Yetkisi*     | Gereklidir. Geçerli bir `Bearer` erişim belirtecine ayarlayın.        |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

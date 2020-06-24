@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 06/02/2020
 ms.author: mimart
-ms.openlocfilehash: 2981a46502ad7a7ab673e00bd1e8d2033ef2213d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 65fb406fa4f52f19b4d8e9dc4e3895207ffe6336
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84317771"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84793652"
 ---
 Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
 
@@ -23,11 +23,12 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 1. Uygulama için bir **ad** girin. Örneğin, *nativeapp1*.
 1. **Desteklenen hesap türleri**altında **herhangi bir kuruluş dizininde veya herhangi bir kimlik sağlayıcısında hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si**altında, **genel istemci/yerel ' i (mobil & Masaüstü)** seçmek için açılan eklentiyi kullanın.
-1. Benzersiz bir düzene sahip bir yeniden yönlendirme URI 'SI girin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Yeniden yönlendirme URI 'SI seçerken dikkat etmeniz gereken iki önemli nokta vardır:
+1. Benzersiz bir düzene sahip bir yeniden yönlendirme URI 'SI girin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Yeniden yönlendirme URI 'SI seçilirken önemli noktalar vardır:
+    * **Geliştirme** Geliştirme kullanımı için yeniden yönlendirme URI 'sini olarak ayarlayabilirsiniz `http://localhost` ve Azure AD B2C istekteki herhangi bir bağlantı noktasına göre değişir. Kayıtlı URI bir bağlantı noktası içeriyorsa Azure AD B2C yalnızca bu bağlantı noktasını kullanır. Örneğin, kayıtlı yeniden yönlendirme URI 'SI ise, `http://localhost` istekteki yeniden YÖNLENDIRME URI 'si olabilir `http://localhost:<randomport>` . Kayıtlı yeniden yönlendirme URI 'SI ise `http://localhost:8080` , istekteki yeniden YÖNLENDIRME URI 'si olmalıdır `http://localhost:8080` .
     * **Benzersiz**: YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` , `com.onmicrosoft.contosob2c.exampleapp` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış seçerse, oturum açma başarısız olur.
     * **Tamam**: yeniden yönlendirme URI 'sinin hem bir düzen hem de yol olması gerekir. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//oauth/` başarısız olsa da işe yarar `//oauth` . URI 'de, alt çizgi gibi özel karakterler eklemeyin.
 1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
-1. **Kaydol**’u seçin.
+2. **Kaydol**’u seçin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
@@ -40,4 +41,4 @@ Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygul
 1. Benzersiz bir şemaya sahip **özel bir yeniden yönlendirme URI 'si** girin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Yeniden yönlendirme URI 'SI seçerken dikkat etmeniz gereken iki önemli nokta vardır:
     * **Benzersiz**: YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` , `com.onmicrosoft.contosob2c.exampleapp` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış seçerse, oturum açma başarısız olur.
     * **Tamam**: yeniden yönlendirme URI 'sinin hem bir düzen hem de yol olması gerekir. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//oauth/` başarısız olsa da işe yarar `//oauth` . URI 'de, alt çizgi gibi özel karakterler eklemeyin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.

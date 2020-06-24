@@ -4,16 +4,16 @@ description: Azure CLı kullanarak bir uygulama ağ geçidi oluşturma ve TLS so
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16ad8d7fd0f46381f2e2e7076015af65bd4bddcd
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311969"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806141"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Azure CLı kullanarak TLS sonlandırmasına sahip bir uygulama ağ geçidi oluşturma
 
@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Bu örnekte URL: **https://52.170.203.149**.
+Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Bu örnekte URL: **https://52.170.203.149** .
 
 ![Güvenli uyarı](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

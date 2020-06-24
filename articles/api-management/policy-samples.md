@@ -1,46 +1,31 @@
 ---
-title: Azure API Management ilke örnekleri | Microsoft Docs
-description: Azure API Management'ta kullanılabilecek ilkeler hakkında bilgi edinin.
-services: api-management
-documentationcenter: ''
-author: vladvino
-manager: cflower
-editor: ''
+title: Azure API Management için yerleşik ilke tanımları
+description: Azure API Management için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
+ms.date: 06/11/2020
+author: georgewallace
+ms.author: gwallace
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 10/31/2017
-ms.author: apimpm
-ms.custom: mvc
-ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: subject-policy-samples
+ms.openlocfilehash: b7e273b4ae7d213eb45775540d1e83b5a4d8b971
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75940937"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124026"
 ---
-# <a name="api-management-policy-samples"></a>API Management ilke örnekleri
+# <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure API Management için Azure Ilkesi yerleşik ilke tanımları
 
-[İlkeler](api-management-howto-policies.md), yayımcının API’nin davranışını yapılandırma yoluyla değiştirmesini sağlayan güçlü sistem özellikleridir. İlkeler, bir API isteği veya yanıtı üzerinde sırayla yürütülen deyimlerin bir koleksiyonudur. Aşağıdaki tabloda örneklerin bağlantıları yer alır ve her örnek için kısa bir açıklama verilir.
+Bu sayfa, Azure API Management için [Azure ilkesi](../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../governance/policy/samples/built-in-policies.md)bölümüne bakın. API Management ilke örnekleri için bkz. [API Management-Policy Index](./policies/index.md).
 
-|                                                                                                                                                                      |                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Gelen ilkeleri**                                                                                                                                                 |                                                                                                                                                                                                                             |
-| [Arka uç API'sinin düzgün URL'ler oluşturmasını sağlamak için bir İletildi üst bilgisi ekleme](./policies/set-header-to-enable-backend-to-construct-urls.md?toc=api-management/toc.json) | Arka uç API'sinin düzgün URL'ler oluşturmasını sağlamak için gelen isteğe İletildi üst bilgisi ekleme işlemini gösterir.                                                                                                        |
-| [Bağıntı kimliği içeren bir üst bilgi ekleme](./policies/add-correlation-id.md?toc=api-management/toc.json)                                                             | Gelen isteğe bağıntı kimliği içeren bir üst bilgi ekleme işlemini gösterir.                                                                                                                                        |
-| [Arka uç hizmetine özellikler ekleme ve yanıtı önbelleğe alma](./policies/cache-response.md?toc=api-management/toc.json)                                             | Arka uç hizmetine özellikler ekleme işlemini gösterir. Örneğin, hava durumu tahmini API'sinde enlem ve boylam yerine bir yer adını kabul edin.                                                                    |
-| [JWT talepleri temelinde erişim yetkisi verme](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | JWT talepleri temelinde bir API'deki belirli HTTP yöntemlerine erişim yetkisi verme işlemini gösterir.                                                                                                                                       |
-| [Dış yetkilendirici kullanarak istekleri yetkilendirme](./policies/authorize-request-using-external-authorizer.md)                                                   | API erişiminin güvenliğini sağlamak için dış yetkilendiricinin nasıl kullanılacağını gösterir.                                                                                                                                                               |
-| [Google OAuth belirtecini kullanarak erişim yetkisi verme](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | OAuth belirteç sağlayıcısı olarak Google'ı kullanıp uç noktalarınıza erişim yetkisi verme işlemini gösterir.                                                                                                                                    |
-| [Application Gateway kullanırken IP adreslerini filtrele](./policies/filter-ip-addresses-when-using-appgw.md) | API Management örneğine Application Gateway aracılığıyla erişildiğinde, ilkelerde IP filtreleme işlemlerinin nasıl yapılacağını gösterir
-| [Paylaşılan Erişim İmzası oluşturma ve Azure depolamaya isteği iletme](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | İfadeleri kullanarak [Paylaşılan Erişim İmzası](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) oluşturma ve rewrite-uri ilkesiyle Azure depolamaya isteği iletme işlemlerini gösterir. |
-| [AAD'den OAuth2 erişim belirtecini alma ve bunu arka uca iletme](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | Ağ geçidiyle arka uç arasındaki yetkilendirme için OAuth2 kullanma örneği sağlar. AAD'den erişim belirtecini alma ve bunu arka uca iletme işlemini de gösterir.                                                    |
-| [İstek gönderme ilkesini kullanarak SAP ağ geçidinden X-CSRF belirtecini alma](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | Birçok API tarafından kullanılan X-CSRF deseninin nasıl uygulandığını gösterir. Bu örnek SAP Ağ Geçidi'ne özgüdür.                                                                                                                           |
-| [İsteği, gövdesinin boyutu temelinde yönlendirme](./policies/route-requests-based-on-size.md?toc=api-management/toc.json)                                            | İstekleri gövdelerinin boyutu temelinde yönlendirme işlemini gösterir.                                                                                                                                                       |
-| [Arka uç hizmetine istek bağlamı bilgilerini gönderme](./policies/send-request-context-info-to-backend-service.md?toc=api-management/toc.json)                    | Günlüğe kaydedilmesi veya işlenmesi için arka uç hizmetine bazı bağlam bilgilerinin nasıl gönderileceğini gösterir.                                                                                                                                |
-| [Yanıt önbellek süresini ayarlama](./policies/set-cache-duration.md?toc=api-management/toc.json)                                                                          | Arka uç tarafından gönderilen Cache-Control üst bilgisindeki maxAge değerini kullanarak yanıt önbellek süresini ayarlama işlemini gösterir.                                                                                                             |
-| **Giden ilkeleri**                                                                                                                                                |                                                                                                                                                                                                                             |
-| [Yanıt içeriğini filtreleme](./policies/filter-response-content.md?toc=api-management/toc.json)                                                                         | İstekle ilişkilendirilmiş ürün temelinde yanıt yükünden veri öğelerinin nasıl filtreleneceğini gösterir.                                                                                                        |
-| **Hata durum ilkeleri**                                                                                                                                                |                                                                                                                                                                                                                             |
-| [Hataları Stackify'de günlüğe kaydetme](./policies/log-errors-to-stackify.md?toc=api-management/toc.json)                                                                           | Hataları günlüğe kaydedilmek üzere Stackify'ye göndermek üzere bir hata günlüğü ilkesi ekleme işlemini gösterir.                                                                                                                                            |
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
+
+## <a name="azure-api-management"></a>Azure API Management
+
+[!INCLUDE [azure-policy-samples-rp-apimanagement](../../includes/policy/samples/byrp/microsoft.apimanagement.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Yerleşik ilkeleri görmek için [Azure İlkesi GitHub deposuna](https://github.com/Azure/azure-policy) gidin.
+- [Azure İlkesi tanımı yapısını](../governance/policy/concepts/definition-structure.md) gözden geçirin.
+- [İlkenin etkilerini anlama](../governance/policy/concepts/effects.md) konusunu gözden geçirin.

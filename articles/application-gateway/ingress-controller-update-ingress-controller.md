@@ -4,15 +4,15 @@ description: Bu makale, Held kullanarak bir Application Gateway girişini yükse
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795898"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806772"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Helm kullanarak Application Gateway Giriş Denetleyicisini yükseltme 
 
@@ -42,7 +42,7 @@ Yükseltme yordamına başlamadan önce, gerekli depoyu eklemiş olduğunuzdan e
     helm repo update
     ```
 
-1. `application-gateway-kubernetes-ingress` Grafiğin kullanılabilir sürümlerini görüntüleyin:
+1. Grafiğin kullanılabilir sürümlerini görüntüleyin `application-gateway-kubernetes-ingress` :
 
     ``` bash
     helm search -l application-gateway-kubernetes-ingress
@@ -71,7 +71,7 @@ Yükseltme yordamına başlamadan önce, gerekli depoyu eklemiş olduğunuzdan e
     odd-billygoat   22              Fri Jun 21 15:56:06 2019        FAILED  ingress-azure-0.7.0-rc1 0.7.0-rc1       default
     ```
 
-    Yukarıdaki örnek yanıttan hela grafik yüklemesi adı `odd-billygoat`verilir. Bu adı komutların geri kalanı için kullanacağız. Gerçek dağıtım adınız büyük olasılıkla farklı olacaktır.
+    Yukarıdaki örnek yanıttan hela grafik yüklemesi adı verilir `odd-billygoat` . Bu adı komutların geri kalanı için kullanacağız. Gerçek dağıtım adınız büyük olasılıkla farklı olacaktır.
 
 1. Held dağıtımını yeni bir sürüme yükseltin:
 
@@ -100,7 +100,7 @@ Held dağıtımı başarısız olursa, önceki bir sürüme geri alabilirsiniz.
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    `helm history` Komutun örnek çıktısından, was düzeltdiğimiz `odd-billygoat` son başarılı dağıtımı gibi görünüyor`1`
+    Komutun örnek çıktısından, `helm history` was düzeltdiğimiz son başarılı dağıtımı gibi görünüyor `odd-billygoat``1`
 
 1. Son başarılı düzeltmeye geri al:
 

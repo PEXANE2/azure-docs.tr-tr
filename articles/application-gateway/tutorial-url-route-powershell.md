@@ -4,16 +4,16 @@ description: Azure PowerShell kullanarak sunucuların belirli ölçeklenebilir h
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ca5c411db5644182f7e87f1ee1c63f3cbc4d2e9
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fccc7281ed2978ccc63cd7b53a82c8a00b57d3c2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73200408"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805987"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Azure PowerShell kullanarak URL'ye göre web trafiğini yönlendirme
 
@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bir bağlantı oluşturmak için öğesini `Login-AzAccount` de çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Login-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
 
 Kaynak oluşturmak için gereken süre nedeniyle, bu yordamın tamamlanması 90 dakika sürebilir.
 
@@ -414,7 +414,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. ,,, Veya `http://52.168.55.24:8080/video/test.htm`gibi. `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm`
+Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. ,,, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm` Veya gibi `http://52.168.55.24:8080/video/test.htm` .
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -422,11 +422,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
 
-URL 'YI IP adresi için&lt; &lt;&gt;ıp adresinizi http://&gt;IP adresi: 8080/images/test.htm olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL 'YI IP adresi &lt; için IP adresinizi http://IP adresi &gt; : 8080/ımages/test.htm olarak değiştirin &lt; &gt; ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
 
-URL 'YI IP adresi için&lt; &lt;&gt;ıp adresinizi http://&gt;IP adresi: 8080/video/test.htm olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL 'YI IP adresi &lt; için IP adresinizi http://IP adresi &gt; : 8080/video/test.htm olarak değiştirin &lt; &gt; ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Video URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 

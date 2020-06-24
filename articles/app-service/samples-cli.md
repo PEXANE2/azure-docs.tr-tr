@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 499bf25f06030ae9fc5c1f8381ef4cd6ff6873dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535630"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254506"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service için CLı örnekleri
 
@@ -35,7 +35,7 @@ Aşağıdaki tablo, Azure CLI’si kullanılarak oluşturulan bash komut dosyala
 |**Uygulamayı koru**||
 | [Azure Application Gateway ile tümleştirin](./scripts/cli-integrate-app-service-with-application-gateway.md?toc=%2fcli%2fazure%2ftoc.json) | App Service bir uygulama oluşturur ve hizmet uç noktası ve erişim kısıtlamalarını kullanarak Application Gateway ile tümleştirir. |
 |**Uygulamayı kaynaklara bağlama**||
-| [Bir uygulamayı SQL veritabanına bağlama](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Bir App Service uygulaması ve bir SQL veritabanı oluşturur, ardından veritabanı bağlantı dizesini uygulama ayarlarına ekler. |
+| [Bir uygulamayı SQL veritabanına bağlama](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Azure SQL veritabanı 'nda bir App Service uygulaması ve veritabanı oluşturur, ardından veritabanı bağlantı dizesini uygulama ayarlarına ekler. |
 | [Bir uygulamayı depolama hesabına bağlama](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Bir App Service uygulaması ve depolama hesabı oluşturur, ardından depolama bağlantı dizesini uygulama ayarlarına ekler. |
 | [Redsıs için bir uygulamayı Azure önbelleğine bağlama](./scripts/cli-connect-to-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Redsıs için bir App Service uygulaması ve Azure önbelleği oluşturur, ardından uygulama ayarlarına redsıs bağlantı ayrıntılarını ekler.) |
 | [Uygulamayı Cosmos DB bağlama](./scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | App Service bir uygulama ve bir Cosmos DB oluşturur ve Cosmos DB bağlantı ayrıntılarını uygulama ayarlarına ekler. |
