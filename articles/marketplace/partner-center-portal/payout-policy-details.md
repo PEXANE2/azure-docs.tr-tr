@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6aa40d0914237a28c7bbd32b15bf0d8d02140192
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: cb939d223d0aa91b6da62d3045ccad919f1bd277
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783558"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887936"
 ---
 # <a name="payout-policy-details"></a>Ödeme ilkesi ayrıntıları
 
@@ -25,7 +25,7 @@ Iş Ortağı Merkezi 'nde portalın sağ üst kısmında bulunan **ödeme** ' yi
 ![Iş Ortağı Merkezi portalının sağ üst tarafındaki ödeme simgesini gösterir.](./media/payout-overview.png)
 
 > [!TIP]
-> Hesap rollerinin tümü, ödeme bilgilerine erişemez. Ayrıntılar için bkz. [ödeme raporuna erişmek Için roller ve izinler](./payout-summary.md).
+> Hesap rollerinin tümü, ödeme bilgilerine erişemez. Ayrıntılar için bkz. [ödeme raporuna erişmek Için roller ve izinler](./payout-summary-overview.md#roles-and-permissions).
 
 ## <a name="payment-schedules"></a>Ödeme zamanlamaları
 
@@ -102,12 +102,12 @@ Microsoft, aşağıdaki yöntemlerden birini kullanarak zaten ücretli olan tüm
 | Örnek ödeme tarihi | 10/15/2020 | Ödeme panosundaki Işlem geçmişi ve ödemeler bölümünde **gönderildi** olarak işaretlendi |
 | <font color="red">Müşteri Microsoft 'a ödeme yapmasa da</font> | 12/2/2020 – 12/5/2020 | Değişiklik yok, yukarıdaki ile aynı |
 | Müşteri ilk geç ödeme e-postasını alır | 12/6/2020 | Yok |
-| Müşteri, artan aciliyet e-postalarını alır | 12/7/2020 – 1/31/2020 | Yok |
-| Yayımcı, yazma işlemi için büyük olasılıkla | 1/7/2020 | Müşteriye henüz ödeme gönderilmemiş olan e-posta bildirimi gönderilir. İşlem KIMLIĞI ve dolar miktarı dahil edilir. |
-| Müşteri sonlandırma bildirimini alır | 2/1/2020 | Yok |
-| Toplama işleminin bitişi/fonları yazılır | 2/15/2020 | Fonların yazıldığı yayımcıya gönderilen e-posta bildirimi. İşlem KIMLIĞI ve dolar miktarı dahil edilir. |
-| Ödeme kesinti | 3/1/2020 | Yayımcı, Iş Ortağı Merkezi ödeme bildiriminde negatif işlem görür |
-| Ödeme stopaj uygulanan | 3/15/2020 | Gelecekteki ödemeler, Iş Ortağı Merkezi ödeme bildiriminde gösterilir. Bu, bakiye artık negatif olmadığından, ödeme ödemeyi almaz.  |
+| Müşteri, artan aciliyet e-postalarını alır | 12/7/2020 – 1/31/2021 | Yok |
+| Yayımcı, yazma işlemi için büyük olasılıkla | 1/7/2021 | Müşteriye henüz ödeme gönderilmemiş olan e-posta bildirimi gönderilir. İşlem KIMLIĞI ve dolar miktarı dahil edilir. |
+| Müşteri sonlandırma bildirimini alır | 2/1/2021 | Yok |
+| Toplama işleminin bitişi/fonları yazılır | 2/15/2021 | Fonların yazıldığı yayımcıya gönderilen e-posta bildirimi. İşlem KIMLIĞI ve dolar miktarı dahil edilir. |
+| Ödeme kesinti | 3/1/2021 | Yayımcı, Iş Ortağı Merkezi ödeme bildiriminde negatif işlem görür |
+| Ödeme stopaj uygulanan | 3/15/2021 | Gelecekteki ödemeler, Iş Ortağı Merkezi ödeme bildiriminde gösterilir. Bu, bakiye artık negatif olmadığından, ödeme ödemeyi almaz.  |
 |||
 
 ## <a name="next-step"></a>Sonraki adım

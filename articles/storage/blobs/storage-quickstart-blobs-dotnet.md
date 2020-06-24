@@ -8,11 +8,11 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240509"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711876"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı V12
 
@@ -29,7 +29,7 @@ ms.locfileid: "79240509"
 * Blobu yerel bilgisayarınıza indirme
 * Kapsayıcı silme
 
-[API başvurusu belge](/dotnet/api/azure.storage.blobs) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [paketi (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+[API başvuru belgeleri](/dotnet/api/azure.storage.blobs)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -47,7 +47,7 @@ Bu bölümde, bir projeyi .NET için Azure Blob depolama istemci kitaplığı V1
 
 *BlobQuickstartV12*adlı bir .NET Core uygulaması oluşturun.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), *BlobQuickstartV12*adlı yeni bir konsol uygulaması `dotnet new` oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *BlobQuickstartV12*adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
    ```console
    dotnet new console -n BlobQuickstartV12
@@ -67,7 +67,7 @@ Bu bölümde, bir projeyi .NET için Azure Blob depolama istemci kitaplığı V1
 
 ### <a name="install-the-package"></a>Paketi yükler
 
-Hala uygulama dizininde, `dotnet add package` komutunu kullanarak .net Için Azure Blob Storage istemci kitaplığı 'nı yükleyebilirsiniz.
+Hala uygulama dizininde, komutunu kullanarak .NET için Azure Blob Storage istemci kitaplığı 'nı yükleyebilirsiniz `dotnet add package` .
 
 ```console
 dotnet add package Azure.Storage.Blobs
@@ -78,9 +78,9 @@ dotnet add package Azure.Storage.Blobs
 Proje dizininden:
 
 1. *Program.cs* dosyasını Düzenleyicinizde açın
-1. `Console.WriteLine("Hello World!");` İfadeyi kaldır
-1. Yönergeler `using` ekleme
-1. Zaman uyumsuz `Main` kodu desteklemek için yöntem bildirimini güncelleştirme
+1. İfadeyi Kaldır `Console.WriteLine("Hello World!");`
+1. `using`Yönergeler ekleme
+1. `Main`Zaman uyumsuz kodu desteklemek için yöntem bildirimini güncelleştirme
 
 Kod şu şekildedir:
 
@@ -118,9 +118,9 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki .NET sınıflarını kullanın:
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): sınıfı `BlobServiceClient` , Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
-* [Blobcontainerclient](/dotnet/api/azure.storage.blobs.blobcontainerclient): sınıfı `BlobContainerClient` , Azure depolama kapsayıcılarını ve bloblarını değiştirmenize olanak sağlar.
-* [Blobclient](/dotnet/api/azure.storage.blobs.blobclient): sınıfı `BlobClient` , Azure Storage bloblarını değiştirmenize izin verir.
+* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): `BlobServiceClient` sınıfı, Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
+* [Blobcontainerclient](/dotnet/api/azure.storage.blobs.blobcontainerclient): `BlobContainerClient` sınıfı, Azure depolama kapsayıcılarını ve bloblarını değiştirmenize olanak sağlar.
+* [Blobclient](/dotnet/api/azure.storage.blobs.blobclient): `BlobClient` sınıfı, Azure Storage bloblarını değiştirmenize izin verir.
 * [Blobdownloadınfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): `BlobDownloadInfo` sınıfı, blob indirilmeden döndürülen özellikleri ve içeriği temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
@@ -138,7 +138,7 @@ Bu örnek kod parçacıkları, .NET için Azure Blob depolama istemci kitaplığ
 
 Aşağıdaki kod, depolama [bağlantı dizesini yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkeninden depolama hesabının bağlantı dizesini alır.
 
-Bu kodu `Main` metodun içine ekleyin:
+Bu kodu metodun içine ekleyin `Main` :
 
 ```csharp
 Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
@@ -161,7 +161,7 @@ Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğunda
 
 [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kapsayıcıyı oluşturmak için [Createblobcontainsısync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) yöntemini çağırın.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 // Create a BlobServiceClient object which will be used to create a container client
@@ -182,7 +182,7 @@ Aşağıdaki kod parçacığı:
 1. Kapsayıcı [oluşturma](#create-a-container) bölümünde, kapsayıcıda [getblobclient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) yöntemini çağırarak bir [blobclient](/dotnet/api/azure.storage.blobs.blobclient) nesnesine bir başvuru alır.
 1. [Uploadasync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_) yöntemini çağırarak yerel metin dosyasını bloba yükler. Bu yöntem, daha önce oluşturulmadıysa bir blob oluşturur, aksi takdirde üzerine yazar.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 // Create a local file in the ./data/ directory for uploading and downloading
@@ -208,7 +208,7 @@ uploadFileStream.Close();
 
 [Getblobsasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) yöntemini çağırarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 Console.WriteLine("Listing blobs...");
@@ -224,7 +224,7 @@ await foreach (BlobItem blobItem in containerClient.GetBlobsAsync())
 
 [Downloadasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, yerel dosya sisteminde her iki dosyayı da görebilmeniz için dosya adına "INDIRILMIŞ" bir sonek ekler.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 // Download the blob to a local file
@@ -248,9 +248,9 @@ using (FileStream downloadFileStream = File.OpenWrite(downloadFilePath))
 
 Aşağıdaki kod, [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)kullanarak tüm kapsayıcıyı silerek uygulamanın oluşturduğu kaynakları temizler. Ayrıca, uygulama tarafından oluşturulan yerel dosyaları da siler.
 
-Uygulama, blob, kapsayıcı ve yerel dosyaları `Console.ReadLine` silmeden önce çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce gerçekten doğru şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
+Uygulama, `Console.ReadLine` BLOB, kapsayıcı ve yerel dosyaları silmeden önce çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce gerçekten doğru şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
 
-Bu kodu `Main` yönteminin sonuna ekleyin:
+Bu kodu yönteminin sonuna ekleyin `Main` :
 
 ```csharp
 // Clean up

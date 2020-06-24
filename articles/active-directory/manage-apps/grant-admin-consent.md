@@ -2,24 +2,24 @@
 title: Bir uygulamaya kiracı genelinde yönetici onayı verme-Azure AD
 description: Uygulamaya oturum açarken son kullanıcılardan onay istenmemesi için bir uygulamaya kiracı genelinde onay verme hakkında bilgi edinin.
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d31f03d8e6138829bbf57003b504f68f5c2315b2
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75480924"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763372"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bir uygulamaya kiracı genelinde yönetici onayı verme
+# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Uygulamaya kiracı genelinde yönetici onayı verme
 
 Bir uygulamaya kiracı genelinde yönetici onayı vererek Kullanıcı deneyimini nasıl basitleştireceğinizi öğrenin. Bu makale, bunu başarmanın farklı yollarını sağlar. Yöntemler, Azure Active Directory (Azure AD) kiracınızdaki tüm son kullanıcılar için geçerlidir.
 
@@ -80,7 +80,7 @@ Her zaman olduğu gibi, izin vermeden önce uygulama isteklerinin izinlerini dik
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Son kullanıcıların uygulamalara nasıl izin vermesini yapılandırın](configure-user-consent.md)
+[Son kullanıcıların uygulamalara onay verme şeklini yapılandırma](configure-user-consent.md)
 
 [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
 

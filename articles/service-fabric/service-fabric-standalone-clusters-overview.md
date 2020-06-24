@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75465633"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080658"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Tek başına Service Fabric kümelerine genel bakış
 
@@ -21,9 +21,16 @@ Düğüm türü, kümedeki bir düğüm kümesinin boyutunu, sayısını ve öze
 Şirket içinde Service Fabric kümesi oluşturma işlemi, bir VM kümesiyle tercih ettiğiniz herhangi bir bulutta küme oluşturma işlemine benzerdir. VM 'Leri sağlamaya yönelik ilk adımlar, kullanmakta olduğunuz bulut sağlayıcısına veya şirket içi ortama tabidir. Aralarında ağ bağlantısı etkinleştirilmiş bir VM kümesine sahip olduktan sonra, Service Fabric paketini ayarlama, küme ayarlarını düzenleme ve küme oluşturma ve yönetim komut dosyalarını çalıştırma adımları aynıdır. Bu, yeni barındırma ortamlarını hedeflemesini seçtiğinizde Service Fabric kümelerini çalıştırma ve yönetme deneyiminizin ve bilgilerinizin yönetibilmesini sağlar.
 
 ## <a name="cluster-security"></a>Küme güvenliği
+
 Service Fabric kümesi sahip olduğunuz bir kaynaktır.  Yetkisiz kullanıcıların bunlara bağlanmasını önlemeye yardımcı olmak için kümelerinizin güvenliğini sağlamak sizin sorumluluğunuzdadır. Küme üzerinde üretim iş yüklerini çalıştırırken güvenli bir küme özellikle önemlidir.
 
+> [!NOTE]
+> Windows kimlik doğrulaması, Kerberos 'u temel alır. NTLM, kimlik doğrulama türü olarak desteklenmez.
+>
+> Mümkün olduğunda, Service Fabric kümeleri için X. 509.440 sertifika kimlik doğrulamasını kullanın.
+
 ### <a name="node-to-node-security"></a>Düğümden düğüme güvenlik
+
 Düğümden düğüme güvenlik, bir kümedeki VM 'Ler veya bilgisayarlar arasındaki iletişimin güvenliğini sağlar. Bu güvenlik senaryosu, yalnızca kümeye katılma yetkisi olan bilgisayarların kümedeki uygulamaları ve Hizmetleri barındırmak için katılmasına olanak sağlar. Service Fabric, bir kümeyi güvenli hale getirmek ve uygulama güvenliği özellikleri sağlamak için X. 509.440 sertifikaları kullanır.  Küme trafiğinin güvenliğini sağlamak ve küme ve sunucu kimlik doğrulaması sağlamak için bir küme sertifikası gerekir.  Otomatik olarak imzalanan sertifikalar, test kümeleri için kullanılabilir, ancak üretim kümelerini güvenli hale getirmek için güvenilir bir sertifika yetkilisinden bir sertifika kullanılmalıdır.
 
 Windows güvenliği, Windows tek başına kümesi için de etkinleştirilebilir. Windows Server 2012 R2 ve Windows Active Directory varsa, grup tarafından yönetilen hizmet hesaplarıyla Windows güvenliği kullanmanızı öneririz. Aksi takdirde, Windows Güvenlik ile Windows hesaplarını kullanın.
@@ -31,6 +38,7 @@ Windows güvenliği, Windows tek başına kümesi için de etkinleştirilebilir.
 Daha fazla bilgi için [düğümden düğüme güvenliği](service-fabric-cluster-security.md#node-to-node-security) okuyun
 
 ### <a name="client-to-node-security"></a>İstemciden düğüme güvenlik
+
 İstemciden düğüme güvenlik, istemcilerin kimliğini doğrular ve kümedeki istemci ve tek düğümler arasındaki iletişimin güvenliğini sağlamaya yardımcı olur. Bu tür bir güvenlik, kümeye ve kümeye dağıtılan uygulamalara yalnızca yetkili kullanıcıların erişebildiğinden emin olmanıza yardımcı olur. İstemciler, X. 509.440 sertifika güvenlik kimlik bilgileri aracılığıyla benzersiz şekilde tanımlanır. Küme ile yönetici veya Kullanıcı istemcilerinin kimliğini doğrulamak için herhangi bir sayıda isteğe bağlı istemci sertifikası kullanılabilir.
 
 İstemci sertifikalarına ek olarak, Azure Active Directory, küme ile istemcilerin kimliğini doğrulamak için de yapılandırılabilir.
@@ -55,6 +63,7 @@ Tek başına küme, tamamen sahip olduğunuz bir kaynaktır. Temel alınan işle
 Daha fazla bilgi için [tek başına kümeleri yükseltme](service-fabric-cluster-upgrade-standalone.md)makalesini okuyun.
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+
 Bu işletim sistemlerini çalıştıran VM 'lerde veya bilgisayarlarda kümeler oluşturabilirsiniz (Linux henüz desteklenmemektedir):
 
 * Windows Server 2012 R2
@@ -62,6 +71,7 @@ Bu işletim sistemlerini çalıştıran VM 'lerde veya bilgisayarlarda kümeler 
 * Windows Server 2019
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Tek başına kümelerin [güvenliğini sağlama](service-fabric-cluster-security.md), [ölçeklendirme](service-fabric-cluster-scaling-standalone.md)ve [yükseltme](service-fabric-cluster-upgrade-standalone.md) hakkında daha fazla bilgi edinin.
 
 [Service Fabric destek seçenekleri](service-fabric-support.md)hakkında bilgi edinin.

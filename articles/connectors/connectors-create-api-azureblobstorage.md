@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247364"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711298"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Azure Blob depolamada Bloblar oluşturma ve yönetme
 
@@ -89,7 +89,7 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    ![Logic App iş akışına yeni adım Ekle](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini (**+**) seçin ve **Eylem Ekle**' yi seçin.
+   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
 
 3. Arama kutusuna filtreniz olarak "Azure Blob" yazın. Eylemler listesinden istediğiniz eylemi seçin.
 
@@ -121,7 +121,7 @@ Bu örnek yalnızca bir Blobun içeriğini alır. İçeriği görüntülemek iç
 
 1. Bağlantıyı oluşturmanız istendiğinde, şu bilgileri sağlayın:
 
-   | Özellik | Gerekli | Değer | Açıklama |
+   | Özellik | Gerekli | Değer | Description |
    |----------|----------|-------|-------------|
    | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
    | **Depolama hesabı** | Yes | <*depolama hesabı*> | Listeden depolama hesabınızı seçin. |
@@ -194,7 +194,7 @@ Microsoft 'a güvenilen hizmetlere bir güvenlik duvarı aracılığıyla bir de
 1. Mantıksal uygulamanızın iş akışında, depolama hesabına veya varlığına erişmek için HTTP eylemini veya tetikleyiciyi ekleyin ve ayarlayın.
 
    > [!IMPORTANT]
-   > Giden HTTP eylemi için veya Azure depolama hesaplarına yapılan çağrı tetiklemesi için, istek üstbilgisinin, depolama hesabında çalıştırmak `x-ms-version` istediğiniz işlem için ÖZELLIĞI ve API sürümünü içerdiğinden emin olun. Daha fazla bilgi için bkz. [Azure depolama hizmetleri için](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)yönetilen kimliğe ve sürüm oluşturmaya [erişim kimlik doğrulaması](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) .
+   > Giden HTTP eylemi için veya Azure depolama hesaplarına yapılan çağrı tetiklemesi için, istek üstbilgisinin, `x-ms-version` depolama hesabında çalıştırmak istediğiniz işlem için özelliği ve API sürümünü içerdiğinden emin olun. Daha fazla bilgi için bkz. [Azure depolama hizmetleri için](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)yönetilen kimliğe ve sürüm oluşturmaya [erişim kimlik doğrulaması](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) .
 
 1. Bu eylemde, kimlik doğrulaması için kullanılacak [yönetilen kimliği seçin](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) .
 

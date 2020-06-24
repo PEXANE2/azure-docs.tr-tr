@@ -12,24 +12,24 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083151"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887670"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN Azure Blob Storage 'ın kullanım süresini yönetme
 > [!div class="op_single_selector"]
 > * [Azure web içeriği](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Blob depolama](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob Depolama](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-Azure depolama 'daki [BLOB Storage hizmeti](../storage/common/storage-introduction.md#blob-storage) , Azure Content DELIVERY Network (CDN) ile tümleştirilmiş çeşitli Azure tabanlı kaynaklardan biridir. Herkese açık olarak erişilebilen tüm blob içerikleri, yaşam süresi (TTL) sona erene kadar Azure CDN önbelleğe alınabilir. TTL, kaynak sunucudan gelen HTTP `Cache-Control` yanıtındaki üst bilgi tarafından belirlenir. Bu makalede, `Cache-Control` Azure depolama 'daki bir bloba üst bilgisini ayarlayabileceğiniz çeşitli yollar açıklanmaktadır.
+Azure depolama 'daki [BLOB Storage hizmeti](../storage/common/storage-introduction.md#blob-storage) , Azure Content DELIVERY Network (CDN) ile tümleştirilmiş çeşitli Azure tabanlı kaynaklardan biridir. Herkese açık olarak erişilebilen tüm blob içerikleri, yaşam süresi (TTL) sona erene kadar Azure CDN önbelleğe alınabilir. TTL, `Cache-Control` kaynak sunucudan gelen HTTP yanıtındaki üst bilgi tarafından belirlenir. Bu makalede, `Cache-Control` Azure depolama 'daki bir bloba üst bilgisini ayarlayabileceğiniz çeşitli yollar açıklanmaktadır.
 
 Ayrıca, CDN önbelleğe alma kurallarını ayarlayarak Azure portal önbellek ayarlarını kontrol edebilirsiniz. Önbelleğe alma kuralı oluşturur ve önbelleği **geçersiz kılmak** veya **atlamak**için önbelleğe alma davranışını ayarlarsanız, bu makalede ele alınan kaynak tarafından belirtilen önbelleğe alma ayarları göz ardı edilir. Genel önbelleğe alma kavramları hakkında daha fazla bilgi için bkz. [önbelleğe alma nasıl kullanılır](cdn-how-caching-works.md).
 
@@ -42,7 +42,7 @@ Ayrıca, CDN önbelleğe alma kurallarını ayarlayarak Azure portal önbellek a
  
 
 ## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>CDN önbelleğe alma kurallarını kullanarak Cache-Control üst bilgilerini ayarlama
-Blob `Cache-Control` üst bilgisini ayarlamak için tercih edilen yöntem Azure Portal önbelleğe alma kurallarını kullanmaktır. CDN önbelleğe alma kuralları hakkında daha fazla bilgi için bkz. [önbelleğe alma kurallarıyla denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
+Blob üst bilgisini ayarlamak için tercih edilen yöntem `Cache-Control` Azure Portal önbelleğe alma kurallarını kullanmaktır. CDN önbelleğe alma kuralları hakkında daha fazla bilgi için bkz. [önbelleğe alma kurallarıyla denetim Azure CDN önbelleğe alma davranışı](cdn-caching-rules.md).
 
 > [!NOTE] 
 > Önbelleğe alma kuralları yalnızca Verizon **Azure CDN ve Akamai** profillerindeki standart **Azure CDN Standart** için kullanılabilir. **Verizon profillerden Azure CDN Premium** Için, **Manage** Portal içindeki [Azure CDN Rules altyapısını](cdn-rules-engine.md) benzer işlevler için kullanmanız gerekir.
@@ -68,7 +68,7 @@ Blob `Cache-Control` üst bilgisini ayarlamak için tercih edilen yöntem Azure 
 
    ![CDN genel önbelleğe alma kuralları örneği](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
-   Bu genel önbelleğe alma kuralı bir saatin önbellek süresini ayarlar ve uç noktaya yapılan tüm istekleri etkiler. Uç nokta tarafından `Cache-Control` belirtilen `Expires` kaynak sunucu tarafından gönderilen tüm veya HTTP üstbilgilerini geçersiz kılar.   
+   Bu genel önbelleğe alma kuralı bir saatin önbellek süresini ayarlar ve uç noktaya yapılan tüm istekleri etkiler. `Cache-Control` `Expires` Uç nokta tarafından belirtilen kaynak sunucu tarafından gönderilen tüm veya HTTP üstbilgilerini geçersiz kılar.   
 
 3. **Kaydet**’i seçin.
  
@@ -82,7 +82,7 @@ Blob `Cache-Control` üst bilgisini ayarlamak için tercih edilen yöntem Azure 
 
     ![CDN özel önbelleğe alma kuralları örneği](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
-    İlk özel önbelleğe alma kuralı, uç noktanız tarafından belirtilen kaynak sunucudaki `/blobcontainer1` klasördeki tüm blob dosyaları için dört saatlik bir önbellek süresi ayarlar. İkinci kural yalnızca `blob1.txt` blob dosyası için ilk kuralı geçersiz kılar ve kendisi için iki saatlik bir önbellek süresi ayarlar.
+    İlk özel önbelleğe alma kuralı, `/blobcontainer1` uç noktanız tarafından belirtilen kaynak sunucudaki klasördeki tüm blob dosyaları için dört saatlik bir önbellek süresi ayarlar. İkinci kural yalnızca blob dosyası için ilk kuralı geçersiz kılar `blob1.txt` ve kendisi için iki saatlik bir önbellek süresi ayarlar.
 
 2. **Kaydet**’i seçin.
 
@@ -91,7 +91,7 @@ Blob `Cache-Control` üst bilgisini ayarlamak için tercih edilen yöntem Azure 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) , Azure hizmetlerinizi yönetmenin en hızlı ve en güçlü yöntemlerinden biridir. Blob 'a `Get-AzStorageBlob` başvuru almak için cmdlet 'ini kullanın, sonra `.ICloudBlob.Properties.CacheControl` özelliği ayarlayın. 
+[Azure PowerShell](/powershell/azure/overview) , Azure hizmetlerinizi yönetmenin en hızlı ve en güçlü yöntemlerinden biridir. `Get-AzStorageBlob`BLOB 'a başvuru almak için cmdlet 'ini kullanın, sonra `.ICloudBlob.Properties.CacheControl` özelliği ayarlayın. 
 
 Örneğin:
 
@@ -115,7 +115,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>.NET kullanarak Cache-Control üst bilgilerini ayarlama
-.NET Code kullanarak bir Blobun `Cache-Control` üstbilgisini belirtmek Için, [Cloudblob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) özelliğini ayarlamak üzere [.NET için Azure depolama istemci kitaplığı](../storage/blobs/storage-dotnet-how-to-use-blobs.md) ' nı kullanın.
+.NET Code kullanarak bir Blobun üstbilgisini belirtmek için `Cache-Control` , [cloudblob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) özelliğini ayarlamak üzere [.net Için Azure depolama istemci kitaplığı](../storage/blobs/storage-dotnet-how-to-use-blobs.md) ' nı kullanın.
 
 Örneğin:
 
@@ -164,7 +164,7 @@ Blob 'un *CacheControl* özelliğini Azure Depolama Gezgini ile güncelleştirme
 ![Azure Depolama Gezgini özellikleri](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure Komut Satırı Arabirimi
-[Azure komut satırı arabirimi](https://docs.microsoft.com/cli/azure) (CLI) ile Azure Blob kaynaklarını komut satırından yönetebilirsiniz. Azure CLı ile bir blob yüklediğinizde Cache-Control üst bilgisini ayarlamak için, `-p` anahtarını kullanarak *cacheControl* özelliğini ayarlayın. Aşağıdaki örnek, TTL 'nin bir saate nasıl ayarlanacağını gösterir (3600 saniye):
+[Azure komut satırı arabirimi](https://docs.microsoft.com/cli/azure) (CLI) ile Azure Blob kaynaklarını komut satırından yönetebilirsiniz. Azure CLı ile bir blob yüklediğinizde Cache-Control üst bilgisini ayarlamak için, anahtarını kullanarak *cacheControl* özelliğini ayarlayın `-p` . Aşağıdaki örnek, TTL 'nin bir saate nasıl ayarlanacağını gösterir (3600 saniye):
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>

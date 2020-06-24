@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594153"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888446"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon 'dan çekirdek raporlar
 
@@ -31,7 +31,7 @@ Verizon profilleri için portalı Yönet aracılığıyla Verizon Core raporlar�
 * Aktarılan veriler
 * İsabetler
 * Önbellek durumları
-* İsabetli önbellek okuması oranı
+* Önbellek İsabet Oranı
 * Aktarılan ıPV4/ıPV6 verileri
 
 ## <a name="accessing-verizon-core-reports"></a>Verizon Core raporlarına erişme
@@ -81,7 +81,7 @@ Bu rapor, istemci istekleri için önbellek isabetlerinin ve önbellek isabetler
  * Query-String Caching, kesinlikle gerekmedikçe  
  * Önbelleklenmemiş yanıt kodları
 
-Süresi geçen önbellek isabetlerinin azaltmak için bir varlığın `max-age` , kaynak sunucuya yönelik istek sayısını en aza indirmek üzere bir süreyi uzun bir süreye ayarlayın.
+Süresi geçen önbellek isabetlerinin azaltmak için bir varlığın, `max-age` kaynak sunucuya yönelik istek sayısını en aza indirmek üzere bir süreyi uzun bir süreye ayarlayın.
 
 ![Önbellek durumları raporu](./media/cdn-reports/cdn-cache-statuses.png)
 
@@ -106,9 +106,9 @@ Süresi geçen önbellek isabetlerinin azaltmak için bir varlığın `max-age` 
 * HIÇBIRI-bu durum, önbellek içerik yeniliği denetiminin gerçekleştirilmediğini belirtir.
 * TCP_CLIENT_REFRESH_MISS: Bu durum, bir tarayıcı gibi bir HTTP istemcisi, bir uç POP 'u kaynak sunucudan eski bir varlığın yeni bir sürümünü almaya zorlarsa bildirilir. Varsayılan olarak, sunucular bir HTTP istemcisinin, kaynak sunucudan varlığın yeni bir sürümünü almasını engeller.
 * TCP_PARTIAL_HIT: Bu durum, bir bayt aralığı isteği kısmen önbelleğe alınmış bir varlık için isabet ile sonuçlanırsa bildirilir. İstenen bayt aralığı, POP 'tan istemciye anında sunulur.
-* Önbelleğe ALıNMAMıŞ: Bu durum, bir varlık `Cache-Control` ve `Expires` üstbilgiler BIR pop 'ta veya http istemcisi tarafından önbelleğe alınmamalıdır. Bu tür istekler, kaynak sunucudan sunulur.
+* Önbelleğe ALıNMAMıŞ: Bu durum, bir varlık `Cache-Control` ve `Expires` ÜSTBILGILER bir pop 'TA veya http istemcisi tarafından önbelleğe alınmamalıdır. Bu tür istekler, kaynak sunucudan sunulur.
 
-## <a name="cache-hit-ratio"></a>İsabetli önbellek okuması oranı
+## <a name="cache-hit-ratio"></a>Önbellek İsabet Oranı
 Bu rapor, doğrudan önbellekten sunulan önbelleğe alınmış isteklerin yüzdesini gösterir.
 
 Rapor aşağıdaki bilgileri sağlar:
@@ -120,7 +120,7 @@ Rapor aşağıdaki bilgileri sağlar:
 Rapor şunları içermez:
 
 * Ülke/bölge filtreleme seçenekleri nedeniyle reddedilen istekler.
-* Üst bilgileri önbelleğe alınmamalıdır olduğunu belirten varlıklar için istekler. Örneğin `Cache-Control: private` `Cache-Control: no-cache`,,, veya `Pragma: no-cache` üst bilgiler bir varlığın önbelleğe alınmasını önler.
+* Üst bilgileri önbelleğe alınmamalıdır olduğunu belirten varlıklar için istekler. Örneğin,, `Cache-Control: private` , `Cache-Control: no-cache` veya `Pragma: no-cache` üst bilgiler bir varlığın önbelleğe alınmasını önler.
 * Kısmen önbelleğe alınmış içerik için bayt aralığı istekleri.
 
 Formül: (TCP_ Isabet/(TCP_ Isabet + TCP_MISS)) * 100

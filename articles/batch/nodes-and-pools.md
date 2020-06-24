@@ -2,13 +2,13 @@
 title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/16/2020
+ms.openlocfilehash: 46c78fe1c45d2effe03008667dd424d943d75ec4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791158"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888361"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -27,6 +27,8 @@ Batch içindeki tüm işlem düğümleri ayrıca şunları içerir:
 - Standart bir [klasör yapısı](files-and-directories.md) ve görevlere göre başvurulabilen ilişkili [ortam değişkenleri](jobs-and-tasks.md).
 - Erişimi denetlemek için yapılandırılan **Güvenlik Duvarı** ayarları.
 - Hem Windows (Uzak Masaüstü Protokolü (RDP)) hem de Linux (Güvenli Kabuk (SSH)) düğümlerine [uzaktan erişim](error-handling.md#connect-to-compute-nodes).
+
+Varsayılan olarak, düğümler birbirleriyle iletişim kurabilir, ancak aynı havuzun parçası olmayan sanal makinelerle iletişim kuramaz. Düğümlerin diğer sanal makinelerle veya şirket içi bir ağla güvenli bir şekilde iletişim kurmasına izin vermek için, havuzu [bir Azure sanal ağı (VNet) alt ağında](batch-virtual-network.md)sağlayabilirsiniz. Bunu yaptığınızda, düğümlerine genel IP adreslerinden erişebilirsiniz. Bu genel IP adresleri Batch tarafından oluşturulur ve havuzun ömrü boyunca değişebilir. Ayrıca, denetlediğiniz [statik genel IP adreslerine sahip bir havuz oluşturabilir](create-pool-public-ip.md) ve bu sayede beklenmedik şekilde değişmemesini sağlayabilirsiniz.
 
 ## <a name="pools"></a>Havuzlar
 
@@ -162,13 +164,16 @@ Uygulama paketlerini kullanarak uygulamalarınızı Batch düğümlerine dağıt
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>Sanal ağ ve güvenlik duvarı yapılandırması
 
-Batch'te işlem düğümlerinden oluşan bir havuz sağladığınızda, havuzu bir Azure [sanal ağının](../virtual-network/virtual-networks-overview.md) alt ağı ile ilişkilendirebilirsiniz. Azure sanal ağı kullanmak için Batch istemci API'sinin Azure Active Directory (AD) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir.  
+Batch'te işlem düğümlerinden oluşan bir havuz sağladığınızda, havuzu bir Azure [sanal ağının](../virtual-network/virtual-networks-overview.md) alt ağı ile ilişkilendirebilirsiniz. Azure sanal ağı kullanmak için Batch istemci API'sinin Azure Active Directory (AD) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir.
 
 ### <a name="vnet-requirements"></a>Sanal ağ gereksinimleri
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 Bir sanal ağda Batch havuzu oluşturma hakkında daha fazla bilgi için bkz. [Sanal ağınızda sanal makine havuzu oluşturma](batch-virtual-network.md).
+
+> [!TIP]
+> Düğümlere erişmek için kullanılan genel IP adreslerinin değişmemesini sağlamak için, [denetlediğiniz belirtilen genel IP adreslerine sahip bir havuz oluşturabilirsiniz](create-pool-public-ip.md).
 
 ## <a name="pool-and-compute-node-lifetime"></a>Havuz ve işlem düğümü ömrü
 

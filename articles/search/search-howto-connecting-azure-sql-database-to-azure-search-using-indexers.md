@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9279622ee54a9fdaa6617cfe2758cfb563fdbffa
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74113313"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080598"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL veritabanı içeriğine bağlanma ve dizin oluşturma
 
@@ -74,7 +74,7 @@ Verilerinize ilişkin çeşitli faktörlere bağlı olarak, Azure SQL Indexer ku
     }
    ```
 
-   Bağlantı dizesini [Azure Portal](https://portal.azure.com)alabilir; `ADO.NET connection string` seçeneğini kullanın.
+   Bağlantı dizesini [Azure Portal](https://portal.azure.com)alabilir; seçeneğini kullanın `ADO.NET connection string` .
 
 2. Henüz bir tane yoksa hedef Azure Bilişsel Arama dizinini oluşturun. [Portalı](https://portal.azure.com) veya [create INDEX API 'yi](https://docs.microsoft.com/rest/api/searchservice/Create-Index)kullanarak bir dizin oluşturabilirsiniz. Hedef dizininizin şemasının kaynak tablonun şemasıyla uyumlu olduğundan emin olun- [SQL ve Azure bilişsel arama veri türleri arasındaki eşlemeyi](#TypeMapping)inceleyin.
 
@@ -140,7 +140,7 @@ Yanıt aşağıdakine benzer görünmelidir:
     }
 
 Yürütme geçmişi, geriye doğru kronolojik düzende sıralanan en son tamamlanan yürütmelerin 50 ' i içerir (yani en son yürütmenin yanıtta ilk olarak olması gerekir).
-Yanıtla ilgili ek bilgiler, [Dizin Oluşturucu durumunu Al](https://go.microsoft.com/fwlink/p/?LinkId=528198) bölümünde bulunabilir
+Yanıtla ilgili ek bilgiler, [Dizin Oluşturucu durumunu Al](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) bölümünde bulunabilir
 
 ## <a name="run-indexers-on-a-schedule"></a>Dizin Oluşturucuyu bir zamanlamaya göre Çalıştır
 Dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şekilde de düzenleyebilirsiniz. Bunu yapmak için, Dizin oluşturucuyu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin. Aşağıdaki örnekte, Dizin oluşturucuyu güncellemek için bir PUT isteği gösterilmektedir:
@@ -155,7 +155,7 @@ Dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şe
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))`. Örnekler: `PT15M` her 2 saat `PT2H` için 15 dakikada bir.
+**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))` . Örnekler: her `PT15M` `PT2H` 2 saat için 15 dakikada bir.
 
 Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
 
@@ -232,7 +232,28 @@ Yüksek bir su işareti İlkesi kullanmak için veri kaynağınızı şu şekild
 >
 >
 
-Zaman aşımı hatalarıyla karşılaşırsanız, sorgu zaman aşımını varsayılan 5 `queryTimeout` dakikalık zaman aşımından daha yüksek bir değere ayarlamak için Dizin Oluşturucu yapılandırma ayarını kullanabilirsiniz. Örneğin, zaman aşımını 10 dakika olarak ayarlamak için aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
+<a name="convertHighWaterMarkToRowVersion"></a>
+
+##### <a name="converthighwatermarktorowversion"></a>Converthighsulu Marktorowversion
+
+Yüksek su işareti sütunu için [ROWVERSION](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) veri türü kullanıyorsanız, `convertHighWaterMarkToRowVersion` Dizin Oluşturucu yapılandırma ayarını kullanmayı göz önünde bulundurun. `convertHighWaterMarkToRowVersion`iki şey vardır:
+
+* Dizin Oluşturucu SQL sorgusunda yüksek su işareti sütunu için ROWVERSION veri türünü kullanın. Doğru veri türünü kullanmak Dizin Oluşturucu sorgu performansını geliştirir.
+* Dizin Oluşturucu sorgusunun çalışması için rowversion değerinden 1 çıkarın. 1 ' den fazla birleştirmelere sahip görünümlerde Yinelenen rowversion değeri olan satırlar bulunabilir. 1 çıkarma, Dizin Oluşturucu sorgusunun bu satırları kaçırmamasını sağlar.
+
+Bu özelliği etkinleştirmek için aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
+
+    {
+      ... other indexer definition properties
+     "parameters" : {
+            "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
+    }
+
+<a name="queryTimeout"></a>
+
+##### <a name="querytimeout"></a>queryTimeout
+
+Zaman aşımı hatalarıyla karşılaşırsanız, `queryTimeout` sorgu zaman aşımını varsayılan 5 dakikalık zaman aşımından daha yüksek bir değere ayarlamak için Dizin Oluşturucu yapılandırma ayarını kullanabilirsiniz. Örneğin, zaman aşımını 10 dakika olarak ayarlamak için aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
 
     {
       ... other indexer definition properties
@@ -240,7 +261,11 @@ Zaman aşımı hatalarıyla karşılaşırsanız, sorgu zaman aşımını varsay
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-`ORDER BY [High Water Mark Column]` Yan tümcesini de devre dışı bırakabilirsiniz. Ancak, Dizin Oluşturucu yürütmesi bir hata tarafından kesintiye uğrarsa, dizin oluşturucunun daha sonra çalıştırıldığında tüm satırları yeniden işlemesi gerekir, çünkü Dizin Oluşturucu, neredeyse tüm satırları yarıda kesilen zamana göre zaten işledi. `ORDER BY` Yan tümcesini devre dışı bırakmak için Dizin `disableOrderByHighWaterMarkColumn` Oluşturucu tanımındaki ayarı kullanın:  
+<a name="disableOrderByHighWaterMarkColumn"></a>
+
+##### <a name="disableorderbyhighwatermarkcolumn"></a>disableOrderByHighWaterMarkColumn
+
+Yan tümcesini de devre dışı bırakabilirsiniz `ORDER BY [High Water Mark Column]` . Ancak, Dizin Oluşturucu yürütmesi bir hata tarafından kesintiye uğrarsa, dizin oluşturucunun daha sonra çalıştırıldığında tüm satırları yeniden işlemesi gerekir, çünkü Dizin Oluşturucu, neredeyse tüm satırları yarıda kesilen zamana göre zaten işledi. Yan tümcesini devre dışı bırakmak için `ORDER BY` `disableOrderByHighWaterMarkColumn` Dizin Oluşturucu tanımındaki ayarı kullanın:  
 
     {
      ... other indexer definition properties
@@ -264,7 +289,7 @@ Geçici silme tekniği kullanılırken, veri kaynağını oluştururken veya gü
         }
     }
 
-**SoftDeleteMarkerValue** bir dize olmalıdır: gerçek değer ' in dize gösterimini kullanın. Örneğin, silinen satırları 1 değeri ile işaretlenmiş bir tamsayı sütununuz varsa kullanın `"1"`. Silinen satırların, Boolean true değeri ile işaretlenmiş bir BIT sütununuz varsa, değişmez değer `True` veya `true`dize kullanın, büyük/küçük harf kullanmayın.
+**SoftDeleteMarkerValue** bir dize olmalıdır: gerçek değer ' in dize gösterimini kullanın. Örneğin, silinen satırları 1 değeri ile işaretlenmiş bir tamsayı sütununuz varsa kullanın `"1"` . Silinen satırların, Boolean true değeri ile işaretlenmiş bir BIT sütununuz varsa, değişmez değer veya dize kullanın `True` `true` , büyük/küçük harf kullanmayın.
 
 <a name="TypeMapping"></a>
 
@@ -291,7 +316,7 @@ SQL Indexer çeşitli yapılandırma ayarları sunar:
 | queryTimeout |string |SQL sorgu yürütmesi için zaman aşımını ayarlar |5 dakika ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |bool |Yüksek su işareti ilkesi tarafından kullanılan SQL sorgusunun ORDER BY yan tümcesini yok saymasına neden olur. Bkz. [yüksek su işareti ilkesi](#HighWaterMarkPolicy) |yanlış |
 
-Bu ayarlar, Dizin Oluşturucu tanımındaki `parameters.configuration` nesnesinde kullanılır. Örneğin, sorgu zaman aşımını 10 dakika olarak ayarlamak için, aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
+Bu ayarlar, `parameters.configuration` Dizin Oluşturucu tanımındaki nesnesinde kullanılır. Örneğin, sorgu zaman aşımını 10 dakika olarak ayarlamak için, aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
 
     {
       ... other indexer definition properties
@@ -329,7 +354,7 @@ Artımlı dizin oluşturma için Azure Bilişsel Arama iki değişiklik algılam
 
 Salt okuma çoğaltmalarda SQL veritabanı tümleşik değişiklik izlemeyi desteklemez. Bu nedenle, yüksek su Işareti ilkesi kullanmanız gerekir. 
 
-Standart önerimiz, yüksek su işareti sütunu için ROWVERSION veri türünü kullanmaktır. Ancak, rowversion 'ın `MIN_ACTIVE_ROWVERSION` kullanılması SQL veritabanının işlevini kullanır ve bu, salt okunurdur çoğaltmalar üzerinde desteklenmez. Bu nedenle, rowversion kullanıyorsanız Dizin oluşturucuyu birincil çoğaltmaya işaret etmeniz gerekir.
+Standart önerimiz, yüksek su işareti sütunu için ROWVERSION veri türünü kullanmaktır. Ancak, rowversion 'ın kullanılması SQL veritabanının işlevini kullanır `MIN_ACTIVE_ROWVERSION` ve bu, salt okunurdur çoğaltmalar üzerinde desteklenmez. Bu nedenle, rowversion kullanıyorsanız Dizin oluşturucuyu birincil çoğaltmaya işaret etmeniz gerekir.
 
 Bir salt okuma çoğaltmasında ROWVERSION kullanmaya çalışırsanız aşağıdaki hatayı görürsünüz: 
 

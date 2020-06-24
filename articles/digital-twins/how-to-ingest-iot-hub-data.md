@@ -1,5 +1,5 @@
 ---
-title: IoT Hub 'tan alma telemetrisi
+title: IoT Hub’dan telemetri alma
 titleSuffix: Azure Digital Twins
 description: IoT Hub cihaz telemetri iletilerini alma bölümüne bakın.
 author: cschormann
@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 4d2b849df7371815a120e59cfff3d8bc7596b1ed
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612820"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725860"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure dijital TWINS 'e alma IoT Hub telemetrisi
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS, IoT cihazlarından ve diğer kaynaklardaki verilerle birlikte çalıştırılır. Azure dijital TWINS 'te kullanılacak cihaz verileri için ortak bir kaynak [IoT Hub](../iot-hub/about-iot-hub.md).
 
@@ -38,7 +41,7 @@ Bu senaryo aşağıdaki diyagramda özetlenmiştir:
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="IoT Hub cihaz, Azure Digital TWINS 'te ikizlerini üzerinde bir sıcaklık özelliğini güncelleştiren bir Azure işlevine IoT Hub, Event Grid veya sistem konuları aracılığıyla sıcaklık telemetri gönderir." border="false":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneğe devam etmeden önce, aşağıdaki önkoşulları gerçekleştirmeniz gerekir.
 1. IoT Hub 'ı oluşturun. Yönergeler için [bu IoT Hub hızlı başlangıç](../iot-hub/quickstart-send-telemetry-cli.md) konusunun *IoT Hub oluşturma* bölümüne bakın.

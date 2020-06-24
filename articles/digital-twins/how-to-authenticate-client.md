@@ -1,5 +1,5 @@
 ---
-title: İstemci uygulamasının kimliğini doğrulama
+title: Bir istemci uygulamasının kimliğini doğrulama
 titleSuffix: Azure Digital Twins
 description: Bkz. Azure dijital TWINS hizmetinde istemci uygulamasının kimliğini doğrulama.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8390ed8777c2c15940bef5838890e49396404052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 89de2e86e425e2c585f9a1243f6666a0ae077c10
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613274"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726165"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Azure dijital TWINS ile istemci uygulamanın kimliğini doğrulama
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 [Bir Azure dijital TWINS örneği](how-to-set-up-instance.md)oluşturduktan sonra, örnekle etkileşim kurmak için kullanacağınız bir istemci uygulaması oluşturabilirsiniz. Bir başlatıcı istemci projesi ayarladıktan sonra bu makalede, istemci uygulamasının Azure dijital TWINS örneğiyle nasıl doğru şekilde doğrulanabilmesi gösterilmektedir.
 
@@ -44,7 +47,7 @@ Bir uygulama kaydı oluşturmak için Azure dijital TWINS API 'Leri için kaynak
 }]
 ``` 
 
-Bu dosyayı *manifest. JSON*olarak kaydedin.
+Bu dosyayı *manifest.js*olarak kaydedin.
 
 > [!NOTE] 
 > `https://digitaltwins.azure.net`GUID yerine, Azure Digital TWINS kaynak uygulama kimliği için "kolay ve" insan tarafından okunabilen bir dizenin kullanılabileceği bazı konumlar vardır `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . Örneğin, bu belge genelinde birçok örnek, MSAL kitaplığı ile kimlik doğrulaması kullanır ve kolay dize bu şekilde kullanılabilir. Ancak, uygulama kaydını oluşturma adımında, KIMLIğIN GUID biçimi yukarıda gösterildiği gibi gereklidir. 
@@ -52,7 +55,7 @@ Bu dosyayı *manifest. JSON*olarak kaydedin.
 Cloud Shell pencerenizde, "dosyaları karşıya yükle/Indir" simgesine tıklayın ve "karşıya yükle" yi seçin.
 
 :::image type="content" source="media/how-to-authenticate-client/upload-extension.png" alt-text="Karşıya yükleme seçeneğinin seçimini gösteren Cloud Shell pencere":::
-Yeni oluşturduğunuz *manifest. JSON* öğesine gidin ve "Aç" düğmesine basın.
+Yeni oluşturduğunuz *manifest.js* gidin ve "Aç" düğmesine basın.
 
 Ardından, bir uygulama kaydı oluşturmak için aşağıdaki komutu çalıştırın (yer tutucuları gerektiği gibi değiştirin):
 
@@ -85,7 +88,7 @@ Bu genel bakışta, listeden yeni oluşturduğunuz uygulama kaydını seçin. Bu
 Bu bölümde, .NET (C#) SDK 'SıNı kullanarak kimlik doğrulama işlemini tamamlayabilmeniz için istemci uygulamanıza eklemeniz gereken kod açıklanmaktadır.
 Azure Digital TWINS C# SDK 'Sı, .NET için Azure SDK 'sının bir parçasıdır. Burada bulunur: [.net Için Azure IoT Digital ikizi istemci kitaplığı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Zaten ayarlanmış bir başlatıcı istemci uygulama projeniz yoksa, bu öğreticide kullanmak üzere temel bir .NET projesi oluşturun.
 
@@ -159,7 +162,7 @@ Ayrıca, bir işlevde kimlik doğrulamasını kullanmak için şunları unutmay�
 
 Bu bölümde, bu durumda nasıl kimlik doğrulaması yapılacağı açıklanmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bu örnek, oto Rest ile oluşturulan bir TypeScript SDK kullanır. Sonuç olarak, ayrıca şunları gerektirir:
 * [msal-js](https://github.com/AzureAD/microsoft-authentication-library-for-js)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 40352b7ae1f3fb6b1178f2dfe70cdca9871c76b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d18258d62267c931a39947611dda038ff6e65205
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603777"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718708"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Azure Güvenlik Merkezi ile güvenlik duruşunuzu güçlendirme
 Bu makale, güvenlik duruşunuzu güçlendirmenize yardımcı olur. Azure Güvenlik Merkezi 'ndeki izleme yeteneklerini kullanarak kaynak güvenliği mümkün olduğunca sıkı olduğundan ve ilkelerle uyumluluğu izlediğinizden emin olun.
@@ -34,7 +34,7 @@ Kaynaklarınızın güvenlik durumunu ve kaynak türü başına tüm sorunları 
 - Sanal makineler, ağ güvenlik grupları ve uç noktaları gibi ağ kaynaklarınızı izlemek ve güvenliğini iyileştirmeye yönelik öneriler almak için bkz. daha fazla bilgi için [Azure Güvenlik Merkezi 'nde ağınızı koruma](security-center-network-recommendations.md) . 
 - Verilerinizi ve depolama kaynaklarınızı SQL Server 'lar ve depolama hesapları gibi izlemek ve bunların güvenliğini iyileştirmeye yönelik öneriler almak için bkz. daha fazla bilgi için bkz. Azure [Güvenlik Merkezi 'Nde Azure SQL hizmetini ve verilerini koruma](security-center-sql-service-recommendations.md) . 
 - MFA ve hesap izinleri dahil olmak üzere kimliğinizi ve erişim kaynaklarını izlemek ve güvenliğini iyileştirmeye yönelik öneriler almak için bkz. daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](security-center-identity-access.md) . 
-- Kaynaklarınıza tam zamanında erişimi izlemek için bkz. daha fazla bilgi için [tam zamanında sanal makine erişimini yönetme](security-center-just-in-time.md) . 
+- Kaynaklarınıza tam zamanında erişimi izlemek için bkz. daha fazla bilgi için [tam zamanında sanal makine erişimini yönetme](security-center-just-in-time.md) .
 
 
 Önerileri uygulama hakkında daha fazla bilgi için [Azure Güvenlik Merkezi'nde güvenlik önerilerini uygulama](security-center-recommendations.md)'yı okuyun.

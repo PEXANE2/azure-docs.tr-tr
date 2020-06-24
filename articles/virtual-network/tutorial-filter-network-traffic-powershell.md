@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b941b81feb54ae6eed0333a9dcb4863cc885686
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66730029"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688146"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>PowerShell kullanarak ağ trafiğini ağ güvenlik grubuyla filtreleme
 
@@ -277,7 +277,7 @@ PowerShell’den *myVmWeb* sanal makinesine Microsoft IIS yüklemek için aşağ
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-IIS yüklemesi tamamlandıktan sonra *myVmWeb* sanal makinesinin bağlantısını kesmeniz durumunda *myVmMgmt* VM uzak masaüstü bağlantısında kalırsınız. IIS karşılama ekranını görüntülemek için bir internet tarayıcısı açın ve http:\//Myvmwebadresine gidin.
+IIS yüklemesi tamamlandıktan sonra *myVmWeb* sanal makinesinin bağlantısını kesmeniz durumunda *myVmMgmt* VM uzak masaüstü bağlantısında kalırsınız. IIS karşılama ekranını görüntülemek için bir internet tarayıcısı açın ve http: \/ /Myvmwebadresine gidin.
 
 *myVmMgmt* sanal makinesiyle bağlantıyı kesin.
 

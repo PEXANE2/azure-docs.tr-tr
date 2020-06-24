@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aae9b282c22b405eeebc2719e377a3091fc9d12e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840784"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724959"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Azure CLı kullanarak sanal makine güvenliğine güvenlik grubu görünümü ile çözümleyin
 
@@ -40,13 +40,13 @@ Bu makalede ele alınan senaryo, belirli bir sanal makine için yapılandırılm
 
 ## <a name="get-a-vm"></a>VM al
 
-`vm list` Cmdlet 'ini çalıştırmak için bir sanal makine gerekir. Aşağıdaki komut bir kaynak grubundaki sanal makineleri listeler:
+Cmdlet 'ini çalıştırmak için bir sanal makine gerekir `vm list` . Aşağıdaki komut bir kaynak grubundaki sanal makineleri listeler:
 
 ```azurecli
 az vm list -resource-group resourceGroupName
 ```
 
-Sanal makineyi öğrendikten sonra, kaynak kimliğini almak için `vm show` cmdlet 'ini kullanabilirsiniz:
+Sanal makineyi öğrendikten sonra, `vm show` kaynak kimliğini almak için cmdlet 'ini kullanabilirsiniz:
 
 ```azurecli
 az vm show -resource-group resourceGroupName -name virtualMachineName

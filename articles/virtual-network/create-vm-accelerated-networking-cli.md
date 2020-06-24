@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 54c4a673e654a0244183a84ffa841d553ae6db51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106262"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688629"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLı kullanarak hızlandırılmış ağ ile Linux sanal makinesi oluşturma
 
@@ -158,7 +158,7 @@ az network nic create \
 ```
 
 ### <a name="create-a-vm-and-attach-the-nic"></a>VM oluşturma ve NIC 'yi iliştirme
-VM oluştururken, ile `--nics`oluşturduğunuz NIC 'i belirtin. [Linux hızlandırılmış ağlarda](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)listelenen bir boyut ve dağıtım seçin. 
+VM oluştururken, ile oluşturduğunuz NIC 'i belirtin `--nics` . [Linux hızlandırılmış ağlarda](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)listelenen bir boyut ve dağıtım seçin. 
 
 [az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, UbuntuLTS görüntüsü ile *Myvm* ADLı bir VM ve hızlandırılmış ağı destekleyen bir boyut oluşturur (*Standard_DS4_v2*):
 
@@ -192,13 +192,13 @@ VM oluşturulduktan sonra aşağıdaki örnek çıktıya benzer bir çıktı dö
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>Hızlandırılmış ağ özelliğinin etkin olduğunu onaylayın
 
-Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. Oluşturduğunuz `<your-public-ip-address>` sanal makineye atanan genel IP adresiyle DEĞIŞTIRIN ve VM oluştururken farklı bir değer `--admin-username` kullandıysanız *azureuser* değiştirin.
+Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. `<your-public-ip-address>`Oluşturduğunuz sanal makineye atanan genel IP adresiyle değiştirin ve VM oluştururken farklı bir değer kullandıysanız *azureuser* değiştirin `--admin-username` .
 
 ```bash
 ssh azureuser@<your-public-ip-address>
 ```
 
-Bash kabuğundan, çekirdek sürümünün `uname -r` aşağıdaki sürümlerden biri veya daha fazlası olduğunu girin ve onaylayın:
+Bash kabuğundan, `uname -r` çekirdek sürümünün aşağıdaki sürümlerden biri veya daha fazlası olduğunu girin ve onaylayın:
 
 * **Ubuntu 16,04**: 4.11.0-1013
 * **SLES SP3**: 4.4.92-6.18
@@ -206,7 +206,7 @@ Bash kabuğundan, çekirdek sürümünün `uname -r` aşağıdaki sürümlerden 
 * **CentOS**: 7.4.20171206
 
 
-Mellanox VF cihazının VM 'ye `lspci` komutuyla açık olduğunu doğrulayın. Döndürülen çıkış aşağıdaki çıktıya benzer:
+Mellanox VF cihazının VM 'ye komutuyla açık olduğunu doğrulayın `lspci` . Döndürülen çıkış aşağıdaki çıktıya benzer:
 
 ```output
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
@@ -217,7 +217,7 @@ Mellanox VF cihazının VM 'ye `lspci` komutuyla açık olduğunu doğrulayın. 
 0001:00:02.0 Ethernet controller: Mellanox Technologies MT27500/MT27520 Family [ConnectX-3/ConnectX-3 Pro Virtual Function]
 ```
 
-`ethtool -S eth0 | grep vf_` Komutuyla VF (sanal işlev) üzerindeki etkinliği denetleyin. Aşağıdaki örnek çıktıya benzer bir çıktı alırsanız, hızlandırılmış ağ etkinleştirilir ve çalışır.
+Komutuyla VF (sanal işlev) üzerindeki etkinliği denetleyin `ethtool -S eth0 | grep vf_` . Aşağıdaki örnek çıktıya benzer bir çıktı alırsanız, hızlandırılmış ağ etkinleştirilir ve çalışır.
 
 ```output
 vf_rx_packets: 992956

@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/18/2020
-ms.openlocfilehash: 3098ca0d3d5e41c298d3058ffa84fcf129648281
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399480"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730162"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak, LastModifiedDate tabanlı yeni ve değiştirilmiş dosyaları artımlı olarak kopyalama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, bir veri fabrikası oluşturmak için Azure portal kullanacaksınız. Daha sonra, Azure Blob depolama 'dan Azure Blob depolama alanına yalnızca yeni ve değiştirilen dosyaları artımlı olarak kopyalayan bir işlem hattı oluşturmak için Veri Kopyalama aracını kullanacaksınız. Hangi dosyaların `LastModifiedDate` kopyalanacağını belirleyen tarafından kullanılır.
+Bu öğreticide, bir veri fabrikası oluşturmak için Azure portal kullanacaksınız. Daha sonra, Azure Blob depolama 'dan Azure Blob depolama alanına yalnızca yeni ve değiştirilen dosyaları artımlı olarak kopyalayan bir işlem hattı oluşturmak için Veri Kopyalama aracını kullanacaksınız. `LastModifiedDate`Hangi dosyaların kopyalanacağını belirleyen tarafından kullanılır.
 
-Buradaki adımları tamamladıktan sonra Azure Data Factory, kaynak depodaki tüm dosyaları tarar, dosya filtresini `LastModifiedDate`' a uygular ve yalnızca yeni veya son zamandan bu yana güncelleştirilmiş olan dosyaları hedef depoya kopyalar. Data Factory çok sayıda dosyayı taradığında, hala uzun süreleri beklediğinizi unutmayın. Dosya tarama zaman alıcı, ancak kopyalanmış veri miktarı azalır.
+Buradaki adımları tamamladıktan sonra Azure Data Factory, kaynak depodaki tüm dosyaları tarar, dosya filtresini ' a uygular `LastModifiedDate` ve yalnızca yeni veya son zamandan bu yana güncelleştirilmiş olan dosyaları hedef depoya kopyalar. Data Factory çok sayıda dosyayı taradığında, hala uzun süreleri beklediğinizi unutmayın. Dosya tarama zaman alıcı, ancak kopyalanmış veri miktarı azalır.
 
 > [!NOTE]
 > İlk kez Data Factory kullanıyorsanız bkz. [Azure Data Factory'ye giriş](introduction.md).
@@ -52,7 +52,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol bölmede **Kaynak oluştur**'u seçin. **Analiz** > **Data Factory**seçin:
+1. Sol bölmede **Kaynak oluştur**'u seçin. **Analiz**  >  **Data Factory**seçin:
 
    ![Data Factory seçin](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -74,7 +74,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
 5. **Sürüm** bölümünde **V2**'yi seçin.
 6. **Konum**bölümünde veri fabrikasının konumunu seçin. Listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanızın kullandığı veri depoları (örneğin, Azure depolama ve Azure SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
-8. **Oluştur**’u seçin.
+8. **Oluştur**'u seçin.
 9. Data Factory oluşturulduktan sonra Data Factory giriş sayfası görüntülenir.
 10. Azure Data Factory Kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **yazar & izleyici** kutucuğunu seçin:
 
@@ -150,7 +150,7 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
 10. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. Uygulama **izleyici** sekmesine geçer. İşlem hattının durumunu görürsünüz. Listeyi yenilemek için **Yenile**’yi seçin. Etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** altındaki bağlantıyı seçin.
 
-    ![Listeyi yenile ve etkinlik çalıştırma ayrıntılarını görüntüle](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![Listeyi yenile ve etkinlik çalıştırma ayrıntılarını görüntüle](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
 11. İşlem hattında yalnızca bir etkinlik (kopyalama etkinliği) bulunur, bu nedenle yalnızca bir giriş görürsünüz. Kopyalama işlemiyle ilgili ayrıntılar için **etkınlık adı** sütunundaki **Ayrıntılar** bağlantısını (gözlük simgesi) seçin. Özellikler hakkında daha fazla bilgi için bkz. [kopyalama etkinliğine genel bakış](copy-activity-overview.md).
 
@@ -160,23 +160,21 @@ Aşağıdaki adımları tamamlayarak BLOB depolama alanınızı öğreticiye haz
 
     ![Kaynak kapsayıcısında veya hedef kapsayıcıda dosya yok](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. Boş bir metin dosyası oluşturun ve **FILE1. txt**olarak adlandırın. Bu metin dosyasını Depolama hesabınızdaki kaynak kapsayıcıya yükleyin. [Azure Depolama Gezgini](https://storageexplorer.com/)gibi bu görevleri gerçekleştirmek için çeşitli araçları kullanabilirsiniz.
+12. Boş bir metin dosyası oluşturun ve **file1.txt**adlandırın. Bu metin dosyasını Depolama hesabınızdaki kaynak kapsayıcıya yükleyin. [Azure Depolama Gezgini](https://storageexplorer.com/)gibi bu görevleri gerçekleştirmek için çeşitli araçları kullanabilirsiniz.
 
-    ![FILE1. txt oluşturun ve kaynak kapsayıcıya yükleyin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    ![file1.txt oluşturun ve kaynak kapsayıcıya yükleyin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
 13. İşlem hattı **çalıştırmaları** görünümüne geri dönmek için **tüm işlem hattı çalıştırmaları**' nı seçin ve aynı işlem hattının yeniden otomatik olarak tetiklenmesi için bekleyin.  
 
-    ![Tüm işlem hattı çalıştırmalarını seçin](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
-
 14. İkinci işlem hattı çalıştırıldığında, etkinliğin çalışma ayrıntılarını gözden geçirmek için yukarıda bahsedilen adımların aynısını izleyin.  
 
-    Kaynak kapsayıcıdan BLOB depolama hesabınızın hedef kapsayıcısına bir dosya (FILE1. txt) kopyalandığını görürsünüz:
+    Kaynak kapsayıcısından BLOB depolama hesabınızın hedef kapsayıcısına bir dosya (file1.txt) kopyalandığını görürsünüz:
 
-    ![FILE1. txt, kaynak kapsayıcıdan hedef kapsayıcıya kopyalanmış](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    ![file1.txt, kaynak kapsayıcıdan hedef kapsayıcıya kopyalanmış](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
 
-15. Başka bir boş metin dosyası oluşturun ve **dosya2. txt**olarak adlandırın. Bu metin dosyasını Blob Depolama hesabınızdaki kaynak kapsayıcıya yükleyin.
+15. Başka bir boş metin dosyası oluşturun ve **file2.txt**adlandırın. Bu metin dosyasını Blob Depolama hesabınızdaki kaynak kapsayıcıya yükleyin.
 
-16. İkinci metin dosyası için 13. ve 14. adımları yineleyin. Bu işlem hattı çalıştırıldığında, kaynak kapsayıcıdan yalnızca yeni dosyanın (dosya2. txt) depolama hesabınızın hedef kapsayıcısına kopyalandığını görürsünüz.  
+16. İkinci metin dosyası için 13. ve 14. adımları yineleyin. Bu işlem hattı çalıştırıldığında, kaynak kapsayıcıdan yalnızca yeni dosyanın (file2.txt) depolama hesabınızın hedef kapsayıcısına kopyalandığını görürsünüz.  
 
     Ayrıca, dosyaları taramak için [Azure Depolama Gezgini](https://storageexplorer.com/) kullanarak yalnızca bir dosyanın kopyalandığından emin olabilirsiniz:
 

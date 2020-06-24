@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251017"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712437"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Gelişmiş Media Encoder Premium Workflow öğreticileri
 ## <a name="overview"></a>Genel Bakış
@@ -761,7 +761,7 @@ Bu, normal dize işleme işlemleri aracılığıyla yapılır. Sonuç olarak de�
 
 *Elde edilen klip listesini günlüğe kaydetme*
 
-Video ve ses akışlarının nasıl kırpılacağını görmek için bir test çalıştırması yapın. Kırpma noktaları için farklı değerlerle birden fazla test çalıştırması yapacaksınız, ancak bunların hesaba alınmayacak olduğunu fark edeceksiniz. Bunun nedeni, tasarımcının Azure çalışma zamanının aksine, her çalıştırma için cliplist XML 'i geçersiz kılmaz. Diğer bir deyişle, yalnızca ilk kez ın ve çıkan noktaları ayarladığınızda, XML 'in diğer tüm zamanımızın (yani (`clipListXML.indexOf("<trim>") == -1`)) aynı anda bir tane varsa, iş akışının başka bir kırpma öğesi eklemesini önleyemeyeceği anlamına gelir.
+Video ve ses akışlarının nasıl kırpılacağını görmek için bir test çalıştırması yapın. Kırpma noktaları için farklı değerlerle birden fazla test çalıştırması yapacaksınız, ancak bunların hesaba alınmayacak olduğunu fark edeceksiniz. Bunun nedeni, tasarımcının Azure çalışma zamanının aksine, her çalıştırma için cliplist XML 'i geçersiz kılmaz. Diğer bir deyişle, yalnızca ilk kez ın ve çıkan noktaları ayarladığınızda, XML 'in diğer tüm zamanımızın (yani ( `clipListXML.indexOf("<trim>") == -1` )) aynı anda bir tane varsa, iş akışının başka bir kırpma öğesi eklemesini önleyemeyeceği anlamına gelir.
 
 İş akışınızı yerel olarak test etmek için uygun hale getirmek üzere, bir kırpma öğesi zaten mevcut olup olmadığını inceleyerek en iyi şekilde bir düzenleyici kodu ekleyeceğiz. Varsa, XML 'yi yeni değerlerle değiştirerek devam etmeden önce bunu kaldırabiliriz. Düz dize işlemeleri kullanmak yerine, bunu gerçek XML nesne modeli ayrıştırması aracılığıyla yapmak daha güvenlidir.
 
@@ -955,5 +955,5 @@ Aşağıdaki basit Guard yan tümcesiyle, kırpmaya ihtiyaç olup olmadığını
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

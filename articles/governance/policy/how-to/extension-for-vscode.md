@@ -1,14 +1,14 @@
 ---
 title: Visual Studio Code için Azure Ilke uzantısı
 description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Kaynak Yöneticisi diğer adları arama hakkında bilgi edinin.
-ms.date: 03/07/2020
+ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94d865e4a810fbebd8495153f97f9d1e3227e8af
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182574"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888501"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
@@ -34,7 +34,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 1. Visual Studio Code'u açın.
 
-1. Menü çubuğunda,**uzantıları** **görüntüle** > ' ye gidin.
+1. Menü çubuğunda, uzantıları **görüntüle**' ye gidin  >  **Extensions**.
 
 1. Arama kutusuna **Azure ilkesi**' ni girin.
 
@@ -68,7 +68,7 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
    - Komut paleti
 
-     Menü çubuğundan **Görünüm** > **komut paleti**' ne gidin ve **Azure: oturum aç**' ı girin.
+     Menü çubuğundan **Görünüm**  >  **komut paleti**' ne gidin ve **Azure: oturum aç**' ı girin.
 
      :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Komut paletinden Visual Studio Code için Azure bulutu oturum açma" border="false":::
 
@@ -82,11 +82,11 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
    - Komut paleti: 
 
-     Menü çubuğundan, **görüntüleme** > **komut paleti**' ne gidin ve **Azure: abonelikleri Seç**' i girin.
+     Menü çubuğundan, **görüntüleme**  >  **komut paleti**' ne gidin ve **Azure: abonelikleri Seç**' i girin.
 
    - Pencere altbilgisi
 
-     Ekranın alt kısmındaki pencere altbilgisinde, Azure ile eşleşen segmenti seçin **: \<hesabınız\>**.
+     Ekranın alt kısmındaki pencere altbilgisinde, Azure ile eşleşen segmenti seçin **: \<your account\> **.
 
 1. Abonelik adına göre hızlı bir şekilde bulmak için filtre kutusunu kullanın. Ardından, Azure Ilke uzantısı tarafından gösterilen abonelikleri ayarlamak için her bir aboneliğin denetimini denetleyin veya kaldırın. Görüntülenecek abonelikleri ekleme veya kaldırma bittiğinde **Tamam**' ı seçin.
 
@@ -99,7 +99,7 @@ Azure Ilke uzantısı kaynak sağlayıcısına göre seçilen aboneliklerdeki ka
 - **Kaynak grupları**
   - Kaynak grubuna göre tüm kaynaklar
 
-Varsayılan olarak, uzantı ' kaynak sağlayıcısı ' bölümünü, ilke diğer adlarına sahip mevcut kaynak ve kaynaklarla filtreler. Tüm kaynak sağlayıcılarını filtrelemeden görmek için **Ayarlar** > **uzantıları** > **Azure ilkesi** ' nde bu davranışı değiştirin.
+Varsayılan olarak, uzantı ' kaynak sağlayıcısı ' bölümünü, ilke diğer adlarına sahip mevcut kaynak ve kaynaklarla filtreler. **Settings**  >  **Extensions**  >  Tüm kaynak sağlayıcılarını filtrelemeden görmek için ayarlar uzantıları**Azure ilkesi** ' nde bu davranışı değiştirin.
 
 Tek bir abonelikte yüzlerce veya binlerce kaynağa sahip müşteriler, kaynaklarını bulmaya yönelik aranabilir bir yol gerektirebilir. Azure Ilke uzantısı, aşağıdaki adımlarla belirli bir kaynağı aramanızı mümkün kılar:
 
@@ -127,6 +127,9 @@ Bir kaynak açıldıktan sonra, Kaynak Yöneticisi özellik adı veya değerinin
 
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Ilke uzantısı üzerine gelme Kaynak Yöneticisi özelliği diğer adı gösterir" border="false":::
 
+> [!NOTE]
+> VS Code uzantısı yalnızca Kaynak Yöneticisi modu özelliklerini gösterir ve herhangi bir [kaynak sağlayıcısı modu](../concepts/definition-structure.md#mode) özelliği görüntülemez.
+
 ## <a name="search-for-and-view-policies-and-assignments"></a>İlke ve atamaları arama ve görüntüleme
 
 Azure Ilke uzantısı ilke türlerini ve ilke atamalarını, **ilkeler** bölmesinde görüntülenmek üzere seçilen abonelikler için bir TreeView olarak listeler. Tek bir abonelikte yüzlerce veya binlerce ilke veya atama içeren müşteriler, ilkelerini veya atamalarını bulmak için aranabilir bir yol tercih edebilir. Azure Ilke uzantısı, aşağıdaki adımlarla belirli bir ilke veya atamaya yönelik arama yapmayı mümkün kılar:
@@ -151,7 +154,7 @@ Bir ilke veya atamayı seçerken, arama arabiriminden veya TreeView 'da seçerek
 
 ## <a name="sign-out"></a>Oturumu kapat
 
-Menü çubuğundan **Görünüm** > **komut paleti**' ne gidin ve **Azure: oturumu Kapat**' ı girin.
+Menü çubuğundan **Görünüm**  >  **komut paleti**' ne gidin ve **Azure: oturumu Kapat**' ı girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

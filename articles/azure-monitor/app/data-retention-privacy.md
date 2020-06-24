@@ -2,13 +2,13 @@
 title: Azure Application Insights veri saklama ve depolama | Microsoft Docs
 description: Bekletme ve Gizlilik ilkesi bildirimi
 ms.topic: conceptual
-ms.date: 09/29/2019
-ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: d77eaa32c8487d1aa87626683b4c29bf1cee0e75
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276003"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718691"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights veri toplama, bekletme ve depolama
 
@@ -52,10 +52,10 @@ Ana Kategoriler şunlardır:
 * [Web sayfaları](../../azure-monitor/app/javascript.md) -sayfa, Kullanıcı ve oturum sayıları. Sayfa yükleme süreleri. Larý. Ajax çağrıları.
 * Performans sayaçları-bellek, CPU, GÇ, ağ doluluk.
 * İstemci ve sunucu bağlamı-işletim sistemi, yerel ayar, cihaz türü, tarayıcı, ekran çözünürlüğü.
-* [Özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) ve kilitlenmeler- **yığın dökümleri**, `build id`, CPU türü. 
+* [Özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) ve kilitlenmeler- **yığın dökümleri**, `build id` , CPU türü. 
 * [Bağımlılıklar](../../azure-monitor/app/asp-net-dependencies.md) -Rest, SQL, AJAX gibi harici hizmetlere yapılan çağrılar. URI veya bağlantı dizesi, süre, başarı, komut.
 * [Kullanılabilirlik testleri](../../azure-monitor/app/monitor-web-app-availability.md) -test ve adımların süresi, yanıtlar.
-* **Günlüklere veya telemetrinize kodlarınızın her şeyi** [izlemek için izleme günlükleri](../../azure-monitor/app/asp-net-trace-logs.md) ve [özel telemetri](../../azure-monitor/app/api-custom-events-metrics.md) - .
+* [Trace logs](../../azure-monitor/app/asp-net-trace-logs.md) [custom telemetry](../../azure-monitor/app/api-custom-events-metrics.md)  -  **Günlüklere veya telemetrinize kodlarınızın her şeyi**izlemek için izleme günlükleri ve özel telemetri.
 
 [Daha fazla ayrıntı](#data-sent-by-application-insights).
 
@@ -132,7 +132,7 @@ Bir müşterinin bu dizini belirli güvenlik gereksinimleriyle yapılandırması
 
 ###  <a name="net"></a>.NET
 
-Varsayılan `ServerTelemetryChannel` olarak, geçerli kullanıcının yerel uygulama verileri klasörünü `%localAppData%\Microsoft\ApplicationInsights` veya Temp klasörünü `%TMP%`kullanır. (Bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) burada.)
+Varsayılan olarak `ServerTelemetryChannel` , geçerli kullanıcının yerel uygulama verileri klasörünü `%localAppData%\Microsoft\ApplicationInsights` veya Temp klasörünü kullanır `%TMP%` . (Bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) burada.)
 
 
 Yapılandırma dosyası aracılığıyla:
@@ -155,9 +155,9 @@ Kod aracılığıyla:
 
 ### <a name="netcore"></a>NetCore
 
-Varsayılan `ServerTelemetryChannel` olarak, geçerli kullanıcının yerel uygulama verileri klasörünü `%localAppData%\Microsoft\ApplicationInsights` veya Temp klasörünü `%TMP%`kullanır. (Bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) burada.) Bir Linux ortamında, bir depolama klasörü belirtilmediği takdirde yerel depolama devre dışı bırakılır.
+Varsayılan olarak `ServerTelemetryChannel` , geçerli kullanıcının yerel uygulama verileri klasörünü `%localAppData%\Microsoft\ApplicationInsights` veya Temp klasörünü kullanır `%TMP%` . (Bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) burada.) Bir Linux ortamında, bir depolama klasörü belirtilmediği takdirde yerel depolama devre dışı bırakılır.
 
-Aşağıdaki kod parçacığı, `ServerTelemetryChannel.StorageFolder` `ConfigureServices()` `Startup.cs` sınıfınızın yönteminde nasıl ayarlanacağını gösterir:
+Aşağıdaki kod parçacığı, sınıfınızın yönteminde nasıl ayarlanacağını gösterir `ServerTelemetryChannel.StorageFolder` `ConfigureServices()` `Startup.cs` :
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -167,21 +167,21 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 ### <a name="nodejs"></a>Node.js
 
-Kalıcı veriler `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` için varsayılan olarak kullanılır. Bu klasöre erişim izinleri geçerli kullanıcı ve yöneticilerle kısıtlıdır. (Bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) burada.)
+`%TEMP%/appInsights-node{INSTRUMENTATION KEY}`Kalıcı veriler için varsayılan olarak kullanılır. Bu klasöre erişim izinleri geçerli kullanıcı ve yöneticilerle kısıtlıdır. (Bkz. [uygulama](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) burada.)
 
-Dosya ön eki `appInsights-node` , `Sender.TEMPDIR_PREFIX` [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)içinde bulunan statik değişkenin çalışma zamanı değeri değiştirilerek geçersiz kılınabilir.
+Dosya ön eki, `appInsights-node` `Sender.TEMPDIR_PREFIX` [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)içinde bulunan statik değişkenin çalışma zamanı değeri değiştirilerek geçersiz kılınabilir.
 
 ### <a name="javascript-browser"></a>JavaScript (tarayıcı)
 
-[HTML5 oturum depolaması](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) , verileri kalıcı hale getirmek için kullanılır. İki ayrı arabellek kullanılır: `AI_buffer` ve. `AI_sent_buffer` Toplu ve gönderilmek üzere bekleyen telemetri ' de `AI_buffer`depolanır. Yeni gönderilen telemetri, alma sunucusu başarılı bir `AI_sent_buffer` şekilde alındığından yanıt verene kadar yerleştirilir. Telemetri başarıyla alındığında, tüm arabelleklerden kaldırılır. Geçici hatalarda (örneğin, bir Kullanıcı ağ bağlantısını kaybeder), telemetri başarılı bir şekilde alınana `AI_buffer` kadar veya alma sunucusu Telemetriyi geçersiz hale gelinceye kadar (örneğin, hatalı şema veya çok eski) yanıt veriyor.
+[HTML5 oturum depolaması](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) , verileri kalıcı hale getirmek için kullanılır. İki ayrı arabellek kullanılır: `AI_buffer` ve `AI_sent_buffer` . Toplu ve gönderilmek üzere bekleyen telemetri ' de depolanır `AI_buffer` . Yeni gönderilen telemetri `AI_sent_buffer` , alma sunucusu başarılı bir şekilde alındığından yanıt verene kadar yerleştirilir. Telemetri başarıyla alındığında, tüm arabelleklerden kaldırılır. Geçici hatalarda (örneğin, bir Kullanıcı ağ bağlantısını kaybeder), telemetri başarılı bir şekilde `AI_buffer` alınana kadar veya alma sunucusu Telemetriyi geçersiz hale gelinceye kadar (örneğin, hatalı şema veya çok eski) yanıt veriyor.
 
-Telemetri arabellekleri, olarak [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) `false`ayarlanarak devre dışı bırakılabilir. Oturum depolama kapalı olduğunda, yerel bir dizi kalıcı depolama alanı olarak kullanılır. JavaScript SDK 'Sı bir istemci cihazda çalıştığı için, kullanıcının, tarayıcısının geliştirici araçları aracılığıyla bu depolama konumuna erişimi vardır.
+Telemetri arabellekleri, olarak ayarlanarak devre dışı [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) bırakılabilir `false` . Oturum depolama kapalı olduğunda, yerel bir dizi kalıcı depolama alanı olarak kullanılır. JavaScript SDK 'Sı bir istemci cihazda çalıştığı için, kullanıcının, tarayıcısının geliştirici araçları aracılığıyla bu depolama konumuna erişimi vardır.
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 
-Varsayılan olarak, OpenCensus Python SDK geçerli kullanıcı klasörünü `%username%/.opencensus/.azure/`kullanır. Bu klasöre erişim izinleri geçerli kullanıcı ve yöneticilerle kısıtlıdır. (Bkz. [uygulama](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) burada.) Kalıcı verilerinizin bulunduğu klasör, Telemetriyi oluşturan Python dosyasından sonra adlandıralınacaktır.
+Varsayılan olarak, OpenCensus Python SDK geçerli kullanıcı klasörünü kullanır `%username%/.opencensus/.azure/` . Bu klasöre erişim izinleri geçerli kullanıcı ve yöneticilerle kısıtlıdır. (Bkz. [uygulama](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) burada.) Kalıcı verilerinizin bulunduğu klasör, Telemetriyi oluşturan Python dosyasından sonra adlandıralınacaktır.
 
-Kullanmakta olduğunuz Dışarı Aktarıcı oluşturucusunun içindeki `storage_path` parametresini geçirerek depolama dosyanızın konumunu değiştirebilirsiniz.
+`storage_path`Kullanmakta olduğunuz Dışarı Aktarıcı oluşturucusunun içindeki parametresini geçirerek depolama dosyanızın konumunu değiştirebilirsiniz.
 
 ```python
 AzureLogHandler(
@@ -202,11 +202,11 @@ Bunun gerekli olmadığı sürece uygulamanızı yalnızca TLS 1,2 ' i kullanaca
 
 |Platform/dil | Destek | Daha Fazla Bilgi |
 | --- | --- | --- |
-| Azure Uygulama Hizmetleri  | Desteklenir, yapılandırma gerekli olabilir. | Destek 2018 Nisan 'da duyuruldu. [Yapılandırma ayrıntıları](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)için Duyuruyu okuyun.  |
-| Azure İşlev Uygulamaları | Desteklenir, yapılandırma gerekli olabilir. | Destek 2018 Nisan 'da duyuruldu. [Yapılandırma ayrıntıları](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)için Duyuruyu okuyun. |
+| Azure Uygulama Hizmetleri  | Desteklenir, yapılandırma gerekli olabilir. | Destek 2018 Nisan 'da duyuruldu. [Yapılandırma ayrıntıları](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)için Duyuruyu okuyun.  |
+| Azure İşlev Uygulamaları | Desteklenir, yapılandırma gerekli olabilir. | Destek 2018 Nisan 'da duyuruldu. [Yapılandırma ayrıntıları](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)için Duyuruyu okuyun. |
 |.NET | Desteklenir, yapılandırma sürüme göre farklılık gösterir. | .NET 4,7 ve önceki sürümler için ayrıntılı yapılandırma bilgileri için, [Bu yönergelere](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)bakın.  |
-|Durum İzleyicisi | Desteklenir, yapılandırma gerekli | Durum İzleyicisi, TLS 1,2 ' i desteklemek için [işletim sistemi yapılandırması](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET yapılandırmasına](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) dayanır.
-|Node.js |  Desteklenen, v 10.5.0 'de yapılandırma gerekebilir. | Uygulamaya özgü herhangi bir yapılandırma için [resmi Node. js TLS/SSL belgelerini](https://nodejs.org/api/tls.html) kullanın. |
+|Durum İzleyicisi | Desteklenir, yapılandırma gerekli | Durum İzleyicisi, TLS 1,2 ' i desteklemek için [işletim sistemi yapılandırması](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  +  [.NET yapılandırmasına](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) dayanır.
+|Node.js |  Desteklenen, v 10.5.0 'de yapılandırma gerekebilir. | Uygulamaya özgü herhangi bir yapılandırma için [resmi Node.js TLS/SSL belgelerini](https://nodejs.org/api/tls.html) kullanın. |
 |Java | , [JDK 6 güncelleştirme 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) ve [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html)' ye desteklenen TLS 1,2 için JDK desteği eklenmiştir. | JDK 8, [Varsayılan olarak TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)kullanır.  |
 |Linux | Linux dağıtımları, TLS 1,2 desteği için [OpenSSL](https://www.openssl.org) 'yi kullanır.  | OpenSSL sürümünüzü doğrulamak için [OpenSSL changelog](https://www.openssl.org/news/changelog.html) ' yı denetleyin.|
 | Windows 8,0-10 | Desteklenir ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.  |
@@ -247,14 +247,14 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 
 | Eyleminizi | Toplanan veri sınıfları (sonraki tabloya bakın) |
 | --- | --- |
-| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel Durumlar**<br/>Oturum<br/>kullanıcılar |
+| [.NET Web projesine Application Insights SDK ekleme][greenbrown] |Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları<br/>İstekler<br/>**Özel durumlar**<br/>Oturum<br/>kullanıcılar |
 | [Durum İzleyicisi IIS 'ye yükler][redfield] |Bağımlılıklar<br/>Sunucubağlamı<br/>Temsilc<br/>Performans sayaçları |
 | [Java Web uygulamasına Application Insights SDK 'Sı ekleme][java] |Sunucubağlamı<br/>Temsilc<br/>İstek<br/>Oturum<br/>kullanıcılar |
 | [Web sayfasına JavaScript SDK 'Sı ekleme][client] |ClientContext <br/>Temsilc<br/>Sayfa<br/>ClientPerf<br/>Ajax |
 | [Varsayılan özellikleri tanımlama][apiproperties] |Tüm standart ve özel olaylardaki **Özellikler** |
 | [TrackMetric çağrısı yapın][api] |Sayısal değerler<br/>**Özellikler** |
 | [Çağrıyı Izle *][api] |Olay adı<br/>**Özellikler** |
-| [TrackException çağrısı][api] |**Özel Durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
+| [TrackException çağrısı][api] |**Özel durumlar**<br/>Yığın dökümü<br/>**Özellikler** |
 | SDK veri toplayamıyor. Örneğin: <br/> -performans sayaçlarına erişilemiyor<br/> -Telemetri başlatıcısında özel durum |SDK tanılaması |
 
 [Diğer platformların SDK 'ları][platforms]için belgelerine bakın.
@@ -270,26 +270,26 @@ SDK 'lar platformlar arasında farklılık gösterir ve yükleyebileceğiniz bir
 | Sunucubağlamı |Makine adı, yerel ayar, işletim sistemi, cihaz, Kullanıcı oturumu, Kullanıcı bağlamı, işlem |
 | Temsilc |IP adresi, zaman damgası, işletim sistemi, tarayıcıdan coğrafi konum |
 | Ölçümler |Ölçüm adı ve değeri |
-| Olaylar |Olay adı ve değeri |
+| Ekinlikler |Olay adı ve değeri |
 | PageViews |URL ve sayfa adı ya da ekran adı |
 | İstemci perf |URL/sayfa adı, tarayıcı yükleme süresi |
 | Ajax |Web sayfasından sunucusuna HTTP çağrıları |
 | İstekler |URL, süre, yanıt kodu |
 | Bağımlılıklar |Tür (SQL, HTTP,...), bağlantı dizesi veya URI, Sync/Async, Duration, Success, SQL deyimleri (Durum İzleyicisi ile) |
-| **Özel Durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası,`thread id` |
-| Çökme |`Process id`, `parent process id`, `crash thread id`; Uygulama Düzeltme Eki `id`,, derleme;  özel durum türü, adres, neden; karıştırılmış semboller ve Yazmaçları, ikili başlangıç ve bitiş adresleri, ikili ad ve yol, CPU türü |
+| **Özel durumlar** |Tür, **ileti**, çağrı yığınları, kaynak dosya, satır numarası,`thread id` |
+| Çökme |`Process id`, `parent process id` ,, `crash thread id` Uygulama Düzeltme Eki, `id` , derleme;  özel durum türü, adres, neden; karıştırılmış semboller ve Yazmaçları, ikili başlangıç ve bitiş adresleri, ikili ad ve yol, CPU türü |
 | İzleme |**İleti** ve önem düzeyi |
 | Performans sayaçları |İşlemci süresi, kullanılabilir bellek, istek hızı, özel durum oranı, işlem özel baytları, GÇ oranı, istek süresi, istek kuyruğu uzunluğu |
 | Kullanılabilirlik |Web testi yanıt kodu, her test adımının süresi, test adı, zaman damgası, başarı, yanıt süresi, test konumu |
 | SDK tanılaması |Trace iletisi veya özel durumu |
 
-[ApplicationInsights. config dosyasını düzenleyerek bazı verileri kapatabilirsiniz][config]
+[Bazı verileri düzenleyerek ApplicationInsights.config][config] yapabilirsiniz
 
 > [!NOTE]
 > İstemci IP 'si coğrafi konumu çıkarmakta kullanılır, ancak varsayılan olarak IP verileri artık depolanmaz ve tüm sıfırlardan ilişkili alana yazılır. Kişisel veri işleme hakkında daha fazla bilgi edinmek için bu [makaleyi](../../azure-monitor/platform/personal-data-mgmt.md#application-data)öneririz. IP adresi verilerini depolamanız gerekirse, [IP adresi toplama makalemiz](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) , seçenekleriniz boyunca size yol gösterir.
 
 ## <a name="credits"></a>Krediler
-Bu ürün, tarafından sağlanan, Maxakılda tarafından oluşturulan GeoLite2 verilerini [https://www.maxmind.com](https://www.maxmind.com)içerir.
+Bu ürün, tarafından sağlanan, Maxakılda tarafından oluşturulan GeoLite2 verilerini içerir [https://www.maxmind.com](https://www.maxmind.com) .
 
 
 

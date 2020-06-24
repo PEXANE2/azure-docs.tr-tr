@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef603141129be6a73e018fb3e3dcabf9c5d7961f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 503fc3c9ce566e9b3d90062709222bf27d88fa01
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993499"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106056"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -100,9 +100,8 @@ Sorunsuz SSO 'yu doğru şekilde etkinleştirdiğinizi doğrulamak için aşağ�
 
 ## <a name="step-3-roll-out-the-feature"></a>3. Adım: özelliği kullanıma alma
 
-Aşağıda belirtilen yönergeleri kullanarak kullanıcılarınıza sorunsuz SSO 'yu yavaş bir şekilde dağıtabilirsiniz. Aşağıdaki Azure AD URL 'Lerini, Active Directory grup ilkesi kullanarak, tüm kullanıcıların Intranet Bölge ayarlarına ekleyerek başlayabilirsiniz:
+Aşağıda belirtilen yönergeleri kullanarak kullanıcılarınıza sorunsuz SSO 'yu yavaş bir şekilde dağıtabilirsiniz. Aşağıdaki Azure AD URL 'sini, Active Directory grup ilkesi kullanarak, tüm kullanıcıların Intranet bölgesi ayarlarına ekleyerek başlayabilirsiniz:
 
-- `https://aadg.windows.net.nsatc.net`
 - `https://autologon.microsoftazuread-sso.com`
 
 Ayrıca, grup ilkesi aracılığıyla **betik aracılığıyla durum çubuğuna güncelleştirmelere Izin ver** adlı bir Intranet bölgesi ilkesi ayarını etkinleştirmeniz gerekir. 
@@ -116,7 +115,7 @@ Varsayılan olarak tarayıcı, doğru bölgeyi Internet veya Intranet ' i belirl
 
 Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol vardır:
 
-| Seçenek | Yönetici değerlendirmesi | Kullanıcı deneyimleri |
+| Seçenek | Yönetici değerlendirmesi | Kullanıcı deneyimi |
 | --- | --- | --- |
 | Grup İlkesi | Yönetici, Intranet bölgesi ayarlarının düzenlemesini kilitler | Kullanıcılar kendi ayarlarını değiştiremezler |
 | Grup İlkesi tercihi |  Yönetici, Intranet bölgesi ayarlarında düzenlenmesine izin veriyor | Kullanıcılar kendi ayarlarını değiştirebilir |

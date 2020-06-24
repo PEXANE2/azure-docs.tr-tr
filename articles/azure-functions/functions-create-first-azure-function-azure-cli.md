@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 890dc2f7560faa6df302212aebb2fbe006894d3f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559887"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100018"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -124,7 +124,7 @@ cd LocalFunctionProj
 cd fabrikam-functions
 ```
 ::: zone-end  
-Bu klasör, [yerel. Settings. JSON](functions-run-local.md#local-settings-file) ve [Host. JSON](functions-host-json.md)adlı yapılandırma dosyaları dahil olmak üzere, proje için çeşitli dosyaları içerir. *Local. Settings. JSON* , Azure 'dan indirilen gizli dizileri içerebildiğinden, dosya, *. gitignore* dosyasında varsayılan olarak kaynak denetiminden çıkarılır.
+Bu klasör, [local.settings.js](functions-run-local.md#local-settings-file) ve [host.js](functions-host-json.md)adlı yapılandırma dosyaları da dahil olmak üzere, proje için çeşitli dosyalar içerir. *local.settings.json* , Azure 'dan indirilen gizli dizileri içerebildiğinden, dosya, *. gitignore* dosyasında varsayılan olarak kaynak denetiminden çıkarılır.
 
 [!INCLUDE [functions-cli-add-function](../../includes/functions-cli-add-function.md)]
 
@@ -150,9 +150,9 @@ Dönüş nesnesi, bir [Okobjectresult](/dotnet/api/microsoft.aspnetcore.mvc.okob
 
 Yanıt iletisi [HttpResponseMessage. Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API 'si tarafından oluşturulur.
 
-#### <a name="pomxml"></a>Pod. xml
+#### <a name="pomxml"></a>pom.xml
 
-Uygulamanızı barındırmak için oluşturulan Azure kaynakları ayarları, oluşturulan Pod. xml dosyasında bir **GroupID** 'si olan eklentisinin **yapılandırma** öğesinde tanımlanmıştır `com.microsoft.azure` . Örneğin, aşağıdaki yapılandırma öğesi, bir Maven tabanlı dağıtıma `java-functions-group` bölge içindeki kaynak grubunda bir işlev uygulaması oluşturmasını söyler `westus` . İşlev uygulaması, planda barındırılan Windows üzerinde çalışır `java-functions-app-service-plan` ; Bu, varsayılan olarak sunucusuz bir tüketim plandır.    
+Uygulamanızı barındırmak üzere oluşturulan Azure kaynakları için ayarlar, eklentinin **yapılandırma** öğesinde oluşturulan pom.xml dosyasında bir **GroupID** ile tanımlanmıştır `com.microsoft.azure` . Örneğin, aşağıdaki yapılandırma öğesi, bir Maven tabanlı dağıtıma `java-functions-group` bölge içindeki kaynak grubunda bir işlev uygulaması oluşturmasını söyler `westus` . İşlev uygulaması, planda barındırılan Windows üzerinde çalışır `java-functions-app-service-plan` ; Bu, varsayılan olarak sunucusuz bir tüketim plandır.    
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
@@ -165,47 +165,47 @@ Ayrıca, bu, işleviniz için bir birim testi de oluşturur. Bağlama eklemek ve
 ::: zone pivot="programming-language-python"
 #### <a name="__init__py"></a>\_\_init \_ \_ . Kopyala
 
-* \_ \_ init \_ \_ . Kopyala* `main()` , *function. JSON*içindeki yapılandırmaya göre tetiklenen bir Python işlevi içerir.
+* \_ \_ init \_ \_ . Kopyala* `main()` , *function.jsüzerindeki*yapılandırmaya göre tetiklenen bir Python işlevi içerir.
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-Bir HTTP tetikleyicisi için işlev, değişkende, `req` *function. JSON*içinde tanımlanan şekilde istek verilerini alır. `req`, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. `$return` *Function. JSON*içinde olarak tanımlanan Return nesnesi, [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
+Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan şekilde değişkende istek verilerini alır. `req`, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. function.jsolarak tanımlanan dönüş nesnesi, `$return` [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. *function.json* Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-#### <a name="indexjs"></a>index. js
+#### <a name="indexjs"></a>index.js
 
-*index. js* , *function. JSON*içindeki yapılandırmaya göre tetiklenen bir işlevi dışarı aktarır.
+*index.js* , *function.jsüzerindeki*yapılandırmaya göre tetiklenen bir işlevi dışarı aktarır.
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-Bir HTTP tetikleyicisi için işlev, değişkende, `req` *function. JSON*içinde tanımlanan şekilde istek verilerini alır. `$return` *Function. JSON*içinde olarak tanımlanan Return nesnesi yanıt olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
+Bir HTTP tetikleyicisi için işlev, `req` *function.json*öğesinde tanımlanan şekilde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt *function.json*olur. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
 #### <a name="indexts"></a>Dizin. TS
 
-*Index. TS* , *function. JSON*içindeki yapılandırmaya göre tetiklenen bir işlevi dışarı aktarır.
+*index. TS* , *function.jsüzerindeki*yapılandırmaya göre tetiklenen bir işlevi dışarı aktarır.
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-Bir HTTP tetikleyicisi için işlev, istek verilerini `req` **HttpRequest** türündeki değişkende, *function. JSON*içinde tanımlandığı şekilde alır. `$return` *Function. JSON*içinde olarak tanımlanan Return nesnesi yanıt olur. 
+Bir HTTP tetikleyicisi için işlev, `req` *function.jsüzerinde*tanımlanan **HttpRequest** türünde değişkende istek verilerini alır. function.jsüzerinde olarak tanımlanan Return nesnesi `$return` Yanıt *function.json*olur. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
-#### <a name="runps1"></a>Run. ps1
+#### <a name="runps1"></a>run.ps1
 
-*Run. ps1* , *function. JSON*içindeki yapılandırmaya göre tetiklenen bir işlev betiğini tanımlar.
+*run.ps1* , *function.jsüzerindeki*yapılandırmaya göre tetiklenen bir işlev betiği tanımlar.
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-Bir HTTP tetikleyicisi için işlev, `$Request` *function. JSON*içinde tanımlanan param öğesine geçirilen istek verilerini alır. `Response` *Function. JSON*içinde olarak tanımlanan Return nesnesi, `Push-OutputBinding` yanıt olarak cmdlet 'ine geçirilir. 
+Bir HTTP tetikleyicisi için işlev, `$Request` *function.jsüzerinde*tanımlanan param öğesine geçirilen istek verilerini alır. function.jsüzerinde olduğu gibi tanımlanan dönüş nesnesi, `Response` *function.json* `Push-OutputBinding` cmdlet 'e yanıt olarak geçirilir. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 #### <a name="functionjson"></a>function.json
 
-*function. JSON* , `bindings` tetikleyici türü de dahil olmak üzere işlevin giriş ve çıkışını tanımlayan bir yapılandırma dosyasıdır. 
+*function.js* , `bindings` tetikleyici türü de dahil olmak üzere işlevin giriş ve çıkışını tanımlayan bir yapılandırma dosyasıdır. 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
@@ -277,7 +277,7 @@ az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Lin
 ::: zone-end  
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-Node. js 8 kullanıyorsanız, olarak da değiştirin `--runtime-version` `8` .
+Node.js 8 kullanıyorsanız, olarak da değiştirin `--runtime-version` `8` .
 
 
 ```azurecli
@@ -345,10 +345,10 @@ Functions in msdocs-azurefunctions-qs:
 ::: zone pivot="programming-language-java"  
 ## <a name="deploy-the-function-project-to-azure"></a>İşlev projesini Azure 'a dağıtma
 
-İşlevler projenizi ilk kez dağıttığınızda Azure 'da bir işlev uygulaması ve ilgili kaynaklar oluşturulur. Uygulamanızı barındırmak üzere oluşturulan Azure kaynakları için ayarlar [Pod. xml dosyasında](#pomxml)tanımlanmıştır. Bu makalede, Varsayılanları kabul edersiniz.
+İşlevler projenizi ilk kez dağıttığınızda Azure 'da bir işlev uygulaması ve ilgili kaynaklar oluşturulur. Uygulamanızı barındırmak üzere oluşturulan Azure kaynakları için ayarlar [pom.xml dosyasında](#pomxml)tanımlanmıştır. Bu makalede, Varsayılanları kabul edersiniz.
 
 > [!TIP]
-> Windows yerine Linux üzerinde çalışan bir işlev uygulaması oluşturmak için, `runtime.os` Pok. xml dosyasındaki öğesini `windows` olarak değiştirin `linux` . [Bu bölgelerde](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)Linux çalıştırmak bir tüketim planında desteklenir. Linux ve uygulamalar üzerinde çalışan ve aynı kaynak grubunda Windows üzerinde çalışan uygulamalar olamaz.
+> Windows yerine Linux üzerinde çalışan bir işlev uygulaması oluşturmak için, `runtime.os` pom.xml dosyasındaki öğesini `windows` olarak değiştirin `linux` . [Bu bölgelerde](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)Linux çalıştırmak bir tüketim planında desteklenir. Linux ve uygulamalar üzerinde çalışan ve aynı kaynak grubunda Windows üzerinde çalışan uygulamalar olamaz.
 
 Dağıtmadan önce, Azure aboneliğinizde oturum açmak için [az Login](/cli/azure/authenticate-azure-cli) Azure CLI komutunu kullanın. 
 
@@ -393,6 +393,11 @@ Yayımla komutunun çıktısında gösterilen tüm **ÇAĞıRMA URL** 'sini, sor
 
 > [!TIP]
 > Yayınlanan işlev uygulaması için neredeyse gerçek zamanlı günlükleri görüntülemek için [Application Insights canlı ölçüm akışı](functions-monitoring.md#streaming-logs)kullanın.
+>
+> Canlı ölçümler akışını bir tarayıcıda açmak için aşağıdaki komutu çalıştırın.
+>   ```
+>   func azure functionapp logstream <APP_NAME> --browser
+>   ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

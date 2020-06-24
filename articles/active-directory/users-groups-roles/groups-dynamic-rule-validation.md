@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e081f62949f4cf3f7ae375b2c60ee5b032d974
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbbe37938249ee02c7deb4081a96aa1be2d8b7cb
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115527"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728513"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Azure Active Directory bir dinamik grup üyeliği kuralını (Önizleme) doğrulama
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) artık dinamik grup kurallarını (genel öniz
 
 ## <a name="step-by-step-walk-through"></a>Adım adım izlenecek yol
 
-Başlamak için **Azure Active Directory** > **gruplar**'a gidin. Var olan bir dinamik grubu seçin veya yeni bir dinamik grup oluşturun ve dinamik üyelik kuralları ' na tıklayın. Daha sonra **kuralları doğrula** sekmesini görebilirsiniz.
+Başlamak için **Azure Active Directory**  >  **gruplar**'a gidin. Var olan bir dinamik grubu seçin veya yeni bir dinamik grup oluşturun ve dinamik üyelik kuralları ' na tıklayın. Daha sonra **kuralları doğrula** sekmesini görebilirsiniz.
 
 ![Kuralları doğrula sekmesini bulun ve mevcut bir kuralla başlayın](./media/groups-dynamic-rule-validation/validate-tab.png)
 

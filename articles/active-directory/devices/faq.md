@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c238600d412e53ad665214492e292aa395655b78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497525"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689053"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -39,8 +39,8 @@ Yalnızca aşağıdaki cihazlar **Kullanıcı cihazları**altında listelenir:
 
 Y **:** Azure portal, **tüm cihazlar**' a gidin. Cihaz KIMLIĞINI kullanarak cihazı arayın. JOIN türü sütununun altındaki değeri denetleyin. Bazen, cihazın sıfırlanması veya yeniden oluşturulması gerekebilir. Bu nedenle cihazdaki cihaz kayıt durumunu da denetlemek gereklidir:
 
-- Windows 10 ve Windows Server 2016 veya üzeri cihazlarda ' ı çalıştırın `dsregcmd.exe /status`.
-- Alt düzey işletim sistemi sürümleri için çalıştırın `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`.
+- Windows 10 ve Windows Server 2016 veya üzeri cihazlarda ' ı çalıştırın `dsregcmd.exe /status` .
+- Alt düzey işletim sistemi sürümleri için çalıştırın `%programFiles%\Microsoft Workplace Join\autoworkplace.exe` .
 
 Y **:** Sorun giderme bilgileri için şu makalelere bakın:
 - [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](troubleshoot-device-dsregcmd.md)
@@ -100,7 +100,7 @@ Y **:** Bu işlem tasarıma göre yapılır. Bu durumda, cihazın buluttaki kayn
 
       Azure AD kayıtlı Windows 10 cihazları için aşağıdaki adımları uygulayın:
 
-      1. **Ayarlar** > **Accounts**hesaplar > **iş veya okula erişim**bölümüne gidin. 
+      1. **Ayarlar**  >  **hesaplar**  >  **iş veya okula erişim**bölümüne gidin. 
       1. Hesabı seçin ve **bağlantıyı kes**' i seçin.
       1. "+ Bağlan" düğmesine tıklayın ve oturum açma işlemine giderek cihazı yeniden kaydedin.
 
@@ -148,7 +148,7 @@ Y **:** İptal etme işlemi, Azure AD cihazının devre dışı olarak işaretle
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>S: Azure AD 'ye katılmış bir cihazın cihazdan yerel olarak katılmasını Nasıl yaparım? mı?
 
-Y **:** Saf Azure AD 'ye katılmış cihazlarda, çevrimdışı bir yerel yönetici hesabınız olduğundan emin olun veya bir tane oluşturun. Azure AD Kullanıcı kimlik bilgileriyle oturum açamazsınız. Sonra **Ayarlar** > **hesaplar** > **iş veya okul erişimi**' ne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. İstemleri izleyin ve istendiğinde yerel yönetici kimlik bilgilerini sağlayın. Birleştirmeyi kaldırma işlemini tamamlaması için cihazı yeniden başlatın.
+Y **:** Saf Azure AD 'ye katılmış cihazlarda, çevrimdışı bir yerel yönetici hesabınız olduğundan emin olun veya bir tane oluşturun. Azure AD Kullanıcı kimlik bilgileriyle oturum açamazsınız. Sonra **Ayarlar**  >  **hesaplar**  >  **iş veya okul erişimi**' ne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. İstemleri izleyin ve istendiğinde yerel yönetici kimlik bilgilerini sağlayın. Birleştirmeyi kaldırma işlemini tamamlaması için cihazı yeniden başlatın.
 
 ---
 
@@ -175,6 +175,8 @@ Daha önce oturum açmış olmayan silinen veya devre dışı olan kullanıcıla
 ### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>S: Kullanıcılarım, UPN 'sini değiştirdikten sonra neden Azure AD 'ye katılmış cihazlarda sorun yaşıyor?
 
 Y **:** Şu anda, UPN değişiklikleri Azure AD 'ye katılmış cihazlarda tam olarak desteklenmez. Bu nedenle, Azure AD ile kimlik doğrulaması, UPN değişikliklerinden sonra başarısız olur. Sonuç olarak, kullanıcıların cihazlarında SSO ve koşullu erişim sorunları vardır. Bu durumda, kullanıcıların bu sorunu çözmek için yeni UPN 'sini kullanarak "diğer Kullanıcı" kutucuğunda Windows 'da oturum açması gerekir. Şu anda bu sorunu gidermeye çalışıyoruz. Ancak, Iş için Windows Hello ile oturum açan kullanıcılar bu sorunu etkilemez. 
+
+UPN değişiklikleri Windows 10 2004 Güncelleştirmesi ile desteklenir. Bu güncelleştirmeye sahip cihazlardaki kullanıcılar UPN 'lerini değiştirdikten sonra herhangi bir sorun olmayacaktır
 
 ---
 
@@ -232,7 +234,7 @@ Y **:** Olası bir neden, yerel yerleşik yönetici hesabını kullanarak cihazd
 
 ### <a name="qwhat-are-the-ms-organization-p2p-access-certificates-present-on-our-windows-10-devices"></a>Q:Windows 10 cihazlarımızda bulunan MS-Organization-P2P-erişim sertifikaları nelerdir?
 
-Y **:** MS-Organization-P2P-erişim sertifikaları Azure AD tarafından hem Azure AD 'ye katılmış hem de karma Azure AD 'ye katılmış cihazlara verilir. Bu sertifikalar, uzak masaüstü senaryoları için aynı Kiracıdaki cihazlar arasında güveni etkinleştirmek üzere kullanılır. Cihaza bir sertifika verilir ve kullanıcıya başka bir sertifika verilir. Cihaz sertifikası içinde `Local Computer\Personal\Certificates` bulunur ve bir gün için geçerlidir. Bu sertifika, cihazın Azure AD 'de hala etkin olması halinde yenilenir (yeni bir sertifika yayımlayarak). Kullanıcı sertifikası ' de `Current User\Personal\Certificates` bulunur ve bu sertifika bir gün için geçerlidir, ancak bir Kullanıcı başka BIR Azure AD 'ye katılmış cihaza Uzak Masaüstü oturumu denediğinde isteğe bağlı olarak verilir. Süre sonu ile yenilenmez. Bu sertifikaların her ikisi de içinde bulunan MS-Organization-P2P-erişim sertifikası kullanılarak verilir `Local Computer\AAD Token Issuer\Certificates`. Bu sertifika, cihaz kaydı sırasında Azure AD tarafından verilir. 
+Y **:** MS-Organization-P2P-erişim sertifikaları Azure AD tarafından hem Azure AD 'ye katılmış hem de karma Azure AD 'ye katılmış cihazlara verilir. Bu sertifikalar, uzak masaüstü senaryoları için aynı Kiracıdaki cihazlar arasında güveni etkinleştirmek üzere kullanılır. Cihaza bir sertifika verilir ve kullanıcıya başka bir sertifika verilir. Cihaz sertifikası içinde bulunur `Local Computer\Personal\Certificates` ve bir gün için geçerlidir. Bu sertifika, cihazın Azure AD 'de hala etkin olması halinde yenilenir (yeni bir sertifika yayımlayarak). Kullanıcı sertifikası ' de bulunur `Current User\Personal\Certificates` ve bu sertifika bir gün için geçerlidir, ancak bir Kullanıcı başka bir Azure AD 'ye katılmış cihaza Uzak Masaüstü oturumu denediğinde isteğe bağlı olarak verilir. Süre sonu ile yenilenmez. Bu sertifikaların her ikisi de içinde bulunan MS-Organization-P2P-erişim sertifikası kullanılarak verilir `Local Computer\AAD Token Issuer\Certificates` . Bu sertifika, cihaz kaydı sırasında Azure AD tarafından verilir. 
 
 ---
 
@@ -246,7 +248,7 @@ Y **:** Windows 10 sürüm 1709 ' de tanımlanan bir sorun oluştu ve süresi do
 
 ### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>S: karma Azure AD 'ye katılmış bir cihazın cihazdan yerel olarak katılmasını Nasıl yaparım? mı?
 
-Y **:** Hibrit Azure AD 'ye katılmış cihazlar için otomatik kaydı kapatmayı unutmayın. Zamanlanan görev, cihazı yeniden kaydetmez. Sonra, yönetici olarak bir komut istemi açın ve girin `dsregcmd.exe /debug /leave`. Veya toplu olarak birleştirmeyi kaldırmak için bu komutu çeşitli cihazlarda bir komut dosyası olarak çalıştırın.
+Y **:** Hibrit Azure AD 'ye katılmış cihazlar için otomatik kaydı kapatmayı unutmayın. Zamanlanan görev, cihazı yeniden kaydetmez. Sonra, yönetici olarak bir komut istemi açın ve girin `dsregcmd.exe /debug /leave` . Veya toplu olarak birleştirmeyi kaldırmak için bu komutu çeşitli cihazlarda bir komut dosyası olarak çalıştırın.
 
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>S: karma Azure AD JOIN başarısızlıklarını tanılamak için sorun giderme bilgilerini nerede bulabilirim?
 
@@ -267,6 +269,8 @@ Karma Azure AD katılımı, Azure AD kayıtlı durumuna göre önceliklidir. Bu 
 
 Y **:** Şu anda UPN değişiklikleri karma Azure AD 'ye katılmış cihazlar ile tam olarak desteklenmez. Kullanıcılar cihazda oturum açabilirler ve şirket içi uygulamalarına erişebilirken, bir UPN değişikliğinden sonra Azure AD ile kimlik doğrulaması başarısız olur. Sonuç olarak, kullanıcıların cihazlarında SSO ve koşullu erişim sorunları vardır. Bu durumda, sorunu çözmek için cihazın Azure AD 'den (yükseltilmiş ayrıcalıklarla "dsregcmd/Leave" komutunu çalıştırın) ve yeniden katılırsanız (otomatik olarak gerçekleşir) açmanız gerekir. Şu anda bu sorunu gidermeye çalışıyoruz. Ancak, Iş için Windows Hello ile oturum açan kullanıcılar bu sorunu etkilemez. 
 
+UPN değişiklikleri Windows 10 2004 Güncelleştirmesi ile desteklenir. Bu güncelleştirmeye sahip cihazlardaki kullanıcılar UPN 'lerini değiştirdikten sonra herhangi bir sorun olmayacaktır
+
 ---
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>S: Windows 10 karma Azure AD 'ye katılmış cihazlar, bulut kaynaklarına erişim sağlamak için etki alanı denetleyicisine bir görüş satırı gerektirir mi?
@@ -286,8 +290,8 @@ Y **:** Şirket ağı dışında bir parola değiştirilirse (örneğin, Azure A
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>S: bir cihazın Azure AD kayıtlı durumunu yerel olarak kaldırmak Nasıl yaparım? istiyor musunuz?
 
 **A** 
-- Windows 10 Azure AD kayıtlı cihazlar için **Ayarlar** > **hesaplar** > **erişim iş veya okul**bölümüne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. Cihaz kaydı, Windows 10 ' da Kullanıcı profili başına.
-- İOS ve Android için Microsoft Authenticator uygulama **ayarları** > **cihaz kaydını** kullanabilir ve **cihazı Sil**' i seçebilirsiniz.
+- Windows 10 Azure AD kayıtlı cihazlar için **Ayarlar**  >  **hesaplar**  >  **erişim iş veya okul**bölümüne gidin. Hesabınızı seçin ve **bağlantıyı kes**' i seçin. Cihaz kaydı, Windows 10 ' da Kullanıcı profili başına.
+- İOS ve Android için Microsoft Authenticator uygulama **ayarları**  >  **cihaz kaydını** kullanabilir ve **cihazı Sil**' i seçebilirsiniz.
 - MacOS için Microsoft Intune Şirket Portalı uygulamasını kullanarak cihazın yönetimden kaydını kaldırabilir ve kaydı kaldırabilirsiniz. 
 
 ---

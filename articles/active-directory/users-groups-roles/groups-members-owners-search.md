@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78206121"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728274"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Azure Active Directory 'de grupları ve üyeleri (Önizleme) arayın
 
@@ -45,7 +45,7 @@ Herhangi bir sorun yaşıyorsanız, **tüm gruplar** sayfasının en üstündeki
 
 ## <a name="group-search-and-sorting"></a>Grup Arama ve sıralama
 
-Gruplar listesi araması, bir arama dizesi girebileceğiniz şekilde geliştirilmiştir, arama, grup adları listesinde otomatik olarak bir `startswith` ve alt dize araması gerçekleştirir. Alt dize araması yalnızca tüm sözcüklere yapılır ve özel karakterler içermez. Alt dize arama büyük/küçük harfe duyarlıdır.
+Gruplar listesi araması, bir arama dizesi girebileceğiniz şekilde geliştirilmiştir, arama, `startswith` Grup adları listesinde otomatik olarak bir ve alt dize araması gerçekleştirir. Alt dize araması yalnızca tüm sözcüklere yapılır ve özel karakterler içermez. Alt dize arama büyük/küçük harfe duyarlıdır.
 
 ![Tüm Gruplar sayfasında yeni alt dize aramaları](./media/groups-members-owners-search/groups-search-preview.png)
 

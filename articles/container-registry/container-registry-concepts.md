@@ -4,11 +4,11 @@ description: Azure Container kayıt defterleri, depolar ve kapsayıcı görünt�
 ms.topic: article
 ms.date: 09/10/2019
 ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247065"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711995"
 ---
 # <a name="about-registries-repositories-and-images"></a>Kayıt defterleri, depolar ve görüntüler hakkında
 
@@ -118,7 +118,7 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 ### <a name="manifest-digest"></a>Bildirim Özeti
 
-Bildirimler benzersiz bir SHA-256 karması veya *bildirim Özeti*tarafından tanımlanır. Her resim veya yapıt--etiketlenebilir veya değil, Özeti tarafından tanımlanır. Görüntünün katman verileri başka bir görüntüyle aynı olsa bile Özet değeri benzersizdir. Bu mekanizma, aynı etiketli görüntüleri bir kayıt defterine sürekli olarak göndermenize olanak tanır. Örneğin, her görüntü benzersiz Özet tarafından `myimage:latest` tanımlandığından, hata vermeden Kayıt defterinize sürekli olarak gönderim yapabilirsiniz.
+Bildirimler benzersiz bir SHA-256 karması veya *bildirim Özeti*tarafından tanımlanır. Her resim veya yapıt--etiketlenebilir veya değil, Özeti tarafından tanımlanır. Görüntünün katman verileri başka bir görüntüyle aynı olsa bile Özet değeri benzersizdir. Bu mekanizma, aynı etiketli görüntüleri bir kayıt defterine sürekli olarak göndermenize olanak tanır. Örneğin, `myimage:latest` her görüntü benzersiz Özet tarafından tanımlandığından, hata vermeden Kayıt defterinize sürekli olarak gönderim yapabilirsiniz.
 
 Çekme işleminde özetini belirterek bir kayıt defterinden görüntü çekebilirsiniz. Bazı sistemler, aynı etiketli bir görüntü daha sonra kayıt defterine gönderilse bile, çekilmekte olan görüntü sürümünü garanti ettiğinden Özet tarafından çekilecek şekilde yapılandırılabilir.
 

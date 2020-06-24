@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283010"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688883"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da dizin oluşturucu kullanarak Cosmos DB verilerinden dizin oluşturma 
 
@@ -71,7 +71,7 @@ Sihirbazı Azure Bilişsel Arama hizmeti sayfasında komut çubuğundan [başlat
 
 + **Ad** , veri kaynağı nesnesinin adıdır. Oluşturulduktan sonra diğer iş yükleri için bunu seçebilirsiniz.
 
-+ **Cosmos DB hesap** , `AccountEndpoint` ve ile Cosmos DB arasında birincil veya ikincil bağlantı dizesi olmalıdır `AccountKey`. MongoDB koleksiyonları için, bağlantı dizesinin sonuna **Apikind = MongoDb** ekleyin ve bağlantı dizesinden noktalı virgülle ayırın. Gremlin API ve Cassandra API için [REST API](#cosmosdb-indexer-rest)yönergelerini kullanın.
++ **Cosmos DB hesap** , ve ile Cosmos DB arasında birincil veya ikincil bağlantı dizesi olmalıdır `AccountEndpoint` `AccountKey` . MongoDB koleksiyonları için, bağlantı dizesinin sonuna **Apikind = MongoDb** ekleyin ve bağlantı dizesinden noktalı virgülle ayırın. Gremlin API ve Cassandra API için [REST API](#cosmosdb-indexer-rest)yönergelerini kullanın.
 
 + **Veritabanı** , hesaptaki mevcut bir veritabanıdır. 
 
@@ -128,7 +128,7 @@ Azure Bilişsel Arama 'deki tüm dizin oluşturucular için ortak olan üç böl
 Bu makalenin önceki kısımlarında [Azure Cosmos DB Dizin oluşturma](https://docs.microsoft.com/azure/cosmos-db/index-overview) ve [Azure bilişsel arama Dizin](search-what-is-an-index.md) oluşturma Dizin oluşturma işleminin farklı işlemleri olduğu belirtiliyor. Cosmos DB Dizin oluşturma için, varsayılan olarak tüm belgeler Cassandra API hariç otomatik olarak dizinlenir. Otomatik Dizin oluşturmayı kapatırsanız, belgelere yalnızca kendi bağlantıları aracılığıyla veya belge KIMLIĞI kullanılarak sorgulara erişilebilir. Azure Bilişsel Arama Dizin oluşturma, Azure Bilişsel Arama tarafından Dizin oluşturulacak koleksiyonda otomatik dizin oluşturma işleminin açık Cosmos DB olmasını gerektirir. Cosmos DB Cassandra API Dizin Oluşturucu önizlemesine kaydolurken, Cosmos DB Dizin oluşturma hakkında yönergeler sağlanacaktır.
 
 > [!WARNING]
-> Azure Cosmos DB, DocumentDB 'nin yeni nesli. Daha önce API sürüm **2017-11-11** ile `documentdb` söz dizimini kullanabilirsiniz. Bu, veri kaynağı türünü veya `cosmosdb` `documentdb`olarak belirtebileceğiniz anlamına gelir. API sürüm **2019-05-06** ' den başlayarak hem Azure bilişsel arama API 'leri hem de portalı bu `cosmosdb` makalede belirtildiği gibi söz dizimini destekler. Bu, veri kaynağı türünün bir Cosmos DB uç `cosmosdb` noktasına bağlanmak istediğinizde olması gerektiği anlamına gelir.
+> Azure Cosmos DB, DocumentDB 'nin yeni nesli. Daha önce API sürüm **2017-11-11** ile `documentdb` söz dizimini kullanabilirsiniz. Bu, veri kaynağı türünü veya olarak belirtebileceğiniz anlamına gelir `cosmosdb` `documentdb` . API sürüm **2019-05-06** ' den başlayarak hem Azure bilişsel arama API 'leri hem de portalı `cosmosdb` Bu makalede belirtildiği gibi söz dizimini destekler. Bu, veri kaynağı türünün `cosmosdb` bir Cosmos DB uç noktasına bağlanmak istediğinizde olması gerektiği anlamına gelir.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-istek için girişleri birleştirin
 
@@ -173,10 +173,10 @@ Bir veri kaynağı oluşturmak için bir POST isteğini formüle koyun:
 
 İsteğin gövdesi, aşağıdaki alanları içermesi gereken veri kaynağı tanımını içerir:
 
-| Alan   | Açıklama |
+| Alan   | Description |
 |---------|-------------|
 | **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
-|**türüyle**| Gereklidir. Olmalıdır `cosmosdb`. |
+|**tür**| Gereklidir. Olmalıdır `cosmosdb` . |
 |**Credentials** | Gereklidir. Cosmos DB bir bağlantı dizesi olmalıdır.<br/>SQL koleksiyonları için, bağlantı dizeleri şu biçimdedir:`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>MongoDB koleksiyonları için, bağlantı dizesine **Apikind = MongoDb** ekleyin:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>Gremlin grafikleri ve Cassandra tablolarında, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/><br/>Uç nokta URL 'sindeki bağlantı noktası numaralarını önleyin. Bağlantı noktası numarasını eklerseniz, Azure Bilişsel Arama Azure Cosmos DB veritabanınızın dizinini oluşturamıyor.|
 | **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |
 | **dataChangeDetectionPolicy** | Önerilen. Bkz. [Dizin oluşturma değiştirilen belgeler](#DataChangeDetectionPolicy) bölümü.|
@@ -186,7 +186,7 @@ Bir veri kaynağı oluşturmak için bir POST isteğini formüle koyun:
 İç içe özellikleri veya dizileri, proje JSON özelliklerini düzleştirmek için bir SQL sorgusu belirtebilir ve dizine eklenecek verileri filtreleyebilirsiniz. 
 
 > [!WARNING]
-> **MongoDB API 'si**, **Gremlin API**ve **Cassandra API**için özel sorgular desteklenmez: `container.query` parametre null veya atlanmış olarak ayarlanmalıdır. Özel bir sorgu kullanmanız gerekiyorsa lütfen [Kullanıcı sesimizi](https://feedback.azure.com/forums/263029-azure-search)bize bildirin.
+> **MongoDB API 'si**, **gremlin API**ve **Cassandra API**için özel sorgular desteklenmez: `container.query` parametre null veya atlanmış olarak ayarlanmalıdır. Özel bir sorgu kullanmanız gerekiyorsa lütfen [Kullanıcı sesimizi](https://feedback.azure.com/forums/263029-azure-search)bize bildirin.
 
 Örnek belge:
 
@@ -247,9 +247,9 @@ Henüz yoksa bir [hedef Azure bilişsel arama dizini oluşturun](/rest/api/searc
 Hedef dizininizin şemasının, kaynak JSON belgelerinin şemasıyla veya özel sorgu projeksiyonunun çıkışıyla uyumlu olduğundan emin olun.
 
 > [!NOTE]
-> Bölümlenmiş koleksiyonlar için, varsayılan belge anahtarı Azure Cosmos DB bir alt çizgi `_rid` karakteriyle `rid` başlayamadığından, Azure bilişsel arama otomatik olarak yeniden adlandırdığı özelliktir. Ayrıca, Azure Cosmos DB `_rid` değerler Azure bilişsel arama anahtarlarında geçersiz karakterler içeriyor. Bu nedenle, `_rid` değerler Base64 kodlandı.
+> Bölümlenmiş koleksiyonlar için, varsayılan belge anahtarı Azure Cosmos DB `_rid` `rid` bir alt çizgi karakteriyle Başlayamadığından, Azure bilişsel arama otomatik olarak yeniden adlandırdığı özelliktir. Ayrıca, Azure Cosmos DB `_rid` değerler Azure bilişsel arama anahtarlarında geçersiz karakterler içeriyor. Bu nedenle, `_rid` değerler Base64 kodlandı.
 > 
-> MongoDB koleksiyonları için, Azure Bilişsel Arama `_id` özelliği otomatik olarak yeniden adlandırır `id`.  
+> MongoDB koleksiyonları için, Azure Bilişsel Arama özelliği otomatik olarak yeniden adlandırır `_id` `id` .  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>JSON veri türleri ve Azure Bilişsel Arama veri türleri arasında eşleme
 | JSON veri türü | Uyumlu hedef dizin alanı türleri |
@@ -297,7 +297,7 @@ Genel olarak kullanılabilen .NET SDK, genel olarak kullanılabilir REST API tam
 
 ## <a name="indexing-changed-documents"></a>Değiştirilen belgelerin dizinini oluşturma
 
-Veri değişikliği algılama ilkesinin amacı, değiştirilen veri öğelerini etkili bir şekilde belirlemektir. Şu anda desteklenen tek ilke, aşağıdaki gibi [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) belirtilen Azure Cosmos DB `_ts` tarafından sunulan (timestamp) özelliğini kullanmaktır:
+Veri değişikliği algılama ilkesinin amacı, değiştirilen veri öğelerini etkili bir şekilde belirlemektir. Şu anda desteklenen tek ilke, [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) `_ts` aşağıdaki gibi belirtilen Azure Cosmos DB tarafından sunulan (timestamp) özelliğini kullanmaktır:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -314,9 +314,9 @@ Bu ilkenin kullanılması, iyi bir Dizin Oluşturucu performansını güvence al
 
 Dizin oluşturma sırasında artımlı ilerleme durumu, Dizin Oluşturucu yürütmesi geçici hatalara veya yürütme süresi sınırına göre kesintiye uğrarsa, dizin oluşturucunun, tüm koleksiyonu sıfırdan yeniden eklemek yerine, her çalıştırıldığında kaldığınız yeri açabilmesini sağlar. Büyük koleksiyonlar dizinlenirken bu özellikle önemlidir. 
 
-Özel bir sorgu kullanırken artımlı ilerlemeyi etkinleştirmek için sorgunuzun sonuçları `_ts` sütuna göre sipariş ettiğinden emin olun. Bu, Azure Bilişsel Arama 'in hatalara karşı artımlı ilerleme durumunu sağlamak için kullandığı düzenli denetim noktası sağlar.   
+Özel bir sorgu kullanırken artımlı ilerlemeyi etkinleştirmek için sorgunuzun sonuçları sütuna göre sipariş ettiğinden emin olun `_ts` . Bu, Azure Bilişsel Arama 'in hatalara karşı artımlı ilerleme durumunu sağlamak için kullandığı düzenli denetim noktası sağlar.   
 
-Bazı durumlarda, sorgunuz bir `ORDER BY [collection alias]._ts` yan tümce Içeriyorsa bile Azure bilişsel arama sorgunun tarafından sıralandığı çıkarmayabilir. `_ts` Azure Bilişsel Arama sonuçları `assumeOrderByHighWaterMarkColumn` yapılandırma özelliği kullanılarak sıralanarak bilgi verebilirsiniz. Bu ipucunu belirtmek için, Dizin oluşturucuyu aşağıdaki şekilde oluşturun veya güncelleştirin: 
+Bazı durumlarda, sorgunuz bir `ORDER BY [collection alias]._ts` yan tümce içeriyorsa bile Azure bilişsel arama sorgunun tarafından sıralandığı çıkarmayabilir `_ts` . Azure Bilişsel Arama sonuçları yapılandırma özelliği kullanılarak sıralanarak bilgi verebilirsiniz `assumeOrderByHighWaterMarkColumn` . Bu ipucunu belirtmek için, Dizin oluşturucuyu aşağıdaki şekilde oluşturun veya güncelleştirin: 
 
     {
      ... other indexer definition properties
@@ -336,7 +336,7 @@ Koleksiyondan satırlar silindiğinde, normalde bu satırları arama dizininden 
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
 
-Özel bir sorgu kullanıyorsanız tarafından `softDeleteColumnName` başvurulan özelliğin sorgu tarafından yansıtıldığınızdan emin olun.
+Özel bir sorgu kullanıyorsanız tarafından başvurulan özelliğin `softDeleteColumnName` sorgu tarafından yansıtıldığınızdan emin olun.
 
 Aşağıdaki örnek, geçici silme ilkesiyle bir veri kaynağı oluşturur:
 

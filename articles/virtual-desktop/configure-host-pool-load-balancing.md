@@ -4,16 +4,16 @@ description: Windows sanal masaüstü ortamı için yük dengeleme yöntemini ya
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612444"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204365"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
 
@@ -33,15 +33,15 @@ Enine ilk yük dengeleme, yeni kalıcı olmayan konak havuzları için varsayıl
 Bir konak havuzunu, en fazla oturum sınırını ayarlamadan önce enine yük dengelemesi gerçekleştirecek şekilde yapılandırmak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst'
 ```
 
-Bundan sonra, birinci düzey yük dengeleme yöntemini ayarladığınızdan emin olmak için aşağıdaki cmdlet 'i çalıştırın: 
+Bundan sonra, birinci düzey yük dengeleme yöntemini ayarladığınızdan emin olmak için aşağıdaki cmdlet 'i çalıştırın:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType
 
-Name             : hostpoolname 
+Name             : hostpoolname
 LoadBalancerType : BreadthFirst
 ```
 
@@ -58,13 +58,13 @@ Derinlik-ilk yük dengeleme, yeni kullanıcı oturumlarını en fazla bağlantı
 Bir konak havuzunu derinlik-ilk yük dengelemesi gerçekleştirecek şekilde yapılandırmak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
 
 Ayarın güncelleştirildiğinden emin olmak için şu cmdlet 'i çalıştırın:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit
 
 Name             : hostpoolname
 LoadBalancerType : DepthFirst
@@ -77,8 +77,8 @@ Yük dengelemeyi Azure portal de yapılandırabilirsiniz.
 
 Yük dengelemeyi yapılandırmak için:
 
-1. Azure portal ' de https://portal.azure.comoturum açın. 
-2. Hizmetler altında **Windows sanal masaüstü** araması yapın ve seçin. 
+1. Azure portal ' de oturum açın https://portal.azure.com .
+2. Hizmetler altında **Windows sanal masaüstü** araması yapın ve seçin.
 3. Windows sanal masaüstü sayfasında **konak havuzları**' nı seçin.
 4. Düzenlemek istediğiniz konak havuzunun adını seçin.
 5. **Özellikler**’i seçin.

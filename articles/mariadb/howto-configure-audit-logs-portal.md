@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: 62bdb08d3627959b8985481c848db064149cf844
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382961"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100788"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Azure portal denetim günlüklerini yapılandırma ve erişme
 
@@ -27,6 +27,9 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - [MariaDB sunucusu için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
+
+>[!NOTE]
+> Sunucunuzun performansının yoğun bir şekilde etkilenmemesini sağlamak için, yalnızca denetim amaçlarıyla gerekli olay türlerini ve kullanıcıları günlüğe kaydetmek önerilir.
 
 Denetim günlüğünü etkinleştirin ve yapılandırın.
 
@@ -53,7 +56,7 @@ Denetim günlüğünü etkinleştirin ve yapılandırın.
 
 1. Kenar çubuğu 'ndaki **izleme** bölümünde **Tanılama ayarları**' nı seçin.
 
-1. "+ Tanılama ayarı Ekle" ![tanılama ayarı Ekle ' ye tıklayın.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. "+ Tanılama ayarı Ekle" ![ Tanılama ayarı Ekle ' ye tıklayın.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. Bir tanılama ayarı adı belirtin.
 

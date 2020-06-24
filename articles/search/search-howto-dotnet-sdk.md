@@ -9,29 +9,29 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd89e3366fbaa60109be9ef3552970936f0a6715
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283075"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080557"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET uygulamasından Azure Bilişsel Arama kullanma
 
-Bu makale, [Azure bilişsel arama .NET SDK](https://aka.ms/search-sdk)ile çalışmaya başlamanıza ve bu adımları kullanmaya başlamanıza yönelik bir yönergedir. Azure Bilişsel Arama kullanarak uygulamanızda zengin arama deneyimi uygulamak için .NET SDK 'sını kullanabilirsiniz.
+Bu makale, [Azure bilişsel arama .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)ile çalışmaya başlamanıza ve bu adımları kullanmaya başlamanıza yönelik bir yönergedir. Azure Bilişsel Arama kullanarak uygulamanızda zengin arama deneyimi uygulamak için .NET SDK 'sını kullanabilirsiniz.
 
 ## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Azure Bilişsel Arama SDK 'sındaki Özellikler
 SDK, dizinlerinizi, veri kaynaklarınızı, Dizin oluşturucularını ve eş anlamlı haritalarınızı yönetmenizi, Ayrıca, HTTP ve JSON ayrıntıları ile uğraşmak zorunda kalmadan tüm sorguları ve sorguları yürütmeyi sağlayan birkaç istemci kitaplığı içerir. Bu istemci kitaplıklarının hepsi NuGet paketleri olarak dağıtılır.
 
-Ana NuGet paketi `Microsoft.Azure.Search`, diğer tüm paketleri bağımlılık olarak içeren bir meta paketidir. Yeni kullanmaya başladıysanız veya uygulamanızın Azure Bilişsel Arama tüm özelliklerine ihtiyacı olacağını biliyorsanız bu paketi kullanın.
+Ana NuGet paketi `Microsoft.Azure.Search` , diğer tüm paketleri bağımlılık olarak içeren bir meta paketidir. Yeni kullanmaya başladıysanız veya uygulamanızın Azure Bilişsel Arama tüm özelliklerine ihtiyacı olacağını biliyorsanız bu paketi kullanın.
 
 SDK 'daki diğer NuGet paketleri şunlardır:
  
-  - `Microsoft.Azure.Search.Data`: Azure Bilişsel Arama kullanarak bir .NET uygulaması geliştiriyorsanız bu paketi kullanın ve yalnızca dizininizdeki belgeleri sorgulayıp güncelleştirmeniz yeterlidir. Ayrıca dizinleri, eş anlamlı haritaları veya diğer hizmet düzeyi kaynaklarını oluşturmanız ya da güncelleştirmeniz gerekiyorsa, bunun yerine `Microsoft.Azure.Search` paketini kullanın.
-  - `Microsoft.Azure.Search.Service`: Azure Bilişsel Arama dizinlerini, eş anlamlı haritaları, Dizin oluşturucularını, veri kaynaklarını veya diğer hizmet düzeyi kaynakları yönetmek için .NET 'te Otomasyon geliştiriyorsanız bu paketi kullanın. Dizininizdeki belgeleri sorgulamak veya güncelleştirmek istiyorsanız, bunun yerine `Microsoft.Azure.Search.Data` paketini kullanın. Azure Bilişsel Arama 'nin tüm işlevlerine ihtiyacınız varsa, bunun yerine `Microsoft.Azure.Search` paketini kullanın.
+  - `Microsoft.Azure.Search.Data`: Azure Bilişsel Arama kullanarak bir .NET uygulaması geliştiriyorsanız bu paketi kullanın ve yalnızca dizininizdeki belgeleri sorgulayıp güncelleştirmeniz yeterlidir. Ayrıca dizinleri, eş anlamlı haritaları veya diğer hizmet düzeyi kaynaklarını oluşturmanız ya da güncelleştirmeniz gerekiyorsa, `Microsoft.Azure.Search` bunun yerine paketini kullanın.
+  - `Microsoft.Azure.Search.Service`: Azure Bilişsel Arama dizinlerini, eş anlamlı haritaları, Dizin oluşturucularını, veri kaynaklarını veya diğer hizmet düzeyi kaynakları yönetmek için .NET 'te Otomasyon geliştiriyorsanız bu paketi kullanın. Dizininizdeki belgeleri sorgulamak veya güncelleştirmek istiyorsanız, `Microsoft.Azure.Search.Data` bunun yerine paketini kullanın. Azure Bilişsel Arama 'nin tüm işlevlerine ihtiyacınız varsa, `Microsoft.Azure.Search` bunun yerine paketini kullanın.
   - `Microsoft.Azure.Search.Common`: Azure Bilişsel Arama .NET kitaplıkları için gereken ortak türler. Bu paketi uygulamanızda doğrudan kullanmanız gerekmez. Yalnızca bir bağımlılık olarak kullanılmak üzere tasarlanmıştır.
 
-Çeşitli `Index`istemci kitaplıkları, `Field` `Document`ve gibi işlemleri `Indexes.Create` `Documents.Search` `SearchServiceClient` ve ve `SearchIndexClient` sınıfları gibi sınıfları tanımlar. Bu sınıflar aşağıdaki ad alanları halinde düzenlenmiştir:
+Çeşitli istemci kitaplıkları, ve gibi işlemleri ve ve sınıfları gibi sınıfları tanımlar `Index` `Field` `Document` `Indexes.Create` `Documents.Search` `SearchServiceClient` `SearchIndexClient` . Bu sınıflar aşağıdaki ad alanları halinde düzenlenmiştir:
 
 * [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft. Azure. Search. modeller](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
@@ -48,7 +48,7 @@ Zaten Azure Bilişsel Arama .NET SDK 'nın daha eski bir sürümünü kullanıyo
 ## <a name="requirements-for-the-sdk"></a>SDK gereksinimleri
 1. Visual Studio 2017 veya üzeri.
 2. Kendi Azure Bilişsel Arama hizmetiniz. SDK 'yı kullanmak için hizmetinizin adı ve bir veya daha fazla API anahtarı gerekir. [Portalda bir hizmet oluşturmak](search-create-service-portal.md) , bu adımlarda size yardımcı olur.
-3. Visual Studio 'daki "NuGet Paketlerini Yönet" i kullanarak Azure Bilişsel Arama .NET SDK [NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Search) indirin. Yalnızca NuGet.org üzerinde paket adını `Microsoft.Azure.Search` (veya yalnızca bir işlevin alt kümesine ihtiyacınız varsa yukarıdaki diğer paket adlarından birini) aratın.
+3. Visual Studio 'daki "NuGet Paketlerini Yönet" i kullanarak Azure Bilişsel Arama .NET SDK [NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Search) indirin. `Microsoft.Azure.Search`Yalnızca NuGet.org üzerinde paket adını (veya yalnızca bir işlevin alt kümesine ihtiyacınız varsa yukarıdaki diğer paket adlarından birini) aratın.
 
 Azure Bilişsel Arama .NET SDK, .NET Framework 4.5.2 ve üstünü hedefleyen uygulamaları ve .NET Core 2,0 ve üstünü de destekler.
 
@@ -100,7 +100,7 @@ static void Main(string[] args)
 > 
 >
 
-Bu adım adım adım izlenecek. İlk olarak yeni `SearchServiceClient`bir oluşturma gerekir. Bu nesne, dizinleri yönetmenizi sağlar. Bir tane oluşturmak için, Azure Bilişsel Arama hizmet adınızı ve bir yönetici API anahtarını sağlamanız gerekir. Bu bilgileri `appsettings.json` [örnek uygulamanın](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)dosyasına girebilirsiniz.
+Bu adım adım adım izlenecek. İlk olarak yeni bir oluşturma gerekir `SearchServiceClient` . Bu nesne, dizinleri yönetmenizi sağlar. Bir tane oluşturmak için, Azure Bilişsel Arama hizmet adınızı ve bir yönetici API anahtarını sağlamanız gerekir. Bu bilgileri `appsettings.json` [örnek uygulamanın](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)dosyasına girebilirsiniz.
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -114,7 +114,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 ```
 
 > [!NOTE]
-> Yanlış bir anahtar (örneğin, bir yönetici anahtarının gerekli olduğu bir sorgu anahtarı) sağlarsanız, üzerinde bir işlem yöntemi ilk `SearchServiceClient` kez çağırdığınızda " `CloudException` yasak" hata iletisiyle bir oluşturulur `Indexes.Create`. Bu durumda, API anahtarımızı çift kontrol edin.
+> Yanlış bir anahtar (örneğin, bir yönetici anahtarının gerekli olduğu bir sorgu anahtarı) sağlarsanız, `SearchServiceClient` `CloudException` üzerinde bir işlem yöntemi ilk kez çağırdığınızda "yasak" hata iletisiyle bir oluşturulur `Indexes.Create` . Bu durumda, API anahtarımızı çift kontrol edin.
 > 
 > 
 
@@ -128,25 +128,25 @@ Console.WriteLine("{0}", "Creating index...\n");
 CreateIndex(indexName, serviceClient);
 ```
 
-Sonra, dizinin doldurulması gerekir. Dizini doldurmak için bir `SearchIndexClient`ile ihtiyacımız olacak. Bir tane elde etmenin iki yolu vardır: oluşturarak veya ' de çağırarak `Indexes.GetClient` `SearchServiceClient`. Daha kolay bir kullanım için kullanırız.
+Sonra, dizinin doldurulması gerekir. Dizini doldurmak için bir ile ihtiyacımız olacak `SearchIndexClient` . Bir tane elde etmenin iki yolu vardır: oluşturarak veya ' `Indexes.GetClient` de çağırarak `SearchServiceClient` . Daha kolay bir kullanım için kullanırız.
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> Tipik bir arama uygulamasında dizin yönetimi ve popülasyon, arama sorgularından ayrı bir bileşen tarafından işlenebilir. `Indexes.GetClient`, size ek `SearchCredentials`sağlama sorunu kaydettiğinden, bir dizini doldurmak için kullanışlıdır. Yeni `SearchIndexClient` için `SearchServiceClient` oluşturmak üzere kullandığınız yönetici anahtarını geçirerek bunu yapar. Ancak, uygulamanızın sorguları yürüten bölümünde, bir sorgu anahtarı geçirebilmeniz için `SearchIndexClient` doğrudan oluşturulması daha iyidir, bu da bir yönetici anahtarı yerine yalnızca verileri okuyabilmenizi sağlar. Bu, en az ayrıcalık ilkesiyle tutarlıdır ve uygulamanızı daha güvenli hale getirmenize yardımcı olur. Yönetici anahtarları ve sorgu anahtarları hakkında daha fazla bilgiyi [buradan](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization)edinebilirsiniz.
+> Tipik bir arama uygulamasında dizin yönetimi ve popülasyon, arama sorgularından ayrı bir bileşen tarafından işlenebilir. `Indexes.GetClient`, size ek sağlama sorunu kaydettiğinden, bir dizini doldurmak için kullanışlıdır `SearchCredentials` . Yeni `SearchIndexClient` için `SearchServiceClient` oluşturmak üzere kullandığınız yönetici anahtarını geçirerek bunu yapar. Ancak, uygulamanızın sorguları yürüten bölümünde, bir sorgu anahtarı geçirebilmeniz için doğrudan oluşturulması daha iyidir, bu da bir `SearchIndexClient` yönetici anahtarı yerine yalnızca verileri okuyabilmenizi sağlar. Bu, en az ayrıcalık ilkesiyle tutarlıdır ve uygulamanızı daha güvenli hale getirmenize yardımcı olur. Yönetici anahtarları ve sorgu anahtarları hakkında daha fazla bilgiyi [buradan](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization)edinebilirsiniz.
 > 
 > 
 
-Artık bir `SearchIndexClient`sunduğumuz için dizini doldururuz. Dizin popülasyonu, daha sonra izlenecek bir başka yöntem tarafından yapılır.
+Artık bir sunduğumuz `SearchIndexClient` için dizini doldururuz. Dizin popülasyonu, daha sonra izlenecek bir başka yöntem tarafından yapılır.
 
 ```csharp
 Console.WriteLine("{0}", "Uploading documents...\n");
 UploadDocuments(indexClient);
 ```
 
-Son olarak, birkaç arama sorgusu yürütüyoruz ve sonuçları görüntüyoruz. Bu kez, farklı `SearchIndexClient`bir kullandık:
+Son olarak, birkaç arama sorgusu yürütüyoruz ve sonuçları görüntüyoruz. Bu kez, farklı bir kullandık `SearchIndexClient` :
 
 ```csharp
 ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(indexName, configuration);
@@ -154,7 +154,7 @@ ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(indexName, co
 RunQueries(indexClientForQueries);
 ```
 
-Daha sonra `RunQueries` yönteme daha yakından bakacağız. Yeni `SearchIndexClient`bir oluşturma kodu aşağıda verilmiştir:
+`RunQueries`Daha sonra yönteme daha yakından bakacağız. Yeni bir oluşturma kodu aşağıda verilmiştir `SearchIndexClient` :
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(string indexName, IConfigurationRoot configuration)
@@ -214,10 +214,10 @@ Bu uygulamayı geçerli bir hizmet adı ve API anahtarları ile çalıştırırs
 
 Uygulamanın tam kaynak kodu, bu makalenin sonunda verilmiştir.
 
-Sonra, tarafından `Main`çağrılan yöntemlerin her birine daha yakından bakacağız.
+Sonra, tarafından çağrılan yöntemlerin her birine daha yakından bakacağız `Main` .
 
 ### <a name="creating-an-index"></a>Dizin oluşturma
-Oluşturduktan sonra `SearchServiceClient`, `Main` zaten varsa "oteller" dizinini siler. Bu silme işlemi aşağıdaki yöntem tarafından yapılır:
+Oluşturduktan sonra `SearchServiceClient` , `Main` zaten varsa "oteller" dizinini siler. Bu silme işlemi aşağıdaki yöntem tarafından yapılır:
 
 ```csharp
 private static void DeleteIndexIfExists(string indexName, SearchServiceClient serviceClient)
@@ -229,14 +229,14 @@ private static void DeleteIndexIfExists(string indexName, SearchServiceClient se
 }
 ```
 
-Bu yöntem, dizinin mevcut `SearchServiceClient` olup olmadığını denetlemek için verilen öğesini kullanır ve varsa silin.
+Bu yöntem, `SearchServiceClient` dizinin mevcut olup olmadığını denetlemek için verilen öğesini kullanır ve varsa silin.
 
 > [!NOTE]
-> Bu makaledeki örnek kod, basitlik için Azure Bilişsel Arama .NET SDK 'sının zaman uyumlu yöntemlerini kullanır. Kendi uygulamalarınızda zaman uyumsuz yöntemler kullanarak bunları ölçeklenebilir ve esnek tutmanızı öneririz. Örneğin `ExistsAsync` , yukarıdaki yönteminde `DeleteAsync` `Exists` ve `Delete`yerine kullanabilirsiniz.
+> Bu makaledeki örnek kod, basitlik için Azure Bilişsel Arama .NET SDK 'sının zaman uyumlu yöntemlerini kullanır. Kendi uygulamalarınızda zaman uyumsuz yöntemler kullanarak bunları ölçeklenebilir ve esnek tutmanızı öneririz. Örneğin, yukarıdaki yönteminde `ExistsAsync` `DeleteAsync` ve yerine kullanabilirsiniz `Exists` `Delete` .
 > 
 > 
 
-Sonra, `Main` bu yöntemi çağırarak yeni bir "oteller" dizini oluşturur:
+Sonra, `Main` Bu yöntemi çağırarak yeni bir "oteller" dizini oluşturur:
 
 ```csharp
 private static void CreateIndex(string indexName, SearchServiceClient serviceClient)
@@ -251,17 +251,17 @@ private static void CreateIndex(string indexName, SearchServiceClient serviceCli
 }
 ```
 
-Bu yöntem, yeni dizinin `Index` şemasını tanımlayan `Field` nesnelerin listesini içeren yeni bir nesne oluşturur. Her alan, arama davranışını tanımlayan bir ad, veri türü ve birkaç özniteliğe sahiptir. `FieldBuilder` Sınıfı, belirtilen `Hotel` model sınıfının ortak özelliklerini ve özniteliklerini inceleyerek, dizin için bir `Field` nesne listesi oluşturmak üzere yansıma kullanır. Daha sonra `Hotel` sınıfa daha yakından bakacağız.
+Bu yöntem `Index` `Field` , yeni dizinin şemasını tanımlayan nesnelerin listesini içeren yeni bir nesne oluşturur. Her alan, arama davranışını tanımlayan bir ad, veri türü ve birkaç özniteliğe sahiptir. `FieldBuilder`Sınıfı, `Field` belirtilen model sınıfının ortak özelliklerini ve özniteliklerini inceleyerek, dizin için bir nesne listesi oluşturmak üzere yansıma kullanır `Hotel` . `Hotel`Daha sonra sınıfa daha yakından bakacağız.
 
 > [!NOTE]
-> Gerektiğinde, her zaman `Field` nesne listesini doğrudan `FieldBuilder` oluşturabilirsiniz. Örneğin, bir model sınıfı kullanmak istemeyebilirsiniz veya öznitelikler ekleyerek değiştirmek istemediğiniz mevcut bir model sınıfını kullanmanız gerekebilir.
+> Gerektiğinde, her zaman `Field` nesne listesini doğrudan oluşturabilirsiniz `FieldBuilder` . Örneğin, bir model sınıfı kullanmak istemeyebilirsiniz veya öznitelikler ekleyerek değiştirmek istemediğiniz mevcut bir model sınıfını kullanmanız gerekebilir.
 >
 > 
 
 Alanlara ek olarak, dizine Puanlama profilleri, öneri araçları veya CORS seçenekleri de ekleyebilirsiniz (Bu parametreler, breçekimi için örnekten çıkarılır). Dizin nesnesi hakkında daha fazla bilgi ve [SDK başvurusu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)içindeki bileşen parçaları ve [Azure bilişsel arama REST API başvurusu](https://docs.microsoft.com/rest/api/searchservice/)hakkında daha fazla bilgi edinebilirsiniz.
 
 ### <a name="populating-the-index"></a>Dizin dolduruluyor
-İçindeki `Main` bir sonraki adım, yeni oluşturulan dizini doldurur. Bu dizin oluşturma işlemi şu yöntemde yapılır: (bazı kodlar "... ile değiştirilmiştir" illüstrasyon amaçlıdır.  Tam veri popülasyon kodu için tam örnek çözümüne bakın.)
+İçindeki bir sonraki adım, `Main` Yeni oluşturulan dizini doldurur. Bu dizin oluşturma işlemi şu yöntemde yapılır: (bazı kodlar "... ile değiştirilmiştir" illüstrasyon amaçlıdır.  Tam veri popülasyon kodu için tam örnek çözümüne bakın.)
 
 ```csharp
 private static void UploadDocuments(ISearchIndexClient indexClient)
@@ -377,28 +377,28 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 }
 ```
 
-Bu yöntemin dört bölümü vardır. İlki, dizine yüklemek üzere giriş verilerimizde kullanılacak 3 `Hotel` `Room` nesne ile her biri 3 nesneden oluşan bir dizi oluşturur. Bu veriler kolaylık sağlaması için sabit olarak kodlanır. Kendi uygulamanızda, verileriniz büyük olasılıkla SQL veritabanı gibi bir dış veri kaynağından gelmiş olacaktır.
+Bu yöntemin dört bölümü vardır. İlki, `Hotel` `Room` dizine yüklemek üzere giriş verilerimizde kullanılacak 3 nesne ile her biri 3 nesneden oluşan bir dizi oluşturur. Bu veriler kolaylık sağlaması için sabit olarak kodlanır. Kendi uygulamanızda, verileriniz büyük olasılıkla SQL veritabanı gibi bir dış veri kaynağından gelmiş olacaktır.
 
-İkinci bölüm, belgeleri içeren `IndexBatch` bir oluşturur. Bu durumda, çağırarak `IndexBatch.Upload`, toplu işe uygulamak istediğiniz işlemi bu durumda belirtirsiniz. Batch daha sonra `Documents.Index` yöntemi tarafından Azure bilişsel arama dizinine yüklenir.
+İkinci bölüm, `IndexBatch` belgeleri içeren bir oluşturur. Bu durumda, çağırarak, toplu işe uygulamak istediğiniz işlemi bu durumda belirtirsiniz `IndexBatch.Upload` . Batch daha sonra yöntemi tarafından Azure Bilişsel Arama dizinine yüklenir `Documents.Index` .
 
 > [!NOTE]
-> Bu örnekte, belgeleri karşıya yüklüyoruz. Değişiklikleri varolan belgelere birleştirmek veya belgeleri silmek isterseniz,, veya `IndexBatch.Merge` `IndexBatch.MergeOrUpload` `IndexBatch.Delete` çağırarak toplu işlemler oluşturabilirsiniz. Tek bir toplu işte farklı işlemleri, her biri Azure Bilişsel Arama bir `IndexBatch.New`belge üzerinde belirli bir işlemi gerçekleştirmesini `IndexAction` söyleyen bir nesne koleksiyonu alan çağırarak de karıştırabilirsiniz. ,, Vb. `IndexAction` gibi karşılık gelen yöntemi çağırarak, `IndexAction.Upload`her biri kendi işlemi ile oluşturabilirsiniz. `IndexAction.Merge`
+> Bu örnekte, belgeleri karşıya yüklüyoruz. Değişiklikleri varolan belgelere birleştirmek veya belgeleri silmek isterseniz,, veya çağırarak toplu işlemler oluşturabilirsiniz `IndexBatch.Merge` `IndexBatch.MergeOrUpload` `IndexBatch.Delete` . Tek bir toplu işte farklı işlemleri, `IndexBatch.New` `IndexAction` her biri Azure bilişsel arama bir belge üzerinde belirli bir işlemi gerçekleştirmesini söyleyen bir nesne koleksiyonu alan çağırarak de karıştırabilirsiniz. ,, Vb `IndexAction` . gibi karşılık gelen yöntemi çağırarak, her biri kendi işlemi ile `IndexAction.Merge` oluşturabilirsiniz `IndexAction.Upload` .
 > 
 > 
 
-Bu yöntemin üçüncü bölümü, dizin oluşturma için önemli bir hata durumunu işleyen bir catch bloğudur. Azure Bilişsel Arama hizmetiniz toplu işteki bazı belgelerden Dizin kuramazsa, `IndexBatchException` tarafından `Documents.Index`oluşturulur. Bu özel durum, hizmetiniz ağır yük altındayken belge dizinleniyorsa gerçekleşebilir. **Bu durumu açık bir şekilde kodunuzda işlemenizi kesinlikle öneririz.** Başarısız olan belgelere dizin oluşturmayı geciktirip sonra yeniden deneyebilir veya günlük tutup örneğin devam ettiği şekilde devam edebilir veya uygulamanızın veri tutarlılığı gereksinimlerine bağlı olarak başka bir şey yapabilirsiniz.
+Bu yöntemin üçüncü bölümü, dizin oluşturma için önemli bir hata durumunu işleyen bir catch bloğudur. Azure Bilişsel Arama hizmetiniz toplu işteki bazı belgelerden Dizin kuramazsa, `IndexBatchException` tarafından oluşturulur `Documents.Index` . Bu özel durum, hizmetiniz ağır yük altındayken belge dizinleniyorsa gerçekleşebilir. **Bu durumu açık bir şekilde kodunuzda işlemenizi kesinlikle öneririz.** Başarısız olan belgelere dizin oluşturmayı geciktirip sonra yeniden deneyebilir veya günlük tutup örneğin devam ettiği şekilde devam edebilir veya uygulamanızın veri tutarlılığı gereksinimlerine bağlı olarak başka bir şey yapabilirsiniz.
 
 > [!NOTE]
-> [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) Yöntemini yalnızca önceki çağrısında başarısız olan eylemleri içeren yeni bir toplu iş oluşturmak için kullanabilirsiniz `Index`. [StackOverflow üzerinde](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry)düzgün bir şekilde nasıl kullanılacağına ilişkin bir tartışma vardır.
+> [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry)Yöntemini yalnızca önceki çağrısında başarısız olan eylemleri içeren yeni bir toplu iş oluşturmak için kullanabilirsiniz `Index` . [StackOverflow üzerinde](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry)düzgün bir şekilde nasıl kullanılacağına ilişkin bir tartışma vardır.
 >
 >
 
-Son olarak, `UploadDocuments` yöntem iki saniye gecikdi. Azure Bilişsel Arama hizmetinizde dizin oluşturma zaman uyumsuz olarak gerçekleştirilir, bu nedenle örnek uygulamanın arama için kullanılabilir olduğundan emin olmak için kısa bir süre beklemesi gerekir. Bu gibi gecikmeler genellikle yalnızca gösterilerde, testlerde ve örnek uygulamalarda gereklidir.
+Son olarak, `UploadDocuments` Yöntem iki saniye gecikdi. Azure Bilişsel Arama hizmetinizde dizin oluşturma zaman uyumsuz olarak gerçekleştirilir, bu nedenle örnek uygulamanın arama için kullanılabilir olduğundan emin olmak için kısa bir süre beklemesi gerekir. Bu gibi gecikmeler genellikle yalnızca gösterilerde, testlerde ve örnek uygulamalarda gereklidir.
 
 <a name="how-dotnet-handles-documents"></a>
 
 #### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK belgeleri nasıl işler?
-Azure Bilişsel Arama .NET SDK 'sının, dizine gibi `Hotel` Kullanıcı tanımlı bir sınıfın örneklerini karşıya nasıl yükleyebilmediğinizi merak ediyor olabilirsiniz. Bu sorunun yanıtlanmasına yardımcı olmak için şu `Hotel` sınıfa göz atalım:
+Azure Bilişsel Arama .NET SDK 'sının, dizine gibi Kullanıcı tanımlı bir sınıfın örneklerini karşıya nasıl yükleyebilmediğinizi merak ediyor olabilirsiniz `Hotel` . Bu sorunun yanıtlanmasına yardımcı olmak için şu sınıfa göz atalım `Hotel` :
 
 ```csharp
 using System;
@@ -455,29 +455,29 @@ public partial class Hotel
 }
 ```
 
-İlk dikkat edilecek şey, `Hotel` sınıftaki her bir ortak özelliğin adının Dizin tanımında aynı ada sahip olan bir alana eşlendiğine ilişkin bir şeydir. Her bir alanın küçük harfle başlamasını istiyorsanız ("Camel Case"), SDK 'ya özellik adlarını, sınıftaki `[SerializePropertyNamesAsCamelCase]` özniteliğiyle otomatik olarak bir şekilde eşlemenizi söyleyebilirsiniz. Bu senaryo, .NET 'teki "Pascal case" adlandırma kılavuzlarını ihlal etmek zorunda kalmadan, hedef şemanın uygulama geliştiricisinin denetimi dışında olduğu veri bağlamayı gerçekleştiren .NET uygulamalarında yaygındır.
+İlk dikkat edilecek şey, sınıftaki her bir ortak özelliğin adının `Hotel` Dizin tanımında aynı ada sahip olan bir alana eşlendiğine ilişkin bir şeydir. Her bir alanın küçük harfle başlamasını istiyorsanız ("Camel Case"), SDK 'ya özellik adlarını, sınıftaki özniteliğiyle otomatik olarak bir şekilde eşlemenizi söyleyebilirsiniz `[SerializePropertyNamesAsCamelCase]` . Bu senaryo, .NET 'teki "Pascal case" adlandırma kılavuzlarını ihlal etmek zorunda kalmadan, hedef şemanın uygulama geliştiricisinin denetimi dışında olduğu veri bağlamayı gerçekleştiren .NET uygulamalarında yaygındır.
 
 > [!NOTE]
 > Azure Bilişsel Arama .NET SDK 'Sı, özel model nesnelerinizi JSON 'a ve veritabanından seri hale getirmek ve seri durumdan çıkarmak için [Newtonsoft JSON.net](https://www.newtonsoft.com/json/help/html/Introduction.htm) kitaplığını kullanır. Gerekirse bu seri hale getirmeyi özelleştirebilirsiniz. Daha fazla bilgi için bkz. [JSON.net Ile özel serileştirme](#JsonDotNet).
 > 
 > 
 
-Dikkat edilecek `IsFilterable`ikinci şey, her bir özellik, `IsSearchable` `Key`, ve `Analyzer`gibi özniteliklerle tasarlanmalıdır. Bu öznitelikler, [bir Azure bilişsel arama dizininde karşılık gelen alan özniteliklerine](/rest/api/searchservice/create-index)doğrudan eşlenir. `FieldBuilder` Sınıfı, dizin için alan tanımları oluşturmak üzere bu özellikleri kullanır.
+Dikkat edilecek ikinci şey, her bir özellik,, ve gibi özniteliklerle tasarlanmalıdır `IsFilterable` `IsSearchable` `Key` `Analyzer` . Bu öznitelikler, [bir Azure bilişsel arama dizininde karşılık gelen alan özniteliklerine](/rest/api/searchservice/create-index)doğrudan eşlenir. `FieldBuilder`Sınıfı, dizin için alan tanımları oluşturmak üzere bu özellikleri kullanır.
 
-`Hotel` Sınıfına ilişkin üçüncü önemli şey, genel özelliklerin veri türleridir. Bu özelliklerin .NET türleri, dizin tanımında eşdeğer alan türleriyle eşlenir. Örneğin, `Category` dize özelliği `Edm.String` türündeki `category` alanına eşlenir. , `bool?` `Edm.Boolean` `DateTimeOffset?`,, Vb. arasında benzer tür eşlemeleri `Edm.DateTimeOffset` vardır. Tür eşlemesine yönelik belirli kurallar, `Documents.Get` [Azure bilişsel arama .NET SDK başvurusu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)içindeki yöntemiyle belgelenmiştir. `FieldBuilder` Sınıfı sizin için bu eşlemeyi üstlenir, ancak serileştirme sorunlarını gidermeniz gerektiğinde anlaşılması faydalı olabilir.
+Sınıfına ilişkin üçüncü önemli şey, `Hotel` Genel özelliklerin veri türleridir. Bu özelliklerin .NET türleri, dizin tanımında eşdeğer alan türleriyle eşlenir. Örneğin, `Category` dize özelliği `Edm.String` türündeki `category` alanına eşlenir. ,,, Vb. arasında benzer tür eşlemeleri vardır `bool?` `Edm.Boolean` `DateTimeOffset?` `Edm.DateTimeOffset` . Tür eşlemesine yönelik belirli kurallar, `Documents.Get` [Azure BILIŞSEL arama .NET SDK başvurusu](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)içindeki yöntemiyle belgelenmiştir. `FieldBuilder`Sınıfı sizin için bu eşlemeyi üstlenir, ancak serileştirme sorunlarını gidermeniz gerektiğinde anlaşılması faydalı olabilir.
 
-`SmokingAllowed` Özelliği fark etmeniz mı istiyordunuz?
+Özelliği fark etmeniz mı istiyordunuz `SmokingAllowed` ?
 
 ```csharp
 [JsonIgnore]
 public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => element.SmokingAllowed == true) : (bool?)null;
 ```
 
-Bu `JsonIgnore` özelliğindeki öznitelik, `FieldBuilder` öğesine onu bir alan olarak dizine serileştirmeyeceğini söyler.  Bu, uygulamanızda yardımcılar olarak kullanabileceğiniz istemci tarafı hesaplanmış Özellikler oluşturmanın harika bir yoludur.  Bu durumda, `SmokingAllowed` özelliği `Room` `Rooms` koleksiyonda herhangi birinin smome izin verip etmediğini yansıtır.  Tümü yanlışsa, tüm otelin smome izin vermiyor olduğunu gösterir.
+`JsonIgnore`Bu özelliğindeki öznitelik, `FieldBuilder` öğesine onu bir alan olarak dizine serileştirmeyeceğini söyler.  Bu, uygulamanızda yardımcılar olarak kullanabileceğiniz istemci tarafı hesaplanmış Özellikler oluşturmanın harika bir yoludur.  Bu durumda, `SmokingAllowed` özelliği koleksiyonda herhangi birinin `Room` `Rooms` smome izin verip etmediğini yansıtır.  Tümü yanlışsa, tüm otelin smome izin vermiyor olduğunu gösterir.
 
-`Address` Ve `Rooms` gibi bazı özellikler .net sınıflarının örnekleridir.  Bu özellikler daha karmaşık veri yapılarını temsil eder ve sonuç olarak dizinde [karmaşık veri türüne](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) sahip alanlar gerektirir.
+Ve gibi bazı özellikler `Address` `Rooms` .net sınıflarının örnekleridir.  Bu özellikler daha karmaşık veri yapılarını temsil eder ve sonuç olarak dizinde [karmaşık veri türüne](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) sahip alanlar gerektirir.
 
-`Address` Özelliği, `Address` sınıfında aşağıda tanımlanan birden çok değer kümesini temsil eder:
+`Address`Özelliği, sınıfında aşağıda tanımlanan birden çok değer kümesini temsil eder `Address` :
 
 ```csharp
 using System;
@@ -509,7 +509,7 @@ namespace AzureSearch.SDKHowTo
 
 Bu sınıf, Birleşik Devletler veya Kanada 'daki adresleri tanımlamakta kullanılan standart değerleri içerir. Mantıksal alanları dizinde gruplamak için bu gibi türleri kullanabilirsiniz.
 
-`Rooms` Özelliği bir `Room` nesne dizisini temsil eder:
+`Rooms`Özelliği bir nesne dizisini temsil eder `Room` :
 
 ```csharp
 using System;
@@ -556,13 +556,13 @@ namespace AzureSearch.SDKHowTo
 Dizindeki belgelerle etkileşim kurmak için kendi sınıflarınızı kullanma özelliği her iki yönde de işe yarar; Ayrıca, bir sonraki bölümde göreceğiniz gibi, arama sonuçlarını alabilir ve SDK 'nın bunları dilediğiniz bir tür için otomatik olarak seri durumdan çıkarabilmeniz gerekir.
 
 > [!NOTE]
-> Azure Bilişsel Arama .NET SDK, alan adlarının alan değerlerine anahtar/değer eşlemesi `Document` olan sınıfını kullanarak dinamik olarak yazılmış belgeleri de destekler. Bu durum, tasarım sırasında dizin şemasını bilmediğiniz veya belirli model sınıflarına bağlamanın kullanışlı olmayacağı senaryolarda kullanışlıdır. SDK'da belgelerle ilgili tüm yöntemler, `Document` sınıfıyla çalışan aşırı yüklerin yanı sıra genel türde bir parametre alan kesin tür belirtilmiş aşırı yüklere de sahiptir. Bu öğreticideki örnek kodda yalnızca ikincisi kullanılır. Sınıfı öğesinden `Dictionary<string, object>`devralır. [ `Document` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document)
+> Azure Bilişsel Arama .NET SDK, alan `Document` adlarının alan değerlerine anahtar/değer eşlemesi olan sınıfını kullanarak dinamik olarak yazılmış belgeleri de destekler. Bu durum, tasarım sırasında dizin şemasını bilmediğiniz veya belirli model sınıflarına bağlamanın kullanışlı olmayacağı senaryolarda kullanışlıdır. SDK'da belgelerle ilgili tüm yöntemler, `Document` sınıfıyla çalışan aşırı yüklerin yanı sıra genel türde bir parametre alan kesin tür belirtilmiş aşırı yüklere de sahiptir. Bu öğreticideki örnek kodda yalnızca ikincisi kullanılır. [ `Document` Sınıfı](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) öğesinden devralır `Dictionary<string, object>` .
 > 
 >
 
 **Neden boş değer atanabilir türleri kullanmalısınız?**
 
-Kendi model sınıflarınızı bir Azure Bilişsel Arama diziniyle eşlenecek şekilde tasarlarken, gibi değer türlerinin özelliklerinin `bool` (örneğin, `int` `bool?` yerine `bool`) null değer olarak bildirilmesi önerilir. Boş değer atanamayan bir özellik kullanırsanız buna karşılık gelen alan için dizininizdeki hiçbir belgenin boş bir değer içermediğini **garanti etmeniz** gerekir. SDK ne de Azure Bilişsel Arama hizmeti bunu zorunlu kılmaya yardımcı olacaktır.
+Kendi model sınıflarınızı bir Azure Bilişsel Arama diziniyle eşlenecek şekilde tasarlarken, gibi değer türlerinin özelliklerinin `bool` `int` (örneğin, `bool?` yerine) null değer olarak bildirilmesi önerilir `bool` . Boş değer atanamayan bir özellik kullanırsanız buna karşılık gelen alan için dizininizdeki hiçbir belgenin boş bir değer içermediğini **garanti etmeniz** gerekir. SDK ne de Azure Bilişsel Arama hizmeti bunu zorunlu kılmaya yardımcı olacaktır.
 
 Bu yalnızca kuramsal bir sorun değildir: Var olan `Edm.Int32` türünde bir dizine yeni bir alan eklediğiniz bir senaryoyu düşünün. Dizin tanımını güncelleştirdikten sonra, tüm belgeler bu yeni alan için null değere sahip olur (çünkü tüm türler Azure Bilişsel Arama null yapılabilir olduğundan). Ardından bu alan için boş değer atanamayan bir `int` özelliğiyle bir model sınıfı kullanırsanız belgeleri almaya çalışırken bunun gibi bir `JsonSerializationException` alırsınız:
 
@@ -573,7 +573,7 @@ Bu nedenle, en iyi uygulama olarak model sınıflarınızda boş değer atanabil
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>JSON.NET ile özel serileştirme
-SDK, belgeleri serileştirmek ve seri durumdan çıkarmak için JSON.NET kullanır. Kendi `JsonConverter` veya `IContractResolver`' i tanımlayarak gerekirse serileştirme ve serisini kaldırabilirsiniz. Daha fazla bilgi için [JSON.net belgelerine](https://www.newtonsoft.com/json/help/html/Introduction.htm)bakın. Bu, uygulamanızı Azure Bilişsel Arama ile kullanmak için mevcut bir model sınıfını ve diğer gelişmiş senaryoları uyarlamak istediğinizde yararlı olabilir. Örneğin, özel serileştirme ile şunları yapabilirsiniz:
+SDK, belgeleri serileştirmek ve seri durumdan çıkarmak için JSON.NET kullanır. Kendi veya ' i tanımlayarak gerekirse serileştirme ve serisini kaldırabilirsiniz `JsonConverter` `IContractResolver` . Daha fazla bilgi için [JSON.net belgelerine](https://www.newtonsoft.com/json/help/html/Introduction.htm)bakın. Bu, uygulamanızı Azure Bilişsel Arama ile kullanmak için mevcut bir model sınıfını ve diğer gelişmiş senaryoları uyarlamak istediğinizde yararlı olabilir. Örneğin, özel serileştirme ile şunları yapabilirsiniz:
 
 * Model sınıfınızın belirli özelliklerini belge alanları olarak depolanmak üzere dahil edin veya hariç tutun.
 * Kodunuzda kodunuzun ve alan adlarınızın Özellik adları arasında eşleme yapın.
@@ -641,9 +641,9 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-Sorgu her yürütüldüğünde, bu yöntem ilk olarak yeni `SearchParameters` bir nesne oluşturur. Bu nesne, sorgu için sıralama, filtreleme, sayfalama ve Faks oluşturma gibi ek seçenekleri belirtmek için kullanılır. Bu yöntemde, `Filter`,, ve `Select` `OrderBy` `Top` özelliğini farklı sorgular için ayarlıyoruz. Tüm `SearchParameters` Özellikler [burada](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters)belgelenmiştir.
+Sorgu her yürütüldüğünde, bu yöntem ilk olarak yeni bir `SearchParameters` nesne oluşturur. Bu nesne, sorgu için sıralama, filtreleme, sayfalama ve Faks oluşturma gibi ek seçenekleri belirtmek için kullanılır. Bu yöntemde,,, `Filter` `Select` `OrderBy` ve `Top` özelliğini farklı sorgular için ayarlıyoruz. Tüm `SearchParameters` Özellikler [burada](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters)belgelenmiştir.
 
-Sonraki adım aslında arama sorgusunu yürütmekte. Aramayı çalıştırmak `Documents.Search` yöntemi kullanılarak yapılır. Her sorgu için, arama metnini dize olarak kullanılacak şekilde (veya `"*"` arama metni yoksa) ve daha önce oluşturulan arama parametrelerini geçiririz. Ayrıca, SDK `Hotel` 'nın arama sonuçlarındaki belgelerin türünü `Documents.Search`türündeki `Hotel`nesnelere serisini oluşturmasını söyleyen için tür parametresi olarak da belirttik.
+Sonraki adım aslında arama sorgusunu yürütmekte. Aramayı çalıştırmak yöntemi kullanılarak yapılır `Documents.Search` . Her sorgu için, arama metnini dize olarak kullanılacak şekilde (veya `"*"` arama metni yoksa) ve daha önce oluşturulan arama parametrelerini geçiririz. Ayrıca `Hotel` `Documents.Search` , SDK 'nın arama sonuçlarındaki belgelerin türünü türündeki nesnelere serisini oluşturmasını söyleyen için tür parametresi olarak da belirttik `Hotel` .
 
 > [!NOTE]
 > Arama sorgusu ifade sözdizimi hakkında daha fazla bilgiyi [burada](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)bulabilirsiniz.
@@ -678,7 +678,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-Bu durumda, herhangi bir aranabilir alanda "Motel" sözcüğünün tüm dizinini arıyor ve yalnızca `Select` parametre tarafından belirtilen otel adlarını almak istiyoruz. Sonuçlar şunlardır:
+Bu durumda, herhangi bir aranabilir alanda "Motel" sözcüğünün tüm dizinini arıyor ve yalnızca parametre tarafından belirtilen otel adlarını almak istiyoruz `Select` . Sonuçlar şunlardır:
 
     Name: Secret Point Motel
 
@@ -699,7 +699,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Bu sorgu, dizindeki belgeleri `$filter` filtrelemek Için `Rooms/any(r: r/BaseRate lt 100)`bir OData ifadesi kullanır. Bu, Oda koleksiyonundaki her öğeye ' BaseRate lt 100 ' öğesini uygulamak için [Any işlecini](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators) kullanır. Azure Bilişsel Arama [tarafından desteklenen OData](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax)sözdizimi hakkında daha fazla bilgi edinebilirsiniz.
+Bu sorgu, `$filter` `Rooms/any(r: r/BaseRate lt 100)` dizindeki belgeleri filtrelemek Için bir OData ifadesi kullanır. Bu, Oda koleksiyonundaki her öğeye ' BaseRate lt 100 ' öğesini uygulamak için [Any işlecini](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators) kullanır. Azure Bilişsel Arama [tarafından desteklenen OData](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax)sözdizimi hakkında daha fazla bilgi edinebilirsiniz.
 
 Sorgunun sonuçları aşağıdadır:
 
@@ -725,7 +725,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Bu durumda, `OrderBy` parametresini olarak `lastRenovationDate desc`belirtmek için OData söz dizimini kullanırız. Ayrıca yalnızca en `Top` üstteki iki belgeyi aldığınızdan emin olmak için 2 olarak ayarlandık. Daha önce olduğu gibi, `Select` hangi alanların döndürüleceğini belirlemek için ayarlandık.
+Bu durumda, parametresini olarak belirtmek için OData söz dizimini kullanırız `OrderBy` `lastRenovationDate desc` . Ayrıca `Top` yalnızca en üstteki iki belgeyi aldığınızdan emin olmak için 2 olarak ayarlandık. Daha önce olduğu gibi, `Select` hangi alanların döndürüleceğini belirlemek için ayarlandık.
 
 Sonuçlar şunlardır:
 
@@ -744,7 +744,7 @@ results = indexClient.Documents.Search<Hotel>("hotel", parameters);
 WriteDocuments(results);
 ```
 
-`Select` Özelliği belirttiğimiz bu yana tüm alanları içeren sonuçlar aşağıda verilmiştir:
+Özelliği belirttiğimiz bu yana tüm alanları içeren sonuçlar aşağıda verilmiştir `Select` :
 
     HotelId: 3
     Name: Triple Landscape Hotel

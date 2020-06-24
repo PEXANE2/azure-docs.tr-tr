@@ -4,16 +4,16 @@ description: Windows sanal masaüstü 'nde bir Azure Resource Manager şablonuyl
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c24e212f901f0af38a24ab203070f637de860fc7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615194"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204770"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla ana bilgisayar havuzu oluşturma
 
@@ -46,7 +46,7 @@ Kurumsal abonelikte dağıtım yapıyorsanız, aşağı kaydırın ve **Azure 'A
 
 1. Aşağı kaydırın ve **Azure 'A dağıt**' a sağ tıkladıktan sonra **bağlantı konumunu Kopyala**' yı seçin.
 2. Not Defteri gibi bir metin Düzenleyicisi açın ve bağlantıyı buraya yapıştırın.
-3. "https://portal.azure.com/" Ve diyez etiketinden hemen önce (#), kiracı etki alanı adının ardından bir at işareti (@) girin. Aşağıda, kullanmanız gereken biçime bir örnek verilmiştir: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/`.
+3. " https://portal.azure.com/ " Ve diyez etiketinden hemen önce (#), kiracı etki alanı adının ardından bir at işareti (@) girin. Aşağıda, kullanmanız gereken biçime bir örnek verilmiştir: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` .
 4. Bulut çözümü sağlayıcısı aboneliğine yönetici/katkıda bulunan izinleri olan bir kullanıcı olarak Azure portal oturum açın.
 5. Metin düzenleyicisine kopyaladığınız bağlantıyı adres çubuğuna yapıştırın.
 
@@ -70,7 +70,7 @@ Bundan sonra, bu cmdlet 'i kullanarak masaüstü uygulama grubuna kullanıcı ek
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-Kullanıcının UPN 'si Azure Active Directory kullanıcının kimliğiyle eşleşmelidir (örneğin, user1@contoso.com). Birden çok kullanıcı eklemek istiyorsanız, her kullanıcı için bu cmdlet 'i çalıştırmanız gerekir.
+Kullanıcının UPN 'si Azure Active Directory kullanıcının kimliğiyle eşleşmelidir (örneğin, user1@contoso.com ). Birden çok kullanıcı eklemek istiyorsanız, her kullanıcı için bu cmdlet 'i çalıştırmanız gerekir.
 
 Bu adımları tamamladıktan sonra, Masaüstü uygulama grubuna eklenen kullanıcılar Windows sanal masaüstünde desteklenen uzak masaüstü istemcileriyle oturum açabilir ve oturum Masaüstü için bir kaynak görebilirler.
 

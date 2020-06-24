@@ -4,11 +4,11 @@ description: Bu makalede, Azure Backup tarafından yedeklenen Azure dosya payla�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247663"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712097"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure dosya paylaşımı yedeklemelerini yönetme
 
@@ -83,7 +83,7 @@ Azure dosya paylaşımının korumasını durdurmak için:
 
 1. Dosya paylaşma kurtarma noktalarını içeren kurtarma hizmetleri kasasını açın. **Korumalı öğeler** bölümünün altında **yedekleme öğeleri** ' ni seçin. Yedekleme öğesi türleri listesi görüntülenir.
 
-   ![Yedekleme öğeleri](./media/manage-afs-backup/backup-items.png)
+   ![Yedekleme Öğeleri](./media/manage-afs-backup/backup-items.png)
 
 1. **Yedekleme Yönetimi Türü** listesinde **Azure Depolama (Azure Dosyaları)** öğesini seçin. **Yedekleme öğeleri (Azure depolama (Azure dosyaları))** listesi görüntülenir.
 

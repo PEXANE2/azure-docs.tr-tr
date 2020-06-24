@@ -3,15 +3,15 @@ title: Azure portal kullanarak bir Azure sanal ağını başka bir Azure bölges
 description: Bir Azure sanal ağını bir Azure bölgesinden diğerine, Kaynak Yöneticisi şablonu ve Azure portal kullanarak taşıyın.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75640797"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711451"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure portal kullanarak bir Azure sanal ağını başka bir bölgeye taşıma
 
@@ -42,9 +42,9 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve **kaynak grupları**' nı seçin.
 1. Kaynak sanal ağı içeren kaynak grubunu bulun ve ardından seçin.
-1. **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
+1. **Ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 1. **Şablonu dışarı aktar** bölmesinde **Dağıt**' ı seçin.
-1. Çevrimiçi Düzenleyicinizde *Parameters. JSON* dosyasını açmak için **şablon** > **düzenleme parametreleri**' ni seçin.
+1. Çevrimiçi Düzenleyicinizde dosya *parameters.js* açmak için **şablon**  >  **düzenleme parametreleri**' ni seçin.
 1. Sanal ağ adının parametresini düzenlemek için, **Parametreler**altındaki **değer** özelliğini değiştirin:
 
     ```json
@@ -63,7 +63,7 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
 1. Düzenleyicide **Kaydet** ' i seçin.
 
-1. Çevrimiçi düzenleyicide *Template. JSON* dosyasını açmak için **şablon** > **düzenleme şablonu**' nu seçin.
+1. Çevrimiçi düzenleyicide dosya *template.js* açmak için **şablon**  >  **düzenleme şablonu**' nu seçin.
 
 1. Çevrimiçi düzenleyicide, sanal ağın taşınacağı hedef bölgeyi düzenlemek için **kaynaklar**altındaki **Location** özelliğini değiştirin:
 
@@ -85,11 +85,11 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
     ```
 
-1. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). Bölge için kod, boşluk olmadan (örneğin, **Orta ABD** = **merkezileştirme**) bölge adıdır.
+1. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). Bölge için kod, boşluk olmadan (örneğin, **Orta ABD**  =  **merkezileştirme**) bölge adıdır.
 
 1. Seçim Gereksinimlerinize bağlı olarak, şablondaki diğer parametreleri de değiştirebilirsiniz:
 
-    * **Adres alanı**: dosyayı kaydetmeden önce, **Resources** > **AddressSpace** bölümünü değiştirerek ve **addresspredüzeltmelerinin** özelliğini değiştirerek sanal ağın adres alanını değiştirebilirsiniz:
+    * **Adres alanı**: dosyayı kaydetmeden önce, **Resources**  >  **AddressSpace** bölümünü değiştirerek ve **addresspredüzeltmelerinin** özelliğini değiştirerek sanal ağın adres alanını değiştirebilirsiniz:
 
         ```json
                 "resources": [
@@ -140,7 +140,7 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
                 ]
         ```
 
-        *Template. JSON* dosyasındaki adres önekini değiştirmek için, bu dosyayı iki yerde düzenleyin: önceki bölümdeki kodda ve aşağıdaki kodun **tür** bölümünde. Aşağıdaki kodda **Addresspredüzeltmesini** özelliğini, önceki bölümdeki koddaki **addresspredüzeltmesini** özelliğiyle eşleşecek şekilde değiştirin.
+        Dosyadaki *template.js* adres önekini değiştirmek için, bu dosyayı iki yerde düzenleyin: önceki bölümdeki kodda ve aşağıdaki kodun **tür** bölümünde. Aşağıdaki kodda **Addresspredüzeltmesini** özelliğini, önceki bölümdeki koddaki **addresspredüzeltmesini** özelliğiyle eşleşecek şekilde değiştirin.
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -178,13 +178,13 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
 1. Çevrimiçi düzenleyicide **Kaydet**' i seçin.
 
-1. Hedef sanal ağın dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği**' ni seçin.
+1. Hedef sanal ağın dağıtılacağı aboneliği seçmek için **temel bilgiler**  >  **aboneliği**' ni seçin.
 
-1. Hedef sanal ağın dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu**' nu seçin. 
+1. Hedef sanal ağın dağıtılacağı kaynak grubunu seçmek için **temel bilgiler**  >  **kaynak grubu**' nu seçin. 
 
     Hedef sanal ağ için yeni bir kaynak grubu oluşturmanız gerekiyorsa, **Yeni oluştur**' u seçin. Adın, var olan sanal ağdaki kaynak kaynak grubu adıyla aynı olmadığından emin olun.
 
-1. **Temel bilgiler** > **konumunun** , sanal ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
+1. **Temel bilgiler**  >  **konumunun** , sanal ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
 1. **Ayarlar**' ın altında, ad ' ın daha önce parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
 

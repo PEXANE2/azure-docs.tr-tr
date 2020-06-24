@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271115"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688968"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub ileti yönlendirme sorgusu söz dizimi
 
@@ -50,13 +50,13 @@ IoT Hub, protokollerde birlikte çalışabilirlik için tüm cihazdan buluta mes
 
 Sistem Özellikleri, iletilerin içeriğini ve kaynağını belirlemesine yardımcı olur. 
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | contentType | string | Kullanıcı iletinin içerik türünü belirtir. İleti gövdesinde sorguya izin vermek için bu değer Application/JSON olarak ayarlanmalıdır. |
 | Contentenkodlamaya | string | Kullanıcı iletinin kodlama türünü belirtir. ContentType Application/JSON olarak ayarlandıysa, izin verilen değerler UTF-8, UTF-16, UTF-32 olur. |
-| ıothub-bağlantı-cihaz kimliği | string | Bu değer IoT Hub olarak ayarlanır ve cihazın KIMLIĞINI tanımlar. Sorgulamak için kullanın `$connectionDeviceId`. |
-| ıothub-enqueuedtime | string | Bu değer, IoT Hub tarafından ayarlanır ve UTC 'de iletiyi sıraya alma gerçek süresini temsil eder. Sorgulamak için kullanın `enqueuedTime`. |
-| ıothub-arabirim-adı | string | Bu değer Kullanıcı tarafından ayarlanır ve telemetri iletisini uygulayan dijital ikizi arabiriminin adını temsil eder. Sorgulamak için kullanın `$interfaceName`. Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. |
+| ıothub-bağlantı-cihaz kimliği | string | Bu değer IoT Hub olarak ayarlanır ve cihazın KIMLIĞINI tanımlar. Sorgulamak için kullanın `$connectionDeviceId` . |
+| ıothub-enqueuedtime | string | Bu değer, IoT Hub tarafından ayarlanır ve UTC 'de iletiyi sıraya alma gerçek süresini temsil eder. Sorgulamak için kullanın `enqueuedTime` . |
+| ıothub-arabirim-adı | string | Bu değer Kullanıcı tarafından ayarlanır ve telemetri iletisini uygulayan dijital ikizi arabiriminin adını temsil eder. Sorgulamak için kullanın `$interfaceName` . Bu özellik [ıot Tak ve Kullan genel önizlemesinin](../iot-pnp/overview-iot-plug-and-play.md)bir parçası olarak kullanılabilir. |
 
 [IoT Hub iletilerinde](iot-hub-devguide-messages-construct.md)açıklandığı gibi, bir iletide ek sistem özellikleri vardır. **ContentType**, **Contentenkodlamaya**ve **Enqueuedtime**'A ek olarak **connectiondeviceıd** ve **connectionmoduleıd** de sorgulanabilir.
 
@@ -66,7 +66,7 @@ Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu 
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti sistemi özelliklerindeki bir sorgunun, `$` simgeye ön eki eklenmiş olması gerekir. Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve `$`sembol önüne kullanılmamalıdır. Bir uygulama özelliği adı ile `$`başlıyorsa, IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örneğin: 
+İleti sistemi özelliklerindeki bir sorgunun, simgeye ön eki eklenmiş olması gerekir `$` . Uygulama özelliklerindeki sorgulara adlarıyla erişilir ve sembol önüne kullanılmamalıdır `$` . Bir uygulama özelliği adı ile başlıyorsa `$` , IoT Hub Sistem özelliklerinde arama yapılır ve bu, uygulama özelliklerine bakar. Örneğin: 
 
 Sistem özelliği Çekiştenkodlamaya göre sorgulamak için 
 
@@ -90,7 +90,7 @@ Desteklenen işleçlerin ve işlevlerin tam listesi [ifade ve koşullarda](iot-h
 
 ## <a name="message-routing-query-based-on-message-body"></a>İleti gövdesine dayalı ileti yönlendirme sorgusu
 
-İleti gövdesinde sorgulamayı etkinleştirmek için ileti, UTF-8, UTF-16 veya UTF-32 ' de bir JSON kodlamalı olmalıdır. , `contentType` Sistem ÖZELLIĞINDE desteklenen UTF `application/JSON` kodlamalarının birine ve `contentEncoding` olarak ayarlanmalıdır. Bu özellikler belirtilmemişse, IoT Hub ileti gövdesinde sorgu ifadesini değerlendirmeyecektir. 
+İleti gövdesinde sorgulamayı etkinleştirmek için ileti, UTF-8, UTF-16 veya UTF-32 ' de bir JSON kodlamalı olmalıdır. , `contentType` `application/JSON` `contentEncoding` SISTEM özelliğinde desteklenen UTF kodlamalarının birine ve olarak ayarlanmalıdır. Bu özellikler belirtilmemişse, IoT Hub ileti gövdesinde sorgu ifadesini değerlendirmeyecektir. 
 
 Aşağıdaki örnek, düzgün biçimlendirilmiş ve kodlanmış bir JSON gövdesi ile bir iletinin nasıl oluşturulacağını gösterir: 
 
@@ -142,12 +142,12 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Bu, gövde kodlamasının JavaScript 'te nasıl işleneceğini gösterir. C# dilinde bir örnek görmek isterseniz, [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. Master. zip dosyasını ayıklayın. Visual Studio Solution *SimulatedDevice*'ın program.cs dosyası, iletilerin nasıl kodlanacağını ve bir IoT Hub nasıl göndereceğini gösterir. İleti yönlendirme [öğreticisinde](tutorial-routing.md)açıklandığı gibi, ileti yönlendirmeyi test etmek için kullanılan aynı örnektir. Program.cs 'in en altında, kodlanmış dosyalardan birinde okuma, kodunu çözme ve bunu okuyabilmeniz için ASCII olarak yeniden yazma yöntemi de vardır. 
+> Bu, gövde kodlamasının JavaScript 'te nasıl işleneceğini gösterir. C# dilinde bir örnek görmek isterseniz, [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)indirin. master.zip dosyasını sıkıştırmayı açın. Visual Studio Solution *SimulatedDevice*'ın program.cs dosyası, iletilerin nasıl kodlanacağını ve bir IoT Hub nasıl göndereceğini gösterir. İleti yönlendirme [öğreticisinde](tutorial-routing.md)açıklandığı gibi, ileti yönlendirmeyi test etmek için kullanılan aynı örnektir. Program.cs 'in en altında, kodlanmış dosyalardan birinde okuma, kodunu çözme ve bunu okuyabilmeniz için ASCII olarak yeniden yazma yöntemi de vardır. 
 
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti gövdesinde bir sorgunun ön eki olarak kullanılması gerekir `$body`. Sorgu ifadesinde gövde başvurusunu, gövde dizisi başvurusunu veya birden çok gövde başvurusunu kullanabilirsiniz. Sorgu ifadeniz Ayrıca ileti sistemi özellikleriyle bir gövde başvurusunu ve ileti uygulama özellikleri başvurusunu birleştirebilir. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
+İleti gövdesinde bir sorgunun ön eki olarak kullanılması gerekir `$body` . Sorgu ifadesinde gövde başvurusunu, gövde dizisi başvurusunu veya birden çok gövde başvurusunu kullanabilirsiniz. Sorgu ifadeniz Ayrıca ileti sistemi özellikleriyle bir gövde başvurusunu ve ileti uygulama özellikleri başvurusunu birleştirebilir. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -200,7 +200,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>Sorgu ifadeleri
 
-İleti ikizi üzerinde bir sorgunun ön eki olması gerekir `$twin`. Sorgu ifadeniz Ayrıca bir ikizi etiketi veya özellik başvurusunu bir gövde başvurusuyla, ileti sistemi özellikleriyle ve ileti uygulama özellikleri başvurusuyla birleştirebilir. Sorgu büyük/küçük harfe duyarlı olmadığından, Etiketler ve özelliklerde benzersiz adlar kullanmanızı öneririz. Bu hem cihaz ikis, hem de modül TWINS için geçerlidir. Ayrıca, bir özellik adları `twin`olarak `$twin`, `body`, veya `$body`' ı kullanmaktan kaçının. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
+İleti ikizi üzerinde bir sorgunun ön eki olması gerekir `$twin` . Sorgu ifadeniz Ayrıca bir ikizi etiketi veya özellik başvurusunu bir gövde başvurusuyla, ileti sistemi özellikleriyle ve ileti uygulama özellikleri başvurusuyla birleştirebilir. Sorgu büyük/küçük harfe duyarlı olmadığından, Etiketler ve özelliklerde benzersiz adlar kullanmanızı öneririz. Bu hem cihaz ikis, hem de modül TWINS için geçerlidir. Ayrıca `twin` , `$twin` `body` `$body` bir özellik adları olarak,, veya ' ı kullanmaktan kaçının. Örneğin, aşağıdakiler geçerli sorgu ifadeleridir: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

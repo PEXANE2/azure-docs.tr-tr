@@ -1,5 +1,5 @@
 ---
-title: Azure dijital TWINS CLı 'sını kullanma
+title: Azure Digital Twins CLI’sini kullanma
 titleSuffix: Azure Digital Twins
 description: Bkz. kullanmaya başlama ve Azure dijital TWINS CLı 'yi kullanma.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 53b20ded8e4b4a003beff1ef8489ecd9ff3451ac
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 595ab06e618fd977b75a15d3acb9a9a339b6edce
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612806"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725315"
 ---
-# <a name="use-the-azure-digital-twins-cli"></a>Azure dijital TWINS CLı 'sını kullanma
+# <a name="use-the-azure-digital-twins-cli"></a>Azure Digital Twins CLI’sini kullanma
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital TWINS örneğinizi, Azure portal Azure dijital TWINS örneğinizin yönetimine ek olarak, hizmetle birlikte en önemli işlemleri gerçekleştirmek için kullanabileceğiniz bir **komut satırı arabirimi (CLI)** vardır:
 * Azure dijital TWINS örneğini yönetme

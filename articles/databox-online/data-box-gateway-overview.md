@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8911c1099db36b7e4e6d568ea64ae4afa3cc826e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561069"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100755"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway nedir?
 
@@ -49,7 +49,7 @@ Data Box Gateway'in şöyle avantajları vardır:
 
 Data Box Gateway'in şöyle özellikleri vardır:
 
-|Özellik |Açıklama  |
+|Özellik |Description  |
 |---------|---------|
 |Hız     | Tümüyle otomatik ve son derece iyileştirilmiş veri aktarımı ve bant genişliği.|
 |Desteklenen protokoller     | Veri alımında standart SMB ve NFS protokolleri için destek. <br> Desteklenen sürümler hakkında daha fazla bilgi için bkz. [Data Box Gateway sistem gereksinimleri](data-box-gateway-system-requirements.md).|
@@ -64,7 +64,7 @@ Data Box Gateway'in şöyle özellikleri vardır:
 
 Data Box Gateway sanal cihazının belirtimleri şöyledir:
 
-| Belirtimler                                          | Açıklama              |
+| Belirtimler                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Sanal işlemciler (çekirdekler)   | En az 4 |
 | Bellek  |En az 8 GB|
@@ -89,7 +89,7 @@ Data Box Gateway çözümü Data Box Gateway kaynağından, Data Box Gateway san
 
 Verilerin aktarılacağı fiziksel cihaz, Azure kaynağı ve hedef depolama hesabının tümünün aynı bölgede olması gerekmez. Data Box Gateway
 
-- **Kaynak kullanılabilirliği** -Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için [bölgeye göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)gidin. Data Box Gateway, Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Kaynak kullanılabilirliği** -Azure Data Box Gateway kaynağın kullanılabildiği tüm bölgelerin listesi için, [bölgeye göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)gidin. Data Box Gateway, Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 - **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, tüm Azure bölgelerinde sağlanır.
 

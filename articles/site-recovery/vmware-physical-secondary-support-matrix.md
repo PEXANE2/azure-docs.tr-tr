@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256802"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711893"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM 'Leri ve fiziksel sunucuları ikincil bir siteye olağanüstü durum kurtarması için destek matrisi
 
@@ -39,7 +39,7 @@ Mevcut iş ortakları, destek sona erene kadar senaryoya yeni müşteriler ekley
 
 ## <a name="host-servers"></a>Ana bilgisayar sunucuları
 
-**İşletim sistemi** | **Bilgileri**
+**İşletim sistemi** | **Ayrıntılar**
 --- | ---
 vCenter server | vCenter 5,5, 6,0 ve 6,5<br/><br/> 6,0 veya 6,5 çalıştırırsanız yalnızca 5,5 özelliklerinin desteklendiğini unutmayın.
 
@@ -48,7 +48,7 @@ vCenter server | vCenter 5,5, 6,0 ve 6,5<br/><br/> 6,0 veya 6,5 çalıştırırs
 
 Aşağıdaki tabloda, Site Recovery ile çoğaltılan makineler için işletim sistemi desteği özetlenmektedir. Desteklenen işletim sisteminde herhangi bir iş yükü çalışıyor olabilir.
 
-**İşletim sistemi** | **Bilgileri**
+**İşletim sistemi** | **Ayrıntılar**
 --- | ---
 Windows Server | 64-bit Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 en az SP1.
 Linux | Red Hat Enterprise Linux 6,7, 6,8, 6,9, 7,1, 7,2 <br/><br/> CentOS 6,5, 6,6, 6,7, 6,8, 6,9, 7,0, 7,1, 7,2 <br/><br/> Oracle Enterprise Linux 6,4, 6,5, 6,8 Red Hat uyumlu çekirdeği veya ayırıcı kurumsal çekirdek sürümü 3 (UEK3) çalışıyor <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
@@ -71,10 +71,10 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 Konak-NIC Grubu oluşturma | Yes 
 Konak-VLAN | Yes 
 Ana bilgisayar-IPv4 | Yes 
-Ana bilgisayar-IPv6 | Hayır 
-Konuk VM-NIC ekibi oluşturma | Hayır
+Ana bilgisayar-IPv6 | No 
+Konuk VM-NIC ekibi oluşturma | No
 Konuk VM-IPv4 | Yes
-Konuk VM-IPv6 | Hayır
+Konuk VM-IPv6 | No
 Konuk VM-Windows/Linux-statik IP adresi | Yes
 Konuk VM-çoklu NIC | Yes
 
@@ -98,14 +98,14 @@ VMDK | Yes
 VHD/VHDX | Yok 
 Gen 2 VM | Yok 
 Paylaşılan küme diski | Yes 
-Şifrelenmiş disk | Hayır 
+Şifrelenmiş disk | No 
 UEFı| Yes 
-NFS | Hayır 
-SMB 3.0 | Hayır 
+NFS | No 
+SMB 3.0 | No 
 RDM | Yes 
 Disk > 1 TB | Yes 
 Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes 
-Depolama Alanları | Hayır 
+Depolama Alanları | No 
 Dinamik disk Ekle/Kaldır | Yes 
 Diski hariç tutma | Yes 
 Çoklu yol (MPIO) | Yok 
@@ -114,14 +114,14 @@ Diski hariç tutma | Yes
 
 **Eylem** | **Destek** 
 --- | --- 
-Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) | Hayır 
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | Hayır 
+Kasalarını kaynak grupları arasında taşıma (veya abonelikler arasında) | No 
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikler içinde veya abonelikler arasında) | No 
 
 ## <a name="mobility-service-and-updates"></a>Mobility hizmeti ve güncelleştirmeleri
 
 Mobility hizmeti, şirket içi VMware sunucuları veya fiziksel sunucular ile ikincil site arasındaki çoğaltmayı koordine eder. Çoğaltmayı ayarlarken, Mobility hizmetinin en son sürümüne ve diğer bileşenlere sahip olduğunuzdan emin olun.
 
-| **Güncelleştir** | **Bilgileri** |
+| **Güncelleştir** | **Ayrıntılar** |
 | --- | --- |
 |Scout güncelleştirmeleri | Scout güncelleştirmeleri birikimlidir. <br/><br/> En son Scout güncelleştirmelerini [öğrenin ve indirin](vmware-physical-secondary-disaster-recovery.md#updates) |
 |Bileşen güncelleştirmeleri | Scout güncelleştirmeleri, korumak istediğiniz RX sunucusu, yapılandırma sunucusu, işlem ve ana hedef sunucuları, vContinuum sunucuları ve kaynak sunucuları dahil olmak üzere tüm bileşenlere yönelik güncelleştirmeleri içerir.<br/><br/> [Daha fazla bilgi edinin](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|

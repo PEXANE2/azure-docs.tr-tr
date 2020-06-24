@@ -4,29 +4,24 @@ description: Bu makalede, Azure Time Series Insights API 'sini çağıran özel 
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+ms.author: shresha
+manager: dpalled
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612291"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099221"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
 Bu belgede, yeni Azure Active Directory dikey penceresini kullanarak Azure Active Directory bir uygulamanın nasıl kaydedileceği açıklanmaktadır. Azure Active Directory kayıtlı uygulamalar, kullanıcıların kimlik doğrulaması yapmasını ve bir Time Series Insights ortamıyla ilişkili Azure zaman serisi Insight API 'sini kullanma yetkisine sahip olmasını sağlar.
-
-> [!IMPORTANT]
-> Azure Time Series Insights, aşağıdaki kimlik doğrulama kitaplıklarının her ikisini de destekler:
-> * Daha yeni [Microsoft kimlik doğrulama kitaplığı (msal)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-> * [Azure Active Directory kimlik doğrulama kitaplığı (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="service-principal"></a>Hizmet sorumlusu
 
@@ -38,7 +33,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
 1. Azure Active Directory [bir uygulamayı kaydedin](#azure-active-directory-app-registration) .
 1. Uygulamayı [Time Series Insights ortamına veri erişimi](#granting-data-access)sağlamak için yetkilendirin.
-1. [İstemci uygulamanızda](#client-app-initialization)bir `https://api.timeseries.azure.com/` BELIRTEÇ almak Için **uygulama kimliğini** ve **istemci gizli** anahtarını kullanın. Belirteç daha sonra Time Series Insights API 'sini çağırmak için kullanılabilir.
+1. İstemci uygulamanızda bir belirteç almak için **uygulama kimliğini** ve **istemci gizli** anahtarını kullanın `https://api.timeseries.azure.com/` . [client app](#client-app-initialization) Belirteç daha sonra Time Series Insights API 'sini çağırmak için kullanılabilir.
 
 **3. adım**başına, uygulamanızın ve Kullanıcı kimlik bilgilerinizin ayrılması şunları yapmanıza olanak sağlar:
 
@@ -81,9 +76,9 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
 ### <a name="client-app-initialization"></a>İstemci uygulaması başlatma
 
-* Geliştiriciler Azure Time Series Insights kimlik doğrulaması yapmak için [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) veya [Azure Active Directory kimlik doğrulama KITAPLıĞı 'nı (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) kullanabilir.
+* Geliştiriciler, Azure Time Series Insights kimlik doğrulaması yapmak için [Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanabilir.
 
-* Örneğin, ADAL kullanarak kimlik doğrulamak için:
+* ADAL kullanarak kimlik doğrulamak için:
 
    1. Uygulamanın adına belirteci almak için Azure Active Directory uygulama kaydı bölümünde **uygulama kimliği** ve **istemci gizli** anahtarını (uygulama anahtarı) kullanın.
 
@@ -91,9 +86,12 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
-   1. Belirteç daha sonra uygulama Time Series Insights API 'sini çağırdığında `Authorization` üstbilgiye geçirilebilir.
+   1. Belirteç daha sonra `Authorization` uygulama TIME SERIES INSIGHTS API 'sini çağırdığında üstbilgiye geçirilebilir.
 
-* Alternatif olarak, geliştiriciler MSAL kullanarak kimlik doğrulaması yapabilir. [Msal 'e geçme](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) hakkında bilgi edinin ve daha fazla bilgi edinmek için [C# kullanarak Azure Time Series Insights ortamı Için GA-Manage GA başvuru verilerini](time-series-insights-manage-reference-data-csharp.md) inceleyin.
+> [!IMPORTANT]
+> [Azure Active Directory kimlik doğrulaması kitaplığı (ADAL)](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) KULLANıYORSANıZ, [msal 'e geçiş yapma](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)hakkında bilgi edinin.
+
+    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
 
 ## <a name="common-headers-and-parameters"></a>Ortak üstbilgiler ve parametreler
 
@@ -102,7 +100,7 @@ Bu bölümde, Time Series Insights GA ve Preview API 'Lerinde sorgu yapmak için
 > [!TIP]
 > REST API 'Leri kullanma, HTTP istekleri yapma ve HTTP yanıtlarını işleme hakkında daha fazla bilgi edinmek için [Azure REST API başvurusunu](https://docs.microsoft.com/rest/api/azure/) okuyun.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 [TIME SERIES INSIGHTS REST API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/)kimliği doğrulanmış sorgular gerçekleştirmek için, tercih ETTIĞINIZ bir rest Istemcisi kullanılarak [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir (Postman, JavaScript, C#).
 
@@ -113,18 +111,18 @@ Bu bölümde, Time Series Insights GA ve Preview API 'Lerinde sorgu yapmak için
 
 Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
-| Gerekli istek üst bilgisi | Açıklama |
+| Gerekli istek üst bilgisi | Description |
 | --- | --- |
 | Yetkilendirme | Time Series Insights kimlik doğrulaması yapmak için, **Yetkilendirme** üst bilgisinde geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. |
 
 > [!IMPORTANT]
-> Belirtecin tam olarak `https://api.timeseries.azure.com/` kaynağa verilmesi gerekir (belirtecin "hedef kitle" olarak da bilinir).
-> * [Postman](https://www.getpostman.com/) **AuthUrl** 'niz şu şekilde olacaktır:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+> Belirtecin tam olarak kaynağa verilmesi gerekir `https://api.timeseries.azure.com/` (belirtecin "hedef kitle" olarak da bilinir).
+> * [Postman](https://www.getpostman.com/) **AuthUrl** 'niz şu şekilde olacaktır:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
 > * `https://api.timeseries.azure.com/`geçerli ancak `https://api.timeseries.azure.com` değil.
 
 İsteğe bağlı istek üstbilgileri aşağıda açıklanmıştır.
 
-| İsteğe bağlı istek üst bilgisi | Açıklama |
+| İsteğe bağlı istek üst bilgisi | Description |
 | --- | --- |
 | İçerik türü | yalnızca `application/json` desteklenir. |
 | x-MS-Client-Request-ID | İstemci istek KIMLIĞI. Hizmet bu değeri kaydeder. Hizmetin işlemleri hizmetler arasında izlemesini sağlar. |
@@ -133,11 +131,11 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 İsteğe bağlı ancak önerilen yanıt üstbilgileri aşağıda açıklanmıştır.
 
-| Yanıt üst bilgisi | Açıklama |
+| Yanıt üst bilgisi | Description |
 | --- | --- |
 | İçerik türü | Yalnızca `application/json` desteklenir. |
 | x-MS-istek kimliği | Sunucu tarafından oluşturulan istek KIMLIĞI. , Bir isteği araştırmak üzere Microsoft 'a başvurmak için kullanılabilir. |
-| x-MS-Property-Found-Behavior | GA API isteğe bağlı yanıt üst bilgisi. Olası değerler `ThrowError` (varsayılan) veya `UseNull`. |
+| x-MS-Property-Found-Behavior | GA API isteğe bağlı yanıt üst bilgisi. Olası değerler `ThrowError` (varsayılan) veya `UseNull` . |
 
 ### <a name="http-parameters"></a>HTTP parametreleri
 
@@ -146,7 +144,7 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 Gerekli URL sorgu dizesi parametreleri API sürümüne bağımlıdır.
 
-| Yayınla | Olası API sürümü değerleri |
+| Sürüm | Olası API sürümü değerleri |
 | --- |  --- |
 | Genel kullanılabilirlik | `api-version=2016-12-12`|
 | Önizleme | `api-version=2018-11-01-preview` |
@@ -156,15 +154,15 @@ Gerekli URL sorgu dizesi parametreleri API sürümüne bağımlıdır.
 
 | İsteğe bağlı sorgu parametresi | Açıklama | Sürüm |
 | --- |  --- | --- |
-| `timeout=<timeout>` | HTTP istek yürütmesi için sunucu tarafı zaman aşımı. Yalnızca [ortam olaylarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) ve [ortam toplamlarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API 'leri için geçerlidir. Zaman aşımı değeri ISO 8601 Duration biçiminde olmalıdır, örneğin `"PT20S"` , aralığında `1-30 s`olmalıdır. Varsayılan değer `30 s`. | GA |
-| `storeType=<storeType>` | Sıcak mağaza etkin olan önizleme ortamları için, `WarmStore` ya `ColdStore`da üzerinde sorgu çalıştırılabilir. Sorgudaki bu parametre, sorgunun hangi depoda yürütülmesi gerektiğini tanımlar. Tanımlı değilse, sorgu soğuk depoda yürütülür. Isınma mağazasını sorgulamak için, **Stoyeniden yazma** 'nın olarak `WarmStore`ayarlanması gerekir. Tanımlı değilse, sorgu soğuk depoya karşı yürütülür. | Önizleme |
+| `timeout=<timeout>` | HTTP istek yürütmesi için sunucu tarafı zaman aşımı. Yalnızca [ortam olaylarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) ve [ortam toplamlarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API 'leri için geçerlidir. Zaman aşımı değeri ISO 8601 Duration biçiminde olmalıdır, örneğin, `"PT20S"` aralığında olmalıdır `1-30 s` . Varsayılan değer `30 s` . | GA |
+| `storeType=<storeType>` | Sıcak mağaza etkin olan önizleme ortamları için, ya da üzerinde sorgu çalıştırılabilir `WarmStore` `ColdStore` . Sorgudaki bu parametre, sorgunun hangi depoda yürütülmesi gerektiğini tanımlar. Tanımlı değilse, sorgu soğuk depoda yürütülür. Isınma mağazasını sorgulamak için, **Stoyeniden yazma** 'nın olarak ayarlanması gerekir `WarmStore` . Tanımlı değilse, sorgu soğuk depoya karşı yürütülür. | Önizleme |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- GA Time Series Insights API 'sini çağıran örnek kod için, [C# kullanarak sorgu verilerini](./time-series-insights-query-data-csharp.md)okuyun.
+* GA Time Series Insights API 'sini çağıran örnek kod için, [C# kullanarak sorgu verilerini](./time-series-insights-query-data-csharp.md)okuyun.
 
-- Preview Time Series Insights API kodu örnekleri için [C# kullanarak sorgu önizleme verilerini](./time-series-insights-update-query-data-csharp.md)okuyun.
+* Preview Time Series Insights API kodu örnekleri için [C# kullanarak sorgu önizleme verilerini](./time-series-insights-update-query-data-csharp.md)okuyun.
 
-- API başvuru bilgileri için [sorgu API 'si başvuru](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) belgelerini okuyun.
+* API başvuru bilgileri için [sorgu API 'si başvuru](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) belgelerini okuyun.
 
-- [Hizmet sorumlusu oluşturmayı](../active-directory/develop/howto-create-service-principal-portal.md)öğrenin.
+* [Hizmet sorumlusu oluşturmayı](../active-directory/develop/howto-create-service-principal-portal.md)öğrenin.

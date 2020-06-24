@@ -3,25 +3,24 @@ title: IE için Azure erişim paneli uzantısı sorunlarını giderme | Microsof
 description: Uygulamalarım portalı için Internet Explorer eklentisini dağıtmak üzere Grup İlkesi 'ni kullanma.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
-ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 16abfbeacd972ee8b0ab55f09945e687c95f0093
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67723912"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763270"
 ---
 # <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer için erişim paneli uzantısı sorunlarını giderme
 
@@ -40,7 +39,7 @@ Tanılama aracını indirmek ve yüklemek için:
 
 1. [Tanılama aracını indirmek için bu bağlantıyı seçin.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
 1. Dosyayı açın ve içeriğini bilgisayarınıza ayıklayın.
-1. Aracı çalıştırmak için *accesspanelextensiondiagnostictool. js* adlı dosyaya sağ tıklayın ve > **Microsoft Windows tabanlı betik Konağı** **ile aç**' ı seçin.
+1. Aracı çalıştırmak için *AccessPanelExtensionDiagnosticTool.js* adlı dosyaya sağ tıklayın ve **Open with**  >  **Microsoft Windows tabanlı betik Konağı**ile aç ' ı seçin.
 
     ![> Microsoft Windows tabanlı betik Konağı ile aç](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 

@@ -11,18 +11,18 @@ Customer intent: I want only resources in a virtual network subnet to access an 
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 1d0cf65bb39dbda2b7451c50629ff8949c5507cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a9ae1b847d3f31a2cd4c01f9ecb61e39e950ffe
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185532"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688169"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>PowerShell kullanarak sanal ağ hizmet uç noktaları ile PaaS kaynaklarına ağ erişimini kısıtlama
 
@@ -172,7 +172,7 @@ Hizmet uç noktaları için etkinleştirilmiş Azure hizmetleri aracılığıyla
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)Ile bir Azure depolama hesabı oluşturun. Yalnızca `<replace-with-your-unique-storage-account-name>` rakamlar ve küçük harfler kullanarak, 3-24 karakter uzunluğunda tüm Azure konumlarında benzersiz olan bir adla değiştirin.
+[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)Ile bir Azure depolama hesabı oluşturun. `<replace-with-your-unique-storage-account-name>`Yalnızca rakamlar ve küçük harfler kullanarak, 3-24 karakter uzunluğunda tüm Azure konumlarında benzersiz olan bir adla değiştirin.
 
 ```azurepowershell-interactive
 $storageAcctName = '<replace-with-your-unique-storage-account-name>'
@@ -193,7 +193,7 @@ $storageAcctKey = (Get-AzStorageAccountKey `
   -AccountName $storageAcctName).Value[0]
 ```
 
-Anahtar, sonraki bir adımda dosya paylaşma oluşturmak için kullanılır. Dosya `$storageAcctKey` paylaşma 'Yı bir VM 'deki sürücüyle eşlediğinizde daha sonra da el ile girmeniz gerekeceğinden, değeri girin ve aklınızda bir adım girin.
+Anahtar, sonraki bir adımda dosya paylaşma oluşturmak için kullanılır. `$storageAcctKey`Dosya paylaşma 'yı BIR VM 'deki sürücüyle eşlediğinizde daha sonra da el ile girmeniz gerekeceğinden, değeri girin ve aklınızda bir adım girin.
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Depolama hesabında dosya paylaşımı oluşturma
 
@@ -299,7 +299,7 @@ mstsc /v:<publicIpAddress>
 
 Uzak Masaüstü Protokolü (.rdp) dosyası oluşturulur ve bilgisayarınıza indirilir. İndirilen rdp dosyasını açın. İstendiğinde **Bağlan**’ı seçin. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin. Sanal makineyi oluştururken girdiğiniz kimlik bilgilerini belirtmek için **Diğer seçenekler**’i ve sonra **Farklı bir hesap kullan** seçeneğini belirlemeniz gerekebilir. **Tamam**’ı seçin. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Uyarıyı alırsanız, bağlantıya devam etmek için **Evet** ' i veya **devam et**' i seçin.
 
-*myVmPrivate* VM üzerinde PowerShell kullanarak Azure dosya paylaşımını Z sürücüsüne eşleyin. İzleyen komutları çalıştırmadan önce, ve `<storage-account-key>` `<storage-account-name>` [depolama hesabı oluşturma](#create-a-storage-account)bölümünde sağladığınız veya aldığınız değerlerle değiştirin.
+*myVmPrivate* VM üzerinde PowerShell kullanarak Azure dosya paylaşımını Z sürücüsüne eşleyin. İzleyen komutları çalıştırmadan önce, `<storage-account-key>` ve `<storage-account-name>` [depolama hesabı oluşturma](#create-a-storage-account)bölümünde sağladığınız veya aldığınız değerlerle değiştirin.
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -344,7 +344,7 @@ Aşağıdaki komuttaki `<publicIpAddress>` öğesini, önceki komuttan döndür�
 mstsc /v:<publicIpAddress>
 ```
 
-*MyVmPublic* VM 'de, Azure dosya paylaşımından Z sürücüsüyle eşlemeyi deneyin. İzleyen komutları çalıştırmadan önce, ve `<storage-account-key>` `<storage-account-name>` [depolama hesabı oluşturma](#create-a-storage-account)bölümünde sağladığınız veya aldığınız değerlerle değiştirin.
+*MyVmPublic* VM 'de, Azure dosya paylaşımından Z sürücüsüyle eşlemeyi deneyin. İzleyen komutları çalıştırmadan önce, `<storage-account-key>` ve `<storage-account-name>` [depolama hesabı oluşturma](#create-a-storage-account)bölümünde sağladığınız veya aldığınız değerlerle değiştirin.
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force

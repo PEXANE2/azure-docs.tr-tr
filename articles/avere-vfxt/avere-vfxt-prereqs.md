@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252551"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689904"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT oluşturmaya hazırlanma
 
@@ -68,7 +68,7 @@ Bu adımın her abonelik için yalnızca bir kez yapılması gerekir.
 
 Yazılım koşullarını önceden kabul etmek için:
 
-1. Azure portal veya göz atarak bir bulut kabuğu açın <https://shell.azure.com>. Abonelik KIMLIĞINIZLE oturum açın.
+1. Azure portal veya göz atarak bir bulut kabuğu açın <https://shell.azure.com> . Abonelik KIMLIĞINIZLE oturum açın.
 
    ```azurecli
     az login
@@ -98,7 +98,7 @@ Azure portal depolama hizmeti uç noktası oluşturun.
 1. Kümeniz için sanal ağı seçin.
 1. Sol menüden **hizmet uç noktaları** ' na tıklayın.
 1. Üstteki **Ekle** ' ye tıklayın.
-1. Hizmeti ``Microsoft.Storage``seçin.
+1. Hizmeti seçin ``Microsoft.Storage`` .
 1. Kümenin alt ağını seçin.
 1. Alt kısımdaki **Ekle**' ye tıklayın.
 

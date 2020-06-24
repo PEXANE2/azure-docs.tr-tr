@@ -1,5 +1,5 @@
 ---
-title: Dijital TWINS ve ikizi grafiği
+title: Dijital ikizler ve ikiz grafiği
 titleSuffix: Azure Digital Twins
 description: Dijital ikizi kavramını ve ilişkilerinin bir grafiği nasıl yaptığını anlayın.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05c0c66e7b6d301a749b301178c1f666a48d434b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 4e2b223337bbe5d46f314a8d2126ab562b937445
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613008"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726090"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar Azure **dijital TWINS**tarafından temsil edilir. Dijital ikizi, özel olarak tanımlanan [modellerden](concepts-models.md)birinin bir örneğidir. Diğer dijital TWINS 'e, **ikizi grafiği**oluşturmak için **ilişkiler** aracılığıyla bağlanabilir: Bu ikizi Graph, ortamınızın tamamının gösterimidir.
 
@@ -95,7 +98,7 @@ Dijital ikizi verileri ve ilişki verileri her ikisi de JSON biçiminde depolan�
 
 JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanları görüntüler:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | `$dtId` | Dijital ikizi KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış dize |
 | `$conformance` | Bu dijital ikizi uygunluk durumunu içeren bir sabit listesi (*uyumlu*, *uyumlu değil*, *bilinmiyor*) |
@@ -161,7 +164,7 @@ JSON nesnesi olarak biçimlendirilen bir dijital ikizi örneği aşağıda veril
 
 Bir JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi bir ilişki aşağıdaki alanları görüntüler:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | `$edgeId` | Bu ilişki ucunun KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış bir dize. Bu dize, kaynak dijital ikizi bağlamında benzersizdir, bu da `sourceId`  +  `edgeId` Azure dijital TWINS örneği bağlamında benzersiz anlamına gelir. |
 | `$sourceId` | Kaynak dijital ikizi KIMLIĞI |

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: 35d83d11d631d94cad4781c69d985a73c70dde99
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 30d1ee46854a6bbe695bf2a70c266f71a2f906ec
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677976"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080986"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 'SI için Java SDK v4 Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "84677976"
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -48,7 +48,7 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 | |  |
 |---|---|
 | **SDK indirmesi** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API belgeleri** | [Java API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html) |
+|**API belgeleri** | [Java API başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
 |**SDK 'ya katkıda bulunma** | [GitHub 'da Java merkezi deposu için Azure SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
 |**başlarken** | [Hızlı başlangıç: Azure Cosmos db SQL API verilerini yönetmek için bir Java uygulaması oluşturma](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [Hızlı başlangıç kodu Ile GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**Temel kod örnekleri** | [Azure Cosmos DB: SQL API 'si Için Java örnekleri](sql-api-java-sdk-samples.md) · [Örnek kodla GitHub deposu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
@@ -62,8 +62,11 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 
 ## <a name="release-history"></a>Yayın geçmişi
 
-### <a name="401-beta4-unreleased"></a>4.0.1-Beta. 4 (serbest bırakılmamış)
-#### <a name="new-features"></a>Yeni özellikler
+### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
+#### <a name="new-features"></a>Yeni Özellikler
+* Olarak yeniden adlandırıldı `QueryRequestOptions` `CosmosQueryRequestOptions` .
+* `ChangeFeedProcessorBuilder`Oluşturucu düzenine güncelleştirildi.
+* `CosmosPermissionProperties`Yeni kapsayıcı adı ve alt kaynaklar API 'leri ile güncelleştirildi.
 * Daha fazla örnek eklendi & belgeleri uygulamasına zenginleştirir `CosmosClientBuilder` . 
 * `CosmosDatabase`  &  `CosmosContainer` Otomatik ölçeklendirme/Autopilot desteği için throughputproperties ile API 'ler güncelleştirildi. 
 * Olarak yeniden adlandırıldı `CosmosClientException` `CosmosException` . 
@@ -80,9 +83,8 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 * `getETag()`  &  `getTimestamp()` Türlere API 'ler eklendi `Cosmos*Properties` . 
 * `userAgent`İçindeki bilgiler eklendi `CosmosException`  &  `CosmosDiagnostics` . 
 * Yeni satır karakteri, `Diagnostics` sistem yeni satır karakteriyle güncelleştirildi. 
-
-### <a name="401-beta3-2020-05-15"></a>4.0.1-Beta. 3 (2020-05-15)
-#### <a name="new-features"></a>Yeni özellikler
+* `readAll*`API 'ler kaldırıldı, sorguyu kullanın, bunun yerine tüm API 'leri seçin.
+* `ChangeFeedProcessor`Tahmin gecikme API 'si eklendi.   
 * SDK 'ya otomatik ölçeklendirme/Autopilot üretilen iş sağlama desteği eklendi.  
 * `ConnectionPolicy`Yeni bağlantı yapılandırmaları ile değiştirilmiştir. `DirectConnectionConfig`  &  `GatewayConnectionConfig` `CosmosClientBuilder` Doğrudan & ağ geçidi modu bağlantı yapılandırmalarına yönelik API 'ler kullanıma sunuldu.
 * `JsonSerializable`  &  `Resource` Uygulama paketine taşındı. 
@@ -92,12 +94,6 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 * `preferredLocations`  &  `multipleWriteLocations` API olarak yeniden adlandırıldı `preferredRegions`  &  `multipleWriteRegions` . 
 * `reactor-core`3.3.5. Release, `reactor-netty` 0.9.7. Release & to `netty` 4.1.49. final sürümlerine güncelleştirildi. 
 * SDK 'da için destek eklendi `analyticalStoreTimeToLive` .     
-#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
-* Doğrudan TCP istemcisiyle sabit yuva sızıntısı sorunları.
-* `orderByQuery`Devamlılık belirteci hatası ile düzeltildi.
-
-### <a name="401-beta2-2020-04-21"></a>4.0.1-Beta. 2 (2020-04-21)
-#### <a name="new-features"></a>Yeni özellikler
 * `CosmosClientException`genişletiliyor `AzureException` . 
 * API 'leri, `maxItemCount`  &  `requestContinuationToken` `FeedOptions` yerine API `byPage()` 'ler kullanılarak kaldırılır `CosmosPagedFlux`  &  `CosmosPagedIterable` .
 * `CosmosPermissionProperties`API 'ler için genel yüzeyde tanıtılmıştır `Permission` .
@@ -107,13 +103,8 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 * Dış bağımlılıklar üzerinde kaldırıldı `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` .  
 * `CosmosPagedFlux`  &  `CosmosPagedIterable` Pakete taşındı `utils` . 
 * Netty 4.1.45. final & projesi yeniden aktör 3.3.3 sürümüne güncelleştirildi.
-* Genel Rest sözleşmeleri sınıflara güncelleştirildi `Final` . 
-#### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
-* `ChangeFeedProcessor`Bölüm bulunamadığında bölüm bölmelerini işlemek için hata düzeltilme &.
-* `ChangeFeedProcessor`farklı iş parçacıkları genelinde kira güncelleştirmelerini eşitlerken hata düzeltildi.
-
-### <a name="401-beta1-2020-03-10"></a>4.0.1-Beta. 1 (2020-03-10)
-#### <a name="new-features"></a>Yeni özellikler 
+* Genel Rest sözleşmeleri sınıflara güncelleştirildi `Final` .
+* Nokta işlemlerine yönelik gelişmiş tanılama desteği eklendi.
 * Paketi şu şekilde güncelleştirildi`com.azure.cosmos`
 * `models`Model/Rest sözleşmeleri için paket eklendi
 * `utils`Türler için paket eklendi `CosmosPagedFlux`  &  `CosmosPagedIterable` . 
@@ -122,7 +113,16 @@ Core (SQL) için Java SDK 'Sı v4 Azure Cosmos DB, zaman uyumsuz bir API ve eşi
 * `RetryOptions`olarak yeniden adlandırıldı `ThrottlingRetryOptions` .
 * `CosmosPagedFlux`  &  `CosmosPagedIterable` Sorgu API 'leri için sayfalandırma türleri eklendi. 
 * İçindeki yeni bir API kullanarak Cosmoclient 'ın birden çok örneği arasında Cosmosclistaların paylaşılmasına yönelik destek eklendi`CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
+* Çift serileştirme/seri kaldırma kaldırarak sorgu Iyileştirmeleri. 
+* Gereksiz kopyalama geri ve ileri kaldırılarak yanıt üstbilgileri iyileştirmeleri. 
+* `ByteBuffer`Ara dize örneklemeleri kaldırılarak iyileştirilmiş serileştirme/seri hale getirme.
 #### <a name="key-bug-fixes"></a>Anahtar hata düzeltmeleri
+* Sabit ConnectionPolicy `toString()` null Işaretçisi özel durumu.
+* Sorguya göre değer sırası durumunda sorgu sonuçlarının ayrıştırılmasındaki sorun düzeltildi. 
+* Doğrudan TCP istemcisiyle sabit yuva sızıntısı sorunları.
+* `orderByQuery`Devamlılık belirteci hatası ile düzeltildi.
+* `ChangeFeedProcessor`Bölüm bulunamadığında bölüm bölmelerini işlemek için hata düzeltilme &.
+* `ChangeFeedProcessor`farklı iş parçacıkları genelinde kira güncelleştirmelerini eşitlerken hata düzeltildi.
 * `ArrayIndexOutOfBound`StoreReader içinde özel duruma neden olan sabit yarış durumu
 
 ## <a name="faq"></a>SSS

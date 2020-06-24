@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1e4428fecdbb5d664111adc591812a5122bf2eda
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 81a3d8e08486f76fc23a489acd3138d7b9fe8134
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125123"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711638"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -25,7 +25,7 @@ ms.locfileid: "83125123"
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -136,7 +136,7 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 
 ## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Hata: Windows sanal masaüstü Aracısı kayıt defteri girdisi IsRegistered değeri 0 değerini gösteriyor
 
-**Neden:** Kayıt belirtecinin süresi doldu veya süre sonu 999999 ile üretildi.
+**Neden:** Kayıt belirtecinin süresi doldu.
 
 **Çözüm:** Aracı kayıt defteri hatasını onarmak için bu yönergeleri izleyin.
 
@@ -182,7 +182,7 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Windows sanal masaüstü yan yana yığınıyla ilgili sorunları giderme
 
-Windows sanal masaüstü yan yana yığın Windows Server 2019 ile otomatik olarak yüklenir. Microsoft Windows Server 2016 veya Windows Server 2012 R2 'ye yan yana yığın yüklemek için Microsoft yükleyicisi 'ni (MSI) kullanın. Microsoft Windows 10 ' da, Windows sanal masaüstü yan yana yığın, **enablesxstackrons. ps1**ile etkinleştirilir.
+Windows sanal masaüstü yan yana yığın Windows Server 2019 ile otomatik olarak yüklenir. Microsoft Windows Server 2016 veya Windows Server 2012 R2 'ye yan yana yığın yüklemek için Microsoft yükleyicisi 'ni (MSI) kullanın. Microsoft Windows 10 için, Windows sanal masaüstü yan yana yığın **enablesxstackrs.ps1**ile etkinleştirilir.
 
 Yan yana yığının, oturum ana bilgisayar havuzu VM 'lerinde yüklü veya etkin olduğu başlıca üç yol vardır:
 
@@ -224,8 +224,8 @@ Yan yana yığının hatalı çalışmasına neden olabilecek bilinen koşullar 
 - Yan yana yığını etkinleştirmek için adımların doğru sırasını takip etmez
 - Windows 10 geliştirilmiş çok yönlü disk (EVD) için otomatik güncelleştirme
 - Uzak Masaüstü Oturumu Ana Bilgisayarı (RDSH) rolü eksik
-- Enablesxsstackrc. ps1 birden çok kez çalıştırılıyor
-- Yerel yönetici ayrıcalıklarına sahip olmayan bir hesapta enablesxsstackronc. ps1 çalıştırma
+- enablesxsstackrc.ps1 birden çok kez çalıştırma
+- Yerel yönetici ayrıcalıklarına sahip olmayan bir hesapta enablesxsstackrc.ps1 çalıştırma
 
 Bu bölümdeki yönergeler, Windows sanal masaüstü 'Nün yan yana yığınını kaldırmanızı sağlamanıza yardımcı olabilir. Yan yana yığını kaldırdıktan sonra yan yana yığını yeniden yüklemek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md) bölümünde "VM 'Yi Windows sanal masaüstü ana bilgisayar havuzuna Kaydet" bölümüne gidin.
 
@@ -278,7 +278,7 @@ Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki 
 
 İşletim sisteminiz Microsoft Windows 10 ise aşağıdaki yönergelerle devam edin:
 
-14. PsExec çalıştıran VM 'den, dosya Gezgini 'ni açın ve disablesxsstackronc. ps1 dosyasını VM 'nin sistem sürücüsüne kopyalayın ve bu arada bir yan yana yığın.
+14. PsExec çalıştıran VM 'den, dosya Gezgini 'ni açın ve disablesxsstackrc.ps1, sanal makinenin sistem sürücüsüne sanal bir yan yana yığın ile kopyalayın.
 
     ```cmd
         \\<VMname>\c$\
@@ -287,7 +287,7 @@ Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki 
     >[!NOTE]
     >VMname, hatalı çalışan yan yana yığın ile VM 'nin makine adıdır.
 
-15. Önerilen işlem: PsExec aracından PowerShell 'i başlatın ve önceki adımda bulunan klasöre gidin ve disablesxsstackronc. ps1 ' yi çalıştırın. Alternatif olarak, aşağıdaki cmdlet 'leri çalıştırabilirsiniz:
+15. Önerilen işlem: PsExec aracından PowerShell 'i başlatın ve önceki adımda bulunan klasöre gidin ve disablesxsstackrc.ps1 çalıştırın. Alternatif olarak, aşağıdaki cmdlet 'leri çalıştırabilirsiniz:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force

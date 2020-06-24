@@ -4,12 +4,12 @@ description: Bir Azure Kubernetes Service (AKS) kümesindeki uygulama taleplerin
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683548"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730025"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme
 
@@ -99,7 +99,7 @@ az aks update \
 Yukarıdaki örnek, *Myakscluster* içindeki tek düğümlü havuzda küme otomatik Scaler ' nı en az *1* ve en fazla *5* düğüm olarak güncelleştirir.
 
 > [!NOTE]
-Küme otomatik olarak, ölçek kararlarını her düğüm havuzunda ayarlanan en düşük ve en yüksek sayımlar temelinde yapar, ancak bunları zorlamaz. Örneğin, geçerli düğüm sayısı 3 olduğunda, en az 5 sayısını ayarlamak, havuzu hemen 5 ' e kadar ölçeklendirmeyecektir. Düğüm havuzundaki minimum sayıyı geçerli düğüm sayısından daha yüksek bir değere değiştirirseniz, bu yeni sınır 2 yeni ek düğüm gerektirecek ve bir otomatik Scaler olayı tetikleyecek yeterli unschedulable Pod bulunduğunda kullanılır. Bu durum oluştuktan sonra, küme otomatik yüklemesi için yeni en düşük sayı sınırı uygulanır.
+> Küme otomatik algılama, her düğüm havuzunda ayarlanan en düşük ve en yüksek sayımlar temelinde ölçekleme kararları verir, ancak en az veya en fazla sayımlar güncelleştirildikten sonra bunları zorlamaz. Örneğin, geçerli düğüm sayısı 3 olduğunda en az 5 sayısını ayarlamak, havuzu hemen 5 ' e kadar ölçeklendirmeyecektir. Düğüm havuzundaki minimum sayı, geçerli düğüm sayısından daha yüksek bir değere sahipse, yeni Min veya Max ayarları, 2 yeni ek düğüm gerektirecek ve bir otomatik Scaler olayı tetikleyen yeterli sayıda unschedulable Pod olduğunda dikkate alınır. Ölçek olayından sonra, yeni sayı limitleri dikkate alınır.
 
 Uygulamalarınızın ve hizmetlerinizin performansını izleyin ve küme otomatik Scaler düğüm sayılarını gerekli performansla eşleşecek şekilde ayarlayın.
 
@@ -107,7 +107,7 @@ Uygulamalarınızın ve hizmetlerinizin performansını izleyin ve küme otomati
 
 Küme genelindeki otomatik Scaler profilindeki varsayılan değerleri değiştirerek küme otomatik Scaler ' inin daha ayrıntılı ayrıntılarını da yapılandırabilirsiniz. Örneğin, düğümler 10 dakika sonra kullanıldıktan sonra bir ölçek azaltma olayı oluşur. 15 dakikada bir çalışan iş yükleriniz varsa, otomatik Scaler profilini, kullanılan düğümler altında 15 veya 20 dakika sonra ölçeklendirmek üzere değiştirmek isteyebilirsiniz. Küme otomatik ayarlarını etkinleştirdiğinizde, farklı ayarlar belirtmediğiniz takdirde varsayılan bir profil kullanılır. Küme otomatik Scaler profili, güncelleştirebilmeniz için aşağıdaki ayarlara sahiptir:
 
-| Ayar                          | Açıklama                                                                              | Varsayılan değer |
+| Ayar                          | Description                                                                              | Varsayılan değer |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | tarama-Aralık                    | Kümenin ölçeği artırma veya azaltma için ne sıklıkta yeniden değerlendirildiğinde                                    | 10 saniye    |
 | ölçeği azaltma-sonrası-ekleme       | Ölçek azaltma sonrasında ölçeği izleyen ölçeği artırma sonrasında ne kadar süre sonra                               | 10 dakika    |
@@ -145,7 +145,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örnek:
+Kümedeki düğüm havuzlarında küme otomatik Scaler 'ı etkinleştirdiğinizde, bu kümeler küme otomatik Scaler profilini de kullanacaktır. Örneğin:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -162,7 +162,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS kümesi oluştururken küme otomatik Scaler profilini ayarlama
 
-Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örnek:
+Kümenizi oluştururken *cluster-otomatik Scaler-profile* parametresini de kullanabilirsiniz. Örneğin:
 
 ```azurecli-interactive
 az aks create \

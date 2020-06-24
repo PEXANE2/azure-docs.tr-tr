@@ -3,14 +3,14 @@ title: Şablon dağıtımı-if (Önizleme)
 description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/16/2020
 ms.author: tomfitz
-ms.openlocfilehash: abe834670c5df461b523bd48717f20093bdef0a3
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457295"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888745"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablonu dağıtımı ne-if işlemi (Önizleme)
 
@@ -100,6 +100,9 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 
 Resource changes: 1 to modify.
 ```
+
+> [!NOTE]
+> Ne yapılır işlemi [başvuru işlevini](template-functions-resource.md#reference)çözümleyemezse. Başvuru işlevini içeren bir şablon ifadesine her bir özellik ayarladığınızda, özelliğin değiştirileceği durum raporları görüntülenir. Bu davranış, özelliğin geçerli değerini (örneğin `true` veya `false` bir Boolean değeri için) çözümlenmemiş şablon ifadesiyle karşılaştırdığı için oluşur. Kuşkusuz, bu değerler eşleşmeyecektir. Şablonu dağıttığınızda, özellik yalnızca şablon ifadesi farklı bir değere çözümlenirse değişir.
 
 ## <a name="what-if-commands"></a>Durum komutları
 

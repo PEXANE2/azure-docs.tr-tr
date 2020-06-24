@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253841"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888533"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN aracılığıyla dinamik site hızlandırma
 
@@ -117,7 +117,7 @@ TCP *yavaş başlangıç* , ağ üzerinden gönderilen veri miktarını sınırl
 
 CDN kullanarak, daha az benzersiz makine, doğrudan başlangıç kaynağınıza bağlanan kullanıcılarla karşılaştırıldığında, kaynak sunucunuza doğrudan bağlanır. Azure CDN Ayrıca, Origin ile daha az bağlantı kurmak için Kullanıcı isteklerini birbirine da havuzlar.
 
-Daha önce belirtildiği gibi, TCP bağlantısı kurmak için birkaç el sıkışma isteği gerekir. `Keep-Alive` Http üst bilgisi tarafından uygulanan kalıcı bağlantılar, gidiş dönüş sürelerini kaydetmek ve teslimi hızlandırmak için bırden çok http isteği IÇIN mevcut TCP bağlantılarını yeniden kullanır. 
+Daha önce belirtildiği gibi, TCP bağlantısı kurmak için birkaç el sıkışma isteği gerekir. HTTP üst bilgisi tarafından uygulanan kalıcı bağlantılar `Keep-Alive` , gidiş dönüş sürelerini kaydetmek ve teslimi hızlandırmak için birden çok http isteği için mevcut TCP bağlantılarını yeniden kullanır. 
 
 Ayrıca, **Verizon ' dan Azure CDN** , açık bir bağlantının kapatılmasını önlemek için TCP bağlantısı üzerinden düzenli canlı tutma paketleri gönderir.
 
@@ -147,9 +147,9 @@ Uyarlamalı görüntü sıkıştırma | Dosya uzantıları
 --- | ---  
 JPEG sıkıştırması | . jpg,. jpeg,. jpe,. JIG,. JGB,. jgi
 
-## <a name="caching"></a>Önbelleğe alma
+## <a name="caching"></a>Önbelleğe Alma
 
-DSA ile, yanıtta kaynak dahil `Cache-Control` veya `Expires` üst bilgiler de dahil olmak üzere CDN 'de varsayılan olarak önbelleğe alma kapalıdır. DSA tipik olarak, her bir istemciye benzersiz olduklarından önbelleğe alınmamalıdır dinamik varlıklar için kullanılır. Önbelleğe alma, bu davranışı bozabilir.
+DSA ile, yanıtta kaynak dahil `Cache-Control` veya üst bilgiler de dahil olmak üzere CDN 'de varsayılan olarak önbelleğe alma kapalıdır `Expires` . DSA tipik olarak, her bir istemciye benzersiz olduklarından önbelleğe alınmamalıdır dinamik varlıklar için kullanılır. Önbelleğe alma, bu davranışı bozabilir.
 
 Statik ve dinamik varlıkların karışımına sahip bir Web siteniz varsa, en iyi performansı elde etmek için bir karma yaklaşım yapmanız en iyisidir. 
 
@@ -183,7 +183,7 @@ Kural altyapısına erişmek için:
 
 Alternatif olarak, iki CDN uç noktası kullanabilirsiniz: DSA ile en iyi duruma getirilmiş bir uç nokta, dinamik varlıklar ve genel web teslimi gibi bir statik iyileştirme türü ile iyileştirilmiş başka bir uç nokta, önbelleğe alınabilir varlıkların teslim edilmesi için kullanılır. Web sayfası URL 'lerinizi, kullanmayı planladığınız CDN uç noktasındaki varlığa doğrudan bağlanacak şekilde değiştirin. 
 
-Örneğin: `mydynamic.azureedge.net/index.html` dinamik bir sayfa ve dsa uç noktasından yüklenir.HTML sayfası, JavaScript kitaplıkları veya `mystatic.azureedge.net/banner.jpg` ve `mystatic.azureedge.net/scripts.js`gibi statik CDN uç noktasından yüklenen görüntüler gibi birden çok statik kıymete başvurur. 
+Örneğin: `mydynamic.azureedge.net/index.html` dinamik bir sayfa ve dsa uç noktasından yüklenir.HTML sayfası, JavaScript kitaplıkları veya ve gibi statik CDN uç noktasından yüklenen görüntüler gibi birden çok statik kıymete başvurur `mystatic.azureedge.net/banner.jpg` `mystatic.azureedge.net/scripts.js` . 
 
 
 

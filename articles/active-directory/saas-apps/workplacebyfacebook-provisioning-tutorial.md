@@ -15,34 +15,16 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99103c9994b240e2f45b66acf269b320c90e5135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231739"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718634"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için çalışma alanını Facebook ile yapılandırma
 
 Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için Facebook ve Azure Active Directory (Azure AD) ile her iki çalışma alanında gerçekleştirmeniz gereken adımlar açıklanmaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak [Facebook tarafından Iş yeri](https://work.workplace.com/) için kullanıcıları ve grupları otomatik olarak hazırlar ve serbest hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
-
-## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Facebook uygulamasına yeni çalışma alanına geçiş
-Facebook ile çalışma alanıyla mevcut bir tümleştirmeye sahipseniz, lütfen gelen değişiklikler hakkında aşağıdaki bölüme bakın. Çalışma alanını Facebook tarafından ilk kez ayarlıyorsanız, bu bölümü atlayabilir ve desteklenen yetenekler için geçiş yapabilirsiniz. 
-
-#### <a name="whats-changing"></a>Ne değişiyor?
-* Azure AD tarafında yapılan değişiklikler: Iş yerindeki kullanıcıları sağlamak için yetkilendirme yöntemi geçmişte uzun süreli bir gizli belirteç oldu. Yakında, OAuth yetkilendirme izni olarak değiştirilen yetkilendirme yöntemi görüntülenir. 
-* Çalışma alanı tarafındaki değişiklikler: daha önce Azure AD uygulaması, Facebook tarafından çalışma alanında özel bir tümleştirmedir. Artık Azure AD 'yi, Iş yeri tümleştirme dizininde üçüncü taraf bir uygulama olarak görürsünüz. 
-
-#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Mevcut özel tümleştirmem yeni uygulamaya geçirmek için ne yapmam gerekir?
-Geçerli bir belirteçle mevcut bir çalışma alanı tümleştiriniz varsa, herhangi bir eylem gerekmez. **04/28/2020 itibariyle, geçersiz kimlik bilgileri nedeniyle Karantinadaki tüm uygulamaları otomatik olarak geçirdik.**
- 
-#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Uygulamamın geçirilip geçirilmeyeceğini nasıl anlayabilirim? 
-* Azure portalında: uygulamanız geçirildiğinde, yaklaşan değişikliklerle ilgili yetkilendirme bölümündeki Başlık kaldırılır ve gizli belirteç alanı mavi bir yetkilendirme düğmesi ile değiştirilir. 
-* Facebook portalında çalışma alanında: onaylandığından emin olmak için Azure AD uygulamasını gözden geçirin.  
-
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Yönetici kimlik bilgileri bölümü uygulamamda gri renkte ve kaydedemiyorum. Neden?
-Geçirilmeyen çalışma alanı müşterileri için yönetici kimlik bilgileri bölümünü kilitliyoruz. Yönetici kimlik bilgileri bölümü gri ise, erişimi yeniden yetkilendirmeniz gerekiyorsa lütfen aşağıdaki URL 'YI kullanın. **? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = true** (https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true)
-
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
@@ -67,12 +49,12 @@ Bu öğreticideki adımları test etmek için aşağıdaki önerileri izlemeniz 
 - Gerekli olmadığı takdirde üretim ortamınızı kullanmayın.
 - Azure AD deneme ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık deneme sürümü edinebilirsiniz.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Facebook tarafından Azure AD Ile çalışma alanı arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın.
 
-## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için Facebook ile çalışma alanı yapılandırma
+## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Facebook ile çalışma alanı yapılandırma
 
 Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların çalışma alanınıza Facebook uygulaması tarafından erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Facebook uygulaması tarafından çalışma alanınıza atayabilirsiniz:
 

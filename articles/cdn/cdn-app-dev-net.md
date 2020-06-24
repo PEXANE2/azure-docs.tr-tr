@@ -11,16 +11,16 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref
-ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 20db31b63a82431b7dd59c6c5c92a1fb756c5c06
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611475"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888429"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN ile geliştirmeye başlama
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Projemiz, NuGet paketlerinde bulunan bazı Azure kitaplıklarını kullanacak.  
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Yönergeler, sabitler, Main yöntemi ve yardımcı yöntemleri
 Şimdi yazılan programımızın temel yapısını inceleyelim.
 
-1. Program.cs sekmesine döndüğünüzde, üstteki `using` yönergeleri aşağıdaki şekilde değiştirin:
+1. Program.cs sekmesine döndüğünüzde, `using` üstteki yönergeleri aşağıdaki şekilde değiştirin:
 
     ```csharp
     using System;
@@ -74,7 +74,7 @@ Projemiz, NuGet paketlerinde bulunan bazı Azure kitaplıklarını kullanacak.  
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Yöntemlerimizin kullanacağı bazı sabitleri tanımlamanız gerekiyor.  `Program` Sınıfında, ancak `Main` yönteminden önce aşağıdakileri ekleyin.  **Açılı ayraçlar&gt;dahil olmak üzere yer tutucuları, gerektiğinde kendi değerlerinizle değiştirdiğinizden emin &lt;** olun.
+2. Yöntemlerimizin kullanacağı bazı sabitleri tanımlamanız gerekiyor.  `Program`Sınıfında, ancak `Main` yönteminden önce aşağıdakileri ekleyin.  ** &lt; Açılı ayraçlar &gt; **dahil olmak üzere yer tutucuları, gerektiğinde kendi değerlerinizle değiştirdiğinizden emin olun.
 
     ```csharp
     //Tenant app constants
@@ -95,7 +95,7 @@ Projemiz, NuGet paketlerinde bulunan bazı Azure kitaplıklarını kullanacak.  
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
-4. `Main` Yöntemini aşağıdaki gibi değiştirin:
+4. `Main`Yöntemini aşağıdaki gibi değiştirin:
 
    ```csharp
    static void Main(string[] args)
@@ -154,9 +154,9 @@ Projemiz, NuGet paketlerinde bulunan bazı Azure kitaplıklarını kullanacak.  
     }
     ```
 
-Artık programımızın temel yapısı yazıldığına göre, `Main` yöntemi tarafından çağrılan yöntemleri oluşturacağız.
+Artık programımızın temel yapısı yazıldığına göre, yöntemi tarafından çağrılan yöntemleri oluşturacağız `Main` .
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 Azure CDN yönetim kitaplığını kullanabilmeniz için, hizmet Sorumlumuza kimlik doğrulaması yapmanız ve bir kimlik doğrulama belirteci edinmeniz gerekir.  Bu yöntem, belirteci almak için ADAL kullanır.
 
 ```csharp
@@ -189,7 +189,7 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Uygulamayı Azure AD 'ye `<redirect URI>` kaydettiğinizde girdiğiniz yeniden yönlendirme URI 'si ile değiştirdiğinizden emin olun.
+`<redirect URI>`Uygulamayı Azure AD 'ye kaydettiğinizde girdiğiniz yeniden yönlendirme URI 'si ile değiştirdiğinizden emin olun.
 
 ## <a name="list-cdn-profiles-and-endpoints"></a>CDN profillerini ve uç noktalarını listeleme
 Artık CDN işlemleri gerçekleştirmeye hazır hale getiriyoruz.  İlk yöntem, kaynak grubumuzdaki tüm profilleri ve uç noktaları listeliyor ve sabitlerimizde belirtilen profil ve uç nokta adları için bir eşleşme bulduğunda, daha sonra yinelenenleri oluşturmaya çalışmayın.
@@ -271,7 +271,7 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> Yukarıdaki örnek, uç noktayı *contoso* adlı bir kaynak ana bilgisayar adı `www.contoso.com`ile atar.  Bunu kendi başlangıcının ana bilgisayar adının işaret etmesi için değiştirmelisiniz.
+> Yukarıdaki örnek, uç noktayı *contoso* adlı bir kaynak ana bilgisayar adı ile atar `www.contoso.com` .  Bunu kendi başlangıcının ana bilgisayar adının işaret etmesi için değiştirmelisiniz.
 >
 >
 
@@ -292,7 +292,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> Yukarıdaki örnekte dize `/*` , uç nokta yolunun kökündeki her şeyi temizlemek istediğimizi gösterir.  Bu, tüm Azure portal "Temizleme" iletişim kutusunda **Temizleme** işlemi denetimi ile eşdeğerdir. Yönteminde, **Verizon** profilinden kodu `Sku = new Sku(SkuName.StandardVerizon)`kullanarak profilimizi bir Azure CDN olarak oluşturdum, bu nedenle bu işlem başarılı olur. `CreateCdnProfile`  Ancak, **Akamai profillerden Azure CDN** **Tümünü temizlemeyi**desteklemez, bu nedenle, bu öğretici için bir Akamai profili kullanırsam, temizlemek için belirli yollar eklemesi gerekir.
+> Yukarıdaki örnekte dize, `/*` uç nokta yolunun kökündeki her şeyi temizlemek istediğimizi gösterir.  Bu, tüm Azure portal "Temizleme" iletişim kutusunda **Temizleme** işlemi denetimi ile eşdeğerdir. Yönteminde, `CreateCdnProfile` Verizon profilinden kodu kullanarak profilimizi bir **Azure CDN** olarak oluşturdum `Sku = new Sku(SkuName.StandardVerizon)` , bu nedenle bu işlem başarılı olur.  Ancak, **Akamai profillerden Azure CDN** **Tümünü temizlemeyi**desteklemez, bu nedenle, bu öğretici için bir Akamai profili kullanırsam, temizlemek için belirli yollar eklemesi gerekir.
 >
 >
 

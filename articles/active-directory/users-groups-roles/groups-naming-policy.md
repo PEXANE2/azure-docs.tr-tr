@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582868"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728155"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory 'de Office 365 gruplarında bir adlandırma ilkesi zorlaması
 
@@ -36,23 +36,23 @@ Grup adlandırma ilkesi yapılandırıldığında, ilke son kullanıcılar taraf
 
 Gruplar için adlandırma ilkesini iki farklı şekilde zorunlu kılabilirsiniz:
 
-- **Ön ek-sonek adlandırma ilkesi** Gruplandırmada bir adlandırma kuralını zorlamak için otomatik olarak eklenen ön ekleri veya sonekleri tanımlayabilirsiniz (örneğin,\_"GRP Japonya\_My Group\_Engineering" Grup adında, GRP\_Japonya\_ ön ek ve \_mühendislik, sonektir). 
+- **Ön ek-sonek adlandırma ilkesi** Gruplandırmada bir adlandırma kuralını zorlamak için otomatik olarak eklenen ön ekleri veya sonekleri tanımlayabilirsiniz (örneğin, "GRP \_ Japonya \_ My Group \_ Engineering" Grup adında, GRP \_ Japonya \_ ön ek ve \_ mühendislik, sonektir). 
 
 - **Özel engellenen sözcükler** Kullanıcılar tarafından oluşturulan gruplarda engellenecek bir engellenen sözcük kümesini (örneğin, "CEO, bordro, HR") karşıya yükleyebilirsiniz.
 
 ### <a name="prefix-suffix-naming-policy"></a>Ön ek-sonek adlandırma ilkesi
 
-Adlandırma kuralının genel yapısı ' prefix [GroupName] sonekidir '. Birden çok önek ve sonek tanımlayabilmeniz sırasında, ayarında yalnızca bir [GroupName] örneği olabilir. Ön ekler veya sonekler, grubu oluşturan kullanıcıya göre değiştirilen sabit dizeler ya da \[departman\] gibi Kullanıcı öznitelikleri olabilir. Ön ekiniz için izin verilen toplam karakter sayısı ve grup adı da dahil olmak üzere sonek Dizeleriniz 53 karakterdir. 
+Adlandırma kuralının genel yapısı ' prefix [GroupName] sonekidir '. Birden çok önek ve sonek tanımlayabilmeniz sırasında, ayarında yalnızca bir [GroupName] örneği olabilir. Ön ekler veya sonekler, \[ grubu oluşturan kullanıcıya göre değiştirilen sabit dizeler ya da departman gibi Kullanıcı öznitelikleri olabilir \] . Ön ekiniz için izin verilen toplam karakter sayısı ve grup adı da dahil olmak üzere sonek Dizeleriniz 53 karakterdir. 
 
 Ön ekler ve sonekler, Grup adı ve grup diğer adında desteklenen özel karakterler içerebilir. Önek veya Sonekte, grup diğer adında desteklenmeyen herhangi bir karakter hala Grup adında uygulanır, ancak grup diğer adından kaldırılır. Bu kısıtlama nedeniyle, Grup adına uygulanan ön ekler ve sonekler, grup diğer adına uygulandıklarından farklı olabilir. 
 
 #### <a name="fixed-strings"></a>Sabit dizeler
 
-Genel adres listesinde ve grup iş yüklerinin sol gezinti bağlantılarında grupları taramayı ve ayırt edilmesini kolaylaştırmak için dizeleri kullanabilirsiniz. Ortak öneklerden bazıları ' GRP\_Name ', '\#Name ', '\_Name ' gibi anahtar kelimelerdir
+Genel adres listesinde ve grup iş yüklerinin sol gezinti bağlantılarında grupları taramayı ve ayırt edilmesini kolaylaştırmak için dizeleri kullanabilirsiniz. Ortak öneklerden bazıları ' GRP \_ Name ', ' \# Name ', ' \_ Name ' gibi anahtar kelimelerdir
 
 #### <a name="user-attributes"></a>Kullanıcı öznitelikleri
 
-Kullanıcılarınızın, grubun oluşturulduğu departmanı, ofisi veya coğrafi bölgeyi belirlemesine yardımcı olabilecek öznitelikleri kullanabilirsiniz. Örneğin, Adlandırma ilkenizi ve `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` `User’s department = Engineering`olarak tanımlarsanız, BIR grup adı "GRP My Group Mühendisliği" olabilir. Desteklenen Azure AD öznitelikleri; \[departman\], \[Şirket\], \[ofis\], \[stateoril\], \[CountryorRegion\], \[başlık\]. Desteklenmeyen Kullanıcı öznitelikleri sabit dizeler olarak kabul edilir; Örneğin, "\[PostaKodu\]". Uzantı öznitelikleri ve özel öznitelikler desteklenmez.
+Kullanıcılarınızın, grubun oluşturulduğu departmanı, ofisi veya coğrafi bölgeyi belirlemesine yardımcı olabilecek öznitelikleri kullanabilirsiniz. Örneğin, Adlandırma ilkenizi ve olarak tanımlarsanız, `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` `User’s department = Engineering` bir grup adı "GRP My Group Mühendisliği" olabilir. Desteklenen Azure AD öznitelikleri; \[ Departman \] , \[ Şirket \] , \[ ofis \] , \[ stateoril \] , \[ CountryorRegion \] , \[ başlık \] . Desteklenmeyen Kullanıcı öznitelikleri sabit dizeler olarak kabul edilir; Örneğin, " \[ PostaKodu \] ". Uzantı öznitelikleri ve özel öznitelikler desteklenmez.
 
 Kuruluşunuzdaki tüm kullanıcılar için doldurulmuş değerleri olan öznitelikleri kullanmanızı ve uzun değerleri olan öznitelikleri kullanmemenizi öneririz.
 
@@ -72,14 +72,14 @@ Engellenen sözcük listesi kuralları:
 Adlandırma ilkesini yapılandırmak için aşağıdaki rollerden biri gereklidir:
 - Genel yönetici
 - Grup Yöneticisi
-- Kullanıcı Yöneticisi
+- Kullanıcı yöneticisi
 
 Seçili Yöneticiler, tüm grup iş yükleri ve uç noktalarında bu ilkelerden muaf tutulur. böylece, engellenen kelimeleri ve kendi adlandırma kurallarını kullanarak gruplar oluşturabilirler. Grup adlandırma ilkesinden muaf tutulan Yönetici rollerinin listesi aşağıda verilmiştir.
 
 - Genel yönetici
 - İş ortağı katman 1 desteği
 - İş ortağı katman 2 desteği
-- Kullanıcı Yöneticisi
+- Kullanıcı yöneticisi
 - Dizin yazarları
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal adlandırma ilkesini yapılandırma

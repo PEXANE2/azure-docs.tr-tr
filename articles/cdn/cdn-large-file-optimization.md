@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 28b3c4faf62bcd9f9495810927ece03e2dadc1fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260539"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887657"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN ile büyük dosya indirme iyileştirmesi
 
@@ -104,14 +104,14 @@ Bayt aralığı isteği hakkında daha fazla bilgi için bkz. [RFC 7233](https:/
 
 CDN, alındıkları tüm öbekleri önbelleğe alır. Tüm dosyanın CDN önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıklarının sonraki istekleri CDN önbelleğinden sunulur. Tüm parçalar CDN 'de önbelleğe alınmamışsa, kaynaktan öbekleri istemek için önceden getirme kullanılır. Bu iyileştirme, kaynak sunucunun, bayt aralığı isteklerini destekleme özelliğine dayanır; Kaynak sunucu, bayt aralığı isteklerini desteklemiyorsa, bu iyileştirme etkili olmaz.
 
-### <a name="caching"></a>Önbelleğe alma
+### <a name="caching"></a>Önbelleğe Alma
 Büyük dosya iyileştirmesi, genel Web tesliminden farklı varsayılan önbelleğe alma zaman aşımı sürelerini kullanır. Olumlu önbellek ve HTTP yanıt kodlarına göre negatif önbellek arasında ayrım yapar. Kaynak sunucu, yanıtta Cache-Control veya Expires üst bilgisi aracılığıyla bir sona erme saati belirtiyorsa, CDN bu değere sahiptir. Kaynak belirtilmezse ve dosya bu iyileştirme türü için tür ve boyut koşullarıyla eşleşiyorsa, CDN büyük dosya iyileştirmesi için varsayılan değerleri kullanır. Aksi takdirde, CDN genel web teslimi için Varsayılanları kullanır.
 
 
 |    | Genel Web | Büyük dosya iyileştirmesi 
 --- | --- | --- 
 Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |1 gün  
-Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye 
+Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Yok | 1 saniye 
 
 ### <a name="deal-with-origin-failure"></a>Kaynak hatasıyla uğraşın
 

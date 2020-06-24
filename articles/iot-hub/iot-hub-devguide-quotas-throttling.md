@@ -8,11 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284700"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688985"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -39,8 +39,8 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 | Kısıtlama | Ücretsiz, B1 ve S1 | B2 ve S2 | B3 ve S3 | 
 | -------- | ------- | ------- | ------- |
 | [Kimlik kayıt defteri işlemleri](#identity-registry-operations-throttle) (oluşturma, alma, listeleme, güncelleştirme, silme) | 1.67/sn/birim (100/dak/Unit) | 1.67/sn/birim (100/dak/Unit) | 83.33/sn/birim (5000/dk/birim) |
-| [Yeni cihaz bağlantıları](#device-connections-throttle) (Bu sınır, toplam bağlantı sayısı değil, _Yeni bağlantı_oranı için geçerlidir) | 100/sn veya 12/sn/birim üzerinde daha yüksek <br/> Örneğin, iki S1 birimi 2\*12 = 24 yeni bağlantı/sn olmakla kalmaz, birimlerinizde en az 100 yeni bağlantı/sn vardır. Dokuz S1 birimiyle, birimlerinizde 108 yeni bağlantı/sn (9\*12) vardır. | 120 yeni bağlantı/sn/birim | 6.000 yeni bağlantı/sn/birim |
-| Cihazdan buluta gönderim | 100 gönderme işlemi/sn veya 12 gönderme işlemi/sn/birim daha yüksek <br/> Örneğin, iki S1 birimi 2\*12 = 24/sn olmakla kalmaz, birimleriniz arasında en az 100 gönderme işlemi/sn vardır. Dokuz S1 birimiyle, birimleriniz arasında 108 gönderme işlemi/sn (9\*12) vardır. | 120 gönderme işlemi/sn/birim | 6.000 gönderme işlemi/sn/birim |
+| [Yeni cihaz bağlantıları](#device-connections-throttle) (Bu sınır, toplam bağlantı sayısı değil, _Yeni bağlantı_oranı için geçerlidir) | 100/sn veya 12/sn/birim üzerinde daha yüksek <br/> Örneğin, iki S1 birimi 2 \* 12 = 24 yeni bağlantı/sn olmakla kalmaz, birimlerinizde en az 100 yeni bağlantı/sn vardır. Dokuz S1 birimiyle, birimlerinizde 108 yeni bağlantı/sn (9 \* 12) vardır. | 120 yeni bağlantı/sn/birim | 6.000 yeni bağlantı/sn/birim |
+| Cihazdan buluta gönderim | 100 gönderme işlemi/sn veya 12 gönderme işlemi/sn/birim daha yüksek <br/> Örneğin, iki S1 birimi 2 \* 12 = 24/sn olmakla kalmaz, birimleriniz arasında en az 100 gönderme işlemi/sn vardır. Dokuz S1 birimiyle, birimleriniz arasında 108 gönderme işlemi/sn (9 \* 12) vardır. | 120 gönderme işlemi/sn/birim | 6.000 gönderme işlemi/sn/birim |
 | Buluttan cihaza cihaz gönderme<sup>1</sup> | 1,67 gönderme işlemi/sn/birim (100 ileti/dk/birim) | 1,67 gönderme işlemi/sn/birim (100 gönderme işlemi/dk/birim) | 83,33 gönderme işlemi/sn/birim (5.000 gönderme işlemi/dk/birim) |
 | Buluttan cihaza<sup>1</sup> alır <br/> (yalnızca cihaz HTTPS kullandığında)| 16,67 alma işlemi/sn/birim (1.000 alma işlemi/dk/birim) | 16,67 alma işlemi/sn/birim (1.000 alma işlemi/dk/birim) | 833,33 alma işlemi/sn/birim (50.000 alma işlemi/dk/birim) |
 | Karşıya dosya yükleme | 1,67 dosya yükleme başlatma/sn/birim (100/dak/Unit) | 1,67 dosya yükleme başlatma/sn/birim (100/dak/Unit) | 83,33 dosya yükleme başlatma/sn/birim (5000/dk/birim) |
@@ -75,9 +75,9 @@ Aşağıdaki tabloda zorlanan kısıtlar gösterilmektedir. Değerler tek bir hu
 
 ### <a name="traffic-shaping"></a>Trafik şekillendirme
 
-IoT Hub, aşırı ara trafiğe uyum sağlamak için, sınırlı bir süre için azaltma üzerindeki istekleri kabul eder. Bu isteklerin ilk azı hemen işlenir. Ancak, istek sayısı azaltma oranını ihlal ederse IoT Hub, istekleri bir sıraya yerleştirmeyi ve sınır hızında işlenmesini başlatır. Bu etkiye *trafik şekillendirme*adı verilir. Ayrıca, bu sıranın boyutu sınırlı olur. Kısıtlama ihlali devam ederse, sonunda sıra doldurulur ve IoT Hub ile `429 ThrottlingException`istekleri reddetme başlatılır.
+IoT Hub, aşırı ara trafiğe uyum sağlamak için, sınırlı bir süre için azaltma üzerindeki istekleri kabul eder. Bu isteklerin ilk azı hemen işlenir. Ancak, istek sayısı azaltma oranını ihlal ederse IoT Hub, istekleri bir sıraya yerleştirmeyi ve sınır hızında işlenmesini başlatır. Bu etkiye *trafik şekillendirme*adı verilir. Ayrıca, bu sıranın boyutu sınırlı olur. Kısıtlama ihlali devam ederse, sonunda sıra doldurulur ve IoT Hub ile istekleri reddetme başlatılır `429 ThrottlingException` .
 
-Örneğin, bir saniyede 200 cihazdan buluta ileti göndermek için bir sanal cihaz kullanın. S1 IoT Hub (bir sınırı 100/sn D2C gönderir). İlk dakika veya ikisi için iletiler hemen işlenir. Ancak, cihaz kısıtlama sınırından daha fazla ileti gönderilmeye devam ettiğinden, IoT Hub saniyede yalnızca 100 ileti işleme başlar ve geri kalanı bir sıraya koyar. Yaşıyorsanız artırılan gecikme süresi başlar. Sonuç olarak, kuyruk dolduğunda `429 ThrottlingException` alma başlar ve [IoT Hub ölçümlerinde](iot-hub-metrics.md) "kısıtlama hatası sayısı" artmaya başlar.
+Örneğin, bir saniyede 200 cihazdan buluta ileti göndermek için bir sanal cihaz kullanın. S1 IoT Hub (bir sınırı 100/sn D2C gönderir). İlk dakika veya ikisi için iletiler hemen işlenir. Ancak, cihaz kısıtlama sınırından daha fazla ileti gönderilmeye devam ettiğinden, IoT Hub saniyede yalnızca 100 ileti işleme başlar ve geri kalanı bir sıraya koyar. Yaşıyorsanız artırılan gecikme süresi başlar. Sonuç `429 ThrottlingException` olarak, kuyruk dolduğunda alma başlar ve [IoT Hub ölçümlerinde](iot-hub-metrics.md) "kısıtlama hatası sayısı" artmaya başlar.
 
 ### <a name="identity-registry-operations-throttle"></a>Kimlik kayıt defteri işlemleri kısıtlama
 
@@ -93,7 +93,7 @@ Cihaz kimliği kayıt defteri işlemleri, cihaz yönetimi ve sağlama senaryolar
 
 IoT Hub diğer işlem sınırlarını zorlar:
 
-| İşlem | Sınır |
+| Çalışma | Sınır |
 | --------- | ----- |
 | Cihazlar | Tek bir IoT Hub 'ına kaydedilenebilir cihazların toplam sayısı ve modülleri 1.000.000 adresinden alınır. Bu sınırı artırmanın tek yolu [Microsoft desteği](https://azure.microsoft.com/support/options/)ile iletişim kurmaya yönelik bir yoldur.|
 | Dosya karşıya yüklemeleri | cihaz başına 10 eşzamanlı dosya karşıya yüklemesi. |

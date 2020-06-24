@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2a596b71ee7e5f58e01d5bc10b330f6f54a69d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91e251c8274ad85fcb0b3a65a3bdbcc660ceba00
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428673"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85101004"
 ---
 # <a name="assigning-variables-with-synapse-sql"></a>SYNAPSE SQL ile değişken atama
 
@@ -22,7 +22,7 @@ Bu makalede, T-SQL değişkenlerini SYNAPSE SQL ile atamaya yönelik ipuçları 
 
 ## <a name="setting-variables-with-declare"></a>DECLARE ile değişkenleri ayarlama
 
-SYNAPSE SQL içindeki değişkenler, `DECLARE` veya `SET` ifadesini kullanarak ayarlanır. Değişkenleri DECLARE ile başlatmak, SYNAPSE SQL 'de değişken değer ayarlamak için en esnek yollarla biridir.
+SYNAPSE SQL içindeki değişkenler, veya ifadesini kullanarak ayarlanır `DECLARE` `SET` . Değişkenleri DECLARE ile başlatmak, SYNAPSE SQL 'de değişken değer ayarlamak için en esnek yollarla biridir.
 
 ```sql
 DECLARE @v  int = 0
@@ -37,7 +37,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Göstermek için, aynı DECLARE ifadesinde hem başlatılmış hem *@p1* de kullanıldığı için aşağıdaki örneğe izin verilmez. Aşağıdaki örnek bir hata verir.
+Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Örneğin, * \@ P1* hem başlatılmış hem de aynı Declare ifadesinde kullanıldığı için aşağıdaki örneğe izin verilmez. Aşağıdaki örnek bir hata verir.
 
 ```sql
 DECLARE @p1 int = 0

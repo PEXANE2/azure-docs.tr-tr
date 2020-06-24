@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297807"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080850"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Varlık tanıma Bilişsel Beceri
 
@@ -22,50 +22,50 @@ ms.locfileid: "80297807"
 > [!NOTE]
 > İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)açıklanmaktadır.
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. yetenekler. Text. Entityrecognitionbeceri
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, tarafından [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
+Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdır [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
-| Parametre adı     | Açıklama |
+| Parametre adı     | Description |
 |--------------------|-------------|
-| kategoriler    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
-|defaultLanguageCode |    Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Tüm diller için tüm varlık kategorileri desteklenmez; Aşağıdaki nota bakın.|
-|minimumPrecision | 0 ile 1 arasında bir değer. Güven puanı ( `namedEntities` çıktıda) bu değerden düşükse varlık döndürülmez. Varsayılan değer, 0'dur. |
-|ıncludetypelessentities | Geçerli kategorilere `true` uymayan iyi bilinen varlıkları tanımak istiyorsanız olarak ayarlayın. Tanınan varlıklar `entities` karmaşık çıkış alanında döndürülür. Örneğin, "Windows 10" iyi bilinen bir varlıktır (bir ürün), ancak "Ürünler" desteklenen bir kategori olmadığından, bu varlık varlık çıktısı alanına dahil edilir. Varsayılan değer`false` |
+| `categories`    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"` , `"Location"` , `"Organization"` , `"Quantity"` , `"Datetime"` , `"URL"` , `"Email"` . Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
+| `defaultLanguageCode` |    Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` . Tüm diller için tüm varlık kategorileri desteklenmez; Aşağıdaki nota bakın.|
+| `minimumPrecision` | 0 ile 1 arasında bir değer. Güven puanı ( `namedEntities` çıktıda) bu değerden düşükse varlık döndürülmez. Varsayılan değer, 0'dur. |
+| `includeTypelessEntities` | `true`Geçerli kategorilere uymayan iyi bilinen varlıkları tanımak istiyorsanız olarak ayarlayın. Tanınan varlıklar `entities` karmaşık çıkış alanında döndürülür. Örneğin, "Windows 10" iyi bilinen bir varlıktır (bir ürün), ancak "Ürünler" desteklenen bir kategori olmadığından, bu varlık varlık çıktısı alanına dahil edilir. Varsayılan değer`false` |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı      | Açıklama                   |
+| Giriş adı      | Description                   |
 |---------------|-------------------------------|
-| languageCode    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
-| metin          | Çözümlenecek metin.          |
+| `languageCode`    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
+| `text`          | Çözümlenecek metin.          |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
 > [!NOTE]
-> Tüm diller için varlık kategorilerinin hepsi desteklenmez. `"Person"`, `"Location"`, Ve `"Organization"` varlık kategorisi türleri yukarıdaki dillerin tam listesi için desteklenir. Yalnızca _de_, _en_, _es_, _fr_ve _zh-Hans_ `"Quantity"`, `"Datetime"` `"URL"`,, ve `"Email"` türlerinin ayıklanmasını destekler. Daha fazla bilgi için bkz. [Metin Analizi API'si Için dil ve bölge desteği](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
+> Tüm diller için varlık kategorilerinin hepsi desteklenmez. `"Person"`, `"Location"` , Ve `"Organization"` varlık kategorisi türleri yukarıdaki dillerin tam listesi için desteklenir. Yalnızca _de_, _en_, _es_, _fr_ve _zh-Hans_ ,,, `"Quantity"` `"Datetime"` `"URL"` ve türlerinin ayıklanmasını destekler `"Email"` . Daha fazla bilgi için bkz. [Metin Analizi API'si Için dil ve bölge desteği](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
-| Çıkış adı      | Açıklama                   |
+| Çıkış adı      | Description                   |
 |---------------|-------------------------------|
-| elemanları       | Her bir dizenin bir kişinin adını temsil ettiği dizeler dizisi. |
-| yerlerini  | Her bir dizenin bir konumu temsil ettiği dizeler dizisi. |
-| organizations  | Her bir dizenin bir kuruluşu temsil ettiği dizeler dizisi. |
-| miktarlara  | Her bir dizenin bir miktarı temsil ettiği dizeler dizisi. |
-| Tarih saat  | Her bir dizenin bir tarih/saat değerini temsil ettiği dizeler dizisi (metin içinde göründüğü gibi). |
-| adresleri | Her bir dizenin bir URL 'YI temsil ettiği dizelerin dizisi |
-| - | Her bir dizenin bir e-postayı temsil ettiği dizelerin dizisi |
-| namedEntities | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>category</li> <li>değer (gerçek varlık adı)</li><li>fark (metinde bulunduğu konum)</li><li>güvenirlik (daha yüksek değer gerçek bir varlık olması anlamına gelir)</li></ul> |
-| varlıklar | Aşağıdaki alanlarla metinden ayıklanan varlıklar hakkında zengin bilgiler içeren karmaşık türlerin dizisi <ul><li> ad (gerçek varlık adı. Bu bir "normalleştirilmiş" formu temsil eder)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (varlık için Vikipedi sayfasına bağlantı)</li><li>Bingıd</li><li>tür (tanınan varlığın kategorisi)</li><li>Alt tür (yalnızca belirli kategoriler için kullanılabilir, bu varlık türünün daha ayrıntılı bir görünümünü sağlar)</li><li> Eşleşmeler (içeren karmaşık bir koleksiyon)<ul><li>metin (varlık için ham metin)</li><li>fark (konumun bulunduğu konum)</li><li>Uzunluk (ham varlık metninin uzunluğu)</li></ul></li></ul> |
+| `persons`       | Her bir dizenin bir kişinin adını temsil ettiği dizeler dizisi. |
+| `locations`  | Her bir dizenin bir konumu temsil ettiği dizeler dizisi. |
+| `organizations`  | Her bir dizenin bir kuruluşu temsil ettiği dizeler dizisi. |
+| `quantities`  | Her bir dizenin bir miktarı temsil ettiği dizeler dizisi. |
+| `dateTimes`  | Her bir dizenin bir tarih/saat değerini temsil ettiği dizeler dizisi (metin içinde göründüğü gibi). |
+| `urls` | Her bir dizenin bir URL 'YI temsil ettiği dizelerin dizisi |
+| `emails` | Her bir dizenin bir e-postayı temsil ettiği dizelerin dizisi |
+| `namedEntities` | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>category</li> <li>değer (gerçek varlık adı)</li><li>fark (metinde bulunduğu konum)</li><li>güvenirlik (daha yüksek değer gerçek bir varlık olması anlamına gelir)</li></ul> |
+| `entities` | Aşağıdaki alanlarla metinden ayıklanan varlıklar hakkında zengin bilgiler içeren karmaşık türlerin dizisi <ul><li> ad (gerçek varlık adı. Bu bir "normalleştirilmiş" formu temsil eder)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (varlık için Vikipedi sayfasına bağlantı)</li><li>Bingıd</li><li>tür (tanınan varlığın kategorisi)</li><li>Alt tür (yalnızca belirli kategoriler için kullanılabilir, bu varlık türünün daha ayrıntılı bir görünümünü sağlar)</li><li> Eşleşmeler (içeren karmaşık bir koleksiyon)<ul><li>metin (varlık için ham metin)</li><li>fark (konumun bulunduğu konum)</li><li>Uzunluk (ham varlık metninin uzunluğu)</li></ul></li></ul> |
 
 ##    <a name="sample-definition"></a>Örnek tanım
 

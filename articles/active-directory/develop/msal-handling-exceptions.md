@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d65d85d21521a6277a3ea823a8c9e83a34e3f42c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772106"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204635"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL özel durumlarını ve hatalarını işleme
 
@@ -138,7 +138,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-MSAL. js, soyut ve farklı türlerde yaygın hataların sınıflandırmakta olan hata nesneleri sağlar. Ayrıca, uygun şekilde işlemek üzere hata iletileri gibi hataların belirli ayrıntılarına erişmek için arabirim sağlar.
+MSAL.js, soyut ve farklı türlerde ortak hataları sınıflandıran hata nesneleri sağlar. Ayrıca, uygun şekilde işlemek üzere hata iletileri gibi hataların belirli ayrıntılarına erişmek için arabirim sağlar.
 
 ### <a name="error-object"></a>Hata nesnesi
 
@@ -162,7 +162,7 @@ Hata sınıfını genişleterek aşağıdaki özelliklere erişebilirsiniz:
 
 Aşağıdaki hata türleri kullanılabilir:
 
-- `AuthError`: MSAL. js kitaplığı için temel hata sınıfı, ayrıca beklenmeyen hatalar için kullanılır.
+- `AuthError`: MSAL.js kitaplığı için temel hata sınıfı, ayrıca beklenmeyen hatalar için kullanılır.
 
 - `ClientAuthError`: Istemci kimlik doğrulamasıyla ilgili bir sorunu gösteren hata sınıfı. Kitaplıktan gelen hataların çoğu ClientAuthErrors olur. Bu hatalar, oturum açma işlemi devam ederken bir oturum açma yöntemi çağırma gibi işlemlerden kaynaklanır, Kullanıcı oturum açma işlemini iptal eder ve bu şekilde devam eder.
 
@@ -518,21 +518,25 @@ Talep sınamasını işlemek için, `.WithClaim()` sınıfının yöntemini kull
 
 ### <a name="javascript"></a>JavaScript
 
-`acquireTokenSilent`Msal. js kullanarak belirteçleri sessizce (kullanarak) elde etmek için, erişmeye çalıştığınız BIR API 'nın MFA İlkesi gibi bir [koşullu erişim talep zorluğu](../azuread-dev/conditional-access-dev-guide.md) gerektiğinde, uygulamanız hatalar alabilir.
+MSAL.js kullanarak belirteçleri sessizce (kullanarak `acquireTokenSilent` ) alırken, erişmeye çalıştığınız BIR API IÇIN MFA İlkesi gibi bir [koşullu erişim talep zorluğu](../azuread-dev/conditional-access-dev-guide.md) gerektiğinde uygulamanız hatalar alabilir.
 
-Bu hatayı işleme deseninin, `acquireTokenPopup` Aşağıdaki örnekte olduğu gibi, msal. js ' de belirteç almak için etkileşimli bir çağrı yapmak için kullanılır `acquireTokenRedirect` :
+Bu hatayı işleme deseninin, `acquireTokenPopup` Aşağıdaki örnekte olduğu gibi MSAL.js belirteç almak için etkileşimli bir çağrı yapılır `acquireTokenRedirect` :
 
 ```javascript
-myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
+myMSALObj.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // call API
-}).catch( function (error) {
+}).catch(function(error) {
     if (error instanceof InteractionRequiredAuthError) {
-        // Extract claims from error message
-        accessTokenRequest.claimsRequest = extractClaims(error.errorMessage);
+    
+        // extract, if exists, claims from error message
+        if (error.ErrorMessage.claims) {
+            accessTokenRequest.claimsRequest = JSON.stringify(error.ErrorMessage.claims);
+        }
+        
         // call acquireTokenPopup in case of InteractionRequiredAuthError failure
-        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function (accessTokenResponse) {
+        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
             // call API
-        }).catch(function (error) {
+        }).catch(function(error) {
             console.log(error);
         });
     }

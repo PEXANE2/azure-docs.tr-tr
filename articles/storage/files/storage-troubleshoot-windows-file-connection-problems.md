@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2b49598d51fb785872fccec966ac11a95ef3cede
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 62b3a5ca772e21515fadf0397b294e93d77f96a6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657740"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711842"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -342,12 +342,12 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik sağlar:
 1. CheckPort445Connectivity: bağlantı noktası 445 ' nin SMB bağlantısı için açıldığını denetleyin
 2. Checkdomainkatılmış: istemci makinenin AD 'ye katılmış olduğunu doğrulama
-3. CheckADObject: oturum açan kullanıcının depolama hesabının ilişkilendirildiği AD etki alanında geçerli bir temsili olduğunu onaylayın
+3. CheckADObject: depolama hesabını temsil eden ve doğru SPN 'ye (hizmet asıl adı) sahip Active Directory bir nesne olduğunu onaylayın.
 4. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bileti almayı deneyin 
-5. Checkadobjectpasswordecorrect: depolama hesabını temsil eden AD kimliği üzerinde yapılandırılan parolanın, depolama hesabı Kerb anahtarıyla eşleşen olduğundan emin olun
+5. Checkadobjectpassworno: depolama hesabını temsil eden AD kimliği üzerinde yapılandırılan parolanın, depolama hesabı kerb1 veya kerb2 anahtarı ile aynı olduğundan emin olun
 6. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun. Belirli bir AD kullanıcısının Azure AD ile eşitlenip eşitlenmediğini aramak isterseniz, giriş parametrelerinde-UserName ve-Domain öğesini belirtebilirsiniz.
-7. CheckAadUserHasSid: bir Azuer AD kullanıcısının AD 'de SID 'ye sahip olup olmadığını denetleyin, kullanıcının Azure AD kullanıcısının nesne kimliğini-ObjectID ile girmesini gerektir. 
-8. Checkstorageaccountdomainkatılmış: depolama hesabını göstermek için AD 'de bir kimlik kaydedilip kaydedilmediğini denetleyin. 
+7. CheckAadUserHasSid: bir Azure AD kullanıcısının AD 'de SID 'ye sahip olup olmadığını denetleyin. Bu denetim, kullanıcının Azure AD kullanıcısının nesne kimliğini parametre-ObjectID ile girmesini gerektirir. 
+8. Checkstorageaccountdomainkatılmış: AD kimlik doğrulamasının etkinleştirildiğini ve hesabın AD özelliklerinin doldurulduğunu görmek için depolama hesabının özelliklerini denetleyin.
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile dizin/dosya düzeyi izinleri (Windows ACL 'Leri) yapılandırılamıyor
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77463212"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887889"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight 'ta kurumsal güvenlik genel bilgileri ve yönergeleri
 
@@ -43,9 +43,9 @@ Güvenli bir HDInsight kümesi dağıtımında, dağıtım ve küme yönetimini 
 
 * Veri erişimi, yetkilendirmenin etkinleştirildiği bir hizmet aracılığıyla yapıldığında:
   * Ranger yetkilendirme eklentisi çağrıldı ve isteğin bağlamı verildi.
-  * Ranger, hizmet için yapılandırılmış ilkeleri uygular. Ranger ilkeleri başarısız olursa, erişim denetimi dosya sistemine ertelenir. MapReduce gibi bazı hizmetler yalnızca, isteği gönderen kullanıcının dosya/klasörün sahip olup olmadığını denetler. Hive gibi hizmetler, sahiplik eşleşmesi veya uygun dosya sistemi izinleri (`rwx`) olup olmadığını denetleyin.
+  * Ranger, hizmet için yapılandırılmış ilkeleri uygular. Ranger ilkeleri başarısız olursa, erişim denetimi dosya sistemine ertelenir. MapReduce gibi bazı hizmetler yalnızca, isteği gönderen kullanıcının dosya/klasörün sahip olup olmadığını denetler. Hive gibi hizmetler, sahiplik eşleşmesi veya uygun dosya sistemi izinleri () olup olmadığını denetleyin `rwx` .
 
-* Hive için, oluşturma/güncelleştirme/silme izinlerine sahip olmanın yanı sıra, kullanıcının depolama ve tüm alt dizinlerde dizin üzerinde `rwx`izinleri olmalıdır.
+* Hive için, oluşturma/güncelleştirme/silme izinlerine sahip olmanın yanı sıra, kullanıcının `rwx` depolama ve tüm alt dizinlerde dizin üzerinde izinleri olmalıdır.
 
 * İlkeler, bireyler yerine gruplara (tercih edilen) uygulanabilir.
 
@@ -67,13 +67,13 @@ Hiyerarşik ad alanı etkin olmadığında:
 ### <a name="default-hdfs-permissions"></a>Varsayılan ayar izinleri
 
 * Varsayılan olarak, kullanıcıların, bu **/** klasöre (başarılı olması için Depolama Blobu sahip rolünde olmaları gerekir) erişim izni yoktur.
-* MapReduce ve diğerleri için hazırlama dizini için, kullanıcıya özgü bir dizin oluşturulur ve izinler sağlanır `sticky _wx` . Kullanıcılar, altında dosya ve klasör oluşturabilir, ancak diğer öğelere bakabilirler.
+* MapReduce ve diğerleri için hazırlama dizini için, kullanıcıya özgü bir dizin oluşturulur ve `sticky _wx` izinler sağlanır. Kullanıcılar, altında dosya ve klasör oluşturabilir, ancak diğer öğelere bakabilirler.
 
 ### <a name="url-auth"></a>URL kimlik doğrulaması
 
 URL kimlik doğrulaması etkinse:
 
-* Yapılandırma, URL kimlik doğrulaması (gibi `adl://`) içinde hangi öneklerin ele alınanlara sahip olacaktır.
+* Yapılandırma, URL kimlik doğrulaması (gibi) içinde hangi öneklerin ele alınanlara sahip olacaktır `adl://` .
 * Bu URL için erişim varsa, Ranger kullanıcının izin verilenler listesinde olup olmadığını denetler.
 * Ranger, hassas ilkelerin hiçbirini denetlemez.
 
@@ -119,7 +119,7 @@ HDInsight çok fazla hata noktası, kimlik bilgisi paylaşımı, DNS izinleri vb
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS örneği
 
-* Örneğini ile oluşturun `.onmicrosoft.com domain`. Bu şekilde, etki alanına hizmet eden birden çok DNS sunucusu olmayacaktır.
+* Örneğini ile oluşturun `.onmicrosoft.com domain` . Bu şekilde, etki alanına hizmet eden birden çok DNS sunucusu olmayacaktır.
 * LDAPS için otomatik olarak imzalanan bir sertifika oluşturun ve Azure AD DS yükleyin.
 * Kümeler dağıtmak için eşlenmiş bir sanal ağ kullanın (HDInsight ESP kümelerini dağıtan bir takım sayısına sahipseniz bu işlem yararlı olacaktır). Bu, etki alanı denetleyicisi ile sanal ağ üzerindeki bağlantı noktalarını (NSG 'ler) açmanıza gerek kalmaz.
 * Sanal ağın DNS 'sini düzgün şekilde yapılandırın (Azure AD DS etki alanı adı hiçbir ana bilgisayar dosya girişi olmadan çözümlenmelidir).
@@ -159,6 +159,17 @@ En yaygın nedenler:
 * NSG 'ler çok kısıtlayıcıdır, etki alanına katılmayı önler.
 * Yönetilen kimlik yeterli izinlere sahip değil.
 * Küme adı, ilk altı karakterden (başka bir canlı küme ile veya silinen bir kümeyle) benzersiz değildir.
+
+## <a name="authentication-setup-and-configuration"></a>Kimlik doğrulama kurulumu ve yapılandırması
+
+### <a name="user-principal-name-upn"></a>Kullanıcı asıl adı (UPN)
+
+* Lütfen tüm hizmetler için küçük harfli kullanın-UPN 'ler, ESP kümelerinde büyük küçük harfe duyarlı değildir, ancak
+* UPN ön eki Azure AD-DS içindeki SAMAccountName ile aynı olmalıdır. Posta alanıyla eşleştirme gerekli değildir.
+
+### <a name="ldap-properties-in-ambari-configuration"></a>Ambarı yapılandırmasındaki LDAP özellikleri
+
+HDInsight kümesi yapılandırmanızı etkileyen ambarı özelliklerinin tam listesi için bkz. [AMBARı LDAP Kimlik doğrulama kurulumu](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

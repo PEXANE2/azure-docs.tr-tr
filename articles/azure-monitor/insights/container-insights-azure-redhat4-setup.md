@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Red Hat OpenShift sürüm 4 ve üzeri sürümlerde barındırılan Azure Izleyici ile bir Kubernetes kümesi izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 4b827524845874dabaabe535163d99c408f77a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/15/2020
+ms.openlocfilehash: 872d842f02e19313940dfeba5258feb7d3799547
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196302"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888456"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Azure Red Hat OpenShift v4. x yapılandırma
 
@@ -57,11 +57,11 @@ Azure Red Hat OpenShift sürüm 4 ' ün ve daha yüksek bir kümenin, Azure 'da 
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aroV4/onboarding_azuremonitor_for_containers.sh.`
 
-3. Kümenizin **kuin bağlamını** belirlemek için, kümenizde başarılı `oc login` olduktan sonra komutunu `kubectl config current-context` çalıştırın ve değeri kopyalayın.
+3. Kümenizin **kuin bağlamını** belirlemek için, kümenizde başarılı olduktan sonra `oc login` komutunu çalıştırın `kubectl config current-context` ve değeri kopyalayın.
 
 ### <a name="integrate-with-an-existing-workspace"></a>Mevcut bir çalışma alanıyla tümleştirin
 
-Aşağıdaki adım, daha önce indirdiğiniz Bash betiğini kullanarak kümenizin izlenmesine izin vermez. Mevcut bir Log Analytics çalışma alanıyla tümleştirebilmek için, `workspaceResourceId` parametre için gereken Log Analytics çalışma alanınızın tam kaynak kimliğini belirlemek üzere aşağıdaki adımları uygulayın ve ardından, belirtilen çalışma alanına karşı izleme eklentisini etkinleştirmek için komutunu çalıştırın. Belirtmek için bir çalışma alanınız yoksa, 5. adıma atlayabilir ve betiğin sizin için yeni bir çalışma alanı oluşturmasını sağlayabilirsiniz.
+Aşağıdaki adım, daha önce indirdiğiniz Bash betiğini kullanarak kümenizin izlenmesine izin vermez. Mevcut bir Log Analytics çalışma alanıyla tümleştirebilmek için, parametre için gereken Log Analytics çalışma alanınızın tam kaynak KIMLIĞINI belirlemek üzere aşağıdaki adımları uygulayın `workspaceResourceId` ve ardından, belirtilen çalışma alanına karşı izleme eklentisini etkinleştirmek için komutunu çalıştırın. Belirtmek için bir çalışma alanınız yoksa, [varsayılan çalışma alanıyla tümleştir](#integrate-with-default-workspace) bölümüne atlayabilirsiniz ve betiğin sizin için yeni bir çalışma alanı oluşturmasına izin verebilirsiniz.
 
 1. Aşağıdaki komutu kullanarak erişiminiz olan tüm abonelikleri listeleyin:
 
@@ -74,7 +74,7 @@ Aşağıdaki adım, daha önce indirdiğiniz Bash betiğini kullanarak kümenizi
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
-    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
     **SubscriptionID**değerini kopyalayın.
@@ -93,25 +93,25 @@ Aşağıdaki adım, daha önce indirdiğiniz Bash betiğini kullanarak kümenizi
 
     Çıktıda, çalışma alanı adını bulun ve alan **kimliği**altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
 
-4. `workspaceResourceId` Parametresinin değerini değiştirerek izlemeyi etkinleştirmek için aşağıdaki komutu çalıştırın: 
+4. Ve parametrelerinin değerini değiştirerek izlemeyi etkinleştirmek için aşağıdaki komutu çalıştırın `workspaceResourceId` `azureAroV4ResourceIdparameter` : 
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <LogAnayticsWorkspaceResourceId>`
+    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <workspaceResourceId>`
 
     Örnek:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4  /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
+    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4 /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 
 ### <a name="integrate-with-default-workspace"></a>Varsayılan çalışma alanıyla tümleştirin
 
-Aşağıdaki adım, indirdiğiniz Bash betiğini kullanarak Azure Red Hat OpenShift v4. x kümenizi izlemeye izin vermez. Bu örnekte, oluşturma veya mevcut bir çalışma alanı belirtmeniz gerekmez. Bu komut, bölgede zaten mevcut değilse, küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir. Oluşturulan varsayılan çalışma alanı, *Defaultworkspace-\<GUID>-\<Region>* biçimine benzer.  
+Aşağıdaki adım, indirdiğiniz Bash betiğini kullanarak Azure Red Hat OpenShift v4. x kümenizi izlemeye izin vermez. Bu örnekte, oluşturma veya mevcut bir çalışma alanı belirtmeniz gerekmez. Bu komut, bölgede zaten mevcut değilse, küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir. Oluşturulan varsayılan çalışma alanı, *defaultworkspace- \<GUID> - \<Region> *biçimine benzer.  
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
+`bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
 
-    For example:
+Örneğin:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
+`bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
 
 İzlemeyi etkinleştirdikten sonra, küme için sistem durumu ölçümlerini görüntüleyebilmeniz yaklaşık 15 dakika sürebilir.
 

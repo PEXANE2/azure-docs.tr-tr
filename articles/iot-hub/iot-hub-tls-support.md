@@ -2,17 +2,17 @@
 title: Azure IoT Hub TLS desteği
 description: IoT Hub ile iletişim kuran cihazlar ve hizmetler için güvenli TLS bağlantıları kullanmanın en iyi yöntemleri
 services: iot-hub
-author: rezasherafat
+author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.author: rezas
-ms.openlocfilehash: 5b9f6b993b0d0f527d041b4ee055bf51fefa1253
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/18/2020
+ms.author: jlian
+ms.openlocfilehash: 8c52037684215d1672ed813389d0bbace9a03e42
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848254"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080613"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT Hub 'de TLS desteği
 
@@ -20,11 +20,17 @@ IoT Hub IoT cihazlarından ve hizmetlerinden gelen bağlantıları güvenli hale
 
 TLS 1,0 ve 1,1 eski olarak değerlendirilir ve kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [IoT Hub IÇIN TLS 1,0 ve 1,1 kullanımdan](iot-hub-tls-deprecating-1-0-and-1-1.md)kaldırılıyor. IoT Hub bağlanırken tercih edilen TLS sürümü olarak TLS 1,2 kullanmanız önemle önerilir.
 
-## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>IoT Hub kaynağınız içindeki TLS 1,2 bağlantılarını kısıtla
+## <a name="tls-12-enforcement-available-in-select-regions"></a>TLS 1,2 zorlaması seçim bölgelerinde kullanılabilir
 
-Ek güvenlik için, IoT Hub 'larınızı *yalnızca* TLS sürüm 1,2 kullanan istemci bağlantılarına izin verecek şekilde yapılandırmanız ve [Önerilen şifrelemelerin](#recommended-ciphers)kullanımını zorunlu hale getirilmesi önerilir.
+Ek güvenlik için IoT Hub 'larınızı *yalnızca* TLS sürüm 1,2 kullanan istemci bağlantılarına izin verecek şekilde yapılandırın ve [Önerilen şifrelemelerin](#recommended-ciphers)kullanımını zorunlu kılabilirsiniz. Bu özellik yalnızca şu bölgelerde desteklenir:
 
-Bu amaçla, [desteklenen bölgelerin](#supported-regions) herhangi birinde yeni bir IoT Hub sağlayın ve `minTlsVersion` özelliğini `1.2` Azure Resource Manager şablonunuzun IoT Hub kaynak belirtiminde olarak ayarlayın:
+* Doğu ABD
+* Orta Güney ABD
+* Batı ABD 2
+* US Gov Arizona
+* US Gov Virginia
+
+Bu amaçla, desteklenen bölgelerin herhangi birinde yeni bir IoT Hub sağlayın ve `minTlsVersion` özelliğini `1.2` Azure Resource Manager şablonunuzun IoT Hub kaynak belirtiminde olarak ayarlayın:
 
 ```json
 {
@@ -53,18 +59,7 @@ Bu yapılandırmayı kullanan oluşturulan IoT Hub kaynak, 1,0 ve 1,1 TLS sürü
 
 > [!NOTE]
 > `minTlsVersion`Özelliği salt okunurdur ve IoT Hub kaynağınız oluşturulduktan sonra değiştirilemez. Bu nedenle, *Tüm* IoT cihazlarınızın ve hizmetlerinizin TLS 1,2 ile uyumlu olduğunu ve [Önerilen şifrelemeleri](#recommended-ciphers) önceden test etmek ve doğrulamak önemlidir.
-
-## <a name="supported-regions"></a>Desteklenen bölgeler
-
-TLS 1,2 kullanımını gerektiren IoT Hub 'Ları aşağıdaki bölgelerde oluşturulabilir:
-
-* Doğu ABD
-* Orta Güney ABD
-* Batı ABD 2
-* US Gov Arizona
-* US Gov Virginia
-
-> [!NOTE]
+> 
 > `minTlsVersion`Yük devretme sonrasında, IoT Hub özelliği, coğrafi olarak eşleştirilmiş bölgenin yük devretmesinde etkili olmaya devam edecektir.
 
 ## <a name="recommended-ciphers"></a>Önerilen şifrelemeler
@@ -97,11 +92,11 @@ IoT Hub istemci SDK 'lerinde TLS 1,2 ve izin verilen şifrelemeleri yapılandır
 
 | Dil | TLS 1,2 destekleyen sürümler | Belgeler |
 |----------|------------------------------------|---------------|
-| C        | Etiket 2019-12-11 veya üzeri            | [Bağlantısının](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantısının](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Etiket 2019-12-11 veya üzeri            | [Bağlantı](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantı](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ## <a name="use-tls-12-in-your-iot-edge-setup"></a>IoT Edge kurulumunda TLS 1,2 kullanma
