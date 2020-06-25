@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830319"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686418"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Hızlı Başlangıç: Bir Azure Resource Manager şablonuyla bütçe oluşturma
 
@@ -74,7 +74,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablo
     * **Eşik**: Bildirim için eşik değerini girin. Maliyet eşiği aştığında bildirim gönderilir. Bu her zaman yüzde değeridir ve 0 ile 1000 arasında olmalıdır.
     * **İlgili Kişi E-postaları**: Eşik aşıldığında bütçe bildiriminin gönderileceği e-posta adresleri listesini girin. Beklenen biçim: `["user1@domain.com","user2@domain.com"]`.
     * **İlgili Kişi Rolleri**: Eşik aşıldığında bütçe bildiriminin gönderileceği ilgili kişi rollerinin listesini girin. Varsayılan değerler Sahip, Katkıda Bulunan ve Okuyucu’dur. Beklenen biçim: `["Owner","Contributor","Reader"]`.
-    * **İlgili Kişi Grupları**: Eşik aşıldığında bütçe bildiriminin gönderileceği eylem gruplarının listesini girin. Dize dizileri kabul edilir. Beklenen biçim: `["Action Group Name1","Action Group Name2"]`. Eylem gruplarını kullanmak istemiyorsanız `[]` girin.
+    * **İlgili Kişi Grupları**, eşik aşıldığında bütçe bildiriminin gönderileceği eylem grubu kaynak kimlikleri listesini tam kaynak URI'leri olarak girin. Dize dizileri kabul edilir. Beklenen biçim: `["action group resource ID1","action group resource ID2"]`. Eylem gruplarını kullanmak istemiyorsanız `[]` girin.
     * **Kaynak Filtresi**: Kaynaklar için filtre listesini girin. Beklenen biçim: `["Resource Filter Name1","Resource Filter Name2"]`. Filtre uygulamak istemiyorsanız `[]` girin. Kaynak filtresi girerseniz, **ölçüm filtreleri** değerlerini de girmelisiniz.
     * **Ölçüm Filtresi**: Ölçüm filtreleri listesini girin; **Kullanım** bütçe kategorisindeki bütçeler için zorunludur. Beklenen biçim: `["Meter Filter Name1","Meter Filter Name2"]`. **Kaynak filtresi** girmediyseniz `[]` girin.
     * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Bunu seçin.

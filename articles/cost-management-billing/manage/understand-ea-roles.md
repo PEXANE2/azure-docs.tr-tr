@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: 15c686e0d33d7341d16097f32e1c69077c319a12
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295312"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678027"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure kurumsal rollerini yönetme
 
@@ -27,6 +27,10 @@ Kuruluşunuzun kullanım ve harcamasının yönetilmesine yardımcı olmak için
 <sup>1</sup> EA sözleşmesinin Fatura ilgili kişisi bu rolde olacaktır.
 
 <sup>2</sup> Fatura ilgili kişisi Azure EA portalına eklenemez veya burada değiştirilemez. Bu kişi, anlaşma düzeyinde fatura ilgili kişisi olarak ayarlanmış kullanıcıya göre EA kaydına eklenir. Fatura ilgili kişisini değiştirmek için Bölgesel İşlem Merkezi’nin (ROC) iş ortağı/yazılım danışmanı aracılığıyla istek oluşturmanız gerekir.
+
+Kayıt sağlama sırasında ayarlanan ilk kayıt yöneticisi, Fatura ilgili kişisi hesabının kimlik doğrulaması türünü belirler. Fatura ilgili kişisi EA Portal’a salt okunur bir yönetici olarak eklendiğinde, bu kişiye Microsoft hesabı kimlik doğrulaması verilir. 
+
+Örneğin ilk kimlik doğrulaması türü Karma olarak ayarlandıysa, EA bir Microsoft hesabı olarak eklenir ve Fatura ilgili kişisi salt okunur EA yönetici ayrıcalıklarına sahip olur. EA yöneticisi mevcut Fatura ilgili kişisi için Microsoft hesabı yetkilendirmesini onaylamazsa, EA yöneticisi söz konusu kullanıcıyı silebilir ve müşteriden kullanıcıyı EA portalında yalnızca kayıt düzeyinde ayarlanan bir İş veya Okul hesabıyla salt okunur yönetici olarak yeniden eklemesini isteyebilir.
 
 Bu roller, Azure Kurumsal Anlaşmaları yönetmeye özgüdür ve kaynaklara erişimi denetlemeye yönelik Azure’da yer alan yerleşik rollere ek olarak sunulmuştur. Daha fazla bilgi için bkz. [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md).
 

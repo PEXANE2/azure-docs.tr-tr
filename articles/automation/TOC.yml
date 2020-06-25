@@ -41,6 +41,10 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Veri güvenliği
       items:
         - name: Güvenli varlıkların şifrelenmesi
@@ -63,6 +67,8 @@
           href: how-to/automation-region-dns-records.md
         - name: Otomasyon Farklı Çalıştır hesabı yönetme
           href: manage-runas-account.md
+        - name: Otomasyon hesabına özel olarak bağlanma
+          href: how-to/private-link-security.md
         - name: Rol izinlerini ve güvenliği yönetme
           href: automation-role-based-access-control.md
         - name: Otomasyon hesabını başka bir aboneliğe taşıma

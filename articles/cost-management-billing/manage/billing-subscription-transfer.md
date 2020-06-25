@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745847"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052156"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -100,7 +100,7 @@ Bir Azure aboneliğinin faturalama sahipliğini kabul ettiyseniz, sonraki adıml
 
 ## <a name="supported-subscription-types"></a>Desteklenen abonelik türleri
 
-Azure portalında abonelik aktarımı aşağıda listelenen abonelik türleri için yapılabilir. Şu anda [Ücretsiz Deneme](https://azure.microsoft.com/offers/ms-azr-0044p/) veya [Open Lisansı ile Azure (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) abonelikleri için aktarım desteklenmemektedir. Geçici bir çözüm için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md). [Sponsorluk](https://azure.microsoft.com/offers/ms-azr-0036p/) gibi diğer abonelikleri veya destek planlarını aktarmak için [Azure Desteği ile iletişime geçin](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Azure portalında abonelik aktarımı aşağıda listelenen abonelik türleri için yapılabilir. Şu anda [Ücretsiz Deneme](https://azure.microsoft.com/offers/ms-azr-0044p/) veya [Open Lisansı ile Azure (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) abonelikleri için aktarım desteklenmemektedir. Geçici bir çözüm için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Destek planları gibi diğer abonelikleri aktarmak için [Azure Desteği ile iletişime geçin](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 - [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft İş Ortağı Ağı](https://azure.microsoft.com/offers/ms-azr-0025p/)  

@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16f89fa99c9619e3956a089763ece1b96aff4480
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298134"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807791"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Kurumsal kayıt faturaları
 
@@ -224,7 +224,7 @@ Fiyatın alana ve bölgeye göre değiştiği hizmetler için geçerli coğrafi 
 | Bölge 2 | Asya Pasifik Doğu <br> Asya Pasifik Güneydoğu <br> Doğu Japonya <br> Batı Japonya <br> Doğu Avustralya <br> Güneydoğu Avustralya | Asya Pasifik <br> Japonya <br> Latin Amerika <br> Orta Doğu/Afrika <br> Doğu Avustralya <br> Güneydoğu Avustralya |
 | Bölge 3 | Güney Brezilya |   |
 
-Aynı veri merkezinde barındırılan hizmetler arasındaki veri çıkışından ücret alınmaz. Örneğin, Office 365 ve Azure.
+Aynı veri merkezinde barındırılan hizmetler arasındaki veri çıkışından ücret alınmaz. Örneğin Microsoft 365 ve Azure.
 
 ### <a name="monetary-commitment-and-unbilled-usage"></a>Parasal taahhüt ve faturalanmamış kullanım
 

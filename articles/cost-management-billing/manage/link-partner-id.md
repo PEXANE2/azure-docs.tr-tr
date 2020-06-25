@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 77abfcf300decb3a19da4268d7feb7de1f41f3b5
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778830"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743924"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>İş ortağı kimliğini Azure hesaplarınıza bağlama
 
@@ -160,4 +160,17 @@ Evet, Azure Stack için iş ortağı kimliğinizi bağlayabilirsiniz.
 **Şirketim müşteri kaynaklarına erişmek için [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) kullanıyorsa iş ortağı kimliğimi nasıl ilişkilendirebilirim?**
 
 [Azure Market’te bir yönetilen hizmet teklifi yayımlayarak](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers) müşterileri Azure’da atanan kaynak yönetimine eklerseniz, MPN kimliğiniz otomatik olarak ilişkilendirilir. Müşterileri [Azure Resource Manager şablonları dağıtarak eklerseniz](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), Microsoft İş Ortağı Ağı (MPN) kimliğinizi eklenmiş aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirmeniz gerekir. Bunu hizmet sağlayıcısı kiracınızda yapmanız gerekir. Bu işlemleri kolaylaştırmak için, MPN kimliğinizle ilişkilendirilmiş kiracınızda bir hizmet sorumlusu hesabı oluşturup eklediğiniz her müşteri için buna okuma yetkisi vermenizi öneririz. Bu örnekte RBAC Okuyucu rolü kullanılmıştır ve bu İş Ortağı Tarafından Kazanılmış Krediye uygun olmayan rollerden biridir. Roller hakkında daha fazla bilgi için bkz. [İş ortağı tarafından kazanılmış kredi için roller ve izinler](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2).
+
+
+**İş Ortağı Yönetici Bağlantısını (PAL) Müşterime nasıl açıklayabilirim?**
+
+İş Ortağı Yönetici Bağlantısı (PAL) Microsoft'un iş hedeflerine ulaşma ve bulutta değer elde etme yönünde müşterilere yardımcı olan iş ortaklarını belirlemesini ve tanımasını sağlar. Müşterilerin önce Azure kaynağına iş ortağı erişimi sağlaması gerekir. Erişim verildikten sonra iş ortağının Microsoft İş Ortağı Ağı (MPN ID) ilişkilendirilir. Bu ilişkilendirme Microsoft'un BT hizmet sağlayıcıları ekosistemini anlamasına ve ortak müşterilerimizi en iyi şekilde desteklemek için gereken araçlarla programları iyileştirmesine yardımcı olur.
+
+**PAL hangi verileri toplar?**
+
+Mevcut kimlik bilgilerine PAL ilişkilendirmesi Microsoft'a yeni müşteri verileri sağlamaz. Yalnızca Microsoft'a müşterinin Azure ortamına etkin bir şekilde dahil olan iş ortağının telemetrisini sağlar. Microsoft müşteri tarafından iş ortağına sağlanan hesabın izinleri (RBAC rolü) ve kapsamı (Yönetim Grubu, Abonelik, Kaynak Grubu, Kaynak) temelinde müşteri ortamından gelen etkiyi ve Azure tüketim gelirini iş ortağı kuruluşuyla ilişkilendirebilir. 
+
+**Bu bir müşterinin Azure Ortamının güvenliğini etkiler mi?**
+
+PAL ilişkilendirmesi yalnızca iş ortağının MPN ID değerini önceden sağlanmış kimlik bilgilerine ekler ve hiçbir izni (RBAC rolü) değiştirmediği gibi iş ortağına veya Microsoft'a ek Azure hizmet verileri de sağlamaz. 
 

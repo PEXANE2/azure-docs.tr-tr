@@ -3,16 +3,16 @@ title: Power BI uygulamasıyla Azure maliyetlerini analiz etme
 description: Bu makalede Azure Maliyet Yönetimi Power BI uygulamasını yükleme ve kullanma adımları gösterilmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 050df590827b94888c44826ac6391ff79ada1cfc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461608"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888196"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Kurumsal Anlaşmalar (EA) için Azure Maliyet Yönetimi Power BI uygulamasıyla maliyet analizi
 
@@ -127,6 +127,27 @@ Raporun nasıl kullanılacağına ilişkin ayrıntılı bilgi için [VM RI Kapsa
 ## <a name="troubleshoot-problems"></a>Sorunları giderme
 
 Power BI uygulamayla ilgili sorun yaşıyorsanız aşağıdaki sorun giderme bilgileri faydalı olabilir.
+
+### <a name="error-processing-the-data-in-the-dataset"></a>Veri kümesindeki verileri işleme hatası
+
+Şunu belirten bir hata alabilirsiniz:
+
+```
+There was an error when processing the data in the dataset.
+Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError","pbi.error":{"code":"ModelRefresh_ShortMessage_ProcessingError","parameters":{},"details":[{"code":"Message","detail":{"type":1,"value":"We cannot convert the value \"Required Field: 'Enr...\" to type List."}}],"exceptionCulprit":1}}} Table: <TableName>.
+```
+
+`<TableName>` yerine bir tablo adı görüntülenir.
+
+#### <a name="cause"></a>Nedeni
+
+Maliyet Yönetimi bağlantısında `Enrollment Number` için varsayılan **Kapsam** değeri değiştirildi.
+
+#### <a name="solution"></a>Çözüm
+
+Maliyet Yönetimi'ne yeniden bağlanın ve **Kapsam** değerini `Enrollment Number` olarak ayarlayın. Kuruluşunuzun kayıt numarasını girmeyin, onun yerine tam olarak aşağıdaki resimde gösterildiği gibi `Enrollment Number` yazın.
+
+![EA kayıt bilgilerini girme](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 
 ### <a name="budgetamount-error"></a>BudgetAmount hatası
 
