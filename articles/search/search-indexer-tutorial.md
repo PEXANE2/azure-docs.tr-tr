@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: cf0c2c75b795fcca347439714e163d4022b79fa4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: c2972d13b25d167c2144c4f66e36822e85e29690
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261027"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321007"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure SQL verilerinin dizinini oluştur
 
@@ -253,4 +253,4 @@ Sol gezinti bölmesindeki tüm kaynaklar veya kaynak grupları bağlantısını 
 Artık SQL veritabanı dizin oluşturma hakkında bilgi sahibi olduğunuza göre, Dizin Oluşturucu yapılandırmasına daha yakından bakalım.
 
 > [!div class="nextstepaction"]
-> [Azure SQL veritabanı dizin oluşturucuyu yapılandırma](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+> [SQL veritabanı dizin oluşturucuyu yapılandırma](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 06/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4cb96e1299010636e0bce3cb99fbba9862822564
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e92b0679111a6d5c6173da04c5061c95956125b8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022274"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322955"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>HDInsight kümelerini özel bir ambarı DB ile ayarlama
 
@@ -38,6 +38,7 @@ Tüm küme türleri ve sürümleri ile özel bir ambarı DB dağıtabilirsiniz. 
 
 Özel ambarı DB aşağıdaki diğer gereksinimlere sahiptir:
 
+- Veritabanının adı kısa çizgi veya boşluk içeremez
 - Mevcut bir Azure SQL VERITABANı sunucunuzun ve veritabanınızın olması gerekir.
 - Ambarı kurulumu için sağladığınız veritabanının boş olması gerekir. Varsayılan dbo şemasında hiç tablo olmaması gerekir.
 - Veritabanına bağlanmak için kullanılan kullanıcının veritabanında SELECT, CREATE TABLE ve INSERT izinlerine sahip olması gerekir.

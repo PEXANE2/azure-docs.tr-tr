@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus Kaynak Yöneticisi özel durumları | Microsoft Docs
 description: Azure Resource Manager ve önerilen eylemler tarafından ortaya çıkacak Service Bus özel durumların listesi.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: darosa
-editor: spelluru
-ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/26/2019
-ms.author: aschhab
-ms.openlocfilehash: 0f328651ac4422226071d2de12e9cbc787ef64be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: a0b0338da0f002c7b667748ffd2bf5a40c91c580
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978265"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336976"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus Kaynak Yöneticisi özel durumları
 
@@ -34,7 +23,7 @@ Aşağıda, Azure Resource Manager üzerinden ortaya çıkacak çeşitli özel d
 
 "Kötü Istek", Kaynak Yöneticisi tarafından alınan isteğin doğrulaması başarısız olduğunu gösterir.
 
-| Hata kodu | Hata alt kodu | Hata iletisi | Açıklama | Öneri |
+| Hata kodu | Hata alt kodu | Hata iletisi | Description | Öneri |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Hatalı İstek | 40000 | Alt kod = 40000. ' *Namespace Name '* ad alanı ' temel ' katmanını kullandığından, bir kuyruk oluşturulurken *' özellik adı '* özelliği ayarlanamaz. Bu işlem yalnızca ' standart ' veya ' Premium ' katmanda destekleniyor. | Azure Service Bus temel katmanda, aşağıdaki Özellikler ayarlanamaz veya güncelleştirilemez- <ul> <li> RequiresDuplicateDetection </li> <li> Oto Delete OnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Konu başlıkları </li> </ul> | Bu işlevselliği kullanmak için temel bilgisayardan standart veya Premium katmana yükseltmeyi düşünün. |
 | Hatalı İstek | 40000 | Alt kod = 40000. Varolan bir kuyruğun (veya konusunun) ' requiresDuplicateDetection ' özelliğinin değeri değiştirilemez. | Yinelenen algılama, varlık oluşturma sırasında etkinleştirilmelidir/devre dışı bırakılmalıdır. Yinelenen algılama yapılandırma parametresi oluşturulduktan sonra değiştirilemez. | Daha önce oluşturulmuş bir kuyrukta/konuda yinelenen saptamayı etkinleştirmek için, yinelenen algılama ile yeni bir kuyruk/konu oluşturabilir ve ardından orijinal kuyruktan yeni kuyruğa/konuya iletebilirsiniz. |
@@ -52,7 +41,7 @@ Aşağıda, Azure Resource Manager üzerinden ortaya çıkacak çeşitli özel d
 
 HTTP içinde olduğu gibi, "hata kodu 429", "çok fazla istek" anlamına gelir. Bu kaynakta çok fazla istek (veya çakışan işlemler nedeniyle) nedeniyle belirli bir kaynağın (ad alanı) kısıtlandığı anlamına gelir.
 
-| Hata kodu | Hata alt kodu | Hata iletisi | Açıklama | Öneri |
+| Hata kodu | Hata alt kodu | Hata iletisi | Description | Öneri |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 429 | 50004 | Alt kod = 50004. *Ad* alanınız kısıtlandığı için istek sonlandırıldı. | Bu hata koşulu, gelen istek sayısı kaynağın sınırlamasını aştığında oluşur. | Birkaç saniye bekleyip yeniden deneyin. <br/> <br/> [Kotalar](service-bus-quotas.md) ve [Azure Resource Manager istek limitleri](../azure-resource-manager/management/request-limits-and-throttling.md) hakkında daha fazla bilgi edinin|
 | 429 | 40901 | Alt kod = 40901. Başka bir çakışan işlem devam ediyor. | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce geçerli devam eden işlemin tamamlanmasını bekleyin. |
@@ -66,7 +55,7 @@ HTTP içinde olduğu gibi, "hata kodu 429", "çok fazla istek" anlamına gelir. 
 
 Bu hata sınıfı, kaynağın bulunamadığını gösterir.
 
-| Hata kodu | Hata alt kodu | Hata iletisi | Açıklama | Öneri |
+| Hata kodu | Hata alt kodu | Hata iletisi | Description | Öneri |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Bulunamadı | yok | *' Varlık adı '* varlığı bulunamadı. | İşlemin bulunamadığı varlık. | Varlığın mevcut olup olmadığını denetleyin ve işlemi yeniden deneyin. |
 | Bulunamadı | yok | Bulunamadı. Işlem yok. | Gerçekleştirmeye çalıştığınız işlem yok. | İşlemi denetleyip yeniden deneyin. |
@@ -77,7 +66,7 @@ Bu hata sınıfı, kaynağın bulunamadığını gösterir.
 
 Bu hata sınıfı bir iç sunucu hatası olduğunu belirtir
 
-| Hata kodu | Hata alt kodu | Hata iletisi | Açıklama | Öneri |
+| Hata kodu | Hata alt kodu | Hata iletisi | Description | Öneri |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | İç sunucu hatası | 50000 | Alt kod = 50000. İç sunucu hatası| Çeşitli nedenlerden kaynaklanabilir. Belirtilerden bazıları- <ul> <li> İstemci isteği/gövdesi bozuk ve bir hataya yol açar. </li> <li> Hizmette işleme sorunları nedeniyle istemci isteği zaman aşımına uğradı. </li> </ul> | Bu sorunu çözmek için <ul> <li> İstek parametrelerinin null veya hatalı biçimlendirilmiş olmadığından emin olun. </li> <li> İsteği yeniden deneyin. </li> </ul> |
 
@@ -85,7 +74,7 @@ Bu hata sınıfı bir iç sunucu hatası olduğunu belirtir
 
 Bu hata sınıfı, komutu çalıştırmak için Yetkilendirme yokluğunu gösterir.
 
-| Hata kodu | Hata alt kodu | Hata iletisi | Açıklama | Öneri |
+| Hata kodu | Hata alt kodu | Hata iletisi | Description | Öneri |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Yetkisiz | yok | Ikincil ad alanında geçersiz işlem. İkincil ad alanı salt okunurdur. | İşlem, salt okunur bir ad alanı olarak kurulum olan ikincil ad alanına karşı gerçekleştirildi. | Komutu birincil ad alanına karşı yeniden deneyin. [İkincil ad alanı](service-bus-geo-dr.md) hakkında daha fazla bilgi |
 | Yetkisiz | yok | MissingToken: yetkilendirme üst bilgisi bulunamadı. | Bu hata, yetkilendirmede null veya hatalı değerler olduğunda oluşur. | Yetkilendirme üstbilgisinde belirtilen belirteç değerinin doğru olmadığından ve null olmadığından emin olun. |

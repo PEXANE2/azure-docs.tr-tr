@@ -1,25 +1,14 @@
 ---
-title: Azure depolama kuyruklarını ve Service Bus kuyruklarını karşılaştırın
+title: Azure Depolama kuyruklarıyla Service Bus kuyruklarını karşılaştırma
 description: Azure tarafından sunulan iki kuyruk türü arasındaki farkları ve benzerlikleri analiz eder.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 09/04/2019
-ms.author: aschhab
-ms.openlocfilehash: ffa98e511053edc75fd0e6f25f7b0e21ee9ddda0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: a64000741de68518dd459b105a093ccf4cb6ab7b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414528"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337645"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve değişken maliyetli
 Bu makalede, bugün Microsoft Azure tarafından sunulan iki kuyruk türü arasındaki farklar ve benzerlikler analiz edilir: depolama kuyrukları ve Service Bus kuyrukları. Bu bilgileri kullanarak ilgili teknolojileri karşılaştırabilir ve değiştirebilir ve gereksinimlerinizi en iyi şekilde karşılayan çözümü daha bilinçli bir karar verebilir.
@@ -52,7 +41,7 @@ Belirli bir çözüm için hangi sıraya alma teknolojisinin amacına uygun oldu
 * Uygulamanızın iletileri paralel uzun süreli akışlar olarak işlemesini istiyorsunuz (ileti, iletideki [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) özelliği kullanılarak bir akışla ilişkilendirilir). Bu modelde, tüketim uygulamasındaki her düğüm, iletiler yerine akışlar için bir kullanıcı tarafından kabul edilebilir. Bir akış tüketen bir düğüme verildiğinde, düğüm işlemleri kullanarak uygulama akış durumunun durumunu inceleyebilir.
 * Çözümünüz, bir kuyruktan birden çok ileti gönderirken veya alırken işlemsel davranış ve kararlılık gerektirir.
 * Uygulamanız 64 KB 'ı aşan iletileri işler, ancak 256 KB sınırına büyük olasılıkla yaklaşımlar.
-* Sıralara rol tabanlı erişim modeli sağlamak ve Gönderenler ve alıcılar için farklı haklar/izinler sağlamak üzere bir gereksinimle uğraşmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+* Sıralara rol tabanlı erişim modeli sağlamak ve Gönderenler ve alıcılar için farklı haklar/izinler sağlamak üzere bir gereksinimle uğraşmanız gerekir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
     - [Yönetilen kimliklerle kimlik doğrulaması](service-bus-managed-service-identity.md)
     - [Uygulamadan kimlik doğrulaması yapma](authenticate-application.md)
 * Kuyruk boyutunuz 80 GB'ın üzerine çıkmayacaktır.
@@ -157,7 +146,7 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunula
 | Yerel C++ |**Evet** |**Evet** |
 | Java API’si |**Evet** |**Evet** |
 | PHP APı 'SI |**Evet** |**Evet** |
-| Node. js API 'SI |**Evet** |**Evet** |
+| Node.js API’si |**Evet** |**Evet** |
 | Rastgele meta veri desteği |**Evet** |**Hayır** |
 | Kuyruk adlandırma kuralları |**En fazla 63 karakter uzunluğunda**<br/><br/>(Bir kuyruk adındaki harfler küçük harfle yazılmalıdır.) |**En fazla 260 karakter uzunluğunda**<br/><br/>(Kuyruk yolları ve adları büyük/küçük harfe duyarlıdır.) |
 | Sıra uzunluğu alma işlevi |**Evet**<br/><br/>(İletilerin silinmeksizin TTL 'nin ötesinde yaklaşık değer.) |**Evet**<br/><br/>(Tam, zaman içinde nokta değeri.) |

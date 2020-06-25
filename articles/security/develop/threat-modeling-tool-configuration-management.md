@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 811feb26e492efeb505f43202bee484d3edfb8a5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 391851927d03a557483afa2656e315b28c613956
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658611"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322637"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Güvenlik çerçevesi: yapılandırma yönetimi | Karşı 
 | Ürün/hizmet | Makale |
 | --------------- | ------- |
 | **Web uygulaması** | <ul><li>[Içerik Güvenlik Ilkesi (CSP) uygulama ve satır içi JavaScript 'i devre dışı bırakma](#csp-js)</li><li>[Tarayıcının XSS filtresini etkinleştir](#xss-filter)</li><li>[ASP.NET uygulamalar, dağıtımdan önce izlemeyi ve hata ayıklamayı devre dışı bırakmalıdır](#trace-deploy)</li><li>[Yalnızca güvenilir kaynaklardan üçüncü taraf JavaScripts 'e erişin](#js-trusted)</li><li>[Kimliği doğrulanmış ASP.NET sayfalarının UI Redressing veya tıklama-Jacking savunmaları içerdiğinden emin olun](#ui-defenses)</li><li>[CORS 'nin ASP.NET Web uygulamalarında etkin olması durumunda yalnızca güvenilir kaynaklardan izin verildiğinden emin olun.](#cors-aspnet)</li><li>[ASP.NET sayfalarında ValidateRequest özniteliğini etkinleştirin](#validate-aspnet)</li><li>[JavaScript kitaplıklarının yerel olarak barındırılan en son sürümlerini kullan](#local-js)</li><li>[Otomatik MIME algılaması 'nı devre dışı bırak](#mime-sniff)</li><li>[Parmak izi oluşmasını önlemek için Windows Azure Web sitelerinde standart sunucu üstbilgilerini kaldırma](#standard-finger)</li></ul> |
-| **Veritabanınızı** | <ul><li>[Veritabanı altyapısı erişimi için bir Windows Güvenlik Duvarı yapılandırma](#firewall-db)</li></ul> |
+| **Veritabanı** | <ul><li>[Veritabanı altyapısı erişimi için bir Windows Güvenlik Duvarı yapılandırma](#firewall-db)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API 'sinde CORS etkinse yalnızca güvenilir kaynaklardan izin verildiğinden emin olun](#cors-api)</li><li>[Web API 'sinin gizli verileri içeren yapılandırma dosyalarının bölümlerini şifreleyin](#config-sensitive)</li></ul> |
 | **IoT cihazı** | <ul><li>[Tüm yönetici arabirimlerinin güçlü kimlik bilgileriyle güvenli olduğundan emin olun](#admin-strong)</li><li>[Bilinmeyen kodun cihazlarda yürütülemez olduğundan emin olun](#unknown-exe)</li><li>[Bit dolabı ile işletim sistemi ve IoT cihazının ek bölümlerini şifreleme](#partition-iot)</li><li>[Cihazlarda yalnızca en düşük hizmet/özelliklerin etkinleştirildiğinden emin olun](#min-enable)</li></ul> |
 | **IoT alan ağ geçidi** | <ul><li>[Bit dolabı ile işletim sistemi ve IoT alan ağ geçidinin ek bölümlerini şifreleme](#field-bit-locker)</li><li>[Alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin yükleme sırasında değiştirildiğinden emin olun](#default-change)</li></ul> |
@@ -113,7 +113,7 @@ Example: var str="alert(1)"; eval(str);
 | **Adımlar** | <p>"UI Redress saldırısı" olarak da bilinen tıklama, bir saldırgan, bir kullanıcının bir düğmeye tıklamasını sağlamak için birden çok saydam veya donuk katman kullandığında, en üst düzey sayfaya tıklandıklarında, başka bir sayfada bulunan bir düğmeye veya bağlantıya tıklamasını sağlar.</p><p>Bu katman, kurban 'in sayfasını yükleyen bir iframe ile kötü amaçlı bir sayfa taslağı oluşturarak elde edilir. Bu nedenle, saldırgan, kendi sayfaları için amaçlanan ' ı tıklatır ve büyük olasılıkla başka bir uygulamaya, etki alanına veya her ikisine de sahip olan başka bir sayfaya yönlendirilir. Tıklama saldırılarına karşı saldırıları engellemek için, tarayıcıyı diğer etki alanlarından çerçeveleme 'ye izin vermamasını sağlayan uygun X-çerçeve seçenekleri HTTP yanıt üst bilgilerini ayarlayın</p>|
 
 ### <a name="example"></a>Örnek
-X-FRAME-OPTIONS üst bilgisi IIS Web. config aracılığıyla ayarlanabilir. Hiçbir şekilde çerçeveli olmayan siteler için Web. config kod parçacığı: 
+X-FRAME-OPTIONS üst bilgisi IIS web.config aracılığıyla ayarlanabilir. Asla çerçeveli olmayan siteler için Web.config kod parçacığı: 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -125,7 +125,7 @@ X-FRAME-OPTIONS üst bilgisi IIS Web. config aracılığıyla ayarlanabilir. Hi�
 ```
 
 ### <a name="example"></a>Örnek
-Yalnızca aynı etki alanındaki sayfalara göre çerçevelenmiş siteler için Web. config kodu: 
+Yalnızca aynı etki alanındaki sayfalara göre çerçeveli olan siteler için Web.config kodu: 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -148,7 +148,7 @@ Yalnızca aynı etki alanındaki sayfalara göre çerçevelenmiş siteler için 
 | **Adımlar** | <p>Tarayıcı güvenliği, bir web sitesinin başka bir etki alanına AJAX istekleri göndermesini engeller. Bu kısıtlamaya aynı-Origin ilkesi adı verilir ve kötü amaçlı bir sitenin başka bir siteden hassas verileri okumasını önler. Ancak bazen diğer sitelerin tüketebileceği API 'Leri güvenli hale getirmek gerekebilir. Çapraz kaynak kaynak paylaşımı (CORS), bir sunucunun aynı kaynak ilkeyi rahat bir şekilde sağlamasına olanak tanıyan bir W3C standardıdır. CORS kullanarak, bir sunucu bazı çapraz kaynak isteklerine, diğerlerini reddetirken açık bir şekilde izin verebilir.</p><p>CORS, JSONP gibi önceki tekniklerin daha güvenli ve daha esnektir. Bu uygulamada, CORS 'nin etkinleştirilmesi Web uygulamasına birkaç HTTP yanıt üst bilgisi (Access-Control-*) ekleme ve bu işlem birkaç yolla yapılabilir.</p>|
 
 ### <a name="example"></a>Örnek
-Web. config dosyasına erişim varsa, CORS aşağıdaki kodla eklenebilir: 
+Web.config erişim varsa, CORS aşağıdaki kodla eklenebilir: 
 ```XML
 <system.webServer>
     <httpProtocol>
@@ -160,7 +160,7 @@ Web. config dosyasına erişim varsa, CORS aşağıdaki kodla eklenebilir:
 ```
 
 ### <a name="example"></a>Örnek
-Web. config dosyasına erişim yoksa, CORS aşağıdaki CSharp kodu eklenerek yapılandırılabilir: 
+web.config erişim yoksa, CORS aşağıdaki CSharp kodu eklenerek yapılandırılabilir: 
 ```csharp
 HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://example.com")
 ```
@@ -202,7 +202,7 @@ Istek doğrulama özelliğinin desteklenmediğini ve MVC6 işlem hattının bir 
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | <p>JQuery gibi standart JavaScript kitaplıklarını kullanan geliştiriciler, bilinen güvenlik kusurlardan oluşan ortak JavaScript kitaplıklarının onaylanan sürümlerini kullanmalıdır. Daha eski sürümlerindeki bilinen güvenlik açıklarına yönelik güvenlik düzeltmeleri içerdiğinden, kitaplıkların en son sürümünü kullanmak iyi bir uygulamadır.</p><p>En son sürüm uyumluluk nedeniyle kullanılmıyorsa, aşağıdaki en düşük sürümler kullanılmalıdır.</p><p>Kabul edilebilir en düşük sürümler:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery doğrulaması 1,9</li><li>JQuery Mobile 1.0.1</li><li>JQuery Cycle 2,99</li><li>JQuery DataTable 1.9.0</li></ul></li><li>**AJAX Denetim Araç Seti**<ul><li>AJAX denetim araç seti 40412</li></ul></li><li>**ASP.NET Web Forms ve Ajax**<ul><li>ASP.NET Web Forms ve Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3,0</li></ul></li></ul><p>Genel CDNs gibi dış sitelerden hiçbir bir JavaScript kitaplığı yükleme</p>|
+| **Adımlar** | <p>JQuery gibi standart JavaScript kitaplıklarını kullanan geliştiriciler, bilinen güvenlik kusurlardan oluşan ortak JavaScript kitaplıklarının onaylanan sürümlerini kullanmalıdır. Daha eski sürümlerindeki bilinen güvenlik açıklarına yönelik güvenlik düzeltmeleri içerdiğinden, kitaplıkların en son sürümünü kullanmak iyi bir uygulamadır.</p><p>En son sürüm uyumluluk nedeniyle kullanılmıyorsa, aşağıdaki en düşük sürümler kullanılmalıdır.</p><p>Kabul edilebilir en düşük sürümler:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery doğrulaması 1,9</li><li>JQuery Mobile 1.0.1</li><li>JQuery Cycle 2,99</li><li>JQuery DataTable 1.9.0</li></ul></li><li>**Ajax Denetim Araç Seti**<ul><li>AJAX denetim araç seti 40412</li></ul></li><li>**ASP.NET Web Forms ve Ajax**<ul><li>ASP.NET Web Forms ve Ajax 4</li><li>ASP.NET Ajax 3.5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3,0</li></ul></li></ul><p>Genel CDNs gibi dış sitelerden hiçbir bir JavaScript kitaplığı yükleme</p>|
 
 ## <a name="disable-automatic-mime-sniffing"></a><a id="mime-sniff"></a>Otomatik MIME algılaması 'nı devre dışı bırak
 
@@ -216,7 +216,7 @@ Istek doğrulama özelliğinin desteklenmediğini ve MVC6 işlem hattının bir 
 | **Adımlar** | X-Content-Type-Options üst bilgisi, geliştiricilerin içeriklerinin MIME önlenmesini belirtmelerine izin veren bir HTTP başlığıdır. Bu üstbilgi, MIME algılaması saldırılarını azaltmak için tasarlanmıştır. Kullanıcı denetlenebilir içerik içerebilen her sayfa için, HTTP üstbilgisi X-Content-Type-Options: noalgılayıcılar f ' i kullanmanız gerekir. Gerekli üst bilgiyi uygulamadaki tüm sayfalar için genel olarak etkinleştirmek üzere aşağıdakilerden birini yapabilirsiniz|
 
 ### <a name="example"></a>Örnek
-Uygulama Internet Information Services (IIS) 7 ' den barındırılıyorsa, Web. config dosyasına üst bilgi ekleyin. 
+Uygulama Internet Information Services (IIS) 7 ' ye göre barındırılıyorsa web.config dosyasına üst bilgi ekleyin. 
 ```XML
 <system.webServer>
 <httpProtocol>
@@ -488,7 +488,7 @@ Bir denetleyici veya eylem için CORS 'yi devre dışı bırakmak için [Disable
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Nasıl yapılır: ASP.NET 2,0 ' de yapılandırma bölümlerini](https://msdn.microsoft.com/library/ff647398.aspx), [bir korumalı yapılandırma sağlayıcısı belirterek](https://msdn.microsoft.com/library/68ze1hb2.aspx), [uygulama gizli dizilerini korumak için Azure Key Vault kullanarak](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) şifreleme |
-| **Adımlar** | Web. config, appSettings. JSON gibi yapılandırma dosyaları genellikle kullanıcı adları, parolalar, veritabanı bağlantı dizeleri ve şifreleme anahtarları dahil olmak üzere hassas bilgileri tutmak için kullanılır. Bu bilgileri korumayın, uygulamanız saldırganların veya kötü niyetli kullanıcıların hesap Kullanıcı adları ve parolalar, veritabanı adları ve sunucu adları gibi hassas bilgileri elde etmesine açıktır. Dağıtım türüne (Azure/on-Prem) bağlı olarak, yapılandırma dosyalarının hassas bölümlerini, DPAPI veya Azure Key Vault gibi hizmetleri kullanarak şifreleyin. |
+| **Adımlar** | Web.config, appsettings.jsgibi yapılandırma dosyaları genellikle kullanıcı adları, parolalar, veritabanı bağlantı dizeleri ve şifreleme anahtarları dahil olmak üzere hassas bilgileri tutmak için kullanılır. Bu bilgileri korumayın, uygulamanız saldırganların veya kötü niyetli kullanıcıların hesap Kullanıcı adları ve parolalar, veritabanı adları ve sunucu adları gibi hassas bilgileri elde etmesine açıktır. Dağıtım türüne (Azure/on-Prem) bağlı olarak, yapılandırma dosyalarının hassas bölümlerini, DPAPI veya Azure Key Vault gibi hizmetleri kullanarak şifreleyin. |
 
 ## <a name="ensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>Tüm yönetici arabirimlerinin güçlü kimlik bilgileriyle güvenli olduğundan emin olun
 

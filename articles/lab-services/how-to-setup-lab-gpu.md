@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/28/2020
 ms.author: nicolela
-ms.openlocfilehash: adac35bd3f59870f0c164b69548375610e9733b1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 0d42d3292c894aec1deff5da548383499ca50db9
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897344"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338292"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU sanal makinelerle laboratuvar kurma
 
@@ -26,7 +26,6 @@ Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
 
 - *Görselleştirme* ve *işlem* grafik Işleme birimleri (GPU 'lar) arasında seçim yapın.
 - Uygun GPU sürücülerinin yüklü olduğundan emin olun.
-- GPU sanal makinesine (VM) bağlanmak için Uzak Masaüstü Protokolü (RDP) ayarlarını yapılandırın.
 
 ## <a name="choose-between-visualization-and-compute-gpu-sizes"></a>Görselleştirme ve işlem GPU boyutları arasında seçim yapın
 Laboratuvar oluşturma Sihirbazı 'nın ilk sayfasında, **hangi sanal makine boyutuna ihtiyacınız var?** açılan listede, sınıfınız Için gereken VM 'lerin boyutunu seçersiniz.  
@@ -56,9 +55,6 @@ Laboratuvar sanal makinelerinizin GPU yeteneklerini avantajlarından yararlanmak
 Önceki görüntüde gösterildiği gibi, bu seçenek varsayılan olarak etkindir ve seçtiğiniz GPU ve görüntü türü için *en son* sürücülerin yüklü olmasını sağlar.
 - Bir *işlem* GPU boyutu seçtiğinizde, laboratuvar sanal makinelerinizin [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU 'su tarafından gücü vardır.  Bu durumda, yüksek performanslı bilgi işlem sağlayan en son [Işlem Birleşik cihaz mimarisi (CUDA)](https://www.nvidia.com/object/io_69526.html) sürücüleri yüklenir.
 - *Görselleştirme* GPU boyutunu seçtiğinizde, laboratuvar sanal makineleriniz [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU ve [kılavuz teknolojisi](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)tarafından desteklenir.  Bu durumda, en son KıLAVUZ sürücüleri yüklenir ve böylece grafik yoğun uygulamaların kullanımı sağlanır.
-
-> [!IMPORTANT]
-> *Görselleştirme* GPU 'ları ile en iyi kullanıcı deneyimine sahip olmak için *her iki sürücünün de* yüklü olduğundan *ve* GPU 'nun RDP bağlantıları üzerinden etkinleştirildiğinden emin olun. Daha fazla bilgi için bu makaledeki [Windows VM 'LERINE RDP bağlantısı üzerinden GPU 'Yu etkinleştirme](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) bölümüne bakın.
 
 ### <a name="install-the-drivers-manually"></a>Sürücüleri el ile yükler
 En son sürümden farklı bir sürücü sürümü yüklemeniz gerekebilir.  Bu bölümde, bir *işlem* GPU 'su mi yoksa bir *görselleştirme* GPU mı kullandığınıza bağlı olarak uygun sürücülerin el ile nasıl yükleneceği gösterilmektedir.
@@ -99,7 +95,6 @@ Görselleştirme GPU boyutu için sürücüleri el ile yüklemek için aşağıd
   
 1. Şablon VM 'yi yeniden başlatın.
 1. [Yüklü sürücüleri doğrulama](how-to-setup-lab-gpu.md#validate-the-installed-drivers) bölümünde yer alan yönergeleri izleyerek sürücülerin doğru şekilde yüklendiğini doğrulayın.
-1. RDP ['Yi Windows VM 'LERINE RDP bağlantısı üzerinden etkinleştirme](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) bölümündeki YÖNERGELERI izleyerek GPU bağlantısını ETKINLEŞTIRMEK için RDP ayarlarını yapılandırın.
 1. Sınıfınız için gereken sürücüleri ve diğer yazılımları yükledikten sonra öğrencilerinizi sanal makinelerinizi oluşturmak için **Yayımla** ' yı seçin.
 
 ### <a name="validate-the-installed-drivers"></a>Yüklü sürücüleri doğrulama
@@ -121,25 +116,6 @@ Bu bölümde, GPU sürücülerinizin düzgün şekilde yüklendiği nasıl doğr
 
 #### <a name="linux-images"></a>Linux görüntüleri
 [Linux çalıştıran N serisi VM 'LERE NVıDıA GPU sürücülerini yükleme](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#verify-driver-installation)konusunun "Sürücü yüklemesini doğrulama" bölümünde yer alan yönergeleri izleyin.
-
-## <a name="enable-gpu-over-rdp-connection-to-windows-vms"></a>Windows VM 'lerine RDP bağlantısı üzerinden GPU 'YU etkinleştirme
-Bir *görselleştirme* GPU 'su tarafından desteklenen BIR Windows sanal makinesine bağlanmak için RDP kullanırken, daha fazla yapılandırma yapmanız gerekir, böylece GPU grafikleri işlemek için kullanılır. Aksi takdirde, CPU, grafikleri işlemek için kullanılacaktır.
-
-Şablon sanal makinesinde şunları yapın:
-
-1. GPU kullanımı için RDP ayarlarını yapılandırın.
-
-   a. [GPU hızlandırmalı uygulama Işlemeyi yapılandırma](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#configure-gpu-accelerated-app-rendering)bölümündeki yönergeleri izleyin.  
-   b. [GPU hızlandırmalı çerçeve kodlamasını yapılandırma](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#configure-gpu-accelerated-frame-encoding)bölümündeki yönergeleri izleyin.
-
-1. Yapılandırmayı doğrulayın. 
-
-   a. [GPU hızlandırmalı uygulama Işlemesini doğrulama](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#verify-gpu-accelerated-app-rendering)bölümündeki yönergeleri izleyin.  
-   b. [GPU hızlandırmalı çerçeve kodlamasını doğrulama](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu#verify-gpu-accelerated-frame-encoding)bölümündeki yönergeleri izleyin.
-
-1. Artık sürücüleri yüklü ve GPU 'larınızı kullanacak şekilde yapılandırılmış RDP ayarları vardır.  Sınıfınız için gerekli olan diğer yazılımları yükledikten sonra öğrencilerinizi sanal makinelerinizi oluşturmak için **Yayımla** ' yı seçebilirsiniz.  
-
-Öğrencileriniz, sanal makinelerinize RDP kullanarak bağlandığında, masaüstleri sanal makinelerinin GPU 'suna göre işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

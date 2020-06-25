@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs paylaşılan erişim imzasıyla erişim yetkisi verme
 description: Bu makalede, paylaşılan erişim Imzaları (SAS) kullanarak Azure Event Hubs kaynaklarına erişim yetkisi verme hakkında bilgi sağlanır.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 0c572723c493847ed15f80948511d1cc993fa7e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298761"
+ms.locfileid: "85323117"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Paylaşılan erişim Imzalarını kullanarak Event Hubs kaynaklarına erişimi yetkilendirme
 Paylaşılan erişim imzası (SAS), Event Hubs ad alanındaki kaynaklara sınırlı erişim vermek için bir yol sağlar. SAS koruyucuları, yetkilendirme kurallarına göre Event Hubs kaynaklara erişim sağlar. Bu kurallar bir ad alanında ya da bir varlıkta (Olay Hub 'ı veya konu başlığı) yapılandırılır. Bu makalede SAS modeline genel bir bakış sağlanır ve SAS en iyi uygulamaları incelenir.

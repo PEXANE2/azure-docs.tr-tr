@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 05/29/2020
+ms.date: 06/23/2020
 tags: connectors
-ms.openlocfilehash: 557e162d9d7f0238d5554c32cb3ae96885877dbe
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220496"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323157"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps’ten SAP sistemlerine bağlanma
 
@@ -39,7 +39,7 @@ Bu makalede, daha önce açıklanan tümleştirme senaryolarını kapsayan, SAP 
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyle birlikte takip etmek için şu öğelere ihtiyacınız vardır:
 
@@ -49,9 +49,12 @@ Bu makaleyle birlikte takip etmek için şu öğelere ihtiyacınız vardır:
 
 * [SAP uygulama sunucunuz](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) veya [SAP ileti sunucunuz](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* SAP sunucunuza gönderebilmeniz için örnek bir IDoc dosyası gibi ileti içeriği, XML biçiminde olmalıdır ve kullanmak istediğiniz SAP eyleminin ad alanını içermelidir.
+* SAP sunucunuza göndereceğiniz örnek bir IDoc dosyası gibi ileti içeriği, XML biçiminde olmalıdır ve kullanmak istediğiniz SAP eyleminin ad alanını içermelidir.
 
 * **SAP tetikleyicisinden bir ileti alındığında** kullanmak için, bu kurulum adımlarını da gerçekleştirmeniz gerekir:
+  
+  > [!NOTE]
+  > Bu tetikleyici, Web kancası aboneliğine hem yenileme hem de aboneliği kaldırma için aynı URI konumunu kullanır. Yenileme işlemi HTTP `PATCH` yöntemini kullanır, ancak abonelik kaldırma IŞLEMI http `DELETE` yöntemini kullanır. Bu davranış, tetikleyicisinin geçmişinde bir abonelik kaldırma işlemi olarak bir yenileme işlemi görünmesini sağlayabilir, ancak tetikleyici HTTP yöntemi olarak kullanıldığından, işlem hala bir yenilemektedir `PATCH` `DELETE` .
 
   * Bu ayarla SAP Gateway Güvenlik izinlerinizi ayarlayın:
 
@@ -90,10 +93,10 @@ Bu Önkoşullar, mantıksal uygulamalarınız Premium düzeyinde (Geliştirici d
 
 1. [En son SAP istemci kitaplığını yerel bilgisayarınıza indirip yükleyin](#sap-client-library-prerequisites) . Aşağıdaki derleme dosyalarına sahip olmanız gerekir:
 
-   * libıuılıdecnumber. dll
-   * rscp4n. dll
-   * sapnco. dll
-   * sapnco_utils. dll
+   * libicudecnumber.dll
+   * rscp4n.dll
+   * sapnco.dll
+   * sapnco_utils.dll
 
 1. Bu derlemeleri içeren bir. zip dosyası oluşturun ve bu paketi Azure Storage 'daki blob kapsayıcınıza yükleyin.
 
@@ -111,7 +114,7 @@ Bu Önkoşullar, mantıksal uygulamalarınız Premium düzeyinde (Geliştirici d
    
    1. **Yeni bir yönetilen bağlayıcı Ekle** bölmesinde, **SAP paketi** kutusuna SAP derlemeleri olan. zip dosyasının URL 'sini yapıştırın. *SAS belirtecini eklediğinizden emin olun.*
 
-   1. İşiniz bittiğinde **Oluştur**’u seçin.
+   1. İşiniz bittiğinde **Oluştur**'u seçin.
 
    Daha fazla bilgi için bkz. [Ise bağlayıcıları ekleme](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment).
 
@@ -360,9 +363,9 @@ Bu örnek, uygulama SAP sisteminden bir ileti aldığında tetiklenen bir mantı
 
       Logic Apps, bağlantının düzgün çalıştığından emin olmak için bağlantınızı kurar ve test eder.
 
-1. SAP sistem yapılandırmanıza göre [gerekli parametreleri](#parameters) sağlayın.
+1. SAP sistem yapılandırmanıza göre [gerekli parametreleri](#parameters) sağlayın. 
 
-   İsteğe bağlı olarak bir veya daha fazla SAP eylemi sağlayabilirsiniz. Bu eylem listesi, tetikleyicinin SAP sunucusundan aldığı iletileri belirtir. Boş liste, tetikleyicinin tüm iletileri alacağını belirtir. Listede birden fazla ileti varsa, tetikleyici yalnızca listede belirtilen iletileri alır. SAP sunucusundan gönderilen diğer iletiler reddedilir.
+   SAP [eylemlerinin bir listesini belirterek, SAP sunucunuzda aldığınız iletileri filtreleyebilirsiniz](#filter-with-sap-actions).
 
    Dosya seçicisinden bir SAP eylemi seçebilirsiniz:
 
@@ -395,6 +398,56 @@ Basit dize ve sayı girişlerinin yanı sıra, SAP Bağlayıcısı aşağıdaki 
 * Daha yeni SAP sürümleri için tablo yönü parametrelerini değiştiren parametreleri değiştirme.
 * Hiyerarşik tablo parametreleri
 
+<a name="filter-with-sap-actions"></a>
+
+#### <a name="filter-with-sap-actions"></a>SAP eylemleri ile filtrele
+
+İsteğe bağlı olarak, tek veya birden çok SAP eylemi içeren bir liste veya dizi sağlayarak mantıksal uygulamanızın SAP sunucusundan aldığı iletileri filtreleyebilirsiniz. Varsayılan olarak bu dizi boştur. Bu, mantıksal uygulamanızın filtre olmadan SAP sunucunuzdaki tüm iletileri alacağı anlamına gelir. 
+
+Dizi filtresini ayarlarken, tetikleyici yalnızca belirtilen SAP Eylem türlerindeki iletileri alır ve SAP sunucunuzdaki diğer tüm iletileri reddeder. Ancak, bu filtre alınan yükün yazılıp zayıf veya güçlü olduğunu etkilemez.
+
+Şirket içi veri ağ geçidiniz için SAP bağdaştırıcısı düzeyinde herhangi bir SAP eylemi filtrelemesi olur. Daha fazla bilgi için bkz. [SAP 'dan Logic Apps test IDoc 'ları gönderme](#send-idocs-from-sap).
+
+SAP 'den mantıksal uygulamanızın tetikleyicisine IDoc paketleri gönderememek için SAP tRFC iletişim kutusunda (T-Code SM58) Işlem RFC (tRFC) çağrı reddetme iletisine bakın. SAP arabiriminde, **durum metni** alanındaki alt dize sınırları nedeniyle kırpıldığı aşağıdaki hata iletilerini alabilirsiniz.
+
+* `The RequestContext on the IReplyChannel was closed without a reply being`: Kanal için catch-all işleyicisi bir hata nedeniyle kanalı sonlandırdığında beklenmeyen hatalar meydana gelir ve diğer iletileri işlemek için kanalı yeniden oluşturur.
+
+  * Mantıksal uygulamanızın IDoc 'u aldığını onaylamak için durum kodu döndüren [bir yanıt eylemi ekleyin](../connectors/connectors-native-reqres.md#add-a-response-action) `200 OK` . IDoc, yanıt yüküne izin verilmeyen tRFC aracılığıyla taşınır.
+
+  * Bunun yerine IDoc 'u reddetmeniz gerekiyorsa, farklı bir HTTP durum kodu ile yanıtlayın, `200 OK` Bu nedenle sap bağdaştırıcısı sizin ADıNıZA SAP 'ye bir özel durum geri döndürür. 
+
+* `The segment or group definition E2EDK36001 was not found in the IDoc meta`: Kesimleri SAP tarafından yayımlanmadığı için, bir IDoc XML yükü oluşturma hatası gibi diğer hatalarda beklenen hatalar meydana gelir. bu nedenle, dönüştürme için gereken kesim türü meta verileri eksiktir. 
+
+  * Bu segmentlerin SAP tarafından serbest bırakılması için SAP sisteminizin ABAP mühendisine başvurun.
+
+<a name="find-extended-error-logs"></a>
+
+#### <a name="find-extended-error-logs"></a>Genişletilmiş hata günlüklerini bul
+
+Tam hata iletileri için SAP bağdaştırıcınızın genişletilmiş günlüklerine bakın. 
+
+Haziran 2020 ve üzeri şirket içi veri ağ geçidi sürümleri için, [uygulama ayarlarında ağ geçidi günlüklerini etkinleştirebilirsiniz](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
+
+2020 Nisan 'dan ve önceki sürümlerde bulunan şirket içi veri ağ geçidi sürümleri için Günlükler varsayılan olarak devre dışıdır. Genişletilmiş günlükleri almak için aşağıdaki adımları izleyin:
+
+1. Şirket içi veri ağ geçidi yükleme klasörünüzde `Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` dosyasını açın. 
+
+1. **Sapextendedtracing** ayarı Için değeri **false** iken **true**olarak değiştirin.
+
+1. İsteğe bağlı olarak, daha az olay için, **Saptracinglevel** değerini **bilgilendirici** (varsayılan) olarak **hata** veya **Uyarı**olarak değiştirin. Ya da daha fazla olay için, **bilgilendirici** seçeneğini **ayrıntılı**olarak değiştirin.
+
+1. Yapılandırma dosyasını kaydedin.
+
+1. Veri ağ geçidinizi yeniden başlatın. Şirket içi veri ağ geçidi yükleyicisi uygulamanızı açın ve **hizmet ayarları** menüsüne gidin. **Ağ geçidini yeniden Başlat**altında **Şimdi yeniden Başlat**' ı seçin.
+
+1. Sorununuzu yeniden oluşturun.
+
+1. Ağ Geçidi günlüklerinizi dışarı aktarın. Veri ağ geçidi yükleyicisi uygulamanızda **Tanılama** menüsüne gidin. **Ağ geçidi günlükleri**altında, **günlükleri dışarı aktar**' ı seçin. Bu dosyalar tarihe göre düzenlenen SAP günlüklerini içerir. Günlük boyutuna bağlı olarak, tek bir tarih için birden çok günlük dosyası bulunabilir.
+
+1. Yapılandırma dosyasında, **Sapextendedtracing** ayarını **false**olarak döndürün.
+
+1. Ağ geçidi hizmetini yeniden başlatın.
+
 ### <a name="test-your-logic-app"></a>Mantıksal uygulamanızı test etme
 
 1. Mantıksal uygulamanızı tetiklemek için SAP sisteminizden bir ileti gönderin.
@@ -403,9 +456,148 @@ Basit dize ve sayı girişlerinin yanı sıra, SAP Bağlayıcısı aşağıdaki 
 
 1. Tetikleyici çıkışları bölümünde SAP sisteminizden gönderilen iletiyi gösteren en son çalıştırmayı açın.
 
+<a name="send-idocs-from-sap"></a>
+
+### <a name="test-sending-idocs-from-sap"></a>SAP 'den IDoc 'Ları göndermeyi sınama
+
+SAP 'den Logic App 'e IDoc 'Ları göndermek için, aşağıdaki en düşük yapılandırmaya ihtiyacınız vardır:
+
+> [!IMPORTANT]
+> Bu adımları yalnızca, SAP yapılandırmanızı mantıksal uygulamanızla test ettiğinizde kullanın. Üretim ortamları için ek yapılandırma gerekir.
+
+1. [SAP 'de RFC hedefi yapılandırma](#create-rfc-destination)
+
+1. [RFC Hedefinizdeki bir ABAP bağlantısı oluşturma](#create-abap-connection)
+
+1. [Alıcı bağlantı noktası oluşturma](#create-receiver-port)
+
+1. [Gönderici bağlantı noktası oluşturma](#create-sender-port)
+
+1. [Mantıksal sistem ortağı oluşturma](#create-logical-system-partner)
+
+1. [İş ortağı profili oluşturma](#create-partner-profiles)
+
+1. [İletileri göndermeyi sınama](#test-sending-messages)
+
+#### <a name="create-rfc-destination"></a>RFC hedefi oluştur
+
+1. **RFC bağlantı ayarlarının yapılandırmasını** açmak IÇIN, SAP arabiriminizdeki **sm59** Transaction Code (T Code) ile **/n** önekini kullanın.
+
+1. **TCP/IP bağlantıları**  >  **Oluştur**' u seçin.
+
+1. Aşağıdaki ayarlarla yeni bir RFC hedefi oluşturun:
+    
+    * **RFC hedefi**için bir ad girin.
+    
+    * **Teknik ayarlar** sekmesinde, **etkinleştirme türü**Için, **kayıtlı sunucu programı**' nı seçin. **Program kimliğiniz**için bir değer girin. SAP 'de mantıksal uygulamanızın tetikleyicisi bu tanımlayıcı kullanılarak kaydedilir.
+    
+    * **Unicode** sekmesinde, **hedef sistemle Iletişim türü**için **Unicode**' u seçin.
+
+1. Yaptığınız değişiklikleri kaydedin.
+
+1. Yeni **Program kimliğinizi** Azure Logic Apps kaydedin.
+
+1. Bağlantınızı test etmek için, SAP arabiriminde, yeni **RFC hedefi**altında **bağlantı testi**' ni seçin.
+
+#### <a name="create-abap-connection"></a>ABAP bağlantısı oluştur
+
+1. **RFC bağlantı ayarlarının yapılandırmasını** açmak IÇIN, SAP arabiriminizdeki **sm59*** Transaction Code (T Code) ile **/n** önekini kullanın.
+
+1. **ABAP bağlantıları**  >  **Oluştur**' u seçin.
+
+1. **RFC hedefi**için, [Test SAP sisteminizin](#create-rfc-destination)tanımlayıcısını girin.
+
+1. Yaptığınız değişiklikleri kaydedin.
+
+1. Bağlantınızı test etmek için **bağlantı testi** ' ni seçin.
+
+#### <a name="create-receiver-port"></a>Alıcı bağlantı noktası oluştur
+
+1. **Bağlantı NOKTALARıNı IDoc işlem** ayarlarında açmak IÇIN, SAP arabiriminizdeki **we21** Transaction Code (T Code) ile **/n** önekini kullanın.
+
+1. **Bağlantı noktaları**  >  **işlem RFC**  >  **Oluştur**' u seçin.
+
+1. Açılan ayarlar kutusunda, **kendi bağlantı noktası adı**' nı seçin. Test bağlantı noktası için bir **ad**girin. Yaptığınız değişiklikleri kaydedin.
+
+1. Yeni alıcı bağlantı noktanızın ayarlarında, **RFC hedefi**için, [Test RFC hedefi](#create-rfc-destination)için tanımlayıcıyı girin.
+
+1. Yaptığınız değişiklikleri kaydedin.
+
+#### <a name="create-sender-port"></a>Gönderici bağlantı noktası oluştur
+
+1.  **Bağlantı NOKTALARıNı IDoc işlem** ayarlarında açmak IÇIN, SAP arabiriminizdeki **we21** Transaction Code (T Code) ile **/n** önekini kullanın.
+
+1. **Bağlantı noktaları**  >  **işlem RFC**  >  **Oluştur**' u seçin.
+
+1. Açılan ayarlar kutusunda, **kendi bağlantı noktası adı**' nı seçin. Test bağlantı noktası için **SAP**ile başlayan bir **ad** girin. Tüm gönderici bağlantı noktası adları **SAP**ile başlamalıdır, örneğin, **saptest**. Yaptığınız değişiklikleri kaydedin.
+
+1. Yeni gönderici bağlantı noktanızın ayarlarında, **RFC hedefi**IÇIN, [ABAP bağlantınızın](#create-abap-connection)tanımlayıcısını girin.
+
+1. Yaptığınız değişiklikleri kaydedin.
+
+#### <a name="create-logical-system-partner"></a>Mantıksal sistem ortağı oluştur
+
+1. **"Mantıksal sistemler" değişiklik görünümünü açmak için: genel bakış** ayarları, SAP arabiriminizdeki **bd54** Transaction Code (T Code) öğesini kullanın.
+
+1. Görüntülenen uyarı iletisini kabul edin: **dikkat: tablo çapraz istemci**
+
+1. Mevcut mantıksal sistemlerinizi gösteren listenin üzerinde **yeni girişler**' i seçin.
+
+1. Yeni mantıksal sisteminiz için **Log.Sysdıtem** tanımlayıcısı ve kısa **ad** açıklaması girin. Yaptığınız değişiklikleri kaydedin.
+
+1. Çalışma **ekranı istemi** göründüğünde, bir açıklama sağlayarak yeni bir istek oluşturun veya zaten bir istek oluşturduysanız, bu adımı atlayın.
+
+1. Çalışma ekranı isteğini oluşturduktan sonra, bu isteği tablo güncelleştirme isteğine bağlayın. Tablonuzun güncelleştirildiğini onaylamak için değişikliklerinizi kaydedin.
+
+#### <a name="create-partner-profiles"></a>İş ortağı profilleri oluşturma
+
+Üretim ortamları için iki iş ortağı profili oluşturmanız gerekir. İlk profil, kuruluşunuz ve SAP sisteminiz olan gönderen içindir. İkinci profil, mantıksal uygulamanız olan alıcı içindir.
+
+1. **Iş ortağı profilleri** ayarlarını açmak IÇIN, SAP arabiriminizdeki **we20** Transaction Code (T Code) ile **/n** önekini kullanın.
+
+1. **İş ortağı profilleri**altında, **iş ortağı türü**  >  **Oluştur**' u seçin.
+
+1. Aşağıdaki ayarlarla yeni bir iş ortağı profili oluşturun:
+
+    * **Iş ortağı No**için, [mantıksal sistem ortağınızın tanımlayıcısını](#create-logical-system-partner)girin.
+
+    * **Partn için. Yazın**, **ls**girin.
+
+    * **Aracı**için, Azure LOGIC Apps veya SAP olmayan diğer sistemler için program tanımlayıcıları KAYDETTIĞINIZDE kullanılacak SAP Kullanıcı hesabının tanımlayıcısını girin.
+
+1. Yaptığınız değişiklikleri kaydedin. [Mantıksal sistem ortağını oluşturmadıysanız](#create-logical-system-partner), hatayı alırsınız, **geçerli bir Iş ortağı numarası girin**.
+
+1. İş ortağı profilinizin ayarlarında **giden parmtrs**' ın altında, **giden parametre oluştur**' u seçin.
+
+1. Aşağıdaki ayarlarla yeni bir giden parametre oluşturun:
+
+    * **Ileti türünü**girin, örneğin, **Cremas**.
+
+    * [Alıcı bağlantı noktanızın tanımlayıcısını](#create-receiver-port)girin.
+
+    * Pack için bir IDoc boyutu girin **. Boyut**. Ya da, [SAP 'den bir kerede bir IDoc göndermek](#receive-idoc-packets-from-sap)için IDoc 'U **hemen geçir**' i seçin.
+
+1. Yaptığınız değişiklikleri kaydedin.
+
+#### <a name="test-sending-messages"></a>İletileri göndermeyi sınama
+
+1. **IDoc işlem ayarları Için test aracı** 'nı açmak üzere SAP arabiriminizdeki **we19** Transaction Code (T Code) ile **/n** önekini kullanın.
+
+1. **Test Için şablon**' ın altında, **ileti türü aracılığıyla**' i seçin ve ileti türü, örneğin, **ekip gibi girin.** **Oluştur**'u seçin.
+
+1. **Devam**' i seçerek **IDoc türü?** iletisini onaylayın.
+
+1. **Edidc** düğümünü seçin. Alıcı ve gönderici bağlantı noktalarınız için uygun değerleri girin. **Devam**’ı seçin.
+
+1. **Standart giden işleme**' yı seçin.
+
+1. Giden IDoc işlemesini başlatmak için **devam**' ı seçin. İşlem tamamlandığında **SAP sistemine veya harici program iletisine gönderilen IDoc** görüntülenir.
+
+1.  İşleme hatalarını denetlemek için, **/n** önekiyle birlikte **SM58** Transaction Code (T Code) kullanın.
+
 ## <a name="receive-idoc-packets-from-sap"></a>SAP 'den IDoc paketleri alma
 
-SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönderecek](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html)şekilde ayarlayabilirsiniz. IDoc paketlerini, SAP bağlayıcısını ve özellikle tetikleyiciyi almak için ek yapılandırma gerekmez. Ancak, bir IDoc paketindeki her öğeyi tetikleme paketini aldıktan sonra işlemek için, paketi tek tek IDoc 'a bölmek için bazı ek adımlar gerekir.
+SAP 'yi, toplu işler veya IDoc grupları olan [paketlerdeki IDoc 'ları gönderecek](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/4ab38886549a6d8ce10000000a42189c.html)şekilde ayarlayabilirsiniz. IDoc paketlerini, SAP bağlayıcısını ve özellikle tetikleyiciyi almak için ek yapılandırma gerekmez. Ancak, bir IDoc paketindeki her öğeyi tetikleme paketini aldıktan sonra işlemek için, paketi tek tek IDoc 'a bölmek için bazı ek adımlar gerekir.
 
 İşte, [ `xpath()` işlevi](./workflow-definition-language-functions-reference.md#xpath)kullanarak bir paketten tek tek IDoc 'ları nasıl ayıklayabileceğiniz gösterilmektedir:
 
@@ -439,7 +631,14 @@ Yeni bir mantıksal uygulama oluştururken mantıksal uygulama Tasarımcısı ' 
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>SAP 'de yapılar için şemalar oluşturma
 
-Bu örnek, bir HTTP isteğiyle tetikleyebileceğiniz bir mantıksal uygulama kullanır. SAP eylemi, belirtilen IDoc ve BAPı için şemaları oluşturmak üzere bir SAP sistemine bir istek gönderir. Yanıtta döndürülen şemalar, Azure Resource Manager Bağlayıcısı kullanılarak bir tümleştirme hesabına yüklenir.
+Bu örnek, bir HTTP isteğiyle tetikleyebileceğiniz bir mantıksal uygulama kullanır. Belirtilen IDoc ve BAPı için şemaları oluşturmak üzere, **şema oluştur** SAP EYLEMI bir SAP sistemine istek gönderir.
+
+Bu SAP eylemi, XML belgesinin içeriğini veya verilerini değil, bir XML şeması döndürür. Yanıtta döndürülen şemalar, Azure Resource Manager Bağlayıcısı kullanılarak bir tümleştirme hesabına yüklenir. Şemalar aşağıdaki bölümleri içerir:
+
+* İstek iletisinin yapısı. BAPı listenizi oluşturmak için bu bilgileri kullanın `get` .
+* Yanıt iletisinin yapısı. Yanıtı ayrıştırmak için bu bilgileri kullanın. 
+
+İstek iletisini göndermek için **SAP 'a Ileti gönder**Genel SAP eylemini veya hedeflenen **çağrı BAPI** eylemlerini kullanın.
 
 ### <a name="add-an-http-request-trigger"></a>HTTP Istek tetikleyicisi ekleme
 
@@ -639,9 +838,23 @@ Güçlü yazma kullanarak iletiler gönderdiğinizde, izin ve TIMS yanıtı eşl
 
 ## <a name="advanced-scenarios"></a>Gelişmiş senaryolar
 
+### <a name="change-language-headers"></a>Dil üstbilgilerini değiştirme
+
+Logic Apps 'ten SAP 'ye bağlandığınızda, bağlantı için varsayılan dil Ingilizce 'dir. Gelen istekleriniz ile [standart http üstbilgisini `Accept-Language` ](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4) kullanarak bağlantınızın dilini ayarlayabilirsiniz.
+
+> [!TIP]
+> Çoğu Web tarayıcısı `Accept-Language` , kullanıcının ayarlarına bağlı olarak bir üst bilgi ekler. Web tarayıcısı, Logic Apps tasarımcısında yeni bir SAP bağlantısı oluşturduğunuzda bu üstbilgiyi uygular. Web tarayıcınızın tercih ettiği dilde SAP bağlantıları oluşturmak istemiyorsanız, Web tarayıcınızın ayarlarını tercih ettiğiniz dili kullanacak şekilde güncelleştirin ya da Logic Apps Tasarımcısı yerine Azure Resource Manager kullanarak SAP bağlantınızı oluşturun. 
+
+Örneğin, `Accept-Language` **http istek** tetikleyicisi ' ni kullanarak üst bilgiyle bir istek ile mantıksal uygulamanıza bir istek gönderebilirsiniz. Mantıksal uygulamanızdaki tüm eylemler üstbilgiyi alır. Ardından SAP, sistem iletilerinde BAPı hata iletileri gibi belirtilen dilleri kullanır.
+
+Bir mantıksal uygulamanın SAP bağlantı parametrelerinin dil özelliği yoktur. Bu nedenle, `Accept-Language` üstbilgiyi kullanırsanız şu hatayı alabilirsiniz: **lütfen hesap bilgilerinizi ve/veya izinlerinizi denetleyip yeniden deneyin.** Bu durumda, bunun yerine SAP bileşeninin hata günlüklerine bakın. Hata aslında üstbilgiyi kullanan SAP bileşeninde gerçekleşir, bu nedenle şu hata iletilerinden birini alabilirsiniz:
+
+* `"SAP.Middleware.Connector.RfcLogonException: Select one of the installed languages"`
+* `"SAP.Middleware.Connector.RfcAbapMessageException: Select one of the installed languages"`
+
 ### <a name="confirm-transaction-explicitly"></a>İşlemi açıkça Onayla
 
-Logic Apps 'dan SAP 'ye işlem gönderdiğinizde, bu Exchange SAP belgesinde, [Işlem RFC sunucu programlarında](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)açıklandığı gibi iki adımda gerçekleşir. Varsayılan olarak, **SAP gönder** eylemi, işlev aktarımına yönelik adımları ve tek bir çağrıda işlem onayını işler. SAP Bağlayıcısı, bu adımları ayırma seçeneği sunar. Bir IDoc gönderebilir ve işlemi otomatik olarak onaylamanız yerine, açıkça **Işlem kimliği Onayla** eylemini kullanabilirsiniz.
+Logic Apps 'dan SAP 'ye işlem gönderdiğinizde, bu Exchange SAP belgesinde, [Işlem RFC sunucu programlarında](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)açıklandığı gibi iki adımda gerçekleşir. Varsayılan olarak, **SAP gönder** eylemi, işlev aktarımına yönelik adımları ve tek bir çağrıda işlem onayını işler. SAP Bağlayıcısı, bu adımları ayırma seçeneği sunar. Bir IDoc gönderebilir ve işlemi otomatik olarak onaylamanız yerine, açıkça **Işlem kimliği Onayla** eylemini kullanabilirsiniz.
 
 İşlem KIMLIĞI onayını ayırma özelliği, örneğin ağ sorunları gibi nedenlerle hataların gerçekleşebileceği senaryolarda, SAP 'deki işlemleri yinelemek istemediğiniz durumlarda faydalıdır. İşlem KIMLIĞINI ayrı olarak onayladıktan sonra, işlem SAP sisteminizde yalnızca bir kez tamamlanır.
 

@@ -1,7 +1,7 @@
 ---
-title: Yönetilen kimlik (Önizleme) kullanarak Azure SQL veritabanı ile bağlantı kurma
+title: Yönetilen kimlik (Önizleme) kullanarak Azure SQL veritabanı 'na bağlantı kurma
 titleSuffix: Azure Cognitive Search
-description: Yönetilen bir kimlik (Önizleme) kullanarak bir Azure SQL veritabanına Dizin Oluşturucu bağlantısı ayarlamayı öğrenin
+description: Yönetilen bir kimlik (Önizleme) kullanarak Azure SQL veritabanı 'na bir Dizin Oluşturucu bağlantısı ayarlamayı öğrenin
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,22 +9,23 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 87389651707a3bdcc18ae7eb03b88681b5303c4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3e58bdafce6746d7f83dfbceeff529c6d4b5075a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664805"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321352"
 ---
-# <a name="set-up-an-indexer-connection-to-an-azure-sql-database-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak bir Azure SQL veritabanına Dizin Oluşturucu bağlantısı kurma
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Yönetilen kimlik (Önizleme) kullanarak Azure SQL veritabanı 'na bir Dizin Oluşturucu bağlantısı kurma
 
 > [!IMPORTANT] 
 > Yönetilen kimlik kullanarak bir veri kaynağına bağlantı ayarlama desteği şu anda geçitli genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 > [Bu formu](https://aka.ms/azure-cognitive-search/mi-preview-request)doldurarak önizlemeye erişim isteğinde bulabilirsiniz.
 
-Bu sayfada, veri kaynağı nesne bağlantı dizesinde kimlik bilgileri sağlamak yerine yönetilen bir kimlik kullanarak bir Azure SQL veritabanına Dizin Oluşturucu bağlantısının nasıl ayarlanacağı açıklanır.
+Bu sayfada, veri kaynağı nesne bağlantı dizesinde kimlik bilgileri sağlamak yerine yönetilen bir kimlik kullanılarak Azure SQL veritabanı 'na bir Dizin Oluşturucu bağlantısının nasıl ayarlanacağı açıklanır.
 
 Bu özellik hakkında daha fazla bilgi edinmek için, bir dizin oluşturucunun ne olduğu ve veri kaynağınız için dizin oluşturucunun nasıl ayarlanacağı hakkında bilgi sahibi olmanız önerilir. Aşağıdaki bağlantılarda daha fazla bilgi bulabilirsiniz:
+
 * [Dizin Oluşturucu’ya genel bakış](search-indexer-overview.md)
 * [Azure SQL dizin oluşturucu](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -39,7 +40,7 @@ Sistem tarafından atanan bir yönetilen kimlik etkinleştirildiğinde Azure, ar
 **Kaydet** ' i seçtikten sonra, arama hizmetinize atanmış BIR nesne kimliği görürsünüz.
 
 ![Nesne Kimliği](./media/search-managed-identities/system-assigned-identity-object-id.png "Nesne Kimliği")
- 
+
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2-SQL Server için Azure Active Directory Yöneticisi sağlama
 
 Sonraki adımda veritabanına bağlanırken, arama hizmetinize veritabanına erişim izni vermek için veritabanına Yönetici erişimi olan bir Azure Active Directory (Azure AD) hesabıyla bağlanmanız gerekir.
@@ -102,7 +103,7 @@ Bir SQL veritabanından dizin oluştururken, veri kaynağı aşağıdaki gerekli
 * **ad** , arama hizmetinizin içindeki veri kaynağının benzersiz adıdır.
 * **tür**`azuresql`
 * **Credentials**
-    * Kimlik doğrulaması için yönetilen bir kimlik kullanırken, **kimlik bilgileri** biçimi, bir kimlik bilgisi kullanmaktan farklı. Burada, bir başlangıç kataloğu veya veritabanı adı ve hesap anahtarı ya da parolası olmayan bir RESOURCEID sağlarsınız. RESOURCEID, Azure SQL veritabanının abonelik KIMLIĞINI, SQL veritabanının kaynak grubunu ve SQL veritabanının adını içermelidir. 
+    * Kimlik doğrulaması için yönetilen bir kimlik kullanırken, **kimlik bilgileri** biçimi, bir kimlik bilgisi kullanmaktan farklı. Burada, bir başlangıç kataloğu veya veritabanı adı ve hesap anahtarı ya da parolası olmayan bir RESOURCEID sağlarsınız. RESOURCEID, Azure SQL veritabanının abonelik KIMLIĞINI, SQL veritabanı kaynak grubunu ve SQL veritabanının adını içermelidir. 
     * Yönetilen kimlik bağlantı dizesi biçimi:
         * *İlk Katalog | Veritabanı =**veritabanı adı**; RESOURCEID =/Subscriptions/**ABONELIK kimliği**/ResourceGroups/**kaynak grubu adı**/Providers/Microsoft.SQL/Servers/**SQL Server adınız**/; Bağlantı zaman aşımı =**bağlantı zaman aşımı uzunluğu**;*
 * **kapsayıcı** , dizin oluşturmak istediğiniz tablonun veya görünümün adını belirtir.

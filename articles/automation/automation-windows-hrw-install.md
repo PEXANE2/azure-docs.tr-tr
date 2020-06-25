@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Windows karma runbook çalışanı dağıtma
 description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızda Windows tabanlı makinelerde runbook 'lar çalıştırmak için kullanabileceğiniz bir karma Runbook Worker dağıtımı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/17/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: b1cac1ed1ff92086991d405ad72950e362493619
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6141440cdb5b232145417c6051cb340e806f9352
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079193"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338006"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -190,15 +190,15 @@ Import-Module .\HybridRegistration.psd1
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 ```
 
-Bu cmdlet için gereken bilgileri Azure portal anahtarları Yönet sayfasından edinebilirsiniz. Otomasyon hesabınızdaki ayarlar sayfasında bulunan **anahtarlar** ' a tıklayarak bu sayfayı açın.
+Parametreler için gereken bilgileri `EndPoint` ve `Token` Otomasyon hesabınızdaki **anahtarlar** sayfasını alabilirsiniz. Sayfanın sol tarafındaki **Hesap ayarları** bölümünün altında bulunan **anahtarlar** ' ı seçin.
 
 ![Anahtarları Yönet sayfası](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
+* Parametresi için `EndPoint` , **URL**değerini kopyalayın.
+
+* Parametresi için `Token` , **BIRINCIL erişim anahtarı**değerini kopyalayın.
+
 * Parametresi için `GroupName` karma Runbook Worker grubunun adını kullanın. Bu grup Otomasyon hesabında zaten mevcutsa, geçerli makine buna eklenir. Bu grup yoksa, eklenir.
-
-* Parametresi için `EndPoint` , anahtarları Yönet sayfasında **URL** girişini kullanın.
-
-* Parametresi için `Token` anahtarları Yönet sayfasında **BIRINCIL erişim anahtarı** girişini kullanın.
 
 * Gerekirse, `Verbose` yükleme hakkındaki ayrıntıları almak için parametresini ayarlayın.
 

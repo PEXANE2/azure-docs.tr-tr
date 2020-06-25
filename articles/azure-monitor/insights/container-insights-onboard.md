@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyicisini etkinleştirme | Microsoft Docs
 description: Bu makalede, kapsayıcının nasıl çalıştığını ve performansla ilgili sorunları nasıl tanımladığınızı anlayabilmeniz için kapsayıcılar için Azure Izleyicisini etkinleştirme ve yapılandırma açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: a765c601682eb594d40ba98b8b4ef1853f35fb37
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: e17a346418bc5d38470168339f2078a0a187fe4e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886003"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338271"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
@@ -57,7 +57,7 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir.
 
 - Ortamlar: Azure Red Hat OpenShift, Kubernetes on-premises ve AKS Engine for Azure ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks motoru](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
-- Kubernetes ve destek ilkesi sürümleri [desteklenen aks](../../aks/supported-kubernetes-versions.md)sürümleriyle aynıdır. 
+- Kubernetes ve destek ilkesi sürümleri [desteklenen aks](../../aks/supported-kubernetes-versions.md)sürümleriyle aynıdır.
 
 ## <a name="network-firewall-requirements"></a>Ağ güvenlik duvarı gereksinimleri
 
@@ -65,7 +65,7 @@ Aşağıdaki tablodaki bilgiler Kapsayıcılı aracının kapsayıcılar için A
 
 |Aracı Kaynağı|Bağlantı noktaları |
 |--------------|------|
-| `*.ods.opinsights.azure.com` | 443 |  
+| `*.ods.opinsights.azure.com` | 443 |
 | `*.oms.opinsights.azure.com` | 443 |
 | `dc.services.visualstudio.com` | 443 |
 | `*.monitoring.azure.com` | 443 |
@@ -73,7 +73,7 @@ Aşağıdaki tablodaki bilgiler Kapsayıcılı aracının kapsayıcılar için A
 
 Aşağıdaki tablodaki bilgiler, Azure Çin 21Vianet için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
 
-|Aracı Kaynağı|Bağlantı noktaları |Description | 
+|Aracı Kaynağı|Bağlantı noktaları |Description |
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.cn` | 443 | OMS ekleme |
@@ -81,7 +81,7 @@ Aşağıdaki tablodaki bilgiler, Azure Çin 21Vianet için proxy ve güvenlik du
 
 Aşağıdaki tablodaki bilgiler, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
 
-|Aracı Kaynağı|Bağlantı noktaları |Description | 
+|Aracı Kaynağı|Bağlantı noktaları |Description |
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Veri alımı |
 | `*.oms.opinsights.azure.us` | 443 | OMS ekleme |
@@ -92,7 +92,7 @@ Aşağıdaki tablodaki bilgiler, Azure ABD kamu için proxy ve güvenlik duvarı
 Performansı izleme özelliği, özellikle kapsayıcılar için Azure Izleyici için geliştirilmiş, Linux için kapsayıcılı bir Log Analytics aracısına dayanır. Bu özelleştirilmiş aracı kümedeki tüm düğümlerden performans ve olay verilerini toplar ve Aracı, dağıtım sırasında belirtilen Log Analytics çalışma alanıyla otomatik olarak dağıtılır ve kaydedilir. Aracı sürümü Microsoft/OMS: ciprod04202018 veya üzeri olur ve şu biçimdeki bir tarihle temsil edilir: *mmddyyyy*.
 
 >[!NOTE]
->AKS için Windows Server desteğinin önizleme sürümü sayesinde, Windows Server düğümlerine sahip bir AKS kümesi, veri toplamak ve Azure Izleyici 'ye iletmek için bir aracı yüklü değildir. Bunun yerine, standart dağıtımın bir parçası olarak kümede otomatik olarak dağıtılan bir Linux düğümü, verileri kümedeki tüm Windows düğümleri adına toplayıp Azure Izleyici 'ye iletir.  
+>AKS için Windows Server desteğinin genel kullanıma sunulmasıyla birlikte, Windows Server düğümlerine sahip bir AKS kümesi, günlükleri toplamak ve Log Analytics iletmek için her bir Windows Server düğümünde daemonset Pod olarak yüklenen bir önizleme aracısına sahiptir. Performans ölçümleri için, standart dağıtımın bir parçası olarak kümede otomatik olarak dağıtılan bir Linux düğümü, kümedeki tüm Windows düğümleri adına verileri toplar ve Azure Izleyici 'ye iletir.
 >
 
 Aracının yeni bir sürümü yayınlandığında, Azure Kubernetes Service (AKS) üzerinde barındırılan yönetilen Kubernetes kümelerinizde otomatik olarak yükseltilir. Yayınlanan sürümleri izlemek için bkz. [Aracı Sürüm duyuruları](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).

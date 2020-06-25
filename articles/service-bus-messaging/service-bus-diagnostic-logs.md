@@ -1,26 +1,14 @@
 ---
 title: Tanılama günlüklerini Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Service Bus için kullanılabilen tüm işletimsel ve tanılama günlüklerine bir genel bakış sunulmaktadır.
-keywords: ''
-documentationcenter: .net
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618721"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337536"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus için tanılama günlüklerini etkinleştirme
 
@@ -37,12 +25,12 @@ Tüm Günlükler aşağıdaki iki konumda JavaScript Nesne Gösterimi (JSON) bi�
 
 İşletimsel günlük JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Adı | Açıklama |
+| Name | Description |
 | ------- | ------- |
 | Etkinlik kimliği | Belirtilen etkinliği tanımlamak için kullanılan iç KIMLIK |
 | EventName | İşlem adı |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI |
-| SubscriptionId | Abonelik Kimliği |
+| kaynak grubundaki | Abonelik Kimliği |
 | EventTimeString | İşlem süresi |
 | EventProperties | İşlem özellikleri |
 | Durum | İşlem durumu |
@@ -74,7 +62,7 @@ Tüm Günlükler aşağıdaki iki konumda JavaScript Nesne Gösterimi (JSON) bi�
 
 Aşağıdaki yönetim işlemleri işlemsel günlüklerde yakalanır: 
 
-| Kapsam | İşlem|
+| Kapsam | Çalışma|
 |-------| -------- |
 | Ad Alanı | <ul> <li> Ad alanı oluştur</li> <li> Ad alanını güncelleştir </li> <li> Ad alanını sil </li> <li> Ad alanı SharedAccess Ilkesini güncelleştirme </li> </ul> | 
 | Kuyruk | <ul> <li> Sıra oluştur</li> <li> Kuyruğu Güncelleştir</li> <li> Kuyruğu Sil </li> <li> Silme kuyruğunu oto Sil </li> </ul> | 

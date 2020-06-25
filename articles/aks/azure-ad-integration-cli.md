@@ -4,18 +4,18 @@ description: Azure CLı 'yı kullanarak Azure Kubernetes Service (AKS) kümesi o
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 83ba43c3b8a00325750ec935fd3a43ec7d56074c
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779952"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336529"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLı kullanarak Azure Kubernetes hizmeti ile Azure Active Directory tümleştirme
 
 Azure Kubernetes hizmeti (AKS), Kullanıcı kimlik doğrulaması için Azure Active Directory (AD) kullanacak şekilde yapılandırılabilir. Bu yapılandırmada, bir Azure AD kimlik doğrulama belirteci kullanarak bir AKS kümesinde oturum açabilirsiniz. Küme işleçleri Ayrıca, bir kullanıcının kimliğine veya dizin grubu üyeliğine bağlı olarak Kubernetes rol tabanlı erişim denetimi 'ni (RBAC) yapılandırabilir.
 
-Bu makalede, gerekli Azure AD bileşenlerini oluşturma, ardından Azure AD özellikli bir kümeyi dağıtma ve AKS kümesinde temel RBAC rolü oluşturma işlemlerinin nasıl yapılacağı gösterilir. Ayrıca [, Azure Portal kullanarak bu adımları tamamlayabilirsiniz][azure-ad-portal].
+Bu makalede, gerekli Azure AD bileşenlerini oluşturma, ardından Azure AD özellikli bir kümeyi dağıtma ve AKS kümesinde temel RBAC rolü oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
 Bu makalede kullanılan tam örnek betik için bkz. Azure [CLI örnekleri-Azure AD Ile AKS tümleştirmesi][complete-script].
 
@@ -27,7 +27,7 @@ Aşağıdaki sınırlamalar geçerlidir:
 
 Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
-Tarayıcınızda Cloud Shell [https://shell.azure.com](https://shell.azure.com) açmak için bölümüne gidin.
+[https://shell.azure.com](https://shell.azure.com)Tarayıcınızda Cloud Shell açmak için bölümüne gidin.
 
 Tutarlılık için ve bu makaledeki komutları çalıştırmaya yardımcı olmak için, istediğiniz AKS kümesi adı için bir değişken oluşturun. Aşağıdaki örnek *myakscluster*adını kullanır:
 
@@ -97,7 +97,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>Azure AD istemci bileşeni oluşturma
 
-İkinci Azure AD uygulaması, bir Kullanıcı AKS kümesine Kubernetes CLı (`kubectl`) ile oturum açtığında kullanılır. Bu istemci uygulaması kullanıcıdan kimlik doğrulama isteğini alır ve kimlik bilgilerini ve izinlerini doğrular. [Az ad App Create][az-ad-app-create] komutunu kullanarak istemci bileşeni IÇIN Azure AD uygulamasını oluşturun:
+İkinci Azure AD uygulaması, bir Kullanıcı AKS kümesine Kubernetes CLı () ile oturum açtığında kullanılır `kubectl` . Bu istemci uygulaması kullanıcıdan kimlik doğrulama isteğini alır ve kimlik bilgilerini ve izinlerini doğrular. [Az ad App Create][az-ad-app-create] komutunu kullanarak istemci bileşeni IÇIN Azure AD uygulamasını oluşturun:
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -171,7 +171,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > RBAC bağlamasını verdiğiniz kullanıcı aynı Azure AD kiracısında ise, *userPrincipalName*öğesine göre izinler atayın. Kullanıcı farklı bir Azure AD kiracısında ise, için sorgulama yapın ve onun yerine *ObjectID* özelliğini kullanın.
 
-Adlı `basic-azure-ad-binding.yaml` BIR YAML bildirimi oluşturun ve aşağıdaki içeriği yapıştırın. Son satırda, *userPrincipalName_or_objectId* ÖNCEKI komutun UPN veya nesne kimliği çıkışıyla değiştirin:
+Adlı bir YAML bildirimi oluşturun `basic-azure-ad-binding.yaml` ve aşağıdaki içeriği yapıştırın. Son satırda, *userPrincipalName_or_objectId* ÖNCEKI komutun UPN veya nesne kimliği çıkışıyla değiştirin:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -196,7 +196,7 @@ kubectl apply -f basic-azure-ad-binding.yaml
 
 ## <a name="access-cluster-with-azure-ad"></a>Azure AD ile küme erişimi
 
-Şimdi AKS kümesi için Azure AD kimlik doğrulaması tümleştirmesini test edelim. `kubectl` Yapılandırma bağlamını normal kullanıcı kimlik bilgilerini kullanacak şekilde ayarlayın. Bu bağlam, tüm kimlik doğrulama isteklerini Azure AD aracılığıyla geri geçirir.
+Şimdi AKS kümesi için Azure AD kimlik doğrulaması tümleştirmesini test edelim. `kubectl`Yapılandırma bağlamını normal kullanıcı kimlik bilgilerini kullanacak şekilde ayarlayın. Bu bağlam, tüm kimlik doğrulama isteklerini Azure AD aracılığıyla geri geçirir.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
@@ -229,7 +229,7 @@ kube-system   metrics-server-7b97f9cd9-btxzz          1/1     Running   0       
 kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0          23h
 ```
 
-İçin `kubectl` alınan kimlik doğrulama belirteci önbelleğe alındı. Yalnızca belirtecin süresi dolduğunda veya Kubernetes yapılandırma dosyası yeniden oluşturulduğunda oturum açmanız yeniden istenir.
+İçin alınan kimlik doğrulama belirteci `kubectl` Önbelleğe alındı. Yalnızca belirtecin süresi dolduğunda veya Kubernetes yapılandırma dosyası yeniden oluşturulduğunda oturum açmanız yeniden istenir.
 
 Aşağıdaki örnek çıktıda olduğu gibi bir Web tarayıcısını kullanarak başarıyla oturum açtıktan sonra bir yetkilendirme hata iletisi görürseniz, aşağıdaki olası sorunları kontrol edin:
 

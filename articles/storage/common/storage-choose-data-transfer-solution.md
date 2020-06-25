@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a66d2f49c2f5646faadd13662c1e798401a71c73
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176405"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338364"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Veri aktarımı için bir Azure çözümü seçin
 
@@ -35,7 +35,7 @@ Veri taşıma aşağıdaki türlerde olabilir:
 
     - **Grafik arabirim** -zaman zaman yalnızca birkaç dosya aktarırsanız ve veri aktarımını otomatikleştirmeniz gerekmiyorsa, Azure Portal Azure Depolama Gezgini veya Web tabanlı bir araştırma aracı gibi bir grafik arabirim aracı seçebilirsiniz.
     - **Betikleştirilmiş veya programlı aktarma** -REST API 'Leri/SDK 'lerimizi doğrudan sağladığımız veya arayduğumuz iyileştirilmiş yazılım araçlarını kullanabilirsiniz. Kullanılabilir komut dosyalı araçlar AzCopy, Azure PowerShell ve Azure CLı 'larıdır. Programlama arabirimi için, .NET, Java, Python, Node/JS, C++, Go, PHP veya Ruby için SDK 'Lardan birini kullanın.
-    - **Şirket içi cihazlarda** , veri merkezinizde bulunan fiziksel veya sanal bir cihaz sağlıyoruz ve ağ üzerinden veri aktarımını en iyi duruma getirir. Bu cihazlar, sık kullanılan dosyaların yerel bir önbelleğini de sağlar. Fiziksel cihaz Data Box Edge ve sanal cihaz Data Box Gateway. Her ikisi de şirket içinde kalıcı olarak çalışır ve ağ üzerinden Azure 'a bağlanır.
+    - **Şirket içi cihazlarda** , veri merkezinizde bulunan fiziksel veya sanal bir cihaz sağlıyoruz ve ağ üzerinden veri aktarımını en iyi duruma getirir. Bu cihazlar, sık kullanılan dosyaların yerel bir önbelleğini de sağlar. Fiziksel cihaz Azure Stack Edge ve sanal cihaz Data Box Gateway. Her ikisi de şirket içinde kalıcı olarak çalışır ve ağ üzerinden Azure 'a bağlanır.
     - **Yönetilen veri işlem hattı** -çeşitli Azure Hizmetleri, şirket içi veya ikisinin birleşimi arasında düzenli olarak dosya aktarmak için bir bulut işlem hattı ayarlayabilirsiniz. Veri işlem hatlarını ayarlamak ve yönetmek için Azure Data Factory kullanın, verileri analiz için taşıma ve dönüştürme.
 
 Aşağıdaki görselde aktarım için kullanılabilir ağ bant genişliğine, aktarım için tasarlanan veri boyutuna ve aktarım sıklığının sıklığına bağlı olarak çeşitli Azure veri aktarım araçları 'nı seçme yönergeleri gösterilmektedir.
@@ -77,7 +77,7 @@ Ayrıca, Azure portal 'de Azure depolama hesabınıza gidebilir ve **veri aktar�
 - Şunları öğrenin:
 
     - [Çevrimdışı aktarımlar için Azure Data Box, Azure Data Box disk ve Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/).
-    - [Çevrimiçi aktarımlar için Azure Data Box Gateway ve Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/).
+    - [Çevrimiçi aktarımlar için Azure Data Box Gateway ve Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/).
 - [Azure Data Factory ne olduğunu öğrenin](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
 - Veri aktarmak için REST API 'Lerini kullanma
 

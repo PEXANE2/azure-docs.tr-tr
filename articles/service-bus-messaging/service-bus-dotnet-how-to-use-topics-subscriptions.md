@@ -1,25 +1,15 @@
 ---
 title: Azure Service Bus konuları ve abonelikleri ile çalışmaya başlama | Microsoft Docs
 description: Service Bus mesajlaşma konuları ve aboneliklerini kullanan bir C# .NET Core konsol uygulaması yazın.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 11/27/2019
-ms.author: aschhab
-ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74560107"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337516"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus konuları ile çalışmaya başlama
 
@@ -75,7 +65,7 @@ Visual Studio'yu başlatın ve yeni bir **Konsol Uygulaması (.NET Core)** proje
     static ITopicClient topicClient;
     ``` 
 
-3. `Main()` Yöntemini, bir sonraki adımda ekleyeceğiniz sendmessagesasync yöntemini kullanarak zaman uyumsuz olarak ileti gönderen aşağıdaki **Async** `Main` yöntemiyle değiştirin. 
+3. Yöntemini, `Main()` **async** `Main` bir sonraki adımda ekleyeceğiniz sendmessagesasync yöntemini kullanarak zaman uyumsuz olarak ileti gönderen aşağıdaki Async yöntemiyle değiştirin. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -210,7 +200,7 @@ Gönderdiğiniz iletileri almak için, başka bir .NET Core konsol uygulaması o
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. `Main()` Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. Bir sonraki adımda `RegisterOnMessageHandlerAndReceiveMessages()` ekleyeceğiniz yöntemi çağırır. 
+3. `Main()`Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. `RegisterOnMessageHandlerAndReceiveMessages()`Bir sonraki adımda ekleyeceğiniz yöntemi çağırır. 
 
     ```csharp
     public static async Task Main(string[] args)

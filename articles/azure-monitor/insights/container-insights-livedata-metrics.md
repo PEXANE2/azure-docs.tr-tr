@@ -4,41 +4,38 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullan
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 54d751769005dabb4708eb198bcc765d830ba605
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196141"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338019"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Ölçümleri gerçek zamanlı görüntüleme
 
-Kapsayıcılar için Azure Izleyici canlı veriler (Önizleme) özelliği, bir kümede gerçek zamanlı olarak düğüm ve pod durumu hakkında ölçümleri görselleştirmenize olanak tanır. `kubectl top nodes` `kubectl get pods –all-namespaces` `kubectl get nodes` Bu öngörüye dahil edilen performans grafiklerindeki verileri çağırmak, ayrıştırmak ve görselleştirmek için,, ve komutlarına doğrudan erişim sağlar. 
+Kapsayıcılar için Azure Izleyici canlı veriler (Önizleme) özelliği, bir kümede gerçek zamanlı olarak düğüm ve pod durumu hakkında ölçümleri görselleştirmenize olanak tanır. `kubectl top nodes` `kubectl get pods –all-namespaces` `kubectl get nodes` Bu öngörüye dahil edilen performans grafiklerindeki verileri çağırmak, ayrıştırmak ve görselleştirmek için,, ve komutlarına doğrudan erişim sağlar.
 
-Bu makale ayrıntılı bir genel bakış sağlar ve bu özelliğin nasıl kullanılacağını anlamanıza yardımcı olur.  
-
->[!NOTE]
->Bu özellikle [özel kümeler](https://azure.microsoft.com/updates/aks-private-cluster/) olarak etkinleştirilen aks kümeleri desteklenmez. Bu özellik, tarayıcınızdan bir ara sunucu aracılığıyla Kubernetes API 'sine doğrudan erişim sağlar. Bu proxy 'den Kubernetes API 'sini engellemek için ağ güvenliğinin etkinleştirilmesi, bu trafiği engeller. 
+Bu makale ayrıntılı bir genel bakış sağlar ve bu özelliğin nasıl kullanılacağını anlamanıza yardımcı olur.
 
 >[!NOTE]
->Bu özellik, Azure Çin dahil olmak üzere tüm Azure bölgelerinde kullanılabilir. Azure ABD kamu 'da Şu anda kullanılamıyor.
+>Bu özellikle [özel kümeler](https://azure.microsoft.com/updates/aks-private-cluster/) olarak etkinleştirilen aks kümeleri desteklenmez. Bu özellik, tarayıcınızdan bir ara sunucu aracılığıyla Kubernetes API 'sine doğrudan erişim sağlar. Bu proxy 'den Kubernetes API 'sini engellemek için ağ güvenliğinin etkinleştirilmesi, bu trafiği engeller.
 
 Canlı veri (Önizleme) özelliğini ayarlama veya sorunlarını gidermeyle ilgili yardım için [Kurulum kılavuzumuzu](container-insights-livedata-setup.md)gözden geçirin.
 
-## <a name="how-it-works"></a>Nasıl çalışır? 
+## <a name="how-it-works"></a>Nasıl çalışır?
 
-Canlı veriler (Önizleme) özelliği, Kubernetes API 'sine doğrudan erişir ve kimlik doğrulama modeliyle ilgili ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz. 
+Canlı veriler (Önizleme) özelliği, Kubernetes API 'sine doğrudan erişir ve kimlik doğrulama modeliyle ilgili ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz.
 
-Bu özellik, `/api/v1/nodes` `/apis/metrics.k8s.io/v1beta1/nodes` `/api/v1/pods` Varsayılan olarak her beş saniyede bir olan ölçüm uç noktalarına (, ve dahil) karşı bir yoklama işlemi gerçekleştirir. Bu veriler tarayıcınızda önbelleğe alınır ve **canlı çalış (Önizleme)** seçeneği belirlenerek **küme** sekmesindeki kapsayıcılar için Azure izleyici 'de yer alan dört Performans grafiklerinde görüntülenir. Sonraki her yoklama, beş dakikalık bir görselleştirme penceresine göre yapılır. 
+Bu özellik, `/api/v1/nodes` `/apis/metrics.k8s.io/v1beta1/nodes` `/api/v1/pods` Varsayılan olarak her beş saniyede bir olan ölçüm uç noktalarına (, ve dahil) karşı bir yoklama işlemi gerçekleştirir. Bu veriler tarayıcınızda önbelleğe alınır ve **canlı çalış (Önizleme)** seçeneği belirlenerek **küme** sekmesindeki kapsayıcılar için Azure izleyici 'de yer alan dört Performans grafiklerinde görüntülenir. Sonraki her yoklama, beş dakikalık bir görselleştirme penceresine göre yapılır.
 
 ![Küme görünümündeki canlı git seçeneği](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
-Yoklama aralığı, 1, 5, 15 ve 30 saniyede bir yeni veri yoklamasını ayarlamanıza olanak sağlayan **set Interval** açılır listesinden yapılandırılır. 
+Yoklama aralığı, 1, 5, 15 ve 30 saniyede bir yeni veri yoklamasını ayarlamanıza olanak sağlayan **set Interval** açılır listesinden yapılandırılır.
 
 ![Canlı açılan yoklama aralığına git](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
->Kısa bir süre boyunca sorun giderirken yoklama aralığını bir saniye olarak ayarlamayı öneririz. Bu istekler, kümenizde Kubernetes API 'sinin kullanılabilirliğini ve azaltmasını etkileyebilir. Daha sonra, daha uzun bir yoklama aralığına yeniden yapılandırın. 
+>Kısa bir süre boyunca sorun giderirken yoklama aralığını bir saniye olarak ayarlamayı öneririz. Bu istekler, kümenizde Kubernetes API 'sinin kullanılabilirliğini ve azaltmasını etkileyebilir. Daha sonra, daha uzun bir yoklama aralığına yeniden yapılandırın.
 
 >[!IMPORTANT]
 >Bu özelliğin çalışması sırasında hiçbir veri kalıcı olarak depolanmaz. Bu oturum sırasında yakalanan tüm bilgiler, tarayıcınızı kapattığınızda veya özellikten ayrıldığınızda hemen silinir. Veriler yalnızca beş dakikalık bir pencere içinde görselleştirme için mevcut olmaya devam eder; beş dakikadan daha eski olan ölçümler de kalıcı olarak silinir.
@@ -47,9 +44,9 @@ Bu grafikler, canlı modda görüntülediğiniz son Azure panosuna sabitlenemez.
 
 ## <a name="metrics-captured"></a>Yakalanan ölçümler
 
-### <a name="node-cpu-utilization---node-memory-utilization-"></a>Düğüm CPU kullanımı%/düğüm bellek kullanımı% 
+### <a name="node-cpu-utilization---node-memory-utilization-"></a>Düğüm CPU kullanımı%/düğüm bellek kullanımı%
 
-Bu iki performans grafiği, `kubectl top nodes` **% CPU** ve **bellek%** sütunlarının sonuçlarını çağırmaya ve yakalamaya karşılık gelen grafiğe eşlenir. 
+Bu iki performans grafiği, `kubectl top nodes` **% CPU** ve **bellek%** sütunlarının sonuçlarını çağırmaya ve yakalamaya karşılık gelen grafiğe eşlenir.
 
 ![Kubectl üst düğümleri örnek sonuçları](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
@@ -81,7 +78,7 @@ Bu performans grafiği, çağırma `kubectl get pods –all-namespaces` ve durum
 ![Düğüm Pod sayısı grafiği](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->Tarafından yorumlanan durum adları `kubectl` , grafikte tam olarak eşleşmeyebilir. 
+>Tarafından yorumlanan durum adları `kubectl` , grafikte tam olarak eşleşmeyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

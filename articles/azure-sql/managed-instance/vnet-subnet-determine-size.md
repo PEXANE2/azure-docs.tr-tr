@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 8d1073dbcced9532390776a23dd17c1f572cce40
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 562766ada8fb9a2620fa83875dc98d02ab752d95
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686690"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338549"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği için gereken alt ağ boyutunu & aralığını belirleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,23 +28,67 @@ Bir sanal ağın alt ağında dağıtılabilecek yönetilen örneklerin sayısı
 
 Yönetilen bir örnek oluşturduğunuzda Azure, sağlama sırasında seçtiğiniz katmana bağlı olarak bir dizi sanal makine ayırır. Bu sanal makineler alt ağınızda ilişkili olduğundan, IP adresleri gerektirir. Düzenli işlemler ve hizmet bakımı sırasında yüksek kullanılabilirlik sağlamak için Azure, ek sanal makineler ayırabilir. Sonuç olarak, bir alt ağdaki gerekli IP adreslerinin sayısı o alt ağdaki yönetilen örnek sayısından daha büyük.
 
-Tasarıma göre, yönetilen bir örnek bir alt ağda en az 16 IP adresine ihtiyaç duyuyor ve en fazla 256 IP adresi kullanıyor olabilir. Sonuç olarak, alt ağ IP aralıklarını tanımlarken/28 ile/24 arasında bir alt ağ maskesi kullanabilirsiniz. Ağ maskesi biti/28 (ağ başına 14 ana bilgisayar), tek bir genel amaçlı veya iş açısından kritik dağıtım için iyi bir boyutdir. Bir maske bit/27 (ağ başına 30 ana bilgisayar), aynı VNet içinde birden çok SQL yönetilen örnek dağıtımı için idealdir. Maske bit ayarları/26 (62 ana bilgisayar) ve/24 (254 ana bilgisayar), ek yönetilen örnekleri desteklemek için VNet 'ten daha fazla ölçeklendirme yapılmasına izin verir.
+Tasarıma göre, yönetilen bir örnek bir alt ağda en az 32 IP adresi gerektirir. Sonuç olarak, alt ağ IP aralıklarını tanımlarken en az/27 alt ağ maskesini kullanabilirsiniz. Yönetilen örnek dağıtımlarınız için alt ağ boyutunu dikkatli bir şekilde planlama yapmanız önerilir. Planlama sırasında dikkate alınması gereken girişler şunlardır:
+
+- Aşağıdaki örnek parametreleri de dahil olmak üzere yönetilen örnek sayısı:
+  - hizmet katmanı
+  - donanım oluşturma
+  - Sanal çekirdek sayısı
+- Ölçek artırma/azaltma veya hizmet katmanını değiştirme planları
 
 > [!IMPORTANT]
-> 16 IP adresi olan bir alt ağ boyutu, sanal çekirdek boyutu değişikliği gibi bir ölçeklendirme işleminin desteklenmediği sınırlı potansiyel olan en düşük gereksinimdir. Önek/27 veya en uzun ön ek olan alt ağ seçilmesi kesinlikle önerilir.
+> 16 IP adresi (alt ağ maskesi/28) olan bir alt ağ boyutu, yönetilen örneği bu içinde dağıtmaya izin verir, ancak yalnızca değerlendirme için kullanılan tek bir örneği dağıtmak için veya geliştirme/test senaryolarında kullanılması gerekir, bu da ölçeklendirme işlemlerinin gerçekleştirilmeyecektir.
 
 ## <a name="determine-subnet-size"></a>Alt ağ boyutunu belirle
 
-Alt ağ içinde birden fazla yönetilen örnek dağıtmayı planlıyorsanız ve alt ağ boyutunu iyileştirmeniz gerekiyorsa, bir hesaplama oluşturmak için bu parametreleri kullanın:
+Alt ağlarınızı gelecekteki örnek dağıtımına ve ölçekleme ihtiyaçlarına göre boyutlandırın. Aşağıdaki parametreler, bir hesaplama yaparken size yardımcı olabilir:
 
 - Azure, alt ağda kendi ihtiyaçları için beş IP adresi kullanır
-- Her genel amaçlı örneğin iki adresi olmalıdır
-- İş açısından kritik her örnek için dört adres gerekir
-
-**Örnek**: üç genel amaçlı ve iki iş açısından kritik yönetilen örneğe sahip olmak için plan yapın. Bu, 5 + 3 * 2 + 2 * 4 = 19 IP adresiniz olması gerektiği anlamına gelir. IP aralıkları 2 ' nin gücüne göre tanımlandığından, IP aralığı 32 (2 ^ 5) IP adresi olmalıdır. Bu nedenle, alt ağı/27 alt ağ maskesiyle ayırmanız gerekir.
+- Her sanal küme ek sayıda adres ayırır 
+- Her yönetilen örnek, fiyatlandırma katmanına ve donanım oluşturmaya bağlı olan adres sayısını kullanır
 
 > [!IMPORTANT]
-> Yukarıda görüntülenecek hesaplama, daha fazla geliştirmelerle kullanım dışı olacaktır.
+> Alt ağda herhangi bir kaynak varsa, alt ağ adres aralığını değiştirmek mümkün değildir. Yönetilen örnekleri bir alt ağdan diğerine taşımak de mümkün değildir. Mümkün olduğunda, gelecekteki sorunları engellemek için lütfen daha büyük alt ağları kullanmayı deneyin.
+
+GP = genel amaçlı; BC = iş açısından kritik; VC = sanal küme
+
+| **Donanım genel** | **Fiyatlandırma Katmanı** | **Azure kullanımı** | **VC kullanımı** | **Örnek kullanımı** | **Toplamda*** |
+| --- | --- | --- | --- | --- | --- |
+| 4. nesil | GP | 5 | 1 | 5 | 11 |
+| 4. nesil | BC | 5 | 1 | 5 | 11 |
+| 5. nesil | GP | 5 | 6 | 3 | 14 |
+| 5. nesil | BC | 5 | 6 | 5 | 16 |
+
+  \*Toplam sütun alt ağda dağıtıldığında gerçekleştirilecek adreslerin sayısını görüntüler. Alt ağdaki her ek örnek, örnek kullanım sütunuyla temsil edilen adres sayısını ekler. Azure kullanımı sütunuyla temsil edilen adresler birden çok sanal kümede paylaşılır, ancak VC kullanımı sütunuyla temsil edilen adresler bu sanal kümeye yerleştirilmiş örneklerle paylaşılır.
+
+Güncelleştirme işlemi genellikle sanal küme yeniden boyutlandırmayı gerektirir. Bazı durumlarda, güncelleştirme işlemi sanal küme oluşturmayı gerektirir (daha fazla ayrıntı için [yönetim işlemleri makalesini](sql-managed-instance-paas-overview.md#management-operations)inceleyin). Sanal küme oluşturulması durumunda, gereken ek adres sayısı, bu sanal kümede (örnek kullanım sütunu) yer alan örnekler için gereken adreslerle birlikte toplanan VC kullanım sütunuyla temsil edilen adres sayısına eşittir.
+
+**Örnek 1**: bir genel amaçlı yönetilen örnek (4. nesil donanım) ve bir iş açısından kritik yönetilen örnek (5. nesil donanım) olduğunu planlayın. Bu, dağıtabilmeniz için en az 5 + 1 + 1 * 5 + 6 + 1 * 5 = 22 IP adresiniz olması gerektiği anlamına gelir. 2 ' nin gücüyle IP aralıkları tanımlandığından, alt ağınız bu dağıtım için minimum IP aralığı olan 32 ' i (2 ^ 5) gerektirir.<br><br>
+Yukarıda belirtildiği gibi, bazı durumlarda güncelleştirme işlemi sanal küme oluşturmayı gerektirir. Bu, örneğin, sanal küme oluşturma gerektiren 5. nesil iş açısından kritik yönetilen örnek için bir güncelleştirme olması durumunda ek 6 + 5 = 11 IP adresiniz olması gerektiği anlamına gelir. Zaten 22 ' nin 32 adresini kullandığından, bu işlem için kullanılabilir bir adres yok. Bu nedenle, alt ağı/26 alt ağ maskesiyle ayırmanız gerekir (64 adres).
+
+**Örnek 2**: aynı alt ağa yerleştirilmiş üç genel amaçlı (5. nesil donanım) ve iş açısından kritik yönetilen örnek (5. nesil donanım) olduğunu planlayın. Bu, 5 + 6 + 3 * 3 + 2 * 5 = 30 IP adresiniz olması gerektiği anlamına gelir. Bu nedenle, alt ağı/26 alt ağ maskesiyle ayırmanız gerekir. /27 alt ağ maskesini seçmek, kalan adres sayısının 2 (32 – 30) olmasına neden olur. Bu, örnek ölçeklendirmeyi gerçekleştirmek için alt ağda ek adresler gerekli olduğundan tüm örnekler için güncelleştirme işlemlerini önler.
+
+**Örnek 3**: bir genel amaçlı yönetilen örneği (5. nesil donanım) ve zaman zaman, sanal çekirdekler güncelleştirme işlemini gerçekleştirmenizi planlarsınız. Bu, 5 + 6 + 1 * 3 + 3 = 17 IP adresiniz olması gerektiği anlamına gelir. IP aralıkları 2 ' nin gücüyle tanımlandığından, IP aralığı 32 (2 ^ 5) IP adresi olmalıdır. Bu nedenle, alt ağı/27 alt ağ maskesiyle ayırmanız gerekir.
+
+### <a name="address-requirements-for-update-scenarios"></a>Güncelleştirme senaryoları için Adres gereksinimleri
+
+Ölçeklendirme işlemi örnekleri sırasında, fiyatlandırma katmanına ve donanım oluşturmaya bağlı ek IP kapasitesi geçici olarak gerekir
+
+| **Donanım genel** | **Fiyatlandırma Katmanı** | **Senaryo** | **Ek adresler*** |
+| --- | --- | --- | --- |
+| 4. nesil | GP veya BC | Sanal çekirdekleri ölçeklendirme | 5 |
+| 4. nesil | GP veya BC | Depolamayı ölçeklendirme | 5 |
+| 4. nesil | GP veya BC | GP 'den BC veya BC 'e geçiş yapma | 5 |
+| 4. nesil | GP | 5. nesil * öğesine geçme | 9 |
+| 4. nesil | BC | 5. nesil * öğesine geçme | 11 |
+| 5. nesil | GP | Sanal çekirdekleri ölçeklendirme | 3 |
+| 5. nesil | GP | Depolamayı ölçeklendirme | 0 |
+| 5. nesil | GP | BC 'a geçme | 5 |
+| 5. nesil | BC | Sanal çekirdekleri ölçeklendirme | 5 |
+| 5. nesil | BC | Depolamayı ölçeklendirme | 5 |
+| 5. nesil | BC | GP 'e geçiş yapma | 3 |
+
+  \*4. nesil donanım kullanıma alınıyor ve Yeni dağıtımlar için artık kullanılamıyor. 5. nesil donanım oluşturmaya özgü özelliklerden yararlanmak için 4. nesil 'ten 5. nesil 'e donanım oluşturmayı güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

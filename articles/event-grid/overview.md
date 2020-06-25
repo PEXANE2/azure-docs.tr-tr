@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: femila
 ms.custom: seodec18
-ms.openlocfilehash: 38f0218a7dedd243cccfab4b0b5ecfb73d3a626a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 4ae40c37d42848cc2ac726694e32df621996df03
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560301"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321334"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid nedir?
 
@@ -60,7 +60,7 @@ Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını g
 * [Güç otomatikleştirme (eskiden Microsoft Flow olarak bilinirdi)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Service Bus](handler-service-bus.md)
 * [Kuyruk Depolama](handler-storage-queues.md)
-* [Web kancaları](handler-webhooks.md)
+* [Web Kancaları](handler-webhooks.md)
 
 ## <a name="concepts"></a>Kavramlar
 
@@ -103,7 +103,7 @@ Event Grid, veri kaynaklarını ve olay işleyicilerini bağlar. Örneğin, bir 
 
 ![Operasyon otomasyonu](./media/overview/Ops_automation.png)
 
-Event Grid, otomasyonu hızlandırmanızı ve ilke uygulamayı basitleştirmenizi sağlar. Örneğin, bir sanal makine veya SQL veritabanı oluşturulduğunda Azure Otomasyonu 'na bildirmek için Event Grid kullanın. Hizmet yapılandırmalarının uyumlu olup olmadığını otomatik olarak denetlemek, işletim araçlarına meta veriler koymak, sanal makineleri etiketlemek veya dosya iş öğeleri için olayları kullanın.
+Event Grid, otomasyonu hızlandırmanızı ve ilke uygulamayı basitleştirmenizi sağlar. Örneğin, Azure SQL 'de bir sanal makine veya veritabanı oluşturulduğunda Azure Otomasyonu 'na bildirmek için Event Grid kullanın. Hizmet yapılandırmalarının uyumlu olup olmadığını otomatik olarak denetlemek, işletim araçlarına meta veriler koymak, sanal makineleri etiketlemek veya dosya iş öğeleri için olayları kullanın.
 
 ### <a name="application-integration"></a>Uygulama tümleştirme
 

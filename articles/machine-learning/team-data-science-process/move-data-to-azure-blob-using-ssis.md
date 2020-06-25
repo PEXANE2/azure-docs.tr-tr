@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720881"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322865"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS bağlayıcıları kullanarak verileri Azure Blob depolama alanına veya sunucudan taşıma
 [Azure için SQL Server Integration Services Feature Pack](https://msdn.microsoft.com/library/mt146770.aspx) , Azure 'a bağlanmak, Azure ile şirket içi veri kaynakları arasında veri aktarımı yapmak ve Azure 'da depolanan verileri işlemek için bileşenler sağlar.
@@ -27,7 +27,7 @@ Müşteriler şirket içi verileri buluta taşındıktan sonra Azure teknolojile
 
 Bu Azure kaynaklarını kullanmanın örnekleri [SQL](sql-walkthrough.md) ve [HDInsight](hive-walkthrough.md) izlenecek yollardır.
 
-Karma veri tümleştirme senaryolarında sık kullanılan iş ihtiyaçlarını başarmak için SSIS kullanan kurallı senaryolar hakkında daha fazla bilgi için bkz. [Azure blogu için SQL Server Integration Services Feature Pack ile daha fazla](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) çalışma.
+Karma veri tümleştirme senaryolarında sık kullanılan iş ihtiyaçlarını başarmak için SSIS kullanan kurallı senaryolar hakkında daha fazla bilgi için bkz. [Azure blogu için SQL Server Integration Services Feature Pack ile daha fazla](https://techcommunity.microsoft.com/t5/sql-server-integration-services/doing-more-with-sql-server-integration-services-feature-pack-for/ba-p/388238) çalışma.
 
 > [!NOTE]
 > Azure Blob depolamaya yönelik kapsamlı bir giriş için [Azure Blob temelleri](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) ve [Azure Blob hizmeti](https://msdn.microsoft.com/library/azure/dd179376.aspx)' ne bakın.
@@ -64,13 +64,13 @@ SSIS özellik paketini Şirket içinden Azure Blob depolama 'ya kullanarak veril
 
 Görevin kullandığı parametreler burada açıklanmıştır:
 
-| Alan | Açıklama |
+| Alan | Description |
 | --- | --- |
 | **Azurestorampaconnection** |Mevcut bir Azure depolama bağlantı yöneticisini belirtir veya blob dosyalarının barındırıldığı yeri işaret eden bir Azure depolama hesabına başvuran yeni bir tane oluşturur. |
 | **BlobContainer** |Karşıya yüklenen dosyaları blob olarak tutan blob kapsayıcısının adını belirtir. |
 | **BlobDirectory** |Karşıya yüklenen dosyanın bir Blok Blobu olarak depolandığı blob dizinini belirtir. Blob dizini bir sanal hiyerarşik yapısıdır. Blob zaten mevcutsa, o şekilde değişir. |
 | **Yerel Dizin** |Karşıya yüklenecek dosyaları içeren yerel dizini belirtir. |
-| **Kısaltın** |Belirtilen ad düzenine sahip dosyaları seçmek için bir ad filtresi belirtir. Örneğin, MySheet\*. xls\* MySheet001. xls ve MySheetABC. xlsx gibi dosyaları içerir |
+| **Kısaltın** |Belirtilen ad düzenine sahip dosyaları seçmek için bir ad filtresi belirtir. Örneğin, MySheet \* . xls \* MySheet001.xls ve MySheetABC.xlsx gibi dosyaları içerir |
 | **TimeRangeFrom/TimeRangeTo** |Bir zaman aralığı filtresi belirtir. *Timerangefrom* ve Before *timerangeto* 'dan sonra değiştirilen dosyalar. |
 
 > [!NOTE]

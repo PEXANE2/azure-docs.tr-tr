@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964235"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322038"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure veri paylaşımında sık karşılaşılan sorunları giderme 
 
@@ -64,7 +64,7 @@ SQL tabanlı paylaşım ek izinler gerektirir. Ayrıntılar için bkz. SQL taban
 
 "Kullanıcı x, SQL veritabanında yok"
 
-SQL tabanlı bir kaynaktan veri kümesi eklerken bu hatayı alırsanız, bunun nedeni SQL Server Azure veri paylaşımında yönetilen kimliği için bir kullanıcı oluşturmanız olabilir.  Bu sorunu çözmek için aşağıdaki betiği çalıştırın:
+SQL tabanlı bir kaynaktan veri kümesi eklerken bu hatayı alırsanız, bunun nedeni, SQL veritabanında Azure veri paylaşımının yönettiği kimliği için bir Kullanıcı oluşturmadınız olabilir.  Bu sorunu çözmek için aşağıdaki betiği çalıştırın:
 
 ```sql
     create user "<share_acct_name>" from external provider; 

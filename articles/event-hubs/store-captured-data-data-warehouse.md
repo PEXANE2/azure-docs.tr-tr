@@ -2,19 +2,14 @@
 title: "Öğretici: olay verilerini SQL veri ambarı 'na geçirme-Azure Event Hubs"
 description: "Öğretici: Bu öğreticide, bir olay kılavuzuyla tetiklenen bir Azure işlevi kullanarak Olay Hub 'ından bir SQL veri ambarına veri yakalama işlemi gösterilmektedir."
 services: event-hubs
-author: ShubhaVijayasarathy
-manager: ''
-ms.author: shvija
-ms.custom: seodec18
-ms.date: 01/15/2020
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: event-hubs
-ms.openlocfilehash: ef24e78ea88bb0922c0affbe47f2591475024601
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b5f38c1a5b60dc8c8f0d9e8710c5dbc95434fe78
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016024"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322494"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Öğretici: Event Grid ve Azure Işlevlerini kullanarak yakalanan Event Hubs verilerini SQL veri ambarı 'na geçirme
 
@@ -68,12 +63,12 @@ Aşağıdaki bölümlerde, öğretici için gerekli altyapının dağıtılması
 - Mantıksal SQL Server
 - SQL kullanıcısı (ve parolası)
 - Azure SQL veritabanı
-- Azure Storage 
+- Azure Depolama 
 - Azure İşlevleri Uygulaması
 
 Bu betiklerin tüm Azure yapıtlarını oluşturması biraz zaman alır. Betik tamamlanana kadar başka işlem yapmayın. Dağıtım bir nedenle başarısız olursa kaynak grubunu silin, bildirilen sorunu çözün ve komutu yeniden çalıştırın. 
 
-#### <a name="azure-cli"></a>Azure CLI’si
+#### <a name="azure-cli"></a>Azure CLI
 
 Şablonu Azure CLI kullanarak dağıtmak için şu komutları kullanın:
 
@@ -118,7 +113,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![İşlev uygulaması yayımlama](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. **Azure İşlev Uygulaması** ve **Var Olanı Seç**’i seçin. **Yayımla**’yı seçin.
+1. **Azure İşlev Uygulaması** ve **Var Olanı Seç**’i seçin. **Yayımla** seçeneğini belirleyin.
 
    ![Hedef işlev uygulaması](./media/store-captured-data-data-warehouse/pick-target.png)
 
@@ -147,7 +142,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Abonelik ekleme](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Event grid aboneliğine bir ad verin. Olay türü olarak **Event Hubs Ad Alanları**’nı kullanın. Event Hubs ad alanı örneğinizi seçmek için değerler sağlayın. Abone uç noktasını sağlanan değer olarak bırakın. **Oluştur**’u seçin.
+1. Event grid aboneliğine bir ad verin. Olay türü olarak **Event Hubs Ad Alanları**’nı kullanın. Event Hubs ad alanı örneğinizi seçmek için değerler sağlayın. Abone uç noktasını sağlanan değer olarak bırakın. **Oluştur**'u seçin.
 
    ![Abonelik oluşturma](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 

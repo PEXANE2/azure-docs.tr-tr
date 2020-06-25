@@ -1,7 +1,7 @@
 ---
 title: Azure SQL verileri üzerinde arama
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama 'de tam metin araması için Dizin oluşturucuları kullanarak Azure SQL veritabanı 'ndan veri aktarın. Bu makalede bağlantılar, Dizin Oluşturucu yapılandırması ve veri alımı ele alınmaktadır.
+description: Azure Bilişsel Arama 'de tam metin araması için Dizin oluşturucuları kullanarak Azure SQL veritabanı veya SQL yönetilen örneğinden veri içeri aktarın. Bu makalede bağlantılar, Dizin Oluşturucu yapılandırması ve veri alımı ele alınmaktadır.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,20 +9,20 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9279622ee54a9fdaa6617cfe2758cfb563fdbffa
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 1afe92720997ede327f098b9a435d00842ae201e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080598"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322147"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL veritabanı içeriğine bağlanma ve dizin oluşturma
+# <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL içeriğine bağlanma ve dizin oluşturma
 
-[Azure bilişsel arama dizinini](search-what-is-an-index.md)sorgulayabilmeniz için önce bu verileri verilerinize göre doldurmanız gerekir. Veriler bir Azure SQL veritabanında yer alıyorsa, Azure **SQL veritabanı için bir azure bilişsel arama Dizin Oluşturucu** (veya kısa IÇIN **Azure SQL Indexer** ), dizin oluşturma işlemini otomatikleştirebilir. Bu, daha az kod yazmak için daha az kod ve ilgilendiğiniz altyapıyı daha az olabilir.
+[Azure bilişsel arama dizinini](search-what-is-an-index.md)sorgulayabilmeniz için önce bu verileri verilerinize göre doldurmanız gerekir. Veriler Azure SQL veritabanı veya SQL yönetilen örneği 'nde yer alıyorsa, **Azure SQL veritabanı için bir azure bilişsel arama Dizin Oluşturucu** (veya kısa IÇIN **Azure SQL Indexer** ), dizin oluşturma işlemini otomatikleştirebilir. Bu, daha az kod ve ilgilendiğiniz altyapıyı daha az kod anlamına gelir.
 
-Bu makalede, [Dizin oluşturucular](search-indexer-overview.md)kullanmanın mekanizması ele alınmaktadır, ancak Azure SQL veritabanlarında (örneğin, tümleşik değişiklik izleme) kullanılabilen özellikler de açıklanmaktadır. 
+Bu makalede, [Dizin oluşturucular](search-indexer-overview.md)kullanmanın mekanizması ele alınmaktadır, ancak Azure SQL VERITABANı veya SQL yönetilen örneği (örneğin, tümleşik değişiklik izleme) ile kullanılabilen özellikler de açıklanmaktadır. 
 
-Azure Bilişsel Arama, Azure SQL veritabanlarına ek olarak, [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md)ve [Azure Tablo depolama](search-howto-indexing-azure-tables.md)için Dizin oluşturucular sağlar. Diğer veri kaynaklarına yönelik destek istemek için [Azure bilişsel arama geri bildirim forumuna](https://feedback.azure.com/forums/263029-azure-search/)geri bildirimde bulunun.
+Azure Bilişsel Arama, Azure SQL veritabanı ve SQL yönetilen örneği 'ne ek olarak, [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md)ve [Azure Tablo depolama](search-howto-indexing-azure-tables.md)için Dizin oluşturucular sağlar. Diğer veri kaynaklarına yönelik destek istemek için [Azure bilişsel arama geri bildirim forumuna](https://feedback.azure.com/forums/263029-azure-search/)geri bildirimde bulunun.
 
 ## <a name="indexers-and-data-sources"></a>Dizin oluşturucular ve veri kaynakları
 
@@ -172,7 +172,7 @@ SQL veritabanınız [değişiklik izlemeyi](https://docs.microsoft.com/sql/relat
 
 + Veritabanı sürümü gereksinimleri:
   * Azure VM 'lerinde SQL Server kullanıyorsanız SQL Server 2012 SP3 ve üzeri.
-  * Azure SQL veritabanı kullanıyorsanız, Azure SQL Veritabanı V12.
+  * Azure SQL veritabanı veya SQL yönetilen örneği.
 + Yalnızca tablolar (görünüm yok). 
 + Veritabanında, tablo için [değişiklik izlemeyi etkinleştirin](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) . 
 + Tabloda bileşik birincil anahtar (birden fazla sütun içeren birincil anahtar) yok.  
@@ -354,7 +354,7 @@ Artımlı dizin oluşturma için Azure Bilişsel Arama iki değişiklik algılam
 
 Salt okuma çoğaltmalarda SQL veritabanı tümleşik değişiklik izlemeyi desteklemez. Bu nedenle, yüksek su Işareti ilkesi kullanmanız gerekir. 
 
-Standart önerimiz, yüksek su işareti sütunu için ROWVERSION veri türünü kullanmaktır. Ancak, rowversion 'ın kullanılması SQL veritabanının işlevini kullanır `MIN_ACTIVE_ROWVERSION` ve bu, salt okunurdur çoğaltmalar üzerinde desteklenmez. Bu nedenle, rowversion kullanıyorsanız Dizin oluşturucuyu birincil çoğaltmaya işaret etmeniz gerekir.
+Standart önerimiz, yüksek su işareti sütunu için ROWVERSION veri türünü kullanmaktır. Ancak, rowversion `MIN_ACTIVE_ROWVERSION` 'ın kullanılması, salt okuma çoğaltmalarda desteklenmeyen işlevini kullanır. Bu nedenle, rowversion kullanıyorsanız Dizin oluşturucuyu birincil çoğaltmaya işaret etmeniz gerekir.
 
 Bir salt okuma çoğaltmasında ROWVERSION kullanmaya çalışırsanız aşağıdaki hatayı görürsünüz: 
 

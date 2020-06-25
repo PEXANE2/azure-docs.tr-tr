@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879131"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322286"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door nedir?
 Azure ön kapısı, yüksek kullanılabilirlik için en iyi performansı ve hızlı genel yük devretmeyi iyileştirerek Web trafiğiniz için küresel yönlendirmeyi tanımlamanıza, yönetmenize ve izlemenize olanak sağlar. Ön kapı sayesinde küresel (çok bölgeli) tüketici ve kurumsal uygulamalarınızı, Azure ile küresel bir hedef kitleye ulaşan sağlam, yüksek performanslı, kişiselleştirilmiş modern uygulamalar, API 'Ler ve içeriğe dönüştürebilirsiniz.
@@ -36,7 +36,7 @@ Front Door, bölünmüş TCP tabanlı her noktaya yayın protokolü kullanarak s
 
 ## <a name="increase-application-availability-with-smart-health-probes"></a>Akıllı durum yoklamalarıyla uygulama kullanılabilirliğini artırma
 
-Front Door akıllı durum yoklamalarını kullanarak, arka uçlarınızı hem gecikme süresi hem de kullanılabilirlik açısından izleyerek ve bir arka uç başarısız olduğunda anında otomatik yük devretme sağlayarak önemli uygulamalarınız için yüksek kullanılabilirlik getirir. Bu nedenle, kesinti yaşamadan uygulamalarınızda planlı bakım çalışmaları yürütebilirsiniz. Front Door bakım sürerken trafiği alternatif arka uçlara yönlendirir.
+Ön kapı, akıllı sistem durumu araştırmalarını kullanarak kritik uygulamalarınız için yüksek oranda kullanılabilirlik sağlar, arka uçlarınızı hem gecikme hem de kullanılabilirlik için izler ve arka uç kaldığında hızlı otomatik yük devretme sağlar. Bu nedenle, kesinti yaşamadan uygulamalarınızda planlı bakım çalışmaları yürütebilirsiniz. Front Door bakım sürerken trafiği alternatif arka uçlara yönlendirir.
 
 ## <a name="url-based-routing"></a>URL tabanlı yönlendirme
 URL Yolu Tabanlı Yönlendirme, trafiği isteğin URL yollarına göre arka uç havuzlarına yönlendirmenizi sağlar. Senaryolardan biri, farklı içerik türleri için istekleri farklı arka uç havuzlarına yönlendirmektir.

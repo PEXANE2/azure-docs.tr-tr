@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74924091"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320990"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Azure Data Factory kopyalama etkinliğinden saklı yordamı çağır
 > [!NOTE]
@@ -29,7 +29,7 @@ Verileri [SQL Server](data-factory-sqlserver-connector.md) veya [Azure SQL verit
 Aşağıdaki örnek, bir SQL Server veritabanında bir saklı yordamın Data Factory bir işlem hattından (kopyalama etkinliği) nasıl çağıralınacağını gösterir:  
 
 ## <a name="output-dataset-json"></a>Çıkış veri kümesi JSON
-JSON çıktı veri kümesinde, **türü** : **sqlservertable**olarak ayarlayın. Bunu bir Azure SQL veritabanı ile kullanmak için **Azurestabtable** olarak ayarlayın. **TableName** özelliğinin değeri, saklı yordamın ilk parametresinin adı ile aynı olmalıdır.  
+JSON çıktı veri kümesinde, **türü** : **sqlservertable**olarak ayarlayın. Azure SQL veritabanı ile kullanmak için **Azurestabtable** olarak ayarlayın. **TableName** özelliğinin değeri, saklı yordamın ilk parametresinin adı ile aynı olmalıdır.  
 
 ```json
 {

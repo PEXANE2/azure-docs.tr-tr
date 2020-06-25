@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus AMQP 1,0 istek/yanıt işlemleri
 description: Bu makalede Microsoft Azure Service Bus içindeki AMQP istek/yanıt tabanlı işlemlerin listesi tanımlanmaktadır.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: aschhab
-ms.openlocfilehash: 338b411eade35fa357f64131c64b8ef2034c92b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 82eb968cc952fab6e828c8b98f4ec2ba569b4441
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76761092"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337842"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus içindeki AMQP 1,0: istek-yanıt tabanlı işlemler
 
@@ -134,7 +124,7 @@ Bir iletinin kilidini varlık açıklamasında belirtilen zamana göre genişlet
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:renew-lock`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
  İstek iletisi gövdesi, aşağıdaki girdilerle bir eşleme içeren bir AMQP-Value bölümünden oluşmalıdır:  
   
@@ -153,7 +143,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu.|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 Yanıt iletisi gövdesi, aşağıdaki girişlerle bir eşleme içeren bir AMQP-Value bölümünden oluşmalıdır:  
   
@@ -172,7 +162,7 @@ Yanıt iletisi gövdesi, aşağıdaki girişlerle bir eşleme içeren bir AMQP-V
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:peek-message`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -188,7 +178,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – daha fazla ileti içerir<br /><br /> 204: içerik yok – daha fazla ileti yok|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 Yanıt iletisi gövdesi, aşağıdaki girişlerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -213,7 +203,7 @@ Bir iletiyi temsil eden haritanın aşağıdaki girişleri içermesi gerekir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:schedule-message`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -226,9 +216,9 @@ Bir iletiyi temsil eden haritanın aşağıdaki girişleri içermesi gerekir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |ileti kimliği|string|Yes|`amqpMessage.Properties.MessageId`As String|  
-|oturum kimliği|string|Hayır|`amqpMessage.Properties.GroupId as string`|  
-|Bölüm-anahtar|string|Hayır|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|ile-bölüm-anahtar|string|Hayır|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|oturum kimliği|dize|No|`amqpMessage.Properties.GroupId as string`|  
+|Bölüm-anahtar|dize|No|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|ile-bölüm-anahtar|dize|No|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|bayt dizisi|Yes|AMQP 1,0 kablo kodlu ileti.|  
   
 #### <a name="response"></a>Yanıt  
@@ -238,7 +228,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu.|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 Yanıt iletisi gövdesi, aşağıdaki girişlerle bir eşleme içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -257,7 +247,7 @@ Zamanlanan iletileri iptal eder.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:cancel-scheduled-message`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -272,7 +262,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu.|  
-|statusDescription|string|Hayır|Durumun açıklaması.|   
+|statusDescription|dize|No|Durumun açıklaması.|   
   
 ## <a name="session-operations"></a>Oturum Işlemleri  
   
@@ -287,7 +277,7 @@ Bir iletinin kilidini varlık açıklamasında belirtilen zamana göre genişlet
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:renew-session-lock`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -302,7 +292,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – daha fazla ileti içerir<br /><br /> 204: içerik yok – daha fazla ileti yok|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 Yanıt iletisi gövdesi, aşağıdaki girişlerle bir eşleme içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -321,7 +311,7 @@ Oturum iletilerini kilitlemeden atar.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:peek-message`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -338,7 +328,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – daha fazla ileti içerir<br /><br /> 204: içerik yok – daha fazla ileti yok|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 Yanıt iletisi gövdesi, aşağıdaki girişlerle bir eşleme içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -363,7 +353,7 @@ Bir oturumun durumunu ayarlar.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:set-session-state`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -379,7 +369,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 ### <a name="get-session-state"></a>Oturum durumunu al  
 
@@ -392,7 +382,7 @@ Bir oturumun durumunu alır.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:get-session-state`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -407,7 +397,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 Yanıt iletisi gövdesi, aşağıdaki girişlerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -426,7 +416,7 @@ Bir mesajlaşma varlığındaki oturumları numaralandırır.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:get-message-sessions`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -443,7 +433,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – daha fazla ileti içerir<br /><br /> 204: içerik yok – daha fazla ileti yok|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 Yanıt iletisi gövdesi, aşağıdaki girişlerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -463,7 +453,7 @@ Yanıt iletisi gövdesi, aşağıdaki girişlerle bir **eşleme** içeren bir **
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:add-rule`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -490,15 +480,15 @@ SQL-Filter eşlemesi aşağıdaki girdileri içermelidir:
   
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
-|correlation-id|string|Hayır||  
-|ileti kimliği|string|Hayır||  
-|-|string|Hayır||  
-|Yanıtla|string|Hayır||  
-|etiket|string|Hayır||  
-|oturum kimliği|string|Hayır||  
-|Yanıtla oturum kimliği|string|Hayır||  
-|içerik türü|string|Hayır||  
-|properties|map|Hayır|Service Bus [Brokeredmessage. Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ile eşlenir.|  
+|correlation-id|dize|No||  
+|ileti kimliği|dize|No||  
+|-|dize|No||  
+|Yanıtla|dize|No||  
+|etiket|dize|No||  
+|oturum kimliği|dize|No||  
+|Yanıtla oturum kimliği|dize|No||  
+|içerik türü|dize|No||  
+|properties|map|No|Service Bus [Brokeredmessage. Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ile eşlenir.|  
   
 **SQL-Rule-Action** eşlemesi aşağıdaki girdileri içermelidir:  
   
@@ -513,7 +503,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 ### <a name="remove-rule"></a>Kuralı kaldır  
   
@@ -524,7 +514,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:remove-rule`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -539,7 +529,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 ### <a name="get-rules"></a>Kuralları al
 
@@ -550,7 +540,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:enumerate-rules`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
 
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -609,7 +599,7 @@ Dizideki her harita girişi aşağıdaki özellikleri içerir:
 | 5 | string | Oturum Kimliği |
 | 6 | string | Oturum KIMLIĞINI yanıtla|
 | 7 | string | İçerik Türü |
-| 8 | Eşleme | Uygulama tanımlı özelliklerin Haritası |
+| 8 | Harita | Uygulama tanımlı özelliklerin Haritası |
 
 `ruleAction`Aşağıdaki türlerden biri olabilir:
 
@@ -633,7 +623,7 @@ Ertelenmiş iletileri sıra numarasına göre alır.
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:receive-by-sequence-number`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -649,7 +639,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu|  
-|statusDescription|string|Hayır|Durumun açıklaması.|  
+|statusDescription|dize|No|Durumun açıklaması.|  
   
 Yanıt iletisi gövdesi, aşağıdaki girişlerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -661,7 +651,7 @@ Bir iletiyi temsil eden haritanın aşağıdaki girişleri içermesi gerekir:
   
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
-|kilit belirteci|uuid|Yes|1 `receiver-settle-mode` ise kilit belirteci.|  
+|kilit belirteci|uuid|Yes|`receiver-settle-mode`1 ise kilit belirteci.|  
 |message|bayt dizisi|Yes|AMQP 1,0 kablo kodlu ileti.|  
   
 ### <a name="update-disposition-status"></a>Değerlendirme durumunu güncelleştir  
@@ -675,7 +665,7 @@ Ertelenmiş iletilerin değerlendirme durumunu güncelleştirir. Bu işlem işle
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |çalışmasını|string|Yes|`com.microsoft:update-disposition`|  
-|`com.microsoft:server-timeout`|uint|Hayır|İşlem sunucusu zaman aşımı (milisaniye).|  
+|`com.microsoft:server-timeout`|uint|No|İşlem sunucusu zaman aşımı (milisaniye).|  
   
 İstek iletisi gövdesi, aşağıdaki girdilerle bir **eşleme** içeren bir **AMQP-Value** bölümünden oluşmalıdır:  
   
@@ -683,9 +673,9 @@ Ertelenmiş iletilerin değerlendirme durumunu güncelleştirir. Bu işlem işle
 |---------|----------------|--------------|--------------------|  
 |disposition-durum|string|Yes|dım<br /><br /> bırakıldı<br /><br /> alın|  
 |kilit belirteçleri|UUID dizisi|Yes|Değerlendirme durumunu güncelleştirmek için ileti kilit belirteçleri.|  
-|sahipsiz neden|string|Hayır|, Değerlendirme durumu **askıya alındı**olarak ayarlandıysa ayarlanabilir.|  
-|sahipsiz-açıklama|string|Hayır|, Değerlendirme durumu **askıya alındı**olarak ayarlandıysa ayarlanabilir.|  
-|Özellikler-değiştirilecek|map|Hayır|Değiştirilecek Service Bus aracılı ileti özellikleri listesi.|  
+|sahipsiz neden|dize|No|, Değerlendirme durumu **askıya alındı**olarak ayarlandıysa ayarlanabilir.|  
+|sahipsiz-açıklama|dize|No|, Değerlendirme durumu **askıya alındı**olarak ayarlandıysa ayarlanabilir.|  
+|Özellikler-değiştirilecek|map|No|Değiştirilecek Service Bus aracılı ileti özellikleri listesi.|  
   
 #### <a name="response"></a>Yanıt  
 
@@ -694,7 +684,7 @@ Yanıt iletisi aşağıdaki uygulama özelliklerini içermelidir:
 |Anahtar|Değer Türü|Gerekli|Değer Içeriği|  
 |---------|----------------|--------------|--------------------|  
 |Durum|int|Yes|HTTP yanıt kodu [RFC2616]<br /><br /> 200: Tamam – başarılı, aksi durumda başarısız oldu|  
-|statusDescription|string|Hayır|Durumun açıklaması.|
+|statusDescription|dize|No|Durumun açıklaması.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

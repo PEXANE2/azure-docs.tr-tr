@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 9dd4bc79760dde00808358fe489f6e539c2b9a2e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3e17df2a3c92d24a7fa662fbf92f8c89b434eb0d
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220423"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338238"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
@@ -39,7 +39,7 @@ Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için kullanılabilir. *
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. ServiceBus*): tüm Azure bölgelerinde genel olarak kullanılabilir.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. EventHub*): tüm Azure bölgelerinde genel olarak kullanılabilir.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureActiveDirectory*): tüm Azure bölgelerinde genel olarak kullanılabilir ADLS 1..
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)**: App Service 'in kullanılabildiği tüm Azure bölgelerinde genel kullanıma sunulmuştur.
+- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft. Web*): App Service 'in kullanılabildiği tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 
 **Genel Önizleme**
 
@@ -88,7 +88,7 @@ Hizmet uç noktaları aşağıdaki avantajları sağlar:
 - Uç noktanın yapılandırıldığı sanal ağ, Azure hizmet kaynağıyla aynı veya ondan farklı abonelikte olabilir. Uç noktaları ayarlamak ve Azure hizmetlerinin güvenliğini sağlamak için gerekli olan izinler hakkında daha fazla bilgi için [Sağlama](#provisioning) bölümüne bakın.
 - Desteklenen hizmetler için yeni veya mevcut kaynaklar ile sanal ağlar arasındaki güvenliği hizmet uç noktaları kullanarak sağlayabilirsiniz.
 
-### <a name="considerations"></a>Önemli noktalar
+### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 - Hizmet uç noktasını etkinleştirdikten sonra, alt ağ anahtarındaki sanal makinelerin kaynak IP adresleri. Kaynak IP adresleri, bu alt ağdan hizmetle iletişim kurarken özel IPv4 adreslerini kullanmak için ortak IPv4 adreslerini kullanmaya geçiş yapar. Hizmete giden mevcut açık TCP bağlantıları bu geçiş sırasında kapatılır. Bir alt ağ için hizmete yönelik hizmet uç noktasını etkinleştirmeden veya devre dışı bırakmadan önce çalışan kritik görev olmadığından emin olun. Ayrıca uygulamalarınızın IP adresi değişikliğinin ardından Azure hizmetlerine otomatik olarak bağlanabildiğinden emin olun.
 

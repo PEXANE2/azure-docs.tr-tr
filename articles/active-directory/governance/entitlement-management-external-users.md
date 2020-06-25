@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27d8ec5aba55abcea54069b9707d766c4acc7a7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078326"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338207"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
@@ -103,13 +103,13 @@ Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu 
 
 - Site düzeyi ayarlarının konuk erişimi (daha önce listelenen seçenek seçimlerini de) etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [site için dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
 
-### <a name="review-your-office-365-group-sharing-settings"></a>Office 365 grup Paylaşım ayarlarınızı gözden geçirin
+### <a name="review-your-microsoft-365-group-sharing-settings"></a>Microsoft 365 Grubu Paylaşım ayarlarınızı gözden geçirin
 
-- Dış kullanıcılara yönelik erişim paketlerinize Office 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Office 365 gruplarına konuk erişimini yönetme](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
+- Dış kullanıcılara yönelik erişim paketlerinize Microsoft 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Microsoft 365 gruplarına konuk erişimini yönetme](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
-- Dış kullanıcıların Office 365 grubuyla ilişkili SharePoint Online sitesine ve kaynaklarına erişmesini istiyorsanız SharePoint Online dış paylaşımını etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Dış kullanıcıların SharePoint Online sitesine ve bir Microsoft 365 grubuyla ilişkili kaynaklara erişmesini istiyorsanız SharePoint Online dış paylaşımını etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- PowerShell 'in dizin düzeyinde Office 365 grupları için konuk ilkesinin nasıl ayarlanacağı hakkında bilgi için bkz. [örnek: gruplar Için Konuk ilkesini dizin düzeyinde yapılandırma](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- PowerShell 'de dizin düzeyinde Microsoft 365 Gruplar için konuk ilkesinin nasıl ayarlanacağı hakkında bilgi için bkz. [örnek: gruplar Için Konuk ilkesini dizin düzeyinde yapılandırma](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>Takımlarınızın paylaşım ayarlarını gözden geçirin
 

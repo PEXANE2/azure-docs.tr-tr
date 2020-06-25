@@ -1,21 +1,14 @@
 ---
 title: .NET kullanarak Azure Event Hubs olay gönderme ve alma (eski)
 description: Bu makalede, Azure Event Hubs eski Microsoft. Azure. EventHubs paketini kullanarak/hizmetinden olay gönderen/alan .NET Core uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.assetid: ''
-ms.service: event-hubs
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: abe6a5d2cd4432b5b9dc387940a4d48f4be2aa92
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bd8476c89fea94a9d1b4a101841c11137d4dd5be
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296585"
+ms.locfileid: "85320797"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>.NET Core (Microsoft. Azure. EventHubs) kullanarak Azure Event Hubs olay gönderme veya olayları alma
 Bu hızlı başlangıçta, **Microsoft. Azure. EventHubs** .NET Core kitaplığı kullanılarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir.

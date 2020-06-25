@@ -1,19 +1,14 @@
 ---
 title: Azure Stack hub 'da (Önizleme) denetim noktası deposu olarak blob depolamayı kullanma
 description: Bu makalede, Azure Stack hub 'ında (Önizleme) Event Hubs bir denetim noktası deposu olarak blob Storage 'ın nasıl kullanılacağı açıklanır.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 03/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023675"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322362"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob depolamayı denetim noktası deposu olarak kullanma-Azure Stack hub 'da Event Hubs (Önizleme)
 Azure Blob depolama 'Yı, genellikle Azure 'da bulunan farklı bir Storage blob SDK sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, [Event Hubs bir Azure Stack hub sürümü 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, depolama hizmeti için en yüksek sürüm 2017-11-09 ' dir. Bu durumda, Storage Service API sürümünü 2017-11-09 'e hedeflemek için kodu kullanmanız gerekir. Belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da şu örneklere bakın: 
@@ -34,7 +29,7 @@ The value for one of the HTTP headers is not in the correct format
 
 
 ## <a name="sample-error-message-in-python"></a>Python 'da örnek hata iletisi
-Python için bir hata `azure.core.exceptions.HttpResponseError` , öğesinin `on_error(partition_context, error)` `EventHubConsumerClient.receive()`hata işleyicisine geçirilir. Ancak, yöntemi `receive()` özel durum oluşturmaz. `print(error)`Aşağıdaki özel durum bilgilerini yazdırır:
+Python için bir hata, `azure.core.exceptions.HttpResponseError` öğesinin hata işleyicisine geçirilir `on_error(partition_context, error)` `EventHubConsumerClient.receive()` . Ancak, yöntemi `receive()` özel durum oluşturmaz. `print(error)`Aşağıdaki özel durum bilgilerini yazdırır:
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.

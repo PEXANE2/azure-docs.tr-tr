@@ -1,19 +1,14 @@
 ---
 title: Bekleyen verileri şifrelemek için kendi anahtarınızı yapılandırın Azure Service Bus
 description: Bu makalede, Azure Service Bus veri kalanını şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: aschhab
-ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9bc48d82d1e63f08ab68e8f9c6a63e781c14c675
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459075"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338090"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal kullanarak geri kalan Azure Service Bus verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Service Bus Premium, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Service Bus Premium, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -42,7 +37,7 @@ Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için
 2. Service Bus ad alanının **Ayarlar** sayfasında **şifreleme**' yi seçin.
 3. Aşağıdaki görüntüde gösterildiği gibi **geri kalan müşteri tarafından yönetilen anahtar şifrelemesini** seçin.
 
-    ![Müşteri tarafından yönetilen anahtarı etkinleştir](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![Müşteri tarafından yönetilen anahtarı etkinleştirme](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Anahtarlar içeren bir Anahtar Kasası ayarlama
@@ -117,7 +112,7 @@ Bu bölümde **Azure Resource Manager şablonlar**kullanılarak aşağıdaki gö
 ### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Yönetilen hizmet kimliğiyle Premium Service Bus ad alanı oluşturma
 Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yönetilen hizmet kimliğiyle bir Azure Service Bus ad alanı oluşturma gösterilmektedir. 
 
-1. Yönetilen hizmet kimliğiyle Service Bus Premium katman ad alanı oluşturmak için bir Azure Resource Manager şablonu oluşturun. Dosyayı adlandırın: **CreateServiceBusPremiumNamespace. JSON**: 
+1. Yönetilen hizmet kimliğiyle Service Bus Premium katman ad alanı oluşturmak için bir Azure Resource Manager şablonu oluşturun. Dosyayı şu şekilde adlandırın: **CreateServiceBusPremiumNamespace.js**: 
 
     ```json
     {
@@ -165,7 +160,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
        }
     }
     ```
-2. Şu adlı bir şablon parametre dosyası oluşturun: **CreateServiceBusPremiumNamespaceParams. JSON**. 
+2. **ÜzerindeCreateServiceBusPremiumNamespaceParams.js**adlı bir şablon parametre dosyası oluşturun. 
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
@@ -186,7 +181,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
        }
     }
     ```
-3. Bir Premium Service Bus ad alanı oluşturmak üzere şablonu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Ardından, daha sonra kullanmak üzere Service Bus ad alanının KIMLIĞINI alın. Komutu `{MyRG}` çalıştırmadan önce kaynak grubunun adıyla değiştirin.  
+3. Bir Premium Service Bus ad alanı oluşturmak üzere şablonu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Ardından, daha sonra kullanmak üzere Service Bus ad alanının KIMLIĞINI alın. `{MyRG}`Komutu çalıştırmadan önce kaynak grubunun adıyla değiştirin.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
@@ -225,7 +220,7 @@ Bu bölümde, bir Azure Resource Manager şablonu ve PowerShell kullanarak yöne
 
 Bu adımda, Service Bus ad alanını Anahtar Kasası bilgileriyle güncelleirsiniz. 
 
-1. Aşağıdaki içerikle **Updateservicebusnamespacewithencryptıon. JSON** ADLı bir JSON dosyası oluşturun: 
+1. Aşağıdaki içerikle **UpdateServiceBusNamespaceWithEncryption.js** ADLı bir JSON dosyası oluşturun: 
 
     ```json
     {
@@ -288,7 +283,7 @@ Bu adımda, Service Bus ad alanını Anahtar Kasası bilgileriyle güncelleirsin
     }
     ``` 
 
-2. Şablon parametre dosyası oluştur: **Updateservicebusnamespacewithencryptionparams. JSON**.
+2. Şablon parametre dosyası oluşturma: **üzerindeUpdateServiceBusNamespaceWithEncryptionParams.js**.
 
     > [!NOTE]
     > Aşağıdaki değerleri değiştirin: 
@@ -317,7 +312,7 @@ Bu adımda, Service Bus ad alanını Anahtar Kasası bilgileriyle güncelleirsin
        }
     }
     ```             
-3. Kaynak Yöneticisi şablonunu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. Komutu `{MyRG}` çalıştırmadan önce kaynak grubunuzun adıyla değiştirin. 
+3. Kaynak Yöneticisi şablonunu dağıtmak için aşağıdaki PowerShell komutunu çalıştırın. `{MyRG}`Komutu çalıştırmadan önce kaynak grubunuzun adıyla değiştirin. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
@@ -327,6 +322,6 @@ Bu adımda, Service Bus ad alanını Anahtar Kasası bilgileriyle güncelleirsin
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 - [Service Bus genel bakış](service-bus-messaging-overview.md)
-- [Anahtar Kasasına genel bakış](../key-vault/general/overview.md)
+- [Key Vault genel bakış](../key-vault/general/overview.md)
 
 

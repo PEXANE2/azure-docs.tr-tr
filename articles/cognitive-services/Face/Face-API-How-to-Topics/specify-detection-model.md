@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 40ca1dbf981c5a9025cf5a0bac6b007709d69a77
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a90b37b197e25a8db79a87761d94dfded53acf50
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76934571"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323222"
 ---
 # <a name="specify-a-face-detection-model"></a>Yüz algılama modeli belirtme
 
@@ -38,7 +38,7 @@ AI yüz algılaması kavramı hakkında bilgi sahibi olmanız gerekir. Değilsen
 
 Yüz algılama, insan yüzlerinin sınırlama kutusu konumlarını bulur ve görsel çizgilerini tanımlar. Bu, yüzün özelliklerini ayıklar ve daha sonra [tanıma](../concepts/face-recognition.md) işlemlerinde kullanılmak üzere depolar.
 
-[Yüz algılama] API 'sini kullandığınızda, `detectionModel` parametresi ile model sürümünü atayabilirsiniz. Kullanılabilir değerler şunlardır:
+[Yüz algılama] API 'sini kullandığınızda, parametresi ile model sürümünü atayabilirsiniz `detectionModel` . Kullanılabilir değerler şunlardır:
 
 * `detection_01`
 * `detection_02`
@@ -47,11 +47,11 @@ Yüz algılama, insan yüzlerinin sınırlama kutusu konumlarını bulur ve gör
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
-İstemci kitaplığını kullanıyorsanız, uygun bir dizeye geçirerek değerini `detectionModel` atayabilirsiniz. Atanmamış olarak bırakırsanız, API varsayılan model sürümünü (`detection_01`) kullanır. .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
+İstemci kitaplığını kullanıyorsanız, `detectionModel` uygun bir dizeye geçirerek değerini atayabilirsiniz. Atanmamış olarak bırakırsanız, API varsayılan model sürümünü ( `detection_01` ) kullanır. .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>Belirtilen modele sahip kişiye yüz ekleyin
@@ -63,7 +63,7 @@ Yüz tanıma hizmeti bir görüntüden yüz verileri ayıklayabilir ve Person [k
 ```csharp
 // Create a PersonGroup and add a person with face detected by "detection_02" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
@@ -71,7 +71,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Bu kod, KIMLIĞI `mypersongroupid` olan bir **persongroup** oluşturur ve bu gruba bir **kişi** ekler. Ardından, `detection_02` modeli kullanarak bu **kişiye** bir yüz ekler. *DetectionModel* parametresini BELIRTMEZSENIZ, API varsayılan modeli kullanır `detection_01`.
+Bu kod, KIMLIĞI olan bir **Persongroup** oluşturur ve bu gruba `mypersongroupid` bir **kişi** ekler. Ardından, modeli kullanarak bu **kişiye** bir yüz ekler `detection_02` . *DetectionModel* parametresini BELIRTMEZSENIZ, API varsayılan modeli kullanır `detection_01` .
 
 > [!NOTE]
 > Bir **kişi** nesnesindeki tüm yüzler için aynı algılama modelini kullanmanız gerekmez ve bir **kişi** nesnesiyle Karşılaştırılacak yeni yüzeyleri algılamada aynı algılama modelini kullanmanız gerekmez (örneğin, [yüz] tanıma API 'si).
@@ -81,13 +81,13 @@ Bu kod, KIMLIĞI `mypersongroupid` olan bir **persongroup** oluşturur ve bu gru
 Ayrıca, mevcut bir çok **yönlü liste** nesnesine bir yüz eklediğinizde bir algılama modeli de belirtebilirsiniz. .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Bu kod, `My face collection` `detection_02` adlı bir çok **yönlü liste** oluşturur ve modele sahip bir yüz ekler. *DetectionModel* parametresini BELIRTMEZSENIZ, API varsayılan modeli kullanır `detection_01`.
+Bu kod, adlı bir çok **yönlü liste** oluşturur `My face collection` ve modele sahip bir yüz ekler `detection_02` . *DetectionModel* parametresini BELIRTMEZSENIZ, API varsayılan modeli kullanır `detection_01` .
 
 > [!NOTE]
 > Bir çok **yönlü liste** nesnesindeki tüm yüzler için aynı algılama modelini kullanmanız gerekmez ve çok **yönlü bir liste** nesnesiyle Karşılaştırılacak yeni yüzeyleri algılamada aynı algılama modelini kullanmanız gerekmez.
@@ -103,7 +103,7 @@ Farklı yüz algılama modelleri farklı görevler için iyileştirilmiştir. Fa
 |Algıla çağrısında belirtilerse yüz özniteliklerini (Head, Age, duygu vb.) döndürür. |  Yüz özniteliklerini döndürmez.     |
 |Algıla çağrısında belirtilerse yüz çizgilerini döndürür.   | Yüz yer işaretlerini döndürmez.  |
 
-`detection_01` Ve `detection_02` modellerinin performanslarını karşılaştırmak için en iyi yol, bunları örnek bir veri kümesi üzerinde kullanmaktır. [Yüz tanıma] API 'sini çeşitli görüntülerde, özellikle de görülmesi zor olan çok sayıda yüzün veya yüzlerin her bir algılama modeli kullanılarak çağrılmasını öneririz. Her modelin döndürdüğü yüz sayısına dikkat edin.
+Ve modellerinin performanslarını karşılaştırmak için en iyi yol, `detection_01` `detection_02` bunları örnek bir veri kümesi üzerinde kullanmaktır. [Yüz tanıma] API 'sini çeşitli görüntülerde, özellikle de görülmesi zor olan çok sayıda yüzün veya yüzlerin her bir algılama modeli kullanılarak çağrılmasını öneririz. Her modelin döndürdüğü yüz sayısına dikkat edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

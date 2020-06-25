@@ -1,26 +1,16 @@
 ---
 title: Java ile Azure Service Bus kuyruklarını kullanma
 description: Bu öğreticide, Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Java uygulamaları oluşturmayı öğreneceksiniz.
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f701439c-553e-402c-94a7-64400f997d59
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 224a5ce0a2c8a7fc031f1ad3314e4d8889966433
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 86097603b8b17b0e474cef4b57171bb51d5a1420
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788306"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338076"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Hızlı başlangıç: ileti göndermek ve almak için Java ile Azure Service Bus kuyrukları kullanma
 
@@ -129,7 +119,7 @@ Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başl
 
 **PeekLock** modunda, alma işlemi iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletiye **tamamlandı ()** çağrısı yaparak alma işleminin ikinci aşamasını tamamlar. Service Bus, **tüm ()** çağrısını gördüğünde, iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır. 
 
-Aşağıdaki örnek, iletilerin **PeekLock** modu kullanılarak nasıl alınacağını ve işlenebileceğinizi gösterir (varsayılan mod değil). Aşağıdaki örnek, kayıtlı bir ileti işleyicisiyle geri çağırma modelini kullanır ve mesajlarımıza `TestQueue`geldikçe iletileri işler. Bu mod, geri çağırma normal olarak döner ve geri çağırma bir özel durum oluşturursa **Abandon ()** **öğesini çağırır.** 
+Aşağıdaki örnek, iletilerin **PeekLock** modu kullanılarak nasıl alınacağını ve işlenebileceğinizi gösterir (varsayılan mod değil). Aşağıdaki örnek, kayıtlı bir ileti işleyicisiyle geri çağırma modelini kullanır ve mesajlarımıza geldikçe iletileri işler `TestQueue` . Bu mod, geri çağırma normal olarak döner ve geri çağırma bir özel durum oluşturursa **Abandon ()** **öğesini çağırır.** 
 
 ```java
     public void run() throws Exception {

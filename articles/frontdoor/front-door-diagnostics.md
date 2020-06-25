@@ -6,17 +6,17 @@ documentationcenter: ''
 author: sharad4u
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 7939daf97309d5026fd24732cd922e47c2b16812
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743635"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322307"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure ön kapılarında ölçümleri ve günlükleri izleme
 
@@ -88,6 +88,7 @@ Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere
 | RequestUri | Alınan isteğin URI 'SI. |
 | ResponseBytes | Yanıt olarak arka uç sunucusu tarafından gönderilen bayt.  |
 | RoutingRuleName | İsteğin eşleştiği yönlendirme kuralının adı. |
+| RulesEngineMatchNames | İsteğin eşleştiği kuralların adları. |
 | SecurityProtocol | İstek tarafından kullanılan TLS/SSL protokol sürümü veya şifreleme yoksa null. |
 | SentToOriginShield | İlk ortamda bir önbellek isabetsizlik olup olmadığını ve isteğin bölgesel önbelleğe gönderilip gönderilmediğini temsil eden Boole alanı. Yönlendirme kuralı bir yeniden yönlendirme veya ne zaman önbelleğe alma etkin değilse bu alanı yoksayın. |
 | TimeTaken | İşlemin gerçekleştiği sürenin milisaniye cinsinden uzunluğu. |

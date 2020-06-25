@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 3085e664b75e404e14ba0992a286d33cbf3ef771
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: e7b21a4ebf18cad51898e3a83b622e518c6b391e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077826"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322407"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Güvenlik Duvarı uygulama kurallarını SQL FQDN 'leri ile yapılandırma
 

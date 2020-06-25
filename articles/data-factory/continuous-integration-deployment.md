@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1b5d51eafc0cb21a02f8a750bd78b5be7aca734f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605519"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336874"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -197,7 +197,7 @@ Data Factory ekibi, bu makalenin alt kısmında bulunan [örnek bir ön ve dağ�
 
    ![Kendi şablonunuzu oluşturun](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. **Dosya Yükle**' yi seçin ve ardından oluşturulan kaynak yöneticisi şablonunu seçin. Bu, 1. adımda dışarıya alınan. zip dosyasında bulunan **arm_template. JSON** dosyasıdır.
+1. **Dosya Yükle**' yi seçin ve ardından oluşturulan kaynak yöneticisi şablonunu seçin. Bu, 1. adımda içe aktarılmış. zip dosyasında bulunan dosya **arm_template.js** .
 
    ![Şablonu Düzenle](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -212,7 +212,7 @@ Geliştirme fabrikasında ilişkili bir git deposu varsa, şablonu yayımlayarak
 * Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
 * Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
 
-Varsayılan parameterleştirme şablonunu geçersiz kılmak için, git dalınızın kök klasöründe **ARM-Template-Parameters-Definition. JSON** adlı bir dosya oluşturun. Bu tam dosya adını kullanmanız gerekir.
+Varsayılan parameterleştirme şablonunu geçersiz kılmak için git dalınızın kök klasöründe **arm-template-parameters-definition.js** adlı bir dosya oluşturun. Bu tam dosya adını kullanmanız gerekir.
 
    ![Özel parametreler dosyası](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -225,7 +225,7 @@ Bir Kaynak Yöneticisi şablonu dışarı aktarırken, Data Factory yalnızca i�
 
 ### <a name="custom-parameter-syntax"></a>Özel parametre sözdizimi
 
-Aşağıda, **ARM-şablon-parametreleri-Definition. JSON**özel parametre dosyasını oluştururken izlenecek bazı yönergeler verilmiştir. Dosya her varlık türü için bir bölümden oluşur: tetikleyici, işlem hattı, bağlı hizmet, veri kümesi, tümleştirme çalışma zamanı ve veri akışı.
+Aşağıda, **arm-template-parameters-definition.js**özel parametre dosyasını oluştururken izlenecek bazı yönergeler verilmiştir. Dosya her varlık türü için bir bölümden oluşur: tetikleyici, işlem hattı, bağlı hizmet, veri kümesi, tümleştirme çalışma zamanı ve veri akışı.
 
 * İlgili varlık türünün altında özellik yolunu girin.
 * İçin bir özellik adının ayarlanması  `*` , altındaki tüm özellikleri parametreleştirmek istediğinizi (özyinelemeli değil, yalnızca ilk düzeye doğru değil) gösterir. Bu yapılandırmaya özel durumlar da sağlayabilirsiniz.
@@ -422,6 +422,7 @@ Geçerli varsayılan parameterleştirme şablonu aşağıda verilmiştir. Yalnı
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "functionAppUrl":"=",
                     "environmentUrl": "=",
                     "aadResourceId": "=",
                     "sasUri": "|:-sasUri:secureString",
@@ -574,9 +575,9 @@ Git 'i yapılandırdıysanız, bağlantılı şablonlar oluşturulur ve adf_publ
 
 ![Bağlı Kaynak Yöneticisi şablonları klasörü](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-Bağlantılı Kaynak Yöneticisi şablonları genellikle ana şablondan ve ana şablon kümesinden oluşur. Üst şablon ArmTemplate_master. JSON olarak adlandırılır ve alt şablonlar, ArmTemplate_0. JSON, ArmTemplate_1. JSON ve benzeri düzeniyle adlandırılır. 
+Bağlantılı Kaynak Yöneticisi şablonları genellikle ana şablondan ve ana şablon kümesinden oluşur. Üst şablon üzerinde ArmTemplate_master.jsçağrılır ve alt şablonlar, üzerinde ArmTemplate_0.jsdüzeniyle, ArmTemplate_1.jsaçık ve bu şekilde adlandırılır. 
 
-Tam Kaynak Yöneticisi şablonu yerine bağlantılı şablonlar kullanmak için, CI/CD görevinizi ArmTemplateForFactory. JSON (tam Kaynak Yöneticisi şablonu) yerine ArmTemplate_master. json ' a işaret etmek üzere güncelleştirin. Kaynak Yöneticisi ayrıca, Azure 'un dağıtım sırasında erişebilmesi için bağlantılı şablonları bir depolama hesabına yüklemenizi gerektirir. Daha fazla bilgi için bkz. [VSTS ile bağlantılı kaynak yöneticisi şablonlarını dağıtma](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+Tam Kaynak Yöneticisi şablonu yerine bağlantılı şablonlar kullanmak için, CI/CD görevinizi ArmTemplateForFactory.json (tam Kaynak Yöneticisi şablonu) yerine ArmTemplate_master.jsüzerine işaret etmek üzere güncelleştirin. Kaynak Yöneticisi ayrıca, Azure 'un dağıtım sırasında erişebilmesi için bağlantılı şablonları bir depolama hesabına yüklemenizi gerektirir. Daha fazla bilgi için bkz. [VSTS ile bağlantılı kaynak yöneticisi şablonlarını dağıtma](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
 Dağıtım görevinden önce ve sonra, CI/CD işlem hattınızda Data Factory betikleri eklemeyi unutmayın.
 
@@ -726,8 +727,10 @@ function triggerSortUtil {
         return;
     }
     $visited[$trigger.Name] = $true;
-    $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
-        triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+    if ($trigger.Properties.DependsOn) {
+        $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
+            triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+        }
     }
     $sortedList.Push($trigger)
 }

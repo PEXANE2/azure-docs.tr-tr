@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 75bbce0f1e9787e55880ccac80dacb5457e1f2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68728378"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322667"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Güvenlik çerçevesi: yetkilendirme | Karşı 
 | Ürün/hizmet | Makale |
 | --------------- | ------- |
 | **Makine güven sınırı** | <ul><li>[Uygun ACL 'Lerin cihazdaki verilere yetkisiz erişimi kısıtlamak için yapılandırıldığından emin olun](#acl-restricted-access)</li><li>[Kullanıcıya özgü gizli uygulama içeriğinin Kullanıcı profili dizininde depolandığından emin olun](#sensitive-directory)</li><li>[Dağıtılan uygulamaların en az ayrıcalıklarla çalıştığından emin olun](#deployed-privileges)</li></ul> |
 | **Web uygulaması** | <ul><li>[İş mantığı akışlarını işlerken sıralı adım sırasını zorla](#sequential-logic)</li><li>[Numaralandırmayı engellemek için hız sınırlaması mekanizmasını uygulayın](#rate-enumeration)</li><li>[Doğru yetkilendirmenin yerinde olduğundan ve en az ayrıcalık ilkesinin izlendiğinden emin olun](#principle-least-privilege)</li><li>[İş mantığı ve kaynak erişimi yetkilendirme kararları gelen istek parametrelerine dayanmamalıdır](#logic-request-parameters)</li><li>[İçerik ve kaynakların numaralandırılıp, zorla göz atma aracılığıyla erişilebilir olmadığından emin olun](#enumerable-browsing)</li></ul> |
-| **Veritabanınızı** | <ul><li>[Veritabanı sunucusuna bağlanmak için en az ayrıcalıklı hesapların kullanıldığından emin olun](#privileged-server)</li><li>[Kiracıların diğer verilerine erişmesini engellemek için satır düzeyinde güvenlik RLS uygulayın](#rls-tenants)</li><li>[Sysadmin rolü yalnızca geçerli gerekli kullanıcıları içermelidir](#sysadmin-users)</li></ul> |
+| **Veritabanı** | <ul><li>[Veritabanı sunucusuna bağlanmak için en az ayrıcalıklı hesapların kullanıldığından emin olun](#privileged-server)</li><li>[Kiracıların diğer verilerine erişmesini engellemek için satır düzeyinde güvenlik RLS uygulayın](#rls-tenants)</li><li>[Sysadmin rolü yalnızca geçerli gerekli kullanıcıları içermelidir](#sysadmin-users)</li></ul> |
 | **IoT bulut ağ geçidi** | <ul><li>[En az ayrıcalıklı belirteçleri kullanarak bulut ağ geçidine bağlanma](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Cihaz belirteçleri oluşturmak için yalnızca bir salt-Gönder izin SAS anahtarı kullanın](#sendonly-sas)</li><li>[Olay Hub 'ına doğrudan erişim sağlayan erişim belirteçleri kullanmayın](#access-tokens-hub)</li><li>[Minimum izinleri olması gereken SAS anahtarlarını kullanarak Olay Hub 'ına bağlanma](#sas-minimum-permissions)</li></ul> |
 | **Azure belge DB** | <ul><li>[Mümkün olduğunda Azure Cosmos DB bağlanmak için kaynak belirteçlerini kullanın](#resource-docdb)</li></ul> |
@@ -35,7 +35,7 @@ ms.locfileid: "68728378"
 | **Service Fabric güven sınırı** | <ul><li>[RBAC kullanarak istemcinin küme işlemlerine erişimini kısıtlama](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Güvenlik modellemesini gerçekleştirin ve gereken yerlerde alan düzeyi güvenliği kullanın](#modeling-field)</li></ul> |
 | **Dynamics CRM portalı** | <ul><li>[Portalın güvenlik modelinin CRM 'nin geri kalanından farklı olduğunu aklınızda tutarak Portal hesaplarının güvenlik modellemesini gerçekleştirin](#portal-security)</li></ul> |
-| **Azure Storage** | <ul><li>[Azure Tablo depolama alanındaki çeşitli varlıklar üzerinde hassas izinler verin](#permission-entities)</li><li>[Rol tabanlı Access Control (RBAC) Azure depolama hesabına Azure Resource Manager kullanarak etkinleştirin](#rbac-azure-manager)</li></ul> |
+| **Azure Depolama** | <ul><li>[Azure Tablo depolama alanındaki çeşitli varlıklar üzerinde hassas izinler verin](#permission-entities)</li><li>[Rol tabanlı Access Control (RBAC) Azure depolama hesabına Azure Resource Manager kullanarak etkinleştirin](#rbac-azure-manager)</li></ul> |
 | **Mobil Istemci** | <ul><li>[Örtük jailbreak veya kök öğe algılamayı uygulama](#rooting-detection)</li></ul> |
 | **WCF** | <ul><li>[WCF 'de zayıf sınıf başvurusu](#weak-class-wcf)</li><li>[WCF-Yetkilendirme denetimini uygulama](#wcf-authz)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API 'sinde doğru yetkilendirme mekanizmasını uygulama](#authz-aspnet)</li></ul> |
@@ -136,7 +136,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | <p>Gizli statik ve yapılandırma dosyaları Web kökünde tutulmamalıdır. İçeriğin genel olması gerekmediği için, içeriğin kendisi için uygun erişim denetimlerinin uygulanması veya kaldırılması gerekir.</p><p>Ayrıca, zorla göz atma genellikle bir sunucudaki dizinleri ve dosyaları numaralandırmak için mümkün olduğunca fazla URL 'ye erişmeyi deneyerek, deneme yanılma teknikleriyle birleştirilir. Saldırganlar, yaygın olarak varolan dosyaların tüm çeşitlemelerini denetleyebilir. Örneğin, bir parola dosya araması psswd. txt, Password. htm, Password. dat ve diğer çeşitlemeler dahil olmak üzere dosyaları kapsayabilir.</p><p>Bunu azaltmak için, deneme yanılma girişimlerini algılama özellikleri dahil edilmelidir.</p>|
+| **Adımlar** | <p>Gizli statik ve yapılandırma dosyaları Web kökünde tutulmamalıdır. İçeriğin genel olması gerekmediği için, içeriğin kendisi için uygun erişim denetimlerinin uygulanması veya kaldırılması gerekir.</p><p>Ayrıca, zorla göz atma genellikle bir sunucudaki dizinleri ve dosyaları numaralandırmak için mümkün olduğunca fazla URL 'ye erişmeyi deneyerek, deneme yanılma teknikleriyle birleştirilir. Saldırganlar, yaygın olarak varolan dosyaların tüm çeşitlemelerini denetleyebilir. Örneğin, bir parola dosya araması psswd.txt, password.htm, Password. dat ve diğer çeşitlemeler dahil olmak üzere dosyaları kapsayabilir.</p><p>Bunu azaltmak için, deneme yanılma girişimlerini algılama özellikleri dahil edilmelidir.</p>|
 
 ## <a name="ensure-that-least-privileged-accounts-are-used-to-connect-to-database-server"></a><a id="privileged-server"></a>Veritabanı sunucusuna bağlanmak için en az ayrıcalıklı hesapların kullanıldığından emin olun
 
@@ -146,7 +146,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [SQL veritabanı izinleri hiyerarşisi](https://msdn.microsoft.com/library/ms191465), [SQL Veritabanı securables](https://msdn.microsoft.com/library/ms190401) |
+| **Başvurular**              | [SQL izinleri hiyerarşisi](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL securables](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Adımlar** | Veritabanına bağlanmak için en az ayrıcalıklı hesaplar kullanılmalıdır. Uygulama oturum açma, veritabanında kısıtlamalı ve yalnızca seçili saklı yordamları yürütmelidir. Uygulamanın oturum açma, doğrudan tablo erişimi içermemelidir. |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>Kiracıların diğer verilerine erişmesini engellemek için satır düzeyinde güvenlik RLS uygulayın
@@ -160,7 +160,7 @@ Artık olası bir saldırgan, verileri alma tanımlayıcısı sunucu tarafında 
 | **Başvurular**              | [Satır düzeyi güvenliği SQL Server (RLS)](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **Adımlar** | <p>Satır Düzeyi Güvenlik, müşterilerin bir veritabanı tablosundaki satırlara erişimi, sorguyu yürüten kullanıcının özelliklerine göre (grup üyeliği veya yürütme bağlamı) denetlemesini sağlar.</p><p>Satır düzeyi güvenlik (RLS), uygulamanızda güvenliğin tasarımını ve kodlamasını basitleştirir. RLS, veri satırı erişiminde kısıtlama uygulamanızı sağlar. Örneğin çalışanlar yalnızca kendi bölümleriyle ilgili veri satırlarına erişmesi veya müşterilerin yalnızca kendi şirketleriyle ilgili verilere ulaşması sağlanabilir.</p><p>Erişim kısıtlama mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veritabanı sistemi, herhangi bir katmanda veri erişimi her denendiğinde erişim kısıtlamalarını uygular. Bu, güvenlik sisteminin yüzey alanını azaltarak güvenlik sisteminin daha güvenilir ve sağlam olmasını sağlar.</p><p>|
 
-Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016 ve Azure SQL veritabanı SQL Server için geçerli olduğunu unutmayın. Kullanıma hazır RLS özelliği uygulanmadığından, veri erişiminin görünümler ve yordamlar kullanılarak kısıtlanması gerekir
+Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016, Azure SQL veritabanı ve SQL yönetilen örneği SQL Server için geçerli olduğunu unutmayın. Kullanıma hazır RLS özelliği uygulanmadığından, veri erişiminin görünümler ve yordamlar kullanılarak kısıtlanması gerekir
 
 ## <a name="sysadmin-role-should-only-have-valid-necessary-users"></a><a id="sysadmin-users"></a>Sysadmin rolü yalnızca geçerli gerekli kullanıcıları içermelidir
 
@@ -170,7 +170,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [SQL veritabanı izinleri hiyerarşisi](https://msdn.microsoft.com/library/ms191465), [SQL Veritabanı securables](https://msdn.microsoft.com/library/ms190401) |
+| **Başvurular**              | [SQL izinleri hiyerarşisi](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL securables](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Adımlar** | SysAdmin sabit sunucu rolünün üyeleri çok sınırlı olmalı ve hiçbir şekilde uygulamalar tarafından kullanılan hesapları içermemelidir.  Lütfen roldeki kullanıcıların listesini gözden geçirin ve gereksiz hesapları kaldırın|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>En az ayrıcalıklı belirteçleri kullanarak bulut ağ geçidine bağlanma
@@ -276,7 +276,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-Table |
@@ -287,7 +287,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
@@ -317,7 +317,7 @@ Lütfen hazır olmayan bir veritabanı özelliği olarak RLS 'nin yalnızca 2016
 | **Adımlar** | <p>Sistem zayıf bir sınıf başvurusu kullanır ve bu da bir saldırganın yetkisiz kod yürütmesine izin verebilir. Program, benzersiz şekilde tanımlanmayan Kullanıcı tanımlı bir sınıfa başvurur. .NET, bu zayıf tanımlı sınıfı yüklediğinde CLR tür yükleyicisi aşağıdaki konumlarda belirtilen sırada sınıfı arar:</p><ol><li>Türün derlemesi biliniyorsa, yükleyici yapılandırma dosyasının yeniden yönlendirme konumlarını, GAC 'yi, yapılandırma bilgilerini kullanarak geçerli derlemeyi ve uygulama temel dizinini arar</li><li>Derleme bilinmiyorsa, yükleyici geçerli derlemeyi, mscorlib 'yi ve TypeResolve olay işleyicisi tarafından döndürülen konumu arar</li><li>Bu CLR arama sırası tür Iletme mekanizması ve AppDomain. TypeResolve olayı gibi kancalarla değiştirilebilir</li></ol><p>Bir saldırgan aynı ada sahip alternatif bir sınıf oluşturup clr 'nin ilk yükleneceği alternatif bir konuma yerleştirilerek CLR arama sırasını kullanıyorsa, CLR istemeden saldırgan tarafından sağlanan kodu yürütür</p>|
 
 ### <a name="example"></a>Örnek
-Aşağıdaki `<behaviorExtensions/>` WCF yapılandırma dosyasının Öğesı, WCF 'yi belırlı bir WCF uzantısına özel bir davranış sınıfı eklemeye yönlendirir.
+`<behaviorExtensions/>`AŞAĞıDAKI WCF yapılandırma dosyasının öğesi, WCF 'yi belirli BIR WCF uzantısına özel bir davranış sınıfı eklemeye yönlendirir.
 ```
 <system.serviceModel>
     <extensions>
@@ -327,10 +327,10 @@ Aşağıdaki `<behaviorExtensions/>` WCF yapılandırma dosyasının Öğesı, W
     </extensions>
 </system.serviceModel>
 ```
-Tam nitelikli (tanımlayıcı) adların kullanılması, bir türü benzersiz bir şekilde tanımlar ve sisteminizin güvenliğini artırır. Machine. config ve App. config dosyalarına türleri kaydederken tam nitelikli derleme adlarını kullanın.
+Tam nitelikli (tanımlayıcı) adların kullanılması, bir türü benzersiz bir şekilde tanımlar ve sisteminizin güvenliğini artırır. machine.config ve app.config dosyalarında türleri kaydederken tam nitelikli derleme adlarını kullanın.
 
 ### <a name="example"></a>Örnek
-Aşağıdaki `<behaviorExtensions/>` WCF yapılandırma dosyasının Öğesı, WCF 'ye, belırlı bir WCF uzantısına kesin olarak başvurulan özel davranış sınıfı eklemesi için izin verir.
+`<behaviorExtensions/>`AŞAĞıDAKI WCF yapılandırma dosyasının öğesi, WCF 'ye, belirli BIR WCF uzantısına kesin olarak başvurulan özel davranış sınıfı eklemesi için izin verir.
 ```
 <system.serviceModel>
     <extensions>

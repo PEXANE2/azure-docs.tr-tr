@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 96a5d3d5c894dda4270c5a8832f188ead56a1ce4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020906"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322060"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
@@ -37,10 +37,10 @@ Aşağıda, veri paylaşımının kaynak yönetimli kimliğine atanan rollerin �
 |Azure Data Lake Gen1 | Sahip | Desteklenmiyor
 |Azure Data Lake Gen2 | Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
 |Azure SQL Sunucusu | SQL DB Katılımcısı | SQL DB Katılımcısı
-|Azure Veri Gezgini kümesi | Katılımcı | Katılımcı
+|Azure Veri Gezgini Kümesi | Katılımcı | Katılımcı
 |
 
-SQL tabanlı paylaşım için, SQL veritabanı 'nın Azure veri paylaşımı kaynağıyla aynı ada sahip bir dış sağlayıcıdan oluşturulması gerekir. SQL kullanıcısının gerektirdiği iznin özeti aşağıda verilmiştir.
+SQL tabanlı paylaşım için, Azure SQL veritabanı 'nda Azure veri paylaşımı kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. SQL kullanıcısının gerektirdiği iznin özeti aşağıda verilmiştir.
 
 | |  |  |
 |---|---|---|
@@ -98,7 +98,7 @@ Azure kiracınızda Azure Veri Paylaşma davetini ilk kez görüntülemek için,
 1. Azure veri paylaşımında kullandığınız aboneliği seçin.
 1. **Kaynak sağlayıcıları**' na tıklayın.
 1. Microsoft. DataShare için arama yapın.
-1. **Kaydol**' a tıklayın.
+1. **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

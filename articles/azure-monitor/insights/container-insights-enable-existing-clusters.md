@@ -3,12 +3,12 @@ title: Dağıtılmış bir Azure Kubernetes hizmeti (AKS) kümesini izleme | Mic
 description: Azure Kubernetes hizmeti (AKS) kümesini aboneliğinizde zaten dağıtılan kapsayıcılar için Azure Izleyici ile izlemeyi nasıl etkinleştireceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 5b7450f5eb132dab9961de712d8cddb33bd2c521
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264221"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337982"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Azure Kubernetes Service (AKS) kümesinin izlenmesini etkinleştirme zaten dağıtıldı
 
@@ -27,10 +27,10 @@ Desteklenen yöntemlerden birini kullanarak zaten dağıtılmış bir AKS kümes
 
 ## <a name="enable-using-azure-cli"></a>Azure CLı kullanarak etkinleştirme
 
-Aşağıdaki adım, Azure CLı kullanarak AKS kümenizi izlemeye izin vermez. Bu örnekte, oluşturma veya mevcut bir çalışma alanı belirtmeniz gerekmez. Bu komut, bölgede zaten mevcut değilse AKS küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir.  Oluşturulan varsayılan çalışma alanı, *defaultworkspace- \<GUID> - \<Region> *biçimine benzer.  
+Aşağıdaki adım, Azure CLı kullanarak AKS kümenizi izlemeye izin vermez. Bu örnekte, oluşturma veya mevcut bir çalışma alanı belirtmeniz gerekmez. Bu komut, bölgede zaten mevcut değilse AKS küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir.  Oluşturulan varsayılan çalışma alanı, *defaultworkspace- \<GUID> - \<Region> *biçimine benzer.
 
 ```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
 Çıktı aşağıdakine benzeyecektir:
@@ -41,7 +41,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>Mevcut bir çalışma alanıyla tümleştirin
 
-Mevcut bir çalışma alanıyla tümleştirileceğini tercih ediyorsanız, parametre için gereken Log Analytics çalışma alanınızın tam kaynak KIMLIĞINI belirlemek için aşağıdaki adımları uygulayın `--workspace-resource-id` ve ardından, belirtilen çalışma alanına karşı izleme eklentisini etkinleştirmek için komutunu çalıştırın.  
+Mevcut bir çalışma alanıyla tümleştirileceğini tercih ediyorsanız, parametre için gereken Log Analytics çalışma alanınızın tam kaynak KIMLIĞINI belirlemek için aşağıdaki adımları uygulayın `--workspace-resource-id` ve ardından, belirtilen çalışma alanına karşı izleme eklentisini etkinleştirmek için komutunu çalıştırın.
 
 1. Aşağıdaki komutu kullanarak erişiminiz olan tüm abonelikleri listeleyin:
 
@@ -112,7 +112,7 @@ Azure Izleyici Azure portal AKS kümenizi izlemeyi etkinleştirmek için aşağ�
 
 4. İzlenmeyen kümeler listesinden, listeden kapsayıcıyı bulun ve **Etkinleştir**' e tıklayın.
 
-5. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, bu seçeneği, açılan listeden seçin.  
+5. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, bu seçeneği, açılan listeden seçin.
     Liste, varsayılan çalışma alanını ve AKS kapsayıcısının abonelikte dağıtıldığı konumu önceden seçer.
 
     ![AKS kapsayıcı öngörüleri izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -130,15 +130,15 @@ Azure portal doğrudan AKS kümelerinizin birinden izlemeyi etkinleştirmek içi
 
 2. Kaynak listesinde **kapsayıcılar**yazmaya başlayın.  Liste, girişinizi temel alarak filtreler.
 
-3. **Kubernetes Hizmetleri**' ni seçin.  
+3. **Kubernetes Hizmetleri**' ni seçin.
 
     ![Kubernetes Services bağlantısı](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. Kapsayıcılar listesinde bir kapsayıcı seçin.
 
-5. Kapsayıcıya Genel Bakış sayfasında, **Izleme kapsayıcıları**' nı seçin.  
+5. Kapsayıcıya Genel Bakış sayfasında, **Izleme kapsayıcıları**' nı seçin.
 
-6. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte var olan bir Log Analytics çalışma alanınız varsa, açılan listeden seçin.  
+6. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte var olan bir Log Analytics çalışma alanınız varsa, açılan listeden seçin.
     Liste, varsayılan çalışma alanını ve AKS kapsayıcısının abonelikte dağıtıldığı konumu önceden seçer.
 
     ![AKS kapsayıcı durumu izlemeyi etkinleştir](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
@@ -227,7 +227,7 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
     }
     ```
 
-2. Bu dosyayı yerel bir klasöre **Existingclusterekleme. JSON** olarak kaydedin.
+2. Bu dosyayı yerel bir klasöre **existingClusterOnboarding.js** olarak kaydedin.
 
 3. Aşağıdaki JSON sözdizimini dosyanıza yapıştırın:
 
@@ -260,7 +260,7 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
 
     **Aksresourcetagvalues** değerlerini, aks kümesi için belirtilen varolan etiket değerleriyle eşleşecek şekilde düzenleyin.
 
-5. Bu dosyayı yerel bir klasöre **Existingclusterparam. JSON** olarak kaydedin.
+5. Bu dosyayı yerel bir klasöre **existingClusterParam.js** olarak kaydedin.
 
 6. Bu şablonu dağıtmaya hazırsınız.
 
@@ -310,7 +310,21 @@ kubectl get ds omsagent --namespace=kube-system
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
+
+Kümede Windows Server düğümleri varsa, aracının başarıyla dağıtıldığını doğrulamak için aşağıdaki komutu çalıştırabilirsiniz.
+
+```
+kubectl get ds omsagent-win --namespace=kube-system
+```
+
+Çıktının düzgün şekilde dağıtıldığını belirten aşağıdakine benzer olması gerekir:
+
+```output
+User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
+NAME                   DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                   AGE
+omsagent-win           2         2         2         2            2           beta.kubernetes.io/os=windows   1d
+```
 
 Çözümün dağıtımını doğrulamak için şu komutu çalıştırın:
 
@@ -328,23 +342,23 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>06072018 'den önceki aracı sürümü
 
-*06072018* ' den önce yayınlanan Log Analytics Agent sürümünün düzgün şekilde dağıtılmadığını doğrulamak için şu komutu çalıştırın:  
+*06072018* ' den önce yayınlanan Log Analytics Agent sürümünün düzgün şekilde dağıtılmadığını doğrulamak için şu komutu çalıştırın:
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-Çıktının düzgün şekilde dağıtıldığını belirten aşağıdakine benzer olması gerekir:  
+Çıktının düzgün şekilde dağıtıldığını belirten aşağıdakine benzer olması gerekir:
 
 ```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
 
 ## <a name="view-configuration-with-cli"></a>CLı ile yapılandırmayı görüntüleme
 
-Çözümü, `aks show` çözüm etkinleştirilmiş veya değil, Log Analytics çalışma alanı RESOURCEID ve kümeyle ilgili özet ayrıntıları gibi ayrıntıları almak için kullanın.  
+Çözümü, `aks show` çözüm etkinleştirilmiş veya değil, Log Analytics çalışma alanı RESOURCEID ve kümeyle ilgili özet ayrıntıları gibi ayrıntıları almak için kullanın.
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>

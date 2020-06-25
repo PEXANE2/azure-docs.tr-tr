@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapısı | Microsoft Docs
-description: Bu makalede Azure Front Door’a genel bir bakış sağlanır. Uygulamanız için Yük Dengeleme Kullanıcı trafiği için doğru seçim olup olmadığını öğrenin.
+title: Azure Front Door
+description: Bu makalede, Azure ön kapı kuralları altyapısından kullanılabilen çeşitli eşleşme koşullarının bir listesi sunulmaktadır.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 77c0d68f507e09b315c912d1d91fdf9cf63db6fa
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: d42b6b56f0cdd1f6ef2ea45b21a027f1b4c56b1c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515534"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321999"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure ön kapı kuralları altyapısı eşleştirme koşulları
 
-[AFD kural altyapısında](front-door-rules-engine.md) bir kural sıfır veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, AFD kural altyapısında kullanabileceğiniz eşleştirme koşullarına ilişkin ayrıntılı açıklamalar sağlanmaktadır. 
+[AFD kural altyapısında](front-door-rules-engine.md) bir kural sıfır veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, AFD kural altyapısında kullanabileceğiniz eşleştirme koşullarına ilişkin ayrıntılı açıklamalar sağlanmaktadır.
 
-Bir kuralın ilk bölümü eşleşme koşullarıdır veya eşleştirme koşulları kümesidir. Bir kural, en fazla 10 eşleşme koşullarından oluşabilir. Bir eşleşme koşulu, tanımlı eylemlerin gerçekleştirildiği belirli istek türlerini tanımlar. Birden çok eşleşme koşulu kullanırsanız, eşleşme koşulları ve Logic kullanılarak birlikte gruplandırılır. Birden çok değeri destekleyen (aşağıda "boşlukla ayrılmış" olarak belirtilen) tüm eşleşme koşulları için "OR" işleci kabul edilir. 
+Bir kuralın ilk bölümü eşleşme koşullarıdır veya eşleştirme koşulları kümesidir. Bir kural, en fazla 10 eşleşme koşullarından oluşabilir. Bir eşleşme koşulu, tanımlı eylemlerin gerçekleştirildiği belirli istek türlerini tanımlar. Birden çok eşleşme koşulu kullanırsanız, eşleşme koşulları ve Logic kullanılarak birlikte gruplandırılır. Birden çok değeri destekleyen (aşağıda "boşlukla ayrılmış" olarak belirtilen) tüm eşleşme koşulları için "OR" işleci kabul edilir.
 
 Örneğin, bir eşleşme koşulunu şu şekilde kullanabilirsiniz:
 
@@ -39,7 +39,7 @@ Bir mobil cihazdan veya masaüstü cihazdan yapılan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Desteklenen değerler
+Operatör | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | Mobil, masaüstü
 
@@ -49,7 +49,7 @@ Eşittir, eşit değildir | Mobil, masaüstü
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Bağımsız değişken adı | İşleç | Bağımsız değişken değeri | Örnek dönüştürme
+Bağımsız değişken adı | Operatör | Bağımsız değişken değeri | Örnek dönüştürme
 --------------|----------|----------------|---------------
 Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -59,7 +59,7 @@ Belirli bir sorgu dizesi parametresi içeren istekleri tanımlar. Bu parametre, 
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Sorgu dizesi | Örnek dönüştürme
+Operatör | Sorgu dizesi | Örnek dönüştürme
 ---------|--------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -69,7 +69,7 @@ Belirli bir sorgu dizesi parametresi içeren istekleri tanımlar. Bu parametre, 
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Desteklenen değerler
+Operatör | Desteklenen değerler
 ---------|-----------------
 Coğrafi eşleşme | Ülke kodu
 IP eşleşmesi | IP adresi (boşlukla ayrılmış)
@@ -92,7 +92,7 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | İstek gövdesi | Örnek dönüştürme
+Operatör | İstek gövdesi | Örnek dönüştürme
 ---------|--------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -102,7 +102,7 @@ IP eşleşmesi değil | IP adresi (boşlukla ayrılmış)
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Üst bilgi adı | İşleç | Üst bilgi değeri | Örnek dönüştürme
+Üst bilgi adı | Operatör | Üst bilgi değeri | Örnek dönüştürme
 ------------|----------|--------------|---------------
 Dize | [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -112,7 +112,7 @@ Belirtilen istek yöntemini kullanan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Desteklenen değerler
+Operatör | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | AL, POSTALA, KOY, SIL, HEAD, SEÇENEKLER, IZLE
 
@@ -126,23 +126,23 @@ Kullanılan belirtilen protokolü kullanan istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Desteklenen değerler
+Operatör | Desteklenen değerler
 ---------|----------------
 Eşittir, eşit değildir | HTTP, HTTPS
 
-## <a name="request-url"></a>İstek URL'si
+## <a name="request-url"></a>İstek URL’si
 
 Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | İstek URL'si | Örnek dönüştürme
+Operatör | İstek URL’si | Örnek dönüştürme
 ---------|-------------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
 #### <a name="key-information"></a>Önemli bilgiler
 
-- Bu kural koşulunu kullandığınızda protokol bilgilerini eklediğinizden emin olun. Örneğin: *https://www.\<yourdomain\>.com*.
+- Bu kural koşulunu kullandığınızda protokol bilgilerini eklediğinizden emin olun. Örneğin: * https://www . \<yourdomain\> . com*.
 
 ## <a name="request-file-extension"></a>İstek dosyası uzantısı
 
@@ -150,7 +150,7 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Dahili numara | Örnek dönüştürme
+Operatör | Dahili numara | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -164,7 +164,7 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Dosya adı | Örnek dönüştürme
+Operatör | Dosya adı | Örnek dönüştürme
 ---------|-----------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 
@@ -178,7 +178,7 @@ Belirtilen URL ile eşleşen istekleri tanımlar.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-İşleç | Değer | Örnek dönüştürme
+Operatör | Değer | Örnek dönüştürme
 ---------|-------|---------------
 [Standart işleç listesi](#standard-operator-list) | String, Int | Küçük harf, büyük harf, kesme, boşluk kaldırma, URL kodlama, URL kod çözme
 

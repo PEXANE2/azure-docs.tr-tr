@@ -1,25 +1,14 @@
 ---
 title: Azure Relay kullanarak istemciler için bir şirket içi WCF REST hizmetini kullanıma sunma
 description: Bu öğreticide, Azure WCF Geçişi kullanarak bir şirket içi WCF REST hizmetini bir dış istemciye nasıl kullanıma sunabileceğiniz açıklanmaktadır.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 551c8e662669737d9d074a69cb03d6060ab87ad5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 50628073efd7114aaacfe37177d2f5beb3be3d47
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204673"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322705"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Öğretici: Azure WCF Geçişi kullanarak şirket içi WCF REST hizmetini dış istemciye kullanıma sunma
 
@@ -86,7 +75,7 @@ Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web 
 1. `EchoService` olan varsayılan ad alanı adını `Microsoft.ServiceBus.Samples` olarak değiştirin.
 
    > [!IMPORTANT]
-   > Bu öğretici, `Microsoft.ServiceBus.Samples` [WCF istemcisini yapılandırma](#configure-the-wcf-client) bölümünde yapılandırma dosyasında kullanılan, sözleşme tabanlı yönetilen türün ad alanı olan C# ad alanını kullanır. Bu örneği oluştururken istediğiniz ad alanını belirtebilirsiniz. Ancak, uygulama yapılandırma dosyasında sözleşmenin ve hizmetin ad alanlarını buna uygun olarak değiştirmediğiniz takdirde öğretici çalışmayacaktır. *App. config* dosyasında belirtilen ad alanı, C# dosyalarınızda belirtilen ad alanıyla aynı olmalıdır.
+   > Bu öğretici, `Microsoft.ServiceBus.Samples` [WCF istemcisini yapılandırma](#configure-the-wcf-client) bölümünde yapılandırma dosyasında kullanılan, sözleşme tabanlı yönetilen türün ad alanı olan C# ad alanını kullanır. Bu örneği oluştururken istediğiniz ad alanını belirtebilirsiniz. Ancak, uygulama yapılandırma dosyasında sözleşmenin ve hizmetin ad alanlarını buna uygun olarak değiştirmediğiniz takdirde öğretici çalışmayacaktır. *App.config* dosyasında belirtilen ad alanı, C# dosyalarınızda belirtilen ad alanıyla aynı olmalıdır.
    >
 
 1. Ad alanı bildiriminden hemen sonra `Microsoft.ServiceBus.Samples` , ancak ad alanı içinde adlı yeni bir arabirim tanımlayın `IEchoContract` ve `ServiceContractAttribute` özniteliği bir ad alanı değeri olan arabirime uygulayın `https://samples.microsoft.com/ServiceModel/Relay/` . Ad alanı bildiriminden sonra aşağıdaki kodu yapıştırın:
@@ -153,7 +142,7 @@ Oluşturulması tamamlandığına göre arabirimi uygulayabilirsiniz.
 
 ## <a name="implement-the-wcf-contract"></a>WCF sözleşmesini uygulama
 
-Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi oluşturmanız gerekir. Arabirimi oluşturma hakkında daha fazla bilgi için önceki bölüme bakın. Sonraki yordam, arabirimini uygular. Bu görev `EchoService` , Kullanıcı tanımlı arabirimi uygulayan adlı bir sınıf oluşturmayı içerir `IEchoContract` . Arabirimi uyguladıktan sonra, bir *app. config* yapılandırma dosyası kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyası, uygulama için gereken bilgileri içerir. Bu bilgilere hizmetin adı, sözleşmenin adı ve geçiş hizmeti ile iletişim kurmak için kullanılan protokol türü dahildir. Bu görevler için kullanılan kod, yordamı izleyen örnekte verilmiştir. Hizmet sözleşmesinin nasıl uygulanacağı hakkında daha genel bir tartışma için bkz. [hizmet sözleşmelerini uygulama](/dotnet/framework/wcf/implementing-service-contracts).
+Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi oluşturmanız gerekir. Arabirimi oluşturma hakkında daha fazla bilgi için önceki bölüme bakın. Sonraki yordam, arabirimini uygular. Bu görev `EchoService` , Kullanıcı tanımlı arabirimi uygulayan adlı bir sınıf oluşturmayı içerir `IEchoContract` . Arabirimi uyguladıktan sonra, *App.config* yapılandırma dosyası kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyası, uygulama için gereken bilgileri içerir. Bu bilgilere hizmetin adı, sözleşmenin adı ve geçiş hizmeti ile iletişim kurmak için kullanılan protokol türü dahildir. Bu görevler için kullanılan kod, yordamı izleyen örnekte verilmiştir. Hizmet sözleşmesinin nasıl uygulanacağı hakkında daha genel bir tartışma için bkz. [hizmet sözleşmelerini uygulama](/dotnet/framework/wcf/implementing-service-contracts).
 
 1. `IEchoContract` arabiriminin tanımından hemen sonra `EchoService` adlı yeni bir sınıf oluşturun. `EchoService` sınıfı, `IEchoContract` arabirimini uygular.
 
@@ -190,7 +179,7 @@ Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi
 
 Yapılandırma dosyası bir WCF yapılandırma dosyasına benzer. Hizmet adını, uç noktasını ve bağlamayı içerir. Uç nokta Azure Relay, istemcilerin ve ana bilgisayarların birbirleriyle iletişim kurması için kullanıma sunduğu konumdur. Bağlama, iletişim kurmak için kullanılan protokolün türüdür. Temel fark, bu yapılandırılmış hizmet uç noktasının, .NET Framework parçası olmayan bir [Nettcprelaybinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) bağlamasına başvurduğu bir noktadır. [Nettcprelaybinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) , hizmet tarafından tanımlanan bağlamalardan biridir.
 
-1. **Çözüm Gezgini**' de, **app. config** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
+1. **Çözüm Gezgini**' de, dosyayı Visual Studio düzenleyicisinde açmak için **App.config** ' a çift tıklayın.
 1. `<appSettings>` öğesinde, yer tutucuları hizmet ad alanınızdaki adla ve önceki adımların birinde kopyaladığınız SAS anahtarı ile değiştirin.
 1. `<system.serviceModel>` etiketleri içinde, bir `<services>` öğesi ekleyin. Tek bir yapılandırma dosyasında birden çok geçiş uygulaması tanımlayabilirsiniz. Ancak bu öğreticide yalnızca bir adet tanımlanır.
 
@@ -239,7 +228,7 @@ Aşağıdaki kod, hizmet sözleşmesinin uygulamasını gösterir.
     }
 ```
 
-Aşağıdaki kod, hizmet ana bilgisayarıyla ilişkili *app. config* dosyasının temel biçimini gösterir.
+Aşağıdaki kod, hizmet ana bilgisayarıyla ilişkili *App.config* dosyasının temel biçimini gösterir.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -329,7 +318,7 @@ Bu öğretici için URI şudur: `sb://putServiceNamespaceHere.windows.net/EchoSe
 
     Bu adım geçiş hizmetine, projenizin atom akışını inceleyerek uygulamanızın herkese açık bir şekilde bulunamadığını bildirir. `DiscoveryType`Olarak ayarlarsanız `private` , istemci hizmete erişmeye devam edebilir. Ancak, hizmet ad alanını aradığında hizmet görünmez `Relay` . Bunun yerine, istemcinin uç nokta yolunu önceden bilmesi gerekir.
 
-1. Service kimlik bilgilerini *app. config* dosyasında tanımlanan hizmet uç noktalarına uygulayın:
+1. Hizmet kimlik bilgilerini *App.config* dosyasında tanımlanan hizmet uç noktalarına uygulayın:
 
     ```csharp
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
@@ -445,7 +434,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>Hizmet sözleşmesi için bir WCF istemcisi oluşturma
 
-Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız gereken hizmet sözleşmesini tanımlamaktır. Bu adımlar, bir hizmet oluşturmak için kullanılan adımlara benzer: bir sözleşme tanımlama, bir *app. config* dosyasını düzenleme, geçiş hizmetine bağlanmak için kimlik bilgilerini kullanma ve bu şekilde devam eder. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
+Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız gereken hizmet sözleşmesini tanımlamaktır. Bu adımlar, bir hizmet oluşturmak için kullanılan adımlara benzer: bir sözleşme tanımlama, bir *App.config* dosyasını düzenleme, geçiş hizmetine bağlanmak için kimlik bilgilerini kullanma ve bu şekilde devam eder. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
 
 1. İstemci için geçerli Visual Studio çözümünde yeni bir proje oluşturun:
 
@@ -516,9 +505,9 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="configure-the-wcf-client"></a>WCF istemcisini yapılandırma
 
-Bu adımda, daha önce Bu öğreticide oluşturulan Hizmete erişen temel bir istemci uygulaması için bir *app. config* dosyası oluşturacaksınız. Bu *app. config* dosyası, bitiş noktasının sözleşmesini, bağlamasını ve adını tanımlar. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
+Bu adımda, daha önce Bu öğreticide oluşturulan Hizmete erişen temel bir istemci uygulaması için bir *App.config* dosyası oluşturacaksınız. Bu *App.config* dosya, bitiş noktasının sözleşmesini, bağlamasını ve adını tanımlar. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
 
-1. **Çözüm Gezgini**, **yankı istemci** projesinde **app. config** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
+1. **Çözüm Gezgini**, **yankı istemci** projesinde, dosyayı Visual Studio düzenleyicisinde açmak için **App.config** ' a çift tıklayın.
 1. `<appSettings>` öğesinde, yer tutucuları hizmet ad alanınızdaki adla ve önceki adımların birinde kopyaladığınız SAS anahtarı ile değiştirin.
 1. Öğesi içinde `system.serviceModel` , bir öğesi ekleyin `<client>` .
 
@@ -546,9 +535,9 @@ Bu adımda, daha önce Bu öğreticide oluşturulan Hizmete erişen temel bir is
 
 1. **Dosya**  >  **Tümünü Kaydet**' i seçin.
 
-### <a name="example-of-the-appconfig-file"></a>App. config dosyası örneği
+### <a name="example-of-the-appconfig-file"></a>App.config dosyası örneği
 
-Aşağıdaki kod, Echo istemcisi için *app. config* dosyasını gösterir.
+Aşağıdaki kod, Echo istemcisinin *App.config* dosyasını gösterir.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -613,7 +602,7 @@ Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak 
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-1. *App. config* dosyasında açıklanan yapılandırmayı yükleyen kanal fabrikasını oluşturun.
+1. *App.config* dosyasında açıklanan yapılandırmayı yükleyen kanal fabrikasını oluşturun.
 
     ```csharp
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));

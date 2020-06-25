@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: kgremban
-ms.openlocfilehash: 5c3c9c7a061fd4c471b1ef159388deb1a851dd57
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d73f3a37bb084533733b27b49ac171747cee814c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297163"
+ms.locfileid: "85321876"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme
 
@@ -166,7 +166,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>Seçenek 2: otomatik sağlama
 
-IoT Edge cihazlar [Azure IoT Hub cihaz sağlama hizmeti (DPS)](../iot-dps/index.yml)kullanılarak otomatik olarak sağlanabilir. Şu anda, otomatik sağlama kullanılırken IoT Edge iki kanıtlama mekanizmasını destekler, ancak donanım gereksinimleriniz seçimlerinizi etkileyebilir. Örneğin, Raspberry PI cihazları varsayılan olarak Güvenilir Platform Modülü (TPM) yongasıyla birlikte gelmiyor. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+IoT Edge cihazlar [Azure IoT Hub cihaz sağlama hizmeti (DPS)](../iot-dps/index.yml)kullanılarak otomatik olarak sağlanabilir. Şu anda, otomatik sağlama kullanılırken IoT Edge üç kanıtlama mekanizmasını destekler, ancak donanım gereksinimleriniz seçimlerinizi etkileyebilir. Örneğin, Raspberry PI cihazları varsayılan olarak Güvenilir Platform Modülü (TPM) yongasıyla birlikte gelmiyor. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Linux VM 'de sanal TPM ile IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-simulated-device-linux.md)
 * [X. 509.440 sertifikalarını kullanarak bir IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-x509-certs.md)

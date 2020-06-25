@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0 | Microsoft Docs
 description: Azure Service Bus ve Event Hubs AMQP 1,0 ifadelerine ve açıklamasına yönelik protokol Kılavuzu
-services: service-bus-messaging,event-hubs
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77086164"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337894"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus ve Event Hubs protokol kılavuzunda AMQP 1,0
 
@@ -35,7 +24,7 @@ Amaç, AMQP 1,0 aracılığıyla Azure Service Bus etkileşime girebilmek için 
 
 Apache proton veya AMQP.NET Lite gibi yaygın genel amaçlı AMQP 1,0 yığınları, tüm çekirdek AMQP 1,0 protokollerini zaten uygular. Bu temel hareketler bazen daha yüksek düzey bir API ile sarmalanır; Apache proton, iki zorunlu Messenger API 'SI ve reaktif aktör API 'SI de sunar.
 
-Aşağıdaki tartışmada, AMQP bağlantıları, oturumlarının ve bağlantıların yönetiminin yanı sıra çerçeve aktarımlarının ve akış denetiminin işleme ilgili yığın tarafından (Apache proton-C gibi) işlendiğini ve uygulama geliştiricilerinden belirli bir ilgi olması gerekmemesi gerektiğini varsaydık. Bağlama özelliği gibi birkaç API temel özelliğinin varlığını ve daha sonra bazı `send()` ve işlem şekilleri ve `receive()` işlemler içeren bir *Gönderen* ve *alıcı* soyutlama nesneleri formunu oluşturmayı soyutlıyoruz.
+Aşağıdaki tartışmada, AMQP bağlantıları, oturumlarının ve bağlantıların yönetiminin yanı sıra çerçeve aktarımlarının ve akış denetiminin işleme ilgili yığın tarafından (Apache proton-C gibi) işlendiğini ve uygulama geliştiricilerinden belirli bir ilgi olması gerekmemesi gerektiğini varsaydık. Bağlama özelliği gibi birkaç API temel özelliğinin varlığını ve daha sonra bazı ve işlem şekilleri ve işlemler içeren bir *Gönderen* ve *alıcı* soyutlama nesneleri formunu oluşturmayı soyutlıyoruz `send()` `receive()` .
 
 İleti tarama veya oturumların yönetimi gibi Azure Service Bus gelişmiş özellikleri tartışılırken, bu özellikler AMQP terimlerinde açıklanmıştır, ancak aynı zamanda bu kabul edilen API soyutlamalarından oluşan katmanlı bir sözde uygulama olarak açıklanmaktadır.
 
@@ -88,7 +77,7 @@ TCP üzerinden AMQP bağlantıları kullanan istemciler, yerel güvenlik duvarı
 
 ![Hedef bağlantı noktalarının listesi][4]
 
-Bu bağlantı noktaları güvenlik duvarı tarafından engelleniyorsa, bir .NET istemcisi bir SocketException ("erişim izinleri tarafından yasaklanmış bir şekilde bir yuvaya erişmek için girişimde bulunuldu") ile başarısız olur. Bu özellik, istemcileri bağlantı noktası 5671 `EnableAmqpLinkRedirect=false` üzerinden uzak hizmetle iletişim kurmaya zorlayan bağlanma dizesinde ayarı ile devre dışı bırakılabilir.
+Bu bağlantı noktaları güvenlik duvarı tarafından engelleniyorsa, bir .NET istemcisi bir SocketException ("erişim izinleri tarafından yasaklanmış bir şekilde bir yuvaya erişmek için girişimde bulunuldu") ile başarısız olur. Bu özellik, `EnableAmqpLinkRedirect=false` istemcileri bağlantı noktası 5671 üzerinden uzak hizmetle iletişim kurmaya zorlayan bağlanma dizesinde ayarı ile devre dışı bırakılabilir.
 
 
 ### <a name="links"></a>Bağlantılar
@@ -103,7 +92,7 @@ Bağlantı başlatma kapsayıcısı, karşı kapsayıcının bir bağlantıyı k
 
 Bağlantılar adlandırılmış ve düğümlerle ilişkili. Başlangıçta belirtildiği gibi düğümler, bir kapsayıcı içindeki iletişim varlıklarıdır.
 
-Service Bus, bir düğüm bir kuyruk, konu başlığı, abonelik ya da bir kuyruğun ya da aboneliğin bir veya daha fazla alt sırayı doğrudan eşdeğerdir. Bu nedenle, AMQP 'de kullanılan düğüm adı, Service Bus ad alanı içindeki varlığın göreli adıdır. Bir sıra adlandırılmışsa `myqueue`, bu da AMQP düğüm adıdır. Konu aboneliği, HTTP API kuralını bir "abonelikler" kaynak koleksiyonu olarak sıralayarak izler ve bu nedenle, **MyTopic** adlı bir abonelik **Sub** , AMQP düğüm adı **MyTopic/abonelikler/Sub**olur.
+Service Bus, bir düğüm bir kuyruk, konu başlığı, abonelik ya da bir kuyruğun ya da aboneliğin bir veya daha fazla alt sırayı doğrudan eşdeğerdir. Bu nedenle, AMQP 'de kullanılan düğüm adı, Service Bus ad alanı içindeki varlığın göreli adıdır. Bir sıra adlandırılmışsa `myqueue` , bu da AMQP düğüm adıdır. Konu aboneliği, HTTP API kuralını bir "abonelikler" kaynak koleksiyonu olarak sıralayarak izler ve bu nedenle, **MyTopic** adlı bir abonelik **Sub** , AMQP düğüm adı **MyTopic/abonelikler/Sub**olur.
 
 Bağlanan istemci, bağlantı oluşturmak için yerel bir düğüm adı kullanmak için de gereklidir; Service Bus bu düğüm adlarıyla ilgili değildir ve bunları yorumlamaz. AMQP 1,0 istemci yığınları genellikle bu kısa ömürlü düğüm adlarının istemci kapsamında benzersiz olmasını güvence altına almak için bir düzen kullanır.
 
@@ -247,7 +236,7 @@ Uygulamanın tanımlaması gereken herhangi bir özelliği AMQP 'nin `applicatio
 
 #### <a name="message-annotations"></a>İleti ek açıklamaları
 
-AMQP ileti özelliklerinin parçası olmayan ve ileti üzerinde olduğu gibi `MessageAnnotations` diğer Service Bus ileti özellikleri de iletilir.
+AMQP ileti özelliklerinin parçası olmayan ve ileti üzerinde olduğu gibi diğer Service Bus ileti özellikleri de iletilir `MessageAnnotations` .
 
 | Ek açıklama eşleme anahtarı | Kullanım | API adı |
 | --- | --- | --- |
@@ -263,17 +252,17 @@ AMQP ileti özelliklerinin parçası olmayan ve ileti üzerinde olduğu gibi `Me
 ### <a name="transaction-capability"></a>İşlem yeteneği
 
 Bir hareket, iki veya daha fazla işlemi tek bir yürütme kapsamında bir araya toplar. Doğası gereği, bu tür bir işlem, belirli bir işlem grubuna ait tüm işlemlerin başarılı veya başarısız bir şekilde ortaklaşa bulunduğundan emin olmalıdır.
-İşlemler bir tanımlayıcıya `txn-id`göre gruplandırılır.
+İşlemler bir tanımlayıcıya göre gruplandırılır `txn-id` .
 
-İşlem etkileşimi için istemci, birlikte gruplanmış işlemleri denetleyen `transaction controller` bir olarak davranır. Service Bus hizmeti bir `transactional resource` olarak davranır ve tarafından istenen işi gerçekleştirir `transaction controller`.
+İşlem etkileşimi için istemci, `transaction controller` birlikte gruplanmış işlemleri denetleyen bir olarak davranır. Service Bus hizmeti bir olarak davranır `transactional resource` ve tarafından istenen işi gerçekleştirir `transaction controller` .
 
-İstemci ve hizmet, istemci tarafından belirlenen `control link` bir üzerinden iletişim kurar. `declare` Ve `discharge` iletileri sırasıyla işlem ayırmak ve gerçekleştirmek üzere denetim bağlantısı üzerinden denetleyici tarafından gönderilir (işlemsel çalışmanın deyonumu temsil etmez). Gerçek gönderme/alma Bu bağlantı üzerinde gerçekleştirilmez. İstenen her işlemsel işlem, açıkça istenen `txn-id` şekilde tanımlanır ve bu nedenle bağlantı üzerindeki herhangi bir bağlantıda meydana gelebilir. Bir denetim bağlantısı varsa, bu durum oluşturulan işlem dışı işlemler varsa, bu durumda tüm işlemler hemen geri alınır ve üzerinde daha fazla işlemsel iş gerçekleştirmeye çalışır ve hataya neden olur. Denetim bağlantısındaki iletiler önceden kapatılmamalıdır.
+İstemci ve hizmet, istemci tarafından belirlenen bir üzerinden iletişim kurar `control link` . `declare`Ve `discharge` iletileri sırasıyla işlem ayırmak ve gerçekleştirmek üzere denetim bağlantısı üzerinden denetleyici tarafından gönderilir (işlemsel çalışmanın deyonumu temsil etmez). Gerçek gönderme/alma Bu bağlantı üzerinde gerçekleştirilmez. İstenen her işlemsel işlem, açıkça istenen şekilde tanımlanır `txn-id` ve bu nedenle bağlantı üzerindeki herhangi bir bağlantıda meydana gelebilir. Bir denetim bağlantısı varsa, bu durum oluşturulan işlem dışı işlemler varsa, bu durumda tüm işlemler hemen geri alınır ve üzerinde daha fazla işlemsel iş gerçekleştirmeye çalışır ve hataya neden olur. Denetim bağlantısındaki iletiler önceden kapatılmamalıdır.
 
-Her bağlantının, işlem başlatmak ve sonlandırmak için kendi denetim bağlantısını başlatması vardır. Hizmet, olarak işlev gören özel bir hedef tanımlar `coordinator`. İstemci/denetleyici bu hedefe bir denetim bağlantısı kurar. Denetim bağlantısı bir varlığın sınırının dışında, diğer bir deyişle, birden fazla varlık için işlemleri başlatmak ve ücretlendirmeden aynı denetim bağlantısı kullanılabilir.
+Her bağlantının, işlem başlatmak ve sonlandırmak için kendi denetim bağlantısını başlatması vardır. Hizmet, olarak işlev gören özel bir hedef tanımlar `coordinator` . İstemci/denetleyici bu hedefe bir denetim bağlantısı kurar. Denetim bağlantısı bir varlığın sınırının dışında, diğer bir deyişle, birden fazla varlık için işlemleri başlatmak ve ücretlendirmeden aynı denetim bağlantısı kullanılabilir.
 
 #### <a name="starting-a-transaction"></a>İşlem başlatma
 
-İşlemsel çalışmaya başlamak için. denetleyici, düzenleyiciden bir `txn-id` almalıdır. Bu, bir `declare` tür iletisi göndererek bunu yapar. Bildirim başarılı olursa, düzenleyici, atandı `txn-id`sonucunu taşıyan bir değerlendirme sonucu ile yanıt verir.
+İşlemsel çalışmaya başlamak için. denetleyici `txn-id` , düzenleyiciden bir almalıdır. Bu, bir tür iletisi göndererek bunu yapar `declare` . Bildirim başarılı olursa, düzenleyici, atandı sonucunu taşıyan bir değerlendirme sonucu ile yanıt verir `txn-id` .
 
 | İstemci (denetleyici) | | Service Bus (düzenleyici) |
 | --- | --- | --- |
@@ -284,7 +273,7 @@ Her bağlantının, işlem başlatmak ve sonlandırmak için kendi denetim bağl
 
 #### <a name="discharging-a-transaction"></a>Bir işlemin şarjını kaldır
 
-Denetleyici, düzenleyiciye bir `discharge` ileti göndererek işlem işini sonlanır. Denetleyici, işlem çalışmasının `fail` işaretini, Boşalma gövdesinde ayarlamaya göre kaydetmeyi veya geri almayı beklediğini belirtir. Düzenleyici, kabul işlemi tamamlayamazsa ileti, ' ı taşıyan bu sonuç ile reddedilir `transaction-error`.
+Denetleyici, düzenleyiciye bir ileti göndererek işlem işini sonlanır `discharge` . Denetleyici, işlem çalışmasının işaretini, Boşalma gövdesinde ayarlamaya göre kaydetmeyi veya geri almayı beklediğini belirtir `fail` . Düzenleyici, kabul işlemi tamamlayamazsa ileti, ' ı taşıyan bu sonuç ile reddedilir `transaction-error` .
 
 > Note: Fail = true bir işlemin geri alınması anlamına gelir ve fail = false, COMMIT anlamına gelir.
 
@@ -293,30 +282,30 @@ Denetleyici, düzenleyiciye bir `discharge` ileti göndererek işlem işini sonl
 | aktarımı<br/>teslim-kimlik = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | çıkarma <br/> ilk = 0, son = 0, <br/>durum = beyan edilen (<br/>TXN-id = {işlem KIMLIĞI}<br/>))|
 | | . . . <br/>İşlemsel çalışma<br/>diğer bağlantılarda<br/> . . . |
-| aktarımı<br/>teslim-kimlik = 57,...)<br/>{AmqpValue (<br/>**Disşarj (TXN-id = 0,<br/>başarısız = false)**)}| ------> |  |
+| aktarımı<br/>teslim-kimlik = 57,...)<br/>{AmqpValue (<br/>**Disşarj (TXN-id = 0, <br/> başarısız = false)**)}| ------> |  |
 | | <------ | çıkarma <br/> ilk = 57, son = 57, <br/>State =**kabul edildi ()**)|
 
 #### <a name="sending-a-message-in-a-transaction"></a>Bir işlemde ileti gönderme
 
-Tüm işlem işleri, TXN-id ' y `transactional-state` i taşıyan işlem teslim durumuyla yapılır. İleti gönderme durumunda, işlem durumu iletinin aktarım çerçevesi tarafından yürütülür. 
+Tüm işlem işleri, `transactional-state` TXN-id ' y i taşıyan işlem teslim durumuyla yapılır. İleti gönderme durumunda, işlem durumu iletinin aktarım çerçevesi tarafından yürütülür. 
 
 | İstemci (denetleyici) | | Service Bus (düzenleyici) |
 | --- | --- | --- |
 | aktarımı<br/>teslim-kimlik = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | çıkarma <br/> ilk = 0, son = 0, <br/>durum = beyan edilen (<br/>TXN-id = {işlem KIMLIĞI}<br/>))|
-| aktarımı<br/>tanıtıcı = 1,<br/>teslimat kimliği = 1, <br/>**State =<br/>transactionalstate (<br/>TXN-ID = 0)**)<br/>te| ------> |  |
-| | <------ | çıkarma <br/> ilk = 1, son = 1, <br/>State =**Transactionalstate (<br/>TXN-ID = 0,<br/>Outcome = kabul edildi ()**)))|
+| aktarımı<br/>tanıtıcı = 1,<br/>teslimat kimliği = 1, <br/>**durum = <br/> TransactionalState ( <br/> TXN-ID = 0)**)<br/>te| ------> |  |
+| | <------ | çıkarma <br/> ilk = 1, son = 1, <br/>State =**Transactionalstate ( <br/> TXN-ID = 0, <br/> Outcome = kabul edildi ()**)))|
 
 #### <a name="disposing-a-message-in-a-transaction"></a>Bir işlemde bir ileti atılıyor
 
-İleti `Complete`  /  `Abandon`  / değerlendirmesi `DeadLetter`gibi  / işlemleri `Defer`içerir. Bu işlemleri bir işlem içinde gerçekleştirmek için, `transactional-state` öğesini disposition ile geçirin.
+İleti değerlendirmesi gibi işlemleri içerir `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer` . Bu işlemleri bir işlem içinde gerçekleştirmek için, öğesini `transactional-state` disposition ile geçirin.
 
 | İstemci (denetleyici) | | Service Bus (düzenleyici) |
 | --- | --- | --- |
 | aktarımı<br/>teslim-kimlik = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | çıkarma <br/> ilk = 0, son = 0, <br/>durum = beyan edilen (<br/>TXN-id = {işlem KIMLIĞI}<br/>))|
 | | <------ |aktarımı<br/>tanıtıcı = 2,<br/>teslimat kimliği = 11, <br/>durum = null)<br/>te|  
-| çıkarma <br/> ilk = 11, son = 11, <br/>State =**Transactionalstate (<br/>TXN-ID = 0,<br/>Outcome = kabul edildi ()**)))| ------> |
+| çıkarma <br/> ilk = 11, son = 11, <br/>State =**Transactionalstate ( <br/> TXN-ID = 0, <br/> Outcome = kabul edildi ()**)))| ------> |
 
 
 ## <a name="advanced-service-bus-capabilities"></a>Gelişmiş Service Bus özellikleri
@@ -337,9 +326,9 @@ Bu hareketlerin hepsi, istemci ile mesajlaşma altyapısı arasında bir istek/y
 | Mantıksal Işlem | İstemci | Service Bus |
 | --- | --- | --- |
 | Istek yanıt yolu oluştur |--> iliştirme (<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**Gönderen**,<br/>kaynak =**null**,<br/>target = "myentity/$management"<br/>) |Eylem yok |
-| Istek yanıt yolu oluştur |Eylem yok |\<--Attach (<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**alıcı**,<br/>Kaynak = null,<br/>target = "myentity"<br/>) |
+| Istek yanıt yolu oluştur |Eylem yok |\<-- attach(<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**alıcı**,<br/>Kaynak = null,<br/>target = "myentity"<br/>) |
 | Istek yanıt yolu oluştur |--> iliştirme (<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**alıcı**,<br/>Source = "myentity/$management",<br/>target = "myclient $ ID"<br/>) | |
-| Istek yanıt yolu oluştur |Eylem yok |\<--Attach (<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**Gönderen**,<br/>Source = "myentity",<br/>target = "myclient $ ID"<br/>) |
+| Istek yanıt yolu oluştur |Eylem yok |\<-- attach(<br/>ad = {*bağlantı adı*},<br/>tanıtıcı = {*sayısal tanıtıcı*},<br/>rol =**Gönderen**,<br/>Source = "myentity",<br/>target = "myclient $ ID"<br/>) |
 
 Bu bağlantı çiftinin yerinde olması, istek/yanıt uygulamasının basittir: istek, bu kalıbı anlayan mesajlaşma altyapısı içindeki bir varlığa gönderilen iletidir. Bu istek iletisinde, *Özellikler* bölümündeki *Yanıtla* alanı, yanıtın teslim edileceği bağlantının *hedef* tanımlayıcısına ayarlanır. İşleme varlığı, isteği işler ve ardından yanıtı, *hedef* tanımlayıcısı belirtilen *Yanıtla* tanımlayıcıyla eşleşen bağlantı üzerinden sunar.
 
@@ -370,9 +359,9 @@ Protokol hareketi, yönetim belirtimi tarafından tanımlanan bir istek/yanıt d
 
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
-| çalışmasını |Hayır |string |**Put belirteci** |
-| type |Hayır |string |Yerleştirmekte olan belirtecin türü. |
-| ad |Hayır |string |Belirtecin uygulandığı "hedef kitle". |
+| çalışmasını |No |string |**Put belirteci** |
+| tür |No |string |Yerleştirmekte olan belirtecin türü. |
+| name |No |string |Belirtecin uygulandığı "hedef kitle". |
 | dolmadan |Yes |timestamp |Belirtecin süre sonu zamanı. |
 
 *Name* özelliği, belirtecin ilişkilendirilacağı varlığı tanımlar. Service Bus kuyruk veya konu/abonelik yoludur. *Type* özelliği, belirteç türünü tanımlar:
@@ -389,7 +378,7 @@ Yanıt iletisinde aşağıdaki *uygulama özellikleri* değerleri bulunur
 
 | Anahtar | İsteğe Bağlı | Değer Türü | Değer Içeriği |
 | --- | --- | --- | --- |
-| durum kodu |Hayır |int |HTTP yanıt kodu **[RFC2616]**. |
+| durum kodu |No |int |HTTP yanıt kodu **[RFC2616]**. |
 | durum-açıklama |Yes |string |Durumun açıklaması. |
 
 İstemci, *yerleştirme belirtecini* sürekli olarak ve mesajlaşma altyapısındaki herhangi bir varlık için çağırabilir. Belirteçler, geçerli istemcinin kapsamına alınır ve geçerli bağlantıya bağlanır, yani bağlantı düşerse sunucu tüm korunan belirteçleri bırakır.
@@ -406,13 +395,13 @@ Bağlantı ve oturum kurulduktan sonra, *$CBS* düğümüne bağlantıları ekle
 
 [Gönderme/aktarma göndericisi](service-bus-transactions.md#transfers-and-send-via) , Service Bus 'ın belirli bir iletiyi başka bir varlık aracılığıyla hedef varlığa iletmesine imkan tanıyan bir işlevdir. Bu özellik, tek bir işlemdeki varlıklar arasında işlem gerçekleştirmek için kullanılır.
 
-Bu işlevle, bir gönderici oluşturup bağlantısını kurarsınız `via-entity`. Bağlantıyı kurarken, bu bağlantıdaki iletilerin/aktarımların gerçek hedefini oluşturmak için ek bilgiler geçirilir. İliştirme başarılı olduktan sonra, bu bağlantı üzerinde gönderilen tüm iletiler, *-varlık*aracılığıyla *hedef varlığa* otomatik olarak iletilir. 
+Bu işlevle, bir gönderici oluşturup bağlantısını kurarsınız `via-entity` . Bağlantıyı kurarken, bu bağlantıdaki iletilerin/aktarımların gerçek hedefini oluşturmak için ek bilgiler geçirilir. İliştirme başarılı olduktan sonra, bu bağlantı üzerinde gönderilen tüm iletiler, *-varlık*aracılığıyla *hedef varlığa* otomatik olarak iletilir. 
 
 > Note: Bu bağlantıyı oluşturmadan önce, kimlik doğrulamasının hem *ile varlık* hem de *hedef varlık* için gerçekleştirilmesi sağlanmalıdır.
 
 | İstemci | | Service Bus |
 | --- | --- | --- |
-| ekleme<br/>ad = {bağlantı adı},<br/>rol = Gönderen,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef =**{VIA-varlık}**,<br/>**Properties = Map [(<br/>com. Microsoft: aktarım-hedefi-adresi =<br/>{hedef-varlık})]** ) | ------> | |
+| ekleme<br/>ad = {bağlantı adı},<br/>rol = Gönderen,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef =**{VIA-varlık}**,<br/>**Properties = Map [( <br/> com. Microsoft: aktarım-hedefi-adresi = <br/> {hedef-varlık})]** ) | ------> | |
 | | <------ | ekleme<br/>ad = {bağlantı adı},<br/>rol = alıcı,<br/>kaynak = {istemci bağlantı KIMLIĞI},<br/>hedef = {VIA-varlık},<br/>Properties = Map [(<br/>com. Microsoft: transfer-Destination-Address =<br/>{Hedef-varlık})] ) |
 
 ## <a name="next-steps"></a>Sonraki adımlar

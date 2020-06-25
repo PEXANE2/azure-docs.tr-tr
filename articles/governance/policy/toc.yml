@@ -177,7 +177,7 @@
           href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
         - name: İlke Tanımları
           href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
-    - name: Node için Azure SDK
+    - name: JavaScript için Azure SDK
       items:
         - name: İlke
           href: /javascript/api/@azure/arm-policy

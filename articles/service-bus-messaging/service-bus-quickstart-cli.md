@@ -1,20 +1,17 @@
 ---
 title: Hızlı başlangıç-Service Bus kuyruğu oluşturmak için Azure CLı 'yi kullanma | Microsoft Docs
 description: Bu hızlı başlangıçta, Azure CLı kullanarak Service Bus kuyruğu oluşturma hakkında bilgi edineceksiniz. Daha sonra, kuyruğa ileti göndermek ve kuyruktan ileti almak için örnek bir Java uygulaması kullanırsınız.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed09a72fd5eed72e7a07fefed53bf010a543b658
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66400254"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337393"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Azure CLı kullanarak Service Bus kuyruğu oluşturma
 Bu hızlı başlangıçta, Azure CLı ve Service Bus Java kitaplığı kullanılarak Service Bus ile ileti gönderme ve alma işlemlerinin nasıl yapılacağı açıklanır. Son olarak, daha teknik ayrıntılarla ilgileniyorsanız örnek kodun temel öğeleriyle ilgili [bir açıklamayı okuyabilirsiniz](#understand-the-sample-code).

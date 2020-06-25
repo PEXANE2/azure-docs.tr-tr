@@ -1,25 +1,15 @@
 ---
 title: Azure Service Bus kuyrukları ile çalışmaya başlama | Microsoft Docs
 description: Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için .NET Core konsol uygulamaları oluşturacaksınız.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 477d9d5a23e50d9b303d560b5530cbc22104c5cb
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471746"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337553"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus kuyrukları ile çalışmaya başlama
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -55,7 +45,7 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Kuyruğa ileti göndermek için kod yazma
 
-1. *Program.cs*' de, Sınıf bildiriminden `using` önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
+1. *Program.cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using System.Text;
@@ -64,7 +54,7 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
     using Microsoft.Azure.ServiceBus;
     ```
 
-1. `Program` Sınıfında, aşağıdaki değişkenleri bildirin:
+1. `Program`Sınıfında, aşağıdaki değişkenleri bildirin:
 
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -72,9 +62,9 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
     static IQueueClient queueClient;
     ```
 
-    Ad alanı için Bağlantı dizenizi `ServiceBusConnectionString` değişken olarak girin. Sıra adınızı girin.
+    Ad alanı için Bağlantı dizenizi değişken olarak girin `ServiceBusConnectionString` . Sıra adınızı girin.
 
-1. `Main()` Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. Kuyruğa ileti göndermek `SendMessagesAsync()` için bir sonraki adımda ekleyeceğiniz yöntemi çağırır. 
+1. `Main()`Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. `SendMessagesAsync()`Kuyruğa ileti göndermek için bir sonraki adımda ekleyeceğiniz yöntemi çağırır. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -94,7 +84,7 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
         await queueClient.CloseAsync();
     }
     ```
-1. Doğrudan `MainAsync()` yönteminden sonra, tarafından `SendMessagesAsync()` `numberOfMessagesToSend` belirtilen ileti sayısını gönderme işini yapan aşağıdaki yöntemi ekleyin (Şu anda 10 ' a ayarlanır):
+1. Doğrudan yönteminden sonra `MainAsync()` , `SendMessagesAsync()` tarafından belirtilen ileti sayısını gönderme işini yapan aşağıdaki yöntemi ekleyin `numberOfMessagesToSend` (Şu anda 10 ' a ayarlanır):
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -201,7 +191,7 @@ Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Kuyruktan ileti almak için kod yazma
 
-1. *Program.cs*' de, Sınıf bildiriminden `using` önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
+1. *Program.cs*' de, `using` Sınıf bildiriminden önce, ad alanı tanımının en üstüne aşağıdaki deyimleri ekleyin:
 
     ```csharp
     using System;
@@ -211,7 +201,7 @@ Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core
     using Microsoft.Azure.ServiceBus;
     ```
 
-1. `Program` Sınıfında, aşağıdaki değişkenleri bildirin:
+1. `Program`Sınıfında, aşağıdaki değişkenleri bildirin:
 
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
@@ -219,7 +209,7 @@ Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core
     static IQueueClient queueClient;
     ```
 
-    Ad alanı için Bağlantı dizenizi `ServiceBusConnectionString` değişken olarak girin. Sıra adınızı girin.
+    Ad alanı için Bağlantı dizenizi değişken olarak girin `ServiceBusConnectionString` . Sıra adınızı girin.
 
 1. `Main()` yöntemini aşağıdaki kod ile değiştirin:
 
@@ -246,7 +236,7 @@ Gönderdiğiniz iletileri almak için başka bir **konsol uygulaması (.NET Core
     }
     ```
 
-1. Doğrudan `MainAsync()` yönteminden sonra, ileti işleyicisini kaydeden ve gönderen uygulama tarafından gönderilen iletileri alan aşağıdaki yöntemi ekleyin:
+1. Doğrudan yönteminden sonra `MainAsync()` , ileti işleyicisini kaydeden ve gönderen uygulama tarafından gönderilen iletileri alan aşağıdaki yöntemi ekleyin:
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()

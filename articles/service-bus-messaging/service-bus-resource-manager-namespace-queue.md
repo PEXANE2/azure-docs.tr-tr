@@ -1,26 +1,19 @@
 ---
 title: Azure şablonu kullanarak Azure Service Bus ad alanı ve kuyruk oluşturma
 description: 'Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Service Bus ad alanı ve kuyruk oluşturma'
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 03/30/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e382d39e10e1907c9892f03a3da64945f3049fee
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80422653"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337017"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Service Bus ad alanı ve kuyruk oluşturma
 
@@ -32,13 +25,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Hiçbiri
+Yok
 
 ## <a name="create-a-service-bus-namespace-and-a-queue"></a>Service Bus ad alanı ve sıra oluşturma
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
 
@@ -80,7 +73,7 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
 ## <a name="cleanup-resources"></a>Kaynakları temizleme
 
 1. Azure portal, kaynak grubunuzun **kaynak grubu** sayfasına gidin.
-2. Araç çubuğundan **Kaynak grubunu sil**’i seçin. 
+2. Araç çubuğundan **Kaynak grubunu sil** seçeneğini belirleyin. 
 3. Kaynak grubunun adını yazın ve **Sil**' i seçin. 
 
     ![Kaynak Grubu-Sil](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)

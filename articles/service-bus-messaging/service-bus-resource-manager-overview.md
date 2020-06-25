@@ -1,25 +1,18 @@
 ---
 title: Şablonları kullanarak Azure Service Bus kaynakları oluşturma
 description: Service Bus kaynaklarının oluşturulmasını otomatikleştirmek için Azure Resource Manager şablonları kullanma
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 09/11/2018
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fd6a42d9624d7a95e66b88e004e1f5203a738a1
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76264467"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336613"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Service Bus kaynakları oluşturma
 
@@ -137,7 +130,7 @@ Depoyu kopyalama veya [201-ServiceBus-Create-Queue](https://github.com/Azure/azu
 
 ### <a name="create-a-parameters-file-optional"></a>Parametre dosyası oluşturma (isteğe bağlı)
 
-İsteğe bağlı parametreler dosyası kullanmak için [201-ServiceBus-Create-Queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) dosyasını kopyalayın. Değerini `serviceBusNamespaceName` , bu dağıtımda oluşturmak istediğiniz Service Bus ad alanının adıyla değiştirin ve değerini `serviceBusQueueName` , oluşturmak istediğiniz kuyruğun adıyla değiştirin.
+İsteğe bağlı parametreler dosyası kullanmak için [201-ServiceBus-Create-Queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) dosyasını kopyalayın. Değerini, `serviceBusNamespaceName` Bu dağıtımda oluşturmak istediğiniz Service Bus ad alanının adıyla değiştirin ve değerini, `serviceBusQueueName` oluşturmak istediğiniz kuyruğun adıyla değiştirin.
 
 ```json
 {
@@ -173,7 +166,7 @@ Azure hesabınızda oturum açmanız istenir. Oturum açtıktan sonra, kullanıl
 Get-AzSubscription
 ```
 
-Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. Kullanmak `<YourSubscriptionId>` istediğiniz Azure aboneliğinin GUID 'si ile değiştirin:
+Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. `<YourSubscriptionId>`Kullanmak Istediğiniz Azure aboneliğinin GUID 'si ile değiştirin:
 
 ```powershell
 Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -199,7 +192,7 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Dağıtımı test etme
 
-`Test-AzResourceGroupDeployment` Cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
+Cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın `Test-AzResourceGroupDeployment` . Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

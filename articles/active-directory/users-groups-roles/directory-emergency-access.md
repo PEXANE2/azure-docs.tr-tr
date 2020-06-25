@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816191"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338289"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD 'de acil durum erişim hesaplarını yönetme
 
@@ -156,5 +156,5 @@ Bu adımlar, düzenli aralıklarla ve anahtar değişiklikleri için gerçekleş
 - [Azure AD 'yi kullanarak Kullanıcı ekleme](../fundamentals/add-users-azure-active-directory.md) ve [yeni kullanıcıyı genel yönetici rolüne atama](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - Henüz kaydolmadıysanız [Azure AD Premium Için kaydolun](../fundamentals/active-directory-get-started-premium.md)
 - [Bir kullanıcı için iki aşamalı doğrulama gerektirme](../authentication/howto-mfa-userstates.md)
-- Office 365 kullanıyorsanız, [office 365 ' de genel Yöneticiler için ek korumalar yapılandırma](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)
+- Kullanıyorsanız, [Microsoft 365 Genel Yöneticiler için ek korumalar yapılandırın](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)Microsoft 365
 - [Genel Yöneticiler için erişim gözden geçirmesi başlatın](../privileged-identity-management/pim-how-to-start-security-review.md) ve [var olan genel yöneticileri daha özel yönetici rollerine](directory-assign-admin-roles.md) geçirin

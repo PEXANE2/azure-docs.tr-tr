@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 38e93585c2d9fd3c9cf6e4affdfd1b0a250fedc4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695088"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321924"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -130,7 +130,7 @@ Azure, uygulama barındırmakla birlikte, işlevselliği geliştirebilecek hizme
 
   > **Ne zaman kullanılır**: uygulamanız, bilgi tutarlılığı, işlem DESTEĞI ve TSQL sorguları desteği ile veri depolama alanı gerektirdiğinde.
   >
-  > **Kullanmaya başlayın**: [Azure Portal kullanarak dakıkalar içinde bir SQL veritabanı oluşturun](../../sql-database/sql-database-get-started.md).
+  > **Kullanmaya başlayın**: [Azure Portal kullanarak Azure SQL veritabanı 'nda dakikalar içinde veritabanı oluşturma](../../sql-database/sql-database-get-started.md).
 
 
 Mevcut şirket içi verileri Azure 'a taşımak için [Azure Data Factory](../../data-factory/introduction.md) kullanabilirsiniz. Verileri buluta taşımaya hazırsanız, Azure App Service [Karma Bağlantılar](../../app-service/app-service-hybrid-connections.md) App Service barındırılan uygulamanızı şirket içi kaynaklara bağlamanıza olanak tanır. Ayrıca, şirket içi uygulamalarınızdan Azure veri ve depolama hizmetleri 'ne de bağlanabilirsiniz.
@@ -163,7 +163,7 @@ Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
   >
   > **Kullanmaya başlayın**: [Linux üzerinde App Service Için özel bir Docker görüntüsü kullanın](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Yalnızca uygulamalarınızı kimin kullandığını ve ayrıca Kaynaklarınıza yetkisiz erişimi engellemek için çok önemlidir. Azure, uygulama istemcilerinizin kimliğini doğrulamak için çeşitli yollar sağlar.
 
@@ -268,7 +268,7 @@ REST API 'lerle birlikte, birçok Azure hizmeti, aşağıdaki geliştirme platfo
 
 Uygulamanızı Azure 'da çalıştırmak, büyük olasılıkla birden çok Azure hizmeti ile çalışmayı içerir. Bu hizmetler aynı yaşam döngüsünü izler ve mantıksal birim olarak düşünülebilir. Örneğin, bir Web uygulaması Web Apps, SQL veritabanı, depolama, Redsıs için Azure önbelleği ve Azure Content Delivery Network hizmetleri kullanabilir. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) , uygulamanızdaki kaynaklarla bir grup olarak çalışmanıza olanak sağlar. Tüm kaynakları tek ve eşgüdümlü bir işlemle dağıtabilir, güncelleştirebilir veya silebilirsiniz.
 
-Azure Resource Manager, ilgili kaynakları mantıksal olarak gruplandırmanıza ve yönetmeye yönelik olarak, ilgili kaynakların dağıtımını ve yapılandırmasını özelleştirmenize olanak sağlayan dağıtım özelliklerini içerir. Örneğin, bir uygulamayı dağıtmak ve yapılandırmak Kaynak Yöneticisi kullanabilirsiniz. Bu uygulama, birden çok sanal makineden, yük dengeleyiciden ve Azure SQL veritabanından tek bir birim olarak oluşabilir.
+Azure Resource Manager, ilgili kaynakları mantıksal olarak gruplandırmanıza ve yönetmeye yönelik olarak, ilgili kaynakların dağıtımını ve yapılandırmasını özelleştirmenize olanak sağlayan dağıtım özelliklerini içerir. Örneğin, bir uygulamayı dağıtmak ve yapılandırmak Kaynak Yöneticisi kullanabilirsiniz. Bu uygulama birden çok sanal makineden, yük dengeleyiciden ve Azure SQL veritabanı 'nda tek bir birim olarak bir veritabanından oluşabilir.
 
 Bu dağıtımları, JSON biçimli bir belge olan Azure Resource Manager şablonu kullanarak geliştirirsiniz. Şablonlar, bir dağıtım tanımlamanıza ve komut dosyaları yerine bildirim temelli şablonlar kullanarak uygulamalarınızı yönetmenize olanak sağlar. Şablonlarınız, test, hazırlama ve üretim gibi farklı ortamlarda çalışabilir. Örneğin, bir GitHub deposuna, bir Azure hizmetleri kümesine tek bir tıklama ile kod dağıtan bir düğme eklemek için şablonları kullanabilirsiniz.
 
