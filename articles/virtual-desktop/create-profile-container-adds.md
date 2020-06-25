@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3348920260b6c256b25d0ff2419cdfd2a00dea35
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207320"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362450"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure dosyaları ve Azure AD DS bir profil kapsayıcısı oluşturma
 
@@ -93,7 +93,8 @@ Depolama hesabı erişim anahtarını almak için:
 
     Bu işlem, VM 'de kendi kimlik bilgileriyle oturum açmanıza olanak sağlayan bir RDP dosyası indirir.
 
-    ![Sanal makineye bağlan penceresinin RDP sekmesinin ekran görüntüsü.](media/rdp-tab.png)
+    > [!div class="mx-imgBorder"]
+    > ![Sanal makineye bağlan penceresinin RDP sekmesinin ekran görüntüsü.](media/rdp-tab.png)
 
 6. VM 'de oturum açtıktan sonra yönetici olarak bir komut istemi çalıştırın.
 
@@ -156,11 +157,13 @@ FSLogix profil kapsayıcısını yapılandırmak için:
 
 9.  **Profiller**' e sağ tıklayın, **Yeni**' yi ve ardından **DWORD (32-bit) değeri** ' ni seçin. Değeri **etkin** olarak adlandırın ve **veri** değerini **1**olarak ayarlayın.
 
-    ![Profiller anahtarının ekran görüntüsü. REG_DWORD dosyası vurgulanır ve veri değeri 1 olarak ayarlanır.](media/dword-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![Profiller anahtarının ekran görüntüsü. REG_DWORD dosyası vurgulanır ve veri değeri 1 olarak ayarlanır.](media/dword-value.png)
 
 10. **Profiller**' e sağ tıklayın, **Yeni**' yi seçin ve sonra **çok dizeli değer**' i seçin. Değer **Vhdkonumlarını** adlandırın ve `\\fsprofile.file.core.windows.net\share` veri değeri olarak Azure dosya paylaşımının URI 'sini girin.
 
-    ![VHDLocations dosyasını gösteren profiller anahtarının ekran görüntüsü. Veri değeri, Azure dosya paylaşımının URI 'sini gösterir.](media/multi-string-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![VHDLocations dosyasını gösteren profiller anahtarının ekran görüntüsü. Veri değeri, Azure dosya paylaşımının URI 'sini gösterir.](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>Kullanıcıları bir oturum konağına atama
 

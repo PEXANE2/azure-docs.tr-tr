@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: a27bd98b723e6e827ba7d9e155586d336ababc49
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 813e86e8446932d1618fff1853cee8972570f43f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100770"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85363028"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Azure CLı 'de denetim günlüklerini yapılandırma ve erişme
 
 [MySQL Için Azure veritabanı denetim günlüklerini](concepts-audit-logs.md) Azure CLI 'dan yapılandırabilirsiniz.
-
-> [!IMPORTANT]
-> Denetim günlüğü işlevselliği Şu anda önizleme aşamasındadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,7 +30,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
 ## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
 
->[!NOTE]
+>[!IMPORTANT]
 > Sunucunuzun performansının yoğun bir şekilde etkilenmemesini sağlamak için, yalnızca denetim amaçlarıyla gerekli olay türlerini ve kullanıcıları günlüğe kaydetmek önerilir.
 
 Aşağıdaki adımları kullanarak denetim günlüğünü etkinleştirin ve yapılandırın:

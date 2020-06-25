@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 1d74bf089f3e5bc1fd04232b58ce95c649a170e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307877"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362382"
 ---
-# <a name="add-parameters-to-commands"></a>Komutlara parametreler ekleme
+# <a name="add-parameters-to-commands"></a>Komutlara parametre ekleme
 
 Bu makalede, özel komutlara parametre eklemeyi öğreneceksiniz. Parametreler, bir görevi tamamlamaya yönelik komutlar için gereken bilgiler. Karmaşık senaryolarda parametreler, özel eylemleri tetikleyen koşulları tanımlamak için de kullanılabilir.
 
@@ -60,9 +60,10 @@ Birden çok cihazı açmak ve kapatmak için mevcut **turnOn** komutunu düzenle
        | Yapılandırma      | Önceden tanımlanmış giriş değerlerini iç katalogdan kabul et | Dizeler için bu, girişleri olası bir değerler kümesiyle sınırlandırır |
        | Önceden tanımlanmış giriş değerleri     | `on`, `off`           | Olası değerler ve bunların diğer adları kümesi         |
        
-        > [!div class="mx-imgBorder"]
+        
+   1. Önceden tanımlanmış giriş değerlerini eklemek için, **önceden tanımlanmış bir giriş Ekle** ve **Yeni öğe** penceresinde, yukarıdaki tabloda belirtilen **adı** yazın. Bu durumda, diğer adları kullanmıyoruz, bu nedenle boş bırakabilirsiniz. 
+    > [!div class="mx-imgBorder"]
         > ![Parametre oluştur](media/custom-commands/create-on-off-parameter.png)
-
    1. Parametrenin tüm yapılandırmasını kaydetmek için **Kaydet** ' i seçin.
  
  ### <a name="add-subjectdevice-parameter"></a>SubjectDevice parametresi Ekle 

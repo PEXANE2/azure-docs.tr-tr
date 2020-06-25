@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 14bf43375e2ebe37d496a7343c5f85c41f55bc29
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307861"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362151"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Özel Komutlar kullanarak ses yardımcısı oluşturma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, konuşma Studio 'Yu kullanarak temel bir özel komut 
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Özel komutları destekleyen bir bölgede Azure konuşma kaynağı oluşturun.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * Örnek [Akıllı Oda Lite](https://aka.ms/speech/cc-quickstart) json dosyasını indirin.
 > * [Windows Voice Yardımcısı istemcisinin](https://aka.ms/speech/va-samples-wvac)en son sürümünü indirin.
 
@@ -82,7 +82,8 @@ Artık yeni özel komutlar uygulamanıza genel bakış görmeniz gerekir.
     - TV 'yi açın
     - Sıcaklığın 80 derece olarak ayarlanması
     - Kapat
-    - Alarm ayarlama
+    - TV
+    - 5 PM için bir alarm ayarla
 
 ## <a name="integrate-custom-commands-application-in-an-assistant"></a>Özel komutlar uygulamasını bir yardımcı içinde tümleştirme
 Bu uygulamaya, konuşma Studio 'Nun dışından erişebilmek için, uygulamayı yayımlamanız gerekir. Bir uygulamayı yayımlamak için, tahmin LUO kaynağını yapılandırmanız gerekecektir.  
@@ -110,7 +111,7 @@ Alternatif olarak, **Ayarlar**  >  **genel** bölümünü seçerek de bu değerl
 
 Bu makalenin kapsamında, önkoşulların bir parçası olarak indirdiğiniz Windows Voice Yardımcısı istemcisini kullanacağız. Klasörü sıkıştırmayı açın.
 1. **VoiceAssistantClient.exe**başlatın.
-1. Yeni bir yayımlama profili oluşturun ve **bağlantı profili**için değer girin. **Genel ayarlar** bölümünde değerler **abonelik anahtarı**, **abonelik anahtar BÖLGESI** ve **özel komutlar uygulama kimliği**girin.
+1. Yeni bir yayımlama profili oluşturun ve **bağlantı profili**için değer girin. **Genel ayarlar** bölümünde değerler **abonelik anahtarı** (Bu, uygulamayı yayımlarken kaydettiğiniz **konuşma kaynak anahtarı** değeri ile aynıdır), **ABONELIK anahtar bölgesi** ve **özel komutlar uygulama kimliği**girin.
     > [!div class="mx-imgBorder"]
     > ![WVAC profil oluştur](media/custom-commands/create-profile.png)
 1. **Kaydet ve profili Uygula '** yı seçin.

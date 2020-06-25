@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: be5709c8ccf8626ac3a48fdf7cad1c61dbfbf628
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 87d57470ffbe1d65bb646c51387e15e58ab6fa30
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729530"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362926"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure dijital TWINS 'in içindeki ve dışındaki olayları yönlendirme
 
@@ -59,7 +59,7 @@ Bir olay yolu tanımlamak için, geliştiriciler önce uç noktaları tanımlama
 * Service Bus
 
 Uç noktalar denetim düzlemi API 'Leri kullanılarak ayarlanır ( [Azure dijital TWINS CLI](how-to-use-cli.md)tarafından desteklenir veya Azure Portal aracılığıyla yapılır. Bir uç nokta tanımı şunları sağlar:
-* Uç noktanın KIMLIĞI (veya kolay adı)
+* Uç noktanın adı
 * Uç nokta türü (Event Grid, Olay Hub 'ı veya Service Bus)
 * Kimlik doğrulaması için birincil bağlantı dizesi ve ikincil bağlantı dizesi 
 * Uç noktanın konu yolu (örneğin, *Your-topic.westus2.eventgrid.Azure.net* )
@@ -67,18 +67,18 @@ Uç noktalar denetim düzlemi API 'Leri kullanılarak ayarlanır ( [Azure dijita
 Denetim düzleminde kullanılabilen uç nokta API 'Leri şunlardır:
 * Uç nokta oluştur
 * Uç noktaların listesini al
-* KIMLIĞE göre uç nokta al (geçiş uç noktası KIMLIĞI)
-* Uç noktayı KIMLIĞE göre Sil (geçiş uç noktası KIMLIĞI)
+* Uç noktayı ada göre al
+* Uç noktayı ada göre Sil
 
 ## <a name="create-an-event-route"></a>Olay yolu oluşturma
  
 Olay yolları aşağıdaki [.net (C#) SDK](how-to-use-apis-sdks.md) çağrısıyla bir istemci uygulamasında oluşturulur: 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-ID>"));
+await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
 ```
 
-* , `endpoint-ID` Bir olay hub 'ı, Event Grid veya Service Bus gibi bir uç noktasını tanımlar. Bu uç noktaların aboneliğinizde oluşturulması ve bu kayıt çağrısını yapmadan önce denetim düzlemi API 'Leri kullanılarak Azure Digital TWINS 'e eklenmesi gerekir.
+* , `endpoint-name` Bir olay hub 'ı, Event Grid veya Service Bus gibi bir uç noktasını tanımlar. Bu uç noktaların aboneliğinizde oluşturulması ve bu kayıt çağrısını yapmadan önce denetim düzlemi API 'Leri kullanılarak Azure Digital TWINS 'e eklenmesi gerekir.
 
 Aynı zamanda geçirilen olay yolu nesnesi, `EventRoutes.Add` Bu yolu izleyen olay türlerini kısıtlamak için kullanılabilecek bir [ **filtre** parametresi](./how-to-manage-routes.md#filter-events)alır.
 

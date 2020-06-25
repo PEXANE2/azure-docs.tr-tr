@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 97b13118eb0299f042bdadfebecbc1a23d1ce59f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683051"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362603"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -45,9 +45,9 @@ Machine Learning modeli iş akışı genellikle bu diziyi izler:
 Bu araçları Azure Machine Learning için kullanın:
 
 +  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
-+ [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
++ [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Önizleme) ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
 + [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)ile makine öğrenimi etkinliklerinizi otomatikleştirin.
-+ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md) kullanın.
++ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md) kullanın. (Bir [Kurumsal çalışma alanı](concept-workspace.md#upgrade)) tasarımcı kullanmak için gereklidir.)
 + [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Bu araçları Azure Machine Learning için kullanın:
             * [Yapılandırmayı Çalıştır](#run-configurations)
             * [Anlık Görüntü](#snapshots)
             * [Git izleme](#github-tracking-and-integration)
-            * [Günlüğe kaydetme](#logging)
+            * [Günlüğe Kaydetme](#logging)
     * [ML işlem hatları](#ml-pipelines)
     * [Modeller](#models)
         * [Ortamlar](#environments)
@@ -127,7 +127,7 @@ Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başla
 
 Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
 
-### <a name="logging"></a>Günlüğe kaydetme
+### <a name="logging"></a>Günlüğe Kaydetme
 
 Çözümünüzü geliştirirken, isteğe bağlı ölçümleri günlüğe kaydetmek için Python betikinizdeki Azure Machine Learning Python SDK 'sını kullanın. Çalıştırıldıktan sonra, çalıştırmanın dağıtmak istediğiniz modeli üretmediğini öğrenmek için ölçümleri sorgulayın.
 

@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 4e2b223337bbe5d46f314a8d2126ab562b937445
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 79035a2fa2f7f3bed4890faa749661f025cea312
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726090"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362875"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -187,7 +187,7 @@ JSON nesnesi olarak biçimlendirilen bir ilişki örneği aşağıda verilmişti
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. Azure Digital Ikizi API 'Leri ile Graf öğelerini yönetme:
-* [Nasıl yapılır: dijital ikizi yönetme](how-to-manage-twin.md)
+* [Nasıl yapılır: dijital TWINS 'i yönetme](how-to-manage-twin.md)
 * [Nasıl yapılır: ikizi grafiğini ilişkilerle yönetme](how-to-manage-graph.md)
 
 Ya da, Azure Digital TWINS ikizi grafiğini sorgulama hakkında bilgi edinin:

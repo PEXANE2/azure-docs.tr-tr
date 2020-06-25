@@ -13,18 +13,18 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: e70a3a1eedbc56754ad46fd99dddc0c7a3a6cf2f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c6736bb2642ff08d0aa3cda536ef1599324efded
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735853"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362032"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme
 
 Azure [rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide, bir kaynak grubundaki sanal makineleri oluşturmak ve yönetmek için bir kullanıcı erişimi verirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir kaynak grubu kapsamındaki bir kullanıcı için erişim izni verme
@@ -68,11 +68,13 @@ Azure RBAC 'de, erişim izni vermek için bir rol ataması oluşturun.
 
    ![Kaynak grubu için Erişim denetimi (IAM) dikey penceresi](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1.  > Rol **ataması Ekle bölmesini**açmak için**rol ataması** Ekle ' ye tıklayın.
+1. **Ekle** > **Rol ataması ekle** seçeneğine tıklayarak Rol ataması ekle bölmesini açın.
 
    Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
-   ![Menü ekle](./media/role-assignments-portal/add-menu.png)
+   ![Rol atama menüsü Ekle](./media/shared/add-role-assignment-menu.png)
+
+    Rol ataması ekle bölmesi açılır.
 
    ![Rol atama bölmesi Ekle](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 

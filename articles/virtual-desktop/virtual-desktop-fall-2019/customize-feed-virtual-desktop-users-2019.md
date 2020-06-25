@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f6b956981269bca83140e4d1d08067b2d0db0d1d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 58f05b2f9f15166e161b31578b47cf06afcb13a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204787"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362586"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Windows Sanal Masaüstü kullanıcıları için akışı özelleştirme
 
@@ -37,14 +37,18 @@ Bir uygulama grubu için yayımlanmış RemoteApps listesini almak için aşağ�
 ```powershell
 Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/get-rdsremoteapp.png)
+
+> [!div class="mx-imgBorder"]
+> ![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/get-rdsremoteapp.png)
 
 Bir RemoteApp 'e kolay bir ad atamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
 Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
 ```
-![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](../media/set-rdsremoteapp.png)
+
+> [!div class="mx-imgBorder"]
+> ![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](../media/set-rdsremoteapp.png)
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Uzak Masaüstü için görünen adı özelleştirme
 
@@ -55,14 +59,18 @@ Uzak Masaüstü kaynağını almak için aşağıdaki PowerShell cmdlet 'ini ça
 ```powershell
 Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
 ```
-![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/get-rdsremotedesktop.png)
+
+> [!div class="mx-imgBorder"]
+> ![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](../media/get-rdsremotedesktop.png)
 
 Uzak Masaüstü kaynağına kolay bir ad atamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
 Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
 ```
-![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](../media/set-rdsremotedesktop.png)
+
+> [!div class="mx-imgBorder"]
+> ![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](../media/set-rdsremotedesktop.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

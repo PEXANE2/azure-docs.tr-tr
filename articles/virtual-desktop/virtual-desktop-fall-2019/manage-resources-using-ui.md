@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b2680a463bd0150a92dc587eb2f233ef58a58f6d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 307fe6cd287d7a58435f745cd066be8308293267
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214171"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362117"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla bir Yönetim Aracı dağıtma
 
@@ -71,11 +71,13 @@ GitHub Azure Resource Manager şablonu tamamlandıktan sonra, Azure portal bir A
 
 Oturum açmadan önce yönetim aracını kullanmadan önce, yönetim aracı ile ilişkili yeni Azure AD uygulaması için onay sağlamanız gerekir. Onay sağlanması, yönetim aracının, araçta oturum açmış olan kullanıcı adına Windows sanal masaüstü yönetimi çağrıları yapmasını sağlar.
 
-![UI yönetim aracına izin verdiğiniz zaman girilen izinleri gösteren ekran görüntüsü.](../media/management-ui-delegated-permissions.png)
+> [!div class="mx-imgBorder"]
+> ![UI yönetim aracına izin verdiğiniz zaman girilen izinleri gösteren ekran görüntüsü.](../media/management-ui-delegated-permissions.png)
 
 Araçta oturum açmak için hangi kullanıcıyı kullanabileceğinizi öğrenmek için [Azure Active Directory Kullanıcı ayarları sayfanıza](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) gidin ve **kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin verebilmeleri**için değeri göz önünde bulabilirsiniz.
 
-![Kullanıcıların yalnızca kendi kullanıcıları için izin verip veremediğini gösteren ekran görüntüsü.](../media/management-ui-user-consent-allowed.png)
+> [!div class="mx-imgBorder"]
+> ![Kullanıcıların yalnızca kendi kullanıcıları için izin verip veremediğini gösteren ekran görüntüsü.](../media/management-ui-user-consent-allowed.png)
 
 - Değer **Evet**olarak ayarlanırsa, Azure Active Directory herhangi bir kullanıcı hesabıyla oturum açabilir ve yalnızca bu kullanıcı için onay sağlayabilirsiniz. Bununla birlikte, yönetim aracında daha sonra başka bir kullanıcıyla oturum açarsanız, aynı onayı tekrar gerçekleştirmeniz gerekir.
 - Değer **Hayır**olarak ayarlanırsa, Azure Active Directory genel yönetici olarak oturum açmanız ve dizindeki tüm kullanıcılar için yönetici onayı sağlamanız gerekir. Başka hiçbir Kullanıcı onay istemi istemez.
@@ -87,7 +89,8 @@ Araçta oturum açmak için hangi kullanıcıyı kullanabileceğinizi öğrenmek
 2. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.
 3. Bir genel yönetici ile kimlik doğrulaması yaptıysanız, artık **kuruluşunuz adına izin**vermek için onay kutusunu işaretleyebilirsiniz. Onay sağlamak için **kabul et** ' i seçin.
 
-   ![Kullanıcının veya yöneticinin göreceği tam izin sayfasını gösteren ekran görüntüsü.](../media/management-ui-consent-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![Kullanıcının veya yöneticinin göreceği tam izin sayfasını gösteren ekran görüntüsü.](../media/management-ui-consent-page.png)
 
 Bu işlem sizi yönetim aracına götürür.
 

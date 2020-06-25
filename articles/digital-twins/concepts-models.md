@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cacf4c21e92b434aeb73cd76e6dda26508f41d77
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5aef0c9a9b0f3dbfb5ad2f4c827b1a11190e097a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261367"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362892"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -23,7 +23,7 @@ Azure dijital TWINS 'in temel özellikleri, kendi sözlüğünüzü tanımlayabi
 
 Model, nesne odaklı programlama dilindeki bir **sınıfa** benzer ve gerçek çalışma ortamınızdaki belirli bir kavram için veri şekli tanımlar. Modeller, adlara sahiptir ( *Oda* veya *sıcaklık algılayıcısı*gibi) ve ortamınızdaki bu varlık türünün neler yapabileceğini tanımlayan özellikler, telemetri/olaylar ve komutlar gibi öğeleri içerir. Daha sonra bu modelleri, bu tür açıklamasını karşılayan belirli varlıkları temsil eden [**dijital TWINS**](concepts-twins-graph.md) oluşturmak için kullanacaksınız.
 
-Modeller JSON tabanlı **dijital Ikizi tanım dili (DTDL)** kullanılarak yazılır.  
+Modeller JSON-LD tabanlı **dijital Ikizi tanım dili (DTDL)** kullanılarak yazılır.  
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>Model yazma için dijital Ikizi tanım dili (DTDL)
 
@@ -207,7 +207,7 @@ Ya da, doğrudan nasıl kullanılacağına ilişkin bir örnek de dahil olmak ü
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. Digitaltwınsmodel API 'Leri ile modelleri yönetme:
-* [Nasıl yapılır: ikizi modelini yönetme](how-to-manage-model.md)
+* [Nasıl yapılır: özel modelleri yönetme](how-to-manage-model.md)
 
 Ya da dijital TWINS 'in modeller temelinde nasıl oluşturulduğuna ilişkin bilgi edinin:
 * [Kavramlar: dijital TWINS ve ikizi grafiği](concepts-twins-graph.md)

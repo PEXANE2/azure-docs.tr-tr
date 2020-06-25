@@ -2,18 +2,18 @@
 title: Uç noktaları ve yolları yönetme
 titleSuffix: Azure Digital Twins
 description: Bkz. Azure dijital TWINS verileri için uç noktaları ve olay yollarını ayarlama ve yönetme.
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cf18d8ef391115da5e1c8fcab235c30e96287f5b
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b6f5765f51983e3b1ca9c182849b64258476a2ce
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725690"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362773"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure dijital TWINS 'de uç noktaları ve yolları yönetme
 
@@ -74,17 +74,19 @@ Bu makaledeki örnekler C# SDK 'SıNı kullanır.
 
 Olay yolları veri düzlemi API 'Leri kullanılarak tanımlanır. Bir yol tanımı şu öğeleri içerebilir:
 * Kullanmak istediğiniz yol KIMLIĞI
-* Kullanmak istediğiniz uç noktanın KIMLIĞI
+* Kullanmak istediğiniz uç noktanın adı
 * Uç noktaya hangi olayların gönderileceğini tanımlayan bir filtre 
 
-Rota KIMLIĞI yoksa, Azure dijital TWINS dışında hiçbir ileti yönlendirilmez. Bir yol KIMLIĞI varsa ve filtre ise `null` , tüm iletiler uç noktaya yönlendirilir. Bir yol KIMLIĞI varsa ve bir filtre eklenirse, iletiler filtreye göre filtrelenecektir.
+Rota KIMLIĞI yoksa, Azure dijital TWINS dışında hiçbir ileti yönlendirilmez. Bir yol KIMLIĞI varsa ve filtre ise `true` , tüm iletiler uç noktaya yönlendirilir. Bir yol KIMLIĞI varsa ve farklı bir filtre eklenirse, iletiler filtreye göre filtrelenecektir.
 
 Bir yol birden çok bildirimin ve olay türünün seçilebilmelidir. 
 
-Bir olay yolu eklemek için kullanılan SDK çağrısı aşağıda verilmiştir:
+`CreateEventRoute`, bir olay yolu eklemek için kullanılan SDK çağrıdır. Kullanım örneği aşağıda verilmiştir:
 
 ```csharp
-await client.CreateEventRoute("routeName", new EventRoute("endpointID"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
 > [!TIP]
@@ -130,11 +132,11 @@ Bitiş noktaları, filtrelemeden Azure dijital TWINS 'ten çeşitli olaylar alı
 
 Bir uç noktaya filtre ekleyerek gönderilmekte olan olayları kısıtlayabilirsiniz.
 
-Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{YourHost}/Eventrotalar/myNewRoute? api-Version = 2020-03 -01-Preview* IÇIN bir PUT isteği kullanabilirsiniz:
+Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{YourHost}/Eventrotalar/myNewRoute? api-Version = 2020-05 -31-Preview* IÇIN bir PUT isteği kullanabilirsiniz:
 
 ```json  
 {
-    "endpointId": "<endpoint-ID>",
+    "endpointName": "<endpoint-name>",
     "filter": "<filter-text>"
 }
 ``` 
@@ -143,9 +145,10 @@ Desteklenen yol filtreleri aşağıda verilmiştir.
 
 | Filtre adı | Description | Filtre şeması | Desteklenen değerler | 
 | --- | --- | --- | --- |
-| Tür | Dijital ikizi örneğiniz aracılığıyla akan [olay türü](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Edge.Create`<br>`Microsoft.DigitalTwins.Edge.Update`<br> `Microsoft.DigitalTwins.Edge.Delete` <br> `microsoft.iot.telemetry`  |
-| Kaynak | Azure dijital TWINS örneğinin adı | `"filter" : "source = '<hostname>'"`|  **Bildirimler için:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetri için:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/ digitaltwins/<twinId>`|
-| Özne | Yukarıdaki olay kaynağı bağlamındaki olay açıklaması | `"filter": " subject = '<subject>'"` | **Bildirimler için**, konusu`<twinid>` <br> ya da birden çok parça veya kimlik tarafından benzersiz şekilde tanımlanan konular için URI biçimi:<br>`<twinid>/relationships/<relationship>/<edgeid>`<br> **Telemetri için**, konusu bileşen yoludur (telemetri bir ikizi bileşeninden yayıldıysanız), gibi `comp1.comp2` . Telemetri bir bileşenden yayılmadığından, konu alanı boş olur. |
+| Tür | Dijital ikizi örneğiniz aracılığıyla akan [olay türü](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
+| Kaynak | Azure dijital TWINS örneğinin adı | `"filter" : "source = '<hostname>'"`|  **Bildirimler için**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetri için**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
+| Özne | Yukarıdaki olay kaynağı bağlamındaki olay açıklaması | `"filter": " subject = '<subject>'"` | **Bildirimler için**: konu`<twinid>` <br> ya da birden çok parça veya kimlik tarafından benzersiz şekilde tanımlanan konular için URI biçimi:<br>`<twinid>/relationships/<relationshipid>`<br> **Telemetri için**: konu bileşen yoludur (telemetri bir ikizi bileşeninden yayıldıysanız), gibi `comp1.comp2` . Telemetri bir bileşenden yayılmadığından, konu alanı boş olur. |
+| Veri şeması | DTDL model KIMLIĞI | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **Telemetri için**: veri şeması, ikizi veya Telemetriyi gösteren BILEŞENIN model kimliğidir <br>**Bildirimler için**: veri şeması desteklenmez|
 | İçerik türü | Veri değerinin içerik türü | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | Spec sürümü | Kullandığınız olay şemasının sürümü | `"filter": "specversion = '<version>'"` | Olmalıdır `1.0` . Bu, CloudEvents şema sürüm 1,0 ' i gösterir |
 | Doğru/yanlış | Filtre olmadan veya bir yolu devre dışı bırakarak yol oluşturulmasına izin verir | `"filter" : "<true/false>"` | `true`= Route filtre olmadan etkinleştirildi <br> `false`= yol devre dışı |

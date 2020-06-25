@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849680"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361964"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Izleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -90,7 +90,7 @@ Azure portal aracılığıyla tanılama ayarlarını oluşturmak ve yönetmek i�
  Çoğu Azure kaynağının izleme verilerine, Azure portal kaynağın menüsünden erişebilirsiniz. Bu, standart Azure Izleyici araçlarını kullanarak tek bir kaynağın verilerine erişmenizi sağlar. Bazı Azure Hizmetleri farklı seçenekler sağlayacak, bu nedenle ek bilgi için bu hizmetin belgelerine başvurmanız gerekir. İzlenen tüm kaynaklardaki verileri çözümlemek için **Azure izleyici** menüsünü kullanın. 
 
 ### <a name="overview"></a>Genel Bakış
-Birçok hizmet, **genel bakış** sayfasına, işlem için hızlı bir bakış olarak izleme verileri içerir. Bu, genellikle Azure Izleyici ölçümlerinde depolanan platform ölçümlerinin bir alt kümesini temel alır. Diğer izleme seçenekleri, genellikle hizmetlerin **izleme** bölümünde kullanılabilir. menüsünü seçerek erişebilirsiniz.
+Birçok hizmet, **genel bakış** sayfasına, işlem için hızlı bir bakış olarak izleme verileri içerir. Bu, genellikle Azure Izleyici ölçümlerinde depolanan platform ölçümlerinin bir alt kümesini temel alır. Diğer izleme seçenekleri, genellikle hizmetin menüsünün **izleme** bölümünde kullanılabilir.
 
 ![Genel Bakış sayfası](media/monitor-azure-resource/overview-page.png)
 

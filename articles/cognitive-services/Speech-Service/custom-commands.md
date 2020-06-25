@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9954e4fe739c055a00c2e3bc52b73200a7824a43
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299118"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362168"
 ---
 # <a name="what-is-custom-commands"></a>Özel Komutlar nedir?
 
-[Sesli yardımcılar](voice-assistants.md) gibi sesli uygulamalar kullanıcıları dinler ve yanıt olarak bir işlem gerçekleştirebilir, genellikle geri konuşuyor. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir. Cihazlar, konuşma SDK 'sının nesnesiyle birlikte yardımcılar 'a bağlanır `DialogServiceConnector` .
+[Sesli yardımcılar](voice-assistants.md) gibi uygulamalar, kullanıcıları dinler ve yanıt olarak bir işlem yapması ve genellikle geri konuşuyor. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir. Cihazlar, konuşma SDK 'sının nesnesiyle birlikte yardımcılar 'a bağlanır `DialogServiceConnector` .
 
 **Özel komutlar** , sesli ilk etkileşim deneyimleri için iyileştirilmiş zengin sesli uygulama uygulamaları oluşturmayı kolaylaştırır. Birleştirilmiş bir yazma deneyimi, otomatik barındırma modeli ve görece daha düşük karmaşıklık sağlar. böylece, sesli komutlama senaryolarınız için en iyi çözümü oluşturmaya odaklanmanıza yardımcı olur.
 

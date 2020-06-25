@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Farklı olay türlerini ve bunların farklı bildirim iletilerini yorumlama bölümüne bakın.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e194c046cde623e0fcdd4c73ac24f2bf0755945c
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: e8a1bb19a18f43bae4639d2ca9d9b9941bd29324
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299441"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362840"
 ---
 # <a name="understand-event-data"></a>Olay verilerini anlama
 
@@ -39,7 +39,11 @@ Bazı bildirimler CloudEvents standardına uygundur. CloudEvents uygunluğu aşa
 * Bir [model](concepts-models.md) ile [dijital TWINS](concepts-twins-graph.md) 'Ten alınan bildirimler, cloudevents ile uyumlu
 * Azure dijital TWINS tarafından işlenen ve yayılan bildirimler, CloudEvents ile uyumlu
 
-Hizmetlerin, sıralarını belirtmek için tüm bildirimlere bir sıra numarası eklemesi veya kendi sıralamasını başka bir şekilde korumanız gerekir. Azure dijital TWINS tarafından Event Grid 'e yayılan bildirimler, Event Grid CloudEvents 'i destekleene kadar Event Grid şemasına biçimlendirilir. Üst bilgilerdeki uzantı öznitelikleri, yük içindeki Event Grid şemasına özellikler olarak eklenecektir. 
+Hizmetlerin, sıralarını belirtmek için tüm bildirimlere bir sıra numarası eklemesi veya kendi sıralamasını başka bir şekilde korumanız gerekir. 
+
+Azure dijital TWINS tarafından Event Grid 'e yapılan bildirimler, olay Kılavuzu konusunda tanımlanan şema türüne bağlı olarak, CloudEvents şeması veya EventGridEvent şemasına otomatik olarak biçimlendirilir. 
+
+Üst bilgilerdeki uzantı öznitelikleri, yük içindeki Event Grid şemasına özellikler olarak eklenecektir. 
 
 ### <a name="event-notification-bodies"></a>Olay bildirim gövdeleri
 
@@ -50,43 +54,39 @@ Gövdenin içerdiği alan kümesi, farklı bildirim türleriyle farklılık gös
 Telemetri iletisi:
 
 ```json
-{ 
-    "specversion": "1.0", 
-    "type": "microsoft.iot.telemetry", 
-    "source": "myhub.westus2.azuredigitaltwins.net", 
-    "subject": "thermostat.vav-123", 
-    "id": "c1b53246-19f2-40c6-bc9e-4666fa590d1a",
-    "dataschema": "dtmi:com:contoso:DigitalTwins:VAV;1",
-    "time": "2018-04-05T17:31:00Z", 
-    "datacontenttype" : "application/json", 
-    "data":  
-      {
-          "temp": 70,
-          "humidity": 40 
-      }
+{
+  "specversion": "1.0",
+  "id": "df5a5992-817b-4e8a-b12c-e0b18d4bf8fb",
+  "type": "microsoft.iot.telemetry",
+  "source": "contoso-adt.api.wus2.digitaltwins.azure.net/digitaltwins/room1",
+  "data": {
+    "Temperature": 10
+  },
+  "dataschema": "dtmi:example:com:floor4;2",
+  "datacontenttype": "application/json",
+  "traceparent": "00-7e3081c6d3edfb4eaf7d3244b2036baa-23d762f4d9f81741-01"
 }
 ```
 
 Yaşam döngüsü bildirim iletisi:
 
 ```json
-{ 
-    "specversion": "1.0", 
-    "type": "microsoft.digitaltwins.twin.create", 
-    "source": "mydigitaltwins.westus2.azuredigitaltwins.net", 
-    "subject": "device-123", 
-    "id": "c1b53246-19f2-40c6-bc9e-4666fa590d1a", 
-    "time": "2018-04-05T17:31:00Z", 
-    "datacontenttype" : "application/json", 
-    "dataschema": "dtmi:com:contoso:DigitalTwins:Device;1",           
-    "data":  
-      { 
-        "$dtId": "room-123", 
-        "property": "value",
-        "$metadata": { 
-                //...
-        } 
-      } 
+{
+  "specversion": "1.0",
+  "id": "d047e992-dddc-4a5a-b0af-fa79832235f8",
+  "type": "Microsoft.DigitalTwins.Twin.Create",
+  "source": "contoso-adt.api.wus2.digitaltwins.azure.net",
+  "data": {
+    "$dtId": "floor1",
+    "$etag": "W/\"e398dbf4-8214-4483-9d52-880b61e491ec\"",
+    "$metadata": {
+      "$model": "dtmi:example:Floor;1"
+    }
+  },
+  "subject": "floor1",
+  "time": "2020-06-23T19:03:48.9700792Z",
+  "datacontenttype": "application/json",
+  "traceparent": "00-18f4e34b3e4a784aadf5913917537e7d-691a71e0a220d642-01"
 }
 ```
 
@@ -111,12 +111,11 @@ Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir. |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı |
 | `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete`<br>`Microsoft.DigitalTwins.TwinProxy.Create`<br>`Microsoft.DigitalTwins.TwinProxy.Delete`<br>`Microsoft.DigitalTwins.TwinProxy.Attach`<br>`Microsoft.DigitalTwins.TwinProxy.Detach` |
-| `datacontenttype` | uygulama/json |
+| `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
+| `datacontenttype` | `application/json` |
 | `subject` | Dijital ikizi KIMLIĞI |
 | `time` | İkizi üzerinde işlem gerçekleştiği zaman damgası |
-| `sequence` | Etkinliğin daha büyük sıralı olaylar sırasındaki konumunu ifade eden değer. Hizmetlerin, sıralarını belirtmek için tüm bildirimlere bir sıra numarası eklemesi veya kendi sıralamasını başka bir şekilde korumanız gerekir. Sıra numarası her iletiyle birlikte artar. Nesne silinip aynı KIMLIKLE yeniden oluşturulduğunda 1 olarak sıfırlanır. |
-| `sequencetype` | Dizi alanının nasıl kullanıldığı hakkında daha ayrıntılı bilgi. Örneğin, bu özellik değerin 1 ile başlayan ve her seferinde 1 ile artan bir işaretli 32 bitlik tamsayı olması gerektiğini belirtebilir. |
+| `traceparent` | Etkinlik için bir W3C Trace bağlamı |
 
 #### <a name="body-details"></a>Gövde ayrıntıları
 
@@ -165,7 +164,6 @@ Dijital ikizi başka bir örneği aşağıda verilmiştir. Bu, bir [modeli](conc
   "comfortIndex": 85,
   "$metadata": {
     "$model": "dtmi:com:contoso:Building;1",
-    "$kind": "DigitalTwin",
     "avgTemperature": {
       "desiredValue": 72,
       "desiredVersion": 5,
@@ -197,11 +195,11 @@ Bir Edge değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda veril
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id`her farklı olay için benzersizdir |
 | `source` | *Mydigitaltwins.westus2.azuredigitaltwins.net* gibi Azure dijital TWINS örneğinin adı |
 | `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`<br>`datacontenttype    application/json for Relationship.Create`<br>`application/json-patch+json for Relationship.Update` |
-| `subject` | İlişkinin KIMLIĞI, örneğin`<twinID>/relationships/<relationshipName>/<edgeID>` |
+| `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
+|`datacontenttype`| `application/json` |
+| `subject` | İlişkinin KIMLIĞI, örneğin`<twinID>/relationships/<relationshipName>` |
 | `time` | İlişki üzerinde işlem gerçekleştiği zaman damgası |
-| `sequence` | Etkinliğin daha büyük sıralı olaylar sırasındaki konumunu ifade eden değer. Hizmetlerin, sıralarını belirtmek için tüm bildirimlere bir sıra numarası eklemesi veya kendi sıralamasını başka bir şekilde korumanız gerekir. Sıra numarası her iletiyle birlikte artar. Nesne silinip aynı KIMLIKLE yeniden oluşturulduğunda 1 olarak sıfırlanır. |
-| `sequencetype` | Dizi alanının nasıl kullanıldığı hakkında daha ayrıntılı bilgi. Örneğin, bu özellik değerin 1 ile başlayan ve her seferinde 1 ile artan bir işaretli 32 bitlik tamsayı olması gerektiğini belirtebilir. |
+| `traceparent` | Etkinlik için bir W3C Trace bağlamı |
 
 #### <a name="body-details"></a>Gövde ayrıntıları
 
@@ -212,13 +210,16 @@ Gövde, JSON biçiminde bir ilişkinin yüküyle aynı olur. Bu, `GET` [Digitalt
 Bir özelliği güncelleştirmek için bir güncelleştirme ilişkisi bildirimine bir örnek aşağıda verilmiştir:
 
 ```json
-[
-  {
-    "op": "replace",
-    "path": "ownershipUser",
-    "value": "user3"
+{
+    "modelId": "dtmi:example:Floor;1",
+    "patch": [
+      {
+        "value": "user3",
+        "path": "/ownershipUser",
+        "op": "replace"
+      }
+    ]
   }
-]
 ```
 
 İçin `Relationship.Delete` , gövde `GET` istekle aynıdır ve silinmeden önce en son durumu alır.
@@ -227,7 +228,7 @@ Bir özelliği güncelleştirmek için bir güncelleştirme ilişkisi bildirimin
 
 ```json
 {
-    "$relationshipId": "EdgeId1",
+    "$relationshipName": "RelationshipName1",
     "$sourceId": "building11",
     "$relationshipName": "Contains",
     "$targetId": "floor11",
@@ -235,6 +236,7 @@ Bir özelliği güncelleştirmek için bir güncelleştirme ilişkisi bildirimin
     "ownershipDepartment": "Operations"
 }
 ```
+
 
 ### <a name="digital-twin-change-notifications"></a>Dijital ikizi değişiklik bildirimleri
 
@@ -252,11 +254,10 @@ Dijital ikizi değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda 
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı
 | `specversion` | 1.0 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
-| `datacontenttype` | Application/JSON-Patch + JSON |
+| `datacontenttype` | `application/json` |
 | `subject` | Dijital ikizi KIMLIĞI |
 | `time` | İşlem dijital ikizi üzerinde gerçekleştiyse zaman damgası |
-| `sequence` | Etkinliğin daha büyük sıralı olaylar sırasındaki konumunu ifade eden değer. Hizmetlerin, sıralarını belirtmek için tüm bildirimlere bir sıra numarası eklemesi veya kendi sıralamasını başka bir şekilde korumanız gerekir. Sıra numarası her iletiyle birlikte artar. Nesne silinip aynı KIMLIKLE yeniden oluşturulduğunda 1 olarak sıfırlanır. |
-| `sequencetype` | Dizi alanının nasıl kullanıldığı hakkında daha ayrıntılı bilgi. Örneğin, bu özellik değerin 1 ile başlayan ve her seferinde 1 ile artan bir işaretli 32 bitlik tamsayı olması gerektiğini belirtebilir. |
+| `traceparent` | Etkinlik için bir W3C Trace bağlamı |
 
 #### <a name="body-details"></a>Gövde ayrıntıları
 
@@ -266,28 +267,37 @@ Bildirimin gövdesi, `Twin.Update` dijital ikizi güncelleştirmesini içeren BI
 
 ```json
 [
-  {
-    "op": "replace",
-    "path": "/mycomp/prop1",
-    "value": {"a":3}
-  }
+    {
+        "op": "replace",
+        "value": 40,
+        "path": "/Temperature"
+    },
+    {
+        "op": "add",
+        "value": 30,
+        "path": "/comp1/prop1"
+    }
 ]
 ```
 
 Karşılık gelen bildirim (Azure Digital TWINS bir dijital ikizi güncelleştiren gibi hizmet tarafından zaman uyumlu olarak yürütülürse) şöyle bir gövdeye sahip olur:
 
 ```json
-[
-    { "op": "replace", "path": "/myComp/prop1", "value": {"a": 3}},
-    { "op": "replace", "path": "/myComp/$metadata/prop1",
-        "value": {
-            "desiredValue": { "a": 3 },
-            "desiredVersion": 2,
-                "ackCode": 200,
-            "ackVersion": 2 
-        }
-    }
-]
+{
+    "modelId": "dtmi:example:com:floor4;2",
+    "patch": [
+      {
+        "value": 40,
+        "path": "/Temperature",
+        "op": "replace"
+      },
+      {
+        "value": 30,
+        "path": "/comp1/prop1",
+        "op": "add"
+      }
+    ]
+  }
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

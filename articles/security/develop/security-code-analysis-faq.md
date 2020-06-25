@@ -1,7 +1,7 @@
 ---
 title: Microsoft Güvenlik kodu çözümleme belgeleri SSS
 description: Bu makale, Microsoft Güvenlik kodu analiz uzantısı hakkında bir SSS içerir
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7a888d95a97e30e7d663b528e8d9941aec1f51e9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015854"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362083"
 ---
 # <a name="frequently-asked-questions"></a>Sık sorulan sorular
 Sorularınız mı var? Daha fazla bilgi için aşağıdaki SSS bölümüne bakın.
@@ -123,7 +123,7 @@ Aşağıdaki örnekte gösterildiği gibi, CredScan çıkış dosyasındaki gizl
 
 Dosya ifadesi bir dosya adı olabilir. Ayrıca, tam dosya yolunun veya dosya adının baseName bir bölümü de olabilir. Joker karakterler desteklenmez.
 
-Aşağıdaki örneklerde dosyanın \Src\JS\lib\angular.js nasıl bastıralınacağını gösterilmektedir \<InputPath>
+Aşağıdaki örneklerde dosyanın nasıl bastıralınacağını gösterilmektedir \<InputPath>\src\JS\lib\angular.js
 
 Geçerli gizleme kuralları örnekleri:
 
@@ -131,7 +131,7 @@ Geçerli gizleme kuralları örnekleri:
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
-- Angular. js-aynı ada sahip herhangi bir dosyayı bastırır
+- angular.js-aynı ada sahip herhangi bir dosyayı bastırır
 
         {
             "tool": "Credential Scanner",
@@ -166,7 +166,7 @@ Daha fazla bilgi için bkz. Web günlüğü gönderisi, [bulutta gizli dizileri 
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Kendi özel aramalarımı yazabilir miyim?
 
-Kimlik bilgisi tarayıcısı, buildsearchers. xml dosyasında yaygın olarak tanımlanan bir dizi içerik arayanları kullanır. Dosya, bir **Contentsearcher** nesnesini temsil eden bir XML serileştirilmiş nesneler dizisi içerir. Program, iyi test edilmiş bir arayanlar kümesiyle dağıtılır. Ancak kendi özel aramalarınızı da uygulayabilirsiniz.
+Kimlik bilgisi tarayıcısı, buildsearchers.xml dosyasında yaygın olarak tanımlanan bir dizi içerik arayanları kullanır. Dosya, bir **Contentsearcher** nesnesini temsil eden bir XML serileştirilmiş nesneler dizisi içerir. Program, iyi test edilmiş bir arayanlar kümesiyle dağıtılır. Ancak kendi özel aramalarınızı da uygulayabilirsiniz.
 
 Bir içerik arayici aşağıdaki gibi tanımlanır:
 
@@ -196,23 +196,23 @@ Tam hata iletisi:
 
 Roslyn, görevleri derlemenin bir parçası olarak çalıştırır, derleme makinesindeki kaynak ağacının oluşturulabilir bir durumda olması gerekir.
 
-Ana derleme ve Roslyn Çözümleyicileri adımları arasındaki bir adım, kaynak ağacını derlemeyi engelleyen bir duruma koymalarından kaynaklanabilir. Bu ek adım büyük olasılıkla **DotNet. exe ' nin yayınlaması**. Yalnızca Roslyn Çözümleyicileri adımından önce NuGet geri yüklemesi yapan adımı çoğaltma işlemini deneyin. Bu yinelenen adım, kaynak ağacını oluşturulabilir bir duruma geri yerleştirebilir.
+Ana derleme ve Roslyn Çözümleyicileri adımları arasındaki bir adım, kaynak ağacını derlemeyi engelleyen bir duruma koymalarından kaynaklanabilir. Bu ek adım büyük olasılıkla **yayımdotnet.exe**. Yalnızca Roslyn Çözümleyicileri adımından önce NuGet geri yüklemesi yapan adımı çoğaltma işlemini deneyin. Bu yinelenen adım, kaynak ağacını oluşturulabilir bir duruma geri yerleştirebilir.
 
-##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc. exe, bir çözümleyici örneği oluşturamaz
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc.exe, bir çözümleyici örneği oluşturamaz
 
 Tam hata iletisi:
 
-"' CSC. exe" hata koduyla çıkış yaptı--C: bbbb. dll ' den bir çözümleyici *aaaa* örneği oluşturulamıyor \\ *BBBB*: dosya veya derleme ' Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor. "
+"' csc.exe ', hata kodu 1 ile çıkış yaptı--C: bbbb. dll dosyasından bir çözümleyici *aaaa* örneği oluşturulamıyor \\ *BBBB*: dosya veya ' Microsoft. CodeAnalysis, Version =*X.* x. x. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor. "
 
-Derleyicisinin Roslyn çözümleyicilerinin desteklediğinden emin olun. **CSC. exe/Version** komutunu çalıştırmak, 2,6 veya üzeri bir sürüm değeri bildirmelidir.
+Derleyicisinin Roslyn çözümleyicilerinin desteklediğinden emin olun. **csc.exe/Version** komutunu çalıştırmak, 2,6 veya üzeri bir sürüm değeri bildirmelidir.
 
 Bazen bir. csproj dosyası, Microsoft.Net. derleyicileri bir pakete başvurarak derleme makinesinin Visual Studio yüklemesini geçersiz kılabilir. Derleyicinin belirli bir sürümünü kullanmayı düşünmüyorsanız, Microsoft.Net. derleyicilere başvuruları kaldırın. Aksi takdirde, başvurulan paketin sürümünün de 2,6 veya üzeri olduğundan emin olun.
 
-**CSC. exe/Errorlog** seçeneğinde belirtilen hata günlüğü yolunu almayı deneyin. Seçenek ve yol, Roslyn Çözümleyicileri derleme görevinin günlüğünde görüntülenir. **/Errorlog: F:\ts-Services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif** gibi bir şey görünebilir
+**csc.exe/Errorlog** seçeneğinde belirtilen hata günlüğü yolunu almayı deneyin. Seçenek ve yol, Roslyn Çözümleyicileri derleme görevinin günlüğünde görüntülenir. **/Errorlog: F:\ts-Services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif** gibi bir şey görünebilir
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>C# derleyici sürümü yeterince yeni değil
 
-C# derleyicisinin en son sürümlerini almak için [Microsoft.net. derleyiciler](https://www.nuget.org/packages/Microsoft.Net.Compilers)sayfasına gidin. Yüklü sürümünüzü almak için, bir komut isteminde **CSC. exe/Version** komutunu çalıştırın. Sürüm 2,6 veya üzeri bir Microsoft.Net. derleyiciler NuGet paketine başvurtığınızdan emin olun.
+C# derleyicisinin en son sürümlerini almak için [Microsoft.net. derleyiciler](https://www.nuget.org/packages/Microsoft.Net.Compilers)sayfasına gidin. Yüklü sürümünüzü almak için bir komut isteminde **csc.exe/Version** komutunu çalıştırın. Sürüm 2,6 veya üzeri bir Microsoft.Net. derleyiciler NuGet paketine başvurtığınızdan emin olun.
 
 ##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>MSBuild ve VSBuild günlükleri bulunamadı
 

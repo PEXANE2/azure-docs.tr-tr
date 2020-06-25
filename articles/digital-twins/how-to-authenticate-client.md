@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 89de2e86e425e2c585f9a1243f6666a0ae077c10
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: ddbe49f34bbdbf0f9c461a25f23d6f7cbd8600d9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726165"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362960"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Azure dijital TWINS ile istemci uygulamanın kimliğini doğrulama
 
@@ -175,7 +175,7 @@ Azure hizmetleriyle bir .NET uygulamasının kimliğini doğrulamak için, istem
 *Uygulamanızın (istemci) kimliği* ve *Dizin (kiracı) kimliğiniz* Ile Azure DIJITAL TWINS örneğinizin URL 'sini de kullanmanız gerekecektir.
 
 > [!TIP]
-> Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının*başlangıcına *https://* eklenerek yapılır. Ana bilgisayar adını görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> Azure Digital TWINS örneğinin URL 'SI, Azure Digital TWINS örneğinizin *ana bilgisayar adının*başlangıcına *https://* eklenerek yapılır. *Ana bilgisayar adını*görmek için, örneğinizin tüm özellikleriyle birlikte çalıştırabilirsiniz `az dt show --dt-name <your-Azure-Digital-Twins-instance>` . `az account show --query tenantId` *Dizin (KIRACı) kimliğinizi*görmek için komutunu kullanabilirsiniz. 
 
 ```javascript
 import * as Msal from "msal";
@@ -259,4 +259,4 @@ Azure dijital TWINS 'de güvenliğin nasıl çalıştığı hakkında daha fazla
 * [Kavramlar: Azure dijital TWINS çözümleri için güvenlik](concepts-security.md)
 
 Ya da artık kimlik doğrulaması ayarlanmış ise, örneğiniz içinde modeller oluşturmak için üzerine geçin:
-* [Nasıl yapılır: ikizi modelini yönetme](how-to-manage-model.md)
+* [Nasıl yapılır: özel modelleri yönetme](how-to-manage-model.md)

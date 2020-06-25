@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 7f98b2c94659c083f5dbd2c43fd9015f8b60a9db
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307885"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362416"
 ---
 # <a name="create-application-with-simple-commands"></a>Basit komutlarla uygulama oluşturma
 
@@ -27,6 +27,10 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="create-empty-application"></a>Boş uygulama oluştur
 Boş bir özel komutlar uygulaması oluşturun. Ayrıntılar için [hızlı başlangıç](quickstart-custom-commands-application.md)bölümüne bakın. Bu kez, bir projeyi içeri aktarmak yerine boş bir proje oluşturursunuz.
 
+1. **Ad** kutusuna proje adını `Smart-Room-Lite` (veya istediğiniz bir şeyi) girin.
+1. **Dil** listesinde **İngilizce (Birleşik Devletler)** seçeneğini belirleyin.
+1. Seçtiğiniz bir LUO kaynağını seçin veya oluşturun.
+
    > [!div class="mx-imgBorder"]
    > ![Proje oluşturma](media/custom-commands/create-new-project.png)
 
@@ -36,7 +40,7 @@ Boş bir özel komutlar uygulaması oluşturun. Ayrıntılar için [hızlı baş
 
 ## <a name="add-turnon-command"></a>TurnOn komutu Ekle
 
-**Akıllı Oda-Lite** özel komutlar uygulamasında, bir utterance işleme, ve iletiyle yanıt veren basit bir komut ekleyin `turn on the tv` `Ok, turning the tv on` .
+Az önce oluşturduğunuz boş **Akıllı Oda-Lite** özel komutları uygulamasında, bir utterance işleyen `turn on the tv` ve iletiyle yanıt veren basit bir komut ekleyin `Ok, turning the tv on` .
 
 1. Sol bölmenin en üstünde bulunan **Yeni komut** ' i seçerek yeni bir komut oluşturun. **Yeni komut** penceresi açılır.
 1. **Ad** alanı için **turnOn**olarak değer sağlayın.
@@ -74,7 +78,7 @@ Orta bölmede komutunun farklı özellikleri listelenir. Komutun aşağıdaki ö
 
 Sonra, komutun bir tamamlama kuralına sahip olması gerekir. Bu kural kullanıcıya bir karşılama eyleminin alındığını söyler. Kurallar ve tamamlama kuralları hakkında daha fazla bilgi edinmek için [Başvurular](./custom-commands-references.md)'a gidin.
 
-1. Varsayılan **tamamlama kuralını seçin** ve bunu aşağıdaki gibi düzenleyin: 
+1. Varsayılan **tamamlama kuralını seçin** ve bunu aşağıdaki gibi düzenleyin:
 
     
     | Ayar    | Önerilen değer                          | Description                                        |
@@ -84,13 +88,7 @@ Sonra, komutun bir tamamlama kuralına sahip olması gerekir. Bu kural kullanıc
     | **Eylemler**    | Ilk varyasyon > basit düzenleyici > konuşma yanıtı gönderin >`Ok, turning the tv on` | Kural koşulu true olduğunda gerçekleştirilecek eylem |
     
 
-1. Alternatif olarak, var olan varsayılan tamamlama kuralını silebilir ve orta bölmenin üst kısmındaki **Ekle** ' yi seçerek yeni bir tane oluşturabilirsiniz.
-1. **Ad** bölümünde değer sağlayın.
-1. Eylem ekleyin.
-   1. **Eylemler** bölümünde **Eylem Ekle** seçeneğini belirleyerek bir eylem oluşturun.
-   1. **Yeni eylem** penceresinde, **tür** listesinde, **konuşma yanıtı gönder**' i seçin.
-   1. **Yanıt**' ın altında **basit düzenleyici**' yi seçin.
-   1. **İlk varyasyon** alanında, yanıt için değer sağlayın `Ok, turning the tv on` .
+
 
    > [!div class="mx-imgBorder"]
    > ![Konuşma yanıtı oluşturma](media/custom-commands/create-speech-response-action.png)
@@ -98,6 +96,9 @@ Sonra, komutun bir tamamlama kuralına sahip olması gerekir. Bu kural kullanıc
 1. Eylemi kaydetmek için **Kaydet** ' i seçin.
 1. **Tamamlama kuralları** bölümüne geri döndüğünüzde tüm değişiklikleri kaydetmek için **Kaydet** ' i seçin. 
 
+
+ > [!NOTE]
+    > Komutuyla birlikte gelen varsayılan tamamlama kuralını kullanmak gerekli değildir. Gerekirse, var olan varsayılan tamamlama kuralını silebilir ve kendi kuralınızı ekleyebilirsiniz.
 
 ### <a name="try-it-out"></a>Deneyin
 

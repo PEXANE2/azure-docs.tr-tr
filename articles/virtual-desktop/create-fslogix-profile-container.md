@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 968e753cb8bf4376d2082d5238004c291b8f0938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211950"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362994"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -53,7 +53,8 @@ Başlamak için bir Azure NetApp Files hesabı ayarlamanız gerekir.
 
 4. İlk kez Azure Cloud Shell kullanıyorsanız, aynı abonelikte bir depolama hesabı oluşturun Azure NetApp Files ve Windows sanal masaüstünüzü koruyabilirsiniz.
 
-   ![Pencerenin alt kısmındaki depolama Oluştur düğmesine sahip depolama hesabı penceresi kırmızı renkle vurgulanır.](media/create-storage-button.png)
+   > [!div class="mx-imgBorder"]
+   > ![Pencerenin alt kısmındaki depolama Oluştur düğmesine sahip depolama hesabı penceresi kırmızı renkle vurgulanır.](media/create-storage-button.png)
 
 5. Azure Cloud Shell yüklediğinde, aşağıdaki iki cmdlet 'i çalıştırın.
 
@@ -67,7 +68,8 @@ Başlamak için bir Azure NetApp Files hesabı ayarlamanız gerekir.
 
 6. Pencerenin sol tarafında **tüm hizmetler**' i seçin. Menünün üst kısmında görüntülenen arama kutusuna **Azure NetApp Files** girin.
 
-   ![Tüm hizmetler arama kutusuna "Azure NetApp Files" girerek kullanıcının ekran görüntüsü. Arama sonuçları Azure NetApp Files kaynağını gösterir.](media/azure-netapp-files-search-box.png)
+   > [!div class="mx-imgBorder"]
+   > ![Tüm hizmetler arama kutusuna "Azure NetApp Files" girerek kullanıcının ekran görüntüsü. Arama sonuçları Azure NetApp Files kaynağını gösterir.](media/azure-netapp-files-search-box.png)
 
 
 7. Arama sonuçlarında **Azure NetApp Files** ' yi seçin ve ardından **Oluştur**' u seçin.
@@ -108,7 +110,8 @@ Bundan sonra bir Active Directory bağlantısına katılmanız gerekir.
 
 1. Sayfanın sol tarafındaki menüden **Active Directory bağlantıları** ' nı **seçin, sonra birleştir düğmesini seçerek** **Active Directory ekleyin** sayfasını açın.
 
-   ![Active Directory bağlantıları menüsünü Birleştir menüsünün ekran görüntüsü.](media/active-directory-connections-menu.png)
+   > [!div class="mx-imgBorder"]
+   > ![Active Directory bağlantıları menüsünü Birleştir menüsünün ekran görüntüsü.](media/active-directory-connections-menu.png)
 
 2. Bir bağlantıya katmak için **joın Active Directory** sayfasına aşağıdaki değerleri girin:
 
@@ -148,7 +151,8 @@ Birimi oluşturduktan sonra, birim erişim parametrelerini yapılandırın.
 
 6.  Bağlama yolunu görmek için **Kaynağa Git** ' i seçin ve Genel Bakış sekmesinde arama yapın.
 
-    ![Bağlama yolunu işaret eden kırmızı bir ok ile genel bakış ekranının ekran görüntüsü.](media/overview-mount-path.png)
+    > [!div class="mx-imgBorder"]
+    > ![Bağlama yolunu işaret eden kırmızı bir ok ile genel bakış ekranının ekran görüntüsü.](media/overview-mount-path.png)
 
 ## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>Oturum ana bilgisayarında FSLogix yapılandırma sanal makineleri (VM 'Ler)
 
@@ -218,7 +222,8 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 4. **Azure NetApp Files**açın, Azure NetApp Files hesabınızı seçin ve ardından **birimler**' i seçin. Birimler menüsü açıldıktan sonra karşılık gelen birimi seçin.
 
-   ![Daha önce birimler düğmesi seçili Azure portal daha önce ayarladığınız NetApp hesabının ekran görüntüsü.](media/netapp-account.png)
+   > [!div class="mx-imgBorder"]
+   > ![Daha önce birimler düğmesi seçili Azure portal daha önce ayarladığınız NetApp hesabının ekran görüntüsü.](media/netapp-account.png)
 
 5. **Genel bakış** sekmesine gidin ve FSLogix profil kapsayıcısının boşluk kullandığını doğrulayın.
 
@@ -226,7 +231,8 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
    Bu klasör içinde, aşağıdaki örnekte olduğu gibi bir profil VHD (veya VHDX) olmalıdır.
 
-   ![Bağlama yolundaki klasörün içindekilerin ekran görüntüsü. İçinde, "Profile_ssbb" adlı tek bir VHD dosyası.](media/mount-path-folder.png)
+   > [!div class="mx-imgBorder"]
+   > ![Bağlama yolundaki klasörün içindekilerin ekran görüntüsü. İçinde, "Profile_ssbb" adlı tek bir VHD dosyası.](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

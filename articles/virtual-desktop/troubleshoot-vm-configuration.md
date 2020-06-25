@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 81a3d8e08486f76fc23a489acd3138d7b9fe8134
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: df2990e3799d0b16f316c522185ac9b779ca48e4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711638"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362365"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -121,7 +121,8 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 
 ### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>Hata: Get-AzWvdSessionHost cmdlet 'inde dosyalanmış durum durumu kullanım dışı olarak gösteriyor
 
-![Get-AzWvdSessionHost cmdlet 'i, durumu kullanım dışı olarak gösterir.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Get-AzWvdSessionHost cmdlet 'i, durumu kullanım dışı olarak gösterir.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Neden:** Aracı kendisini yeni bir sürüme güncelleştiremeyebilir.
 
@@ -194,7 +195,8 @@ Windows sanal masaüstü 'Nün yan yana Stack ile ilgili sorun yaşıyorsanız, 
 
 Yan yana yığın yüklenip etkinleştirilirse, **qwinsta** çıktısı çıktıda **RDP-sxs** ' i listeler.
 
-![Yan yana yığın, çıktıda RDP-sxs olarak listelenen qwinsta yüklü veya etkin.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Yan yana yığın, çıktıda RDP-sxs olarak listelenen qwinsta yüklü veya etkin.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eşleştiğini doğrulayın. Kayıt defteri anahtarları eksikse veya değerler uyuştubulunursa, yan yana yığının nasıl yeniden yükleneceğini öğrenmek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin.
 
@@ -208,7 +210,8 @@ Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eş
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Hata: O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE hata kodu.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![O_REVERSE_CONNECT_STACK_FAILURE hata kodu.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Neden:** Yan yana yığın, oturum ana bilgisayar VM 'sinde yüklü değil.
 
@@ -244,19 +247,21 @@ Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki 
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname, hatalı çalışan yan yana yığın ile VM 'nin makine adıdır.
 
 7. Kabul et 'e tıklayarak PsExec lisans sözleşmesini kabul edin.
 
-    ![Yazılım Lisans Sözleşmesi ekran görüntüsü.](media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![Yazılım Lisans Sözleşmesi ekran görüntüsü.](media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >Bu iletişim kutusu yalnızca PsExec ilk kez çalıştırıldığında görünür.
 
 8. Komut istemi oturumu, hatalı çalışan yan yana Stack ile sanal makinede açıldıktan sonra qwinsta komutunu çalıştırın ve RDP-sxs adlı bir girdinin kullanılabilir olduğunu onaylayın. Aksi halde, sorun yan yana yığına bağlı olmadığından, sanal makinede yan yana bir yığın yok.
 
-    ![Yönetici komut istemi](media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![Yönetici komut istemi](media/AdministratorCommandPrompt.png)
 
 9. Aşağıdaki komutu çalıştırarak, sanal makinede yüklü olan Microsoft bileşenlerini hatalı yan yana yığın ile listeleyin.
 
@@ -324,7 +329,8 @@ Hangi Windows 10 Kurumsal Çoklu oturum sürümünü olduğunu denetlemek için:
 3. **PC 'Niz hakkında**' yı seçin.
 4. "Sürüm" nın yanındaki numarayı denetleyin. Aşağıdaki görüntüde gösterildiği gibi, sayı "1809" ya da "1903" olmalıdır.
 
-    ![Windows belirtimleri penceresinin ekran görüntüsü. Sürüm numarası mavi renkle vurgulanır.](media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Windows belirtimleri penceresinin ekran görüntüsü. Sürüm numarası mavi renkle vurgulanır.](media/windows-specifications.png)
 
 Artık sürüm numaranızı bildiğinize göre ilgili bölüme atlayın.
 

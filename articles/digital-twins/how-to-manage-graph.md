@@ -1,5 +1,5 @@
 ---
-title: İlişkileri olan bir ikizi grafiğini yönetme
+title: İkizi grafiğini ilişkilerle yönetme
 titleSuffix: Azure Digital Twins
 description: Bkz. bir dijital TWINS grafiğini ilişkiler ile bağlayarak yönetme.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e332936543cc36e20b88da4ce5cc9115d0890967
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 13ceed847b3946b47fb3389145843ad085391dc5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725707"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362807"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
@@ -23,7 +23,7 @@ Azure dijital TWINS 'in kalbi, tüm ortamınızı temsil eden [ikizi grafiktir](
 
 Çalışan bir [Azure dijital TWINS örneğiniz](how-to-set-up-instance.md) olduğunda ve istemci uygulamanız için [kimlik doğrulaması](how-to-authenticate-client.md) ayarladıktan sonra, Azure dijital TWINS örneğindeki dijital TWINS ve bunların ilişkilerini oluşturmak, değiştirmek ve silmek Için [**digitaltwins API 'lerini**](how-to-use-apis-sdks.md) kullanabilirsiniz. [.Net (C#) SDK 'sını](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure DIGITAL TWINS CLI](how-to-use-cli.md)'yi de kullanabilirsiniz.
 
-Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek dijital TWINS ile çalışmak için bkz. [nasıl yapılır: dijital Ikizi yönetme](how-to-manage-twin.md).
+Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek dijital TWINS ile çalışmak için bkz. [nasıl yapılır: dijital TWINS 'ı yönetme](how-to-manage-twin.md).
 
 ## <a name="create-relationships"></a>İlişki oluştur
 

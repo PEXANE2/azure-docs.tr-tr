@@ -3,12 +3,12 @@ title: Linux üzerinde geliştirme ortamınızı ayarlama
 description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra uygulama derlemek için hazır hale gelirsiniz.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 38ea94e14a182671b3540a87c3bf90e861479fe5
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 346230c0363bf58926cc46cb8bac2de61b81d68b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338473"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361981"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ Bu makaledeki adımlarda, Linux’a yerel olarak yükleme yaptığınız veya Se
 Linux için Windows Alt Sistemine SDK ve Service Fabric çalışma zamanının yüklenmesi desteklenmez. Desteklenen Azure Service Fabric komut satırı arabirimiyle (CLI) bulutta veya şirket içinde başka herhangi bir yerde barındırılan Service Fabric varlıklarını yönetebilirsiniz. CLI'yi yükleme hakkında bilgi için bkz. [Service Fabric CLI'sini ayarlama](./service-fabric-cli.md).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Geliştirme için şu işletim sistemi sürümleri desteklenir.
 
@@ -61,40 +61,45 @@ SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla y�
 
 1. Bir terminal açın.
 
-2. `dotnet` deposunu kaynak listenize ekleyin.
+2. Deponuza `dotnet` karşılık gelen kaynak listenize depoyu ekleyin.
 
     ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
 3. Yeni Gnu Privacy Guard (GnuPG, veya GPG) anahtarını APT anahtarlığınıza ekleyin.
 
     ```bash
-    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
 4. Resmi Docker GPG anahtarını APT anahtarlığınıza ekleyin.
 
     ```bash
-    sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-5. Docker deposunu ayarlayın.
+5. APT kimlik anahtarlığı 'e MS Open Tech GPG anahtarını ekleyin.
+
+    ```bash
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | apt-key add -
+    ```
+
+6. Docker deposunu ayarlayın.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-6. APT kimlik anahtarlığı 'e Azul JDK anahtarını ekleyin ve deposunu ayarlayın.
+7. APT kimlik anahtarlığı 'e Azul JDK anahtarını ekleyin ve deposunu ayarlayın.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-7. Paket listelerinizi yeni eklenen depolara göre yenileyin.
+8. Paket listelerinizi yeni eklenen depolara göre yenileyin.
 
     ```bash
     sudo apt-get update

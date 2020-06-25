@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100854"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362943"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -67,20 +67,23 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
    
    Seçtiğiniz bölgelerle ilişkili Azure coğrafya, bu konak havuzunun ve ilgili nesnenin meta verilerinin depolanacağı yerdir. Hizmet meta verilerinin depolanmasını istediğiniz coğrafya içindeki bölgeleri seçtiğinizden emin olun.
 
-     ![Konum alanını seçili Doğu ABD konumu ile gösteren Azure portal ekran görüntüsü. Alanın yanında, "meta veriler Doğu ABD depolanır." ifadesini görürsünüz.](media/portal-location-field.png)
+     > [!div class="mx-imgBorder"]
+     > ![Konum alanını seçili Doğu ABD konumu ile gösteren Azure portal ekran görüntüsü. Alanın yanında, "meta veriler Doğu ABD depolanır." ifadesini görürsünüz.](media/portal-location-field.png)
 
 8. Konak havuzu türü altında, ana bilgisayar havuzunuzun **Kişisel** mi yoksa **havuza alınmış**mı olacağını seçin.
 
     - **Kişisel**' i seçerseniz, atama türü alanında **Otomatik** veya **doğrudan** ' yi seçin.
 
-      ![Atama türü alanı açılan menüsünün ekran görüntüsü. Kullanıcı otomatik olarak seçildi.](media/assignment-type-field.png)
+      > [!div class="mx-imgBorder"]
+      > ![Atama türü alanı açılan menüsünün ekran görüntüsü. Kullanıcı otomatik olarak seçildi.](media/assignment-type-field.png)
 
 9. **Havuza alınmış**' ı seçerseniz, aşağıdaki bilgileri girin:
 
      - **En fazla oturum sınırı**için, yük dengelenmesi istediğiniz en fazla kullanıcı sayısını tek bir oturum konağına girin.
      - **Yük dengeleme algoritması**için, kullanım düzeninizi temel alarak, öncelikle, birinci veya derinlik seçeneklerinden birini belirleyin.
 
-       ![Atama türü alanının "havuza alınmış" seçiliyken bir ekran görüntüsü. Kullanıcı, Yük Dengeleme açılan menüsünde imlecini yukarı doğru üzerine alır.](media/pooled-assignment-type.png)
+       > [!div class="mx-imgBorder"]
+       > ![Atama türü alanının "havuza alınmış" seçiliyken bir ekran görüntüsü. Kullanıcı, Yük Dengeleme açılan menüsünde imlecini yukarı doğru üzerine alır.](media/pooled-assignment-type.png)
 
 10. **İleri ' yi seçin: VM ayrıntıları**.
 
@@ -117,11 +120,13 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
      İstediğiniz görüntüyü görmüyorsanız, galerinizdeki başka bir görüntüyü ya da Microsoft ve diğer yayımcılar tarafından sunulan bir görüntüyü seçmenizi sağlayan **tüm görüntülere ve disklere gözatamazsınız**' ı seçin.
 
-     ![Microsoft 'un gösterildiği resimlerin listesini içeren Market 'in ekran görüntüsü.](media/marketplace-images.png)
+     > [!div class="mx-imgBorder"]
+     > ![Microsoft 'un gösterildiği resimlerin listesini içeren Market 'in ekran görüntüsü.](media/marketplace-images.png)
 
      **Öğelerime** giderek, zaten karşıya yüklediğiniz özel bir görüntüyü seçebilirsiniz.
 
-     ![Öğelerimin sekmesinin ekran görüntüsü.](media/my-items.png)
+     > [!div class="mx-imgBorder"]
+     > ![Öğelerimin sekmesinin ekran görüntüsü.](media/my-items.png)
 
     - **Depolama Blobu**' nı seçerseniz, Hyper-V veya BIR Azure VM 'de kendi görüntü yapınızı kullanabilirsiniz. Tüm yapmanız gerekirse, bir URI olarak Depolama Blobu içindeki görüntünün konumunu girin.
 
@@ -136,7 +141,8 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
     >[!NOTE]
     >Daha fazla güvenlik için genel gelen bağlantı noktalarını açmemenizi öneririz.
 
-    ![Bir açılan menüdeki kullanılabilir bağlantı noktalarının listesini gösteren güvenlik grubu sayfasının ekran görüntüsü.](media/available-ports.png)
+    > [!div class="mx-imgBorder"]
+    > ![Bir açılan menüdeki kullanılabilir bağlantı noktalarının listesini gösteren güvenlik grubu sayfasının ekran görüntüsü.](media/available-ports.png)
     
     **Gelişmiş**' i seçerseniz, önceden yapılandırdığınız mevcut bir ağ güvenlik grubunu seçin.
 

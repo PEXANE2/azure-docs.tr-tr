@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871874"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362100"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Derleme görevlerini yapılandırma ve özelleştirme
 
@@ -61,15 +61,15 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 - **Hedef**bölümünde, bir dosya, dizin veya filtre deseninin bir veya daha fazla belirticilerini girin. Bu tanımlayıcılar çözümlenecek bir veya daha fazla ikiliye çözümlenmelidir:
     - Birden çok belirtilen hedefin noktalı virgülle ayrılması gerekir (;).
     - Belirleyici tek bir dosya olabilir veya joker karakterler içerebilir.
-    - Dizin belirtimlerinin her zaman * \\ile bitmesi gerekir.
+    - Dizin belirtimlerinin her zaman * ile bitmesi gerekir \\ .
     - Örnekler:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
 
-- **Tür** listesinde **komut satırı** ' nı seçerseniz, binskim. exe ' yi çalıştırmanız gerekir:
-     - Binskım. exe ' ye yönelik ilk bağımsız değişkenlerin **, izlenen bir** veya daha fazla yol belirtimlerinden sonra olduğundan emin olun. Her yol, kaynak dizine göre tam yol veya yol olabilir.
+- **Tür** listesinde **komut satırı** ' nı seçerseniz binskim.exe çalıştırmanız gerekir:
+     - binskim.exe ilk bağımsız değişkenlerin, ardından bir veya daha fazla yol belirtimlerinden sonra **analiz** olduğundan emin olun. Her yol, kaynak dizine göre tam yol veya yol olabilir.
      - Birden çok hedef yol bir boşluk ile ayrılmalıdır.
      - **/O** veya **/output** seçeneğini atlayabilirsiniz. Çıkış değeri sizin için eklenir veya değiştirilmez.
      - Standart komut satırı yapılandırması aşağıdaki gibi gösterilmiştir.
@@ -78,7 +78,7 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
            analyze *.dll *.exe --recurse --verbose
 
           > [!NOTE]
-          > Hedef için \\dizinler belirtirseniz sonda * önemlidir.
+          > \\Hedef için dizinler belirtirseniz sonda * önemlidir.
 
 BinSkim komut satırı bağımsız değişkenleri, KIMLIĞE göre kurallar veya çıkış kodları hakkında daha fazla bilgi için bkz. [Binskim Kullanıcı Kılavuzu](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
@@ -103,40 +103,10 @@ Mevcut seçenekler şunlardır:
   - **Eşleşme zaman aşımı**: denetimi bırakmadan önce bir arama eşleşmesi gerçekleştirmeye harcanan saniye cinsinden süre.
   - **Dosya taraması okuma arabelleği boyutu**: içerik okunurken kullanılan arabelleğin bayt cinsinden boyutu. Varsayılan değer 524.288 ' dir.  
   - **Dosya taraması okuma bayt üst sınırı**: içerik analizi sırasında bir dosyadan okunan en fazla bayt sayısı. Varsayılan değer 104.857.600 ' dir.
-  - **Denetim seçenekleri** > **Bu görevi çalıştır**: görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
+  - **Denetim seçenekleri**  >  **Bu görevi çalıştır**: görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
   - **Sürüm**: Azure DevOps içindeki derleme görevi sürümü. Bu seçenek sıklıkla kullanılmaz.
 
 Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [kimlik bilgisi tarayıcımız YAML seçenekleri](yaml-configuration.md#credential-scanner-task) ' ne bakın
-
-## <a name="microsoft-security-risk-detection-task"></a>Microsoft güvenlik riski algılama görevi
-
-> [!NOTE]
-> MSRD görevini kullanmadan önce Microsoft güvenlik riski algılama (MSRD) hizmeti ile bir hesap oluşturmanız ve yapılandırmanız gerekir. Bu hizmet ayrı bir ekleme işlemi gerektirir. Bu uzantıdaki birçok görevin aksine, bu görev MSRD ile ayrı bir abonelik gerektirir.
->
-> Lütfen [Microsoft güvenlik riski algılama](https://aka.ms/msrddocs) ve [Microsoft güvenlik riski algılama: nasıl yapılır](https://docs.microsoft.com/security-risk-detection/how-to/) yönergeleri bölümüne bakın.
-
-Bu görevi yapılandırma ayrıntıları aşağıdaki listede gösterilmektedir. Herhangi bir kullanıcı arabirimi öğesi için, yardım almak için bu öğenin üzerine gelin.
-
-   - **MSRD Için Azure DevOps hizmeti uç noktası adı**: genel bir Azure DevOps hizmeti uç noktası olan eklendi msrd örnek URL 'nizi ve REST API erişim belirtecinizi depolar. Böyle bir uç nokta oluşturduysanız, burada belirtebilirsiniz. Aksi takdirde, bu MSRD görevi için yeni bir hizmet uç noktası oluşturmak ve yapılandırmak üzere **Yönet** bağlantısını seçin.
-   - **Hesap kimliği**: msrd hesap URL 'sinden ALıNABILECEK bir GUID.
-   - **Ikililerin URL 'leri**: genel kullanıma açık URL 'lerin noktalı virgülle ayrılmış listesi. Bu URL, ikili dosyaları indirmek için bu URL 'Leri kullanır.
-   - **Çekirdek dosyalarının URL 'leri**: genel kullanıma açık URL 'lerin noktalı virgülle ayrılmış listesi. Belirsizlik makinesi, bu URL 'Leri kullanarak Seeds 'yi indirir. Çekirdek dosyalar ikili dosyalarla birlikte indirildiyse bu değerin belirtilmesi isteğe bağlıdır.
-   - **İşletim sistemi platformu türü**: belirsizlik işini çalıştıran makinelerin işletim SISTEMI (OS) platformu. Kullanılabilir değerler **Windows** ve **Linux**' dir.
-   - **Windows Edition/Linux Edition**: belirsizlik işini çalıştıran makinelerin işletim sistemi sürümü. Makinelerinizde farklı bir işletim sistemi sürümü varsa varsayılan değerin üzerine yazabilirsiniz.
-   - **Paket yükleme betiği**: bir test makinesinde çalıştırılacak komut dosyası. Bu betik, belirsizlik işi gönderilmeden önce test hedef programını ve bağımlılıklarını yüklenir.
-   - **Iş gönderme parametreleri**:
-       - **Çekirdek Dizin**: Seeds 'yi içeren rastgele makinedeki dizin yolu.
-       - **Çekirdek uzantısı**: Seeds 'nin dosya adı uzantısı.
-       - **Test sürücüsü yürütülebilir**dosyası: en fazla makinedeki hedef yürütülebilir dosyanın yolu.
-       - **Test sürücüsü çalıştırılabilir mimarisi**: hedef yürütülebilir dosyanın mimarisi. Kullanılabilir değerler **x86** ve **AMD64**' dir.
-       - **Test sürücüsü bağımsız değişkenleri**: test yürütülebilir dosyasına geçirilen komut satırı bağımsız değişkenleri. Tırnak işaretleri de dahil olmak üzere "% TestFile%" bağımsız değişkeni otomatik olarak hedef dosyanın tam yolu ile değiştiriliyor. Bu dosya, test sürücüsü tarafından ayrıştırılır ve gereklidir.
-       - Test **sürücüsü Işlemi test tamamlamada çıkıyor**: test sürücüsü tamamlandıktan sonra sonlandırılırsa bu onay kutusunu işaretleyin. Sınama sürücüsünün zorla kapatılması gerekiyorsa, temizleyin.
-       - **En uzun süre (saniye cinsinden)**: hedef programın bir giriş dosyasını ayrıştırmak için gereken en uzun tahmini beklenen zaman. Tahmine göre daha doğru, uygulamanın düzgün çalıştığı daha verimli bir şekilde çalışır.
-       - **Test sürücüsü sürekli çalıştırılabilir**: test sürücüsü kalıcı veya paylaşılan bir genel duruma bağlı olarak tekrar tekrar çalıştırılabiliyorsanız bu onay kutusunu işaretleyin.
-       - **Test sürücüsü yeniden adlandırılabilir**: test sürücüsü yürütülebilir dosyası yeniden adlandırılabilmeli ve yine de düzgün çalışabiliyorsanız bu onay kutusunu işaretleyin.
-       - **Uygulamanın belirsizlik tek bir işletim sistemi işlemi olarak çalışır**: test sürücüsü tek bir işletim sistemi işlemi altında çalışıyorsa bu onay kutusunu işaretleyin. Test sürücüsü ek işlemler işliyorsa bunu temizleyin.
-
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [Microsoft güvenlik riski algılama YAML seçeneklerimize](yaml-configuration.md#microsoft-security-risk-detection-task) bakın
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn Çözümleyicileri görevi
 
@@ -153,11 +123,11 @@ Mevcut seçenekler şunlardır:
 - **RuleSet**: değerler **SDL gerekir**, **SDL önerilir**veya kendi özel kural kümesidir.
 - **Çözümleyiciler sürümü**: **en son**' u seçmenizi öneririz.
 - **Derleyici uyarıları gizlemeleri dosyası**: gizlenen bir uyarı kimlikleri listesi içeren bir metin dosyası.
-- **Denetim seçenekleri** > **Bu görevi çalıştır**: görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
+- **Denetim seçenekleri**  >  **Bu görevi çalıştır**: görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
 
 > [!NOTE]
 >
-> - Roslyn Çözümleyicileri derleyici ile tümleşiktir ve yalnızca CSC. exe derlemesinin bir parçası olarak çalıştırılabilir. Bu nedenle, bu görev, daha önce derleme içinde çalışan derleyici komutunun yeniden çalınmasını veya yeniden çalıştırılmasını gerektirir. Bu yeniden yürütme veya çalıştırma, MSBuild derleme görev günlükleri için Visual Studio Team Services (VSTS) sorgulanarak yapılır.
+> - Roslyn Çözümleyicileri derleyici ile tümleşiktir ve yalnızca csc.exe derlemesinin bir parçası olarak çalıştırılabilir. Bu nedenle, bu görev, daha önce derleme içinde çalışan derleyici komutunun yeniden çalınmasını veya yeniden çalıştırılmasını gerektirir. Bu yeniden yürütme veya çalıştırma, MSBuild derleme görev günlükleri için Visual Studio Team Services (VSTS) sorgulanarak yapılır.
 >
 >   Görevin, derleme tanımından MSBuild derleme komut satırını güvenilir bir şekilde alması için başka bir yol yoktur. Kullanıcıların komut satırlarını girmesini sağlamak için bir serbest biçim metin kutusu ekleme kabul ettik. Ancak, bu komut satırlarını güncel ve ana yapıyla eşitlenmiş halde tutmak zor olabilir.
 >

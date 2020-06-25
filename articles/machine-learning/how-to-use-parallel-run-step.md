@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: trbye, jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 04/15/2020
+ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: b26527321cf7fc5ca7fc4b061f11b86f8830ec29
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ae79a4f7264224f29db4ede0944ae079130b6394
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552310"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362620"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Aşağıdaki eylemler bir toplu çıkarım ardışık düzeni çalıştırmak i�
 
 ### <a name="configure-workspace"></a>Çalışma alanını yapılandırma
 
-Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. `Workspace.from_config()`config. json dosyasını okur ve ayrıntıları WS adlı bir nesneye yükler.
+Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. `Workspace.from_config()`dosyadaki config.jsokur ve ayrıntıları WS adlı bir nesneye yükler.
 
 ```python
 from azureml.core import Workspace
@@ -210,7 +210,7 @@ Betik iki işlev *içermelidir* :
 - `init()`: Bu işlevi, daha sonraki çıkarım için pahalı veya genel hazırlık için kullanın. Örneğin, modeli genel bir nesneye yüklemek için kullanın. Bu işlev, işlem başlangıcında yalnızca bir kez çağrılır.
 -  `run(mini_batch)`: İşlev her örnek için çalışacaktır `mini_batch` .
     -  `mini_batch`: ParallelRunStep Run metodunu çağırır ve bir liste ya da Pandas DataFrame 'i yönteme bağımsız değişken olarak geçiracaktır. Giriş bir TabularDataset ise, mini_batch içindeki her giriş bir dosya yolu olur.
-    -  `response`: Run () yöntemi bir Pandas DataFrame veya Array döndürmelidir. Append_row output_action için, döndürülen bu öğeler ortak çıkış dosyasına eklenir. Summary_only için öğelerin içeriği yok sayılır. Tüm çıkış eylemleri için, döndürülen her çıkış öğesi girdi öğesinin giriş mini Batch 'de başarılı bir şekilde çalıştırıldığını belirtir. Girişi, çıkış sonucunu çalıştırmak için eşlemek üzere, çalışma sonuçlarına yeterli miktarda veri eklendiğinden emin olmanız gerekir. Çalıştırma çıkışı çıkış dosyasında yazılır ve bu sırada olması garanti edilmez, çıktıda bir anahtarı, girişle eşlemek için kullanmalısınız.
+    -  `response`: Run () yöntemi bir Pandas DataFrame veya Array döndürmelidir. Append_row output_action için, döndürülen bu öğeler ortak çıkış dosyasına eklenir. Summary_only için öğelerin içeriği yok sayılır. Tüm çıkış eylemleri için, döndürülen her çıkış öğesi girdi öğesinin giriş mini Batch 'de başarılı bir şekilde çalıştırıldığını belirtir. Girişi, çıkış sonucunu çalıştırmak için eşlemek üzere, çalışma sonuçlarına yeterli miktarda veri eklendiğinden emin olun. Çalıştırma çıkışı çıkış dosyasında yazılır ve bu sırada olması garanti edilmez, çıktıda bir anahtarı, girişle eşlemek için kullanmalısınız.
 
 ```python
 # Snippets from a sample script.
@@ -266,11 +266,11 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>ParallelRunStep içeren işlem hattını derleyin ve çalıştırın
 
-Artık ihtiyacınız olan her şeye sahipsiniz: veri girişleri, model, çıkış ve çıkarım betiğinizin. ParallelRunStep içeren Batch çıkarımı ardışık düzeni oluşturalım.
+Artık ihtiyacınız olan her şeye sahipsiniz: veri girişleri, model, çıktı ve çıkarım betiğinizin. ParallelRunStep içeren Batch çıkarımı ardışık düzeni oluşturalım.
 
 ### <a name="prepare-the-environment"></a>Ortamı hazırlama
 
-İlk olarak, betiğinizin bağımlılıklarını belirtin. Bu, PIP paketleri yüklemenize ve ortamı yapılandırmanıza olanak tanır. Lütfen her zaman **azureml-Core** ve **azureml-dataprep [Pandas, sigortası]** paketlerini ekleyin.
+İlk olarak, betiğinizin bağımlılıklarını belirtin. Bunun yapılması, PIP paketleri yüklemenize ve ortamı yapılandırmanıza olanak tanır. Her zaman **azureml-Core** ve **azureml-dataprep [Pandas, sigortası]** paketlerini ekleyin.
 
 Özel bir Docker görüntüsü (user_managed_dependencies = true) kullanırsanız Ayrıca, Conda yüklemiş olmanız gerekir.
 
@@ -309,7 +309,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: `run()` Saniye cinsinden Yöntem çağırma zaman aşımı. (isteğe bağlı; varsayılan değer `60` )
 - `run_max_try`: `run()` Bir mini toplu iş için deneme sayısı üst sınırı. Bir `run()` özel durum oluşursa bir hata oluşur veya ulaşıldığında hiçbir şey döndürülmez `run_invocation_timeout` (isteğe bağlı; varsayılan değer `3` ). 
 
-`mini_batch_size` `node_count` Bir işlem `process_count_per_node` hattı çalıştırmasını yeniden gönderdiğinizde `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` parametre değerlerini ince ayar yapmak için,,, ve olarak belirtebilirsiniz. Bu örnekte, ve için Pipelineparametresini kullanırsınız `mini_batch_size` `Process_count_per_node` ve daha sonra bir çalıştırmayı yeniden gönderdiğinizde bu değerleri değiştirirsiniz. 
+,,, `mini_batch_size` , `node_count` `process_count_per_node` `logging_level` `run_invocation_timeout` , Ve `run_max_try` gibi `PipelineParameter` bir işlem hattı çalıştırmasını yeniden gönderdiğinizde parametre değerlerini ince ayar yapabilirsiniz. Bu örnekte, ve için Pipelineparametresini kullanırsınız `mini_batch_size` `Process_count_per_node` ve daha sonra bir çalıştırmayı yeniden gönderdiğinizde bu değerleri değiştirirsiniz. 
 
 ```python
 from azureml.pipeline.core import PipelineParameter

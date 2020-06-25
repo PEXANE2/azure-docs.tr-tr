@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3997ae5aa95423841a918a3b5ed1fb0a01d3602e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1e64624865a314a7487a7ce474c1e5e56e3d9277
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85218065"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85363011"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP iş yükü için Azure Depolama türleri
 Azure 'da yetenekler, verimlilik, gecikme ve fiyatlara göre büyük ölçüde farklı depolama türlerine sahiptir. Bazı depolama türleri veya SAP senaryolarında sınırlı kullanılabilir değildir. Ancak, birkaç Azure depolama türü, belirli SAP iş yükü senaryoları için uygundur veya iyileştirilmiştir. Özellikle SAP HANA için, bazı Azure Depolama türleri SAP HANA kullanım için sertifikalandıralındı. Bu belgede, farklı depolama türlerini inceleyeceğiz ve SAP iş yükleri ve SAP bileşenleriyle yeteneklerini ve kullanılabilirliğini anladık.
@@ -34,7 +34,23 @@ Standart HDD, Standart SSD, Azure Premium Storage ve ultra disk Microsoft Azure 
 
 Azure [depolama çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) makalesinde, Azure 'un sunabileceği farklı depolama türleri için uygulanan makalede açıklanan daha fazla artıklık yöntemi vardır. 
 
-Bu dayanıklılık seçeneklerinin SAP için kullanılan Azure depolama türlerine nasıl uygulandığı, sonraki bölümlerde açıklanmıştır.
+### <a name="azure-managed-disks"></a>Azure yönetilen diskler
+
+Yönetilen diskler, Azure depolama hesaplarında depolanan VHD 'ler yerine kullanılabilecek Azure Resource Manager bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makinenin [kullanılabilirlik kümesi] [sanal makineler-Yönet-kullanılabilirliği] ile otomatik olarak hizalanır ve bu nedenle sanal makinenizin ve sanal makinede çalışan hizmetlerin kullanılabilirliğini arttırır. Daha fazla bilgi için [genel bakış makalesini](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)okuyun.
+
+Dayanıklılık ile ilgili bu örnek, yönetilen disklerin avantajlarını gösterir:
+
+- SAP sisteminize yönelik iki DBMS sanal makinelerinizi bir Azure kullanılabilirlik kümesi 'nde dağıtmakta olursunuz 
+- Azure VM 'Leri dağıttığında, işletim sistemi görüntüsüne sahip disk farklı bir depolama kümesine yerleştirilir. Bu, her iki VM 'nin tek bir Azure Storage kümesi tarafından etkilenmemesini önler
+- Veritabanınızın veri ve günlük dosyalarını depolamak için bu VM 'lere atadığınız yeni yönetilen diskler oluştururken, iki VM için bu yeni diskler ayrı depolama kümelerinde da dağıtılır. bu nedenle, ilk VM 'nin hiç bir diski ikinci VM diskleriyle depolama kümelerini paylaşmamalıdır
+
+Yönetilen diskler olmadan dağıtım müşteri tanımlı depolama hesaplarında, disk ayırma rastgele olur ve VM 'Lerin bir AvSet içinde dayanıklılık amacıyla dağıtılmasının farkında olmaz.
+
+> [!NOTE]
+> Bu nedenle, yönetilen diskler aracılığıyla özel olarak kullanılabilen bazı diğer iyileştirmeler ve bu nedenle, diskleri için Azure blok depolama kullanan yeni VM dağıtımları (Azure NetApp Files hariç tüm Azure depolama), temel VHD/işletim sistemi diskleri için Azure yönetilen diskleri, SAP veritabanı dosyalarını içeren veri disklerini kullanmak için gereklidir. VM 'Leri kullanılabilirlik kümesi aracılığıyla, Kullanılabilirlik Alanları veya kümelerden ve bölgelerden bağımsız olarak dağıtıp dağıtamıyorsanız bağımsız. Yedeklemeleri depolamak amacıyla kullanılan disklerin, yönetilen diskler olması gerekmez.
+
+> [!NOTE]
+> Azure yönetilen diskler yalnızca yerel artıklık (LRS) sağlar. 
 
 
 ## <a name="storage-scenarios-with-sap-workloads"></a>SAP iş yükleri ile depolama senaryoları
@@ -67,6 +83,7 @@ Ayrıntılara geçmeden önce belgenin başlangıcında bulunan Özet ve öneril
 | DBMS günlük birimi HANA olmayan p/Mv2 VM aileleri | desteklenmiyor | kısıtlı uygun (üretim dışı) | Önerilen<sup>1</sup> | Önerilen | desteklenmiyor |
 | DBMS günlük birimi HANA olmayan/Mv2 VM aileleri | desteklenmiyor | kısıtlı uygun (üretim dışı) | Orta ölçekli iş yüküne uygun | Önerilen | desteklenmiyor |
 
+
 <sup>1</sup> [Azure yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) for log/Mv2 VM aileleri ile günlük/yineleme günlüğü birimleri <sup>2</sup> ' nin kullanımıyla birlikte, ANF kullanarak/Hana/Data ve/Hana/log ' in ANF üzerinde olması gerekir 
 
 Farklı depolama türleri listesinden bekleneceğiniz özellikler şöyle olabilir:
@@ -78,11 +95,25 @@ Farklı depolama türleri listesinden bekleneceğiniz özellikler şöyle olabil
 | Gecikme süresi yazmaları | yüksek | Orta-yüksek  | düşük (alt milisaniyelik<sup>1</sup>) | alt milisaniyelik | alt milisaniyelik |
 | HANA destekleniyor | hayır | hayır | Evet<sup>1</sup> | evet | evet |
 | Olası disk anlık görüntüleri | evet | evet | evet | hayır | evet |
+| Kullanılabilirlik kümeleri kullanılırken farklı depolama kümelerinde disklerin ayrılması | yönetilen diskler aracılığıyla | yönetilen diskler aracılığıyla | yönetilen diskler aracılığıyla | kullanılabilirlik kümeleri aracılığıyla dağıtılan VM 'Ler ile disk türü desteklenmiyor | <sup>3</sup> yok |
+| Kullanılabilirlik Alanları hizalı | evet | evet | evet | evet | Microsoft 'un katılımını gerektirir |
+| Zikzak yedekliliği | yönetilen diskler için değil | yönetilen diskler için değil | yönetilen diskler için değil | hayır | hayır |
+| Coğrafi artıklık | yönetilen diskler için değil | yönetilen diskler için değil | hayır | hayır | hayır |
 
 
 günlük/Mv2 günlük birimlerine yönelik olarak d/VM aileleri için [Azure yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) kullanımı ile <sup>1</sup>
 
 <sup>2</sup> maliyet, sağlanan IOPS ve aktarım hızına bağlıdır
+
+<sup>3</sup> farklı ANF kapasite havuzlarının oluşturulması, kapasite havuzlarının farklı depolama birimlerine dağıtılmasını garantilemez
+
+
+> [!IMPORTANT]
+> Azure NetApp Files (ANF) kullanarak 1 milisaniyelik g/ç gecikme süresi elde etmek için, sanal makinelerinize doğru yerleşimi ve ANF tabanlı NFS paylaşımlarını düzenlemek üzere Microsoft ile çalışmanız gerekir. Şimdiye kadar, sanal makine tarafından dağıtılan ve ANF üzerinde barındırılan NFS birimleri arasında otomatik bir yakınlık sağlayan hiçbir mekanizma yoktur. Farklı Azure bölgelerinin farklı kurulumu verildiğinde, sanal makine ve NFS paylaşımının yakınlık halinde ayrılmadığından, eklenen ağ gecikmesi 1 milisaniyenin ötesinde g/ç gecikmesini gönderebilir.
+
+
+> [!IMPORTANT]
+> Şu anda sunulan Azure blok depolama tabanlı yönetilen disklerin hiçbiri veya Azure NetApp Files herhangi bir bölgesel veya coğrafi artıklık sunmamaktadır. Sonuç olarak, yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarlarınızın bu yönetilen diskler, NFS veya SMB paylaşımları için herhangi bir Azure yerel depolama çoğaltma türüne bağlı olmadığından emin olmanız gerekir.
 
 
 ## <a name="azure-premium-storage"></a>Azure Premium Depolama
@@ -95,8 +126,7 @@ Azure Premium SSD depolaması, şunları sağlamak için hedefle tanıtılmışt
 Bu tür bir depolama, DBMS iş yüklerini, düşük tek basamaklı milisaniyelik gecikme süresi gerektiren depolama trafiğini ve Azure Premium Depolama söz konusu disklerde saklanan gerçek veri hacmi değildir ve bu nedenle, disk içinde depolanan verilerin miktarından bağımsız olarak bu tür bir diskin boyut kategorisini hedefler. Ayrıca, [Premium SSD](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#premium-ssd)makalesinde gösterilen boyut kategorilerine doğrudan eşlenmemiş Premium depolamada diskler oluşturabilirsiniz. Ekibinizle şu makaleye sahiptir:
 
 - Depolama, aralıklar halinde düzenlenir. Örneğin, 513 GiB ile 1024 GiB kapasitesi arasındaki bir disk aynı özellikleri ve aynı aylık maliyetleri paylaşır
-- GiB başına ıOPS, izleme değil
--  Boyut kategorileri genelinde doğrusal. 32 GiB 'nin altındaki daha küçük diskler, GiB başına ıOPS ücretlerinden daha fazladır. 32 gib 'den 1024 GiB 'ye kadar olan diskler için gib başına ıOPS oranı GiB başına 4-5 ıOPS arasındadır. 32.767 GiB 'ye kadar büyük diskler için, GiB başına ıOPS ücreti 1 ' in altına gidiyor
+- GiB başına ıOPS, boyut kategorilerinde doğrusal olarak izlenmiyor. 32 GiB 'nin altındaki daha küçük diskler, GiB başına ıOPS ücretlerinden daha fazladır. 32 gib 'den 1024 GiB 'ye kadar olan diskler için gib başına ıOPS oranı GiB başına 4-5 ıOPS arasındadır. 32.767 GiB 'ye kadar büyük diskler için, GiB başına ıOPS ücreti 1 ' in altına gidiyor
 - Bu depolama alanı için g/ç üretilen işi disk kategorisinin boyutuyla doğrusal değil. 65 GiB ve 128 GiB kapasitesi arasındaki kategori gibi daha küçük diskler için üretilen iş, 780KB/GiB ' dir. Bir 32.767 GiB diski gibi Extreme büyük diskler için üretilen iş, 28KB/GiB 'nin etrafında
 - IOPS ve üretilen iş SLA 'Ları, diskin kapasitesi değişmeksizin değiştirilemez
 

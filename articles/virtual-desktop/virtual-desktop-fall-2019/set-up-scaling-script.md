@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3a82665f197301fe81c448dd18181f0602bdbef
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209802"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362552"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
 
@@ -106,7 +106,8 @@ Her şeyi hazırlayın ve kullanmaya başlayın.
 
 6. Azure Otomasyonu hesabınızı ayarladıktan sonra Azure aboneliğinizde oturum açın ve aşağıdaki görüntüde gösterildiği gibi Azure Otomasyonu hesabınızın ve ilgili runbook 'un belirtilen kaynak grubunda göründüğünden emin olun:
 
-![Yeni oluşturulan Otomasyon hesabını ve Runbook 'u gösteren Azure genel bakış sayfasının bir görüntüsü.](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![Yeni oluşturulan Otomasyon hesabını ve Runbook 'u gösteren Azure genel bakış sayfasının bir görüntüsü.](../media/automation-account.png)
 
   Web kancası 'nizin nerede olması gerektiğini denetlemek için Runbook 'un adını seçin. Sonra, runbook 'un kaynaklar bölümüne gidin ve **Web kancaları**' nı seçin.
 
@@ -236,11 +237,13 @@ Son olarak, Azure Logic App 'i oluşturmanız ve yeni ölçeklendirme aracınız
 
      Betiği çalıştırdıktan sonra, aşağıdaki görüntüde gösterildiği gibi mantıksal uygulamanın bir kaynak grubunda görünmesi gerekir.
 
-     ![Örnek bir Azure mantıksal uygulaması için genel bakış sayfasının bir görüntüsü.](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![Örnek bir Azure mantıksal uygulaması için genel bakış sayfasının bir görüntüsü.](../media/logic-app.png)
 
 Yineleme zaman dilimini veya saat dilimini değiştirme gibi yürütme zamanlamasında değişiklik yapmak için otomatik ölçeklendirme Scheduler ' a gidin ve Logic Apps tasarımcısına gitmek için **Düzenle** ' yi seçin.
 
-![Logic Apps tasarımcısının bir görüntüsü. Kullanıcının yineleme sürelerini ve Web kancası dosyasını düzenlemesini sağlayan yineleme ve Web kancası menüleri.](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![Logic Apps tasarımcısının bir görüntüsü. Kullanıcının yineleme sürelerini ve Web kancası dosyasını düzenlemesini sağlayan yineleme ve Web kancası menüleri.](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>Ölçeklendirme aracınızı yönetme
 
@@ -252,7 +255,8 @@ Tüm runbook işlerinin özetlenen durumunu görüntüleyebilir veya Azure porta
 
 Seçtiğiniz Otomasyon hesabınızın sağ tarafındaki "Iş Istatistikleri" bölümünde, tüm runbook işlerinin özetlerinin bir listesini görüntüleyebilirsiniz. Pencerenin sol tarafındaki **işler** sayfasını açmak geçerli iş durumlarını, başlangıç zamanlarını ve tamamlanma zamanlarını gösterir.
 
-![İş durumu sayfasının ekran görüntüsü.](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![İş durumu sayfasının ekran görüntüsü.](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>Günlükleri görüntüleme ve ölçeklendirme aracı çıktısı
 
@@ -260,5 +264,6 @@ Runbook 'unuzu açıp işinizin adını seçerek genişleme ve ölçek işlemler
 
 Azure Otomasyonu hesabını barındıran kaynak grubunuzda runbook 'a gidin (varsayılan ad WVDAutoScaleRunbook) ve **genel bakış**' ı seçin. Genel Bakış sayfasında, aşağıdaki görüntüde gösterildiği gibi, ölçek aracı çıktısını görüntülemek için son Işler altında bir iş seçin.
 
-![Ölçeklendirme aracı için çıkış penceresinin bir görüntüsü.](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![Ölçeklendirme aracı için çıkış penceresinin bir görüntüsü.](../media/tool-output.png)
 

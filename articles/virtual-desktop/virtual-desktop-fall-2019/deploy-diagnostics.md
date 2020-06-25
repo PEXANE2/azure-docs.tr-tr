@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0660947907b26e1a86bbd68bb32d1ac5d211b20e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206062"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362348"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -195,7 +195,8 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 6. Tür ' ün altındaki açılan menüde **Web** ' i seçin.
 7. Uygulamaya genel bakış sayfasından URL 'YI girin ve sonuna **/Security/SignIn-callback** ekleyin. Örneğin: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
-   ![Yeniden yönlendirme URI 'SI sayfası](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![Yeniden yönlendirme URI 'SI sayfası](../media/redirect-uri-page.png)
 
 8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda kullandığınız uygulama adı ise `contosoapp45` , ILIŞKILI URL 'niz <https://contosoapp45.azurewebsites.net> ).
 9. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.

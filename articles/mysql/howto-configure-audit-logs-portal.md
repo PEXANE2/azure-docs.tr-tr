@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: d6d037f3d45216b81d2c5fdcb67ea48b4252a889
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 1c48c16666305e9b9c342869e52aa04cfd4dac07
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100988"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362977"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Azure portal MySQL için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme
 
 [MySQL Için Azure veritabanı denetim günlükleri](concepts-audit-logs.md) ve tanılama ayarları Azure portal yapılandırabilirsiniz.
-
-> [!IMPORTANT]
-> Denetim günlüğü işlevselliği Şu anda önizleme aşamasındadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -28,7 +25,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
 ## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
 
->[!NOTE]
+>[!IMPORTANT]
 > Sunucunuzun performansının yoğun bir şekilde etkilenmemesini sağlamak için, yalnızca denetim amaçlarıyla gerekli olay türlerini ve kullanıcıları günlüğe kaydetmek önerilir.
 
 Denetim günlüğünü etkinleştirin ve yapılandırın.

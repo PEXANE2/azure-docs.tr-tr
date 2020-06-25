@@ -1,5 +1,5 @@
 ---
-title: İkizi modelini yönetme
+title: Özel modelleri yönetme
 titleSuffix: Azure Digital Twins
 description: Bkz. Azure dijital TWINS 'te model oluşturma, düzenleme ve silme.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 6c023ff8419a41353e0c8aff70d04c5b9fcb27a4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 7d9fd0386f13f6c3e6df7b9d8bcf120b55c6446d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725656"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362790"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -255,4 +255,4 @@ Modeller ayrıca Azure dijital TWINS CLı kullanılarak yönetilebilir. Komutlar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Modellerinize göre dijital TWINS oluşturma ve yönetme hakkında bilgi için bkz..
-* [Nasıl yapılır: dijital ikizi yönetme](how-to-manage-twin.md)
+* [Nasıl yapılır: dijital TWINS 'i yönetme](how-to-manage-twin.md)

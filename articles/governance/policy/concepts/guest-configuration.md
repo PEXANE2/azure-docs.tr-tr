@@ -3,16 +3,17 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 81c8c642eb8b5da1e45e4d9a703685acf219ca5a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259159"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362637"
 ---
-# <a name="understand-azure-policys-guest-configuration"></a>Azure Ilkesinin Konuk yapılandırmasını anlama
+# <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
-Azure Ilkesi, bir makine içindeki ayarları denetleyebilir. Doğrulama, Konuk Yapılandırması uzantısı ve istemcisi tarafından gerçekleştirilir. Uzantı, istemci aracılığıyla şunun gibi ayarları doğrular:
+Azure Ilkesi, hem Azure 'da hem de [yay bağlantılı makinelerde](https://docs.microsoft.com/azure/azure-arc/servers/overview)çalışan makineler için bir makine içindeki ayarları denetleyebilir.
+Doğrulama, Konuk Yapılandırması uzantısı ve istemcisi tarafından gerçekleştirilir. Uzantı, istemci aracılığıyla şunun gibi ayarları doğrular:
 
 - İşletim sisteminin yapılandırması
 - Uygulama yapılandırması veya varlığı
@@ -21,33 +22,36 @@ Azure Ilkesi, bir makine içindeki ayarları denetleyebilir. Doğrulama, Konuk Y
 Şu anda, çoğu Azure Ilkesi Konuk yapılandırma ilkesi yalnızca makinenin içindeki ayarları denetler.
 Yapılandırma uygulamamaları. Özel durum [aşağıda başvurulan](#applying-configurations-using-guest-configuration)bir yerleşik ilkedir.
 
+## <a name="enable-guest-configuration"></a>Konuk yapılandırmasını etkinleştir
+
+Azure 'daki makineler ve yay bağlantılı makineler dahil ortamınızdaki makinelerin durumunu denetlemek için aşağıdaki ayrıntıları gözden geçirin.
+
 ## <a name="resource-provider"></a>Kaynak sağlayıcısı
 
 Konuk yapılandırması 'nı kullanabilmeniz için önce kaynak sağlayıcısını kaydetmeniz gerekir. Bir konuk yapılandırma ilkesinin atanması Portal üzerinden yapıldığında kaynak sağlayıcı otomatik olarak kaydedilir. [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure POWERSHELL](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)veya [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)aracılığıyla el ile kayıt yapabilirsiniz.
 
-## <a name="extension-and-client"></a>Uzantı ve istemci
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure sanal makineleri için gereksinimleri dağıtma
 
-Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkindir. Uzantı, uygulanabilir ilke atamasını ve ilgili yapılandırma tanımını indirir.
+Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkinleştirilir ve makinede sistem tarafından yönetilen bir kimlik olması gerekir. Uzantı, uygulanabilir ilke atamasını ve ilgili yapılandırma tanımını indirir. Kimlik, Konuk yapılandırma hizmetine okuduğu ve yazdığı makinenin kimliğini doğrulamak için kullanılır. Arc bağlantılı makine aracısına eklendiğinden, bu uzantı, Arc bağlantılı makineler için gerekli değildir.
 
 > [!IMPORTANT]
-> Azure sanal makinelerinde denetimleri gerçekleştirmek için konuk yapılandırma uzantısı gereklidir. Uzantıyı ölçekli olarak dağıtmak için aşağıdaki ilke tanımlarını atayın: 
->  - [Windows VM 'lerinde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->  - [Linux VM 'lerde Konuk yapılandırma Ilkesini etkinleştirmek için önkoşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Azure sanal makinelerini denetlemek için konuk yapılandırma uzantısı ve yönetilen bir kimlik gereklidir. Uzantıyı ölçekli olarak dağıtmak için aşağıdaki ilke girişim atamasını yapın: 
+>  - [Sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için önkoşulları dağıtın](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>Uzantı üzerinde ayarlanan sınırlar
 
-Uzantının makinede çalışan etkileyen uygulamalarla sınırlandırılacağından, Konuk yapılandırmasının CPU 'nun %5 ' inden fazlasını aşmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır.
+Uzantının makinede çalışan etkileyen uygulamalarla sınırlandırılacağından, Konuk yapılandırmasının CPU 'nun %5 ' inden fazlasını aşmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır. Aynı değer, yay bağlantılı makine aracısındaki Konuk yapılandırma hizmeti için de geçerlidir.
 
 ### <a name="validation-tools"></a>Doğrulama araçları
 
 Makinenin içinde, Konuk yapılandırma istemcisi denetimi çalıştırmak için yerel araçları kullanır.
 
-Aşağıdaki tabloda, desteklenen her bir işletim sisteminde kullanılan yerel araçların bir listesi gösterilmektedir:
+Aşağıdaki tabloda, desteklenen her bir işletim sisteminde kullanılan yerel araçların bir listesi gösterilmektedir. Yerleşik içerikte, Konuk yapılandırma bu araçları otomatik olarak yüklemeyi işler.
 
 |İşletim sistemi|Doğrulama Aracı|Notlar|
 |-|-|-|
 |Windows|[PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) v2| Yan yana yalnızca Azure Ilkesi tarafından kullanılan bir klasöre yüklenir. Windows PowerShell DSC ile çakışmaz. PowerShell Core, sistem yoluna eklenmedi.|
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Chef InSpec Version 2.2.61 'i varsayılan konuma yükleyip sistem yoluna eklenir. Ruby ve Python dahil InSpec paketinin bağımlıtları de yüklenir. |
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Chef InSpec Version 2.2.61 'i varsayılan konuma yükleyip sistem yoluna eklenir. Ruby ve Python dahil InSpec paketine yönelik bağımlılıklar da yüklenir. |
 
 ### <a name="validation-frequency"></a>Doğrulama sıklığı
 
@@ -70,20 +74,17 @@ Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin
 
 Özel sanal makine görüntüleri, Konuk yapılandırma ilkeleri tarafından, yukarıdaki tablodaki işletim sistemlerinden biri oldukları sürece desteklenir.
 
-### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
-
-Windows Server nano Server hiçbir sürümde desteklenmez.
-
 ## <a name="guest-configuration-extension-network-requirements"></a>Konuk yapılandırma uzantısı ağ gereksinimleri
 
 Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için makineler **443**numaralı bağlantı noktasında Azure veri merkezlerine giden erişim gerektirir. Azure 'daki bir ağ giden trafiğe izin vermezse, [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları ile özel durumlar yapılandırın. "Guestandhybridmanagement" [hizmet etiketi](../../../virtual-network/service-tags-overview.md) , Konuk yapılandırma hizmetine başvurmak için kullanılabilir.
 
 ## <a name="managed-identity-requirements"></a>Yönetilen kimlik gereksinimleri
 
-Uzantıyı sanal makinelere ekleyen **Deployifnotexists** ilkeleri Ayrıca, sistem tarafından atanmış bir yönetilen kimliği (yoksa) etkinleştirir.
+Girişim [dağıtım önkoşulları sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) ilke yoksa, sistem tarafından atanan bir yönetilen kimliği etkinleştirir. Girişimde kimlik oluşturmayı yöneten iki ilke tanımı vardır. İlke tanımlarındaki koşullar, Azure 'daki makine kaynağının geçerli durumuna bağlı olarak doğru davranışı güvence altına alır.
 
-> [!WARNING]
-> Sistem tarafından atanan yönetilen kimliği etkinleştiren ilkeler için kapsamdaki sanal makinelere Kullanıcı tarafından atanan yönetilen kimliği etkinleştirmemeye özen gösterin. Kullanıcı tarafından atanan kimlik değiştirilmiştir ve makinenin yanıt vermemesine neden olur.
+Makinenin Şu anda herhangi bir yönetilen kimliği yoksa, etkin ilke şu şekilde olacaktır: [ \[ Önizleme \] : kimliği olmayan sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+
+Makinenin Şu anda Kullanıcı tarafından atanan bir sistem kimliği varsa, etkin ilke şu şekilde olacaktır: [ \[ Önizleme \] : Kullanıcı tarafından atanan bir kimliğe sahip sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 

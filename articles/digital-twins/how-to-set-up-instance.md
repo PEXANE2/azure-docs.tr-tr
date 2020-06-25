@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: bbd7c74fc87b3f7af799637e2288dcd074266843
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 792b3894bf051298250ea8f402086c1edf297842
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725622"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362756"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Azure dijital TWINS örneği ayarlama
 
@@ -58,7 +58,7 @@ Azure dijital TWINS 'i bir istemci uygulamasıyla kullanabilmek için, istemci u
 
 #### <a name="assign-yourself-a-role"></a>Kendinize bir rol atayın
 
-Azure aboneliğinizdeki AAD kiracısı ile ilişkili e-postanızı kullanarak kendiniz için bir rol ataması oluşturun. İlk olarak, Azure aboneliğinizde bir sahip olarak sınıflandırdığınızdan emin olun. Daha sonra, Azure dijital TWINS örneğiniz için kullanıcıyı bir sahip rolüne atamak üzere aşağıdaki komutu kullanabilirsiniz:
+Azure aboneliğinizdeki AAD kiracısı ile ilişkili e-postanızı kullanarak kendiniz için bir rol ataması oluşturun. İlk olarak, Azure aboneliğinizde bir sahip olarak sınıflandırdığınızdan emin olun. `az role assignment list --assignee <your-Azure-email>` *Roledefinitionname* 'in *Owner*olduğunu doğrulamak için komutunu kullanarak bunu kontrol edebilirsiniz. Daha sonra, Azure dijital TWINS örneğiniz için kullanıcıyı bir sahip rolüne atamak üzere aşağıdaki komutu kullanabilirsiniz:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 124d81651cd937dc9671f725f54826b1ff9a42a5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235905"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362331"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "84235905"
 
 Bu makalede, Windows sanal masaüstü kiracısı ve ilgili oturum ana bilgisayar havuzu altyapısının ilk kurulumu sırasında sorunlar ele alınmaktadır.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -30,7 +30,8 @@ Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle ta
 
 Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, **Get Started**  >  [sanal masaüstleri, sürüm 1809 için](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)başlangıç**Microsoft Windows 10** > ve Windows 10 Enterprise ' ı seçin.
 
-![Sanal masaüstleri için Windows 10 Enterprise, sürüm 1809 ' ı seçme ekran görüntüsü.](../media/AzureMarketPlace.png)
+> [!div class="mx-imgBorder"]
+> ![Sanal masaüstleri için Windows 10 Enterprise, sürüm 1809 ' ı seçme ekran görüntüsü.](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Windows sanal masaüstü kiracısı oluşturuluyor
 
@@ -54,7 +55,8 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
 
-![Kullanıcının yönetim hizmetini sorgulama yetkisine sahip olmadığı PowerShell penceresinin ekran görüntüsü.](../media/UserNotAuthorizedNewTenant.png)
+> [!div class="mx-imgBorder"]
+> ![Kullanıcının yönetim hizmetini sorgulama yetkisine sahip olmadığı PowerShell penceresinin ekran görüntüsü.](../media/UserNotAuthorizedNewTenant.png)
 
 Ham hata örneği:
 
@@ -75,7 +77,8 @@ Ham hata örneği:
 
 **Çözüm:** [Azure Active Directory kiracınızdaki bir kullanıcıya TenantCreator uygulama rolünü atama](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)bölümündeki yönergeleri izleyin. Yönergeleri tamamladıktan sonra, TenantCreator rolüne atanan bir Kullanıcı olacaktır.
 
-![Atanan TenantCreator rolü ekran görüntüsü.](../media/TenantCreatorRoleAssigned.png)
+> [!div class="mx-imgBorder"]
+> ![Atanan TenantCreator rolü ekran görüntüsü.](../media/TenantCreatorRoleAssigned.png)
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows sanal masaüstü oturumu ana bilgisayarı VM 'Leri oluşturma
 
@@ -87,7 +90,8 @@ Windows sanal masaüstü – Azure Marketi 'nden bir konak havuzu şablonu sağl
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Hata: GitHub 'dan bağlantı kullanılırken, "ücretsiz hesap oluştur" iletisi görüntülenir
 
-![Ücretsiz bir hesap oluşturmak için ekran görüntüsü.](../media/be615904ace9832754f0669de28abd94.png)
+> [!div class="mx-imgBorder"]
+> ![Ücretsiz bir hesap oluşturmak için ekran görüntüsü.](../media/be615904ace9832754f0669de28abd94.png)
 
 **Neden 1:** Hesapta Azure 'da oturum açmak için kullanılan etkin abonelikler yok veya kullanılan hesabın abonelikleri görüntüleme izni yok.
 
@@ -110,7 +114,8 @@ Windows sanal masaüstü – Azure Marketi 'nden bir konak havuzu şablonu sağl
 
 ### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Hata: "şablon dağıtımı geçerli değil" hatası alıyorsunuz
 
-!["Şablon dağıtımı... ekran görüntüsü geçerli değil "hatası](../media/troubleshooting-marketplace-validation-error-generic.png)
+> [!div class="mx-imgBorder"]
+> !["Şablon dağıtımı... ekran görüntüsü geçerli değil "hatası](../media/troubleshooting-marketplace-validation-error-generic.png)
 
 Belirli bir eylem yapmadan önce, başarısız dağıtım doğrulamasına ilişkin ayrıntılı hatayı görmek için etkinlik günlüğünü denetlemeniz gerekir.
 
@@ -119,10 +124,14 @@ Etkinlik günlüğündeki hatayı görüntülemek için:
 1. Geçerli Azure Marketi dağıtım sunumndan çıkın.
 2. Üst arama çubuğunda **etkinlik günlüğü**' nü arayıp seçin.
 3. Durumu **başarısız** olan **dağıtımı doğrula** adlı bir etkinlik bulun ve etkinliği seçin.
-   ![* * Başarısız * * durumundaki tek * * dağıtımı doğrula * * etkinliğinin ekran görüntüsü](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![* * Başarısız * * durumundaki tek * * dağıtımı doğrula * * etkinliğinin ekran görüntüsü](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. JSON ' ı seçin ve ardından "statusMessage" alanını görene kadar ekranın alt kısmına gidin.
-   ![JSON metninin statusMessage özelliği etrafında kırmızı bir kutu ile başarısız etkinliğin ekran görüntüsü.](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![JSON metninin statusMessage özelliği etrafında kırmızı bir kutu ile başarısız etkinliğin ekran görüntüsü.](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
 İşlem şablonunuz kota sınırının üzerine gittiğinde, bunu onarmak için aşağıdaki işlemlerden birini yapabilirsiniz:
 
@@ -140,7 +149,8 @@ Azure Resource Manager şablonlarının ve PowerShell DSC 'nin başarısız dağ
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hata: dağıtımınız başarısız oldu.... \<hostname> /JoinDomain
 
-![Dağıtımınız ekran görüntüsünde başarısız oldu.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
+> [!div class="mx-imgBorder"]
+> ![Dağıtımınız ekran görüntüsünde başarısız oldu.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 
 Ham hata örneği:
 
@@ -181,7 +191,8 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Hata: VMExtensionProvisioningError
 
-![Dağıtımınızın ekran görüntüsü, Terminal sağlama durumuyla başarısız oldu.](../media/7aaf15615309c18a984673be73ac969a.png)
+> [!div class="mx-imgBorder"]
+> ![Dağıtımınızın ekran görüntüsü, Terminal sağlama durumuyla başarısız oldu.](../media/7aaf15615309c18a984673be73ac969a.png)
 
 **Neden 1:** Windows sanal masaüstü ortamında geçici bir hata oluştu.
 
@@ -191,7 +202,8 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hata: belirtilen yönetici kullanıcı adına izin verilmiyor
 
-![Belirtilen bir yöneticiye izin verilmediğinden dağıtımınızın ekran görüntüsü başarısız oldu.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
+> [!div class="mx-imgBorder"]
+> ![Belirtilen bir yöneticiye izin verilmediğinden dağıtımınızın ekran görüntüsü başarısız oldu.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
 
 Ham hata örneği:
 
@@ -210,7 +222,8 @@ Ham hata örneği:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hata: VM, uzantıyı işlerken bir hata bildirdi
 
-![Dağıtımınızda Terminal sağlama durumu ile tamamlanan kaynak işleminin ekran görüntüsü başarısız oldu.](../media/49c4a1836a55d91cd65125cf227f411f.png)
+> [!div class="mx-imgBorder"]
+> ![Dağıtımınızda Terminal sağlama durumu ile tamamlanan kaynak işleminin ekran görüntüsü başarısız oldu.](../media/49c4a1836a55d91cd65125cf227f411f.png)
 
 Ham hata örneği:
 
@@ -236,7 +249,8 @@ Ham hata örneği:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Hata: DeploymentFailed – PowerShell DSC yapılandırması ' FirstSessionHost ' hatalarla tamamlandı
 
-![' FirstSessionHost ' PowerShell DSC yapılandırması başarısız olan dağıtım ekran görüntüsü hata (ler) ile tamamlandı.](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> [!div class="mx-imgBorder"]
+> ![' FirstSessionHost ' PowerShell DSC yapılandırması başarısız olan dağıtım ekran görüntüsü hata (ler) ile tamamlandı.](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 Ham hata örneği:
 
@@ -365,7 +379,8 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hata: Kullanıcı Azure Multi-Factor Authentication gerektiriyor (MFA)
 
-![Multi-Factor Authentication olmaması nedeniyle dağıtımınızın ekran görüntüsü başarısız oldu (MFA)](../media/MFARequiredError.png)
+> [!div class="mx-imgBorder"]
+> ![Multi-Factor Authentication olmaması nedeniyle dağıtımınızın ekran görüntüsü başarısız oldu (MFA)](../media/MFARequiredError.png)
 
 Ham hata örneği:
 

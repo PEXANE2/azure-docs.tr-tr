@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d50eafd8464a315cb4e619a0c34b6a173d6ca638
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943109"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362202"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Öğretici: tek sayfalı Web uygulaması oluşturma
 
@@ -107,7 +107,7 @@ Aşağıdaki şekilde sorgu metin kutusu ile bursla ilgili haberler için bir ar
 
 HTML formu, adları aşağıda gösterilen öğeleri içerir:
 
-|Öğe|Açıklama|
+|Öğe|Description|
 |-|-|
 | `where` | Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü. |
 | `query` | Arama terimlerinin girileceği metin alanı. |
@@ -321,7 +321,7 @@ function renderResults(items) {
 ```
 Bing Haber Arama API'si, her biri kendi üst düzey nesnesinin içinde olmak üzere en çok dört farklı türde ilgili sonuç döndürür. Bunlar:
 
-|İlişki|Açıklama|
+|İlişki|Description|
 |-|-|
 |`pivotSuggestions`|Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir.|
 |`queryExpansions`|Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.|
@@ -352,7 +352,7 @@ searchItemRenderers = {
 
 Sonuçları saymak, koleksiyonun başlangıcı veya sonuna özel HTML oluşturmak ve belirli sayıdaki öğeden sonra satır sonu eklemek gibi işlemler için `index` ve `count` parametreleri kullanılabilir. İşleyicinin bu işleve ihtiyacı yoksa, bu iki parametreyi kabul etmesi gerekmez.
 
-Aşağıdaki JavaScript alıntısında `news` işleyicisi gösterilir:
+`news`İşleyici aşağıdaki JavaScript alıntısında gösterilir:
 ```javascript
     // render news story
     news: function (item) {

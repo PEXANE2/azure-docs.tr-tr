@@ -8,18 +8,18 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cc6451d9be6c125d1b01bc5bb33fd553ce789f31
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 753fa7afb49ca58aa2eceb309beb8316024b41bc
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263203"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362722"
 ---
 # <a name="dtdl-client-side-parser-library"></a>DTDL istemci tarafı ayrıştırıcı kitaplığı
 
 [!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
-Azure dijital TWINS 'deki [modeller](concepts-models.md) JSON tabanlı dijital TWINS tanım DILI (dtdl) kullanılarak tanımlanır. Modellerinizi ayrıştırmak için yararlı olduğu durumlarda, NuGet.org 'de bir DTDL ayrıştırma kitaplığı, bir istemci tarafı kitaplığı olarak sağlanır: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
+Azure dijital TWINS 'deki [modeller](concepts-models.md) JSON-ld tabanlı dijital TWINS tanım DILI (dtdl) kullanılarak tanımlanır. Modellerinizi ayrıştırmak için yararlı olduğu durumlarda, NuGet.org 'de bir DTDL ayrıştırma kitaplığı, bir istemci tarafı kitaplığı olarak sağlanır: [Microsoft. Azure. DigitalTwins. Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
 
 Bu kitaplık, temel olarak DTDL için C# Reflection 'ın eşdeğeri olarak davranan DTDL tanımlarına model erişimi sağlar. Bu kitaplık, özellikle bir görsel veya metin düzenleyicisinde DTDL doğrulaması için herhangi bir [Azure dijital TWINS SDK 'sının](how-to-use-apis-sdks.md)bağımsız olarak kullanılabilir. Bunları hizmete yüklemeye çalışmadan önce model tanım dosyalarınızın geçerli olduğundan emin olmak için yararlıdır.
 
@@ -70,7 +70,7 @@ Bu örnek hakkında daha fazla bilgi için bkz. kaynak kodu veya çalıştırma 
 
 ## <a name="use-the-parser-library-in-code"></a>Koddaki ayrıştırıcı kitaplığını kullan
 
-Ayrıca, modelleri kendiniz doğrulamak için ayrıştırıcı kitaplığını doğrudan de kullanabilirsiniz.
+Ayrıca, kendi uygulamanızdaki modelleri doğrulama veya dinamik, model temelli UI, pano ve rapor oluşturma gibi şeyler için doğrudan ayrıştırıcı kitaplığını kullanabilirsiniz.
 
 Aşağıdaki ayrıştırıcı kodu örneğini desteklemek için, bir Azure dijital TWINS örneğinde tanımlanan çeşitli modelleri göz önünde bulundurun:
 
@@ -172,4 +172,4 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Modellerinizi yazmayı tamamladıktan sonra, Digitaltwınsmodel API 'Leri ile bunları karşıya yükleme (ve diğer yönetim işlemlerini yapma) konusuna bakın:
-* [Nasıl yapılır: ikizi modelini yönetme](how-to-manage-model.md)
+* [Nasıl yapılır: özel modelleri yönetme](how-to-manage-model.md)

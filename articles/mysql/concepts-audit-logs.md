@@ -5,24 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: 00e4ef2452d2048f386d48e994ba1051ca81ec75
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100951"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362134"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda denetim günlükleri
 
 MySQL için Azure veritabanı 'nda, denetim günlüğü kullanıcılar tarafından kullanılabilir. Denetim günlüğü, veritabanı düzeyindeki etkinlikleri izlemek için ve genellikle uyumluluk için kullanılır.
 
-> [!IMPORTANT]
-> Denetim günlüğü işlevselliği Şu anda önizleme aşamasındadır.
-
 ## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
 
->[!NOTE]
+>[!IMPORTANT]
 > Sunucunuzun performansının yoğun bir şekilde etkilenmemesini sağlamak için, yalnızca denetim amaçlarıyla gerekli olay türlerini ve kullanıcıları günlüğe kaydetmek önerilir.
 
 Varsayılan olarak, denetim günlüğü devre dışıdır. Etkinleştirmek için, `audit_log_enabled` Açık olarak ayarlayın.

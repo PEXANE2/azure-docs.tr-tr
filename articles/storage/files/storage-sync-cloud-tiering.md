@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ad222c5fb5554698b6166b0b10a52221a31b360
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 5b54f87635e1ea972778b0039dc34170c5b7ab8a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886202"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362297"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.
@@ -31,7 +31,11 @@ Bir Kullanıcı katmanlı bir dosya açtığında, kullanıcının dosyanın Azu
 ### <a name="how-does-cloud-tiering-work"></a>Bulut katmanlaması nasıl çalışır?
 Azure Dosya Eşitleme sistem filtresi, her sunucu uç noktasında ad alanınız için bir "heatmap" oluşturur. Zaman içinde erişimleri (okuma ve yazma işlemleri) izler, sonra da erişim sıklığı ve, her ikisine de göre her dosyaya bir ısı puanı atar. En son açılan bir dosya sık erişilen olarak kabul edilir, ancak bir süre önce dokunulmayan ve erişilmeyen bir dosya seyrek olarak değerlendirilir. Bir sunucudaki dosya birimi, ayarladığınız birimde boş alan eşiğini aşarsa, boş alan yüzdesi karşılanana kadar, en fazla dosyaları Azure dosyalarına katman olarak alır.
 
-Azure Dosya Eşitleme aracısının 4,0 ve üzeri sürümlerinde, belirtilen gün sayısı içinde erişilmeyen veya değiştirilemeyen tüm dosyaları barındıracak her bir sunucu uç noktasında bir tarih ilkesi de belirtebilirsiniz.
+Ayrıca, kullanılabilir yerel depolama kapasitesine bakılmaksızın, belirtilen gün sayısı içinde erişilmeyen tüm dosyaları barındıracak her sunucu uç noktasında bir tarih ilkesi belirtebilirsiniz. Bu sunucu uç noktasındaki dosyaların belirli bir yaşın ötesinde yerel olarak korunması gerekmediğini biliyorsanız, yerel disk alanını öngörülebilir bir şekilde serbest bırakmak iyi bir seçimdir. Bu, dosyalarını daha fazla önbelleğe almak için aynı birimdeki diğer uç noktalar için değerli yerel disk kapasitesini serbest bırakır.
+
+Bulut katmanlama ısı haritasını, aslında eşitlenen ve bulut katmanlaması etkinleştirilmiş bir konumda olan tüm dosyaların sıralı bir listesidir. Bu heatmap içindeki tek bir dosyanın göreli konumunu öğrenmek için, sistem şu zaman damgalarının her birini (Bu sırada) en fazla (son erişim saati, son değiştirilme saati, oluşturma saati) kullanır. Genellikle, son erişim zamanı izlenir ve kullanılabilir. Ancak, yeni bir sunucu uç noktası oluşturulduğunda, bulut katmanlaması etkinken, bu durumda başlangıçta dosya erişimini gözlemlemek için yeterli süre geçti. Son erişim zamanı yokluğunda, heatmap 'teki göreli konumu değerlendirmek için son değiştirilme zamanı kullanılır. Aynı geri dönüş, tarih ilkesi için geçerlidir. Son erişim zamanı olmadan tarih ilkesi, son değiştirilme zamanına göre hareket eder. Bu durumda, bir dosyanın oluşturma saatine geri dönecektir. Zaman içinde, sistem, ağırlıklı 'e daha fazla ve daha fazla dosya erişim isteği gözlemleyecek ve özete otomatik olarak izlenen son erişim zamanını kullanacaktır.
+
+Bulut katmanlaması, son erişim süresini izlemek için NTFS özelliğine bağlı değildir. Bu NTFS özelliği varsayılan olarak kapalıdır ve performans konuları nedeniyle bu özelliği el ile etkinleştirmenizi önermiyoruz. Bulut katmanlaması, son erişim süresini ayrı ve çok verimli bir şekilde izler.
 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Katmana bir dosya için en küçük dosya boyutu nedir?

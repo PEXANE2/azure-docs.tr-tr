@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
 ms.reviewer: baanders
-ms.openlocfilehash: 4051b5c098b0ce299185a483abf2bdd39bb6c11f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 50fade5179d5323a332d9b103f2fac17d402aa3f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725826"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362858"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -163,5 +163,5 @@ Topolojinizin yapılandırmasına bağlı olarak, bu üç özniteliği Haritalar
 
 TWINS grafiğindeki bilgileri yönetme, yükseltme ve alma hakkında daha fazla bilgi edinmek için aşağıdaki başvurulara bakın:
 
-* [Nasıl yapılır: dijital ikizi yönetme](./how-to-manage-twin.md)
+* [Nasıl yapılır: dijital TWINS 'i yönetme](./how-to-manage-twin.md)
 * [Nasıl yapılır: ikizi grafiğini sorgulama](./how-to-query-graph.md)

@@ -5,24 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: 9b577b12250f1a600c91776e64ecaf65be5d8476
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100893"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362433"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda denetim günlükleri
 
 MariaDB için Azure veritabanı 'nda, denetim günlüğü kullanıcılar tarafından kullanılabilir. Denetim günlüğü, veritabanı düzeyindeki etkinlikleri izlemek için ve genellikle uyumluluk için kullanılır.
 
-> [!IMPORTANT]
-> Denetim günlüğü işlevselliği Şu anda önizleme aşamasındadır.
-
 ## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
 
->[!NOTE]
+>[!IMPORTANT]
 > Sunucunuzun performansının yoğun bir şekilde etkilenmemesini sağlamak için, yalnızca denetim amaçlarıyla gerekli olay türlerini ve kullanıcıları günlüğe kaydetmek önerilir.
 
 Varsayılan olarak, denetim günlüğü devre dışıdır. Etkinleştirmek için, `audit_log_enabled` Açık olarak ayarlayın.

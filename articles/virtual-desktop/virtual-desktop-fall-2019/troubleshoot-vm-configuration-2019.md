@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117436"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362518"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -22,7 +22,7 @@ ms.locfileid: "83117436"
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -118,7 +118,8 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Hata: Get-RdsSessionHost cmdlet 'inde dosyalanmış durum durumu kullanım dışı olarak gösteriyor
 
-![Get-RdsSessionHost cmdlet 'i, durumu kullanım dışı olarak gösterir.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Get-RdsSessionHost cmdlet 'i, durumu kullanım dışı olarak gösterir.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Neden:** Aracı kendisini yeni bir sürüme güncelleştiremeyebilir.
 
@@ -179,7 +180,7 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Windows sanal masaüstü yan yana yığınıyla ilgili sorunları giderme
 
-Windows sanal masaüstü yan yana yığın Windows Server 2019 ile otomatik olarak yüklenir. Microsoft Windows Server 2016 veya Windows Server 2012 R2 'ye yan yana yığın yüklemek için Microsoft yükleyicisi 'ni (MSI) kullanın. Microsoft Windows 10 ' da, Windows sanal masaüstü yan yana yığın, **enablesxstackrons. ps1**ile etkinleştirilir.
+Windows sanal masaüstü yan yana yığın Windows Server 2019 ile otomatik olarak yüklenir. Microsoft Windows Server 2016 veya Windows Server 2012 R2 'ye yan yana yığın yüklemek için Microsoft yükleyicisi 'ni (MSI) kullanın. Microsoft Windows 10 için, Windows sanal masaüstü yan yana yığın **enablesxstackrs.ps1**ile etkinleştirilir.
 
 Yan yana yığının, oturum ana bilgisayar havuzu VM 'lerinde yüklü veya etkin olduğu başlıca üç yol vardır:
 
@@ -191,7 +192,8 @@ Windows sanal masaüstü 'Nün yan yana Stack ile ilgili sorun yaşıyorsanız, 
 
 Yan yana yığın yüklenip etkinleştirilirse, **qwinsta** çıktısı çıktıda **RDP-sxs** ' i listeler.
 
-![Yan yana yığın, çıktıda RDP-sxs olarak listelenen qwinsta yüklü veya etkin.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Yan yana yığın, çıktıda RDP-sxs olarak listelenen qwinsta yüklü veya etkin.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eşleştiğini doğrulayın. Kayıt defteri anahtarları eksikse veya değerler uyuştubulunursa, yan yana yığının nasıl yeniden yükleneceğini öğrenmek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell-2019.md) ' daki yönergeleri izleyin.
 
@@ -205,7 +207,8 @@ Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eş
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Hata: O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE hata kodu.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![O_REVERSE_CONNECT_STACK_FAILURE hata kodu.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Neden:** Yan yana yığın, oturum ana bilgisayar VM 'sinde yüklü değil.
 
@@ -227,8 +230,8 @@ Yan yana yığının hatalı çalışmasına neden olabilecek bilinen koşullar 
 - Yan yana yığını etkinleştirmek için adımların doğru sırasını takip etmez
 - Windows 10 geliştirilmiş çok yönlü disk (EVD) için otomatik güncelleştirme
 - Uzak Masaüstü Oturumu Ana Bilgisayarı (RDSH) rolü eksik
-- Enablesxsstackrc. ps1 birden çok kez çalıştırılıyor
-- Yerel yönetici ayrıcalıklarına sahip olmayan bir hesapta enablesxsstackronc. ps1 çalıştırma
+- enablesxsstackrc.ps1 birden çok kez çalıştırma
+- Yerel yönetici ayrıcalıklarına sahip olmayan bir hesapta enablesxsstackrc.ps1 çalıştırma
 
 Bu bölümdeki yönergeler, Windows sanal masaüstü 'Nün yan yana yığınını kaldırmanızı sağlamanıza yardımcı olabilir. Yan yana yığını kaldırdıktan sonra yan yana yığını yeniden yüklemek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell-2019.md) bölümünde "VM 'Yi Windows sanal masaüstü ana bilgisayar havuzuna Kaydet" bölümüne gidin.
 
@@ -247,19 +250,21 @@ Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki 
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname, hatalı çalışan yan yana yığın ile VM 'nin makine adıdır.
 
 7. Kabul et 'e tıklayarak PsExec lisans sözleşmesini kabul edin.
 
-    ![Yazılım Lisans Sözleşmesi ekran görüntüsü.](../media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![Yazılım Lisans Sözleşmesi ekran görüntüsü.](../media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >Bu iletişim kutusu yalnızca PsExec ilk kez çalıştırıldığında görünür.
 
 8. Komut istemi oturumu, hatalı çalışan yan yana Stack ile sanal makinede açıldıktan sonra qwinsta komutunu çalıştırın ve RDP-sxs adlı bir girdinin kullanılabilir olduğunu onaylayın. Aksi halde, sorun yan yana yığına bağlı olmadığından, sanal makinede yan yana bir yığın yok.
 
-    ![Yönetici komut istemi](../media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![Yönetici komut istemi](../media/AdministratorCommandPrompt.png)
 
 9. Aşağıdaki komutu çalıştırarak, sanal makinede yüklü olan Microsoft bileşenlerini hatalı yan yana yığın ile listeleyin.
 
@@ -281,7 +286,7 @@ Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki 
 
 İşletim sisteminiz Microsoft Windows 10 ise aşağıdaki yönergelerle devam edin:
 
-14. PsExec çalıştıran VM 'den, dosya Gezgini 'ni açın ve disablesxsstackronc. ps1 dosyasını VM 'nin sistem sürücüsüne kopyalayın ve bu arada bir yan yana yığın.
+14. PsExec çalıştıran VM 'den, dosya Gezgini 'ni açın ve disablesxsstackrc.ps1, sanal makinenin sistem sürücüsüne sanal bir yan yana yığın ile kopyalayın.
 
     ```cmd
         \\<VMname>\c$\
@@ -290,7 +295,7 @@ Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki 
     >[!NOTE]
     >VMname, hatalı çalışan yan yana yığın ile VM 'nin makine adıdır.
 
-15. Önerilen işlem: PsExec aracından PowerShell 'i başlatın ve önceki adımda bulunan klasöre gidin ve disablesxsstackronc. ps1 ' yi çalıştırın. Alternatif olarak, aşağıdaki cmdlet 'leri çalıştırabilirsiniz:
+15. Önerilen işlem: PsExec aracından PowerShell 'i başlatın ve önceki adımda bulunan klasöre gidin ve disablesxsstackrc.ps1 çalıştırın. Alternatif olarak, aşağıdaki cmdlet 'leri çalıştırabilirsiniz:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force
@@ -327,7 +332,8 @@ Hangi Windows 10 Kurumsal Çoklu oturum sürümünü olduğunu denetlemek için:
 3. **PC 'Niz hakkında**' yı seçin.
 4. "Sürüm" nın yanındaki numarayı denetleyin. Aşağıdaki görüntüde gösterildiği gibi, sayı "1809" ya da "1903" olmalıdır.
 
-    ![Windows belirtimleri penceresinin ekran görüntüsü. Sürüm numarası mavi renkle vurgulanır.](../media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Windows belirtimleri penceresinin ekran görüntüsü. Sürüm numarası mavi renkle vurgulanır.](../media/windows-specifications.png)
 
 Artık sürüm numaranızı bildiğinize göre ilgili bölüme atlayın.
 
