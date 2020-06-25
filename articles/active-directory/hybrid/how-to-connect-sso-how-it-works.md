@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af5a9b5b5dd8eb6b6bec8440287918d1f8610064
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71176679"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357928"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Sorunsuz çoklu oturum açma Azure Active Directory: teknik kapsamlı bakış
 
@@ -39,12 +39,12 @@ Bu bölümde üç bölümü vardır:
 
 [Burada](how-to-connect-sso-quick-start.md)gösterildiği gibi, sorunsuz SSO Azure AD Connect kullanılarak etkinleştirilir. Özelliği etkinleştirirken, aşağıdaki adımlar oluşur:
 
-- Azure AD 'ye eşitlediğiniz`AZUREADSSOACC`her ad ormanında şirket içi ACTIVE DIRECTORY (ad) bir bilgisayar hesabı () oluşturulur (Azure AD Connect kullanarak).
+- `AZUREADSSOACC`Azure AD 'ye eşitlediğiniz her ad ormanında şirket içi Active Directory (ad) bir bilgisayar hesabı () oluşturulur (Azure AD Connect kullanarak).
 - Ayrıca, Azure AD oturum açma işlemi sırasında kullanılmak üzere bir dizi Kerberos hizmet asıl adı (SPN) oluşturulur.
 - Bilgisayar hesabının Kerberos şifre çözme anahtarı Azure AD ile güvenli bir şekilde paylaşılır. Birden çok AD Ormanı varsa, her bilgisayar hesabının kendi benzersiz Kerberos şifre çözme anahtarı olur.
 
 >[!IMPORTANT]
-> Güvenlik `AZUREADSSOACC` nedenleriyle bilgisayar hesabının güçlü korunması gerekir. Bilgisayar hesabını yalnızca etki alanı yöneticileri yönetebilmelidir. Bilgisayar hesabında Kerberos temsilcisinin devre dışı bırakıldığından ve Active Directory ' deki başka hiçbir hesabın `AZUREADSSOACC` bilgisayar hesabında temsilciliizin izinlerine sahip olduğundan emin olun. Bilgisayar hesabını, yanlışlıkla silinmelerden güvenli oldukları ve yalnızca etki alanı yöneticilerinin erişimi olan bir kuruluş biriminde (OU) depolayın. Bilgisayar hesabındaki Kerberos şifre çözme anahtarı da hassas olarak değerlendirilmelidir. `AZUREADSSOACC` Bilgisayar hesabının [Kerberos şifre çözme anahtarını](how-to-connect-sso-faq.md) en az 30 günde bir ele almanızı önemle tavsiye ederiz.
+> `AZUREADSSOACC`Güvenlik nedenleriyle bilgisayar hesabının güçlü korunması gerekir. Bilgisayar hesabını yalnızca etki alanı yöneticileri yönetebilmelidir. Bilgisayar hesabında Kerberos temsilcisinin devre dışı bırakıldığından ve Active Directory ' deki başka hiçbir hesabın bilgisayar hesabında temsilciliizin izinlerine sahip olduğundan emin olun `AZUREADSSOACC` . Bilgisayar hesabını, yanlışlıkla silinmelerden güvenli oldukları ve yalnızca etki alanı yöneticilerinin erişimi olan bir kuruluş biriminde (OU) depolayın. Bilgisayar hesabındaki Kerberos şifre çözme anahtarı da hassas olarak değerlendirilmelidir. Bilgisayar hesabının [Kerberos şifre çözme anahtarını](how-to-connect-sso-faq.md) `AZUREADSSOACC` en az 30 günde bir ele almanızı önemle tavsiye ederiz.
 
 Kurulum tamamlandıktan sonra sorunsuz SSO, tümleşik Windows kimlik doğrulaması (ıWA) kullanan başka bir oturum açma yöntemiyle aynı şekilde çalışır.
 
@@ -60,7 +60,7 @@ Bir Web tarayıcısında oturum açma akışı aşağıdaki gibidir:
    >[Bazı uygulamalar](./how-to-connect-sso-faq.md)için adım 2 & 3 atlanır.
 
 4. Azure AD, arka planda JavaScript kullanarak, bir Kerberos bileti sağlamak için tarayıcıyı 401 Yetkisiz bir yanıt aracılığıyla zorluk halinde sunmaktadır.
-5. Tarayıcı, sırasıyla `AZUREADSSOACC` bilgisayar hesabı için Active Directory bir bilet Ister (Azure AD 'yi temsil eder).
+5. Tarayıcı, sırasıyla bilgisayar hesabı için Active Directory bir bilet ister `AZUREADSSOACC` (Azure AD 'yi temsil eder).
 6. Active Directory bilgisayar hesabını bulur ve bilgisayar hesabının gizli anahtarı ile şifrelenen tarayıcıya Kerberos bileti döndürür.
 7. Tarayıcı Active Directory 'tan elde edilen Kerberos biletini Azure AD 'ye iletir.
 8. Azure AD, önceden paylaşılan anahtar kullanılarak şirket cihazında oturum açan kullanıcının kimliğini içeren Kerberos biletinin şifresini çözer.

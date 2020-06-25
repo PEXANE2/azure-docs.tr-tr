@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: davba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a15a25ce4fbe1a43c2a5065bf88f5c40c5865721
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549304"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360699"
 ---
 # <a name="transformations"></a>Dönüşümler
 
@@ -34,7 +34,7 @@ Bulut sağlama öznitelikleri hakkında daha fazla bilgi için bkz. [Azure AD ş
 1. Şemada güncelleştirmek istediğiniz nesneyi bulun.
 
    ![Şemadaki nesne](media/how-to-transformation/transform1.png)</br>
-1. Kullanıcı nesnesinin `ExtensionAttribute3` altındaki kodunu bulun.
+1. `ExtensionAttribute3`Kullanıcı nesnesinin altındaki kodunu bulun.
 
     ```
                             {
@@ -62,7 +62,7 @@ Bulut sağlama öznitelikleri hakkında daha fazla bilgi için bkz. [Azure AD ş
                                 }
                             },
     ```
-1. Şirket özniteliğinin eşlendiği şekilde kodu düzenleyin `ExtensionAttribute3`.
+1. Şirket özniteliğinin eşlendiği şekilde kodu düzenleyin `ExtensionAttribute3` .
 
    ```
                                     {
@@ -98,7 +98,7 @@ Bulut sağlama öznitelikleri hakkında daha fazla bilgi için bkz. [Azure AD ş
 
     ![Sağlamayı yeniden Başlat](media/how-to-transformation/transform3.png)
 
- 1. Biraz sonra, Graph Explorer 'da aşağıdaki sorguyu çalıştırarak özniteliklerin doldurulduğundan emin olun: `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`.
+ 1. Biraz sonra, Graph Explorer 'da aşağıdaki sorguyu çalıştırarak özniteliklerin doldurulduğundan emin olun: `https://graph.microsoft.com/beta/users/{Azure AD user UPN}` .
  1. Şimdi değeri görmeniz gerekir.
 
     ![Değer görünür](media/how-to-transformation/transform4.png)

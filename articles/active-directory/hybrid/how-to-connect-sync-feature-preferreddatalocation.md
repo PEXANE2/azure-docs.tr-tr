@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983271"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357418"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect eşitleme: Office 365 kaynakları için tercih edilen veri konumunu yapılandırın
 Bu konunun amacı, Azure Active Directory (Azure AD) Connect Sync içinde tercih edilen veri konumu için özniteliği yapılandırma konusunda size yol gösterir. Birisi Office 365 ' de çok coğrafi bölge özellikleri kullandığında, bu özniteliği kullanıcının Office 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Hüküm *bölgesi* ve *coğrafi* , birbirlerinin yerine kullanılır.)
@@ -54,7 +54,7 @@ Office 365 ' deki coğrafyalar çok coğrafi bölge için kullanılabilir:
 | İsviçre | HARFI |
 | Birleşik Arap Emirlikleri | DEPOLANıR |
 | Birleşik Krallık | GBR |
-| Amerika Birleşik Devletleri | NAM |
+| Birleşik Devletler | NAM |
 
 * Coğrafi bölge bu tabloda listelenmediyse (örneğin, Güney Amerika), birden çok coğrafi bölge için kullanılamaz.
 
@@ -91,8 +91,8 @@ Aşağıdaki bölümlerde, **Preferreddatalocation** özniteliğinin eşitlemesi
 Azure AD 'ye aktarılan istenmeyen değişikliklerden kaçınmak için, eşitleme kurallarını güncelleştirme ortasındayken hiçbir eşitlemenin gerçekleşmediğinden emin olun. Yerleşik eşitleme zamanlayıcısını devre dışı bırakmak için:
 
 1. Azure AD Connect sunucusunda bir PowerShell oturumu başlatın.
-2. Şu cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi devre dışı `Set-ADSyncScheduler -SyncCycleEnabled $false`bırak:.
-3. **Eşitleme hizmeti**'ni **Başlat** > ' a giderek **Synchronization Service Manager** başlatın.
+2. Şu cmdlet 'i çalıştırarak zamanlanmış eşitlemeyi devre dışı bırak: `Set-ADSyncScheduler -SyncCycleEnabled $false` .
+3. Eşitleme hizmeti 'ni **Başlat**' a giderek **Synchronization Service Manager** başlatın  >  **Synchronization Service**.
 4. **İşlemler** sekmesini seçin ve *sürmekte*olan bir işlem olmadığından emin olun.
 
 ![Synchronization Service Manager ekran görüntüsü](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
@@ -135,15 +135,15 @@ Varsayılan olarak, **Preferreddatalocation** ÖZNITELIĞI Azure ad bağlayıcı
 ## <a name="step-5-create-an-inbound-synchronization-rule"></a>5. Adım: gelen eşitleme kuralı oluşturma
 Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kaynak özniteliğinden metadize 'ye akmasını sağlar.
 
-1. Eşitleme kuralları**düzenleyicisini** **Başlat** > ' a giderek **eşitleme kuralları düzenleyicisini** başlatın.
+1. Eşitleme kuralları düzenleyicisini **Başlat**' a giderek **eşitleme kuralları düzenleyicisini** başlatın  >  **Synchronization Rules Editor**.
 2. Arama filtresi **yönünü** **gelen**olarak ayarlayın.
 3. Yeni bir gelen kuralı oluşturmak için **Yeni kural ekle**' yi seçin.
 4. **Açıklama** sekmesinde aşağıdaki yapılandırmayı sağlayın:
 
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
-    | Adı | *Bir ad belirtin* | Örneğin, "AD 'den Içinde – Kullanıcı preferredDataLocation" |
-    | Açıklama | *Özel bir açıklama sağlayın* |  |
+    | Name | *Bir ad belirtin* | Örneğin, "AD 'den Içinde – Kullanıcı preferredDataLocation" |
+    | Description | *Özel bir açıklama sağlayın* |  |
     | Bağlı sistem | *Şirket içi Active Directory bağlayıcısını seçme* |  |
     | Bağlı sistem nesne türü | **Kullanıcı** |  |
     | Meta veri deposu nesne türü | **Kişi** |  |
@@ -171,8 +171,8 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
 
     | Öznitelik | Değer | Ayrıntılar |
     | ----- | ------ | --- |
-    | Adı | *Bir ad belirtin* | Örneğin, "Azure AD 'ye kadar – Kullanıcı preferredDataLocation" |
-    | Açıklama | *Bir açıklama girin* ||
+    | Name | *Bir ad belirtin* | Örneğin, "Azure AD 'ye kadar – Kullanıcı preferredDataLocation" |
+    | Description | *Bir açıklama girin* ||
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* ||
     | Bağlı sistem nesne türü | **Kullanıcı** ||
     | Meta veri deposu nesne türü | **Kişi** ||
@@ -181,7 +181,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
 
 5. **Kapsam filtresi** sekmesine gidin ve iki yan tümce içeren tek bir kapsam filtresi grubu ekleyin:
 
-    | Öznitelik | İşleç | Değer |
+    | Öznitelik | Operatör | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
     | Cloudana kopyalı | Not QUAL | True |

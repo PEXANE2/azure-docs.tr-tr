@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60242098"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357843"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Kullanıcı Gizliliği ve Azure AD Sorunsuz Çoklu Oturum Açma
 
@@ -43,10 +43,10 @@ Uygulamanız ve bakımının daha kolay olması için ikinci seçeneği kesinlik
 
 ### <a name="delete-azure-ad-connect-trace-log-files"></a>Azure AD Connect izleme günlüğü dosyalarını sil
 
-Bu eylem GDPR tarafından kapsanan verileri oluşturabileceği için, **%ProgramData%\AADConnect** klasörünün içeriğini denetleyin ve bu klasörün izleme günlüğü içeriğini (**Trace\*-. log** Files) Azure AD Connect yükleme veya yükseltme ya da sorunsuz SSO yapılandırmasını değiştirme gibi 48 saat içinde silin.
+Bu eylem GDPR tarafından kapsanan verileri oluşturabileceği için, **%ProgramData%\AADConnect** klasörünün içeriğini denetleyin ve bu klasörün izleme günlüğü içeriğini (**Trace- \* . log** Files) Azure AD Connect yükleme veya yükseltme ya da sorunsuz SSO yapılandırmasını değiştirme gibi 48 saat içinde silin.
 
 >[!IMPORTANT]
->Bu klasördeki **PersistedState. xml** dosyasını silmeyin, çünkü bu dosya önceki Azure AD Connect yüklemesinin durumunu korumak için kullanılır ve yükseltme yüklemesi tamamlandığında kullanılır. Bu dosya asla bir kişiyle ilgili hiçbir veri içermez ve hiçbir şekilde silinmemelidir.
+>Bu dosya, önceki Azure AD Connect yüklemesinin durumunu korumak için kullanıldığı ve bir yükseltme yüklemesi tamamlandığında kullanıldığı için bu klasördeki **PersistedState.xml** dosyasını silmeyin. Bu dosya asla bir kişiyle ilgili hiçbir veri içermez ve hiçbir şekilde silinmemelidir.
 
 Bu izleme günlüğü dosyalarını Windows Gezgini 'ni kullanarak gözden geçirebilir ve silebilirsiniz ya da gerekli eylemleri gerçekleştirmek için aşağıdaki PowerShell betiğini kullanabilirsiniz:
 

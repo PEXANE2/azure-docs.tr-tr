@@ -8,17 +8,17 @@ editor: curtand
 ms.reviewer: darora10
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79036974"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359764"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect değiştirilen varsayılan kuralları çözme
 
@@ -49,7 +49,7 @@ Varsayılan kurallar için ortak özelleştirmeler aşağıda verilmiştir:
 
 Herhangi bir kuralı değiştirmeden önce:
 
-- Eşitleme zamanlayıcısını devre dışı bırakın. Zamanlayıcı, varsayılan olarak her 30 dakikada bir çalışır. Değişiklik yaparken ve yeni kurallarınızın sorunlarını giderirken başlatılmadığından emin olun. Zamanlayıcı 'yı geçici olarak devre dışı bırakmak için PowerShell 'i başlatın `Set-ADSyncScheduler -SyncCycleEnabled $false`ve çalıştırın.
+- Eşitleme zamanlayıcısını devre dışı bırakın. Zamanlayıcı, varsayılan olarak her 30 dakikada bir çalışır. Değişiklik yaparken ve yeni kurallarınızın sorunlarını giderirken başlatılmadığından emin olun. Zamanlayıcı 'yı geçici olarak devre dışı bırakmak için PowerShell 'i başlatın ve çalıştırın `Set-ADSyncScheduler -SyncCycleEnabled $false` .
  ![Eşitleme zamanlayıcısını devre dışı bırakmak için PowerShell komutları](media/how-to-connect-fix-default-rules/default3.png)
 
 - Kapsam filtresindeki değişiklik, hedef dizindeki nesnelerin silinmesine neden olabilir. Nesnelerin kapsamı içinde herhangi bir değişiklik yapmadan önce dikkatli olun. Etkin sunucuda değişiklik yapmadan önce bir hazırlama sunucusunda değişiklik yapmanızı öneririz.
@@ -105,10 +105,10 @@ Gelen kuralında olduğu gibi, kuralı adlandırmak için kendi adlandırma kura
 Artık Active Directory bir kullanıcı nesnesi için yeni bir öznitelik oluşturmayı Azure Active Directory. Herhangi bir nesneden kaynak ve hedefe herhangi bir öznitelik eşlemek için bu adımları kullanabilirsiniz. Daha fazla bilgi için bkz. [özel eşitleme kuralları oluşturma](how-to-connect-create-custom-sync-rule.md) ve [kullanıcıları sağlamaya hazırlanma](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization).
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>Varolan bir özniteliğin değerini geçersiz kıl
-Zaten eşlenmiş bir özniteliğin değerini geçersiz kılmak isteyebilirsiniz. Örneğin, her zaman Azure AD 'deki bir özniteliğe null değer ayarlamak istiyorsanız yalnızca bir gelen kuralı oluşturmanız yeterlidir. Sabit değeri, `AuthoritativeNull`, hedef özniteliğe akış yapın. 
+Zaten eşlenmiş bir özniteliğin değerini geçersiz kılmak isteyebilirsiniz. Örneğin, her zaman Azure AD 'deki bir özniteliğe null değer ayarlamak istiyorsanız yalnızca bir gelen kuralı oluşturmanız yeterlidir. Sabit değeri, `AuthoritativeNull` , hedef özniteliğe akış yapın. 
 
 >[!NOTE] 
-> Bu `AuthoritativeNull` durumda yerine `Null` kullanın. Bunun nedeni, null olmayan değerin, daha düşük önceliğe sahip olsa bile null değeri değiştirdiği (kuraldaki daha yüksek bir sayı değeri). `AuthoritativeNull`Diğer taraftan, diğer kurallara göre null olmayan bir değerle değiştirilmez. 
+> `AuthoritativeNull` `Null` Bu durumda yerine kullanın. Bunun nedeni, null olmayan değerin, daha düşük önceliğe sahip olsa bile null değeri değiştirdiği (kuraldaki daha yüksek bir sayı değeri). `AuthoritativeNull`Diğer taraftan, diğer kurallara göre null olmayan bir değerle değiştirilmez. 
 
 ### <a name="dont-sync-existing-attribute"></a>Var olan özniteliği eşitleme
 Bir özniteliği eşitlemeden dışlamak istiyorsanız, Azure AD Connect içinde belirtilen öznitelik filtreleme özelliğini kullanın. Masaüstü simgesinden **Azure AD Connect** başlatın ve ardından **eşitleme seçeneklerini Özelleştir**' i seçin.
@@ -141,7 +141,7 @@ Bu özniteliği Active Directory ayarlayamazsınız. Bu özniteliğin değerini 
 
 `cloudFiltered <= IIF(Left(LCase([department]), 3) = "hrd", True, NULL)`
 
-Önce departmanı kaynaktan (Active Directory) küçük harfe dönüştürüyoruz. Ardından, `Left` işlevini kullanarak yalnızca ilk üç karakteri aldık ve ile `hrd`karşılaştırıyoruz. Eşleşirse, değer olarak ayarlanır `True`, aksi takdirde. `NULL` Değeri null olarak ayarlamak için, daha düşük önceliğe sahip başka bir kural (daha yüksek bir sayı değeri), farklı bir koşula göre yazılabilir. [Eşitleme kuralını doğrula bölümünde belirtildiği](#validate-sync-rule) gibi eşitleme kuralını doğrulamak için bir nesnede önizlemeyi çalıştırın.
+Önce departmanı kaynaktan (Active Directory) küçük harfe dönüştürüyoruz. Ardından, işlevini kullanarak `Left` yalnızca ilk üç karakteri aldık ve ile karşılaştırıyoruz `hrd` . Eşleşirse, değer olarak ayarlanır `True` , aksi takdirde `NULL` . Değeri null olarak ayarlamak için, daha düşük önceliğe sahip başka bir kural (daha yüksek bir sayı değeri), farklı bir koşula göre yazılabilir. [Eşitleme kuralını doğrula bölümünde belirtildiği](#validate-sync-rule) gibi eşitleme kuralını doğrulamak için bir nesnede önizlemeyi çalıştırın.
 
 ![Gelen eşitleme kuralı seçeneklerini oluşturma](media/how-to-connect-fix-default-rules/default7a.png)
 

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/23/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54f5090101c486562e33de56402db348c6038c8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3ca659535c225ca6736fe7bba8aa5b0120c684c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60244752"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359832"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD federasyonu uyumluluk listesi
 Azure Active Directory, üçüncü taraf çözüm gerekmeden karma ve yalnızca bulut uygulamalarında Office 365 ve diğer Microsoft Çevrimiçi Hizmetleri için çoklu oturum açma ve gelişmiş uygulama erişim güvenliği sağlar. Microsoft 'un çevrimiçi hizmetlerinin birçoğu gibi Office 365, Dizin Hizmetleri, kimlik doğrulama ve yetkilendirme için Azure Active Directory tümleşiktir. Azure Active Directory ayrıca binlerce SaaS uygulamasında ve şirket içi Web uygulamalarında çoklu oturum açma olanağı da sağlar. Desteklenen SaaS uygulamaları için Azure Active Directory [uygulama galerisine](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) bakın. 

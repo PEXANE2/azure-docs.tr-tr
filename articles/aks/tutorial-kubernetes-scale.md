@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f830d42ef09a60b1f9ced43250b24a68003d1e87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128992"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361600"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) uygulamaları ölçeklendirme
 
@@ -74,14 +74,14 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> AKS kümeniz *1,10*'den küçükse, ölçüm sunucusu otomatik olarak yüklenmez. Ölçüm sunucusu yükleme bildirimleri, ölçüm sunucusu sürümlerindeki `components.yaml` bir varlık olarak kullanılabilir, bu da bunları bir URL aracılığıyla yükleyebileceğiniz anlamına gelir. Bu YAML tanımları hakkında daha fazla bilgi edinmek için README 'ın [dağıtım][metrics-server-github] bölümüne bakın.
+> AKS kümeniz *1,10*'den küçükse, ölçüm sunucusu otomatik olarak yüklenmez. Ölçüm sunucusu yükleme bildirimleri `components.yaml` , ölçüm sunucusu sürümlerindeki bir varlık olarak kullanılabilir, bu da bunları bir URL aracılığıyla yükleyebileceğiniz anlamına gelir. Bu YAML tanımları hakkında daha fazla bilgi edinmek için README 'ın [dağıtım][metrics-server-github] bölümüne bakın.
 > 
 > Örnek yükleme:
 > ```console
 > kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 > ```
 
-Otomatik Scaler 'yi kullanmak için, yığınlarınızdaki tüm kapsayıcılar ve yığınlarınızın CPU istekleri ve sınırları tanımlı olmalıdır. `azure-vote-front` Dağıtımda, ön uç kapsayıcısı, 0,5 CPU sınırlaması Ile 0,25 CPU talep ediyor. Bu kaynak istekleri ve limitleri aşağıdaki örnek kod parçacığında gösterildiği gibi tanımlanmıştır:
+Otomatik Scaler 'yi kullanmak için, yığınlarınızdaki tüm kapsayıcılar ve yığınlarınızın CPU istekleri ve sınırları tanımlı olmalıdır. `azure-vote-front`Dağıtımda, ön uç kapsayıcısı, 0,5 CPU sınırlaması ile 0,25 CPU talep ediyor. Bu kaynak istekleri ve limitleri aşağıdaki örnek kod parçacığında gösterildiği gibi tanımlanmıştır:
 
 ```yaml
 resources:
@@ -97,7 +97,7 @@ Aşağıdaki örnek, *azure-vote-front* dağıtımındaki podların sayısını 
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Alternatif olarak, otomatik Scaler davranışını ve kaynak sınırlarını tanımlamak için bir bildirim dosyası da oluşturabilirsiniz. Aşağıda adlı `azure-vote-hpa.yaml`bir bildirim dosyası örneği verilmiştir.
+Alternatif olarak, otomatik Scaler davranışını ve kaynak sınırlarını tanımlamak için bir bildirim dosyası da oluşturabilirsiniz. Aşağıda adlı bir bildirim dosyası örneği verilmiştir `azure-vote-hpa.yaml` .
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -113,6 +113,7 @@ spec:
     name: azure-vote-back
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 
+---
 
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -128,7 +129,7 @@ spec:
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 ```
 
-Bildirim dosyasında tanımlanan otomatik Scaler 'ı uygulamak için kullanın `kubectl apply` `azure-vote-hpa.yaml`
+`kubectl apply`Bildirim dosyasında tanımlanan otomatik Scaler 'ı uygulamak için kullanın `azure-vote-hpa.yaml` .
 
 ```
 kubectl apply -f azure-vote-hpa.yaml

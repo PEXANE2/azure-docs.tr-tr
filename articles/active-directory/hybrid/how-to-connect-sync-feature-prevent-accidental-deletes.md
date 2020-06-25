@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 55270889c8c284335d5aa7b545718da419ba8d84
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71827136"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357367"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect Eşitleme: Yanlışlıkla Silmeleri Engelleme
 Bu konuda Azure AD Connect ' de yanlışlıkla silme (yanlışlıkla silmeleri önleme) özelliğinin önlenmesi açıklanmaktadır.
@@ -35,7 +35,7 @@ Azure AD Connect yüklenirken, yanlışlıkla silinmekten kaçınmak varsayılan
 * Bir kuruluş birimi içindeki tüm nesnelerin silinmesi.
 * Bir kuruluş biriminin yeniden adlandırılması nedeniyle içindeki tüm nesnelerin eşitleme kapsamı dışında olarak değerlendirilmesi.
 
-500 nesnelerinin varsayılan değeri, kullanılarak `Enable-ADSyncExportDeletionThreshold`Azure Active Directory Connect yüklenen AD eşitleme modülünün bir parçası olan PowerShell ile değiştirilebilir. Bu değeri, kuruluşunuzun boyutuna uyacak şekilde yapılandırmanız gerekir. Eşitleme Zamanlayıcısı her 30 dakikada bir çalıştığından, bu değer 30 dakika içinde görülen silme sayısıdır.
+500 nesnelerinin varsayılan değeri `Enable-ADSyncExportDeletionThreshold` , kullanılarak Azure Active Directory Connect yüklenen AD eşitleme modülünün bir parçası olan PowerShell ile değiştirilebilir. Bu değeri, kuruluşunuzun boyutuna uyacak şekilde yapılandırmanız gerekir. Eşitleme Zamanlayıcısı her 30 dakikada bir çalıştığından, bu değer 30 dakika içinde görülen silme sayısıdır.
 
 Azure AD 'ye dışarı aktarılmayacak kadar çok sayıda silme işlemi varsa, dışarı aktarma işlemi duraklar ve aşağıdakine benzer bir e-posta alırsınız:
 
@@ -45,7 +45,7 @@ Azure AD 'ye dışarı aktarılmayacak kadar çok sayıda silme işlemi varsa, d
 >
 > 
 
-Dışarı aktarma profili için **Synchronization Service Manager** Kullanıcı `stopped-deletion-threshold-exceeded` arabirimine baktığınızda durumu da görebilirsiniz.
+`stopped-deletion-threshold-exceeded`Dışarı aktarma profili için **Synchronization Service Manager** Kullanıcı arabirimine baktığınızda durumu da görebilirsiniz.
 ![Yanlışlıkla silmeleri Service Manager Kullanıcı arabirimini engelle](./media/how-to-connect-sync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
 Bu beklenmiyorsa, inceleyin ve düzeltici eylemler gerçekleştirin. Hangi nesnelerin silinmek üzere olduğunu görmek için aşağıdakileri yapın:
@@ -58,16 +58,16 @@ Bu beklenmiyorsa, inceleyin ve düzeltici eylemler gerçekleştirin. Hangi nesne
 
 ![Bağlayıcı alanını ara](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
-[!NOTE] Tüm silinmelerde emin değilseniz ve daha güvenli bir yol aşağı gitmek istiyorsanız. PowerShell cmdlet 'ini kullanarak, istenmeyen silinmelere izin verebilecek eşiği devre dışı bırakmak yerine yeni bir eşik ayarlamak için: `Enable-ADSyncExportDeletionThreshold` 
+[!NOTE] Tüm silinmelerde emin değilseniz ve daha güvenli bir yol aşağı gitmek istiyorsanız. PowerShell cmdlet 'ini kullanarak, `Enable-ADSyncExportDeletionThreshold` istenmeyen silinmelere izin verebilecek eşiği devre dışı bırakmak yerine yeni bir eşik ayarlamak için: 
 
 ## <a name="if-all-deletes-are-desired"></a>Tüm silmeler isteniyorsa
 Tüm silmeler isteniyorsa, şunları yapın:
 
-1. Geçerli silme eşiğini almak için PowerShell cmdlet 'ini `Get-ADSyncExportDeletionThreshold`çalıştırın. Bir Azure AD Genel yönetici hesabı ve parolası sağlayın. Varsayılan değer 500'dür.
-2. Bu korumayı geçici olarak devre dışı bırakmak ve bu silmeleri devam etmek için PowerShell cmdlet 'ini çalıştırın `Disable-ADSyncExportDeletionThreshold`:. Bir Azure AD Genel yönetici hesabı ve parolası sağlayın.
+1. Geçerli silme eşiğini almak için PowerShell cmdlet 'ini çalıştırın `Get-ADSyncExportDeletionThreshold` . Bir Azure AD Genel yönetici hesabı ve parolası sağlayın. Varsayılan değer 500'dür.
+2. Bu korumayı geçici olarak devre dışı bırakmak ve bu silmeleri devam etmek için PowerShell cmdlet 'ini çalıştırın: `Disable-ADSyncExportDeletionThreshold` . Bir Azure AD Genel yönetici hesabı ve parolası sağlayın.
    ![Kimlik Bilgileri](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
 3. Azure Active Directory Bağlayıcısı seçiliyken, **Çalıştır** eylemini seçin ve **dışarı aktar**' ı seçin.
-4. Korumayı yeniden etkinleştirmek için PowerShell cmdlet 'ini çalıştırın: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`. 500 değerini, geçerli silme eşiğini alırken gördüğünüz değerle değiştirin. Bir Azure AD Genel yönetici hesabı ve parolası sağlayın.
+4. Korumayı yeniden etkinleştirmek için PowerShell cmdlet 'ini çalıştırın: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500` . 500 değerini, geçerli silme eşiğini alırken gördüğünüz değerle değiştirin. Bir Azure AD Genel yönetici hesabı ve parolası sağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 **Genel Bakış konuları**

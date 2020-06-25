@@ -1,7 +1,7 @@
 ---
 title: Microsoft Güvenlik kodu çözümleme belgelerine genel bakış
 description: Bu makale, Microsoft Güvenlik kodu analiz uzantısı 'na genel bakış
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74851477"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361328"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Microsoft Güvenlik kodu analizi hakkında
 
@@ -65,15 +65,11 @@ Kötü amaçlı yazılımdan koruma tarayıcı oluşturma görevi, Microsoft Gü
 
 ### <a name="binskim"></a>Binskım
 
-Binskım, derleyici ayarlarını, bağlayıcı ayarlarını ve ikili dosyaların güvenlikle ilgili diğer özelliklerini doğrulayan bir taşınabilir yürütülebilir (PE) hafif tarayıcıdır. Bu derleme görevi, binskim. exe konsol uygulaması etrafında bir komut satırı sarmalayıcı sağlar. BinSkim, açık kaynaklı bir araçtır. Daha fazla bilgi için bkz. [GitHub 'Da Binskım](https://github.com/Microsoft/binskim).
+Binskım, derleyici ayarlarını, bağlayıcı ayarlarını ve ikili dosyaların güvenlikle ilgili diğer özelliklerini doğrulayan bir taşınabilir yürütülebilir (PE) hafif tarayıcıdır. Bu derleme görevi binskim.exe konsol uygulamasının etrafında bir komut satırı sarmalayıcısı sağlar. BinSkim, açık kaynaklı bir araçtır. Daha fazla bilgi için bkz. [GitHub 'Da Binskım](https://github.com/Microsoft/binskim).
 
 ### <a name="credential-scanner"></a>Kimlik bilgisi tarayıcısı
 
 Kaynak kodda depolanan parolalar ve diğer gizli dizileri önemli bir sorundur. Kimlik bilgisi tarayıcısı, bu sorunu çözmeye yardımcı olan özel bir statik analiz aracıdır. Araç, kaynak kodunuzda ve yapı çıkışındaki kimlik bilgilerini, sırları, sertifikaları ve diğer hassas içeriği algılar.
-
-### <a name="microsoft-security-risk-detection"></a>Microsoft güvenlik riski algılama
-
-Microsoft güvenlik riski algılama (MSRD), belirsizlik testi için bulut tabanlı bir hizmettir. Yazılımda açıktan yararlanma güvenlik hatalarını tanımlar. Bu hizmet ayrı bir abonelik ve etkinleştirme gerektirir. Daha fazla bilgi için bkz. [Msrd Geliştirici Merkezi](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>Roslyn Çözümleyicileri
 

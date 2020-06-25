@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6205c4189abfefc2ee9c4a273ebfd6773ea609b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e75329444c2ddb9401f32bccea400d90b633294
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411371"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361532"
 ---
 # <a name="connect-with-power-bi"></a>Power BI ile bağlanma
 
@@ -25,7 +25,7 @@ Azure 'da bir sunucu oluşturup buna bir tablosal Model dağıttıktan sonra, ku
   
 ## <a name="connect-in-power-bi-desktop"></a>Power BI Desktop'ta bağlanma
 
-1. Power BI Desktop, **veri** > Al**Azure** > **Azure Analysis Services veritabanı**' na tıklayın.
+1. Power BI Desktop, **veri al**  >  **Azure**  >  **Azure Analysis Services veritabanı**' na tıklayın.
 
 2. **Sunucu**' da sunucu adını girin. Tam URL 'YI eklediğinizden emin olun; Örneğin, asazure://westcentralus.asazure.windows.net/advworks.
 
@@ -44,9 +44,9 @@ Azure 'da bir sunucu oluşturup buna bir tablosal Model dağıttıktan sonra, ku
 ## <a name="connect-in-power-bi-service"></a>Power BI (hizmet) içinde Bağlan
 
 1. Sunucunuzdaki modelinize canlı bağlantısı olan Power BI Desktop bir dosya oluşturun.
-2. [Power BI](https://powerbi.microsoft.com), **veri** > **dosyalarını**Al ' a tıklayın ve ardından. pbix dosyanızı bulup seçin.
+2. [Power BI](https://powerbi.microsoft.com), **veri**  >  **dosyalarını**Al ' a tıklayın ve ardından. pbix dosyanızı bulup seçin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 [Azure Analysis Services Bağlan](analysis-services-connect.md)   
-[İstemci kitaplıkları](analysis-services-data-providers.md)
+[İstemci kitaplıkları](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 

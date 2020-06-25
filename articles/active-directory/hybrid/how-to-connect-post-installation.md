@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261300"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358455"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Sonraki adımlar ve Azure AD Connect yönetme
 Kuruluşunuzun gereksinimlerini ve gereksinimlerini karşılamak üzere Azure Active Directory (Azure AD) ile bağlantı kurmak için bu makaledeki işletimsel yordamları kullanın.  
@@ -72,9 +72,9 @@ Aşağıdaki tabloda, bu görevlerin bir özeti ve her görevin kısa bir açık
 
 ![Ek görevlerin listesi](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Ek görev | Açıklama |
+| Ek görev | Description |
 | --- | --- |
-|**Gizlilik ayarları**|Microsoft ile hangi Telemetri verilerinin paylaşıldığını görüntüleyin.|
+|**Gizlilik Ayarları**|Microsoft ile hangi Telemetri verilerinin paylaşıldığını görüntüleyin.|
 |**Geçerli yapılandırmayı görüntüle**|Geçerli Azure AD Connect çözümünüzü görüntüleyin.  Bu, genel ayarları, eşitlenen dizinleri ve eşitleme ayarlarını içerir. |
 | **Eşitleme seçeneklerini özelleştirme** |Yapılandırmaya ek Active Directory ormanları ekleme veya Kullanıcı, Grup, cihaz veya parola geri yazma gibi eşitleme seçeneklerinin etkinleştirilmesi gibi geçerli yapılandırmayı değiştirin. |
 |**Cihaz seçeneklerini yapılandır**|Eşitleme için kullanılabilir cihaz seçenekleri|

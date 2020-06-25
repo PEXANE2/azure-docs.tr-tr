@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77917922"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357469"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Eşitleme Azure AD Connect: Dizin uzantıları
 Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler, [Uzantılar](https://docs.microsoft.com/graph/extensibility-overview
@@ -60,14 +60,14 @@ Azure AD Connect yüklenmesi sırasında, bu özniteliklerin kullanılabildiği 
 
 Bu uygulamayı görmek için **tüm uygulamalar** ' ı seçtiğinizden emin olun.
 
-Öznitelikler **{ApplicationId}\_uzantısıyla \_** önek olarak eklenir. ApplicationId, Azure AD kiracınızdaki tüm öznitelikler için aynı değere sahiptir. Bu konudaki tüm diğer senaryolar için bu değere ihtiyacınız olacaktır.
+Öznitelikler ** \_ {ApplicationId \_ } uzantısıyla**önek olarak eklenir. ApplicationId, Azure AD kiracınızdaki tüm öznitelikler için aynı değere sahiptir. Bu konudaki tüm diğer senaryolar için bu değere ihtiyacınız olacaktır.
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Microsoft Graph API 'sini kullanarak öznitelikleri görüntüleme
 
 Bu öznitelikler artık Microsoft Graph API ile [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#)kullanılarak kullanılabilir.
 
 >[!NOTE]
-> Microsoft Graph API 'sinde, özniteliklerin döndürülmesini istemek gerekir. Aşağıdaki öznitelikleri açıkça seçin: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
+> Microsoft Graph API 'sinde, özniteliklerin döndürülmesini istemek gerekir. Aşağıdaki öznitelikleri açıkça seçin: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` .
 >
 > Daha fazla bilgi için bkz. [Microsoft Graph: sorgu parametrelerini kullanma](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

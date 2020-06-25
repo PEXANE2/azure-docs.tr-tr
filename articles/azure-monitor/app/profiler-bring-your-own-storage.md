@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2f928ac2f8772942eb748d68a65662938b1405ed
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84882506"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361947"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Application Insights Profiler ve Snapshot Debugger için kendi depolama alanınızı getir (BYOS) yapılandırma
 
@@ -21,9 +21,9 @@ Application Insights Profiler veya Snapshot Debugger kullandığınızda, uygula
 Kendi depolama alanınızı getir ile, bu yapılar denetlediğiniz bir depolama hesabına yüklenir. Bu, bekleyen şifreleme ilkesini, ömür yönetimi ilkesini ve ağ erişimini kontrol ettiğiniz anlamına gelir. Bununla birlikte, bu depolama hesabıyla ilişkili maliyetlerden de sorumlu olursunuz.
 
 > [!NOTE]
-> Özel bağlantıyı etkinleştirirseniz, kendi depolama alanınızı getirin. Özel bağlantı hakkında daha fazla bilgi için [belgelerine bakın](https://docs.microsoft.com/azure/private-link/private-link-overview).
+> Özel bağlantıyı etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights özel bağlantısı hakkında daha fazla bilgi için [belgelerine bakın.](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)
 >
-> Müşteri tarafından yönetilen anahtarları etkinleştirirseniz, kendi depolama alanınızı getirin. Müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için [belgelerine bakın](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).
+> Müşteri tarafından yönetilen anahtarları etkinleştirirseniz, kendi depolama alanınızı getirin. Application Insights için müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için [belgelerine bakın.](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Depolama hesabımın erişim sıklığı nedir?
 1. Sanal makinelerinizde veya App Service çalışan aracılar, hesabınızdaki blob kapsayıcılarına yapıtları (profiller, anlık görüntüler ve semboller) karşıya yükleyecek. Bu işlem, depolama hesabınızda yeni bir blob 'a SAS (paylaşılan erişim Imzası) belirteci almak için Application Insights Profiler veya Snapshot Debugger hizmetine başvurmayı içerir.

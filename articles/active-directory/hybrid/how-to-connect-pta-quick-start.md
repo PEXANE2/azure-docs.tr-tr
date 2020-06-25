@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca425c7c5739785f3463086d89b4796f09bf45b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61e772d7a55577c263edc83ccface31932f5b2dd
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229825"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358370"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory geçişli kimlik doğrulaması: hızlı başlangıç
 
@@ -72,9 +72,9 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun.
      | **8080** (isteğe bağlı) | Bağlantı noktası 443 kullanılamıyorsa, kimlik doğrulama aracıları, 8080 numaralı bağlantı noktası üzerinden her on dakikada bir durum bildirir. Bu durum Azure AD portalında görüntülenir. 8080 numaralı bağlantı noktası Kullanıcı oturum açma işlemleri _için kullanılmaz._ |
      
      Güvenlik duvarınız, kaynak kullanıcılara göre kuralları zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için bu bağlantı noktalarını açın.
-   - Güvenlik duvarınız veya proxy DNS beyaz listeye izin veriyorsa, ** \*. msappproxy.net** ve ** \*. ServiceBus.Windows.net**öğesine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
+   - Güvenlik duvarınız veya proxy DNS beyaz listeye izin veriyorsa, ** \* . msappproxy.net** ve ** \* . ServiceBus.Windows.net**öğesine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
    - Kimlik doğrulama aracılarınızın ilk kayıt için **login.Windows.net** ve **login.microsoftonline.com** 'e erişmesi gerekir. Bu URL 'Ler için güvenlik duvarınızı da açın.
-   - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**ve **\.www Microsoft.com:80**. Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanıldığından, bu URL 'Lerin engeli kaldırılmış olabilir.
+   - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**ve **www \. Microsoft.com:80**. Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanıldığından, bu URL 'Lerin engeli kaldırılmış olabilir.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Kamu Bulutu önkoşulu
 Adım 2 ile Azure AD Connect aracılığıyla doğrudan kimlik doğrulamayı etkinleştirmeden önce, Azure portal PTA aracısının en son sürümünü indirin.  Aracınızın 1.5.1742.0 sürümleri olduğundan emin olmanız gerekir **.** üzeri için derlenmiş olmalıdır.  Aracınızı doğrulamak için bkz. [yükseltme kimlik doğrulama aracıları](how-to-connect-pta-upgrade-preview-authentication-agents.md)
@@ -150,14 +150,14 @@ Tek başına kimlik doğrulama aracısını dağıtmanın iki yolu vardır:
 
 İkincisi, katılımsız dağıtım betiği oluşturup çalıştırabilirsiniz. Bu, aynı anda birden fazla kimlik doğrulama Aracısı dağıtmak veya Kullanıcı arabirimi etkinleştirilmemiş olan veya uzak masaüstü ile erişemeyen Windows Server 'lar üzerinde kimlik doğrulama aracıları yüklemek istediğinizde yararlıdır. Bu yaklaşımın nasıl kullanılacağına ilişkin yönergeler aşağıda verilmiştir:
 
-1. Kimlik doğrulama Aracısı yüklemek için şu komutu çalıştırın: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. Windows PowerShell 'i kullanarak hizmetimizi kullanarak kimlik doğrulama aracısını kaydedebilirsiniz. Kiracınız için genel yönetici `$cred` Kullanıcı adını ve parolasını Içeren bir PowerShell kimlik bilgileri nesnesi oluşturun. Şu komutu çalıştırarak * \<Kullanıcı adı\> * ve * \<parolayı\>* değiştirin:
+1. Kimlik doğrulama Aracısı yüklemek için şu komutu çalıştırın: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` .
+2. Windows PowerShell 'i kullanarak hizmetimizi kullanarak kimlik doğrulama aracısını kaydedebilirsiniz. `$cred`Kiracınız için genel yönetici kullanıcı adını ve parolasını içeren bir PowerShell kimlik bilgileri nesnesi oluşturun. Ve yerine aşağıdaki komutu çalıştırın *\<username\>* *\<password\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
-3. **C:\Program Files\Microsoft Azure AD Connect kimlik doğrulama aracısına** gidin ve oluşturduğunuz `$cred` nesneyi kullanarak aşağıdaki betiği çalıştırın:
+3. **C:\Program Files\Microsoft Azure AD Connect kimlik doğrulama aracısına** gidin ve oluşturduğunuz nesneyi kullanarak aşağıdaki betiği çalıştırın `$cred` :
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 

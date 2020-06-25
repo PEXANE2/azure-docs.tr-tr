@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75300824d94ecbd77f426539ce99da6caaa2e27a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60351077"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360002"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Eşitleme kuralını özelleştirme
 
@@ -42,7 +42,7 @@ Eşitleme kuralı Düzenleyicisi 'ni kullanarak yeni bir eşitleme kuralı düze
 
 * **Giden** bir kuralı değiştirmek için, eşitleme kuralı düzenleyicisinden filtreyi değiştirin.
 
-## <a name="recommended-documents"></a>**Önerilen belgeler**
+## <a name="recommended-documents"></a>**Önerilen Belgeler**
 * [Azure AD Connect eşitleme: teknik kavramlar](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
 * [Azure AD Connect eşitleme: mimariyi anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
 * [Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)

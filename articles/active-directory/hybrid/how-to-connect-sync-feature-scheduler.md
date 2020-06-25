@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261079"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357401"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect eşitleme: Scheduler
 Bu konuda Azure AD Connect Sync (eşitleme altyapısı) içinde yerleşik Zamanlayıcı açıklanmaktadır.
@@ -41,11 +41,11 @@ Zamanlayıcı iki görevden sorumludur:
 Scheduler her zaman çalışır, ancak bu görevlerden yalnızca birini çalıştıracak şekilde yapılandırılabilir. Örneğin, kendi eşitleme çevrimi işleminizin olması gerekiyorsa bu görevi Scheduler 'da devre dışı bırakabilir ancak bakım görevini yine de çalıştırabilirsiniz.
 
 ## <a name="scheduler-configuration"></a>Zamanlayıcı yapılandırması
-Geçerli yapılandırma ayarlarınızı görmek için PowerShell ve Çalıştır `Get-ADSyncScheduler`' a gidin. Şu resme benzer bir şey gösterir:
+Geçerli yapılandırma ayarlarınızı görmek için PowerShell ve Çalıştır ' a gidin `Get-ADSyncScheduler` . Şu resme benzer bir şey gösterir:
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-Bu cmdlet 'i çalıştırdığınızda **Eşitle komutunu veya cmdlet 'in kullanılamaz olduğunu** görürseniz, PowerShell modülü yüklenmez. Bu sorun, bir etki alanı denetleyicisinde veya varsayılan ayarlardan daha yüksek PowerShell kısıtlama düzeylerine sahip bir sunucuda Azure AD Connect çalıştırırsanız meydana gelebilir. Bu hatayı görürseniz, cmdlet 'ini kullanılabilir hale `Import-Module ADSync` getirmek için komutunu çalıştırın.
+Bu cmdlet 'i çalıştırdığınızda **Eşitle komutunu veya cmdlet 'in kullanılamaz olduğunu** görürseniz, PowerShell modülü yüklenmez. Bu sorun, bir etki alanı denetleyicisinde veya varsayılan ayarlardan daha yüksek PowerShell kısıtlama düzeylerine sahip bir sunucuda Azure AD Connect çalıştırırsanız meydana gelebilir. Bu hatayı görürseniz, `Import-Module ADSync` cmdlet 'ini kullanılabilir hale getirmek için komutunu çalıştırın.
 
 * **AllowedSyncCycleInterval**. Azure AD tarafından izin verilen eşitleme döngüleri arasındaki en kısa zaman aralığı. Bu ayardan daha sık eşitlenemez ve yine de desteklenemez.
 * **CurrentlyEffectiveSyncCycleInterval**. Zamanlama Şu anda etkin. Allowedsyncınterval 'dan daha sık değilse, CustomizedSyncInterval (ayarlandıysa) ile aynı değere sahiptir. 1.1.281 önce bir yapı kullanırsanız ve CustomizedSyncCycleInterval değiştirirseniz, bu değişiklik bir sonraki eşitleme döngüsünden sonra devreye girer. Derleme 1.1.281, değişiklik hemen geçerli olur.
@@ -58,7 +58,7 @@ Bu cmdlet 'i çalıştırdığınızda **Eşitle komutunu veya cmdlet 'in kullan
 * **Stagingmodeenabled**. [Hazırlama modunun](how-to-connect-sync-staging-server.md) etkin olup olmadığını gösterir. Bu ayar etkinleştirilirse, dışarı aktarmaları çalışır, ancak yine de içeri aktarma ve eşitleme çalıştırmaların çalışmasını önler.
 * **SchedulerSuspended**. Bir yükseltme sırasında, Scheduler 'ın çalışmasını geçici olarak engellemek için Connect tarafından ayarlanır.
 
-Bu ayarlardan bazılarını ile `Set-ADSyncScheduler`değiştirebilirsiniz. Aşağıdaki parametreler değiştirilebilir:
+Bu ayarlardan bazılarını ile değiştirebilirsiniz `Set-ADSyncScheduler` . Aşağıdaki parametreler değiştirilebilir:
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -83,11 +83,11 @@ Değişiklikler Zamanlayıcı 'yı günlük olarak çalışacak şekilde değiş
 ### <a name="disable-the-scheduler"></a>Zamanlayıcıyı devre dışı bırak  
 Yapılandırma değişiklikleri yapmanız gerekiyorsa, Scheduler 'ı devre dışı bırakmak isteyebilirsiniz. Örneğin, [filtreleme yapılandırdığınızda](how-to-connect-sync-configure-filtering.md) veya [eşitleme kurallarında değişiklikler yaptığınızda](how-to-connect-sync-change-the-configuration.md).
 
-Zamanlayıcıyı devre dışı bırakmak için çalıştırın `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+Zamanlayıcıyı devre dışı bırakmak için çalıştırın `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 
 ![Zamanlayıcıyı devre dışı bırak](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
 
-Değişikliklerinizi yaptığınızda, Scheduler 'ı ile `Set-ADSyncScheduler -SyncCycleEnabled $true`yeniden etkinleştirmeyi unutmayın.
+Değişikliklerinizi yaptığınızda, Scheduler 'ı ile yeniden etkinleştirmeyi unutmayın `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 ## <a name="start-the-scheduler"></a>Zamanlayıcıyı başlatma
 Zamanlayıcı varsayılan olarak 30 dakikada bir çalıştırılır. Bazı durumlarda, zamanlanmış döngüler arasında veya farklı bir tür çalıştırmanız gereken bir eşitleme döngüsü çalıştırmak isteyebilirsiniz.
@@ -109,9 +109,9 @@ Tam eşitleme çevrimi aşağıdaki adımları içerir:
 
 Bu, hemen eşitlenmesi gereken bir acil değişiklik olabilir ve bu nedenle bir döngüyü el ile çalıştırmanız gerekir. 
 
-Bir eşitleme döngüsünü el ile çalıştırmanız gerekiyorsa, PowerShell 'den çalıştırın `Start-ADSyncSyncCycle -PolicyType Delta`.
+Bir eşitleme döngüsünü el ile çalıştırmanız gerekiyorsa, PowerShell 'den çalıştırın `Start-ADSyncSyncCycle -PolicyType Delta` .
 
-Tam eşitleme döngüsünü başlatmak için bir PowerShell isteminden `Start-ADSyncSyncCycle -PolicyType Initial` çalıştırın.   
+Tam eşitleme döngüsünü başlatmak için `Start-ADSyncSyncCycle -PolicyType Initial` bir PowerShell isteminden çalıştırın.   
 
 Tam eşitleme döngüsünü çalıştırmak çok zaman alabilir, bu işlemin nasıl iyileştirileceği hakkında bilgi edinmek için sonraki bölümü okuyun.
 
@@ -156,8 +156,8 @@ Zamanlayıcı Şu anda bir eşitleme döngüsünü çalıştırıyorsa, durdurma
 
 Bir eşitleme çevrimi çalışırken, yapılandırma değişiklikleri yapamazsınız. Zamanlayıcı işlemi bitirene kadar bekleyebilirsiniz, ancak değişikliklerinizi hemen yapabilmeniz için bunu da durdurabilirsiniz. Geçerli döngüyü durdurmak zararlı değildir ve bekleyen değişiklikler sonraki çalıştırma ile işlenir.
 
-1. Zamanlayıcı cmdlet 'ini `Stop-ADSyncSyncCycle`kullanarak Scheduler 'ın geçerli döngüsünü durdurmasını bildirerek başlayın.
-2. 1.1.281 önce bir yapı kullanırsanız, Scheduler 'ı durdurmak geçerli bağlayıcının geçerli görevinden durdurulmaz. Bağlayıcının durdurulmasına zorlamak için aşağıdaki eylemleri gerçekleştirin: ![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+1. Zamanlayıcı cmdlet 'ini kullanarak Scheduler 'ın geçerli döngüsünü durdurmasını bildirerek başlayın `Stop-ADSyncSyncCycle` .
+2. 1.1.281 önce bir yapı kullanırsanız, Scheduler 'ı durdurmak geçerli bağlayıcının geçerli görevinden durdurulmaz. Bağlayıcının durdurulmasına zorlamak için aşağıdaki eylemleri gerçekleştirin: ![ StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
    * Başlangıç menüsünden **eşitleme hizmetini** başlatın. **Bağlayıcılar**' a gidin, bağlayıcıyı **çalışır**durumda vurgulayın ve eylemlerden **Durdur** ' u seçin.
 
 Zamanlayıcı hala etkin ve sonraki fırsatta yeniden başlatılıyor.
@@ -178,7 +178,7 @@ Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name
 
 ![Çalıştırma profilini çağır](./media/how-to-connect-sync-feature-scheduler/invokerunprofile.png)  
 
-`Invoke-ADSyncRunProfile` Cmdlet zaman uyumludur, diğer bir deyişle bağlayıcı işlemi başarıyla veya bir hata ile tamamlayana kadar denetimi döndürmez.
+`Invoke-ADSyncRunProfile`Cmdlet zaman uyumludur, diğer bir deyişle bağlayıcı işlemi başarıyla veya bir hata ile tamamlayana kadar denetimi döndürmez.
 
 Bağlayıcılarınızı zamanladığınızda, bu öneriler aşağıdaki sırayla planlansın:
 

@@ -5,18 +5,18 @@ services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
-ms.topic: reference
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229808"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358591"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Azure AD Connect için grupları bir ormandan diğerine geçirme
 
@@ -29,13 +29,13 @@ Bu makalede, geçirilmiş grup nesnelerinin buluttaki mevcut nesnelerle eşleşm
 
 ## <a name="migrate-groups"></a>Grupları geçirme
 
-Sürüm 1.5.18.0 ' den başlayarak, Azure AD Connect gruplar için `mS-DS-ConsistencyGuid` özniteliğin kullanımını destekler. Kaynak bağlantısı özniteliği `mS-DS-ConsistencyGuid` olarak ' yi seçerseniz ve değer Active Directory doldurulduktan sonra, Azure AD Connect değerini `mS-DS-ConsistencyGuid` kullanır. `immutableId` Aksi takdirde, kullanmaya `objectGUID`geri döner. Ancak Azure AD Connect değeri Active Directory `mS-DS-ConsistencyGuid` özniteliğe geri yazmadığını unutmayın.
+Sürüm 1.5.18.0 ' den başlayarak, Azure AD Connect `mS-DS-ConsistencyGuid` gruplar için özniteliğin kullanımını destekler. `mS-DS-ConsistencyGuid`Kaynak bağlantısı özniteliği olarak ' yi seçerseniz ve değer Active Directory doldurulduktan sonra, Azure AD Connect değerini kullanır `mS-DS-ConsistencyGuid` `immutableId` . Aksi takdirde, kullanmaya geri döner `objectGUID` . Ancak Azure AD Connect değeri Active Directory özniteliğe geri yazmadığını unutmayın `mS-DS-ConsistencyGuid` .
 
-Bir ormanlar arası taşıma sırasında, bir grup nesnesi bir ormandan (F1) başka bir ormana geçtiğinde (F2 deyin), `mS-DS-ConsistencyGuid` değeri (varsa) veya ormandaki nesnedeki `objectGUID` değeri F2 içindeki nesnesinin `mS-DS-ConsistencyGuid` özniteliğiyle (varsa) kopyalamanız gerekir.
+Bir ormanlar arası taşıma sırasında, bir grup nesnesi bir ormandan (F1) başka bir ormana geçtiğinde (F2 deyin), `mS-DS-ConsistencyGuid` değeri (varsa) veya `objectGUID` ormandaki nesnedeki değeri `mS-DS-ConsistencyGuid` F2 içindeki nesnesinin özniteliğiyle (varsa) kopyalamanız gerekir.
 
 Tek bir grubu bir ormandan diğerine geçirmeyi öğrenmek için aşağıdaki komut dosyalarını kılavuz olarak kullanın. Bu komut dosyalarını birden çok grubun geçişi için kılavuz olarak da kullanabilirsiniz. Betikler, kaynak orman için F1 orman adını ve hedef orman için F2 'yi kullanır.
 
-İlk olarak, grup nesnesinin `objectGUID` ve `mS-DS-ConsistencyGuid` içindeki Grup nesnesini F1 'e ekledik. Bu öznitelikler bir CSV dosyasına aktarılmalıdır.
+İlk olarak, `objectGUID` `mS-DS-ConsistencyGuid` Grup nesnesinin ve içindeki Grup nesnesini F1 'e ekledik. Bu öznitelikler bir CSV dosyasına aktarılmalıdır.
 ```
 <#
 DESCRIPTION
@@ -83,7 +83,7 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-Daha sonra, oluşturulan çıkış CSV dosyasını, ormandaki hedef nesne üzerindeki `mS-DS-ConsistencyGuid` özniteliğini damgalamak için kullanırız:
+Daha sonra, oluşturulan çıkış CSV dosyasını, `mS-DS-ConsistencyGuid` ormandaki hedef nesne üzerindeki özniteliğini damgalamak için kullanırız:
 
 
 ```

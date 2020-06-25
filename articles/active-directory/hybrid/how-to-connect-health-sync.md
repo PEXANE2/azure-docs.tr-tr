@@ -11,17 +11,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 356697c4843742c12aa39d82602815e38dcca74a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897215"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359152"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect eşitlemesini Azure AD Connect Health ile izleme
 Aşağıdaki belgeler Azure AD Connect Health ile Azure AD Connect’in (Eşitleme) izlenmesine özgüdür.  Azure Connect Health ile AD FS'yi izleme hakkında bilgi almak için bkz. [Azure AD Connect Health'i AD FS ile kullanma](how-to-connect-health-adfs.md). Ayrıca, Azure AD Connect Health ile Active Directory Domain Services izleme hakkında bilgi için [AD DS ile Azure AD Connect Health kullanma](how-to-connect-health-adds.md)konusuna bakın.
@@ -81,7 +81,7 @@ Bu özellik, kimlik verileri Azure AD Connect kullanılarak Windows Server AD il
 ### <a name="categorization-of-errors"></a>Hataların Kategorilere Ayrılması
 Rapor, mevcut eşitleme hatalarını aşağıdaki kategorilere ayırır:
 
-| Kategori | Açıklama |
+| Kategori | Description |
 | --- | --- |
 | Yinelenen Öznitelik |Azure AD Connect, bir Kiracıda benzersiz olması gereken ve Azure AD Connect’te bulunan bir veya daha fazla özniteliğin (proxyAddresses ve UserPrincipalName gibi) yinelenen değerleri ile nesneler oluşturmaya veya güncelleştirmeye çalıştığında oluşan hatalar. |
 | Veri Uyuşmazlığı |Geçici eşleştirme, nesneleri eşleştiremeyerek eşitleme hatalarına neden olduğunda görülen hatalar. |

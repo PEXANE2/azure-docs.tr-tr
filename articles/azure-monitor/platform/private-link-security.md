@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 47c504d9359779294c4690059d1958614d863e58
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: b0cdff2ce71fb63194933bdfed26da16fdebcca7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260891"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361930"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure Izleyici 'ye güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
@@ -168,9 +168,8 @@ Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki 
 
 > [!NOTE]
 > Çalışma alanı tabanlı Application Insights tamamen güvenli hale getirmek için, Application Insights kaynağa erişimin yanı sıra temel Log Analytics çalışma alanını da kapatmanız gerekir.
-
-> [!NOTE]
-> Kod düzeyi tanılama (Profiler/Debugger) Şu anda özel bağlantıyı desteklemiyor.
+>
+> Kod düzeyinde Tanılamalar (Profiler/Debugger), özel bağlantıyı desteklemek için kendi depolama hesabınızı sağlamanızı gerektirir. Bunun nasıl yapılacağını gösteren [Belgeler](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage) aşağıda verilmiştir.
 
 ## <a name="use-apis-and-command-line"></a>API 'Leri ve komut satırını kullanma
 
@@ -226,7 +225,7 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 
 | Bulut ortamı | Aracı Kaynağı | Bağlantı noktaları | Yön |
 |:--|:--|:--|:--|
-|Azure Genel     | scadvisor.blob.core.windows.net         | 443 | Giden
+|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Giden
 |Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
 

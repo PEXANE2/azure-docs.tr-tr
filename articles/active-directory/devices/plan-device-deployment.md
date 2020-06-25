@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f716c52443abedb0fb838fa95b421033f5e93408
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 97ddc91b5e49cafa87b90113f0160d8aec9c699a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85218053"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360325"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory cihaz dağıtımınızı planlayın
 
@@ -118,9 +118,8 @@ iOS ve Android cihazları yalnızca Azure AD kayıtlı olabilir. Aşağıdaki ta
 |**Temel işlevler**| | |  |
 | Bulut kaynaklarına SSO| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
 | Şirket içi kaynaklarda çoklu oturum açma| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
-| Koşullu erişim| ![denetlemez](./media/plan-device-deployment/check.png) 
-Uyumlu cihazlar| ![denetlemez](./media/plan-device-deployment/check.png)
-Uyumlu cihaz| ![denetlemez](./media/plan-device-deployment/check.png) |
+| Koşullu Erişim <br> (Cihazların uyumlu olarak işaretlenmesini gerektir) <br> (MDM tarafından yönetiliyor olması gerekir)| ![denetlemez](./media/plan-device-deployment/check.png) | ![denetlemez](./media/plan-device-deployment/check.png)|![denetlemez](./media/plan-device-deployment/check.png) |
+Koşullu Erişim <br>(Karma Azure AD 'ye katılmış cihazlar gerektir)| | | ![denetlemez](./media/plan-device-deployment/check.png)
 | Windows oturum açma ekranından self servis parola sıfırlama| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
 | Windows Hello PIN sıfırlama| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |
 | Cihazlar arasında kurumsal durum dolaşımı| | ![denetlemez](./media/plan-device-deployment/check.png)| ![denetlemez](./media/plan-device-deployment/check.png) |

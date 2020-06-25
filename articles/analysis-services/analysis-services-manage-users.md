@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701055"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361498"
 ---
 # <a name="authentication-and-user-permissions"></a>Kimlik doğrulaması ve kullanıcı izinleri
 
@@ -24,7 +24,7 @@ Azure Analysis Services [Azure AD B2B işbirliğini](../active-directory/active-
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Tüm istemci uygulamaları ve araçları bir sunucuya bağlanmak için bir veya daha fazla Analysis Services [istemci kitaplığı](analysis-services-data-providers.md) (amo, MSOLAP, ADOMD) kullanır. 
+Tüm istemci uygulamaları ve araçları bir sunucuya bağlanmak için bir veya daha fazla Analysis Services [istemci kitaplığı](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (amo, MSOLAP, ADOMD) kullanır. 
 
 Üç istemci kitaplığı da Azure AD etkileşimli akışını ve etkileşimli olmayan kimlik doğrulama yöntemlerini destekler. Etkileşimli olmayan iki yöntem, Active Directory parola ve Active Directory tümleşik kimlik doğrulama yöntemleri, AMOMD ve MSOLAP kullanan uygulamalarda kullanılabilir. Bu iki yöntem hiçbir koşulda açılan iletişim kutularında sonuç vermez.
 

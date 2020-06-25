@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 634c10771751522dba4093fe1c830820926fd621
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558574"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357877"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect eşitleme: Varsayılan yapılandırmada bir değişiklik yapın
 Bu makalenin amacı, Azure Active Directory (Azure AD) Connect Sync 'de varsayılan yapılandırmada değişiklik yapma konusunda size yol gösterir. Bazı yaygın senaryolar için adımlar sağlar. Bu bilgi ile kendi iş kurallarınızı temel alarak kendi yapılandırmanızda basit değişiklikler yapabiliyor olmanız gerekir.
@@ -284,13 +284,13 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory kay
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | extensionAttribute1 | Olmayan | Güncelleştir |
+    | Direct | UserType | extensionAttribute1 | Olmayan | Güncelleştirme |
 
     Başka bir örnekte, UserType özniteliğinin değerini diğer özelliklerden türetmek istiyorsunuz. Örneğin, şirket içi AD userPrincipalName özniteliği etki alanı bölümüyle sonlanıyorsa tüm kullanıcıları Konuk olarak eşitlemeniz gerekir <em>@partners.fabrikam123.org</em> . Şunun gibi bir ifade uygulayabilirsiniz:
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | İfade | UserType | IıF (ısun ([userPrincipalName]), ııF (CBool (Instr (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "üye", "Konuk"), hata ("UserType belirleme Için userPrincipalName yok")) | Olmayan | Güncelleştir |
+    | İfade | UserType | IıF (ısun ([userPrincipalName]), ııF (CBool (Instr (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "üye", "Konuk"), hata ("UserType belirleme Için userPrincipalName yok")) | Olmayan | Güncelleştirme |
 
 7. Gelen kuralını oluşturmak için **Ekle** ' ye tıklayın.
 
@@ -327,7 +327,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri kaynağından Azure AD 
 
     | Akış türü | Target özniteliği | Kaynak | Bir kez Uygula | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | UserType | Olmayan | Güncelleştir |
+    | Direct | UserType | UserType | Olmayan | Güncelleştirme |
 
 7. Giden kuralı oluşturmak için **Ekle** ' ye tıklayın.
 

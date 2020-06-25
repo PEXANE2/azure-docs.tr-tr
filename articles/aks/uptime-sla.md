@@ -3,14 +3,14 @@ title: Çalışma süresi SLA 'Sı ile Azure Kubernetes hizmeti (AKS)
 description: Azure Kubernetes hizmeti (AKS) API sunucusu için isteğe bağlı çalışma süresi SLA teklifi hakkında bilgi edinin.
 services: container-service
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: b360f36dfc80033ac95e4face438b66eed33cec4
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945520"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361583"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes hizmeti (AKS) çalışma süresi SLA 'Sı
 
@@ -30,29 +30,38 @@ Müşteriler, bir hizmet düzeyi hedefi (SLO 99,5) olan sınırsız sayıda ücr
 * Azure Kamu Şu anda desteklenmiyor.
 * Azure Çin 21Vianet Şu anda desteklenmemektedir.
 
+## <a name="limitations"></a>Sınırlamalar
+
+* Özel kümeler Şu anda desteklenmiyor.
+
 ## <a name="sla-terms-and-conditions"></a>SLA hüküm ve koşulları
 
 Çalışma süresi SLA 'Sı ücretli bir özelliktir ve küme başına etkindir. Çalışma süresi SLA fiyatlandırması, ayrı kümelerin boyutuna göre değil, farklı kümelerin sayısıyla belirlenir. Daha fazla bilgi için [çalışma SÜRESI SLA fiyatlandırma ayrıntılarını](https://azure.microsoft.com/pricing/details/kubernetes-service/) görüntüleyebilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sürüm 2.7.0 veya üstünü yükler
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sürüm 2.8.0 veya üstünü yükler
 
-## <a name="creating-a-cluster-with-uptime-sla"></a>Çalışma süresi SLA 'Sı ile küme oluşturma
+## <a name="creating-a-new-cluster-with-uptime-sla"></a>Çalışma süresi SLA 'Sı ile yeni bir küme oluşturma
+
+> [!NOTE]
+> Şu anda çalışma süresi SLA 'sını etkinleştirirseniz, bir kümeden kaldırmanın bir yolu yoktur.
 
 Çalışma süresi SLA 'Sı ile yeni bir küme oluşturmak için Azure CLı 'yi kullanırsınız.
 
-Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
+Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
+# Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
-AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. *--enable-addons monitoring* parametresiyle Kapsayıcılar için Azure İzleyici de etkinleştirilmiştir.  Bu işlemin tamamlanabilmesi birkaç dakika sürer.
+[`az aks create`][az-aks-create]BIR AKS kümesi oluşturmak için komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Bu işlemin tamamlanabilmesi birkaç dakika sürer:
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1 --enable-addons monitoring --generate-ssh-keys
+# Create an AKS cluster with uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1
 ```
-Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgileri döndürür. Aşağıdaki JSON kod parçacığında, kümenizin çalışma süresi SLA 'Sı ile etkinleştirildiğini belirten SKU 'nun ücretli katmanı gösterilmektedir.
+Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgileri döndürür. Aşağıdaki JSON kod parçacığında, kümenizin çalışma süresi SLA 'Sı ile etkinleştirildiğini belirten SKU 'nun ücretli katmanı gösterilmektedir:
 
 ```output
   },
@@ -62,15 +71,61 @@ Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgiler
   },
 ```
 
-## <a name="limitations"></a>Sınırlamalar
+## <a name="modify-an-existing-cluster-to-use-uptime-sla"></a>Mevcut bir kümeyi çalışma süresi SLA 'sını kullanacak şekilde değiştirme
 
-* Şu anda, çalışma süresi SLA 'sını etkinleştirmek için mevcut küme olarak dönüştürülemiyor.
-* Şu anda, bir AKS kümesinden çalışma süresi SLA 'sını, oluşturulduktan sonra oluşturma özelliği etkinken kaldırmanın bir yolu yoktur.  
-* Özel kümeler Şu anda desteklenmiyor.
+İsteğe bağlı olarak, mevcut kümelerinizi çalışma süresi SLA 'sını kullanacak şekilde güncelleştirebilirsiniz.
+
+Önceki adımlarla bir AKS kümesi oluşturduysanız, kaynak grubunu silin:
+
+```azurecli-interactive
+# Delete the existing cluster by deleting the resource group 
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+Yeni bir kaynak grubu oluşturun:
+
+```azurecli-interactive
+# Create a resource group
+az group create --name myResourceGroup --location eastus
+```
+
+Yeni bir küme oluşturun ve çalışma süresi SLA 'sını kullanmayın:
+
+```azurecli-interactive
+# Create a new cluster without uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
+```
+
+[`az aks update`][az-aks-nodepool-update]Mevcut kümeyi güncelleştirmek için komutunu kullanın:
+
+```azurecli-interactive
+# Update an existing cluster to use Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
+ ```
+
+ Aşağıdaki JSON kod parçacığında, kümenizin çalışma süresi SLA 'Sı ile etkinleştirildiğini belirten SKU 'nun ücretli katmanı gösterilmektedir:
+
+ ```output
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Paid"
+  },
+  ```
+
+## <a name="clean-up"></a>Temizleme
+
+Ücretlerden kaçınmak için oluşturduğunuz tüm kaynakları temizleyin. Kümeyi silmek için, [`az group delete`][az-group-delete] AKS kaynak grubunu silmek için komutunu kullanın:
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 AKS kümesi iş yüklerinizde yüksek kullanılabilirliği artırmak için [kullanılabilirlik alanları][availability-zones] kullanın.
+
 Kümenizi [çıkış trafiğini sınırlayacak](limit-egress-traffic.md)şekilde yapılandırın.
 
 <!-- LINKS - External -->
@@ -86,3 +141,5 @@ Kümenizi [çıkış trafiğini sınırlayacak](limit-egress-traffic.md)şekilde
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-group-delete]: /cli/azure/group#az-group-delete

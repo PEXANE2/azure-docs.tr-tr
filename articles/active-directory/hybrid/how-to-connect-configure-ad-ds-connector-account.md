@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c69a700c9bcaa018bcfc1b1e6e01e166ef2d43bf
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 252c033c1a9d4d45c3d48256e65ae9ad10a93c51
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680238"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360070"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS bağlayıcı hesabı Izinlerini yapılandırma 
 
@@ -32,7 +32,7 @@ Azure AD Connect Express yüklemesinde, otomatik olarak oluşturulan bir hesap (
 ### <a name="permissions-summary"></a>İzin özeti 
 Aşağıdaki tabloda AD nesnelerinde gerekli izinlerin özeti verilmiştir: 
 
-| Öne çıkan özelliği | İzinler |
+| Özellik | İzinler |
 | --- | --- |
 | ms-DS-ımlarımguıd özelliği |[Tasarım kavramları](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)bölümünde belgelenen ms-DS-ımıbu GUID özniteliğinde okuma ve yazma izinleri | 
 | Parola karması eşitleme |<li>Dizin Değişikliklerini Çoğalt</li>  <li>Dizin değişikliklerini çoğaltma |

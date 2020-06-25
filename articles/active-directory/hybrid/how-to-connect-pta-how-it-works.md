@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60347791"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358336"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory geçişli kimlik doğrulaması: teknik derinlemesine bakış
 Bu makale, Azure Active Directory (Azure AD) geçişli kimlik doğrulamanın nasıl çalıştığına ilişkin bir genel bakıştır. Ayrıntılı teknik ve güvenlik bilgileri için bkz. [güvenlik derinlemesine](how-to-connect-pta-security-deep-dive.md) bakış makalesi.
@@ -40,7 +40,7 @@ Bir Kullanıcı Azure AD tarafından güvenli bir uygulamada oturum açmaya çal
 5. Azure AD, oturum açma isteğini alma sırasında, Kullanıcı adını ve parolayı (kimlik doğrulama aracılarının ortak anahtarı kullanılarak şifrelenir) bir sıraya koyar.
 6. Şirket içi kimlik doğrulama Aracısı, Kullanıcı adını ve şifreli parolayı kuyruktan alır. Aracının kuyruktaki istekleri sıklıkla yoklamadığını, ancak önceden kurulan kalıcı bir bağlantı üzerinden istekleri alacağını unutmayın.
 7. Aracı, özel anahtarını kullanarak parolanın şifresini çözer.
-8. Aracı, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından kullanılan benzer bir mekanizma olan standart Windows API 'Lerini kullanarak Kullanıcı adı ve parolayı Active Directory doğrular. Kullanıcı adı, şirket içi varsayılan Kullanıcı adı, genellikle `userPrincipalName`veya Azure AD Connect yapılandırılmış başka bir öznitelik olabilir (olarak `Alternate ID`bilinir).
+8. Aracı, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tarafından kullanılan benzer bir mekanizma olan standart Windows API 'Lerini kullanarak Kullanıcı adı ve parolayı Active Directory doğrular. Kullanıcı adı, şirket içi varsayılan Kullanıcı adı, genellikle `userPrincipalName` veya Azure AD Connect yapılandırılmış başka bir öznitelik olabilir (olarak bilinir `Alternate ID` ).
 9. Şirket içi Active Directory etki alanı denetleyicisi (DC), isteği değerlendirir ve aracıya uygun yanıtı (başarı, hata, parola doldu veya Kullanıcı kilitli) döndürür.
 10. Kimlik doğrulama Aracısı, sırasıyla bu yanıtı Azure AD 'ye geri döndürür.
 11. Azure AD yanıtı değerlendirir ve kullanıcıya uygun şekilde yanıt verir. Örneğin, Azure AD kullanıcının anında veya Azure Multi-Factor Authentication isteklerinde oturum açar.

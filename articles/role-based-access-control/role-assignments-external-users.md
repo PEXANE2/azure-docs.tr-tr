@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: dc2763fd3c203a5b0443299d9824b6ebf61bdc78
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791087"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361913"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal kullanarak dış Konuk kullanıcılar için Azure rol atamaları ekleme veya kaldırma
 
@@ -89,7 +89,9 @@ Azure RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcı
 
     Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
-    ![Menü ekle](./media/role-assignments-external-users/add-menu.png)
+    ![Rol atama menüsü Ekle](./media/shared/add-role-assignment-menu.png)
+
+    Rol ataması ekle bölmesi açılır.
 
 1. **Rol** açılan listesinde **Sanal Makine Katılımcısı** gibi bir rol seçin.
 
@@ -119,7 +121,9 @@ Konuk Kullanıcı henüz dizininizde değilse, kullanıcıyı doğrudan rol atam
 
 1. **Ekle** > **Rol ataması ekle** seçeneğine tıklayarak Rol ataması ekle bölmesini açın.
 
-    ![Menü ekle](./media/role-assignments-external-users/add-menu.png)
+    ![Rol atama menüsü Ekle](./media/shared/add-role-assignment-menu.png)
+
+    Rol ataması ekle bölmesi açılır.
 
 1. **Rol** açılan listesinde **Sanal Makine Katılımcısı** gibi bir rol seçin.
 

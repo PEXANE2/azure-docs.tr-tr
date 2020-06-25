@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db7c0595d109efddb092f5e96babda17038e5e9e
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635824"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359016"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
 Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md#111050).  Bu özellik [Build 1.1.561](reference-connect-version-history.md#115610) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
@@ -37,7 +37,7 @@ Otomatik yükseltme, aşağıdakiler için varsayılan olarak etkindir:
 
 Otomatik yükseltmenin geçerli durumu PowerShell cmdlet 'i ile görüntülenebilir `Get-ADSyncAutoUpgrade` . Aşağıdaki durumlara sahiptir:
 
-| Eyalet | Yorum |
+| Durum | Yorum |
 | --- | --- |
 | Etkin |Otomatik yükseltme etkindir. |
 | Askıya alındı |Yalnızca sistem tarafından ayarlanır. Sistem **Şu anda** Otomatik yükseltmeleri almaya uygun değil. |
@@ -71,7 +71,7 @@ Artık otomatik yükseltme durumuyla ilişkili Eventlogs ' u görebilirsiniz.
 
 Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
-| Sonuç kodu öneki | Açıklama |
+| Sonuç kodu öneki | Description |
 | --- | --- |
 | Başarılı |Yükleme başarıyla yükseltildi. |
 | Yükseltme Iptal edildi |Geçici bir koşul yükseltmeyi durdurdu. Yeniden denenecek ve beklenmek, daha sonra başarılı olur. |
@@ -79,7 +79,7 @@ Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
 Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü listelemez, ancak sonuç iletisi sorunun ne olduğu konusunda açık olmalıdır.
 
-| Sonuç Iletisi | Açıklama |
+| Sonuç Iletisi | Description |
 | --- | --- |
 | **Yükseltme Iptal edildi** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Kayıt defterine yazılamadı. |

@@ -183,7 +183,7 @@
               href: directory-admin-roles-secure.md
             - name: Acil durum hesabı oluşturma
               href: directory-emergency-access.md
-        - name: Yönetim birimi
+        - name: Yönetim birimleri
           items:
             - name: Yönetim birimlerine genel bakış
               href: directory-administrative-units.md

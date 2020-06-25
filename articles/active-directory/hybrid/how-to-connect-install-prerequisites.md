@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6446b039d90e04c9fe7fca28b361f620183a0292
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875750"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358727"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu konu, Azure AD Connect için önkoşulları ve donanım gereksinimlerini açıklamaktadır.
@@ -62,7 +62,7 @@ Azure AD Connect yüklemeden önce, ihtiyacınız olan birkaç şey vardır.
 * Active Directory Federasyon Hizmetleri (AD FS) dağıtılırsa, AD FS veya Web uygulaması proxy 'Sinin yüklü olduğu sunucular Windows Server 2012 R2 veya üzeri olmalıdır. Uzaktan Yükleme için bu sunucularda [Windows Uzaktan Yönetimi](#windows-remote-management) etkinleştirilmelidir.
 * Active Directory Federasyon Hizmetleri (AD FS) dağıtılmışsa, [TLS/SSL sertifikalarına](#tlsssl-certificate-requirements)ihtiyacınız vardır.
 * Active Directory Federasyon Hizmetleri (AD FS) dağıtılmışsa, [ad çözümlemesi](#name-resolution-for-federation-servers)yapılandırmanız gerekir.
-* Genel yöneticileriniz MFA etkinleştirilmişse, URL **https://secure.aadcdn.microsoftonline-p.com** 'nin güvenilir siteler listesinde olması gerekir. MFA sınaması istendiğinde bu siteyi Güvenilen siteler listesine eklemeniz istenir ve daha önce eklenmediyse. Internet Explorer 'ı, güvenilen sitelerinize eklemek için kullanabilirsiniz.
+* Genel yöneticileriniz MFA etkinleştirilmişse, URL 'nin **https://secure.aadcdn.microsoftonline-p.com** güvenilir siteler listesinde olması gerekir. MFA sınaması istendiğinde bu siteyi Güvenilen siteler listesine eklemeniz istenir ve daha önce eklenmediyse. Internet Explorer 'ı, güvenilen sitelerinize eklemek için kullanabilirsiniz.
 * Microsoft, BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucunuzu sağlamlaştırmanızı önerir.  Aşağıdaki önerilerin ardından kuruluşunuza yönelik güvenlik riskleri azalır.
 
 * Etki alanına katılmış bir sunucuda Azure AD Connect dağıtın ve etki alanı yöneticilerine veya daha sıkı denetlenen güvenlik gruplarına yönetici erişimini kısıtlayın.
@@ -81,7 +81,7 @@ Daha fazla bilgi için bkz:
 * Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Varsayılan olarak bir SQL Server 2012 Express LocalDB (SQL Server Express bir açık sürümü) yüklenir. SQL Server Express, yaklaşık 100.000 nesneyi yönetmenizi sağlayan 10 GB boyut sınırına sahiptir. Dizin nesnelerinin daha yüksek bir birimini yönetmeniz gerekiyorsa, Yükleme Sihirbazı 'nı farklı bir SQL Server yüklemesine işaret etmeniz gerekir. SQL Server yüklemesinin türü [Azure AD Connect performansını](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)etkileyebilir.
 * Farklı bir SQL Server yüklemesi kullanıyorsanız, bu gereksinimler geçerlidir:
   * Azure AD Connect, 2012 (en son hizmet paketiyle) Microsoft SQL Server tüm sürümlerini SQL Server 2019 ' e destekler. Microsoft Azure SQL Veritabanı veritabanı olarak **desteklenmez** .
-  * Büyük/küçük harfe duyarsız bir SQL harmanlaması kullanmanız gerekir. Bu harmanlamalar, adında bir \_CI_ tanımlanır. CS_ tarafından **not supported** \_tanımlanan, büyük/küçük harfe duyarlı harmanlama kullanılması desteklenmez.
+  * Büyük/küçük harfe duyarsız bir SQL harmanlaması kullanmanız gerekir. Bu harmanlamalar, adında bir \_ CI_ tanımlanır. CS_ tarafından tanımlanan, büyük/küçük harfe duyarlı harmanlama kullanılması **desteklenmez** \_ .
   * SQL örneği başına yalnızca bir eşitleme motoruna sahip olabilirsiniz. Bir SQL örneğinin FIM/MıM Sync, DirSync veya Azure AD Eşitleme paylaşılması **desteklenmez** .
 
 ### <a name="accounts"></a>Hesaplar
@@ -96,7 +96,7 @@ Daha fazla bilgi için bkz:
   * Almanya veya Microsoft Azure Kamu Bulutu 'nda Microsoft Bulut kullanıyorsanız, URL 'Ler için [Azure AD Connect eşitleme hizmeti örneklerine göz](reference-connect-instances.md) atın bölümüne bakın.
 * Azure AD Connect (sürüm 1.1.614.0 ve sonrası), eşitleme altyapısı ile Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak TLS 1,2 kullanır. TLS 1,2, temel işletim sisteminde kullanılabilir değilse, Azure AD Connect daha eski protokollere (TLS 1,1 ve TLS 1,0) artımlı olarak geri döner.
 * Sürüm 1.1.614.0 ' den önce, eşitleme altyapısı ve Azure AD arasındaki iletişimi şifrelemek için varsayılan olarak Azure AD Connect TLS 1,0 kullanır. TLS 1,2 ' ye geçmek için [Azure AD Connect IÇIN tls 1,2](#enable-tls-12-for-azure-ad-connect)' yi etkinleştirme ' deki adımları izleyin.
-* Internet 'e bağlanmak için bir giden Proxy kullanıyorsanız, Yükleme Sihirbazı için **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** dosyasında aşağıdaki ayar eklenmelidir ve Internet ve Azure AD 'ye bağlanabilmeleri için Azure AD Connect eşitleme yapılmalıdır. Bu metin, dosyanın alt kısmına girilmelidir. Bu kodda, &lt;PROXYADDRESS&gt; gerçek Proxy IP adresini veya ana bilgisayar adını temsil eder.
+* Internet 'e bağlanmak için bir giden Proxy kullanıyorsanız, Yükleme Sihirbazı için **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** dosyasında aşağıdaki ayar eklenmelidir ve Internet ve Azure AD 'ye bağlanabilmeleri için eşitlemenin Azure AD Connect gerekir. Bu metin, dosyanın alt kısmına girilmelidir. Bu kodda, &lt; PROXYADDRESS &gt; gerçek Proxy IP adresini veya ana bilgisayar adını temsil eder.
 
 ```
     <system.net>
@@ -110,7 +110,7 @@ Daha fazla bilgi için bkz:
     </system.net>
 ```
 
-* Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, [hizmet hesabı](reference-connect-accounts-permissions.md#adsync-service-account) etki alanında yer almalıdır ve [özel bir hizmet hesabı](how-to-connect-install-custom.md#install-required-components)belirtmek için özelleştirilmiş ayarlar yükleme yolunu kullanmanız gerekir. Ayrıca Machine. config dosyasında farklı bir değişikliğe de ihtiyacınız vardır. Machine. config dosyasında bu değişiklik ile Yükleme Sihirbazı ve eşitleme altyapısı, proxy sunucusundan gelen kimlik doğrulama isteklerine yanıt verir. Tüm Yükleme Sihirbazı sayfalarında, **Yapılandır** sayfası hariç, oturum açan kullanıcının kimlik bilgileri kullanılır. Yükleme sihirbazının sonundaki **Yapılandır** sayfasında, bağlam sizin oluşturduğunuz [hizmet hesabına](reference-connect-accounts-permissions.md#adsync-service-account) geçiş yapılır. Machine. config bölümü şöyle görünmelidir.
+* Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, [hizmet hesabı](reference-connect-accounts-permissions.md#adsync-service-account) etki alanında yer almalıdır ve [özel bir hizmet hesabı](how-to-connect-install-custom.md#install-required-components)belirtmek için özelleştirilmiş ayarlar yükleme yolunu kullanmanız gerekir. machine.config için de farklı bir değişiklik yapmanız gerekir. machine.config sürümünde bu değişiklik ile, Yükleme Sihirbazı ve eşitleme altyapısı, proxy sunucusundan gelen kimlik doğrulama isteklerine yanıt verir. Tüm Yükleme Sihirbazı sayfalarında, **Yapılandır** sayfası hariç, oturum açan kullanıcının kimlik bilgileri kullanılır. Yükleme sihirbazının sonundaki **Yapılandır** sayfasında, bağlam sizin oluşturduğunuz [hizmet hesabına](reference-connect-accounts-permissions.md#adsync-service-account) geçiş yapılır. machine.config bölümü şöyle görünmelidir.
 
 ```
     <system.net>
@@ -151,7 +151,7 @@ Sürüm 1.1.614.0 ' den önce, eşitleme altyapısı sunucusu ile Azure AD aras�
     ```
 2. For all operating systems, set this registry key and restart the server.
     ```
-    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\.NETFramework\v4.0.30319 "Schusestrongşifre" = DWORD: 00000001
+    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319 "Schusestrongşifre" = DWORD: 00000001
     ```
 4. If you also want to enable TLS 1.2 between the sync engine server and a remote SQL Server, then make sure you have the required versions installed for [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 

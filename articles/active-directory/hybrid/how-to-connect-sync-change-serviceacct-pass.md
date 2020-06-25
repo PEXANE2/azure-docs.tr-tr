@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984513"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357571"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync hizmet hesabı parolasını değiştirme
 ADSync hizmet hesabı parolasını değiştirirseniz, şifreleme anahtarını terk edinceye ve ADSync hizmet hesabı parolasını yeniden başlatana kadar eşitleme hizmeti düzgün şekilde başlayamaz. 
@@ -107,7 +107,7 @@ Veritabanında depolanan mevcut parolaların artık şifresi çözülemediğinde
 Azure AD hizmet hesabının parolasını doğrudan eşitleme hizmetine sağlayamezsiniz. Bunun yerine, Azure AD hizmet hesabını yeniden başlatmak için **Add-ADSyncAADServiceAccount** cmdlet 'ini kullanmanız gerekir. Cmdlet, hesap parolasını sıfırlar ve eşitleme hizmeti tarafından kullanılabilir hale getirir:
 
 1. Azure AD Connect sunucuda yeni bir PowerShell oturumu başlatın.
-2. Cmdlet 'ini `Add-ADSyncAADServiceAccount`çalıştırın.
+2. Cmdlet 'ini çalıştırın `Add-ADSyncAADServiceAccount` .
 3. Açılır iletişim kutusunda Azure AD kiracınız için Azure AD Genel yönetici kimlik bilgilerini sağlayın.
 ![Azure AD Connect eşitleme şifreleme anahtarı yardımcı programı](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
 4. Bu işlem başarılı olursa, PowerShell komut istemi ' ni görürsünüz.

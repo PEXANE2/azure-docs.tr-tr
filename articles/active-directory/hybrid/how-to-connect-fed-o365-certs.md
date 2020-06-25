@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 04f523a2615892268d56c167a682987453dc997c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200896"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359747"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 ve Azure Active Directory için Federasyon sertifikalarını yenileme
 ## <a name="overview"></a>Genel Bakış
@@ -99,8 +99,8 @@ Get-MsolFederationProperty veya Get-Adfscercertificateate çıkışında, tarihi
 | AutoCertificateRollover | Azure AD ile eşitlenmiş sertifikalar | Federasyon meta verileri herkese açık bir şekilde erişilebilir | Olacağı | Eylem |
 |:---:|:---:|:---:|:---:|:---:|
 | Yes |Yes |Yes |- |Eyleme gerek yok. Bkz. [belirteç imzalama sertifikasını otomatik olarak yenileme](#autorenew). |
-| Yes |Hayır |- |15 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
-| Hayır |- |- |30 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
+| Evet |Hayır |- |15 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
+| No |- |- |30 günden az |Hemen yenileyin. Bkz. [belirteç imzalama sertifikasını el Ile yenileme](#manualrenew). |
 
 \[-] Önemi yoktur
 
@@ -118,7 +118,7 @@ Sertifikanın otomatik olarak güncelleştirilebileceğini onaylamak için aşa�
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-Burada `(your_FS_name)` , kuruluşunuzun kullandığı Federasyon Hizmeti ana bilgisayar adı (örneğin, FS.contoso.com) ile değiştirilmiştir.  Bu ayarların her ikisini de başarıyla doğrulayabiliyorsanız, başka bir şey yapmanız gerekmez.  
+burada, `(your_FS_name)` kuruluşunuzun kullandığı Federasyon Hizmeti ana bilgisayar adı (örneğin, FS.contoso.com) ile değiştirilmiştir.  Bu ayarların her ikisini de başarıyla doğrulayabiliyorsanız, başka bir şey yapmanız gerekmez.  
 
 Örnek: `https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
 ## <a name="renew-the-token-signing-certificate-manually"></a>Belirteç imzalama sertifikasını el ile yenileme<a name="manualrenew"></a>
@@ -141,7 +141,7 @@ Diğer taraftan, **AutoCertificateRollover** **true**olarak ayarlanmışsa, anca
 1. Birincil AD FS sunucuda oturum açtığınızdan emin olun.
 2. Bir PowerShell komut penceresi açarak ve aşağıdaki komutu çalıştırarak AD FS içindeki geçerli imzalama sertifikalarını denetleyin:
 
-    PS C:\>Get-Adfscercertificate, – CertificateType token-signing
+    PS C: \> Get-Adfscercertificate, – CertificateType token-signing
 
    > [!NOTE]
    > AD FS 2,0 kullanıyorsanız, önce add-pssnapin Microsoft. ADFS. PowerShell ' i çalıştırmalısınız.
@@ -149,8 +149,8 @@ Diğer taraftan, **AutoCertificateRollover** **true**olarak ayarlanmışsa, anca
    >
 3. Listelenen tüm sertifikalarda komut çıktısına bakın. AD FS yeni bir sertifika oluşturmışsa, çıktıda iki sertifika görmeniz gerekir: **isprımary** değeri **true** **ve** NotAfter tarihi 5 gün **içinde ve** **NotAfter** **tarihi, gelecekte** bir yıl hakkında.
 4. Yalnızca bir sertifika görürseniz ve **NotAfter** tarihi 5 gün içindeyse, yeni bir sertifika oluşturmanız gerekir.
-5. Yeni bir sertifika oluşturmak için PowerShell komut isteminde aşağıdaki komutu yürütün: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`.
-6. Aşağıdaki komutu yeniden çalıştırarak güncelleştirmeyi doğrulayın: PS C:\>Get-Adfscercertificate ate – CertificateType token-signing
+5. Yeni bir sertifika oluşturmak için PowerShell komut isteminde aşağıdaki komutu yürütün: `PS C:\>Update-ADFSCertificate –CertificateType token-signing` .
+6. Aşağıdaki komutu yeniden çalıştırarak güncelleştirmeyi doğrulayın: PS C: \> Get-Adfscercertificate ate – CertificateType token-signing
 
 Şu anda iki sertifika listelenmelidir, bunlardan biri gelecekte yaklaşık bir yıl **NotAfter** tarih ve **ısprımary** değeri **false**şeklindedir.
 
@@ -160,8 +160,8 @@ Aşağıdaki gibi, güven için kullanılacak yeni belirteç imzalama sertifikal
 1. Windows PowerShell için Microsoft Azure Active Directory Modülü açın.
 2. $Cred = Get-Credential ' i çalıştırın. Bu cmdlet kimlik bilgileri girmenizi isterse, bulut hizmeti Yönetici hesabınızın kimlik bilgilerini yazın.
 3. Connect-MsolService – Credential $cred komutunu çalıştırın. Bu cmdlet sizi bulut hizmetine bağlar. Araç tarafından yüklenen ek cmdlet 'lerden herhangi birini çalıştırmadan önce, sizi bulut hizmetine bağlayan bir bağlam oluşturmak gerekir.
-4. Bu komutları AD FS birincil federasyon sunucusu olmayan bir &lt;bilgisayarda çalıştırıyorsanız,&gt; &lt;AD FS BIRINCIL sunucu&gt; birincil AD FS sunucusunun Iç FQDN adı olduğu için, Set-msoladfcontext-Computer AD FS birincil sunucu ' ı çalıştırın. Bu cmdlet, sizi AD FS bağlayan bir bağlam oluşturur.
-5. Update-MSOLFederatedDomain – DomainName &lt;etki alanını&gt;çalıştırın. Bu cmdlet, AD FS ayarları bulut hizmetine güncelleştirir ve ikisi arasındaki güven ilişkisini yapılandırır.
+4. Bu komutları AD FS birincil federasyon sunucusu olmayan bir bilgisayarda çalıştırıyorsanız, &lt; &gt; &lt; AD FS birincil sunucu birincil &gt; AD FS sunucusunun iç FQDN adı olduğu Için, set-msoladfcontext-Computer AD FS birincil sunucu ' ı çalıştırın. Bu cmdlet, sizi AD FS bağlayan bir bağlam oluşturur.
+5. Update-MSOLFederatedDomain – DomainName &lt; etki alanını çalıştırın &gt; . Bu cmdlet, AD FS ayarları bulut hizmetine güncelleştirir ve ikisi arasındaki güven ilişkisini yapılandırır.
 
 > [!NOTE]
 > Contoso.com ve fabrikam.com gibi birden çok üst düzey etki alanını desteklemeniz gerekiyorsa, bir cmdlet ile **supportmultipledomain** anahtarını kullanmanız gerekir. Daha fazla bilgi için bkz. [birden çok üst düzey etki alanı Için destek](how-to-connect-install-multiple-domains.md).
@@ -178,6 +178,6 @@ Belirteç imzalama sertifikaları, Federasyon sunucusunun verdiği tüm belirte�
 
 Varsayılan olarak, AD FS otomatik olarak belirteç imzalama ve belirteç şifre çözme sertifikaları oluşturmak üzere yapılandırılır ve bu, hem ilk yapılandırma zamanında hem de sertifikaların sona erme tarihine yaklaştığı zaman.
 
-Azure AD, Federasyon hizmeti meta verilerinizden geçerli sertifikanın süresi dolmadan 30 gün önce yeni bir sertifika almaya çalışır. Bu sırada yeni bir sertifika kullanılamadığı durumlarda Azure AD, verileri düzenli aralıklarla izlemeye devam edecektir. Yeni sertifika meta verilerde kullanılabilir duruma geldiğinde, etki alanının Federasyon ayarları yeni sertifika bilgileriyle güncelleştirilir. Yeni sertifikayı NextSigningCertificate/SigningCertificate içinde görmediğinizi doğrulamak için ' i kullanabilirsiniz `Get-MsolDomainFederationSettings` .
+Azure AD, Federasyon hizmeti meta verilerinizden geçerli sertifikanın süresi dolmadan 30 gün önce yeni bir sertifika almaya çalışır. Bu sırada yeni bir sertifika kullanılamadığı durumlarda Azure AD, verileri düzenli aralıklarla izlemeye devam edecektir. Yeni sertifika meta verilerde kullanılabilir duruma geldiğinde, etki alanının Federasyon ayarları yeni sertifika bilgileriyle güncelleştirilir. `Get-MsolDomainFederationSettings`Yeni sertifikayı NextSigningCertificate/SigningCertificate içinde görmediğinizi doğrulamak için ' i kullanabilirsiniz.
 
 AD FS 'de belirteç Imzalama sertifikaları hakkında daha fazla bilgi için bkz. [AD FS Için belirteç imzalama ve belirteç şifre çözme sertifikaları alma ve yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)

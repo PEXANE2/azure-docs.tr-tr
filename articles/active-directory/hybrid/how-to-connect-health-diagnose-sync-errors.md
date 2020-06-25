@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897185"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359101"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Yinelenen öznitelik eşitleme hatalarını tanılama ve düzeltme
 
@@ -32,9 +32,9 @@ Tanılama özelliğinin şu avantajları vardır:
 - Bu özelliği etkinleştirmek için yükseltme veya yapılandırma gerekli değildir.
 Azure AD hakkında daha fazla bilgi için bkz. [kimlik eşitlemesi ve yinelenen öznitelik dayanıklılığı](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
-## <a name="problems"></a>Sorunlarının
+## <a name="problems"></a>Sorunlar
 ### <a name="a-common-scenario"></a>Yaygın bir senaryo
-**QuarantinedAttributeValueMustBeUnique** ve **AttributeValueMustBeUnique** Eşitleme hataları olduğunda, Azure AD 'de bir **userPrincipalName** veya **proxy adresi** çakışması olması yaygındır. Çakışan kaynak nesneyi şirket içi taraftan güncelleştirerek eşitleme hatalarını çözebilirsiniz. Eşitleme hatası, bir sonraki eşitlemeden sonra çözümlenir. Örneğin, bu görüntüde iki kullanıcının **userPrincipalName**'in bir çakışması olduğunu gösterir. Her ikisi de **ali.\@J contoso.com**. Çakışan nesneler Azure AD 'de karantinaya alınır.
+**QuarantinedAttributeValueMustBeUnique** ve **AttributeValueMustBeUnique** Eşitleme hataları olduğunda, Azure AD 'de bir **userPrincipalName** veya **proxy adresi** çakışması olması yaygındır. Çakışan kaynak nesneyi şirket içi taraftan güncelleştirerek eşitleme hatalarını çözebilirsiniz. Eşitleme hatası, bir sonraki eşitlemeden sonra çözümlenir. Örneğin, bu görüntüde iki kullanıcının **userPrincipalName**'in bir çakışması olduğunu gösterir. Her ikisi de **ali. J \@ contoso.com**. Çakışan nesneler Azure AD 'de karantinaya alınır.
 
 ![Eşitleme hatasını tanılama genel senaryosu](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 

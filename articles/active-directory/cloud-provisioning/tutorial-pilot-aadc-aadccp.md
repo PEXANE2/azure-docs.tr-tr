@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f149678bd65ff47b8582e56cf376d88284c8fa8b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681319"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360767"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
@@ -76,7 +76,7 @@ Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizd
     **Etiket:** Bunu boş bırakın<br>
     ![Özel kural](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
- 4. **Kapsam filtresi** sayfasında, pilot uygulamayı açmak istediğiniz OU veya güvenlik grubunu girin.  OU 'ya filtre uygulamak için, ayırt edici adın OU kısmını ekleyin. Bu kural, o OU 'da bulunan tüm kullanıcılara uygulanır.  Yani, DN "OU = CPUsers, DC = contoso, DC = com" ile sonlanıyorsa, bu filtreyi eklersiniz.  Ardından **İleri**’ye tıklayın. 
+ 4. **Kapsam filtresi** sayfasında, pilot uygulamayı açmak istediğiniz OU veya güvenlik grubunu girin.  OU 'ya filtre uygulamak için, ayırt edici adın OU kısmını ekleyin. Bu kural, o OU 'da bulunan tüm kullanıcılara uygulanır.  Yani, DN "OU = CPUsers, DC = contoso, DC = com" ile sonlanıyorsa, bu filtreyi eklersiniz.  Ardından **İleri**'ye tıklayın. 
 
     |Kural|Öznitelik|Operatör|Değer|
     |-----|----|----|-----|
@@ -109,7 +109,7 @@ Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup
     
     ![Özel kural](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
- 3. **Kapsam filtresi** sayfasında **cloudnoflow** eşittir **true**' ı seçin. Ardından **İleri**’ye tıklayın.
+ 3. **Kapsam filtresi** sayfasında **cloudnoflow** eşittir **true**' ı seçin. Ardından **İleri**'ye tıklayın.
  ![Özel kural](media/how-to-cloud-custom-user-rule/user7.png)</br>
  
  4. Kural **Birleştir** sayfasında, **İleri**' ye tıklayın.

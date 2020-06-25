@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eaeece4b44c0804774a15194e19c34ce200bc80
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558520"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358982"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect'i mevcut bir AD Eşitleme veritabanını kullanarak yükleme
 Azure AD Connect, verileri depolamak için SQL Server bir veritabanı gerektirir. Azure AD Connect yüklü olan SQL Server Express LocalDB varsayılan 2012 kullanabilir veya kendi tam SQL sürümünüzü kullanabilirsiniz. Daha önce Azure AD Connect yüklediğinizde, ADSync adlı yeni bir veritabanı her zaman oluşturulmuştur. Azure AD Connect sürüm 1.1.613.0 (veya sonrası) ile, var olan bir ADSync veritabanına işaret ederek Azure AD Connect yükleyebilirsiniz.
@@ -56,7 +56,7 @@ Devam etmeden önce dikkat etmeniz gereken önemli notlar:
 - Aynı ADSync veritabanını paylaşan birden çok Azure AD Connect sunucusu olamaz. "Var olan veritabanını kullan" yöntemi, var olan bir ADSync veritabanını yeni bir Azure AD Connect sunucusuyla birlikte kullanmanıza olanak sağlar. Paylaşmayı desteklemez.
 
 ## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>"Var olan veritabanını kullan" modunu kullanarak Azure AD Connect yüklemek için gereken adımlar
-1.  Azure AD Connect yükleyicisi 'ni (AzureADConnect. MSI) Windows Server 'a indirin. Azure AD Connect yüklemeye başlamak için Azure AD Connect yükleyiciye çift tıklayın.
+1.  Azure AD Connect yükleyicisi 'ni (AzureADConnect.MSI) Windows Server 'a indirin. Azure AD Connect yüklemeye başlamak için Azure AD Connect yükleyiciye çift tıklayın.
 2.  MSI yüklemesi tamamlandıktan sonra Azure AD Connect sihirbazı Hızlı mod kurulumu açılır. Çıkış simgesine tıklayarak ekranı kapatın.
 ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db1.png)
 3.  Yeni bir komut istemi veya PowerShell oturumu başlatın. "C:\Program Files\Microsoft Azure Active Directory Connect" klasörüne gidin. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.

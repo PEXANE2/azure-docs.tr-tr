@@ -30,9 +30,9 @@
     - name: Hizmet sorumlularıyla otomasyon
       href: analysis-services-service-principal.md
     - name: İstemci kitaplıkları
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: Uyumluluk düzeyi
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: Şirket içi veri kaynaklarına bağlanma
       href: analysis-services-gateway.md
     - name: Sunuculara bağlanma

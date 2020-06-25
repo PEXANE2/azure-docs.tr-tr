@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f02ea42bb792320da6e2523b733f09afd412a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620983"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360971"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Azure AD Connect bulut tabanlı sağlama için yeni bir yapılandırma oluşturma
 
@@ -25,7 +25,7 @@ Aracıyı yükledikten sonra, Azure portal oturum açmanız ve Azure Active Dire
 ## <a name="configure-provisioning"></a>Sağlamayı Yapılandır
 Sağlamayı yapılandırmak için aşağıdaki adımları izleyin.
 
-1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1.  Azure portal **Azure Active Directory**' ni seçin.
 1.  **Azure AD Connect**seçin.
 1.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
 
@@ -41,7 +41,7 @@ Sağlamayı yapılandırmak için aşağıdaki adımları izleyin.
 ## <a name="scope-provisioning-to-specific-users-and-groups"></a>Belirli kullanıcılara ve gruplara kapsam sağlama
 Şirket içi Active Directory grupları veya kuruluş birimleri kullanarak belirli kullanıcıları ve grupları eşitlenmek için aracının kapsamını belirleyebilirsiniz. Bir yapılandırma içinde grupları ve kuruluş birimlerini yapılandıramazsınız. 
 
-1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1.  Azure portal **Azure Active Directory**' ni seçin.
 1.  **Azure AD Connect**seçin.
 1.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
 1.  **Yapılandırma**altında yapılandırmanızı seçin.
@@ -64,7 +64,7 @@ Sağlamayı yapılandırmak için aşağıdaki adımları izleyin.
 
 ## <a name="restart-provisioning"></a>Sağlamayı yeniden Başlat 
 Zamanlanan bir sonraki çalıştırmaya beklemek istemiyorsanız, sağlama çalıştırmasını **yeniden başlatma sağlama** düğmesini kullanarak tetikleyin. 
-1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1.  Azure portal **Azure Active Directory**' ni seçin.
 1.  **Azure AD Connect**seçin.
 1.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
 1.  **Yapılandırma**altında yapılandırmanızı seçin.
@@ -76,7 +76,7 @@ Zamanlanan bir sonraki çalıştırmaya beklemek istemiyorsanız, sağlama çal�
 ## <a name="remove-a-configuration"></a>Yapılandırmayı kaldırma
 Bir yapılandırmayı silmek için aşağıdaki adımları izleyin.
 
-1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1.  Azure portal **Azure Active Directory**' ni seçin.
 1.  **Azure AD Connect**seçin.
 1.  **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin.
 1.  **Yapılandırma**altında yapılandırmanızı seçin.

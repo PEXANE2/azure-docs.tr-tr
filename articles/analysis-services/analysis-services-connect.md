@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1b4e56dfeae2d4b7826f3ad30bc5eb4b8672b85
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676641"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361481"
 ---
 # <a name="connecting-to-servers"></a>Sunuculara bağlanma
 
@@ -20,7 +20,7 @@ Bu makalede, SQL Server Management Studio (SSMS) veya Visual Studio gibi Analysi
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 
-[En son Istemci kitaplıklarını al](analysis-services-data-providers.md)
+[En son Istemci kitaplıklarını al](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 Türüne bakılmaksızın sunucuya yapılan tüm bağlantılar, bir Analysis Services sunucusuyla bağlantı kurmak için güncelleştirilmiş AMO, ADOMD.NET ve OLEDB istemci kitaplıklarını gerektirir. SSMS, Visual Studio, Excel 2016 ve üzeri ve Power BI için en son istemci kitaplıkları, aylık yayınlar yüklenir veya güncelleştirilir. Ancak bazı durumlarda, bir uygulamanın en son sürümü bulunmayabilir. Örneğin, ilkelerin güncelleştirmeleri ertelenmesi veya Office 365 güncelleştirmeleri ertelenmiş kanaldır.
 
@@ -38,7 +38,7 @@ Azure 'da bir Analysis Services sunucusu oluşturduğunuzda, benzersiz bir ad ve
 
 ### <a name="get-the-server-name"></a>Sunucu adını al
 
-**Azure Portal** > Server > **genel bakış** > **sunucu adı**' nda, tüm sunucu adını kopyalayın. Kuruluşunuzdaki diğer kullanıcılar da bu sunucuya bağlanıyorsa, bu sunucu adını bunlarla paylaşabilirsiniz. Bir sunucu adı belirtirken, yolun tamamının kullanılması gerekir.
+**Azure Portal** > Server > **genel bakış**  >  **sunucu adı**' nda, tüm sunucu adını kopyalayın. Kuruluşunuzdaki diğer kullanıcılar da bu sunucuya bağlanıyorsa, bu sunucu adını bunlarla paylaşabilirsiniz. Bir sunucu adı belirtirken, yolun tamamının kullanılması gerekir.
 
 ![Azure'da sunucu adını alma](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 

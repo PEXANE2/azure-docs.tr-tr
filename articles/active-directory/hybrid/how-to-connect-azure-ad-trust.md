@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331732"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360104"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect kullanarak Azure AD ile AD FS güvenini yönetme
 
@@ -39,7 +39,7 @@ Azure AD Connect, şirket içi Active Directory Federasyon Hizmeti (AD FS) ve Az
 
 Azure AD Connect **yalnızca** Azure AD güveniyle ilgili ayarları yönetir. Azure AD Connect, AD FS diğer bağlı olan taraf güvenlerinde herhangi bir ayarı değiştirmez. Aşağıdaki tablo Azure AD Connect tarafından denetlenen ayarları gösterir.
 
-| Ayar | Açıklama |
+| Ayar | Description |
 | :--- | :--- |
 | Belirteç imzalama sertifikası | Azure AD Connect, Azure AD ile güveni sıfırlamak ve yeniden oluşturmak için kullanılabilir. Azure AD Connect, belirteç imzalama sertifikalarının AD FS ve Azure AD etki alanı Federasyon ayarlarını güncelleştiren bir kerelik anında geçiş yapar.|
 | Belirteç imzalama algoritması | Microsoft, belirteç imzalama algoritması olarak SHA-256 kullanmasını önerir. Azure AD Connect, belirteç imzalama algoritmasının SHA-256 ' den daha az güvenli bir değere ayarlandığını algılayabilir. Sonraki olası yapılandırma işleminde bu ayarı SHA-256 olarak güncelleştirir. Yeni belirteç imzalama sertifikasını kullanmak için diğer bağlı olan taraf güveni de güncelleştirilmeleri gerekir. |
@@ -56,15 +56,15 @@ Azure AD Connect, yapılandırma akışları sırasında Azure AD güveninin tü
 
 | Yürütme akışı | Etkilenen ayarlar |
 | :--- | :--- |
-| İlk geçiş yükleme (Express) | Hiçbiri |
+| İlk geçiş yükleme (Express) | Yok |
 | Yüklemeyi ilk geçir (yeni AD FS grubu) | Yeni bir AD FS grubu oluşturulur ve sıfırdan Azure AD ile bir güven oluşturulur. |
 | İlk geçiş yükleme (mevcut AD FS grubu, mevcut Azure AD güveni) | Azure AD güven tanımlayıcısı, verme dönüştürme kuralları, Azure AD uç noktaları, alternatif kimliği (gerekliyse), otomatik meta veri güncelleştirmesi |
 | Azure AD güvenini sıfırlama | Belirteç imzalama sertifikası, belirteç imzalama algoritması, Azure AD güven tanımlayıcısı, verme dönüştürme kuralları, Azure AD uç noktaları, alternatif kimlik (gerekliyse), otomatik meta veri güncelleştirmesi |
-| Federasyon sunucusu Ekle | Hiçbiri |
-| WAP sunucusu Ekle | Hiçbiri |
+| Federasyon sunucusu Ekle | Yok |
+| WAP sunucusu Ekle | Yok |
 | Cihaz seçenekleri | Verme dönüştürme kuralları, cihaz kaydı için ıWA |
 | Federasyon etki alanı Ekle | Etki alanı ilk kez eklendiyse, diğer bir deyişle, kurulum tek etki alanı federasyonunu birden çok etki alanı federasyona değiştiriyor – Azure AD Connect güveni sıfırdan yeniden oluşturur. Azure AD ile güven zaten birden çok etki alanı için yapılandırılmışsa, yalnızca verme dönüşüm kuralları değiştirilir |
-| TLS güncelleştirme | Hiçbiri |
+| TLS güncelleştirme | Yok |
 
 Tüm işlemler sırasında, herhangi bir ayar değiştirildiğinde, Azure AD Connect **%ProgramData%\aadconnect\adfs** konumundaki geçerli güven ayarlarının yedeklemesini yapar
 
@@ -77,7 +77,7 @@ Tüm işlemler sırasında, herhangi bir ayar değiştirildiğinde, Azure AD Con
 
 Azure AD Connect, Azure AD güveninin her zaman önerilen talep kuralları kümesiyle yapılandırıldığından emin olur. Microsoft, Azure AD güvenini yönetmek için Azure AD Connect 'in kullanılmasını önerir. Bu bölümde, verme dönüştürme kuralları kümesi ve bunların açıklaması listelenmektedir.
 
-| Kural adı | Açıklama |
+| Kural adı | Description |
 | --- | --- |
 | Sorun UPN 'si | Bu kural userPrincipalName değerini, userPrincipalName için eşitleme ayarları 'nda yapılandırılan öznitelikten farklı şekilde sorgular.|
 | Özel ImmutableID talebi için Objectguıd ve msdsıımıbu GUID sorgula | Bu kural, varsa Objectguıd ve MSDS, şifreli GUID değeri için işlem hattına geçici bir değer ekler |
@@ -103,14 +103,14 @@ Azure AD Connect, Azure AD güveninin her zaman önerilen talep kuralları küme
 
 ## <a name="restore-issuance-transform-rules"></a>Verme dönüştürme kurallarını geri yükleme
 
-Azure AD Connect Version 1.1.873.0 veya sonraki sürümleri, Azure AD güven ayarlarında bir güncelleştirme yapıldığında Azure AD güven ayarlarının yedeklenmesini sağlar. Azure AD güven ayarları, **%ProgramData%\aadconnect\adfs**konumunda yedeklenir. Dosya adı,&lt;aadtrust-Date&gt;-&lt;&gt;. txt, örneğin-AadTrust-20180710-150216. txt biçiminde şu biçimdedir.
+Azure AD Connect Version 1.1.873.0 veya sonraki sürümleri, Azure AD güven ayarlarında bir güncelleştirme yapıldığında Azure AD güven ayarlarının yedeklenmesini sağlar. Azure AD güven ayarları, **%ProgramData%\aadconnect\adfs**konumunda yedeklenir. Dosya adı, aadtrust- &lt; date &gt; - &lt; Time &gt; . txt dosyasında, örneğin-AadTrust-20180710-150216.txt biçimindedir
 
 ![Azure AD güveninin örnek bir ekran görüntüsü](./media/how-to-connect-azure-ad-trust/backup.png)
 
 Aşağıdaki önerilen adımları kullanarak verme dönüştürme kurallarını geri yükleyebilirsiniz
 
 1. AD FS Yönetimi Kullanıcı arabirimini Sunucu Yöneticisi açın
-2. **AD FS &gt; bağlı olan taraf &gt; güvenleri Microsoft Office 365 kimlik platformu &gt; düzenleme TALEPLERI verme ilkesi** ' ne giderek Azure AD güven özelliklerini açın
+2. **AD FS &gt; bağlı olan taraf güvenleri &gt; Microsoft Office 365 kimlik platformu &gt; düzenleme talepleri verme Ilkesi** ' ne giderek Azure AD güven özelliklerini açın
 3. **Kural Ekle** 'ye tıklayın
 4. Talep kuralı şablonunda, talepleri özel bir kural kullanarak gönder ' i seçin ve **İleri** ' ye tıklayın.
 5. Talep kuralının adını yedekleme dosyasından kopyalayın ve alan **talep kuralı adına** yapıştırın

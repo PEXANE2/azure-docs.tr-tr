@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 491a8f00de2fcd4c977a1856005b4358a4b62bd6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049658"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359798"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılmada yapılandırma sonrası görevler
 
@@ -52,7 +52,7 @@ Kuruluşunuz bir giden proxy üzerinden Internet 'e eriştiğinde, Windows 10 bi
 
 ## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. Azure AD Connect tarafından yapılandırılmayan ormanlarda SCP 'YI yapılandırma 
 
-Hizmet bağlantı noktası (SCP), cihazlarınız tarafından otomatik kayıt için kullanılacak Azure AD kiracı bilgilerinizi içerir.  Azure AD Connect adresinden indirdiğiniz ConfigureSCP. ps1 PowerShell betiğini çalıştırın.
+Hizmet bağlantı noktası (SCP), cihazlarınız tarafından otomatik kayıt için kullanılacak Azure AD kiracı bilgilerinizi içerir.  Azure AD Connect indirdiğiniz ConfigureSCP.ps1 PowerShell betiğini çalıştırın.
 
 ## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. Azure AD Connect tarafından yapılandırılmayan herhangi bir Federasyon hizmetini yapılandırın
 
@@ -63,7 +63,7 @@ Kuruluşunuz Azure AD 'de oturum açmak için bir Federasyon Hizmeti kullanıyor
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Windows alt düzey cihazlar için Azure AD sorunsuz SSO 'yu etkinleştirme
 
-Kuruluşunuz Azure AD 'de oturum açmak için parola karma eşitlemesi veya geçişli kimlik doğrulaması kullanıyorsa, Windows alt düzey cihazların kimliğini doğrulamak için Azure AD sorunsuz SSO 'yu bu oturum açma yöntemiyle etkinleştirin: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Kuruluşunuz Azure AD 'de oturum açmak için parola karma eşitlemesi veya geçişli kimlik doğrulaması kullanıyorsa, Windows alt düzey cihazların kimliğini doğrulamak için Azure AD sorunsuz SSO 'yu bu oturum açma yöntemiyle etkinleştirin: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Windows alt düzey cihazlar için Azure AD ilkesini ayarlama
 
@@ -82,7 +82,7 @@ Cihazların kimliğini doğrularken sertifika istemlerinin önüne geçmek için
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Windows alt düzey cihazlara Microsoft Workplace Join 'yi yükler
 
-Bu yükleyici, kullanıcı bağlamında çalışan cihaz sisteminde zamanlanmış bir görev oluşturur. Görev, Kullanıcı Windows 'da oturum açtığında tetiklenir. Görev, tümleşik Windows kimlik doğrulaması kullanarak kimlik doğrulamasından geçtikten sonra, Kullanıcı kimlik bilgileriyle cihazı Azure AD ile sessizce birleştirir. Yükleme Merkezi https://www.microsoft.com/download/details.aspx?id=53554. 
+Bu yükleyici, kullanıcı bağlamında çalışan cihaz sisteminde zamanlanmış bir görev oluşturur. Görev, Kullanıcı Windows 'da oturum açtığında tetiklenir. Görev, tümleşik Windows kimlik doğrulaması kullanarak kimlik doğrulamasından geçtikten sonra, Kullanıcı kimlik bilgileriyle cihazı Azure AD ile sessizce birleştirir. Yükleme Merkezi https://www.microsoft.com/download/details.aspx?id=53554 . 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Grup ilkesini cihaz kaydına izin verecek şekilde yapılandırma
 

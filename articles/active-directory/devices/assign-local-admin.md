@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4285c7d8cd6c9feee84eaae3c49ffd1f21d5df27
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 72b21514e07b65b89d10b317da95ec7d92ecae78
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253095"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360342"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -88,7 +88,7 @@ Cihaz Yöneticisi rolüne Grup atayamazsınız, yalnızca bireysel kullanıcıla
 
 Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Bunlar, belirli bir cihaz kümesinin kapsamına alınamaz.
 
-Kullanıcıları Cihaz Yöneticisi rolünden kaldırdığınızda, sunucuda oturum açtıkları sürece bir cihazda yerel yönetici ayrıcalığına sahip olmaya devam eder. Bu ayrıcalık bir sonraki oturum açma işlemi sırasında veya yeni bir birincil yenileme belirteci verildiğinde 4 saat sonra iptal edilir.
+Kullanıcıları Cihaz Yöneticisi rolünden kaldırdığınızda, sunucuda oturum açtıkları sürece bir cihazda yerel yönetici ayrıcalığına sahip olmaya devam eder. Yeni bir birincil yenileme belirteci verildiğinde, 4 saat sonra bir sonraki oturum açma işlemi sırasında ayrıcalık iptal edilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

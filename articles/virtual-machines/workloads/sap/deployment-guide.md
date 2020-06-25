@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 828615add9f24b5a2089e240bbf62647f34a25f0
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207422"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361396"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -211,10 +211,6 @@ ms.locfileid: "85207422"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Azure depolama hesapları arasında diskleri kopyalama)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP dağıtımları için VM/VHD yapısı)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (İliştirilmiş diskler için otomatik bağlama ayarlama)
-[planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (SAP NetWeaver demo/eğitim senaryosuna sahip tek VM)
-[planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (SAP örneklerinin yalnızca bulutta dağıtılması kavramları)
-[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (SAP için Azure Izleme çözümü)
-[planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Yönetilen diskler)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -446,7 +442,7 @@ Sihirbaz, ağ arabirimleri ve depolama hesapları gibi gerekli tüm kaynaklara e
 1. **Ayarlar**:
    * **Depolama**
      * **Disk türü**: işletim sistemi diskinin disk türünü seçin. Veri diskleriniz için Premium Depolama kullanmak istiyorsanız, işletim sistemi diski için Premium Depolama kullanmanızı da öneririz.
-     * **Yönetilen diskleri kullan**: yönetilen diskleri kullanmak istiyorsanız Evet ' i seçin. Yönetilen diskler hakkında daha fazla bilgi için bkz. planlama kılavuzunda bölüm [yönetimli diskler][planning-guide-managed-disks] .
+     * **Yönetilen diskleri kullan**: yönetilen diskleri kullanmak istiyorsanız Evet ' i seçin. Yönetilen diskler hakkında daha fazla bilgi için bkz. planlama kılavuzunda bölüm [yönetimli diskler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) .
      * **Depolama hesabı**: var olan bir depolama hesabını seçin veya yeni bir tane oluşturun. Tüm depolama türleri SAP uygulamalarını çalıştırmak için çalışmaz. Depolama türleri hakkında daha fazla bilgi için bkz. [bir sanal makinenin depolama yapısına RDBMS dağıtımları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
    * **Ağ**
      * **Sanal ağ** ve **alt ağ**: sanal makineyi intranetle bütünleştirmek için, şirket içi ağınıza bağlı sanal ağı seçin.
@@ -586,7 +582,7 @@ Sihirbaz, ağ arabirimleri ve depolama hesapları gibi gerekli tüm kaynaklara e
 1. **Ayarlar**:
    * **Depolama**
      * **Disk türü**: işletim sistemi diskinin disk türünü seçin. Veri diskleriniz için Premium Depolama kullanmak istiyorsanız, işletim sistemi diski için Premium Depolama kullanmanızı da öneririz.
-     * **Yönetilen diskleri kullan**: yönetilen diskleri kullanmak istiyorsanız Evet ' i seçin. Yönetilen diskler hakkında daha fazla bilgi için bkz. planlama kılavuzunda bölüm [yönetimli diskler][planning-guide-managed-disks] .
+     * **Yönetilen diskleri kullan**: yönetilen diskleri kullanmak istiyorsanız Evet ' i seçin. Yönetilen diskler hakkında daha fazla bilgi için bkz. planlama kılavuzunda bölüm [yönetimli diskler](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) .
    * **Ağ**
      * **Sanal ağ** ve **alt ağ**: sanal makineyi intranetle bütünleştirmek için, şirket içi ağınıza bağlı sanal ağı seçin.
      * **Genel IP adresi**: kullanmak ISTEDIĞINIZ genel IP adresini seçin veya yeni BIR genel IP adresi oluşturmak için parametreler girin. Internet üzerinden sanal makinenize erişmek için genel bir IP adresi kullanabilirsiniz. Sanal makinenize erişimi güvenli hale getirmeye yardımcı olmak için bir ağ güvenlik grubu da oluşturduğunuzdan emin olun.
@@ -917,7 +913,7 @@ Kullanıcı tanımlı rotalar hakkında daha fazla bilgi için bkz. [Kullanıcı
 > Genel destek beyanı: SAP için Azure uzantısı için desteğe ihtiyacınız varsa lütfen her zaman Windows için bileşen BC-OP-NT-AZR ' de bir olay açın veya BC-OP-LNX-AZR.
 > Ortak müşterilerimize yardımcı olmak üzere SAP destek sisteminde çalışan adanmış Microsoft destek mühendisleri vardır.
 
-VM 'yi [Azure 'DA SAP Için VM 'Lerin dağıtım senaryolarında][deployment-guide-3]açıklandığı şekilde hazırladığınızda, Azure VM Aracısı sanal makineye yüklenir. Sonraki adım, genel Azure veri merkezlerinde Azure uzantı deposunda bulunan SAP için Azure uzantısını dağıtmaktır. Daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama][planning-guide-9.1].
+VM 'yi [Azure 'DA SAP Için VM 'Lerin dağıtım senaryolarında][deployment-guide-3]açıklandığı şekilde hazırladığınızda, Azure VM Aracısı sanal makineye yüklenir. Sonraki adım, genel Azure veri merkezlerinde Azure uzantı deposunda bulunan SAP için Azure uzantısını dağıtmaktır. Daha fazla bilgi için bkz. [SAP NetWeaver için Azure sanal makineleri planlama ve uygulama] [Planlama-Kılavuzu-9,1].
 
 SAP için Azure uzantısının yeni bir sürümünü serbest bırakma sürecimiz. Yeni uzantı, eklenen diskler, ağ arabirimleri ve sanal makinenin kendisi hakkında bilgi almak için sanal makinenin sistem tarafından atanan kimliğini kullanır. Bu kaynaklara erişebilmek için sanal makinenin sistem kimliğinin, sanal makine, işletim sistemi diski, veri diskleri ve ağ arabirimleri için okuyucu izni olması gerekir. Şu anda yalnızca yeni uzantıyı aşağıdaki senaryolarda yüklemeyi öneriyoruz:
 

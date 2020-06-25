@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b5c46c8b85af59efaf611300e2ab7129b3ef3cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411378"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361566"
 ---
 # <a name="connect-with-excel"></a>Excel ile bağlanma
 
@@ -26,9 +26,9 @@ Oturum açarken kullandığınız hesap, en azından okuma izinlerine sahip bir 
 
 Excel 'deki bir sunucuya bağlanmak, Excel 2016 ve sonraki sürümlerde veri al kullanılarak desteklenir. Power Pivot içindeki tablo Içeri aktarma Sihirbazı 'Nı kullanarak bağlanma desteklenmez. 
 
-1. Excel 'de, **veri** şeridinde,**Analysis Services****diğer kaynaklardan** >  **dış veri** > Al ' a tıklayın.
+1. Excel 'de, **veri** şeridinde, Analysis Services diğer kaynaklardan **dış veri al**' a tıklayın  >  **From Other Sources**  >  **From Analysis Services**.
 
-2. Veri Bağlantısı Sihirbazı ' nın **sunucu adı**' nda protokol ve URI dahil sunucu adını girin. Örneğin, asazure://westcentralus.asazure.windows.net/advworks. Ardından, **oturum açma kimlik bilgileri**' nde, **aşağıdaki Kullanıcı adı ve parolayı kullan**' ı seçin ve ardından kuruluş Kullanıcı adı nancy@adventureworks.com' nı ve parola ' yı yazın.
+2. Veri Bağlantısı Sihirbazı ' nın **sunucu adı**' nda protokol ve URI dahil sunucu adını girin. Örneğin, asazure://westcentralus.asazure.windows.net/advworks. Ardından, **oturum açma kimlik bilgileri**' nde, **aşağıdaki Kullanıcı adı ve parolayı kullan**' ı seçin ve ardından kuruluş Kullanıcı adı ' nı nancy@adventureworks.com ve parola ' yı yazın.
 
     > [!IMPORTANT]
     > Bir Microsoft hesabı, Live ID, Yahoo, Gmail, vb. ile oturum açarsanız veya Multi-Factor Authentication ile oturum açmanız gerekiyorsa, parola alanını boş bırakın. Ileri ' ye tıkladıktan sonra parola girmeniz istenir. 
@@ -42,7 +42,7 @@ Excel 'deki bir sunucuya bağlanmak, Excel 2016 ve sonraki sürümlerde veri al 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[İstemci kitaplıkları](analysis-services-data-providers.md)   
+[İstemci kitaplıkları](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [Sunucunuzu Yönetin](analysis-services-manage.md)     
 
 

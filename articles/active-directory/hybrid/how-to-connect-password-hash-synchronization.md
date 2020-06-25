@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e37095a964e656160edbbbc4a325feceb1e48e74
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84749636"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358574"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitlemeyi uygulama
 Bu makale, Kullanıcı parolalarınızı şirket içi Active Directory örneğinden bulut tabanlı Azure Active Directory (Azure AD) örneğine eşitlemeniz için gereken bilgileri sağlar.
@@ -122,7 +122,6 @@ Desteklenmediği uyarısıyla: Azure AD 'de süresi dolmayan parolalara sahip ol
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Bu özellik şu anda genel önizlemede.
 > Set-MsolPasswordPolicy PowerShell komutu, Federasyon etki alanlarında çalışmayacaktır. 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Geçici parolalar eşitleniyor ve "bir sonraki oturumda parola değişikliğini zorla"
@@ -140,9 +139,6 @@ Azure AD 'de eşitlenen kullanıcılar için geçici parolaları desteklemek üz
 
 > [!CAUTION]
 > Bu özelliği yalnızca, kiracı üzerinde SSPR ve parola geri yazma etkinleştirildiğinde kullanmanız gerekir.  Bu, bir Kullanıcı parolasını SSPR ile değiştirirse, Active Directory eşitlenecek.
-
-> [!NOTE]
-> Bu özellik şu anda genel önizlemede.
 
 #### <a name="account-expiration"></a>Hesap süre sonu
 

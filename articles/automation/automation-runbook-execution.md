@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4f62a94c8ed8baa9979aa1469e785d26781af7f0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832359"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361634"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -53,7 +53,7 @@ Aşağıdaki tabloda, her biri için önerilen yürütme ortamıyla bazı runboo
 |Üçüncü taraf yazılım ve yürütülebilir dosyaları gerektir|Karma Runbook Çalışanı|İşletim sistemini yönetirsiniz ve yazılım yükleyebilirsiniz.|
 |Runbook ile bir dosyayı veya klasörü izleme|Karma Runbook Çalışanı|Karma Runbook Worker üzerinde bir [izleyici görevi](automation-watchers-tutorial.md) kullanın.|
 |Kaynak yoğunluklu bir betiği çalıştırma|Karma Runbook Çalışanı| Azure korumalı alanlar [kaynak limitlere](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)sahiptir.|
-|Belirli gereksinimlere sahip modüller kullanın| Karma Runbook Çalışanı|Bazı örnekler şunlardır:</br> WinSCP-WinSCP. exe ' de bağımlılık </br> IIS yönetimi-IIS etkinleştirme veya yönetme ile ilgili bağımlılık|
+|Belirli gereksinimlere sahip modüller kullanın| Karma Runbook Çalışanı|Bazı örnekler şunlardır:</br> WinSCP-winscp.exe bağımlılığı </br> IIS yönetimi-IIS etkinleştirme veya yönetme ile ilgili bağımlılık|
 |Bir yükleyiciye modül yükleme|Karma Runbook Çalışanı|Korumalı alan için modüllerin kopyalamayı desteklemesi gerekir.|
 |4.7.2 'ten farklı .NET Framework sürümü gerektiren runbook 'ları veya modülleri kullanın|Karma Runbook Çalışanı|Azure korumalı alanlar, 4.7.2 .NET Framework destekler ve farklı bir sürüme yükseltme desteklenmez.|
 |Yükseltme gerektiren betikleri Çalıştır|Karma Runbook Çalışanı|Korumalı alanlar yükseltmeye izin vermez. Karma Runbook Worker ile UAC 'yi kapatabilir ve yükseltme gerektiren komutu çalıştırırken [Invoke-komutunu](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) kullanabilirsiniz.|

@@ -10,22 +10,30 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 06/05/2020
-ms.openlocfilehash: 7238e2d7cbcb26a7b45ae9d7db52a0826abe0754
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d5d60db2cc0c35b908454be3f00716db6d2da945
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897985"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361651"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge sürüm notları 
 
 Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiştiğini açıklanmaktadır.
 
+## <a name="ctp-21"></a>CTP 2,1 
+### <a name="sql-engine-build-number---15020001545"></a>SQL altyapısı derleme numarası-15.0.2000.1545
+### <a name="fixes"></a>Düzeltmeler
+1. ARM 'de CPUıD sorununu işlemek için ONNX modelleriyle tahmın etme 
+2. TSQL akışının başlangıcında hata yolunun işlenmesini geliştirmek için onarma 
+3. Veri olmadığında iş ölçümlerinde hatalı eşik gecikmesi değerini onarın. 
+4. Bağdaştırıcı, toplu işler arasında değişken şemasına sahip olduğunda çıkış bağdaştırıcısındaki sorunu düzeltir.  
+
 ## <a name="ctp-20"></a>CTP 2,0 
 ### <a name="sql-engine-build-number---15020001401"></a>SQL altyapısı derleme numarası-15.0.2000.1401
 ### <a name="whats-new"></a>Yenilikler
 1.  Ürün adı ' Azure SQL Edge ' olarak güncelleştirildi
-2.  Date_bucket işlevi
+1.  Date_bucket işlevi
 
     i.  Tarih, saat, tarih saat türü desteği
 3.  ONNX ile tahmın edin

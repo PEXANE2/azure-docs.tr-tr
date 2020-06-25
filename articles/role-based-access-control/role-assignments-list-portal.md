@@ -2,24 +2,20 @@
 title: Azure portal-Azure RBAC kullanarak Azure rol atamalarını listeleme
 description: Azure portal ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin hangi kaynakların erişimi olduğunu belirlemeyi öğrenin.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/18/2020
+ms.date: 06/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4315b6ded8824fb119cd9c05a760b4269bcfd12d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791070"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361885"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure rol atamalarını listeleyin
 
@@ -30,7 +26,7 @@ ms.locfileid: "84791070"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Bir kullanıcı veya grup için rol atamalarını listeleme
 
-Bir abonelikte bir kullanıcıya veya gruba atanan rolleri görmenin en kolay yolu **Azure kaynakları** bölmesini kullanmaktır.
+Bir abonelikte bir kullanıcıya veya gruba atanan rolleri görmenin en kolay yolu **Azure rol atamaları** bölmesini kullanmaktır.
 
 1. Azure portal, Azure portal menüsünden **tüm hizmetler** ' i seçin.
 
@@ -38,11 +34,11 @@ Bir abonelikte bir kullanıcıya veya gruba atanan rolleri görmenin en kolay yo
 
 1. İçin rol atamalarını listelemek istediğiniz kullanıcıya veya gruba tıklayın.
 
-1. **Azure kaynakları**' na tıklayın.
+1. **Azure rol atamaları**' na tıklayın.
 
     Yönetim grubu, abonelik, kaynak grubu veya kaynak gibi çeşitli kapsamlardaki seçili kullanıcı veya gruba atanan rollerin listesini görürsünüz. Bu liste, okuma izninizin olduğu tüm rol atamalarını içerir.
 
-    ![Bir kullanıcıya rol atama](./media/role-assignments-list-portal/azure-resources-user.png)    
+    ![Bir kullanıcıya rol atama](./media/role-assignments-list-portal/azure-role-assignments-user.png)    
 
 1. Aboneliği değiştirmek için **abonelikler** listesine tıklayın.
 
@@ -102,31 +98,37 @@ Bir kullanıcının, grubun, hizmet sorumlusunun veya yönetilen kimliğin eriş
 
     Bu bölmede, seçilen güvenlik sorumlusuna ve kapsamına atanan rolleri görebilirsiniz. Bu kapsamda herhangi bir reddetme ataması varsa veya bu kapsama devralınmışsa, bunlar listelenecektir.
 
-## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik için rol atamalarını listeleyin
+## <a name="list-role-assignments-for-a-managed-identity"></a>Yönetilen bir kimlik için rol atamalarını listeleyin
+
+Belirli bir kapsamdaki sistem tarafından atanan ve Kullanıcı tarafından atanan Yönetilen kimlikler için rol atamalarını, daha önce açıklandığı gibi **erişim denetimi (IAM)** dikey penceresini kullanarak listeleyebilirsiniz. Bu bölümde, yalnızca yönetilen kimliğin rol atamalarının nasıl listeleneceğini açıklanmaktadır.
+
+### <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 
 1. Azure portal, sistem tarafından atanan bir yönetilen kimlik açın.
 
 1. Sol taraftaki menüden **kimlik**' e tıklayın.
 
-    ![Sistem tarafından atanan yönetilen kimlik](./media/role-assignments-list-portal/identity-system-assigned.png)
+    ![Sistem tarafından atanan yönetilen kimlik](./media/shared/identity-system-assigned.png)
 
-1. **Rol atamaları**altında **Bu yönetilen KIMLIĞE atanan Azure RBAC rollerini göster ' e**tıklayın.
+1. **İzinler**altında **Azure rol atamaları**' na tıklayın.
 
     Yönetim grubu, abonelik, kaynak grubu veya kaynak gibi çeşitli kapsamlardaki seçili sistem tarafından atanan yönetilen kimliğe atanan rollerin listesini görürsünüz. Bu liste, okuma izninizin olduğu tüm rol atamalarını içerir.
 
-    ![Sistem tarafından atanan yönetilen kimlik için rol atamaları](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+    ![Sistem tarafından atanan yönetilen kimlik için rol atamaları](./media/shared/role-assignments-system-assigned.png)
 
-## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik için rol atamalarını listeleyin
+1. Aboneliği değiştirmek için **abonelik** listesine tıklayın.
+
+### <a name="user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik
 
 1. Azure portal, Kullanıcı tarafından atanan bir yönetilen kimlik açın.
 
-1. **Azure kaynakları**' na tıklayın.
+1. **Azure rol atamaları**' na tıklayın.
 
     Yönetim grubu, abonelik, kaynak grubu veya kaynak gibi çeşitli kapsamlardaki seçili kullanıcı tarafından atanan yönetilen kimliğe atanan rollerin listesini görürsünüz. Bu liste, okuma izninizin olduğu tüm rol atamalarını içerir.
 
-    ![Sistem tarafından atanan yönetilen kimlik için rol atamaları](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+    ![Sistem tarafından atanan yönetilen kimlik için rol atamaları](./media/shared/role-assignments-user-assigned.png)
 
-1. Aboneliği değiştirmek için **abonelikler** listesine tıklayın.
+1. Aboneliği değiştirmek için **abonelik** listesine tıklayın.
 
 ## <a name="list-number-of-role-assignments"></a>Rol atamalarının sayısını listeleyin
 
@@ -137,6 +139,51 @@ Her abonelikte en fazla **2000** rol ataması yapabilirsiniz. Bu sınır, abonel
 En büyük sayıya yakınlarınız varsa ve daha fazla rol ataması eklemeye çalışırsanız, **rol ataması Ekle** bölmesinde bir uyarı görürsünüz. Rol atamalarının sayısını azaltabileceğiniz yollar için bkz. [Azure RBAC sorunlarını giderme](troubleshooting.md#azure-role-assignments-limit).
 
 ![Erişim denetimi-rol atama uyarısı ekleme](./media/role-assignments-list-portal/add-role-assignment-warning.png)
+
+## <a name="download-role-assignments-preview"></a>Rol atamalarını indir (Önizleme)
+
+Rol atamalarını CSV veya JSON biçimlerindeki bir kapsamda indirebilirsiniz. Bu, bir elektronik tablodaki listeyi incelemeniz veya bir aboneliği geçirirken bir sayım almanız gerektiğinde yararlı olabilir.
+
+> [!IMPORTANT]
+> Rol atamalarını indirme Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Rol atamalarını indirdiğinizde aşağıdaki ölçütleri göz önünde bulundurmanız gerekir:
+
+- Dizin okuyucuları rolü gibi dizin okuma izinleriniz yoksa DisplayName, Signınname ve ObjectType sütunları boş olur.
+- Güvenlik sorumlusu silinmiş olan rol atamaları dahil değildir.
+- Klasik yöneticilere verilen erişim dahil değildir.
+
+Rol atamalarını bir kapsamda indirmek için bu adımları izleyin.
+
+1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından rol atamalarını indirmek istediğiniz kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları**veya bir kaynak seçebilirsiniz.
+
+1. Belirli kaynağa tıklayın.
+
+1. **Erişim denetimi (IAM)** öğesine tıklayın.
+
+1. Rol atamalarını Indir bölmesini açmak için **rol atamalarını indir (Önizleme)** seçeneğine tıklayın.
+
+    ![Erişim denetimi-rol atamalarını Indirin](./media/role-assignments-list-portal/download-role-assignments.png)
+
+1. İndirilen dosyaya dahil etmek istediğiniz rol atamalarını seçmek için onay kutularını kullanın.
+
+    - **Devralınan** -geçerli kapsam için devralınan rol atamalarını dahil edin.
+    - **Geçerli kapsamda** -geçerli kapsam için rol atamaları ekleyin.
+    - **Alt öğeler** -geçerli kapsamın altındaki düzeylerde rol atamaları ekleyin. Bu onay kutusu yönetim grubu kapsamı için devre dışıdır.
+
+1. Virgülle ayrılmış değerler (CSV) veya JavaScript Nesne Gösterimi (JSON) olabilen dosya biçimini seçin.
+
+1. Dosya adını belirtin.
+
+1. İndirmeyi başlatmak için **Başlat** ' a tıklayın.
+
+    Aşağıda her dosya biçimi için çıktının örnekleri gösterilmektedir.
+
+    ![Rol atamalarını CSV olarak indir](./media/role-assignments-list-portal/download-role-assignments-csv.png)
+
+    ![Rol atamalarını CSV olarak indir](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

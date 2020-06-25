@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185511"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358030"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması ile kullanıcı oturumu açma
 
@@ -58,7 +58,7 @@ Doğrudan kimlik doğrulamayı [sorunsuz çoklu oturum açma](how-to-connect-sso
 ## <a name="feature-highlights"></a>Özellik vurguları
 
 - , Tüm Web tarayıcısı tabanlı uygulamalarda ve [modern kimlik doğrulaması](https://aka.ms/modernauthga)kullanan Microsoft Office istemci uygulamalarında Kullanıcı oturum açmayı destekler.
-- Oturum açma kullanıcı adları, şirket içi varsayılan Kullanıcı adı (`userPrincipalName`) veya Azure AD Connect yapılandırılmış başka bir öznitelik (olarak `Alternate ID`bilinir) olabilir.
+- Oturum açma kullanıcı adları, şirket içi varsayılan Kullanıcı adı ( `userPrincipalName` ) veya Azure AD Connect yapılandırılmış başka bir öznitelik (olarak bilinir `Alternate ID` ) olabilir.
 - Özelliği, kullanıcılarınızın güvenliğini sağlamaya yardımcı olmak üzere Multi-Factor Authentication (MFA) gibi [koşullu erişim](../active-directory-conditional-access-azure-portal.md) özellikleriyle sorunsuz şekilde çalışır.
 - Yaygın olarak kullanılan parolalara bakarak şirket içi Active Directory ve parola korumasına yönelik parola geri yazma özelliği de dahil olmak üzere bulut tabanlı [self servis parola yönetimiyle](../authentication/active-directory-passwords-overview.md)tümleşiktir.
 - AD ormanlarınız arasında orman güvenleri varsa ve ad soneki yönlendirmesi doğru yapılandırılmışsa, çok ormanlı ortamlar desteklenir.

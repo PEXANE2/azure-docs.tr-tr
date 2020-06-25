@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7d05c1222ff43537ab8dad34588b80fe537fd0a1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85200418"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361311"
 ---
 # <a name="install-language-packs"></a>Dil paketlerini yükleme
 
@@ -36,7 +36,8 @@ Dil paketlerini yüklemek için:
 4. **Ülke veya bölge**altında, açılır menüden tercih ettiğiniz ülkeyi veya bölgeyi seçin.
     Bu örnekte, aşağıdaki ekran görüntüsünde gösterildiği gibi **Fransa**seçeceğiz:
 
-    ![Bölge sayfasının ekran görüntüsü. Şu anda seçili bölge Fransa ' dır.](media/region-page-france.png)
+    > [!div class="mx-imgBorder"]
+    > ![Bölge sayfasının ekran görüntüsü. Şu anda seçili bölge Fransa ' dır.](media/region-page-france.png)
 
 5. Bundan sonra **dil**' i seçin ve ardından **Dil ekle**' yi seçin. Listeden yüklemek istediğiniz dili seçin ve ardından **İleri**' yi seçin.
 6. **Dil özelliklerini yükler** penceresi açıldığında, **dil paketini yükler ve Windows görüntüleme dili olarak ayarla**etiketli onay kutusunu seçin.
@@ -45,15 +46,19 @@ Dil paketlerini yüklemek için:
 
     Hızlı bir görsel tanıtım aracılığıyla çalıştıralım. Aşağıdaki resimlerde, Fransızca ve Felemenkçe dil paketlerinin nasıl yükleneceği gösterilmektedir ve ardından, görüntüleme dili olarak Fransızca ayarlanır.
 
-    ![İşlemin başındaki dil sayfasının ekran görüntüsü. Seçilen Windows görüntüleme dili Ingilizce.](media/language-page-default.png)
+    > [!div class="mx-imgBorder"]
+    > ![İşlemin başındaki dil sayfasının ekran görüntüsü. Seçilen Windows görüntüleme dili Ingilizce.](media/language-page-default.png)
 
-    ![Dil seçimi penceresinin ekran görüntüsü. Kullanıcı, Fransızca dil paketlerini bulmak için arama çubuğuna "Fransızca" girdi.](media/select-language-french.png)
+    > [!div class="mx-imgBorder"]
+    > ![Dil seçimi penceresinin ekran görüntüsü. Kullanıcı, Fransızca dil paketlerini bulmak için arama çubuğuna "Fransızca" girdi.](media/select-language-french.png)
 
-    ![Dil özelliklerini yüklemeyi sayfasının ekran görüntüsü. Fransızca tercih edilen dil olarak seçilidir. Seçilen seçenekler "görüntüleme dilmi ayarla", "dil paketini yükler," "konuşma tanıma" ve "el yazısı" dir.](media/install-language-features.png)
+    > [!div class="mx-imgBorder"]
+    > ![Dil özelliklerini yüklemeyi sayfasının ekran görüntüsü. Fransızca tercih edilen dil olarak seçilidir. Seçilen seçenekler "görüntüleme dilmi ayarla", "dil paketini yükler," "konuşma tanıma" ve "el yazısı" dir.](media/install-language-features.png)
 
     Dil Paketleriniz yüklendikten sonra dil paketlerinde dil paketlerinizin adlarının göründüğünü görmeniz gerekir.
 
-    ![Yeni dil paketlerinin yüklü olduğu dil sayfasının ekran görüntüsü. Fransızca ve Hollanda dil paketleri "tercih edilen diller" altında listelenmiştir.](media/language-page-complete.png)
+    > [!div class="mx-imgBorder"]
+    > ![Yeni dil paketlerinin yüklü olduğu dil sayfasının ekran görüntüsü. Fransızca ve Hollanda dil paketleri "tercih edilen diller" altında listelenmiştir.](media/language-page-complete.png)
 
 9. Oturumunuz oturumunuzu kapatmak isteyip istemediğinizi soran bir pencere görünürse. Oturumu kapatın ve yeniden oturum açın. Görüntüleme diliniz artık seçtiğiniz dilde olmalıdır.
 
@@ -113,7 +118,8 @@ Sysprep işlemi sırasında bir hata iletisi görürseniz şunları yapmanız ge
 
    Hata dosyasındaki metinde, aşağıdaki görüntüde gösterildiği gibi belirli bir dil paketini kaldırmanız gerektiğini söyleyecektir. Sonraki adım için dil paketi adını kopyalayın.
 
-   ![Setuperr dosyasının ekran görüntüsü. Paket adına sahip metin koyu mavi renkle vurgulanır.](media/setuperr-package-name.png)
+   > [!div class="mx-imgBorder"]
+   > ![Setuperr dosyasının ekran görüntüsü. Paket adına sahip metin koyu mavi renkle vurgulanır.](media/setuperr-package-name.png)
 
 2. Yeni bir PowerShell penceresi açın ve dil paketini kaldırmak için adım 2 ' de kopyaladığınız paket adıyla aşağıdaki cmdlet 'i çalıştırın:
 
@@ -137,7 +143,8 @@ Bir görüntü yakalamak için:
 
 3. **Ad** alanına görüntünüz için bir ad girin ve aşağıdaki görüntüde gösterildiği gibi **kaynak grubu** açılır menüsünü kullanarak kaynak grubuna atayın.
 
-   ![Görüntü oluştur penceresinin ekran görüntüsü. Kullanıcının bu test görüntüsüne verdiği ad "vmwvd-Image-fr" dır ve bunu "testwvdimagerg" kaynak grubuna atamıştır.](media/create-image.png)
+   > [!div class="mx-imgBorder"]
+   > ![Görüntü oluştur penceresinin ekran görüntüsü. Kullanıcının bu test görüntüsüne verdiği ad "vmwvd-Image-fr" dır ve bunu "testwvdimagerg" kaynak grubuna atamıştır.](media/create-image.png)
 
 4. **Oluştur**'u seçin.
 

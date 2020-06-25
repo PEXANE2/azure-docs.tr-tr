@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 36031006f155f1651845dbce48b6c6ec84397e93
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572679"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361430"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office veri bağlantısı dosyası oluşturma
 
-Bu makaledeki bilgiler, Excel 2016 sürüm numarası 16.0.7369.2117 veya daha önceki bir sürümü veya Excel 2013 ' den bir Azure Analysis Services sunucusuna bağlanmak için Office veri bağlantısı dosyası oluşturma işlemini açıklar. Güncelleştirilmiş bir [MSOLAP. 7 sağlayıcısı](analysis-services-data-providers.md) da gereklidir.
+Bu makaledeki bilgiler, Excel 2016 sürüm numarası 16.0.7369.2117 veya daha önceki bir sürümü veya Excel 2013 ' den bir Azure Analysis Services sunucusuna bağlanmak için Office veri bağlantısı dosyası oluşturma işlemini açıklar. Güncelleştirilmiş bir [MSOLAP. 7 sağlayıcısı](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) da gereklidir.
 
 
 1. Aşağıdaki örnek bağlantı dosyasını kopyalayın ve bir metin düzenleyicisine yapıştırın. 
 
-2. İçinde `odc:ConnectionString`, aşağıdaki özellikleri değiştirin:
+2. İçinde `odc:ConnectionString` , aşağıdaki özellikleri değiştirin:
 
-    *   Analysis Services `Data Source=asazure://<region>.asazure.windows.net/<servername>;` sunucunuzun `<region>` bölgesinde ve `<servername>` sunucunuzun adıyla değiştirin.
+    *   `Data Source=asazure://<region>.asazure.windows.net/<servername>;` `<region>` Analysis Services sunucunuzun bölgesinde ve `<servername>` sunucunuzun adıyla değiştirin.
 
-    *   Veritabanınızın `Initial Catalog=<database>;` adına `<database>` değiştirin.
+    *   `Initial Catalog=<database>;` `<database>` Veritabanınızın adına değiştirin.
 
-3. Modeliniz `<odc:CommandText>Model</odc:CommandText>` veya `Model` bakış açısına göre değişir. 
+3. `<odc:CommandText>Model</odc:CommandText>` `Model` Modeliniz veya bakış açısına göre değişir. 
 
-4. Dosyayı C:\Users\\*Kullanıcı adı*\ `.odc` belgeleriveri kaynakları klasörüne bir uzantısı ile kaydedin.
+4. Dosyayı `.odc` C:\Users \\ *Kullanıcı adı*\ belgeleriveri kaynakları klasörüne bir uzantısı ile kaydedin.
 
 5. Dosyaya sağ tıklayın ve ardından **Excel 'de aç**' a tıklayın. Ya da Excel 'de, **veri** şeridinde, **mevcut bağlantılar**' a tıklayın, dosyanızı seçin ve ardından **Aç**' a tıklayın.
 

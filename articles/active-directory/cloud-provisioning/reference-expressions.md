@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
+ms.topic: reference
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51c14fd7f427c29c47521a7355309e62ab2254ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74e1dc68aba4ba294bccca6da278d3e30e51f056
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78298624"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360462"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory öznitelik eşlemeleri için ifadeler yazma
 Bulut sağlamayı yapılandırdığınızda, belirtebileceğiniz öznitelik eşlemelerinin türlerinden biri bir ifade eşlemedir. 
@@ -29,17 +29,17 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 Öznitelik eşlemeleri için Ifadeler söz dizimi Visual Basic for Applications (VBA) işlevlerinin bir rekidir.
 
 * İfadenin tamamı, parantez içindeki bağımsız değişkenlerin ardında yer aldığı bir addan oluşan işlevler bakımından tanımlanmalıdır: <br>
-  *Fonksiyonadı (`<<argument 1>>`,`<<argument N>>`)*
-* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örneğin: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
+  *Fonksiyonadı ( `<<argument 1>>` , `<<argument N>>` )*
+* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örneğin: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
 * İşlevlere üç farklı türde bağımsız değişken geçirebilirsiniz:
   
   1. Köşeli ayraçlar içine alınması gereken öznitelikler. Örneğin: [attributeName]
   2. Çift tırnak içine alınması gereken dize sabitleri. Örneğin: "Birleşik Devletler"
-  3. Diğer Işlevler. Örneğin: FunctionOne (`<<argument1>>`, functiontwo (`<<argument2>>`))
-* Dize sabitleri için, dizede bir ters eğik çizgi (\) veya tırnak işareti (") gerekiyorsa, ters eğik çizgi (\) simgesiyle atlanmalıdır. Örneğin: "Şirket adı: \\" contoso\\""
+  3. Diğer Işlevler. Örneğin: FunctionOne ( `<<argument1>>` , functiontwo ( `<<argument2>>` ))
+* Dize sabitleri için, dizede bir ters eğik çizgi (\) veya tırnak işareti (") gerekiyorsa, ters eğik çizgi (\) simgesiyle atlanmalıdır. Örneğin: "Şirket adı: \\ " contoso \\ ""
 
 ## <a name="list-of-functions"></a>İşlevlerin listesi
-| İşlevlerin listesi | Açıklama |
+| İşlevlerin listesi | Description |
 |-----|----|
 |[Ekle](#append)|Bir kaynak dize değeri alır ve son eki bunun sonuna ekler.|
 |[BitAnd](#bitand)|BitAnd işlevi, belirtilen bitleri bir değer üzerinde ayarlar.|
@@ -73,7 +73,7 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 |[Ayırmayı](#split)|Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.|
 |[StringFromSID](#stringfromsid)|StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini dizeye dönüştürür.| 
 |[StripSpaces](#stripspaces) |Kaynak dizeden tüm boşluk ("") karakterlerini kaldırır.| 
-|[Değiştirebilirsiniz](#switch)|**Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. | 
+|[Anahtar](#switch)|**Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. | 
 |[ToLower](#tolower)|Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür.| 
 |[ToUpper](#toupper)|Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür.|
 |[Kırpma](#trim)|Trim işlevi bir dizeden baştaki ve sondaki boşlukları kaldırır.|
@@ -87,7 +87,7 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
    | **önekini** |Gerekli |Dize |Kaynak değerin sonuna eklemek istediğiniz dize. |
@@ -144,7 +144,7 @@ ConvertFromBase64 işlevi, belirtilen Base64 kodlamalı değeri normal bir dizey
 * Kaynak: Base64 kodlamalı dize  
 * Kodlama: Unicode, ASCII, UTF8
 
-**Örneğinde**  
+**Örnek**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
@@ -250,10 +250,10 @@ AccountName özniteliği yoksa, nesne üzerinde bir hata oluşturur.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-   | **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx).. |
+   | **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) .. |
    | **outputFormat** |Gerekli |Dize |Çıkış tarihinin biçimi. |
 
 ---
@@ -392,7 +392,7 @@ Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki h
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **ayırıcı** |Gerekli |Dize |Tek bir dizede bitiştirildiği zaman kaynak değerlerini ayırmak için kullanılan dize. Hiçbir ayırıcı gerekmiyorsa "" olabilir. |
    | **source1 ... Kaynakcen** |Gerekli, değişken sayısı |Dize |Birlikte birleştirilecek dize değerleri. |
@@ -429,7 +429,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle özniteliğin adı. |
    | **başından** |Gerekli |integer |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
@@ -443,7 +443,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
@@ -455,7 +455,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
 
@@ -497,7 +497,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
    | **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
@@ -522,7 +522,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekir, üst sınır yoktur |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
 
@@ -535,7 +535,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-  | Adı | Gerekli/yinelenen | Tür | Notlar |
+  | Name | Gerekli/yinelenen | Tür | Notlar |
   |--- | --- | --- | --- |
   | **AppRoleAssignments** |Gerekli |Dize |**[Approtaatamalar]** nesnesi. |
 
@@ -547,7 +547,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
    | **ayırıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
@@ -568,7 +568,7 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 
@@ -580,12 +580,12 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Denetlenecek **kaynak** değeri. |
    | **Değerinin** |İsteğe Bağlı |Dize |Kaynak herhangi bir anahtara eşleşmezse kullanılacak varsayılan değer. Boş dize ("") olabilir. |
    | **anahtar** |Gerekli |Dize |**Kaynak** değeri Karşılaştırılacak **anahtar** . |
-   | **value** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
+   | **deeri** |Gerekli |Dize |Anahtarla eşleşen **kaynak** için değiştirme değeri. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -595,10 +595,10 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
-   | **kültür** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
+   | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
 
@@ -609,10 +609,10 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-  | Adı | Gerekli/yinelenen | Tür | Notlar |
+  | Name | Gerekli/yinelenen | Tür | Notlar |
   | --- | --- | --- | --- |
   | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
-  | **kültür** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
+  | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
 
@@ -667,7 +667,7 @@ Kullanıcı adı almak için kullanıcının e-postalarından bilinen bir etki a
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (posta): "john.doe@contoso.com"
+* **Giriş** (posta): " john.doe@contoso.com "
 * **Çıkış**: "John. tikan"
 
 ### <a name="append-constant-suffix-to-user-name"></a>Sabit son eki Kullanıcı adına Ekle
@@ -678,8 +678,8 @@ Salesforce korumalı alanı kullanıyorsanız, eşitlemeden önce tüm kullanıc
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş**: (UserPrincipalName): "John.Doe@contoso.com"
-* **Çıkış**: "John.Doe@contoso.com.test"
+* **Giriş**: (UserPrincipalName): " John.Doe@contoso.com "
+* **Çıkış**: " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Birinci ve soyadı parçalarını birleştirerek kullanıcı diğer adı oluştur
 Kullanıcının ilk adının ilk 3 harfini ve Kullanıcı adının ilk 5 harfini ayırarak bir kullanıcı diğer adı oluşturmanız gerekir.
@@ -762,7 +762,7 @@ Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kayna
 
 * **Giriş** (preferredfirstname): "John"
 * **Giriş** (preferredlastname): "Smith"
-* **Çıkış**: "john.smith@contoso.com"
+* **Çıkış**: " john.smith@contoso.com "
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>UserPrincipalName (UPN) özniteliği için benzersiz değer oluştur
 Kullanıcının adı, ikinci adı ve soyadı temelinde, UPN özniteliği için bir değer oluşturmanız ve değeri UPN özniteliğine atamadan önce hedef AD dizininde benzersizliği denetlemeniz gerekir.
@@ -779,9 +779,9 @@ Kullanıcının adı, ikinci adı ve soyadı temelinde, UPN özniteliği için b
 
 * **Giriş** (preferredfirstname): "John"
 * **Giriş** (preferredlastname): "Smith"
-* **Çıkış**: "John.Smith@contoso.com" için UPN değeri John.Smith@contoso.com zaten dizinde yoksa
-* **Çıkış**: "J.Smith@contoso.com" dizininde UPN değeri John.Smith@contoso.com zaten varsa
-* **Çıkış**: YukarıdakiJo.Smith@contoso.comiki UPN değeri dizinde zaten mevcutsa ""
+* **Çıkış**: " John.Smith@contoso.com " için UPN değeri John.Smith@contoso.com zaten dizinde yoksa
+* **Çıkış**: " J.Smith@contoso.com " dizininde UPN değeri John.Smith@contoso.com zaten varsa
+* **Çıkış**: Jo.Smith@contoso.com Yukarıdaki iki UPN değeri dizinde zaten mevcutsa ""
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 

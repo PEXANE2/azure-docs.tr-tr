@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "64571119"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360189"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>ADConnectivityTool PowerShell modülüyle Azure AD bağlantısı sorunlarını giderme
 
@@ -45,9 +45,9 @@ Bu sorunlardan herhangi biri bulunduğunda, AADConnect sihirbazında ilgili bir 
 
 Örneğin, **dizinlerinizi bağlama** ekranında bir dizin eklemeye çalışırken, Azure AD Connect bunun doğrulanması gerekir ve bağlantı noktası 389 üzerinden bir etki alanı denetleyicisiyle iletişim kurabilmeyi bekler.  Bu işlem, yukarıdaki ekran görüntüsünde gösterilen hatayı görüyoruz.  
 
-Arka planda gerçekten neler oluyordu, Azure AD Connect `Start-NetworkConnectivityDiagnosisTools` işlevi çağırıyor olur.  Bu işlev, bir ağ bağlantısı sorunu nedeniyle kimlik bilgilerinin doğrulanması başarısız olduğunda çağrılır.
+Arka planda gerçekten neler oluyordu, Azure AD Connect işlevi çağırıyor olur `Start-NetworkConnectivityDiagnosisTools` .  Bu işlev, bir ağ bağlantısı sorunu nedeniyle kimlik bilgilerinin doğrulanması başarısız olduğunda çağrılır.
 
-Son olarak, araç sihirbazdan her çağrıldığında ayrıntılı bir günlük dosyası oluşturulur. Günlük **C:\programdata\aadconnect\adconnectivitytool-\<Date>-\<Time>. log** konumunda bulunur
+Son olarak, araç sihirbazdan her çağrıldığında ayrıntılı bir günlük dosyası oluşturulur. Günlük **c:\programdata\aadconnect\adconnectivitytool- \<date> - \<time> . log** konumunda bulunur
 
 ## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools yükleme sonrası
 Azure AD Connect yüklendikten sonra, ADConnectivityTools PowerShell modülündeki işlevlerden herhangi biri kullanılabilir.  

@@ -3,14 +3,14 @@ title: Web kancasından Azure Otomasyonu runbook 'u başlatma
 description: Bu makalede, Azure Otomasyonu 'nda bir runbook 'u HTTP çağrısından başlatmak için Web kancasının nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/03/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 78ce1e46b7ea2cc82a0c478b0c81abbf701f68a9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342978"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361685"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Web kancasından runbook başlatma
 
@@ -83,9 +83,13 @@ Sonraki runbook örneğinde, için aşağıdaki özellikleri tanımlayalim `Webh
 
 Web kancasının güvenliği, Web kancasının çağrılmasına izin veren bir güvenlik belirteci içeren URL 'sinin gizliliğini kullanır. Azure Otomasyonu, doğru URL 'ye yapıldığı sürece bir istek üzerinde herhangi bir kimlik doğrulaması gerçekleştirmez. Bu nedenle istemcileriniz, isteği doğrulamak için alternatif bir yöntem kullanmadan son derece hassas işlemler gerçekleştiren runbook 'lar için Web kancalarını kullanmamalıdır.
 
-Bir Web kancası tarafından çağrılıp çağrılmadığını öğrenmek için bir runbook 'a mantığı dahil edebilirsiniz. Runbook `WebhookName` 'un parametresinin özelliğini denetlemesini sağlayabilirsiniz `WebhookData` . Runbook, ve özelliklerindeki belirli bilgileri arayarak daha fazla doğrulama gerçekleştirebilir `RequestHeader` `RequestBody` .
+Aşağıdaki stratejileri göz önünde bulundurun:
 
-Başka bir strateji, runbook 'un bir Web kancası isteği aldığında dış koşul doğrulaması gerçekleştirmesini sağlar. Örneğin bir GitHub deposuna yeni bir kayıt olduğunda GitHub tarafından çağrılan bir runbook 'u göz önünde bulundurun. Runbook, devam etmeden önce yeni bir işleme gerçekleştiğini doğrulamak için GitHub 'a bağlanabilir.
+* Bir Web kancası tarafından çağrılıp çağrılmadığını öğrenmek için bir runbook 'a mantığı dahil edebilirsiniz. Runbook `WebhookName` 'un parametresinin özelliğini denetlemesini sağlayabilirsiniz `WebhookData` . Runbook, ve özelliklerindeki belirli bilgileri arayarak daha fazla doğrulama gerçekleştirebilir `RequestHeader` `RequestBody` .
+
+* Runbook 'un bir Web kancası isteği aldığında dış koşul doğrulaması gerçekleştirmesini sağlama. Örneğin bir GitHub deposuna yeni bir kayıt olduğunda GitHub tarafından çağrılan bir runbook 'u göz önünde bulundurun. Runbook, devam etmeden önce yeni bir işleme gerçekleştiğini doğrulamak için GitHub 'a bağlanabilir.
+
+* Azure Otomasyonu, Azure sanal ağ hizmeti etiketlerini, özellikle de [Gustandhybridmanagement](../virtual-network/service-tags-overview.md)'ı destekler. [Ağ güvenlik grupları](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik Duvarı](../firewall/service-tags.md) üzerindeki ağ erişim denetimlerini tanımlamak ve sanal ağınızın içinden Web kancalarını tetikleyebilmeniz için hizmet etiketlerini kullanabilirsiniz. Hizmet etiketleri, güvenlik kuralları oluştururken belirli IP adreslerinin yerine kullanılabilir. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı **Guestandhybridmanagement** ' i belirterek, Otomasyon Hizmeti için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Bu hizmet etiketi, IP aralıklarını belirli bir bölgeyle kısıtlayarak daha ayrıntılı denetim yapılmasına izin vermeyi desteklemez.
 
 ## <a name="create-a-webhook"></a>Web kancası oluşturma
 

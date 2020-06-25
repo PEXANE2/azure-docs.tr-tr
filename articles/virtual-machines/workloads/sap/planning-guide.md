@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60d2f8017454cd73e91bb022bab79a48b0af8a36
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209615"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361413"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -549,13 +549,6 @@ Azure 'da bir disk/VHD adı, Azure 'da VHD için benzersiz bir ad sağlaması ge
 Yukarıdaki dizenin, Azure depolama 'da depolanan diski/VHD 'yi benzersiz şekilde tanımlaması gerekir.
 
 
-#### <a name="managed-disks"></a><a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Yönetilen Diskler
-
-Yönetilen diskler, Azure depolama hesaplarında depolanan VHD 'ler yerine kullanılabilecek Azure Resource Manager bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makine kullanılabilirlik kümesiyle otomatik olarak hizalanır ve bu nedenle sanal makinenizin ve sanal makinede çalışan hizmetlerin kullanılabilirliğini arttırır. Daha fazla bilgi için [genel bakış makalesini](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)okuyun.
-
-Sanal makinelerinizin dağıtımını ve yönetimini basitleştireceğiz için Azure yönetilen disklerini kullanmanızı öneririz.
-
-
 #### <a name="azure-persisted-storage-types"></a>Azure kalıcı depolama türleri
 Azure, SAP iş yükü ve belirli SAP Stack bileşenleri için kullanılabilen çeşitli kalıcı depolama seçeneği sunar. Daha fazla ayrıntı için, [SAP iş yükleri Için Azure depolama](./planning-guide-storage.md)belgelerini okuyun.
 
@@ -967,7 +960,7 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
   ```
 
 * VHD indirme  
-  SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, VHD disklerini şirket içi dünyaya geri yüklemek için şirket içi hedefte Save-AzVhd PowerShell cmdlet 'ini kullanabilirsiniz. Bunu yapmak için, Azure portal ' depolama bölümünde bulabileceğiniz VHD 'nin URL 'SI gerekir (depolama hesabına ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin nereye kopyalanabilmesi gerektiğini bilmeniz gerekir.
+  SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, `Save-AzVhd` VHD disklerini şirket içi dünyaya geri yüklemek için şirket içi hedefteki PowerShell cmdlet 'ini kullanabilirsiniz. Bunu yapmak için, Azure portal ' depolama bölümünde bulabileceğiniz VHD 'nin URL 'SI gerekir (depolama hesabına ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin nereye kopyalanabilmesi gerektiğini bilmeniz gerekir.
 
   Ardından, kaynak URI 'sini indirmek üzere VHD 'nin URL 'si olarak ve LocalFilePath öğesini VHD 'nin fiziksel konumu (adı dahil) olarak tanımlayarak komutunu kullanabilirsiniz. Komut şu şekilde görünebilir:
 
@@ -988,7 +981,7 @@ Hizmet olarak Azure altyapısı, yalnızca VHD 'leri ve SAP sistemlerini karşı
   ```
 
 * VHD indirme   
-  SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, VHD disklerini şirket içi dünyaya geri yüklemek için Azure CLı komutu _Azure Storage blob indirme_ 'yi şirket içi hedefte kullanabilirsiniz. Bunu yapmak için, VHD 'nin adı ve kapsayıcısına ihtiyacınız vardır. Bu, Azure portal ' depolama bölümünde ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin ' ye kopyalanması gereken yeri bilmeniz gerekir.
+  SAP sistemi durdurulduğunda ve VM kapatıldıktan sonra, `_azure storage blob download_` VHD disklerini şirket içi dünyaya geri yüklemek için şirket içi hedefte Azure CLI komutunu kullanabilirsiniz. Bunu yapmak için, VHD 'nin adı ve kapsayıcısına ihtiyacınız vardır. Bu, Azure portal ' depolama bölümünde ve VHD 'nin oluşturulduğu depolama kapsayıcısına gitmeniz gerekir) ve VHD 'nin ' ye kopyalanması gereken yeri bilmeniz gerekir.
 
   Ardından, indirilecek VHD 'nin kapsayıcısını ve kapsayıcısını ve hedefi VHD 'nin fiziksel hedef konumu (adı dahil) olarak tanımlayarak komutunu kullanabilirsiniz. Komut şu şekilde görünebilir:
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31a2bcdcf7b21999ddf17170b024589204c0e9e5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b8d0bcff79b6101047545614538dc1d58a854a6d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212794"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361260"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -37,11 +37,13 @@ Kopyalanmış VHD ile bir VM oluşturmak için:
 
 2. Üretimi Belirle sayfasında **1. kuşak**' i seçin.
 
-    ![Üretimi belirt sayfasının ekran görüntüsü. "2. nesil" seçeneği seçilidir.](media/a41174fd41302a181e46385e1e701975.png)
+    > [!div class="mx-imgBorder"]
+    > ![Üretimi belirt sayfasının ekran görüntüsü. "2. nesil" seçeneği seçilidir.](media/a41174fd41302a181e46385e1e701975.png)
 
 3. Denetim noktası türü altında onay kutusunun işaretini kaldırarak kontrol noktalarını devre dışı bırakın.
 
-    ![Kontrol noktaları sayfasının denetim noktası türü bölümünün ekran görüntüsü.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    > [!div class="mx-imgBorder"]
+    > ![Kontrol noktaları sayfasının denetim noktası türü bölümünün ekran görüntüsü.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
 Ayrıca, kontrol noktalarını devre dışı bırakmak için PowerShell 'de aşağıdaki cmdlet 'i çalıştırabilirsiniz.
 
@@ -53,7 +55,8 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 Mevcut bir VHD 'den bir VM oluşturursanız, varsayılan olarak dinamik bir disk oluşturur. Aşağıdaki görüntüde gösterildiği gibi, **diski Düzenle...** seçeneğini belirleyerek sabit bir diske değiştirilebilir. Daha ayrıntılı yönergeler için bkz. [Azure 'a yüklemek için bir WINDOWS VHD veya vhdx hazırlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
 
-![Diski Düzenle seçeneğinin ekran görüntüsü.](media/35772414b5a0f81f06f54065561d1414.png)
+> [!div class="mx-imgBorder"]
+> ![Diski Düzenle seçeneğinin ekran görüntüsü.](media/35772414b5a0f81f06f54065561d1414.png)
 
 Ayrıca, diski sabit bir disk olarak değiştirmek için aşağıdaki PowerShell cmdlet 'ini de çalıştırabilirsiniz.
 
@@ -126,7 +129,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 Windows 10 Enterprise veya Windows 10 Enterprise çoklu oturum kullanan Windows sanal masaüstü oturumu ana bilgisayarı için depolama alanını devre dışı bırakmayı öneririz. Aşağıdaki ekran görüntüsünde gösterildiği gibi, **depolama**alanının altındaki ayarlar menüsünde depolama alanını devre dışı bırakabilirsiniz:
 
-![Ayarlar altında depolama menüsünün ekran görüntüsü. "Depolama algılama" seçeneği devre dışıdır.](media/storagesense.png)
+> [!div class="mx-imgBorder"]
+> ![Ayarlar altında depolama menüsünün ekran görüntüsü. "Depolama algılama" seçeneği devre dışıdır.](media/storagesense.png)
 
 Ayrıca, aşağıdaki komutu çalıştırarak ayarı kayıt defteriyle değiştirebilirsiniz:
 
@@ -189,15 +193,18 @@ Aşağıdaki yönergeler, ana görüntünüzü bir Azure depolama hesabına nas�
 
 2. VHD 'YI Depolama hesabınızdaki bir blob kapsayıcısına yükleyin. [Depolama Gezgini aracı](https://azure.microsoft.com/features/storage-explorer/)ile hızlıca karşıya yükleyebilirsiniz. Depolama Gezgini aracı hakkında daha fazla bilgi edinmek için [Bu makaleye](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)bakın.
 
-    ![Microsoft Azure Depolama Gezgini aracının arama penceresinin ekran görüntüsü. ". Vhd veya VHDX dosyalarını sayfa Blobları olarak yükle (önerilir)" onay kutusu seçilidir.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > [!div class="mx-imgBorder"]
+    > ![Microsoft Azure Depolama Gezgini aracının arama penceresinin ekran görüntüsü. ". Vhd veya VHDX dosyalarını sayfa Blobları olarak yükle (önerilir)" onay kutusu seçilidir.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. Sonra, tarayıcınızda Azure portal gidin ve "görüntüler" ifadesini arayın. Aramanız, aşağıdaki ekran görüntüsünde gösterildiği gibi sizi **görüntü oluşturma** sayfasına götürür:
 
-    ![Azure portal görüntü oluştur sayfasının ekran görüntüsü, görüntünün örnek değerleriyle doldurulmuştur.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    > [!div class="mx-imgBorder"]
+    > ![Azure portal görüntü oluştur sayfasının ekran görüntüsü, görüntünün örnek değerleriyle doldurulmuştur.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
 4. Görüntüyü oluşturduktan sonra, aşağıdaki ekran görüntüsünde aşağıdakine benzer bir bildirim görmeniz gerekir:
 
-    !["Başarıyla oluşturulan görüntü" bildiriminin ekran görüntüsü.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    > [!div class="mx-imgBorder"]
+    > !["Başarıyla oluşturulan görüntü" bildiriminin ekran görüntüsü.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

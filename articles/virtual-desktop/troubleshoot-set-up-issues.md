@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612624"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361176"
 ---
 # <a name="host-pool-creation"></a>Konak havuzu oluşturma
 
@@ -25,19 +25,20 @@ ms.locfileid: "82612624"
 
 Bu makalede, Windows sanal masaüstü kiracısı ve ilgili oturum ana bilgisayar havuzu altyapısının ilk kurulumu sırasında sorunlar ele alınmaktadır.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise çoklu oturum görüntüsünü edinme
 
-Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, **kullanmaya başlama** > **Microsoft Windows 10** > ve [Windows 10 Enterprise multi-session, sürüm 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)' i seçin.
+Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, **kullanmaya başlama**  >  **Microsoft Windows 10** > ve [Windows 10 Enterprise multi-session, sürüm 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)' i seçin.
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>Konak havuzları oluşturmak için Azure portal kullanma sorunları
 
 ### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>Hata: hizmete erişirken "ücretsiz hesap oluşturma" görüntülenir
 
-!["Ücretsiz hesap oluşturma" iletisinin gösterildiği Azure portal gösteren resim](media/create-new-account.png)
+> [!div class="mx-imgBorder"]
+> !["Ücretsiz hesap oluşturma" iletisinin gösterildiği Azure portal gösteren resim](media/create-new-account.png)
 
 **Neden**: Azure 'da oturum açtığınız hesapta etkin abonelikler yok veya hesabın abonelikleri görüntüleme izni yok. 
 
@@ -60,9 +61,10 @@ Azure Resource Manager şablonlarının ve PowerShell DSC 'nin başarısız dağ
 3. Hata tanımlandıktan sonra, sorunu gidermek için [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](../azure-resource-manager/resource-manager-common-deployment-errors.md) bölümündeki hata iletisini ve kaynakları kullanın.
 4. Önceki dağıtım sırasında oluşturulan tüm kaynakları silin ve şablonu yeniden dağıtma işlemini yeniden deneyin.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hata: dağıtımınız başarısız oldu....\<ana bilgisayar adı>/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hata: dağıtımınız başarısız oldu.... \<hostname> /JoinDomain
 
-![Dağıtımınız ekran görüntüsünde başarısız oldu.](media/failure-joindomain.png)
+> [!div class="mx-imgBorder"]
+> ![Dağıtımınız ekran görüntüsünde başarısız oldu.](media/failure-joindomain.png)
 
 Ham hata örneği:
 
@@ -103,7 +105,8 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Hata: VMExtensionProvisioningError
 
-![Dağıtımınızın ekran görüntüsü, Terminal sağlama durumuyla başarısız oldu.](media/failure-vmextensionprovisioning.png)
+> [!div class="mx-imgBorder"]
+> ![Dağıtımınızın ekran görüntüsü, Terminal sağlama durumuyla başarısız oldu.](media/failure-vmextensionprovisioning.png)
 
 **Neden 1:** Windows sanal masaüstü ortamında geçici bir hata oluştu.
 
@@ -113,7 +116,8 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hata: belirtilen yönetici kullanıcı adına izin verilmiyor
 
-![Belirtilen bir yöneticiye izin verilmediğinden dağıtımınızın ekran görüntüsü başarısız oldu.](media/failure-username.png)
+> [!div class="mx-imgBorder"]
+> ![Belirtilen bir yöneticiye izin verilmediğinden dağıtımınızın ekran görüntüsü başarısız oldu.](media/failure-username.png)
 
 Ham hata örneği:
 
@@ -130,7 +134,8 @@ Ham hata örneği:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hata: VM, uzantıyı işlerken bir hata bildirdi
 
-![Dağıtımınızda Terminal sağlama durumu ile tamamlanan kaynak işleminin ekran görüntüsü başarısız oldu.](media/failure-processing.png)
+> [!div class="mx-imgBorder"]
+> ![Dağıtımınızda Terminal sağlama durumu ile tamamlanan kaynak işleminin ekran görüntüsü başarısız oldu.](media/failure-processing.png)
 
 Ham hata örneği:
 
@@ -149,7 +154,8 @@ Ham hata örneği:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Hata: DeploymentFailed – PowerShell DSC yapılandırması ' FirstSessionHost ' hatalarla tamamlandı
 
-![' FirstSessionHost ' PowerShell DSC yapılandırması başarısız olan dağıtım ekran görüntüsü hata (ler) ile tamamlandı.](media/failure-dsc.png)
+> [!div class="mx-imgBorder"]
+> ![' FirstSessionHost ' PowerShell DSC yapılandırması başarısız olan dağıtım ekran görüntüsü hata (ler) ile tamamlandı.](media/failure-dsc.png)
 
 Ham hata örneği:
 
