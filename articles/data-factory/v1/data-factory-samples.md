@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019920"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318918"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
 > [!NOTE]
@@ -26,17 +26,17 @@ ms.locfileid: "84019920"
 ## <a name="samples-on-github"></a>GitHub’daki örnekler
 [GitHub Azure-DataFactory deposu](https://github.com/azure/azure-datafactory) , Azure Data Factory hizmetine hızlıca başlamanıza yardımcı olan birkaç örnek içerir (veya) betikleri değiştirebilir ve kendi uygulamasında kullanabilirsiniz. Samples\JSON klasörü, yaygın senaryolar için JSON kod parçacıklarını içerir.
 
-| Örnek | Açıklama |
+| Örnek | Description |
 |:--- |:--- |
 | [ADF Izlenecek yol](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Bu örnek, içindeki günlük dosyalarından verileri öngörülere açmak için Azure Data Factory kullanarak günlük dosyalarını işlemeye yönelik bir uçtan uca izlenecek yol sağlar. <br/><br/>Bu kılavuzda, Data Factory işlem hattı örnek günlükleri toplar, verileri başvuru verileriyle kaydeder ve zenginleştirir ve son zamanlarda başlatılan bir pazarlama kampanyasının verimliliğini değerlendirmek üzere verileri dönüştürür. |
 | [JSON örnekleri](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Bu örnek, yaygın senaryolar için JSON örnekleri sağlar. |
 | [Http veri yükleyici örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Bu örnek, özel .NET etkinliği kullanarak bir HTTP uç noktasından Azure Blob depolama alanına veri indirme örneklerini gösterir. |
-| [Çapraz AppDomain nokta net etkinlik örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Bu örnek, ADF başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan özel bir .NET etkinliği yazmanıza izin verir (örneğin, WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x, vb.). |
-| [R betiğini Çalıştır](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Bu örnek, RScript. exe ' yi çağırmak için kullanılabilecek Data Factory özel etkinliğini içerir. Bu örnek yalnızca R 'nin yüklü olduğu (isteğe bağlı olmayan) HDInsight kümeniz ile birlikte kullanılabilir. |
+| [Çapraz AppDomain nokta net etkinlik örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Bu örnek, ADF başlatıcısı tarafından kullanılan derleme sürümleriyle sınırlı olmayan özel bir .NET etkinliği yazmanıza izin verir (örneğin, WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsv 6.0. x, vb.). |
+| [R betiğini Çalıştır](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Bu örnek, RScript.exe çağırmak için kullanılabilecek Data Factory özel etkinliğini içerir. Bu örnek yalnızca R 'nin yüklü olduğu (isteğe bağlı olmayan) HDInsight kümeniz ile birlikte kullanılabilir. |
 | [HDInsight Hadoop kümesinde Spark işlerini çağırma](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Bu örnek, bir Spark programını çağırmak için MapReduce etkinliğinin nasıl kullanılacağını gösterir. Spark programı yalnızca bir Azure Blob kapsayıcısından diğerine veri kopyalar. |
 | [Azure Machine Learning Batch puanlama etkinliği kullanarak Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için AzureMLBatchScoringActivity 'nin nasıl kullanılacağı gösterilmektedir. |
 | [Özel etkinlik kullanan Twitter Analizi](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Bu örnekte, Twitter yaklaşım analizi, Puanlama, tahmin vb. gerçekleştiren bir Azure Machine Learning modeli çağırmak için özel bir .NET etkinliğinin nasıl kullanılacağı gösterilmektedir. |
-| [Azure Machine Learning için parametreli işlem hatları](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Örnek, Puanlama için N işlem hattı dağıtmak ve her biri bölge listesinin bu örneğe dahil edilen Parameters. txt dosyasından geldiği farklı bir Region parametresi ile yeniden eğitim sağlamak için bir uçtan uca C# kodu sağlar. |
+| [Azure Machine Learning için parametreli işlem hatları](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Örnek, her biri, bölge listesinin bu örneğe eklenen bir parameters.txt dosyasından geldiği farklı bir bölge parametresiyle, Puanlama ve yeniden eğitim için N işlem hattı dağıtmak üzere bir uçtan uca C# kodu sağlar. |
 | [Azure Stream Analytics işleri için başvuru verilerini yenileme](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Bu örnek, başvuru verileriyle sorguları çalıştırmak ve bir zamanlamaya göre başvuru verileri için yenilemeyi ayarlamak üzere Azure Data Factory ve Azure Stream Analytics birlikte nasıl kullanılacağını gösterir. |
 | [Şirket içi Hortonçalışmalar Hadoop ile karma işlem hattı](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |Örnek, bulutta bir HDInsight tabanlı Hadoop kümesi gibi diğer işlem hedeflerini de ekleyeceğiniz gibi Data Factory işleri çalıştırmak için bir şirket içi Hadoop kümesini bir işlem hedefi olarak kullanır. |
 | [JSON dönüştürme aracı](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Bu araç, 2015-07-01-Preview öncesi sürüm 'den en güncel veya 2015-07-01-Önizleme (varsayılan) sürümüne kadar Jerze 'ı dönüştürmenizi sağlar. |
@@ -46,9 +46,9 @@ ms.locfileid: "84019920"
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 GitHub üzerinde Data Factory için aşağıdaki Azure Resource Manager şablonları bulabilirsiniz.
 
-| Şablon | Açıklama |
+| Şablon | Description |
 | --- | --- |
-| [Azure Blob depolama alanından Azure SQL veritabanına kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Bu şablonu dağıtmak, belirtilen Azure Blob depolama alanından Azure SQL veritabanına veri kopyalayan bir işlem hattı ile bir Azure veri fabrikası oluşturur |
+| [Azure Blob depolama alanından Azure SQL veritabanına kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Bu şablonu dağıtmak, verileri belirtilen Azure Blob depolamadan Azure SQL veritabanı 'na kopyalayan bir işlem hattı ile bir Azure veri fabrikası oluşturur |
 | [Salesforce 'tan Azure Blob depolamaya kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Bu şablonu dağıtmak, belirtilen Salesforce hesabından Azure Blob depolama alanına veri kopyalayan bir işlem hattına sahip bir Azure veri fabrikası oluşturur. |
 | [Azure HDInsight kümesinde Hive betiği çalıştırarak verileri dönüştürme](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |Bu şablonu dağıtmak, bir Azure HDInsight Hadoop kümesinde örnek Hive betiğini çalıştırarak verileri dönüştüren bir işlem hattı ile bir Azure Data Factory oluşturur. |
 
@@ -104,7 +104,7 @@ Bilgisayarınızda şunların yüklü olması gerekir:
    4. Veri Fabrikası için **kaynak grubunu** seçin.
    5. **Bölge**için **Batı ABD**, **Doğu ABD**veya **Kuzey Avrupa** seçin.
    6. **İleri**’ye tıklayın.
-6. **Veri depolarını Yapılandır** sayfasında, mevcut BIR **Azure SQL veritabanı** ve **Azure depolama hesabı** belirtin (veya) veritabanı/depolama alanı oluşturun ve ileri ' ye tıklayın.
+6. **Veri depolarını Yapılandır** sayfasında, **Azure SQL veritabanı** ve **Azure depolama hesabı** 'nda var olan bir veritabanını belirtin (veya) veritabanı/depolama alanı oluşturun ve ileri ' ye tıklayın.
 7. **Işlem yapılandırma** sayfasında, Varsayılanlar ' ı seçin ve **İleri**' ye tıklayın.
 8. **Özet** sayfasında tüm ayarları gözden geçirin ve **İleri**' ye tıklayın.
 9. **Dağıtım durumu** sayfasında, dağıtım bitene kadar bekleyin ve **son**' a tıklayın.

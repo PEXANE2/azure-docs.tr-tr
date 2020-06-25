@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6eb7012e28319ee6cc86de5ee56090743d681068
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74923880"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318884"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Kaynak veri kümesi sütunlarını hedef veri kümesi sütunlarına eşleme
 > [!NOTE]

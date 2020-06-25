@@ -1,21 +1,14 @@
 ---
 title: 'Hızlı başlangıç: go-Azure Event Hubs kullanarak olay gönderme ve alma'
 description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları gönderen bir go uygulaması oluşturmaya yönelik bir yol sağlar.'
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: kamalb
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: e5f52d0ddbf9a66d974732d6d98ca8a5b09cc2d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720578"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320361"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Hızlı başlangıç: go kullanarak Event Hubs olay gönderme veya olayları alma
 Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
@@ -38,7 +31,7 @@ Bu bölümde, olayları bir olay hub 'ına göndermek için bir Go uygulamasın�
 
 ### <a name="install-go-package"></a>Go paketini yükler
 
-Veya `go get` `dep`ile Event Hubs için go paketini alın. Örneğin:
+Veya ile Event Hubs için go paketini alın `go get` `dep` . Örneğin:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go
@@ -139,7 +132,7 @@ Go SDK ile depolama yapıtları oluşturma örnekleri, [Go örnekleri](https://g
 
 ### <a name="go-packages"></a>Go paketleri
 
-İletileri almak için, veya `go get` `dep`ile Event Hubs yönelik go paketlerini alın:
+İletileri almak için, veya ile Event Hubs yönelik go paketlerini alın `go get` `dep` :
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go/...
@@ -269,9 +262,9 @@ if err != nil {
 
 ### <a name="write-code-to-receive-messages"></a>İleti almak için kod yazma
 
-Her şey ayarlandığında, kalıcı olarak çalışmasını önlemek için olay Işlemcisi konağını ile `Start(context)` başlatabilir veya `StartNonBlocking(context)` yalnızca iletiler kullanılabildiği sürece çalıştırabilirsiniz.
+Her şey ayarlandığında, kalıcı olarak çalışmasını önlemek için olay Işlemcisi konağını ile başlatabilir `Start(context)` veya `StartNonBlocking(context)` yalnızca iletiler kullanılabildiği sürece çalıştırabilirsiniz.
 
-Bu öğretici aşağıdaki şekilde başlatılır ve çalışır; Şunu kullanarak `StartNonBlocking`bir örnek için GitHub örneğine bakın:
+Bu öğretici aşağıdaki şekilde başlatılır ve çalışır; Şunu kullanarak bir örnek için GitHub örneğine bakın `StartNonBlocking` :
 
 ```go
 ctx := context.Background()

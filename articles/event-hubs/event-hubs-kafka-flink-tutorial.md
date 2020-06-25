@@ -1,27 +1,21 @@
 ---
 title: Apache Kafka için Apache flink kullanın-Azure Event Hubs | Microsoft Docs
 description: Bu makalede Apache flink 'i bir Azure Olay Hub 'ına bağlama hakkında bilgi sağlanır
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632822"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320147"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Apache Kafka için Azure Event Hubs ile Apache Flink'i kullanma
 Bu öğreticide, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Apache flink 'i bir olay hub 'ına nasıl bağlayabileceğiniz gösterilmektedir. Azure Event Hubs [Apache Kafka 1,0 sürümünü destekliyor.](https://kafka.apache.org/10/documentation.html).
 
 Apache Kafka kullanmanın önemli avantajlarından biri, bağlanamaların ekosistemidir. Event Hubs, Azure ekosisteminin ölçeklenebilirlik, tutarlılık ve desteğiyle Kafka esnekliğini birleştirir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Örnek projeyi kopyalama
@@ -64,9 +58,9 @@ Belirtilen flink üreticisi örneğini kullanarak, Event Hubs hizmetine ileti g�
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Event Hubs Kafka uç noktası sağlama
 
-#### <a name="producerconfig"></a>üretici. config
+#### <a name="producerconfig"></a>producer.config
 
-Üretici ve `bootstrap.servers` `sasl.jaas.config` değerlerini, doğru `producer/src/main/resources/producer.config` kimlik doğrulamasıyla, üreticiyi Event Hubs Kafka uç noktasına yönlendirmek için güncelleştirin.
+`bootstrap.servers` `sasl.jaas.config` Üretici ve değerlerini, `producer/src/main/resources/producer.config` doğru kimlik doğrulamasıyla, üreticiyi Event Hubs Kafka uç noktasına yönlendirmek için güncelleştirin.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -87,7 +81,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-Artık üretici, konu başlığı altında `test` Olay Hub 'ına olay göndermeye ve olayları stdout 'a yazdırmaya başlayacak.
+Artık üretici, konu başlığı altında Olay Hub 'ına olay göndermeye `test` ve olayları stdout 'a yazdırmaya başlayacak.
 
 ## <a name="run-flink-consumer"></a>Flink tüketicisi Çalıştır
 
@@ -95,9 +89,9 @@ Belirtilen tüketici örneğini kullanarak Olay Hub 'ından ileti alın.
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Event Hubs Kafka uç noktası sağlama
 
-#### <a name="consumerconfig"></a>Consumer. config
+#### <a name="consumerconfig"></a>consumer.config
 
-' `consumer/src/main/resources/consumer.config` İ `bootstrap.servers` ve `sasl.jaas.config` değerlerini, doğru kimlik doğrulamasıyla tüketicisini Event Hubs Kafka uç noktasına yönlendirmek için güncelleştirin.
+`bootstrap.servers`' İ ve `sasl.jaas.config` değerlerini, `consumer/src/main/resources/consumer.config` doğru kimlik doğrulamasıyla tüketicisini Event Hubs Kafka uç noktasına yönlendirmek için güncelleştirin.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -118,7 +112,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-Olay Hub 'ının olayları varsa (örneğin, üreticisi de çalışıyorsa), tüketici artık konudan `test`olay almaya başlar.
+Olay Hub 'ının olayları varsa (örneğin, üreticisi de çalışıyorsa), tüketici artık konudan olay almaya başlar `test` .
 
 Flink 'in Kafka 'e bağlanması hakkında daha ayrıntılı bilgi için [flink 'In Kafka bağlayıcı kılavuzuna](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) göz atın.
 

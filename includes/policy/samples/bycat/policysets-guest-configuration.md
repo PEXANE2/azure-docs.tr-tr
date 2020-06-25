@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e47dee10e00340f04afd4a9807501bf83d25f9ec
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: f16f9b3fe6cd17b9fb6eb1cb2bd3ef1f42824701
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709190"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312779"
 ---
 |Name |Description |İlkeler |Sürüm |
 |---|---|---|---|
@@ -37,3 +37,4 @@ ms.locfileid: "84709190"
 |[Belirtilen uygulamaların yüklü olduğu Windows sanal makinelerini denetle](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |Bu girişim, ilke gereksinimlerini dağıtır ve belirtilen uygulamaların yüklü olduğu Windows sanal makinelerini denetler. Konuk yapılandırma ilkeleri hakkında daha fazla bilgi için lütfen şu adresi ziyaret edin[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[Bekleyen bir yeniden başlatma ile Windows VM 'Leri denetleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |Bu girişim, ilke gereksinimlerini dağıtır ve bekleyen bir yeniden başlatma ile Windows sanal makinelerini denetler. Konuk yapılandırma ilkeleri hakkında daha fazla bilgi için lütfen şu adresi ziyaret edin[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetleme](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |Bu girişim, ilke gereksinimlerini dağıtır ve güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetler (TLS 1,1 veya TLS 1,2). Konuk yapılandırma ilkeleri hakkında daha fazla bilgi için lütfen şu adresi ziyaret edin[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
+|[Sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için önkoşulları dağıtın](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |Bu girişim, sistem tarafından atanan bir yönetilen kimlik ekler ve platforma uygun Konuk yapılandırma uzantısını Konuk yapılandırma ilkeleriyle izlenmesi uygun olan sanal makinelere dağıtır. Bu, tüm konuk yapılandırma ilkeleri için bir önkoşuldur ve herhangi bir konuk yapılandırma ilkesi kullanılmadan önce ilke atama kapsamına atanmalıdır. Konuk yapılandırması hakkında daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/gcpol](https://aka.ms/gcpol) . |4 |1.0.0-Önizleme |

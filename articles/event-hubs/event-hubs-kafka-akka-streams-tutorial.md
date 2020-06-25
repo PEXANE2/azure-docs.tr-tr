@@ -1,27 +1,19 @@
 ---
 title: Apache Kafka için Akka akışlarını kullanma-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Olay Hub 'ına Akka akışlarını bağlama hakkında bilgi sağlanır.
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ae3cc44d854aa0996a6a567e56ff4e70afe0492d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632853"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320216"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs ile Akka Streams’i kullanma
 Bu öğreticide, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Akka akışlarını bir olay hub 'ına nasıl bağlayabilmeniz gösterilmektedir. Kafka için Azure Event Hubs [Apache Kafka 1,0 sürümünü destekler.](https://kafka.apache.org/10/documentation.html)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Örnek projeyi kopyalama
@@ -66,7 +58,7 @@ Sunulan Akka Streams üreticisi örneğini kullanarak, Event Hubs hizmetine ilet
 
 #### <a name="producer-applicationconf"></a>Producer Application. conf
 
-Üretici ve `bootstrap.servers` `sasl.jaas.config` değerlerini, doğru `producer/src/main/resources/application.conf` kimlik doğrulamasıyla, üreticiyi Event Hubs Kafka uç noktasına yönlendirmek için güncelleştirin.
+`bootstrap.servers` `sasl.jaas.config` Üretici ve değerlerini, `producer/src/main/resources/application.conf` doğru kimlik doğrulamasıyla, üreticiyi Event Hubs Kafka uç noktasına yönlendirmek için güncelleştirin.
 
 ```xml
 akka.kafka.producer {
@@ -93,7 +85,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 ```
 
-Üretici, konuya `test`Olay Hub 'ına olay göndermeye başlar ve olayları stdout 'a yazdırır.
+Üretici, konuya Olay Hub 'ına olay göndermeye başlar `test` ve olayları stdout 'a yazdırır.
 
 ## <a name="run-akka-streams-consumer"></a>Akka akışları tüketicisini Çalıştır
 
@@ -103,7 +95,7 @@ Belirtilen tüketici örneğini kullanarak Olay Hub 'ından ileti alın.
 
 #### <a name="consumer-applicationconf"></a>Tüketici uygulaması. conf
 
-' `consumer/src/main/resources/application.conf` İ `bootstrap.servers` ve `sasl.jaas.config` değerlerini, doğru kimlik doğrulamasıyla tüketicisini Event Hubs Kafka uç noktasına yönlendirmek için güncelleştirin.
+`bootstrap.servers`' İ ve `sasl.jaas.config` değerlerini, `consumer/src/main/resources/application.conf` doğru kimlik doğrulamasıyla tüketicisini Event Hubs Kafka uç noktasına yönlendirmek için güncelleştirin.
 
 ```xml
 akka.kafka.consumer {
@@ -133,7 +125,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ```
 
-Olay Hub 'ının olayları varsa (örneğin, üreticisi de çalışıyorsa), tüketici konusunun `test`olayları almaya başlar. 
+Olay Hub 'ının olayları varsa (örneğin, üreticisi de çalışıyorsa), tüketici konusunun olayları almaya başlar `test` . 
 
 Akka akışları hakkında daha ayrıntılı bilgi için [Akka Streams Kafka kılavuzuna](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) göz atın.
 

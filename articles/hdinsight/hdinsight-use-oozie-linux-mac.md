@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 27cc1052a2f35382b2d6a93482b7af219a9a187a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 35835e1508311bd31008a2335a8c543e558686c2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015174"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319387"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight üzerinde iş akışı tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie'yi kullanma
 
@@ -35,7 +35,7 @@ Ayrıca, Java programları veya kabuk betikleri gibi bir sisteme özgü işleri 
 
 * **Bir SSH istemcisi**. Bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Bir Azure SQL veritabanı**.  Bkz. [Azure Portal Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started.md).  Bu makale, **oozıetest**adlı bir veritabanını kullanır.
+* **Bir Azure SQL veritabanı**.  Bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](../sql-database/sql-database-get-started.md).  Bu makale, **oozıetest**adlı bir veritabanını kullanır.
 
 * Kümelerinizin birincil depolama alanı için URI şeması. `wasb://`Azure depolama için, `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` . Ayrıca bkz. [Güvenli aktarım](../storage/common/storage-require-secure-transfer.md).
 
@@ -126,7 +126,7 @@ Bir sorguyu tanımlayan bir Hive sorgu dili (HiveQL) betiği oluşturmak için a
 
    * `${hiveDataFolder}`: Tablo için veri dosyalarının depolandığı konumu içerir.
 
-     Bu makaledeki Workflow. XML iş akışı Tanım dosyası, bu değerleri çalışma zamanında bu HiveQL betiğine geçirir.
+     Bu makaledeki workflow.xml iş akışı Tanım dosyası bu değerleri çalışma zamanında bu HiveQL betiğine geçirir.
 
 1. Dosyayı kaydetmek için **CTRL + X**' i seçin, **Y**girin ve ardından **ENTER**' u seçin.  
 
@@ -275,7 +275,7 @@ Oozie iş akışı tanımları, XML işlem tanımı dili olan Hadoop Işlem tan�
 
 ## <a name="create-the-job-definition"></a>İş tanımını oluşturma
 
-İş tanımı iş akışı. xml ' nin nerede bulunacağını açıklar. Ayrıca, iş akışı tarafından kullanılan diğer dosyaları (örneğin,) nerede bulabileceğinizi açıklar `useooziewf.hql` . Ayrıca, iş akışı ve ilişkili dosyalar içinde kullanılan özelliklerin değerlerini tanımlar.
+İş tanımı workflow.xml nerede bulabileceğinizi açıklar. Ayrıca, iş akışı tarafından kullanılan diğer dosyaları (örneğin,) nerede bulabileceğinizi açıklar `useooziewf.hql` . Ayrıca, iş akışı ve ilişkili dosyalar içinde kullanılan özelliklerin değerlerini tanımlar.
 
 1. Varsayılan depolamanın tam adresini almak için aşağıdaki komutu kullanın. Bu adres, bir sonraki adımda oluşturduğunuz yapılandırma dosyasında kullanılır.
 
@@ -366,7 +366,7 @@ Oozie iş akışı tanımları, XML işlem tanımı dili olan Hadoop Işlem tan�
     </configuration>
     ```
 
-    Bu dosyadaki bilgilerin çoğu, iş akışı. xml veya oozıewf. HQL dosyalarında kullanılan değerleri (gibi) doldurmak için kullanılır `${nameNode}` .  Yol bir `wasbs` yol ise, tam yolu kullanmanız gerekir. Bunu yalnızca bu şekilde kısalmayın `wasbs:///` . `oozie.wf.application.path`Giriş, Workflow. xml dosyasının nerede bulunacağını tanımlar. Bu dosya, bu iş tarafından çalıştırılan iş akışını içerir.
+    Bu dosyadaki bilgilerin çoğu, gibi workflow.xml veya oozıewf. HQL dosyalarında kullanılan değerleri doldurmak için kullanılır `${nameNode}` .  Yol bir `wasbs` yol ise, tam yolu kullanmanız gerekir. Bunu yalnızca bu şekilde kısalmayın `wasbs:///` . `oozie.wf.application.path`Giriş, workflow.xml dosyasının nerede bulunacağını tanımlar. Bu dosya, bu iş tarafından çalıştırılan iş akışını içerir.
 
 3. Oozie iş tanımı yapılandırması oluşturmak için aşağıdaki komutu kullanın:
 
@@ -539,7 +539,7 @@ Oozie Web Kullanıcı arabirimine erişmek için aşağıdaki adımları izleyin
 
 Bir başlangıç, bitiş ve iş için yineleme sıklığını belirtmek için düzenleyiciyi kullanabilirsiniz. İş akışı için bir zamanlama tanımlamak üzere aşağıdaki adımları izleyin:
 
-1. **Coordinator. xml**adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
+1. **coordinator.xml**adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
 
     ```bash
     nano coordinator.xml
@@ -564,7 +564,7 @@ Bir başlangıç, bitiş ve iş için yineleme sıklığını belirtmek için d�
     > * `${coordStart}`: İş başlangıç saati.
     > * `${coordEnd}`: İş bitiş saati.
     > * `${coordTimezone}`: Koordinatör işleri, genellikle UTC kullanılarak temsil edilen gün ışığından yararlanma süresi olmayan sabit bir saat dilimlidir. Bu saat dilimi, *Oozie işleme saat dilimi* olarak adlandırılır.
-    > * `${wfPath}`: Workflow. xml dosyası yolu.
+    > * `${wfPath}`: workflow.xml yolu.
 
 2. Dosyayı kaydetmek için **CTRL + X**' i seçin, **Y**girin ve ardından **ENTER**' u seçin.
 
@@ -593,7 +593,7 @@ Bir başlangıç, bitiş ve iş için yineleme sıklığını belirtmek için d�
         </property>
         ```
 
-       Metni, `wasbs://mycontainer@mystorageaccount.blob.core.windows` iş. xml dosyasındaki diğer girdilerde kullanılan değerle değiştirin.
+       Metni, `wasbs://mycontainer@mystorageaccount.blob.core.windows` job.xml dosyasındaki diğer girdilerde kullanılan değerle değiştirin.
 
    * Düzenleyicinin başlangıç, bitiş ve sıklığını tanımlamak için aşağıdaki XML 'i ekleyin:
 

@@ -1,20 +1,14 @@
 ---
 title: Apache Kafka MirrorMaker 'ı kullanın-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, AzureEvent hub 'Larda bir Kafka kümesini yansıtmak için Kafka MirrorMaker 'ın nasıl kullanılacağı hakkında bilgi verilmektedir.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: fb041ec0d3cd474cca12d5ad55b733337566b9cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632776"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320199"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs ile Kafka MirrorMaker 'ı kullanma
 
@@ -26,7 +20,7 @@ Bu öğreticide, Kafka MirrorMaker kullanarak bir olay hub 'ında Kafka aracıs�
 > Bu örnek [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) 'da kullanılabilir
 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Örnek projeyi kopyalama
@@ -80,9 +74,9 @@ Kafka MirrorMaker 'ı yapılandırmak için BT 'nin BT/kaynak olarak bir Kafka k
 
 #### <a name="consumer-configuration"></a>Tüketici yapılandırması
 
-MirrorMaker 'ın kaynak Kafka `source-kafka.config`kümesinin özelliklerine söylemiş olan tüketici yapılandırma dosyasını güncelleştirin.
+`source-kafka.config`MirrorMaker 'ın kaynak Kafka kümesinin özelliklerine söylemiş olan tüketici yapılandırma dosyasını güncelleştirin.
 
-##### <a name="source-kafkaconfig"></a>Kaynak-Kafka. config
+##### <a name="source-kafkaconfig"></a>source-kafka.config
 
 ```
 bootstrap.servers={SOURCE.KAFKA.IP.ADDRESS1}:{SOURCE.KAFKA.PORT1},{SOURCE.KAFKA.IP.ADDRESS2}:{SOURCE.KAFKA.PORT2},etc
@@ -93,9 +87,9 @@ client.id=mirror_maker_consumer
 
 #### <a name="producer-configuration"></a>Üretici yapılandırması
 
-Şimdi, MirrorMaker 'ın yinelenen `mirror-eventhub.config`(veya "yansıtmalı") verileri Event Hubs hizmetine göndermesini söyleyen üretici yapılandırma dosyasını güncelleştirin. Özellikle, `bootstrap.servers` `sasl.jaas.config` Event Hubs Kafka uç noktanızı işaret edin. Event Hubs hizmeti, aşağıdaki yapılandırmadaki son üç özellik ayarlanarak elde edilen güvenli (SASL) iletişim gerektirir: 
+Şimdi `mirror-eventhub.config` , MirrorMaker 'ın yinelenen (veya "yansıtmalı") verileri Event Hubs hizmetine göndermesini söyleyen üretici yapılandırma dosyasını güncelleştirin. Özellikle, `bootstrap.servers` `sasl.jaas.config` Event Hubs Kafka uç noktanızı işaret edin. Event Hubs hizmeti, aşağıdaki yapılandırmadaki son üç özellik ayarlanarak elde edilen güvenli (SASL) iletişim gerektirir: 
 
-##### <a name="mirror-eventhubconfig"></a>yansıtma-eventhub. config
+##### <a name="mirror-eventhubconfig"></a>mirror-eventhub.config
 
 ```
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093

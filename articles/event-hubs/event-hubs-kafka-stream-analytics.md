@@ -1,24 +1,14 @@
 ---
 title: Azure Event Hubs-Işlem Apache Kafka olayları
 description: "Öğretici: Bu makalede Azure Stream Analytics kullanılarak Olay Hub 'ları aracılığıyla alınan Kafka olaylarının nasıl işlenmesi gösterilmektedir."
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 04/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80632799"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313270"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Stream Analytics kullanarak Event Hubs olaylar için Işlem Apache Kafka 
 Bu makalede, verilerin Event Hubs ' a akışını ve Azure Stream Analytics nasıl işleyeceğini gösterir. Aşağıdaki adımlarda size yol gösterir: 
@@ -50,8 +40,8 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>Kafka ile ileti gönderme Event Hubs
 
 1. [Azure Event Hubs for Kafka Repository](https://github.com/Azure/azure-event-hubs-for-kafka) 'yi makinenize kopyalayın.
-2. Klasöre gidin: `azure-event-hubs-for-kafka/quickstart/java/producer`. 
-4. İçindeki `src/main/resources/producer.config`Producer yapılandırma ayrıntılarını güncelleştirin. **Olay Hub 'ı ad alanı**için **adı** ve **bağlantı dizesini** belirtin. 
+2. Klasöre gidin: `azure-event-hubs-for-kafka/quickstart/java/producer` . 
+4. İçindeki Producer yapılandırma ayrıntılarını güncelleştirin `src/main/resources/producer.config` . **Olay Hub 'ı ad alanı**için **adı** ve **bağlantı dizesini** belirtin. 
 
     ```xml
     bootstrap.servers={EVENT HUB NAMESPACE}.servicebus.windows.net:9093
@@ -73,7 +63,7 @@ Bir **Standart** katman Event Hubs ad alanı oluşturduğunuzda, ad alanı için
     ```
 
     Bu kod, olay verilerini **JSON** biçiminde gönderir. Stream Analytics bir iş için giriş yapılandırdığınızda, JSON öğesini giriş verilerinin biçimi olarak belirtirsiniz. 
-7. **Üretici** ve akışı Event Hubs ' ye çalıştırın. Bir Windows makinesinde, **Node. js komut istemi**kullanırken, bu komutları çalıştırmadan önce `azure-event-hubs-for-kafka/quickstart/java/producer` klasöre geçin. 
+7. **Üretici** ve akışı Event Hubs ' ye çalıştırın. Bir Windows makinesinde, **Node.js komut istemi**kullanırken, `azure-event-hubs-for-kafka/quickstart/java/producer` Bu komutları çalıştırmadan önce klasöre geçin. 
    
     ```shell
     mvn clean package
@@ -142,8 +132,8 @@ Stream Analytics işteki sorgu, herhangi bir analiz yapmadan verileri geçirir. 
 Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan sonraki adım, verileri gerçek zamanlı olarak analiz eden bir dönüştürme oluşturmaktır. Dönüştürme sorgusunu [Stream Analytics sorgu dilini](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kullanarak tanımlarsınız. Bu kılavuzda, herhangi bir dönüşüm yapmadan verilerden geçen bir sorgu tanımlarsınız.
 
 1. **Sorgu**seçin.
-2. Sorgu penceresinde, daha önce oluşturduğunuz `[YourOutputAlias]` çıktı diğer adıyla değiştirin.
-3. Daha `[YourInputAlias]` önce oluşturduğunuz giriş diğer adıyla değiştirin. 
+2. Sorgu penceresinde, `[YourOutputAlias]` daha önce oluşturduğunuz çıktı diğer adıyla değiştirin.
+3. `[YourInputAlias]`Daha önce oluşturduğunuz giriş diğer adıyla değiştirin. 
 4. Araç çubuğunda **Kaydet**’i seçin. 
 
     ![Sorgu](./media/event-hubs-kafka-stream-analytics/query.png)

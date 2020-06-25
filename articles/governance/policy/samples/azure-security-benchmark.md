@@ -4,12 +4,12 @@ description: Azure Güvenlik kıyaslama mevzuatı uyumluluğu yerleşik girişim
 ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 3dda80d772f15869c196a2cc8b77e767a853d22c
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 517bbc1ca2ca4a9f87d1ebef27d5e5ae361351b5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297061"
+ms.locfileid: "85312542"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Azure Güvenlik karşılaştırmalı mevzuata uyumluluğu yerleşik girişiminin ayrıntıları
 
@@ -132,13 +132,6 @@ Bu yerleşik girişim, [Azure Güvenlik kıyaslaması şeması örneğinin](../.
 
 ## <a name="identity-and-access-control"></a>Kimlik ve Erişim Denetimi
 
-### <a name="log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>Yönetici hesaplarından şüpheli etkinlikte günlüğe kaydet ve uyar
-
-**Kimlik**: Azure Güvenlik kıyaslaması 3,7 **sahipliği**: müşteri
-
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
-|---|---|---|---|
-
 ### <a name="maintain-an-inventory-of-administrative-accounts"></a>Yönetim hesaplarının envanterini tutma
 
 **Kimlik**: Azure Güvenlik kıyaslaması 3,1 **sahipliği**: müşteri
@@ -200,13 +193,6 @@ Bu yerleşik girişim, [Azure Güvenlik kıyaslaması şeması örneğinin](../.
 |[MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe3576e28-8b17-4677-84c3-db2990658d64) |Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) etkinleştirilmelidir. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableMFAForReadPermissions_Audit.json) |
 
 ## <a name="incident-response"></a>Olay Yanıtı
-
-### <a name="create-an-incident-scoring-and-prioritization-procedure"></a>Olay Puanlama ve öncelik belirlemesi prosedürü oluşturma
-
-**Kimlik**: Azure Güvenlik kıyaslaması 10,2 **sahipliği**: müşteri
-
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
-|---|---|---|---|
 
 ### <a name="provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>Güvenlik olayları için güvenlik olayı iletişim ayrıntılarını sağlama ve uyarı bildirimlerini yapılandırma
 
@@ -336,13 +322,6 @@ Bu yerleşik girişim, [Azure Güvenlik kıyaslaması şeması örneğinin](../.
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure için Microsoft kötü amaçlı yazılımdan koruma imzaları otomatik olarak güncelleştirilecek şekilde yapılandırılmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc43e4a30-77cb-48ab-a4dd-93f175c63b57) |Bu ilke, Microsoft kötü amaçlı yazılımdan koruma imzalarının otomatik güncelleştirmesiyle yapılandırılmayan hiçbir Windows sanal makinesini denetler. |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_AntiMalwareAutoUpdate_AuditIfNotExists.json) |
-
-### <a name="pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>İşlem dışı Azure kaynaklarına yüklenecek dosyaları önceden Tara
-
-**Kimlik**: Azure Güvenlik kıyaslaması 8,2 **sahipliği**: müşteri
-
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
-|---|---|---|---|
 
 ### <a name="use-centrally-managed-anti-malware-software"></a>Merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanın
 

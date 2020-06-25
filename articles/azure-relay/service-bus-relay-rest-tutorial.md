@@ -1,25 +1,14 @@
 ---
 title: 'Öğretici: Azure Relay kullanarak REST öğreticisi'
 description: 'Öğretici: REST tabanlı bir arabirim sunan bir Azure Relay ana bilgisayar uygulaması oluşturun.'
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/05/2019
-ms.author: spelluru
-ms.openlocfilehash: a9c2837315bde2684cbcefa5a603268a450bfba9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0d42bd664be0881ee0c1f036231acc67e49b6f8a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204703"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316635"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Öğretici: Azure WCF Geçişi REST öğreticisi
 
@@ -71,7 +60,7 @@ Bir WCF sözleşmesi ile REST stili sözleşme arasındaki birincil fark, [Opera
 1. **Çözüm Gezgini**, **ımagelistener** projesine sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 1. **Araştır**' ı seçin, sonra **windowsazure. ServiceBus**öğesini arayıp seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
 
-    Bu adım Service Bus ve *System. ServiceModel. dll*' ye başvurular ekler. Bu paket otomatik olarak Service Bus kitaplıklarına ve WCF 'ye başvurular ekler `System.ServiceModel` .
+    Bu adım Service Bus ve *System.ServiceModel.dll*başvuruları ekler. Bu paket otomatik olarak Service Bus kitaplıklarına ve WCF 'ye başvurular ekler `System.ServiceModel` .
 
 1. Projeye açıkça bir başvuru ekleyin `System.ServiceModel.Web.dll` . **Çözüm Gezgini**, proje klasörü altındaki **Başvurular** ' a sağ tıklayın ve **Başvuru Ekle**' yi seçin.
 1. **Başvuru Ekle**' de **çerçeve** ' yi seçin ve **Search**'te *System. ServiceModel. Web* girin. **System.ServiceModel.Web** öğesinin onay kutusunu işaretleyin ve **Tamam**'a tıklayın.
@@ -179,7 +168,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="implement-the-rest-based-wcf-service-contract"></a>REST tabanlı WCF hizmet sözleşmesini uygulama
 
-REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanarak sözleşmeyi oluşturun. Bir sonraki adım ise bu arabirimi uygulamaktır. Bu yordam `ImageService` , Kullanıcı tanımlı arabirimi uygulayan adlı bir sınıf oluşturmayı içerir `IImageContract` . Sözleşmeyi uyguladıktan sonra, bir *app. config* dosyası kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyası, uygulama için gereken bilgileri içerir. Bu bilgilere hizmetin adı, sözleşmenin adı ve geçiş hizmeti ile iletişim kurmak için kullanılan protokol türü dahildir. Bu görevler için kullanılan kod, yordamı izleyen örnekte görüntülenir.
+REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanarak sözleşmeyi oluşturun. Bir sonraki adım ise bu arabirimi uygulamaktır. Bu yordam `ImageService` , Kullanıcı tanımlı arabirimi uygulayan adlı bir sınıf oluşturmayı içerir `IImageContract` . Sözleşmeyi uyguladıktan sonra, *App.config* bir dosya kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyası, uygulama için gereken bilgileri içerir. Bu bilgilere hizmetin adı, sözleşmenin adı ve geçiş hizmeti ile iletişim kurmak için kullanılan protokol türü dahildir. Bu görevler için kullanılan kod, yordamı izleyen örnekte görüntülenir.
 
 Önceki adımlarda olduğu gibi, REST stili bir sözleşme ve WCF Geçişi sözleşmesi uygulama arasında çok az fark vardır.
 
@@ -212,11 +201,11 @@ REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanar
    1. Ardından **Varolan öğe**' yi seçin.
    1. Uygun bir. jpg öğesine gitmek için **Varolan öğe Ekle** ' yi kullanın ve ardından **Ekle**' yi seçin. Dosya eklenirken **dosya adı**' nın yanındaki aşağı açılan listeden **tüm dosyalar** ' ı seçin.
 
-   Bu öğreticinin geri kalanı görüntünün adının *Image. jpg*olduğunu varsayar. Farklı bir dosyanız varsa, görüntüyü yeniden adlandırmanız veya kodunuzu telafi olarak değiştirmeniz gerekir.
+   Bu öğreticinin geri kalanı görüntünün adının *image.jpg*olduğunu varsayar. Farklı bir dosyanız varsa, görüntüyü yeniden adlandırmanız veya kodunuzu telafi olarak değiştirmeniz gerekir.
 
 1. Çalışan Hizmetin görüntü dosyasını **bulaÇözüm Gezgini** emin olmak için, ' de görüntü dosyasına sağ tıklayın ve ardından **Özellikler**' i seçin. **Özellikler**' de, **daha yeniyse kopyalamak**için **Çıkış Dizinine Kopyala** ' yı ayarlayın.
 
-1. Projeye *System. Drawing. dll* derlemesine başvuru eklemek için [arabirimi ile bir anlaşma oluşturmak için](#to-create-a-contract-with-an-interface) içindeki yordamını kullanın.
+1. Projeye *System.Drawing.dll* derlemesine başvuru eklemek için [arabirimi olan bir anlaşma oluşturmak için](#to-create-a-contract-with-an-interface) içindeki yordamını kullanın.
 
 1. Aşağıdaki ilişkili deyimleri ekleyin `using` :
 
@@ -264,9 +253,9 @@ REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanar
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Service Bus üzerinde web hizmetini çalıştırmak için yapılandırma tanımlama
 
-1. **Çözüm Gezgini**' de, **app. config** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
+1. **Çözüm Gezgini**' de, dosyayı Visual Studio düzenleyicisinde açmak için **App.config** ' a çift tıklayın.
 
-    *App. config* dosyası hizmet adını, uç noktayı ve bağlamayı içerir. Uç nokta Azure Relay, istemcilerin ve ana bilgisayarların birbirleriyle iletişim kurması için kullanıma sunduğu konumdur. Bağlama, iletişim kurmak için kullanılan protokolün türüdür. Buradaki temel fark, yapılandırılmış hizmet uç noktasının bir [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bağlamasını ifade ettiği bir noktadır.
+    *App.config* dosyası, hizmet adını, uç noktayı ve bağlamayı içerir. Uç nokta Azure Relay, istemcilerin ve ana bilgisayarların birbirleriyle iletişim kurması için kullanıma sunduğu konumdur. Bağlama, iletişim kurmak için kullanılan protokolün türüdür. Buradaki temel fark, yapılandırılmış hizmet uç noktasının bir [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) bağlamasını ifade ettiği bir noktadır.
 
 1. `<system.serviceModel>` XML öğesi, bir veya birden çok hizmeti tanımlayan WCF öğesidir. Burada, hizmet adını ve uç noktayı tanımlamak için kullanılır. Öğesinin alt tarafında `<system.serviceModel>` , ancak hala içinde `<system.serviceModel>` , `<bindings>` aşağıdaki içeriğe sahip bir öğe ekleyin:
 
@@ -325,7 +314,7 @@ REST stili WCF Geçişi bir hizmet oluşturmak için önce bir arabirim kullanar
     </behaviors>
     ```
 
-1. Hala *app. config*içinde, öğesinde, `<appSettings>` tüm bağlantı dizesi değerini portaldan daha önce edindiğiniz bağlantı dizesiyle değiştirin.
+1. Hala *App.config*, `<appSettings>` öğesinde, tüm bağlantı dizesi değerini portaldan daha önce edindiğiniz bağlantı dizesiyle değiştirin.
 
     ```xml
     <appSettings>
@@ -401,7 +390,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-Aşağıdaki örnek, hizmetiyle ilişkili *app. config* dosyasını gösterir.
+Aşağıdaki örnek, hizmetle ilişkili *App.config* dosyasını gösterir.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -552,7 +541,7 @@ Hizmet ana bilgisayarı, ana bilgisayar uygulamasının örneğini oluşturan WC
 
 ### <a name="example-of-the-service-contract-and-implementation"></a>Hizmet sözleşmesi ve uygulama örneği
 
-Aşağıdaki örnek, hizmet sözleşmesini ve bu öğreticinin önceki kısımlarında yer alan uygulamayı içerir ve hizmeti bir konsol uygulamasında barındırır. Aşağıdaki kodu *ımagelistener. exe*adlı bir yürütülebilir dosyada derleyin.
+Aşağıdaki örnek, hizmet sözleşmesini ve bu öğreticinin önceki kısımlarında yer alan uygulamayı içerir ve hizmeti bir konsol uygulamasında barındırır. Aşağıdaki kodu *ImageListener.exe*adlı bir yürütülebilir dosyada derleyin.
 
 ```csharp
 using System;
@@ -630,7 +619,7 @@ namespace Microsoft.ServiceBus.Samples
 
 Çözümü derledikten sonra uygulamayı çalıştırmak için şunları yapın:
 
-1. Hizmeti çalıştırmak için F5 ' i seçin veya yürütülebilir dosya konumuna ( *ImageListener\bin\Debug\ImageListener.exe*) gidin. Bir sonraki adım için gerektiğinden uygulamayı çalışır durumda tutun.
+1. Hizmeti çalıştırmak için F5 ' i seçin veya yürütülebilir dosya konumuna gidin *ImageListener\bin\Debug\ImageListener.exe*. Bir sonraki adım için gerektiğinden uygulamayı çalışır durumda tutun.
 1. Görüntüye bakmak için komut istemindeki adresi kopyalayıp bir tarayıcıya yapıştırın.
 1. İşiniz bittiğinde, uygulamayı kapatmak için komut istemi penceresinde ENTER ' u seçin.
 

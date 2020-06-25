@@ -4,12 +4,12 @@ description: Dosyalara, REST API 'Lerine, veritabanlarına ve farklı Azure depo
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 2c7133e9c258c77aa9c242dd7276076625153703
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a7e242c000b57cbbfafebc1e11191199a7a4b95f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554375"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319144"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Not defterinde bulut verilerine erişme
 
@@ -42,13 +42,13 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL veritabanları
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği
 
-SQL Server veritabanlarına, pyodbc veya pymssql kitaplıklarının yardımı ile erişebilirsiniz.
+SQL veritabanı veya SQL yönetilen örneğindeki veritabanlarına, pyodbc veya pymssql kitaplıklarının yardımı ile erişebilirsiniz.
 
-[Azure SQL veritabanını sorgulamak Için Python 'U kullanarak](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) AdventureWorks verileri içeren bir veritabanı oluşturma hakkında yönergeler sağlar ve bu verilerin nasıl sorgulanalınacağını gösterir. Bu makalenin örnek not defterinde aynı kod gösterilir.
+[Azure SQL veritabanını sorgulamak Için Python 'U kullanarak](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) , SQL veritabanı 'nda AdventureWorks verilerini içeren bir veritabanı oluşturma ve bu verilerin nasıl sorgulanalınacağını gösteren yönergeler sağlar. Bu makalenin örnek not defterinde aynı kod gösterilir.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 Azure depolama, sahip olduğunuz veri türüne ve bu verilere nasıl erişmeniz gerektiği üzerine bağlı olarak, birden çok farklı türde ilişkisel olmayan depolama sağlar:
 

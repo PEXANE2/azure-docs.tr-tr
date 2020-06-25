@@ -4,12 +4,12 @@ description: CIS ayrıntıları, kıyaslama mevzuatı uyumluluğu yerleşik giri
 ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 214d50c790f9976b96bf29906d4db64a111e859f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 400c4af97a693814d13ec3b8556db5eca44b39c6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299033"
+ms.locfileid: "85312359"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure temel bilgiler kıyaslama mevzuatı uyumluluğu yerleşik girişimi
 
@@ -601,13 +601,6 @@ Bu yerleşik girişim, [cıs Microsoft Azure temelleri şeması örneklerinden](
 |Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Yüksek önem derecesine sahip uyarılar için e-posta bildirimi etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6e2593d9-add6-4083-9c9b-4b7d2188c899) |Güvenlik, Microsoft 'un güvenlik uyarısı e-postalarını almasını sağlamak için güvenlik ekibine güvenli hale getirmek için etkinleştirin. Bu, doğru kişilerin olası güvenlik sorunlarının farkında olmasını sağlar ve riskleri hafifletiyor |Auditınotexists, devre dışı |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Email_notification.json) |
-
-### <a name="ensure-that-standard-pricing-tier-is-selected"></a>Standart fiyatlandırma katmanının seçildiğinden emin olun
-
-**Kimlik**: cıs Azure 2,1 **sahipliği**: müşteri
-
-|Name<br /><sub>(Azure portal)</sub> |Description |Efekt (ler) |Sürüm<br /><sub>GitHub</sub> |
-|---|---|---|---|
 
 ## <a name="storage-accounts"></a>Depolama Hesapları
 

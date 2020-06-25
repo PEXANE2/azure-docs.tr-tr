@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 33f67e1bfa27f4314f64cbcc4d472905fcb15099
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707047"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318773"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen dosya ve sıkıştırma biçimleri
 *Bu konu şu bağlayıcılar için geçerlidir: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), [Azure Data Lake Store](data-factory-azure-datalake-connector.md), [dosya sistemi](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md),, [HDFS](data-factory-hdfs-connector.md) [http](data-factory-http-connector.md)ve [SFTP](data-factory-sftp-connector.md).*
@@ -219,7 +219,7 @@ Bu örnekte, bir kök JSON nesnesinin tablosal sonuçtaki tek bir kayıtla eşle
 ```
 ve hem nesne hem de diziden veri ayıklayarak bir Azure SQL tablosuna aşağıdaki biçimde kopyalamak istersiniz:
 
-| kimlik | deviceType | targetResourceType | Resourcemanagementprocessrunıd | occurrenceTime |
+| ID | deviceType | targetResourceType | Resourcemanagementprocessrunıd | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
@@ -349,7 +349,7 @@ ve bunu bir Azure SQL tablosuna aşağıdaki biçimde, dizi içindeki verileri d
 
 SQL veritabanında aşağıdaki tablo varsa:
 
-| kimlik | order_date | order_price | order_by |
+| ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -497,7 +497,7 @@ Bir veri kümesinin sıkıştırmasını belirtmek için, aşağıdaki örnekte 
 
 `compression`Bir giriş veri KÜMESI JSON öğesinde özelliği belirttiğinizde, işlem hattı, kaynaktaki sıkıştırılmış verileri okuyabilir ve bir çıkış veri KÜMESI JSON öğesinde özelliği belirttiğinizde kopyalama etkinliği, hedefe sıkıştırılmış veri yazabilir. Aşağıda birkaç örnek senaryo verilmiştir:
 
-* Bir Azure blobundan GZIP sıkıştırılmış verileri okuyun, sıkıştırmasını açın ve sonuç verilerini bir Azure SQL veritabanına yazın. JSON özelliği olan giriş Azure blob veri kümesini `compression` `type` GZIP olarak tanımlarsınız.
+* Azure Blob 'dan GZIP sıkıştırılmış verileri okuyun, açın ve sonuç verilerini Azure SQL veritabanı 'na yazın. JSON özelliği olan giriş Azure blob veri kümesini `compression` `type` GZIP olarak tanımlarsınız.
 * Şirket içi dosya sistemindeki bir düz metin dosyasından verileri okuyun, GZip biçimini kullanarak sıkıştırın ve sıkıştırılmış verileri bir Azure Blob 'una yazın. JSON özelliği olan bir çıktı Azure blob veri kümesini `compression` `type` gzip olarak tanımlarsınız.
 * FTP sunucusundan. zip dosyasını okuyun, dosyaları içine almak için sıkıştırmasını açın ve bu dosyaları Azure Data Lake Store içine alın. JSON özelliği olan bir giriş FTP veri kümesini `compression` `type` zipsöndür olarak tanımlarsınız.
 * Bir Azure blobundan GZIP sıkıştırılmış verileri okuyun, açıp açın, BZIP2 kullanarak sıkıştırın ve sonuç verilerini bir Azure blobuna yazın. Bu durumda, bir giriş Azure blob veri kümesini `compression` `type` GZIP olarak, çıktı veri KÜMESINI ise `compression` `type` BZIP2 olarak ayarlayın.   

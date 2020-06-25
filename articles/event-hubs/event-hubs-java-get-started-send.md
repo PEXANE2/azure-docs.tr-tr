@@ -1,19 +1,14 @@
 ---
 title: Java kullanarak Azure Event Hubs olay gönderme veya alma (eski)
 description: Bu makalede, Azure Event Hubs eski Azure-eventhubs paketini kullanarak olayları gönderen/alan bir Java uygulaması oluşturmaya yönelik izlenecek yol sunulmaktadır.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 379739533e15e60bc47bfc883a67037d4a58d0e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 8c44cfa2a3130e714ac95989248aee634996df2a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81417632"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320326"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Azure Event Hubs (Azure-eventhubs) olay göndermek veya olayları almak için Java 'Yı kullanma
 
@@ -57,7 +52,7 @@ Basit bir olay yayımcısı için *com. Microsoft. Azure. eventhubs* paketini Ev
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Olay hub'ına ileti göndermek için kod yazma
 
-Aşağıdaki örnek için önce en sevdiğiniz Java geliştirme ortamında bir konsol/kabuk uygulaması için yeni bir Maven projesi oluşturun. Adlı `SimpleSend`bir sınıf ekleyin ve aşağıdaki kodu sınıfına ekleyin:
+Aşağıdaki örnek için önce en sevdiğiniz Java geliştirme ortamında bir konsol/kabuk uygulaması için yeni bir Maven projesi oluşturun. Adlı bir sınıf ekleyin `SimpleSend` ve aşağıdaki kodu sınıfına ekleyin:
 
 ```java
 import com.google.gson.Gson;
@@ -210,7 +205,7 @@ Event Hubs için Java istemci kitaplığı, Maven [Merkezi deposundaki](https://
 
 Farklı türlerde derleme ortamları için, [Maven merkezi deposundaki](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)en son yayınlanan jar dosyalarını açıkça alabilirsiniz.
 
-1. Aşağıdaki örnek için önce en sevdiğiniz Java geliştirme ortamında bir konsol/kabuk uygulaması için yeni bir Maven projesi oluşturun. Sınıfı çağrılır `ErrorNotificationHandler`.     
+1. Aşağıdaki örnek için önce en sevdiğiniz Java geliştirme ortamında bir konsol/kabuk uygulaması için yeni bir Maven projesi oluşturun. Sınıfı çağrılır `ErrorNotificationHandler` .     
    
     ```java
     import java.util.function.Consumer;
@@ -316,7 +311,7 @@ Farklı türlerde derleme ortamları için, [Maven merkezi deposundaki](https://
        }
    }
    ```
-3. Aşağıdaki kodu kullanarak adlı `EventProcessor`bir daha fazla sınıf oluşturun:
+3. Aşağıdaki kodu kullanarak adlı bir daha fazla sınıf oluşturun `EventProcessor` :
    
     ```java
     public static class EventProcessor implements IEventProcessor

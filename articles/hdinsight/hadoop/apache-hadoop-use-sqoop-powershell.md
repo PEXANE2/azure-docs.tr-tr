@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 87077eacd607acf4efbd660a1926daf15db7f7e5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 67565dbaf0dd69eb271001645446f73917afa060
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653567"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319505"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>HDInsight 'ta Azure PowerShell Apache Sqoop işleri çalıştırma
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-HDInsight kümesi ile Azure SQL veritabanı veya SQL Server veritabanı arasında veri içeri ve dışarı aktarmak için Azure HDInsight 'ta Apache Sqoop işleri çalıştırmak üzere Azure PowerShell nasıl kullanacağınızı öğrenin.  Bu makalede, [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanma](./hdinsight-use-sqoop.md)işlemi devam ediyor.
+HDInsight kümesi ile Azure SQL veritabanı veya SQL Server arasında veri içeri ve dışarı aktarmak için Azure HDInsight 'ta Apache Sqoop işleri çalıştırmak üzere Azure PowerShell nasıl kullanacağınızı öğrenin.  Bu makalede, [HDInsight 'Ta Hadoop Ile Apache Sqoop kullanma](./hdinsight-use-sqoop.md)işlemi devam ediyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure PowerShell [az Module](https://docs.microsoft.com/powershell/azure/overview) yüklü bir iş istasyonu.
 
@@ -31,9 +31,9 @@ HDInsight kümesi ile Azure SQL veritabanı veya SQL Server veritabanı arasınd
 
 ## <a name="sqoop-export"></a>Sqoop dışarı aktarma
 
-Hive 'dan SQL Server.
+Hive 'den SQL 'e.
 
-Bu örnek, Hive `hivesampletable` TABLOSUNDAN `mobiledata` SQL veritabanındaki tabloya veri aktarır. Aşağıdaki değişkenlerin değerlerini ayarlayın ve ardından komutunu yürütün.
+Bu örnek, Hive `hivesampletable` TABLOSUNDAN `mobiledata` SQL içindeki tabloya veri aktarır. Aşağıdaki değişkenlerin değerlerini ayarlayın ve ardından komutunu yürütün.
 
 ```powershell
 $hdinsightClusterName = ""
@@ -96,7 +96,7 @@ Hata iletisini alırsanız, `The specified blob does not exist.` birkaç dakika 
 
 ## <a name="sqoop-import"></a>Sqoop içeri aktarma
 
-SQL Server 'den Azure depolama 'ya. Bu örnek `mobiledata` , SQL veritabanındaki tablodaki verileri `wasb:///tutorials/usesqoop/importeddata` HDInsight üzerindeki dizine aktarır. Verilerdeki alanlar bir sekme karakteriyle ayrılır ve satırlar yeni satır karakteri ile sonlandırılır. Bu örnekte, önceki örneği tamamladığınız varsayılır.
+SQL 'den Azure depolama 'ya. Bu örnek `mobiledata` , SQL 'deki tablodaki verileri `wasb:///tutorials/usesqoop/importeddata` HDInsight üzerindeki dizine aktarır. Verilerdeki alanlar bir sekme karakteriyle ayrılır ve satırlar yeni satır karakteri ile sonlandırılır. Bu örnekte, önceki örneği tamamladığınız varsayılır.
 
 ```powershell
 $sqoopCommand = "import --connect $connectionString --table mobiledata --target-dir wasb:///tutorials/usesqoop/importeddata --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1"
@@ -128,7 +128,7 @@ Get-AzHDInsightJobOutput `
 
 Bu, verileri `/tutorials/usesqoop/data/sample.log` varsayılan depolama hesabından dışarı aktaran sağlam bir örnektir ve sonra onu SQL Server veritabanında adlı bir tabloya aktarır `log4jlogs` . Bu örnek, önceki örneklere bağımlı değildir.
 
-Aşağıdaki PowerShell betiği, kaynak dosyayı önceden işler ve ardından bunu bir Azure SQL veritabanına dışarı aktarır `log4jlogs` . `CLUSTERNAME`, `CLUSTERPASSWORD` Ve `SQLPASSWORD` değerlerini önkoşullardan kullandığınız değerlerle değiştirin.
+Aşağıdaki PowerShell betiği, kaynak dosyayı önceden işler ve sonra tabloya dışarı aktarır `log4jlogs` . `CLUSTERNAME`, `CLUSTERPASSWORD` Ve `SQLPASSWORD` değerlerini önkoşullardan kullandığınız değerlerle değiştirin.
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>
@@ -219,7 +219,7 @@ $writeStream.Flush()
 $memStream.Seek(0, "Begin")
 $destBlob.UploadFromStream($memStream)
 
-#export the log file from the cluster to the SQL database
+#export the log file from the cluster to SQL
 Write-Host "Exporting the log file ..." -ForegroundColor Green
 
 $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
@@ -271,7 +271,7 @@ Get-AzHDInsightJobOutput `
 
 Linux tabanlı HDInsight aşağıdaki sınırlamaları sunar:
 
-* Toplu dışa aktarma: Microsoft SQL Server veya Azure SQL veritabanı 'na veri aktarmak için kullanılan Sqoop Bağlayıcısı Şu anda toplu eklemeleri desteklememektedir.
+* Toplu dışa aktarma: SQL 'e veri aktarmak için kullanılan Sqoop Bağlayıcısı Şu anda toplu eklemeleri desteklememektedir.
 
 * Toplu işleme: `-batch` ekleme işlemi gerçekleştirdiğinde anahtar kullanılarak, Sqoop INSERT işlemlerini toplu olarak gerçekleştirmek yerine birden çok ekleme gerçekleştirir.
 

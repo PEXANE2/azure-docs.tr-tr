@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 390cddf557905e95e313896f9f172e30b81352b9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195936"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319076"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Veri Yönetimi Ağ Geçidi kullanımıyla ilgili sorunları giderme
 Bu makalede Veri Yönetimi ağ geçidi kullanmayla ilgili sorunları giderme hakkında bilgi sağlanır.
@@ -224,7 +224,7 @@ Bu durum farklı nedenlerle ortaya çıkabilir ve risk azaltma buna göre farkl�
 #### <a name="resolution"></a>Çözüm
 SQL veritabanına bağlanmadan önce Veri Yönetimi ağ geçidi istemci tarafında TCP/1433 bağlantı noktası üzerinden giden TCP bağlantılarına izin verin.
 
-Hedef veritabanı bir Azure SQL veritabanı ise, Azure için SQL Server güvenlik duvarı ayarlarını da kontrol edin.
+Hedef veritabanı Azure SQL veritabanı 'nda ise, Azure için SQL Server güvenlik duvarı ayarlarını da kontrol edin.
 
 Şirket içi veri deposuyla bağlantıyı test etmek için aşağıdaki bölüme bakın.
 

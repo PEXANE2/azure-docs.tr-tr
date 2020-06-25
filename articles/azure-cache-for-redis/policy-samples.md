@@ -1,18 +1,18 @@
 ---
 title: Redsıs için Azure önbelleği için yerleşik ilke tanımları
 description: Redin için Azure Cache 'In Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-samples
-ms.openlocfilehash: a54dfc87937bdeb438b0a84c6385d3876946c546
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ee64e2200511118d55f3df152b5adaa574a333d3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84883866"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313233"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Redin için Azure önbellek için Azure Ilkesi yerleşik tanımları
 

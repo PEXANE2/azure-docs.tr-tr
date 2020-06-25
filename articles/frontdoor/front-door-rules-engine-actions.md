@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapısı | Microsoft Docs
-description: Bu makalede Azure Front Door’a genel bir bakış sağlanır. Uygulamanız için Yük Dengeleme Kullanıcı trafiği için doğru seçim olup olmadığını öğrenin.
+title: Azure Front Door
+description: Bu makalede, Azure ön kapısı kuralları altyapısında yapabileceğiniz çeşitli eylemlerin bir listesi sunulmaktadır.
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 3e7c9606a17736ea45b09a4d6981b4d55fa6dee6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515562"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313996"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure ön kapı kuralları altyapı eylemleri
 
 [AFD kural altyapısında](front-door-rules-engine.md) bir kural sıfır veya daha fazla eşleşme koşulu ve eylemden oluşur. Bu makale, AFD kural altyapısında kullanabileceğiniz eylemlerin ayrıntılı açıklamalarını sağlar.
 
-Bir eylem, eşleşme koşulunun veya eşleştirme koşulları kümesinin tanımladığı istek türüne uygulanan davranışı tanımlar. AFD kural altyapısında, bir kural en fazla beş eylem içerebilir ve bunlardan yalnızca biri yol yapılandırması geçersiz kılma eylemi olabilir (ileri veya yeniden yönlendirme). 
+Bir eylem, eşleşme koşulunun veya eşleştirme koşulları kümesinin tanımladığı istek türüne uygulanan davranışı tanımlar. AFD kural altyapısında, bir kural en fazla beş eylem içerebilir ve bunlardan yalnızca biri yol yapılandırması geçersiz kılma eylemi olabilir (ileri veya yeniden yönlendirme).
 
 Aşağıdaki eylemler Azure ön kapı kuralları altyapısında kullanılabilir.  
 
@@ -59,7 +59,7 @@ Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst b
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Alan | Açıklama 
+Alan | Description 
 ------|------------
 Yeniden yönlendirme türü | İstek sahibine döndürülecek yanıt türünü seçin: bulunan (302), taşınan (301), geçici yeniden yönlendirme (307) ve kalıcı yeniden yönlendirme (308).
 Yeniden yönlendirme protokolü | Match Isteği, HTTP, HTTPS.
@@ -73,7 +73,7 @@ Hedef parça | Yeniden Yönlendirmede kullanılacak parçayı tanımlayın. Gele
 
 İstemcileri yeni bir URL 'ye iletmek için bu eylemi kullanın. Bu eylem, URL yeniden yazılmasına ve önbelleğe almaya yönelik alt eylemleri de içerir. 
 
-Alan | Açıklama 
+Alan | Description 
 ------|------------
 Arka uç havuzu | İstekleri geçersiz kılmak ve istemcilere hizmeti sağlamak için arka uç havuzunu seçin. Bu, önceden yapılandırılmış olan tüm arka uç havuzlarınızı ön kapı profilinizde gösterir. 
 İletme Protokolü | Match Isteği, HTTP, HTTPS.
@@ -84,7 +84,7 @@ URL yeniden yazma | Bu eylemi, kaynağına yönlendiren bir isteğin yolunu yeni
 
 Arka uca iletme isteği oluştururken kullanılacak isteğe bağlı bir **özel Iletme yolunu** yapılandırmak için bu ayarı kullanın.
 
-Alan | Açıklama 
+Alan | Description 
 ------|------------
 Özel iletme yolu | İsteklerin iletileceği yolu tanımlayın. 
 
@@ -92,14 +92,14 @@ Alan | Açıklama
 
 Sorgu dizeleri içeren istekler için dosyaların nasıl önbelleğe alındığını ve tüm parametrelere veya seçili parametrelere göre içeriğinizi önbelleğe alınıp alınmayacağını denetlemek için bu ayarları kullanın. Kuralların eşleşen koşullara göre isteklerin önbellekte ne kadar süreyle kalacağından emin olmak için, yaşam süresi (TTL) değerinin üzerine yazmak üzere ek ayarları kullanabilirsiniz. Bir eylem olarak önbelleğe almayı zorlamak için, önbelleğe alma alanını "etkin" olarak ayarlayın. Bunu yaptığınızda, aşağıdaki seçenekler görünür: 
 
-Önbellek davranışı |  Açıklama              
+Önbellek davranışı |  Description              
 ---------------|----------------
 Sorgu dizelerini yoksay | Varlık önbelleğe alındıktan sonra, sonraki tüm istekler, önbelleğe alınmış varlık sona erene kadar Sorgu dizelerini yoksayar.
 Her benzersiz URL'yi önbelleğe al | Sorgu dizesi dahil olmak üzere benzersiz bir URL 'SI olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir.
 Belirtilen Sorgu dizelerini yoksay | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için yok sayılır.
 Belirtilen Sorgu dizelerini dahil et | "Sorgu parametreleri" ayarında listelenen istek URL sorgusu dizeleri önbelleğe alma için kullanılır.
 
-Ek alanlar |  Açıklama 
+Ek alanlar |  Description 
 ------------------|---------------
 Dinamik sıkıştırma | Ön kapı, kenardaki içeriği dinamik olarak sıkıştırarak daha küçük ve daha hızlı bir yanıt elde edebilir.
 Sorgu parametreleri | Önbelleğe alma için temel olarak kullanılacak izin verilen (veya izin verilmeyen) parametrelerin virgülle ayrılmış listesi.

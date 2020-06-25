@@ -3,12 +3,12 @@ title: Tüm ortamlarda Java uygulamalarını izleme-Azure Izleyici Application I
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508080"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319712"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
 
@@ -24,13 +24,13 @@ Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, tüm 
 
 **1. aracıyı indirin**
 
-[Applicationinsights-Agent-3.0.0-PREVIEW. 4. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar) dosyasını indirin
+[Applicationinsights-Agent-3.0.0-PREVIEW. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) dosyasını indirin
 
 **2. JVM 'yi aracıya işaret edin**
 
-Uygulamanızın `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar` JVM bağımsız değişkenlerini ekleyin
+`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar`Uygulamanızın JVM bağımsız değişkenlerini ekleyin
 
-Tipik JVM bağımsız değişkenleri `-Xmx512m` ve `-XX:+UseG1GC`içerir. Bu nedenle, bunların nereye ekleneceğini biliyorsanız, bunun nereye ekleneceğini zaten öğrenmiş olursunuz.
+Tipik JVM bağımsız değişkenleri `-Xmx512m` ve içerir `-XX:+UseG1GC` . Bu nedenle, bunların nereye ekleneceğini biliyorsanız, bunun nereye ekleneceğini zaten öğrenmiş olursunuz.
 
 Uygulamanızın JVM bağımsız değişkenlerini yapılandırmayla ilgili ek yardım için lütfen bkz. [3,0 Preview: JVM bağımsız değişkenlerini güncelleştirme ipuçları](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
 
@@ -44,7 +44,7 @@ Bir ortam değişkenini ayarlayarak aracıyı Application Insights kaynağına g
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Ya da adlı `ApplicationInsights.json`bir yapılandırma dosyası oluşturup, ile aynı dizine `applicationinsights-agent-3.0.0-PREVIEW.4.jar`yerleştirilerek aşağıdaki içerikle birlikte:
+Ya da adlı bir yapılandırma dosyası oluşturup, ile `ApplicationInsights.json` aynı dizine yerleştirilerek `applicationinsights-agent-3.0.0-PREVIEW.5.jar` aşağıdaki içerikle birlikte:
 
 ```json
 {
@@ -68,7 +68,7 @@ Bağlantı dizenizi Application Insights kaynağınız için bulabilirsiniz:
 
 ## <a name="configuration-options"></a>Yapılandırma seçenekleri
 
-`ApplicationInsights.json` Dosyasında, aşağıdakileri de yapılandırabilirsiniz:
+`ApplicationInsights.json`Dosyasında, aşağıdakileri de yapılandırabilirsiniz:
 
 * Bulut rolü adı
 * Bulut rolü örneği
@@ -132,7 +132,7 @@ Application Insights Java 3,0, Java SDK 'Sı 2. x Application Insights gönderil
 
 ## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Java SDK 2. x Application Insights kullanarak özel telemetri gönderme
 
-Uygulamanıza `applicationinsights-core-2.6.0.jar` ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
+`applicationinsights-core-2.6.0.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 
 ```xml
   <dependency>
@@ -150,7 +150,7 @@ private static final TelemetryClient telemetryClient = new TelemetryClient();
 
 ve bunu özel telemetri göndermek için kullanın.
 
-### <a name="events"></a>Olaylar
+### <a name="events"></a>Ekinlikler
 
   ```java
 telemetryClient.trackEvent("WinGame");

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2f3ea5f1810b5ca80e096b19e1dcf230e21eabcc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778829"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317639"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Öğretici: Yönetilen etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
@@ -70,9 +70,9 @@ Karma Azure AD katılımı, cihazların kuruluşunuzun ağının içinden aşağ
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com`(Sorunsuz SSO kullanmayı planlıyorsanız veya kullanıyorsanız)
 
-Kuruluşunuzun bir giden proxy aracılığıyla internet 'e erişmesi gerekiyorsa, Windows 10 bilgisayarları Azure AD 'ye cihaz kaydı için etkinleştirmek üzere [Web proxy otomatik bulma (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) uygulamanızı öneririz. WPAD yapılandırma ve yönetme sorunlarını gidermek için bkz. [otomatik algılama sorunlarını giderme](/previous-versions/tn-archive/cc302643(v=technet.10)).
+Kuruluşunuzun giden bir ara sunucu üzerinden İnternet 'e erişmesi gerekiyorsa, Azure AD ile cihaz kaydı için Windows 10 bilgisayarlarını etkinleştirmek üzere [Web proxy otomatik bulma 'yı (WPAD) uygulamayı](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) kullanabilirsiniz. WPAD yapılandırma ve yönetme sorunlarını gidermek için bkz. [otomatik algılama sorunlarını giderme](/previous-versions/tn-archive/cc302643(v=technet.10)). Windows 10 cihazlarında 1709 güncelleştirmesinden önce, WPAD, karma Azure AD JOIN ile çalışmak üzere bir proxy yapılandırmak için kullanılabilen tek seçenektir. 
 
-WPAD kullanmıyorsanız, bilgisayarınızda Windows 10 1709 ile başlayarak ara sunucu ayarlarını yapılandırabilirsiniz. Daha fazla bilgi için bkz. [GPO tarafından dağıtılan WinHTTP proxy ayarları](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+WPAD kullanmıyorsanız, bilgisayarınızda Windows 10 1709 ile başlayarak WinHTTP proxy ayarlarını yapılandırabilirsiniz. Daha fazla bilgi için bkz. [GPO tarafından dağıtılan WinHTTP proxy ayarları](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
 > [!NOTE]
 > Bilgisayarınızda, WinHTTP ayarlarını kullanarak ara sunucu ayarlarını yapılandırırsanız, yapılandırılmış ara sunucuya bağlanamamakta olan tüm bilgisayarlar internet 'e bağlanamaz.
@@ -222,7 +222,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 Etki alanına katılmış Windows cihazlarına yönelik karma Azure AD katılımı tamamlanırken sorunlarla karşılaşırsanız, bkz.:
 
 - [Dsregcmd komutunu kullanan cihazların sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
-- [Karma Azure Active Directory katılmış cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-current.md)
+- [Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme](troubleshoot-hybrid-join-windows-current.md)
 - [Karma Azure Active Directory katılmış alt düzey cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

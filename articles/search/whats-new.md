@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/08/2020
-ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/23/2020
+ms.openlocfilehash: 34aeda7534c15b51b9759b696caaf3fcfac88659
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736093"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317714"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -23,7 +23,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 ### <a name="june-2020"></a>Haziran 2020
 
-Azure Machine Learning Beceri, bir ının bir uç noktasını Azure Machine Learning tümleştirmede yeni yetenek türüdür Portal deneyimi, Azure Machine Learning uç noktasının Bilişsel Arama bir beceri içinde bulunmasını ve tümleştirilmesini destekler. Bulma Bilişsel Arama ve Azure ML hizmetlerinin aynı abonelikte dağıtılması gerekir. AML beceri önizlemesine kaydolmak için [lütfen formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın.
++ [Azure Machine Learning (AML) (Önizleme)](cognitive-search-aml-skill.md) , dizin oluşturma sırasında bir Azure Machine Learning modeli sarmalayan kullanılan bilişsel bir yetenişdir. Beceri sayesinde, daha önce eğitilen ve dağıtılan özel makine öğrenimini bir AI zenginleştirme işlem hattı ile tümleştirebilirsiniz. [Erişim istemek Için kaydolun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). AML becerisi eklemeye hazırsanız, Azure portal içindeki beceri düzenleyicisinde AML şablonunu kullanın. Uygulamalı yönergeler için [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın.
 
 ### <a name="may-2020-microsoft-build"></a>Mayıs 2020 (Microsoft derleme)
 

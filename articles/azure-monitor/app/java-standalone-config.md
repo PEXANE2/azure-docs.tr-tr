@@ -3,12 +3,12 @@ title: Java uygulamalarını her yerde izleyin-Azure Izleyici Application Insigh
 description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için codeless uygulama performansı izleme. Dağıtılmış izleme ve uygulama haritasını kullanarak sorunlar için temel nedenini bulur.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509219"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319695"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Yapılandırma seçenekleri-Azure Izleyici için Java tek başına aracı Application Insights
 
@@ -33,14 +33,14 @@ Daha fazla ayrıntı için aşağıda daha fazla ayrıntı ve ek yapılandırma 
 
 ## <a name="configuration-file-path"></a>Yapılandırma dosyası yolu
 
-Varsayılan olarak, Application Insights Java 3,0 Önizlemesi yapılandırma dosyasının adlandırıldığını `ApplicationInsights.json`ve ile aynı dizinde bulunmasını bekler. `applicationinsights-agent-3.0.0-PREVIEW.4.jar`
+Varsayılan olarak, Application Insights Java 3,0 Önizlemesi yapılandırma dosyasının adlandırıldığını `ApplicationInsights.json` ve ile aynı dizinde bulunmasını bekler `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
 
 Kendi yapılandırma dosya yolunuzu aşağıdakilerden birini kullanarak belirtebilirsiniz
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`ortam değişkeni veya
 * `applicationinsights.configurationFile`Java sistem özelliği
 
-Göreli bir yol belirtirseniz, bulunduğu dizine `applicationinsights-agent-3.0.0-PREVIEW.4.jar` göre çözümlenir.
+Göreli bir yol belirtirseniz, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
 
 ## <a name="connection-string"></a>Bağlantı dizesi
 
@@ -48,7 +48,7 @@ Bu gereklidir. Bağlantı dizenizi Application Insights kaynağınız için bula
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights bağlantı dizesi":::
 
-Ayrıca, ortam değişkenini `APPLICATIONINSIGHTS_CONNECTION_STRING`kullanarak bağlantı dizesini de ayarlayabilirsiniz.
+Ayrıca, ortam değişkenini kullanarak bağlantı dizesini de ayarlayabilirsiniz `APPLICATIONINSIGHTS_CONNECTION_STRING` .
 
 ## <a name="cloud-role-name"></a>Bulut rolü adı
 
@@ -68,7 +68,7 @@ Bulut rolü adını ayarlamak istiyorsanız:
 
 Bulut rolü adı ayarlanmamışsa, uygulama eşlemesindeki bileşeni etiketlemek için Application Insights kaynağın adı kullanılır.
 
-Ayrıca, ortam değişkenini `APPLICATIONINSIGHTS_ROLE_NAME`kullanarak bulut rolü adını da ayarlayabilirsiniz.
+Ayrıca, ortam değişkenini kullanarak bulut rolü adını da ayarlayabilirsiniz `APPLICATIONINSIGHTS_ROLE_NAME` .
 
 ## <a name="cloud-role-instance"></a>Bulut rolü örneği
 
@@ -86,13 +86,13 @@ Bulut rolü örneğini makine adı yerine farklı bir şekilde ayarlamak istiyor
 }
 ```
 
-Ayrıca, ortam değişkenini `APPLICATIONINSIGHTS_ROLE_INSTANCE`kullanarak bulut rolü örneğini ayarlayabilirsiniz.
+Ayrıca, ortam değişkenini kullanarak bulut rolü örneğini ayarlayabilirsiniz `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
 
 ## <a name="application-log-capture"></a>Uygulama günlüğü yakalama
 
 Application Insights Java 3,0 Preview, uygulama günlüğünü Log4J, Logback ve Java. util. Logging aracılığıyla otomatik olarak yakalar.
 
-Varsayılan olarak, `WARN` düzeyinde veya üzerinde gerçekleştirilen tüm günlük kaydını yakalar.
+Varsayılan olarak, düzeyinde veya üzerinde gerçekleştirilen tüm günlük kaydını yakalar `WARN` .
 
 Bu eşiği değiştirmek istiyorsanız:
 
@@ -110,7 +110,7 @@ Bu eşiği değiştirmek istiyorsanız:
 }
 ```
 
-Bunlar, `ApplicationInsights.json` dosyada belirtebileceğiniz `threshold` geçerli değerlerdir ve farklı günlük çerçeveleri genelinde günlük düzeylerine nasıl karşılık gelmektedir:
+Bunlar `threshold` , dosyada belirtebileceğiniz geçerli değerlerdir `ApplicationInsights.json` ve farklı günlük çerçeveleri genelinde günlük düzeylerine nasıl karşılık gelmektedir:
 
 | `threshold`  | Log4J  | Logback | TEM     |
 |--------------|--------|---------|---------|
@@ -123,7 +123,7 @@ Bunlar, `ApplicationInsights.json` dosyada belirtebileceğiniz `threshold` geçe
 | HATA AYıKLAMA/INCE   | HATA AYIKLAMA  | HATA AYIKLAMA   | AYRıNTı    |
 | ZARIF        | HATA AYIKLAMA  | HATA AYIKLAMA   | ZARIF   |
 | IZLEME/FINEST | TRACE  | TRACE   | FıNEST  |
-| TÜMÜ          | TÜMÜ    | TÜMÜ     | TÜMÜ     |
+| ALL          | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX ölçümleri
 
@@ -237,7 +237,7 @@ Uygulamanız bir güvenlik duvarının arkasındaysa ve Application Insights do�
 
 Bu, Application Insights ile ilgili sorunları saptamak ve tanılamak için yararlı olabilir.
 
-Varsayılan olarak, bu yapılandırmaya karşılık gelen ve düzeyi `warn`olan konsola kaydedilir:
+Varsayılan olarak, `warn` Bu yapılandırmaya karşılık gelen ve düzeyi olan konsola kaydedilir:
 
 ```json
 {
@@ -252,7 +252,7 @@ Varsayılan olarak, bu yapılandırmaya karşılık gelen ve düzeyi `warn`olan 
 }
 ```
 
-`OFF`Geçerli Düzeyler, `ERROR` `WARN` `INFO` `TRACE`,,, ve. `DEBUG`
+Geçerli Düzeyler,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` ve `TRACE` .
 
 Konsola kaydetmek yerine bir dosyaya oturum açmak istiyorsanız:
 
@@ -271,4 +271,4 @@ Konsola kaydetmek yerine bir dosyaya oturum açmak istiyorsanız:
 }
 ```
 
-Dosya günlüğü kullanılırken, dosya isabetlerine `maxSizeMB`ulaştıktan sonra, geçerli günlük dosyasına ek olarak yalnızca en son tamamlanan günlük dosyasını tutarak geçiş yapılır.
+Dosya günlüğü kullanılırken, dosya isabetlerine ulaştıktan sonra, `maxSizeMB` geçerli günlük dosyasına ek olarak yalnızca en son tamamlanan günlük dosyasını tutarak geçiş yapılır.

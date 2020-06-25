@@ -1,21 +1,14 @@
 ---
 title: Python (eski) kullanarak Azure Event Hubs olay gönderme veya alma
 description: Bu izlenecek yol, Azure Event Hubs eski Azure-eventhub sürüm 1 paketini kullanarak olayları gönderen veya olayları alan Python betikleri oluşturmayı ve çalıştırmayı gösterir.
-services: event-hubs
-author: spelluru
-manager: femila
-ms.service: event-hubs
-ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
-ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/23/2020
+ms.openlocfilehash: 4ce53d2d82a00f98dbbd538bd7a61da9ba44e832
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558964"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314484"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Hızlı başlangıç: Python kullanarak Event Hubs olay gönderme ve alma (Azure-eventhub sürüm 1)
 Bu hızlı başlangıçta, **Azure-eventhub sürüm 1** Python paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilmektedir. 

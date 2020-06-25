@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d240a212f898c917fd9c55b837210191eab704e5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015939"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319573"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop kullanarak Data Lake Storage 1. ve Azure SQL veritabanı arasında veri kopyalama
 
@@ -22,7 +22,7 @@ Verileri Azure SQL veritabanı ve Azure Data Lake Storage 1. arasında içeri ve
 
 Büyük veri uygulamaları, Günlükler ve dosyalar gibi yapılandırılmamış ve yarı yapılandırılmış verileri işlemeye yönelik doğal bir seçimdir. Bununla birlikte, ilişkisel veritabanlarında depolanan yapılandırılmış verileri de işlemek zorunda kalabilirsiniz.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) , ilişkisel veritabanları ve Data Lake Storage 1. gibi büyük bir veri deposu arasında veri aktarmak için tasarlanan bir araçtır. Azure SQL veritabanı gibi bir ilişkisel veritabanı yönetim sisteminden (RDBMS) verileri Data Lake Storage 1. içine aktarmak için bu işlemi kullanabilirsiniz. Daha sonra büyük veri iş yüklerini kullanarak verileri dönüştürebilir ve analiz edebilir ve ardından verileri bir RDBMS 'ye geri aktarabilirsiniz. Bu makalede, bir Azure SQL veritabanını içeri/dışarı aktarmak için ilişkisel veritabanınız olarak kullanacaksınız.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) , ilişkisel veritabanları ve Data Lake Storage 1. gibi büyük bir veri deposu arasında veri aktarmak için tasarlanan bir araçtır. Azure SQL veritabanı gibi bir ilişkisel veritabanı yönetim sisteminden (RDBMS) verileri Data Lake Storage 1. içine aktarmak için bu işlemi kullanabilirsiniz. Daha sonra büyük veri iş yüklerini kullanarak verileri dönüştürebilir ve analiz edebilir ve ardından verileri bir RDBMS 'ye geri aktarabilirsiniz. Bu makalede, Azure SQL veritabanı 'nda içeri/dışarı aktarılacak ilişkisel veritabanınız olarak bir veritabanı kullanırsınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,11 +31,11 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. Hesabı oluşturma hakkında yönergeler için bkz. [Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)
 * Data Lake Storage 1. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Data Lake Storage 1. HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md). Bu makalede Data Lake Storage 1. erişimi olan bir HDInsight Linux kümeniz olduğunu varsaymaktadır.
-* **Azure SQL veritabanı**. Bir oluşturma hakkında yönergeler için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started.md)
+* **Azure SQL veritabanı**. Azure SQL veritabanı 'nda veritabanı oluşturma hakkında yönergeler için bkz. [Azure SQL veritabanı 'nda veritabanı oluşturma](../sql-database/sql-database-get-started.md)
 
-## <a name="create-sample-tables-in-the-azure-sql-database"></a>Azure SQL veritabanında örnek tablolar oluşturma
+## <a name="create-sample-tables-in-the-database"></a>Veritabanında örnek tablolar oluşturma
 
-1. Başlamak için, Azure SQL veritabanında iki örnek tablo oluşturun. Veritabanına bağlanmak ve ardından aşağıdaki sorguları çalıştırmak için [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) veya Visual Studio kullanın.
+1. Başlamak için veritabanında iki örnek tablo oluşturun. Veritabanına bağlanmak ve ardından aşağıdaki sorguları çalıştırmak için [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) veya Visual Studio kullanın.
 
     **Table1 oluştur**
 
@@ -87,7 +87,7 @@ An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depola
 
        sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-   **SQL-Database-Server-Name** yer tutucusu, Azure SQL veritabanının çalıştığı sunucunun adını temsil eder. **SQL-Database-Name** yer tutucusu gerçek veritabanı adını temsil eder.
+   **SQL-Database-Server-Name** yer tutucusu, veritabanının çalıştığı sunucunun adını temsil eder. **SQL-Database-Name** yer tutucusu gerçek veritabanı adını temsil eder.
 
    Örneğin,
 

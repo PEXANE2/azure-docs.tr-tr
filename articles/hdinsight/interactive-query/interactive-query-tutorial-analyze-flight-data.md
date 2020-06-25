@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021747"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319200"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme
 
-Bu öğreticide, genel kullanıma açık uçuş verilerinin ham CSV veri dosyasını indirirler. Bunu HDInsight küme depolamasına içeri aktarın ve ardından Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri dönüştürün. Veriler dönüştürüldükten sonra, bu verileri [Apache Sqoop](https://sqoop.apache.org/)kullanarak BIR Azure SQL veritabanına yüklersiniz.
+Bu öğreticide, genel kullanıma açık uçuş verilerinin ham CSV veri dosyasını indirirler. Bunu HDInsight küme depolamasına içeri aktarın ve ardından Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri dönüştürün. Veriler dönüştürüldükten sonra, bu verileri [Apache Sqoop](https://sqoop.apache.org/)kullanarak Azure SQL veritabanı 'nda bir veritabanına yüklersiniz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -25,14 +25,14 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Örnek uçuş verilerini indirme
 > * Verileri bir HDInsight kümesine yükleme
 > * Etkileşimli sorgu kullanarak verileri dönüştürme
-> * Azure SQL veritabanında tablo oluşturma
-> * Azure SQL veritabanına veri aktarmak için Sqoop kullanma
+> * Azure SQL veritabanı 'nda bir veritabanında tablo oluşturma
+> * Azure SQL veritabanındaki bir veritabanına veri aktarmak için Sqoop kullanma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde etkileşimli bir sorgu kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **etkileşimli sorgu** seçme.
 
-* Bir Azure SQL veritabanı. Azure SQL veritabanını bir hedef veri deposu olarak kullanacaksınız. SQL veritabanınız yoksa bkz. [Azure portalında Azure SQL veritabanı oluşturma](/azure/sql-database/sql-database-single-database-get-started).
+* Azure SQL veritabanı 'nda bir veritabanı. Veritabanını hedef veri deposu olarak kullanırsınız. Azure SQL veritabanında bir veritabanınız yoksa, bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](/azure/sql-database/sql-database-single-database-get-started).
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -252,7 +252,7 @@ SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aş
 
 ## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Apache Sqoop kullanarak verileri SQL veritabanı 'na aktarma
 
-Önceki bölümlerde, `/tutorials/flightdelays/output` konumunda dönüştürülen verileri kopyaladınız. Bu bölümde, verileri `/tutorials/flightdelays/output` dizininden Azure SQL veritabanında oluşturduğunuz tabloya aktarmak için Sqoop kullanacaksınız.
+Önceki bölümlerde, `/tutorials/flightdelays/output` konumunda dönüştürülen verileri kopyaladınız. Bu bölümde, verileri `/tutorials/flightdelays/output` Azure SQL veritabanı 'nda oluşturduğunuz tabloya aktarmak Için Sqoop 'yi kullanırsınız.
 
 1. Sqoop 'nin SQL veritabanınızı aşağıdaki komutu girerek görebildiğini doğrulayın:
 

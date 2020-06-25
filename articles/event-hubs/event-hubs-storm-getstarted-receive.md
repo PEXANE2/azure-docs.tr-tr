@@ -1,26 +1,14 @@
 ---
 title: 'Hızlı başlangıç: Apache Storm Azure Event Hubs kullanarak olay alma'
 description: 'Hızlı başlangıç: Bu makalede, Azure Event Hubs Apache Storm kullanarak nasıl olay alınacağı hakkında bilgi sağlanır.'
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: java
-ms.devlang: multiple
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73717617"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315367"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Hızlı başlangıç: Event Hubs Apache Storm kullanarak olay alma
 
@@ -36,7 +24,7 @@ Hızlı başlangıç ile başlamadan önce **bir Event Hubs ad alanı ve bir ola
 Bu öğretici, zaten kullanılabilir Event Hubs Spout ile birlikte gelen bir [HDInsight fırtınası][HDInsight Storm] yüklemesi kullanır.
 
 1. Yeni bir HDInsight kümesi oluşturmak ve Uzak Masaüstü aracılığıyla buna bağlanmak için [HDInsight fırtınası-başlangıç](../hdinsight/storm/apache-storm-overview.md) yordamını izleyin.
-2. `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` Dosyayı yerel geliştirme ortamınıza kopyalayın. Bu,-fırtınası-Spout olaylarını içerir.
+2. `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar`Dosyayı yerel geliştirme ortamınıza kopyalayın. Bu,-fırtınası-Spout olaylarını içerir.
 3. Paketi yerel Maven deposuna yüklemek için aşağıdaki komutu kullanın. Bu, daha sonraki bir adımda bunu, fırtınası projesine bir başvuru olarak eklemenize olanak sağlar.
 
     ```shell
@@ -48,7 +36,7 @@ Bu öğretici, zaten kullanılabilir Event Hubs Spout ile birlikte gelen bir [HD
 5. **Varsayılan çalışma alanı konumunu kullan**öğesini seçin ve ardından **İleri** ' ye tıklayın
 6. **Maven-arşiv ETYPE-hızlı başlangıç** arşiv ETYPE ' ı seçin ve **İleri** ' ye tıklayın.
 7. Bir **GroupID** ve **ArtifactId**yerleştirip **son** ' a tıklayın.
-8. **Pod. xml**dosyasında aşağıdaki bağımlılıkları `<dependency>` düğümüne ekleyin.
+8. **pom.xml**, düğümüne aşağıdaki bağımlılıkları ekleyin `<dependency>` .
 
     ```xml  
     <dependency>
@@ -80,7 +68,7 @@ Bu öğretici, zaten kullanılabilir Event Hubs Spout ile birlikte gelen bir [HD
     </dependency>
     ```
 
-9. **Src** klasöründe, **config. Properties** adlı bir dosya oluşturun ve `receive rule key` ve `event hub name` değerlerini değiştirerek aşağıdaki içeriği kopyalayın:
+9. **Src** klasöründe, **config. Properties** adlı bir dosya oluşturun ve ve değerlerini değiştirerek aşağıdaki içeriği kopyalayın `receive rule key` `event hub name` :
 
     ```java
     eventhubspout.username = ReceiveRule

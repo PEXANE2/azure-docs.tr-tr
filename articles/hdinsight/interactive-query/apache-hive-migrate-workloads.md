@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 003ee13220e9e8aae252e1a976d579beac870052
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4f1154b994e512521edf22a3b8dc5819a93a5249
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015021"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319217"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -34,7 +34,7 @@ Hive 'nin bir avantajı, meta verileri bir dış veritabanına dışarı aktarma
 HDInsight 3,6 ve HDInsight 4,0 ACID tabloları ACID değişimleri 'ı farklı şekilde anlayın. Geçişten önce gereken tek eylem, 3,6 kümesindeki her bir ACID tablosuna göre ' Ana ' sıkıştırmayı çalıştırmak içindir. Düzenleme hakkındaki ayrıntılar için [Hive dilinde el ile](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) bakın.
 
 ### <a name="2-copy-sql-database"></a>2. SQL veritabanı 'nı kopyalayın
-Dış meta veri deposu 'nun yeni bir kopyasını oluşturun. Dış meta veri deposu kullanıyorsanız, meta veri geri yükleme 'nin bir kopyasını oluşturmanın güvenli ve kolay yöntemlerinden biri, SQL veritabanı geri yükleme işlevini kullanarak veritabanını farklı bir adla [geri yüklemektir](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) .  HDInsight kümesine dış meta veri deposu ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](../hdinsight-use-external-metadata-stores.md) .
+Dış meta veri deposu 'nun yeni bir kopyasını oluşturun. Dış bir meta veri deposu kullanıyorsanız, meta veri deposu 'nun bir kopyasını oluşturmanın güvenli ve kolay yöntemlerinden biri işlevi kullanarak veritabanını farklı bir adla [geri yüklemektir](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) `RESTORE` .  HDInsight kümesine dış meta veri deposu ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](../hdinsight-use-external-metadata-stores.md) .
 
 ### <a name="3-upgrade-metastore-schema"></a>3. meta veri deposu şemasını yükselt
 Meta veri **kopyalama** işlemi tamamlandıktan sonra, yeni meta veri deposunu Hive 3 şemasına yükseltmek Için mevcut HDInsight 3,6 kümesindeki [komut dosyası eyleminde](../hdinsight-hadoop-customize-cluster-linux.md) bir şema yükseltme betiği çalıştırın. (Bu adım, yeni meta veri deposunu bir kümeye bağlanmasını gerektirmez.) Bu, veritabanının HDInsight 4,0 meta veri deposu olarak eklenmesini sağlar.
