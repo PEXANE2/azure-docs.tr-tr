@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74227078"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340864"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle
 
@@ -34,7 +34,7 @@ Bu makalede, bir depolama hesabı tarafından oluşturulan Azure Event Grid olay
 
 ![Konumu Kopyala](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
 
-Sonra, ile `log.LogInformation`başlayan satırda bir kesme noktası ayarlayın.
+Sonra, ile başlayan satırda bir kesme noktası ayarlayın `log.LogInformation` .
 
 ![Kesme noktası ayarla](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
@@ -62,7 +62,7 @@ Azure portal açın ve bir depolama hesabına gidin ve **Olaylar** seçeneğine 
 
 ![Depolama hesabı ekleme olayı](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-*Olaylar* penceresinde **olay aboneliği** düğmesine tıklayın. *Çift abonelik* penceresinde, *uç nokta türü* açılan listesine tıklayın ve **Web kancası**' yi seçin.
+*Olaylar* penceresinde **olay aboneliği** düğmesine tıklayın. *Olay aboneliği* penceresinde, *uç nokta türü* açılan listesine tıklayın ve **Web kancası**' yi seçin.
 
 ![Abonelik türünü seçin](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
@@ -70,7 +70,7 @@ Uç nokta türü yapılandırıldıktan sonra uç nokta değerini yapılandırma
 
 ![Uç nokta türünü seçin](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-*Abone uç noktası* değeri üç farklı değerden oluşur. Ön ek, *ngrok*tarafından oluşturulan https URL 'sidir. URL 'nin geri kalanı işlev kodu dosyasında bulunan URL 'den gelir ve işlev adı sona eklenir. İşlev kodu dosyasındaki URL 'den başlayarak, *ngrok* URL 'sinin yerini `http://localhost:7071` alır ve işlev adı değiştirilir `{functionname}`.
+*Abone uç noktası* değeri üç farklı değerden oluşur. Ön ek, *ngrok*tarafından oluşturulan https URL 'sidir. URL 'nin geri kalanı işlev kodu dosyasında bulunan URL 'den gelir ve işlev adı sona eklenir. İşlev kodu dosyasındaki URL 'den başlayarak, *ngrok* URL 'sinin yerini alır `http://localhost:7071` ve işlev adı değiştirilir `{functionname}` .
 
 Aşağıdaki ekran görüntüsünde, son URL 'nin nasıl aranacağı gösterilmektedir:
 

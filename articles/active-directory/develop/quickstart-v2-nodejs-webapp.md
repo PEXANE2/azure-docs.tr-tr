@@ -1,6 +1,6 @@
 ---
-title: Node. js web uygulamasına OıDC oturumu ekleme-Microsoft Identity platform | Mavisi
-description: OpenID Connect kullanarak bir Node. js web uygulamasında kimlik doğrulamanın nasıl uygulanacağını öğrenin.
+title: Node.js Web uygulamasına OıDC oturumu ekleme-Microsoft Identity platform | Mavisi
+description: OpenID Connect kullanarak Node.js Web uygulamasında kimlik doğrulamanın nasıl uygulanacağını öğrenin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +11,24 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536072"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339899"
 ---
-# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: bir Node. js web uygulamasına OpenID Connect ile oturum açma ekleme
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
-Bu hızlı başlangıçta, Express ile Node. js kullanılarak oluşturulan bir Web uygulamasında OpenID Connect kimlik doğrulamasını ayarlamayı öğreneceksiniz. Örnek, herhangi bir platformda çalışmak üzere tasarlanmıştır.
+Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir Web uygulamasında OpenID Connect kimlik doğrulamasını ayarlamayı öğreneceksiniz. Örnek, herhangi bir platformda çalışmak üzere tasarlanmıştır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
-* Node. js ' den Installhttp://nodejs.org/
+* Node.js şuradan yüklensinhttp://nodejs.org/
 
-* [Microsoft hesabı](https://www.outlook.com) veya [Office 365 Geliştirici Programı](/office/developer-program/office-365-developer-program)
+* Bir [Microsoft hesabı](https://www.outlook.com) ya da [Microsoft 365 Geliştirici Programı](/office/developer-program/office-365-developer-program)
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 1. [Azure Portal](https://portal.azure.com/) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
@@ -52,7 +52,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 
 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
     - **Yeniden yönlendirme URI 'leri** bölümünde, açılan kutudan **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin:`http://localhost:3000/auth/openid/return`
-    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak `http://localhost:3000`ayarlayın.
+    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın `http://localhost:3000` .
     - **Gelişmiş ayarlar > örtük verme** bölümünde, **kimlik belirteçlerini** denetleyin, bu örnek, kullanıcının oturum açması için [örtük verme akışının](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) etkinleştirilmesini gerektirir.
 
 1. **Kaydet**’i seçin.
@@ -72,7 +72,7 @@ Kabuk veya komut satırınızdan:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
-or
+veya
 
 `$ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -82,23 +82,23 @@ Proje kök dizininden komutunu çalıştırın:
 
 ## <a name="configure-the-application"></a>Uygulamayı yapılandırma
 
-Parametreleri ' `exports.creds` de config. js ' de belirtildiği gibi sağlayın.
+config.js içindeki parametreleri `exports.creds` belirtildiği gibi sağlayın.
 
-* ' `<tenant_name>` `exports.identityMetadata` Da Azure ad kiracı adı. onmicrosoft.com biçiminde \*güncelleştirin.
-* Uygulama `exports.clientID` kaydından BELIRTILEN uygulama kimliğiyle güncelleştirin.
-* Uygulama `exports.clientSecret` kaydınızdan belirtilen uygulama gizli anahtarı ile güncelleştirin.
-* Uygulama `exports.redirectUrl` kaydından belirtilen YENIDEN yönlendirme URI 'siyle güncelleştirin.
+* `<tenant_name>`' Da `exports.identityMetadata` Azure AD kiracı adı \* . onmicrosoft.com biçiminde güncelleştirin.
+* Uygulama `exports.clientID` kaydından belirtilen uygulama kimliğiyle güncelleştirin.
+* `exports.clientSecret`Uygulama kaydınızdan belirtilen uygulama gizli anahtarı ile güncelleştirin.
+* `exports.redirectUrl`Uygulama kaydından belirtilen yeniden YÖNLENDIRME URI 'siyle güncelleştirin.
 
 **Üretim uygulamaları için isteğe bağlı yapılandırma:**
 
-* Farklı `exports.destroySessionUrl` `post_logout_redirect_uri`bir kullanmak istiyorsanız, config. js ' de güncelleştirin.
+* `exports.destroySessionUrl`Farklı bir kullanmak istiyorsanız config.js güncelleştirin `post_logout_redirect_uri` .
 
-* `exports.useMongoDBSessionStore` [MongoDB](https://www.mongodb.com) veya diğer [uyumlu oturum depolarını](https://github.com/expressjs/session#compatible-session-stores)kullanmak istiyorsanız config. js içinde true olarak ayarlayın.
-Bu örnekteki varsayılan oturum depolama alanı `express-session`. Varsayılan oturum deposu üretime uygun değil.
+* `exports.useMongoDBSessionStore` [MongoDB](https://www.mongodb.com) veya diğer [uyumlu oturum depolarını](https://github.com/expressjs/session#compatible-session-stores)kullanmak istiyorsanız, config.js true olarak ayarlayın.
+Bu örnekteki varsayılan oturum depolama alanı `express-session` . Varsayılan oturum deposu üretime uygun değil.
 
-* MongoDB oturum deposunu ve farklı bir veritabanı URI 'sini kullanmak istiyorsanız güncelleştirin `exports.databaseUri`.
+* `exports.databaseUri`MongoDB oturum deposunu ve farklı bir veritabanı URI 'sini kullanmak istiyorsanız güncelleştirin.
 
-* Güncelleştirin `exports.mongoDBSessionMaxAge`. Burada, mongoDB 'de bir oturumu ne kadar süreyle saklamak istediğinizi belirtebilirsiniz. Birim saniye (sn).
+* Güncelleştirin `exports.mongoDBSessionMaxAge` . Burada, mongoDB 'de bir oturumu ne kadar süreyle saklamak istediğinizi belirtebilirsiniz. Birim saniye (sn).
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
@@ -110,7 +110,7 @@ Komut satırınızdan aşağıdaki komutu kullanarak uygulamayı çalıştırın
 $ node app.js
 ```
 
-**Sunucu çıkışının anlaşılması zor mi?:** Bu örnekte `bunyan` günlüğe kaydetmek için kullanıyoruz. Ayrıca, Bunyan ' i yüklemediğiniz ve sunucuyu yukarıdaki gibi çalıştırarak, Bunyan ikilisini kullanarak, konsolu sizin için çok anlamlı hale getirir:
+**Sunucu çıkışının anlaşılması zor mi?:** `bunyan`Bu örnekte günlüğe kaydetmek için kullanıyoruz. Ayrıca, Bunyan ' i yüklemediğiniz ve sunucuyu yukarıdaki gibi çalıştırarak, Bunyan ikilisini kullanarak, konsolu sizin için çok anlamlı hale getirir:
 
 ```
 $ npm install -g bunyan
@@ -120,7 +120,7 @@ $ node app.js | bunyan
 
 ### <a name="youre-done"></a>İşiniz bitti!
 
-Sunucusunda başarıyla çalışan bir sunucu olacak `http://localhost:3000`.
+Sunucusunda başarıyla çalışan bir sunucu olacak `http://localhost:3000` .
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

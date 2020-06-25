@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffe00c3df4abd924fca202d2bcdd0ec458dd3eb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79088076"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355344"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science süreci nedir?
 
@@ -26,12 +26,12 @@ Bu makalede, TDSP ve ana bileşenlerine ilişkin bir genel bakış sunulmaktadı
 
 ## <a name="key-components-of-the-tdsp"></a>TDSP 'nin önemli bileşenleri
 
-TDSP aşağıdaki anahtar bileşenlerinden oluşur:
+TDSP hads aşağıdaki anahtar bileşenleri:
 
 - **Veri bilimi yaşam döngüsü** tanımı
 - **Standartlaştırılmış bir proje yapısı**
-- Veri bilimi projeleri için **altyapı ve kaynaklar**
-- Proje yürütmesi için **Araçlar ve yardımcı programlar**
+- Veri bilimi projeleri için önerilen **altyapı ve kaynaklar**
+- Proje yürütmesi için önerilen **Araçlar ve yardımcı programlar**
 
 
 ## <a name="data-science-lifecycle"></a>Veri bilimi yaşam döngüsü
@@ -48,7 +48,6 @@ Yaşam döngüsü, projelerin tipik olarak yürütülen ana aşamaları özetler
 * **Veri alma ve anlama**
 * **Modelleme**
 * **Dağıtım**
-* **Müşteri kabulü**
 
 **Team Data Science işlem yaşam döngüsünün**görsel bir gösterimi aşağıda verilmiştir. 
 
@@ -58,7 +57,9 @@ TDSP yaşam döngüsünün her aşamasına yönelik hedefler, görevler ve belge
 
 - Çözüm mimarı
 - Proje yöneticisi
+- Veri mühendisi
 - Veri bilimcisi
+- Uygulama geliştiricisi
 - Proje lideri 
 
 Aşağıdaki diyagramda, bu roller (dikey eksende) için yaşam döngüsünün (yatay eksende) her bir aşamasında ilişkili görevlerin (mavi renkli) ve yapıtların (yeşil renkte) bir ızgara görünümü sunulmaktadır. 
@@ -69,7 +70,7 @@ Aşağıdaki diyagramda, bu roller (dikey eksende) için yaşam döngüsünün (
 
 Tüm projelerin bir dizin yapısını paylaşmasını ve proje belgeleri için şablon kullanmasını sağlamak, takım üyelerinin projelerle ilgili bilgileri bulmasını kolaylaştırır. Tüm kod ve belgeler, Ekip işbirliğini sağlamak için git, TFS veya alt sürüm gibi bir sürüm denetim sisteminde (VC) depolanır. Jira, R, ve Azure DevOps gibi çevik bir proje izleme sisteminde bulunan görevleri ve özellikleri izlemek, kodun tek tek özellikler için daha yakından izlenmesine olanak tanır. Bu tür izleme ekiplerin daha iyi maliyet tahminleri almasına de olanak sağlar. TDSP, sürüm oluşturma, bilgi güvenliği ve işbirliği için VC üzerinde her proje için ayrı bir depo oluşturulmasını önerir. Tüm projelerin standartlaştırılmış yapısı, kuruluş genelinde kurumsal bilgi oluşturmaya yardımcı olur.
 
-Klasör yapısına ve gerekli belgelere standart konumlarda şablonlar sağlıyoruz. Bu klasör yapısı, veri araştırması ve özellik ayıklama için kod içeren dosyaları düzenler ve bu model yinelemelerini kaydeder. Bu şablonlar, takım üyelerinin diğerlerinin yaptığı işleri anlamalarına ve takımlara yeni üyeler eklemesine daha kolay hale getirir. Belge şablonlarını markın biçiminde görüntülemek ve güncelleştirmek kolaydır. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örneklere şunlar dahildir:
+Klasör yapısına ve gerekli belgelere standart konumlarda şablonlar sağlıyoruz. Bu klasör yapısı, veri araştırması ve özellik ayıklama için kod içeren dosyaları düzenler ve bu model yinelemelerini kaydeder. Bu şablonlar, takım üyelerinin diğerlerinin yaptığı işleri anlamalarına ve takımlara yeni üyeler eklemesine daha kolay hale getirir. Belge şablonlarını markın biçiminde görüntülemek ve güncelleştirmek kolaydır. Her bir proje için önemli sorulara denetim listeleri sağlamak üzere şablonlar kullanın ve bu da sorunun iyi tanımlandığını ve teslim edilebilirler beklenen kaliteyi karşıladığından emin olur. Örnekler arasında şunlar yer almaktadır:
 
 - projenin iş sorununu ve kapsamını belgeleyici bir proje
 - ham verilerin yapısını ve istatistiklerini belgelemek için veri raporları
@@ -87,7 +88,7 @@ TDSP, paylaşılan analizler ve depolama altyapısını yönetmeye yönelik öne
 
 - veri kümelerini depolamak için bulut dosya sistemleri 
 - veritabanları
-- büyük veri (Hadoop veya Spark) kümeleri 
+- büyük veri (SQL veya Spark) kümeleri 
 - Machine Learning hizmeti 
 
 Ham ve işlenen veri kümelerinin depolandığı analiz ve depolama altyapısı, bulutta veya şirket içinde olabilir. Bu altyapı, tekrarlanabilir analizler sunar. Ayrıca, tutarsızlıklara ve gereksiz altyapı maliyetlerine neden olabilecek yinelemeyi de önler. Araçlar, paylaşılan kaynakları sağlamak, onları izlemek ve her bir ekip üyesinin bu kaynaklara güvenli bir şekilde bağlanmasına izin vermek için sağlanır. Ayrıca, proje üyelerinin tutarlı bir işlem ortamı oluşturması için de iyi bir uygulamadır. Daha sonra, farklı takım üyeleri denemeleri çoğaltabilir ve doğrulayabilir.

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service 'te (AKS) Windows Server düğüm havuzlar
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: e03343bc0bf8d2b49d2322573e75fe76cc853e32
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976617"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339880"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Windows Server düğüm havuzları ve uygulama iş yükleri için geçerli sınırlamalar
 
@@ -85,7 +85,7 @@ Adı en fazla 6 (altı) karaktere saklamanız gerekir. Bu, AKS 'in geçerli bir 
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Tüm özellikler Windows düğümleriyle destekleniyor mu?
 
-Ağ ilkeleri ve Kubernetes kullanan Şu anda Windows düğümleri ile desteklenmemektedir. 
+Ağ ilkeleri ve Kubernetes kullanan Şu anda Windows düğümleri ile desteklenmemektedir.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Giriş denetleyicilerini Windows düğümlerinde çalıştırabilir miyim?
 
@@ -101,7 +101,7 @@ Grup tarafından yönetilen hizmet hesapları (gMSA) desteği şu anda AKS 'de k
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Windows düğümleri ve kapsayıcılarıyla kapsayıcılar için Azure Izleyici kullanabilir miyim?
 
-Evet, ancak Azure Izleyici, Windows desteği için bir [sınırlama][azure-monitor] kümesine sahiptir.
+Evet, ancak Azure Izleyici, Windows kapsayıcılarından günlükleri (stdout, stderr) ve ölçümleri toplamak için genel önizlemede bulunabilir. Ayrıca, bir Windows kapsayıcısından stdout günlüklerinin canlı akışına de ekleyebilirsiniz.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Desteklenmeyen bir özelliğe ihtiyacım varsa ne olur?
 

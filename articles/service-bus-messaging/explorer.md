@@ -1,19 +1,14 @@
 ---
 title: Service Bus üzerinde veri işlemleri gerçekleştirmek için Azure Service Bus Gezginini Kullanma (Önizleme)
 description: Bu makalede, Azure Service Bus verilerine erişmek için portal tabanlı Azure Service Bus Gezginini kullanma hakkında bilgi sağlanır.
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 03/04/2020
-ms.author: aschhab
-ms.openlocfilehash: 8f53b5e41c67ca1990edd011677b25f3a9a601d1
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 06/23/2020
+ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776772"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340550"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus üzerinde veri işlemleri gerçekleştirmek için Service Bus Gezginini Kullanma (Önizleme)
 

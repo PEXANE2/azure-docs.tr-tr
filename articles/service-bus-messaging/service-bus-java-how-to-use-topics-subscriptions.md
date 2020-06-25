@@ -1,26 +1,16 @@
 ---
 title: Java ile Azure Service Bus konuları ve abonelikleri kullanma
 description: Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ardından aboneliklerden ilgili konuya ileti almak için Java kodu yazın.
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e025adfd3d8a29bc07cf14803f572dcba1097fd6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fb8e5196077e60c20d9354459cafe85302ad0e45
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791077"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341426"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Hızlı başlangıç: Java ile Service Bus konuları ve abonelikleri kullanma
 
@@ -49,7 +39,7 @@ Ayrıca, aşağıdaki JARs öğesini Java derleme yoluna eklemeniz gerekir:
 - Commons-cli-1.4. jar
 - Proton-j-0.21.0. jar
 
-**Main** yöntemine sahip bir sınıf ekleyin ve ardından Java dosyasının en üstüne aşağıdaki `import` deyimleri ekleyin:
+**Main** yöntemine sahip bir sınıf ekleyin ve ardından `import` Java dosyasının en üstüne aşağıdaki deyimleri ekleyin:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -70,7 +60,7 @@ Bir **Topicclient** nesnesi oluşturmak için **Main** yöntemini güncelleştir
 
 > [!NOTE] 
 > - `<NameOfServiceBusNamespace>` yerine Service Bus ad alanınızın adını yazdığınızdan emin olun. 
-> - Ad `<AccessKey>` alanınız için erişim anahtarıyla değiştirin.
+> - `<AccessKey>`Ad alanınız için erişim anahtarıyla değiştirin.
 
 ```java
 public class MyServiceBusTopicClient {

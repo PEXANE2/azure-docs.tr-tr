@@ -1,24 +1,14 @@
 ---
 title: İletileri, yükleri ve Serileştirmeyi Azure Service Bus | Microsoft Docs
 description: Bu makalede, Azure Service Bus iletiler, yük, ileti yönlendirme ve serileştirme hakkında genel bir bakış sunulmaktadır.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 11e56ae2483a254fb00e3593da7841f3f3d844f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759406"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341681"
 ---
 # <a name="messages-payloads-and-serialization"></a>İletiler, yükler ve serileştirme
 
@@ -32,9 +22,9 @@ Service Bus ileti, Service Bus hiçbir biçimde hizmet tarafında hiçbir şekil
  
 AMQP protokol düzeyinde kullanılan eşdeğer adlar parantez içinde listelenmiştir. 
 
-| Özellik Adı                         | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Özellik Adı                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (içerik türü)           | İsteğe bağlı olarak, RFC2045 biçimini izleyen bir tanımlayıcı ile ileti yükünü açıklar, Bölüm 5; Örneğin, `application/json`.                                                                                                                                                                                                                                                                                             |
+|  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (içerik türü)           | İsteğe bağlı olarak, RFC2045 biçimini izleyen bir tanımlayıcı ile ileti yükünü açıklar, Bölüm 5; Örneğin, `application/json` .                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (bağıntı kimliği)       | Bir uygulamanın, bağıntı amaçları doğrultusunda ileti için bir bağlam belirtmesini sağlar; Örneğin, yanıtmakta olan bir iletinin **MessageID** ' i yansıtmaktadır.                                                                                                                                                                                                                                                                  |
 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource)                      | Yalnızca, atılacak iletileri ve daha sonra teslim edilemeyen ileti sırasından başka bir varlığa otomatik olarak iletilen iletilerde ayarlanır. İletinin atılacak varlığı gösterir. Bu özellik salt okunur durumdadır.                                                                                                                                                                                                                                  |
 | [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount)                         | Bu ileti için denenen teslimler sayısı. Bir ileti kilidinin süresi dolarsa sayı artırılır veya ileti alıcı tarafından açıkça terk edilir. Bu özellik salt okunur durumdadır.                                                                                                                                                                                                                                                  |
@@ -53,7 +43,7 @@ AMQP protokol düzeyinde kullanılan eşdeğer adlar parantez içinde listelenmi
 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber)                        | Sıra numarası, aracı tarafından kabul edildiği ve depolandığı ve doğru tanımlayıcısı olarak işlevlerin bulunduğu bir iletiye atanan benzersiz bir 64 bitlik tamsayıdır. Bölümlenmiş varlıklarda en üstteki 16 bit, Bölüm tanımlayıcısını yansıtır. Dizi numaraları monoton olarak artar ve bu da daha az. Bunlar, 48-64 bit aralığı tükendiğinde 0 ' a devredilirler. Bu özellik salt okunur durumdadır.                                                                |
 | [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) (grup kimliği)                  | Oturum kullanan varlıklar için, bu uygulama tanımlı değer iletinin oturum ilişkisini belirtir. Aynı oturum tanımlayıcısına sahip iletiler, Özet kilitlemeye tabidir ve tam sıralı işleme ve parçalanmayı etkinleştirir. Oturum kullanmayan varlıklar için bu değer yok sayılır.                                                                                                                                     |
 | [Boyut](/dotnet/api/microsoft.azure.servicebus.message.size)                                  | , Depolama kotasına doğru sayılacağından, aracı günlüğündeki iletinin depolanan boyutunu bayt sayısı olarak yansıtır. Bu özellik salt okunur durumdadır.                                                                                                                                                                                                                                                                                                       |
-| [Durumunda](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.state)                                 | Günlükteki iletinin durumunu gösterir. Bu özellik yalnızca ileti göz atma ("göz atma") sırasında, bir iletinin "etkin" olup olmadığını ve kuyruğun en üstüne ulaştığında, ertelenmesini veya zamanlanmayı beklediğini belirlemede kullanılabilir. Bu özellik salt okunur durumdadır.                                                                                                                                           |
+| [Durum](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.state)                                 | Günlükteki iletinin durumunu gösterir. Bu özellik yalnızca ileti göz atma ("göz atma") sırasında, bir iletinin "etkin" olup olmadığını ve kuyruğun en üstüne ulaştığında, ertelenmesini veya zamanlanmayı beklediğini belirlemede kullanılabilir. Bu özellik salt okunur durumdadır.                                                                                                                                           |
 | [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive)                            | Bu değer, iletinin süresinin dolmasının ne kadar süre dolacağını, anlık sunucudan itibaren ileti tarafından kabul edilip depolanmadığını ve **Enqueuetimeutc**' de yakalanarak, aracı tarafından nasıl depolandığını belirten göreli süredir. Açıkça ayarlanmamışsa, ilgili kuyruk veya konu için varsayılan değer **Defaulttimetolive** ' dir. İleti düzeyi **TimeToLive** değeri, varlığın **defaulttimetolive** ayarından daha uzun olamaz. Daha uzunsa sessizce ayarlanır. |
 | [(İçin](/dotnet/api/microsoft.azure.servicebus.message.to) )                               | Bu özellik, yönlendirme senaryolarında ileride kullanılmak üzere ayrılmıştır ve şu anda aracının kendisi tarafından yok sayılır. Uygulamalar, iletinin amaçlanan mantıksal hedefini göstermek için kural odaklı otomatik iletme zincirde senaryolarında bu değeri kullanabilir.                                                                                                                                                                                   |
 | [ViaPartitionKey](/dotnet/api/microsoft.azure.servicebus.message.viapartitionkey)                       | Bir ileti bir işlem kapsamındaki Aktarım kuyruğu aracılığıyla gönderilirse, bu değer aktarım sırası bölümünü seçer.                                                                                                                                                                                                                                                                                                                 |
@@ -73,11 +63,11 @@ Bir Service Bus ad alanının içinde yönlendirme, otomatik iletme zincirleme v
 
 ## <a name="payload-serialization"></a>Yük serileştirme
 
-Aktarım sırasında veya Service Bus içinde depolandığında, yük her zaman donuk, ikili bir blok olur. [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) özelliği, özellik değerleri IÇIN, IETF rfc2045 'e göre MIME içerik türü açıklaması olacak şekilde, uygulamaların yükü tanımlamasını sağlar. Örneğin, `application/json;charset=utf-8`.
+Aktarım sırasında veya Service Bus içinde depolandığında, yük her zaman donuk, ikili bir blok olur. [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) özelliği, özellik değerleri IÇIN, IETF rfc2045 'e göre MIME içerik türü açıklaması olacak şekilde, uygulamaların yükü tanımlamasını sağlar. Örneğin, `application/json;charset=utf-8` .
 
 Java veya .NET Standard türevlerinden farklı olarak, Service Bus API 'sinin .NET Framework sürümü, rastgele .NET nesnelerini oluşturucuya geçirerek **Brokeredmessage** örnekleri oluşturmayı destekler. 
 
-Eski SBMP protokolünü kullanırken, bu nesneler varsayılan ikili seri hale getirici ile veya dışarıdan sağlanan seri hale getirici ile serileştirilir. AMQP protokolünü kullanırken, nesne bir AMQP nesnesine serileştirilir. Alıcı, bu nesneleri [GetBody\<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle alabilir ve beklenen türü sağlayabilir. AMQP ile, nesneler **ArrayList** ve **IDictionary<dize, nesne>** nesneleri ve herhangi bir AMQP istemcisi tarafından kodu çözebilen bir AMQP grafiğine serileştirilir. 
+Eski SBMP protokolünü kullanırken, bu nesneler varsayılan ikili seri hale getirici ile veya dışarıdan sağlanan seri hale getirici ile serileştirilir. AMQP protokolünü kullanırken, nesne bir AMQP nesnesine serileştirilir. Alıcı, bu nesneleri [GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) yöntemiyle alabilir ve beklenen türü sağlayabilir. AMQP ile, nesneler **ArrayList** ve **IDictionary<dize, nesne>** nesneleri ve herhangi bir AMQP istemcisi tarafından kodu çözebilen bir AMQP grafiğine serileştirilir. 
 
 Bu gizli serileştirme Magic uygun olsa da, uygulamalar nesne serileştirmesi için açık denetim almalıdır ve nesne grafiklerini bir iletiye dahil etmeden önce akışlara çevirip, alıcı tarafında da ters bir değer alır. Bu, birlikte çalışabilen sonuçlar verir. Ayrıca AMQP güçlü bir ikili kodlama modeline sahip olsa da, AMQP mesajlaşma ekosistemine bağlı olduğundan ve HTTP istemcilerinin bu tür yükleri çözmede sorun yaşaymasına dikkat edilmelidir. 
 

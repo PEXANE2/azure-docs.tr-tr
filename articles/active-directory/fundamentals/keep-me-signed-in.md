@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4b253a3017f1a836ac989bb897065a6a7d8337
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a82f81888828cb5edd42c37a6e8b2c2ee51fe603
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739955"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339551"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>' Oturum açmış kalsın ' öğesini yapılandırın Azure AD hesapları istemi
 
@@ -28,7 +28,7 @@ Aşağıdaki diyagramda, yönetilen bir kiracı ve Federal kiracı için Kullan�
 :::image type="content" source="./media/keep-me-signed-in/kmsi-workflow.png" alt-text="Yönetilen ve Federal kiracı için Kullanıcı oturum açma akışını gösteren diyagram":::
 
 > [!NOTE]
-> Oturumumu Açık tut seçeneğinin yapılandırılması, Azure Active Directory (Azure AD) Premium 1, Premium 2 veya temel sürümlerini kullanmanızı veya bir Office 365 lisansına sahip olmanızı gerektirir. Lisanslama ve sürümler hakkında daha fazla bilgi için bkz. [Azure AD Premium kaydolma](active-directory-get-started-premium.md).<br><br>Azure AD Premium ve temel sürümler, Çin 'deki müşteriler için Azure AD 'nin dünya çapındaki örneğini kullanarak kullanılabilir. Azure AD Premium ve Temel sürümleri, şu anda Çin’de 21Vianet tarafından işletilen Azure hizmeti kapsamında desteklenmemektedir. Daha fazla bilgi için [Azure AD Forumu](https://feedback.azure.com/forums/169401-azure-active-directory/)ile bizimle iletişim kurun.
+> Oturumumu Açık tut seçeneğinin yapılandırılması, Azure Active Directory (Azure AD) Premium 1, Premium 2 veya temel sürümlerini kullanmanızı veya bir Microsoft 365 lisansına sahip olmanızı gerektirir. Lisanslama ve sürümler hakkında daha fazla bilgi için bkz. [Azure AD Premium kaydolma](active-directory-get-started-premium.md).<br><br>Azure AD Premium ve temel sürümler, Çin 'deki müşteriler için Azure AD 'nin dünya çapındaki örneğini kullanarak kullanılabilir. Azure AD Premium ve Temel sürümleri, şu anda Çin’de 21Vianet tarafından işletilen Azure hizmeti kapsamında desteklenmemektedir. Daha fazla bilgi için [Azure AD Forumu](https://feedback.azure.com/forums/169401-azure-active-directory/)ile bizimle iletişim kurun.
 
 ## <a name="configure-kmsi"></a>KMSI 'yi yapılandırma
 
@@ -61,6 +61,6 @@ Gelişmiş marka ayarlarında **göster seçeneğini oturum açmış olarak kala
 
 Oturum açma oturum zaman aşımını etkileyen diğer ayarlar hakkında bilgi edinin:
 
-* Office 365 – [Boşta oturum zaman aşımı](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
+* Microsoft 365 – [Boşta oturum zaman aşımı](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
 * Azure AD koşullu erişim- [Kullanıcı oturum açma sıklığı](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
 * Azure portal – [dizin düzeyindeki eylemsizlik zaman aşımı](https://docs.microsoft.com/azure/azure-portal/admin-timeout)

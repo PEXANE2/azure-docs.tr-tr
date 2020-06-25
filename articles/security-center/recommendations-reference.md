@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 647d0b13930109b093532ce0b330e9b3eb6d439b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 92df0a7919a7d01b062356bfa4d32cc701e1e6f4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260959"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341289"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri-bir başvuru kılavuzu
 
@@ -153,7 +153,7 @@ Güvenli puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 |**SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir**|Rest verilerini korumak ve uyumluluk gereksinimlerini karşılamak için saydam veri şifrelemesini etkinleştirin.<br>(İlgili ilke: SQL veritabanlarında Saydam Veri Şifrelemesi etkinleştirilmelidir)|Düşük|**E**|SQL|
 |**SQL veritabanında güvenlik açığı değerlendirmesi etkinleştirilmelidir**|Güvenlik açığı değerlendirmesi, olası veritabanı güvenlik açıklarını düzeltmenizi, izleyebilir ve yardımcı olabilir.<br>(İlgili ilke: güvenlik açığı değerlendirmesi SQL sunucularınızda etkinleştirilmelidir)|Yüksek|**E**|SQL|
 |**Güvenlik açığı değerlendirmesi SQL yönetilen örneği üzerinde etkinleştirilmelidir**|Güvenlik açığı değerlendirmesi, olası veritabanı güvenlik açıklarını düzeltmenizi, izleyebilir ve yardımcı olabilir.<br>(İlgili ilke: güvenlik açığı değerlendirmesi SQL yönetilen örneği üzerinde etkinleştirilmelidir)|Yüksek|**E**|SQL|
-|**VM 'lerdeki SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir**|SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözümlenmesi, veritabanı güvenlik hazırlılığını büyük ölçüde iyileştirebilir.|Yüksek|N|SQL|
+|**Makinelerdeki SQL Server 'larınızdaki güvenlik açıkları düzeltilmelidir**|SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözümlenmesi, veritabanı güvenlik hazırlılığını büyük ölçüde iyileştirebilir.|Yüksek|N|SQL|
 |**SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir**|SQL güvenlik açığı değerlendirmesi, veritabanınızı güvenlik açıklarına karşı tarar ve yanlış yapılandırma, aşırı izin ve korunmayan gizli veriler gibi en iyi uygulamalardan sapmaları gösterir. Bulunan güvenlik açıklarının çözümlenmesi, veritabanı güvenlik hazırlılığını büyük ölçüde iyileştirebilir.<br>(İlgili ilke: SQL veritabanlarınızdaki güvenlik açıkları düzeltilmelidir)|Yüksek|N|SQL|
 ||||||
 

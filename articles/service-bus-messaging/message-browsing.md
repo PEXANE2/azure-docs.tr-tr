@@ -1,32 +1,22 @@
 ---
 title: Azure Service Bus-iletiye göz atma
 description: Göz atma ve göz atma Service Bus iletilerinde Azure Service Bus istemcinin bir kuyrukta veya abonelikte bulunan tüm iletileri listeleyebilmesine olanak sağlar.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77539374"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341240"
 ---
 # <a name="message-browsing"></a>İletilere göz atma
 
 İletiye göz atma veya gözatma, bir Service Bus istemcisinin, genellikle tanılama ve hata ayıklama amacıyla bir kuyrukta veya abonelikte bulunan tüm iletileri listeleyebilmesine olanak sağlar.
 
-Göz atma işlemleri, yalnızca `Receive()` veya `OnMessage()` döngüsüyle anında alma için kullanılabilir olan, kuyrukta veya abonelik ileti günlüğünde bulunan tüm iletileri döndürür. Her `State` iletinin özelliği, iletinin etkin (alınması için kullanılabilir), [ertelenmiş](message-deferral.md)veya [Zamanlanmış](message-sequencing.md)olduğunu bildirir.
+Göz atma işlemleri, yalnızca `Receive()` veya döngüsüyle anında alma için kullanılabilir olan, kuyrukta veya abonelik ileti günlüğünde bulunan tüm iletileri döndürür `OnMessage()` . `State`Her iletinin özelliği, iletinin etkin (alınması için kullanılabilir), [ertelenmiş](message-deferral.md)veya [Zamanlanmış](message-sequencing.md)olduğunu bildirir.
 
-Tüketilen ve sona ermeyen iletiler zaman uyumsuz bir "çöp toplama" çalıştırması tarafından temizlenir ve iletilerin süreleri dolduğunda tam olarak zaman aşımına uğradı `Peek` ve bu nedenle kuyrukta veya abonelikte bir alma işlemi başlatıldığında kaldırılacak veya atılacak duruma getirilir.
+Tüketilen ve sona ermeyen iletiler zaman uyumsuz bir "çöp toplama" çalıştırması tarafından temizlenir ve iletilerin süreleri dolduğunda tam olarak zaman aşımına uğradı ve bu nedenle `Peek` kuyrukta veya abonelikte bir alma işlemi başlatıldığında kaldırılacak veya atılacak duruma getirilir.
 
 Bu özellikle ertelenmiş iletileri kuyruktan kurtarmaya çalışırken göz önünde bulundurmanız önemlidir. [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) Instant 'ın geçirildiği bir Ileti, göz atma tarafından döndürülse bile diğer yollarla düzenli alma için artık uygun değildir. Peek, günlüğün geçerli durumunu yansıtan bir tanılama aracı olduğundan, bu iletilerin döndürülmesi bilinçli.
 

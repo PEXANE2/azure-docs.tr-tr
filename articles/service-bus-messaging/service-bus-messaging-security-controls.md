@@ -1,18 +1,14 @@
 ---
 title: Azure Service Bus mesajlaşma için güvenlik denetimleri
 description: Azure Service Bus mesajlaşma değerlendirmesi için güvenlik denetimlerinin denetim listesi
-services: service-bus-messaging
-ms.service: service-bus-messaging
-author: spelluru
 ms.topic: conceptual
-ms.date: 09/23/2019
-ms.author: spelluru
-ms.openlocfilehash: af119ef026b70fcb4a56b4f823d20c0e9eddddc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 3130150a227076befae3f58f65e00a36578b68d5
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75903258"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341634"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure Service Bus mesajlaşma için güvenlik denetimleri
 
@@ -25,9 +21,9 @@ Bu makale, Azure Service Bus mesajlaşma 'da yerleşik olarak bulunan güvenlik 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
 | Hizmet uç noktası desteği| Evet (yalnızca Premium katman) | Sanal ağ hizmeti uç noktaları yalnızca [Service Bus Premium katmanı](service-bus-premium-messaging.md) için desteklenir. |  |
-| VNet ekleme desteği| Hayır | |  |
+| VNet ekleme desteği| No | |  |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Evet (yalnızca Premium katman) |  |  |
-| Zorlamalı tünel desteği| Hayır |  |  |
+| Zorlamalı tünel desteği| No |  |  |
 
 ## <a name="monitoring--logging"></a>& günlüğü izleme
 
@@ -35,7 +31,7 @@ Bu makale, Azure Service Bus mesajlaşma 'da yerleşik olarak bulunan güvenlik 
 |---|---|--|--|
 | Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | [Azure izleyici ve uyarılar](service-bus-metrics-azure-monitor.md)aracılığıyla desteklenir. |  |
 | Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes | İşlem günlükleri kullanılabilir.  | [Tanılama günlüklerini Service Bus](service-bus-diagnostic-logs.md) |
-| Veri düzlemi günlüğü ve denetimi| Hayır |  |
+| Veri düzlemi günlüğü ve denetimi| No |  |
 
 ## <a name="identity"></a>Kimlik
 

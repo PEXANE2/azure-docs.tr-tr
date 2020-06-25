@@ -7,12 +7,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: nicolela
-ms.openlocfilehash: ee2f1636547378102f35b432914426b3e24d92ef
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d3f6a855f4b162f0b14ff01ed0a3560897383c49
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898993"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341764"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Solidçalışmalar kullanarak mühendislik sınıfları için laboratuvar ayarlama
 
@@ -77,8 +77,6 @@ Bu bölümdeki adımlarda, Solidçalışmalar yükleme dosyalarını indirerek v
 
     > [!NOTE]
     > **Sunucu Ekle** iletişim kutusunda, lisans sunucunuz için kullanılan **bağlantı noktası numarası** ve LISANS sunucusunun adı veya IP adresi sorulur.
-
-1. İstemci yazılımını yüklemeyi tamamladıktan sonra, GPU 'nun RDP bağlantısı üzerinden kullanılmasını da etkinleştirmeniz gerekir. Daha fazla bilgi için [RDP bağlantısı üzerinden GPU 'yu etkinleştirme](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) makalesine bakın.
 
 ## <a name="cost"></a>Maliyet
 

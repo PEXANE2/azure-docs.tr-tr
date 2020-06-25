@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77598556"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340831"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell ile Azure dosya paylaşımını oluşturma ve yönetme 
 Bu kılavuzda, PowerShell kullanarak [Azure dosya paylaşımlarıyla](storage-files-introduction.md) çalışmanın temel bilgileri gösterilmektedir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler ve birden çok makine, uygulama ve örnek arasında dosya paylaşmayı olanaklı kılar. 
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 Depolama hesabı, Azure dosya paylaşımlarını dağıtmak için kullanabileceğiniz, paylaşılan bir depolama havuzudur. Bir depolama hesabında sınırsız sayıda paylaşım olabilir; paylaşım da, depolama hesabının kapasite sınırları içinde sınırsız sayıda dosya depolayabilir. Bu örnek, sabit disk sürücüsü (HDD) rotasyonuna yönelik standart Azure dosya paylaşımlarını veya blob 'lar ya da kuyruklar gibi diğer depolama kaynaklarını depolayabilen genel amaçlı sürüm 2 ' yi (GPv2 Storage hesabı) oluşturur. Azure dosyaları ayrıca Premium katı hal disk sürücüleri (SSD 'Ler) destekler; Premium Azure dosya paylaşımları, FileStorage depolama hesaplarında oluşturulabilir.
 
-Bu örnek, [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanarak bir depolama hesabı oluşturur. Depolama hesabına *mystorageaccount\<rastgele Number>* adı verilir ve bu depolama hesabına yönelik bir başvuru, **$storageAcct**değişkeninde depolanır. Depolama hesabı adları benzersiz olmalıdır; bu nedenle `Get-Random` kullanarak adın sonuna bir sayı ekleyip adı benzersiz hale getirin. 
+Bu örnek, [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 'ini kullanarak bir depolama hesabı oluşturur. Depolama hesabı *mystorageaccount\<random number>* olarak adlandırılır ve **$storageAcct** değişkeninde, o depolama hesabına yönelik bir başvuru depolanır. Depolama hesabı adları benzersiz olmalıdır; bu nedenle `Get-Random` kullanarak adın sonuna bir sayı ekleyip adı benzersiz hale getirin. 
 
 ```azurepowershell-interactive 
 $storageAccountName = "mystorageacct$(Get-Random)"
@@ -77,7 +77,7 @@ Azure Dosyaları, Azure dosya paylaşımınızdaki dosya ve klasörler ile çal�
 Bir dosya paylaşımını SMB ile bağlayabilmeniz için işletim sisteminize göre aşağıdaki belgeye bakın:
 - [Windows](storage-how-to-use-files-windows.md)
 - [Linux](storage-how-to-use-files-linux.md)
-- [Mac OS](storage-how-to-use-files-mac.md)
+- [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Dosya REST protokolü ile bir Azure dosya paylaşımını kullanma 
 Dosya REST protokolüyle doğrudan çalışma olasılığı vardır (yani el ile REST HTTP çağrıları), ancak dosya REST protokolünü kullanmanın en yaygın yolu Azure PowerShell modülünü, [Azure CLI](storage-how-to-use-files-cli.md)'yi veya bir Azure depolama SDK 'sını kullanarak tercih ettiğiniz komut dosyası/programlama DILINDE Dosya REST Protokolü etrafında iyi bir sarmalayıcı sağlar.  
@@ -88,7 +88,7 @@ Kullanabilmeyi umduğunuz uygulama ve araçlarını kullanmanıza izin vereceği
 - [Azure İşlevleri](../../azure-functions/functions-overview.md) gibi sunucusuz kaynaklardan yararlanıyorsanız. 
 - Yedekleme veya virüsten koruma taraması yapma gibi birçok Azure dosya paylaşımı ile etkileşime girebilen bir değer ekleme hizmeti oluşturuyorsunuz.
 
-Aşağıdaki örneklerde, Azure dosya paylaşımınızı Dosya REST protokolüyle işlemek için Azure PowerShell modülünün nasıl kullanılacağı gösterilmektedir. `-Context` Parametresi, dosya paylaşımında belirtilen eylemleri gerçekleştirmek üzere depolama hesabı anahtarını almak için kullanılır. Depolama hesabı anahtarını almak için depolama hesabında RBAC rolüne `Owner` sahip olmanız gerekir.
+Aşağıdaki örneklerde, Azure dosya paylaşımınızı Dosya REST protokolüyle işlemek için Azure PowerShell modülünün nasıl kullanılacağı gösterilmektedir. `-Context`Parametresi, dosya paylaşımında belirtilen eylemleri gerçekleştirmek üzere depolama hesabı anahtarını almak için kullanılır. Depolama hesabı anahtarını almak için depolama hesabında RBAC rolüne sahip olmanız gerekir `Owner` .
 
 #### <a name="create-directory"></a>Dizin oluşturma
 Azure dosya paylaşımınızın kökünde *mydirectory* adlı yeni bir dizin oluşturmak için [New-azstoragedirectory](/powershell/module/az.storage/New-AzStorageDirectory) cmdlet 'ini kullanın.
@@ -186,7 +186,7 @@ Get-AzStorageFile `
     -Path "myDirectory2" 
 ```
 
-Cmdlet, `Start-AzStorageFileCopy` Azure dosya paylaşımları arasında geçici dosya taşıma işlemleri için uygun olsa da, geçişler ve daha büyük veri hareketleri için Windows ve `robocopy` `rsync` MacOS ve Linux üzerinde önerilir. `robocopy`ve `rsync` , DOSYASıEST API 'si yerine veri taşımalarını GERÇEKLEŞTIRMEK için SMB 'yi kullanın.
+Cmdlet, `Start-AzStorageFileCopy` Azure dosya paylaşımları arasında geçici dosya taşıma işlemleri için uygun olsa da, geçişler ve daha büyük veri hareketleri Için `robocopy` Windows ve `rsync` MacOS ve Linux üzerinde önerilir. `robocopy`ve, `rsync` Dosyasıest API 'si yerine veri taşımalarını gerçekleştirmek IÇIN SMB 'yi kullanın.
 
 ## <a name="create-and-manage-share-snapshots"></a>Paylaşım anlık görüntülerini oluşturma ve yönetme
 Azure dosya paylaşımıyla yerine getirebileceğiniz kullanışlı bir diğer görev de paylaşım anlık görüntüleri oluşturmaktır. Anlık görüntü, Azure dosya paylaşımının zamanın bir noktasındaki durumunu saklar. Paylaşım anlık görüntüleri, aşağıdakiler gibi zaten tanıyor olabileceğiniz işletim sistemi teknolojilerine benzer:
@@ -195,11 +195,11 @@ Azure dosya paylaşımıyla yerine getirebileceğiniz kullanışlı bir diğer g
 - Linux sistemleri için [mantıksal birim Yöneticisi (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) anlık görüntüleri.
 - MacOS için [Apple dosya sistemi (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) anlık görüntüleri. 
 
-[Get-Azstoragesshare](/powershell/module/az.storage/Get-AzStorageShare) cmdlet 'i ile alınan bir dosya `Snapshot` paylaşımı için PowerShell nesnesinde yöntemini kullanarak bir paylaşım için paylaşım anlık görüntüsü oluşturabilirsiniz. 
+`Snapshot` [Get-Azstoragesshare](/powershell/module/az.storage/Get-AzStorageShare) cmdlet 'i ile alınan bir dosya paylaşımı için PowerShell nesnesinde yöntemini kullanarak bir paylaşım için paylaşım anlık görüntüsü oluşturabilirsiniz. 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
-$snapshot = $share.Snapshot()
+$snapshot = $share.CloudFileShare.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>Paylaşım anlık görüntülerine göz atma
@@ -238,7 +238,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Paylaşım anlık görüntüsünü silme
-[Remove-Azstoragesshare](/powershell/module/az.storage/Remove-AzStorageShare) cmdlet 'ini kullanarak bir paylaşım anlık görüntüsünü `$snapshot` `-Share` parametre başvurusunu içeren değişkenle silebilirsiniz.
+[Remove-Azstoragesshare](/powershell/module/az.storage/Remove-AzStorageShare) cmdlet 'ini kullanarak bir paylaşım anlık görüntüsünü parametre başvurusunu içeren değişkenle silebilirsiniz `$snapshot` `-Share` .
 
 ```azurepowershell-interactive
 Remove-AzStorageShare `

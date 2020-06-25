@@ -1,25 +1,15 @@
 ---
 title: Java Message Service API & AMQP kullanın Azure Service Bus
 description: Java Ileti hizmeti 'ni (JMS) Azure Service Bus ve Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0 ile kullanma.
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-editor: spelluru
-ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: Java
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ccea6175d0baec56b609538d15c32892bb2edff0
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371258"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341731"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus ve AMQP 1,0 ile Java Ileti hizmeti 'ni (JMS) kullanma
 Bu makalede, popüler Java Ileti hizmeti (JMS) API standardı kullanılarak Java uygulamalarından Azure Service Bus mesajlaşma özelliklerinin (kuyruklar ve yayımlama/abone olma konuları) nasıl kullanılacağı açıklanmaktadır. Azure Service Bus .NET API 'SI ile nasıl yapılacağını açıklayan bir [yardımcı makale](service-bus-amqp-dotnet.md) vardır. AMQP 1,0 kullanarak platformlar arası mesajlaşma hakkında bilgi edinmek için bu iki Kılavuzu birlikte kullanabilirsiniz.
@@ -29,7 +19,7 @@ Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0, güçlü, platformlar aras
 Azure Service Bus ' de AMQP 1,0 desteği, verimli bir ikili protokol kullanarak bir dizi platformda sıraya alma ve yayımlama/Aracılı mesajlaşma özelliklerini de kullanabileceğiniz anlamına gelir. Ayrıca, bir dil, çerçeve ve işletim sistemi karışımı kullanılarak oluşturulan bileşenlerden oluşan uygulamalar oluşturabilirsiniz.
 
 ## <a name="get-started-with-service-bus"></a>Service Bus’ı kullanmaya başlama
-Bu kılavuzda zaten adlı `basicqueue`bir kuyruğu içeren bir Service Bus ad alanınız olduğunu varsayılır. Bunu yapmazsanız, [Azure Portal](https://portal.azure.com)kullanarak [ad alanını ve kuyruğu oluşturabilirsiniz](service-bus-create-namespace-portal.md) . Service Bus ad alanları ve kuyrukları oluşturma hakkında daha fazla bilgi için, bkz. [Service Bus kuyrukları kullanmaya başlama](service-bus-dotnet-get-started-with-queues.md).
+Bu kılavuzda zaten adlı bir kuyruğu içeren bir Service Bus ad alanınız olduğunu varsayılır `basicqueue` . Bunu yapmazsanız, [Azure Portal](https://portal.azure.com)kullanarak [ad alanını ve kuyruğu oluşturabilirsiniz](service-bus-create-namespace-portal.md) . Service Bus ad alanları ve kuyrukları oluşturma hakkında daha fazla bilgi için, bkz. [Service Bus kuyrukları kullanmaya başlama](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
 > Bölümlenmiş kuyruklar ve konular AMQP 'yi de destekler. Daha fazla bilgi için bkz. bölümlenmiş [mesajlaşma varlıkları](service-bus-partitioning.md) ve [Service Bus bölümlenmiş kuyruklar ve konular için AMQP 1,0 desteği](service-bus-partitioned-queues-and-topics-amqp-overview.md).
@@ -37,11 +27,11 @@ Bu kılavuzda zaten adlı `basicqueue`bir kuyruğu içeren bir Service Bus ad al
 > 
 
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>AMQP 1,0 JMS istemci kitaplığı indiriliyor
-Apache Qpid JMS AMQP 1,0 istemci kitaplığı 'nın en son sürümünü indirme yeri hakkında daha fazla bilgi için, adresini [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)ziyaret edin.
+Apache Qpid JMS AMQP 1,0 istemci kitaplığı 'nın en son sürümünü indirme yeri hakkında daha fazla bilgi için, adresini ziyaret edin [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) .
 
 Aşağıdaki dört JAR dosyasını Apache Qpid JMS AMQP 1,0 dağıtım arşivinden, Service Bus JMS uygulamaları oluşturup çalıştırırken Java SıNıFYOLUNA eklemeniz gerekir:
 
-* GERONIMO-JMS\_1,1\_spec-1.0. jar
+* GERONIMO-JMS \_ 1,1 \_ spec-1.0. jar
 * qpid-JMS-Client-[sürüm]. jar
 
 > [!NOTE]
@@ -121,7 +111,7 @@ MessageConsumer consumer = session.createConsumer(queue);
 JMS Service Bus ile kullanılırken hiçbir özel API veya seçenek gerekli değildir. Ancak, daha sonra ele alınacaktır bazı kısıtlamalar vardır. Her JMS uygulamasında olduğu gibi, gereken ilk şey JNDı ortamının yapılandırması ve bir **Connectionfactory** ve hedefleri çözebilmelidir.
 
 #### <a name="configure-the-jndi-initialcontext"></a>JNDı InitialContext 'i yapılandırma
-JNDı ortamı, bir yapılandırma bilgileri Hashtable 'ı javax. Naming. InitialContext sınıfının oluşturucusuna geçirerek yapılandırılır. Hashtable 'daki iki gerekli öğe, Ilk bağlam fabrikasının sınıf adı ve sağlayıcı URL 'sidir. Aşağıdaki kod, JNDı ortamının, **ServiceBus. Properties**adlı bir özellikler dosyası ile Qndı sağlayıcısı 'NıN Qndı sağlayıcısını kullanmak için nasıl yapılandırılacağını gösterir.
+JNDı ortamı, yapılandırma bilgilerinin bir Hashtable 'ı javax.naming.InitialContext sınıfının oluşturucusuna geçirerek yapılandırılır. Hashtable 'daki iki gerekli öğe, Ilk bağlam fabrikasının sınıf adı ve sağlayıcı URL 'sidir. Aşağıdaki kod, JNDı ortamının, **ServiceBus. Properties**adlı bir özellikler dosyası ile Qndı sağlayıcısı 'NıN Qndı sağlayıcısını kullanmak için nasıl yapılandırılacağını gösterir.
 
 ```java
 // set up JNDI context

@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 7798151d0aeaa553c21db0fd8e71f4ac674a9a56
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298404"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355718"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Leri ile kodlama
 
@@ -566,5 +566,5 @@ Bu öğreticide, sıfırdan bir .NET konsol istemci uygulaması oluşturdunuz. B
 > [Öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri araştırma](tutorial-command-line-app.md)
 
 Bu öğreticide, nasıl yapılır makalelerinde daha fazla yönetim işlemi öğrenerek ya da öğreticide çalıştığınız öğeler hakkında daha fazla bilgi edinmek için kavram belgelerini aramaya başladığınızda bu öğreticide yazdığınız koda da eklenebilir.
-* [Nasıl yapılır: ikizi modelini yönetme](how-to-manage-model.md)
+* [Nasıl yapılır: özel modelleri yönetme](how-to-manage-model.md)
 * [Kavramlar: özel modeller](concepts-models.md)

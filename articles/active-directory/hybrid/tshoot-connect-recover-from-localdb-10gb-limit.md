@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60386933"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356007"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: LocalDB 10 GB sınırından kurtarma
 Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Azure AD Connect ile yüklenen varsayılan SQL Server 2012 Express LocalDB’yi kullanabileceğiniz gibi, kendi tam SQL’nizi de kullanabilirsiniz. SQL Server Express 10 GB boyut sınırını uygular. LocalDB’yi kullanırken bu sınıra ulaşıldığında, Azure AD Connect Eşitleme Hizmeti artık düzgün başlatılamaz veya eşitleme yapamaz. Bu makalede kurtarma adımları sağlanmaktadır.
@@ -66,15 +66,15 @@ Azure AD Connect için oluşturulan veritabanının adı **ADSync**. Bir küçü
 * Azure AD Connect eşitleme hizmetinin işletim bağlamı olarak kullanılan eşitleme hizmeti hesabı.
 * Yükleme sırasında oluşturulan yerel grup ADSyncAdmins.
 
-1. ' In altında `%ProgramFiles%\Microsoft Azure AD Sync\Data` bulunan **ADSync. mdf** ve **ADSync_log. ldf** dosyalarını güvenli bir konuma kopyalayarak veritabanını yedekleyin.
+1. ' In altında bulunan **ADSync. mdf** ve **ADSync_log. ldf** dosyalarını `%ProgramFiles%\Microsoft Azure AD Sync\Data` güvenli bir konuma kopyalayarak veritabanını yedekleyin.
 
 2. Yeni bir PowerShell oturumu başlatın.
 
-3. Klasöre `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`gidin.
+3. Klasöre gidin `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn` .
 
-4. Bir **sqlcmd** sysadmin kimlik BILGISINI veya dbo veritabanını `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`kullanarak sqlcmd yardımcı programını çalıştırın.
+4. **sqlcmd** `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` Bir sysadmin KIMLIK bilgisini veya dbo veritabanını kullanarak sqlcmd yardımcı programını çalıştırın.
 
-5. Veritabanını küçültmek için, sqlcmd isteminde (1>), ardından `DBCC Shrinkdatabase(ADSync,1);` `GO` bir sonraki satırda öğesini yazın.
+5. Veritabanını küçültmek için, sqlcmd isteminde (1>), `DBCC Shrinkdatabase(ADSync,1);` ardından bir `GO` sonraki satırda öğesini yazın.
 
 6. İşlem başarılı olursa, eşitleme hizmetini yeniden başlatmayı deneyin. Eşitleme hizmetini başlatabiliyorsanız, [çalışma geçmişi verilerini sil](#delete-run-history-data) adımına gidin. Aksi takdirde, desteğe başvurun.
 
@@ -87,16 +87,16 @@ Varsayılan olarak, Azure AD Connect en fazla yedi gün, çalışma geçmişi ve
 
 3. **Eylemler**altında **çalıştırmaları temizle**... seçeneğini belirleyin.
 
-4. **Tüm çalıştırmaları temizle** veya **önce çalıştırmaları temizle seçeneklerinden birini belirleyebilirsiniz... Tarih \<>** seçeneği. İki günden eski olan çalıştırma geçmişi verilerini temizleyerek başlatmanız önerilir. DB boyutu sorunuyla çalışmaya devam ederseniz, **Tüm çalıştırmaları temizle** seçeneğini belirleyin.
+4. **Tümünü Temizle** veya **... \<date> seçeneğini yapmadan önce çalıştırmaları** Temizle seçeneğini belirleyebilirsiniz. İki günden eski olan çalıştırma geçmişi verilerini temizleyerek başlatmanız önerilir. DB boyutu sorunuyla çalışmaya devam ederseniz, **Tüm çalıştırmaları temizle** seçeneğini belirleyin.
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>Çalışma geçmişi verileri için saklama süresini kısaltın
 Bu adım, birden çok eşitleme döngüsü sonrasında 10 GB 'lik sınır sorunuyla çalışma olasılığını azaltmaktır.
 
 1. Yeni bir PowerShell oturumu açın.
 
-2. ' `Get-ADSyncScheduler` İ çalıştırın ve geçerli saklama süresini belirten Purgerunizınterval özelliğini bir yere göz atın.
+2. `Get-ADSyncScheduler`' İ çalıştırın ve geçerli saklama süresini belirten Purgerunizınterval özelliğini bir yere göz atın.
 
-3. Saklama `Set-ADSyncScheduler -PurgeRunHistoryInterval 2.00:00:00` süresini iki güne ayarlamak için ' i çalıştırın. Saklama süresini uygun şekilde ayarlayın.
+3. `Set-ADSyncScheduler -PurgeRunHistoryInterval 2.00:00:00`Saklama süresini iki güne ayarlamak için ' i çalıştırın. Saklama süresini uygun şekilde ayarlayın.
 
 ## <a name="long-term-solution--migrate-to-full-sql"></a>Uzun vadeli çözüm – tam SQL 'e geçiş
 Genellikle, sorun, şirket içi Active Directory Azure AD 'ye Azure AD Connect için 10 GB veritabanı boyutunun artık yeterli olmadığını işaret eder. SQL Server 'ın tam sürümünü kullanarak geçmeniz önerilir. Mevcut Azure AD Connect dağıtımının LocalDB’sini doğrudan tüm SQL sürümünün veritabanıyla değiştiremezsiniz. Bunun yerine, tam SQL sürümü içeren yeni bir Azure AD Connect sunucusu dağıtmanız gerekir. Yeni Azure AD Connect sunucusunun (SQL DB ile), mevcut Azure AD Connect sunucusunun (LocalDB ile) yanında hazırlık sunucusu olarak dağıtıldığı durumlarda, Swing geçişi yapmanız önerilir. 

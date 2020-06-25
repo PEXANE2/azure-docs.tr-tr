@@ -12,12 +12,12 @@ ms.date: 06/08/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e3aa91ce9b1b4ba56507dfe1920d7f7dbd18ac3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 1604e132cb77fbb2a2a1033a1f23f70dd3e6b8b9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763542"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355973"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Galeri uygulaması olmayan uygulamalarda SAML tabanlı çoklu oturum açmayı yapılandırma
 
@@ -41,6 +41,8 @@ Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri dışı bir uygulama 
    - Uygulamayı aramak için, **uygulama türü** menüsünde, **tüm uygulamalar**' ı seçin ve ardından **Uygula**' yı seçin. Arama kutusuna uygulamanın adını girin ve sonra sonuçlardan uygulamayı seçin.
 
 3. **Yönet** bölümünde **Çoklu oturum açma**' yı seçin. 
+
+   - **Çoklu oturum açma** seçeneğinin mevcut olmadığı bazı senaryolar olduğunu unutmayın. Örneğin, uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği **uygulama kayıt** portalında yapılandırılır ve **Kurumsal uygulamalar**altında gezinmede gösterilmez. Bir uygulamanın başka bir kiracıda barındırıldığı veya hesabınızın gerekli izinleri (genel yönetici, bulut uygulaması Yöneticisi, uygulama Yöneticisi veya hizmet sorumlusu sahibi) yoksa, **Çoklu oturum açma** 'nın gezinmede eksik olduğu diğer senaryolar. İzinler Ayrıca **Çoklu oturum** açmayı açabiliyor ancak kaydedemeyeceksiniz bir senaryoya neden olabilir. Azure AD Yönetim rolleri hakkında daha fazla bilgi için bkz https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . (.
 
 4. **SAML**'yi seçin. **SAML Ile çoklu oturum açmayı ayarlama sayfası açılır** .
 

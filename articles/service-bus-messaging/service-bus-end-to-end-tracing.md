@@ -1,24 +1,14 @@
 ---
 title: Uçtan uca izlemeyi ve tanılamayı Azure Service Bus | Microsoft Docs
 description: İstemci tanılama ve uçtan uca izlemeye (işleme dahil olan tüm hizmetler aracılığıyla istemci) genel Service Bus bakış.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294162"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340728"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus mesajlaşma aracılığıyla dağıtılmış izleme ve bağıntı
 
@@ -30,7 +20,7 @@ Bir üretici kuyruk aracılığıyla bir ileti gönderdiğinde, genellikle başk
 Microsoft Azure Service Bus mesajlaşması, üreticileri ve tüketicilerin bu tür izleme bağlamını iletmek için kullanması gereken yük özelliklerini tanımladı.
 Protokol, [http bağıntı protokolünü](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)temel alır.
 
-| Özellik Adı        | Açıklama                                                 |
+| Özellik Adı        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Tanılama kimliği       | Bir üreticinin bir dış çağrısının sıraya özgü tanıtıcısı. [Http protokolündeki Istek kimliği](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) , dikkat edilecek noktalar ve biçim için bkz. |
 |  Bağıntı bağlamı | İşlem işleme dahil olmak üzere tüm hizmetlere yayılan işlem bağlamı. Daha fazla bilgi için bkz. [http protokolünde bağıntı bağlamı](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
@@ -81,7 +71,7 @@ async Task ProcessAsync(Message message)
 ```
 
 Bu örnekte, `RequestTelemetry` işlenen her ileti için bir zaman damgası, süre ve sonuca (başarılı) sahip olan raporlanır. Telemetride bir bağıntı özellikleri kümesi de vardır.
-İleti işleme sırasında bildirilen iç içe izlemeler ve özel durumlar, `RequestTelemetry`bunları ' alt öğeleri ' olarak temsil eden bağıntı özellikleriyle da damgalı.
+İleti işleme sırasında bildirilen iç içe izlemeler ve özel durumlar, bunları ' alt öğeleri ' olarak temsil eden bağıntı özellikleriyle da damgalı `RequestTelemetry` .
 
 İleti işleme sırasında desteklenen dış bileşenlere çağrılar yaparsanız, bunlar otomatik olarak izlenir ve bağıntılı bir durumdur. El ile izleme ve bağıntı için [Application Insights .NET SDK ile özel Işlemleri izleme](../azure-monitor/app/custom-operations-tracking.md) bölümüne bakın.
 
@@ -96,7 +86,7 @@ Application Insights SDK 'ya ek olarak herhangi bir dış kod çalıştırıyors
 
 Service Bus .NET Client, .NET izleme temelleri [System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) ve [System. Diagnostics. diagnosticsource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)kullanılarak işaretlendi.
 
-`Activity`bir bildirim mekanizması iken `DiagnosticSource` bir izleme bağlamı işlevi görür. 
+`Activity`bir bildirim mekanizması iken bir izleme bağlamı işlevi görür `DiagnosticSource` . 
 
 DiagnosticSource olayları için dinleyici yoksa, izleme devre dışı, sıfır izleme maliyetlerine sahip olur. DiagnosticSource tüm denetimi dinleyiciye verir:
 - dinleyici, hangi kaynak ve olayların dinleneceğini denetler
@@ -155,7 +145,7 @@ Tüm olaylarda Ayrıca ' Entity ' ve ' Endpoint ' özellikleri bulunur, bunlar a
   * `string Entity`--Varlığın adı (kuyruk, konu, vb.)
   * `Uri Endpoint`-Service Bus uç nokta URL 'SI
 
-Her bir ' Stop ' olayının `Status` , `TaskStatus` zaman uyumsuz işlem ile tamamlandı ve bu, basitlik için aşağıdaki tabloda da atlanmıştır.
+Her bir ' Stop ' olayının `Status` `TaskStatus` , zaman uyumsuz işlem ile tamamlandı ve bu, basitlik için aşağıdaki tabloda da atlanmıştır.
 
 Aşağıda, Araçlı işlemlerin tam listesi verilmiştir:
 
@@ -183,15 +173,15 @@ Aşağıda, Araçlı işlemlerin tam listesi verilmiştir:
 | Microsoft. Azure. ServiceBus. RenewSessionLock | [Imessagesession. RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`-İletilerde SessionID var. |
 | Microsoft. Azure. ServiceBus. Exception | Tüm belgelenmiş API 'leri| `Exception Exception`-Özel durum örneği |
 
-Her olayda geçerli işlem bağlamını tutan erişim `Activity.Current` sağlayabilirsiniz.
+Her olayda `Activity.Current` geçerli işlem bağlamını tutan erişim sağlayabilirsiniz.
 
 #### <a name="logging-additional-properties"></a>Ek özellikleri günlüğe kaydetme
 
 `Activity.Current`geçerli işlemin ve üst öğelerinin ayrıntılı bağlamını sağlar. Daha fazla bilgi için bkz. [etkinlik belgeleri](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) .
-Service Bus izleme, `Activity.Current.Tags` içinde bulunan `MessageId` ve `SessionId` her seferinde ek bilgi sağlar.
+Service Bus izleme, içinde bulunan `Activity.Current.Tags` `MessageId` ve her seferinde ek bilgi sağlar `SessionId` .
 
-' Receive ', ' Peek ' ve ' Receiveertelenmiş ' olaylarını izleyen etkinliklerin `RelatedTo` etiketi de olabilir. Sonuç olarak alınan iletilerin ayrı `Diagnostic-Id`listesini barındırır.
-Bu tür bir işlem, ilgisiz birçok iletinin alınmasına neden olabilir. `Diagnostic-Id` Ayrıca, işlem başladığında bilinmiyor, bu nedenle ' Receive ' işlemleri yalnızca bu etiketi kullanan ' Process ' işlemleriyle bağıntılı olabilir. İletiyi almak için geçen süreyi denetlemek üzere performans sorunlarını analiz etmek yararlı olur.
+' Receive ', ' Peek ' ve ' Receiveertelenmiş ' olaylarını izleyen etkinliklerin etiketi de olabilir `RelatedTo` . `Diagnostic-Id`Sonuç olarak alınan iletilerin ayrı listesini barındırır.
+Bu tür bir işlem, ilgisiz birçok iletinin alınmasına neden olabilir. Ayrıca, `Diagnostic-Id` işlem başladığında bilinmiyor, bu nedenle ' Receive ' işlemleri yalnızca bu etiketi kullanan ' Process ' işlemleriyle bağıntılı olabilir. İletiyi almak için geçen süreyi denetlemek üzere performans sorunlarını analiz etmek yararlı olur.
 
 Etiketleri günlüğe kaydetmek için etkili bir yol, bunları yinelemek ve önceki örneğe etiket eklemek gibi görünüyor 
 
@@ -211,25 +201,25 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 #### <a name="filtering-and-sampling"></a>Filtreleme ve örnekleme
 
 Bazı durumlarda, performans yükünü veya depolama tüketimini azaltmak için olayların yalnızca bir kısmını günlüğe kaydetmek tercih edilir. Yalnızca ' Durdur ' olaylarını (önceki örnekte olduğu gibi) veya olayların örnek yüzdesini günlüğe yazabilirsiniz. 
-`DiagnosticSource`koşul ile `IsEnabled` elde etmenin yolunu sağlayın. Daha fazla bilgi için bkz. [DiagnosticSource 'Ta bağlam tabanlı filtreleme](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
+`DiagnosticSource`koşul ile elde etmenin yolunu sağlayın `IsEnabled` . Daha fazla bilgi için bkz. [DiagnosticSource 'Ta bağlam tabanlı filtreleme](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
 
 `IsEnabled`, performans etkisini en aza indirmek için tek bir işlem için birden çok kez çağrılabilir.
 
 `IsEnabled`Şu sırada çağrılır:
 
-1. `IsEnabled(<OperationName>, string entity, null)`Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Sonunda ' Start ' veya ' Stop ' yok. Belirli işlemleri veya kuyrukları filtrelemek için bu uygulamayı kullanın. Geri çağırma döndürürse `false`, işlem için olaylar gönderilmez
+1. `IsEnabled(<OperationName>, string entity, null)`Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Sonunda ' Start ' veya ' Stop ' yok. Belirli işlemleri veya kuyrukları filtrelemek için bu uygulamayı kullanın. Geri çağırma döndürürse `false` , işlem için olaylar gönderilmez
 
-   * ' Process ' ve ' ProcessSession ' işlemleri için geri çağırma de alırsınız `IsEnabled(<OperationName>, string entity, Activity activity)` . Olayları `activity.Id` ya da Etiketler özelliklerine göre filtrelemek için kullanın.
+   * ' Process ' ve ' ProcessSession ' işlemleri için `IsEnabled(<OperationName>, string entity, Activity activity)` geri çağırma de alırsınız. Olayları ya da Etiketler özelliklerine göre filtrelemek için kullanın `activity.Id` .
   
-2. `IsEnabled(<OperationName>.Start)`Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. ' Start ' olayının tetiklenip tetiklenmeyeceğini denetler. Sonuç yalnızca ' Başlat ' olayını etkiler, ancak daha fazla izleme buna bağlı değildir.
+2. `IsEnabled(<OperationName>.Start)`Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . ' Start ' olayının tetiklenip tetiklenmeyeceğini denetler. Sonuç yalnızca ' Başlat ' olayını etkiler, ancak daha fazla izleme buna bağlı değildir.
 
-' Durdur ' `IsEnabled` olayı yok.
+`IsEnabled`' Durdur ' olayı yok.
 
-Eğer bir işlem sonucu özel durum ise `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` , çağırılır. Yalnızca ' özel durum ' olaylarına abone olabilir ve izleme geri kalanını önleyebilirsiniz. Bu durumda, bu tür özel durumları yine de işlemeniz gerekir. Diğer izleme devre dışı olduğundan, izleme bağlamını tüketiciden üretici ile olan iletilerle akışa almayı beklememelisiniz.
+Eğer bir işlem sonucu özel durum ise, `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` çağırılır. Yalnızca ' özel durum ' olaylarına abone olabilir ve izleme geri kalanını önleyebilirsiniz. Bu durumda, bu tür özel durumları yine de işlemeniz gerekir. Diğer izleme devre dışı olduğundan, izleme bağlamını tüketiciden üretici ile olan iletilerle akışa almayı beklememelisiniz.
 
-Ayrıca, örnekleme `IsEnabled` stratejilerini de kullanabilirsiniz. `Activity.Id` Veya `Activity.RootId` temel alınarak tutarlı örnekleme sağlar (izleme sistemine veya kendi kodunuz tarafından yayıldığında).
+`IsEnabled`Ayrıca, örnekleme stratejilerini de kullanabilirsiniz. Veya temel alınarak `Activity.Id` `Activity.RootId` tutarlı örnekleme sağlar (izleme sistemine veya kendi kodunuz tarafından yayıldığında).
 
-Aynı kaynak için birden `DiagnosticSource` fazla dinleyici olması halinde, olayı kabul etmek için yalnızca bir dinleyicinin olması yeterlidir, bu nedenle `IsEnabled` çağrılması garanti edilmez,
+Aynı kaynak için birden fazla dinleyici olması halinde `DiagnosticSource` , olayı kabul etmek için yalnızca bir dinleyicinin olması yeterlidir, bu nedenle `IsEnabled` çağrılması garanti edilmez,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,20 +1,16 @@
 ---
 title: 'Öğretici: Azure PowerShell ile yayımlama/abone olma kanalları ve konu filtreleri kullanarak perakende stok sınıflamasını güncelleştirme | Microsoft Docs'
 description: Bu öğreticide bir konu ve abonelikten ileti gönderip almayı ve Azure PowerShell ile filtre kuralları ekleyip kullanmayı öğreneceksiniz
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 3d1e1491ad045eba88ca7bbe54a1acb38199f7d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b1c6390d66d01bbe91500fc3878ad138eea208cc
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "65987907"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341621"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Öğretici: PowerShell ve konular/abonelikler kullanarak stok güncelleştirme
 
@@ -22,7 +18,7 @@ Microsoft Azure Service Bus, uygulamalar ve hizmetler arasında bilgi gönderen 
 
 Bu öğreticide, mesajlaşma ad alanı ve o ad alanı içinde bir kuyruk oluşturmak ve söz konusu ad alanında yetkilendirme kimlik bilgilerini almak için PowerShell kullanarak bir Service Bus kuyruğuna nasıl ileti gönderileceği ve Service Bus kuyruğundan nasıl ileti alınacağı gösterilmektedir. Daha sonra yordam, [.NET Standard kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) kullanılarak bu kuyruktan nasıl ileti gönderilip alınacağını gösterir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure PowerShell kullanarak bir Service Bus konusu ve bu konuya bir veya daha fazla abonelik oluşturma
 > * PowerShell kullanarak konu filtreleri ekleme

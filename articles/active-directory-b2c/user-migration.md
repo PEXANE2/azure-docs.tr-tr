@@ -1,7 +1,7 @@
 ---
 title: Kullanıcı geçişi yaklaşımları
 titleSuffix: Azure AD B2C
-description: Toplu içeri aktarma veya sorunsuz geçiş yöntemlerini kullanarak, başka bir kimlik sağlayıcısından Kullanıcı hesaplarını Azure AD B2C ' ye geçirin.
+description: Geçiş öncesi veya sorunsuz geçiş yöntemlerini kullanarak, başka bir kimlik sağlayıcısından Kullanıcı hesaplarını Azure AD B2C 'e geçirin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a606335a17a9c8f4796b1ce813a1fd891963e0f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332341"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355395"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Kullanıcıları Azure AD B2C geçir
 
-Başka bir kimlik sağlayıcısından Azure Active Directory B2C (Azure AD B2C) uygulamasına geçiş, mevcut kullanıcı hesaplarının geçirilmesini de gerektirebilir. Burada iki geçiş yöntemi ele alınmıştır, *toplu içeri aktarma* ve *sorunsuz geçiş*. Her iki yaklaşım da, Azure AD B2C içinde Kullanıcı hesapları oluşturmak için [MICROSOFT Graph API](manage-user-accounts-graph-api.md) 'sini kullanan bir uygulama veya betik yazmanız gerekir.
+Başka bir kimlik sağlayıcısından Azure Active Directory B2C (Azure AD B2C) uygulamasına geçiş, mevcut kullanıcı hesaplarının geçirilmesini de gerektirebilir. Burada iki geçiş yöntemi ele alınmıştır, *geçiş öncesi* ve *sorunsuz geçiş*. Her iki yaklaşım da, Azure AD B2C içinde Kullanıcı hesapları oluşturmak için [MICROSOFT Graph API](manage-user-accounts-graph-api.md) 'sini kullanan bir uygulama veya betik yazmanız gerekir.
 
-## <a name="bulk-import"></a>Toplu içeri aktarma
+## <a name="pre-migration"></a>Geçiş öncesi
 
-Toplu içeri aktarma akışında, geçiş uygulamanız her kullanıcı hesabı için bu adımları gerçekleştirir:
+Geçiş öncesi akışta, geçiş uygulamanız her kullanıcı hesabı için bu adımları gerçekleştirir:
 
 1. Geçerli kimlik bilgileri (Kullanıcı adı ve parola) dahil olmak üzere eski kimlik sağlayıcısından Kullanıcı hesabını okuyun.
 1. Azure AD B2C dizininizde geçerli kimlik bilgileriyle ilgili bir hesap oluşturun.
 
-Bu iki durumda da toplu içeri aktarma akışını kullanın:
+Geçiş öncesi akışını şu iki durumda kullanın:
 
 - Kullanıcının düz metin kimlik bilgilerine (Kullanıcı adı ve parola) erişiminiz var.
 - Kimlik bilgileri şifrelenir, ancak şifrelerini çözebilirsiniz.
@@ -43,25 +43,25 @@ Eski kimlik sağlayıcıdaki düz metin parolalara erişilemezse sorunsuz geçi�
 - Parola, karma işlevi gibi tek yönlü şifrelenmiş biçimde depolanır.
 - Parola, eski kimlik sağlayıcısı tarafından erişim için bir şekilde depolanır. Örneğin, kimlik sağlayıcısı bir Web hizmetini çağırarak kimlik bilgilerini doğrular.
 
-Sorunsuz geçiş akışı hala Kullanıcı hesaplarının toplu geçişini gerektirir, ancak ardından ilk oturum açma sırasında her kullanıcının parolasını ayarlamak için bir [REST API](custom-policy-rest-api-intro.md) (oluşturduğunuz) sorgulamak için [özel bir ilke](custom-policy-get-started.md) kullanır.
+Sorunsuz geçiş akışı hala Kullanıcı hesaplarının geçirilmesini gerektirir, ancak ardından ilk oturum açma sırasında her bir kullanıcının parolasını ayarlamak için bir [REST API](custom-policy-rest-api-intro.md) (oluşturduğunuz) sorgulamak için [özel bir ilke](custom-policy-get-started.md) kullanır.
 
-Bu nedenle kesintisiz geçiş akışı iki aşamaya sahiptir: *toplu içeri aktarma* ve *kimlik bilgilerini ayarlama*.
+Bu nedenle kesintisiz geçiş akışı iki aşamaya sahiptir: *geçiş öncesi* ve *kimlik bilgilerini ayarla*.
 
-### <a name="phase-1-bulk-import"></a>1. Aşama: toplu içeri aktarma
+### <a name="phase-1-pre-migration"></a>1. Aşama: geçiş öncesi
 
 1. Geçiş uygulamanız, eski kimlik sağlayıcısından Kullanıcı hesaplarını okur.
 1. Geçiş uygulaması, Azure AD B2C dizininizde karşılık gelen Kullanıcı hesaplarını oluşturur, ancak *parola ayarlamaz*.
 
 ### <a name="phase-2-set-credentials"></a>2. Aşama: kimlik bilgilerini ayarlama
 
-Hesapların toplu geçişi tamamlandıktan sonra, özel ilkenize ve REST API bir Kullanıcı oturum açtığında aşağıdakileri gerçekleştirin:
+Hesapların geçişi tamamlandıktan sonra, özel ilkeniz ve REST API bir Kullanıcı oturum açtığında aşağıdakileri gerçekleştirin:
 
 1. Girilen e-posta adresine karşılık gelen Azure AD B2C Kullanıcı hesabını okuyun.
 1. Boole uzantı özniteliği hesaplanarak hesabın geçiş için işaretlenip işaretlenmediğini kontrol edin.
-    - Uzantı özniteliği döndürürse `True`, eski kimlik sağlayıcısına karşı parolayı doğrulamak için REST API çağırın.
+    - Uzantı özniteliği döndürürse `True` , eski kimlik sağlayıcısına karşı parolayı doğrulamak için REST API çağırın.
       - REST API parolanın yanlış olduğunu belirlerse, kullanıcıya kolay bir hata döndürün.
-      - REST API parolanın doğru olduğunu belirlerse, parolayı Azure AD B2C hesaba yazın ve Boole uzantısı özniteliğini olarak `False`değiştirin.
-    - Boole uzantısı özniteliği döndürürse `False`, oturum açma işlemine normal olarak devam edin.
+      - REST API parolanın doğru olduğunu belirlerse, parolayı Azure AD B2C hesaba yazın ve Boole uzantısı özniteliğini olarak değiştirin `False` .
+    - Boole uzantısı özniteliği döndürürse `False` , oturum açma işlemine normal olarak devam edin.
 
 Örnek özel bir ilke ve REST API görmek için GitHub 'daki [sorunsuz Kullanıcı geçişi örneğine](https://aka.ms/b2c-account-seamless-migration) bakın.
 

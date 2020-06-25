@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e379b81fafb156b1ea71a8992abfdc060065b8b2
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 59502e01a96b603067bd80b92bcf49136f8cef4e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763185"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339164"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu (Önizleme) kullanın
 
@@ -36,8 +36,9 @@ AD FS uygulama etkinliği verileri şu yönetici rollerinden herhangi biri atanm
 
 * Kuruluşunuzun uygulamalara erişmek için şu anda AD FS kullanıyor olması gerekir.
 * Azure AD Connect Health Azure AD kiracınızda etkinleştirilmelidir.
+* AD FS aracısının Azure AD Connect Health yüklü olması gerekir.
    * [Azure AD Connect Health hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)
-   * [Azure AD Connect Health ayarlamaya başlama](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+   * [Azure AD Connect Health ayarlama ve AD FS aracısını kurma ile çalışmaya başlama](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Geçirilebileceğini AD FS uygulamaları bulma 
 

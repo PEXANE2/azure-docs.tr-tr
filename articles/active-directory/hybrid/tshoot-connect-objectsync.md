@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407012"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356211"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitleme ile nesne eşitleme sorunlarını giderme
 Bu makalede, sorun giderme görevi kullanılarak nesne eşitlemeyle ilgili sorunları gidermeye yönelik adımlar sağlanmaktadır. Sorun gidermeyi Azure Active Directory (Azure AD) Connect 'te nasıl çalıştığını görmek için [Bu kısa videoyu](https://aka.ms/AADCTSVideo)izleyin.
@@ -32,7 +32,7 @@ Azure AD Connect dağıtımınız sürüm 1.1.749.0 veya üzeri ise nesne eşitl
 Sihirbazda sorun giderme görevini çalıştırmak için aşağıdaki adımları gerçekleştirin:
 
 1.  Yönetici olarak çalıştır seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
-2.  Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
+2.  `Set-ExecutionPolicy RemoteSigned`Veya çalıştırın `Set-ExecutionPolicy Unrestricted` .
 3.  Azure AD Connect Sihirbazı 'nı başlatın.
 4.  Ek görevler sayfasına gidin, sorun gider ' i seçin ve Ileri ' ye tıklayın.
 5.  Sorun giderme sayfasında, PowerShell 'de sorun giderme menüsünü başlatmak için Başlat ' a tıklayın.
@@ -43,7 +43,7 @@ Sihirbazda sorun giderme görevini çalıştırmak için aşağıdaki adımları
 Aşağıdaki giriş parametreleri sorun giderme görevi için gereklidir:
 1.  **Nesne ayırt edici adı** – bu, sorun giderme gereken nesnenin ayırt edici adıdır
 2.  **Ad Bağlayıcısı adı** – yukarıdaki NESNENIN bulunduğu ad ormanının adıdır.
-3.  Azure AD kiracısı genel yönetici kimlik ![bilgileri genel yönetici kimlik bilgileri](media/tshoot-connect-objectsync/objsynch1.png)
+3.  Azure AD kiracısı genel yönetici kimlik bilgileri ![ genel yönetici kimlik bilgileri](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>Sorun giderme görevinin sonuçlarını anlayın
 Sorun giderme görevi aşağıdaki denetimleri gerçekleştirir:

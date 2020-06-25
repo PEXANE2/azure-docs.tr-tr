@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesini kullanma
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
-ms.openlocfilehash: 80ffd70b830483c548f29a029d448bb6b480a8d4
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676208"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341383"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Ölçek yapılandırmasında küme yapılandırması uygulamak için Azure Ilkesi kullanma (Önizleme)
 
@@ -26,7 +26,7 @@ Her küme için Truth kaynakları olarak birden çok git deposu kullanıyorsanı
 ## <a name="create-a-policy-assignment"></a>İlke ataması oluşturma
 
 1. Azure portal, Ilke ' ye gidin ve kenar çubuğunun **yazma** bölümünde **tanımlar**' ı seçin.
-2. "Kubernetes" kategorisinde yerleşik ilke olan "Kubernetes" konumunda Gima 'yı Dağıt ' ı seçin ve **Seç**' e tıklayın.
+2. "Kubernetes" kategorisinde yerleşik ilke olan "Kubernetes" konumunda Gima 'yı Dağıt ' ı seçin ve **ata**' ya tıklayın.
 3. **Kapsamı** , ilke atamasının uygulanacağı yönetim grubu, abonelik veya kaynak grubu olarak ayarlayın.
 4. İlke kapsamından herhangi bir kaynağı dışlamak istiyorsanız, **dışlamaları**ayarlayın.
 5. İlke atamaya, kolayca tanımlamak için kullanabileceğiniz bir **ad** ve **Açıklama** sağlayın.

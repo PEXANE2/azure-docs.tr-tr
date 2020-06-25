@@ -1,24 +1,17 @@
 ---
 title: Azure Service Bus - Event Grid tümleştirmesine genel bakış | Microsoft Docs
 description: Bu makalede, Azure Service Bus mesajlaşma 'nın Azure Event Grid ile nasıl tümleştirildiğini gösteren bir açıklama sunulmaktadır.
-services: service-bus-messaging
 documentationcenter: .net
-author: axisc
-editor: spelluru
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
+author: spelluru
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 009e6a1b98e72d9618dc8ed3437d7ea90ab4afac
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773474"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340581"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus - Event Grid tümleştirmesine Genel Bakış
 
@@ -119,7 +112,7 @@ Service Bus ad alanları için Event Grid abonelikleri oluşturmanın üç farkl
 
 * Azure portalında
 * [Azure CLI](#azure-cli-instructions)’da
-* [PowerShell](#powershell-instructions)’de
+* [PowerShell](#powershell-instructions) 'de
 
 ## <a name="azure-portal-instructions"></a>Azure portalı yönergeleri
 
@@ -183,7 +176,7 @@ Buradan diğer kurulum seçeneklerini keşfedebilir veya olayların akışa alı
 * [Service Bus](https://docs.microsoft.com/azure/service-bus/) hakkında daha fazla bilgi edinin.
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
-[19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png
+[renkli]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png
 [8]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid8.png
 [9]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid9.png
 [20]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgridportal.png

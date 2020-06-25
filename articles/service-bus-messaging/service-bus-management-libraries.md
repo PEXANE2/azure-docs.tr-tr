@@ -1,25 +1,15 @@
 ---
 title: Yönetim kitaplıklarını Azure Service Bus | Microsoft Docs
 description: Bu makalede, Service Bus ad alanlarını ve varlıklarını dinamik olarak sağlamak için Azure Service Bus yönetim kitaplıklarının nasıl kullanılacağı açıklanmaktadır.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.date: 06/23/2020
+ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901479"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341713"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus yönetim kitaplıkları
 
@@ -40,7 +30,7 @@ Service Bus yönetim kitaplıklarını kullanmaya başlamak için Azure Active D
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure CLI kullanma](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Bu öğreticiler size, yönetim kitaplıkları `AppId` tarafından kimlik doğrulaması için kullanılan `TenantId`bir ( `ClientSecret` istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için en az [**Azure Service Bus veri sahibi**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) veya [**katkıda bulunan**](/azure/role-based-access-control/built-in-roles#contributor) izinlerinizin olması gerekir.
+Bu öğreticiler size, `AppId` `TenantId` `ClientSecret` Yönetim kitaplıkları tarafından kimlik doğrulaması için kullanılan BIR (istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için en az [**Azure Service Bus veri sahibi**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) veya [**katkıda bulunan**](/azure/role-based-access-control/built-in-roles#contributor) izinlerinizin olması gerekir.
 
 ## <a name="programming-pattern"></a>Programlama stili
 
@@ -52,7 +42,7 @@ Herhangi bir Service Bus kaynağını işlemek için kullanılan desenler ortak 
 
    var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
-2. `ServiceBusManagementClient` Nesneyi oluşturun:
+2. Nesneyi oluşturun `ServiceBusManagementClient` :
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -61,7 +51,7 @@ Herhangi bir Service Bus kaynağını işlemek için kullanılan desenler ortak 
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. `CreateOrUpdate` Parametreleri belirtilen değerlerinizle ayarlayın:
+3. `CreateOrUpdate`Parametreleri belirtilen değerlerinizle ayarlayın:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()

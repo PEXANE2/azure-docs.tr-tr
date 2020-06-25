@@ -4,12 +4,12 @@ description: Azure geçişi ile geçiş için şirket içi makineleri nasıl haz
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: d5ac4ded59a69e57de02779b0ba8ade9d7b48b26
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 01e4a0652d575efd1c40612153be1742cd8e8927
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106370"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341327"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -35,7 +35,7 @@ Tablo, Azure geçişi için bulma, değerlendirme ve geçiş sınırlarını öz
 --- | --- | --- | ---
 **VMware Sanal Makineleri** | Tek bir Azure geçişi projesinde 35.000 adede kadar VM bulun ve değerlendirin. | VMware için tek bir [Azure geçişi](common-questions-appliance.md) gereci ile en fazla 10.000 VMware VM bulun. | **Aracısız geçiş**: en fazla 300 VM 'yi eşzamanlı olarak çoğaltabilirsiniz. En iyi performansı elde etmek için 50 'den daha fazla sanal makine oluşturmanız önerilir.<br/><br/> **Aracı tabanlı geçiş**: büyük sayıda VM çoğaltmak için [çoğaltma](migrate-replication-appliance.md) gerecini [ölçeklendirebilirsiniz](./agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
 **Hyper-V Sanal Makineleri** | Tek bir Azure geçişi projesinde 35.000 adede kadar VM bulun ve değerlendirin. | Tek bir Azure geçişi gereci ile 5.000 adede kadar Hyper-V VM 'lerini keşfetme | Hyper-V geçişi için bir gereç kullanılmaz. Bunun yerine, Hyper-V çoğaltma sağlayıcısı her Hyper-V konağında çalışır.<br/><br/> Çoğaltma kapasitesi, sanal makine karmaşıklığı gibi performans faktörlerine göre etkilenerek çoğaltma verileri için bant genişliğini karşıya yükler.<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
-**Fiziksel makineler** | Tek bir Azure geçişi projesinde en fazla 35.000 makine bulun ve değerlendirin. | Fiziksel sunucular için tek bir Azure geçişi gereci ile 250 adede kadar fiziksel sunucu bulun. | Çok sayıda sunucuyu çoğaltmak için [çoğaltma](migrate-replication-appliance.md) gerecini [ölçeklendirebilirsiniz](/agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
+**Fiziksel makineler** | Tek bir Azure geçişi projesinde en fazla 35.000 makine bulun ve değerlendirin. | Fiziksel sunucular için tek bir Azure geçişi gereci ile 250 adede kadar fiziksel sunucu bulun. | Çok sayıda sunucuyu çoğaltmak için [çoğaltma](migrate-replication-appliance.md) gerecini [ölçeklendirebilirsiniz](./agent-based-migration-architecture.md#performance-and-scaling) .<br/><br/> Portalda, çoğaltma için aynı anda en fazla 10 makine seçebilirsiniz. Daha fazla makine çoğaltmak için 10 toplu işi ekleyin.
 
 ## <a name="select-a-vmware-migration-method"></a>Bir VMware geçiş yöntemi seçin
 

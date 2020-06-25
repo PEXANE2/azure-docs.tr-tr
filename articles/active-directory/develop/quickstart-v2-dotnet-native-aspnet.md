@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536157"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339583"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma
 
@@ -30,7 +30,7 @@ Bu örneği çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
 * Visual Studio 2017 veya 2019.  [Visual Studio 'yu ücretsiz](https://www.visualstudio.com/downloads/)indirin.
 
-* [Microsoft hesabı](https://www.outlook.com) veya [Office 365 Geliştirici Programı](/office/developer-program/office-365-developer-program)
+* Bir [Microsoft hesabı](https://www.outlook.com) ya da [Microsoft 365 Geliştirici Programı](/office/developer-program/office-365-developer-program)
 
 ## <a name="download-or-clone-this-sample"></a>Bu örneği indir veya Kopyala
 
@@ -57,11 +57,11 @@ Uygulamalarınızı el ile kaydetmek istiyorsanız, ilk adım olarak şunları y
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 1. **Yeni kayıt**seçeneğini belirleyin.
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
-   - **Ad** bölümünde, örneğin `AppModelv2-NativeClient-DotNet-TodoListService`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
+   - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `AppModelv2-NativeClient-DotNet-TodoListService` .
    - **Desteklenen hesap türlerini** **herhangi bir kuruluş dizinindeki hesaplara**değiştirin.
    - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 
-1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmanız gerekir (`ClientId` içinde `TodoListService\Web.config`).
+1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmanız gerekir ( `ClientId` içinde `TodoListService\Web.config` ).
 1. API 'yi **kullanıma** sunma bölümünü seçin ve:
    - **Kapsam Ekle** ' yi seçin
    - **Kaydet ve devam et ' i** seçerek ÖNERILEN uygulama kimliği URI 'sini (API://{ClientID}) kabul edin
@@ -77,12 +77,12 @@ Uygulamalarınızı el ile kaydetmek istiyorsanız, ilk adım olarak şunları y
 
 ### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Hizmet projesini kayıtlı Web API 'siyle eşleşecek şekilde yapılandırma
 
-1. Visual Studio 'da çözümü açın ve ardından **TodoListService** projesi kökünün altındaki **Web. config** dosyasını açın.
-1. `ida:ClientId` Parametresinin değerini, **Istemci KIMLIĞI (uygulama kimliği)** Ile, uygulama kayıt portalı 'nda yeni kaydettiğiniz uygulamadan değiştirin.
+1. Visual Studio 'da çözümü açın ve ardından **TodoListService** projesi kökünün altındaki **Web.config** dosyasını açın.
+1. Parametresinin değerini, `ida:ClientId` **istemci kimliği (uygulama kimliği)** Ile, uygulama kayıt portalı 'nda yeni kaydettiğiniz uygulamadan değiştirin.
 
-### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Yeni kapsamı *TodoListClient*'ın App. config dosyasına ekleyin
+### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Yeni kapsamı *TodoListClient*'in app.config ekleyin
 
-1. **TodoListClient** projesinin kök klasöründe bulunan **app. config** dosyasını açın ve sonra, dizeyi `TodoListServiceScope` `{Enter the Application ID of your TodoListService from the app registration portal}`değiştirerek, parametre altındaki *TodoListService* için yeni kaydettiğiniz uygulamadan **uygulama kimliği** ' ni yapıştırın.
+1. **TodoListClient** projesinin kök klasöründe yer alan **app.config** dosyasını açın ve sonra, dizeyi değiştirerek, parametre *ALTıNA yeni* kaydettiğiniz uygulamadan **uygulama kimliği** ' ni yapıştırın `TodoListServiceScope` `{Enter the Application ID of your TodoListService from the app registration portal}` .
 
    > Unutmayın: aşağıdaki biçimi kullandığından emin olun:
    >
@@ -99,27 +99,27 @@ Bu adımda, uygulama kayıt portalı 'nda yeni bir uygulama kaydederek *TodoList
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 1. **Yeni kayıt**seçeneğini belirleyin.
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
-   - **Ad** bölümünde, örneğin `NativeClient-DotNet-TodoListClient`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
+   - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `NativeClient-DotNet-TodoListClient` .
    - **Desteklenen hesap türlerini** **herhangi bir kuruluş dizinindeki hesaplara**değiştirin.
    - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın Genel Bakış sayfasında, **Kimlik doğrulaması** bölümünü seçin.
-   - **Yeniden yönlendirme URI** | 'lerinde**ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne bakın**https://login.microsoftonline.com/common/oauth2/nativeclient**
+   - **Yeniden yönlendirme URI**'lerinde  |  **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne bakın**https://login.microsoftonline.com/common/oauth2/nativeclient**
    - **Kaydet**’i seçin.
 1. **API izinleri** bölümünü seçin
    - **Izin Ekle** düğmesine tıklayın ve ardından
    - **API 'Lerim** sekmesini seçin.
-   - API 'Ler listesinde, veya Web API 'SI `AppModelv2-NativeClient-DotNet-TodoListService API`için girdiğiniz adı seçin.
+   - API 'Ler listesinde, `AppModelv2-NativeClient-DotNet-TodoListService API` veya Web API 'si için girdiğiniz adı seçin.
    - Zaten işaretli değilse **access_as_user** iznini denetleyin. Gerekirse arama kutusunu kullanın.
    - **Izin Ekle** düğmesini seçin
 
 ### <a name="configure-your-todolistclient-project"></a>*TodoListClient* projenizi yapılandırma
 
 1. *Uygulama kayıt portalı*' nda, **genel bakış** sayfasında, **uygulama (istemci) kimliğinin** değerini kopyalayın
-1. **TodoListClient** projesinin kök klasöründe bulunan `ida:ClientId` **app. config** dosyasını açın ve değeri parametre değerine yapıştırın
+1. **TodoListClient** projesinin kök klasöründe bulunan **app.config** dosyasını açın ve sonra değeri `ida:ClientId` parametre değerine yapıştırın
 
 ## <a name="run-your-project"></a>Projenizi çalıştırma
 
-1. Projenizi `<F5>` çalıştırmak için tuşuna basın. *TodoListClient* ' i açmanız gerekir.
+1. `<F5>`Projenizi çalıştırmak için tuşuna basın. *TodoListClient* ' i açmanız gerekir.
 1. Sağ üst köşedeki **oturum aç** ' ı seçin ve uygulamanızı kaydetmek için kullandığınız kullanıcıyla veya aynı dizindeki bir kullanıcıyla oturum açın.
 1. Bu noktada, ilk kez oturum açıyorsanız, *TodoListService* Web API 'sine onay vermeniz istenebilir.
 1. Oturum açma Ayrıca, *TodoListService* Web API 'sine erişmek ve *Yapılacaklar* listesini değiştirmek için *access_as_user* kapsamına erişim belirteci ister.
@@ -130,13 +130,13 @@ Diğer dizinlerden kullanıcıların Web API 'nize erişmesine izin vermenin bir
 
 1. *Uygulama kayıt portalına* geri dönün ve **TodoListService**özelliklerini açın.
 1. **API 'Yi kullanıma** sunma bölümünde, *yetkili istemci uygulamaları* bölümünde **istemci uygulaması Ekle** ' ye tıklayın.
-1. *ISTEMCI kimliği* alanında `TodoListClient` uygulamanın uygulama kimliğini yapıştırın.
-1. *Yetkili kapsamlar* bölümünde, bu Web API 'sinin `api://<Application ID>/access_as_user`kapsamını seçin.
+1. *ISTEMCI kimliği* alanında UYGULAMANıN uygulama kimliğini yapıştırın `TodoListClient` .
+1. *Yetkili kapsamlar* bölümünde, bu Web API 'sinin kapsamını seçin `api://<Application ID>/access_as_user` .
 1. Sayfanın alt kısmındaki **Uygulama Ekle** düğmesine basın.
 
 ## <a name="run-your-project"></a>Projenizi çalıştırma
 
-1. Projenizi `<F5>` çalıştırmak için tuşuna basın. *TodoListClient* ' i açmanız gerekir.
+1. `<F5>`Projenizi çalıştırmak için tuşuna basın. *TodoListClient* ' i açmanız gerekir.
 1. Sağ üst köşedeki **oturum aç** ' ı (veya temiz önbellek/oturum açma) seçin ve ardından kişisel Microsoft hesabı (live.com veya hotmail.com) veya iş ya da okul hesabı kullanarak oturum açın.
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>İsteğe bağlı: uygulamanıza yönelik oturum açma erişimini kısıtlayın
@@ -149,8 +149,8 @@ Uygulamanızda kimlerin oturum açabileceğini kısıtlamak için seçeneklerden
 
 Uygulamanız için oturum açma erişimini, yalnızca tek bir Azure AD kiracısında bulunan Kullanıcı hesaplarına (Bu kiracının *Konuk hesapları* dahil) kısıtlayabilirsiniz. Bu senaryo *iş kolu uygulamaları*için ortaktır:
 
-1. **App_Start \Startup.exe** dosyasını açın ve ' a `OpenIdConnectSecurityTokenProvider` geçirilecek meta veri uç noktasının değerini değiştirin `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (örneğin, kiracı adını da kullanabilirsiniz `contoso.onmicrosoft.com`).
-2. Aynı dosyada, `ValidIssuer` `TokenValidationParameters` `"https://sts.windows.net/{Tenant ID}/"` ve `ValidateIssuer` bağımsız değişkeninde özelliğini olarak `true`ayarlayın.
+1. **App_Start \Startup.exe** dosyasını açın ve ' a geçirilecek meta veri uç noktasının değerini değiştirin `OpenIdConnectSecurityTokenProvider` `"https://login.microsoftonline.com/{Tenant ID}/v2.0/.well-known/openid-configuration"` (örneğin, kiracı adını da kullanabilirsiniz `contoso.onmicrosoft.com` ).
+2. Aynı dosyada, `ValidIssuer` `TokenValidationParameters` `"https://sts.windows.net/{Tenant ID}/"` ve `ValidateIssuer` bağımsız değişkeninde özelliğini olarak ayarlayın `true` .
 
 ### <a name="option-2-use-a-custom-method-to-validate-issuers"></a>Seçenek 2: verenler doğrulamak için özel bir yöntem kullanma
 

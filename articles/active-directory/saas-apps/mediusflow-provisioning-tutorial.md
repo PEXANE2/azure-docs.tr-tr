@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd2217046a725f0bb0a05f1eb0afc5434bf3b6fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3b194755e96e8b8dec2bd0325417950ffe96241c
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664287"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339317"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için MediusFlow yapılandırma
 
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Medius
 > * MediusFlow 'da grupları ve grup üyeliklerini sağlama
 > * MediusFlow 'da çoklu oturum açma (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -52,11 +52,11 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için MediusFlow yapılandırma
 
-### <a name="activate-the-office-365-app-within-mediusflow"></a>MediusFlow 'da Office 365 uygulamasını etkinleştirme
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>MediusFlow içinde Microsoft 365 uygulamasını etkinleştirme
 Aşağıdaki adımları gerçekleştirerek, MediusFlow içindeki Azure AD oturum açma ve Azure AD yapılandırma özelliğinin erişimini etkinleştirerek başlayın:
 
 #### <a name="user-login"></a>Kullanıcı oturumu açma
-Uygulamasına oturum açma akışını Office 365/Azure AD 'ye etkinleştirmek için [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) makalesine bakın.
+Uygulamasına Microsoft 365/Azure AD 'ye oturum açma akışını etkinleştirmek için [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) makalesine bakın.
 
 #### <a name="user-transfer-configuration"></a>Kullanıcı Aktarım yapılandırması
 Azure AD 'den sağlama için kullanıcıların yapılandırma portalını etkinleştirmek üzere [Bu](
@@ -129,7 +129,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-mediusflow-in-azure-ad"></a>Azure AD 'de MediusFlow için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

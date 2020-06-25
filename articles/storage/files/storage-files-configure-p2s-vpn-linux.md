@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41feacf180bbe21fdd3d04cabaaf3e3fbaacd20e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061058"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355480"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Linux üzerinde Azure dosyaları ile kullanım için Noktadan siteye (P2S) VPN yapılandırma
 Azure dosya paylaşımlarınızı, 445 numaralı bağlantı noktasını açmadan Azure dışından SMB 'ye bağlamak için Noktadan siteye (P2S) VPN bağlantısı kullanabilirsiniz. Noktadan siteye VPN bağlantısı, Azure ile tek bir istemci arasındaki VPN bağlantısıdır. Azure dosyaları ile P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Şirket içi ağınızdan Azure dosya paylaşımlarınızın bağlanması gereken çok sayıda istemciniz varsa, her istemci için Noktadan siteye bağlantı yerine siteden siteye (S2S) VPN bağlantısı kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure dosyaları ile kullanmak Için siteden sıteye VPN yapılandırma](storage-files-configure-s2s-vpn.md).
@@ -44,7 +44,7 @@ Azure dosya paylaşımınıza ve diğer Azure kaynaklarına Noktadan siteye VPN 
 
 Aşağıdaki betik, üç alt ağı olan bir Azure sanal ağı oluşturacak: bir depolama hesabınızın özel uç noktası için bir tane, bir depolama hesabının özel uç noktası için, bir tane, değişebilir depolama hesabının genel IP 'si için özel yönlendirme oluşturmadan ve VPN hizmetini sağlayan sanal ağ geçidiniz için özel yönlendirme oluşturmadan şirket içi depolama hesabına erişmek için gereklidir. 
 
-, Ve `<desired-vnet-name>` değerlerini `<region>`, `<resource-group>`ortamınız için uygun değerlerle değiştirmeyi unutmayın.
+`<region>`, `<resource-group>` Ve `<desired-vnet-name>` değerlerini, ortamınız için uygun değerlerle değiştirmeyi unutmayın.
 
 ```bash
 region="<region>"
@@ -114,10 +114,12 @@ openssl pkcs12 -in "clientCert.pem" -inkey "clientKey.pem" -certfile rootCert.pe
 ## <a name="deploy-virtual-network-gateway"></a>Sanal ağ geçidini dağıtma
 Azure sanal ağ geçidi, şirket içi Linux makinelerinizin bağlanacağı hizmettir. Bu hizmeti dağıtmak için iki temel bileşen gerekir: dünyanın her yerinden ve daha önce oluşturduğunuz bir kök sertifikaya ve istemcilerinizin kimliğini doğrulamak için kullanılacak bir kök sertifikaya sahip olan, istemcileriniz için ağ geçidini tanımlayacak genel bir IP.
 
-Bu kaynaklar için `<desired-vpn-name-here>` istediğiniz adla değiştirmeyi unutmayın.
+`<desired-vpn-name-here>`Bu kaynaklar için istediğiniz adla değiştirmeyi unutmayın.
 
 > [!Note]  
-> Azure sanal ağ geçidi dağıtımı en fazla 45 dakika sürebilir. Bu kaynak dağıtılırken, bu Bash betik betiği dağıtımın tamamlanmasını engelleyecek. Bu beklenen bir durumdur.
+> Azure sanal ağ geçidi dağıtımı en fazla 45 dakika sürebilir. Bu kaynak dağıtılırken, bu Bash betik betiği dağıtımın tamamlanmasını engelleyecek.
+>
+> **Temel** SKU Ile P2S Ikev2/OpenVPN bağlantıları desteklenmez. Bu betik, uygun şekilde sanal ağ geçidi için **VpnGw1** SKU 'su kullanır.
 
 ```bash
 vpnName="<desired-vpn-name-here>"

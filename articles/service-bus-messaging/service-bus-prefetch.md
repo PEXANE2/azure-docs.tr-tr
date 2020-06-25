@@ -1,24 +1,14 @@
 ---
 title: Önceden getirme iletilerini Azure Service Bus | Microsoft Docs
 description: Azure Service Bus iletilerini önceden getirerek performansı artırabilirsiniz. İletiler, uygulama için istek yapılmadan önce yerel alma için hazır.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760666"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341056"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Önceden getirme Azure Service Bus iletileri
 
@@ -32,7 +22,7 @@ Tek bir başlangıç [alma](/dotnet/api/microsoft.servicebus.messaging.queueclie
 
 Bu bağlamlarda etkisini görmek için, bu ayarı [Queuesgettingstarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) veya [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) Samples ' ayarlarının alma tarafına kolayca ekleyebilirsiniz.
 
-İletiler önceden getirme arabelleğinde kullanılabilir olsa da, sonraki **alma**/**ReceiveAsync** çağrıları arabelleğin hemen yerine getirilir ve alan kullanılabilir hale geldiğinde arabelleğin arka planda replenished olur. Teslim için kullanılabilecek bir ileti yoksa, alma işlemi arabelleği boşaltır ve beklendiği gibi bekler veya engeller.
+İletiler önceden getirme arabelleğinde kullanılabilir olsa da, sonraki **alma** / **ReceiveAsync** çağrıları arabelleğin hemen yerine getirilir ve alan kullanılabilir hale geldiğinde arabelleğin arka planda replenished olur. Teslim için kullanılabilecek bir ileti yoksa, alma işlemi arabelleği boşaltır ve beklendiği gibi bekler veya engeller.
 
 Önceden getirme, [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) ve [onmessageasync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API 'leriyle aynı şekilde de çalışacaktır.
 
@@ -40,7 +30,7 @@ Bu bağlamlarda etkisini görmek için, bu ayarı [Queuesgettingstarted](https:/
 
 Önceden getirme, uygulamanın bir kullanıcıdan önce ve öncesinde yerel olarak alımı için hazır bir ileti sunarak ileti akışını hızlandırır. Bu aktarım hızı, uygulama yazarının açıkça yapması gereken bir denge sonucudur:
 
-[Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) alma moduyla birlikte, önceden getirme arabelleğine alınan tüm iletiler kuyrukta kullanılamaz ve yalnızca,**ReceiveAsync** veya **OnMessage**/**onmessageasync** API 'leri aracılığıyla/uygulamaya alınana kadar bellek içi önceden getirme arabelleğinde **yer alır.** Uygulama, iletiler uygulamaya alınmadan önce sonlanmışsa, bu iletiler kurtarılamayacak şekilde kaybedilir.
+[Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) alma moduyla birlikte, önceden getirme arabelleğine alınan tüm iletiler kuyrukta kullanılamaz ve yalnızca, **Receive** / **ReceiveAsync** veya **OnMessage** / **onmessageasync** API 'leri aracılığıyla uygulamaya alınana kadar bellek içi önceden getirme arabelleğinde yer alır. Uygulama, iletiler uygulamaya alınmadan önce sonlanmışsa, bu iletiler kurtarılamayacak şekilde kaybedilir.
 
 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) alma modunda, önceden getirme arabelleğine getirilen iletiler, ön belleğe kilitli durumda alınır ve kilit için zaman aşımı saatine sahiptir. Önceden getirme arabelleği büyükse ve işleme, önceden getirme arabelleğinde veya uygulama iletiyi işlerken bile ileti kilitlerinin süresinin dolacağı zaman alıyorsa, uygulamanın işlemesi için bazı kafa karıştırıcı olaylar olabilir.
 

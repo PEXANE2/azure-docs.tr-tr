@@ -8,17 +8,17 @@ manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759748124893a8f906a4bc336f835546202b0b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049487"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355922"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory sorunsuz çoklu oturum açma sorunlarını giderme
 
@@ -35,7 +35,7 @@ Bu makale, Azure Active Directory (Azure AD) sorunsuz çoklu oturum açma (sorun
 - Sorunsuz SSO, iOS ve Android 'de mobil tarayıcılarda çalışmaz.
 - Kullanıcı Active Directory çok sayıda grubun parçasıysa, kullanıcının Kerberos bileti çok büyük olabilir ve bu işlem sorunsuz SSO 'nun başarısız olmasına neden olur. Azure AD HTTPS isteklerinde en fazla 50 KB boyutunda üst bilgi bulunabilir. Kerberos anahtarlarının, tanımlama bilgileri gibi diğer Azure AD yapılarına (genellikle, 2-5 KB) uyum sağlaması için bu sınırdan daha küçük olması gerekir. Önerimiz, kullanıcının grup üyeliklerini azaltmaktır ve yeniden deneyin.
 - 30 veya daha fazla Active Directory ormanı eşitliyorsanız, Azure AD Connect aracılığıyla sorunsuz SSO etkinleştirilemez. Geçici bir çözüm olarak, kiracınızda özelliği [el ile etkinleştirebilirsiniz](#manual-reset-of-the-feature) .
-- Azure AD hizmeti URL 'sini (`https://autologon.microsoftazuread-sso.com`) yerel intranet bölgesi yerine güvenilen siteler bölgesine eklemek *, kullanıcıların oturum açmasını engeller*.
+- Azure AD hizmeti URL 'sini ( `https://autologon.microsoftazuread-sso.com` ) yerel intranet bölgesi yerine güvenilen siteler bölgesine eklemek *, kullanıcıların oturum açmasını engeller*.
 - Sorunsuz SSO, Kerberos için AES256_HMAC_SHA1, AES128_HMAC_SHA1 ve RC4_HMAC_MD5 şifreleme türlerini destekler. AzureADSSOAcc $ hesabı için şifreleme türü AES256_HMAC_SHA1 olarak, ek güvenlik için de AES türlerinden biri de. RC4 olarak ayarlanmalıdır. Şifreleme türü, Active Directory hesabın msDS-SupportedEncryptionTypes özniteliğinde depolanır.  AzureADSSOAcc $ Account ENCRYPTION türü RC4_HMAC_MD5 olarak ayarlandıysa ve bunu AES şifreleme türlerinden biri olarak değiştirmek istiyorsanız, lütfen ilk olarak AzureADSSOAcc $ hesabının Kerberos şifre çözme anahtarını, ilgili sorunun altındaki [SSS belgesinde](how-to-connect-sso-faq.md) açıklandığı gibi aldığınızdan emin olun, aksi takdırde sorunsuz SSO gerçekleşmeyecektir.
 
 ## <a name="check-status-of-feature"></a>Özelliğin durumunu denetleme
@@ -54,7 +54,7 @@ Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Direc
 
 ![Azure Active Directory Yönetim Merkezi: oturum açma işlemleri raporu](./media/tshoot-connect-sso/sso9.png)
 
-[Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/) **Azure Active Directory** > **oturum açma** işlemleri yapın ve ardından belirli bir kullanıcının oturum açma etkinliğini seçin. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
+**Azure Active Directory**  >  [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/)Azure Active Directory**oturum açma** işlemleri yapın ve ardından belirli bir kullanıcının oturum açma etkinliğini seçin. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
 
 |Oturum açma hata kodu|Oturum açma hatası nedeni|Çözüm
 | --- | --- | ---
@@ -75,16 +75,16 @@ Sorunsuz SSO sorunlarını gidermek için aşağıdaki denetim listesini kullan�
 
 - Azure AD Connect 'de sorunsuz SSO özelliğinin etkinleştirildiğinden emin olun. Özelliği etkinleştiremiyorum (örneğin, engellenen bir bağlantı noktası nedeniyle), tüm [önkoşulların](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) sağlandığından emin olun.
 - Kiracınızda [Azure AD JOIN](../active-directory-azureadjoin-overview.md) ve sorunsuz SSO 'yu etkinleştirdiyseniz, sorunun Azure AD JOIN ile olmadığından emin olun. Cihaz hem Azure AD hem de etki alanına katılmış olarak kayıtlıysa, Azure AD JOIN 'ten gelen SSO sorunsuz SSO 'dan önceliklidir. Azure AD JOIN 'ten SSO ile Kullanıcı, "Windows 'a bağlı" yazan bir oturum açma kutucuğu görür.
-- Azure AD URL 'sinin (`https://autologon.microsoftazuread-sso.com`) Kullanıcının Intranet bölgesi ayarlarının bir parçası olduğundan emin olun.
+- Azure AD URL 'sinin ( `https://autologon.microsoftazuread-sso.com` ) Kullanıcının Intranet bölgesi ayarlarının bir parçası olduğundan emin olun.
 - Şirket cihazının Active Directory etki alanına katılmış olduğundan emin olun. Sorunsuz SSO 'nun çalışması için cihazın [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md) _olması gerekmez_ .
 - Kullanıcının cihazda Active Directory bir etki alanı hesabı aracılığıyla oturum açtığından emin olun.
 - Kullanıcı hesabının, sorunsuz SSO 'nun ayarlandığı bir Active Directory ormanına ait olduğundan emin olun.
 - Cihazın kurumsal ağa bağlı olduğundan emin olun.
 - Cihaz saatinin hem Active Directory hem de etki alanı denetleyicilerindeki zaman ile eşitlendiğinden ve bunların beş dakika içinde olduklarından emin olun.
-- `AZUREADSSOACC` Bilgisayar hesabının mevcut olduğundan ve sorunsuz SSO 'nun etkin olmasını ISTEDIĞINIZ her ad ormanında etkinleştirildiğinden emin olun. Bilgisayar hesabı silinmişse veya eksikse, [PowerShell cmdlet 'lerini](#manual-reset-of-the-feature) kullanarak yeniden oluşturabilirsiniz.
-- Komut isteminden `klist` komutunu kullanarak cihazdaki mevcut Kerberos biletlerini listeleyin. `AZUREADSSOACC` Bilgisayar hesabı için verilen anahtarların mevcut olduğundan emin olun. Kullanıcıların Kerberos biletleri genellikle 10 saat için geçerlidir. Active Directory farklı ayarlara sahip olabilirsiniz.
+- `AZUREADSSOACC`Bilgisayar hesabının mevcut olduğundan ve sorunsuz SSO 'nun etkin olmasını istediğiniz her ad ormanında etkinleştirildiğinden emin olun. Bilgisayar hesabı silinmişse veya eksikse, [PowerShell cmdlet 'lerini](#manual-reset-of-the-feature) kullanarak yeniden oluşturabilirsiniz.
+- Komut isteminden komutunu kullanarak cihazdaki mevcut Kerberos biletlerini listeleyin `klist` . Bilgisayar hesabı için verilen anahtarların mevcut olduğundan emin olun `AZUREADSSOACC` . Kullanıcıların Kerberos biletleri genellikle 10 saat için geçerlidir. Active Directory farklı ayarlara sahip olabilirsiniz.
 - Kiracınızda sorunsuz SSO 'yu devre dışı bırakırsanız ve yeniden etkinleştirdiyseniz, kullanıcılar önbelleğe alınmış Kerberos biletleri zaman aşımına erene kadar çoklu oturum açma deneyimini almaz.
-- `klist purge` Komutunu kullanarak cihazdaki mevcut Kerberos biletlerini temizleyin ve yeniden deneyin.
+- Komutunu kullanarak cihazdaki mevcut Kerberos biletlerini temizleyin `klist purge` ve yeniden deneyin.
 - JavaScript ile ilgili sorunlar olup olmadığını anlamak için tarayıcının konsol günlüklerini gözden geçirin ( **Geliştirici Araçları**altında).
 - [Etki alanı denetleyicisi günlüklerini](#domain-controller-logs)gözden geçirin.
 
@@ -107,17 +107,17 @@ Sorun giderme konusunda yardım olmadıysa, kiracınızdaki özelliği el ile s�
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>1. Adım: sorunsuz SSO PowerShell modülünü Içeri aktarma
 
 1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
-2. `%programfiles%\Microsoft Azure Active Directory Connect` Klasöre gidin.
-3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
+2. `%programfiles%\Microsoft Azure Active Directory Connect`Klasöre gidin.
+3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1` .
 
 ### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>2. Adım: sorunsuz SSO 'nun etkinleştirildiği Active Directory ormanların listesini alın
 
-1. PowerShell'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. İstendiğinde, kiracınızın genel yönetici kimlik bilgilerini girin.
-2. Çağrısı `Get-AzureADSSOStatus`yapın. Bu komut, bu özelliğin etkinleştirildiği Active Directory ormanların listesini ("etki alanları" listesine bakın) sağlar.
+1. PowerShell'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext` . İstendiğinde, kiracınızın genel yönetici kimlik bilgilerini girin.
+2. Çağrısı yapın `Get-AzureADSSOStatus` . Bu komut, bu özelliğin etkinleştirildiği Active Directory ormanların listesini ("etki alanları" listesine bakın) sağlar.
 
 ### <a name="step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature"></a>3. Adım: özelliği ayarladığınız her Active Directory orman için sorunsuz SSO 'yu devre dışı bırakın
 
-1. Çağrısı `$creds = Get-Credential`yapın. İstendiğinde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
+1. Çağrısı yapın `$creds = Get-Credential` . İstendiğinde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
 
    > [!NOTE]
    >Etki alanı yöneticisi kimlik bilgileri Kullanıcı adı, SAM hesap adı biçiminde girilmelidir (contoso\johntikan veya contoso. com\johntikan). DNS kullanarak etki alanı yöneticisinin etki alanı denetleyicisini bulmak için Kullanıcı adının etki alanı bölümünü kullanıyoruz.
@@ -125,12 +125,12 @@ Sorun giderme konusunda yardım olmadıysa, kiracınızdaki özelliği el ile s�
    >[!NOTE]
    >Kullanılan etki alanı yönetici hesabı, protected Users grubunun bir üyesi olmamalıdır. Öyleyse, işlem başarısız olur.
 
-2. Çağrısı `Disable-AzureADSSOForest -OnPremCredentials $creds`yapın. Bu komut, `AZUREADSSOACC` bu belirli Active Directory ormanın şirket içi etki alanı denetleyicisinden bilgisayar hesabını kaldırır.
+2. Çağrısı yapın `Disable-AzureADSSOForest -OnPremCredentials $creds` . Bu komut, `AZUREADSSOACC` Bu belirli Active Directory ormanın şirket içi etki alanı denetleyicisinden bilgisayar hesabını kaldırır.
 3. Özelliği ayarladığınız her Active Directory ormanı için önceki adımları tekrarlayın.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>4. Adım: her Active Directory orman için sorunsuz SSO 'yu etkinleştirme
 
-1. Çağrısı `Enable-AzureADSSOForest`yapın. İstendiğinde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
+1. Çağrısı yapın `Enable-AzureADSSOForest` . İstendiğinde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
 
    > [!NOTE]
    >Etki alanı yöneticisi kimlik bilgileri Kullanıcı adı, SAM hesap adı biçiminde girilmelidir (contoso\johntikan veya contoso. com\johntikan). DNS kullanarak etki alanı yöneticisinin etki alanı denetleyicisini bulmak için Kullanıcı adının etki alanı bölümünü kullanıyoruz.
@@ -142,4 +142,4 @@ Sorun giderme konusunda yardım olmadıysa, kiracınızdaki özelliği el ile s�
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>5. Adım. Kiracınızda özelliği etkinleştirin
 
-Kiracınızdaki özelliği açmak için çağırın `Enable-AzureADSSO -Enable $true`.
+Kiracınızdaki özelliği açmak için çağırın `Enable-AzureADSSO -Enable $true` .

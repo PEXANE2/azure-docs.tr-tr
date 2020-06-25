@@ -8,12 +8,12 @@ ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 18f7657cdaf3eb1fef76ca65856fde3b29b714a7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262368"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355888"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Örnek bir istemci uygulamasıyla Azure dijital TWINS 'i keşfet
 
@@ -43,7 +43,7 @@ Azure dijital TWINS çözümü oluşturmanın ilk adımı, ortamınız için iki
 Modeller, nesne odaklı programlama dillerinde sınıflarla benzerdir; Bunlar, daha sonra izlemek ve örneklendirilecek [dijital TWINS](concepts-twins-graph.md) için Kullanıcı tanımlı şablonlar sağlar. Bunlar, **dijital TWINS tanım dili (DTDL)** adlı JSON benzeri bir dilde yazılır ve bir ikizi *özellikleri*, *telemetri*, *ilişki*ve *bileşen*tanımlayabilir.
 
 > [!NOTE]
-> DTDL Ayrıca, dijital TWINS 'teki *komutların* tanımına izin verir. Ancak, şu anda Azure Digital TWINS hizmetinde komutlar desteklenmemektedir.
+> DTDL Ayrıca dijital TWINS 'teki *komutların* tanımına izin verir. Ancak, şu anda Azure Digital TWINS hizmetinde komutlar desteklenmemektedir.
 
 _**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizde, *AdtSampleApp\SampleClientApp\Models* klasörüne gitmek için *Çözüm Gezgini* bölmesini kullanın. Bu klasör örnek modeller içerir.
 
@@ -131,7 +131,8 @@ Komutu çalıştırarak modellerin oluşturulduğunu doğrulayın `GetModels tru
 CreateModels Room
 ```
 
-Modellerin üzerine yazılamaz, bu şimdi bir hizmet hatası döndürüyor:
+Modellerin üzerine yazılamaz, bu işlem artık bir hizmet hatası döndürüyor.
+Mevcut modellerin nasıl silineceği hakkındaki ayrıntılar için bkz. [nasıl yapılır: özel modelleri yönetme](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)

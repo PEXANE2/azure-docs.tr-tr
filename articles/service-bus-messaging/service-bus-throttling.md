@@ -1,19 +1,14 @@
 ---
 title: Azure Service Bus azaltmasına genel bakış | Microsoft Docs
 description: Service Bus azaltmasına genel bakış-standart ve Premium katmanları.
-services: service-bus-messaging
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: aschhab
-ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598298"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340950"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure Service Bus azaltma işlemleri
 
@@ -51,7 +46,7 @@ Kredi limitleri Şu anda her saniyede ' 1000 ' kredilerine ayarlanmıştır (ad 
 
 Tüm işlemler eşit olarak oluşturulmaz. İşlemlerin her biri için kredi maliyetleri aşağıda verilmiştir. 
 
-| İşlem | Kredi maliyeti|
+| Çalışma | Kredi maliyeti|
 |-----------|-----------|
 | Veri işlemleri (Send, Sendadsync, Receive, ReceiveAsync, Peek) |ileti başına 1 kredi |
 | Yönetim işlemleri (oluşturma, okuma, güncelleştirme, kuyruklarda silme, konular, abonelikler, filtreler) | 10 kredi |

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78298352"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356891"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Kimlik eşitleme ve yinelenen öznitelik dayanıklılığı
 Yinelenen öznitelik dayanıklılığı, Microsoft 'un eşitleme araçlarından birini çalıştırırken **userPrincipalName** ve SMTP **ProxyAddress** çakışmalarını ortadan kaldıran, Azure Active Directory bir özelliktir.
@@ -40,7 +40,7 @@ Bu benzersizlik kısıtlamasını ihlal eden bir UPN veya ProxyAddress değeri i
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Yinelenen öznitelik dayanıklılığı ile davranış
 Yinelenen bir özniteliğe sahip bir nesneyi sağlamak veya güncelleştirmek yerine, benzersizlik kısıtlamasını ihlal eden yinelenen özniteliğe "quarantınes" Azure Active Directory. Bu öznitelik, UserPrincipalName gibi sağlama için gerekliyse hizmet bir yer tutucu değeri atar. Bu geçici değerlerin biçimi  
-_**Originalprefix>+\<4digitnumber>\@ \<ınitialtenantdomain>. onmicrosoft.com. \<**_
+_** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.com**_.
 
 Öznitelik dayanıklılığı işlemi yalnızca UPN ve SMTP **ProxyAddress** değerlerini işler.
 
@@ -116,12 +116,12 @@ Geniş bir dize arama yapmak için **-searchstring** bayrağını kullanın. Bu,
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>Sınırlı miktarda veya tümü
-1. **MaxResults \<Int>** , sorguyu belirli bir değer sayısıyla sınırlamak için kullanılabilir.
+1. **MaxResults \<Int> ** sorguyu belirli bir değer sayısıyla sınırlamak için kullanılabilir.
 2. **Tümü** , çok sayıda hata olması durumunda tüm sonuçların alındığından emin olmak için kullanılabilir.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="microsoft-365-admin-center"></a>Microsoft 365 yönetim merkezi
+## <a name="microsoft-365-admin-center"></a>Microsoft 365 yönetici merkezi
 Dizin eşitleme hatalarını Microsoft 365 Yönetim merkezinde görüntüleyebilirsiniz. Microsoft 365 yönetim merkezindeki raporda yalnızca bu hatalar içeren **Kullanıcı** nesneleri görüntülenir. **Gruplar** ve **kişiler**arasındaki çakışmalar hakkında bilgi göstermez.
 
 ![Etkin Kullanıcılar](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Etkin Kullanıcılar")
@@ -147,9 +147,9 @@ Bu bilinen sorunlardan hiçbiri veri kaybına veya hizmet düşüşüne neden ol
 1. Belirli öznitelik yapılandırmalarına sahip nesneler, karantinaya alınan yinelenen öznitelik (ler) in aksine dışarı aktarma hataları almaya devam eder.  
    Örneğin:
    
-    a. **\@Ali contoso.com** ve ProxyAddress **SMTP\@: ali contoso.com** UPN 'si ile ad 'de Yeni Kullanıcı oluşturulur
+    a. **Ali \@ contoso.com** ve ProxyAddress **SMTP: ali \@ contoso.com** UPN 'si ile ad 'de Yeni Kullanıcı oluşturulur
    
-    b. Bu nesnenin özellikleri, ProxyAddress **SMTP: ali\@contoso.com**olan mevcut bir grupla çakışıyor.
+    b. Bu nesnenin özellikleri, ProxyAddress **SMTP: ali \@ contoso.com**olan mevcut bir grupla çakışıyor.
    
     c. Dışarı aktarma sırasında, çakışma özniteliklerinin karantinaya alınması yerine bir **ProxyAddress çakışma** hatası oluşur. İşlem, dayanıklılık özelliği etkinleştirilmeden önce olduğu için sonraki her eşitleme döngüsüne yeniden denenir.
 2. Şirket içinde aynı SMTP adresiyle iki grup oluşturulduysa, bir standart yinelenen **ProxyAddress** hatası ile ilk denemede bir tane sağlanamaz. Ancak, yinelenen değer bir sonraki eşitleme döngüsünün üzerinde doğru bir şekilde karantinaya alınır.
@@ -159,20 +159,20 @@ Bu bilinen sorunlardan hiçbiri veri kaybına veya hizmet düşüşüne neden ol
 1. Bir UPN çakışma kümesindeki iki nesne için ayrıntılı hata iletisi aynıdır. Bu, her ikisinin UPN 'nin değiştirilme/karantinaya alındığı, aslında yalnızca birinin bir veri değiştiği anlamına gelir.
 2. UPN çakışması için ayrıntılı hata iletisi, UPN 'si değiştirilmiş/karantinaya almış olan bir kullanıcı için yanlış displayName 'i gösterir. Örneğin:
    
-    a. **Kullanıcı A** , Ilk olarak **UPN =\@user contoso.com**ile eşitlenir.
+    a. **Kullanıcı A** , Ilk olarak **UPN = user \@ contoso.com**ile eşitlenir.
    
-    b. **B kullanıcısının** daha sonra **UPN =\@user contoso.com**ile eşitlenmesi denendi.
+    b. **B kullanıcısının** daha sonra **UPN = user \@ contoso.com**ile eşitlenmesi denendi.
    
-    c. **B kullanıcısının** UPN, **User1234\@contoso.onmicrosoft.com** olarak değiştirilir ve **Kullanıcı\@contoso.com** **DirSyncProvisioningErrors**'e eklenir.
+    c. **B kullanıcısının** UPN, **User1234 \@ contoso.onmicrosoft.com** olarak değiştirilir ve **Kullanıcı \@ contoso.com** **DirSyncProvisioningErrors**'e eklenir.
    
-    d. **B kullanıcısı** için hata Iletisi, **kullanıcının** zaten UPN olarak **Kullanıcı\@contoso.com** olduğunu belirtmesi gerekir, ancak **b kullanıcısının** kendi DisplayName 'i gösterir.
+    d. **B kullanıcısı** için hata Iletisi, **kullanıcının** zaten UPN olarak **Kullanıcı \@ contoso.com** olduğunu belirtmesi gerekir, ancak **b kullanıcısının** kendi DisplayName 'i gösterir.
 
 **Kimlik eşitlemesi hata raporu**:
 
 *Bu sorunu çözme adımları* için bağlantı yanlış:  
     ![Etkin Kullanıcılar](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Etkin Kullanıcılar")  
 
-Öğesinin işaret etmesi gerekir [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
+Öğesinin işaret etmesi gerekir [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) .
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md)

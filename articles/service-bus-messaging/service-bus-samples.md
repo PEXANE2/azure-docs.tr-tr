@@ -1,24 +1,16 @@
 ---
 title: Azure Service Bus mesajlaşma örneklerine genel bakış
 description: Service Bus mesajlaşma örnekleri, Azure Service Bus mesajlaşma 'daki temel özellikleri gösterir. GitHub 'daki örneklere bağlantılar sağlar.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
-ms.service: service-bus-messaging
-ms.devlang: na
+author: spelluru
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: ccaca451ac4fb7b4301aca429a42baea91e5ed10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: beafd0d49e8fccaef4ccc043d198875b9f1b1ebd
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773456"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341026"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus mesajlaşma örnekleri
 Service Bus mesajlaşma örnekleri, [Service Bus mesajlaşma](https://azure.microsoft.com/services/service-bus/)'daki temel özellikleri gösterir. Şu anda örnekleri aşağıdaki yerlerde bulabilirsiniz:

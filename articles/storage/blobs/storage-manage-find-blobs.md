@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 083b130d1bb02ccc922c834c09a0d16fab004ae9
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433571"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355667"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Blob dizini (Önizleme) ile Azure Blob depolama üzerinde verileri yönetme ve bulma
 
@@ -36,11 +36,11 @@ Kapsayıcı ve BLOB adı önekleri, depolanan verilerinize ait tek boyutlu kateg
 
 Depolama hesabınızda aşağıdaki beş blobu göz önünde bulundurun:
 >
-> kapsayıcı1/Transaction. csv  
-> container2/Campaign. docx  
-> Fotoğraflar/bannerphoto. png  
-> Arşivler/tamamlandı/2019review. PDF  
-> Günlükler/2020/01/01/LogFile. txt  
+> kapsayıcı1/transaction.csv  
+> container2/campaign.docx  
+> Fotoğraflar/bannerphoto.png  
+> arşivleri/tamamlandı/2019review.pdf  
+> günlük/2020/01/01/logfile.txt  
 >
 
 Bu Bloblar Şu anda kapsayıcı/sanal klasör/blob adı öneki kullanılarak ayrılmıştır. Blob diziniyle, bu beş blobda bir dizin etiketi özniteliğini, `Project = Contoso` geçerli ön ek kuruluşlarını koruyarak birlikte kategorilere ayırmak için ayarlayabilirsiniz. Bu, depolama platformunun çok boyutlu dizinini kullanarak verileri filtreleme ve bulma özelliğini açığa çıkararak verileri taşıma gereksinimini ortadan kaldırır.
@@ -63,7 +63,7 @@ Verileri daha açıklayıcı bir şekilde yapmak için bloba birden çok etiket 
 > "Öncelik" = ' 01 ' 
 >
 
-Var olan dizin etiketi özniteliklerini değiştirmek için, önce var olan etiket özniteliklerini almalısınız, Tag özniteliklerini değiştirmeli ve öğesini SetBlobTags işlemiyle değiştirmelisiniz. Blob 'dan tüm dizin etiketlerini kaldırmak için, etiket öznitelikleri belirtilmemiş SetBlobTags işlemini çağırın. Blob dizin etiketleri blob veri içeriklerine bir alt kaynak olduğundan, SetBlobTags temeldeki içerikleri değiştirmez ve Blobun son değiştirilme zamanını değiştirmez.
+Var olan dizin etiketi özniteliklerini değiştirmek için, önce var olan etiket özniteliklerini almalısınız, Tag özniteliklerini değiştirmeli ve öğesini SetBlobTags işlemiyle değiştirmelisiniz. Blob 'dan tüm dizin etiketlerini kaldırmak için, etiket öznitelikleri belirtilmemiş SetBlobTags işlemini çağırın. Blob dizin etiketleri blob veri içeriklerine bir alt kaynak olduğundan, SetBlobTags temeldeki içerikleri değiştirmez ve Blobun son değiştirilme zamanı veya ETag (varlık etiketi) öğesini değiştirmez. Tüm geçerli temel Bloblar ve önceki sürümler için dizin etiketleri oluşturabilir veya değiştirebilirsiniz; ancak anlık görüntülerle veya geçici olarak silinen bloblarda bulunan Etiketler değiştirilemez. 
 
 Aşağıdaki sınırlar blob dizin etiketleri için geçerlidir:
 - Her blob en fazla 10 blob Dizin etiketine sahip olabilir
@@ -237,7 +237,7 @@ Ancak yalnızca blob dizini etiketleri otomatik olarak dizinlenir ve yerel blob 
 
 Aşağıdaki tabloda meta veriler ve BLOB dizin etiketleri arasındaki farklılıklar özetlenmektedir:
 
-|              |   Meta Veriler   |   Blob dizin etiketleri  |
+|              |   Meta veri   |   Blob dizin etiketleri  |
 |--------------|--------------|--------------------|
 | **Sınırlar**         | Sayısal sınır yok; 8 KB toplam; büyük/küçük harf duyarsız | blob Max başına 10 etiket; etiket başına 768 bayt; büyük/küçük harfe duyarlı |
 | **Güncelleştirmeler**      | Arşiv katmanında izin verilmiyor; SetBlobMetadata, mevcut tüm meta verileri değiştirir; SetBlobMetadata, Blobun son değiştirilme zamanını değiştirir | Tüm erişim katmanları için izin verilir; SetBlobTags tüm mevcut etiketlerin yerini alır; SetBlobTags Blobun son değiştirilme zamanını değiştirmez |

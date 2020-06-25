@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190406"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340885"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Hizmet sağlayıcıları için Azure Izleyici günlükleri
 
@@ -64,7 +64,7 @@ Merkezi mimarinin avantajları şunlardır:
 Merkezi mimarinin dezavantajları şunlardır:
 
 * Bu mimari yalnızca aracı tabanlı VM verileri için geçerlidir; PaaS, SaaS ve Azure Fabric veri kaynaklarını kapsamaz.
-* Tek bir çalışma alanında birleştirildiklerinde müşteriler arasında verileri ayırmak zor olabilir. Bunu yapmak için tek iyi yöntem bilgisayarın tam etki alanı adını (FQDN) veya Azure abonelik KIMLIĞINI kullanmaktır. 
+* Tek bir çalışma alanında birleştirildiklerinde müşteriler arasında verileri ayırmak zor olabilir. Bunu yapmak için tek iyi yöntem bilgisayarın tam etki alanı adını (FQDN) veya Azure abonelik KIMLIĞINI kullanmaktır.
 * Tüm müşterilerin tüm verileri, tek bir fatura ve aynı bekletme ve yapılandırma ayarları ile aynı bölgede depolanır.
 * Azure Tanılama ve Azure denetim günlükleri gibi Azure Fabric ve PaaS hizmetleri, çalışma alanının kaynakla aynı kiracıda olmasını gerektirir, bu nedenle günlükleri merkezi çalışma alanına gönderemez.
 * Tüm müşterilerin tüm VM aracılarının, aynı çalışma alanı KIMLIĞI ve anahtarı kullanılarak merkezi çalışma alanında kimlik doğrulaması yapılır. Belirli bir müşteriden diğer müşterileri kesintiye uğramadan günlüklerin engellenme yöntemi yoktur.
@@ -77,13 +77,13 @@ Günlükleri merkezi bir konumda uygulamak için iki seçenek vardır:
 
 1. Merkezi çalışma alanı: hizmet sağlayıcı kiracısında bir çalışma alanı oluşturabilir ve verileri çeşitli çalışma alanlarından bu merkezi konuma getirmek için [veri toplama API](../../azure-monitor/platform/data-collector-api.md) 'Siyle bırlıkte [sorgu API](https://dev.loganalytics.io/) 'sini kullanan bir komut dosyası kullanabilir. Bir komut dosyası dışında başka bir seçenek [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)kullanmaktır.
 
-2. Merkezi bir konum olarak Power BI: Power BI, Log Analytics çalışma alanı ve [Power BI](../../azure-monitor/platform/powerbi.md)arasındaki tümleştirmeyi kullanarak verileri dışa aktardığınızda merkezi konum olarak görev yapabilir. 
+2. Merkezi bir konum olarak Power BI: Power BI, Log Analytics çalışma alanı ve [Power BI](../../azure-monitor/platform/powerbi.md)arasındaki tümleştirmeyi kullanarak verileri dışa aktardığınızda merkezi konum olarak görev yapabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Kaynak Yöneticisi şablonlarını](template-workspace-configuration.md) kullanarak çalışma alanlarının oluşturulmasını ve yapılandırılmasını otomatikleştirin
 
-* [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) kullanarak çalışma alanlarının oluşturulmasını otomatikleştirme 
+* [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) kullanarak çalışma alanlarının oluşturulmasını otomatikleştirme
 
 * Mevcut sistemlerle tümleştirme için [uyarıları](../../azure-monitor/platform/alerts-overview.md) kullanma
 

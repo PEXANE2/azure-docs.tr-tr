@@ -11,32 +11,32 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610454"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356415"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
 Bu makalede, Azure AD Connect ile Azure AD arasındaki bağlantının nasıl çalıştığı ve bağlantı sorunlarını nasıl giderebileceğiniz açıklanır. Bu sorunlar büyük olasılıkla ara sunucu içeren bir ortamda görülebilir.
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>Yükleme sihirbazında bağlantı sorunlarını giderme
-Azure AD Connect, kimlik doğrulaması için modern kimlik doğrulaması (ADAL kitaplığı kullanılarak) kullanıyor. Yükleme Sihirbazı ve eşitleme altyapısı uygun, bu ikisi de .NET uygulamaları olduğundan, Machine. config 'in düzgün şekilde yapılandırılmasını gerektirir.
+Azure AD Connect, kimlik doğrulaması için modern kimlik doğrulaması (ADAL kitaplığı kullanılarak) kullanıyor. Yükleme Sihirbazı ve eşitleme altyapısının uygun olması, bu iki .NET uygulaması olduğundan machine.config düzgün şekilde yapılandırılmasını gerektirir.
 
 Bu makalede, Fabrikam 'ın proxy 'si aracılığıyla Azure AD 'ye nasıl bağlandığını göstereceğiz. Proxy sunucusu fabrikamproxy olarak adlandırılır ve 8080 numaralı bağlantı noktasını kullanıyor.
 
-Önce [**Machine. config**](how-to-connect-install-prerequisites.md#connectivity) dosyasının doğru yapılandırıldığından emin olmak istiyoruz.
+İlk olarak [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) doğru yapılandırıldığından emin olmak istiyoruz.
 ![MachineConfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
-> Bazı Microsoft dışı bloglarda, bunun yerine mııver. exe. config dosyasında yapılan değişikliklerin yapılması önerilir. Ancak, bu dosyanın her yükseltme sırasında üzerine yazılır, böylece ilk yüklemede çalışıyor olsa bile sistem ilk yükseltme sırasında çalışmayı durduruyor. Bu nedenle, bunun yerine Machine. config ' i güncelleştirmeniz önerilir.
+> Bazı Microsoft dışı bloglarda, bunun yerine miiserver.exe.config yapılması gerektiğine ilişkin değişiklikler belgelenmiştir. Ancak, bu dosyanın her yükseltme sırasında üzerine yazılır, böylece ilk yüklemede çalışıyor olsa bile sistem ilk yükseltme sırasında çalışmayı durduruyor. Bu nedenle, bunun yerine machine.config güncelleştirme önerisi.
 >
 >
 
@@ -44,7 +44,7 @@ Proxy sunucusunda gerekli URL 'Lerin açılması da gerekir. Resmi liste, [Offic
 
 Bu URL 'Lerde, her bir Azure AD 'ye bağlanabilmek için aşağıdaki tablo, tam olarak en düşük üyeliktir. Bu liste, parola geri yazma veya Azure AD Connect Health gibi isteğe bağlı özellikler içermez. İlk yapılandırma için sorun gidermeye yardımcı olmak üzere burada belgelenmiştir.
 
-| URL'si | Bağlantı noktası | Açıklama |
+| URL | Bağlantı noktası | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
 | \*. verisign.com |HTTP/80 |CRL listelerini indirmek için kullanılır. |
@@ -62,7 +62,7 @@ Aşağıdaki sorunlar, Yükleme sihirbazında karşılaştığınız en yaygın 
 Sihirbazın proxy 'sine ulaşamadığınızda bu hata görüntülenir.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
-* Bu hatayı görürseniz, [Machine. config](how-to-connect-install-prerequisites.md#connectivity) dosyasının doğru şekilde yapılandırıldığını doğrulayın.
+* Bu hatayı görürseniz [machine.config](how-to-connect-install-prerequisites.md#connectivity) doğru şekilde yapılandırıldığını doğrulayın.
 * Bu doğru görünüyorsa, sorunun sihirbazın dışında mevcut olup olmadığını görmek için [Proxy bağlantısını doğrulama](#verify-proxy-connectivity) bölümündeki adımları izleyin.
 
 ### <a name="a-microsoft-account-is-used"></a>Microsoft hesabı kullanılır
@@ -70,33 +70,33 @@ Sihirbazın proxy 'sine ulaşamadığınızda bu hata görüntülenir.
 ![Bir Microsoft hesabı kullanılır](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>MFA uç noktasına ulaşılamıyor
-Bu hata, uç noktaya **https://secure.aadcdn.microsoftonline-p.com** ulaşılamadığından ve genel yöneticinizin MFA 'nın etkin olması halinde görünür.
+Bu hata, uç noktaya **https://secure.aadcdn.microsoftonline-p.com** ulaşılamadığından ve genel YÖNETICINIZIN MFA 'nın etkin olması halinde görünür.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * Bu hatayı görürseniz, uç nokta **Secure.aadcdn.microsoftonline-p.com** 'nin ara sunucuya eklendiğini doğrulayın.
 
 ### <a name="the-password-cannot-be-verified"></a>Parola doğrulanamıyor
-Yükleme Sihirbazı Azure AD 'ye bağlanmada başarılı olursa, ancak parolanın kendisi doğrulanamazsa şu hatayı görürsünüz: ![hatalı parola.](./media/tshoot-connect-connectivity/badpassword.png)
+Yükleme Sihirbazı Azure AD 'ye bağlanmada başarılı olursa, ancak parolanın kendisi doğrulanamazsa şu hatayı görürsünüz: ![ Hatalı parola.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Parolanın geçici bir parola olması ve değiştirilmesi gerekiyor mu? Gerçekten doğru parola mi? ' Da `https://login.microsoftonline.com` (Azure AD Connect sunucusundan başka bir bilgisayarda) oturum açmayı deneyin ve hesabın kullanılabilir olduğunu doğrulayın.
 
 ### <a name="verify-proxy-connectivity"></a>Proxy bağlantısını doğrulama
-Azure AD Connect sunucusunun proxy ve Internet ile gerçek bağlantı olup olmadığını doğrulamak için, proxy 'nin Web isteklerine izin vermeyi öğrenmek için bazı PowerShell kullanın. Bir PowerShell isteminde çalıştırın `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`. (Teknik olarak ilk çağrı, `https://login.microsoftonline.com` ve bu URI de çalışır, ancak diğer URI yanıt vermek daha hızlıdır.)
+Azure AD Connect sunucusunun proxy ve Internet ile gerçek bağlantı olup olmadığını doğrulamak için, proxy 'nin Web isteklerine izin vermeyi öğrenmek için bazı PowerShell kullanın. Bir PowerShell isteminde çalıştırın `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` . (Teknik olarak ilk çağrı, `https://login.microsoftonline.com` ve bu URI de çalışır, ancak DIĞER URI yanıt vermek daha hızlıdır.)
 
-PowerShell, proxy ile iletişim kurmak için Machine. config dosyasındaki yapılandırmayı kullanır. WinHTTP/Netsh 'deki ayarlar bu cmdlet 'leri etkilememelidir.
+PowerShell, proxy ile iletişim kurmak için machine.config ' deki yapılandırmayı kullanır. WinHTTP/Netsh 'deki ayarlar bu cmdlet 'leri etkilememelidir.
 
-Proxy doğru yapılandırılmışsa, bir başarı durumu almalısınız: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+Proxy doğru yapılandırılmışsa, bir başarı durumu almalısınız: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-**Uzak sunucuya bağlanamıyorsanız**, PowerShell proxy kullanılmadan doğrudan çağrı yapmayı DENIYOR veya DNS doğru şekilde yapılandırılmamış. **Machine. config** dosyasının doğru yapılandırıldığından emin olun.
+**Uzak sunucuya bağlanamıyorsanız**, PowerShell proxy kullanılmadan doğrudan çağrı yapmayı DENIYOR veya DNS doğru şekilde yapılandırılmamış. **machine.config** dosyasının doğru yapılandırıldığından emin olun.
 ![bağlanılamıyor](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
-Proxy doğru yapılandırılmamışsa bir hata alırsınız: ![proxy200 proxy407](./media/tshoot-connect-connectivity/invokewebrequest403.png)
-![](./media/tshoot-connect-connectivity/invokewebrequest407.png)
+Proxy doğru yapılandırılmamışsa bir hata alırsınız: ![ proxy200 ](./media/tshoot-connect-connectivity/invokewebrequest403.png)
+ ![ proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
-| Hata | Hata metni | Açıklama |
+| Hata | Hata metni | Yorum |
 | --- | --- | --- |
 | 403 |Yasak |Proxy, istenen URL için açılmadı. Proxy yapılandırmasını yeniden ziyaret edin ve [URL 'lerin](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) açık olduğundan emin olun. |
-| 407 |Proxy kimlik doğrulaması gerekli |Ara sunucu bir oturum açma işlemi gerektirdi ve hiçbiri sağlanmadı. Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, bu ayarın Machine. config dosyasında yapılandırıldığından emin olun. Ayrıca, Sihirbazı çalıştıran kullanıcı için ve hizmet hesabı için etki alanı hesapları kullandığınızdan emin olun. |
+| 407 |Proxy kimlik doğrulaması gerekli |Ara sunucu bir oturum açma işlemi gerektirdi ve hiçbiri sağlanmadı. Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, bu ayarın machine.config yapılandırıldığından emin olun. Ayrıca, Sihirbazı çalıştıran kullanıcı için ve hizmet hesabı için etki alanı hesapları kullandığınızdan emin olun. |
 
 ### <a name="proxy-idle-timeout-setting"></a>Proxy boşta zaman aşımı ayarı
 Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, yanıt oluşturmadan önce Azure AD 'nin isteği işlemesi 5 dakikaya kadar sürebilir. Bu, özellikle de aynı dışa aktarma isteğine büyük grup üyeliğine sahip bir dizi Grup nesnesi varsa gerçekleşebilir. Ara sunucu boşta kalma süresinin 5 dakikadan fazla olacak şekilde yapılandırıldığından emin olun. Aksi takdirde, Azure AD ile aralıklı bağlantı sorunu Azure AD Connect sunucuda gözlemlenebilir.
@@ -104,7 +104,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect ile Azure AD arasındaki iletişim kalıbı
 Önceki tüm adımları izlediyseniz ve bağlanamıyorsa hala bağlanamıyorsanız, bu noktada ağ günlüklerine bakıyor olabilirsiniz. Bu bölüm, normal ve başarılı bir bağlantı deseninin belgelenmesinde. Ayrıca, ağ günlüklerini okurken yok sayılacak, sık kullanılan kırmızı herhalkaları da listelüyor.
 
-* İçin `https://dc.services.visualstudio.com`çağrılar vardır. Yüklemenin başarılı olması için bu URL 'nin ara sunucuda açılması gerekmez ve bu çağrılar yoksayılabilir.
+* İçin çağrılar vardır `https://dc.services.visualstudio.com` . Yüklemenin başarılı olması için bu URL 'nin ara sunucuda açılması gerekmez ve bu çağrılar yoksayılabilir.
 * DNS çözümünden, DNS ad alanı nsatc.net ve microsoftonline.com altında olmayan diğer ad alanlarında olacak gerçek Konakları listeleyen görüntülenir. Bununla birlikte, gerçek sunucu adlarında herhangi bir Web hizmeti isteği yoktur ve bu URL 'Leri ara sunucuya eklemeniz gerekmez.
 * Adminwebservice ve provisioningapı uç noktaları bulma uç noktalardır ve kullanılacak gerçek uç noktayı bulmak için kullanılır. Bu uç noktalar, bölgenize bağlı olarak farklılık açmış.
 
@@ -113,7 +113,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Azure AD'ye Bağlanma**
 
-| Zaman | URL'si |
+| Saat | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **Yapılandır**
 
-| Zaman | URL'si |
+| Saat | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-bağlayıcısını*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Azure AD Connect, Azure AD 'ye bir dışarı aktarma isteği gönderdiğinde, ya
 
 **İlk eşitleme**
 
-| Zaman | URL'si |
+| Saat | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

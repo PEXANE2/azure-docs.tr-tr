@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6da21e9aa3b3b4cafec71a4d1881b9eb32b4dedc
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70211849"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356228"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>Sorun giderme: Azure AD Connect yüklemesi sorunları
 
@@ -39,7 +39,7 @@ Ancak, hızlı yükleme ölçütlerini karşılamıyorsa ve özel yükleme yapma
 
     ![AD Ormanı hesabı](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
-### <a name="common-issues"></a>**Yaygın sorunlar**
+### <a name="common-issues"></a>**Genel Sorunlar**
 
 * Şirket [içi Active Directory bağlantı sorunları](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
 
@@ -47,7 +47,7 @@ Ancak, hızlı yükleme ölçütlerini karşılamıyorsa ve özel yükleme yapma
 
 * Şirket [içi Active Directory izin sorunları](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
 
-## <a name="recommended-documents"></a>**Önerilen belgeler**
+## <a name="recommended-documents"></a>**Önerilen Belgeler**
 * [Azure AD Connect Önkoşulları](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
 * [Azure AD Connect için hangi yükleme türünün kullanılacağını seçme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
 * [Hızlı ayarları kullanarak Azure AD Connect ile çalışmaya başlama](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)

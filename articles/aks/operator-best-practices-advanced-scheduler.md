@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ile ilgili teknoloji ve tolerans, d�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f63db0efb509223715efd4848a91d0435ab54af7
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617524"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340852"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki gelişmiş Zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -42,7 +42,7 @@ Bir aks kümesine Pod dağıttığınızda, Kubernetes yalnızca bir toleranatio
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Düğümlere bir taınt uygulandıktan sonra, düğümlerde zamanlamaya izin veren Pod belirtiminde bir tolerans tanımlarsınız. Aşağıdaki örnek, `sku: gpu` önceki adımda düğümüne `effect: NoSchedule` uygulanan Taint 'i kabul etmek için ve öğesini tanımlar:
+Düğümlere bir taınt uygulandıktan sonra, düğümlerde zamanlamaya izin veren Pod belirtiminde bir tolerans tanımlarsınız. Aşağıdaki örnek, `sku: gpu` `effect: NoSchedule` önceki adımda düğümüne uygulanan Taint 'i kabul etmek için ve öğesini tanımlar:
 
 ```yaml
 kind: Pod
@@ -67,7 +67,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Bu Pod dağıtıldığında, `kubectl apply -f gpu-toleration.yaml`Kubernetes, Taint uygulanmış olan düğümlerde Pod 'u başarıyla zamanlayabilir. Bu mantıksal yalıtım, bir küme içindeki kaynaklara erişimi denetlemenize olanak tanır.
+Bu Pod dağıtıldığında, `kubectl apply -f gpu-toleration.yaml` Kubernetes, Taint uygulanmış olan düğümlerde Pod 'u başarıyla zamanlayabilir. Bu mantıksal yalıtım, bir küme içindeki kaynaklara erişimi denetlemenize olanak tanır.
 
 Taşı uyguladığınızda, uygulama geliştiricileriniz ve sahipleriyle birlikte çalışarak dağıtımlarındaki gerekli toleranları tanımlamasına izin verin.
 
@@ -122,7 +122,7 @@ spec:
       limits:
         cpu: 4.0
         memory: 16Gi
-    nodeSelector:
+  nodeSelector:
       hardware: highmem
 ```
 
@@ -185,7 +185,7 @@ Bu makalede, gelişmiş Kubernetes Zamanlayıcı özelliklerine odaklanılmışt
 
 * [Çok kiracılılık ve küme yalıtımı][aks-best-practices-scheduler]
 * [Temel Kubernetes Zamanlayıcı özellikleri][aks-best-practices-scheduler]
-* [Kimlik doğrulaması ve yetkilendirme][aks-best-practices-identity]
+* [Kimlik doğrulama ve yetkilendirme][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-taints-tolerations]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

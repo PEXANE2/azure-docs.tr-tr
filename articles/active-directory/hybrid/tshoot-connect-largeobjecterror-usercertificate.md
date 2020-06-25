@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "62095498"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356177"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: Kullanıcısertifikası özniteliği nedeniyle LargeObject hatalarını Işleme
 
@@ -70,7 +70,7 @@ Adımlar şu şekilde özetlenebilir:
 8. Değişiklikleri Azure AD 'ye aktarın.
 9. Eşitleme zamanlayıcısını yeniden etkinleştirin.
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>1. Adım. Eşitleme zamanlayıcısını devre dışı bırakın ve devam eden bir eşitleme olmadığını doğrulayın
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Adım 1. Eşitleme zamanlayıcısını devre dışı bırakın ve devam eden bir eşitleme olmadığını doğrulayın
 İstenmeyen değişikliklerin Azure AD 'ye aktarılmasını önlemek için yeni bir eşitleme kuralı uygulama ortasında olduğunuzda hiçbir eşitlemenin olmadığından emin olun. Yerleşik eşitleme zamanlayıcısını devre dışı bırakmak için:
 1. Azure AD Connect sunucusunda PowerShell oturumu başlatın.
 
@@ -83,7 +83,7 @@ Adımlar şu şekilde özetlenebilir:
 
 1. **İşlemler** sekmesine gidin ve durumu *"sürüyor* " olan hiçbir işlem olmadığını onaylayın.
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>2. Adım UserCertificate özniteliği için mevcut giden eşitleme kuralını bul
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Adım 2. UserCertificate özniteliği için mevcut giden eşitleme kuralını bul
 Kullanıcı nesneleri için userCertificate özniteliğini Azure AD 'ye aktarmak üzere etkin ve yapılandırılmış olan bir eşitleme kuralı olmalıdır. **Öncelik** ve **kapsam filtresi** yapılandırmasını öğrenmek için bu eşitleme kuralını bulun:
 
 1. → Eşitleme kuralları Düzenleyicisi ' ne giderek **eşitleme kuralları düzenleyicisini** başlatın.
@@ -105,7 +105,7 @@ Kullanıcı nesneleri için userCertificate özniteliğini Azure AD 'ye aktarmak
 7. Düzenleme ekranında **kapsam filtresi** sekmesini seçin.
 8. Kapsam filtresi yapılandırması ' nı aklınızda edin. OOB eşitleme kuralını kullanıyorsanız, aşağıdakiler de dahil olmak üzere **iki yan tümce içeren bir kapsam filtresi grubu**olmalıdır:
 
-    | Öznitelik | İşleç | Değer |
+    | Öznitelik | Operatör | Değer |
     | --- | --- | --- |
     | sourceObjectType | SıFıRA | Kullanıcı |
     | Cloudana kopyalı | Not QUAL | True |
@@ -117,8 +117,8 @@ Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresi
 
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
-    | Adı | *Bir ad belirtin* | Örneğin, *"AAD 'Den dışarı-userCertificate Için özel geçersiz kılma"* |
-    | Açıklama | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
+    | Name | *Bir ad belirtin* | Örneğin, *"AAD 'Den dışarı-userCertificate Için özel geçersiz kılma"* |
+    | Description | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* |
     | Bağlı sistem nesne türü | **kullanıcısını** | |
     | Meta veri deposu nesne türü | **kişiler** | |
@@ -131,7 +131,7 @@ Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresi
 
     | Öznitelik | Değer |
     | --- | --- |
-    | Akış Türü |**İfadeler** |
+    | Akış Türü |**İfadesini** |
     | Target özniteliği |**userCertificate** |
     | Kaynak özniteliği |*Aşağıdaki Ifadeyi kullanın*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     

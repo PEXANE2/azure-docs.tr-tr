@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877551"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341570"
 ---
 # <a name="entity-functions"></a>Varlık işlevleri
 
@@ -18,7 +18,7 @@ Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parça
 Varlıklar, her biri modestly boyutlu bir duruma sahip birçok varlık genelinde iş dağıtarak uygulamaları ölçeklendirmek için bir yol sağlar.
 
 > [!NOTE]
-> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir.
+> Varlık işlevleri ve ilgili işlevler yalnızca Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir. Bunlar şu anda .NET ve JavaScript 'de desteklenmektedir.
 
 ## <a name="general-concepts"></a>Genel kavramlar
 
@@ -32,14 +32,14 @@ Varlıklara benzersiz bir tanımlayıcı, *VARLıK kimliği*üzerinden erişilir
 * Varlığın türünü tanımlayan bir ad olan **varlık adı**. Örnek olarak "Counter" bir örnektir. Bu ad, varlığı uygulayan varlık işlevinin adı ile aynı olmalıdır. Büyük/küçük harfe duyarlı değildir.
 * Aynı ada sahip diğer tüm varlıklar arasında varlığı benzersiz bir şekilde tanımlayan bir dize olan **varlık anahtarı**. Bir GUID örneğidir.
 
-Örneğin, bir varlık `Counter` işlevi bir çevrimiçi oyunda puanı korumak için kullanılabilir. Oyunun her örneğinin, `@Counter@Game1` ve `@Counter@Game2`gıbı benzersiz bir varlık kimliği vardır. Belirli bir varlığı hedefleyen tüm işlemler, bir varlık KIMLIĞINI parametre olarak belirtmeyi gerektirir.
+Örneğin, bir `Counter` varlık işlevi bir çevrimiçi oyunda puanı korumak için kullanılabilir. Oyunun her örneğinin, ve gibi benzersiz bir varlık KIMLIĞI vardır `@Counter@Game1` `@Counter@Game2` . Belirli bir varlığı hedefleyen tüm işlemler, bir varlık KIMLIĞINI parametre olarak belirtmeyi gerektirir.
 
 ### <a name="entity-operations"></a>Varlık işlemleri ###
 
 Bir varlıkta bir işlem çağırmak için şunu belirtin:
 
 * Hedef varlığın **VARLıK kimliği** .
-* **İşlem adı**, gerçekleştirilecek işlemi belirten bir dizedir. Örneğin, `Counter` varlık, veya `add` `get` `reset` işlemlerini destekleyebilir.
+* **İşlem adı**, gerçekleştirilecek işlemi belirten bir dizedir. Örneğin, varlık, `Counter` `add` `get` veya `reset` işlemlerini destekleyebilir.
 * İşlem için isteğe bağlı bir giriş parametresi olan **işlem girişi**. Örneğin, ekleme işlemi girdi olarak bir tamsayı miktarı alabilir.
 * **Zamanlanan saat**, işlemin teslim süresini belirtmek için isteğe bağlı bir parametredir. Örneğin, bir işlem gelecekte birkaç gün çalışacak şekilde güvenilir bir şekilde zamanlanabilir.
 
@@ -55,11 +55,11 @@ Bir varlık işlemi varlık durumunu da oluşturabilir, okuyabilir, güncelleşt
 
 **Sınıf tabanlı sözdizimi (yalnızca .net)**, varlıklar ve işlemler sınıflar ve yöntemlerle temsil edilir. Bu sözdizimi daha kolay okunabilir kod üretir ve işlemlerin tür açısından güvenli bir şekilde çağrılmasına izin verir. Sınıf tabanlı sözdizimi, işlev tabanlı sözdiziminin üzerinde ince bir katmandır, bu nedenle her iki çeşit de aynı uygulamadaki birbirlerinin yerine kullanılabilir.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Örnek: Işlev tabanlı sözdizimi-C #
 
-Aşağıdaki kod, dayanıklı bir işlev olarak uygulanan basit `Counter` bir varlığa bir örnektir. Bu işlev, her biri bir `add`tamsayı `reset`durumu üzerinde `get`çalışan üç işlem,,, ve tanımlar.
+Aşağıdaki kod, `Counter` dayanıklı bir işlev olarak uygulanan basit bir varlığa bir örnektir. Bu işlev, `add` `reset` `get` her biri bir tamsayı durumu üzerinde çalışan üç işlem,,, ve tanımlar.
 
 ```csharp
 [FunctionName("Counter")]
@@ -84,7 +84,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="example-class-based-syntax---c"></a>Örnek: sınıf tabanlı sözdizimi-C #
 
-Aşağıdaki örnek, sınıfları ve yöntemleri kullanarak `Counter` varlığın eşdeğer bir uygulamasıdır.
+Aşağıdaki örnek, `Counter` sınıfları ve yöntemleri kullanarak varlığın eşdeğer bir uygulamasıdır.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -105,7 +105,7 @@ public class Counter
 }
 ```
 
-Bu varlığın durumu, sayacın geçerli değerini depolayan bir alan `Counter`içeren türünde bir nesnedir. Bu nesneyi depolamada kalıcı hale getirmek için, [JSON.net](https://www.newtonsoft.com/json) kitaplığı tarafından serileştirilmiş ve seri durumdan çıkarılmış olur. 
+Bu varlığın durumu `Counter` , sayacın geçerli değerini depolayan bir alan içeren türünde bir nesnedir. Bu nesneyi depolamada kalıcı hale getirmek için, [JSON.net](https://www.newtonsoft.com/json) kitaplığı tarafından serileştirilmiş ve seri durumdan çıkarılmış olur. 
 
 Sınıf tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [varlık sınıfları tanımlama](durable-functions-dotnet-entities.md#defining-entity-classes).
 
@@ -113,9 +113,9 @@ Sınıf tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilg
 
 ### <a name="example-javascript-entity"></a>Örnek: JavaScript varlığı
 
-Kalıcı varlıklar, `durable-functions` NPM paketinin **1.3.0** sürümünden başlayarak JavaScript 'te kullanılabilir. Aşağıdaki kod, JavaScript 'te `Counter` yazılmış dayanıklı bir işlev olarak uygulanan varlıktır.
+Kalıcı varlıklar, NPM paketinin **1.3.0** sürümünden başlayarak JavaScript 'te kullanılabilir `durable-functions` . Aşağıdaki kod, `Counter` JavaScript 'te yazılmış dayanıklı bir işlev olarak uygulanan varlıktır.
 
-**Counter/function. JSON**
+**Üzerinde sayaç/function.js**
 ```json
 {
   "bindings": [
@@ -129,7 +129,7 @@ Kalıcı varlıklar, `durable-functions` NPM paketinin **1.3.0** sürümünden b
 }
 ```
 
-**Counter/index. js**
+**Sayaç/index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -171,7 +171,7 @@ Aşağıdaki örneklerde varlıklara erişmenin çeşitli yolları gösterilmekt
 
 İstemci işlevi olarak da bilinen sıradan bir Azure Işlevinden varlıklara erişmek için [varlık istemci bağlamasını](durable-functions-bindings.md#entity-client)kullanın. Aşağıdaki örnek, bu bağlamayı kullanarak bir varlığı işaret eden kuyruk tarafından tetiklenen bir işlev gösterir.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > Basitlik için aşağıdaki örneklerde varlıklara erişim için gevşek yazılmış sözdizimi gösterilmektedir. Genel olarak, varlıklara daha fazla tür denetimi sağladığından, [arabirimlere erişmenizi](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) öneririz.
@@ -209,7 +209,7 @@ module.exports = async function (context) {
 
 İstemci işlevleri, aşağıdaki örnekte gösterildiği gibi bir varlığın durumunu da sorgulayabilir:
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -242,9 +242,9 @@ Varlık durumu sorguları, dayanıklı izleme deposuna gönderilir ve varlığı
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Örnek: Orchestration sinyalleri ve bir varlığı çağırır
 
-Orchestrator işlevleri, [düzenleme tetikleyicisi bağlamasında](durable-functions-bindings.md#orchestration-trigger)API 'leri kullanarak varlıklara erişebilir. Aşağıdaki örnek kodda bir `Counter` varlığı çağıran ve sinyal eden bir Orchestrator işlevi gösterilmektedir.
+Orchestrator işlevleri, [düzenleme tetikleyicisi bağlamasında](durable-functions-bindings.md#orchestration-trigger)API 'leri kullanarak varlıklara erişebilir. Aşağıdaki örnek kodda bir varlığı çağıran ve sinyal eden bir Orchestrator işlevi gösterilmektedir `Counter` .
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -291,7 +291,7 @@ Yalnızca düzenlemeler, varlık çağırma ve bir dönüş değeri ya da özel 
 Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara veya hatta kendisine sinyal gönderebilir.
 Örneğin, önceki `Counter` varlık örneğini, sayaç 100 değerine ulaştığında, bazı izleyici varlığına "kilometre taşı" sinyali gönderecek şekilde değiştirebiliriz.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -327,10 +327,10 @@ Birden çok varlık arasında işlem koordine etmeniz gerektiğinde zaman alabil
 
 ### <a name="example-transfer-funds-c"></a>Örnek: transfer fonları (C#)
 
-Aşağıdaki örnek kod, bir Orchestrator işlevi kullanarak iki hesap varlığı arasındaki fonları aktarır. Varlık güncelleştirmelerini koordine etmek, `LockAsync` düzenleme içinde kritik bir _bölüm_ oluşturmak için yönteminin kullanılmasını gerektirir.
+Aşağıdaki örnek kod, bir Orchestrator işlevi kullanarak iki hesap varlığı arasındaki fonları aktarır. Varlık güncelleştirmelerini koordine `LockAsync` etmek, düzenleme içinde _kritik bir bölüm_ oluşturmak için yönteminin kullanılmasını gerektirir.
 
 > [!NOTE]
-> Kolaylık olması için bu örnek daha önce `Counter` tanımlanan varlığı yeniden kullanır. Gerçek bir uygulamada, daha ayrıntılı `BankAccount` bir varlık tanımlamak daha iyi olacaktır.
+> Kolaylık olması için bu örnek `Counter` daha önce tanımlanan varlığı yeniden kullanır. Gerçek bir uygulamada, daha ayrıntılı bir varlık tanımlamak daha iyi olacaktır `BankAccount` .
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -372,21 +372,21 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-.NET ' te `LockAsync` , `IDisposable`elden çıkarıldığı zaman kritik bölümü sonlandıran ' ı döndürür. Bu `IDisposable` sonuç, kritik bölümün sözdizimsel bir gösterimini `using` almak için bir blokla birlikte kullanılabilir.
+.NET ' te `LockAsync` , `IDisposable` elden çıkarıldığı zaman kritik bölümü sonlandıran ' ı döndürür. Bu `IDisposable` sonuç `using` , kritik bölümün sözdizimsel bir gösterimini almak için bir blokla birlikte kullanılabilir.
 
-Önceki örnekte, bir Orchestrator işlevi bir kaynak varlıktan bir hedef varlığa fon aktardı. `LockAsync` Yöntemi hem kaynak hem de hedef hesap varlıklarını kilitlediği. Bu, düzenleme mantığı `using` deyimin sonundaki kritik bölümden çıkana kadar başka hiçbir istemcinin herhangi bir hesabın durumunu sorgulayamayarak veya değiştirememesi için bu kilidi kilitler. Bu davranış, kaynak hesaptan daha fazla taslak oluşturma olasılığını ortadan kaldırmaya engel olur.
+Önceki örnekte, bir Orchestrator işlevi bir kaynak varlıktan bir hedef varlığa fon aktardı. `LockAsync`Yöntemi hem kaynak hem de hedef hesap varlıklarını kilitlediği. Bu, düzenleme mantığı deyimin sonundaki kritik bölümden çıkana kadar başka hiçbir istemcinin herhangi bir hesabın durumunu sorgulayamayarak veya değiştirememesi için bu kilidi kilitler `using` . Bu davranış, kaynak hesaptan daha fazla taslak oluşturma olasılığını ortadan kaldırmaya engel olur.
 
 > [!NOTE] 
 > Bir düzenleme, normalde veya bir hata ile sonlandırıldığında, devam eden tüm kritik bölümler örtük olarak sonlandırılır ve tüm kilitler serbest bırakılır.
 
 ### <a name="critical-section-behavior"></a>Kritik bölüm davranışı
 
-`LockAsync` Yöntemi bir düzenleme içinde kritik bir bölüm oluşturur. Bu kritik bölümler, diğer düzenlemeler için, belirli bir varlık kümesinde çakışan değişiklikler yapılmasını engeller. Dahili olarak, `LockAsync` API, varlıklara "kilit" işlemleri gönderir ve aynı varlıkların her birinden "kilit alındı" yanıt iletisi aldığında döndürür. Hem kilit hem de kilit açma, tüm varlıkların desteklediği yerleşik işlemlerdir.
+`LockAsync`Yöntemi bir düzenleme içinde kritik bir bölüm oluşturur. Bu kritik bölümler, diğer düzenlemeler için, belirli bir varlık kümesinde çakışan değişiklikler yapılmasını engeller. Dahili olarak, `LockAsync` API, varlıklara "kilit" işlemleri gönderir ve aynı varlıkların her birinden "kilit alındı" yanıt iletisi aldığında döndürür. Hem kilit hem de kilit açma, tüm varlıkların desteklediği yerleşik işlemlerdir.
 
 Kilitli durumda olduğu sürece, bir varlıkta diğer istemcilerden işlem yapılmasına izin verilmez. Bu davranış, tek seferde yalnızca bir düzenleme örneğinin bir varlığı kilitleyebilmesini sağlar. Bir çağıran bir düzenleme tarafından kilitliyken bir varlık üzerinde bir işlem çağırmaya çalışırsa, bu işlem bekleyen bir işlem kuyruğuna yerleştirilir. Bekleyen bir işlem, saklama düzenleme kilidini serbest bırakana kadar işlenmeyecektir.
 
 > [!NOTE] 
-> Bu davranış, C# içindeki bir `lock` ifade gibi çoğu programlama dilinde kullanılan eşitleme temel larından biraz farklıdır. Örneğin, C# ' de, birden `lock` çok iş parçacığı genelinde doğru eşitlemeyi sağlamak için deyimin tüm iş parçacıkları tarafından kullanılması gerekir. Ancak varlıklar, tüm çağıranların bir varlığı açık bir şekilde kilitlemesine gerek kalmaz. Herhangi bir çağıran bir varlığı kilitlerse, söz konusu varlıktaki tüm diğer işlemler engellenir ve bu kilidin arkasında sıraya alınır.
+> Bu davranış, C# içindeki bir ifade gibi çoğu programlama dilinde kullanılan eşitleme temel larından biraz farklıdır `lock` . Örneğin, C# ' de, `lock` birden çok iş parçacığı genelinde doğru eşitlemeyi sağlamak için deyimin tüm iş parçacıkları tarafından kullanılması gerekir. Ancak varlıklar, tüm çağıranların bir varlığı açık bir şekilde kilitlemesine gerek kalmaz. Herhangi bir çağıran bir varlığı kilitlerse, söz konusu varlıktaki tüm diğer işlemler engellenir ve bu kilidin arkasında sıraya alınır.
 
 Varlıkların kilitleri dayanıklı olduğundan, yürütülmekte olan işlem geri dönüştürülüp bile kalıcı hale getiriyordur. Kilitler, bir varlığın dayanıklı durumunun bir parçası olarak dahili olarak kalıcı hale getirilir.
 
@@ -402,7 +402,7 @@ Varlıkların kilitleri dayanıklı olduğundan, yürütülmekte olan işlem ger
 * Kritik bölümler birden çok paralel çağrı kullanarak aynı varlığı çağıramaz.
 * Kritik bölümler yalnızca kilitlediği varlıkları işaret edebilir.
 
-Bu kuralların herhangi bir ihlali, .NET `LockingRulesViolationException` içindeki gibi bir çalışma zamanı hatasına neden olur. Bu, hangi kuralın bozulduğunu belirten bir ileti içerir.
+Bu kuralların herhangi bir ihlali, .NET içindeki gibi bir çalışma zamanı hatasına neden olur. Bu, `LockingRulesViolationException` hangi kuralın bozulduğunu belirten bir ileti içerir.
 
 ## <a name="comparison-with-virtual-actors"></a>Sanal aktörler ile karşılaştırma
 

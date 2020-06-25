@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: jgao
-ms.openlocfilehash: 3d9ab41fdb05eca3b39bf1ad222f6d42a3311b77
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 6cf10ea9693f922ee8edfb6bab5d1a7cde681fcb
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85193745"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339413"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
@@ -362,10 +362,10 @@ Timeout             : PT1H
 
 Azure CLı kullanarak, abonelik veya kaynak grubu kapsamındaki Dağıtım betiklerini yönetebilirsiniz:
 
-- [az Deployment-betikler Delete](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): bir dağıtım betiğini silin.
-- [az Deployment-Scripts List](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): tüm Dağıtım betiklerini listeleyin.
-- [az Deployment-Scripts Show](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): dağıtım betiği alma.
-- [az Deployment-betikler Show-log](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): dağıtım betiği günlüklerini göster.
+- [az Deployment-betikler Delete](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): bir dağıtım betiğini silin.
+- [az Deployment-Scripts List](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): tüm Dağıtım betiklerini listeleyin.
+- [az Deployment-Scripts Show](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): dağıtım betiği alma.
+- [az Deployment-betikler Show-log](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): dağıtım betiği günlüklerini göster.
 
 Liste komut çıktısı şuna benzerdir:
 

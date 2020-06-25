@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 7a14249f28da15f04a214c2a1cb4bd415fb59ce9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60347761"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356636"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme
 Bu konuda, Azure Active Directory (Azure AD) Connect yüklemenizi en son sürüme yükseltmek için kullanabileceğiniz farklı yöntemler açıklanmaktadır. Azure AD Connect yayınlarıyla kendinizi güncel tutmanız önerilir. Önemli bir yapılandırma değişikliği yaptığınızda, [esnek geçiş](#swing-migration) bölümündeki adımları da kullanabilirsiniz.
@@ -33,7 +33,7 @@ DirSync 'ten yükseltmek istiyorsanız, bunun yerine [Azure AD eşitleme aracın
 
 Azure AD Connect yükseltmek için kullanabileceğiniz birkaç farklı strateji vardır.
 
-| Yöntem | Açıklama |
+| Yöntem | Description |
 | --- | --- |
 | [Otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) |Bu, Hızlı yüklemeye sahip müşteriler için en kolay yöntemdir. |
 | [Yerinde yükseltme](#in-place-upgrade) |Tek bir sunucunuz varsa, aynı sunucuda yüklemeyi yerinde yükseltebilirsiniz. |

@@ -1,23 +1,14 @@
 ---
 title: Azure Service Bus-paylaşılan erişim Imzası yetkilendirmesi 'ne geçiş
 description: Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesini geçirme hakkında bilgi edinin.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774612"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340110"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesi 'ne geçirme
 
@@ -29,11 +20,11 @@ SAS kural adı ve kural anahtarına istemci erişimi vererek, SAS, başka bir hi
 
 ACS 'ye bağlı olan tüm mevcut uygulamalar için, müşterileri uygulamalarını SAS 'ye göre geçirmeye geçiririz.
 
-## <a name="migration-scenarios"></a> Geçiş senaryoları
+## <a name="migration-scenarios"></a>Geçiş senaryoları
 
 ACS ve Service Bus, bir *İmzalama anahtarının*paylaşılan bilgisi aracılığıyla tümleştirilir. İmzalama anahtarı, bir ACS ad alanı tarafından, yetkilendirme belirteçlerini imzalamak için kullanılır ve belirtecin eşleştirilmiş ACS ad alanı tarafından verildiğini doğrulamak için Service Bus tarafından kullanılır. ACS ad alanı hizmet kimliklerini ve yetkilendirme kurallarını barındırır. Yetkilendirme kuralları, hangi hizmet kimliğinin veya bir dış kimlik sağlayıcısı tarafından verilen belirtecin, en uzun ön ek eşleşme biçiminde Service Bus ad alanı grafiğinin bir bölümüne hangi tür erişimi olduğunu tanımlar.
 
-Örneğin, bir ACS kuralı, bu kurala göre **Send** ACS tarafından verilen belirtecin, istemci `/` haklarının ad alanındaki tüm varlıklara gönderilmesini sağlayan bir hizmet kimliğine yol ön eki olan gönderme talebine izin verebilir. Yol ön eki ise `/abc`, kimliğin bu ön ek altında adlı `abc` veya düzenlenmiş varlıklara gönderilmesi kısıtlanır. Bu geçiş kılavuzunun okuyucularının bu kavramlarla zaten tanıdık olduğu varsayılır.
+Örneğin, bir ACS kuralı, **Send** `/` Bu kurala göre ACS tarafından verilen belirtecin, istemci haklarının ad alanındaki tüm varlıklara gönderilmesini sağlayan bir hizmet kimliğine yol ön eki olan gönderme talebine izin verebilir. Yol ön eki ise `/abc` , kimliğin `abc` Bu ön ek altında adlı veya düzenlenmiş varlıklara gönderilmesi kısıtlanır. Bu geçiş kılavuzunun okuyucularının bu kavramlarla zaten tanıdık olduğu varsayılır.
 
 Geçiş senaryoları üç geniş kategoriye ayrılır:
 

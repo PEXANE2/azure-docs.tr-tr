@@ -37,6 +37,11 @@
       href: access-fhir-postman-tutorial.md
     - name: FHIR ara sunucusu üzerinde SMART kullanma
       href: use-smart-on-fhir-proxy.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Nasıl yapılır kılavuzları
   expanded: false
   items:

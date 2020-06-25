@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff25cb15257302ac806aa9480d6d7b911eb36d06
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253299"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339733"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -216,7 +216,7 @@ Bir CA Ilkesi koşulu bir erişim denetimi tetikleyemezse, erişim belirteçleri
 
 ### <a name="minimize-the-number-of-ca-policies"></a>CA ilkelerinin sayısını en aza indirme
 
-Her uygulama için bir ilke oluşturulması verimli değildir ve zor yönetime yol açar. Koşullu erişim, Kullanıcı başına yalnızca ilk 195 ilkeyi uygular. Uygulamalarınızı analiz etmenizi ve aynı kullanıcılar için aynı kaynak gereksinimlerine sahip uygulamalarda gruplanmasını öneririz. Örneğin, tüm Office 365 uygulamaları veya tüm IK uygulamaları aynı kullanıcılar için aynı gereksinimlere sahip ise, tek bir ilke oluşturun ve geçerli olduğu tüm uygulamaları dahil edin. 
+Her uygulama için bir ilke oluşturulması verimli değildir ve zor yönetime yol açar. Koşullu erişim, Kullanıcı başına yalnızca ilk 195 ilkeyi uygular. Uygulamalarınızı analiz etmenizi ve aynı kullanıcılar için aynı kaynak gereksinimlerine sahip uygulamalarda gruplanmasını öneririz. Örneğin, tüm Microsoft 365 uygulamalar veya tüm IK uygulamalar aynı kullanıcılar için aynı gereksinimlere sahip ise, tek bir ilke oluşturun ve geçerli olduğu tüm uygulamaları dahil edin. 
 
 ### <a name="set-up-emergency-access-accounts"></a>Acil durum erişim hesapları ayarlama
 

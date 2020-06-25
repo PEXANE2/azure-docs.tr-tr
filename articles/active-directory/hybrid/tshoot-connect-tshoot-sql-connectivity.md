@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cde94dce13eeb7536f72fb0dcd937265960c7314
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5f8b87684847089a05341a5a68f6ad3e2ac86b0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70842699"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355871"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect ile ilgili SQL bağlantı sorunlarını giderme
 Bu makalede Azure AD Connect ve SQL Server arasındaki bağlantı sorunlarının nasıl giderileceği açıklanmaktadır. 
@@ -40,7 +40,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\A
 Ya da [PackageManagement PowerShell modülleri Için önizleme-PowerShell 3.0/4.0 Için mart 2016](/powershell/module/PackageManagement) 
 
 - **Tüm komutları göster**:`Get-Command -Module AdSyncTools` 
-- Aşağıdaki parametrelerle **PowerShell işlevini yürütün**: `Connect-ADSyncDatabase`
+- Aşağıdaki parametrelerle **PowerShell Işlevini yürütün**: `Connect-ADSyncDatabase`
     - Server. SQL Server adı.
     - Instance. Seçim Kullanmak istediğiniz SQL Server örnek adı ve isteğe bağlı olarak bağlantı noktası numarası. Varsayılan örneği kullanmak için bu parametreyi belirtmeyin.
     - Nitelen. Seçim Bağlanılacak Kullanıcı hesabı. Boş bırakılırsa, şu anda oturum açmış olan kullanıcının kullanılması gerekir. Uzak bir SQL Server bağlanıyorsanız, bu, Azure AD Connect SQL bağlantısı için oluşturduğunuz özel hizmet hesabı olmalıdır. Azure AD Connect, uzak bir SQL Server 'da kimlik doğrulamak için Azure AD Connect eşitleme hizmeti hesabını kullanır.

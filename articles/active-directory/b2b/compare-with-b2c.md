@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9006a70ae941abb700412a7c596627939c994028
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c45aae35c7c1cf2fbde436303a2ac000dfdd5ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587519"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339609"
 ---
 # <a name="compare-solutions-for-external-identities-in-azure-active-directory"></a>Azure Active Directory dış kimliklerin çözümlerini karşılaştırın
 
@@ -36,11 +36,11 @@ Aşağıdaki tabloda, Azure AD dış kimlikleriyle etkinleştirebileceğiniz çe
 
 | Çok kiracılı uygulamalar  | Dış Kullanıcı işbirliği (B2B) | Tüketiciler veya müşteriler için uygulamalar (B2C)  |
 | ---- | --- | --- |
-| Birincil senaryo: kurumsal hizmet olarak yazılım (SaaS) | Birincil senaryo: Microsoft uygulamalarını (Office 365, takımlar,...) veya kendi işbirliği yazılımınızı kullanarak Işbirliği yapın.  | Birincil senaryo: özel geliştirilmiş uygulamalar kullanan Işlem uygulamaları.   |
+| Birincil senaryo: kurumsal hizmet olarak yazılım (SaaS) | Birincil senaryo: Microsoft uygulamalarını (Microsoft 365, takımları,...) veya kendi işbirliği yazılımınızı kullanarak Işbirliği yapın.  | Birincil senaryo: özel geliştirilmiş uygulamalar kullanan Işlem uygulamaları.   |
 | Hedeflenen: birçok kurumsal müşteriye yazılım sağlamak isteyen kuruluşlar.    | Hedeflenen: Kimlik sağlayıcısına bakılmaksızın bir üst kuruluştaki kullanıcıların kimliğini doğrulayabilmek isteyen kuruluşlar.    | İçin tasarlanan: kişiler, kurum veya kurumsal müşterilerin kendi kuruluşunuzun dizininden ayrı bir Azure AD dizinine sahip olup olmadığı mobil ve Web uygulamalarınızın müşterilerini davet edin. |
 | Desteklenen kimlikler: Azure AD hesapları olan çalışanlar. | Desteklenen kimlikler: İş veya okul hesapları olan çalışanlar, iş ya da okul hesapları veya herhangi bir e-posta adresi olan iş ortakları. Yakında doğrudan federasyon desteklenecektir.      | Desteklenen kimlikler: Yerel uygulama hesapları (herhangi bir e-posta adresi veya kullanıcı adı) ya da doğrudan federasyon özellikli herhangi bir desteklenen sosyal kimliği olan tüketici kullanıcılar.       |
 | Dış kullanıcılar kendi dizininde yönetilir ve uygulamanın kaydedildiği dizinden yalıtılır.    | Dış kullanıcılar, çalışanlarla aynı dizinde yönetilir, ancak özellikle açıklama eklenir. Bunlar, çalışanlarla aynı şekilde yönetilebilir, aynı gruplara eklenebilir ve bu şekilde devam edebilir.    | Dış kullanıcılar, uygulama dizininde yönetilir. Bunlar, kuruluşun çalışanı ve iş ortağı dizininden (varsa) ayrı olarak yönetilirler.  |
-| Çoklu oturum açma: Azure AD ile bağlantılı tüm uygulamalara yönelik SSO desteklenir.          | Çoklu oturum açma: Azure AD ile bağlantılı tüm uygulamalara yönelik SSO desteklenir. Örneğin, Office 365 veya şirket içi uygulamalara ve Salesforce ya da Workday gibi diğer SaaS uygulamalarına erişim sağlayabilirsiniz.    | Çoklu oturum açma: Azure AD B2C kiracılar içindeki müşterinin sahip olduğu uygulamalara yönelik SSO desteklenir. Office 365 veya diğer Microsoft SaaS uygulamalarına yönelik SSO desteklenmez.    |
+| Çoklu oturum açma: Azure AD ile bağlantılı tüm uygulamalara yönelik SSO desteklenir.          | Çoklu oturum açma: Azure AD ile bağlantılı tüm uygulamalara yönelik SSO desteklenir. Örneğin, Microsoft 365 veya şirket içi uygulamalara ve Salesforce veya Workday gibi diğer SaaS uygulamalarına erişim sağlayabilirsiniz.    | Çoklu oturum açma: Azure AD B2C kiracılar içindeki müşterinin sahip olduğu uygulamalara yönelik SSO desteklenir. Microsoft 365 veya diğer Microsoft SaaS uygulamalarına yönelik SSO desteklenmez.    |
 | Müşteri yaşam döngüsü: kullanıcının ana organizasyonu tarafından yönetiliyor.      | İş ortağı yaşam döngüsü: Ana bilgisayar/davet eden kuruluş tarafından yönetilir.    | Müşteri yaşam döngüsü: Self servistir veya uygulama tarafından yönetilir.      |
 | Güvenlik ilkesi ve uyumluluğu: konak/kuruluş tarafından yönetilir (örneğin, [koşullu erişim ilkeleriyle](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).           | Güvenlik ilkesi ve uyumluluğu: konak/kuruluş tarafından yönetilir (örneğin, [koşullu erişim ilkeleriyle](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)). | Güvenlik ilkesi ve uyumluluk: Uygulama tarafından yönetilir.        |
 | Marka: kuruluşun markasını barındırmak/davet etmek kullanılır.   | Marka: kuruluşun markasını barındırmak/davet etmek kullanılır.    | Marka: Uygulama tarafından yönetilir. Genellikle kuruluşun arka planda soluk olduğu şekilde ürün markalı olma eğilimindedir.   |

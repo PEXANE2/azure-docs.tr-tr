@@ -1,24 +1,14 @@
 ---
 title: Paylaşılan erişim Imzaları ile erişim denetimi Azure Service Bus
 description: Paylaşılan erişim Imzaları ile ilgili Service Bus erişim denetimine genel bakış, Azure Service Bus ile SAS yetkilendirmesi hakkında ayrıntılar.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: e0d8abcd5693ac20c79a1357eb066e3ae8dcdfe8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259480"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340974"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Paylaşılan erişim Imzaları ile erişim denetimi Service Bus
 
@@ -29,7 +19,7 @@ SAS koruyucuları, yetkilendirme kurallarına göre Service Bus erişimi sağlar
 > [!NOTE]
 > Azure Service Bus, Azure Active Directory (Azure AD) kullanarak bir Service Bus ad alanına ve varlıklarına erişim yetkisi verme desteği sağlar. Azure AD tarafından döndürülen OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, belirteçlerin kodunuzda depolanması ve olası güvenlik açıklarına karşı risk altında olması gerekmez.
 >
-> Microsoft, mümkün olduğunda Azure Service Bus uygulamalarınızın Azure AD 'yi kullanmasını önerir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+> Microsoft, mümkün olduğunda Azure Service Bus uygulamalarınızın Azure AD 'yi kullanmasını önerir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 > - [Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme](authenticate-application.md).
 > - [Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama](service-bus-managed-service-identity.md)
 
@@ -45,7 +35,7 @@ Service Bus içinde SAS kimlik doğrulaması, ilişkili erişim hakları olan ad
 
 Her bir Service Bus ad alanı ve her Service Bus varlığı, kurallarından oluşan bir paylaşılan erişim yetkilendirme ilkesine sahiptir. Ad alanı düzeyindeki ilke, bireysel ilke yapılandırmasından bağımsız olarak ad alanındaki tüm varlıklar için geçerlidir.
 
-Her yetkilendirme ilkesi kuralı için üç bilgi parçasına karar verirsiniz: **ad**, **kapsam**ve **haklar**. **Ad** yalnızca bu şekilde yapılır; Bu kapsam içindeki benzersiz bir ad. Kapsam yeterince kolay: Bu, söz konusu kaynağın URI 'sidir. Service Bus ad alanı için kapsam, gibi tam etki alanı adıdır (FQDN) `https://<yournamespace>.servicebus.windows.net/`.
+Her yetkilendirme ilkesi kuralı için üç bilgi parçasına karar verirsiniz: **ad**, **kapsam**ve **haklar**. **Ad** yalnızca bu şekilde yapılır; Bu kapsam içindeki benzersiz bir ad. Kapsam yeterince kolay: Bu, söz konusu kaynağın URI 'sidir. Service Bus ad alanı için kapsam, gibi tam etki alanı adıdır (FQDN) `https://<yournamespace>.servicebus.windows.net/` .
 
 İlke kuralına göre Rights basıp basmadığını değerlendirerek, şunların bir birleşimi olabilir:
 
@@ -77,12 +67,12 @@ Bir yetkilendirme kuralı adı adına erişimi olan tüm istemciler ve imzalama 
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**-Token süre sonu anında. Belirtecin süresi sona erdiğinde 1 Ocak `00:00:00 UTC` 1970 (UNIX dönemi) üzerinden dönem bu yana bir saniye yansıtarak tamsayı.
+* **`se`**-Token süre sonu anında. `00:00:00 UTC`Belirtecin süresi sona erdiğinde 1 ocak 1970 (UNIX dönemi) üzerinden dönem bu yana bir saniye yansıtarak tamsayı.
 * **`skn`**-Yetkilendirme kuralının adı.
 * **`sr`**-Erişilmekte olan kaynağın URI 'SI.
 * **`sig`** İmza.
 
-, `signature-string` Kaynak URI üzerinden (önceki bölümde açıklandığı gibi**kapsam** ) ve LF ile ayrılmış olarak belirteç süre sonu anlık öğesinin DIZE gösterimine göre hesaplanan SHA-256 karmasıdır.
+, `signature-string` Kaynak URI üzerinden (önceki bölümde açıklandığı gibi**kapsam** ) ve LF ile ayrılmış olarak belirteç süre sonu anlık öğesinin dize GÖSTERIMINE göre hesaplanan SHA-256 karmasıdır.
 
 Karma hesaplama aşağıdaki sözde koda benzer ve 256 bit/32 baytlık karma değer döndürür.
 
@@ -92,13 +82,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Belirteç, karma değeri aynı parametrelerle yeniden hesaplanabilmesi, böylece veren 'in geçerli bir imzalama anahtarına sahip olduğu doğrulanıyor.
 
-Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. Örneğin, `http://<namespace>.servicebus.windows.net/<entityPath>` veya `sb://<namespace>.servicebus.windows.net/<entityPath>`; Yani, `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
+Kaynak URI 'SI, erişimin talep aldığı Service Bus kaynağın tam URI 'sidir. Örneğin, veya,,, `http://<namespace>.servicebus.windows.net/<entityPath>` `sb://<namespace>.servicebus.windows.net/<entityPath>` `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` . 
 
 **URI [yüzde kodlamalı](https://msdn.microsoft.com/library/4fkewx0t.aspx)olmalıdır.**
 
-İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, `http://contoso.servicebus.windows.net/contosoTopics/T1` veya `http://contoso.servicebus.windows.net` önceki örnekte.
+İmzalama için kullanılan paylaşılan erişim yetkilendirme kuralı, bu URI tarafından belirtilen varlıkta veya hiyerarşik üst öğelerinden biri ile yapılandırılmış olmalıdır. Örneğin, `http://contoso.servicebus.windows.net/contosoTopics/T1` veya `http://contoso.servicebus.windows.net` Önceki örnekte.
 
-SAS belirteci, `<resourceURI>` `signature-string`içinde kullanılan tüm kaynaklar için geçerlidir.
+SAS belirteci, içinde kullanılan tüm kaynaklar için geçerlidir `<resourceURI>` `signature-string` .
 
 ## <a name="regenerating-keys"></a>Anahtarlar yeniden oluşturuluyor
 
@@ -191,7 +181,7 @@ Bir göndereni veya istemciye bir SAS belirteci verirseniz, bu anahtara doğruda
 
 Service Bus verileri gönderilmeye başlamadan önce, Yayımcı, bir AMQP iletisinin içindeki SAS belirtecini **$CBS** adlı iyi tanımlanmış bir AMQP düğümüne göndermelidir (tüm SAS belirteçlerini almak ve doğrulamak üzere hizmet tarafından kullanılan bir "özel" kuyruğu olarak görebilirsiniz). Yayımcının AMQP iletisi içinde **ReplyTo** alanını belirtmesi gerekir; Bu, hizmetin, bir yayımcının belirteç doğrulama sonucuyla (yayımcı ve hizmet arasında basit bir istek/yanıt düzeniyle) yanıt veren düğümüdür. Bu yanıt düğümü, AMQP 1,0 belirtiminde açıklanan "anında" uzak düğüm oluşturma "hakkında konuşuyor. SAS belirtecinin geçerli olup olmadığını kontrol ettikten sonra yayımcı, hizmete veri gönderilmeye başlayabilir ve çalışmaya başlayabilir.
 
-Aşağıdaki adımlarda, [AMQP.net Lite](https://github.com/Azure/amqpnetlite) kitaplığı kullanılarak AMQP protokolü ile SAS belirtecinin nasıl gönderileceği gösterilmektedir. Bu, resmi Service Bus SDK 'Yı (örneğin, WinRT, .NET Compact Framework, .NET mikro Framework ve mono) C\#'de geliştirmeye yönelik olarak kullanıyorsanız faydalıdır. Tabii ki bu kitaplık, HTTP düzeyinde nasıl çalıştığını (bir HTTP POST isteği ve "Authorization" üst bilgisinde gönderilen SAS belirteci ile birlikte) gördüğünüz gibi, talep tabanlı güvenliğin AMQP düzeyinde nasıl çalıştığını anlamanıza yardımcı olmak için yararlıdır. AMQP hakkında ayrıntılı bilgiye ihtiyacınız yoksa, resmi Service Bus SDK 'sını .NET Framework uygulamalarla kullanabilirsiniz. Bu işlem sizin için yapılır.
+Aşağıdaki adımlarda, [AMQP.net Lite](https://github.com/Azure/amqpnetlite) kitaplığı kullanılarak AMQP protokolü ile SAS belirtecinin nasıl gönderileceği gösterilmektedir. Bu, resmi Service Bus SDK 'Yı (örneğin, WinRT, .NET Compact Framework, .NET mikro Framework ve mono) C 'de geliştirmeye yönelik olarak kullanıyorsanız faydalıdır \# . Tabii ki bu kitaplık, HTTP düzeyinde nasıl çalıştığını (bir HTTP POST isteği ve "Authorization" üst bilgisinde gönderilen SAS belirteci ile birlikte) gördüğünüz gibi, talep tabanlı güvenliğin AMQP düzeyinde nasıl çalıştığını anlamanıza yardımcı olmak için yararlıdır. AMQP hakkında ayrıntılı bilgiye ihtiyacınız yoksa, resmi Service Bus SDK 'sını .NET Framework uygulamalarla kullanabilirsiniz. Bu işlem sizin için yapılır.
 
 ### <a name="c35"></a>C&#35;
 
@@ -244,7 +234,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-Yöntemi `PutCbsToken()` , hizmetine TCP bağlantısını temsil eden [AMQP .net Lite kitaplığı](https://github.com/Azure/amqpnetlite)tarafından sağlandığı bir *bağlantı* (AMQP bağlantı sınıfı örneği) ve göndermek için SAS belirteci olan *sastoken* parametresi alır.
+`PutCbsToken()`Yöntemi, HIZMETINE TCP bağlantısını temsil eden [AMQP .net Lite kitaplığı](https://github.com/Azure/amqpnetlite)tarafından sağlandığı bir *bağlantı* (AMQP bağlantı sınıfı ÖRNEĞI) ve göndermek Için SAS belirteci olan *sastoken* parametresi alır.
 
 > [!NOTE]
 > Bağlantının, **SASL kimlik doğrulama MEKANIZMASı anonim olarak ayarlanmış şekilde** oluşturulması önemlıdır (SAS belirtecini göndermeniz gerekmiyorsa Kullanıcı adı ve parola Ile varsayılan düz değil).
@@ -253,7 +243,7 @@ Yöntemi `PutCbsToken()` , hizmetine TCP bağlantısını temsil eden [AMQP .net
 
 Ardından, Yayımcı, SAS belirtecini göndermek ve hizmeti yanıt (belirteç doğrulama sonucu) almak için iki AMQP bağlantısı oluşturur.
 
-AMQP iletisi bir dizi özellik ve basit bir iletiden daha fazla bilgi içerir. SAS belirteci, iletinin gövdesidir (oluşturucusunu kullanarak). **"ReplyTo"** özelliği, alıcı bağlantısında doğrulama sonucunu almak için düğüm adına ayarlanır (isterseniz adını değiştirebilir ve hizmet tarafından dinamik olarak oluşturulur). Son üç uygulama/özel özellik, hizmet tarafından yürütülmesi gereken işlem türünü belirtmek için kullanılır. CBS taslak belirtiminde açıklandığı gibi, bunların **işlem adı** ("put-token"), **belirtecin türü** (Bu durumda, a `servicebus.windows.net:sastoken`) ve belirtecin uygulandığı **hedef kitlelerinin "adı"** (tüm varlık) olması gerekir.
+AMQP iletisi bir dizi özellik ve basit bir iletiden daha fazla bilgi içerir. SAS belirteci, iletinin gövdesidir (oluşturucusunu kullanarak). **"ReplyTo"** özelliği, alıcı bağlantısında doğrulama sonucunu almak için düğüm adına ayarlanır (isterseniz adını değiştirebilir ve hizmet tarafından dinamik olarak oluşturulur). Son üç uygulama/özel özellik, hizmet tarafından yürütülmesi gereken işlem türünü belirtmek için kullanılır. CBS taslak belirtiminde açıklandığı gibi, bunların **işlem adı** ("put-token"), **belirtecin türü** (Bu durumda, a `servicebus.windows.net:sastoken` ) ve belirtecin uygulandığı **hedef kitlelerinin "adı"** (tüm varlık) olması gerekir.
 
 Gönderen bağlantısına SAS belirtecini gönderdikten sonra, yayımcı alıcı bağlantısındaki yanıtı okumalı olmalıdır. Yanıt, bir HTTP durum kodu ile aynı değerleri içerebilen **"Status-Code"** adlı bir uygulama özelliği olan basıt bır AMQP iletisidir.
 
@@ -261,9 +251,9 @@ Gönderen bağlantısına SAS belirtecini gönderdikten sonra, yayımcı alıcı
 
 Aşağıdaki tabloda Service Bus kaynakları üzerinde çeşitli işlemler için gereken erişim hakları gösterilmektedir.
 
-| İşlem | Talep gerekiyor | Talep kapsamı |
+| Çalışma | Talep gerekiyor | Talep kapsamı |
 | --- | --- | --- |
-| **Uzayına** | | |
+| **Ad Alanı** | | |
 | Ad alanında yetkilendirme kuralını yapılandırma |Yönetme |Herhangi bir ad alanı adresi |
 | **Hizmet kayıt defteri** | | |
 | Özel Ilkeleri listeleme |Yönetme |Herhangi bir ad alanı adresi |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c72abf79f0a420309ebe229673be9439fd99b74c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57e52a35fba6a375e52d4061d3bd16c0b571485d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188265"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355378"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak OpenID Connect ile kaydolma ve oturum açma ayarlama
 
@@ -31,7 +31,7 @@ ms.locfileid: "78188265"
 
 ## <a name="configure-the-identity-provider"></a>Kimlik sağlayıcısını yapılandırma
 
-Her OpenID Connect kimlik sağlayıcısı, oturum açma işlemini gerçekleştirmek için gereken bilgilerin çoğunu içeren bir meta veri belgesi tanımlar. Bu, kullanılacak URL 'Ler ve hizmetin ortak imzalama anahtarlarının konumu gibi bilgileri içerir. OpenID Connect meta veri belgesi her zaman içinde `.well-known\openid-configuration`biten bir uç noktada bulunur. Eklemek istediğiniz OpenID Connect kimlik sağlayıcısı için, meta veri URL 'sini girin.
+Her OpenID Connect kimlik sağlayıcısı, oturum açma işlemini gerçekleştirmek için gereken bilgilerin çoğunu içeren bir meta veri belgesi tanımlar. Bu, kullanılacak URL 'Ler ve hizmetin ortak imzalama anahtarlarının konumu gibi bilgileri içerir. OpenID Connect meta veri belgesi her zaman içinde biten bir uç noktada bulunur `.well-known/openid-configuration` . Eklemek istediğiniz OpenID Connect kimlik sağlayıcısı için, meta veri URL 'sini girin.
 
 ## <a name="client-id-and-secret"></a>İstemci KIMLIĞI ve gizli anahtar
 
@@ -42,25 +42,25 @@ Kullanıcıların oturum açmalarına izin vermek için, kimlik sağlayıcısı 
 
 ## <a name="scope"></a>Kapsam
 
-Kapsam, özel kimlik sağlayıcınızdan toplamak istediğiniz bilgileri ve izinleri tanımlar. Kimlik sağlayıcısından kimlik belirtecini almak için OpenID Connect isteklerinin `openid` kapsam değerini içermesi gerekir. KIMLIK belirteci olmadan, kullanıcılar özel kimlik sağlayıcısını kullanarak Azure AD B2C oturum açamaz. Diğer kapsamlar boşlukla ayırarak eklenebilir. Diğer kapsamların kullanılabilir olduğunu görmek için özel kimlik sağlayıcısının belgelerine bakın.
+Kapsam, özel kimlik sağlayıcınızdan toplamak istediğiniz bilgileri ve izinleri tanımlar. `openid`Kimlik sağlayıcısından kimlik belirtecini almak Için OpenID Connect isteklerinin kapsam değerini içermesi gerekir. KIMLIK belirteci olmadan, kullanıcılar özel kimlik sağlayıcısını kullanarak Azure AD B2C oturum açamaz. Diğer kapsamlar boşlukla ayırarak eklenebilir. Diğer kapsamların kullanılabilir olduğunu görmek için özel kimlik sağlayıcısının belgelerine bakın.
 
 ## <a name="response-type"></a>Yanıt türü
 
-Yanıt türü, özel kimlik sağlayıcısının ilk çağrısında `authorization_endpoint` ne tür bilgilerin geri gönderileceğini açıklar. Aşağıdaki yanıt türleri kullanılabilir:
+Yanıt türü, özel kimlik sağlayıcısının ilk çağrısında ne tür bilgilerin geri gönderileceğini açıklar `authorization_endpoint` . Aşağıdaki yanıt türleri kullanılabilir:
 
-* `code`: [Yetkilendirme kodu akışına](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)göre Azure AD B2C bir kod geri döndürülür. Azure AD B2C, `token_endpoint` belirtecin kodunu değiştirmek için ' a çağrı devam eder.
+* `code`: [Yetkilendirme kodu akışına](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)göre Azure AD B2C bir kod geri döndürülür. Azure AD B2C, belirtecin kodunu değiştirmek için ' a çağrı devam eder `token_endpoint` .
 * `id_token`: Özel kimlik sağlayıcısından Azure AD B2C bir KIMLIK belirteci geri döndürülür.
 
 ## <a name="response-mode"></a>Yanıt modu
 
 Yanıt modu, verileri özel kimlik sağlayıcısından Azure AD B2C 'e geri göndermek için kullanılması gereken yöntemi tanımlar. Aşağıdaki yanıt modları kullanılabilir:
 
-* `form_post`: Bu yanıt modu en iyi güvenlik için önerilir. Yanıt HTTP `POST` yöntemiyle iletilir ve `application/x-www-form-urlencoded` biçimi kullanılarak gövdede kodlanacak kodla veya belirtece sahip olur.
+* `form_post`: Bu yanıt modu en iyi güvenlik için önerilir. Yanıt HTTP yöntemiyle iletilir ve `POST` biçimi kullanılarak gövdede kodlanacak kodla veya belirtece sahip olur `application/x-www-form-urlencoded` .
 * `query`: Kod veya belirteç bir sorgu parametresi olarak döndürülür.
 
 ## <a name="domain-hint"></a>Etki alanı İpucu
 
-Etki alanı ipucu, kullanıcının kullanılabilir kimlik sağlayıcılarının listesi arasında seçim yapmasını sağlamak yerine, belirtilen kimlik sağlayıcısının oturum açma sayfasına doğrudan atlamak için kullanılabilir. Bu tür davranışa izin vermek için, etki alanı ipucu için bir değer girin. Özel kimlik sağlayıcısına geçmek için, oturum açma için Azure AD B2C çağırırken `domain_hint=<domain hint value>` parametresini isteğinizin sonuna ekleyin.
+Etki alanı ipucu, kullanıcının kullanılabilir kimlik sağlayıcılarının listesi arasında seçim yapmasını sağlamak yerine, belirtilen kimlik sağlayıcısının oturum açma sayfasına doğrudan atlamak için kullanılabilir. Bu tür davranışa izin vermek için, etki alanı ipucu için bir değer girin. Özel kimlik sağlayıcısına geçmek için, `domain_hint=<domain hint value>` oturum açma için Azure AD B2C çağırırken parametresini isteğinizin sonuna ekleyin.
 
 ## <a name="claims-mapping"></a>Talep eşleme
 

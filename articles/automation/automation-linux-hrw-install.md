@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Linux karma runbook çalışanı dağıtma
 description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızdaki Linux tabanlı makinelerde runbook 'ları çalıştırmak için bir Azure Otomasyonu karma Runbook Worker nasıl yükleneceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/17/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: a8679c189e77fe7b191a645b07c68b6101604644
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c569c83ed0bc5d78f0e5670c802188ee9fd8fd53
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079154"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340805"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux karma runbook çalışanı dağıtma
 
@@ -120,13 +120,25 @@ Bir Linux karma runbook çalışanı yüklemek ve yapılandırmak için aşağı
 
     Arama sonuçlarında, makineye bağlı olduğunu ve hizmete raporlanmasını belirten, makinenin sinyal kayıtlarını görmeniz gerekir. Varsayılan olarak, her aracı atanmış çalışma alanına bir sinyal kaydını iletir.
 
-3. Makineyi bir karma Runbook Worker grubuna eklemek için aşağıdaki komutu çalıştırarak *-w*, *-k*, *-g*ve *-e*parametrelerinin değerlerini değiştirerek. *-G* parametresi için, değeri, yeni Linux hibrit Runbook Worker 'ın katılması gereken karma Runbook Worker grubunun adıyla değiştirin. Otomasyon hesabınızda ad yoksa, bu adla yeni bir karma Runbook Worker grubu oluşturulur.
+3. Makineyi karma Runbook Worker grubuna eklemek için aşağıdaki komutu çalıştırın,, ve parametrelerinin değerlerini belirtin `-w` `-k` `-g` `-e` .
+
+    Parametreler için gereken bilgileri `-k` ve `-e` Otomasyon hesabınızdaki **anahtarlar** sayfasından alabilirsiniz. Sayfanın sol tarafındaki **Hesap ayarları** bölümünün altında bulunan **anahtarlar** ' ı seçin.
+
+    ![Anahtarları Yönet sayfası](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
+
+    * Parametresi için `-e` , **URL**değerini kopyalayın.
+
+    * Parametresi için `-k` , **BIRINCIL erişim anahtarı**değerini kopyalayın.
+
+    * Parametresi için `-g` , yeni Linux hibrit Runbook Worker 'ın katılması gereken karma Runbook Worker grubunun adını belirtin. Bu grup Otomasyon hesabında zaten mevcutsa, geçerli makine buna eklenir. Bu grup yoksa, bu ad ile oluşturulur.
+
+    * Parametresi için `-w` Log Analytics çalışma alanı kimliğinizi belirtin.
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <logAnalyticsworkspaceId> -k <automationSharedKey> -g <hybridGroupName> -e <automationEndpoint>
    ```
 
-4. Komut tamamlandıktan sonra, Azure portal karma çalışan grupları sayfasında yeni grup ve üye sayısı gösterilir. Bu, var olan bir gruptur, üye sayısı artırılır. Karma çalışan grupları sayfasında listeden grubu seçebilir ve **hibrit çalışanlar** kutucuğunu seçebilirsiniz. Karma çalışanlar sayfasında, grubun her bir üyesini listede görürsünüz.
+4. Komut tamamlandıktan sonra, Otomasyon hesabınızdaki karma çalışan grupları sayfasında yeni grup ve üye sayısı gösterilir. Bu, var olan bir gruptur, üye sayısı artırılır. Karma çalışan grupları sayfasında listeden grubu seçebilir ve **hibrit çalışanlar** kutucuğunu seçebilirsiniz. Karma çalışanlar sayfasında, grubun her bir üyesini listede görürsünüz.
 
     > [!NOTE]
     > Bir Azure VM için Linux için Log Analytics sanal makine uzantısı kullanıyorsanız, `autoUpgradeMinorVersion` `false` otomatik yükseltme sürümleri için ayarı, karma Runbook Worker ile sorun oluşmasına neden olabilir. Uzantıyı el ile yükseltme hakkında bilgi edinmek için bkz. [Azure CLI dağıtımı](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).

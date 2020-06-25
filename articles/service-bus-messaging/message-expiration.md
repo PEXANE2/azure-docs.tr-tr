@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus-ileti süre sonu
 description: Bu makalede Azure Service Bus iletilerinin yaşam süresi ve yaşam süresi hakkında bilgi verilmektedir. Bu süre dolduktan sonra ileti artık teslim alınmaz.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756343"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341202"
 ---
 # <a name="message-expiration-time-to-live"></a>İleti süre sonu (Yaşam Süresi)
 
@@ -26,7 +16,7 @@ Bir iletideki yük veya bir iletinin alıcıyı ileten bir komut ya da sorgulama
 
 Kuyrukların ve konuların genellikle uygulamaların veya uygulama bölümlerinin kısmi çalıştırmaları bağlamında kullanıldığı geliştirme ve test ortamları için, bir sonraki test çalışmasının temizlemeye başlayabilmesi için, yabanlanılan test iletilerinin otomatik olarak atık toplanmasını de tercih edilir.
 
-Her bir ileti için süre sonu, göreli bir süre belirten [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) System özelliği ayarlanarak denetlenebilir. İleti varlığa sıralandığında süre sonu mutlak bir anlık olur. Bu sırada, [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) özelliği değeri alır [(**enqueuedtimeutc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Aracılı bir iletideki yaşam süresi (TTL) ayarı, etkin bir istemci olmadığında zorunlu değildir.
+Her bir ileti için süre sonu, göreli bir süre belirten [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) System özelliği ayarlanarak denetlenebilir. İleti varlığa sıralandığında süre sonu mutlak bir anlık olur. Bu sırada, [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) özelliği değeri alır [(**enqueuedtimeutc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc)  +  [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Aracılı bir iletideki yaşam süresi (TTL) ayarı, etkin bir istemci olmadığında zorunlu değildir.
 
 **ExpiresAtUtc** Instant 'tan geçmiş iletiler, alma işlemi için uygun hale gelir. Süre sonu, şu anda teslim için kilitli iletileri etkilemez; Bu iletiler normal olarak yine de işlenir. Kilidin süresi dolarsa veya ileti durdurulmadığında, süre sonu hemen yürürlüğe girer.
 

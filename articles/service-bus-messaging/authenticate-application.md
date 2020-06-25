@@ -1,19 +1,14 @@
 ---
 title: Azure Service Bus varlıklara erişmek için bir uygulamanın kimliğini doğrulama
 description: Bu makalede, Azure Service Bus varlıklara (kuyruklar, konular vb.) erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama hakkında bilgi sağlanır.
-services: service-bus-messaging
-ms.service: event-hubs
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: aschhab
-ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 707fbec4317b4c34349e04895f9c6a0bdf4f1b47
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259298"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341518"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus varlıklara erişmek için Azure Active Directory ile bir uygulamanın kimliğini doğrulama ve yetkilendirme
 Azure Service Bus, isteklere Service Bus varlıklara (kuyruklar, konular, abonelikler veya filtreler) yetki vermek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusuna izinler vermek için kullanabilirsiniz. Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).
@@ -21,7 +16,7 @@ Azure Service Bus, isteklere Service Bus varlıklara (kuyruklar, konular, abonel
 ## <a name="overview"></a>Genel Bakış
 Bir güvenlik sorumlusu (Kullanıcı, Grup veya uygulama) bir Service Bus varlığına erişmeyi denediğinde, isteğin yetkilendirilmiş olması gerekir. Azure AD ile bir kaynağa erişim iki adımlı bir işlemdir. 
 
- 1. İlk olarak, güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür. Belirteç istemek için kaynak adı `https://servicebus.azure.net`.
+ 1. İlk olarak, güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür. Belirteç istemek için kaynak adı `https://servicebus.azure.net` .
  1. Ardından, belirteç, belirtilen kaynağa erişim yetkisi vermek için Service Bus hizmetine bir isteğin bir parçası olarak geçirilir.
 
 Kimlik doğrulama adımı, bir uygulama isteğinin çalışma zamanında bir OAuth 2,0 erişim belirteci içermesi gerekir. Bir uygulama bir Azure VM 'si, bir sanal makine ölçek kümesi veya bir Azure Işlev uygulaması gibi bir Azure varlığı içinde çalışıyorsa, kaynaklara erişmek için yönetilen bir kimlik kullanabilir. Yönetilen bir kimlik tarafından Service Bus hizmetine yapılan isteklerin nasıl doğrulanabilmesi hakkında bilgi edinmek için bkz. [Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile Azure Service Bus kaynaklarına erişim kimlik doğrulaması](service-bus-managed-service-identity.md). 
@@ -128,7 +123,7 @@ Uygulamanın bir belirteç istenirken kimliğini kanıtlamak için bir istemci p
     ![Gizli anahtar](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Service Bus API izinleri
-Uygulamanız bir konsol uygulaması ise, yerel bir uygulamayı kaydetmeniz ve **gerekli izinler** kümesine **Microsoft. SERVICEBUS** için API izinleri eklemeniz gerekir. Yerel uygulamalar, Azure AD 'de bir tanımlayıcı görevi gören bir **yeniden yönlendirme URI 'si** de gerektirir; URI 'nin bir ağ hedefi olması gerekmez. Örnek `https://servicebus.microsoft.com` kod bu URI 'yi zaten kullandığından, bu örnek için kullanın.
+Uygulamanız bir konsol uygulaması ise, yerel bir uygulamayı kaydetmeniz ve **gerekli izinler** kümesine **Microsoft. SERVICEBUS** için API izinleri eklemeniz gerekir. Yerel uygulamalar, Azure AD 'de bir tanımlayıcı görevi gören bir **yeniden yönlendirme URI 'si** de gerektirir; URI 'nin bir ağ hedefi olması gerekmez. `https://servicebus.microsoft.com`Örnek kod bu URI 'yi zaten kullandığından, bu örnek için kullanın.
 
 ### <a name="client-libraries-for-token-acquisition"></a>Belirteç alımı için istemci kitaplıkları  
 Uygulamanızı kaydettikten ve Azure Service Bus veri gönderme/alma izinlerine sahip olduktan sonra, bir güvenlik sorumlusunun kimliğini doğrulamak ve OAuth 2,0 belirtecini almak için uygulamanıza kod ekleyebilirsiniz. Belirtecin kimliğini doğrulamak ve almak için, [Microsoft Identity platform kimlik doğrulama kitaplıklarından](../active-directory/develop/reference-v2-libraries.md) birini veya OpenID veya Connect 1,0 ' i destekleyen başka bir açık kaynak kitaplığı kullanabilirsiniz. Uygulamanız daha sonra, Azure Service Bus karşı bir istek yetkilendirmek için erişim belirtecini kullanabilir.
@@ -142,12 +137,12 @@ GitHub 'da aşağıdaki örneğe bakın: [Service Bus Için rol tabanlı erişim
 
 ### <a name="run-the-sample"></a>Örneği çalıştırma
 
-Örneği çalıştırmadan önce, **app. config** dosyasını düzenleyin ve senaryonuza bağlı olarak aşağıdaki değerleri ayarlayın:
+Örneği çalıştırmadan önce, **app.config** dosyasını düzenleyin ve senaryonuza bağlı olarak aşağıdaki değerleri ayarlayın:
 
 - `tenantId`: **Tenantıd** değerine ayarlanır.
 - `clientId`: **ApplicationId** değerine ayarlanır.
 - `clientSecret`: İstemci parolasını kullanarak oturum açmak istiyorsanız, Azure AD 'de oluşturun. Ayrıca, yerel uygulama yerine bir Web uygulaması veya API kullanın. Ayrıca, daha önce oluşturduğunuz ad alanındaki **Access Control (IAM)** altına uygulamayı ekleyin.
-- `serviceBusNamespaceFQDN`: Yeni oluşturulan Service Bus ad alanının tam DNS adına ayarlanır; Örneğin, `example.servicebus.windows.net`.
+- `serviceBusNamespaceFQDN`: Yeni oluşturulan Service Bus ad alanının tam DNS adına ayarlanır; Örneğin, `example.servicebus.windows.net` .
 - `queueName`: Oluşturduğunuz kuyruğun adına ayarlanır.
 - Önceki adımlarda uygulamanızda belirttiğiniz yeniden yönlendirme URI 'SI.
 

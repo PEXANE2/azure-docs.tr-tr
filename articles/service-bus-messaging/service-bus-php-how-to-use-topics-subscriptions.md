@@ -1,25 +1,15 @@
 ---
 title: PHP ile Azure Service Bus konuları kullanma
 description: Bu öğreticide, bir PHP uygulamasından Azure Service Bus konuları ve abonelikleri kullanmayı öğreneceksiniz.
-services: service-bus-messaging
-documentationcenter: php
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: f2161d39961cc52bc0f0da509abec3ed6377cc07
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760683"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341079"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Hızlı başlangıç: PHP ile Service Bus konuları ve abonelikleri kullanma
 
@@ -53,7 +43,7 @@ Bu makalede, yerel olarak bir PHP uygulaması içinde veya bir Azure Web rolü, 
 ## <a name="get-the-azure-client-libraries"></a>Azure istemci kitaplıklarını al
 
 ### <a name="install-via-composer"></a>Besteci aracılığıyla Install
-1. Projenizin kökünde **besteci. JSON** adlı bir dosya oluşturun ve bu dosyaya aşağıdaki kodu ekleyin:
+1. Projenizin kökünde **composer.js** adlı bir dosya oluşturun ve bu dosyaya aşağıdaki kodu ekleyin:
    
     ```json
     {
@@ -96,9 +86,9 @@ Service Bus istemcisinin örneğini oluşturmak için, önce bu biçimde geçerl
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Burada `Endpoint` genellikle biçimindedir `https://[yourNamespace].servicebus.windows.net`.
+Burada `Endpoint` genellikle biçimindedir `https://[yourNamespace].servicebus.windows.net` .
 
-Herhangi bir Azure hizmeti istemcisi oluşturmak için `ServicesBuilder` sınıfını kullanmanız gerekir. Şunları yapabilirsiniz:
+Herhangi bir Azure hizmeti istemcisi oluşturmak için sınıfını kullanmanız gerekir `ServicesBuilder` . Seçenekleriniz şunlardır:
 
 * Bağlantı dizesini doğrudan ona geçirin.
 * Bağlantı dizesinin birden çok dış kaynağını denetlemek için **Cloudconfigurationmanager (CCM)** kullanın:
@@ -118,9 +108,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-topic"></a>Konu başlığı oluşturma
-`ServiceBusRestProxy` Sınıfı aracılığıyla Service Bus konular için yönetim işlemlerini gerçekleştirebilirsiniz. Bir `ServiceBusRestProxy` nesne, kendisini yönetmek için `ServicesBuilder::createServiceBusService` belirteç izinlerini kapsülleyen uygun bir bağlantı dizesiyle, Factory yöntemi aracılığıyla oluşturulur.
+Sınıfı aracılığıyla Service Bus konular için yönetim işlemlerini gerçekleştirebilirsiniz `ServiceBusRestProxy` . Bir `ServiceBusRestProxy` nesne, `ServicesBuilder::createServiceBusService` kendisini yönetmek için belirteç izinlerini kapsülleyen uygun bir bağlantı dizesiyle, Factory yöntemi aracılığıyla oluşturulur.
 
-Aşağıdaki `ServiceBusRestProxy` örnek, bir `ServiceBusRestProxy->createTopic` `mytopic` `MySBNamespace` ad alanı içinde adlı bir konu oluşturmak için ve çağrısının nasıl örneklendirilecek gösterilmektedir:
+Aşağıdaki örnek, bir `ServiceBusRestProxy` `ServiceBusRestProxy->createTopic` `mytopic` ad alanı içinde adlı bir konu oluşturmak için ve çağrısının nasıl örneklendirilecek gösterilmektedir `MySBNamespace` :
 
 ```php
 require_once 'vendor/autoload.php';
@@ -148,15 +138,15 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Bir hizmet ad alanı `listTopics` içinde belirtilen `ServiceBusRestProxy` bir ada sahip bir konunun zaten var olup olmadığını denetlemek için nesneleri üzerinde yöntemini kullanabilirsiniz.
+> `listTopics` `ServiceBusRestProxy` Bir hizmet ad alanı içinde belirtilen bir ada sahip bir konunun zaten var olup olmadığını denetlemek için nesneleri üzerinde yöntemini kullanabilirsiniz.
 > 
 > 
 
 ## <a name="create-a-subscription"></a>Abonelik oluşturma
-Konu abonelikleri, `ServiceBusRestProxy->createSubscription` yöntemiyle de oluşturulur. Abonelikler adlandırılır ve aboneliğin sanal kuyruğuna gönderilen ileti kümesini sınırlayan isteğe bağlı bir filtre içerebilir.
+Konu abonelikleri, yöntemiyle de oluşturulur `ServiceBusRestProxy->createSubscription` . Abonelikler adlandırılır ve aboneliğin sanal kuyruğuna gönderilen ileti kümesini sınırlayan isteğe bağlı bir filtre içerebilir.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Varsayılan (MatchAll) filtreyle abonelik oluşturma
-Yeni bir abonelik oluşturulduğunda bir filtre belirtilmemişse, **Matchall** filtresi (varsayılan) kullanılır. **Matchall** filtresi kullanıldığında, konuya yayınlanan tüm iletiler aboneliğin sanal kuyruğuna yerleştirilir. Aşağıdaki örnek adlı `mysubscription` bir abonelik oluşturur ve varsayılan **Matchall** filtresini kullanır.
+Yeni bir abonelik oluşturulduğunda bir filtre belirtilmemişse, **Matchall** filtresi (varsayılan) kullanılır. **Matchall** filtresi kullanıldığında, konuya yayınlanan tüm iletiler aboneliğin sanal kuyruğuna yerleştirilir. Aşağıdaki örnek adlı bir abonelik oluşturur `mysubscription` ve varsayılan **Matchall** filtresini kullanır.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -187,11 +177,11 @@ catch(ServiceException $e){
 Bir konu başlığına gönderilen iletilerden hangilerinin belirli bir konu başlığı aboneliğinde görüneceğini belirlemenize olanak sağlayan filtreler de ayarlayabilirsiniz. Abonelikler tarafından desteklenen en esnek filtre türü, SQL92 alt kümesini uygulayan [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)' dir. SQL filtreleri, konu başlığında yayımlanan iletilerin özelliklerinde çalışır. SqlFilters hakkında daha fazla bilgi için bkz. [Sqlfilter. SqlExpression özelliği][sqlfilter].
 
 > [!NOTE]
-> Bir abonelikteki her kural, gelen iletileri bağımsız olarak işler ve sonuç iletilerini aboneliğe ekler. Ayrıca, her yeni abonelik, konudan tüm iletileri aboneliğe ekleyen bir filtreye sahip bir varsayılan **kural** nesnesine sahiptir. Yalnızca Filtrenizle eşleşen iletileri almak için varsayılan kuralı kaldırmanız gerekir. `ServiceBusRestProxy->deleteRule` Yöntemini kullanarak varsayılan kuralı kaldırabilirsiniz.
+> Bir abonelikteki her kural, gelen iletileri bağımsız olarak işler ve sonuç iletilerini aboneliğe ekler. Ayrıca, her yeni abonelik, konudan tüm iletileri aboneliğe ekleyen bir filtreye sahip bir varsayılan **kural** nesnesine sahiptir. Yalnızca Filtrenizle eşleşen iletileri almak için varsayılan kuralı kaldırmanız gerekir. Yöntemini kullanarak varsayılan kuralı kaldırabilirsiniz `ServiceBusRestProxy->deleteRule` .
 > 
 > 
 
-Aşağıdaki örnekte, yalnızca 3 ' ten `HighMessages` büyük özel `MessageNumber` bir özelliği olan iletileri seçen **sqlfilter** ile adlı bir abonelik oluşturulur. İletilere özel özellikler ekleme hakkında bilgi için bkz. [bir konuya Ileti gönderme](#send-messages-to-a-topic) .
+Aşağıdaki örnekte, `HighMessages` yalnızca 3 ' ten büyük özel bir özelliği olan iletileri seçen **sqlfilter** ile adlı bir abonelik oluşturulur `MessageNumber` . İletilere özel özellikler ekleme hakkında bilgi için bkz. [bir konuya Ileti gönderme](#send-messages-to-a-topic) .
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("HighMessages");
@@ -204,9 +194,9 @@ $ruleInfo->withSqlFilter("MessageNumber > 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "HighMessages", $ruleInfo);
 ```
 
-Bu kod için ek bir ad alanı kullanılması gerekir: `WindowsAzure\ServiceBus\Models\SubscriptionInfo`.
+Bu kod için ek bir ad alanı kullanılması gerekir: `WindowsAzure\ServiceBus\Models\SubscriptionInfo` .
 
-Benzer şekilde, aşağıdaki örnek, yalnızca 3 ' `LowMessages` ten küçük `SqlFilter` veya buna eşit bir `MessageNumber` özelliği olan iletileri seçen, ile adlı bir abonelik oluşturur.
+Benzer şekilde, aşağıdaki örnek, `LowMessages` `SqlFilter` yalnızca `MessageNumber` 3 ' ten küçük veya buna eşit bir özelliği olan iletileri seçen, ile adlı bir abonelik oluşturur.
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("LowMessages");
@@ -219,10 +209,10 @@ $ruleInfo->withSqlFilter("MessageNumber <= 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "LowMessages", $ruleInfo);
 ```
 
-Şimdi, `mytopic` konuya bir ileti gönderildiğinde, bu, her zaman `mysubscription` aboneliğe abone olan alıcılar için dağıtılır ve, `HighMessages` ve `LowMessages` aboneliklerine abone olan alıcılar için (ileti içeriğine bağlı olarak) seçmeli olarak dağıtılır.
+Şimdi, konuya bir ileti gönderildiğinde `mytopic` , bu, her zaman aboneliğe abone olan alıcılar için dağıtılır `mysubscription` ve, ve aboneliklerine abone olan alıcılar için `HighMessages` `LowMessages` (ileti içeriğine bağlı olarak) seçmeli olarak dağıtılır.
 
 ## <a name="send-messages-to-a-topic"></a>Konu başlığına ileti gönderme
-Service Bus bir konuya ileti göndermek için, uygulamanız `ServiceBusRestProxy->sendTopicMessage` yöntemini çağırır. Aşağıdaki kod, `mytopic` `MySBNamespace` hizmet ad alanı içinde daha önce oluşturulan konuya nasıl ileti gönderileceğini gösterir.
+Service Bus bir konuya ileti göndermek için, uygulamanız `ServiceBusRestProxy->sendTopicMessage` yöntemini çağırır. Aşağıdaki kod, `mytopic` hizmet ad alanı içinde daha önce oluşturulan konuya nasıl ileti gönderileceğini gösterir `MySBNamespace` .
 
 ```php
 require_once 'vendor/autoload.php';
@@ -252,7 +242,7 @@ catch(ServiceException $e){
 }
 ```
 
-Service Bus konu başlıklarına gönderilen iletiler, [BrokeredMessage][BrokeredMessage] sınıfının örnekleridir. [Brokeredmessage][BrokeredMessage] nesneleri, bir dizi standart özellik ve yöntemin yanı sıra uygulamaya özgü özel özellikleri tutmak için kullanılabilen özellikleri de vardır. Aşağıdaki örnek, daha önce oluşturulan `mytopic` konuya beş test iletisinin nasıl gönderileceğini gösterir. Yöntemi `setProperty` , her iletiye özel bir özellik`MessageNumber`eklemek için kullanılır. `MessageNumber` Özellik değeri her bir ileti üzerinde değişir (Bu değeri, [abonelik oluşturma](#create-a-subscription) bölümünde gösterildiği gibi, hangi aboneliklerin alacağını öğrenmek için kullanabilirsiniz):
+Service Bus konu başlıklarına gönderilen iletiler, [BrokeredMessage][BrokeredMessage] sınıfının örnekleridir. [Brokeredmessage][BrokeredMessage] nesneleri, bir dizi standart özellik ve yöntemin yanı sıra uygulamaya özgü özel özellikleri tutmak için kullanılabilen özellikleri de vardır. Aşağıdaki örnek, `mytopic` daha önce oluşturulan konuya beş test iletisinin nasıl gönderileceğini gösterir. `setProperty`Yöntemi, her iletiye özel bir özellik eklemek için kullanılır `MessageNumber` . `MessageNumber`Özellik değeri her bir ileti üzerinde değişir (Bu değeri, [abonelik oluşturma](#create-a-subscription) bölümünde gösterildiği gibi, hangi aboneliklerin alacağını öğrenmek için kullanabilirsiniz):
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -275,7 +265,7 @@ Bir abonelikten ileti almanın en iyi yolu bir `ServiceBusRestProxy->receiveSubs
 
 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) modunu kullanırken alma işlemi tek aşamalıdır. Service Bus abonelikte bir iletiye yönelik okuma isteği aldığında, iletiyi kullanılıyor olarak işaretler ve uygulamaya döndürür. [Receiveanddelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * modu en basit modeldir ve bir hata oluştuğunda bir uygulamanın bir iletiyi işlememesi için en iyisi senaryolar için geçerlidir. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
 
-Varsayılan [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) modunda bir ileti almak iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletiyi ' a geçirerek alma işleminin ikinci aşamasını tamamlar `ServiceBusRestProxy->deleteMessage`. Service Bus `deleteMessage` çağrısı gördüğünde, iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır.
+Varsayılan [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) modunda bir ileti almak iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletiyi ' a geçirerek alma işleminin ikinci aşamasını tamamlar `ServiceBusRestProxy->deleteMessage` . Service Bus `deleteMessage` çağrısı gördüğünde, iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır.
 
 Aşağıdaki örnek, [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) Mode (varsayılan mod) kullanarak bir iletinin nasıl alınacağını ve işleyeceğini gösterir. 
 
@@ -319,16 +309,16 @@ catch(ServiceException $e){
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Nasıl yapılır: uygulama kilitlenmelerini ve okunamaz iletileri işleme
-Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulamasının iletiyi bazı nedenlerle işleyemeyeceği takdirde, alınan ileti üzerinde `unlockMessage` yöntemi çağırabilir ( `deleteMessage` yöntemi yerine). Service Bus, kuyruktaki iletinin kilidini açmak ve aynı uygulama ya da başka bir uygulama tarafından yeniden alınmak üzere kullanılabilir hale gelmesine neden olur.
+Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulamasının iletiyi bazı nedenlerle işleyemeyeceği takdirde, `unlockMessage` alınan ileti üzerinde yöntemi çağırabilir ( `deleteMessage` yöntemi yerine). Service Bus, kuyruktaki iletinin kilidini açmak ve aynı uygulama ya da başka bir uygulama tarafından yeniden alınmak üzere kullanılabilir hale gelmesine neden olur.
 
 Ayrıca, kuyruk içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı vardır. uygulama, kilit zaman aşımı dolmadan önce iletiyi işleyemezse (örneğin, uygulama çökerse) Service Bus, otomatik olarak iletinin kilidini açar ve yeniden alınmak üzere kullanılabilir hale gelir.
 
-İleti işlendikten sonra, ancak `deleteMessage` istek verilmeden önce uygulamanın çöktüğü durumda, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu tür işleme genellikle *en az bir kez* işleme olarak adlandırılır; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işleme tolerans vermezse, uygulama geliştiricilerinin yinelenen ileti teslimini işlemek için uygulamalara ek mantık eklemesi gerekir. Genellikle ileti `getMessageId` yöntemi kullanılarak elde edilir ve bu da teslim girişimleri arasında sabit kalır.
+İleti işlendikten sonra, ancak istek verilmeden önce uygulamanın çöktüğü durumda `deleteMessage` , yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu tür işleme genellikle *en az bir kez* işleme olarak adlandırılır; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işleme tolerans vermezse, uygulama geliştiricilerinin yinelenen ileti teslimini işlemek için uygulamalara ek mantık eklemesi gerekir. Genellikle ileti yöntemi kullanılarak elde edilir `getMessageId` ve bu da teslim girişimleri arasında sabit kalır.
 
 ## <a name="delete-topics-and-subscriptions"></a>Konu başlıklarını ve abonelikleri silme
-Bir konuyu veya aboneliği silmek için sırasıyla `ServiceBusRestProxy->deleteTopic` veya `ServiceBusRestProxy->deleteSubscripton` yöntemlerini kullanın. Bir konu başlığı silindiğinde bu konu başlığıyla kaydedilen tüm abonelikler de silinir.
+Bir konuyu veya aboneliği silmek için `ServiceBusRestProxy->deleteTopic` `ServiceBusRestProxy->deleteSubscripton` sırasıyla veya yöntemlerini kullanın. Bir konu başlığı silindiğinde bu konu başlığıyla kaydedilen tüm abonelikler de silinir.
 
-Aşağıdaki örnek, adlı `mytopic` konunun ve kayıtlı aboneliklerinin nasıl silineceğini gösterir.
+Aşağıdaki örnek, adlı konunun `mytopic` ve kayıtlı aboneliklerinin nasıl silineceğini gösterir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -354,7 +344,7 @@ catch(ServiceException $e){
 }
 ```
 
-`deleteSubscription` Yöntemini kullanarak bir aboneliği bağımsız olarak silebilirsiniz:
+`deleteSubscription`Yöntemini kullanarak bir aboneliği bağımsız olarak silebilirsiniz:
 
 ```php
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");

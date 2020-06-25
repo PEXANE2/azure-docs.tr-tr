@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: c766fb84fa14eab09143cfb5b71f7aefc9f51d24
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077775"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355854"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Microsoft Graph API ile SAML tabanlı SSO uygulama yapılandırmasını otomatikleştirme
 
@@ -111,6 +111,8 @@ Content-type: application/json
 
 Son adımda uygulamanız için aldığınız şablon KIMLIĞINI kullanarak kiracınızda uygulamanın ve hizmet sorumlusunun [bir örneğini oluşturun](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) .
 
+> [!NOTE] 
+> [Galeri olmayan uygulamaların](add-non-gallery-app.md)örneğini oluşturmak Için APPLICATIONTEMPLATE API 'sini kullanabilirsiniz. Applicationtemplateıd kullanın `8adf8e6e-67b2-4cf2-a259-e3dc5476c621` .
 #### <a name="request"></a>İstek
 
 <!-- {

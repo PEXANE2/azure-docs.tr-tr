@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus SQLFilter sözdizimi başvurusu | Microsoft Docs
 description: Bu makalede, SQLFilter dilbilgisi hakkında ayrıntılar sağlanmaktadır. Bir SqlFilter, SQL-92 standardının bir alt kümesini destekler.
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759672"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341603"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter söz dizimi
 
@@ -58,9 +47,9 @@ ms.locfileid: "76759672"
   
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler  
+## <a name="arguments"></a>Arguments  
   
--   `<scope>`, `<property_name>`kapsamını belirten isteğe bağlı bir dizedir. Geçerli değerler veya `sys` `user`' dir. `sys` Değer, [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı `<property_name>` olan sistem kapsamını gösterir. `user`Kullanıcı kapsamını `<property_name>` , [aracılı edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user`belirtilmemişse, kapsam varsayılan kapsamdır `<scope>` .  
+-   `<scope>`, kapsamını belirten isteğe bağlı bir dizedir `<property_name>` . Geçerli değerler veya ' dir `sys` `user` . `sys`Değer, `<property_name>` [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olan sistem kapsamını gösterir. `user`Kullanıcı kapsamını `<property_name>` , [aracılı edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user`belirtilmemişse, kapsam varsayılan kapsamdır `<scope>` .  
   
 ## <a name="remarks"></a>Açıklamalar
 
@@ -78,7 +67,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ```  
   
-### <a name="arguments"></a>Bağımsız Değişkenler  
+### <a name="arguments"></a>Arguments  
 
  `<regular_identifier>`, aşağıdaki normal ifade tarafından temsil edilen bir dizedir:  
   
@@ -88,13 +77,13 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/rakam gelen bir dize anlamına gelir.  
   
-`[:IsLetter:]`Unicode harfi olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsLetter(c)`bir Unicode harfse döndürür `true` `c`  
+`[:IsLetter:]`Unicode harfi olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsLetter(c)``true` `c` bir Unicode harfse döndürür.  
   
-`[:IsDigit:]`ondalık basamak olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsDigit(c)`Unicode `true` basamağı `c` ise döndürür.  
+`[:IsDigit:]`ondalık basamak olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsDigit(c)``true` `c` Unicode basamağı ise döndürür.  
   
-`<regular_identifier>` , Ayrılmış bir anahtar sözcük olamaz.  
+`<regular_identifier>`, Ayrılmış bir anahtar sözcük olamaz.  
   
-`<delimited_identifier>`sol/sağ köşeli ayraç ([]) ile çevrelenen herhangi bir dizedir. Sağ köşeli ayraç iki sağ köşeli ayraç olarak gösterilir. Aşağıdakiler aşağıda verilmiştir `<delimited_identifier>`:  
+`<delimited_identifier>`sol/sağ köşeli ayraç ([]) ile çevrelenen herhangi bir dizedir. Sağ köşeli ayraç iki sağ köşeli ayraç olarak gösterilir. Aşağıdakiler aşağıda verilmiştir `<delimited_identifier>` :  
   
 ```  
 [Property With Space]  
@@ -102,7 +91,7 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 ```  
   
-`<quoted_identifier>`, çift tırnak işaretleriyle çevrelenen herhangi bir dizedir. Tanımlayıcıdaki çift tırnak işareti iki çift tırnak işareti olarak temsil edilir. Bir dize sabiti ile kolayca karışabileceğinden, tırnak işareti tanımlayıcıları kullanılması önerilmez. Mümkünse sınırlı bir tanımlayıcı kullanın. Aşağıda bir örneği verilmiştir `<quoted_identifier>`:  
+`<quoted_identifier>`, çift tırnak işaretleriyle çevrelenen herhangi bir dizedir. Tanımlayıcıdaki çift tırnak işareti iki çift tırnak işareti olarak temsil edilir. Bir dize sabiti ile kolayca karışabileceğinden, tırnak işareti tanımlayıcıları kullanılması önerilmez. Mümkünse sınırlı bir tanımlayıcı kullanın. Aşağıda bir örneği verilmiştir `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -134,7 +123,7 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
 
 `<escape_char>`1 uzunluğunda bir dize olarak değerlendirilen bir ifade olmalıdır. LIKE işleci için bir kaçış karakteri olarak kullanılır.  
   
- Örneğin, `property LIKE 'ABC\%' ESCAPE '\'` ile `ABC%` `ABC`başlayan bir dize yerine eşleşmeler.  
+ Örneğin, `property LIKE 'ABC\%' ESCAPE '\'` `ABC%` ile başlayan bir dize yerine eşleşmeler `ABC` .  
   
 ## <a name="constant"></a> sabiti  
   
@@ -143,9 +132,9 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Bağımsız Değişkenler  
+### <a name="arguments"></a>Arguments  
   
--   `<integer_constant>`, tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak `System.Int64` depolanır ve aynı aralığı izler.  
+-   `<integer_constant>`, tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak depolanır `System.Int64` ve aynı aralığı izler.  
   
      Bunlar, uzun sabitler örneğidir:  
   
@@ -154,9 +143,9 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
     2  
     ```  
   
--   `<decimal_constant>`, tırnak işaretleri içine alınmış sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak `System.Double` depolanır ve aynı aralığa/duyarlığa uyar.  
+-   `<decimal_constant>`, tırnak işaretleri içine alınmış sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak depolanır `System.Double` ve aynı aralığa/duyarlığa uyar.  
   
-     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türünün için `System.Double` `<decimal_constant>`olduğu olguyu temel almamalıdır.  
+     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türünün için olduğu olguyu temel almamalıdır `System.Double` `<decimal_constant>` .  
   
      Ondalık sabitlerin örnekleri aşağıda verilmiştir:  
   
@@ -165,7 +154,7 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
     2.0  
     ```  
   
--   `<approximate_number_constant>`bilimsel gösterimde yazılmış bir sayıdır. Değerler dahili olarak `System.Double` depolanır ve aynı aralığa/duyarlığa uyar. Aşağıda, yaklaşık sayıda Sabitte örnek verilmiştir:  
+-   `<approximate_number_constant>`bilimsel gösterimde yazılmış bir sayıdır. Değerler dahili olarak depolanır `System.Double` ve aynı aralığa/duyarlığa uyar. Aşağıda, yaklaşık sayıda Sabitte örnek verilmiştir:  
   
     ```  
     101.5E5  
@@ -181,7 +170,7 @@ Bu dil, bir harfle başlayan ve ardından bir veya daha fazla alt çizgi/harf/ra
   
 ### <a name="remarks"></a>Açıklamalar  
 
-Boole sabitleri, **true** veya **false**anahtar sözcükleriyle temsil edilir. Değerler olarak `System.Boolean`depolanır.  
+Boole sabitleri, **true** veya **false**anahtar sözcükleriyle temsil edilir. Değerler olarak depolanır `System.Boolean` .  
   
 ## <a name="string_constant"></a>string_constant  
   
@@ -203,9 +192,9 @@ Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karak
   
 ### <a name="remarks"></a>Açıklamalar
   
-`newid()` İşlevi, `System.Guid.NewGuid()` yöntemi tarafından oluşturulan bir **System. Guid** döndürür.  
+`newid()`İşlevi, yöntemi tarafından oluşturulan bir **System. Guid** döndürür `System.Guid.NewGuid()` .  
   
-`property(name)` İşlevi tarafından `name`başvurulan özelliğin değerini döndürür. Değer `name` , bir dize değeri döndüren geçerli bir ifade olabilir.  
+`property(name)`İşlevi tarafından başvurulan özelliğin değerini döndürür `name` . `name`Değer, bir dize değeri döndüren geçerli bir ifade olabilir.  
   
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
   
@@ -217,9 +206,9 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
   
 -   Sistem Özellikleri, [Brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) örneklerinde kullanıma sunulan ortak özelliklerdir.  
   
-    Aşağıdaki `IS [NOT] NULL` semantiğini göz önünde bulundurun:  
+    Aşağıdaki semantiğini göz önünde bulundurun `IS [NOT] NULL` :  
   
-    -   `property IS NULL`, özelliği yoksa `true` veya özelliğin değeri olan `null`olarak değerlendirilir.  
+    -   `property IS NULL`, `true` özelliği yoksa veya özelliğin değeri olan olarak değerlendirilir `null` .  
   
 ### <a name="property-evaluation-semantics"></a>Özellik değerlendirmesi semantiği  
   
@@ -237,11 +226,11 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
   
 - İşlenenlerin sol ve/veya sağ tarafı **bilinmiyor**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
-  İçinde `[NOT] LIKE`bilinmeyen değerlendirme:  
+  İçinde bilinmeyen değerlendirme `[NOT] LIKE` :  
   
 - Herhangi bir işlenen **Bilinmeyen**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
-  İçinde `[NOT] IN`bilinmeyen değerlendirme:  
+  İçinde bilinmeyen değerlendirme `[NOT] IN` :  
   
 - Sol işlenen **Bilinmeyen**olarak değerlendiriliyorsa, sonuç **bilinmez**.  
   
@@ -275,9 +264,9 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
   
 ### <a name="operator-binding-semantics"></a>İşleç bağlama semantiği
   
--   `>` `>=`, `<`,, `<=`, `!=`Ve `=` gibi karşılaştırma işleçleri, veri türü yükseltmeleri ve örtük dönüşümlerde C# işleci bağlamasıyla aynı semantiğini izler.  
+-   ,,,, Ve gibi karşılaştırma işleçleri, `>` `>=` `<` `<=` `!=` `=` veri türü yükseltmeleri ve örtük dönüşümlerde C# işleci bağlamasıyla aynı semantiğini izler.  
   
--   ,,, Ve `+` `%` gibi `-`aritmetik `*`işleçler `/`, veri türü yükseltmeleri ve örtük dönüşümlerde C# işleci bağlamasıyla aynı semantiğini izler.
+-   ,,, Ve gibi aritmetik işleçler, `+` `-` `*` `/` `%` veri türü yükseltmeleri ve örtük dönüşümlerde C# işleci bağlamasıyla aynı semantiğini izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
