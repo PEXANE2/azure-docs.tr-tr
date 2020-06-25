@@ -35,6 +35,8 @@
 - name: Nasıl yapılır kılavuzları
   expanded: false
   items:
+    - Name: Azure AD cihaz dağıtımınızı planlama
+      href: plan-device-deployment.md
     - name: Azure AD katılımınızı uygulamayı planlama
       href: azureadjoin-plan.md
     - name: Azure AD'ye katılan cihazlara yerel yöneticiler atama

@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53ac540950dc6f64107ee20448b2c24981837b05
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1f54eae8c57d3317c6d654b4a019501410239bf9
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558502"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317497"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -108,10 +108,10 @@ Bu düzeltme derlemesi, **' ın ad-grup birleşimi** kuralından klonlanmış ve
 - MS-DS-ımbu Guid özniteliği tüm eşitlenmiş gruplar üzerinde otomatik olarak ayarlanır ve bu özelliği etkinleştirmek için herhangi bir şey yapmanız gerekmez. 
 - Artık kullanımda olmadığından Get-ADSyncRunProfile kaldırıldı. 
 - Daha fazla bağlam sağlamak üzere AD DS bağlayıcı hesabı için bir kurumsal yönetici veya etki alanı yönetici hesabı kullanmaya çalışırken gördüğünüz uyarıyı değiştirdi. 
-- Bağlayıcı alanından nesneleri kaldırmak için yeni bir cmdlet eklendi eski CSDelete. exe aracı kaldırılır ve yeni Remove-ADSyncCSObject cmdlet 'i ile değiştirilmiştir. Remove-ADSyncCSObject cmdlet 'i bir CsObject öğesini giriş olarak alır. Bu nesne Get-ADSyncCSObject cmdlet 'i kullanılarak alınabilir.
+- Bağlayıcı alanından nesneleri kaldırmak için yeni bir cmdlet eklendi eski CSDelete.exe Aracı kaldırılır ve yeni Remove-ADSyncCSObject cmdlet 'i ile değiştirilmiştir. Remove-ADSyncCSObject cmdlet 'i bir CsObject öğesini giriş olarak alır. Bu nesne Get-ADSyncCSObject cmdlet 'i kullanılarak alınabilir.
 
 >[!NOTE]
->Eski CSDelete. exe aracı kaldırılmıştır ve yeni Remove-ADSyncCSObject cmdlet 'i ile değiştirilmiştir 
+>Eski CSDelete.exe aracı kaldırılmıştır ve yeni Remove-ADSyncCSObject cmdlet 'i ile değiştirilmiştir 
 
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
 
@@ -501,7 +501,7 @@ Durum: müşteriler seçmek için yayımlandı
 
 * SAN joker karakterlerinden oluşan sertifikaların bir önkoşul denetiminde başarısız olduğu bir hata düzeltildi.
 
-* Azure AD Bağlayıcısı dışarı aktarma sırasında mııver. exe ' nin kilitlenmesine neden olan bir hata düzeltildi.
+* Azure AD Bağlayıcısı dışarı aktarma sırasında miiserver.exe kilitlenmesine neden olan bir hata düzeltildi.
 
 * Yapılandırmayı değiştirmek için Azure AD Connect sihirbazını çalıştırırken DC 'de hatalı parola denemesine oturum açan bir hata düzeltildi.
 
@@ -851,11 +851,11 @@ Bu sorun, Sihirbazı çalıştırdığınızda **tüm etki alanlarını ve OU 'L
 * Bir Azure AD yöneticisinin şirket içi AD ayrıcalıklı kullanıcı hesabının parolasını sıfırlamasına izin veren parola geri yazma ile ilgili bir sorun düzeltildi. Bu sorun, Azure AD Connect ayrıcalıklı hesap için parola sıfırlama izni verildiğinde oluşur. Bu sorun, yönetici bu hesabın sahibi olmadığı takdirde bir Azure AD yöneticisinin rastgele bir şirket içi AD ayrıcalıklı kullanıcı hesabının parolasını sıfırlamasına izin vermeyerek Azure AD Connect bu sürümünde karşılanır. Daha fazla bilgi için [Güvenlik Danışmanlığı 4033453](https://technet.microsoft.com/library/security/4033453)' a bakın.
 
 * Azure AD Connect, şirket içi AD ms-DS-ımced GUID özniteliğinde geri [yazarken, kaynak bağlayıcı özelliği olarak ms-DS-ımced GUID 'si](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) ile ilgili bir sorun düzeltildi. Sorun, Azure AD Connect eklenen birden çok şirket içi AD Ormanı olduğunda ve *birden çok dizinde bulunan Kullanıcı kimlikleri seçeneği* belirlendiğinde oluşur. Bu tür yapılandırma kullanıldığında, sonuç eşitleme kuralları meta veri deposundaki sourceAnchorBinary özniteliğini doldurmaz. SourceAnchorBinary özniteliği, ms-DS-ımıbu Guid özniteliği için kaynak özniteliği olarak kullanılır. Sonuç olarak, MS-Dsmda, Guid özniteliği için geri yazma gerçekleşmez. Sorunu düzeltemedi, meta veri deposundaki sourceAnchorBinary özniteliğinin her zaman doldurulduğundan emin olmak için aşağıdaki eşitleme kuralları güncelleştirilmiştir:
-  * AD-InetOrgPerson AccountEnabled. xml ' de
-  * AD-InetOrgPerson Common. xml ' den
-  * AD 'den Kullanıcı AccountEnabled. xml ' de
-  * AD 'den-User ortak. xml ' de
-  * ' Deki AD-Kullanıcı birleşimi SOAInAAD. xml ' den
+  * AD-InetOrgPerson AccountEnabled.xml içinde
+  * AD-InetOrgPerson Common.xml içinde
+  * AD-Kullanıcı AccountEnabled.xml içinde
+  * AD-Kullanıcı Common.xml içinde
+  * AD-Kullanıcı birleşimi SOAInAAD.xml içinde
 
 * Daha önce, [MS-DS-ımıbu GUID kaynak bağlayıcı](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) özelliği etkin olmasa bile, "ad-Kullanıcı ImmutableID" eşitleme kuralı hala Azure AD Connect eklenir. Bu efekt zararsız olur ve ms-DS-ımbu GUID özniteliğinin geri yazma işleminin oluşmasına neden olmaz. Karışıklığın önüne geçmek için, eşitleme kuralının yalnızca özellik etkinleştirildiğinde eklendiğinden emin olmak için mantık eklenmiştir.
 
@@ -990,7 +990,7 @@ Azure AD Connect Eşitleme
 
 * Azure AD Connect artık, şirket içi AD nesneleri için kaynak bağlayıcı özniteliği olarak artık '% nGUID ' özelliğinin kullanılmasına otomatik olarak izin verebilir. Ayrıca, Azure AD Connect, boş ise, ' de bir Objectguıd özniteliği değeri ile birlikte,. Bu özellik yalnızca yeni dağıtım için geçerlidir. Bu özellik hakkında daha fazla bilgi edinmek için, [Azure AD Connect: tasarım kavramları-ms-DS-ıımıbu GUID 'Yi Sourcetutturucu olarak kullanma](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)makalesine bakın.
 * Parola karması eşitlemeyle ilgili sorunları tanılamaya yardımcı olmak için yeni sorun giderme cmdlet 'i çağırma-ADSyncDiagnostics eklenmiştir. Cmdlet 'i kullanma hakkında daha fazla bilgi için, [Azure AD Connect eşitleme ile parola karması eşitlemesine sorun giderme](tshoot-connect-password-hash-synchronization.md)makalesine bakın.
-* Azure AD Connect artık posta etkin ortak klasör nesnelerini şirket içi AD 'den Azure AD 'ye eşitlemeyi desteklemektedir. Isteğe bağlı özellikler altında Azure AD Connect Sihirbazı 'nı kullanarak özelliği etkinleştirebilirsiniz. Bu özellik hakkında daha fazla bilgi edinmek için, bkz. [Office 365 dizin tabanlı uç engelleme desteği-şirket Içi posta etkin ortak klasörler](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
+* Azure AD Connect artık posta etkin ortak klasör nesnelerini şirket içi AD 'den Azure AD 'ye eşitlemeyi desteklemektedir. Isteğe bağlı özellikler altında Azure AD Connect Sihirbazı 'nı kullanarak özelliği etkinleştirebilirsiniz. Bu özellik hakkında daha fazla bilgi edinmek için, bkz. [Office 365 dizin tabanlı uç engelleme desteği-şirket Içi posta etkin ortak klasörler](https://techcommunity.microsoft.com/t5/exchange/office-365-directory-based-edge-blocking-support-for-on-premises/m-p/74218).
 * Azure AD Connect, şirket içi AD 'den AD DS bir hesabının eşitlenmesini gerektirir. Daha önce, Express modunu kullanarak Azure AD Connect yüklediyseniz, bir kurumsal yönetici hesabının kimlik bilgilerini sağlayabilir ve Azure AD Connect gereken AD DS hesabı oluşturabilir. Ancak, özel bir yükleme ve mevcut bir dağıtıma ormanlar ekleme için, bunun yerine AD DS hesabını sağlamanız gerekiyordu. Artık, özel bir yükleme sırasında Kurumsal Yönetici hesabının kimlik bilgilerini sağlama ve gerekli AD DS hesabı Azure AD Connect oluşturma seçeneğiniz de vardır.
 * Azure AD Connect artık SQL AOA 'yi destekliyor. Azure AD Connect yüklemeden önce SQL AOA 'i etkinleştirmeniz gerekir. Yükleme sırasında, sağlanan SQL örneğinin SQL AOA için etkinleştirilip etkinleştirilmediğini algılar Azure AD Connect. SQL AOA etkinleştirilmişse, SQL AOA zaman uyumlu çoğaltma veya zaman uyumsuz çoğaltma kullanacak şekilde yapılandırıldıysa Azure AD Connect daha fazla şekil bulabilirsiniz. Kullanılabilirlik grubu dinleyicisini ayarlarken RegisterAllProvidersIP özelliğini 0 olarak ayarlamanız önerilir. Bu öneri, Azure AD Connect Şu anda SQL 'e bağlanmak için SQL Native Client kullandığından SQL Native Client MultiSubNetFailover özelliğinin kullanımını desteklemez.
 * LocalDB 'yi Azure AD Connect sunucunuz için veritabanı olarak kullanıyorsanız ve 10 GB boyut sınırına ulaştıysa, eşitleme hizmeti artık başlatılmayacaktır. Daha önce, Eşitleme hizmetinin başlaması için yeterli VERITABANı alanını geri kazanmak üzere LocalDB üzerinde SHRINKDATABASE işlemi gerçekleştirmeniz gerekir. Bundan sonra, daha fazla VERITABANı alanı kazanmak için çalıştırma geçmişini silmek üzere Synchronization Service Manager kullanabilirsiniz. Şimdi, VERITABANı alanını geri kazanmak için LocalDB 'den çalıştırma geçmişi verilerini temizlemek için Start-ADSyncPurgeRunHistory cmdlet 'ini kullanabilirsiniz. Ayrıca, bu cmdlet, eşitleme hizmeti çalışmadığı zaman kullanılabilecek çevrimdışı modu (-offline parametresini belirterek) destekler. Not: çevrimdışı mod yalnızca eşitleme hizmeti çalışmıyorsa ve kullanılan veritabanı LocalDB ise kullanılabilir.
@@ -1050,7 +1050,7 @@ Azure AD Connect Eşitleme
 * Azure AD kiracınızda, kiracınız için parola eşitleme özelliğinin etkinleştirilip etkinleştirilmediğini belirten bir hizmet yapılandırması vardır. Daha önce, etkin ve bir hazırlama sunucunuz olduğunda, hizmet yapılandırmasının Azure AD Connect tarafından hatalı şekilde yapılandırılması kolaydır. Artık Azure AD Connect, hizmet yapılandırmasını yalnızca etkin Azure AD Connect sunucusu ile tutarlı tutmaya çalışacaktır.
 * Azure AD Connect Sihirbazı şimdi, şirket içi AD 'de AD geri dönüşüm kutusu etkin değilse bir uyarı algılar ve döndürür.
 * Daha önce, toplu işteki nesnelerin Birleşik boyutu belirli eşiki aşarsa Azure AD 'ye dışarı aktarma zaman aşımına uğrar ve başarısız olur. Artık eşitleme hizmeti, sorun ile karşılaşılırsa, nesneleri ayrı, daha küçük toplu işlerle yeniden göndermek için yeniden yanıt vermeye çalışır.
-* Eşitleme hizmeti anahtar yönetimi uygulaması Windows Başlat menüsünden kaldırılmıştır. Şifreleme anahtarının yönetimi, mııskmu. exe ' yi kullanan komut satırı arabirimi aracılığıyla desteklenmeye devam edecektir. Şifreleme anahtarını yönetme hakkında bilgi için, [Azure AD Connect eşitleme şifreleme anahtarını bırakma](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key)makalesine başvurun.
+* Eşitleme hizmeti anahtar yönetimi uygulaması Windows Başlat menüsünden kaldırılmıştır. Şifreleme anahtarının yönetimi, miiskmu.exe kullanılarak komut satırı arabirimi aracılığıyla desteklenmeye devam edecektir. Şifreleme anahtarını yönetme hakkında bilgi için, [Azure AD Connect eşitleme şifreleme anahtarını bırakma](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key)makalesine başvurun.
 * Daha önce, Azure AD Connect eşitleme hizmeti hesabı parolasını değiştirirseniz, şifreleme anahtarını terk edinceye ve Azure AD Connect eşitleme hizmeti hesabı parolasını yeniden başlatana kadar eşitleme hizmeti düzgün şekilde başlayamaz. Artık bu işlem artık gerekli değildir.
 
 Masaüstü SSO 'SU

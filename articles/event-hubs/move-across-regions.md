@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs ad alanını başka bir bölgeye taşıma | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ad alanını geçerli bölgeden başka bir bölgeye nasıl taşıyacağınız gösterilmektedir.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.custom: subject-moving-resources
-ms.date: 04/14/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690482"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312967"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs ad alanını başka bir bölgeye taşıma
 Mevcut Event Hubs ad alanınızı bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, test için aynı yapılandırmaya sahip bir ad alanı oluşturmak isteyebilirsiniz. Ayrıca [olağanüstü durum kurtarma planlamasının](event-hubs-geo-dr.md#setup-and-failover-flow)bir parçası olarak başka bir bölgede ikincil bir ad alanı oluşturmak isteyebilirsiniz.
@@ -36,7 +30,7 @@ Başlamak için Kaynak Yöneticisi şablonu dışarı aktarın. Bu şablon Event
 
 2. **Tüm kaynaklar** ' ı seçin ve sonra Event Hubs ad alanınızı seçin.
 
-3. > **ayarları** > **dışarı aktarma şablonu**' nu seçin.
+3. > **ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 
 4. **Şablonu dışarı aktar** sayfasında **İndir** ' i seçin.
 
@@ -58,11 +52,11 @@ Hedef bölgede bir Event Hubs ad alanı oluşturmak için şablonu dağıtın.
 
 3. **Şablon dağıtımı**'nı seçin.
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
 5. **Düzenleyicide kendi şablonunuzu oluşturun**'u seçin.
 
-6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz **Template. JSON** dosyasını yüklemek için yönergeleri izleyin.
+6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 
 7. Şablonu kaydetmek için **Kaydet** ' i seçin. 
 
@@ -85,7 +79,7 @@ Hedef bölgede bir Event Hubs ad alanı oluşturmak için şablonu dağıtın.
               ```
               /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<CLUSTER'S RESOURCE GROUP>/providers/Microsoft.EventHub/clusters/<CLUSTER NAME>
               ```   
-        3. Ad alanındaki Olay Hub 'ı olayları yakalamak için bir depolama hesabı kullanıyorsa, alanı için `StorageAccounts_<original storage account name>_external` kaynak grubu adını ve depolama hesabını belirtin. 
+        3. Ad alanındaki Olay Hub 'ı olayları yakalamak için bir depolama hesabı kullanıyorsa, alanı için kaynak grubu adını ve depolama hesabını belirtin `StorageAccounts_<original storage account name>_external` . 
             
             ```
             /subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/<STORAGE'S RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>

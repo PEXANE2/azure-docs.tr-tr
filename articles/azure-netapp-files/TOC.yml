@@ -37,7 +37,7 @@
       items:
         - name: Azure NetApp Files kullanan çözüm mimarileri
           href: azure-netapp-files-solution-architectures.md
-        - name: Belirli çözümler
+        - name: Azure NetApp Files kullanmanın avantajları
           items:
             - name: Oracle Database ile Azure NetApp Files kullanmanın avantajları
               href: solutions-benefits-azure-netapp-files-oracle-database.md

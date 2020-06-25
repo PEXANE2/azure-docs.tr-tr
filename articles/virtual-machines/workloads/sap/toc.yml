@@ -123,6 +123,8 @@
     - name: Azure üzerinde SAP NetWeaver'ı planlama ve gerçekleştirme
       href: planning-guide.md
       items:
+        - name: SAP iş yükü için Azure Depolama türleri
+          href: planning-guide-storage.md
         - name: Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
           href: sap-planning-supported-configurations.md
         - name: Azure dağıtımları için hangi SAP yazılımı desteklenir?
@@ -230,7 +232,7 @@
             - name: A(SCS) Örneği için Pacemaker Çoklu SID ile RHEL
               href: high-availability-guide-rhel-multi-sid.md
     - name: SAP Olağanüstü Durum Kurtarma için Azure Site Recovery
-      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+      href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: SAP uygulamalarıyla en iyi ağ gecikme süresi için Azure Yakınlık Yerleştirme Grupları
       href: sap-proximity-placement-scenarios.md
 - name: AAD SAP Kimlik Tümleştirmesi ve Çoklu Oturum Açma

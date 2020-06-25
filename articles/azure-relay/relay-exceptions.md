@@ -1,25 +1,14 @@
 ---
 title: Özel durumları ve bunları nasıl çözebilmek Azure Relay | Microsoft Docs
 description: Bunları çözmeye yardımcı olmak için uygulayabileceğiniz Azure Relay özel durumların ve önerilen eylemlerin listesi.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 5f9dd02c-cce0-43b3-8eb8-744f0c27f38c
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2017
-ms.author: spelluru
-ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0bc8a399173331525d62b25929f65ad189ed219b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210875"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316876"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay özel durumlar
 
@@ -48,7 +37,7 @@ Aşağıdaki tabloda mesajlaşma özel durum türleri ve nedenleri listelenmekte
 
 | **Özel durum türü** | **Açıklama** | **Önerilen eylem** | **Otomatik veya anında yeniden denemeye göz atma** |
 | --- | --- | --- | --- |
-| [Aş](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Sunucu, belirtilen süre içinde, [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)tarafından denetlenen istenen işleme yanıt vermedi. Sunucu istenen işlemi tamamlamış olabilir. Bu durum ağ veya diğer altyapı gecikmelerinden kaynaklanabilir. |Tutarlılık için sistem durumunu kontrol edin ve gerekirse yeniden deneyin. Bkz. [TimeoutException](#timeoutexception). |Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
+| [Zaman aşımı](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Sunucu, belirtilen süre içinde, [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)tarafından denetlenen istenen işleme yanıt vermedi. Sunucu istenen işlemi tamamlamış olabilir. Bu durum ağ veya diğer altyapı gecikmelerinden kaynaklanabilir. |Tutarlılık için sistem durumunu kontrol edin ve gerekirse yeniden deneyin. Bkz. [TimeoutException](#timeoutexception). |Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
 | [Geçersiz Işlem](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |Sunucu veya hizmet içinde istenen Kullanıcı işlemine izin verilmiyor. Ayrıntılar için özel durum iletisine bakın. |Kodu ve belgeleri denetleyin. İstenen işlemin geçerli olduğundan emin olun. |Yeniden deneme, yardım etmez. |
 | [İşlem Iptal edildi](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Zaten kapatılmış, durdurulmuş veya atılmış bir nesne üzerinde bir işlemi çağırmak için bir girişimde bulunuldu. Nadir durumlarda, çevresel işlem zaten atıldı. |Kodu denetleyin ve çıkarılan bir nesne üzerindeki işlemleri çağırmadığından emin olun. |Yeniden deneme, yardım etmez. |
 | [Yetkisiz erişim](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nesnesi bir belirteç alamıyor, belirteç geçersiz veya belirteç işlemi gerçekleştirmek için gereken talepleri içermiyor. |Belirteç sağlayıcısının doğru değerlerle oluşturulduğundan emin olun. Access Control hizmetinin yapılandırmasını denetleyin. |Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
@@ -80,7 +69,7 @@ Geçiş için, ilk olarak bir geçiş gönderici bağlantısı açtığınızda 
 The time allotted to this operation may have been a portion of a longer timeout.
 ```
 
-### <a name="common-causes"></a>Olası nedenler
+### <a name="common-causes"></a>Yaygın nedenler
 Bu hatanın iki yaygın nedeni vardır:
 
 *   **Hatalı yapılandırma**

@@ -1,25 +1,14 @@
 ---
 title: Azure Relay API 'ye Genel Bakış | Microsoft Docs
-description: Bu makalede, kullanılabilir Azure Relay API 'Lerine (.NET Standard, .NET Framework, Node. js vb.) ilişkin bir genel bakış sunulmaktadır.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: fdaa1d2b-bd80-4e75-abb9-0c3d0773af2d
-ms.service: service-bus-relay
-ms.devlang: na
+description: Bu makalede, kullanılabilir Azure Relay API 'Lerine (.NET Standard, .NET Framework, Node.js vb.) ilişkin bir genel bakış sunulmaktadır.
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ad7226b5c5badfddf9f436a1229a48f729485821
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 15e13ccac9b05e6e1b0730b38b372dec20c69dda
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210599"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316959"
 ---
 # <a name="available-relay-apis"></a>Kullanılabilir geçiş API 'Leri
 
@@ -47,11 +36,11 @@ Aşağıdaki tabloda, şu anda kullanılabilir olan tüm geçiş çalışma zama
 
 #### <a name="nodejs"></a>Node.js
 
-Yukarıdaki tabloda listelenen Karma Bağlantılar modülleri, var olan Node. js modüllerini yerel ağ yığını yerine Azure Relay hizmetini dinleyen alternatif uygulamalarla değiştirir veya değiştirir.
+Yukarıdaki tabloda listelenen Karma Bağlantılar modülleri, yerel ağ yığını yerine Azure Relay hizmetini dinleyen alternatif uygulamalarla mevcut Node.js modüllerini değiştirin veya değiştirin.
 
-`hyco-https`Modül, çekirdek Node. js modüllerini düzeltme ve kısmen geçersiz kılar ve `http` `https` Bu temel modülleri kullanan birçok mevcut Node. js modülleriyle ve uygulamalarla uyumlu bir HTTPS dinleyicisi uygulaması sağlar.
+`hyco-https`Modül, çekirdek Node.js modüllerini düzeltme ve kısmen geçersiz kılar ve `http` `https` Bu temel modülleri kullanan birçok Node.js modülle ve uygulama Ile uyumlu bir HTTPS dinleyicisi uygulaması sağlar.
 
-`hyco-ws`Ve `hyco-websocket` modülleri `ws` `websocket` Node. js için popüler ve modülleri düzeltmiştir, bu iki modüle da bağlı olan modül ve uygulamaların karma bağlantılar geçişinin arkasında çalışmasına olanak tanıyan alternatif dinleyici uygulamaları sağlar.
+`hyco-ws`Ve `hyco-websocket` modülleri, `ws` `websocket` her Iki modülün da karma bağlantılar geçişinin arkasında çalışmasına izin veren modülleri ve uygulamaları etkinleştiren alternatif dinleyici uygulamaları sağlayarak Node.js yönelik popüler ve modülleri düzeltilir.
 
 Bu modüllerle ilgili ayrıntılar [Azure-Relay-node](https://github.com/Azure/azure-relay-node) GitHub deposunda bulunabilir.
 

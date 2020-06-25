@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 0b7d7b9e3b373c8a994538bc3d5f31b78df3cd6a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 30e2ec47e2b9b3a95acb5b79800ce64ba11e757d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210431"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317889"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -42,7 +42,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + CmAks işlem türü destekleniyor. Eğitim işi için kendi AKS kümenizi çalışma alanına ekleyebilirsiniz.
   + **azureml-contrib-notebook**
     + Belge, azureml-contrib-Not defteri paketine yönelik iyileştirmeler.
-  + **azureml-contrib-işlem hattı-adımlar**
+  + **azureml-contrib-pipeline-steps**
     + Belge, azureml-contrib--işlem hattı-adımlar paketine yönelik iyileştirmeler.
   + **azureml-core**
     + Müşterinin çalışma alanı bağlantı kaynağı üzerinde çalışması için set_connection, get_connection, list_connections, delete_connection işlevleri ekleyin
@@ -63,7 +63,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
   + **azureml-dataprep**
     + Parquet dosyalarının bir veri kümesini yükleme to_spark_dataframe artık daha hızlıdır ve tüm Parquet ve Spark SQL veri türlerini destekler.
     + To_pandas_dataframe için OutOfMemory sorunu durumunda daha iyi bellek işleme.
-  + **azureml-interpret**
+  + **azureml-yorumlama**
     + Yükseltilmiş azureml-topluluk sürüm 0,12 ' i kullanacak şekilde yorumlayın. *
   + **azureml-mlflow**
     + Belge için azureml-mlflow geliştirmeleri.
@@ -210,7 +210,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
   + **azureml-contrib-mir**
     + Managedinferferferde Windows Hizmetleri için destek eklendi
     + MIR COMPUTE, Tekmodelirwebservice sınıfı-Temizleme, contrib-MIR paketine yerleştirilmiş olan eski MIR iş akışlarını kaldırın
-  + **azureml-contrib-işlem hattı-adımlar**
+  + **azureml-contrib-pipeline-steps**
     + YAML desteği için küçük bir çözüm
     + ParallelRunStep genel kullanılabilirlik-azureml. contrib. Pipeline içinde kullanıma sunuldu. adımlarda kullanımdan kaldırma bildirimi vardır ve azureml. Pipeline öğesine taşınır. adımlara
   + **azureml-contrib-reinforcementlearning**
@@ -394,7 +394,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Karşıya yüklenen açıklamaları üzerindeki görselleştirme verilerinin dosya boyutuna üst sınır eklendi.
   + **azureml-train-automl-client**
     + Label_column_name & weight_column_name parametrelerin String türünde olması için açıkça denetleniyor.
-  + **azureml-contrib-işlem hattı-adımlar**
+  + **azureml-contrib-pipeline-steps**
     + ParallelRunStep artık veri kümesini ardışık düzen parametresi olarak destekliyor. Kullanıcı, örnek veri kümesiyle işlem hattı oluşturabilir ve yeni işlem hattı çalıştırması için aynı türdeki (dosya veya tablo) giriş veri kümesini değiştirebilir.
 
   
@@ -591,7 +591,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
       + Çalışma alanı güncelleştirme yöntemi genel olarak kullanılabilir hale getirilir.
       + Kullanıcının görüntü derlemesi için işlem güncelleştirmesine izin vermek üzere çalışma alanı güncelleştirme yönteminde image_build_compute parametresi eklendi
     +  Eski profil oluşturma iş akışına kullanımdan kaldırma iletileri eklendi. Sabit profil oluşturma CPU ve bellek sınırları
-  + **azureml-interpret**
+  + **azureml-yorumlama**
     + azureml güncelleştirme-topluluk 0,6. *
   + **azureml-mlflow**
     + Azureml. mlflow için bağımsız bulutlar desteği ekleyin
@@ -633,7 +633,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Ardışık düzen toplu işlem Puanlama Not defteri artık ParallelRunStep kullanıyor
   + **azureml-pipeline-steps**
     + , `AutoMLStep` Paketin içine taşınır `azureml-pipeline-steps` . İçinde kullanım `AutoMLStep` dışı `azureml-train-automl-runtime` .
-  + **azureml-contrib-işlem hattı-adımlar**
+  + **azureml-contrib-pipeline-steps**
     + ParallelRunStep öğesine side_inputs isteğe bağlı parametre eklendi. Bu parametre, kapsayıcıya klasörü bağlamak için kullanılabilir. Şu anda desteklenen türler DataReference ve PipelineData.
   + **azureml-tensorboard**
     + , TensorFlow 2,0 desteği için azureml-tensorboard güncelleştirildi
@@ -658,13 +658,13 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Puanlama sırasında sıklık denetimi düzeltildi, şimdi tahmin görevlerinde, tren ve test kümesi arasında katı sıklık denkliğine gerek yoktur.
   + **azureml-core**
     + Kullanıcı, WebServices için anahtarlar yeniden oluşturulurken kimlik doğrulama anahtarı için bir değer belirtebilir.
-  + **azureml-yorumlama**
+  + **azureml-interpret**
     + Azureml, yorumlamaya (0.5.0) göre güncelleştirildi-Community
   + **azureml-pipeline-core**
     + Bağımsız değişken listesini değiştirirken PythonScriptStep sonuçlarının yanlış şekilde yeniden kullanılabildiği bir hata düzeltildi
   + **azureml-pipeline-steps**
     + Veri kümesi için PythonScriptStep girişi olarak belge örneği eklendi
-  + **azureml-contrib-işlem hattı-adımlar**
+  + **azureml-contrib-pipeline-steps**
     + ParallelRunConfig içinde geçirilen parametrelerin, ardışık düzen parametreleri şimdi geçirerek üzerine yazılabilir. Desteklenen yeni işlem hattı parametreleri aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count ve aml_process_count_per_node zaten önceki sürümün bir parçası).
   
 ## <a name="2020-01-21"></a>2020-01-21
@@ -765,7 +765,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Pandas desteği eklendi. Seriler ve Pandas. Sütun veri türünü saptamak için kategorik. Daha önce yalnızca desteklenen sayısal tuş takımı. ndarray
       + Kategorik dtype 'ı doğru şekilde işlemek için ilgili kod değişiklikleri eklendi.
     + Tahmin işlevi arabirimi geliştirildi: y_pred parametresi isteğe bağlı olarak yapıldı. -Docstrings geliştirilmiştir.
-  + **azureml-contrib-dataset**
+  + **azureml-contrib-veri kümesi**
     + Etiketlenmiş veri kümelerinin takılabileceği bir hata düzeltildi.
   + **azureml-core**
     + İçin hata düzeltildi `Environment.from_existing_conda_environment(name, conda_environment_name)` . Kullanıcı, Yerel ortamın tam çoğaltması olan bir ortam örneği oluşturabilir
@@ -826,7 +826,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 ### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Python v 1.0.74 için SDK Azure Machine Learning
 
   + **Önizleme özellikleri**
-    + **azureml-contrib-dataset**
+    + **azureml-contrib-veri kümesi**
       + Azureml-contrib-DataSet içeri aktardıktan sonra `Dataset.Labeled.from_json_lines` `._Labeled` etiketli bir veri kümesi oluşturmak için yerine öğesini çağırabilirsiniz.
       + `to_pandas_dataframe`Etiketli bir veri kümesinde, indirme seçeneğiyle çağrılırken, artık mevcut dosyaların üzerine yazılıp yazılmayacağını belirtebilirsiniz.
       + Çağrılırken `keep_columns` veya `drop_columns` bir zaman serisi, etiket veya resim sütunu atıldığı zaman, ilgili yetenekler veri kümesi için de bırakılır.
@@ -853,7 +853,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Artifacts_client içindeki run.py ve download_artifacts_from_prefix download_files append_prefix bool parametresi eklendi. Bu bayrak, kaynak FilePath öğesini seçmeli olarak düzleştirmek için kullanılır, bu nedenle yalnızca dosya veya klasör adı output_directory eklenir
     + Veri kümesi kullanımıyla ilgili kaldırma sorununu düzeltir `run_config.yml` .
     + Çağrılırken `keep_columns` veya `drop_columns` bir zaman serisi sütununun bırakılmasının sonucu olarak, ilgili yetenekler veri kümesi için de bırakılır.
-  + **azureml-yorumlama**
+  + **azureml-interpret**
     + Yorumlama-topluluk sürümü 0.1.0.3 olarak güncelleştirildi
   + **azureml-eğitme-oto ml**
     + Automl_step doğrulama sorunlarını yazdıramama sorunu düzeltildi.
@@ -921,7 +921,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
   + **Önizleme özellikleri**
     + Azure Machine Learning Işlem sırasında yerel SSD 'nizin disk şifrelemesi için Önizleme desteği yayınlıyoruz. Aboneliğinizi bu özelliği kullanmak için daha sonra listelenen bir teknik destek bileti sağlayın.
     + Azure Machine Learning Batch çıkarımı genel önizlemesi. Azure Machine Learning Batch çıkarımı zamana duyarlı olmayan büyük çıkarım işlerini hedefler. Batch çıkarımı, zaman uyumsuz uygulamalar için paralellik verimlilik ile uygun maliyetli çıkarım işlem Ölçeklendirmesi sağlar. Büyük veri koleksiyonları üzerinde yüksek aktarım hızı, yangın ve unutma çıkarımı için iyileştirilmiştir.
-    + [**azureml-contrib-dataset**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
+    + [**azureml-contrib-veri kümesi**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
         + Etiketli veri kümesi için etkinleştirilen işlevler
         ```Python
         import azureml.core
@@ -2031,7 +2031,7 @@ Note: Data Prep Python SDK artık yüklenemez `numpy` ve `pandas` paketlerdir. B
 ### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Azure Machine Learning Data Prep SDK v 1.0.12
 
 + **Yeni özellikler**
-  + Veri hazırlama artık, veri deposu kullanarak bir Azure SQL veritabanından okumayı destekler.
+  + Veri hazırlığı artık Azure SQL veritabanı 'ndan veri deposu kullanarak okumayı desteklemektedir.
 
 + **Değişikliklerine**
   + Büyük veriler üzerinde belirli işlemlerin bellek performansı geliştirilmiştir.

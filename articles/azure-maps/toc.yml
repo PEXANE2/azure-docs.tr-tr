@@ -244,7 +244,7 @@
           href: schema-stateset-stylesobject.md
         - name: Araç kullanım modeli
           href: consumption-model.md
-        - name: GeoJSON biçimini genişletme
+        - name: Genişletilmiş GeoJSON biçimi
           href: extend-geojson.md
         - name: Bölge sınırı GEOJSON biçimi
           href: geofence-geojson.md

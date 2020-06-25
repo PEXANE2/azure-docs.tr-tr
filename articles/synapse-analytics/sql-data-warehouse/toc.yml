@@ -420,5 +420,7 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: Veri yönetimi
           href: sql-data-warehouse-partner-data-management.md
+        - name: Makine öğrenimi ve AI
+          href: sql-data-warehouse-partner-machine-learning-ai.md
         - name: Genel Önizleme iş ortakları
           href: sql-data-warehouse-partner-launch.md

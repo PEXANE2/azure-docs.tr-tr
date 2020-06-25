@@ -102,7 +102,7 @@
       href: monitor-container-security.md
     - name: Microsoft Defender ATP ile sunucularınızı koruma
       href: security-center-wdatp.md
-    - name: Azure VM’lerinde SQL için gelişmiş veri güvenliğini kullanma
+    - name: SQL makineleri için gelişmiş veri güvenliğini kullanma
       href: security-center-iaas-advanced-data.md
     - name: Uygulamalarınızı korumak için App Service kullanma
       href: security-center-app-services.md

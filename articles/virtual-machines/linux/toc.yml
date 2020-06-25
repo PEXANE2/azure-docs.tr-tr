@@ -157,8 +157,16 @@
       href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: Kavramlar
   items:
-    - name: Görüntüler
-      href: shared-image-galleries.md
+    - name: Görüntü oluşturma
+      items:
+        - name: Genel Bakış
+          href: imaging.md
+        - name: Sağlama
+          href: provisioning.md
+        - name: Paylaşılan görüntü galerileri
+          href: shared-image-galleries.md
+        - name: Görüntü Oluşturucu
+          href: image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Bölgeler
@@ -394,7 +402,7 @@
               displayName: Azure Resource Manager
             - name: Hata kodları
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
-    - name: Klasik’ten Azure Resource Manager’a geçiş
+    - name: Klasikten Azure Resource Manager’a geçiş
       items:
         - name: Kullanımdan kaldırma süreci 1 Mart 2023’te başlıyor
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -415,6 +423,50 @@
     - name: Görüntüleri Kullanma
       displayName: 'SIG, AMI, image'
       items:
+        - name: Dağıtıma özgü gereksinimler
+          items:
+            - name: Genel adımlar
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: Cloud-init kullanma
+          items:
+            - name: Cloud-init genel bakış
+              href: using-cloud-init.md
+            - name: Derin dalış
+              href: cloud-init-deep-dive.md
+            - name: Sorun giderme
+              href: cloud-init-troubleshooting.md
+            - name: VM konak adını yapılandırma
+              href: cloudinit-update-vm-hostname.md
+            - name: Bir VM içindeki güncelleştirme paketleri
+              href: cloudinit-update-vm.md
+            - name: VM’ye kullanıcı ekleme
+              href: cloudinit-add-user.md
+            - name: Takas dosyası yapılandırma
+              href: cloudinit-configure-swapfile.md
+            - name: Mevcut bash betiğini çalıştırma
+              href: cloudinit-bash-script.md
+            - name: Mevcut VM’yi cloud-init için hazırlama
+              href: cloudinit-prepare-custom-image.md
+        - name: 'Şu öğe olmadan görüntü oluşturma:'
+          href: no-agent.md
+        - name: Linux Aracısı sağlamasını devre dışı bırakma
+          href: disable-provisioning.md
         - name: Paylaşılan Görüntü Galerileri
           items:
             - name: CLI
@@ -480,8 +532,6 @@
               href: ../image-version-encryption.md
         - name: Görüntü oluşturucu (önizleme)
           items:
-            - name: Genel Bakış
-              href: image-builder-overview.md
             - name: Azure CLI kullanma
               href: image-builder.md
             - name: ARM şablonu başvurusu
@@ -495,27 +545,7 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Görüntüleri bulma ve kullanma
           href: cli-ps-findimage.md
-        - name: Özel görüntü oluşturma
-          items:
-            - name: Genel adımlar
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: VM görüntüsü yakalama
+        - name: VM’yi yönetilen görüntüye yakalama
           href: capture-image.md
         - name: Packer ile görüntü derleme
           href: build-image-with-packer.md
@@ -813,22 +843,6 @@
               href: /azure/developer/terraform/install-configure
             - name: Tam VM oluşturma
               href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
-        - name: Cloud-init
-          items:
-            - name: Cloud-init genel bakış
-              href: using-cloud-init.md
-            - name: VM konak adını yapılandırma
-              href: cloudinit-update-vm-hostname.md
-            - name: Bir VM içindeki güncelleştirme paketleri
-              href: cloudinit-update-vm.md
-            - name: VM’ye kullanıcı ekleme
-              href: cloudinit-add-user.md
-            - name: Takas dosyası yapılandırma
-              href: cloudinit-configure-swapfile.md
-            - name: Mevcut bash betiğini çalıştırma
-              href: cloudinit-bash-script.md
-            - name: Mevcut VM’yi cloud-init için hazırlama
-              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: /azure/developer/jenkins/overview
           items:

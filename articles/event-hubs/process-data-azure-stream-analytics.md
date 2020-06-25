@@ -1,19 +1,14 @@
 ---
 title: Stream Analytics kullanarak Azure Event Hubs verileri işleme | Microsoft Docs
 description: Bu makalede, Azure Event hub 'ınızdaki verileri bir Azure Stream Analytics işi kullanarak nasıl işleyebilmeniz gösterilmektedir.
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
-ms.date: 07/09/2019
+ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69991940"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312889"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Olay Hub 'ınızdaki verileri işleme 
 Azure Stream Analytics hizmeti, Azure Event Hubs akış verilerini almak, işlemek ve analiz etmeyi kolaylaştırır, böylece gerçek zamanlı eylemler için güçlü öngörüler sağlar. Bu tümleştirme, hızlı bir şekilde bir etkin yol analizi işlem hattı oluşturmanıza olanak sağlar. Gelen verileri görselleştirmek ve bir Stream Analytics sorgusu yazmak için Azure portal kullanabilirsiniz. Sorgunuz hazırlandıktan sonra, bunu yalnızca birkaç tıklamayla üretime taşıyabilirsiniz. 
@@ -49,7 +44,7 @@ Azure Event Hubs ve Azure Stream Analytics tümleştirmenin temel avantajları a
     - Gelen verileri tablo biçiminde veya ham biçimde önizleyebilirsiniz. 
     - Gösterilen veriniz güncel değilse, en son olayları görmek için **Yenile** ' yi seçin. 
 
-        **Tablo**biçiminde bir veri örneği aşağıda verilmiştir: ![tablo biçiminde sonuçlar](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        **Tablo**biçiminde bir veri örneği aşağıda verilmiştir: ![ tablo biçiminde sonuçlar](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         **Ham biçimdeki**verilerin bir örneği aşağıda verilmiştir: 
 

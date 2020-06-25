@@ -394,30 +394,64 @@
       items:
         - name: Ses yardımcısı nedir?
           href: voice-assistants.md
-    - name: Özel Komutlar (Önizleme)
+    - name: Özel Komutlar
       items:
         - name: Özel Komutlar nedir?
           href: custom-commands.md
         - name: Hızlı Başlangıçlar
           items:
             - name: Özel Komutlar uygulaması oluşturma
-              href: quickstart-custom-speech-commands-create-new.md
-            - name: Parametreleri olan bir özel komut oluşturma
-              href: quickstart-custom-speech-commands-create-parameters.md
-            - name: Özel Ses ile Özel Komutlar’ı Kullanma
-              href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: Konuşma SDK'sı ile Özel Komutlar’ı kullanma
-              href: quickstart-custom-speech-commands-speech-sdk.md
+              href: quickstart-custom-commands-application.md
         - name: Nasıl yapılır kılavuzları
           items:
-            - name: İstemciden gelen komutları yerine getirme
-              href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: Parametre doğrulaması ekleme
-              href: how-to-custom-speech-commands-validations.md
-            - name: Onay ekleme
-              href: how-to-custom-speech-commands-confirmations.md
-            - name: Tek adımlık düzeltme ekleme
-              href: how-to-custom-speech-commands-one-step-correction.md
+            - name: Geliştirme
+              items:
+                - name: Basit komutlarla uygulama oluşturma
+                  href: how-to-custom-commands-create-application-with-simple-commands.md
+                - name: Komutlara parametre ekleme
+                  href: how-to-custom-commands-add-parameters-to-commands.md
+                - name: Komut parametrelerine yapılandırma ekleme
+                  href: how-to-custom-commands-add-parameter-configuration.md
+                - name: Etkileşim kuralları ekleme
+                  href: how-to-custom-commands-add-interaction-rules.md
+                - name: Konuşma yanıtları için dil oluşturma şablonları ekleme
+                  href: how-to-custom-commands-add-language-generation-templates.md
+            - name: Tümleştirme
+              items:
+                - name: Konuşma SDK’sını kullanarak bir istemci uygulamasıyla tümleştirme
+                  href: how-to-custom-commands-setup-speech-sdk.md
+                - name: Etkinliği istemci uygulamasına gönderme
+                  href: how-to-custom-commands-send-activity-to-client.md
+                - name: Web uç noktalarını ayarlama
+                  href: how-to-custom-commands-setup-web-endpoints.md
+            - name: Dağıtma
+              items:
+                - name: Azure DevOps ile Sürekli Dağıtım
+                  href: how-to-custom-commands-deploy-cicd.md
+            - name: Test etme
+              items:
+                - name: Özel Komutlar uygulamanızı test etme
+                  href: how-to-custom-commands-developer-flow-test.md
+            - name: Hata ayıklama
+              items:
+                - name: Uygulamayı yazarken hata ayıklama
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Uygulamayı çalıştırırken hata ayıklama
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: Başvurular
+              items:
+                - name: Özel Komutlar kavramları
+                  href: custom-commands-references.md
+        - name: Kaynaklar
+          items:
+            - name: Özel Komutlar Örnekleri (GitHub)
+              href: 'https://aka.ms/speech/cc-samples'
+            - name: Ses Yardımcıları Örnekleri (GitHub)
+              href: 'http://aka.ms/speech/va-samples'
+            - name: Ses yardımcıları hakkında SSS
+              href: faq-voice-assistants.md
+            - name: Konuşma SDK'sı
+              href: speech-sdk.md
     - name: Direct Line Speech
       items:
         - name: Direct Line Speech nedir?

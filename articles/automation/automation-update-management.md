@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 06/16/2020
+ms.date: 06/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 85b724cacc9c878f39de62e91e18713a1817933d
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 86116e4aa76b376331e25719d128fc733c3257ae
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817225"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316394"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -225,13 +225,20 @@ Sonraki tabloda, Linux güncelleştirmeleri için desteklenen sınıflandırmala
 |Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri     | Belirli bir sorun veya ürüne özgü, güvenlikle ilgili bir sorun için güncelleştirmeler.         |
 |Diğer güncelleştirmeler     | Doğası gereği önemli olmayan veya güvenlik güncelleştirmeleri olmayan diğer tüm güncelleştirmeler.        |
 
+>[!NOTE]
+>Linux makineleri için güncelleştirme sınıflandırması yalnızca desteklenen Azure genel bulut bölgelerinde kullanıldığında kullanılabilir. Aşağıdaki ulusal bulut bölgelerinde Güncelleştirme Yönetimi kullanırken:
+>* Azure ABD Kamu
+>* Çin 'de 21Vianet
+>
+> Linux güncelleştirmelerinin sınıflandırması yoktur ve bunlar **diğer güncelleştirmeler** kategorisi altında raporlanır. Güncelleştirme Yönetimi, desteklenen dağıtımlar tarafından yayınlanan verileri, özellikle de yayınlanan [oval](https://oval.mitre.org/) (açık güvenlik açığı ve değerlendirme dili) dosyalarını kullanır. Internet erişimi bu ulusal bulutlardan kısıtlandığı için Güncelleştirme Yönetimi bu dosyalara erişemez ve bu dosyaları tüketmez.
+
 Linux için Güncelleştirme Yönetimi, bulutta veri zenginleştirme nedeniyle değerlendirme verilerini görüntülerken buluttaki kritik güncelleştirmeler ve güvenlik güncelleştirmeleri arasında ayrım yapabilir. Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS bu bilgileri RTM sürümünde kullanılamaz. Aşağıdaki komut için güvenlik verilerini döndürecek şekilde yapılandırılmış CentOS makineleriniz varsa, Güncelleştirme Yönetimi sınıflandırmalara göre düzeltme eki uygulanabilir.
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-Şu anda yerel sınıflandırmanın etkinleştirilmesi için desteklenen bir yöntem yok-CentOS üzerinde veri kullanılabilirliği. Şu anda, bu özelliği kendi kendine etkinleştirmiş olabilecek müşterilere yalnızca en iyi çaba desteği sağlanır. 
+Şu anda yerel sınıflandırmanın etkinleştirilmesi için desteklenen bir yöntem yok-CentOS üzerinde veri kullanılabilirliği. Şu anda, bu özelliği kendi kendine etkinleştirmiş olabilecek müşterilere yalnızca en iyi çaba desteği sağlanır.
 
 Red Hat Enterprise sürüm 6 ' da güncelleştirmeleri sınıflandırmak için, yıum-güvenlik eklentisini yüklemeniz gerekir. Red Hat Enterprise Linux 7 ' de, eklenti zaten bir de en fazla bir parçasıdır ve herhangi bir şey yüklemeniz gerekmez. Daha fazla bilgi için aşağıdaki Red hat [Bilgi Bankası makalesine](https://access.redhat.com/solutions/10021)bakın.
 

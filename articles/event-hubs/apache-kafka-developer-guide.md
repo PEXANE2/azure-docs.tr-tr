@@ -1,19 +1,14 @@
 ---
 title: Event Hubs için Apache Kafka Geliştirici Kılavuzu
 description: Bu makalede, Kafka uygulamalarınızı Azure Event Hubs ile tümleştirmeyi anlatan makalelerin bağlantıları sağlanmaktadır.
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: b7486c251784b345351669bda6f0eb2309977728
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297469"
+ms.locfileid: "85314246"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure Event Hubs için Apache Kafka Geliştirici Kılavuzu
 Bu makale, Apache Kafka uygulamalarınızın Azure Event Hubs ile nasıl tümleştirileceğini betimleyen makalelere bağlantılar sağlar. 

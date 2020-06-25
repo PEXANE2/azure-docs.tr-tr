@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618032"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317238"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Bilişsel Arama-sık sorulan sorular (SSS)
 
@@ -65,7 +65,7 @@ Hayır, bu işlem desteklenmiyor. Arama her zaman tek bir dizine eklenir.
 
 ### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Kullanıcı kimliğine göre arama dizini erişimini kısıtlayabilirim miyim?
 
-Filtreyle [Güvenlik filtreleri uygulayabilirsiniz.](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) `search.in()` Filtre, arama sonuçlarını tanımlanan Kullanıcı grubu üyeliğine göre kırpmak için [Azure Active Directory (AAD) gibi kimlik yönetimi hizmetleri](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) ile iyi bir bileşim sağlar.
+Filtreyle [Güvenlik filtreleri](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) uygulayabilirsiniz `search.in()` . Filtre, arama sonuçlarını tanımlanan Kullanıcı grubu üyeliğine göre kırpmak için [Azure Active Directory (AAD) gibi kimlik yönetimi hizmetleri](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) ile iyi bir bileşim sağlar.
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Neden geçerli olduğunu bildiğiniz koşullarda hiç sıfır eşleşme var mı?
 
@@ -75,7 +75,7 @@ Ancak, joker karakter, benzer ve Regex sorguları, normal terim veya tümcecik s
 
 ### <a name="my-wildcard-searches-are-slow"></a>Joker karakter aramalarım yavaş.
 
-Önek, benzer ve Regex gibi çoğu joker karakter arama sorguları, arama dizininde eşleşen koşullara göre dahili olarak yeniden yazılır. Arama dizinini taramanın bu ek işlemesi gecikme süresine eklenir. Ayrıca, örneğin, birçok terim ile `a*` yeniden yazılması muhtemel büyük olasılıkla çok yavaş arama sorguları çok yavaş olabilir. Performanslı joker karakter aramaları için [özel bir çözümleyici](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)tanımlamayı düşünün.
+Önek, benzer ve Regex gibi çoğu joker karakter arama sorguları, arama dizininde eşleşen koşullara göre dahili olarak yeniden yazılır. Arama dizinini taramanın bu ek işlemesi gecikme süresine eklenir. Ayrıca, `a*` Örneğin, birçok terim ile yeniden yazılması muhtemel büyük olasılıkla çok yavaş arama sorguları çok yavaş olabilir. Performanslı joker karakter aramaları için [özel bir çözümleyici](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)tanımlamayı düşünün.
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Arama neden her isabet için bir sabit veya eşit puanı 1,0 olarak derecelendirmelidir?
 

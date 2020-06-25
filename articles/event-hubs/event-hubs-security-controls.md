@@ -1,18 +1,14 @@
 ---
 title: Azure Event Hubs için güvenlik denetimleri
 description: Bu makalede, Azure Event Hubs (ağ, kimlik, veri koruma vb.) değerlendirmesi için güvenlik denetimlerinin bir denetim listesi sunulmaktadır.
-services: event-hubs
-ms.service: event-hubs
-author: spelluru
 ms.topic: conceptual
-ms.date: 09/23/2019
-ms.author: spelluru
-ms.openlocfilehash: 0769e88eb72b5b347dd9ebf4b1634501ca54098e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: da20778f1e24372e445d635e675df6484905f195
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76309515"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315394"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Azure Event Hubs için güvenlik denetimleri
 
@@ -25,9 +21,9 @@ Bu makale, Azure Event Hubs yerleşik olarak bulunan güvenlik denetimlerini bel
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
 | Hizmet uç noktası desteği| Yes |  |  |
-| VNet ekleme desteği| Hayır | |  |
+| VNet ekleme desteği| No | |  |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Yes |  |  |
-| Zorlamalı tünel desteği| Hayır |  |  |
+| Zorlamalı tünel desteği| No |  |  |
 
 ## <a name="monitoring--logging"></a>& günlüğü izleme
 
@@ -58,7 +54,7 @@ Bu makale, Azure Event Hubs yerleşik olarak bulunan güvenlik denetimlerini bel
 
 | Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yes | |  |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet | |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

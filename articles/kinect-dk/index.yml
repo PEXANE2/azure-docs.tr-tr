@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Azure Kinect DK belgeleri
+summary: Azure Kinect DK, gelişmiş yapay zeka algılayıcılarıyla gelişmiş görüntü işleme ve konuşma modelleri sağlayan bir geliştirici setidir. Kinect, bir derinlik algılayıcısı, video kamerası olan uzamsal mikrofon dizisi ve birden çok moda, seçeneğe ve yazılım geliştirme setlerine (SDK) sahip hepsi bir arada küçük bir cihaz olarak yönlendirme algılayıcısı içerir.
+metadata:
+  title: Azure Kinect DK belgeleri
+  description: Azure Kinect DK, gelişmiş yapay zeka algılayıcılarıyla gelişmiş görüntü işleme ve konuşma modelleri sağlayan bir geliştirici setidir. Kinect, bir derinlik algılayıcısı, video kamerası olan uzamsal mikrofon dizisi ve birden çok moda, seçeneğe ve SDK’lara sahip hepsi bir arada küçük bir cihaz olarak yönlendirme algılayıcısı içerir.
+  ms.prod: kinect-dk
+  ms.topic: landing-page
+  author: tesych
+  ms.author: tesych
+  ms.date: 03/11/2020
+  ms.openlocfilehash: f1691507d75d6de630f3c5a48cd59c8cc22b5999
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "85277909"
+landingContent:
+- title: Azure Kinect DK hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Kinect DK nedir?
+      url: about-azure-kinect-dk.md
+  - linkListType: reference
+    links:
+    - text: Donanım belirtimi
+      url: hardware-specification.md
+    - text: Sistem gereksinimleri
+      url: system-requirements.md
+- title: başlarken
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Azure Kinect Algılayıcı SDK’sı
+      url: sensor-sdk-download.md
+    - text: Azure Kinect Gövde İzleme SDK’sı
+      url: body-sdk-download.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Kinect DK’yi kurma
+      url: set-up-azure-kinect-dk.md
+    - text: Algılayıcı akışlarının dosyaya kaydı
+      url: record-sensor-streams-file.md
+    - text: İlk Azure Kinect uygulamanızı oluşturma
+      url: build-first-app.md
+    - text: Gövde İzleme SDK’sını ayarlama
+      url: body-sdk-setup.md
+    - text: İlk gövde izleme uygulamanızı oluşturma
+      url: build-first-body-app.md
+- title: Algılayıcı SDK’sını kullanma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Cihazı bulma ve açma
+      url: find-then-open-device.md
+    - text: Görüntü verilerini alma
+      url: about-sensor-sdk.md
+    - text: Mikrofona erişme
+      url: access-mics.md
+    - text: Kayıt ve kayıttan yürütme
+      url: record-playback-api.md
+- title: Gövde izleme SDK’sını kullanma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Gövde izleme sonuçlarını alma
+      url: get-body-tracking-results.md
+    - text: Gövde çerçevesindeki verilere erişme
+      url: access-data-body-frame.md
+- title: Başvuru
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Algılayıcı SDK API’si
+      url: https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html
+    - text: Gövde izleme SDK API’si
+      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html
+    - text: Görüntü Hizmetleri
+      url: https://azure.microsoft.com/services/cognitive-services/directory/vision/
+    - text: Konuşma Hizmetleri
+      url: https://docs.microsoft.com/azure/cognitive-services/speech-service/

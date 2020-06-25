@@ -1,24 +1,14 @@
 ---
 title: Azure Relay-paylaşılan erişim Imzası yetkilendirmesi 'ne geçiş
 description: Azure Relay uygulamalarının Azure Active Directory Access Control Service kullanarak paylaşılan erişim Imzası yetkilendirmesini nasıl geçirebileceğinizi açıklar.
-services: service-bus-relay
-documentationcenter: ''
-author: clemensv
-manager: timlt
-editor: ''
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 59b9e734526c56016e2ddf59c2afb5b8f7b4ad09
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211781"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314301"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay-Azure Active Directory Access Control Service, paylaşılan erişim Imzası yetkilendirmesi 'ne geçirme
 
@@ -30,7 +20,7 @@ SAS kural adı ve kural anahtarına istemci erişimi vererek, SAS, başka bir hi
 
 ACS 'ye bağlı olan tüm mevcut uygulamalar için, müşterileri uygulamalarını SAS 'ye göre geçirmeye geçiririz.
 
-## <a name="migration-scenarios"></a> Geçiş senaryoları
+## <a name="migration-scenarios"></a>Geçiş senaryoları
 
 ACS ve geçiş, bir *İmzalama anahtarının*paylaşılan bilgisi aracılığıyla tümleşiktir. İmzalama anahtarı, bir ACS ad alanı tarafından, yetkilendirme belirteçlerini imzalamak için kullanılır ve belirtecin eşleştirilmiş ACS ad alanı tarafından verildiğini doğrulamak için Azure Relay tarafından kullanılır. ACS ad alanı hizmet kimliklerini ve yetkilendirme kurallarını barındırır. Yetkilendirme kuralları, hangi hizmet kimliğinin veya bir dış kimlik sağlayıcısı tarafından verilen belirtecin, en uzun ön ek eşleşme biçiminde geçiş ad alanı grafiğinin bir bölümüne hangi tür erişimi olduğunu tanımlar.
 

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok dü
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: dc420f5d453cf7d0bb19dd5db45ca2ae98be2902
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 64eaa3fd38a9f3de7e2032ef7ff7a18924353a1d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887742"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318445"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -813,6 +813,8 @@ Bu makalede, bir AKS kümesinde birden çok düğüm havuzu oluşturmayı ve yö
 
 Windows Server kapsayıcısı düğüm havuzlarını oluşturmak ve kullanmak için bkz. [AKS 'de Windows Server kapsayıcısı oluşturma][aks-windows].
 
+AKS uygulamalarınızın gecikmesini azaltmak için [yakınlık yerleştirme gruplarını][reduce-latency-ppg] kullanın.
+
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -850,3 +852,4 @@ Windows Server kapsayıcısı düğüm havuzlarını oluşturmak ve kullanmak i�
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips
+[reduce-latency-ppg]: reduce-latency-ppg.md

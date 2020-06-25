@@ -13,12 +13,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 451615ae5a642260a596ee93dc27f04cfa4b644e
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 893f449c6a8e6b41a79fe9d7c26db461b757e4a3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298166"
+ms.locfileid: "85317760"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Uygulamaları Microsoft kimlik doğrulama kitaplığı 'na geçirme (MSAL)
 
@@ -57,7 +57,8 @@ C: Evet. 30 Haziran 2020 ' den itibaren, artık ADAL 'e yeni özellikler ekleyec
 __S: Nasıl yaparım? uygulamalarımın ADAL kullandığını öğrensin mi?__  
 Y: uygulamanın kaynak koduna sahipseniz, uygulamanın hangi kitaplığı kullandığını ve MSAL 'e nasıl geçireceğinizi belirlemenize yardımcı olması için yukarıdaki geçiş kılavuzlarıyla başvurabilirsiniz. Uygulamanızın kaynak koduna erişiminiz yoksa, kayıtlı uygulamalarınızın ve her uygulamanın kullandığı kitaplığın bir listesini almak için [bir destek isteği açabilirsiniz](developer-support-help-options.md#open-a-support-request) .
 
-__S: var olan ADAL uygulamalarım çalışmaya devam edecek mi?__ Y: mevcut uygulamalarınız değişiklik yapılmadan çalışmaya devam edecektir. 30 Haziran 2022 ' den fazla tutmaya planlandıysanız, bunları güvende tutmak için MSAL olarak güncelleştirmeyi göz önünde bulundurmanız gerekir, ancak MSAL 'e geçiş, mevcut işlevselliği korumak için gerekli değildir.
+__S: var olan ADAL uygulamalarım çalışmaya devam edecek mi?__  
+Y: mevcut uygulamalarınız değişiklik yapılmadan çalışmaya devam edecektir. 30 Haziran 2022 ' den fazla tutmaya planlandıysanız, bunları güvende tutmak için MSAL olarak güncelleştirmeyi göz önünde bulundurmanız gerekir, ancak MSAL 'e geçiş, mevcut işlevselliği korumak için gerekli değildir.
 
 __S: neden MSAL 'e taşınmalıyım?__  
 Y: MSAL artımlı onay, çoklu oturum açma ve belirteç önbelleği yönetimi dahil olmak üzere ADAL içinde olmayan yeni özellikler içerir. Ayrıca, ADAL 'ın aksine MSAL, 30 Haziran 2022 ' den sonraki güvenlik düzeltme eklerini almaya devam edecektir. [Daha fazla bilgi edinin](msal-overview.md).

@@ -77,6 +77,8 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: SSS
           href: ./afds/waf-faq.md
+    - name: WAF ve Azure İlkesi
+      href: ./shared/waf-azure-policy.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Application Gateway

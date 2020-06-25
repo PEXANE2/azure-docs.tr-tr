@@ -1,25 +1,14 @@
 ---
 title: Azure Relay .NET Standard API 'Lerine genel bakış | Microsoft Docs
 description: Bu makalede, Azure Relay Karma Bağlantılar .NET Standard API 'sine genel bakış özetlenmektedir.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2018
-ms.author: spelluru
-ms.openlocfilehash: 18eaf2d2daae817107be6cdb0da9359bb5f9b4e9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 578d0fd2bbf8b9bb897a79e88399dee3711f5990
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211963"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316844"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay Karma Bağlantılar .NET Standard API 'ye Genel Bakış
 

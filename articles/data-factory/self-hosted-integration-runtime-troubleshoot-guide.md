@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/07/2019
+ms.date: 06/24/2020
 ms.author: abnarain
-ms.openlocfilehash: f27132eb21d245d0d26de910abba088ba3b8efde
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170985"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315141"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -22,7 +22,9 @@ Bu makalede Azure Data Factory içindeki şirket içinde barındırılan tümle�
 
 ## <a name="common-errors-and-resolutions"></a>Genel sorunlar ve çözümleri
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Hata iletisi: şirket içinde barındırılan tümleştirme çalışma zamanı bulut hizmetine bağlanamıyor
+### <a name="error-message"></a>Hata iletisi: 
+
+`Self-hosted integration runtime can't connect to cloud service`
 
 ![Şirket içinde barındırılan IR bağlantı sorunu](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
@@ -86,7 +88,8 @@ Beklenen yanıt aşağıda verilmiştir:
 > *    "Wu2.frontend.clouddatahub.net/" TLS/SSL sertifikasının proxy sunucusunda güvenilir olup olmadığını denetleyin.
 > *    Proxy üzerinde Active Directory kimlik doğrulaması kullanıyorsanız, hizmet hesabını "Integration Runtime hizmeti" olarak proxy 'ye erişebilen kullanıcı hesabı olarak değiştirin.
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Hata iletisi: şirket içinde barındırılan tümleştirme çalışma zamanı düğümü/mantıksal dolgu, etkin olmayan/"çalışıyor (sınırlı)" durumunda
+### <a name="error-message"></a>Hata iletisi: 
+`Self-hosted integration runtime node/ logical SHIR is in Inactive/ "Running (Limited)" state`
 
 #### <a name="cause"></a>Nedeni 
 
@@ -130,6 +133,146 @@ Bu davranış, düğümler birbirleriyle iletişim kuramıyorsa oluşur.
 1. Sorunu çözmek için aşağıdaki yöntemlerden birini veya her ikisini deneyin:
     - Tüm düğümleri aynı etki alanına yerleştirin.
     - Barındırılan tüm VM 'nin ana bilgisayar dosyalarındaki ana bilgisayar eşlemesine IP 'yi ekleyin.
+
+
+## <a name="troubleshoot-connectivity-issue"></a>Bağlantı sorununu giderme
+
+### <a name="troubleshoot-connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Şirket içinde barındırılan IR ve Data Factory veya şirket içinde barındırılan IR ve veri kaynağı/havuz arasında bağlantı sorununu giderme
+
+Ağ bağlantısı sorununu gidermek için, [Ağ izlemesini nasıl toplayacağınızı](#how-to-collect-netmon-trace), nasıl kullanacağınızı anlamanız gerektiğini ve NetMon 'u şirket IÇINDE barındırılan IR 'den gerçek zamanlı olarak uygulamadan önce [Netmon izlemesini nasıl analiz](#how-to-analyze-netmon-trace) edeceğinizi bilmeniz gerekir.
+
+Bazen, şirket içinde barındırılan IR ve Data Factory arasındaki bağlantı sorunlarını giderirken: 
+
+![HTTP isteği başarısız oldu](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
+
+Ya da şirket içinde barındırılan IR ve veri kaynağı/havuz arasında aşağıdaki hatalarla karşılaşacağız:
+
+**Hata iletisi:**
+`Copy failed with error:Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server: ‘IP address’`
+
+**Hata iletisi:**
+`One or more errors occurred. An error occurred while sending the request. The underlying connection was closed: An unexpected error occurred on a receive. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. An existing connection was forcibly closed by the remote host Activity ID.`
+
+**Çözüm:** Yukarıdaki sorunlar hakkında daha fazla bilgi için aşağıdaki yönergelere bakın:
+
+Netmon izlemesini alın ve daha fazla analiz edin.
+- İlk olarak, bir filtreyi sunucudan istemci tarafına herhangi bir sıfırlamayı görmek için ayarlayabilirsiniz. Aşağıdaki örnekte, sunucu tarafının Data Factory sunucu olduğunu görebilirsiniz.
+
+    ![Data Factory sunucusu](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
+
+- Sıfırlama paketini aldığınızda, TCP 'yi izleyerek konuşmayı bulabilirsiniz.
+
+    ![Konuşmayı bul](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
+
+- Daha sonra filtreyi kaldırarak istemci ve Data Factory sunucusu arasında dönüştürme yapabilirsiniz.
+
+    ![Konuşmayı al](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
+- Toplanan Netmon izlemesini temel alan TTL (TimeToLive) toplamının 64 olduğunu söyleyebilir. [Bu makalede](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) BAHSEDILEN **varsayılan TTL ve atlama sınırı değerlerine** göre (aşağıda ayıklanan gibi), paketin sıfırlamasına ve bağlantısının kesilmesine neden olan Linux sistem olduğunu görebiliriz.
+
+    Varsayılan TTL ve atlama sınırı değerleri, farklı işletim sistemleri arasında farklılık gösterir, aşağıda varsayılan değer verilmiştir:
+    - Linux Kernel 2,4 (Circa 2001): TCP, UDP ve ıCMP için 255
+    - Linux Kernel 4,10 (2015): TCP, UDP ve ıCMP için 64
+    - Windows XP (2001): TCP, UDP ve ıCMP için 128
+    - Windows 10 (2015): TCP, UDP ve ıCMP için 128
+    - Windows Server 2008: TCP, UDP ve ıCMP için 128
+    - Windows Server 2019 (2018): TCP, UDP ve ıCMP için 128
+    - macOS (2001): TCP, UDP ve ıCMP için 64
+
+    ![TTL 61](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
+    
+    Ancak, yukarıdaki örnekte 64 yerine 61 olarak gösterilir. Bu, ağ paketi hedefe ulaştığında yönlendiriciler/ağ cihazları gibi farklı atlamalar arasında geçmesi gerekir. Yönlendirici/ağ cihazlarının sayısı son TTL 'ye kesilecek.
+    Bu durumda, sıfırlama 'nın TTL 64 ile Linux sisteminden gönderileolabileceğini görebiliriz.
+
+- Sıfırlama cihazının nereden olabileceğini onaylamak için, kendinden konak IR 'den dördüncü atlamayı denetliyoruz.
+ 
+    *Linux sistem A 'dan TTL 64 ile ağ paketi-> B TTL 64 eksi 1 = 63-> C TTL 63, eksi 1 = 62-> TTL 62 eksi 1 = 61 kendinden konak IR*
+
+- İdeal durumda, TTL 128 olur, bu da Windows sisteminin Data Factory çalıştırdığı anlamına gelir. Aşağıdaki örnekte gösterildiği gibi, *128 – 107 = 21 atlamaları*, TCP 3 el sıkışması sırasında paketin Data Factory 21 ' den kendınden konak IR 'ye gönderildiği anlamına gelir.
+ 
+    ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
+
+    Bu nedenle, dördüncü atlamanın kendinden konak IR 'den ne olduğunu denetlemek için ağ ekibine ihtiyacınız vardır. Bu, Linux sistemi olarak güvenlik duvarıdır, bu nedenle cihazın TCP 3 el sıkışması sonrasında paketi sıfırlamalarında herhangi bir günlüğe bakın. Ancak, araştırmanın nerede olduğundan emin değilseniz, bu paketi hangi cihazın sıfırlayabileceğinizi ve bağlantısının kesilmesine neden olduğunu anlamak için sorunlu süre içinde kendinden konak IR ve güvenlik duvarından alınan Netmon izlemesini almayı deneyin. Bu durumda, ileride ilerlemek için ağ ekibinize de ihtiyacınız vardır.
+
+### <a name="how-to-collect-netmon-trace"></a>Netmon Trace nasıl toplanır
+
+1.  [Bu Web sitesinden](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)alınan Netmon araçlarını Indirin ve sunucu makinenize (sorunu yaşayan sunucu) ve istemciye (Şirket IÇINDE barındırılan IR gibi) yükleyin.
+
+2.  Örneğin, şu yolda bir klasör oluşturun: *D:\netmon*. Günlüğü kaydetmek için yeterli alana sahip olduğundan emin olun.
+
+3.  IP ve bağlantı noktası bilgilerini yakalayın. 
+    1. Bir komut Istemi başlatın.
+    2. Yönetici olarak Çalıştır ' ı seçin ve aşağıdaki komutu çalıştırın:
+       
+        ```
+        Ipconfig /all >D:\netmon\IP.txt
+        netstat -abno > D:\netmon\ServerNetstat.txt
+        ```
+
+4.  Netmon Trace 'i (ağ paketi) yakalayın.
+    1. Bir komut Istemi başlatın.
+    2. Yönetici olarak Çalıştır ' ı seçin ve aşağıdaki komutu çalıştırın:
+        
+        ```
+        cd C:\Program Files\Microsoft Network Monitor 3
+        ```
+    3. Ağ sayfasını yakalamak için üç farklı komut kullanabilirsiniz:
+        - Seçenek A: RoundRobin dosya komutu (Bu, yalnızca bir dosya yakalar ve eski günlüklerin üzerine yazacak).
+
+            ```
+            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
+            ```         
+        - Seçenek B: zincirleme dosya komutu (200 MB ulaşıldığında bu yeni dosya oluşturur).
+        
+            ```
+            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
+            ```          
+        - Seçenek C: zamanlanmış dosya komutu.
+
+            ```
+            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
+            ```  
+
+5.  Netmon Trace 'i yakalamayı durdurmak için **CTRL + C** tuşlarına basın.
+ 
+> [!NOTE]
+> İstemci makinesinde yalnızca Netmon izlemesini toplayabiliyorsanız, izlemeyi analiz etmenize yardımcı olması için sunucu IP adresini alın.
+
+### <a name="how-to-analyze-netmon-trace"></a>Netmon izlemesini çözümleme
+
+Telnet **8.8.8.8 888** ' i yukarıdaki Netmon izleme toplanmış olarak çalıştırdığınızda, izlemeyi aşağıda görmeniz gerekir:
+
+![Netmon izleme 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
+
+![Netmon Trace 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
+ 
+
+Bu, **888**numaralı bağlantı noktasına bağlı olarak **8.8.8.8** sunucu tarafında TCP bağlantısı yapamayacağı anlamına gelir; bu nedenle, burada iki **synyeniden aktarım** ek paketi görürsünüz. Kaynak **self-konak2** , ilk pakette **8.8.8.8** ile bağlantı kuramadı, çünkü bağlantı kurmak için devam edecektir.
+
+> [!TIP]
+> - **Yükleme filtresi**  ->  **Standart filtre**  ->  **adresleri**  ->  **IPv4 adresleri**' ne tıklayabilirsiniz.
+> - Giriş **IPv4. Address = = 8.8.8.8** as Filter ve **Uygula**' ya tıklayın. Bundan sonra, yalnızca yerel makineden hedef **8.8.8.8**iletişimi görürsünüz.
+
+![adresleri filtrele 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
+        
+![adresleri filtrele 2](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
+
+Aşağıda, iyi bir senaryonun nasıl görüneceğine ilişkin bir örnek gösterilmektedir. 
+
+- Telnet **8.8.8.8 53** herhangi bir sorun olmadan düzgün ÇALıŞıYORSA, TCP 3 el sıkışma olduğunu görebilir ve oturum, TCP 4 el sıkışma ile biter.
+
+    ![iyi senaryo örneği 1](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
+     
+    ![iyi senaryo örneği 2](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
+
+- Yukarıdaki TCP 3 el sıkışma temelinde, aşağıdaki iş akışı ' na bakabilirsiniz:
+
+    ![TCP 3 el sıkışma iş akışı](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
+ 
+- Oturumu tamamlaması için TCP 4 el sıkışması ve iş akışı aşağıdaki gibi gösterilir:
+
+    ![TCP 4 el sıkışma](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
+
+    ![TCP 4 el sıkışma iş akışı](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

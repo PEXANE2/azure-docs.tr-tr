@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0f0ed5a36af0890577fcc6fd097698c147c0d6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c4e2b4d046490500fceb7a1bee09559790fd433
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298115"
+ms.locfileid: "85317521"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -96,7 +96,7 @@ Dolandırıcıların engellemesini kaldırmak için gerekli adımları daha iyi 
 **Hizmet kategorisi:** Bağımsız bulutlar  
 **Ürün yeteneği:** Kullanıcı kimlik doğrulaması
  
-Haziran 'dan itibaren, [Azure Kamu Bulutu](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) uç noktasındaki (login.microsoftonline.us) OIDC keşif belgesi [Microsoft Identity platform ve OpenID Connect Protokolü](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) , doğru [National Cloud Graph](https://docs.microsoft.com/graph/deployments) uç noktasını ( https://graph.microsoft.us veya https://dod-graph.microsoft.us0) belirtilen kiracıya göre) döndürmeye başlayacaktır.  Şu anda hatalı grafik uç noktası (graph.microsoft.com) "msgraph_host" alanı sağlar.  
+Haziran 'dan itibaren, [Azure Kamu Bulutu](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) uç noktasındaki (login.microsoftonline.us) OIDC keşif belgesi [Microsoft Identity platform ve OpenID Connect Protokolü](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) , doğru [National Cloud Graph](https://docs.microsoft.com/graph/deployments) uç noktasını ( https://graph.microsoft.us veya https://dod-graph.microsoft.us) belirtilen kiracıya göre) döndürmeye başlayacaktır.  Şu anda hatalı grafik uç noktası (graph.microsoft.com) "msgraph_host" alanı sağlar.  
 
 Bu hata düzeltmesinin süresi yaklaşık 2 aydan fazla olacak şekilde alınacaktır.  
 

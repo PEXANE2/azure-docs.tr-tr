@@ -1,25 +1,14 @@
 ---
 title: Azure Relay SSS | Microsoft Docs
 description: Bu makalede Azure Relay hizmetiyle ilgili sık sorulan soruların bazılarına yanıtlar verilmektedir.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ac8967ab036929bf5363a79c9d7c60485bc98841
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211989"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317034"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay SSS
 
@@ -128,7 +117,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 Ortak özel durumlar ve gerçekleştirebileceğiniz önerilen eylemlerin bir açıklaması için bkz. [geçiş özel durumları][Relay exceptions].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Paylaşılan erişim imzası nedir ve imza oluşturmak için hangi dilleri kullanabilirim?
-Paylaşılan erişim Imzaları (SAS), SHA-256 güvenli karmaları veya URI 'Leri temel alan bir kimlik doğrulama mekanizmasıdır. Node. js, PHP, Python, Java, C ve C# ' de kendi imzalarınızı oluşturma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları ile Service Bus kimlik doğrulaması][Shared Access Signatures].
+Paylaşılan erişim Imzaları (SAS), SHA-256 güvenli karmaları veya URI 'Leri temel alan bir kimlik doğrulama mekanizmasıdır. Node.js, PHP, Python, Java, C ve C# ' de kendi imzalarınızı oluşturma hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları ile Service Bus kimlik doğrulaması][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Geçiş uç noktalarını beyaz listelemek mümkün mü?
 Evet. Geçiş istemcisi tam etki alanı adlarını kullanarak Azure Relay hizmetine bağlantı yapar. Müşteriler, `*.servicebus.windows.net` DNS beyaz listesini destekleyen güvenlik duvarları için bir giriş ekleyebilir.

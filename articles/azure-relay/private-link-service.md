@@ -1,18 +1,14 @@
 ---
 title: Azure Relay Azure özel bağlantı hizmeti ile tümleştirme
 description: Azure Relay Azure özel bağlantı hizmeti ile tümleştirme hakkında bilgi edinin
-services: service-bus-relay
-author: spelluru
-ms.author: spelluru
-ms.date: 05/13/2020
-ms.service: service-bus-relay
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 3c2426b65e16d8d6bcdd9733280c8f97f4aa79d6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657676"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317312"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay Azure özel bağlantısıyla tümleştirin (Önizleme)
 Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay, Azure Service Bus, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Daha fazla bilgi için bkz. [Azure özel bağlantısı (Önizleme) nedir?](../private-link/private-link-overview.md)
@@ -28,7 +24,7 @@ Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay,
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
 - Bir Azure Relay ad alanı.
@@ -43,7 +39,7 @@ Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünle
 ### <a name="steps"></a>Adımlar
 İçinde yeni bir Azure Relay ad alanı ve varlık oluşturmaya yönelik adım adım yönergeler için, bkz. [Azure Portal kullanarak Azure Relay ad alanı oluşturma](relay-create-namespace-portal.md).
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **geçişler**' i yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. **Ayarlar**altında **ağ** sekmesini seçin.
@@ -162,11 +158,11 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Description |
 |--|--|--|
 | Yok | Beklemede | Bağlantı el ile oluşturulur ve Azure Relay ad alanı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
-| Reddet | Reddedilen | Bağlantı, Azure Relay ad alanı sahibi tarafından reddedildi. |
+| Reddet | Reddedildi | Bağlantı, Azure Relay ad alanı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, Azure Relay ad alanı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma

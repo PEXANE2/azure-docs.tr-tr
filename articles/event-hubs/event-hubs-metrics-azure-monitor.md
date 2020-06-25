@@ -1,26 +1,14 @@
 ---
 title: Azure Izleyici 'de ölçümler-Azure Event Hubs | Microsoft Docs
 description: Bu makalede Azure Event Hubs izlemek için Azure Izleme 'nin nasıl kullanılacağı hakkında bilgi verilmektedir.
-services: event-hubs
-documentationcenter: .NET
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 09/18/2019
-ms.author: shvija
-ms.openlocfilehash: 96c346f4359740fda5638dfdbe5735c5bdfce8c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162659"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314593"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure İzleyici'deki Azure Event Hubs ölçümleri
 
@@ -62,7 +50,7 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
-| Ölçüm adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 | Gelen Istekler  | Belirli bir süre boyunca Azure Event Hubs hizmetine yapılan isteklerin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName |
 | Başarılı Istekler    | Azure Event Hubs hizmetine belirli bir süre boyunca yapılan başarılı istek sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName |
@@ -72,13 +60,13 @@ Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
 ## <a name="throughput-metrics"></a>Verimlilik ölçümleri
 
-| Ölçüm adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |Kısıtlanmış Istekler |İşleme birimi kullanımı aşıldığı için daraltılmış olan istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 
 ## <a name="message-metrics"></a>İleti ölçümleri
 
-| Ölçüm adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |Gelen Iletiler |Belirli bir süre boyunca Event Hubs gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Giden Iletiler |Belirli bir süre içinde Event Hubs alınan olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
@@ -87,7 +75,7 @@ Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |ActiveConnection sayısı |Bir ad alanındaki etkin bağlantıların yanı sıra bir varlık.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Açılan bağlantılar |Açık bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
@@ -97,7 +85,7 @@ Veri ve yönetim işlemleri isteklerinin sayısını sayar.
 
 Olay Hub 'larınız için yakalama özelliğini etkinleştirdiğinizde, Event Hubs yakalama ölçümlerini izleyebilirsiniz. Aşağıdaki ölçümler yakalama etkinken neleri izleyebileceğinize ilişkin öğeleri anlatmaktadır.
 
-| Ölçüm adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |Biriktirme listesi |Seçilen hedefe henüz yakalanamayan bayt sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |Yakalanan Iletiler |Belirli bir süre içinde seçilen hedefe yakalanan ileti veya olay sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
@@ -107,7 +95,7 @@ Olay Hub 'larınız için yakalama özelliğini etkinleştirdiğinizde, Event Hu
 
 Azure Event Hubs, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklemeyin, ölçümler ad alanı düzeyinde belirtilir. 
 
-| Ölçüm adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |EntityName| Event Hubs ad alanı altında Olay Hub 'ı varlıklarını destekler.|
 

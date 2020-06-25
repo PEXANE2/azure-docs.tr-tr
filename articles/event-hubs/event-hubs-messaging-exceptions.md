@@ -1,24 +1,14 @@
 ---
 title: Azure Event Hubs özel durumlar
 description: Bu makale, Azure Event Hubs mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: d7f420b353361bdd4185958a1f66bfb68fd5decc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125647"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314613"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs mesajlaşma özel durumları-.NET
 Bu bölümde, .NET Framework API 'Leri tarafından oluşturulan .NET özel durumları listelenmektedir. 
@@ -94,7 +84,7 @@ Event Hubs Olay Hub 'ı başına 20 Tüketici grubu sınırı vardır. Daha fazl
 
 Event Hubs için zaman aşımı, bağlantı dizesinin parçası olarak veya [Servicebusconnectionstringbuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder)aracılığıyla belirtilir. Hata iletisinin kendisi farklılık gösterebilir, ancak her zaman geçerli işlem için belirtilen zaman aşımı değerini içerir. 
 
-### <a name="common-causes"></a>Olası nedenler
+### <a name="common-causes"></a>Yaygın nedenler
 Bu hatanın iki yaygın nedeni vardır: yanlış yapılandırma veya geçici bir hizmet hatası.
 
 - **Yanlış yapılandırma** İşlem zaman aşımı, işlemsel koşul için çok küçük olabilir. İstemci SDK 'sında işlem zaman aşımı için varsayılan değer 60 saniyedir. Kodunuzun değerin çok küçük bir değere ayarlanmış olup olmadığını denetleyin. Ağ ve CPU kullanımının koşulu, belirli bir işlemin tamamlanma süresini etkileyebilir, bu nedenle işlem zaman aşımı küçük bir değere ayarlanamaz.

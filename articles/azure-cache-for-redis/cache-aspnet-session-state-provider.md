@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 1599fe76f3542717bebe63228d8c46f7e5de97c3
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457176"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316076"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure için Redis Cache için ASP.NET Oturum Durumu Sağlayıcısı
 
@@ -42,7 +42,7 @@ Redsıs oturum durumu sağlayıcısı NuGet paketinin StackExchange. Redsıs. St
 >
 >
 
-NuGet paketi, gerekli derleme başvurularını indirir ve ekler ve aşağıdaki bölümü Web. config dosyanıza ekler. Bu bölüm, ASP.NET uygulamanızın Redsıs oturum durumu sağlayıcısı için Azure önbelleğini kullanması için gereken yapılandırmayı içerir.
+NuGet paketi, gerekli derleme başvurularını indirir ve ekler ve aşağıdaki bölümü web.config dosyanıza ekler. Bu bölüm, ASP.NET uygulamanızın Redsıs oturum durumu sağlayıcısı için Azure önbelleğini kullanması için gereken yapılandırmayı içerir.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -94,9 +94,9 @@ Açıklamalı bölüm, her bir özniteliğe yönelik özniteliklerin ve örnek a
 * **Operationtimeoutınmilliseconds** – Bu ayar, StackExchange. redsıs Istemcisinde synctimeout ayarını geçersiz kılmanızı sağlar. Belirtilmemişse, varsayılan syncTimeout ayarı 1000 kullanılır. Daha fazla bilgi için bkz. [StackExchange. redsıs yapılandırma modeli](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **Redisserializertype** -Bu ayar redsıs 'e gönderilen oturum içeriğinin özel serileştirmesini belirtmenize olanak tanır. Belirtilen türün uygulanması `Microsoft.Web.Redis.ISerializer` ve ortak parametresiz oluşturucuyu bildirmesi gerekir. Varsayılan olarak `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` kullanılır.
 
-Bu özellikler hakkında daha fazla bilgi için bkz. [ASP.net for the The redsıs for](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)The The The The The The The The The The The The
+Bu özellikler hakkında daha fazla bilgi için bkz. [ASP.net for the The redsıs for](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)The The The The The The The The The The The The
 
-Web. config dosyanızın standart InProc oturum durumu sağlayıcısı bölümüne açıklama koymayı unutmayın.
+web.config standart InProc oturum durumu sağlayıcısı bölümüne açıklama koymayı unutmayın.
 
 ```xml
 <!-- <sessionState mode="InProc"

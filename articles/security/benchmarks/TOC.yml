@@ -37,6 +37,8 @@
       href: ../../api-management/security-baseline.md
     - name: Application Gateway güvenlik temeli
       href: ../../application-gateway/security-baseline.md
+    - name: Otomasyon güvenlik temeli
+      href: ../../automation/security-baseline.md
     - name: Redis için Azure Cache güvenlik temeli
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Yedekleme güvenlik temeli
@@ -51,24 +53,32 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Müşteri Kasası güvenlik temeli
       href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: Databox güvenlik temeli
+      href: ../../databox/security-baseline.md
     - name: Veri Gezgini güvenlik temeli
       href: /azure/data-explorer/security-baseline
     - name: Data Factory güvenlik temeli
-      href: /azure/data-factory/security-baseline
+      href: ../../data-factory/security-baseline.md
     - name: Databricks güvenlik temeli
       href: ../../azure-databricks/security-baseline.md
     - name: Event Hubs güvenlik temeli
       href: ../../event-hubs/security-baseline.md
+    - name: ExpressRoute güvenlik temeli
+      href: ../../expressroute/security-baseline.md
     - name: İşlevler güvenlik temeli
       href: ../../azure-functions/security-baseline.md
     - name: HDInsight güvenlik temeli
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault güvenlik temeli
       href: ../../key-vault/security-baseline.md
+    - name: Logic Apps güvenlik temeli
+      href: ../../logic-apps/security-baseline.md
     - name: MariaDB güvenlik temeli
       href: ../../mariadb/security-baseline.md
     - name: MySQL güvenlik temeli
       href: ../../mysql/security-baseline.md
+    - name: Ağ İzleyicisi güvenlik temeli
+      href: ../../network-watcher/security-baseline.md
     - name: PostgreSQL güvenlik temeli
       href: ../../postgresql/security-baseline.md
     - name: SQL Veritabanı güvenlik temeli

@@ -48,6 +48,10 @@
           href: tutorial-assess-physical.md
         - name: Fiziksel sunucuları geçirme
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: AWS VM’lerini değerlendirme ve geçirme
+      items:
+        - name: 'Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme'
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: İçeri aktarılan sunucuları geçiş için değerlendirme
       items:
         - name: İçeri aktarılan sunucuları geçiş için değerlendirme

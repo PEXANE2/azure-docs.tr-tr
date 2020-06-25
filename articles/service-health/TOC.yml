@@ -30,7 +30,9 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: OpsGenie’ye uyarılar gönderme
       href: service-health-alert-webhook-opsgenie.md
-    - name: Kaynak durumu olayları için uyarıları yapılandırma
+    - name: Azure portalı kullanarak kaynak sistem durumu uyarılarını yapılandırma
+      href: resource-health-alert-monitor-guide.md
+    - name: Resource Manager şablonlarını kullanarak kaynak sistem durumu uyarılarını yapılandırma
       href: resource-health-alert-arm-template-guide.md
 - name: Başvuru
   items:

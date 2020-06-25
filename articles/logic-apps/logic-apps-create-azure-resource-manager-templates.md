@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972642"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317779"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps için dağıtımı otomatikleştirmek üzere Azure Resource Manager şablonları oluşturun
 
@@ -45,7 +45,7 @@ Mantıksal uygulamanızı indirerek, mantıksal uygulamanızın tanımlarını v
 
 [Logicapptemplate modülüyle](https://github.com/jeffhollan/LogicAppTemplateCreator)Azure PowerShell kullanarak kaynak yöneticisi şablonlar oluşturabilirsiniz. Bu açık kaynaklı modül öncelikle mantıksal uygulamanızı ve mantıksal uygulamanın kullandığı tüm bağlantıları değerlendirir. Modül daha sonra dağıtım için gerekli parametrelerle şablon kaynakları oluşturur.
 
-Örneğin, bir Azure Service Bus kuyruğundan ileti alan ve bir Azure SQL veritabanına veri yükleyen bir mantıksal uygulamanız olduğunu varsayalım. Modül, tüm düzenleme mantığını korur ve SQL ve Service Bus bağlantı dizelerini parametreleştirir ve bu değerleri dağıtım gereksinimlerinize göre sağlayabilmeniz ve değiştirebilmenizi sağlar.
+Örneğin, bir Azure Service Bus kuyruğundan ileti alan ve Azure SQL veritabanı 'na veri yükleyen bir mantıksal uygulamanız olduğunu varsayalım. Modül, tüm düzenleme mantığını korur ve SQL ve Service Bus bağlantı dizelerini parametreleştirir ve bu değerleri dağıtım gereksinimlerinize göre sağlayabilmeniz ve değiştirebilmenizi sağlar.
 
 Bu örnekler Azure Resource Manager şablonları kullanarak Logic Apps oluşturmayı ve dağıtmayı, Azure DevOps 'da Azure Pipelines ve Azure PowerShell şunları gösterir:
 
@@ -76,7 +76,7 @@ Veya el ile yüklemek için, [mantıksal uygulama şablonu Oluşturucu](https://
 
 LogicAppTemplate modülünün herhangi bir Azure kiracı ve abonelik erişim belirteciyle çalışması için, Azure Resource Manager API 'sini çağıran basit bir komut satırı aracı olan [Azure Resource Manager istemci aracını](https://github.com/projectkudu/ARMClient)yükleyebilirsiniz.
 
-Bu araçla `Get-LogicAppTemplate` komutunu çalıştırdığınızda, komut önce ARMClient aracı aracılığıyla bir erişim belirteci alır, belirteci PowerShell betiğine yönelttir ve şablonu bir JSON dosyası olarak oluşturur. Araç hakkında daha fazla bilgi için [Azure Resource Manager istemci aracıyla ilgili bu makaleye](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)bakın.
+`Get-LogicAppTemplate`Bu araçla komutunu çalıştırdığınızda, komut önce ARMClient aracı aracılığıyla bir erişim belirteci alır, belirteci PowerShell betiğine yönelttir ve şablonu BIR JSON dosyası olarak oluşturur. Araç hakkında daha fazla bilgi için [Azure Resource Manager istemci aracıyla ilgili bu makaleye](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)bakın.
 
 ### <a name="generate-template-with-powershell"></a>PowerShell ile şablon oluşturma
 
@@ -86,7 +86,7 @@ LogicAppTemplate modülünü ve [Azure CLI](https://docs.microsoft.com/cli/azure
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-[Azure Resource Manager istemci aracından](https://github.com/projectkudu/ARMClient)bir belirteçte boru 'a yönelik öneriyi Izlemek için Azure abonelik kimliğiniz `$SubscriptionId` olduğu yerine bu komutu çalıştırın:
+[Azure Resource Manager istemci aracından](https://github.com/projectkudu/ARMClient)bir belirteçte boru 'a yönelik öneriyi Izlemek için `$SubscriptionId` Azure abonelik kimliğiniz olduğu yerine bu komutu çalıştırın:
 
 ```text
 PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
@@ -107,7 +107,7 @@ PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $f
 | Parametreler | Gerekli | Açıklama |
 |------------|----------|-------------|
 | TemplateFile | Yes | Şablon dosyanızın dosya yolu |
-| KeyVault | Hayır | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
+| KeyVault | No | Olası Anahtar Kasası değerlerini nasıl işleyeceğinizi açıklayan bir sabit listesi. Varsayılan değer: `None`. |
 ||||
 
 ## <a name="next-steps"></a>Sonraki adımlar

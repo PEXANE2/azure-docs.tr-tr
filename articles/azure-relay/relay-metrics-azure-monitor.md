@@ -2,24 +2,14 @@
 title: Azure Izleyici 'de ölçümleri Azure Relay | Microsoft Docs
 description: Bu makalede, Azure Relay durumunu izlemek için Azure Izleyici 'yi nasıl kullanabileceğiniz hakkında bilgi verilmektedir.
 services: service-bus-relay
-documentationcenter: .NET
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 159249e2c997e4c414127992b08a83b488281e46
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0383d99aaca487bb89ab198c42d0ce189ad20249
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211807"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314371"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Izleyici 'de Azure Relay ölçümleri 
 Azure Relay ölçümler, Azure aboneliğinizdeki kaynakların durumunu sağlar. Zengin bir ölçüm verileri kümesiyle, geçiş kaynaklarınızın genel durumunu yalnızca ad alanı düzeyinde değil, aynı zamanda varlık düzeyinde değerlendirebilirsiniz. Bu istatistikler Azure Relay durumunu izlemenize yardımcı olduklarından önemli olabilir. Ölçümler Ayrıca, Azure desteği ile iletişim kurmaya gerek kalmadan, kök neden sorunları gidermenize yardımcı olabilir.
@@ -58,7 +48,7 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 ## <a name="connection-metrics"></a>Bağlantı ölçümleri
 
-| Ölçüm adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 | ListenerConnections-başarılı  | Belirli bir süre içinde Azure Relay yapılan başarılı dinleyici bağlantısı sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 |ListenerConnections-ClientError |Belirli bir süre boyunca dinleyici bağlantılarında istemci hatalarının sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
@@ -75,7 +65,7 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 ## <a name="memory-usage-metrics"></a>Bellek kullanım ölçümleri
 
-| Ölçüm adı | Açıklama |
+| Ölçüm Adı | Description |
 | ------------------- | ----------------- |
 |BytesTransferred |Belirtilen bir süre içinde aktarılan bayt sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
 
@@ -83,7 +73,7 @@ Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrın
 
 Azure Relay, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklemeyin, ölçümler ad alanı düzeyinde belirtilir. 
 
-|Boyut adı|Açıklama|
+|Boyut adı|Description|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay ad alanı altındaki mesajlaşma varlıklarını destekler.|
 

@@ -1,25 +1,14 @@
 ---
 title: Azure Windows Communication Foundation (WCF) geçiş karma şirket içi/bulut uygulaması (.NET) | Microsoft Docs
 description: Azure Relay kullanarak, şirket içi WCF hizmetini bulutta bir Web uygulamasına nasıl kullanıma sunabileceğiniz hakkında bilgi edinin
-services: service-bus-relay
-documentationcenter: .net
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus-relay
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.author: spelluru
-ms.openlocfilehash: b86d535e4cbc275b3ee777d7c70146f7711c502c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211599"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314403"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Azure Relay kullanarak bir şirket içi WCF hizmetini bulutta bir Web uygulamasına sunun
 
@@ -197,7 +186,7 @@ Yükleme tamamlandıktan sonra, uygulamayı geliştirmeye başlamak için gereke
     }
     ```
 
-1. **Çözüm Gezgini**' de, **app. config** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın. Öğesinin alt tarafında `<system.ServiceModel>` , ancak hala içinde `<system.ServiceModel>` , aşağıdaki XML kodunu ekleyin. `yourServiceNamespace`' İ ad alanınız adıyla ve `yourKey` daha önce portaldan aldığınız SAS anahtarı ile değiştirdiğinizden emin olun:
+1. **Çözüm Gezgini**' de, dosyayı Visual Studio düzenleyicisinde açmak için **App.config** ' a çift tıklayın. Öğesinin alt tarafında `<system.ServiceModel>` , ancak hala içinde `<system.ServiceModel>` , aşağıdaki XML kodunu ekleyin. `yourServiceNamespace`' İ ad alanınız adıyla ve `yourKey` daha önce portaldan aldığınız SAS anahtarı ile değiştirdiğinizden emin olun:
 
     ```xml
     <system.serviceModel>
@@ -224,7 +213,7 @@ Yükleme tamamlandıktan sonra, uygulamayı geliştirmeye başlamak için gereke
     > [!NOTE]
     > Hatanın nedeni `transportClientEndpointBehavior` yalnızca bir uyarıdır ve bu örnek için engelleyici bir sorun değildir.
 
-1. Hala *app. config*içinde, öğesinde, `<appSettings>` bağlantı dizesi değerini portaldan daha önce edindiğiniz bağlantı dizesiyle değiştirin.
+1. Hala *App.config*öğesinde, `<appSettings>` bağlantı dizesi değerini portaldan daha önce edindiğiniz bağlantı dizesiyle değiştirin.
 
     ```xml
     <appSettings>

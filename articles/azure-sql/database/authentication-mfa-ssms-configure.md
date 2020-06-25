@@ -12,17 +12,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: fc8f79221a5923dea9f767e62566c716bbdcad50
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9548168e15522a8fb21cfd33c0cf475841a5d52b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344841"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318241"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio ve Azure AD için Multi-Factor Authentication 'ı yapılandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Bu makalede, Azure Active Directory (Azure AD) çok faktörlü kimlik doğrulamasının (MFA) SQL Server Management Studio (SSMS) ile nasıl kullanılacağı gösterilmektedir. SSMS veya SqlPackage. exe ' yi [Azure SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE ANALYTICS (eski adıyla Azure SQL veri AMBARı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)ile bağlarken Azure AD MFA kullanılabilir. Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı Ile evrensel kimlik doğrulaması, SQL yönetilen örneği ve Azure Synapse (MFA IÇIN SSMS desteği)](../database/authentication-mfa-ssms-overview.md).
+Bu makalede, Azure Active Directory (Azure AD) çok faktörlü kimlik doğrulamasının (MFA) SQL Server Management Studio (SSMS) ile nasıl kullanılacağı gösterilmektedir. Azure AD MFA, SSMS veya SqlPackage.exe [Azure SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md) ve [Azure SYNAPSE ANALYTICS (eski adıyla Azure SQL veri ambarı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)ile bağlantı kurulurken kullanılabilir. Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı Ile evrensel kimlik doğrulaması, SQL yönetilen örneği ve Azure Synapse (MFA IÇIN SSMS desteği)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
 > Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure Synapse (eski adıyla Azure SQL veri ambarı) veritabanları, bu makalenin geri kalanında veritabanı olarak ve sunucu, Azure SQL veritabanı ve Azure SYNAPSE için veritabanları barındıran [sunucuya](logical-servers.md) başvurmaktadır.
@@ -77,5 +77,5 @@ Doğrulama tamamlandığında SSMS, genellikle geçerli kimlik bilgilerini ve g�
 
 - Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı Ile evrensel kimlik doğrulaması, SQL yönetilen örneği ve Azure Synapse (MFA IÇIN SSMS desteği)](../database/authentication-mfa-ssms-overview.md).  
 - Veritabanınıza başkalarının erişmesine izin verme: [SQL veritabanı kimlik doğrulaması ve yetkilendirme: erişim verme](logins-create-manage.md)  
-- Başkalarının güvenlik duvarından bağlanmasına emin olun: [Azure Portal kullanarak sunucu düzeyinde güvenlik duvarı kuralı yapılandırma](/database/firewall-configure.md)  
+- Başkalarının güvenlik duvarından bağlanmasına emin olun: [Azure Portal kullanarak sunucu düzeyinde güvenlik duvarı kuralı yapılandırma](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)  
 - MFA kimlik doğrulamasıyla **Active Directory Universal** KULLANıRKEN, adal Izleme [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)ile başlayarak kullanılabilir. Varsayılan olarak, **Azure hizmetleri**, **Azure Cloud**, **adal çıkış penceresi izleme düzeyi**altındaki **Araçlar**, **Seçenekler** menüsünü ve ardından **Görünüm** menüsünde **çıktıyı** etkinleştirerek, adal izlemeyi açabilirsiniz. İzlemeler **Azure Active Directory seçenek**belirlendiğinde çıkış penceresinde kullanılabilir.

@@ -1,18 +1,14 @@
 ---
 title: Azure Relay için güvenlik denetimleri
 description: Bu makaleler, Azure Relay değerlendirmek için yerleşik güvenlik denetimlerinin bir listesini sağlar.
-services: service-bus-relay
-ms.service: service-bus-relay
-author: spelluru
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: f8165d994e998af4f15cd6aa2fd08b75191b8b64
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 64abee031bb20e2bdb10bf1cc3cd77e135713550
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211467"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316617"
 ---
 # <a name="security-controls-for-azure-relay"></a>Azure Relay için güvenlik denetimleri
 
@@ -24,8 +20,8 @@ Bu makalede, Azure Relay yerleşik olarak bulunan güvenlik denetimleri Belgelen
 
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
-| Hizmet uç noktası desteği| Hayır |  |   |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Hayır |  |   |
+| Hizmet uç noktası desteği| No |  |   |
+| Ağ yalıtımı ve güvenlik duvarı desteği| No |  |   |
 | Zorlamalı tünel desteği| Yok | Geçiş, TLS tünelidir  |   |
 
 ## <a name="monitoring--logging"></a>& günlüğü izleme
@@ -48,7 +44,7 @@ Bu makalede, Azure Relay yerleşik olarak bulunan güvenlik denetimleri Belgelen
 | Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
 | Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  Yok | Geçiş bir Web soketi ve verileri kalıcı yapmaz. |   |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Yalnızca Microsoft TLS sertifikalarını kullanır.  |   |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | No | Yalnızca Microsoft TLS sertifikalarını kullanır.  |   |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |   |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Yes | Hizmet için TLS gerekiyor. |   |
 | Şifrelenmiş API çağrıları| Yes | 'Dir. |

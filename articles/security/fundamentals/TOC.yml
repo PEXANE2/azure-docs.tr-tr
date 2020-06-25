@@ -58,6 +58,10 @@
       href: network-best-practices.md
     - name: DDOS Koruması
       href: ddos-best-practices.md
+    - name: Sarkan DNS ve alt etki alanı adı ele geçirme
+      href: subdomain-takeover.md
+    - name: DDoS Koruması güvenlik temeli
+      href: ddos-protection-security-baseline.md
     - name: Güvenli karma ağ mimarisi
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: IaaS güvenliği
@@ -94,6 +98,8 @@
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Müşteri Kasası
       href: customer-lockbox-overview.md
+    - name: Müşteri Kasası güvenlik temeli
+      href: customer-lockbox-security-baseline.md
 - name: Uygulama
   items:
     - name: PaaS
@@ -139,3 +145,5 @@
       href: event-support-ticket.md
     - name: Sızma testi
       href: pen-testing.md
+    - name: Azure etki alanları
+      href: azure-domains.md

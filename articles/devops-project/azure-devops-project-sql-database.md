@@ -8,19 +8,19 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 93b150d47f1703662ebda5b017e1824cf74b7ab0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233712"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318633"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Öğretici: Azure DevOps Starter kullanarak ASP.NET uygulamanızı ve Azure SQL veritabanı kodunuzu dağıtın
 
 Azure DevOps Starter, Azure 'da sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı oluşturmak için mevcut kodunuzu ve git deponuzu getirebileceğiniz veya örnek bir uygulama seçebileceğiniz basitleştirilmiş bir deneyim sunar. 
 
 DevOps Starter ayrıca:
-* Azure SQL veritabanı gibi Azure kaynaklarını otomatik olarak oluşturur.
+* Azure SQL veritabanı 'nda bir veritabanı gibi Azure kaynaklarını otomatik olarak oluşturur.
 * CI için derleme işlem hattı içeren Azure Pipelines serbest bırakma işlem hattı oluşturur ve yapılandırır.
 * CD için bir yayın işlem hattı oluşturur. 
 * İzleme için bir Azure Application Insights kaynağı oluşturur.
@@ -33,16 +33,16 @@ Bu öğreticide şunları yapacaksınız:
 > * CI işlem hattını inceleme
 > * CD işlem hattını inceleme
 > * Azure Repos değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın
-> * Azure SQL veritabanına bağlanma 
+> * Azure SQL veritabanı 'na bağlanma 
 > * Kaynakları temizleme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) aracılığıyla ücretsiz bir abonelik alabilirsiniz.
 
-## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Bir ASP.NET uygulaması ve Azure SQL veritabanı için DevOps Projeleri bir proje oluşturma
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-azure-sql-database"></a>ASP.NET uygulaması ve Azure SQL veritabanı için DevOps Projeleri bir proje oluşturma
 
-DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca Azure SQL veritabanı gibi tercih ettiğiniz Azure aboneliğindeki Azure kaynaklarını da oluşturur.
+DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca Azure SQL veritabanı gibi tercih ettiğiniz Azure aboneliğinde Azure kaynakları da oluşturur.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
@@ -140,11 +140,11 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 1. Yayın tamamlandıktan sonra, değişikliklerinizi doğrulamak için uygulamanızı yenileyin.
 
-## <a name="connect-to-the-azure-sql-database"></a>Azure SQL veritabanına bağlanma
+## <a name="connect-to-azure-sql-database"></a>Azure SQL veritabanı 'na bağlanma
 
-Azure SQL veritabanına bağlanmak için uygun izinlere sahip olmanız gerekir.
+Azure SQL veritabanı 'na bağlanmak için uygun izinlere sahip olmanız gerekir.
 
-1. DevOps başlangıç **panosunda SQL veritabanı ' nı seçerek SQL** veritabanının yönetim sayfasına gidin.
+1. DevOps başlangıç **panosunda SQL veritabanı ' nı seçerek SQL** veritabanı yönetim sayfasına gidin.
    
 1. **Sunucu güvenlik duvarını ayarla**' yı seçin ve **Istemci IP 'si Ekle**' yi seçin. 
 
@@ -158,7 +158,7 @@ Azure SQL veritabanına bağlanmak için uygun izinlere sahip olmanız gerekir.
 
     İsteğe bağlı olarak, SQL Server ve Azure SQL veritabanı 'na bağlanmak için SQL Server Management Studio veya Visual Studio gibi istemci araçlarını kullanabilirsiniz. Bağlanmak için **Sunucu adı** özelliğini kullanın.
 
-    DevOps Projeleri içinde projeyi başlangıçta yapılandırdığınızda veritabanı kullanıcı adını değiştirmediyseniz, Kullanıcı adınız e-posta adresinizin yerel kısmıdır. Örneğin, e-posta adresiniz *cetikan\@Microsoft.com*ise, Kullanıcı adınız *johntikan*olur.
+    DevOps Projeleri içinde projeyi başlangıçta yapılandırdığınızda veritabanı kullanıcı adını değiştirmediyseniz, Kullanıcı adınız e-posta adresinizin yerel kısmıdır. Örneğin, e-posta adresiniz *cetikan \@ Microsoft.com*ise, Kullanıcı adınız *johntikan*olur.
 
    > [!NOTE]
    > SQL oturum açma parolasını değiştirirseniz, sürüm ardışık düzen değişkeninde bulunan parolayı, CD işlem hattını [İnceleme](#examine-the-cd-pipeline) bölümünde açıklandığı gibi değiştirmeniz gerekir.
@@ -184,7 +184,7 @@ Ekibinizin gereksinimlerine uygun olarak bu derleme ve yayın işlem hatlarını
 > * CI işlem hattını inceleme
 > * CD işlem hattını inceleme
 > * Azure Repos değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın
-> * Azure SQL veritabanına bağlanma 
+> * Azure SQL veritabanı 'na bağlanma 
 > * Kaynakları temizleme
 
 CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:

@@ -91,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Windows güncelleştirmede takılı kalma
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Beklenmeyen yeniden başlatma veya hata
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: VM başlatma takıldı
           href: troubleshoot-vm-boot-configure-update.md
         - name: 'VM, Windows önyükleme yöneticisinden dolayı önyükleme yapamıyor'

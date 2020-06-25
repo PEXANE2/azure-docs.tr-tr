@@ -69,6 +69,8 @@
         - name: Düzeltilebilir bir ilke dağıtma
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Sentinel tümleştirmesi
+      href: ./how-to/manage-sentinel-workspaces.md
     - name: Müşteri eylemleri
       items:
         - name: Hizmet sağlayıcılarını görüntüleme ve yönetme

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: fc19f247a9a915bfafde68f652784c42285928ca
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 00b4306340e9888ea5a794c7940a021674060e05
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974934"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316131"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Redis için Azure Önbelleği SSS
 Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını öğrenin.
@@ -289,7 +289,7 @@ Redsıs sunucusu, TLS 'yi yerel olarak desteklemez, ancak Redsıs için Azure ö
 >
 >
 
-Bu gibi redsıs araçları `redis-cli` , TLS bağlantı noktasıyla çalışmaz, ancak `stunnel` [Redsıs önizleme sürümü blog gönderisine Ilişkin ASP.NET oturum durumu sağlayıcısında](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) sunulan YÖNERGELERI izleyerek, araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz.
+Bu gibi redsıs araçları `redis-cli` , TLS bağlantı noktasıyla çalışmaz, ancak `stunnel` [Redsıs önizleme sürümü blog gönderisine Ilişkin ASP.NET oturum durumu sağlayıcısında](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/) sunulan YÖNERGELERI izleyerek, araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz.
 
 Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nasıl çalıştırabilirim?](#cache-commands) bölümü.
 

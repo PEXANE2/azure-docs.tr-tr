@@ -1,22 +1,14 @@
 ---
 title: Karma Bağlantılar için tanılama günlükleri
 description: Bu makalede, Azure Relay için kullanılabilen tüm etkinlik ve tanılama günlüklerine genel bir bakış sunulmaktadır.
-services: service-bus-messaging
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.date: 04/27/2020
-ms.author: spelluru
-ms.openlocfilehash: b7ac5f1da70352115bf05df1a61120f46a85ec5d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211112"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314907"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Azure Relay Karma Bağlantılar için tanılama günlüklerini etkinleştir
 Azure Relay Karma Bağlantılar kullanmaya başladığınızda, dinleyiclarınızın ve gönderenlerden nasıl ve ne zaman açılacağını ve Karma Bağlantılar nasıl oluşturulduğunu ve iletilerin gönderileceğini izlemek isteyebilirsiniz. Bu makalede, Azure Relay hizmeti tarafından sağlanan etkinlik ve tanılama günlüklerine bir genel bakış sunulmaktadır. 
@@ -60,7 +52,7 @@ Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Günlükler, **tanılama 
 ## <a name="schema-for-hybrid-connections-events"></a>Karma Bağlantı olayları için şema
 Karma bağlantılar olay günlüğü JSON dizeleri aşağıdaki tabloda listelenen öğeleri içerir:
 
-| Name | Açıklama |
+| Name | Description |
 | ------- | ------- |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI |
 | Etkinlik kimliği | Belirtilen işlemi tanımlamak için kullanılan iç KIMLIK. "Trackingıd" olarak da bilinir |
@@ -88,7 +80,7 @@ JSON biçiminde örnek bir karma bağlantılar olayı aşağıda verilmiştir.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>Tanılama günlüklerinde yakalanan olaylar ve işlemler
 
-| İşlem | Açıklama | 
+| Çalışma | Description | 
 | --------- | ----------- | 
 | AuthorizationFailed | Yetkilendirme başarısız oldu.|
 | Invalidsastoken | SAS belirteci geçersiz. | 

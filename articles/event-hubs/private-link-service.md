@@ -1,18 +1,14 @@
 ---
 title: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirme
 description: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirmeyi öğrenin
-services: event-hubs
-author: spelluru
-ms.author: spelluru
-ms.date: 03/12/2020
-ms.service: event-hubs
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 1f07e6eb1a219db4f8eb94c54acaa3181e186da6
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670030"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312832"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure Event Hubs Azure özel bağlantısı ile tümleştirme
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
@@ -58,7 +54,7 @@ Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için
 ### <a name="steps"></a>Adımlar
 Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir özel bağlantı bağlantısı oluşturabilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. **Ayarlar**altında **ağ** sekmesini seçin.

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: 377085a98214d5fa92d08dd78d37635364295c46
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 81132f0a6f8b57d8798a9a5c4f0a2b9c1ac736d4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85269146"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317399"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Azure geçişi ile derleme geçiş planı
 
@@ -70,7 +70,7 @@ Sunucularınızı bulduktan sonra, birbirine bağlı sunucuları Azure 'a taşı
 
 Azure, bulut kapasitenizi zaman içinde yeniden boyutlandırmak için esneklik sağladığından, sunucularınıza ayrılan CPU ve bellek kaynaklarını iyileştirebilmeniz için bir fırsattır. İş yüklerinin performans geçmişini anlamak için önce tanımlanan grup üzerinde bir değerlendirme oluşturun; Bu işlem, Azure 'daki doğru sanal makine SKU 'Ları ve disk önerileri konusunda çok önemlidir.
 
-## <a name="asses-your-readiness-for-migration"></a>Geçiş hazırlığını
+## <a name="assess-your-readiness-for-migration"></a>Geçiş hazırlığını değerlendirin
 
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Azure için hazırlık ve uygunluk Analizi
 Azure VM değerlendirmesi raporunu dışarı aktarın ve VM 'nin Azure için hazır olduğunu anlamak için aşağıdaki hazırlık kategorilerine göre filtreleme yapın:

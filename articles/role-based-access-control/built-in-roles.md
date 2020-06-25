@@ -8,12 +8,12 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
-ms.openlocfilehash: 6e570c100a30f18a843f50cb8dc93572bb62d0f7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: b645945cc082b321e63e9d02e0bb6a799e82364d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080741"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317291"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
@@ -87,6 +87,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [AcrQuarantineWriter](#acrquarantinewriter) | ACR karantina veri yazıcısı | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Azure Kubernetes hizmet kümesi yönetici rolü](#azure-kubernetes-service-cluster-admin-role) | Küme Yöneticisi kimlik bilgisi eylemini listeleyin. | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Azure Kubernetes hizmet kümesi Kullanıcı rolü](#azure-kubernetes-service-cluster-user-role) | Küme kullanıcı kimlik bilgilerini Listele eylemi. | 4abbcc35-E782-43d8-92C5-2d3f1bd2253f |
+> | [Azure Kubernetes hizmet katılımcısı rolü](#azure-kubernetes-service-contributor-role) | Azure Kubernetes hizmet kümelerini okuma ve yazma erişimi verir | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | **Veritabanları** |  |  |
 > | [Cosmos DB hesabı okuyucu rolü](#cosmos-db-account-reader-role) | Azure Cosmos DB hesabı verilerini okuyabilir. Azure Cosmos DB hesaplarını yönetmek için [DocumentDB hesabı katılımcısı](#documentdb-account-contributor) konusuna bakın. | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB Işleci](#cosmos-db-operator) | Azure Cosmos DB hesaplarını yönetmenizi sağlar ancak içerdikleri verilere erişemez. Hesap anahtarlarına ve bağlantı dizelerine erişimi engeller. | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -107,7 +108,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [HDInsight etki alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi | 8d8d5a11-05d3-4bdav-A417-a08778121c7c |
 > | [Log Analytics Katkıda Bulunan](#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. | 92aaf0dad-9dadb-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Okuyucusu](#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **Blok Zinciri** |  |  |
+> | **Blok zinciri** |  |  |
 > | [Blok zinciri üye düğümü erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blok zinciri üye düğümlerine erişim sağlar | 31a002a1-acaf-453E-8a5b-297c9ca1ea24 |
 > | **AI + makine öğrenimi** |  |  |
 > | [Bilişsel hizmetler Katılımcısı](#cognitive-services-contributor) | Bilişsel hizmetler için anahtar oluşturma, okuma, güncelleştirme, silme ve yönetme olanağı sağlar. | 25fbc0a9-bd7c-42A3-aa1a-3b75d497ee68 |
@@ -3143,6 +3144,50 @@ Küme kullanıcı kimlik bilgilerini Listele eylemi. [Daha fazla bilgi edinin](.
 }
 ```
 
+### <a name="azure-kubernetes-service-contributor-role"></a>Azure Kubernetes hizmet katılımcısı rolü
+
+Azure Kubernetes hizmet kümelerini okuma ve yazma erişimi verir
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Eylemler** |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/Read | Yönetilen bir küme al |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/Managedclusters/Write | Yeni bir yönetilen küme oluşturur veya var olan bir kümeyi güncelleştirir |
+> | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Dağıtım oluşturma ve yönetme |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | *yok* |  |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants access to read and write Azure Kubernetes Service clusters",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+  "name": "ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.ContainerService/managedClusters/read",
+        "Microsoft.ContainerService/managedClusters/write",
+        "Microsoft.Resources/deployments/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Kubernetes Service Contributor Role",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ## <a name="databases"></a>Veritabanları
 
 
@@ -4265,7 +4310,7 @@ Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm 
 }
 ```
 
-## <a name="blockchain"></a>Blok Zinciri
+## <a name="blockchain"></a>Blok zinciri
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blok zinciri üye düğümü erişimi (Önizleme)

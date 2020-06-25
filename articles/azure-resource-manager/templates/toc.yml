@@ -14,6 +14,10 @@
       items:
         - name: AI+Machine Learning
           items:
+            - name: Bilişsel Arama
+              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Bilişsel Hizmetler
+              href: ../../cognitive-services/resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Veri Bilimi Sanal Makinesi
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Machine Learning
@@ -40,6 +44,8 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Synapse Analytics
+              href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blok zinciri
           items:
             - name: Blok zinciri
@@ -130,8 +136,6 @@
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
-            - name: Bilişsel Arama
-              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
               href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: Öğreticiler
@@ -293,6 +297,14 @@
           href: export-template-portal.md
         - name: Kaynak bulma
           href: view-resources.md
+    - name: Şablonları doğrulama
+      items:
+        - name: Durum çözümlemesi dağıtımı
+          href: template-deploy-what-if.md
+        - name: Test araç seti
+          href: test-toolkit.md
+        - name: Test çalışmaları
+          href: test-cases.md
     - name: Şablon dağıtma
       items:
         - name: Dağıtma - portal
@@ -309,8 +321,6 @@
           href: deploy-rest.md
         - name: GitHub’dan dağıtım
           href: deploy-to-azure-button.md
-        - name: Durum çözümlemesi dağıtımı
-          href: template-deploy-what-if.md
         - name: Hata durumunda yeniden dağıtma
           displayName: rollback
           href: rollback-on-error.md

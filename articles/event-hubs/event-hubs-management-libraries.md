@@ -1,21 +1,14 @@
 ---
 title: Yönetim kitaplıkları-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, .NET Event Hubs ad alanlarını ve varlıklarını .NET 'ten yönetmek için kullanabileceğiniz kitaplık hakkında bilgi sağlanır.
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: dotnet
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.date: 06/23/2020
+ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60746667"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312983"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs yönetim kitaplıkları
 
@@ -35,13 +28,13 @@ Event Hubs yönetim kitaplıklarını kullanmaya başlamak için Azure Active Di
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure CLI kullanma](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-Bu öğreticiler size, yönetim kitaplıkları `AppId` tarafından kimlik doğrulaması için kullanılan `TenantId`bir ( `ClientSecret` istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için **sahip** izinleriniz olmalıdır.
+Bu öğreticiler size, `AppId` `TenantId` `ClientSecret` Yönetim kitaplıkları tarafından kimlik doğrulaması için kullanılan BIR (istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için **sahip** izinleriniz olmalıdır.
 
 ## <a name="programming-pattern"></a>Programlama stili
 
 Herhangi bir Event Hubs kaynağını işlemek için kullanılan desenler ortak bir protokol izler:
 
-1. `Microsoft.IdentityModel.Clients.ActiveDirectory` KITAPLıĞı kullanarak AAD 'den bir belirteç alın.
+1. Kitaplığı kullanarak AAD 'den bir belirteç alın `Microsoft.IdentityModel.Clients.ActiveDirectory` .
     ```csharp
     var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -51,7 +44,7 @@ Herhangi bir Event Hubs kaynağını işlemek için kullanılan desenler ortak b
     );
     ```
 
-1. `EventHubManagementClient` Nesnesini oluşturun.
+1. Nesnesini oluşturun `EventHubManagementClient` .
     ```csharp
     var creds = new TokenCredentials(token);
     var ehClient = new EventHubManagementClient(creds)
@@ -60,7 +53,7 @@ Herhangi bir Event Hubs kaynağını işlemek için kullanılan desenler ortak b
     };
     ```
 
-1. `CreateOrUpdate` Parametreleri belirtilen değerlerinizle ayarlayın.
+1. `CreateOrUpdate`Parametreleri belirtilen değerlerinizle ayarlayın.
     ```csharp
     var ehParams = new EventHubCreateOrUpdateParameters()
     {

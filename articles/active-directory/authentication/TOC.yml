@@ -36,6 +36,8 @@
       items:
         - name: MFA nasıl çalışır?
           href: concept-mfa-howitworks.md
+        - name: İstemler ve oturum ömrü
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
         - name: Veri yerleşimi
           href: concept-mfa-data-residency.md
         - name: Lisanslar

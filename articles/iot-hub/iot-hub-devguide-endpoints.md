@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b7139c458d2cc2a59f4202e9cbc7d48433514f34
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: d054ff893e1bfdc0f48ede2e2aaa6050885ccc0a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792106"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314027"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Başvuru IoT Hub uç noktaları
 
@@ -38,11 +38,11 @@ Aşağıdaki listede uç noktalar açıklanmaktadır:
 
 * **Cihaz kimliği yönetimi**. Her IoT Hub 'ı, cihaz kimliklerini yönetmek için bir HTTPS REST uç noktası kümesi sunar (oluşturma, alma, güncelleştirme ve silme). Cihaz [kimlikleri](iot-hub-devguide-identity-registry.md) , cihaz kimlik doğrulaması ve erişim denetimi için kullanılır.
 
-* **Cihaz ikizi yönetimi**. Her IoT Hub 'ı, [cihaz](iot-hub-devguide-device-twins.md) ikimlerini sorgulamak ve güncelleştirmek için bir hizmet 'e YÖNELIK https REST uç noktası kümesi sunar (etiketleri ve özellikleri Güncelleştir).
+* **Cihaz ikizi yönetimi**. Her IoT Hub 'ı, [cihaz](iot-hub-devguide-device-twins.md) ikimlerini sorgulamak ve güncelleştirmek için bir hizmet 'e YÖNELIK https REST uç noktası kümesi sunar (etiketleri ve özellikleri Güncelleştir). 
 
 * **İş yönetimi**. Her IoT Hub 'ı, [işleri](iot-hub-devguide-jobs.md)sorgulamak ve yönetmek için hizmete YÖNELIK BIR https REST uç noktası kümesi sunar.
 
-* **Cihaz uç noktaları**. IoT Hub, kimlik kayıt defterindeki her bir cihaz için belirli uç noktaları kullanıma sunar:
+* **Cihaz uç noktaları**. Kimlik kayıt defterindeki her bir cihaz için IoT Hub bir uç nokta kümesi kullanıma sunar. Aksi belirtilmedikçe, bu uç noktaların [MQTT v 3.1.1](https://mqtt.org/), https 1,1 ve [AMQP 1,0](https://www.amqp.org/) protokolleri kullanılarak sunulmasıdır. AMQP ve MQTT, 443 numaralı bağlantı noktasında de [WebSockets](https://tools.ietf.org/html/rfc6455) üzerinden kullanılabilir.
 
   * *Cihazdan buluta Iletiler gönderme*. Cihaz, [cihazdan buluta iletileri göndermek](iot-hub-devguide-messages-d2c.md)için bu uç noktayı kullanır.
 
@@ -50,11 +50,9 @@ Aşağıdaki listede uç noktalar açıklanmaktadır:
 
   * *Karşıya dosya yükleme Işlemini başlatın*. Bir cihaz, [bir dosyayı karşıya yüklemek](iot-hub-devguide-file-upload.md)için IoT Hub 'Den bir Azure Storage SAS URI 'si almak üzere bu uç noktayı kullanır.
 
-  * *Device ikizi özelliklerini alın ve güncelleştirin*. Cihaz, bu uç noktayı [Device ikizi](iot-hub-devguide-device-twins.md)'in özelliklerine erişmek için kullanır.
+  * *Device ikizi özelliklerini alın ve güncelleştirin*. Cihaz, bu uç noktayı [Device ikizi](iot-hub-devguide-device-twins.md)'in özelliklerine erişmek için kullanır. HTTPS desteklenmez.
 
-  * *Doğrudan yöntem Istekleri alın*. Bir cihaz, [doğrudan metodun](iot-hub-devguide-direct-methods.md)isteklerini dinlemek için bu uç noktayı kullanır.
-
-    Bu uç noktalar [MQTT v 3.1.1](https://mqtt.org/), https 1,1 ve [AMQP 1,0](https://www.amqp.org/) protokolleri kullanılarak sunulur. AMQP ve MQTT, 443 numaralı bağlantı noktasında de [WebSockets](https://tools.ietf.org/html/rfc6455) üzerinden kullanılabilir.
+  * *Doğrudan yöntem Istekleri alın*. Bir cihaz, [doğrudan metodun](iot-hub-devguide-direct-methods.md)isteklerini dinlemek için bu uç noktayı kullanır. HTTPS desteklenmez.
 
 * **Hizmet uç noktaları**. Her IoT Hub 'ı, çözüm arka ucunun cihazlarınızla iletişim kurması için bir uç nokta kümesi sunar. Tek bir istisna ile bu uç noktalar yalnızca [AMQP](https://www.amqp.org/) ve AMQP Over WebSockets protokolleri kullanılarak sunulur. Doğrudan yöntem çağırma uç noktası, HTTPS protokolü üzerinden sunulur.
   
