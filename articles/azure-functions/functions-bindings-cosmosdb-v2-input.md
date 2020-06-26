@@ -1,19 +1,19 @@
 ---
-title: 2. x Işlevleri için Azure Cosmos DB girişi bağlama
+title: 2. x ve üzeri Işlevler için giriş bağlamasını Azure Cosmos DB
 description: Azure Işlevlerinde Azure Cosmos DB giriş bağlamayı kullanmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: bce234b0d2fee38f0644ae0bd961cdcd815b0bd2
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: b6daccb7ec4665842fd42a0938e3cbf18e2d7540
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667905"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374381"
 ---
-# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Azure Işlevleri için Azure Cosmos DB girişi bağlama 2. x
+# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için giriş bağlamasını Azure Cosmos DB
 
 Azure Cosmos DB giriş bağlaması SQL API'sini kullanarak bir veya daha fazla Azure Cosmos DB belgesini getirir ve işlevin giriş parametresine iletir. Belge kimliği veya sorgu parametreleri, işlevi çağıran tetikleyiciye göre belirlenebilir.
 
@@ -1428,7 +1428,7 @@ public class DocsFromRouteSqlQuery {
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `CosmosDB` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle**     | yok | Olarak ayarlanmalıdır `cosmosDB` .        |
 |**Görünüm**     | yok | Olarak ayarlanmalıdır `in` .         |

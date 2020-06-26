@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0aea258ac52e078c48255b39145193272aa65b25
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690590"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367980"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Lucidchart yapılandırma
 
@@ -44,12 +44,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * [Kurumsal plana](https://www.lucidchart.com/user/117598685#/subscriptionLevel) sahip bir Lucidchart kiracısı veya daha iyi etkindir.
 * Yönetici izinlerine sahip LucidChart içinde bir kullanıcı hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD Ile Lucidchart arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-lucidchart-to-support-provisioning-with-azure-ad"></a>2. Adım Lucidchart 'i Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
+## <a name="step-2-configure-lucidchart-to-support-provisioning-with-azure-ad"></a>Adım 2. Lucidchart 'i Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
 1. [Lucidchart Yönetici Konsolu 'nda](https://www.lucidchart.com)oturum açın. **Takım > uygulama tümleştirmesi**' ne gidin.
 
@@ -162,6 +162,7 @@ Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağı
 ## <a name="change-log"></a>Değişiklik günlüğü
 
 * 04/30/2020-kullanıcılar için kuruluş uzantısı özniteliği ve "CanEdit" özel özniteliği için destek eklendi.
+* 06/15/2020-kullanıcıların geçici olarak silinmesi etkinleştirildi ( [etkin](https://tools.ietf.org/html/rfc7643) özniteliği destekleme).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

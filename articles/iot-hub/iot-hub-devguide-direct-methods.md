@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 357fe6f04c79b5ad0cdf569e6716589007f6253b
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 189ebcc74461a57a4e91bf50262c377540cf885b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791971"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367844"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Doğrudan yöntemleri anlama ve IoT Hub'dan çağırma
 
@@ -33,7 +33,7 @@ Doğrudan Yöntemler bir istek-yanıt modelini izler ve sonuçlarının hemen on
 
 ## <a name="method-lifecycle"></a>Yöntem yaşam döngüsü
 
-Doğrudan yöntemler cihaza uygulanır ve doğru şekilde örneklendirilecek Yöntem yükünde sıfır veya daha fazla giriş gerektirebilir. Bir hizmete yönelik URI () aracılığıyla doğrudan bir yöntem çağırılır `{iot hub}/twins/{device id}/methods/` . Bir cihaz, cihaza özgü bir MQTT konusu ( `$iothub/methods/POST/{method name}/` ) veya AMQP bağlantıları aracılığıyla doğrudan Yöntemler alır ( `IoThub-methodname` ve `IoThub-status` uygulama özellikleri). 
+Doğrudan yöntemler cihaza uygulanır ve doğru şekilde örneklendirilecek Yöntem yükünde sıfır veya daha fazla giriş gerektirebilir. Bir hizmete yönelik URI () aracılığıyla doğrudan bir yöntem çağırılır `{iot hub}/twins/{device id}/methods/` . Bir cihaz, cihaza özgü bir MQTT konusu ( `$iothub/methods/POST/{method name}/` ) veya AMQP bağlantıları aracılığıyla doğrudan Yöntemler alır ( `IoThub-methodname` ve `IoThub-status` uygulama özellikleri).
 
 > [!NOTE]
 > Bir cihazda doğrudan yöntem çağırdığınızda, özellik adları ve değerleri, aşağıdaki küme dışında yalnızca US-ASCII yazdırılabilir alfasayısal içerebilir:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
@@ -41,7 +41,7 @@ Doğrudan yöntemler cihaza uygulanır ve doğru şekilde örneklendirilecek Yö
 
 Doğrudan Yöntemler zaman uyumludur ve zaman aşımı süresinden sonra başarılı ya da başarısız olur (varsayılan: 30 saniye, 5 ile 300 saniye arasında ayarlanabilir). Doğrudan Yöntemler, cihazın ve yalnızca cihaz çevrimiçi olduğunda ve komutları alacağından, bir cihazın çalışır durumda olmasını istediğiniz Etkileşimli senaryolarda faydalıdır. Örneğin, bir telefonda bir ışığı açmak. Bu senaryolarda, bulut hizmetinin sonuca en kısa sürede işlem yapabilmesi için anında başarı veya başarısızlık olduğunu görmek istersiniz. Cihaz, metodun bir sonucu olarak bazı ileti gövdesini döndürebilir, ancak bunu yapmak için gerekli değildir. Yöntem çağrılarında sıralamada veya herhangi bir eşzamanlılık semantiğinin garantisi yoktur.
 
-Doğrudan Yöntemler, yalnızca HTTPS, bulut tarafı ve HTTPS, MQTT, AMQP, WebSockets üzerinden MQTT ya da cihaz tarafındaki WebSockets üzerinden AMQP 'DIR.
+Doğrudan Yöntemler, yalnızca HTTPS 'den bulut tarafında ve MQTT, AMQP, WebSockets üzerinden MQTT veya AMQP 'den cihaz tarafındaki WebSockets üzerinden.
 
 Yöntem istekleri ve yanıtları için yük, 128 KB 'ye kadar bir JSON belgesidir.
 
@@ -80,12 +80,11 @@ Bir cihazdaki doğrudan yöntem etkinleştirmeleri, aşağıdaki öğelerden olu
 
 İstekte olarak belirtilen değer, `connectTimeoutInSeconds` IoT Hub hizmetin, bağlantısı kesilen bir cihazın çevrimiçi olması için beklemek zorunda olduğu doğrudan bir yöntemi çağırmada geçen süredir. Varsayılan değer 0 ' dır, yani doğrudan bir yöntemi çağırılmak için cihazların zaten çevrimiçi olması gerekir. İçin en büyük değer `connectTimeoutInSeconds` 300 saniyedir.
 
-
 #### <a name="example"></a>Örnek
 
 Bu örnek, bir Azure IoT Hub kayıtlı bir IoT cihazında doğrudan yöntem çağırma isteğini güvenli bir şekilde başlatabilmeniz için size izin verir.
 
-Başlamak için, SharedAccessSignature oluşturmak üzere [Azure CLI için Microsoft Azure IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) kullanın. 
+Başlamak için, SharedAccessSignature oluşturmak üzere [Azure CLI için Microsoft Azure IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) kullanın.
 
 ```bash
 az iot hub generate-sas-token -n <iothubName> -du <duration>

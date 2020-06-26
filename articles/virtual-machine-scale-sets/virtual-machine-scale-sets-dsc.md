@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: extensions
-ms.date: 04/05/2017
+ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4a972cab0559ff8a4bb22588c712515daa2fab16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6939339ce8d0f324fbd9e14ba31d23a6febcfcbe
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124850"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373906"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Azure DSC Uzantısı ile sanal makine ölçek kümelerini kullanma
 [Sanal Makine Ölçek Kümeleri](virtual-machine-scale-sets-overview.md) , [Azure istenen durum yapılandırması (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) uzantı işleyicisiyle birlikte kullanılabilir. Sanal Makine Ölçek Kümeleri, büyük miktarlarda sanal makine dağıtmak ve yönetmek için bir yol sağlar ve yükleme yanıtı olarak esnek ve out edebilir. DSC, üretim yazılımını çalıştırdığından VM 'Leri çevrimiçi olarak yapılandırmak için kullanılır.

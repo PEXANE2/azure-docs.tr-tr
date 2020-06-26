@@ -1,19 +1,19 @@
 ---
-title: 2. x Işlevleri için çıkış bağlamasını Azure Cosmos DB
+title: 2. x ve üzeri Işlevler için çıkış bağlamasını Azure Cosmos DB
 description: Azure Işlevlerinde Azure Cosmos DB çıkış bağlamayı kullanmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: b58924607f002af27d21343389404fcc66d1f35d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2228a9609b0e0325dc4e6f7ccbe88417c900b688
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561659"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374347"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Işlevleri için çıkış bağlamasını Azure Cosmos DB 2. x
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için çıkış bağlamasını Azure Cosmos DB
 
 Azure Cosmos DB çıkış bağlaması, SQL API 'sini kullanarak bir Azure Cosmos DB veritabanına yeni bir belge yazmanıza olanak sağlar.
 
@@ -125,7 +125,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 
 ### <a name="queue-trigger-write-one-doc"></a>Kuyruk tetikleyicisi, bir belge yaz
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Azure Cosmos db çıktı bağlamasını ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi, JSON 'yi aşağıdaki biçimde alan bir sıra için bir kuyruk girişi bağlaması kullanır:
+Aşağıdaki örnek, bir *function.js* dosyasında bir Azure Cosmos db çıktı bağlamayı ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi, JSON 'yi aşağıdaki biçimde alan bir sıra için bir kuyruk girişi bağlaması kullanır:
 
 ```json
 {
@@ -146,7 +146,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Azure Cosmos db çı
 }
 ```
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -205,7 +205,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-İşte function. JSON dosyası:
+Dosyada function.js:
 
 ```json
 {
@@ -250,7 +250,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Azure Cosmos db çıktı bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, JSON 'yi aşağıdaki biçimde alan bir sıra için bir kuyruk girişi bağlaması kullanır:
+Aşağıdaki örnek, bir *function.js* dosyasında bir Azure Cosmos DB çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi, JSON 'yi aşağıdaki biçimde alan bir sıra için bir kuyruk girişi bağlaması kullanır:
 
 ```json
 {
@@ -271,7 +271,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Azure Cosmos db çı
 }
 ```
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -307,7 +307,7 @@ JavaScript kodu aşağıda verilmiştir:
 
 Aşağıdaki örnek, bir işlevin çıktısı olarak bir Azure CosmosDB veritabanına nasıl bir belge yazılacağını gösterir.
 
-Bağlama tanımı, *türünün* olarak ayarlandığı *function. JSON* içinde tanımlanır `cosmosDB` .
+Bağlama tanımı, *türünün türü* olarak ayarlandığı *function.js* tanımlanmıştır `cosmosDB` .
 
 ```json
 {
@@ -562,11 +562,11 @@ Aşağıdaki örnek, bir çıkış parametresi aracılığıyla CosmosDB 'ye bir
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `CosmosDB` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `CosmosDB` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**tür**     | yok | Olarak ayarlanmalıdır `cosmosDB` .        |
+|**türüyle**     | yok | Olarak ayarlanmalıdır `cosmosDB` .        |
 |**Görünüm**     | yok | Olarak ayarlanmalıdır `out` .         |
 |**ada**     | yok | İşlevdeki belgeyi temsil eden bağlama parametresinin adı.  |
 |**Dosyasında** | **Dosyasında**|Belgenin oluşturulduğu koleksiyonu içeren veritabanı.     |
@@ -595,9 +595,9 @@ Varsayılan olarak, işlevinizdeki çıkış parametresine yazdığınızda, ver
 
 <a name="host-json"></a>
 
-## <a name="hostjson-settings"></a>Host. JSON ayarları
+## <a name="hostjson-settings"></a>Ayarlar üzerinde host.js
 
-Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. Sürüm 2. x içindeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürüm 2. x için Host. JSON başvurusu](functions-host-json.md).
+Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapılandırma ayarları açıklanmaktadır. 2. x sürümündeki genel yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure işlevleri sürüm 2. x için başvuruhost.js](functions-host-json.md).
 
 ```json
 {
@@ -614,7 +614,7 @@ Bu bölümde, sürüm 2. x içinde bu bağlama için kullanılabilen genel yapı
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve`Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|

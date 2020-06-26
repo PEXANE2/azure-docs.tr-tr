@@ -1,19 +1,19 @@
 ---
-title: 2. x Işlevleri için Azure Cosmos DB tetikleyicisi
+title: 2. x ve üzeri Işlevler için Azure Cosmos DB tetikleyicisi
 description: Azure Işlevlerinde Azure Cosmos DB tetikleyiciyi kullanmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e7a422e0637c6343e1b2757fdf9aee7375ee2c3f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561637"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374245"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Azure Cosmos DB tetikleyicisi
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Işlevleri 2. x ve üzeri için Azure Cosmos DB tetikleyicisi
 
 Azure Cosmos DB tetikleyicisi, bölümler arasında eklemeleri ve güncelleştirmeleri dinlemek için [Azure Cosmos DB değişiklik akışını](../cosmos-db/change-feed.md) kullanır. Değişiklik akışı, silme işlemleri değil, eklemeleri ve güncelleştirmeleri yayımlar.
 
@@ -57,9 +57,9 @@ namespace CosmosDBSamplesV2
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Cosmos DB tetikleyicisi bağlamasını ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi Cosmos DB kayıtları eklendiğinde veya değiştirildiğinde günlük iletilerini yazar.
+Aşağıdaki örnek, bir *function.js* bir Cosmos DB tetikleyici bağlamasını ve bağlamayı kullanan bir [C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi Cosmos DB kayıtları eklendiğinde veya değiştirildiğinde günlük iletilerini yazar.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -93,9 +93,9 @@ C# betik kodu aşağıda verilmiştir:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Cosmos DB tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi Cosmos DB kayıtları eklendiğinde veya değiştirildiğinde günlük iletilerini yazar.
+Aşağıdaki örnek, bir *function.js* bir Cosmos DB tetikleyici bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi Cosmos DB kayıtları eklendiğinde veya değiştirildiğinde günlük iletilerini yazar.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -122,9 +122,9 @@ JavaScript kodu aşağıda verilmiştir:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Cosmos DB tetikleyicisi bağlamasını ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlevi Cosmos DB kayıtları değiştirildiğinde günlük iletilerini yazar.
+Aşağıdaki örnek, bir *function.js* bir Cosmos DB tetikleyici bağlamasını ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. İşlevi Cosmos DB kayıtları değiştirildiğinde günlük iletilerini yazar.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 ```json
 {
@@ -215,9 +215,9 @@ Tüm bir örnek için bkz. [tetikleyici](#example).
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `CosmosDBTrigger` .
+Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `CosmosDBTrigger` .
 
-|function. JSON özelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `cosmosDBTrigger` . |
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Bu parametre, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |

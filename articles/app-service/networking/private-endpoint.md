@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 92fdb48f11d4d8753706d61fab9fd32e2b06f488
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: bc9cd134e4c83aea94ae0049158b3054c602cce8
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668194"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374432"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
@@ -57,7 +57,7 @@ Bir güvenlik perspektifinden:
 - Web uygulamanıza özel uç noktayı etkinleştirdiğinizde, Web uygulamasının [erişim kısıtlamaları][accessrestrictions] yapılandırması değerlendirilmez.
 - Hedefin Internet veya Azure hizmetleri olduğu tüm NSG kurallarını kaldırarak VNet 'ten veri kaybı riskini ortadan kaldırabilirsiniz. Bir Web uygulaması için özel bir uç nokta dağıttığınızda, bu belirli Web uygulamasına yalnızca özel uç nokta üzerinden ulaşabilirsiniz. Başka bir Web uygulamanız varsa, bu Web uygulaması için başka bir özel uç nokta dağıtmanız gerekir.
 
-Web uygulamanızın Web HTTP günlüklerinde istemci kaynak IP 'sini bulacaksınız. Bu, istemci IP özelliğini Web uygulamasına ileten TCP proxy protokolü kullanılarak uygulanır. Daha fazla bilgi için bkz. [TCP proxy v2 kullanarak bağlantı bilgilerini alma][tcpproxy].
+Web uygulamanızın Web HTTP günlüklerinde istemci kaynak IP 'sini bulacaksınız. Bu özellik, istemci IP özelliğini Web uygulamasına ileten TCP proxy protokolü kullanılarak uygulanır. Daha fazla bilgi için bkz. [TCP proxy v2 kullanarak bağlantı bilgilerini alma][tcpproxy].
 
 
   > [!div class="mx-imgBorder"]
@@ -65,12 +65,22 @@ Web uygulamanızın Web HTTP günlüklerinde istemci kaynak IP 'sini bulacaksın
 
 ## <a name="dns"></a>DNS
 
-Bu özellik önizlemede olduğundan, önizleme sırasında DNS girişini değiştirmedik. Özel DNS sunucunuzdaki DNS girişini yönetmeniz veya özel bölge Azure DNS kendiniz yapmanız gerekir.
+Varsayılan olarak, Özel uç nokta olmadan Web uygulamanızın genel adı kümeye kurallı bir addır.
+Örneğin, ad çözümlemesi şu şekilde olacaktır: mywebapp.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+
+Özel bir uç nokta dağıttığınızda, DNS girişini mywebapp.privatelink.azurewebsites.net kurallı adını gösterecek şekilde değiştiririz.
+Örneğin, ad çözümlemesi şu şekilde olacaktır: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+
+Özel bir DNS sunucunuz veya Azure DNS özel bölgeniz varsa, privatelink.azurewebsites.net adlı bir bölge belirlemeniz gerekir. Web uygulamanızın kaydını bir kayıt ve özel uç nokta IP 'si ile kaydedin.
+Örneğin, ad çözümlemesi şu şekilde olacaktır: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net A 10.10.10.8 
+
 Özel bir DNS adı kullanmanız gerekiyorsa, Web uygulamanıza özel adı eklemeniz gerekir. Önizleme sırasında, özel ad genel DNS çözümlemesi kullanılarak herhangi bir özel ad gibi doğrulanması gerekir. Daha fazla bilgi için bkz. [özel DNS doğrulaması][dnsvalidation].
 
 Kudu konsolunu veya kudu REST API (örneğin, Azure DevOps şirket içinde barındırılan aracılarla dağıtım) kullanmanız gerekiyorsa, Azure DNS özel bölgeniz veya özel DNS sunucunuzda iki kayıt oluşturmanız gerekir. 
 - PrivateEndpointIP yourwebappname.azurewebsites.net 
 - PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+
+Özel uç noktasını oluşturduğunuz sanal ağa bağlı privatelink.azurewebsites.net adlı bir özel bölgeniz varsa, bu iki kayıt otomatik olarak doldurulur.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -78,7 +88,7 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda, işlevi Azure Web portalında çalıştırmak veya yürütmek için doğrudan ağ erişiminizin olması gerekir veya bir HTTP 403 hatası alırsınız. Diğer bir deyişle, tarayıcınız Azure Web portalından işlevi yürütmek için özel uç noktaya ulaşabilmelidir. 
+Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda, işlevi Azure Web portalında çalıştırmak veya yürütmek için doğrudan ağ erişiminizin olması gerekir veya bir HTTP 403 hatası alırsınız. Diğer bir deyişle, tarayıcınızın Azure Web portalından işlevi yürütmek için özel uç noktaya erişebilmesi gerekir. 
 
 Önizleme sırasında, Özel uç noktanın arkasında yalnızca üretim yuvası sunulur, diğer yuvaların ortak uç nokta ile ulaşması gerekir.
 
@@ -86,7 +96,7 @@ Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Portal aracılığıyla Web uygulamanız için özel uç nokta dağıtmak için bkz. [Web uygulamasına özel olarak bağlanma][howtoguide]
+Portal aracılığıyla Web uygulamanız için özel uç nokta dağıtmak üzere, bkz. [Web uygulamasına özel olarak bağlanma][howtoguide]
 
 
 

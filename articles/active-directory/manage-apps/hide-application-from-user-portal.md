@@ -1,6 +1,6 @@
 ---
-title: Azure AD 'de kullanıcının deneyiminden bir uygulamayı gizleme
-description: Azure Active Directory erişim panellerinde veya Office 365 launchers 'da bir uygulamayı kullanıcının deneyiminden gizleme.
+title: Azure AD 'de bir kurumsal uygulamayı kullanıcının deneyiminden gizleme
+description: Azure Active Directory erişim panellerinde veya Office 365 launchers sürümünde kullanıcının deneyiminden bir kurumsal uygulamayı gizleme.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,14 +12,14 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e792298c68ed24fb8854c399f32e04e0deaefc0
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: d21ba14fba24c9b8e0b460e56b93d0e5212bfb27
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763338"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367708"
 ---
-# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory ' deki son kullanıcılardan uygulamaları gizleyin
+# <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory içindeki son kullanıcılardan kurumsal uygulamaları gizleyin
 
 Son kullanıcıların Uygulamaps panelinden veya Office 365 başlatıcısı 'ndan uygulama gizleme yönergeleri. Bir uygulama gizli olduğunda, kullanıcıların uygulama izinleri hala vardır. 
 
@@ -42,6 +42,9 @@ Uygulamaps panelinden ve Office 365 uygulama başlatıcısı 'ndan bir uygulamay
 7.  **Kullanıcılar Için görünebilir mi?** sorusu için **Hayır**'a tıklayın.
 8.  **Kaydet**’e tıklayın.
 
+> [!NOTE]
+> Bu yönergeler yalnızca kurumsal uygulamalar için geçerlidir.
+
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Azure AD PowerShell kullanarak bir uygulamayı gizleme
 
 Uygulamaps panelinden bir uygulamayı gizlemek için, HideApp etiketini uygulamanın hizmet sorumlusuna el ile ekleyebilirsiniz. Uygulamanın **Users olarak görünür mü?** özelliğini **Hayır**olarak ayarlamak Için aşağıdaki [azuread PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) komutlarını çalıştırın. 
@@ -62,10 +65,11 @@ Uygulamaps panelinden tüm Office 365 uygulamalarını gizlemek için aşağıda
 
 1.  [Azure Portal](https://portal.azure.com) , dizininiz için genel yönetici olarak oturum açın.
 2.  **Azure Active Directory**seçin.
-3.  **Kullanıcı ayarları**'nı seçin.
-4.  **Kurumsal uygulamalar**altında **son kullanıcıların uygulamalarını nasıl başlatıp görüntüleyebileceğini Yönet** ' e tıklayın.
-5.  **Kullanıcılar yalnızca office 365 portalında office 365 uygulamalarını görebilir**, **Evet**' e tıklayın.
-6.  **Kaydet**’e tıklayın.
+3.  **Kullanıcıları**seçin.
+4.  **Kullanıcı ayarları**'nı seçin.
+5.  **Kurumsal uygulamalar**altında **son kullanıcıların uygulamalarını nasıl başlatıp görüntüleyebileceğini Yönet** ' e tıklayın.
+6.  **Kullanıcılar yalnızca office 365 portalında office 365 uygulamalarını görebilir**, **Evet**' e tıklayın.
+7.  **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Tüm gruplarımı gör](../fundamentals/active-directory-groups-view-azure-portal.md)

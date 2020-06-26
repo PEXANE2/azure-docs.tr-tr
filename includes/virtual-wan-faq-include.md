@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7144cb18d19fd6be040b0a6ca4e8bb18498dfe6c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977935"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85365236"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -29,9 +29,34 @@ Her ağ geçidinin iki örneği vardır; bölünmüş durum, her bir ağ geçidi
 
 ### <a name="how-do-i-add-dns-servers-for-p2s-clients"></a>P2S istemcileri için DNS sunucuları Nasıl yaparım? eklensin mi?
 
-P2S istemcileri için DNS sunucuları eklemenin iki seçeneği vardır.
+P2S istemcileri için DNS sunucuları eklemenin iki seçeneği vardır. İlk yöntem, özel DNS sunucularını istemci yerine ağ geçidine eklediği için tercih edilir.
 
-1. Microsoft ile bir destek bileti açın ve bunları hub 'a DNS sunucularınızı ekleyin
+1. Özel DNS sunucularını eklemek için aşağıdaki PowerShell betiğini kullanın. Lütfen ortamınız için değerleri değiştirin.
+```
+// Define variables
+$rgName = "testRG1"
+$virtualHubName = "virtualHub1"
+$P2SvpnGatewayName = "testP2SVpnGateway1"
+$vpnClientAddressSpaces = 
+$vpnServerConfiguration1Name = "vpnServerConfig1"
+$vpnClientAddressSpaces = New-Object string[] 2
+$vpnClientAddressSpaces[0] = "192.168.2.0/24"
+$vpnClientAddressSpaces[1] = "192.168.3.0/24"
+$customDnsServers = New-Object string[] 2
+$customDnsServers[0] = "7.7.7.7"
+$customDnsServers[1] = "8.8.8.8"
+$virtualHub = $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+$vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $vpnServerConfiguration1Name
+
+// Specify custom dns servers for P2SVpnGateway VirtualHub while creating gateway
+createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgname -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers
+
+// Specify custom dns servers for P2SVpnGateway VirtualHub while updating existing gateway
+$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+$updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName  -CustomDnsServer $customDnsServers 
+
+// Re-generate Vpn profile either from PS/Portal for Vpn clients to have the specified dns servers
+```
 2. Ya da Windows 10 için Azure VPN istemcisini kullanıyorsanız, indirilen profil XML dosyasını değiştirebilir ve içeri aktarmadan önce ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** etiketleri ekleyebilirsiniz.
 
 ```
@@ -72,12 +97,19 @@ Sanal ağ geçidi VPN, 30 tünelle sınırlıdır. Bağlantılar için, büyük 
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Tercih edilen bir iş ortağı cihazını kullanmam gerekiyor mu?
 
-Hayır. IKEv2/IKEv1 IPsec desteğinin Azure gereksinimlerini karşılayan, VPN özellikli herhangi bir cihaz kullanabilirsiniz.
+Hayır. IKEv2/IKEv1 IPsec desteğinin Azure gereksinimlerini karşılayan, VPN özellikli herhangi bir cihaz kullanabilirsiniz. Sanal WAN Ayrıca, Azure sanal WAN bağlantısını otomatik hale getiren ve uygun ölçekte IPSec VPN bağlantıları ayarlamayı kolaylaştıran bir CPE iş ortağı çözümlerine sahiptir.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Sanal WAN iş ortakları Azure Virtual WAN ile bağlantıyı nasıl otomatik hale getirir?
 
 Yazılım tanımlı bağlantı çözümleri normalde dal cihazlarını yönetmek için bir denetleyici veya cihaz sağlama merkezi kullanır. Denetleyici, Azure Sanal WAN'a otomatik bağlantı sağlamak için Azure API'lerini kullanabilir. Otomasyon, şube bilgilerini karşıya yüklemeyi, Azure yapılandırmasını indirmeyi, Azure tünellerini Azure sanal hub 'lara ayarlamayı ve şube cihazını Azure sanal WAN 'a otomatik olarak kurmayı içerir. Yüzlerce dala sahipseniz, ekleme deneyiminin büyük ölçekli IPSec bağlantısı kurma, yapılandırma ve yönetme ihtiyacını ortadan oluşturduğundan, sanal WAN CPE Iş ortakları kullanarak bağlanmak kolaydır. Daha fazla bilgi için bkz. [sanal WAN iş ortağı Otomasyonu](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Kullandığım bir cihaz sanal WAN iş ortağı listesinde yoksa ne olur? Azure sanal WAN VPN 'e bağlanmak için kullanmaya devam edebilir miyim?
+
+Bu, cihaz IPSec IKEv1 veya Ikev2 'yi desteklediği sürece evet. Sanal WAN iş ortakları cihazdan Azure VPN uç noktalarına bağlantıyı otomatik hale getirir. Bu, ' dal bilgileri yüklemesi ', ' IPSec ve yapılandırma ' ve ' bağlantı ' gibi adımları otomatikleştirmeye yönelik bir ifade gerektirir. Cihazınız bir sanal WAN iş ortağı ekosisteminden olmadığından, Azure yapılandırmasını el ile alma ve cihazınızı IPSec bağlantısı kurmak üzere güncelleştirme konusunda ağır bir kaldırma yapmanız gerekir.
+
+### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>İlk iş ortağı listenizde yer almayan yeni iş ortakları nasıl eklenir?
+
+Tüm sanal WAN API 'Leri açık API. Teknik bir bilimme değerlendirmek için belgeler [sanal WAN iş ortağı Otomasyonu](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) ' na gidebilirsiniz. İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır. Şirket, daha önce sağladığı Otomasyon yönergelerine bağlı olarak, kendi CPE cihazları için Otomasyon işini tamamladıktan sonra, azurevirtualwan@microsoft.com [iş ortakları aracılığıyla burada bağlantı]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners)altına almak için öğesine ulaşabilirsiniz. Belirli bir şirket çözümünün sanal bir WAN iş ortağı olarak listelenmesini sağlayan bir müşteriyseniz, lütfen şirketinin adresine bir e-posta göndererek sanal WAN ile iletişim kurun azurevirtualwan@microsoft.com .
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>SD-WAN cihazlarını sanal WAN 'ı destekleme
 
@@ -132,14 +164,6 @@ Evet. Bkz. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-
 * ExpressRoute bağlantı hattı bir sanal hub 'a bağlanırken ExpressRoute Gateway 'e sahipseniz, ölçek birimi fiyatı için ödeme yaparsınız. ER 'daki her ölçek birimi 2 GB/sn 'dir ve her bağlantı birimi VPN bağlantı birimiyle aynı hızda ücretlendirilir.
 
 * Hub 'a bağlı olan sanal ağlarınız varsa, bağlı olan VNET 'lerdeki eşleme ücretleri hala geçerlidir. 
-
-### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>İlk iş ortağı listenizde yer almayan yeni iş ortakları nasıl eklenir?
-
-Tüm sanal WAN API 'Leri açık API. Teknik bir bilimme değerlendirmek için belgelere gidebilirsiniz. Sorunuz varsa, adresine bir e-posta gönderin azurevirtualwan@microsoft.com . İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır.
-
-### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Kullandığım bir cihaz sanal WAN iş ortağı listesinde yoksa ne olur? Azure sanal WAN VPN 'e bağlanmak için kullanmaya devam edebilir miyim?
-
-Bu, cihaz IPSec IKEv1 veya Ikev2 'yi desteklediği sürece evet. Sanal WAN iş ortakları cihazdan Azure VPN uç noktalarına bağlantıyı otomatik hale getirir. Bu, ' dal bilgileri yüklemesi ', ' IPSec ve yapılandırma ' ve ' bağlantı ' gibi adımları otomatikleştirmeye yönelik bir ifade gerektirir. Cihazınız bir sanal WAN iş ortağı ekosisteminden olmadığından, Azure yapılandırmasını el ile alma ve cihazınızı IPSec bağlantısı kurmak üzere güncelleştirme konusunda ağır bir kaldırma yapmanız gerekir.
 
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Azure Sanal WAN’ı bir Resource Manager şablonu ile yapılandırmak mümkün mü?
 

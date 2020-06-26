@@ -1,15 +1,14 @@
 ---
 title: Azure Backup kurtarma hizmetleri kasalarını taşıma
 description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma yönergeleri.
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 93c3f2db6500023755796d50e71d44a427a2ce82
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598003"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368235"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -37,7 +36,11 @@ Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin 
 - Bir sanal makineyi yönetilen disklere taşımak için, bu [makaleye](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)bakın.
 - Klasik model aracılığıyla dağıtılan kaynakları taşımaya yönelik seçenekler, kaynakları bir abonelik içinde veya yeni bir aboneliğe taşıdığınıza bağlı olarak farklılık gösterir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)bakın.
 - Kasa için tanımlanan yedekleme ilkeleri, kasalardan abonelikler arasında veya yeni bir kaynak grubuna taşındıktan sonra tutulur.
-- Bir kasayı yalnızca Azure sanal makineleri kasadaki tek yedekleme öğeleri ise taşıyabilirsiniz.
+- Yalnızca aşağıdaki yedekleme öğesi türlerinden herhangi birini içeren bir kasayı taşıyabilirsiniz. Aşağıda listelenmeyen türlerin yedekleme öğelerinin durdurulması ve verilerin kasadan taşınmadan önce kalıcı olarak silinmesi gerekir.
+  - Azure Sanal Makineler
+  - Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı
+  - Microsoft Azure Backup sunucusu (MABS)
+  - Data Protection Manager (DPM)
 - VM yedekleme verilerini içeren bir kasayı abonelikler arasında taşırsanız, sanal makinelerinizi aynı aboneliğe taşımanız ve yedeklemeleri sürdürmek için aynı hedef VM kaynak grubu adını (eski abonelikte olduğu gibi) kullanmanız gerekir.
 
 > [!NOTE]
@@ -108,7 +111,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
 
 ## <a name="use-powershell-to-move-recovery-services-vault"></a>PowerShell kullanarak kurtarma hizmetleri kasasını taşıma
 
-Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için `Move-AzureRMResource` cmdlet 'ini kullanın. `Move-AzureRMResource`Kaynak adı ve kaynak türü gerektirir. `Get-AzureRmRecoveryServicesVault` Cmdlet 'ten her ikisini de alabilirsiniz.
+Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için `Move-AzureRMResource` cmdlet 'ini kullanın. `Move-AzureRMResource`Kaynak adı ve kaynak türü gerektirir. Cmdlet 'ten her ikisini de alabilirsiniz `Get-AzureRmRecoveryServicesVault` .
 
 ```powershell
 $destinationRG = "<destinationResourceGroupName>"

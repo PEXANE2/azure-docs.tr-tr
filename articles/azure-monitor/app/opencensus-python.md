@@ -7,12 +7,12 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 04581826ab6b05333e910a162c7a0ca9566ec334
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c6b84b25ae85d20ccd7872daf16014e5bed6934b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079110"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374160"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
 
@@ -37,7 +37,7 @@ Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla, Py
 
 1. Bir yapılandırma kutusu görünür. Giriş alanlarını doldurun için aşağıdaki tabloyu kullanın.
 
-   | Ayar        | Değer           | Description  |
+   | Ayar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
    | **Adı**      | Genel benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
    | **Kaynak grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı |
@@ -251,9 +251,9 @@ OpenCensus 'de örnekleme hakkında bilgi edinmek için, [opencensus 'de örnekl
 
 4. Dışarı Aktarıcı, ölçüm verilerini Azure Izleyici 'ye sabit bir aralıkla gönderir. Varsayılan değer 15 saniyedir. Tek bir ölçümü izliyoruz, bu nedenle içerdiği değer ve zaman damgasıyla birlikte bu ölçüm verileri her aralığa gönderilir. Verileri altında bulabilirsiniz `customMetrics` .
 
-#### <a name="standard-metrics"></a>Standart ölçümler
+#### <a name="performance-counters"></a>Performans sayaçları
 
-Varsayılan olarak, ölçüm Dışarı Aktarıcı Azure Izleyici 'ye bir dizi standart ölçüm gönderir. Bunu, `enable_standard_metrics` `False` ölçüm verme programı oluşturucusunda bayrağını olarak ayarlayarak devre dışı bırakabilirsiniz.
+Varsayılan olarak, ölçüm Dışarı Aktarıcı Azure Izleyici 'ye bir dizi performans sayacı gönderir. Bunu, `enable_standard_metrics` `False` ölçüm verme programı oluşturucusunda bayrağını olarak ayarlayarak devre dışı bırakabilirsiniz.
 
 ```python
 ...
@@ -262,17 +262,16 @@ exporter = metrics_exporter.new_metrics_exporter(
   connection_string='InstrumentationKey=<your-instrumentation-key-here>')
 ...
 ```
-Şu anda gönderilen standart ölçümlerin bir listesi aşağıda verilmiştir:
+Şu anda gönderilen performans sayaçlarının listesi aşağıda verilmiştir:
 
 - Kullanılabilir bellek (bayt)
 - CPU Işlemci zamanı (yüzde)
 - Gelen Istek oranı (saniye başına)
 - Gelen Istek ortalama yürütme süresi (milisaniye)
-- Giden Istek hızı (saniye başına)
 - İşlem CPU kullanımı (yüzde)
 - İşlem özel baytları (bayt)
 
-Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Gelen istek oranı altında olur `customMetrics` . Daha fazla bilgi için bkz. [performans sayaçları](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
+Bu ölçümleri ' de görebilmeniz gerekir `performanceCounters` . Daha fazla bilgi için bkz. [performans sayaçları](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
 
 #### <a name="modify-telemetry"></a>Telemetriyi değiştirme
 

@@ -3,14 +3,16 @@ title: Azure Kubernetes hizmetinde Azure AD kullanma
 description: Azure Kubernetes hizmetinde (AKS) Azure AD 'yi nasıl kullanacağınızı öğrenin
 services: container-service
 manager: gwallace
+author: mlearned
 ms.topic: article
-ms.date: 06/04/2020
-ms.openlocfilehash: 8d446d82550a6bc790d162ee944b0753979b6546
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.date: 06/25/2020
+ms.author: mlearned
+ms.openlocfilehash: 280637be417d904de6dbb7ae2e2647026da6c838
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782679"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374551"
 ---
 # <a name="integrate-aks-managed-azure-ad-preview"></a>AKS tarafından yönetilen Azure AD 'yi tümleştirin (Önizleme)
 
@@ -62,9 +64,6 @@ kubectl version --client
 ```
 
 Diğer işletim sistemleri için [Bu yönergeleri](https://kubernetes.io/docs/tasks/tools/install-kubectl/) kullanın.
-
-> [!CAUTION]
-> Bir aboneliği bir abonelik üzerinde kaydettikten sonra, şu anda bu özelliğin kaydını silemezsiniz. Bazı Önizleme özelliklerini etkinleştirdiğinizde, varsayılanlar daha sonra abonelikte oluşturulan tüm AKS kümeleri için kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Bunun yerine, Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
 
 ```azurecli-interactive
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
@@ -190,7 +189,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 
 ## <a name="non-interactive-login-with-kubelogin"></a>Kubelogin ile etkileşimli olmayan oturum açma
 
-Şu anda kubectl ile kullanılamayan sürekli tümleştirme işlem hatları gibi etkileşimli olmayan bazı senaryolar vardır. [Kubelogin](https://github.com/Azure/kubelogin) ' i etkileşimli olmayan senaryolarda kümeye erişmek için kullanabilirsiniz.
+Şu anda kubectl ile kullanılamayan sürekli tümleştirme işlem hatları gibi etkileşimli olmayan bazı senaryolar vardır. [Kubelogin](https://github.com/Azure/kubelogin) ' i etkileşimli olmayan hizmet sorumlusu oturum açma bilgileriyle kümeye erişmek için kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

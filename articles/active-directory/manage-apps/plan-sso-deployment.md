@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
-ms.author: kenwith
+ms.date: 06/10/2020
+ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2a2691935cb38c20e20b6a776acfe70cc458a6ed
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763083"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374465"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -195,8 +195,6 @@ Sertifikalarınızı yönetmenin iki yolu vardır.
 
    İsteğe bağlı olarak, [Microsoft 'un rehberlik belgelerini](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)kullanarak kurumsal uygulama için SAML belirtecinde verilen talepleri kullanabilirsiniz. Bu uygulamanın, uygulamanız için SAML yanıtında almak istediğiniz şekilde eşlendiğinden emin olun. Yapılandırma sırasında sorunlarla karşılaşırsanız, [SSO tümleştirmesinde hata ayıklama ile](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)ilgili kılavuzumuzu kullanın.
 
-Özel uygulama ekleme bir Azure AD Premium P1 veya P2 lisansları özelliğidir.
-
 ### <a name="provide-sso-change-communications-to-end-users"></a>Son kullanıcılara SSO değişiklik iletişimleri sağlama
 
 İletişim planınızı uygulayın. Son kullanıcılarınıza bir değişikliğin geldiğini, ne zaman geldiğini, ne yapmanız gerektiğini ve yardım arama hakkında bilgi sahibi olduğunuzdan emin olun.
@@ -237,11 +235,11 @@ Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek
 
 | Bilgisini| Roller | Azure AD rolü (gerekirse) |
 |--------|-------|-----------------------------|
-| Yardım Masası Yöneticisi | Katman 1 desteği | Yok |
+| Yardım Masası Yöneticisi | Katman 1 desteği | Hiçbiri |
 | Kimlik Yöneticisi | Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama | Genel yönetici |
-| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
+| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
 | Altyapı Yöneticileri | Sertifika aktarma sahibi | Genel yönetici |
-| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
+| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek üzere [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) kullanmanızı öneririz.
 

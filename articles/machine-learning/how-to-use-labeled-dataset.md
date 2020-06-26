@@ -7,14 +7,14 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 4cb8062a6cdc653fe69493ed6ae3f02ae71048d4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 6401d620aea720584df0838cacc6df2f837ca699
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431096"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374483"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Etiketlerle Azure Machine Learning veri kümesi oluşturma ve araştırma
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>Etiketlerle Azure Machine Learning veri kümesi oluşturma ve araştırma (Önizleme)
 
 Bu makalede, veri etiketlerini bir Azure Machine Learning veri etiketleme projesinden dışarı aktarmayı ve bunları, veri araştırması için bir Pandas dataframe veya görüntü dönüştürmesi için Torchvision veri kümesi gibi popüler biçimlere yüklemeyi öğreneceksiniz. 
 
@@ -22,7 +22,7 @@ Bu makalede, veri etiketlerini bir Azure Machine Learning veri etiketleme projes
 
 Etiketlere sahip Azure Machine Learning veri kümeleri etiket özelliği olan [Tabulardataset](how-to-create-register-datasets.md#dataset-types) ' tir, bunlara etiketli veri kümeleri olarak başvuracağız. Bu özel Tabulardataset türleri yalnızca Azure Machine Learning veri etiketleme projelerinin çıktısı olarak oluşturulur. [Bu adımlarla](how-to-create-labeling-projects.md)bir veri etiketleme projesi oluşturun. Machine Learning, çok etiketli veya çok sınıflı ve nesne tanımlamasının sınırlı kutular ile birlikte görüntü sınıflandırması için veri etiketleme projelerini destekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
 * [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.

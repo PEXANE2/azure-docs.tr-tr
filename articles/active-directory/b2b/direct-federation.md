@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0641272177371ff5e8b6eac98b5bdbd381af931
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591225"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367470"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
 |     |
@@ -31,7 +31,7 @@ Bir iş ortağının IDP 'si ile doğrudan Federasyon ayarladığınızda, bu et
 > Doğrudan Federasyon Konuk kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>` doğrulanmış bir etki alanı olması durumunda `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Doğrudan Federasyon kullanıcıları, kiracı bağlamı olmayan ortak uç noktaları kullanarak oturum açamıyor. Örneğin,, `https://myapps.microsoft.com` veya kullanarak `https://portal.azure.com` `https://teams.microsoft.com` bir hatayla sonuçlanır.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Bir Konuk kullanıcının kimliği doğrudan Federasyonla mı?
-Bir kuruluşla doğrudan Federasyonu ayarladıktan sonra, davet ettiğiniz tüm yeni Konuk kullanıcılardan kimlik doğrulaması doğrudan Federasyon kullanılarak yapılır. Doğrudan Federasyonu ayarlamanın, sizin için bir davet zaten kullanılmış olan Konuk kullanıcılar için kimlik doğrulama yöntemini değiştirmediğini unutmayın. İşte bazı örnekler:
+Bir kuruluşla doğrudan Federasyonu ayarladıktan sonra, davet ettiğiniz tüm yeni Konuk kullanıcılardan kimlik doğrulaması doğrudan Federasyon kullanılarak yapılır. Doğrudan Federasyonu ayarlamanın, sizin için bir davet zaten kullanılmış olan Konuk kullanıcılar için kimlik doğrulama yöntemini değiştirmediğini unutmayın. Aşağıda bazı örnekler verilmiştir:
  - Konuk kullanıcılar sizinle davetleri zaten kullanıyor ve daha sonra kuruluşlarıyla doğrudan Federasyon ayarladıysanız, bu Konuk kullanıcılar doğrudan Federasyonu ayarlamadan önce kullandıkları kimlik doğrulama yöntemini kullanmaya devam eder.
  - Bir iş ortağı organizasyonu ile doğrudan Federasyon ayarlayıp Konuk kullanıcıları davet ederseniz ve sonra iş ortağı kuruluşu daha sonra Azure AD 'ye geçerse, zaten davetiye kullanan Konuk kullanıcılar, kiracınızdaki doğrudan Federasyon ilkesi mevcut olduğu sürece doğrudan Federasyonu kullanmaya devam eder.
  - Doğrudan Federasyonu bir iş ortağı kuruluşla silerseniz, şu anda doğrudan Federasyon kullanan tüm konuk kullanıcılar oturum açamıyor.
@@ -174,7 +174,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
    Connect-AzureAD
    ```
 1. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın. 
-2. Federasyon meta verileri dosyasındaki değerleri değiştirerek aşağıdaki komutları çalıştırın. AD FS Server ve okta için, Federasyon dosyası federationmetadata. xml ' dir, örneğin: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
+2. Federasyon meta verileri dosyasındaki değerleri değiştirerek aşağıdaki komutları çalıştırın. AD FS Server ve okta için, Federasyon dosyası federationmetadata.xml, örneğin: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -221,3 +221,7 @@ PowerShell kullanarak doğrudan Federasyonu bir kimlik sağlayıcısıyla kaldı
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Dış kullanıcılar çeşitli kimlik sağlayıcılarıyla oturum açtığında [davet kullanım deneyimi](redemption-experience.md) hakkında daha fazla bilgi edinin.

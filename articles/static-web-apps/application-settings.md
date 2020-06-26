@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36aa0a4a87e439c128c5247b6850100a7f2e826e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598055"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373683"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için uygulama ayarlarını yapılandırma
 
@@ -30,7 +30,7 @@ Uygulama ayarları bazen ortam değişkenleri olarak da adlandırılır.
 >
 > Ön uç Web uygulamanızla ortam değişkenlerini kullanma hakkında daha fazla bilgi için, [JavaScript Framework](#javascript-frameworks-and-libraries) veya [statik site Oluşturucu](#static-site-generators)belgelerine bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure statik Web Apps uygulaması
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -55,14 +55,14 @@ Ortam değişkenlerinin JavaScript çerçevesi veya kitaplığı ile kullanımı
 ### <a name="static-site-generators"></a>Statik site oluşturucuları
 
 - [Gatsby](https://www.gatsbyjs.org/docs/environment-variables/)
-- [Kugo](https://gohugo.io/getting-started/configuration/)
-- [Jekyıll](https://jekyllrb.com/docs/configuration/environments/)
+- [Hugo](https://gohugo.io/getting-started/configuration/)
+- [Jekyll](https://jekyllrb.com/docs/configuration/environments/)
 
 ## <a name="about-api-app-settings"></a>API uygulama ayarları hakkında
 
-Azure statik Web Apps API 'Leri, _yerel. Settings. JSON_ dosyasında uygulama ayarlarını tanımlamanızı sağlayan Azure işlevleri tarafından desteklenir. Bu dosya yapılandırma özelliğindeki uygulama ayarlarını tanımlar `Values` .
+Azure statik Web Apps API 'Leri, Azure Işlevleri tarafından desteklenir ve bu, _local.settings.jsüzerinde_ uygulama ayarlarını tanımlamanızı sağlar. Bu dosya yapılandırma özelliğindeki uygulama ayarlarını tanımlar `Values` .
 
-Aşağıdaki örnek _Local. Settings. JSON_ , için nasıl değer ekleneceğini gösterir `DATABASE_CONNECTION_STRING` .
+Aşağıdaki örnek _local.settings.js_ , için nasıl bir değer ekleneceğini gösterir `DATABASE_CONNECTION_STRING` .
 
 ```json
 {
@@ -105,15 +105,17 @@ Azure portal, uygulama ayarlarını oluşturmak, güncelleştirmek ve silmek iç
 
     :::image type="content" source="media/application-settings/configuration.png" alt-text="Azure statik Web Apps yapılandırma görünümü":::
 
-1. Bir **ad** ve **değer** girin
+1. Bir **ad** ve **değer**girin.
 
-1. **Tamam 'a** tıklayın
+1. **Tamam**'a tıklayın.
+
+1. **Kaydet**’e tıklayın.
 
 ### <a name="using-the-azure-cli"></a>Azure CLI kullanma
 
 `az rest`Ayarlarınızı Azure 'a toplu olarak karşıya yüklemek için komutunu kullanabilirsiniz. Komut, uygulama ayarlarını adlı bir üst özellikte JSON nesneleri olarak kabul eder `properties` .
 
-Uygun değerlerle bir JSON dosyası oluşturmanın en kolay yolu, _Local. Settings. JSON_ dosyanızın değiştirilmiş bir sürümünü oluşturmaktır.
+Uygun değerlerle bir JSON dosyası oluşturmanın en kolay yolu, dosyasında _local.settings.js_ değiştirilmiş bir sürümü oluşturmaktır.
 
 1. Gizli verileri olan yeni dosyanızı herkese açık bir şekilde açığa çıkardığından emin olmak için, _. gitignore_ dosyanıza aşağıdaki girişi ekleyin.
 
@@ -121,7 +123,7 @@ Uygun değerlerle bir JSON dosyası oluşturmanın en kolay yolu, _Local. Settin
    local.settings*.json
    ```
 
-2. Sonra, _Local. Settings. JSON_ dosyanızın bir kopyasını oluşturun ve bunu _yerel. Settings. Properties. JSON_olarak adlandırın.
+2. Sonra, _local.settings.js_ dosyanın bir kopyasını oluşturun ve _local.settings.properties.jsüzerine_adlandırın.
 
 3. Yeni dosya içinde, uygulama ayarları hariç diğer tüm verileri dosyadan kaldırın ve olarak yeniden adlandırın `Values` `properties` .
 
@@ -150,13 +152,13 @@ Azure CLı komutu, karşıya yüklemeyi çalıştırmak için hesabınıza özg�
    ```
 
 > [!IMPORTANT]
-> "Local. Settings. Properties. JSON" dosyası, bu komutun çalıştırıldığı dizinde olmalıdır. Bu dosya, istediğiniz her şey için adlandırılmış olabilir. Ad önemli değil.
+> "local.settings.properties.json" dosyası, bu komutun çalıştırıldığı dizinde olmalıdır. Bu dosya, istediğiniz her şey için adlandırılmış olabilir. Ad önemli değil.
 
 ### <a name="view-application-settings-with-the-azure-cli"></a>Azure CLı ile uygulama ayarlarını görüntüleme
 
 Uygulama ayarları, Azure CLı aracılığıyla görüntüleyekullanılabilmektedir.
 
-1. Terminal veya komut satırından aşağıdaki komutu yürütün. Yer tutucuları, `<YOUR_SUBSCRIPTION_ID>` değerlerinizle değiştirdiğinizden emin `<YOUR_RESOURCE_GROUP_NAME>` olun `<YOUR_STATIC_SITE_NAME>` .
+- Terminal veya komut satırından aşağıdaki komutu yürütün. Yer tutucuları, `<YOUR_SUBSCRIPTION_ID>` değerlerinizle değiştirdiğinizden emin `<YOUR_RESOURCE_GROUP_NAME>` olun `<YOUR_STATIC_SITE_NAME>` .
 
    ```bash
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"
@@ -165,4 +167,4 @@ Uygulama ayarları, Azure CLı aracılığıyla görüntüleyekullanılabilmekte
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Yerel geliştirmeyi ayarlama](local-development.md)
+> [Yerel geliştirme ayarlama](local-development.md)

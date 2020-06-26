@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 30d71333bb29720afd82c7dbbde7126b30a7f6d6
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84803677"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367402"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Standart Load Balancer Azure portal kullanarak yük dengelemeyi ve giden kuralları yapılandırma
 
@@ -42,10 +42,10 @@ Bu bölümde, sanal makinelerin yükünü dengelemeye yönelik bir yük dengeley
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Myresourcegroupslb** yazın.|
-    | Name                   | **myLoadBalancer**                                   |
+    | Adı                   | **myLoadBalancer**                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Ortak**seçeneğini belirleyin.                                        |
-    | SKU           | **Standart** veya **temel**seçeneğini belirleyin. Microsoft, üretim iş yükleri için standart önerir. |
+    | SKU           | **Standart**' ı seçin. |
     | Genel IP adresi | **Yeni oluştur**’u seçin. Kullanmak istediğiniz mevcut bir genel IP varsa, **Varolanı kullan**' ı seçin.  Mevcut genel IP **Standart** SKU olmalıdır.  Temel genel IP 'Ler **Standart** SKU yük dengeleyici ile uyumlu değildir.  |
     | Genel IP adresi adı              | Metin kutusuna **Mypublicıp** yazın.|
     | Kullanılabilirlik alanı | Esnek Load Balancer oluşturmak için **bölge yedekli** ' ı seçin. Bir bölgesel Load Balancer oluşturmak için, 1, 2 veya 3 ' ten belirli bir bölge seçin |

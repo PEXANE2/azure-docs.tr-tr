@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: bf5821a0781b5208096a0c02058cf2239a99e7d6
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697247"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367861"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -132,8 +132,9 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
 
     | Linux dağıtımı | Sürüm |
     | --------------- | ----------- |
-    | Debian 9 | `stretch` |
-    | Debian 8 | `jessie` |
+    | Debian 10 | `buster`  |
+    | Debian 9  | `stretch` |
+    | Ubuntu 19.04    | `disco`     |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
@@ -193,7 +194,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`, aksi belirtilmediği takdirde yalnızca sürüm 2. x olan aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | [C# sınıf kitaplığı (. cs) projesi](functions-dotnet-class-library.md)başlatır. |
 | **`--csx`** | Bir [C# betiği (. CSX) projesi](functions-reference-csharp.md)başlatır. `--csx`Sonraki komutlarda ' i belirtmeniz gerekir. |
@@ -294,7 +295,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ayrıca, aşağıdaki bağımsız değişkenleri kullanarak komutta bu seçenekleri belirtebilirsiniz:
 
-| Bağımsız Değişken     | Description                            |
+| Bağımsız Değişken     | Açıklama                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Sürüm 2. x) 1. x sürümünde ve portalda kullanılan C# betiği (. CSX) şablonlarını üretir. |
 | **`--language`**, **`-l`**| C#, F # veya JavaScript gibi şablon programlama dili. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 2. x içinde bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
@@ -353,7 +354,7 @@ npm start
 
 `func start`Aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Çalıştırmadan önce derleme geçerli projesi yok. Yalnızca DotNet projeleri için. Varsayılan değer false olarak ayarlanmıştır. 1. x sürümü için desteklenmez. |
 | **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca ile kullanılır `--useHttps` . 1. x sürümü için desteklenmez. |
@@ -459,7 +460,7 @@ Sürüm 1. x ' de, kullanarak bir işlevi doğrudan çağırabilirsiniz `func ru
 
 `func run`Aşağıdaki seçenekleri destekler:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Satır içi içerik. |
 | **`--debug`**, **`-d`** | İşlevi çalıştırmadan önce konak işlemine bir hata ayıklayıcı ekleyin.|
@@ -498,14 +499,14 @@ Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde
 
 Aşağıdaki yayımlama seçenekleri, 1. x ve 2. x sürümleri için geçerlidir:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Ayarları Azure 'da local.settings.jsyayımlayın, bu ayar zaten varsa üzerine yazmak isteyip istemediğinizi sorar. Microsoft Azure Depolama Öykünücüsü kullanıyorsanız, önce uygulama ayarını [gerçek bir depolama bağlantısı](#get-your-storage-connection-strings)olarak değiştirin. |
 | **`--overwrite-settings -y`** | Kullanıldığında uygulama ayarlarının üzerine yazma istemi 'ni gizleyin `--publish-local-settings -i` .|
 
 Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x içinde desteklenir:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Yalnızca ayarları yayımlayın ve içeriği atlayın. Varsayılan istem. |
 |**`--list-ignored-files`** | Yayımlama sırasında yoksayılan,. funcignore dosyasını temel alan dosyaların listesini görüntüler. |
@@ -529,7 +530,7 @@ func deploy
 
 Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
 
-| Seçenek     | Description                            |
+| Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Geçerli kullanıcının oturum açan bir Docker kayıt defterinin adı. |
 | **`--platform`** | İşlev uygulaması için platform barındırma. Geçerli seçenekler şunlardır`kubernetes` |

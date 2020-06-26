@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: b02ba8bd6e3ae858c9e3ded07776a8a83ede171a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f214dbbc1991e64f86890687523be256c69e46d3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212607"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374279"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Ticari Market 'te yeni bir SaaS teklifi oluşturun
 
@@ -140,7 +140,7 @@ Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren 
 6. Gizlilik ilkesi
 7. Teklif adı
 8. Özet
-9. Description
+9. Açıklama
 10. Ekran görüntüleri/videolar
 11. Belgeler
 
@@ -256,7 +256,7 @@ Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Marke
 - **Anahtar sözcükleri ara** – müşterilerin Market 'te teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü girin.
 - Başlarken yönergeleri (gerekli) – uygulamanızı nasıl yapılandıracağınızı ve potansiyel müşteriler için kullanmaya **başlamanızı** açıklayın.  Bu hızlı başlangıç, daha ayrıntılı çevrimiçi belgelere bağlantılar içerebilir. Bu alana en fazla 3.000 karakter metin girilebilir.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 Bu alan gereklidir.
 
@@ -287,7 +287,6 @@ Bu alan gereklidir.
     - **Orta** (90 x 90, gereklidir)
     - **Büyük** (216 x 216, gereklidir)
     - **Geniş** (255 x 115)
-    - **Hero** (815 x 290)
 
 - **Ekran görüntüleri** (gerekli) – teklifinizi gösteren en fazla beş ekran görüntüsü ekleyin, 1280 x 720 piksel boyutunda. Tüm görüntülerin içinde olması gerekir. PNG biçimi.
 - **Videolar** (isteğe bağlı) – teklifinizi gösteren videoların bağlantılarını ekleyin. Müşteriler teklifinizle birlikte gösterilen YouTube ve/veya Vimeo videolarını içeren bağlantıları kullanabilirsiniz. Ayrıca, PNG biçiminde 1280 x 720 piksel boyutunda videonun küçük resmini de girmeniz gerekir. Her teklif için en fazla dört video görüntüleyebilirsiniz.

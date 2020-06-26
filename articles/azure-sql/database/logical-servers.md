@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: fa8baa5f17b0f6d667ce05c027e41120b4a15e82
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316057"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367589"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL veritabanı ve Azure SYNAPSE 'de mantıksal SQL Server nedir?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -87,7 +87,7 @@ Var olan bir veritabanını yönetmek için **SQL veritabanları** sayfasına gi
 
 Azure PowerShell ile sunucu, veritabanları ve güvenlik duvarları oluşturup yönetmek için aşağıdaki PowerShell cmdlet 'lerini kullanın. PowerShell 'i yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps). Elastik havuzlar oluşturma ve yönetme için bkz. [elastik havuzlar](elastic-pool-overview.md).
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Bir veritabanı oluşturur |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Bir veya daha fazla veritabanını alır|
@@ -112,7 +112,7 @@ Azure PowerShell ile sunucu, veritabanları ve güvenlik duvarları oluşturup y
 
 [Azure CLI](/cli/azure)ile sunucu, veritabanları ve güvenlik duvarları oluşturup yönetmek Için AŞAĞıDAKI [Azure CLI SQL veritabanı](/cli/azure/sql/db) komutlarını kullanın. CLI’yi tarayıcınızda çalıştırmak için [Cloud Shell](/azure/cloud-shell/overview) kullanın veya macOS, Linux ya da Windows’da [yükleyin](/cli/azure/install-azure-cli). Elastik havuzlar oluşturma ve yönetme için bkz. [elastik havuzlar](elastic-pool-overview.md).
 
-| Cmdlet | Description |
+| Cmdlet | Açıklama |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Bir veritabanı oluşturur|
 |[az SQL DB List](/cli/azure/sql/db#az-sql-db-list)|Bir sunucu tarafından yönetilen tüm veritabanlarını veya elastik havuzdaki tüm veritabanlarını listeler|
@@ -145,12 +145,12 @@ Transact-SQL ile sunucu, veritabanları ve güvenlik duvarları oluşturup yöne
 > [!IMPORTANT]
 > Transact-SQL kullanarak sunucu oluşturamaz veya silemezsiniz.
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 |[VERITABANı oluşturma (Azure SQL veritabanı)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Azure SQL veritabanı 'nda yeni bir veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 |[VERITABANı oluşturma (Azure SYNAPSE)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Azure SYNAPSE 'te yeni bir veri ambarı veritabanı oluşturur. Yeni bir veritabanı oluşturmak için ana veritabanına bağlı olmanız gerekir.|
 | [ALTER DATABASE (Azure SQL veritabanı)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Veritabanını veya elastik havuzu değiştirir. |
-|[ALTER DATABASE (Azure SQL veri ambarı)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)|Azure SYNAPSE 'de bir veri ambarı veritabanını değiştirir.|
+|[ALTER DATABASE (Azure SQL veri ambarı)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Azure SYNAPSE 'de bir veri ambarı veritabanını değiştirir.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Bir veritabanını siler.|
 |[sys. database_service_objectives (Azure SQL veritabanı)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Bir veritabanı için sürüm (hizmet katmanı), hizmet hedefi (Fiyatlandırma Katmanı) ve elastik havuz adı döndürür. Bir sunucu için ana veritabanında oturum açarsa, tüm veritabanlarına bilgi döndürür. Azure SYNAPSE için ana veritabanına bağlı olmanız gerekir.|
 |[sys. dm_db_resource_stats (Azure SQL veritabanı)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Azure SQL veritabanı 'nda bir veritabanı için CPU, GÇ ve bellek tüketimi döndürür. Veritabanında etkinlik olmasa bile, her 15 saniyede bir satır vardır.|
@@ -171,7 +171,7 @@ Transact-SQL ile sunucu, veritabanları ve güvenlik duvarları oluşturup yöne
 
 Sunucu, veritabanı ve güvenlik duvarı oluşturmak ve yönetmek için bu REST API isteklerini kullanın.
 
-| Komut | Description |
+| Komut | Açıklama |
 | --- | --- |
 |[Sunucular-oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Yeni bir sunucu oluşturur veya güncelleştirir.|
 |[Sunucular-Sil](https://docs.microsoft.com/rest/api/sql/servers/delete)|Bir sunucuyu siler.|

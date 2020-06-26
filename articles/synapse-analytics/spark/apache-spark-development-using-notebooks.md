@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: 6eb6403ad6d1f181d1f51dde6db266070bf32a56
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 458cbe35e9d46b8a6afde399e20f3b484dfe6478
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194765"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373378"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure SYNAPSE Studio (Önizleme) not defterlerini oluşturma, geliştirme ve sürdürme
 
@@ -71,7 +71,7 @@ En üstteki komut çubuğundaki açılan listeden yeni eklenen hücreler için b
 
 Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not defterinde birden çok dil kullanabilirsiniz. Aşağıdaki tabloda, hücre dillerini değiştirmek için Magic komutları listelenmektedir.
 
-|Magic komutu |Dil | Description |  
+|Magic komutu |Dil | Açıklama |  
 |---|------|-----|
 |%% pyspark| Python | Spark bağlamına karşı bir **Python** sorgusu yürütün.  |
 |%% Spark| Scala | Spark bağlamına yönelik bir **Scala** sorgusu yürütün.  |  
@@ -344,7 +344,7 @@ Jupyıter not defterlerine benzer şekilde, Azure SYNAPSE Studio Not defterleri 
 
    ![komut modu](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazmanız yapılamaz. `Enter`Bir hücrenin düzenleyici alanına tıklayarak ya da fareyi kullanarak düzenleme modunu girin.
+2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazabilirsiniz. `Enter`Bir hücrenin düzenleyici alanına tıklayarak ya da fareyi kullanarak düzenleme modunu girin.
    
    ![düzenleme modu](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

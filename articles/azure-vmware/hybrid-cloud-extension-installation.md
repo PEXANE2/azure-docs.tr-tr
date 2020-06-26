@@ -3,17 +3,19 @@ title: Karma bulut uzantısı 'nı (HCX) yükler
 description: Azure VMware çözümünüz (AVS) özel bulutunuz için VMware hibrit bulut uzantısı (HCX) çözümünü ayarlama
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873660"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367555"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Azure VMware çözümü için HCX 'i yükler
 
-Bu makalede, Azure VMware çözümünüz (AVS) özel bulutunuz için VMware hibrit bulut uzantısı (HCX) çözümünü ayarlama yordamlarına ilerliyoruz. HCX Gelişmiş (varsayılan yükleme), her bir dış sitenin bir HCX Enterprise Manager veya bağlayıcısının yüklü ve etkin olmasını gerektiren en fazla üç dış siteyi destekler.
-HCX, VMware iş yüklerinizin farklı yerleşik HCX desteklenen geçiş türleri aracılığıyla buluta ve diğer bağlı sitelere geçirilmesini sağlar. Üçten fazla site gerekliyse, müşteriler destek aracılığıyla HCX kurumsal eklentisini etkinleştirme seçeneğine sahiptir. HCX kurumsal, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler taşır, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
+Bu makalede, Azure VMWare çözümünüz (AVS) özel bulutunuz için VMWare hibrit bulut uzantısı (HCX) çözümünü ayarlama yordamlarına göz atacağız. HCX, VMware iş yüklerinizin buluta geçirilmesini ve farklı yerleşik HCX desteklenen geçiş türleri aracılığıyla diğer bağlı siteleri sağlar.
+
+Varsayılan yükleme, HCX gelişmiş, en fazla üç dış siteyi destekler. Üçten fazla site gerekliyse, müşteriler destek aracılığıyla HCX kurumsal eklentisini etkinleştirme seçeneğine sahiptir. HCX kurumsal yüklemesi, genel kullanılabilirlik (GA) sonrasında müşterilere ek ücretler sunar, ancak [ek özellikler](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)sağlar.
+
 
 [Başlamadan önce](#before-you-begin), [yazılım sürümü gereksinimlerinden](#software-version-requirements)ve [önkoşullardan](#prerequisites) önce ayrıntılı bir şekilde gözden geçirin. 
 
@@ -25,7 +27,7 @@ Ardından, aşağıdakileri yapmak için gereken tüm yordamları ele aldık:
 > * Ağ yukarı ve hizmet kafesi yapılandırma
 > * Gereç durumunu denetleyerek kurulumu tamamlayarak
 
-Kurulumu tamamladıktan sonra önerilen sonraki adımlar sağlanır.
+Kurulumu tamamladıktan sonra, bu makalenin sonunda sunulan önerilen sonraki adımları izleyebilirsiniz.  
 
 ## <a name="before-you-begin"></a>Başlamadan önce
     
@@ -36,17 +38,17 @@ Kurulumu tamamladıktan sonra önerilen sonraki adımlar sağlanır.
 * HCX üzerinde VMware vSphere [blog serisi](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) gibi, isteğe bağlı olarak HCX üzerinde ilgili VMware malzemeleri gözden geçirin. 
 * AVS 'yi kullanarak bir AVS HCX Kurumsal etkinleştirmesi siparişi, kanalları destekler.
 
-Çalışma yüklerini işlem ve depolama kaynaklarına karşı boyutlandırma, AVS özel bulut HCX çözümünü kullanmaya hazırlanırken önemli bir planlama adımıdır. Bu boyutlandırma adımı, ilk özel bulut ortamı planlamasının parçası olarak değinilmesi gerekir. 
+Çalışma yüklerini işlem ve depolama kaynaklarına karşı boyutlandırma, AVS özel bulut HCX çözümünü kullanmaya hazırlanırken önemli bir planlama adımıdır. İlk özel bulut ortamı planlamasının parçası olarak boyutlandırma adımını ele edin.   
 
 ## <a name="software-version-requirements"></a>Yazılım sürümü gereksinimleri
 Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıdır. 
                                                          
-| Bileşen türü                                                          | Kaynak ortam gereksinimleri                                                                   | Hedef ortam gereksinimleri                                                                      |
+| Bileşen türü    | Kaynak ortam gereksinimleri    | Hedef ortam gereksinimleri   |
 | --- | --- | --- |
-| vCenter Server                                                          | 5.1<br/><br/>5,5 U1 veya daha önceki bir sürümü kullanıyorsanız HCX işlemleri için tek başına HCX Kullanıcı arabirimini kullanın.         | 6,0 U2 ve üzeri                                                                                          |
-| ESXi                                                                    | 5.0                                                                                               | ESXi 6,0 ve üzeri                                                                                        |
-| NSX                                                                     | Kaynaktaki mantıksal anahtarların HCX ağ uzantısı için: NSXv 6.2 + veya NSX-T 2.4 +              | NSXv 6.2 + veya NSX-T 2,4 +<br/><br/HCX yakınlık yönlendirmesi: NSXv 6.4 + (NSX-T ile yakınlık yönlendirmesi desteklenmez) |
-| vCloud Direktörü                                                         | Gerekli değildir-kaynak sitede vCloud Director ile birlikte çalışabilirlik yok | Hedef ortam vCloud Director ile tümleştirildiğinde, en az 9.1.0.2 olur.              |
+| vCenter Server   | 5.1<br/><br/>5,5 U1 veya daha önceki bir sürümü kullanıyorsanız HCX işlemleri için tek başına HCX Kullanıcı arabirimini kullanın.  | 6,0 U2 ve üzeri   |
+| ESXi   | 5.0    | ESXi 6,0 ve üzeri   |
+| NSX    | Kaynaktaki mantıksal anahtarların HCX ağ uzantısı için: NSXv 6.2 + veya NSX-T 2.4 +   | NSXv 6.2 + veya NSX-T 2,4 +<br/><br/>HCX yakınlık yönlendirmesi için: NSXv 6.4 + (NSX-T ile yakınlık yönlendirmesi desteklenmez) |
+| vCloud Direktörü   | Gerekli değildir-kaynak sitede vCloud Director ile birlikte çalışabilirlik yok | Hedef ortamı vCloud Director ile tümleştirdiğinizde, en az 9.1.0.2 olur.  |
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -58,7 +60,7 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
 * Şirket içi HCX x ve NE gibi araçlar vCenter ve ESXi altyapısına erişebilmelidir.
 
-* WAN Interconnect gerecini dağıtmak için, Azure portal 'da SDDC dağıtımı için kullanılan/22 CıDR ağ adresi bloğunun yanı sıra, HCX bir/29 bloğu gerektirir. Bunu ağ planlamasına göre çarpanalmalısınız.
+* WAN Interconnect gerecini dağıtmak için, Azure portal 'da SDDC dağıtımı için kullanılan/22 CıDR ağ adresi bloğunun yanı sıra, HCX bir/29 bloğu gerektirir. Bu gereksinimi ağ planlamasına katdığınızdan emin olun.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>VMware HCX OVA 'yı şirket içinde dağıtma
 
@@ -66,11 +68,11 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
     ![AVS vCenter 'da HCX 'i seçme](./media/hybrid-cloud-extension-installation/avs-vsphere-client.png)
 
-1. VMware HCX ova dosyasını indirmek için **Yönetim**  >  **sistem güncelleştirmeleri**' ni seçin.
+1. **Yönetim**altında **sistem güncelleştirmeleri** ' ni seçin ve sonra VMware HCX ova dosyasını Indirmek için **indirme bağlantısı iste** ' yi seçin.
 
     ![Sistem güncelleştirmelerini al](./media/hybrid-cloud-extension-installation/administration-updates.png)
 
-1. Şirket içi vCenter 'a dağıtılacak bir OVF şablonu seçin.  
+1. Sonra şirket içi vCenter ' a gidin ve şirket içi vCenter 'nize dağıtmak için bir OVF şablonu seçin.  
 
     ![OVF şablonu seçin](./media/hybrid-cloud-extension-installation/select-template.png)
 
@@ -90,7 +92,10 @@ Altyapı bileşenleri, gerekli en düşük sürümü çalıştırıyor olmalıd�
 
 Yükleme sonrasında aşağıdaki adımları gerçekleştirin.
 
-1. ' De HCX Yöneticisi ' ni açın `https://HCXManagerIP:9443` ve Kullanıcı adınızla parolanızla oturum açın. 
+1. Şirket içi HCX yöneticisinde oturum açın `https://HCXManagerIP:9443` ve Kullanıcı adınızla parolanızla oturum açın. 
+
+   > [!IMPORTANT]
+   > `9443`HCX YÖNETICISI IP adresine sahip bağlantı noktası numarasını eklediğinizden emin olun.
 
 1. **Lisanslama**bölümünde **HCX gelişmiş anahtarınızı**girin.  
 
@@ -99,7 +104,7 @@ Yükleme sonrasında aşağıdaki adımları gerçekleştirin.
     > [!NOTE]
     > HCX Manager 'da açık internet erişimi veya bir ara sunucu yapılandırılmış olmalıdır.
 
-1. VCenter 'ı yapılandırın.
+1. **VCenter**'Da gerekirse vCenter bilgilerini düzenleyin.
 
     ![VCenter 'ı yapılandırma](./media/hybrid-cloud-extension-installation/configure-vcenter.png)
 
@@ -109,25 +114,25 @@ Yükleme sonrasında aşağıdaki adımları gerçekleştirin.
 
 ## <a name="configure-hcx"></a>HCX yapılandırma 
 
-1. Şirket içi vCenter oturumu açın ve **Home**  >  **HCX**öğesini seçin.
+1. Şirket içi vCenter oturumu açın ve **giriş**bölümünde **HCX**' i seçin.
 
     ![VCenter 'da HCX](./media/hybrid-cloud-extension-installation/hcx-vcenter.png)
 
-1. **Altyapı**  >  **site eşleştirmesini**seçin  >  **site eşleştirmesi ekleyin**.
+1. **Altyapı**altında **site eşleştirme**  >  **site eşleştirme Ekle**' yi seçin.
 
     ![Site eşleştirme Ekle](./media/hybrid-cloud-extension-installation/site-pairing.png)
 
-1. **Uzak HCX URL 'si**, **Kullanıcı adı**ve **parola**girin. Ardından **Bağlan**'ı seçin.
+1. Uzak HCX URL 'sini veya IP adresini, AVS cloudadmin Kullanıcı adını ve parolayı girin ve sonra **Bağlan**' ı seçin.
 
    Sistem bağlı siteyi gösterir.
    
     ![Site bağlantısı](./media/hybrid-cloud-extension-installation/site-connection.png)
 
-1. **Interconnect**  >  **çok siteli hizmet**  >  **ağı ağ profilleri**ağ  >  **profili oluştur**' u seçin.
+1. **Altyapı**altında, **bağlantı**  >  **çok siteli hizmet**  >  **ağı ağ profilleri**ağ  >  **profili oluştur**' u seçin.
 
     ![Ağ profili oluştur](./media/hybrid-cloud-extension-installation/create-network-profile.png)
 
-1. HCX x ve NE IP adres aralıklarını girin (x ve NE yapmak için en az 2 IP adresi gereklidir).
+1. Yeni ağ profili için, HCX x ve NE IP adresi aralıklarını girin (x ve NE kadar gereçlerden biri için en az iki IP adresi gereklidir).
     
    ![IP adresi aralıklarını girin](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
   
@@ -140,7 +145,7 @@ Yükleme sonrasında aşağıdaki adımları gerçekleştirin.
 
     ![İşlem profili oluştur](./media/hybrid-cloud-extension-installation/create-compute-profile.png)
 
-1. Geçiş, ağ uzantısı, PR olağanüstü durum kurtarma gibi etkinleştirilecek hizmetleri seçin. **Devam**’ı seçin.
+1. Geçiş, ağ uzantısı veya olağanüstü durum kurtarma gibi etkinleştirilecek hizmetleri seçin ve ardından **devam**' ı seçin.
 
     ![Hizmetleri seçin](./media/hybrid-cloud-extension-installation/select-services.png)
 
@@ -165,7 +170,7 @@ Yükleme sonrasında aşağıdaki adımları gerçekleştirin.
 
 1. **Ağ yukarı** öğesini seçin ve **devam**' ı seçin.
       
-    Aşağıdakilerden biri true olduğunda bir veya daha fazla ağ profili seçin:  
+    Aşağıdakilerden birinin doğru olması için bir veya daha fazla ağ profili seçin:  
     * Uzak sitedeki Interconnect gereçlerine bu ağ üzerinden ulaşılamıyor  
     * Uzak taraf gereçler, bu ağ üzerinden yerel Interconnect gereçlerine ulaşabilir.  
     
@@ -175,25 +180,25 @@ Yükleme sonrasında aşağıdaki adımları gerçekleştirin.
 
 1. **VMotion ağ profilini** seçin ve **devam**' ı seçin.
       
-    ESXi konaklarının vMotion arabirimine erişilebileceği ağ profilini seçin. Böyle bir ağ profili zaten tanımlanmamışsa, burada oluşturabilirsiniz. VMotion ağınız yoksa, **Yönetim ağ profili**' ni seçin.  
+   ESXi konaklarının vMotion arabirimine erişilebileceği ağ profilini seçin. Böyle bir ağ profili zaten tanımlanmamışsa, burada oluşturabilirsiniz. VMotion ağınız yoksa, **Yönetim ağ profili**' ni seçin.  
     
-    ![VMotion ağ profilini seçin](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
+   ![VMotion ağ profilini seçin](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
 
-1. **VSphere çoğaltma ağ profilini** seçin ve **devam**' ı seçin.
+1. **VSphere çoğaltma ağ profilinden**, bir ağ profili seçin ESXi konaklarının vSphere çoğaltma arabirimi ve sonra **devam**' ı seçin.
       
-    ESXi konaklarının vSphere çoğaltma arabirimine erişilebileceği bir ağ profili seçin. Çoğu durumda, bu profil yönetim ağ profiliyle aynı olur.  
+   Çoğu durumda, bu profil yönetim ağ profiliyle aynı olur.  
     
-    ![VSphere çoğaltma ağ profilini seçin](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
+   ![VSphere çoğaltma ağ profilini seçin](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. **Ağ uzantıları Için dağıtılmış anahtarlar** ' ı seçin ve **devam**' ı seçin.  
+1. **Ağ uzantıları Için dağıtılmış anahtarlar seçin**sayfasında, tümleştirilecek ve bağlı olduğu VM 'ler için AĞLARıN bulunduğu DVS 'yi seçin.  **Devam**’ı seçin.  
       
-    Geçiş yapılacak sanal makinelerin bağlı olduğu ağların bulunduğu dağıtılmış sanal anahtarları seçin.
-
     ![Dağıtılmış sanal anahtarlar seçin](./media/hybrid-cloud-extension-installation/distributed-switches.png)
 
-1. Bağlantı kurallarını gözden geçirin ve **devam**' ı seçin. İşlem profili oluşturmak için **son** ' u seçin.  
+1. Bağlantı kurallarını gözden geçirin ve **devam**' ı seçin.  
 
     ![İşlem profili oluştur](./media/hybrid-cloud-extension-installation/complete-compute-profile.png)
+
+1.  İşlem profili oluşturmak için **son** ' u seçin.
 
 ## <a name="configure-network-uplink"></a>Ağ yukarı bağlantı yapılandırma
 
@@ -217,45 +222,45 @@ Artık şirket içi ve AVS SDDC arasında hizmet kafesi yapılandırın.
 
 1. AVS SDDC vCenter oturumunu açın ve **HCX**' i seçin.
 
-1. **Altyapı**  >  **Interconnect**  >  **hizmet ağı**  >  **Oluştur hizmet ağı**' nı seçin.  Önceki adımlarda oluşturulan ağ ve işlem profillerini yapılandırın.    
+2. **Altyapı**altında, **Interconnect**  >  önceki adımlarda oluşturulan ağ ve işlem profillerini yapılandırmak için Interconnect**Service**  >  **kafeshizmet ağı oluştur** ' u seçin.    
       
     ![Hizmet kafesi yapılandırma](./media/hybrid-cloud-extension-installation/configure-service-mesh.png)
 
-1. **Hizmet ağı oluştur** ' u seçin ve **devam**' ı seçin.  
-      
-    Karma Mobility 'in etkinleştirileceği arasında eşleştirilmiş siteler seçin.  
+3. Karma yeteneği etkinleştirmek için eşleştirilmiş siteler ' i seçin ve **devam**' ı seçin.   
     
     ![Eşleştirilmiş siteleri seçin](./media/hybrid-cloud-extension-installation/select-paired-sites.png)
 
-1. **İşlem profilini** seçin ve **devam**' ı seçin.
+4. Hybridity hizmetlerini etkinleştirmek için kaynak ve Uzaktan işlem profillerini seçip **devam**' ı seçin.
       
-    Hybridity hizmetlerini etkinleştirmek için kaynak ve uzak sitelerde bir işlem profili seçin. Seçimler, sanal makinelerin HCX hizmetlerini tüketebileceği kaynakları tanımlayacaktır.  
+    Seçimler, VM 'Lerin HCX hizmetlerini tüketebileceği kaynakları tanımlar.  
       
     ![Hybridity hizmetlerini etkinleştir](./media/hybrid-cloud-extension-installation/enable-hybridity.png)
 
-1. HCX için etkinleştirilecek hizmetleri seçin ve **devam**' ı seçin.  
+5. Etkinleştirilecek hizmetleri seçin ve **devam**' ı seçin.  
       
     ![HCX hizmetleri seçin](./media/hybrid-cloud-extension-installation/hcx-services.png)
 
-1. **Gelişmiş yapılandırma-yukarı bağlantı ağ profillerini geçersiz kıl** **devam**' ı seçin.  
+6. **Gelişmiş yapılandırma-yukarı bağlantı ağ profillerini geçersiz kıl** **devam**' ı seçin.  
       
     Yukarı bağlantı ağ profilleri, uzak sitenin Interconnect gereçlerine erişilebileceği ağa bağlanmak için kullanılır.  
       
     ![Yukarı bağlantı profillerini geçersiz kıl](./media/hybrid-cloud-extension-installation/override-uplink-profiles.png)
 
-1. **Gelişmiş yapılandırma – ağ uzantısı gereç ölçeğini**genişletme ' de, **ağ uzantısı gereç ölçeğini genişlet**' i seçin. 
+7. **Ağ uzantısını Yapılandır gereç ölçeğini**seçin. 
       
     ![Ağ uzantısının ölçeğini genişletme](./media/hybrid-cloud-extension-installation/network-extension-scale-out.png)
 
-1. DVS anahtar sayısına karşılık gelen gereç sayısını girin.  
+8. DVS anahtar sayısına karşılık gelen gereç sayısını girin.  
       
     ![Gereç sayısını Yapılandır](./media/hybrid-cloud-extension-installation/appliance-scale.png)
 
-1. **Gelişmiş yapılandırma-Trafik Mühendisliği**' nda **devam**' ı seçin.  
+9. Atlamak için **devam** ' ı seçin.  
       
     ![Trafik Mühendisliği yapılandırma](./media/hybrid-cloud-extension-installation/traffic-engineering.png)
 
-1. Topoloji önizlemesini inceleyin ve **devam**' ı seçin. Ardından, bu hizmet ağı için Kullanıcı dostu bir ad girin ve tamamlanacak **son** ' u seçin.  
+10. Topoloji önizlemesini inceleyin ve **devam**' ı seçin. 
+
+11. Bu hizmet ağı için Kullanıcı dostu bir ad girin ve tamamlanacak **son** ' u seçin.  
       
     ![Hizmet ağı 'nı doldurun](./media/hybrid-cloud-extension-installation/complete-service-mesh.png)
 

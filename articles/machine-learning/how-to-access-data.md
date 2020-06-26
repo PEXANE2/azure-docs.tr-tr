@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d73427db5fd168a31c478f92ef11307df136a775
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 07d2326d6677ccba93e2d3173bf8abccf309fe70
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125421"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374721"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage Services 'a bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerin
 
 [Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) , Azure Blob depolama alanının üzerine kurulmuştur ve kurumsal büyük veri analizi için tasarlanmıştır. Data Lake Storage 2. temel bir parçası, blob depolamaya [hiyerarşik bir ad alanının](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) eklenmesinin bir parçasıdır. Hiyerarşik ad alanı, etkili veri erişimi için nesneleri/dosyaları bir dizin hiyerarşisi halinde düzenler.
 
-Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir Azure dosya paylaşımında otomatik olarak çalışma alanı kaydedilir. Bunlar `workspaceblobstore` `workspacefilestore` sırasıyla ve olarak adlandırılır. `workspaceblobstore`, çalışma alanı yapıtlarını ve makine öğrenimi deneme günlüklerinizi depolamak için kullanılır. `workspacefilestore`[işlem örneği](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)aracılığıyla yetkilendirilmiş not defterlerini ve R betiklerini depolamak için kullanılır. `workspaceblobstore`Kapsayıcı varsayılan veri deposu olarak ayarlanır.
+Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir Azure dosya paylaşımında otomatik olarak çalışma alanı kaydedilir. Bunlar `workspaceblobstore` `workspacefilestore` sırasıyla ve olarak adlandırılır. `workspaceblobstore`, çalışma alanı yapıtlarını ve makine öğrenimi deneme günlüklerinizi depolamak için kullanılır. `workspacefilestore`[işlem örneği](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)aracılığıyla yetkilendirilmiş not defterlerini ve R betiklerini depolamak için kullanılır. `workspaceblobstore`Kapsayıcı varsayılan veri deposu olarak ayarlandı ve çalışma alanından silinemiyor.
 
 > [!IMPORTANT]
 > Azure Machine Learning tasarımcı (Önizleme), tasarımcı giriş sayfasında bir örnek açtığınızda otomatik olarak **azureml_globaldatasets** adlı bir veri deposu oluşturacak. Bu veri deposu yalnızca örnek veri kümelerini içerir. Gizli veri erişimi **için lütfen bu veri deposunu kullanmayın.**
@@ -158,8 +158,6 @@ Dosya paylaşımınız sanal ağda ise, `skip_validation=True` [`register_azure_
 
 Bir Azure Data Lake Storage 2. nesil (ADLS Gen 2) veri deposu için, [hizmet sorumlusu izinleriyle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)bir Azure Data Lake Gen 2 depolamasına bağlı bir kimlik bilgisi veri deposunu kaydetmek için [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) kullanın. Hizmet sorumlunuzu kullanabilmeniz için, [uygulamanızı kaydetmeniz](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) ve *Depolama Blobu veri okuyucusu* erişimi ile hizmet sorumlusu 'na vermeniz gerekir. [ADLS Gen 2 için erişim denetimi ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)hakkında daha fazla bilgi edinin. 
 
-Hizmet sorumlunuzu kullanabilmeniz için [uygulamanızı kaydetmeniz](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) ve hizmet sorumlusuna doğru veri erişimi vermeniz gerekir. [ADLS Gen 2 için erişim denetimi ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)hakkında daha fazla bilgi edinin. 
-
 Aşağıdaki kod, veri deposunu oluşturur ve `adlsgen2_datastore_name` `ws` çalışma alanına kaydeder. Bu veri deposu `test` `account_name` , belirtilen hizmet sorumlusu kimlik bilgilerini kullanarak depolama hesabındaki dosya sistemine erişir.
 
 ```python 
@@ -237,6 +235,7 @@ Varsayılan veri deposunu aşağıdaki kodla da değiştirebilirsiniz. Bu özell
 ```Python
  ws.set_default_datastore(new_default_datastore)
 ```
+
 <a name="up-and-down"></a>
 ## <a name="upload-and-download-data"></a>Verileri karşıya yükleme ve indirme
 
@@ -293,7 +292,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu sağlar. Bu yöntemlerin bazıları veri depolarına erişim sağlamaz. Puanlama sırasında veri depolarına erişmenize izin veren yöntemleri anlamak için aşağıdaki tabloyu kullanın:
 
-| Yöntem | Veri deposu erişimi | Description |
+| Yöntem | Veri deposu erişimi | Açıklama |
 | ----- | :-----: | ----- |
 | [Toplu tahmin](how-to-use-parallel-run-step.md) | ✔ | Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin. |
 | [Web hizmeti](how-to-deploy-and-where.md) | &nbsp; | Modelleri bir Web hizmeti olarak dağıtın. |

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c53954e1aa1779bbf6933f7a81a95d25c8b4043a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362280"
+ms.locfileid: "85367266"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>Derleme görevlerini özelleştirmek için YAML yapılandırma seçenekleri
 
@@ -125,7 +125,6 @@ Bu makalede, her derleme görevinin her birinde bulunan tüm YAML yapılandırma
 | Korunma | boole | AllTools = false | True | true |  | Kötü amaçlı yazılımdan koruma derleme görevleri tarafından oluşturulan sonuçları yayımlayın.
 | Binskım | boole | AllTools = false | True | true |  | BinSkim derleme görevleri tarafından oluşturulan sonuçları yayımlayın.
 | CredScan | boole | AllTools = false | True | true |  | Kimlik bilgisi tarayıcı derleme görevleri tarafından oluşturulan sonuçları yayımlayın.
-| MSRD | boole | AllTools = false | True | true |  | MSRD Build görevi tarafından başlatılan MSRD işleri için iş bilgilerini ve iş URL 'lerini yayımlayın. MSRD işleri uzun süredir çalışıyor ve ayrı raporlar sağlıyor.
 | Roslynçözümleyiciler | boole | AllTools = false | True | yanlış |  | Roslyn Çözümleyicileri derleme görevleri tarafından oluşturulan sonuçları yayımlayın.
 | TSLint | boole | AllTools = false | True | true |  | Tslınt derleme görevleri tarafından oluşturulan sonuçları yayımlayın. Yalnızca JSON biçimindeki TSLint günlüklerinin raporlar için desteklendiğini unutmayın. Farklı bir biçim seçtiyseniz lütfen Tslınt derleme görevinizi uygun şekilde güncelleştirin.
 | ToolLogsNotFoundAction | seçim listesi | Her | True | Standart | Hata, yok, standart, uyarı | Seçilen bir araç için Günlükler (veya tüm araçlar işaretliyse herhangi bir araç) bulunamazsa gerçekleştirilecek eylem, aracın çalıştırılmadığından çalıştırılmadı.<br/><br/>**Seçenekler:**<br/>**Hiçbiri:** İleti, yalnızca VSTS değişkeni **System. Debug** **true**olarak ayarlanarak erişilebilen ayrıntılı çıkış akışına yazılır.<br/>**Standart:** (varsayılan) araç için hiçbir günlük bulunamadığını belirten bir standart çıkış iletisi yazar.<br/>**Uyarı:** Araç için hiçbir günlük bulunamadığını belirten, derleme Özeti sayfasında uyarı olarak görüntülenen sarı bir uyarı iletisi yazar.<br/>**Hata:** Kırmızı bir hata iletisi yazar ve derlemeyi bozan bir özel durum oluşturur. Hangi araçların çalıştığından emin olmak için bireysel araç seçimlerinizle emin olmak için bu seçeneği kullanın.
@@ -141,7 +140,6 @@ Bu makalede, her derleme görevinin her birinde bulunan tüm YAML yapılandırma
 | Binskım | boole | AllTools = false | True | yanlış |  | BinSkim derleme görevleri tarafından oluşturulan sonuçları raporla.
 | Binskıbreakon | Seçim listesi | AllTools = true veya BinSkim = true | True | Hata | Hata, yukarıdaki uyarı | Raporlanacak sonuçların düzeyi.
 | CredScan | boole | AllTools = false | True | yanlış |  | Kimlik bilgisi tarayıcı derleme görevleri tarafından oluşturulan rapor sonuçları.
-| MSRD | boole | AllTools = false | True | yanlış |  | MSRD Build görevi tarafından başlatılan MSRD işlerinin iş bilgilerini ve iş URL 'lerini rapor edin. MSRD işleri uzun süredir çalışıyor ve ayrı raporlar sağlıyor.
 | Roslynçözümleyiciler | boole | AllTools = false | True | yanlış |  | Roslyn Çözümleyicisi derleme görevleri tarafından oluşturulan sonuçları raporla.
 | Roslazanaliz Zersbreakon | Seçim listesi | AllTools = true veya Roslynçözümleyiciler = true | True | Hata | Hata, yukarıdaki uyarı | Raporlanacak sonuçların düzeyi.
 | TSLint | boole | AllTools = false | True | yanlış |  | Tslınt derleme görevleri tarafından oluşturulan sonuçları raporla. Yalnızca JSON biçimindeki TSLint günlüklerinin raporlar için desteklendiğini unutmayın. Farklı bir biçim seçtiyseniz lütfen Tslınt derleme görevinizi uygun şekilde güncelleştirin.

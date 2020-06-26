@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f54eae8c57d3317c6d654b4a019501410239bf9
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ff1c0bd880f2052e6ee2ad3c5cdc3bed803f6da1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317497"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367776"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -569,7 +569,7 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Name                          | Access               | Uygulanan Öğe
+Tür     | Adı                          | Access               | Uygulanan Öğe
 ---------|-------------------------------|----------------------|--------------|
 İzin Ver    | SİSTEM                        | Tam Denetim         | Bu nesne  |
 İzin Ver    | Enterprise Admins             | Tam Denetim         | Bu nesne  |
@@ -581,8 +581,6 @@ Tür     | Name                          | Access               | Uygulanan Öğ
 İzin Ver    | Kimliği Doğrulanmış Kullanıcılar           | Liste Içerikleri        | Bu nesne  |
 İzin Ver    | Kimliği Doğrulanmış Kullanıcılar           | Tüm Özellikleri Oku  | Bu nesne  |
 İzin Ver    | Kimliği Doğrulanmış Kullanıcılar           | Okuma Izinleri     | Bu nesne  |
-
-AD DS hesabının ayarlarını sağlamkılabilmeniz için [Bu PowerShell betiğini](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)çalıştırabilirsiniz. PowerShell betiği yukarıda belirtilen izinleri AD DS hesabına atayacaktır.
 
 #### <a name="powershell-script-to-tighten-a-pre-existing-service-account"></a>Önceden var olan bir hizmet hesabını sağlamtıran PowerShell betiği
 

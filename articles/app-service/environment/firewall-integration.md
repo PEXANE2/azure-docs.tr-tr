@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: e56e5878c2f3528bee50137b4d40d947feda3ece
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 937f84d1b918eb7b9f38a62caef5dea7cede6d4d
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197163"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367895"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Ortamı kilitleme
 
@@ -92,7 +92,7 @@ Uygulamanız için gelen trafiğin geldiği adres aralığını biliyorsanız, b
 
 Bu Application Gateway kullanımı, sisteminizi yapılandırmaya yönelik yalnızca bir örnektir. Bu yolu izledikten sonra, Application Gateway gönderilen yanıt trafiğinin doğrudan gidebilmesi için ATıCı alt ağ yolu tablosuna bir yol eklemeniz gerekir. 
 
-## <a name="logging"></a>Günlüğe kaydetme 
+## <a name="logging"></a>Günlüğe Kaydetme 
 
 Azure Güvenlik Duvarı, Azure depolama, Olay Hub 'ı veya Azure Izleyici günlüklerine Günlükler gönderebilir. Uygulamanızı desteklenen herhangi bir hedefle tümleştirmek için Azure Güvenlik Duvarı portalı > tanılama günlükleri ' ne gidin ve istediğiniz hedefe yönelik günlükleri etkinleştirin. Azure Izleyici günlükleri ile tümleştirirseniz, Azure Güvenlik Duvarı 'na gönderilen tüm trafik için günlüğe kaydetmeyi görebilirsiniz. Reddedilen trafiği görmek için Log Analytics çalışma alanı portalınızı > günlüklerine açın ve şu şekilde bir sorgu girin: 
 
@@ -115,7 +115,7 @@ Aşağıdaki bilgiler yalnızca Azure Güvenlik Duvarı dışında bir güvenlik
 | Uç Nokta |
 |----------|
 | Azure SQL |
-| Azure Storage |
+| Azure Depolama |
 | Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
@@ -248,6 +248,7 @@ Azure Güvenlik Duvarı ile, aşağıdaki her şeyi, FQDN etiketleriyle yapılan
 |security.ubuntu.com:80 |
 | \*. cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
+|\*. data.mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
 |apt-mo.trafficmanager.net:80 |
@@ -280,7 +281,7 @@ Linux, US Gov bölgelerinde kullanılamaz ve bu nedenle isteğe bağlı bir yap�
 | Uç Nokta |
 |----------|
 | Azure SQL |
-| Azure Storage |
+| Azure Depolama |
 | Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları

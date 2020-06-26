@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1e9ec975a17be2675d2f56b2cee87f91d7e9aae
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 388c40867c21390c3de8a033a1bfa08eb95bd602
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733135"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367419"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekleyin
 Azure Active Directory (Azure AD) oturum açma sayfalarınızda tutarlı bir görünüm sağlamak için kuruluşunuzun logosu ve özel renk düzenlerini kullanın. Kullanıcılar, kimlik sağlayıcınız olarak Azure AD kullanan Office 365 gibi, kuruluşunuzun Web tabanlı uygulamalarında oturum açtığında oturum açma sayfalarınız görüntülenir.
@@ -62,7 +62,17 @@ Kullanıcılarınızın www office.com gibi sitelere gitmesi durumunda özel mar
 
         - **Kullanıcı adı ipucu.** Kullanıcı Kullanıcı adını unutduklarında görüntülenen ipucu metnini yazın. Bu metin, bağlantı veya kod olmadan Unicode olmalıdır ve 64 karakteri aşamaz. Konuklarınız uygulamanızda oturum açtığında, bu ipucunu eklememeyi öneririz.
 
-        - **Oturum açma sayfası metni.** Oturum açma sayfasının alt kısmında görüntülenen metni yazın. Bu metni, telefon numarası gibi ek bilgileri, yardım masasına veya yasal bir bildirime iletmek için kullanabilirsiniz. Bu metin Unicode olmalıdır ve 256 karakteri aşmamalıdır.
+        - **Oturum açma sayfası metni ve biçimlendirmesi.** Oturum açma sayfasının alt kısmında görüntülenen metni yazın. Bu metni, telefon numarası gibi ek bilgileri, yardım masasına veya yasal bir bildirime iletmek için kullanabilirsiniz. Bu metin Unicode olmalıdır ve 1024 karakteri aşmamalıdır.
+
+           Girdiğiniz oturum açma sayfası metnini özelleştirebilirsiniz. Yeni bir paragrafa başlamak için Enter tuşunu iki kez kullanın. Ayrıca metin biçimlendirmesini kalın, italik, altı çizili veya tıklatılabilir bir bağlantı içerecek şekilde değiştirebilirsiniz. Metne biçimlendirme eklemek için aşağıdaki sözdizimini kullanın: 
+
+          > Bağlanan```[text](link)``` 
+          
+          > Kalın: ``` **text** ``` veya``` __text__ ``` 
+          
+          > İtalik: ``` *text* ``` veya``` _text_ ``` 
+          
+          > Altçizgi``` ++text++ ``` 
 
     - **Gelişmiş ayarlar**
             

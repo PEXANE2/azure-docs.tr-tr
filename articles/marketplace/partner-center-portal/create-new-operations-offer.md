@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: badad6da0c0e244cbdb30e4b89955dd073782f04
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 6a062723394b9a5187b72cabf449cdc17b2bbbcd
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752520"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373497"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations teklifi oluşturma
 
@@ -148,9 +148,9 @@ Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren 
 7. Gizlilik ilkesi
 8. Teklif adı
 9. Ekran görüntüleri/videolar
-10. Description
+10. Açıklama
 
-### <a name="name"></a>Name
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -158,7 +158,7 @@ Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığ�
 
 Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıklama sağlayın. Bu açıklama Market arama sonuçlarında kullanılabilir.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -210,9 +210,6 @@ Teklifinizin logosunu iki piksel boyutunda sağlar:
 - **Küçük** (48 x 48)
 - **Büyük** (216 x 216)
 
-#### <a name="hero"></a>Hero
-
-Hero görüntüsü isteğe bağlıdır. Bir tane sağlarsanız, 815 x 290 pikseli ölçmelidir.
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

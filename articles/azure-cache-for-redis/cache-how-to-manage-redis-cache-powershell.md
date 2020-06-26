@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: cabb1a7d45906c9e60e1defd7d3d99286cdd39fb
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 10591c6e1e47be5d0f8fcb5eb4a4d4d8c1adf564
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318258"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367878"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Redsıs için Azure önbelleğini Azure PowerShell ile yönetme
 > [!div class="op_single_selector"]
@@ -119,7 +119,7 @@ Aşağıdaki tabloda, Azure PowerShell kullanarak Redsıs örnekleri için Azure
 
 | Parametre | Açıklama | Varsayılan |
 | --- | --- | --- |
-| Name |Önbelleğin adı | |
+| Adı |Önbelleğin adı | |
 | Konum |Önbelleğin konumu | |
 | ResourceGroupName |Önbelleğin oluşturulacağı kaynak grubu adı | |
 | Boyut |Önbelleğin boyutu. Geçerli değerler şunlardır: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |GB |
@@ -134,7 +134,7 @@ Aşağıdaki tabloda, Azure PowerShell kullanarak Redsıs örnekleri için Azure
 | Anahtar |Erişim anahtarları yenilenirken hangi erişim anahtarının yeniden oluşturulması gerektiğini belirtir. Geçerli değerler şunlardır: birincil, Ikincil | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration özellikleri
-| Özellik | Description | Fiyatlandırma katmanları |
+| Özellik | Açıklama | Fiyatlandırma katmanları |
 | --- | --- | --- |
 | RDB-yedekleme-etkin |[Redsıs veri kalıcılığının](cache-how-to-premium-persistence.md) etkin olup olmadığı |Yalnızca Premium |
 | RDB-depolama-bağlantı-dize |[Redsıs veri kalıcılığı](cache-how-to-premium-persistence.md) için depolama hesabına yönelik bağlantı dizesi |Yalnızca Premium |
@@ -779,5 +779,5 @@ Azure ile Windows PowerShell kullanma hakkında daha fazla bilgi edinmek için a
 * [Azure kaynaklarınızı yönetmek Için kaynak gruplarını kullanma](../azure-resource-manager/templates/deploy-portal.md): Azure Portal kaynak grupları oluşturma ve yönetme hakkında bilgi edinin.
 * [Azure blogu](https://azure.microsoft.com/blog/): Azure 'daki yeni özellikler hakkında bilgi edinin.
 * [Windows PowerShell blogu](https://devblogs.microsoft.com/powershell/): Windows PowerShell 'de yeni özellikler hakkında bilgi edinin.
-* ["Hey, betik Guy!" Blog](https://devblogs.microsoft.com/scripting/author/the-scripting-guys/): Windows PowerShell Community 'den gerçek dünya ipuçları ve püf noktaları alın.
+* ["Hey, betik Guy!" Blog](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/): Windows PowerShell Community 'den gerçek dünya ipuçları ve püf noktaları alın.
 

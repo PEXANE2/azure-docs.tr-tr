@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.openlocfilehash: 48e23aa8cf20dd1225d3d7774d9703b960e0155a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/24/2020
+ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737895"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368013"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -43,10 +43,7 @@ Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsin
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
 Ana sunucunuzun bulunduğu yere bakılmaksızın aşağıdaki bölgelerin herhangi birinde her zaman bir okuma çoğaltması oluşturabilirsiniz. Evrensel çoğaltma bölgeleri şunlardır:
 
-Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD.
-
-* Batı ABD 2 bir çapraz bölge çoğaltma konumu olarak geçici olarak kullanılamıyor.
-
+Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2, Orta Batı ABD.
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
 Evrensel çoğaltma bölgelerine ek olarak, ana sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.
@@ -55,7 +52,7 @@ Olağanüstü durum kurtarma planlaması için çapraz bölge çoğaltmaları ku
 
 Göz önünde bulundurulması gereken sınırlamalar vardır: 
 
-* Bölgesel kullanılabilirlik: PostgreSQL için Azure veritabanı Batı ABD 2, Fransa Orta, BAE Kuzey ve Almanya Orta bulunabilir. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
+* Bölgesel kullanılabilirlik: PostgreSQL için Azure veritabanı Fransa Orta, BAE Kuzey ve Almanya Orta bulunabilir. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
     
 * Tek yönlü çiftler: bazı Azure bölgeleri yalnızca bir yönde eşleştirilmelidir. Bu bölgeler Batı Hindistan Brezilya Güney içerir. 
    Bu, Batı Hindistan 'deki bir ana sunucunun Güney Hindistan bir çoğaltma oluşturmasıdır. Ancak, Güney Hindistan bir ana sunucu Batı Hindistan bir çoğaltma oluşturamaz. Bunun nedeni, Batı Hindistan ikincil bölgesinin Güney Hindistan, ancak Güney Hindistan ikincil bölgesi Batı Hindistan değildir.

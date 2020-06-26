@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1a516374e0ac478b24fa1c3ced1627c4814f9bbd
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647749"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367606"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Juno yolculuğu yapılandırma
 
@@ -34,13 +34,13 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Juno y
 > * Kullanıcı özniteliklerinin Azure AD ile Juno yolculuğu arasında eşitlenmiş olmasını sağlama
 > * Juno yolculukta [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/juno-journey-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
-*  Bir [Juno yolculuğu kiracısı](https://www.junojourney.com/blank).
+*  Bir [Juno yolculuğu kiracısı](https://www.junojourney.com/getstarted).
 *  Yönetim izinlerine sahip yolculukta bir kullanıcı hesabı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
@@ -71,7 +71,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Azure AD 'de Juno yolculuğu için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

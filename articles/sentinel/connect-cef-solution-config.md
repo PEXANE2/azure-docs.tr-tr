@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bdb76954b1db8135d8a36d6658bb7fff274ac126
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c25e48bd46f0d37330f693cb4d6538e7bc29c4b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588459"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367249"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>2. Adım: Güvenlik çözümünüzü CEF iletileri gönderecek şekilde yapılandırma
 
@@ -29,10 +29,11 @@ Bu adımda, CEF aracısına Günlükler göndermek için güvenlik çözümünü
 
 Güvenlik çözümünüz zaten mevcut bir bağlayıcınız varsa, bağlayıcıya özgü yönergeleri aşağıdaki gibi kullanın:
 
+- [AI Vektöri algılama](connect-ai-vectra-detect.md)
 - [Denetim Noktası](connect-checkpoint.md)
 - [Cisco](connect-cisco.md)
 - [ExtraHop Reveal(x)](connect-extrahop.md)
-- [F5](connect-f5.md)  
+- [F5 ASM](connect-f5.md)  
 - [Fortinet](connect-fortinet.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
@@ -40,6 +41,7 @@ Güvenlik çözümünüz zaten mevcut bir bağlayıcınız varsa, bağlayıcıya
 - [Zscaler](connect-zscaler.md)   
 
 ## <a name="configure-any-other-solution"></a>Diğer herhangi bir çözümü yapılandırma
+
 Belirli güvenlik çözümünüz için bir bağlayıcı yoksa, günlükleri CEF aracısına iletmek için aşağıdaki genel yönergeleri kullanın.
 
 1. Çözümünüzü CEF iletileri gönderecek şekilde yapılandırma adımları için ilgili yapılandırma makalesine gidin. Çözümünüz listede yoksa, Gereç bu değerleri, Log Analytics aracısına bağlı olarak, gerecin gerekli biçimdeki Azure Sentinel Syslog aracısına göndermesi için ayarlamanız gerekir. Bu parametreleri Azure Sentinel aracısında Syslog arka plan programı 'nda da değiştirdiğiniz sürece, aracısında değiştirebilirsiniz.
@@ -51,13 +53,12 @@ Belirli güvenlik çözümünüz için bir bağlayıcı yoksa, günlükleri CEF 
    > [!NOTE]
    > Bu çözüm Syslog RFC 3164 veya RFC 5424 ' ü destekler.
 
-
-1. CEF olayları için Log Analytics ilgili şemayı kullanmak için, araması yapın `CommonSecurityLog`.
+1. CEF olayları için Log Analytics ilgili şemayı kullanmak için, araması yapın `CommonSecurityLog` .
 
 1. 3. Adım: [bağlantıyı doğrulama](connect-cef-verify.md)adımına geçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
-

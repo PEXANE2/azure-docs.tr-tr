@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e365503ba975f8cc93302bd3f1084c2cdd4f254f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: b225b6471dd59275b3963bc2de09607c97a21465
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114036"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373412"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -72,12 +72,19 @@ TLS 1,2 ' i etkinleştirmek için:
 
 1. Aşağıdaki kayıt defteri anahtarlarını ayarlayın:
     
-    ```
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
-    ```
+   ```
+   Windows Registry Editor Version 5.00
+
+   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client]
+   "DisabledByDefault"=dword:00000000
+   "Enabled"=dword:00000001
+   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server]
+   "DisabledByDefault"=dword:00000000
+   "Enabled"=dword:00000001
+   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+   "SchUseStrongCrypto"=dword:00000001
+   ```
 
 1. Sunucuyu yeniden başlatın.
 
@@ -179,7 +186,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
 4. Şirket **içi uygulamalar** bölümünde Şirket **içi uygulama ekle**' yi seçin.
 5. **Kendi şirket içi uygulamanızı ekleyin** bölümünde, uygulamanız hakkında aşağıdaki bilgileri sağlayın:
 
-    | Alan | Description |
+    | Alan | Açıklama |
     | :---- | :---------- |
     | **Adı** | Erişim panelinde ve Azure portal görünecek uygulamanın adı. |
     | **İç URL** | Özel ağınızın içinden uygulamaya erişim URL 'SI. Arka uç sunucusundaki belirli bir yolun yayımlanmasını sağlayabilirsiniz. Sunucunun geri kalanı yayımlanmaz. Bu şekilde, farklı siteleri farklı uygulamalarla aynı sunucuda yayımlayabilir ve her birine kendi ad ve erişim kurallarına sahip olabilirsiniz.<br><br>Bir yol yayımlarsanız uygulamanıza ilişkin tüm gerekli görüntüleri, betikleri ve stil sayfalarını içerdiğinden emin olun. Örneğin, uygulamanız https: \/ /yourapp/App ise ve https: \/ /yourapp/Media konumunda bulunan görüntüleri kullanıyorsa, https: \/ /yourapp/yolunu olarak yayımlamanız gerekir. Bu iç URL 'nin kullanıcılarınızın göreceği giriş sayfası olması gerekmez. Daha fazla bilgi için bkz. [yayımlanan uygulamalar için özel bir giriş sayfası ayarlama](application-proxy-configure-custom-home-page.md). |
@@ -189,7 +196,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
 
 6. Gerekirse, **ek ayarları**yapılandırın. Çoğu uygulama için, bu ayarları varsayılan durumlarında tutmanız gerekir. 
 
-    | Alan | Description |
+    | Alan | Açıklama |
     | :---- | :---------- |
     | **Arka uç uygulama zaman aşımı** | Bu değeri yalnızca uygulamanızın kimlik doğrulaması ve bağlanma yavaş olması durumunda **uzun** olarak ayarlayın. Varsayılan olarak, arka uç uygulama zaman aşımı 85 saniye uzunluğuna sahiptir. Long olarak ayarlandığında, arka uç zaman aşımı 180 saniyeye yükseltilir. |
     | **Yalnızca HTTP tanımlama bilgisini kullan** | Uygulama proxy 'Si tanımlama bilgilerinin HTTP yanıt üstbilgisinde HTTPOnly bayrağını içermesi için bu değeri **Evet** olarak ayarlayın. Uzak Masaüstü Hizmetleri kullanıyorsanız, bu değeri **Hayır**olarak ayarlayın.|

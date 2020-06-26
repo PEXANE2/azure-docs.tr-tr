@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 1dc5cf055e6fee72cb6d73b3c4c5c76eefb037d6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800176"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368268"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure 'da SUSE Linux Enterprise Server Paceyapıcısı ayarlama
 
@@ -34,9 +34,9 @@ ms.locfileid: "83800176"
 
 Azure 'da bir Paceoluşturucu kümesi kurmak için iki seçenek vardır. Azure API 'Leri aracılığıyla başarısız olan bir düğümü yeniden başlatma işlemini ele alan ve bir SBD cihazı kullanabileceğiniz bir düğüm oluşturma Aracısı kullanabilirsiniz.
 
-SBD cihazı, Iscsı hedef sunucusu olarak davranan ve bir SBD cihazı sağlayan en az bir ek sanal makine gerektirir. Bu Iscsı hedef sunucuları, diğer Paceüreticisi kümeleriyle paylaşılabilir. Bir SBD cihaz kullanmanın avantajı daha hızlı bir yük devretme zamanı olup, şirket içinde SBD cihazları kullanıyorsanız, paceoluşturucu kümesini nasıl çalıştıracaksınız üzerinde herhangi bir değişiklik yapılmasını gerektirmez. Bir Paceoluşturucu kümesi için en fazla üç SBD cihazı kullanarak bir SBD cihazının kullanılamaz hale gelmesine izin verebilirsiniz (örneğin, Iscsı hedef sunucusu 'nda işletim sistemi düzeltme eki uygulama). Her Paceyapıcısı için birden fazla SBD cihazı kullanmak istiyorsanız, birden çok Iscsı hedef sunucusu dağıttığınızdan ve her bir Iscsı hedef sunucusundan bir SBD 'nin bağlanmasına emin olun. Tek bir SBD cihazı veya üçten birini kullanmanızı öneririz. Yalnızca iki SBD cihazı yapılandırırsanız ve bunlardan biri kullanılabilir değilse pacemaker bir küme düğümünü otomatik olarak dilimlayamaz. Bir Iscsı hedef sunucusu kapatıldığında sınır oluşturabilmek istiyorsanız üç SBD cihaz ve bu nedenle üç Iscsı hedef sunucusu kullanmanız gerekir.
+SBD cihazı, Iscsı hedef sunucusu olarak davranan ve bir SBD cihazı sağlayan en az bir ek sanal makine gerektirir. Bu Iscsı hedef sunucuları, diğer Paceüreticisi kümeleriyle paylaşılabilir. Bir SBD cihaz kullanmanın avantajı, zaten şirket içinde SBD cihazları kullanıyorsanız, paceoluşturucu kümesini nasıl çalıştıracaksınız üzerinde herhangi bir değişiklik yapılmasını gerektirmez. Bir Paceoluşturucu kümesi için en fazla üç SBD cihazı kullanarak bir SBD cihazının kullanılamaz hale gelmesine izin verebilirsiniz (örneğin, Iscsı hedef sunucusu 'nda işletim sistemi düzeltme eki uygulama). Her Paceyapıcısı için birden fazla SBD cihazı kullanmak istiyorsanız, birden çok Iscsı hedef sunucusu dağıttığınızdan ve her bir Iscsı hedef sunucusundan bir SBD 'nin bağlanmasına emin olun. Tek bir SBD cihazı veya üçten birini kullanmanızı öneririz. Yalnızca iki SBD cihazı yapılandırırsanız ve bunlardan biri kullanılabilir değilse pacemaker bir küme düğümünü otomatik olarak dilimlayamaz. Bir Iscsı hedef sunucusu çalışırken sınır oluşturabilmek istiyorsanız, SBDs kullanırken en esnek yapılandırma olan üç SBD cihazı ve bu nedenle üç Iscsı hedef sunucusu kullanmanız gerekir.
 
-Bir ek sanal makineye yatırım yapmak istemiyorsanız, Azure çit Aracısı 'nı da kullanabilirsiniz. Bu, bir kaynak duramazsa veya küme düğümleri birbirleriyle iletişim kuramıyorsa, bir yük devretmenin 10 ila 15 dakika arasında sürebileceği anlamına gelir.
+Azure çit Aracısı ek sanal makinelerin dağıtılmasını gerektirmez.   
 
 ![SLES 'de pacemaker genel bakış](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -413,32 +413,36 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** sınır aracılarını yükler
+1. **[A]** Azure sınır aracısına göre STONITH cihazı kullanılıyorsa, sınır aracıları paketini yükler.  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > SAP 15 için SUSE Linux Enterprise Server kullanıyorsanız, ek modülü etkinleştirmeniz ve Azure sınır Aracısı kullanımı için önkoşul olan ek bileşen yüklemeniz gerektiğini unutmayın. SUSE modülleri ve uzantıları hakkında daha fazla bilgi edinmek için bkz. [modüller ve uzantılar açıklanmıştır](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Azure Python SDK 'Yı yüklemek için en düşük yönergeleri izleyin. 
+   > Paket **sınırı-aracıların** yüklü sürümü, bir küme düğümlerinin yeniden oluşturulması gerekiyorsa Azure sınır Aracısı ile daha hızlı yük devretme süreleriyle faydalanmak için en az **4.4.0** olmalıdır. Daha düşük bir sürüm çalıştırıyorsa paketi güncelleştirmenizi öneririz.  
 
-   Azure Python SDK 'nın nasıl yükleneceğine ilişkin aşağıdaki yönergeler yalnızca SAP **15**Için Suse Enterprise Server için geçerlidir.  
 
-    - Kendi aboneliğinizi getir ' i kullanıyorsanız, bu yönergeleri izleyin  
+1. **[A]** Azure Python SDK 'sını yüklemeyi 
+   - SLES 12 SP4 veya SLES 12 SP5
+   <pre><code>
+    # You may need to activate the Public cloud extention first
+    SUSEConnect -p sle-module-public-cloud/12/x86_64
+    sudo zypper install python-azure-mgmt-compute
+   </code></pre> 
 
-    <pre><code>
-    #Activate module PackageHub/15/x86_64
-    sudo SUSEConnect -p PackageHub/15/x86_64
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
-
-     - Kullandıkça Öde aboneliği kullanıyorsanız, bu yönergeleri izleyin  
-
-    <pre><code>#Activate module PackageHub/15/x86_64
-    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
+   - SLES 15 ve üzeri sürümlerde 
+   <pre><code>
+    # You may need to activate the Public cloud extention first. In this example the SUSEConnect command is for SLES 15 SP1
+    SUSEConnect -p sle-module-public-cloud/15.1/x86_64
+    sudo zypper install python3-azure-mgmt-compute
+   </code></pre> 
+ 
+   >[!IMPORTANT]
+   >Sürümünüze ve görüntü türüne bağlı olarak, Azure Python SDK 'yı yükleyebilmeniz için, işletim sistemi sürümünüz için genel bulut uzantısını etkinleştirmeniz gerekebilir.
+   >Uzantısı, SUSEConnect---List-Extensions ' ı çalıştırarak da denetleyebilirsiniz.  
+   >Azure çit Aracısı ile daha hızlı yük devretme süreleri elde etmek için:
+   > - SLES 12 SP4 veya SLES 12 SP5, sürüm **4.6.2** veya daha yüksek paket Python-Azure-MGMT-COMPUTE  
+   > - SLES 15 paketinin sürüm **4.6.2** veya daha yüksek bir sürümünü yükler Python**3**-Azure-MGMT-COMPUTE 
 
 1. **[A]** kurulum konak adı çözümlemesi
 
@@ -457,7 +461,7 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
    </code></pre>
 
 1. **[1]** küme yüklemesi
-
+- balıklama için SBD cihazları kullanılıyorsa
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -466,6 +470,19 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
    # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
    # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
+   # Do you wish to configure an administration IP (y/n)? <b>n</b>
+   </code></pre>
+
+- balıklama için SBD cihazları *kullanmıyorsanız*
+   <pre><code>sudo ha-cluster-init -u
+   
+   # ! NTP is not configured to start at system boot.
+   # Do you want to continue anyway (y/n)? <b>y</b>
+   # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
+   # Do you wish to use SBD (y/n)? <b>n</b>
+   #WARNING: Not configuring SBD - STONITH will be disabled.
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
@@ -528,8 +545,27 @@ Oluşturmak istediğiniz yeni kümenin düğümlerinde aşağıdaki komutları �
    <pre><code>sudo service corosync restart
    </code></pre>
 
+## <a name="default-pacemaker-configuration-for-sbd"></a>SBD için varsayılan Paceoluşturucu yapılandırması
+
+Bu bölümdeki yapılandırma yalnızca SBD STONITH kullanılıyorsa geçerlidir.  
+
+1. **[1]** bir STONITH cihazının kullanımını etkinleştirme ve çit gecikmesini ayarlama
+
+<pre><code>sudo crm configure property stonith-timeout=144
+sudo crm configure property stonith-enabled=true
+
+# List the resources to find the name of the SBD device
+sudo crm resource list
+sudo crm resource stop stonith-sbd
+sudo crm configure delete <b>stonith-sbd</b>
+sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
+   params pcmk_delay_max="15" \
+   op monitor interval="15" timeout="15"
+</code></pre>
+
 ## <a name="create-azure-fence-agent-stonith-device"></a>Azure çit Aracısı STONITH cihazı oluşturma
 
+Belgelerinin bu bölümü, Azure sınır aracısına göre yalnızca STONITH kullanılıyorsa geçerlidir.
 STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlusu kullanır. Hizmet sorumlusu oluşturmak için bu adımları izleyin.
 
 1. Şuraya gidin: <https://portal.azure.com>
@@ -543,7 +579,7 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
 1. Değeri yazın. Hizmet sorumlusu için **parola** olarak kullanılır
-1. Genel bakış'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
+1. Genel Bakış’ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 
@@ -553,22 +589,26 @@ Giriş dosyası için aşağıdaki içeriği kullanın. İçeriği aboneliklerin
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action" 
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -591,32 +631,23 @@ Son bölümde oluşturulan "Linux çit Aracısı rolü" özel rolünü hizmet so
 
 Sanal makineler için izinleri düzenledikten sonra, kümedeki STONITH cihazlarını yapılandırabilirsiniz.
 
-<pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+<pre><code>sudo crm configure property stonith-enabled=true
+crm configure property concurrent-fencing=true
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  op monitor interval=3600 timeout=120
 
 sudo crm configure property stonith-timeout=900
-sudo crm configure property stonith-enabled=true
+
 </code></pre>
+
+> [!IMPORTANT]
+> İzleme ve sınırlama işlemleri de serileştirilir. Sonuç olarak, daha uzun süre çalışan bir izleme işlemi ve eşzamanlı geçiş olayı varsa, zaten çalışan izleme işlemi nedeniyle küme yük devretmesi için gecikme yoktur.
 
 > [!TIP]
 >Azure sınır Aracısı, [Standart ILB kullanan VM 'ler Için genel uç nokta bağlantısı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)' nda açıklandığı gibi ortak uç noktalara giden bağlantı kurulmasını gerektirir.  
-
-## <a name="default-pacemaker-configuration-for-sbd"></a>SBD için varsayılan Paceoluşturucu yapılandırması
-
-1. **[1]** bir STONITH cihazının kullanımını etkinleştirme ve çit gecikmesini ayarlama
-
-<pre><code>sudo crm configure property stonith-timeout=144
-sudo crm configure property stonith-enabled=true
-
-# List the resources to find the name of the SBD device
-sudo crm resource list
-sudo crm resource stop stonith-sbd
-sudo crm configure delete <b>stonith-sbd</b>
-sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
-   params pcmk_delay_max="15" \
-   op monitor interval="15" timeout="15"
-</code></pre>
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure zamanlanan olaylar için paceoluşturucu yapılandırması
 

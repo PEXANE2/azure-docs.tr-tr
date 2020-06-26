@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 14e7f4d09185f76786fd88576eef0b6df02877c4
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253622"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368082"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için SSMS kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,11 +73,11 @@ SSMS 'de sunucunuza bağlanın.
 
 2. **Sunucuya Bağlan** iletişim kutusu görüntülenir. Aşağıdaki bilgileri girin:
 
-   | Ayar      | Önerilen değer    | Description |
+   | Ayar      | Önerilen değer    | Açıklama |
    | ------------ | ------------------ | ----------- |
    | **Sunucu türü** | Veritabanı altyapısı | Gerekli değer. |
    | **Sunucu adı** | Tam sunucu adı | Şöyle bir şey: **ServerName.Database.Windows.net**. |
-   | **Kimlik doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğretici, SQL kimlik doğrulamasını kullanır. |
+   | **Kimlik Doğrulaması** | SQL Server Kimlik Doğrulaması | Bu öğretici, SQL kimlik doğrulamasını kullanır. |
    | **Oturum aç** | Sunucu Yöneticisi hesabı kullanıcı KIMLIĞI | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki Kullanıcı KIMLIĞI. |
    | **Parola** | Sunucu Yöneticisi hesap parolası | Sunucu oluşturmak için kullanılan sunucu yönetici hesabındaki parola. |
    ||||
@@ -155,7 +155,7 @@ Tabloda yeni bir ürün oluşturmak için bu [Insert](/sql/t-sql/statements/inse
 
 ### <a name="update-data"></a>Verileri güncelleştirme
 
-Yeni ürününüzü değiştirmek için bu [güncelleştirme](/sql/t-sql/statements/update-transact-sql) Transact-SQL kodunu çalıştırın.
+Yeni ürününüzü değiştirmek için bu [güncelleştirme](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL kodunu çalıştırın.
 
 1. Önceki sorguyu, daha önce oluşturulan yeni kaydı döndüren bir ile değiştirin:
 

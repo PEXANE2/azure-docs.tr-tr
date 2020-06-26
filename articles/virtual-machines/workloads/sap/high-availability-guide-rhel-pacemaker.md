@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 3b65422a9baf33a2b55de9f1bdfcc85918616d65
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800745"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85366840"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
 
@@ -196,6 +196,11 @@ ms.locfileid: "83800745"
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
+1. **[1]** eşzamanlı çit eylemlerine izin ver
+
+   <pre><code>sudo pcs property set concurrent-fencing=true
+   </code></pre>
+
 ## <a name="create-stonith-device"></a>STONITH cihazı oluşturma
 
 STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlusu kullanır. Hizmet sorumlusu oluşturmak için bu adımları izleyin.
@@ -211,7 +216,7 @@ STONITH cihazı Microsoft Azure karşı yetkilendirmek için bir hizmet sorumlus
 1. Sertifikalar ve gizlilikler ' ı seçin ve ardından yeni istemci parolası ' na tıklayın
 1. Yeni anahtar için bir açıklama girin, "süresiz Expires" öğesini seçin ve Ekle ' ye tıklayın.
 1. Değeri yazın. Hizmet sorumlusu için **parola** olarak kullanılır
-1. Genel bakış'ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
+1. Genel Bakış’ı seçin. Uygulama KIMLIĞINI yazın. Hizmet sorumlusunun Kullanıcı adı (aşağıdaki adımlarda**oturum açma kimliği** ) olarak kullanılır
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** çit Aracısı için özel bir rol oluşturma
 
@@ -221,21 +226,26 @@ Giriş dosyası için aşağıdaki içeriği kullanın. İçeriği aboneliklerin
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to power-off and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/powerOff/action",
-    "Microsoft.Compute/virtualMachines/start/action"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -267,7 +277,13 @@ sudo pcs property set stonith-timeout=900
 > [!NOTE]
 > ' Pcmk_host_map ' seçeneği yalnızca, RHEL ana bilgisayar adları ve Azure düğüm adları aynı DEĞILSE komutunda gereklidir. Komutun kalın bölümüne bakın.
 
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+> [!IMPORTANT]
+> İzleme ve sınırlama işlemleri de serileştirilir. Sonuç olarak, daha uzun süre çalışan bir izleme işlemi ve eşzamanlı geçiş olayı varsa, zaten çalışan izleme işlemi nedeniyle küme yük devretmesi için gecikme yoktur.  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** bir STONITH cihazının kullanımını etkinleştirme
 

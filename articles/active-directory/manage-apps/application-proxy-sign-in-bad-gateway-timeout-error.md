@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6a8d156cc2eea881b84dc0ef58f7b6538e0225f
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759870"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367759"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Uygulama proxy 'Si uygulaması kullanılırken "Bu kurumsal uygulamaya erişilemiyor" hatası
 
@@ -71,7 +71,7 @@ Kullanıcının Azure 'da uygulamaya atandığını onaylamanız durumunda, arka
 Uygulamanın çalışan bir bağlayıcı grubuna atandığını doğrulamak için:
 
 1. Uygulamayı portalda açın **Azure Active Directory**, **Kurumsal uygulamalar**' a ve ardından **tüm uygulamalar** ' a tıklayın. Uygulamayı açın, sonra sol menüden **uygulama proxy 'si** ' ni seçin.
-1. Bağlayıcı grubu alanına bakın. Grupta etkin bağlayıcı yoksa bir uyarı görürsünüz. Herhangi bir uyarı görmüyorsanız, [gerekli tüm bağlantı noktalarına](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to) izin verildiğini doğrulamak için üzerine gidin.
+1. Bağlayıcı grubu alanına bakın. Grupta etkin bağlayıcı yoksa bir uyarı görürsünüz. Herhangi bir uyarı görmüyorsanız, [gerekli tüm bağlantı noktalarına](application-proxy-add-on-premises-application.md) izin verildiğini doğrulamak için üzerine gidin.
 1. Yanlış bağlayıcı grubu gösteriyorsa, doğru grubu seçmek için açılan eklentiyi kullanın ve artık herhangi bir uyarı görmediğini onaylayın. Hedeflenen bağlayıcı grubu gösteriyorsa, sayfayı bağlayıcı yönetimi ile açmak için uyarı iletisine tıklayın.
 1. Buradan daha fazla ayrıntıya geçmek için birkaç yol vardır:
 
@@ -83,7 +83,7 @@ Uygulamanın çalışan bağlayıcılarla bir gruba atandığından emin olmak i
 
 ## <a name="check-all-required-ports-are-open"></a>Tüm gerekli bağlantı noktalarının açık olduğundan emin olun
 
-Tüm gerekli bağlantı noktalarının açık olduğunu doğrulamak için, [bağlantı noktalarını açma ile ilgili belgelere](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)bakın. Gerekli tüm bağlantı noktaları açıksa sonraki bölüme geçin.
+Tüm gerekli bağlantı noktalarının açık olduğunu doğrulayın. Gerekli bağlantı noktaları için, öğreticinin açık bağlantı noktaları bölümüne bakın [: Azure Active Directory Içindeki uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md). Gerekli tüm bağlantı noktaları açıksa sonraki bölüme geçin.
 
 ## <a name="check-for-other-connector-errors"></a>Diğer bağlayıcı hatalarını denetle
 

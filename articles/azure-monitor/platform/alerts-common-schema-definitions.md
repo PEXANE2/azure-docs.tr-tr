@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: d2fea04e44e9a658f97d006de672fd757d894210
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: b8afaae744522bec5675e5a8c17d8b0ea0be0c37
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321878"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367147"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
@@ -71,7 +71,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 
 ## <a name="essentials"></a>Temel Bileşenler
 
-| Alan | Description|
+| Alan | Açıklama|
 |:---|:---|
 | alertId | GUID, uyarı örneğini benzersiz bir şekilde tanımlıyor. |
 | alertRule | Uyarı örneğini oluşturan uyarı kuralının adı. |
@@ -221,9 +221,9 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
                 ]
             }
         ]
-    },
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
+    },
 }
 ```
 

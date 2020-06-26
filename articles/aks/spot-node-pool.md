@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: d1dc54810371c4258616ca95b9f0f0abeee4c415
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462966"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374619"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Önizleme-Azure Kubernetes Service (AKS) kümesine bir spot düğüm havuzu ekleme
 
@@ -41,9 +41,6 @@ Bir spot düğüm havuzu kullanmak için bir küme oluşturduğunuzda, bu küme 
 ### <a name="register-spotpoolpreview-preview-feature"></a>Spotpoolpreview önizleme özelliğini Kaydet
 
 Spot düğüm havuzu kullanan bir AKS kümesi oluşturmak için, aboneliğinizde *spotpoolpreview* özelliği bayrağını etkinleştirmeniz gerekir. Bu özellik, bir kümeyi yapılandırırken en son hizmet iyileştirmeleri sağlar.
-
-> [!CAUTION]
-> Bir abonelik üzerinde bir özelliği kaydettiğinizde, o özelliği şu anda kaydedemezsiniz. Bazı Önizleme özelliklerini etkinleştirdikten sonra, daha sonra abonelikte oluşturulan tüm AKS kümeleri için varsayılanlar kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
 
 Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak *spotpoolpreview* Özellik bayrağını kaydedin:
 

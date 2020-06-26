@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c3f3eddf57b559d9e8f4837db453232308869767
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: f459e1dd70850db1d7087b4c99de741b37d3bfda
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118058"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367130"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -82,7 +82,7 @@ Bölge artıklığı, [çok yöneticili çoğaltma](how-to-multi-master.md) öze
 
 Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret ödemeden bölge yedekliliği seçebilirsiniz. Aksi takdirde, lütfen bölge artıklığı desteğinin fiyatlandırmasıyla ilgili olarak aşağıdaki nota bakın. Bölgeyi kaldırarak ve bölge yedekliği etkinken yeniden ekleyerek, Azure Cosmos hesabınızın mevcut bir bölgesinde bölge yedekliliği etkinleştirebilirsiniz.
 
-Bu özellik: *UK Güney, Güneydoğu Asya, Doğu ABD, Doğu ABD 2, Orta ABD, Batı Avrupa, Batı ABD 2, Avustralya Doğu, Japonya Doğu,* Kuzey Avrupa, Fransa orta bölgelerinde kullanılabilir.
+Bu özellik: *UK Güney, Güneydoğu Asya, Doğu ABD, Doğu ABD 2, Orta ABD, Batı Avrupa, Batı ABD 2, Japonya Doğu, Kuzey Avrupa* , Fransa orta bölgelerinde kullanılabilir.
 
 > [!NOTE]
 > Tek bir bölge için Kullanılabilirlik Alanları etkinleştirme Azure Cosmos hesabı, hesabınıza ek bir bölge eklemeye eşdeğer olan ücretlere neden olur. Fiyatlandırma hakkında ayrıntılı bilgi için, Azure Cosmos DB makalelerinde [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) ve [çok bölgeli maliyete](optimize-cost-regions.md) bakın.

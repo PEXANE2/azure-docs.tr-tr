@@ -4,12 +4,12 @@ description: Azure Içeri/dışarı aktarma hizmetini kullanarak ağdan veri gö
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 6d448687836842835259fcf7bbad41af815dfb58
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 5611b5a6fc9ba8bbff11e35449caf0dd9d33fa21
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629294"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373311"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup çevrimdışı yedekleme iş akışı
 
@@ -42,7 +42,7 @@ Aşağıdaki Azure Backup özellikleri veya iş yükleri, için çevrimdışı y
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
   > [!NOTE]
   > Aşağıdaki Önkoşullar ve iş akışı yalnızca [en son Azure kurtarma hizmetleri Aracısı](https://aka.ms/azurebackup_agent)kullanılarak dosya ve klasörlerin çevrimdışı yedeklemesi için geçerlidir. System Center DPM veya Azure Backup Sunucusu kullanarak iş yükleri için çevrimdışı yedeklemeler gerçekleştirmek için bkz. [DPM ve Azure Backup sunucusu Için çevrimdışı yedekleme iş akışı](backup-azure-backup-server-import-export.md).
@@ -90,7 +90,7 @@ Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure 
 
     * **Hazırlama konumu**: ilk yedekleme kopyasının yazıldığı geçici depolama konumu. Hazırlama konumu bir ağ paylaşımında veya yerel bir bilgisayarda olabilir. Kopya bilgisayar ve kaynak bilgisayar farklıysa, hazırlama konumunun tam ağ yolunu belirtin.
     * **Azure Resource Manager depolama hesabı**: herhangi bir Azure aboneliğinde Kaynak Yöneticisi türü depolama hesabının adı (genel amaçlı v1 veya genel amaçlı v2).
-    * **Azure depolama kapsayıcısı**: yedekleme verilerinin, kurtarma hizmetleri kasasına kopyalanmadan önce Içe aktarıldığı Azure depolama hesabındaki hedef depolama blobunun adı.
+    * **Azure depolama kapsayıcısı**: yedekleme verilerinin, kurtarma hizmetleri kasasına kopyalanmadan önce Içe aktarıldığı Azure depolama hesabındaki hedef BLOB depolama kapsayıcısının adı.
     * **Azure ABONELIK kimliği**: Azure depolama hesabının oluşturulduğu Azure aboneliğinin kimliği.
     * **Azure Içeri aktarma Işi adı**: Azure Içeri/dışarı aktarma hizmetinin ve Azure Backup disklere gönderilen verilerin Azure 'a aktarılmasını izleyen benzersiz ad.
   

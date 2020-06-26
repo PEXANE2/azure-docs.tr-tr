@@ -5,27 +5,27 @@ author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 37e751d78bddd76847a4859b6f24e37bec5c9acb
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e8caf6af0b30809857fd59d88fd57e5e43010ae2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730518"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368354"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Öğretici: Azure depolama ile buluta görüntü verileri yükleme
 
-Bu öğretici, bir dizinin birinci bölümüdür. Bu öğreticide, bir depolama hesabına görüntü yüklemek için Azure Blob depolama istemci kitaplığı 'nı kullanan bir Web uygulamasını dağıtmayı öğreneceksiniz. İşiniz bittiğinde, Azure depolama 'daki görüntüleri depolayan ve görüntüleyen bir Web uygulamasına sahip olursunuz.
+Bu öğretici, bir dizinin birinci bölümüdür. Bu öğreticide, bir Web uygulamasını dağıtmayı öğreneceksiniz. Web uygulaması, görüntüleri bir depolama hesabına yüklemek için Azure Blob depolama istemci kitaplığını kullanır. İşiniz bittiğinde, Azure depolama 'daki görüntüleri depolayan ve görüntüleyen bir Web uygulamasına sahip olursunuz.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
 ![.NET 'teki görüntü yeniden Oluşturucu uygulaması](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10"></a>[Node.js ile v10 arasındaki](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-![Node.js Ile v10 arasındaki 'de görüntü reizer uygulaması](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![JavaScript 'te görüntü yeniden Oluşturucu uygulaması](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -46,7 +46,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Baş
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yüklemek ve kullanmak için bu öğreticide, Azure CLı sürüm 2.0.4 veya üstünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
+CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm 2.0.4 veya üstünü çalıştırın. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -97,28 +97,26 @@ Uygulama, Blob depolama hesabında iki kapsayıcı kullanır. Kapsayıcılar, kl
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
-az storage container create -n images --account-name $blobStorageAccount \
+az storage container create --name images \
+  --account-name $blobStorageAccount \
   --account-key $blobStorageAccountKey
 
-az storage container create -n thumbnails --account-name $blobStorageAccount \
+az storage container create --name thumbnails \
+  --account-name $blobStorageAccount \
   --account-key $blobStorageAccountKey --public-access container
-
-echo "Make a note of your Blob storage account key..."
-echo $blobStorageAccountKey
 ```
 
 ```powershell
 $blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
-az storage container create -n images --account-name $blobStorageAccount `
+az storage container create --name images `
+  --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey
 
-az storage container create -n thumbnails --account-name $blobStorageAccount `
+az storage container create --name thumbnails `
+  --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey --public-access container
-
-echo "Make a note of your Blob storage account key..."
-echo $blobStorageAccountKey
 ```
 
 BLOB depolama hesabı adınızı ve anahtarınızı bir yere göz önüne alın. Örnek uygulama, görüntüleri karşıya yüklemek için depolama hesabına bağlanmak üzere bu ayarları kullanır. 
@@ -143,7 +141,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 Web uygulaması, GitHub örnek deposundan dağıtılan örnek uygulama kodu için bir barındırma alanı sağlar. [az webapp create](/cli/azure/webapp) komutuyla `myAppServicePlan` App Service planında bir [web uygulaması](../../app-service/overview.md) oluşturun.  
 
-Aşağıdaki komutta, öğesini `<web_app>` benzersiz bir adla değiştirin. Geçerli karakterler: `a-z`, `0-9`, ve `-`. `<web_app>` benzersiz değilse *Belirtilen `<web_app>` adına sahip web sitesi zaten var* hata iletisiyle karşılaşırsınız. Web uygulamasının varsayılan URL'si `https://<web_app>.azurewebsites.net` şeklindedir.  
+Aşağıdaki komutta, öğesini `<web_app>` benzersiz bir adla değiştirin. Geçerli karakterler: `a-z`, `0-9`, ve `-`. `<web_app>`Benzersiz değilse, şu hata iletisini alırsınız: *Verilen ada sahip Web sitesi `<web_app>` zaten var.* Web uygulamasının varsayılan URL'si `https://<web_app>.azurewebsites.net` şeklindedir.  
 
 ```bash
 webapp="<web_app>"
@@ -177,20 +175,20 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10"></a>[Node.js ile v10 arasındaki](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-App Service bir web uygulamasına içerik dağıtmanın birkaç yolunu destekler. Bu öğreticide, web uygulamasını bir [genel GitHub örnek deposundan](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) dağıtırsınız. [az webapp deployment source config](/cli/azure/webapp/deployment/source) komutuyla Git dağıtımını web uygulamasında gerçekleşecek şekilde yapılandırın.
+App Service bir web uygulamasına içerik dağıtmanın birkaç yolunu destekler. Bu öğreticide, web uygulamasını bir [genel GitHub örnek deposundan](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs) dağıtırsınız. [az webapp deployment source config](/cli/azure/webapp/deployment/source) komutuyla Git dağıtımını web uygulamasında gerçekleşecek şekilde yapılandırın.
 
 ```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+  --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
 ```
 
 ```powershell
 az webapp deployment source config --name $webapp --resource-group myResourceGroup `
   --branch master --manual-integration `
-  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+  --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
 ```
 
 ---
@@ -217,9 +215,9 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10"></a>[Node.js ile v10 arasındaki](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-Örnek web uygulaması, görüntüleri karşıya yüklemek için kullanılan erişim belirteçlerini istemek için [Azure Depolama İstemci Kitaplığı](https://github.com/Azure/azure-storage-js)’nı kullanır. Depolama SDK 'Sı tarafından kullanılan depolama hesabı kimlik bilgileri, Web uygulaması için uygulama ayarları 'nda ayarlanır. Uygulama ayarlarını, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings) komutuyla dağıtılan uygulamaya ekleyin.
+Örnek Web uygulaması, görüntüleri karşıya yüklemek için [JavaScript Için Azure Storage istemci kitaplığını](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage) kullanır. Depolama hesabı kimlik bilgileri, Web uygulaması için uygulama ayarları 'nda ayarlanır. Uygulama ayarlarını, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings) komutuyla dağıtılan uygulamaya ekleyin.
 
 ```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -243,7 +241,7 @@ Web uygulamasını test etmek için, yayımlanan uygulamanızın URL'sine gidin.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
-Bir dosya belirtmek ve karşıya yüklemek için **Fotoğrafları karşıya yükle** bölgesini seçin ya da bir dosyayı bölgenin üzerine sürükleyin. Görüntü başarıyla karşıya yüklenirse kaybolur. **Oluşturulan küçük resimler** bölümü, bu konunun ilerleyen kısımlarında Test edilene kadar boş kalır.
+Bir dosya belirtmek ve karşıya yüklemek için **Fotoğrafları karşıya yükle** bölgesini seçin ya da bir dosyayı bölgenin üzerine sürükleyin. Görüntü başarıyla karşıya yüklenirse kaybolur. **Oluşturulan küçük resimler** bölümü, bu öğreticide daha sonra Test edilene kadar boş kalır.
 
 ![.NET 'e fotoğraf yükleme](media/storage-upload-process-images/figure1.png)
 
@@ -283,16 +281,16 @@ Aşağıdaki sınıflar ve yöntemler, yukarıdaki görevde kullanılır:
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (dize, dize) Oluşturucusu](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10"></a>[Node.js ile v10 arasındaki](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-Dosya **Seç ' i seçin ve** ardından **görüntüyü karşıya yükle**' ye tıklayın. **Oluşturulan küçük resimler** bölümü, bu konunun ilerleyen kısımlarında Test edilene kadar boş kalır. 
+Dosya **Seç ' i seçin ve** ardından **görüntüyü karşıya yükle**' ye tıklayın. **Oluşturulan küçük resimler** bölümü, bu öğreticide daha sonra Test edilene kadar boş kalır.
 
-![Node.js Ile v10 arasındaki ' ye fotoğraf yükleme](media/storage-upload-process-images/upload-app-nodejs.png)
+![Node.js fotoğraf yükleme](media/storage-upload-process-images/upload-app-nodejs.png)
 
 Örnek kodda `post` yolu, görüntüyü blob kapsayıcısına yüklemeden sorumludur. Yol, modülleri karşıya yükleme işlemine yardımcı olması için kullanır:
 
 - [Multer](https://github.com/expressjs/multer) , yol işleyicisi için karşıya yükleme stratejisi uygular.
-- [Stream](https://github.com/sindresorhus/into-stream) , [Createblockblobfromstream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)için gereken şekilde arabelleği bir akışa dönüştürür.
+- [Stream 'e](https://github.com/sindresorhus/into-stream) , arabelleği [UploadStream](/javascript/api/%40azure/storage-blob/blockblobclient#uploadstream-readable--number--number--blockblobuploadstreamoptions-)'in gerektirdiği şekilde bir akışa dönüştürür.
 
 Dosya rotaya gönderilirken dosyanın içeriği, dosya BLOB kapsayıcısına yükleninceye kadar bellekte kalır.
 
@@ -300,34 +298,33 @@ Dosya rotaya gönderilirken dosyanın içeriği, dosya BLOB kapsayıcısına yü
 > Büyük dosyaların belleğe yüklenmesi Web uygulamanızın performansı üzerinde olumsuz bir etkiye sahip olabilir. Kullanıcıların büyük dosyaları nakletmesini beklemeniz durumunda, Web sunucusu dosya sisteminde dosyaları hazırlama ve sonra blob depolamaya yükleme zamanlama işlemlerini düşünebilirsiniz. Dosyalar BLOB depolama alanından olduktan sonra bunları sunucu dosya sisteminden kaldırabilirsiniz.
 
 ```javascript
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const {
-  Aborter,
-  BlobURL,
-  BlockBlobURL,
-  ContainerURL,
-  ServiceURL,
-  StorageURL,
-  SharedKeyCredential,
-  uploadStreamToBlockBlob
+  BlobServiceClient,
+  StorageSharedKeyCredential,
+  newPipeline
 } = require('@azure/storage-blob');
 
 const express = require('express');
 const router = express.Router();
+const containerName1 = 'thumbnails';
 const multer = require('multer');
 const inMemoryStorage = multer.memoryStorage();
 const uploadStrategy = multer({ storage: inMemoryStorage }).single('image');
 const getStream = require('into-stream');
-const containerName = 'images';
+const containerName2 = 'images';
 const ONE_MEGABYTE = 1024 * 1024;
 const uploadOptions = { bufferSize: 4 * ONE_MEGABYTE, maxBuffers: 20 };
-const ONE_MINUTE = 60 * 1000;
-const aborter = Aborter.timeout(30 * ONE_MINUTE);
 
-const sharedKeyCredential = new SharedKeyCredential(
+const sharedKeyCredential = new StorageSharedKeyCredential(
   process.env.AZURE_STORAGE_ACCOUNT_NAME,
   process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY);
-const pipeline = StorageURL.newPipeline(sharedKeyCredential);
-const serviceURL = new ServiceURL(
+const pipeline = newPipeline(sharedKeyCredential);
+
+const blobServiceClient = new BlobServiceClient(
   `https://${process.env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net`,
   pipeline
 );
@@ -335,31 +332,62 @@ const serviceURL = new ServiceURL(
 const getBlobName = originalName => {
   // Use a random number to generate a unique file name, 
   // removing "0." from the start of the string.
-  const identifier = Math.random().toString().replace(/0\./, ''); 
+  const identifier = Math.random().toString().replace(/0\./, '');
   return `${identifier}-${originalName}`;
 };
 
-router.post('/', uploadStrategy, async (req, res) => {
+router.get('/', async (req, res, next) => {
 
-    const blobName = getBlobName(req.file.originalname);
-    const stream = getStream(req.file.buffer);
-    const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
-    const blobURL = BlobURL.fromContainerURL(containerURL, blobName);
-    const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
+  let viewData;
 
-    try {
+  try {
+    const containerClient = blobServiceClient.getContainerClient(containerName1);
+    const listBlobsResponse = await containerClient.listBlobFlatSegment();
 
-      await uploadStreamToBlockBlob(aborter, stream,
-        blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
-
-      res.render('success', { message: 'File uploaded to Azure Blob storage.' });   
-
-    } catch (err) {
-
-      res.render('error', { message: 'Something went wrong.' });
-
+    for await (const blob of listBlobsResponse.segment.blobItems) {
+      console.log(`Blob: ${blob.name}`);
     }
+
+    viewData = {
+      title: 'Home',
+      viewName: 'index',
+      accountName: process.env.AZURE_STORAGE_ACCOUNT_NAME,
+      containerName: containerName1
+    };
+
+    if (listBlobsResponse.segment.blobItems.length) {
+      viewData.thumbnails = listBlobsResponse.segment.blobItems;
+    }
+  } catch (err) {
+    viewData = {
+      title: 'Error',
+      viewName: 'error',
+      message: 'There was an error contacting the blob storage container.',
+      error: err
+    };
+    res.status(500);
+  } finally {
+    res.render(viewData.viewName, viewData);
+  }
 });
+
+router.post('/', uploadStrategy, async (req, res) => {
+  const blobName = getBlobName(req.file.originalname);
+  const stream = getStream(req.file.buffer);
+  const containerClient = blobServiceClient.getContainerClient(containerName2);;
+  const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+
+  try {
+    await blockBlobClient.uploadStream(stream,
+      uploadOptions.bufferSize, uploadOptions.maxBuffers,
+      { blobHTTPHeaders: { blobContentType: "image/jpeg" } });
+    res.render('success', { message: 'File uploaded to Azure Blob storage.' });
+  } catch (err) {
+    res.render('error', { message: err.message });
+  }
+});
+
+module.exports = router;
 ```
 
 ---
@@ -386,15 +414,15 @@ Dosya seçicisine sahip bir dosya seçin ve **karşıya yükle**' yi seçin.
 
 ![Yeni görüntü görüntülenirken .NET görüntü yeniden Oluşturucu uygulaması](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10"></a>[Node.js ile v10 arasındaki](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-![Yeni görüntüyle birlikte Node.js ile v10 arasındaki Image Boyutlandırıcı uygulaması görüntülendi](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Görüntü yeniden Oluşturucu uygulaması yeni görüntüyle Node.js](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
-Serinin ikinci bölümünde, küçük resim oluşturmayı otomatikleştirerek bu görüntüye ihtiyacınız olmaz. Azure portalındaki **thumbnails** kapsayıcısında, karşıya yüklediğiniz görüntüyü seçin ve **Sil**’i seçerek görüntüyü silin. 
+Serinin ikinci bölümünde, küçük resim oluşturmayı otomatikleştirerek bu görüntüye ihtiyacınız olmaz. **Küçük resimler** kapsayıcısında, karşıya yüklediğiniz görüntüyü seçin ve **Sil** ' i seçerek görüntüyü kaldırın.
 
-Azure Depolama hesabınızdaki içerikleri önbelleğe almak için Content Delivery Network (CDN) etkinleştirebilirsiniz. Azure depolama hesabınızla CDN 'yi etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Storage hesabını Azure CDN Ile tümleştirme](../../cdn/cdn-create-a-storage-account-with-cdn.md).
+Azure Depolama hesabınızdaki içerikleri önbelleğe almak için Content Delivery Network (CDN) etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure CDN ile bir Azure depolama hesabını tümleştirme](../../cdn/cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

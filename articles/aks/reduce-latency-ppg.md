@@ -5,19 +5,19 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: f5b87d048127bf856a5a683397540769a7040fd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 382849c30c3520bbb208886de5f302f59fdac98b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323453"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374466"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Yakınlık yerleştirme gruplarıyla gecikme süresini azaltma (Önizleme)
 
 > [!Note]
 > AKS ile yakınlık yerleşimi grupları kullandığınızda, birlikte bulundurma yalnızca aracı düğümleri için geçerlidir. Düğümden düğüme ve ilgili barındırılan Pod 'ın Pod gecikme süresine kadar geliştirildi. Birlikte bulundurma, kümenin denetim düzlemi yerleştirmesini etkilemez.
 
-Uygulamanızı Azure 'da dağıttığınızda, sanal makine (VM) örneklerinin bölgeler veya kullanılabilirlik alanları arasında yayılması ağ gecikmesi oluşturur ve bu da uygulamanızın genel performansını etkileyebilir. Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbirlerine yakın bir yerde bulunduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Oyun, mühendislik benzetimleri ve yüksek frekanslı ticaret (HFT) gibi bazı uygulamalar, düşük gecikme süresi ve hızla tamamlanan görevler gerektirir. Bunlar gibi yüksek performanslı bilgi işlem (HPC) senaryolarında, küme s düğüm havuzlarınız için [yakınlık yerleşimi grupları](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#proximity-placement-groups) kullanmayı düşünün.
+Uygulamanızı Azure 'da dağıttığınızda, sanal makine (VM) örneklerinin bölgeler veya kullanılabilirlik alanları arasında yayılması ağ gecikmesi oluşturur ve bu da uygulamanızın genel performansını etkileyebilir. Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbirlerine yakın bir yerde bulunduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Oyun, mühendislik benzetimleri ve yüksek frekanslı ticaret (HFT) gibi bazı uygulamalar, düşük gecikme süresi ve hızla tamamlanan görevler gerektirir. Bunlar gibi yüksek performanslı bilgi işlem (HPC) senaryolarında, kümenizin düğüm havuzları için [yakınlık yerleştirme gruplarını](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#proximity-placement-groups) kullanmayı düşünün.
 
 ## <a name="limitations"></a>Sınırlamalar
 

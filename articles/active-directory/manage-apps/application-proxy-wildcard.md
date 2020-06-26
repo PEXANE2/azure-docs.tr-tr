@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3d04751cb8796290135cfc045385e1bf4cf3c3c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759955"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367742"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory uygulama proxy 'sinde joker uygulamalar
 
@@ -62,7 +62,7 @@ Başlamak için, bu gereksinimleri karşıladığınızdan emin olun.
 1. Azure 'da doğrulanmış bir etki alanı oluşturun.
 1. PFX biçiminde, uygulama ara sunucunuza bir TLS/SSL sertifikası yükleyin.
 
-Oluşturmayı planladığınız uygulamayla eşleşmesi için bir joker karakter sertifikası kullanmayı göz önünde bulundurmanız gerekir. Alternatif olarak, yalnızca belirli uygulamaları listeleyen bir sertifika da kullanabilirsiniz. Bu durumda, bu joker uygulama aracılığıyla yalnızca sertifikada listelenen uygulamalara erişilebilecektir.
+Oluşturmayı planladığınız uygulamayla eşleşmesi için bir joker karakter sertifikası kullanmayı göz önünde bulundurmanız gerekir. 
 
 Güvenlik nedenleriyle bu bir sabit gereksinimdir ve dış URL için özel bir etki alanı kullanmayan uygulamalar için joker karakterleri desteklemezler.
 
@@ -156,7 +156,7 @@ Yapılandırma aşağıdaki yapıyı uygular:
 
 ![Örnek yapılandırma tarafından uygulanan yapıyı gösterir](./media/application-proxy-wildcard/05.png)
 
-| Renk | Description |
+| Renk | Açıklama |
 | ---   | ---         |
 | Mavi  | Azure portal açıkça yayımlanmış ve görünür uygulamalar. |
 | Tonlamalı  | Üst uygulama aracılığıyla erişilebilen uygulamalar. |

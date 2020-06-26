@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/10/2020
-ms.openlocfilehash: 35aedbc4a3d1dcb87b23633acd413c4a55448ef9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 6/24/2020
+ms.openlocfilehash: 29ae9c47ca4ed8cdfedf78ffa7957376c7556076
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710414"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367503"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -47,9 +47,7 @@ Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsin
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
 Ana sunucunuzun bulunduğu yere bakılmaksızın, aşağıdaki bölgelerin herhangi birinde bir okuma çoğaltması oluşturabilirsiniz. Desteklenen evrensel çoğaltma bölgeleri şunları içerir:
 
-Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD.
-
-* Batı ABD 2 bir çapraz bölge çoğaltma konumu olarak geçici olarak kullanılamıyor.
+Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2, Orta Batı ABD.
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
 Evrensel çoğaltma bölgelerine ek olarak, ana sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.
@@ -58,7 +56,7 @@ Olağanüstü durum kurtarma planlaması için çapraz bölge çoğaltmaları ku
 
 Ancak göz önünde bulundurulması gereken sınırlamalar vardır: 
 
-* Bölgesel kullanılabilirlik: MySQL için Azure veritabanı Batı ABD 2, Fransa Orta, BAE Kuzey ve Almanya Orta kullanılabilir. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
+* Bölgesel kullanılabilirlik: MySQL için Azure veritabanı Fransa Orta, BAE Kuzey ve Almanya Orta sunulmaktadır. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
     
 * Tek yönlü çiftler: bazı Azure bölgeleri yalnızca bir yönde eşleştirilmelidir. Bu bölgeler Batı Hindistan, Brezilya Güney ve US Gov Virginia içerir. 
    Bu, Batı Hindistan 'deki bir ana sunucunun Güney Hindistan bir çoğaltma oluşturmasıdır. Ancak, Güney Hindistan bir ana sunucu Batı Hindistan bir çoğaltma oluşturamaz. Bunun nedeni, Batı Hindistan ikincil bölgesinin Güney Hindistan, ancak Güney Hindistan ikincil bölgesi Batı Hindistan değildir.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5b54f87635e1ea972778b0039dc34170c5b7ab8a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 869614c2e3fe11c289ab6eb7f6c1407f666de2b0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362297"
+ms.locfileid: "85368150"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği bulunur. böylece, üçüncü taraf uygulamaların katmanlı dosyaları güvenle belirleyebilmesini sağlayabilirsiniz.
@@ -82,7 +82,11 @@ Verilerin yerel olarak tutulması, Azure 'dan daha az sayıda dosya geri çekece
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Yeni bir sunucu uç noktası ekledim. Bu sunucu katmanında dosyalarımı ne kadar süreyle kullanıyorsunuz?
-Azure Dosya Eşitleme aracısının 4,0 ve üzeri sürümlerinde, dosyalarınız Azure dosya paylaşımında karşıya yüklendikten sonra, sonraki katmanlama oturumu çalıştıktan hemen sonra, bir saat sonra gerçekleşen ilkelerinize göre katmanlanırlar. Daha eski aracılarda katmanlama, 24 saate kadar sürebilir.
+
+Dosyaların Küme başına katmanlı olması gerekip gerekmediğini belirtir, saat bir kez değerlendirilir. Yeni bir sunucu uç noktası oluşturulduğunda iki durum oluşabilir:
+
+1. Yeni bir sunucu uç noktası eklediğinizde, bu sunucu konumunda genellikle dosyalar bulunur. Bulut katmanlaması başlamadan önce önce bunların karşıya yüklenmesi gerekir. Tüm dosyaların ilk karşıya yüklemesi tamamlanana kadar birim boş alan ilkesi çalışmaya başlamacaktır. Ancak, bir dosya karşıya yüklendikten hemen sonra isteğe bağlı tarih ilkesi tek bir dosya temelinde çalışmaya başlar. Bir saatlik Aralık burada da geçerlidir. 
+2. Yeni bir sunucu uç noktası eklediğinizde, içindeki verilerle birlikte boş bir sunucu konumunu bir Azure dosya paylaşımında bağlamanız mümkündür. Bunun ister ikinci bir sunucu için ister bir olağanüstü durum kurtarma durumunda olsun. Sunucunuza ilk indirme sırasında ad alanını indirmeyi ve içeriği geri çekmeyi seçerseniz, ad alanı kapatıldıktan sonra dosyalar son değiştirme zaman damgasına göre geri alınacaktır. Birim boş alan ilkesi ve isteğe bağlı tarih ilkesi içine sığacak şekilde, yalnızca birçok dosya geri çekilir.
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Bir dosyanın katmanlı olup olmadığını nasıl anlayabilirim?

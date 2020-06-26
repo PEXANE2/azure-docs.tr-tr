@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7c92cb120f91f8cb76675ba9fc50bad0517886e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3ef482804c80602771963633bcc46feaf014c363
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360546"
+ms.locfileid: "85373837"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
@@ -32,9 +32,9 @@ Bulut sağlama, her 2 dakikada bir çalışacak şekilde zamanlanır. Her 2 daki
 
 Bu beklenen bir durumdur. Hataların nedeni, Kullanıcı nesnesi tarafından Azure AD 'de yok. Kullanıcı Azure AD 'ye sağlandıktan sonra, parola karmalarının sonraki çalıştırmada sağlanması gerekir. Birkaç çalıştırma bekleyin ve parola karması eşitleme 'nin artık hatalara sahip olmadığını onaylayın.
 
-**S: Active Directory örneği, bulut provizoning tarafından desteklenmeyen özniteliklere sahipse ne olur (örneğin, Dizin uzantıları)?**
+**S: Active Directory örneği, bulut sağlaması tarafından desteklenmeyen öznitelikler içeriyorsa ne olur (örneğin, Dizin uzantıları)?**
 
-Bulut sağlama işlemi çalışır ve desteklenen öznitelikleri hazırlar. Desteklenmeyen öznitelikler Azure AD 'ye Hazırlanmayacak. Active Directory dizin uzantılarını inceleyin ve Azure AD 'ye Flow için bu özniteliğe ihtiyacınız olmadığından emin olun. Bir veya daha fazla öznitelik gerekliyse, Azure AD Connect eşitleme ' yi kullanmayı veya gerekli bilgileri desteklenen özniteliklerden birine taşımayı düşünün (örneğin, uzantı öznitelikleri 1-15).
+Bulut sağlama işlemi çalışır ve desteklenen öznitelikleri hazırlar. Desteklenmeyen öznitelikler Azure AD 'ye Hazırlanmayacak. Active Directory 'de Dizin uzantılarını inceleyin ve Azure AD 'ye Flow için bu özniteliklere ihtiyacınız olmadığından emin olun. Bir veya daha fazla öznitelik gerekliyse, Azure AD Connect eşitleme ' yi kullanmayı veya gerekli bilgileri desteklenen özniteliklerden birine taşımayı düşünün (örneğin, uzantı öznitelikleri 1-15).
 
 **S: Azure AD Connect eşitleme ve bulut sağlama arasındaki fark nedir?**
 
@@ -62,7 +62,7 @@ Evet, bulut sağlama, hizmet sorumlusu adı olarak etki alanı adı ile sağlama
 
 **S: bir sonraki oturum açışında parolayı değiştirmek için eşitlenen bir kullanıcı gerektiğinde ne olur?**
 
-Bulut sağlaması sırasında parola karması eşitleme etkinse ve şirket içi AD 'de bir sonraki oturum açma sırasında parola değiştirmek gerekirse, bulut sağlama, parola karmasını Azure AD 'ye değiştirmeyecektir. Kullanıcı parolayı değiştirdiğinde, Kullanıcı parolası karması AD 'den Azure AD 'ye sağlanır.
+Bulut sağlaması sırasında parola karması eşitleme etkinse ve şirket içi AD 'de bir sonraki oturum açma sırasında parola değiştirmek gerekirse, bulut sağlama, "yapılacak-değişiklik" parola karmasını Azure AD 'ye sağlamaz. Kullanıcı parolayı değiştirdiğinde, Kullanıcı parolası karması AD 'den Azure AD 'ye sağlanır.
 
 **S: bulut sağlama, herhangi bir nesne için ms-DS-ımnguıd 'in geri yazma işlemini destekliyor mu?**
 
@@ -70,7 +70,7 @@ Hayır, bulut sağlaması herhangi bir nesne (Kullanıcı nesneleri dahil) için
 
 **S: bulut sağlamasını kullanarak kullanıcıları sağlamadım. Yapılandırmayı sildim. Azure AD 'de hala eşitlenmiş olan eski nesneleri görüyorum mi?** 
 
-Yapılandırmayı sildiğinizde, bulut sağlaması Azure AD 'de eşitlenmiş nesneleri temizlemez. Eski nesnelerinizin olmadığından emin olmak için, yapılandırmanın kapsamını boş bir grup veya kuruluş birimleriyle değiştirin. Sağlama çalıştıktan ve nesneleri temizledikten sonra yapılandırmayı devre dışı bırakın ve silin. 
+Yapılandırmayı sildiğinizde, bulut sağlaması Azure AD 'de eşitlenmiş nesneleri otomatik olarak kaldırmaz. Eski nesnelerinizin olmadığından emin olmak için, yapılandırmanın kapsamını boş bir grup veya kuruluş birimleriyle değiştirin. Sağlama çalıştıktan ve nesneleri temizledikten sonra yapılandırmayı devre dışı bırakın ve silin. 
 
 **S: Exchange hibrit 'in desteklenmediği ne anlama geliyor?**
 
@@ -79,6 +79,10 @@ Exchange Karma Dağıtımı özelliği, Exchange posta kutularının hem şirket
 **S: bulut sağlama aracısını Windows Server Core 'a yükleyebilir miyim?**
 
 Hayır, aracıyı sunucu çekirdeği üzerine yükleme desteklenmiyor.
+
+**S: bulut sağlama aracısına sahip bir hazırlama sunucusu kullanabilir miyim?**
+
+Hayır, hazırlama sunucuları desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

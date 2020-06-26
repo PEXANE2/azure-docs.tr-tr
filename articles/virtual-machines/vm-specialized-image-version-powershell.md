@@ -9,20 +9,20 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7d54fa25bc4ab55e62b8f88a3cf76a5ba1130e55
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fdf1e6cf15279a0ff5be4b45385a13a3b967d22e
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796765"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374636"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Özel görüntü kullanarak VM oluşturma 
 
-Paylaşılan görüntü galerisinde depolanan özelleştirilmiş görüntü sürümünden bir VM oluşturun. Genelleştirilmiş görüntü sürümü kullanarak bir VM oluşturmak istiyorsanız, bkz. [özel bir görüntü sürümünden VM oluşturma](vm-generalized-image-version-powershell.md).
+Paylaşılan görüntü galerisinde depolanan özelleştirilmiş görüntü sürümünden bir VM oluşturun. Genelleştirilmiş görüntü sürümü kullanarak bir VM oluşturmak istiyorsanız bkz. [Genelleştirilmiş görüntü kullanarak VM oluşturma](vm-generalized-image-version-powershell.md).
 
 Özel bir görüntü sürümüne sahip olduktan sonra bir veya daha fazla yeni VM oluşturabilirsiniz. [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'ini kullanma. 
 
-Bu örnekte, yeni VM 'nizin bir görüntünün en son sürümünü kullanmasını sağlamak için görüntü tanımı KIMLIĞI kullanıyoruz. Ayrıca, için `Set-AzVMSourceImage -Id`görüntü sürümü kimliğini kullanarak belirli bir sürümü kullanabilirsiniz. Örneğin, görüntü sürümü *1.0.0* türünü kullanmak için: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`. 
+Bu örnekte, yeni VM 'nizin bir görüntünün en son sürümünü kullanmasını sağlamak için görüntü tanımı KIMLIĞI kullanıyoruz. Ayrıca, için görüntü sürümü KIMLIĞINI kullanarak belirli bir sürümü kullanabilirsiniz `Set-AzVMSourceImage -Id` . Örneğin, görüntü sürümü *1.0.0* türünü kullanmak için: `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` . 
 
 Belirli bir görüntü sürümü kullanmanın, belirli görüntü sürümü bölgede silindiği ya da kaldırıldığı için kullanılabilir durumda olmaması durumunda Otomasyon başarısız olduğunu unutmayın. Belirli bir görüntü sürümü gerekli değilse, yeni VM 'nizi oluşturmak için görüntü tanımı KIMLIĞI kullanmanızı öneririz.
 

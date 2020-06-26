@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/24/2017
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272264"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367453"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 dış paylaşımı ve Azure Active Directory B2B işbirliği
+# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Office 365 dış paylaşım ve Azure Active Directory (Azure AD) B2B işbirliği
 
-Office 365 (OneDrive, SharePoint Online, Birleşik Gruplar, vb.) ve Azure Active Directory (Azure AD) B2B işbirliğinde dış paylaşım teknik açıdan aynı şeydir. Office 365 gruplarındaki konukları da dahil olmak üzere tüm dış paylaşım (OneDrive/SharePoint Online hariç), paylaşım için Azure AD B2B işbirliği daveti API 'Lerini zaten kullanıyor.
+Azure AD B2B işbirliği ve Office 365 dış paylaşımında (OneDrive, SharePoint Online, Birleşik Gruplar, vb.), dış kullanıcıların kimliği Azure AD B2B kullanılarak doğrulanır.
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B, SharePoint Online 'daki dış paylaşımlardan farklı midir?
 

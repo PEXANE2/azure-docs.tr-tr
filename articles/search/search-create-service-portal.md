@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/24/2020
+ms.openlocfilehash: 988b26b319c706b97edfbd3545a525b7d685d7f1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488231"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368303"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı başlangıç: portalda bir Azure Bilişsel Arama hizmeti oluşturma
 
@@ -24,6 +24,14 @@ Bu makalede [Azure Portal](https://portal.azure.com/)kaynak oluşturmayı öğre
 [![Animasyonlu GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 PowerShell’i mi tercih ediyorsunuz? Azure Resource Manager [hizmet şablonunu](https://azure.microsoft.com/resources/templates/101-azure-search-create/) kullanın. Kullanmaya başlama hakkında yardım için bkz. [PowerShell Ile Azure bilişsel arama yönetme](search-manage-powershell.md).
+
+## <a name="before-you-start"></a>Başlamadan önce
+
+Aşağıdaki hizmet özellikleri hizmetin kullanım ömrü için düzeltilir. Daha sonra bu özelliklerden herhangi birini değiştirmek için yeni bir hizmet gerekir:
+
+* name
+* katman (ücretsiz, temel, standart)
+* bölge (bilişsel hizmetler veya veri Hizmetleri gibi ilgili hizmetlere sahip bir konum seçin)
 
 ## <a name="subscribe-free-or-paid"></a>Abone olma (ücretsiz veya ücretli)
 

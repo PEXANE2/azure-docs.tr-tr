@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771130"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367113"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
@@ -33,7 +33,7 @@ HDInsight 'ta çevre güvenliği [sanal ağlar](../hdinsight-plan-virtual-networ
 
 VNET 'te dağıtılan tüm kümelerin özel bir uç noktası da olur. Uç noktası, küme ağ geçitlerine özel HTTP erişimi için VNET 'in içindeki özel bir IP 'ye çözümlenir.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 HDInsight 'tan [Kurumsal güvenlik paketi](apache-domain-joined-architecture.md) , Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi sağlar. Active Directory tümleştirme [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)kullanılarak elde edilir. Bu özelliklerde, bir Active Directory etki alanına katılmış bir HDInsight kümesi oluşturabilirsiniz. Daha sonra, kuruluş içinden kümeye kimlik doğrulayabilecek çalışanların bir listesini yapılandırın.
 
@@ -81,6 +81,7 @@ Aşağıdaki tabloda her güvenlik çözümü türü için kaynakların bağlant
 |  | Cosmos DB ve [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) için [Azure sanal ağ hizmet uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) yapılandırma | Müşteri |
 |  | Yoldaki veriler için [TLS şifrelemenin](../../storage/common/storage-security-tls.md) etkinleştirildiğinden emin olun. | Müşteri |
 |  | Azure depolama şifrelemesi için [müşteri tarafından yönetilen anahtarları](../../storage/common/storage-encryption-keys-portal.md) yapılandırma | Müşteri |
+|  | [Müşteri kasayı](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) kullanarak Azure desteği ile verilerinize erişimi denetleme | Müşteri |
 | Uygulama ve ara yazılım güvenliği | AAD-DS ile tümleştirme ve [kimlik doğrulamasını yapılandırma](apache-domain-joined-configure-using-azure-adds.md) | Müşteri |
 |  | [Apache Ranger yetkilendirme](apache-domain-joined-run-hive.md) ilkelerini yapılandırma | Müşteri |
 |  | [Azure izleyici günlüklerini](../hdinsight-hadoop-oms-log-analytics-tutorial.md) kullanma | Müşteri |

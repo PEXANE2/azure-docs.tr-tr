@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: dae826367661648f3ee56235fd6497d265bf6a1e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 45a7de4f19b663823a5eff7ba4f352992c3aaf0d
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339475"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374211"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler
 
@@ -35,22 +35,22 @@ Aşağıdaki örnek, Visual Studio 'da C# işlev uygulamasının nasıl oluştur
 
 Ortamınızı ayarlamak için bir Işlev ve test uygulaması oluşturun. Aşağıdaki adımlar, testleri desteklemek için gereken uygulamaları ve işlevleri oluşturmanıza yardımcı olur:
 
-1. [Yeni bir işlevler uygulaması oluşturun](./functions-create-first-azure-function.md) ve *işlevleri* adlandırın
-2. [Şablondan BIR http Işlevi oluşturun](./functions-create-first-azure-function.md) ve *myhttptrigger*olarak adlandırın.
-3. [Şablondan bir Zamanlayıcı Işlevi oluşturun](./functions-create-scheduled-function.md) ve *mytimertrigger*olarak adlandırın.
-4. Visual Studio 'da **dosya > yeni > projesi > visual C# > .NET Core > xUnit test projesi** ve adı *Functions. test*aracılığıyla [bir xUnit test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) . 
+1. [Yeni bir işlevler uygulaması oluşturun](./functions-create-first-azure-function.md) ve **işlevleri** adlandırın
+2. [Şablondan BIR http Işlevi oluşturun](./functions-create-first-azure-function.md) ve **myhttptrigger**olarak adlandırın.
+3. [Şablondan bir Zamanlayıcı Işlevi oluşturun](./functions-create-scheduled-function.md) ve **mytimertrigger**olarak adlandırın.
+4. Çözümde [bir xUnit test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) ve bunu **Functions. Tests**olarak adlandırın. 
 5. Test uygulamasından [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 'ye bir başvuru eklemek için NuGet kullanın
-6. [*Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. test* uygulamasındaki işlevler uygulamasına başvurun.
+6. [*Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
 
 ### <a name="create-test-classes"></a>Test sınıfları oluşturma
 
-Uygulamalar oluşturuldığına göre otomatik testleri çalıştırmak için kullanılan sınıfları oluşturabilirsiniz.
+Artık projeler oluşturuldığına göre otomatik testleri çalıştırmak için kullanılan sınıfları oluşturabilirsiniz.
 
 Her işlev, ileti günlüğünü işlemek için bir [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) örneğini alır. Bazı sınamalar iletileri günlüğe kaydetme veya günlük kaydı ile ilgili hiçbir sorun yoktur. Diğer testlerin, bir testin geçirilip geçirilmediğini belirlemede günlüğe kaydedilen iletileri değerlendirmesi gerekir.
 
-`ListLogger`Sınıfı, arabirimini uygular `ILogger` ve test sırasında değerlendirme için bir iç ileti listesini tutar.
+`ListLogger`Bir test sırasında değerlendirmek için bir iç ileti listesini tutan adlı yeni bir sınıf oluşturacaksınız. Gerekli arabirimi uygulamak için `ILogger` , sınıfı bir kapsama ihtiyaç duyuyor. Aşağıdaki sınıf, sınıfa geçirilecek test çalışmalarının kapsamını gizler `ListLogger` .
 
-*İşlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **NullScope.cs** olarak adlandırın ve aşağıdaki kodu girin:
+Işlevlerde yeni bir sınıf oluşturun *.* **NullScope.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
 
 ```csharp
 using System;
@@ -68,7 +68,7 @@ namespace Functions.Tests
 }
 ```
 
-Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **ListLogger.cs** olarak adlandırın ve aşağıdaki kodu girin:
+Ardından, Işlevlerde yeni bir sınıf oluşturun *.* **ListLogger.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -114,7 +114,7 @@ namespace Functions.Tests
 
 `Logs`Koleksiyonu bir örneğidir `List<string>` ve oluşturucuda başlatılır.
 
-Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **LoggerTypes.cs** olarak adlandırın ve aşağıdaki kodu girin:
+Ardından, Işlevlerde yeni bir dosya oluşturun *.* **LoggerTypes.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
 
 ```csharp
 namespace Functions.Tests
@@ -129,7 +129,7 @@ namespace Functions.Tests
 
 Bu numaralandırma, testler tarafından kullanılan günlükçü türünü belirtir. 
 
-Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **TestFactory.cs** olarak adlandırın ve aşağıdaki kodu girin:
+Şimdi Işlevlerde yeni bir sınıf oluşturun *.* **TestFactory.cs** adlı projeyi sınar ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -163,12 +163,11 @@ namespace Functions.Tests
             return qs;
         }
 
-        public static DefaultHttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
+        public static HttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
         {
-            var request = new DefaultHttpRequest(new DefaultHttpContext())
-            {
-                Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue))
-            };
+            var context = new DefaultHttpContext();
+            var request = context.Request;
+            request.Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue));
             return request;
         }
 
@@ -201,7 +200,7 @@ namespace Functions.Tests
 
 - **Creategünlükçü**: günlükçü türü temelinde, bu yöntem test için kullanılan bir günlükçü sınıfı döndürür. , `ListLogger` Testlerin değerlendirmesi için kullanılabilen günlüğe kaydedilen iletileri izler.
 
-Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **FunctionsTests.cs** olarak adlandırın ve aşağıdaki kodu girin:
+Son olarak, Işlevlerde yeni bir sınıf oluşturun. **FunctionsTests.cs** adlı projeyi *sınar* ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;

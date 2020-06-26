@@ -3,26 +3,38 @@ title: Kaynak sağlayıcısı oluştur
 description: Bir kaynak sağlayıcısı oluşturmayı ve özel kaynak türlerini dağıtmayı açıklar.
 author: MSEvanhi
 ms.topic: tutorial
-ms.date: 06/19/2020
+ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: ce547c010d3cc814d4e6f6182c19572248228fc3
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125020"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368116"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Hızlı başlangıç: özel sağlayıcı oluşturma ve özel kaynaklar dağıtma
+# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Hızlı başlangıç: özel bir sağlayıcı oluşturma ve özel kaynaklar dağıtma
 
 Bu hızlı başlangıçta, kendi kaynak sağlayıcınızı oluşturup bu kaynak sağlayıcısı için özel kaynak türleri dağıtırsınız. Özel sağlayıcılar hakkında daha fazla bilgi için bkz. [Azure özel sağlayıcılar önizlemeye genel bakış](overview.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıçtaki adımları tamamlayabilmeniz için, işlemleri çağırmanız gerekir `REST` . [Rest isteklerinin gönderilmesi için farklı yollar](/rest/api/azure/)vardır.
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Bu hızlı başlangıçtaki adımları tamamlayabilmeniz için, işlemleri çağırmanız gerekir `REST` . [Rest isteklerinin gönderilmesi için farklı yollar](/rest/api/azure/)vardır.
 
-Azure CLı komutlarını çalıştırmak için [Azure Cloud Shell 'Da Bash](/azure/cloud-shell/quickstart)kullanın. [Özel sağlayıcılar](/cli/azure/ext/custom-providers/custom-providers/resource-provider) komutları bir uzantı gerektirir. Daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-PowerShell komutlarını yerel olarak çalıştırmak için PowerShell 7 veya üstünü ve Azure PowerShell modüllerini kullanın. Daha fazla bilgi için bkz. [ınstall Azure PowerShell](/powershell/azure/install-az-ps). Zaten işlemler için bir aracınız yoksa `REST` , [Armclient](https://github.com/projectkudu/ARMClient)'ı yükleyebilirsiniz. Bu, Azure Resource Manager API 'nin çağrılması basitleşerek açık kaynaklı bir komut satırı aracıdır.
+- [Özel sağlayıcılar](/cli/azure/ext/custom-providers/custom-providers/resource-provider) komutları bir uzantı gerektirir. Daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
+- Azure CLı örnekleri, `az rest` istekler için kullanır `REST` . Daha fazla bilgi için bkz. [az Rest](/cli/azure/reference-index#az-rest).
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+- PowerShell komutları, PowerShell 7 veya üzeri ve Azure PowerShell modülleri kullanılarak yerel olarak çalıştırılır. Daha fazla bilgi için bkz. [ınstall Azure PowerShell](/powershell/azure/install-az-ps).
+- Zaten işlemler için bir aracınız yoksa `REST` , [Armclient](https://github.com/projectkudu/ARMClient)'ı yükleyebilirsiniz. Bu, Azure Resource Manager API 'nin çağrılması basitleşerek açık kaynaklı bir komut satırı aracıdır.
+- **Armclient** yüklendikten sonra, şunu yazarak bir PowerShell komut isteminden kullanım bilgilerini görüntüleyebilirsiniz: `armclient.exe` . Ya da [Armclient wiki](https://github.com/projectkudu/ARMClient/wiki)'ye gidin.
+
+---
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>Özel sağlayıcı dağıt
 
@@ -30,14 +42,16 @@ PowerShell komutlarını yerel olarak çalıştırmak için PowerShell 7 veya ü
 
 Şablonu dağıttıktan sonra, aboneliğiniz aşağıdaki kaynaklara sahiptir:
 
-* Kaynaklar ve eylemler için işlemlerle İşlev Uygulaması.
-* Özel sağlayıcı aracılığıyla oluşturulan kullanıcıları depolamaya yönelik depolama hesabı.
-* Özel kaynak türlerini ve eylemlerini tanımlayan özel sağlayıcı. İstek göndermek için App Endpoint işlevini kullanır.
-* Özel sağlayıcıdan özel kaynak.
+- Kaynaklar ve eylemler için işlemlerle İşlev Uygulaması.
+- Özel sağlayıcı aracılığıyla oluşturulan kullanıcıları depolamaya yönelik depolama hesabı.
+- Özel kaynak türlerini ve eylemlerini tanımlayan özel sağlayıcı. İstek göndermek için App Endpoint işlevini kullanır.
+- Özel sağlayıcıdan özel kaynak.
 
-Özel sağlayıcıyı dağıtmak için Azure CLı veya PowerShell kullanın:
+Özel sağlayıcıyı dağıtmak için Azure CLı, PowerShell veya Azure portal kullanın:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Bu örnek, bir kaynak grubu, konum ve sağlayıcının işlev uygulaması adını girmenizi ister. Adlar, diğer komutlarda kullanılan değişkenlerde depolanır. [Az Group Create](/cli/azure/group#az-group-create) ve [az Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) komutları kaynakları dağıtır.
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&
@@ -52,6 +66,8 @@ read
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+Bu örnek, bir kaynak grubu, konum ve sağlayıcının işlev uygulaması adını girmenizi ister. Adlar, diğer komutlarda kullanılan değişkenlerde depolanır. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) ve [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) komutları, kaynakları dağıtır.
+
 ```powershell
 $rgName = Read-Host -Prompt "Enter a resource group name"
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -64,7 +80,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ---
 
-Ya da çözümü aşağıdaki düğmeyle Azure portal dağıtabilirsiniz:
+Çözümü Azure portal de dağıtabilirsiniz. Azure portal şablonu açmak için **Azure 'A dağıt** düğmesini seçin.
 
 [![Azure’a dağıtma](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
@@ -252,7 +268,7 @@ Yanıtı alırsınız:
 
 ### <a name="list-custom-resource-providers"></a>Özel kaynak sağlayıcıları listeleme
 
-Bir abonelikteki tüm özel kaynak sağlayıcılarını listeleyin. Varsayılan olarak, geçerli abonelik için özel kaynak sağlayıcıları listelenir veya `--subscription` parametresini belirtebilirsiniz. Bir kaynak grubunu listelemek için `--resource-group` parametresini kullanın.
+`list`Bir abonelikteki tüm özel kaynak sağlayıcılarını göstermek için komutunu kullanın. Varsayılan, geçerli aboneliğin özel kaynak sağlayıcılarını listeler veya `--subscription` parametresini belirtebilirsiniz. Bir kaynak grubunu listelemek için `--resource-group` parametresini kullanın.
 
 ```azurecli-interactive
 az custom-providers resource-provider list --subscription $subID
@@ -289,7 +305,7 @@ az custom-providers resource-provider list --subscription $subID
 
 ### <a name="show-the-properties"></a>Özellikleri göster
 
-Özel bir kaynak sağlayıcısının özelliklerini göster. Çıkış biçimi `list` çıkışa benzer.
+`show`Özel kaynak sağlayıcısının özelliklerini göstermek için komutunu kullanın. Çıkış biçimi `list` çıkışa benzer.
 
 ```azurecli-interactive
 az custom-providers resource-provider show --resource-group $rgName --name $funcName

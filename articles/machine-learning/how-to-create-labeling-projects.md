@@ -7,14 +7,14 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0870f389e366a9249e98d60a51aa7fdd40238ea0
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212021"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374517"
 ---
-# <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
+# <a name="create-a-data-labeling-project-preview-and-export-labels"></a>Veri etiketleme projesi (Önizleme) ve dışarı aktarma etiketleri oluşturma 
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

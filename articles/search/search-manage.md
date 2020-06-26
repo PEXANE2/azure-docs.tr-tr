@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: f1887065ef356717e05814a23ad85c7f0e6c6ab0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 47c3606b0b1ada93aeb8a107f48222fb26483a9c
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362671"
+ms.locfileid: "85368286"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 
@@ -43,7 +43,8 @@ Azure Bilişsel Arama, daha derin izleme ve yönetim için diğer Azure hizmetle
 Bir arama hizmetinin birkaç yönü, hizmetin sağlandığı ve daha sonra değiştirilemeyeceğini belirler:
 
 * Hizmet adı (bir hizmeti yeniden adlandıramazsınız)
-* Maksimum çoğaltma ve bölüm sayısı (katman tarafından belirlenir)
+* Hizmet konumu (Şu anda bozulmadan bir hizmeti başka bir bölgeye taşıyamazsınız)
+* Maksimum çoğaltma ve bölüm sayısı (katman, temel veya standart tarafından belirlenir)
 
 En yüksek bir bölüm ile temel ile başlayıp artık daha fazla bölüme ihtiyacınız varsa, daha yüksek bir katmanda [Yeni bir hizmet oluşturmanız](search-create-service-portal.md) ve içeriğinizi yeni hizmette yeniden oluşturmanız gerekir. 
 

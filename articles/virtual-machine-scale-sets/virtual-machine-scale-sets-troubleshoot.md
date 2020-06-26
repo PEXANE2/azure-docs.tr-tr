@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 11/16/2017
+ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 624f9bf512a28657808d9e2838149601c0bd2f99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837238"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374602"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleriyle otomatik ölçeklendirme sorunlarını giderme
 **Sorun** : sanal makine ölçek kümelerini kullanarak Azure Resource Manager bir otomatik ölçeklendirme altyapısı oluşturdunuz; Örneğin, bunun gibi bir şablon dağıtarak, https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale Ölçek kurallarınızı tanımlamış ve VM 'lere ne kadar yük yerleştirdiğinize bakılmaksızın, otomatik ölçeklendirme yapmaz.

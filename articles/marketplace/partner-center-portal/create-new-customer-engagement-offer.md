@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 51df588b1ccd41bf05d8851f00399b61292b0736
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8996335a8d39e4dd9fc79584593fe333b302c8be
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214119"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373446"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
 
@@ -151,10 +151,10 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 4. Destek adresi (bağlantı)
 5. Kullanım koşulları adresi (bağlantı)
 6. Teklif adı
-7. Description
+7. Açıklama
 8. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Name
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -162,7 +162,7 @@ Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığ�
 
 Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıklama sağlayın. Bu açıklama Market arama sonuçlarında kullanılabilir.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -213,10 +213,6 @@ Teklifinizin logosunu üç piksel boyutunda sağlayın:
 - **Küçük** (gerekli; 48 x 48)
 - **Büyük** (gerekli; 216 x 216)
 - **Geniş** (isteğe bağlı; 255 x 115)
-
-#### <a name="hero"></a>Hero
-
-Hero görüntüsü isteğe bağlıdır. Bir tane sağlarsanız, 815 x 290 pikseli ölçmelidir.
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

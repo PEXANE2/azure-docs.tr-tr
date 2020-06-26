@@ -4,18 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: c63fa01a078c415568b8d3d82701e424b9c72951
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dc4c77cf54769451928bd1f0dafeac34a889675
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845419"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378450"
 ---
 ## <a name="install-the-azure-functions-extension"></a>Azure Işlevleri uzantısını yükler
 
 Azure Işlevleri uzantısını kullanarak işlevler oluşturup test edebilir ve bunları Azure 'a dağıtabilirsiniz.
 
-1. Visual Studio Code ' de, **uzantıları** açın ve **Azure işlevleri**' ni arayın veya [Visual Studio Code bu bağlantıyı seçin](vscode:extension/ms-azuretools.vscode-azurefunctions).
+1. Visual Studio Code ' de, **uzantıları** açın ve **Azure işlevleri**' ni arayın veya bu bağlantıyı Visual Studio Code: ' da seçin `vscode:extension/ms-azuretools.vscode-azurefunctions` .
 
 1. Uzantıyı Visual Studio Code yüklemek için **yüklemeyi** seçin:
 

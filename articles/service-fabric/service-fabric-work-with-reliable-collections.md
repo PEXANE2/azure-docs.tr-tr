@@ -3,12 +3,12 @@ title: Güvenilir Koleksiyonlar ile çalışma
 description: Azure Service Fabric uygulamasında güvenilir Koleksiyonlar ile çalışmaya yönelik en iyi uygulamaları öğrenin.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409799"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374704"
 ---
 # <a name="working-with-reliable-collections"></a>Güvenilir Koleksiyonlar ile çalışma
 Service Fabric, güvenilir koleksiyonlar aracılığıyla .NET geliştiricileri için kullanılabilen bir durum bilgisi olan programlama modeli sunar. Özellikle, Service Fabric güvenilir sözlük ve güvenilir sıra sınıfları sağlar. Bu sınıfları kullandığınızda, durumunuzun bölümlenmesi (ölçeklenebilirlik için), çoğaltılan (kullanılabilirlik için) ve bir bölüm içinde (ACID semantiği için) işlem gerçekleştirilmiş olur. Güvenilir bir sözlük nesnesinin tipik bir kullanımına bakalım ve gerçekten ne yaptığını görelim.
@@ -42,9 +42,14 @@ Güvenilir sözlük nesnelerindeki tüm işlemler (geri alınamaz olan ClearAsyn
 
 Yukarıdaki kodda, ITransaction nesnesi güvenilir bir sözlüğün Addadsync yöntemine geçirilir. Dahili olarak, anahtar kabul eden sözlük yöntemleri, anahtarla ilişkili bir okuyucu/yazıcı kilidi alır. Yöntem anahtarın değerini değiştirirse, yöntemi anahtar üzerinde bir yazma kilidi alır ve yöntem yalnızca anahtarın değerinden okunursa, anahtar üzerinde bir okuma kilidi yapılır. Addadsync anahtarın değerini yeni, geçirilen değerine değiştirdiğinde, anahtarın yazma kilidi alınır. Bu nedenle, 2 (veya daha fazla) iş parçacığı aynı anda aynı anahtarla değer eklemeye çalışır, bir iş parçacığı yazma kilidi elde eder ve diğer iş parçacıkları da engeller. Varsayılan olarak, Yöntemler kilidi almak için 4 saniyeye kadar blok; 4 saniye sonra Yöntemler bir TimeoutException oluşturur. Yöntem aşırı yüklemeleri, tercih ediyorsanız açık bir zaman aşımı değeri geçirmenize olanak sağlar.
 
-Genellikle, bir TimeoutException 'e yanıt vererek ve tüm işlemi yeniden denemeden (Yukarıdaki kodda gösterildiği gibi) kodu yazarsınız. Basit kodumda yalnızca görevi çağırıyorum. her seferinde 100 milisaniye geçen gecikme. Ancak gerçekte, bunun yerine bazı üstel geri dönme gecikmesini kullanarak daha iyi kapatılabilir.
+Genellikle, bir TimeoutException 'e yanıt vererek ve tüm işlemi yeniden denemeden (Yukarıdaki kodda gösterildiği gibi) kodu yazarsınız. Bu basit kodda yalnızca görevi çağırıyoruz. her seferinde 100 milisaniyeyi geçen gecikme. Ancak gerçekte, bunun yerine bazı üstel geri dönme gecikmesini kullanarak daha iyi kapatılabilir.
 
-Kilit alındıktan sonra, Addadsync, ITransaction nesnesiyle ilişkili bir iç geçici sözlüğe anahtar ve değer nesnesi başvurularını ekler. Bu, size salt yazılır yazma semantiğini sağlamak için yapılır. Diğer bir deyişle, Addadsync öğesini çağırdıktan sonra, bir sonraki TryGetValueAsync çağrısı (aynı ITransaction nesnesi kullanılarak), işlemi henüz kaydetmemiş olsanız bile değeri döndürür. Sonra, Addadsync, anahtar ve değer nesnelerinizi bayt dizileri olarak serileştirir ve bu bayt dizilerini yerel düğümdeki bir günlük dosyasına ekler. Son olarak, Addadsync, bayt dizilerini aynı anahtar/değer bilgilerine sahip olacak şekilde tüm ikincil çoğaltmalara gönderir. Anahtar/değer bilgileri bir günlük dosyasına yazılsa da, ilişkilendirildikleri işlem kaydedilene kadar bilgiler sözlüğün bir parçası olarak kabul edilmez.
+Kilit alındıktan sonra, Addadsync, ITransaction nesnesiyle ilişkili bir iç geçici sözlüğe anahtar ve değer nesnesi başvurularını ekler. Bu, size salt yazılır yazma semantiğini sağlamak için yapılır. Diğer bir deyişle, Addadsync öğesini çağırdıktan sonra, aynı ITransaction nesnesini kullanarak TryGetValueAsync 'e daha sonraki bir çağrı, işlemi henüz kaydetmemiş olsanız bile değeri döndürür.
+
+> [!NOTE]
+> TryGetValueAsync 'i yeni bir işlemle çağırmak, son kaydedilen değere bir başvuru döndürür. Bu başvuruyu doğrudan değiştirmeyin, çünkü bu başvuruyu kalıcı hale getirme ve değişiklikleri çoğaltma mekanizmasını atlar. Bir anahtarın değerini değiştirmek için tek yol güvenilir sözlük API 'Leri aracılığıyla, değerlerin salt okunurlanmasını öneririz.
+
+Sonra, Addadsync, anahtar ve değer nesnelerinizi bayt dizileri olarak serileştirir ve bu bayt dizilerini yerel düğümdeki bir günlük dosyasına ekler. Son olarak, Addadsync, bayt dizilerini aynı anahtar/değer bilgilerine sahip olacak şekilde tüm ikincil çoğaltmalara gönderir. Anahtar/değer bilgileri bir günlük dosyasına yazılsa da, ilişkilendirildikleri işlem kaydedilene kadar bilgiler sözlüğün bir parçası olarak kabul edilmez.
 
 Yukarıdaki kodda, Commınvosync çağrısı tüm işlem işlemlerini kaydeder. Özellikle, kaydetme bilgilerini yerel düğümdeki günlük dosyasına ekler ve ayrıca, kaydetme kaydını tüm ikincil çoğaltmalara gönderir. Çoğaltmaların bir çekirdeği (çoğunluğu) Yanıtlandıktan sonra, tüm veri değişiklikleri kalıcı olarak kabul edilir ve ITransaction nesnesi aracılığıyla yönetilen anahtarlarla ilişkili kilitler, diğer iş parçacıkları/işlemler aynı anahtarları ve değerlerini işleyebilir.
 
@@ -55,13 +60,13 @@ Commction eşitleme çağrılmadığından (genellikle bir özel durum nedeniyle
 
 Şu anda geçici destek yalnızca güvenilir sözlüklerde ve güvenilir sıralarda bulunur ve bu, ReliableConcurrentQueues değildir. Geçici koleksiyonları kullanıp kullanmayacağınızı kararlayaöğrenmek için lütfen [Uyarılar](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections) listesine bakın.
 
-Hizmetinizde geçici desteği etkinleştirmek için, hizmet türü bildiriminde ```HasPersistedState``` ```false```bayrağını şöyle ayarlayın:
+Hizmetinizde geçici desteği etkinleştirmek için, ```HasPersistedState``` hizmet türü bildiriminde bayrağını ```false``` şöyle ayarlayın:
 ```xml
 <StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
 ```
 
 >[!NOTE]
->Var olan kalıcı hizmetler geçici yapılamaz ve tam tersi de geçerlidir. Bunu yapmak istiyorsanız, mevcut hizmeti silmeniz ve ardından hizmeti güncelleştirilmiş bayrağıyla dağıtmanız gerekecektir. Bu, ```HasPersistedState``` bayrağını değiştirmek istiyorsanız, tam veri kaybı olması gerektiği anlamına gelir. 
+>Var olan kalıcı hizmetler geçici yapılamaz ve tam tersi de geçerlidir. Bunu yapmak istiyorsanız, mevcut hizmeti silmeniz ve ardından hizmeti güncelleştirilmiş bayrağıyla dağıtmanız gerekecektir. Bu, bayrağını değiştirmek istiyorsanız, tam veri kaybı olması gerektiği anlamına gelir ```HasPersistedState``` . 
 
 ## <a name="common-pitfalls-and-how-to-avoid-them"></a>Ortak ve nasıl kaçınacak
 Artık güvenilir koleksiyonların dahili olarak nasıl çalıştığını anladığınıza göre, bunların bazı yaygın kötüye kullanımlarına göz atalım. Aşağıdaki koda bakın:
@@ -145,7 +150,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Programcı hatasını engellemek için değişmez veri türlerini tanımlayın
-İdeal olarak, sabit olarak göz önünde bulundurmanız gereken bir nesnenin durumunu değiştirmede yanlışlıkla kod oluşturduğunuzda derleyicinin hataları raporoluşturmasını istiyoruz. Ancak, C# derleyicisinin bunu yapma yeteneği yoktur. Bu nedenle, potansiyel programcı hatalarından kaçınmak için, güvenilir koleksiyonlarla kullandığınız türleri değişmez türler olarak tanımlamanızı öneririz. Bu, özellikle de temel değer türlerini (sayılar [Int32, UInt64, vs.], DateTime, Guid, TimeSpan ve benzeri) gösteren bir anlamına gelir. Dizeyi de kullanabilirsiniz. Koleksiyon özelliklerinin serileştirilmesi ve seri durumdan kaldırılması en iyisidir. Ancak, koleksiyon özelliklerini kullanmak istiyorsanız, kullanımı önemle önerilir. NET 'in değişmez koleksiyonlar kitaplığı ([System. Collections. sabit](https://www.nuget.org/packages/System.Collections.Immutable/)). Bu kitaplık, ' den https://nuget.orgindirileceği için kullanılabilir. Ayrıca, sınıflarınızı mühürleyen ve alanları mümkün olduğunca Salt okunabilir hale getirmeyi öneririz.
+İdeal olarak, sabit olarak göz önünde bulundurmanız gereken bir nesnenin durumunu değiştirmede yanlışlıkla kod oluşturduğunuzda derleyicinin hataları raporoluşturmasını istiyoruz. Ancak, C# derleyicisinin bunu yapma yeteneği yoktur. Bu nedenle, potansiyel programcı hatalarından kaçınmak için, güvenilir koleksiyonlarla kullandığınız türleri değişmez türler olarak tanımlamanızı öneririz. Bu, özellikle de temel değer türlerini (sayılar [Int32, UInt64, vs.], DateTime, Guid, TimeSpan ve benzeri) gösteren bir anlamına gelir. Dizeyi de kullanabilirsiniz. Koleksiyon özelliklerinin serileştirilmesi ve seri durumdan kaldırılması en iyisidir. Ancak, koleksiyon özelliklerini kullanmak istiyorsanız, kullanımı önemle önerilir. NET 'in değişmez koleksiyonlar kitaplığı ([System. Collections. sabit](https://www.nuget.org/packages/System.Collections.Immutable/)). Bu kitaplık, ' den indirileceği için kullanılabilir https://nuget.org . Ayrıca, sınıflarınızı mühürleyen ve alanları mümkün olduğunca Salt okunabilir hale getirmeyi öneririz.
 
 Aşağıdaki UserInfo türü, belirtilen önerilerden faydalanan sabit bir türün nasıl tanımlanacağını göstermektedir.
 

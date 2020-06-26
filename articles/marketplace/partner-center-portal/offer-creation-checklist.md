@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c34eee74070dfb137311867615f55a7c89522cd5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708998"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374415"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Iş Ortağı Merkezi 'nde SaaS teklifi oluşturma denetim listesi
 
@@ -81,9 +81,9 @@ Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerke
 
 | **Alan adı**    | **Notlar**   |
 | :---------------- | :-----------| 
-| Name  | Gerekli, en fazla 50 karakter. |
+| Adı  | Gerekli, en fazla 50 karakter. |
 | Özet  | Gerekli, en fazla 100 karakter. | 
-| Description  | Gerekli, en fazla 3000 karakter. |
+| Açıklama  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Başlarken yönergeleri  | Gerekli, en fazla 3000 karakter. |
 | Anahtar sözcükleri ara  | İsteğe bağlı, önerilen, en fazla 3 anahtar sözcük. |
@@ -92,7 +92,7 @@ Liste sayfası, müşterilerin Market 'te teklifinizin listesini görüntülerke
 | Faydalı bağlantılar başlığı + URL  | İsteğe bağlı. |
 | Destekleyici belgeler başlık + dosya  | Gerekli, en az 1 ve en fazla 3. PDF dosyası biçimi olmalıdır. |
 | Ekran görüntüleri  | Gerekli, en az 1 ekran görüntüsü ve en fazla 5; dört veya daha fazla önerilir. PNG biçiminde 1280 X 720 olmalıdır. |
-| Mağaza logoları (küçük, orta, büyük, geniş, Hero)  | Küçük (48 X 48) ve büyük (216 X 216) gereklidir; diğer boyutlar isteğe bağlıdır ancak önerilir: Orta (90 x 90), geniş (255 x 115), Hero (815 x 290). PNG biçiminde olmalıdır. |
+| Mağaza logoları (küçük, orta, büyük, geniş)  | Küçük (48 X 48) ve büyük (216 X 216) gereklidir; diğer boyutlar isteğe bağlıdır ancak önerilir: Orta (90 x 90), geniş (255 x 115). İçinde olmalıdır. PNG biçimi. |
 | Videolar adı + URL + küçük resim  | İsteğe bağlı, önerilen, en fazla 4 video. Küçük resim, PNG biçiminde 1280 x 720 olmalıdır. Videonun YouTube veya Vimeo 'da barındırılması gerekir. |
 | Kişiler (CSP programı, mühendislik, destek)  | Mühendislik ve destek ilgili kişisi gerekli (ad, e-posta ve telefon numarası); CSP programı isteğe bağlı, ancak önerilir. |
 | Destek URL 'SI  | Gereklidir. |
@@ -153,7 +153,7 @@ Yalnızca teklifiniz için bir test sürücüsü sunmayı seçerseniz kullanıla
 
 | **Alan adı**    | **Notlar**   | 
 | :---------------- | :-----------| 
-| Description  | Gereklidir. |
+| Açıklama  | Gereklidir. |
 | Kullanıcı El Ile adı + dosyası  | Gerekli, en fazla 1 belge. PDF biçiminde olmalıdır. |
 | Video adı, URL + küçük resim  | İsteğe bağlı, önerilir. Küçük resim, JPGP veya PNG biçiminde 533 x 324 olmalıdır. Videonun YouTube veya Vimeo 'da barındırılması gerekir. |
 

@@ -13,16 +13,16 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 893f449c6a8e6b41a79fe9d7c26db461b757e4a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 52a4a7131c85231107a2a23a1916016776b219fd
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317760"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367436"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Uygulamaları Microsoft kimlik doğrulama kitaplığı 'na geçirme (MSAL)
 
-Birçok geliştirici, etkin Active Directory Authentication Library (ADAL) kullanarak oluşturulmuş ve dağıtılmış uygulamalar vardır. Artık Azure AD varlıklarının kimlik doğrulaması ve yetkilendirmesi için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmanızı öneririz.
+Birçok geliştirici Azure Active Directory kimlik doğrulama kitaplığı 'nı (ADAL) kullanarak oluşturulmuş ve dağıtılmış uygulamalar vardır. Artık Azure AD varlıklarının kimlik doğrulaması ve yetkilendirmesi için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmanızı öneririz.
 
 ADAL yerine MSAL kullanarak:
 

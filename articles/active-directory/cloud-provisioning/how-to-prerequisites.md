@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a2ea1cfba9b460f5723f69cd0382c7413b97bef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360818"
+ms.locfileid: "85373871"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut sağlamasını bağlama ve kullanma hakkında rehberlik sunulmaktadır.
@@ -27,7 +27,7 @@ Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulu
 Bulut sağlamasını Azure AD Connect kullanmak için aşağıdakiler gerekir:
     
 - Azure AD kiracınız için konuk kullanıcı olmayan bir karma kimlik yöneticisi hesabı.
-- Windows 2012 R2 veya üzeri ile sağlama aracısına yönelik bir şirket içi sunucu.
+- Windows 2012 R2 veya üzeri ile sağlama aracısına yönelik bir şirket içi sunucu.  Bu sunucu, [Active Directory Yönetim Katmanı modelini](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)temel alan bir katman 0 sunucusu olmalıdır.
 - Şirket içi güvenlik duvarı konfigürasyonları.
 
 >[!NOTE]

@@ -1,14 +1,14 @@
 ---
-author: sptramer
 ms.topic: include
 ms.date: 01/30/2019
-ms.service: azure-powershell
-ms.author: sttramer
-ms.openlocfilehash: ae9fa2cf860307405baa576ff5685af2bedef339
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+author: mikefrobbins
+ms.author: mirobb
+manager: barbkess
+ms.openlocfilehash: 2365120d4cd22feae5648202e5b8a7f3b369795b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67188377"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378488"
 ---
 Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/) bulunan yönergeleri kullanarak Azure PowerShell modülünü yükleyin ve sonra Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu çalıştırın. Ayrıca, kullanıcı profilinizin .ssh dizininde `id_rsa.pub` adlı bir SSH genel anahtarınız da olmalıdır.
