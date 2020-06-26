@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 124aac96550b5d462c0794053452ed28dba27452
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013223"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413170"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
 
@@ -43,7 +43,7 @@ Bölge, gecikme tarafından tanımlanan bir çevre içinde dağıtılan ve adanm
 
 Kullanılabilirlik alanı, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılığı güvence altına almak için etkinleştirilmiş tüm bölgelerde en az üç ayrı alan vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun. Azure, Kullanılabilirlik Alanları sayesinde sektörün en iyi% 99,99 VM çalışma süresi SLA 'sını sunmaktadır. [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
 
-Bir Azure bölgesindeki kullanılabilirlik bölgesi bir hata etki alanının ve bir güncelleştirme etki alanının birleşimidir. Örneğin, bir Azure bölgesindeki üç bölgede üç veya daha fazla VM oluşturursanız, VM 'niz üç hata etki alanına ve üç güncelleştirme etki alanına etkili bir şekilde dağıtılır. Azure platformu, farklı bölgelerdeki VM 'Lerin aynı anda güncelleştirildiğinden emin olmak için bu dağıtımı güncelleştirme etki alanları genelinde tanır.
+Bir Azure bölgesindeki kullanılabilirlik bölgesi bir hata etki alanının ve bir güncelleştirme etki alanının birleşimidir. Örneğin, bir Azure bölgesindeki üç bölgede üç veya daha fazla VM oluşturursanız, VM 'niz üç hata etki alanına ve üç güncelleştirme etki alanına etkili bir şekilde dağıtılır. Azure platformu, farklı bölgelerdeki VM 'Lerin aynı anda güncellenmek üzere zamanlanmadığından emin olmak için bu dağıtımı güncelleştirme etki alanları genelinde tanır.
 
 Bir bölgedeki işlem, depolama, ağ ve veri kaynaklarınızı birlikte bularak ve diğer bölgelerde çoğaltarak uygulama mimarinizde yüksek kullanılabilirlik oluşturun. Kullanılabilirlik Alanlarını destekleyen Azure hizmetleri iki kategoriye ayrılır:
 
@@ -112,14 +112,14 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Service Bus | Azure Güvenlik Duvarı | Data Box Heavy |
 > | Service Fabric | Azure İşlevleri | Veri Kataloğu |
 > | Sanal Makine Ölçek Kümeleri | Azure HPC Önbelleği | Data Factory: Data Factory v1 |
-> | Sanal Makineler | Azure IoT Hub | Data Lake Analytics |
+> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
 > | Sanal makineler: AV2-Series | Azure Kubernetes Hizmeti (AKS) | Machine Learning Studio |
 > | Sanal makineler: BS serisi | Azure Machine Learning | Microsoft Genomiks |
 > | Sanal makineler: DSv2-Series | Azure Özel Bağlantı | Remote Rendering |
 > | Sanal makineler: DSv3-Series | Azure Red Hat OpenShift | Spatial Anchors |
 > | Sanal makineler: dv2-Series | Azure Site Recovery | StorSimple |
 > | Sanal makineler: Dv3-Series | Azure yay bulut hizmeti | Video Indexer |
-> | Sanal makineler: ESv3-Series | Azure Stack hub 'ı | Sanal makineler: A8-A11 (Işlem yoğunluğu) |
+> | Sanal makineler: ESv3-Series | Azure Stack Hub | Sanal makineler: A8-A11 (Işlem yoğunluğu) |
 > | Sanal makineler: Ev3-Series | Azure Stream Analytics | Sanal makineler: DASv4-Series |
 > | Sanal makineler: F serisi | Azure Synapse Analytics | Sanal makineler: DAv4-Series |
 > | Sanal makineler: FS Serisi | Azure SignalR Service | Sanal makineler: DCsv2-Series |
@@ -133,7 +133,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > |  | Bilişsel hizmetler: konuşma Hizmetleri | Sanal makineler: H serisi |
 > |  | Bilişsel hizmetler: Soru-Cevap Oluşturma | Sanal makineler: LS Serisi |
 > |  | Container Instances | Sanal makineler: LSv2-Series |
-> |  | Container Registry | Sanal makineler: Mv2-Series |
+> |  | Container Kayıt Defteri | Sanal makineler: Mv2-Series |
 > |  | Data Factory | Sanal makineler: NC serisi |
 > |  | Event Grid | Sanal makineler: NCv2-Series |
 > |  | HDInsight | Sanal makineler: NCv3-Series |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8381e391afa0f8866f511d3d85e02467c6d9ba5d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406279"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413391"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API ile zaman uyumsuz yenileme
 
@@ -30,7 +30,7 @@ Temel URL şu biçimdedir:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Örneğin, Batı ABD Azure bölgesinde bulunan adlı `myserver`sunucuda AdventureWorks adlı bir model düşünün. Sunucu adı:
+Örneğin, `myserver` Batı ABD Azure bölgesinde bulunan adlı sunucuda AdventureWorks adlı bir model düşünün. Sunucu adı:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -61,7 +61,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 Tüm çağrıların yetkilendirme üstbilgisinde geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanması ve aşağıdaki gereksinimleri karşılaması gerekir:
 
 - Belirtecin bir kullanıcı belirteci ya da bir uygulama hizmeti sorumlusu olması gerekir.
-- Belirtecin doğru izleyicisinin ayarlanmış olması gerekir `https://*.asazure.windows.net`.
+- Belirtecin doğru izleyicisinin ayarlanmış olması gerekir `https://*.asazure.windows.net` .
 - Kullanıcı veya uygulamanın, istenen çağrıyı yapmak için sunucu veya modelde yeterli izinlere sahip olması gerekir. İzin düzeyi, modeldeki roller veya sunucudaki yönetim grubu tarafından belirlenir.
 
     > [!IMPORTANT]
@@ -99,8 +99,8 @@ Parametrelerin belirtilmesi gerekli değildir. Varsayılan değer uygulanır.
 
 | Adı             | Tür  | Açıklama  |Varsayılan  |
 |------------------|-------|--------------|---------|
-| `Type`           | Sabit Listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   otomatik      |
-| `CommitMode`     | Sabit Listesi  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |
+| `Type`           | Sabit listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   otomatik      |
+| `CommitMode`     | Sabit listesi  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |
 | `MaxParallelism` | int   | Bu değer, işlem komutlarının paralel olarak çalıştırılacağı en fazla iş parçacığı sayısını belirler. Bu değer, TMSL [Sequence komutunda](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) veya diğer yöntemleri kullanarak ayarlanabir Maxparallelilik özelliği ile hizalanır.       | 10        |
 | `RetryCount`     | int   | İşlemin başarısız olmadan önce kaç kez yeniden deneneceğini gösterir.      |     0    |
 | `Objects`        | Dizi | İşlenecek nesne dizisi. Her nesne şunları içerir: bir bölümü işlerken tüm tablo veya "Tablo" ve "Bölüm" işlemlerini işlerken "Table". Hiçbir nesne belirtilmemişse, modelin tamamı yenilenir. |   Modelin tamamını işle      |
@@ -121,7 +121,7 @@ CommitMode, partialBatch 'e eşittir. Saat süretabilecek büyük veri kümeleri
 |`failed`     |   İşlem başarısız oldu.      |
 |`succeeded`      |   İşlem başarılı oldu.      |
 
-## <a name="get-refreshesrefreshid"></a>/Refreshes/\<REFRESHID> al
+## <a name="get-refreshesrefreshid"></a>/Refreshes/al\<refreshId>
 
 Yenileme işleminin durumunu denetlemek için yenileme KIMLIĞI üzerinde GET fiilini kullanın. Yanıt gövdesine bir örnek aşağıda verilmiştir. İşlem devam ediyorsa, `inProgress` durumunda döndürülür.
 
@@ -158,20 +158,20 @@ Bir model için geçmiş yenileme işlemlerinin bir listesini almak için/yenile
 [
     {
         "refreshId": "1344a272-7893-4afa-a4b3-3fb87222fdac",
-        "startTime": "2017-12-09T01:58:04.76",
-        "endTime": "2017-12-09T01:58:12.607",
+        "startTime": "2017-12-07T02:06:57.1838734Z",
+        "endTime": "2017-12-07T02:07:00.4929675Z",
         "status": "succeeded"
     },
     {
         "refreshId": "474fc5a0-3d69-4c5d-adb4-8a846fa5580b",
-        "startTime": "2017-12-07T02:05:48.32",
-        "endTime": "2017-12-07T02:05:54.913",
+        "startTime": "2017-12-07T01:05:54.157324Z",
+        "endTime": "2017-12-07T01:05:57.353371Z",
         "status": "succeeded"
     }
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>/Refreshes/\<REFRESHID> Sil
+## <a name="delete-refreshesrefreshid"></a>/Refreshes/SIL\<refreshId>
 
 Devam eden yenileme işlemini iptal etmek için yenileme KIMLIĞI üzerindeki DELETE fiilini kullanın.
 
@@ -194,7 +194,7 @@ Bir eşitleme işleminin durumunu denetlemek için, işlem KIMLIĞINI parametre 
 }
 ```
 
-Değerler `syncstate`:
+Değerler `syncstate` :
 
 - 0: çoğaltılıyor. Veritabanı dosyaları bir hedef klasöre çoğaltılıyor.
 - 1: yeniden doldurma. Veritabanı, salt okunurdur ve sunucu örnekleri üzerinde yeniden doldurma işlemi uygulanıyor.
@@ -218,7 +218,7 @@ Kod örneği [hizmet sorumlusu](#service-principal) kimlik doğrulamasını kull
 Hizmet sorumlusunu ayarlama hakkında daha fazla bilgi için bkz. [hizmet sorumlusu oluşturma-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) ve [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md) ve Azure 'da gerekli izinleri atama hakkında daha fazla bilgi için. Adımları tamamladıktan sonra aşağıdaki ek adımları uygulayın:
 
 1.    Kod örneğinde, **dize yetkilisini bulun =...**, KURULUŞUNUZUN kiracı kimliğiyle **ortak** olarak değiştirin.
-2.    Kimlik bilgileri nesnesinin örneğini oluşturmak için ClientCredential sınıfının kullanılması için açıklama/açıklama açıklama ekleyin. \<Uygulama kimliği> ve \<uygulama anahtarı> değerlerinin güvenli bir şekilde erişildiği veya hizmet sorumluları için sertifika tabanlı kimlik doğrulaması kullandığından emin olun.
+2.    Kimlik bilgileri nesnesinin örneğini oluşturmak için ClientCredential sınıfının kullanılması için açıklama/açıklama açıklama ekleyin. \<App ID>Ve \<App Key> değerlerinin güvenli bir şekilde erişildiği veya hizmet sorumluları için sertifika tabanlı kimlik doğrulaması kullandığından emin olun.
 3.    Örnek uygulamayı çalıştırın.
 
 

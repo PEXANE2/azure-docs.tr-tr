@@ -5,14 +5,14 @@ services: event-grid
 author: VidyaKukke
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/25/2020
 ms.author: vkukke
-ms.openlocfilehash: ba3bc14c9b4a9d5d866dbb1b9369557b948078d0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390202"
+ms.locfileid: "85414258"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
 Bu makalede, Azure Event Grid ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
@@ -37,6 +37,7 @@ Azure Event Grid konularda ve etki alanlarında yayımlama için IP tabanlı eri
 
 Varsayılan olarak, konu ve etki alanına, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca BIR dizi IP adresı veya IP adresi aralığı ile sınırlayabilirsiniz. Başka herhangi bir IP adresinden kaynaklanan yayımcılar reddedilir ve 403 (yasak) yanıtı alacaktır.
 
+Konular ve etki alanları için IP güvenlik duvarını yapılandırmaya yönelik adım adım yönergeler için bkz. [IP güvenlik duvarını yapılandırma](configure-firewall.md).
 
 ## <a name="private-endpoints"></a>Özel uç noktalar
 [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanarak doğrudan sanal ağınızdan, genel İnternet üzerinden geçmeden [özel bir bağlantı](../private-link/private-link-overview.md) üzerinden konulara ve etki alanlarına olay girişi sağlayabilirsiniz. Özel uç nokta, VNet 'iniz içindeki bir Azure hizmeti için özel bir ağ arabirimidir. Konu veya etki alanınız için özel bir uç nokta oluşturduğunuzda, sanal ağınızdaki istemciler ve Event Grid kaynağınız arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve Event Grid hizmeti arasındaki bağlantı güvenli bir özel bağlantı kullanır.

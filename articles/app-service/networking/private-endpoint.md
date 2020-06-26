@@ -4,17 +4,17 @@ description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel 
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 06/26/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bc9cd134e4c83aea94ae0049158b3054c602cce8
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: b9cf0467829425003a33ef806d8e7028e7f27add
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374432"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413408"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
@@ -65,22 +65,52 @@ Web uygulamanızın Web HTTP günlüklerinde istemci kaynak IP 'sini bulacaksın
 
 ## <a name="dns"></a>DNS
 
+Web uygulaması için özel uç noktası kullandığınızda, istenen URL, Web uygulamanızın adı ile aynı olmalıdır. Varsayılan olarak mywebappname.azurewebsites.net.
+
 Varsayılan olarak, Özel uç nokta olmadan Web uygulamanızın genel adı kümeye kurallı bir addır.
-Örneğin, ad çözümlemesi şu şekilde olacaktır: mywebapp.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+Örneğin, ad çözümlemesi şu şekilde olacaktır:
 
-Özel bir uç nokta dağıttığınızda, DNS girişini mywebapp.privatelink.azurewebsites.net kurallı adını gösterecek şekilde değiştiririz.
-Örneğin, ad çözümlemesi şu şekilde olacaktır: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+|Adı |Tür |Değer |
+|-----|-----|------|
+|mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|A|40.122.110.154| 
 
-Özel bir DNS sunucunuz veya Azure DNS özel bölgeniz varsa, privatelink.azurewebsites.net adlı bir bölge belirlemeniz gerekir. Web uygulamanızın kaydını bir kayıt ve özel uç nokta IP 'si ile kaydedin.
-Örneğin, ad çözümlemesi şu şekilde olacaktır: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net A 10.10.10.8 
+
+Özel bir uç nokta dağıttığınızda, DNS girişini mywebapp.privatelink.azurewebsites.net kurallı adını gösterecek şekilde güncelleştiririz.
+Örneğin, ad çözümlemesi şu şekilde olacaktır:
+
+|Adı |Tür |Değer |Görüyorum |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|A|40.122.110.154|<--bu genel IP özel uç noktanız değil, 503 hatası alırsınız|
+
+Özel bir DNS sunucusu veya Azure DNS özel bölgesi oluşturmanız gerekir, testler için test makinenizin ana bilgisayar girdisini değiştirebilirsiniz.
+Oluşturmanız gereken DNS bölgesi: **Privatelink.azurewebsites.net**. Web uygulamanızın kaydını bir kayıt ve özel uç nokta IP 'si ile kaydedin.
+Örneğin, ad çözümlemesi şu şekilde olacaktır:
+
+|Adı |Tür |Değer |Görüyorum |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<--bu girişi, Özel uç nokta IP adresinizi işaret etmek üzere DNS sisteminizde yönetirsiniz|
+
+Bu DNS yapılandırmasından sonra, Web uygulamanıza mywebappname.azurewebsites.net varsayılan adıyla özel olarak ulaşabilirsiniz.
+
 
 Özel bir DNS adı kullanmanız gerekiyorsa, Web uygulamanıza özel adı eklemeniz gerekir. Önizleme sırasında, özel ad genel DNS çözümlemesi kullanılarak herhangi bir özel ad gibi doğrulanması gerekir. Daha fazla bilgi için bkz. [özel DNS doğrulaması][dnsvalidation].
 
-Kudu konsolunu veya kudu REST API (örneğin, Azure DevOps şirket içinde barındırılan aracılarla dağıtım) kullanmanız gerekiyorsa, Azure DNS özel bölgeniz veya özel DNS sunucunuzda iki kayıt oluşturmanız gerekir. 
-- PrivateEndpointIP yourwebappname.azurewebsites.net 
-- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+Kudu konsolu veya kudu REST API (örneğin, Azure DevOps kendiliğinden konak aracılarıyla dağıtım) için, Azure DNS özel bölgeniz veya özel DNS sunucunuzda iki kayıt oluşturmanız gerekir. 
 
-Özel uç noktasını oluşturduğunuz sanal ağa bağlı privatelink.azurewebsites.net adlı bir özel bölgeniz varsa, bu iki kayıt otomatik olarak doldurulur.
+| Adı | Tür | Değer |
+|-----|-----|-----|
+| mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
+| mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
+
+> [!TIP]
+> Özel uç noktasını oluşturduğunuz sanal ağa bağlı privatelink.azurewebsites.net adlı özel bir DNS bölgeniz varsa, bu iki kayıt otomatik olarak doldurulur.
+
 
 ## <a name="pricing"></a>Fiyatlandırma
 

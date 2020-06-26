@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 40b3ebf9193ad2d167cb36792900746201605298
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106466"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414156"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -24,7 +24,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 
 |Özellik  |Açıklama |
 |---------|---------|
-|Name    |    Kaynak grubu içinde benzersiz bir ad.      |
+|Adı    |    Kaynak grubu içinde benzersiz bir ad.      |
 |Alt ağ    |  Sanal bir ağdan özel IP adresleri dağıtmak ve ayırmak için alt ağ. Alt ağ gereksinimleri için, bu makaledeki sınırlamalar bölümüne bakın.         |
 |Özel bağlantı kaynağı    |   Kullanılabilir türler listesinden kaynak KIMLIĞI veya diğer ad kullanarak bağlanacak özel bağlantı kaynağı. Bu kaynağa gönderilen tüm trafik için benzersiz bir ağ tanımlayıcısı oluşturulacak.       |
 |Hedef alt kaynak   |      Bağlanılacak alt kaynak. Her özel bağlantı kaynağı türü, tercihe göre seçim yapmak için farklı seçeneklere sahiptir.    |
@@ -76,7 +76,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure Geçişi** | Microsoft. Relay/Namespace | ad alanı |
 |**Azure Event Grid** | Microsoft. EventGrid/konuları    | konu başlığı |
 |**Azure Event Grid** | Microsoft. EventGrid/Domains    | etki alanı |
-|**Azure WebApps** | Microsoft. Web/siteler    | Site |
+|**Azure WebApps** | Microsoft. Web/siteler    | Siteler |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/çalışma alanları    | çalışma alanı |
   
  

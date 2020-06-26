@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bf3f454296acafcff6fe775b07abeb7a253749b5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78299321"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253537"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Öğretici: Microsoft İş Ortağı Sözleşmesi faturanızı gözden geçirme
 
@@ -69,7 +69,7 @@ Tüm işlemler sayfasında aşağıdaki bilgiler görüntülenir:
 |Tarih     | İşlem tarihi  |
 |Fatura kimliği     | İşlemin faturalandığı faturanın tanımlayıcısı. Destek isteği gönderiyorsanız, destek isteğinizi hızlandırmak için Azure desteğiyle bu kimliği paylaşın |
 |İşlem türü     |  Satın alma, iptal ve kullanım ücretleri gibi işlemin türü  |
-|Ürün ailesi     | Sanal makine için işlem veya Azure SQL veritabanı için veritabanı gibi ürünün kategorisi|
+|Ürün ailesi     | Sanal makine için işlem veya Azure SQL Veritabanı için veritabanı gibi ürünün kategorisi|
 |Ürün SDKU'su     | Ürününüzün örneğini tanımlayan benzersiz kod |
 |Miktar     |  İşlem miktarı      |
 |Faturalama profili     | İşlem bu faturalama profili faturasında gösterilir |

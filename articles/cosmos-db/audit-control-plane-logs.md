@@ -4,14 +4,14 @@ description: Bölge ekleme, aktarım hızını güncelleştirme, bölge yük dev
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/23/2020
+ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: cb6a27c0f03b7c0c41d8f323609df612363cfd9e
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262659"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414205"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB denetim düzlemi işlemlerini denetleme
 
@@ -71,7 +71,7 @@ Aşağıdaki ekran görüntüleri, bir Azure Cosmos hesabı için tutarlılık d
 
 :::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="VNet eklendiğinde denetim düzlemi günlükleri":::
 
-Aşağıdaki ekran görüntüleri, Cassandra tablosunun aktarım hızı güncelleştirilirken günlükleri yakalar:
+Aşağıdaki ekran görüntüleri, bir Cassandra hesabının anahtar alanı veya tablosu oluşturulduğunda ve üretilen iş güncelleştirileceği zaman günlükleri yakalar. Veritabanı ve kapsayıcı oluşturma ve güncelleştirme işlemleri için denetim düzlemi günlükleri, aşağıdaki ekran görüntüsünde gösterildiği gibi ayrı olarak kaydedilir:
 
 :::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Verimlilik güncelleniyorsa denetim düzlemi günlükleri":::
 
@@ -101,30 +101,39 @@ Hesap düzeyinde kullanılabilen Denetim düzlemi işlemleri aşağıda verilmi�
 
 Aşağıda, veritabanı ve kapsayıcı düzeyinde kullanılabilen Denetim düzlemi işlemleri verilmiştir. Bu işlemler, Azure izleyici 'de ölçümler olarak kullanılabilir:
 
+* SQL veritabanı oluşturuldu
 * SQL veritabanı güncelleştirildi
-* SQL kapsayıcısı güncelleştirildi
 * SQL veritabanı verimlilik güncelleştirildi
-* SQL kapsayıcısı üretilen Işi güncelleştirildi
 * SQL veritabanı silindi
+* Oluşturulan SQL kapsayıcısı
+* SQL kapsayıcısı güncelleştirildi
+* SQL kapsayıcısı üretilen Işi güncelleştirildi
 * SQL kapsayıcısı silindi
+* Cassandra keyspace oluşturuldu
 * Cassandra keyspace güncelleştirildi
-* Cassandra tablosu güncelleştirildi
 * Cassandra keyspace üretilen Işi güncelleştirildi
-* Cassandra tablosu üretilen Işi güncelleştirildi
 * Cassandra keyspace silindi
+* Cassandra tablosu oluşturuldu
+* Cassandra tablosu güncelleştirildi
+* Cassandra tablosu üretilen Işi güncelleştirildi
 * Cassandra tablosu silindi
+* Gremlin veritabanı oluşturuldu
 * Gremlin veritabanı güncelleştirildi
-* Gremlin grafiği güncelleştirildi
 * Gremlin veritabanı performansı güncelleştirildi
-* Gremlin Graf üretilen Işi güncelleştirildi
 * Gremlin veritabanı silindi
+* Gremlin grafiği oluşturuldu
+* Gremlin grafiği güncelleştirildi
+* Gremlin Graf üretilen Işi güncelleştirildi
 * Gremlin grafiği silindi
+* Mongo veritabanı oluşturuldu
 * Mongo veritabanı güncelleştirildi
-* Mongo koleksiyonu güncelleştirildi
 * Mongo veritabanı üretilen Işi güncelleştirildi
-* Mongo koleksiyon üretilen Işi güncelleştirildi
 * Mongo veritabanı silindi
+* Mongo koleksiyonu oluşturuldu
+* Mongo koleksiyonu güncelleştirildi
+* Mongo koleksiyon üretilen Işi güncelleştirildi
 * Mongo koleksiyonu silindi
+* AzureTable tablo oluşturuldu
 * AzureTable tablo güncelleştirildi
 * AzureTable tablo üretilen Işi güncelleştirildi
 * AzureTable tablo silindi
@@ -144,14 +153,15 @@ Farklı işlemler için tanılama günlüklerindeki işlem adları aşağıda ve
 
 API 'ye özgü işlemler için, işlem aşağıdaki biçimde adlandırılır:
 
-* ApiKind + Apikınresourcetype + OperationType + Başlat/Tamam
-* ApiKind + Apikınresourcetype + "aktarım hızı" + operationType + start/tamamlamayı
+* Apıkind + Apıkindresourcetype + OperationType
+* ApiKind + Apıkindresourcetype + "aktarım hızı" + operationType
 
 **Örnek** 
 
-* CassandraKeyspacesUpdateStart, Cassandrakeyspacesupdatetamamlanmıştır
-* CassandraKeyspacesThroughputUpdateStart, Cassandrakeyspacesthroughputupdatetamamlanmıştır
-* SqlContainersUpdateStart, Sqlcontainersupdatetamamlanmıştır
+* CassandraKeyspacesCreate
+* CassandraKeyspacesUpdate
+* CassandraKeyspacesThroughputUpdate
+* SqlContainersUpdate
 
 *Resourcedetails* özelliği, kaynak gövdesinin tamamını bir istek yükü olarak içerir ve güncelleştirmek için istenen tüm özellikleri içerir
 
@@ -161,14 +171,28 @@ Aşağıda denetim düzlemi işlemlerine yönelik tanılama günlüklerini almak
 
 ```kusto
 AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdateStart"
+| where Category startswith "ControlPlane"
+| where OperationName contains "Update"
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
 AzureDiagnostics 
 | where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+| where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

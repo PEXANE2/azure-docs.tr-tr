@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f31ee7f7d60a3bf0ab56b9ed8aa7fd25774e06c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667000"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412558"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB tarihlerle çalışma
 
@@ -21,9 +21,9 @@ Temel türlerin yanı sıra, birçok uygulamanın tarih ve zaman damgalarını t
 
 ## <a name="storing-datetimes"></a>Tarih zamanlarını depolama
 
-Azure Cosmos DB dize, sayı, Boolean, null, dizi, nesne gibi JSON türlerini destekler. Bir tarih saat türünü doğrudan desteklemez. Şu anda Azure Cosmos DB tarihlerin yerelleştirmesini desteklemez. Bu nedenle, DateTimes 'ı dizeler olarak depolamanız gerekir. Azure Cosmos DB `YYYY-MM-DDThh:mm:ss.fffffffZ` DateTime dizeleri için ÖNERILEN biçim ISO 8601 UTC standardını izler. Tüm tarihleri UTC olarak Azure Cosmos DB depolamanız önerilir. Tarih dizelerini bu biçime dönüştürmek, zaman sözcüıgrafik tarihleri sıralamasına izin verir. UTC dışı tarihler depolanıyorsa, mantığın istemci tarafında işlenmesi gerekir. Yerel bir tarih/saati UTC 'ye dönüştürmek için, fark JSON içinde bir özellik olarak bilinmeli/depolanmalıdır ve istemci UTC Tarih saat değerini hesaplamak için de sapmayı kullanabilir.
+Azure Cosmos DB dize, sayı, Boolean, null, dizi, nesne gibi JSON türlerini destekler. Bir tarih saat türünü doğrudan desteklemez. Şu anda Azure Cosmos DB tarihlerin yerelleştirmesini desteklemez. Bu nedenle, DateTimes 'ı dizeler olarak depolamanız gerekir. Azure Cosmos DB DateTime dizeleri için önerilen biçim `yyyy-MM-ddTHH:mm:ss.fffffffZ` ıso 8601 UTC standardını izler. Tüm tarihleri UTC olarak Azure Cosmos DB depolamanız önerilir. Tarih dizelerini bu biçime dönüştürmek, zaman sözcüıgrafik tarihleri sıralamasına izin verir. UTC dışı tarihler depolanıyorsa, mantığın istemci tarafında işlenmesi gerekir. Yerel bir tarih/saati UTC 'ye dönüştürmek için, fark JSON içinde bir özellik olarak bilinmeli/depolanmalıdır ve istemci UTC Tarih saat değerini hesaplamak için de sapmayı kullanabilir.
 
-Filtre olarak DateTime dizeleri olan Aralık sorguları yalnızca DateTime dizelerinin UTC ve aynı uzunlukta olması durumunda desteklenir. Azure Cosmos DB, [GetCurrentDateTime](sql-query-getcurrentdatetime.md) System IşLEVI geçerli UTC Tarih ve saati ISO 8601 dize değerini şu biçimde döndürür: `YYYY-MM-DDThh:mm:ss.fffffffZ`.
+Filtre olarak DateTime dizeleri olan Aralık sorguları yalnızca DateTime dizelerinin UTC ve aynı uzunlukta olması durumunda desteklenir. Azure Cosmos DB, [GetCurrentDateTime](sql-query-getcurrentdatetime.md) System IşLEVI geçerli UTC Tarih ve saati ISO 8601 dize değerini şu biçimde döndürür: `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 Çoğu uygulama aşağıdaki nedenlerle tarih saat için varsayılan dize gösterimini kullanabilir:
 
@@ -32,7 +32,7 @@ Filtre olarak DateTime dizeleri olan Aralık sorguları yalnızca DateTime dizel
 * JSON 'da depolanan tarihler insanlar tarafından okunabilir.
 * Bu yaklaşım, hızlı sorgu performansı için Azure Cosmos DB dizininden yararlanabilir.
 
-Örneğin, aşağıdaki kod parçacığı iki DateTime özelliği `Order` içeren bir nesnesi `ShipDate` ve `OrderDate` .NET SDK kullanarak bir belge olarak depolar:
+Örneğin, aşağıdaki kod parçacığı `Order` Iki DateTime özelliği içeren bir nesnesi `ShipDate` ve `OrderDate` .NET SDK kullanarak bir belge olarak depolar:
 
 ```csharp
     public class Order
@@ -65,7 +65,7 @@ Bu belge Azure Cosmos DB ' de şu şekilde depolanır:
     }
 ```  
 
-Alternatif olarak, 1 Ocak 1970 ' den itibaren geçen saniye sayısını temsil eden bir sayı olarak DateTimes 'ı UNIX zaman damgaları olarak saklayabilirsiniz. Azure Cosmos DB iç zaman damgası (`_ts`) özelliği bu yaklaşımı izler. [Unixdatetimeconverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) sınıfını, DateTimeS 'ı sayı olarak seri hale getirmek için kullanabilirsiniz.
+Alternatif olarak, 1 Ocak 1970 ' den itibaren geçen saniye sayısını temsil eden bir sayı olarak DateTimes 'ı UNIX zaman damgaları olarak saklayabilirsiniz. Azure Cosmos DB iç zaman damgası ( `_ts` ) özelliği bu yaklaşımı izler. [Unixdatetimeconverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) sınıfını, DateTimeS 'ı sayı olarak seri hale getirmek için kullanabilirsiniz.
 
 ## <a name="querying-datetimes-in-linq"></a>LINQ 'te DateTimes sorgulama
 

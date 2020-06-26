@@ -5,16 +5,20 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: bf1acd8bce53801c7c241121db2079e9b8a01851
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383178"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253715"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Kurumsal müşteriler için Raporlama API’lerine genel bakış
+
+> [!Note]
+> Microsoft artık Azure Faturalandırma - Kurumsal Raporlama API’erini güncelleştirmiyor. Bunun yerine, [Azure Tüketim](/rest/api/consumption) API’lerini kullanmanız gerekir.
+
 Raporlama API’leri, Kurumsal Azure müşterilerinin program aracılığıyla tüketim ve faturalama verilerini tercih ettikleri veri analizi aracına almasını sağlar. Kurumsal müşteriler, üzerinde anlaşılan parasal taahhütlerde bulunmak ve Azure kaynaklarının özel fiyatlandırmasına erişim elde etmek için Azure ile [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) imzalamıştır.
 
 API’ler için gereken tüm tarih ve saat parametrelerinin birleştirilmiş Eşgüdümlü Evrensel Saat (UTC) değerleri olarak belirtilmesi gerekir. API’lerin döndürdüğü değerler UTC biçiminde gösterilir.
@@ -27,7 +31,7 @@ API’ler için gereken tüm tarih ve saat parametrelerinin birleştirilmiş Eş
 |-|-|
 |Yetkilendirme| Değeri şu biçimde belirtin: **taşıyıcı {API_KEY}** <br/> Örnek: taşıyıcı eyr....09|
 
-## <a name="consumption-apis"></a>Tüketim API’leri
+## <a name="consumption-based-apis"></a>Tüketim tabanlı API’ler
 Aşağıda açıklanan API’ler için, [AutoRest](https://github.com/Azure/AutoRest) veya [Swagger CodeGen](https://swagger.io/swagger-codegen/) kullanılarak istemci SDK’ları oluşturma yeteneğini ve API’nin kolay iç denetimini etkinleştirmesi gereken bir Swagger uç noktasına [buradan](https://consumption.azure.com/swagger/ui/index) ulaşılabilir. 1 Mayıs 2014’ten itibaren veriler, bu API aracılığıyla kullanılabilir.
 
 * **Bakiye ve Özet**: [Bakiye ve Özet API’si](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary), bakiyeler, yeni satın almalar, Azure Market hizmeti ücretleri, düzeltmeler ve fazla kullanım ücretleri hakkındaki bilgilerin aylık özetini sunar.

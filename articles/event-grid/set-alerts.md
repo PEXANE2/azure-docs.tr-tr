@@ -7,15 +7,15 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: spelluru
-ms.openlocfilehash: 488d3025f279916cb98e75f3f8db56fdc9d6d1de
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 1a2eacb5fa03ea2a5a8ba2d38d9b3e7dea315890
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392967"
+ms.locfileid: "85412847"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Azure Event Grid ölçümleri ve etkinlik günlüklerinde uyarı ayarlama
-Bu makalede, Azure Event Grid ölçümleri ve etkinlik günlüğü işlemlerinde uyarıların nasıl oluşturulacağı açıklanır. 
+Bu makalede, Azure Event Grid ölçümleri ve etkinlik günlüğü işlemlerinde uyarıların nasıl oluşturulacağı açıklanır. Azure Event Grid kaynaklar (konular ve etki alanları) için hem yayımlama hem de teslim ölçümleri üzerinde uyarı oluşturabilirsiniz. Sistem konuları için [ **ölçümler** sayfasını kullanarak uyarılar oluşturun](#create-alerts-using-the-metrics-page).
 
 ## <a name="create-alerts-on-dead-lettered-events"></a>Kullanılmayan olaylarda uyarı oluşturma
 Aşağıdaki yordamda, özel bir konu için **kullanılmayan olaylar** ölçümünde uyarı oluşturma işlemi gösterilmektedir. Bu örnekte, bir konu için atılacak olay sayısı 10 ' dan fazla kaldığında Azure Kaynak grubu sahibine bir e-posta gönderilir. 
@@ -33,6 +33,9 @@ Aşağıdaki yordamda, özel bir konu için **kullanılmayan olaylar** ölçüm�
     2. Boyutları seçin (isteğe bağlı). 
         
         :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Sinyal mantığını yapılandırma":::        
+
+        > [!NOTE]
+        > **+** Olayları filtrelemek için bir olay abonelik adı belirtmek üzere **eventsubscriptionname** düğmesini seçebilirsiniz. 
     3. Aşağı kaydırın. **Uyarı mantığı** bölümünde bir **operatör**, **toplama türü**seçin ve bir **eşik değeri**girin ve **bitti**' yi seçin. Bu örnekte, toplam ölü olay sayısı 10 ' dan büyük olduğunda bir uyarı tetiklenir. 
     
         :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Uyarı mantığı":::                
@@ -66,7 +69,7 @@ Aşağıdaki yordamda, özel bir konu için **kullanılmayan olaylar** ölçüm�
 
 
 ## <a name="create-alerts-using-the-metrics-page"></a>Ölçümler sayfasını kullanarak uyarı oluşturma
-Ayrıca **ölçümler** sayfasını kullanarak da uyarılar oluşturabilirsiniz. Adımlar benzerdir. 
+Ayrıca **ölçümler** sayfasını kullanarak da uyarılar oluşturabilirsiniz. Adımlar benzerdir. Sistem konuları için, **Uyarılar** sayfası kullanılabilir olmadığından yalnızca uyarılar oluşturmak üzere **ölçümler** sayfasını kullanabilirsiniz. 
 
 :::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Ölçümler sayfası-uyarı oluştur düğmesi":::   
     

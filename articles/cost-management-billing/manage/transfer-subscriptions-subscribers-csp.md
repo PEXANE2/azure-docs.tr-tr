@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 91f11502a136ca08d62072808d270f8e840a8710
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791162"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106429"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
 Bu makalede Azure aboneliklerini Bulut Çözümü Sağlayıcıları (CSP) iş ortakları ile müşterileri arasında aktarmayla ilgili üst düzey adımlara yer verilmiştir.
 
-## <a name="transfer-ea-subscriptions"></a>EA aboneliklerini aktarma
+## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>CSP iş ortağına EA aboneliklerinin aktarılması
 
 [Azure Uzman Yönetilen Hizmetler Sağlayıcısı (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) sertifikalı CSP doğrudan faturalandırma iş ortakları, Doğrudan Kurumsal Anlaşma (EA) sahibi olan müşterilerinin Azure aboneliklerinin aktarılması isteğinde bulunabilirler. Abonelik aktarma işlemleri yalnızca kabul edilen bir Microsoft Müşteri Sözleşmesi'ne (MCA) sahip olan ve bir Azure planı satın almış olan müşteriler tarafından gerçekleştirilebilir.
 
@@ -44,7 +44,7 @@ Diğer Azure aboneliklerini CSP iş ortağına aktarmak isteyen abonenin kaynak 
     > [!IMPORTANT]
     >  - Azure kaynaklarını farklı aboneliklere taşımak, aboneliklerinizdeki kaynaklara göre hizmette kesintiye neden olabilir.
 
-## <a name="all-subscription-transfers-from-a-csp-partner"></a>CSP iş ortağındaki tüm aboneliklerin aktarılması
+## <a name="transfer-csp-subscription-to-other-offer"></a>CSP aboneliğini başka bir teklife aktarma
 
 CSP iş ortağındaki diğer abonelikleri başka bir Azure teklifine taşımak için abonenin kaynak CSP aboneliklerindeki kaynakları hedef aboneliklere taşıması gerekir.
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 06/20/2020
-ms.openlocfilehash: 3c62f9794a4eb963bcd23a294d82b67cd9e37d08
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 06/25/2020
+ms.openlocfilehash: 33e521046889733b2f0a66b839ab5dde46398318
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367232"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412704"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -216,7 +216,7 @@ Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları a�
 
 Her Azure aboneliği şu tümleştirme hesabı sınırlarına sahiptir:
 
-* Azure bölgesi başına bir [ücretsiz katman](../logic-apps/logic-apps-pricing.md#integration-accounts) tümleştirme hesabı
+* Azure bölgesi başına bir [ücretsiz katman](../logic-apps/logic-apps-pricing.md#integration-accounts) tümleştirme hesabı. Bu katman yalnızca Azure 'daki genel bölgeler için kullanılabilir (örneğin, Batı ABD veya Güneydoğu Asya), ancak [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) veya [Azure Kamu](../azure-government/documentation-government-welcome.md)için değil.
 
 * [Geliştirici ve Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'larda her türlü [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) tümleştirme hesapları dahil olmak üzere 1.000 toplam tümleştirme hesabı.
 
@@ -268,7 +268,7 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 
 | Çalışma zamanı uç noktası | Ücretsiz | Temel | Standart | Notlar |
 |------------------|------|-------|----------|-------|
-| 5 dakika başına çağrı okuma | 3,000 | 30.000 | 60.000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
+| 5 dakika başına çağrı okuma | 3,000 | 30.000 | 60.000 | Bu sınır, mantıksal uygulama çalıştırma geçmişinden gelen ham giriş ve çıkışları alan çağrılar için geçerlidir. İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
 | 5 dakika başına çağrı çağır | 3,000 | 30.000 | 45.000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
 | 5 dakika başına çağrı izleme | 3,000 | 30.000 | 45.000 | İş yükünü, gerektiğinde birden fazla hesapta dağıtabilirsiniz. |
 | Eşzamanlı çağrıları engelleme | ~ 1.000 | ~ 1.000 | ~ 1.000 | Tüm SKU 'Lar için aynı. Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |

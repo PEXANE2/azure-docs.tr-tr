@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: spelluru
-ms.openlocfilehash: 69c7c7f361a930ab1dc2e0437365d2f4457b57e2
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4d81845ab61d8a84b9bad47ede4a027cd772c499
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101054"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412949"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Yönetilen bir kimlikle olay teslimi
 Bu makalede, Azure Event Grid konuları veya etki alanları için [yönetilen bir hizmet kimliğinin](../active-directory/managed-identities-azure-resources/overview.md) nasıl etkinleştirileceği açıklanır. Olayları, Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kullanın.
@@ -44,6 +44,8 @@ Benzer şekilde, `az eventgrid domain create` sistem tarafından yönetilen kiml
 Önceki bölümde, bir konu veya etki alanı oluştururken sistem tarafından yönetilen bir kimliği nasıl etkinleştireceğinizi öğrendiniz. Bu bölümde, var olan konu veya etki alanı için sistem tarafından yönetilen bir kimliği nasıl etkinleştireceğinizi öğreneceksiniz. 
 
 ### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+Aşağıdaki yordamda, bir konu için sistem tarafından yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir. Bir etki alanı için kimlik etkinleştirme adımları benzerdir. 
+
 1. [Azure Portal](https://portal.azure.com)gidin.
 2. Üstteki arama çubuğunda **olay Kılavuzu konularını** arayın.
 3. Yönetilen kimliği etkinleştirmek istediğiniz **konuyu** seçin. 

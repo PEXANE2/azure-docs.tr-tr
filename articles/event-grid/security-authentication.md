@@ -1,88 +1,21 @@
 ---
-title: Azure Event Grid güvenlik ve kimlik doğrulaması
-description: Bu makalede, Event Grid kaynaklarınıza (Web kancası, abonelikler, özel konular) erişimin kimliklerinin nasıl doğrulanmasıyla ilgili farklı yollar açıklanmaktadır
+title: Olay işleyicilerine olay teslimini doğrulama (Azure Event Grid)
+description: Bu makalede, Azure Event Grid ' de olay işleyicilerine teslimin doğrulanması için farklı yollar açıklanmaktadır.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 06/25/2020
 ms.author: spelluru
-ms.openlocfilehash: d028367b82e8529d5260c086f2e4afa609582b00
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 46b1aa500f00046dd4d6e318b270982e8b747a79
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100224"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412830"
 ---
-# <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid kaynaklarına erişim izni doğrulanıyor
-Bu makalede aşağıdaki senaryolar hakkında bilgi verilmektedir:  
-
-- Paylaşılan erişim Imzasını (SAS) veya anahtarı kullanarak Azure Event Grid konularına olay yayınlayan istemcilerin kimliğini doğrulayın. 
-- Azure Active Directory (Azure AD) veya paylaşılan bir gizli dizi kullanarak Event Grid olayları almak için kullanılan Web kancası uç noktasının güvenliğini sağlayın.
-
-## <a name="authenticate-publishing-clients-using-sas-or-key"></a>SAS veya anahtar kullanarak yayımlama istemcilerinin kimliğini doğrulama
-Özel konular, paylaşılan erişim Imzası (SAS) veya anahtar kimlik doğrulaması kullanır. SAS önerilir, ancak anahtar kimlik doğrulaması basit programlama sağlar ve birçok mevcut Web kancası yayımcısıyla uyumludur.
-
-Kimlik doğrulama değerini HTTP üstbilgisine dahil edersiniz. SAS için, üst bilgi değeri için **AEG-SAS-Token** ' ı kullanın. Anahtar kimlik doğrulaması için, üst bilgi değeri için **AEG-SAS-Key** kullanın.
-
-### <a name="key-authentication"></a>Anahtar kimlik doğrulaması
-
-Anahtar kimlik doğrulaması en basit kimlik doğrulama biçimidir. İleti üstbilgisinde şu biçimi kullanın: `aeg-sas-key: <your key>` .
-
-Örneğin, şunu içeren bir anahtar geçirirsiniz:
-
-```
-aeg-sas-key: XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
-```
-
-Ayrıca, `aeg-sas-key` bir sorgu parametresi olarak belirtebilirsiniz. 
-
-```
-https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
-```
-
-### <a name="sas-tokens"></a>SAS belirteçleri
-
-Event Grid için SAS belirteçleri, kaynak, sona erme saati ve imza içerir. SAS belirtecinin biçimi: `r={resource}&e={expiration}&s={signature}` .
-
-Kaynak, olayları gönderdiğiniz olay Kılavuzu konusunun yoludur. Örneğin, geçerli bir kaynak yolu: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Desteklenen tüm API sürümlerini görmek için bkz. [Microsoft. EventGrid kaynak türleri](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
-
-İmza bir anahtardan oluşturulur.
-
-Örneğin, geçerli bir **AEG-SAS-Token** değeri:
-
-```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
-```
-
-Aşağıdaki örnek, Event Grid ile kullanmak için bir SAS belirteci oluşturur:
-
-```cs
-static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
-{
-    const char Resource = 'r';
-    const char Expiration = 'e';
-    const char Signature = 's';
-
-    string encodedResource = HttpUtility.UrlEncode(resource);
-    var culture = CultureInfo.CreateSpecificCulture("en-US");
-    var encodedExpirationUtc = HttpUtility.UrlEncode(expirationUtc.ToString(culture));
-
-    string unsignedSas = $"{Resource}={encodedResource}&{Expiration}={encodedExpirationUtc}";
-    using (var hmac = new HMACSHA256(Convert.FromBase64String(key)))
-    {
-        string signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(unsignedSas)));
-        string encodedSignature = HttpUtility.UrlEncode(signature);
-        string signedSas = $"{unsignedSas}&{Signature}={encodedSignature}";
-
-        return signedSas;
-    }
-}
-```
-
-### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
-
-Event Grid hizmeti tarafından diske yazılan tüm olaylar veya veriler, bekleyen bir şekilde şifrelendiğinden emin olmak için Microsoft tarafından yönetilen bir anahtarla şifrelenir. Ayrıca, olayların veya verilerin saklanacağı en uzun süre, [Event Grid yeniden deneme ilkesiyle](delivery-and-retry.md)ilgili olarak 24 saat olur. Event Grid, 24 saat sonra tüm olayları veya verileri otomatik olarak siler veya olayın yaşam süresi (hangisi daha az) olur.
+# <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Olay işleyicilerine olay teslimini doğrulama (Azure Event Grid)
+Bu makalede olay işleyicilerine olay teslimini doğrulama hakkında bilgi sağlanır. Ayrıca, Azure Active Directory (Azure AD) veya paylaşılan bir gizli dizi kullanarak Event Grid olayları almak için kullanılan Web kancası uç noktalarının güvenliğini nasıl güvence altına alacağını gösterir.
 
 ## <a name="use-system-assigned-identities-for-event-delivery"></a>Olay teslimi için sistem tarafından atanan kimlikleri kullanma
 Bir konu veya etki alanı için sistem tarafından atanan yönetilen kimliği etkinleştirebilir ve olayları Service Bus kuyrukları ve konuları, Olay Hub 'ları ve depolama hesapları gibi desteklenen hedeflere iletmek için kimliğini kullanabilirsiniz.
@@ -113,6 +46,6 @@ Web kancalarına olay sunma hakkında daha fazla bilgi için bkz. [Web kancası 
 > [!IMPORTANT]
 Azure Event Grid yalnızca **https** Web kancası uç noktalarını destekler. 
 
-## <a name="next-steps"></a>Sonraki adımlar
 
-- Event Grid giriş için bkz. [Event Grid hakkında](overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
+Konular veya etki alanlarına istemci yayımlama olaylarını doğrulamak hakkında bilgi edinmek için bkz. [Yayımlama Istemcilerinin kimlik doğrulaması](security-authenticate-publishing-clients.md) . 

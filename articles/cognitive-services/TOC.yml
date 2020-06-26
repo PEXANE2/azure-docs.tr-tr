@@ -36,6 +36,8 @@
       href: ./encryption/cognitive-services-encryption-keys-portal.md
     - name: Bilişsel Hizmetler için isteklerin kimliğini doğrulama
       href: authentication.md
+    - name: Güvenlik temeli
+      href: security-baseline.md
 - name: Kapsayıcı desteği
   items:
     - name: Kapsayıcı desteği

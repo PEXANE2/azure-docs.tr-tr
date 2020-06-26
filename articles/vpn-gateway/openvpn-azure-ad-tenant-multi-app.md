@@ -4,15 +4,15 @@ description: Azure AD kimlik doğrulaması kullanarak sanal ağınıza bağlanma
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: how-to
-ms.date: 02/19/2020
+ms.topic: conceptual
+ms.date: 06/25/2020
 ms.author: alzam
-ms.openlocfilehash: 2fc329bd77bafb2e11575b75be102314df98131f
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 0ef0c7d3a269753067e53a69b9da680db969e25d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987205"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414444"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN protokolü bağlantıları için Azure Active Directory kiracısı oluşturma
 
@@ -26,34 +26,22 @@ Sanal ağınıza bağlanırken sertifika tabanlı kimlik doğrulama veya RADIUS 
 
 ## <a name="6-enable-authentication-on-the-gateway"></a><a name="enable-authentication"></a>6. ağ geçidinde kimlik doğrulamasını etkinleştirin
 
-Bu adımda, VPN ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirirsiniz.
+Bu adımda, VPN ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirecektir.
 
-1. Aşağıdaki komutları çalıştırarak VPN ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirin. Komutları kendi ortamınızı yansıtacak şekilde değiştirdiğinizden emin olun:
+1. **Noktadan siteye yapılandırmaya** giderek ve **tünel türü**olarak **OpenVPN (SSL)** seçerek VPN ağ geçidinde Azure AD kimlik doğrulamasını etkinleştirin. **Kimlik doğrulaması türü** olarak **Azure Active Directory** öğesini seçin, ardından **Azure Active Directory** bölümünün altındaki bilgileri girin.
 
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "application ID from previous section" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24
-    ```
+    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-ad-auth-portal.png)
+
     > [!NOTE]
-    > Yukarıdaki komutlarda Azure VPN istemcisinin uygulama KIMLIĞINI kullanmayın: tüm kullanıcılara VPN Gateway erişimi verir. Kaydettiğiniz uygulamaların KIMLIĞINI kullanın.
+    > Azure VPN istemcisinin uygulama KIMLIĞINI kullanmayın: tüm kullanıcılara VPN Gateway erişimi verir. Kaydettiğiniz uygulamaların KIMLIĞINI kullanın.
 
-2. Aşağıdaki komutları çalıştırarak profili oluşturun ve indirin. -ResourcGroupName ve-Name değerlerini kendi değerlerinizle eşleşecek şekilde değiştirin.
+2. **VPN Istemcisini indir** bağlantısına tıklayarak profili oluşturun ve indirin.
 
-    ```azurepowershell-interactive
-    $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
-    $PROFILE.VpnProfileSASUrl
-    ```
+3. İndirilen ZIP dosyasını ayıklayın.
 
-3. Komutları çalıştırdıktan sonra, aşağıdakine benzer bir sonuç görürsünüz. Profil ZIP dosyasını indirmek için sonuç URL 'sini tarayıcınıza kopyalayın.
+4. Sıkıştırılmış olmayan "AzureVPN" klasörüne gidin.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/profile.png)
-
-4. İndirilen ZIP dosyasını ayıklayın.
-
-5. Sıkıştırılmış olmayan "AzureVPN" klasörüne gidin.
-
-6. "azurevpnconfig.xml" dosyasının konumunu bir yere göz önünde alın. azurevpnconfig.xml, VPN bağlantısı ayarını içerir ve doğrudan Azure VPN Istemci uygulamasına aktarılabilir. Ayrıca, bu dosyayı e-posta veya başka yollarla bağlanması gereken tüm kullanıcılara dağıtabilirsiniz. Kullanıcının başarıyla bağlanması için geçerli bir Azure AD kimlik bilgilerine ihtiyacı olacak.
+5. "azurevpnconfig.xml" dosyasının konumunu bir yere göz önünde alın. azurevpnconfig.xml, VPN bağlantısı ayarını içerir ve doğrudan Azure VPN Istemci uygulamasına aktarılabilir. Ayrıca, bu dosyayı e-posta veya başka yollarla bağlanması gereken tüm kullanıcılara dağıtabilirsiniz. Kullanıcının başarıyla bağlanması için geçerli bir Azure AD kimlik bilgilerine ihtiyacı olacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

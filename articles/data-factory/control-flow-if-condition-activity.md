@@ -11,19 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417161"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414615"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory koşul etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği sağlar. Koşul `true` sonucunu verdiğinde bir dizi etkinliği, `false` sonucu verdiğinde ise başka bir dizi etkinliği değerlendirmeye alır. 
+If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği sağlar. Koşul olarak değerlendirildiğinde bir dizi etkinliği `true` ve koşulun ne zaman değerlendirileceğini, başka bir etkinlik kümesini yürütür `false` . 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -67,11 +67,11 @@ If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | If-Condition etkinliğinin adı. | Dize | Yes
-type | **Ifcondition** olarak ayarlanmalıdır | Dize | Yes
+name | If-Condition etkinliğinin adı. | Dize | Yes
+tür | **Ifcondition** olarak ayarlanmalıdır | Dize | Yes
 ifade | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Yes
-ifTrueActivities | İfade olarak `true`değerlendirildiğinde yürütülen etkinlik kümesi. | Dizi | Yes
-Ifyanlışa etkinlikleri | İfade olarak `false`değerlendirildiğinde yürütülen etkinlik kümesi. | Dizi | Yes
+ifTrueActivities | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `true` . | Dizi | Yes
+Ifyanlışa etkinlikleri | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `false` . | Dizi | Yes
 
 ## <a name="example"></a>Örnek
 Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasörüne kopyalar. Çıkış klasörü, işlem hattı parametresinin değeri tarafından belirlenir: routeSelection. RouteSelection değeri true ise, veriler outputPath1 ' e kopyalanır. Ve eğer routeSelection değeri false ise, veriler outputPath2 ' e kopyalanır. 
@@ -79,7 +79,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 > [!NOTE]
 > Bu bölüm, işlem hattını çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak Data Factory işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>If-Condition etkinliği ile işlem hattı (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>If-Condition etkinliği olan işlem hattı (Adfv2QuickStartPipeline.js)
 
 ```json
 {
@@ -190,7 +190,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService.js)
 
 ```json
 {
@@ -204,7 +204,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset.js)
 İşlem hattı **FolderPath** değerini, Işlem hattının **OutputPath1** ya da **outputPath2** parametresinin değerine ayarlar. 
 
 ```json
@@ -231,7 +231,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters.json)
 
 ```json
 {

@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 12ad1f09c988171b0d6212d79ca61d93acf92d80
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199611"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298013"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure abonelikleriniz için fatura ile ödeme
 
@@ -101,7 +101,7 @@ Faturalama profilini çek/havale yoluyla ödemeye geçirmek için aşağıdaki a
 
     ![Faturalama profilleri menü öğesi, Maliyet Yönetimi ve Faturalama, Microsoft Azure portalı](./media/pay-by-invoice/billing-profile.png)
 
-1. Bir faturalama profili seçin.
+1. Faturalama profilini seçin.
 1. **Faturalama profili** menüsünden **Ödeme yöntemleri** seçeneğini belirleyin.
 
    ![Ödeme yöntemleri menü öğesi, Faturalama profilleri, Maliyet Yönetimi, Microsoft Azure portalı](./media/pay-by-invoice/billing-profile-payment-methods.png)
@@ -113,10 +113,19 @@ Faturalama profilini çek/havale yoluyla ödemeye geçirmek için aşağıdaki a
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
+## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+*Yasal bir belge için neden bir istek aldım?*
+
+Bazen Microsoft, verdiğiniz bilgiler eksikse veya doğrulanabilir değilse yasal belgelere ihtiyaç duyar. Örnekler şunları içerebilir:
+
+* Hesap adı ve Şirket adı arasındaki ad farkı
+* Ad değişikliği
+
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gerekirse, [Azure Hesap Merkezi](https://account.azure.com/Profile)’nde faturalama iletişim bilgilerinizi güncelleştirin.
+* Gerekirse, [Azure Hesap Merkezi](https://account.azure.com/Profile)’nde faturalama iletişim bilgilerinizi güncelleştirin.

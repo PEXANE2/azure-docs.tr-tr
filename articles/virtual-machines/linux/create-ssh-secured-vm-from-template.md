@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 581eadc60835b758f67ae616d4413800f1d6d718
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c77864acd53976b9108a77198f645c419763b21
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969518"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414462"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla Linux sanal makinesi oluşturma
 
@@ -46,13 +46,13 @@ read username &&
 echo "Enter the SSH public key:" &&
 read key &&
 az group create --name $resourceGroupName --location "$location" &&
-az group deployment create --resource-group $resourceGroupName --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json --parameters projectName=$projectName adminUsername=$username adminPublicKey="$key" &&
+az deployment group create --resource-group $resourceGroupName --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json --parameters projectName=$projectName adminUsername=$username adminPublicKey="$key" &&
 az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-details --query publicIps --output tsv
 ```
 
 Son Azure CLı komutu, yeni oluşturulan VM 'nin genel IP adresini gösterir. Sanal makineye bağlanmak için genel IP adresine ihtiyacınız vardır. Bu makalenin sonraki bölümüne bakın.
 
-Önceki örnekte, GitHub 'da depolanan bir şablon belirttiniz. Ayrıca, `--template-file` bir şablon indirebilir veya oluşturabilir ve parametresi ile yerel yolu belirtebilirsiniz.
+Önceki örnekte, GitHub 'da depolanan bir şablon belirttiniz. Ayrıca, bir şablon indirebilir veya oluşturabilir ve parametresi ile yerel yolu belirtebilirsiniz `--template-file` .
 
 Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 

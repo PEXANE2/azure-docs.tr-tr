@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 46f86c3aa730b5222a6c6e36bdb392a0ae891c6c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0f2bcb78b1a998c1b335a5757b832fbb1d3fc7fb
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84689427"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412507"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Sanal ağ eşlemesi oluşturma-farklı dağıtım modelleri ve abonelikler
 
@@ -34,7 +34,7 @@ Sanal ağ eşlemesi oluşturma adımları, sanal ağların aynı veya farklı, a
 
 Klasik dağıtım modeli aracılığıyla dağıtılan iki sanal ağ arasında sanal ağ eşlemesi oluşturulamaz. Bu öğretici, aynı bölgede bulunan sanal ağları kullanır. Bu öğretici, aynı bölgedeki sanal ağları eşler. Ayrıca, sanal ağları farklı [desteklenen bölgelerde](virtual-network-manage-peering.md#cross-region)de eşler. Sanal ağları eşlemeden önce [eşleme gereksinimlerini ve kısıtlamalarını](virtual-network-manage-peering.md#requirements-and-constraints) öğrenmeniz önerilir.
 
-Farklı aboneliklerde bulunan sanal ağlar arasında bir sanal ağ eşlemesi oluştururken, her ikisinin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir. Zaten bir Azure Active Directory kiracınız yoksa hızlı [bir şekilde bir tane oluşturabilirsiniz](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)kullanarak farklı aboneliklerdeki ve farklı Azure Active Directory kiracılardaki sanal ağları bağlayabilirsiniz.
+Farklı aboneliklerde bulunan sanal ağlar arasında bir sanal ağ eşlemesi oluştururken, abonelikler aynı Azure Active Directory kiracısıyla ilişkilendirilebilir. Zaten bir Azure Active Directory kiracınız yoksa hızlı [bir şekilde bir tane oluşturabilirsiniz](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant).
 
 Bir sanal ağ eşlemesi oluşturmak için [Azure Portal](#portal), Azure [komut satırı arabirimi](#cli) 'ni (CLI) veya Azure [PowerShell](#powershell) 'i kullanabilirsiniz. Seçtiğiniz aracı kullanarak bir sanal ağ eşlemesi oluşturma adımlarına doğrudan gitmek için önceki araç bağlantılarından herhangi birine tıklayın.
 

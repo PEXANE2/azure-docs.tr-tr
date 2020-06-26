@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f3890b2c2c9434c7970bd969f6f4620e5d235d96
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e3553515e2cbae007883ad75960aa1c6991926df
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017707"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254557"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Kullandıkça öde fiyatlarına tabi bireysel aboneliğiniz için Azure rezervasyon kullanımını anlama
 
@@ -71,7 +71,7 @@ Doğu ABD bölgesinde bir SQL Veritabanı 4. Nesil çalıştırdığınızı ve 
 
 ### <a name="statement-section-of-csv-file"></a>CSV dosyasının bildirim bölümü
 
-**Ayrılmış Örnek Kullanımı** ölçüm adını filtreleyin ve Azure SQL veritabanı veya Azure Cosmos DB olarak gerekli **Ölçüm Kategorisi**’ni seçin. Aşağıdaki ekran görüntüsüne benzer bir sonuç görürsünüz:
+**Ayrılmış Örnek Kullanımı** ölçüm adını filtreleyin ve Azure SQL Veritabanı veya Azure Cosmos DB olarak gerekli **Ölçüm Kategorisi**’ni seçin. Aşağıdaki ekran görüntüsüne benzer bir sonuç görürsünüz:
 
 ![SQL Veritabanı ayrılmış kapasitesi için CSV dosyası](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -83,7 +83,7 @@ Doğu ABD bölgesinde bir SQL Veritabanı 4. Nesil çalıştırdığınızı ve 
 
 ![SQL Veritabanı ayrılmış kapasitesi için CSV dosyası](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
-1. **Ek Bilgiler** alanındaki **RezervasyonKimliği**, SQL veritabanı kaynağına uygulanan SQL Veritabanı ayrılmış kapasite rezervasyonudur.
+1. **Ek Bilgiler** alanındaki **ReservationId**, SQL Veritabanı kaynağına uygulanan SQL Veritabanı ayrılmış kapasite rezervasyonudur.
 2. **ConsumptionMeter**, SQL Veritabanı kaynağının ölçüm kimliğidir.
 3. **Ölçüm Kimliği**, rezervasyon ölçümüdür. Bu ölçümün maliyeti 0 ABD dolarıdır. Rezervasyon indirimi için uygun nitelikte olan SQL Veritabanı kaynakları, CSV dosyasında bu ölçüm kimliğini gösterir.
 
@@ -95,7 +95,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure Rezervasyonlar nedir?](save-compute-costs-reservations.md)
+- [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
 - [Azure Ayrılmış VM Örnekleri ile Sanal Makinelere ön ödeme yapma](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları için ön ödeme yapma](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure Ayırmalarını yönetme](manage-reserved-vm-instance.md)
