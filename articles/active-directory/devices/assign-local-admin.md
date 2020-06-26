@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b21514e07b65b89d10b317da95ec7d92ecae78
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360342"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386377"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
 Bir Windows cihazını yönetmek için yerel Yöneticiler grubunun bir üyesi olmanız gerekir. Azure Active Directory (Azure AD) JOIN işleminin bir parçası olarak, Azure AD bu grubun üyeliğini bir cihazda güncelleştirir. Üyelik güncelleştirmesini, iş gereksinimlerinizi karşılayacak şekilde özelleştirebilirsiniz. Bir üyelik güncelleştirmesi, örneğin, yardım masası personelinizin bir cihazda yönetici hakları gerektiren görevler kullanmasını sağlamak istiyorsanız yararlıdır.
 
-Bu makalede, üyelik güncelleştirmesinin nasıl çalıştığı ve bir Azure AD birleşimi sırasında nasıl özelleştirileceği açıklanır. Bu makalenin içeriği, **karma** BIR Azure AD katılımı için geçerlidir.
+Bu makalede, yerel yönetici üyeliği güncelleştirmesinin nasıl çalıştığı ve bir Azure AD birleşimi sırasında nasıl özelleştirebileceğiniz açıklanmaktadır. Bu makalenin içeriği, **karma bir Azure AD 'ye katılmış** cihazlar için geçerlidir.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -59,10 +59,13 @@ Cihaz Yöneticisi rolünü değiştirmek için, **Azure AD 'ye katılmış cihaz
 >[!NOTE]
 > Bu seçenek Azure AD Premium kiracı gerektirir. 
 
-Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Cihaz yöneticilerini belirli bir cihaz kümesiyle kapsamyükleyemezsiniz. Cihaz Yöneticisi rolünü güncelleştirme, etkilenen kullanıcılar üzerinde bir etkisi olması gerekmez. Bir kullanıcının zaten oturum açmış olduğu cihazlarda, aşağıdaki *iki* eylem gerçekleştiğinde ayrıcalık güncelleştirmesi gerçekleşir:
+Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Cihaz yöneticilerini belirli bir cihaz kümesiyle kapsamyükleyemezsiniz. Cihaz Yöneticisi rolünü güncelleştirme, etkilenen kullanıcılar üzerinde bir etkisi olması gerekmez. Bir kullanıcının zaten oturum açmış olduğu cihazlarda, aşağıdaki *her iki* eylem gerçekleştiğinde ayrıcalık yükselme gerçekleşir:
 
 - Azure AD 'nin uygun ayrıcalıklara sahip yeni bir birincil yenileme belirteci vermesi için 4 saat geçti. 
 - Kullanıcı oturumu kapatır ve kendi profilini yenilemek için kilitleme/kilit açma değil, oturum kapatır.
+
+>[!NOTE]
+> Yukarıdaki eylemler, ilgili cihazda daha önce oturum açmamış kullanıcılar için geçerli değildir. Bu durumda, yönetici ayrıcalıkları cihazdaki ilk oturum açtıktan hemen sonra uygulanır. 
 
 ## <a name="manage-regular-users"></a>Normal kullanıcıları yönetme
 
@@ -88,7 +91,7 @@ Cihaz Yöneticisi rolüne Grup atayamazsınız, yalnızca bireysel kullanıcıla
 
 Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Bunlar, belirli bir cihaz kümesinin kapsamına alınamaz.
 
-Kullanıcıları Cihaz Yöneticisi rolünden kaldırdığınızda, sunucuda oturum açtıkları sürece bir cihazda yerel yönetici ayrıcalığına sahip olmaya devam eder. Yeni bir birincil yenileme belirteci verildiğinde, 4 saat sonra bir sonraki oturum açma işlemi sırasında ayrıcalık iptal edilir.
+Kullanıcıları Cihaz Yöneticisi rolünden kaldırdığınızda, sunucuda oturum açtıkları sürece bir cihazda yerel yönetici ayrıcalığına sahip olmaya devam eder. Yeni bir birincil yenileme belirteci verildiğinde, bir sonraki oturum açma işlemi sırasında ayrıcalık iptal edilir. Ayrıcalık yükselmesine benzer olan bu iptal, 4 saate kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

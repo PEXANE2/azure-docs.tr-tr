@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187798"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387839"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C uygulamasında uygulamanıza bir Kullanıcı akışı aracılığıyla erişim belirteci geçirin
 
@@ -44,10 +44,10 @@ Azure AD B2C Şu anda yalnızca [Facebook](identity-provider-facebook.md) ve [Go
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
-Uygulamalarınızın Azure AD B2C test edilirken, içindeki talepleri gözden geçirmek `https://jwt.ms` için Azure AD B2C belirtecinin döndürüldüğünden yararlı olabilir.
+Uygulamalarınızın Azure AD B2C test edilirken, içindeki talepleri gözden geçirmek için Azure AD B2C belirtecinin döndürüldüğünden yararlı olabilir `https://jwt.ms` .
 
 1. Kullanıcı akışının genel bakış sayfasında, **Kullanıcı akışını Çalıştır**' ı seçin.
-2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Aşağıdaki örnekteki belirteci görmek için, **yanıt URL 'sinin** gösterilmesi `https://jwt.ms`gerekir.
+2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Aşağıdaki örnekteki belirteci görmek için, **yanıt URL 'sinin** gösterilmesi gerekir `https://jwt.ms` .
 3. **Kullanıcı akışını Çalıştır**' a tıklayın ve ardından hesap kimlik bilgilerinizle oturum açın. **İdp_access_token** talebinde kimlik sağlayıcısının erişim belirtecini görmeniz gerekir.
 
     Aşağıdaki örneğe benzer bir şey görmeniz gerekir:

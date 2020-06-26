@@ -4,7 +4,7 @@ description: Azure Active Directory B2B işbirliği için kod ve PowerShell örn
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272945"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387359"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B işbirliği için SaaS uygulamalarını yapılandırma
 
@@ -81,7 +81,7 @@ SAML protokolünü temel alan Federasyonu kullanarak kullanıcıların Azure AD 
 
    ![Çoklu oturum açma yapılandırma ayarlarını gösteren ekran görüntüsü](media/configure-saas-apps/configure-box-sso.png)
 
-   a. **Oturum açma URL 'si** kutusunda, oturum açma url 'Sinin Azure Portal kutusu için uygun şekilde ayarlandığından emin olun. Bu URL, Box.com kiracınızın URL 'sidir. Adlandırma kuralını *https://.box.com*izlemelidir.  
+   a. **Oturum açma URL 'si** kutusunda, oturum açma url 'Sinin Azure Portal kutusu için uygun şekilde ayarlandığından emin olun. Bu URL, Box.com kiracınızın URL 'sidir. Adlandırma kuralını izlemelidir *https://.box.com* .  
    **Tanımlayıcı** bu uygulama için uygulanmıyor, ancak yine de zorunlu bir alan olarak görünüyor.
 
    b. **Kullanıcı tanımlayıcısı** kutusuna **User. Mail** (Konuk hesapları için SSO) yazın.

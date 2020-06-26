@@ -9,18 +9,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: e6e24a97a8b98bdd5447295880811914100563fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d4b22196598d971c49f0364038b74ba81c73805
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588544"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374806"
 ---
-# <a name="connect-data-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden verileri bağlama
-
-
-
-
+# <a name="connect-data-from-azure-security-center-asc"></a>Azure Güvenlik Merkezi 'nden verileri bağlama (ASC)
 
 Azure Sentinel, uyarıları [Azure Güvenlik Merkezi](../security-center/security-center-intro.md) ' nden bağlamanıza ve Azure Sentinel 'e akışla göndermenizi sağlar. 
 
@@ -30,19 +26,17 @@ Azure Sentinel, uyarıları [Azure Güvenlik Merkezi](../security-center/securit
 
 - Abonelikte çalışan [Azure Güvenlik Merkezi Standart katmanının](../security-center/security-center-pricing.md) olması gerekir. Aksi takdirde, [aboneliğinizi standart sürümüne yükseltin](https://azure.microsoft.com/pricing/details/security-center/).
 
-
-
 ## <a name="connect-to-azure-security-center"></a>Azure Güvenlik Merkezi 'ne bağlanma
 
-1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından **Azure Güvenlik Merkezi** kutucuğuna tıklayın.
+1. Azure Sentinel 'de, gezinti menüsünden **veri bağlayıcıları** ' nı seçin.
 
-1. Sağ tarafta, uyarıları Azure Sentinel 'e akışa almak istediğiniz her aboneliğin yanındaki **Bağlan** ' a tıklayın. Azure Sentinel 'e uyarı akışı sağlamak için her bir aboneliği Azure Güvenlik Merkezi Standart katmanına yükseltdiğinizden emin olun.
+1. Veri bağlayıcıları galerisinden **Azure Güvenlik Merkezi**' ni seçin ve **bağlayıcı sayfası aç** düğmesine tıklayın.
 
-1. Azure Güvenlik Merkezi 'ndeki uyarıların otomatik olarak Azure Sentinel 'de olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
+1. **Yapılandırma**altında, uyarıları Azure Sentinel 'e aktarmak istediğiniz her aboneliğin yanındaki **Bağlan** ' a tıklayın. Bağlan düğmesi yalnızca gerekli izinleriniz ve ASC Standart katman aboneliğiniz varsa kullanılabilir.
 
-3. **Bağlan**'a tıklayın.
+1. Azure Güvenlik Merkezi 'ndeki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. **Olayları oluştur**altında, otomatik olarak uyarılardan olayları oluşturan varsayılan analiz kuralını açmak için **etkin** ' i seçin. Daha sonra bu kuralı, **etkin kurallar** sekmesinde **analiz**altında düzenleyebilirsiniz.
 
-4. Azure Güvenlik Merkezi uyarıları için Log Analytics ilgili şemayı kullanmak için, **Securityalert**aratın.
+1. Azure Güvenlik Merkezi uyarıları için Log Analytics ilgili şemayı kullanmak için, **Securityalert**aratın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure Güvenlik Merkezi 'ni Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

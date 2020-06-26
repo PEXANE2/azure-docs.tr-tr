@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 07/17/2017
+ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 39539f29df48d19b956b8bab6f63da50473453d4
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221292"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374738"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ağ hizmeti
 
@@ -44,7 +44,7 @@ Azure Hızlandırılmış Ağ, sanal makineye tek kökte G/Ç sanallaştırması
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure Load Balancer ile Azure sanal makine ölçek kümeleri
 
-Sanal Makine Ölçek Kümeleri ve yük dengeleyici ile çalışırken aşağıdakiler göz önünde bulundurulmalıdır:
+Sanal Makine Ölçek Kümeleri ve yük dengeleyici ile çalışırken aşağıdaki öğeler göz önünde bulundurulmalıdır:
 
 * **Birden çok sanal makine ölçek kümesi aynı yük dengeleyiciyi kullanamaz**.
 * **Bağlantı noktası iletme ve gelen NAT kuralları**:
@@ -52,7 +52,7 @@ Sanal Makine Ölçek Kümeleri ve yük dengeleyici ile çalışırken aşağıda
   * Ölçek kümesi oluşturulduktan sonra, yük dengeleyicinin bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemez. Bağlantı noktasını değiştirmek için Azure sanal makine ölçek kümesini güncelleştirerek sistem durumu araştırmasını kaldırabilir, bağlantı noktasını güncelleştirebilir ve ardından sistem durumu araştırmasını yeniden yapılandırabilirsiniz.
   * Yük dengeleyicinin arka uç havuzunda sanal makine ölçek kümesi kullanılırken, varsayılan gelen NAT kuralları otomatik olarak oluşturulur.
 * **Gelen NAT havuzu**:
-  * Gelen NAT havuzu, gelen NAT kurallarından oluşan bir koleksiyondur. 1 gelen NAT havuzu birden çok VM Ölçek kümesini destekleyemez.
+  * Gelen NAT havuzu, gelen NAT kurallarından oluşan bir koleksiyondur. Bir gelen NAT havuzu birden çok sanal makine ölçek kümesini destekleyemez.
 * **Yük Dengeleme kuralları**:
   * Yük dengeleyicinin arka uç havuzunda sanal makine ölçek kümesi kullanılırken, varsayılan Yük Dengeleme kuralı otomatik olarak oluşturulur.
 * **Giden kuralları**:
@@ -146,7 +146,7 @@ Tek bir sanal makine dns adı için çıkış şu biçimde olabilir:
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Sanal makine başına genel IPv4
-Genel olarak, Azure ölçek kümesi sanal makinelerinin kendi genel IP adresleri olması gerekmez. Senaryoların çoğunda, bir genel IP adresini yük dengeleyiciyle veya tek bir sanal makineyle (başka bir deyişle, sıçrama kutusu) ilişkilendirmek daha ekonomik ve güvenlidir; daha sonra o da, gelen bağlantıları gerektiği gibi ölçek kümesi sanal makinelerine yönlendirir (örneğin, gelen NAT kuralları aracılığıyla).
+Genel olarak, Azure ölçek kümesi sanal makinelerinin kendi genel IP adresleri olması gerekmez. Çoğu senaryoda, genel bir IP adresini bir yük dengeleyiciye veya tek bir sanal makineye (sıçrama kutusu olarak da bilinir) ilişkilendirmek, daha sonra gelen bağlantıları ölçek kümesi sanal makinelerine (örneğin, gelen NAT kuralları aracılığıyla) yönlendirir.
 
 Öte yandan, bazı senaryolarda ölçek kümesi sanal makinelerinin kendi genel IP adresleri olması gerekir. Buna örnek olarak, konsolun oyunun fizik işlemlerini yapan bir bulut sanal makinesine doğrudan bağlanmasını gerektiren oyunları verebiliriz. Bir diğer örnek de, dağıtılmış bir veritabanında sanal makinelerin birbiriyle dış bağlantılar kurması gerektiği durumlardır.
 

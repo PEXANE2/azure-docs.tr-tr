@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 2dc65c2e1b87c50ad2400b8ffb5d4c548e860c91
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85201302"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386224"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Izleyici ile Azure AD B2C izleme
 
@@ -234,7 +234,7 @@ Azure AD B2C etkinlik günlüklerinin izleme ayarlarını yapılandırmak için:
 1. Ayarınız yoksa, bir ad verin.
 1. Günlükleri göndermek için her bir hedefin kutusunu işaretleyin. Ayarlarını aşağıdaki tabloda açıklandığı gibi belirtmek için **Yapılandır** ' ı seçin.
 
-    | Ayar | Description |
+    | Ayar | Açıklama |
     |:---|:---|
     | Bir depolama hesabına arşivle | Depolama hesabının adı. |
     | Bir olay hub'ına akış yap | Olay Hub 'ının oluşturulduğu ad alanı (Bu, ilk zaman akış günlükleriniz ise) veya akışa (Bu ad alanına ait günlük kategorisini akışa alınmış kaynaklar varsa).

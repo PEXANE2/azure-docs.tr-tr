@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a438363b054361420222804dffac7973470e82e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5184698cab1874f327173fb30cf527feee48cad
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183610"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384983"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C kaynakları ve verileri tehditlere karşı yönetme
 
@@ -49,7 +49,7 @@ Kilitleme eşiği dahil parola koruma ayarlarını yönetmek için:
 
 ## <a name="view-locked-out-accounts"></a>Kilitli hesapları görüntüleme
 
-Kilitli hesaplar hakkında bilgi edinmek için Active Directory [oturum açma etkinliği raporunu](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)kontrol edebilirsiniz. **Durum**' un altında, **hata**' ı seçin. Kilitli bir hesabı `50053` göstermek Için **oturum açma hata kodu** ile oturum açma girişimleri başarısız oldu:
+Kilitli hesaplar hakkında bilgi edinmek için Active Directory [oturum açma etkinliği raporunu](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)kontrol edebilirsiniz. **Durum**' un altında, **hata**' ı seçin. Kilitli bir hesabı göstermek için **oturum açma hata kodu** ile oturum açma girişimleri başarısız oldu `50053` :
 
 ![Kilitli hesabı gösteren Azure AD oturum açma raporunun bölümü](./media/threat-management/portal-01-locked-account.png)
 

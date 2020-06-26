@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f65e98cec04991fe9edef1b81bcb3ecc3d93d76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186378"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384966"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Özel ilkelerin ve kimlik deneyimi çerçevesinin Azure AD B2C sorunlarını giderme
 
@@ -52,13 +52,13 @@ Yaygın doğrulama hataları şunları içerir:
 
 > Hata parçacığı:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* `<TrustFrameworkPolicy\>` Ve `<BasePolicy\>` öğelerindeki tenantıd değerinin hedef Azure AD B2C kiracınızla eşleşip eşleştiğinden emin olun.
+* Ve öğelerindeki Tenantıd değerinin `<TrustFrameworkPolicy\>` `<BasePolicy\>` hedef Azure AD B2C kiracınızla eşleşip eşleştiğinden emin olun.
 
 ## <a name="troubleshoot-the-runtime"></a>Çalışma zamanının sorunlarını giderme
 
-* **Şimdi Çalıştır** 'ı kullanın `https://jwt.ms` ve ilkelerinizi Web veya mobil uygulamanızdan bağımsız olarak test edin. Bu web sitesi, bağlı olan taraf uygulaması gibi davranır. Azure AD B2C ilkeniz tarafından oluşturulan JSON Web belirtecinin (JWT) içeriğini görüntüler.
+* **Şimdi Çalıştır** 'ı kullanın ve `https://jwt.ms` ilkelerinizi Web veya mobil uygulamanızdan bağımsız olarak test edin. Bu web sitesi, bağlı olan taraf uygulaması gibi davranır. Azure AD B2C ilkeniz tarafından oluşturulan JSON Web belirtecinin (JWT) içeriğini görüntüler.
 
-    Belirteç incelemesi `https://jwt.ms` için yeniden yönlendirebilmek üzere bir test uygulaması oluşturmak için:
+    Belirteç incelemesi için yeniden yönlendirebilmek üzere bir test uygulaması oluşturmak için `https://jwt.ms` :
 
     [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

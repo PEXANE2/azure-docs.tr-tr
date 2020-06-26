@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666934"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383878"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -51,7 +51,7 @@ Tüm Premium Azure AD özellikleriyle 90 gün ücretsiz olan ücretsiz bir test 
 
 Uygulama tümleştirmesinin Azure AD ile çalışıp çalışmadığını test ettikten sonra, uygulama isteğinizi [Microsoft Application Network portalında](https://microsoft.sharepoint.com/teams/apponboarding/Apps)gönderebilirsiniz.
 
-Oturum açtıktan sonra aşağıdaki sayfa görünürse [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun. İsteği göndermek için kullanmak istediğiniz e-posta hesabını belirtin. Gibi bir iş e-posta [name@yourbusiness.com](mailto:name@yourbusiness.com) adresi tercih edilir. Azure AD ekibi, hesabı Microsoft uygulama ağı portalına ekler.
+Oturum açtıktan sonra aşağıdaki sayfa görünürse [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun. İsteği göndermek için kullanmak istediğiniz e-posta hesabını belirtin. Gibi bir iş e-posta adresi [name@yourbusiness.com](mailto:name@yourbusiness.com) tercih edilir. Azure AD ekibi, hesabı Microsoft uygulama ağı portalına ekler.
 
 ![SharePoint portalındaki erişim isteği iletisi](./media/howto-app-gallery-listing/errorimage.png)
 
@@ -79,11 +79,11 @@ Konuk Kullanıcı aynı zamanda bir Azure AD olan bir giriş kiracıya federe ol
  
 **Güvenli çözümler:**
 
-* MFA kayıtlı Konuk kullanıcılar kendi Kullanıcı riskini düzeltir. Bu işlem, Konuk Kullanıcı tarafından güvenli bir parola değişikliği veya sıfırlama (https://aka.ms/sspr) ana KIRACıSıNDA MFA ve SSPR gerekir) gerçekleştiriliyor tarafından yapılabilir. Güvenli parola değiştirme veya sıfırlama özelliği, Azure AD 'de başlatılmalıdır ve şirket içi değil.
+* MFA kayıtlı Konuk kullanıcılar kendi Kullanıcı riskini düzeltir. Bu işlem, Konuk Kullanıcı tarafından güvenli bir parola değişikliği veya sıfırlama (ana https://aka.ms/sspr) KIRACıSıNDA MFA ve SSPR gerekir) gerçekleştiriliyor tarafından yapılabilir. Güvenli parola değiştirme veya sıfırlama özelliği, Azure AD 'de başlatılmalıdır ve şirket içi değil.
 
-* Konuk kullanıcıların yöneticileri, riskini düzeltir. Bu durumda, yönetici bir parola sıfırlama işlemi gerçekleştirir (geçici parola oluşturma). Bu, kimlik koruması gerektirmez. Konuk kullanıcının Yöneticisi ' ne gidebilir ve ' https://aka.ms/RiskyUsers Parolayı Sıfırla ' öğesine tıklayabilirsiniz.
+* Konuk kullanıcıların yöneticileri, riskini düzeltir. Bu durumda, yönetici bir parola sıfırlama işlemi gerçekleştirir (geçici parola oluşturma). Bu, kimlik koruması gerektirmez. Konuk kullanıcının Yöneticisi ' ne gidebilir https://aka.ms/RiskyUsers ve ' Parolayı Sıfırla ' öğesine tıklayabilirsiniz.
 
-* Konuk kullanıcıların yöneticileri, riskini kapatır/kapatabilir. Bu, kimlik korumasına gerek kalmaz. Yönetici öğesine https://aka.ms/RiskyUsers gidebilir ve ' Kullanıcı riskini Kapat ' seçeneğine tıklayabilir. Ancak, bu, Kullanıcı riskini kapatmadan önce bunun yanlış bir pozitif risk değerlendirmesi olduğundan emin olmak için yöneticinin, süresi dolan bir süre olması gerekir. Aksi takdirde, araştırma yapmadan risk değerlendirmesi ortadan kaldırarak ve Microsoft 'un kaynaklarını riske sokuyor.
+* Konuk kullanıcıların yöneticileri, riskini kapatır/kapatabilir. Bu, kimlik korumasına gerek kalmaz. Yönetici öğesine gidebilir https://aka.ms/RiskyUsers ve ' Kullanıcı riskini Kapat ' seçeneğine tıklayabilir. Ancak, bu, Kullanıcı riskini kapatmadan önce bunun yanlış bir pozitif risk değerlendirmesi olduğundan emin olmak için yöneticinin, süresi dolan bir süre olması gerekir. Aksi takdirde, araştırma yapmadan risk değerlendirmesi ortadan kaldırarak ve Microsoft 'un kaynaklarını riske sokuyor.
 
 > [!NOTE]
 > Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
@@ -136,7 +136,7 @@ Azure AD uygulama galerisinde mevcut bir uygulamayı güncelleştirmek veya kald
 
 ## <a name="list-requests-by-customers"></a>İstekleri müşterilere göre Listele
 
-Müşteriler, **müşterilerin** > **yeni istek göndermesi**için uygulama istekleri seçerek bir uygulamayı listeleme isteği gönderebilir.
+Müşteriler, **müşterilerin**  >  **yeni istek göndermesi**için uygulama istekleri seçerek bir uygulamayı listeleme isteği gönderebilir.
 
 ![Müşteri tarafından istenen uygulamalar kutucuğunu gösterir](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -156,4 +156,4 @@ Galerideki bir OpenID Connect uygulamasını listeleme işleminin zaman çizelge
 
 ## <a name="escalations"></a>Yükseltmeleri
 
-Tüm yürüyen değişiklikler için [Azure AD SSO tümleştirme ekibine](mailto:SaaSApplicationIntegrations@service.microsoft.com) e-posta gönderin ve en SaaSApplicationIntegrations@service.microsoft.comkısa sürede yanıt vereceğiz.
+Tüm yürüyen değişiklikler için [Azure AD SSO tümleştirme ekibine](mailto:SaaSApplicationIntegrations@service.microsoft.com) e-posta gönderin ve en SaaSApplicationIntegrations@service.microsoft.com kısa sürede yanıt vereceğiz.

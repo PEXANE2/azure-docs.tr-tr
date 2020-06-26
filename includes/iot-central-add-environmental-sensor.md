@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673416"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378619"
 ---
 ## <a name="create-a-device-template"></a>Cihaz şablonu oluşturma
 
@@ -21,7 +21,7 @@ Yerel makinenizde adlı bir klasör oluşturun `environmental-sensor` .
 
 [Ortam algılayıcısı yetenek modeli](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json) json dosyasını indirin ve `environmental-sensor` klasöre kaydedin.
 
-`{YOUR_COMPANY_NAME_HERE}`İndirdiğiniz dosyada şirket adınızla iki örneğini değiştirmek için bir metin düzenleyicisi kullanın `EnvironmentalSensorInline.capabilitymodel.json` .
+`{YOUR_COMPANY_NAME_HERE}`İndirdiğiniz dosyada şirket adınızla iki örneğini değiştirmek için bir metin düzenleyicisi kullanın `EnvironmentalSensorInline.capabilitymodel.json` . Yalnızca a-z, A-Z, 0-9 ve alt çizgi karakterlerini kullanın.
 
 Azure IoT Central uygulamanızda, cihaz yetenek modeli dosyasını içeri aktararak *çevresel algılayıcı* adlı bir cihaz şablonu oluşturun `EnvironmentalSensorInline.capabilitymodel.json` :
 
@@ -84,7 +84,7 @@ Azure IoT Central uygulamanızda, önceki bölümde oluşturduğunuz cihaz şabl
 
 1. **+ Yeni**seçeneğini belirleyin.
 
-1. **Benzetimli** 'un **kapalı**olduğundan emin olun. Ardından **Oluştur**’u seçin.
+1. **Benzetimli** 'un **kapalı**olduğundan emin olun. Ardından **Oluştur**'u seçin.
 
 Cihaz adına tıklayın ve ardından **Bağlan**' ı seçin. Cihaz **bağlantısı** sayfa **kimliği KAPSAMı**, **cihaz kimliği**ve **birincil anahtar**üzerindeki cihaz bağlantı bilgilerini bir yere unutmayın. Cihaz kodunuzu oluştururken bu değerlere ihtiyacınız vardır:
 

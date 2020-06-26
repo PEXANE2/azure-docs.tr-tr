@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154789"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383708"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Nasıl yapılır: ADAL kullanarak iOS 'ta uygulamalar arası SSO 'yu etkinleştirme
 
@@ -230,7 +230,7 @@ Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde `entitleme
 </plist>
 ```
 
-Her uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra ve SSO kullanmaya hazırsanız, aşağıdaki ayarı kullanarak aşağıdaki ayarı `ADAuthenticationSettings` kullanarak kimlik anahtarlığınıza ilişkin kimlik SDK 'sını söyleyin:
+Her uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra ve SSO kullanmaya hazırsanız, aşağıdaki ayarı kullanarak aşağıdaki ayarı kullanarak kimlik anahtarlığınıza ilişkin kimlik SDK 'sını söyleyin `ADAuthenticationSettings` :
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
@@ -260,7 +260,7 @@ Uygulamanızın aracıyı kullanma yeteneği, kimlik doğrulama nesnenizin "bağ
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-`AD_CREDENTIALS_AUTO` Ayar SDK 'nın aracıya çağrı yapmasına izin verır, `AD_CREDENTIALS_EMBEDDED` SDK 'nın aracıya çağrılmasını engeller.
+`AD_CREDENTIALS_AUTO`Ayar SDK 'nın aracıya çağrı yapmasına izin verir, `AD_CREDENTIALS_EMBEDDED` SDK 'nın aracıya çağrılmasını engeller.
 
 #### <a name="step-2-registering-a-url-scheme"></a>2. Adım: URL şeması kaydetme
 
@@ -309,7 +309,7 @@ Sertifika tabanlı kimlik doğrulamasını desteklemek için ikinci bir "msauth"
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4. Adım: uygulamanıza bir yapılandırma parametresi ekleme
 
-ADAL, aracının cihaza yüklenip yüklenmediğini denetlemek için – canOpenURL: kullanır. Üzerinde iOS 9 ' da, Apple bir uygulamanın sorgulayabilecekleri düzenleri kilitlemiş. ' Nin Lsapplicationqueriesdüzenleri bölümüne "msauth" eklemeniz gerekir `info.plist file`.
+ADAL, aracının cihaza yüklenip yüklenmediğini denetlemek için – canOpenURL: kullanır. Üzerinde iOS 9 ' da, Apple bir uygulamanın sorgulayabilecekleri düzenleri kilitlemiş. ' Nin Lsapplicationqueriesdüzenleri bölümüne "msauth" eklemeniz gerekir `info.plist file` .
 
 ```
     <key>LSApplicationQueriesSchemes</key>

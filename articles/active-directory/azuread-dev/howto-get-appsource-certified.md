@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163087461dbbcfd036b348f69362f0ad0010e791
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154891"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383861"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory için AppSource sertifikası alma
 
@@ -37,8 +37,8 @@ Açık KIMLIK bağlantısı kullanarak uygulamanızı Azure AD ile tümleştirme
 *Çok kiracılı bir uygulama* , Azure AD 'ye sahip herhangi bir şirketten veya kuruluştan ayrı bir örnek, yapılandırma veya dağıtıma gerek kalmadan oturum açma işlemlerini kabul eden bir uygulamadır. AppSource, *tek* tıklamayla ücretsiz deneme deneyimini etkinleştirmek için uygulamaların çok kiracılı bir uygulama gerçekleştirmesini önerir.
 
 Uygulamanızda birden çok kiratı etkinleştirmek için şu adımları izleyin:
-1. Özelliği `Multi-Tenanted` uygulamanızın kayıt `Yes` bilgilerinde [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)olarak ayarlayın. Varsayılan olarak, Azure portal oluşturulan uygulamalar *[tek kiracılı](#single-tenant-applications)* olarak yapılandırılır.
-1. İstekleri `common` uç noktaya göndermek için kodunuzu güncelleştirin. Bunu yapmak için bitiş noktasını öğesinden `https://login.microsoftonline.com/{yourtenant}` olarak `https://login.microsoftonline.com/common*`güncelleştirin.
+1. `Multi-Tenanted`Özelliği `Yes` uygulamanızın kayıt bilgilerinde [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)olarak ayarlayın. Varsayılan olarak, Azure portal oluşturulan uygulamalar *[tek kiracılı](#single-tenant-applications)* olarak yapılandırılır.
+1. İstekleri uç noktaya göndermek için kodunuzu güncelleştirin `common` . Bunu yapmak için bitiş noktasını öğesinden olarak güncelleştirin `https://login.microsoftonline.com/{yourtenant}` `https://login.microsoftonline.com/common*` .
 1. ASP .NET gibi bazı platformlar için kodunuzu aynı zamanda birden çok verenler kabul edecek şekilde güncelleştirmeniz gerekir.
 
 Çoklu kiracı hakkında daha fazla bilgi için bkz. [Multi-tenant uygulama modelini kullanarak herhangi bir Azure Active Directory (Azure AD) kullanıcısına kaydolma](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).

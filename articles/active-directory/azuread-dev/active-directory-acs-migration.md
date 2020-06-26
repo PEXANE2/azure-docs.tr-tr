@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3168d36bf4c2d3c696173725f669b12dc168dcc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a7c6966c439bd69f809a26e0f3a7781d95619ad
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155010"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383844"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service geçirme
 
@@ -55,9 +55,9 @@ Bu bileşenleri kullanmak için bir veya daha fazla Access Control ad alanı olu
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-STS ve yönetim işlemleriyle tüm iletişimler bu URL 'de yapılır. Farklı amaçlar için farklı yollar kullanırsınız. Uygulamalarınızın veya hizmetlerinizin Access Control kullanıp kullanmadığını öğrenmek için, https://&lt;namespace&gt;. AccessControl.Windows.net öğesine giden trafiği izleyin. Bu URL 'ye giden tüm trafik Access Control tarafından işlenir ve üretimi devam etmek gerekir. 
+STS ve yönetim işlemleriyle tüm iletişimler bu URL 'de yapılır. Farklı amaçlar için farklı yollar kullanırsınız. Uygulamalarınızın veya hizmetlerinizin Access Control kullanıp kullanmadığını öğrenmek için, https:// &lt; Namespace. AccessControl.Windows.net öğesine giden trafiği izleyin &gt; . Bu URL 'ye giden tüm trafik Access Control tarafından işlenir ve üretimi devam etmek gerekir. 
 
-Bunun özel durumu, için `https://accounts.accesscontrol.windows.net`tüm trafiktir. Bu URL 'ye giden trafik zaten farklı bir hizmet tarafından işlenmiştir ve Access Control kullanımdan kalkarak **etkilenmemektedir** . 
+Bunun özel durumu, için tüm trafiktir `https://accounts.accesscontrol.windows.net` . Bu URL 'ye giden trafik zaten farklı bir hizmet tarafından işlenmiştir ve Access Control kullanımdan kalkarak **etkilenmemektedir** . 
 
 Access Control hakkında daha fazla bilgi için bkz. [Access Control Service 2,0 (arşivlenmiş)](https://msdn.microsoft.com/library/hh147631.aspx).
 
@@ -92,7 +92,7 @@ Bu bölümdeki adımları izleyerek, hangi uygulamalarınızdan ACS kullanımdan
 
 1. **Connect-AcsAccount** cmdlet 'INI kullanarak ACS 'ye bağlanın.
   
-    Komutları yürütebilmeniz ve komutları `Set-ExecutionPolicy -ExecutionPolicy Bypass` yürütmek için bu aboneliklerin yöneticisi olmanız gerekir.
+    Komutları yürütebilmeniz `Set-ExecutionPolicy -ExecutionPolicy Bypass` ve komutları yürütmek için bu aboneliklerin yöneticisi olmanız gerekir.
 
 2. **Get-AcsSubscription** cmdlet 'ini kullanarak kullanılabilir Azure aboneliklerinizi listeleyin.
 3. **Get-AcsNamespace** cmdlet 'INI kullanarak ACS ad alanlarınızı listeleyin.
@@ -112,9 +112,9 @@ Bu bölümdeki adımları izleyerek, hangi uygulamalarınızdan ACS kullanımdan
 
 Access Control bileşenleri kullanımdan kaldırmaya yönelik zamanlama aşağıda verilmiştir:
 
-- **Kasım 2017**: klasik Azure PORTALıNDA Azure AD yönetici deneyimi [kullanımdan kaldırıldı](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Bu noktada, Access Control için ad alanı yönetimi yeni ve adanmış bir URL 'de kullanılabilir: `https://manage.windowsazure.com?restoreClassic=true`. Bu URl 'yi kullanarak mevcut ad alanlarınızı görüntüleyin, ad alanlarını etkinleştirin ve devre dışı bırakın ve seçeneğini belirlerseniz ad alanlarını silin.
-- **2 nisan 2018**: klasik Azure portalı tamamen devre dışı bırakıldı, anlamı Access Control ad alanı yönetimi artık HERHANGI bir URL aracılığıyla kullanılamıyor. Bu noktada, Access Control ad alanlarınızı devre dışı bırakıp etkinleştiremez, silemez veya numaralandırabilirsiniz. Ancak, Access Control yönetim portalı tam olarak çalışır ve konumunda `https://\<namespace\>.accesscontrol.windows.net`bulunur. Tüm Access Control diğer bileşenleri normal şekilde çalışmaya devam eder.
-- **7 kasım 2018**: tüm Access Control bileşenleri kalıcı olarak kapatılır. Buna Access Control yönetim portalı, yönetim hizmeti, STS ve Token dönüşüm kuralı altyapısı dahildir. Bu noktada, Access Control gönderilen tüm istekler (Namespace \<\>. AccessControl.Windows.net konumunda bulunur) başarısız olur. Var olan tüm uygulamaları ve Hizmetleri, bu süreden daha önce geçen diğer teknolojilere geçirmelisiniz.
+- **Kasım 2017**: klasik Azure PORTALıNDA Azure AD yönetici deneyimi [kullanımdan kaldırıldı](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Bu noktada, Access Control için ad alanı yönetimi yeni ve adanmış bir URL 'de kullanılabilir: `https://manage.windowsazure.com?restoreClassic=true` . Bu URl 'yi kullanarak mevcut ad alanlarınızı görüntüleyin, ad alanlarını etkinleştirin ve devre dışı bırakın ve seçeneğini belirlerseniz ad alanlarını silin.
+- **2 nisan 2018**: klasik Azure portalı tamamen devre dışı bırakıldı, anlamı Access Control ad alanı yönetimi artık HERHANGI bir URL aracılığıyla kullanılamıyor. Bu noktada, Access Control ad alanlarınızı devre dışı bırakıp etkinleştiremez, silemez veya numaralandırabilirsiniz. Ancak, Access Control yönetim portalı tam olarak çalışır ve konumunda bulunur `https://\<namespace\>.accesscontrol.windows.net` . Tüm Access Control diğer bileşenleri normal şekilde çalışmaya devam eder.
+- **7 kasım 2018**: tüm Access Control bileşenleri kalıcı olarak kapatılır. Buna Access Control yönetim portalı, yönetim hizmeti, STS ve Token dönüşüm kuralı altyapısı dahildir. Bu noktada, Access Control gönderilen tüm istekler (. accesscontrol.windows.net konumunda bulunur \<namespace\> ) başarısız olur. Var olan tüm uygulamaları ve Hizmetleri, bu süreden daha önce geçen diğer teknolojilere geçirmelisiniz.
 
 > [!NOTE]
 > İlke bir süre belirteci istememiş olan ad alanlarını devre dışı bırakır. 2018 Eylül ayının başlarında bu süre, şu anda en fazla 14 gün boyunca etkinlik dışı kalır, ancak önümüzdeki haftalarda 7 gün boyunca işlem yapılmadan kısaltıldı. Şu anda devre dışı bırakılmış Access Control ad alanlarınız varsa, ad alanlarını yeniden etkinleştirmek için [ACS PowerShell 'i indirip yükleyebilirsiniz](#download-and-install-acs-powershell) .

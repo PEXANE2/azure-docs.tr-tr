@@ -7,19 +7,19 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: sample
 ms.workload: identity
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ae283529abb3b71ee50fc710dd1ebe0d17a12be0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154840"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387618"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kodu örnekleri (v 1.0 uç noktası)
 
@@ -100,13 +100,13 @@ ASP.NET Web uygulaması  | ![Bu görüntüde .NET logosu gösterilmektedir](medi
 
 ### <a name="web-api-protected-by-azure-active-directory"></a>Azure Active Directory tarafından korunan Web API 'SI
 
-Aşağıdaki örnek, Azure AD ile bir Node. js web API 'sinin nasıl korunacağını göstermektedir.
+Aşağıdaki örnek, Azure AD ile node.js Web API 'sinin nasıl korunacağını göstermektedir.
 
 Bu makalenin önceki bölümlerinde, bir ASP.NET veya ASP.NET Core **Web API 'sini** **çağıran** bir istemci uygulamasını gösteren diğer örnekleri de bulabilirsiniz. Bu örneklere bu bölümde bir daha bahsedilmez, ancak bunları yukarıdaki veya alttaki tabloların son sütununda bulabilirsiniz
 
 | Platform | Örnek |
 |--------|-------------------|
-| ![Bu görüntüde Node. js logosu gösterilmektedir](media/sample-v2-code/logo-nodejs.png)  | [düğüm-WebApi](https://github.com/Azure-Samples/active-directory-node-webapi) |
+| ![Bu görüntüde Node.js logosu gösterilmektedir](media/sample-v2-code/logo-nodejs.png)  | [düğüm-WebApi](https://github.com/Azure-Samples/active-directory-node-webapi) |
 
 ### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Microsoft Graph veya başka bir Web API çağıran Web API 'SI
 

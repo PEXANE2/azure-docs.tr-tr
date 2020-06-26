@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd4ed98383d38be8528bafd6ec7d149381386fac
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d95b45b9be0893282a532bae9ec0278c3a141686
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672553"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385935"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
@@ -46,7 +46,7 @@ OAuth 2,0 istemci kimlik bilgileri verme akışı şu anda Azure AD B2C kimlik d
 
 Komut dosyalarınız ve uygulamalarınızın Azure AD B2C kaynaklarını yönetmek için [MICROSOFT Graph API][ms-graph-api] 'siyle etkileşime girebilmesi için, Azure AD B2C kiracınızda gerekli API izinlerini veren bir uygulama kaydı oluşturmanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.

@@ -8,16 +8,16 @@ ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981078"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383743"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) istemcileri için en iyi yöntemler işlenirken hata oluştu
 
@@ -365,9 +365,9 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Hata durumları ve eyleme dönüştürülebilir adımlar: tek sayfalı uygulamalar (ADAL. js)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Hata durumları ve eyleme dönüştürülebilir adımlar: tek sayfalı uygulamalar (adal.js)
 
-AcquireToken ile adal. js ' yi kullanarak tek sayfalı bir uygulama oluşturuyorsanız hata işleme kodu tipik bir sessiz çağrıdan benzerdir. Özellikle adal. js ' de, AcquireToken hiçbir koşulda Kullanıcı arabirimini göstermez. 
+AcquireToken ile adal.js kullanarak tek sayfalı bir uygulama oluşturuyorsanız hata işleme kodu tipik bir sessiz çağrıdan benzerdir. Özellikle adal.js, AcquireToken hiçbir koşulda Kullanıcı arabirimini göstermez. 
 
 Başarısız bir AcquireToken aşağıdaki durumları içerir:
 
@@ -579,7 +579,7 @@ window.Logging = {
 
 ## <a name="related-content"></a>İlgili içerik
 
-* [Azure AD Kimlik Doğrulama Kitaplıkları][AAD-Auth-Libraries]
+* [Azure AD kimlik doğrulama kitaplıkları][AAD-Auth-Libraries]
 * [Azure AD kimlik doğrulama senaryoları][AAD-Auth-Scenarios]
 * [Uygulamaları Azure Active Directory tümleştirme][AAD-Integrating-Apps]
 

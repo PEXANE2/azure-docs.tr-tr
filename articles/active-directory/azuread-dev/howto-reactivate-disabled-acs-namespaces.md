@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154874"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383726"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Nasıl yapılır: devre dışı Access Control Service ad alanlarını yeniden etkinleştirme
 
@@ -67,11 +67,11 @@ ACS PowerShell 'i, tüm ACS ad alanlarınızı listelemek ve devre dışı bıra
     Komutu çalıştırabilmeniz için, **set-executionpolicy** komutunu çalıştırarak yürütme ilkenizi değiştirmeniz gerekebilir.
 1. **Get-AcsSubscription** cmdlet 'ini kullanarak kullanılabilir Azure aboneliklerinizi listeleyin.
 1. **Get-AcsNamespace** cmdlet 'INI kullanarak ACS ad alanlarınızı listeleyin.
-1. Olduğunu `State` onayladıktan sonra ad alanlarının devre dışı bırakıldığını onaylayın `Disabled`.
+1. Olduğunu onayladıktan sonra ad alanlarının devre dışı bırakıldığını onaylayın `State` `Disabled` .
 
     [![Ad alanlarının devre dışı bırakıldığını onaylayın](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
-    Ayrıca, etki alanının `nslookup {your-namespace}.accesscontrol.windows.net` hala etkin olup olmadığını doğrulamak için ' i kullanabilirsiniz.
+    Ayrıca, `nslookup {your-namespace}.accesscontrol.windows.net` etki alanının hala etkin olup olmadığını doğrulamak için ' i kullanabilirsiniz.
 
 1. **Enable-AcsNamespace** cmdlet 'INI kullanarak ACS ad alanınızı etkinleştirin.
 
@@ -122,7 +122,7 @@ Daha fazla uzantı artık otomatik olarak onaylanmayacaktır. Geçiş için ek s
 ## <a name="help-and-support"></a>Yardım ve destek
 
 - Bu nasıl yapılır uygulandıktan sonra herhangi bir sorunla karşılaşırsanız [Azure desteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)'ne başvurun.
-- ACS kullanımdan kaldırma hakkında sorularınız veya geri bildiriminiz varsa, adresinden acsfeedback@microsoft.combizimle iletişim kurun.
+- ACS kullanımdan kaldırma hakkında sorularınız veya geri bildiriminiz varsa, adresinden bizimle iletişim kurun acsfeedback@microsoft.com .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

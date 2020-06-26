@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603361"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386343"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
@@ -66,12 +66,13 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 | [Self servis parola sıfırlama](../authentication/howto-sspr-deployment.md)| Self servis parola sıfırlama, kullanıcılarınızın parolalarını yönetici müdahalesi olmadan sıfırlamasına, ne zaman ve nerede ihtiyaç duymalarına yardımcı olur. |
 | [Parolasız](../authentication/howto-authentication-passwordless-deployment.md) | Kuruluşunuzda Microsoft Authenticator App veya FIDO2 güvenlik anahtarlarını kullanarak passwordless kimlik doğrulaması uygulama |
 
-## <a name="deploy-application-management"></a>Uygulama yönetimini dağıtma
+## <a name="deploy-application-and-device-management"></a>Uygulama ve cihaz yönetimini dağıtma
 
 | Özellik | Açıklama|
 | -| - |
 | [Çoklu oturum açma](../manage-apps/plan-sso-deployment.md)| Çoklu oturum açma, kullanıcılarınızın yalnızca bir kez oturum açarken iş yapması gereken uygulamalara ve kaynaklara erişmesine yardımcı olur. Oturum açtıktan sonra, kimlik bilgilerini ikinci bir kez girmek zorunda kalmadan iç uygulamalara Microsoft Office, SalesForce 'a kadar gidebilirler. |
 | [Erişim paneli](../manage-apps/access-panel-deployment-plan.md)| Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın. |
+| [Cihazlar](../devices/plan-device-deployment.md) | Bu makale, cihazınızı Azure AD ile tümleştirme yöntemlerini değerlendirmenize yardımcı olur, uygulama planını seçebilir ve desteklenen cihaz yönetim araçlarına yönelik anahtar bağlantıları sağlar. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Karma senaryoları dağıtma

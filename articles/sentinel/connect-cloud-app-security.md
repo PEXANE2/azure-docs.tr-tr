@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2a48b3990afc5fb4ecfb8d40738b18873846459
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422152"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374925"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security verileri bağlama 
-
-
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) Bağlayıcısı, MCAS 'deki uyarıları ve [Cloud Discovery günlüklerini](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) Azure Sentinel 'e aktarmanıza olanak tanır. Bu, bulut uygulamalarınıza ilişkin görünürlük elde etmeniz, siber tehditleri belirleyip öğrenme konusunda gelişmiş analizler elde etmeniz ve verilerinizin nasıl ele alınacağını denetlemenizi sağlar.
 
@@ -50,7 +48,9 @@ Cloud App Security dağıtılırsa ve verileriniz geri alıyorsa, uyarı veriler
 
 1. **Değişiklikleri Uygula**' ya tıklayın.
 
-1. Log Analytics Cloud App Security uyarılar için ilgili şemayı kullanmak için, sorgu penceresine yazın `SecurityAlert` . Cloud Discovery logs şeması için, yazın `McasShadowItReporting`.
+1. Azure Güvenlik Merkezi 'ndeki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. **Olayları oluştur**altında, otomatik olarak uyarılardan olayları oluşturan varsayılan analiz kuralını açmak için **etkin** ' i seçin. Daha sonra bu kuralı, **etkin kurallar** sekmesinde **analiz**altında düzenleyebilirsiniz.
+
+1. Log Analytics Cloud App Security uyarılar için ilgili şemayı kullanmak için, `SecurityAlert` sorgu penceresine yazın. Cloud Discovery logs şeması için, yazın `McasShadowItReporting` .
 
 > [!NOTE]
 > Cloud Discovery, kullanıcıların bulut uygulamalarına yönelik verileri temel alan verileri toplayarak eğilimleri algılamaya ve belirlemesine yardımcı olur.

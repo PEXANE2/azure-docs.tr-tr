@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e99b5717cdcc32d8fd138d1edf5fe1bd3283c70e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08aa7e4af6dc5d5e5bff470bc4c5d023e25b3014
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187908"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387890"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "78187908"
 
 ## <a name="create-a-weibo-application"></a>Weibo uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak bir Weibo hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
+Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak bir Weibo hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) .
 
 1. [Weibo Geliştirici Portalında](https://open.weibo.com/) Weibo hesabı kimlik bilgilerinizle oturum açın.
 1. Oturum açtıktan sonra sağ üst köşedeki görünen adınızı seçin.
@@ -44,7 +44,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak
 1. **保存以上信息**(Kaydet) seçeneğini belirleyin.
 1. **高级信息**(gelişmiş bilgiler) seçeneğini belirleyin.
 1. OAuth 2.0**授权设置**(YENIDEN yönlendirme URL) alanının yanındaki**编辑**(Düzenle) öğesini seçin.
-1. OAuth `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 2.0**授权设置**(Redirect URL) için girin. Örneğin, kiracı adınız contoso ise, URL 'YI olarak ayarlayın `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`OAuth 2.0**授权设置**(Redirect URL) için girin. Örneğin, kiracı adınız contoso ise, URL 'YI olarak ayarlayın `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. **提交**(Gönder) seçeneğini belirleyin.
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Bir Weibo hesabını kimlik sağlayıcısı olarak yapılandırma

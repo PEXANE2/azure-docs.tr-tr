@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116535"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385034"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı deneyimlerinin arabirimini özelleştirme
 
@@ -46,7 +46,7 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve aboneliğinizi içeren dizini seçin. Bu dizin, Azure B2C kiracınızı içeren olandan farklı.
 3. Azure portal sol üst köşesindeki tüm hizmetler ' i seçin, **depolama hesapları**' nı arayıp seçin.
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**'yi seçin.
 5. **Kaynak grubu**altında **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve ardından **Tamam**' a tıklayın.
 6. Depolama hesabı için bir ad girin. Seçtiğiniz ad Azure’da benzersiz olmalı, uzunluğu 3 ile 24 karakter arasında olmalı ve yalnızca sayı ile küçük harf içermelidir.
 7. Depolama hesabının konumunu seçin veya varsayılan konumu kabul edin.
@@ -95,7 +95,7 @@ Kaydolma deneyiminin Kullanıcı arabirimini özelleştirmek için, basit bir HT
 
     Sayfa istediğiniz şekilde tasarlanabilir, ancak oluşturduğunuz herhangi bir HTML özelleştirme dosyası için **API** div öğesi gereklidir.
 
-3. Dosyayı *Custom-ui. html*olarak kaydedin.
+3. Dosyayı *custom-ui.html*olarak kaydedin.
 4. Kaydolma veya oturum açma sayfasındaki tüm öğeleri, satır içine alan Azure AD B2C öğeler de dahil olmak üzere, aşağıdaki basit CSS 'yi oluşturun.
 
     ```css
@@ -129,7 +129,7 @@ Bu öğreticide, Azure AD B2C, depolama hesabında oluşturduğunuz dosyaları d
 
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin, **depolama hesapları**' nı arayıp seçin.
 2. Oluşturduğunuz depolama hesabını seçin, **Bloblar**' ı seçin ve ardından oluşturduğunuz kapsayıcıyı seçin.
-3. **Karşıya yükle**' yi seçin, *Custom-ui. html* dosyasını seçin ve ardından **karşıya yükle**' ye tıklayın.
+3. **Karşıya yükle**' yi seçin, *custom-ui.html* dosyasına gidin ve ardından **karşıya yükle**' ye tıklayın.
 
     ![Karşıya yükleme düğmesi ve vurgulanan dosyalar için portalda blob sayfasını karşıya yükle](./media/tutorial-customize-ui/upload-blob.png)
 
@@ -141,7 +141,7 @@ Bu öğreticide, Azure AD B2C, depolama hesabında oluşturduğunuz dosyaları d
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 2. **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından *B2C_1_signupsignin1* Kullanıcı akışı ' nı seçin.
 3. **Sayfa düzenlerini**seçin ve ardından **Birleşik kaydolma veya oturum açma sayfası**altında, **özel sayfa içeriğini kullanmak**için **Evet** ' i tıklatın.
-4. **Özel sayfa URI 'si**içinde, daha önce kaydettiğiniz *Custom-ui. html* dosyasının URI 'sini girin.
+4. **Özel sayfa URI 'si**içinde, daha önce kaydettiğiniz *custom-ui.html* dosyasının URI 'sini girin.
 5. Sayfanın en üstünde **Kaydet**' i seçin.
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme

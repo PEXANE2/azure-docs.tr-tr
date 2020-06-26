@@ -4,7 +4,7 @@ description: Azure AD B2B işbirliğiyle aynı kimlik bilgilerini kullanarak yer
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76b17391008160cfea9cbf029932d7081466cf3d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272608"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386938"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğini kullanarak bulut kaynaklarına yerel olarak yönetilen iş ortağı hesapları erişimi verme
 
@@ -32,7 +32,7 @@ UserType özniteliğinin eşitlemesini etkinleştirmeden önce, önce şirket i�
 Bunun için iki yaygın yaklaşım şunlardır:
 
 - Kaynak öznitelik olarak kullanmak için kullanılmamış bir şirket içi Active Directory özniteliği (örneğin, extensionAttribute1) belirleyin. 
-- Alternatif olarak, diğer özelliklerden UserType özniteliği için değeri türetebilirsiniz. Örneğin, şirket içi Active Directory userPrincipalName özniteliği etki alanı * \@Partners.contoso.com*ile sona erdiğinde tüm kullanıcıları Konuk olarak eşitlemeniz gerekir.
+- Alternatif olarak, diğer özelliklerden UserType özniteliği için değeri türetebilirsiniz. Örneğin, şirket içi Active Directory UserPrincipalName özniteliği etki alanı * \@ Partners.contoso.com*ile sona erdiğinde tüm kullanıcıları Konuk olarak eşitlemeniz gerekir.
  
 Ayrıntılı öznitelik gereksinimleri için bkz. [UserType eşitlemesini etkinleştirme](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 

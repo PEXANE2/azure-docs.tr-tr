@@ -4,19 +4,19 @@ description: Bir Azure AD B2B Konuk kullanıcısının, erişim panelini kullana
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/13/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272488"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386989"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Bir kuruluştan Konuk Kullanıcı olarak ayrılın
 
@@ -51,8 +51,8 @@ Bir kullanıcı kuruluştan ayrıldığında Kullanıcı hesabı, dizinde "geçi
 
 İsterseniz, bir kiracı yöneticisi, hesabı 30 günlük süre boyunca dilediğiniz zaman kalıcı olarak silebilir. Bunu yapmak için:
 
-1. [Azure portal](https://portal.azure.com) **Azure Active Directory**' ni seçin.
-2. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
+1. [Azure portalda](https://portal.azure.com)**Azure Active Directory**'yi seçin.
+2. **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 3. **Silinen kullanıcılar**' ı seçin.
 4. Silinen bir kullanıcının yanındaki onay kutusunu işaretleyin ve **kalıcı olarak sil**' i seçin.
 

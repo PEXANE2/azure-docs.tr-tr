@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64b440054795670b99a22e37dec7188f3e1cd74c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4297ee64742b81e86eb8b85c0a6c405fac07d67f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189999"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386173"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeniden yönlendirme URL 'Lerini b2clogin.com olarak ayarlayın
 
@@ -50,7 +50,7 @@ Uygulamalarınızı *b2clogin.com*'e geçirmek için yapmanız gerekebilecek bir
 
 ## <a name="change-identity-provider-redirect-urls"></a>Kimlik sağlayıcısı yeniden yönlendirme URL 'Lerini Değiştir
 
-Bir uygulama oluşturduğunuz her bir kimlik sağlayıcısının Web sitesinde, `your-tenant-name.b2clogin.com` *login.microsoftonline.com*yerine yeniden yönlendirmek Için tüm güvenilen URL 'leri değiştirin.
+Bir uygulama oluşturduğunuz her bir kimlik sağlayıcısının Web sitesinde, login.microsoftonline.com yerine yeniden yönlendirmek için tüm güvenilen URL 'Leri değiştirin `your-tenant-name.b2clogin.com` . *login.microsoftonline.com*
 
 B2clogin.com yeniden yönlendirme URL 'Leri için kullanabileceğiniz iki biçim vardır. Birincisi, kiracı etki alanı adınızın yerine kiracı KIMLIĞINI (GUID) kullanarak URL 'de herhangi bir yerde "Microsoft" görünmeme avantajını sağlar:
 
@@ -58,7 +58,7 @@ B2clogin.com yeniden yönlendirme URL 'Leri için kullanabileceğiniz iki biçim
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-İkinci seçenek, kiracı etki alanı adınızı biçiminde kullanır `your-tenant-name.onmicrosoft.com`. Örneğin:
+İkinci seçenek, kiracı etki alanı adınızı biçiminde kullanır `your-tenant-name.onmicrosoft.com` . Örneğin:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -66,12 +66,12 @@ https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth
 
 Her iki biçim için:
 
-* Azure AD B2C `{your-tenant-name}` kiracınızın adıyla değiştirin.
-* URL `/te` 'de varsa kaldırın.
+* `{your-tenant-name}`Azure AD B2C kiracınızın adıyla değiştirin.
+* `/te`URL 'de varsa kaldırın.
 
 ## <a name="update-your-applications-and-apis"></a>Uygulamalarınızı ve API 'lerinizi güncelleştirme
 
-Azure AD B2C özellikli uygulamalardaki ve API 'lerinizde bulunan kod, birkaç yerde öğesine `login.microsoftonline.com` başvurabilir. Örneğin, kodunuzun Kullanıcı akışlarına ve belirteç uç noktalarına başvuruları olabilir. Bunun yerine aşağıdaki başvuruyu `your-tenant-name.b2clogin.com`güncelleştirin:
+Azure AD B2C özellikli uygulamalardaki ve API 'lerinizde bulunan kod, `login.microsoftonline.com` birkaç yerde öğesine başvurabilir. Örneğin, kodunuzun Kullanıcı akışlarına ve belirteç uç noktalarına başvuruları olabilir. Bunun yerine aşağıdaki başvuruyu güncelleştirin `your-tenant-name.b2clogin.com` :
 
 * Yetkilendirme uç noktası
 * Belirteç uç noktası
@@ -91,7 +91,7 @@ Azure AD B2C tarafından korunan Azure API Management API ['leri geçirmek için
 
 ### <a name="validateauthority-property"></a>ValidateAuthority özelliği
 
-[Msal.net][msal-dotnet] v2 veya daha önceki bir sürümünü kullanıyorsanız, *b2clogin.com*'e yeniden yönlendirmeye Izin vermek `false` için **validateauthority** özelliğini istemci örneği oluşturma ' ya ayarlayın. Bu ayar MSAL.NET v3 ve üzeri için gerekli değildir.
+[Msal.net][msal-dotnet] v2 veya daha önceki bir sürümünü kullanıyorsanız, b2clogin.com 'e yeniden yönlendirmeye izin vermek Için **validateauthority** özelliğini `false` istemci örneği oluşturma *b2clogin.com*' ya ayarlayın. Bu ayar MSAL.NET v3 ve üzeri için gerekli değildir.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

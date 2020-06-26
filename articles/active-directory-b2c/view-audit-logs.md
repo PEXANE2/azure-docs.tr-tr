@@ -6,18 +6,18 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 33fa1b063a2c45af41c0da6450bac3f86683653b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85202985"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383946"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
@@ -32,14 +32,14 @@ Denetim günlüğü olayları yalnızca **yedi gün**boyunca tutulur. Daha uzun 
 
 Denetim günlüklerinde **B2C** kategorisi aşağıdaki etkinlik türlerini içerir:
 
-|Etkinlik türü |Description  |
+|Etkinlik türü |Açıklama  |
 |---------|---------|
 |Yetkilendirme |Bir kullanıcının B2C kaynaklarına (örneğin, B2C ilkeleri listesine erişen bir yönetici) erişmesine yönelik yetkilendirmeyle ilgili etkinlikler.         |
 |Dizin |Bir yönetici Azure portal kullanarak oturum açtığında alınan dizin öznitelikleriyle ilgili etkinlikler. |
 |Uygulama | B2C uygulamalarında oluşturma, okuma, güncelleştirme ve silme (CRUD) işlemleri. |
 |Anahtar |B2C anahtar kapsayıcısında depolanan anahtarlarla CRUD işlemleri. |
 |Kaynak |B2C kaynaklarında CRUD işlemleri. Örneğin, ilkeler ve kimlik sağlayıcıları.
-|Kimlik doğrulaması |Kullanıcı kimlik bilgilerinin ve belirteç verme 'nin doğrulanması.|
+|Kimlik Doğrulaması |Kullanıcı kimlik bilgilerinin ve belirteç verme 'nin doğrulanması.|
 
 Kullanıcı nesnesi CRUD etkinlikleri için **çekirdek Dizin** kategorisine bakın.
 
@@ -51,9 +51,9 @@ Bu örnek Azure portal görüntüsü, bir Kullanıcı bir dış kimlik sağlayı
 
 Etkinlik ayrıntıları paneli aşağıdaki ilgili bilgileri içerir:
 
-|Section|Alan|Description|
+|Section|Alan|Açıklama|
 |-------|-----|-----------|
-| Etkinlik | Name | Hangi etkinlik gerçekleşti. Örneğin, uygulamayı gerçek Kullanıcı oturum açma sonucuna göre *bir id_token olarak verin*. |
+| Etkinlik | Adı | Hangi etkinlik gerçekleşti. Örneğin, uygulamayı gerçek Kullanıcı oturum açma sonucuna göre *bir id_token olarak verin*. |
 | Başlatan (aktör) | ObjectId | Kullanıcının oturum açtığı B2C uygulamasının **nesne kimliği** . Bu tanımlayıcı Azure portal görünmez, ancak Microsoft Graph API 'SI aracılığıyla erişilebilir. |
 | Başlatan (aktör) | SPN | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
 | Hedefler | ObjectId | Oturum açan kullanıcının **nesne kimliği** . |

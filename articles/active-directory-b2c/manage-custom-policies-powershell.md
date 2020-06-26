@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187415"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387686"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure PowerShell ile Azure AD B2C özel ilkeleri yönetme
 
@@ -37,7 +37,7 @@ Azure PowerShell, Azure AD B2C kiracınızda komut satırı ve betik tabanlı ö
 
 Azure AD B2C kiracınızdaki özel ilkelerle çalışmak için, önce [Connect-AzureAD][Connect-AzureAD] komutunu kullanarak PowerShell oturumunuzu kiracıya bağlamanız gerekir.
 
-Azure AD B2C kiracınızın adıyla değiştirerek `{b2c-tenant-name}` aşağıdaki komutu yürütün. Dizinde [B2C ıEF Ilke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolüne atanan bir hesapla oturum açın.
+`{b2c-tenant-name}`Azure AD B2C kiracınızın adıyla değiştirerek aşağıdaki komutu yürütün. Dizinde [B2C ıEF Ilke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolüne atanan bir hesapla oturum açın.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
@@ -112,7 +112,7 @@ PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 </TrustFrameworkPolicy>
 ```
 
-İlke içeriğini yerel olarak düzenlemek için komut çıkışını `-OutputFilePath` bağımsız değişkenle bir dosyaya boru yapın ve ardından dosyayı en sevdiğiniz düzenleyicide açın.
+İlke içeriğini yerel olarak düzenlemek için komut çıkışını bağımsız değişkenle bir dosyaya boru yapın `-OutputFilePath` ve ardından dosyayı en sevdiğiniz düzenleyicide açın.
 
 Bir dosyaya çıkış gönderen örnek komut:
 
@@ -125,7 +125,7 @@ Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -OutputFilePath C:\RP
 
 Oluşturduğunuz veya indirdiğiniz bir ilke dosyasını düzenledikten sonra, [set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] komutunu kullanarak güncelleştirilmiş ilkeyi Azure AD B2C olarak yayımlayabilirsiniz.
 
-`Set-AzureADMSTrustFrameworkPolicy` Komutu Azure AD B2C kiracınızda zaten bulunan BIR ilkenin kimliğiyle verirseniz, bu ilkenin içeriğinin üzerine yazılır.
+`Set-AzureADMSTrustFrameworkPolicy`Komutu Azure AD B2C kiracınızda zaten bulunan bir ILKENIN kimliğiyle verirseniz, bu ilkenin içeriğinin üzerine yazılır.
 
 ```PowerShell
 Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]

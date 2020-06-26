@@ -3,12 +3,12 @@ title: DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 1fb9910f2cdf8f000725fde697d971fc1c3d385b
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: bb9b3599e74e74058598acd53f5156459c0b74fb
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84631985"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374942"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM ve Azure Backup Sunucusu (MABS) için çevrimdışı yedekleme iş akışı
 
@@ -36,7 +36,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 > * Daha sonra SATA sürücüler en yakın Azure veri merkezine gönderilir.
 > * Yedekleme verilerinin Azure 'a yüklenmesi tamamlandıktan sonra, Azure Backup yedekleme verileri yedekleme kasasına kopyalanır ve artımlı yedeklemeler zamanlanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Çevrimdışı yedekleme iş akışını başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -83,9 +83,9 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
    Girişlerin açıklaması aşağıdaki gibidir:
 
    * **Hazırlama konumu**: ilk yedekleme kopyasının yazıldığı geçici depolama konumu. Hazırlama konumu bir ağ paylaşımında veya yerel bir bilgisayarda olabilir. Kopya bilgisayar ve kaynak bilgisayar farklıysa, hazırlama konumunun tam ağ yolunu belirtin.
-   * Azure **depolama hesabı**: Azure yayımlama ayarları dosyasıyla ilişkili Azure aboneliğindeki depolama hesabının adı.
-   * **Azure depolama kapsayıcısı**: yedekleme verilerinin Içeri aktarıldığı Azure depolama hesabındaki hedef depolama blobunun adı.
-   * **Azure ABONELIK kimliği**: Azure yayımlama ayarları dosyasını Indirdiğiniz aboneliğin Azure abonelik kimliği.
+   * **Azure Resource Manager depolama hesabı**: herhangi bir Azure aboneliğinde Kaynak Yöneticisi türü depolama hesabının adı (genel amaçlı v1 veya genel amaçlı v2).
+   * **Azure depolama kapsayıcısı**: yedekleme verilerinin Içeri aktarıldığı Azure depolama hesabındaki hedef BLOB depolama kapsayıcısının adı.
+   * **Azure ABONELIK kimliği**: Azure depolama hesabının oluşturulduğu Azure aboneliğinin kimliği.
    * **Azure Içeri aktarma Işi adı**: Azure içeri aktarma hizmeti 'nin ve Azure Backup disklere gönderilen verilerin Azure 'a aktarılmasını izleyen benzersiz ad.
 
     **Hazırlama konumunu** ve verdiğiniz **Azure Içeri aktarma işi adı** bilgilerini kaydedin. Diskleri hazırlamak için gereklidir.

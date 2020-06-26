@@ -4,19 +4,19 @@ description: Bulut B2B kullanıcılarına Azure AD B2B işbirliğiyle şirket i�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272792"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387023"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Şirket içi uygulamalarınıza Azure AD erişimi için B2B kullanıcıları verme
 
@@ -52,7 +52,7 @@ Aşağıdaki diyagramda, B2B kullanıcılarına şirket içi ıWA ve KCD uygulam
 ![MıM ve B2B betik çözümlerinin diyagramı](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
 1.  Bir iş ortağı kuruluştan (Fabrikam kiracısı) bir Kullanıcı contoso kiracısına davet edilir.
-2.  Contoso kiracısında bir Konuk Kullanıcı nesnesi oluşturulur (örneğin, guest_fabrikam UPN 'si olan bir kullanıcı nesnesi). com # EXT #@contoso.onmicrosoft.com).
+2.  Contoso kiracısında bir Konuk Kullanıcı nesnesi oluşturulur (örneğin, guest_fabrikam UPN 'si olan bir kullanıcı nesnesi). com # EXT # @contoso.onmicrosoft.com ).
 3.  Fabrikam konuğu, contoso 'dan MıM 'e veya B2B PowerShell betiği aracılığıyla içeri aktarılır.
 4.  Fabrikam Konuk Kullanıcı nesnesinin (konuk # EXT #) temsili veya "ayak izi", MıM aracılığıyla veya B2B PowerShell betiği aracılığıyla şirket içi dizininde oluşturulur.
 5.  Konuk Kullanıcı, app.contoso.com Şirket içi uygulamasına erişir.
@@ -74,7 +74,7 @@ MıM 2016 hizmet paketi 1 ' i ve MıM Yönetim Aracısı 'nı şirket içi dizin
 
 Şirket içi Active Directory Konuk kullanıcı nesnelerini oluşturmak için başlangıç noktası olarak kullanabileceğiniz bir PowerShell örnek betiği bulunur.
 
-Betiği ve Benioku dosyasını [Indirme merkezinden](https://www.microsoft.com/download/details.aspx?id=51495)indirebilirsiniz. **Azure AD B2B kullanıcıları on-Prem. zip dosyasını çekmek Için betiği ve Benioku** dosyasını seçin.
+Betiği ve Benioku dosyasını [Indirme merkezinden](https://www.microsoft.com/download/details.aspx?id=51495)indirebilirsiniz. **Azure AD B2B kullanıcılarını on-prem.zipdosyayı çekmek Için betiği ve Benioku** dosyasını seçin.
 
 Betiği kullanmadan önce, ilişkili Readme dosyasındaki önkoşulları ve önemli konuları gözden geçirdiğinizden emin olun. Ayrıca, betiğin yalnızca örnek olarak kullanılabileceğini de anlayın. Geliştirme takımınızın veya iş ortağının, çalıştırmadan önce betiği özelleştirmesi ve incelemesi gerekir.
 

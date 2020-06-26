@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183967"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385357"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Azure AD B2C (Önizleme) içinde özel ilkelerle telefon kayıt ve oturum açma ayarlama
 
@@ -48,9 +48,9 @@ Aşağıdaki adımlarda [önkoşulları](#prerequisites) tamamladığınız ve [
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. Her dosyada, dizeyi `yourtenant` Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, B2C kiracınızın adı *contosob2c*ise, tüm örnekleri `yourtenant.onmicrosoft.com` olur. `contosob2c.onmicrosoft.com`
+1. Her dosyada, dizeyi `yourtenant` Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, B2C kiracınızın adı *contosob2c*ise, tüm örnekleri `yourtenant.onmicrosoft.com` olur `contosob2c.onmicrosoft.com` .
 
-1. [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)konusunun [özel Ilkeye uygulama kimlikleri ekleme](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) bölümündeki adımları uygulayın. Bu `/phone-number-passwordless/` **`Phone_Email_Base.xml`** durumda, *IdentityExperienceFramework* ve *ProxyIdentityExperienceFramework*önkoşullarını tamamlarken kaydettiğiniz iki uygulamanın **uygulama (istemci) kimlikleriyle** güncelleştirin.
+1. [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)konusunun [özel Ilkeye uygulama kimlikleri ekleme](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) bölümündeki adımları uygulayın. Bu durumda, `/phone-number-passwordless/` **`Phone_Email_Base.xml`** *IdentityExperienceFramework* ve *ProxyIdentityExperienceFramework*önkoşullarını tamamlarken kaydettiğiniz Iki uygulamanın **uygulama (istemci) kimlikleriyle** güncelleştirin.
 
 ## <a name="upload-the-policy-files"></a>İlke dosyalarını karşıya yükle
 
@@ -58,21 +58,21 @@ Aşağıdaki adımlarda [önkoşulları](#prerequisites) tamamladığınız ve [
 1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **Özel Ilkeyi karşıya yükle**' yi seçin.
 1. İlke dosyalarını aşağıdaki sırada karşıya yükleyin:
-    1. *Phone_Email_Base. xml*
-    1. *Signuporsignınwithphone. xml*
-    1. *SignUpOrSignInWithPhoneOrEmail. xml*
-    1. *ProfileEditPhoneOnly. xml*
-    1. *ProfileEditPhoneEmail. xml*
-    1. *ChangePhoneNumber. xml*
-    1. *PasswordResetEmail. xml*
+    1. *Phone_Email_Base.xml*
+    1. *SignUpOrSignInWithPhone.xml*
+    1. *SignUpOrSignInWithPhoneOrEmail.xml*
+    1. *ProfileEditPhoneOnly.xml*
+    1. *ProfileEditPhoneEmail.xml*
+    1. *ChangePhoneNumber.xml*
+    1. *PasswordResetEmail.xml*
 
-Her dosyayı karşıya yüklerken Azure, ön eki `B2C_1A_`ekler.
+Her dosyayı karşıya yüklerken Azure, ön eki ekler `B2C_1A_` .
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
 1. **Özel ilkeler**altında **B2C_1A_SignUpOrSignInWithPhone**' yi seçin.
 1. **Uygulama Seç**altında önkoşulları tamamlarken kaydettiğiniz *WebApp1* uygulamasını seçin.
-1. **Yanıt URL 'Si Seç**için öğesini `https://jwt.ms`seçin.
+1. **Yanıt URL 'Si Seç**için öğesini seçin `https://jwt.ms` .
 1. **Şimdi Çalıştır** ' ı seçin ve bir e-posta adresi veya telefon numarası kullanarak kaydolun.
 1. **Şimdi Çalıştır** ' ı bir kez daha seçin ve doğru yapılandırmaya sahip olduğunu onaylamak için aynı hesapla oturum açın.
 

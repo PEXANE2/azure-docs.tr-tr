@@ -1,7 +1,7 @@
 ---
-title: Yazma için Azure kaynağına geçiş 2
+title: Azure Kaynak yazma anahtarına geçiş
 titleSuffix: Azure Cognitive Services
-description: Azure yazma kaynak anahtarı 2 ' ye geçirin.
+description: Bu makalede, Language Understanding (LUSıS) yazma kimlik doğrulamasının bir e-posta hesabından Azure kaynağına geçirilmesi açıklanmaktadır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 5f0778436db7bd8c3a09e3ba346d8a9a6c4af454
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 440162d6cddd790cdb2859c119d60a6dbe28dcbf
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84983755"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374891"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
@@ -25,43 +25,45 @@ Language Understanding (LUSıS) yazma kimlik doğrulaması, bir e-posta hesabın
 
 ## <a name="what-is-migration"></a>Geçiş nedir?
 
-Geçiş, bir e-posta hesabından Azure kaynağına yazma kimlik doğrulamasını değiştirme işlemidir. Hesabınız, geçiş işleminden sonra bir Azure aboneliğine ve bir Azure yazma kaynağına bağlanır. **Tüm LUYA kullanıcıları (sahipler veya ortak çalışanlar) sonunda geçiş yapması gerekecektir.** Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. LUSıS CLı gibi yazma anahtarlarını oluşturursanız, yine de LUI portalındaki geçiş işlemini gerçekleştirmeniz gerekecektir. Geçiş sonrasında uygulamalarınızda hala ortak yazarlara sahip olabilirsiniz, ancak bunlar uygulama düzeyi yerine Azure Kaynak düzeyine eklenecektir.
+Geçiş, bir e-posta hesabından Azure kaynağına yazma kimlik doğrulamasını değiştirme işlemidir. Hesabınız, geçiş işleminden sonra bir Azure aboneliğine ve bir Azure yazma kaynağına bağlanır. *Tüm LUYA kullanıcıları (sahipler veya ortak çalışanlar) sonunda geçiş yapması gerekecektir.* 
+
+Geçişin, LUıN portalından gerçekleştirilmesi gerekiyor. Örneğin, LUSıS CLı 'yı kullanarak yazma anahtarlarını oluşturursanız, HALSıS portalındaki geçiş işlemini gerçekleştirmeniz gerekir. Geçiş işleminden sonra uygulamalarınızda hala coyazarlarınız olabilir, ancak bunlar uygulama düzeyi yerine Azure Kaynak düzeyine eklenecektir.
 
 > [!Note]
-> Geçişten önce, ortak yazarlar, LUSıS uygulama düzeyinde _ortak çalışanlar_ olarak bilinir. Geçişten sonra, _katkıda bulunan_ Azure rolü aynı işlevsellik için, ancak Azure Kaynak düzeyinde kullanılır.
+> Geçişten önce, coyazarlar, LUSıS uygulama düzeyinde _ortak çalışanlar_ olarak bilinir. Geçişten sonra, Azure Kaynak düzeyinde aynı işlevsellik için _katılımcı_ Azure rolü kullanılır.
 
 ## <a name="note-before-you-migrate"></a>Geçirmeden önce göz önüne alın
 
-* Geçiş **tek yönlü** bir işlemdir. Geçiş yaptıktan sonra geri gidemezsiniz.
-* Uygulama **sahibiyseniz** uygulamalar sizinle **otomatik olarak geçiş** yapılır.
+* Geçiş tek yönlü bir işlemdir. Geçiş yaptıktan sonra geri gidemezsiniz.
+* Uygulama sahibiyseniz uygulamalar sizinle otomatik olarak geçiş yapılır.
 * Sahip, geçirilecek uygulamaların bir alt kümesini seçemez ve işlem geri alınamaz.
-* Uygulamalar, **sahibi geçirdikten**sonra **ortak çalışan taraflarından kaybolur** .
+* Uygulamalar, sahip geçirildikten sonra ortak çalışanın tarafında kaybolacaktır.
 * Sahipleri, geçişe bildirmek üzere ortak kişilere e-posta göndermeleri istenir.
-* Uygulama üzerinde **ortak çalışan** bir çalışmadıysanız uygulamalar sizinle **geçiş uygulamacaktır** .
-* Bir sahibin ortak çalışanların geçirildiğini bilmesi için bir yol yoktur.
-* **Geçiş** , otomatik olarak ortak bir şekilde toplanmaz ve Azure yazma kaynağına taşıyabilir veya eklemez. Uygulama sahibi, geçişten sonra bu adımı tamamlaması gereken bir uygulamadır. Bu adım [, Azure yazma kaynağı için izinler](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate)gerektirir.
-* Azure kaynağına atandıktan sonra, **ortak çalışanların uygulamalara erişim uygulamalarına geçirilmesi gerekir**. Aksi takdirde, uygulamaları yazmak için erişimleri olmaz.
+* Uygulama üzerinde ortak çalışan bir çalışmasanız, uygulamalar sizinle geçiş uygulamacaktır.
+* Bir sahibin, ortak çalışanların geçirildiğini bilmesi için bir yol yoktur.
+* Geçiş, otomatik olarak ortak bir şekilde toplanmaz ve Azure yazma kaynağına taşıyabilir veya eklemez. Uygulama sahibi, geçişten sonra bu adımı tamamlaması gereken bir uygulamadır. Bu adım [, Azure yazma kaynağı için izinler](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate)gerektirir.
+* Azure kaynağına ortak çalışanlar atandıktan sonra, uygulamalara erişmek için geçirilmesi gerekir. Aksi takdirde, uygulamaları yazmak için erişimleri olmaz.
 * Geçirilen bir Kullanıcı, uygulamanın ortak çalışan olarak eklenemez.
-* **Başka bir kullanıcının sahip olduğu uygulamalara atanan tahmin anahtarlarınız**varsa, bu, hem sahip hem de ortak çalışan için **geçişi engeller** . Öneriler için aşağıya bakın.
+* Başka bir kullanıcının sahip olduğu uygulamalara atanan tahmin anahtarlarınız varsa, bu, hem sahip hem de ortak çalışan için geçişi engeller. Bu makalenin ilerleyen kısımlarındaki önerilere bakın.
 
 > [!Note]
 > Bir tahmin çalışma zamanı kaynağı oluşturmanız gerekiyorsa, bunu oluşturmak için [ayrı bir işlem](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vardır.
 
 ## <a name="migration-prerequisites"></a>Geçiş önkoşulları
 
-* Geçerli bir Azure aboneliğiyle ilişkilendirilmesi gerekir. Kiracı yöneticinizden aboneliğinizi size eklemesini isteyin veya [buradan](https://azure.microsoft.com/free/)ücretsiz olarak kaydolabilirsiniz.
+* Geçerli bir Azure aboneliğiyle ilişkilendirilmesi gerekir. Kiracı yöneticinizden aboneliğinizi size eklemesini isteyin veya [ücretsiz bir abonelik için kaydolun](https://azure.microsoft.com/free/).
 * LUSıS portalından veya Azure portal bir LUSıS Azure yazma kaynağı oluşturmanız gerekir. LUO portalından bir yazma kaynağı oluşturma, sonraki bölümde ele alınan geçiş akışının bir parçasıdır.
-* **Uygulamalar üzerinde ortak çalışan**değilseniz, uygulamalar otomatik olarak geçirilmez. Bu uygulamaları dışarı aktararak veya [dışarı aktarma API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)'sini kullanarak **yedeklemeniz önerilir** . Geçişten sonra uygulamayı LUO 'ya geri aktarabilirsiniz. İçeri aktarma işlemi, sahip olduğunuz yeni bir uygulama KIMLIĞIYLE yeni bir uygulama oluşturur.
-* **Uygulamanın sahibiyseniz**, uygulamalarınızı otomatik olarak geçirirken dışarı aktarmanız gerekmez. Her bir **uygulamanın ortak kayıt listesinin kaydedilmesi önerilir.** Bu listeye sahip e-posta şablonu, isteğe bağlı olarak geçiş işleminin bir parçası olarak sağlanır.
+* Uygulamalar üzerinde ortak çalışan değilseniz, uygulamalar otomatik olarak geçirilmez. Bu uygulamaları dışa aktararak veya [dışa aktarma API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)'sini kullanarak yedeklemenizi öneririz. Geçişten sonra uygulamayı LUO 'ya geri aktarabilirsiniz. İçeri aktarma işlemi, sahip olduğunuz yeni bir uygulama KIMLIĞIYLE yeni bir uygulama oluşturur.
+* Uygulamanın sahibiyseniz, otomatik olarak geçiş yapacağından uygulamalarınızı dışarı aktarmanız gerekmez. Uygulamanın ortak çalışan listesini kaydetmenizi öneririz. Bu listeye sahip e-posta şablonu, isteğe bağlı olarak geçiş işleminin bir parçası olarak sağlanır.
 
 
 |Portal|Amaç|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* Tahmin ve yazma kaynakları oluşturun.<br>* Kaynaklarda katkıda bulunanlar atayın.|
-|[LUIS](https://www.luis.ai)|* Yeni yazma kaynaklarına geçirin.<br>* Geçiş akışında yeni yazma kaynağı oluşturun.<br>* **Manage-> Azure Resources** sayfasından tahmine ve yazma kaynaklarını uygulamalara atayın veya atamayı yapın. <br>* Uygulamaları bir yazma kaynağından diğerine taşıyın.  |
+|[Azure](https://azure.microsoft.com/free/)| Tahmin ve yazma kaynakları oluşturun.<br> Kaynaklara katkıda bulunanlar atayın.|
+|[LUIS](https://www.luis.ai)| Yeni yazma kaynaklarına geçiş yapın.<br> Geçiş akışında yeni yazma kaynakları oluşturun.<br> **Manage**  >  **Azure kaynaklarını** Yönet sayfasından, tahmine ve yazma kaynaklarını uygulamalara atayın veya atamayı kaldırma. <br> Uygulamaları bir yazma kaynağından diğerine taşıyın.  |
 
 > [!Note]
-> **Lusıs uygulamanızı yazma**, katman tarafından belirtilen ücretsizdir `F0` . [Fiyatlandırma katmanları hakkında daha fazla](luis-limits.md#key-limits)bilgi edinin.
+> F0 katmanında gösterildiği gibi, LUSıS uygulamanızı yazma işlemi ücretsizdir. [Fiyatlandırma katmanları hakkında daha fazla](luis-limits.md#key-limits)bilgi edinin.
 
 
 ## <a name="migration-steps"></a>Geçiş adımları
@@ -74,9 +76,9 @@ Geçiş, bir e-posta hesabından Azure kaynağına yazma kimlik doğrulamasını
 2. Geçiş açılır penceresi geçişe devam etmenize veya daha sonra geçiş yapmanıza olanak sağlar. **Şimdi geçir**' i seçin.
 
    > [!div class="mx-imgBorder"]
-   > ![Geçiş işlemindeki ilk açılan pencere, şimdi geçir ' i seçin.](./media/migrate-authoring-key/prompt-when-migrating-2.png)
+   > ![Geçiş işleminde, şimdi geçir ' i seçtiğiniz ilk açılan pencere.](./media/migrate-authoring-key/prompt-when-migrating-2.png)
 
-3. İsteğe bağlı olarak, uygulamalarınızdan birinde ortak çalışanlar varsa, geçiş hakkında bilgi veren **bir e-posta göndermeniz** istenir. Bu, isteğe bağlı bir adımdır.
+3. Uygulamalarınızdan herhangi birine ortak çalışanlar varsa, onlara geçiş hakkında bilgi veren bir e-posta göndermeniz istenir. Bu, isteğe bağlı bir adımdır.
 
    Her ortak çalışan ve uygulama için varsayılan e-posta uygulaması, hafif biçimli bir e-posta ile açılır. Göndermeden önce e-postayı düzenleyebilirsiniz. E-posta şablonu, tam uygulama KIMLIĞI ve uygulama adını içerir.
    
@@ -94,84 +96,86 @@ Geçiş, bir e-posta hesabından Azure kaynağına yazma kimlik doğrulamasını
    > [!Note]
    > Hesabınızı Azure 'a geçirdikten sonra uygulamalarınız artık ortak olmayan uygulamalar tarafından kullanılamaz.
 
-4. İsteğe bağlı olarak, herhangi bir uygulamada ortak çalışan değilseniz, geçiş akışı sırasında bu seçeneği belirleyerek **uygulamaların bir kopyasını dışarı aktarmanız** istenir. Seçeneği belirledikten sonra, istediğiniz uygulamaları dışarı aktarmak için soldaki indir düğmesine tıkladığınızda aşağıdaki sayfayı görürsünüz. Bu uygulamaları geçirdikten sonra geri alabilirsiniz. bu uygulamalar sizinle otomatik olarak geçirilmeyecektir. Bu, isteğe bağlı bir adımdır.
+4. Herhangi bir uygulamada ortak çalışan değilseniz, geçiş akışı sırasında bu seçeneği belirleyerek uygulamaların bir kopyasını dışarı aktarmanız istenir. Bu, isteğe bağlı bir adımdır.
+
+   Seçeneğini belirlerseniz, aşağıdaki sayfa görüntülenir. İstediğiniz uygulamaları dışa aktarmak için soldaki indir düğmelerini seçin. Bu uygulamaları geçirdikten sonra geri aktarabilirsiniz, çünkü bu uygulamalar sizinle otomatik olarak geçirilmeyecektir.
 
    > [!div class="mx-imgBorder"]
-   > ![Uygulamanızı dışarı aktarmak için istemde bulun.](./media/migrate-authoring-key/export-app-for-collabs-2.png)
+   > ![Uygulamalarınızı dışarı aktarmak için istemde bulun.](./media/migrate-authoring-key/export-app-for-collabs-2.png)
 
-5. Azure 'dan zaten bir tane oluşturduysanız, yeni bir LUYA yazma kaynağı oluşturmayı veya var olan bir yazma kaynağına geçiş yapabilirsiniz. Aşağıdan doğru düğmeyi seçerek istediğiniz seçeneği belirleyin.
+5. Azure 'dan zaten bir tane oluşturduysanız, yeni bir LUYA yazma kaynağı oluşturmayı veya var olan bir yazma kaynağına geçiş yapabilirsiniz. Aşağıdaki düğmelerden birini seçerek istediğiniz seçeneği belirleyin.
 
    > [!div class="mx-imgBorder"]
-   > ![Yazma kaynağı oluşturma](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
+   > ![Yeni bir yazma kaynağı oluşturma ve var olan bir yazma kaynağı kullanma düğmeleri](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
 
 ### <a name="create-new-authoring-resource-from-luis-to-migrate"></a>Geçiş için LUSıS 'den yeni yazma kaynağı oluşturma
 
-Yeni bir yazma kaynağı oluşturmak istiyorsanız **Yeni bir yazma kaynağı oluştur** ' u seçin ve sonraki pencerede aşağıdaki bilgileri sağlayın.
+Yeni bir yazma kaynağı oluşturmak istiyorsanız **Yeni yazma kaynağı oluştur** ' u seçin ve sonraki pencerede aşağıdaki bilgileri sağlayın. Ardından **Bitti**'yi seçin.
 
 > [!div class="mx-imgBorder"]
-> ![Yazma kaynağı oluşturma](./media/migrate-authoring-key/create-new-authoring-resource-2.png)
+> ![Yazma kaynağı oluşturmaya yönelik pencere](./media/migrate-authoring-key/create-new-authoring-resource-2.png)
 
-* **Kaynak adı** -seçtiğiniz özel bir ad, yazma ve tahmin uç noktası sorgularınız için URL 'nin bir parçası olarak kullanılır.
-* **Abonelik adı** -kaynakla ilişkilendirilecek abonelik. Kiracınıza ait birden fazla aboneliğiniz varsa, açılan listeden istediğiniz birini seçin.
-* **Kaynak grubu** -açılan listeden seçtiğiniz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır.
-* **Kiracı** -Azure aboneliğinizin ilişkilendirildiği kiracı. Bu, varsayılan olarak seçtiğiniz kiracıya ayarlanır. Baş harflerinizi içeren en sağdaki Avatar ' i seçerek kiracılar arasında geçiş yapabilirsiniz.
-
-Yukarıdaki bilgileri girdikten sonra **bitti**' yi seçin.
+* **Kiracı adı**: Azure aboneliğinizin ilişkilendirildiği kiracı. Bu, varsayılan olarak, kullanmakta olduğunuz kiracıya ayarlanır. Baş harflerinizi içeren en sağdaki avatarını seçerek kiracılar arasında geçiş yapabilirsiniz.
+* **Kaynak adı**: seçtiğiniz özel bir ad. Yazma ve tahmin uç noktası sorgularınız için URL 'nin bir parçası olarak kullanılır.
+* **Abonelik adı**: kaynakla ilişkilendirilecek abonelik. Kiracınıza ait birden fazla aboneliğiniz varsa, açılan listeden istediğiniz birini seçin.
+* **Azure Kaynak grubu adı**: açılan listeden seçtiğiniz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır.
 
 Her bir abonelik için bölge başına 10 ücretsiz yazma kaynağınız olabileceğini unutmayın. Aboneliğiniz aynı bölgede 10 ' dan fazla yazma kaynağına sahipse yeni bir tane oluşturamazsınız.
 
-* Yazma kaynağı oluşturulduğunda, başarı iletisi gösterilir. Açılır pencereyi kapatmak için **Kapat** ' ı seçin.
+Yazma kaynağı oluşturulduğunda, başarı iletisi gösterilir. Açılır pencereyi kapatmak için **Kapat** ' ı seçin.
 
   > [!div class="mx-imgBorder"]
-  > ![Yazma kaynağınız başarıyla oluşturuldu.](./media/migrate-authoring-key/migration-success-2.png)
+  > ![Yazma kaynağınızın başarıyla oluşturulduğunu belirten ileti](./media/migrate-authoring-key/migration-success-2.png)
+
 
 ### <a name="use-existing-authoring-resource-to-migrate"></a>Geçirmek için mevcut yazma kaynağını kullanın
 
-Aboneliğiniz zaten bir LUSıS Authoring Azure kaynağı ile ilişkilendirilmişse veya Azure portal üzerinde oluşturduysanız ve yeni bir kaynak oluşturmak yerine buna geçiş yapmak istiyorsanız, **mevcut yazma kaynağını kullan** ' ı seçin ve sonraki pencerede aşağıdaki bilgileri sağlayın.
+Aboneliğiniz zaten bir LUSıS Authoring Azure kaynağıyla ilişkili ise veya Azure portal bir kaynak oluşturduysanız ve yeni bir tane oluşturmak yerine buna geçiş yapmak istiyorsanız, **mevcut yazma kaynağını kullan**' ı seçin. Sonraki pencerede aşağıdaki bilgileri sağlayın ve ardından **bitti**' yi seçin.
 
 > [!div class="mx-imgBorder"]
->![Yazma kaynağı oluşturma](./media/migrate-authoring-key/choose-existing-authoring-resource-2.png)
+>![Mevcut bir yazma kaynağını değiştirme penceresi](./media/migrate-authoring-key/choose-existing-authoring-resource-2.png)
 
-* **Kiracı** -Azure aboneliğinizin ilişkilendirildiği kiracı. Bu, varsayılan olarak seçtiğiniz kiracıya ayarlanır.
-* **Abonelik adı** -kaynakla ilişkilendirilecek abonelik. Kiracınıza ait birden fazla aboneliğiniz varsa, açılan listeden istediğiniz birini seçin.
-* **Kaynak adı** -geçiş yapmak istediğiniz yazma kaynağını seçin.
+* **Kiracı adı**: Azure aboneliğinizin ilişkilendirildiği kiracı. Bu, varsayılan olarak, kullanmakta olduğunuz kiracıya ayarlanır.
+* **Abonelik adı**: kaynakla ilişkilendirilecek abonelik. Kiracınıza ait birden fazla aboneliğiniz varsa, açılan listeden istediğiniz birini seçin.
+* **Kaynak adı**: geçiş yapmak istediğiniz yazma kaynağı.
 
 > [!Note]
-> Yazma kaynağınızı açılan listede göremiyorsanız, oturum açtığınız LUO portalı uyarınca **doğru konumda** oluşturulmuş olduğunuzdan emin olun. Ayrıca, oluşturduğunuz öğenin bir **tahmin kaynağı**değil gerçekten bir **yazma kaynağı** olduğundan emin olun.
+> Yazma kaynağınızı aşağı açılan listede göremiyorsanız, oturum açtığınız LUE portalına göre doğru konumda oluşturulmuş olduğunuzdan emin olun. Ayrıca, oluşturduğunuz öğenin bir tahmin kaynağı değil, yazma kaynağı olduğundan emin olun.
 
 
-* Yazma kaynak adınızı doğrulayıp **Şimdi geçir** düğmesine tıklayın.
+Yazma kaynak adınızı doğrulayıp **geçir** düğmesini seçin.
 
- > [!div class="mx-imgBorder"]
- > ![Yazma kaynağı oluşturma](./media/migrate-authoring-key/choose-authoring-resource-and-migrate-2.png)
+> [!div class="mx-imgBorder"]
+> ![Geçiş düğmesi artık kullanılabilir olan bir yazma kaynağı seçme penceresi](./media/migrate-authoring-key/choose-authoring-resource-and-migrate-2.png)
 
-* Başarı iletisi gösterilir. Açılır pencereyi kapatmak için **Kapat** ' ı seçin.
+Başarılı iletisi görüntülenir. Açılır pencereyi kapatmak için **Kapat** ' ı seçin.
 
- > [!div class="mx-imgBorder"]
- > ![Yazma kaynağınız başarıyla oluşturuldu.](./media/migrate-authoring-key/migration-success-2.png)
+> [!div class="mx-imgBorder"]
+> ![Yazma kaynağınızın başarıyla geçirildiğini belirten ileti](./media/migrate-authoring-key/migration-success-2.png)
 
 ## <a name="using-apps-after-migration"></a>Geçişten sonra uygulamaları kullanma
 
-* Geçiş işleminden sonra, sahibi olduğunuz tüm LUO uygulamalarınız, artık tek bir LUıN yazma kaynağına atanır.
-* **Uygulamalarım** listesinde, yeni yazma kaynağına geçirilen uygulamalar gösterilir.
-* Uygulamalarınıza erişmeden önce, yazarlarınızın bulunduğu uygulamaları görmek için abonelik ve LUSıS yazma kaynağını seçin.
+Geçiş işleminden sonra, sahibi olduğunuz tüm LUO uygulamalarınız artık tek bir LUıN yazma kaynağına atanır.
+
+**Uygulamalarım** listesinde, yeni yazma kaynağına geçirilen uygulamalar gösterilir. Uygulamalarınıza erişmeden önce, yazarlarınızın bulunduğu uygulamaları görmek için abonelik ve LUSıS yazma kaynağını seçin.
 
  > [!div class="mx-imgBorder"]
- > ![Yazanların yazarındaki uygulamaları görmek için abonelik ve LUSıS yazma kaynağı ' nı seçin.](./media/create-app-in-portal-select-subscription-luis-resource.png)
+ > ![Abonelik ve yazma kaynağı için kutular](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
-* Uygulamalarınızı LUE portalında düzenlemeyle çalışmaya devam etmek için yazma kaynağının anahtarını bilmeniz gerekmez.
-* Uygulamalarınızı programlama yoluyla düzenlemeyi planlıyorsanız, yazma anahtarı değerleri gerekir. Bu değerler, Lua portalındaki **Manage-> Azure kaynakları** sayfasında görüntülenir ve ayrıca kaynağın **anahtarlar** sayfasındaki Azure Portal de mevcuttur. Ayrıca, daha fazla yazma kaynağı oluşturabilir ve bunları aynı sayfadan atayabilirsiniz.
+Uygulamalarınızı LUE portalında düzenlemeyle çalışmaya devam etmek için yazma kaynağının anahtarını bilmeniz gerekmez. 
+
+Uygulamalarınızı programlama yoluyla düzenlemeyi planlıyorsanız, yazma anahtarı değerleri gerekir. Bu değerler, **Manage**  >  LUA portalındaki**Azure kaynaklarını** Yönet sayfasında görüntülenir. Bunlar ayrıca kaynağın **anahtarlar** sayfasındaki Azure Portal de mevcuttur. Ayrıca, daha fazla yazma kaynağı oluşturabilir ve bunları aynı sayfadan atayabilirsiniz.
 
  > [!div class="mx-imgBorder"]
- > ![Yazma kaynağını yönetin.](./media/migrate-authoring-key/manage-authoring-resource-2.png)
+ > ![Yazma kaynaklarını yönetmek için sayfa](./media/migrate-authoring-key/manage-authoring-resource-2.png)
 
-## <a name="add-contributors-to-authoring-resources"></a>Yazma kaynaklarına katkıda bulunanlar ekleme
+## <a name="adding-contributors-to-authoring-resources"></a>Yazma kaynaklarına katkıda bulunanlar ekleme
 
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
 Yazma kaynağınız üzerinde [katkıda bulunanlar eklemeyi](luis-how-to-collaborate.md) öğrenin. Katkıda bulunanlar, bu kaynaktaki tüm uygulamalara erişebilir.
 
-Kaynak için **Access Control (IAM)** sayfasında _Azure Portal_yazma kaynağına katkıda bulunanlar ekleyebilirsiniz. Daha fazla bilgi için bkz. [katılımcı erişimi ekleme](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
+Kaynak için **Access Control (IAM)** sayfasında Azure Portal yazma kaynağına katkıda bulunanlar ekleyebilirsiniz. Daha fazla bilgi için bkz. [katılımcı erişimi ekleme](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
 
 > [!Note]
 > LUSıS uygulamasının sahibi geçirilmiş ve Azure kaynağına katkıda bulunan çalışanı olarak eklediyseniz, ortak çalışan, aynı zamanda geçirilmediği sürece uygulamaya erişemez.
@@ -180,68 +184,67 @@ Kaynak için **Access Control (IAM)** sayfasında _Azure Portal_yazma kaynağın
 
 [LUA portalı](https://www.luis.ai) , geçiş işlemini sağlar.
 
-Şu durumlarda geçiş yapmanız istenir:
+Bu koşulların her ikisi de doğruysa geçiş yapmanız istenir:
 * Yazma için e-posta kimlik doğrulama sisteminde uygulamalarınız var.
 * Uygulama sahibisiniz.
 
-Haftalık olarak, uygulamalarınızı geçirmeniz istenir. Bu pencereyi geçirmeden iptal edebilirsiniz. Bir sonraki zamanlanan dönemden önce geçiş yapmak istiyorsanız, HALU portalının üst araç çubuğundaki **Azure** simgesinden geçiş işlemini başlatabilirsiniz.
-
-Pencereyi iptal ederek geçiş işlemini erteleyebilirsiniz. Geçiş yapılıncaya veya geçiş son tarihi geçirilmeden, düzenli aralıklarla geçiş yapmanız istenir. Geçiş işlemini üst gezinti çubuğunun kilit simgesinden başlatabilirsiniz.
+Haftalık olarak, uygulamalarınızı geçirmeniz istenir. Geçirmeden bu pencereyi kapatabilirsiniz. Bir sonraki zamanlanan dönemden önce geçiş yapmak istiyorsanız, LUO portalının üst araç çubuğundaki **Azure** simgesinden geçiş işlemini başlatabilirsiniz.
 
 ## <a name="prediction-resources-blocking-migration"></a>Tahmin kaynakları geçişi engelliyor
-Geçişiniz, tüm uygulama çalışma zamanını olumsuz etkiler. Geçiş yaparken, tüm ortak çalışanlar uygulamalarınızdan kaldırılır ve diğer uygulamalardan ortak çalışan olarak kaldırılır. Bu işlem, bir Işbirleyicisi 'nin atadığı anahtarların de kaldırılması anlamına gelir. Bu, üretim süreciyle uygulamanızı bozabilirler. Bu, el ile atanmış olan ortak çalışanları veya anahtarları kaldırana kadar geçişi engellemenin nedenidir.
+Geçişiniz herhangi bir uygulamanın çalışma zamanını olumsuz etkiler. Geçiş yaptığınızda, tüm ortak çalışanlar uygulamalarınızdan kaldırılır ve diğer uygulamalardan ortak çalışan olarak kaldırılır. Bu işlem, bir ortak çalışan tarafından oluşturulan anahtarların de kaldırılabileceği anlamına gelir. Bu, üretim süreciyle uygulamanızı bozabilirler. Bu, bunlara atanan ortak çalışanları veya anahtarları el ile kaldırana kadar geçişi engellemenin nedenidir.
 
-### <a name="when-does-prediction-resources-block-migration"></a>Tahmin kaynakları geçişi engelliyor mu?
-* Sahip olmadığınız uygulamalarda tahmin/çalışma zamanı kaynakları atadıysanız geçiş engellenir.
-* Başka kullanıcılarınız sahip olduğunuz uygulamalara tahmin/çalışma zamanı kaynakları atarsanız geçiş engellenir.
+Bu koşullardan biri doğru ise geçiş engellenir:
 
-### <a name="recommended-steps-to-do-if-you-are-the-owner-of-the-app"></a>Uygulamanın sahibiyseniz yapmanız önerilen adımlar
-Bazı uygulamaların sahibiyseniz ve bu uygulamaya tahmine/çalışma zamanı anahtarı atanmışsa, bu listeye geçiş yaptığınızda bir hata gösterilir. Bu,, başka kullanıcılara ait olan tahmin anahtarları atanmış uygulama kimliklerini listeler.
+* Sahip olmadığınız uygulamalarda tahmin/çalışma zamanı kaynakları atadınız.
+* Size ait olan uygulamalara tahmin/çalışma zamanı kaynakları atayan başka kullanıcılarınız vardır.
 
-Şunları yapmanız önerilir:
+### <a name="recommended-steps-if-youre-the-owner-of-the-app"></a>Uygulamanın sahibiyseniz önerilen adımlar
+Bazı uygulamaların sahibiyseniz ve bu uygulamalara bir tahmin/çalışma zamanı anahtarı atanmışsa, geçiş yaptığınızda bir hata oluşur. Hata, başka kullanıcılara ait olan tahmin anahtarlarının atandığı uygulama kimliklerini listeler.
+
+Şunları yapmanızı öneririz:
 * Geçiş hakkındaki ortak çalışanları bilgilendirin.
 * Hatada gösterilen uygulamalardan tüm ortak çalışanları kaldırın.
-* Ortak çalışanları el ile kaldırdığınızda, geçiş işleminin başarılı olması gerekir.
-* Yeni yazma kaynağınız için ortak çalışanlar katkıda bulunan olarak atayın.
-* Ortak çalışanlar, tahmine yönelik kaynakları geçirmek ve uygulamalara yeniden atamak için kullanılır.
-Bu, tahmin kaynakları yeniden atanıncaya kadar uygulamada geçici olarak bir kesintiye neden olur.
+* Ortak çalışanları el ile kaldırdığınızda başarılı olması gereken geçiş sürecini daha az yapın.
+* Yeni yazma kaynağınız için ortak çalışanlar katkıda bulunan olarak atayın. Ortak çalışanlar, tahmine kaynakları geçirilir ve uygulamalara geri atanır. Bu, tahmin kaynakları yeniden atanana kadar uygulamada geçici olarak bir kesintiye neden olacağını unutmayın.
 
-Burada başka bir çözüm, sahip geçişten önce, çalışanların Azure portal Azure aboneliklerinde katkıda bulunanlar olarak uygulama sahipleri ekleyebilirler. Bu, çalışma zamanı tahmin kaynağına sahip erişimine izin verir. Sahip, eklenen yeni aboneliği kullanarak (yeni bir kiracı altında bulunur), bu, hem ortak çalışan hem de uygulama sahibi için geçiş işleminin engellemesini ortadan kaldırmaya devam eder, ancak tahmin anahtarı olan uygulamaların kesintisiz bir şekilde geçiş yapmasına olanak tanır.
+Burada başka bir olası çözüm vardır. Sahip geçişten önce, ortak çalışanlar uygulama sahiplerini Azure portal Azure aboneliklerinde katkıda bulunanlar olarak ekleyebilir. Bu adım, çalışma zamanı tahmin kaynağına sahip erişimine izin verir. Sahip, eklendiği yeni aboneliği (yeni bir kiracı altında bulunur) kullanarak geçerse, bu adım hem ortak çalışan hem de uygulama sahibi için geçiş işleminin engelini kaldırın. Ayrıca, uygulamanın sorunsuz bir şekilde geçirilmesine izin verir ve tahmin anahtarı yine de uygulamaları bozmayan uygulamalara atanır.
 
 
-### <a name="recommended-steps-to-do-if-you-are-a-collaborator-on-an-app"></a>Uygulama üzerinde ortak çalışan olmanız durumunda yapmanız önerilen adımlar
-Uygulamalar üzerinde işbirliği yapıyorsanız ve bu uygulamaya tahmin/çalışma zamanı anahtarı atadıktan sonra, geçişi engelleyen uygulama kimliklerini ve anahtar yollarını listeleyen bir hata gösterilir.
+### <a name="recommended-steps-if-youre-a-collaborator-on-an-app"></a>Uygulama üzerinde ortak çalışan olduğunuzda önerilen adımlar
+Uygulamalar üzerinde işbirliği yapıyorsanız ve bu uygulamalara bir tahmin/çalışma zamanı anahtarı atadıktan sonra geçirdiğinizde bir hata görüntülenir. Hata, geçişi engelleyen uygulama kimliklerini ve anahtar yollarını listeler.
 
-Şunları yapmanız önerilir:
-* Uygulamaları yedekleme olarak dışarı aktarın. Bu, geçiş işleminde isteğe bağlı bir adım olarak sağlanır.
-* **Yönetim > Azure kaynakları** sayfasından tahmin kaynaklarını atamayı kaldırın.
+Şunları yapmanızı öneririz:
+* Uygulamaları bir yedekleme olarak dışarı aktarın. Bu, geçiş işleminde isteğe bağlı bir adımdır.
+* **Manage**  >  **Azure kaynaklarını** Yönet sayfasından tahmin kaynaklarının atamasını kaldırma.
 * Geçiş işlemini daha az yapın.
 * Geçişten sonra uygulamaları geri alın.
-* Uygulama **yönetme-> Azure kaynakları** sayfasına tahmin anahtarlarını yeniden atayın.
+* **Manage**  >  **Azure kaynaklarını** Yönet sayfasından, tahmin anahtarlarını uygulamalarınıza yeniden atayın.
 
 > [!Note]
-> Taşıdıktan sonra uygulamalarınızı geri aktardığınızda, farklı uygulama kimliklerine sahip olur ve üretimde vurdıklardan farklı olacaktır. Artık bu uygulamaların sahibi olursunuz.
+> Taşıdıktan sonra uygulamalarınızı geri aktardığınızda farklı uygulama kimliklerine sahip olurlar. Ayrıca, üretimde vurdıklardan farklı olacak. Artık bu uygulamaların sahibi olursunuz.
 
-## <a name="troubleshooting-migration-process"></a>Geçiş işlemi sorunlarını giderme
+## <a name="troubleshooting-the-migration-process"></a>Geçiş işlemi sorunlarını giderme
 
-Geçiş yapmayı denediğinizde, ancak Azure aboneliğinizi açılan listede bulamadığınızda:
+Geçiş yapmayı denediğinizde, ancak açılan listede Azure aboneliğinizi bulamıyorsanız:
 * Bilişsel hizmetler kaynakları oluşturma yetkisine sahip geçerli bir Azure aboneliğiniz olduğundan emin olun. [Azure Portal](https://ms.portal.azure.com) gidin ve aboneliğin durumunu denetleyin. Bir tane yoksa [ücretsiz deneme sürümü oluşturun](https://azure.microsoft.com/free/).
-* Geçerli aboneliğinizle ilişkili doğru kiracıda olduğunuzdan emin olun. Kiracıların aşağıdaki araç çubuğundaki diğer sol avatar öğesinden geçiş yapabilirsiniz: ![ kiracı değiştirin.](./media/migrate-authoring-key/switch-user-tenant-2.png)
+* Geçerli aboneliğinizle ilişkili doğru kiracıda olduğunuzdan emin olun. Bu araç çubuğunda, Kiracılarınızın Avatarınızın soluna kadar olan kiracılar arasında geçiş yapabilirsiniz: bir ![ araç çubuğu, kiracılar arasında geçiş yapabilirsiniz](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
- Zaten var olan bir yazma kaynağınız varsa ancak "var olan yazarlık kaynağını kullan" seçeneği belirlendiğinde bu kaynağı bulamadıysanız:
-* Kaynak muhtemelen oturum açmış olduğunuz portaldan farklı bir konumda oluşturulmuştur. Lütfen [Lusıs yazma bölgelerini ve portallarını](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions) denetleyin
-* Bunun yerine LUO portalından yeni bir kaynak oluşturun
+Var olan bir yazma kaynağınız varsa ancak **mevcut yazma kaynağını kullan** seçeneğini belirlediğinizde bu kaynağı bulamıyorsanız:
+* Kaynağınız, oturum açtığınız portaldan farklı bir konumda oluşturulmuş olabilir. [Lusıs yazma bölgelerini ve portallarını](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)denetleyin.
+* Bunun yerine LUO portalından yeni bir kaynak oluşturun.
 
-"Yeni yazma kaynağı oluştur" seçeneğini belirlerseniz geçiş işlemi "kullanıcının Azure bilgileri alınamadı, daha sonra yeniden deneyin" hata iletisiyle başarısız oldu
-* Aboneliğiniz abonelik başına bölge başına 10 veya daha fazla yazma kaynağına sahip olabilir. Bu durumda, yeni bir yazma kaynağı oluşturabileceksiniz.
-* "Mevcut yazma kaynağını kullan" seçeneğini belirleyerek geçirin ve aboneliğiniz altında sahip olduğunuz mevcut kaynaklardan birini seçin.
+**Yeni yazma kaynağı oluştur** seçeneğini belirlerseniz geçiş işlemi "kullanıcının Azure bilgileri alınamadı, daha sonra yeniden deneyin" hata iletisiyle başarısız olur.
+* Aboneliğiniz, her abonelik için bölge başına 10 veya daha fazla yazma kaynağına sahip olabilir. Bu durumda, yeni bir yazma kaynağı oluşturamayacak.
+* **Mevcut yazma kaynağını kullan** seçeneğini belirleyerek ve aboneliğinizdeki mevcut kaynaklardan birini seçerek geçiş yapın.
 
-Aşağıdaki hatayı görürseniz, [uygulamanın sahibiyseniz yapmanız önerilen adımlar] bölümüne bakın. ![ sahipler için geçiş başarısız olur](./media/migrate-authoring-key/migration-failed-for-owner-2.png)
+Aşağıdaki hatayı görürseniz, [uygulamanın sahibiyseniz önerilen adımları](#recommended-steps-if-youre-the-owner-of-the-app)denetleyin.
+![Sahipler için geçişin başarısız olduğunu gösteren hata](./media/migrate-authoring-key/migration-failed-for-owner-2.png)
 
-Aşağıdaki hatayı görürseniz, [bir uygulama üzerinde ortak çalışan olmanız durumunda yapmanız gereken adımları yapın] ![ ortak çalışanlar için geçiş başarısız olur](./media/migrate-authoring-key/migration-failed-for-collab-2.png)
+Aşağıdaki hatayı görürseniz, [bir uygulamada ortak çalışan kullanıyorsanız önerilen adımları](#recommended-steps-if-youre-a-collaborator-on-an-app)denetleyin.
+![Ortak çalışanlar için geçişin başarısız olduğunu gösteren hata](./media/migrate-authoring-key/migration-failed-for-collab-2.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Yazma ve çalışma zamanı anahtarları hakkındaki [kavramları](luis-concept-keys.md) gözden geçirin
-* [Anahtar atamayı](luis-how-to-azure-subscription.md) ve [katkıda bulunanlar](luis-how-to-collaborate.md) eklemeyi inceleyin
+* [Yazma ve çalışma zamanı anahtarları hakkındaki kavramları](luis-concept-keys.md)gözden geçirin. 
+* [Anahtar atamayı](luis-how-to-azure-subscription.md) ve [katkıda bulunanlar eklemeyi](luis-how-to-collaborate.md)inceleyin.

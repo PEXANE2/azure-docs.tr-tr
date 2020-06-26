@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c1f08005c5179add52863f5fa6260eec1fbae53e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 765deda747d46a9ee5b6913c192fa1a43c56d35d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810036"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385917"
 ---
 # <a name="azure-active-directory-b2c-partners"></a>Azure Active Directory B2C iş ortakları
 
@@ -34,6 +34,7 @@ ms.locfileid: "84810036"
 | ![Le](./media/partner-gallery/itsme-logo.png) | [ıtsme](./partner-itsme.md) , kullanıcıların kart okuyucuları, parolalar, iki öğeli kimlik doğrulaması ve bırden çok PIN kodu olmadan güvenli bir şekilde oturum açmalarına olanak tanımak Için bir elektronik tanımlama, kimlik doğrulama ve güven Hizmetleri (eidas) ile uyumlu dijital kimlik çözümüdür. |
 | ![Le](./media/partner-gallery/trusona-logo.png) | [Truslonıntegration](./partner-trusona.md) , güvenli bir şekilde oturum açmanıza ve passwordless kimlik doğrulaması, Multi-Factor Authentication ve dijital lisans taramasını kullanmanıza yardımcı olur.|
 | ![Le](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) , çok faktörlü kimlik doğrulaması (MFA) ile SMS tek seferlik parola (OTP), zaman tabanlı bir kerelik parola (TOTP) ve anında iletme bildirimleri aracılığıyla ve ödeme hizmetleri yönergesi 2 (PSD2) için SCA gereksinimlerine uymak üzere birden çok çözüm sağlar.|
+| ![Le](./media/partner-gallery/typingdna-logo.png) | [Typingdna](./partner-typingdna.md) , Kullanıcı yazma düzenine göre kimlik doğrulama ve sağlama sağlayıcıdır, çok faktörlü kimlik doğrulamasını zorluyor kimlik doğrulama çözümleri sağlar ve ödeme hizmetleri yönergesi 2 (PSD2) için SCA gereksinimleriyle uyumlu olmaya yardımcı olur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

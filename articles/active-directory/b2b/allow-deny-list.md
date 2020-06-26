@@ -4,7 +4,7 @@ description: Bir yöneticinin, belirli etki alanlarından B2B kullanıcılarına
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/15/2018
 ms.author: mimart
 author: msmimart
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74273416"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387295"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Belirli kuruluşlara ait B2B kullanıcılardan gelen davetlere izin verme veya engelleme
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Belirli kuruluşlardan B2B kullanıcılarına gönderilen davetlere izin verme veya engelleme
 
 Belirli kuruluşlardan B2B kullanıcılarına izin vermek veya bu kullanıcılara yönelik davetleri engellemek için bir izin verilenler listesi veya reddetme listesi kullanabilirsiniz. Örneğin, kişisel e-posta adresi etki alanlarını engellemek istiyorsanız Gmail.com ve Outlook.com gibi etki alanlarını içeren bir reddetme listesi ayarlayabilirsiniz. Ya da işletmenizde Contoso.com, Fabrikam.com ve Litware.com gibi diğer işletmelerle bir ortaklığı varsa ve davetleri yalnızca bu kuruluşlara kısıtlamak istiyorsanız, izin verilenler listenize Contoso.com, Fabrikam.com ve Litware.com ekleyebilirsiniz.
   
@@ -42,7 +42,7 @@ Bu, kuruluşunuzun neredeyse her kuruluşla çalışmak istediği, ancak belirli
 Reddetme listesi eklemek için:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory** > **Users**kullanıcıları > **Kullanıcı ayarları**' nı seçin.
+2. **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' nı seçin.
 3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
 4. **İşbirliği kısıtlamaları**' nın altında, **belirtilen etki alanlarına davetleri Reddet**' i seçin.
 5. **Hedef etkı alanları**altında, engellemek istediğiniz etki alanlarından birinin adını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Örneğin:
@@ -63,7 +63,7 @@ Bir izin verilenler listesi kullanmak istiyorsanız, işletmenizin ihtiyaçları
 Bir izin verilenler listesi eklemek için:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory** > **Users**kullanıcıları > **Kullanıcı ayarları**' nı seçin.
+2. **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' nı seçin.
 3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
 4. **İşbirliği kısıtlamaları**' nın altında **yalnızca belirtilen etki alanlarına (en kısıtlayıcı) davetlere izin ver**' i seçin.
 5. **Hedef etkı alanları**altında, izin vermek istediğiniz etki alanlarından birinin adını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Örneğin:

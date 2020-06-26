@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 249acaad66bdfd8b5d6b8420d22a9090e44beb41
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204107"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387635"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme
 
@@ -59,7 +59,7 @@ Müşteri hesabı olan bir Kullanıcı birden çok kimlik ile oturum açabilir. 
 
 Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities` [Objectıdentity][graph-objectIdentity]türünde olan User özniteliğinde depolanır. `identities`Koleksiyon, bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar.
 
-| Özellik   | Tür |Description|
+| Özellik   | Tür |Açıklama|
 |:---------------|:--------|:----------|
 |Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için:,,,, `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3` `userName` veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak ayarlanması gerekir `federated` .|
 |yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated` ), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin,) `contoso.onmicrosoft.com` . Sosyal kimlik (burada **Signıntype** ) için `federated` değer verenin adıdır, örneğin`facebook.com`|

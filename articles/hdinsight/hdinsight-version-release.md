@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652391"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374857"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 genel bakış
 
@@ -91,6 +91,7 @@ HDInsight 'ın önceki sürümlerinden HDInsight 4,0 sürümüne desteklenen bir
 
 * HDInsight 4,0, Apache Hive için MapReduce 'yi desteklemez. Bunun yerine Apache Tez kullanın. [Apache Tez](https://tez.apache.org/) hakkında daha fazla bilgi edinin.
 * HDInsight 4,0 Apache Storm desteklemez.
+* HDInsight 4,0, ML Hizmetleri küme türünü desteklemez.
 * Hive görünümü artık HDInsight 4,0 ' de kullanılamaz.
 * Apache Zeppelin içindeki kabuk yorumlayıcısı Spark ve etkileşimli sorgu kümelerinde desteklenmez.
 * Spark-LLAP kümesinde LLAP özelliğini *devre dışı* bırakamazsınız. LLAP özelliğini yalnızca kapatabilirsiniz.

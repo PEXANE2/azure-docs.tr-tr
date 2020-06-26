@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186837"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384949"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS uygulaması kullanarak oturum açma
 
@@ -47,7 +47,7 @@ Azure AD B2C, her kullanıcı deneyimi bir [Kullanıcı akışı](user-flow-over
 
 * **Kaydolma öznitelikleri**altında, öznitelik **görünen adını**seçin.  Başka öznitelikler de seçebilirsiniz.
 * **Uygulama talepleri**bölümünde, talep **görünen adını** ve **kullanıcının nesne kimliğini**seçin. Diğer talepler ' i de seçebilirsiniz.
-* Her Kullanıcı akışının **adını** oluşturduktan sonra kopyalayın. Kullanıcı akışını kaydettiğinizde, Kullanıcı akış adınızın `b2c_1_` öneki vardır.  Kullanıcı akış adının daha sonra olması gerekir.
+* Her Kullanıcı akışının **adını** oluşturduktan sonra kopyalayın. Kullanıcı akışını kaydettiğinizde, Kullanıcı akış adınızın öneki vardır `b2c_1_` .  Kullanıcı akış adının daha sonra olması gerekir.
 
 Kullanıcı akışlarınızı oluşturduktan sonra uygulamanızı oluşturmaya hazırsınız demektir.
 
@@ -66,15 +66,15 @@ Bu örnek, [GitHub 'Daki IOS AppAuth projesi](https://github.com/openid/AppAuth-
 
 Yetkilendirme uç noktası ve belirteç uç noktası URI 'Lerini belirterek Azure AD B2C iletişim yapılandırabilirsiniz.  Bu URI 'Leri oluşturmak için aşağıdaki bilgilere ihtiyacınız vardır:
 * Kiracı KIMLIĞI (örneğin, contoso.onmicrosoft.com)
-* Kullanıcı akış adı (örneğin, B2C\_1\_signupin)
+* Kullanıcı akış adı (örneğin, B2C \_ 1 \_ signupin)
 
-Belirteç uç noktası URI 'SI aşağıdaki URL 'deki kiracı\_kimliği ve ilke\_adı değiştirilerek oluşturulabilir:
+Belirteç uç noktası URI 'SI \_ AŞAĞıDAKI URL 'Deki Kiracı kimliği ve ilke adı değiştirilerek oluşturulabilir \_ :
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Yetkilendirme uç noktası URI 'SI aşağıdaki URL 'de kiracı\_kimliği ve ilke\_adı değiştirilerek oluşturulabilir:
+Yetkilendirme uç noktası URI 'SI \_ AŞAĞıDAKI URL 'de Kiracı kimliği ve ilke adı değiştirilerek oluşturulabilir \_ :
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";

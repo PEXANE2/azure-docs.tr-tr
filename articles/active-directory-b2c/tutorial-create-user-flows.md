@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/07/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 63486d6ee627d3b321978fb9f0268d15a8a86f34
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 2d9fb98da40602837eee57914036742994b4eb9c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488197"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385068"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı akışları oluşturma
 
@@ -59,7 +59,7 @@ Kaydolma ve oturum açma Kullanıcı akışı, hem kayıt hem de oturum açma de
 
     ![Azure portal ' de vurgulanan özelliklerle Kullanıcı akışı oluşturma sayfası](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-1. **Kullanıcı öznitelikleri ve talepler**için, kayıt sırasında kullanıcıdan toplamak ve göndermek istediğiniz talepleri ve öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge**, **görünen ad**ve **posta kodu**için öznitelikler ve talepler ' i seçin. **Tamam** düğmesine tıklayın.
+1. **Kullanıcı öznitelikleri ve talepler**için, kayıt sırasında kullanıcıdan toplamak ve göndermek istediğiniz talepleri ve öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge**, **görünen ad**ve **posta kodu**için öznitelikler ve talepler ' i seçin. **Tamam**'a tıklayın.
 
     ![Üç talep seçili olan öznitelikler ve talepler seçim sayfası](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
@@ -86,7 +86,7 @@ Kullanıcıların uygulamanızdaki profilini düzenlemesini etkinleştirmek isti
 1. **Önerilen** sekmede **profil düzenlemesi** Kullanıcı akışı ' nı seçin.
 1. Kullanıcı akışı için bir **ad** girin. Örneğin, *profileediting1*.
 1. **Kimlik sağlayıcıları**Için **yerel hesap oturumu açma**' yı seçin.
-1. **Kullanıcı öznitelikleri**için, müşterinin profilinde düzenleyebilmesini istediğiniz öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve **görünen ad** ve **iş unvanı**için her iki özniteliği ve talebi seçin. **Tamam** düğmesine tıklayın.
+1. **Kullanıcı öznitelikleri**için, müşterinin profilinde düzenleyebilmesini istediğiniz öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve **görünen ad** ve **iş unvanı**için her iki özniteliği ve talebi seçin. **Tamam**'a tıklayın.
 1. Kullanıcı akışını eklemek için **Oluştur** ' a tıklayın. *B2C_1* bir ön eki otomatik olarak ada eklenir.
 
 ### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
@@ -105,7 +105,7 @@ Uygulamanızın kullanıcılarının parolasını sıfırlamasına olanak tanım
 1. Kullanıcı akışı için bir **ad** girin. Örneğin, *passwordreset1*.
 1. **Kimlik sağlayıcıları**için **e-posta adresini kullanarak parolayı sıfırlamayı**etkinleştirin.
 1. Uygulama talepleri bölümünde **daha fazla göster** ' e tıklayın ve uygulamanıza geri gönderilen yetkilendirme belirteçlerinde döndürülmesini istediğiniz talepleri seçin. Örneğin, **Kullanıcının Nesne Kimliği**’ni seçin.
-1. **Tamam** düğmesine tıklayın.
+1. **Tamam**'a tıklayın.
 1. Kullanıcı akışını eklemek için **Oluştur** ' a tıklayın. *B2C_1* bir ön eki otomatik olarak ada eklenir.
 
 ### <a name="test-the-user-flow"></a>Kullanıcı akışını test etme

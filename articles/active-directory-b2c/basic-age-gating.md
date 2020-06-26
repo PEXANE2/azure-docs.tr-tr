@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189982"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386140"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C yaş ve ömrü etkinleştir
 
@@ -27,7 +27,7 @@ Azure Active Directory B2C (Azure AD B2C) yaş aşımları uygulamanızı kullan
 
 [Kullanıcı](user-flow-overview.md)akışınızda yaş ile kullanım süresini etkinleştirdikten sonra, kullanıcılar doğduklarında ve hangi ülke/bölge üzerinde yaşlandıklarında sorulur. Bir Kullanıcı daha önce bilgileri girmeyen bir oturum açarsa, bir sonraki oturum açışlarında bu uygulamayı girmesi gerekir. Kurallar, bir kullanıcının her oturum açışında uygulanır.
 
-Azure AD B2C, kullanıcının küçük olup olmadığını belirlemek için girdiği bilgileri kullanır. Daha sonra, **Agegroup** alanı hesabında güncellenir. Değer `null` `Undefined`, `Minor` `NotAdult`,, ve olabilir. `Adult`  **Agegroup** ve **consentProvidedForMinor** alanları, daha sonra **ligalagegroupclassification**değerini hesaplamak için kullanılır.
+Azure AD B2C, kullanıcının küçük olup olmadığını belirlemek için girdiği bilgileri kullanır. Daha sonra, **Agegroup** alanı hesabında güncellenir. Değer,,, `null` `Undefined` ve olabilir `Minor` `Adult` `NotAdult` .  **Agegroup** ve **consentProvidedForMinor** alanları, daha sonra **ligalagegroupclassification**değerini hesaplamak için kullanılır.
 
 Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değerlendirilmediği yaş ve küçük bir ana izin olması gereken yaş. Aşağıdaki tabloda, düşük ve küçük bir onay gerektiren bir izin tanımlamak için kullanılan yaş kuralları listelenmektedir.
 
@@ -71,7 +71,7 @@ Yaş aşımları iki yaş değeri içerir: birinin artık küçük olarak değer
 | TD | Çad | Hiçbiri | 21 |
 | TH | Tayland | Hiçbiri | 20 |
 | TW | Tayvan | Hiçbiri | 20 |
-| ABD | Amerika Birleşik Devletleri | 13 | 18 |
+| ABD | Birleşik Devletler | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Yaş aşımları seçenekleri
 
@@ -103,7 +103,7 @@ Kiracınız yaş kullanımını kullanacak şekilde ayarlandıktan sonra bu öze
 1. Yaş geçişi etkin olan bir Kullanıcı akışı oluşturun.
 2. Kullanıcı akışını oluşturduktan sonra menüdeki **Özellikler** ' i seçin.
 3. **Yaş** aşımları bölümünde, **etkin**' i seçin.
-4. Daha sonra, minors olarak tanımlayan kullanıcıları nasıl yönetmek istediğinize karar verirsiniz. **Kaydolma veya oturum açma**için veya `Allow minors to access your application` `Block minors from accessing your application`seçin. Sömürmeyi amaçlama 'yi engellemek seçilmişse veya `Send a JSON back to the application` `Show an error message`seçeneğini belirleyin.
+4. Daha sonra, minors olarak tanımlayan kullanıcıları nasıl yönetmek istediğinize karar verirsiniz. **Kaydolma veya oturum açma**için `Allow minors to access your application` veya seçin `Block minors from accessing your application` . Sömürmeyi amaçlama 'yi engellemek seçilmişse veya seçeneğini belirleyin `Send a JSON back to the application` `Show an error message` .
 
 
 

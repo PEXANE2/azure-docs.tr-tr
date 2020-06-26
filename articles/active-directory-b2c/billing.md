@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190016"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386071"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için faturalandırma modeli
 
@@ -93,13 +93,13 @@ Azure AD B2C kiracıya bağlı bir abonelik, ek Azure AD B2C kaynakları da dahi
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından kullanmak istediğiniz Azure aboneliğini içeren dizini seçin (Azure AD B2C kiracıyı içeren dizin*değil* ).
-1. **Kaynak oluştur**' u seçin, `Active Directory B2C` Market alanını **ara** alanına girin ve ardından **Azure Active Directory B2C**' yi seçin.
+1. **Kaynak oluştur**' u seçin, `Active Directory B2C` Market alanını **Ara** alanına girin ve ardından **Azure Active Directory B2C**' yi seçin.
 1. **Oluştur** ' u seçin
 1. **Mevcut bir Azure AD B2C kiracıyı Azure aboneliğime bağla**' yı seçin.
 1. Açılan listeden bir **Azure AD B2C kiracı** seçin. Yalnızca genel yöneticisi olduğunuz ve bir aboneliğe henüz bağlanmamış olan kiracılar gösterilir. **Azure AD B2C kaynak adı** alanı seçtiğiniz Azure AD B2C kiracının etki alanı adıyla doldurulur.
 1. Yönetici olduğunuz etkin bir Azure **aboneliğini** seçin.
 1. **Kaynak grubu**altında **Yeni oluştur**' u seçin ve **kaynak grubu konumunu**belirtin. Buradaki kaynak grubu ayarları Azure AD B2C kiracı konumunuzu, performansını veya faturalandırma durumunu etkilemez.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
     ![Azure portal Azure AD B2C kaynak oluşturma sayfası](./media/billing/portal-01-create-b2c-resource-page.png)
 
 Azure AD B2C kiracısı için bu adımları tamamladıktan sonra Azure aboneliğiniz, varsa Azure doğrudan veya Kurumsal Anlaşma ayrıntılarınıza uygun olarak faturalandırılır.

@@ -3,12 +3,12 @@ title: Data Protection Manager (DPM) ve Microsoft Azure Backup sunucusu (MABS) i
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 1deda1f0d2671e1316cf8f5c231207a5c32c10b4
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84632062"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374840"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı (önceki sürümler)
 
@@ -45,7 +45,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 > * Tüm iş yüklerini ve dosyaları DPM ile yedekleyin.
 > * Tüm iş yüklerini ve MABS dosyalarını yedekleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Çevrimdışı yedekleme iş akışını başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -55,10 +55,10 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
     | Sovereign bulut bölgesi | Azure yayımlama ayarları dosyası bağlantısı |
     | --- | --- |
-    | Birleşik Devletler | [Bağlantısının](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
-    | Çin | [Bağlantısının](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Birleşik Devletler | [Bağlantı](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Çin | [Bağlantı](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* Yayımlama ayarları dosyasını indirdiğiniz abonelikte Kaynak Yöneticisi dağıtım modeliyle bir Azure depolama hesabı oluşturuldu.
+* Yayımlama ayarları dosyasını indirdiğiniz abonelikte Kaynak Yöneticisi dağıtım modeliyle bir Azure depolama hesabı oluşturuldu. Depolama hesabında, hedef olarak kullanılacak yeni bir blob kapsayıcısı oluşturun.
 
   ![Kaynak Yöneticisi geliştirmeyle bir depolama hesabı oluşturma](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
@@ -69,7 +69,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>Sunucuyu çevrimdışı yedekleme işlemi için hazırlama
 
 >[!NOTE]
-> *AzureOfflineBackupCertGen. exe*gibi listelenen yardımcı PROGRAMLARı (Mars Aracısı yüklemenizde) bulamazsanız, AskAzureBackupTeam@microsoft.com bunlara erişim sağlamak için öğesine yazın.
+> *AzureOfflineBackupCertGen.exe*gibi listelenen yardımcı programları BULAMıYORSANıZ, Mars Aracısı yüklemenizde, AskAzureBackupTeam@microsoft.com bunlara erişim sağlamak için öğesine yazın.
 
 * Sunucuda yükseltilmiş bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
@@ -81,13 +81,13 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
     Bir uygulama zaten varsa, bu yürütülebilir dosya sertifikayı Kiracıdaki uygulamaya el ile yüklemenizi ister. Sertifikayı uygulamaya el ile yüklemek için [Bu bölümdeki](#manually-upload-an-offline-backup-certificate) adımları izleyin.
 
-* *AzureOfflineBackup. exe* aracı bir *offlineapplicationparams. xml* dosyası oluşturur. Bu dosyayı MABS veya DPM ile sunucuya kopyalayın.
+* *AzureOfflineBackupCertGen.exe* aracı bir *OfflineApplicationParams.xml* dosyası oluşturur. Bu dosyayı MABS veya DPM ile sunucuya kopyalayın.
 * DPM örneğine veya Azure Backup sunucusuna [en son Mars aracısını](https://aka.ms/azurebackup_agent) yükler.
 * Sunucuyu Azure 'a kaydedin.
 * Şu komutu çalıştırın:
 
     ```cmd
-    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
+    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname to be used for offline backup>
     ```
 
 * Önceki komut dosyayı oluşturur `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml` .
@@ -104,7 +104,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
 1. Uygulamayı seçin. Sol bölmedeki **Yönet** ' ın altında **Sertifikalar & gizlilikler**' a gidin.
 1. Önceden var olan sertifikaları veya ortak anahtarları denetleyin. Hiçbiri yoksa, uygulamanın **genel bakış** sayfasında **Sil** düğmesini seçerek uygulamayı güvenle silebilirsiniz. Daha sonra, [sunucuyu çevrimdışı yedekleme işlemine hazırlamak](#prepare-the-server-for-the-offline-backup-process) için adımları yeniden deneyebilir ve aşağıdaki adımları atlayabilirsiniz. Aksi takdirde, çevrimdışı yedeklemeyi yapılandırmak istediğiniz DPM örneğinden veya Azure Backup sunucusundan bu adımları izlemeye devam edin.
-1. **Bilgisayar sertifika uygulaması**  >  **Kişisel** sekmesini Yönet ' i seçin. adı taşıyan sertifikayı bulun `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
+1. **Başlat** – **Çalıştır**' dan *Certlm. msc*yazın. **Sertifikalar-Yerel bilgisayar** penceresinde **Sertifikalar – Yerel bilgisayar**  >  **Kişisel** sekmesini seçin. ada sahip sertifikayı arayın `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 1. Sertifikayı seçin, **Tüm görevler**' e sağ tıklayın ve ardından özel anahtar olmadan. cer biçiminde **dışarı aktar**' ı seçin.
 1. Azure portal Azure çevrimdışı yedekleme uygulamasına gidin.
 1. Sertifikaları **Yönet**  >  **& gizlilikler**  >  **sertifikayı yükle**' yi seçin. Önceki adımda dışarıya aktarılmış sertifikayı karşıya yükleyin.

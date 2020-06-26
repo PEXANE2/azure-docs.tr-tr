@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 454412bc20fef1a10a51e027b52b6d54df52e6c0
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764613"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386292"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -71,6 +71,13 @@ Bağlayıcıyla birlikte yüklenen performans Izleme sayaçları vardır. Bunlar
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Azure AD Uygulama Ara Sunucusu bağlayıcısının kaynakla aynı alt ağda olması gerekir mi?
 
 Bağlayıcının aynı alt ağda olması gerekmez. Ancak, kaynak için ad çözümlemesi (DNS, ana bilgisayar dosyası) ve gerekli ağ bağlantısı (kaynağa yönlendirme, kaynakta açık bağlantı noktaları, vb.) gerekir. Öneriler için [Azure Active Directory uygulama ara sunucusu kullanırken ağ topolojisi konuları](application-proxy-network-topology.md)bölümüne bakın.
+
+### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>Windows Server 'ın hangi sürümlerini üzerine bir bağlayıcı yükleyebilirim?
+Uygulama proxy 'Si Windows Server 2012 R2 veya üstünü gerektirir. Windows Server 2019 için HTTP2 üzerinde şu anda bir sınırlama vardır. Bağlayıcıyı Windows Server 2019 ' de başarılı bir şekilde kullanabilmek için aşağıdaki kayıt defteri anahtarını eklemeniz ve sunucuyu yeniden başlatmanız gerekir:
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
+
 
 ## <a name="application-configuration"></a>Uygulama yapılandırması
 

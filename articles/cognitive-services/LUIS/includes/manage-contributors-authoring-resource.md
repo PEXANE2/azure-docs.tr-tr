@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,18 +10,18 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 192d3d1a7bd792779b068a9c0c7ac34c7bee1c80
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cbb79c6c7467306bbc202d317684a5c62835d53c
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80117070"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374890"
 ---
 Uygulamalarınızın başka kişiler tarafından yazılması gerekiyorsa, ilgili e-posta adreslerini Azure portal yazma kaynağına eklemeniz gerekir.
 
-**Azure aboneliğinizin sahibi veya yöneticisiyseniz**, kaynağa katkıda bulunan ekleyebilirsiniz.
+Azure aboneliğinizin sahibi veya yöneticisiyseniz, kaynağa katkıda bulunan ekleyebilirsiniz.
 
-**Azure aboneliğinizin sahibi veya yöneticisi değilseniz**, Azure hesabınızın izinleri olması `Microsoft.Authorization/roleAssignments/write` gerekir.
+Azure aboneliğinizin sahibi veya yöneticisi değilseniz, Azure hesabınızın izinleri olması gerekir `Microsoft.Authorization/roleAssignments/write` .
 
 Bu rol atamasıyla ilgili sorun yaşıyorsanız şunları gözden geçirin:
 

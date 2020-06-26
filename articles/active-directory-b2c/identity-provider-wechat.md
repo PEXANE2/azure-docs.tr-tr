@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c53210939358255b20d0e976df9c4bff88580a80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 462e33c836d8ca0a904e8f7b2e833dc7103311fc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184446"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387907"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir WeChat hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -24,14 +24,14 @@ ms.locfileid: "78184446"
 
 ## <a name="create-a-wechat-application"></a>WeChat uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) içinde bir kimlik sağlayıcısı olarak WeChat hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir WeChat hesabınız yoksa bilgi edinebilirsiniz [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html).
+Azure Active Directory B2C (Azure AD B2C) içinde bir kimlik sağlayıcısı olarak WeChat hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir WeChat hesabınız yoksa bilgi edinebilirsiniz [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
 
 ### <a name="register-a-wechat-application"></a>WeChat uygulamasını kaydetme
 
-1. [https://open.weixin.qq.com/](https://open.weixin.qq.com/) Wechat kimlik bilgilerinizle oturum açın.
+1. [https://open.weixin.qq.com/](https://open.weixin.qq.com/)WeChat kimlik bilgilerinizle oturum açın.
 1. **管理中心**(Yönetim Merkezi) öğesini seçin.
 1. Yeni bir uygulamayı kaydetmek için adımları izleyin.
-1. 授权回调域`https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` ( **授权回调域** geri arama URL) girin. Örneğin, kiracı adınız contoso ise, URL 'YI olarak ayarlayın `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`**授权回调域**(geri arama URL) girin. Örneğin, kiracı adınız contoso ise, URL 'YI olarak ayarlayın `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. **Uygulama kimliği** ve **uygulama anahtarı**' nı kopyalayın. Kimlik sağlayıcısını kiracınıza eklemek için bunlara ihtiyacınız olacaktır.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>WeChat 'i kiracınızda kimlik sağlayıcısı olarak yapılandırma
