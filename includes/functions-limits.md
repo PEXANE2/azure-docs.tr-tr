@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 40d171101c5d99cd33c90ee8751092a3ceebf12e
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 37a61e270f95ffdc420536046e0ce1eda1e489b4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906741"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391509"
 ---
 | Kaynak |[Tüketim planı](../articles/azure-functions/functions-scale.md#consumption-plan)|[Premium planı](../articles/azure-functions/functions-scale.md#premium-plan)|[Adanmış plan](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -23,7 +23,7 @@ ms.locfileid: "84906741"
 | Maksimum bellek (örnek başına GB) | 1,5 | 3,5-14 | 1,75-14 | 3,5-14 | Herhangi bir düğüm desteklenir |
 | Plan başına işlev uygulamaları |100 |100 |sınırsız<sup>4</sup> | unbounded | unbounded |
 | [App Service planları](../articles/app-service/overview-hosting-plans.md) | [bölge](https://azure.microsoft.com/global-infrastructure/regions/) başına 100 |kaynak grubu başına 100 |kaynak grubu başına 100 | - | - |
-| Depolama<sup>5</sup> |1 GB |250 GB |50-1000 GB | 1 TB | yok |
+| Depolama<sup>5</sup> |5 TB |250 GB |50-1000 GB | 1 TB | yok |
 | Uygulama başına özel etki alanları</a> |500<sup>6</sup> |500 |500 | 500 | yok |
 | Özel etki alanı [SSL desteği](../articles/app-service/configure-ssl-bindings.md) |sınırsız SNI SSL bağlantısı dahildir | sınırsız SNI SSL ve 1 IP SSL bağlantı dahildir |sınırsız SNI SSL ve 1 IP SSL bağlantı dahildir | sınırsız SNI SSL ve 1 IP SSL bağlantı dahildir | yok |
 

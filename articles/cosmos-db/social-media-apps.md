@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: b121d7f5f1ad626f80a03ebe6cd47a932c209672
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: df48be038635799c08be409f7f1600e324cd8380
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116442"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392174"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB ile sosyal olarak çalışmaya devam edin
 
@@ -228,7 +228,7 @@ Bir sosyal deneyim için bölümleme stratejinizi sorgulama ve yazma yöntemiyle
 
 Cosmos DB, tüm bölümlerinizde bulunan sorguları ( [toplamalar](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)dahil) saydam olarak çalıştıracak, bu nedenle verileriniz büyüdükçe herhangi bir mantık eklemeniz gerekmez.
 
-Zamanla, son olarak trafikte ve kaynak tüketiminize ( [Rus](request-units.md)cinsinden ölçülen veya istek birimlerinde) büyütireceksiniz. Kullanıcı tabanınız büyüdükçe daha sık okuyacaksınız ve yazılacak. Kullanıcı tabanı daha fazla içerik oluşturmaya ve okumaya başlayacaktır. Bu nedenle, **aktarım hızını ölçeklendirmenin** önem taşır. Ru 'nizi kolayca artırabilirsiniz. Azure portal veya [API aracılığıyla komut vererek](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)bunu birkaç tıklamayla yapabilirsiniz.
+Zamanla, son olarak trafikte ve kaynak tüketiminize ( [Rus](request-units.md)cinsinden ölçülen veya istek birimlerinde) büyütireceksiniz. Kullanıcı tabanınız büyüdükçe daha sık okuyacaksınız ve yazılacak. Kullanıcı tabanı daha fazla içerik oluşturmaya ve okumaya başlayacaktır. Bu nedenle, **aktarım hızını ölçeklendirmenin** önem taşır. Ru 'nizi kolayca artırabilirsiniz. Azure portal veya [API aracılığıyla komut vererek](/rest/api/cosmos-db/replace-an-offer)bunu birkaç tıklamayla yapabilirsiniz.
 
 :::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Bölüm anahtarını ölçekleme ve tanımlama":::
 

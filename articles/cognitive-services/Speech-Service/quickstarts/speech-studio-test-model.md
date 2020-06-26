@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d696c0f6d1cdab8175af77c265435c48824f3e15
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 76fb933893b624e9b289ddf51d2a0373b51e58d1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346117"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391545"
 ---
 # <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>Hızlı başlangıç: konuşma Studio 'da bir ses dosyası kullanarak bir modeli test etme
 
 Bu hızlı başlangıçta, konuşmayı bir ses dosyasından metne dönüştürmek için konuşma Studio 'Yu kullanırsınız. Konuşma Studio, ilgili metin, insan etiketli yazılı betikler ile ses ve sağladığınız Söyleniş kılavuzunuzu kullanarak konuşma tanıma modellerini test etmenize, karşılaştırmanıza, iyileştirmenize ve dağıtmanıza olanak tanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Konuşma portalını kullanmadan önce, [bir Azure hesabı oluşturmak ve konuşma hizmetine abone olmak için bu yönergeleri izleyin](../how-to-custom-speech.md#set-up-your-azure-account). Bu Birleşik abonelik, konuşmadan metne, metinden konuşmaya, konuşma çevirisine ve Özel Konuşma Tanıma portalına erişmenizi sağlar.
 

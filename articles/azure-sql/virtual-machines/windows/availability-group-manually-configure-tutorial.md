@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9845780eaeaa42dc38f97344f86b7e9af3d37180
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 574e2e1647ecf33fb05600407163c96247b6ce41
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669397"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391052"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Öğretici: Azure sanal makinelerinde el ile SQL Server kullanılabilirlik grubu yapılandırma
 
@@ -39,7 +39,7 @@ Diyagramda, öğreticide ne derledikleriniz gösterilmektedir.
 
 Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gereken önkoşullar listelenmektedir:
 
-|  |Gereksinim |Description |
+|  |Gereksinim |Açıklama |
 |----- |----- |----- |
 |![Square](./media/availability-group-manually-configure-tutorial/square.png) | İki SQL Server örneği | -Bir Azure kullanılabilirlik kümesinde <br/> -Tek bir etki alanında <br/> -Yük Devretme Kümelemesi özelliği yüklü |
 |![Square](./media/availability-group-manually-configure-tutorial/square.png)| Windows Server | Küme tanığı için dosya paylaşma |  
@@ -199,7 +199,7 @@ Sonra **AlwaysOn kullanılabilirlik grupları** özelliğini etkinleştirin. Her
 
     ![AlwaysOn Kullanılabilirlik Grupları etkinleştir](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
 
-4. **Apply** (Uygula) seçeneğini belirleyin. Açılır iletişim kutusunda **Tamam ' ı** seçin.
+4. **Uygula**’yı seçin. Açılır iletişim kutusunda **Tamam ' ı** seçin.
 
 5. SQL Server hizmetini yeniden başlatın.
 
@@ -360,7 +360,7 @@ Bu noktada, iki SQL Server örneği üzerinde çoğaltmaları olan bir kullanıl
 
 Azure sanal makineler 'de, bir SQL Server kullanılabilirlik grubu yük dengeleyici gerektirir. Yük dengeleyici, kullanılabilirlik grubu dinleyicilerinin ve Windows Server yük devretme kümesinin IP adreslerini barındırır. Bu bölüm Azure portal yük dengeleyicinin nasıl oluşturulacağını özetler.
 
-Yük dengeleyici n Azure bir Standart Load Balancer veya temel Load Balancer olabilir. Standart Load Balancer temel Load Balancer daha fazla özelliğe sahiptir. Kullanılabilirlik grubu için, bir kullanılabilirlik bölgesi (bir kullanılabilirlik kümesi yerine) kullanıyorsanız, Standart Load Balancer gereklidir. Yük dengeleyici SKU 'Ları arasındaki fark hakkındaki ayrıntılar için bkz. [Load Balancer SKU karşılaştırması](../../../load-balancer/skus.md).
+Azure 'daki bir yük dengeleyici Standart Load Balancer veya temel bir Load Balancer olabilir. Standart Load Balancer temel Load Balancer daha fazla özelliğe sahiptir. Kullanılabilirlik grubu için, bir kullanılabilirlik bölgesi (bir kullanılabilirlik kümesi yerine) kullanıyorsanız, Standart Load Balancer gereklidir. Yük dengeleyici SKU 'Ları arasındaki fark hakkındaki ayrıntılar için bkz. [Load Balancer SKU karşılaştırması](../../../load-balancer/skus.md).
 
 1. Azure portal, SQL sunucularınızın bulunduğu kaynak grubuna gidin ve **+ Ekle**' yi seçin.
 1. **Load Balancer**arayın. Microsoft tarafından yayınlanan yük dengeleyiciyi seçin.

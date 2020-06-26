@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 331b78737000a51b09d393160f07150f81058412
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261656"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390882"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Çıkış noktaları arası kaynak paylaşımını (CORS) yapılandırma
 
 Çıkış noktaları arası kaynak paylaşımı (CORS), bir etki alanı altında çalışan bir Web uygulamasının başka bir etki alanındaki kaynaklara erişmesine olanak tanıyan bir HTTP özelliğidir. Web tarayıcıları, bir Web sayfasının farklı bir etki alanındaki API 'Leri aramasını önleyen aynı kaynak ilkesi olarak bilinen bir güvenlik kısıtlaması uygular. Ancak CORS, kaynak etki alanının başka bir etki alanındaki API 'Leri çağırmasını sağlamak için güvenli bir yol sağlar. Azure Cosmos DB 'deki çekirdek (SQL) API 'SI artık "Allowedorigin" üst bilgisini kullanarak çıkış noktaları arası kaynak paylaşımını (CORS) desteklemektedir. Azure Cosmos hesabınız için CORS desteğini etkinleştirdikten sonra, belirttiğiniz kurallara göre izin verilip verilmeyeceğini belirlemede yalnızca kimliği doğrulanmış istekler değerlendirilir.
 
-Çıkış noktaları arası kaynak paylaşımı (CORS) ayarını Azure portal veya bir Azure Resource Manager şablonundan yapılandırabilirsiniz. Çekirdek (SQL) API kullanan Cosmos hesaplarında, Azure Cosmos DB hem Node.js hem de tarayıcı tabanlı ortamlarda çalışacak bir JavaScript kitaplığını destekler. Bu kitaplık artık ağ geçidi modu kullanırken CORS desteğinin avantajlarından yararlanabilir. Bu özelliği kullanmak için hiçbir istemci tarafı yapılandırması gerekmez. CORS desteğiyle, bir tarayıcıdan alınan kaynaklar [JavaScript kitaplığı](https://www.npmjs.com/package/@azure/cosmos) aracılığıyla Azure Cosmos DB doğrudan erişebilir veya basit işlemler için doğrudan [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) .
+Çıkış noktaları arası kaynak paylaşımı (CORS) ayarını Azure portal veya bir Azure Resource Manager şablonundan yapılandırabilirsiniz. Çekirdek (SQL) API kullanan Cosmos hesaplarında, Azure Cosmos DB hem Node.js hem de tarayıcı tabanlı ortamlarda çalışacak bir JavaScript kitaplığını destekler. Bu kitaplık artık ağ geçidi modu kullanırken CORS desteğinin avantajlarından yararlanabilir. Bu özelliği kullanmak için hiçbir istemci tarafı yapılandırması gerekmez. CORS desteğiyle, bir tarayıcıdan alınan kaynaklar [JavaScript kitaplığı](https://www.npmjs.com/package/@azure/cosmos) aracılığıyla Azure Cosmos DB doğrudan erişebilir veya basit işlemler için doğrudan [REST API](/rest/api/cosmos-db/) .
 
 > [!NOTE]
 > CORS desteği yalnızca Azure Cosmos DB Core (SQL) API 'SI için geçerlidir ve desteklenir. Cassandra, Gremlin veya MongoDB için Azure Cosmos DB API 'Leri için geçerli değildir, çünkü bu protokoller istemci-sunucu iletişimi için HTTP kullanmaz.

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890820"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390474"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma
 [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanarak doğrudan sanal ağınızdan, genel İnternet üzerinden geçmeden [özel bir bağlantı](../private-link/private-link-overview.md) üzerinden konulara ve etki alanlarına olay girişi sağlayabilirsiniz. Özel uç nokta, konu veya etki alanınız için VNet adres alanından bir IP adresi kullanır. Daha fazla kavramsal bilgi için bkz. [ağ güvenliği](network-security.md).
@@ -73,9 +73,9 @@ Dört sağlama durumu vardır:
 
 | Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
-| Reddet | Reddedilen | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
+| Reddet | Reddedildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
  
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını yönetme
@@ -140,8 +140,8 @@ az network private-endpoint create \
 
 Örnekte kullanılan parametrelerin açıklamaları için, [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)için belgeler bölümüne bakın. Bu örnekte birkaç noktaya göz önünde bulunmaktadır: 
 
-- İçin `private-connection-resource-id`, **konunun** veya **etki alanının**kaynak kimliğini belirtin. Yukarıdaki örnek, türü: konusunu kullanır.
-- için `group-ids`, veya `topic` `domain`belirtin. Yukarıdaki örnekte `topic` kullanılır. 
+- İçin `private-connection-resource-id` , **konunun** veya **etki alanının**kaynak kimliğini belirtin. Yukarıdaki örnek, türü: konusunu kullanır.
+- için `group-ids` , `topic` veya belirtin `domain` . Yukarıdaki örnekte `topic` kullanılır. 
 
 Özel bir uç noktayı silmek için, aşağıdaki örnekte gösterildiği gibi [az Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) metodunu kullanın:
 
@@ -184,8 +184,8 @@ az network private-endpoint create \
 
 Örnekte kullanılan parametrelerin açıklamaları için, [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)için belgeler bölümüne bakın. Bu örnekte birkaç noktaya göz önünde bulunmaktadır: 
 
-- İçin `private-connection-resource-id`, **konunun** veya **etki alanının**kaynak kimliğini belirtin. Yukarıdaki örnek, türü: konusunu kullanır.
-- için `group-ids`, veya `topic` `domain`belirtin. Yukarıdaki örnekte `topic` kullanılır. 
+- İçin `private-connection-resource-id` , **konunun** veya **etki alanının**kaynak kimliğini belirtin. Yukarıdaki örnek, türü: konusunu kullanır.
+- için `group-ids` , `topic` veya belirtin `domain` . Yukarıdaki örnekte `topic` kullanılır. 
 
 Özel bir uç noktayı silmek için, aşağıdaki örnekte gösterildiği gibi [az Network Private-Endpoint Delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) metodunu kullanın:
 
@@ -484,4 +484,5 @@ Invoke-RestMethod -Method 'Get'
 Bağlantıyı, API aracılığıyla reddedildikten sonra da onaylayabilirsiniz. Azure portal kullanıyorsanız, reddedilen bir uç noktayı onaylayamazsınız. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-IP Güvenlik Duvarı ayarlarının nasıl yapılandırılacağı hakkında bilgi edinmek için bkz. [Azure Event Grid konular veya etki alanları IÇIN IP güvenlik duvarını yapılandırma](configure-firewall.md).
+* IP Güvenlik Duvarı ayarlarının nasıl yapılandırılacağı hakkında bilgi edinmek için bkz. [Azure Event Grid konular veya etki alanları IÇIN IP güvenlik duvarını yapılandırma](configure-firewall.md).
+* Ağ bağlantısı sorunlarını gidermek için bkz. [ağ bağlantısı sorunlarını giderme](troubleshoot-network-connectivity.md)

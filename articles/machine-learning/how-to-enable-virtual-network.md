@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: d613caa5c2eea4f2add129c640ab322168c536f6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 084c1c604ac780b133f89eaeeb3fa5e780c2d565
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362501"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392599"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -285,6 +285,11 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak i
 >
 > Varsayılan olmayan depolama hesapları için, `storage_account` [ `Workspace.create()` işlevindeki](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) parametresi Azure kaynak kimliği 'ne göre özel bir depolama hesabı belirtmenizi sağlar.
 
+## <a name="machine-learning-studio"></a>Machine Learning Studio
+
+Bir sanal ağ içindeki bir kaynaktan (örneğin, bir işlem örneği veya sanal makine) erişmek için, sanal ağdan Studio 'ya giden trafiğe izin vermeniz gerekir. 
+
+Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapı. Firstpartisi__'ın __hizmet etiketi__ hedefine bir kural ekleyin.
 
 <a id="aksvnet"></a>
 

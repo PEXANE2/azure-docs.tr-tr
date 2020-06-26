@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330830"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388927"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>İzlenecek yol: Kullanıcı girişini doğrulamak için Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin
 
@@ -55,7 +55,7 @@ REST API verileri doğruladıktan sonra, aşağıdaki JSON verileriyle birlikte 
 }
 ```
 
-Doğrulama başarısız olursa, REST API `userMessage` JSON ÖĞESIYLE bir http 409 (Conflict) döndürmelidir. IEF, REST API döndürdüğü `userMessage` talebi bekliyor. Doğrulama başarısız olursa, bu talep kullanıcıya bir dize olarak sunulacaktır.
+Doğrulama başarısız olursa, REST API JSON öğesiyle bir HTTP 409 (Conflict) döndürmelidir `userMessage` . IEF, `userMessage` REST API döndürdüğü talebi bekliyor. Doğrulama başarısız olursa, bu talep kullanıcıya bir dize olarak sunulacaktır.
 
 ```json
 {
@@ -71,7 +71,7 @@ REST API uç noktasının kurulumu Bu makalenin kapsamı dışındadır. Bir [Az
 
 Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak depolanmasını sağlar. Talepleri [talep şeması](claimsschema.md) bölümünde bildirebilirsiniz. 
 
-1. İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
 1. Aşağıdaki talepleri **Claimsschema** öğesine ekleyin.  
@@ -95,7 +95,7 @@ Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak 
 
 ## <a name="configure-the-restful-api-technical-profile"></a>Restsize API teknik profilini yapılandırma 
 
-Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi resteğiniz hizmetinize yönelik arabirim desteği sağlar. Azure AD B2C, verileri bir `InputClaims` koleksiyondaki yeniden bir hizmete gönderir ve verileri bir `OutputClaims` koleksiyonda geri alır. **Claimsproviders** öğesini bulun ve yeni bir talep sağlayıcısını aşağıdaki şekilde ekleyin:
+Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi resteğiniz hizmetinize yönelik arabirim desteği sağlar. Azure AD B2C, verileri bir koleksiyondaki yeniden bir hizmete gönderir `InputClaims` ve verileri bir koleksiyonda geri alır `OutputClaims` . **Claimsproviders** öğesini bulun ve yeni bir talep sağlayıcısını aşağıdaki şekilde ekleyin:
 
 ```xml
 <ClaimsProvider>
@@ -128,15 +128,15 @@ Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi rest
 </ClaimsProvider>
 ```
 
-Bu örnekte `userLanguage` , JSON yükünün içinde olduğu gibi `lang` Rest hizmetine gönderilir. `userLanguage` Talebin değeri geçerli kullanıcı dili kimliğini içerir. Daha fazla bilgi için bkz. [talep çözümleyici](claim-resolver-overview.md).
+Bu örnekte, `userLanguage` JSON yükünün içinde olduğu gıbı Rest hizmetine gönderilir `lang` . `userLanguage`Talebin değeri geçerli kullanıcı DILI kimliğini içerir. Daha fazla bilgi için bkz. [talep çözümleyici](claim-resolver-overview.md).
 
-Yukarıdaki `AuthenticationType` açıklamalar ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtin. Üretim için yeniden yapılan API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için bkz. [güvenli restsize API](secure-rest-api.md).
+Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtin. Üretim için yeniden yapılan API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için bkz. [güvenli restsize API](secure-rest-api.md).
 
 ## <a name="validate-the-user-input"></a>Kullanıcı girişini doğrulama
 
-Kaydolma sırasında kullanıcının bağlılık programı numarasını almak için, kullanıcının bu verileri ekranda girmesine izin vermelisiniz. **Loyaltyıd** çıkış talebini, mevcut kaydolma teknik profili bölümünün `OutputClaims` öğesine ekleyerek kaydolma sayfasına ekleyin. Taleplerin ekranda sunulduğu sırayı denetlemek için tüm çıkış talepleri listesini belirtin.  
+Kaydolma sırasında kullanıcının bağlılık programı numarasını almak için, kullanıcının bu verileri ekranda girmesine izin vermelisiniz. **Loyaltyıd** çıkış talebini, mevcut kaydolma teknik profili bölümünün öğesine ekleyerek kaydolma sayfasına ekleyin `OutputClaims` . Taleplerin ekranda sunulduğu sırayı denetlemek için tüm çıkış talepleri listesini belirtin.  
 
-Doğrulama teknik profili başvurusunu, `REST-ValidateProfile`öğesini çağıran kaydolma teknik profiline ekleyin. Yeni doğrulama teknik profili, temel ilkede tanımlanan `<ValidationTechnicalProfiles>` koleksiyonun en üstüne eklenecektir. Bu davranış, yalnızca başarılı doğrulamadan sonra, Azure AD B2C dizinde hesap oluşturmak için ' ın üzerinde çalışacağı anlamına gelir.   
+Doğrulama teknik profili başvurusunu, öğesini çağıran kaydolma teknik profiline ekleyin `REST-ValidateProfile` . Yeni doğrulama teknik profili, `<ValidationTechnicalProfiles>` temel ilkede tanımlanan koleksiyonun en üstüne eklenecektir. Bu davranış, yalnızca başarılı doğrulamadan sonra, Azure AD B2C dizinde hesap oluşturmak için ' ın üzerinde çalışacağı anlamına gelir.   
 
 1. **Claimsproviders** öğesini bulun. Yeni bir talep sağlayıcısını aşağıdaki şekilde ekleyin:
 
@@ -192,7 +192,7 @@ Doğrulama teknik profili başvurusunu, `REST-ValidateProfile`öğesini çağır
 
 ## <a name="include-a-claim-in-the-token"></a>Belirtece bir talep ekleyin 
 
-Promosyon kodu talebini bağlı olan taraf uygulamasına geri döndürmek için, <em> `SocialAndLocalAccounts/` </em> dosyaya bir çıkış talebi ekleyin. Çıkış talebi, başarılı bir Kullanıcı yolculuğuna sonra, talebin belirtece eklenmesine izin verir ve uygulamaya gönderilir. Bir çıkış talebi `promoCode` olarak eklemek için bağlı olan taraf bölümündeki teknik profil öğesini değiştirin.
+Promosyon kodu talebini bağlı olan taraf uygulamasına geri döndürmek için, dosyaya bir çıkış talebi ekleyin <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . Çıkış talebi, başarılı bir Kullanıcı yolculuğuna sonra, talebin belirtece eklenmesine izin verir ve uygulamaya gönderilir. Bir çıkış talebi olarak eklemek için bağlı olan taraf bölümündeki teknik profil öğesini değiştirin `promoCode` .
  
 ```xml
 <RelyingParty>
@@ -221,7 +221,7 @@ Promosyon kodu talebini bağlı olan taraf uygulamasına geri döndürmek için,
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Kimlik deneyimi çerçevesini**seçin.
-1. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz ilke dosyalarını karşıya yükleyin: *TrustFrameworkExtensions. xml*ve *signuporsign. xml*. 
+1. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz ilke dosyalarını karşıya yükleyin: *TrustFrameworkExtensions.xml*ve *SignUpOrSignin.xml*. 
 1. Karşıya yüklediğiniz kaydolma veya oturum açma ilkesini seçin ve **Şimdi Çalıştır** düğmesine tıklayın.
 1. Bir e-posta adresi kullanarak kaydolabilirsiniz.
 1. **Şimdi kaydolun** bağlantısına tıklayın.

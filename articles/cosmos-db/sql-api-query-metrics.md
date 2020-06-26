@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 5183591133b6892f6f57db45cf1936851784a45a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262064"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392140"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB ile sorgu performansını ayarlama
 
@@ -38,7 +38,7 @@ Azure Cosmos DB bir sorgu verdiğinizde, SDK şu mantıksal adımları gerçekle
 
 SDK 'lar sorgu yürütme için çeşitli seçenekler sağlar. Örneğin, .NET ' te bu seçenekler `FeedOptions` sınıfında mevcuttur. Aşağıdaki tabloda bu seçenekler ve sorgu yürütme süresini nasıl etkilediği açıklanmaktadır. 
 
-| Seçenek | Description |
+| Seçenek | Açıklama |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | Birden fazla bölüm genelinde yürütülmesi gereken herhangi bir sorgu için true olarak ayarlanmalıdır. Bu, geliştirme sırasında bilinçli performans avantajları yapmanız için açık bir bayrak sağlar. |
 | `EnableScanInQuery` | Dizin oluşturmayı kabul ettiyseniz, ancak yine de sorguyu bir tarama yoluyla çalıştırmak istiyorsanız, true olarak ayarlanmalıdır. Yalnızca istenen filtre yolu için dizin oluşturma devre dışıysa geçerlidir. | 
@@ -124,14 +124,14 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 Sorgudan döndürülen anahtar yanıt üstbilgileri şunları içerir:
 
-| Seçenek | Description |
+| Seçenek | Açıklama |
 | ------ | ----------- |
 | `x-ms-item-count` | Yanıtta döndürülen öğe sayısı. Bu, sağlanan `x-ms-max-item-count` en yüksek yanıt yükü boyutu, sağlanan aktarım hızı ve sorgu yürütme süresi içinde olabilecek öğelerin sayısına bağlıdır. |  
 | `x-ms-continuation:` | Ek sonuçlar varsa sorgunun yürütülmesini sürdürecek devamlılık belirteci. | 
 | `x-ms-documentdb-query-metrics` | Yürütmenin sorgu istatistikleri. Bu, sorgu yürütmenin çeşitli aşamalarında harcanan sürenin istatistiklerini içeren, ayrılmış bir dizedir. `x-ms-documentdb-populatequerymetrics`Olarak ayarlandıysa döndürüldü `True` . | 
 | `x-ms-request-charge` | Sorgu tarafından tüketilen [istek birimi](request-units.md) sayısı. | 
 
-REST API istek üstbilgileri ve seçenekleriyle ilgili ayrıntılar için, bkz. [REST API kullanarak kaynakları sorgulama](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
+REST API istek üstbilgileri ve seçenekleriyle ilgili ayrıntılar için, bkz. [REST API kullanarak kaynakları sorgulama](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Sorgu performansı için en iyi uygulamalar
 Sorgu performansını Azure Cosmos DB etkileyen en yaygın etmenler aşağıda verilmiştir. Bu makaledeki konuların her birini daha ayrıntılı bir şekilde inceleyeceğiz.
@@ -237,7 +237,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Ölçüm | Birim | Description | 
+| Ölçüm | Birim | Açıklama | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisaniye | Sorgu yürütme süresi | 
 | `queryCompileTimeInMs` | milisaniye | Sorgu derleme süresi  | 
@@ -259,7 +259,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 İşte bazı örnek sorgular ve sorgu yürütmeden döndürülen bazı ölçümleri yorumlama: 
 
-| Sorgu | Örnek ölçüm | Description | 
+| Sorgu | Örnek ölçüm | Açıklama | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Alınan belge sayısı, TOP yan tümcesiyle eşleşecek şekilde 100 + 1 ' dir. Sorgu süresi genellikle ve ' de `WriteOutputTime` `DocumentLoadTime` bir tarama olduğundan harcanacaktır. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount artık daha yüksek (TOP yan tümcesiyle eşleşecek 500 + 1). | 

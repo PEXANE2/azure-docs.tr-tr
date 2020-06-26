@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: ddbe49f34bbdbf0f9c461a25f23d6f7cbd8600d9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: e52307c92d9371af6479f64841c6f269ed10e4b4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362960"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390831"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Azure dijital TWINS ile istemci uygulamanın kimliğini doğrulama
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 [Bir Azure dijital TWINS örneği](how-to-set-up-instance.md)oluşturduktan sonra, örnekle etkileşim kurmak için kullanacağınız bir istemci uygulaması oluşturabilirsiniz. Bir başlatıcı istemci projesi ayarladıktan sonra bu makalede, istemci uygulamasının Azure dijital TWINS örneğiyle nasıl doğru şekilde doğrulanabilmesi gösterilmektedir.
 

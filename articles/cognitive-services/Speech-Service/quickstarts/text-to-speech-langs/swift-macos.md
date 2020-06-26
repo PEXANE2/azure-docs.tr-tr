@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: ea0f61ddd2c60d2806af0f6dcf97c7d2388335d0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1ed68b2ba00a89ff7b20b8ed61457dfb268917e4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975882"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391273"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak macOS 'ta Swift 'ta konuşmayı Sentezleştirme
 
@@ -33,14 +33,14 @@ Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 MacOS için bilişsel hizmetler konuşma SDK 'Sı bir çerçeve paketi olarak dağıtılır.
-Xcode projelerinde bir [CocoaPod](https://cocoapods.org/)olarak veya ile indirilen https://aka.ms/csspeech/macosbinary ve el ile bağlanmış bir şekilde kullanılabilir. Bu kılavuzda bir CocoaPod kullanılır.
+Xcode projelerinde bir [CocoaPod](https://cocoapods.org/)olarak veya https://aka.ms/csspeech/macosbinary ile indirilen ve el ile bağlanmış bir şekilde kullanılabilir. Bu kılavuzda bir CocoaPod kullanılır.
 
 > [!NOTE] 
 > Bu öğretici, 1.7.0 ' den önceki SDK sürümleriyle çalışmaz.
 
 ## <a name="create-an-xcode-project"></a>Xcode projesi oluşturma
 
-Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' ye tıklayarak yeni bir proje başlatın.
+Xcode ' u başlatın ve **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayarak yeni bir proje başlatın.
 Şablon Seçimi iletişim kutusunda, "Cocoa uygulaması" şablonunu seçin.
 
 Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
@@ -52,35 +52,35 @@ Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
     1. Görsel taslakları kullanmak ve belge tabanlı bir uygulama oluşturmak için onay kutularını devre dışı bırakın. Örnek uygulama için basit kullanıcı arabirimi programlı olarak oluşturulacaktır.
     1. Testler ve temel veriler için tüm onay kutularını devre dışı bırakın.
 1. Proje dizini seçin
-    1. Projeyi içine koymak için bir dizin seçin. Bu, seçili `helloworld` dizinde Xcode projesi için tüm dosyaları içeren bir dizin oluşturur.
+    1. Projeyi içine koymak için bir dizin seçin. Bu, `helloworld` Seçili dizinde Xcode projesi için tüm dosyaları içeren bir dizin oluşturur.
     1. Bu örnek için Git deposu oluşturmayı devre dışı bırakın.
 1. Xcode projesini kapatın. Daha sonra CocoaPods ayarladıktan sonra farklı bir örneğini kullanacaksınız.
 
 ## <a name="add-the-sample-code"></a>Örnek kod ekleme
 
-1. HelloWorld projesinin içindeki `helloworld` dizine yeni bir üst bilgi `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` dosyası yerleştirin ve aşağıdaki kodu buna yapıştırın:
+1. HelloWorld projesinin içindeki dizine yeni bir üst bilgi dosyası yerleştirin `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` `helloworld` ve aşağıdaki kodu buna yapıştırın:
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/macos/text-to-speech/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
-1. Hedef `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` *-C köprüleme üst* bilgi alanı ![üst bilgisi özelliklerindeki HelloWorld hedefine ait Swift proje ayarlarına köprü üstbilgisine göreli yolu ekleyin](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)
+1. Hedef `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` *-C köprüleme üst* bilgi alanı ![ üst bilgisi özelliklerindeki HelloWorld hedefine ait Swift proje ayarlarına köprü üstbilgisine göreli yolu ekleyin](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)
 1. Aşağıdaki şekilde otomatik oluşturulan `AppDelegate.swift` dosyasının içeriğini değiştirin:
 
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/macos/text-to-speech/helloworld/helloworld/AppDelegate.swift#code)]
-1. İçinde `AppDelegate.swift`, dizesini `YourSubscriptionKey` abonelik anahtarınızla değiştirin.
+1. İçinde `AppDelegate.swift` , dizesini `YourSubscriptionKey` abonelik anahtarınızla değiştirin.
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili bölge ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>SDK 'Yı bir CocoaPod olarak yükler
 
 1. [Yükleme yönergeleri](https://guides.cocoapods.org/using/getting-started.html)bölümünde açıklandığı gibi CocoaPod Dependency Manager 'ı yükleme.
-1. Örnek uygulamanızın dizinine gidin (`helloworld`). Bu dizine, adı `Podfile` ve aşağıdaki içeriğe sahip bir metin dosyası yerleştirin:
+1. Örnek uygulamanızın dizinine gidin ( `helloworld` ). `Podfile`Bu dizine, adı ve aşağıdaki içeriğe sahip bir metin dosyası yerleştirin:
 
    [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/macos/text-to-speech/helloworld/Podfile)]
-1. Terminaldeki `helloworld` dizine gidin ve komutunu `pod install`çalıştırın. Bu işlem, bağımlılık `helloworld.xcworkspace` olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki şekilde kullanılacaktır.
+1. `helloworld`Terminaldeki dizine gidin ve komutunu çalıştırın `pod install` . Bu işlem `helloworld.xcworkspace` , bağımlılık olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki şekilde kullanılacaktır.
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 
-1. `helloworld.xcworkspace` Çalışma alanını Xcode 'da açın.
-1. Hata ayıklama çıkışını görünür hale getirme **(** > **hata ayıklama alanını** > **etkinleştirme konsolu**).
-1. Menüden **ürün** > **Çalıştır** ' ı seçerek veya **oynat** düğmesine tıklayarak örnek kodu derleyin ve çalıştırın.
+1. `helloworld.xcworkspace`Çalışma alanını Xcode 'da açın.
+1. Hata ayıklama çıkışını görünür hale getirme **(**  >  **hata ayıklama alanını**  >  **etkinleştirme konsolu**).
+1. Menüden **ürün**  >  **Çalıştır** ' ı seçerek veya **oynat** düğmesine tıklayarak örnek kodu derleyin ve çalıştırın.
 1. Bazı metinleri girdikten ve uygulamadaki düğmeye tıkladıktan sonra, birleştirilmiş sesin çalındığını duymalısınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar

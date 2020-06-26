@@ -3,12 +3,12 @@ title: Azure Backup fiyatlandırması
 description: Azure Backup fiyatlandırmadan bütçeleme maliyetlerini nasıl tahmin edebileceğiniz hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: d88587cfdbb4f60d0da8641fc0362b8f763779ad
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84908209"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391120"
 ---
 # <a name="azure-backup-pricing"></a>Azure Backup fiyatlandırması
 
@@ -56,7 +56,7 @@ Azure Backup kullanarak Azure VM 'Leri veya şirket içi sunucuları yedekleme m
 
   - "Yıllık" yedeklemeleri ne kadar süreyle bekletmeniz beklensin mi? (yıl)
 
-  - "Anlık geri yükleme anlık görüntülerini" ne kadar beklediğinizi düşünüyorsunuz? (1-7 gün)
+  - "Anlık geri yükleme anlık görüntülerini" ne kadar beklediğinizi düşünüyorsunuz? (1-5 gün)
 
     - Bu seçenek, disklerde depolanan anlık görüntüleri kullanarak hızlı bir şekilde yedi güne kadar geri yükleme yapmanızı sağlar
 
@@ -66,7 +66,7 @@ Azure Backup kullanarak Azure VM 'Leri veya şirket içi sunucuları yedekleme m
 
 - **Isteğe bağlı** – yedek depolama artıklığı
 
-  - Bu, yedekleme verilerinizin gittiği depolama hesabının yedekliği olduğunu gösterir. En yüksek kullanılabilirlik için **GRS** kullanmanızı öneririz. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını güvence altına aldığı için, bu, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde bir yedeklemeye gerek gerektirmeyen geliştirme veya test ortamlarını yedekliyorsanız, artıklığı **LRS** olarak değiştirin. Yedeklemeleriniz için **bölgeler arası geri yüklemeyi** etkinleştirmek Istiyorsanız, **rampaları** seçin
+  - Bu, yedekleme verilerinizin gittiği depolama hesabının yedekliği olduğunu gösterir. En yüksek kullanılabilirlik için **GRS** kullanmanızı öneririz. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını güvence altına aldığı için, bu, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde bir yedeklemeye gerek gerektirmeyen geliştirme veya test ortamlarını yedekliyorsanız, artıklığı **LRS** olarak değiştirin. Yedeklemeleriniz için [çapraz bölge geri yükleme](backup-azure-arm-restore-vms.md#cross-region-restore) etkinleştirildiğinde maliyetleri anlamak istiyorsanız, sayfada **rampaları** seçin.
 
 - **Isteğe bağlı** – bölgesel fiyatlandırmayı değiştirin veya indirimli oranlar uygulayın
 
@@ -104,7 +104,7 @@ Azure VM 'lerde çalışan SQL Server 'lar Azure Backup kullanarak yedekleme mal
 
     - Ayrıca günlük/haftalık/aylık/yıllık tam yedeklemeler içeren bir ilke olmasını da tercih edebilirsiniz. Bu seçenek ilk seçenekten biraz daha fazla depolama alanı tüketir.
 
-  - "Günlük" yedeklemelerini ne kadar süreyle bekletmeniz beklenir? (gün) [1-35]
+  - "Günlük" yedeklemelerini ne kadar süreyle bekletmeniz beklenir? (gün) [7-35]
 
   - "Günlük" yedeklemelerini ne kadar süreyle bekletmeniz beklensin mi? (gün)
 
@@ -124,7 +124,29 @@ Azure VM 'lerde çalışan SQL Server 'lar Azure Backup kullanarak yedekleme mal
 
 ## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>Azure VM 'lerinde SAP HANA sunucularının yedeklenme maliyetlerini tahmin etme
 
-Azure VM 'lerinde SAP HANA sunucularının yedeklenme maliyetlerini tahmin etmek SQL Server 'lar için tahmin gibidir. SQL sıkıştırmadan ayrı olarak, önceki bölümde bahsedilen değişkenleri kullanabilirsiniz.
+Azure Backup kullanarak Azure VM 'lerinde çalışan SAP HANA sunucularının maliyetlerini tahmin etmek için aşağıdaki parametrelere ihtiyacınız olacaktır:
+
+- Yedeklemeye çalıştığınız SAP HANA veritabanlarının toplam boyutu. Bu, SAP HANA tarafından bildirilen her bir veritabanlarının tam yedekleme boyutunun toplamı olmalıdır.
+- Yukarıdaki boyuttaki SAP HANA sunucusu sayısı
+- Günlük yedeklerinin beklenen boyutu nedir?
+  - %, SAP HANA sunucusunda yedeklemekte olduğunuz SAP HANA veritabanlarının toplam boyutunun yüzdesi olarak ortalama günlük günlük boyutunu gösterir
+- Bu sunucularda günlük veri dalgalanması beklenen miktarı nedir?
+  - %, SAP HANA sunucusunda yedeklemekte olduğunuz SAP HANA veritabanlarının toplam boyutunun yüzdesi olarak ortalama günlük dalgalanma boyutunu gösterir
+  - Genellikle, veritabanlarının "yüksek" karmaşıklığı vardır
+  - **% Dalgalanmasını**biliyorsanız, **kendi% seçeneğinizi girin**
+- Yedekleme ilkesini seçin
+  - Yedekleme Türü
+    - Tercih ettiğiniz en etkili ilke **haftalık/aylık/yıllık** tam yedeklemeler için **günlük farklılıklar** . Azure Backup, tek tıklamayla de farklılıklar aracılığıyla geri yüklenebilir.
+    - Ayrıca **günlük/haftalık/aylık/yıllık** tam yedeklemeler içeren bir ilke olmasını da tercih edebilirsiniz. Bu seçenek ilk seçenekten biraz daha fazla depolama alanı tüketir.
+  - "Günlük" yedeklemelerini ne kadar süreyle bekletmeniz beklenir? (gün) [7-35]
+  - "Günlük" yedeklemelerini ne kadar süreyle bekletmeniz beklensin mi? (gün)
+  - "Haftalık" yedeklemeleri ne kadar süreyle bekletmeniz beklenir? (hafta cinsinden)
+  - "Aylık" yedeklemeleri ne kadar süreyle bekletmeniz beklenir? (ay)
+  - "Yıllık" yedeklemeleri ne kadar süreyle bekletmeniz beklensin mi? (yıl)
+- **Isteğe bağlı** – yedek depolama artıklığı
+  - Bu, yedekleme verilerinizin gittiği depolama hesabının yedekliği olduğunu gösterir. En yüksek kullanılabilirlik için **GRS** kullanmanızı öneririz. Yedekleme verilerinizin bir kopyasının farklı bir bölgede tutulmasını güvence altına aldığı için, bu, birden çok uyumluluk standardını karşılamanıza yardımcı olur. Kurumsal düzeyde bir yedeklemeye gerek gerektirmeyen geliştirme veya test ortamlarını yedekliyorsanız, artıklığı **LRS** olarak değiştirin.
+- **Isteğe bağlı** – bölgesel fiyatlandırmayı değiştirin veya indirimli oranlar uygulayın
+  - Farklı bir bölge veya indirimli ücretler için tahminlerinizi denetlemek isterseniz, **farklı bir bölge için tahminleri deneyin?** **seçeneğini belirleyin ve** tahminleri çalıştırmak istediğiniz ücretleri girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

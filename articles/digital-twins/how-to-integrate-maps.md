@@ -7,18 +7,15 @@ ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
 ms.reviewer: baanders
-ms.openlocfilehash: 50fade5179d5323a332d9b103f2fac17d402aa3f
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 8f3e670a4f2a49bcce48be1ba0452a36cbf96df1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362858"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392327"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Bu makalede, Azure [Maps](../azure-maps/about-azure-maps.md)kullanarak bir *ınkapılı haritada* görüntülenecek bilgileri güncelleştirmek Için Azure dijital TWINS verilerini kullanmak için gereken adımlar açıklanmaktadır. Azure dijital TWINS, IoT cihaz ilişkilerinizin bir grafiğini depolar ve Telemetriyi farklı uç noktalara yönlendirir ve bu, haritalar üzerinde bilgilendirici Yerpaylaşımları güncelleştirmek için mükemmel bir hizmet sağlar.
 

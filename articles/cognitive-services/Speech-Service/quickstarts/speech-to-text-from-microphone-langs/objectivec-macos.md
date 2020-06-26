@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c2f0fbe66b26c6eca6e0c0b2530efacba9bae958
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8f94f2ed810204d739dfd2e6d5e88ef0977ad9a4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380601"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391528"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak macOS 'ta hedef-C içindeki konuşmayı tanıma
 
@@ -34,11 +34,11 @@ Başlamadan önce şunları yapmanız gerekir:
 
 [!INCLUDE [License notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-Mac için bilişsel hizmetler konuşma SDK 'Sı, çerçeve paketi olarak dağıtılır. Xcode projelerinde bir [CocoaPod](https://cocoapods.org/) olarak veya tarafından https://aka.ms/csspeech/macosbinary indirilen ve el ile bağlanmış bir şekilde kullanılabilir. Bu makalede bir CocoaPod kullanılmıştır.
+Mac için bilişsel hizmetler konuşma SDK 'Sı, çerçeve paketi olarak dağıtılır. Xcode projelerinde bir [CocoaPod](https://cocoapods.org/) olarak veya tarafından indirilen https://aka.ms/csspeech/macosbinary ve el ile bağlanmış bir şekilde kullanılabilir. Bu makalede bir CocoaPod kullanılmıştır.
 
 ## <a name="create-an-xcode-project"></a>Xcode projesi oluşturma
 
-Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir proje başlatın. Şablon Seçimi iletişim kutusunda, **Cocoa uygulama** şablonunu seçin.
+Xcode ' u başlatın ve **Dosya**  >  **Yeni**  >  **Proje**' yi seçerek yeni bir proje başlatın. Şablon Seçimi iletişim kutusunda, **Cocoa uygulama** şablonunu seçin.
 
 İzleyen iletişim kutularında aşağıdaki seçimleri yapın.
 
@@ -60,7 +60,7 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
 
     ![Korumalı alan ayarları](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-sandbox.png)
 
-1. Uygulamanın Ayrıca `Info.plist` dosyada mikrofonun kullanımını bildirmesi gerekir. Genel bakışta dosyayı seçin ve *konuşma tanıma için, Microphone*gibi bir değere sahip **Gizlilik-mikrofon kullanım açıklaması** anahtarını ekleyin.
+1. Uygulamanın Ayrıca dosyada mikrofonun kullanımını bildirmesi gerekir `Info.plist` . Genel bakışta dosyayı seçin ve *konuşma tanıma için, Microphone*gibi bir değere sahip **Gizlilik-mikrofon kullanım açıklaması** anahtarını ekleyin.
 
     ![Info. plist dosyasındaki ayarlar](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-info-plist.png)
 
@@ -72,7 +72,7 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
 1. Örnek uygulamanızın dizinine gidin, HelloWorld. *Pod dosyası* adında bir metin dosyası ve bu dizine aşağıdaki içeriği yerleştirin:
 
    [!code-ruby[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/from-microphone/helloworld/Podfile)]
-1. Terminalde HelloWorld dizinine gidin ve komutunu `pod install`çalıştırın. Bu komut, bağımlılık `helloworld.xcworkspace` olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki adımlarda kullanılır.
+1. Terminalde HelloWorld dizinine gidin ve komutunu çalıştırın `pod install` . Bu komut `helloworld.xcworkspace` , bağımlılık olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki adımlarda kullanılır.
 
 ## <a name="add-the-sample-code"></a>Örnek kod ekleme
 
@@ -81,12 +81,12 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/from-microphone/helloworld/helloworld/AppDelegate.m#code)]
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
-1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, ücretsiz deneme `westus` aboneliği için kullanın.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, `westus` ücretsiz deneme aboneliği için kullanın.
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 
-1. Hata ayıklama**alanını** >  **görüntüle** > **konsolunu etkinleştir**' i seçerek hata ayıklama çıktısını görünür yapın.
-1. Menüden **ürün** > **çalıştırması** ' nı seçerek örnek kodu derleyin ve çalıştırın. Ayrıca **oynat**' ı seçebilirsiniz.
+1. Hata ayıklama alanını **görüntüle**  >  **Debug Area**  >  **konsolunu etkinleştir**' i seçerek hata ayıklama çıktısını görünür yapın.
+1. Menüden **ürün**çalıştırması ' nı seçerek örnek kodu derleyin ve çalıştırın  >  **Run** . Ayrıca **oynat**' ı seçebilirsiniz.
 1. Düğmeyi seçip birkaç sözcükten sonra, ekranın alt bölümünde söylenen metni görmeniz gerekir. Uygulamayı ilk kez çalıştırdığınızda, uygulamanın bilgisayarınızın mikrofonuna erişmesini sağlamanız istenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

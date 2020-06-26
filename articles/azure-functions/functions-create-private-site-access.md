@@ -1,17 +1,17 @@
 ---
 title: Azure Işlevleri için özel site erişimini etkinleştirme
 description: Azure Işlevleri için Azure sanal ağ özel site erişimini ayarlamayı öğrenin.
-author: mcollier
-ms.author: mcollier
+author: craigshoemaker
+ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 930b691019d5cb56e487c58e3ca01c4f7ee4ef98
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 8e37876e0e9666097c3cf16589e64929c670b14a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261174"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390287"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Öğretici: Azure Işlevleri özel site erişimi oluşturma
 
@@ -62,13 +62,13 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     >[!div class="mx-imgBorder"]
     >![Yeni bir Windows sanal makinesi için temel bilgiler sekmesi](./media/functions-create-private-site-access/create-vm-3.png)
 
-    | Ayar      | Önerilen değer  | Description      |
+    | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
     | _Abonelik_ | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. |
     | [_Kaynak grubu_](../azure-resource-manager/management/overview.md) | myResourceGroup | Bu öğreticinin tüm kaynaklarını içerecek kaynak grubunu seçin.  Aynı kaynak grubunu kullanmak, bu öğreticiyi tamamladığınızda kaynakları temizlemeyi kolaylaştırır. |
     | _Sanal makine adı_ | myVM | VM adının kaynak grubunda benzersiz olması gerekir |
-    | [_Geli_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
-    | _Ortak gelen bağlantı noktaları_ | Yok | İnternet 'ten sanal makineye gelen bağlantı olmadığından emin olmak için **hiçbiri** ' ni seçin. SANAL makineye uzaktan erişim, Azure savunma hizmeti aracılığıyla yapılandırılır. |
+    | [_Bölge_](https://azure.microsoft.com/regions/) | ABD Orta Kuzey ABD | Size yakın veya erişilecek işlevlere yakın bir bölge seçin. |
+    | _Ortak gelen bağlantı noktaları_ | Hiçbiri | İnternet 'ten sanal makineye gelen bağlantı olmadığından emin olmak için **hiçbiri** ' ni seçin. SANAL makineye uzaktan erişim, Azure savunma hizmeti aracılığıyla yapılandırılır. |
 
 1. Yeni bir sanal ağ yapılandırmak için _ağ_ sekmesini seçin ve **Yeni oluştur** ' u seçin.
 
@@ -80,7 +80,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     >[!div class="mx-imgBorder"]
     >![Yeni VM için yeni bir sanal ağ oluşturun](./media/functions-create-private-site-access/create-vm-vnet-1.png)
 
-    | Ayar      | Önerilen değer  | Description      |
+    | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
     | _Adı_ | myResourceGroup-VNET | Sanal ağınız için oluşturulan varsayılan adı kullanabilirsiniz. |
     | _Adres aralığı_ | 10.10.0.0/16 | Sanal ağ için tek bir adres aralığı kullanın. |
@@ -105,10 +105,10 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
     >[!div class="mx-imgBorder"]
     >![Azure savunma oluşturma başlangıcı](./media/functions-create-private-site-access/create-bastion-basics-1.png)
 
-    | Ayar      | Önerilen değer  | Description      |
+    | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
     | _Adı_ | tasyon | Yeni savunma kaynağının adı |
-    | _Geli_ | Orta Kuzey ABD | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+    | _Bölge_ | Orta Kuzey ABD | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
     | _Sanal ağ_ | myResourceGroup-VNET | Savunma kaynağının oluşturulacağı sanal ağ |
     | _Alt ağ_ | AzureBastionSubnet | Sanal ağınızdaki, yeni savunma ana bilgisayar kaynağının dağıtılacağı alt ağ. **AzureBastionSubnet**ad değerini kullanarak bir alt ağ oluşturmanız gerekir. Bu değer, Azure 'un savunma kaynaklarını hangi alt ağa dağıtacağınızı bilmesini sağlar. En az **/27** veya daha büyük (/27,/26, vb.) bir alt ağ kullanmanız gerekir. |
 
@@ -136,18 +136,18 @@ Sonraki adım, [Tüketim planını](functions-scale.md#consumption-plan)kullanar
 1. **İşlem > seçin işlev uygulaması**
 1. _Temel bilgiler_ bölümünde, aşağıdaki tabloda belirtilen işlev uygulaması ayarlarını kullanın.
 
-    | Ayar      | Önerilen değer  | Description      |
+    | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
     | _Kaynak grubu_ | myResourceGroup | Bu öğreticinin tüm kaynaklarını içerecek kaynak grubunu seçin.  İşlev uygulaması ve sanal makine için aynı kaynak grubunun kullanılması, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
     | _İşlev Uygulaması adı_ | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler şunlardır-z (büyük/küçük harf duyarsız), 0-9 ve-. |
     | _Yayımlama_ | Kod | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
     | _Çalışma zamanı yığını_ | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. |
-    | _Geli_ | Orta Kuzey ABD | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
+    | _Bölge_ | Orta Kuzey ABD | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 
     **Sonraki: barındırma >** düğmesini seçin.
 1. _Barındırma_ bölümü için, aşağıdaki tabloda açıklandığı gibi uygun _depolama hesabı_, _işletim sistemi_ve _planı_ seçin.
 
-    | Ayar      | Önerilen değer  | Description      |
+    | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
     | _Depolama hesabı_ | Genel olarak benzersiz bir ad | İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Ayrıca, [depolama hesabı gereksinimlerini](./functions-scale.md#storage-account-requirements)karşılaması gereken mevcut bir hesabı da kullanabilirsiniz. |
     | _İşletim sistemi_ | Tercih edilen işletim sistemi | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. |

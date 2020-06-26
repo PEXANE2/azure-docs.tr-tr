@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 410ef023898cc57847b8e2f7a5153d50731e2d4c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: ac30a57dcbceb4616961c9d100e6ac8639ef2172
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764409"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391069"
 ---
 # <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -58,6 +58,9 @@ Kurtarma Hizmetleri kasası oluşturmak için:
 ## <a name="set-storage-redundancy"></a>Depolama artıklığı ayarlama
 
 Azure Backup kasa için depolamayı otomatik olarak işler. Bu depolamanın nasıl çoğaltılacağı belirtmeniz gerekir.
+
+>[!NOTE]
+>Geçerli çözüm, anlık görüntü tabanlı olduğundan ve kasaya aktarılan bir veri olmadığından, kasa için depolama çoğaltma ayarları Azure dosya paylaşımının yedeğine uygun değildir. Anlık görüntüler, yedeklenen dosya paylaşımıyla aynı depolama hesabında depolanır.
 
 1. **Kurtarma Hizmetleri kasaları** dikey penceresinden yeni kasaya tıklayın. **Ayarlar** bölümünde, **Özellikler**' e tıklayın.
 2. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' e tıklayın.

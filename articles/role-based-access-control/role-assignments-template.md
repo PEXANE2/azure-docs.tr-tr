@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: beb6b5666be0d3264720c5bc7a3c9516c1bd18f4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790883"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392463"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
 
-### <a name="resource-group-without-parameters"></a>Kaynak grubu (Parametreler olmadan)
+### <a name="resource-group-scope-without-parameters"></a>Kaynak grubu kapsamı (parametresiz)
 
 Aşağıdaki şablonda rol ataması eklemenin temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
 
@@ -111,7 +111,7 @@ Aşağıda, şablonu dağıttıktan sonra bir kaynak grubu için kullanıcıya o
 
 ![Kaynak grubu kapsamında rol ataması](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>Kaynak grubu veya abonelik
+### <a name="resource-group-or-subscription-scope"></a>Kaynak grubu veya abonelik kapsamı
 
 Önceki şablon çok esnek değildir. Aşağıdaki şablon parametreleri kullanır ve farklı kapsamlarda kullanılabilir. Aşağıdaki şablonda şunları gösterilmektedir:
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>Kaynak
+### <a name="resource-scope"></a>Kaynak kapsamı
 
 Bir kaynak düzeyinde bir rol ataması eklemeniz gerekiyorsa, rol atamasının biçimi farklıdır. Rolün atanacağı kaynağın kaynak sağlayıcısı ad alanını ve kaynak türünü sağlarsınız. Ayrıca, rol atamasının adına kaynağın adını da dahil edersiniz.
 

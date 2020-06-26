@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: erhopf
-ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77469026"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391222"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Öğretici: kiracı modeli oluşturma (Önizleme)
 
@@ -62,7 +62,7 @@ Kiracı modelinizi konuşma SDK 'Sı ile kullanmak için bir konuşma kaynağın
 1. Kaynağı oluşturmak için ekrandaki yönergeleri izleyin. Şunlardan emin olun:
    * **Konum** **eastus** veya **westus**olarak ayarlanır.
    * **Fiyatlandırma katmanı** **S0**olarak ayarlanır.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
    Birkaç dakika sonra kaynağınız oluşturulur. Abonelik anahtarı, kaynağınızın **genel bakış** bölümünde bulunabilir.
 
@@ -289,9 +289,9 @@ namespace PrincetonSROnly.FrontEnd.Samples
 
 Ardından, komut satırından projeyi yeniden oluşturup çalıştırmanız gerekir. Komutu çalıştırmadan önce, aşağıdakileri yaparak birkaç parametreyi güncelleştirin:
 
-1. Ve `<Username>` `<Password>` değerlerini geçerli bir kiracı kullanıcısının değerleriyle değiştirin.
-1. Konuşma `<Subscription-Key>` kaynağınızın abonelik anahtarıyla değiştirin. Bu değer, [Azure Portal](https://aka.ms/azureportal)konuşma kaynağınızın **genel bakış** bölümünde bulunur.
-1. Aşağıdaki `<Endpoint-Uri>` uç noktayla değiştirin. ' In konuşma kaynağınızın oluşturulduğu `{your region}` bölge ile değiştirdiğinizden emin olun. Bu bölgeler desteklenir: `westus`, `westus2`, ve. `eastus` Bölge bilgileriniz, [Azure Portal](https://aka.ms/azureportal)konuşma kaynağınızın **genel bakış** bölümünde bulunabilir.
+1. `<Username>`Ve `<Password>` değerlerini geçerli bir kiracı kullanıcısının değerleriyle değiştirin.
+1. `<Subscription-Key>`Konuşma kaynağınızın abonelik anahtarıyla değiştirin. Bu değer, [Azure Portal](https://aka.ms/azureportal)konuşma kaynağınızın **genel bakış** bölümünde bulunur.
+1. `<Endpoint-Uri>`Aşağıdaki uç noktayla değiştirin. ' In `{your region}` konuşma kaynağınızın oluşturulduğu bölge ile değiştirdiğinizden emin olun. Bu bölgeler desteklenir: `westus` , `westus2` , ve `eastus` . Bölge bilgileriniz, [Azure Portal](https://aka.ms/azureportal)konuşma kaynağınızın **genel bakış** bölümünde bulunabilir.
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```
@@ -305,5 +305,5 @@ Bu öğreticide, Office 365 verilerini kullanarak özel bir konuşma tanıma mod
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma Studio](https://speech.microsoft.com/)
+* [Speech Studio](https://speech.microsoft.com/)
 * [Konuşma SDK'sı](speech-sdk.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 07ccfaf842af0959388e4a3c49e7ae30c029e3c1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677625"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391919"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
 
@@ -24,12 +24,12 @@ ms.locfileid: "84677625"
 > * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [.NET değişiklik akışı SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Java SDK’sı v4](sql-api-sdk-java-v4.md)
 > * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
 > * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST Kaynak Sağlayıcısı](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Toplu yürütücü-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
@@ -39,7 +39,7 @@ ms.locfileid: "84677625"
 |**SDK 'Yı indir**|[PyPI](https://pypi.org/project/azure-cosmos)|
 |**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK yükleme yönergeleri**|[Python SDK yükleme yönergeleri](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
-|**başlarken**|[Python SDK 'Yı kullanmaya başlama](create-sql-api-python.md)|
+|**Kullanmaya başlayın**|[Python SDK 'Yı kullanmaya başlama](create-sql-api-python.md)|
 |**Desteklenen geçerli platform**|[Python 2,7](https://www.python.org/downloads/) ve [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Yayın geçmişi
@@ -306,7 +306,7 @@ Kullanımdan kaldırılan bir SDK 'Yı kullanarak Azure Cosmos DB istek, hizmet 
 > [!WARNING]
 > Sürüm **1.0.0** ÖNCESI SQL API için Python SDK 'sının tüm sürümleri **, 29 Şubat 2016**tarihinde kullanımdan kalkmıştı. Ve, SQL API için Python SDK 'sının tüm 1. x ve 2. x sürümleri **30 ağustos 2020**tarihinde kullanımdan kaldırılacaktır.
 
-| Sürüm | Yayın Tarihi | Emeklilik tarihi |
+| Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
 | [4.0.0](#400) |20 Mayıs 2020 |--- |
 | [3.0.2](#302) |15 Kasım 2018 |--- |

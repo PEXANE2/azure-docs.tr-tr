@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: backup
 author: dcurwin
 manager: carmonm
@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 2c74783ea8246232cb5c4270691daf3f83fe9a30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2509bdae01fc9de5511dcd67eb95bf0d13d5cf39
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204455"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391170"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan kurtarma noktalarını depolayan bir depolama varlıktır. Ayrıca, korunan öğelerle ilişkili yedekleme ilkelerini de içerir.
+Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan kurtarma noktalarını depolayan ve yedeklemeyle ilgili işlemleri gerçekleştirmek için bir arabirim sağlayan bir yönetim varlıktır. Bunlar isteğe bağlı yedeklemeler almayı, geri yükleme gerçekleştirmeyi ve yedekleme ilkeleri oluşturmayı içerir.
 
 Bir kurtarma hizmetleri Kasası oluşturmak için aşağıdaki adımları izleyin.
 

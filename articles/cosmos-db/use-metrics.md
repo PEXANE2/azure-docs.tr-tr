@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: 735c68a3aec4d7bbb5626497de445f61e375b34b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 157f0a710a0b3aed25455600bbf19d4ae84ed848
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263407"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391953"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB ölçümlerle izleme ve hata ayıklama
 
@@ -46,7 +46,7 @@ Aşağıdaki bölümlerde Azure Cosmos DB ölçümlerini kullanabileceğiniz yay
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Kaç isteğin başarılı olduğunu veya hatalara neden olduğunu anlayın
 
-Başlamak için [Azure Portal](https://portal.azure.com) gidin ve **ölçümler** dikey penceresine gidin. Dikey pencerede, * * istek sayısı ' nı 1 dakikalık bir grafik olarak aşmış olan istek sayısını bulun. Bu grafik, durum koduna göre bölünmüş toplam dakikalık isteği gösterir. HTTP durum kodları hakkında daha fazla bilgi için bkz. [Azure Cosmos DB Için http durum kodları](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Başlamak için [Azure Portal](https://portal.azure.com) gidin ve **ölçümler** dikey penceresine gidin. Dikey pencerede, * * istek sayısı ' nı 1 dakikalık bir grafik olarak aşmış olan istek sayısını bulun. Bu grafik, durum koduna göre bölünmüş toplam dakikalık isteği gösterir. HTTP durum kodları hakkında daha fazla bilgi için bkz. [Azure Cosmos DB Için http durum kodları](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 En yaygın hata durum kodu 429 ' dir (hız sınırlandırma/azaltma). Bu hata, Azure Cosmos DB isteklerinin sağlanan aktarım hızına göre daha fazla olduğu anlamına gelir. Bu sorunun en yaygın çözümü, belirtilen koleksiyon için [Rus ölçeğini ölçeklendirmektir](./set-throughput.md) .
 

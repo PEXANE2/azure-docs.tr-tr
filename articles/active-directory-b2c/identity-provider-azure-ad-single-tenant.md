@@ -7,17 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5b21fcd2d3ec5560b01352b112e9ed1bb2404766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce5f373576f13a4b1bdb88b5ffb7869a2d7865cd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678054"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388366"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içinde belirli bir Azure Active Directory kuruluş için oturum açma ayarlayın
 
@@ -31,7 +31,7 @@ Azure AD B2C bir [kimlik sağlayıcısı](authorization-code-flow.md) olarak Azu
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Kimlik sağlayıcıları**' nı seçin ve ardından **Yeni OpenID Connect sağlayıcısı**' nı seçin.
 1. Bir **ad**girin. Örneğin, *contoso Azure AD*yazın.
-1. **Meta veri URL 'si**Için, Azure AD kiracınızın etki alanı adıyla `{tenant}` birlikte aşağıdaki URL 'yi girin:
+1. **Meta veri URL 'si**Için, `{tenant}` Azure AD kiracınızın etki alanı adıyla birlikte aşağıdaki URL 'yi girin:
 
     ```
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
@@ -41,9 +41,9 @@ Azure AD B2C bir [kimlik sağlayıcısı](authorization-code-flow.md) olarak Azu
 
 1. **ISTEMCI kimliği**için, daha önce KAYDETTIĞINIZ uygulama kimliğini girin.
 1. **İstemci parolası**için, daha önce kaydettiğiniz istemci gizli anahtarını girin.
-1. **Kapsam**için, `openid profile`girin.
+1. **Kapsam**için, girin `openid profile` .
 1. **Yanıt türü**ve **Yanıt modu**için varsayılan değerleri bırakın.
-1. Seçim **Etki alanı ipucu**için girin `contoso.com`. Daha fazla bilgi için bkz. [Azure Active Directory B2C kullanarak doğrudan oturum açma ayarlama](direct-signin.md#redirect-sign-in-to-a-social-provider).
+1. Seçim **Etki alanı ipucu**için girin `contoso.com` . Daha fazla bilgi için bkz. [Azure Active Directory B2C kullanarak doğrudan oturum açma ayarlama](direct-signin.md#redirect-sign-in-to-a-social-provider).
 1. **Kimlik sağlayıcısı talep eşlemesi**altında aşağıdaki talepleri seçin:
 
     * **Kullanıcı kimliği**: *OID*

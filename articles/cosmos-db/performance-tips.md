@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: sngun
-ms.openlocfilehash: fce6cd441214cff4c76b05f8a2b6cb630613a66f
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 67354ca5b9dc7b553b8aa40183b504542d4c08b4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263441"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392395"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 
@@ -203,7 +203,7 @@ En iyi okuma performansı için mümkün olduğunda önbellek belgesi URI 'Leri.
 
 Belgeleri okuma akışı işlevini (örneğin,) kullanarak toplu okuma işlemi yaptığınızda `ReadDocumentFeedAsync` veya BIR SQL sorgusu verdiğinizde, sonuç kümesi çok büyükse sonuçlar, bölümlenmiş bir biçimde döndürülür. Varsayılan olarak, sonuçlar 100 öğe veya 1 MB Öbekle döndürülür, bu sınır ilk önce dönüştürülür.
 
-Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısını azaltmak için, en fazla 1.000 üst bilgi istemek üzere [x-MS-Max-item-Count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) kullanarak sayfa boyutunu artırabilirsiniz. Örneğin, Kullanıcı arabirimi veya uygulama API 'niz aynı anda yalnızca 10 sonuç döndürürse, okuma ve sorgular için tüketilen aktarım hızını azaltmak için sayfa boyutunu 10 ' a da azaltabilirsiniz.
+Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısını azaltmak için, en fazla 1.000 üst bilgi istemek üzere [x-MS-Max-item-Count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) kullanarak sayfa boyutunu artırabilirsiniz. Örneğin, Kullanıcı arabirimi veya uygulama API 'niz aynı anda yalnızca 10 sonuç döndürürse, okuma ve sorgular için tüketilen aktarım hızını azaltmak için sayfa boyutunu 10 ' a da azaltabilirsiniz.
 
 > [!NOTE] 
 > `maxItemCount`Özelliği yalnızca sayfalandırma için kullanılmamalıdır. Ana kullanımı, tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmaktır.  
@@ -246,7 +246,7 @@ Aktarım hızı, her bir kapsayıcı için ayarlanan [Istek birimi](request-unit
 
 Bir sorgunun karmaşıklığı, bir işlem için kaç Istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
-Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) `RequestCharge` `ResourceResponse\<T>` `FeedResponse\<T>` işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere x-MS-Request-ücret üst bilgisini (veya .NET SDK içindeki veya içinde eşdeğer özelliği) inceleyin:
+Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) `RequestCharge` `ResourceResponse\<T>` `FeedResponse\<T>` işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere x-MS-Request-ücret üst bilgisini (veya .NET SDK içindeki veya içinde eşdeğer özelliği) inceleyin:
 
 ```csharp
 // Measure the performance (Request Units) of writes
@@ -266,7 +266,7 @@ Bu üst bilgide döndürülen istek ücreti, sağlanan aktarım hızını (yani,
 
 **Tanıtıcı hız sınırlandırma/istek hızı çok büyük**
 
-Bir istemci, bir hesap için ayrılan aktarım hızını aşmaya çalıştığında, sunucuda bir performans düşüşü olmaz ve ayrılan düzeyin ötesinde üretilen iş kapasitesi kullanılamaz. Sunucu isteği RequestRateTooLarge ile sona erdirmek için preemptively (HTTP durum kodu 429). Kullanıcının isteği yeniden denemeden önce beklemesi gereken süre miktarını milisaniye cinsinden belirten bir [x-MS-retry-After-MS](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisi döndürür.
+Bir istemci, bir hesap için ayrılan aktarım hızını aşmaya çalıştığında, sunucuda bir performans düşüşü olmaz ve ayrılan düzeyin ötesinde üretilen iş kapasitesi kullanılamaz. Sunucu isteği RequestRateTooLarge ile sona erdirmek için preemptively (HTTP durum kodu 429). Kullanıcının isteği yeniden denemeden önce beklemesi gereken süre miktarını milisaniye cinsinden belirten bir [x-MS-retry-After-MS](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisi döndürür.
 
     HTTP Status 429,
     Status Line: RequestRateTooLarge

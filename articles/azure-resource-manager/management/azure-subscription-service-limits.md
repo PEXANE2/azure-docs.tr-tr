@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 06/04/2020
-ms.openlocfilehash: a1413e0f7f8fb9a28d657c32171c518a1bf64a41
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 7805e65b3f49a69d4667180715a58585767ddf5a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907423"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391511"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
@@ -218,6 +218,13 @@ Aşağıdaki tabloda temel, standart ve Premium [hizmet katmanlarının](../../c
 ## <a name="database-migration-service-limits"></a>Veritabanı geçiş hizmeti sınırları
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
+
+## <a name="digital-twins-limits"></a>Dijital TWINS limitleri
+
+> [!NOTE]
+> Bu hizmetin bazı alanlarında ayarlanabilir sınırlar ve diğerleri değildir. Bu, aşağıdaki tabloda, *ayarlanabilir?* sütunuyla birlikte gösterilir. Sınır ayarlanabilirken, *ayarlanabilir?* değeri *Evet*' tir.
+
+[!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
 
 ## <a name="event-grid-limits"></a>Event Grid sınırları
 

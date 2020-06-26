@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473685"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389369"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak talepler ekleyin ve Kullanıcı girişini özelleştirin
 
@@ -48,7 +48,7 @@ Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici bir şe
 - **Userhelptext** -kullanıcının nelerin gerekli olduğunu anlamasına yardımcı olur.
 - [Userınputtype](claimsschema.md#userinputtype) -metin kutusu, radyo seçimi, açılan liste veya birden çok seçim gibi giriş denetiminin türü.
 
-İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
@@ -75,7 +75,7 @@ Aşağıdaki teknik [profiller, bir](self-asserted-technical-profile.md)kullanı
 - **Selfasted-sosyal** -Federasyon hesabı ilk kez Kullanıcı oturum açma.
 - **Selfasserted-ProfileUpdate** -profil akışını Düzenle.
 
-Kaydolma sırasında şehir talebini toplamak için, `LocalAccountSignUpWithLogonEmail` teknik profile bir çıkış talebi olarak eklenmelidir. Uzantı dosyasındaki bu teknik profili geçersiz kılın. Taleplerin ekranda sunulduğu sırayı denetlemek için tüm çıkış talepleri listesini belirtin. **Claimsproviders** öğesini bulun. Yeni bir ClaimsProviders şu şekilde ekleyin:
+Kaydolma sırasında şehir talebini toplamak için, teknik profile bir çıkış talebi olarak eklenmelidir `LocalAccountSignUpWithLogonEmail` . Uzantı dosyasındaki bu teknik profili geçersiz kılın. Taleplerin ekranda sunulduğu sırayı denetlemek için tüm çıkış talepleri listesini belirtin. **Claimsproviders** öğesini bulun. Yeni bir ClaimsProviders şu şekilde ekleyin:
 
 ```xml
 <ClaimsProvider>
@@ -98,7 +98,7 @@ Kaydolma sırasında şehir talebini toplamak için, `LocalAccountSignUpWithLogo
 <ClaimsProvider>
 ```
 
-Bir Federasyon hesabıyla ilk oturum açma işleminden sonra şehir talebini toplamak için, `SelfAsserted-Social` teknik profile bir çıkış talebi olarak eklenmesi gerekir. Yerel ve Federal hesap kullanıcılarının profil verilerini daha sonra düzenleyebilmeleri için, çıkış talebini `SelfAsserted-ProfileUpdate` teknik profile ekleyin. Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. Talepler ekranda sunulan sırayı denetlemek için çıkış taleplerinin tamamının listesini belirtin. **Claimsproviders** öğesini bulun. Yeni bir ClaimsProviders şu şekilde ekleyin:
+Bir Federasyon hesabıyla ilk oturum açma işleminden sonra şehir talebini toplamak için, teknik profile bir çıkış talebi olarak eklenmesi gerekir `SelfAsserted-Social` . Yerel ve Federal hesap kullanıcılarının profil verilerini daha sonra düzenleyebilmeleri için, çıkış talebini `SelfAsserted-ProfileUpdate` Teknik profile ekleyin. Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. Talepler ekranda sunulan sırayı denetlemek için çıkış taleplerinin tamamının listesini belirtin. **Claimsproviders** öğesini bulun. Yeni bir ClaimsProviders şu şekilde ekleyin:
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -128,7 +128,7 @@ Bir Federasyon hesabıyla ilk oturum açma işleminden sonra şehir talebini top
 ## <a name="read-and-write-a-claim"></a>Talep okuma ve yazma
 
 Aşağıdaki teknik profiller, Azure Active Directory verileri okuyan ve yazan [Teknik profillerdir Active Directory](active-directory-technical-profile.md).  
-Kullanıcı `PersistedClaims` profiline veri yazmak ve `OutputClaims` ilgili Active Directory teknik profillerinin içindeki kullanıcı profilinden veri okumak için kullanın.
+`PersistedClaims`Kullanıcı profiline veri yazmak ve `OutputClaims` ilgili Active Directory teknik profillerinin içindeki kullanıcı profilinden veri okumak için kullanın.
 
 Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. **Claimsproviders** öğesini bulun.  Yeni bir ClaimsProviders şu şekilde ekleyin:
 
@@ -172,7 +172,7 @@ Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. **Claimsproviders*
 
 ## <a name="include-a-claim-in-the-token"></a>Belirtece bir talep ekleyin 
 
-Şehir talebini bağlı olan taraf uygulamasına geri döndürmek için, <em> `SocialAndLocalAccounts/` </em> dosyaya bir çıkış talebi ekleyin. Çıkış talebi, başarılı bir Kullanıcı yolculuğuna sonra belirtece eklenir ve uygulamaya gönderilir. Şehri çıkış talebi olarak eklemek için bağlı olan taraf bölümündeki teknik profil öğesini değiştirin.
+Şehir talebini bağlı olan taraf uygulamasına geri döndürmek için, dosyaya bir çıkış talebi ekleyin <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . Çıkış talebi, başarılı bir Kullanıcı yolculuğuna sonra belirtece eklenir ve uygulamaya gönderilir. Şehri çıkış talebi olarak eklemek için bağlı olan taraf bölümündeki teknik profil öğesini değiştirin.
  
 ```xml
 <RelyingParty>

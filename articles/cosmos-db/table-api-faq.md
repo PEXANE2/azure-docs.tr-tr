@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836235"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392361"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Azure Cosmos DB Tablo API'si hakkında sık sorulan sorular
 
@@ -45,10 +45,10 @@ Kullanıcıların Azure Cosmos DB Tablo API'si tabloları oluşturmak isteyen Az
 
   | Rest yöntemleri | REST uç noktası/sorgu seçeneği | Belge URL 'Leri | Açıklama |
   | ------------| ------------- | ---------- | ----------- |
-  | AL, KOY | `/?restype=service@comp=properties`| [Tablo hizmeti özelliklerini ayarlama](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) ve [Tablo hizmeti özelliklerini al](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Bu uç nokta CORS kuralları, depolama Analizi yapılandırması ve günlüğe kaydetme ayarlarını ayarlamak için kullanılır. CORS Şu anda desteklenmiyor ve analiz ve günlüğe kaydetme, Azure depolama tablolarından Azure Cosmos DB farklı şekilde işlendi |
-  | Seçenekler | `/<table-resource-name>` | [Uçuş öncesi CORS tablo isteği](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Bu, Azure Cosmos DB Şu anda desteklemediği CORS 'nin bir parçasıdır. |
-  | GET | `/?restype=service@comp=stats` | [Tablo hizmeti Istatistiklerini al](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Birincil ve ikincil sunucular arasında verilerin ne kadar hızlı çoğaltılmasının bilgisini sağlar. Çoğaltma, yazma işlemlerinin bir parçası olduğundan, bu Cosmos DB gerekli değildir. |
-  | AL, KOY | `/mytable?comp=acl` | [Tablo ACL 'Sini al](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) ve [tablo ACL 'sini ayarla](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Bu, paylaşılan erişim Imzalarını (SAS) yönetmek için kullanılan saklı erişim ilkelerini alır ve ayarlar. SAS desteklense de farklı şekilde ayarlanır ve yönetilir. |
+  | AL, KOY | `/?restype=service@comp=properties`| [Tablo hizmeti özelliklerini ayarlama](/rest/api/storageservices/set-table-service-properties) ve [Tablo hizmeti özelliklerini al](/rest/api/storageservices/get-table-service-properties) | Bu uç nokta CORS kuralları, depolama Analizi yapılandırması ve günlüğe kaydetme ayarlarını ayarlamak için kullanılır. CORS Şu anda desteklenmiyor ve analiz ve günlüğe kaydetme, Azure depolama tablolarından Azure Cosmos DB farklı şekilde işlendi |
+  | Seçenekler | `/<table-resource-name>` | [Uçuş öncesi CORS tablo isteği](/rest/api/storageservices/preflight-table-request) | Bu, Azure Cosmos DB Şu anda desteklemediği CORS 'nin bir parçasıdır. |
+  | GET | `/?restype=service@comp=stats` | [Tablo hizmeti Istatistiklerini al](/rest/api/storageservices/get-table-service-stats) | Birincil ve ikincil sunucular arasında verilerin ne kadar hızlı çoğaltılmasının bilgisini sağlar. Çoğaltma, yazma işlemlerinin bir parçası olduğundan, bu Cosmos DB gerekli değildir. |
+  | AL, KOY | `/mytable?comp=acl` | [Tablo ACL 'Sini al](/rest/api/storageservices/get-table-acl) ve [tablo ACL 'sini ayarla](/rest/api/storageservices/set-table-acl) | Bu, paylaşılan erişim Imzalarını (SAS) yönetmek için kullanılan saklı erişim ilkelerini alır ve ayarlar. SAS desteklense de farklı şekilde ayarlanır ve yönetilir. |
 
 * Azure Cosmos DB Tablo API'si yalnızca, ATOM değil JSON biçimini destekler.
 
@@ -85,7 +85,7 @@ Bağlantı dizesini Azure portal bağlantı dizesi sayfasından edinebilirsiniz.
 
 ### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-net-sdk-for-the-table-api"></a>Tablo API'si için .NET SDK 'daki istek seçeneklerinin yapılandırma ayarlarını geçersiz Nasıl yaparım?.
 
-Bazı ayarlar CreateCloudTableClient yönteminde ve diğer bir deyişle istemci uygulamasındaki appSettings bölümündeki App. config aracılığıyla işlenir. Yapılandırma ayarları hakkında bilgi için bkz. [Azure Cosmos DB özellikleri](tutorial-develop-table-dotnet.md).
+Bazı ayarlar CreateCloudTableClient yönteminde ve diğer bir deyişle istemci uygulamasındaki appSettings bölümündeki app.config ile işlenir. Yapılandırma ayarları hakkında bilgi için bkz. [Azure Cosmos DB özellikleri](tutorial-develop-table-dotnet.md).
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>Mevcut Azure Tablo depolama SDK 'larını kullanan müşteriler için herhangi bir değişiklik var mı?
 
@@ -151,7 +151,7 @@ Bir bölge eklemek ve ardından gerekli bölgeye yük devretmek için Azure Cosm
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>Verilerimi dağıtırken tercih edilen okuma bölgelerini düşük gecikme süresine göre yapılandırma Nasıl yaparım??
 
-Yerel konumdan okumaya yardımcı olması için App. config dosyasındaki PreferredLocation anahtarını kullanın. Mevcut uygulamalar için, LocationMode değeri ayarlandıysa Tablo API'si bir hata oluşturur. Bu kodu kaldırın çünkü Tablo API'si App. config dosyasından bu bilgileri alır. 
+Yerel konumdan okumaya yardımcı olması için app.config dosyasındaki PreferredLocation anahtarını kullanın. Mevcut uygulamalar için, LocationMode değeri ayarlandıysa Tablo API'si bir hata oluşturur. Bu kodu kaldırın, çünkü Tablo API'si app.config dosyasından bu bilgileri alır. 
 
 ### <a name="how-should-i-think-about-consistency-levels-in-the-table-api"></a>Tablo API'si tutarlılık düzeylerini nasıl düşünmem gerekir?
 
@@ -171,7 +171,7 @@ Azure Cosmos DB, verileri yerel bölgede dursun olarak kaydeder ve verileri birk
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>Okuma isteği tutarlılığı düzeyi değiştirilebilir mi?
 
-Azure Cosmos DB, tutarlılık düzeyini kapsayıcı düzeyinde (tabloda) ayarlayabilirsiniz. .NET SDK 'yı kullanarak, App. config dosyasında Tableme düzeyi anahtarı için değer sağlayarak düzeyi değiştirebilirsiniz. Olası değerler şunlardır: güçlü, sınırlanmış Eskime durumu, oturum, tutarlı ön ek ve nihai. Daha fazla bilgi için bkz. [Azure Cosmos dB ayarlanabilir veri tutarlılığı düzeyleri](consistency-levels.md). Önemli fikir, istek tutarlılığı düzeyini tablonun ayarından daha fazla ayarlayamıyoruz. Örneğin, son olarak tablo için tutarlılık düzeyini ve istek tutarlılığı düzeyini güçlü olarak ayarlayamazsınız.
+Azure Cosmos DB, tutarlılık düzeyini kapsayıcı düzeyinde (tabloda) ayarlayabilirsiniz. .NET SDK 'yı kullanarak, app.config dosyasında Tableme düzeyi anahtarı için değer sağlayarak düzeyi değiştirebilirsiniz. Olası değerler şunlardır: güçlü, sınırlanmış Eskime durumu, oturum, tutarlı ön ek ve nihai. Daha fazla bilgi için bkz. [Azure Cosmos dB ayarlanabilir veri tutarlılığı düzeyleri](consistency-levels.md). Önemli fikir, istek tutarlılığı düzeyini tablonun ayarından daha fazla ayarlayamıyoruz. Örneğin, son olarak tablo için tutarlılık düzeyini ve istek tutarlılığı düzeyini güçlü olarak ayarlayamazsınız.
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Bir bölge aşağı gittiğinde Tablo API'si yük devretmeyi nasıl işler?
 
@@ -197,7 +197,7 @@ Evet, Dizin tanımını sağlayarak dizin oluşturma ilkesini değiştirebilirsi
 
 Non-.NET SDK 'Ları için, dizin oluşturma ilkesi yalnızca **Veri Gezgini**' de portalda ayarlanabilir, değiştirmek istediğiniz tabloya gidebilir ve sonra **Ölçek & ayarları**->dizin oluşturma ilkesi ' ne gidebilir, istediğiniz değişikliği yapıp, sonra **tasarruf**edebilirsiniz.
 
-.NET SDK 'dan App. config dosyasında gönderilebilir:
+.NET SDK 'dan app.config dosyasında gönderilebilir:
 
 ```JSON
 {
@@ -246,7 +246,7 @@ Evet, üretilen işi ölçeklendirmek için Azure Cosmos DB portalının ölçek
 
 ### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>Yeni sağlanan tablolar için ayarlanan varsayılan bir Tableüretilen Iş mi?
 
-Evet, App. config aracılığıyla Tableverimini geçersiz kılamazsınız ve Azure Cosmos DB önceden oluşturulmuş bir kapsayıcı kullanmıyorsanız, hizmet 400 verimini içeren bir tablo oluşturur.
+Evet, app.config aracılığıyla Tableverimini geçersiz kılamazsınız ve Azure Cosmos DB önceden oluşturulmuş bir kapsayıcı kullanmıyorsanız, hizmet 400 verimini içeren bir tablo oluşturur.
 
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Azure Tablo depolama hizmeti 'nin mevcut müşterileri için fiyatlandırma değişikliği var mı?
 
@@ -262,7 +262,7 @@ Fiyat, ayrılan tablo Işleme göre değişir.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Azure Cosmos DB teklifinizin Tablo API'si avantajlarından yararlanmak için neden PartitionKey ve RowKey 'tan ayrı bir aktarım hızı seçmem gerekir?
 
-Azure Cosmos DB, App. config dosyasında veya Portal aracılığıyla bir tane sağlamazsanız, kapsayıcınıza yönelik varsayılan bir aktarım hızı belirler.
+Azure Cosmos DB, app.config dosyasında veya Portal aracılığıyla bir tane sağlamazsanız, kapsayıcınıza yönelik varsayılan bir aktarım hızı belirler.
 
 Azure Cosmos DB, performans ve gecikme için, işlem üzerinde üst sınırlarla garanti sağlar. Bu güvence, altyapının kiracının işlemleri üzerinde idare zorlaması mümkün olduğunda mümkündür. Tablo aktarım hızını ayarlamak, platform bu kapasiteyi ayırdığından ve işletimsel başarıyı garanti ettiğinden garantili aktarım hızı ve gecikme süresi almanızı sağlar.
 

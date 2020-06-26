@@ -7,17 +7,14 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: b6f5765f51983e3b1ca9c182849b64258476a2ce
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 5049e875c3b8047b99e3256c7bbac60d0af822bb
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362773"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392276"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure dijital TWINS 'de uç noktaları ve yolları yönetme
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine yönlendirebilir veya işlem kaynaklarına bağlanabilirsiniz. Bu, önce olayları alabilen **uç noktalar** ayarlanarak, ardından Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten [**olay rotaları**](concepts-route-events.md) tarafından yapılır.
 
@@ -143,7 +140,7 @@ Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{YourHost}/E
 
 Desteklenen yol filtreleri aşağıda verilmiştir.
 
-| Filtre adı | Description | Filtre şeması | Desteklenen değerler | 
+| Filtre adı | Açıklama | Filtre şeması | Desteklenen değerler | 
 | --- | --- | --- | --- |
 | Tür | Dijital ikizi örneğiniz aracılığıyla akan [olay türü](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Kaynak | Azure dijital TWINS örneğinin adı | `"filter" : "source = '<hostname>'"`|  **Bildirimler için**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Telemetri için**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|

@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 79035a2fa2f7f3bed4890faa749661f025cea312
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c4bbc3510cc273504d7c97287d3aeb1948db2eb2
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362875"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390678"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar Azure **dijital TWINS**tarafından temsil edilir. Dijital ikizi, özel olarak tanımlanan [modellerden](concepts-models.md)birinin bir örneğidir. Diğer dijital TWINS 'e, **ikizi grafiği**oluşturmak için **ilişkiler** aracılığıyla bağlanabilir: Bu ikizi Graph, ortamınızın tamamının gösterimidir.
 
@@ -98,7 +95,7 @@ Dijital ikizi verileri ve ilişki verileri her ikisi de JSON biçiminde depolan�
 
 JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanları görüntüler:
 
-| Alan adı | Description |
+| Alan adı | Açıklama |
 | --- | --- |
 | `$dtId` | Dijital ikizi KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış dize |
 | `$conformance` | Bu dijital ikizi uygunluk durumunu içeren bir sabit listesi (*uyumlu*, *uyumlu değil*, *bilinmiyor*) |
@@ -164,7 +161,7 @@ JSON nesnesi olarak biçimlendirilen bir dijital ikizi örneği aşağıda veril
 
 Bir JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi bir ilişki aşağıdaki alanları görüntüler:
 
-| Alan adı | Description |
+| Alan adı | Açıklama |
 | --- | --- |
 | `$edgeId` | Bu ilişki ucunun KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış bir dize. Bu dize, kaynak dijital ikizi bağlamında benzersizdir, bu da `sourceId`  +  `edgeId` Azure dijital TWINS örneği bağlamında benzersiz anlamına gelir. |
 | `$sourceId` | Kaynak dijital ikizi KIMLIĞI |

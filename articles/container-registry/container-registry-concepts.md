@@ -2,13 +2,13 @@
 title: '& görüntüleri hakkında'
 description: Azure Container kayıt defterleri, depolar ve kapsayıcı görüntülerinin temel kavramlarına giriş.
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 06/16/2020
+ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711995"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390457"
 ---
 # <a name="about-registries-repositories-and-images"></a>Kayıt defterleri, depolar ve görüntüler hakkında
 
@@ -24,13 +24,11 @@ Docker kapsayıcı görüntülerine ek olarak Azure Container Registry, açık k
 
 Bir Azure Container Registry 'deki yapıt adresi aşağıdaki öğeleri içerir. 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl** -kayıt defteri konağının tam adı. Azure Container Registry içindeki kayıt defteri Konağı *myregistry*. azurecr.io biçimindedir (tümü küçük harfle). Bir Azure Container Registry 'ye yapıt çekmek veya göndermek için Docker veya diğer istemci araçlarını kullanırken loginUrl 'sini belirtmeniz gerekir. 
-* **ad alanı** eğik çizgili-ilişkili görüntülerin veya yapıtların mantıksal gruplandırması-Örneğin, bir çalışma grubu veya uygulama için
-* **yapıt** -belirli bir görüntü veya yapıt için bir deponun adı
-* **etiket** -bir depoda depolanan bir görüntünün veya yapıtın belirli bir sürümü
-
+* **Depo** -bir veya daha fazla ilgili görüntünün veya yapıtların mantıksal gruplandırmasının adı; örneğin, bir uygulama veya bir temel işletim sistemi için görüntüler. *Ad uzayı* yolu içerebilir. 
+* bir yansımanın veya bir depoda depolanan yapıt 'nin belirli bir sürümünün **etiketi** .
 
 Örneğin, bir Azure Container Registry 'deki bir görüntünün tam adı şöyle görünebilir:
 
@@ -40,20 +38,24 @@ Bu öğeler hakkındaki ayrıntılar için aşağıdaki bölümlere bakın.
 
 ## <a name="repository-name"></a>Depo adı
 
-Kapsayıcı kayıt defterleri, *depoları*, kapsayıcı görüntülerinin koleksiyonlarını veya aynı ada sahip diğer yapıtları, ancak farklı etiketleri yönetir. Örneğin, aşağıdaki üç görüntü "ACR-HelloWorld" deposunda bulunur:
+*Depo* , kapsayıcı görüntüleri veya aynı ada sahip diğer yapıtlar, ancak farklı Etiketler koleksiyonudur. Örneğin, aşağıdaki üç görüntü "ACR-HelloWorld" deposunda bulunur:
 
 
 - *ACR-HelloWorld: en son*
 - *ACR-HelloWorld: v1*
 - *ACR-HelloWorld: v2*
 
-Depo adlarında [ad alanları](container-registry-best-practices.md#repository-namespaces)da bulunabilir. Ad alanları, eğik çizgi ile ayrılmış depo adlarını kullanarak resimleri gruplandırmalarınıza izin verir, örneğin:
+Depo adlarında [ad alanları](container-registry-best-practices.md#repository-namespaces)da bulunabilir. Ad alanları, eğik çizgi ile ayrılmış adları kullanarak kuruluşunuzda ilgili depoları ve yapıt sahipliğini tanımlamanızı sağlar. Ancak kayıt defteri, tüm depoları bağımsız olarak değil, bağımsız olarak yönetir. Örnekler için:
 
 - *Pazarlama/campaign10-18/Web: v2*
 - *Pazarlama/campaign10-18/API: v3*
 - *Pazarlama/campaign10-18/email-gönderici: v2*
 - *Ürün-döndürür/Web-gönderim: 20180604*
 - *Ürün-döndürür/eski-tümleştirici: 20180715*
+
+Depo adları yalnızca küçük harfli alfasayısal karakterler, nokta, tire, alt çizgi ve eğik çizgi içerebilir. 
+
+Tüm depo adlandırma kuralları için bkz. [kapsayıcı girişim dağıtım belirtimi](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ## <a name="image"></a>Görüntü
 
@@ -63,9 +65,11 @@ Bir kayıt defteri içindeki bir kapsayıcı görüntüsü veya diğer yapıtlar
 
 Bir görüntünün veya diğer yapıtın *etiketi* , sürümünü belirtir. Bir depodaki tek bir yapıya bir veya daha fazla etiket atanabilir ve ayrıca "etiketsiz" olabilir. Diğer bir deyişle, görüntünün verileri (katmanları) kayıt defterinde kalacağından, bir görüntüdeki tüm etiketleri silebilirsiniz.
 
-Depo (veya depo ve ad alanı) ve bir etiket bir görüntünün adını tanımlar. Anında iletme veya çekme işleminde adını belirterek bir görüntüyü gönderebilir ve çekebilirsiniz.
+Depo (veya depo ve ad alanı) ve bir etiket bir görüntünün adını tanımlar. Anında iletme veya çekme işleminde adını belirterek bir görüntüyü gönderebilir ve çekebilirsiniz. Etiket, `latest` Docker komutlarınıza bir tane sağlamazsanız varsayılan olarak kullanılır.
 
 Kapsayıcı görüntülerini etiketleyerek, bunları geliştirmek veya dağıtmak için senaryolarınız tarafından nasıl kılavuzluk edilir. Örneğin, kararlı Etiketler temel görüntülerinizi sürdürmek için, görüntü dağıtmak için de benzersiz Etiketler önerilir. Daha fazla bilgi için bkz. [kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerileri](container-registry-image-tag-version.md).
+
+Etiket adlandırma kuralları için [Docker belgelerine](https://docs.docker.com/engine/reference/commandline/tag/)bakın.
 
 ### <a name="layer"></a>Katman
 

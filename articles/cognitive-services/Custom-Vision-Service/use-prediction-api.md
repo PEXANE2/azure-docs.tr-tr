@@ -3,19 +3,19 @@ title: Görüntüleri sınıflandırıcı ile programlama yoluyla test etmek iç
 titleSuffix: Azure Cognitive Services
 description: Özel Görüntü İşleme sınıflandırıcınızla programlama yoluyla görüntüleri test etmek için API’nin nasıl kullanılacağını öğrenin.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.author: anroth
-ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: 0766ad38265368a00272eb8abbe974ce94f5dd72
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129871"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391698"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Tahmin API 'SI ile modelinizi kullanma
 
@@ -109,9 +109,9 @@ Bu kılavuzda, bir yerel görüntü kullanacaksınız, bu nedenle geçici bir ko
     ```
 
 1. Aşağıdaki bilgileri değiştirin:
-   * `namespace` Alanı projenizin adına ayarlayın.
-   * Yer tutucusunu `<Your prediction key>` , daha önce aldığınız anahtar değeriyle değiştirin.
-   * Yer tutucusunu `<Your prediction URL>` , daha önce aldığınız URL ile değiştirin.
+   * `namespace`Alanı projenizin adına ayarlayın.
+   * Yer tutucusunu, `<Your prediction key>` daha önce aldığınız anahtar değeriyle değiştirin.
+   * Yer tutucusunu, `<Your prediction URL>` daha önce ALDıĞıNıZ URL ile değiştirin.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

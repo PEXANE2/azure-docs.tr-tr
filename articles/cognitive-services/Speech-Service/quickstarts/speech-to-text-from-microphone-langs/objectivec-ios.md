@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c1246b19670a18f8dadc0c5e1c64dd5af4c1b210
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c355071c4bbaff5ddb22b2db5fc4a3a0fdb561d4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380788"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391562"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak iOS 'ta hedef C 'de konuşmayı tanıma
 
@@ -40,7 +40,7 @@ Başlamadan önce şunları yapmanız gerekir:
 
 ## <a name="create-an-xcode-project"></a>Xcode projesi oluşturma
 
-Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir proje başlatın.
+Xcode ' u başlatın ve **Dosya**  >  **Yeni**  >  **Proje**' yi seçerek yeni bir proje başlatın.
 Şablon Seçimi iletişim kutusunda **IOS tek görünüm uygulaması** şablonunu seçin.
 
 İzleyen iletişim kutularında aşağıdaki seçimleri yapın.
@@ -57,7 +57,7 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
    1. Projeyi yerleştirmek için giriş dizininizi seçin. Bu adım, giriş dizininizde Xcode projesi için tüm dosyaları içeren bir HelloWorld dizini oluşturur.
    1. Bu örnek için Git deposu oluşturmayı devre dışı bırakın.
    1. Proje ayarları ekranındaki SDK 'nın yollarını ayarlayın.
-      1. **Katıştırılmış** ikililer üstbilgisinin altındaki **genel** sekmesinde, **katıştırılmış ikililer** > Ekle**başka**' i seçerek SDK kitaplığını bir çerçeve olarak ekleyin. Giriş dizininize gidin ve dosyayı `MicrosoftCognitiveServicesSpeech.framework`seçin. Bu eylem SDK kitaplığını otomatik olarak üst bilgi **bağlantılı çerçeveye ve kitaplıklara** ekler.
+      1. **Katıştırılmış** ikililer üstbilgisinin altındaki **genel** sekmesinde, **katıştırılmış ikililer**Ekle başka ' i seçerek SDK kitaplığını bir çerçeve olarak ekleyin  >  **Add other**. Giriş dizininize gidin ve dosyayı seçin `MicrosoftCognitiveServicesSpeech.framework` . Bu eylem SDK kitaplığını otomatik olarak üst bilgi **bağlantılı çerçeveye ve kitaplıklara** ekler.
          ![Eklenen çerçeve](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-framework.png)
       1. **Derleme ayarları** sekmesine gidin ve **Tüm** ayarı seçin.
       1. $ (SRCROOT)/dizinini ekleyin. **arama yolları** başlığı altındaki **çerçeveye arama yolları** .
@@ -66,7 +66,7 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
 
 ## <a name="set-up-the-ui"></a>Kullanıcı arabirimini ayarlama
 
-Örnek uygulamanın çok basit bir kullanıcı arabirimi vardır. Konuşma tanımayı dosyadan veya mikrofon girişinden ya da sonucu görüntüleyecek bir metin etiketiyle başlatmak için iki düğme vardır. Kullanıcı arabirimi projenin `Main.storyboard` bölümünde ayarlanır. Proje ağacının `Main.storyboard` girişine sağ tıklayıp**kaynak kodu** **Aç** > ' ı seçerek görsel taslağın XML görünümünü açın.
+Örnek uygulamanın çok basit bir kullanıcı arabirimi vardır. Konuşma tanımayı dosyadan veya mikrofon girişinden ya da sonucu görüntüleyecek bir metin etiketiyle başlatmak için iki düğme vardır. Kullanıcı arabirimi projenin `Main.storyboard` bölümünde ayarlanır. `Main.storyboard`Proje ağacının girişine sağ tıklayıp **Open As**  >  **kaynak kodu**aç ' ı seçerek görsel taslağın XML görünümünü açın.
 
 Otomatik olarak oluşturulan XML 'i bu kodla değiştirin:
 
@@ -81,8 +81,8 @@ Otomatik olarak oluşturulan XML 'i bu kodla değiştirin:
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/ios/from-microphone/helloworld/helloworld/ViewController.m#code)]
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
-1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, ücretsiz deneme `westus` aboneliği için kullanın.
-1. Mikrofon erişimi için isteği ekleyin. Proje ağacının `Info.plist` girişine sağ tıklayın ve**kaynak kodu** **olarak** > aç ' ı seçin. `<dict>` Bölümüne aşağıdaki satırları ekleyin ve dosyayı kaydedin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, `westus` ücretsiz deneme aboneliği için kullanın.
+1. Mikrofon erişimi için isteği ekleyin. `Info.plist`Proje ağacının girişine sağ tıklayın ve kaynak kodu **olarak aç**' ı seçin  >  **Source Code**. Bölümüne aşağıdaki satırları ekleyin `<dict>` ve dosyayı kaydedin.
 
     ```xml
     <key>NSMicrophoneUsageDescription</key>
@@ -91,9 +91,9 @@ Otomatik olarak oluşturulan XML 'i bu kodla değiştirin:
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 
-1. Hata ayıklama**alanını** >  **görüntüle** > **konsolunu etkinleştir**' i seçerek hata ayıklama çıktısını görünür yapın.
-1. **Ürün** > **hedefi** menüsündeki listeden uygulama hedefi olarak geliştirme makinenize bağlı iOS simülatörü veya iOS cihazını seçin.
-1. Menüden **ürün** > **çalıştırması** ' nı seçerek iOS benzeticisinde örnek kodu derleyin ve çalıştırın. Ayrıca **oynat** düğmesini de seçebilirsiniz.
+1. Hata ayıklama alanını **görüntüle**  >  **Debug Area**  >  **konsolunu etkinleştir**' i seçerek hata ayıklama çıktısını görünür yapın.
+1. **Ürün**  >  **hedefi** menüsündeki listeden uygulama hedefi olarak geliştirme makinenize bağlı iOS simülatörü veya iOS cihazını seçin.
+1. Menüden **ürün**çalıştırması ' nı seçerek iOS benzeticisinde örnek kodu derleyin ve çalıştırın  >  **Run** . Ayrıca **oynat** düğmesini de seçebilirsiniz.
 1. Uygulamadaki **tanı (dosya)** düğmesini seçtikten sonra ses dosyasının içeriğini "" Hava durumu nedir? "şeklinde görmeniz gerekir. ses dosyasının içeriklerini görmeniz gerekir.
 
    ![Sanal iOS uygulaması](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-simulated-app.png)

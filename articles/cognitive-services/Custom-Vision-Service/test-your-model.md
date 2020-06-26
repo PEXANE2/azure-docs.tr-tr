@@ -3,19 +3,19 @@ title: Model Özel Görüntü İşleme Hizmeti test etme ve yeniden eğitme
 titleSuffix: Azure Cognitive Services
 description: Bu makalede bir görüntünün nasıl test yapılacağı ve Özel Görüntü İşleme hizmetinde modelinizi yeniden eğitebilmeniz için nasıl kullanılacağı gösterilir.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.author: anroth
-ms.openlocfilehash: c6ed8869f6d33609381a42fd22d728e9e5542802
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: 5a3aacd1d07ff068fe50312b2c1d47ac080e5c2c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73721188"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391732"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Özel Görüntü İşleme Hizmeti bir modeli test etme ve yeniden eğitme
 

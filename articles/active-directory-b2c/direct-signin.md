@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/18/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a02ad3ea43ae9d91489417bc314e3c23d54a958
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9e7c537e85039675f27fa3e276b6b964ce1679b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188775"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388604"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak doğrudan oturum açma ayarlama
 
@@ -29,7 +29,7 @@ Bir oturum açma Kullanıcı yolculuğu sırasında, bağlı olan taraf uygulama
 
 Kullanıcı, oturum açma metin kutusundaki değeri değiştirebilir.
 
-Özel bir ilke kullanıyorsanız, `SelfAsserted-LocalAccountSignin-Email` teknik profili geçersiz kılın. `<InputClaims>` Bölümünde, Signınname talebinin DefaultValue değerini olarak `{OIDC:LoginHint}`ayarlayın. `{OIDC:LoginHint}` Değişkeni, `login_hint` parametresinin değerini içerir. Azure AD B2C, Signınname talebinin değerini okur ve Signınname metin kutusunu önceden doldurur.
+Özel bir ilke kullanıyorsanız, `SelfAsserted-LocalAccountSignin-Email` Teknik profili geçersiz kılın. `<InputClaims>`Bölümünde, Signınname talebinin DefaultValue değerini olarak ayarlayın `{OIDC:LoginHint}` . `{OIDC:LoginHint}`Değişkeni, parametresinin değerini içerir `login_hint` . Azure AD B2C, Signınname talebinin değerini okur ve Signınname metin kutusunu önceden doldurur.
 
 ```xml
 <ClaimsProvider>
@@ -47,11 +47,11 @@ Kullanıcı, oturum açma metin kutusundaki değeri değiştirebilir.
 
 ## <a name="redirect-sign-in-to-a-social-provider"></a>Oturum açma oturumunu bir sosyal sağlayıcıya yönlendirin
 
-Uygulamanızın Facebook, LinkedIn veya Google gibi sosyal hesapları içermesi için oturum açma yolculuğunu yapılandırdıysanız, `domain_hint` parametresini belirtebilirsiniz. Bu sorgu parametresi, oturum açma için kullanılması gereken sosyal kimlik sağlayıcısı hakkında Azure AD B2C için bir ipucu sağlar. Örneğin, uygulama belirtiyorsa `domain_hint=facebook.com`, oturum açma doğrudan Facebook oturum açma sayfasına gider.
+Uygulamanızın Facebook, LinkedIn veya Google gibi sosyal hesapları içermesi için oturum açma yolculuğunu yapılandırdıysanız, `domain_hint` parametresini belirtebilirsiniz. Bu sorgu parametresi, oturum açma için kullanılması gereken sosyal kimlik sağlayıcısı hakkında Azure AD B2C için bir ipucu sağlar. Örneğin, uygulama belirtiyorsa `domain_hint=facebook.com` , oturum açma doğrudan Facebook oturum açma sayfasına gider.
 
 ![URL 'de vurgulanan domain_hint sorgu parametresi ile oturum açma sayfası](./media/direct-signin/domain-hint.png)
 
-Özel bir ilke kullanıyorsanız, herhangi `<Domain>domain name</Domain>` `<ClaimsProvider>`bir XML öğesini kullanarak etki alanı adını yapılandırabilirsiniz.
+Özel bir ilke kullanıyorsanız, herhangi bir XML öğesini kullanarak etki alanı adını yapılandırabilirsiniz `<Domain>domain name</Domain>` `<ClaimsProvider>` .
 
 ```xml
 <ClaimsProvider>

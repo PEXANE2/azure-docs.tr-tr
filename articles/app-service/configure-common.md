@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811126"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389793"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -19,17 +19,17 @@ Bu konuda, [Azure Portal]kullanarak Web Apps, mobil arka uç veya API uygulamas�
 
 ## <a name="configure-app-settings"></a>Uygulama ayarlarını yapılandırma
 
-App Service, uygulama ayarları, uygulama koduna ortam değişkenleri olarak geçirilen değişkenlerdir. Linux uygulamaları ve özel kapsayıcılar için App Service kapsayıcıda ortam değişkenini ayarlamak için `--env` bayrağını kullanarak uygulama ayarlarını kapsayıcıya geçirir.
+App Service, uygulama ayarları, uygulama koduna ortam değişkenleri olarak geçirilen değişkenlerdir. Linux uygulamaları ve özel kapsayıcılar için App Service `--env` kapsayıcıda ortam değişkenini ayarlamak için bayrağını kullanarak uygulama ayarlarını kapsayıcıya geçirir.
 
 [Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. 
 
 ![Uygulama Hizmetleri arama](./media/configure-common/search-for-app-services.png)
 
-Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
+Uygulamanın sol menüsünde **yapılandırma**  >  **uygulama ayarları**' nı seçin.
 
 ![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
-ASP.NET ve ASP.NET Core geliştiricileri için, App Service uygulama ayarlarının ayarlanması, bunları *Web. config* veya `<appSettings>` *appSettings. JSON*içinde ayarlamak gibidir, ancak App Service değerleri *Web. config* veya *appSettings. JSON*içinde olanları geçersiz kılar. *Web. config* veya *appSettings. JSON*içinde geliştirme ayarlarını (örneğin, yerel MySQL parolası) tutabilir, ancak üretim gizli dizileri (örneğin, Azure MySQL veritabanı parolası) App Service güvenlidir. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
+ASP.NET ve ASP.NET Core geliştiricileri için App Service uygulama ayarlarını `<appSettings>` *Web.config* veya *üzerindeappsettings.js*olarak ayarlama gibidir, ancak App Service içindeki değerler *Web.config* veya *appsettings.jsüzerinde*olanları geçersiz kılar. *Web.config* veya *appsettings.js*' de (örneğin, Azure MySQL veritabanı parolası) geliştirme ayarlarını (örneğin, yerel mysql parolası), App Service güvenli bir şekilde koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
 Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişkenleri olarak uygulama ayarlarını alır. Dil yığınına özgü adımlar için bkz.:
 
@@ -59,7 +59,7 @@ Bir ayarı düzenlemek için sağ taraftaki **Düzenle** düğmesine tıklayın.
 İşiniz bittiğinde **Güncelleştir**' e tıklayın. **Yapılandırma** sayfasında geri **Kaydet** ' e tıklamasını unutmayın.
 
 > [!NOTE]
-> Varsayılan bir Linux kapsayıcısında veya özel bir Linux kapsayıcısında, benzer `ApplicationInsights:InstrumentationKey` şekilde uygulama ayarı adındaki tüm iç içe geçmiş anahtar yapısının, anahtar adı için App Service olarak `ApplicationInsights__InstrumentationKey` yapılandırılması gerekir. Diğer bir deyişle, herhangi `:` birinin (çift alt `__` çizgi) ile değiştirilmeleri gerekir.
+> Varsayılan bir Linux kapsayıcısında veya özel bir Linux kapsayıcısında, benzer şekilde uygulama ayarı adındaki tüm iç içe geçmiş anahtar yapısının, `ApplicationInsights:InstrumentationKey` anahtar adı için App Service olarak yapılandırılması gerekir `ApplicationInsights__InstrumentationKey` . Diğer bir deyişle, herhangi birinin `:` `__` (çift alt çizgi) ile değiştirilmeleri gerekir.
 >
 
 ### <a name="edit-in-bulk"></a>Toplu olarak Düzenle
@@ -86,11 +86,11 @@ Uygulama ayarları aşağıdaki JSON biçimlendirmesine sahiptir:
 
 ## <a name="configure-connection-strings"></a>Bağlantı dizelerini yapılandırma
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **uygulama ayarları**' nı seçin.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma**  >  **uygulama ayarları**' nı seçin.
 
 ![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
-ASP.NET ve ASP.NET Core geliştiricileri için App Service `<connectionStrings>` bağlantı dizelerinin, *Web. config*içinde ayarlanmaları, ancak App Service ' de ayarladığınız değerler, *Web. config*'de olanları geçersiz kılar. *Web. config* ve üretim gizli dizileri (ÖRNEĞIN, SQL veritabanı kimlik bilgileri) ' nde güvenli App Service için geliştirme ayarlarını (örneğin, veritabanı dosyası) koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
+ASP.NET ve ASP.NET Core geliştiricileri için, App Service bağlantı dizeleriniWeb.config' de ayarlama gibidir `<connectionStrings>` , ancak App Service * *' de ayarladığınız değerler *Web.config*geçersiz kılar. *Web.config* ve üretim gizli dizileri (ÖRNEĞIN, SQL veritabanı kimlik bilgileri) içinde App Service güvenli bir şekilde geliştirme ayarlarını (örneğin, bir veritabanı dosyası) koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
 Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-app-settings) kullanılması daha iyidir, çünkü bağlantı dizeleri değerlere erişmek için değişken anahtarlarında özel biçimlendirme gerektirir. Ancak bir özel durum aşağıda verilmiştir: uygulamanızda bağlantı dizelerini yapılandırırsanız, belirli Azure veritabanı türleri uygulamayla birlikte yedeklenir. Daha fazla bilgi için bkz. [nelerin yedeklenebileceği](manage-backup.md#what-gets-backed-up). Bu otomatik yedeklemeye ihtiyacınız yoksa uygulama ayarları ' nı kullanın.
 
@@ -102,7 +102,7 @@ Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-
 * Özel`CUSTOMCONNSTR_`
 * PostgreSQL`POSTGRESQLCONNSTR_`  
 
-Örneğin, *connectionstring1* adlı bir MySQL bağlantı dizesi, ortam değişkeni `MYSQLCONNSTR_connectionString1`olarak erişilebilir. Dil yığınına özgü adımlar için bkz.:
+Örneğin, *connectionstring1* adlı bir MySQL bağlantı dizesi, ortam değişkeni olarak erişilebilir `MYSQLCONNSTR_connectionString1` . Dil yığınına özgü adımlar için bkz.:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
@@ -158,7 +158,7 @@ Bağlantı dizeleri aşağıdaki JSON biçimlendirmesine sahiptir:
 
 ## <a name="configure-general-settings"></a>Genel ayarları yapılandırma
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma** > **genel ayarları**' nı seçin.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde **yapılandırma**  >  **genel ayarları**' nı seçin.
 
 ![Genel ayarlar](./media/configure-common/open-general.png)
 
@@ -168,22 +168,22 @@ Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı ayar
 - **Platform ayarları**: barındırma platformu için aşağıdakiler de dahil olmak üzere ayarları yapılandırmanıza olanak sağlar:
     - **Bit genişliği: 32**-bit veya 64 bit.
     - **WebSocket protokolü**: örneğin, [ASP.net signalr] veya [Socket.io](https://socket.io/)için.
-    - **Always on**: hiçbir trafik olmadığında bile uygulamanın yüklü kalmasını sağlayın. Sürekli Web Işleri veya bir CRON ifadesi kullanılarak tetiklenen Web Işleri için gereklidir.
+    - **Always on**: hiçbir trafik olmadığında bile uygulamanın yüklenmesini önler. Sürekli Web Işleri veya bir CRON ifadesi kullanılarak tetiklenen Web Işleri için gereklidir.
       > [!NOTE]
-      > Always on özelliği ile uç noktasını kontrol edebilirsiniz. Her zaman uygulama köküne bir istek gönderir.
+      > Her zaman açık özelliği sayesinde ön uç Yük Dengeleyici uygulama köküne bir istek gönderir. App Service Bu uygulama uç noktası yapılandırılamıyor.
     - **Yönetilen işlem hattı sürümü**: IIS [ardışık düzen modu]. Daha eski bir IIS sürümü gerektiren eski bir uygulamanız varsa, bunu **Klasik** olarak ayarlayın.
     - **Http sürümü**: [https/2](https://wikipedia.org/wiki/HTTP/2) protokolü desteğini etkinleştirmek için **2,0** olarak ayarlayın.
     > [!NOTE]
     > Modern tarayıcıların çoğu yalnızca TLS üzerinden HTTP/2 protokolünü destekler, şifrelenmemiş trafik HTTP/1.1 kullanmaya devam eder. İstemci tarayıcılarının uygulamanıza HTTP/2 ile bağlanmasını sağlamak için özel DNS adınızın güvenliğini sağlayın. Daha fazla bilgi için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
     - **ARR benzeşimi**: çok örnekli bir dağıtımda, istemcinin oturum süresince aynı örneğe yönlendirildiğinden emin olun. Durum bilgisi olmayan uygulamalar için bu seçeneği **kapalı** olarak ayarlayabilirsiniz.
-- **Hata ayıklama**: [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)veya [Node. js](containers/configure-language-nodejs.md#debug-remotely) uygulamaları için uzaktan hata ayıklamayı etkinleştirin. Bu seçenek, 48 saat sonra otomatik olarak devre dışı bırakır.
+- **Hata ayıklama**: [ASP.net](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)veya [Node.js](containers/configure-language-nodejs.md#debug-remotely) uygulamalar için uzaktan hata ayıklamayı etkinleştirin. Bu seçenek, 48 saat sonra otomatik olarak devre dışı bırakır.
 - **Gelen istemci sertifikaları**: [karşılıklı kimlik doğrulamasında](app-service-web-configure-tls-mutual-auth.md)istemci sertifikaları gerektir.
 
 ## <a name="configure-default-documents"></a>Varsayılan belgeleri yapılandırma
 
 Bu ayar yalnızca Windows uygulamaları içindir.
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde, **yapılandırma** > **Varsayılan belgeler**' i seçin.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde, **yapılandırma**  >  **Varsayılan belgeler**' i seçin.
 
 ![Varsayılan belgeler](./media/configure-common/open-documents.png)
 
@@ -193,7 +193,7 @@ Uygulama, statik içerik sunmak yerine URL 'ye bağlı olarak yönlendiren modü
 
 ## <a name="configure-path-mappings"></a>Yol eşlemelerini yapılandırma
 
-[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde, **yapılandırma** > **yolu eşlemeleri**' ni seçin.
+[Azure Portal], **uygulama hizmetleri**' ni arayıp seçin ve ardından uygulamanızı seçin. Uygulamanın sol menüsünde, **yapılandırma**  >  **yolu eşlemeleri**' ni seçin.
 
 ![Yol eşlemeleri](./media/configure-common/open-path.png)
 
@@ -205,13 +205,13 @@ Windows uygulamaları için IIS İşleyici eşlemelerini ve sanal uygulamaları 
 
 İşleyici eşlemeleri belirli dosya uzantılarına yönelik istekleri işlemek için özel betik işlemcileri eklemenize olanak sağlar. Özel bir işleyici eklemek için **yeni işleyici**' ye tıklayın. İşleyiciyi şu şekilde yapılandırın:
 
-- **Uzantı**. İşlemek istediğiniz * \*. php* veya *Handler. FCGI*gibi dosya uzantısı.
-- **Betik işlemcisi**. Betik işlemcisinin size mutlak yolu. Dosya uzantısıyla eşleşen dosya istekleri betik işlemcisi tarafından işlenir. Uygulamanın kök dizinine `D:\home\site\wwwroot` başvurmak için yolu kullanın.
+- **Uzantı**. İşlemek istediğiniz * \* . php* veya *Handler. FCGI*gibi dosya uzantısı.
+- **Betik işlemcisi**. Betik işlemcisinin size mutlak yolu. Dosya uzantısıyla eşleşen dosya istekleri betik işlemcisi tarafından işlenir. `D:\home\site\wwwroot`Uygulamanın kök dizinine başvurmak için yolu kullanın.
 - **Bağımsız değişkenler**. Betik işlemcisi için isteğe bağlı komut satırı bağımsız değişkenleri.
 
-Her uygulama, kodunuzun varsayılan olarak dağıtıldığı varsayılan`/`kök yolu ( `D:\home\site\wwwroot`) ile eşlenir. Uygulama kökleriniz farklı bir klasörlerde varsa veya deponuzda birden fazla uygulama varsa, sanal uygulamaları ve dizinleri buradan düzenleyebilir veya ekleyebilirsiniz. **Yeni sanal uygulama veya dizin**' e tıklayın.
+Her uygulama, kodunuzun varsayılan olarak dağıtıldığı varsayılan kök yolu ( `/` ) ile eşlenir `D:\home\site\wwwroot` . Uygulama kökleriniz farklı bir klasörlerde varsa veya deponuzda birden fazla uygulama varsa, sanal uygulamaları ve dizinleri buradan düzenleyebilir veya ekleyebilirsiniz. **Yeni sanal uygulama veya dizin**' e tıklayın.
 
-Sanal uygulamaları ve dizinleri yapılandırmak için, her bir sanal dizini ve ilgili fiziksel yolunu Web sitesi köküne (`D:\home`) göre belirtin. İsteğe bağlı olarak, bir sanal dizini bir uygulama olarak işaretlemek için **uygulama** onay kutusunu seçebilirsiniz.
+Sanal uygulamaları ve dizinleri yapılandırmak için, her bir sanal dizini ve ilgili fiziksel yolunu Web sitesi köküne () göre belirtin `D:\home` . İsteğe bağlı olarak, bir sanal dizini bir uygulama olarak işaretlemek için **uygulama** onay kutusunu seçebilirsiniz.
 
 ### <a name="containerized-apps"></a>Kapsayıcılı uygulamalar
 
@@ -253,7 +253,7 @@ Bkz. [Azure App Service için özel bir Linux kapsayıcısı yapılandırma](con
 - [Tanılama günlüklerini etkinleştirme](troubleshoot-diagnostic-logs.md)
 - [Azure App Service bir uygulamayı ölçeklendirme]
 - [Azure App Service temel bilgileri izleme]
-- [ApplicationHost. xdt ile applicationHost. config ayarlarını değiştirme](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
+- [ApplicationHost. xdt ile applicationHost.config ayarlarını değiştirme](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 

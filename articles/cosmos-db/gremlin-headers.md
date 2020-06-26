@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72755091"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390865"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin sunucu yanıtı üstbilgileri
 Bu makalede, istek yürütmesi sırasında Cosmos DB Gremlin sunucusunun çağırana döndürdüğü başlıklar ele alınır. Bu üst bilgiler, istek performansı sorunlarının giderilmesi, Cosmos DB hizmetiyle yerel olarak tümleştirilen uygulamaların oluşturulması ve müşteri desteğinin basitleştirilmesi için kullanışlıdır.
@@ -38,18 +38,18 @@ Sunucu tarafından döndürülen en yaygın durum kodları aşağıda listelenmi
 
 | Durum | Açıklama |
 | --- | --- |
-| **401** | Kimlik doğrulama `"Unauthorized: Invalid credentials provided"` parolası Cosmos DB hesap anahtarıyla eşleşmiyorsa hata iletisi döndürülür. Azure portal Gremlin hesabınıza Cosmos DB gidin ve anahtarın doğru olduğundan emin olun.|
+| **401** | `"Unauthorized: Invalid credentials provided"`Kimlik doğrulama parolası Cosmos DB hesap anahtarıyla eşleşmiyorsa hata iletisi döndürülür. Azure portal Gremlin hesabınıza Cosmos DB gidin ve anahtarın doğru olduğundan emin olun.|
 | **404** | Aynı kenarı veya köşeyi aynı anda silmeye ve güncelleştirmeye çalışacak eşzamanlı işlemler. `"Owner resource does not exist"` hata iletisi bağlantı parametrelerinde `/dbs/<database name>/colls/<collection or graph name>` biçiminde belirtilen veritabanı veya koleksiyonun doğru olmadığını gösterir.|
 | **408** | `"Server timeout"`çapraz geçişinin **30 saniyeden** fazla sürdüğünü ve sunucu tarafından iptal edildiğini gösterir. Çapraz arama kapsamını daraltmak için her geçiş atlamada köşeleri veya kenarları filtreleyerek, traversals uygulamanızı en uygun şekilde gerçekleştirin.|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` Bu durum genellikle grafta zaten aynı tanımlayıcıya sahip bir köşe veya kenar bulunduğunda oluşur.| 
-| **412** | Durum kodu hata iletisiyle `"PreconditionFailedException": One of the specified pre-condition is not met`birlikte tamamlanır. Bu hata, bir kenar veya köşeyi okumak ve değiştirildikten sonra depoya geri yazmak arasındaki iyimser eşzamanlılık denetim ihlalinin göstergesi olur. Bu hatanın oluştuğu yaygın durumlar, örneğin `g.V('identifier').property('name','value')`Özellik değişimdir. Gremlin motoru köşeyi okur, değiştirir ve tekrar yazar. Paralel olarak çalışan başka bir geçiş geçişi varsa, aynı köşeyi veya bir kenarı yazmaya çalışırken, bunlardan biri bu hatayı alır. Uygulamanın çapraz geçişi sunucuya yeniden göndermesi gerekir.| 
+| **412** | Durum kodu hata iletisiyle birlikte tamamlanır `"PreconditionFailedException": One of the specified pre-condition is not met` . Bu hata, bir kenar veya köşeyi okumak ve değiştirildikten sonra depoya geri yazmak arasındaki iyimser eşzamanlılık denetim ihlalinin göstergesi olur. Bu hatanın oluştuğu yaygın durumlar, örneğin özellik değişimdir `g.V('identifier').property('name','value')` . Gremlin motoru köşeyi okur, değiştirir ve tekrar yazar. Paralel olarak çalışan başka bir geçiş geçişi varsa, aynı köşeyi veya bir kenarı yazmaya çalışırken, bunlardan biri bu hatayı alır. Uygulamanın çapraz geçişi sunucuya yeniden göndermesi gerekir.| 
 | **429** | İstek azaltıldı ve **x-ms-retry-after-ms** değeri kadar süre sonra yeniden denenmelidir| 
 | **500** | `"NotFoundException: Entity with the specified id does not exist in the system."` ifadesini içeren hata iletisi bir veritabanı ve/veya koleksiyonun aynı adla yeniden oluşturulduğunu gösterir. Değişikliğin dağıtılması ve farklı Cosmos DB bileşenlerindeki önbellekleri geçersiz kılmasıyla bu hata 5 dakika içinde görüntüden kaldırılır. Bu sorundan kaçınmak için her zaman benzersiz veritabanı ve koleksiyon adları kullanın.| 
 | **1000** | Bu durum kodu, sunucu başarıyla bir ileti ayrıştırdığında ancak yürütülemediğinden döndürülür. Genellikle sorguyla ilgili bir sorun olduğunu gösterir.| 
 | **1001** | Bu kod, sunucu geçiş yürütmeyi tamamladığında döndürülür, ancak yanıtı istemciye geri serileştirmezse. Geçiş, çok büyük olan veya TinkerPop protokol belirtimine uygun olmayan bir karmaşık sonuç oluşturduğunda bu hata oluşabilir. Uygulamanın bu hatayla karşılaştığında geçiş geçişini basitleştirmesi gerekir. | 
 | **1003** | `"Query exceeded memory limit. Bytes Consumed: XXX, Max: YYY"`geçiş, izin verilen bellek sınırını aştığında döndürülür. Bellek sınırı, çapraz geçiş başına **2 GB** 'dir.| 
 | **1004** | Bu durum kodu hatalı biçimlendirilmiş grafik isteğini gösterir. Seri durumdan çıkarma işlemi başarısız olduğunda istek hatalı olabilir, değer türü veya desteklenmeyen Gremlin işlemi istendi olarak değer olmayan türün serisi kaldırılıyor. Uygulama başarılı olmayacak, isteği yeniden denememelidir. | 
-| **1007** | Genellikle bu durum kodu hata iletisiyle `"Could not process request. Underlying connection has been closed."`birlikte döndürülür. İstemci sürücüsü sunucu tarafından kapatılan bir bağlantıyı kullanmayı denerse bu durum oluşabilir. Uygulamanın çapraz geçişi farklı bir bağlantıda yeniden denemesi gerekir.
+| **1007** | Genellikle bu durum kodu hata iletisiyle birlikte döndürülür `"Could not process request. Underlying connection has been closed."` . İstemci sürücüsü sunucu tarafından kapatılan bir bağlantıyı kullanmayı denerse bu durum oluşabilir. Uygulamanın çapraz geçişi farklı bir bağlantıda yeniden denemesi gerekir.
 | **1008** | Cosmos DB Gremlin Server, kümedeki trafiği yeniden dengelemek için bağlantıları sonlandırabilirler. İstemci sürücüleri bu durumu işlemeli ve istekleri sunucuya göndermek için yalnızca canlı bağlantıları kullanmalıdır. Bazen istemci sürücüleri bağlantının kapatıldığını algılayamayabilir. Uygulama bir hatayla karşılaştığında, `"Connection is too busy. Please retry after sometime or open more connections."` farklı bir bağlantıda çapraz geçişi yeniden denemelidir.
 
 ## <a name="samples"></a>Örnekler
@@ -107,6 +107,6 @@ try {
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Cosmos DB için HTTP durum kodları](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
-* [Ortak Azure Cosmos DB REST yanıt üst bilgileri](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
+* [Azure Cosmos DB için HTTP durum kodları](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
+* [Ortak Azure Cosmos DB REST yanıt üst bilgileri](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [Inkerpop Graph sürücü sağlayıcısı gereksinimleri]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

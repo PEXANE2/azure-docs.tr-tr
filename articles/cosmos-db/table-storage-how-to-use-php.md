@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dcea83b9452b33baef8d563c7776aa9bd258a5f4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76771064"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389692"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP’den Azure Depolama Tablo hizmeti veya Azure Cosmos DB Tablo API'sini kullanma
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -95,7 +95,7 @@ $connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];Ac
 UseDevelopmentStorage = true
 ```
 
-Bir Azure Tablo Depolama istemcisi veya Azure Cosmos DB istemcisi oluşturmak için **TableRestProxy** sınıfını kullanmanız gerekir. Şunları yapabilirsiniz:
+Bir Azure Tablo Depolama istemcisi veya Azure Cosmos DB istemcisi oluşturmak için **TableRestProxy** sınıfını kullanmanız gerekir. Seçenekleriniz şunlardır:
 
 * Bağlantı dizesini doğrudan geçirebilirsiniz veya
 * Bağlantı dizesi için birden fazla harici kaynağı denetlemek için **CloudConfigurationManager (CCM)** kullanabilirsiniz:
@@ -140,7 +140,7 @@ catch(ServiceException $e){
 Tablo adlarındaki kısıtlamalar hakkında daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama][table-data-model].
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
-Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity**’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlık üzerindeki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi gerçekleştirilir.) , `RowKey` Bir bölüm içindeki bir VARLıĞıN benzersiz kimliğidir.
+Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity**’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlık üzerindeki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi gerçekleştirilir.) , `RowKey` Bir bölüm içindeki bir varlığın BENZERSIZ kimliğidir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -509,8 +509,8 @@ Artık Tablo hizmeti ve Azure Cosmos DB’ye ilişkin temel bilgileri öğrendin
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: https://php.net/require_once
-[table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
+[table-service-timeouts]: /rest/api/storageservices/setting-timeouts-for-table-service-operations
 
-[table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model
-[filters]: https://docs.microsoft.com/rest/api/storageservices/Querying-Tables-and-Entities
-[entity-group-transactions]: https://docs.microsoft.com/rest/api/storageservices/Performing-Entity-Group-Transactions
+[table-data-model]: /rest/api/storageservices/Understanding-the-Table-Service-Data-Model
+[filters]: /rest/api/storageservices/Querying-Tables-and-Entities
+[entity-group-transactions]: /rest/api/storageservices/Performing-Entity-Group-Transactions

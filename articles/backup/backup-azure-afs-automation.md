@@ -3,12 +3,12 @@ title: PowerShell kullanarak bir Azure dosya paylaşımının yedeklenmesi
 description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak bir Azure dosyaları dosya paylaşımının nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 53187152802908e94ee4a8a231d3b7874cf42422
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2d391c661363a1a2bc4238cd7a976b7e13c4f0b8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199349"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391086"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>PowerShell kullanarak bir Azure dosya paylaşımının yedeklenmesi
 
@@ -60,7 +60,7 @@ PowerShell 'i aşağıdaki şekilde ayarlayın:
 5. Görüntülenen Web sayfasında hesap kimlik bilgilerinizi girmeniz istenir.
 
     Alternatif olarak, **-Credential**kullanarak hesap kimlik bilgilerinizi **Connect-azaccount** cmdlet 'ine bir parametre olarak dahil edebilirsiniz.
-   
+
     Bir kiracı adına çalışan bir CSP iş ortağıysanız, müşteriyi kiracı olarak belirtin. Kiracı KIMLIKLERINI veya kiracı birincil etki alanı adını kullanın. **Connect-AzAccount-Tenant "fabrikam.com"** bir örnektir.
 
 6. Hesapla birlikte kullanmak istediğiniz aboneliği ilişkilendirin, çünkü bir hesap birden çok aboneliğe sahip olabilir:
@@ -95,20 +95,11 @@ Kurtarma Hizmetleri Kasası oluşturmak için aşağıdaki adımları izleyin:
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. Kasayı oluşturmak için [New-Azrecoveryserviceskasa](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) cmdlet 'ini kullanın. Kaynak grubu için kullandığınız kasa için aynı konumu belirtin.
+1. Kasayı oluşturmak için [New-Azrecoveryserviceskasa](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) cmdlet 'ini kullanın. Kaynak grubu için kullandığınız kasa için aynı konumu belirtin.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-
-3. Kasa depolaması için kullanılacak artıklık türünü belirtin. [Yerel olarak yedekli depolama](../storage/common/storage-redundancy-lrs.md) veya coğrafi olarak [yedekli depolama](../storage/common/storage-redundancy-grs.md)kullanabilirsiniz.
-   
-   Aşağıdaki örnek, **testkasasının** [set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmdlet 'Inin **-BackupStorageRedundancy** seçeneğini **geoyedekli**olarak ayarlar:
-
-   ```powershell
-   $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-   Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-   ```
 
 ### <a name="view-the-vaults-in-a-subscription"></a>Bir abonelikteki kasaları görüntüleme
 
@@ -250,16 +241,16 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 Bu bölümde, genel kullanıma hazırlık aşamasında Azure dosya paylaşımlarının yedeklemelerinde önemli bir değişiklik özetlenmektedir.
 
-Azure dosya paylaşımları için bir yedeklemeyi etkinleştirirken, kullanıcı müşteriye varlık adı olarak bir dosya paylaşım adı verir ve bir yedekleme öğesi oluşturulur. Yedekleme öğesinin adı, Azure Backup hizmetinin oluşturduğu benzersiz bir tanımlayıcıdır. Genellikle tanımlayıcı, Kullanıcı dostu bir addır. Ancak, bir dosya paylaşımının silinebileceği ve aynı adla başka bir dosya paylaşımının oluşturulabildiği geçici silme senaryosunu işlemek için, bir Azure dosya paylaşımının benzersiz kimliği artık bir KIMLIK olur. 
+Azure dosya paylaşımları için bir yedeklemeyi etkinleştirirken, kullanıcı müşteriye varlık adı olarak bir dosya paylaşım adı verir ve bir yedekleme öğesi oluşturulur. Yedekleme öğesinin adı, Azure Backup hizmetinin oluşturduğu benzersiz bir tanımlayıcıdır. Genellikle tanımlayıcı, Kullanıcı dostu bir addır. Ancak, bir dosya paylaşımının silinebileceği ve aynı adla başka bir dosya paylaşımının oluşturulabildiği geçici silme senaryosunu işlemek için, bir Azure dosya paylaşımının benzersiz kimliği artık bir KIMLIK olur.
 
-Her öğenin benzersiz KIMLIĞINI bildirmek için, tüm ilgili öğeleri almak üzere **Backupmanagementtype** ve **workloadtype** için Ilgili filtrelerle **Get-azrecoveryservicesbackupıtem** komutunu çalıştırın. Ardından döndürülen PowerShell nesnesi/yanıtı içindeki ad alanını gözlemleyin. 
+Her öğenin benzersiz KIMLIĞINI bildirmek için, tüm ilgili öğeleri almak üzere **Backupmanagementtype** ve **workloadtype** için Ilgili filtrelerle **Get-azrecoveryservicesbackupıtem** komutunu çalıştırın. Ardından döndürülen PowerShell nesnesi/yanıtı içindeki ad alanını gözlemleyin.
 
 Öğeleri listemenizi ve sonra yanıttaki ad alanından benzersiz adlarını almanızı öneririz. Bu değeri, öğeleri *ad* parametresiyle filtrelemek için kullanın. Aksi takdirde, öğesini KIMLIĞINE sahip öğeyi almak için *FriendlyName* parametresini kullanın.
 
 > [!IMPORTANT]
-> PowerShell 'in Azure dosya paylaşımlarının yedeklemeleri için en düşük sürüme (az. RecoveryServices 2.6.0) yükseltildiğinden emin olun. Bu sürümle birlikte, *FriendlyName* filtresi **Get-Azrecoveryservicesbackupıtem** komutu için kullanılabilir. 
+> PowerShell 'in Azure dosya paylaşımlarının yedeklemeleri için en düşük sürüme (az. RecoveryServices 2.6.0) yükseltildiğinden emin olun. Bu sürümle birlikte, *FriendlyName* filtresi **Get-Azrecoveryservicesbackupıtem** komutu için kullanılabilir.
 >
-> Azure dosya paylaşımının adını *FriendlyName* parametresine geçirin. Dosya paylaşımının adını *Name* parametresine geçirirseniz, bu sürüm adı *FriendlyName* parametresine geçirmek için bir uyarı oluşturur. 
+> Azure dosya paylaşımının adını *FriendlyName* parametresine geçirin. Dosya paylaşımının adını *Name* parametresine geçirirseniz, bu sürüm adı *FriendlyName* parametresine geçirmek için bir uyarı oluşturur.
 >
 > En düşük sürümü yüklememe, mevcut betiklerin oluşmasına neden olabilecek. Aşağıdaki komutu kullanarak PowerShell 'in en düşük sürümünü yüklemelisiniz:
 >
@@ -295,5 +286,5 @@ Yedeklemeler çekilirken Azure dosya paylaşma anlık görüntüleri kullanılı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal Azure dosyalarını yedekleme](backup-afs.md)hakkında bilgi edinin.
-- Yedeklemeleri zamanlamak için bir Azure Otomasyonu runbook 'u kullanarak [GitHub 'daki örnek komut dosyasına](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) bakın.
+* [Azure Portal Azure dosyalarını yedekleme](backup-afs.md)hakkında bilgi edinin.
+* Yedeklemeleri zamanlamak için bir Azure Otomasyonu runbook 'u kullanarak [GitHub 'daki örnek komut dosyasına](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) bakın.

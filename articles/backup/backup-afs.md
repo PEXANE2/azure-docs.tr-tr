@@ -3,14 +3,14 @@ title: Azure portal Azure dosya paylaşımlarını yedekleme
 description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yedeklemek için Azure portal nasıl kullanacağınızı öğrenin
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a78760e793704d9ec4580e21ea86e0ba573b3949
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340710"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391171"
 ---
-# <a name="back-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme 
+# <a name="back-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme
 
 Bu makalede, [Azure dosya paylaşımlarını](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)yedeklemek için Azure Portal nasıl kullanılacağı açıklanmaktadır.
 
@@ -26,27 +26,6 @@ Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
 * Dosya paylaşımının [Desteklenen depolama hesabı türlerinden](azure-file-share-support-matrix.md)birinde bulunduğundan emin olun.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
-
-## <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
-
-Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)kullanır.
-
-* Kasa birincil yedekleme mekanizmanız ise GRS kullanmanızı öneririz.
-* [Yerel olarak yedekli depolama (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) seçeneğini düşük maliyetli bir seçenek olarak kullanabilirsiniz.
-
-Depolama çoğaltma türünü değiştirmek için:
-
-1. Yeni kasada, **Ayarlar** bölümünün altındaki **Özellikler** ' i seçin.
-
-1. **Özellikler** sayfasında, **yedekleme yapılandırması**altında **Güncelleştir**' i seçin.
-
-1. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
-
-    ![Yedekleme yapılandırmasını Güncelleştir](./media/backup-afs/backup-configuration.png)
-
-> [!NOTE]
-> Kasa ayarlandıktan ve yedekleme öğeleri içerdiğinde depolama çoğaltma türünü değiştiremezsiniz. Bunu yapmak istiyorsanız, kasayı yeniden oluşturmanız gerekir.
->
 
 ## <a name="discover-file-shares-and-configure-backup"></a>Dosya paylaşımlarını bulma ve yedeklemeyi yapılandırma
 

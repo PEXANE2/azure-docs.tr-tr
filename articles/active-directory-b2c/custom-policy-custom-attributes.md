@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15623d622a40fa80889a8704e0b7f19d358a052c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295414"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389335"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: özel bir profil ilkesinde özel öznitelikleri etkinleştirme
 
@@ -24,7 +24,7 @@ ms.locfileid: "84295414"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Azure Active Directory B2C: özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)makalesindeki adımları izleyin.
 
@@ -85,7 +85,7 @@ Terimler *uzantı özelliği*, *özel öznitelik*ve *özel talep* , bu makalenin
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini**seçin.
-5. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz TrustFrameworkExtensions. xml ilke dosyalarını karşıya yükleyin.
+5. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz TrustFrameworkExtensions.xml ilke dosyalarını karşıya yükleyin.
 
 > [!NOTE]
 > Azure AD teknik profili, Dizin talebini ilk kez sürdüren, özel özniteliğin mevcut olup olmadığını denetler. Aksi takdirde, özel özniteliğini oluşturur.  
@@ -96,7 +96,7 @@ Aynı uzantı öznitelikleri, yerleşik ve özel ilkeler arasında paylaşılır
 
 Bu öznitelikleri, özel ilkeleriniz içinde kullanmadan önce veya sonra Portal Kullanıcı arabirimini kullanarak oluşturabilirsiniz. [Azure Active Directory B2C özel özniteliklerin tanımlanması](user-flow-custom-attributes.md)için yönergeleri izleyin. Portalda **Loyaltyıd** özniteliğini oluşturduğunuzda, aşağıdaki şekilde buna başvurmanız gerekir:
 
-|Name     |Kullanıldığı yer |
+|Adı     |Kullanıldığı yer |
 |---------|---------|
 |`extension_loyaltyId`  | Özel ilke|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API’si](manage-user-accounts-graph-api.md)|

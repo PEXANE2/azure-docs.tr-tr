@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 31f5339c70d52019400ca5f1fe873de4790a3bd6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 95c69aad24ff10b49bdc09411553e6ed43bfdccd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380533"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391443"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak iOS 'ta Swift 'ta konuşmayı tanıma
 
@@ -36,11 +36,11 @@ Başlamadan önce şunları yapmanız gerekir:
 
 Bu öğretici, 1.6.0 ' den önceki SDK sürümü ile çalışmaz.
 
-İOS için bilişsel hizmetler konuşma SDK 'Sı, bir çerçeve paketi olarak dağıtılır. Xcode projelerinde bir [CocoaPod](https://cocoapods.org/) olarak veya tarafından https://aka.ms/csspeech/iosbinary indirilen ve el ile bağlanmış bir şekilde kullanılabilir. Bu makalede bir CocoaPod kullanılmıştır.
+İOS için bilişsel hizmetler konuşma SDK 'Sı, bir çerçeve paketi olarak dağıtılır. Xcode projelerinde bir [CocoaPod](https://cocoapods.org/) olarak veya tarafından indirilen https://aka.ms/csspeech/iosbinary ve el ile bağlanmış bir şekilde kullanılabilir. Bu makalede bir CocoaPod kullanılmıştır.
 
 ## <a name="create-an-xcode-project"></a>Xcode projesi oluşturma
 
-Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir proje başlatın.
+Xcode ' u başlatın ve **Dosya**  >  **Yeni**  >  **Proje**' yi seçerek yeni bir proje başlatın.
 Şablon Seçimi iletişim kutusunda **IOS tek görünüm uygulaması** şablonunu seçin.
 
 İzleyen iletişim kutularında aşağıdaki seçimleri yapın.
@@ -54,7 +54,7 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
 1. Bir proje dizini seçin:
     1. Projeyi içine koymak için bir dizin seçin. Bu adım, seçili dizinde Xcode projesi için tüm dosyaları içeren bir HelloWorld dizini oluşturur.
     1. Bu örnek için Git deposu oluşturmayı devre dışı bırakın.
-1. Uygulamanın Ayrıca `Info.plist` dosyada mikrofonun kullanımını bildirmesi gerekir. Genel bakışta dosyayı seçin ve *konuşma tanıma için, Microphone*gibi bir değere sahip **Gizlilik-mikrofon kullanım açıklaması** anahtarını ekleyin.
+1. Uygulamanın Ayrıca dosyada mikrofonun kullanımını bildirmesi gerekir `Info.plist` . Genel bakışta dosyayı seçin ve *konuşma tanıma için, Microphone*gibi bir değere sahip **Gizlilik-mikrofon kullanım açıklaması** anahtarını ekleyin.
 
     ![Info. plist dosyasındaki ayarlar](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-ios-info-plist.png)
 
@@ -62,7 +62,7 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
 
 ## <a name="add-the-sample-code"></a>Örnek kod ekleme
 
-1. HelloWorld projesi içindeki HelloWorld dizinine adlı yeni bir `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` üst bilgi dosyası yerleştirin. Aşağıdaki kodu içine yapıştırın:
+1. HelloWorld projesi içindeki HelloWorld dizinine adlı yeni bir üst bilgi dosyası yerleştirin `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` . Aşağıdaki kodu içine yapıştırın:
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/from-microphone/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 
@@ -76,8 +76,8 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
 1. Otomatik olarak oluşturulan `ViewController.swift` dosyanın içeriğini aşağıdaki kodla değiştirin:
 
    [!code-swift[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/from-microphone/helloworld/helloworld/ViewController.swift#code)]
-1. İçinde `ViewController.swift`, dizesini `YourSubscriptionKey` abonelik anahtarınızla değiştirin.
-1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, ücretsiz deneme `westus` aboneliği için kullanın.
+1. İçinde `ViewController.swift` , dizesini `YourSubscriptionKey` abonelik anahtarınızla değiştirin.
+1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. Örneğin, `westus` ücretsiz deneme aboneliği için kullanın.
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>SDK 'Yı bir CocoaPod olarak yükler
 
@@ -85,14 +85,14 @@ Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçerek yeni bir p
 1. Örnek uygulamanızın dizinine gidin, HelloWorld. *Pod dosyası* adında bir metin dosyası ve bu dizine aşağıdaki içeriği yerleştirin:
 
    [!code-ruby[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/from-microphone/helloworld/Podfile)]
-1. Terminalde HelloWorld dizinine gidin ve komutunu `pod install`çalıştırın. Bu komut, bağımlılık `helloworld.xcworkspace` olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki adımlarda kullanılır.
+1. Terminalde HelloWorld dizinine gidin ve komutunu çalıştırın `pod install` . Bu komut `helloworld.xcworkspace` , bağımlılık olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki adımlarda kullanılır.
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 
 1. Çalışma alanını `helloworld.xcworkspace` Xcode 'da açın.
-1. Hata ayıklama**alanını** >  **görüntüle** > **konsolunu etkinleştir**' i seçerek hata ayıklama çıktısını görünür yapın.
-1. **Ürün** > **hedefi** menüsündeki listeden uygulama hedefi olarak geliştirme makinenize bağlı iOS simülatörü veya iOS cihazını seçin.
-1. Menüden **ürün** > **çalıştırması** ' nı seçerek iOS benzeticisinde örnek kodu derleyin ve çalıştırın. Ayrıca **oynat** düğmesini de seçebilirsiniz.
+1. Hata ayıklama alanını **görüntüle**  >  **Debug Area**  >  **konsolunu etkinleştir**' i seçerek hata ayıklama çıktısını görünür yapın.
+1. **Ürün**  >  **hedefi** menüsündeki listeden uygulama hedefi olarak geliştirme makinenize bağlı iOS simülatörü veya iOS cihazını seçin.
+1. Menüden **ürün**çalıştırması ' nı seçerek iOS benzeticisinde örnek kodu derleyin ve çalıştırın  >  **Run** . Ayrıca **oynat** düğmesini de seçebilirsiniz.
 1. Uygulamadaki **tanıma** düğmesini seçip birkaç sözcükten sonra, ekranın alt bölümünde söylenen metni görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

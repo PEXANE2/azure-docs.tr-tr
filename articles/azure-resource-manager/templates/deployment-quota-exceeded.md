@@ -2,20 +2,20 @@
 title: Dağıtım kotası aşıldı
 description: Kaynak grubu geçmişinde 800 ' den fazla dağıtıma sahip olma hatasının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
-ms.date: 05/26/2020
-ms.openlocfilehash: 0fec8fa91ec79822115d83b15e8c8a839dc7fd69
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/25/2020
+ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117813"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391188"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Dağıtım sayısı 800 ' i aştığında hatayı çözümle
 
 Her kaynak grubu, dağıtım geçmişinde 800 dağıtım ile sınırlıdır. Bu makalede, izin verilen 800 dağıtımlarını aşacağından bir dağıtım başarısız olduğunda aldığınız hata açıklanmaktadır. Bu hatayı çözmek için kaynak grubu geçmişinden dağıtımları silin. Bir dağıtımı geçmişten silmek, dağıtılan kaynakların hiçbirini etkilemez.
 
 > [!NOTE]
-> 2020 Haziran 'dan itibaren, sınıra yaklaşmanıza kadar Azure Resource Manager otomatik olarak geçmişinizden dağıtımları siler. Otomatik silme işlemleri yapmadıysanız bu hatayı görmeye devam edebilirsiniz. Daha fazla bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](deployment-history-deletions.md).
+> Azure Resource Manager, sınıra yaklaşmanıza karşı, en kısa süre önce geçmişinizden dağıtımları otomatik olarak silmeye başlayacaktır. Otomatik silme işlemleri yapmadıysanız bu hatayı görmeye devam edebilirsiniz. Daha fazla bilgi için bkz. [dağıtım geçmişinden otomatik silme işlemleri](deployment-history-deletions.md).
 
 ## <a name="symptom"></a>Belirti
 
@@ -23,7 +23,7 @@ Dağıtım sırasında, geçerli dağıtımın 800 dağıtım kotasını aşalac
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Geçmişten dağıtımları silmek için [az Deployment Group Delete](/cli/azure/group/deployment) komutunu kullanın.
 

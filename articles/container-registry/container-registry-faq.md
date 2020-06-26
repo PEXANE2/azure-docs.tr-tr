@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 0a455ef911d28306b30bed2fbb00edea198181dd
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205433"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390372"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -269,6 +269,7 @@ Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarla
 - [Azure portal neden tüm depolarımı veya etiketlerimi listelemez?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Azure portal depo veya etiket getirme neden başarısız oluyor?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Neden çekme veya gönderim isteği izin verilmeyen işlemle başarısız oluyor?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [Depo biçimi geçersiz veya desteklenmiyor](#repository-format-is-invalid-or-unsupported)
 - [Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Sistem durumunu denetle`az acr check-health`
@@ -439,6 +440,12 @@ Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantın
 * Resim veya depo silinemeyebilir veya güncelleştirilemeyebilir. Geçerli öznitelikleri görüntülemek için [az ACR Show Repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) komutunu kullanabilirsiniz.
 * Görüntü karantinaya alındı ise bazı işlemlere izin verilmez. [Karantina](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)hakkında daha fazla bilgi edinin.
 * Kayıt defteriniz [depolama sınırına](container-registry-skus.md#service-tier-features-and-limits)ulaşmış olabilir.
+
+### <a name="repository-format-is-invalid-or-unsupported"></a>Depo biçimi geçersiz veya desteklenmiyor
+
+"Desteklenmeyen depo biçimi", "geçersiz biçim" veya "istenen veriler yok" gibi bir hata görürseniz, depo işlemlerinde bir depo adı belirtirken, adın yazımını ve durumunu denetleyin. Geçerli depo adları yalnızca küçük harfli alfasayısal karakterler, noktalar, tireler, alt çizgiler ve eğik çizgi içerebilir. 
+
+Tüm depo adlandırma kuralları için bkz. [kapsayıcı girişim dağıtım belirtimi](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 

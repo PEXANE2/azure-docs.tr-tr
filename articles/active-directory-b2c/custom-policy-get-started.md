@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcc1affb953a737c12ca5bdb70ba7eadee20cd97
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295533"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389301"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanmaya başlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "84295533"
 
 [Özel ilkeler](custom-policy-overview.md) , Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. Bu makalede, bir e-posta adresi ve parola kullanarak yerel hesap kaydolma veya oturum açma 'yı destekleyen özel bir ilke oluşturacaksınız. Ayrıca, ortamınızı kimlik sağlayıcıları eklemek için hazırlarsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Henüz bir tane yoksa, Azure aboneliğinize bağlı [bir Azure AD B2C kiracı oluşturun](tutorial-create-tenant.md) .
 - [Uygulamanızı](tutorial-register-applications.md) , Azure AD B2C ile iletişim kurabilmesi için oluşturduğunuz kiracıya kaydedin.
@@ -44,7 +44,7 @@ ms.locfileid: "84295533"
 1. **Ad**alanına girin `TokenSigningKeyContainer` . Ön ek `B2C_1A_` otomatik olarak eklenebilir.
 1. **Anahtar türü**için **RSA**' yı seçin.
 1. **Anahtar kullanımı**için **imza**' yı seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 ### <a name="create-the-encryption-key"></a>Şifreleme anahtarı oluşturma
 
@@ -53,7 +53,7 @@ ms.locfileid: "84295533"
 1. **Ad**alanına girin `TokenEncryptionKeyContainer` . _ Ön eki `B2C_1A` otomatik olarak eklenebilir.
 1. **Anahtar türü**için **RSA**' yı seçin.
 1. **Anahtar kullanımı**için **şifreleme**' yi seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 ### <a name="create-the-facebook-key"></a>Facebook anahtarını oluşturma
 
@@ -64,7 +64,7 @@ Facebook uygulamanızın [uygulama gizli](identity-provider-facebook.md) anahtar
 1. **Ad**için girin `FacebookSecret` . Ön ek `B2C_1A_` otomatik olarak eklenebilir.
 1. **Gizli**dizi bölümünde Facebook uygulamanızın *uygulama gizli* anahtarını Developers.facebook.com adresinden girin. Bu değer, uygulama KIMLIĞI değil gizli dizi.
 1. **Anahtar kullanımı**için **imza**' yı seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 ## <a name="register-identity-experience-framework-applications"></a>Kimlik deneyimi çerçevesi uygulamalarını kaydetme
 
@@ -111,7 +111,7 @@ Sonra, uygulamanın ortak istemci olarak değerlendirilip değerlendirilmeyeceğ
 
 1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
 1. **Gelişmiş ayarlar**altında, **uygulamayı ortak istemci olarak değerlendir** ' i etkinleştirin ( **Evet**' i seçin). Uygulama bildiriminde **"Allowpublicclient": true** değerinin ayarlandığından emin olun. 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Şimdi *IdentityExperienceFramework* kaydında daha önce sunulan API kapsamına izin verin:
 
@@ -138,9 +138,9 @@ Sonra, uygulamanın ortak istemci olarak değerlendirilip değerlendirilmeyeceğ
 
 Her bir başlatıcı paketi şunları içerir:
 
-- **Temel dosya** -temel için birkaç değişiklik yapılması gerekir. Örnek: *TrustFrameworkBase. xml*
-- **Uzantı dosyası** -bu dosya, çoğu yapılandırma değişikliğini yapılmıştır. Örnek: *TrustFrameworkExtensions. xml*
-- **Bağlı olan taraf dosyaları** -uygulamanız tarafından çağrılan göreve özel dosyalar. Örnekler: *Signuporsignın. xml*, *profileedit. xml*, *passwordreset. xml*
+- **Temel dosya** -temel için birkaç değişiklik yapılması gerekir. Örnek: *TrustFrameworkBase.xml*
+- **Uzantı dosyası** -bu dosya, çoğu yapılandırma değişikliğini yapılmıştır. Örnek: *TrustFrameworkExtensions.xml*
+- **Bağlı olan taraf dosyaları** -uygulamanız tarafından çağrılan göreve özel dosyalar. Örnekler: *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*
 
 Bu makalede, **SocialAndLocalAccounts** Starter paketindeki XML özel ilke dosyalarını düzenlersiniz. Bir XML düzenleyiciye ihtiyacınız varsa, hafif bir platformlar arası düzenleyici [Visual Studio Code](https://code.visualstudio.com/download)deneyin.
 
@@ -160,7 +160,7 @@ GitHub 'dan özel ilke başlangıç paketlerini alın, sonra SocialAndLocalAccou
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Özel ilkeye uygulama kimlikleri ekleme
 
-Uygulama kimliklerini *TrustFrameworkExtensions. xml*uzantı dosyasına ekleyin.
+Uygulama kimliklerini uzantı dosyasına ekleyin *TrustFrameworkExtensions.xml*.
 
 1. Açın `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** ve öğesini bulun `<TechnicalProfile Id="login-NonInteractive">` .
 1. Her iki örneğini, `IdentityExperienceFrameworkAppId` daha önce oluşturduğunuz IdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin.
@@ -172,11 +172,11 @@ Uygulama kimliklerini *TrustFrameworkExtensions. xml*uzantı dosyasına ekleyin.
 1. Azure portal B2C kiracınızda **kimlik deneyimi çerçevesi** menü öğesini seçin.
 1. **Özel Ilkeyi karşıya yükle**' yi seçin.
 1. Bu sırada, ilke dosyalarını karşıya yükleyin:
-    1. *TrustFrameworkBase. xml*
-    1. *TrustFrameworkExtensions. xml*
-    1. *Signuporsignın. xml*
-    1. *ProfileEdit. xml*
-    1. *PasswordReset. xml*
+    1. *TrustFrameworkBase.xml*
+    1. *TrustFrameworkExtensions.xml*
+    1. *SignUpOrSignin.xml*
+    1. *ProfileEdit.xml*
+    1. *PasswordReset.xml*
 
 Dosyaları karşıya yüklerken, Azure her birine ön ek ekler `B2C_1A_` .
 
@@ -206,7 +206,7 @@ Dosyaları karşıya yüklerken, Azure her birine ön ek ekler `B2C_1A_` .
        <Item Key="client_id">00000000000000</Item>
    ```
 
-1. *TrustFrameworkExtensions. xml* dosyasını kiracınıza yükleyin.
+1. *TrustFrameworkExtensions.xml* dosyasını kiracınıza yükleyin.
 1. **Özel ilkeler**altında **B2C_1A_signup_signin**' yi seçin.
 1. **Şimdi Çalıştır** ' ı seçin ve Facebook ile oturum açmak ve özel ilkeyi test etmek için Facebook ' u seçin.
 

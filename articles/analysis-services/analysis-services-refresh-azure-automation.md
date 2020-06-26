@@ -6,31 +6,27 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926570"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389981"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Otomasyonu ile yenileme
 
 Azure Otomasyonu ve PowerShell runbook 'Larını kullanarak Azure Analysis tablolu modellerinizde otomatik veri yenileme işlemleri gerçekleştirebilirsiniz.  
 
-Bu makaledeki örnekte [PowerShell SqlServer modülleri](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)kullanılmaktadır.
-
-Bir modelin yenilenmesini gösteren örnek bir PowerShell runbook 'u, bu makalenin ilerleyen kısımlarında verilmiştir.  
+Bu makaledeki örnek, [SqlServer PowerShell modülünü](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)kullanır. Bir modelin yenilenmesini gösteren örnek bir PowerShell runbook 'u, bu makalenin ilerleyen kısımlarında verilmiştir.  
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örnek, Azure Analysis Services kimlik doğrulaması yapmak için bir hizmet sorumlusu (SPN) kullanır.
-
-Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
+Tüm çağrıların kimliği geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanmalıdır.  Bu makaledeki örnek, Azure Analysis Services kimlik doğrulaması yapmak için bir hizmet sorumlusu (SPN) kullanır. Daha fazla bilgi için bkz. [Azure Portal kullanarak hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!IMPORTANT]
-> Aşağıdaki örnek, Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını varsayar. Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresinin güvenlik duvarında beyaz listelenmesi gerekir.
+> Aşağıdaki örnek, Azure Analysis Services güvenlik duvarının devre dışı bırakıldığını varsayar. Bir Güvenlik Duvarı etkinse, istek başlatıcısının genel IP adresi bir güvenlik duvarı kuralına dahil olmalıdır.
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>PowerShell galerisinden SqlServer modüllerini yükler.
 
@@ -68,11 +64,11 @@ Oluşturduğunuz hizmet sorumlusu sunucuda Sunucu Yöneticisi izinlerine sahip o
 
     ![Runbook 'U içeri aktar](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. **Refresh-model. ps1** dosyasına gidip bir **ad** ve **Açıklama**girin ve ardından **Oluştur**' a tıklayın.
+4. **Refresh-Model.ps1** dosyasına gidip bir **ad** ve **Açıklama**girin ve ardından **Oluştur**' a tıklayın.
 
     ![Runbook 'U içeri aktar](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. Runbook oluşturulduğunda, otomatik olarak düzenleme moduna geçer.  **Yayımla**’yı seçin.
+5. Runbook oluşturulduğunda, otomatik olarak düzenleme moduna geçer.  **Yayımla** seçeneğini belirleyin.
 
     ![Runbook 'U Yayımla](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -101,11 +97,11 @@ Bu, aşağıdaki gibi yapılandırılabilir:
  
     ![Zamanlama Oluştur](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. **Zamanla** > **Yeni bir zamanlama oluştur ' a**tıklayın ve ardından ayrıntıları girin.
+2. **Zamanla**  >  **Yeni bir zamanlama oluştur ' a**tıklayın ve ardından ayrıntıları girin.
 
     ![Zamanlamayı Yapılandır](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. **Oluştur**' a tıklayın.
+3. **Oluştur**'a tıklayın.
 
 4. Zamanlamanın parametrelerini girin. Bunlar runbook 'un her tetiklenilişinde kullanılacaktır. **Web kancası verileri** parametresi, bir zamanlama aracılığıyla çalışırken boş bırakılmalıdır.
 
@@ -147,7 +143,7 @@ Azure Data Factory kullanarak runbook 'u kullanmak için önce runbook için bir
 |Özellik  |Değer  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Azure Analysis Services veritabanının adı <br/> Örnek: AdventureWorksDB         |
-|**AnalysisServicesServer**     |Azure Analysis Services sunucu adı. <br/> Örnek: https:\//westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/         |
+|**AnalysisServicesServer**     |Azure Analysis Services sunucu adı. <br/> Örnek: https: \/ /westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |Gerçekleştirilecek yenileme türü. <br/> Örnek: tam         |
 
 Örnek JSON gövdesi:
@@ -175,7 +171,7 @@ Statik bir genel IP adresine sahip bir Azure sanal makinesi, Azure Otomasyon Kar
 >
 >Azure Otomasyonu karma çalışanları yapılandırma hakkında daha fazla bilgi için bkz. [karma Runbook Worker yüklemesi](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
-Karma çalışan yapılandırıldıktan sonra [Data Factory](#consume-with-data-factory)kullanma bölümünde açıklandığı gibi bir Web kancası oluşturun.  Buradaki tek fark, Web kancasını yapılandırırken **Run on** > **karma çalışanı Çalıştır seçeneğini seçmedir** .
+Karma çalışan yapılandırıldıktan sonra [Data Factory](#consume-with-data-factory)kullanma bölümünde açıklandığı gibi bir Web kancası oluşturun.  Buradaki tek fark, **Run on**  >  Web kancasını yapılandırırken**karma çalışanı Çalıştır seçeneğini seçmedir** .
 
 Karma çalışanı kullanan örnek Web kancası:
 

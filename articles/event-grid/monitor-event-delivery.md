@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: spelluru
-ms.openlocfilehash: e74d2d8982cac961aa65d6576c80a92cb53ce387
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100542"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390610"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>İleti teslimini izleme Event Grid 
 Bu makalede, Event Grid konular ve abonelikler için ölçümleri görmek ve bunlar üzerinde uyarı oluşturmak üzere portalın nasıl kullanılacağı açıklanır. 
@@ -99,59 +99,8 @@ Abonelikler için bazı ölçümler aşağıda verilmiştir:
 Ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/platform/data-platform-metrics.md)
 
 
-## <a name="set-alerts"></a>Uyarı ayarlama
-Azure portal konular ve etki alanları için ölçümler üzerinde uyarılar ayarlayabilirsiniz. 
-
-Aşağıdaki yordamda, özel bir konu için **kullanılmayan olaylar** ölçümünde uyarı oluşturma işlemi gösterilmektedir. Bu örnekte, bir konu için atılacak olay sayısı 10 ' dan fazla kaldığında Azure Kaynak grubu sahibine bir e-posta gönderilir. 
-
-1. Konunun **Event Grid konu** sayfasında, sol taraftaki menüden **Uyarılar** ' ı seçin ve ardından **+ Yeni uyarı kuralı**' nı seçin. 
-
-    :::image type="content" source="./media/monitor-event-delivery/new-alert-button.png" alt-text="Uyarılar sayfası-yeni uyarı kuralı düğmesi":::
-    
-    
-    Ayrıca **ölçümler** sayfasını kullanarak da uyarılar oluşturabilirsiniz. Adımlar benzerdir. 
-
-    :::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Ölçümler sayfası-uyarı oluştur düğmesi":::   
-    
-2. **Uyarı kuralı oluştur** sayfasında, konunun kaynak için seçildiğini doğrulayın. Sonra **Koşul Seç**' e tıklayın. 
-
-    :::image type="content" source="./media/monitor-event-delivery/alert-select-condition.png" alt-text="Uyarılar sayfası-koşul Seç":::    
-3. **Sinyal mantığını Yapılandır** sayfasında, aşağıdaki adımları izleyin:
-    1. Bir ölçüm veya etkinlik günlüğü girişi seçin. Bu örnekte, **atılacak olaylar** seçilidir. 
-
-        :::image type="content" source="./media/monitor-event-delivery/select-dead-lettered-events.png" alt-text="Kullanılmayan olayları seçin":::        
-    2. Boyutları seçin (isteğe bağlı). 
-        
-        :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Sinyal mantığını yapılandırma":::        
-    3. Aşağı kaydırın. **Uyarı mantığı** bölümünde bir **operatör**, **toplama türü**seçin ve bir **eşik değeri**girin ve **bitti**' yi seçin. Bu örnekte, toplam ölü olay sayısı 10 ' dan büyük olduğunda bir uyarı tetiklenir. 
-    
-        :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Uyarı mantığı":::                
-4. **Uyarı kuralı oluştur** sayfasında, **eylem grubu seç**' e tıklayın.
-
-    :::image type="content" source="./media/monitor-event-delivery/select-action-group-button.png" alt-text="Eylem grubu Seç düğmesi":::
-5. Yeni bir eylem grubu oluşturmak için araç çubuğunda **eylem grubu oluştur** ' u seçin. Ayrıca var olan bir eylem grubunu seçebilirsiniz.        
-6. **Eylem grubu Ekle** sayfasında, şu adımları izleyin:
-    1. **Eylem grubu için bir ad**girin.
-    1. Eylem grubu için **kısa bir ad** girin.
-    1. Eylem grubunu oluşturmak istediğiniz **Azure aboneliğini** seçin.
-    1. Eylem grubunu oluşturmak istediğiniz **Azure kaynak grubunu** seçin.
-    1. **Eylem için bir ad**girin. 
-    1. **Eylem türünü**seçin. Bu örnekte, **e-posta Azure Resource Manager rolü** , özellikle **sahipler** rolü seçilidir. 
-    1. Sayfayı kapatmak için **Tamam ' ı** seçin. 
-    
-        :::image type="content" source="./media/monitor-event-delivery/add-action-group-page.png" alt-text="Eylem grubu Ekle sayfası":::                   
-7. **Uyarı kuralı oluştur** sayfasına dönün, uyarı kuralı için bir ad girin ve ardından **Uyarı kuralı oluştur**' u seçin.
-
-    :::image type="content" source="./media/monitor-event-delivery/alert-rule-name.png" alt-text="Uyarı kuralı adı":::  
-8. Artık, konunun **Uyarılar** sayfasında uyarı kurallarını yönetmek için henüz uyarı yoksa bir bağlantı görürsünüz. Uyarılar varsa, araç çubuğunda **Yönetici uyarı kuralları** ' nı seçin.  
-
-    :::image type="content" source="./media/monitor-event-delivery/manage-alert-rules.png" alt-text="Uyarıları yönetme":::
-
-    > [!NOTE]
-    > Bu makalede, bir uyarı oluşturmak için kullanabileceğiniz tüm farklı adımlar ve birleşimler ele alınmaktadır. Uyarılara genel bakış için bkz. [uyarılara genel bakış](../azure-monitor/platform/alerts-overview.md).
-
 ## <a name="next-steps"></a>Sonraki adımlar
+Aşağıdaki makalelere bakın:
 
-* Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
-* Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).
+- Ölçümler ve etkinlik günlüğü işlemlerinde uyarı oluşturma hakkında bilgi edinmek için bkz. [uyarıları ayarlama](set-alerts.md).
+- Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).

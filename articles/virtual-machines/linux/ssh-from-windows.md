@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757996"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390236"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 'da Windows ile SSH anahtarlarını kullanma
 
@@ -37,21 +37,21 @@ Yerel olarak yükleyebileceğiniz diğer yaygın Windows SSH istemcileri aşağ�
 
 Ayrıca, [Azure Cloud Shell](../../cloud-shell/overview.md)Bash 'de bulunan SSH yardımcı programlarını da kullanabilirsiniz. 
 
-* [https://shell.azure.com](https://shell.azure.com) [Azure Portal](https://portal.azure.com)veya Cloud Shell Web tarayıcınıza erişin. 
+* Azure portal veya Cloud Shell Web tarayıcınıza erişin [https://shell.azure.com](https://shell.azure.com) . [Azure portal](https://portal.azure.com) 
 * [Azure hesap uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)yükleyerek Visual Studio Code içinden terminal olarak Cloud Shell erişin.
 
 ## <a name="create-an-ssh-key-pair"></a>SSH anahtar çifti oluşturma
-Aşağıdaki bölümlerde Windows üzerinde bir SSH anahtar çifti oluşturmak için iki seçenek açıklanır. Kabuk komutu (`ssh-keygen`) veya GUI aracı (PuTTYgen) kullanabilirsiniz. Ayrıca, PowerShell kullanarak bir anahtar oluşturmak için ortak anahtarı SSH. com (SECSH) biçiminde karşıya yükleyin. CLı kullanırken, yüklemeden önce anahtarı OpenSSH biçimine dönüştürün. 
+Aşağıdaki bölümlerde Windows üzerinde bir SSH anahtar çifti oluşturmak için iki seçenek açıklanır. Kabuk komutu ( `ssh-keygen` ) veya GUI aracı (PuTTYgen) kullanabilirsiniz. Ayrıca, PowerShell kullanarak bir anahtar oluşturmak için ortak anahtarı SSH. com (SECSH) biçiminde karşıya yükleyin. CLı kullanırken, yüklemeden önce anahtarı OpenSSH biçimine dönüştürün. 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>SSH-keygen ile SSH anahtarları oluşturma
 
-Windows üzerinde SSH istemci araçları 'nı destekleyen bir komut kabuğu çalıştırırsanız (veya Azure Cloud Shell kullanıyorsanız), `ssh-keygen` komutunu kullanarak bir SSH anahtar çifti oluşturun. Aşağıdaki komutu yazın ve istemleri yanıtlayın. Seçilen konumda bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır. 
+Windows üzerinde SSH istemci araçları 'nı destekleyen bir komut kabuğu çalıştırırsanız (veya Azure Cloud Shell kullanıyorsanız), komutunu kullanarak bir SSH anahtar çifti oluşturun `ssh-keygen` . Aşağıdaki komutu yazın ve istemleri yanıtlayın. Seçilen konumda bir SSH anahtar çifti varsa, bu dosyaların üzerine yazılır. 
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-Daha fazla arka plan ve bilgi için, kullanarak `ssh-keygen`SSH anahtarları oluşturma hakkında [hızlı](mac-create-ssh-keys.md) veya [ayrıntılı](create-ssh-keys-detailed.md) adımlara bakın.
+Daha fazla arka plan ve bilgi için, kullanarak SSH anahtarları oluşturma hakkında [hızlı](mac-create-ssh-keys.md) veya [ayrıntılı](create-ssh-keys-detailed.md) adımlara bakın `ssh-keygen` .
 
 ### <a name="create-ssh-keys-with-puttygen"></a>PuTTYgen ile SSH anahtarları oluşturma
 
@@ -63,19 +63,19 @@ PuTTYgen ile SSH RSA anahtar çifti oluşturmak için:
 
 2. **Generate** (Oluştur) düğmesine tıklayın. Varsayılan olarak PuTTYgen, 2048 bitlik bir SSH-2 RSA anahtarı oluşturur.
 
-4. Anahtar için rastgele bir açıklık sağlamak üzere fareyi boş alana taşıyın.
+3. Anahtar için rastgele bir açıklık sağlamak üzere fareyi boş alana taşıyın.
 
-5. Ortak anahtar oluşturulduktan sonra, isteğe bağlı olarak bir parola girin ve onaylayın. Özel SSH anahtarınızla VM 'de kimlik doğrulaması yaptığınızda parola istenir. Bir parola olmadan, birisi özel anahtarınızı alırsa, bu anahtarı kullanan herhangi bir VM veya hizmette oturum açabilir. Bir parola oluşturmanızı öneririz. Ancak, parolayı unutursanız, bunu kurtarma yolu yoktur.
+4. Ortak anahtar oluşturulduktan sonra, isteğe bağlı olarak bir parola girin ve onaylayın. Özel SSH anahtarınızla VM 'de kimlik doğrulaması yaptığınızda parola istenir. Bir parola olmadan, birisi özel anahtarınızı alırsa, bu anahtarı kullanan herhangi bir VM veya hizmette oturum açabilir. Bir parola oluşturmanızı öneririz. Ancak, parolayı unutursanız, bunu kurtarma yolu yoktur.
 
-6. Ortak anahtar pencerenin üst kısmında görüntülenir. Bu tüm ortak anahtarı kopyalayabilir ve ardından bir Linux sanal makinesi oluştururken Azure portal veya bir Azure Resource Manager şablonuna yapıştırabilirsiniz. Ayrıca, bilgisayarınıza bir kopyasını kaydetmek için **ortak anahtarı kaydet** ' i de seçebilirsiniz:
+5. Ortak anahtar pencerenin üst kısmında görüntülenir. Bu tüm ortak anahtarı kopyalayabilir ve sonra bir Linux sanal makinesi oluştururken Azure portal veya bir Azure Resource Manager şablonuna yapıştırabilirsiniz. Ayrıca, bir kopyayı bilgisayarınıza kaydetmek için **ortak anahtarı kaydet** ' i de seçebilirsiniz. Bir dosyaya kaydedilirken, PuTTY ortak anahtarı farklı bir biçime ( [RFC4716](https://tools.ietf.org/html/rfc4716)) dönüştürdüğüne unutmayın. RFC4716 biçimi tüm API 'lerle uyumlu olmayabilir. Bu nedenle, Azure portal kullanmak için, PuTTY penceresinde görüntülenen ortak anahtarı kopyalamanız önerilir.
 
     ![PuTTY ortak anahtar dosyasını Kaydet](./media/ssh-from-windows/save-public-key.png)
 
-7. İsteğe bağlı olarak, özel anahtarı PuTTy özel anahtar biçiminde (. PPK dosyası) kaydetmek için **özel anahtarı kaydet**' i seçin. VM 'ye SSH bağlantısı oluşturmak için PuTTY kullanmak üzere, daha sonra. PPK dosyasına ihtiyacınız olacak.
+6. İsteğe bağlı olarak, özel anahtarı PuTTy özel anahtar biçiminde (. PPK dosyası) kaydetmek için **özel anahtarı kaydet**' i seçin. VM 'ye SSH bağlantısı oluşturmak için PuTTY kullanmak üzere, daha sonra. PPK dosyasına ihtiyacınız olacak.
 
     ![PuTTY özel anahtar dosyasını Kaydet](./media/ssh-from-windows/save-ppk-file.png)
 
-    Özel anahtarı, çok sayıda SSH istemcisi tarafından kullanılan özel anahtar biçimi olan OpenSSH biçiminde kaydetmek istiyorsanız, **dönüşümler** > **dışarı aktarma OpenSSH anahtarını**seçin.
+    Özel anahtarı, çok sayıda SSH istemcisi tarafından kullanılan özel anahtar biçimi olan OpenSSH biçiminde kaydetmek istiyorsanız, **dönüşümler**  >  **dışarı aktarma OpenSSH anahtarını**seçin.
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>VM dağıtımında SSH ortak anahtarı sağlama
 
@@ -111,7 +111,7 @@ VM tam zamanında erişim ilkesi kullanıyorsa, VM 'ye bağlanabilmeniz için ö
 
     ![Yeni PuTTY bağlantısı aç](./media/ssh-from-windows/putty-new-connection.png)
 
-3. **Bağlantı** > **SSH**SSH > **kimlik doğrulaması** kategorisini seçin. PuTTY özel anahtarınızı (. PPK dosyası) bulup seçin:
+3. **Bağlantı**  >  **SSH**  >  **kimlik doğrulaması** kategorisini seçin. PuTTY özel anahtarınızı (. PPK dosyası) bulup seçin:
 
     ![Kimlik doğrulaması için PuTTY özel anahtarınızı seçin](./media/ssh-from-windows/putty-auth-dialog.png)
 

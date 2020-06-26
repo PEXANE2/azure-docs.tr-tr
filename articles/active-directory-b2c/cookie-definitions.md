@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189523"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389352"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C için tanımlama bilgisi tanımları
 
@@ -24,11 +24,11 @@ Aşağıdaki bölümlerde Azure Active Directory B2C (Azure AD B2C) ' de kullan�
 
 ## <a name="samesite"></a>SameSite
 
-Microsoft Azure AD B2C hizmeti, `SameSite=None` `Secure` özniteliğiyle destek de dahil olmak üzere, SameSite tarayıcı yapılandırmalarına sahiptir.
+Microsoft Azure AD B2C hizmeti, özniteliğiyle destek de dahil olmak üzere, SameSite tarayıcı yapılandırmalarına sahiptir `SameSite=None` `Secure` .
 
 Sitelere erişimi korumak için Web tarayıcıları, aksi belirtilmediği takdirde, tüm tanımlama bilgilerinin dış erişimden korunması gerektiğini varsayan, yeni bir güvenli varsayılan model ortaya çıkaracak. Chrome tarayıcısı, [şubat 2020 ' de chrome 80](https://www.chromium.org/updates/same-site)' den başlayarak bu değişikliği uygulayan ilk ilkdir. Chrome 'daki değişikliğe hazırlanma hakkında daha fazla bilgi için bkz [. geliştiriciler: yeni Sameget için hazırlanma = yok; Kmıum blogundan tanımlama bilgisi ayarlarını güvenli hale](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html) getirin.
 
-Geliştiricilerin, siteler arası erişim tanımlama bilgilerini belirlemek `SameSite=None`için yeni tanımlama bilgisi ayarını kullanması gerekir. `SameSite=None` Öznitelik mevcut olduğunda, siteler arası tanımlama BILGILERINE `Secure` yalnızca HTTPS bağlantıları üzerinden erişilebilmeleri için ek bir özniteliğin kullanılması gerekir. Azure AD B2C kullanan uygulamalar da dahil olmak üzere tüm uygulamalarınızı doğrulayın ve test edin.
+Geliştiricilerin, `SameSite=None` siteler arası erişim tanımlama bilgilerini belirlemek için yeni tanımlama bilgisi ayarını kullanması gerekir. `SameSite=None`Öznitelik mevcut olduğunda, `Secure` siteler arası tanımlama BILGILERINE yalnızca HTTPS bağlantıları üzerinden erişilebilmeleri için ek bir özniteliğin kullanılması gerekir. Azure AD B2C kullanan uygulamalar da dahil olmak üzere tüm uygulamalarınızı doğrulayın ve test edin.
 
 Daha fazla bilgi için bkz.
 

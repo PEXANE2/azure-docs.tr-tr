@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 37eed03ed839411f1acf5d963d4118a3c6d2c379
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c859965c951ad271b1b9e272ce60de64aa3d3d5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975933"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391375"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak macOS 'ta hedef için konuşmayı Sentezleştirme
 
@@ -35,11 +35,11 @@ Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
 Bu öğreticinin SDK sürümü 1.7.0 ' den önceki sürümüyle çalışmadığını unutmayın.
 
 Mac için bilişsel hizmetler konuşma SDK 'Sı, çerçeve paketi olarak dağıtılır.
-Xcode projelerinde bir [CocoaPod](https://cocoapods.org/)olarak veya ile indirilen https://aka.ms/csspeech/macosbinary ve el ile bağlanmış bir şekilde kullanılabilir. Bu kılavuzda bir CocoaPod kullanılır.
+Xcode projelerinde bir [CocoaPod](https://cocoapods.org/)olarak veya https://aka.ms/csspeech/macosbinary ile indirilen ve el ile bağlanmış bir şekilde kullanılabilir. Bu kılavuzda bir CocoaPod kullanılır.
 
 ## <a name="create-an-xcode-project"></a>Xcode projesi oluşturma
 
-Xcode ' u başlatın ve **Dosya** > **Yeni** > **Proje**' ye tıklayarak yeni bir proje başlatın.
+Xcode ' u başlatın ve **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayarak yeni bir proje başlatın.
 Şablon Seçimi iletişim kutusunda, "Cocoa uygulaması" şablonunu seçin.
 
 Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
@@ -52,7 +52,7 @@ Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
     1. Testler ve temel veriler için tüm onay kutularını devre dışı bırakın.
     ![Proje Ayarları](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-project-settings.png)
 1. Proje dizini seçin
-    1. Projeyi içine koymak için bir dizin seçin. Bu, giriş `helloworld` dizininizde Xcode projesi için tüm dosyaları içeren bir dizin oluşturur.
+    1. Projeyi içine koymak için bir dizin seçin. Bu `helloworld` , giriş dizininizde Xcode projesi için tüm dosyaları içeren bir dizin oluşturur.
     1. Bu örnek için Git deposu oluşturmayı devre dışı bırakın.
 1. Ağ erişimi için yetkilendirmeleri ayarlayın. Uygulama yapılandırmasına ulaşmak için sol taraftaki genel bakışın ilk satırındaki uygulama adına tıklayın ve ardından "yetenekler" sekmesini seçin.
     1. Uygulama için "uygulama korumalı alanı" ayarını etkinleştirin.
@@ -63,13 +63,13 @@ Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
 ## <a name="install-the-sdk-as-a-cocoapod"></a>SDK 'Yı bir CocoaPod olarak yükler
 
 1. [Yükleme yönergeleri](https://guides.cocoapods.org/using/getting-started.html)bölümünde açıklandığı gibi CocoaPod Dependency Manager 'ı yükleme.
-1. Örnek uygulamanızın dizinine gidin (`helloworld`). Bu dizine, adı `Podfile` ve aşağıdaki içeriğe sahip bir metin dosyası yerleştirin:  
+1. Örnek uygulamanızın dizinine gidin ( `helloworld` ). `Podfile`Bu dizine, adı ve aşağıdaki içeriğe sahip bir metin dosyası yerleştirin:  
    [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/text-to-speech/helloworld/Podfile)]
-1. Terminaldeki `helloworld` dizine gidin ve komutunu `pod install`çalıştırın. Bu işlem, bağımlılık `helloworld.xcworkspace` olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki şekilde kullanılacaktır.
+1. `helloworld`Terminaldeki dizine gidin ve komutunu çalıştırın `pod install` . Bu işlem `helloworld.xcworkspace` , bağımlılık olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren bir Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki şekilde kullanılacaktır.
 
 ## <a name="add-the-sample-code"></a>Örnek kod ekleme
 
-1. `helloworld.xcworkspace` Çalışma alanını Xcode 'da açın.
+1. `helloworld.xcworkspace`Çalışma alanını Xcode 'da açın.
 1. Aşağıdaki şekilde otomatik oluşturulan `AppDelegate.m` dosyasının içeriğini değiştirin:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/text-to-speech/helloworld/helloworld/AppDelegate.m#code)]
 1. `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
@@ -77,8 +77,8 @@ Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 
-1. Hata ayıklama çıkışını görünür hale getirme **(** > **hata ayıklama alanını** > **etkinleştirme konsolu**).
-1. Menüden **ürün** -> **Çalıştır** ' ı seçerek veya **oynat** düğmesine tıklayarak örnek kodu derleyin ve çalıştırın.
+1. Hata ayıklama çıkışını görünür hale getirme **(**  >  **hata ayıklama alanını**  >  **etkinleştirme konsolu**).
+1. Menüden **ürün**  ->  **Çalıştır** ' ı seçerek veya **oynat** düğmesine tıklayarak örnek kodu derleyin ve çalıştırın.
 1. Bazı metinleri girdikten ve uygulamadaki düğmeye tıkladıktan sonra, birleştirilmiş sesin çalındığını duymalısınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar

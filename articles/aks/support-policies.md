@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 147fc33d068909fa892023ec00cfc2827203607f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402455"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389947"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -53,7 +53,7 @@ Microsoft aşağıdakiler için teknik destek sağlar:
 
 * Kubernetes hizmetinin API sunucusu gibi sağladığı ve desteklediği tüm Kubernetes bileşenlerine bağlantı.
 * Kubernetes denetim düzlemi Hizmetleri 'nin yönetimi, çalışma süresi, QoS ve işlemleri (örneğin, Kubernetes Master Nodes, API Server, etcd ve Kuto-DNS).
-* Etcd. Destek, olağanüstü durum planlama ve küme durumu geri yüklemesi için her 30 dakikada bir tüm etcd verilerine yönelik otomatik, saydam yedeklemeler içerir. Bu yedeklemeler doğrudan müşteriler veya kullanıcılar tarafından kullanılamaz. Veri güvenilirliğini ve tutarlılığını güvence altına alırlar.
+* Etcd. Destek, olağanüstü durum planlama ve küme durumu geri yüklemesi için her 30 dakikada bir tüm etcd verilerine yönelik otomatik, saydam yedeklemeler içerir. Bu yedeklemeler doğrudan müşteriler veya kullanıcılar tarafından kullanılamaz. Veri güvenilirliğini ve tutarlılığını güvence altına alırlar. Etcd. isteğe bağlı geri alma veya geri yükleme özelliği olarak desteklenmez.
 * Kubernetes için Azure bulut sağlayıcısı sürücüsünde herhangi bir tümleştirme noktası. Bunlar, yük dengeleyiciler, kalıcı birimler veya ağ (Kubernetes ve Azure CNı) gibi diğer Azure hizmetleriyle tümleştirmeler içerir.
 * Kubernetes API Server, etcd ve Kuto-DNS gibi denetim düzlemi bileşenlerinin özelleştirilmesi hakkında sorular veya sorunlar.
 * Azure CNı, kubenet gibi ağ ile ilgili sorunlar veya diğer ağ erişimi ve işlevsellik sorunları. Sorunlar DNS çözümlemesi, paket kaybı, yönlendirme vb. içerebilir. Microsoft çeşitli ağ senaryolarını destekler:
