@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131230"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392820"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'ndaki Günlükler-tek sunucu
 
@@ -21,7 +21,7 @@ Denetim günlüğü, bir Postgres uzantısı, pgaudit aracılığıyla kullanıl
 
 
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma 
-Günlük sunucusu parametrelerini kullanarak sunucunuzda Postgres standart günlüğünü yapılandırabilirsiniz. Her PostgreSQL için Azure veritabanı sunucusunda `log_checkpoints` ve `log_connections` varsayılan olarak üzerinde bulunur. Günlük gereksinimlerinize uyacak şekilde ayarlayabileceğiniz ek parametreler vardır: 
+Günlük sunucusu parametrelerini kullanarak sunucunuzda Postgres standart günlüğünü yapılandırabilirsiniz. Her PostgreSQL için Azure veritabanı sunucusunda `log_checkpoints` ve `log_connections` Varsayılan olarak üzerinde bulunur. Günlük gereksinimlerinize uyacak şekilde ayarlayabileceğiniz ek parametreler vardır: 
 
 ![PostgreSQL için Azure veritabanı-günlük parametreleri](./media/concepts-server-logs/log-parameters.png)
 
@@ -41,11 +41,11 @@ PostgreSQL için Azure veritabanı 'nda varsayılan günlük biçimi. log ' dır
 
 PostgreSQL için Azure veritabanı,. log dosyaları için kısa vadeli depolama konumu sağlar. Yeni bir dosya 1 saat veya 100 MB başlar, hangisi önce gelir. Günlükler, Postgres 'lerden yayıldıkları için geçerli dosyaya eklenir.  
 
-`log_retention_period` Parametresini kullanarak bu kısa vadeli günlük depolama için saklama süresini ayarlayabilirsiniz. Varsayılan değer 3 gün, en büyük değer ise 7 gündür. Kısa vadeli depolama konumu 1 GB 'a kadar günlük dosyası tutabilir. 1 GB 'den sonra, saklama süresinden bağımsız olarak en eski dosyalar yeni günlüklere yer açmak için silinir. 
+Parametresini kullanarak bu kısa vadeli günlük depolama için saklama süresini ayarlayabilirsiniz `log_retention_period` . Varsayılan değer 3 gün, en büyük değer ise 7 gündür. Kısa vadeli depolama konumu 1 GB 'a kadar günlük dosyası tutabilir. 1 GB 'den sonra, saklama süresinden bağımsız olarak en eski dosyalar yeni günlüklere yer açmak için silinir. 
 
 Günlüklerin ve günlük analizinin daha uzun süreli tutulması için,. log dosyalarını indirebilir ve bunları bir üçüncü taraf hizmetine taşıyabilirsiniz. [Azure clı](howto-configure-server-logs-using-cli.md) [Azure Portal](howto-configure-server-logs-in-portal.md)kullanarak dosyaları indirebilirsiniz. Alternatif olarak, Azure Izleyici tanılama ayarlarını, günlüklerinizi (JSON biçiminde) uzun dönem konumlarına otomatik olarak yayan bir şekilde yapılandırabilirsiniz. Aşağıdaki bölümde bu seçenek hakkında daha fazla bilgi edinin. 
 
-Parametresini `logging_collector` kapalı olarak ayarlayarak. log dosyalarının oluşturulmasını durdurabilirsiniz. Kapatılıyor. günlük dosyası oluşturma, Azure Izleyici tanılama ayarlarını kullanıyorsanız önerilir. Bu yapılandırma, ek günlüğe kaydetme işleminin performans etkisini azaltacaktır.
+Parametresini kapalı olarak ayarlayarak. log dosyalarının oluşturulmasını durdurabilirsiniz `logging_collector` . Kapatılıyor. günlük dosyası oluşturma, Azure Izleyici tanılama ayarlarını kullanıyorsanız önerilir. Bu yapılandırma, ek günlüğe kaydetme işleminin performans etkisini azaltacaktır.
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
 
@@ -82,6 +82,7 @@ Son gün içinde belirli bir sunucu için tüm Postgres günlüklerini arayın
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
+| where Category == "PostgreSQLLogs"
 | where TimeGenerated > ago(1d) 
 ```
 
@@ -103,7 +104,7 @@ Aşağıdaki tablo, **Postgrestablogs** türü için alanları açıklar. Seçti
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | Tür | Günlüğün türü. Her`AzureDiagnostics` |
-| SubscriptionId | Sunucunun ait olduğu abonelik için GUID |
+| kaynak grubundaki | Sunucunun ait olduğu abonelik için GUID |
 | ResourceGroup | Sunucunun ait olduğu kaynak grubunun adı |
 | ResourceProvider | Kaynak sağlayıcının adı. Her`MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |

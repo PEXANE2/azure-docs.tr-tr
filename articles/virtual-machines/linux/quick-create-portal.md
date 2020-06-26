@@ -5,37 +5,21 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6bf9a89a4806db53797191336578ef9148886181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759229"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392871"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında Linux sanal makinesi oluşturma
 
 Azure sanal makineleri (VM’ler), Azure portalı üzerinden oluşturulabilir. Azure portal, Azure kaynakları oluşturmak için tarayıcı tabanlı bir kullanıcı arabirimidir. Bu hızlı başlangıçta, Ubuntu 18,04 LTS çalıştıran bir Linux sanal makinesini (VM) dağıtmak için Azure portal nasıl kullanılacağı gösterilmektedir. Ayrıca VM'nizin çalıştığını görmek için SSH ile VM bağlantısı kurup NGINX web sunucusunu da yükleyeceksiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
-## <a name="create-ssh-key-pair"></a>SSH anahtar çifti oluşturma
-
-Bu hızlı başlangıcı tamamlamak için bir SSH anahtar çifti gerekir. Bir SSH anahtar çiftiniz varsa bu adımı atlayabilirsiniz.
-
-SSH anahtar çifti oluşturmak için bir Bash kabuğu açın ve [ssh-keygen](https://www.ssh.com/ssh/keygen/) komutunu kullanın. Yerel bilgisayarınızda Bash kabuğunuz yoksa [Azure Cloud Shell](https://shell.azure.com/bash)'i kullanabilirsiniz.
-
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sayfanın üst kısmındaki menüde Cloud Shell açmak için `>_` simgeyi seçin.
-1. CloudShell 'in, sol üst köşedeki **Bash** 'i söylediğinizden emin olun. PowerShell 'i görürseniz, **Bash** ' i seçmek ve bash kabuğu ' nu değiştirmek için **Onayla** ' yı seçin.
-1. SSH `ssh-keygen -t rsa -b 2048` anahtarını oluşturmak için yazın. 
-1. Anahtar çiftinin kaydedileceği bir dosya girmeniz istenir. Parantez içinde listelenen varsayılan konuma kaydetmek için **ENTER** tuşuna basın. 
-1. Bir parola girmeniz istenir. SSH anahtarınız için bir parola yazabilir veya parola olmadan devam etmek için **ENTER** tuşuna basabilirsiniz.
-1. `ssh-keygen` Komut, `id_rsa` `~/.ssh directory`içinde varsayılan adı ile ortak ve özel anahtarlar oluşturur. Komut, ortak anahtarın tam yolunu döndürür. Yazarak `cat` `cat ~/.ssh/id_rsa.pub`içeriğini göstermek için ortak anahtarın yolunu kullanın.
-1. Bu komutun çıkışını kopyalayın ve bu makalede daha sonra kullanmak üzere bir yere kaydedin. Bu, ortak anahtarınıza ve sanal makinenizde oturum açmak üzere yönetici hesabınızı yapılandırırken ihtiyacınız olacaktır.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -54,11 +38,15 @@ Henüz yapmadıysanız [Azure Portal](https://portal.azure.com) oturum açın.
 
     ![Örnek ayrıntıları bölümü](./media/quick-create-portal/instance-details.png)
 
-1. **Yönetici hesabı**altında **SSH ortak anahtarı**' nı seçin, Kullanıcı adınızı yazın ve sonra ortak anahtarınızı yapıştırın. Ortak anahtarınızda varsa baştaki ve sondaki tüm boşlukları kaldırın.
+1. **Yönetici hesabı**altında **SSH ortak anahtarı**' nı seçin.
+
+1. **Kullanıcı adı** *azureuser*yazın.
+
+1. **SSH ortak anahtar kaynağı**için varsayılan değer **Oluştur yeni anahtar çiftini**bırakın ve **anahtar çifti adı**için *MyKey* yazın.
 
     ![Yönetici hesabı](./media/quick-create-portal/administrator-account.png)
 
-1. **Gelen bağlantı noktası kuralları** > **Genel gelen bağlantı noktaları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılan listeden **SSH (22)** ve **http (80)** seçeneğini belirleyin. 
+1. **Gelen bağlantı noktası kuralları**  >  **Genel gelen bağlantı noktaları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılan listeden **SSH (22)** ve **http (80)** seçeneğini belirleyin. 
 
     ![RDP ve HTTP için bağlantı noktaları açma](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -66,24 +54,29 @@ Henüz yapmadıysanız [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Sanal makine oluştur** sayfasında oluşturmak üzere olduğunuz VM'nin ayrıntılarını görüntüleyebilirsiniz. Hazır olduğunuzda **Oluştur**'u seçin.
 
-VM'nizin dağıtılması birkaç dakika sürer. Dağıtım tamamlandıktan sonra bir sonraki bölüme geçin.
+1. **Yeni anahtar çifti oluştur** penceresi açıldığında, **özel anahtarı indir ve kaynak oluştur**' u seçin. Anahtar dosyanız, **MyKey. pem**olarak indirilecek. Dosyanın nerede indirildiğini öğrendiğinizden emin olun `.pem` , bir sonraki adımda bu dosyanın yolunu kullanmanız gerekecektir.
 
-    
+1. Dağıtım bittiğinde **Kaynağa Git**' i seçin.
+
+1. Yeni sanal makinenizin sayfasında genel IP adresini seçin ve panonuza kopyalayın.
+
+
+    ![Genel IP adresini kopyalayın](./media/quick-create-portal/ip-address.png)
+
 ## <a name="connect-to-virtual-machine"></a>Sanal makineye bağlanma
 
 VM ile bir SSH bağlantısı oluşturun.
 
-1. VM’nizin genel bakış sayfasından **Bağlan** düğmesini seçin. 
+1. Mac veya Linux makineniz varsa, bir bash istemi açın. Bir Windows makineniz varsa, bir PowerShell komut istemi açın. 
 
-    ![Portal 9](./media/quick-create-portal/portal-quick-start-9.png)
+1. İstemde sanal makinenize bir SSH bağlantısı açın. IP adresini sanal makinenizde bulunan ile değiştirin ve yolunu, `.pem` anahtar dosyasının indirildiği yol ile değiştirin.
 
-2. **Sanal makineye bağlan** sayfasında, 22 numaralı bağlantı noktası üzerinden IP adresine göre bağlanmak için varsayılan seçenekleri olduğu gibi bırakın. **VM yerel hesabı kullanarak oturum açın** bölümünde bir bağlantı komutu gösterilir. Komutu kopyalamak için düğmeyi seçin. Aşağıdaki örnekte SSH bağlantı komutunun nasıl göründüğü gösterilmiştir:
+```console
+ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
+```
 
-    ```bash
-    ssh azureuser@10.111.12.123
-    ```
-
-3. SSH anahtar çiftini oluşturmak için kullandığınız Bash kabuğunu kullanarak (yeniden seçerek `>_` veya ' ye `https://shell.azure.com/bash`giderek Cloud Shell yeniden açabilir), SSH bağlantısı komutunu bir SSH oturumu oluşturmak için kabuğa yapıştırın.
+> [!TIP]
+> Oluşturduğunuz SSH anahtarı, Azure 'da bir VM oluşturduğunuzda kullanılabilir. Bir VM 'yi bir sonraki sefer oluşturduğunuzda **SSH ortak anahtar kaynağı** için **Azure 'da depolanan bir anahtar kullan** seçeneğini belirleyin. Bilgisayarınızda zaten özel anahtara sahipsiniz, bu nedenle herhangi bir şey indirmeniz gerekmez.
 
 ## <a name="install-web-server"></a>Web sunucusunu yükleme
 
