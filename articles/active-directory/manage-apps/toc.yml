@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: Uygulama sayfasındaki bağlantılar çalışmıyor
               href: application-proxy-page-links-broken-problem.md
-            - name: Uygulamam için açılacak bağlantı noktaları
-              href: application-proxy-connectivity-ports-how-to.md
             - name: Uygulamam için bağlayıcı grubunda çalışan bağlayıcı yok
               href: application-proxy-connectivity-no-working-connector.md
             - name: Yönetici portalında yapılandırma
