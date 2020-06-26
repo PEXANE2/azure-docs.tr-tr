@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: f564113f9a2bb92d1591ac0d3512ae460aa8f58d
-  ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+  ms.openlocfilehash: 13a7ca317630a5a1b0606fa0d2e2022f065fbd4d
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/15/2020
-  ms.locfileid: "84783206"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85317181"
 landingContent:
 - title: Güvenlik Merkezi hakkında
   linkLists:
@@ -30,18 +30,16 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: Kapsayıcılarınızı koruma
-      url: container-security.md
-    - text: VM'ler için tümleşik güvenlik açığı değerlendirmesi
-      url: built-in-vulnerability-assessment.md
-    - text: Güvenlik uyarıları için şemaları gözden geçirme
-      url: alerts-schemas.md
-    - text: Uyarılara ve önerilere yanıtları otomatikleştirme
-      url: workflow-automation.md
-    - text: Güvenlik uyarılarını ve önerilerini dışarı aktarma
-      url: continuous-export.md
-    - text: Azure Key Vault için tehdit koruması ayarlama
-      url: advanced-threat-protection-key-vault.md
+    - text: Güvenlik Merkezi için sürüm notları
+      url: release-notes.md
+    - text: SQL makineleri için gelişmiş veri güvenliği
+      url: security-center-iaas-advanced-data.md
+    - text: Uyarı engelleme kuralları
+      url: alerts-suppression-rules.md
+    - text: Yeni güvenlik denetimlerinin tam açıklamaları
+      url: secure-score-security-controls.md#security-controls-and-their-recommendations
+    - text: Yeni güvenlik puanı API’si
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: başlarken
   linkLists:
   - linkListType: get-started
@@ -64,6 +62,8 @@ landingContent:
       url: tutorial-security-policy.md
     - text: Güvenliği artırmak için önerileri kullanın
       url: security-center-using-recommendations.md
+    - text: Güvenlik puanı API’si ile izleme
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: Tehditleri azaltma
   linkLists:
   - linkListType: how-to-guide

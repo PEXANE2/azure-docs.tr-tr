@@ -21,6 +21,8 @@
       href: front-door-tutorial-geo-filtering.md
     - name: Kural Altyapısını Ayarlama
       href: front-door-tutorial-rules-engine.md
+    - name: Kural Altyapısı ile Güvenlik üst bilgisi ekleme
+      href: front-door-security-headers.md
     - name: Web Uygulaması Güvenlik Duvarı ve Front Door
       href: front-door-waf.md
 - name: Örnekler

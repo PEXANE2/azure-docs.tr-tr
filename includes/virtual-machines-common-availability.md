@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b823ea97e39dfa05295449fd5a039d2b9debdfa
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76748937"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412022"
 ---
 Bu makalede, Azure sanal makinelerinin (VM 'Ler) kullanılabilirlik özelliklerine ilişkin bir genel bakış sunulmaktadır.
 
@@ -48,17 +48,6 @@ Bu yaklaşım, Azure platformu periyodik bakımdan geçirilirken uygulamanızın
 ## <a name="virtual-machines-scale-sets"></a>Sanal Makine Ölçek Kümeleri 
 
 Azure sanal makine ölçek kümeleri, yük dengeli bir VM grubu oluşturmanızı ve yönetmenizi sağlar. Tanımlı bir zamanlamaya veya talebe yanıt olarak sanal makine örneği sayısı otomatik olarak artabilir ya da azalabilir. Ölçek Kümeleri, uygulamalarınız için yüksek kullanılabilirlik sağlar ve birçok VM 'yi merkezi olarak yönetmenize, yapılandırmanıza ve güncelleştirmenize olanak tanır. Yüksek oranda kullanılabilir bir uygulama sağlamak ve [% 99,95 Azure SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)karşılamak için ölçek kümesi içinde iki veya daha fazla sanal makine oluşturulmasını öneririz. Ölçek kümesinin kendisi için herhangi bir maliyet yoktur, yalnızca oluşturduğunuz her sanal makine örneği için ödeme yaparsınız. Tek bir VM [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)kullanırken, planlanmamış bakım olayları için Azure SLA 'sı geçerlidir. Ölçek kümesindeki sanal makineler, çok sayıda güncelleştirme etki alanına ve hata etki alanına dağıtılabilir ve bu da veri merkezi kesintileri ve planlı ya da plansız bakım olayları nedeniyle kullanılabilirlik ve esnekliği 'in kesintilerine en üst düzeye çıkarabilir. Ölçek kümesindeki sanal makineler aynı zamanda tek bir kullanılabilirlik bölgesine veya bölgeye göre dağıtılabilir. Kullanılabilirlik alanı dağıtım seçenekleri, düzenleme moduna göre farklılık gösterebilir.
-
-### <a name="preview-orchestration-mode-preview"></a>Önizleme: Orchestration modu Önizleme
-Sanal Makine Ölçek Kümeleri, düzenleme modunu belirtmenize olanak tanır.  Sanal makine ölçek kümesi düzenleme modu (Önizleme) ile artık ölçek kümesinin, bir ölçek kümesi yapılandırma modelinin dışında bir şekilde oluşturulan sanal makineleri veya yapılandırma modeline göre örtük olarak oluşturulan sanal makine örneklerini düzenleme yapıp olmayacağını seçebilirsiniz. VM Orchestration modelinin, bir bölgede veya bir kullanılabilirlik alanında açıkça tanımlanmış sanal makineleri gruplamanıza izin verdiğini düzenleme modunu seçin. Bir kullanılabilirlik alanında dağıtılan sanal makineler, VM 'lere göre daha fazla yalıtım sağlar ve bölgesel bölge sınırlarına bağlanır ve bölgedeki diğer kullanılabilirlik bölgesinde oluşabilecek hatalara tabi değildir. 
-
-|   | "orchestrationMode": "VM" (VirtualMachine)| "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
-|----|----|----|
-| VM yapılandırma modeli| Yok. VirtualMachineProfile, ölçek kümesi modelinde tanımsızdır. | Gereklidir. VirtualMachineProfile, ölçek kümesi modelinde doldurulur. |
-| Ölçek kümesine yeni VM ekleniyor| VM oluşturulduğunda, sanal makineler ölçek kümesine açıkça eklenir. | VM 'Ler örtük olarak oluşturulur ve VM yapılandırma modeli, örnek sayısı ve otomatik ölçeklendirme kuralları temelinde ölçek kümesine eklenir. |
-| Kullanılabilirlik Alanları| Tek bir kullanılabilirlik bölgesindeki bölgesel dağıtımı veya VM 'Leri destekler| Bölgesel dağıtımı veya birden çok Kullanılabilirlik Alanları destekler; Bölge Dengeleme stratejisini tanımlayabilir |
-| Hata etki alanları| , Hata etki alanı sayısını tanımlayabilir. 2 veya 3 kullanılabilirlik alanı için bölgesel destek ve 5 ' i temel alır. Atanan VM hata etki alanı, serbest bırakma ve yeniden başlatma dahil olmak üzere VM yaşam döngüsüyle kalır. | , ZGen olmayan dağıtımlar için 1, 2 veya 3 hata etki alanı tanımlayabilir ve kullanılabilirlik alanı dağıtımları için 5 ' i kullanabilirsiniz. Atanan VM hata etki alanı VM yaşam döngüsüyle kalıcı olmadığından, sanal makinelere ayırma sırasında bir hata etki alanı atanır. |
-| Güncelleme etki alanları| Yok. Güncelleştirme etki alanları hata etki alanlarına otomatik olarak eşlenir| Yok. Güncelleştirme etki alanları hata etki alanlarına otomatik olarak eşlenir |
 
 **Hata etki alanları ve güncelleştirme etki alanları**
 

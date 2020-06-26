@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Uygulama yönetimi belgeleri
-summary: Azure Active Directory bulut ve şirket içi uygulamalara güvenli ve sorunsuz erişim sağlar. Ayrıca parolaları yönetmeye gerek yoktur. Son kullanıcılarınız tek bir kez oturum açarak Office 365’e ve diğer binlerce uygulamaya erişebilir. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle uygulamaları nasıl yönetip dağıtacağınızı öğrenin.
+summary: Azure Active Directory bulut ve şirket içi uygulamalara güvenli ve sorunsuz erişim sağlar. Ayrıca parolaları yönetmeye gerek yoktur. Son kullanıcılarınız tek bir kez oturum açarak Microsoft 365’e ve diğer binlerce uygulamaya erişebilir. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle uygulamaları nasıl yönetip dağıtacağınızı öğrenin.
 metadata:
   title: Uygulama yönetimi belgeleri
-  description: Azure Active Directory bulut ve şirket içi uygulamalara güvenli ve sorunsuz erişim sağlar. Ayrıca parolaları yönetmeye gerek yoktur. Son kullanıcılarınız tek bir kez oturum açarak Office 365’e ve diğer binlerce uygulamaya erişebilir. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle uygulamaları nasıl yönetip dağıtacağınızı öğrenin.
+  description: Azure Active Directory bulut ve şirket içi uygulamalara güvenli ve sorunsuz erişim sağlar. Ayrıca parolaları yönetmeye gerek yoktur. Son kullanıcılarınız tek bir kez oturum açarak Microsoft 365’e ve diğer binlerce uygulamaya erişebilir. Hızlı başlangıçlarımız, öğreticilerimiz ve rehberimizle uygulamaları nasıl yönetip dağıtacağınızı öğrenin.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3bea7dda1cf44548ea924ffa84fb922410242f27
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
+  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77063481"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85339200"
 landingContent:
 - title: Uygulama yönetimi hakkında
   linkLists:

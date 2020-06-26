@@ -167,6 +167,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: Apache Pig’i iyileştirme
                   href: ./optimize-pig-ambari.md
+            - name: Küme düğümlerini yeniden başlatma
+              href: ./cluster-reboot-vm.md
             - name: Apache Ambari REST API'sini kullanma
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: Küme silme

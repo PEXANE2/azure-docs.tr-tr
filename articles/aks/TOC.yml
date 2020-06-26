@@ -132,6 +132,8 @@
           href: upgrade-cluster.md
         - name: Çalışma Süresi SLA’sını kullanma
           href: uptime-sla.md
+        - name: Yakınlık yerleştirme gruplarını kullanma (önizleme)
+          href: reduce-latency-ppg.md
         - name: Düğüm görüntüsünü yükseltme (önizleme)
           href: node-image-upgrade.md
         - name: İşlem düğümü işletim sistemi güncelleştirmeleri

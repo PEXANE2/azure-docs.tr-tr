@@ -4,7 +4,7 @@
   items:
     - name: Azure Kaynak Grafı nedir?
       displayName: 'Resource Manager, query language, rbac, permissions'
-      href: overview.md
+      href: ./overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -20,6 +20,9 @@
     - name: İlk sorgunuzu çalıştırma - Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
+    - name: İlk sorgunuzu çalıştırma - JavaScript
+      displayName: 'library, node, arm-resourcegraph'
+      href: ./first-query-javascript.md
     - name: İlk sorgunuzu çalıştırma - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
@@ -77,7 +80,7 @@
       href: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
     - name: Java (Maven) için Azure SDK
       href: 'https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar'
-    - name: Node için Azure SDK
+    - name: JavaScript için Azure SDK
       href: /javascript/api/@azure/arm-resourcegraph
     - name: Python için Azure SDK
       href: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph

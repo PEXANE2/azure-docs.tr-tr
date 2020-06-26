@@ -581,6 +581,9 @@
         - name: Giriş not defterleri
           href: /azure/databricks/delta/intro-notebooks
           maintainContext: true
+        - name: Delta Lake’e veri alma
+          href: /azure/databricks/delta/delta-ingest
+          maintainContext: true
         - name: Tablo toplu okumaları ve yazmaları
           href: /azure/databricks/delta/delta-batch
           maintainContext: true
@@ -593,68 +596,65 @@
         - name: Tablo yardımcı programı komutları
           href: /azure/databricks/delta/delta-utility
           maintainContext: true
-        - name: Delta Lake API başvurusu
+        - name: API başvurusu
           href: /azure/databricks/delta/delta-apidoc
           maintainContext: true
         - name: Eşzamanlılık denetimi
           href: /azure/databricks/delta/concurrency-control
           maintainContext: true
-        - name: İyileştirmeler
-          items:
-            - name: İyileştirmelere genel bakış
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: Dosya yönetimiyle performansı iyileştirme
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: Otomatik iyileştirme
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: Önbellekle performansı iyileştirme
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: Yalıtım düzeyleri
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: MySQL tablolarını Delta Lake tablolarına çoğaltma
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: Birleştirme performansını iyileştirme
-              items:
-                - name: Birleştirme performansını iyileştirmeye genel bakış
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: Aralık Birleştirme iyileştirmesi
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: Eğim Birleştirme iyileştirmesi
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: İyileştirilmiş veri dönüştürme
-              items:
-                - name: İyileştirilmiş veri dönüştürmeye genel bakış
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: Daha yüksek sıralı işlevler
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: Karmaşık veri türlerini dönüştürme
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: En iyi uygulamalar
-              href: /azure/databricks/delta/best-practices
-              maintainContext: true
-            - name: Tablo sürümü oluşturma
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: İyileştirme örnekleri
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
+        - name: En iyi uygulamalar
+          href: /azure/databricks/delta/best-practices
+          maintainContext: true
         - name: Sık sorulan sorular
           href: /azure/databricks/delta/delta-faq
           maintainContext: true
-        - name: Ek Delta kaynakları
+        - name: Kaynaklar
           href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: Delta Altyapısı
+      items:
+        - name: Delta Altyapısına genel bakış
+          href: /azure/databricks/delta/optimizations/index
+          maintainContext: true
+        - name: Dosya yönetimiyle performansı iyileştirme
+          href: /azure/databricks/delta/optimizations/file-mgmt
+          maintainContext: true
+        - name: Otomatik iyileştirme
+          href: /azure/databricks/delta/optimizations/auto-optimize
+          maintainContext: true
+        - name: Önbellekle performansı iyileştirme
+          href: /azure/databricks/delta/optimizations/delta-cache
+          maintainContext: true
+        - name: Yalıtım düzeyleri
+          href: /azure/databricks/delta/optimizations/isolation-level
+          maintainContext: true
+        - name: Birleştirme performansını iyileştirme
+          items:
+            - name: Birleştirme performansını iyileştirmeye genel bakış
+              href: /azure/databricks/delta/join-performance/index
+              maintainContext: true
+            - name: Aralık Birleştirme iyileştirmesi
+              href: /azure/databricks/delta/join-performance/range-join
+              maintainContext: true
+            - name: Eğim Birleştirme iyileştirmesi
+              href: /azure/databricks/delta/join-performance/skew-join
+              maintainContext: true
+        - name: İyileştirilmiş veri dönüştürme
+          items:
+            - name: İyileştirilmiş veri dönüştürmeye genel bakış
+              href: /azure/databricks/delta/data-transformation/index
+              maintainContext: true
+            - name: Daha yüksek sıralı işlevler
+              href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+              maintainContext: true
+            - name: Karmaşık veri türlerini dönüştürme
+              href: /azure/databricks/delta/data-transformation/complex-types
+              maintainContext: true
+        - name: Tablo sürümü oluşturma
+          href: /azure/databricks/delta/optimizations/versioning
+          maintainContext: true
+        - name: İyileştirme örnekleri
+          href: /azure/databricks/delta/optimizations/optimization-examples
           maintainContext: true
     - name: Veri çerçeveleri ve veri kümeleri
       items:
@@ -1899,7 +1899,7 @@
                 - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
-                - name: Databricks Runtime 7.0 ML (Beta)
+                - name: Databricks Runtime 7.0 ML
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
                 - name: Databricks Runtime 7.0 Genomics
