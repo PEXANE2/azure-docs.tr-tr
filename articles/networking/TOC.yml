@@ -4,6 +4,8 @@
       href: networking-overview.md
     - name: Mimari
       items:
+        - name: Ağ mühendisleri için Azure
+          href: azure-for-network-engineers.md
         - name: Sanal Veri Merkezleri
           href: /azure/architecture/vdc/networking-virtual-datacenter
         - name: Birden çok ağ yoluyla Asimetrik yönlendirme

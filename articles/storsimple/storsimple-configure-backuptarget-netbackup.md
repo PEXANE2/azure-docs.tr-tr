@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 87885d9b476582fcce53b8b960d24093693af4ec
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67876200"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509396"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup ile bir yedekleme hedefi olarak StorSimple
 
@@ -55,8 +55,8 @@ Herhangi bir depolama çözümünde olduğu gibi, çözümün depolama performan
 
 StorSimple, iyi tanımlanmış bir çalışma verileri kümesi (sık kullanılan veriler) üzerinde çalışan uygulamalara depolama sağlamak için tasarlanmıştır. Bu modelde, çalışma verileri yerel katmanlara depolanır ve kalan çalışma dışı/soğuk/arşivlenmiş veri kümesi buluta katmanlı. Bu model aşağıdaki şekilde temsil edilir. Neredeyse düz yeşil çizgi, StorSimple cihazının yerel katmanlarında depolanan verileri temsil eder. Kırmızı çizgi, tüm katmanlar genelinde StorSimple çözümünde depolanan toplam veri miktarını temsil eder. Düz yeşil çizgi ile üstel kırmızı eğri arasındaki boşluk, bulutta depolanan toplam veri miktarını temsil eder.
 
-**StorSimple katmanlama**
-![StorSimple katmanlama diyagramı](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
+**StorSimple katmanlama** 
+ ![ StorSimple katmanlama diyagramı](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
 
 Bu mimari göz önünde bulundurularak, StorSimple 'ın yedekleme hedefi olarak çalışacak şekilde uygun olduğunu fark edersiniz. StorSimple kullanarak şunları yapabilirsiniz:
 -   Yerel çalışma kümesinden en sık geri yükleme işlemini gerçekleştirin.
@@ -185,7 +185,7 @@ Bu bölümde bazı yapılandırma örnekleri gösterilmektedir. Aşağıdaki ör
 | StorSimple dağıtım görevleri  | Ek açıklamalar |
 |---|---|
 | Şirket içi StorSimple cihazınızı dağıtın. | Desteklenen sürümler: güncelleştirme 3 ve sonraki sürümleri. |
-| Yedekleme hedefini açın. | Yedekleme hedefi modunu açmak veya kapatmak ve durum almak için bu komutları kullanın. Daha fazla bilgi için bkz. [StorSimple cihazına uzaktan bağlanma](storsimple-remote-connect.md).</br> Yedekleme modunu açmak için: `Set-HCSBackupApplianceMode -enable`. </br> Yedekleme modunu devre dışı bırakmak için `Set-HCSBackupApplianceMode -disable`:. </br> Yedekleme modu ayarlarının geçerli durumunu almak için: `Get-HCSBackupApplianceMode`. |
+| Yedekleme hedefini açın. | Yedekleme hedefi modunu açmak veya kapatmak ve durum almak için bu komutları kullanın. Daha fazla bilgi için bkz. [StorSimple cihazına uzaktan bağlanma](storsimple-remote-connect.md).</br> Yedekleme modunu açmak için: `Set-HCSBackupApplianceMode -enable` . </br> Yedekleme modunu devre dışı bırakmak için: `Set-HCSBackupApplianceMode -disable` . </br> Yedekleme modu ayarlarının geçerli durumunu almak için: `Get-HCSBackupApplianceMode` . |
 | Yedekleme verilerini depolayan biriminiz için ortak bir birim kapsayıcısı oluşturun. Bir birim kapsayıcısındaki tüm veriler yinelenenleri kaldırılmış. | StorSimple birim kapsayıcıları yinelenenleri kaldırma etki alanlarını tanımlar.  |
 | StorSimple birimleri oluşturun. | Birim boyutu bulut anlık görüntü süresi süresini etkilediğinden, boyutları beklenen kullanım için yakın olan birimler oluşturun. Bir birimin nasıl boyutlandıralınacağını öğrenmek için [bekletme ilkeleri](#retention-policies)hakkında bilgi edinin.</br> </br> StorSimple katmanlı birimleri kullanın ve **Bu birimi daha az sıklıkta erişilen arşiv verileri Için kullan** onay kutusunu seçin. </br> Yalnızca yerel olarak sabitlenmiş birimlerin kullanılması desteklenmez. |
 | Tüm yedekleme hedefi birimleri için benzersiz bir StorSimple yedekleme ilkesi oluşturun. | Bir StorSimple yedekleme ilkesi, birim tutarlılığı grubunu tanımlar. |
@@ -265,7 +265,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
 ### <a name="to-set-up-netbackup-storage"></a>NetBackup depolaması ayarlamak için
 
-1.  NetBackup yönetim konsolunda **medya ve cihaz yönetim** > **aygıtları** > **disk havuzları**' nı seçin. Disk havuzu yapılandırma sihirbazında, **Advanceddisk**depolama sunucusu türünü seçin ve ardından **İleri**' yi seçin.
+1.  NetBackup yönetim konsolunda **medya ve cihaz yönetim**  >  **aygıtları**  >  **disk havuzları**' nı seçin. Disk havuzu yapılandırma sihirbazında, **Advanceddisk**depolama sunucusu türünü seçin ve ardından **İleri**' yi seçin.
 
     ![NetBackup Yönetim Konsolu, disk havuzu yapılandırma Sihirbazı](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
@@ -277,7 +277,7 @@ Yukarıdaki varsayımlar temelinde, aylık ve yıllık tam yedeklemeler için 26
 
     ![NetBackup Yönetim Konsolu, StorSimple birim diskini seçin](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  Yedekleme**hedefi için bir** ad girin ve ardından **İleri** > ' yi seçerek Sihirbazı sona erdirin.
+4.  Yedekleme hedefi için bir ad girin ve ardından **İleri**' yi seçerek  >  **Next** Sihirbazı sona erdirin.
 
 5.  Ayarları gözden geçirin ve ardından **son**' u seçin.
 
@@ -340,7 +340,7 @@ Aşağıdaki sıra, NetBackup 'ın ve hedef konağın NetBackup Aracısı yöner
 
    ![NetBackup Yönetim Konsolu, yeni bir ilke için yedekleme sıklığı ve döndürme](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. **Sonraki** > **Next**sonraki > **son bitiş**' i seçin.  Zamanlamayı, ilke oluşturulduktan sonra değiştirebilirsiniz.
+8. **Sonraki**  >  **sonraki**  >  **son bitiş**' i seçin.  Zamanlamayı, ilke oluşturulduktan sonra değiştirebilirsiniz.
 
 9. Yeni oluşturduğunuz ilkeyi genişletmeyi seçin ve ardından **zamanlamalar**' ı seçin.
 
@@ -395,7 +395,7 @@ Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemeleri
 
 ### <a name="backup-configuration-and-capacity-requirements"></a>Yedekleme yapılandırması ve kapasite gereksinimleri
 
-| Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite\* (Tib) |
+| Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite \* (Tib) |
 |---|---|---|---|---|
 | Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1 | 1 | 1 |
 | StorSimple hafta 2-4 |StorSimple diski (uzun vadeli) | 1 | 4 | 4 |
@@ -430,7 +430,7 @@ NetBackup, depolama ve medya yönetimi için çok çeşitli seçenekler sağlad�
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Bir NetBackup arşivine ve yineleme işine StorSimple birimleri atamak için
 
-1. NetBackup yönetim konsolunda, **depolama** > **alanı yaşam döngüsü ilkeleri** > **Yeni depolama yaşam döngüsü ilkesi**' ni seçin.
+1. NetBackup yönetim konsolunda, **depolama**  >  **alanı yaşam döngüsü ilkeleri**  >  **Yeni depolama yaşam döngüsü ilkesi**' ni seçin.
 
    ![NetBackup Yönetim Konsolu, yeni depolama yaşam döngüsü ilkesi](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
@@ -507,9 +507,9 @@ Aşağıdaki bölümde, yedekleme sonrası işlem sırasında StorSimple bulut a
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Bir bulut anlık görüntüsünü başlatmak veya silmek için
 
-1. [Azure PowerShell 'ı yükler](/powershell/azure/overview).
-2. [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell betiğini indirip kurun.
-3. Betiği çalıştıran sunucuda PowerShell 'i yönetici olarak çalıştırın. Betiğin hangi değişiklikleri yaptığını görmek için betiği `-WhatIf $true` ile çalıştırtığınızdan emin olun. Doğrulama tamamlandıktan sonra Pass `-WhatIf $false`. Aşağıdaki komutu çalıştırın:
+1. [Azure PowerShell'i yükleme](/powershell/azure/overview).
+2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell betiğini indirip kurun.
+3. Betiği çalıştıran sunucuda PowerShell 'i yönetici olarak çalıştırın. Betiğin `-WhatIf $true` hangi değişiklikleri yaptığını görmek için betiği ile çalıştırtığınızdan emin olun. Doğrulama tamamlandıktan sonra Pass `-WhatIf $false` . Aşağıdaki komutu çalıştırın:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```

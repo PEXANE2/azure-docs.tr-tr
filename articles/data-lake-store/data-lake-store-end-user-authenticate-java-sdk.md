@@ -3,15 +3,15 @@ title: Son Kullanıcı kimlik doğrulaması-Java Data Lake Storage 1.-Azure
 description: Java ile Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması elde etme hakkında bilgi edinin
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1e03ad657fd40dce22a17f2fff5b67a65eb3eb52
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9186922803c287f2aa17c151590a0c1b590619d3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691753"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511326"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Java kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Bu makalede, Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 ## <a name="end-user-authentication"></a>Son kullanıcı kimlik doğrulaması
 1. Komut satırından [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) veya bir IDE kullanarak Maven projesi oluşturun. IntelliJ kullanarak Java projesi oluşturma yönergeleri için [buraya](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html) bakın. Eclipse kullanarak proje oluşturma yönergeleri için [buraya](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm) bakın.
 
-2. Maven **pom.xml** dosyanıza aşağıdaki bağımlılıkları ekleyin. /Project>etiketinden önce aşağıdaki kod parçacığını ekleyin: ** \<**
+2. Maven **pom.xml** dosyanıza aşağıdaki bağımlılıkları ekleyin. Etiketinden önce aşağıdaki kod parçacığını ekleyin **\</project>** :
    
         <dependencies>
           <dependency>
@@ -51,7 +51,7 @@ Bu makalede, Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
           </dependency>
         </dependencies>
    
-    Birinci bağımlılık, Maven deposundan Data Lake Storage 1. SDK (`azure-data-lake-store-sdk`) kullanmaktır. İkinci bağımlılık, bu uygulama için hangi günlük altyapısının (`slf4j-nop`) kullanılacağını belirtmektir. Data Lake Storage 1. SDK, Log4J, Java günlüğü, Logback, vb. gibi birçok popüler günlük çerçevesi arasından seçim yapmanızı sağlayan [dolayısıyla slf4j](https://www.slf4j.org/) günlük façlade kullanır. Bu örnekte, günlük kaydını devre dışı bırakacak ve dolayısıyla **slf4j-nop** bağlamasını kullanacağız. Uygulamanızda diğer günlük seçeneklerini kullanmak için [buraya](https://www.slf4j.org/manual.html#projectDep) bakın.
+    Birinci bağımlılık, `azure-data-lake-store-sdk` Maven deposundan Data Lake Storage 1. SDK () kullanmaktır. İkinci bağımlılık, bu uygulama için hangi günlük altyapısının (`slf4j-nop`) kullanılacağını belirtmektir. Data Lake Storage 1. SDK, Log4J, Java günlüğü, Logback, vb. gibi birçok popüler günlük çerçevesi arasından seçim yapmanızı sağlayan [dolayısıyla slf4j](https://www.slf4j.org/) günlük façlade kullanır. Bu örnekte, günlük kaydını devre dışı bırakacak ve dolayısıyla **slf4j-nop** bağlamasını kullanacağız. Uygulamanızda diğer günlük seçeneklerini kullanmak için [buraya](https://www.slf4j.org/manual.html#projectDep) bakın.
 
 3. Aşağıdaki içeri aktarma deyimlerini uygulamanıza ekleyin.
 
@@ -62,7 +62,7 @@ Bu makalede, Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
         import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
         import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
 
-4. Kullanarak daha önce oluşturduğunuz Active Directory yerel uygulamanın belirtecini almak için Java uygulamanızda aşağıdaki kod parçacığını kullanın `DeviceCodeTokenProvider`. **Burada dolguyu** , Azure Active Directory yerel uygulamanın gerçek değerleriyle değiştirin.
+4. Kullanarak daha önce oluşturduğunuz Active Directory yerel uygulamanın belirtecini almak için Java uygulamanızda aşağıdaki kod parçacığını kullanın `DeviceCodeTokenProvider` . **Burada dolguyu** , Azure Active Directory yerel uygulamanın gerçek değerleriyle değiştirin.
 
         private static String nativeAppId = "FILL-IN-HERE";
             

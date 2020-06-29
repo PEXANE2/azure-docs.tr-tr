@@ -3,16 +3,16 @@ title: Son Kullanıcı kimlik doğrulaması-Azure AD ile Data Lake Storage 1.
 description: Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması elde etme hakkında bilgi edinin
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688249"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511306"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Bu makalede, **Son Kullanıcı kimlik doğrulaması için bir Azure AD yerel uyg
 
     ![AAD etki alanını al](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Azure kiracı KIMLIĞINIZ. Kiracı KIMLIĞINI alma hakkında yönergeler için bkz. [KIRACı kimliğini alma](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Azure kiracı KIMLIĞINIZ. Kiracı KIMLIĞINI alma hakkında yönergeler için bkz. [KIRACı kimliğini alma](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
 ## <a name="end-user-authentication"></a>Son kullanıcı kimlik doğrulaması
 Bu kimlik doğrulama mekanizması, son kullanıcının Azure AD aracılığıyla uygulamanızda oturum açmasını istiyorsanız önerilen yaklaşımdır. Daha sonra uygulamanız, oturum açan son kullanıcıyla aynı erişim düzeyine sahip Azure kaynaklarına erişebiliyor. Uygulamanızın erişimi sürdürmek için son kullanıcılarınızın kimlik bilgilerini düzenli aralıklarla sağlaması gerekir.
@@ -57,7 +57,7 @@ Uygulamanız, son kullanıcının kimlik bilgilerini girebileceği bir OAuth 2,0
 >
 
 ### <a name="directly-passing-in-user-credentials"></a>Kullanıcı kimlik bilgilerini doğrudan geçirme
-Uygulamanız Azure AD 'ye doğrudan Kullanıcı kimlik bilgilerini sağlayabilir. Bu yöntem yalnızca kuruluş KIMLIĞI Kullanıcı hesaplarıyla birlikte kullanılabilir; veya @outlook.com @live.com' de sonlanan hesaplar dahil olmak üzere kIşIsel/"canlı kimlik" Kullanıcı hesaplarıyla uyumlu değildir. Ayrıca, bu yöntem, Azure AD Iki öğeli kimlik doğrulaması (2FA) gerektiren kullanıcı hesaplarıyla uyumlu değildir.
+Uygulamanız Azure AD 'ye doğrudan Kullanıcı kimlik bilgilerini sağlayabilir. Bu yöntem yalnızca kuruluş KIMLIĞI Kullanıcı hesaplarıyla birlikte kullanılabilir; veya ' de sonlanan hesaplar dahil olmak üzere kişisel/"canlı KIMLIK" Kullanıcı hesaplarıyla uyumlu değildir @outlook.com @live.com . Ayrıca, bu yöntem, Azure AD Iki öğeli kimlik doğrulaması (2FA) gerektiren kullanıcı hesaplarıyla uyumlu değildir.
 
 ### <a name="what-do-i-need-for-this-approach"></a>Bu yaklaşım için ne yapmam gerekir?
 * Azure AD etki alanı adı. Bu gereksinim, bu makalenin önkoşul bölümünde zaten listelenmiştir.
@@ -78,7 +78,7 @@ Bağlantıdaki yönergeleri takip ederken, aşağıdaki ekran görüntüsünde g
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>2. Adım: uygulama KIMLIĞINI ve yeniden yönlendirme URI 'sini alın
 
-Bkz. uygulama KIMLIĞINI almak için [uygulama kimliğini alma](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) .
+Bkz. uygulama KIMLIĞINI almak için [uygulama kimliğini alma](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) .
 
 Yeniden yönlendirme URI 'sini almak için aşağıdaki adımları uygulayın.
 

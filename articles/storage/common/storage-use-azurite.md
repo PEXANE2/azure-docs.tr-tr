@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.topic: how-to
+ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195954"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512143"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Yerel Azure depolama geliştirme ve test (Önizleme) için Azurite öykünücüsünü kullanın
 
@@ -70,7 +70,7 @@ Aşağıdaki ayarlar desteklenir:
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>NPM kullanarak Azurite 'i yükleyip çalıştırma
 
-Bu yükleme yöntemi için [Node. js sürüm 8,0 veya daha yeni bir sürümün](https://nodejs.org) yüklü olması gerekir. Düğüm Paket Yöneticisi (NPM), her Node. js yüklemesinde bulunan paket yönetim aracıdır. Node. js ' yi yükledikten sonra, `npm` Azurite yüklemek için aşağıdaki komutu yürütün.
+Bu yükleme yöntemi, [Node.js sürüm 8,0 veya sonraki bir sürümün](https://nodejs.org) yüklü olmasını gerektirir. Düğüm Paket Yöneticisi (NPM), her Node.js yüklemesinde bulunan paket yönetim aracıdır. Node.js yükledikten sonra, `npm` Azurite yüklemek için aşağıdaki komutu yürütün.
 
 ```console
 npm install -g azurite
@@ -148,7 +148,7 @@ Bu komut, Azurite 'ın tüm verileri belirli bir dizinde ( *c:\azurite*) depolam
 
 Bu bölüm, Azurıite başlatılırken kullanılabilen komut satırı anahtarlarının ayrıntılarını yapar.
 
-### <a name="help"></a>Yardım
+### <a name="help"></a>Help
 
 **Isteğe bağlı** -veya anahtarını kullanarak komut satırı yardımını alın `-h` `--help` .
 
@@ -355,7 +355,7 @@ Azurite, varsayılan olarak her dakikada ortam değişkeninden özel hesap adlar
 
 ### <a name="connection-strings"></a>Bağlantı dizeleri
 
-Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında *Usedevelopmentstorage = true*kısayoluna başvuran bir bağlantı dizesi yapılandırmaktır. Bir *app. config* dosyasındaki bağlantı dizesine bir örnek aşağıda verilmiştir:
+Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında *Usedevelopmentstorage = true*kısayoluna başvuran bir bağlantı dizesi yapılandırmaktır. Bir *app.config* dosyasındaki bağlantı dizesine bir örnek aşağıda verilmiştir:
 
 ```xml
 <appSettings>

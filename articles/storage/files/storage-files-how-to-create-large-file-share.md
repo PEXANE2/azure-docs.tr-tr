@@ -3,16 +3,16 @@ title: Büyük dosya paylaşımlarını etkinleştirme ve oluşturma-Azure dosya
 description: Bu makalede, büyük dosya paylaşımlarını etkinleştirme ve oluşturma hakkında bilgi edineceksiniz.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 16a183776bebad2fd365c3182ae64ea54befe41d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 427d936353b47e951f8faaf90483691bab856767
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219087"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510736"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
@@ -60,7 +60,7 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
 
     ![Azure portal yeni bir depolama hesabında "etkin" seçenek düğmesi ile ekran görüntüsü](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -132,7 +132,7 @@ Büyük bir dosya paylaşımının oluşturulması, standart bir dosya paylaşı
 
 1. Depolama hesabınızdan **dosya paylaşımları**' nı seçin.
 1. **+ Dosya paylaşımı**'nı seçin.
-1. Dosya paylaşımınız için bir ad girin. İstediğiniz kota boyutunu 100 TiB 'ye kadar de ayarlayabilirsiniz. Ardından **Oluştur**’u seçin. 
+1. Dosya paylaşımınız için bir ad girin. İstediğiniz kota boyutunu 100 TiB 'ye kadar de ayarlayabilirsiniz. Ardından **Oluştur**'u seçin. 
 
 ![Ad ve kota kutularını gösteren Azure portal Kullanıcı arabirimi](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 

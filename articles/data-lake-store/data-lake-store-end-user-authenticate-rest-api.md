@@ -3,15 +3,15 @@ title: Son Kullanıcı kimlik doğrulaması-Data Lake Storage 1. ile REST-Azure
 description: REST API kullanarak Azure Active Directory kullanarak Azure Data Lake Storage 1. Son Kullanıcı kimlik doğrulaması elde etme hakkında bilgi edinin
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: f0b79ec08883c81aee535a6eff1176e3e10027d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688074"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511207"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>REST API kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Bu senaryoda, uygulama kullanıcıdan oturum açmasını ister ve tüm işlemler
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > \<REDIRECT-URI>, bir URL içinde kullanılmak üzere kodlanmalıdır. Bu nedenle, https://localhostiçin kullanın `https%3A%2F%2Flocalhost`)
+   > \<REDIRECT-URI>URL 'de kullanılmak üzere kodlanmalıdır. Bu nedenle, için https://localhost kullanın `https%3A%2F%2Flocalhost` )
 
     Bu öğreticinin amaçları doğrultusunda, yukarıdaki URL'deki yer tutucu değerlerini değiştirebilir ve bir web tarayıcısının adres çubuğuna yapıştırabilirsiniz. Azure oturum açma bilgilerinizi kullanarak kimlik doğrulaması gerçekleştirmeye yönlendirileceksiniz. Başarıyla oturum açtığınızda yanıt, tarayıcının adres çubuğunda görüntülenir. Yanıt şu biçimde olacaktır:
 
@@ -60,11 +60,11 @@ Bu senaryoda, uygulama kullanıcıdan oturum açmasını ister ve tüm işlemler
         -F code=<AUTHORIZATION-CODE>
 
    > [!NOTE]
-   > Bu durumda, \<REDIRECT-URI> öğesinin kodlanması gerekmez.
+   > Bu durumda, \<REDIRECT-URI> kodlanmamalıdır.
    > 
    > 
 
-3. Yanıt, bir erişim belirteci (örneğin, `"access_token": "<ACCESS_TOKEN>"`) ve yenileme belirteci (örneğin, `"refresh_token": "<REFRESH_TOKEN>"`) içeren bir JSON nesnesidir. Uygulamanız Azure Data Lake Storage 1. erişirken erişim belirtecini ve bir erişim belirtecinin süresi dolmuşsa başka bir erişim belirteci almak için yenileme belirtecini kullanır.
+3. Yanıt, bir erişim belirteci (örneğin, `"access_token": "<ACCESS_TOKEN>"` ) ve yenileme belirteci (örneğin,) içeren BIR JSON nesnesidir `"refresh_token": "<REFRESH_TOKEN>"` . Uygulamanız Azure Data Lake Storage 1. erişirken erişim belirtecini ve bir erişim belirtecinin süresi dolmuşsa başka bir erişim belirteci almak için yenileme belirtecini kullanır.
 
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 

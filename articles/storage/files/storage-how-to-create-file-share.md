@@ -4,16 +4,16 @@ titleSuffix: Azure Files
 description: Azure portal, PowerShell veya Azure CLı kullanarak Azure dosya paylaşma oluşturma.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba6f4bcaffbf9fa11c949853362485d524bec23a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596941"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510025"
 ---
 # <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız hakkında üç soruyu yanıtlamanız gerekir:
@@ -97,7 +97,7 @@ $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "westus2"
 ```
 
-Standart Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `-SkuName` Parametresi, istenen artıklık türüyle ilgilidir; coğrafi olarak yedekli veya coğrafi bölge yedekli depolama hesabı isterseniz, `-EnableLargeFileShare` parametresini de kaldırmanız gerekir.
+Standart Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `-SkuName`Parametresi, istenen artıklık türü ile ilgilidir; coğrafi olarak yedekli veya coğrafi bölge yedekli depolama hesabı istiyorsanız parametreyi de kaldırmanız gerekir `-EnableLargeFileShare` .
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -109,7 +109,7 @@ $storAcct = New-AzStorageAccount `
     -EnableLargeFileShare
 ```
 
-Premium Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `-SkuName` Parametresinin hem hem de `Premium` istenen artıklık düzeyini yerel olarak yedekli (`LRS`) içerecek şekilde değiştirildiğini unutmayın. `-Kind` `StorageV2` Bunun yerine, bir GPv2 depolama hesabı yerine Premium dosya paylaşımlarının bir FileStorage depolama `FileStorage` hesabında oluşturulması gerekir.
+Premium Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `-SkuName`Parametresinin hem hem de `Premium` istenen artıklık düzeyini yerel olarak yedekli () içerecek şekilde değiştirildiğini unutmayın `LRS` . `-Kind` `FileStorage` Bunun yerine, `StorageV2` bir GPv2 depolama hesabı yerine Premium dosya paylaşımlarının bir FileStorage depolama hesabında oluşturulması gerekir.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -131,7 +131,7 @@ storageAccountName="mystorageacct$RANDOM"
 region="westus2"
 ```
 
-Standart Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `--sku` Parametresi, istenen artıklık türüyle ilgilidir; coğrafi olarak yedekli veya coğrafi bölge yedekli depolama hesabı isterseniz, `--enable-large-file-share` parametresini de kaldırmanız gerekir.
+Standart Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `--sku`Parametresi, istenen artıklık türü ile ilgilidir; coğrafi olarak yedekli veya coğrafi bölge yedekli depolama hesabı istiyorsanız parametreyi de kaldırmanız gerekir `--enable-large-file-share` .
 
 ```azurecli-interactive
 az storage account create \
@@ -143,7 +143,7 @@ az storage account create \
     --output none
 ```
 
-Premium Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `--sku` Parametresinin hem hem de `Premium` istenen artıklık düzeyini yerel olarak yedekli (`LRS`) içerecek şekilde değiştirildiğini unutmayın. `--kind` `StorageV2` Bunun yerine, bir GPv2 depolama hesabı yerine Premium dosya paylaşımlarının bir FileStorage depolama `FileStorage` hesabında oluşturulması gerekir.
+Premium Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `--sku`Parametresinin hem hem de `Premium` istenen artıklık düzeyini yerel olarak yedekli () içerecek şekilde değiştirildiğini unutmayın `LRS` . `--kind` `FileStorage` Bunun yerine, `StorageV2` bir GPv2 depolama hesabı yerine Premium dosya paylaşımlarının bir FileStorage depolama hesabında oluşturulması gerekir.
 
 ```azurecli-interactive
 az storage account create \
@@ -175,13 +175,13 @@ Yeni dosya paylaşma dikey penceresi ekranda görünmelidir. Yeni dosya paylaşm
 - **Ad**: oluşturulacak dosya paylaşımının adı.
 - **Kota**: Standart dosya paylaşımları için dosya paylaşımının kotası; Premium dosya paylaşımları için dosya paylaşımının sağlanan boyutu.
 
-Yeni paylaşımın oluşturulmasını bitirilirken **Oluştur** ' u seçin. Depolama hesabınız bir sanal ağda ise, istemciniz sanal ağda de olmadığı takdirde, başarıyla bir Azure dosya paylaşımının oluşturabileceksiniz. Ayrıca, Azure PowerShell `New-AzRmStorageShare` cmdlet 'ini kullanarak bu zaman noktası sınırlamasını de çözebilirsiniz.
+Yeni paylaşımın oluşturulmasını bitirilirken **Oluştur** ' u seçin. Depolama hesabınız bir sanal ağda ise, istemciniz sanal ağda de olmadığı takdirde, başarıyla bir Azure dosya paylaşımının oluşturabileceksiniz. Ayrıca, Azure PowerShell cmdlet 'ini kullanarak bu zaman noktası sınırlamasını de çözebilirsiniz `New-AzRmStorageShare` .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-[`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) Cmdlet ile Azure dosya paylaşımının oluşturabilirsiniz. Aşağıdaki PowerShell komutları, Azure PowerShell ile depolama hesabı oluşturma bölümünde `$resourceGroupName` değişkenleri `$storageAccountName` ve yukarıda tanımlanan şekilde ayarlamış olduğunuz varsayılır. 
+Cmdlet ile Azure dosya paylaşımının oluşturabilirsiniz [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) . Aşağıdaki PowerShell komutları, `$resourceGroupName` `$storageAccountName` Azure PowerShell ile depolama hesabı oluşturma bölümünde değişkenleri ve yukarıda tanımlanan şekilde ayarlamış olduğunuz varsayılır. 
 
 > [!Important]  
-> Premium dosya paylaşımları için `-QuotaGiB` parametresi, dosya paylaşımının sağlanan boyutunu ifade eder. Dosya paylaşımının sağlanan boyutu, kullanımdan bağımsız olarak, faturalandırılacak tutardır. Standart dosya paylaşımları, sağlanan boyut yerine kullanıma göre faturalandırılır.
+> Premium dosya paylaşımları için parametresi, `-QuotaGiB` dosya paylaşımının sağlanan boyutunu ifade eder. Dosya paylaşımının sağlanan boyutu, kullanımdan bağımsız olarak, faturalandırılacak tutardır. Standart dosya paylaşımları, sağlanan boyut yerine kullanıma göre faturalandırılır.
 
 ```azurepowershell-interactive
 $shareName = "myshare"
@@ -206,10 +206,10 @@ storageAccountKey=$(az storage account keys list \
     --query "[0].value" | tr -d '"')
 ```
 
-Depolama hesabı anahtarına sahip olduktan sonra, [`az storage share create`](/cli/azure/storage/share) komutuyla Azure dosya paylaşımından bir kayıt oluşturabilirsiniz. 
+Depolama hesabı anahtarına sahip olduktan sonra, komutuyla Azure dosya paylaşımından bir kayıt oluşturabilirsiniz [`az storage share create`](/cli/azure/storage/share) . 
 
 > [!Important]  
-> Premium dosya paylaşımları için `--quota` parametresi, dosya paylaşımının sağlanan boyutunu ifade eder. Dosya paylaşımının sağlanan boyutu, kullanımdan bağımsız olarak, faturalandırılacak tutardır. Standart dosya paylaşımları, sağlanan boyut yerine kullanıma göre faturalandırılır.
+> Premium dosya paylaşımları için parametresi, `--quota` dosya paylaşımının sağlanan boyutunu ifade eder. Dosya paylaşımının sağlanan boyutu, kullanımdan bağımsız olarak, faturalandırılacak tutardır. Standart dosya paylaşımları, sağlanan boyut yerine kullanıma göre faturalandırılır.
 
 ```azurecli-interactive
 shareName="myshare"
@@ -222,7 +222,7 @@ az storage share create \
     --output none
 ```
 
-Depolama hesabı bir sanal ağ içinde yer alıyorsa ve bu komutu çağırdığınız bilgisayar sanal ağın bir parçası değilse, bu komut başarısız olur. Yukarıda açıklandığı gibi Azure PowerShell `New-AzRmStorageShare` cmdlet 'ini kullanarak veya bir VPN bağlantısı aracılığıyla sanal ağın bir parçası olan bir BILGISAYARDAN Azure CLI 'yi yürüterek bu zaman noktası sınırlamasını geçici olarak çözebilirsiniz.
+Depolama hesabı bir sanal ağ içinde yer alıyorsa ve bu komutu çağırdığınız bilgisayar sanal ağın bir parçası değilse, bu komut başarısız olur. `New-AzRmStorageShare`Yukarıda açıklandığı gibi Azure PowerShell cmdlet 'ini kullanarak veya BIR VPN bağlantısı aracılığıyla sanal ağın bir parçası olan bir bilgisayardan Azure CLI 'yi yürüterek bu zaman noktası sınırlamasını geçici olarak çözebilirsiniz.
 
 ---
 

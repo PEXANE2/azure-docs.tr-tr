@@ -2,28 +2,57 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Sunucular için Azure Arc nedir?
+    - name: Kubernetes için Arc hakkında
+      href: ./kubernetes/overview.md
+    - name: Sunucular için Azure Arc hakkında
       href: ./servers/overview.md
-- name: Nasıl yapılır kılavuzları
-  items:
-    - name: Azure Arc’a bağlanma
-      items:
-        - name: Bağlı Makine aracısına genel bakış
-          href: ./servers/agent-overview.md
-        - name: Makineleri Azure portalından Azure Arc’a bağlama
-          href: ./servers/onboard-portal.md
-        - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
-          href: ./servers/onboard-service-principal.md
-        - name: PowerShell DSC ile makineleri Azure Arc’a bağlama
-          href: ./servers/onboard-dsc.md
-    - name: Yönetme
-      items:
-        - name: Azure VM uzantılarını yönetme ve kullanma
-          href: ./servers/manage-vm-extensions.md
-        - name: Aracıyı yönetme
-          href: ./servers/manage-agent.md
 - name: Örnekler
   items:
     - name: Azure İlkesi yerleşik ilkeler
-      displayName: 'samples, policies, definitions'
-      href: ./servers/policy-samples.md
+      items:
+        - name: Kubernetes için Arc
+          href: ./kubernetes/policy-samples.md
+        - name: Sunucular için Arc
+          href: ./servers/policy-samples.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Kubernetes için Arc
+      items:
+        - name: Küm işlemleri
+          items:
+            - name: Kümeye bağlanma
+              href: ./kubernetes/connect-cluster.md
+            - name: Bağlı kümeler için GitOps kullanma
+              href: ./kubernetes/use-gitops-connected-cluster.md
+            - name: Helm ile GitOps kullanma
+              href: ./kubernetes/use-gitops-with-helm.md
+            - name: Azure İlkesi’ni kullanarak GitOps uygulama
+              href: ./kubernetes/use-azure-policy.md
+            - name: Kapsayıcılar için Azure İzleyici ile izleme
+              href: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
+            - name: Azure İlkesi kullanarak giriş denetimi ilkeleri
+              href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+            - name: IoT iş yüklerini dağıtma
+              href: ./kubernetes/deploy-azure-iot-edge-workloads.md
+            - name: Hizmet sorumlusu ekleme
+              href: ./kubernetes/create-onboarding-service-principal.md
+            - name: Sorun giderme
+              href: ./kubernetes/Troubleshooting.md
+    - name: Sunucular için Arc
+      items:
+        - name: Azure Arc’a bağlanma
+          items:
+            - name: Bağlı Makine aracısına genel bakış
+              href: ./servers/agent-overview.md
+            - name: Makineleri Azure portalından Azure Arc’a bağlama
+              href: ./servers/onboard-portal.md
+            - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
+              href: ./servers/onboard-service-principal.md
+            - name: PowerShell DSC ile makineleri Azure Arc’a bağlama
+              href: ./servers/onboard-dsc.md
+        - name: Yönetme
+          items:
+            - name: Azure VM uzantılarını yönetme ve kullanma
+              href: ./servers/manage-vm-extensions.md
+            - name: Aracıyı yönetme
+              href: ./servers/manage-agent.md

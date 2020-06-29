@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
-ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712080"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508929"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -91,9 +91,9 @@ Yerel ve Azure StorSimple birimleri hakkındaki bilgileri görüntülemek için 
    
     ![Sütunları yapılandırma](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | Sonuç sütunu | Description |
+   | Sonuç sütunu | Açıklama |
    |:--- |:--- |
-   |  Name |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
+   |  Adı |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
    |  Cihaz |**Cihaz** sütunu, ana bilgisayara bağlı olan cihazın IP adresini içerir. |
    |  Cihaz birimi adı |**Cihaz birimi adı** sütunu, Seçilen birimin ait olduğu cihaz biriminin adını içerir. Bu, söz konusu birimin Azure portal tanımlanan birim adıdır. |
    |  Erişim yolları |**Erişim yolları** sütunu, birimin erişim yolunu görüntüler. Bu, birimin ana bilgisayar üzerinde erişilebilir olduğu sürücü harfi veya bağlama noktasıdır. |

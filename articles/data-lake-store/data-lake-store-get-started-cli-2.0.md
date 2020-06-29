@@ -3,15 +3,15 @@ title: Azure Data Lake Storage 1. hesabını yönetme-Azure CLı
 description: Data Lake Storage 1. hesabı oluşturmak ve temel işlemleri gerçekleştirmek için Azure CLı 'yi kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 4e278981ce7647a53d2e80c5b835c8ed666db541
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 29aa3932f8ba566e4542031ce157fc7bb8c05ce7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688182"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511198"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Azure CLı kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 

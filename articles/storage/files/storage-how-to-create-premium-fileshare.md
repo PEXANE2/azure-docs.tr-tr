@@ -3,23 +3,23 @@ title: Premium Azure dosya paylaşma oluşturma
 description: Bu makalede, Premium Azure dosya paylaşımının nasıl oluşturulacağını öğreneceksiniz.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 271acdb968bf5bbec3632bbc1f6def854196cd8e
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629345"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509991"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure dosya paylaşma oluşturma
 Premium dosya paylaşımları, katı hal disk (SSD) depolama medyasında sunulur ve barındırma veritabanları ve yüksek performanslı bilgi işlem (HPC) dahil olmak üzere GÇ yoğunluklu iş yükleri için kullanışlıdır. Premium dosya paylaşımları, FileStorage hesabı olarak adlandırılan özel bir amaç depolama hesabı türünde barındırılır. Premium dosya paylaşımları, yüksek performans ve kurumsal ölçekli uygulamalar için tasarlanmıştır; tutarlı düşük gecikme süresi, yüksek ıOPS ve yüksek verimlilik paylaşımları sağlar.
 
 Bu makalede [Azure Portal](https://portal.azure.com/), Azure PowerShell ve Azure CLI kullanarak bu yeni hesap türünü nasıl oluşturacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Premium Azure dosya paylaşımları dahil olmak üzere Azure kaynaklarına erişmek için bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -27,7 +27,7 @@ Premium Azure dosya paylaşımları dahil olmak üzere Azure kaynaklarına eriş
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ### <a name="create-a-filestorage-storage-account"></a>FileStorage depolama hesabı oluşturma
 

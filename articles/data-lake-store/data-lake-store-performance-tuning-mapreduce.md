@@ -3,21 +3,21 @@ title: Azure Data Lake Storage 1. performans ayarlama-MapReduce
 description: Azure Data Lake Storage 1. MapReduce performansı ayarlama yönergeleri
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904584"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510925"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. MapReduce için performans ayarlama Kılavuzu
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](data-lake-store-get-started-portal.md)
 * Data Lake Storage 1. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Data Lake Storage 1. HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
 * **HDInsight üzerinde MapReduce kullanma**. Daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop 'Ta MapReduce kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
@@ -36,7 +36,7 @@ MapReduce işlerini çalıştırırken, Data Lake Storage 1. performansını art
 
 ### <a name="mapreducemapmemory--mapreducereducememory"></a>MapReduce. Map. Memory/MapReduce. küçültme. bellek
 
-Bu sayıyı eşleme için gereken bellek miktarına göre ayarlayın ve/veya görevi azaltın. Yarn yapılandırması aracılığıyla `mapreduce.map.memory` ve ' de, `mapreduce.reduce.memory` varsayılan değerlerini ve Ambarı ' nda görüntüleyebilirsiniz. Ambarı 'nda YARN ' ye gidin ve **configs** sekmesini görüntüleyin. YARN belleği görüntülenecektir.
+Bu sayıyı eşleme için gereken bellek miktarına göre ayarlayın ve/veya görevi azaltın. `mapreduce.map.memory`Yarn yapılandırması aracılığıyla ve ' de, varsayılan değerlerini ve `mapreduce.reduce.memory` ambarı ' nda görüntüleyebilirsiniz. Ambarı 'nda YARN ' ye gidin ve **configs** sekmesini görüntüleyin. YARN belleği görüntülenecektir.
 
 ### <a name="mapreducejobmaps--mapreducejobreduces"></a>MapReduce. job. Maps/MapReduce. job. azaltıyor
 
@@ -110,7 +110,7 @@ Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata 
 
 2. Yapılandırma için tüm düğümleri/hizmeti yeniden başlatın.
 
-3. Azaldıysanız, YARN günlük dosyasında HTTP 429 hata kodunu görürsünüz. YARN günlük dosyası/t MP/&lt;user&gt;/yarn.log konumunda
+3. Azaldıysanız, YARN günlük dosyasında HTTP 429 hata kodunu görürsünüz. YARN günlük dosyası/t MP/ &lt; user &gt; /yarn.log konumunda
 
 ## <a name="examples-to-run"></a>Çalıştırılacak örnekler
 

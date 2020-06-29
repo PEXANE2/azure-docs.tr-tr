@@ -3,15 +3,15 @@ title: Data Lake Storage 1. kaynaklarını yönetme-Azure Depolama Gezgini
 description: Azure Depolama Gezgini ' de Azure Data Lake Storage 1. verilerinize ve kaynaklarınıza erişme ve bunları yönetme hakkında bilgi edinin
 author: jejiang
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a5117f72f933e1e48dc471a75624a8d3921f55af
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73832272"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508801"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Depolama Gezgini kullanarak Azure Data Lake Storage 1. kaynaklarını yönetme
 

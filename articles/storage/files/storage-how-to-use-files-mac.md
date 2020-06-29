@@ -3,16 +3,16 @@ title: macOS’da SMB üzerinden Azure dosya paylaşımını bağlama | Microsof
 description: macOS’da SMB üzerinden Azure dosya paylaşımını bağlamayı öğrenin.
 author: RenaShahMSFT
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 0e3420e469b117d90efb2949dab828021bfedcb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87271cfc602ff81a65a63426360f3bc0a8a8f030
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74924700"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509838"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS’da SMB üzerinden Azure dosya paylaşımını bağlama
 [Azure Dosyaları](storage-files-introduction.md), Microsoft’un kullanımı kolay bulut dosya sistemidir. Azure dosya paylaşımları macOS El Capitan 10.11+ üzerine endüstri standardı SMB 3 protokolü kullanılarak takılabilir. Bu makalede, macOS’ta Bulucu kullanıcı arabirimiyle ve Terminal kullanarak Azure dosya paylaşımını bağlamanın iki farklı yolu gösterilir.
@@ -37,7 +37,7 @@ ms.locfileid: "74924700"
 1. **Bulucu’yu açın**: Bulucu varsayılan olarak macOS’ta açıktır, ancak bunun seçili durumdaki uygulama olduğundan emin olmak için dock’taki “macOS yüz simgesine” tıklayın:  
     ![macOS yüz simgesi](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **"Git" menüsünden "sunucuya Bağlan" ı seçin**:`\\`önkoşullardan UNC yolunu kullanarak, başlangıç çift eğik çizgi () öğesini `smb://` ve tüm diğer ters eğik çizgileri`\`() eğik çizgi (`/`) olarak dönüştürün. Bağlantınız şu şekilde görünmelidir: ![“Sunucuya Bağlan” iletişim kutusu](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **"Git" menüsünden "sunucuya Bağlan" ı seçin**: ÖNKOŞULLARDAN UNC yolunu kullanarak, başlangıç çift eğik çizgi ( `\\` ) öğesini `smb://` ve tüm diğer ters eğik çizgileri () `\` eğik çizgi () olarak dönüştürün `/` . Bağlantınız şu şekilde görünmelidir: ![“Sunucuya Bağlan” iletişim kutusu](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **Kullanıcı adı ve parola istendiğinde depolama hesabı adını ve depolama hesabı anahtarını kullanın**: “Sunucuya Bağlan” iletişim kutusunda “Bağlan”a tıkladığınızda kullanıcı adı ve parola istenir (Bu alan otomatik olarak macOS kullanıcı adınızla doldurulur). macOS Anahtarlığınıza depolama hesabı adı/depolama hesabı anahtarı yerleştirebilirsiniz.
 
@@ -46,7 +46,7 @@ ms.locfileid: "74924700"
     ![Bağlı bir Azure dosya paylaşımının anlık görüntüsü](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>Terminal yoluyla Azure dosya paylaşımını bağlama
-1. Değerini `<storage-account-name>` depolama hesabınızın adıyla değiştirin. İstendiğinde parola olarak Depolama Hesabı Anahtarı’nı girin. 
+1.  `<storage-account-name>`   Değerini depolama hesabınızın adıyla değiştirin. İstendiğinde parola olarak Depolama Hesabı Anahtarı’nı girin. 
 
     ```
     mount_smbfs //<storage-account-name>@<storage-account-name>.file.core.windows.net/<share-name> <desired-mount-point>

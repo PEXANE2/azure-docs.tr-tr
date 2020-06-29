@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f2a514b6f44df7be15f18aa8f7c42668c872ab4a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67875309"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509702"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veead ile yedekleme hedefi olarak StorSimple
 
@@ -56,8 +56,8 @@ Herhangi bir depolama çözümünde olduğu gibi, çözümün depolama performan
 
 StorSimple, iyi tanımlanmış bir çalışma verileri kümesi (sık kullanılan veriler) üzerinde çalışan uygulamalara depolama sağlamak için tasarlanmıştır. Bu modelde, çalışma verileri yerel katmanlara depolanır ve kalan çalışma dışı/soğuk/arşivlenmiş veri kümesi buluta katmanlı. Bu model aşağıdaki şekilde temsil edilir. Neredeyse düz yeşil çizgi, StorSimple cihazının yerel katmanlarında depolanan verileri temsil eder. Kırmızı çizgi, tüm katmanlar genelinde StorSimple çözümünde depolanan toplam veri miktarını temsil eder. Düz yeşil çizgi ile üstel kırmızı eğri arasındaki boşluk, bulutta depolanan toplam veri miktarını temsil eder.
 
-**StorSimple katmanlama**
-![StorSimple katmanlama diyagramı](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
+**StorSimple katmanlama** 
+ ![ StorSimple katmanlama diyagramı](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
 Bu mimari göz önünde bulundurularak, StorSimple 'ın yedekleme hedefi olarak çalışacak şekilde uygun olduğunu fark edersiniz. StorSimple kullanarak şunları yapabilirsiniz:
 
@@ -187,7 +187,7 @@ Bu bölümde bazı yapılandırma örnekleri gösterilmektedir. Aşağıdaki ör
 | StorSimple dağıtım görevleri  | Ek açıklamalar |
 |---|---|
 | Şirket içi StorSimple cihazınızı dağıtın. | Desteklenen sürümler: güncelleştirme 3 ve sonraki sürümleri. |
-| Yedekleme hedefini açın. | Yedekleme hedefi modunu açmak veya kapatmak ve durum almak için bu komutları kullanın. Daha fazla bilgi için bkz. [StorSimple cihazına uzaktan bağlanma](storsimple-remote-connect.md).</br> Yedekleme modunu açmak için: `Set-HCSBackupApplianceMode -enable`. </br> Yedekleme modunu devre dışı bırakmak için `Set-HCSBackupApplianceMode -disable`:. </br> Yedekleme modu ayarlarının geçerli durumunu almak için: `Get-HCSBackupApplianceMode`. |
+| Yedekleme hedefini açın. | Yedekleme hedefi modunu açmak veya kapatmak ve durum almak için bu komutları kullanın. Daha fazla bilgi için bkz. [StorSimple cihazına uzaktan bağlanma](storsimple-remote-connect.md).</br> Yedekleme modunu açmak için: `Set-HCSBackupApplianceMode -enable` . </br> Yedekleme modunu devre dışı bırakmak için: `Set-HCSBackupApplianceMode -disable` . </br> Yedekleme modu ayarlarının geçerli durumunu almak için: `Get-HCSBackupApplianceMode` . |
 | Yedekleme verilerini depolayan biriminiz için ortak bir birim kapsayıcısı oluşturun. Bir birim kapsayıcısındaki tüm veriler yinelenenleri kaldırılmış. | StorSimple birim kapsayıcıları yinelenenleri kaldırma etki alanlarını tanımlar.  |
 | StorSimple birimleri oluşturun. | Birim boyutu bulut anlık görüntü süresi süresini etkilediğinden, boyutları beklenen kullanım için yakın olan birimler oluşturun. Bir birimin nasıl boyutlandıralınacağını öğrenmek için [bekletme ilkeleri](#retention-policies)hakkında bilgi edinin.</br> </br> StorSimple katmanlı birimleri kullanın ve **Bu birimi daha az sıklıkta erişilen arşiv verileri Için kullan** onay kutusunu seçin. </br> Yalnızca yerel olarak sabitlenmiş birimlerin kullanılması desteklenmez. |
 | Tüm yedekleme hedefi birimleri için benzersiz bir StorSimple yedekleme ilkesi oluşturun. | Bir StorSimple yedekleme ilkesi, birim tutarlılığı grubunu tanımlar. |
@@ -378,7 +378,7 @@ Aşağıdaki şekilde, tipik kısa süreli bekletme yerel (sunucu) birimleri ve 
 
 Aşağıdaki tabloda, yerel ve StorSimple disklerinde çalışacak yedeklemelerin nasıl ayarlanacağı gösterilmektedir. Bireysel ve toplam kapasite gereksinimlerini içerir.
 
-| Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite\* (Tib) |
+| Yedekleme türü ve bekletme | Yapılandırılan depolama alanı | Boyut (TiB) | GFS çarpanı | Toplam kapasite \* (Tib) |
 |---|---|---|---|---|
 | Hafta 1 (tam ve artımlı) |Yerel disk (kısa vadeli)| 1 | 1 | 1 |
 | StorSimple hafta 2-4 |StorSimple diski (uzun vadeli) | 1 | 4 | 4 |
@@ -468,9 +468,9 @@ Aşağıdaki bölümde, yedekleme sonrası işlem sırasında StorSimple bulut a
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Bir bulut anlık görüntüsünü başlatmak veya silmek için
 
-1. [Azure PowerShell 'ı yükler](/powershell/azure/overview).
-2. [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell betiğini indirip kurun.
-3. Betiği çalıştıran sunucuda PowerShell 'i yönetici olarak çalıştırın. Betiğin hangi değişiklikleri yaptığını görmek için betiği `-WhatIf $true` ile çalıştırtığınızdan emin olun. Doğrulama tamamlandıktan sonra Pass `-WhatIf $false`. Aşağıdaki komutu çalıştırın:
+1. [Azure PowerShell'i yükleme](/powershell/azure/overview).
+2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell betiğini indirip kurun.
+3. Betiği çalıştıran sunucuda PowerShell 'i yönetici olarak çalıştırın. Betiğin `-WhatIf $true` hangi değişiklikleri yaptığını görmek için betiği ile çalıştırtığınızdan emin olun. Doğrulama tamamlandıktan sonra Pass `-WhatIf $false` . Aşağıdaki komutu çalıştırın:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```

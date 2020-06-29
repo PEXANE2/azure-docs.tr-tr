@@ -3,15 +3,15 @@ title: .NET ile Azure Data Lake Storage 1. hesabını yönetme
 description: Azure Data Lake Storage 1. hesap yönetimi işlemleri için .NET SDK 'nın nasıl kullanılacağını öğrenin.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d7ea2b7fffc4edff6cae895e08b955d2e21ff5f2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c163629f4c74a812ee7dc3da7391148a92ae6435
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692111"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511173"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK kullanarak Azure Data Lake Storage 1. hesap yönetimi işlemleri
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Bu makalede, .NET SDK kullanarak Azure Data Lake Storage 1. hesap yönetimi işl
 ## <a name="create-a-net-application"></a>.NET uygulaması oluşturma
 1. Visual Studio 'da **Dosya** menüsünü, **Yeni**' yi ve ardından **Proje**' yi seçin.
 2. **Konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
-3. **Proje adı**alanına girin `CreateADLApplication`ve ardından **Oluştur**' u seçin.
+3. **Proje adı**alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
 
 4. NuGet paketlerini projenize ekleyin.
 

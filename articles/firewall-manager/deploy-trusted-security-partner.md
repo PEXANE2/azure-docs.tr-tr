@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: e06f8e3adaedbc8847aacba0ca4ad9c6a172c9b7
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 91cf453247bfe4fa689df34bdf6b585ac72686aa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791699"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509070"
 ---
 # <a name="deploy-a-security-partner-provider-preview"></a>Güvenlik iş ortağı sağlayıcısı dağıtma (Önizleme)
 
@@ -81,9 +81,9 @@ Sanal hub 'ın VPN Gateway tünellerini ayarlamak için, üçüncü taraf sağla
 
 1. Azure Active Directory (AD) hizmet sorumlusu oluşturma: yeniden yönlendirme URL 'sini atlayabilirsiniz. 
 
-   [Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
 2. Hizmet sorumlusu için erişim hakları ve kapsamı ekleyin.
-   [Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
 
    > [!NOTE]
    > Daha ayrıntılı denetim için, erişimi yalnızca kaynak grubunuza göre sınırlayabilirsiniz.

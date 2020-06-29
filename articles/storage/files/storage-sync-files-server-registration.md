@@ -3,16 +3,16 @@ title: Kayıtlı sunucuları Azure Dosya Eşitleme yönetme | Microsoft Docs
 description: Windows Server 'ı Azure Dosya Eşitleme depolama eşitleme hizmeti ile kaydetmeyi ve kaydını silmeyi öğrenin.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1972ecc249e44bb99e4e9c903a7e097e8d304938
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253894"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509515"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Kayıtlı sunucuları Azure Dosya Eşitleme yönetme
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.

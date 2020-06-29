@@ -3,15 +3,15 @@ title: Son Kullanıcı kimlik doğrulaması-.NET Data Lake Storage 1.-Azure
 description: .NET SDK ile Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması elde etme hakkında bilgi edinin
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 37507f686ad2cf3fc66087b89ae77242ec79afdd
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 12f6e0fd34de96677693b7f0d159c7cf9032ca1b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688149"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511284"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Bu makalede, Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 ## <a name="create-a-net-application"></a>.NET uygulaması oluşturma
 1. Visual Studio 'da **Dosya** menüsünü, **Yeni**' yi ve ardından **Proje**' yi seçin.
 2. **Konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
-3. **Proje adı**alanına girin `CreateADLApplication`ve ardından **Oluştur**' u seçin.
+3. **Proje adı**alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
 
 4. NuGet paketlerini projenize ekleyin.
 
@@ -69,7 +69,7 @@ Bu makalede, Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 ## <a name="end-user-authentication"></a>Son kullanıcı kimlik doğrulaması
 Bu kod parçacığını .NET istemci uygulamanıza ekleyin. Yer tutucu değerlerini bir Azure AD yerel uygulamasından alınan değerlerle değiştirin (önkoşul olarak listelenir). Bu kod parçacığı, uygulamanızın Data Lake Storage 1. ile **etkileşimli** olarak doğrulanmasını sağlar, bu da Azure kimlik bilgilerinizi girmeniz istenir.
 
-Kullanım kolaylığı için, aşağıdaki kod parçacığı istemci KIMLIĞI ve yeniden yönlendirme URI 'SI için tüm Azure abonelikleri için geçerli olan varsayılan değerleri kullanır. Aşağıdaki kod parçacığında yalnızca kiracı KIMLIĞINIZ için değer sağlamanız gerekir. Kiracı kimliğini [alma](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)sırasında belirtilen yönergeleri kullanarak kiracı kimliğini alabilirsiniz.
+Kullanım kolaylığı için, aşağıdaki kod parçacığı istemci KIMLIĞI ve yeniden yönlendirme URI 'SI için tüm Azure abonelikleri için geçerli olan varsayılan değerleri kullanır. Aşağıdaki kod parçacığında yalnızca kiracı KIMLIĞINIZ için değer sağlamanız gerekir. Kiracı kimliğini [alma](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)sırasında belirtilen yönergeleri kullanarak kiracı kimliğini alabilirsiniz.
     
 - Main () işlevini aşağıdaki kodla değiştirin:
 
@@ -91,7 +91,7 @@ Kullanım kolaylığı için, aşağıdaki kod parçacığı istemci KIMLIĞI ve
 
 Önceki kod parçacığı hakkında bilgi almak için birkaç şey:
 
-* Yukarıdaki kod parçacığı, bir yardımcı işlevleri `GetTokenCache` ve `GetCreds_User_Popup`kullanır. Bu yardımcı işlevlerin kodu [GitHub 'da burada](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)bulunabilir.
+* Yukarıdaki kod parçacığı, bir yardımcı işlevleri `GetTokenCache` ve kullanır `GetCreds_User_Popup` . Bu yardımcı işlevlerin kodu [GitHub 'da burada](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)bulunabilir.
 * Kod parçacığı daha hızlı bir şekilde tamamlamanıza yardımcı olmak için, tüm Azure abonelikleri için varsayılan olarak kullanılabilen bir yerel uygulama istemci KIMLIĞINI kullanır. Böylece **bu kod parçacığını uygulamanızda olduğu gibi kullanabilirsiniz**.
 * Ancak, kendi Azure AD etki alanınızı ve uygulama istemci kimliğinizi kullanmak istemiyorsanız, bir Azure AD yerel uygulaması oluşturmanız ve ardından oluşturduğunuz uygulamaya ait Azure AD kiracı kimliği, istemci kimliği ve yeniden yönlendirme URI’sini kullanmanız gerekir. Yönergeler için, bkz. [Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması için Active Directory uygulaması oluşturma](data-lake-store-end-user-authenticate-using-active-directory.md) .
 

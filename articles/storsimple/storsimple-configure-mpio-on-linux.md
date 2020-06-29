@@ -4,15 +4,15 @@ description: CentOS 6,6 çalıştıran bir Linux ana bilgisayarına bağlı Stor
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278356"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511591"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS çalıştıran bir StorSimple ana bilgisayarında MPIO yapılandırma
 Bu makalede, CentOS 6,6 ana sunucunuzda çok paiz ıO (MPIO) yapılandırmak için gereken adımlar açıklanmaktadır. Ana bilgisayar sunucusu, Iscsı başlatıcıları aracılığıyla yüksek kullanılabilirlik için Microsoft Azure StorSimple cihazınıza bağlanır. Bu, çok yollu cihazların otomatik olarak keşfedilmesi ve yalnızca StorSimple birimleri için belirli kurulumun ayrıntılarını açıklar.
@@ -45,7 +45,7 @@ Linux 'ta çok sayıda çekirdek bileşeni ve Kullanıcı alanı bileşenleri a�
    * **Multipath. conf**: yerleşik yapılandırma tablosunun üzerine yazmak için kullanılan çok yollu Daemon için yapılandırma dosyası.
 
 ### <a name="about-the-multipathconf-configuration-file"></a>Multipath. conf yapılandırma dosyası hakkında
-Yapılandırma dosyası `/etc/multipath.conf` çok sayıda çoklu yol özelliğinin Kullanıcı tarafından yapılandırılabilir olmasını sağlar. `multipath` Komut ve çekirdek Daemon `multipathd` bu dosyada bulunan bilgileri kullanır. Dosya yalnızca çok yollu cihazların yapılandırması sırasında gerçekleştirilir. `multipath` Komutu çalıştırmadan önce tüm değişikliklerin yapıldığından emin olun. Daha sonra dosyayı değiştirirseniz, değişikliklerin etkili olması için multipathd 'yi durdurmanız ve yeniden başlatmanız gerekecektir.
+Yapılandırma dosyası çok `/etc/multipath.conf` sayıda çoklu yol özelliğinin Kullanıcı tarafından yapılandırılabilir olmasını sağlar. `multipath`Komut ve çekirdek Daemon `multipathd` Bu dosyada bulunan bilgileri kullanır. Dosya yalnızca çok yollu cihazların yapılandırması sırasında gerçekleştirilir. Komutu çalıştırmadan önce tüm değişikliklerin yapıldığından emin olun `multipath` . Daha sonra dosyayı değiştirirseniz, değişikliklerin etkili olması için multipathd 'yi durdurmanız ve yeniden başlatmanız gerekecektir.
 
 Çok yollu. conf beş bölümden oluşur:
 
@@ -68,7 +68,7 @@ Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön
    
     `ifconfig`
    
-    Aşağıdaki örnek, konakta iki ağ arabirimi (`eth0` ve `eth1`) varsa çıktıyı gösterir.
+    Aşağıdaki örnek, konakta iki ağ arabirimi ( `eth0` ve `eth1` ) varsa çıktıyı gösterir.
    
         [root@centosSS ~]# ifconfig
         eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
@@ -101,7 +101,7 @@ Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
 1. CentOS sunucunuza *iSCSI-INITIATOR-utils* ' i yükler. *İSCSI-INITIATOR-utils*yüklemek için aşağıdaki adımları gerçekleştirin.
    
-   1. CentOS ana `root` bilgisayarınızda olarak oturum açın.
+   1. `root`CentOS ana bilgisayarınızda olarak oturum açın.
    1. *İSCSI başlatıcısı-yardımcı programları*'nı yükler. Şunu yazın:
       
        `yum install iscsi-initiator-utils`
@@ -110,7 +110,7 @@ Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön
        `service iscsid start`
       
        Durumlarda, `iscsid` gerçekten başlayamayabilir ve `--force` seçenek gerekli olabilir
-   1. Önyükleme sırasında Iscsı başlatıcılarınızın etkinleştirildiğinden emin olmak için, hizmetini etkinleştirmek üzere `chkconfig` komutunu kullanın.
+   1. Önyükleme sırasında Iscsı başlatıcılarınızın etkinleştirildiğinden emin olmak için, `chkconfig` hizmetini etkinleştirmek üzere komutunu kullanın.
       
        `chkconfig iscsi on`
    1. Doğru şekilde ayarlandığından emin olmak için şu komutu çalıştırın:
@@ -179,11 +179,11 @@ Yukarıdaki yapılandırma, konak ve veri arabirimleri yönlendirilebilir ise, c
 ### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>1. Adım: otomatik bulma için çoklu paşeyi yapılandırma
 Çok yollu desteklenen cihazlar otomatik olarak keşfedilebilir ve yapılandırılabilir.
 
-1. Dosyayı `/etc/multipath.conf` başlatın. Şunu yazın:
+1. `/etc/multipath.conf`Dosyayı başlatın. Şunu yazın:
    
      `mpathconf --enable`
    
-    Yukarıdaki komut bir `sample/etc/multipath.conf` dosya oluşturacak.
+    Yukarıdaki komut bir `sample/etc/multipath.conf` Dosya oluşturacak.
 1. Çok yollu hizmeti başlatın. Şunu yazın:
    
     `service multipathd start`
@@ -195,7 +195,7 @@ Yukarıdaki yapılandırma, konak ve veri arabirimleri yönlendirilebilir ise, c
    
     `mpathconf --find_multipaths y`
    
-    Bu, aşağıda gösterildiği gibi verilerinizin `multipath.conf` varsayılanlar bölümünü değiştirecek:
+    Bu, aşağıda gösterildiği gibi verilerinizin varsayılanlar bölümünü değiştirecek `multipath.conf` :
    
         defaults {
         find_multipaths yes
@@ -206,7 +206,7 @@ Yukarıdaki yapılandırma, konak ve veri arabirimleri yönlendirilebilir ise, c
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. Adım: StorSimple birimlerine yönelik çoklu paşeyi yapılandırma
 Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atlanır. StorSimple cihazlarından birimlerde çok sayıda duruma izin vermek için kara liste özel durumları oluşturmanız gerekir.
 
-1. `/etc/mulitpath.conf` Dosyayı düzenleyin. Şunu yazın:
+1. Dosyayı düzenleyin `/etc/mulitpath.conf` . Şunu yazın:
    
     `vi /etc/multipath.conf`
 1. Çok yollu. conf dosyasındaki blacklist_exceptions bölümünü bulun. StorSimple cihazınızın bu bölümde bir kara liste özel durumu olarak listelenmesi gerekir. Bu dosyadaki ilgili satırların açıklamasını aşağıda gösterildiği gibi değiştirebilirsiniz (yalnızca kullandığınız cihazın özel modelini kullanın):
@@ -225,10 +225,10 @@ Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atl
 ### <a name="step-3-configure-round-robin-multipathing"></a>3. Adım: hepsini bir kez deneme çoklu paşeyi yapılandırma
 Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir çoklu yolları dengeli ve hepsini bir kez deneme biçiminde kullanır.
 
-1. `/etc/multipath.conf` Dosyayı düzenleyin. Şunu yazın:
+1. Dosyayı düzenleyin `/etc/multipath.conf` . Şunu yazın:
    
     `vi /etc/multipath.conf`
-1. `defaults` Bölümünün altında, öğesini `path_grouping_policy` olarak `multibus`ayarlayın. Belirtilmemiş `path_grouping_policy` multipaths için uygulanacak varsayılan yol gruplama ilkesini belirtir. Varsayılanlar bölümü aşağıda gösterildiği gibi görünecektir.
+1. Bölümünün altında, `defaults` öğesini olarak ayarlayın `path_grouping_policy` `multibus` . `path_grouping_policy`Belirtilmemiş multipaths için uygulanacak varsayılan yol gruplama ilkesini belirtir. Varsayılanlar bölümü aşağıda gösterildiği gibi görünecektir.
    
         defaults {
                 user_friendly_names yes
@@ -244,7 +244,7 @@ Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir ço
 > 
 
 ### <a name="step-4-enable-multipathing"></a>4. Adım: çoklu paşeyi etkinleştirme
-1. `multipathd` Arka plan programını yeniden başlatın. Şunu yazın:
+1. `multipathd`Arka plan programını yeniden başlatın. Şunu yazın:
    
     `service multipathd restart`
 1. Çıktı aşağıda gösterildiği gibi olacaktır:
@@ -268,7 +268,7 @@ Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir ço
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
 
-    StorSimple cihazınızın `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`IQN 'sini önceki çıktıdan kopyalayın.
+    StorSimple cihazınızın ıQN 'sini `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` önceki çıktıdan kopyalayın.
 
    b. Hedef ıQN 'yi kullanarak cihaza bağlanın. StorSimple cihazı, Iscsı hedefidir. Şunu yazın:
 
@@ -276,7 +276,7 @@ Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir ço
     iscsiadm -m node --login -T <IQN of iSCSI target>
     ```
 
-    Aşağıdaki örnek, hedef ıQN 'si `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`olan çıktıyı gösterir. Çıktı, cihazınızdaki iki Iscsı özellikli ağ arabirimine başarıyla bağlandığınızı gösterir.
+    Aşağıdaki örnek, hedef ıQN 'si olan çıktıyı gösterir `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` . Çıktı, cihazınızdaki iki Iscsı özellikli ağ arabirimine başarıyla bağlandığınızı gösterir.
 
     ```
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
@@ -326,9 +326,9 @@ Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir ço
 ## <a name="troubleshoot-multipathing"></a>Çoklu yol sorunlarını giderme
 Bu bölümde, çok sayıda yapılandırma sırasında herhangi bir sorunla karşılaşırsanız bazı yararlı ipuçları sunulmaktadır.
 
-S. Dosya etkin olan `multipath.conf` değişiklikleri görmüyorum.
+S. Dosya etkin olan değişiklikleri görmüyorum `multipath.conf` .
 
-A. `multipath.conf` Dosyada herhangi bir değişiklik yaptıysanız, çoklu yol hizmetini yeniden başlatmanız gerekir. Aşağıdaki komutu yazın:
+A. Dosyada herhangi bir değişiklik yaptıysanız `multipath.conf` , çoklu yol hizmetini yeniden başlatmanız gerekir. Aşağıdaki komutu yazın:
 
     service multipathd restart
 
@@ -338,7 +338,7 @@ A. İki yolun aynı alt ağda olduğundan ve yönlendirilebilir olduğundan emin
 
 S. Kullanılabilir yolları listediğimde hiçbir çıkış görmüyorum.
 
-A. Genellikle, çok yönlü bir yol görmemek, çok pastaya arka plan programı ile ilgili bir sorun önerir ve bu, burada `multipath.conf` dosyanın içinde yer aldığı bir sorun olabilir.
+A. Genellikle, çok yönlü bir yol görmemek, çok pastaya arka plan programı ile ilgili bir sorun önerir ve bu, burada dosyanın içinde yer aldığı bir sorun olabilir `multipath.conf` .
 
 Aynı zamanda, hedefe bağlandıktan sonra bazı diskleri görebileceğinizi de unutmayın. çok yollu listelerden yanıt yoksa herhangi bir diskiniz olmadığı anlamına gelir.
 

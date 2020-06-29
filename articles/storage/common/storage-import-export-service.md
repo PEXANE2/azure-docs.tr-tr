@@ -4,16 +4,16 @@ description: Azure depolama 'ya ve Azure Storage 'dan veri aktarmaya yönelik Az
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872443"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512439"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmeti nedir?
 
@@ -129,15 +129,15 @@ Azure Içeri/dışarı aktarma hizmeti, tüm Azure depolama hesaplarına veri ko
 |Orta Güney ABD     | Batı Japonya        |Güney Kore - Orta         | Orta Almanya        |
 |Orta Batı ABD     |  Doğu Japonya       | US Gov Virginia        | Kuzeydoğu Almanya        |
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Sürücüdeki veriler, AES 256-bit BitLocker Sürücü Şifrelemesi kullanılarak şifrelenir. Bu şifreleme, aktarım sırasında verilerinizi korur.
 
 İçeri aktarma işleri için, sürücüler iki şekilde şifrelenir.  
 
-* Sürücü hazırlığı sırasında Waımportexport aracını çalıştırırken *DataSet. csv* dosyasını kullanırken bu seçeneği belirtin.
+* Sürücü hazırlığı sırasında Waımportexport aracını çalıştırırken *dataset.csv* dosyası kullanırken seçeneği belirtin.
 
-* Sürücüde BitLocker şifrelemesini el ile etkinleştirin. Sürücü hazırlama sırasında Waımportexport aracı komut satırını çalıştırırken, *driveset. csv* dosyasında şifreleme anahtarını belirtin. BitLocker şifreleme anahtarı, bir dış anahtar koruyucusu (Microsoft tarafından yönetilen anahtar olarak da bilinir) veya müşteri tarafından yönetilen anahtar kullanılarak daha fazla korunabilir. Daha fazla bilgi için, bkz. [BitLocker anahtarınızı korumak için müşteri tarafından yönetilen anahtar kullanma](storage-import-export-encryption-key-portal.md).
+* Sürücüde BitLocker şifrelemesini el ile etkinleştirin. Sürücü hazırlığı sırasında Waımportexport aracı komut satırını çalıştırırken *driveset.csv* şifreleme anahtarını belirtin. BitLocker şifreleme anahtarı, bir dış anahtar koruyucusu (Microsoft tarafından yönetilen anahtar olarak da bilinir) veya müşteri tarafından yönetilen anahtar kullanılarak daha fazla korunabilir. Daha fazla bilgi için, bkz. [BitLocker anahtarınızı korumak için müşteri tarafından yönetilen anahtar kullanma](storage-import-export-encryption-key-portal.md).
 
 Dışarı aktarma işleri için verileriniz sürücülere kopyalandıktan sonra hizmet, bu sürücüyü size geri teslim etmeden önce BitLocker 'ı kullanarak şifreler. Şifreleme anahtarı Azure portal aracılığıyla size sağlanır. Anahtar kullanılarak Waımpımprexport Aracı kullanılarak sürücünün kilidinin açılması gerekir.
 

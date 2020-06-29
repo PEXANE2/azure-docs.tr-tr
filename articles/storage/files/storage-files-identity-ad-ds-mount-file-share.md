@@ -4,15 +4,15 @@ description: Şirket içi Active Directory Domain Services katılmış makineler
 author: roygara
 ms.service: storage
 ms.subservice: files
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: b061b86226df38c402de3d3d65385ebf583f024b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 9a8805666e1e162f76cf5fa6f7d828833c573bed
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214426"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510442"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Dördüncü kısım: etki alanına katılmış bir VM 'den bir dosya paylaşma bağlama
 

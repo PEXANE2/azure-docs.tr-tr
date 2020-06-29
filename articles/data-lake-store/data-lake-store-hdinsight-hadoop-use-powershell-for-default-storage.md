@@ -3,15 +3,15 @@ title: PowerShell-Azure Data Lake Storage 1. ile HDInsight kümesi
 description: Azure Data Lake Storage 1. ile Azure HDInsight kümelerini oluşturmak ve kullanmak için Azure PowerShell kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 2b4e5fad65d2ad358bca6b5a2b87d4aa36b77e73
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: cd4faec2d57b15dd23fe01dfc49063f06d70639e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692067"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510969"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell kullanarak Azure Data Lake Storage 1. varsayılan depolama alanı olarak HDInsight kümeleri oluşturma
 
@@ -65,7 +65,7 @@ Data Lake Storage 1. bir hesap oluşturmak için aşağıdakileri yapın:
         Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Data Lake Storage 1. kaynak sağlayıcısını kaydeder ve şuna benzer bir hata alırsanız `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, aboneliğiniz Data Lake Storage 1. için beyaz listeye alınmamış olabilir. Data Lake Storage 1. için Azure aboneliğinizi etkinleştirmek üzere [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)bölümündeki yönergeleri izleyin.
+    > Data Lake Storage 1. kaynak sağlayıcısını kaydeder ve şuna benzer bir hata alırsanız `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , aboneliğiniz Data Lake Storage 1. için beyaz listeye alınmamış olabilir. Data Lake Storage 1. için Azure aboneliğinizi etkinleştirmek üzere [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)bölümündeki yönergeleri izleyin.
     >
 
 2. Bir Data Lake Storage 1. hesabı bir Azure Kaynak grubuyla ilişkilendirilir. Bir kaynak grubu oluşturarak başlayın.
@@ -209,7 +209,7 @@ Bu bölümde, varsayılan depolama alanı olarak Data Lake Storage 1. bir HDInsi
     Cmdlet başarıyla tamamlandıktan sonra, küme ayrıntılarını listeleyen bir çıktı görmeniz gerekir.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage 1. kullanmak için HDInsight kümesinde test işleri çalıştırın
-Bir HDInsight kümesini yapılandırdıktan sonra, Data Lake Storage 1. erişebildiğinden emin olmak için test işlerini üzerinde çalıştırabilirsiniz. Bunu yapmak için örnek bir Hive işi çalıştırarak, Data Lake Storage 1. * \<*' de zaten bulunan örnek verileri kullanan bir tablo oluşturun>/example/Data/Sample.log.
+Bir HDInsight kümesini yapılandırdıktan sonra, Data Lake Storage 1. erişebildiğinden emin olmak için test işlerini üzerinde çalıştırabilirsiniz. Bunu yapmak için, * \<cluster root> /example/Data/Sample.log*konumundaki Data Lake Storage 1. ' de zaten bulunan örnek verileri kullanan bir tablo oluşturmak Için örnek bir Hive işi çalıştırın.
 
 Bu bölümde, oluşturduğunuz HDInsight Linux kümesine bir Secure Shell (SSH) bağlantısı yaparsınız ve sonra örnek bir Hive sorgusu çalıştırırsınız.
 
@@ -230,7 +230,7 @@ Bu bölümde, oluşturduğunuz HDInsight Linux kümesine bir Secure Shell (SSH) 
     Sorgu çıkışını SSH konsolunda görmeniz gerekir.
 
     >[!NOTE]
-    >Yukarıdaki CREATE TABLE komutundaki örnek verilerin yolu `adl:///example/data/`, burada `adl:///` küme köküdür. Bu öğreticide belirtilen küme köküne örnek olarak, komut olur `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Daha kısa bir alternatif kullanabilir ya da küme köküne yönelik yolun tamamını sağlayabilirsiniz.
+    >Yukarıdaki CREATE TABLE komutundaki örnek verilerin yolu `adl:///example/data/` , burada `adl:///` küme köküdür. Bu öğreticide belirtilen küme köküne örnek olarak, komut olur `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster` . Daha kısa bir alternatif kullanabilir ya da küme köküne yönelik yolun tamamını sağlayabilirsiniz.
     >
 
 ## <a name="access-data-lake-storage-gen1-by-using-hdfs-commands"></a>Data Lake Storage 1., bu komutları kullanarak erişim
@@ -245,7 +245,7 @@ Bağlantıyı yaptıktan sonra, aşağıdaki bir dosya sistemi komutunu kullanar
 
     hdfs dfs -ls adl:///
 
-Ayrıca, Data Lake Storage 1. ' ye `hdfs dfs -put` bazı dosyaları yüklemek için komutunu kullanabilir ve ardından dosyaların başarıyla karşıya `hdfs dfs -ls` yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
+Ayrıca, `hdfs dfs -put` Data Lake Storage 1. ' ye bazı dosyaları yüklemek için komutunu kullanabilir ve ardından `hdfs dfs -ls` dosyaların başarıyla karşıya yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

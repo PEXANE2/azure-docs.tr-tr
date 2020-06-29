@@ -3,16 +3,16 @@ title: Azure dosyaları performans sorunlarını giderme kılavuzu
 description: Azure dosya paylaşımları ve ilişkili geçici çözümler ile ilgili bilinen performans sorunları.
 author: gunjanj
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598094"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511954"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure dosyaları performans sorunlarını giderme
 
@@ -113,7 +113,7 @@ Dizin kiraları için destek eksikliği yok.
 ### <a name="workaround"></a>Geçici çözüm
 
 - Mümkünse, kısa bir süre içinde aynı dizinde aşırı açma/kapatma tanıtıcısından kaçının.
-- Linux VM 'Ler için, bağlama seçeneği olarak **actimeo =\<sec>** belirterek Dizin girişi önbelleği zaman aşımını artırın. Bu, varsayılan olarak bir saniyedir ve üç ya da beş gibi daha büyük bir değer yardımcı olabilir.
+- Linux VM 'Ler için, bir bağlama seçeneği olarak **actimeo = \<sec> ** belirterek Dizin girişi önbellek zaman aşımını artırın. Bu, varsayılan olarak bir saniyedir ve üç ya da beş gibi daha büyük bir değer yardımcı olabilir.
 - Linux sanal makineleri için, çekirdeği 4,20 veya daha yüksek bir sürüme yükseltin.
 
 ## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL üzerinde düşük ıOPS
@@ -187,7 +187,7 @@ GÇ yoğun iş yükleri için Azure dosyalarına erişirken beklenen gecikme sü
 6. **Sinyal mantığını Yapılandır** dikey penceresinde, **yanıt türü** boyutuna gidin, **boyut değerleri** açılan penceresine tıklayın ve **başarılı olarak daraltma** (SMB IÇIN) veya **clientesişror** (REST için) seçeneğini belirleyin. 
 
   > [!NOTE]
-  > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir.  Boyut değerini eklemek için **boyut değerleri** açılan listesi **+** ' ne tıklayın, **başarılı** ' i daraltma veya **Clientkısıtlar lingerror**yazın, **Tamam** ' a tıklayın ve ardından #6 adımını tekrarlayın.
+  > Başarılı bir kısıtlama veya Clientazaltıngerror boyut değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir.  Boyut değerini eklemek için **+** **boyut değerleri** açılan listesi ' ne tıklayın, başarılı ' i **daraltma** veya **Clientkısıtlar lingerror**yazın, **Tamam** ' a tıklayın ve ardından #6 adımını tekrarlayın.
 
 7. **Dosya paylaşımının** boyutuna gidin, **boyut değerleri** açılan düğmesine tıklayın ve uyarı vermek istediğiniz dosya paylaşımından seçin. 
 

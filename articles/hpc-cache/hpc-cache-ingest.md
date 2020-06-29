@@ -3,15 +3,15 @@ title: Verileri bir Azure HPC önbellek bulutu kapsayıcısına taşıma
 description: Azure Blob depolamayı Azure HPC Cache ile kullanım için doldurma
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fd21a78d0271f91d334bba5aba748f3770ad38cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac963fd01016506193aae0fab5582224b3957de8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537942"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508971"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Verileri Azure Blob depolamaya taşıma
 
@@ -58,11 +58,11 @@ Avere CLFSLoad yardımcı programını kullanmak istemiyorsanız veya var olan b
 
 ![Çoklu istemci, çok iş parçacıklı veri hareketini gösteren diyagram: sol üst tarafta, şirket içi donanım depolamada bir simgenin bundan sonra gelen birden çok oku vardır. Oklar dört istemci makineye işaret noktasıdır. Her bir istemci makineden üç ok, Azure HPC önbelleğine doğru işaret noktasıdır. Azure HPC önbelleğinde, birden çok ok blob depolamaya işaret noktasıdır.](media/hpc-cache-parallel-ingest.png)
 
-Genellikle ``cp`` bir ``copy`` depolama sisteminden diğerine veri aktarmak için kullandığınız komutlar, tek seferde yalnızca bir dosya oluşturan tek iş parçacıklı işlemlerdir. Bu, dosya sunucusunun tek seferde yalnızca bir dosya olduğu anlamına gelir ve bu da önbelleğin kaynakları için bir atık olur.
+``cp``Genellikle bir ``copy`` depolama sisteminden diğerine veri aktarmak için kullandığınız komutlar, tek seferde yalnızca bir dosya oluşturan tek iş parçacıklı işlemlerdir. Bu, dosya sunucusunun tek seferde yalnızca bir dosya olduğu anlamına gelir ve bu da önbelleğin kaynakları için bir atık olur.
 
 Bu bölümde, verileri Azure HPC önbelleğiyle blob depolamaya taşımak için çok istemci, çok iş parçacıklı bir dosya kopyalama sistemi oluşturma stratejileri açıklanmaktadır. Birden çok istemci ve basit kopyalama komutları kullanılarak etkili veri kopyalama için kullanılabilen dosya aktarımı kavramlarını ve karar noktalarını açıklar.
 
-Ayrıca yardımcı olabilecek bazı yardımcı programları da açıklar. ``msrsync`` Yardımcı programı, bir veri kümesini demetlere bölme ve rsync komutlarının kullanımı sürecini kısmen otomatikleştirebilmek için kullanılabilir. ``parallelcp`` Betik, kaynak dizini okuyan ve komutları otomatik olarak kopyalama ile ilgili başka bir yardımcı programdır.
+Ayrıca yardımcı olabilecek bazı yardımcı programları da açıklar. ``msrsync``Yardımcı programı, bir veri kümesini demetlere bölme ve rsync komutlarının kullanımı sürecini kısmen otomatikleştirebilmek için kullanılabilir. ``parallelcp``Betik, kaynak dizini okuyan ve komutları otomatik olarak kopyalama ile ilgili başka bir yardımcı programdır.
 
 ### <a name="strategic-planning"></a>Stratejik planlama
 
@@ -77,9 +77,9 @@ Azure HPC Cache ile paralel veri alma stratejileri şunları içerir:
 
 * El ile kopyalama-önceden tanımlanmış dosya veya yol kümelerine yönelik olarak, arka planda birden fazla kopyalama komutu çalıştırarak bir istemcide çok iş parçacıklı bir kopyayı el ile oluşturabilirsiniz. Ayrıntılar için [Azure HPC önbellek verilerini alma-el ile kopyalama yöntemini](hpc-cache-ingest-manual.md) okuyun.
 
-* ``msrsync``  -  İle ``msrsync`` kısmen otomatikleştirilmiş kopyalama, birden çok paralel ``rsync`` işlem çalıştıran bir sarmalayıcı yardımcı programıdır. Ayrıntılar için [Azure HPC Cache Data ınest-msrsync yöntemini](hpc-cache-ingest-msrsync.md)okuyun.
+* İle kısmen otomatikleştirilmiş kopyalama ``msrsync``  -  ``msrsync`` , birden çok paralel işlem çalıştıran bir sarmalayıcı yardımcı programıdır ``rsync`` . Ayrıntılar için [Azure HPC Cache Data ınest-msrsync yöntemini](hpc-cache-ingest-msrsync.md)okuyun.
 
-* İle ``parallelcp`` betikleştirilmiş kopyalama- [Azure HPC Cache Data ınest-Parallel Copy betik yönteminde](hpc-cache-ingest-parallelcp.md)paralel kopyalama betiği oluşturmayı ve çalıştırmayı öğrenin.
+* İle betikleştirilmiş kopyalama ``parallelcp`` - [Azure HPC Cache Data ınest-Parallel Copy betik yönteminde](hpc-cache-ingest-parallelcp.md)paralel kopyalama betiği oluşturmayı ve çalıştırmayı öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

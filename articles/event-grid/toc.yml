@@ -242,10 +242,14 @@
           href: enable-diagnostic-logs-topic.md
         - name: Sorun giderme hataları
           href: troubleshoot-errors.md
+        - name: Ağ bağlantısı sorunlarını giderme
+          href: troubleshoot-network-connectivity.md
         - name: Abonelik doğrulama sorunlarını giderme
           href: troubleshoot-subscription-validation.md
-        - name: Ölçümleri görüntüleme ve uyarıları oluşturma
+        - name: Ölçümleri görüntüle
           href: monitor-event-delivery.md
+        - name: Uyarı oluşturma
+          href: set-alerts.md
 - name: Başvuru
   items:
     - name: Azure CLI

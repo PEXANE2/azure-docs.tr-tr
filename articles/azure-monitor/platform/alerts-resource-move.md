@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe89f932bcf7aa22657a3fcabddd015df4b9913d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 65c2e3dbe7cb99c9b7c6e1a84178fd28d5013a69
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85486678"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507951"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Hedef kaynakları farklı bir Azure bölgesine hareket ettirildiğinde uyarı kurallarını veya eylem kurallarını güncelleştirme
 
@@ -32,6 +32,7 @@ Hedef kaynakları taşıdıktan sonra kurallarınızın çalışmayı durdurmas�
 Bir kaynağı taşıdığınızda kaynak KIMLIĞI çoğu durumda değişir. Arka planda, sistem eski bölgeden silinmeden önce kaynağı yeni bölgeye çoğaltır. Bu işlem için iki kaynak ve bu nedenle iki farklı kaynak kimliği aynı anda küçük bir süre için mevcut olmalıdır. Kaynak kimliklerinin benzersiz olması gerektiğinden, işlem sırasında yeni bir KIMLIK oluşturulması gerekir. 
 
 **Kaynağı taşıma, mevcut kuralları nasıl etkiler?**
+
 Uyarı kuralları ve eylem kuralları, uygulanan kaynakların kapsamına sahiptir. Kapsam, tüm abonelik, kaynak grubu veya bir veya daha fazla belirli kaynak olabilir.
 Örneğin, iki kaynağa sahip bir kapsama sahip bir kural (iki sanal makine) aşağıda verilmiştir:
 
@@ -101,8 +102,12 @@ Kapsamdaki kaynakların **yalnızca bir kısmı** taşınırsa, taşınan kaynak
 2. Kapsamı değiştirin. Gerekirse, iki kurala ayırın (yukarıda belirtilen bazı ölçüm uyarıları durumları için geçerlidir).
 3. Kuralı yeniden dağıtın ([ölçüm uyarıları](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert), [Eylem kuralları](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule)).
 
-### <a name="changing-the-scope-of-a-rule-using-azure-cli"></a>Azure CLı kullanarak bir kuralın kapsamını değiştirme
+### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Azure CLı kullanarak bir kuralın kapsamını değiştirme
 
 1.  Mevcut kuralı al ([ölçüm uyarıları](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
 2.  Kural kapsamını doğrudan güncelleştirme ([ölçüm uyarıları](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [etkinlik günlüğü uyarıları](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope))
 3.  Gerekirse, iki kurala ayırın (yukarıda belirtilen bazı ölçüm uyarıları durumları için geçerlidir).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Uyarı bildirimleri](alerts-troubleshoot.md), [ölçüm uyarıları](alerts-troubleshoot-metric.md)ve [günlük uyarıları](alerts-troubleshoot-log.md)ile ilgili diğer sorunları düzeltme hakkında bilgi edinin. 

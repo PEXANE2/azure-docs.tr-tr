@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bc6659904530bfa40ee54cd55eab5eaca689069
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495752"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509226"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage hesabıyla birden çok HDInsight kümesi kullanma
 
@@ -44,7 +44,7 @@ Tabloda,
 - **Hizmet sorumlusu** , hesapla ilişkili Azure ACTIVE DIRECTORY (AAD) hizmet sorumlusu olur.
 - **Fingrp** , AAD 'de finans kuruluştan kullanıcıları içeren bir kullanıcı grubudur.
 
-AAD uygulaması oluşturma hakkında yönergeler için (Ayrıca bir hizmet sorumlusu oluşturur) bkz. [AAD uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). AAD 'de bir Kullanıcı grubu oluşturma yönergeleri için bkz. [Azure Active Directory grupları yönetme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+AAD uygulaması oluşturma hakkında yönergeler için (Ayrıca bir hizmet sorumlusu oluşturur) bkz. [AAD uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). AAD 'de bir Kullanıcı grubu oluşturma yönergeleri için bkz. [Azure Active Directory grupları yönetme](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Göz önünde bulundurmanız gereken bazı önemli noktaları.
 
@@ -85,9 +85,9 @@ Daha önce bağlı olan Yarn Jira ile bağlantılı olarak, ortak kaynakları ye
 
 #### <a name="workaround"></a>Geçici çözüm
 
-Yukarıdaki tabloda gösterildiği gibi, **diğer kullanıcılar** için (örneğin **/**, **/kümeler** ve **/Clusters/finans** ) okuma-yürütme izinlerini ayarlayın.
+Yukarıdaki tabloda gösterildiği gibi, **diğer kullanıcılar** için (örneğin, **/** **/kümeler** ve **/Clusters/finans** ) okuma-yürütme izinlerini ayarlayın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-- [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](hdinsight-hadoop-use-data-lake-storage-gen2.md)

@@ -8,21 +8,20 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: d325b65b01ea13cfcb141d28343d94866d9e05e2
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 6c658053afcaff99249e5d20ca2dc5a14037470b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84751526"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510854"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de hata ayıklama oturumları
 
 Hata ayıklama oturumları, Azure portal var olan bir beceri ile birlikte çalışarak bir görsel düzenleyicidir. Bir hata ayıklama oturumunda hataları tanımlayabilir ve çözümleyebilir, değişiklikleri doğrulayabilir ve değişiklikleri AI zenginleştirme ardışık düzeninde bir üretim beceri gönderebilirsiniz.
 
 > [!Important]
-> Azure Bilişsel Arama için hata ayıklama oturumları, sınırlı erişim önizlemesi olarak [istek üzerine](https://aka.ms/DebugSessions) kullanılabilir. Önizleme özellikleri bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Hata ayıklama oturumları, bir hizmet düzeyi sözleşmesi olmadan sunulan bir önizleme özelliğidir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Önizlemeye erişim verdikten sonra, Azure portal kullanarak hizmet için hata ayıklama oturumlarına erişebilir ve bunları kullanabilirsiniz.
 
 ## <a name="using-debug-sessions"></a>Hata ayıklama oturumlarını kullanma
 
@@ -86,6 +85,10 @@ Olası bir sorun tanımlandığında, yürütme geçmişi belirli girdileri olu�
 ## <a name="errorswarnings"></a>Hatalar/uyarılar
 
 Bu pencerede, beceri tarafından hata ayıklama oturumunda belgeye karşı yürütüldüğü şekilde ürettiği tüm hatalar ve uyarılar görüntülenir.
+
+## <a name="limitations"></a>Sınırlamalar
+
+Hata ayıklama seslerininin tüm genel kullanıma açık veri kaynaklarıyla, en çok önizleme veri kaynaklarıyla çalışır. Cosmos DB MongoDB API (Önizleme) ve Cassandra API (Önizleme) Şu anda desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

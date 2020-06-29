@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 479b227a9144604d3bd0116a60de751189376b5f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878752"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511470"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için tanılama günlüklerine erişme
 Azure Data Lake Storage 1. hesabınız için tanılama günlüğünü etkinleştirmeyi ve hesabınız için toplanan günlüklerin nasıl görüntüleneceğini öğrenin.
@@ -25,7 +25,7 @@ Azure Data Lake Storage 1. hesabınız için tanılama günlüğünü etkinleşt
 Kuruluşlar, verilere erişen kullanıcıların listesi, verilere ne sıklıkta erişildiğine, hesapta ne kadar veri depolandığını vb. gibi bilgiler sağlayan veri erişim denetimi izlerini toplamak üzere Azure Data Lake Storage 1. hesabı için tanılama günlüğünü etkinleştirebilir. Etkinleştirildiğinde, tanılama ve/veya istekler en iyi çaba temelinde günlüğe kaydedilir. Hem Istekler hem de tanılama günlüğü girdileri yalnızca hizmet uç noktasına karşı yapılan istekler varsa oluşturulur.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. [Azure portalını kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)konusundaki yönergeleri izleyin.
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabınız için tanılama günlüğünü etkinleştirme
@@ -187,7 +187,7 @@ search *
 ```
 
 
-Azure Data Lake Storage 1. günlük verilerini işleme ve çözümleme hakkında bir örnek sağlar. Örneği adresinde [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)bulabilirsiniz. 
+Azure Data Lake Storage 1. günlük verilerini işleme ve çözümleme hakkında bir örnek sağlar. Örneği adresinde bulabilirsiniz [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) . 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure Data Lake Storage 1. genel bakış](data-lake-store-overview.md)

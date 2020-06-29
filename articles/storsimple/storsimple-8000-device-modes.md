@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: e55964beff48df6ce24d99c01975d39b662f1612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b0ea489c1d70ab86d677aad666ea6728fa76b4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60576100"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511608"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>StorSimple cihazınızda cihaz modunu değiştirme
 
@@ -78,7 +78,7 @@ Bakım yapmak veya bakım modu güncelleştirmelerini yüklemek için StorSimple
 #### <a name="to-enter-maintenance-mode"></a>Bakım moduna girmek için
 
 1. [Cihaz seri konsoluna bağlanmak Için PuTTY kullanma](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)bölümündeki adımları izleyerek cihaz seri konsolunda oturum açın.
-2. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola: `Password1`.
+2. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola: `Password1` .
 3. Komut istemine şunu yazın: 
    
     `Enter-HcsMaintenanceMode`

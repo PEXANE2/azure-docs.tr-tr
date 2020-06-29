@@ -4,16 +4,16 @@ description: Azure Içeri/dışarı aktarma hizmeti için sürücü hazırlama v
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd74caf391fcf1538bf920f41638b23672b47015
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978429"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512224"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracı 'nı ayarlama
 Microsoft Azure İçeri/Dışarı Aktarma Aracı, Microsoft Azure İçeri/Dışarı Aktarma hizmeti ile kullanabileceğiniz sürücü hazırlama ve onarma aracıdır. Aracı aşağıdaki işlevler için kullanabilirsiniz:  
@@ -60,19 +60,19 @@ Kısmen başarısız olan bir içeri aktarmayı onarmaya çalışıyorsanız şu
 ## <a name="installing-the-azure-importexport-tool"></a>Azure Içeri/dışarı aktarma aracını yükleme  
  Azure Içeri/dışarı aktarma aracı aşağıdaki dosyalardan oluşur:  
 
-- Waımportexport. exe  
+- WAImportExport.exe  
 
-- Waımportexport. exe. config  
+- WAImportExport.exe.config  
 
-- Waımportexportcore. dll  
+- WAImportExportCore.dll  
 
-- Waımportexportrepair. dll  
+- WAImportExportRepair.dll  
 
-- Microsoft. WindowsAzure. Storage. dll  
+- Microsoft.WindowsAzure.Storage.dll  
 
-- Hddıd. dll  
+- Hddid.dll  
 
-  Bu dosyaları, örneğin, `c:\WAImportExport`çalışma dizinine kopyalayın. Ardından, yönetici modunda bir komut satırı penceresi açın ve yukarıdaki dizini geçerli dizin olarak ayarlayın.  
+  Bu dosyaları, örneğin, çalışma dizinine kopyalayın `c:\WAImportExport` . Ardından, yönetici modunda bir komut satırı penceresi açın ve yukarıdaki dizini geçerli dizin olarak ayarlayın.  
 
   Komut için yardım almak üzere aracı parametresiz çalıştırın:  
 

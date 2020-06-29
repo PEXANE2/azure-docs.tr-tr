@@ -3,15 +3,15 @@ title: Microsoft Azure StorSimple 8000 serisi cihazda pili değiştirme
 description: StorSimple cihazınızda yedekleme pil modülünü kaldırma, değiştirme ve koruma işlemlerinin nasıl yapılacağını açıklar.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17a6a07d117557cdee23634bd211a14cf90d49e3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255021"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508988"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>StorSimple cihazınızın yedek pil modülünü değiştirme
 
@@ -32,7 +32,7 @@ Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadı
 StorSimple cihazınız için yedekleme pil modülü, alan tarafından değiştirilebilen bir birimdir. PCM 'e yüklenmeden önce, pil modülünün özgün paketinizde depolanması gerekir. Yedekleme pilini kaldırmak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-remove-the-backup-battery-module"></a>Yedekleme Pil modülünü kaldırmak için
-1. Azure portal, StorSimple Aygıt Yöneticisi hizmeti dikey pencerenize gidin. **Cihazlar** ' a gidin ve cihaz listesinden cihazınızı seçin. **Donanım durumunu** **izlemek** > için gidin. **Paylaşılan bileşenler**altında pilin durumuna bakın.
+1. Azure portal, StorSimple Aygıt Yöneticisi hizmeti dikey pencerenize gidin. **Cihazlar** ' a gidin ve cihaz listesinden cihazınızı seçin. **Monitor**  >  **Donanım durumunu**izlemek için gidin. **Paylaşılan bileşenler**altında pilin durumuna bakın.
 2. Pilin başarısız olduğu PCM 'yi belirler. Şekil 1 ' de StorSimple cihazının geri gösterilmektedir.
    
     ![Cihaz birincil kutu modüllerinin geri düzlemi](./media/storsimple-battery-replacement/IC740994.png)
@@ -76,7 +76,7 @@ Değiştirme pili modülünü, StorSimple cihazınızın birincil kasasında PCM
 1. Yedekleme Pil modülünü PCM 'de doğru yöne yerleştirin.
 2. Bağlayıcıyı oturmak için, pil modülünün tüm yolunu azaltın.
 3. [StorSimple cihazınızda güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md)konusundaki yönergeleri izleyerek birincil MUHAFAZADAKI PCM 'yi değiştirin.
-4. Değiştirme tamamlandıktan sonra cihazınıza gidin ve Azure Portal**Donanım durumunu** **İzle** > ' ye gidin. Yüklemenin başarılı olduğundan emin olmak için pilin durumunu doğrulayın. Yeşil bir durum, pilin sağlıklı olduğunu gösterir.
+4. Değiştirme tamamlandıktan sonra cihazınıza gidin ve **Monitor**  >  Azure Portal**Donanım durumunu** İzle ' ye gidin. Yüklemenin başarılı olduğundan emin olmak için pilin durumunu doğrulayın. Yeşil bir durum, pilin sağlıklı olduğunu gösterir.
 
 ## <a name="maintain-the-backup-battery-module"></a>Yedekleme Pil modülünü koruyun
 StorSimple cihazınızda, yedekleme pil modülü güç kaybı olayı sırasında denetleyiciye güç sağlar. StorSimple cihazının, denetimli bir şekilde kapatmadan önce kritik verileri kaydetmesine izin verir. PCMs 'de tamamen ücretlendirilen iki pille, sistem art arda iki kayıp olayını işleyebilir.

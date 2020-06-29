@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886704"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510982"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Öğretici: beceri kodunuzda tanılama, onarma ve değişiklikleri yapma
 
 Bu makalede, belirtilen beceri sorunlarını gidermek için hata ayıklama oturumlarına erişmek üzere Azure portal kullanacaksınız. Beceri, giderilmesi gereken bazı hatalara sahiptir. Bu öğretici, yetenek girişleri ve çıkışları sorunlarını belirlemek ve çözmek için bir hata ayıklama oturumunda size kılavuzluk eder.
 
 > [!Important]
-> Azure Bilişsel Arama için hata ayıklama oturumları, sınırlı erişim önizlemesi olarak [istek üzerine](https://aka.ms/DebugSessions) kullanılabilir. Önizleme özellikleri bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Hata ayıklama oturumları, bir hizmet düzeyi sözleşmesi olmadan sunulan bir önizleme özelliğidir ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Önizlemeye erişim verdikten sonra, Azure portal kullanarak hizmetiniz için hata ayıklama oturumlarına erişebilir ve bunları kullanabilirsiniz.
->   
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

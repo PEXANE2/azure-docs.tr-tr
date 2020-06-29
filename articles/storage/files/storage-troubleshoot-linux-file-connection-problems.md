@@ -3,16 +3,16 @@ title: Linux 'ta Azure dosyaları sorunlarını giderme | Microsoft Docs
 description: Linux 'ta Azure dosyaları sorunlarını giderme
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159498"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512009"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
 
@@ -80,7 +80,7 @@ Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapı
 
 Linux 'ta aşağıdakine benzer bir hata iletisi alırsınız:
 
-**\<filename> [izin reddedildi] disk kotası aşıldı**
+**\<filename>[izin verilmedi] Disk kotası aşıldı**
 
 ### <a name="cause"></a>Nedeni
 
@@ -106,14 +106,14 @@ Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını ka
 - Doğru kopyalama yöntemini kullanın:
     - İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
     - CP veya DD 'yi paralel olarak kullanmak kopyalama hızını iyileştirebilir, iş parçacıklarının sayısı kullanım örneğine ve iş yüküne bağlıdır. Aşağıdaki örneklerde altı kullanılır: 
-    - CP örneği (CP, dosya sisteminin varsayılan blok boyutunu öbek boyutu olarak kullanır): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - CP örneği (CP, dosya sisteminin varsayılan blok boyutunu öbek boyutu olarak kullanır): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
     - dd örneği (Bu komut, öbek boyutunu açıkça 1 MiB olarak belirler):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Açık kaynak üçüncü taraf araçları:
         - [GNU paralel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) -dosyaları sıralar ve onları bölümler halinde paketler.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) -src_dir verileri dst_url geçirilecek birden çok örnek atamak Için fpart ve bir kopyalama aracı kullanır.
         - GNU coreutils tabanlı [Çoklu](https://github.com/pkolano/mutil) iş parçacıklı CP ve md5sum.
-- Dosya boyutunu önceden ayarlamak, her yazma için bir genişletme yazma yapmak yerine dosya boyutunun bilinen senaryolarda kopyalama hızını artırmaya yardımcı olur. Yazmaları genişletmeyi kaçınılması gerekiyorsa, bir hedef dosya boyutunu `truncate - size <size><file>` komutla ayarlayabilirsiniz. Bundan sonra komut `dd if=<source> of=<target> bs=1M conv=notrunc`, hedef dosyanın boyutunu sürekli olarak güncelleştirmek zorunda kalmadan bir kaynak dosyayı kopyalayacaktır. Örneğin, kopyalamak istediğiniz her dosya için hedef dosya boyutunu ayarlayabilirsiniz (bir paylaşımın/mnt/Share altında bağlanmış olduğunu varsayın):
+- Dosya boyutunu önceden ayarlamak, her yazma için bir genişletme yazma yapmak yerine dosya boyutunun bilinen senaryolarda kopyalama hızını artırmaya yardımcı olur. Yazmaları genişletmeyi kaçınılması gerekiyorsa, bir hedef dosya boyutunu `truncate - size <size><file>` komutla ayarlayabilirsiniz. Bundan sonra `dd if=<source> of=<target> bs=1M conv=notrunc` komut, hedef dosyanın boyutunu sürekli olarak güncelleştirmek zorunda kalmadan bir kaynak dosyayı kopyalayacaktır. Örneğin, kopyalamak istediğiniz her dosya için hedef dosya boyutunu ayarlayabilirsiniz (bir paylaşımın/mnt/Share altında bağlanmış olduğunu varsayın):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
     - ve sonra dosyaları paralel olarak genişletmeksizin kopyalayın:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
@@ -217,11 +217,11 @@ Dosyaları kopyalamak için depolama hesabı kullanıcısını kullanın:
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: '&lt;Path&gt;' öğesine erişilemiyor: giriş/çıkış hatası
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: ' &lt; Path ' öğesine erişilemiyor &gt; : giriş/çıkış hatası
 
 Bir Azure dosya paylaşımındaki dosyaları ls komutunu kullanarak listelemeyi denediğinizde, komut dosyaları listelenirken askıda kalır. Şu hatayı alırsınız:
 
-**ls: '&lt;Path&gt;' öğesine erişilemiyor: giriş/çıkış hatası**
+**ls: ' &lt; Path ' öğesine erişilemiyor &gt; : giriş/çıkış hatası**
 
 
 ### <a name="solution"></a>Çözüm

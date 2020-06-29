@@ -30,7 +30,9 @@
       href: concepts-identity.md
     - name: Özel bulut yükseltmeleri
       href: concepts-upgrades.md
-    - name: AVS VM’leri için API yönetimi
+    - name: Hub ve bağlı bileşen tümleştirmesi
+      href: concepts-avs-hub-and-spoke-integration.md
+    - name: API Management
       href: concepts-api-management.md
 - name: Nasıl yapılır kılavuzları
   items:
@@ -40,8 +42,6 @@
       href: manage-dhcp.md
     - name: Olağanüstü durum kurtarma
       href: disaster-recovery.md
-    - name: AVS dağıtım veya sağlama hatalarıyla ilgili yardım alma
-      href: fix-deployment-provisioning-failures.md
     - name: AVS için Azure Backup Sunucusu
       items:
         - name: AVS için Azure Backup Sunucusu ayarlama
@@ -52,5 +52,9 @@
   items: null
 - name: Kaynaklar
   items:
+    - name: Sorun giderme
+      items:
+        - name: AVS dağıtım veya sağlama hatalarıyla ilgili yardım alma
+          href: fix-deployment-provisioning-failures.md
     - name: SSS
       href: faq.md

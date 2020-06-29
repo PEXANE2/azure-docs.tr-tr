@@ -3,15 +3,15 @@ title: Performans ayarlama-Hive Azure Data Lake Storage 1.
 description: HDInsight ve Azure Data Lake Storage 1. Hive için performans ayarlama yönergeleri.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 2e44332ddab9387c05a45d15101ccd2bdec3ada4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 819e158ce2613441efdf2177d50fc8e7989bf68f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690515"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510930"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. Hive için performans ayarlama Kılavuzu
 
@@ -35,7 +35,7 @@ Gelişmiş Data Lake Storage 1. performansını ayarlamaya yönelik en önemli a
 
 * **tez. Grouping. Max-size** – her bir Eşleştiricideki en büyük boyut
 
-* **Hive. Exec. Reducer. bytes. per. Reducer** – her Reducer için boyut
+* **hive.exec. Reducer. bytes. per. Reducer** – her Reducer boyutu
 
 **Hive. tez. Container. size** -kapsayıcı boyutu, her görev için kullanılabilir bellek miktarını belirler.  Bu, Hive içindeki eşzamanlılık denetimi için ana giriştir.  
 
@@ -43,11 +43,11 @@ Gelişmiş Data Lake Storage 1. performansını ayarlamaya yönelik en önemli a
 
 **tez. Grouping. Max-size** – parametresi, her bir Eşleştiricideki en büyük boyutu ayarlamanıza olanak sağlar.  Tez 'nin seçtiği mapbir sayı bu parametrenin değerinden büyükse tez burada ayarlanan değeri kullanır.
 
-**Hive. Exec. Reducer. bytes. per. Reducer** – Bu parametre her bir Reducer boyutunu ayarlar.  Varsayılan olarak, her Reducer 256 MB 'dir.  
+**hive.exec. Reducer. bytes. per. Reducer** – Bu parametre her bir Reducer boyutunu ayarlar.  Varsayılan olarak, her Reducer 256 MB 'dir.  
 
 ## <a name="guidance"></a>Rehber
 
-**Hive. Exec. Reducer. bytes. per. Reducer** – varsayılan değer sıkıştırılandığınızda iyi sonuç verir.  Sıkıştırılmış veriler için Reducer boyutunu azaltmanız gerekir.  
+**hive.exec. Reducer. bytes. per. Reducer** – varsayılan değer sıkıştırılmamış olduğunda iyi sonuç verir.  Sıkıştırılmış veriler için Reducer boyutunu azaltmanız gerekir.  
 
 **Hive. tez. Container. size ayarlayın** – her düğümde, bellek yarn. NodeManager. Resource. Memory-MB tarafından belirtilir ve varsayılan olarak HDI kümesi üzerinde doğru şekilde ayarlanmalıdır.  YARN 'de uygun belleği ayarlama hakkında daha fazla bilgi için bu [gönderisini](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom)inceleyin.
 
@@ -77,7 +77,7 @@ Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata 
 
 1. Aşağıdaki özelliği Hive config içindeki Log4J özelliklerine koyun. Bu işlem, ambarı görünümünden yapılabilir: Log4J. günlükçü. com. Microsoft. Azure. datalake. Store = DEBUG hata ayıkla yapılandırma için tüm düğümleri/hizmeti yeniden başlatın.
 
-2. Daraldıysanız, Hive günlük dosyasında HTTP 429 hata kodunu görürsünüz. Hive günlük dosyası/t MP/&lt;user&gt;/Hive.log konumunda
+2. Daraldıysanız, Hive günlük dosyasında HTTP 429 hata kodunu görürsünüz. Hive günlük dosyası/t MP/ &lt; user &gt; /Hive.log konumunda
 
 ## <a name="further-information-on-hive-tuning"></a>Hive ayarlama hakkında daha fazla bilgi
 

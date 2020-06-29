@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 25f0e0f15a299ef8b946b3d5fa0eb3eddc2272c2
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84508629"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510873"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme ipuçları
 
@@ -49,7 +49,16 @@ Bu durumda, Dizin oluşturucudan hataları yok saymasını söylemek isteyebilir
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>İpucu 4: Gelişmiş belgelere bakıyor 
+> [!NOTE]
+> En iyi uygulama olarak, üretim iş yükleri için maxFailedItems, maxFailedItemsPerBatch değerini 0 olarak ayarlayın
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>İpucu 4: beceri sorunlarını belirlemek ve çözmek için hata ayıklama oturumlarını kullanma 
+
+Hata ayıklama oturumları, Azure portal var olan bir beceri ile birlikte çalışarak bir görsel düzenleyicidir. Bir hata ayıklama oturumunda hataları tanımlayabilir ve çözümleyebilir, değişiklikleri doğrulayabilir ve değişiklikleri AI zenginleştirme ardışık düzeninde bir üretim beceri kaydedebilirsiniz. Bu [, belgeleri okuyan](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)bir önizleme özelliğidir. Kavramlar ve Başlarken hakkında daha fazla bilgi için bkz. [hata ayıklama oturumları](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+
+Tek bir belgede çalışan hata ayıklama oturumları, daha karmaşık zenginleştirme işlem hatlarını tekrarlayarak oluşturmanız için harika bir yoldur.
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>İpucu 5: bir toprak altında zenginleştirilmiş belgeler aranıyor 
 Zenginleştirilmiş belgeler, zenginleştirme sırasında oluşturulan geçici yapılardır ve sonra işlem tamamlandığında silinir.
 
 Dizin oluşturma sırasında oluşturulan zenginleştirilmiş belgenin anlık görüntüsünü yakalamak için dizininize ```enriched``` adlı bir alan ekleyin. Dizin oluşturucu, otomatik olarak alana, o belgenin tüm zenginleştirmelerinin dize gösteriminin dökümünü alır.
@@ -77,11 +86,7 @@ Zenginleştirilmiş alan, ifadelerin değerlendirmekte olduğu içeriğin mantı
 }
 ```
 
-### <a name="debug-sessions"></a>Hata ayıklama oturumları
-
-Hata ayıklama oturumları, Azure portal var olan bir beceri ile birlikte çalışarak bir görsel düzenleyicidir. Bir hata ayıklama oturumunda hataları tanımlayabilir ve çözümleyebilir, değişiklikleri doğrulayabilir ve değişiklikleri AI zenginleştirme ardışık düzeninde bir üretim beceri gönderebilirsiniz. Bu bir önizleme özelliğidir ve bir servis talebine göre erişim verilir. [Belgeleri okuyun](https://docs.microsoft.com/azure/search/cognitive-search-debug-session) ve erişim için nasıl uygulanacağını öğrenin.
-
-## <a name="tip-5-expected-content-fails-to-appear"></a>İpucu 5: beklenen içerik görüntülenemez
+## <a name="tip-6-expected-content-fails-to-appear"></a>İpucu 6: beklenen içerik görüntülenemez
 
 Eksik içerik, dizin oluşturma sırasında bırakılan belgelerin sonucu olabilir. Ücretsiz ve temel katmanların belge boyutu üzerinde düşük limitleri vardır. Sınırı aşan herhangi bir dosya dizinleme sırasında bırakılır. Azure portal bırakılan belgeleri kontrol edebilirsiniz. Arama hizmeti panosunda Dizin oluşturucular kutucuğuna çift tıklayın. Dizin oluşturulan başarılı belgelerin oranını gözden geçirin. %100 değilse, daha fazla ayrıntı almak için oranına tıklayabilirsiniz. 
 
@@ -89,7 +94,7 @@ Sorun dosya boyutuyla ilişkiliyse, şöyle bir hata görebilirsiniz: "blob \<fi
 
 İçeriğin görünmesi için ikinci bir neden ilgili giriş/çıkış eşleme hataları olabilir. Örneğin, çıkış hedefi adı "kişiler", ancak dizin alanı adı küçük harfli "insanlar" dır. Sistem, bir alanın boş olduğu durumlarda dizin oluşturma işleminin başarılı olduğunu düşünmenize olanak sağlamak için tüm işlem hattının 201 başarılı iletilerini döndürebilir. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>İpucu 6: en fazla çalışma süresinin (24 saatlik pencere) ötesine işlemeyi genişletme
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>İpucu 7: en fazla çalışma süresinin (24 saatlik pencere) ötesine işlemeyi genişletme
 
 Görüntü analizi, hatta basit durumlar için hesaplama açısından yoğun olduğundan, görüntüler özellikle büyük veya karmaşık olduğunda, işlem süreleri izin verilen en uzun süreyi aşabilir. 
 
@@ -102,7 +107,7 @@ Zamanlanan Dizin oluşturucular için, dizin oluşturma en son bilinen iyi belge
 
 Portal tabanlı dizin oluşturma için (hızlı başlangıç bölümünde açıklandığı gibi), "bir kez çalıştır" Dizin Oluşturucu seçeneği, işlemeyi 1 saat () ile sınırlar `"maxRunTime": "PT1H"` . İşleme penceresini daha uzun bir şeye genişletmek isteyebilirsiniz.
 
-## <a name="tip-7-increase-indexing-throughput"></a>İpucu 7: Dizin oluşturma verimini artırma
+## <a name="tip-8-increase-indexing-throughput"></a>İpucu 8: Dizin oluşturma verimini artırma
 
 [Paralel dizin oluşturma](search-howto-large-index.md)için, verilerinizi aynı kapsayıcı içinde birden çok kapsayıcıya veya birden çok sanal klasöre yerleştirin. Ardından birden çok veri kaynağı ve Dizin Oluşturucu çifti oluşturun. Tüm Dizin oluşturucular aynı beceri kullanabilir ve aynı hedef arama dizinine yazabilir, bu nedenle arama uygulamanızın bu bölümlemeden haberdar olması gerekmez.
 Daha fazla bilgi için bkz. [büyük veri kümelerini dizinleme](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).

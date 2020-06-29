@@ -12,8 +12,8 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: Profil ve uç nokta oluşturma
       href: cdn-create-new-endpoint.md
-    - name: Azure Resource Manager şablonu kullanarak profil oluşturma
-      href: create-profile-resource-manager-template.md
+    - name: Profil ve uç nokta oluşturma - ARM Şablonu
+      href: create-profile-endpoint-template.md
 - name: Öğreticiler
   items:
     - name: Web uygulamasına Azure CDN’yi ekleme

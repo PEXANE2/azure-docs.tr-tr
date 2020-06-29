@@ -3,16 +3,16 @@ title: Java ile Azure dosyaları için geliştirme | Microsoft Docs
 description: Dosya verilerini depolamak için Azure dosyaları kullanan Java uygulamaları ve hizmetleri geliştirmeyi öğrenin.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54f545c2d4f897f85ab3e5fd10d07666e93e4f41
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73837469"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509685"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java ile Azure Dosyaları için geliştirme
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -186,7 +186,7 @@ Artık paylaşımın kök dizinine başvurunuz olduğuna göre, aşağıdaki kod
 ```
 
 ## <a name="download-a-file"></a>Dosya indirme
-Azure dosyalarına karşı gerçekleştirdiğiniz daha sık gerçekleştirilen işlemlerden biri dosyaları indirilecektir. Aşağıdaki örnekte, kod SampleFile. txt ' yi indirir ve içeriğini görüntüler.
+Azure dosyalarına karşı gerçekleştirdiğiniz daha sık gerçekleştirilen işlemlerden biri dosyaları indirilecektir. Aşağıdaki örnekte, kod SampleFile.txt indirir ve içeriğini görüntüler.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -203,7 +203,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Dosyayı silme
-Başka bir yaygın Azure dosyaları işlemi dosya silme işlemidir. Aşağıdaki kod SampleFile. txt adlı bir dosyayı **sampledir**adlı bir dizin içinde saklı olarak siler.
+Başka bir yaygın Azure dosyaları işlemi dosya silme işlemidir. Aşağıdaki kod, **sampledir**adlı bir dizinin içinde depolanan SampleFile.txt adlı bir dosyayı siler.
 
 ```java
 // Get a reference to the root directory for the share.

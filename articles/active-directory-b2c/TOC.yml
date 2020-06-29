@@ -191,8 +191,12 @@
               displayName: 'ux, input, cors, html, css'
             - name: Dil özelleştirme
               href: custom-policy-localization.md
-            - name: Özel e-posta
-              href: custom-email.md
+            - name: Özel e-posta doğrulaması
+              items:
+                - name: Mailjet
+                  href: custom-email-mailjet.md
+                - name: SendGrid
+                  href: custom-email-sendgrid.md
               displayName: verification
             - name: E-posta doğrulamayı devre dışı bırakma
               href: custom-policy-disable-email-verification.md
@@ -373,6 +377,8 @@
           href: partner-trusona.md
         - name: Twilio
           href: partner-twilio.md
+        - name: TypingDNA
+          href: partner-typingdna.md
     - name: b2clogin.com kullanma
       items:
         - name: b2clogin.com genel bakışı

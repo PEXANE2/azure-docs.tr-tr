@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d3bfb589ec4c152b136e8e1f432864b719c97d58
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779173"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509328"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri depolama ve giriş
 
@@ -60,8 +60,13 @@ Desteklenen veri türleri şunlardır:
 |---|---|
 | **bool** | İki durumdan birine sahip bir veri türü: `true` veya `false` . |
 | **Hem** | Genellikle günün tarih ve saati olarak ifade edilen bir anlık zamanı temsil eder. [Iso 8601](https://www.iso.org/iso-8601-date-and-time-format.html) biçiminde ifade edilir. |
+| **long** | İmzalı 64 bitlik bir tamsayı  |
 | **double** | Çift duyarlıklı 64 bitlik [ıeee 754](https://ieeexplore.ieee.org/document/8766229) kayan nokta. |
-| **string** | Unicode karakterlerinden oluşan metin değerleri.          |
+| **dizisinde** | Unicode karakterlerinden oluşan metin değerleri.          |
+
+> [!IMPORTANT]
+>
+> * TSI ortamınız kesin olarak belirlenmiş. Cihazlar veya Etiketler hem integral hem de tamsayı olmayan veriler gönderse, cihaz özelliği değerleri iki ayrı çift ve uzun sütunlarda depolanır ve API çağrıları yapılırken ve zaman serisi model değişkeni ifadelerinizi tanımlarken [birleşim () işlevi](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) kullanılmalıdır.
 
 #### <a name="objects-and-arrays"></a>Nesneler ve diziler
 
@@ -232,9 +237,11 @@ Time Series Insights önizlemesi verilerinizin kopyalarını aşağıdaki gibi d
 
 * İkinci, yeniden bölümlenmiş kopya zaman serisi kimliklerine göre gruplandırılır ve `PT=TsId` klasöründe bulunur:
 
-  `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+  `V=1/PT=TsId/<TSI_INTERNAL_STRUCTURE>/<TSI_INTERNAL_NAME>.parquet`
 
-Her iki durumda da, Parquet dosyasının Time özelliği blob oluşturulma zamanına karşılık gelir. Klasördeki veriler, `PT=Time` dosyaya yazıldıktan sonra hiçbir değişiklik olmadan korunur. `PT=TsId`Klasördeki veriler, zaman içinde sorgu için iyileştirilebilir ve statik değildir.
+Klasördeki Blobların adlarındaki zaman damgası, `PT=Time` VERILERI TSI (olayların zaman damgasına değil) için varış zamanına karşılık gelir.
+
+`PT=TsId`Klasördeki veriler, zaman içinde sorgu için iyileştirilebilir ve statik değildir. Yeniden bölümleme sırasında, aynı olaylar birden fazla blobda bulunabilir. Ayrıca, Blobların adlandırılması gelecekte değişebilir.
 
 > [!NOTE]
 >

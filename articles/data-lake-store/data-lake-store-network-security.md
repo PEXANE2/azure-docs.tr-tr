@@ -8,17 +8,17 @@ manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 471633414603ede123382b46b549acb2fd4fd98e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60612697"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508716"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için sanal ağ tümleştirmesi
 
@@ -99,7 +99,7 @@ Kullanılabilen seçeneklerin bazıları şunlardır:
 
      ![Select the Microsoft.AzureActiveDirectory hizmet uç noktasını seçme](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  Bağlantı izni vermek istediğiniz alt ağları seçin. **Add (Ekle)** seçeneğini belirleyin.
+6.  Bağlantı izni vermek istediğiniz alt ağları seçin. **Ekle**'yi seçin.
 
     ![Alt ağı seçme](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -124,7 +124,7 @@ Kullanılabilen seçeneklerin bazıları şunlardır:
 
     ![Var olan sanal ağı ekle](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  Bağlantıya izin vermek istediğiniz sanal ağları ve alt ağları seçin. **Add (Ekle)** seçeneğini belirleyin.
+5.  Bağlantıya izin vermek istediğiniz sanal ağları ve alt ağları seçin. **Ekle**'yi seçin.
 
     ![Sanal ağı ve alt ağları seçme](media/data-lake-store-network-security/config-adls-3.png)
 
@@ -137,7 +137,7 @@ Kullanılabilen seçeneklerin bazıları şunlardır:
 
 7.  [İsteğe bağlı] **Güvenlik duvarı ve sanal ağlar** sayfasının **Güvenlik duvarı** bölümünde belirli IP adreslerinden gelen bağlantılara izin verebilirsiniz. 
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 Seçtiğiniz sanal ağların dışındaki Azure hizmetlerinden ve VM'lerden gelen bağlantılara izin verebilirsiniz. **Güvenlik duvarı ve sanal ağlar** dikey penceresinin **Özel durumlar** bölümündeki iki seçenekten birini belirleyin:
  
 - **Tüm Azure hizmetlerinin bu Data Lake Storage 1. Nesil hesabına erişmesine izin ver**. Bu seçenek Azure Data Factory ve Azure Event Hubs gibi Azure hizmetlerinin ve tüm Azure VM'lerinin Data Lake Storage hesabınızla iletişim kurmasına izin verir.

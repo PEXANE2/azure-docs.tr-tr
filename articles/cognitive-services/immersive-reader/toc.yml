@@ -29,9 +29,15 @@
       href: how-to-customize-launch-button.md
     - name: Kimlik doğrulaması belirtecini önbelleğe alma
       href: how-to-cache-token.md
+    - name: Yüksek Sesle Okumayı yapılandırma
+      href: how-to-configure-read-aloud.md
+    - name: Çeviriyi yapılandırma
+      href: how-to-configure-translation.md
+    - name: Kullanıcı tercihlerini depolama
+      href: how-to-store-user-preferences.md
 - name: Başvuru
   items:
-    - name: SDK Başvurusu
+    - name: JavaScript SDK'sı
       href: reference.md
 - name: Kaynaklar
   items:

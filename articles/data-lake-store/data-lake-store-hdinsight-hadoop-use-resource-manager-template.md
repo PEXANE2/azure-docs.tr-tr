@@ -3,15 +3,15 @@ title: Şablon-Data Lake Storage 1. ile HDInsight kümesi
 description: Azure Resource Manager şablonları kullanarak Azure HDInsight kümelerini Azure Data Lake Storage 1. ile oluşturun ve kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 593edecd2cc1bbdd3627430af41c64be4d6a022b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692041"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508648"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Data Lake Storage 1. bir HDInsight kümesi oluşturma
 > [!div class="op_single_selector"]
@@ -82,7 +82,7 @@ Karşıya yüklediğiniz örnek verilerin HDInsight kümesinden erişilebilir ol
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage 1. kullanmak için HDInsight kümesinde test işleri çalıştırın
 Bir HDInsight kümesini yapılandırdıktan sonra, HDInsight kümesinin Data Lake Storage 1. erişebileceğini sınamak için test işlerini kümede çalıştırabilirsiniz. Bunu yapmak için, daha önce Data Lake Storage 1. hesabınıza yüklediğiniz örnek verileri kullanarak tablo oluşturan örnek bir Hive işi çalıştıracağız.
 
-Bu bölümde, bir HDInsight Linux kümesine SSH oluşturup örnek Hive sorgusunu çalıştırırsınız. Bir Windows istemcisi kullanıyorsanız, ' den [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)Indirilebilen **Putty**kullanmanız önerilir.
+Bu bölümde, bir HDInsight Linux kümesine SSH oluşturup örnek Hive sorgusunu çalıştırırsınız. Bir Windows istemcisi kullanıyorsanız, ' den indirilebilen **Putty**kullanmanız önerilir [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) .
 
 PuTTY kullanma hakkında daha fazla bilgi için bkz. [Windows 'Da HDInsight 'Ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -118,7 +118,7 @@ PuTTY kullanma hakkında daha fazla bilgi için bkz. [Windows 'Da HDInsight 'Ta 
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Data Lake Storage 1., bu komutları kullanarak erişim
 HDInsight kümesini Data Lake Storage 1. kullanacak şekilde yapılandırdıktan sonra, mağazaya erişmek için,
 
-Bu bölümde, bir HDInsight Linux kümesine SSH oluşturup, bu komutu çalıştırın. Bir Windows istemcisi kullanıyorsanız, ' den [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)Indirilebilen **Putty**kullanmanız önerilir.
+Bu bölümde, bir HDInsight Linux kümesine SSH oluşturup, bu komutu çalıştırın. Bir Windows istemcisi kullanıyorsanız, ' den indirilebilen **Putty**kullanmanız önerilir [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) .
 
 PuTTY kullanma hakkında daha fazla bilgi için bkz. [Windows 'Da HDInsight 'Ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -136,7 +136,7 @@ Found 1 items
 -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
 ```
 
-Ayrıca, Data Lake Storage 1. ' ye `hdfs dfs -put` bazı dosyaları yüklemek için komutunu kullanabilir ve ardından dosyaların başarıyla karşıya `hdfs dfs -ls` yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
+Ayrıca, `hdfs dfs -put` Data Lake Storage 1. ' ye bazı dosyaları yüklemek için komutunu kullanabilir ve ardından `hdfs dfs -ls` dosyaların başarıyla karşıya yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

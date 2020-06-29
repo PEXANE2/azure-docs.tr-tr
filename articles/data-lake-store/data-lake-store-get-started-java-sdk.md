@@ -3,15 +3,15 @@ title: Java SDK-Data Lake Storage 1. dosya sistemi işlemleri-Azure
 description: Klasör oluşturma, veri dosyalarını karşıya yükleme ve indirme gibi Data Lake Storage 1. dosya sistemi işlemleri gerçekleştirmek için Azure Data Lake Storage 1. için Java SDK 'sını kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 6f97443e4bcf6689f0bf49917774f662d5462566
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 45f9ebced14856145b1631fdbb6484c94826b72e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691784"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511142"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Java SDK kullanarak Azure Data Lake Storage 1. dosya sistemi işlemleri
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Data Lake Storage 1. için Java SDK API belgelerine, [Azure Data Lake Storage 1.
 
 1. Komut satırından [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) veya bir IDE kullanarak Maven projesi oluşturun. IntelliJ kullanarak Java projesi oluşturma yönergeleri için [buraya](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html) bakın. Eclipse kullanarak proje oluşturma yönergeleri için [buraya](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm) bakın. 
 
-2. Maven **pom.xml** dosyanıza aşağıdaki bağımlılıkları ekleyin. /Project>etiketinden önce aşağıdaki kod parçacığını ekleyin: ** \<**
+2. Maven **pom.xml** dosyanıza aşağıdaki bağımlılıkları ekleyin. Etiketinden önce aşağıdaki kod parçacığını ekleyin **\</project>** :
    
         <dependencies>
           <dependency>
@@ -52,7 +52,7 @@ Data Lake Storage 1. için Java SDK API belgelerine, [Azure Data Lake Storage 1.
           </dependency>
         </dependencies>
    
-    Birinci bağımlılık, Maven deposundan Data Lake Storage 1. SDK (`azure-data-lake-store-sdk`) kullanmaktır. İkinci bağımlılık, bu uygulama için hangi günlük altyapısının (`slf4j-nop`) kullanılacağını belirtmektir. Data Lake Storage 1. SDK, Log4J, Java günlüğü, Logback, vb. gibi birçok popüler günlük çerçevesi arasından seçim yapmanızı sağlayan [dolayısıyla slf4j](https://www.slf4j.org/) günlük façlade kullanır. Bu örnekte, günlük kaydını devre dışı bırakacak ve dolayısıyla **slf4j-nop** bağlamasını kullanacağız. Uygulamanızda diğer günlük seçeneklerini kullanmak için [buraya](https://www.slf4j.org/manual.html#projectDep) bakın.
+    Birinci bağımlılık, `azure-data-lake-store-sdk` Maven deposundan Data Lake Storage 1. SDK () kullanmaktır. İkinci bağımlılık, bu uygulama için hangi günlük altyapısının (`slf4j-nop`) kullanılacağını belirtmektir. Data Lake Storage 1. SDK, Log4J, Java günlüğü, Logback, vb. gibi birçok popüler günlük çerçevesi arasından seçim yapmanızı sağlayan [dolayısıyla slf4j](https://www.slf4j.org/) günlük façlade kullanır. Bu örnekte, günlük kaydını devre dışı bırakacak ve dolayısıyla **slf4j-nop** bağlamasını kullanacağız. Uygulamanızda diğer günlük seçeneklerini kullanmak için [buraya](https://www.slf4j.org/manual.html#projectDep) bakın.
 
 3. Aşağıdaki içeri aktarma deyimlerini uygulamanıza ekleyin.
 
@@ -200,7 +200,7 @@ Aşağıdaki kod parçacığı, bir Data Lake Storage 1. hesabındaki belirtilen
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 1. Bir IDE içinden çalıştırmak için **Çalıştır** düğmesini bulup basın. Maven’den çalıştırmak [exec: exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)’i kullanın.
-2. Komut satırından çalıştırabileceğiniz tek başına bir jar oluşturmak için jar’ı [Maven derleme eklentisini](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html) kullanarak dahil edilen tüm bağımlılıklarla birlikte derleyin. [GitHub 'daki örnek kaynak kodundaki](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) Pod. xml dosyası bir örnektir.
+2. Komut satırından çalıştırabileceğiniz tek başına bir jar oluşturmak için jar’ı [Maven derleme eklentisini](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html) kullanarak dahil edilen tüm bağımlılıklarla birlikte derleyin. [GitHub 'daki örnek kaynak kodundaki](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) pom.xml bir örnek vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Java SDK için JavaDoc’u keşfedin](https://azure.github.io/azure-data-lake-store-java/javadoc/)

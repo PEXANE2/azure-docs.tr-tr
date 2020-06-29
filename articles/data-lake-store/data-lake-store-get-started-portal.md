@@ -3,15 +3,15 @@ title: Azure Data Lake Storage 1.-Portal ile çalışmaya başlama
 description: Bir Data Lake Storage 1. hesabı oluşturmak ve hesapta temel işlemleri gerçekleştirmek için Azure portal kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686231"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509209"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 

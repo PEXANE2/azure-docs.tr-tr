@@ -8,6 +8,12 @@
       href: azure-portal-quickstart-center.md
     - name: Desteklenen tarayıcılar ve cihazlar
       href: azure-portal-supported-browsers-devices.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Portalda VM oluşturma
+      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - name: Pano oluşturma - ARM şablonu
+      href: quick-create-template.md
 - name: Kavramlar
   items:
     - name: Rol tabanlı erişim denetimi ile panoları paylaşma
