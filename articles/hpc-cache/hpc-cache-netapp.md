@@ -3,15 +3,15 @@ title: Azure HPC Cache ve Azure NetApp Files kullanın
 description: Azure NetApp Files ile depolanan verilere erişimi artırmak için Azure HPC Cache 'i kullanma
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6d4dd69b30acb26d02218fe05a60ace9aa855ddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 374f3106ec42233cd5309c2773b05e3c96bbf98e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194967"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515485"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Azure NetApp Files ile Azure HPC önbelleği kullanma
 
@@ -80,7 +80,7 @@ Ayrıca, Azure CLı ile IP adreslerini de bulabilirsiniz:
 az netappfiles volume list -g ${RESOURCE_GROUP} --account-name ${ANF_ACCOUNT} --pool-name ${POOL} --query "[].mountTargets[].ipAddress" | grep -Ee '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+' | tr -d '"' | tr -d , | sort | uniq
 ```
 
-Azure NetApp Files sistemdeki dışa aktarma adları tek bir yol bileşenine sahiptir. Azure NetApp Files içinde kök dışarı aktarma ``/`` için bir depolama hedefi oluşturmayı denemeyin çünkü bu dışarı aktarma dosya erişimi sağlamıyor.
+Azure NetApp Files sistemdeki dışa aktarma adları tek bir yol bileşenine sahiptir. Azure NetApp Files içinde kök dışarı aktarma için bir depolama hedefi oluşturmayı denemeyin ``/`` çünkü bu dışarı aktarma dosya erişimi sağlamıyor.
 
 Bu depolama hedefleri için sanal ad alanı yollarında özel kısıtlama yoktur.
 

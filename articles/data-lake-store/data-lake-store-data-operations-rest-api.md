@@ -8,15 +8,15 @@ manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 08c212f2a7986c93caa35d646e5fc3e9b71b4a6a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878792"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515613"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API kullanarak Azure Data Lake Storage 1. dosya sistemi işlemleri
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "60878792"
 Bu makalede, Azure Data Lake Storage 1. dosya sistemi işlemlerini gerçekleştirmek için Weblerrest API 'Lerini ve Data Lake Storage 1. REST API 'Lerini nasıl kullanacağınızı öğreneceksiniz. REST API kullanarak Data Lake Storage 1. hesap yönetimi işlemlerinin nasıl gerçekleştirileceği hakkında yönergeler için [REST API kullanarak Data Lake Storage 1. hesap yönetimi işlemleri](data-lake-store-get-started-rest-api.md)konusuna bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin.
 
@@ -46,7 +46,7 @@ Azure Active Directory'yi kullanarak kimlik doğrulaması gerçekleştirmek üze
 ## <a name="create-folders"></a>Klasör oluşturma
 Bu işlem, [burada](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory) tanımlanan WebHDFS REST API çağrısını temel alır.
 
-Aşağıdaki cURL komutunu kullanın. ** \<Yourstorename>** değerini Data Lake Storage 1. hesap adıyla değiştirin.
+Aşağıdaki cURL komutunu kullanın. **\<yourstorename>** Data Lake Storage 1. hesap adınızla değiştirin.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS'
 
@@ -59,7 +59,7 @@ Yukarıdaki komutta, \<`REDACTED`\> öğesini daha önce aldığınız yetkilend
 ## <a name="list-folders"></a>Klasörleri listeleme
 Bu işlem, [burada](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory) tanımlanan WebHDFS REST API çağrısını temel alır.
 
-Aşağıdaki cURL komutunu kullanın. ** \<Yourstorename>** değerini Data Lake Storage 1. hesap adıyla değiştirin.
+Aşağıdaki cURL komutunu kullanın. **\<yourstorename>** Data Lake Storage 1. hesap adınızla değiştirin.
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS'
 
@@ -87,7 +87,7 @@ Yukarıdaki komutta, \<`REDACTED`\> öğesini daha önce aldığınız yetkilend
 ## <a name="upload-data"></a>Karşıya veri yükleme
 Bu işlem, [burada](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File) tanımlanan WebHDFS REST API çağrısını temel alır.
 
-Aşağıdaki cURL komutunu kullanın. ** \<Yourstorename>** değerini Data Lake Storage 1. hesap adıyla değiştirin.
+Aşağıdaki cURL komutunu kullanın. **\<yourstorename>** Data Lake Storage 1. hesap adınızla değiştirin.
 
     curl -i -X PUT -L -T 'C:\temp\list.txt' -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/list.txt?op=CREATE'
 
@@ -114,7 +114,7 @@ Data Lake Storage 1. hesabından veri okuma iki adımlı bir işlemdir.
 * İlk olarak `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN` uç noktası için bir GET isteği gönderirsiniz. Bu çağrı, sonraki GET isteğini göndermek için bir konum döndürür.
 * Ardından `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true` uç noktası için GET isteğini gönderirsiniz. Bu çağrı, dosyanın içeriğini görüntüler.
 
-Ancak giriş parametrelerinde birinci ve ikinci adım arasında fark olmadığından, ilk isteği göndermek için `-L` parametresini kullanabilirsiniz. `-L` seçeneği, temelde iki isteği tek istekte birleştirir ve cURL'nin isteği yeni konumda yeniden gerçekleştirmesini sağlar. Son olarak, aşağıdaki kod parçacığında gösterildiği gibi, tüm istek çağrılarının çıktısı görüntülenir. ** \<Yourstorename>** değerini Data Lake Storage 1. hesap adıyla değiştirin.
+Ancak giriş parametrelerinde birinci ve ikinci adım arasında fark olmadığından, ilk isteği göndermek için `-L` parametresini kullanabilirsiniz. `-L` seçeneği, temelde iki isteği tek istekte birleştirir ve cURL'nin isteği yeni konumda yeniden gerçekleştirmesini sağlar. Son olarak, aşağıdaki kod parçacığında gösterildiği gibi, tüm istek çağrılarının çıktısı görüntülenir. **\<yourstorename>** Data Lake Storage 1. hesap adınızla değiştirin.
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
@@ -133,7 +133,7 @@ Aşağıdaki kod parçacığına benzer bir çıktı görmeniz gerekir:
 ## <a name="rename-a-file"></a>Dosyayı yeniden adlandırma
 Bu işlem, [burada](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory) tanımlanan WebHDFS REST API çağrısını temel alır.
 
-Bir dosyayı yeniden adlandırmak için aşağıdaki cURL komutunu kullanın. ** \<Yourstorename>** değerini Data Lake Storage 1. hesap adıyla değiştirin.
+Bir dosyayı yeniden adlandırmak için aşağıdaki cURL komutunu kullanın. **\<yourstorename>** Data Lake Storage 1. hesap adınızla değiştirin.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt'
 
@@ -147,7 +147,7 @@ Aşağıdaki kod parçacığına benzer bir çıktı görmeniz gerekir:
 ## <a name="delete-a-file"></a>Dosyayı silme
 Bu işlem, [burada](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory) tanımlanan WebHDFS REST API çağrısını temel alır.
 
-Bir dosyayı silmek için aşağıdaki cURL komutunu kullanın. ** \<Yourstorename>** değerini Data Lake Storage 1. hesap adıyla değiştirin.
+Bir dosyayı silmek için aşağıdaki cURL komutunu kullanın. **\<yourstorename>** Data Lake Storage 1. hesap adınızla değiştirin.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE'
 

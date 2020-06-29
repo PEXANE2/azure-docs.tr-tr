@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: dsindona
-ms.openlocfilehash: ee3ab7be4d15b13a3c0bb014a3ca4d4096299b4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4f21539979b54d9aba8dcc0e950b2d3f8bf2ea0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280397"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515425"
 ---
 <a name="private-skus-and-plans"></a>Özel SKU 'Lar ve planlar
 ============
@@ -98,11 +98,11 @@ API kullanıyorsanız ve bir CSV dosyası sürdürmek istemiyorsanız, aşağıd
 
 ###  <a name="managing-subscriptions-with-the-api"></a>API ile abonelikleri yönetme
 
-API 'yi kullanarak bir CSV 'yi karşıya yükleyebilir veya doğrudan kitlelerinizi yönetebilir (CSV kullanmadan). Genellikle teklifinizi almanız, `restrictedAudience` nesneyi güncelleştirmeniz ve ardından bu değişiklikleri, hedef kitle üyeleri eklemek veya kaldırmak için teklifinize geri göndermeniz yeterlidir.
+API 'yi kullanarak bir CSV 'yi karşıya yükleyebilir veya doğrudan kitlelerinizi yönetebilir (CSV kullanmadan). Genellikle teklifinizi almanız, nesneyi güncelleştirmeniz ve `restrictedAudience` ardından bu değişiklikleri, hedef kitle üyeleri eklemek veya kaldırmak için teklifinize geri göndermeniz yeterlidir.
 
 Hedef kitle listenizi programlı olarak güncelleştirme:
 
-1. [Teklif verilerinizi alın](cloud-partner-portal-api-retrieve-specific-offer.md) :
+1. [Teklif verilerinizi alın](../cloud-partner-portal-api-retrieve-specific-offer.md) :
 
     ```
     GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
@@ -126,7 +126,7 @@ Hedef kitle listenizi programlı olarak güncelleştirme:
 
     Her kısıtlanmış hedef kitle nesnesi için:
 
-    a. İçeriğini indirin `restrictedAudience.uploadedCsvUri`. İçerik yalnızca üst bilgileri olan bir CSV dosyasıdır. Örneğin:
+    a. İçeriğini indirin `restrictedAudience.uploadedCsvUri` . İçerik yalnızca üst bilgileri olan bir CSV dosyasıdır. Örneğin:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
@@ -136,7 +136,7 @@ Hedef kitle listenizi programlı olarak güncelleştirme:
 
     c. Güncelleştirilmiş CSV dosyasını [Azure Blob depolama](../../storage/blobs/storage-blobs-overview.md) veya [OneDrive](https://onedrive.live.com)gibi bir konuma yükleyin ve dosyanıza salt okunurdur bir bağlantı oluşturun. Bu, yeni bir *Sasurl*'niz olacaktır.
 
-    d. `restrictedAudience.uploadedCsvUri` Anahtarı yeni *sasurl*'niz ile güncelleştirin.
+    d. `restrictedAudience.uploadedCsvUri`Anahtarı yeni *sasurl*'niz ile güncelleştirin.
 
     **Bulut İş Ortağı Portalı özel teklifiniz için özgün Aboneliklerin listesini el ile girdiyseniz:**
 
@@ -156,9 +156,9 @@ Hedef kitle listenizi programlı olarak güncelleştirme:
         ]}
     ```
 
-    a. Kısıtlanmış her bir hedef kitle nesnesi için, `restrictedAudience.manualEntries` listedeki girdileri gerektiği şekilde ekleyin veya silin.
+    a. Kısıtlanmış her bir hedef kitle nesnesi için, listedeki girdileri gerektiği şekilde ekleyin veya silin `restrictedAudience.manualEntries` .
 
-4. Özel teklifinizin her SKU 'SU için tüm *Kısıttedaudıence* nesnelerinin güncelleştirilmesi bittiğinde [teklifi güncelleştirin](cloud-partner-portal-api-creating-offer.md):
+4. Özel teklifinizin her SKU 'SU için tüm *Kısıttedaudıence* nesnelerinin güncelleştirilmesi bittiğinde [teklifi güncelleştirin](../cloud-partner-portal-api-creating-offer.md):
 
     ```
     PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31

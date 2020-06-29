@@ -3,15 +3,15 @@ title: StorSimple 8000 serisi cihaz için uyarıları görüntüleyin ve yöneti
 description: StorSimple uyarı koşullarını ve önem derecesini, uyarı bildirimlerinin nasıl yapılandırılacağını ve bildirimleri yönetmek için StorSimple Aygıt Yöneticisi hizmetinin nasıl kullanılacağını açıklar.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 4956c511f67fc5929eef2e39797cbe93b5b1d73e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711944"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515511"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple uyarılarını görüntülemek ve yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -219,7 +219,12 @@ StorSimple üretim cihazınızda bulut bağlantısı başarısız olursa cihazı
 |:--- |:--- |:--- |
 | Destek paketi oluşturulamadı. |StorSimple, paketi oluşturamadı. |Bu işlemi yeniden deneyin. Sorun devam ederse, Microsoft Desteği başvurun. Sorunu çözdükten sonra, uyarılar sayfasından bu uyarıyı temizleyin. |
 
+### <a name="enclosure-environment-alerts"></a>Kasa ortamı uyarıları
+
+| Uyarı metni | Olay | Daha fazla bilgi/Önerilen Eylemler |
+|:--- |:--- |:--- |
+| Donanım bileşeni çevresel sıcaklık algılayıcısı durumu başarısız olarak bildiriyor.  | Kutu türü: Ana kutu | Bu uyarı, StorSimple etrafındaki ortam, kabul edilebilir bir aralığın üzerinde olduğunda tetiklenir. Veri merkezindeki AC çıkış akışından alınan sıcaklığın veya Airflow 'un çevresel akışını kontrol edin. Sıcaklık normal olarak döndüğünde, bir süre geçtikten sonra uyarı otomatik olarak temizlenir. Sorun devam ederse, Microsoft desteğine başvurun.   |
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [StorSimple hataları ve cihaz dağıtımı sorunlarını giderme](storsimple-8000-troubleshoot-deployment.md)hakkında daha fazla bilgi edinin.
-

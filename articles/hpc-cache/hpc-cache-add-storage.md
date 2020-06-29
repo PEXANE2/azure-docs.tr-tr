@@ -3,15 +3,15 @@ title: Azure HPC önbelleğine depolama ekleme
 description: Azure HPC önbelleğinizin, uzun süreli dosya depolaması için şirket içi NFS sisteminizi veya Azure Blob kapsayıcılarını kullanabilmesi için depolama hedeflerini tanımlama
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: 442c9897c5f02e9ed9cbcda96b6a540b9201f428
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 4c3ef79806d29b188eb2738919bf912cfedc8ef1
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434110"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513875"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -153,9 +153,9 @@ Bu tablo, kullanım modeli farklarını özetler:
 
 | Kullanım modeli | Önbelleğe alma modu | Arka uç doğrulaması | En fazla geri yazma gecikmesi |
 | ---- | ---- | ---- | ---- |
-| Yoğun, seyrek okunan yazma işlemleri | Okuma | Asla | Yok |
+| Yoğun, seyrek okunan yazma işlemleri | Okuma | Asla | Hiçbiri |
 | %15 yazma boyutundan büyük | Okuma/yazma | Asla | 1 saat |
-| İstemcileri önbelleği atlar | Okuma | 30 saniye | Yok |
+| İstemcileri önbelleği atlar | Okuma | 30 saniye | Hiçbiri |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

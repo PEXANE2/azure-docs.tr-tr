@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/26/2020
+ms.openlocfilehash: 3a2f7f8edfab635d1c59ce61b60b7c5b5311b283
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75977531"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513352"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB’de modeli fiyatlandırma 
 
@@ -28,16 +28,16 @@ Saniye başına [Istek birimi](request-units.md) (ru/s) olarak belirtilen sağla
 
 Daha fazla bilgi için [Azure Cosmos DB fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın ve [Azure Cosmos DB faturanızı](understand-your-bill.md)anlayın.
 
-Azure Cosmos DB fiyatlandırma modeli tüm API 'lerde tutarlıdır. Daha fazla bilgi edinmek için bkz. [Azure Cosmos DB fiyatlandırma modelinin müşteriler için uygun maliyetli olması](total-cost-ownership.md). SLA 'Ları sağlamak için bir veritabanında veya kapsayıcıda gereken en düşük aktarım hızı vardır ve her 100 RU/s için $6 ile sağlanan üretilen işi artırabilir veya azaltabilirsiniz.
+Azure Cosmos DB fiyatlandırma modeli tüm API 'lerde tutarlıdır. Daha fazla bilgi edinmek için bkz. [Azure Cosmos DB fiyatlandırma modelinin müşteriler için uygun maliyetli olması](total-cost-ownership.md). SLA 'Ları sağlamak için bir veritabanında veya kapsayıcıda gereken en düşük aktarım hızı vardır ve sağlanan aktarım hızını her 100 RU/sn için ~ $6 ile artırabilir veya azaltabilirsiniz.
 
-Şu anda hem veritabanı hem de kapsayıcı tabanlı aktarım hızı için en düşük fiyat değeri $24/ay olur (en son bilgiler için [Azure Cosmos DB fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. İş yükünüz birden çok kapsayıcı kullanıyorsa, veritabanı düzeyinde aktarım hızı veritabanı düzeyinde aktarım hızı kullanılarak maliyet için iyileştirilebilir, çünkü veritabanı düzeyi işleme kapsayıcılar arasındaki aktarım hızını paylaşan bir veritabanında herhangi bir kapsayıcı kullanmanıza izin verir. Aşağıdaki tablo, sağlanan aktarım hızını ve farklı varlıkların maliyetlerini özetler:
+Şu anda hem veritabanı hem de kapsayıcı tabanlı aktarım hızı için en düşük fiyat değeri ~ $24/ay olur (en son bilgiler için [Azure Cosmos DB fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) bakın. İş yükünüz birden çok kapsayıcı kullanıyorsa, veritabanı düzeyinde aktarım hızı veritabanı düzeyinde aktarım hızı kullanılarak maliyet için iyileştirilebilir, çünkü veritabanı düzeyi işleme kapsayıcılar arasındaki aktarım hızını paylaşan bir veritabanında herhangi bir kapsayıcı kullanmanıza izin verir. Aşağıdaki tablo, sağlanan aktarım hızını ve farklı varlıkların maliyetlerini özetler:
 
 |**Varlık**  | **Minimum verimlilik & maliyeti** |**Ölçek artışlarını & maliyeti** |**Sağlama kapsamı** |
 |---------|---------|---------|-------|
-|Veritabanı    | 400 RU/sn (24/ay)    | 100 RU/sn (6/ay)   |İşleme veritabanı için ayrılmıştır ve veritabanı içindeki kapsayıcılar tarafından paylaşılır |
-|Kapsayıcı     | 400 RU/sn (24/ay)    | 100 RU/sn (6/ay)  |Aktarım hızı belirli bir kapsayıcı için ayrılmıştır |
+|Veritabanı    | 400 RU/sn (~ $24/ay)    | 100 RU/sn (~ $6/ay)   |İşleme veritabanı için ayrılmıştır ve veritabanı içindeki kapsayıcılar tarafından paylaşılır |
+|Kapsayıcı     | 400 RU/sn (~ $24/ay)    | 100 RU/sn (~ $6/ay)  |Aktarım hızı belirli bir kapsayıcı için ayrılmıştır |
 
-Önceki tabloda gösterildiği gibi, Azure Cosmos DB ' deki en düşük aktarım hızı, $24/ay fiyatı üzerinden başlar. En düşük aktarım hızı ile başlayıp, üretim iş yüklerinizi desteklemek için zaman içinde ölçeği artırdıysanız, maliyetleriniz $6/ay artışlarla düzgün bir şekilde artar. Azure Cosmos DB fiyatlandırma modeli esnektir ve ölçeği büyütme veya küçültme sırasında fiyata yönelik yumuşak bir artış veya azalma vardır.
+Önceki tabloda gösterildiği gibi, Azure Cosmos DB en düşük aktarım hızı, yaklaşık $24/ay fiyatla başlar. En düşük aktarım hızı ile başlayıp, üretim iş yüklerinizi desteklemek için zaman içinde ölçeği artırdıysanız, maliyetleriniz, yaklaşık 6/ay artışlarla düzgün bir şekilde artacaktır. Azure Cosmos DB fiyatlandırma modeli esnektir ve ölçeği büyütme veya küçültme sırasında fiyata yönelik yumuşak bir artış veya azalma vardır.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB’yi ücretsiz deneyin 
 

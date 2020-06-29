@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648546"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515073"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile geliştirme
 
@@ -41,7 +41,7 @@ Hizmet sorumlusu oluşturmak yerine, Azure Resource Manager aracılığıyla Med
 
 Bir Azure AD uygulaması ve hizmet sorumlusu oluşturuyorsanız, uygulamanın kendi kiracısında olması gerekir. Uygulamayı oluşturduktan sonra, uygulamaya **katkıda** bulunan veya **sahip** rolü Media Services hesaba erişim izni verin.
 
-Azure AD uygulaması oluşturma izinlerinizin olup olmadığından emin değilseniz, bkz. [gerekli izinler](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+Azure AD uygulaması oluşturma izinlerinizin olup olmadığından emin değilseniz, bkz. [gerekli izinler](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 Aşağıdaki şekilde, sayılar isteklerin akışını kronolojik sırada temsil eder:
 
@@ -113,7 +113,7 @@ Uzun bir işlemin başarılı gönderimi sırasında, ' 202 kabul edildi ' ve d�
 
 Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
 
-## <a name="sdks"></a>SDK
+## <a name="sdks"></a>SDK’lar
 
 > [!NOTE]
 > Azure Media Services v3 SDK 'larının iş parçacığı açısından güvenli olduğu garanti edilmez. Çok iş parçacıklı bir uygulama geliştirirken, istemciyi korumak için kendi iş parçacığı eşitleme mantığınızı eklemeniz veya iş parçacığı başına yeni bir Azudüzeltici Istemci nesnesi kullanmanız gerekir. Ayrıca, kodunuzun istemciye (.NET 'teki bir HttpClient örneği gibi) sağlanan isteğe bağlı nesneler tarafından sunulan çoklu iş parçacığı oluşturma sorunlarından de dikkatli olmanız gerekir.
@@ -154,5 +154,5 @@ Gerekli tüm değerleri almak için bkz. [erişim Azure Media Services API 'si](
 
 * [Java ile Media Services bağlanma](configure-connect-java-howto.md)
 * [.NET ile Media Services bağlanma](configure-connect-dotnet-howto.md)
-* [Node. js ile Media Services bağlanma](configure-connect-nodejs-howto.md)
+* [Node.jsMedia Services bağlanma](configure-connect-nodejs-howto.md)
 * [Python ile Media Services bağlanma](configure-connect-python-howto.md)

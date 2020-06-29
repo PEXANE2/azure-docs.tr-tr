@@ -3,15 +3,15 @@ title: Stream Analytics Data Lake Storage 1.-Azure 'a veri akışı
 description: Verileri Azure Data Lake Storage 1. akışa almak için Azure Stream Analytics kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690976"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515176"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Azure Data Lake Storage 1. Azure Depolama Blobu veri akışı
 Bu makalede, Azure Data Lake Storage 1. bir Azure Stream Analytics iş için çıktı olarak nasıl kullanacağınızı öğreneceksiniz. Bu makalede, verileri bir Azure depolama blobundan (giriş) okuyan ve verileri Data Lake Storage 1. (çıktı) yazan basit bir senaryo gösterilmektedir.
@@ -58,7 +58,7 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
    * **Sınırlayıcı**için **sekme**' i seçin.
    * **Kodlama**için **UTF-8**' i seçin.
 
-     **Oluştur**' a tıklayın. Portal şimdi girişi ekler ve ona bağlantıyı sınar.
+     **Oluştur**'a tıklayın. Portal şimdi girişi ekler ve ona bağlantıyı sınar.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>İş için Data Lake Storage 1. çıktısı oluşturma
@@ -86,7 +86,7 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
    * **Sınırlayıcı**için **sekme**' i seçin.
    * **Kodlama**için **UTF-8**' i seçin.
     
-     **Oluştur**' a tıklayın. Portal şimdi çıktıyı ekler ve ona bağlantıyı sınar.
+     **Oluştur**'a tıklayın. Portal şimdi çıktıyı ekler ve ona bağlantıyı sınar.
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 
@@ -100,7 +100,7 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
 
     İşi başlatmak için **Başlat** ' a tıklayın. İşin başlatılması birkaç dakika sürebilir.
 
-3. İşi Blobun verileri seçmek üzere tetiklemek için, blob kapsayıcısına bir örnek veri dosyası kopyalayın. [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)örnek bir veri dosyası alabilirsiniz. Bu öğreticide **vehicle1_09142014. csv**dosyasını kopyalayalim. Blob kapsayıcısına veri yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemcileri kullanabilirsiniz.
+3. İşi Blobun verileri seçmek üzere tetiklemek için, blob kapsayıcısına bir örnek veri dosyası kopyalayın. [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)örnek bir veri dosyası alabilirsiniz. Bu öğreticide, **vehicle1_09142014.csv**dosyayı kopyalayalim. Blob kapsayıcısına veri yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemcileri kullanabilirsiniz.
 
 4. **Genel bakış** sekmesinde, **izleme**altında, verilerin nasıl işlendiği konusuna bakın.
 
@@ -110,7 +110,7 @@ Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluştura
 
     ![Çıkışı doğrulama](./media/data-lake-store-stream-analytics/run.query.4.png "Çıkışı doğrulama")
 
-    Veri Gezgini bölmesinde, çıktının Data Lake Storage 1. çıkış ayarları 'nda (`streamanalytics/job/output/{date}/{time}`) belirtilen bir klasör yoluna yazıldığını unutmayın.  
+    Veri Gezgini bölmesinde, çıktının Data Lake Storage 1. çıkış ayarları 'nda () belirtilen bir klasör yoluna yazıldığını unutmayın `streamanalytics/job/output/{date}/{time}` .  
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Data Lake Storage 1. kullanmak için bir HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md)

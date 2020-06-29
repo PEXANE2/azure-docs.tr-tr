@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/19/2019
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: bb7ffb06bb0cffeefae87ada665e2c123213186a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4fb623a77fc97fea1584451b73eef930c725f8a1
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218656"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517431"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Güvenlik Merkezi ile Azure Container Registry tümleştirme
 
@@ -27,7 +27,7 @@ Azure Güvenlik Merkezi 'nin standart katmanı kullanıyorsanız, kapsayıcı ka
 
 Kayıt defterinize her görüntü gönderildiğinde, güvenlik merkezi bu görüntüyü otomatik olarak tarar. Bir görüntünün taramasını tetiklemek için onu deponuza gönderin.
 
-Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra, ancak 48h 'ye kadar), bulgular aşağıdaki gibi güvenlik merkezi önerilerinde sunulmaktadır:
+Tarama tamamlandığında (genellikle yaklaşık 10 dakika sonra, ancak 40 dakika kadar sürebilir), bulgular aşağıdaki gibi güvenlik merkezi önerileri olarak kullanılabilir:
 
 [![Azure Container Registry (ACR) barındırılan görüntüde bulunan güvenlik açıkları hakkında örnek Azure Güvenlik Merkezi önerisi](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

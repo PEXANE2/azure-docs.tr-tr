@@ -3,15 +3,15 @@ title: .NET SDK-Data Lake Storage 1. dosya sistemi işlemleri-Azure
 description: Klasör oluşturma gibi Data Lake Storage 1. dosya sistemi işlemleri için Azure Data Lake Storage 1. .NET SDK 'yı kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690957"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515662"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>.NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemleri
 
@@ -41,7 +41,7 @@ Bu makalede, .NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemlerini
 
 1. Visual Studio 'da **Dosya** menüsünü, **Yeni**' yi ve ardından **Proje**' yi seçin.
 1. **Konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
-1. **Proje adı**alanına girin `CreateADLApplication`ve ardından **Oluştur**' u seçin.
+1. **Proje adı**alanına girin `CreateADLApplication` ve ardından **Oluştur**' u seçin.
 1. NuGet paketlerini projenize ekleyin.
 
    1. Çözüm Gezgini'nde proje adına sağ tıklayın ve **NuGet Paketlerini Yönet**'e tıklayın.
@@ -156,7 +156,7 @@ var directoryEntry = client.GetDirectoryEntry(fileName);
 PrintDirectoryEntry(directoryEntry);
 ```
 
-`PrintDirectoryEntry` Metodun tanımı, [GitHub 'daki](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)örneğin bir parçası olarak kullanılabilir.
+Metodun tanımı, `PrintDirectoryEntry` [GitHub 'daki](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)örneğin bir parçası olarak kullanılabilir.
 
 ## <a name="rename-a-file"></a>Dosyayı yeniden adlandırma
 
@@ -180,7 +180,7 @@ foreach (var entry in client.EnumerateDirectory("/Test"))
 }
 ```
 
-`PrintDirectoryEntry` Metodun tanımı, [GitHub 'daki](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)örneğin bir parçası olarak kullanılabilir.
+Metodun tanımı, `PrintDirectoryEntry` [GitHub 'daki](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)örneğin bir parçası olarak kullanılabilir.
 
 ## <a name="delete-directories-recursively"></a>Dizinleri yinelemeli olarak silme
 

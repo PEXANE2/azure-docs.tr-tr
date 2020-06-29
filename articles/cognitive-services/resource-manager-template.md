@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299492"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513533"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak bilişsel hizmetler kaynağı oluşturma
 
-Bir Azure Resource Manager (ARM) şablonu kullanarak bilişsel hizmetler kaynağı oluşturup dağıtmak için bu makaleyi kullanın. Bu çok hizmet kaynağı şunları yapmanızı sağlar:
+Bir Azure Resource Manager şablonu (ARM şablonu) kullanarak bilişsel hizmetler kaynağı oluşturup dağıtmak için bu makaleyi kullanın. Bu çok hizmet kaynağı şunları yapmanızı sağlar:
 * Birden çok Azure bilişsel hizmete tek bir anahtar ve uç nokta ile erişin.
 * Kullandığınız hizmetlerden faturalandırma yapın.
 
@@ -51,11 +51,11 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 2. Aşağıdaki değerleri girin.
     
-    |Değer  |Description  |
+    |Değer  |Açıklama  |
     |---------|---------|
     | **Abonelik** | Bir Azure aboneliği seçin. |
     | **Kaynak grubu** | **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın. |
-    | **Geli** | Bir bölge seçin.  Örneğin, **Doğu ABD** |
+    | **Bölge** | Bir bölge seçin.  Örneğin, **Doğu ABD** |
     | **Bilişsel hizmet adı** | Kaynağınız için benzersiz bir adla değiştirin. Dağıtımı doğruladığınızda, sonraki bölümde adı kullanmanız gerekir. |
     | **Konum** | Yukarıda kullanılan bölge ile değiştirin. |
     | **İsteyin** | Kaynağınızın [fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/cognitive-services/) . |

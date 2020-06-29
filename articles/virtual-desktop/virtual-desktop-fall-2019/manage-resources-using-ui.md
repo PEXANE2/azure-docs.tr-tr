@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 307fe6cd287d7a58435f745cd066be8308293267
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362117"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514239"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla bir Yönetim Aracı dağıtma
 
@@ -40,7 +40,7 @@ Yönetim aracını dağıtmadan önce, bir uygulama kaydı oluşturmak ve yönet
 
 - Azure Multi-Factor Authentication (MFA) devre dışı
 - Azure aboneliğinizde kaynak oluşturma izniniz var
-- Azure AD uygulaması oluşturma izniniz vardır. [Gerekli izinlere](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)sahip olan yönergeleri izleyerek, kullanıcılarınızın gerekli izinlere sahip olup olmadığını denetlemek için bu adımları izleyin.
+- Azure AD uygulaması oluşturma izniniz vardır. [Gerekli izinlere](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)sahip olan yönergeleri izleyerek, kullanıcılarınızın gerekli izinlere sahip olup olmadığını denetlemek için bu adımları izleyin.
 
 Yönetim aracını dağıttıktan ve yapılandırdıktan sonra, her şeyin çalıştığından emin olmak için kullanıcıdan yönetim kullanıcı arabirimini başlatması gerektiğini öneririz. Yönetim Kullanıcı arabirimini başlatan kullanıcının Windows sanal masaüstü kiracı 'sını görüntülemesine veya düzenlemesine izin veren bir rol ataması olmalıdır.
 

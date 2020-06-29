@@ -4,16 +4,16 @@ description: Azure Bloblarından veri aktarmak için Azure portal ' de dışarı
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8605fb3c43e625d86fd4d4008ddc49b0e29c8d44
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509483"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513495"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
@@ -155,7 +155,7 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
     Parametreler aşağıdaki tabloda açıklanmıştır:
 
-    |Komut satırı parametresi|Description|  
+    |Komut satırı parametresi|Açıklama|  
     |--------------------------|-----------------|  
     |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
     |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|  
@@ -209,15 +209,15 @@ Number of drives needed:        3
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Description |
+   | Seçici | Blob yolu | Açıklama |
    | --- | --- | --- |
    | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |
    | Ile başlar |/Book |Önek **defteriyle** başlayan herhangi bir kapsayıcıdaki tüm Blobları dışa aktarır |
    | Ile başlar |öğelerini |Kapsayıcı **müziindeki** tüm Blobları dışa aktarır |
    | Ile başlar |/Music/aşk |Ön ek **sevimle** başlayan **kapsayıcıdaki** tüm Blobları dışa aktarır |
-   | Eşittir |$root/logo.exe |Kök kapsayıcıda blob **logo. bmp** dışa aktarır |
-   | Eşittir |Videolar/öykü. mp4 |Kapsayıcı **videolarında** blob **öykü. mp4** dışa aktarır |
+   | Eşittir |$root/logo.bmp |Kök kapsayıcısında blob **logo.bmp** dışarı aktarır |
+   | Eşittir |Videolar/story.mp4 |Kapsayıcı **videolarında** blob **story.mp4** dışarı aktarır |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

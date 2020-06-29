@@ -3,15 +3,15 @@ title: Azure HPC önbelleği veri alma-paralel kopya betiği
 description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için paralel kopyalama betiği kullanma
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 90e05ad3d42b1009b631630fe476669a9f418d33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5db04b3ee89ab5a0a4f85f3b833ea513310dce18
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74166888"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514800"
 ---
 # <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC önbellek verileri alma-paralel kopyalama betiği yöntemi
 
@@ -21,7 +21,7 @@ Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha 
 
 ## <a name="create-the-parallelcp-script"></a>Parallelcp betiği oluşturma
 
-Aşağıdaki komut dosyası yürütülebilir dosyayı `parallelcp`ekleyecek. (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa ayrı olarak ' yi yüklemelisiniz ``parallel`` .)
+Aşağıdaki komut dosyası yürütülebilir dosyayı ekleyecek `parallelcp` . (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa ayrı olarak ' yi yüklemelisiniz ``parallel`` .)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -75,7 +75,7 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Paralel kopya örneği
 
-Bu örnekte, Azure HPC önbelleğinde kaynak dosyaları kullanarak ``glibc`` derlemek için paralel kopyalama betiği kullanılmaktadır.
+Bu örnekte, ``glibc`` Azure HPC önbelleğinde kaynak dosyaları kullanarak derlemek için paralel kopyalama betiği kullanılmaktadır.
 
 Kaynak dosyalar Azure HPC önbellek bağlama noktasında önbelleğe alınır ve nesne dosyaları yerel sabit sürücüde depolanır.
 

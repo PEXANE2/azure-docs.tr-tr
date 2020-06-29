@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: e3cdcd9e-33b1-424d-82aa-b369d934067e
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 26bf018d8823495c00b09af3a40b39315dadb31c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60581403"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513680"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Sanal dizinizdeki paylaşımları veya birimleri yedekleyin
 
@@ -108,7 +108,7 @@ Mevcut yedekleri görüntülemek için Azure portal aşağıdaki adımları ger�
    
      ![Yedeklemeleri filtrele](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. **Uygula**’ya tıklayın. Filtrelenen yedeklemeler listesi, **Yedekleme kataloğu** dikey penceresinde görüntülenir. Yalnızca belirli bir zamanda 100 yedekleme öğelerinin görüntülenebileceğini göz önünde bulundurarak.
+3. **Uygula**'ya tıklayın. Filtrelenen yedeklemeler listesi, **Yedekleme kataloğu** dikey penceresinde görüntülenir. Yalnızca belirli bir zamanda 100 yedekleme öğelerinin görüntülenebileceğini göz önünde bulundurarak.
    
     ![Yedekleme kataloğu güncelleştirildi](./media/storsimple-virtual-array-backup/viewbackups3.png)
 

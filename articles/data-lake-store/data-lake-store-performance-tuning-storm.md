@@ -3,15 +3,15 @@ title: Azure Data Lake Storage 1. ile performans ayarlama-fırtınası
 description: Azure Data Lake Storage 1. bir fırtınası kümesi için performans ayarlama yönergeleri hakkında bilgi edinin.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691636"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513792"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. için performans ayarlama Kılavuzu
 
@@ -126,8 +126,8 @@ Data Lake Storage 1. tarafından belirtilen bant genişliği sınırlarına ula�
 
 Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata ayıklama günlüğünü etkinleştirin:
 
-1. **Ambarı** > **fırtınası** > **Advanced storm-worker-log4j****Config** ** &lt;&gt; ** ** &lt;&gt;** yapılandırması Gelişmiş fırtınası-çalışan-Log4J ' de kök düzeyi = "info" öğesini root Level = "Debug" olarak değiştirin. >  Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
-2. Data Lake Storage 1. azaltma özel durumları için çalışan düğümlerdeki fırtınası topolojisi günlüklerini (&lt;/var/log/Storm/Worker-Artifacts/topologyıname&gt;&gt;/&lt;Port/Worker.log altında) izleyin.
+1. **Ambarı**  >  **fırtınası**  >  **yapılandırması**  >  **Gelişmiş fırtınası-çalışan-Log4J**' de ** &lt; kök düzeyi = "info" &gt; ** öğesini ** &lt; root Level = "Debug" &gt; **olarak değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
+2. Data Lake Storage 1. azaltma özel durumları için çalışan düğümlerdeki fırtınası topolojisi günlüklerini (/var/log/Storm/Worker-Artifacts/ &lt; topologyıname &gt; / &lt; Port &gt; /Worker.log altında) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bu blogda](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/), fırtınası için ek performans ayarlamaya başvurulabilir.

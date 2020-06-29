@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 1755d6808183887ca428f227272c3923d4bae21f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 3195fd9e367caed352cb4f9881573740399851e4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213864"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513547"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -39,7 +39,7 @@ Ticari Market için Azure uygulama teklifinizi hazırlarken aşağıdaki kaynakl
 * Hızlı Başlangıçlar:
 
     * [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
-    * [GitHub Azure hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates)
+    * [Azure şablonları en iyi yöntemler Kılavuzu](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Uygulama tanımını yayımlama](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Hizmet kataloğu uygulaması dağıtma](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
@@ -181,7 +181,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
 7. Özet
-8. Description
+8. Açıklama
 9. Ekran görüntüleri/videolar
 
 <br>Teklif bilgilerinin Azure portal nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
@@ -195,7 +195,7 @@ Teklif bilgilerinin Azure Marketi 'nde nasıl göründüğünü gösteren bir ö
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -207,7 +207,7 @@ Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıkla
 
 Teklifinizin en fazla 256 karakter uzunluğunda olması için daha uzun bir açıklama sağlayın. Bu açıklama, arama sonuçlarında kullanılabilir.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -426,10 +426,14 @@ Her planı herkese görünür olacak şekilde veya yalnızca seçtiğiniz belirl
 
 Planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür hale getirmek için **özel bir plan olan bu bir plandır** . Özel bir plan olarak yayımlandıktan sonra izleyiciyi güncelleştirebilir veya planı herkes için kullanılabilir hale getirebilirsiniz. Bir plan herkese görünür olarak yayımlandıktan sonra herkese görünür olmalıdır; özel bir plan olarak yeniden yapılandırılamaz.
 
+>[!Note]
+>Özel veya kısıtlanmış bir hedef kitle, **Önizleme** sekmesinde tanımladığınız önizleme izleyicilerinizden farklıdır. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan _önce_ teklifinizin erişimine açabilir. Özel hedef kitle seçimi yalnızca belirli bir plana uygulansa da, önizleme hedef kitlesi doğrulama amacıyla tüm planları (özel veya değil) görüntüleyebilir.
+
 Planı özel yaparsanız, bir **Azure abonelik kimlikleri** ve açıklamasını girin. Her biri, bu özel plana erişimi olacak olan bir hedef kitledir. Atanan her bir Azure abonelik KIMLIĞININ açıklamasını ekleme seçeneğiyle Azure abonelik kimlikleri kullanılarak erişim atanır. 10 adede kadar müşterinin abonelik kimliğini tek tek veya bir CSV dosyasını içeri aktararak 20.000 ekleyin. Azure abonelik kimlikleri, GUID 'Ler olarak temsil edilir ve harflerin küçük harf olması gerekir.
 
 >[!Note]
->Özel veya kısıtlanmış bir hedef kitle, **Önizleme** sekmesinde tanımladığınız önizleme izleyicilerinizden farklıdır. Bir önizleme hedef kitlesi, Market 'te canlı olarak yayımlanmadan _önce_ teklifinizin erişimine açabilir. Özel hedef kitle seçimi yalnızca belirli bir plana uygulansa da, önizleme hedef kitlesi doğrulama amacıyla tüm planları (özel veya değil) görüntüleyebilir.
+>Özel teklifler, bulut çözümü sağlayıcısı programı 'nın (CSP) satıcısı aracılığıyla oluşturulan Azure abonelikleri ile desteklenmez.
+
 
 ### <a name="technical-configuration"></a>Teknik yapılandırma 
 

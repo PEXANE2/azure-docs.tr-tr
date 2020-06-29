@@ -3,16 +3,16 @@ title: Azure dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (
 description: Azure dosyaları ile kullanılmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81273486"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515321"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Azure dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma
 Azure dosya paylaşımlarınızı, 445 numaralı bağlantı noktasını açmadan Azure dışından SMB 'ye bağlamak için Noktadan siteye (P2S) VPN bağlantısı kullanabilirsiniz. Noktadan siteye VPN bağlantısı, Azure ile tek bir istemci arasındaki VPN bağlantısıdır. Azure dosyaları ile P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Şirket içi ağınızdan Azure dosya paylaşımlarınızın bağlanması gereken çok sayıda istemciniz varsa, her istemci için Noktadan siteye bağlantı yerine siteden siteye (S2S) VPN bağlantısı kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure dosyaları ile kullanmak Için siteden sıteye VPN yapılandırma](storage-files-configure-s2s-vpn.md).
@@ -33,7 +33,7 @@ Azure dosya paylaşımınıza ve diğer Azure kaynaklarına Noktadan siteye VPN 
 
 Aşağıdaki PowerShell üç alt ağı olan bir Azure sanal ağı oluşturacak: bir depolama hesabınızın özel uç noktası için bir tane olmak üzere, bir depolama hesabının özel uç noktası için, bir tane, değişebilir depolama hesabının genel IP 'si için özel yönlendirme oluşturmadan ve VPN hizmetini sağlayan sanal ağ geçidiniz için bir tane olmak üzere, şirket içi depolama hesabına erişmek için gereklidir. 
 
-, Ve `<desired-vnet-name>` değerlerini `<region>`, `<resource-group>`ortamınız için uygun değerlerle değiştirmeyi unutmayın.
+`<region>`, `<resource-group>` Ve `<desired-vnet-name>` değerlerini, ortamınız için uygun değerlerle değiştirmeyi unutmayın.
 
 ```PowerShell
 $region = "<region>"
@@ -128,7 +128,7 @@ foreach($line in $rawRootCertificate) {
 ## <a name="deploy-virtual-network-gateway"></a>Sanal ağ geçidini dağıtma
 Azure sanal ağ geçidi, şirket içi Windows makinelerinizin bağlanacağı hizmettir. Bu hizmeti dağıtmak için iki temel bileşen gerekir: dünyanın her yerinden ve daha önce oluşturduğunuz bir kök sertifikaya ve istemcilerinizin kimliğini doğrulamak için kullanılacak olan ağ geçidini tanımlayacak genel bir IP.
 
-Bu kaynaklar için `<desired-vpn-name-here>` istediğiniz adla değiştirmeyi unutmayın.
+`<desired-vpn-name-here>`Bu kaynaklar için istediğiniz adla değiştirmeyi unutmayın.
 
 > [!Note]  
 > Azure sanal ağ geçidi dağıtımı en fazla 45 dakika sürebilir. Bu kaynak dağıtılırken, bu PowerShell betiği dağıtımın tamamlanmasını engelleyecek. Bu beklenen bir durumdur.
@@ -214,7 +214,7 @@ Export-PfxCertificate `
 ## <a name="configure-the-vpn-client"></a>VPN istemcisini yapılandırma
 Azure sanal ağ geçidi, şirket içi Windows makinenizde VPN bağlantısını başlatmak için gereken yapılandırma dosyaları içeren indirilebilir bir paket oluşturur. VPN bağlantısını, Windows 10/Windows Server 2016 + [' nın Always on VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) özelliğini kullanarak yapılandıracağız. Bu paket, istenirse, eski Windows VPN istemcisini yapılandıracak yürütülebilir paketleri de içerir. Bu kılavuz, her zaman VPN istemcisi, son kullanıcıların makine üzerinde yönetici izinlerine sahip olmadan Azure VPN 'ye bağlanmasına/bağlantıyı kesmeye izin verdiği için, eski Windows VPN istemcisi yerine her zaman VPN 'Yi kullanır. 
 
-Aşağıdaki betik, sanal ağ geçidine yönelik kimlik doğrulaması için gereken istemci sertifikasını yükler, indir ve VPN paketini yükler. Ve ' `<computer2>` nin `<computer1>` istenen bilgisayarlarla değiştirilmesini unutmayın. Bu betiği, `$sessions` diziye daha fazla PowerShell oturumu ekleyerek istediğiniz sayıda makine üzerinde çalıştırabilirsiniz. Kullanım hesabınız, bu makinelerin her birinde bir yönetici olmalıdır. Bu makinelerden biri içinden betiği çalıştırdığınız yerel makinedir, betiği yükseltilmiş bir PowerShell oturumundan çalıştırmanız gerekir. 
+Aşağıdaki betik, sanal ağ geçidine yönelik kimlik doğrulaması için gereken istemci sertifikasını yükler, indir ve VPN paketini yükler. `<computer1>`Ve ' nin `<computer2>` istenen bilgisayarlarla değiştirilmesini unutmayın. Bu betiği, diziye daha fazla PowerShell oturumu ekleyerek istediğiniz sayıda makine üzerinde çalıştırabilirsiniz `$sessions` . Kullanım hesabınız, bu makinelerin her birinde bir yönetici olmalıdır. Bu makinelerden biri içinden betiği çalıştırdığınız yerel makinedir, betiği yükseltilmiş bir PowerShell oturumundan çalıştırmanız gerekir. 
 
 ```PowerShell
 $sessions = [System.Management.Automation.Runspaces.PSSession[]]@()

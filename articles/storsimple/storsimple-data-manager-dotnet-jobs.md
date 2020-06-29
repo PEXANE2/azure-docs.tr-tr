@@ -3,15 +3,15 @@ title: Microsoft Azure StorSimple Veri Yöneticisi işleri için .NET SDK 'Yı k
 description: .NET SDK 'yı kullanarak StorSimple Veri Yöneticisi işleri başlatma hakkında bilgi edinin
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270735"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514904"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.NET SDK kullanarak veri dönüştürmeyi başlatma
 
@@ -43,8 +43,8 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 .NET kullanarak bir veri dönüştürme işi başlatmak için aşağıdaki adımları gerçekleştirin.
 
 1. Yapılandırma parametrelerini almak için aşağıdaki adımları uygulayın:
-    1. Konumundaki GitHub `Get-ConfigurationParams.ps1` depo betiği ' `C:\DataTransformation` nden indirin.
-    1. `Get-ConfigurationParams.ps1` Betiği GitHub deposundan çalıştırın. Aşağıdaki komutu yazın:
+    1. `Get-ConfigurationParams.ps1`Konumundaki GitHub depo betiği ' nden indirin `C:\DataTransformation` .
+    1. `Get-ConfigurationParams.ps1`Betiği GitHub deposundan çalıştırın. Aşağıdaki komutu yazın:
 
         ```
         C:\DataTransformation\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"

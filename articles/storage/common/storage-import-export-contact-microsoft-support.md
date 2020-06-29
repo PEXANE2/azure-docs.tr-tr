@@ -4,16 +4,16 @@ description: Içeri/dışarı aktarma işiniz ile ilgili sorunlar için destek i
 services: storsimple
 author: alkohli
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20ac33a26bfe24eb60e2febc1344859f4e54cdd4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67621048"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514426"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Içeri/dışarı aktarma işi için bir destek bileti açın
 
@@ -39,7 +39,7 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
             ![Depolama hesabı yönetimi seçin](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
         - **BLOB**' u seçerseniz **kaynak**, **kapsayıcı adları** (isteğe bağlı) ve **destek planı**' nı seçin.
             ![Blob seçin](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - **Dosya**' yı seçerseniz, **kaynak**, **dosya paylaşma adları** (isteğe bağlı) ve **destek planı** ![Dosya Seç ' i seçin.](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+        - **Dosya**' yı seçerseniz, **kaynak**, **dosya paylaşma adları** (Isteğe bağlı) ve **destek planı** ![ Dosya Seç ' i seçin.](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
     4. **İleri**’ye tıklayın.
 
 3. **Yeni destek isteği**' nde **Adım 2 sorunu**' nı seçin. **Sorun**' da, aşağıdaki adımları uygulayın:
@@ -59,7 +59,7 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
    1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
    2. Iletişim bilgilerinde adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet** onay kutusunu seçin.
-   3. **Oluştur**' a tıklayın.
+   3. **Oluştur**'a tıklayın.
    
        ![İletişim bilgileri](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 

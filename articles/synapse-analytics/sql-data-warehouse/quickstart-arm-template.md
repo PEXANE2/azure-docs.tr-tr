@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 766a41b61f32804c7d7f59c946530f8e1a7b869a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 3f84cd92a4c4f96831d39cac783df6710c5ea5f4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296279"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513415"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SYNAPSE Analytics SQL havuzu oluşturma
 
-Bu şablon, Saydam Veri Şifrelemesi etkinleştirilmiş bir Azure SYNAPSE Analytics SQL havuzu oluşturacak. SYNAPSE SQL havuzu, Azure SYNAPSE 'de genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder.
+Bu Azure Resource Manager şablonu (ARM şablonu), Saydam Veri Şifrelemesi etkin bir Azure SYNAPSE Analytics SQL havuzu oluşturacak. SYNAPSE SQL havuzu, Azure SYNAPSE 'de genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,8 +107,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir Azure SYNAPSE Analytics SQL havuzu oluşturdunuz ve dağıtımı doğruladı. Azure Azure SYNAPSE Analytics ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta, ARM şablonunu kullanarak bir Azure SYNAPSE Analytics SQL havuzu oluşturdunuz ve dağıtımı doğruladı. Azure SYNAPSE Analytics ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
 
 - [Azure SYNAPSE Analytics 'e genel bakış](sql-data-warehouse-overview-what-is.md) konusunu okuyun
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
-- [İlk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [İlk ARM şablonunuzu oluşturma ve dağıtma](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

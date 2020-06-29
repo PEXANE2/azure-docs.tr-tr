@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 11/12/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 7dcd2015a669d9640f4163e6decc96689bb4ca7b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167084"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517397"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Azure Machine Learning tasarımcı, makine öğrenimi modelleri oluşturmak içi
 
 Tasarımcı, şu gibi paylaşılan kaynakları düzenlemek için Azure Machine Learning [çalışma alanınızı](concept-workspace.md) kullanır:
 
-+ [Pipelines](#pipeline)
++ [İşlem hatları](#pipeline)
 + [Veri kümeleri](#datasets)
 + [İşlem kaynakları](#compute)
 + [Kayıtlı modeller](concept-azure-machine-learning-architecture.md#models)
@@ -81,7 +81,8 @@ Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Tasarı
 
 Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde, modülün parametreleri tuvalin sağındaki Özellikler bölmesinde görüntülenir  Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz. Tasarımcıda bireysel modüller için işlem kaynaklarını ayarlayabilirsiniz. 
 
-![Modül özellikleri](./media/concept-designer/properties.png)
+:::image type="content" source="./media/concept-designer/properties.png"alt-text="Modül özellikleri":::
+
 
 Kullanılabilir makine öğrenimi algoritmalarının kitaplığı üzerinden gezinerek bazı yardım için bkz. [algoritma & modül başvurusuna genel bakış](algorithm-module-reference/module-reference.md). Algoritma seçme konusunda yardım için [Azure Machine Learning algoritması oluşturma sayfasına](algorithm-cheat-sheet.md)bakın.
 

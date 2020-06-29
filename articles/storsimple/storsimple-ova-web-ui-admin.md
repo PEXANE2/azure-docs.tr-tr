@@ -9,22 +9,22 @@ editor: ''
 ms.assetid: ea65b4c7-a478-43e6-83df-1d9ea62916a6
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84699031"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513051"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>StorSimple Sanal dizinizi yönetmek için Web Kullanıcı arabirimini kullanma
 ![işlem akışını ayarla](./media/storsimple-ova-web-ui-admin/manage4.png)
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 Bu makaledeki öğreticiler, 2016 genel kullanılabilirlik (GA) sürümünü çalıştıran Microsoft Azure StorSimple Sanal dizisine (StorSimple on-şirket içi sanal cihaz olarak da bilinir) uygulanır. Bu makalede, StorSimple Sanal dizisinde gerçekleştirilebilecek karmaşık iş akışlarının ve yönetim görevlerinin bazıları açıklanmaktadır. StorSimple Sanal dizisini StorSimple Yöneticisi hizmet Kullanıcı arabirimini (Portal Kullanıcı arabirimi olarak adlandırılır) ve cihaz için yerel Web Kullanıcı arabirimini kullanarak yönetebilirsiniz. Bu makale, Web Kullanıcı arabirimini kullanarak gerçekleştirebileceğiniz görevlere odaklanır.
 
 Bu makale aşağıdaki öğreticileri içerir:

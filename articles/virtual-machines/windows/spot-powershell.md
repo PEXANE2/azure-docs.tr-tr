@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 321983fbe99d17dc78198feb195eed8ea26de569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f615ed5183142ca7684c7e705fa6a42bd3124d19
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100626"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514831"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>Azure PowerShell kullanarak spot VM 'Leri dağıtma
 
@@ -22,17 +22,18 @@ ms.locfileid: "82100626"
 
 Nokta VM 'Leri için fiyatlandırma, bölge ve SKU temel alınarak değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)için VM fiyatlandırması. En yüksek fiyatı ayarlama hakkında daha fazla bilgi için bkz. [spot VM 'ler-fiyatlandırma](spot-vms.md#pricing).
 
-VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Bir spot VM 'nin en yüksek fiyatı, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin, değer `0.98765`, saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak `-1`şekilde AYARLARSANıZ, VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır.
+VM için saat başına ödeme yapmak istediğiniz maksimum fiyatı ayarlama seçeneğiniz vardır. Bir spot VM 'nin en yüksek fiyatı, en fazla 5 ondalık basamak kullanılarak ABD Doları (USD) olarak ayarlanabilir. Örneğin, değer, `0.98765` saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , VM fiyata göre çıkarılmaz. Kapasite ve kota kullanılabilir olduğu sürece, sanal makine fiyatı, nokta için geçerli fiyat veya standart bir sanal makine fiyatı olacaktır.
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Yapılandırmayı oluşturmak için [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) kullanarak bir spotvm oluşturun. Dahil `-Priority Spot` et ve `-MaxPrice` ayarla:
+Yapılandırmayı oluşturmak için [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) kullanarak bir spotvm oluşturun. Dahil et `-Priority Spot` ve ayarla `-MaxPrice` :
 - `-1`Bu nedenle VM, fiyata göre çıkarılmaz.
-- en fazla 5 basamaklı bir dolar miktarı. Örneğin, bir `-MaxPrice .98765` spotvm 'nin fiyatı Saat başına $. 98765 ' e geçtiğinde VM 'nin serbest bırakılacak olması anlamına gelir.
+- en fazla 5 basamaklı bir dolar miktarı. Örneğin, `-MaxPrice .98765` bir spotVM 'nin fiyatı Saat başına $. 98765 ' e GEÇTIĞINDE VM 'nin serbest bırakılacak olması anlamına gelir.
 
 
-Bu örnek, fiyatlandırma temelinde serbest bırakılmayacak bir spotVM oluşturur (yalnızca Azure 'un kapasiteyi geri sağlaması gerektiğinde).
+Bu örnek, fiyatlandırma temelinde serbest bırakılmayacak bir spotVM oluşturur (yalnızca Azure 'un kapasiteyi geri sağlaması gerektiğinde). Çıkarma İlkesi VM 'yi serbest bırakmak üzere ayarlanır, böylece daha sonra yeniden başlatılabilir. VM çıkartılan sanal makineyi ve temel diski silmek istiyorsanız, `-EvictionPolicy` içinde olarak ayarlanır `Delete` `New-AzVMConfig` .
+
 
 ```azurepowershell-interactive
 $resourceGroup = "mySpotRG"
@@ -57,7 +58,7 @@ $nic = New-AzNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Loc
 
 # Create a virtual machine configuration and set this to be a Spot VM
 
-$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 -Priority "Spot" -MaxPrice -1| `
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 -Priority "Spot" -MaxPrice -1 -EvictionPolicy Deallocate | `
 Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
 Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
 Add-AzVMNetworkInterface -Id $nic.Id
@@ -74,6 +75,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure CLI](../linux/spot-cli.md) veya [şablon](../linux/spot-template.md)kullanarak bir spot VM de oluşturabilirsiniz.
+Ayrıca [Azure CLI](../linux/spot-cli.md), [Portal](spot-portal.md) veya [şablon](../linux/spot-template.md)kullanarak bir spot VM oluşturabilirsiniz.
 
 Bir hatayla karşılaşırsanız bkz. [hata kodları](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

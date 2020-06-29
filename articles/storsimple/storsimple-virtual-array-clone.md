@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60580937"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513631"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Sanal dizininizin bir yedeklemesinden kopyalayın
 
@@ -124,7 +124,7 @@ Her paylaşımda en son yedeklemeleri içeren bir *. Backups* klasörü bulunur.
    
    Son beş yedek bu şekilde görüntülenir ve öğe düzeyinde kurtarma gerçekleştirmek için kullanılabilir. Son kullanılan beş yedek, hem varsayılan zamanlanmış hem de el ile yedeklemeler içerir.
    
-   * Cihaz adı &lt;&gt;olarak ADLANDıRıLAN **Zamanlanmış yedeklemeler** -YYYYMMDD-ssmmss-UTC.
+   * Cihaz adı olarak adlandırılan **Zamanlanmış yedeklemeler** - &lt; &gt; YYYYMMDD-SSMMSS-UTC.
    * Ad-hoc-YYYYMMDD-HHMMSS-UTC olarak adlandırılan **el ile yedeklemeler** .
      
      ![](./media/storsimple-virtual-array-clone/image14.png)

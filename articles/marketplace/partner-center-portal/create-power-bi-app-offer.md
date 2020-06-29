@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6ddf3db422a192b82b8d67e8e532a9ae0030d6f7
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0a247626566a4b0156d879954bf6734d248f01d8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212538"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513517"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Microsoft AppSource için Power BI uygulaması oluşturma
 
@@ -111,7 +111,7 @@ En az bir ve en fazla üç kategori seçin. Bu kategoriler, teklifinizi uygun Ma
 | Dağıtım | * Toptan<br>Paket ve paket gönderimi |
 | Eğitim | *Daha yüksek <br> eğitim* Birincil ve Ikincil Eğitim/K-12<br>* Kitaplıklar ve Museums |
 | Finansal Hizmetler | *Bankacılık ve sermaye pazarlar <br> * Eleri |
-| Kamu | *Savunma ve zeka (Ulusal ve genel güvenlik olarak adlandırılır) <br> * Genel güvenlik ve adalet<br>* Cıvilian kamu |
+| Devlet | *Savunma ve zeka (Ulusal ve genel güvenlik olarak adlandırılır) <br> * Genel güvenlik ve adalet<br>* Cıvilian kamu |
 | Sağlık (sistem durumu olarak adlandırılabilecek şekilde kullanılır) | *Sistem durumu ödemi veya <br> * Sistem durumu sağlayıcısı<br>* İlaç |
 | Üretim ve kaynaklar (üretim olarak adlandırılabilmesi için kullanılır) | *Kimyasal ve Agrokimyasal <br> * Ayrık üretim<br>* Enerji |
 | Perakende ve tüketici malları (perakende olarak adlandırılabilmesi için kullanılır) | *Tüketici malları <br> * Tercih |
@@ -160,10 +160,10 @@ Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir �
 7. Gizlilik ilkesi
 8. Teklif adı
 9. Özet
-10. Description
+10. Açıklama
 11. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Name
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -177,7 +177,7 @@ Ad:
 
 Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -270,4 +270,4 @@ Portalın sağ üst köşesinde, **gözden geçir ve Yayımla**' yı seçin.
 
 Teklifi yayımlamaya göndermek için **Yayımla**' yı seçin.
 
-Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz. Teklifinizi herkese (veya özel bir teklif, özel bir hedef kitleye) yayımlamak için Iş Ortağı Merkezi ' ne gidin ve **Git-Live**' ı seçin.
+Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz. Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live**' ı seçin.

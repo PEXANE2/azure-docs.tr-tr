@@ -3,18 +3,18 @@ title: Azure depolama 'yı izleme, tanılama ve sorun giderme | Microsoft Docs
 description: Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve sorunlarını gidermek için depolama analizi, istemci tarafı günlüğü ve diğer üçüncü taraf araçları gibi özellikleri kullanın.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684666"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513390"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -507,7 +507,7 @@ SAS belirteçleri oluşturmak için Depolama İstemcisi Kitaplığı’nı kulla
 
 Depolama Istemci kitaplığı tarafından oluşturulan aşağıdaki istemci tarafı günlüğü, istemci oluşturduğu blob için kapsayıcıyı bulamadığında sorun olduğunu gösterir. Bu günlük aşağıdaki depolama işlemlerinin ayrıntılarını içerir:
 
-| İstek Kimliği | İşlem |
+| İstek Kimliği | Çalışma |
 | --- | --- |
 | 07b26a5d-... |Blob kapsayıcısını silmek için **Deleteifexists** yöntemi. Bu işlemin kapsayıcının varlığını denetlemek için bir **Head** isteği içerdiğine unutmayın. |
 | e2d06d78... |Blob kapsayıcısını oluşturmak için **Createifnotexists** yöntemi. Bu işlemin kapsayıcının varlığını denetleyen bir **baş** isteği içerdiğine unutmayın. **Baş** bir 404 iletisi döndürür, ancak devam eder. |
@@ -535,7 +535,7 @@ Günlük girişleri:
 | e2d06d78-... |StringToSign = HEAD............ x-MS-Client-Request-id: e2d06d78-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. ResType: Container. |
 | e2d06d78-... |Yanıt bekleniyor. |
 | de8b1c3c-... |İçin zaman uyumlu istek başlatılıyor `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` . |
-| de8b1c3c-... |StringToSign = PUT... 64. qCmF + Tsqlphq/YYK50mP9ZQ = =........ x-MS-blob-türü: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
+| de8b1c3c-... |StringToSign = PUT... 64. qCmF + Tsqlphq/YYK50mP9ZQ = =........ x-MS-blob-türü: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: Tue, 03 Haz 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |İstek verileri yazma hazırlığı yapılıyor. |
 | e2d06d78-... |Yanıt beklenirken özel durum oluştu: uzak sunucu bir hata döndürdü: (404) bulunamadı.. |
 | e2d06d78-... |Yanıt alındı. Durum kodu = 404, Istek KIMLIĞI = 353ae3bc-..., Content-MD5 =, ETag =. |
@@ -628,7 +628,7 @@ Bu sorun sık sık oluşuyorsa, istemcinin tablo hizmetinden alınan bildirimler
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>İstemci HTTP 409 (Çakışma) iletileri alıyor
 Aşağıdaki tabloda iki istemci işlemi için sunucu tarafı günlüğünden ayıklama gösterilmektedir: **Deleteifexists** , aynı blob kapsayıcısı adı kullanılarak **Createifnotexists** tarafından hemen izlenir. Her istemci işlemi, sunucuya iki istekle gönderilir, ilk olarak bir **Getcontainerproperties** , kapsayıcının var olup olmadığını kontrol etmek için, ardından **DeleteContainer** veya **CreateContainer** isteği ile sonuçlanır.
 
-| Zaman damgası | İşlem | Sonuç | Kapsayıcı adı | İstemci istek kimliği |
+| Zaman damgası | Çalışma | Sonuç | Kapsayıcı adı | İstemci istek kimliği |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |

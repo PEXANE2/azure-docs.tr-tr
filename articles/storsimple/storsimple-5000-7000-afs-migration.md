@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d656fd8757580b8ce96acf168e92fc847d400ca
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65150747"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514063"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>StorSimple 5000-7000 serilerinden verileri Azure Dosya Eşitleme 'e geçirme
 
@@ -74,7 +74,7 @@ StorSimple birimlerinde yapılandırılmış Windows dosya paylaşımının Azur
     - [Depolama eşitleme hizmeti 'Ni dağıtın](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
     - [Windows Server 'ı depolama eşitleme hizmeti Ile kaydedin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
     - [Bir eşitleme grubu ve bir bulut uç noktası oluşturun](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). Konaktan geçirilmesi gereken her Windows dosya paylaşımında eşitleme gruplarının yapılması gerekir.
-    - [Sunucu uç noktası oluşturun](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Dosya paylaşma verilerinizi içeren StorSimple biriminin yolu olarak yolunu belirtin. Örneğin, StorSimple birimi sürücü `J`ise ve verileriniz ' de `J:/<myafsshare>`yer alıyorsa, bu yolu sunucu uç noktası olarak ekleyin. **Katmanlamayı** **devre dışı**olarak bırakın.
+    - [Sunucu uç noktası oluşturun](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Dosya paylaşma verilerinizi içeren StorSimple biriminin yolu olarak yolunu belirtin. Örneğin, StorSimple birimi sürücü ise ve verileriniz ' de yer alıyorsa, `J` `J:/<myafsshare>` Bu yolu sunucu uç noktası olarak ekleyin. **Katmanlamayı** **devre dışı**olarak bırakın.
 2.  Dosya sunucusu eşitlemesi tamamlanana kadar bekleyin. Belirli bir eşitleme grubundaki her bir sunucu için şunları yaptığınızdan emin olun:
     - Hem karşıya yükleme hem de indirme için denenen son eşitlemeye ilişkin zaman damgaları son tarih.
     - Durum hem karşıya yükleme hem de indirme için yeşil olur.

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9129eb905bbdc7d9be24f403f3b3bf318d6d6a6f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 088639674a3f3a15d33f73fd6f602b3cf1313a65
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211383"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512649"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modülü teklifi oluşturma, yapılandırma ve yayımlama
 
@@ -126,7 +126,7 @@ Burada, Market 'te görüntülenen teklif ayrıntılarını tanımlayacaksınız
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] bölümünde kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -144,7 +144,7 @@ Teklifinizin kısa bir açıklamasını sağlayın. Bu, 100 karakter uzunluğund
 
 Teklifinizin daha ayrıntılı bir açıklamasını sağlayın. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -224,9 +224,9 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 3. Destek adresi (bağlantı)
 4. hüküm ve koşullar
 5. Gizlilik ilkesi adresi (bağlantı)
-6. Name
+6. Adı
 7. Özet
-8. Description
+8. Açıklama
 9. Yararlı bağlantılar
 10. Ekran görüntüleri/videolar
 
@@ -246,8 +246,8 @@ Azure Marketi 'nde teklif bilgilerinin nasıl göründüğünü gösteren bir ö
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
 
-1. Name
-2. Description
+1. Adı
+2. Açıklama
 3. Yararlı bağlantılar
 4. Ekran görüntüleri
 
@@ -276,9 +276,6 @@ Azure abonelik KIMLIĞI GUID 'Lerini kullanarak önizleme Dinleyicilerinizi, her
 > Azure abonelik KIMLIĞINIZI Azure portal abonelikler sayfasında bulabilirsiniz.
 
 Tek tek (10 ' a kadar) veya bir CSV dosyası karşıya yükleyerek (100 'e kadar) en az bir Azure abonelik KIMLIĞI ekleyin. Bu abonelik kimliklerini ekleyerek teklifinizin canlı olarak yayınlanmadan önce ne kadar önizleyebilir tanımlar. Teklifiniz zaten canlı ise, teklifinizdeki değişiklikleri veya güncelleştirmeleri test etmek için bir önizleme izleyiciyi tanımlayabilirsiniz.
-
-> [!NOTE]
-> Önizleme hedef kitlesi, özel bir hedef kitleye göre farklılık gösterir. Bir **Önizleme** hedef kitlesi, yalnızca **özel** bir hedef kitleye yayımlanmaları (kullanılabilirlik sekmesinde ayarlanır) dahil olmak üzere Market 'te canlı olmadan önce tüm teklif planlarını görebilir ve doğrulayabilirler.
 
 Sonraki bölüme geçmeden önce **Taslağı kaydet** ' i seçin, plana genel bakış ' a tıklayın.
 
@@ -479,7 +476,7 @@ Portalın sağ üst köşesinde, **gözden geçir ve Yayımla**' yı seçin.
 
 Teklifi yayımlamaya göndermek için **Yayımla**' yı seçin.
 
-Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz. Teklifinizi herkese (veya özel bir teklif, özel bir hedef kitleye) yayımlamak için Iş Ortağı Merkezi ' ne gidin ve **Git-Live**' ı seçin.
+Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz. Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

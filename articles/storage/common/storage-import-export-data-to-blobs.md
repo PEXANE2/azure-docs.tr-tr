@@ -4,16 +4,16 @@ description: Azure Bloblarına ve Azure Blob 'larına veri aktarmak için Azure 
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 570c663861361a19190f6fb5d608b6aa029a0885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282503"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514219"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Blob depolama alanına veri aktarmak için Azure Içeri/dışarı aktarma hizmetini kullanma
 
@@ -33,11 +33,11 @@ Verileri Azure Blob depolamaya aktarmak üzere bir içeri aktarma işi oluşturm
 * Windows sisteminde BitLocker 'ı etkinleştirin. Bkz. [BitLocker 'ı etkinleştirme](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 * Windows sisteminde [en son Waımportexport sürüm 1 ' i indirin](https://www.microsoft.com/download/details.aspx?id=42659) . Aracının en son sürümünde, BitLocker anahtarı ve güncelleştirilmiş kilit açma modu özelliği için bir dış koruyucunun kullanılmasına izin veren güvenlik güncelleştirmeleri vardır.
 
-  * Varsayılan klasöre `waimportexportv1`ayıklayın. Örneğin, `C:\WaImportExportV1`.
-* FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, ' de `adbops@microsoft.com`Azure Data Box işlemler ekibine başvurun.  
+  * Varsayılan klasöre ayıklayın `waimportexportv1` . Örneğin, `C:\WaImportExportV1`.
+* FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, ' de Azure Data Box Işlemler ekibine başvurun `adbops@microsoft.com` .  
   * Hesap geçerli olmalıdır, bakiyesi olmalıdır ve dönüş teslim özelliklerine sahip olmalıdır.
   * Dışarı aktarma işi için bir izleme numarası oluştur.
-  * Her işin ayrı bir izleme numarası olmalıdır. Aynı izleme numarasına sahip birden çok iş desteklenmez.
+  * Her iş ayrı bir izleme numarasına sahip olmalıdır. Aynı izleme numarasına birden fazla işin eklenmesi desteklenmez.
   * Bir taşıyıcı hesabınız yoksa şuraya gidin:
     * [FedEX hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
     * [BIR DHL hesabı oluşturun](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -73,7 +73,7 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
-    Bir günlük dosyası, aracı çalıştırdığınız klasörde oluşturulur. Diğer iki dosya da oluşturulur *. bir. xml* dosyası (aracı çalıştırdığınız klasör) ve bir *Drive-manifest. xml* dosyası (verilerin bulunduğu klasör).
+    Bir günlük dosyası, aracı çalıştırdığınız klasörde oluşturulur. Diğer iki dosya da oluşturulur *. bir. xml* dosyası (aracı çalıştırdığınız klasör) ve bir *drive-manifest.xml* dosyası (verilerin bulunduğu klasör).
 
     Kullanılan parametreler aşağıdaki tabloda açıklanmıştır:
 
@@ -81,23 +81,23 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
     |---------|---------|
     |/j     |. Jrn uzantılı günlük dosyasının adı. Her sürücü için bir günlük dosyası oluşturulur. Günlük dosyası adı olarak disk seri numarasını kullanmanızı öneririz.         |
     |/id     |Oturum KIMLIĞI. Komutun her örneği için benzersiz bir oturum numarası kullanın.      |
-    |/t:     |Sevk edilecek diskin sürücü harfi. Örneğin, sürücü `D`.         |
+    |/t:     |Sevk edilecek diskin sürücü harfi. Örneğin, sürücü `D` .         |
     |/BK:     |Sürücünün BitLocker anahtarı. Çıktısından alınan sayısal parola`manage-bde -protectors -get D:`      |
-    |/srcdir:     |Sevk edilecek diskin sürücü harfi ve ardından `:\`. Örneğin, `D:\`.         |
+    |/srcdir:     |Sevk edilecek diskin sürücü harfi ve ardından `:\` . Örneğin, `D:\`.         |
     |/dstdir:     |Azure depolama 'daki Hedef kapsayıcının adı.         |
-    |/blobtype:     |Bu seçenek, verileri içe aktarmak istediğiniz Blobların türünü belirtir. Blok Blobları için bu `BlockBlob` ve sayfa Blobları için olduğu gibi. `PageBlob`         |
+    |/blobtype:     |Bu seçenek, verileri içe aktarmak istediğiniz Blobların türünü belirtir. Blok Blobları için bu `BlockBlob` ve sayfa Blobları için olduğu gibi `PageBlob` .         |
     |/skipwrite:     |Kopyalamak için gereken yeni verilerin olmadığını ve diskteki mevcut verilerin hazırlandığını belirten seçenek.          |
-    |/enablecontentmd5:     |Etkinleştirildiğinde, MD5 'nin hesaplanmasını ve her Blobun için özellik olarak `Content-md5` ayarlandığını sağlar. Bu seçeneği yalnızca, `Content-md5` verileri Azure 'a yükledikten sonra kullanmak istiyorsanız kullanın. <br> Bu seçenek, veri bütünlüğü denetimini etkilemez (varsayılan olarak gerçekleşir). Ayar, buluta veri yükleme süresini artırır.          |
+    |/enablecontentmd5:     |Etkinleştirildiğinde, MD5 'nin hesaplanmasını ve `Content-md5` her Blobun için özellik olarak ayarlandığını sağlar. Bu seçeneği yalnızca, `Content-md5` verileri Azure 'a yükledikten sonra kullanmak istiyorsanız kullanın. <br> Bu seçenek, veri bütünlüğü denetimini etkilemez (varsayılan olarak gerçekleşir). Ayar, buluta veri yükleme süresini artırır.          |
 8. Yüklenmesi gereken her disk için önceki adımı tekrarlayın. Komut satırının her çalışması için, belirtilen ada sahip bir günlük dosyası oluşturulur.
 
     > [!IMPORTANT]
-    > * Günlük dosyası ile birlikte, aracın bulunduğu `<Journal file name>_DriveInfo_<Drive serial ID>.xml` klasörde de bir dosya oluşturulur. . Xml dosyası, günlük dosyasının çok büyük olması halinde bir iş oluşturulurken günlük dosyası yerine kullanılır.
+    > * Günlük dosyası ile birlikte, `<Journal file name>_DriveInfo_<Drive serial ID>.xml` aracın bulunduğu klasörde de bir dosya oluşturulur. . Xml dosyası, günlük dosyasının çok büyük olması halinde bir iş oluşturulurken günlük dosyası yerine kullanılır.
 
 ## <a name="step-2-create-an-import-job"></a>2. Adım: içeri aktarma işi oluşturma
 
 Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
 
-1. Oturum açın https://portal.azure.com/.
+1. Oturum açın https://portal.azure.com/ .
 2. **Tüm hizmetlere > depolama > içeri/dışarı aktarma işlerine**gidin.
 
     ![Içeri/dışarı aktarma işlerine git](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
@@ -119,7 +119,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
 5. **İş için Ayrıntılar**:
 
-   * Sürücü Hazırlama adımı sırasında elde ettiğiniz sürücü günlüğü dosyalarını karşıya yükleyin. `waimportexport.exe version1` Kullanıldıysa, hazırladığınız her sürücü için bir dosyayı karşıya yükleyin. Günlük dosyası boyutu 2 MB 'yi aşarsa, günlük dosyası ile oluşturulan öğesini `<Journal file name>_DriveInfo_<Drive serial ID>.xml` de kullanabilirsiniz.
+   * Sürücü Hazırlama adımı sırasında elde ettiğiniz sürücü günlüğü dosyalarını karşıya yükleyin. `waimportexport.exe version1`Kullanıldıysa, hazırladığınız her sürücü için bir dosyayı karşıya yükleyin. Günlük dosyası boyutu 2 MB 'yi aşarsa, `<Journal file name>_DriveInfo_<Drive serial ID>.xml` günlük dosyası ile oluşturulan öğesini de kullanabilirsiniz.
    * Verilerin bulunacağı hedef depolama hesabını seçin.
    * Açılan konum, seçilen depolama hesabı bölgesine göre otomatik olarak doldurulur.
 
@@ -127,7 +127,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
 6. **İade gönderimi bilgileri**:
 
-   * Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. Kullanmayı planladığınız taşıyıcı ile ilgili `adbops@microsoft.com` bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
+   * Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. `adbops@microsoft.com`Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
    * Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft, içeri aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için bu hesabı kullanır. Hesap numaranız yoksa bir [FedEx](https://www.fedex.com/us/oadr/) veya [DHL](https://www.dhl.com/) taşıyıcı hesabı oluşturun.
    * Tümü ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, posta, Eyalet/bölge ve ülke/bölge sağlayın.
 

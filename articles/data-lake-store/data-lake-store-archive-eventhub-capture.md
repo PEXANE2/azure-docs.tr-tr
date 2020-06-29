@@ -3,15 +3,15 @@ title: Event Hubs verileri Azure Data Lake Storage 1. olarak yakala
 description: Azure Event Hubs tarafından alınan verileri yakalamak için Azure Data Lake Storage 1. kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 5cbcdc5cb9713432be5b52898d956506d80d6ea0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690679"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515756"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Event Hubs verileri yakalamak için Azure Data Lake Storage 1. kullanma
 
@@ -44,7 +44,7 @@ Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör olu
 
     ![Data Lake Storage 1. kök için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Data Lake Storage 1. kök için izin atama")
 
-    b. **Erişim**altında, **Ekle**' ye tıklayın, **Kullanıcı veya Grup Seç**' e tıklayın ve `Microsoft.EventHubs`ardından arama yapın. 
+    b. **Erişim**altında, **Ekle**' ye tıklayın, **Kullanıcı veya Grup Seç**' e tıklayın ve ardından arama yapın `Microsoft.EventHubs` . 
 
     ![Data Lake Storage 1. kök için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage 1. kök için izin atama")
     
@@ -53,7 +53,7 @@ Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör olu
     c. **Izinleri ata**altında, **izinleri seç**' e tıklayın. Yürütülecek **izinleri** ayarlayın **Execute**. **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. **Bir erişim izni girişi ve varsayılan izin girdisi** **olarak ekle** ' ye ayarlayın.
 
     > [!IMPORTANT]
-    > Azure Event Hubs tarafından alınan verileri yakalamaya yönelik yeni bir klasör hiyerarşisi oluştururken, bu hedef klasöre erişim sağlamanın kolay bir yoludur.  Ancak, üst düzey bir klasörün tüm alt öğelerine çok sayıda alt dosya ve klasör içeren izinler eklemek uzun sürebilir.  Kök klasörünüz çok sayıda dosya ve klasör içeriyorsa, son hedef klasörünüzün yolundaki her bir klasöre `Microsoft.EventHubs` ayrı ayrı **yürütme** izinleri eklemek daha hızlı olabilir. 
+    > Azure Event Hubs tarafından alınan verileri yakalamaya yönelik yeni bir klasör hiyerarşisi oluştururken, bu hedef klasöre erişim sağlamanın kolay bir yoludur.  Ancak, üst düzey bir klasörün tüm alt öğelerine çok sayıda alt dosya ve klasör içeren izinler eklemek uzun sürebilir.  Kök klasörünüz çok sayıda dosya ve klasör içeriyorsa, **Execute** `Microsoft.EventHubs` son hedef klasörünüzün yolundaki her bir klasöre ayrı ayrı yürütme izinleri eklemek daha hızlı olabilir. 
 
     ![Data Lake Storage 1. kök için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Storage 1. kök için izin atama")
 
@@ -65,7 +65,7 @@ Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör olu
 
     ![Data Lake Storage 1. klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Data Lake Storage 1. klasörü için izin atama")
 
-    b. **Erişim**altında, **Ekle**' ye tıklayın, **Kullanıcı veya Grup Seç**' e tıklayın ve `Microsoft.EventHubs`ardından arama yapın. 
+    b. **Erişim**altında, **Ekle**' ye tıklayın, **Kullanıcı veya Grup Seç**' e tıklayın ve ardından arama yapın `Microsoft.EventHubs` . 
 
     ![Data Lake Storage 1. klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage 1. klasörü için izin atama")
     
@@ -99,7 +99,7 @@ Bu bölümde, bir Event Hubs ad alanı içinde bir olay hub 'ı oluşturacaksın
 
     e. **Örnek yakalama dosya adı biçimlerini** varsayılan değere bırakın. Bu seçenek, yakalama klasörü altında oluşturulan klasör yapısını yönetir.
 
-    f. **Oluştur**' a tıklayın.
+    f. **Oluştur**'a tıklayın.
 
 ## <a name="test-the-setup"></a>Kurulumu test etme
 

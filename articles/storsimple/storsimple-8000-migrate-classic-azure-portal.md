@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 428c336d98e278910b229e9c0d877a9ae6268c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2d4aa8845472812cf1874b380c6cbf1e91e2149
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77169715"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514740"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmetiyle ilişkili abonelikleri ve depolama hesaplarını geçirme
 
@@ -29,8 +29,8 @@ StorSimple hizmetinizi yeni bir kayda veya yeni bir aboneliğe taşımanız gere
 
 | Hareket edebilir...| Destekleniyor| Downtime| Azure destek süreci| Yaklaşım|
 |-----|-----|-----|-----|-----|
-| Bir aboneliğin tamamı (StorSimple hizmeti ve depolama hesapları dahil) başka bir kayda mı? | Yes       | Hayır       | **Kayıt aktarımı**<br>Kullanırsınız<li>Yeni bir sözleşme çerçevesinde yeni bir Azure taahhüt satın aldığınızda.</li><li>Tüm hesapları ve abonelikleri eski kayıttan yenisine geçirmek istiyorsunuz. Bu, eski abonelik kapsamındaki tüm Azure hizmetlerini içerir.</li> | **1. Adım: bir Azure Kurumsal Işlem destek bileti açın.**<li>Adresine gidin [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).</li><li> **Kayıt yönetimi** ' ni seçin ve ardından **bir kayıttan yeni kayda aktar**' ı seçin.<br>**2. Adım: istenen bilgileri sağlayın**<br>İçeriyor<li>kaynak kayıt numarası</li><li> hedef kayıt numarası</li><li>Aktarım geçerlilik tarihi|
-| Mevcut bir hesaptan yeni bir kayda StorSimple hizmeti mi?    | Yes       | Hayır       | **Hesap aktarımı**<br>Kullanırsınız<li>Tam kayıt aktarımı istemezsiniz.</li><li>Yalnızca belirli hesapları yeni bir kayda taşımak istiyorsunuz.</li>| **1. Adım: bir Azure Kurumsal Işlem destek bileti açın.**<li>Adresine gidin [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).</li><li>**Kayıt yönetimi** ' ni seçin ve ardından **bir EA hesabını yeni**bir kayda Aktar ' ı seçin.<br>**2. Adım: istenen bilgileri sağlayın**<br>İçeriyor<li>kaynak kayıt numarası</li><li> hedef kayıt numarası</li><li>Aktarım geçerlilik tarihi|
+| Bir aboneliğin tamamı (StorSimple hizmeti ve depolama hesapları dahil) başka bir kayda mı? | Yes       | Hayır       | **Kayıt aktarımı**<br>Kullanırsınız<li>Yeni bir sözleşme çerçevesinde yeni bir Azure taahhüt satın aldığınızda.</li><li>Tüm hesapları ve abonelikleri eski kayıttan yenisine geçirmek istiyorsunuz. Bu, eski abonelik kapsamındaki tüm Azure hizmetlerini içerir.</li> | **1. Adım: bir Azure Kurumsal Işlem destek bileti açın.**<li>Adresine gidin [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) .</li><li> **Kayıt yönetimi** ' ni seçin ve ardından **bir kayıttan yeni kayda aktar**' ı seçin.<br>**2. Adım: istenen bilgileri sağlayın**<br>İçeriyor<li>kaynak kayıt numarası</li><li> hedef kayıt numarası</li><li>Aktarım geçerlilik tarihi|
+| Mevcut bir hesaptan yeni bir kayda StorSimple hizmeti mi?    | Yes       | Hayır       | **Hesap aktarımı**<br>Kullanırsınız<li>Tam kayıt aktarımı istemezsiniz.</li><li>Yalnızca belirli hesapları yeni bir kayda taşımak istiyorsunuz.</li>| **1. Adım: bir Azure Kurumsal Işlem destek bileti açın.**<li>Adresine gidin [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) .</li><li>**Kayıt yönetimi** ' ni seçin ve ardından **bir EA hesabını yeni**bir kayda Aktar ' ı seçin.<br>**2. Adım: istenen bilgileri sağlayın**<br>İçeriyor<li>kaynak kayıt numarası</li><li> hedef kayıt numarası</li><li>Aktarım geçerlilik tarihi|
 | Bir aboneliğden başka bir aboneliğe StorSimple hizmeti mi?      | Hayır        |    Yes         | Hiçbiri, el ile işlem|<li>StorSimple cihazından veri geçirin.</li><li>Cihazın fabrika sıfırlamasını gerçekleştirin, bu, cihazdaki tüm yerel verileri siler.</li><li>Yeni aboneliği StorSimple Aygıt Yöneticisi hizmetine kaydedin.</li><li>Verileri cihaza geri geçirin.|
 |Bir Azure aboneliğinin sahipliğini başka bir dizine aktarabilir miyim? | Yes       | Hayır       | Mevcut bir aboneliği Azure AD dizininizle ilişkilendirin | [Mevcut bir aboneliği Azure AD dizininizle ilişkilendirme](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)bölümüne bakın. Her şeyin doğru şekilde gösterilmesi 10 dakikaya kadar sürebilir.|
 | Tek bir StorSimple Aygıt Yöneticisi hizmetinden farklı bir bölgedeki başka bir hizmete StorSimple cihazı mı kullanıyorsunuz?      | Hayır        | Yes            | Hiçbiri, el ile işlem |Yukarıdaki gibi.|

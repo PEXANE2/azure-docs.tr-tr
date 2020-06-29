@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5a500ef44170f23c8acdf752393389a4af06a798
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214188"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513397"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>PowerShell ile bir Yönetim Aracı dağıtma
 
@@ -40,7 +40,7 @@ Aşağıdaki tarayıcılar yönetim aracıyla uyumludur:
 Yönetim aracını dağıtmadan önce, bir uygulama kaydı oluşturmak ve yönetim kullanıcı arabirimini dağıtmak için bir Azure Active Directory (Azure AD) kullanıcısına sahip olmanız gerekir. Bu Kullanıcı şunları sağlamalıdır:
 
 - Azure aboneliğinizde kaynak oluşturma izniniz var
-- Azure AD uygulaması oluşturma izniniz vardır. [Gerekli izinlere](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)sahip olan yönergeleri izleyerek, kullanıcılarınızın gerekli izinlere sahip olup olmadığını denetlemek için bu adımları izleyin.
+- Azure AD uygulaması oluşturma izniniz vardır. [Gerekli izinlere](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)sahip olan yönergeleri izleyerek, kullanıcılarınızın gerekli izinlere sahip olup olmadığını denetlemek için bu adımları izleyin.
 
 Yönetim aracını dağıttıktan ve yapılandırdıktan sonra, her şeyin çalıştığından emin olmak için kullanıcıdan yönetim kullanıcı arabirimini başlatması gerektiğini öneririz. Yönetim Kullanıcı arabirimini başlatan kullanıcının Windows sanal masaüstü kiracı 'sını görüntülemesine veya düzenlemesine izin veren bir rol ataması olmalıdır.
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67875387"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514908"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple üzerinde barındırılan dosya paylaşımları için Azure Site Recovery kullanan otomatik olağanüstü durum kurtarma çözümü
 
@@ -61,10 +61,10 @@ Tam çoğaltma ve kurtarmayı etkinleştirmek için şirket içi ortamın her bi
 ### <a name="set-up-active-directory-and-dns-replication-optional"></a>Active Directory ve DNS çoğaltmasını ayarlama (isteğe bağlı)
 Active Directory ve DNS çalıştıran makineleri DR sitesinde kullanılabilir olacak şekilde korumak istiyorsanız, bunları açıkça korumanız gerekir (böylece, kimlik doğrulamasıyla yük devretmeden sonra dosya sunucularına erişilebilir). Müşterinin Şirket içi ortamının karmaşıklığına göre önerilen iki seçenek vardır.
 
-#### <a name="option-1"></a>Seçenek 1
+#### <a name="option-1"></a>1\. Seçenek
 Müşterinin, tüm şirket içi site için tek bir etki alanı denetleyicisi olan az sayıda uygulaması varsa ve tüm site üzerinden yük devrettikten sonra, etki alanı denetleyicisi makinesini ikincil bir siteye çoğaltmak için Azure Site Recovery çoğaltmanın kullanılması önerilir (Bu, hem siteden siteye, hem de siteden Azure için geçerlidir).
 
-#### <a name="option-2"></a>2. Seçenek
+#### <a name="option-2"></a>2\. Seçenek
 Müşterinin çok sayıda uygulaması varsa, bir Active Directory ormanı çalıştırıyorsa ve aynı anda birkaç uygulama üzerinde başarısız olursa, DR sitesinde (ikincil site veya Azure 'da) ek bir etki alanı denetleyicisi ayarlamayı öneririz.
 
 DR sitesinde kullanılabilir bir etki alanı denetleyicisi yaparken yönergeler için [Azure Site Recovery kullanarak Active Directory ve DNS Için OTOMATIK Dr çözümüne](../site-recovery/site-recovery-active-directory.md) bakın. Bu belgenin geri kalanında, DR sitesinde bir etki alanı denetleyicisinin bulunduğunu varsayalım.
@@ -84,7 +84,7 @@ Bu adım, şirket içi dosya sunucusu ortamını hazırlamanızı, bir Azure Sit
 
 1. VM aracısını dosya sunucusu VM 'lerinin her birine yükler. Bu, yük devredilen VM 'lerde Azure Otomasyonu betikleri çalıştırabilmeniz için gereklidir.
    
-   1. [Aracısını](https://aka.ms/vmagentwin) öğesine `C:\\Users\\<username>\\Downloads`indirin.
+   1. [Aracısını öğesine indirin](https://aka.ms/vmagentwin) `C:\\Users\\<username>\\Downloads` .
    1. Windows PowerShell 'i yönetici modunda açın (yönetici olarak çalıştır) ve ardından indirme konumuna gitmek için aşağıdaki komutu girin:  
          `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
          
@@ -142,7 +142,7 @@ Aşağıdaki çizimde gösterildiği gibi, ağ ayarlarını yapılandırmak içi
 Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için ASR 'de bir kurtarma planı oluşturabilirsiniz. Bir kesinti oluşursa, yalnızca tek bir tıklama ile dosya paylaşımlarını birkaç dakika içinde taşıyabilirsiniz. Bu Otomasyonu etkinleştirmek için bir Azure Otomasyonu hesabına ihtiyacınız olacaktır.
 
 #### <a name="to-create-an-automation-account"></a>Otomasyon hesabı oluşturmak için
-1. Azure Portal &gt; **Otomasyonu** bölümüne gidin.
+1. Azure portal &gt; **Otomasyonu** bölümüne gidin.
 1. **+ Ekle** düğmesine tıklayın, dikey pencerenin altında açılır.
    
    ![Automation Hesabı ekleme](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
@@ -153,7 +153,7 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
    - Konum-konum seçin, StorSimple Cloud Appliance ve depolama hesaplarının oluşturulduğu coğrafi/bölgede saklayın.
    - Azure farklı çalıştır hesabı oluştur- **Evet** seçeneğini belirleyin.
    
-1. Otomasyon hesabına gidin ve gerekli tüm runbook 'ları Otomasyon hesabına aktarmak için **runbook 'lar** &gt; **tarayıcı galerisine** tıklayın.
+1. Otomasyon hesabına gidin ve **Runbooks** &gt; gerekli tüm runbook 'ları Otomasyon hesabına aktarmak için Runbook 'lar **tarayıcı galerisine** tıklayın.
 1. Galerideki **olağanüstü durum kurtarma** etiketini bularak aşağıdaki runbook 'ları ekleyin:
    
    - Yük devretme sınamasını (TFO) tamamladıktan sonra StorSimple birimlerini Temizleme
@@ -164,7 +164,7 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
    
       ![Galeriye gözatamıyorum](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
    
-1. Otomasyon hesabındaki runbook 'u seçip **Yayımla** ' **ya tıklayın ve** &gt; doğrulama iletisine **Evet** ' e tıklayarak tüm betikleri yayımlayın. Bu adımdan sonra, **runbook 'lar** sekmesi şu şekilde görünür:
+1. Otomasyon hesabındaki runbook 'u seçip Yayımla ' **ya tıklayın** &gt; **Publish** ve doğrulama iletisine **Evet** ' e tıklayarak tüm betikleri yayımlayın. Bu adımdan sonra, **runbook 'lar** sekmesi şu şekilde görünür:
    
    ![Runbook'lar](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
    
@@ -174,7 +174,7 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
    - _Recoveryplanname_**-Resourcegroupname**: storsimple kaynağına sahip Kaynak Yöneticisi grubu.
    - _Recoveryplanname_**-ManagerName**: StorSimple cihazına sahip StorSimple kaynağı.
    - _Recoveryplanname_**-aygıtadı**: yük devredilecek olan StorSimple cihazı.
-   - _Recoveryplanname_**-deviceıpaddress**: cihazın IP adresi (Bu, StorSimple aygıt yöneticisi bölüm &gt; **ayarları** &gt; **ağ** &gt; **DNS ayarları** grubu altında **aygıtlar** sekmesinde bulunabilir).
+   - _Recoveryplanname_**-deviceıpaddress**: cihazın IP adresi (Bu, StorSimple aygıt yöneticisi bölüm **Devices** &gt; **ayarları** &gt; **ağ** &gt; **DNS ayarları** grubu altında aygıtlar sekmesinde bulunabilir).
    - _Recoveryplanname_**-volumecontainers**: cihazda yük devredilecek olması gereken birim kapsayıcılarının virgülle ayrılmış bir dizesi; Örneğin: volcon1, volcon2, volcon3.
    - _Recoveryplanname_**-targetaygıtadı**: kapsayıcıların yük devretme StorSimple Cloud Appliance.
    - _Recoveryplanname_**-targetdeviceıpaddress**: hedef cihazın IP adresi (Bu, **sanal makine** bölüm &gt; **ayarları** grup &gt; **ağı** sekmesinde bulunabilir).
@@ -195,7 +195,7 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
             cd C:\scripts\StorSimpleSDKTools
       ```
    1. NuGet CLı 'yi adım içindeki aynı klasöre indirin.
-      NuGet [İndirmeleri](https://www.nuget.org/downloads)üzerinde çeşitli NuGet. exe sürümleri mevcuttur. Her bir indirme bağlantı noktası doğrudan bir. exe dosyasına, bu nedenle sağ tıklayıp dosyayı tarayıcıdan çalıştırmak yerine bilgisayarınıza kaydettiğinizden emin olun.
+      [NuGet indirmelerinde](https://www.nuget.org/downloads)nuget.exe çeşitli sürümleri mevcuttur. Her bir indirme bağlantı noktası doğrudan bir. exe dosyasına, bu nedenle sağ tıklayıp dosyayı tarayıcıdan çalıştırmak yerine bilgisayarınıza kaydettiğinizden emin olun.
       
       ```
             wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
@@ -230,11 +230,11 @@ Dosya paylaşımlarının yük devretme işlemini otomatik hale getirmek için A
             compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
       ```
          
-   1. Yukarıdaki adımda oluşturulan Azure Automation modül ZIP dosyasını (Microsoft. Azure. Management. StorSimple8000Series. zip) içeri aktarın. Bu işlem Otomasyon hesabı seçilerek, PAYLAŞıLAN kaynaklar altındaki **modüller** ' e ve ardından **Modül Ekle**' ye tıklayarak yapılabilir.
+   1. Yukarıdaki adımda oluşturulan Azure Automation modül ZIP dosyasını (Microsoft.Azure.Management.StorSimple8000Series.zip) içeri aktarın. Bu işlem Otomasyon hesabı seçilerek, PAYLAŞıLAN kaynaklar altındaki **modüller** ' e ve ardından **Modül Ekle**' ye tıklayarak yapılabilir.
    
    StorSimple 8000 serisi modülünü içeri aktardıktan sonra, **modüller** sekmesi aşağıdaki gibi görünmelidir:
    
-      ![Modüller](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
+      ![Modül](./media/storsimple-disaster-recovery-using-azure-site-recovery/image12.png)
 
 1. **Kurtarma Hizmetleri** bölümüne gidin ve daha önce oluşturduğunuz Azure Site Recovery kasasını seçin.
 1. **Yönet** grubundan **kurtarma planları (Site Recovery)** seçeneğini belirleyin ve yeni bir kurtarma planı oluşturun:
@@ -282,8 +282,8 @@ Sınama yük devretmesi sırasında Active Directory özgü hususlar için [ACTI
    
    ![Yük devretmeyi Başlat](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
-1. Yük devretmeyi başlatmak için **Tamam**'a tıklayın. Özelliklerini açmak için VM 'ye tıklayarak veya kasa adı &gt; **işlerinde** &gt; **Test yük devretmesi işi** **Site Recovery işleri**' ne tıklayarak ilerlemeyi izleyebilirsiniz.
-1. Yük devretme tamamlandıktan sonra, çoğaltma Azure makinesi 'nin Azure Portal &gt; **sanal makinelerde**göründüğünü de görmeniz gerekir. Doğrulamalarınızı gerçekleştirebilirsiniz.
+1. Yük devretmeyi başlatmak için **Tamam**'a tıklayın. Özelliklerini açmak için VM 'ye tıklayarak veya kasa adı işlerinde **Test yük devretmesi işi** &gt; **Jobs** &gt; **Site Recovery işleri**' ne tıklayarak ilerlemeyi izleyebilirsiniz.
+1. Yük devretme tamamlandıktan sonra, çoğaltma Azure makinesi 'nin Azure portal &gt; **sanal makinelerde**göründüğünü de görmeniz gerekir. Doğrulamalarınızı gerçekleştirebilirsiniz.
 1. Doğrulamalar yapıldıktan sonra, **doğrulamalar tamamlandı**' ya tıklayın. Bu, StorSimple birimlerini kaldıracak ve StorSimple Cloud Appliance kapatacaktır.
 1. İşiniz bittiğinde kurtarma planında **Yük devretme testini temizle** ' ye tıklayın. Notlar ' da, test yük devretmesi ile ilişkili tüm gözlemlerinizi kaydeder ve kaydeder. Bu işlem, yük devretme testi sırasında oluşturulan sanal makineyi silecektir.
 

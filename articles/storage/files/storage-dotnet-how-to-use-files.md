@@ -4,16 +4,16 @@ description: Dosya verilerini depolamak için Azure Dosyaları'nı kullanan .NET
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301446"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515367"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET ile Azure Dosyaları için geliştirme
 
@@ -39,7 +39,7 @@ Azure Dosyaları istemci uygulamalarına iki geniş yaklaşım sağlar: Sunucu �
 API | Kullanılması gereken durumlar | Notlar
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Uygulamanız: <ul><li>SMB kullanarak dosyaları okuma/yazma gerekir</li><li>Azure Dosyaları hesabınıza 445 bağlantı noktası üzerinden erişimi olan bir cihazda çalışıyor</li><li>Dosya paylaşımının yönetim ayarlarından herhangi birini yönetmesi gerekmiyor</li></ul> | SMB üzerinden Azure dosyaları ile uygulanan dosya g/ç, genellikle herhangi bir ağ dosya paylaşımıyla veya yerel depolama cihazındaki g/ç ile aynıdır. .NET 'teki dosya g/ç dahil olmak üzere çeşitli özelliklere giriş için, bkz. [konsol uygulaması](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) öğreticisi.
-[Microsoft. Azure. Storage. File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Uygulamanız: <ul><li>Güvenlik duvarı veya ISS kısıtlamaları nedeniyle 445 numaralı bağlantı noktasında SMB kullanılarak Azure dosyalarına erişilemiyor</li><li>Bir dosya paylaşımının kotasını ayarlama veya paylaşılan bir erişim imzası oluşturma gibi yönetim işlevleri gerektiriyor</li></ul> | Bu makalede, dosya paylaşımının SMB `Microsoft.Azure.Storage.File` ve YÖNETIMI yerine Rest kullanan dosya g/ç için kullanımı gösterilmektedir.
+[Microsoft. Azure. Storage. File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Uygulamanız: <ul><li>Güvenlik duvarı veya ISS kısıtlamaları nedeniyle 445 numaralı bağlantı noktasında SMB kullanılarak Azure dosyalarına erişilemiyor</li><li>Bir dosya paylaşımının kotasını ayarlama veya paylaşılan bir erişim imzası oluşturma gibi yönetim işlevleri gerektiriyor</li></ul> | Bu makalede, dosya `Microsoft.Azure.Storage.File` PAYLAŞıMıNıN SMB ve yönetimi yerıne Rest kullanan dosya g/ç için kullanımı gösterilmektedir.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>Konsol uygulaması oluşturma ve derleme alma
 
@@ -49,7 +49,7 @@ Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki ad
 1. **Yeni proje oluştur**bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 1. **Yeni projenizi yapılandırın**bölümünde uygulama için bir ad girin ve **Oluştur**' u seçin.
 
-Bu öğreticideki tüm kod örneklerini konsol uygulamanızın `Main()` `Program.cs` dosyasının yöntemine ekleyebilirsiniz.
+Bu öğreticideki tüm kod örneklerini `Main()` konsol uygulamanızın dosyasının yöntemine ekleyebilirsiniz `Program.cs` .
 
 Azure Storage istemci kitaplığı 'nı herhangi bir .NET uygulaması türünde kullanabilirsiniz. Bu türler, bir Azure bulut hizmeti veya Web uygulaması, masaüstü ve mobil uygulamalar içerir. Bu kılavuzda, sadeleştirmek için konsol uygulaması kullanmaktayız.
 
@@ -80,11 +80,11 @@ Her iki paketi de almak için NuGet kullanabilirsiniz. Şu adımları uygulayın
 
    * **Microsoft. Azure. Storage. Common**
    * **Microsoft. Azure. Storage. File**
-   * **Microsoft. Azure. ConfigurationManager**
+   * **Microsoft.Azure.ConfigurationManager**
 
-## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Depolama hesabı kimlik bilgilerinizi App. config dosyasına kaydetme
+## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Depolama hesabı kimlik bilgilerinizi App.config dosyasına kaydedin
 
-Ardından, kimlik bilgilerinizi projenizin `App.config` dosyasına kaydedin. **Çözüm Gezgini**, dosyayı aşağıdaki örneğe benzer `App.config` olacak şekilde çift tıklayın ve düzenleyin. Depolama `myaccount` Hesabı adınızla ve `mykey` depolama hesabı anahtarınızla değiştirin.
+Ardından, kimlik bilgilerinizi projenizin `App.config` dosyasına kaydedin. **Çözüm Gezgini**, `App.config` dosyayı aşağıdaki örneğe benzer olacak şekilde çift tıklayın ve düzenleyin. `myaccount`Depolama hesabı adınızla ve `mykey` depolama hesabı anahtarınızla değiştirin.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -116,7 +116,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>Dosya paylaşımına programlamayla erişme
 
-Sonra, bağlantı dizesini almak için yukarıda gösterilen `Main()` koddan sonra yöntemine aşağıdaki içeriği ekleyin. Bu kod, daha önce oluşturduğumuz dosyaya bir başvuru alır ve içeriğini çıkarır.
+Sonra, `Main()` bağlantı dizesini almak için yukarıda gösterilen koddan sonra yöntemine aşağıdaki içeriği ekleyin. Bu kod, daha önce oluşturduğumuz dosyaya bir başvuru alır ve içeriğini çıkarır.
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -428,14 +428,14 @@ Artık Azure Depolama Analizi, Azure Dosyaları için ölçümleri destekliyor. 
 
 Aşağıdaki kodda, Azure Dosyaları için ölçümleri etkinleştirmek üzere .NET için Depolama İstemcisi Kitaplığı'nı nasıl kullanacağınız gösterilmiştir.
 
-İlk olarak, aşağıdaki `using` yönergeleri, üzerine eklendikleriyle birlikte `Program.cs` dosyanıza ekleyin:
+İlk olarak, aşağıdaki `using` yönergeleri `Program.cs` , üzerine eklendikleriyle birlikte dosyanıza ekleyin:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Azure Blobları, Azure tabloları `ServiceProperties` ve Azure kuyrukları `Microsoft.Azure.Storage.Shared.Protocol` ad alanındaki paylaşılan türünü kullanmasına rağmen, Azure dosyaları `FileServiceProperties` `Microsoft.Azure.Storage.File.Protocol` ad alanındaki türü kendi türünü kullanır. Kodunuzda her iki ad alanına da başvurmanız gerekir, ancak aşağıdaki kodun derlenmesi için.
+Azure Blobları, Azure tabloları ve Azure kuyrukları `ServiceProperties` ad alanındaki paylaşılan türünü kullanmasına rağmen `Microsoft.Azure.Storage.Shared.Protocol` , Azure dosyaları `FileServiceProperties` ad alanındaki türü kendi türünü kullanır `Microsoft.Azure.Storage.File.Protocol` . Kodunuzda her iki ad alanına da başvurmanız gerekir, ancak aşağıdaki kodun derlenmesi için.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.

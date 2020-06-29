@@ -3,15 +3,15 @@ title: Azure HPC önbellek verileri alma-el ile kopyalama
 description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için CP komutlarını kullanma
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 1d5f8e6b59a4ae0149f219738952b47ce399c2ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a5fdc3b76c330619601e171c152d7a2e583ae90
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195001"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514492"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC önbelleği veri alma-el ile kopyalama yöntemi
 
@@ -23,7 +23,7 @@ Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha 
 
 Önceden tanımlanmış dosya veya yol kümelerine yönelik olarak, arka planda birden fazla kopyalama komutu çalıştırarak, bir istemcide çok iş parçacıklı bir kopyayı el ile oluşturabilirsiniz.
 
-Linux/UNIX ``cp`` komutu, sahiplik ve mtime meta verilerini korumak için bağımsız değişkenini ``-p`` içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef dosya sistemine gönderilen dosya sistemi çağrılarının sayısını artırır.)
+Linux/UNIX ``cp`` komutu, ``-p`` sahiplik ve mtime meta verilerini korumak için bağımsız değişkenini içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef dosya sistemine gönderilen dosya sistemi çağrılarının sayısını artırır.)
 
 Bu basit örnek, paralel olarak iki dosya kopyalar:
 
@@ -37,7 +37,7 @@ Bu komutu verdikten sonra, `jobs` komut iki iş parçacığının çalıştığ�
 
 Dosya adlarınız tahmin edilebilir ise, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz.
 
-Örneğin, dizininiz öğesinden `0001` öğesine sıralı olarak numaralandırılan 1000 dosyaları içeriyorsa, her bir Copy `1000`100 dosyası için 10 paralel iş parçacığı oluşturmak üzere aşağıdaki ifadeleri kullanabilirsiniz:
+Örneğin, dizininiz öğesinden öğesine sıralı olarak numaralandırılan 1000 dosyaları içeriyorsa `0001` `1000` , her bir Copy 100 dosyası için 10 paralel iş parçacığı oluşturmak üzere aşağıdaki ifadeleri kullanabilirsiniz:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Dosya adlandırma yapınız tahmin edilebilir değilse, dosyaları dizin adlarına göre gruplandırabilirsiniz.
 
-Bu örnek, arka plan görevleri olarak çalıştırılan ``cp`` komutlara göndermek için tüm dizinleri toplar:
+Bu örnek, ``cp`` arka plan görevleri olarak çalıştırılan komutlara göndermek için tüm dizinleri toplar:
 
 ```bash
 /root
@@ -138,7 +138,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 Yukarıdaki yaklaşımlar (her hedef için birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ erişimli kaynak dosya sistemi başına birden çok istemci) anlaşıldıktan sonra şu öneriyi göz önünde bulundurun: dosya bildirimleri oluşturun ve ardından birden çok istemcide kopyalama komutları ile bunları kullanın.
 
-Bu senaryo, dosya veya ``find`` dizinlerin bildirimlerini oluşturmak için UNIX komutunu kullanır:
+Bu senaryo, ``find`` dosya veya dizinlerin bildirimlerini oluşturmak IÇIN UNIX komutunu kullanır:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -214,7 +214,7 @@ Ve altı.... Gerektiğinde extrapogeç.
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Her *n* istemciniz için bir tane olmak üzere, `find` komutun çıktının bir parçası olarak elde edilen düzey dört dizine ait yol adlarına sahip *n* . bir dosya elde edersiniz.
+Her *n* istemciniz için bir tane olmak üzere, komutun çıktının bir parçası olarak elde edilen düzey dört dizine ait yol adlarına sahip *n* . bir dosya elde edersiniz `find` .
 
 Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 

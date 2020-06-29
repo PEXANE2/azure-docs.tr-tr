@@ -3,15 +3,15 @@ title: Azure HPC Cache NFS depolama hedefleri sorunlarını giderme
 description: NFS depolama hedefi oluştururken hata oluşmasına neden olabilecek yapılandırma hatalarını ve diğer sorunları önlemek ve onarmak için ipuçları
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186626"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515465"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS yapılandırma ve NFS depolama hedefi sorunlarını giderme
 
@@ -48,7 +48,7 @@ Bu komutu, NFS altyapısının yüklü olduğu herhangi bir Linux istemcisinden 
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-``rpcinfo`` Sorgu tarafından döndürülen tüm bağlantı NOKTALARıNıN Azure HPC önbelleğinin alt ağından sınırsız trafiğe izin verdiğinden emin olun.
+Sorgu tarafından döndürülen tüm bağlantı noktalarının ``rpcinfo`` Azure HPC önbelleğinin alt ağından sınırsız trafiğe izin verdiğinden emin olun.
 
 Bu ayarları hem NAS hem de depolama sistemi ile önbellek alt ağı arasındaki tüm güvenlik duvarları üzerinde denetleyin.
 
@@ -58,7 +58,7 @@ Depolama hedefini oluşturmak için Azure HPC önbelleğinin depolama sisteminiz
 
 Farklı depolama sistemleri bu erişimi etkinleştirmek için farklı yöntemler kullanır:
 
-* Linux sunucuları, içindeki ``no_root_squash`` ' de bulunan ``/etc/exports``yola genellikle eklenir.
+* Linux sunucuları ``no_root_squash`` , içindeki ' de bulunan yola genellikle eklenir ``/etc/exports`` .
 * NetApp ve EMC Sistemleri, genellikle belirli IP adreslerine veya ağlara bağlı olan dışa aktarma kurallarıyla erişimi denetler.
 
 Dışarı aktarma kuralları kullanılıyorsa, önbelleğin önbellek alt ağından birden çok farklı IP adresi kullandığını unutmayın. Olası alt ağ IP adreslerinden oluşan tam aralıktan erişime izin verin.
@@ -79,17 +79,17 @@ Hiyerarşik dizinleri dışarı veren NAS sistemlerinde, Azure HPC Cache her bir
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-Dışa aktarma ``/ifs/accounting/payroll`` bir alt öğesidir ``/ifs/accounting``ve ``/ifs/accounting`` kendisi öğesinin ``/ifs``bir alt öğesidir.
+Dışa aktarma ``/ifs/accounting/payroll`` bir alt öğesidir ``/ifs/accounting`` ve ``/ifs/accounting`` kendisi öğesinin bir alt öğesidir ``/ifs`` .
 
-``payroll`` DıŞARı aktarmayı HPC önbellek depolama hedefi olarak eklerseniz, önbellek aslında bundan sonra bordro dizinine takar ``/ifs/`` ve erişir. Bu nedenle, ``/ifs/accounting/payroll`` Azure HPC önbelleğinin dışarı aktarmaya ``/ifs`` erişmesi için kök erişimine ihtiyacı vardır.
+``payroll``Dışarı AKTARMAYı HPC önbellek depolama hedefi olarak eklerseniz, önbellek aslında ``/ifs/`` bundan sonra bordro dizinine takar ve erişir. Bu nedenle, Azure HPC önbelleğinin ``/ifs`` dışarı aktarmaya erişmesi için kök erişimine ihtiyacı vardır ``/ifs/accounting/payroll`` .
 
 Bu gereksinim, önbelleğin dosyaları dizinlediği ve dosya çakışmalarını önleyen, depolama sisteminin sağladığı Dosya tutamaçları ile ilgilidir.
 
-Hiyerarşik dışarı aktarmalar içeren bir NAS sistemi, dosya farklı dışarı aktarımlardan alınırsa aynı dosya için farklı dosya tanıtıcıları verebilir. Örneğin, bir istemci dosyasına ``/ifs/accounting`` ``payroll/2011.txt``bağlayabilir ve erişebilir. Başka bir istemci ``/ifs/accounting/payroll`` dosyaya ``2011.txt``takar ve erişir. Depolama sisteminin dosya tanıtıcılarını nasıl atamadığına bağlı olarak, bu iki istemci farklı Dosya tanıtıcılarla aynı dosyayı alabilir (diğeri için ``<mount2>/payroll/2011.txt`` bir için ``<mount3>/2011.txt``).
+Hiyerarşik dışarı aktarmalar içeren bir NAS sistemi, dosya farklı dışarı aktarımlardan alınırsa aynı dosya için farklı dosya tanıtıcıları verebilir. Örneğin, bir istemci ``/ifs/accounting`` dosyasına bağlayabilir ve erişebilir ``payroll/2011.txt`` . Başka bir istemci ``/ifs/accounting/payroll`` dosyaya takar ve erişir ``2011.txt`` . Depolama sisteminin dosya tanıtıcılarını nasıl atamadığına bağlı olarak, bu iki istemci farklı Dosya tanıtıcılarla aynı dosyayı alabilir (diğeri için bir için ``<mount2>/payroll/2011.txt`` ``<mount3>/2011.txt`` ).
 
 Arka uç depolama sistemi, dosya tanıtıcıları için iç diğer adları tutar, ancak Azure HPC önbelleği, dizinindeki hangi dosya tanıtıcılarının aynı öğeye başvurulacağını söyleyebilir. Bu nedenle, önbelleğin aynı dosya için önbelleğe alınmış farklı yazmaları olabilir ve aynı dosya olduğunu bilmez çünkü değişiklikleri yanlış bir şekilde uygulayabilir.
 
-Birden çok dışarı aktarmada bulunan dosyalar için bu olası dosya çarpışmasını önlemek için Azure HPC Cache, yoldaki (``/ifs`` örnekteki) otomatik olarak kullanılabilir dışarı aktarmayı otomatik olarak bağlar ve bu dışarı aktarma işleminden verilen dosya tanıtıcısını kullanır. Birden çok dışa aktarma aynı temel yolu kullanıyorsa, Azure HPC Cache 'in bu yola kök erişimi olması gerekir.
+Birden çok dışarı aktarmada bulunan dosyalar için bu olası dosya çarpışmasını önlemek için Azure HPC Cache, yoldaki (örnekteki) otomatik olarak kullanılabilir dışarı aktarmayı otomatik olarak bağlar ``/ifs`` ve bu dışarı aktarma işleminden verilen dosya tanıtıcısını kullanır. Birden çok dışa aktarma aynı temel yolu kullanıyorsa, Azure HPC Cache 'in bu yola kök erişimi olması gerekir.
 
 ## <a name="enable-export-listing"></a>Dışarı aktarma listesini etkinleştir
 <!-- link in prereqs article -->

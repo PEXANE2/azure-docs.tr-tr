@@ -3,19 +3,19 @@ title: Azure HPC önbelleği bağlama
 description: İstemcileri Azure HPC önbellek hizmetine bağlama
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb3e4fd4935afc4869e50ccbc35c53333d43b1df
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458421"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515526"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>Azure HPC önbelleğini bağlama
+# <a name="mount-the-azure-hpc-cache"></a>Azure HPC Önbelleği’ni bağlama
 
-Önbellek oluşturulduktan sonra, NFS istemcileri basit `mount` bir komutla erişebilir. Komutu, Azure HPC önbelleğindeki belirli bir depolama hedef yolunu, istemci makinesindeki bir yerel dizine bağlar.
+Önbellek oluşturulduktan sonra, NFS istemcileri basit bir `mount` komutla erişebilir. Komutu, Azure HPC önbelleğindeki belirli bir depolama hedef yolunu, istemci makinesindeki bir yerel dizine bağlar.
 
 Bağlama komutu şu öğelerden oluşur:
 
@@ -107,7 +107,7 @@ root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0
 root@test-client:/tmp#
 ```
 
-Bu komut başarılı olduktan sonra, depolama dışarı aktarmanın içerikleri istemcideki ``hpccache`` dizinde görünür olur.
+Bu komut başarılı olduktan sonra, depolama dışarı aktarmanın içerikleri ``hpccache`` istemcideki dizinde görünür olur.
 
 ### <a name="mount-command-options"></a>Bağlama komutu seçenekleri
 
@@ -120,7 +120,7 @@ Sağlam bir istemci bağlama için, bu ayarları ve bağımsız değişkenleri b
 ``hard`` | Azure HPC Cache 'e yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir.
 ``proto=tcp`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.
 ``mountproto=tcp`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
-``retry=<value>`` | Geçici ``retry=30`` bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
+``retry=<value>`` | ``retry=30``Geçici bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
 
 ### <a name="find-mount-command-components"></a>Bağlama komutu bileşenlerini bul
 

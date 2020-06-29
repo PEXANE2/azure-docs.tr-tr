@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: aa11f7e964f66d0a345e25f307127d75838f872f
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718725"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515816"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Azure Machine Learning, farklı işlem hedefleri arasında değişen desteğe sa
 
 
 > [!NOTE]
-> Azure Machine Learning Işlem, kalıcı bir kaynak olarak oluşturulabilir veya bir çalıştırma istediğinizde dinamik olarak oluşturulabilir. Çalışma tabanlı oluşturma, eğitim çalıştırması tamamlandıktan sonra işlem hedefini kaldırır, bu nedenle bu şekilde oluşturulan işlem hedeflerini yeniden kullanamazsınız.
+> Azure Machine Learning Işlem kümeleri, kalıcı bir kaynak olarak oluşturulabilir veya bir çalıştırma istediğinizde dinamik olarak oluşturulabilir. Çalışma tabanlı oluşturma, eğitim çalıştırması tamamlandıktan sonra işlem hedefini kaldırır, bu nedenle bu şekilde oluşturulan işlem hedeflerini yeniden kullanamazsınız.
 
 ## <a name="whats-a-run-configuration"></a>Çalıştırma Yapılandırması nedir?
 
@@ -76,7 +76,8 @@ ML işlem hatları modelleri eğitebilir, ancak eğitim vermeden önce verileri 
 Bu işlem hedeflerini yapılandırmak için aşağıdaki bölümleri kullanın:
 
 * [Yerel bilgisayar](#local)
-* [Azure Machine Learning İşlemi](#amlcompute)
+* [Azure Machine Learning işlem kümesi](#amlcompute)
+* [Azure Machine Learning işlem örneği](#instance)
 * [Uzak sanal makineler](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -91,9 +92,9 @@ Bu işlem hedeflerini yapılandırmak için aşağıdaki bölümleri kullanın:
 
 Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, sonraki adım [eğitim çalıştırmasını göndermektedir](#submit).
 
-### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Azure Machine Learning İşlemi
+### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning işlem kümesi
 
-Azure Machine Learning Işlem, kullanıcının kolayca tek veya çok düğümlü bir işlem oluşturmasına olanak tanıyan bir yönetilen işlem altyapısıdır. İşlem, çalışma alanınızdaki diğer kullanıcılarla paylaşılabilecek bir kaynak olarak çalışma alanı bölgeniz içinde oluşturulur. İşlem, bir iş gönderildiğinde otomatik olarak ölçeklendirilir ve bir Azure sanal ağına yerleştirilebilir. İşlem kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir [Docker kapsayıcısında](https://www.docker.com/why-docker)paketleyebilir.
+Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir işlem oluşturmanıza olanak sağlayan bir yönetilen işlem altyapısıdır. İşlem, çalışma alanınızdaki diğer kullanıcılarla paylaşılabilecek bir kaynak olarak çalışma alanı bölgeniz içinde oluşturulur. İşlem, bir iş gönderildiğinde otomatik olarak ölçeklendirilir ve bir Azure sanal ağına yerleştirilebilir. İşlem kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir [Docker kapsayıcısında](https://www.docker.com/why-docker)paketleyebilir.
 
 Eğitim sürecini buluttaki bir CPU veya GPU işlem düğümleri kümesi arasında dağıtmak için Azure Machine Learning Işlem kullanabilirsiniz. GPU 'ları içeren VM boyutları hakkında daha fazla bilgi için bkz. [GPU ile iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu). 
 
@@ -125,6 +126,41 @@ Azure Machine Learning Işlem, çalıştırmalar arasında yeniden kullanılabil
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, sonraki adım [eğitim çalıştırmasını göndermektedir](#submit).
+
+
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning işlem örneği
+
+[Azure Machine Learning işlem örneği](concept-compute-instance.md) , kolayca tek bir VM oluşturmanıza olanak sağlayan bir yönetilen işlem altyapısıdır. İşlem, çalışma alanı bölgeniz içinde oluşturulur, ancak bir işlem kümesinden farklı olarak, bir örnek çalışma alanınızdaki diğer kullanıcılarla paylaşılamaz. Ayrıca, örnek otomatik olarak ölçeklenmez.  Devam eden ücretleri engellemek için kaynağı durdurmanız gerekir.
+
+Bir işlem örneği, paralel olarak birden çok iş çalıştırabilir ve bir iş kuyruğuna sahiptir. 
+
+İşlem örnekleri, kuruluşların SSH bağlantı noktalarını açmasına gerek kalmadan, işleri bir [sanal ağ ortamında](how-to-enable-virtual-network.md#compute-instance)güvenli bir şekilde çalıştırabilir. İş kapsayıcılı bir ortamda yürütülür ve model bağımlılıklarınızı bir Docker kapsayıcısında paketleyebilir. 
+
+1. **Oluşturma ve iliştirme**: 
+    
+    [! Not defteri-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb? Name = create_instance)]
+
+1. **Yapılandırma**: çalıştırma yapılandırması oluşturun.
+    
+    ```python
+    
+    from azureml.core import ScriptRunConfig
+    from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+    
+    src = ScriptRunConfig(source_directory='', script='train.py')
+    
+    # Set compute target to the one created in previous step
+    src.run_config.target = instance
+    
+    # Set environment
+    src.run_config.environment = myenv
+     
+    run = experiment.submit(config=src)
+    ```
+
+İşlem örneği için yararlı olan daha fazla komut için bkz. [computeinstance-on-](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)Not Bu not defteri, *eğitim/eğitme-on-computeinstance*Içindeki Studio **örnekleri** klasöründe de mevcuttur.
+
+Bu işlemi yaptıktan sonra, çalışmanızı yapılandırdığınıza göre, bir sonraki adım [eğitim çalıştırmasını gönderdiniz](#submit)
 
 
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>Uzak sanal makineler

@@ -441,9 +441,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Data Box ailesi
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: Depolama
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Data Box çevrimdışı aktarım
           tocHref: /azure/databox/

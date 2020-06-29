@@ -3,16 +3,16 @@ title: Şirket içi güvenlik duvarı ve proxy ayarlarını Azure Dosya Eşitlem
 description: Şirket içi ağ yapılandırması Azure Dosya Eşitleme
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 415dc4f5609b912163be42605277a33ebcfda589
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466196"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515286"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -24,7 +24,7 @@ Bu nasıl yapılır Kılavuzu ' nu okumadan önce [Azure dosya eşitleme ağ kon
 ## <a name="overview"></a>Genel Bakış
 Azure Dosya Eşitleme, Windows sunucunuz, Azure dosya paylaşımınız ve diğer birçok Azure hizmeti arasında, eşitleme grubunuzda açıklandığı gibi verileri eşitlemek için bir Orchestration hizmeti görevi görür. Azure Dosya Eşitleme düzgün şekilde çalışması için sunucularınızı aşağıdaki Azure hizmetleriyle iletişim kuracak şekilde yapılandırmanız gerekecektir:
 
-- Azure Storage
+- Azure Depolama
 - Azure Dosya Eşitleme
 - Azure Resource Manager
 - Kimlik doğrulama hizmetleri
@@ -61,7 +61,7 @@ Makine genelindeki proxy ayarlarını yapılandırmak için aşağıdaki adımla
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - Machine. config dosyalarına < System. net > bölümünü ekleyin (< System. serviceModel > bölümünün altında).  127.0.01:8888 öğesini, proxy sunucu için IP adresine ve bağlantı noktasına değiştirin. 
+   - machine.config dosyalarına <system.net> bölümünü ekleyin (<System. serviceModel> bölümünün altında).  127.0.01:8888 öğesini, proxy sunucu için IP adresine ve bağlantı noktasına değiştirin. 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -86,7 +86,7 @@ Makine genelindeki proxy ayarlarını yapılandırmak için aşağıdaki adımla
 
       Note: depolama eşitleme Aracısı (filesyncsvc) hizmeti durdurulduktan sonra otomatik olarak başlayacak.
 
-## <a name="firewall"></a>Güvenlik Duvarı
+## <a name="firewall"></a>Güvenlik duvarı
 Önceki bölümde belirtildiği gibi, 443 numaralı bağlantı noktasının giden trafik açık olması gerekir. Veri merkezinizdeki, dalınızdaki veya bölgenizdeki ilkelere bağlı olarak, bu bağlantı noktası üzerinden trafiği belirli etki alanlarına kısıtlamak istenebilir veya gerekli olabilir.
 
 Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
@@ -97,7 +97,7 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 | **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure Resource Manager çağrılarının kimliği doğrulanmış bir kullanıcı tarafından yapılması gerekir. Başarılı olmak için, bu URL kullanıcı kimlik doğrulaması için kullanılır. |
 | **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | Azure Dosya Eşitleme dağıtmanın bir parçası olarak, aboneliğin Azure Active Directory bir hizmet sorumlusu oluşturulur. Bu URL bunun için kullanılır. Bu asıl, Azure Dosya Eşitleme hizmetine en düşük düzeyde haklar vermek için kullanılır. Azure Dosya Eşitleme ilk kurulumunu gerçekleştiren kullanıcı, abonelik sahibi ayrıcalıklarına sahip kimliği doğrulanmış bir kullanıcı olmalıdır. |
 | **Azure Active Directory** | https://secure.aadcdn.microsoftonline-p.com | Genel uç nokta URL 'sini kullanın. | Bu URL 'ye, Azure Dosya Eşitleme sunucusu kayıt Kullanıcı arabiriminin yönetici 'de oturum açmak için kullandığı Active Directory kimlik doğrulaması kitaplığı tarafından erişilir. |
-| **Azure Storage** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Sunucu bir dosyayı indirdiğinde, sunucu bu veri hareketini depolama hesabındaki Azure dosya paylaşımından doğrudan görüşüp daha verimli bir şekilde gerçekleştirir. Sunucuda yalnızca hedeflenen dosya paylaşımında erişime izin veren bir SAS anahtarı vardır. |
+| **Azure Depolama** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Sunucu bir dosyayı indirdiğinde, sunucu bu veri hareketini depolama hesabındaki Azure dosya paylaşımından doğrudan görüşüp daha verimli bir şekilde gerçekleştirir. Sunucuda yalnızca hedeflenen dosya paylaşımında erişime izin veren bir SAS anahtarı vardır. |
 | **Azure Dosya Eşitleme** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | İlk sunucu kaydından sonra, sunucu, bu bölgedeki Azure Dosya Eşitleme hizmet örneği için bölgesel bir URL alır. Sunucu, eşitlemesini işleme örneği ile doğrudan ve verimli bir şekilde iletişim kurmak için URL 'YI kullanabilir. |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Azure Dosya Eşitleme aracısı yüklendikten sonra, Azure Dosya Eşitleme hizmeti ve Azure dosya paylaşımıyla iletişim kurmak için gereken ara sertifikaları indirmek için PKI URL 'SI kullanılır. Bir sertifikanın durumunu denetlemek için OCSP URL 'SI kullanılır. |
 
@@ -266,7 +266,7 @@ if ($found) {
 Daha sonra `$ipAddressRanges` Güvenlik duvarınızı güncelleştirmek için IÇINDEKI IP adresi aralıklarını kullanabilirsiniz. Güvenlik duvarınızı güncelleştirme hakkında bilgi edinmek için güvenlik duvarı/ağ gerecinizin Web sitesini denetleyin.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Hizmet uç noktalarına ağ bağlantısını test etme
-Bir sunucu Azure Dosya Eşitleme hizmetine kaydedildikten sonra, bu sunucuya özgü tüm uç noktalar (URL) ile iletişimleri test etmek için test-StorageSyncNetworkConnectivity cmdlet 'i ve ServerRegistration. exe kullanılabilir. Bu cmdlet, tamamlanmamış iletişim, sunucunun Azure Dosya Eşitleme ile tamamen çalışmasını engellediğinde ve proxy ve güvenlik duvarı yapılandırmalarının ince ayar yapmak için kullanılabilir olduğunda sorun gidermeye yardımcı olabilir.
+Bir sunucu Azure Dosya Eşitleme hizmetine kaydedildikten sonra, test-StorageSyncNetworkConnectivity cmdlet 'i ve ServerRegistration.exe bu sunucuya özgü tüm uç noktalar (URL) ile iletişimleri test etmek için kullanılabilir. Bu cmdlet, tamamlanmamış iletişim, sunucunun Azure Dosya Eşitleme ile tamamen çalışmasını engellediğinde ve proxy ve güvenlik duvarı yapılandırmalarının ince ayar yapmak için kullanılabilir olduğunda sorun gidermeye yardımcı olabilir.
 
 Ağ bağlantısı testini çalıştırmak için, Azure Dosya Eşitleme Aracısı sürüm 9,1 veya üstünü yükledikten sonra aşağıdaki PowerShell komutlarını çalıştırın:
 ```powershell

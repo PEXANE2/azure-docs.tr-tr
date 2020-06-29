@@ -8,24 +8,24 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 1ff29be9cde4a2bd53f0edbe57f3eab603c1796f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740370"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513800"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile özel bir yetenek derleme ve dağıtma 
 
-Bu öğreticide, incelemelerden en boy tabanlı yaklaşımı ayıklamak üzere Azure Machine Learning kullanarak [özel bir yetenek](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface) oluşturmak için [otel İncelemeleri veri kümesini](https://www.kaggle.com/datafiniti/hotel-reviews) (CREATIVE Commons LISANS [CC BY-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)altında dağıtılır) kullanacaksınız. Bu, aynı gözden geçirme içindeki olumlu ve olumsuz yaklaşım atamasının, personel, oda, giriş veya havuz gibi tanımlanan varlıklara doğru şekilde atanmasını sağlar.
+Bu öğreticide, incelemelerden en boy tabanlı yaklaşımı ayıklamak üzere Azure Machine Learning kullanarak [özel bir yetenek](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) oluşturmak için [otel İncelemeleri veri kümesini](https://www.kaggle.com/datafiniti/hotel-reviews) (CREATIVE Commons LISANS [CC BY-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)altında dağıtılır) kullanacaksınız. Bu, aynı gözden geçirme içindeki olumlu ve olumsuz yaklaşım atamasının, personel, oda, giriş veya havuz gibi tanımlanan varlıklara doğru şekilde atanmasını sağlar.
 
-En boy tabanlı yaklaşım modelini eğitmek için, [NLP yemek tariflerini](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)kullanacaksınız. Model daha sonra bir Azure Kubernetes kümesinde bir uç nokta olarak dağıtılır. Dağıtım yapıldıktan sonra, model, Bilişsel Arama hizmeti tarafından kullanılmak üzere özel bir beceri olarak zenginleştirme ardışık düzenine eklenir.
+Azure Machine Learning ' de en boy tabanlı yaklaşım modelini eğitmek için, [NLP tariflerinin deposunu](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)kullanacaksınız. Model daha sonra bir Azure Kubernetes kümesinde bir uç nokta olarak dağıtılır. Dağıtım yapıldıktan sonra, uç nokta, Bilişsel Arama hizmeti tarafından kullanılmak üzere bir AML yeteneği olarak enzenginleştirme ardışık düzenine eklenir.
 
 Belirtilen iki veri kümesi vardır. Modeli kendiniz eğmek istiyorsanız hotel_reviews_1000.csv dosyası gereklidir. Eğitim adımını atlamayı tercih ediyor musunuz? hotel_reviews_100.csv indirin.
 
 > [!div class="checklist"]
 > * Azure Bilişsel Arama örneği oluşturma
-> * Azure Machine Learning çalışma alanı oluşturma
+> * Azure Machine Learning çalışma alanı oluşturma (arama hizmeti ve çalışma alanı aynı abonelikte olmalıdır)
 > * Azure Kubernetes kümesine model eğitme ve dağıtma
 > * Dağıtılan modele bir AI zenginleştirme işlem hattı bağlama
 > * Dağıtılan modelden özel bir beceri olarak çıkış alma
@@ -84,8 +84,8 @@ Portalda beceri adresine gidin ve beceri Definition (JSON) bağlantısını seç
 
 Beceri şablonunu pencereden kopyalayın ve sol taraftaki beceri tanımına yapıştırın. Şablonu, için eksik değerleri sağlayacak şekilde düzenleyin:
 
-* Name
-* Description
+* Adı
+* Açıklama
 * Bağlam
 * ' girişler ' adı ve kaynağı
 * ' çıkışlar ' adı ve targetName

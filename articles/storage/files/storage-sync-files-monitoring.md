@@ -3,16 +3,16 @@ title: İzleyici Azure Dosya Eşitleme | Microsoft Docs
 description: Azure Dosya Eşitleme nasıl izlenir.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699284"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515203"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -68,7 +68,7 @@ Kayıtlı sunucu sistem durumu, sunucu uç noktası sistem durumu ve ölçümler
 ### <a name="registered-server-health"></a>Kayıtlı sunucu durumu
 
 - **Kayıtlı sunucu** durumu **çevrimiçi**ise, sunucu hizmetle başarılı bir şekilde iletişim kuruyor.
-- **Kayıtlı sunucu** durumu **çevrimdışı görünüyorsa**, sunucuda depolama eşitleme Izleyicisi (AzureStorageSyncMonitor. exe) işleminin çalıştığını doğrulayın. Sunucu bir güvenlik duvarı veya proxy 'nin arkasındaysa, güvenlik duvarını ve proxy 'yi yapılandırmak için [Bu makaleye](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) bakın.
+- **Kayıtlı sunucu** durumu **çevrimdışı görünüyorsa**, sunucudaki depolama eşitleme İzleyicisi (AzureStorageSyncMonitor.exe) işleminin çalıştığını doğrulayın. Sunucu bir güvenlik duvarı veya proxy 'nin arkasındaysa, güvenlik duvarını ve proxy 'yi yapılandırmak için [Bu makaleye](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) bakın.
 
 ### <a name="server-endpoint-health"></a>Sunucu uç noktası sistem durumu
 
@@ -132,7 +132,7 @@ Bulut katmanlama durumu:
 
 Eşitleme etkinliğini izlemek için sunucuda Azure Dosya Eşitleme performans sayaçlarını kullanın.
 
-Sunucuda Azure Dosya Eşitleme performans sayaçlarını görüntülemek için, performans Izleyicisi 'ni (Perfmon. exe) açın. Sayaçları, **aktarılan AFS bayt** ve **AFS eşitleme işlemleri** nesneleri altında bulabilirsiniz.
+Sunucuda Azure Dosya Eşitleme performans sayaçlarını görüntülemek için performans Izleyicisi 'ni (Perfmon.exe) açın. Sayaçları, **aktarılan AFS bayt** ve **AFS eşitleme işlemleri** nesneleri altında bulabilirsiniz.
 
 Azure Dosya Eşitleme için aşağıdaki performans sayaçları performans Izleyicisinde kullanılabilir:
 

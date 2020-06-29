@@ -3,16 +3,16 @@ title: Azure dosyaları ile kullanmak için siteden siteye (S2S) VPN yapılandı
 description: Azure dosyaları ile kullanılmak üzere siteden siteye (S2S) VPN yapılandırma
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061034"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515338"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Azure dosyaları ile kullanmak için siteden siteye VPN yapılandırma
 Azure dosya paylaşımlarınızı şirket içi ağınızdan SMB üzerinden bağlamak için, 445 numaralı bağlantı noktasını açmadan, siteden siteye (S2S) VPN bağlantısı kullanabilirsiniz. Azure [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)kullanarak sıteden siteye VPN kurabilirsiniz. Bu bir Azure kaynağı, VPN hizmetleri sunar ve depolama hesapları veya diğer Azure kaynaklarıyla birlikte bir kaynak grubunda dağıtılır.
@@ -93,7 +93,7 @@ Bağlantıyı oluşturmak için **Tamam ' ı** seçin. **Bağlantılar** sayfas�
 S2S VPN 'yi yapılandırmanın son adımı, Azure dosyaları için çalıştığını doğrulamakdır. Bunu, Azure dosya paylaşımınızı tercih ettiğiniz işletim sistemi ile şirket içi olarak bağlayarak yapabilirsiniz. İşletim sistemine göre bağlama için şu yönergelere bakın:
 
 - [Windows](storage-how-to-use-files-windows.md)
-- [Mac OS](storage-how-to-use-files-mac.md)
+- [macOS](storage-how-to-use-files-mac.md)
 - [Linux](storage-how-to-use-files-linux.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.

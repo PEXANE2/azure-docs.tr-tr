@@ -3,15 +3,15 @@ title: Azure HPC önbelleğindeki verileri şifrelemek için müşteri tarafınd
 description: Microsoft tarafından yönetilen varsayılan şifreleme anahtarlarını kullanmak yerine şifreleme anahtarı erişimini denetlemek için Azure HPC Cache ile Azure Key Vault kullanma
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: b7b9e9e6858d709e80642603e77bfb36f2e4c0c9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597748"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512900"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache için müşteri tarafından yönetilen şifreleme anahtarlarını kullanma
 

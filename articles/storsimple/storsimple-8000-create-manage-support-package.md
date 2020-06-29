@@ -3,15 +3,15 @@ title: StorSimple 8000 serisi destek paketi oluşturma
 description: StorSimple 8000 serisi cihazınız için bir destek paketi oluşturmayı, şifrelerini çözmeyi ve düzenlemenizi öğrenin.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277064"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514053"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 serisi için destek paketi oluşturma ve yönetme
 
@@ -54,7 +54,7 @@ El ile oluşturulan destek paketinizi, e-posta üzerinden Microsoft Desteği pay
        `Export-HcsSupportPackage -Path <\\IP address\location of the shared folder> -Include Default -Credential domainname\username`
      
        Parola ve şifreleme parolası girmeniz istenir (destek paketi şifrelenir). Daha sonra varsayılan klasörde (Cihaz adı geçerli tarih ve saate eklenerek) bir destek paketi oluşturulur.
-   * Parola korumalı olmayan paylaşımlar için `-Credential` parametreye ihtiyacınız yoktur. Aşağıdakileri girin:
+   * Parola korumalı olmayan paylaşımlar için parametreye ihtiyacınız yoktur `-Credential` . Aşağıdakileri girin:
      
        `Export-HcsSupportPackage`
      

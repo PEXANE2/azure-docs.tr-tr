@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6eb983eb5e36c5f3ac6b6eca049239d12bc01a0f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711706"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514631"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Donanım bileşenlerini ve durumunu izlemek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -79,7 +79,7 @@ Bir cihaz bileşeninin donanım durumunu görüntülemek için aşağıdaki adı
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple cihazının birincil Kasası için bileşen listesi
 Aşağıdaki tabloda, şirket içi StorSimple cihazınızın birincil kasasında (hem 8100 hem de 8600 ' de bulunur) bulunan fiziksel ve mantıksal bileşenler özetlenmektedir.
 
-| Bileşen | Modül | Tür | Konum | Alan değiştirilebilir birim (FRU)? | Description |
+| Bileşen | Modül | Tür | Konum | Alan değiştirilebilir birim (FRU)? | Açıklama |
 | --- | --- | --- | --- | --- | --- |
 | Yuva içindeki sürücü [0-11] |Disk sürücüleri |Fiziksel |Shared |Yes |Birincil kasadaki her SSD veya HDD sürücüsü için bir satır sunulur. |
 | Çevresel sıcaklık algılayıcısı |Kutu |Fiziksel |Shared |No |Kasadaki sıcaklığı ölçer. |
@@ -120,7 +120,7 @@ Aşağıdaki tabloda, şirket içi StorSimple cihazınızın birincil kasasında
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>StorSimple cihazının EBOD Kasası için bileşen listesi
 Aşağıdaki tabloda, şirket içi StorSimple cihazınızın EBOD muhafazasının (yalnızca 8600 modelinde mevcuttur) bulunan fiziksel ve mantıksal bileşenleri özetlenmektedir.
 
-| Bileşen | Modül | Tür | Konum | FRU? | Description |
+| Bileşen | Modül | Tür | Konum | FRU? | Açıklama |
 | --- | --- | --- | --- | --- | --- |
 | Yuva içindeki sürücü [0-11] |Disk sürücüleri |Fiziksel |Shared |Yes |EBOD Kasası 'nın önündeki her HDD sürücüsünün bir satırı sunulur. |
 | Çevresel sıcaklık algılayıcısı |Kutu |Fiziksel |Shared |No |Kasadaki sıcaklığı ölçer. |

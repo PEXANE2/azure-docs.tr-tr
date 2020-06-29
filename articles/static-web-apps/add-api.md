@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 7101d23d4611f4eea9b5a9e2a7f3ba417c9fcb1a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: e3cb45ee2cfa299a482391d59359b40baea0feb5
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476130"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517346"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemesine API ekleme
 
@@ -156,7 +156,7 @@ Visual Studio Code, Azure 'da yayımlamadan önce bu projeyi yerel geliştirme b
 
 ### <a name="call-the-api-from-the-application"></a>Uygulamadan API 'YI çağırma
 
-Azure 'a dağıtıldığında, API 'ye gönderilen istekler, rotaya gönderilen istekler için Işlevler uygulamasına otomatik olarak yönlendirilir `api` . Yerel olarak çalışarak, uygulama ayarlarını yerel API 'ye proxy istekleri olarak yapılandırırsınız.
+Azure 'a dağıtıldığında, API 'ye gönderilen istekler, rotaya gönderilen istekler için Işlevler uygulamasına otomatik olarak yönlendirilir `api` . Yerel olarak çalışarak, uygulama ayarlarını yerel API 'ye proxy istekleri olarak yapılandırmanız gerekir.
 
 [!INCLUDE [static-web-apps-local-proxy](../../includes/static-web-apps-local-proxy.md)]
 

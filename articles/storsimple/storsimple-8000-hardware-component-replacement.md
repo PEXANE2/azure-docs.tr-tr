@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69b6c4e81446cf6a922fe9a1d0da8452e5ec164d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60321826"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513193"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazındaki bir donanım bileşenini değiştirme
 
@@ -51,12 +51,12 @@ Bu öğreticide, cihazınız ve güvenlik Simgeleriniz hakkındaki güvenlik bil
 
 Bir bileşeni değiştirmeyi denemeden önce aşağıdaki bilgileri göz önünde bulundurun.
 
-![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Warning.png) ![elektrik sarsıntı](./media/storsimple-hardware-component-replacement/Electric.png) simgesi **uyarısı!**
+![Uyarı simgesi ](./media/storsimple-hardware-component-replacement/Warning.png) ![ elektrik sarsıntı simgesi ](./media/storsimple-hardware-component-replacement/Electric.png) **uyarısı!**
 
 * StorSimple cihazınızın modüllerini ve bileşenlerini işlerken, elektrostatik bir ücret veya antistatik bir işlem kullanarak kendinizi doğru şekilde yapın.
 * Herhangi bir devresi dokunmayın. Bir devre ortaya çıkarabilecek bileşenleri işlerken sağlanan tutamaçları ve kılavuzlarını kullanın.
 
-![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Warning.png) ![bildirim simgesi](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **bildirimi:**
+![Uyarı simgesi ](./media/storsimple-hardware-component-replacement/Warning.png) ![ bildirim simgesi ](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **bildirimi:**
 
 Bir modülü değiştirdiğinizde, **hiçbir zaman kutunun arkada boş bir yuva bırakmayın**. Sorun parçasını kaldırmadan önce bir değiştirme veya boş modül alın.
 
@@ -67,7 +67,7 @@ Cihazınızdaki ana donanım bileşenleri aşağıdaki tablolarda özetlenmekted
 
 | Bileşenler | # Var | Eklenti modülü | Değiştirme yordamı |
 |:--- |:--- |:--- |:--- |
-| Kasa |1 |Hayır |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
+| Kasa |1 |No |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
 | Birincil denetleyiciler |2 |Yes |[StorSimple cihazınızda bir denetleyici modülünü değiştirme](storsimple-8000-controller-replacement.md) |
 | 764W güç ve soğutma modülleri (PCMs) |2 |Yes |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
 | Yedekleme pili |2 |Yes |[StorSimple cihazınızın yedek pil modülünü değiştirme](storsimple-8000-battery-replacement.md) |
@@ -79,7 +79,7 @@ Birincil kutu ve EBOD Kasası, g/ç modülleriyle farklılık gösterir. Ayrıca
 
 | Bileşenler | # Var | Eklenti modülü | Değiştirme yordamı |
 |:--- |:--- |:--- |:--- |
-| Kasa |1 |Hayır |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
+| Kasa |1 |No |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
 | EBOD denetleyicileri |2 |Yes |[StorSimple cihazınızda bir EBOD denetleyicisini değiştirme](storsimple-8000-ebod-controller-replacement.md) |
 | 580W güç ve soğutma modülleri (PCMs) |2 |Yes |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
 | Disk sürücüleri |12 |Yes |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |

@@ -3,16 +3,16 @@ title: StorSimple cihazınıza uzaktan bağlanma
 description: Cihazınızın uzaktan yönetim için nasıl yapılandırılacağını ve HTTP veya HTTPS üzerinden StorSimple için Windows PowerShell nasıl bağlanacağını açıklar.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80299000"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514567"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınıza uzaktan bağlanma
 
@@ -155,7 +155,7 @@ Uzaktan yönetimi etkinleştirmek için cihaz seri konsolunda aşağıdaki adım
     **Remotemanagementmode** alanında **httpsenabled**gösterildiğinizden emin olun. Aşağıdaki çizimde, PuTTY içindeki bu ayarlar gösterilmektedir.
    
      ![Seri HTTPS etkin](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
-4. Çıktısından `Get-HcsSystem`, cihazın seri numarasını kopyalayın ve daha sonra kullanmak üzere kaydedin.
+4. Çıktısından `Get-HcsSystem` , cihazın seri numarasını kopyalayın ve daha sonra kullanmak üzere kaydedin.
    
    > [!NOTE]
    > Seri numarası, sertifikadaki CN adıyla eşlenir.

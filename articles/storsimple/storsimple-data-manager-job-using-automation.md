@@ -3,15 +3,15 @@ title: Azure Otomasyonu 'nu kullanarak StorSimple Veri Yöneticisi bir işi baş
 description: StorSimple Veri Yöneticisi işleri tetiklemenin Azure Otomasyonu 'nu kullanmayı öğrenin
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76273985"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514924"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Otomasyonu 'nu kullanarak bir işi tetikleyin
 
@@ -28,8 +28,8 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
 *   İstemci bilgisayarda yüklü Azure PowerShell. [Azure PowerShell indirin](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 *   Bir kaynak grubundaki StorSimple Veri Yöneticisi hizmetinde doğru şekilde yapılandırılmış bir iş tanımı.
-*   GitHub [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) deposundan dosyayı indirin. 
-*   GitHub [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) deposundan betiği indirin.
+*   [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip)GitHub deposundan dosyayı indirin. 
+*   [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)GitHub deposundan betiği indirin.
 
 ## <a name="step-by-step-procedure"></a>Adım adım yordam
 
@@ -50,7 +50,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
    3. Yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubundan seçin.
    4. Bir **Konum** seçin.
    5. Varsayılan **Farklı Çalıştır hesabı oluştur** seçeneğini seçili bırakın.
-   6. Panoda hızlı erişim için bir bağlantı almak üzere **panoya sabitle**' yi işaretleyin. **Oluştur**' a tıklayın.
+   6. Panoda hızlı erişim için bir bağlantı almak üzere **panoya sabitle**' yi işaretleyin. **Oluştur**'a tıklayın.
 
       ![Farklı Çalıştır Otomasyon hesabı oluştur](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -64,7 +64,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
     ![Modül 1 içeri aktar](./media/storsimple-data-manager-job-using-automation/import-module-1.png)
 
-4. Yerel bilgisayarınızdan `DataTransformationApp.zip` dosyanın konumuna gidin ve modülünü seçin ve açın. Modülü içeri aktarmak için **Tamam** ' ı tıklatın.
+4. `DataTransformationApp.zip`Yerel bilgisayarınızdan dosyanın konumuna gidin ve modülünü seçin ve açın. Modülü içeri aktarmak için **Tamam** ' ı tıklatın.
 
     ![İçeri aktarma modülü 2](./media/storsimple-data-manager-job-using-automation/import-module-2.png)
 
@@ -86,7 +86,7 @@ Başlamadan önce, şunları kullandığınızdan emin olun:
 
 2. **Runbook Ekle**' de **mevcut bir runbook 'u içeri aktar**' a tıklayın.
 
-3. **Runbook dosyası**için Azure PowerShell betik dosyasına `Trigger-DataTransformation-Job.ps1` işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**' a tıklayın.
+3. `Trigger-DataTransformation-Job.ps1` **Runbook dosyası**için Azure PowerShell betik dosyasına işaret edin. Runbook türü otomatik olarak seçilir. Runbook için bir ad ve isteğe bağlı bir açıklama sağlayın. **Oluştur**'a tıklayın.
 
     ![Runbook Ekle 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

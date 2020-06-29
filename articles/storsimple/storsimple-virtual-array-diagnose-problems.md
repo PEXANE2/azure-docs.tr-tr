@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 53f57d17-07af-457f-a0e8-741e52fbbc2a
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 684554c5eaf3f5fa2701bad2d49c082595552adb
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61408447"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515183"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple Sanal Dizisi sorunlarını gidermek için StorSimple Device Manager hizmetini kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -38,7 +38,7 @@ StorSimple Sanal dizisiyle ilgili yaygın sorunlardan bazılarını görüntüle
 
 2. Sorunu gidermeye yardımcı olmak için **Önerilen adımları** gözden geçirmek için, karşılaştığdaki sorunun belirtisini **genişletin** . İsterseniz, daha fazla başvuru için sağlanan ayrıntılı belge bağlantılarını da gözden geçirebilirsiniz.
    
-    ![Sorun giderme](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
+    ![Sorunu giderin](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
 3. Sorununuzla ilgili bir başvuru bulamıyor veya sorunu çözemezseniz, daha fazla yardım almak için Microsoft Desteği ulaşın.
 

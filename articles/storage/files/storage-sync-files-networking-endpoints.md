@@ -3,18 +3,18 @@ title: Azure Dosya Eşitleme ağ uç noktalarını yapılandırma | Microsoft Do
 description: Azure Dosya Eşitleme için ağ seçeneklerine genel bakış.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e62f093c46b4acc4380f43419a2af0f30e9eb540
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 68d2b864b0e825756fbcd8e43fee3d6289c77c36
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466745"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512851"
 ---
-# <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağ uç noktalarını yapılandırma
+# <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
 Azure dosyaları ve Azure Dosya Eşitleme, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 
 - Genel bir IP adresi olan ve dünyanın herhangi bir yerinden erişilebilen genel uç noktalar.
 - Bir sanal ağ içinde bulunan ve bu sanal ağın adres alanından özel bir IP adresine sahip olan özel uç noktalar.

@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: common
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 64d987ff01e596eefa98e8086788546c465e2d83
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195385"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515023"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
@@ -109,13 +109,13 @@ Azure portal kullanarak şablonu dağıtmak için:
 
     ![Azure Resource Manager şablon kitaplığı](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
 5. **Düzenleyicide kendi şablonunuzu oluşturun**'u seçin.
 
-6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz **Template. JSON** dosyasını yüklemek için yönergeleri izleyin.
+6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz dosyanın **template.js** yüklemek için yönergeleri izleyin.
 
-7. **Template. JSON** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak ayarlar `mytargetaccount` .
+7. Dosyadaki **template.js** , depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak ayarlar `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -143,7 +143,7 @@ Azure portal kullanarak şablonu dağıtmak için:
 
 PowerShell kullanarak şablonu dağıtmak için:
 
-1. **Template. JSON** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak ayarlar `mytargetaccount` .
+1. Dosyadaki **template.js** , depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak ayarlar `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ PowerShell kullanarak şablonu dağıtmak için:
     },
     ``` 
 
-2. **Template. JSON** dosyasındaki **Location** özelliğini hedef bölgeye düzenleyin. Bu örnek, hedef bölgeyi olarak ayarlar `eastus` .
+2. Dosyadakitemplate.js**konum** özelliğini hedef bölgeye **template.json** düzenleyin. Bu örnek, hedef bölgeyi olarak ayarlar `eastus` .
 
     ```json
     "resources": [{
@@ -182,7 +182,7 @@ Hedef bölgede yeni bir depolama hesabı oluşturmak için şablonu dağıtın.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. **Template. JSON** dosyasını kaydedin.
+1. **template.js** dosyaya kaydedin.
 
 2. Özellik değerlerini girin veya seçin:
 
@@ -219,7 +219,7 @@ Bazı özellikler bir şablona aktarmayacaktır, bu nedenle bunları yeni depola
 
 Aşağıdaki tablo, bu özellikleri yeni depolama hesabınıza ekleme kılavuzlarıyla birlikte listelemektedir.
 
-| Öne çıkan özelliği    | Rehber    |
+| Özellik    | Rehber    |
 |--------|-----------|
 | **Yaşam döngüsü yönetim ilkeleri** | [Azure Blob depolama yaşam döngüsünü yönetme](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statik web siteleri** | [Azure depolama 'da statik bir Web sitesi barındırma](../blobs/storage-blob-static-website-how-to.md) |

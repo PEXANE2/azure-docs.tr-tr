@@ -3,15 +3,15 @@ title: Azure depolama Bloblarından veri kopyalama Data Lake Storage 1.
 description: Azure depolama Bloblarından veri kopyalamak için AdlCopy aracını kullanın Azure Data Lake Storage 1.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1a2ae153d1409fddbaf4939ab4295d7434abd80
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638880"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515695"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Azure depolama Bloblarından veri kopyalama Azure Data Lake Storage 1.
 
@@ -35,7 +35,7 @@ Ayrıca, AdlCopy aracını iki farklı modda kullanabilirsiniz:
 
 Bu makaleye başlamadan önce aşağıdakilere sahip olmanız ve aşağıdaki işlemleri yapmış olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure depolama Blobları** kapsayıcısı bazı verilerle.
 * **Data Lake Storage 1. hesabı**. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](data-lake-store-get-started-portal.md)
 * **Data Lake Analytics hesabı (isteğe bağlı)** -Data Lake Analytics hesabının nasıl oluşturulacağı hakkında yönergeler için bkz. [Azure Data Lake Analytics kullanmaya başlama](../data-lake-analytics/data-lake-analytics-get-started-portal.md) .
@@ -60,7 +60,7 @@ Söz diziminde parametreler aşağıda açıklanmıştır:
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>Azure Storage blobundan veri kopyalamak için AdlCopy (tek başına) kullanın
 
-1. Bir komut istemi açın ve genellikle `%HOMEPATH%\Documents\adlcopy`AdlCopy 'in yüklü olduğu dizine gidin.
+1. Bir komut istemi açın ve genellikle AdlCopy 'in yüklü olduğu dizine gidin `%HOMEPATH%\Documents\adlcopy` .
 1. Belirli bir blobu kaynak kapsayıcıdan Data Lake Storage 1. klasöre kopyalamak için aşağıdaki komutu çalıştırın:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
@@ -96,7 +96,7 @@ Bir Azure Blob depolama hesabından kopyalama yapıyorsanız, BLOB depolama tara
 
 Ayrıca iki Data Lake Storage 1. hesap arasında veri kopyalamak için AdlCopy komutunu da kullanabilirsiniz.
 
-1. Bir komut istemi açın ve genellikle `%HOMEPATH%\Documents\adlcopy`AdlCopy 'in yüklü olduğu dizine gidin.
+1. Bir komut istemi açın ve genellikle AdlCopy 'in yüklü olduğu dizine gidin `%HOMEPATH%\Documents\adlcopy` .
 1. Belirli bir dosyayı bir Data Lake Storage 1. hesabından diğerine kopyalamak için aşağıdaki komutu çalıştırın.
 
         AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
@@ -156,7 +156,7 @@ Terabaytlarca veri kopyalarken, kendi Azure Data Lake Analytics hesabınızla Ad
 
 Bu bölümde, bir kaynaktan veri kopyalamak için AdlCopy 'in nasıl kullanılacağını öğrenirsiniz (aşağıdaki örneğimizde Azure Depolama Blobu), bir hedef Data Lake Storage 1. hesabına, model eşleştirmeyi kullanarak. Örneğin, kaynak blobundan hedefine. csv uzantılı tüm dosyaları kopyalamak için aşağıdaki adımları kullanabilirsiniz.
 
-1. Bir komut istemi açın ve genellikle `%HOMEPATH%\Documents\adlcopy`AdlCopy 'in yüklü olduğu dizine gidin.
+1. Bir komut istemi açın ve genellikle AdlCopy 'in yüklü olduğu dizine gidin `%HOMEPATH%\Documents\adlcopy` .
 1. Belirli bir Blobun *. csv uzantısına sahip tüm dosyaları kaynak kapsayıcısından Data Lake Storage 1. klasöre kopyalamak için aşağıdaki komutu çalıştırın:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv

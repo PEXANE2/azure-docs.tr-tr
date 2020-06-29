@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: cd0c8961cff15385249222986e5fb90ee75e3559
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: f7f0a466f288031474b100f42c9ba41aafb9ff9a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887335"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515550"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container teklifi oluşturma
 
@@ -126,7 +126,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Adı
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -144,7 +144,7 @@ Teklifinizin kısa bir açıklaması. Bu, 100 karakter uzunluğunda olabilir ve 
 
 Teklifinizin daha ayrıntılı bir açıklaması. Bu, 256 karakter uzunluğunda olabilir ve Market arama sonuçlarında kullanılır.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Açıklama
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -238,9 +238,6 @@ Azure abonelik KIMLIĞI GUID 'Lerini kullanarak önizleme Dinleyicilerinizi, her
 > Azure abonelik KIMLIĞINIZI Azure portal içindeki abonelikler sayfasında bulabilirsiniz.
 
 Tek tek (10 ' a kadar) veya bir CSV dosyası karşıya yükleyerek (100 'e kadar) en az bir Azure abonelik KIMLIĞI ekleyin. Bu abonelik kimliklerini ekleyerek teklifinizin canlı olarak yayınlanmadan önce ne kadar önizleyeceğini belirlersiniz. Teklifiniz zaten canlı ise, teklifinizdeki değişiklikleri veya güncelleştirmeleri test etmek için bir önizleme izleyiciyi seçebilirsiniz.
-
-> [!NOTE]
-> Önizleme hedef kitlesi, özel bir hedef kitleye göre farklılık gösterir. Bir **Önizleme** hedef kitlesi, yalnızca **özel** bir hedef kitleye yayımlanmaları (kullanılabilirlik sekmesinde ayarlanır) dahil olmak üzere Market 'te canlı olmadan önce tüm teklif planlarını görebilir ve doğrulayabilirler.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -396,7 +393,7 @@ Teklifi yayımlamaya göndermek için **Yayımla**' yı seçin.
 
 Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz.
 
-Teklifinizi herkese (veya özel bir teklif, özel bir hedef kitleye) yayımlamak için Iş Ortağı Merkezi ' ne gidin ve **Git-Live**' ı seçin.
+Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live**' ı seçin.
 
 ## <a name="next-step"></a>Sonraki adım
 

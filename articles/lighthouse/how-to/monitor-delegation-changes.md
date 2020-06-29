@@ -3,12 +3,12 @@ title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
 ms.date: 03/30/2020
 ms.topic: how-to
-ms.openlocfilehash: b07531794c0b7d22dad7043ad69078d801fe44e7
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5bb299f85074675b1d02943ee623394a7deff000
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634107"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515774"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
@@ -44,7 +44,7 @@ Bu çok geniş bir erişim düzeyi olduğundan, bu rolü tek bir kullanıcı vey
 
 - Bu rolü, diğer otomasyon için kullanılan mevcut bir hizmet sorumlusuna atamak yerine yalnızca bu işlev için kullanılacak [Yeni bir hizmet sorumlusu hesabı oluşturun](../../active-directory/develop/howto-create-service-principal-portal.md) .
 - Bu hizmet sorumlusunun, temsilcili müşteri kaynaklarına erişimi olmadığından emin olun.
-- Azure Key Vault kimlik doğrulaması yapmak ve güvenli bir şekilde [depolamak](../../key-vault/general/best-practices.md) [Için bir sertifika kullanın](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) .
+- Azure Key Vault kimlik doğrulaması yapmak ve güvenli bir şekilde [depolamak](../../key-vault/general/best-practices.md) [Için bir sertifika kullanın](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) .
 - Erişimi olan kullanıcıları hizmet sorumlusu adına hareket etmek için sınırlayın.
 
 Kök kapsam atamalarını yapmak için aşağıdaki yöntemlerden birini kullanın.

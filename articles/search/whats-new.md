@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 34aeda7534c15b51b9759b696caaf3fcfac88659
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 086e3cf71012f168851df1c85b19689294fe6302
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317714"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515731"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -23,11 +23,11 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 ### <a name="june-2020"></a>Haziran 2020
 
-+ [Azure Machine Learning (AML) (Önizleme)](cognitive-search-aml-skill.md) , dizin oluşturma sırasında bir Azure Machine Learning modeli sarmalayan kullanılan bilişsel bir yetenişdir. Beceri sayesinde, daha önce eğitilen ve dağıtılan özel makine öğrenimini bir AI zenginleştirme işlem hattı ile tümleştirebilirsiniz. [Erişim istemek Için kaydolun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). AML becerisi eklemeye hazırsanız, Azure portal içindeki beceri düzenleyicisinde AML şablonunu kullanın. Uygulamalı yönergeler için [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın.
+Azure Machine Learning Beceri, bir ının bir uç noktasını Azure Machine Learning tümleştirmede yeni yetenek türüdür Portal deneyimi, Azure Machine Learning uç noktasının Bilişsel Arama bir beceri içinde bulunmasını ve tümleştirilmesini destekler. Bulma Bilişsel Arama ve Azure ML hizmetlerinin aynı abonelikte dağıtılması gerekir. [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın.
 
 ### <a name="may-2020-microsoft-build"></a>Mayıs 2020 (Microsoft derleme)
 
-+ [Hata ayıklama oturumları](cognitive-search-debug-session.md) özelliği şu anda önizlemededir. [Erişim istemek Için kaydolun](https://aka.ms/DebugSessions). Hata ayıklama oturumları, beceri ile ilgili sorunları araştırmak ve çözmek için portal tabanlı bir arabirim sağlar. Hata ayıklama oturumunda oluşturulan düzeltmeler üretim becerileri kaydedilebilir. [Bu öğreticiyi](cognitive-search-tutorial-debug-sessions.md)kullanmaya başlayın.
++ [Hata ayıklama oturumları](cognitive-search-debug-session.md) özelliği şu anda önizlemededir. Hata ayıklama oturumları, beceri ile ilgili sorunları araştırmak ve çözmek için portal tabanlı bir arabirim sağlar. Hata ayıklama oturumunda oluşturulan düzeltmeler üretim becerileri kaydedilebilir. [Bu öğreticiyi](cognitive-search-tutorial-debug-sessions.md)kullanmaya başlayın.
 
 + Güvenlik geliştirmeleri, genel İnternet üzerinden erişilemeyen [bir özel arama uç noktası (Önizleme) ayarlama](service-create-private-endpoint.md) olanağını içerir. Ayrıca, [bağlantılı güvenlik duvarı desteği (Önizleme) IÇIN IP kurallarını da yapılandırabilirsiniz](service-configure-firewall.md).
 

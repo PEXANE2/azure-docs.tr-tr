@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: db941152186127302680b5e659e43cd2d82a8908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3fa67f6961b146d1dc7f5a4d1780e4060f1fdedc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162285"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512693"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Bilişsel Arama Önizleme özellikleri
 
@@ -21,8 +21,8 @@ Bu makalede, şu anda önizleme aşamasında olan özellikler listelenmiştir. �
 
 Portalda ve .NET SDK 'sında bazı Önizleme özellikleri kullanılabilir olsa da REST API her zaman önizleme özelliklerine sahiptir.
 
-+ Arama işlemleri [**`2019-05-06-Preview`**](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) için geçerli önizleme sürümüdür.
-+ Yönetim işlemleri [**`2019-10-01-Preview`**](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) için geçerli önizleme sürümüdür.
++ Arama işlemleri için [**`2019-05-06-Preview`**](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) geçerli önizleme sürümüdür.
++ Yönetim işlemleri için [**`2019-10-01-Preview`**](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) geçerli önizleme sürümüdür.
 
 > [!IMPORTANT]
 > Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -37,6 +37,7 @@ Portalda ve .NET SDK 'sında bazı Önizleme özellikleri kullanılabilir olsa d
 | [PII algılama yeteneği (Önizleme)](cognitive-search-skill-pii-detection.md) | Dizin oluşturma sırasında, kişisel olarak tanımlanabilir bilgileri bir giriş metinden çıkaran ve bu metni çeşitli yollarla maskeleme seçeneği sunan bilişsel bir yetenek.| 
 | [Artımlı zenginleştirme (Önizleme)](cognitive-search-incremental-indexing-conceptual.md) | Bir zenginleştirme işlem hattına önbelleğe alma ekler ve bir beceri veya başka bir nesne için bir güncelleştirme gibi hedeflenen bir değişiklik, içeriği değiştirmezse mevcut çıktıyı yeniden kullanmanıza olanak tanır. Önbelleğe alma yalnızca bir beceri tarafından üretilen zenginleştirilmiş belgeler için geçerlidir.| 
 | [Bilgi deposu (Önizleme)](knowledge-store-concept-intro.md) | Bir AI tabanlı enzenginleştirme işlem hattının yeni hedefi. Fiziksel veri yapısı Azure Blob depolama ve Azure Tablo depolamada bulunur ve ekli bilişsel beceri sahip bir Dizin Oluşturucu çalıştırdığınızda oluşturulur ve doldurulur. Bilgi deposunun kendisi tanımı bir beceri tanımı içinde belirtilir. Bilgi deposu tanımı içinde, verilerin nasıl şekillendirilmiş olduğunu, verilerin tablo depolama veya blob depolama alanında mi depolandığını ve birden çok görünüm olup olmadığını belirten *projeksiyon* öğeleri aracılığıyla verilerinizin fiziksel yapılarını kontrol edersiniz.| 
+| [AML becerisi (Önizleme)](cognitive-search-aml-skill.md) | Dizin oluşturma sırasında belgeleri zenginleştirmek için Azure Machine Learning (AML) ile oluşturulmuş özel bir yetenek. Azure ML yeteneği, yetenek bulma, kimlik doğrulama ve şema eşlemesini kolaylaştırır.|
 
 ## <a name="indexing-and-query-features"></a>Dizin oluşturma ve sorgu özellikleri
 
@@ -53,15 +54,15 @@ Dizin Oluşturucu Önizleme özellikleri, önizleme arama API 'sinde bulunabilir
 |||
 |-|-|
 | [Özel uç nokta desteği](service-create-private-endpoint.md) | Güvenli bir istemci (örneğin, bir sanal makine) ile bir sanal ağ oluşturabilir ve ardından özel uç nokta kullanan bir arama hizmeti oluşturabilirsiniz. |
-| IP erişim kısıtlaması | Yönetim [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) REST API kullanarak, erişim IZNI verilen IP adreslerine yönelik kısıtlamalara sahip bir hizmet oluşturabilirsiniz. |
+| IP erişim kısıtlaması | [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview)Yönetim REST API kullanarak, erişim izni VERILEN IP adreslerine yönelik kısıtlamalara sahip bir hizmet oluşturabilirsiniz. |
 
 ## <a name="earlier-preview-features"></a>Önceki Önizleme özellikleri
 
-Daha önceki önizlemelerde duyurulan özellikler genel kullanıma sunulmadığı takdirde hala genel önizlemede. Daha önceki bir Preview API sürümü olan bir API 'yi arıyorsanız, bu sürümü kullanmaya devam edebilir veya beklenen davranışa hiçbir değişiklik yapmadan öğesine `2019-05-06-Preview` geçebilirsiniz.
+Daha önceki önizlemelerde duyurulan özellikler genel kullanıma sunulmadığı takdirde hala genel önizlemede. Daha önceki bir Preview API sürümü olan bir API 'yi arıyorsanız, bu sürümü kullanmaya devam edebilir veya `2019-05-06-Preview` beklenen davranışa hiçbir değişiklik yapmadan öğesine geçebilirsiniz.
 
 ## <a name="how-to-call-a-preview-api"></a>Önizleme API 'sini çağırma
 
-Daha eski önizlemeler hala çalışır, ancak zaman içinde eski hale gelir. Kodunuz veya `api-version=2017-11-11-Preview`çağırıyorsa `api-version=2016-09-01-Preview` , bu çağrılar hala geçerlidir. Ancak, geliştirmelerle yalnızca en yeni önizleme sürümü yenilenir. 
+Daha eski önizlemeler hala çalışır, ancak zaman içinde eski hale gelir. Kodunuz veya çağırıyorsa `api-version=2016-09-01-Preview` `api-version=2017-11-11-Preview` , bu çağrılar hala geçerlidir. Ancak, geliştirmelerle yalnızca en yeni önizleme sürümü yenilenir. 
 
 Aşağıdaki örnek sözdizimi, önizleme API sürümüne yapılan çağrıyı gösterir.
 

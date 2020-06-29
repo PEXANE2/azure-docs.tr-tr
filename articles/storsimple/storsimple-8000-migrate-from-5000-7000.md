@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c05b62b254320bd56a6f0591f1edbe32d5362e56
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60631683"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514727"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 serisinden verileri 8000 serisi cihaza geçirme
 
@@ -123,7 +123,7 @@ Bilgisayarınıza StorSimple geçiş aracı 'nı yüklemek için aşağıdaki ad
 
 1. _StorSimple8000SeriesMigrationTool_ klasörünü Windows bilgisayarınıza kopyalayın. Yazılımın kopyalandığı sürücünün yeterli alana sahip olduğundan emin olun.
 
-    Klasöründe _StorSimple8000SeriesMigrationTool. exe. config_ araç config dosyasını açın. Dosyanın kod parçacığı aşağıda verilmiştir.
+    Klasöründe _StorSimple8000SeriesMigrationTool.exe.config_ araç yapılandırma dosyasını açın. Dosyanın kod parçacığı aşağıda verilmiştir.
     
     ```xml
         <add key="UserName" value="username@xyz.com" />
@@ -145,7 +145,7 @@ Bilgisayarınıza StorSimple geçiş aracı 'nı yüklemek için aşağıdaki ad
     ![Azure Active Directory için kiracı KIMLIĞINI denetle](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Yapılandırma dosyasına yapılan değişiklikleri kaydedin.
-4.  Aracı başlatmak için _StorSimple8000SeriesMigrationTool. exe_ ' yi çalıştırın. Kimlik bilgileri istendiğinde Azure portal aboneliğinizle ilişkili kimlik bilgilerini sağlayın. 
+4.  Aracı başlatmak için _StorSimple8000SeriesMigrationTool.exe_ çalıştırın. Kimlik bilgileri istendiğinde Azure portal aboneliğinizle ilişkili kimlik bilgilerini sağlayın. 
 5.  StorSimple geçiş aracı kullanıcı arabirimi görüntülenir.
   
 

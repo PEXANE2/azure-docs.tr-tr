@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60631592"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514610"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızda DATA 0 ağ arabirimi ayarlarını değiştirin
 
@@ -32,13 +32,13 @@ DATA 0 arabirimi ilk olarak StorSimple cihazının ilk dağıtımı sırasında 
 Bu öğreticiyi okuduktan sonra şunları yapabilirsiniz:
 
 * VERI 0 Ağ ayarını Kurulum Sihirbazı aracılığıyla değiştirme
-* `Set-HcsNetInterface` Cmdlet 'ı aracılığıyla veri 0 ağ ayarlarını değiştirme
+* Cmdlet 'i aracılığıyla VERI 0 ağ ayarlarını değiştirme `Set-HcsNetInterface`
 
 ## <a name="modify-data-0-network-settings-through-setup-wizard"></a>VERI 0 ağ ayarlarını Kurulum Sihirbazı aracılığıyla değiştirme
 StorSimple cihazınızın Windows PowerShell arabirimine bağlanıp bir Kurulum Sihirbazı oturumu başlatarak VERI 0 ağ ayarlarını yeniden yapılandırabilirsiniz. VERI 0 ayarlarını değiştirmek için aşağıdaki adımları gerçekleştirin:
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>VERI 0 ağ ayarlarını Kurulum Sihirbazı aracılığıyla değiştirmek için
-1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1`.
+1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1` .
 2. Komut istemine şunları yazın:
    
     `Invoke-HcsSetupWizard`
@@ -51,7 +51,7 @@ StorSimple cihazınızın Windows PowerShell arabirimine bağlanıp bir Kurulum 
 DATA 0 ağ arabirimini yeniden yapılandırmak için alternatif bir yol, `Set-HcsNetInterface` cmdlet 'i kullanmaktır. Cmdlet 'i, StorSimple cihazınızın Windows PowerShell arabiriminden yürütülür. Bu yordamı kullanırken, denetleyici sabit IP 'Leri burada da yapılandırılabilir. VERI 0 ayarlarını değiştirmek için aşağıdaki adımları gerçekleştirin: 
 
 #### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Set-Hcsnetınterface cmdlet 'i aracılığıyla VERI 0 ağ ayarlarını değiştirmek için
-1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, Cihaz Yöneticisi parolasını belirtin. Varsayılan parola `Password1`.
+1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, Cihaz Yöneticisi parolasını belirtin. Varsayılan parola `Password1` .
 2. Komut istemine şunları yazın:
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`

@@ -3,15 +3,15 @@ title: StorSimple cihaz yönetimi için PowerShell
 description: StorSimple cihazınızı yönetmek için StorSimple için Windows PowerShell kullanmayı öğrenin.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 35be2e0b7b5a24261cd8ee15b1964b953c1a3327
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747718"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513700"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>StorSimple için Windows PowerShell’i kullanarak cihazınızı yönetme
 
@@ -60,13 +60,13 @@ Seri konsolundan Windows PowerShell arabirimine bağlanmak için aşağıdaki Pu
    | Ek klavye özelliklerini etkinleştir |Denetim-alt, AltGr 'tan farklı |
    
     ![Desteklenen Putty ayarları](./media/storsimple-windows-powershell-administration/IC740877.png)
-3. **Uygula**’ya tıklayın.
+3. **Uygula**'ya tıklayın.
 4. **Kategori** bölmesinde **çeviri**' yi seçin.
 5. **Uzak karakter kümesi** liste kutusunda **UTF-8**' i seçin.
 6. **Çizgi çizim karakterlerinin Işlenmesiyle**, **Unicode çizgi çizim kod noktalarını kullan**' ı seçin. Aşağıdaki ekran görüntüsünde doğru PuTTY seçimleri gösterilmektedir.
    
     ![UTF Putty ayarları](./media/storsimple-windows-powershell-administration/IC740878.png)
-7. **Uygula**’ya tıklayın.
+7. **Uygula**'ya tıklayın.
 
 Artık, aşağıdaki adımları uygulayarak cihaz seri konsoluna bağlanmak için PuTTY kullanabilirsiniz.
 

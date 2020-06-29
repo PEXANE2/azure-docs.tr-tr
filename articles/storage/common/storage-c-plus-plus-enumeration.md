@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591695"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514453"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Depolama Kaynaklarını C++ dilinde listeleme
 
@@ -115,7 +115,7 @@ Bu yöntemler, kesimli API 'lerin sarmalayıcıları olarak uygulanmıştır. B�
 
 Bu yaklaşım, depolama hesabı veya tablosu az sayıda nesne içerdiğinde işe alabilir. Ancak, nesne sayısında bir artış ile, tüm sonuçlar bellekte kaldığı için gereken bellek sınır olmadan artabilir. Tek bir listeleme işlemi çok uzun sürebilir, bu süre içinde çağıranın ilerleme durumu hakkında hiçbir bilgi yoktur.
 
-SDK 'daki bu doyumsuz listeleme API 'leri C#, Java veya JavaScript Node. js ortamında bulunmamaktadır. Bu doyumsuz API 'lerini kullanmanın olası sorunlarından kaçınmak için, bunları sürüm 0.6.0 Önizleme sürümünde kaldırdık.
+SDK 'daki bu doyumsuz listeleme API 'leri C#, Java veya JavaScript Node.js ortamında bulunmamaktadır. Bu doyumsuz API 'lerini kullanmanın olası sorunlarından kaçınmak için, bunları sürüm 0.6.0 Önizleme sürümünde kaldırdık.
 
 Kodunuz bu doyumsuz API 'lerini arıyorsanız:
 

@@ -258,36 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Sanal makine teklifi
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-    - name: API Başvurusu
-      items:
-        - name: Genel Bakış
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: Ön koşullar
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: Dikkat edilmesi gerekenler
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
-        - name: Eşzamanlılık denetimi
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
-        - name: Teklifleri alma
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-        - name: Belirli bir teklifi alma
-          href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: Teklifi ekleme veya değiştirme
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
-        - name: Teklif durumunu alma
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
-        - name: Teklif yayımlama
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
-        - name: İşlemleri alma
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
-        - name: İşlemleri iptal etme
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
-        - name: Canlı yayına geçme
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
-        - name: Sanal makine tekliflerinin fiyatlandırması
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
-        - name: Kimlik doğrulama hatalarını giderme
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Destek alma
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
 - name: İş Ortağı Merkezi’nde ticari market
@@ -433,8 +403,6 @@
       href: ./partner-center-portal/update-existing-offer.md
     - name: Avantajları etkinleştirme
       href: ./partner-center-portal/marketplace-rewards.md
-    - name: Destek seçenekleri
-      href: ./partner-center-portal/support.md
     - name: İş Ortağı Merkezi Analizi
       items:
         - name: Ticari market için analiz
@@ -471,3 +439,35 @@
           href: ./partner-center-portal/payout-policy-details.md
         - name: Vergi ayrıntıları
           href: ./partner-center-portal/tax-details-paid-transactions.md
+    - name: CPP API Başvurusu
+      items:
+        - name: Genel Bakış
+          href: ./cloud-partner-portal-api-overview.md
+        - name: Ön koşullar
+          href: ./cloud-partner-portal-api-prerequisites.md
+        - name: Dikkat edilmesi gerekenler
+          href: ./cloud-partner-portal-api-considerations.md
+        - name: Eşzamanlılık denetimi
+          href: ./cloud-partner-portal-api-concurrency-control.md
+        - name: Teklifleri alma
+          href: ./cloud-partner-portal-api-retrieve-offers.md
+        - name: Belirli bir teklifi alma
+          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
+        - name: Teklifi ekleme veya değiştirme
+          href: ./cloud-partner-portal-api-creating-offer.md
+        - name: Teklif durumunu alma
+          href: ./cloud-partner-portal-api-retrieve-offer-status.md
+        - name: Teklif yayımlama
+          href: ./cloud-partner-portal-api-publish-offer.md
+        - name: İşlemleri alma
+          href: ./cloud-partner-portal-api-retrieve-operations.md
+        - name: İşlemleri iptal etme
+          href: ./cloud-partner-portal-api-cancel-operations.md
+        - name: Canlı yayına geçme
+          href: ./cloud-partner-portal-api-go-live.md
+        - name: Sanal makine tekliflerinin fiyatlandırması
+          href: ./cloud-partner-portal-api-setting-price.md
+        - name: Kimlik doğrulama hatalarını giderme
+          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - name: Destek seçenekleri
+      href: ./partner-center-portal/support.md

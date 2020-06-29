@@ -5,17 +5,17 @@ description: Ağ trafiğinin Internet üzerinden kendi hesabınıza nasıl yönl
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: bdb33ebfb1ca37772a5b0db96acdbddd422578af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597824"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514199"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure depolama için ağ yönlendirme tercihini yapılandırma (Önizleme)
 
@@ -46,7 +46,7 @@ Depolama hesabınız için rotaya özgü uç noktaları da yayımlayabilirsiniz.
 | Depolama hizmeti        | Rotaya özgü uç nokta                                  |
 | :--------------------- | :------------------------------------------------------- |
 | Blob hizmeti           | `StorageAccountA-internetrouting.blob.core.windows.net`  |
-| Data Lake Storage 2. Nesil | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
+| Data Lake Storage Gen2 | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
 | Dosya hizmeti           | `StorageAccountA-internetrouting.file.core.windows.net`  |
 | Statik Web siteleri        | `StorageAccountA-internetrouting.web.core.windows.net`   |
 
@@ -55,7 +55,7 @@ Bir Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişim
 | Depolama hizmeti        | Rotaya özgü salt okunurdur ikincil uç nokta                        |
 | :--------------------- | :----------------------------------------------------------------- |
 | Blob hizmeti           | `StorageAccountA-internetrouting-secondary.blob.core.windows.net`  |
-| Data Lake Storage 2. Nesil | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
+| Data Lake Storage Gen2 | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
 | Dosya hizmeti           | `StorageAccountA-internetrouting-secondary.file.core.windows.net`  |
 | Statik Web siteleri        | `StorageAccountA-internetrouting-secondary.web.core.windows.net`   |
 

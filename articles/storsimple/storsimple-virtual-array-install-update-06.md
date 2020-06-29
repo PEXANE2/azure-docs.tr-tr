@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62116900"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513581"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>StorSimple Sanal diziniz üzerinde 0,6 güncelleştirmesini yükler
 
@@ -30,6 +30,7 @@ Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal ar
 Bir güncelleştirmeyi uygulamadan önce, önce konakta ve sonra da cihazda bulunan birimleri veya paylaşımları çevrimdışına almanız önerilir. Bu, veri bozulması olasılığını en aza indirir. Birimler veya paylaşımlar çevrimdışı olduktan sonra, cihazın el ile yedeklemesini de yapmanız gerekir.
 
 > [!IMPORTANT]
+>
 > - Güncelleştirme 0,6, cihazınızdaki **10.0.10293.0** yazılım sürümüne karşılık gelir. Bu güncelleştirmedeki yenilikler hakkında daha fazla bilgi için [güncelleştirme 0,6 sürüm notları](storsimple-virtual-array-update-06-release-notes.md)' na gidin.
 >
 > - Güncelleştirme 0,2 veya sonraki bir sürümü çalıştırıyorsanız, Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Güncelleştirme 0,1 veya GA yazılım sürümlerini çalıştırıyorsanız, güncelleştirme 0,6 ' i yüklemek için yerel Web Kullanıcı arabirimi aracılığıyla düzeltme yöntemini kullanmanız gerekir.
@@ -57,7 +58,7 @@ Microsoft Update Kataloğu'ndan yazılım güncelleştirmesi indirmek için aşa
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi indirmek için
 
-1. Internet Explorer 'ı başlatın ve adresine [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)gidin.
+1. Internet Explorer 'ı başlatın ve adresine gidin [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Bu bilgisayarda ilk kez Microsoft Update kataloğunu kullanıyorsanız, Microsoft Update Katalog eklentisini yüklemek isteyip istemediğiniz sorulduğunda **yüklensin** ' e tıklayın.
 
@@ -75,15 +76,15 @@ Microsoft Update Kataloğu'ndan yazılım güncelleştirmesi indirmek için aşa
     ![Paketteki dosyalar](./media/storsimple-virtual-array-install-update-06/update06folder.png)
 
     Şununla karşılaşırsınız:
-    -  Tek başına Microsoft Update paket dosyası `WindowsTH-KB3011067-x64`. Bu dosya, cihaz yazılımını güncelleştirmek için kullanılır.
-    - Geneva Izleme Aracısı paket dosyası `GenevaMonitoringAgentPackageInstaller`. Bu dosya, Izleme ve tanılama hizmeti (MDS) aracısını güncelleştirmek için kullanılır. Cab dosyasına çift tıklayın. Bir _. msi_ görüntülenir. Dosyayı seçin, sağ tıklayın ve ardından dosyayı **ayıklayın** . Aracıyı güncelleştirmek için _. msi_ dosyasını kullanın.
+    -  Tek başına Microsoft Update paket dosyası `WindowsTH-KB3011067-x64` . Bu dosya, cihaz yazılımını güncelleştirmek için kullanılır.
+    - Geneva Izleme Aracısı paket dosyası `GenevaMonitoringAgentPackageInstaller` . Bu dosya, Izleme ve tanılama hizmeti (MDS) aracısını güncelleştirmek için kullanılır. Cab dosyasına çift tıklayın. Bir _. msi_ görüntülenir. Dosyayı seçin, sağ tıklayın ve ardından dosyayı **ayıklayın** . Aracıyı güncelleştirmek için _. msi_ dosyasını kullanın.
 
         ![MDS Aracısı güncelleştirme dosyasını Ayıkla](./media/storsimple-virtual-array-install-update-06/extract-geneva-monitoring-agent-installer.png)
 
         > [!IMPORTANT]
         > StorSimple güncelleştirme 0,5 (0.0.10293.0) çalıştırıyorsanız, MDS aracısını güncelleştirmeniz gerekmez.
 
-    - Kritik Windows güvenlik güncelleştirmeleri, `windows8.1-kb4012213-x64``windows8.1-kb3205400-x64`, ve `windows8.1-kb4019213-x64`içeren üç dosya.
+    - Kritik Windows güvenlik güncelleştirmeleri,, ve içeren üç `windows8.1-kb4012213-x64` Dosya `windows8.1-kb3205400-x64` `windows8.1-kb4019213-x64` .
 
 
 ### <a name="install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yükler
@@ -94,11 +95,11 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Güncelleştirmeyi veya düzeltmeyi yüklemek için
 
-1. Yerel Web Kullanıcı arabiriminde **bakım** > **yazılım güncelleştirmesi**' ne gidin. Çalıştırdığınız yazılım sürümünü bir yere unutmayın. **10.0.10290.0**çalıştırıyorsanız, adım 6 ' da MDS aracısını güncelleştirmeniz gerekmez.
+1. Yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Çalıştırdığınız yazılım sürümünü bir yere unutmayın. **10.0.10290.0**çalıştırıyorsanız, adım 6 ' da MDS aracısını güncelleştirmeniz gerekmez.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**’ya tıklayın.
+2. **Güncelleştirme dosyası yolu**' nda, güncelleştirme veya düzeltme için dosya adını girin. Bir ağ paylaşımında yer alıyorsa güncelleştirme veya düzeltme yükleme dosyasına da gidebilirsiniz. **Uygula**'ya tıklayın.
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -110,7 +111,7 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
    
     ![cihaz güncelleştirme](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım** > **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 0,6 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10293** olmalıdır.
+5. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Güncelleştirme 0,6 için, görüntülenmiş yazılım sürümü **10.0.0.0.0.10293** olmalıdır.
    
    > [!NOTE]
    > Yazılım sürümlerini yerel Web Kullanıcı arabiriminde ve Azure portal biraz farklı bir şekilde raporlarız. Örneğin, yerel Web Kullanıcı arabirimi raporları **10.0.0.0.0.10293** ve aynı sürüm için **10.0.10293.0** raporlar Azure Portal.
@@ -121,7 +122,7 @@ Bu yöntemi, GA çalıştıran bir cihaza güncelleştirme yüklemek veya 0,1 ya
 
     Güncelleştirme 0,5 ' den önceki bir yazılım sürümü çalıştırıyorsanız, sizin için bir sonraki adım olan MDS aracısını güncelleştirmeniz gerekir. **Yazılım güncelleştirme** sayfasında, **güncelleştirme dosyası yoluna** gidin ve `GenevaMonitoringAgentPackageInstaller.msi` dosyaya gidin. 2-4 adımlarını yineleyin. Sanal dizi yeniden başlatıldıktan sonra, yerel Web Kullanıcı arabiriminde oturum açın.
 
-7. Windows güvenlik düzeltmelerini, ve `windows8.1-kb4012213-x64``windows8.1-kb3205400-x64` `windows8.1-kb4019213-x64`dosyalarını kullanarak yüklemek için 2-4 adımını tekrarlayın. Sanal dizi her yüklemeden sonra yeniden başlatılır ve yerel Web Kullanıcı arabiriminde oturum açmanız gerekir.
+7. Windows güvenlik düzeltmelerini, ve dosyalarını kullanarak yüklemek için 2-4 adımını `windows8.1-kb4012213-x64` tekrarlayın `windows8.1-kb3205400-x64` `windows8.1-kb4019213-x64` . Sanal dizi her yüklemeden sonra yeniden başlatılır ve yerel Web Kullanıcı arabiriminde oturum açmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

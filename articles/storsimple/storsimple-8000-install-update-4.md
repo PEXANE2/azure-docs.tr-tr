@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60860527"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514326"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>StorSimple cihazınıza güncelleştirme 4 ' ü yükler
 
@@ -81,7 +81,7 @@ Aşağıdaki düzeltmeleri önceden belirlenmiş sıraya ve önerilen klasörler
 | 7.. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |İşletim sistemi güvenlik güncelleştirmeleri paketi <br> Windows Server 2012 R2 'yi indirin |Normal <br></br>Kesintiye uğramamış |- |SecondOrderUpdate|
 | 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |İşletim sistemi güncelleştirmeleri paketi <br> Windows Server 2012 R2 'yi indirin |Normal <br></br>Kesintiye uğramamış |- |SecondOrderUpdate|
 
-Ayrıca, önceki tablolarda gösterilen tüm güncelleştirmelerin üzerine disk üretici yazılımı güncelleştirmelerini yüklemeniz gerekebilir. `Get-HcsFirmwareVersion` Cmdlet 'ini çalıştırarak, disk üretici yazılımı güncelleştirmelerine ihtiyacınız olup olmadığını doğrulayabilirsiniz. Bu bellenim sürümlerini çalıştırıyorsanız: `XMGJ`, `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106`,,,,,,,,,,,,,,, bu güncelleştirmeleri yüklemeniz gerekmez.
+Ayrıca, önceki tablolarda gösterilen tüm güncelleştirmelerin üzerine disk üretici yazılımı güncelleştirmelerini yüklemeniz gerekebilir. Cmdlet 'ini çalıştırarak, disk üretici yazılımı güncelleştirmelerine ihtiyacınız olup olmadığını doğrulayabilirsiniz `Get-HcsFirmwareVersion` . Bu bellenim sürümlerini çalıştırıyorsanız:,,,,,,,,,,,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106` Bu güncelleştirmeleri yüklemeniz gerekmez.
 
 | Sipariş verme | KB | Açıklama | Güncelleştirme türü | Yükleme saati | Klasöre yüklensin|
 | --- | --- | --- | --- | --- | --- |

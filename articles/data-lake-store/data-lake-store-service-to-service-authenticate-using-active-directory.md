@@ -3,15 +3,15 @@ title: Hizmetten hizmete kimlik doğrulaması-Data Lake Storage 1.-Azure
 description: Azure Active Directory kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması elde etme hakkında bilgi edinin.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688194"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515155"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ Azure Active Directory kullanarak Azure Data Lake Storage 1. ile hizmetten hizme
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>2. Adım: uygulama KIMLIĞI, kimlik doğrulama anahtarı ve kiracı KIMLIĞI al
 Programlı olarak oturum açtığınızda, uygulamanız için KIMLIĞE ihtiyacınız vardır. Uygulama kendi kimlik bilgileri altında çalışıyorsa, bir kimlik doğrulama anahtarına de ihtiyacınız vardır.
 
-* Uygulamanız için uygulama KIMLIĞI ve kimlik doğrulama anahtarı (istemci gizli anahtarı da denir) alma hakkında yönergeler için bkz. [uygulama kimliği ve kimlik doğrulama anahtarı alma](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Uygulamanız için uygulama KIMLIĞI ve kimlik doğrulama anahtarı (istemci gizli anahtarı da denir) alma hakkında yönergeler için bkz. [uygulama kimliği ve kimlik doğrulama anahtarı alma](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
-* Kiracı KIMLIĞINI alma hakkında yönergeler için bkz. [KIRACı kimliğini alma](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Kiracı KIMLIĞINI alma hakkında yönergeler için bkz. [KIRACı kimliğini alma](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>3. Adım: Azure AD uygulamasını Azure Data Lake Storage 1. hesap dosyasına veya klasörüne atama
 

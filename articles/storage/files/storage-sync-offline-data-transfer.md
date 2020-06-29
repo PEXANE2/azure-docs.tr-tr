@@ -3,16 +3,16 @@ title: Azure Data Box Azure Dosya Eşitleme verileri geçirme
 description: Toplu verileri Azure Dosya Eşitleme ile uyumlu bir şekilde geçirin.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656758"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514383"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Azure DataBox ile verileri Azure Dosya Eşitleme’ye toplu olarak geçirme
 Toplu verileri Azure Dosya Eşitleme iki şekilde taşıyabilirsiniz:
@@ -51,7 +51,7 @@ Azure Dosya Eşitleme Azure Data Box gibi toplu geçiş araçlarıyla uyumlu ola
 
 | Adım | Ayrıntı |
 |---|---------------------------------------------------------------------------------------|
-| ![1. Adım](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Data Box sıralayın](../../databox/data-box-deploy-ordered.md). Data Box ailesi, gereksinimlerinizi karşılayacak [çeşitli ürünler](https://azure.microsoft.com/services/storage/databox/data) sunmaktadır. Data Box aldığınızda, Data Box: * \\ \>\<<deviceıpaddres StorageAccountName_AzFile\>\<PaylaşımAdı\>* içindeki bu UNC yoluna [verilerinizi kopyalamak için belgelerini](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) izleyin. Burada, *PaylaşımAdı* hazırlama paylaşımının adıdır. Data Box Azure 'a geri gönderin. |
+| ![1\. Adım](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Data Box sıralayın](../../databox/data-box-deploy-ordered.md). Data Box ailesi, gereksinimlerinizi karşılayacak [çeşitli ürünler](https://azure.microsoft.com/services/storage/databox/data) sunmaktadır. Data Box aldığınızda, Data Box: * \\<\> \<StorageAccountName_AzFile\> \<ShareName\> deviceıpaddres*' deki bu UNC yoluna [verilerinizi kopyalamak için belgelerini](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) izleyin. Burada, *PaylaşımAdı* hazırlama paylaşımının adıdır. Data Box Azure 'a geri gönderin. |
 | ![2. Adım](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Dosyalarınız, geçici hazırlama paylaşımları olarak seçtiğiniz Azure dosya paylaşımlarında gösterilene kadar bekleyin. *Bu paylaşımlara eşitlemeyi etkinleştirmeyin.* |
 | ![3. Adım](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Sizin için Data Box oluşturulan her dosya paylaşımında yeni bir boş paylaşma oluşturun. Bu yeni paylaşımın Data Box paylaşımıyla aynı depolama hesabında olması gerekir. [Yeni bir Azure dosya paylaşımının oluşturulması](storage-how-to-create-file-share.md).</li><li>Depolama eşitleme hizmetinde [bir eşitleme grubu oluşturun](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) . Boş paylaşıma bulut uç noktası olarak başvur. Her Data Box dosya paylaşımında bu adımı yineleyin. [Azure dosya eşitleme ayarlayın](storage-sync-files-deployment-guide.md).</li></ul> |
 | ![4. Adım](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Canlı sunucu dizininizi sunucu uç noktası olarak ekleyin](storage-sync-files-deployment-guide.md#create-a-server-endpoint). İşleminde, dosyaları Azure 'a taşımış ve hazırlama paylaşımlarına başvurulacağını belirtin. Gerektiğinde bulut katmanlamayı etkinleştirebilir veya devre dışı bırakabilirsiniz. Canlı sunucunuzda bir sunucu uç noktası oluştururken, hazırlama paylaşımında başvuru yapın. **Sunucu uç noktası Ekle** dikey penceresinde, **çevrimdışı veri aktarımı**altında, **etkin**' i seçin ve ardından bulut uç noktasıyla aynı depolama hesabında olması gereken hazırlama payını seçin. Burada, kullanılabilir paylaşımların listesi depolama hesabı ve henüz eşitlenmeyen paylaşımlar tarafından filtrelenmiştir. Bu tablonun altındaki ekran görüntüsü, Azure portal sunucu uç noktası oluşturma sırasında veri kutusu paylaşımının nasıl başvurulacağını gösterir. |

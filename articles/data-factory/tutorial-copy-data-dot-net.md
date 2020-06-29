@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 182c5b4059874b6e03092481c68b39cf55bc7e62
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253945"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513262"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob’dan Azure SQL Veritabanına veri kopyalama
 
@@ -44,7 +44,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 * *Azure SQL veritabanı*. Veritabanını *havuz* veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümüne bakın.
 * *Visual Studio*. Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır.
 * *[.Net Için Azure SDK](/dotnet/azure/dotnet-tools)*.
-* *Azure Active Directory Uygulama*. Azure Active Directory uygulamanız yoksa, [nasıl yapılır: Azure AD uygulaması oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)konusunun [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) bölümüne bakın. Sonraki adımlarda kullanılmak üzere aşağıdaki değerleri kopyalayın: **uygulama (istemci) kimliği**, **kimlik doğrulama anahtarı**ve **Dizin (kiracı) kimliği**. Aynı makaledeki yönergeleri izleyerek uygulamayı **katkıda bulunan** rolüne atayın.
+* *Azure Active Directory Uygulama*. Azure Active Directory uygulamanız yoksa, [nasıl yapılır: Azure AD uygulaması oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md)konusunun [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) bölümüne bakın. Sonraki adımlarda kullanılmak üzere aşağıdaki değerleri kopyalayın: **uygulama (istemci) kimliği**, **kimlik doğrulama anahtarı**ve **Dizin (kiracı) kimliği**. Aynı makaledeki yönergeleri izleyerek uygulamayı **katkıda bulunan** rolüne atayın.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
 

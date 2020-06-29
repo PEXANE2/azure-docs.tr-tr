@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: twooley
-ms.openlocfilehash: b8fe87a2df633af310bc661308813a60987e77d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9a42a8f94f3e5cb63cd340b696a803d97491c76
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933275"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512823"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>StorSimple çözümünüzü yönetmek için StorSimple Snapshot Manager kullanın
 
@@ -51,7 +51,7 @@ StorSimple Snapshot Manager kullanarak geçerli, zamanlanmış ve tamamlanmış 
 | StorSimple Snapshot Manager hakkında daha fazla bilgi edinin |[StorSimple Snapshot Manager nedir?](storsimple-what-is-snapshot-manager.md) |
 | StorSimple Snapshot Manager 'yi yükler<br>StorSimple Snapshot Manager yeniden yükleyin<br>StorSimple Snapshot Manager kaldır |[StorSimple Snapshot Manager dağıtma](storsimple-snapshot-manager-deployment.md) |
 | StorSimple Snapshot Manager menülerini ve özelliklerini kullanın:<ul><li>Menü çubuğu</li><li>Araç çubuğu</li><li>Kapsam bölmesi</li><li>Sonuçlar bölmesi</li><li>Eylemler bölmesi</li><li>Klavye gezintisi ve kısayolları</li></ul> |[StorSimple Snapshot Manager Kullanıcı arabirimi](storsimple-use-snapshot-manager.md) |
-| StorSimple Snapshot Manager dahil edilen ortak MMC özelliklerini kullanın:<ul><li>Görüntüle</li><li>Buradan Yeni Pencere</li><li>Yenile</li><li>Listeyi dışarı aktar</li><li>Yardım</li></ul> |[StorSimple Snapshot Manager MMC menü eylemlerini kullanma](storsimple-snapshot-manager-mmc-menu.md) |
+| StorSimple Snapshot Manager dahil edilen ortak MMC özelliklerini kullanın:<ul><li>Görüntüle</li><li>Buradan Yeni Pencere</li><li>Yenile</li><li>Listeyi dışarı aktar</li><li>Help</li></ul> |[StorSimple Snapshot Manager MMC menü eylemlerini kullanma](storsimple-snapshot-manager-mmc-menu.md) |
 | Bir cihaz ekleme veya değiştirme<br>Cihaz bağlama<br>İçeri aktarılan birim gruplarını doğrula<br>Bağlı cihazları Yenile<br>Bir cihazın kimliğini doğrulama<br>Cihaz ayrıntılarını görüntüleme<br>Cihaz yapılandırmasını silme<br>Bir cihaz parolasını değiştirme<br>Hatalı bir cihazı değiştirme<br> |[StorSimple cihazlarını bağlamak ve yönetmek için StorSimple Snapshot Manager kullanma](storsimple-snapshot-manager-manage-devices.md) |
 | Birimleri bağlama<br>Birimler hakkındaki bilgileri görüntüleme<br>Bir birimi silme<br>Birimleri yeniden Tara<br>Temel bir birimi yapılandırma ve yedekleme<br>Dinamik bir yansıtılmış birimi yapılandırma ve yedekleme |[Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma](storsimple-snapshot-manager-manage-volumes.md) |
 | Birim gruplarını görüntüle<br>Birim grubu oluşturma<br>Birim grubunu yedekleme<br>Birim grubunu düzenleme<br>Birim grubunu silme |[Toplu grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma](storsimple-snapshot-manager-manage-volume-groups.md) |

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d282cec55d5534957478d6268c8bbd6d74245d8d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190410"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514869"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Sanal WAN iş ortakları için Otomasyon yönergeleri
 
@@ -54,7 +54,7 @@ Beklenen müşteri deneyimini Azure sanal WAN ile birlikte anlayın.
 
 ###  <a name="access-control"></a><a name="access"></a>Erişim denetimi
 
-Müşteriler, cihaz Kullanıcı arabirimindeki sanal WAN için uygun erişim denetimini ayarlayabilmelidir. Bu, bir Azure hizmet sorumlusu kullanılarak önerilir. Hizmet sorumlusu tabanlı erişim, dal bilgilerini karşıya yüklemek için cihaz denetleyicisine uygun kimlik doğrulaması sağlar. Daha fazla bilgi için bkz. [hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Bu işlev, Azure sanal WAN teklifi dışında olduğundan, Azure 'da ilgili ayrıntıların cihaz yönetimi panosuna nasıl alınacağından önce Azure 'da erişim ayarlamak için geçen tipik adımların aşağıda listelenmektedir
+Müşteriler, cihaz Kullanıcı arabirimindeki sanal WAN için uygun erişim denetimini ayarlayabilmelidir. Bu, bir Azure hizmet sorumlusu kullanılarak önerilir. Hizmet sorumlusu tabanlı erişim, dal bilgilerini karşıya yüklemek için cihaz denetleyicisine uygun kimlik doğrulaması sağlar. Daha fazla bilgi için bkz. [hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Bu işlev, Azure sanal WAN teklifi dışında olduğundan, Azure 'da ilgili ayrıntıların cihaz yönetimi panosuna nasıl alınacağından önce Azure 'da erişim ayarlamak için geçen tipik adımların aşağıda listelenmektedir
 
 * Şirket içi cihaz denetleyiciniz için bir Azure Active Directory uygulaması oluşturun.
 * Uygulama KIMLIĞINI ve kimlik doğrulama anahtarını al
@@ -227,4 +227,4 @@ Cihaz yapılandırma dosyasında şirket içi VPN cihazınızı yapılandırırk
 
 Sanal WAN hakkında daha fazla bilgi için bkz. [Azure sanal WAN](virtual-wan-about.md) ve [Azure sanal WAN hakkında SSS](virtual-wan-faq.md).
 
-Ek bilgi için lütfen adresine <azurevirtualwan@microsoft.com>bir e-posta gönderin. Şirketinizin adını konu satırına “[ ]” içinde yazın.
+Ek bilgi için lütfen adresine bir e-posta gönderin <azurevirtualwan@microsoft.com> . Şirketinizin adını konu satırına “[ ]” içinde yazın.

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65204260"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514283"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple cihazınız için Web proxy 'yi yapılandırma
 
@@ -86,7 +86,7 @@ Web proxy artık etkin. [Web proxy 'Yi etkinleştir](#enable-web-proxy) adımın
 Web proxy ayarlarını yapılandırmanın alternatif bir yolu StorSimple için Windows PowerShell cmdlet 'lerini kullanmaktır. Web proxy 'yi yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-configure-web-proxy-via-cmdlets"></a>Cmdlet 'ler aracılığıyla Web proxy 'yi yapılandırmak için
-1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1`.
+1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1` .
 2. Komut istemine şunları yazın:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
@@ -108,7 +108,7 @@ Web proxy varsayılan olarak devre dışıdır. StorSimple cihazınızda Web pro
 Cihazınızda Web proxy 'sini etkinleştirmek için StorSimple için Windows PowerShell aşağıdaki adımları gerçekleştirin:
 
 #### <a name="to-enable-web-proxy"></a>Web proxy 'yi etkinleştirmek için
-1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1`.
+1. Seri konsol menüsünde, seçenek 1 ' i seçin, **tam erişim Ile oturum açın**. İstendiğinde, **Cihaz Yöneticisi parolasını**belirtin. Varsayılan parola `Password1` .
 2. Komut istemine şunları yazın:
    
     `Enable-HcsWebProxy`

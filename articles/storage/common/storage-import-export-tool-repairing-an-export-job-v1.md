@@ -4,16 +4,16 @@ description: Azure Içeri/dışarı aktarma hizmeti kullanılarak oluşturulan v
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10e209228ad12b377b729bc251eb761b51ff5378
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74978024"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514366"
 ---
 # <a name="repairing-an-export-job"></a>Bir dışarı aktarma işini onarma
 Bir dışarı aktarma işi tamamlandıktan sonra şirket içi Microsoft Azure İçeri/Dışarı Aktarma Aracı 'nı çalıştırmak için şunları yapabilirsiniz:  
@@ -51,7 +51,7 @@ Dışarı aktarma hatalarının nedenleri aşağıdaki olasılıkları içerir:
   
 -   Aktarım işlemi sırasında depolama hesabı anahtarı değişti  
   
-Aracı **Repaırexport** modunda çalıştırmak için, önce, dosyaya verdiğiniz dosyaları içeren sürücüyü bilgisayarınıza bağlamanız gerekir. Ardından, `/d` parametresi ile bu sürücünün yolunu belirterek Azure Içeri/dışarı aktarma aracı 'nı çalıştırın. Ayrıca, indirdiğiniz sürücünün kopya günlük dosyasının yolunu da belirtmeniz gerekir. Aşağıdaki komut satırı örneği, dışarı aktarılmaya başarısız olan dosyaları onarmak için aracı çalıştırır:  
+Aracı **Repaırexport** modunda çalıştırmak için, önce, dosyaya verdiğiniz dosyaları içeren sürücüyü bilgisayarınıza bağlamanız gerekir. Ardından, parametresi ile bu sürücünün yolunu belirterek Azure Içeri/dışarı aktarma aracı 'nı çalıştırın `/d` . Ayrıca, indirdiğiniz sürücünün kopya günlük dosyasının yolunu da belirtmeniz gerekir. Aşağıdaki komut satırı örneği, dışarı aktarılmaya başarısız olan dosyaları onarmak için aracı çalıştırır:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  

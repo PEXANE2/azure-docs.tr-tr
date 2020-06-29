@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253469"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513313"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
@@ -54,7 +54,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri depoları ve hesaplar diğer bölgelerde olabilir. Depolar Azure Storage ve Azure SQL veritabanı 'nı içerir. Data Factory, ' nin kullandığı HDInsight içerir.
 
-[Azure Active Directory uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)bölümünde açıklandığı gibi bir uygulama oluşturun. Aynı makaledeki yönergeleri izleyerek uygulamayı **katkıda bulunan** rolüne atayın. Bu öğreticinin sonraki bölümleri için **uygulama (istemci) kimliği** ve **Dizin (kiracı) kimliği**gibi birkaç değer gerekir.
+[Azure Active Directory uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)bölümünde açıklandığı gibi bir uygulama oluşturun. Aynı makaledeki yönergeleri izleyerek uygulamayı **katkıda bulunan** rolüne atayın. Bu öğreticinin sonraki bölümleri için **uygulama (istemci) kimliği** ve **Dizin (kiracı) kimliği**gibi birkaç değer gerekir.
 
 ### <a name="create-a-blob-table"></a>Blob tablosu oluşturma
 
