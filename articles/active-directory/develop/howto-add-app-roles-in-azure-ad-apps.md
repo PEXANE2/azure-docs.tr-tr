@@ -1,24 +1,24 @@
 ---
 title: Uygulama rolleri ekleme ve bir belirteçten edinme | Mavisi
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory kayıtlı bir uygulamaya uygulama rolleri ekleme, bu rollere Kullanıcı ve Grup atama ve bunları belirteçteki `roles` talepte alma hakkında bilgi edinin.
+description: Azure Active Directory kayıtlı bir uygulamaya uygulama rolleri ekleme, bu rollere Kullanıcı ve Grup atama ve bunları `roles` belirteçteki talepte alma hakkında bilgi edinin.
 services: active-directory
 author: kkrishna
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aedf5d710b82185cb634fcd92e6981a2c358ad52
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884265"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477898"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -30,7 +30,7 @@ Diğer bir yaklaşım ise, [WebApp-Groupclaim-DotNet](https://github.com/Azure-S
 
 ## <a name="declare-roles-for-an-application"></a>Bir uygulama için roller bildirme
 
-Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://portal.azure.com) tanımlanır.  Kullanıcı uygulamada oturum açtığında Azure AD, her rol için kullanıcıya tek `roles` tek ve grup üyeliğinden ayrı olarak verilen bir talep yayar.  Kullanıcılara ve grupların rollere atanması, portalın kullanıcı arabiriminden ya da program aracılığıyla [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview)kullanılarak yapılabilir.
+Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://portal.azure.com) tanımlanır.  Kullanıcı uygulamada oturum açtığında Azure AD, `roles` her rol için kullanıcıya tek tek ve grup üyeliğinden ayrı olarak verilen bir talep yayar.  Kullanıcılara ve grupların rollere atanması, portalın kullanıcı arabiriminden ya da program aracılığıyla [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview)kullanılarak yapılabilir.
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal kullanarak uygulama rolleri bildirme
 
@@ -40,21 +40,21 @@ Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://por
 1. Azure portal, araması yapın ve **Azure Active Directory**seçin.
 1. **Azure Active Directory** bölmesinde, tüm uygulamalarınızın listesini görüntülemek için **uygulama kayıtları** ' ı seçin.
 1. İçinde uygulama rollerini tanımlamak istediğiniz uygulamayı seçin. Ardından **bildirim**' ı seçin.
-1. `appRoles` Ayarı bularak ve tüm uygulama rollerinizi ekleyerek uygulama bildirimini düzenleyin.
+1. `appRoles`Ayarı bularak ve tüm uygulama rollerinizi ekleyerek uygulama bildirimini düzenleyin.
 
      > [!NOTE]
-     > Bu Bildirimdeki her uygulama rolü tanımı, `id` özelliği için bildirim bağlamı içinde farklı bir GUID içermelidir.
+     > Bu Bildirimdeki her uygulama rolü tanımı, özelliği için bildirim bağlamı içinde farklı bir GUID içermelidir `id` .
      >
-     > Her `value` uygulama rolü tanımının özelliği, uygulamadaki kodda kullanılan dizelerle tam olarak eşleşmelidir. `value` Özellik boşluk içeremez. Bunu yaparsanız, bildirimi kaydettiğinizde bir hata alırsınız.
+     > `value`Her uygulama rolü tanımının özelliği, uygulamadaki kodda kullanılan dizelerle tam olarak eşleşmelidir. `value`Özellik boşluk içeremez. Bunu yaparsanız, bildirimi kaydettiğinizde bir hata alırsınız.
 
 1. Bildirimi kaydedin.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, `appRoles` atayabileceğiniz öğesini gösterir `users`.
+Aşağıdaki örnek, atayabileceğiniz öğesini gösterir `appRoles` `users` .
 
 > [!NOTE]
->Benzersiz `id` bir GUID olmalıdır.
+>`id`Benzersiz BIR GUID olmalıdır.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -74,9 +74,9 @@ Aşağıdaki örnek, `appRoles` atayabileceğiniz öğesini gösterir `users`.
 ```
 
 > [!NOTE]
->`displayName` Boşluk içeremez.
+>`displayName`Boşluk içeremez.
 
-Hedef, `applications`veya her ikisini de hedeflemek `users`için uygulama rolleri tanımlayabilirsiniz. İçin `applications`kullanılabilir olduğunda, uygulama rolleri **gerekli izinler** dikey penceresinde uygulama izinleri olarak görünür. Aşağıdaki örnekte, öğesine hedeflenmiş bir uygulama rolü gösterilmektedir `Application`.
+Hedef `users` , `applications` veya her ikisini de hedeflemek için uygulama rolleri tanımlayabilirsiniz. İçin kullanılabilir olduğunda `applications` , uygulama rolleri **gerekli izinler** dikey penceresinde uygulama izinleri olarak görünür. Aşağıdaki örnekte, öğesine hedeflenmiş bir uygulama rolü gösterilmektedir `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",

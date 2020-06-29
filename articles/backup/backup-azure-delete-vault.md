@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri kasasını silme
 description: Bu makalede, bağımlılıkları kaldırmayı ve sonra bir Azure Backup Recovery Services kasasını silmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 946b199119ee9e03ec9348c4e180f8e4c9b9a776
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 986b3c3ef5bd3903a764726281b6bd0a25ba76a4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84751874"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506845"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -118,6 +118,9 @@ Bu işlem tamamlandıktan sonra, yedekleme öğelerini yönetim konsolundan sile
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>MARS yönetim konsolundan yedekleme öğelerini silme
 
+>[!NOTE]
+>Yedeklemeyi durdurmadan kaynak makineyi sildiyseniz veya kaybettiyseniz, sonraki zamanlanmış yedekleme başarısız olur. Eski kurtarma noktası ilkeye göre sona erer, ancak yedeklemeyi durdurup verileri silinceye kadar son tek kurtarma noktası her zaman tutulur. Bunu, [Bu bölümdeki](#delete-protected-items-on-premises)adımları izleyerek yapabilirsiniz.
+
 1. MARS yönetim konsolunu açın, **Eylemler** bölmesine gidin ve **yedeklemeyi zamanla**' yı seçin.
 2. **Zamanlanmış bir yedeklemeyi Değiştir veya Durdur** sayfasında, **Bu yedekleme zamanlamasını kullanarak Durdur ' u seçin ve tüm depolanan yedeklemeleri silin**. Ardından **İleri**' yi seçin.
 
@@ -140,6 +143,9 @@ Bu işlem tamamlandıktan sonra, yedekleme öğelerini yönetim konsolundan sile
 Şirket içi yedekleme öğelerini sildikten sonra, portaldan sonraki adımları izleyin.
 
 ### <a name="delete-backup-items-from-the-mabs-management-console"></a>MABS yönetim konsolundan yedekleme öğelerini silme
+
+>[!NOTE]
+>Yedeklemeyi durdurmadan kaynak makineyi sildiyseniz veya kaybettiyseniz, sonraki zamanlanmış yedekleme başarısız olur. Eski kurtarma noktası ilkeye göre sona erer, ancak yedeklemeyi durdurup verileri silinceye kadar son tek kurtarma noktası her zaman tutulur. Bunu, [Bu bölümdeki](#delete-protected-items-on-premises)adımları izleyerek yapabilirsiniz.
 
 MABS yönetim konsolundan yedekleme öğelerini silmek için kullanabileceğiniz iki yöntem vardır.
 

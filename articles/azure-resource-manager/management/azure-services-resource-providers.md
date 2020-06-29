@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 70abbfe09f3200f0d26978727d21a033e1d4ee34
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: d4dea1dc5ee46d9be7bbc92166535aa93db46275
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462864"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506812"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -55,7 +55,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. ClassicSubscription<sup>1</sup> | Klasik dağıtım modeli |
 | Microsoft. Biliveservices | [Bilişsel Hizmetler](/azure/cognitive-services/) |
 | Microsoft. Commerce<sup>1</sup> | çekirdeğin |
-| Microsoft.Compute | [Sanal Makineler](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
+| Microsoft.Compute | [Virtual Machines](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
 | Microsoft. tüketim<sup>1</sup> | [Maliyet Yönetimi](/azure/cost-management/) |
 | Microsoft. Containerınstance | [Container Instances](/azure/container-instances/) |
 | Microsoft. ContainerRegistry | [Container Kayıt Defteri](/azure/container-registry/) |
@@ -64,7 +64,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. CostManagementExports | [Maliyet Yönetimi](/azure/cost-management/) |
 | Microsoft. Customerkasası | [Microsoft Azure için Müşteri Kasası](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Özel Sağlayıcılar](../custom-providers/overview.md) |
-| Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
+| Microsoft. DataBox | [Azure Data Box](/azure/databox/) |
 | Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
 | Microsoft. Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft. DataCatalog | [Veri Kataloğu](/azure/data-catalog/) |
@@ -84,7 +84,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. DevSpaces | [Azure Dev Spaces](/azure/dev-spaces/) |
 | Microsoft. DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft. DigitalTwins | [Azure Digital Twins](../../digital-twins/about-digital-twins.md) |
-| Microsoft. DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
+| Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
 | Microsoft. DomainRegistration | [App Service](/azure/app-service/) |
 | Microsoft. EnterpriseKnowledgeGraph | Kurumsal bilgi grafiği |
 | Microsoft. EventGrid | [Event Grid](/azure/event-grid/) |

@@ -3,15 +3,15 @@ title: Avere vFXT-Azure 'ı bağlama
 description: Azure için avere vFXT ile istemcileri bağlama
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153420"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505452"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT kümesini takma
 
@@ -64,7 +64,7 @@ Yukarıdaki işlev, [avere vFXT örnekleri](https://github.com/Azure/Avere#tutor
 > [!NOTE]
 > Avere vFXT kümenizi oluştururken yeni bir blob kapsayıcısı oluşturmadıysanız, istemcileri bağlamaya çalışmadan önce depolama birimi [yapılandırma](avere-vfxt-add-storage.md) bölümünde açıklandığı gibi depolama sistemleri ekleyin.
 
-``mount`` Komut, Istemcinizden vFXT kümesindeki sanal sunucuyu (vServer) yerel dosya sisteminde bir yola eşler. Biçim``mount <vFXT path> <local path> {options}``
+Komut, istemcinizden ``mount`` vFXT kümesindeki sanal sunucuyu (vServer) yerel dosya sisteminde bir yola eşler. Biçim``mount <vFXT path> <local path> {options}``
 
 Mount komutunun üç öğesi vardır:
 
@@ -80,7 +80,7 @@ Kümeniz BLOB depolama ile oluşturulduysa, bu kapsayıcının ad alanı yolu`/m
 
 Örnek: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Kümeyi oluşturduktan sonra depolama eklediyseniz, ad alanı birleşim yolu, birleşim oluştururken **ad alanı yolunda** ayarladığınız değerdir. Örneğin, ad alanı yolu olarak ``/avere/files`` kullandıysanız istemcileriniz *IP_address*:/avere/Files öğesini yerel bağlama noktasına bağlayabilir.
+Kümeyi oluşturduktan sonra depolama eklediyseniz, ad alanı birleşim yolu, birleşim oluştururken **ad alanı yolunda** ayarladığınız değerdir. Örneğin, ``/avere/files`` ad alanı yolu olarak kullandıysanız istemcileriniz *IP_address*:/avere/Files öğesini yerel bağlama noktasına bağlayabilir.
 
 ![Ad alanı yolu alanındaki/avere/Files ile "yeni birleşim Ekle" iletişim kutusu](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
@@ -107,7 +107,7 @@ Sorunsuz bir istemci bağlama sağlamak için, bu ayarları ve bağımsız deği
 ``hard`` | VFXT kümesine yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir.
 ``proto=netid`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.
 ``mountproto=netid`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
-``retry=n`` | Geçici ``retry=30`` bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
+``retry=n`` | ``retry=30``Geçici bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

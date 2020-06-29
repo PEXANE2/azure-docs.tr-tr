@@ -7,24 +7,24 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: overview
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: 1291563a39e3cf3acd4b343302be8b150bf794ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c25de9a41678af7391fc271b1dc3413c332ce8b6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80883517"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479275"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>İOS ve macOS için Microsoft kimlik doğrulama kitaplığı ile yeniden yönlendirme URI 'Leri kullanma
 
 Bir kullanıcı kimliğini doğruladığında, Azure Active Directory (Azure AD), Azure AD uygulamasına kayıtlı yeniden yönlendirme URI 'sini kullanarak belirteci uygulamaya gönderir.
 
-Microsoft kimlik doğrulama kitaplığı (MSAL), yeniden yönlendirme URI 'sinin Azure AD uygulamasına belirli bir biçimde kaydedilmesini gerektirir. MSAL, bir varsayılan yeniden yönlendirme URI 'sini belirtmezseniz kullanır. Biçim şöyledir: `msauth.[Your_Bundle_Id]://auth`.
+Microsoft kimlik doğrulama kitaplığı (MSAL), yeniden yönlendirme URI 'sinin Azure AD uygulamasına belirli bir biçimde kaydedilmesini gerektirir. MSAL, bir varsayılan yeniden yönlendirme URI 'sini belirtmezseniz kullanır. Biçim `msauth.[Your_Bundle_Id]://auth` .
 
 Varsayılan yeniden yönlendirme URI biçimi, aracılı kimlik doğrulaması ve sistem Web görünümü dahil olmak üzere çoğu uygulama ve senaryo için geçerlidir. Mümkün olan her seferinde varsayılan biçimi kullanın.
 
@@ -43,7 +43,7 @@ Azure portal aşağıdaki uygulama kaydı verildiğinde:
     Client ID: ABCDE-12345 (this is a single client ID)
     RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
 
-APP1, App3 `msauth.com.contoso.app1://auth` kullanımlarını kullanan `msauth.com.contoso.app2://auth` yeniden yönlendirme app2 kullanır`msauth.com.contoso.app1://auth`
+APP1, `msauth.com.contoso.app1://auth` App3 kullanımlarını kullanan yeniden yönlendirme app2 kullanır `msauth.com.contoso.app2://auth``msauth.com.contoso.app1://auth`
 
 ### <a name="migrating-from-adal-to-msal"></a>ADAL 'dan MSAL 'e geçiş
 
@@ -53,11 +53,11 @@ Azure AD kimlik doğrulama kitaplığı 'nı (ADAL) kullanan kodu MSAL 'e geçir
 
 * MSAL yeniden yönlendirme URI 'SI şu biçimde olmalıdır`<scheme>://host`
 
-    `<scheme>` , Uygulamanızı tanımlayan benzersiz bir dizedir. Bu, öncelikle, benzersizlik sağlamak için uygulamanızın paket tanımlayıcısına dayalıdır. Örneğin, uygulamanızın paket KIMLIĞI ise, yeniden yönlendirme URI `com.contoso.myapp`'si şu biçimdedir: `msauth.com.contoso.myapp://auth`.
+    `<scheme>`, Uygulamanızı tanımlayan benzersiz bir dizedir. Bu, öncelikle, benzersizlik sağlamak için uygulamanızın paket tanımlayıcısına dayalıdır. Örneğin, uygulamanızın paket KIMLIĞI ise `com.contoso.myapp` , yeniden yönlendirme URI 'si şu biçimdedir: `msauth.com.contoso.myapp://auth` .
 
-    ADAL 'dan geçiş yapıyorsanız, yeniden yönlendirme URI 'SI muhtemelen şu biçime sahip olacaktır: `<scheme>://[Your_Bundle_Id]`, burada `scheme` benzersiz bir dizedir. Bu biçim, MSAL kullandığınızda çalışmaya devam edecektir.
+    ADAL 'dan geçiş yapıyorsanız, yeniden yönlendirme URI 'SI muhtemelen şu biçime sahip olacaktır: `<scheme>://[Your_Bundle_Id]` , burada `scheme` benzersiz bir dizedir. Bu biçim, MSAL kullandığınızda çalışmaya devam edecektir.
 
-* `<scheme>`Uygulamanızın Info. plist dosyasında kayıtlı olmalıdır `CFBundleURLTypes > CFBundleURLSchemes`.  Bu örnekte, Info. plist kaynak kodu olarak açıldı:
+* `<scheme>`Uygulamanızın Info. plist dosyasında kayıtlı olmalıdır `CFBundleURLTypes > CFBundleURLSchemes` .  Bu örnekte, Info. plist kaynak kodu olarak açıldı:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -74,11 +74,11 @@ Azure AD kimlik doğrulama kitaplığı 'nı (ADAL) kullanan kodu MSAL 'e geçir
 
 MSAL, yeniden yönlendirme URI 'nizin doğru şekilde kaydolmadığını doğrular ve değilse bir hata döndürür.
     
-* Evrensel bağlantıları yeniden yönlendirme URI 'SI olarak kullanmak istiyorsanız, `<scheme>` olmalıdır `https` ve içinde `CFBundleURLSchemes`bildirilmelidir. Bunun yerine, uygulama ve etki alanını Apple 'ın [evrensel bağlantılarında geliştiriciler için](https://developer.apple.com/ios/universal-links/) yapılandırın ve uygulamanızın evrensel bir bağlantı `handleMSALResponse:sourceApplication:` üzerinden açıldığı `MSALPublicClientApplication` yöntemi çağırın.
+* Evrensel bağlantıları yeniden yönlendirme URI 'SI olarak kullanmak istiyorsanız, `<scheme>` olmalıdır `https` ve içinde bildirilmelidir `CFBundleURLSchemes` . Bunun yerine, uygulama ve etki alanını Apple 'ın [evrensel bağlantılarında geliştiriciler için](https://developer.apple.com/ios/universal-links/) yapılandırın ve `handleMSALResponse:sourceApplication:` `MSALPublicClientApplication` uygulamanızın evrensel bir bağlantı üzerinden açıldığı yöntemi çağırın.
 
 ## <a name="use-a-custom-redirect-uri"></a>Özel yeniden yönlendirme URI 'SI kullan
 
-Özel bir yeniden yönlendirme URI 'SI kullanmak için, `redirectUri` nesneyi başlattığınızda `MSALPublicClientApplicationConfig` parametresini öğesine geçirin ve öğesine `MSALPublicClientApplication` geçirin. Yeniden yönlendirme URI 'SI geçersizse, başlatıcı döndürür `nil` ve ek bilgilerle `redirectURIError`birlikte ayarlanır.  Örneğin:
+Özel bir yeniden yönlendirme URI 'SI kullanmak için, `redirectUri` nesneyi başlattığınızda parametresini öğesine geçirin `MSALPublicClientApplicationConfig` ve öğesine geçirin `MSALPublicClientApplication` . Yeniden yönlendirme URI 'SI geçersizse, başlatıcı döndürür `nil` ve `redirectURIError` ek bilgilerle birlikte ayarlanır.  Örneğin:
 
 Amaç-C:
 
@@ -110,7 +110,7 @@ do {
 
 ## <a name="handle-the-url-opened-event"></a>Açılan URL olayını işle
 
-Uygulamanız, URL şemaları veya evrensel bağlantılar aracılığıyla herhangi bir yanıt aldığında MSAL öğesini çağırmalıdır. Uygulamanızın açıldığı `handleMSALResponse:sourceApplication:` `MSALPublicClientApplication` zaman yöntemini çağırın. Özel düzenler için bir örnek aşağıda verilmiştir:
+Uygulamanız, URL şemaları veya evrensel bağlantılar aracılığıyla herhangi bir yanıt aldığında MSAL öğesini çağırmalıdır. `handleMSALResponse:sourceApplication:` `MSALPublicClientApplication` Uygulamanızın açıldığı zaman yöntemini çağırın. Özel düzenler için bir örnek aşağıda verilmiştir:
 
 Amaç-C:
 

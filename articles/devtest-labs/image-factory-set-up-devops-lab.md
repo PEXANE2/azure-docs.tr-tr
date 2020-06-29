@@ -1,23 +1,14 @@
 ---
 title: Azure DevTest Labs 'de Azure DevOps 'dan bir görüntü fabrikası çalıştırın
 description: Bu makalede, Azure DevOps 'tan (eski adıyla Visual Studio Team Services) görüntü fabrikası çalıştırmak için gereken tüm hazırlıklar ele alınmaktadır.
-services: devtest-lab, lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897533"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476147"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps’tan bir görüntü fabrikası çalıştırma
 Bu makalede, Azure DevOps 'tan (eski adıyla Visual Studio Team Services) görüntü fabrikası çalıştırmak için gereken tüm hazırlıklar ele alınmaktadır.

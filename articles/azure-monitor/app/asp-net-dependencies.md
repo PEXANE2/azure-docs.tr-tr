@@ -2,13 +2,13 @@
 title: Azure Application Insights bağımlılık Izleme | Microsoft Docs
 description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağımlılık çağrılarını Application Insights ile izleyin.
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: 759e465a21b421c22a62245536827546acc2d79e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 06/26/2020
+ms.openlocfilehash: 17fa2120df45b5cb940f6c1b6887718023a3926f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204761"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445228"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -80,7 +80,7 @@ SDK tarafından otomatik olarak toplanmayan bağımlılıklar için, standart ot
 
 Alternatif olarak, `TelemetryClient` `StartOperation` `StopOperation` [burada](custom-operations-tracking.md#outgoing-dependencies-tracking) gösterildiği gibi, bağımlılıkları el ile izlemek için kullanılabilecek uzantı yöntemlerini ve bu yöntemleri sağlar
 
-Standart bağımlılık izleme modülünü devre dışı bırakmak istiyorsanız, ASP.NET uygulamaları için [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) içindeki DependencyTrackingTelemetryModule başvurusunu kaldırın. ASP.NET Core uygulamalar için [buradaki](asp-net-core.md#configuring-or-removing-default-telemetrymodules)yönergeleri izleyin.
+Standart bağımlılık izleme modülünü devre dışı bırakmak istiyorsanız, ASP.NET uygulamaları için [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) içindeki DependencyTrackingTelemetryModule başvurusunu kaldırın. ASP.NET Core uygulamalar için [buradaki](asp-net-core.md#configuring-or-removing-default-telemetrymodules)yönergeleri izleyin.
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>Web sayfalarından AJAX çağrılarını izleme
 
@@ -95,14 +95,22 @@ ASP.NET Core uygulamalar için, artık kullanarak SQL metin toplamayı tercih et
 services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
 ```
 
-ASP.NET uygulamaları için tam SQL sorgusu, izleme altyapısı gerektiren veya System. Data. SqlClient kitaplığı yerine [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanan bayt kodu izleme yardımıyla birlikte toplanır. Aşağıda açıklandığı gibi platforma özgü ek adımlar gereklidir.
+ASP.NET uygulamalar için, tam SQL sorgu metni, izleme altyapısını kullanmayı veya System. Data. SqlClient kitaplığı yerine [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanmayı gerektiren bayt kodu izleme yardımıyla birlikte toplanır. Tam SQL sorgu toplamayı etkinleştirmek için platforma özgü adımlar aşağıda açıklanmıştır:
 
 | Platform | Tam SQL sorgusu almak için gereken adımlar |
 | --- | --- |
 | Azure Web App |Web uygulaması denetim masasında [Application Insights dikey penceresini açın](../../azure-monitor/app/azure-web-apps.md) ve .net altında SQL komutlarını etkinleştirin |
 | IIS sunucusu (Azure VM, şirket içi vb.) | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın veya durum İzleyicisi PowerShell modülünü kullanarak [Izleme altyapısını yükleyip](../../azure-monitor/app/status-monitor-v2-api-reference.md) IIS 'yi yeniden başlatın. |
 | Azure Cloud Service | [StatusMonitor 'ı yüklemek için başlangıç görevi](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) ekleme <br> [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) veya [ASP.NET Core uygulamalarına](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) yönelik NuGet paketlerini yükleyerek uygulamanızın derleme zamanında eklendi to ApplicationInsights SDK 'sı olması gerekir |
-| IIS Express | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın
+| IIS Express | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın.
+
+Yukarıdaki platforma özgü adımlara ek olarak, applicationInsights.config dosyasını aşağıdaki ile değiştirerek **SQL komut toplamayı etkinleştirmek için de açıkça tercih etmeniz gerekir** :
+
+```xml
+<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
+</Add>
+```
 
 Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığının doğru şekilde doğrulanması, toplanan SDK sürümünün `DependencyTelemetry` ' rddp ' olduğunu doğrulamakdır. ' rdddsd ' veya ' rddf ', bağımlılıkların DiagnosticSource veya EventSource Callbacks aracılığıyla toplanacağını ve bu nedenle tam SQL sorgusunun yakalanmayacağını gösterir.
 

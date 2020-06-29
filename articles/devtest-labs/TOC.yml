@@ -8,9 +8,13 @@
       href: lab-services-overview.md
 - name: Öğreticiler
   items:
-    - name: 1. Laboratuvar ayarlama
-      href: tutorial-create-custom-lab.md
-    - name: 2. Laboratuvara erişme
+    - name: Laboratuvar ayarlama
+      items:
+        - name: Azure portalı kullanma
+          href: tutorial-create-custom-lab.md
+        - name: Resource Manager şablonu kullanma
+          href: create-lab-windows-vm-template.md
+    - name: Laboratuvara erişme
       href: tutorial-use-custom-lab.md
 - name: Örnekler
   items:

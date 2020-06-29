@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 9c573e6ea3f80369f9b5cced66302caf12d727a4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206369"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478425"
 ---
 # <a name="using-file-metadata-in-queries"></a>Sorgularda dosya meta verilerini kullanma
 
@@ -22,7 +22,7 @@ SQL isteğe bağlı sorgu hizmeti, [sorgu klasörleri ve birden çok dosya](quer
 
 Bazen, sonuç kümesindeki belirli bir satırla hangi dosya veya klasör kaynağının ilişkili olduğunu bilmeniz gerekebilir.
 
-`filepath` `filename` Sonuç kümesindeki dosya adlarını ve/veya yolu döndürmek için işlevini kullanabilirsiniz. Ya da bunları, dosya adı ve/veya klasör yoluna göre filtrelemek için kullanabilirsiniz. Bu işlevler, [dosya adı işlevi](develop-storage-files-overview.md#filename-function) ve [FilePath işlevinde](develop-storage-files-overview.md#filepath-function)sözdizimi bölümünde açıklanmaktadır. Aşağıda örnek olarak kısa açıklamalar bulacaksınız.
+`filepath` `filename` Sonuç kümesindeki dosya adlarını ve/veya yolu döndürmek için işlevini kullanabilirsiniz. Ya da bunları, dosya adı ve/veya klasör yoluna göre filtrelemek için kullanabilirsiniz. Bu işlevler, [dosya adı işlevi](query-data-storage.md#filename-function) ve [FilePath işlevinde](query-data-storage.md#filepath-function)sözdizimi bölümünde açıklanmaktadır. Aşağıda örnek olarak kısa açıklamalar bulacaksınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

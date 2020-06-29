@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 91a70395bc359f0c5e199f91a739a7cef9205605
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673284"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478408"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)
 
@@ -44,7 +44,7 @@ Talep eşleme ilkesi, belirli uygulamalar için verilen belirteçlerde yayılan 
 
 Belirteçlerde nasıl ve ne zaman kullanıldığını tanımlayan belirli talepler kümesi vardır.
 
-| Talep kümesi | Description |
+| Talep kümesi | Açıklama |
 |---|---|
 | Çekirdek talep kümesi | , İlkeden bağımsız olarak her belirteçte bulunur. Bu talepler de kısıtlı olarak değerlendirilir ve değiştirilemez. |
 | Temel talep kümesi | Belirteçleri için varsayılan olarak yayılan talepleri içerir (çekirdek talep kümesine ek olarak). Talepler eşleme ilkelerini kullanarak temel talepleri atlayabilir veya değiştirebilirsiniz. |
@@ -284,7 +284,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tablo 3: kaynak başına geçerli KIMLIK değerleri
 
-| Kaynak | ID | Description |
+| Kaynak | ID | Açıklama |
 |-----|-----|-----|
 | Kullanıcı | surname | Aile adı |
 | Kullanıcı | givenname | Verilen Ad |
@@ -321,7 +321,7 @@ ID öğesi, kaynak üzerinde hangi özelliğin talep için değer sağladığın
 | Kullanıcı | diğer posta | Diğer posta |
 | Kullanıcı | ülke | Ülke/Bölge |
 | Kullanıcı | city | Şehir |
-| Kullanıcı | durum | Eyalet |
+| Kullanıcı | durum | Durum |
 | Kullanıcı | JobTitle | İş Unvanı |
 | Kullanıcı | çalışan | Çalışan Kimlik Numarası |
 | Kullanıcı | facsimileTelephoneNumber 'dir | Facsıle telefon numarası |
@@ -359,7 +359,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tablo 4: dönüştürme yöntemleri ve beklenen girişler ve çıktılar
 
-|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Description|
+|Dönüştürme Tionmethod|Beklenen giriş|Beklenen çıkış|Açıklama|
 |-----|-----|-----|-----|
 |Birleştir|dize1, dize2, ayırıcı|outputClaim|Arasında bir ayırıcı kullanarak girdi dizelerini birleştirir. Örneğin: Dize1: " foo@bar.com ", dize2: "Sandbox", ayırıcı: "." outputClaim 'de sonuçlar: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|posta|outputClaim|Bir e-posta adresinin yerel bölümünü ayıklar. Örneğin: posta: " foo@bar.com " outputClaim sonucu: "foo". Hiçbir \@ işaret yoksa, özgün giriş dizesi olduğu gibi döndürülür.|
@@ -385,7 +385,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tablo 5: SAML NameID için veri kaynağı olarak izin verilen öznitelikler
 
-|Kaynak|ID|Description|
+|Kaynak|ID|Açıklama|
 |-----|-----|-----|
 | Kullanıcı | posta|E-posta Adresi|
 | Kullanıcı | userPrincipalName|Kullanıcı Asıl Adı|
@@ -411,7 +411,7 @@ Seçilen yönteme bağlı olarak bir dizi giriş ve çıkış beklenmektedir. Gi
 
 | Dönüştürme Tionmethod | Kısıtlamalar |
 | ----- | ----- |
-| ExtractMailPrefix | Yok |
+| ExtractMailPrefix | Hiçbiri |
 | Birleştir | Katılmakta olan sonekin, kaynak kiracının doğrulanmış bir etki alanı olması gerekir. |
 
 ### <a name="custom-signing-key"></a>Özel imzalama anahtarı

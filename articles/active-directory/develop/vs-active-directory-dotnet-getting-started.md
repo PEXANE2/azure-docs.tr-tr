@@ -6,16 +6,16 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: fe408e965c528db1d82b73ee7b20bbe3b3933657
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36479acca56aa97a5453a9ab99691ed1993daaf3
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886135"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477014"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory kullanmaya başlama (ASP.NET MVC projeleri)
 
@@ -29,11 +29,11 @@ Bağlı hizmet eklenirken projenizde yapılan değişiklikler için bkz. [MVC pr
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Erişim denetleyicilerine kimlik doğrulaması gerektirme
 
-Projenizdeki tüm denetleyiciler `[Authorize]` özniteliğiyle donatılmıştı. Bu öznitelik, bu denetleyicilere erişmeden önce kullanıcının kimliğinin doğrulanmasını gerektirir. Denetleyiciye anonim olarak erişilmesine izin vermek için bu özniteliği denetleyiciden kaldırın. İzinleri daha ayrıntılı bir düzeyde ayarlamak istiyorsanız, bu özniteliği denetleyici sınıfına uygulamak yerine yetkilendirme gerektiren her bir yönteme uygulayın.
+Projenizdeki tüm denetleyiciler özniteliğiyle donatılmıştı `[Authorize]` . Bu öznitelik, bu denetleyicilere erişmeden önce kullanıcının kimliğinin doğrulanmasını gerektirir. Denetleyiciye anonim olarak erişilmesine izin vermek için bu özniteliği denetleyiciden kaldırın. İzinleri daha ayrıntılı bir düzeyde ayarlamak istiyorsanız, bu özniteliği denetleyici sınıfına uygulamak yerine yetkilendirme gerektiren her bir yönteme uygulayın.
 
 ## <a name="adding-signin--signout-controls"></a>SignIn/SignOut denetimleri ekleme
 
-Görünüminizdeki SignIn/SignOut denetimlerini eklemek için, görünümlerinizin birine işlevselliği eklemek `_LoginPartial.cshtml` için kısmi görünümü kullanabilirsiniz. Standart `_Layout.cshtml` görünüme eklenen işlevlere bir örnek aşağıda verilmiştir. (Sınıf gezinti çubuğu ile div içindeki son öğeye göz önünde bulunan):
+Görünüminizdeki SignIn/SignOut denetimlerini eklemek için, `_LoginPartial.cshtml` görünümlerinizin birine işlevselliği eklemek için kısmi görünümü kullanabilirsiniz. Standart görünüme eklenen işlevlere bir örnek aşağıda verilmiştir `_Layout.cshtml` . (Sınıf gezinti çubuğu ile div içindeki son öğeye göz önünde bulunan):
 
 ```html
 <!DOCTYPE html>

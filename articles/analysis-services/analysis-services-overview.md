@@ -4,16 +4,16 @@ description: Bulutta kurumsal düzeyde veri modelleri sağlayan, tam olarak yön
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/13/2020
+ms.date: 06/24/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 0fb0e9e2611ed882bffa1df62adeb617e7211354
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 58ef7704cda88caebcbe49cf75e9a7fc9ecaebdc
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191977"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413626"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -65,14 +65,13 @@ Bu katman, kullanıcı eşzamanlılığının elastik olmasını gerektiren ve h
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    320    |    200     |
-|S9 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
-|S8v2 <sup> [1](#depr)</sup>   |    640     |    200     |
-|S9v2 <sup> [1](#depr)</sup>    |    1280    |    400     |
+|S8 <sup>[1](#naar)</sup>, <sup>[2](#rec)</sup>   |    320    |    200     |
+|S9 <sup>[1](#naar)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup> [1](#naar)</sup>   |    640     |    200     |
+|S9v2 <sup> [1](#naar)</sup>    |    1280    |    400     |
 
-<a name="depr">1</a> -tüm bölgelerde kullanılamaz.   
-<a name="rec">2</a> -bu plan kullanım dışıdır. v2 önerilir.
-
+<a name="naar">1</a> -tüm bölgelerde kullanılamaz.   
+<a name="rec">2</a> -v2 önerilir.
 
 ## <a name="availability-by-region"></a>Bölgelere göre kullanılabilirlik
 
@@ -86,15 +85,15 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Orta Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Doğu ABD     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Doğu ABD 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Doğu ABD 2     |     S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    1    |
+|Doğu ABD 2     |     S8, S9, S8v2, S9v2   |    1    |
 |Orta Kuzey ABD     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Batı ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|Batı ABD     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    2  |
+|Batı ABD     |    S8, S9, S8v2, S9v2   |    2  |
 |Batı ABD 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|Batı ABD 2    |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |    1     |
+|Batı ABD 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Avrupa
 
@@ -104,17 +103,17 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
 |Güney Birleşik Krallık     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Batı Avrupa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Batı Avrupa    |   S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |  1  |
+|Batı Avrupa    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asya Pasifik 
 
 |Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Doğu Avustralya     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2    |    1     |
+|Doğu Avustralya     |    S8, S9, S8v2, S9v2    |    1     |
 |Güneydoğu Avustralya     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Doğu Japonya     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2, D1     |   1      |
+|Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Batı Hindistan     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Gereksinimlerinize göre ölçeklendirin

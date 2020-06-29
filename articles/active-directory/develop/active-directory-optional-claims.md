@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 06/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 79f26d56b79a4622ce99b45f153685f9063b79ad
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: f751c45b12ec2c8f6f09080b01b24f59af1fc0d0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84904856"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478340"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Nasıl yapılır: Azure AD uygulamanıza isteğe bağlı talepler sağlama
 
@@ -49,7 +49,7 @@ Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe ba�
 
 **Tablo 2: v 1.0 ve v 2.0 isteğe bağlı talep kümesi**
 
-| Name                       |  Description   | Belirteç türü | Kullanıcı türü | Notlar  |
+| Adı                       |  Açıklama   | Belirteç türü | Kullanıcı türü | Notlar  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Kullanıcının en son kimlik doğrulamasının süresi. Bkz. OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Kaynak kiracının bölgesi | JWT        |           | |
@@ -79,7 +79,7 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 
 **Tablo 3: v 2.0-yalnızca isteğe bağlı talepler**
 
-| JWT talebi     | Name                            | Description                                | Notlar |
+| JWT talebi     | Adı                            | Açıklama                                | Notlar |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP Adresi                      | İstemcinin oturum açtığı IP adresi.   |       |
 | `onprem_sid`  | Şirket Içi güvenlik tanımlayıcısı |                                             |       |
@@ -96,7 +96,7 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 
 **Tablo 4: isteğe bağlı talepler yapılandırma değerleri**
 
-| Özellik adı  | Ek özellik adı | Description |
+| Özellik adı  | Ek özellik adı | Açıklama |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Hem SAML hem de JWT yanıtları için ve v 1.0 ve v 2.0 belirteçleri için kullanılabilir. |
 |                | `include_externally_authenticated_upn`  | , Kaynak kiracısında depolanan Konuk UPN 'sini içerir. Örneğin, `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -185,7 +185,7 @@ Bir uygulama tarafından istenen isteğe bağlı talepleri bildirir. Bir uygulam
 
 **Tablo 5: Optionalclaim türü özellikleri**
 
-| Name          | Tür                       | Description                                           |
+| Adı          | Tür                       | Açıklama                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Koleksiyon (OptionalClaim) | JWT KIMLIK belirtecinde döndürülen isteğe bağlı talepler.     |
 | `accessToken` | Koleksiyon (OptionalClaim) | JWT erişim belirtecinde döndürülen isteğe bağlı talepler. |
@@ -198,7 +198,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 
 **Tablo 6: OptionalClaim türü özellikleri**
 
-| Name                   | Tür                    | Description                                                                                                                                                                                                                                                                                                   |
+| Adı                   | Tür                    | Açıklama                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | İsteğe bağlı talebin adı.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Talebin kaynağı (Dizin nesnesi). Uzantı özelliklerinden önceden tanımlı talepler ve Kullanıcı tanımlı talepler vardır. Kaynak değeri null ise, talep önceden tanımlanmış isteğe bağlı bir talep olur. Kaynak değeri kullanıcı ise, ad özelliğindeki değer kullanıcı nesnesinden uzantı özelliğidir. |

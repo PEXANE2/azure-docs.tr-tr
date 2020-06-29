@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: c4b80e62d3800392b847a411dfc66c3278e72bba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 597b12a584e7b4c17ec21635e18368f897ad168a
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661873"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443885"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Azure kaynağını Izleme
 [Azure izleyici](../overview.md) , verileri oluşturuldukları anda Azure kaynaklarından toplamayı başlatır. Bu hızlı başlangıçta, bir kaynak için otomatik olarak toplanan veriler ve belirli bir kaynak için Azure portal nasıl görüntüleneceği hakkında kısa bir yol sunulmaktadır. Daha sonra, ek verileri toplamak için yapılandırma ekleyebilirsiniz ve aboneliğinizdeki tüm kaynaklar için toplanan verilere erişmek üzere aynı araçları kullanmak için Azure Izleyici menüsüne gidebilirsiniz.
@@ -54,20 +54,20 @@ Etkinlik günlüğü, abonelikteki her bir Azure kaynağı üzerinde işlemler h
 1. Kaynağınızın menüsünün **izleme** bölümü altında **ölçümler**' i seçin. Bu, Ölçüm Gezgini 'ni kaynak olarak ayarlanan kapsamla açar.
 2. Grafiğe ölçüm eklemek için **ölçüm Ekle** ' ye tıklayın.
    
-   ![Ölçüm Gezgini](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![Ölçüm gezgini](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. Açılan listeden bir **ölçüm** ve ardından bir **toplama**seçin. Bu, toplanan değerlerin her zaman aralığında nasıl örnekleneceğini tanımlar.
 
-    ![Ölçüm Gezgini](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![Ölçüm gezgini](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. Grafiğe ek ölçüm ve toplama birleşimleri eklemek için **ölçüm Ekle** ' ye tıklayın.
 
-    ![Ölçüm Gezgini](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![Ölçüm gezgini](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, Azure Izleyici tarafından otomatik olarak toplanan bir Azure kaynağı için etkinlik günlüğü ve ölçümleri görüntülenir. Kaynak günlükleri, kaynağın ayrıntılı işlemine ilişkin öngörüler sağlar, ancak toplanmak üzere yapılandırılması gerekir. Kaynak günlüklerini, günlük sorguları kullanılarak çözümlenebilecekleri bir Log Analytics çalışma alanına toplamaya yönelik öğreticiye devam edin.
+Bu hızlı başlangıçta, Azure Izleyici tarafından otomatik olarak toplanan bir Azure kaynağı için etkinlik günlüğü ve ölçümleri görüntülenir. Etkinlik günlüğünü, [günlük sorguları](../log-query/log-query-overview.md)kullanılarak çözümlenebilecekleri bir Log Analytics çalışma alanında nasıl toplayacağınızı gösteren bir sonraki hızlı başlangıca geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Izleyici ile kaynak günlüklerini toplayın ve çözümleyin](tutorial-resource-logs.md)
+> [Log Analytics çalışma alanına Azure etkinlik günlüğü gönder](quick-monitor-azure-resource.md)

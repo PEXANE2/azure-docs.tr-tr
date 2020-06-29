@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871530"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477252"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir?
 
@@ -47,9 +47,9 @@ Kimlik doğrulama sistemi değiştirir ve güvenlik ve standartlar uyumluluğunu
 
 **Etkilenen protokol**: tüm akışlar
 
-1 Haziran 2018 ' de, Azure Kamu için resmi Azure Active Directory (AAD) yetkilisi ' den `https://login-us.microsoftonline.com` ' `https://login.microsoftonline.us`a değiştirilir. Bu değişiklik Ayrıca, Azure Kamu AAD 'nin de Hizmetleri olan GCC High ve DoD Microsoft 365 de uygulanır. ABD kamu kiracısında bir uygulamaya sahipseniz, `.us` son noktadaki kullanıcıları oturum açmak için uygulamanızı güncelleştirmeniz gerekir.  
+1 Haziran 2018 ' de, Azure Kamu için resmi Azure Active Directory (AAD) yetkilisi ' den ' a değiştirilir `https://login-us.microsoftonline.com` `https://login.microsoftonline.us` . Bu değişiklik Ayrıca, Azure Kamu AAD 'nin de Hizmetleri olan GCC High ve DoD Microsoft 365 de uygulanır. ABD kamu kiracısında bir uygulamaya sahipseniz, son noktadaki kullanıcıları oturum açmak için uygulamanızı güncelleştirmeniz gerekir `.us` .  
 
-Azure AD, Mayıs 5 ' ten itibaren bitiş noktası değişikliğini zorunlu hale getirmeye başlayacak ve kamu kullanıcılarının ortak uç nokta (`microsoftonline.com`) kullanılarak ABD kamu kiracılarında barındırılan uygulamalarda oturum açmasını önlüyor.  Etkilenen uygulamalar bir hata `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`görmeye başlayacaktır. Bu hata, uygulamanın genel bulut uç noktasında bir ABD kamu kullanıcısına oturum açmaya çalışıyor olduğunu gösterir. Uygulamanız ortak bir bulut kiracısında ise ve ABD hükümeti kullanıcılarını desteklemek istiyorsanız, [uygulamanızı açıkça destekleyecek şekilde güncelleştirmeniz](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)gerekir. Bu, ABD kamu bulutunda yeni bir uygulama kaydı oluşturulmasını gerektirebilir. 
+Azure AD, Mayıs 5 ' ten itibaren bitiş noktası değişikliğini zorunlu hale getirmeye başlayacak ve kamu kullanıcılarının ortak uç nokta () kullanılarak ABD kamu kiracılarında barındırılan uygulamalarda oturum açmasını önlüyor `microsoftonline.com` .  Etkilenen uygulamalar bir hata görmeye başlayacaktır `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Bu hata, uygulamanın genel bulut uç noktasında bir ABD kamu kullanıcısına oturum açmaya çalışıyor olduğunu gösterir. Uygulamanız ortak bir bulut kiracısında ise ve ABD hükümeti kullanıcılarını desteklemek istiyorsanız, [uygulamanızı açıkça destekleyecek şekilde güncelleştirmeniz](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)gerekir. Bu, ABD kamu bulutunda yeni bir uygulama kaydı oluşturulmasını gerektirebilir. 
 
 Bu değişikliğin uygulanması, ABD kamu bulutundaki kullanıcıların uygulamada oturum açma ve ABD devlet kullanıcılarına yönelik uygulamalar için ne sıklıkta oturum açması gerektiğini temel alan aşamalı bir dağıtım kullanılarak yapılır ve ABD hükümeti kullanıcıları tarafından sık kullanılan uygulamalar en son zorlama için geçerlidir. Uygulama, Haziran 2020 ' deki tüm uygulamalarda tamamlanmasını bekliyor. 
 
@@ -104,7 +104,7 @@ HTTP yeniden yönlendirme aracılığıyla login.microsoftonline.com 'den bir uy
 
 Örnek:
 
-Bugün, `?e=    "f"&g=h` `?e=f&g=h` ile aynı şekilde `e`  ==  `f`ayrıştırılır.  Bu değişiklik ile, bu, `e`  ==  `    "f"` geçerli bir bağımsız değişken olması olası değildir ve istek şimdi başarısız olur.
+Bugün, `?e=    "f"&g=h` ile aynı şekilde ayrıştırılır `?e=f&g=h` `e`  ==  `f` .  Bu değişiklik ile, bu, `e`  ==  `    "f"` geçerli bir bağımsız değişken olması olası değildir ve istek şimdi başarısız olur.
 
 
 ## <a name="july-2019"></a>Temmuz 2019
@@ -127,7 +127,7 @@ Bu sorunu çözmek için, kiracınızda istemci uygulama hizmeti sorumlusunu olu
 
 #### <a name="example-request"></a>Örnek istek
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`Bu örnekte, kaynak kiracısı (yetkili) contoso.com, kaynak uygulaması contoso kiracısı için çağrılan `gateway.contoso.com/api` tek kiracılı bir uygulamadır ve istemci uygulaması olur. `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`  İstemci uygulamasının Contoso.com içinde bir hizmet sorumlusu varsa, bu istek devam edebilir.  Ancak yoksa, istek yukarıdaki hata ile başarısız olur.
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`Bu örnekte, kaynak kiracısı (yetkili) contoso.com, kaynak uygulaması contoso kiracısı için çağrılan tek kiracılı bir uygulamadır `gateway.contoso.com/api` ve istemci uygulaması olur `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  İstemci uygulamasının Contoso.com içinde bir hizmet sorumlusu varsa, bu istek devam edebilir.  Ancak yoksa, istek yukarıdaki hata ile başarısız olur.
 
 Contoso Gateway uygulaması çok kiracılı bir uygulamatı, ancak, Contoso.com içinde hizmet sorumlusu olan istemci uygulamasına bakılmaksızın istek devam eder.
 
@@ -139,7 +139,7 @@ Contoso Gateway uygulaması çok kiracılı bir uygulamatı, ancak, Contoso.com 
 
 **Etkilenen protokol**: tüm akışlar
 
-[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)BAŞıNA Azure AD uygulamaları artık OAuth 2,0 istekleri için statik sorgu parametreleriyle (gibi `https://contoso.com/oauth2?idp=microsoft`) yeniden yönlendirme (yanıtlama) URI 'leri kaydedebilir ve kullanabilir.  Dinamik yeniden yönlendirme URI 'Leri, bir güvenlik riskini temsil ettiğinden hala yasaktır ve bu, bir kimlik doğrulama isteği genelinde durum bilgilerini sürdürmek için kullanılamaz; bunun için `state` parametresini kullanın.
+[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)BAŞıNA Azure AD uygulamaları artık `https://contoso.com/oauth2?idp=microsoft` OAuth 2,0 istekleri için statik sorgu parametreleriyle (gibi) yeniden yönlendirme (yanıtlama) URI 'leri kaydedebilir ve kullanabilir.  Dinamik yeniden yönlendirme URI 'Leri, bir güvenlik riskini temsil ettiğinden hala yasaktır ve bu, bir kimlik doğrulama isteği genelinde durum bilgilerini sürdürmek için kullanılamaz; bunun için `state` parametresini kullanın.
 
 Statik sorgu parametresi, yeniden yönlendirme URI 'sinin diğer herhangi bir bölümü gibi yeniden yönlendirme URI 'Leri için dize eşlemeye tabidir. URI kodu çözülen redirect_uri eşleşen bir dize yoksa istek reddedilir.  URI uygulama kaydında bulunursa, statik sorgu parametresi dahil olmak üzere, kullanıcının yeniden yönlendirileceği dizenin tamamı kullanılacaktır.
 
@@ -158,7 +158,7 @@ Statik sorgu parametresi, yeniden yönlendirme URI 'sinin diğer herhangi bir b�
 
 İstemci uygulamaları bazen, kısa bir süre boyunca aynı oturum açma isteği için yüzlerce şekilde davranabilir.  Bu istekler başarılı olabilir veya başarılı olmayabilir, ancak tüm kullanıcılar için zayıf Kullanıcı deneyimine ve tüm kullanıcılar için gecikme süresini artırarak ve ıDP kullanılabilirliğini azaltarak tüm kullanıcılar için zayıf Kullanıcı deneyimine katkıda bulunur.  Bu uygulamalar normal kullanım sınırları dışında çalışır ve doğru şekilde davranması için güncelleştirilmeleri gerekir.
 
-Yinelenen istekleri birden çok kez veren istemcilere bir `invalid_grant` hata gönderilir:. `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`
+Yinelenen istekleri birden çok kez veren istemcilere bir `invalid_grant` hata gönderilir: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request` .
 
 Çoğu istemcinin bu hatayı önlemek için davranışları değiştirmesi gerekmez.  Yalnızca yanlış yapılandırılmış istemciler (belirteç önbelleği olmayan veya bu komut istemi döngülerine sahip olanlar), bu hatadan etkilenecek.  İstemciler, aşağıdaki etkenlere göre örnek temelinde yerel olarak (tanımlama bilgisi aracılığıyla) izlenir:
 
@@ -172,9 +172,9 @@ Yinelenen istekleri birden çok kez veren istemcilere bir `invalid_grant` hata g
 
 * Yanıt türü ve modu
 
-Kısa bir süre içinde (5 dakika) birden çok istek (15 +) yapan uygulamalar, döngü olduğunu belirten `invalid_grant` bir hata alacaktır.  İstenen belirteçlerin süresi yeterince uzun süreli yaşam süresine sahiptir (varsayılan olarak 10 dakika, 60 dakika), bu nedenle bu süre içindeki yinelenen isteklerin gereksiz olması gereksizdir.
+Kısa bir süre içinde (5 dakika) birden çok istek (15 +) yapan uygulamalar, döngü olduğunu belirten bir `invalid_grant` hata alacaktır.  İstenen belirteçlerin süresi yeterince uzun süreli yaşam süresine sahiptir (varsayılan olarak 10 dakika, 60 dakika), bu nedenle bu süre içindeki yinelenen isteklerin gereksiz olması gereksizdir.
 
-Tüm uygulamalar sessizce bir `invalid_grant` belirteç istemek yerine etkileşimli bir istem göstererek işlemelidir.  Bu hatadan kaçınmak için istemciler aldıkları belirteçleri doğru önbelleğe almadıklarından emin olmalıdır.
+Tüm uygulamalar `invalid_grant` sessizce bir belirteç istemek yerine etkileşimli bir istem göstererek işlemelidir.  Bu hatadan kaçınmak için istemciler aldıkları belirteçleri doğru önbelleğe almadıklarından emin olmalıdır.
 
 
 ## <a name="october-2018"></a>Ekim 2018
@@ -208,6 +208,6 @@ Belirteçleri yenileme hakkında daha fazla bilgi için bkz. [erişim belirteçl
 Bu değişikliği geçici olarak çözmek için şunları yapabilirsiniz:
 
 1. Uygulamanız için bir veya daha fazla kapsamı olan bir Web API 'SI oluşturun. Bu açık giriş noktası, daha ayrıntılı denetim ve güvenliğe izin verir.
-1. Uygulamanızın bildiriminde, [Azure Portal](https://portal.azure.com) veya [uygulama kayıt portalı](https://apps.dev.microsoft.com)' nda, uygulamanın örtük akış aracılığıyla erişim belirteçleri vermesine izin verildiğinden emin olun. Bu `oauth2AllowImplicitFlow` anahtar aracılığıyla denetlenir.
-1. İstemci uygulamanız aracılığıyla `response_type=id_token`bir id_token istediğinde, yukarıda oluşturulan Web API 'si için de bir`response_type=token`erişim belirteci () isteyin. Bu nedenle, v 2.0 uç noktası kullanılırken `scope` parametresi şuna benzemelidir. `api://GUID/SCOPE` V 1.0 uç noktasında `resource` parametresi, Web API 'sinin uygulama URI 'si olmalıdır.
+1. Uygulamanızın bildiriminde, [Azure Portal](https://portal.azure.com) veya [uygulama kayıt portalı](https://apps.dev.microsoft.com)' nda, uygulamanın örtük akış aracılığıyla erişim belirteçleri vermesine izin verildiğinden emin olun. Bu anahtar aracılığıyla denetlenir `oauth2AllowImplicitFlow` .
+1. İstemci uygulamanız aracılığıyla bir id_token istediğinde `response_type=id_token` , `response_type=token` yukarıda oluşturulan Web API 'si için de bir erişim belirteci () isteyin. Bu nedenle, v 2.0 uç noktası kullanılırken `scope` parametresi şuna benzemelidir `api://GUID/SCOPE` . V 1.0 uç noktasında `resource` parametresi, Web API 'sinin uygulama URI 'si olmalıdır.
 1. Bu erişim belirtecini id_token yerine Orta katmana geçirin.

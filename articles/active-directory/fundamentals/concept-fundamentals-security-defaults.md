@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 62933a0e83a7494bc208068cb418f9ccc29ba637
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 93f38210e3529ea4252f43db134667d3426a6599
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266364"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505826"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
@@ -92,7 +92,7 @@ Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir pr
 > [!WARNING]
 > Güvenlik varsayılanlarını etkinleştirmeden önce, yöneticileriniz tarafından daha eski kimlik doğrulama protokolleri kullanmıyor olduğundan emin olun. Daha fazla bilgi için bkz. [eski kimlik doğrulamasından nasıl uzaklaşın](concept-fundamentals-block-legacy-authentication.md).
 
-- [Office 365 ve Microsoft 365 kullanarak e-posta göndermek üzere çok işlevli bir cihaz veya uygulamayı ayarlama](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Office 365 ve Microsoft 365 kullanarak e-posta göndermek üzere çok işlevli bir cihaz veya uygulamayı ayarlama](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>Ayrıcalıklı eylemleri koruma
 

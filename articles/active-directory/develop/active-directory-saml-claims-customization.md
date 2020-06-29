@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: dd99934ca74736c1f80bd47d701120398437e27a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845330"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478306"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -56,7 +56,7 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa Azure AD, belirttiğiniz
 
 | NameID biçimi | Açıklama |
 |---------------|-------------|
-| **Varsayılanını** | Azure AD varsayılan kaynak biçimini kullanır. |
+| **Varsayılan** | Azure AD varsayılan kaynak biçimini kullanır. |
 | **Kalıcı** | Azure AD, NameID biçimi olarak kalıcı kullanacaktır. |
 | **EmailAddress** | Azure AD, NameID biçimi olarak Emapostaadı kullanacaktır. |
 | **Belirtilmemiş** | Azure AD, NameID biçimi olarak belirtilmemiş kullanır. |
@@ -68,7 +68,7 @@ Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tar
 
 `NameIdentifier`(Veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
 
-| Name | Açıklama |
+| Adı | Açıklama |
 |------|-------------|
 | E-posta | Kullanıcının e-posta adresi |
 | userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |

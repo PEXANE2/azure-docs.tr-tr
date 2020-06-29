@@ -7,15 +7,15 @@ ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b77241b1413fea09e5a16e8bd5cbcda8db5b2327
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535834"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477133"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme
 
@@ -44,7 +44,7 @@ Active Directory bağlı hizmet, ASP.NET Core uygulamalarını desteklemez.
 
     ![Giriş sayfası](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. **Çoklu oturum açma** sayfasında, **etki alanı** açılır listesinden bir etki alanı seçin. Liste, Visual Studio 'nun hesap ayarları iletişim kutusunda listelenen hesaplar tarafından erişilebilen tüm etki alanlarını içerir (**dosya > hesap ayarları..**.). Alternatif olarak, aradığınız birini bulamazsanız bir etki alanı adı girebilirsiniz `mydomain.onmicrosoft.com`. Azure Active Directory bir uygulama oluşturma veya var olan bir Azure Active Directory uygulamasındaki ayarları kullanma seçeneğini belirleyebilirsiniz. Bittiğinde **İleri ' yi** seçin.
+1. **Çoklu oturum açma** sayfasında, **etki alanı** açılır listesinden bir etki alanı seçin. Liste, Visual Studio 'nun hesap ayarları iletişim kutusunda listelenen hesaplar tarafından erişilebilen tüm etki alanlarını içerir (**dosya > hesap ayarları..**.). Alternatif olarak, aradığınız birini bulamazsanız bir etki alanı adı girebilirsiniz `mydomain.onmicrosoft.com` . Azure Active Directory bir uygulama oluşturma veya var olan bir Azure Active Directory uygulamasındaki ayarları kullanma seçeneğini belirleyebilirsiniz. Bittiğinde **İleri ' yi** seçin.
 
     ![Çoklu oturum açma sayfası](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 

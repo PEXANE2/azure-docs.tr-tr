@@ -1,23 +1,14 @@
 ---
 title: Azure DevTest Labs ' de bekletme ilkesi ayarlama | Microsoft Docs
 description: Bir bekletme ilkesi yapılandırmayı, fabrikası temizlemeyi ve eski görüntüleri DevTest Labs 'den devre dışı bırakmayı öğrenin.
-services: devtest-lab, lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: a472c500ee6b968b1459e65e49a352b81e5ea6ec
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 115fdff215399a9a51171161191ecf5009e8e20e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899210"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476062"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Azure DevTest Labs 'de bekletme ilkesi ayarlama
 Bu makalede bir bekletme ilkesi ayarlama, fabrikasını Temizleme ve eski görüntüleri kuruluştaki tüm diğer DevTest Labs 'den devre dışı bırakma konuları ele alınmaktadır. 

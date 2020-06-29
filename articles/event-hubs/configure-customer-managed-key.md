@@ -3,12 +3,12 @@ title: Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kendi
 description: Bu makalede, Azure Event Hubs Data Rest 'i şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b92437f69dd5ff01d57d12e8e8e7fdce73cfddc0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314731"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479836"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -66,7 +66,7 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
 
 
 ## <a name="rotate-your-encryption-keys"></a>Şifreleme anahtarlarınızı döndürün
-Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını kullanarak döndürebilirsiniz. Daha fazla bilgi için bkz. [anahtar dönüşü ve denetimini ayarlama](../key-vault/secrets/key-rotation-log-monitoring.md). Etkinleştirme ve sona erme tarihleri, anahtar döndürmeyi otomatik hale getirmek için de ayarlanabilir. Event Hubs hizmet yeni anahtar sürümlerini algılar ve otomatik olarak kullanmaya başlar.
+Anahtarı anahtar kasasında Azure Anahtar Kasası döndürme mekanizmasını kullanarak döndürebilirsiniz. Etkinleştirme ve sona erme tarihleri, anahtar döndürmeyi otomatik hale getirmek için de ayarlanabilir. Event Hubs hizmet yeni anahtar sürümlerini algılar ve otomatik olarak kullanmaya başlar.
 
 ## <a name="revoke-access-to-keys"></a>Anahtarlara erişimi iptal et
 Şifreleme anahtarlarına erişimin iptal edilmemesi Event Hubs verileri temizleyemezsiniz. Ancak, verilere Event Hubs ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri hakkında daha fazla bilgi edinin ve anahtar kasasının güvenliğini [güvenli bir şekilde bir anahtar kasasına erişin](../key-vault/general/secure-your-key-vault.md).
@@ -94,7 +94,7 @@ Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek �
 ## <a name="log-schema"></a>Günlük şeması 
 Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
 
-| Name | Description |
+| Adı | Açıklama |
 | ---- | ----------- | 
 | Silinecek | Başarısız olan görevin açıklaması. |
 | Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |

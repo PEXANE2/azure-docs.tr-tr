@@ -1,24 +1,15 @@
 ---
 title: Kurumunuz için Azure DevTest Labs benimseyin
 description: Bu makalede, kuruluşunuzda Azure DevTest Labs kullanımı için öngörülü rehberlik sunulmaktadır.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 32e828f420d41d7a67e4f41ac8a4a0698711ce2f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 81767c36b2a5b46eb41be1e516a14fb3ebe3fb7f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899259"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476997"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>Kuruluşta DevTest Labs
 Çeviklik, esneklik ve ekonomisi içeren [avantajlar](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) nedeniyle kuruluşlar, bulutu hızla benimsemektedir. İlk adımlar genellikle geliştirme ve test iş yükleridir. Azure DevTest Labs, kurumsal [geliştirme ve test senaryolarına](devtest-lab-guidance-get-started.md)destek sağlayan [Özellikler](devtest-lab-concepts.md) sunar.

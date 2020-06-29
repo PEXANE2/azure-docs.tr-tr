@@ -1,24 +1,14 @@
 ---
 title: Azure Lab Services VM 'Leri için parola ayarlama | Microsoft Docs
 description: Azure Lab Services derslik laboratuvarlarında sanal makineler (VM) için parolaları ayarlamayı ve sıfırlamayı öğrenin.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2020
-ms.author: spelluru
-ms.openlocfilehash: eda9a58a3bb63e3f66ca7b0c8bb1b7c866e2ac4f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895818"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443783"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Sanal makine havuzunu ayarlama ve yönetme 
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:

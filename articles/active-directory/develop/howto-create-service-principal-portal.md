@@ -7,19 +7,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d1ee8e90d1d690315b2727a050e0383d7d28dc03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91abfc395c84ad49079fcaa55c20d641ee4e7b49
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546148"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478119"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
 Bu makalede rol tabanlı erişim denetimiyle kullanılabilecek yeni bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturma konusu gösterilmektedir. Kaynaklara erişmesi veya kaynakları değiştirmesi gereken bir kodunuz olduğunda, uygulama için bir kimlik oluşturabilirsiniz. Bu kimlik, hizmet sorumlusu olarak bilinir. Daha sonra, gerekli izinleri hizmet sorumlusuna atayabilirsiniz. Bu makalede, portalının hizmet sorumlusu oluşturmak için nasıl kullanılacağı gösterilir. Uygulamanın yalnızca bir kuruluş içinde çalıştırılması amaçlanan tek kiracılı bir uygulamaya odaklanır. Genellikle kuruluşunuzda çalışan iş kolu uygulamaları için tek kiracılı uygulamalar kullanırsınız.
 
@@ -56,7 +56,7 @@ Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzi
 
    Aradığınız aboneliği görmüyorsanız **genel abonelikler filtresi**' ni seçin. Portal için istediğiniz aboneliğin seçildiğinden emin olun.
 
-1. **Erişim denetimi (IAM)** seçeneğini belirleyin.
+1. **Erişim denetimi (IAM)** öğesini seçin.
 1. **Rol ataması ekle**’yi seçin.
 1. Uygulamaya atamak istediğiniz rolü seçin. Örneğin, uygulamanın **yeniden başlatma**gibi eylemleri yürütmesine izin vermek için örnekleri **başlatın** ve **durdurun** , **katkıda bulunan** rolünü seçin.  [Kullanılabilir roller](../../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi için, varsayılan olarak Azure AD uygulamaları kullanılabilir seçeneklerde gösterilmez. Uygulamanızı bulmak için adı arayın ve seçin.
 
@@ -110,7 +110,7 @@ Sertifikayı karşıya yüklemek için:
 
     ![Sertifikayı karşıya yükle ' yi seçin ve eklemek istediğiniz birini seçin](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**'yi seçin.
 
 Sertifikayı uygulama kayıt portalı 'nda uygulamanıza kaydettikten sonra, sertifikayı kullanmak için istemci uygulama kodunu etkinleştirmeniz gerekir.
 
@@ -152,13 +152,13 @@ Uygulama kayıtları ayarı **Hayır**olarak ayarlandıysa, yalnızca yönetici 
 
 ### <a name="check-azure-subscription-permissions"></a>Azure abonelik izinlerini denetle
 
-Azure aboneliğinizde, hesabınız bir AD uygulamasına rol atamak `Microsoft.Authorization/*/Write` için erişime sahip olmalıdır. Bu eylemin izni, [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolüyle veya [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüyle verilir. Hesabınıza **katkıda bulunan** rolü atanırsa, yeterli izne sahip değilsiniz. Hizmet sorumlusu bir rol atamaya çalışırken bir hata alırsınız.
+Azure aboneliğinizde, hesabınız bir `Microsoft.Authorization/*/Write` ad uygulamasına rol atamak için erişime sahip olmalıdır. Bu eylemin izni, [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolüyle veya [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüyle verilir. Hesabınıza **katkıda bulunan** rolü atanırsa, yeterli izne sahip değilsiniz. Hizmet sorumlusu bir rol atamaya çalışırken bir hata alırsınız.
 
 Abonelik izinlerinizi denetlemek için:
 
 1. **Abonelik**arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
 
-   ![Arama](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Arayın](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Hizmet sorumlusunu oluşturmak istediğiniz aboneliği seçin.
 

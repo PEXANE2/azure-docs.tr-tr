@@ -2,14 +2,14 @@
 title: Sanal ağda havuz sağlama
 description: Bir Azure sanal ağında, işlem düğümlerinin bir dosya sunucusu gibi ağdaki diğer VM 'lerle güvenli bir şekilde iletişim kurabilmesi için bir Batch havuzu oluşturma.
 ms.topic: how-to
-ms.date: 04/03/2020
+ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 559cf3bc145deeed78b91def9d36211f885005d6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3ff8995217521199436e0924acc691dab7c4baef
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797515"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506624"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Sanal ağda Azure Batch havuzu oluşturma
 
@@ -17,27 +17,29 @@ Bir Azure Batch havuzu oluşturduğunuzda, havuzu belirttiğiniz bir [Azure sana
 
 ## <a name="why-use-a-vnet"></a>Neden VNet kullanmalıyım?
 
-Azure Batch havuzun, işlem düğümlerinin birbirleriyle iletişim kurmasına izin vermek için ayarları vardır. Örneğin, çok örnekli görevleri çalıştırmak için. Bu ayarlar ayrı bir sanal ağ gerektirmez. Ancak, varsayılan olarak, düğümler, bir lisans sunucusu ya da bir dosya sunucusu gibi Batch havuzunun parçası olmayan sanal makinelerle iletişim kuramaz. Havuz işlem düğümlerinin diğer sanal makinelerle veya şirket içi bir ağla güvenli bir şekilde iletişim kurmasına izin vermek için, havuzu bir Azure VNet 'in alt ağında sağlayabilirsiniz.
+Bir havuzdaki işlem düğümleri, farklı bir VNet gerekmeden, çok örnekli görevleri çalıştırmak gibi birbirleriyle iletişim kurabilir. Ancak, varsayılan olarak, bir havuzdaki düğümler, havuz dışında olan ve lisans sunucuları veya dosya sunucuları gibi sanal makinelerle iletişim kuramaz.
+
+İşlem düğümlerinin diğer sanal makinelerle veya şirket içi bir ağla güvenli bir şekilde iletişim kurmasına izin vermek için, havuzu bir Azure VNet 'in alt ağında sağlayabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Kimlik doğrulaması**. Azure sanal ağı kullanmak için Batch istemci API'sinin Azure Active Directory (AD) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir.
+- **Kimlik doğrulaması**. Azure sanal ağı kullanmak için Batch istemci API'sinin Azure Active Directory (AD) kimlik doğrulamasını kullanması gerekir. Azure AD için Azure Batch desteği, [Batch hizmeti çözümlerinin kimliğini Active Directory ile doğrulama](batch-aad-auth.md) makalesinde belirtilmiştir.
 
-* **Bir Azure sanal ağı**. VNet gereksinimleri ve yapılandırması için aşağıdaki bölüme bakın. Bir sanal ağı bir veya daha fazla alt ağ ile önceden hazırlamak için Azure portal, Azure PowerShell, Azure komut satırı arabirimi (CLı) veya diğer yöntemleri kullanabilirsiniz.
-  * Azure Resource Manager tabanlı VNet oluşturmak için, bkz. [sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Yeni dağıtımlar için Kaynak Yöneticisi tabanlı VNet önerilir ve yalnızca sanal makine yapılandırmasındaki havuzlar üzerinde desteklenir.
-  * Klasik VNet oluşturmak için, bkz. [birden çok alt ağ ile sanal ağ (klasik) oluşturma](../virtual-network/create-virtual-network-classic.md). Klasik VNet yalnızca Cloud Services yapılandırmasındaki havuzlarda desteklenir.
+- **Bir Azure sanal ağı**. VNet gereksinimleri ve yapılandırması için aşağıdaki bölüme bakın. Bir sanal ağı bir veya daha fazla alt ağ ile önceden hazırlamak için Azure portal, Azure PowerShell, Azure komut satırı arabirimi (CLı) veya diğer yöntemleri kullanabilirsiniz.
+  - Azure Resource Manager tabanlı VNet oluşturmak için, bkz. [sanal ağ oluşturma](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Yeni dağıtımlar için Kaynak Yöneticisi tabanlı VNet önerilir ve yalnızca sanal makine yapılandırması kullanan havuzlarda desteklenir.
+  - Klasik VNet oluşturmak için, bkz. [birden çok alt ağ ile sanal ağ (klasik) oluşturma](../virtual-network/create-virtual-network-classic.md). Klasik VNet yalnızca Cloud Services yapılandırma kullanan havuzlarda desteklenir.
 
 ## <a name="vnet-requirements"></a>Sanal ağ gereksinimleri
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
-## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Portalda VNet ile havuz oluşturma
+## <a name="create-a-pool-with-a-vnet-in-the-azure-portal"></a>Azure portal VNet ile havuz oluşturma
 
 VNet 'nizi oluşturduktan ve bu ağa bir alt ağ atadıktan sonra, bu VNet ile bir Batch havuzu oluşturabilirsiniz. Azure portal bir havuz oluşturmak için aşağıdaki adımları izleyin: 
 
 1. Azure portalında Batch hesabınıza gidin. Bu hesabın, kullanmayı düşündüğünüz VNet 'i içeren kaynak grubuyla aynı abonelikte ve bölgede olması gerekir.
 2. Soldaki **Ayarlar** penceresinde **havuzlar** menü öğesini seçin.
-3. **Havuzlar** penceresinde **Ekle** komutunu seçin.
+3. **Havuzlar** penceresinde **Ekle**' yi seçin.
 4. **Havuz Ekle** penceresinde, **görüntü türü** açılan menüsünden kullanmayı düşündüğünüz seçeneği belirleyin.
 5. Özel görüntünüz için doğru **yayımcıyı/teklifi/SKU 'yu** seçin.
 6. **Düğüm boyutu**, **hedef adanmış düğümler**ve **düşük öncelikli düğümlerin**yanı sıra istediğiniz isteğe bağlı ayarları da kapsayan, kalan gerekli ayarları belirtin.
@@ -47,22 +49,22 @@ VNet 'nizi oluşturduktan ve bu ağa bir alt ağ atadıktan sonra, bu VNet ile b
 
 ## <a name="user-defined-routes-for-forced-tunneling"></a>Zorlamalı tünel için Kullanıcı tanımlı yollar
 
-Kuruluşunuzdaki Internet 'e bağlı trafiği İnceleme ve günlüğe kaydetme amacıyla Şirket içi konumunuza yeniden yönlendirmek (zorlamak) için gereken gereksinimlere sahip olabilirsiniz. VNet 'iniz içindeki alt ağlar için Zorlamalı tünel oluşturmayı etkinleştirmiş olabilirsiniz.
+Kuruluşunuzdaki internet 'e bağlı trafiği İnceleme ve günlüğe kaydetme amacıyla Şirket içi konumunuza yeniden yönlendirmek (zorlamak) için gereken gereksinimlere sahip olabilirsiniz. Ayrıca, sanal ağınızdaki alt ağlar için Zorlamalı tünel oluşturmayı etkinleştirmiş olabilirsiniz.
 
-Azure Batch havuzu işlem düğümlerinizin Zorlamalı tünel etkin olan bir VNet 'te çalıştığından emin olmak için, bu alt ağ için aşağıdaki [Kullanıcı tanımlı yolları](../virtual-network/virtual-networks-udr-overview.md) (UDR) eklemeniz gerekir:
+Havuzunuzdaki düğümlerin Zorlamalı tünel etkin olan bir VNet 'te çalıştığından emin olmak için, bu alt ağ için aşağıdaki [Kullanıcı tanımlı yolları](../virtual-network/virtual-networks-udr-overview.md) (UDR) eklemeniz gerekir:
 
-* Batch hizmetinin, görevleri zamanlamak için havuz işlem düğümleriyle iletişim kurması gerekir. Bu iletişimi etkinleştirmek için Batch hesabınızın bulunduğu bölgedeki Batch hizmeti tarafından kullanılan her IP adresi için bir UDR ekleyin. Batch hizmetinin IP adreslerinin listesini edinme hakkında bilgi edinmek için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/service-tags-overview.md).
+- Batch hizmetinin, görevleri zamanlamak için düğümlerle iletişim kurması gerekir. Bu iletişimi etkinleştirmek için Batch hesabınızın bulunduğu bölgedeki Batch hizmeti tarafından kullanılan her IP adresi için bir UDR ekleyin. Batch hizmetinin IP adreslerinin listesini almak için bkz. [Şirket Içi hizmet etiketleri](../virtual-network/service-tags-overview.md).
 
-* Azure Storage 'a giden trafiğin (özellikle, formun URL 'Leri, `<account>.table.core.windows.net` `<account>.queue.core.windows.net` ve `<account>.blob.core.windows.net` ) Şirket içi ağ gereciniz aracılığıyla engellenmediğinden emin olun.
+- Azure Storage 'a giden trafiğin (özellikle, formun URL 'Leri, `<account>.table.core.windows.net` `<account>.queue.core.windows.net` ve `<account>.blob.core.windows.net` ) Şirket içi ağınız tarafından engellenmediğinden emin olun.
 
-Bir UDR eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet**olarak ayarlayın. Aşağıdaki örneğe bakın:
+Bir UDR eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve **sonraki atlama türünü** **Internet**olarak ayarlayın.
 
 ![Kullanıcı tanımlı yol](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
-> Batch hizmeti IP adresleri zaman içinde değişebilir. Bir IP adresi değişikliği nedeniyle kesinti oluşmasını önlemek için, Batch hizmeti IP adreslerini otomatik olarak yenilemek ve yol tablonuzda güncel tutmak için düzenli bir işlem oluşturmanızı öneririz.
+> Batch hizmeti IP adresleri zamanla değişebilir. Bir IP adresi değişikliği nedeniyle kesintileri önlemek için, Batch hizmeti IP adreslerini otomatik olarak yenilemek ve yol tablonuzda güncel tutmak için bir işlem oluşturun. Alternatif olarak, [denetlediğiniz BELIRTILEN IP adresleriyle bir havuz oluşturabilirsiniz](create-pool-public-ip.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Batch hizmeti iş akışı ve](batch-service-workflow-features.md) havuzlar, düğümler, işler ve görevler gibi birincil kaynaklar hakkında bilgi edinin.
-- Kullanıcı tanımlı yol oluşturma hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı yol oluşturma-Azure Portal](../virtual-network/tutorial-create-route-table-portal.md).
+- [Azure Portal Kullanıcı tanımlı bir yol oluşturmayı](../virtual-network/tutorial-create-route-table-portal.md)öğrenin.

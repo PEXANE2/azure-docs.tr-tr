@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 408d8856130947e9be9c6d2714310332d9935cdd
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76697141"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478000"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Nasıl yapılır: bir uygulamanın yayımcı etki alanını yapılandırma
 
@@ -71,7 +71,7 @@ Uygulamanız bir kiracıda kayıtlı değilse, yalnızca uygulamanız için yeni
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>Uygulamanıza yönelik yeni bir etki alanını doğrulamak için
 
-1. Adlı `microsoft-identity-association.json` bir dosya oluşturun ve aşağıdaki JSON kod parçacığını yapıştırın.
+1. Adlı bir dosya oluşturun `microsoft-identity-association.json` ve AŞAĞıDAKI JSON kod parçacığını yapıştırın.
 
    ```json
    {
@@ -85,7 +85,7 @@ Uygulamanız bir kiracıda kayıtlı değilse, yalnızca uygulamanız için yeni
 
 1. *{Size-App-ID-Here}* yer tutucusunu uygulamanıza karşılık gelen uygulama (ISTEMCI) kimliğiyle değiştirin.
 
-1. Dosyayı şurada barındırın: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. *{-DOMAIN-Here}* yer tutucusunu doğrulanmış etki alanıyla eşleşecek şekilde değiştirin.
+1. Dosyayı şurada barındırın: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` . *{-DOMAIN-Here}* yer tutucusunu doğrulanmış etki alanıyla eşleşecek şekilde değiştirin.
 
 1. **Etki alanını doğrula ve Kaydet** düğmesine tıklayın.
 
@@ -94,7 +94,7 @@ Uygulamanız bir kiracıda kayıtlı değilse, yalnızca uygulamanız için yeni
 - Kiracınızda etki alanları doğrulandıysa, **doğrulanmış etki alanı seç** açılır listesinden etki alanlarından birini seçin.
 
 >[!Note]
-> Döndürülmesi gereken ' Content-Type ' üst bilgisi bekleniyordu `application/json`. Beğendiği gibi başka bir şey kullanıyorsanız, aşağıda belirtildiği gibi bir hata alabilirsiniz`application/json; charset=utf-8` 
+> Döndürülmesi gereken ' Content-Type ' üst bilgisi bekleniyordu `application/json` . Beğendiği gibi başka bir şey kullanıyorsanız, aşağıda belirtildiği gibi bir hata alabilirsiniz`application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >
@@ -141,7 +141,7 @@ Ancak, geliştirici kök etki alanını açıkça eklerse, birleşimine izin ver
 "https://app2.contoso.com",
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 Aşağıdaki durumlar tek köklü etki alanı kısıtlamasına tabi değildir:
 

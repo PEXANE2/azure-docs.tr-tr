@@ -3,15 +3,15 @@ title: Avere vFXT sahip olmayan geçici çözüm-Azure
 description: Abonelik sahibi olmayan kullanıcılara Azure için avere vFXT dağıtma izni veren geçici çözüm
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 1b411fe465a67f8ea5421ac0dc93348b4e92e8ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d9b1060ee35af6cbc2e1b95b0f7813072c52d2e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153284"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505384"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Sahip olmayanları Avere vFXT dağıtımı yapmak için yetkilendirme
 
@@ -26,7 +26,7 @@ Abonelik sahibi ayrıca avere vFXT Market görüntüsü için [kullanım koşull
 > [!IMPORTANT]
 > Bu adımların tümü, küme için kullanılacak abonelikte sahip ayrıcalıklarına sahip bir kullanıcı tarafından alınmalıdır.
 
-1. Bu satırları kopyalayın ve bir dosyaya kaydedin (örneğin, `averecreatecluster.json`). `AssignableScopes` DEYIMINDEKI abonelik kimliğinizi kullanın.
+1. Bu satırları kopyalayın ve bir dosyaya kaydedin (örneğin, `averecreatecluster.json` ). Deyimindeki abonelik KIMLIĞINIZI kullanın `AssignableScopes` .
 
    ```json
    {

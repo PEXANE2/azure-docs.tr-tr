@@ -4,12 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: b16301bb092395ac71a5bfd6f53f392ab708b10c
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: dd3b9b8eca4f1eab66f8982b22be5941d082b229
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345181"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506183"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery ilgili genel sorular
 
@@ -128,7 +128,7 @@ Evet. Şube ofislerinizde çoğaltma ve yük devretme işlemlerini düzenlemek i
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarma destekleniyor mu?
 
-Evet, Azure bölgeleri arasında Azure VM 'Leri için olağanüstü durum desteği Site Recovery. Azure VM olağanüstü durum kurtarma ile ilgili [sık sorulan soruları gözden geçirin](azure-to-azure-common-questions.md) .
+Evet, Azure bölgeleri arasında Azure VM 'Leri için olağanüstü durum desteği Site Recovery. Azure VM olağanüstü durum kurtarma ile ilgili [sık sorulan soruları gözden geçirin](azure-to-azure-common-questions.md) . Aynı kıta iki Azure bölgesi arasında çoğaltmak istiyorsanız lütfen Azure 'da Azure DR teklifini kullanın. Yapılandırma sunucusu/işlem sunucusu ve ExpressRoute bağlantıları ayarlama gereksinimi yoktur.
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>VMware VM 'Leri için olağanüstü durum kurtarma destekleniyor mu?
 

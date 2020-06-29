@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900929"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413733"
 ---
 # <a name="about-azure-key-vault-keys"></a>Azure Key Vault anahtarları hakkında
 
@@ -30,10 +30,10 @@ Key Vault içindeki şifreleme anahtarları JSON Web anahtarı [JWK] nesneleri o
 
 Temel JWK/JWA belirtimleri de Key Vault uygulamasına özgü anahtar türlerini etkinleştirmek üzere genişletilir. Örneğin, HSM satıcıya özgü paketleme kullanarak anahtarları içeri aktarmak, yalnızca Key Vault HSM 'lerde kullanılabilecek anahtarların güvenli bir şekilde aktarılmasına izin verebilir. 
 
-Azure Key Vault hem yazılım hem de sabit anahtarları destekler:
+Azure Key Vault hem yazılım korumalı hem de HSM korumalı anahtarları destekler:
 
-- **"Geçici" anahtarlar**: yazılımda Key Vault tarafından işlenen, ancak bir HSM 'de olan bir sistem anahtarı kullanılarak Rest 'te şifrelenen bir anahtar. İstemciler mevcut bir RSA veya EC (Eliptik Eğri) anahtarını içeri aktarabilir veya Key Vault oluşturmak isteyebilir.
-- **"Hard" anahtarları**: bir HSM 'de işlenen anahtar (donanım güvenlik modülü). Bu anahtarlar Key Vault HSM güvenlik dünyasının birinde korunur (yalıtımı sürdürmek için coğrafya başına bir güvenlik dünyası vardır). İstemciler, bir RSA veya EC anahtarını, geçici biçimde veya uyumlu bir HSM cihazından dışarı aktararak içeri aktarabilir. İstemciler bir anahtar oluşturmak için Key Vault da isteyebilir. Bu anahtar türü, HSM anahtar malzemesini taşımak için key_hsm özniteliğini JWK alma 'ya ekler.
+- **Yazılım korumalı anahtarlar**: yazılımda Key Vault tarafından işlenen, ancak bir HSM 'deki bir sistem anahtarı kullanılarak, bekleyen olarak şifrelenen bir anahtar. İstemciler mevcut bir RSA veya EC (Eliptik Eğri) anahtarını içeri aktarabilir veya Key Vault oluşturmak isteyebilir.
+- **HSM-potesiyonu olmayan anahtarlar**: bir HSM 'de işlenen anahtar (donanım güvenlik modülü). Bu anahtarlar Key Vault HSM güvenlik dünyasının birinde korunur (yalıtımı sürdürmek için coğrafya başına bir güvenlik dünyası vardır). İstemciler, yazılım korumalı biçimde veya uyumlu bir HSM cihazından dışarı aktararak bir RSA veya EC anahtarı alabilir. İstemciler bir anahtar oluşturmak için Key Vault da isteyebilir. Bu anahtar türü, HSM anahtar malzemesini taşımak için key_hsm özniteliğini JWK alma 'ya ekler.
 
 Coğrafi sınırlar hakkında daha fazla bilgi için bkz. [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/privacy/)  
 
@@ -41,9 +41,9 @@ Coğrafi sınırlar hakkında daha fazla bilgi için bkz. [Microsoft Azure Güve
 
 Key Vault yalnızca RSA ve eliptik eğri tuşlarını destekler. 
 
--   **EC**: "Soft" eliptik eğri anahtarı.
+-   **EC**: Yazılım korumalı eliptik eğri anahtarı.
 -   **EC-HSM**: "Hard" eliptik eğri anahtarı.
--   **RSA**: "Soft" RSA anahtarı.
+-   **RSA**: Yazılım korumalı RSA anahtarı.
 -   **RSA-HSM**: "Hard" RSA anahtarı.
 
 Key Vault, 2048, 3072 ve 4096 boyutlarının RSA anahtarlarını destekler. Key Vault, P-256, P-384, P-521 ve P-256K (SECP256K1) eliptik eğri anahtar türlerini destekler.
@@ -119,7 +119,7 @@ JWK nesneleri hakkında daha fazla bilgi için bkz. [JSON Web anahtarı (JWK)](h
 
 Anahtar malzemeye ek olarak aşağıdaki öznitelikler de belirtilebilir. Bir JSON Isteğinde, belirtilen öznitelik olmadığından bile ' {' '} ' öznitelikler anahtar sözcüğü ve ayraçları gereklidir.  
 
-- *etkin*: Boolean, isteğe bağlı, varsayılan değer **true**'dur. Anahtarın etkinleştirilip etkinleştirilmeyeceğini ve şifreleme işlemleri için kullanılıp kullanılamayacağını belirtir. *Enabled* özniteliği, *NBF* ve *Exp*ile birlikte kullanılır. *NBF* ve *Exp*arasında bir işlem olduğunda, yalnızca *etkin* değeri **true**olarak ayarlandıysa izin verilir. [Belirli koşullarda](#date-time-controlled-operations)belirli işlem türleri dışında, *NBF* / *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.
+- *etkin*: Boolean, isteğe bağlı, varsayılan değer **true**'dur. Anahtarın etkinleştirilip etkinleştirilmeyeceğini ve şifreleme işlemleri için kullanılıp kullanılamayacağını belirtir. *Enabled* özniteliği, *NBF* ve *Exp*ile birlikte kullanılır. *NBF* ve *Exp*arasında bir işlem olduğunda, yalnızca *etkin* değeri **true**olarak ayarlandıysa izin verilir. *nbf*  /  [Belirli koşullarda](#date-time-controlled-operations)belirli işlem türleri dışında, NBF*Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.
 - *NBF*: intdate, isteðe baðlý, default artık. *NBF* (before) özniteliği, [belirli koşullarda](#date-time-controlled-operations)belirli işlem türleri dışında, anahtarın ŞIFRELEME işlemleri için kullanılması gereken süreyi tanımlar. *NBF* özniteliğinin işlenmesi, geçerli tarih/saatin, *NBF* özniteliğinde listelenen son tarih/saat değerinden önce veya buna eşit olması gerekir. Key Vault saat eğimlerini hesaba çıkarak, genellikle birkaç dakikadan daha uzun bir süre boyunca daha fazla bilgi verebilir. Değeri, bir IntDate değeri içeren bir sayı OLMALıDıR.  
 - *Exp*: intdate, isteðe baðlý, Default, "sonsuza kadar". *Exp* (sona erme saati) özniteliği, [belirli koşullarda](#date-time-controlled-operations)belirli işlem türleri dışında, anahtarın ŞIFRELEME işlemi için kullanılması gereken süre sonu zamanını belirler. *Exp* özniteliğinin işlenmesi, geçerli tarih/saatin, *Exp* özniteliğinde listelenen süre sonu tarih/saatinden önce olması gerekir. Key Vault, saat eğimlerini hesaba çıkarak, genellikle birkaç dakikadan daha kısa bir süre boyunca daha fazla bilgi sağlayabilir. Değeri, bir IntDate değeri içeren bir sayı OLMALıDıR.  
 
@@ -132,7 +132,7 @@ IntDate ve diğer veri türleri hakkında daha fazla bilgi için bkz. [Anahtarla
 
 ### <a name="date-time-controlled-operations"></a>Tarih-saat denetimli işlemler
 
-Henüz yok-geçerli olmayan ve süresi dolmayan anahtarlar, *NBF* / *Exp* penceresi dışında, **şifre çözme**, **sarmalama**ve **doğrulama** işlemleri için çalışır (403 döndürmez, yasak olur). Henüz geçerli olmayan durumu kullanmaya yönelik korvaale, bir anahtarın üretim kullanılmadan önce test edilmeye izin vermektir. Kullanım tarihi geçen durum kullanımı için, anahtar geçerli olduğunda oluşturulan verilerdeki kurtarma işlemlerine izin vermektir. Ayrıca, Key Vault ilkeleri kullanarak bir anahtara erişimi devre dışı bırakabilir ya da *etkin* anahtar özniteliğini **yanlış**olarak güncelleyerek.
+Henüz yok-geçerli olmayan ve süresi dolmayan anahtarlar, *NBF*  /  *Exp* penceresi dışında, **şifre çözme**, **sarmalama**ve **doğrulama** işlemleri için çalışır (403 döndürmez, yasak olur). Henüz geçerli olmayan durumu kullanmaya yönelik korvaale, bir anahtarın üretim kullanılmadan önce test edilmeye izin vermektir. Kullanım tarihi geçen durum kullanımı için, anahtar geçerli olduğunda oluşturulan verilerdeki kurtarma işlemlerine izin vermektir. Ayrıca, Key Vault ilkeleri kullanarak bir anahtara erişimi devre dışı bırakabilir ya da *etkin* anahtar özniteliğini **yanlış**olarak güncelleyerek.
 
 Veri türleri hakkında daha fazla bilgi için bkz. [veri türleri](../general/about-keys-secrets-certificates.md#data-types).
 
@@ -177,9 +177,9 @@ Anahtarlarla çalışma hakkında daha fazla bilgi için bkz. [Key Vault REST AP
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Anahtar Kasası Hakkında](../general/overview.md)
+- [Key Vault Hakkında](../general/overview.md)
 - [Anahtarlar, gizli diziler ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
 - [Gizli diziler hakkında](../secrets/about-secrets.md)
 - [Sertifikalar hakkında](../certificates/about-certificates.md)
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
-- [Geliştirici Kılavuzu Key Vault](../general/developers-guide.md)
+- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

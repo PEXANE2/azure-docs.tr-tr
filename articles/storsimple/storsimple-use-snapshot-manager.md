@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
-ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a94a533dbc31e2f2d4ddb5d1985c77da8b29032
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933968"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476980"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Yedekleme işlerini ve yedekleme kataloğunu yönetmek için StorSimple Snapshot Manager Kullanıcı arabirimini kullanma
 
@@ -76,7 +76,7 @@ Aşağıdaki tabloda **Dosya** menüsünde görünen öğeler açıklanmaktadır
 | Ek bileşen Ekle/Kaldır |Ek bileşen eklemek veya kaldırmak ve **kapsam** bölmesinde düğümleri düzenlemek Için **ek bileşen Ekle/Kaldır** ' a tıklayın. Daha fazla bilgi için, [MMC 3,0 ' de ek bileşenler ve uzantılar ekleme, kaldırma ve düzenleme](https://technet.microsoft.com/library/cc722035.aspx)bölümüne gidin. |
 | Seçenekler |Konsol simgesini değiştirmek, Kullanıcı erişimi modlarını ve izinlerini belirtmek veya kullanılabilir disk alanını artırmak için konsol dosyalarını silmek için **Seçenekler** ' e tıklayın. |
 | Dosya yollarının listesi |Son açtığınız bir dosyayı yeniden açmak için numaralandırılmış listede bir yola tıklayın. |
-| Çık |**Dosya** menüsünü kapatmak için **Çıkış** ' a tıklayın. |
+| Çıkış |**Dosya** menüsünü kapatmak için **Çıkış** ' a tıklayın. |
 
 ### <a name="action-menu"></a>Eylem menüsü
 Kullanılabilir eylemlerden seçim yapmak için **eylem** menüsünü kullanın. Sizin için kullanılabilir öğeler, **kapsam** bölmesi veya **sonuçlar** bölmesinde yaptığınız seçime bağlıdır.
@@ -112,20 +112,20 @@ Aşağıdaki tablo, StorSimple Snapshot Manager eylemlerinin alfabetik bir liste
 | Kimlik doğrulaması |**Cihazlar** düğümüne tıklayın ve **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Cihaz için yapılandırdığınız parolayı girmek için **kimlik doğrulaması** ' na tıklayın. |
 | Kopyalama |**Yedekleme kataloğu**' nu genişletin, **bulut anlık görüntüleri**' ni genişletin, bulunan bir yedeğe tıklayın ve ardından **sonuçlar** bölmesinde bir birim seçin. |Bir bulut anlık görüntüsünün kopyasını oluşturmak ve bunu belirleyeceğiniz bir konumda depolamak için **Kopyala** ' ya tıklayın. |
 | Cihaz yapılandırma |**Cihazlar** düğümüne sağ tıklayın. |Tek bir cihazı veya birden çok cihazı Windows ana bilgisayarına bağlanacak şekilde yapılandırmak için **cihaz yapılandırma** ' ya tıklayın. |
-| Yedekleme Ilkesi oluştur |Aşağıdakilerden birini yapın:<ul><li>**Yedekleme ilkeleri**' ne sağ tıklayın.</li><li>**Birim grupları**' na tıklayın veya genişletin ve ardından bir birim grubuna sağ tıklayın.</li><li>**Yedekleme kataloğu**' na tıklayın veya genişletin ve ardından bir birim grubuna sağ tıklayın.</li></ul> |Bir birim grubu için zamanlanmış bir yedekleme yapılandırmak üzere **yedekleme Ilkesi oluştur** ' a tıklayın. |
-| Birim grubu oluştur |Aşağıdakilerden birini yapın:<ul><li>**Birimler** düğümüne tıklayın ve ardından **sonuçlar** bölmesinde bir birime sağ tıklayın.</li><li>**Birim grupları** düğümüne sağ tıklayın.</li></ul> |Birim grubuna birimler atamak için **birim grubu oluştur** ' a tıklayın. |
+| Yedekleme Ilkesi oluştur |Şunlardan birini yapın:<ul><li>**Yedekleme ilkeleri**' ne sağ tıklayın.</li><li>**Birim grupları**' na tıklayın veya genişletin ve ardından bir birim grubuna sağ tıklayın.</li><li>**Yedekleme kataloğu**' na tıklayın veya genişletin ve ardından bir birim grubuna sağ tıklayın.</li></ul> |Bir birim grubu için zamanlanmış bir yedekleme yapılandırmak üzere **yedekleme Ilkesi oluştur** ' a tıklayın. |
+| Birim grubu oluştur |Şunlardan birini yapın:<ul><li>**Birimler** düğümüne tıklayın ve ardından **sonuçlar** bölmesinde bir birime sağ tıklayın.</li><li>**Birim grupları** düğümüne sağ tıklayın.</li></ul> |Birim grubuna birimler atamak için **birim grubu oluştur** ' a tıklayın. |
 | Sil |Bir düğüme veya sonuca tıklayın (Bu öğe birçok **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Seçtiğiniz düğümü veya sonucu silmek için **Sil** ' e tıklayın. Onay iletişim kutusu göründüğünde, silme işlemini onaylayın veya iptal edin. |
 | Ayrıntılar |**Cihazlar** düğümüne tıklayın ve ardından **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Bir cihazın yapılandırma ayrıntılarını görmek için **Ayrıntılar** ' a tıklayın. |
 | Düzenle |**Yedekleme ilkeleri**' ne tıklayın ve ardından **sonuçlar** bölmesinde bir ilkeye sağ tıklayın. |Birim grubu için Yedekleme zamanlamasını değiştirmek üzere **Düzenle** ' ye tıklayın. |
 | Listeyi dışarı aktar |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Listeyi bir virgülle ayrılmış değer (CSV) dosyasına kaydetmek için **Listeyi dışarı aktar** ' a tıklayın. Daha sonra bu dosyayı analiz için bir elektronik tablo uygulamasına aktarabilirsiniz. |
-| Yardım |Herhangi bir düğüme veya sonuca tıklayın. (Bu öğe tüm **eylem** menüleri ve **Eylemler** bölmeleri üzerinde görünür.) |Çevrimiçi yardım 'ı ayrı bir tarayıcı penceresinde açmak için **Yardım 'a** tıklayın. |
+| Help |Herhangi bir düğüme veya sonuca tıklayın. (Bu öğe tüm **eylem** menüleri ve **Eylemler** bölmeleri üzerinde görünür.) |Çevrimiçi yardım 'ı ayrı bir tarayıcı penceresinde açmak için **Yardım 'a** tıklayın. |
 | Buradan Yeni Pencere |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Yeni bir StorSimple Snapshot Manager penceresi açmak için **buradan yeni pencere** ' ye tıklayın. |
 | Yenile |Herhangi bir düğüme veya sonuca tıklayın (Bu öğe tüm **eylem** menülerinde ve **Eylemler** bölmelerinde görüntülenir.) |Şu anda görüntülenen StorSimple Snapshot Manager penceresini güncelleştirmek için **Yenile** ' ye tıklayın. |
 | Cihazı Yenile |**Cihazlar** düğümüne tıklayın ve **sonuçlar** bölmesinde bir cihaza sağ tıklayın. |Belirli bir bağlı cihazı StorSimple Snapshot Manager ile eşleştirmek için **cihazı Yenile** ' ye tıklayın. |
 | Cihazları Yenile |**Cihazlar** düğümüne sağ tıklayın. |Bağlı cihazlar listenizi StorSimple Snapshot Manager ile eşleştirmek için **cihazları Yenile** ' ye tıklayın. |
 | Birimleri yeniden Tara |**Birimler** düğümüne sağ tıklayın. |**Sonuçlar** bölmesinde görüntülenen birimlerin listesini güncelleştirmek için **birimleri yeniden Tara** ' ya tıklayın. |
 | Geri Yükleme |**Yedekleme kataloğu**' nu genişletin, bir birim grubunu genişletin, **Yerel anlık görüntüler** veya **bulut anlık görüntüleri**' ni genişletin ve ardından bir yedeklemeye sağ tıklayın. |Geçerli birim grubu verilerini seçilen Yedeklemedeki verilerle değiştirmek için **geri yükle** ' ye tıklayın. |
-| Yedek al |Aşağıdakilerden birini yapın:<ul><li>**Birim grupları**' nı genişletin ve ardından bir birim grubuna sağ tıklayın.</li><li>**Yedekleme kataloğu**' nu genişletin ve ardından bir birim grubuna sağ tıklayın.</li></ul> |Yedekleme işini hemen başlatmak için **yedeklemeyi al** ' ı tıklatın. |
+| Yedek al |Şunlardan birini yapın:<ul><li>**Birim grupları**' nı genişletin ve ardından bir birim grubuna sağ tıklayın.</li><li>**Yedekleme kataloğu**' nu genişletin ve ardından bir birim grubuna sağ tıklayın.</li></ul> |Yedekleme işini hemen başlatmak için **yedeklemeyi al** ' ı tıklatın. |
 | Içeri aktarmalar görüntüsünü değiştirme |**Kapsam** bölmesinde üst düğüme sağ tıklayın (örneklerdeki **StorSimple Snapshot Manager** düğümü). |StorSimple Aygıt Yöneticisi hizmet panosundan içeri aktarılan birim gruplarını ve ilişkili yedekleri göstermek veya gizlemek için **Içeri aktarmalar görüntüsünü değiştirme** ' ye tıklayın. |
 
 ### <a name="view-menu"></a>Görünüm menüsü
@@ -428,7 +428,7 @@ Aşağıdaki tablolarda, **kapsam** bölmesindeki her bir düğüm için kısayo
 | V |**Görünüm** menüsünü açar. |
 | W |**Birim grupları** düğümüne odaklanmış yeni bir storsimple Snapshot Manager konsolunu açar. |
 | F |StorSimple Snapshot Manager konsolunu güncelleştirir. |
-| L |* * Listeyi dışarı aktar * * sayfasını açar. |
+| L |**Listeyi dışarı aktar** sayfasını açar. |
 | H |Çevrimiçi yardım 'ı açar. |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>Yedekleme kataloğu düğümü kısayol tuşları

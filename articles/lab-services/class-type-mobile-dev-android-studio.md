@@ -2,18 +2,16 @@
 title: Android Studio ile mobil uygulama geliştirmeyi öğretmek için laboratuvar kurma
 titleSuffix: Azure Lab Services
 description: Android Studio kullanan veri mobil uygulama geliştirme sınıfı öğretmek için laboratuvar ayarlamayı öğrenin.  Makale Ayrıca, Azure 'daki bir sanal makinede Android Studio kullanırken yapılacak ayarlamaları tartışır.
-services: lab-services
 author: emaher
-ms.service: lab-services
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 0c257589a2e93ac4c15a639e7156d0c0944b033c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ff996a096cddbb85f1e1c84cd051c18a7ab4ad79
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899035"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444990"
 ---
 # <a name="set-up-a-lab-to-teach-data-mobile-application-development-with-android-studio"></a>Android Studio ile veri mobil uygulama geliştirmesi öğretmek için laboratuvar kurma
 

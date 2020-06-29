@@ -7,25 +7,25 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 1720ea31c8f0b15485df194e62e463671d092b26
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 7101d23d4611f4eea9b5a9e2a7f3ba417c9fcb1a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310861"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476130"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Işlevleri ile Azure statik Web Apps önizlemesine API ekleme
 
 Azure Işlevleri ile tümleştirme yoluyla, Azure statik Web Apps sunucusuz API 'Ler ekleyebilirsiniz. Bu makalede bir Azure statik Web Apps sitesine API ekleme ve dağıtma işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan Azure hesabı.
   - Hesabınız yoksa, [ücretsiz olarak bir tane oluşturabilirsiniz](https://azure.microsoft.com/free).
 - [Visual Studio Code](https://code.visualstudio.com/)
 - Visual Studio Code için [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 - [Canlı sunucu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) uzantısı.
-- API uygulamasını yerel olarak çalıştırmak için [Node. js](https://nodejs.org/download/)
+- API uygulamasını yerel olarak çalıştırmak için [Node.js](https://nodejs.org/download/)
 
 ## <a name="create-a-git-repository"></a>Git deposu oluşturma
 
@@ -89,7 +89,7 @@ Uygulamanız artık aşağıdaki örneğe benzer bir proje yapısına sahiptir.
 
 Ardından, `GetMessage` işlevi ön uca bir ileti döndürecek şekilde değiştirirsiniz.
 
-1. `GetMessage`Aşağıdaki kodla _API/GetMessage/index. js_ altındaki işlevi güncelleştirin.
+1. `GetMessage` _API/getmessage/index.js_ altındaki işlevi aşağıdaki kodla güncelleştirin.
 
     ```javascript
     module.exports = async function (context, req) {
@@ -162,7 +162,7 @@ Azure 'a dağıtıldığında, API 'ye gönderilen istekler, rotaya gönderilen 
 
 #### <a name="update-html-files-to-access-the-api"></a>API 'ye erişmek için HTML dosyalarını güncelleştirme
 
-1. Daha sonra, aşağıdaki kodla _Dizin. html_ dosyası içeriğini güncelleştirin ve metni API işlevinden getirip ekranda görüntüleyin:
+1. Daha sonra, _index.html_ dosyasının IÇERIĞINI, API işlevindeki metni getirmek ve ekranda göstermek için aşağıdaki kodla güncelleştirin:
 
    ```html
    <!DOCTYPE html>
@@ -178,7 +178,7 @@ Azure 'a dağıtıldığında, API 'ye gönderilen istekler, rotaya gönderilen 
    <body>
      <main>
        <h1>Vanilla JavaScript App</h1>
-       <p>Loading message from the API: <b id="name">...</b></p>
+       <p>Loading content from the API: <b id="name">...</b></p>
      </main>
 
      <script>

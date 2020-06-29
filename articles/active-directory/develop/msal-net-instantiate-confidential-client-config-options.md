@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a76935c5b826f8aa686167f702f7170522744155
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084741"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477473"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET kullanarak yapılandırma seçenekleriyle bir gizli istemci uygulaması örneği oluşturma
 
@@ -33,9 +33,9 @@ Uygulamayı başlatmadan önce, uygulamanızın Microsoft Identity platformu ile
 - Web uygulamaları için ve bazen genel istemci uygulamaları için (uygulamanızın bir aracı kullanması gerektiğinde), kimlik sağlayıcısının güvenlik belirteçleriyle uygulamanızı geri yükleyeceğim yeniden yönlendirilebilir.
 
 ## <a name="configure-the-application-from-the-config-file"></a>Uygulamayı yapılandırma dosyasından yapılandırma
-MSAL.NET içindeki seçeneklerin özelliklerinin adı ASP.NET Core `AzureADOptions` içindeki özelliklerinin adı ile eşleşir, bu nedenle herhangi bir birleştirici kod yazmanız gerekmez.
+MSAL.NET içindeki seçeneklerin özelliklerinin adı ASP.NET Core içindeki özelliklerinin adı ile eşleşir `AzureADOptions` , bu nedenle herhangi bir birleştirici kod yazmanız gerekmez.
 
-Bir ASP.NET Core uygulama yapılandırması, bir *appSettings. JSON* dosyasında açıklanmıştır:
+Bir ASP.NET Core uygulama yapılandırması, bir *appsettings.js* dosyasında açıklanmıştır:
 
 ```json
 {
@@ -60,7 +60,7 @@ Bir ASP.NET Core uygulama yapılandırması, bir *appSettings. JSON* dosyasında
 
 MSAL.NET v3. x sürümünden başlayarak, gizli istemci uygulamanızı yapılandırma dosyasından yapılandırabilirsiniz.
 
-Uygulamanızı yapılandırmak ve örneklerinizi başlatmak istediğiniz sınıfta bir `ConfidentialClientApplicationOptions` nesne bildirmeniz gerekir.  `IConfigurationRoot.Bind()` [Microsoft. Extensions. Configuration. Ciltçi NuGet paketindeki](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)yöntemi kullanarak kaynaktan okunan yapılandırmayı (appconfig. JSON dosyası dahil) uygulama seçeneklerinin örneğine bağlayın:
+Uygulamanızı yapılandırmak ve örneklerinizi başlatmak istediğiniz sınıfta bir nesne bildirmeniz gerekir `ConfidentialClientApplicationOptions` .  Microsoft.Extensions.Configbir yöntemi kullanarak, kaynaktan okunan yapılandırmayı (dosyadaki appconfig.jsdosyası dahil) uygulama seçeneklerinin örneğine bağlayın `IConfigurationRoot.Bind()` [. Ciltçi NuGet paketi](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -70,7 +70,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-Bu, *appSettings. JSON* dosyasının "azuread" bölümünün içeriğinin `ConfidentialClientApplicationOptions` nesnenin karşılık gelen özelliklerine bağlanmasını sağlar.  Sonra, bir `ConfidentialClientApplication` nesne oluşturun:
+Bu, dosyadaki *appsettings.js* "azuread" bölümünün içeriğinin nesnenin karşılık gelen özelliklerine bağlanmasını sağlar `ConfidentialClientApplicationOptions` .  Sonra, bir `ConfidentialClientApplication` nesne oluşturun:
 
 ```csharp
 IConfidentialClientApplication app;

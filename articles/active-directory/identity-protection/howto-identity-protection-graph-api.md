@@ -11,21 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b78526ea1409f22b000aed8b20db90dfc9d143
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 324737611d2d05411012050fcf7140bee48d35b0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253571"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505843"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Kimlik Koruması ve Microsoft Graph kullanmaya başlama
 
 Microsoft Graph, Microsoft Birleşik API uç noktası ve [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md) API 'lerinin ana adresidir. Riskli kullanıcılar ve oturum açma bilgileri sunan dört API vardır. İlk API, **riskDetection**, hem Kullanıcı hem de oturum açma ile bağlantılı risk algılamaları ve algılamayla ilgili bilgiler için Microsoft Graph sorgulamanızı sağlar. İkinci API, **Riskyusers**, risk halinde algılanan kullanıcılar kimlik koruması hakkında bilgi için Microsoft Graph sorgulamanızı sağlar. Üçüncü API, **oturum**açma, risk durumu, ayrıntı ve düzeyiyle ilgili belirli ÖZELLIKLERLE Azure AD oturum açma bilgileri için Microsoft Graph sorgulamanızı sağlar. Dördüncü API, **ıdentityriskevents**, [risk algılamaları](../reports-monitoring/concept-risk-events.md) ve ilgili bilgilerin listesi için Microsoft Graph sorgulamanızı sağlar. Identityriskevents API 'SI 10 Ocak 2020 tarihinde kullanım dışı bırakılacak. Bunun yerine **riskDetections** API 'sini kullanmanızı öneririz. Bu makale, Microsoft Graph bağlanma ve bu API 'Leri sorgulama ile çalışmaya başlamanızı sağlar. Ayrıntılı bir giriş, tam belgeler ve grafik Gezgini 'ne erişim için, bu API 'Ler için [Microsoft Graph sitesine](https://graph.microsoft.io/) veya belirli başvuru belgelerine bakın:
 
-* [riskDetection API 'SI](/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [riskyUsers API 'SI](/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [Oturum açma API 'SI](/graph/api/resources/signin?view=graph-rest-beta)
-* [ıdentityriskevents API 'si](/graph/api/resources/identityriskevent?view=graph-rest-beta) *10 Ocak 2020 ' de kullanım dışı* bırakılacak
+* [riskDetection API 'SI](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
+* [riskyUsers API 'SI](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
+* [Oturum açma API 'SI](/graph/api/resources/signin?view=graph-rest-v1.0)
 
 ## <a name="connect-to-microsoft-graph"></a>Microsoft Graph 'a bağlanma
 
@@ -201,7 +200,7 @@ Bu üç API, kuruluşunuzdaki riskli kullanıcılar ve oturum açma bilgileri ha
 Kimlik koruması oturum açma risk ilkeleriyle, risk gerçek zamanlı olarak algılandığında koşullar uygulayabilirsiniz. Ancak çevrimdışı bulunan algılamalar nelerdir? Hangi algılamaların çevrimdışı olduğunu anlamak ve bu nedenle oturum açma risk ilkesini tetiklemeyeceğini anlamak için riskDetection API 'sini sorgulayabilirsiniz.
 
 ```
-GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
+GET https://graph.microsoft.com/v1.0/identityProtection/riskDetections?$filter=detectionTimingType eq 'offline'
 ```
 
 ### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>Riskli oturum açma ilkesi (riskyUsers API) tarafından tetiklenen MFA sınamasını başarıyla geçen tüm kullanıcıları alın
@@ -209,16 +208,9 @@ GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType 
 Kuruluşunuzda etkili kimlik koruması risk tabanlı ilkelerin olduğunu anlamak için, riskli oturum açma ilkesi tarafından tetiklenen bir MFA sınamasını başarıyla geçen tüm kullanıcıları sorgulayabilirsiniz. Bu bilgiler, hangi kullanıcıların kimlik koruması 'nın riskli olarak ne olduğunu ve meşru kullanıcılarınızın AI tarafından riskli bir işlem gerçekleştiriyor olabileceğini anlamanıza yardımcı olabilir.
 
 ```
-GET https://graph.microsoft.com/beta/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
+GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
 ```
 
-### <a name="get-all-the-risky-sign-ins-for-a-specific-user-signin-api"></a>Belirli bir kullanıcı için tüm riskli oturum açma işlemlerini (oturum açma API 'SI) edinme
-
-Bir kullanıcının tehlikede olduğunu düşünüyorsanız, riskli oturum açma işlemlerinin tümünü alarak risk durumunu daha iyi anlayabilirsiniz. 
-
-```
-https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>' and riskState eq 'atRisk'
-```
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tebrikler, Microsoft Graph için ilk çağrdınız yaptınız!  
@@ -232,4 +224,4 @@ Microsoft Graph ve Graph API kullanarak uygulama oluşturma hakkında daha fazla
 - [Azure Active Directory Kimlik Koruması tarafından algılanan risk algılamaları türleri](../reports-monitoring/concept-risk-events.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Microsoft Graph’a genel bakış](https://developer.microsoft.com/graph/docs)
-- [Azure AD Kimlik Koruması hizmeti kökü](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)
+- [Azure AD Kimlik Koruması hizmeti kökü](https://docs.microsoft.com/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)

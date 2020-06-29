@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 5bdb77d27b01f576ca06aa5b6d3df0572b3b1ea6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307926"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414292"
 ---
 # <a name="set-up-web-endpoints"></a>Web uç noktalarını ayarlama
 
-Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıyan özel bir komutlar uygulamasındaki Web uç noktalarını ayarlamayı öğreneceksiniz. Aşağıdaki görevleri tamamlayabilirsiniz:
+Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıyan özel bir komutlar uygulamasındaki Web uç noktalarını ayarlamayı öğreneceksiniz. Aşağıdaki görevleri tamamlayacaksınız:
 
 - Özel komutlar uygulamasındaki Web uç noktalarını ayarlama
 - Özel komutlar uygulamasındaki Web uç noktalarını çağır
@@ -41,12 +41,12 @@ Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıya
    > [!div class="mx-imgBorder"]
    > ![Yeni Web uç noktası](media/custom-commands/setup-web-endpoint-new-endpoint.png)
 
-   | Ayar | Önerilen değer | Description |
+   | Ayar | Önerilen değer | Açıklama |
    | ------- | --------------- | ----------- |
-   | Name | Güncelleştirme Devemlak | Web uç noktasının adı. |
+   | Adı | Güncelleştirme Devemlak | Web uç noktasının adı. |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | Özel komut uygulamanızın konuştuğunu istediğiniz uç noktanın URL 'SI. |
    | Yöntem | POST | Uç noktanızla izin verilen etkileşimler (GET, POST gibi).|
-   | Üst Bilgiler | Anahtar: uygulama, değer: uygulamanız için benzersiz bir ad | İstek üst bilgisine eklenecek üst bilgi parametreleri.|
+   | Üst bilgiler | Anahtar: uygulama, değer: uygulamanız için benzersiz bir ad | İstek üst bilgisine eklenecek üst bilgi parametreleri.|
 
     > [!NOTE]
     > - TV ve fanı 'nin cihaz durumunu kaydeden veritabanı ile birlikte gelen [Azure işlevi](https://docs.microsoft.com/azure/azure-functions/)kullanılarak oluşturulan örnek Web uç noktası
@@ -64,7 +64,7 @@ Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıya
    > [!div class="mx-imgBorder"]
    > ![Web uç noktaları eylem parametrelerini çağır](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
-   | Ayar | Önerilen değer | Description |
+   | Ayar | Önerilen değer | Açıklama |
    | ------- | --------------- | ----------- |
    | Uç Noktalar | Güncelleştirme Devemlak | Bu eylemde çağırmak istediğiniz Web uç noktası. |
    | Sorgu parametreleri | Item = {SubjectDevice} &&değer = {OnOff} | Web uç noktası URL 'sine eklenecek sorgu parametreleri.  |
@@ -78,7 +78,7 @@ Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıya
    > [!div class="mx-imgBorder"]
    > ![Başarı durumunda Web uç noktaları çağrısı eylemi](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
-   | Ayar | Önerilen değer | Description |
+   | Ayar | Önerilen değer | Açıklama |
    | ------- | --------------- | ----------- |
    | Yürütülecek eylem | Konuşma yanıtı gönder | Web uç noktasına istek başarılı olursa yürütülecek eylem |
    
@@ -89,7 +89,7 @@ Bu makalede, bir istemci uygulamasından HTTP istekleri yapmanıza imkan tanıya
    > [!div class="mx-imgBorder"]
    > ![Hata durumunda Web uç noktaları çağrısı eylemi](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 
-   | Ayar | Önerilen değer | Description |
+   | Ayar | Önerilen değer | Açıklama |
    | ------- | --------------- | ----------- |
    | Yürütülecek eylem | Konuşma yanıtı gönder | Web uç noktasına istek başarısız olursa yürütülecek eylem |
 

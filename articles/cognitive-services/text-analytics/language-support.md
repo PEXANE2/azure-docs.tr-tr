@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465601"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413340"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
@@ -57,7 +57,7 @@ ms.locfileid: "84465601"
 #### <a name="named-entity-recognition-ner"></a>[Adlandırılmış varlık tanıma (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * NER v3 Şu anda yalnızca Ingilizce dilini desteklemektedir. NER v3 'i farklı bir dille çağırırsanız, dil sürüm 2,1 ' de desteklendiğinden, API v 2.1 sonuçları döndürür.
+> * NER v3 Şu anda yalnızca Ingilizce ve Ispanyolca dilleri desteklemektedir. NER v3 'i farklı bir dille çağırırsanız, dil sürüm 2,1 ' de desteklendiğinden, API v 2.1 sonuçları döndürür.
 > * v 2.1 Yalnızca Ingilizce, Çince-Basitleştirilmiş, Fransızca, Almanca ve Ispanyolca dilleri için kullanılabilir varlıkların tam kümesini döndürür.  Desteklenen diğer diller için "kişi", "konum" ve "kuruluş" varlıkları döndürülür.
 
 | Dil               | Dil kodu | v 2.1 desteği | v3 desteği | V3 modeli sürümünden itibaren: |       Notlar        |
@@ -82,7 +82,7 @@ ms.locfileid: "84465601"
 | Portekizce (Portekiz) |    `pt-PT`    |     ✓      |            |                                 | `pt`Ayrıca kabul edildi |
 | Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | Rusça              |     `ru`      |     ✓      |            |                                 |                    |
-| İspanyolca               |     `es`      |     ✓      |            |                                 |                    |
+| İspanyolca               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | İsveççe               |     `sv`      |     ✓      |            |                                 |                    |
 | Türkçe               |     `tr`      |     ✓      |            |                                 |                    |
 
