@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 452dd99ae58858b661892e3f962fce8086d4503c
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783376"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444667"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Key Vault geçici silmeyi PowerShell ile kullanma
 
@@ -40,7 +40,7 @@ PowerShell için Key Vault belirli başvuru bilgileri için bkz. [Azure Key Vaul
 
 Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığıyla aşağıdaki şekilde ayrı yönetilir:
 
-| Çalışma | Description | Kullanıcı izni |
+| Çalışma | Açıklama | Kullanıcı izni |
 |:--|:--|:--|
 |Liste|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
 |Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
@@ -267,7 +267,7 @@ Silinen Anahtar Kasası nesnelerinin listelenmesi Ayrıca Key Vault tarafından 
 
 Temizleme koruması açık olduğunda, saklama süresi geçene kadar bir kasa veya silinmiş durumdaki bir nesne temizlenemiyor. Bu kasa veya nesne yine de kurtarılabilir. Bu özellik, bir kasasının veya bir nesnenin Bekletme dönemi geçene kadar hiçbir zaman kalıcı olarak silinebileceğini güvence altına almanızı sağlar. Varsayılan saklama süresi 90 gündür ancak Anahtar Kasası oluşturma sırasında, bekletme ilkesi aralığını 7 ile 90 gün arasında bir değere ayarlamak mümkündür. Temizleme koruması bekletme ilkesi aynı aralığı kullanır. Bir kez ayarlandıktan sonra bekletme ilkesi aralığı değiştirilemez.
 
-Temizleme korumasını yalnızca geçici silme de etkinse etkinleştirebilirsiniz. 
+Temizleme korumasını yalnızca geçici silme de etkinse etkinleştirebilirsiniz. Temizleme korumasının devre dışı bırakılması Şu anda desteklenmiyor. 
 
 Bir kasa oluştururken hem geçici silme hem de Temizleme korumasını açmak için [New-Azkeykasa](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) cmdlet 'ini kullanın:
 

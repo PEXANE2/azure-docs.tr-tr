@@ -1,23 +1,14 @@
 ---
 title: VM 'Leri başlatmak ve durdurmak için komut satırı araçlarını kullanın Azure DevTest Labs
 description: Azure DevTest Labs ' de sanal makineleri başlatmak ve durdurmak için komut satırı araçlarını kullanmayı öğrenin.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: fd643559a09d5c75aad9be5f35c653994c8488cf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: e5a42658f2b83f101271f158c9af70833601b56d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897785"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476425"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs sanal makineleri başlatmak ve durdurmak için komut satırı araçlarını kullanma
 Bu makalede, Azure DevTest Labs bir laboratuvardaki sanal makineleri başlatmak veya durdurmak için Azure PowerShell veya Azure CLı kullanarak nasıl kullanılacağı gösterilmektedir. Bu işlemleri otomatikleştirmek için PowerShell/CLı betikleri oluşturabilirsiniz. 

@@ -4,12 +4,12 @@ description: Azure dosya paylaşımları yedeklenirken destek ayarlarının ve s
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 72492ea77534b636d90820c96e36163e6c6efebe
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 3d9c9e4518ea6cd53c1f1d5e4a50040e3cf025b4
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488469"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443324"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi için destek matrisi
 
@@ -32,6 +32,7 @@ Orta Batı ABD, Avustralya Güney Doğu, Kanada Orta
 | Hesap türü            | Azure Backup, genel amaçlı v1, genel amaçlı v2 ve dosya depolama türü depolama hesaplarında bulunan Azure dosya paylaşımlarını destekler |
 | Performans              | Azure Backup, hem standart hem de Premium Depolama hesaplarında dosya paylaşımlarını destekler |
 | Çoğaltma              | Depolama hesaplarında bulunan Azure dosya paylaşımları, herhangi bir çoğaltma türüyle desteklenir |
+| Güvenlik Duvarı etkin         | Microsoft Azure hizmetlerinin depolama hesabına erişmesine izin veren güvenlik duvarı kuralları olan depolama hesaplarında Azure dosya paylaşımları desteklenir|
 
 ## <a name="supported-file-shares"></a>Desteklenen dosya paylaşımları
 
@@ -46,8 +47,10 @@ Orta Batı ABD, Avustralya Güney Doğu, Kanada Orta
 
 | Ayar                                                      | Sınır |
 | ------------------------------------------------------------ | ----- |
-| Kasa başına günlük olarak korunabilecek en fazla dosya paylaşımı sayısı | 200   |
+| Her gün kasa başına korunabilecek en fazla dosya paylaşımı sayısı| 200   |
 | Her gün kasa başına kaydedileen fazla depolama hesabı sayısı | 50    |
+| Kasa başına korunabilecek en fazla dosya paylaşımı sayısı | 2000   |
+| Kasa başına kaydedileen fazla depolama hesabı sayısı | 200   |
 
 ## <a name="backup-limits"></a>Yedekleme limitleri
 

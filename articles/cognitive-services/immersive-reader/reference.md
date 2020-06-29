@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 6dfcd8d56232f893f881f310b33f3f849e2364a7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907389"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85475961"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>Modern Okuyucu SDK 'Sı başvuru kılavuzu
+# <a name="immersive-reader-javascript-sdk-reference-v11"></a>Modern okuyucu JavaScript SDK başvurusu (v 1.1)
 
 Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığı içerir.
 
@@ -33,7 +33,7 @@ SDK işlevleri kullanıma sunar:
 
 ## <a name="launchasync"></a>launchAsync
 
-Web uygulamanızda bir içinde tam ekran okuyucu başlatır `iframe` .
+Web uygulamanızda bir içinde tam ekran okuyucu başlatır `iframe` . İçeriğinizin boyutunun en fazla 50 MB ile sınırlı olduğunu unutmayın.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -41,7 +41,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametreler
 
-| Name | Tür | Description |
+| Adı | Tür | Description |
 | ---- | ---- |------------ |
 | `token` | dize | Azure AD kimlik doğrulama belirteci. |
 | `subdomain` | string | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. |
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametreler
 
-| Name | Tür | Description |
+| Adı | Tür | Description |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | RenderButtons işlevinin belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
@@ -109,6 +109,70 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 }
 ```
 
+#### <a name="supported-mime-types"></a>Desteklenen MIME türleri
+
+| MIME Türü | Açıklama |
+| --------- | ----------- |
+| metin/düz | Düz metin. |
+| text/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
+| Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](./how-to/display-math.md).
+| Uygulama/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx biçim belgesi.
+
+### <a name="options"></a>Seçenekler
+
+Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
+
+```typescript
+{
+    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
+    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
+    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000).
+    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
+    onExit?: () => any;        // Executes when the Immersive Reader exits.
+    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
+    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
+    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
+    disableFirstRun?: boolean; // Disable the first run experience.
+    readAloudOptions?: ReadAloudOptions; // Options to configure Read Aloud.
+    translationOptions?: TranslationOptions; // Options to configure translation.
+    displayOptions?: DisplayOptions; // Options to configure text size, font, etc.
+    preferences?: string; // String returned from onPreferencesChanged representing the user's preferences in the Immersive Reader.
+    onPreferencesChanged?: (value: string) => any; // Executes when the user's preferences have changed.
+}
+```
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
+```typescript
+type ReadAloudOptions = {
+    voice?: string;      // Voice, either 'male' or 'female'. Note that not all languages support both genders.
+    speed?: number;      // Playback speed, must be between 0.5 and 2.5, inclusive.
+    autoplay?: boolean;  // Automatically start Read Aloud when the Immersive Reader loads.
+};
+```
+
+> [!NOTE]
+> Tarayıcı sınırlamaları nedeniyle, Otomatik Kullan Safari 'de desteklenmez.
+
+```typescript
+type TranslationOptions = {
+    language: string;                         // Set the translation language, e.g. fr-FR, es-MX, zh-Hans-CN. Required to automatically enable word or document translation.
+    autoEnableDocumentTranslation?: boolean;  // Automatically translate the entire document.
+    autoEnableWordTranslation?: boolean;      // Automatically enable word translation.
+};
+```
+
+```typescript
+type DisplayOptions = {
+    textSize?: number;          // Valid values are 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96.
+    increaseSpacing?: boolean;  // Set whether increased spacing is enabled.
+    fontFamily?: string;        // Valid values are 'Calibri', 'ComicSans', and 'Sitka'.
+};
+```
+
 ### <a name="launchresponse"></a>LaunchResponse
 
 Çağrısının yanıtını içerir `ImmersiveReader.launchAsync` . `iframe`Ile modern okuyucuyu içeren bir başvuruya aracılığıyla erişilebileceğini unutmayın `container.firstChild` .
@@ -119,62 +183,7 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
     sessionId: string;            // Globally unique identifier for this session, used for debugging
 }
 ```
-
-### <a name="cookiepolicy-enum"></a>Tanımlama listesi ıepolicy Enum
-
-Derinlikli okuyucunun tanımlama bilgisi kullanımı için ilkeyi ayarlamak üzere kullanılan bir sabit listesi. Bkz. [Seçenekler](#options).
-
-```typescript
-enum CookiePolicy { Disable, Enable }
-```
-
-#### <a name="supported-mime-types"></a>Desteklenen MIME türleri
-
-| MIME Türü | Description |
-| --------- | ----------- |
-| metin/düz | Düz metin. |
-| text/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
-| Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](./how-to/display-math.md).
-| Uygulama/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx biçim belgesi.
-
-### <a name="html-support"></a>HTML desteği
-
-| HTML | Desteklenen Içerik |
-| --------- | ----------- |
-| Yazı tipi stilleri | Kalın, Italik, altı çizili, kod, üstü çizili, üst simge, alt simge |
-| Sırasız listeler | Disk, daire, kare |
-| Sıralı listeler | Ondalık, büyük Alfa, alt Alfa, büyük Latin, alt roman |
-
-Desteklenmeyen Etiketler comparably işlenecek. Görüntüler ve tablolar şu anda desteklenmiyor.
-
-### <a name="options"></a>Seçenekler
-
-Modern okuyucunun belirli davranışlarını yapılandıran özellikler içerir.
-
-```typescript
-{
-    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
-    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
-    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000)
-    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
-    onExit?: () => any;        // Executes when the Immersive Reader exits
-    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
-    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
-    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
-    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
-}
-```
-
-### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
-
-Tam ekran okuyucu düğmelerini işleme seçenekleri.
-
-```typescript
-{
-    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
-}
-```
-
+ 
 ### <a name="error"></a>Hata
 
 Hata hakkındaki bilgileri içerir.
@@ -188,12 +197,22 @@ Hata hakkındaki bilgileri içerir.
 
 #### <a name="error-codes"></a>Hata kodları
 
-| Kod | Description |
+| Kod | Açıklama |
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, `message` Ayrıntılar için bkz.. |
 | Zaman aşımı | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
 | TokenExpired | Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
 | Sürecek | Çağrı hızı sınırı aşıldı. |
+
+### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+
+Tam ekran okuyucu düğmelerini işleme seçenekleri.
+
+```typescript
+{
+    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
+}
+```
 
 ## <a name="launching-the-immersive-reader"></a>Modern okuyucu başlatılıyor
 
@@ -212,6 +231,16 @@ Düğmenin genel görünümünü yapılandırmak için aşağıdaki öznitelikle
 | `data-button-style` | Düğmenin stilini ayarlar. `icon`, Veya olabilir `text` `iconAndText` . Varsayılan olarak olur `icon` . |
 | `data-locale` | Yerel ayarı ayarlar. Örneğin `en-US` veya `fr-FR` olabilir. Varsayılan olarak Ingilizce 'Dir `en` . |
 | `data-icon-px-size` | Simgenin boyutunu piksel cinsinden ayarlar. Varsayılan değer 20 px olur. |
+
+## <a name="html-support"></a>HTML desteği
+
+| HTML | Desteklenen Içerik |
+| --------- | ----------- |
+| Yazı tipi stilleri | Kalın, Italik, altı çizili, kod, üstü çizili, üst simge, alt simge |
+| Sırasız listeler | Disk, daire, kare |
+| Sıralı listeler | Ondalık, büyük Alfa, alt Alfa, büyük Latin, alt roman |
+
+Desteklenmeyen Etiketler comparably işlenecek. Görüntüler ve tablolar şu anda desteklenmiyor.
 
 ## <a name="browser-support"></a>Tarayıcı desteği
 

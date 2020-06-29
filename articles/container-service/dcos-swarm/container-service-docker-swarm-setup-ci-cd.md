@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded7d1b6a5f353c009b5c56bcaabe96baf424c51
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76549062"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445415"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>Kullanım DıŞı Azure DevOps Services kullanarak Docker Sısınma ile Azure Container Service çok kapsayıcılı bir uygulama dağıtmak için tam CI/CD işlem hattı
 
@@ -80,7 +80,7 @@ Azure DevOps Services projeniz ile GitHub hesabınız arasında bir bağlantı k
 
     ![Azure DevOps Services-dış bağlantı](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. Sol tarafta **yeni hizmet uç noktası** > **GitHub**' a tıklayın.
+1. Sol tarafta **yeni hizmet uç noktası**  >  **GitHub**' a tıklayın.
 
     ![Azure DevOps Services-GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
@@ -143,7 +143,7 @@ Her görüntü için, biri görüntüyü derlemek ve bir diğeri de görüntüy�
 
     ![Azure DevOps Services-derleme adımları Ekle](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-1. Her görüntü için, `docker build` komutunu kullanan bir adımı yapılandırın.
+1. Her görüntü için, komutunu kullanan bir adımı yapılandırın `docker build` .
 
     ![Azure DevOps Services-Docker derlemesi](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
@@ -151,7 +151,7 @@ Her görüntü için, biri görüntüyü derlemek ve bir diğeri de görüntüy�
     
     Önceki ekranda gösterildiği gibi, Azure Container Registry 'nizin URI 'siyle birlikte görüntü adını başlatın. (Bu örnekteki derleme tanımlayıcısı gibi, görüntünün etiketini parametreleştirmek için de bir yapı değişkeni kullanabilirsiniz.)
 
-1. Her görüntü için, `docker push` komutunu kullanan ikinci bir adımı yapılandırın.
+1. Her görüntü için, komutunu kullanan ikinci bir adımı yapılandırın `docker push` .
 
     ![Azure DevOps Services-Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
@@ -171,15 +171,15 @@ Her görüntü için, biri görüntüyü derlemek ve bir diğeri de görüntüy�
 
 ## <a name="step-3-create-the-release-pipeline"></a>3. Adım: yayın işlem hattını oluşturma
 
-Azure DevOps Services [ortamlar genelinde yayınları yönetmenizi](https://www.visualstudio.com/team-services/release-management/)sağlar. Uygulamanızın farklı ortamlarınızda (geliştirme, test, ön üretim ve üretim gibi) sorunsuz bir şekilde dağıtıldığından emin olmak için sürekli dağıtımı etkinleştirebilirsiniz. Azure Container Service Docker Sısınma kümenizi temsil eden yeni bir ortam oluşturabilirsiniz.
+Azure DevOps Services [ortamlar genelinde yayınları yönetmenizi](https://azure.microsoft.com/services/devops/pipelines/)sağlar. Uygulamanızın farklı ortamlarınızda (geliştirme, test, ön üretim ve üretim gibi) sorunsuz bir şekilde dağıtıldığından emin olmak için sürekli dağıtımı etkinleştirebilirsiniz. Azure Container Service Docker Sısınma kümenizi temsil eden yeni bir ortam oluşturabilirsiniz.
 
 ![Azure DevOps Services-ACS yayını](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
 ### <a name="initial-release-setup"></a>İlk yayın kurulumu
 
-1. Yayın işlem hattı oluşturmak için, **yayınlar** > **+ yayın** ' a tıklayın.
+1. Yayın işlem hattı oluşturmak için, **yayınlar**  >  **+ yayın** ' a tıklayın.
 
-1. Yapıt kaynağını yapılandırmak için,**yapıt kaynak bağlantısı**' **na tıklayın.** >  Burada, bu yeni yayın ardışık düzenini önceki adımda tanımladığınız yapıya bağlayın. Bunu yaptığınızda, Docker-Compose. yıml dosyası yayın sürecinde kullanılabilir.
+1. Yapıt kaynağını yapılandırmak için, **Artifacts**  >  **yapıt kaynak bağlantısı**' na tıklayın. Burada, bu yeni yayın ardışık düzenini önceki adımda tanımladığınız yapıya bağlayın. Bunu yaptığınızda, Docker-Compose. yıml dosyası yayın sürecinde kullanılabilir.
 
     ![Azure DevOps Services-yayın yapıtları](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
@@ -195,16 +195,16 @@ Yayın iş akışı, eklediğiniz iki görevden oluşur.
 
     ![Azure DevOps Services-yayın SCP 'si](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-1. Ana düğümde ve `docker` `docker-compose` komutları çalıştırmak için bash komutunu yürütmek üzere ikinci bir görev yapılandırın. Ayrıntılar için aşağıdaki ekrana bakın.
+1. `docker`Ana düğümde ve komutları çalıştırmak için bash komutunu yürütmek üzere ikinci bir görev yapılandırın `docker-compose` . Ayrıntılar için aşağıdaki ekrana bakın.
 
     ![Azure DevOps Services-Bash yayını](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
     Ana bilgisayarda yürütülen komut, aşağıdaki görevleri yapmak için Docker CLı ve Docker-Compose CLı kullanın:
 
-   - Azure Container Registry 'de oturum açın ( **değişkenler** sekmesinde tanımlanan üç yapı varinlarını kullanır)
+   - Azure Container Registry 'de oturum açın ( **değişkenler** sekmesinde tanımlanan üç yapı değişkenini kullanır)
    - Sısınma uç noktasıyla çalışacak **DOCKER_HOST** değişkenini tanımlayın (: 2375)
    - Önceki güvenli kopyalama görevi tarafından oluşturulan *dağıtım* klasörüne gidin ve Docker-Compose. yıml dosyasını içerir 
-   - Yeni `docker-compose` görüntüleri çekmek, hizmetleri durdurmak, Hizmetleri kaldırmak ve kapsayıcıları oluşturmak için komutları yürütün.
+   - `docker-compose`Yeni görüntüleri çekmek, hizmetleri durdurmak, Hizmetleri kaldırmak ve kapsayıcıları oluşturmak için komutları yürütün.
 
      >[!IMPORTANT]
      > Önceki ekranda gösterildiği gibi, **stderr üzerinde başarısız oldu** onay kutusunu işaretlenmemiş olarak bırakın. Bu önemli bir ayardır, çünkü `docker-compose` kapsayıcılar gibi çeşitli tanılama iletileri, standart hata çıktısındaki bir şekilde durdurulur veya silinir. Onay kutusunu işaretlerseniz, Azure DevOps Services yayın sırasında oluşan, ancak her şey iyi gitse de oluşan hataları raporlar.

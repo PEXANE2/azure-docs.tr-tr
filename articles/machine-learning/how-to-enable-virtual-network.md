@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 084c1c604ac780b133f89eaeeb3fa5e780c2d565
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 3189fec114ca68dfd862c0973b289b9eff25fed5
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392599"
+ms.locfileid: "85445568"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Özel sanal ağlarla eğitim sırasında ağ yalıtımı & çıkarım
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -289,7 +289,7 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak i
 
 Bir sanal ağ içindeki bir kaynaktan (örneğin, bir işlem örneği veya sanal makine) erişmek için, sanal ağdan Studio 'ya giden trafiğe izin vermeniz gerekir. 
 
-Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapı. Firstpartisi__'ın __hizmet etiketi__ hedefine bir kural ekleyin.
+Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__'nin __hizmet etiketi__ hedefine bir kural ekleyin.
 
 <a id="aksvnet"></a>
 

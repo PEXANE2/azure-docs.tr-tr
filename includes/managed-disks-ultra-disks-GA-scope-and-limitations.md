@@ -1,19 +1,19 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f66bb1c271418b02c2548de486793b4474f40c8b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337402"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85448725"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
@@ -26,10 +26,10 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 
 |Bölgeler  |Ultra diskleri destekleyen kullanılabilirlik bölgesi sayısı  |
 |---------|---------|
-|US Gov Virginia     |Yok         |
-|Orta Güney ABD     |Yok         |
+|US Gov Virginia     |Hiçbiri         |
+|Orta Güney ABD     |Hiçbiri         |
 |Orta ABD     |Üç bölge         |
-|Batı ABD     |Yok         |
+|Batı ABD     |Hiçbiri         |
 |Batı ABD 2    |Üç bölge         |
 |Doğu ABD     |Üç bölge         |
 |Doğu ABD 2     |İki bölge         |
@@ -38,6 +38,7 @@ Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunla
 |Batı Avrupa     |Üç bölge          |
 |Güney Birleşik Krallık     |Üç bölge          |
 |Doğu Japonya     |İki bölge         |
+|Orta Fransa    |İki bölge        |
 
 
 - Yalnızca şu VM serisinde desteklenir:

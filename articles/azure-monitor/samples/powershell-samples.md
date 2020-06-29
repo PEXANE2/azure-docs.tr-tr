@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945265"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413901"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Izleyici PowerShell örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek PowerShell komutları gösterilmektedir.
@@ -150,7 +150,7 @@ Aşağıdaki tabloda, ölçüm kullanılarak bir uyarı oluşturmak için kullan
 
 | parametre | değer |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Adı |simpletestdiskwrite |
 | Bu uyarı kuralının konumu |Doğu ABD |
 | ResourceGroup |montest |
 | Targetresourceıd |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 Ek Web kancası özellikleri isteğe bağlıdır. Kullanarak bir etkinlik günlüğü uyarısının içeriğini geri alabilirsiniz `Get-AzActivityLogAlert` .
 
 ## <a name="create-and-manage-autoscale-settings"></a>Otomatik ölçeklendirme ayarları oluşturma ve yönetme
+
+> [!NOTE] 
+> Cloud Services (Microsoft. ClassicCompute) için otomatik ölçeklendirme, 5 dakikalık bir zaman dilimi (PT5M) destekler. Diğer hizmetler otomatik ölçeklendirme için en az 1 dakikalık (PT1M) Zaman dilimi desteklenir
+
 Bir kaynak (Web uygulaması, VM, bulut hizmeti veya sanal makine ölçek kümesi) için yapılandırılmış yalnızca bir otomatik ölçeklendirme ayarı olabilir.
 Ancak, her otomatik ölçeklendirme ayarının birden çok profili olabilir. Örneğin, bir performans tabanlı ölçek profili için bir tane ve bir zamanlama tabanlı profil için ikinci bir tane. Her profilde, üzerinde birden fazla kural yapılandırılabilir. Otomatik ölçeklendirme hakkında daha fazla bilgi için bkz. [bir uygulamayı otomatik ölçeklendirme](../../cloud-services/cloud-services-how-to-scale-portal.md).
 

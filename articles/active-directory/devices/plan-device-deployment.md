@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97ddc91b5e49cafa87b90113f0160d8aec9c699a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360325"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444259"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory cihaz dağıtımınızı planlayın
 
@@ -38,11 +38,11 @@ Cihazlarınızı Azure AD ile tümleştirmeye yönelik birden çok yöntem vard�
 
 Başlamadan önce, [cihaz kimlik yönetimine genel bakış](overview.md)hakkında bilgi sahibi olduğunuzdan emin olun.
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 Cihazlarınıza bir Azure AD kimliği verme hakkında önemli avantajlar:
 
-* Üretkenliği artırın – Azure AD Ile kullanıcılarınız şirket içi ve bulut kaynaklarınız için [sorunsuz oturum açma (SSO)](/azuread-join-sso.md) yapabilir ve bu sayede her yerde üretken olmalarını sağlar.
+* Üretkenliği artırın – Azure AD Ile kullanıcılarınız şirket içi ve bulut kaynaklarınız için [sorunsuz oturum açma (SSO)](./azuread-join-sso.md) yapabilir ve bu sayede her yerde üretken olmalarını sağlar.
 
 * Güvenliği artırma – Azure AD cihazları, cihaz veya kullanıcı kimliğine göre kaynaklara [koşullu erişim (CA) ilkeleri](../conditional-access/require-managed-devices.md) uygulamanızı sağlar. CA ilkeleri, [Azure AD kimlik koruması](../identity-protection/overview-identity-protection.md)kullanarak ek koruma sunabilir. Bir cihazın Azure AD 'ye katılması, güvenli bir şekilde [Passwordbir kimlik doğrulama](../authentication/concept-authentication-passwordless.md) stratejisi ile Güvenliğinizi artırmaya yönelik bir önkoşuldur.
 
@@ -66,7 +66,7 @@ Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlul
 
 Bu plan için aşağıdaki paydaşları listenize ekleyin:
 
-| Rol| Description |
+| Rol| Açıklama |
 | - | - |
 | Cihaz Yöneticisi| Cihaz ekibinin, planın kuruluşunuzun cihaz gereksinimlerini karşıladığını doğrulayabilmeleri için bir temsilcisidir. |
 | Ağ Yöneticisi| Ağ takımınızdan, ağ gereksinimlerini karşıladığınızdan emin olmak için bir temsilci. |

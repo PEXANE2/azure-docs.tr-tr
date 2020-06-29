@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0ebbf0d41c05f71c571d9665903ba4ba44f71bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2128fee29e64c58a8066a681776fb509b3e31b6f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77198812"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445704"
 ---
 # <a name="configure-opc-publisher"></a>OPC Yayımcısını Yapılandırma
 
@@ -31,7 +31,7 @@ Bu bölümde, Configuration Files ile OPC UA düğümü yayımlamayı yapıland�
 
 ### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Yayımlama verileri değişikliklerini yapılandırmak için bir yapılandırma dosyası kullanma
 
-OPC UA düğümlerini yayımlanacak şekilde yapılandırmanın en kolay yolu bir yapılandırma dosyasıdır. Yapılandırma dosyası biçimi depodaki [publishednodes. JSON](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) dosyasında belgelenmiştir.
+OPC UA düğümlerini yayımlanacak şekilde yapılandırmanın en kolay yolu bir yapılandırma dosyasıdır. Yapılandırma dosyası biçimi depoda [publishednodes.js](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) bölümünde belgelenmiştir.
 
 Yapılandırma dosyası söz dizimi zaman içinde değiştirildi. OPC yayımcısı hala eski biçimleri okur, ancak yapılandırmayı devam ettirir en son biçime dönüştürür.
 
@@ -58,7 +58,7 @@ Aşağıdaki örnekte, yapılandırma dosyasının biçimi gösterilmektedir:
 
 OPC UA olaylarını yayımlamak için, veri değişiklikleri için aynı yapılandırma dosyasını kullanırsınız.
 
-Aşağıdaki örnek, [Simpleevents sunucusu](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server)tarafından oluşturulan olaylar için yayımlamanın nasıl yapılandırılacağını gösterir. SimpleEvents sunucusu [OPC Foundation deposunda](https://github.com/OPCFoundation/UA-.NETStandard) bulunabilir:
+Aşağıdaki örnek, [Simpleevents sunucusu](https://github.com/OPCFoundation/UA-.NETStandard-Samples/tree/master/Workshop/SimpleEvents/Server)tarafından oluşturulan olaylar için yayımlamanın nasıl yapılandırılacağını gösterir. SimpleEvents sunucusu [OPC Foundation deposunda](https://github.com/OPCFoundation/UA-.NETStandard-Samples) bulunabilir:
 
 ```json
 [
@@ -116,7 +116,7 @@ Bu bölümde OPC yayımcısını yapılandırmak için kullanabileceğiniz Yönt
 
 ### <a name="configure-using-opc-ua-method-calls"></a>OPC UA Yöntem çağrılarını kullanarak yapılandırma
 
-OPC yayımcısı, 62222 numaralı bağlantı noktasından erişilebilen bir OPC UA sunucusu içerir. Ana bilgisayar adı **Yayımcı**ise, uç nokta URI 'si: `opc.tcp://publisher:62222/UA/Publisher`.
+OPC yayımcısı, 62222 numaralı bağlantı noktasından erişilebilen bir OPC UA sunucusu içerir. Ana bilgisayar adı **Yayımcı**ise, uç nokta URI 'si: `opc.tcp://publisher:62222/UA/Publisher` .
 
 Bu uç nokta aşağıdaki dört yöntemi kullanıma sunar:
 
@@ -174,7 +174,7 @@ Yük içinde **Opcauthenticationmode** özelliği ayarlanmamışsa, kimlik doğr
 
 OPC yayımcısı yayımlanmış bir düğümde bir değer değişikliği bildirimi aldığında, IoT Hub gönderilen JSON biçimli bir ileti oluşturur.
 
-Bu JSON biçimli ileti içeriğini bir yapılandırma dosyası kullanarak yapılandırabilirsiniz. `--tc` Seçeneğiyle bir yapılandırma dosyası belirtilmemişse, [bağlı Factory Çözüm Hızlandırıcısı](https://github.com/Azure/azure-iot-connected-factory)ile uyumlu olan bir varsayılan yapılandırma kullanılır.
+Bu JSON biçimli ileti içeriğini bir yapılandırma dosyası kullanarak yapılandırabilirsiniz. Seçeneğiyle bir yapılandırma dosyası belirtilmemişse `--tc` , [bağlı Factory Çözüm Hızlandırıcısı](https://github.com/Azure/azure-iot-connected-factory)ile uyumlu olan bir varsayılan yapılandırma kullanılır.
 
 OPC yayımcısı Batch iletileri olarak yapılandırıldıysa, geçerli bir JSON dizisi olarak gönderilir.
 

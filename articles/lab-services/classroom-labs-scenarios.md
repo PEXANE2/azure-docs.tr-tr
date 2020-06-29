@@ -1,24 +1,14 @@
 ---
 title: Ders laboratuvarları kullanma-Azure Lab Services
 description: Bu makalede, eğitim senaryolarında Azure 'da laboratuvarları oluşturmak için Azure DevTest Labs nasıl kullanılacağı açıklanır.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
-ms.author: spelluru
-ms.openlocfilehash: cd5a2fb55e1c2ec360d1585155f53b9213a72179
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 582508968609ba53de14b95b71ee75b5fec9ba93
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897393"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445262"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Ders laboratuvarları kullanma
 Azure Labs hizmetleri, eğitimciler (öğretmenler, mesleler, tramacılar veya eğitim yardımcıları vb.) sayesinde, daha önceden yapılandırılmış öğrenme ortamları sağlamak için hızlı ve kolay bir şekilde çevrimiçi laboratuvar oluşturabilir. Her bir eğitimin eğitim için aynı ve yalıtılmış ortamları kullanabiliyor. Bu ilkeler, eğitim ortamlarının yalnızca ihtiyaç duydukları ve sanal makineler gibi yeterli kaynak (eğitim için gerekli) içermesi durumunda her bir şekilde kullanılabilir olmasını sağlamak için uygulanabilir. 

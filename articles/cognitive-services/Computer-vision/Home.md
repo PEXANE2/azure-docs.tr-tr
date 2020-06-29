@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 90c2068021f1e9a173f37bdf1098edda10ab3d8d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117525"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413476"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -52,7 +52,7 @@ Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için gör
 
 Görüntülerden görüntü okunabilir bir karakter akışına yazdırılmış ve el yazısı metinleri ayıklamak için Görüntü İşleme [okuma](concept-recognizing-text.md#read-api) API 'sini kullanabilirsiniz. Okuma API 'SI, en son modelleri kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metin ile birlikte kullanılır. Şu anda yedi farklı dil için çalışmaktadır (bkz. [dil desteği](./language-support.md)).
 
-Aynı zamanda, yazdırılan metni birkaç dilde ayıklamak için [optik karakter tanıma (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'sini de kullanabilirsiniz. Gerekirse, OCR tanınan metnin dönüşünü düzeltir ve her sözcüğün kare koordinatlarını sağlar. OCR, 25 dili destekler ve tanınan metnin dilini otomatik olarak algılar.
+Aynı zamanda, yazdırılan metni birkaç dilde ayıklamak için [optik karakter tanıma (OCR)](concept-recognizing-text.md) API 'sini de kullanabilirsiniz. Gerekirse, OCR tanınan metnin dönüşünü düzeltir ve her sözcüğün kare koordinatlarını sağlar. OCR, 25 dili destekler ve tanınan metnin dilini otomatik olarak algılar.
 
 ## <a name="moderate-content-in-images"></a>Görüntü içeriklerini denetleme
 

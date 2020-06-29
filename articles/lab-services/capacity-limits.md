@@ -1,24 +1,14 @@
 ---
 title: Azure Lab Services kapasite sınırları
 description: Azure Lab Services kapasite sınırları (sanal makine limitleri) hakkında bilgi edinin.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.author: spelluru
-ms.openlocfilehash: 721dd664bb3a2d38d3e698a813a69ba9b61fb32d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899119"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444106"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Azure Lab Services kapasite sınırları
 Azure Lab Services Azure Işlem kotası kısıtlamalarına uyacak ve sahtekarlığı hafifletmek için Azure aboneliklerinde varsayılan kapasite sınırlarına sahiptir. Tüm Azure aboneliklerinin, abonelik türü, standart işlem çekirdeği sayısı ve Azure Lab Services içinde kullanılabilir GPU çekirdekleri temelinde değişebilen bir başlangıç kapasitesi sınırı olacaktır. Sınır artışı için istek yapmadan önce laboratuvarlarınızın içinde oluşturabileceğiniz sanal makinelerin sayısını kısıtlar.  

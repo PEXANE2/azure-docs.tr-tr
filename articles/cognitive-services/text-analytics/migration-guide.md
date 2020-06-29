@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd6c908aa95ef22cbf7ea0b62b925d84d66cd28
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143276"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412592"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Metin Analizi API'si sürüm 3. x ' e geçirin
 
@@ -23,7 +23,7 @@ ms.locfileid: "84143276"
 
 Metin Analizi API'si sürüm 2,1 kullanıyorsanız, bu makale uygulamanızı 3. x sürümünü kullanacak şekilde yükseltmenize yardımcı olur. Sürüm 3,0 genel kullanıma sunulmuştur ve genişletilmiş [adlandırılmış varlık tanıma (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) ve [model sürümü oluşturma](concepts/model-versioning.md)gibi yeni özellikler sunar. Bir v 3.1 (v 3.1-Preview. x) önizleme sürümü de bulunur ve bu da, [fikrinizi araştırma](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)gibi özellikler ekler. V2 'de kullanılan modeller gelecekteki güncelleştirmeleri almaz. 
 
-#### <a name="sentiment-analysis"></a>[Yaklaşım Analizi](#tab/sentiment-analysis)
+#### <a name="sentiment-analysis"></a>[Yaklaşım analizi](#tab/sentiment-analysis)
 
 ## <a name="feature-changes"></a>Özellik değişiklikleri 
 
@@ -44,7 +44,7 @@ Uygulamanız REST API kullanıyorsa, istek bitiş noktasını, yaklaşım analiz
 ## <a name="feature-changes"></a>Özellik değişiklikleri
 
 > [!NOTE] 
-> Şu anda [v3 varlık kategorileri](named-entity-types.md) yalnızca İngilizce metinde döndürülür. API, sürüm 2,1 ' de desteklendiklerinden, diğer dillerdeki istekler için sürüm 2,1 sonuçları döndürür.
+> Şu anda [v3 varlık kategorileri](named-entity-types.md) yalnızca Ingilizce ve İspanyolca metin üzerinde döndürülür. API, sürüm 2,1 ' de desteklendiklerinden, diğer dillerdeki istekler için sürüm 2,1 sonuçları döndürür.
 
 Sürüm 2,1 ' de Metin Analizi API'si, adlandırılmış varlık tanıma (NER) ve varlık bağlama için bir uç nokta kullanır. Sürüm 3, genişletilmiş adlandırılmış varlık algılaması sağlar ve NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. V 3.1-Preview. 1 ' den başlayarak, NER kişisel `pii` ve sistem durumu bilgilerini de algılayabilir `phi` . 
 

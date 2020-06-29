@@ -9,23 +9,22 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587689"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445551"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama
 
 Azure bilişsel hizmet hizmetine yapılan her istek bir kimlik doğrulama üst bilgisi içermelidir. Bu üst bilgi, bir hizmet veya hizmet grubu aboneliğinizi doğrulamak için kullanılan bir abonelik anahtarı veya erişim belirteci boyunca geçer. Bu makalede, bir isteğin kimliğini doğrulamak için üç yol ve her biri için gereksinimler hakkında bilgi edineceksiniz.
 
-* [Tek servis abonelik anahtarı ile kimlik doğrulama](#authenticate-with-a-single-service-subscription-key)
-* [Birden çok hizmet aboneliği anahtarıyla kimlik doğrulama](#authenticate-with-a-multi-service-subscription-key)
-* [Belirteç ile kimlik doğrulama](#authenticate-with-an-authentication-token)
-* [Azure Active Directory (AAD) ile kimlik doğrulama](#authenticate-with-azure-active-directory)
+* [Tek hizmet](#authenticate-with-a-single-service-subscription-key) veya [çok servis](#authenticate-with-a-multi-service-subscription-key) abonelik anahtarı ile kimlik doğrulama
+* [Belirteç](#authenticate-with-an-authentication-token) ile kimlik doğrulama
+* [Azure Active Directory (AAD)](#authenticate-with-azure-active-directory) ile kimlik doğrulama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir istek yapmadan önce, bir Azure hesabı ve bir Azure bilişsel hizmetler aboneliğiniz olması gerekir. Zaten bir hesabınız varsa, devam edin ve sonraki bölüme atlayın. Hesabınız yoksa, dakikalar içinde ayarlamanıza yardımcı olacak bir kılavuz sunuyoruz: Azure için bilişsel [Hizmetler hesabı oluşturma](cognitive-services-apis-create-account.md).
 

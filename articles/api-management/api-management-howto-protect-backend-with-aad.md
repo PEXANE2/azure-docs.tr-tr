@@ -12,12 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: b74874806585357fe2c7fa2603bfb50751c4d843
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355497"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445517"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2.0 kullanarak API'yi koruma
 
@@ -224,12 +224,12 @@ Her gelen isteğin erişim belirteçlerini doğrulayarak API Management istekler
 
 ## <a name="build-an-application-to-call-the-api"></a>API 'YI çağırmak için bir uygulama oluşturma
 
-Bu kılavuzda, `Echo API` OAuth 2,0 tarafından korunan örneği çağırmak için örnek istemci uygulaması olarak API Management geliştirici konsolunu kullandınız. Uygulama oluşturma ve OAuth 2,0 uygulama hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Code Samples](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code.md).
+Bu kılavuzda, `Echo API` OAuth 2,0 tarafından korunan örneği çağırmak için örnek istemci uygulaması olarak API Management geliştirici konsolunu kullandınız. Uygulama oluşturma ve OAuth 2,0 uygulama hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Code Samples](../active-directory/develop/sample-v2-code.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory ve OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios.md)hakkında daha fazla bilgi edinin.
+- [Azure Active Directory ve OAuth 2.0](../active-directory/develop/authentication-scenarios.md)hakkında daha fazla bilgi edinin.
 - API Management hakkında daha fazla [videoya](https://azure.microsoft.com/documentation/videos/index/?services=api-management) göz atın.
-- Arka uç hizmetinizi güvenli hale getirmeye yönelik diğer yollar için bkz. [Karşılıklı sertifika kimlik doğrulaması](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates).
-- [API Management hizmet örneği oluşturun](https://docs.microsoft.com/azure/api-management/get-started-create-service-instance).
-- [Ilk API 'Nizi yönetin](https://docs.microsoft.com/azure/api-management/import-and-publish).
+- Arka uç hizmetinizi güvenli hale getirmeye yönelik diğer yollar için bkz. [Karşılıklı sertifika kimlik doğrulaması](./api-management-howto-mutual-certificates.md).
+- [API Management hizmet örneği oluşturun](./get-started-create-service-instance.md).
+- [Ilk API 'Nizi yönetin](./import-and-publish.md).

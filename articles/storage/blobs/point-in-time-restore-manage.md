@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 747acc27a5eaf8551e44a3bf52f55b5a380b73ce
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752626"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445449"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Blok Blobları için noktadan noktaya geri yüklemeyi etkinleştirin ve yönetin (Önizleme)
 
@@ -38,6 +38,10 @@ Aşağıdaki komut az. Storage [2.0.1'i-Preview](https://www.powershellgallery.c
 Install-Module -Name Az.Storage -RequiredVersion 2.0.1-preview -AllowPrerelease
 ```
 
+Yukarıdaki komut, Install 2.2.4.1 veya PowerShellGet 'in daha büyük bir sürümünü gerektirir. Şu anda hangi sürümü yüklediklerinizi belirlemek için:
+```powershell
+Get-Module PowerShellGet
+```
 Azure PowerShell yükleme hakkında daha fazla bilgi için bkz. [PowerShellGet Ile yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Zaman içinde nokta geri yüklemeyi etkinleştirme ve yapılandırma

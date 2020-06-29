@@ -1,24 +1,14 @@
 ---
 title: Azure DevTest Labs için talep yeteneklerini kullanma | Microsoft Docs
 description: Azure DevTest Labs talep/talep dışı yeteneklerini kullanmaya yönelik farklı senaryolar hakkında bilgi edinin
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2019
-ms.author: spelluru
-ms.openlocfilehash: a15148260bccadc59966c86031100f0e0332b0f9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 73ed3c0b94a66f5d17b5c8e2561c65bb48579aa1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898531"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476538"
 ---
 # <a name="use-claim-capabilities-in-azure-devtest-labs"></a>Azure DevTest Labs 'da talep yeteneklerini kullanma
 Azure DevTest Labs hizmeti geliştiricilerin ve Test edicilerin verimliliğini ve verimliliğini artırır. Bu makale Azure DevTest Labs ' de sanal makineleri talep etme veya talebi geri alma imkanına odaklanır. Ayrıca, bu özelliğin Kullanıcı deneyimini geliştirmenin çeşitli yollarını listeler. Bu özelliğin kullanılabileceği farklı senaryolara bakmadan önce **, neler olduğunu** ve nasıl çalıştığını inceleyelim.

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0b926491ef3fc672626317184fb7ed2760919866
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210516"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476283"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 
@@ -52,7 +52,7 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Yoldaki daha düşük düzeylerde joker karakter gönder
 
-[Birden çok dosya ve klasörü sorgulamak](develop-storage-files-overview.md#query-multiple-files-or-folders)için yolunuzda joker karakterler kullanabilirsiniz. SQL isteğe bağlı, depolama ortamınızdaki dosyaları, ilk * depolama API 'SI kullanılarak başlayarak, depolama hesabınızda listeler. Belirtilen yolla eşleşmeyen dosyaları ortadan kaldırır. İlk joker karaktere kadar belirtilen yol ile eşleşen çok sayıda dosya varsa, ilk dosya listesini azaltmak performansı iyileştirebilir.
+[Birden çok dosya ve klasörü sorgulamak](query-data-storage.md#query-multiple-files-or-folders)için yolunuzda joker karakterler kullanabilirsiniz. SQL isteğe bağlı, depolama ortamınızdaki dosyaları, ilk * depolama API 'SI kullanılarak başlayarak, depolama hesabınızda listeler. Belirtilen yolla eşleşmeyen dosyaları ortadan kaldırır. İlk joker karaktere kadar belirtilen yol ile eşleşen çok sayıda dosya varsa, ilk dosya listesini azaltmak performansı iyileştirebilir.
 
 ## <a name="use-appropriate-data-types"></a>Uygun veri türlerini kullan
 
@@ -113,7 +113,7 @@ FROM
 
 Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için isteğe bağlı SQL 'e bildirebilirsiniz. Bu işlem, sorgunun okuması ve işlenmesi gereken dosya sayısını ve veri miktarını azaltır. Ek bir ödül daha iyi bir performans elde edersiniz.
 
-Daha fazla bilgi için [dosya adı](develop-storage-files-overview.md#filename-function) ve [FilePath](develop-storage-files-overview.md#filepath-function) işlevleri hakkında bilgi edinin ve [belirli dosyaları sorgulama](query-specific-files.md)örneklerine bakın.
+Daha fazla bilgi için [dosya adı](query-data-storage.md#filename-function) ve [FilePath](query-data-storage.md#filepath-function) işlevleri hakkında bilgi edinin ve [belirli dosyaları sorgulama](query-specific-files.md)örneklerine bakın.
 
 > [!TIP]
 > FilePath ve filename işlevlerinin sonuçlarını her zaman uygun veri türlerine atayın. Karakter veri türleri kullanıyorsanız, uygun uzunluğu kullandığınızdan emin olun.

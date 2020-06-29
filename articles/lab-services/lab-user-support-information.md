@@ -1,17 +1,14 @@
 ---
 title: Azure Lab Services-destek bilgilerini görüntüleme (Laboratuvar kullanıcısı)
 description: Bu makalede, bir laboratuvar kullanıcısının veya eğitimci 'nin yardım almak için kullanabileceği destek bilgilerini nasıl görüntüleyebileceği açıklanmaktadır.
-author: spelluru
-ms.author: spelluru
-ms.date: 02/14/2020
+ms.date: 06/26/2020
 ms.topic: how-to
-ms.service: lab-services
-ms.openlocfilehash: 216d347eb482cb8cdea86d3e17e4780b2236f1e2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 8d0c8a3ad8ba92e606f19480bdb36483f377fa04
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895741"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443511"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Destek bilgilerini görüntüleme (Azure Lab Services laboratuvar kullanıcısı)
 Bu makalede, sizin (Laboratuvar kullanıcısı olarak) aşağıdaki destek bilgilerini nasıl görüntüleyebileceği açıklanmaktadır:

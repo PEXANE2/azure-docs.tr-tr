@@ -1,23 +1,14 @@
 ---
 title: Uygulamanızı Azure 'da test etme | Microsoft Docs
 description: Laboratuvara bir dosya paylaşımının nasıl oluşturulduğunu ve bunu yerel makinenize ve bir sanal makineye nasıl bağlayacağınızı öğrenin ve ardından Masaüstü/Web uygulamalarını dosya paylaşımında dağıtıp test edin.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
-ms.author: spelluru
-ms.openlocfilehash: 65d7ee23195e69c67d9235aeea9a7a166a3a22c1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 06/26/2020
+ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211553"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476504"
 ---
 # <a name="test-your-app-in-azure"></a>Uygulamanızı Azure’da test edin 
 Bu makalede, DevTest Labs kullanarak Azure 'da uygulamanızı test etme adımları sağlanmaktadır. İlk olarak, bir laboratuvarda bir dosya paylaşma ayarlarsınız ve bunu yerel geliştirme makinenizde ve bir laboratuvardaki VM 'de bir sürücü olarak bağlarsınız. Daha sonra, uygulamayı laboratuvardaki VM üzerinde çalıştırabilmeniz için uygulamanızı dosya paylaşımında dağıtmak üzere Visual Studio 2019 ' i kullanırsınız.  

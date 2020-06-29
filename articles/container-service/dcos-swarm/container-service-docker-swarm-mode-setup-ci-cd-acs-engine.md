@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81be5c4db21e3a2201b8802a2e796f45494fd0dc
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277928"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445466"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>Kullanım DıŞı Azure DevOps kullanarak ACS altyapısı ve Docker Sısınma modu ile Azure Container Service çok kapsayıcılı bir uygulama dağıtmak için tam CI/CD işlem hattı
 
@@ -67,7 +67,7 @@ Bu bölümde, Azure DevOps kuruluşunuzu yapılandırırsınız. Azure DevOps Se
 
 Azure DevOps projeniz ve Azure hesabınız arasında bir bağlantı kurun.
 
-1. Sol tarafta **yeni hizmet uç noktası** > **Azure Resource Manager**' na tıklayın.
+1. Sol tarafta **yeni hizmet uç noktası**  >  **Azure Resource Manager**' na tıklayın.
 2. Azure DevOps 'ı Azure hesabınızla çalışacak şekilde yetkilendirmek için **aboneliğinizi** seçin ve **Tamam**'a tıklayın.
 
     ![Azure DevOps-Azure 'ı yetkilendir](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-azure.PNG)
@@ -76,7 +76,7 @@ Azure DevOps projeniz ve Azure hesabınız arasında bir bağlantı kurun.
 
 Azure DevOps projeniz ile GitHub hesabınız arasında bir bağlantı kurun.
 
-1. Sol tarafta **yeni hizmet uç noktası** > **GitHub**' a tıklayın.
+1. Sol tarafta **yeni hizmet uç noktası**  >  **GitHub**' a tıklayın.
 2. Azure DevOps 'ı GitHub hesabınızla çalışacak şekilde yetkilendirmek için **Yetkilendir** 'e tıklayın ve açılan penceredeki yordamı izleyin.
 
     ![Azure DevOps-GitHub 'ı yetkilendir](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github.png)
@@ -137,20 +137,20 @@ Her görüntü için iki Docker adımı, bir görüntüyü oluşturmak ve bir di
 
     ![Azure DevOps-derleme adımları Ekle](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-add-task.png)
 
-2. Her görüntü için, `docker build` komutunu kullanan bir adımı yapılandırın.
+2. Her görüntü için, komutunu kullanan bir adımı yapılandırın `docker build` .
 
     ![Azure DevOps-Docker derlemesi](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-build.png)
 
     Yapı işlemi için Azure Container Registry, **görüntü oluştur** eylemini ve her görüntüyü tanımlayan Dockerfile dosyasını seçin. **Çalışma dizinini** Dockerfile kök dizini olarak ayarlayın, **görüntü adını**tanımlayın ve **en son etiketi içer**' i seçin.
     
-    Görüntü adı şu biçimde olmalıdır: ```$(RegistryURL)/[NAME]:$(Build.BuildId)```. **[Name]** öğesini görüntü adıyla değiştirin:
+    Görüntü adı şu biçimde olmalıdır: ```$(RegistryURL)/[NAME]:$(Build.BuildId)``` . **[Name]** öğesini görüntü adıyla değiştirin:
     - ```proxy```
     - ```products-api```
     - ```ratings-api```
     - ```recommendations-api```
     - ```shopfront```
 
-3. Her görüntü için, `docker push` komutunu kullanan ikinci bir adımı yapılandırın.
+3. Her görüntü için, komutunu kullanan ikinci bir adımı yapılandırın `docker push` .
 
     ![Azure DevOps-Docker Push](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-push.png)
 
@@ -188,15 +188,15 @@ Her görüntü için iki Docker adımı, bir görüntüyü oluşturmak ve bir di
 
 ## <a name="step-3-create-the-release-pipeline"></a>3. Adım: yayın işlem hattını oluşturma
 
-Azure DevOps, [ortamların tamamında yayınları yönetmenizi](https://www.visualstudio.com/team-services/release-management/)sağlar. Uygulamanızın farklı ortamlarınızda (geliştirme, test, ön üretim ve üretim gibi) sorunsuz bir şekilde dağıtıldığından emin olmak için sürekli dağıtımı etkinleştirebilirsiniz. Azure Container Service Docker Ssıcak mod kümenizi temsil eden bir ortam oluşturabilirsiniz.
+Azure DevOps, [ortamların tamamında yayınları yönetmenizi](https://azure.microsoft.com/services/devops/pipelines/)sağlar. Uygulamanızın farklı ortamlarınızda (geliştirme, test, ön üretim ve üretim gibi) sorunsuz bir şekilde dağıtıldığından emin olmak için sürekli dağıtımı etkinleştirebilirsiniz. Azure Container Service Docker Ssıcak mod kümenizi temsil eden bir ortam oluşturabilirsiniz.
 
 ![Azure DevOps-ACS yayını](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-acs.png) 
 
 ### <a name="initial-release-setup"></a>İlk yayın kurulumu
 
-1. Yayın işlem hattı oluşturmak için, **yayınlar** > **+ yayın** ' a tıklayın.
+1. Yayın işlem hattı oluşturmak için, **yayınlar**  >  **+ yayın** ' a tıklayın.
 
-2. Yapıt kaynağını yapılandırmak için,**yapıt kaynak bağlantısı**' **na tıklayın.** >  Burada, bu yeni yayın ardışık düzenini önceki adımda tanımladığınız yapıya bağlayın. Bundan sonra, Docker-Compose. yıml dosyası yayın sürecinde bulunur.
+2. Yapıt kaynağını yapılandırmak için, **Artifacts**  >  **yapıt kaynak bağlantısı**' na tıklayın. Burada, bu yeni yayın ardışık düzenini önceki adımda tanımladığınız yapıya bağlayın. Bundan sonra, Docker-Compose. yıml dosyası yayın sürecinde bulunur.
 
     ![Azure DevOps-yayın yapıtları](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 
@@ -222,7 +222,7 @@ Yayın iş akışı, eklediğiniz iki görevden oluşur.
 
     ![Azure DevOps-yayın SCP 'si](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-scp.png)
 
-2. Ana düğümde ve `docker` `docker stack deploy` komutları çalıştırmak için bash komutunu yürütmek üzere ikinci bir görev yapılandırın. Ayrıntılar için aşağıdaki ekrana bakın.
+2. `docker`Ana düğümde ve komutları çalıştırmak için bash komutunu yürütmek üzere ikinci bir görev yapılandırın `docker stack deploy` . Ayrıntılar için aşağıdaki ekrana bakın.
 
     ```
     docker login -u $(docker.username) -p $(docker.password) $(docker.registry) && export DOCKER_HOST=:2375 && cd deploy && docker stack deploy --compose-file docker-compose-v3.yml myshop --with-registry-auth
@@ -235,10 +235,10 @@ Yayın iş akışı, eklediğiniz iki görevden oluşur.
    - Azure Container Registry 'de oturum açın ( **değişkenler** sekmesinde tanımlanan üç yapı değişkenini kullanır)
    - Sısınma uç noktasıyla çalışacak **DOCKER_HOST** değişkenini tanımlayın (: 2375)
    - Önceki güvenli kopyalama görevi tarafından oluşturulan *dağıtım* klasörüne gidin ve Docker-Compose. yıml dosyasını içerir 
-   - Yeni `docker stack deploy` görüntüleri çekmek ve kapsayıcıları oluşturmak için komutları yürütün.
+   - `docker stack deploy`Yeni görüntüleri çekmek ve kapsayıcıları oluşturmak için komutları yürütün.
 
      >[!IMPORTANT]
-     > Önceki ekranda gösterildiği gibi, **stderr üzerinde başarısız oldu** onay kutusunu işaretlenmemiş olarak bırakın. Bu ayar, standart hata çıkışında kapsayıcılar durdurulduğunda veya silinmekte `docker-compose` olan çeşitli tanılama iletilerinin yazdırılmasından dolayı yayın sürecini tamamlamamızı sağlar. Onay kutusunu işaretlerseniz, Azure DevOps, yayın sırasında hata oluştuğunu bildirir, ancak her şey iyi bir şekilde gerçekleşse bile.
+     > Önceki ekranda gösterildiği gibi, **stderr üzerinde başarısız oldu** onay kutusunu işaretlenmemiş olarak bırakın. Bu ayar, `docker-compose` Standart hata çıkışında kapsayıcılar durdurulduğunda veya silinmekte olan çeşitli tanılama iletilerinin yazdırılmasından dolayı yayın sürecini tamamlamamızı sağlar. Onay kutusunu işaretlerseniz, Azure DevOps, yayın sırasında hata oluştuğunu bildirir, ancak her şey iyi bir şekilde gerçekleşse bile.
      >
 3. Bu yeni sürüm ardışık düzenini kaydedin.
 

@@ -1,30 +1,21 @@
 ---
 title: Hackathon için Azure Lab Services kullanma
 description: Bu makalede, hack maratonları çalıştırmak için kullanabileceğiniz Labs oluşturmak için Azure Lab Services nasıl kullanılacağı açıklanır.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2020
-ms.author: spelluru
-ms.openlocfilehash: ba5559289f3d17f1a24a90a0daa466d4c8895c9c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 06/26/2020
+ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85120536"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445891"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Sonraki Hackathon için Azure Lab Services kullanın
 Azure Lab Services, Hackathon için yeni bir sanal makine Laboratuvarı (VM) hızlı bir şekilde çalıştırabilmeniz için hafif ve kullanımı kolay olacak şekilde tasarlanmıştır.  Hackathon 'nizin mümkün olduğunca sorunsuz bir şekilde gitmemesini sağlamak için aşağıdaki denetim listesini kullanın. Bu denetim listesi, Hackathon laboratuvarınızı oluşturmaktan ve yönetmekten sorumlu BT departmanınız veya fakülte tamamlanmalıdır. 
 
 Hackathon için Laboratuvar Hizmetleri 'ni kullanmak için, hem laboratuvar hesabının hem de laboratuvarınızın, Hackathon başlamadan en az birkaç gün önce oluşturulduğundan emin olun. Ayrıca, aşağıdaki yönergeleri izleyin:
 
-## <a name="guidance"></a>Kılavuz
+## <a name="guidance"></a>Rehber
 
 - **Laboratuvarı, katılımcılara en yakın bir bölgede veya konumda oluşturun**. 
 

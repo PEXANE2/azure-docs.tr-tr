@@ -1,24 +1,14 @@
 ---
 title: Laboratuvar oluşturucusunun Azure Lab Services konum seçmesine izin ver
 description: Bu makalede laboratuvar hesabı yöneticisinin laboratuvar oluşturucuları Labs için konum seçmesine nasıl izin verilebileceğiniz açıklanır.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 8d11b0fcf57be35d5a47d720a07fa274acc05b35
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899140"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444208"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Laboratuvar oluşturucusunun Azure Lab Services laboratuvar için konum seçmesine izin ver
 Azure Lab Services, bir laboratuar hesabı sahibi, laboratuvar oluşturucularının (eğitimciler) oluşturdukları laboratuvar için bir konum seçmesine izin verebilir. Bu konum, laboratuvar hesabının konumundan farklı olabilir. Konum bir Azure bölgesi grubudur. Örneğin Birleşik Devletler konum Doğu ABD, Batı ABD vb. gibi bir bölge grubudur. 

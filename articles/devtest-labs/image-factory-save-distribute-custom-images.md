@@ -1,23 +1,14 @@
 ---
 title: Görüntüleri Azure DevTest Labs kaydetme ve dağıtma | Microsoft Docs
 description: Bu makale, Azure DevTest Labs ' de zaten oluşturulmuş sanal makinelerden (VM 'Ler) özel görüntüler kaydetme adımlarını sağlar.
-services: devtest-lab, lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898335"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476249"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Özel görüntüleri birden çok laboratuvara kaydetme ve dağıtma
 Bu makale, önceden oluşturulmuş sanal makinelerden (VM 'Ler) özel görüntüleri kaydetme adımlarını sağlar. Ayrıca, bu özel görüntülerin kuruluştaki diğer DevTest Labs 'e nasıl dağıtılacağını da ele alır.

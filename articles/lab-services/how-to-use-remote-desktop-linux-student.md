@@ -1,24 +1,14 @@
 ---
 title: Azure Lab Services bir Linux VM 'ye bağlanma | Microsoft Docs
 description: Azure Lab Services 'deki bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'nü nasıl kullanacağınızı öğrenin.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
-ms.author: spelluru
-ms.openlocfilehash: e5ee85c1c5ad588d64dad1ef2cb3afcbcb622b49
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: d13868477ff2e3378d87d7785789a7498ed17e59
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898489"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443426"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarında Linux sanal makinelerine bağlanma
 Bu makalede, öğrencilerin kullanarak laboratuvardaki bir Linux sanal makinesine (VM) nasıl bağlanabildiği gösterilmektedir:

@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: b9cf0467829425003a33ef806d8e7028e7f27add
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 462de426a365a2aca4572dae6bff9261e4ee37f7
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413408"
+ms.locfileid: "85445483"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
@@ -85,7 +85,7 @@ Varsayılan olarak, Özel uç nokta olmadan Web uygulamanızın genel adı küme
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
-|cloudservicename.cloudapp.net|A|40.122.110.154|<--bu genel IP özel uç noktanız değil, 503 hatası alırsınız|
+|cloudservicename.cloudapp.net|A|40.122.110.154|<--bu genel IP özel uç noktanız değil, 403 hatası alırsınız|
 
 Özel bir DNS sunucusu veya Azure DNS özel bölgesi oluşturmanız gerekir, testler için test makinenizin ana bilgisayar girdisini değiştirebilirsiniz.
 Oluşturmanız gereken DNS bölgesi: **Privatelink.azurewebsites.net**. Web uygulamanızın kaydını bir kayıt ve özel uç nokta IP 'si ile kaydedin.

@@ -2,23 +2,16 @@
 title: Kmebook 'tan bir Azure Lab Services VM 'sine bağlanma | Microsoft Docs
 description: Azure Lab Services ' de bir Kmebook 'tan sanal makineye nasıl bağlanacağınızı öğrenin.
 services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: nicolela
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 5919eb4107ca234951597182017447c2d6ee1c1b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d2a936a6acb6491c57cb1460c83ec0253561b102
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897400"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445670"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>Bir Kmebook üzerinde Uzak Masaüstü Protokolü kullanarak bir VM 'ye bağlanma
 Bu bölümde, bir öğrencinin RDP kullanarak bir Kmebook 'tan bir derslik laboratuvar VM 'sine nasıl bağlanabildiği gösterilmektedir.

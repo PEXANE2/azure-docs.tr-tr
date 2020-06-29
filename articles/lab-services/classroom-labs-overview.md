@@ -1,24 +1,14 @@
 ---
 title: Azure Lab Services sınıf laboratuvarları hakkında | Microsoft Docs
 description: Bulutta bir derslik laboratuvar ortamını hızlıca ayarlamayı öğrenin-sınıf için gereken yazılımla bir şablon VM 'si ile laboratuvar yapılandırma ve sınıftaki her öğrenci için kullanılabilir VM 'nin bir kopyasını oluşturma hakkında bilgi edinin.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
-ms.author: spelluru
-ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899699"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445636"
 ---
 # <a name="introduction-to-classroom-labs"></a>Sınıf laboratuvarlarına giriş
 Azure Lab Services, bulutta hızla bir sınıf laboratuvarı ortamı oluşturmanıza imkan tanır. Eğitimci sınıf laboratuvarını oluşturur, Windows veya Linux sanal makinelerini sağlar, sınıfta gerekli yazılım ve araç laboratuvarlarını yükler ve öğrenciler için kullanılabilir hale getirir. Sınıftaki öğrenciler, laboratuvardaki sanal makinelere (VM) bağlanır ve bunları projeleri, ödevleri, sınıf egzersizleri için kullanır. 

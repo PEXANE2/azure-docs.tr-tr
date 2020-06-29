@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 3e17df2a3c92d24a7fa662fbf92f8c89b434eb0d
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338238"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444463"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
@@ -90,7 +90,7 @@ Hizmet uç noktaları aşağıdaki avantajları sağlar:
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-- Hizmet uç noktasını etkinleştirdikten sonra, alt ağ anahtarındaki sanal makinelerin kaynak IP adresleri. Kaynak IP adresleri, bu alt ağdan hizmetle iletişim kurarken özel IPv4 adreslerini kullanmak için ortak IPv4 adreslerini kullanmaya geçiş yapar. Hizmete giden mevcut açık TCP bağlantıları bu geçiş sırasında kapatılır. Bir alt ağ için hizmete yönelik hizmet uç noktasını etkinleştirmeden veya devre dışı bırakmadan önce çalışan kritik görev olmadığından emin olun. Ayrıca uygulamalarınızın IP adresi değişikliğinin ardından Azure hizmetlerine otomatik olarak bağlanabildiğinden emin olun.
+- Hizmet uç noktasını etkinleştirdikten sonra, kaynak IP adresleri genel IPv4 adreslerini kullanarak bu alt ağdaki hizmetle iletişim kurarken özel IPv4 adreslerini kullanmaya geçiş yapar. Hizmete giden mevcut açık TCP bağlantıları bu geçiş sırasında kapatılır. Bir alt ağ için hizmete yönelik hizmet uç noktasını etkinleştirmeden veya devre dışı bırakmadan önce çalışan kritik görev olmadığından emin olun. Ayrıca uygulamalarınızın IP adresi değişikliğinin ardından Azure hizmetlerine otomatik olarak bağlanabildiğinden emin olun.
 
   IP adresi değişiklikleri yalnızca sanal ağınızdan giden hizmet trafiğini etkiler. Sanal makinelerinize atanmış genel IPv4 adreslerinden veya bu adreslere yönelik diğer trafiğe hiçbir etkisi yoktur. Azure hizmetleri açısından, Azure genel IP adreslerini kullanan mevcut güvenlik duvarı kurallarınız varsa bu kurallar sanal ağ özel adresine geçiş yapıldığında çalışmaz.
 - Hizmet uç noktaları ile Azure hizmetleri için DNS girişleri bugün olduğu gibi kalır ve Azure hizmetine atanan genel IP adreslerini çözümlemeye devam eder.
