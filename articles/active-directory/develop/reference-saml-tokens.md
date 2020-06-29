@@ -7,18 +7,18 @@ services: active-directory
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b7ba4abd45fff8548c361f5e5ed44ef45fe32bbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 48e94e1c4244e8828a2e5c436ba65dc001fab897
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883449"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479139"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML belirteci başvurusu
 
@@ -34,14 +34,14 @@ Azure Active Directory (Azure AD), her kimlik doğrulama akışının işlenmesi
 > |Kimlik Doğrulama Yöntemi | `amr` |Belirtecin konusunun nasıl doğrulandığını tanımlar. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |Ad | `given_name` |Azure AD Kullanıcı nesnesinde ayarlandığı gibi, kullanıcının ilk veya "verilen" adını sağlar. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
 > |Gruplar | `groups` |Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar uygulama bildiriminin "Groupmembershipclaim" özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Office 365 dağıtım listelerini içerir. <br><br> **Notlar**: <br> Kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) üzerine gittiğinde, fazla kullanım talebi, Kullanıcı için Grup listesini içeren grafik uç noktasına işaret eden talep kaynaklarını da eklenecektir. 'ndaki. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | Gruplar fazla kullanım göstergesi | `groups:src1` | Sınırlı olmayan Belirteç istekleri (yukarıya bakın `hasgroups` ), ancak belirteç için hala çok büyük olması için, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. SAML için bu, `groups` talebin yerine yeni bir talep olarak eklenir. | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> | Gruplar fazla kullanım göstergesi | `groups:src1` | Sınırlı olmayan Belirteç istekleri ( `hasgroups` yukarıya bakın), ancak belirteç için hala çok büyük olması için, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. SAML için bu, talebin yerine yeni bir talep olarak eklenir `groups` . | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |Kimlik Sağlayıcı | `idp` |Belirtecin öznesinin kimliğini doğrulayan kimlik sağlayıcısını kaydeder. Bu değer, Kullanıcı hesabı verenden farklı bir kiracıda olmadığı takdirde veren talebinin değeriyle aynıdır. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |Issuedat | `iat` |Belirtecin verildiği saati depolar. Genellikle belirtecin yeniliği ölçmek için kullanılır. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Veren | `iss` |Belirteci oluşturan ve döndüren güvenlik belirteci hizmetini (STS) belirler. Azure AD 'nin döndürdüğü belirteçlerde veren sts.windows.net. Verenin talep değerindeki GUID, Azure AD dizininin kiracı KIMLIĞIDIR. Kiracı KIMLIĞI, dizinin sabit ve güvenilir tanıtıcısıdır. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Soyadı | `family_name` |Kullanıcının Azure AD Kullanıcı nesnesinde tanımlanan soyadı, soyadı veya aile adını sağlar. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
 > |Adı | `unique_name` |Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değerin kiracı içinde benzersiz olması garanti edilmez ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |Nesne Kimliği | `oid` |Azure AD 'de bir nesnenin benzersiz tanımlayıcısını içerir. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Azure AD 'de sorgulardaki bir nesneyi tanımlamak için nesne KIMLIĞINI kullanın. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
-> |Roller | `roles` |Konunun hem doğrudan hem de dolaylı olarak grup üyeliği aracılığıyla verildiğini ve rol tabanlı erişim denetimini zorlamak için kullanılabilir olan tüm uygulama rollerini temsil eder. Uygulama rolleri uygulama bildiriminin `appRoles` özelliği aracılığıyla uygulama başına temelinde tanımlanır. Her `value` uygulama rolünün özelliği, roller talebinde görüntülenen değerdir. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
+> |Roller | `roles` |Konunun hem doğrudan hem de dolaylı olarak grup üyeliği aracılığıyla verildiğini ve rol tabanlı erişim denetimini zorlamak için kullanılabilir olan tüm uygulama rollerini temsil eder. Uygulama rolleri uygulama bildiriminin özelliği aracılığıyla uygulama başına temelinde tanımlanır `appRoles` . `value`Her uygulama rolünün özelliği, roller talebinde görüntülenen değerdir. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |Özne | `sub` |Uygulamanın kullanıcı gibi, belirtecin hangi ana öğe için onay verdiğini belirtir. Bu değer sabittir ve yeniden atanamaz veya yeniden kullanılamaz, bu nedenle yetkilendirme denetimlerini güvenli bir şekilde gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD sorunları belirteçlerinde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. <br> `SubjectConfirmation`bir talep değil. Belirtecin konusunun nasıl doğrulandığını açıklar. `Bearer`konunun belirtecin elinde olduğunu teyit eden anlamına gelir. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |Kiracı Kimliği | `tid` |Belirteci veren dizin kiracısını tanımlayan, sabit ve yeniden kullanılabilir olmayan bir tanımlayıcı. Bu değeri, çok kiracılı bir uygulamadaki kiracıya özgü dizin kaynaklarına erişmek için kullanabilirsiniz. Örneğin, Graph API çağrısında kiracıyı tanımlamak için bu değeri kullanabilirsiniz. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Belirteç Ömrü | `nbf`, `exp` |Belirtecin geçerli olduğu zaman aralığını tanımlar. Belirteci doğrulayan hizmet geçerli tarihin belirteç ömrü içinde olduğunu doğrulamalıdır, aksi takdirde belirteci reddetmelidir. Hizmet, belirteç yaşam süresi aralığının, Azure AD ile hizmet arasında saat ("zaman sapması") arasında herhangi bir farklılık hesaba göre hesap yapmasına izin verebilir. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|

@@ -1,24 +1,24 @@
 ---
-title: Microsoft Graph API'si
+title: Microsoft Graph API’si
 description: Microsoft Graph API 'SI, Microsoft Bulut hizmet kaynaklarına erişmenize olanak tanıyan bir yeniden takip eden Web API 'sidir.
 author: davidmu1
 services: active-directory
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cdcb5287434c72bf54337611d67de8d6f65d8d9
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886475"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479523"
 ---
-# <a name="microsoft-graph-api"></a>Microsoft Graph API'si
+# <a name="microsoft-graph-api"></a>Microsoft Graph API’si
 
 Microsoft Graph API 'SI, Microsoft Bulut hizmet kaynaklarına erişmenize olanak tanıyan bir yeniden takip eden Web API 'sidir. Uygulamanızı kaydettikten ve bir kullanıcı veya hizmet için kimlik doğrulama belirteçleri aldıktan sonra, Microsoft Graph API 'sine istek yapabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Graph genel bakış](https://docs.microsoft.com/graph/overview).
 
@@ -36,7 +36,7 @@ Beta API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph Beta uç nokta
 
 V 1.0 API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph REST API v 1.0 başvurusu](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Başlarken
 
 Kullanıcı veya e-posta iletisi gibi bir kaynağı okumak veya bir kaynağa yazmak için aşağıdaki gibi görünen bir istek oluşturursunuz:
 
@@ -55,6 +55,6 @@ Hızlı başlangıcı tamamladığınızda, çalıştırmaya hazırlamış bir u
 
 ## <a name="tools"></a>Araçlar
 
-Microsoft Graph Explorer, Microsoft Graph API 'Leri kullanarak istek derlemek ve test etmek için kullanabileceğiniz web tabanlı bir araçtır. Microsoft Graph Explorer 'a şu adreste erişebilirsiniz: `https://developer.microsoft.com/graph/graph-explorer`.
+Microsoft Graph Explorer, Microsoft Graph API 'Leri kullanarak istek derlemek ve test etmek için kullanabileceğiniz web tabanlı bir araçtır. Microsoft Graph Explorer 'a şu adreste erişebilirsiniz: `https://developer.microsoft.com/graph/graph-explorer` .
 
-Postman, Microsoft Graph API 'Lerini kullanarak istek derlemek ve test etmek için de kullanabileceğiniz bir araçtır. Postman 'yi şurada indirebilirsiniz: `https://www.getpostman.com/`. Postman 'da Microsoft Graph etkileşimde bulunmak için Postman 'da Microsoft Graph koleksiyonunu kullanırsınız. Daha fazla bilgi için bkz. [MICROSOFT Graph API Ile Postman kullanma](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+Postman, Microsoft Graph API 'Lerini kullanarak istek derlemek ve test etmek için de kullanabileceğiniz bir araçtır. Postman 'yi şurada indirebilirsiniz: `https://www.getpostman.com/` . Postman 'da Microsoft Graph etkileşimde bulunmak için Postman 'da Microsoft Graph koleksiyonunu kullanırsınız. Daha fazla bilgi için bkz. [MICROSOFT Graph API Ile Postman kullanma](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

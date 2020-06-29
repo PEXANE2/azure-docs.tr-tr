@@ -1,26 +1,16 @@
 ---
-title: Azure Lab Services Hakkında | Microsoft Docs
-description: Lab Services’in geliştiriciler, test uzmanları, eğitimciler, öğrenciler ve diğerleri tarafından kullanılabilen sanal makinelerle laboratuvar oluşturma, yönetme ve güvenli hale getirmeyi nasıl kolaylaştırabildiğini öğrenin.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Lab Services ve Azure DevTest Labs karşılaştırması
+description: Azure DevTest Labs ve Azure Lab Services karşılaştırın.
 ms.topic: overview
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: a1e42a415e99bfaec1c48204efdaacd178005705
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899675"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480091"
 ---
-# <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services’a giriş
+# <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>Azure DevTest Labs ve Azure Lab Services Karşılaştır
 Azure 'da laboratuvar ortamlarını bulutta ayarlamanıza olanak tanıyan iki hizmet vardır. 
 
 - **Azure DevTest Labs** -bu hizmet ekibiniz için hızlı bir ortam ayarlamanıza olanak sağlar (örneğin, geliştirme ortamı veya bulutta test ortamı). Laboratuvar sahibi laboratuvarı oluşturur, Windows veya Linux sanal makineleri sağlar, gerekli yazılım ve araçları yükler ve laboratuvar kullanıcıları için kullanılabilir hale getirir. Laboratuvar kullanıcıları laboratuvara sanal makinelere (VM 'Ler) bağlanır ve bunları gündelik iş ve kısa vadeli projeler için kullanır. Kullanıcılar laboratuvardaki kaynakları kullanmaya başladıktan sonra, laboratuvar yöneticisi birden fazla laboratuvardaki maliyet ve kullanımı analiz edebilir ve kuruluşunuzun veya takımınızın maliyetlerini en iyi duruma getirmeye yönelik kapsayıcı ilkeler ayarlayabilir.

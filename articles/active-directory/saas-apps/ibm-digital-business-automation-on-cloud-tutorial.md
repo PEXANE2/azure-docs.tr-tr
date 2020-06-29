@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c0a8185d81966932c17fd3b0590b5f8ef2f7b6df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099662"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479802"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>Öğretici: bulutta IBM Digital Business Automation ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak doldurulmazsa, değerleri gereksinimlerinize göre el ile girin.
 
     > [!Note]
-    > Müşteriler, bulut aboneliğine ait meta veri dosyasını [Dbaoc DevOps ekibinden](mailto:supportbpmoncloud@us.ibm.com)elde edebilir.
+    > Müşteriler, bulut aboneliğine ait meta veri dosyasını [bulut istemci desteği ekibinin IBM Digital Business Automation](mailto:supportbpmoncloud@us.ibm.com)'dan elde edebilir.
 
 1. **Hizmet sağlayıcısı meta verileri dosyanız**yoksa, **temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 

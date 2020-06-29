@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8db27819b7eef6cdf05ea3f6645ae930ebc4ef58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad66e0698cf0705c7a4db90a6dd515b71fed84e6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884758"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478629"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma
 
@@ -88,7 +88,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
 
       ![Değiştirmeniz gereken hizmet sorumlusunu alma sorgusu](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    g. Hizmet sorumlusu nesnesinden **Approles** özelliğini ayıklayın.
+    örneğin: Hizmet sorumlusu nesnesinden **Approles** özelliğini ayıklayın.
 
       ![AppRoles özelliğinin ayrıntıları](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 

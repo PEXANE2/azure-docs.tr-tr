@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c35eefe50643dc65dcf84305a9b4b3ee64cadb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190923"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478646"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu sorunlarını giderme
 
@@ -28,22 +28,22 @@ Dizin oluşturucular, verileri Azure Bilişsel Arama 'da dizin oluştururken çe
 > [!NOTE]
 > Dizin oluşturucular, Azure ağ güvenlik mekanizmaları tarafından güvenliği sağlanan veri kaynaklarına ve diğer kaynaklara erişmek için sınırlı desteğe sahiptir. Şu anda, Dizin oluşturucular yalnızca ilgili IP adres aralığı kısıtlama mekanizmaları veya varsa NSG kuralları aracılığıyla veri kaynaklarına erişebilir. Desteklenen her veri kaynağına erişme ayrıntıları aşağıda bulunabilir.
 >
-> Tam etki alanı adının (örn. `<your-search-service-name>.search.windows.net`) ping işlemi gerçekleştirerek arama hizmetinizin IP adresini bulabilirsiniz.
+> Tam etki alanı adının (örn.) ping işlemi gerçekleştirerek arama hizmetinizin IP adresini bulabilirsiniz `<your-search-service-name>.search.windows.net` .
 >
-> `AzureCognitiveSearch` [Hizmet](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) etiketinin IP adresi aralığını [indirilebilir JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
+> Hizmet etiketinin IP adresi aralığını `AzureCognitiveSearch` [service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) [Indirilebilir JSON dosyalarını](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) veya [hizmet etiketi bulma API 'si](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)aracılığıyla bulabilirsiniz. IP adresi aralığı haftalık olarak güncelleştirilir.
 
 ### <a name="configure-firewall-rules"></a>Güvenlik duvarı kurallarını yapılandırma
 
-Azure Storage, CosmosDB ve Azure SQL yapılandırılabilir bir güvenlik duvarı sağlar. Güvenlik Duvarı etkinleştirildiğinde belirli bir hata iletisi yoktur. Genellikle, güvenlik duvarı hataları geneldir ve veya `The remote server returned an error: (403) Forbidden` `Credentials provided in the connection string are invalid or have expired`gibi görünür.
+Azure Storage, CosmosDB ve Azure SQL yapılandırılabilir bir güvenlik duvarı sağlar. Güvenlik Duvarı etkinleştirildiğinde belirli bir hata iletisi yoktur. Genellikle, güvenlik duvarı hataları geneldir ve veya gibi `The remote server returned an error: (403) Forbidden` görünür `Credentials provided in the connection string are invalid or have expired` .
 
 Dizin oluşturucularının böyle bir örnekteki bu kaynaklara erişmesine izin vermek için 2 seçenek vardır:
 
 * **Tüm ağlardan** erişime izin vererek (uygulanabiliyorsa) güvenlik duvarını devre dışı bırakın.
-* Alternatif olarak, kaynağınızın güvenlik duvarı kurallarında (IP adresi aralığı kısıtlaması), arama hizmetinizin IP adresi ve `AzureCognitiveSearch` [hizmet](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığı için erişime izin verebilirsiniz.
+* Alternatif olarak, `AzureCognitiveSearch` kaynağınızın güvenlik duvarı kurallarında (IP adresi aralığı kısıtlaması), arama HIZMETINIZIN IP adresi ve [hizmet](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP adresi aralığı için erişime izin verebilirsiniz.
 
 Her veri kaynağı türü için IP adresi aralığı kısıtlamalarını yapılandırmaya ilişkin ayrıntılar aşağıdaki bağlantılardan bulunabilir:
 
-* [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
+* [Azure Depolama](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
 * [Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
@@ -51,7 +51,7 @@ Her veri kaynağı türü için IP adresi aralığı kısıtlamalarını yapıla
 
 **Kısıtlama**: Azure depolama için yukarıdaki belgelerde belirtildiği gıbı, IP adres aralığı kısıtlamaları yalnızca arama hizmetiniz ve depolama hesabınız farklı bölgelerde olduğunda çalışır.
 
-Azure işlevleri ( [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md)olarak kullanılabilir), [IP adresi kısıtlamalarını](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)da destekler. Yapılandırılacak IP adresleri listesi, arama hizmetinizin IP adresi ve `AzureCognitiveSearch` HIZMET etiketinin IP adresi aralığıdır.
+Azure işlevleri ( [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md)olarak kullanılabilir), [IP adresi kısıtlamalarını](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)da destekler. Yapılandırılacak IP adresleri listesi, arama hizmetinizin IP adresi ve hizmet etiketinin IP adresi aralığıdır `AzureCognitiveSearch` .
 
 Azure VM 'de SQL Server 'daki verilere erişim ayrıntıları [burada](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) özetlenmiştir
 
@@ -61,7 +61,7 @@ Bir SQL yönetilen örneğindeki verilere erişirken veya bir Azure VM, [özel W
 
 Bu gibi durumlarda, Azure VM veya SQL yönetilen örneği bir sanal ağ içinde bulunacak şekilde yapılandırılabilir. Daha sonra bir ağ güvenlik grubu, sanal ağ alt ağlarının ve ağ arabirimlerinin içinde ve dışında akabilir ağ trafiği türünü filtrelemek için yapılandırılabilir.
 
-`AzureCognitiveSearch` Hizmet etiketi, gelen [NSG kurallarında](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) , IP adresi aralığını aramak gerekmeden doğrudan kullanılabilir.
+`AzureCognitiveSearch`Hizmet etiketi, gelen [NSG KURALLARıNDA](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) , IP adresi aralığını aramak gerekmeden doğrudan kullanılabilir.
 
 SQL yönetilen örneğindeki verilere erişim hakkında daha fazla ayrıntı [burada](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) özetlenmiştir
 
@@ -111,6 +111,7 @@ api-key: [admin key]
 Dizin oluşturucular bir [veri kaynağından](https://docs.microsoft.com/rest/api/searchservice/create-data-source)belge bulur. Bazen veri kaynağından dizinlenen bir belge, dizinde eksik gibi görünüyor. Bu hataların birçok yaygın nedeni olabilir:
 
 * Belge Dizinlenmemiş. Başarılı bir Dizin Oluşturucu çalıştırması için portalı denetleyin.
+* [Değişiklik izleme](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) değerini denetleyin. Yüksek filigran değeri gelecekteki bir zamana ayarlandıysa, bu değerden küçük bir tarihi olan tüm belgeler Dizin Oluşturucu tarafından atlanır. Dizin oluşturucunun değişiklik izleme durumunu, [Dizin Oluşturucu durumundaki](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result)' ınitialtrackingstate ' ve ' finaltrackingstate ' alanlarını kullanarak anlayabilirsiniz.
 * Dizin Oluşturucu çalıştırıldıktan sonra belge güncelleştirildi. Dizinleyicinin bir [zamanlamaya](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)göre olması, sonunda yeniden çalıştırılır ve belgeyi seçer.
 * Veri kaynağında belirtilen [sorgu](/rest/api/searchservice/create-data-source) , belgeyi dışlar. Dizin oluşturucular, veri kaynağının parçası olmayan belgeleri dizinlemez.
 * [Alan eşlemeleri](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) veya [AI zenginleştirme](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) belgeyi değiştirdi ve beklediğinizden farklı görünüyor.

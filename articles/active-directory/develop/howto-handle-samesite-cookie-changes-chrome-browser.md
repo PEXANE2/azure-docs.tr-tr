@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81534610"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477813"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme
 
@@ -26,24 +26,24 @@ ms.locfileid: "81534610"
 
 `SameSite`, Web uygulamalarında siteler arası Istek sahteciliği (CSRF) saldırılarını engellemek için HTTP tanımlama bilgilerinde ayarlanabilecek bir özelliktir:
 
-- `SameSite` , **LAX**olarak ayarlandığında, tanımlama bilgisi aynı site içindeki isteklere ve diğer sitelerden alınan isteklere gönderilir. Etki alanları arası olan GET isteklerinde gönderilmez.
+- , `SameSite` **LAX**olarak ayarlandığında, tanımlama bilgisi aynı site içindeki isteklere ve diğer sitelerden alınan isteklere gönderilir. Etki alanları arası olan GET isteklerinde gönderilmez.
 - **Katı** değeri, tanımlama bilgisinin yalnızca aynı site içindeki isteklere gönderilmesini sağlar.
 
-Varsayılan olarak, bu `SameSite` değer TARAYıCıLARDA ayarlı değildir ve isteklerde gönderilen tanımlama bilgilerinde hiçbir kısıtlama yoktur. Bir uygulamanın, gereksinimleri uyarınca **LAX** veya **katı** ayarlayarak CSRF korumasını kabul etmeniz gerekir.
+Varsayılan olarak, `SameSite` Bu değer tarayıcılarda AYARLı değildir ve isteklerde gönderilen tanımlama bilgilerinde hiçbir kısıtlama yoktur. Bir uygulamanın, gereksinimleri uyarınca **LAX** veya **katı** ayarlayarak CSRF korumasını kabul etmeniz gerekir.
 
 ## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite değişiklikleri ve kimlik doğrulaması üzerindeki etki
 
-[SameSite standartlarına yönelik son güncelleştirmeler](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) , hiçbir değer LAX olarak ayarlanmamışsa varsayılan davranışı `SameSite` yaparak uygulamaları korumayı önerin. Bu hafifletme, diğer sitelerden yapılan GET dışındaki HTTP isteklerinde tanımlama bilgilerinin kısıtlandığı anlamına gelir. Ayrıca, gönderilen tanımlama bilgilerinde kısıtlamaları kaldırmak için **none** değeri de eklenmiştir. Bu güncelleştirmeler yakında Chrome tarayıcısının gelecek bir sürümünde yayımlanacak.
+[SameSite standartlarına yönelik son güncelleştirmeler](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) , `SameSite` hiçbir değer LAX olarak ayarlanmamışsa varsayılan davranışı yaparak uygulamaları korumayı önerin. Bu hafifletme, diğer sitelerden yapılan GET dışındaki HTTP isteklerinde tanımlama bilgilerinin kısıtlandığı anlamına gelir. Ayrıca, gönderilen tanımlama bilgilerinde kısıtlamaları kaldırmak için **none** değeri de eklenmiştir. Bu güncelleştirmeler yakında Chrome tarayıcısının gelecek bir sürümünde yayımlanacak.
 
-Web Apps, "form_post" Yanıt modunu kullanarak Microsoft Identity platformu ile kimlik doğrulaması yaparken, oturum açma sunucusu, belirteçleri veya kimlik doğrulama kodunu göndermek için HTTP POST kullanarak uygulamaya yanıt verir. Bu istek bir çapraz etki alanı isteği ( `login.microsoftonline.com` Örneğin, etki alanına `https://contoso.com/auth`) olduğundan, uygulamanız tarafından ayarlanan tanımlama bilgileri artık Chrome 'daki yeni kurallara girer. Siteler arası senaryolarda kullanılması gereken tanımlama bilgileri, oturum açma isteğinde de gönderilen *durum* ve *nonce* değerlerini tutan tanımlama bilgileriylardır. Oturumu tutmak için Azure AD tarafından bırakılan diğer tanımlama bilgileri vardır.
+Web Apps, "form_post" Yanıt modunu kullanarak Microsoft Identity platformu ile kimlik doğrulaması yaparken, oturum açma sunucusu, belirteçleri veya kimlik doğrulama kodunu göndermek için HTTP POST kullanarak uygulamaya yanıt verir. Bu istek bir çapraz etki alanı isteği ( `login.microsoftonline.com` Örneğin, etki alanına `https://contoso.com/auth` ) olduğundan, uygulamanız tarafından ayarlanan tanımlama bilgileri artık Chrome 'daki yeni kurallara girer. Siteler arası senaryolarda kullanılması gereken tanımlama bilgileri, oturum açma isteğinde de gönderilen *durum* ve *nonce* değerlerini tutan tanımlama bilgileriylardır. Oturumu tutmak için Azure AD tarafından bırakılan diğer tanımlama bilgileri vardır.
 
 Web uygulamalarınızı güncelleştirmemeniz durumunda, bu yeni davranış kimlik doğrulama hatalarıyla sonuçlanır.
 
 ## <a name="mitigation-and-samples"></a>Risk azaltma ve örnekler
 
-Kimlik doğrulama başarısızlıklarını aşmak için, Microsoft Identity platformunda kimlik doğrulaması yapan web uygulamaları, Chrome tarayıcısı `SameSite` üzerinde çalışırken `None` etki alanları arası senaryolarda kullanılan tanımlama bilgileri için özelliğini olarak ayarlayabilir.
-Diğer tarayıcılar (tüm liste için [buraya](https://www.chromium.org/updates/same-site/incompatible-clients) bakın) önceki davranışını izleyin `SameSite` ve ayarlandıysa tanımlama bilgilerini `SameSite=None` içermez.
-Bu nedenle, birden çok tarayıcıda kimlik doğrulamasını desteklemek için Web uygulamalarında `SameSite` değeri yalnızca Chrome üzerinde olarak `None` ayarlamak ve diğer tarayıcılarda değeri boş bırakmak gerekecektir.
+Kimlik doğrulama başarısızlıklarını aşmak için, Microsoft Identity platformunda kimlik doğrulaması yapan web uygulamaları, `SameSite` `None` Chrome tarayıcısı üzerinde çalışırken etki alanları arası senaryolarda kullanılan tanımlama bilgileri için özelliğini olarak ayarlayabilir.
+Diğer tarayıcılar (tüm liste için [buraya](https://www.chromium.org/updates/same-site/incompatible-clients) bakın) önceki davranışını izleyin `SameSite` ve ayarlandıysa tanımlama bilgilerini içermez `SameSite=None` .
+Bu nedenle, birden çok tarayıcıda kimlik doğrulamasını desteklemek için Web uygulamalarında `SameSite` değeri `None` yalnızca Chrome üzerinde olarak ayarlamak ve diğer tarayıcılarda değeri boş bırakmak gerekecektir.
 
 Bu yaklaşım aşağıdaki kod örneklerimizde gösterilmiştir.
 

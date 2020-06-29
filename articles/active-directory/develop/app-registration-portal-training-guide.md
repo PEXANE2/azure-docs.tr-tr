@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889988"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478170"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Yeni Azure portal uygulama kayıt deneyimi
 
@@ -77,12 +77,12 @@ Yeni deneyimde, **uygulama gizli** dizileri **sertifikalarla &** yeniden adland�
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformlar/kimlik doğrulaması: yanıt URL 'Leri/yeniden yönlendirme URI 'leri
 Eski deneyimde bir uygulamada Web, yerel ve Web API 'SI için platformlar bölümü, yeniden yönlendirme URL 'Leri, oturum kapatma URL 'SI ve örtük akış yapılandırılması gerekir.
 
-Yeni deneyimde, yanıt URL 'Leri bir App\'s kimlik doğrulama bölümünde bulunabilir. Bunlara ek olarak, yeniden yönlendirme URI 'Leri olarak adlandırılır ve yeniden yönlendirme URI 'Leri biçimi değişmiştir. Bunların bir uygulama türüyle ilişkilendirilmesi gerekir (Web veya genel istemci-mobil ve Masaüstü). [Daha fazlasını öğrenin](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Yeni deneyimde, yanıt URL 'Leri bir App \' s kimlik doğrulama bölümünde bulunabilir. Bunlara ek olarak, yeniden yönlendirme URI 'Leri olarak adlandırılır ve yeniden yönlendirme URI 'Leri biçimi değişmiştir. Bunların bir uygulama türüyle ilişkilendirilmesi gerekir (Web veya genel istemci-mobil ve Masaüstü). [Daha fazla bilgi edinin](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
 Web API 'Leri bir API 'YI kullanıma sunma sayfasında yapılandırılır.
 
 > [!NOTE]
-> Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni kimlik doğrulama ayarları deneyimini deneyin. [Daha fazlasını öğrenin](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
+> Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni kimlik doğrulama ayarları deneyimini deneyin. [Daha fazla bilgi edinin](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
 
 ## <a name="microsoft-graph-permissionsapi-permissions"></a>Microsoft Graph izinleri/API izinleri
 
@@ -106,7 +106,7 @@ Daha önce yalnızca bildirim Düzenleyicisi veya API kullanılarak ayarlanan ö
 
 -   Bu API (oauth2Permissions) ve yetkili istemci uygulamaları (ön kimlik doğrulama) tarafından tanımlanan kapsamlar, bir API 'YI kullanıma sunma sayfasından yapılandırılabilir. Bir uygulamayı Web API 'SI olarak yapılandırma ve izinleri/kapsamları kullanıma sunma hakkında daha fazla bilgi için [Bu hızlı başlangıç](quickstart-configure-app-expose-web-apis.md)bölümüne bakın.
 
--   Yayımcı etki alanı ( [\'uygulama tarafından izin isteminde](application-consent-experience.md)kullanıcılara gösterilir) marka sayfasında bulunabilir. Yayımcı etki alanını yapılandırma hakkında daha fazla bilgi için, bkz. [nasıl yapılır](howto-configure-publisher-domain.md).
+-   Yayımcı etki alanı ( [uygulama tarafından \' izin isteminde](application-consent-experience.md)kullanıcılara gösterilir) marka sayfasında bulunabilir. Yayımcı etki alanını yapılandırma hakkında daha fazla bilgi için, bkz. [nasıl yapılır](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -116,7 +116,7 @@ Yeni deneyim aşağıdaki sınırlamalara sahiptir:
 
 -   Yeni deneyim, kişisel Microsoft hesaplarıyla oluşturulan canlı SDK uygulamalarını henüz desteklememektedir.
 
--   Desteklenen hesapların değerini değiştirmek Kullanıcı arabiriminde desteklenmez. Azure AD tek kiracılı ve çok kiracılı bir şekilde\'geçiş yapmadığınız takdirde uygulama bildirimini kullanmanız gerekir.
+-   Desteklenen hesapların değerini değiştirmek Kullanıcı arabiriminde desteklenmez. \'Azure AD tek kiracılı ve çok kiracılı bir şekilde geçiş yapmadığınız takdirde uygulama bildirimini kullanmanız gerekir.
 
    > [!NOTE]
    > Azure AD kiracısında kişisel Microsoft hesabı bir Kullanıcı ve kiracı yöneticisinin Azure portal erişimi kısıtlanmışsa, erişim reddedildi. Ancak, arama çubuğuna Uygulama kayıtları yazarak veya sabitleyerek kısayoldan geliyorsa yeni deneyimle erişebilirsiniz.

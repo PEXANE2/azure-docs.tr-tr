@@ -6,16 +6,16 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 4b39aa77ea3895a606ad34a3bc9b70dba924a23f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10485a5467a63e0b3bb1aa0dbefc4d156c2a9565
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886101"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479037"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory bağlı hizmeti ile hataları tanılama
 
@@ -25,7 +25,7 @@ Bir projede önceki kimlik doğrulama kodunu doğru bir şekilde algılamak içi
 
 ## <a name="project-types"></a>Proje türleri
 
-Bağlı hizmet, projenin doğru kimlik doğrulama mantığını ekleyebilmesi için, geliştirmekte olduğunuz projenin türünü denetler. Projede türetilen `ApiController` herhangi bir denetleyici varsa, proje bir WebAPI projesi olarak kabul edilir. Yalnızca projede türetilen `MVC.Controller` denetleyiciler varsa, proje bir MVC projesi olarak kabul edilir. Bağlı hizmet diğer proje türlerini desteklemiyor.
+Bağlı hizmet, projenin doğru kimlik doğrulama mantığını ekleyebilmesi için, geliştirmekte olduğunuz projenin türünü denetler. Projede türetilen herhangi bir denetleyici varsa `ApiController` , proje bir WebAPI projesi olarak kabul edilir. Yalnızca projede türetilen denetleyiciler varsa `MVC.Controller` , proje BIR MVC projesi olarak kabul edilir. Bağlı hizmet diğer proje türlerini desteklemiyor.
 
 ## <a name="compatible-authentication-code"></a>Uyumlu kimlik doğrulama kodu
 
@@ -62,7 +62,7 @@ MVC projesinde Windows kimlik doğrulamasını algılamak için, bağlantılı `
 </configuration>
 ```
 
-Bir Web API projesinde Windows kimlik doğrulamasını algılamak için, bağlı hizmet projenizin `IISExpressWindowsAuthentication` `.csproj` dosyasındaki öğesini arar:
+Bir Web API projesinde Windows kimlik doğrulamasını algılamak için, bağlı hizmet `IISExpressWindowsAuthentication` projenizin dosyasındaki öğesini arar `.csproj` :
 
 ```xml
 <Project>
@@ -72,7 +72,7 @@ Bir Web API projesinde Windows kimlik doğrulamasını algılamak için, bağlı
 </Project>
 ```
 
-Bireysel kullanıcı hesapları kimlik doğrulamasını algılamak için, bağlı hizmet `packages.config` dosyanızdaki paket öğesini arar.
+Bireysel kullanıcı hesapları kimlik doğrulamasını algılamak için, bağlı hizmet dosyanızdaki paket öğesini arar `packages.config` .
 
 ```xml
 <packages>
@@ -80,7 +80,7 @@ Bireysel kullanıcı hesapları kimlik doğrulamasını algılamak için, bağl�
 </packages>
 ```
 
-Eski bir kurumsal hesap kimlik doğrulaması biçimini algılamak için bağlı hizmet içinde`web.config`aşağıdaki öğeyi arar:
+Eski bir kurumsal hesap kimlik doğrulaması biçimini algılamak için bağlı hizmet içinde aşağıdaki öğeyi arar `web.config` :
 
 ```xml
 <configuration>

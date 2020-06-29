@@ -7,31 +7,31 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 94c9a2b6a46262ad293da9ca3ba493d6f898c870
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e36237e67b4498ca6aad4b7ffa8c645abeff6143
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77085846"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477303"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Kullanıcı MSAL.NET kullanarak birkaç kaynak için onay alır
-Microsoft Identity platform uç noktası aynı anda birkaç kaynak için bir belirteç almanıza izin vermez. .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) kullanılırken, belirteç alma yöntemindeki kapsamlar parametresi yalnızca tek bir kaynak için kapsam içermelidir. Ancak, `.WithExtraScopeToConsent` Oluşturucu yöntemini kullanarak ek kapsamlar belirterek, birden fazla kaynağa ön onay verebilirsiniz.
+Microsoft Identity platform uç noktası aynı anda birkaç kaynak için bir belirteç almanıza izin vermez. .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) kullanılırken, belirteç alma yöntemindeki kapsamlar parametresi yalnızca tek bir kaynak için kapsam içermelidir. Ancak, Oluşturucu yöntemini kullanarak ek kapsamlar belirterek, birden fazla kaynağa ön onay verebilirsiniz `.WithExtraScopeToConsent` .
 
 > [!NOTE]
 > Birkaç kaynağa onay alınması Microsoft Identity platform için geçerlidir, ancak Azure AD B2C için değildir. Azure AD B2C, Kullanıcı onayını değil yalnızca yönetici onayını destekler.
 
 Örneğin, her biri 2 kapsam içeren iki kaynağınız varsa:
 
-- https:\//mytenant.onmicrosoft.com/customerapi (2 kapsamlarla `customer.read` ve `customer.write`)
-- https:\//mytenant.onmicrosoft.com/vendorapi (2 kapsamlarla `vendor.read` ve `vendor.write`)
+- https: \/ /mytenant.onmicrosoft.com/customerapi (2 kapsamlarla `customer.read` ve `customer.write` )
+- https: \/ /mytenant.onmicrosoft.com/vendorapi (2 kapsamlarla `vendor.read` ve `vendor.write` )
 
-Aşağıdaki örnekte gösterildiği gibi `.WithExtraScopeToConsent` , *Extrascopestoonay* parametresine sahip olan değiştiriciyi kullanmanız gerekir:
+`.WithExtraScopeToConsent`Aşağıdaki örnekte gösterildiği gibi, *Extrascopestoonay* parametresine sahip olan değiştiriciyi kullanmanız gerekir:
 
 ```csharp
 string[] scopesForCustomerApi = new string[]

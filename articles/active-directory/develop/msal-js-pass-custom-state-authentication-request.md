@@ -1,30 +1,30 @@
 ---
-title: Kimlik doğrulama isteklerinde özel durum geçirme (MSAL. js) | Mavisi
+title: Kimlik doğrulama isteklerinde özel durum geçirin (MSAL.js) | Mavisi
 titleSuffix: Microsoft identity platform
-description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak kimlik doğrulama isteğinde özel durum parametre değeri geçirme hakkında bilgi edinin.
+description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.js) kullanarak, kimlik doğrulama isteğinde özel durum parametre değeri geçirme hakkında bilgi edinin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 01/16/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1c05956f83ad3a6491627be8916fac2c8be2b7ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084941"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477592"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL. js kullanarak kimlik doğrulama isteklerinde özel durum geçirme
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL.js kullanarak özel durumu kimlik doğrulama isteklerinde geçirme
 
-OAuth 2,0 tarafından tanımlanan *durum* parametresi bir kimlik doğrulama isteğine dahildir ve ayrıca, siteler arası istek sahteciliği saldırılarını engellemek için belirteç yanıtında de döndürülür. Varsayılan olarak, JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), kimlik doğrulama isteklerinde rastgele oluşturulmuş benzersiz bir *durum* parametresi değeri geçirir.
+OAuth 2,0 tarafından tanımlanan *durum* parametresi bir kimlik doğrulama isteğine dahildir ve ayrıca, siteler arası istek sahteciliği saldırılarını engellemek için belirteç yanıtında de döndürülür. Varsayılan olarak, JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı, kimlik doğrulama isteklerinde rastgele oluşturulmuş benzersiz bir *durum* parametresi değeri geçirir.
 
-Durum parametresi, yeniden yönlendirmenin önüne uygulama durumunun bilgilerini kodlamak için de kullanılabilir. Bu parametreye giriş olarak kullanıcının durumunu uygulamada (sayfada bulunan sayfa veya görüntüleme gibi) geçirebilirsiniz. MSAL. js kitaplığı, özel durumlarınızı `Request` nesne içinde durum parametresi olarak geçirmenize olanak sağlar:
+Durum parametresi, yeniden yönlendirmenin önüne uygulama durumunun bilgilerini kodlamak için de kullanılabilir. Bu parametreye giriş olarak kullanıcının durumunu uygulamada (sayfada bulunan sayfa veya görüntüleme gibi) geçirebilirsiniz. MSAL.js kitaplığı, özel durumlarınızı nesne içinde durum parametresi olarak geçirmenize olanak sağlar `Request` :
 
 ```javascript
 // Request type
@@ -45,7 +45,7 @@ export type AuthenticationParameters = {
 ```
 
 > [!Note]
-> Önbelleğe alınmış bir belirteci atlayıp sunucuya gitmek isterseniz, lütfen bir oturum açma/belirteç isteği oluşturmak için kullanılan AuthenticationParameters nesnesine Boole değeri `forceRefresh` geçirin.
+> Önbelleğe alınmış bir belirteci atlayıp sunucuya gitmek isterseniz, lütfen `forceRefresh` bir oturum açma/belirteç isteği oluşturmak için kullanılan AuthenticationParameters nesnesine Boole değeri geçirin.
 > `forceRefresh`, uygulamanızdaki performans etkisi nedeniyle varsayılan olarak kullanılmamalıdır.
 > Önbelleğe bağlı olarak kullanıcılarınıza daha iyi bir deneyim sağlar.
 > Önbelleğin atlanması yalnızca şu anda önbelleğe alınan verilerin güncel bilgilere sahip olmadığını bildiğiniz senaryolarda kullanılmalıdır.
@@ -62,7 +62,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-Geçirilen durum, istek gönderilirken MSAL. js tarafından ayarlanan benzersiz GUID 'ye eklenir. Yanıt döndürüldüğünde, MSAL. js bir durum eşleşmesi olup olmadığını denetler ve ardından `Response` nesne içindeki özel geçti durumunu döndürür. `accountState`
+Geçirilen durum, istek gönderilirken MSAL.js tarafından ayarlanan benzersiz GUID 'ye eklenir. Yanıt döndürüldüğünde, MSAL.js bir durum eşleşmesi olup olmadığını, nesne içindeki özel geçirilen durumu döndürür `Response` `accountState` .
 
 ```javascript
 export type AuthResponse = {
@@ -78,4 +78,4 @@ export type AuthResponse = {
 };
 ```
 
-Daha fazla bilgi edinmek için MSAL. js kullanarak [tek sayfalı uygulama (Spa) oluşturma](scenario-spa-overview.md) hakkında bilgi edinin.
+Daha fazla bilgi edinmek için MSAL.js kullanarak [tek sayfalı uygulama (Spa) oluşturma](scenario-spa-overview.md) hakkında bilgi edinin.

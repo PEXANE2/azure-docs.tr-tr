@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5049e875c3b8047b99e3256c7bbac60d0af822bb
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d6ecc2ddab7bc0fa739989e9cfdc2645cc1ccb27
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392276"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476912"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure dijital TWINS 'de uç noktaları ve yolları yönetme
 
@@ -25,7 +25,10 @@ Desteklenen uç nokta türleri şunlardır:
 
 Farklı uç noktalar hakkında daha fazla bilgi için bkz. [Azure mesajlaşma hizmetleri arasında seçim](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)yapın.
 
-Uç noktalar ve rotalar [**Eventroutes API 'leri**](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile yönetilir.
+Uç noktalar ve rotalar [**Eventroutes API 'leri**](how-to-use-apis-sdks.md), [.net (C#) SDK 'Sı](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)veya [Azure dijital TWINS CLI](how-to-use-cli.md)ile yönetilir. Ayrıca, [Azure Portal](https://portal.azure.com)aracılığıyla da yönetilebilecek.
+
+> [!NOTE]
+> Azure portal aracılığıyla olay yollarının yönetilmesi, şu anda yalnızca kurumsal etki alanı hesaplarında Azure kullanıcıları tarafından kullanılabilir. Kişisel [Microsoft hesabı (MSA)](https://account.microsoft.com/account/Account)kullanıyorsanız, lütfen bu makalede açıklandığı gibi olay yollarını yönetmek Için Azure Digital TWINS API 'LERINI veya CLI 'yi kullanın.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Azure dijital TWINS için uç nokta oluşturma
 

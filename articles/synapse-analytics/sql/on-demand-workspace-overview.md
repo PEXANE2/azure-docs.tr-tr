@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f020abd4d207a49068ccffb9bb7f57b88bc87df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206402"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480448"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) 
 
@@ -85,25 +85,25 @@ Desteklenen T-SQL:
 - Görünümler ve güvenlikle ilgili olanlar dışındaki DDL deyimleri
 - DML deyimleri
 
-### <a name="extensions"></a>Uzantılar
+### <a name="extensions"></a>Uzantıları
 
 Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı, aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini genişletir:
 
-[Birden çok dosyayı veya klasörü sorgulama](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[Birden çok dosyayı veya klasörü sorgulama](query-data-storage.md#query-multiple-files-or-folders)
 
-[PARQUET dosya biçimi](develop-storage-files-overview.md#parquet-file-format)
+[PARQUET dosya biçimi](query-data-storage.md#query-parquet-files)
 
-[Sınırlandırılmış metinle çalışmak için ek seçenekler (alan Sonlandırıcı, satır Sonlandırıcı, kaçış karakteri)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[Sınırlandırılmış metinle çalışmak için ek seçenekler (alan Sonlandırıcı, satır Sonlandırıcı, kaçış karakteri)](query-data-storage.md#query-csv-files)
 
-[Seçili sütunların bir alt kümesini okuyun](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[Seçili sütunların bir alt kümesini okuyun](query-data-storage.md#read-a-chosen-subset-of-columns)
 
-[Şema çıkarımı](develop-storage-files-overview.md#schema-inference)
+[Şema çıkarımı](query-data-storage.md#schema-inference)
 
-[filename işlevi](develop-storage-files-overview.md#filename-function)
+[filename işlevi](query-data-storage.md#filename-function)
 
-[FilePath işlevi](develop-storage-files-overview.md#filepath-function)
+[FilePath işlevi](query-data-storage.md#filepath-function)
 
-[Karmaşık türlerle ve iç içe veya yinelenen veri yapıları ile çalışma](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[Karmaşık türlerle ve iç içe veya yinelenen veri yapıları ile çalışma](query-data-storage.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Güvenlik
 
@@ -113,7 +113,7 @@ Verilerinize güvenli bir şekilde erişmek için SQL isteğe bağlı, mekanizma
 
 İsteğe bağlı SQL, veritabanı kullanıcısı ve diğer Microsoft hizmetlerinin kimliklerini [Azure Active Directory tümleştirmeyle](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory (Azure AD), çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) destekler.
 
-#### <a name="authentication"></a>Kimlik doğrulaması
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 İsteğe bağlı SQL kimlik doğrulaması, kullanıcıların uç noktaya bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. İki tür kimlik doğrulaması desteklenir:
 

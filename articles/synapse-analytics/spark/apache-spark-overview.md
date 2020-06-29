@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 1f1a83bce3a8b46bb49bf78917690851390408e0
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 0a9a89b6ff3d0e2d3987d4b4281b9e4e1605475f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194697"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476793"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark nedir?
 
@@ -32,7 +32,7 @@ Apache Spark, bellek içi küme bilgi işlem için temel öğeler sağlar. Bir S
 
 Azure 'daki Spark havuzları, tam olarak yönetilen bir Spark hizmeti sunar. SYNAPSE Analytics 'te Spark havuzu oluşturmanın avantajları burada listelenmiştir.
 
-| Özellik | Description |
+| Özellik | Açıklama |
 | --- | --- |
 | Hız ve verimlilik |Spark örnekleri 60 ' den az düğüm için yaklaşık 2 dakika ve 60 ' den fazla düğüm için yaklaşık 5 dakika içinde başlar. Örnek, varsayılan olarak, son işi bir not defteri bağlantısı tarafından etkin tutulmadığı takdirde 5 dakikada bir kapatır. |
 | Oluşturma kolaylığı |Azure portal, Azure PowerShell veya SYNAPSE Analytics .NET SDK kullanarak dakikalar içinde Azure SYNAPSE 'te yeni bir Spark havuzu oluşturabilirsiniz. Bkz. [SYNAPSE Analytics 'Te Spark havuzlarıyla çalışmaya başlama](../quickstart-create-apache-spark-pool-studio.md). |
@@ -60,7 +60,7 @@ Mini bağlam, uygulamalar arasında kaynakları ayıran küme yöneticisine bağ
 
 Mini bağlam, kullanıcının ana işlevini çalıştırır ve düğümlerde çeşitli paralel işlemleri yürütür. Daha sonra SparkContext, işlemlerin sonuçlarını toplar. Düğümler dosya sistemine ve arasında verileri okur ve yazar. Düğümler Ayrıca, dönüştürülmüş verileri dayanıklı Dağıtılmış veri kümeleri (RDD) olarak bellek içinde önbelleğe al.
 
-Mini bağlam, Spark havuzuna bağlanır ve bir uygulamayı yönlendirilmiş bir grafiğe (DAG) dönüştürmekten sorumludur. Grafik, düğümlerde bir yürütücü işlemi içinde yürütülen bireysel görevlerden oluşur. Her uygulama, uygulama süresince devam eden ve görevleri birden fazla iş parçacığında çalıştıran kendi yürütücü işlemine sahiptir.
+Mini bağlam, Spark havuzuna bağlanır ve bir uygulamayı yönlendirilmiş bir Çevrimsiz grafiğine (DAG) dönüştürmekten sorumludur. Grafik, düğümlerde bir yürütücü işlemi içinde yürütülen bireysel görevlerden oluşur. Her uygulama, uygulama süresince devam eden ve görevleri birden fazla iş parçacığında çalıştıran kendi yürütücü işlemine sahiptir.
 
 ## <a name="apache-spark-in-synapse-analytics-use-cases"></a>SYNAPSE Analytics kullanım durumlarında Apache Spark
 

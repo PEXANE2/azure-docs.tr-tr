@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 68f8a7086dd164c102e42c99bb8d6ba22b71ad6f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710992"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480142"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Sanal makinelerde ağ arabirimi ekleme veya kaldırma işlemlerini gerçekleştirme
 
@@ -151,7 +151,7 @@ Ağ arabirimi ayarları ve bunların nasıl değiştirileceği hakkında bilgi e
 
 - Bir VM 'nin silinmesi, kendisine bağlı olan ağ arabirimlerini silmez. Bir VM 'yi sildiğinizde, ağ arabirimleri VM 'den ayrılır. Bu ağ arabirimlerini farklı VM 'lere ekleyebilir veya silebilirsiniz.
 
-- IPv6 'da olduğu gibi, bir VM 'yi oluşturduktan sonra bir sanal ağa hızlandırılmış ağ arabirimi ekleyebilirsiniz. Ayrıca, hızlandırılmış ağ iletişimi avantajlarından yararlanmak için VM işletim sistemi içindeki adımları da tamamlamalısınız. [Windows](create-vm-accelerated-networking-powershell.md) veya [Linux](create-vm-accelerated-networking-cli.md) sanal makineleri için hızlandırılmış ağ ve bunu kullanırken diğer kısıtlamalar hakkında daha fazla bilgi edinin.
+- En iyi performansı elde etmek için hızlandırılmış ağ gerekir. Bazı durumlarda, [Windows](create-vm-accelerated-networking-powershell.md) veya [Linux](create-vm-accelerated-networking-cli.md) sanal makineleri için hızlandırılmış ağı açıkça etkinleştirmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

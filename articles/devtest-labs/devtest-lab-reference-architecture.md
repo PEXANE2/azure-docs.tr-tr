@@ -1,24 +1,15 @@
 ---
 title: Azure DevTest Labs için kurumsal başvuru mimarisi
 description: Bu makale, bir kuruluşta Azure DevTest Labs için başvuru mimarisi kılavuzu sağlar.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 8b71774d9a833adefdd25214ea4f0e8bdaaba485
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897950"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480193"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Kuruluşlar için Azure DevTest Labs başvuru mimarisi
 Bu makalede, bir kuruluştaki Azure DevTest Labs göre bir çözüm dağıtmanıza yardımcı olacak başvuru mimarisi sunulmaktadır. Şunları içerir:

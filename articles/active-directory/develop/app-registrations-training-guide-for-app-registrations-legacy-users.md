@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f72e16afd61d364a2dad634f3502c801f1b99380
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154585"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478153"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>Yeni Azure portalı uygulama kaydı eğitim kılavuzu
 
@@ -73,13 +73,13 @@ Yeni deneyim bu sayfaya sahip değildir. Eşdeğer işlevselliği bulabileceğin
 - Eski deneyimdeki **çok kiracılı** geçiş tarafından denetlenen Işlevsellik, **kimlik doğrulama** sayfasındaki **Desteklenen hesap türleriyle** değiştirilmiştir. Daha fazla bilgi için bkz. [hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md).
 - **Oturum kapatma URL 'si** Şu anda **kimlik doğrulama** sayfasıdır.
 - **Uygulama türü** artık geçerli bir alan değil. Bunun yerine, **kimlik doğrulama** sayfasında bulabileceğiniz ve hangi uygulama türlerinin desteklendiğini belirleyen URI 'leri yeniden yönlendirin.
-- Uygulama **KIMLIĞI URI** 'Si artık **uygulama kimliği URI 'si** olarak adlandırıldığından **API 'yi açığa çıkarmak**için bulabilirsiniz. Eski deneyimde, bu özellik aşağıdaki biçim kullanılarak tekrar kaydettirildi: `https://{tenantdomain}/{appID}`, örneğin,. `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b` Yeni deneyimde, olarak `api://{appID}`oluşturulur, ancak açıkça kaydedilmesi gerekir. Azure AD B2C kiracılarda, `https://{tenantdomain}/{appID}` biçim hâlâ kullanılır.
+- Uygulama **KIMLIĞI URI** 'Si artık **uygulama kimliği URI 'si** olarak adlandırıldığından **API 'yi açığa çıkarmak**için bulabilirsiniz. Eski deneyimde, bu özellik aşağıdaki biçim kullanılarak tekrar kaydettirildi: `https://{tenantdomain}/{appID}` , örneğin, `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b` . Yeni deneyimde, olarak oluşturulur `api://{appID}` , ancak açıkça kaydedilmesi gerekir. Azure AD B2C kiracılarda, `https://{tenantdomain}/{appID}` Biçim hâlâ kullanılır.
 
 ### <a name="reply-urlsredirect-urls"></a>Yanıt URL 'Leri/yeniden yönlendirme URL 'Leri
 
 Eski deneyimde bir uygulamada bir **yanıt URL** 'si sayfası vardı. Yeni deneyimde bir uygulamanın **kimlik doğrulama** sayfasında yanıt URL 'leri bulunabilir. Bunlar artık **yeniden yönlendirme URI 'leri**olarak adlandırılır.
 
-Yeniden yönlendirme URI 'Leri biçimi değişti. Bunların Web veya ortak bir uygulama türüyle ilişkilendirilmesi gerekir. Güvenlik nedenleriyle, joker karakterler ve `http://` şemalar, dışında desteklenmez *http://localhost*.
+Yeniden yönlendirme URI 'Leri biçimi değişti. Bunların Web veya ortak bir uygulama türüyle ilişkilendirilmesi gerekir. Güvenlik nedenleriyle, joker karakterler ve `http://` şemalar, dışında desteklenmez *http://localhost* .
 
 ### <a name="keyscertificates--secrets"></a>Anahtarlar/sertifikalar & gizli dizileri
 
@@ -118,8 +118,8 @@ Eski ve yeni deneyimler, bildirim düzenleyicisinde JSON biçimi için farklı s
 
 Yeni deneyim, aşağıdaki özellikler için UI denetimleri ekler:
 
-- **Kimlik doğrulama** sayfasında **örtük izin akışı** (`oauth2AllowImplicitFlow`) vardır. Eski deneyimden farklı olarak, **erişim belirteçlerini** veya **kimlik belirteçlerini**veya her ikisini de etkinleştirebilirsiniz.
-- **Bir API 'yi kullanıma** sunma sayfası, bu API (`oauth2Permissions`) ve **yetkilendirilmiş istemci uygulamaları** (`preAuthorizedApplications`) **tarafından tanımlanan kapsamları** içerir. Bir uygulamayı Web API 'SI olarak yapılandırma ve izinleri/kapsamları kullanıma sunma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Web API 'leri göstermek için uygulama yapılandırma](quickstart-configure-app-expose-web-apis.md).
+- **Kimlik doğrulama** sayfasında **örtük izin akışı** ( `oauth2AllowImplicitFlow` ) vardır. Eski deneyimden farklı olarak, **erişim belirteçlerini** veya **kimlik belirteçlerini**veya her ikisini de etkinleştirebilirsiniz.
+- **BIR API 'Yi kullanıma** sunma sayfası, bu API () ve yetkilendirilmiş istemci uygulamaları () **tarafından tanımlanan kapsamları** içerir `oauth2Permissions` **Authorized client applications** `preAuthorizedApplications` . Bir uygulamayı Web API 'SI olarak yapılandırma ve izinleri/kapsamları kullanıma sunma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Web API 'leri göstermek için uygulama yapılandırma](quickstart-configure-app-expose-web-apis.md).
 - **Marka** sayfası **Yayımcı etki alanını**içerir. Yayımcı etki alanı kullanıcılara [uygulamanın izin isteminde](application-consent-experience.md)görüntülenir. Daha fazla bilgi için bkz. [nasıl yapılır: uygulamanın yayımcı etki alanını yapılandırma](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Sınırlamalar

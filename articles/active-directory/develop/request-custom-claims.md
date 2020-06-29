@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 4974fe3b387683f662d7a7b4f3ccb4935153f07e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883105"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477201"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Nasıl yapılır: iOS ve macOS için MSAL kullanarak özel talepler ISTEME
 
 OpenID Connect, isteğe bağlı olarak, UserInfo uç noktasından ve/veya KIMLIK belirtecinde tek tek taleplerin döndürülmesini ister. Talep isteği, istenen talepler listesini içeren bir JSON nesnesi olarak temsil edilir. Daha fazla bilgi için bkz. [OpenID Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
 
-İOS ve macOS için Microsoft kimlik doğrulama kitaplığı (MSAL), hem etkileşimli hem de sessiz belirteç alma senaryolarında belirli talepler istemeyi sağlar. Bu, `claimsRequest` parametresi aracılığıyla yapılır.
+İOS ve macOS için Microsoft kimlik doğrulama kitaplığı (MSAL), hem etkileşimli hem de sessiz belirteç alma senaryolarında belirli talepler istemeyi sağlar. Bu, parametresi aracılığıyla yapılır `claimsRequest` .
 
 Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
 
@@ -31,9 +31,9 @@ Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
 - Uygulamanız için kapsamlar kullanılarak belirtilemez standart talepler için belirli birleşimler isteniyor. Örneğin, eksik talepler nedeniyle erişim belirteci reddedilirse, uygulama MSAL kullanarak eksik talepleri isteyebilir.
 
 > [!NOTE]
-> MSAL, bir talep isteği belirtildiğinde erişim belirteci önbelleğini atlar. Yalnızca ek talepler gerektiğinde parametre sağlanması `claimsRequest` önemlidir (her BIR msal API çağrısında aynı `claimsRequest` parametreyi her zaman sağlama aksine).
+> MSAL, bir talep isteği belirtildiğinde erişim belirteci önbelleğini atlar. Yalnızca `claimsRequest` ek talepler gerektiğinde parametre sağlanması önemlidir (her BIR msal API çağrısında aynı parametreyi her zaman sağlama aksine `claimsRequest` ).
 
-`claimsRequest`, ve `MSALSilentTokenParameters` `MSALInteractiveTokenParameters`içinde belirtilebilir:
+`claimsRequest`, ve içinde belirtilebilir `MSALSilentTokenParameters` `MSALInteractiveTokenParameters` :
 
 ```objc
 /*!

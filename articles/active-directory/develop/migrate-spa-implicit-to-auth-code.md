@@ -1,46 +1,46 @@
 ---
 title: JavaScript tek sayfalı uygulamayı örtük yetki kodu akışına geçir | Mavisi
 titleSuffix: Microsoft identity platform
-description: MSAL. js 1. x kullanarak bir JavaScript SPA 'yı ve MSAL. js 2. x için örtük verme akışını ve PKCE ve CORS desteği ile yetkilendirme kodu akışını güncelleştirme.
+description: MSAL.js 1. x ile bir JavaScript SPA 'yı güncelleştirme ve MSAL.js 2. x ve kimlik doğrulama kodu akışı ile PKI CE ve CORS desteği için örtük verme akışı.
 services: active-directory
 author: hahamil
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: tutorial
+ms.topic: how-to
 ms.workload: identity
 ms.date: 06/01/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 6af203759cca830a6adcf9f70436d42f3d983da4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 8115f8e767d1bdcbacb74e90606526c98b0820f7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84301044"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479547"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Bir JavaScript tek sayfalı uygulamayı örtük kimlik doğrulama kod akışına geçirme
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma (GA) önce değişebilir.
 
-JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js) v 2.0, Microsoft Identity platformunda tek sayfalı uygulamalar için PKCE ve CORS ile yetkilendirme kodu akışı desteği sunar. MSAL. js 2.0 + (herbundan sonra *2. x*) ve Auth Code Flow 'U kullanarak. js 1. x uygulamanızı geçirmek için aşağıdaki bölümlerde bulunan adımları izleyin.
+JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL.js) v 2.0, Microsoft Identity platformunda tek sayfalı uygulamalar için PKCE ve CORS ile yetkilendirme kodu akışına yönelik destek sunar. MSAL.js 1. x uygulamanızı örtük olarak MSAL.js 2.0 + (herbundan sonra *2. x*) ve Auth kod akışı kullanarak geçirmek için aşağıdaki bölümlerde bulunan adımları izleyin.
 
-MSAL. js 2. x, MSAL. js 1. x üzerinde, dolaylı verme akışı yerine, tarayıcıda yetkilendirme kodu akışını destekleyerek geliştirir. MSAL. js 2. x örtük **akışı desteklemez.**
+MSAL.js 2. x, dolaylı verme akışı yerine tarayıcıda yetkilendirme kodu akışını destekleyerek MSAL.js 1. x ' i geliştirir. MSAL.js 2. x örtük **akışı desteklemez.**
 
 ## <a name="migration-steps"></a>Geçiş adımları
 
-Uygulamanızı MSAL. js 2. x ve kimlik doğrulama kod akışına güncelleştirmek için üç birincil adım vardır:
+Uygulamanızı 2. x ve kimlik doğrulama kod akışına MSAL.js güncelleştirmek için üç birincil adım vardır:
 
 1. [Uygulama kaydı](#switch-redirect-uris-to-spa-platform) YENIDEN yönlendirme URI 'leri **Web** platformundan **tek sayfalı uygulama** platformuna geçirin.
-1. [Kodunuzu](#switch-redirect-uris-to-spa-platform) msal. js 1. x ile **2. x**arasında güncelleştirin.
-1. Kaydı paylaşan tüm uygulamalar MSAL. js 2. x ve Auth Code Flow olarak güncelleştirilirse, uygulama kaydındaki [örtük izni](#disable-implicit-grant-settings) devre dışı bırakın.
+1. [Kodunuzu](#switch-redirect-uris-to-spa-platform) MSAL.js 1. x ile **2. x**arasında güncelleştirin.
+1. Kaydı paylaşan tüm uygulamalar 2. x MSAL.js ve kimlik doğrulama kodu akışına güncelleştirildiği zaman, uygulama kaydındaki [örtük izni](#disable-implicit-grant-settings) devre dışı bırakın.
 
 Aşağıdaki bölümlerde her bir adım ek ayrıntılarla açıklanır.
 
 ## <a name="switch-redirect-uris-to-spa-platform"></a>Yeniden yönlendirme URI 'Lerini SPA platformuna geçir
 
-Uygulamalarınız için mevcut uygulama kaydınızı kullanmaya devam etmek istiyorsanız, kaydın yeniden yönlendirme URI 'Lerini SPA platformuna güncelleştirmek için Azure portal kullanın. Bunun yapılması, kayıt kullanan uygulamalar için PKI ve CORS desteğiyle yetkilendirme kodu akışını sağlar (yine de uygulamanızın kodunu MSAL. js v2. x olarak güncelleştirmeniz gerekir).
+Uygulamalarınız için mevcut uygulama kaydınızı kullanmaya devam etmek istiyorsanız, kaydın yeniden yönlendirme URI 'Lerini SPA platformuna güncelleştirmek için Azure portal kullanın. Bunun yapılması, kayıt kullanan uygulamalar için PKI ve CORS desteğiyle yetkilendirme kodu akışını sağlar (yine de uygulamanızın kodunu MSAL.js v2. x ' e güncelleştirmeniz gerekir).
 
 Şu anda **Web** platformu yeniden yönlendirme URI 'leriyle yapılandırılmış olan uygulama kayıtları için şu adımları izleyin:
 
@@ -49,7 +49,7 @@ Uygulamalarınız için mevcut uygulama kaydınızı kullanmaya devam etmek isti
 1. **Yeniden yönlendirme URI 'leri**altındaki **Web** platformu kutucuğunda, URI 'larınızı geçirmeniz gerektiğini belirten uyarı başlığını seçin.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure portal web uygulaması kutucuğunda örtük akış uyarı başlığı":::
-1. *Yalnızca* , uygulamaları msal. js 2. x kullanacak şekilde yeniden yönlendirme URI 'leri seçin ve ardından **Yapılandır**' ı seçin.
+1. *Yalnızca* uygulamaları 2. x MSAL.js kullanacağı yeniden yönlendirme URI 'lerini seçin ve ardından **Yapılandır**' ı seçin.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal içindeki SPA bölmesinde URI bölmesini yeniden yönlendir bölmesini seçin":::
 
@@ -59,7 +59,7 @@ Bu yeniden yönlendirme URI 'Leri artık **tek sayfalı uygulama** platformu kut
 
 Ayrıca, var olan kaydlarınızın yeniden yönlendirme URI 'Lerini güncelleştirmek yerine [Yeni bir uygulama kaydı da oluşturabilirsiniz](scenario-spa-app-registration.md) .
 
-## <a name="update-your-code-to-msaljs-2x"></a>Kodunuzu MSAL. js 2. x olarak güncelleştirin
+## <a name="update-your-code-to-msaljs-2x"></a>Kodunuzu 2. x MSAL.js için güncelleştirin
 
 MSAL 1. x içinde, aşağıdaki gibi bir [Userbir TApplication][msal-js-useragentapplication] başlatarak bir uygulama örneği oluşturdunuz:
 
@@ -89,7 +89,7 @@ Bu uygulama kaydını ve onun istemci KIMLIĞINI MSAL 2. x ve yetkilendirme kodu
 
 Uygulama kaydında örtük verme ayarlarının işaretini kaldırdığınızda, kayıt ve istemci KIMLIĞI kullanan tüm uygulamalar için örtük akış devre dışı bırakılır.
 
-Tüm uygulamalarınızı MSAL. js 2. x ve [Publicclientapplication][msal-js-publicclientapplication]olarak güncelleştirdikten önce örtük verme **akışını devre dışı** bırakın.
+Tüm uygulamalarınızı MSAL.js 2. x ve [Publicclientapplication][msal-js-publicclientapplication]' a güncelleştirdikten önce **örtük verme akışını devre dışı** bırakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

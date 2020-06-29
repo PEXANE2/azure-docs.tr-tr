@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cf385ef9af152308bcd96f25df49aebddd25b059
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691064"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477270"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Safari 'de ve üçüncü taraf tanımlama bilgilerinin engellendiği diğer tarayıcılarda ıOP 'yi işleme
 
@@ -36,7 +36,7 @@ Bu makalede özetlenen çözüm bu tarayıcıların tümünde veya her yerde ü�
 
 ## <a name="overview-of-the-solution"></a>Çözüme genel bakış
 
-SPAs 'de kullanıcıların kimliğini doğrulamaya devam etmek için, uygulama geliştiricilerinin [yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanması gerekir. Kimlik doğrulama kod akışında, kimlik sağlayıcısı bir kodu yayınlar ve SPA 'nın kodu bir erişim belirteci ve yenileme belirteci için yeniden EMS 'yi kullanıyor. Uygulama ek belirteçler gerektirdiğinde, yeni belirteçleri almak için [yenileme belirteci akışını](v2-oauth2-auth-code-flow.md#refresh-the-access-token) kullanabilir. MSAL. js 2,0, maça için Microsoft Identity platform kitaplığı, SPAs için yetkilendirme kodu akışını uygular ve küçük güncelleştirmelerle, MSAL. js 1. x için bir bırakma değişikliği olur.
+SPAs 'de kullanıcıların kimliğini doğrulamaya devam etmek için, uygulama geliştiricilerinin [yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)kullanması gerekir. Kimlik doğrulama kod akışında, kimlik sağlayıcısı bir kodu yayınlar ve SPA 'nın kodu bir erişim belirteci ve yenileme belirteci için yeniden EMS 'yi kullanıyor. Uygulama ek belirteçler gerektirdiğinde, yeni belirteçleri almak için [yenileme belirteci akışını](v2-oauth2-auth-code-flow.md#refresh-the-access-token) kullanabilir. MSAL.js 2,0, maça için Microsoft Identity platform kitaplığı, SPAs için yetkilendirme kodu akışını ve küçük güncelleştirmelerle birlikte, MSAL.js 1. x için bir bırakma değişikliği uygular.
 
 Microsoft Identity platformu için, SPAs ve yerel istemciler benzer protokol kılavuzlarını izler:
 
@@ -63,7 +63,7 @@ Oturum açmayı gerçekleştirmenin iki yolu vardır:
     * Uygulamada, oturum açma oturumunu denetleyen ve uygulama ve JavaScript yükünü yürütmeden önce oturum açma sayfasına yönlendiren bir ön yükleme sırası kullanmayı düşünün.
 * **'Ları**
     * Tam sayfa yeniden yönlendirmenin Kullanıcı deneyimi (UX) uygulama için işe yaramazsa, kimlik doğrulamasını işlemek için bir açılan pencere kullanmayı düşünün.
-    * Açılan pencere, kimlik doğrulamasından sonra uygulamaya yönlendirmeyi bitirdiğinde, yeniden yönlendirme işleyicisindeki kod, uygulamanın kullanması için kodu ve belirteçleri yerel depoda depolar. MSAL. js, çoğu kitaplık gibi kimlik doğrulaması için açılan pencereleri destekler.
+    * Açılan pencere, kimlik doğrulamasından sonra uygulamaya yönlendirmeyi bitirdiğinde, yeniden yönlendirme işleyicisindeki kod, uygulamanın kullanması için kodu ve belirteçleri yerel depoda depolar. MSAL.js, çoğu kitaplığı da olduğu gibi kimlik doğrulaması için açılır pencereleri destekler.
     * Tarayıcılar, açılan pencereler için destek azalttıkları için en güvenilir seçenek olmayabilir. Açılan pencereyi oluşturmadan önce SPA ile Kullanıcı etkileşimi, tarayıcı gereksinimlerini karşılamak için gerekli olabilir.
 
 >[!NOTE]
@@ -83,4 +83,4 @@ Bu sınırlı ömür boyu yenileme belirteci, güvenlik ve düşürülmüş UX a
 
 [Yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md)hakkında daha fazla bilgi edinin.
 
-[Msal. js 2,0 hızlı](quickstart-v2-javascript-auth-code.md)başlangıcı ile yetkilendirme kodu akışını deneyin.
+[MSAL.js 2,0 hızlı](quickstart-v2-javascript-auth-code.md)başlangıcı ile yetkilendirme kodu akışını deneyin.

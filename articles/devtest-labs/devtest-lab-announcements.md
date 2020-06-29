@@ -1,25 +1,14 @@
 ---
 title: Azure DevTest Labs bir laboratuvara duyuru gönderin | Microsoft Docs
 description: Azure DevTest Labs laboratuvara nasıl duyuru ekleneceğini öğrenin
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 67a09946-4584-425e-a94c-abe57c9cbb82
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 6381c42114e53068188eb8e81034bd6d2a2665bf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896133"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479003"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara duyuru gönderin
 

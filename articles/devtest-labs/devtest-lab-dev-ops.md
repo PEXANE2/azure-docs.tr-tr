@@ -1,24 +1,14 @@
 ---
 title: Azure DevTest Labs ve DevOps tümleştirmesi | Microsoft Docs
 description: Bir kurumsal ortamdaki sürekli tümleştirme (CI)/sürekli teslim (CD) işlem hatları içinde Azure DevTest Labs laboratuvarlarını nasıl kullanacağınızı öğrenin.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
-ms.author: spelluru
-ms.openlocfilehash: db9e338891a4e8bab9f9b36482815542ae348ec2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896931"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481077"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure DevTest Labs ve Azure DevOps tümleştirmesi
 DevOps, bir sistem için yazılım geliştirmeyi (dev) işlemler (OPS) ile tümleştiren yazılım geliştirme yöntemledir. Bu sistem, iş hedeflerine göre hizalamadaki yeni özellikleri, güncelleştirmeleri ve düzeltmeleri teslim edebilir. Bu metodolojide, hedeflere, kullanım düzenlerine ve müşteri geri bildirimlerine göre yeni özellikler tasarlamadan her şey yer alır. sorunları ortaya çıktığında sistemi düzeltmek, kurtarmak ve sağlamlaştırma. Bu metodolojide kolayca tanımlanmış bir bileşen, sürekli tümleştirme (CI)/sürekli teslim (CD) ardışık düzeni. Bir CI/CD işlem hattı, sistemi oluşturmak için derleme, test ve dağıtım içeren bir dizi adım aracılığıyla bilgi, kod ve kaynak alır. Bu makale, bir kurumsal ortamdaki bir işlem hattı içinde laboratuvarları etkin bir şekilde kullanmanın farklı yollarına odaklanır. 

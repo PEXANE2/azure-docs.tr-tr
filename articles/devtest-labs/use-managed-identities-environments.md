@@ -1,22 +1,14 @@
 ---
 title: DevTest Labs 'de ortam oluşturmak için Azure yönetilen kimliklerini kullanma | Microsoft Docs
 description: Azure DevTest Labs 'de laboratuarda ortamları dağıtmak için Azure 'da Yönetilen kimlikler kullanmayı öğrenin.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: spelluru
-ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 4d4df9cab17289eba21caf9d7c88eb37626b3349
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895314"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478884"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Laboratuvar ortamında ortamları dağıtmak için Azure yönetilen kimliklerini kullanma 
 Laboratuvar sahibi olarak, bir laboratuvarda ortamları dağıtmak için yönetilen bir kimlik kullanabilirsiniz. Bu özellik, ortamda Anahtar Kasası, paylaşılan görüntü galerileri ve ortamın kaynak grubu dışındaki ağlar gibi Azure kaynaklarına başvuru içeren veya bu kaynaklara sahip olan senaryolarda faydalıdır. Bu ortamın kaynak grubuyla sınırlı olmayan korumalı alan ortamları oluşturulmasına olanak sağlar.

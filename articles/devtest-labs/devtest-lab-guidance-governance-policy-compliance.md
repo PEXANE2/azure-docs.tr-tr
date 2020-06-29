@@ -1,24 +1,15 @@
 ---
 title: Azure DevTest Labs Şirket ilkesi ve uyumluluğu
 description: Bu makalede, Azure DevTest Labs altyapısı için Şirket ilkesi ve uyumluluğunu yöneten yönergeler sunulmaktadır.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896889"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480941"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs altyapısını idare edin-Şirket ilkesi ve uyumluluğu
 Bu makalede, Azure DevTest Labs altyapısı için Şirket ilkesi ve uyumluluğunu yöneten yönergeler sunulmaktadır. 

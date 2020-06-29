@@ -17,7 +17,7 @@ ms.locfileid: "67188574"
 
     ![Cihaz Seç](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
-2. **Cihaz ayarları** > **cihaz güncelleştirmeleri**' ne gidin.
+2. **Cihaz ayarları**  >  **cihaz güncelleştirmeleri**' ne gidin.
 
     ![Cihaz güncelleştirmeleri ' ne tıklayın](./media/storsimple-8000-install-update4-via-portal/update2.png)
 

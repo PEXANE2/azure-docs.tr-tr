@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06e197a6e445c7dc1179be696318905f2132ee36
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77085856"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477745"
 ---
 # <a name="configure-keychain"></a>Anahtarlık yapılandırma
 
@@ -30,21 +30,21 @@ Bu makalede, MSAL 'in önbelleğe alınmış belirteçleri iOS ve macOS anahtarl
 
 ### <a name="ios"></a>iOS
 
-İOS üzerinde MSAL, `com.microsoft.adalcache` varsayılan olarak erişim grubunu kullanır. Bu, hem MSAL hem de Azure AD kimlik doğrulama kitaplığı (ADAL) SDK 'Ları tarafından kullanılan paylaşılan erişim grubudur ve aynı yayımcıdan gelen birden çok uygulama arasında en iyi çoklu oturum açma (SSO) deneyimini sağlar.
+İOS üzerinde MSAL, `com.microsoft.adalcache` Varsayılan olarak erişim grubunu kullanır. Bu, hem MSAL hem de Azure AD kimlik doğrulama kitaplığı (ADAL) SDK 'Ları tarafından kullanılan paylaşılan erişim grubudur ve aynı yayımcıdan gelen birden çok uygulama arasında en iyi çoklu oturum açma (SSO) deneyimini sağlar.
 
-İOS 'ta, `com.microsoft.adalcache` Anahtarlık grubunu, **proje ayarları** > **özellikleri** > **Anahtarlık paylaşımı** altındaki Xcode 'da uygulamanızın yetkilendirenlerine ekleyin
+İOS 'ta, `com.microsoft.adalcache` Anahtarlık grubunu, **proje ayarları**  >  **özellikleri**  >  **Anahtarlık paylaşımı** altındaki Xcode 'da uygulamanızın yetkilendirenlerine ekleyin
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>Mac OS
 
-MacOS on MSAL, `com.microsoft.identity.universalstorage` varsayılan olarak erişim grubunu kullanır.
+MacOS on MSAL, `com.microsoft.identity.universalstorage` Varsayılan olarak erişim grubunu kullanır.
 
-MacOS anahtar zinciri sınırlamaları nedeniyle MSAL, macOS 10,14 ve önceki sürümlerde Anahtarlık erişim grubu özniteliğine (bkz. `access group` [Ksecattraccessgroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) doğrudan çevrilmez. Ancak, aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulamanın sessiz SSO 'ya sahip olduğundan emin olarak SSO perspektifinden aynı şekilde davranır.
+MacOS anahtar zinciri sınırlamaları nedeniyle MSAL, `access group` macos 10,14 ve önceki sürümlerde Anahtarlık erişim grubu özniteliğine (bkz. [Ksecattraccessgroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) doğrudan çevrilmez. Ancak, aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulamanın sessiz SSO 'ya sahip olduğundan emin olarak SSO perspektifinden aynı şekilde davranır.
 
 MacOS 10,15 ve sonraki sürümlerinde (macOS Catalina), MSAL, iOS 'a benzer şekilde sessiz SSO elde etmek için Anahtarlık erişim grubu özniteliğini kullanır.
 
 ## <a name="custom-keychain-access-group"></a>Özel Anahtarlık erişim grubu
 
-Farklı bir Anahtarlık erişim grubu kullanmak istiyorsanız, oluşturma `MSALPublicClientApplicationConfig` `MSALPublicClientApplication`işleminden önce oluşturma sırasında özel grubunuzu şu şekilde geçirebilirsiniz:
+Farklı bir Anahtarlık erişim grubu kullanmak istiyorsanız, oluşturma işleminden önce oluşturma sırasında özel grubunuzu `MSALPublicClientApplicationConfig` `MSALPublicClientApplication` Şu şekilde geçirebilirsiniz:
 
 # <a name="objective-c"></a>[Objective-C](#tab/objc)
 

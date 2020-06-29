@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 18e1ab1d01394d585cfb06ced8c5fbac04114177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431962"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476776"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -28,7 +28,7 @@ Azure Key Vault hakkında daha fazla genel bilgi için bkz. [Key Vault nedir](ov
 
 ## <a name="public-previews"></a>Genel önizlemeler
 
-Düzenli olarak, yeni bir Key Vault özelliğinin genel önizlemesini yayınlarız. Bunları deneyin ve geri bildirim e-posta adresi ile azurekeyvault@microsoft.comdüşüncelerinizi öğrenmemizi sağlayın.
+Düzenli olarak, yeni bir Key Vault özelliğinin genel önizlemesini yayınlarız. Bunları deneyin ve azurekeyvault@microsoft.com geri bildirim e-posta adresi ile düşüncelerinizi öğrenmemizi sağlayın.
 
 ## <a name="creating-and-managing-key-vaults"></a>Anahtar kasaları oluşturma ve yönetme
 
@@ -43,7 +43,7 @@ Anahtar kasaınızdaki anahtarlar, gizlilikler veya sertifikalarla çalışmadan
 - [Azure bağlantı noktasıyla Anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-portal.md)
 - [Python ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-python.md)
 - [Java ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-java.md)
-- [Node. js ile anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-node.md)
+- [Node.jsanahtarla anahtar kasaları oluşturma ve yönetme](../secrets/quick-create-node.md)
 - [.NET ile anahtar kasaları oluşturma ve yönetme (v4 SDK)](../secrets/quick-create-net.md)
 - [Bir Anahtar Kasası oluşturma ve bir Azure Resource Manager şablonu aracılığıyla gizli dizi ekleme](../secrets/quick-create-template.md)
 - [REST ile anahtar kasaları oluşturma ve yönetme](/rest/api/keyvault/)
@@ -73,9 +73,9 @@ Key Vault kaynaklarınızın tamamına REST arabiriminden erişilebilir. Kasalar
 
 #### <a name="nodejs"></a>Node.js
 
-Node. js ' de, Key Vault yönetim API 'SI ve Key Vault nesne API 'SI ayrıdır. Aşağıdaki genel bakış makalesi, her ikisine de erişmenizi sağlar. 
+Node.js, Key Vault yönetim API 'SI ve Key Vault nesne API 'SI ayrıdır. Aşağıdaki genel bakış makalesi, her ikisine de erişmenizi sağlar. 
 
-[Node. js için Azure Key Vault modüller](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Node.jsiçin Azure Key Vault modüller](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
@@ -106,7 +106,6 @@ Aşağıdaki makaleler ve senaryolar Azure Key Vault çalışmak için göreve �
 - [Dağıtım sırasında güvenli değerleri (parolalar](../../azure-resource-manager/templates/key-vault-parameter.md) gibi) geçirme-dağıtım sırasında bir parametre olarak güvenli bir değer (parola gibi) iletmeniz gerektiğinde, bu değeri bir Azure Key Vault gizli olarak saklayabilir ve diğer kaynak yöneticisi şablonlarındaki değere başvurabilirsiniz.
 - [SQL Server ile Genişletilebilir anahtar yönetimi için Key Vault kullanma](https://msdn.microsoft.com/library/dn198405.aspx) -Azure Key Vault için SQL Server Bağlayıcısı, SQL Server ve SQL-ın-a-VM ' y i, uygulamalar için şifreleme anahtarlarını korumak Için Genişletilebilir anahtar YÖNETIMI (ekm) sağlayıcısı olarak Azure Key Vault hizmetinden faydalanabilir. Saydam Veri Şifrelemesi, yedekleme şifrelemesi ve sütun düzeyinde şifreleme.
 - [Key Vault 'Ten sanal makinelere sertifika dağıtma](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) -Azure 'da VM 'de çalışan bir bulut uygulaması, bir sertifikaya ihtiyaç duyuyor. Bu sertifikayı bugün bu sanal makineye nasıl alırsınız?
-- [Uçtan uca anahtar döndürme ve denetleme ile Key Vault ayarlama](../secrets/key-rotation-log-monitoring.md) -bu, Azure Key Vault ile anahtar döndürmeyi ve denetlemeyi nasıl ayarlayacağınızı açıklar.
 - [Key Vault aracılığıyla Azure Web App sertifikası dağıtmak]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) , [App Service sertifikası](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) teklifin bir parçası olarak Key Vault depolanan sertifikaları dağıtmaya yönelik adım adım yönergeler sağlar.
 - [Birçok uygulamaya bir anahtar kasasına erişmek için Izin verme](group-permissions-for-apps.md) Key Vault Access Control Policy en fazla 1024 girişi destekler. Ancak, Azure Active Directory bir güvenlik grubu oluşturabilirsiniz. Tüm ilişkili hizmet sorumlularını bu güvenlik grubuna ekleyin ve Key Vault için bu güvenlik grubuna erişim izni verin.
 - Anahtar kasalarını Azure ile tümleştirmeyle ve kullanmaya yönelik daha fazla göreve özgü rehberlik için bkz. [Ryan Jones ' Azure Resource Manager şablon örnekleri Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

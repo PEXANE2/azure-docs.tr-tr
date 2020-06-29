@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884248"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478017"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Nasıl yapılır: bir uygulama için hizmet koşullarını ve gizlilik bildirimini yapılandırma
 
@@ -41,7 +41,7 @@ Uygulamanızın hizmet koşulları ve gizlilik bildirimi belgeleri için bağlan
 
 | Yönerge     | Açıklama                           |
 |---------------|---------------------------------------|
-| Biçimlendir        | Geçerli URL                             |
+| Biçim        | Geçerli URL                             |
 | Geçerli şemalar | HTTP ve HTTPS<br/>HTTPS önerilir |
 | Uzunluk üst sınırı    | 2048 karakter                       |
 
@@ -96,5 +96,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Bu alanlardan birine atadığınız önceden varolan değerlerin üzerine yazılmamaya dikkat edin: `supportUrl`, ve `marketingUrl``logoUrl`
+> * Bu alanlardan birine atadığınız önceden varolan değerlerin üzerine yazılmamaya dikkat edin: `supportUrl` , `marketingUrl` ve`logoUrl`
 > * Microsoft Graph API yalnızca bir Azure AD hesabıyla oturum açtığınızda işe yarar. Kişisel Microsoft hesapları desteklenmez.

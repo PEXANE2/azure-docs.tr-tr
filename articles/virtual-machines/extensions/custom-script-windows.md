@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220951"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478493"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -66,6 +66,7 @@ Betiğinizin yerel bir sunucu üzerinde olması, ek güvenlik duvarı ve ağ gü
 * Özel Betik uzantısı, proxy sunucularını yerel olarak desteklemez, ancak, komut dosyanız içinde, *kıvrımlı* gibi ara sunucuları destekleyen bir dosya aktarım aracı kullanabilirsiniz.
 * Betiğinizin veya komutlarınızın kullandığı varsayılan olmayan dizin konumlarına dikkat edin ve bu durumu işlemek için bir mantık oluşturun.
 * Özel Betik uzantısı LocalSystem hesabı altında çalışır
+* *StorageAccountName* ve *storageaccountkey* özelliklerini kullanmayı planlıyorsanız, bu özelliklerin *protectedsettings*'de birlikte bulunması gerekir.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
@@ -128,7 +129,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 | typeHandlerVersion | 1.10 | int |
 | Dosya URI 'leri (ör.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | zaman damgası (ör.) | 123456789 | 32 bit tamsayı |
-| commandToExecute (ör.) | PowerShell-ExecutionPolicy Kısıtlamasız-dosya configure-Music-App. ps1 | string |
+| commandToExecute (ör.) | PowerShell-ExecutionPolicy Kısıtlamasız-dosya configure-music-app.ps1 | string |
 | storageAccountName (ör.) | örnek storageacct | string |
 | storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
 | Managedıdentity (ör.) | {} veya {"ClientID": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} veya {"ObjectID": "12dd289c-0583-46e5-B9B4-115d5c19ef4b"} | JSON nesnesi |

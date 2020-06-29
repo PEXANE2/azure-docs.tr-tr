@@ -15,7 +15,7 @@ ms.locfileid: "67188570"
 
 Microsoft Update Kataloğu'ndan yazılım güncelleştirmesi indirmek için aşağıdaki adımları uygulayın.
 
-1. Internet Explorer 'ı başlatın ve adresine [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)gidin.
+1. Internet Explorer 'ı başlatın ve adresine gidin [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 2. Microsoft Update Kataloğu’nu bu bilgisayarda ilk kez kullanıyorsanız, sorulduğunda **Yükle**’ye tıklayarak Microsoft Update Kataloğu eklentisini yükleyin.
 
     ![Katalog yükleme](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -104,7 +104,7 @@ Normal mod düzeltmelerini yüklemek ve doğrulamak için aşağıdaki adımlar�
      Güncelleştirme uygulandıktan sonra sürüm numarası değişmezse, düzeltmenin uygulanamadığı anlamına gelir. Bunu görmeniz durumunda daha fazla yardım için lütfen [Microsoft Desteği](../articles/storsimple/storsimple-contact-microsoft-support.md)’ne başvurun.
      
      > [!IMPORTANT]
-     > Sonraki güncelleştirmeyi uygulamadan önce etkin denetleyiciyi `Restart-HcsController` cmdlet üzerinden yeniden başlatmanız gerekir.
+     > Sonraki güncelleştirmeyi uygulamadan önce etkin denetleyiciyi cmdlet üzerinden yeniden başlatmanız gerekir `Restart-HcsController` .
      
 7. _Firstorderupdate_ klasörünüze indirilen CIS/MDS aracısını yüklemek için 3-5 arasındaki adımları yineleyin. 
 8. İkinci sipariş güncelleştirmelerini yüklemek için 3-5 aralığındaki adımları yineleyin. **İkinci sipariş güncelleştirmeleri için, yalnızca çalıştıran `Start-HcsHotfix cmdlet` ve ikinci sıra güncelleştirmelerinin bulunduğu klasöre işaret eden birden çok güncelleştirme yüklenebilir. Cmdlet 'i, klasöründe bulunan tüm güncelleştirmeleri yürütür.** Bir güncelleştirme zaten yüklüyse, güncelleştirme mantığı bunu saptar ve ilgili güncelleştirmeyi uygulamaz. 

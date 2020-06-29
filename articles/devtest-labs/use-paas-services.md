@@ -1,23 +1,14 @@
 ---
 title: Azure DevTest Labs 'de hizmet olarak platform (PaaS) hizmetlerini kullanın
 description: Azure DevTest Labs ' de hizmet olarak platform (pass) hizmetlerini nasıl kullanacağınızı öğrenin.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 88bbf921fedae4bcdba2b6386ce6e08105206cd2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895300"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478748"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs 'de hizmet olarak platform (PaaS) hizmetlerini kullanın
 PaaS, ortam özelliği aracılığıyla DevTest Labs 'de desteklenir. DevTest Labs içindeki ortamlar, bir git deposundaki önceden yapılandırılmış Azure Resource Manager şablonları tarafından desteklenir. Ortamlar PaaS ve IaaS kaynaklarını içerebilir. Bunlar, birlikte çalışmak üzere özelleştirilmiş sanal makineler, veritabanları, sanal ağlar ve Web uygulamaları gibi Azure kaynaklarını içerebilen karmaşık sistemler oluşturmanıza imkan tanır. Bu şablonlar, kaynak kodu denetimi kullanılarak ortamların tutarlı dağıtım ve gelişmiş yönetimine olanak tanır. 

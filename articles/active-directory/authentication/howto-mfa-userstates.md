@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ea97d7a2aa5fdc18d11e952eafe65b167b3397
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483915"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476844"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Oturum açma olaylarının güvenliğini sağlamak için kullanıcı başına Azure Multi-Factor Authentication’ı etkinleştirme
 
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication Kullanıcı hesapları aşağıdaki üç farkl
 | Durum | Açıklama | Etkilenen tarayıcı olmayan uygulamalar | Etkilenen tarayıcı uygulamaları | Modern kimlik doğrulaması etkilendi |
 |:---:| --- |:---:|:--:|:--:|
 | Devre dışı | Azure Multi-Factor Authentication 'de kayıtlı olan yeni bir kullanıcının varsayılan durumu. | Hayır | Hayır | Hayır |
-| Etkin | Kullanıcı Azure Multi-Factor Authentication kaydettirildi, ancak kaydolmadı. Bir sonraki oturum açışlarında kaydolmak için bir istem alırlar. | Hayır.  Kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra Azure Multi-Factor Authentication kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra Azure Multi-Factor Authentication kaydı gereklidir. |
+| Etkin | Kullanıcı Azure Multi-Factor Authentication kaydedildi, ancak kimlik doğrulama yöntemleri kaydedilmemiş. Bir sonraki oturum açışlarında kaydolmak için bir istem alırlar. | Hayır.  Kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra Azure Multi-Factor Authentication kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra Azure Multi-Factor Authentication kaydı gereklidir. |
 | Uygulandı | Kullanıcı kaydedildi ve Azure Multi-Factor Authentication kayıt işlemini tamamladı. | Evet. Uygulamalar uygulama parolaları gerektirir. | Evet. Oturum açmada Azure Multi-Factor Authentication gereklidir. | Evet. Oturum açmada Azure Multi-Factor Authentication gereklidir. |
 
 Bir kullanıcının durumu, yöneticinin Azure Multi-Factor Authentication 'e kaydolduğunu ve kayıt işleminin tamamlanıp tamamlanmadığını gösterir.

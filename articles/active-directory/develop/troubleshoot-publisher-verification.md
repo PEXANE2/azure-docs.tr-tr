@@ -6,20 +6,20 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: cf886b7b43280e542f1941e7c0edb570868525d9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dcdce6ee6683c5770f97f5f3dc20e1c9b409ead0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598181"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477048"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>Yayımcı doğrulaması sorunlarını giderme (Önizleme)
+# <a name="troubleshoot-publisher-verification-preview"></a>Yayımcı doğrulaması ile ilgili sorunları giderme (önizleme)
 İşlem tamamlanamıyorsanız veya [yayımcı doğrulaması (Önizleme)](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen bir davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
 
 1. [Gereksinimleri](publisher-verification-overview.md#requirements) gözden geçirin ve tümünün karşılandıklarından emin olun.

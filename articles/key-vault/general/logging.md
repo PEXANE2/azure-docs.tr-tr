@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2ac68f1cab6958c0fc79fa6518c61417e75c0a70
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211402"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480618"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -263,7 +263,7 @@ Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Bir 
 
 Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
-| Alan adı | Description |
+| Alan adı | Açıklama |
 | --- | --- |
 | **ışınızda** |UTC olarak tarih ve saat. |
 | **RESOURCEID** |Azure Resource Manager kaynak KIMLIĞI. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
@@ -289,7 +289,7 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 
 | operationName | REST API komutu |
 | --- | --- |
-| **Kimlik doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
+| **Kimlik Doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
 | **VaultGet** |[Bir anahtar kasası hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Bir anahtar kasası oluşturma veya güncelleştirme](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Bir anahtar kasasını silme](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
@@ -330,5 +330,3 @@ Bunu ayarlama dahil daha fazla bilgi için bkz. [Azure izleyici günlüklerinde 
 Programlama başvuruları için bkz. [Azure Anahtar Kasası geliştirici kılavuzu](developers-guide.md).
 
 Azure Key Vault için Azure PowerShell 1,0 cmdlet 'lerinin bir listesi için bkz. [Azure Key Vault cmdlet 'leri](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
-
-Azure Key Vault ile anahtar döndürme ve günlük denetimi hakkında bir öğretici için bkz. [uçtan uca anahtar döndürme ve denetleme ile Key Vault ayarlama](../secrets/key-rotation-log-monitoring.md).

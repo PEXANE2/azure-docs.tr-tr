@@ -1,24 +1,14 @@
 ---
 title: Azure DevTest Labs için zorunlu yapıtları belirtin | Microsoft Docs
 description: Laboratuvardaki sanal makinelere (VM 'Ler) Kullanıcı tarafından seçilen yapıtları yüklemeden önce yüklenmesi gereken zorunlu yapıtları belirtmeyi öğrenin.
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: spelluru
-ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897561"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480312"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs ' de laboratuvarınız için zorunlu yapıtlar belirtin
 Laboratuvarın sahibi olarak, laboratuvarda oluşturulan her makineye uygulanan zorunlu yapıtları belirtebilirsiniz. Laboratuvarınızda her makinenin kurumsal ağınıza bağlanmasını istediğiniz bir senaryo düşünün. Bu durumda, makinenin kurumsal etki alanına bağlı olduğundan emin olmak için her laboratuvar kullanıcısının sanal makine oluşturma sırasında bir etki alanına katılması yapıtı eklemesi gerekir. Diğer bir deyişle, laboratuvar kullanıcılarının makinenize zorunlu yapıtlar uygulamayı unutmaları durumunda bir makineyi yeniden oluşturması gerekir. Laboratuvar sahibi olarak, etki alanına katılması yapıtı, laboratuvarınızda zorunlu bir yapıt olarak yaparsınız. Bu adım, her makinenin kurumsal ağa bağlı olduğundan ve laboratuvar kullanıcılarınız için zaman ve çaba tasarrufu sağlar.
