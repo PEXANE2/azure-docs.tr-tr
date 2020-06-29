@@ -3,15 +3,15 @@ title: Avere vFXT Denetim Masası 'na erişin-Azure
 description: Avere vFXT 'yi yapılandırmak için vFXT kümesine ve tarayıcı tabanlı avere denetim masasına bağlanma
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75416142"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505622"
 ---
 # <a name="access-the-vfxt-cluster"></a>vFXT kümesine erişme
 
@@ -35,7 +35,7 @@ Linux tabanlı veya Windows 10 istemci sisteminin komut satırından bir SSH tü
 
 Bu formla bir SSH tünel oluşturma komutu kullanın:
 
-SSH-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*\@*controller_public_IP*
+SSH-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username* \@ *controller_public_IP*
 
 Bu komut, küme denetleyicisinin IP adresi aracılığıyla kümenin yönetim IP adresine bağlanır.
 
@@ -51,7 +51,7 @@ Küme oluşturmak için SSH ortak anahtarınızı kullandıysanız ve eşleşen 
 
 Bu adım, vFXT kümesindeki yapılandırma yardımcı programına bağlanmak için bir Web tarayıcısı kullanır.
 
-* SSH tüneli bağlantısı için Web tarayıcınızı açın ve adresine `https://127.0.0.1:8443`gidin.
+* SSH tüneli bağlantısı için Web tarayıcınızı açın ve adresine gidin `https://127.0.0.1:8443` .
 
   Tüneli oluştururken küme IP adresine bağlanırsınız, bu nedenle yalnızca, tarayıcıda localhost IP adresini kullanmanız gerekir. 8443 dışında bir yerel bağlantı noktası kullandıysanız, bunun yerine bağlantı noktası numaranızı kullanın.
 
@@ -59,7 +59,7 @@ Bu adım, vFXT kümesindeki yapılandırma yardımcı programına bağlanmak iç
 
 Tarayıcınıza bağlı olarak **Gelişmiş** ' e tıklamanız ve sayfaya devam etmek için güvenli olduğunu doğrulamanız gerekebilir.
 
-Kümeyi oluştururken belirttiğiniz `admin` Kullanıcı adını ve yönetici parolasını girin.
+`admin`Kümeyi oluştururken belirttiğiniz kullanıcı adını ve yönetici parolasını girin.
 
 ![Avere oturum açma sayfasının Kullanıcı adı ' admin' ve parola ile doldurulmuş ekran görüntüsü](media/avere-vfxt-gui-login.png)
 

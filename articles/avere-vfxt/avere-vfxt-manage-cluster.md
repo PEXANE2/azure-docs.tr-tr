@@ -3,15 +3,15 @@ title: Avere vFXT kümesini yönetme-Azure
 description: Avere kümesini yönetme-düğüm ekleme veya kaldırma, vFXT kümesini yeniden başlatma, durdurma veya yok etme
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153488"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505503"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT kümesini yönetme
 
@@ -77,7 +77,7 @@ Bir küme kapanmaya başladığında, durum iletilerini **Pano** sekmesine nakle
 
 vfxt.py, küme oluşturma ve yönetimi için bir komut satırı aracıdır.
 
-vfxt.py, küme denetleyicisi sanal makinesine önceden yüklenir. Başka bir sisteme yüklemek isterseniz, adresindeki <https://github.com/Azure/AvereSDK>belgelere başvurun.
+vfxt.py, küme denetleyicisi sanal makinesine önceden yüklenir. Başka bir sisteme yüklemek isterseniz, adresindeki belgelere başvurun <https://github.com/Azure/AvereSDK> .
 
 Vfxt.py betiği şu küme yönetim görevleri için kullanılabilir:
 
@@ -91,7 +91,7 @@ GitHub 'da tamamı vfxt.py kullanım kılavuzu mevcuttur: [vfxt.py Ile bulut kü
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Vfxt.py ile küme düğümleri ekleme
 
-Küme düğümü eklemek için örnek bir komut betiği, küme denetleyicisine dahildir. Denetleyiciyi ``./add-nodes`` bulun ve küme bilgileriniz ile özelleştirmek için düzenleyiciyi bir düzenleyicide açın.
+Küme düğümü eklemek için örnek bir komut betiği, küme denetleyicisine dahildir. ``./add-nodes``Denetleyiciyi bulun ve küme bilgileriniz ile özelleştirmek için düzenleyiciyi bir düzenleyicide açın.
 
 Bu komutu kullanmak için kümenin çalışıyor olması gerekir.
 
@@ -141,7 +141,7 @@ Küme durdurulduğu için, küme düğümlerini belirtmek üzere örnek tanımla
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-Değiştirilen verileri ``--quick-destroy`` küme önbelleğinden kaydetmek istemiyorsanız seçeneği kullanılabilir.
+``--quick-destroy``Değiştirilen verileri küme önbelleğinden kaydetmek istemiyorsanız seçeneği kullanılabilir.
 
 Ek bilgi için [vfxt.py kullanım kılavuzunu](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) okuyun.
 
@@ -181,7 +181,7 @@ Bu yöntemi, güvenli bir şekilde kapatıldıktan sonra küme düğümlerini ka
 ### <a name="destroy-the-cluster-from-the-azure-portal"></a>Azure portal kümeyi yok edin
 
 > [!NOTE]
-> Önbellekte kalan tüm istemci değişikliklerinin arka uç depolamaya yazılmasını istiyorsanız, Azure portal düğüm örneklerini kaldırmadan önce vfxt.py `--destroy` seçeneğini kullanın veya avere Denetim Masası 'nı kullanarak kümeyi düzgün bir şekilde kapatın.
+> Önbellekte kalan tüm istemci değişikliklerinin arka uç depolamaya yazılmasını istiyorsanız, `--destroy` Azure Portal düğüm örneklerini kaldırmadan önce vfxt.py seçeneğini kullanın veya avere Denetim Masası 'nı kullanarak kümeyi düzgün bir şekilde kapatın.
 
 Düğüm örneklerini Azure portal silerek kalıcı olarak yok edebilirsiniz. Yukarıda açıklanan şekilde tek seferde silebilir veya **sanal makineler** sayfasını kullanarak küme VM 'lerinin tümünü bulabilir, bunları onay kutuları ile seçebilir ve tümünü tek bir eylemde kaldırmak için **Sil** düğmesine tıklayabilirsiniz.
 

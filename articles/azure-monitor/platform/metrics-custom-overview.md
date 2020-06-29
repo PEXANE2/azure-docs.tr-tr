@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299834"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506982"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
@@ -74,7 +74,7 @@ Azure Izleyici 'ye gönderilen her veri noktasının bir zaman damgasıyla işar
 ### <a name="namespace"></a>Ad Alanı
 Ad alanları, benzer ölçümleri birlikte sınıflandırmanız veya gruplandırmanız için bir yoldur. Ad alanlarını kullanarak, farklı Öngörüler veya performans göstergeleri toplayabilecek ölçüm grupları arasında yalıtım elde edebilirsiniz. Örneğin, uygulamanızı profilini oluşturan bellek kullanım ölçümlerini izleyen **contosomemoryölçümler** adlı bir ad alanı olabilir. **Contosoapptransaction** adlı başka bir ad alanı, uygulamanızdaki Kullanıcı işlemleri hakkında tüm ölçümleri izleyebilir.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Adı
 **Ad** , bildirilen ölçümün adıdır. Genellikle, ne ölçülerin tanımlanmasına yardımcı olmak için ad açıklayıcı bir yoldur. Bir örnek, belirli bir VM 'de kullanılan bellek baytlarının sayısını ölçen bir ölçümdür. **Kullanılmakta olan bellek baytları**gibi bir ölçüm adı olabilir.
 
 ### <a name="dimension-keys"></a>Boyut anahtarları
@@ -86,7 +86,7 @@ Boyutlar isteğe bağlıdır, tüm ölçümler boyutlara sahip olamaz. Özel bir
 
 * Ölçüm adı, **kullanılmakta olan bellek baytı**olacaktır.
 * Boyut anahtarı **işlem**olurdu.
-* Boyut değeri **Contosoapp. exe**olacaktır.
+* Boyut değeri **ContosoApp.exe**.
 
 Ölçüm değeri yayımlarken, her boyut anahtarı için yalnızca tek bir boyut değeri belirtebilirsiniz. VM 'de birden çok işlem için aynı bellek kullanımını topluyorsanız, bu zaman damgası için birden çok ölçüm değeri rapor edebilirsiniz. Her ölçüm değeri, **işlem** boyutu anahtarı için farklı bir boyut değeri belirler.
 Boyutlar isteğe bağlıdır, tüm ölçümler boyutlara sahip olamaz. Ölçüm gönderisi boyut anahtarlarını tanımlıyorsa, karşılık gelen boyut değerleri zorunludur.
@@ -189,28 +189,28 @@ Genel Önizleme sırasında, özel ölçümleri yayımlama özelliği yalnızca 
 |Azure bölgesi |Bölgesel uç nokta ön eki|
 |---|---|
 | **ABD ve Kanada** | |
-|Orta Batı ABD | https: \/ /westcentralus.Monitoring.Azure.com/ |
-|Batı ABD 2       | https: \/ /westus2.Monitoring.Azure.com/ |
+|Orta Batı ABD | https: \/ /westcentralus.Monitoring.Azure.com |
+|Batı ABD 2       | https: \/ /westus2.Monitoring.Azure.com |
 |Orta Kuzey ABD | https: \/ /northcentralus.Monitoring.Azure.com
-|Orta Güney ABD| https: \/ /southcentralus.Monitoring.Azure.com/ |
+|Orta Güney ABD| https: \/ /southcentralus.Monitoring.Azure.com |
 |Orta ABD      | https: \/ /centralus.Monitoring.Azure.com |
-|Orta Kanada | https: \/ /canadacentral.Monitoring.Azure.Comc
-|Doğu ABD| https: \/ /eastus.Monitoring.Azure.com/ |
-|Doğu ABD 2 | https: \/ /eastus2.Monitoring.Azure.com/
+|Orta Kanada | https: \/ /canadacentral.Monitoring.Azure.com |
+|Doğu ABD| https: \/ /eastus.Monitoring.Azure.com |
+|Doğu ABD 2 | https: \/ /eastus2.Monitoring.Azure.com |
 | **Avrupa** | |
-|Kuzey Avrupa    | https: \/ /northeurope.Monitoring.Azure.com/ |
-|Batı Avrupa     | https: \/ /westeurope.Monitoring.Azure.com/ |
+|Kuzey Avrupa    | https: \/ /northeurope.Monitoring.Azure.com |
+|Batı Avrupa     | https: \/ /westeurope.Monitoring.Azure.com |
 |Güney Birleşik Krallık | https: \/ /uksouth.Monitoring.Azure.com
 |Orta Fransa | https: \/ /francecentral.Monitoring.Azure.com |
 | **Afrika** | |
-|Güney Afrika Kuzey | https: \/ /southafricanorth.Monitoring.Azure.com
+|Güney Afrika Kuzey | https: \/ /southafricanorth.Monitoring.Azure.com |
 | **Asya** | |
-|Orta Hindistan | https: \/ /centralindia.Monitoring.Azure.com
-|Doğu Avustralya | https: \/ /australiaeast.Monitoring.Azure.com
-|Doğu Japonya | https: \/ /japaneast.Monitoring.Azure.com
+|Orta Hindistan | https: \/ /centralindia.Monitoring.Azure.com |
+|Doğu Avustralya | https: \/ /australiaeast.Monitoring.Azure.com |
+|Doğu Japonya | https: \/ /japaneast.Monitoring.Azure.com |
 |Güneydoğu Asya  | https: \/ /SoutheastAsia.Monitoring.Azure.com |
-|Doğu Asya | https: \/ /eastasia.Monitoring.Azure.com
-|Güney Kore - Orta   | https: \/ /koreacentral.Monitoring.Azure.com
+|Doğu Asya | https: \/ /eastasia.Monitoring.Azure.com |
+|Güney Kore - Orta   | https: \/ /koreacentral.Monitoring.Azure.com |
 
 ## <a name="latency-and-storage-retention"></a>Gecikme süresi ve depolama saklama
 
@@ -223,7 +223,7 @@ Azure Izleyici, özel ölçümler üzerinde aşağıdaki kullanım sınırların
 
 |Kategori|Sınır|
 |---|---|
-|Etkin zaman serisi/abonelikler/bölge|50.000|
+|Etkin zaman serisi/abonelikler/bölge|50,000|
 |Ölçüm başına Boyut anahtarları|10|
 |Ölçüm ad alanları, ölçüm adları, Boyut anahtarları ve boyut değerleri için dize uzunluğu|256 karakter|
 
@@ -231,7 +231,7 @@ Etkin bir zaman serisi, son 12 saat içinde yayımlanmış ölçüm değerleri o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Farklı hizmetlerden özel ölçümler kullanın: 
- - [Sanal makineler](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Sanal makine ölçek kümesi](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure sanal makineleri (klasik)](collect-custom-metrics-guestos-vm-classic.md)
  - [Telegraf aracısını kullanan Linux sanal makinesi](collect-custom-metrics-linux-telegraf.md)

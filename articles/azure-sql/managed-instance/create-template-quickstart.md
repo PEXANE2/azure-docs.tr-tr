@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/22/2020
-ms.openlocfilehash: 7765788e9bd0803cd806ef0980991429dbe30af9
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: eed333b5e6a83b140df515fc02767b8a7c7a63c7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413850"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506651"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SQL yönetilen örneği oluşturma
 
-Bu hızlı başlangıç, Azure SQL yönetilen örneği ve vNet oluşturmak için ARM şablonu dağıtma işlemine odaklanmaktadır. [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md) , SQL Server veritabanı altyapısı ile neredeyse %100 Özellik eşliği olan akıllı, tam olarak yönetilen, ölçeklenebilir bir bulut veritabanıdır.
+Bu hızlı başlangıç, Azure SQL yönetilen örneği ve vNet oluşturmak için bir Azure Resource Manager şablonu dağıtma işlemine odaklanır (ARM şablonu). [Azure SQL yönetilen örneği](sql-managed-instance-paas-overview.md) , SQL Server veritabanı altyapısı ile neredeyse %100 Özellik eşliği olan akıllı, tam olarak yönetilen, ölçeklenebilir bir bulut veritabanıdır.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 

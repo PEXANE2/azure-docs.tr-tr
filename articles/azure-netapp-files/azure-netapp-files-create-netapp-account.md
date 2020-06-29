@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70012579"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483678"
 ---
 # <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
 NetApp hesabı oluşturmak, kapasite havuzu ayarlamanıza ve ardından birim oluşturmanıza olanak tanır. Yeni NetApp hesabını oluşturmak için Azure NetApp Files dikey penceresini kullanırsınız.
@@ -54,7 +54,7 @@ Ayrıca, NetApp kaynak sağlayıcısını kullanmak için aboneliğinizi kaydetm
      ![Yeni NetApp hesabı](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. **Oluştur**' a tıklayın.     
+5. **Oluştur**'a tıklayın.     
    Oluşturduğunuz NetApp hesabı artık Azure NetApp Files dikey penceresinde gösterilir. 
 
 > [!NOTE] 

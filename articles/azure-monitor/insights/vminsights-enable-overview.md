@@ -5,26 +5,32 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/29/2020
-ms.openlocfilehash: 87d8b26110eba647975de577e9d7b5b0ed138266
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.date: 06/25/2020
+ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84423981"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507084"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
-Bu makalede, sanal makinelerinizde, sistem durumunu ve performansı izlemek için VM'ler için Azure İzleyici etkinleştirme seçeneklerine genel bakış sunulmaktadır. Azure sanal makineleri (VM) ve sanal makine ölçek kümeleri, şirket içi VM 'Ler veya başka bir bulut ortamında barındırılan VM 'Ler üzerinde çalışan uygulama bağımlılıklarını bulun.  
+Bu makalede, aşağıdakilerin sistem durumunu ve performansını izlemeye VM'ler için Azure İzleyici olanak tanımak için kullanılabilen seçeneklere genel bir bakış sunulmaktadır:
+
+- Azure sanal makineleri 
+- Azure sanal makine ölçek kümeleri
+- Azure Arc ile bağlantılı karma sanal makineler
+- Şirket içi sanal makineler
+- Başka bir bulut ortamında barındırılan sanal makineler.  
 
 VM'ler için Azure İzleyici ayarlamak için:
 
-* Doğrudan VM veya sanal makine ölçek kümesinden **Öngörüler** seçerek tek BIR Azure VM 'sini veya sanal makine ölçek kümesini etkinleştirin.
-* Azure Ilkesi 'ni kullanarak iki veya daha fazla Azure VM ve sanal makine ölçek kümesini etkinleştirin. Bu yöntem, mevcut ve yeni VM 'lerde ve ölçek kümelerinde gerekli bağımlılıkların yüklü ve düzgün şekilde yapılandırıldığından emin olmanızı sağlar. Uyumsuz VM 'Ler ve ölçek kümeleri raporlanır, bu sayede onları etkinleştirip etkinleştirmemeye karar verebilirsiniz.
-* PowerShell kullanarak, belirtilen bir abonelik veya kaynak grubu genelinde iki veya daha fazla Azure VM veya sanal makine ölçek kümesi etkinleştirin.
+* Azure portal doğrudan menüsünden **Öngörüler** ' i seçerek tek BIR Azure VM, Azure VMSS veya Azure yay makinesini etkinleştirin.
+* Azure Ilkesi 'ni kullanarak birden fazla Azure VM 'yi, Azure VMSS 'yi veya Azure yay makinelerini etkinleştirin. Bu yöntem, mevcut ve yeni VM 'lerde ve ölçek kümelerinde gerekli bağımlılıkların yüklü ve düzgün şekilde yapılandırıldığından emin olmanızı sağlar. Uyumsuz VM 'Ler ve ölçek kümeleri raporlanır, bu sayede onları etkinleştirip etkinleştirmemeye karar verebilirsiniz.
+* PowerShell kullanarak, belirtilen bir abonelik veya kaynak grubundaki birden fazla Azure VM 'yi, Azure Arc VM 'Leri, Azure VMSS veya Azure yay makinelerini etkinleştirin.
 * Şirket ağınızda veya diğer bulut ortamınızda barındırılan VM 'Leri veya fiziksel bilgisayarları izlemek için VM'ler için Azure İzleyici etkinleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki bölümlerde yer alan bilgileri anladığınızdan emin olun. 
 
@@ -43,6 +49,7 @@ VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalı�
 - Doğu ABD 2
 - Orta ABD
 - Orta Kuzey ABD
+- US Gov az
 - US Gov VA
 - Orta Kanada
 - Güney Birleşik Krallık
@@ -67,15 +74,13 @@ Log Analytics bir çalışma alanınız yoksa, kaynaklardan birini kullanarak bi
 
 Ayrıca, Azure portal tek bir Azure VM veya sanal makine ölçek kümesi için izlemeyi etkinleştirirken bir çalışma alanı oluşturabilirsiniz.
 
-Log Analytics çalışma alanınızda Azure Ilkesi, Azure PowerShell veya Azure Resource Manager şablonları kullanan ölçekli bir senaryo ayarlamak için:
-
-* *Servicemap* ve *InfrastructureInsights* çözümlerini yükler. Bu yüklemeyi, belirtilen bir Azure Resource Manager şablonu kullanarak tamamlayabilirsiniz. Veya Azure portal **Başlarken** sekmesinde, **çalışma alanını Yapılandır**' ı seçin.
-* Log Analytics çalışma alanını performans sayaçlarını toplayacak şekilde yapılandırın.
-
-Çalışma alanınızı ölçekteki senaryoya göre yapılandırmak için aşağıdaki yöntemlerden birini kullanın:
+Azure Ilkesi, Azure PowerShell veya Azure Resource Manager şablonları kullanan ölçekli bir senaryo ayarlamak için, *Vminsıghts* çözümünü yüklemelisiniz. Bunu aşağıdaki yöntemlerden biriyle yapabilirsiniz:
 
 * [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace)kullanın.
 * VM'ler için Azure İzleyici [**Ilkesi kapsamı**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) sayfasında, **çalışma alanını Yapılandır**' ı seçin. 
+
+### <a name="azure-arc-machines"></a>Azure yay makineleri
+VM'ler için Azure İzleyici, Arc uzantı hizmetinin kullanılabildiği bölgelerde Azure Arc etkin sunucuları için kullanılabilir. Kullanıcıların, Arc özellikli sunucularında VM'ler için Azure İzleyici etkinleştirmek için Arc aracısının sürüm 0,9 veya üzeri bir sürümü çalıştırması gerekir.
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
@@ -166,7 +171,7 @@ Karma bir ortamda, bağımlılık aracısını el ile indirip yükleyebilir veya
 
 Aşağıdaki tabloda, bir karma ortamda harita özelliğinin desteklediği bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı kaynak | Destekleniyor | Description |
+| Bağlı kaynak | Destekleniyor | Açıklama |
 |:--|:--|:--|
 | Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../../azure-monitor/platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
 | Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../../azure-monitor/platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
@@ -189,12 +194,12 @@ Log Analytics çalışma alanına erişimi denetleme hakkında daha fazla bilgi 
 
 Bu tabloda açıklanan yöntemlerden birini kullanarak VM'ler için Azure İzleyici etkinleştirin:
 
-| Dağıtım durumu | Yöntem | Description |
+| Dağıtım durumu | Yöntem | Açıklama |
 |------------------|--------|-------------|
-| Tek Azure VM veya sanal makine ölçek kümesi | [VM 'den etkinleştir](vminsights-enable-single-vm.md) | Doğrudan VM veya sanal makine ölçek kümesinden **Öngörüler** seçerek tek BIR Azure VM 'yi etkinleştirebilirsiniz. |
-| Birden çok Azure VM veya sanal makine ölçek kümesi | [Azure Ilkesi aracılığıyla etkinleştir](vminsights-enable-at-scale-policy.md) | Azure Ilkesi ve kullanılabilir ilke tanımlarını kullanarak birden fazla Azure VM 'yi etkinleştirebilirsiniz. |
-| Birden çok Azure VM veya sanal makine ölçek kümesi | [Azure PowerShell veya Azure Resource Manager şablonları aracılığıyla etkinleştir](vminsights-enable-at-scale-powershell.md) | Azure PowerShell veya Azure Resource Manager şablonlarını kullanarak, belirtilen bir abonelik veya kaynak grubu genelinde birden fazla Azure VM veya sanal makine ölçek kümesi etkinleştirebilirsiniz. |
-| Karma bulut | [Karma ortam için etkinleştir](vminsights-enable-hybrid-cloud.md) | Veri merkezinizde veya diğer bulut ortamlarında barındırılan VM 'lere veya fiziksel bilgisayarlara dağıtım yapabilirsiniz. |
+| Tek Azure VM, Azure VMSS veya Azure Arc makinesi | [Portaldan etkinleştir](vminsights-enable-single-vm.md) | Azure portal menüden doğrudan **Öngörüler** ' i seçin. |
+| Birden çok Azure VM, Azure VMSS veya Azure Arc makinesi | [Azure Ilkesi aracılığıyla etkinleştir](vminsights-enable-at-scale-policy.md) | Bir VM veya VMSS oluşturulduğunda otomatik olarak etkinleştirmek için Azure Ilkesini kullanın. |
+| | [Azure PowerShell veya Azure Resource Manager şablonları aracılığıyla etkinleştir](vminsights-enable-at-scale-powershell.md) | Belirtilen bir abonelik veya kaynak grubu genelinde birden çok Azure VM, Azure Arc VM veya Azure VMSS 'yi etkinleştirmek için Azure PowerShell veya Azure Resource Manager şablonlarını kullanın. |
+| Karma bulut | [Karma ortam için etkinleştir](vminsights-enable-hybrid-cloud.md) | Veri merkezinizde veya diğer bulut ortamlarında barındırılan VM 'lere veya fiziksel bilgisayarlara dağıtın. |
 
 ## <a name="management-packs"></a>Yönetim paketleri
 

@@ -1,25 +1,14 @@
 ---
 title: Azure DevTest Labs paylaşılan görüntü kullanarak VM ekleme | Microsoft Docs
 description: Azure DevTest Labs eklenen paylaşılan görüntü galerisinden bir görüntü kullanarak sanal makine (VM) eklemeyi öğrenin
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
-ms.author: spelluru
-ms.openlocfilehash: c13b2c3d00a0ab0af0f7785feae645d907ffdaa3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898818"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483865"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Ekli paylaşılan görüntü galerisinden bir görüntü kullanarak VM ekleme
 Azure DevTest Labs, laboratuvarınızda paylaşılan bir görüntü Galerisi eklemenize ve ardından galerideki görüntüleri laboratuvarda oluşturduğunuz sanal makinelerin temeli olarak kullanmanıza olanak tanır. Laboratuvarınızda paylaşılan görüntü Galerisi 'ni nasıl ekleyeceğinizi öğrenmek için bkz. [paylaşılan görüntü galerisini yapılandırma](configure-shared-image-gallery.md). Bu makalede, ekli paylaşılan görüntü galerisindeki bir görüntüyü temel olarak kullanarak laboratuvara nasıl bir VM ekleyebileceğiniz gösterilmektedir. 

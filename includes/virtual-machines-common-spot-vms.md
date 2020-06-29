@@ -4,15 +4,15 @@ description: dosya dahil etme
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 76af1084626944d8399edd2c7ec5dec92e25f3ed
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378516"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506063"
 ---
 Spot VM 'Lerin kullanılması, önemli bir maliyet tasarruflarından kullanılmamış kapasitemizin avantajlarından yararlanmanızı sağlar. Azure 'un kapasiteyi her zaman yapması gerektiğinde, Azure altyapısı spot VM 'Leri çıkarır. Bu nedenle, spot VM 'Ler toplu işleme işleri, geliştirme/test ortamları, büyük işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilen iş yükleri için mükemmeldir.
 
@@ -21,9 +21,17 @@ Kullanılabilir kapasite miktarı boyut, bölge, günün saati ve daha fazlası 
 
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
 
-VM 'Ler, belirlenen kapasiteye veya en yüksek fiyata göre çıkartılabilir. Sanal makineler için çıkarma ilkesi, çıkarılan VM 'lerinizi durdurulmuş serbest bırakılmış duruma taşırken *serbest bırakma* olarak ayarlanır ve çıkarılan VM 'leri daha sonra yeniden dağıtmanıza olanak tanır. Ancak, spot VM 'Lerin yeniden yerleştirilmesi kullanılabilir spot kapasiteye göre değişir. Serbest bırakılmış VM 'Ler, spot sanal CPU kotanıza göre sayılır ve temel disklerinizin üzerinden ücretlendirilirsiniz. 
+VM 'Ler, belirlenen kapasiteye veya en yüksek fiyata göre çıkartılabilir. Bir spot VM oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme*işlemleri için ayarlayabilirsiniz. 
 
-Kullanıcılar [Azure zamanlanan olaylar](../articles/virtual-machines/linux/scheduled-events.md)aracılığıyla VM içi bildirimler almayı kabul edebilir. Bu, VM 'leriniz çıkarıldıktan sonra herhangi bir işi tamamlamak ve çıkarma öncesi görevleri gerçekleştirmek için 30 saniyelik bir işlem yapmanız durumunda size bildirir. 
+*Serbest bırakma* ILKESI, VM 'nizi durdurulmuş serbest bırakılmış duruma, daha sonra yeniden dağıtmanıza olanak tanır. Ancak, ayırmanın başarılı olacağını garanti etmez. Serbest bırakılmış VM 'Ler kotaıza göre sayılır ve temel diskler için depolama maliyetleri ücretlendirilecektir. 
+
+SANAL makinenizin çıkarıldıktan sonra silinmesini isterseniz, çıkarma ilkesini *silme*olarak ayarlayabilirsiniz. Çıkarılan VM 'Ler temel disklerle birlikte silinir, bu nedenle depolama alanı için ücretlendirilmeye devam edersiniz. 
+
+> [!NOTE]
+>
+> Portal Şu anda `Delete` çıkarma seçeneği olarak desteklememektedir, yalnızca `Delete` POWERSHELL, CLI ve şablonları kullanarak ayarlayabilirsiniz.
+
+[Azure zamanlanan olaylar](../articles/virtual-machines/linux/scheduled-events.md)aracılığıyla VM içi bildirimler almayı tercih edebilirsiniz. Bu, VM 'leriniz çıkarıldıktan sonra herhangi bir işi tamamlamak ve çıkarma öncesi görevleri gerçekleştirmek için 30 saniyelik bir işlem yapmanız durumunda size bildirir. 
 
 
 | Seçenek | Sonuç |
@@ -36,6 +44,7 @@ Kullanıcılar [Azure zamanlanan olaylar](../articles/virtual-machines/linux/sch
 | Çıkarmaya başladıktan sonra, VM 'nin fiyatı en fazla fiyata < durumuna geçer. | VM otomatik olarak yeniden başlatılmaz. VM 'yi kendiniz yeniden başlatabilir ve geçerli fiyattan ücretlendirilir. |
 | En fazla fiyat ayarı`-1` | VM, fiyatlandırma nedenleriyle çıkarılmayacak. En yüksek fiyat, standart VM 'Lerin fiyatına kadar geçerli fiyat olacaktır. Standart fiyat üzerinden hiçbir şekilde ücretlendirilmezsiniz.| 
 | Maksimum fiyatı değiştirme | En yüksek fiyatı değiştirmek için VM 'yi serbest getirmeniz gerekir. VM 'yi serbest bırakın, yeni bir en yüksek fiyat ayarlayın ve ardından VM 'yi güncelleştirin. |
+
 
 ## <a name="limitations"></a>Sınırlamalar
 

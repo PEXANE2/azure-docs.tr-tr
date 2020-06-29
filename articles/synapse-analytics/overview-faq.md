@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: e0f1caf77f0e898b13045e2c840d93f42a5569fc
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609157"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484052"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) sık sorulan sorular
 
@@ -48,6 +48,10 @@ Y: Azure SYNAPSE aşağıdaki yeteneklere sahiptir:
 Y: Azure SYNAPSE Analytics, Azure SQL veri ambarı 'nın veri ambarı çözümü olarak SQL havuzu içeren bir analiz platformuna gelişme hızıdır. Bu platform veri araştırma, alma, dönüştürme, hazırlama ve bir hizmet Analizi katmanını birleştirir.
 
 ## <a name="use-cases"></a>Uygulama alanları
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>S: Azure SYNAPSE 'de yayımlanmış bir yapıtı (veri kümesi, Not defteri, SQL betiği vb.) yeniden adlandırma Nasıl yaparım??
+
+Y: yayımlanmış bir yapıt dosyasını yeniden adlandırmak Için, önce dosyayı kopyalayın ve yeni dosyayı tercih ettiğiniz adla yeniden adlandırın. Yapıtın tüm başvurularını yeni dosya adına el ile güncelleştirmeniz ve eski olanı silmeniz gerekir.
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>S: SYNAPSE SQL havuzu için iyi bir kullanım durumu nedir?
 

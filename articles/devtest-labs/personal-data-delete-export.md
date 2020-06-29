@@ -1,23 +1,14 @@
 ---
 title: Azure DevTest Labs kişisel verileri silme ve dışarı aktarma
 description: Genel Veri Koruma Yönetmeliği (GDPR) kapsamında yükümlülüklerinizi desteklemek için Azure DevLast Labs hizmetinden kişisel verileri silme ve dışarı aktarma hakkında bilgi edinin.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: b59a799b2e2211ee8fd473de2e26a26148777502
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898090"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483525"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs kişisel verileri dışarı aktarma veya silme
 Bu makalede, Azure DevTest Labs hizmetinden kişisel verileri silmek ve dışarı aktarmak için adımlar sağlanmaktadır. 
@@ -160,7 +151,7 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 
 **virtualmachines.csv** aşağıdaki veri sütunlarını içerir:
 
-| Sütun adı | Description |
+| Sütun adı | Açıklama |
 | ----------- | ----------- | 
 | kaynak grubundaki | Laboratuvarın bulunduğu abonelik tanımlayıcısı. |
 | Labuıd | Laboratuvar için benzersiz GUID tanımlayıcısı. |
@@ -169,7 +160,7 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 | ResourceGroupName | VM 'yi içeren kaynak grubunun adı | 
 | ResourceId | Sanal makine için tam kaynak KIMLIĞI. |
 | ResourceUId | VM için GUID |
-| Name | Sanal makine adı. |
+| Adı | Sanal makine adı. |
 | CreatedTime | VM 'nin oluşturulduğu tarih-saat. |
 | DeletedDate | VM 'nin silindiği tarih-saat. Boşsa, silme işlemi henüz gerçekleşmemiştir. |
 | ResourceOwner | VM sahibi. Değer boşsa, tek bir sanal makine olabilir veya bir hizmet sorumlusu tarafından oluşturulur. |
@@ -188,7 +179,7 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 
 **disks.csv** yer alan veri sütunları aşağıda listelenmiştir:
 
-| Sütun adı | Description | 
+| Sütun adı | Açıklama | 
 | ----------- | ----------- | 
 | kaynak grubundaki | Laboratuvarı içeren aboneliğin KIMLIĞI |
 | Labuıd | Laboratuvar için GUID |
@@ -197,7 +188,7 @@ Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 | ResourceGroupName | Laboratuvarın bulunduğu kaynak grubunun adı | 
 | ResourceId | Sanal makine için tam kaynak KIMLIĞI. |
 | ResourceUId | VM için GUID |
- |Name | Eklenen diskin adı |
+ |Adı | Eklenen diskin adı |
 | CreatedTime |Veri diskinin oluşturulduğu tarih ve saat. |
 | DeletedDate | Veri diskinin silindiği tarih ve saat. |
 | ResourceStatus | Kaynağın durumu. Kaynak varsa etkin. Silindiğinde, etkin değil. |

@@ -3,15 +3,15 @@ title: Blob yolunu varsayılana Değiştir
 description: Bir BLOB dosya yolunu yeniden adlandırmak için bir Azure işlevi ayarlamayı öğrenin
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270622"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504840"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Varsayılan yoldan bir blob yolu değiştirme
 
@@ -31,7 +31,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
 
     ![Arama kutusuna "İşlev Uygulaması" yazın](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. **Oluştur**' a tıklayın.
+3. **Oluştur**'a tıklayın.
 
     ![İşlev Uygulaması penceresi "Oluştur" düğmesi](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
@@ -46,7 +46,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
 
         ![Yeni İşlev Uygulaması yapılandırma verileri girin](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. **Oluştur**' a tıklayın. İşlev uygulaması oluşturuldu.
+    7. **Oluştur**'a tıklayın. İşlev uygulaması oluşturuldu.
      
         ![İşlev Uygulaması oluşturuldu](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -64,7 +64,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
 
         ![Yeni bir C# işlevi oluşturma](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. **Oluştur**' a tıklayın. **İşlev** oluşturulur.
+    4. **Oluştur**'a tıklayın. **İşlev** oluşturulur.
 
      
 10. Işlev penceresinde _. CSX_ dosyasını çalıştırın.
@@ -193,7 +193,7 @@ Bir Azure işlevi oluşturmak için aşağıdaki adımları gerçekleştirin:
         
         !["Dosyaları görüntüle" bağlantısı](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. **Project. JSON**yazın ve ardından **ENTER**tuşuna basın. **Project. JSON** dosyasında, aşağıdaki kodu yapıştırın:
+    3. **project.js**yazın ve ardından **ENTER**tuşuna basın. Dosyadaki **project.js** , aşağıdaki kodu yapıştırın:
 
         ```
         {

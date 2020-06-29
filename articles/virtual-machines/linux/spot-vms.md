@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 80601170a39333ea0075bb4ec262dd48c7f2d76d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c83f754fdc236cc7a08f5a6a6e62ca3cf620b536
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758328"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506064"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azure 'da spot VM 'Leri kullanma
 
@@ -23,6 +23,6 @@ ms.locfileid: "81758328"
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Spot VM 'Leri dağıtmak için [CLI](spot-cli.md), [Portal](../windows/spot-portal.md) veya [PowerShell](../windows/spot-powershell.md) kullanın.
+Spot VM 'Leri dağıtmak için [CLI](spot-cli.md), [Portal](../windows/spot-portal.md), [ARM şablonu](spot-template.md)veya [PowerShell](../windows/spot-powershell.md) kullanın.
 
 Ayrıca, [spot VM örnekleriyle bir ölçek kümesi](../../virtual-machine-scale-sets/use-spot.md)dağıtabilirsiniz.

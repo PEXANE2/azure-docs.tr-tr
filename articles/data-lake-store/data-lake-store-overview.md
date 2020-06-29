@@ -4,15 +4,15 @@ description: Data Lake Storage 1. (daha önce Azure Data Lake Store olarak bilin
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 99384374226fd89cfd672c6b4f851a1743db0764
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67118797"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508563"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. nedir?
 
@@ -60,7 +60,7 @@ Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory (Azure A
 
 | Özellik | Açıklama |
 | --- | --- |
-| Kimlik doğrulaması |Data Lake Storage 1., Data Lake Storage 1. depolanan tüm veriler için kimlik ve erişim yönetimi için Azure AD ile tümleşir. Tümleştirme nedeniyle, çok faktörlü kimlik doğrulaması, koşullu erişim, rol tabanlı erişim denetimi, uygulama kullanımı izleme, güvenlik izleme ve uyarı gibi tüm Azure AD özelliklerinden faydaların Data Lake Storage 1.. Data Lake Storage 1., REST arabirimi içinde kimlik doğrulaması için OAuth 2,0 protokolünü destekler. [Data Lake Storage 1. kimlik doğrulaması](data-lakes-store-authentication-using-azure-active-directory.md)' na bakın.|
+| Kimlik Doğrulaması |Data Lake Storage 1., Data Lake Storage 1. depolanan tüm veriler için kimlik ve erişim yönetimi için Azure AD ile tümleşir. Tümleştirme nedeniyle, çok faktörlü kimlik doğrulaması, koşullu erişim, rol tabanlı erişim denetimi, uygulama kullanımı izleme, güvenlik izleme ve uyarı gibi tüm Azure AD özelliklerinden faydaların Data Lake Storage 1.. Data Lake Storage 1., REST arabirimi içinde kimlik doğrulaması için OAuth 2,0 protokolünü destekler. [Data Lake Storage 1. kimlik doğrulaması](data-lakes-store-authentication-using-azure-active-directory.md)' na bakın.|
 | Erişim denetimi |Data Lake Storage 1., Webdapterprotocol tarafından sunulan POSIX stili izinleri destekleyerek erişim denetimi sağlar. ACL 'Leri kök klasörde, alt klasörlerde ve tek tek dosyalarda etkinleştirebilirsiniz. ACL 'Lerin Data Lake Storage 1. bağlamında nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Data Lake Storage 1. Access Control](data-lake-store-access-control.md). |
 | Şifreleme |Data Lake Storage 1., hesapta depolanan veriler için de şifreleme sağlar. Data Lake Storage 1. bir hesap oluştururken şifreleme ayarlarını belirtirsiniz. Verilerinizin şifrelenmesini veya şifrelemeyi kabul etmesinin tercih edilebilir. Daha fazla bilgi için bkz. [Data Lake Storage 1. şifreleme](data-lake-store-encryption.md). Şifrelemeyle ilgili yapılandırma sağlama hakkında yönergeler için, bkz. [Azure Portal kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md). |
 
@@ -78,7 +78,7 @@ Data Lake Storage 1., Hadoop ekosistemindeki çoğu açık kaynaklı bileşenler
 
 Data Lake Storage 1., Hadoop ortamlarında (HDInsight kümesiyle kullanılabilir) FileSystem AzureDataLakeFilesystem (adl://) aracılığıyla erişilebilir. Adl://kullanan uygulamalar ve hizmetler, şu anda Webbir 'da kullanılamayan daha fazla performans iyileştirmelerinden yararlanabilir. Sonuç olarak, Data Lake Storage 1., Webbir API 'yi doğrudan kullanmaya devam ederek adl://kullanma veya mevcut kodu sürdürme seçeneklerinin önerilen seçeneğiyle en iyi performansı kullanma esnekliği sağlar. Azure HDInsight, Data Lake Storage 1. en iyi performansı sağlamak için AzureDataLakeFilesystem 'i tamamen kullanır.
 
-Kullanarak `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`Data Lake Storage 1. verilerinize erişebilirsiniz. Data Lake Storage 1. verilere erişme hakkında daha fazla bilgi için bkz. [depolanan verilerin özelliklerini görüntüleme](data-lake-store-get-started-portal.md#properties).
+Kullanarak Data Lake Storage 1. verilerinize erişebilirsiniz `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net` . Data Lake Storage 1. verilere erişme hakkında daha fazla bilgi için bkz. [depolanan verilerin özelliklerini görüntüleme](data-lake-store-get-started-portal.md#properties).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,18 +13,18 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f0f18e523368e85d9cea0206e98bb7b1a0e6165
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c2f840333f066afaa22883fb0f5d67072a5c822
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419383"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504874"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı başlangıç: .NET SDK kullanarak veri fabrikası ve işlem hattı oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Geçerli sürüm](quickstart-create-data-factory-dot-net.md)
+> * [Güncel sürüm](quickstart-create-data-factory-dot-net.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -47,9 +47,9 @@ Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2
 
 *Nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma*bölümündeki bölümden, bu görevleri yapmak için yönergeleri izleyin:
 
-1. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)bölümünde, bu öğreticide oluşturmakta olduğunuz .NET uygulamasını temsil eden bir uygulama oluşturun. Oturum açma URL'si için, makalede gösterildiği gibi bir işlevsiz URL sağlayabilirsiniz (`https://contoso.org/exampleapp`).
-2. [Oturum açmak için değerleri Al](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)' da, **uygulama KIMLIĞI** ve **Kiracı kimliği**' ni alın ve bu öğreticide daha sonra kullanacağınız bu değerleri unutmayın. 
-3. [Sertifikalar ve gizlilikler](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)' da, **kimlik doğrulama anahtarını**alın ve bu öğreticide daha sonra kullanacağınız bu değeri unutmayın.
+1. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)bölümünde, bu öğreticide oluşturmakta olduğunuz .NET uygulamasını temsil eden bir uygulama oluşturun. Oturum açma URL'si için, makalede gösterildiği gibi bir işlevsiz URL sağlayabilirsiniz (`https://contoso.org/exampleapp`).
+2. [Oturum açmak için değerleri Al](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)' da, **uygulama KIMLIĞI** ve **Kiracı kimliği**' ni alın ve bu öğreticide daha sonra kullanacağınız bu değerleri unutmayın. 
+3. [Sertifikalar ve gizlilikler](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)' da, **kimlik doğrulama anahtarını**alın ve bu öğreticide daha sonra kullanacağınız bu değeri unutmayın.
 4. Uygulamayı [bir role ata](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)bölümünde, uygulamanın abonelikte veri fabrikaları oluşturabilmesi için uygulamayı abonelik düzeyinde **katkıda** bulunan rolüne atayın.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
@@ -57,13 +57,13 @@ Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2
 Ardından, Visual Studio 'da bir C# .NET konsol uygulaması oluşturun:
 
 1. **Visual Studio**’yu başlatın.
-2. Başlangıç penceresinde **Yeni proje** > **konsol uygulaması (.NET Framework)** oluştur ' u seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
+2. Başlangıç penceresinde **Yeni proje**  >  **konsol uygulaması (.NET Framework)** oluştur ' u seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
 3. **Proje adı**alanına **ADFv2QuickStart**girin.
 4. Projeyi oluşturmak için **Oluştur**'u seçin.
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
 2. **Paket Yöneticisi konsolu** bölmesinde, paketleri yüklemek için aşağıdaki komutları çalıştırın. Daha fazla bilgi için bkz. [Microsoft. Azure. Management. DataFactory NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell
@@ -430,7 +430,7 @@ Press any key to exit...
 
 ## <a name="verify-the-output"></a>Çıktıyı doğrulama
 
-İşlem hattı, çıkış klasörünü **adföğreticisi** blob kapsayıcısında otomatik olarak oluşturur. Daha sonra,. **txt** dosyasını giriş klasöründen çıkış klasörüne kopyalar. 
+İşlem hattı, çıkış klasörünü **adföğreticisi** blob kapsayıcısında otomatik olarak oluşturur. Daha sonra, **emp.txt** dosyasını giriş klasöründen çıkış klasörüne kopyalar. 
 
 1. Azure portal, yukarıdaki [BLOB kapsayıcısı için bir giriş klasörü ve dosya ekleme](#add-an-input-folder-and-file-for-the-blob-container) bölümünde durduğunuza **adföğretici** kapsayıcı sayfasında, çıkış klasörünü görmek için **Yenile** ' yi seçin. 
 2. Klasör listesinde **Çıkış**' ı seçin.

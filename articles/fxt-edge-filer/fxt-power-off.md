@@ -3,15 +3,15 @@ title: Microsoft Azure FXT Edge Filer birimini kapatma
 description: Azure FXT Edge Filer düğümünü başlatma ve güvenle kapanmaya yönelik yordamlar
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 91445c4219abaa67385105f52515f52c87e2cf06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92364de82bc3de8229eced4ee02997a27afbde45
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72255991"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506421"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Azure FXT Edge Filer donanımını güvenle kapatma
 
@@ -29,7 +29,7 @@ Bir Azure FXT Edge Filer düğümü bir kümenin parçası olarak kullanıldıkt
 Azure FXT Edge Filer düğümünü güvenle kapatmak için bu yönergeleri izleyin:
 
 1. Küme denetim masasında oturum açın. ( [Ayarlar sayfalarında açık](fxt-cluster-create.md#open-the-settings-pages)olan yönergeler)
-1. **Ayarlar** sekmesine tıklayın ve ardından **cluster** > **FXT düğümleri** sayfasını yükleyin.
+1. **Ayarlar** sekmesine tıklayın ve ardından **cluster**  >  **FXT düğümleri** sayfasını yükleyin.
 1. Küme düğümleri listesinde, kapatmak istediğiniz bir tane bulun. **Eylemler** sütununda, **Güç aşağı** düğmesine tıklayın. 
 1. Birkaç dakika bekleyin. Düğüm kapanır ve devre dışı bırakılır.
 

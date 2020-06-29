@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34a02181632c301f443ce48ade0de2013e2ae86c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254891"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508291"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>StorSimple cihazınızda bir EBOD denetleyicisini değiştirme
 
@@ -42,7 +42,7 @@ StorSimple cihazınızda başarısız olan EBOD denetleyici modülünü değişt
 
 #### <a name="to-remove-an-ebod-module"></a>EBOD modülünü kaldırmak için
 1. Azure portalı açın.
-2. Cihazınıza gidin ve **Ayarlar** > **donanım sistem durumu**' na gidin ve etkin ebod denetleyicisi modülü için LED durumunun yeşil olduğunu ve başarısız ebod denetleyici modülünün ışığını kırmızı olduğunu doğrulayın.
+2. Cihazınıza gidin ve **Ayarlar**  >  **donanım sistem durumu**' na gidin ve etkin ebod denetleyicisi modülü için LED durumunun yeşil olduğunu ve başarısız ebod denetleyici modülünün ışığını kırmızı olduğunu doğrulayın.
 3. Cihazın arkasında başarısız olan EBOD denetleyici modülünü bulun.
 4. Ebod denetleyicisi modülünü sistem dışına çıkarmadan önce, denetleyiciye bağlayan kabloları kaldırın.
 5. Denetleyiciye bağlı olan EBOD denetleyici modülünün tam SAS bağlantı noktasını not edin. EBOD modülünü değiştirdikten sonra sistemi bu yapılandırmaya geri yüklemeniz gerekecektir.

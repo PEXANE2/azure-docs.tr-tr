@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60723315"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508053"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>StorSimple cihazınızı yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -37,7 +37,7 @@ Bu makaleyi okuduktan sonra şunları öğreneceksiniz:
 StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple cihaza bağlanır. Bu cihazları yönetmek için tarayıcıda çalışan Merkezi Microsoft Azure portal kullanırsınız. StorSimple Aygıt Yöneticisi hizmetine bağlanmak için aşağıdakileri yapın.
 
 #### <a name="to-connect-to-the-service"></a>Hizmete bağlanmak için
-1. Öğesine [https://portal.azure.com/](https://portal.azure.com/)gidin.
+1. Öğesine gidin [https://portal.azure.com/](https://portal.azure.com/) .
 2. Microsoft hesabı kimlik bilgilerinizi kullanarak Microsoft Azure portal oturum açın (bölmenin sağ üst kısmında bulunur).
 3. StorSimple Aygıt Yöneticisi hizmetine erişmek için sol gezinti bölmesini aşağı kaydırın.
 

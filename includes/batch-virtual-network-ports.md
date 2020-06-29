@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: cb35021ad7e4d735a7dd521e39e4fe5fd102ae01
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888374"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506623"
 ---
 ### <a name="general-requirements"></a>Genel gereksinimler
 
@@ -38,16 +38,14 @@ Batch havuzunun Sanal Makine yapılandırmasında veya Cloud Services yapıland�
 
 **Alt ağ kimliği** - Alt ağı Batch API'leri ile belirtirken alt ağın *kaynak tanımlayıcısını* kullanın. Alt ağ tanımlayıcısı şu biçimdedir:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}`
 
 **İzinler** - Sanal ağ aboneliği veya kaynak grubu güvenlik ilkelerinin veya kilitlerinin belirli bir kullanıcının sanal ağ yönetim izinlerini kısıtlayıp kısıtlamadığını kontrol edin.
 
 **Ek ağ kaynakları** - Batch, sanal ağı içeren kaynak grubuna otomatik olarak ek ağ kaynakları atar.
 
 > [!IMPORTANT]
->Her 100 adanmış veya düşük öncelikli düğüm için Batch ayırır: bir ağ güvenlik grubu (NSG), bir genel IP adresi ve bir yük dengeleyici. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuzlar için bu kaynaklardan birinde veya daha fazlasında kota artışı istemeniz gerekebilir.
+> Her 100 adanmış veya düşük öncelikli düğüm için Batch ayırır: bir ağ güvenlik grubu (NSG), bir genel IP adresi ve bir yük dengeleyici. Bu kaynaklar, aboneliğin [kaynak kotalarıyla](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) sınırlıdır. Büyük havuzlar için bu kaynaklardan birinde veya daha fazlasında kota artışı istemeniz gerekebilir.
 
 #### <a name="network-security-groups-batch-default"></a>Ağ güvenlik grupları: Batch varsayılanı
 
@@ -59,11 +57,11 @@ Alt ağın işlem düğümlerinde görev zamanlayabilmek için Batch hizmetinden
 * İnternete giden herhangi bir bağlantı noktasında giden trafik. Bu, alt ağ düzeyindeki NSG kurallarına göre değiştirilebilir (aşağıya bakın).
 
 > [!IMPORTANT]
-> Batch tarafından yapılandırılmış olan NSG'lerdeki gelen veya giden kurallarını değiştirirken veya yenilerini eklerken dikkatli olun. Belirtilen alt ağdaki işlem düğümleriyle iletişim kurulması bir NSG tarafından reddedilirse Batch hizmeti, işlem düğümlerinin durumunu **kullanılamıyor** olarak ayarlar. Buna ek olarak, Batch tarafından eklenen tüm kaynaklara kaynak kilidi uygulanmaması gerekir. Aksi takdirde, bu işlem bir havuzun silinmesi gibi kullanıcı tarafından başlatılan eylemlerin sonucu olarak kaynakların temizlenmesine sebep olabilir.
+> Batch ile yapılandırılmış NSG 'lerdeki gelen veya giden kuralları değiştirirseniz veya eklerseniz dikkatli olun. Belirtilen alt ağdaki işlem düğümlerine yönelik iletişim bir NSG tarafından reddedilirse Batch hizmeti, işlem düğümlerinin durumunu **kullanılamıyor**olarak ayarlar. Ayrıca, bir havuzu silme gibi kullanıcı tarafından başlatılan eylemlerin bir sonucu olarak kaynakların temizlenmesini önleyebildiğinden, toplu Işlem tarafından oluşturulan herhangi bir kaynağa kaynak kilidi uygulanmamalıdır.
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Ağ güvenlik grupları: Alt ağ düzeyi kuralları belirtme
 
-Batch kendi NSG’lerini yapılandırdığı için sanal ağ düzeyinde NSG belirtmeniz gerekmez (yukarıya bakın). Batch işlem düğümlerinin dağıtıldığı bir yerdeki alt ağ ile ilişkilendirilmiş bir NSG’niz varsa veya uygulanan varsayılanları geçersiz kılmak için özel NSG kuralları uygulamak istiyorsanız, bu NSG’yi aşağıdaki tablolarda gösterildiği gibi en azından gelen ve giden güvenlik kurallarıyla yapılandırmanız gerekir.
+Batch kendi NSG 'leri yapılandırdığından (yukarıya bakın), sanal ağ alt ağ düzeyinde NSG 'leri belirtmeniz gerekmez. Toplu işlem düğümlerinin dağıtıldığı alt ağ ile ilişkili bir NSG varsa veya varsayılan değerleri geçersiz kılmak için özel NSG kuralları uygulamak isterseniz, bu NSG 'yi aşağıdaki tablolarda gösterilen en az gelen ve giden güvenlik kurallarıyla yapılandırmanız gerekir.
 
 3389 (Windows) veya 22 (Linux) numaralı bağlantı noktalarına gelen trafiği yalnızca dış kaynaklardaki işlem düğümlerine uzaktan erişim izni vermeniz gerekiyorsa yapılandırın. Belirli MPI çalışma zamanlarıyla çoklu örnek görevleri için destek istiyorsanız Linux’ta 22 numaralı bağlantı noktası kurallarını etkinleştirmeniz gerekir. Havuz işlem düğümlerinin kullanılabilir olması için bu bağlantı noktalarındaki trafiğe kesinlikle izin verilmesi gerekmez.
 
@@ -75,7 +73,7 @@ Batch kendi NSG’lerini yapılandırdığı için sanal ağ düzeyinde NSG beli
 | Gerekirse Linux çok örnekli görevler için işlem düğümlerine ve/veya işlem düğümü alt ağlarına uzaktan erişim için kullanıcı kaynağı IP’leri. | Yok | * | Herhangi biri | 3389 (Windows), 22 (Linux) | TCP | İzin Ver |
 
 > [!WARNING]
-> Batch hizmeti IP adresleri zamanla değişebilir. Bu yüzden, NSG kuralları için `BatchNodeManagement` hizmet etiketinin (veya bölgesel varyantının) kullanılması önerilir. NSG kurallarının doğrudan Batch hizmeti IP adresleriyle doldurulması önerilmez.
+> Batch hizmeti IP adresleri zamanla değişebilir. Bu nedenle, `BatchNodeManagement` NSG kuralları için hizmet etiketi (veya bölgesel varyant) kullanılması önemle önerilir. NSG kurallarını belirli Batch hizmeti IP adresleriyle doldurmaktan kaçının.
 
 **Giden güvenlik kuralları**
 
@@ -89,9 +87,7 @@ Batch kendi NSG’lerini yapılandırdığı için sanal ağ düzeyinde NSG beli
 
 **Alt ağ kimliği** - Alt ağı Batch API'leri ile belirtirken alt ağın *kaynak tanımlayıcısını* kullanın. Alt ağ tanımlayıcısı şu biçimdedir:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
 **İzinler** - `Microsoft Azure Batch` hizmet sorumlusu, belirtilen sanal ağ için `Classic Virtual Machine Contributor` Rol Tabanlı Erişim Denetimi (RBAC) rolüne sahip olmalıdır.
 
@@ -99,9 +95,9 @@ Batch kendi NSG’lerini yapılandırdığı için sanal ağ düzeyinde NSG beli
 
 İşlem düğümlerinde görev zamanlayabilmek için alt ağın Batch hizmetinden gelen iletişim isteklerine, Azure Depolama veya diğer kaynaklarla iletişim kurabilmek için de giden iletişim isteklerine izin vermesi gerekir.
 
-Batch iletişimi yalnızca Batch IP adreslerinden havuz düğümlerine gelen iletişime izin verecek şekilde yapılandırdığından NSG belirtmenize gerek yoktur. Ancak belirtilen alt ağ ile ilişkilendirilmiş NSG'ler ve/veya güvenlik duvarı varsa gelen ve giden güvenlik kurallarını aşağıdaki tablolarda gösterilen şekilde yapılandırın. Belirtilen alt ağdaki işlem düğümleriyle iletişim kurulması bir NSG tarafından reddedilirse Batch hizmeti, işlem düğümlerinin durumunu **kullanılamıyor** olarak ayarlar.
+Batch iletişimi yalnızca Batch IP adreslerinden havuz düğümlerine gelen iletişime izin verecek şekilde yapılandırdığından NSG belirtmenize gerek yoktur. Ancak belirtilen alt ağ ile ilişkilendirilmiş NSG'ler ve/veya güvenlik duvarı varsa gelen ve giden güvenlik kurallarını aşağıdaki tablolarda gösterilen şekilde yapılandırın. Belirtilen alt ağdaki işlem düğümlerine yönelik iletişim bir NSG tarafından reddedilirse Batch hizmeti, işlem düğümlerinin durumunu **kullanılamıyor**olarak ayarlar.
 
-Windows için 3389 numaralı bağlantı noktalarına gelen trafiği yalnızca havuzdaki düğümlere RDP erişim izni vermeniz gerekiyorsa yapılandırın. Bu ayar havuz düğümlerinin kullanılabilir durumda olması için şart değildir.
+Windows için 3389 numaralı bağlantı noktalarına gelen trafiği yalnızca havuzdaki düğümlere RDP erişim izni vermeniz gerekiyorsa yapılandırın. Bu, havuz düğümlerinin kullanılabilir olması için gerekli değildir.
 
 **Gelen güvenlik kuralları**
 

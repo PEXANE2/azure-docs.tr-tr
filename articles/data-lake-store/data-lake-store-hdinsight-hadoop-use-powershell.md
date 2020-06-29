@@ -3,15 +3,15 @@ title: PowerShell-Data Lake Storage 1.-eklenti depolama ile HDInsight-Azure
 description: Ek depolama alanı olarak Azure Data Lake Storage 1. bir HDInsight kümesini yapılandırmak için Azure PowerShell nasıl kullanacağınızı öğrenin.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fb4ab1cdb60fff40effc1ff2f12f8600ba263d23
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b1264475a9e5100e2b38079fe0540ada5d91cd55
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692058"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504721"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure Data Lake Storage 1. ile bir HDInsight kümesi oluşturmak için Azure PowerShell kullanma (ek depolama olarak)
 
@@ -75,7 +75,7 @@ Data Lake Storage 1. hesabı oluşturmak için bu adımları izleyin.
         Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
    > [!NOTE]
-   > Data Lake Storage 1. kaynak sağlayıcısını kaydederken buna benzer `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` bir hata alırsanız, aboneliğiniz Data Lake Storage 1. için daha fazla listelenmemiştir. Bu [yönergeleri](data-lake-store-get-started-portal.md)izleyerek Data Lake Storage 1. için Azure aboneliğinizi etkinleştirdiğinizden emin olun.
+   > Data Lake Storage 1. kaynak sağlayıcısını kaydederken buna benzer bir hata alırsanız `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , aboneliğiniz Data Lake Storage 1. için daha fazla listelenmemiştir. Bu [yönergeleri](data-lake-store-get-started-portal.md)izleyerek Data Lake Storage 1. için Azure aboneliğinizi etkinleştirdiğinizden emin olun.
    >
    >
 2. Bir Data Lake Storage 1. hesabı bir Azure Kaynak grubuyla ilişkilendirilir. Azure Kaynak Grubu oluşturma işlemiyle başlayın.
@@ -132,7 +132,7 @@ Data Lake Storage 1. için Active Directory kimlik doğrulaması ayarlamak için
 
 Bu bölümdeki adımlarla devam etmeden önce [Windows SDK](https://dev.windows.com/en-us/downloads) yüklü olduğundan emin olun. Ayrıca, sertifikanın oluşturulacağı **C:\mycertdir**gibi bir dizin de oluşturmuş olmanız gerekir.
 
-1. PowerShell penceresinden Windows SDK yüklediğiniz konuma gidin (genellikle ve `C:\Program Files (x86)\Windows Kits\10\bin\x86` [MakeCert][makecert] yardımcı programını kullanarak otomatik olarak imzalanan bir sertifika ve özel anahtar oluşturun. Aşağıdaki komutları kullanın.
+1. PowerShell penceresinden Windows SDK yüklediğiniz konuma gidin (genellikle `C:\Program Files (x86)\Windows Kits\10\bin\x86` ve [MakeCert][makecert] yardımcı programını kullanarak otomatik olarak imzalanan bir sertifika ve özel anahtar oluşturun. Aşağıdaki komutları kullanın.
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
@@ -262,7 +262,7 @@ Bu, daha önce karşıya yüklediğiniz dosyayı Data Lake Storage 1. olarak lis
     Found 1 items
     -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
 
-Ayrıca, Data Lake Storage 1. ' ye `hdfs dfs -put` bazı dosyaları yüklemek için komutunu kullanabilir ve ardından dosyaların başarıyla karşıya `hdfs dfs -ls` yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
+Ayrıca, `hdfs dfs -put` Data Lake Storage 1. ' ye bazı dosyaları yüklemek için komutunu kullanabilir ve ardından `hdfs dfs -ls` dosyaların başarıyla karşıya yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 * [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

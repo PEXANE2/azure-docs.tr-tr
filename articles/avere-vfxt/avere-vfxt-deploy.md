@@ -3,15 +3,15 @@ title: Azure için avere vFXT dağıtma
 description: Azure 'da avere vFXT kümesini dağıtma adımları
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c42abdbfaf5c867a9d8d4cbc6b4519a86adaac0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252603"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505656"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT kümesini dağıtma
 
@@ -87,7 +87,7 @@ Dağıtım şablonunun ikinci sayfası, küme boyutunu, düğüm türünü, önb
 
 * **Avere vFXT küme düğümü sayısı** -kümedeki düğüm sayısını seçin. En az üç düğüm ve en yüksek değer on iki.
 
-* **Küme yönetimi parolası** -küme yönetimi için parola oluşturun. Bu parola, kümeyi izleyip küme ayarlarını ```admin``` yapılandırabileceğiniz küme Denetim Masası 'nda oturum açmak için Kullanıcı adı ile birlikte kullanılır.
+* **Küme yönetimi parolası** -küme yönetimi için parola oluşturun. Bu parola, kümeyi ```admin``` izleyip küme ayarlarını yapılandırabileceğiniz küme Denetim Masası 'nda oturum açmak için Kullanıcı adı ile birlikte kullanılır.
 
 * **Avere vFXT küme adı** -kümeye benzersiz bir ad verin.
 

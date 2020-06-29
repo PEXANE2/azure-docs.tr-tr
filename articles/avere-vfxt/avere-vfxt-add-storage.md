@@ -3,15 +3,15 @@ title: Avere vFXT Storage 'ı Yapılandırma-Azure
 description: Azure için avere vFXT 'nize arka uç depolama sistemi ekleme
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252616"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505758"
 ---
 # <a name="configure-storage"></a>Depolama alanını yapılandırma
 
@@ -47,9 +47,9 @@ Bir NAS Core fili eklemek için aşağıdaki adımları izleyin:
 
 1. Avere denetim masasından üstteki **Ayarlar** sekmesine tıklayın.
 
-1. Sol taraftaki çekirdek > **filleri Yönet** ' e tıklayın. **Core Filer**
+1. **Core Filer**  >  Sol taraftaki çekirdek**filleri Yönet** ' e tıklayın.
 
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 
    ![Oluştur düğmesinin üzerinde bir imlece yeni çekirdek dosyalayıcı ekleme sayfasının ekran görüntüsü](media/avere-vfxt-add-core-filer-start.png)
 
@@ -119,7 +119,7 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
 
    ![Anahtarı kopyalamak için Azure portal GUI](media/avere-vfxt-copy-storage-key.png)
 
-1. Kümeniz için avere denetim masasını açın. **Ayarlar**' a tıklayın, ardından sol gezinti bölmesinde **küme** > **bulutu kimlik bilgileri** ' ni açın. Bulut kimlik bilgileri sayfasında **kimlik bilgisi ekle**' ye tıklayın.
+1. Kümeniz için avere denetim masasını açın. **Ayarlar**' a tıklayın, **Cluster**ardından  >  sol gezinti bölmesinde küme**bulutu kimlik bilgileri** ' ni açın. Bulut kimlik bilgileri sayfasında **kimlik bilgisi ekle**' ye tıklayın.
 
    ![Bulut kimlik bilgileri yapılandırma sayfasında kimlik bilgisi Ekle düğmesine tıklayın](media/avere-vfxt-new-credential-button.png)
 
@@ -137,7 +137,7 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
 
    ![Avere Denetim Masası 'nda bulut kimlik bilgisi tamamlandı formu](media/avere-vfxt-new-credential-submit.png)
 
-1. Sonra, çekirdek filleyici oluşturun. Avere Denetim Masası ' nın sol tarafında, **çekirdek fili** >  **Yönet çekirdek filers**' ye tıklayın.
+1. Sonra, çekirdek filleyici oluşturun. Avere Denetim Masası ' nın sol tarafında, **çekirdek fili**  >   **Yönet çekirdek filers**' ye tıklayın.
 
 1. **Çekirdek filers ayarlarını yönetme** sayfasındaki **Oluştur** düğmesine tıklayın.
 
@@ -152,7 +152,7 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
    * **Sertifika doğrulamasını** **devre dışı** olarak değiştirme
    * **Sıkıştırma modunu** **yok** olarak değiştirme
    * **İleri**’ye tıklayın.
-   * Dördüncü sayfada, **demet adı** ' nda kapsayıcının adını *storage_account_name*/*container_name*olarak girin.
+   * Dördüncü sayfada, **demet adı** ' nda kapsayıcının adını *storage_account_name* / *container_name*olarak girin.
    * İsteğe bağlı olarak, **şifreleme türünü** **hiçbiri**olarak ayarlayın.  Azure depolama, varsayılan olarak şifrelenir.
    * **Filigran Ekle**' ye tıklayın.
 
@@ -166,14 +166,14 @@ Sonra [bir birleşim oluşturmanız](#create-a-junction)gerekir.
 
 Birleşim, istemciler için oluşturduğunuz bir yoldur. İstemciler yolu bağlayabilir ve seçtiğiniz hedefe ulaşır.
 
-Örneğin, NetApp Core dosyalayıcı `/vfxt/files` `/vol0/data` dışarı aktarma ve `/project/resources` alt dizinine eşlemek için oluşturabilirsiniz.
+Örneğin, `/vfxt/files` NetApp Core dosyalayıcı `/vol0/data` dışarı aktarma ve alt dizinine eşlemek için oluşturabilirsiniz `/project/resources` .
 
 Junler hakkında daha fazla bilgi [avere kümesi yapılandırma kılavuzunun ad alanı bölümünde](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)bulunabilir.
 
 Avere Denetim Masası arabirimindeki bu adımları izleyin:
 
-* Sol üstteki **vServer** > **ad alanı** ' na tıklayın.
-* Gibi ``/vfxt/data``bir ad alanı yolu belirtin (eğik çizgi) ile başlar.
+* Sol üstteki **vServer**  >  **ad alanı** ' na tıklayın.
+* Gibi bir ad alanı yolu belirtin (eğik çizgi) ile başlar ``/vfxt/data`` .
 * Çekirdek filinizi seçin.
 * Çekirdek dosyalayıcı dışarı aktarmayı seçin.
 * **İleri**’ye tıklayın.

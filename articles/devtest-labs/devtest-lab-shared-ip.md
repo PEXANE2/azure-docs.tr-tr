@@ -1,24 +1,14 @@
 ---
 title: Azure DevTest Labs Paylaşılan IP adreslerini anlayın | Microsoft Docs
 description: Azure DevTest Labs, laboratuvar sanal makinelerinize erişmek için gereken genel IP adreslerini en aza indirmek üzere paylaşılan IP adreslerini nasıl kullandığını öğrenin.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/12/2019
-ms.author: spelluru
-ms.openlocfilehash: f7c9feedddab1aea031cb3a8879e868aae04df00
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 36a5da1b2b6252d0adb480a622c461b33425e675
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896791"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484103"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Azure DevTest Labs Paylaşılan IP adreslerini anlayın
 

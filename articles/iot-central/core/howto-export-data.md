@@ -4,16 +4,16 @@ description: Azure IoT Central uygulamanızdan Azure Event Hubs, Azure Service B
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 04/07/2020
+ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: f23a91a278b81c1583d88db2ede265ba2ad2d415
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414240"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483933"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>Azure 'da IoT verilerini hedeflere dışarı aktarma
 
@@ -27,7 +27,7 @@ Bu makalede, Azure IoT Central 'da veri dışarı aktarma özelliğinin nasıl k
 > [!Note]
 > Veri dışarı aktarmayı açtığınızda, bu andan itibaren yalnızca verileri alırsınız. Şu anda veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için, verilerin dışarı aktarılmasını erken açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 IoT Central uygulamanızda yönetici olmanız veya veri dışa aktarma izinlerinizin olması gerekir.
 
@@ -82,11 +82,9 @@ Verilerin dışarı aktarılacağı bir hedef olduğuna göre, verileri dışar�
     > [!Tip]
     > Sol bölmede **veri dışa aktarma** 'yı görmüyorsanız, uygulamanızda veri dışarı aktarma yapılandırma izniniz yok demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
-3. Sağ üst köşedeki **+ Yeni** düğmesini seçin. Dışarı aktarmanın hedefi olarak **azure Event Hubs**, **Azure Service Bus**veya **Azure Blob depolamadan** birini seçin. Uygulama başına en fazla dışarı aktarma sayısı beştir.
+3. **+ Yeni** düğmesini seçin. Dışarı aktarmanın hedefi olarak **Azure Blob depolama**, **azure Event Hubs**, **Azure Service Bus kuyruğu**veya **Azure Service Bus konusunun** birini seçin. Uygulama başına en fazla dışarı aktarma sayısı beştir.
 
-    ![Yeni veri dışarı aktarma oluştur](media/howto-export-data/new-export-definition.png)
-
-4. Aşağı açılan liste kutusunda **Event Hubs ad**alanınızı, **Service Bus ad alanını**, **depolama hesabı ad alanını**seçin veya **bir bağlantı dizesi girin**.
+4. Dışarı aktarma için bir ad girin. Aşağı açılan liste kutusunda, **ad**alanınızı seçin veya **bir bağlantı dizesi girin**.
 
     - Depolama hesapları, Event Hubs ad alanları ve Service Bus ad alanlarını IoT Central uygulamanızla aynı abonelikte görürsünüz. Bu aboneliğin dışında bir hedefe aktarmak istiyorsanız, **bir bağlantı dizesi girin** ' i seçin ve 6. adıma bakın.
     - Ücretsiz fiyatlandırma planı kullanılarak oluşturulan uygulamalar için, veri dışa aktarma 'yı yapılandırmanın tek yolu bir bağlantı dizesidir. Ücretsiz fiyatlandırma planındaki uygulamalar ilişkili bir Azure aboneliğine sahip değildir.
@@ -108,7 +106,7 @@ Verilerin dışarı aktarılacağı bir hedef olduğuna göre, verileri dışar�
           1. **Ayarlar**altında **erişim anahtarları** ' nı seçin.
           2. KEY1 bağlantı dizesini veya key2 bağlantı dizesini kopyalayın
 
-    Bağlantı dizesini yapıştırın. Örneği veya kapsayıcı adını yazın, bunun büyük/küçük harfe duyarlı olduğunu unutmayın.
+    Bağlantı dizesini yapıştırın. Örneği veya **kapsayıcı adını**yazın, bunun büyük/küçük harfe duyarlı olduğunu unutmayın.
 
 7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak veri türlerini seçin.
 
@@ -754,4 +752,4 @@ Bu örnek anlık görüntü, blob depolamada cihaz ve özellik verilerini içere
 Artık verilerinizi Azure Event Hubs, Azure Service Bus ve Azure Blob depolama 'ya aktarmayı öğrenmiş olduğunuza göre, sonraki adıma geçin:
 
 > [!div class="nextstepaction"]
-> [Web kancaları oluşturma](./howto-create-webhooks.md)
+> [Databricks ile özel analizler çalıştırma](./howto-create-custom-analytics.md)

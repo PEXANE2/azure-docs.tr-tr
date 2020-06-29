@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: d3f5095f8b8c140f704160feff9cd12ad9ca0974
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6228696f864409b9f966039ebdbbf8fd260e51e2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553766"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506846"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -238,5 +238,5 @@ Hayır. Azure Içeri/dışarı aktarma hizmeti şu anda Azure NetApp Files deste
 - [Microsoft Azure ExpressRoute SSS](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure Sanal Ağ SSS](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
 - [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure Data Box](https://docs.microsoft.com/azure/databox-family/)
+- [Azure Data Box](https://docs.microsoft.com/azure/databox)
 - [Azure NetApp Files için SMB performansı hakkında SSS](azure-netapp-files-smb-performance.md)

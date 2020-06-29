@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298754"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504466"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>8000 serisi cihaz sorunlarını gidermek için StorSimple Tanılama aracını kullanın
 
@@ -210,7 +210,7 @@ Bu test, sistem bilgilerini, kullanılabilir güncelleştirmeleri, küme bilgile
 
 * Sistem bilgileri, modeli, cihaz seri numarasını, saat dilimini, denetleyici durumunu ve sistemde çalışan ayrıntılı yazılım sürümünü içerir. Çıktı olarak bildirilen çeşitli sistem parametrelerini anlamak için [sistem bilgilerini yorumlama](#appendix-interpreting-system-information)bölümüne gidin.
 
-* Güncelleştirme Kullanılabilirliği, düzenli ve bakım modlarının kullanılabilir olup olmadığını ve ilişkili paket adlarını raporlar. Ve `RegularUpdates` `MaintenanceModeUpdates` ise `false`, güncelleştirmelerin kullanılabilir olmadığını gösterir. Cihazınız güncel.
+* Güncelleştirme Kullanılabilirliği, düzenli ve bakım modlarının kullanılabilir olup olmadığını ve ilişkili paket adlarını raporlar. `RegularUpdates`Ve ise `MaintenanceModeUpdates` `false` , güncelleştirmelerin kullanılabilir olmadığını gösterir. Cihazınız güncel.
 * Küme bilgileri, tüm HCS küme gruplarının ve ilgili durumlarının çeşitli mantıksal bileşenleriyle ilgili bilgileri içerir. Raporun bu bölümünde bir çevrimdışı küme grubu görürseniz, [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md).
 * Hizmet bilgileri, cihazınızda çalışan tüm HCS ve CIS hizmetlerinin adlarını ve durumlarını içerir. Bu bilgiler, cihaz sorununu gidermeye yönelik Microsoft Desteği için yararlıdır.
 

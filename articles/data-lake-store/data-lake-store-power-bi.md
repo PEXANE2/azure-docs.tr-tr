@@ -3,15 +3,15 @@ title: Azure Data Lake Storage 1. verileri analiz etme Power BI
 description: Azure Data Lake Storage 1. depolanan verileri çözümlemek için Power BI kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a692c5b23eaf23b33eef9bd2baf1e62b4bcca74e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744769"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504942"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage 1. Power BI kullanarak verileri çözümleme
 Bu makalede, Azure Data Lake Storage 1. depolanan verileri analiz etmek ve görselleştirmek için Power BI Desktop kullanmayı öğreneceksiniz.
@@ -20,7 +20,7 @@ Bu makalede, Azure Data Lake Storage 1. depolanan verileri analiz etmek ve görs
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Bu makalede, **myadlsg1**adlı bir Data Lake Storage 1. hesabı oluşturmuş olduğunuz ve buna örnek bir veri dosyası (**Drivers. txt**) yüklediğiniz varsayılır. Bu örnek dosya [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)indirilebilir.
+* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Bu makalede, **myadlsg1**adlı bir Data Lake Storage 1. hesabı oluşturmuş olduğunuz ve buna örnek bir veri dosyası (**Drivers.txt**) yüklediğiniz varsayılır. Bu örnek dosya [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)indirilebilir.
 * **Power BI Desktop**. Bunu [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=45331)' nden indirebilirsiniz. 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop'ta rapor oluşturma
@@ -56,7 +56,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 10. Sorgu Düzenleyicisi 'nde, **içerik** sütununun altında, **ikili**' a tıklayın.
     
     ![Sorguları düzenle](./media/data-lake-store-power-bi/convert-query1.png "Sorguları düzenle")
-11. Karşıya yüklediğiniz **Drivers. txt** dosyasını temsil eden bir dosya simgesi görürsünüz. Dosyaya sağ tıklayın ve **CSV**' ye tıklayın.    
+11. Karşıya yüklediğiniz **Drivers.txt** dosyasını temsil eden bir dosya simgesi görürsünüz. Dosyaya sağ tıklayın ve **CSV**' ye tıklayın.    
     
     ![Sorguları düzenle](./media/data-lake-store-power-bi/convert-query2.png "Sorguları düzenle")
 12. Aşağıda gösterildiği gibi bir çıktı görmeniz gerekir. Verileriniz artık görselleştirmeler oluşturmak için kullanabileceğiniz bir biçimde sunulmaktadır.
@@ -78,7 +78,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
         ![Görselleştirmeler oluştur](./media/data-lake-store-power-bi/create-visualizations.png "Görselleştirmeler oluştur")
     3. Pasta grafiğinin şimdi aşağıda gösterildiği gibi bir benzemesi gerekir.
        
-        ![Pasta grafik](./media/data-lake-store-power-bi/pie-chart.png "Görselleştirmeler oluştur")
+        ![Pasta grafiği](./media/data-lake-store-power-bi/pie-chart.png "Görselleştirmeler oluştur")
 16. Sayfa düzeyi filtrelerinden belirli bir ülke/bölge seçerek, seçili ülkenin/bölgenin her bir şehrindeki sürücü sayısını görebilirsiniz. Örneğin, **görsel öğeler** sekmesinin altında, **sayfa düzeyi filtreleri**altında **Brezilya**' yi seçin.
     
     ![Ülke/bölge seçin](./media/data-lake-store-power-bi/select-country.png "Ülke/bölge seçin")

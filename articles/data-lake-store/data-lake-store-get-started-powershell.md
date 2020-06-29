@@ -3,15 +3,15 @@ title: Azure Data Lake Storage 1.-PowerShell ile çalışmaya başlama | Microso
 description: Bir Azure Data Lake Storage 1. hesabı oluşturmak ve temel işlemleri gerçekleştirmek için Azure PowerShell kullanın.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8c97064af6fecf08af4608cfcd9874ff9bb1936
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73837887"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504791"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 
@@ -30,7 +30,7 @@ Bir Azure Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri d
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 veya üstü**. Bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview).
 
 ## <a name="authentication"></a>Kimlik Doğrulaması

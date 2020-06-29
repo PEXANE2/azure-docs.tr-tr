@@ -3,15 +3,15 @@ title: REST-Service-Service kimlik doğrulaması-Data Lake Storage 1.-Azure
 description: Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması elde etme hakkında bilgi edinin ve REST API kullanarak Azure Active Directory.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d7d0ec39e9f0f294324eb18337f4234ddaa63e2c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 08b5e915902fb4e2002bd20699cdaca9f0f35e3e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688134"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505076"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>REST API kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Bu senaryoda, uygulama, işlemleri gerçekleştirmek için kendi kimlik bilgiler
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-İsteğin çıktısı, daha sonra REST API çağrılarınız ile geçirdiğiniz bir yetkilendirme `access-token` belirteci (aşağıdaki çıkışta belirtilen) içerir. Kimlik doğrulama belirtecini bir metin dosyasına kaydedin; Data Lake Storage 1. için bekleyen çağrılar yaparken buna ihtiyaç duyarsınız.
+İsteğin çıktısı, `access-token` daha sonra REST API çağrılarınız ile geçirdiğiniz bir yetkilendirme belirteci (aşağıdaki çıkışta belirtilen) içerir. Kimlik doğrulama belirtecini bir metin dosyasına kaydedin; Data Lake Storage 1. için bekleyen çağrılar yaparken buna ihtiyaç duyarsınız.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 

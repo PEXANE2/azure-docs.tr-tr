@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246892"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504335"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Yapılandırma sunucusu sorunlarını giderme
 
@@ -67,7 +67,7 @@ VCenter bulma başarısızlıklarını çözümlemek için, vCenter Server 'ı a
 - Aşağıdaki komut satırı PsExec-s-i "%ProgramFiles%\Internet Explorer\iexplore.exe" komut satırını çalıştırarak Internet Explorer 'ı sistem Kullanıcı içeriğinde açın
 - IE 'de proxy ayarları ekleyin ve tmanssvc hizmetini yeniden başlatın.
 - DRA proxy ayarlarını yapılandırmak için CD C:\Program Files\Microsoft Azure Site Recovery sağlayıcısı 'nı çalıştırın
-- Sonra, DRCONFIGURATOR yürütün. EXE/configure/AddBypassUrls [yapılandırma **vCenter Server/vSphere ESXi sunucu** adımının [yapılandırma sunucusu dağıtımı](vmware-azure-deploy-configuration-server.md#configure-settings)adımı sırasında belirtilen vCenter Server IP adresi/FQDN 'si Ekle]
+- Ardından, DRCONFIGURATOR.EXE/configure/AddBypassUrls [yapılandırma sırasında belirtilen vCenter Server IP adresi/FQDN ekleme **vCenter Server/vSphere ESXi sunucusu** [yapılandırma sunucusu dağıtımının](vmware-azure-deploy-configuration-server.md#configure-settings)adımını çalıştırın]
 
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>Yapılandırma sunucusunun IP adresini değiştirme
 
@@ -99,7 +99,7 @@ Kaynak makinede aşağıdaki komutu çalıştırın:
 
 Ayar | Ayrıntılar
 --- | ---
-Kullanım | UnifiedAgentConfigurator. exe/CSEndPoint < yapılandırma sunucusu IP adresi \> /parola sefilepath < parola dosya yolu\>
+Kullanım | UnifiedAgentConfigurator.exe/CSEndPoint <yapılandırma sunucusu IP adresi \> /parola sefilepath <parola dosyası yolu\>
 Aracı yapılandırma günlükleri | %ProgramData%\asrsetuplogs\asrunifiedagentconfigurator.log altında bulunur.
 /CSEndPoint | Zorunlu parametre. Yapılandırma sunucusunun IP adresini belirtir. Herhangi bir geçerli IP adresi kullanın.
 /PassphraseFilePath |  Zorunlu. Parolanın konumu. Geçerli bir UNC veya yerel dosya yolu kullanın.
@@ -173,7 +173,7 @@ Sorunu belirlemek için yapılandırma sunucusunda C:\ProgramData\ASRSetupLogs\ 
     2018-06-28 14:38:12.971   Rolling back the install changes.
     2018-06-28 14:38:12.971   Upgrade has failed.
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
 Aşağıdaki hizmetleri el ile durdurun:
 
@@ -193,7 +193,7 @@ Yapılandırma sunucusunu güncelleştirmek için [Birleşik kurulumu](service-u
 Sorunu çözmek için Azure portal oturum açın ve aşağıdakilerden birini yapın:
 
 - AAD 'de uygulama geliştirici rolü isteyin. Uygulama geliştirici rolü hakkında daha fazla bilgi için [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
-- **Kullanıcının uygulama bayrağını oluşturbildiğini** , AAD 'de *true* olarak ayarlandığını doğrulayın. Daha fazla bilgi için bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- **Kullanıcının uygulama bayrağını oluşturbildiğini** , AAD 'de *true* olarak ayarlandığını doğrulayın. Daha fazla bilgi için bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>İşlem sunucusu/ana hedef, yapılandırma sunucusu ile iletişim kuramıyor 
 
@@ -216,7 +216,7 @@ MT aracı günlüklerinde aşağıdakine benzer izlemeler bulursanız, MT Aracı
  
 Bu hata, diğer uygulamalar bağlantı noktası 443 ' i kullanırken veya bağlantı noktasını engelleyen bir güvenlik duvarı ayarından dolayı bu hatayla karşılaşılabilir.
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
 - 443 numaralı bağlantı noktasının güvenlik duvarınız tarafından engellenmediğinden emin olun.
 - Bu bağlantı noktasını kullanan başka bir uygulama nedeniyle bağlantı noktasına erişilemezse, uygulamayı durdurun ve kaldırın.
@@ -228,7 +228,7 @@ Sorunu çözmek için:
 
 Bu hata, veritabanında birden çok yapılandırma sunucusu (CS) örnek UUID girişi olduğunda meydana gelebilir. Sorun genellikle yapılandırma sunucusu VM 'sini kopyaladığınızda oluşur.
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
 1. Eski/eski CS VM 'leri vCenter 'dan kaldırın. Daha fazla bilgi için bkz. [sunucuları kaldırma ve korumayı devre dışı bırakma](site-recovery-manage-registration-and-protection.md).
 2. Yapılandırma sunucusu VM 'de oturum açın ve MySQL svsdb1 veritabanına bağlanın. 
@@ -251,7 +251,7 @@ Yapılandırma sunucusu OVF 'ye doğru Kullanıcı adını ve parolayı girdikte
 
 Bu sorun, sistem saati yanlış olduğunda meydana gelebilir.
 
-Sorunu çözmek için:
+Bu sorunu çözmek için:
 
 Bilgisayarda doğru zamanı ayarlayın ve oturum açma işlemini yeniden deneyin. 
  

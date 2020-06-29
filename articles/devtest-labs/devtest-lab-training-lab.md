@@ -1,24 +1,14 @@
 ---
 title: Eğitim için Azure DevTest Labs kullanma | Microsoft Docs
 description: Bu makalede, Azure DevTest Labs eğitim için laboratuvar ayarlamak üzere izleyebileceğiniz ayrıntılı adımlar sağlanmaktadır.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 8f0a930d6e3c04548ade71f6d4e3294114eb60a2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 1a4b39d104d2ffdb45c23db2ad16cc4ee4627fb9
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896224"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484154"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Eğitim için Azure DevTest Labs kullanma
 Azure DevTest Labs, geliştirme ve test 'e ek olarak birçok temel senaryoyu uygulamak için kullanılabilir. Bu senaryolarından biri, eğitim için bir laboratuvar ayarlamaya yöneliktir. Azure DevTest Labs, eğitiminin aynı ve yalıtılmış ortamlar oluşturmak için kullanabileceği özel şablonlar sağlayabileceğiniz bir laboratuvar oluşturmanıza olanak sağlar. Eğitim ortamlarının yalnızca ihtiyaç duydukları ve sanal makineler gibi yeterli kaynak (eğitim için gerekli) içermesi durumunda her bir Trae tarafından kullanılabilir olmasını sağlamak için ilkeler uygulayabilirsiniz. Son olarak, laboratuvarı tek tıklamayla erişebilen traınees ile kolayca paylaşabilirsiniz.
