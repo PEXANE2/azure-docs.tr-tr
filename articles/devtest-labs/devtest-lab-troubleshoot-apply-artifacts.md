@@ -1,23 +1,14 @@
 ---
 title: Azure DevTest Labs yapıtlarla ilgili sorunları giderme | Microsoft Docs
 description: Azure DevTest Labs bir sanal makinede yapıtlar uygulanırken oluşan sorunları nasıl giderebileceğinizi öğrenin.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: spelluru
-ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898699"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483202"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs sanal makinesine yapıtlar uygulanırken sorunları giderme
 Yapıları bir sanal makineye uygulamak çeşitli nedenlerle başarısız olabilir. Bu makale, olası nedenleri belirlemenize yardımcı olmak için bazı yöntemlerle size rehberlik eder.

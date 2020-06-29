@@ -5,19 +5,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: kanshiG
 ms.author: govindk
-ms.date: 05/10/2020
-ms.openlocfilehash: 7a7428d3445d1d5846618bfd84c47121dc9a4bc1
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/25/2020
+ms.openlocfilehash: 8709389208ba1320685b1834b20893f08ef33ed7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262761"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482913"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Azure Cosmos kapsayıcısı veya bir hesap için normalleştirilmiş RU/s 'yi izleme
 
 Azure Cosmos DB için Azure Izleyici, hesabınızı izlemek ve panolar oluşturmak için bir ölçüm görünümü sağlar. Azure Cosmos DB ölçümleri varsayılan olarak toplanır, bu özellik açıkça her şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez.
 
-**NORMALLEŞTIRILMIŞ ru tüketim** ölçümü, çoğaltmaların, bölüm anahtarı aralıkları genelinde istek birimleri tüketimine göre ne kadar iyi doygun olduğunu görmek için kullanılır. Azure Cosmos DB, üretilen işi tüm fiziksel bölümler arasında eşit olarak dağıtır. Bu ölçüm, bir çoğaltma kümesi içindeki maksimum üretilen iş kullanımının saniye başına bir görünümünü sağlar. Bu ölçümü kullanarak, istek birimi kullanımının yüksek yüzdesini görürseniz, iş yükünüzün ihtiyaçlarını karşılamak için aktarım hızını artırmanız gerekir.
+**NORMALLEŞTIRILMIŞ ru tüketim** ölçümü, çoğaltmaların, bölüm anahtarı aralıkları genelinde istek birimleri tüketimine göre ne kadar iyi doygun olduğunu görmek için kullanılır. Azure Cosmos DB, üretilen işi tüm fiziksel bölümler arasında eşit olarak dağıtır. Bu ölçüm, bir çoğaltma kümesi içindeki maksimum üretilen iş kullanımının saniye başına bir görünümünü sağlar. Bu ölçümü, belirtilen kapsayıcının bölümleri genelinde RU/s kullanımını hesaplamak için kullanın. Bu ölçümü kullanarak, istek birimi kullanımının yüksek yüzdesini görürseniz, iş yükünüzün ihtiyaçlarını karşılamak için aktarım hızını artırmanız gerekir.
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Normalleştirilmiş RU/s daha yüksek olduğunda beklenmeli ve yapılacak
 

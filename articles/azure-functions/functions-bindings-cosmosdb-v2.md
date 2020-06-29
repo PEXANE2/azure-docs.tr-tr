@@ -1,24 +1,24 @@
 ---
-title: 2. x Işlevleri için Azure Cosmos DB bağlamaları
+title: 2. xD ve üzeri Işlevler için bağlama Azure Cosmos DB
 description: Azure Işlevlerinde Azure Cosmos DB Tetikleyicileri ve bağlamaları nasıl kullanacağınızı anlayın.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
-ms.openlocfilehash: f258a7aff52796a53540706bc8413575d63c9e7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c6efd14bd974de1b01b1725b9810f153df74bf8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77605766"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482182"
 ---
-# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>Azure Cosmos DB tetikleyicisi ve bağlamaları Azure Işlevleri 2. x genel bakış
+# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Cosmos DB tetikleyicisi ve bağlamaları Azure Işlevleri 2. x ve üzeri genel bakış
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Işlevleri çalışma zamanının sürümünü seçin: "]
 > * [Sürüm 1](functions-bindings-cosmosdb.md)
-> * [Sürüm 2](functions-bindings-cosmosdb-v2.md)
+> * [Sürüm 2 ve üzeri](functions-bindings-cosmosdb-v2.md)
 
-Bu makale kümesi, Azure Işlevleri 2. x içinde [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) bağlamalarıyla nasıl çalışılacağını açıklar. Azure Işlevleri Azure Cosmos DB için tetikleyici, giriş ve çıkış bağlamalarını destekler.
+Bu makale kümesi, Azure Işlevleri 2. x ve üzeri sürümlerde [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) bağlamalarıyla nasıl çalışılacağını açıklamaktadır. Azure Işlevleri Azure Cosmos DB için tetikleyici, giriş ve çıkış bağlamalarını destekler.
 
 | Eylem | Tür |
 |---------|---------|
@@ -27,9 +27,9 @@ Bu makale kümesi, Azure Işlevleri 2. x içinde [Azure Cosmos DB](../cosmos-db/
 | Azure Cosmos DB belgedeki değişiklikleri kaydetme  |[Çıkış bağlama](./functions-bindings-cosmosdb-v2-output.md) |
 
 > [!NOTE]
-> Bu başvuru, [Azure işlevleri sürüm 2. x](functions-versions.md)içindir.  Bu bağlamaları 1. x Işlevleri içinde kullanma hakkında daha fazla bilgi için bkz. [Azure işlevleri için Azure Cosmos DB bağlamaları 1. x](functions-bindings-cosmosdb.md).
+> Bu başvuru, [Azure işlevleri sürüm 2. x ve üzeri](functions-versions.md)içindir.  Bu bağlamaları 1. x Işlevleri içinde kullanma hakkında daha fazla bilgi için bkz. [Azure işlevleri için Azure Cosmos DB bağlamaları 1. x](functions-bindings-cosmosdb.md).
 >
-> Bu bağlamanın adı ilk olarak DocumentDB olarak adlandırılmıştır. Işlevler sürüm 2. x, tetikleyici, bağlamalar ve paketin adı Cosmos DB.
+> Bu bağlamanın adı ilk olarak DocumentDB olarak adlandırılmıştır. 2. x ve üzeri Işlevlerde, tetikleyici, bağlamalar ve paketin hepsi Cosmos DB adlandırılır.
 
 ## <a name="supported-apis"></a>Desteklenen API 'Ler
 

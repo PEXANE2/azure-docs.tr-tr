@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 26816a545cb83e0a3d996a8056b96154830e58b6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: df26a6815a3dde27559f2f55038bdccadd78ea0b
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195505"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482148"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -36,11 +36,8 @@ Hizmetleri kaydetmek için bir örneğe bileşen yapılandırmak ve eklemek üze
 Yöntemi kaydetmek için `FunctionsStartup` Başlangıç sırasında kullanılan tür adını belirten derleme özniteliğini ekleyin.
 
 ```csharp
-using System;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Http;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
@@ -52,7 +49,7 @@ namespace MyNamespace
         {
             builder.Services.AddHttpClient();
 
-            builder.Services.AddSingleton((s) => {
+            builder.Services.AddSingleton<IMyService>((s) => {
                 return new MyService();
             });
 
@@ -61,6 +58,8 @@ namespace MyNamespace
     }
 }
 ```
+
+Bu örnek, bir başlangıç kaydı için gereken [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) paketini kullanır `HttpClient` .
 
 ### <a name="caveats"></a>Uyarılar
 
@@ -72,48 +71,47 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>Eklenen bağımlılıkları kullan
 
-Oluşturucu Ekleme, bağımlılıklarınızı bir işlevde kullanılabilir hale getirmek için kullanılır. Oluşturucu Ekleme kullanımı statik sınıflar kullanmanıza gerek duyar.
+Oluşturucu Ekleme, bağımlılıklarınızı bir işlevde kullanılabilir hale getirmek için kullanılır. Oluşturucu Ekleme kullanımı, eklenen hizmetler veya işlev sınıflarınız için statik sınıflar kullanmanıza gerek duyar.
 
-Aşağıdaki örnek, `IMyService` ve `HttpClient` bağımlılıklarının http ile tetiklenen bir işleve nasıl eklendiğini gösterir. Bu örnek, bir başlangıç kaydı için gereken [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) paketini kullanır `HttpClient` .
+Aşağıdaki örnek, `IMyService` ve `HttpClient` bağımlılıklarının http ile tetiklenen bir işleve nasıl eklendiğini gösterir.
 
 ```csharp
-using System;
-using System.IO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MyNamespace
 {
-    public class HttpTrigger
+    public class MyHttpTrigger
     {
-        private readonly IMyService _service;
         private readonly HttpClient _client;
+        private readonly IMyService _service;
 
-        public HttpTrigger(IMyService service, HttpClient httpClient)
+        public MyHttpTrigger(HttpClient httpClient, MyService service)
         {
-            _service = service;
-            _client = httpClient;
+            this._client = httpClient;
+            this._service = service;
         }
 
-        [FunctionName("GetPosts")]
-        public async Task<IActionResult> Get(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "posts")] HttpRequest req,
+        [FunctionName("MyHttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-            var res = await _client.GetAsync("https://microsoft.com");
-            await _service.AddResponse(res);
+            var response = await _client.GetAsync("https://microsoft.com");
+            var message = _service.GetMessage();
 
-            return new OkResult();
+            return new OkObjectResult("Response from function with injected dependencies.");
         }
     }
 }
 ```
+
+Bu örnek, bir başlangıç kaydı için gereken [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) paketini kullanır `HttpClient` .
 
 ## <a name="service-lifetimes"></a>Hizmet yaşam süreleri
 
@@ -127,7 +125,9 @@ GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://aka
 
 ## <a name="logging-services"></a>Günlüğe kaydetme hizmetleri
 
-Kendi günlük sağlayıcınıza ihtiyacınız varsa, özel bir türü örnek olarak kaydedin `ILoggerProvider` . Application Insights, Azure Işlevleri tarafından otomatik olarak eklenir.
+Kendi günlük sağlayıcınıza ihtiyacınız varsa, bir özel türü [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) [Microsoft. Extensions. Logging. soyutlamalar](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet paketi aracılığıyla kullanılabilen bir örneği olarak kaydedin.
+
+Application Insights, Azure Işlevleri tarafından otomatik olarak eklenir.
 
 > [!WARNING]
 > - `AddApplicationInsightsTelemetry()`Ortam tarafından sunulan hizmetlerle çakışan Hizmetleri kaydederken hizmetler koleksiyonuna eklemeyin.
@@ -135,7 +135,9 @@ Kendi günlük sağlayıcınıza ihtiyacınız varsa, özel bir türü örnek ol
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> ve ıloggerfactory
 
-Konak, `ILogger<T>` `ILoggerFactory` kurucularına ve hizmet olarak eklenecek.  Bununla birlikte, varsayılan olarak bu yeni günlük filtreleri işlev günlüklerinden filtrelenecektir.  `host.json`Ek filtreleri ve kategorileri kabul etmek için dosyayı değiştirmeniz gerekir.  Aşağıdaki örnek, `ILogger<HttpTrigger>` ana bilgisayar tarafından açığa çıkarılan bir Günlükler eklemeyi gösterir.
+Ana bilgisayar, `ILogger<T>` `ILoggerFactory` oluşturucular halinde ve hizmetlerdeki Hizmetleri barındırır.  Bununla birlikte, varsayılan olarak bu yeni günlük filtreleri işlev günlüklerinden filtrelenerek yapılır.  `host.json`Ek filtreler ve kategoriler için kabul etmek üzere dosyayı değiştirmeniz gerekir.
+
+Aşağıdaki örnek, konağa açık olan günlüklerin nasıl ekleneceğini gösterir `ILogger<HttpTrigger>` .
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +162,7 @@ namespace MyNamespace
 }
 ```
 
-Ve `host.json` günlük filtresini ekleyen bir dosya.
+Aşağıdaki örnek `host.json` dosya günlük filtresini ekler.
 
 ```json
 {
@@ -251,7 +253,7 @@ public class HttpTrigger
 Seçeneklerle çalışma hakkında daha fazla ayrıntı için [ASP.NET Core Içindeki seçenekler düzenine](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) bakın.
 
 > [!WARNING]
-> *Yerel. Settings. JSON* veya appSettings gibi dosyalardaki değerleri okumaya çalışmadan kaçının *. { Tüketim planında Environment}. JSON* . Tetikleyici bağlantılarıyla ilgili bu dosyalardan okunan değerler, uygulama ölçeklenirken, ölçek denetleyicisi uygulamanın yeni örneklerini oluşturduğundan, barındırma altyapısının yapılandırma bilgilerine erişimi olmadığı için kullanılabilir değildir.
+> *local.settings.json* veya appSettings gibi dosyalardaki değerleri okumaya çalışmadan kaçının *. { Tüketim planında Environment}. JSON* . Tetikleyici bağlantılarıyla ilgili bu dosyalardan okunan değerler, uygulama ölçeklenirken, ölçek denetleyicisi uygulamanın yeni örneklerini oluşturduğundan, barındırma altyapısının yapılandırma bilgilerine erişimi olmadığı için kullanılabilir değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

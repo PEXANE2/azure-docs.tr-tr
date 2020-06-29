@@ -1,25 +1,14 @@
 ---
 title: Şablonlarla çoklu VM ortamları ve PaaS kaynakları oluşturma
 description: Azure Resource Manager şablonundan Azure DevTest Labs çoklu VM ortamları ve PaaS kaynakları oluşturmayı öğrenin
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 295a622397d686ab70bd3f687cde9dd9729aff6f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: bab107257a6233543cecfb664b3a6d313dd0e538
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897092"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481434"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonları ile çoklu VM ortamları ve PaaS kaynakları oluşturma
 

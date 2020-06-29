@@ -1,25 +1,14 @@
 ---
 title: AzCopy kullanarak Azure DevTest Labs VHD dosyasını karşıya yükleme | Microsoft Docs
 description: Bu makalede, Azure DevTest Labs ' de bir laboratuvarın depolama hesabına VHD dosyası yüklemek için AzCopy komut satırı yardımcı programını kullanma kılavuzu sağlanmıştır.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 49dc70788bf2a44b6925c5f3f8226fdadab8768c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: cbed78af3e74af5cf72fd20866abf1ee79011ef4
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898657"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483219"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>AzCopy kullanarak VHD dosyasını laboratuvarın depolama hesabına yükleyin
 

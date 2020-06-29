@@ -1,25 +1,14 @@
 ---
 title: Azure DevTest Labs 'de ortak ortamları yapılandırma ve kullanma | Microsoft Docs
 description: Bu makalede, Azure DevTest Labs ' de genel ortamların (bir git deposunda Azure Resource Manager şablonları) nasıl yapılandırılacağı ve kullanılacağı açıklanmaktadır.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 127a6986e04cf90f69b2a8ec70b90b877e534708
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896287"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482675"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Azure DevTest Labs ortak ortamları yapılandırma ve kullanma
 Azure DevTest Labs, sizin tarafınızdan bir dış GitHub kaynağına bağlanmak zorunda kalmadan ortamlar oluşturmak için kullanabileceğiniz [Azure Resource Manager şablonlarının ortak bir deposudur](https://github.com/Azure/azure-devtestlab/tree/master/Environments) . Bu depo, Azure Web Apps, Service Fabric kümesi ve geliştirme SharePoint grubu ortamı gibi sık kullanılan şablonları içerir. Bu özellik, oluşturduğunuz her laboratuvar için dahil edilen yapıların genel deposuna benzer. Ortam deposu, Labs içinde PaaS kaynakları için sorunsuz bir başlangıç deneyimi sunmak üzere en az giriş parametreleriyle önceden yazılmış ortam şablonlarına hızla başlamanızı sağlar. 

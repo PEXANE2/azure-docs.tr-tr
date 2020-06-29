@@ -8,20 +8,22 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118007"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483304"
 ---
-# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
+# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Anahtar/değer veritabanlarını, belge veritabanlarını ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için Azure Cosmos DB kullanabilirsiniz. Bu hızlı başlangıç, bir Azure Cosmos veritabanı ve bu veritabanı içindeki bir kapsayıcı oluşturmak için bir Kaynak Yöneticisi şablonu dağıtma işlemine odaklanmaktadır. Daha sonra bu kapsayıcıdaki verileri saklayabilirsiniz.
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Anahtar/değer veritabanlarını, belge veritabanlarını ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için Azure Cosmos DB kullanabilirsiniz. Bu hızlı başlangıç, bir Azure Cosmos veritabanı ve bu veritabanı içindeki bir kapsayıcı oluşturmak için bir Azure Resource Manager şablonu (ARM şablonu) dağıtma işlemine odaklanır. Daha sonra bu kapsayıcıdaki verileri saklayabilirsiniz.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure 'a dağıtma":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,11 +33,9 @@ Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-## <a name="create-an-azure-cosmos-account-database-container"></a>Azure Cosmos hesabı, veritabanı, kapsayıcı oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
-
-Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) alınmıştır.
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/).
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
@@ -49,7 +49,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablo
 
 Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb)bulunabilir.
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Cosmos hesabı, veritabanı ve bir kapsayıcı oluşturur.
 
@@ -57,7 +57,7 @@ Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galer
 
 2. Aşağıdaki değerleri seçin veya girin.
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Kaynak Yöneticisi şablonu, Azure Cosmos DB tümleştirme, Portal dağıtma":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM şablonu, Azure Cosmos DB tümleştirme, Portal dağıtma":::
 
     Belirtilmediği takdirde, Azure Cosmos kaynaklarını oluşturmak için varsayılan değerleri kullanın.
 
@@ -78,7 +78,7 @@ Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galer
 
 3. **Satın al**'ı seçin. Azure Cosmos hesabı başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Kaynak Yöneticisi şablonu, Cosmos DB tümleştirme, Portal dağıtma bildirimi":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM şablonu, Cosmos DB tümleştirme, Portal dağıtma bildirimi":::
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -132,7 +132,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir Azure Cosmos hesabı, veritabanı ve kapsayıcı oluşturdunuz ve dağıtımı doğruladı. Azure Cosmos DB ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta bir ARM şablonu kullanarak bir Azure Cosmos hesabı, veritabanı ve kapsayıcı oluşturdunuz ve dağıtımı doğruladı. Azure Cosmos DB ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
 
 - [Azure Cosmos DB genel bakışını](introduction.md) okuyun
 - [Azure Resource Manager](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin

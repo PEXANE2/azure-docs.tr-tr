@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/30/2020
+ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 85977819d30ddc8745eb9231242eb1990222676c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530997"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481791"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows için Log Analytics sanal makine uzantısı
 
@@ -36,6 +36,7 @@ Aşağıdaki tabloda, her sürüm için Windows Log Analytics sanal makine uzant
 
 | Log Analytics Windows Agent paketi sürümü | Log Analytics Windows VM Uzantısı sürümü | Yayın Tarihi | Sürüm Notları |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18038 | 1.0.18038 | Nisan 2020   | <ul><li>Azure Izleyici özel bağlantı kapsamlarını kullanarak özel bağlantı üzerinden bağlantıya izin verebilir</li><li>Bir çalışma alanına yönelik alma sırasında ani ve yanlışlıkla etkileyen bir x kullanmaktan kaçınmak için alım azaltma ekler</li><li>Ek Azure Kamu bulutları ve bölgeleri için destek ekler</li><li>HealthService.exe kilitlendiğinde oluşan bir hatayı çözer</li></ul> |
 | 10.20.18029 | 1.0.18029 | Mart 2020   | <ul><li>SHA-2 kod imzalama desteği ekler</li><li>VM Uzantısı yükleme ve yönetimini geliştirir</li><li>Sunucu tümleştirmesi için Azure Arc 'da bir hata çözer</li><li>Müşteri desteği için yerleşik bir sorun giderme aracı ekler</li><li>Ek Azure Kamu bölgeleri için destek ekler</li> |
 | 10.20.18018 | 1.0.18018 | Ekim 2019 | <ul><li> Küçük hata düzeltmeleri ve sabitleştirme iyileştirmeleri </li></ul> |
 | 10.20.18011 | 1.0.18011 | Temmuz 2019 | <ul><li> Küçük hata düzeltmeleri ve sabitleştirme iyileştirmeleri </li><li> Artan MaxExpressionDepth 10000 </li></ul> |
@@ -89,7 +90,7 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | yayımcı | Microsoft. EnterpriseCloud. Monitoring |
-| type | MicrosoftMonitoringAgent |
+| tür | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | çalışma alanı kimliği (ör.) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (ör.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
@@ -108,7 +109,7 @@ Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. 
 
 Bir sanal makine uzantısı için JSON, sanal makine kaynağının içinde iç içe veya Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirilmiş olabilir. JSON yerleştirmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. [alt kaynaklar için ad ve tür ayarlama](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
-Aşağıdaki örnek, Log Analytics uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını yuvalama sırasında JSON, sanal makinenin `"resources": []` nesnesine yerleştirilir.
+Aşağıdaki örnek, Log Analytics uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını yuvalama sırasında JSON, `"resources": []` sanal makinenin nesnesine yerleştirilir.
 
 
 ```json
@@ -163,7 +164,7 @@ JSON uzantısını şablon köküne yerleştirirken, kaynak adı üst sanal maki
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-Komut `Set-AzVMExtension` , Log Analytics Aracısı sanal makinesi uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir. 
+`Set-AzVMExtension`Komut, Log Analytics Aracısı sanal makinesi uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6141440cdb5b232145417c6051cb340e806f9352
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: b98a5a25ed0aa97a8fa187a9bb1a8075f550d7ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338006"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482403"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -187,16 +187,16 @@ Import-Module .\HybridRegistration.psd1
 Şimdi `Add-HybridRunbookWorker` aşağıdaki söz dizimini kullanarak cmdlet 'i çalıştırın.
 
 ```powershell-interactive
-Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
+Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 ```
 
-Parametreler için gereken bilgileri `EndPoint` ve `Token` Otomasyon hesabınızdaki **anahtarlar** sayfasını alabilirsiniz. Sayfanın sol tarafındaki **Hesap ayarları** bölümünün altında bulunan **anahtarlar** ' ı seçin.
+Parametreler için gereken bilgileri `Url` ve `Key` Otomasyon hesabınızdaki **anahtarlar** sayfasını alabilirsiniz. Sayfanın sol tarafındaki **Hesap ayarları** bölümünün altında bulunan **anahtarlar** ' ı seçin.
 
 ![Anahtarları Yönet sayfası](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* Parametresi için `EndPoint` , **URL**değerini kopyalayın.
+* Parametresi için `Url` , **URL**değerini kopyalayın.
 
-* Parametresi için `Token` , **BIRINCIL erişim anahtarı**değerini kopyalayın.
+* Parametresi için `Key` , **BIRINCIL erişim anahtarı**değerini kopyalayın.
 
 * Parametresi için `GroupName` karma Runbook Worker grubunun adını kullanın. Bu grup Otomasyon hesabında zaten mevcutsa, geçerli makine buna eklenir. Bu grup yoksa, eklenir.
 
@@ -219,7 +219,7 @@ Yüklenen modüller, `PSModulePath` karma çalışanın otomatik olarak içe akt
 3. Yönetici modunda bir PowerShell oturumu açın ve URL 'niz ile birincil erişim anahtarı değerlerinizle aşağıdaki komutu çalıştırın. `Verbose`Kaldırma işleminin ayrıntılı günlüğü için parametresini kullanın. Eski makineleri karma çalışanı grubundan kaldırmak için isteğe bağlı `machineName` parametresini kullanın.
 
 ```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <primaryAccessKey> -machineName <computerName>
+Remove-HybridRunbookWorker -Url <URL> -Key <primaryAccessKey> -MachineName <computerName>
 ```
 
 ## <a name="remove-a-hybrid-worker-group"></a>Karma Çalışanı grubunu kaldırma

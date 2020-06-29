@@ -1,23 +1,14 @@
 ---
 title: Ortamları Azure DevTest Labs Azure Pipelines ile tümleştirin
 description: Azure DevTest Labs ortamlarını Azure DevOps sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hatları ile tümleştirmeyi öğrenin.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: bafc4cd08d7b4ee2124c46984121b53cd4651baf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898111"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483032"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Ortamları Azure DevOps CI/CD işlem hatlarınızla tümleştirin
 Sürekli tümleştirme (CI)/sürekli teslim (CD) derleme ve yayın işlem hattınızı Azure DevTest Labs ile kolayca tümleştirmek için Azure DevOps Services yüklenen Azure DevTest Labs görevleri uzantısını (eskiden Visual Studio Team Services olarak bilinir) kullanabilirsiniz. Bu uzantılar, belirli bir test görevi için bir [ortamı](devtest-lab-test-env.md) hızlı bir şekilde dağıtmayı kolaylaştırır ve sonra test tamamlandığında onu siler. 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 911fa7d509e756f482b2deefad11e35f9cb5ec01
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117956"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483321"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,6 +23,9 @@ ms.locfileid: "85117956"
 Azure Machine Learning tarafından kullanılan Azure depolama hesapları için erişim anahtarlarını değiştirme hakkında bilgi edinin. Azure Machine Learning, verileri veya eğitilen modelleri depolamak için depolama hesaplarını kullanabilir.
 
 Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değiştirmeniz gerekebilir. Erişim anahtarını yeniden oluşturduğunuzda Azure Machine Learning yeni anahtarı kullanmak için güncelleştirilmeleri gerekir. Azure Machine Learning, hem model depolama hem de bir veri deposu olarak depolama hesabı kullanıyor olabilir.
+
+> [!IMPORTANT]
+> Datamağazalarla birlikte kayıt defteri kaydı, çalışma alanıyla ilişkili Azure Key Vault kaydedilir. Key Vault için [geçici silme](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) etkinse, kimlik bilgilerini güncelleştirmek için bu makaleyi izlediğinizden emin olun. Veri deposunun kaydını silme ve aynı ada göre yeniden kaydetme başarısız olur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3b194755e96e8b8dec2bd0325417950ffe96241c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339317"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482420"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için MediusFlow yapılandırma
 
@@ -56,7 +56,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 Aşağıdaki adımları gerçekleştirerek, MediusFlow içindeki Azure AD oturum açma ve Azure AD yapılandırma özelliğinin erişimini etkinleştirerek başlayın:
 
 #### <a name="user-login"></a>Kullanıcı oturumu açma
-Uygulamasına Microsoft 365/Azure AD 'ye oturum açma akışını etkinleştirmek için [this] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) makalesine bakın.
+Microsoft 365/Azure AD 'de oturum açma akışını etkinleştirmek için [this] (makalesine başvurun https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) .
 
 #### <a name="user-transfer-configuration"></a>Kullanıcı Aktarım yapılandırması
 Azure AD 'den sağlama için kullanıcıların yapılandırma portalını etkinleştirmek üzere [Bu](

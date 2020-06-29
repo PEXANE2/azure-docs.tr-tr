@@ -11,12 +11,12 @@ ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 28bbd6d237dc09a29f945c602afd904e0c50281d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d4a08035b03c104555c39311bfb812218cca44b1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214494"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482556"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure SYNAPSE SQL havuzunda yedekleme ve geri yükleme
 
@@ -107,4 +107,4 @@ Abonelik genelinde doğrudan geri yüklemeniz gerekiyorsa [Bu yetenek için](htt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Olağanüstü durum planlaması hakkında daha fazla bilgi için bkz. [iş sürekliliği genel bakış](../../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Geri yükleme noktaları hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı geri yükleme noktaları](sql-data-warehouse-restore-points.md)

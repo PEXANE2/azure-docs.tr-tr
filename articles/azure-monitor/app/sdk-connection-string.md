@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125715"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482131"
 ---
 # <a name="connection-strings"></a>Bağlantı dizeleri
 
@@ -57,7 +57,7 @@ Bağlantı desteklenen en fazla 4096 karakter uzunluğunda.
 
 Bağlantı dizesi, noktalı virgülle ayrılmış anahtar-değer çiftleri olarak temsil edilen ayarların bir listesini içerir:`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Sözdizimi
+#### <a name="syntax"></a>Syntax
 
 - `InstrumentationKey`(örn: 00000000-0000-0000-0000-000000000000)  Bağlantı dizesi **gerekli** bir alandır.
 - `Authorization`(örn: Ikey) (Bugün yalnızca Ikey yetkilendirmesini desteklediğimiz için bu ayar isteğe bağlıdır.)
@@ -165,7 +165,7 @@ Bir bağlantı dizesi, kod, ortam değişkeni veya yapılandırma dosyası arac�
 
 TelemetryConfiguration. ConnectionString:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net açıkça ayarlanmış:
+.NET açıkça ayarlanmış:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -182,8 +182,16 @@ var configuration = new TelemetryConfiguration
 </ApplicationInsights>
 ```
 
+NetCore açıkça ayarlanmış:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var options = new ApplicationInsightsServiceOptions { ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;" };
+    services.AddApplicationInsightsTelemetry(options: options);
+}
+```
 
-NetCore config. JSON: 
+NetCore config.js: 
 
 ```json
 {
@@ -202,7 +210,7 @@ Java (v 2.5. x) açıkça ayarlanmış:
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights. xml
+ApplicationInsights.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738108"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482692"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
@@ -58,7 +58,7 @@ App Service planınızı yükselterek, kotalarınızı uygulamanızı artırabil
 ## <a name="understand-metrics"></a>Ölçümleri anlama
 
 > [!NOTE]
-> **Dosya sistemi kullanımı** , genel olarak alınan yeni bir ölçümdür, özel önizleme için beyaz listeye alınmadığınız takdirde hiçbir veri beklenmez.
+> **Dosya sistemi kullanımı** , genel olarak alınan yeni bir ölçümdür, özel önizleme için erişim izni verilmediği takdirde hiçbir veri beklenmez.
 > 
 
 > [!IMPORTANT]
@@ -68,12 +68,12 @@ App Service planınızı yükselterek, kotalarınızı uygulamanızı artırabil
 
 Bir uygulama için kullanılabilir ölçümler şunlardır:
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | --- | --- |
 | **Yanıt süresi** | Uygulamanın isteklere istek görmesi için geçen süre (saniye cinsinden). |
 | **Ortalama yanıt süresi (kullanım dışı)** | Uygulama için geçen ortalama süre (saniye cinsinden). |
 | **Ortalama bellek çalışma kümesi** | Uygulama tarafından, megabayt (MIB) cinsinden kullanılan ortalama bellek miktarı. |
-| **Bağlantılar** | Korumalı alan içindeki ilişkili yuva sayısı (W3wp. exe ve onun alt işlemi).  Bağlama yuvası, bind ()/Connect () API 'Leri çağırarak ve bir yuva CloseHandle ()/Closesocket () ile kapatılana kadar kalır. |
+| **Bağlantılar** | Korumalı alan içindeki ilişkili yuva sayısı (w3wp.exe ve alt işlemi).  Bağlama yuvası, bind ()/Connect () API 'Leri çağırarak ve bir yuva CloseHandle ()/Closesocket () ile kapatılana kadar kalır. |
 | **CPU süresi** | Uygulama tarafından saniye cinsinden tüketilen CPU miktarı. Bu ölçüm hakkında daha fazla bilgi için bkz. [CPU saati vs CPU yüzdesi](#cpu-time-vs-cpu-percentage). |
 | **Geçerli derlemeler** | Bu uygulamadaki tüm AppDomain 'ler genelinde yüklenen derlemelerin geçerli sayısı. |
 | **Içindeki veriler** | MIB içinde uygulama tarafından tüketilen gelen bant genişliği miktarı. |
@@ -112,7 +112,7 @@ App Service planı için kullanılabilir ölçümler şunlardır:
 > App Service planı ölçümleri yalnızca *temel*, *Standart*ve *Premium* katmanlardaki planlar için kullanılabilir.
 > 
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | --- | --- |
 | **CPU Yüzdesi** | Planın tüm örnekleri genelinde kullanılan ortalama CPU. |
 | **Bellek yüzdesi** | Planın tüm örnekleri genelinde kullanılan ortalama bellek. |
@@ -138,13 +138,13 @@ Bir uygulamayı etkileyen çeşitli kotalar ve ölçümlerin durumunu gözden ge
 
 ![Azure portal kota grafiği][quotas]
 
-Kotaları bulmak için, **Ayarlar** > **Kotalar**' ı seçin. Grafik üzerinde şunları gözden geçirebilirsiniz: 
+Kotaları bulmak için, **Ayarlar**  >  **Kotalar**' ı seçin. Grafik üzerinde şunları gözden geçirebilirsiniz: 
 1. Kota adı.
 1. Sıfırlama aralığı.
 1. Geçerli sınırı.
 1. Geçerli değeri.
 
-![Azure portal][metrics] ölçüm grafiği doğrudan kaynak **genel bakış** sayfasından ölçümlere erişebilirsiniz. Burada bazı uygulama ölçümlerini temsil eden grafikler görürsünüz.
+![Azure portal ölçüm grafiği ][metrics] doğrudan kaynak **genel bakış** sayfasından ölçümlere erişebilirsiniz. Burada bazı uygulama ölçümlerini temsil eden grafikler görürsünüz.
 
 Bu grafiklerin herhangi birine tıkladığınızda, özel grafikler oluşturabileceğiniz, farklı ölçümleri Sorgulayabileceğiniz ve çok daha birçok Ölçüm görünümü uygulanır. 
 

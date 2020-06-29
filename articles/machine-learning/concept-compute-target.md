@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/30/2020
-ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/26/2020
+ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780122"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483287"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -52,21 +52,23 @@ Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur 
 * Azure Machine Learning Studio
 * Azure portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) ve [amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) sınıfları
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Önizleme)
 * Resource Manager şablonu
-
-Ayrıca [, Azure CLI için Machine Learning uzantısını](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)kullanarak işlem kümeleri oluşturabilirsiniz.
+* [Azure CLI için](reference-azure-machine-learning-cli.md#resource-management)Machine Learning uzantısı.  
 
 Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin aksine, çalışma alanınızın otomatik olarak bir parçasıdır.
 
-### <a name="compute-clusters"></a>İşlem kümeleri
 
-Eğitim için Azure Machine Learning işlem kümelerini ve toplu iş ınuzyı (Önizleme) için kullanabilirsiniz.  Bu işlem kaynağıyla şunları yapabilirsiniz:
+|Özellik  |İşlem kümesi  |İşlem örneği  |
+|---------|---------|---------|
+|Tek veya çok düğümlü küme     |    **&check;**       |         |
+|Her çalıştırma gönderdiğinizde otomatik ölçekler     |     **&check;**      |         |
+|Otomatik küme yönetimi ve iş zamanlaması     |   **&check;**        |     **&check;**      |
+|Hem CPU hem de GPU kaynakları için destek     |  **&check;**         |    **&check;**       |
 
-* Tek veya çok düğümlü küme
-* Her çalıştırma gönderdiğinizde otomatik ölçeklendirme 
-* Otomatik küme yönetimi ve iş zamanlaması 
-* Hem CPU hem de GPU kaynakları için destek
+
+> [!NOTE]
+> Bir işlem kümesi boşta olduğunda, otomatik olarak 0 düğüme ölçeklenirken, kullanımda olmadığında ödeme yapmayın.  Ancak, bir işlem *örneği*her zaman açık olur ve otomatik ölçeklendirme yapmaz.  Ek maliyetten kaçınmak için, bunu kullanmadığınız durumlarda [işlem örneğini durdurmanız](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) gerekir.
 
 ### <a name="supported-vm-series-and-sizes"></a>Desteklenen VM Serisi ve boyutları
 
@@ -80,17 +82,17 @@ Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için a
 
 | **Desteklenen VM Serisi**  | **Kısıtlamalar** |
 |------------|------------|
-| D | Yok |
-| Dv2 | Yok |  
-| DSv2 | Yok |  
-| FSv2 | Yok |  
+| D | Hiçbiri |
+| Dv2 | Hiçbiri |  
+| DSv2 | Hiçbiri |  
+| FSv2 | Hiçbiri |  
 | M | Onay gerekiyor |
-| NC | Yok |    
+| NC | Hiçbiri |    
 | NCsv2 | Onay gerekiyor |
 | NCsv3 | Onay gerekiyor |  
 | Üstündeki | Onay gerekiyor |
 | NDv2 | Onay gerekiyor |
-| NV | Yok |
+| NV | Hiçbiri |
 | NVv3 | Onay gerekiyor | 
 
 

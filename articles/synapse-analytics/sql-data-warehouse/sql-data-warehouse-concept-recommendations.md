@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2020
+ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 3fcf19ffdce57051e86d6e4bab37d719c91a8a1f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206637"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482862"
 ---
 # <a name="synapse-sql-recommendations"></a>SYNAPSE SQL önerileri
 
@@ -70,3 +70,7 @@ Büyük bir çalışma kümesine sahipseniz, düşük bir önbellek isabet yüzd
 ## <a name="tempdb-contention"></a>Tempdb çekişmesi
 
 Yüksek tempdb Çekişmesi olduğunda sorgu performansı düşebilir.  Tempdb çekişmesi, Kullanıcı tanımlı geçici tablolar aracılığıyla veya büyük miktarda veri hareketi olduğunda meydana gelebilir. Bu senaryoda, daha fazla tempdb ayırması için ölçeklendirebilir ve sorgularınızı daha fazla bellek sağlamak üzere [kaynak sınıflarını ve iş yükü yönetimini yapılandırabilirsiniz](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) . 
+
+## <a name="data-loading-misconfiguration"></a>Veri yükleme yanlış yapılandırma
+
+Gecikme süresini en aza indirmek için SQL havuzunuzun her zaman aynı bölgedeki bir depolama hesabından veri yüklemeniz gerekir. [Yüksek aktarım hızı verileri alımı Için kopyalama ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanın ve üretilen dosyalarınızı depolama hesabınızda bölerek üretilen iş üretimini en üst düzeye çıkarın. COPY ifadesini kullanamıyoruz, daha iyi aktarım hızı için SqlBulkCopy API veya bcp 'yi yüksek bir toplu iş boyutuyla birlikte kullanabilirsiniz. Ek veri yükleme kılavuzu için aşağıdaki [belgeleri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)ziyaret edin. 

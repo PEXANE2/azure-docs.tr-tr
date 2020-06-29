@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c4bbc3510cc273504d7c97287d3aeb1948db2eb2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c4cdfc35d39be827109c56a16d68f6e51b56ef43
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390678"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483355"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -124,7 +124,6 @@ JSON nesnesi olarak biçimlendirilen bir dijital ikizi örneği aşağıda veril
   "component": {
     "TableOccupancy": 1,
     "$metadata": {
-      "$model": "dtmi:com:contoso:Table;1",
       "TableOccupancy": {
         "desiredValue": 1,
         "desiredVersion": 3,
@@ -163,7 +162,7 @@ Bir JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi bir ilişki aşa�
 
 | Alan adı | Açıklama |
 | --- | --- |
-| `$edgeId` | Bu ilişki ucunun KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış bir dize. Bu dize, kaynak dijital ikizi bağlamında benzersizdir, bu da `sourceId`  +  `edgeId` Azure dijital TWINS örneği bağlamında benzersiz anlamına gelir. |
+| `$relationshipId` | Bu ilişkinin KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış bir dize. Bu dize, kaynak dijital ikizi bağlamında benzersizdir, bu da `sourceId`  +  `relationshipId` Azure dijital TWINS örneği bağlamında benzersiz anlamına gelir. |
 | `$sourceId` | Kaynak dijital ikizi KIMLIĞI |
 | `$targetId` | Hedef dijital ikizi KIMLIĞI |
 | `$relationshipName` | İlişkinin adı |
@@ -173,9 +172,10 @@ JSON nesnesi olarak biçimlendirilen bir ilişki örneği aşağıda verilmişti
 
 ```json
 {
-  "$edgeId": "Edge-01",
+  "$relationshipId": "relationship-01",
+  "$etag": "W/\"506e8391-2b21-4ac9-bca3-53e6620f6a90\"",
   "$sourceId": "GroundFloor",
-  "$relationship": "contains",
+  "$relationshipName": "contains",
   "$targetId": "Cafe",
   "startDate": "2020-02-04"
 }

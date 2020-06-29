@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684737"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483389"
 ---
-# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanın
+# <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Öğretici: bir Machine Learning modeli oluşturmak için R kullanma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu öğreticide, bir arabadaki bir Fatality olma olasılığını tahmin eden bir lojistik regresyon modeli oluşturmak için Azure Machine Learning R SDK 'sını kullanacaksınız. Azure Machine Learning Bulut kaynaklarının, eğitim ve bir modeli dağıtmaya yönelik ölçeklenebilir bir ortam sağlamak için R ile nasıl çalıştığını göreceksiniz.  
+Bu öğreticide, bir arabadaki bir Fatality olma olasılığını tahmin eden bir lojistik regresyon modeli oluşturmak için Azure Machine Learning R SDK (Önizleme) kullanacaksınız. Azure Machine Learning Bulut kaynaklarının, eğitim ve bir modeli dağıtmaya yönelik ölçeklenebilir bir ortam sağlamak için R ile nasıl çalıştığını göreceksiniz.  
 
 Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > [!div class="checklist"]
@@ -73,7 +73,7 @@ Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere M
 
 1. Çalışma alanına erişen her kullanıcıyı gösteren bir klasör listesi görüntülenir.  **Vignettes** klasörünü kopyalamak için klasörünüzü seçin.
 
-## <a name="a-nameopenopen-rstudio"></a><a name="open">RStudio 'Yu aç
+## <a name="open-rstudio"></a><a name="open"></a>RStudio 'Yu aç
 
 Bu öğreticiyi çalıştırmak için bir işlem örneği veya Not defteri sanal makinesinde RStudio kullanın.  
 
@@ -124,7 +124,7 @@ library(azuremlsdk)
 Eğitim ve Puanlama betikleri ( `accidents.R` ve `accident_predict.R` ) bazı ek bağımlılıklara sahiptir. Bu betikleri yerel olarak çalıştırmayı planlıyorsanız, gerekli paketlerin de bulunduğundan emin olun.
 
 ### <a name="load-your-workspace"></a>Çalışma alanınızı yükleme
-Mevcut çalışma alanınızdan bir çalışma alanı nesnesi örneği oluşturun. Aşağıdaki kod, **config. JSON** dosyasından çalışma alanı ayrıntılarını yükler. Ayrıca kullanarak bir çalışma alanı da alabilirsiniz [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
+Mevcut çalışma alanınızdan bir çalışma alanı nesnesi örneği oluşturun. Aşağıdaki kod, çalışma alanı ayrıntılarını dosyadaki **config.js** yükleyecek. Ayrıca kullanarak bir çalışma alanı da alabilirsiniz [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
 
 ```R
 ws <- load_workspace_from_config()

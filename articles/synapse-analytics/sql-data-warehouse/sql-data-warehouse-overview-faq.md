@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a0d98a2c58e7629f988d0d3e8015355ba414c07a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85201150"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482539"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 
@@ -56,10 +56,6 @@ A. Geçerli [Kapasite limitleri](sql-data-warehouse-service-capacity-limits.md) 
 S. Neden Ölçeklendirmeliyim/Duraklat/devam eden uzun sürüyor?
 
 A. Birkaç etken, işlem yönetimi işlemlerinin süresini etkileyebilir. Uzun süre çalışan işlemler için ortak bir durum işlem geri alma işlemi olur. Bir ölçek veya duraklatma işlemi başlatıldığında, tüm gelen oturumlar engellenir ve sorgular kaldırılır. Sistemin kararlı durumda kalmasını sağlamak için, bir işlemin bir işlem yapılmadan önce geri alınması gerekir. İşlemin ne kadar büyük olması ve günlük boyutunun daha büyük olması, işlemin daha uzun olması sistem kararlı duruma geri yüklenmeye karşı daha uzundur.
-
-S: Azure SYNAPSE 'de yayımlanmış bir yapıtı (veri kümesi, Not defteri, SQL betiği vb.) yeniden adlandırma Nasıl yaparım??
-
-Y: yayımlanmış bir yapıt dosyasını yeniden adlandırmak Için, önce dosyayı kopyalayın ve yeni dosyayı tercih ettiğiniz adla yeniden adlandırın. Yapıtın tüm başvurularını yeni dosya adına el ile güncelleştirmeniz ve eski olanı silmeniz gerekir.
 
 ## <a name="user-support"></a>Kullanıcı desteği
 

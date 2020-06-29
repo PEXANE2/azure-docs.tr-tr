@@ -9,13 +9,13 @@ ms.author: sgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 507b03266e70ae082872890c9d5cddb50fdeb703
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719993"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481893"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning ile veri işlemeyi iyileştirme
 
@@ -51,7 +51,7 @@ Birden çok sanal CPU için vCPU, bir bölümün makinede her vCPU 'Nun sahip ol
 
 Makinenize daha fazla RAM ekleyemiyorum, CPU iş yüklerini en aza indirmek ve işlem sürelerini iyileştirmek için aşağıdaki teknikleri uygulayabilirsiniz. Bu öneriler hem tek hem de Dağıtılmış sistemlere aittir.
 
-Teknik | Description
+Teknik | Açıklama
 ----|----
 Sıkıştırma | Verileriniz için, daha az bellek kullanan ve hesaplamanızın sonuçlarını önemli ölçüde etkilemeyen bir şekilde farklı bir gösterim kullanın.<br><br>*Örnek:* Girişleri her giriş için yaklaşık 10 bayt veya daha fazla olan bir dize olarak depolamak yerine, bunları bir Boolean, true veya false olarak depolayarak 1 baytlık bir biçimde saklayabilirsiniz.
 Öbekleme | Verileri alt kümeler (parçalar) halinde belleğe yükleyin, verileri zamanında bir alt küme veya paralel olarak birden çok alt küme ile işleme. Bu yöntem, tüm verileri işleyebilmeniz, ancak tüm verileri tek seferde belleğe yüklemeniz gerekmiyorsa en iyi şekilde geçerlidir. <br><br>*Örnek:* Her seferinde bir yıl boyunca verilerin tam olarak işlenmesi yerine verileri bir ay yükleyin ve işleyin.
@@ -61,9 +61,10 @@ Dizinleme | Size önem verdiğiniz verileri nerede bulabileceğinizi belirten bi
 
 Önceki öneriler yeterli değilse ve verilerinize uygun bir sanal makine alamazsanız, şunları yapabilirsiniz 
 
-* `Spark` `Dask` ' Bellek yetersiz ' verilerini işlemek için veya gibi bir çerçeve kullanın. Bu seçenekte, veri çerçevesi, son olarak toplanmakta olan son sonuçla birlikte bölüm tarafından RAM bölümüne yüklenir ve işlenir. 
+* `Spark` `Dask` ' Bellek yetersiz ' verilerini işlemek için veya gibi bir çerçeve kullanın. Bu seçenekte, veri çerçevesi, son olarak toplanmakta olan son sonuçla birlikte bölüm tarafından RAM bölümüne yüklenir ve işlenir.  
 
 * Dağıtılmış bir çerçeve kullanarak bir kümeye Genişleme. Bu seçenekte, veri işleme yükleri, son olarak toplanan son sonuçla birlikte paralel olarak çalışan birden çok CPU üzerinde bölünür ve işlenir.
+
 
 ### <a name="recommended-distributed-frameworks"></a>Önerilen dağıtılmış çerçeveler
 
@@ -75,6 +76,8 @@ Hakkında bilginiz varsa`Pandas`| `Modin`veya `Dask` veri çerçevesi
 Tercih ediyorsanız`Spark` | `PySpark`
 1 GB 'tan küçük veriler için | `Pandas`Yerel olarak **veya** bir uzak Azure Machine Learning işlem örneği
 10 GB 'tan büyük veriler için| `Ray`, Veya kullanarak bir kümeye taşıma `Dask``Spark`
+
+`Dask`Azure ML işlem kümesinde, [pask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) paketiyle kümeler oluşturabilirsiniz. Ya da `Dask` bir işlem örneğinde yerel olarak çalıştırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

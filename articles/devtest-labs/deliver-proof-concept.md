@@ -1,24 +1,14 @@
 ---
 title: Kavram kanıtı sunma-Azure DevTest Labs | Microsoft Docs
 description: Azure DevTest Labs bir kurumsal ortama başarıyla dahil edilmesi için bir kavram kanıtı sunma hakkında bilgi edinin.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: tanmayeekamath
-manager: femila
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: takamath
-ms.openlocfilehash: ca843213760cee60799568a6f33059c2bd91c835
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/2/2020
+ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897183"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481366"
 ---
 # <a name="deliver-a-proof-of-concept"></a>Kavram kanıtı sunun 
 
@@ -81,7 +71,7 @@ Bu bölümde, bir pilot for DevTest Labs kavramının kapsamını belirlemek iç
 > [!TIP]
 > Projenizi hata için ayarlama olasılığını en aza indirmek için, bu bölümde açıklanan örneği atlamanızı kesinlikle öneririz. 
 
-### <a name="overview"></a>Genel bakış 
+### <a name="overview"></a>Genel Bakış 
 
 Şirket ağından yalıtılmış bir ortam olarak kullanılacak satıcıların DevTest Labs 'e dayalı olarak Azure 'da yeni bir ortam geliştirmeyi planlıyoruz. Çözümün gereksinimleri karşılayıp karşılamadığını öğrenmek için, uçtan uca çözümü doğrulamaya yönelik bir kavram kanıtı geliştiriyoruz. Deneyiminizi denemek ve doğrulamak için birkaç satıcı ekledik. 
 

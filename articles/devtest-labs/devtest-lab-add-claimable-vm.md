@@ -1,25 +1,14 @@
 ---
 title: Azure DevTest Labs çakışan VM 'Ler oluşturun ve yönetin | Microsoft Docs
 description: Azure DevTest Labs bir laboratuvara çakışan sanal makine eklemeyi öğrenin
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: f671e66e-9630-4e30-a131-a6bad9ed9c11
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
-ms.author: spelluru
-ms.openlocfilehash: 988e07c03cb8081e3e6014e626d5fcf7a254a8dd
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 7a4e465f0ba6c592f173a0c48aadd51f3e12ea07
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895552"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481315"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs çakışan VM 'Ler oluşturun ve yönetin
 [Özel bir görüntü](devtest-lab-create-template.md), [Formül](devtest-lab-manage-formulas.md)veya [Market görüntüsü](devtest-lab-configure-marketplace-images.md)olan BIR *tabandan* , [Standart bir VM](devtest-lab-add-vm.md) 'yi nasıl ekleyeceğiniz gibi bir laboratuvarya bir laboratuvara bir sanal makine eklersiniz. Bu öğreticide, DevTest Labs içindeki bir laboratuvara çakışmaz bir VM eklemek için Azure portal kullanma ve bir kullanıcının VM 'yi talep etmek ve talep etmek için izlediği süreçler gösterilmektedir.

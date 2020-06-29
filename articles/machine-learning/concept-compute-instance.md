@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 8c03df8fb0cd8f5f092450ebe4c66266d2ff4293
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 8713e7538ae65fc8e750d5b3244482a5503b0e37
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816361"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483270"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -33,7 +33,7 @@ Bulutta tam olarak yapılandırılmış ve yönetilen geliştirme ortamınız ol
 
 |Önemli avantajlar||
 |----|----|
-|Üretkenlik|Veri bilimcileri, tümleşik not defterlerini ve Web tarayıcılarında aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilir:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio|
+|Üretkenlik|Veri bilimcileri, tümleşik not defterlerini ve Web tarayıcılarında aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilir:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio (Önizleme)|
 |Yönetilen & güvenli|Güvenlik ayak izini azaltın ve kurumsal güvenlik gereksinimleriyle uyumluluk ekleyin. İşlem örnekleri, güçlü yönetim ilkeleri ve güvenli ağ yapılandırmalarının yanı sıra şunları sağlar:<br/><br/>-Kaynak Yöneticisi şablonlarından veya Azure Machine Learning SDK 'dan otomatik sağlama<br/>- [Rol tabanlı erişim denetimi (RBAC)](/azure/role-based-access-control/overview)<br/>- [Sanal ağ desteği](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH erişimini etkinleştirmek/devre dışı bırakmak için SSH ilkesi|
 |Önceden yapılandırılmış &nbsp; veya &nbsp; ml|Önceden yapılandırılmış ve güncel ML paketleri, derin öğrenme çerçeveleri, GPU sürücüleri ile kurulum görevlerinde zaman kazanın.|
 |Tamamen özelleştirilebilir|GPU 'Lar ve kalıcı alt düzey özelleştirme dahil olmak üzere Azure VM türleri için kapsamlı destek; Örneğin, paket ve sürücü yükleme, gelişmiş senaryolar için bir Breeze sağlar. |
@@ -58,7 +58,7 @@ Bu araçlar ve ortamlar, işlem örneğine yüklenir:
 
 |**R** araçları & ortamları|Ayrıntılar|
 |----|:----:|
-|RStudio Server açık kaynak sürümü||
+|RStudio Server açık kaynak sürümü (Önizleme)||
 |R çekirdeği||
 |R için SDK Azure Machine Learning|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK örnekleri|
 

@@ -4,13 +4,13 @@ description: Azure Izleyici, Azure Işlevleri üzerinde çalışan uygulamanızl
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
-ms.date: 05/20/2020
-ms.openlocfilehash: a936c77abb9aed5886fae8b2ec4a10bb076b7cb5
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 06/26/2020
+ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776744"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482114"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Azure Izleme Application Insights Azure Işlevleri 'Ni izleme
 
@@ -20,11 +20,10 @@ Application Insights günlük, performans ve hata verilerini toplar ve performan
 
 Gerekli Application Insights araçları Azure Işlevleri 'nde yerleşik olarak bulunur. Tek yapmanız gereken tek şey, işlev uygulamanızı bir Application Insights kaynağına bağlamak için geçerli bir izleme anahtarıdır. İşlev uygulaması kaynağınız Azure 'da oluşturulduğunda, izleme anahtarı uygulama ayarlarınıza eklenmelidir. İşlev uygulamanız zaten bu anahtara sahip değilse, el ile ayarlayabilirsiniz. Daha fazla bilgi için [Azure işlevlerini izleme](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd)hakkında daha fazla bilgi edinin.
 
-## <a name="distributed-tracing-for-java-applications-public-preview"></a>Java uygulamaları için dağıtılmış izleme (Genel Önizleme)
-
+## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Windows 'da Java uygulamaları için dağıtılmış izleme (Genel Önizleme)
 
 > [!IMPORTANT]
-> Bu özellik şu anda Java Azure Işlevleri için genel önizlemededir. Tüketim planı için 8-9 saniyelik soğuk bir başlangıç süresi vardır.
+> Bu özellik şu anda Windows 'daki Java Azure Işlevleri için genel önizleme aşamasındadır ve Linux 'ta Java Azure Işlevleri için dağıtılmış izleme desteklenmez. Tüketim planı için 8-9 saniyelik soğuk bir başlangıç süresi vardır.
 
 Uygulamalarınız Java 'da yazılmışsa,, istekler, bağımlılıklar, Günlükler ve ölçümler dahil olmak üzere işlevlerinizin daha zengin verilerini görüntüleyebilirsiniz. Ek veriler ayrıca, uçtan uca işlemleri görmenizi ve tanılamanıza ve sistemin nasıl etkileşime gireceğini ve ortalama performans ve hata tarifelerinin ne olduğunu gösteren bir topik görünümünü göstermek için çok sayıda işlem toplayan uygulama haritasını görmenizi sağlar.
 

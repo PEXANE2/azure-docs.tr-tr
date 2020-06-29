@@ -1,23 +1,14 @@
 ---
 title: Azure DevTest Labs içinde iç içe şablon ortamları dağıtma
 description: Azure DevTest Labs sahip ortamlar sağlamak üzere iç içe Azure Resource Manager şablonlarını dağıtmayı öğrenin.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 39002e286fafd4f813333a14ed86256a517897e9
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897036"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481349"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Ortamları test etmek için iç içe Azure Resource Manager şablonları dağıtma
 İç içe dağıtım, diğer Azure Resource Manager şablonlarını Ana Kaynak Yöneticisi şablonu içinden yürütmelerine olanak tanır. Bu, dağıtımınızı hedeflenen ve amaca özgü bir dizi şekilde parçalara ayırmayı sağlar. Test, yeniden kullanım ve okunabilirlik açısından avantajlar sağlar. [Azure kaynaklarını dağıtmaya yönelik bağlı şablonları kullanma](../azure-resource-manager/templates/linked-templates.md) makalesinde, bu çözüme birçok kod örneği ile ilgili iyi bir genel bakış sağlanır. Bu makale, Azure DevTest Labs özgü bir örnek sağlar. 

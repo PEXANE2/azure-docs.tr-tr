@@ -12,15 +12,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72597200"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483474"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files Kaynak Sağlayıcısı hatalarını giderme 
 
@@ -30,12 +30,12 @@ Bu makalede ortak Azure NetApp Files kaynak sağlayıcısı hataları, nedenleri
 
 ***BareMetalTenantId değiştirilemez.***  
 
-Bu hata, `BaremetalTenantId` bir birimi güncelleştirmeye veya düzeltme ekine çalıştığınızda ve özelliğin değiştirilen bir değere sahip olması durumunda oluşur.
+Bu hata, bir birimi güncelleştirmeye veya düzeltme ekine çalıştığınızda ve `BaremetalTenantId` özelliğin değiştirilen bir değere sahip olması durumunda oluşur.
 
 * Neden:   
-Bir birimi güncelleştirmeye çalışıyorsunuz ve `BaremetalTenantId` Özellik Azure 'da depolanan değerden farklı bir değere sahip.
+Bir birimi güncelleştirmeye çalışıyorsunuz ve `BaremetalTenantId` özellik Azure 'da depolanan değerden farklı bir değere sahip.
 * Çözüm:   
-Patch ve `BaremetalTenantId` Update (put) isteğine dahil etmeyin. Alternatif olarak, istekte `BaremetalTenantId` aynı olduğundan emin olun.
+`BaremetalTenantId`Patch ve Update (put) isteğine dahil etmeyin. Alternatif olarak, istekte aynı olduğundan emin olun `BaremetalTenantId` .
 
 ***ServiceLevel değiştirilemez.***  
 
@@ -50,32 +50,32 @@ Başka bir kapasite havuzu oluşturun ve ardından yeni kapasite havuzunda birim
 
 ***PoolId değiştirilemez***  
 
-Bu hata, değiştirilen `PoolId` bir özelliği olan bir kapasite havuzunu güncelleştirmeye veya düzeltme ekine çalıştığınızda oluşur.
+Bu hata, değiştirilen bir özelliği olan bir kapasite havuzunu güncelleştirmeye veya düzeltme ekine çalıştığınızda oluşur `PoolId` .
 
 * Neden:   
-Bir kapasite havuzu `PoolId` özelliğini güncelleştirmeye çalışıyorsunuz. Bu `PoolId` özellik salt okunurdur ve değiştirilemez.
+Bir kapasite havuzu özelliğini güncelleştirmeye çalışıyorsunuz `PoolId` . Bu `PoolId` özellik salt okunurdur ve değiştirilemez.
 * Çözüm:   
-Patch ve `PoolId` Update (put) isteğine dahil etmeyin.  Alternatif olarak, istekte `PoolId` aynı olduğundan emin olun.
+`PoolId`Patch ve Update (put) isteğine dahil etmeyin.  Alternatif olarak, istekte aynı olduğundan emin olun `PoolId` .
 
 ***CreationToken değiştirilemiyor.***
 
-Bu hata, birim oluşturulduktan sonra (`CreationToken`) dosya yolunu değiştirmeye çalıştığınızda oluşur. Birim oluşturulduğunda dosya`CreationToken`yolu () ayarlanmalıdır ve daha sonra değiştirilemez.
+Bu hata, birim oluşturulduktan sonra () dosya yolunu değiştirmeye çalıştığınızda oluşur `CreationToken` . Birim oluşturulduğunda dosya yolu ( `CreationToken` ) ayarlanmalıdır ve daha sonra değiştirilemez.
 
 * Neden:   
-Birim oluşturulduktan sonra, desteklenmeyen bir işlem olmayan dosya`CreationToken`yolunu değiştirmeye çalışıyorsunuz. 
+`CreationToken`Birim oluşturulduktan sonra, desteklenmeyen bir işlem olmayan dosya yolunu değiştirmeye çalışıyorsunuz. 
 * Çözüm:   
 Dosya yolunu değiştirmek gerekmiyorsa, hata iletisini kapatmak için istekten parametreyi kaldırmayı göz önünde bulundurun.
 * Geçici çözüm:   
-Dosya yolunu (`CreationToken`) değiştirmeniz gerekiyorsa, yeni bir dosya yolu ile yeni bir birim oluşturabilir ve sonra verileri yeni birime geçirebilirsiniz.
+Dosya yolunu () değiştirmeniz gerekiyorsa, yeni bir `CreationToken` dosya yolu ile yeni bir birim oluşturabilir ve sonra verileri yeni birime geçirebilirsiniz.
 
 ***CreationToken en az 16 karakter uzunluğunda olmalıdır.***
 
-Bu hata, dosya yolu (`CreationToken`) uzunluk gereksinimini karşılamadığında oluşur. Dosya yolunun uzunluğu en az bir karakter uzunluğunda olmalıdır.
+Bu hata, dosya yolu ( `CreationToken` ) uzunluk gereksinimini karşılamadığında oluşur. Dosya yolunun uzunluğu en az bir karakter uzunluğunda olmalıdır.
 
 * Neden:   
 Dosya yolu boş.  API 'yi kullanarak bir birim oluşturduğunuzda, oluşturma belirteci gereklidir. Azure portal kullanıyorsanız, dosya yolu otomatik olarak oluşturulur.
 * Çözüm:   
-Dosya yolu (`CreationToken`) olarak en az bir karakter girin.
+Dosya yolu () olarak en az bir karakter girin `CreationToken` .
 
 ***Etki alanı adı değiştirilemez.***
 
@@ -101,7 +101,7 @@ Ayarlamaya çalıştığınız kural için farklı bir dizin kullanın.
 
 ***{Action} {resourceTypeName} hatası***
 
-Bu hata, diğer hata işleme bir kaynakta eylem gerçekleştirirken hatayı işleyemediğinde görüntülenir.   ' Error ' metnini içerir. `{action}` Herhangi`getting`biri ( `creating`,, `updating`, veya `deleting`) olabilir.  , `{resourceTypeName}` `resourceTypeName` (Örneğin `netAppAccount` `capacityPool`,,, vb.) olur. `volume`
+Bu hata, diğer hata işleme bir kaynakta eylem gerçekleştirirken hatayı işleyemediğinde görüntülenir.   ' Error ' metnini içerir. `{action}`Herhangi biri (,, `getting` `creating` `updating` , veya `deleting` ) olabilir.  , (Örneğin,,, vb `{resourceTypeName}` `resourceTypeName` `netAppAccount` `capacityPool` `volume` .) olur.
 
 * Neden:   
 Bu hata, nedeni bilinen işlenmemiş bir özel durumdur.
@@ -123,43 +123,43 @@ Yeni sözcüklerin başlangıcını göstermek için boşluk yerine bir alt çiz
 
 ***Filesystemıd değiştirilemez.***
 
-Bu hata, değiştirmeye `FileSystemId`çalıştığınızda oluşur.  Değiştirme `FileSystemdId` desteklenen bir işlem değil. 
+Bu hata, değiştirmeye çalıştığınızda oluşur `FileSystemId` .  Değiştirme `FileSystemdId` desteklenen bir işlem değil. 
 
 * Neden:   
 Dosya sisteminin KIMLIĞI, birim oluşturulduğunda ayarlanır. `FileSystemId`daha sonra değiştirilemez.
 * Çözüm:   
-Bir yama `FileSystemId` ve güncelleştirme (put) isteğine dahil etmeyin.  Alternatif olarak, isteğin `FileSystemId` aynı olduğundan emin olun.
+`FileSystemId`Bir yama ve güncelleştirme (put) isteğine dahil etmeyin.  Alternatif olarak, isteğin aynı olduğundan emin olun `FileSystemId` .
 
 ***Kimliği ' {String} ' olan ActiveDirectory yok.***
 
-`{string}` Bölüm, Active Directory bağlantısı için `ActiveDirectoryId` özelliği girdiğiniz değerdir.
+`{string}`Bölüm, `ActiveDirectoryId` Active Directory bağlantısı için özelliği girdiğiniz değerdir.
 
 * Neden:   
-Active Directory yapılandırmasına sahip bir hesap oluşturduğunuzda, bunun boş olması beklenen bir değer `ActiveDirectoryId` girdiniz.
+Active Directory yapılandırmasına sahip bir hesap oluşturduğunuzda, bunun `ActiveDirectoryId` boş olması beklenen bir değer girdiniz.
 * Çözüm:   
-Oluşturma ( `ActiveDirectoryId` put) isteğine eklemeyin.
+`ActiveDirectoryId`Oluşturma (put) isteğine eklemeyin.
 
 ***Geçersiz api-Version.***
 
 API sürümü gönderilmedi ya da geçersiz bir değer içeriyor.
 
 * Neden:   
-Sorgu parametresindeki `api-version` değer geçersiz bir değer içeriyor.
+Sorgu parametresindeki değer `api-version` geçersiz bir değer içeriyor.
 * Çözüm:   
 Doğru API sürümü değerini kullanın.  Kaynak sağlayıcısı birçok API sürümünü destekler. Değer yyyy-aa-gg biçimindedir.
 
-***İçin {1}geçersiz bir ' {Value} ' değeri alındı.***
+***İçin geçersiz bir ' {Value} ' değeri alındı {1} .***
 
-`RuleIndex`Bu ileti, `AllowedClients` `UnixReadOnly` `UnixReadWrite` `Nfsv4`,,,, ve alanlarında bir hata olduğunu gösterir. `Nfsv3`
+Bu ileti,,,,, ve alanlarında bir hata olduğunu gösterir `RuleIndex` `AllowedClients` `UnixReadOnly` `UnixReadWrite` `Nfsv3` `Nfsv4` .
 
 * Neden:   
-Giriş doğrulama isteği şu alanlardan en az biri için başarısız oldu `RuleIndex`:, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv`3 ve. `Nfsv4`
+Giriş doğrulama isteği şu alanlardan en az biri için başarısız oldu: `RuleIndex` , `AllowedClients` ,, `UnixReadOnly` `UnixReadWrite` , `Nfsv` 3 ve `Nfsv4` .
 * Çözüm:   
 Komut satırında tüm gerekli ve çakışmayan parametreleri ayarladığınızdan emin olun. Örneğin, `UnixReadOnly` ve `UnixReadWrite` parametrelerini aynı anda ayarlayamazsınız.
 * Geçici çözüm:   
 Yukarıdaki çözüme bakın.
 
-***{1} VLAN {2} için {0} IP aralığı zaten kullanımda***
+***{0} {1} VLAN için IP aralığı {2} zaten kullanımda***
 
 Bu hata, kullanılan IP aralıklarının iç kayıtlarının yeni atanan IP adresiyle bir çakışmaya sahip olması nedeniyle oluşur.
 
@@ -183,9 +183,9 @@ Giriş doğrulama isteği, özelliklerden en az biri için başarısız oldu.
 Bu hata, bir Kullanıcı, birim bağlama hedefleri özelliğini güncelleştirmeye veya düzeltme ekine çalışırken oluşur.
 
 * Neden:   
-Volume `MountTargets` özelliğini güncelleştirmeye çalışıyorsunuz. Bu özelliğin değiştirilmesi desteklenmiyor.
+Volume özelliğini güncelleştirmeye çalışıyorsunuz `MountTargets` . Bu özelliğin değiştirilmesi desteklenmiyor.
 * Çözüm:   
-Bir yama `MountTargets` ve güncelleştirme (put) isteğine dahil etmeyin.  Alternatif olarak, isteğin aynı `MountTargets` olduğundan emin olun.
+`MountTargets`Bir yama ve güncelleştirme (put) isteğine dahil etmeyin.  Alternatif olarak, isteğin aynı olduğundan emin olun `MountTargets` .
 
 ***Ad zaten kullanımda.***
 
@@ -252,7 +252,7 @@ Sorunun geçici olması olasıdır. İstek bir süre sonra başarılı olmalıd�
 * Geçici çözüm:   
 Yok. Temel alınan API, birimleri yönetmek için gereklidir.
 
-***'{0}' İçin işlem sonucu kimliği bulunamadı.***
+***' ' İçin işlem sonucu kimliği bulunamadı {0} .***
 
 Bu hata, bir iç hatanın işlemin tamamlanmasını engellediğini gösterir.
 
@@ -310,9 +310,9 @@ Bu hata, işlemin etkin abonelik veya kaynak için kullanılabilir olmadığın�
 Birimin OwnerId özelliğini değiştirmeyi denediğinizde bu hata oluşur. OwnerId 'nin değiştirilmesi desteklenen bir işlem değil. 
 
 * Neden:   
-`OwnerId` Özelliği birim oluşturulduğunda ayarlanır. Özellik daha sonra değiştirilemez.
+`OwnerId`Özelliği birim oluşturulduğunda ayarlanır. Özellik daha sonra değiştirilemez.
 * Çözüm:   
-Bir yama `OwnerId` ve güncelleştirme (put) isteğine dahil etmeyin. Alternatif olarak, isteğin aynı `OwnerId` olduğundan emin olun.
+`OwnerId`Bir yama ve güncelleştirme (put) isteğine dahil etmeyin. Alternatif olarak, isteğin aynı olduğundan emin olun `OwnerId` .
 
 ***Üst havuz bulunamadı***
 
@@ -335,7 +335,7 @@ Yok. Bu kaynaklarda değiştirilebilen hiçbir özellik yoktur.
 
 ***Toplam birim boyutu için havuz boyutu çok küçük.***
 
-Bu hata, kapasite havuzu boyutunu güncelleştirirken oluşur ve boyut, bu kapasite havuzundaki tüm birimlerin toplam `usedBytes` değerinden daha küçüktür.  Bu hata, yeni bir birim oluştururken veya var olan bir birimi yeniden boyutlandırdığınızda veya yeni birim boyutu kapasite havuzundaki boş alanı aştığında de oluşabilir.
+Bu hata, kapasite havuzu boyutunu güncelleştirirken oluşur ve boyut, `usedBytes` Bu kapasite havuzundaki tüm birimlerin toplam değerinden daha küçüktür.  Bu hata, yeni bir birim oluştururken veya var olan bir birimi yeniden boyutlandırdığınızda veya yeni birim boyutu kapasite havuzundaki boş alanı aştığında de oluşabilir.
 
 * Neden:   
 Kapasite havuzunu kapasite havuzundaki tüm birimlerde usedBytes 'dan daha küçük bir boyuta güncelleştirmeye çalışıyorsunuz.  Veya kapasite havuzundaki boş alandan daha büyük bir birim oluşturmaya çalışıyorsunuz.  Alternatif olarak, bir birimi yeniden boyutlandırmaya çalışıyorsunuz ve yeni boyut kapasite havuzundaki boş alanı aşıyor.
@@ -355,30 +355,30 @@ Location özelliğinde geçerli bir dize ayarlayın.
 
 ***{ResourceType} adı, kaynak tanımlayıcı adı ile aynı olmalıdır.***
 
-Bu hata, bir kaynak oluştururken oluşur ve ad özelliğini öğesinin Name özelliğinden başka bir `resourceId`değerle doldurursunuz.
+Bu hata, bir kaynak oluştururken oluşur ve ad özelliğini öğesinin Name özelliğinden başka bir değerle doldurursunuz `resourceId` .
 
 * Neden:   
 Kaynak oluşturduğunuzda ad özelliğinde geçersiz değer.
 * Çözüm:   
-Name özelliğini boş bırakın ya da bu değerin Name özelliği ile aynı değeri kullanmasına izin verin (içindeki `resourceId`son ters eğik çizgi "/" ve soru işareti "?").
+Name özelliğini boş bırakın ya da bu değerin Name özelliği ile aynı değeri kullanmasına izin verin (içindeki son ters eğik çizgi "/" ve soru işareti "?") `resourceId` .
 
 ***Protokol türü {value} bilinmiyor***
 
 Bu hata, bilinmeyen bir protokol türüne sahip bir birim oluştururken oluşur.  Geçerli değerler şunlardır "NFSv3", "NFSv4" ve "CIFS".
 
 * Neden:   
-Volume `protocolType` özelliğinde geçersiz bir değer ayarlamaya çalışıyorsunuz.
+Volume özelliğinde geçersiz bir değer ayarlamaya çalışıyorsunuz `protocolType` .
 * Çözüm:   
-İçinde `protocolType`geçerli bir dize ayarlayın.
+İçinde geçerli bir dize ayarlayın `protocolType` .
 * Geçici çözüm:   
-Null `protocolType` olarak ayarlayın.
+`protocolType`Null olarak ayarlayın.
 
 ***Protokol türleri değiştirilemez***
 
-Bu hata, bir birimi güncelleştirmeye veya düzeltme ekine `ProtocolType` çalıştığınızda oluşur.  ProtocolType değiştirilirken desteklenen bir işlem değil.
+Bu hata, bir birimi güncelleştirmeye veya düzeltme ekine çalıştığınızda oluşur `ProtocolType` .  ProtocolType değiştirilirken desteklenen bir işlem değil.
 
 * Neden:   
-`ProtocolType` Özelliği birim oluşturulduğunda ayarlanır.  Güncelleştirilemez.
+`ProtocolType`Özelliği birim oluşturulduğunda ayarlanır.  Güncelleştirilemez.
 * Çözüm:   
 Yok.
 * Geçici çözüm:   
@@ -386,10 +386,10 @@ Yeni protokol türleriyle başka bir birim oluşturun.
 
 ***{ResourceType} türünde kaynak oluşturmak, {parentResourceType} başına {resourceType} türündeki {Quota} kaynaklarının kotasını aşacak. Geçerli kaynak sayısı {currentCount}, yeni bir tane oluşturmadan önce lütfen bu türden bazı kaynakları silin.***
 
-Bu hata, bir kaynak`NetAppAccount`(, `CapacityPool` `Volume`, veya `Snapshot`) oluşturmaya çalıştığınızda oluşur, ancak kotayı sınırına ulaştı.
+Bu hata, bir kaynak (,, veya) oluşturmaya çalıştığınızda `NetAppAccount` oluşur `CapacityPool` `Volume` `Snapshot` , ancak kotayı sınırına ulaştı.
 
 * Neden:   
-Bir kaynak oluşturmaya çalışıyorsunuz, ancak kota sınırına ulaşıldı (örnek: `NetAppAccounts` abonelik başına veya `CapacityPools` başına `NetAppAccount`).
+Bir kaynak oluşturmaya çalışıyorsunuz, ancak kota sınırına ulaşıldı (örnek: `NetAppAccounts` abonelik başına veya `CapacityPools` başına `NetAppAccount` ).
 * Çözüm:   
 Kota sınırını artırın.
 * Geçici çözüm:   
@@ -439,34 +439,34 @@ Yok.  Yukarıdaki çözüme bakın.
 
 ***SubnetID değiştirilemez.***
 
-Bu hata, `subnetId` birim oluşturulduktan sonra değişiklik yapmayı denediğinizde oluşur.  `SubnetId`birim oluşturulduğunda ayarlanmalıdır ve daha sonra değiştirilemez.
+Bu hata, birim oluşturulduktan sonra değişiklik yapmayı denediğinizde oluşur `subnetId` .  `SubnetId`birim oluşturulduğunda ayarlanmalıdır ve daha sonra değiştirilemez.
 
 * Neden:   
-Birim oluşturulduktan sonra, `subnetId` desteklenmeyen bir işlem olmayan ' ı değiştirmeye çalışıyorsunuz. 
+`subnetId`Birim oluşturulduktan sonra, desteklenmeyen bir işlem olmayan ' ı değiştirmeye çalışıyorsunuz. 
 * Çözüm:   
 Öğesini değiştirmek `subnetId` gerekmiyorsa, hata iletisini kapatmak için istekten parametreyi kaldırmayı göz önünde bulundurun.
 * Geçici çözüm:   
-`subnetId`Öğesini değiştirmeniz gerekiyorsa, yeni bir `subnetId`birim oluşturun ve sonra verileri yeni birime geçirebilirsiniz.
+Öğesini değiştirmeniz gerekiyorsa `subnetId` , yeni bir birim oluşturun `subnetId` ve sonra verileri yeni birime geçirebilirsiniz.
 
 ***SubnetID geçersiz biçimde.***
 
-Yeni bir birim oluşturmaya çalıştığınızda bu hata oluşur, `subnetId` ancak bir alt ağ için bir `resourceId` değildir.
+Yeni bir birim oluşturmaya çalıştığınızda bu hata oluşur, ancak bir `subnetId` `resourceId` alt ağ için bir değildir.
 
 * Neden:   
-Bu hata, yeni bir birim oluşturmaya çalıştığınızda oluşur, ancak `subnetId` bir alt ağ için bir `resourceId` değildir. 
+Bu hata, yeni bir birim oluşturmaya çalıştığınızda oluşur, ancak bir `subnetId` `resourceId` alt ağ için bir değildir. 
 * Çözüm:   
-' In, `subnetId` kullanılan alt ağ için bir `resourceId` içerdiğinden emin olmak için değerini denetleyin.
+' In, `subnetId` `resourceId` kullanılan alt ağ için bir içerdiğinden emin olmak için değerini denetleyin.
 * Geçici çözüm:   
 Yok. Yukarıdaki çözüme bakın. 
 
 ***Alt ağda ' Microsoft. NetApp/Volumes ' temsili olmalıdır.***
 
-Bu hata, bir birim oluştururken ve seçilen alt ağın yetkisi olmadığında oluşur `Microsoft.NetApp/volumes`.
+Bu hata, bir birim oluştururken ve seçilen alt ağın yetkisi olmadığında oluşur `Microsoft.NetApp/volumes` .
 
 * Neden:   
-Birim oluşturmaya çalıştınız ve atanmış olmayan bir alt ağ seçtiniz `Microsoft.NetApp/volumes`.
+Birim oluşturmaya çalıştınız ve atanmış olmayan bir alt ağ seçtiniz `Microsoft.NetApp/volumes` .
 * Çözüm:   
-Temsilci atanmış başka bir alt ağ seçin `Microsoft.NetApp/volumes`.
+Temsilci atanmış başka bir alt ağ seçin `Microsoft.NetApp/volumes` .
 * Geçici çözüm:   
 Alt ağa doğru bir temsili ekleyin.
 
@@ -681,4 +681,4 @@ Birimi silin, sonra anlık görüntüden birim oluşturma işlemini yeniden dene
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [REST API Azure NetApp Files için geliştirme](azure-netapp-files-develop-with-rest-api.md)
+* [REST API ile Azure NetApp Files için geliştirme](azure-netapp-files-develop-with-rest-api.md)

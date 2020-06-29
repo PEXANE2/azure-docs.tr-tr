@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791995"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481740"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -55,7 +55,14 @@ VNet oluşturmak veya yapılandırmak için aşağıdaki araçları kullanabilir
 * Ağ yapılandırma dosyası (yalnızca klasik sanal ağlar için netcfg). [Ağ yapılandırma dosyası kullanarak VNET yapılandırma](virtual-networks-using-network-configuration-file.md) makalesini inceleyin.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>VNET 'imde hangi adres aralıklarını kullanabilirim?
-[RFC 1918](https://tools.ietf.org/html/rfc1918)' de tanımlanan HERHANGI bir IP adresi aralığı. Örneğin, 10.0.0.0/16. Aşağıdaki adres aralıklarını ekleyemezsiniz:
+[RFC 1918](https://tools.ietf.org/html/rfc1918)' de numaralandırılan adres aralıklarını kullanmanız önerilir ve bu, özel, yönlendirilemeyen adres ALANLARı için IETF tarafından ayrılmış olarak ayarlanmıştır:
+* 10.0.0.0-10.255.255.255 (10/8 ön eki)
+* 172.16.0.0-172.31.255.255 (172.16/12 ön eki)
+* 192.168.0.0-192.168.255.255 (192.168/16 ön eki)
+
+Diğer adres alanları çalışabilir, ancak istenmeyen yan etkileri olabilir.
+
+Ayrıca, aşağıdaki adres aralıklarını ekleyemezsiniz:
 * 224.0.0.0/4 (çok noktaya yayın)
 * 255.255.255.255/32 (yayın)
 * 127.0.0.0/8 (geri döngü)
@@ -131,7 +138,7 @@ Evet. Sanal ağ ayarlarında DNS sunucusu IP adresleri belirtebilirsiniz. Ayar, 
 Başvuru [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Ağı oluşturduktan sonra DNS sunucularımı değiştirebilir miyim?
-Evet. Sanal ağınız için DNS sunucusu listesini dilediğiniz zaman değiştirebilirsiniz. DNS sunucusu listenizi değiştirirseniz, yeni DNS ayarlarının etkili olabilmesi için, VNet 'teki tüm etkilenen VM 'lerde bir DHCP kira yenilemesi gerçekleştirmeniz gerekir. Windows işletim sistemi çalıştıran VM 'Ler için bunu doğrudan VM 'ye `ipconfig /renew` yazarak yapabilirsiniz. Diğer işletim sistemi türleri için, belirli işletim sistemi türü için DHCP kira yenileme belgelerine bakın. 
+Evet. Sanal ağınız için DNS sunucusu listesini dilediğiniz zaman değiştirebilirsiniz. DNS sunucusu listenizi değiştirirseniz, yeni DNS ayarlarının etkili olabilmesi için, VNet 'teki tüm etkilenen VM 'lerde bir DHCP kira yenilemesi gerçekleştirmeniz gerekir. Windows işletim sistemi çalıştıran VM 'Ler için bunu `ipconfig /renew` doğrudan VM 'ye yazarak yapabilirsiniz. Diğer işletim sistemi türleri için, belirli işletim sistemi türü için DHCP kira yenileme belgelerine bakın. 
 
 ### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Azure tarafından sunulan DNS nedir ve VNET ile birlikte çalışır mı?
 Azure tarafından sağlanan DNS, Microsoft tarafından sunulan çok kiracılı bir DNS hizmetidir. Azure, tüm VM 'lerinizi ve bulut hizmeti rol örneklerinizi bu hizmette kaydeder. Bu hizmet, aynı bulut hizmetinde yer alan VM 'Ler ve rol örnekleri için ana bilgisayar adına ve aynı VNet 'teki VM 'Ler ve rol örnekleri için FQDN ile ad çözümlemesi sağlar. DNS hakkında daha fazla bilgi edinmek için bkz. [VM 'ler Için ad çözümleme ve rol örnekleri Cloud Services](virtual-networks-name-resolution-for-vms-and-role-instances.md).
@@ -184,7 +191,7 @@ Evet. Bir sanal ağ içinde dağıtılan tüm VM 'Ler ve Cloud Services rol örn
 ## <a name="azure-services-that-connect-to-vnets"></a>VNET 'lere bağlanan Azure hizmetleri
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>VNet ile Azure App Service Web Apps kullanabilir miyim?
-Evet. Bir ASE (App Service Ortamı) kullanarak bir VNet içinde Web Apps dağıtabilir, uygulamalarınızın arka ucunu VNet tümleştirmeyle sanal ağlarınıza bağlayabilirsiniz ve gelen trafiği hizmet uç noktalarıyla uygulamanıza taşıyabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Evet. Bir ASE (App Service Ortamı) kullanarak bir VNet içinde Web Apps dağıtabilir, uygulamalarınızın arka ucunu VNet tümleştirmeyle sanal ağlarınıza bağlayabilirsiniz ve gelen trafiği hizmet uç noktalarıyla uygulamanıza taşıyabilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [App Service ağ özellikleri](../app-service/networking-features.md)
 * [App Service Ortamı Web Apps oluşturma](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -402,7 +409,7 @@ Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yo
 |||
 |---|---|
 |Azure hizmeti| VNet kuralları sınırları|
-|Azure Storage| 100|
+|Azure Depolama| 100|
 |Azure SQL| 128|
 |Azure SQL Veri Ambarı|  128|
 |Azure KeyVault|    127|

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9a291971ce0edead9ca28a47f7ad0689b0f65547
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834960"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482522"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>SYNAPSE SQL için geliştirme en iyi yöntemleri
 Bu makalede, veri ambarı Çözümünüzü geliştirirken rehberlik ve en iyi uygulamalar açıklanmaktadır. 
@@ -106,7 +106,7 @@ Yüksek kaliteli columnstore kesimleri önemli olduğundan, verileri yüklemek i
 Columnstore tabloları genellikle tablo başına 1.000.000 ' den fazla satır olana kadar sıkıştırılmış bir columnstore segmentine veri gönderemeyeceği ve her bir SQL havuzu tablosu 60 tablo olarak bölümlendiğinden, tablo 60.000.000 ' den fazla satır içermiyorsa, columnstore tabloları bir sorgu avantajına sahip olmaz.  
 
 > [!TIP]
-> 60.000.000 ' den az satır içeren tablolar için columstore dizinine sahip olmak en iyi çözüm olmayabilir.  
+> 60.000.000 ' den az satır içeren tablolar için bir columnstore dizinine sahip olmak en iyi çözüm olmayabilir.  
 
 Ayrıca, verilerinizi bölümlemeniz halinde her bir bölümün kümelenmiş columnstore dizini kullanabilmesi için en az 1 milyon satıra ihtiyaç duyacağını unutmayın.  Bir tabloda 100 bölüm varsa, kümelenmiş bir sütun deposundan faydalanmak için en az 6.000.000.000 satıra sahip olması gerekir (60 dağıtımları *100 bölümleri* 1.000.000 satırları).  
 
@@ -150,7 +150,7 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
 Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için isteğe bağlı SQL 'e bildirebilirsiniz. Bu işlem, sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. 
 
-Sonuç olarak, daha iyi performans elde edersiniz. Daha fazla bilgi için [dosya adı](develop-storage-files-overview.md#filename-function) ve [FilePath](develop-storage-files-overview.md#filepath-function) işlevlerini ve [belirli dosyaları sorgulama](query-specific-files.md)ile ilgili örnekleri denetleyin.
+Sonuç olarak, daha iyi performans elde edersiniz. Daha fazla bilgi için [dosya adı](query-data-storage.md#filename-function) ve [FilePath](query-data-storage.md#filepath-function) işlevlerini ve [belirli dosyaları sorgulama](query-specific-files.md)ile ilgili örnekleri denetleyin.
 
 Depolamadaki verileriniz bölümlendirilmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmeniz için Bölümlendirmeyi düşünün.
 

@@ -1,25 +1,14 @@
 ---
 title: DevTest Labs sanal makineniz için özel yapılar oluşturun | Microsoft Docs
 description: Azure DevTest Labs ile kullanmak için kendi yapılarınızı nasıl yazacağınızı öğrenin.
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 32dcdc61-ec23-4a01-b731-78c029ea5316
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2019
-ms.author: spelluru
-ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: f33b6da3354dc3caf9376f249b802d324aa3148c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896602"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482964"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs sanal makineniz için özel yapılar oluşturma
 
@@ -53,7 +42,7 @@ Aşağıdaki örnek, bir tanım dosyasının temel yapısını oluşturan bölü
       }
     }
 
-| Öğe adı | Gerekli mi? | Description |
+| Öğe adı | Gerekli mi? | Açıklama |
 | --- | --- | --- |
 | $schema |No |JSON Şema dosyasının konumu. JSON şema dosyası, tanım dosyasının geçerliliğini test etmenize yardımcı olabilir. |
 | başlık |Yes |Laboratuvarda görünen yapıt adı. |
@@ -76,7 +65,7 @@ Parametreleri tanımlamak için aşağıdaki yapıyı kullanın:
       }
     }
 
-| Öğe adı | Gerekli mi? | Description |
+| Öğe adı | Gerekli mi? | Açıklama |
 | --- | --- | --- |
 | tür |Yes |Parametre değerinin türü. İzin verilen türler için aşağıdaki listeye bakın. |
 | displayName |Yes |Laboratuvardaki bir kullanıcıya görüntülenen parametrenin adı. |

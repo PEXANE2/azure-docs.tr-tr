@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74007919"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481400"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory raporları nelerdir?
 
@@ -81,7 +81,7 @@ Etkinlik raporları, kuruluşunuzdaki kullanıcıların davranışını anlaman�
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Denetim günlükleri raporuna erişebilmek için hangi Azure AD lisansınızın olması gerekir?  
 
-Denetim günlükleri raporu, lisansınız olan özellikler için sağlanır. Belirli bir özelliğin lisansına sahipseniz, o özelliğin denetim günlüğü bilgilerine de erişebilirsiniz. Daha ayrıntılı bilgi için bkz. [Azure Active Directory Özellikler ve yetenekler](https://www.microsoft.com/cloud-platform/azure-active-directory-features).   
+Denetim günlükleri raporu, lisansınız olan özellikler için sağlanır. Belirli bir özelliğin lisansına sahipseniz, o özelliğin denetim günlüğü bilgilerine de erişebilirsiniz. [Azure Active Directory fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/active-directory/), [farklı lisans türlerine](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) göre tek bir şekilde döşeli bir özellik karşılaştırması görülebilir. Daha ayrıntılı bilgi için bkz. [Azure Active Directory Özellikler ve yetenekler](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad).
 
 ### <a name="sign-ins-report"></a>Oturum açma işlemleri raporu
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310023893d25a484cf05dac00628c632a4421edb
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: d8f65236fee57b4dc3e2bb012d8cdd222f431ec0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719037"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482624"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartkargo"></a>Öğretici: SmartKargo ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -90,15 +90,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<CUSTOMER_NAME>.smartkargo.com/SamlResponse.aspx`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, yanıt URL 'SI ve tanımlayıcı ile güncelleştirin. Bu değerleri almak için [SmartKargo istemci destek ekibine](https://www.smartkargo.com/company/contact-2/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI, yanıt URL 'si ve tanımlayıcı ile güncelleştirin. Bu değerleri almak için [SmartKargo istemci destek ekibine](https://www.smartkargo.com/company/contact-2/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML Imzalama sertifikası** bölümünde, **SAML imzalama sertifikası** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![SAML Imzalama sertifikasını Düzenle](common/edit-certificate.png)
-
-1. **SAML Imzalama sertifikası** bölümünde, **parmak izi değerini** kopyalayın ve bilgisayarınıza kaydedin.
-
-    ![Parmak Izi değerini Kopyala](common/copy-thumbprint.png)
+    ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
 1. **SmartKargo ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
@@ -136,7 +132,7 @@ Bu bölümde, SmartKargo 'e erişim vererek Azure çoklu oturum açma özelliği
 
 ## <a name="configure-smartkargo-sso"></a>SmartKargo SSO 'yu yapılandırma
 
-**SmartKargo** Side çoklu oturum açmayı yapılandırmak Için, **parmak izi değerini** ve uygun kopyalanmış URL 'leri Azure Portal [Platform desteği ekibine](https://www.smartkargo.com/company/contact-2/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**SmartKargo** Side çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal [Platform desteği ekibine](https://www.smartkargo.com/company/contact-2/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-smartkargo-test-user"></a>SmartKargo test kullanıcısı oluştur
 
