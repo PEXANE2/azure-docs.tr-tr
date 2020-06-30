@@ -180,9 +180,11 @@
           href: geo-disaster-recovery.md
     - name: Güvenlik
       items:
-        - name: Kimlik Doğrulaması
+        - name: Olay teslimi için olay işleyicilerinin kimliğini doğrulama
           href: security-authentication.md
-        - name: Yetkilendirme
+        - name: Yayımlama istemcilerinin kimliğini doğrulama
+          href: security-authenticate-publishing-clients.md
+        - name: Event Grid kaynaklarına erişim yetkisi verme
           href: security-authorization.md
         - name: Ağ güvenliği
           href: network-security.md
@@ -202,6 +204,8 @@
           href: create-view-manage-system-topics-cli.md
         - name: Azure Resource Manager şablonu
           href: create-view-manage-system-topics-arm.md
+    - name: Konular veya etki alanları için erişim anahtarları alma
+      href: get-access-keys.md
     - name: Özel konuya gönderme
       href: post-to-custom-topic.md
     - name: Auth0 olaylarına abone olun
