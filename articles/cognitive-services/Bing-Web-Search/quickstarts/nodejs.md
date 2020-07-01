@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: node. js ile Web araması gerçekleştirme-Bing Web Araması REST API'
+title: 'Hızlı başlangıç: Node.js Bing Web Araması bir Web araması gerçekleştirin REST API'
 titleSuffix: Azure Cognitive Services
-description: Node. js kullanarak istekleri Bing Web Araması REST API göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın
+description: Node.js kullanarak istekleri Bing Web Araması REST API göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873954"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611331"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Web Araması REST API ve Node. js kullanarak Web 'de arama yapın
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Web Araması REST API ve Node.js kullanarak Web 'de arama yapın
 
-Bing Web Araması API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu Node. js uygulaması, API 'ye bir arama isteği gönderir ve JSON yanıtını gösterir. Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu olan yeniden yazılmış bir Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu Node.js uygulama API 'ye bir arama isteği gönderir ve JSON yanıtını gösterir. Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu olan yeniden yazılmış bir Web hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Bir proje oluşturun ve gerekli modülleri bildirin
 
-Sık kullandığınız IDE veya düzenleyicide yeni bir Node.js projesi oluşturun. Ardından, aşağıdaki kod parçacığını, Search. js adlı bir dosyada projenize kopyalayın:
+Sık kullandığınız IDE veya düzenleyicide yeni bir Node.js projesi oluşturun. Ardından, aşağıdaki kod parçacığını projenize search.js adlı bir dosyaya kopyalayın:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -43,7 +43,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Abonelik anahtarını ayarlama
 
-Bu kod parçacığı, `AZURE_SUBSCRIPTION_KEY` kod dağıtımı sırasında anahtarlarınızın yanlışlıkla açıklanmasını engellemek için iyi bir uygulamadır olan abonelik anahtarınızı depolamak için ortam değişkenini kullanır. Abonelik anahtarınızı aramak için [API 'lerinize](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)bakın.
+Bu kod parçacığı, `AZURE_SUBSCRIPTION_KEY` kod dağıtımı sırasında anahtarlarınızın yanlışlıkla açıklanmasını engellemek için iyi bir uygulamadır olan abonelik anahtarınızı depolamak için ortam değişkenini kullanır.
 
 Ortam değişkenlerinin kullanımı hakkında bilginiz varsa veya bu uygulamayı mümkün olduğunca hızlı bir şekilde çalıştırmak istiyorsanız, `process.env['AZURE_SUBSCRIPTION_KEY']` bir dize olarak kendi abonelik anahtarınızla değiştirin.
 

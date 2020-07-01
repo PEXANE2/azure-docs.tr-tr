@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8218b3dbe09e5ce7e6c28e1084b26c6eec4a16ca
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b8f5ff42597a457a8849e424e041f1677c28b383
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773072"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608968"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Öğretici: Amazon Business ile Azure Active Directory tümleştirme
 
@@ -33,7 +33,7 @@ Bu öğreticide, Amazon Business 'ı Azure Active Directory (Azure AD) ile tüml
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
     
-       | | |
+       | URL | Bölge |
        |-|-|
        | `https://www.amazon.com`| Kuzey Amerika |
        | `https://www.amazon.co.jp`| Doğu Asya |
@@ -93,7 +93,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Yanıt URL 'si** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
     
-       | | |
+       | URL | Bölge |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Kuzey Amerika |
        | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Doğu Asya |
@@ -217,7 +217,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Azure portal bir Azure AD güvenlik grubu oluşturun
 

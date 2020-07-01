@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 33200f8807ad28ac160bb377b1107548f4e42d51
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4a73ff517347baa2cf589432be025bd922597ed3
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590817"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611399"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -25,24 +25,24 @@ Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Geçerli bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
+* Geçerli bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>Yeni bir Azure bilişsel hizmetler kaynağı oluşturma
 
 1. Kaynak oluşturma.
 
     #### <a name="multi-service-resource"></a>[Çoklu hizmet kaynağı](#tab/multiservice)
-    
+
     Çoklu hizmet kaynağı, portalda bilişsel **Hizmetler** olarak adlandırılır. Bilişsel [Hizmetler kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
-    
+
     Şu anda, çok hizmet kaynağı aşağıdaki bilişsel hizmetlere erişim sağlar:
-    
+
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
     | Görüntü İşleme  | Content Moderator                                    | Yüz Tanıma               | Language Understanding (LUIS) | Metin Analizi   |
-    | Translator  | Bing Arama v7 <br>(Web, görüntü, Haberler, video, görsel) | Bing Özel Arama | Bing Varlık Arama            | Bing Otomatik Öneri |
+    | Çevirmen  | Bing Arama v7 <br>(Web, görüntü, Haberler, video, görsel) | Bing Özel Arama | Bing Varlık Arama            | Bing Otomatik Öneri |
     | Bing Yazım Denetimi |                                                      |                    |                               |                  |
-    
+
     #### <a name="single-service-resource"></a>[Tek hizmet kaynağı](#tab/singleservice)
 
     Kullanılabilir bilişsel hizmetler için bir kaynak oluşturmak üzere aşağıdaki bağlantıları kullanın:
@@ -70,7 +70,7 @@ Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı
 
     ![Kaynak oluşturma ekranı](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    **Oluştur**' a tıklayın.
+    **Oluştur**'a tıklayın.
 
     #### <a name="single-service-resource"></a>[Tek hizmet kaynağı](#tab/singleservice)
 
@@ -84,7 +84,7 @@ Azure bilişsel hizmetler 'i kullanmaya başlamak için bu hızlı başlangıcı
 
     ![Kaynak oluşturma ekranı](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    **Oluştur**' a tıklayın.
+    **Oluştur**'a tıklayın.
 
     ***
 

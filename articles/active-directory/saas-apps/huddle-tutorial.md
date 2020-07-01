@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1faf1c1fcdefb0c93d36c195f0cf44626a555f44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 439a904c4e70a6e7e9633757c6d89fd3ce0a3a90
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158995"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Öğretici: Hudon ile tümleştirme Azure Active Directory
 
@@ -35,7 +35,7 @@ Hudon 'un Azure AD ile tümleştirilmesi aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Hudon ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -111,20 +111,18 @@ Azure AD çoklu oturum açmayı Hudon ile yapılandırmak için aşağıdaki ad�
 
     a. **Tanımlayıcı** metin kutusuna bir URL yazın:
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net`|
-    | `https://login.huddle.com`|
-    | |
+        ```https
+        https://login.huddle.net
+        https://login.huddle.com
+        ```
 
     b. **Yanıt URL** 'si metin kutusuna bir URL yazın:
 
-    | | |
-    |--|--|
-    | `https://login.huddle.net/saml/browser-sso`|
-    | `https://login.huddle.com/saml/browser-sso`|
-    | `https://login.huddle.com/saml/idp-initiated-sso`|
-    | |
+        ```https
+        https://login.huddle.net/saml/browser-sso
+        https://login.huddle.com/saml/browser-sso
+        https://login.huddle.com/saml/idp-initiated-sso
+        ```
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -132,11 +130,10 @@ Azure AD çoklu oturum açmayı Hudon ile yapılandırmak için aşağıdaki ad�
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | | |
-    |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com`|
-    | |
+        ```https
+        https://<customsubdomain>.huddle.com
+        https://us.huddle.com
+        ```
 
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [Hudon istemci destek ekibine](https://huddle.zendesk.com) başvurun.
@@ -180,12 +177,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

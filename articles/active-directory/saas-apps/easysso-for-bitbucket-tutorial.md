@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1599cf88405594ed61582f359cdd9f8e64fe281
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 3a5d905f349caf4aa6e633009de15c9253d6e0fd
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764318"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Öğretici: BitBucket için EasySSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile BitBucket için EasySSO '
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -101,13 +101,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. BitBucket uygulaması için EasySSO, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name |  |  Kaynak özniteliği|
-    | ---------------| --------------- | --------- |
-    | urn: OID: 0.9.2342.19200300.100.1.1 | | User. UserPrincipalName |
-    | urn: OID: 0.9.2342.19200300.100.1.3 | | Kullanıcı. Mail |
-    | urn: OID: 2.16.840.1.113730.3.1.241 | | User. DisplayName |
-    | urn: OID: 2.5.4.4 | | User. soyadı |
-    | urn: OID: 2.5.4.42 | | Kullanıcı. |
+    | Name | Kaynak özniteliği|
+    | ---------------| --------- |
+    | urn: OID: 0.9.2342.19200300.100.1.1 | User. UserPrincipalName |
+    | urn: OID: 0.9.2342.19200300.100.1.3 | Kullanıcı. Mail |
+    | urn: OID: 2.16.840.1.113730.3.1.241 | User. DisplayName |
+    | urn: OID: 2.5.4.4 | User. soyadı |
+    | urn: OID: 2.5.4.42 | Kullanıcı. |
     
     Azure AD kullanıcılarınızın **sAMAccountName** ile yapılandırılmış olması durumunda **urn: OID: 0.9.2342.19200300.100.1.1** ' i **sAMAccountName** özniteliğine eşlemeniz gerekir.
     

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 6127f149141db275c4b13c25fd6fbd0241b3e404
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5b43a871eefa313982275b90e2c31f99badcf97
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67105046"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Öğretici: Confirmit Horizons ile tümleştirme Azure Active Directory
 
@@ -34,7 +34,7 @@ Confirmit Horizons 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sa�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Confirmit Horizons ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -109,25 +109,23 @@ Azure AD çoklu oturum açmayı Confirmit Horizons ile yapılandırmak için aş
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>` |
-    | `https://sso.us.confirmit.com/<UNIQUEID>` |
-    | |
+        ```https
+        https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>
+        https://sso.us.confirmit.com/<UNIQUEID>
+        ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>/acs`|
-    | `https://sso.us.confirmit.com/<UNIQUEID>/saml/acs` |
-    | |
+        ```https
+        https://<SUBDOMAIN>.confirmit.com/identity/AuthServices/<UNIQUEID>/acs
+        https://<SUBDOMAIN>.confirmit.com.au/identity/AuthServices/<UNIQUEID>/acs
+        https://<SUBDOMAIN>.confirmit.ca/identity/AuthServices/<UNIQUEID>/acs
+        https://<SUBDOMAIN>.confirmit.hk/identity/AuthServices/<UNIQUEID>/acs
+        https://sso.us.confirmit.com/<UNIQUEID>/saml/acs
+        ```
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -135,14 +133,13 @@ Azure AD çoklu oturum açmayı Confirmit Horizons ile yapılandırmak için aş
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<SUBDOMAIN>.confirmit.com/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.com.au/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.ca/identity/<UNIQUEID>` |
-    | `https://<SUBDOMAIN>.confirmit.hk/identity/<UNIQUEID>` |
-    | `https://sso.us.confirmit.com/<UNIQUEID>` |
-    | | 
+        ```https
+        https://<SUBDOMAIN>.confirmit.com/identity/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.com.au/identity/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.ca/identity/<UNIQUEID>
+        https://<SUBDOMAIN>.confirmit.hk/identity/<UNIQUEID>
+        https://sso.us.confirmit.com/<UNIQUEID>
+        ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Confirmit Horizons istemci destek ekibine](mailto:support@confirmit.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -178,7 +175,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

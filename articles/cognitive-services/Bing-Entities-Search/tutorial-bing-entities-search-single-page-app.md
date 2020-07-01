@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 33c5cbd47213d021d374f52c1dadaf20d508ae37
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943129"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608577"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
 
@@ -56,9 +56,14 @@ Bu öğreticide, kaynak kodun yalnızca seçilen bölümlerini açıklıyoruz. T
 > [!NOTE]
 > Bu öğretici, [tek sayfalı Bing Web Araması uygulaması öğreticisine](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) büyük ölçüde benzer, ancak yalnızca varlık araması sonuçlarını ele alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Öğreticiyle birlikte izlemek için Bing Arama API 'si ve Bing Haritalar API 'SI için abonelik anahtarlarına ihtiyacınız vardır. Bunlar yoksa, [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ve [temel Bing Haritalar anahtarını](https://www.microsoft.com/maps/create-a-bing-maps-key)kullanabilirsiniz.
+Öğreticiyle birlikte izlemek için Bing Arama API 'si ve Bing Haritalar API 'SI için abonelik anahtarlarına ihtiyacınız vardır. 
+
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
+* Azure aboneliğiniz varsa:
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Arama kaynak oluşturma "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtar ve uç noktanıza ulaşmak için Azure Portal Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title=""  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Anahtar ve uç noktanıza ulaşmak Için Azure Portal bir Bing haritalar kaynağı oluşturun görüntü işleme kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
 
 ## <a name="app-components"></a>Uygulama bileşenleri
 
@@ -86,7 +91,7 @@ HTML, arama sonuçlarının gösterildiği bölümleri de (HTML `<div>` etiketle
 ## <a name="managing-subscription-keys"></a>Abonelik anahtarlarını yönetme
 
 > [!NOTE]
-> Bu uygulama, hem Bing Arama API’si hem de Bing Haritalar API’si için abonelik anahtarlarını gerektirir. [deneme Bing Arama anahtarı](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ve [temel Bing Haritalar anahtarı](https://www.microsoft.com/maps/create-a-bing-maps-key) kullanabilirsiniz.
+> Bu uygulama, hem Bing Arama API’si hem de Bing Haritalar API’si için abonelik anahtarlarını gerektirir.
 
 Bing Arama ve Bing Haritalar API'si abonelik anahtarlarını koda eklemek zorunda kalmamak için, bunları tarayıcının kalıcı depolamasını kullanarak depolarız. Anahtarların biri depolanmazsa bunu isteriz ve daha sonra kullanmak üzere depolarız. Anahtar daha sonra API tarafından reddedilirse, depolanan anahtarı geçersiz kılarız ve böylelikle kullanıcıdan sonraki aramasında anahtar istenir.
 
@@ -167,7 +172,7 @@ function bingSearchOptions(form) {
 
 ## <a name="obtaining-a-location"></a>Konum alma
 
-Bing Haritalar API 'si, kullanıcının girdiği konumun enlem ve boylamı bulmak için kullandığımız bir [ `locationQuery` Yöntem](//msdn.microsoft.com/library/ff701711.aspx)sunar. Bu koordinatlar daha sonra kullanıcının isteğiyle Bing Varlık Arama API’sine iletilir. Arama sonuçları, belirtilen konuma yakın olan varlıkları ve yerleri önceliklendirir.
+Bing Haritalar API 'SI, kullanıcının girdiği konumun enlem ve boylamı bulmak için kullandığımız bir [ `locationQuery` Yöntem](//msdn.microsoft.com/library/ff701711.aspx)sunar. Bu koordinatlar daha sonra kullanıcının isteğiyle Bing Varlık Arama API’sine iletilir. Arama sonuçları, belirtilen konuma yakın olan varlıkları ve yerleri önceliklendirir.
 
 Hizmet çıkış noktaları arası sorguları desteklemediğinden Web uygulamasında sıradan bir `XMLHttpRequest` kullanarak Bing Haritalar API’sine erişemeyiz. Neyse ki JSONP ("P" harfi "doldurulmuş" anlamı taşır) desteği sağlıyor. JSONP yanıtı, bir işlev çağrısına sarmalanmış sıradan bir JSON yanıtıdır. İstek, belgeye bir `<script>` etiketi eklenerek yapılır. (Betiklerin yüklenmesi tarayıcı güvenlik ilkelerine tabi değildir.)
 
@@ -394,7 +399,7 @@ Hatalar, hata hakkındaki bilinen tüm ayrıntılarla birlikte `renderErrorMessa
 
 ## <a name="displaying-search-results"></a>Arama sonuçlarını görüntüleme
 
-Bing Varlık Arama API’si, [sonuçları belirli bir sırada görüntülemenizi gerektirir](use-display-requirements.md). API iki farklı yanıt türü döndürebileceğinden, JSON yanıtında üst düzey `Entities` veya `Places` koleksiyonu üzerinden yineleme yapmak ve bu sonuçları görüntülemek yeterli değildir. (Yalnızca bir sonuç türü istiyorsanız `responseFilter` sorgu parametresini kullanın.)
+Bing Varlık Arama API’si, [sonuçları belirli bir sırada görüntülemenizi gerektirir](use-display-requirements.md). API iki farklı türde yanıt döndürebilecek olduğundan, JSON yanıtında en üst düzeyde `Entities` veya `Places` koleksiyonda yinelemek ve bu sonuçları göstermek yeterli değildir. (Yalnızca bir sonuç türü istiyorsanız `responseFilter` sorgu parametresini kullanın.)
 
 Bunun yerine, görüntülenecek sonuçları sıralamak için arama sonuçlarında `rankingResponse` koleksiyonunu kullanırız. Bu nesne `Entitiess` ve/veya `Places` koleksiyonlarındaki öğeleri ifade eder.
 
@@ -520,7 +525,7 @@ Varlık işleyici işlevimiz:
 
 Bing arama API'lerinden gelen yanıtlar, başarılı isteklerle birlikte API'ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API'si kullanılıyorsa, mümkün olduğunca bu API'lerin tümünde aynı istemci kimliği kullanılmalıdır.
 
-Böylelikle `X-MSEdge-ClientID` üst bilgisi sayesinde Bing API'leri kullanıcının tüm aramalarını ilişkilendirebilir. Bunun iki önemli avantajı vardır.
+Üstbilgiyi sağlamak, `X-MSEdge-ClientID` Bing API 'lerinin iki önemli avantajı olan tüm kullanıcıların aramalarını ilişkilendirmenize olanak tanır.
 
 İlk olarak, Bing arama alt yapısının geçmiş bağlamı aramalara uygulayarak kullanıcıya daha uygun sonuçlar bulabilmesini sağlar. Örneğin kullanıcı daha önce yelkencilikle ilgili terim aramaları yaptıysa, daha sonra yapılan "rıhtımlar" araması tercihen yelkenlinin yanaştırılabileceği yerler hakkında bilgi döndürebilir.
 
@@ -531,7 +536,7 @@ Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScr
 > [!NOTE]
 > Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
-Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Böyle bir ara sunucudan gelen yanıtta, yanıt üst bilgilerini beyaz listeye alan ve JavaScript’in kullanımına sunan `Access-Control-Expose-Headers` üst bilgisi bulunur.
+Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir proxy 'den gelen yanıtın, `Access-Control-Expose-Headers` yanıt üst bilgileri listelerine izin veren ve JavaScript için kullanılabilir hale getiren bir üstbilgisi vardır.
 
 Öğretici uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından komut penceresinde aşağıdaki komutu yürütün:
 

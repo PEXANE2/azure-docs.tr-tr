@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e45903bfc54f2c685abea0a8e2924274a21e07b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 87ceeeb1a712c37bc74e12e910645013d77e8df6
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157978"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Öğretici: ıvantı Service Manager (ıSM) ile Azure Active Directory tümleştirme
 
@@ -35,7 +35,7 @@ Ivantı Service Manager (ıSM) Azure AD ile tümleştirmek aşağıdaki avantajl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini ıvantı Service Manager (ıSM) ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -109,11 +109,11 @@ Azure AD çoklu oturum açmayı ıvanti Service Manager (ıSM) ile yapılandırm
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    | |
-    |--|
-    | `https://<customer>.saasit.com/` |
-    | `https://<customer>.saasiteu.com/` |
-    | `https://<customer>.saasitau.com/` |
+        ```https
+        https://<customer>.saasit.com/
+        https://<customer>.saasiteu.com/
+        https://<customer>.saasitau.com/
+        ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
 
@@ -162,12 +162,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

@@ -3,19 +3,19 @@ title: Güvenlik
 titleSuffix: Azure Cognitive Services
 description: Bilişsel hizmetler kullanımıyla ilgili çeşitli güvenlik konuları hakkında bilgi edinin.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: dapine
+ms.date: 06/30/2020
+ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608460"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611416"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure bilişsel hizmetler güvenliği
 
@@ -205,7 +205,7 @@ Bu bilişsel hizmet için Müşteri Kasası kullanılabilir:
 
 Language Understanding için, Microsoft mühendisleri E0 SKU 'sunda hiçbir müşteri verilerine erişemez. E0 SKU 'YU kullanma yeteneği istemek için, [Lusıs hizmet Isteği formunu](https://aka.ms/cogsvc-cmk)doldurun ve bu hizmeti gönderebilirsiniz. İsteğinizin durumunu öğrenmek yaklaşık 3-5 iş günü sürer. Talebe bağlı olarak, bir kuyruğa yerleştirilmiş ve alan kullanılabilir olduğunda onaylanmış olabilir. E0 SKU 'SU LUIN ile kullanılması onaylandıktan sonra, Azure portal Language Understanding yeni bir kaynak oluşturmanız ve fiyatlandırma katmanı olarak E0 ' ı seçmeniz gerekir. Kullanıcılar F0 'den yeni E0 SKU 'suna yükseltemez.
 
-Konuşma hizmeti şu anda Müşteri Kasası desteklememektedir. Ancak, müşteri verileri KCG kullanılarak depolanabilir ve [müşteri kasası](../security/fundamentals/customer-lockbox-overview.md)için benzer veri denetimleri elde etmenizi sağlar. Konuşma hizmeti verilerinin, konuşma kaynağının oluşturulduğu bölgede kaldığından ve işlendiğini aklınızda bulundurun. Bu, bekleyen veriler ve iletim verileri için geçerlidir. Özel Konuşma Tanıma ve özel ses gibi özelleştirme özellikleri kullanılırken, tüm müşteri verileri, KCG (kullanılıyorsa) ve konuşma hizmeti kaynağının bulunduğu bölgede aktarılır, depolanır ve işlenir.
+Konuşma hizmeti şu anda Müşteri Kasası desteklememektedir. Ancak, müşteri verileri KCG ("kendi depolama alanınızı getir") kullanılarak depolanabilir ve [müşteri kasası](../security/fundamentals/customer-lockbox-overview.md)için benzer veri denetimleri elde etmenizi sağlar. Konuşma hizmeti verilerinin, konuşma kaynağının oluşturulduğu bölgede kaldığından ve işlendiğini aklınızda bulundurun. Bu, bekleyen veriler ve iletim verileri için geçerlidir. Özel Konuşma Tanıma ve özel ses gibi özelleştirme özellikleri kullanılırken, tüm müşteri verileri, KCG (kullanılıyorsa) ve konuşma hizmeti kaynağının bulunduğu bölgede aktarılır, depolanır ve işlenir.
 
 > [!IMPORTANT]
 > Microsoft, konuşma modellerini geliştirmek için müşteri **verilerini kullanmaz.** Ayrıca, uç nokta günlüğü devre dışıysa ve hiçbir özelleştirme kullanılmazsa, hiçbir müşteri verisi depolanmaz. 

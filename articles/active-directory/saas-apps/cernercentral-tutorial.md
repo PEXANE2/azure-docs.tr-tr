@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d530ce802b6735ffe0b45abdc97fe99a1a7e619b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 92f0895cbad547dbbb4ab040e69f1963c95df425
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67105770"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Öğretici: Cerner Central ile tümleştirme Azure Active Directory
 
@@ -35,7 +35,7 @@ Cerner Central 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Cerner Central ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -109,17 +109,17 @@ Azure AD çoklu oturum açmayı Cerner Central ile yapılandırmak için aşağ�
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
-    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
+        ```https
+        https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata
+        https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata
+        ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
-    | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso` |
+        ```https
+        https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso
+        https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso
+        ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Cerner Merkezi istemci destek ekibine](mailto:SISupport@cbre.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -150,11 +150,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

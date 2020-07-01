@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 151ec17308a593bd9361bff6ad6340cccd82edd5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048570"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607404"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Öğretici: Deputy ile tümleştirme Azure Active Directory
 
@@ -35,7 +35,7 @@ Azure AD ile Deputy 'yi tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Deputy ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -108,43 +108,43 @@ Azure AD çoklu oturum açma 'yı Deputy ile yapılandırmak için aşağıdaki 
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    |  |
-    | ----|
-    | `https://<subdomain>.<region>.au.deputy.com` |
-    | `https://<subdomain>.<region>.ent-au.deputy.com` |
-    | `https://<subdomain>.<region>.na.deputy.com`|
-    | `https://<subdomain>.<region>.ent-na.deputy.com`|
-    | `https://<subdomain>.<region>.eu.deputy.com` |
-    | `https://<subdomain>.<region>.ent-eu.deputy.com` |
-    | `https://<subdomain>.<region>.as.deputy.com` |
-    | `https://<subdomain>.<region>.ent-as.deputy.com` |
-    | `https://<subdomain>.<region>.la.deputy.com` |
-    | `https://<subdomain>.<region>.ent-la.deputy.com` |
-    | `https://<subdomain>.<region>.af.deputy.com` |
-    | `https://<subdomain>.<region>.ent-af.deputy.com` |
-    | `https://<subdomain>.<region>.an.deputy.com` |
-    | `https://<subdomain>.<region>.ent-an.deputy.com` |
-    | `https://<subdomain>.<region>.deputy.com` |
+        ```https
+        https://<subdomain>.<region>.au.deputy.com
+        https://<subdomain>.<region>.ent-au.deputy.com
+        https://<subdomain>.<region>.na.deputy.com
+        https://<subdomain>.<region>.ent-na.deputy.com
+        https://<subdomain>.<region>.eu.deputy.com
+        https://<subdomain>.<region>.ent-eu.deputy.com
+        https://<subdomain>.<region>.as.deputy.com
+        https://<subdomain>.<region>.ent-as.deputy.com
+        https://<subdomain>.<region>.la.deputy.com
+        https://<subdomain>.<region>.ent-la.deputy.com
+        https://<subdomain>.<region>.af.deputy.com
+        https://<subdomain>.<region>.ent-af.deputy.com
+        https://<subdomain>.<region>.an.deputy.com
+        https://<subdomain>.<region>.ent-an.deputy.com
+        https://<subdomain>.<region>.deputy.com
+        ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    | |
-    |----|
-    | `https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-au.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.na.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-na.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.eu.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-eu.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.as.deputy.com/exec/devapp/samlacs.` |
-    | `https://<subdomain>.<region>.ent-as.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.la.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-la.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.af.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-af.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.an.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs` |
-    | `https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs` |
+        ```https
+        https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-au.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.na.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-na.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.eu.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-eu.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.as.deputy.com/exec/devapp/samlacs.
+        https://<subdomain>.<region>.ent-as.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.la.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-la.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.af.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-af.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.an.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs
+        https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs
+        ```
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -174,7 +174,7 @@ Azure AD çoklu oturum açma 'yı Deputy ile yapılandırmak için aşağıdaki 
 
 ### <a name="configure-deputy-single-sign-on"></a>Deputy çoklu oturum açmayı yapılandırma
 
-1. Şu URL 'ye gidin:`https://(your-subdomain).deputy.com/exec/config/system_config`. **Güvenlik ayarları** ' na gidin ve **Düzenle**' ye tıklayın.
+1. Şu URL 'ye gidin: `https://(your-subdomain).deputy.com/exec/config/system_config` . **Güvenlik ayarları** ' na gidin ve **Düzenle**' ye tıklayın.
    
     ![Çoklu oturum açmayı yapılandırma](./media/deputy-tutorial/tutorial_deputy_004.png)
 
@@ -188,9 +188,9 @@ Azure AD çoklu oturum açma 'yı Deputy ile yapılandırmak için aşağıdaki 
    
     c. SAML SSO URL metin kutusuna şunu yazın`https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
     
-    d. SAML SSO URL metin kutusunda, alt etki `<your subdomain>` alanı ile değiştirin.
+    d. SAML SSO URL metin kutusunda, alt `<your subdomain>` etki alanı ile değiştirin.
    
-    e. SAML SSO URL metin kutusunda, Azure portal kopyaladığınız `<saml sso url>` **oturum açma URL 'si** ile değiştirin.
+    e. SAML SSO URL metin kutusunda, `<saml sso url>` Azure Portal kopyaladığınız **oturum açma URL 'si** ile değiştirin.
    
     f. **Ayarları Kaydet**' e tıklayın.
 
@@ -212,12 +212,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

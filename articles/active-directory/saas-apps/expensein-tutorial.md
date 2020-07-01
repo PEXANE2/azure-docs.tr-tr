@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf7e3659aa3044a4453574a2cd171303d00abc19
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67102853"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606726"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Öğretici: Expensewith Azure Active Directory ile tümleştirin
 
@@ -33,7 +33,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Expense'in nasıl tümle�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -82,10 +82,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Yanıt URL** 'si metın kutusuna URL 'den birini yazın:
 
-    | |
-    |--|
-    | `https://app.expensein.com/samlcallback` |
-    | `https://mobileapi.expensein.com/identity/samlcallback` |
+    ```https
+    https://app.expensein.com/samlcallback
+    https://mobileapi.expensein.com/identity/samlcallback
+    ```
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -129,7 +129,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     e. Sertifika (base64) Not defteri 'nde açın, içeriğini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
 
-    f. **Oluştur**' a tıklayın.
+    f. **Oluştur**'a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -139,9 +139,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -181,9 +181,9 @@ Azure AD kullanıcılarının ' de Expenseöğesinde oturum açmasını sağlama
 
     b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
 
-    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com`.
+    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com` .
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 

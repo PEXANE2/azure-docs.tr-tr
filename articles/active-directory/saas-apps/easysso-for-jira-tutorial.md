@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16d82c3b4b3abe475c1c1f87aafcf02a01d4cab9
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: f7c1b34329e93789c4093c74038759d5e26957e6
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605327"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-jira"></a>Öğretici: Jira için EasySSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -101,13 +101,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdakine ek olarak, Jira uygulaması için EasySSO, aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name |  |  Kaynak özniteliği|
-    | ---------------| --------------- | --------- |
-    | urn: OID: 0.9.2342.19200300.100.1.1 | | User. UserPrincipalName |
-    | urn: OID: 0.9.2342.19200300.100.1.3 | | Kullanıcı. Mail |
-    | urn: OID: 2.16.840.1.113730.3.1.241 | | User. DisplayName |
-    | urn: OID: 2.5.4.4 | | User. soyadı |
-    | urn: OID: 2.5.4.42 | | Kullanıcı. |
+    | Name | Kaynak özniteliği|
+    | ---------------| --------- |
+    | urn: OID: 0.9.2342.19200300.100.1.1 | User. UserPrincipalName |
+    | urn: OID: 0.9.2342.19200300.100.1.3 | Kullanıcı. Mail |
+    | urn: OID: 2.16.840.1.113730.3.1.241 | User. DisplayName |
+    | urn: OID: 2.5.4.4 | User. soyadı |
+    | urn: OID: 2.5.4.42 | Kullanıcı. |
     
     Azure AD kullanıcılarınızın **sAMAccountName** ile yapılandırılmış olması durumunda **urn: OID: 0.9.2342.19200300.100.1.1** ' i **sAMAccountName** özniteliğine eşlemeniz gerekir.
     

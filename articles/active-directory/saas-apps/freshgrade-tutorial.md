@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 852cd728f17902a83f5efeb3ccfb596f67ba37e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c7a6716bbc4b297973c8bfb0305434ee08a4730
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158132"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Öğretici: Azure Active Directory en iyi sınıf ile tümleştirme
 
@@ -34,7 +34,7 @@ Artık Azure AD ile birlikte tümleştirme, aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini geçici olarak yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -107,17 +107,17 @@ Azure AD çoklu oturum açmayı, geçici olarak yapılandırmak için aşağıda
 
      a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki desenleri kullanarak bir URL yazın:
 
-      | |
-      |--|
-      | `https://<subdomain>.freshgrade.com/login` |
-      | `https://<subdomain>.onboarding.freshgrade.com/login` |
+        ```https        
+        https://<subdomain>.freshgrade.com/login
+        https://<subdomain>.onboarding.freshgrade.com/login
+        ```
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna aşağıdaki desenleri kullanarak bir URL yazın:
     
-      | |
-      |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
-      | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
+        ```https
+        https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
+        https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
+        ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, daha önce, [istemci desteği ekibine](mailto:support@freshgrade.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -148,12 +148,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

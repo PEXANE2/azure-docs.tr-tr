@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57801403f2d0e29fb32b6919a7078ae3fb895fdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ab11c4fe957ab81dde3fb4f75a4dd82a6d4e5d2
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159642"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>Öğretici: Korn Fraz ALP ile tümleştirme Azure Active Directory
 
@@ -35,7 +35,7 @@ Korn Fraz ALP 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Korn Fraz ALP ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -108,19 +108,19 @@ Azure AD çoklu oturum açmayı Korn Fraz ALP ile yapılandırmak için aşağı
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` | 
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+        ```https
+        https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+        https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+        https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+        ```
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+        ```https
+        https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+        https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+        https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+        ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Korn Fraz ALP istemci destek ekibine](mailto:noreply@kornferry.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -151,12 +151,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

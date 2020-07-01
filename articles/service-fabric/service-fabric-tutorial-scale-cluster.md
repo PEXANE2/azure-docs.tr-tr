@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure 'da ve ' de bir Service Fabric kümesinin ö
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788867"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611654"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'daki bir Service Fabric kümesini ölçeklendirme
 
@@ -28,12 +28,12 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Bir kümeyi izleme](service-fabric-tutorial-monitor-cluster.md)
 > * Bir kümenin ölçeğini daraltma veya genişletme
 > * [Bir kümenin çalışma zamanını yükseltme](service-fabric-tutorial-upgrade-cluster.md)
-> * [Küme silme](service-fabric-tutorial-delete-cluster.md)
+> * [Kümeyi silme](service-fabric-tutorial-delete-cluster.md)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -80,14 +80,14 @@ Güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-c
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Bu öğreticide [örnek şablon][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır ve her düğüm türü için düğüm sayısını ayarlanmış üç parametre vardır: *nt0InstanceCount*, *nt1InstanceCount*ve *nt2InstanceCount*.  Örneğin, *nt1InstanceCount* parametresi, ikinci düğüm türü için örnek sayısını ayarlar ve ilişkili sanal makine ölçek kümesindeki VM sayısını ayarlar.
+En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya *üzerinde* açın.  Bu öğreticide [örnek şablon][template] kullanarak kümeyi dağıttıysanız, kümede üç düğüm türü vardır ve her düğüm türü için düğüm sayısını ayarlanmış üç parametre vardır: *nt0InstanceCount*, *nt1InstanceCount*ve *nt2InstanceCount*.  Örneğin, *nt1InstanceCount* parametresi, ikinci düğüm türü için örnek sayısını ayarlar ve ilişkili sanal makine ölçek kümesindeki VM sayısını ayarlar.
 
 Bu nedenle, *nt1InstanceCount* değerini güncelleştirerek ikinci düğüm türündeki düğümlerin sayısını değiştirirsiniz.  Bir düğüm türünü 100 ' dan fazla düğüme ölçeklendiremezsiniz.  Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır. Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
 
 İçinde ölçeklendirme yapıyorsanız, düğüm kaldırma [dayanıklılığı düzeyi][durability] olan düğüm türü, [Bu düğümlerin durumunu el ile kaldırmanız](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)gerekir.  Gümüş ve altın dayanıklılık katmanı için, bu adımlar platform tarafından otomatik olarak yapılır.
 
 ### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
-*Template. JSON* ve *Parameters. JSON* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
+*Üzerindetemplate.js* değişiklikleri kaydedin ve dosyalar *üzerindeparameters.js* .  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
@@ -103,11 +103,11 @@ Azure 'da çalışan bir Service Fabric kümesinde tanımlanan her düğüm tür
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  Bu bölümde bir Kaynak Yöneticisi şablonunu güncelleştirerek ve dağıtarak dördüncü düğüm türü eklersiniz. 
+En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya *üzerinde* açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  Bu bölümde bir Kaynak Yöneticisi şablonunu güncelleştirerek ve dağıtarak dördüncü düğüm türü eklersiniz. 
 
 Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sanal ağın ayrı alt ağında çalışan) ve ağ güvenlik grubunu da eklersiniz.  Yeni ölçek kümesi için yeni veya var olan genel IP adresi ve Azure yük dengeleyici kaynakları eklemeyi seçebilirsiniz.  Yeni düğüm türünün bir [dayanıklılık düzeyi][durability] ve "Standard_D2_V2" boyutu vardır.
 
-*Template. JSON* dosyasında aşağıdaki yeni parametreleri ekleyin:
+*template.js* dosyadaki aşağıdaki yeni parametreleri ekleyin:
 ```json
 "nt3InstanceCount": {
     "defaultValue": 5,
@@ -122,7 +122,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 },
 ```
 
-*Template. JSON* dosyasında aşağıdaki yeni değişkenleri ekleyin:
+*template.js* dosyadaki aşağıdaki yeni değişkenleri ekleyin:
 ```json
 "lbID3": "[resourceId('Microsoft.Network/loadBalancers',concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
 "lbIPConfig3": "[concat(variables('lbID3'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -144,7 +144,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 "subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
 ```
 
-*Template. JSON* dosyasında, sanal ağ kaynağına yeni bir alt ağ ekleyin:
+template.jsdosya *üzerinde* , sanal ağ kaynağına yeni bir alt ağ ekleyin:
 ```json
 {
     "type": "Microsoft.Network/virtualNetworks",
@@ -181,7 +181,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 },
 ```
 
-*Template. JSON* dosyasında, yenı genel IP adresi ve yük dengeleyici kaynakları ekleyin:
+Dosyadaki *template.js* , yenı genel IP adresi ve yük dengeleyici kaynakları ekleyin:
 ```json
 {
     "type": "Microsoft.Network/publicIPAddresses",
@@ -362,7 +362,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 },
 ```
 
-*Template. JSON* dosyasında, yeni ağ güvenlik grubu ve sanal makine ölçek kümesi kaynakları ekleyin.  Sanal makine ölçek kümesinin Service Fabric uzantısı özellikleri içindeki NodeTypeRef özelliği, belirtilen düğüm türünü ölçek kümesine eşler.
+*template.js* dosyadaki yeni ağ güvenlik grubu ve sanal makine ölçek kümesi kaynakları ekleyin.  Sanal makine ölçek kümesinin Service Fabric uzantısı özellikleri içindeki NodeTypeRef özelliği, belirtilen düğüm türünü ölçek kümesine eşler.
 
 ```json
 {
@@ -746,7 +746,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 },
 ```
 
-*Template. JSON* dosyasında, küme kaynağını güncelleştirin ve yeni bir düğüm türü ekleyin:
+Dosyadaki *template.js* , küme kaynağını güncelleştirin ve yeni bir düğüm türü ekleyin:
 ```json
 {
     "type": "Microsoft.ServiceFabric/clusters",
@@ -782,7 +782,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 }                
 ```
 
-*Parameters. JSON* dosyasında aşağıdaki yeni parametreleri ve değerleri ekleyin:
+*parameters.js* dosyadaki aşağıdaki yeni parametreleri ve değerleri ekleyin:
 ```json
 "nt3InstanceCount": {
     "Value": 5    
@@ -793,7 +793,7 @@ Yeni düğüm türüne ek olarak, ilişkili sanal makine ölçek kümesini (sana
 ```
 
 ### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
-*Template. JSON* ve *Parameters. JSON* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
+*Üzerindetemplate.js* değişiklikleri kaydedin ve dosyalar *üzerindeparameters.js* .  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
@@ -833,24 +833,23 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Düğüm kaynaklarını artırma 
-Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM 'lerinin işletim sistemini yükseltebilirsiniz.  
+Bir Service Fabric kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya özgün düğüm türünü yeni bir düğüm türüyle değiştirerek (güncelleştirilmiş VM SKU 'SU veya IŞLETIM sistemi görüntüsü ile), düğüm türünün işletim sistemini yükseltebilirsiniz. Daha fazla ayrıntı için bkz. [Azure Service Fabric düğüm türünü ölçeklendirme](service-fabric-scale-up-node-type.md).
 
-> [!WARNING]
-> Bir ölçek kümesi/düğüm türünün sanal makine SKU 'sunu, gümüş dayanıklılık veya daha büyük bir zamanda çalışmadığı takdirde değiştirmenizi öneririz. VM SKU 'SU boyutunun değiştirilmesi, veri bozucu bir yerinde altyapı işlemidir. Bu değişikliği gecikme veya izlemeye yönelik bir özellik olmadan, işlem durum bilgisi olmayan hizmetler için veri kaybına neden olabilir veya durum bilgisiz iş yükleri için bile öngörülemeyen çalışma sorunlarına neden olabilir.
+> [!IMPORTANT]
+> Tehlikeli bir işlem ve desteklenmeyen sanal makine SKU 'SU veya işletim sistemi görüntüsü için hiçbir yerde değişiklik yapmayı denemeyin.
 
-> [!WARNING]
-> Tehlikeli bir işlem ve desteklenmeyen birincil düğüm türünün VM SKU 'sunu değiştirmenizi öneririz.  Daha fazla küme kapasitesine ihtiyaç duyuyorsanız daha fazla sanal makine örneği veya ek düğüm türü ekleyebilirsiniz.  Bu mümkün değilse, yeni bir küme oluşturabilir ve eski kümenizde uygulama durumunu (varsa) [geri yükleyebilirsiniz](service-fabric-reliable-services-backup-restore.md) .  Bu mümkün değilse, [birincil düğüm türünün VM SKU 'sunu değiştirebilirsiniz](service-fabric-scale-up-node-type.md).
+Bu mümkün değilse, yeni bir küme oluşturabilir ve eski kümenizdeki uygulama durumunu (varsa) [geri yükleyebilirsiniz](service-fabric-reliable-services-backup-restore.md) . Herhangi bir sistem hizmeti durumunu geri yüklemeniz gerekmez; Uygulamalarınızı yeni kümenize dağıtırken bunlar yeniden oluşturulur. Kümenizde yalnızca durum bilgisi olmayan uygulamalar çalıştırıyorsanız, uygulamalarınızı yeni kümeye dağıtırsınız, geri yükleme yapamazsınız.
 
 ### <a name="update-the-template"></a>Şablonu güncelleştirme
 
-En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  *Parameters. JSON* dosyasını açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  
+En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası dışarı aktarın](#export-the-template-for-the-resource-group) .  parameters.jsdosya *üzerinde* açın.  Kümeyi Bu öğreticide [örnek şablonu][template] kullanarak dağıttıysanız, kümede üç düğüm türü vardır.  
 
 İkinci düğüm türündeki VM 'lerin boyutu *vmNodeType1Size* parametresinde ayarlanır.  Standard_D2_V2 *vmNodeType1Size* parametre değerini, her bir sanal makine örneğinin kaynaklarını çift eden [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md)olarak değiştirin.
 
 Her üç düğüm türünün VM SKU 'SU *Vmımagesku* parametresinde ayarlanır.  Yine, bir düğüm türünün VM SKU 'sunu değiştirmek approached olmalıdır ve birincil düğüm türü için önerilmez.
 
 ### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
-*Template. JSON* ve *Parameters. JSON* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
+*Üzerindetemplate.js* değişiklikleri kaydedin ve dosyalar *üzerindeparameters.js* .  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
@@ -873,19 +872,7 @@ Ardından, kümenin çalışma zamanının nasıl yükseltileceğini öğrenmek 
 > [!div class="nextstepaction"]
 > [Bir kümenin çalışma zamanını yükseltme](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-
-> * Düğüm türleri ekleme ve kaldırma (ölçeği genişletme ve ölçekleme)
-> * Düğüm kaynaklarını artırma (ölçeği artırma)
-
-Ardından, kümenin çalışma zamanının nasıl yükseltileceğini öğrenmek için aşağıdaki öğreticiye geçin.
-> [!div class="nextstepaction"]
-> [Bir kümenin çalışma zamanını yükseltme](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

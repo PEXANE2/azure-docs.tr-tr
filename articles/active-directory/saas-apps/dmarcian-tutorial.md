@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c885deca429b56417181971ced495831ba5d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 845a09610fa7855dfa2be71e3736371f8f45078f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68823704"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607143"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Öğretici: dmarcıa 'yu Azure Active Directory tümleştirme
 
@@ -33,7 +33,7 @@ Bu öğreticide, dmarcıa 'yı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -85,29 +85,29 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    | -- |
-    | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+        ```https
+        https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml
+        https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml
+        https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml
+        ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
+        ```https
+        https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/
+        https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/
+        https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/
+        ```
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
-    | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
+        ```https
+        https://us.dmarcian.com/login/<ACCOUNT_ID>
+        https://dmarcian-eu.com/login/<ACCOUNT_ID>
+        https://dmarciam-ap.com/login/<ACCOUNT_ID>
+        ```
      
     > [!NOTE] 
     > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleşceksiniz.
@@ -163,9 +163,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -205,7 +205,7 @@ Azure AD kullanıcılarının dmarcıa 'da oturum açmasını sağlamak için, d
 
     ![Yeni Kullanıcı](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. **Yeni Kullanıcı e-posta** metin kutusunda, kullanıcının e-postasını, **brittasıon\@contoso.com**gibi girin.
+    a. **Yeni Kullanıcı e-posta** metin kutusunda, kullanıcının e-postasını, **brittasıon \@ contoso.com**gibi girin.
 
     b. Kullanıcıya yönetici hakları vermek istiyorsanız, **kullanıcıyı yönetici yap**' ı seçin.
 

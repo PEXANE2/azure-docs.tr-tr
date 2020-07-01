@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98458f8be162d0903f5ea0d1f7d4651d46f78e8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7092ea68f2b7f35e372013a94108e43a83c8777
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048445"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608664"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Öğretici: iProva ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, iProva 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -78,11 +78,10 @@ Bu bölümde, Azure AD çoklu oturum açma 'yı yapılandırmak için iProva adr
 
 1. Bir Web tarayıcısı açın ve aşağıdaki URL modelini kullanarak iProva içindeki **SAML2 Info** sayfasına gidin:
 
-    | | |
-    |-|-|
-    | `https://SUBDOMAIN.iprova.nl/saml2info`|
-    | `https://SUBDOMAIN.iprova.be/saml2info`|
-    | | |
+    ```https
+    https://SUBDOMAIN.iprova.nl/saml2info
+    https://SUBDOMAIN.iprova.be/saml2info
+    ```
 
     ![İProva SAML2 Info sayfasını görüntüleme](media/iprova-tutorial/iprova-saml2-info.png)
 
@@ -112,7 +111,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. İProva uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği| Ad Alanı  |
+    | Name | Kaynak özniteliği| Ad Alanı  |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -128,9 +127,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ## <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -162,13 +161,13 @@ Bu bölümde, iProva 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 5. **Add (Ekle)** seçeneğini belirleyin.
 
-6. Kullanıcı **adı** kutusuna, gibi `B.Simon@contoso.com`kullanıcının Kullanıcı adını girin.
+6. Kullanıcı **adı** kutusuna, gibi kullanıcının Kullanıcı adını girin `B.Simon@contoso.com` .
 
 7. **Tam ad** kutusuna **B. Simon**gibi bir kullanıcının tam adını girin.
 
 8. **Parola yok (çoklu oturum açma kullan)** seçeneğini belirleyin.
 
-9. **E-posta adresi** kutusuna, gibi `B.Simon@contoso.com`kullanıcının e-posta adresini girin.
+9. **E-posta adresi** kutusuna, gibi kullanıcının e-posta adresini girin `B.Simon@contoso.com` .
 
 10. Sayfanın sonuna kadar aşağı kaydırın ve **son**' u seçin.
 
@@ -210,7 +209,7 @@ Bu bölümde, iProva 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 16. **Kullanılacak talep** açılan kutusunda **deposundaki kullanıcıların windowsaccountname**' yi seçin.
 
-17. **Son**' u seçin.
+17. **Son**'u seçin.
 
 18. Şimdi **Genel Ayarları Düzenle** ekranına geri dönersiniz. Sayfanın alt kısmına gidin ve yapılandırmanızı kaydetmek için **Tamam** ' ı seçin.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f53b3f8dd2a324e4eb3e4b6c073de478bff97a3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 37f06bbc91fef0f0d8c1c646082bd95452c7e518
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666087"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605908"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ice-contact-center"></a>Öğretici: buz Iletişim merkezi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Ice Iletişim merkezini Azure Active Directory (Azure AD) ile t
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -86,82 +86,82 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
 
-    | | |
-    |-|-|
-    | `https://<TENANT>-imrpool.icescape365.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.icescape.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.iceuc.com:PORT/identity`|
+        ```https
+        https://<TENANT>-imrpool.icescape365.com:PORT/identity
+        https://<TENANT>-imrpool.icescape.com:PORT/identity
+        https://<TENANT>-imrpool.iceuc.com:PORT/identity
+        ```
 
     c. **Yanıt URL** metin kutusuna, aşağıdaki düzenin birini kullanarak bir URL yazın:
 
-    | | |
-    |-|-|
-    | `https://<TENANT>-imrpool.icescape365.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.icescape.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.iceuc.com:PORT/identity`|
+        ```https
+        https://<TENANT>-imrpool.icescape365.com:PORT/identity
+        https://<TENANT>-imrpool.icescape.com:PORT/identity
+        https://<TENANT>-imrpool.iceuc.com:PORT/identity
+    ```
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Ice kişi Merkezi istemci desteği ekibine](mailto:support@computer-talk.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > These values are not real. Update these values with the actual Sign on URL, Identifier and Reply URL. Contact [ice Contact Center Client support team](mailto:support@computer-talk.com) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
+1. On the **Set up single sign-on with SAML** page, In the **SAML Signing Certificate** section, click copy button to copy **App Federation Metadata Url** and save it on your computer.
 
-    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
+    ![The Certificate download link](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### Create an Azure AD test user
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+In this section, you'll create a test user in the Azure portal called B.Simon.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+1. From the left pane in the Azure portal, select **Azure Active Directory**, select **Users**, and then select **All users**.
+1. Select **New user** at the top of the screen.
+1. In the **User** properties, follow these steps:
+   1. In the **Name** field, enter `B.Simon`.  
+   1. In the **User name** field, enter the username@companydomain.extension. For example, `B.Simon@contoso.com`.
+   1. Select the **Show password** check box, and then write down the value that's displayed in the **Password** box.
+   1. Click **Create**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### Assign the Azure AD test user
 
-Bu bölümde, Ice Iletişim merkezine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+In this section, you'll enable B.Simon to use Azure single sign-on by granting access to ice Contact Center.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Ice kişi merkezi**' ni seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. In the Azure portal, select **Enterprise Applications**, and then select **All applications**.
+1. In the applications list, select **ice Contact Center**.
+1. In the app's overview page, find the **Manage** section and select **Users and groups**.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   ![The "Users and groups" link](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. Select **Add user**, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![The Add User link](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. In the **Users and groups** dialog, select **B.Simon** from the Users list, then click the **Select** button at the bottom of the screen.
+1. If you're expecting any role value in the SAML assertion, in the **Select Role** dialog, select the appropriate role for the user from the list and then click the **Select** button at the bottom of the screen.
+1. In the **Add Assignment** dialog, click the **Assign** button.
 
-## <a name="configure-ice-contact-center-sso"></a>Ice kişi merkezi SSO 'yu yapılandırma
+## Configure ice Contact Center SSO
 
-**Ice bağlantı merkezi** tarafında çoklu oturum açma 'yı yapılandırmak Için, **uygulama Federasyon meta veri URL 'Sini** [Ice kişi Merkezi Destek ekibine](mailto:support@computer-talk.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+To configure single sign-on on **ice Contact Center** side, you need to send the **App Federation Metadata Url** to [ice Contact Center support team](mailto:support@computer-talk.com). They set this setting to have the SAML SSO connection set properly on both sides.
 
-### <a name="create-ice-contact-center-test-user"></a>Ice kişi merkezi test kullanıcısı oluşturma
+### Create ice Contact Center test user
 
-Bu bölümde, Ice kişi merkezi 'nde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Ice kişi merkezi platformunda kullanıcıları eklemek için [Ice kişi merkezi destek ekibi](mailto:support@computer-talk.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+In this section, you create a user called Britta Simon in ice Contact Center. Work with [ice Contact Center support team](mailto:support@computer-talk.com) to add the users in the ice Contact Center platform. Users must be created and activated before you use single sign-on.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim panelinde Ice kişi merkezi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Ice kişi merkezinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the ice Contact Center tile in the Access Panel, you should be automatically signed in to the ice Contact Center for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek kaynaklar
+## Additional resources
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is conditional access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile buz Iletişim merkezini deneyin](https://aad.portal.azure.com/)
+- [Try ice Contact Center with Azure AD](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [What is session control in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve denetimlerle buz Iletişim merkezini koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [How to protect ice Contact Center with advanced visibility and controls](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

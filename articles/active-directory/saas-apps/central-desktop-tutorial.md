@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda8e928b530001faeae34c364dfed91d7620f0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd3747c16d67d7ecbe9496e438e8d1eb1cd51ca1
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157519"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85607948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Öğretici: Merkezi Masaüstü ile tümleştirme Azure Active Directory
 
@@ -35,7 +35,7 @@ Merkezi masaüstünü Azure AD ile tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini merkezi masaüstü ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -110,11 +110,10 @@ Azure AD çoklu oturum açmayı merkezi masaüstü ile yapılandırmak için aş
 
     b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    | |
-    |--|
-    | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
-    | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
-    | |
+        ```https
+        https://<companyname>.centraldesktop.com/saml2-metadata.php
+        https://<companyname>.imeetcentral.com/saml2-metadata.php
+        ```
 
     c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.centraldesktop.com/saml2-assertion.php`
 
@@ -187,12 +186,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

@@ -3,12 +3,12 @@ title: 'Öğretici: makine öğrenimi varlığı ile yapılandırılmış verile
 description: Makine öğrenimi varlığını kullanarak bir noktadan yapılandırılmış verileri ayıklayın. Ayıklama doğruluğunu artırmak için, özelliklerle alt varlıklar ekleyin.
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676177"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611025"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Öğretici: Language Understanding (LUSıS) içinde makine öğrenimi varlıkları ile Kullanıcı aradıklarından yapılandırılmış verileri Ayıkla
 
@@ -16,7 +16,7 @@ Bu öğreticide, makine öğrenimi varlığını kullanarak bir noktadan yapıla
 
 Makine öğrenimi varlığı, [özelliklerle](luis-concept-feature.md)alt varlık varlıkları sağlayarak [model ayrıştırma kavramını](luis-concept-model.md#v3-authoring-model-decomposition) destekler.
 
-**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar
@@ -98,7 +98,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 1. Açılan menüden **Yeni tümcecik listesi oluştur** ' u seçin.
 
-1. **Yeni tümcecik oluştur liste** kutusuna adı girin, `SizePhraselist` ardından şu değerleri girin: `small` , `medium` , ve `large` . **Öneriler** kutusu dolduğunda, `extra large` ve ' yi seçin `xl` . Yeni tümcecik listesini oluşturmak için **Kaydet** ' i seçin.
+1. **Yeni tümcecik oluştur liste** kutusuna adı girin, `SizePhraselist` ardından şu değerleri girin: `small` , `medium` , ve `large` . **Öneriler** kutusu dolduğunda, `extra large` ve ' yi seçin `xl` . Yeni tümcecik listesini oluşturmak için **Oluştur** ' u seçin.
 
     Bu tümcecik listesi özelliği, `Size` alt varlığın boyutla ilgili sözcükleri örnek sözcükle birlikte girerek bulmasına yardımcı olur. Bu tümcecik listesinin her kelime içermesi gerekmez, ancak boyutu göstermek için beklenen sözcükleri içermesi gerekir.
 
@@ -131,7 +131,7 @@ Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, 
 
 1. **Şema ve Özellikler** sekmesinde, varlık **boyutu** ' nu seçin ve **+ Özellik Ekle**' yi seçin.
 
-1. Açılan listeden **@ Sizelist** ' i seçin.
+1. Açılan listeden **@ Sizelistentity** ' ı seçin.
 
 <a name="add-prebuilt-number-entity-to-app"></a>
 

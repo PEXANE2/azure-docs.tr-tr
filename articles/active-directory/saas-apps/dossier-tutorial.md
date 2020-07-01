@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2feb65384e8586b30840a37a66aaee5375881c22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7233ea2d9d49d9a030f11f45e8aeba3fb0927c2
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103929"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Öğretici: Dossıer ile tümleştirme Azure Active Directory
 
@@ -34,7 +34,7 @@ Dossıer 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Dossıer ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -107,11 +107,10 @@ Dossıer ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki 
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    | |
-    |-|-|
-    | `https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn`|
-    | `https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn`|
-    | |
+        ```https
+        https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn
+        https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn
+        ```
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`Dossier/<CLIENTNAME>`
 
@@ -120,11 +119,10 @@ Dossıer ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki 
 
     c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
     
-    | |
-    |-|-|
-    |  `https://<SUBDOMAIN>.dossiersystems.com/azuresso`|
-    | `https://dossier.<CLIENTDOMAINNAME>/azuresso`|
-    | |
+        ```https
+        https://<SUBDOMAIN>.dossiersystems.com/azuresso
+        https://dossier.<CLIENTDOMAINNAME>/azuresso
+        ```
 
 
     > [!NOTE]
@@ -166,11 +164,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

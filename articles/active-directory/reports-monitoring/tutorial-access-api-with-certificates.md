@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a6699d7a117eee95ba635c8c94ed9b2955f21a7b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4f27385cc33c6c289718c3143d03e24f0454a9f0
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196888"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608017"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Öğretici: sertifikalarla Azure Active Directory Raporlama API 'sini kullanarak veri edinme
 
@@ -30,7 +30,7 @@ ms.locfileid: "83196888"
 
 Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifikası kullanmayı öğreneceksiniz. Test sertifikalarının bir üretim ortamında kullanılması önerilmez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Oturum açma verilerine erişmek için Premium (P1/P2) lisansına sahip bir Azure Active Directory kiracınız olduğundan emin olun. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. Yükseltmeden önce herhangi bir etkinlik veriniz yoksa, Premium bir lisansa yükselttikten sonra verilerin raporlarda gösterilmesi birkaç gün sürecek şekilde değişir. 
 

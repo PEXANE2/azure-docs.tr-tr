@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:` SAS kimlik bilgilerini kullanarak Azure depolama 'ya erişmek için yönetilen kimliği kullanma-Azure AD
+title: Öğretici `:` SAS kimlik bilgilerini kullanarak Azure depolama 'ya erişmek için yönetilen kimliği kullanma-Azure AD
 description: Depolama hesabı erişim anahtarı yerine SAS kimlik bilgilerini kullanarak Azure depolama 'ya erişmek için Windows VM sistem tarafından atanan bir yönetilen kimliğin nasıl kullanılacağını gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ editor: daveba
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: c1ed86db85de8d4665c9eecfbde96b0909b12362
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74232155"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608322"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Öğretici: SAS kimlik bilgileri aracılığıyla Azure depolama 'ya erişmek için Windows VM sistem tarafından atanan bir yönetilen kimlik kullanma
 
@@ -35,7 +35,7 @@ Bir hizmet SAS, bir hesap erişim anahtarı açığa çıkarmadan sınırlı sü
 > * VM'nize Resource Manager'da yer alan depolama hesabı SAS için erişim verme 
 > * VM'nizin kimliğini kullanarak erişim belirteci alma ve Resource Manager'dan SAS almak için bu belirteci kullanma 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -50,7 +50,7 @@ Henüz bir depolama hesabınız yoksa, şimdi oluşturacaksınız. Ayrıca, bu a
 3. Daha sonra kullanacağınız depolama hesabı için bir ad girin.  
 4. **Dağıtım modeli** ve **Hesap türü** sırasıyla "Kaynak yöneticisi" ve "Genel amaçlı" olarak ayarlanmalıdır. 
 5. **Abonelik** ve **Kaynak Grubu** değerlerinin, önceki adımda VM'nizi oluştururken belirttiklerinizle eşleştiğinden emin olun.
-6. **Oluştur**' a tıklayın.
+6. **Oluştur**'a tıklayın.
 
     ![Yeni depolama hesabı oluşturma](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -126,7 +126,7 @@ Bu istek için, aşağıdaki HTTP istek parametrelerini kullanarak SAS kimlik bi
 
 Bu parametreler SAS kimlik bilgileri için isteğin POST gövdesine eklenmiştir. SAS kimliği oluştururken kullanılan parametreler hakkında daha fazla bilgi için bkz. [Liste Hizmeti SAS REST başvurusu](/rest/api/storagerp/storageaccounts/listservicesas).
 
-İlk olarak, parametreleri JSON olarak dönüştürdükten sonra, SAS kimlik bilgisini `listServiceSas` oluşturmak için depolama uç noktasını çağırın:
+İlk olarak, parametreleri JSON olarak dönüştürdükten sonra, `listServiceSas` SAS kimlik bilgisini oluşturmak için depolama uç noktasını çağırın:
 
 ```powershell
 $params = @{canonicalizedResource="/blob/<STORAGE-ACCOUNT-NAME>/<CONTAINER-NAME>";signedResource="c";signedPermission="rcw";signedProtocol="https";signedExpiry="2017-09-23T00:00:00Z"}
@@ -153,7 +153,7 @@ PS C:\> $sasCred
 sv=2015-04-05&sr=c&spr=https&se=2017-09-23T00%3A00%3A00Z&sp=rcw&sig=JVhIWG48nmxqhTIuN0uiFBppdzhwHdehdYan1W%2F4O0E%3D
 ```
 
-Sonra "test.txt" adlı bir dosya oluştururuz. Ardından `New-AzStorageContent` cmdlet ile kimlik doğrulamak için SAS kimlik bilgisini kullanın, dosyayı blob kapsayımuza yükleyin, sonra dosyayı indirin.
+Sonra "test.txt" adlı bir dosya oluştururuz. Ardından cmdlet ile kimlik doğrulamak için SAS kimlik bilgisini kullanın `New-AzStorageContent` , dosyayı blob kapsayımuza yükleyin, sonra dosyayı indirin.
 
 ```bash
 echo "This is a test text file." > test.txt

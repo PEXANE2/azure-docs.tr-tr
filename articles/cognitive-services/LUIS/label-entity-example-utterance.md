@@ -3,12 +3,12 @@ title: Etiket varlık örneği söylenişi
 description: LUı portalının amaç ayrıntısı sayfasında örnek bir şekilde bir makine öğrenimi varlığını alt varlıklarla nasıl etiketleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722652"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610498"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Örnek bir örnekte makine öğrenimi varlığı etiketleme
 
@@ -16,7 +16,7 @@ Bir varlığın bir örnek içinde etiketlenmesi, LUYA varlığın ne olduğu ve
 
 Makine tarafından öğrenilen varlıkları ve alt varlıkları etiketleyebilir.
 
-Normal ifade, liste veya önceden oluşturulmuş varlıkları etiketleyip bir varlık veya alt varlık oluşturamayacağından, bu varlıkları varlık veya alt varlığa uygun olduğunda ekleyin.
+Normal ifade, liste veya önceden oluşturulmuş varlıkları etiketleyip bir varlık veya alt varlık oluşturun, ardından bu varlıkları varlık veya alt varlığa uygun olduğunda özellik olarak ekleyin.
 
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>Amaç ayrıntısı sayfasından etiket örneği
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f532976e80c4284addcf09d81d8a32fd5f6f8827
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 60248d1326d872734a49a93a689625cf2603f929
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733951"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601709"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanı ile 
 
 Bu öğreticide, Azure AD DS yönetilen bir etki alanı için LDAPS 'nin nasıl yapılandırılacağı gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure AD DS ile kullanmak için dijital bir sertifika oluşturun
@@ -32,7 +32,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -230,7 +230,7 @@ Internet üzerinden güvenli LDAP erişimi etkinken, istemci bilgisayarlarının
 
 ![Azure portal yönetilen etki alanınız için Güvenli LDAP dış IP adresini görüntüleyin](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
-Dış DNS sağlayıcınızı, bu dış IP adresine çözümlemek üzere *LDAPS*gibi bir konak kaydı oluşturacak şekilde yapılandırın. Öncelikle makinenizde yerel olarak test etmek için Windows Konakları dosyasında bir giriş oluşturabilirsiniz. Yerel makinenizde konaklar dosyasını başarıyla düzenlemek için *Not defteri 'ni* yönetici olarak açın, sonra dosyayı açın *C:\Windows\System32\drivers\etc*
+Dış DNS sağlayıcınızı, bu dış IP adresine çözümlemek üzere *LDAPS*gibi bir konak kaydı oluşturacak şekilde yapılandırın. Öncelikle makinenizde yerel olarak test etmek için Windows Konakları dosyasında bir giriş oluşturabilirsiniz. Yerel makinenizde konaklar dosyasını başarıyla düzenlemek için *Not defteri 'ni* yönetici olarak açın, sonra *C:\Windows\system32\drivers\etc\hosts* dosyasını açın
 
 Aşağıdaki örnek DNS girişi, dış DNS sağlayıcınız veya yerel konaklar dosyasında, *LDAPS.aaddscontoso.com* trafiğini *168.62.205.103*dış IP adresine çözümler:
 

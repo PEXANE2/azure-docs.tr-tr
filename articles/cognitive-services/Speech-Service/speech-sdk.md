@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399967"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610770"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
@@ -37,7 +37,7 @@ Konuşma SDK 'Sı, konuşma hizmetinden pek çok özelliği kullanıma sunar, an
 
 ### <a name="voice-assistants"></a>Ses yardımcıları
 
-Konuşma SDK 'sını kullanan sesli yardımcılar, geliştiricilerin, uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak tanır. Ses Yardımcısı hizmeti, bir cihaz ve yardımcı arasında hızlı ve güvenilir bir etkileşim sağlar. Uygulama, görev tamamlama için bot çerçevesinin doğrudan hat konuşma kanalını veya tümleşik özel komutlar (Önizleme) hizmetini kullanır. Ayrıca, benzersiz bir ses deneyimi oluşturmak için [özel ses portalı](https://aka.ms/customvoice) kullanılarak ses yardımcıları oluşturulabilir.
+Konuşma SDK 'sını kullanan [sesli yardımcılar](voice-assistants.md) , geliştiricilerin, uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak tanır. Ses Yardımcısı hizmeti, bir cihaz ve yardımcı arasında hızlı ve güvenilir bir etkileşim sağlar. Uygulama, görev tamamlama için bot çerçevesinin doğrudan hat konuşma kanalını veya tümleşik özel komutlar (Önizleme) hizmetini kullanır. Ayrıca, sesli yardımcılar benzersiz bir ses çıkışı deneyimi eklemek için [özel ses portalında](https://aka.ms/customvoice) oluşturulan özel sesleri kullanabilir.
 
 #### <a name="keyword-spotting"></a>Anahtar sözcük biriktirme
 
@@ -65,7 +65,7 @@ Konuşma SDK 'Sı, telefon verilerinin oluşturulduğu, çağrı merkezi senaryo
 
 ### <a name="codec-compressed-audio-input"></a>Codec sıkıştırılmış ses girişi
 
-Konuşma SDK 'Sı programlama dillerinin birkaçı codec sıkıştırılmış ses giriş akışlarını destekler. Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">sıkıştırılmış ses girişi biçimlerini <span class="docon docon-navigate-external x-hidden-focus"> </span>kullanma </a>.
+Konuşma SDK 'Sı programlama dillerinin birkaçı codec sıkıştırılmış ses giriş akışlarını destekler. Daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">sıkıştırılmış ses girişi biçimlerini <span class="docon docon-navigate-external x-hidden-focus"></span> kullanma </a>.
 
 ## <a name="rest-api"></a>REST API
 
@@ -101,7 +101,7 @@ Benzersiz bir ortamda tanıma ve bulma için konuşmayı metne dönüştürme i�
 
 [!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-ios.md)]
 
-# <a name="macos"></a>[Mac OS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 [!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-macos.md)]
 

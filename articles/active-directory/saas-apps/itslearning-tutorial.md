@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a4a95452c11993f57674bcbd16cf3ed5ea828e4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c07c518b4898f64e7ef726ec173c7e31083dae7d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67099544"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605504"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Öğretici: ıtslearning ile tümleştirme Azure Active Directory
 
@@ -34,7 +34,7 @@ Itslearning 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini ıtslearning ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -107,11 +107,10 @@ Azure AD çoklu oturum açmayı ıtslearning ile yapılandırmak için aşağıd
 
     a. **Oturum açma URL 'si** metin kutusuna URL 'yi yazın:
     
-    | |
-    |--|
-    | `https://www.itslearning.com/index.aspx`|
-    | `https://us1.itslearning.com/index.aspx`|
-    | |
+        ```https
+        https://www.itslearning.com/index.aspx
+        https://us1.itslearning.com/index.aspx
+        ```
 
     b. **Tanımlayıcı (VARLıK kimliği)** metın kutusuna URL yazın:`urn:mace:saml2v2.no:services:com.itslearning`
 
@@ -151,11 +150,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com.
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com.
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

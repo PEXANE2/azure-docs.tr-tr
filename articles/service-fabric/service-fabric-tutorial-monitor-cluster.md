@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 338ebc584cc718fd9d3b587d17ec0895483dfb0c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 048161ec13edbd0cf474fb6598fdd9ff981077ae
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560448"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611688"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure 'da bir Service Fabric kümesini Izleme
 
@@ -31,17 +31,17 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * Bir kümeyi izleme
 > * [Bir kümenin ölçeğini daraltma veya genişletme](service-fabric-tutorial-scale-cluster.md)
 > * [Bir kümenin çalışma zamanını yükseltme](service-fabric-tutorial-upgrade-cluster.md)
-> * [Küme silme](service-fabric-tutorial-delete-cluster.md)
+> * [Kümeyi silme](service-fabric-tutorial-delete-cluster.md)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yı yükler.
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) veya [Azure CLI](/cli/azure/install-azure-cli)'yi yükler.
 * Güvenli bir [Windows kümesi](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oluşturma 
 * Küme için [Tanılama toplamayı](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) ayarla
 * Kümede [Eventstore hizmetini](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) etkinleştirin
@@ -191,7 +191,7 @@ ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-RunAsync hizmeti başlatıldığında ve tamamlandığında, genellikle dağıtımlar ve yükseltmelerde gerçekleşen farklı olayları görebilirsiniz.
+Hizmet `runasync` başlatıldığında ve tamamlandığında, genellikle dağıtımlar ve yükseltmelerde gerçekleşen farklı olayları görebilirsiniz.
 
 ![Service Fabric çözümü Reliable Services](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
@@ -487,5 +487,5 @@ Daha sonra, bir kümeyi ölçeklendirmeyi öğrenmek için aşağıdaki öğreti
 > [!div class="nextstepaction"]
 > [Kümeyi ölçeklendirme](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

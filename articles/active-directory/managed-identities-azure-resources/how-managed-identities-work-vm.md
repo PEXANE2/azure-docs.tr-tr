@@ -10,17 +10,17 @@ ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: ''
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/11/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82158aeae614112c47a2288ceb867b382c6a159a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b61fd2f9bc36743754a43b05629a798f0305d4e5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740472"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609218"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Azure kaynakları için Yönetilen kimlikler Azure sanal makineleri ile nasıl çalışır?
 
@@ -92,4 +92,4 @@ Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyl
 Azure kaynakları için yönetilen kimlikler özelliğini kullanmaya başlamak için aşağıdaki hızlı başlangıçlardan yararlanın:
 
 * [Resource Manager’a erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma](tutorial-windows-vm-access-arm.md)
-* Kaynak Yöneticisi-Yönetilen-kimlikler-çalışma-VM ' y [e erişmek Için LINUX VM sistem tarafından atanan yönetilen kimlik kullanma](tutorial-linux-vm-access-arm.md)
+* [Resource Manager’a erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma](tutorial-linux-vm-access-arm.md)

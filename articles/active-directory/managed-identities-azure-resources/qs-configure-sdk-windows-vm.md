@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11cd51984f82bc20c02669e796d9ba21b9ed5d7
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 9472f9fa2084a1665b4a103df359fd3b4f19d6ad
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74183472"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609053"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Azure SDK kullanarak Azure kaynakları için yönetilen kimliklerle VM yapılandırma
 
@@ -30,7 +30,7 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory (AD) içind
 
 Bu makalede, Azure SDK kullanarak bir Azure VM için Azure kaynakları için yönetilen kimliklerin nasıl etkinleştirileceğini ve kaldırılacağını öğrenirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
