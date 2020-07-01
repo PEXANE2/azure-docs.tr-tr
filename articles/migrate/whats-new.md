@@ -4,12 +4,12 @@ description: Azure geçişi hizmetindeki yenilikler ve son güncelleştirmeler h
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052324"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556919"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
@@ -17,6 +17,7 @@ ms.locfileid: "85052324"
 
 ## <a name="update-june-2020"></a>Güncelleştirme (Haziran 2020)
 
+- Şirket içi VMware VM 'lerini [Azure VMware çözümüne (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) geçirme değerlendirmeleri artık desteklenmektedir. [Daha fazla bilgi edinin](how-to-create-azure-vmware-solution-assessment.md)
 - Fiziksel sunucu keşfi için gereç üzerinde birden çok kimlik bilgisi desteği.
 - Kiracı kısıtlamasının yapılandırıldığı kiracı için gerecden Azure oturum açmaya izin verme desteği.
 - Yeni Azure geçişi sürüm sürümlerini aşağıda listelenen şekilde yapın.

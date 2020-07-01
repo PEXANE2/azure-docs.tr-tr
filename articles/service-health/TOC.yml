@@ -7,7 +7,11 @@
 - name: Hızlı Başlangıçlar
   items:
     - name: Hizmet durumu olayları için uyarıları yapılandırma
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: Azure portal
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM şablonu
+          href: alerts-activity-log-service-notifications-arm.md
 - name: Kavramlar
   items:
     - name: Azure durum sayfası

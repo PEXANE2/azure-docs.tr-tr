@@ -1,14 +1,14 @@
 ---
 title: Azure Kaynak Grafiği'ne Genel Bakış
 description: Azure Kaynak Grafiği hizmeti 'nin, abonelikler ve kiracılar arasında ölçeklendirerek kaynakların karmaşık şekilde sorgulanmasını nasıl sağladığını anlayın.
-ms.date: 03/02/2020
+ms.date: 06/29/2020
 ms.topic: overview
-ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 055bb0be75de4d5f6a5a27c5fb3b218fda8777d7
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167273"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565682"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Kaynak Grafı nedir?
 
@@ -52,8 +52,7 @@ Azure Kaynak Grafının ne olduğunu daha iyi kavradığınıza göre, sorgu olu
 
 Azure Kaynak grafiğinin sorgu dilinin Azure Veri Gezgini tarafından kullanılan [kusto sorgu diline](/azure/data-explorer/data-explorer-overview) göre olduğunu anlamak önemlidir.
 
-Önce, Azure Kaynak Grafiği ile kullanılabilecek işlemler ve işlevler hakkında ayrıntılar için, bkz. [Kaynak Grafiği sorgu dili](./concepts/query-language.md).
-Kaynakları göz atmak için, bkz, [kaynakları keşfedin](./concepts/explore-resources.md).
+Önce, Azure Kaynak Grafiği ile kullanılabilecek işlemler ve işlevler hakkında ayrıntılar için, bkz. [Kaynak Grafiği sorgu dili](./concepts/query-language.md). Kaynakları göz atmak için, bkz, [kaynakları keşfedin](./concepts/explore-resources.md).
 
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Kaynak Grafiği’nde izinler
 
@@ -62,8 +61,7 @@ Kaynak Grafı’nı kullanmak için, sorgulamak istediğiniz kaynaklara en az ok
 > [!NOTE]
 > Kaynak Grafiği, oturum açma sırasında bir sorumlu için kullanılabilen abonelikleri kullanır. Etkin bir oturum sırasında eklenen yeni aboneliğin kaynaklarını görmek için sorumlu bağlamı yenilemeniz gerekir. Bu eylem, oturumunuzu kapatıp yeniden oturum açarken otomatik olarak gerçekleşir.
 
-Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları çağırma ile](/rest/api/resources/resourcegroups/list) aynıdır \- ; sonucun kısmi olabileceğini belirten herhangi bir gösterge olmadan, erişebileceğiniz kaynak gruplarını elde edersiniz.
-Abonelik listesinde kullanıcının uygun haklara sahip bir abonelik yoksa, yanıt _403_ (yasak) olur.
+Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları çağırma ile](/rest/api/resources/resourcegroups/list) aynıdır \- ; sonucun kısmi olabileceğini belirten herhangi bir gösterge olmadan, erişebileceğiniz kaynak gruplarını elde edersiniz. Abonelik listesinde kullanıcının uygun haklara sahip bir abonelik yoksa, yanıt _403_ (yasak) olur.
 
 ## <a name="throttling"></a>Azaltma
 

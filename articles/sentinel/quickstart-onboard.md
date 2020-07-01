@@ -1,6 +1,6 @@
 ---
 title: "Hızlı başlangıç: Azure Sentinel 'e ekleme"
-description: Bu Hızlı Başlangıç belgesini izleyerek Azure Sentinel 'de veri toplamayı öğrenin.
+description: Bu hızlı başlangıçta, ilk olarak Sentinel 'i etkinleştirerek ve sonra veri kaynaklarını bağlayarak yerleşik Azure Sentinel 'i nasıl yapacağınızı öğrenin.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: a07ba26128d1d4689e820ec8e300ca9420c3c2d2
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: d895ff3a16f8e21f73845c03d8bec83ded9bcd43
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367096"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564538"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Hızlı başlangıç: yerleşik Azure Sentinel
 
@@ -47,7 +47,7 @@ Veri kaynaklarınızı bağlandıktan sonra, verilerinizi temel alan bir expertl
 
    ![search](./media/quickstart-onboard/search-product.png)
 
-1. **Ekle**'yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 1. Kullanmak istediğiniz çalışma alanını seçin veya yeni bir tane oluşturun. Azure Sentinel 'i birden fazla çalışma alanında çalıştırabilirsiniz, ancak veriler tek bir çalışma alanına yalıtılmış olur.
 

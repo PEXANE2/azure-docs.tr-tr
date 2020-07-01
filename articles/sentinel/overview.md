@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel nedir? | Microsoft Docs
-description: Azure Sentinel, temel özellikleri ve nasıl çalıştığı hakkında bilgi edinin.
+description: Azure Sentinel, ölçeklenebilir, bulut Yerel güvenlik bilgileri olay yönetimi (SıEM) ve güvenlik Orchestration otomatik yanıtı (SOAR) çözümü hakkında bilgi edinin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 517bdc0846ae56e0db41631f1dc5411471c6c2bd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800134"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564636"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel nedir?
 

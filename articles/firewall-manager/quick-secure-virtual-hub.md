@@ -1,39 +1,39 @@
 ---
-title: 'Hızlı başlangıç: Azure Güvenlik Duvarı Yöneticisi önizlemesi-Kaynak Yöneticisi şablonu kullanarak güvenli sanal hub'
-description: Azure Güvenlik Duvarı Yöneticisi önizlemesi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme hakkında bilgi edinin.
+title: "Hızlı başlangıç: Azure Güvenlik Duvarı Yöneticisi 'Ni Kaynak Yöneticisi şablonu kullanarak güvenli sanal hub"
+description: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme hakkında bilgi edinin.
 services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167205"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563699"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Hızlı başlangıç: Azure Güvenlik Duvarı Yöneticisi 'Ni Kaynak Yöneticisi şablonu kullanarak sanal hub 'ınızı güvenli hale getirme
 
-Bu hızlı başlangıçta, Azure Güvenlik Duvarı Yöneticisi önizlemesi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirmek için bir Kaynak Yöneticisi şablonu kullanırsınız. Dağıtılan güvenlik duvarında bağlantılara izin veren bir uygulama kuralı vardır `www.microsoft.com` . Güvenlik duvarını test etmek için iki Windows Server 2019 sanal makine dağıtılır. Bir geçiş sunucusu, iş yükü sunucusuna bağlanmak için kullanılır. İş yükü sunucusundan yalnızca ' a bağlanabilirsiniz `www.microsoft.com` .
+Bu hızlı başlangıçta, Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirmek için bir Kaynak Yöneticisi şablonu kullanırsınız. Dağıtılan güvenlik duvarında bağlantılara izin veren bir uygulama kuralı vardır `www.microsoft.com` . Güvenlik duvarını test etmek için iki Windows Server 2019 sanal makine dağıtılır. Bir geçiş sunucusu, iş yükü sunucusuna bağlanmak için kullanılır. İş yükü sunucusundan yalnızca ' a bağlanabilirsiniz `www.microsoft.com` .
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Yöneticisi önizlemesi nedir?](overview.md).
+Azure Güvenlik Duvarı Yöneticisi hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Yöneticisi nedir?](overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-secured-virtual-hub"></a>Güvenli sanal hub oluşturma
 
-Bu şablon, senaryoyu desteklemek için gerekli kaynaklarla birlikte Azure Güvenlik Duvarı Yöneticisi önizlemesi 'ni kullanarak güvenli bir sanal hub oluşturur.
+Bu şablon, senaryoyu desteklemek için gerekli kaynaklarla birlikte Azure Güvenlik Duvarı Yöneticisi 'ni kullanarak güvenli bir sanal hub oluşturur.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
+Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/fwm-docs-qs/) alınmıştır.
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
@@ -57,7 +57,7 @@ Kaynak Yöneticisi şablonu Azure 'a dağıtma:
 
 1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon bir Azure Güvenlik Duvarı, sanal bir WAN ve sanal hub, ağ altyapısı ve iki sanal makine oluşturur.
 
-   [![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+   [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
 
 2. Portalda, **güvenli sanal hub 'lar** sayfasında, aşağıdaki değerleri yazın veya seçin:
    - Abonelik: mevcut abonelikler arasından seçim yapın 
@@ -101,4 +101,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Güvenilen güvenlik iş ortakları hakkında bilgi edinin](trusted-security-partners.md)
+> [Güvenlik iş ortağı sağlayıcıları hakkında bilgi edinin](trusted-security-partners.md)

@@ -3,16 +3,16 @@ title: Kurumsal tümleştirme görevlerini otomatikleştirme
 description: Azure Logic Apps kullanarak, uygulamaları, verileri, hizmetleri ve sistemleri tümleştiren kurumsal tümleştirme için en az kodla tümleştiren iş akışlarını otomatikleştirme hakkında bilgi edinin.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 08b3863ac9a03cda2659cf4934b781eeb9330e17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659603"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563820"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Genel Bakış-Azure Logic Apps nedir?
 
@@ -32,7 +32,7 @@ Azure Logic Apps ile kurumsal tümleştirme çözümleri oluşturmak için, Azur
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-## <a name="how-does-logic-apps-work"></a>Logic Apps nasıl çalışır? 
+## <a name="how-do-logic-apps-work"></a>Logic Apps nasıl çalışır? 
 
 Her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya yeni kullanılabilir veriler belirli ölçütleri karşıladığında tetiklenen bir tetikleyici ile başlar. Logic Apps içindeki bağlayıcılar tarafından sunulan birçok tetikleyici, iş yüklerinizin ne kadar düzenli olarak çalışacağını ayarlayabilmeniz için temel zamanlama yeteneklerini içerir. Daha karmaşık zamanlama veya gelişmiş Yinelenmeler için herhangi bir iş akışındaki ilk adım olarak bir yinelenme tetikleyicisi kullanabilirsiniz. [Zamanlama tabanlı iş akışları](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)hakkında daha fazla bilgi edinin.
 
@@ -42,7 +42,7 @@ Tetikleyici her tetiklendiğinde, Logic Apps altyapısı iş akışındaki eylem
 
 Mantıksal uygulamalarınızı tarayıcınız aracılığıyla Azure portalda ve Visual Studio’da sunulan Logic Apps Tasarımcısı ile görsel olarak oluşturabilirsiniz. Daha özel mantıksal uygulamalar için “kod görünümü” düzenleyicisinde çalışarak JavaScript Nesne Gösterimi (JSON) biçiminde mantıksal uygulama tanımları oluşturabilir ya da bu tanımları düzenleyebilirsiniz. Belirli görevler için Azure PowerShell komutlarını ve Azure Resource Manager şablonlarını da kullanabilirsiniz. Mantıksal uygulamalar Azure’a dağıtılarak bulutta çalıştırılır. Daha ayrıntılı bir giriş için şu videoyu izleyin: [Azure Kurumsal Tümleştirme Hizmetlerini kullanarak bulut uygulamalarını uygun ölçekte çalıştırma](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
-## <a name="why-use-logic-apps"></a>Logic Apps neden kullanılmalı?
+## <a name="why-use-logic-apps"></a>Logic Apps neden kullanılır?
 
 İşletmelerin dijitalleşmeye yönelmesiyle birlikte, mantıksal uygulamalar önceden oluşturulmuş API’ler ve Microsoft tarafından yönetilen bağlayıcılar sağlayarak eski, modern ve son teknoloji sistemleri daha kolay ve hızlı bir şekilde bağlamanıza yardımcı olur. Bu sayede, uygulamalarınızın iş mantığına ve işlevselliğine odaklanabilirsiniz. Uygulamalarınızı oluşturma, barındırma, ölçeklendirme, yönetme, izleme ve uygulamalarınızın bakımını yapma gibi konularda endişelenmeniz gerekmez. Logic Apps bu işlemleri sizin yerinize halleder. Üstelik, bir tüketim [fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md) göre yalnızca kullandığınız kadar ödersiniz.
 

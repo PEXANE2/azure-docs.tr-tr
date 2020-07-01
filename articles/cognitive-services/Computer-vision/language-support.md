@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a207118af0b07be79c934a9665f47e73c5eecde0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589202"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560174"
 ---
 # <a name="language-support-for-computer-vision"></a>Görüntü İşleme için dil desteği
 
 Görüntü İşleme bazı özellikleri birden çok dili destekler; Burada bahsedilen özellikler yalnızca Ingilizce 'yi destekler.
 
-## <a name="text-recognition"></a>Metin tanıma
+## <a name="text-detection-ocr"></a>Metin algılama (OCR)
 
-Görüntü İşleme, metni birçok dilde tanıyabilir. OCR ve okuma API 'Leri için bir dil kodu belirtmeniz gerekmez. Bu işlevsellik ve her bir API 'nin avantajları hakkında daha fazla bilgi için bkz. [basılı ve el yazısı metnini tanıma](concept-recognizing-text.md) .
+Görüntü İşleme, birçok dilde metni algılayabilir. Okuma ve OCR API 'Leri için bir dil kodu belirtmeniz gerekmez. Bu işlevsellik ve her API 'nin avantajları hakkında daha fazla bilgi için bkz. [resimlerden ve belgelerden metin okuma](concept-recognizing-text.md) .
 
 |Dil| Dil kodu | OCR APı 'SI | API 'YI oku |
 |:-----|:----:|:-----:|:---:|
@@ -58,7 +58,7 @@ Görüntü İşleme, metni birçok dilde tanıyabilir. OCR ve okuma API 'Leri i�
 
 [Analyze-Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sindeki bazı eylemler, sorgu parametresiyle belirtilen diğer dillerde sonuç döndürebilir `language` . Diğer Eylemler, belirtilen dilin ne olduğuna bakmaksızın sonuçları Ingilizce olarak döndürür ve bazıları desteklenmeyen diller için bir özel durum oluşturur. Eylemler `visualFeatures` ve sorgu parametreleriyle birlikte belirtilir `details` ; görüntü analizine sahip yapabileceğiniz tüm eylemlerin bir listesi için bkz. [genel bakış](home.md) .
 
-|Dil | Dil kodu | Kategoriler | Etiketler | Açıklama | Yetişkin | Markalar | Renk | Yüzler | ImageType | Nesneler | Ünlüler | Yer işaretleri |
+|Dil | Dil kodu | Kategoriler | Etiketler | Description | Yetişkin | Markalar | Renk | Yüzler | ImageType | Nesneler | Ünlüler | Yer işaretleri |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Çince | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |İngilizce | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

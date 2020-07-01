@@ -5,23 +5,31 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7144cb18d19fd6be040b0a6ca4e8bb18498dfe6c
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 98b82047c1744fbd63ecd3665e804e9d8f6c5221
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85365236"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565986"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
-Sanal WAN, site/siteden siteye VPN bağlantısı, User/P2S bağlantısı, ExpressRoute bağlantısı, sanal ağ bağlantısı, VPN ExpressRoute ınterconnectivity, VNET 'ten VNET geçişli bağlantı, merkezi yönlendirme, Azure Güvenlik Duvarı ve güvenlik duvarı Yöneticisi güvenlik, Izleme, ExpressRoute şifreleme ve diğer birçok özellik gibi tek bir cam bölmeden yerleşik olarak bulunan birçok işlevi sunar. Sanal WAN kullanmaya başlamak için bu kullanım örneklerinin tümünün olması gerekmez. Yalnızca bir kullanım durumu ile çalışmaya başlayın. Sanal WAN mimarisi, dalların (VPN/SD-WAN cihazları), kullanıcıların (Azure VPN Istemcileri, openVPN veya Ikev2 Istemcileri), ExpressRoute devreleri, sanal ağların sanal hub 'lar için bağlı bileşen olarak çalıştığı, ölçek ve performans ile yerleşik bir hub ve bağlı bir mimaridir. Tüm Hub 'lar standart bir sanal WAN 'da tam ağa bağlanır ve kullanıcının herhangi bir (bağlı olan) bağlantı için Microsoft omurgasını kullanmasını kolaylaştırır. SD-WAN/VPN cihazlarıyla hub ve bağlı bileşen için, kullanıcılar Azure sanal WAN portalında el ile ayarlayabilir veya sanal WAN Iş ortağı (SD-WAN/VPN) kullanarak Azure bağlantısı kurabilirsiniz. Sanal WAN iş ortakları, cihaz bilgilerini Azure 'a aktarma özelliği olan bağlantı için Otomasyon sağlar, Azure yapılandırmasını indirebilir ve Azure sanal WAN hub 'ına bağlantı kurabilir. Noktadan siteye/kullanıcı VPN bağlantısı için, [Azure VPN istemcisi](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN veya Ikev2 istemcisini destekliyoruz. 
+Sanal WAN, site/siteden siteye VPN bağlantısı, User/P2S bağlantısı, ExpressRoute bağlantısı, sanal ağ bağlantısı, VPN ExpressRoute ınterconnectivity, VNet-VNet geçişli bağlantı, merkezi yönlendirme, Azure Güvenlik Duvarı ve güvenlik duvarı Yöneticisi güvenlik, Izleme, ExpressRoute şifreleme ve diğer birçok özellik gibi tek bir cam bölmeden yerleşik olarak bulunan birçok işlevi sunar. Sanal WAN kullanmaya başlamak için bu kullanım örneklerinin tümünün olması gerekmez. Yalnızca bir kullanım durumu ile çalışmaya başlayın. Sanal WAN mimarisi, dalların (VPN/SD-WAN cihazları), kullanıcıların (Azure VPN Istemcileri, openVPN veya Ikev2 Istemcileri), ExpressRoute devreleri, sanal ağların sanal hub 'lar için bağlı bileşenler olarak çalıştığı, ölçek ve performansa sahip bir hub ve bağlı bileşen mimarisidir. Tüm Hub 'lar standart bir sanal WAN 'da tam ağa bağlanır ve kullanıcının herhangi bir (bağlı olan) bağlantı için Microsoft omurgasını kullanmasını kolaylaştırır. SD-WAN/VPN cihazlarıyla hub ve bağlı bileşen için, kullanıcılar Azure sanal WAN portalında el ile ayarlayabilir veya sanal WAN Iş ortağı (SD-WAN/VPN) kullanarak Azure bağlantısı kurabilirsiniz. Sanal WAN iş ortakları, cihaz bilgilerini Azure 'a dışarı aktarma özelliği olan bağlantı için Otomasyon sağlar, Azure yapılandırmasını indirebilir ve Azure sanal WAN hub 'ına bağlantı kurabilir. Noktadan siteye/kullanıcı VPN bağlantısı için, [Azure VPN istemcisi](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN veya Ikev2 istemcisini destekliyoruz. 
+
+### <a name="can-you-disable-fully-meshed-hubs-in-a-virtual-wan"></a>Bir sanal WAN 'da tam olarak gelen hub 'ları devre dışı bırakabilirsiniz mi?
+
+Sanal WAN iki şekilde gelir: temel ve standart. Temel sanal WAN 'da, hub 'lar değildir. Standart bir sanal WAN 'da, hub 'lar gönderilir ve sanal WAN ilk kez ayarlandığında otomatik olarak bağlanır. Kullanıcının belirli bir şeyi yapması gerekmez. Kullanıcı ayrıca, örgü hub 'ları elde etmek için işlevselliği devre dışı bırakmak veya etkinleştirmek zorunda değildir. Sanal WAN, herhangi bir bağlı bileşen (VNet, VPN veya ExpressRoute) arasında trafiği çok fazla yönlendirme seçeneği sunar. Tam olarak oluşan hub 'lar ve ayrıca gereksinimlerinize göre trafiği yönlendirme esnekliği sağlar. 
+
+### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Sanal WAN 'da Kullanılabilirlik Alanları ve dayanıklılık nasıl işlenir?
+
+Sanal WAN, hub 'ın içinde kullanıma sunulan bir hub ve hizmet koleksiyonudur. Kullanıcı, ihtiyaçlarına göre çok sayıda sanal WAN olabilir. Bir sanal WAN hub 'ında VPN, ExpressRoute vb. gibi birden çok hizmet vardır. Bölge Kullanılabilirlik Alanları destekliyorsa, bu hizmetlerin her biri bir Kullanılabilirlik Alanları bölgesinde dağıtılır. Bir bölge, hub 'daki ilk dağıtımdan sonra bir kullanılabilirlik bölgesi haline gelirse, Kullanıcı ağ geçitlerini yeniden oluşturabilir ve bu da bir kullanılabilirlik alanı dağıtımı tetikleyecektir. Tüm ağ geçitleri bir hub 'da etkin-etkin olarak sağlanır ve bir hub içinde yerleşik olarak bulunan dayanıklılık vardır. Kullanıcılar bölgeler arasında dayanıklılık istiyorlarsa birden çok hub 'a bağlanabilir. Sanal WAN kavramı küresel olsa da, gerçek sanal WAN kaynağı Kaynak Yöneticisi tabanlıdır ve bölgesel olarak dağıtılır. Sanal WAN bölgesinin kendisi bir sorun oluşturverilirse, bu sanal WAN 'daki tüm Hub 'lar olduğu gibi çalışmaya devam eder, ancak sanal WAN bölgesi kullanılabilir olana kadar Kullanıcı yeni hub 'lar oluşturamayacak.
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure sanal WAN Kullanıcı VPN (Noktadan siteye) hangi istemciyi destekler?
 
-Sanal WAN, [Azure VPN istemcisini](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN istemcisini veya herhangi bir Ikev2 istemcisini destekler. Azure AD kimlik doğrulaması, Azure VPN Istemcisi ile desteklenir. en az Windows 10 istemci işletim sistemi sürümü 17763,0 veya üzeri gereklidir.  OpenVPN istemcileri, sertifika tabanlı kimlik doğrulamasını destekleyebilir. Ağ geçidinde sertifika tabanlı kimlik doğrulaması seçildikten sonra cihazınıza indirmek için. ovpn dosyasını görürsünüz. Hem sertifika hem de RADIUS kimlik doğrulaması Ikev2 ile desteklenir. 
+Sanal WAN, [Azure VPN istemcisini](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN istemcisini veya herhangi bir Ikev2 istemcisini destekler. Azure AD kimlik doğrulaması, Azure VPN Istemcisi ile desteklenir. en az Windows 10 istemci işletim sistemi sürümü 17763,0 veya üzeri gereklidir.  OpenVPN istemcileri, sertifika tabanlı kimlik doğrulamasını destekleyebilir. Ağ geçidinde sertifika tabanlı kimlik doğrulaması seçildikten sonra cihazınıza indirmek için *. ovpn* dosyasını görürsünüz. Ikev2 hem sertifika hem de RADIUS kimlik doğrulamasını destekler. 
 
 ### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>Kullanıcı VPN (Noktadan siteye) için, P2S istemci havuzu neden iki rotaya bölünür?
 
@@ -31,65 +39,71 @@ Her ağ geçidinin iki örneği vardır; bölünmüş durum, her bir ağ geçidi
 
 P2S istemcileri için DNS sunucuları eklemenin iki seçeneği vardır. İlk yöntem, özel DNS sunucularını istemci yerine ağ geçidine eklediği için tercih edilir.
 
-1. Özel DNS sunucularını eklemek için aşağıdaki PowerShell betiğini kullanın. Lütfen ortamınız için değerleri değiştirin.
-```
-// Define variables
-$rgName = "testRG1"
-$virtualHubName = "virtualHub1"
-$P2SvpnGatewayName = "testP2SVpnGateway1"
-$vpnClientAddressSpaces = 
-$vpnServerConfiguration1Name = "vpnServerConfig1"
-$vpnClientAddressSpaces = New-Object string[] 2
-$vpnClientAddressSpaces[0] = "192.168.2.0/24"
-$vpnClientAddressSpaces[1] = "192.168.3.0/24"
-$customDnsServers = New-Object string[] 2
-$customDnsServers[0] = "7.7.7.7"
-$customDnsServers[1] = "8.8.8.8"
-$virtualHub = $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
-$vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $vpnServerConfiguration1Name
+1. Özel DNS sunucularını eklemek için aşağıdaki PowerShell betiğini kullanın. Ortamınız için değerleri değiştirin.
 
-// Specify custom dns servers for P2SVpnGateway VirtualHub while creating gateway
-createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgname -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers
+   ```powershell
+   // Define variables
+   $rgName = "testRG1"
+   $virtualHubName = "virtualHub1"
+   $P2SvpnGatewayName = "testP2SVpnGateway1"
+   $vpnClientAddressSpaces = 
+   $vpnServerConfiguration1Name = "vpnServerConfig1"
+   $vpnClientAddressSpaces = New-Object string[] 2
+   $vpnClientAddressSpaces[0] = "192.168.2.0/24"
+   $vpnClientAddressSpaces[1] = "192.168.3.0/24"
+   $customDnsServers = New-Object string[] 2
+   $customDnsServers[0] = "7.7.7.7"
+   $customDnsServers[1] = "8.8.8.8"
+   $virtualHub = $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+   $vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $vpnServerConfiguration1Name
 
-// Specify custom dns servers for P2SVpnGateway VirtualHub while updating existing gateway
-$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-$updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName  -CustomDnsServer $customDnsServers 
+   // Specify custom dns servers for P2SVpnGateway VirtualHub while creating gateway
+   createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName $rgname -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1 -CustomDnsServer $customDnsServers
 
-// Re-generate Vpn profile either from PS/Portal for Vpn clients to have the specified dns servers
-```
+   // Specify custom dns servers for P2SVpnGateway VirtualHub while updating existing gateway
+   $P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+   $updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName  -CustomDnsServer $customDnsServers 
+
+   // Re-generate Vpn profile either from PS/Portal for Vpn clients to have the specified dns servers
+   ```
 2. Ya da Windows 10 için Azure VPN istemcisini kullanıyorsanız, indirilen profil XML dosyasını değiştirebilir ve içeri aktarmadan önce ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** etiketleri ekleyebilirsiniz.
 
-```
-<azvpnprofile>
-<clientconfig>
+   ```powershell
+      <azvpnprofile>
+      <clientconfig>
 
-    <dnsservers>
-        <dnsserver>x.x.x.x</dnsserver>
-        <dnsserver>y.y.y.y</dnsserver>
-    </dnsservers>
+          <dnsservers>
+              <dnsserver>x.x.x.x</dnsserver>
+              <dnsserver>y.y.y.y</dnsserver>
+          </dnsservers>
     
-</clientconfig>
-</azvpnprofile>
-```
+      </clientconfig>
+      </azvpnprofile>
+   ```
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Kullanıcı VPN için (Noktadan siteye)-kaç istemci destekleniyor?
 
-Her bir kullanıcı VPN P2S ağ geçidi iki örneğe sahiptir ve her örnek, ölçek birimi değiştikçe belirli kullanıcıları destekler. Ölçek birimi 1-3, 500 bağlantıları destekler, birim 4-6, 1000 bağlantıları destekler, ölçek birimi 7-12, 5000 bağlantılarını ve ölçek birimi ' ni destekler. Örnek olarak, kullanıcının 1 ölçek birimi seçtiği konusunda izin verir. Her ölçek birimi etkin-etkin bir ağ geçidinin dağıtıldığını ve örneklerin her biri (Bu durumda 2) 500 bağlantıyı destekler. Ağ Geçidi başına 500 bağlantı alabilmeniz için, önerilen bağlantı sayısını geçirirseniz, ek 500 bağlantısının kesintiye uğratılacağı durumlarda örnek olarak bakım yapılması gerekebileceği için bu ölçek birimi için 500 yerine 1000 ' i planladığınız anlamına gelmez. Ayrıca, ölçek biriminde ölçeği büyütme veya küçültme kararı verirken veya VPN ağ geçidinde Noktadan siteye yapılandırmayı değiştirmek için kapalı kalma süresi planlandığınızdan emin olun.
+Her bir kullanıcı VPN P2S ağ geçidi iki örneğe sahiptir ve her örnek, ölçek birimi değiştikçe belirli kullanıcıları destekler. Ölçek birimi 1-3, 500 bağlantıları destekler, birim 4-6, 1000 bağlantıları destekler, ölçek birimi 7-12 5000 bağlantıları destekler ve birim ölçek 13-20, en fazla 10.000 bağlantıyı destekler. 
+
+Örnek olarak, kullanıcının 1 ölçek birimi seçtiği konusunda izin verir. Her ölçek birimi etkin-etkin bir ağ geçidinin dağıtıldığını ve örneklerin her biri (Bu durumda 2) en fazla 500 bağlantıyı destekleyeceği anlamına gelmez. Ağ Geçidi başına 500 bağlantı alabilmeniz için bu ölçek birimi için 500 yerine 1000 planlaması yapmanız anlamına gelmez. Önerilen bağlantı sayısını geçirirseniz, ek 500 bağlantısının kesintiye uğraması durumunda örneklere bakım yapılması gerekebilir. Ayrıca, ölçek biriminde ölçeği büyütme veya küçültme kararı verirken veya VPN ağ geçidinde Noktadan siteye yapılandırmayı değiştirmek için kapalı kalma süresi planlandığınızdan emin olun.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure sanal ağ geçidi (VPN Gateway) ve Azure sanal WAN VPN Gateway arasındaki fark nedir?
 
-Sanal WAN geniş ölçekli Siteden Siteye bağlantı sağlar; aktarım hızı, ölçeklendirilebilirlik ve kullanım kolaylığı için oluşturulmuştur. Bir siteyi bir sanal WAN VPN Gateway 'e bağladığınızda, ağ geçidi türü ' VPN ' kullanan normal bir sanal ağ geçidinden farklıdır. Benzer şekilde, bir ExpressRoute devresini bir sanal WAN hub 'ına bağladığınızda ExpressRoute ağ geçidi için ' ExpressRoute ' ağ geçidi türünü kullanan normal sanal ağ geçidine göre farklı bir kaynak kullanır. Sanal WAN, hem VPN hem de ExpressRoute için 20 GB/sn toplam işleme destekler. Sanal WAN, bir CPE şube cihaz iş ortaklarının ekosistemiyle bağlantı için de Otomasyon içerir. CPE şube cihazlarında, otomatik olarak sağlanan ve Azure sanal WAN 'a bağlanan yerleşik Otomasyon vardır. Bu cihazlar büyüyen bir SD-WAN ve VPN iş ortakları ekosisteminden sağlanır. [Tercih edilen Iş ortağı listesine](../articles/virtual-wan/virtual-wan-locations-partners.md)bakın.
+Sanal WAN geniş ölçekli Siteden Siteye bağlantı sağlar; aktarım hızı, ölçeklendirilebilirlik ve kullanım kolaylığı için oluşturulmuştur. Bir siteyi bir sanal WAN VPN Gateway 'e bağladığınızda, ağ geçidi türü ' VPN ' kullanan normal bir sanal ağ geçidinden farklıdır. Benzer şekilde, bir ExpressRoute devresini bir sanal WAN hub 'ına bağladığınızda ExpressRoute ağ geçidi için ' ExpressRoute ' ağ geçidi türünü kullanan normal sanal ağ geçidine göre farklı bir kaynak kullanır. 
+
+Sanal WAN, hem VPN hem de ExpressRoute için 20 GB/sn toplam işleme destekler. Sanal WAN, bir CPE şube cihaz iş ortaklarının ekosistemiyle bağlantı için de Otomasyon içerir. CPE şube cihazlarında, otomatik olarak sağlanan ve Azure sanal WAN 'a bağlanan yerleşik Otomasyon vardır. Bu cihazlar büyüyen bir SD-WAN ve VPN iş ortakları ekosisteminden sağlanır. [Tercih edilen Iş ortağı listesine](../articles/virtual-wan/virtual-wan-locations-partners.md)bakın.
 
 ### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Sanal WAN, Azure sanal ağ geçidinden nasıl farklıdır?
 
 Sanal ağ geçidi VPN, 30 tünelle sınırlıdır. Bağlantılar için, büyük ölçekli VPN’lere yönelik Sanal WAN kullanmanız gerekir. Her bölge için en fazla 1.000 şube bağlantısına (sanal hub), hub başına 20 Gbps toplam ile bağlanabilirsiniz. Bağlantı şirket içi VPN cihazından sanal hub’a giden bir etkin-etkin tüneldir. Her bölge için bir hub 'ınız olabilir, bu, hub 'larda 1.000 ' den fazla dalı bağlayabilmeniz anlamına gelir.
 
 ### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Sanal WAN ağ geçidi ölçek birimi nedir?
+
 Ölçek birimi, sanal hub 'da bir ağ geçidinin toplam verimini seçmek için tanımlanan bir birimdir. 1 ölçek VPN = 500 Mbps birim. 1 ExpressRoute = 2 Gbps ölçek birimi. Örnek: 10 ölçekli VPN birimi 500 Mbps * 10 = 5 Gbps sayısını kapsıyor
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Hangi cihaz sağlayıcıları (sanal WAN iş ortakları) destekleniyor?
 
-Şu anda birçok iş ortağı tümüyle otomatik Sanal WAN deneyimini desteklemektedir. Daha fazla bilgi için bkz. [Sanal WAN iş ortakları](../articles/virtual-wan/virtual-wan-locations-partners.md). 
+Şu anda birçok iş ortağı tümüyle otomatik Sanal WAN deneyimini desteklemektedir. Daha fazla bilgi için bkz. [Sanal WAN iş ortakları](../articles/virtual-wan/virtual-wan-locations-partners.md).
 
 ### <a name="what-are-the-virtual-wan-partner-automation-steps"></a>Sanal WAN iş ortağı otomasyonu adımları nedir?
 
@@ -109,85 +123,59 @@ Bu, cihaz IPSec IKEv1 veya Ikev2 'yi desteklediği sürece evet. Sanal WAN iş o
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>İlk iş ortağı listenizde yer almayan yeni iş ortakları nasıl eklenir?
 
-Tüm sanal WAN API 'Leri açık API. Teknik bir bilimme değerlendirmek için belgeler [sanal WAN iş ortağı Otomasyonu](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) ' na gidebilirsiniz. İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır. Şirket, daha önce sağladığı Otomasyon yönergelerine bağlı olarak, kendi CPE cihazları için Otomasyon işini tamamladıktan sonra, azurevirtualwan@microsoft.com [iş ortakları aracılığıyla burada bağlantı]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners)altına almak için öğesine ulaşabilirsiniz. Belirli bir şirket çözümünün sanal bir WAN iş ortağı olarak listelenmesini sağlayan bir müşteriyseniz, lütfen şirketinin adresine bir e-posta göndererek sanal WAN ile iletişim kurun azurevirtualwan@microsoft.com .
+Tüm sanal WAN API 'Leri açık API. Teknik bir bilimme değerlendirmek için belgeler [sanal WAN iş ortağı Otomasyonu](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) ' na gidebilirsiniz. İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır. Şirket, yukarıda verilen Otomasyon yönergelerine bağlı olarak, CPE cihazları için Otomasyon işini tamamladıktan sonra, azurevirtualwan@microsoft.com [iş ortakları aracılığıyla burada bağlantı]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners)altına almak için öğesine ulaşabilirsiniz. Belirli bir şirket çözümünün sanal bir WAN iş ortağı olarak listelenmesini sağlayan bir müşteriyseniz, lütfen şirketinin adresine bir e-posta göndererek sanal WAN ile iletişim kurun azurevirtualwan@microsoft.com .
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>SD-WAN cihazlarını sanal WAN 'ı destekleme
 
 Sanal WAN ortakları, Azure VPN uç noktalarıyla IPSec bağlantısını otomatik hale getirir. Sanal WAN iş ortağı bir SD-WAN sağlayıcısıysanız, SD-WAN denetleyicisi 'nin Azure VPN uç noktalarıyla otomasyonu ve IPSec bağlantısını yönetmesi yerinde olur. SD-WAN cihazı, herhangi bir özel SD-WAN işlevselliği için Azure VPN yerine kendi uç noktasını gerektiriyorsa, SD-WAN uç noktasını bir Azure VNet 'te dağıtabilir ve Azure sanal WAN ile bir arada bulunabilir.
 
-### <a name="does-virtual-wan-change-any-existing-connectivity-features"></a>Sanal WAN mevcut bağlantı özelliklerinden herhangi birini değiştiriyor mu?
-
-Mevcut Azure bağlantı özelliklerinde hiçbir değişiklik yoktur.
-
-### <a name="are-there-new-resource-manager-resources-available-for-virtual-wan"></a>Sanal WAN için yeni Resource Manager kaynakları sağlanıyor mu?
-  
-Evet, Sanal WAN yeni Resource Manager kaynakları getirir. Daha fazla bilgi için bkz. [Genel Bakış](../articles/virtual-wan/virtual-wan-about.md).
-
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Kaç VPN cihazı tek bir hub 'a bağlanabilir?
 
-Sanal hub başına en fazla 1.000 bağlantı desteklenir. Her bağlantı dört bağlantılardan oluşur ve her bağlantı bağlantısı etkin-etkin bir yapılandırmada olan iki tüneli destekler. Tüneller bir Azure sanal hub vpngateway 'de sonlandırılır.
+Sanal hub başına en fazla 1.000 bağlantı desteklenir. Her bağlantı dört bağlantılardan oluşur ve her bağlantı bağlantısı etkin-etkin bir yapılandırmada olan iki tüneli destekler. Tüneller bir Azure sanal hub VPN Gateway 'de sonlandırılır. Bağlantılar, şube/VPN cihazında fiziksel ISS bağlantısını temsil eder.
+
+### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Azure sanal WAN ile dal bağlantısı nedir?
+
+Bir daldan veya VPN cihazından Azure sanal WAN 'a bağlantı hiçbir şey değildir ancak sanal bir hub 'da neredeyse VPN sitesini ve Azure VPN Gateway bağlayan bir VPN bağlantısıdır.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Şirket içi VPN cihazı birden çok Hub’a bağlanabilir mi?
 
 Evet. Trafik akışı, yorum yapıldığında şirket içi cihazdan en yakın Microsoft ağ kenarına ve ardından sanal hub 'a göre yapılır.
 
+### <a name="are-there-new-resource-manager-resources-available-for-virtual-wan"></a>Sanal WAN için yeni Resource Manager kaynakları sağlanıyor mu?
+  
+Evet, sanal WAN yeni Kaynak Yöneticisi kaynaklarına sahiptir. Daha fazla bilgi için bkz. [Genel Bakış](../articles/virtual-wan/virtual-wan-about.md).
+
 ### <a name="can-i-deploy-and-use-my-favorite-network-virtual-appliance-in-an-nva-vnet-with-azure-virtual-wan"></a>Azure Sanal WAN ile tercih ettiğim ağ sanal cihazını (bir NVA sanal ağı içinde) dağıtabilir ve kullanabilir miyim?
 
-Evet, en sevdiğiniz ağ sanal gereci(NVA) VNet’ini Azure Sanal WAN’a bağlayabilirsiniz. İlk olarak ağ sanal gereci VNet’ini Hub Sanal Ağ bağlantısının olduğu hub’a bağlayın. Ardından, sanal gereci işaret eden bir sonraki atlamada bir sanal hub yolu oluşturun. Sanal hub yol tablosuna birden çok yol uygulayabilirsiniz. Uç VNet yollarının şirket içi sistemlere yayıldığından emin olunması için NVA VNet’e bağlı olan tüm uçların ek olarak sanal hub’a bağlı olması gerekmektedir.
+Evet, en sevdiğiniz ağ sanal gereci(NVA) VNet’ini Azure Sanal WAN’a bağlayabilirsiniz.
 
 ### <a name="can-i-create-a-network-virtual-appliance-inside-the-virtual-hub"></a>Sanal hub içinde bir ağ sanal gereci oluşturabilir miyim?
 
-Bir ağ sanal gereci (NVA), sanal hub içinde dağıtılamaz. Bununla birlikte, sanal hub 'a bağlı bir bağlı ağ VNet 'te oluşturabilir ve hub 'daki bir yolu, NVA IP adresi (NIC 'nin) aracılığıyla hedef VNet için trafiği yönlendirmek üzere etkinleştirebilirsiniz.
+Bir ağ sanal gereci (NVA), sanal hub içinde dağıtılamaz. Bununla birlikte, sanal hub 'a bağlı bir bağlı olan VNet 'te oluşturabilir ve gereksinimlerinize göre trafiği yönlendirmek için uygun yönlendirmeyi etkinleştirebilirsiniz.
 
 ### <a name="can-a-spoke-vnet-have-a-virtual-network-gateway"></a>Bir bağlı olan VNet bir sanal ağ geçidine sahip olabilir mi?
 
 Hayır. Sanal hub 'a bağlıysa, bağlı olan VNet 'in sanal ağ geçidi olamaz.
 
-### <a name="is-there-support-for-bgp"></a>BGP için destek var mı?
+### <a name="is-there-support-for-bgp-in-vpn-connectivity"></a>VPN bağlantısında BGP desteği var mı?
 
-Evet, BGP desteklenir. Bir VPN sitesi oluşturduğunuzda BGP parametrelerini buna sağlayabilirsiniz. Bu, bu site için Azure 'da oluşturulan tüm bağlantıların BGP için etkinleştirileceğini kapsıyor. Ayrıca, bir NVA ile VNet 'iniz varsa ve bu NVA VNet bir sanal WAN hub 'ına eklenmişse, bir NVA VNET 'ten gelen yolların uygun şekilde tanıtıldığından emin olmak için NVA VNET 'e bağlı olan ışınsal 'ler BGP 'yi devre dışı bırakmalıdır. Ayrıca, bağlı olan VNet yollarının şirket içi sistemlere yayıldığından emin olmak için bu bağlı ağ sanal ağlarını sanal hub VNet 'e bağlayın.
-
-### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>Sanal hub'da UDR kullanarak trafiği yönlendirebilir miyim?
-
-Evet, bir sanal hub yol tablosu kullanarak trafiği VNet 'e yönlendirebilirsiniz. Bu, belirli bir IP adresi (genellikle NVA NIC) aracılığıyla Azure 'daki hedef VNET 'ler için yollar ayarlamanıza olanak sağlar.
+Evet, BGP desteklenir. Bir VPN sitesi oluşturduğunuzda BGP parametrelerini buna sağlayabilirsiniz. Bu, bu site için Azure 'da oluşturulan tüm bağlantıların BGP için etkinleştirileceğini kapsıyor.
 
 ### <a name="is-there-any-licensing-or-pricing-information-for-virtual-wan"></a>Sanal WAN ile ilgili lisans ve fiyatlandırma bilgileri var mı?
 
 Evet. Bkz. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-wan/) sayfası.
 
-### <a name="how-do-i-calculate-price-of-a-hub"></a>Bir hub 'ın fiyatını hesaplamak Nasıl yaparım? mı?
-
-* Hub 'daki hizmetler için ödeme yaparsınız. Örneğin, Azure sanal WAN 'a bağlanmak için gereken 10 dal veya şirket içi cihazlarınızın, hub 'daki VPN uç noktalarına bağlanıldığını varsayalım. Bunun 1 ölçekli birim = 500 Mbps hızında VPN olduğunu varsayalım. Bu, $0.361/HR üzerinden ücretlendirilir. Her bağlantı, $0,05/saat üzerinden ücretlendirilir. 10 bağlantı için toplam hizmet ücreti/hr $0,361 + $. 5/sa olur. Azure 'dan çıkmadan trafik için veri ücretleri.
-
-* Ek Merkez ücreti vardır. Bkz. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-wan/) sayfası.
-
-* ExpressRoute bağlantı hattı bir sanal hub 'a bağlanırken ExpressRoute Gateway 'e sahipseniz, ölçek birimi fiyatı için ödeme yaparsınız. ER 'daki her ölçek birimi 2 GB/sn 'dir ve her bağlantı birimi VPN bağlantı birimiyle aynı hızda ücretlendirilir.
-
-* Hub 'a bağlı olan sanal ağlarınız varsa, bağlı olan VNET 'lerdeki eşleme ücretleri hala geçerlidir. 
-
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Azure Sanal WAN’ı bir Resource Manager şablonu ile yapılandırmak mümkün mü?
 
 Tek bir hub ve bir vpnsite içeren bir sanal WAN 'ın basit bir yapılandırması, bir [hızlı başlangıç şablonu](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network)kullanılarak oluşturulabilir. Sanal WAN, birincil olarak bir REST veya Portal temelli hizmettir.
 
-### <a name="is-global-vnet-peering-supported-with-azure-virtual-wan"></a>Azure Sanal WAN ile Genel Sanal Ağ Eşleme destekleniyor mu? 
-
-Sanal WAN 'inizdeki farklı bir bölgedeki VNet 'i bağlayabilirsiniz.
-
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Bir sanal hub 'a bağlı olan VNET 'ler birbirleriyle (V2V transit) iletişim kurabilir mi?
 
-Evet. Standart sanal WAN, VNET 'lerin bağlı olduğu sanal WAN hub 'ı aracılığıyla sanal ağı geçişli bağlantı ile destekler. Sanal WAN terimlerinde bu yollara, tek bir bölgedeki bir sanal WAN hub 'ına bağlı sanal ağlar için "yerel sanal WAN VNet aktarım" ve iki veya daha fazla bölgede birden çok sanal WAN hub 'ı ile bağlı sanal ağlar için "küresel sanal WAN VNet geçişi" olarak adlandırdık. VNet aktarma, genel önizleme sırasında en fazla 3 Gbps işleme destekler. Küresel geçiş GA olduğunda aktarım hızı genişletilir.
-
-NOTE: Şu anda V2V aktarma önizlemesi, yönlendirme öğelerinin başlatılmasını tetiklemek için bir VPN GW 'nin bir sanal hub 'da dağıtılmasını gerektirir. Bu VPN GW, V2V aktarma yolu için kullanılmaz. Bu bilinen bir sınırlamadır ve V2V GA sırasında kaldırılacaktır. Hub 'ınızdaki VPN Gateway, V2V aktarma işlevselliği için gerekli olmadığından tamamen başlatıldıktan sonra silebilirsiniz. 
-
-Bazı senaryolarda, bağlı olan VNET 'ler yerel veya genel sanal WAN VNet 'e ek olarak [sanal ağ eşlemesi](../articles/virtual-network/virtual-network-peering-overview.md) kullanılarak birbirleriyle doğrudan eşlenebilir. Bu durumda, VNET eşlemesi sanal WAN hub 'ı aracılığıyla geçişli bağlantıdan önceliklidir. 
-
-### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Azure sanal WAN ile dal bağlantısı nedir?
-
-Şube cihazından Azure sanal WAN 'a bağlantı en fazla dört bağlantıyı destekler. Bağlantı, şube konumundaki fiziksel bağlantı bağlantıdır (örneğin: ATT, Verizon vb.). Her bağlantı bağlantısı, iki etkin/etkin IPSec tünellerinden oluşur.
+Evet. Standart sanal WAN, sanal ağların bağlandığı sanal WAN hub 'ı aracılığıyla VNet 'ten VNet 'e geçişli bağlantıyı destekler. Sanal WAN terimlerinde bu yollara, tek bir bölgedeki bir sanal WAN hub 'ına bağlı sanal ağlar için "yerel sanal WAN VNet aktarım" ve iki veya daha fazla bölgede birden çok sanal WAN hub 'ı ile bağlı sanal ağlar için "küresel sanal WAN VNet geçişi" olarak adlandırdık. Bazı senaryolarda, bağlı olan VNET 'ler yerel veya genel sanal WAN VNet 'e ek olarak [sanal ağ eşlemesi](../articles/virtual-network/virtual-network-peering-overview.md) kullanılarak birbirleriyle doğrudan eşlenebilir. Bu durumda, VNet eşlemesi sanal WAN hub 'ı aracılığıyla geçişli bağlantıdan önceliklidir.
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Sanal WAN’da daldan dala bağlantıya izin verilir mi?
 
-Evet, daldan dala bağlantı VPN için Sanal WAN’da ve VPN ile ExpressRoute arasında kullanılabilir.
+Evet, daldan dala bağlantı Sanal WAN’da kullanılabilir. Dal, VPN sitesi, ExpressRoute devreleri veya Noktadan siteye/kullanıcı VPN kullanıcıları için kavramsal olarak uygulanabilir. Dalı dala etkinleştirmek Varsayılan olarak etkindir ve WAN yapılandırma ayarları ' nda bulunabilir. Bu, VPN dallarının/kullanıcılarının diğer VPN dallarına bağlanmasını ve VPN ile ExpressRoute kullanıcıları arasında geçiş bağlantısının etkinleştirilmesini sağlar.
 
 ### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Azure sanal WAN aracılığıyla daldan dala trafiği çapraz geçiş yapar mi?
 
@@ -195,27 +183,25 @@ Evet.
 
 ### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>Sanal WAN her siteden ExpressRoute gerektiriyor mu?
 
-Hayır, Sanal WAN her siteden ExpressRoute alınmasını gerektirmez. Cihazdan bir Azure sanal WAN hub 'ına internet bağlantıları aracılığıyla standart IPSec siteden siteye bağlantısı kullanır. Siteleriniz ExpressRoute bağlantı hattı kullanılarak bir sağlayıcı ağına bağlanabilir. Bir sanal hub 'da ExpressRoute kullanılarak bağlanan sitelerde, siteler VPN ve ExpressRoute arasında şube trafiği akışına dala sahip olabilir.
+Hayır. Sanal WAN, her siteden ExpressRoute gerektirmez. Siteleriniz ExpressRoute bağlantı hattı kullanılarak bir sağlayıcı ağına bağlanabilir. Aynı hub 'a yönelik ExpressRoute kullanarak bir sanal hub 'a ve IPSec VPN 'ye bağlı olan sitelerde, sanal hub VPN ve ExpressRoute kullanıcısı arasında geçiş bağlantısı sağlar.
 
-### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Azure Sanal WAN kullanırken bir ağ aktarım hızı sınırı var mı?
+### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Azure sanal WAN kullanılırken bir ağ performansı veya bağlantı sınırı var mı?
 
-Dal sayısı hub/bölge başına 1000 bağlantıyla ve hub 'da toplam 20 Gbps ile sınırlıdır. Bölge başına 1 hub olabilir.
+Ağ aktarım hızı, sanal bir WAN hub 'ında hizmet başına. İstediğiniz sayıda sanal WAN 'ınız olabilir, ancak her sanal WAN, bölge başına 1 hub 'a izin verir. Her hub 'da, VPN toplam aktarım hızı 20 Gbps 'e kadar, ExpressRoute toplam aktarım hızı 20 Gbps 'e kadar, kullanıcı VPN/Noktadan siteye VPN toplam verimlilik ise 20 Gbps 'ye kadar olur. Sanal hub 'daki yönlendirici, VNet 'ten VNet 'e trafik akışları için 50 Gbps 'e kadar destekler ve sanal WAN hub 'lardaki tüm sanal ağlarda toplam 2000 VM iş yükünü varsayar.
 
-### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Bir sanal WAN hub 'ı kaç VPN bağlantısı destekliyor?
-
-Azure sanal WAN hub, en fazla 1.000 S2S bağlantısı, 10.000 P2S bağlantısı ve 4 ExpressRoute bağlantısını destekleyebilir.
+VPN siteleri bir hub 'a bağlandığında bağlantıları bu şekilde görür. Sanal WAN, sanal hub başına en fazla 1000 bağlantıyı veya 2000 IPSec Tünelini destekler. Uzak kullanıcılar sanal hub 'a bağlandıklarında, sanal hub 'da P2S VPN ağ geçidi için seçilen ölçek birimine (bant genişliği) bağlı olarak en fazla 10.000 kullanıcıyı destekleyen P2S VPN ağ geçidine bağlanır.
 
 ### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>VPN tünelinin toplam VPN işleme ve bağlantı nedir?
 
-Bir hub 'ın toplam VPN verimlilik, seçilen ölçek birimine bağlı olarak 20 Gbps 'e kadar olur. Aktarım hızı, var olan tüm bağlantılar tarafından paylaşılır. Bir bağlantı içindeki her tünel 1 GB/sn 'ye kadar destek alabilir.
+Bir hub 'ın toplam VPN verimlilik, VPN ağ geçidinin seçilen ölçek birimine göre 20 Gbps 'ye kadar olur. Aktarım hızı, var olan tüm bağlantılar tarafından paylaşılır. Bir bağlantı içindeki her tünel 1 GB/sn 'ye kadar destek alabilir.
 
-### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-the-portal-how-do-i-configure-that"></a>Portalda sanal hub için 20 Gbps ayarı görmüyorum. Nasıl yaparım? yapılandırmak mı istiyorsunuz?
+### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Portalda sanal hub için 20 Gbps ayarı görmüyorum. Nasıl yaparım? yapılandırmak mı istiyorsunuz?
 
 Portalda bir hub 'ın içindeki VPN ağ geçidine gidin ve uygun ayarla değiştirmek için ölçek birimine tıklayın.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Sanal WAN, şirket içi cihazın birden çok ISS 'yi paralel olarak kullanmasına izin veriyor mu veya her zaman tek bir VPN tüneli mi?
-Şirket içi cihaz çözümleri, birden çok tüneldeki trafiği Azure 'a eklemek için trafik ilkelerini uygulayabilir.
 
+Şirket içi cihaz çözümleri, birden çok tüneldeki trafiği Azure sanal WAN hub 'ına (sanal hub 'da VPN Gateway) eklemek için trafik ilkeleri uygulayabilir.
 
 ### <a name="what-is-global-transit-architecture"></a>Küresel geçiş mimarisi nedir?
 
@@ -235,20 +221,30 @@ Bir sanal hub, bağlantıda ' Enabled ' olduğunda, bir sanal ağ/siteden siteye
 
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Sanal bir WAN 'daki sanal hub, birden çok hub 'dan bir yol için en iyi yolu nasıl seçer?
 
-Bir sanal hub birden fazla uzak hub 'dan aynı rotayı öğrenirse, karar verdiği sıra aşağıdaki gibidir
-1. En uzun önek eşleşmesi
-2. Interhub üzerinden yerel yollar
-3. BGP üzerinden statik yollar
-4. VPN üzerinden ExpressRoute (ER)
-5. AS yol uzunluğu
+Bir sanal hub birden fazla uzak hub 'dan aynı rotayı öğrenirse, karar verdiği sıra aşağıdaki gibidir:
 
-Ise ile er arasındaki geçiş, isteğin bir hub 'da ER aracılığıyla geldiği ve uzak hub 'da bir VPN ve ER olduğu için uzak bir hub 'dan bir VPN ve Ise ile bağlı bir uç noktasına ulaşmak
+1. En uzun önek eşleşmesi.
+2. Interhub üzerinden yerel yollar.
+3. BGP üzerinden statik yollar: Bu, sanal hub yönlendiricisinin yaptığı kararların bağlamıdır. Ancak karar Oluşturucu bir sitenin BGP aracılığıyla yollar duyurduğu veya statik adres önekleri sağladığı VPN ağ geçidse, BGP yollarının üzerinde statik yollar tercih edilebilir.
+4. VPN üzerinden ExpressRoute (ER): bağlam yerel bir hub olduğunda VPN üzerinden de tercih edilir. ExpressRoute devreleri arasındaki aktarım bağlantısı yalnızca Global Reach aracılığıyla kullanılabilir. Bu nedenle, ExpressRoute bağlantı hattının bir hub 'a bağlı olduğu ve VPN bağlantısıyla farklı bir hub 'a bağlı başka bir ExpressRoute bağlantı hattının bulunduğu senaryolarda, hub 'lar arası senaryolar için VPN tercih edilebilir.
+5. Yol uzunluğu olarak.
 
+### <a name="does-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Sanal WAN hub 'ı ExpressRoute devreleri arasında bağlantıya izin verir.
+
+ER ile er arasında geçiş, her zaman küresel erişim aracılığıyla yapılır. Sanal hub ağ geçitleri DC veya Azure bölgelerinde dağıtılır. İki ExpressRoute bağlantı hattı genel erişim aracılığıyla bağlandığında, trafiğin uç yönlendiricilerden sanal hub DC 'ye kadar tüm yollarla gelmesi gerekmez.
+
+### <a name="is-there-a-concept-of-weight-in-azure-virtual-wan-circuits-or-vpn-connections"></a>Azure sanal WAN devreleri veya VPN bağlantılarında bir ağırlık kavramı mevcuttur
+
+Bir sanal hub 'a birden çok ExpressRoute bağlantı hattı bağlandığında, bağlantıda yönlendirme ağırlığı, sanal hub 'daki ExpressRoute için bir devreyi diğer üzerinde tercih etmek üzere bir mekanizma sağlar. VPN bağlantısında ağırlık ayarlama mekanizması yoktur. Azure, tek bir hub içindeki bir VPN bağlantısı üzerinden her zaman bir ExpressRoute bağlantısı tercih eder.
+
+### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>İki hub (hub 1 ve 2) bağlı olduğunda ve hub 'lara bir fiyona yay olarak bağlı bir ExpressRoute bağlantı hattı varsa, Merkez 2 ' de bağlı olan VNet 'e ulaşmak için hub 1 ' e bağlı VNet 'in yolu nedir?
+
+Geçerli davranış, VNet-VNet bağlantısı için hub-hub üzerinden ExpressRoute bağlantı hattı üzerinden tercih edilir. Ancak, bu bir sanal WAN kurulumunda önerilir. Sanal WAN ekibi, ExpressRoute yolu üzerinden hub-hub için tercihi etkinleştirmek üzere bir düzeltmeyle çalışır. Bu öneri, birden fazla ExpressRoute devresine (farklı sağlayıcılar) bir hub 'a bağlanmasını ve bölgeler arası trafik akışları için sanal WAN tarafından sunulan hub-hub bağlantısını kullanmayı kullanmaktır.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Sanal WAN 'da IPv6 desteği var mı?
 
-IPv6, sanal WAN hub 'ında ve ağ geçitlerinde desteklenmez. IPv6 desteği olan bir VNET 'iniz varsa ve VNET 'i sanal WAN 'a bağlamak istiyorsanız, bu senaryo da desteklenmez. 
+IPv6, sanal WAN hub 'ında ve ağ geçitlerinde desteklenmez. IPv6 desteği olan bir VNet 'iniz varsa ve VNet 'i sanal WAN 'a bağlamak istiyorsanız, bu senaryo şu anda desteklenmemektedir.
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Sanal WAN türleri (temel ve standart) arasındaki farklar nelerdir?
 
-' Temel ' WAN türü, temel bir hub (SKU = temel) oluşturmanıza imkan tanır. ' Standart ' WAN türü, standart Merkez (SKU = standart) oluşturmanızı sağlar. Temel hub 'lar siteden siteye VPN işlevselliğiyle sınırlıdır. Standart Hub 'lar, hub 'lar üzerinden ExpressRoute, User VPN (P2S), tam ağ hub ve sanal ağdan VNet 'e aktarım yapmanızı sağlar. Standart Hub 'lar için $0,25/SA temel ücretini ve VNet 'ten VNet 'e bağlantı sırasında Hub 'lar üzerinden geçiş yapmak için bir veri işleme ücretini ödeyin ve hub 'a giden trafiğe yönelik veri işleme ücreti ödersiniz. Daha fazla bilgi için bkz. [temel ve standart sanal WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard). Fiyatlandırma için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-wan/) sayfası.
+Bkz. [temel ve standart sanal WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard). Fiyatlandırma için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-wan/) sayfası.

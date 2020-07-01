@@ -1,14 +1,14 @@
 ---
 title: 'Model: bir ilke tanımındaki Count işleci'
 description: Bu Azure Ilke deseninin Count işlecinin bir ilke tanımında nasıl kullanılacağına ilişkin bir örnek sağlar.
-ms.date: 01/31/2020
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: 88c2d1083a92732ac56ca4d6da7087cc4220d9a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 807890b7fb08d790deff6e0be9e08ad91c4ec44d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172950"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565749"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Ilke stili: Count işleci
 
@@ -24,7 +24,7 @@ Bu ilke tanımı, gelen Uzak Masaüstü Protokolü (RDP) trafiğine izin verecek
 
 **Count** işlecinin temel bileşenleri _alan_, _nerede_ve durumdur. Her biri aşağıdaki kod parçacığında vurgulanır.
 
-- _alan_ , üyelerini değerlendirmek için kullanılacak [diğer ad](../concepts/definition-structure.md#aliases) sayısını belirtir. Burada ağ güvenlik grubunun **\[ \* SecurityRules** diğer ad _dizisine_ bakıyoruz.
+- _alan_ , üyelerini değerlendirmek için kullanılacak [diğer ad](../concepts/definition-structure.md#aliases) sayısını belirtir. Burada ağ güvenlik grubunun ** \[ \* \] SecurityRules** diğer ad _dizisine_ bakıyoruz.
 - , hangi _dizi_ üyelerinin ölçütlere uygun olduğunu tanımlamak için ilke _dilini kullanır._ Bu örnekte, **allof** Logical operator diğer ad _dizisi_ özelliklerinin üç farklı koşul değerlendirmesini gruplandırır: _Direction_, _Access_ve _destinationPortRange_.
 - Bu örnekteki sayı koşulu **daha büyüktür**. Diğer ad _dizisinin_ bir veya daha fazla üyesi _WHERE_ yan tümcesiyle eşleştiğinde Count değeri true olarak değerlendirilir.
 

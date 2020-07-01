@@ -1,26 +1,24 @@
 ---
-title: 'Öğretici: Azure Güvenlik Duvarı Yöneticisi önizleme kullanarak hub Sanal ağınızı güvenli hale getirme'
+title: "Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak hub Sanal ağınızı güvenli hale getirme"
 description: Bu öğreticide, Azure portal kullanarak sanal ağınızın güvenliğini Azure Güvenlik Duvarı Yöneticisi ile nasıl sağlayacağınızı öğreneceksiniz.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77459962"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563636"
 ---
-# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi önizleme kullanarak hub Sanal ağınızı güvenli hale getirme 
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak hub Sanal ağınızı güvenli hale getirme
 
 Karma ağ oluşturmak için şirket içi ağınızı bir Azure sanal ağına bağladığınızda, Azure ağ kaynaklarınıza erişimi denetleme özelliği, genel bir güvenlik planının önemli bir parçasıdır.
 
-Azure Güvenlik Duvarı Yöneticisi önizlemesi 'ni kullanarak, özel IP adreslerine, Azure PaaS 'ye ve Internet 'e yönelik karma ağ trafiğinizi güvenli hale getirmek için bir hub sanal ağı oluşturabilirsiniz. Azure Güvenlik Duvarı Yöneticisi ' ni, izin verilen ve reddedilen ağ trafiğini tanımlayan ilkeleri kullanarak bir karma ağdaki ağ erişimini denetlemek için kullanabilirsiniz.
+Azure Güvenlik Duvarı Yöneticisi 'ni kullanarak, özel IP adreslerine, Azure PaaS 'ye ve Internet 'e yönelik karma ağ trafiğinizi güvenli hale getirmek için bir hub sanal ağı oluşturabilirsiniz. Azure Güvenlik Duvarı Yöneticisi ' ni, izin verilen ve reddedilen ağ trafiğini tanımlayan ilkeleri kullanarak bir karma ağdaki ağ erişimini denetlemek için kullanabilirsiniz.
 
 Güvenlik Duvarı Yöneticisi ayrıca güvenli bir sanal hub mimarisini destekler. Güvenli sanal hub ve hub sanal ağ mimarisi türleri karşılaştırması için bkz [. Azure Güvenlik Duvarı Yöneticisi mimari seçenekleri nelerdir?](vhubs-and-vnets.md)
 
@@ -45,7 +43,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Güvenlik duvarını test etme
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Karma ağ, Azure sanal ağları ile şirket içi ağlar arasında trafiği yönlendirmek için hub ve bağlı bileşen mimarisi modelini kullanır. Hub ve bağlı bileşen mimarisi aşağıdaki gereksinimlere sahiptir:
 
@@ -291,11 +289,11 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 5. Ad için **UDR-hub-kol**yazın.
 6. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum**Için **(US) Doğu ABD)** seçeneğini belirleyin.
-9. **Oluştur**’u seçin.
+9. **Oluştur**'u seçin.
 10. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 11. Sol sütundaki **rotalar** ' ı seçin.
 12. **Add (Ekle)** seçeneğini belirleyin.
@@ -318,12 +316,12 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-5. **Oluştur**’u seçin.
+5. **Oluştur**'u seçin.
 6. Ad için **UDR-DG**yazın.
 7. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum**Için **(US) Doğu ABD)** seçeneğini belirleyin.
 4. **Sanal ağ geçidi yol yayma**Için **devre dışı**' yı seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 2. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 3. Sol sütundaki **rotalar** ' ı seçin.
 4. **Add (Ekle)** seçeneğini belirleyin.
@@ -354,7 +352,7 @@ Genel IP adresi olmadan IIS çalıştıran, bağlı olan sanal ağda bir sanal m
 3. Sanal makine için şu değerleri girin:
     - **Kaynak grubu** - **ILT-hibrit-test**' i seçin.
     - **Sanal makine adı**: *VM-ışınsal-01*.
-    - **Bölge** - *(US) Doğu ABD)*.
+    - **Bölge**  -  *(US) Doğu ABD)*.
     - **Kullanıcı adı**: *azureuser*.
     - **Parola**: parolanızı yazın
 
@@ -392,8 +390,8 @@ Bu, Uzak Masaüstü kullanarak genel IP adresine bağlanmak için kullandığın
 2. **Popüler**bölümünde **Windows Server 2016 Datacenter**' u seçin.
 3. Sanal makine için şu değerleri girin:
     - **Kaynak grubu** -mevcut ' ı seçin ve ardından **FW-karma-test**' i seçin.
-    - **Sanal makine adı** - *VM-onpred*.
-    - **Bölge** - *(US) Doğu ABD)*.
+    - **Sanal makine adı**  -  *VM-Onpred*.
+    - **Bölge**  -  *(US) Doğu ABD)*.
     - **Kullanıcı adı**: *azureuser*.
     - **Parola**: parolanızı yazın.
 
@@ -413,9 +411,9 @@ Bu, Uzak Masaüstü kullanarak genel IP adresine bağlanmak için kullandığın
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-3. **VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://\<VM-ıŞıNSAL-01 özel IP\>konumuna gidin.
+3. **VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://konumuna gidin \<VM-spoke-01 private IP\> .
 
-   VM-ışınsal- **01** Web sayfasını görmeniz gerekir: ![VM-ışınsal-01 Web sayfası](media/secure-hybrid-network/vm-spoke-01-web.png)
+   VM-ışınsal- **01** Web sayfasını görmeniz gerekir: ![ VM-ışınsal-01 Web sayfası](media/secure-hybrid-network/vm-spoke-01-web.png)
 
 4. **VM-Onpree** sanal makinesinden, özel IP adresinde **VM-ışınsal-01 arası** uzak bir masaüstü açın.
 
@@ -444,4 +442,4 @@ Güvenlik duvarı kaynaklarını bir sonraki öğretici için tutabilirsiniz vey
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Güvenlik Duvarı Yöneticisi önizlemesi kullanarak sanal WAN 'nizin güvenliğini sağlama](secure-cloud-network.md)
+> [Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal WAN 'nizin güvenliğini sağlama](secure-cloud-network.md)

@@ -7,20 +7,27 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 06/15/2020
-ms.openlocfilehash: bd68778eb3f0ca9c2af456cdb88cdcc9fe5862dc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fd2d7006e0c13f7e652b4edd973a36f94f2e2265
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85393904"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560498"
 ---
-# <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure portal bir pano oluşturma
+# <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure portal bir pano oluşturma
 
-Azure portal bir Pano, bulut kaynaklarınızın odaklanmış ve düzenlenmiş bir görünümüdür. Bu hızlı başlangıç, bir pano oluşturmak için Kaynak Yöneticisi şablonu dağıtma işlemine odaklanmaktadır. Pano, bir sanal makinenin (VM) ve bazı statik bilgi ve bağlantıların performansını gösterir.
+Azure portal bir Pano, bulut kaynaklarınızın odaklanmış ve düzenlenmiş bir görünümüdür. Bu hızlı başlangıç, bir pano oluşturmak için bir Azure Resource Manager şablonu dağıtma işlemine odaklanır (ARM şablonu). Pano, bir sanal makinenin (VM) ve bazı statik bilgi ve bağlantıların performansını gösterir.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-portal-dashboard%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
+
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Var olan bir VM.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
@@ -63,7 +70,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 1. Aşağıdaki değerleri seçin veya girin ve ardından **gözden geçir + oluştur**' u seçin.
 
-    ![Şablon Kaynak Yöneticisi, pano oluşturun, portalı dağıtın](media/quick-create-template/create-dashboard-using-template-portal.png)
+    ![ARM şablonu, pano oluşturma, Portal dağıtma](media/quick-create-template/create-dashboard-using-template-portal.png)
 
     Belirtilmediği takdirde, Panoyu oluşturmak için varsayılan değerleri kullanın.
 
@@ -75,7 +82,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 1. **Oluştur** veya **satın al**' ı seçin. Pano başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
-    ![Kaynak Yöneticisi şablonu, pano oluşturun, Portal bildirimi dağıtın](media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+    ![ARM şablonu, pano oluşturma, Portal bildirimi dağıtma](media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
 Azure portal şablonu dağıtmak için kullanıldı. Azure portalının yanı sıra Azure PowerShell, Azure CLI ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 

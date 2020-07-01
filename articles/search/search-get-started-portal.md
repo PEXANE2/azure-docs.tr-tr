@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 2829f451b90a20c5ad399796b0485c6e533bbb23
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488775"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562291"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "84488775"
 
 Ayrıca, görüntü dosyalarından ve yapılandırılmamış metinden metin ve yapı ayıklayabilmeniz için, sihirbazın AI zenginleştirme sayfaları vardır. AI ile içerik işleme, optik karakter tanıma (OCR), anahtar tümceciği ve varlık ayıklama ve görüntü analizi içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -150,7 +150,7 @@ Artık yerleşik [**Arama gezgini**](search-explorer.md) sorgu sayfasını kulla
 
    ![Search gezgini komutu](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. **Dizin** açılan listesinden *oteller-örnek-dizin*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2019-05-06) kullanın.
+2. **Dizin** açılan listesinden *oteller-örnek-dizin*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2020-06-30) kullanın.
 
    ![Dizin ve API komutları](media/search-get-started-portal/search-explorer-changeindex.png)
 

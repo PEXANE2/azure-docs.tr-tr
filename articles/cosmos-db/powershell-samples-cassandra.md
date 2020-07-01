@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2efc652c936e7949147bf77ccc1548308734a467
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: fec25bb3043942605895491952d963ee20ac4078
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260687"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563890"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB için Azure PowerShell örnekleri Cassandra API
 
@@ -20,7 +20,7 @@ Aşağıdaki tabloda Cassandra API için Azure Cosmos DB örnek Azure PowerShell
 > [!NOTE]
 > Örnekler [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management cmdlet 'lerini kullanır. Lütfen düzenli olarak güncelleştirmeleri denetleyin `Az.CosmosDB` .
 
-| | |
+|Görev | Description |
 |---|---|
 |[Hesap, anahtar alanı ve tablo oluşturma](scripts/powershell/cassandra/ps-cassandra-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos hesabı, anahtar alanı ve tablo oluşturur. |
 |[Anahtar alanları veya tabloları listeleme veya edinme](scripts/powershell/cassandra/ps-cassandra-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Anahtar alanları veya tabloları listeleyin veya alın. |

@@ -1,24 +1,21 @@
 ---
-title: REST kullanarak bilgi deposu (Önizleme) oluşturma
+title: REST kullanarak bilgi deposu oluşturma
 titleSuffix: Azure Cognitive Search
-description: Bir AI zenginleştirme ardışık düzeninde kalıcı zenginler için bir Azure Bilişsel Arama bilgi deposu oluşturmak üzere REST API ve Postman kullanın. Bu özellik şu anda genel önizleme aşamasındadır.
+description: Bir AI zenginleştirme ardışık düzeninde kalıcı zenginler için bir Azure Bilişsel Arama bilgi deposu oluşturmak üzere REST API ve Postman kullanın.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: f030fc81ab33ecd0531040662346e1ed44f5d17c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: f496413cf1a5175cee65bce46a2f7f6260d5451d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263033"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565225"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST ve Postman kullanarak bilgi deposu oluşturma
-
-> [!IMPORTANT] 
-> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
 Bilgi deposu, daha sonraki analizler veya diğer aşağı akış işlemleri için bir Azure Bilişsel Arama zenginleştirme ardışık düzeninin çıktısını içerir. Bir AI zenginleştirme işlem hattı, görüntü dosyalarını veya yapılandırılmamış metin dosyalarını kabul eder, Azure Bilişsel Arama kullanarak dizinleri oluşturur, bilişsel hizmetlerden AI zenginleştirmelerini (görüntü analizi ve doğal dil işleme) uygular ve sonuçları Azure Storage 'daki bir bilgi deposuna kaydeder. Bilgi deposunu araştırmak için Azure portal Power BI veya Depolama Gezgini gibi araçları kullanabilirsiniz.
 
@@ -81,7 +78,7 @@ Değerini almak için `admin-key` Azure bilişsel arama hizmetine gidin ve **ana
 | Değişken    | Nereden edinilir: |
 |-------------|-----------------|
 | `admin-key` | Azure Bilişsel Arama hizmetinin **anahtarlar** sayfasında.  |
-| `api-version` | **2019-05-06-Preview**olarak bırakın. |
+| `api-version` | **2020-06-30**olarak bırakın. |
 | `datasource-name` | Otel, **incelemeler-DS**olarak bırakın. | 
 | `indexer-name` | Otel- **incelemeler-ixR**olarak bırakın. | 
 | `index-name` | Otel-, **-x**olarak bırakın. | 

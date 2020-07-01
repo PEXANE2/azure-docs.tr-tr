@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: d85176ee092011d7c697856921f911da6a5e235a
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118925"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561684"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK'sı ile Azure Cosmos DB Tablo API'si'ni ve Azure Tablo depolama alanını kullanmaya başlama
 
@@ -25,7 +25,7 @@ Yapılandırılmış NoSQL verilerini bulutta depolamak için Azure Cosmos DB Ta
 
 Bu öğreticide, Azure Cosmos DB Tablo API'si ve Azure Tablo depolama senaryolarıyla [.NET için Microsoft Azure Cosmos db tablo kitaplığının](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) nasıl kullanılacağını gösteren bir örnek açıklanmaktadır. Azure hizmetine özel bağlantıyı kullanmanız gerekir. Bu senaryolar, tablo oluşturmayı, veri eklemeyi/güncelleştirmeyi, verileri sorgulamayı ve tabloları silmeyi gösteren C# örnekleri kullanılarak araştırılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği başarıyla tamamlamak için aşağıdakiler gerekir:
 
@@ -255,7 +255,7 @@ Projenizin **Cosmostablesamples**öğesine sağ tıklayın. **Ekle**, **Yeni ö�
  }
 ```
 
-### <a name="get-an-entity-from-a-partition"></a>Bir bölümden varlık edinme
+## <a name="get-an-entity-from-a-partition"></a>Bir bölümden varlık edinme
 
 [Tableoperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) sınıfının altındaki Retrieve metodunu kullanarak bir bölümden varlık elde edebilirsiniz. Aşağıdaki kod örneği, bir müşteri varlığının bölüm anahtarı satır anahtarını, e-posta ve telefon numarasını alır. Bu örnek ayrıca varlık için sorgulamak üzere tüketilen istek birimlerini de yazdırır. Bir varlığı sorgulamak için, **SamplesUtils.cs** dosyasına aşağıdaki kodu ekleyin: 
 

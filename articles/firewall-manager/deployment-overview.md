@@ -1,24 +1,22 @@
 ---
-title: Azure Güvenlik Duvarı Yöneticisi önizleme dağıtımına genel bakış
-description: Azure Güvenlik Duvarı Yöneticisi önizlemesi için gereken üst düzey dağıtım adımlarını öğrenin
+title: Azure Güvenlik Duvarı Yöneticisi dağıtımına genel bakış
+description: Azure Güvenlik Duvarı Yöneticisi için gereken üst düzey dağıtım adımlarını öğrenin
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77443134"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565808"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure Güvenlik Duvarı Yöneticisi önizleme dağıtımına genel bakış
+# <a name="azure-firewall-manager-deployment-overview"></a>Azure Güvenlik Duvarı Yöneticisi dağıtımına genel bakış
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Güvenlik Duvarı Yöneticisi önizlemesi dağıtmanın birden çok yolu vardır, ancak aşağıdaki genel süreç önerilir.
+Azure Güvenlik Duvarı Yöneticisi 'Ni dağıtmanın birden çok yolu vardır, ancak aşağıdaki genel süreç önerilir.
 
 ## <a name="general-deployment-process"></a>Genel dağıtım işlemi
 
@@ -70,4 +68,4 @@ Azure Güvenlik Duvarı Yöneticisi önizlemesi dağıtmanın birden çok yolu v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Azure portal kullanarak bulut ağınızı Azure Güvenlik Duvarı Yöneticisi önizleme ile koruyun](secure-cloud-network.md)
+- [Öğretici: Azure portal kullanarak bulut ağınızı Azure Güvenlik Duvarı Yöneticisi ile güvenli hale getirin](secure-cloud-network.md)

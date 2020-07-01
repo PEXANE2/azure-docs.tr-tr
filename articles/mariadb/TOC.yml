@@ -112,6 +112,10 @@
           href: concepts-data-in-replication.md
         - name: Okuma amaçlı çoğaltmalar
           href: concepts-read-replicas.md
+    - name: Bölgeler arasında taşıma
+      items:
+        - name: Azure portal
+          href: howto-move-regions-portal.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sunucu yönetme

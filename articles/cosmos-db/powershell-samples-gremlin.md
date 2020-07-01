@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30a3e4be070d0bdc628fbf891755049e1979e503
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 62036a507061a956febb1eb63e6607abcce7467c
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263390"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563878"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'sinin Azure PowerShell örnekleri
 
@@ -20,7 +20,7 @@ Aşağıdaki tabloda, Gremlin API için Azure Cosmos DB örnek Azure PowerShell 
 > [!NOTE]
 > Örnekler [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management cmdlet 'lerini kullanır. Lütfen düzenli olarak güncelleştirmeleri denetleyin `Az.CosmosDB` .
 
-| | |
+|Görev | Description |
 |---|---|
 |[Hesap, veritabanı ve grafik oluşturma](scripts/powershell/gremlin/ps-gremlin-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos hesabı, veritabanı ve grafik oluşturur. |
 |[Veritabanları veya grafikleri listeleme veya edinme](scripts/powershell/gremlin/ps-gremlin-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Veritabanını veya grafiği listeleyin veya alın. |

@@ -5,16 +5,16 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 426158945e609b2bb46dd9fbbbbe378f25cd93f1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 76b2b465354df5b06ecd93986aec71530d175fe6
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206262"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562886"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Anahtar-değer çiftleri ve tablolar için formları analiz etme
 
-Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Yeni bir Python betiğine aşağıdaki kodu çalıştırarak **[analiz formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)** API 'sini çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
+Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Yeni bir Python betiğine aşağıdaki kodu çalıştırarak **[analiz formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API 'sini çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `<file path>`Formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.pdf). Bu, uzak bir dosyanın URL 'SI de olabilir. Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
 1. `<model_id>`Önceki bölümde aldığınız model kimliğiyle değiştirin.

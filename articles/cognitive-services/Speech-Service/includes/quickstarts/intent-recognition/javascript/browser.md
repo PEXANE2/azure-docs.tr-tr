@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 4ebd0b7b02036ca9aed6848ee261d32245ba4973
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 904144b044a0a0223d4807372407b5ce0b9f127b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979716"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85570178"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
@@ -159,7 +159,7 @@ Bir nesneyi başlatabilmeniz `SpeechRecognizer` için önce abonelik anahtarın�
 
 ## <a name="create-an-audio-configuration"></a>Ses yapılandırması oluşturma
 
-Şimdi, `AudioConfig` Input devic3 'a işaret eden bir nesne oluşturmanız gerekir. Bu kodu `startIntentRecognizeAsyncButton.addEventListener()` , konuşma yapılandırmanızın hemen altına, yöntemine ekleyin.
+Şimdi, `AudioConfig` giriş cihazınıza işaret eden bir nesne oluşturmanız gerekir. Bu kodu `startIntentRecognizeAsyncButton.addEventListener()` , konuşma yapılandırmanızın hemen altına, yöntemine ekleyin.
 
 ```JavaScript
         var audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();

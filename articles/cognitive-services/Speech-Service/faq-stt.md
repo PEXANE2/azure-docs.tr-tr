@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168455"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561574"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -100,7 +100,7 @@ Gerekli bilgiler ile [Azure destek portalında](https://ms.portal.azure.com/#bla
   - oturum aç (gerekliyse),
   - projenizi ve dağıtımınızı seçin,
   - Eşzamanlılık artışı için gereken uç noktayı seçin,
-  - öğesini kopyalayın `Endpoint ID`.
+  - öğesini kopyalayın `Endpoint ID` .
 
 Bir ***temel modelin***eşzamanlılık düzeyini artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
 
@@ -110,14 +110,17 @@ ya da
 
 - aboneliğiniz için bir erişim belirteci ( [buraya](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)bakın),
 
-or
+veya
 
 - aboneliğinizin kaynak KIMLIĞI:
   - [Azure Portal](https://portal.azure.com)gidin,
-  - Arama `Cognitive Services` kutusunda öğesini seçin,
+  - `Cognitive Services`arama kutusunda öğesini seçin,
   - görüntülenmiş hizmetlerden, eşzamanlılık artışı istediğiniz konuşma hizmetini seçin,
-  - Bu hizmet `Properties` için görüntüleme,
-  - tamamını `Resource ID`kopyalayın.
+  - `Properties`Bu hizmet için görüntüleme,
+  - tamamını kopyalayın `Resource ID` .
+  
+>[!NOTE]
+>Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları tarafından sınırlandırıldığından [, kapsayıcılar eşzamanlılık](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) sınırlarına artış gerektirmez.
 
 ## <a name="importing-data"></a>Verileri içeri aktarma
 

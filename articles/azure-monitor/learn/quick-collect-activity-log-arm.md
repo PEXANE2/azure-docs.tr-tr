@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: b4b8bb991685ce13be89eff26a4442f32cde7206
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: ed2a18f4d7e9784566036a598098a015d3050dbd
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446432"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563539"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderme
 Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir platform Günlüğliğidir. Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, bir Log Analytics çalışma alanı oluşturmak için ARM şablonlarının yanı sıra günlük [sorgularını](../log-query/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../platform/alerts-log-query.md) ve [çalışma kitapları](../platform/workbooks-overview.md)gibi diğer özellikleri etkinleştirerek etkinlik günlüğünü Azure izleyici günlüklerine göndermek için bir tanılama ayarı gösterilmektedir. 
@@ -121,7 +121,7 @@ Aşağıdaki şablon boş bir Log Analytics çalışma alanı oluşturur. Bu şa
 ```
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
-CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](/azure-resource-manager/templates/deploy-portal) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu**, **çalışmaalanıadı**ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
+CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu**, **çalışmaalanıadı**ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
 
 # <a name="cli"></a>[CLI](#tab/CLI1)
 
@@ -278,6 +278,24 @@ Ayrıntılı özelliklerini görüntülemek için kayıtlardan birini genişleti
 
 ![Karmaşık sorgu](media/quick-collect-activity-log/query-02.png)
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmak isteyebilirsiniz. Artık gerekli değilse, uyarı kuralını ve ilgili kaynakları silen kaynak grubunu silin. Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silmek için
+
+
+ 
+# <a name="cli"></a>[CLI](#tab/CLI3)
+
+```azurecli
+az group delete --name my-resource-group
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell3)
+
+```powershell
+Remove-AzResourceGroup -Name my-resource-group
+```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hızlı başlangıçta, etkinlik günlüğünü bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdınız. Artık diğer verileri, Azure Izleyici 'deki [günlük sorgularını](../log-query/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../platform/alerts-log-query.md) ve [çalışma kitapları](../platform/workbooks-overview.md)gibi özelliklerden yararlanarak, çalışma alanına toplanacak şekilde yapılandırabilirsiniz. Daha sonra, her kaynakta gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan etkinlik günlüğündeki verileri karmaşıklama Azure kaynaklarınızdan [kaynak günlüklerini](../platform/resource-logs.md) toplamanız gerekir.

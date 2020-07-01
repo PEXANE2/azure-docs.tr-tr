@@ -1,5 +1,5 @@
 ---
-title: Node. js ' den Azure Tablo depolama veya Azure Cosmos DB Tablo API'si kullanma
+title: Azure Tablo depolama veya Azure Cosmos DB Tablo API'si kullanın Node.js
 description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: d04cf082f5dc7ca3ae07b60dc193c66613fa5c4f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 35435bd318596ffd0a46e5d272565358c092bc03
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76771072"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562685"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js uygulamasından Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanma
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -41,16 +41,19 @@ Azure Depolama veya Azure Cosmos DB’yi kullanmak için, Depolama REST hizmetle
 1. **PowerShell** (Windows), **Terminal** (Mac) veya **Bash** (Unix) gibi bir komut satırı arabirimi kullanın ve uygulamanızı oluşturduğunuz klasöre gidin.
 2. Komut penceresine **npm install azure-storage** yazın. Komutun çıktısı aşağıdaki örneğe benzer.
 
-       azure-storage@0.5.0 node_modules\azure-storage
-       +-- extend@1.2.1
-       +-- xmlbuilder@0.4.3
-       +-- mime@1.2.11
-       +-- node-uuid@1.4.3
-       +-- validator@3.22.2
-       +-- underscore@1.4.4
-       +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
-       +-- xml2js@0.2.7 (sax@0.5.2)
-       +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```bash
+    azure-storage@0.5.0 node_modules\azure-storage
+    +-- extend@1.2.1
+    +-- xmlbuilder@0.4.3
+    +-- mime@1.2.11
+    +-- node-uuid@1.4.3
+    +-- validator@3.22.2
+    +-- underscore@1.4.4
+    +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+    +-- xml2js@0.2.7 (sax@0.5.2)
+    +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```
+
 3. Bir **node_modules** klasörünün oluşturulduğunu doğrulamak için **ls** komutunu kendiniz çalıştırabilirsiniz. Bu klasörün içinde, depolama alanına erişmek için ihtiyaç duyduğunuz kitaplıkları içeren **azure-storage** paketini bulacaksınız.
 
 ### <a name="import-the-package"></a>Paketi içeri aktarma
@@ -68,7 +71,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB bağlantısını ekleme
-Azure Cosmos DB bağlantısı eklemek için bir **TableService** nesnesi oluşturun ve hesap adınızı, birincil anahtarınızı ve uç noktanızı belirtin. Bu değerleri, Cosmos DB hesabınız için Azure Portal **Ayarlar** > **bağlantı dizesinden** kopyalayabilirsiniz. Örneğin:
+Azure Cosmos DB bağlantısı eklemek için bir **TableService** nesnesi oluşturun ve hesap adınızı, birincil anahtarınızı ve uç noktanızı belirtin. Bu değerleri **Settings**  >  , Cosmos DB hesabınız için Azure Portal ayarlar**bağlantı dizesinden** kopyalayabilirsiniz. Örneğin:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -136,8 +139,6 @@ var task = {
 
 > [!NOTE]
 > Ayrıca her kayıt için bir **Timestamp** alanı vardır ve bu alan, bir varlık eklendiğinde veya güncelleştirildiğinde Azure tarafından ayarlanır.
->
->
 
 Varlıklar oluşturmak için **entityGenerator** da kullanabilirsiniz. Aşağıdaki örnek, **entityGenerator** kullanılmasıyla aynı görevi oluşturur.
 
@@ -173,8 +174,6 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 > Varsayılan olarak **insertEntity**, `response` bilgilerinin parçası olarak eklenen varlığı döndürmez. Bu varlık üzerinde başka işlemler gerçekleştirmeyi planlıyor veya bilgileri önbelleğe almak istiyorsanız, `result` değerinin parçası olarak bunun döndürülmesini sağlamak yararlı olabilir. Aşağıdaki gibi **echoContent** seçeneğini etkinleştirerek bunu yapabilirsiniz:
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
->
->
 
 ## <a name="update-an-entity"></a>Varlığı güncelleştirme
 Mevcut bir varlığı güncelleştirmenin birçok yolu vardır:
@@ -365,7 +364,7 @@ dc.table.queryEntities(tableName,
 
 `continuationToken` nesnesini incelerseniz, tüm sonuçlar arasında yineleme yapmak için kullanılabilecek `nextPartitionKey`, `nextRowKey` ve `targetLocation` gibi özellikleri bulursunuz.
 
-Ayrıca, sayfa boyutunu `top` ayarlamak için `continuationToken` ile birlikte kullanabilirsiniz. 
+Ayrıca, `top` `continuationToken` sayfa boyutunu ayarlamak için ile birlikte kullanabilirsiniz. 
 
 ## <a name="work-with-shared-access-signatures"></a>Paylaşılan erişim imzaları ile çalışma
 Paylaşılan erişim imzaları (SAS), Depolama hesabı adınızı veya anahtarlarınızı sağlamadan tablolara ayrıntılı erişim sağlamanın güvenli bir yoludur. SAS çoğu zaman verilerinize sınırlı erişim sağlamak (örneğin, bir mobil uygulamanın kayıtları sorgulamasına izin verme) için kullanılır.

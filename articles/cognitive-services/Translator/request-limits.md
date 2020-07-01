@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995794"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561463"
 ---
 # <a name="request-limits-for-translator"></a>Çevirmen için istek sınırları
 
@@ -31,8 +31,8 @@ Aşağıdaki tabloda, çeviricisinin her bir işlemi için dizi öğesi ve karak
 |:----|:----|:----|:----|
 | Çevirme | 5.000    | 100    | 5.000 |
 | Karakter Dönüştürme | 5.000    | 10    | 5.000 |
-| Algılama | 10,000 |    100 |    50.000 |
-| BreakSentence | 10,000    | 100 |    50.000 |
+| Algılama | 10,000 |    100 |    50,000 |
+| BreakSentence | 10,000    | 100 |    50,000 |
 | Sözlük Arama| 100 |    10    | 1000 |
 | Sözlük Örnekleri | "metin için 100 ve çeviri için 100 (200 toplam)| 10|    2.000 |
 
@@ -66,14 +66,13 @@ Bu sınırlar, Microsoft 'un standart çeviri modelleriyle kısıtlıdır. Özel
 
 | Dil | Kod | Karakter sınırı |
 |----------|------|-----------------|
-| Çince | zh | 132 |
-| Almanca | seçimini | 290 |
-| İtalyanca | içerdiği | 280 |
-| Japonca | Sofya | 150 |
-| Portekizce | pt | 290 |
-| İspanyolca | es | 280 |
-| İtalyanca | içerdiği | 280 |
-| Tayca | 11 | 258 |
+| Çince | zh | 166 |
+| Almanca | seçimini | 800 |
+| İtalyanca | içerdiği | 800 |
+| Japonca | Sofya | 166 |
+| Portekizce | pt | 800 |
+| İspanyolca | es | 800 |
+| Tayca | 11 | 180 |
 
 > [!NOTE]
 > Bu sınır, çeviriler için geçerlidir.

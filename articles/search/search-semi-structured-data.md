@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 64cb864b50f44f70bb9ceccc9983641970116cc7
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261452"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85559012"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Öğretici: REST kullanarak Azure Storage 'dan JSON bloblarını dizine
 
@@ -29,7 +29,7 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştirmek için Postman ve [ara
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure Depolama](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 + [Postman masaüstü uygulaması](https://www.getpostman.com/)
@@ -112,13 +112,13 @@ Bu öğreticideki her çağrının istek yöntemleri **gönderi** ve **Get**' di
 
   ![Postman istek URL 'SI ve üstbilgisi](media/search-get-started-postman/postman-url.png "Postman istek URL 'SI ve üstbilgisi")
 
-URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201**döndürmesi gerekir. JSON dizilerini kullanmak için genel olarak kullanılabilen api-Version vardır `2019-05-06` .
+URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201**döndürmesi gerekir. JSON dizilerini kullanmak için genel olarak kullanılabilen api-Version vardır `2020-06-30` .
 
 ## <a name="3---create-a-data-source"></a>3-veri kaynağı oluşturma
 
 [Veri kaynağı oluşturma API 'si](https://docs.microsoft.com/rest/api/searchservice/create-data-source) , hangi verilerin dizine oluşturulacağını belirten bir Azure bilişsel arama nesnesi oluşturur.
 
-1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/datasources?api-version=2019-05-06` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin. 
+1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/datasources?api-version=2020-06-30` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin. 
 
 1. Aşağıdaki JSON öğesini istek gövdesine kopyalayın.
 
@@ -161,7 +161,7 @@ URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201
     
 İkinci çağrı, tüm aranabilir verileri depolayan bir Azure Bilişsel Arama dizini oluşturan [Dizin API 'Si oluşturur](https://docs.microsoft.com/rest/api/searchservice/create-index). Dizin, tüm parametreleri ve parametrelerin özniteliklerini belirtir.
 
-1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/indexes?api-version=2019-05-06` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
+1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
 
 1. Aşağıdaki JSON öğesini istek gövdesine kopyalayın.
 
@@ -236,7 +236,7 @@ URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201
 
 Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine aktarır ve isteğe bağlı olarak veri yenilemeyi otomatikleştirmek için bir zamanlama sağlar. REST API [Dizin Oluşturucu oluşturur](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexers?api-version=2019-05-06` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
+1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexers?api-version=2020-06-30` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
 
 1. Aşağıdaki JSON öğesini istek gövdesine kopyalayın.
 
@@ -281,7 +281,7 @@ Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine
 
 1. **Alınacak**fiili ' i değiştirin.
 
-1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
+1. Bu çağrının URI 'sini ayarlayın `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2020-06-30&$count=true` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.
 
 1. İsteği gönderin. Bu, bir belge sayısıyla birlikte, dizinde alınabilir olarak işaretlenmiş tüm alanları döndüren belirtilmemiş bir tam metin arama sorgusudur. Yanıt şöyle görünmelidir:
 
@@ -313,7 +313,7 @@ Bir dizin oluşturucu veri kaynağına bağlanır, verileri hedef arama dizinine
             . . . 
     ```
 
-1. `$select`Sonuçları daha az alanlarla sınırlamak için sorgu parametresini ekleyin: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true` .  Bu sorgu için 100 belge eşleşir, ancak varsayılan olarak Azure Bilişsel Arama yalnızca sonuçlarda 50 ' i döndürür.
+1. `$select`Sonuçları daha az alanlarla sınırlamak için sorgu parametresini ekleyin: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true` .  Bu sorgu için 100 belge eşleşir, ancak varsayılan olarak Azure Bilişsel Arama yalnızca sonuçlarda 50 ' i döndürür.
 
    ![Parametre tabanlı sorgu](media/search-semi-structured-data/lastquery.png "Paramlanmış sorgu")
 
@@ -333,7 +333,7 @@ Geliştirmede erken deneysel aşamalarda, tasarım yinelemesi için en pratik ya
 Dizinleri, Dizin oluşturucuyu ve veri kaynaklarını silmek için portalı kullanabilirsiniz. Ya da **Sil** ' i kullanın ve her bir nesnenin URL 'sini sağlayın. Aşağıdaki komut bir dizin oluşturucuyu siler.
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2020-06-30
 ```
 
 Silme işlemi başarılı olduğunda durum kodu 204 döndürülür.

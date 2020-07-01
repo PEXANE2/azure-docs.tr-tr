@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 612751c2405cd55ad0b3760aa8e093e434a22f57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 96ab2b7c8e80375f97df550ed6c83e7bb3e2f3e3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121595"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562082"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [, #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-create-index-portal.md)
@@ -29,7 +29,7 @@ Bu makalede, PowerShell ve [azure BILIŞSEL arama REST API 'leri](https://docs.m
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir. 
 
@@ -43,7 +43,7 @@ REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarın�
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-2. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+2. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
 ![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
@@ -63,7 +63,7 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
 2. Hizmetin dizinler koleksiyonunu belirten bir **$URL** nesnesi oluşturun. Hizmet adını (-SEARCH-SERVICE-NAME) geçerli bir arama hizmeti ile değiştirin.
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
+    $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2020-06-30&$select=name"
     ```
 
 3. Hizmete bir GET isteği göndermek ve bağlantıyı doğrulamak için **Invoke-RestMethod** komutunu çalıştırın. Hizmetten geri gönderilen yanıtları görüntüleyebilmek **için, ConvertTo-JSON** ekleyin.
@@ -87,7 +87,7 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
 
 Portalı kullanmıyorsanız, verileri yükleyebilmeniz için önce hizmette bir dizin bulunmalıdır. Bu adım, dizini tanımlar ve hizmete gönderir. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) , bu adım için kullanılır.
 
-Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, türündeki `Edm.String` alanlardan biri belge kimliği için *anahtar* olarak atanmalıdır.
+Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, türündeki alanlardan biri `Edm.String` belge kimliği için *anahtar* olarak atanmalıdır.
 
 Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördüğünüz alan tanımlarına sahiptir. Diğer izlenecek yollarda kullanılan daha büyük bir [oteller dizininin](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) bir alt kümesidir. Bu hızlı başlangıçta breçekimi için kırpıyoruz.
 
@@ -123,7 +123,7 @@ Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördü
 2. URI 'yi hizmetinize ve *oteller-hızlı başlangıç* dizininde dizin koleksiyonuna ayarlayın.
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30"
     ```
 
 3. Sunucuda dizin oluşturmak için **$URL**, **$Headers**ve **$Body** ile komutu çalıştırın. 
@@ -183,7 +183,7 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
 
 1. Karşıya yüklemek istediğiniz belgeleri içeren **$Body** bir nesne oluşturmak için bu örneği PowerShell 'e yapıştırın. 
 
-    Bu istek iki tam ve bir kısmi kayıt içerir. Kısmi kayıt, eksik belgeleri karşıya yükleyebileceğinizi gösterir. Parametresi `@search.action` , dizin oluşturmanın nasıl yapılacağını belirtir. Geçerli değerler karşıya yükleme, birleştirme, mergeOrUpload ve DELETE değerleridir. MergeOrUpload davranışı, Hotelıd = 3 için yeni bir belge oluşturur ya da zaten varsa içeriği güncelleştirir.
+    Bu istek iki tam ve bir kısmi kayıt içerir. Kısmi kayıt, eksik belgeleri karşıya yükleyebileceğinizi gösterir. `@search.action`Parametresi, dizin oluşturmanın nasıl yapılacağını belirtir. Geçerli değerler karşıya yükleme, birleştirme, mergeOrUpload ve DELETE değerleridir. MergeOrUpload davranışı, Hotelıd = 3 için yeni bir belge oluşturur ya da zaten varsa içeriği güncelleştirir.
 
     ```powershell
     $body = @"
@@ -273,7 +273,7 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
 1. Uç noktayı *oteller-hızlı başlangıç* belgeleri koleksiyonuna ayarlayın ve Dizin işlemini (dizinler/oteller-hızlı başlangıç/docs/dizin) ekleyin.
 
     ```powershell
-    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
+    $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30"
     ```
 
 1. **$URL**, **$Headers**ve **$Body** kullanarak, dosyaları oteller-hızlı başlangıç dizinine yüklemek için komutunu çalıştırın.
@@ -319,14 +319,14 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
 
 Bu adımda, [belgeleri ara API 'sini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bir dizinin nasıl sorgulanyapılacağı gösterilir.
 
-Arama $urls tek tırnakları kullandığınızdan emin olun. Sorgu dizeleri karakterleri **$** içerir ve tüm dize tek tırnak içine alınmış olursa kaçış zorunluluğunu atlayabilirsiniz.
+Arama $urls tek tırnakları kullandığınızdan emin olun. Sorgu dizeleri **$** karakterleri içerir ve tüm dize tek tırnak içine alınmış olursa kaçış zorunluluğunu atlayabilirsiniz.
 
 1. Son noktayı *oteller-hızlı başlangıç* belgeleri koleksiyonuna ayarlayın ve sorgu dizesinde geçirilecek bir **arama** parametresi ekleyin. 
   
    Bu dize, rastgele belgeler için bir boş arama (Search = *) yürütür ve dereceli bir liste (arama puanı = 1,0) döndürüyor. Azure Bilişsel Arama, varsayılan olarak her seferinde 50 eşleşme döndürür. Yapılandırılmış olarak, bu sorgu tüm belge yapısını ve değerlerini döndürür. Sonuçlarda tüm belgelerin sayısını almak için **$Count = true** ekleyin.
 
     ```powershell
-    $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
+    $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$count=true'
     ```
 
 1. **$URL** hizmete göndermek için komutunu çalıştırın.
@@ -375,21 +375,21 @@ Söz dizimi için bir fikir almak üzere birkaç başka sorgu örneği deneyin. 
 # Query example 1
 # Search the entire index for the terms 'restaurant' and 'wifi'
 # Return only the HotelName, Description, and Tags fields
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=restaurant wifi&$count=true&$select=HotelName,Description,Tags'
 
 # Query example 2 
 # Apply a filter to the index to find hotels rated 4 or highter
 # Returns the HotelName and Rating. Two documents match.
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=*&$filter=Rating gt 4&$select=HotelName,Rating'
 
 # Query example 3
 # Take the top two results, and show only HotelName and Category in the results
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=boutique&$top=2&$select=HotelName,Category'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=boutique&$top=2&$select=HotelName,Category'
 
 # Query example 4
 # Sort by a specific field (Address/City) in ascending order
 
-$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
+$url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2020-06-30&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

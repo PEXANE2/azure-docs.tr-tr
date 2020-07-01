@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 368883a7eded17180a4a4259d452be09ebd221d9
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 697dc68018ced08e22efdc179f84a2c968f953a2
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262455"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563869"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API 'SI için Azure PowerShell örnekleri
 
@@ -23,7 +23,7 @@ Aşağıdaki tabloda, MongoDB API 'SI için Azure Cosmos DB örnek Azure PowerSh
 > [!NOTE]
 > Örnekler [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management cmdlet 'lerini kullanır. Lütfen düzenli olarak güncelleştirmeleri denetleyin `Az.CosmosDB` .
 
-| | |
+|Görev | Description |
 |---|---|
 |[Hesap, veritabanı ve koleksiyon oluşturma](scripts/powershell/mongodb/ps-mongodb-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos hesabı, veritabanı ve koleksiyonu oluşturur. |
 |[Veritabanları veya koleksiyonları listeleme veya edinme](scripts/powershell/mongodb/ps-mongodb-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Veritabanını veya toplamayı listeleyin veya alın. |

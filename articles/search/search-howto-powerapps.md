@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: 2a2e292390b2f060bf31d739605d7506203a5619
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901409"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565829"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Öğretici: Power Apps 'ten bir Bilişsel Arama dizini sorgulama
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Power Apps hesabı](http://make.powerapps.com)
 
@@ -43,7 +43,7 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
 1. Power Apps ['Te oturum açın](http://make.powerapps.com) .
 
-1. Sol tarafta, **veri** > **özel bağlayıcıları**' nı genişletin.
+1. Sol tarafta, **veri**  >  **özel bağlayıcıları**' nı genişletin.
  
     :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
@@ -57,7 +57,7 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
    * Simge arka plan rengi (örneğin, #007ee5)
    * Açıklama (örneğin, "Azure 'a bağlayıcı Bilişsel Arama")
-   * Konakta, arama hizmeti URL 'nizi (gibi `<yourservicename>.search.windows.net`) girmeniz gerekir
+   * Konakta, arama hizmeti URL 'nizi (gibi) girmeniz gerekir `<yourservicename>.search.windows.net`
    * Taban URL 'SI için, "/" girmeniz yeterlidir.
 
     :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Genel bilgiler iletişim kutusu" border="true":::
@@ -74,9 +74,9 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
    * Fiili seçin`GET`
 
-   * URL için, arama dizininiz için bir örnek sorgu girin (`search=*` tüm belgeler ' i döndürür `$select=` , alanlar seçmenizi sağlar). API sürümü gereklidir. Tam olarak belirtilen URL şöyle görünebilir:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
+   * URL için, arama dizininiz için bir örnek sorgu girin ( `search=*` tüm belgeler ' i döndürür, `$select=` alanlar seçmenizi sağlar). API sürümü gereklidir. Tam olarak belirtilen URL şöyle görünebilir:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
-   * Üst bilgiler için yazın `Content-Type`. 
+   * Üst bilgiler için yazın `Content-Type` . 
 
      **Power Apps** , sorgudan parametreleri ayıklamak için söz dizimini kullanır. Arama alanını açık bir şekilde tanımladığımızda dikkat edin. 
 
@@ -86,7 +86,7 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Örnekten Al iletişim kutusu" border="true":::
 
-1. *Arama*için `*` : **varsayılan değer**olarak ayarlayın, **gerekli** olarak ayarlayın ve **görünürlüğü** *hiçbiri* *olarak ayarlayın* . 
+1. *Arama*için: `*` **varsayılan değer**olarak ayarlayın, **gerekli** olarak ayarlayın ve *False* **görünürlüğü** *hiçbiri*olarak ayarlayın. 
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Arama parametresi meta verileri" border="true":::
 
@@ -94,11 +94,11 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Sürüm parametresi meta verileri" border="true":::
 
-1. *Api sürümü*için `2019-05-06` : **varsayılan değer** **olarak ayarlayın,** *true*olarak ayarlayın ve **görünürlüğü** *iç*olarak ayarlayın.  
+1. *Api sürümü*için: `2020-06-30` **varsayılan değer**olarak ayarlayın, *true*olarak ayarlayın **required** ve **görünürlüğü** *iç*olarak ayarlayın.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Sürüm parametresi meta verileri" border="true":::
 
-1. *Içerik türü*için: olarak `application/json`ayarlayın.
+1. *Içerik türü*için: olarak ayarlayın `application/json` .
 
 1. Bu değişiklikleri yaptıktan sonra, **Swagger düzenleyici** görünümüne geçiş yapın. Parametreler bölümünde aşağıdaki yapılandırmayı görmeniz gerekir:
 
@@ -106,14 +106,14 @@ Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda,
     parameters:
       - {name: search, in: query, required: false, type: string, default: '*'}
       - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
-      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+      - {name: api-version, in: query, required: true, type: string, default: '2020-06-30',
         x-ms-visibility: internal}
       - {name: Content-Type, in: header, required: false, type: string}
     ```
 
 1. 3 ' e geri dönün **. Adım iste** ve yanıt bölümüne kaydır. **"Varsayılan yanıt Ekle"** ye tıklayın. Bu kritik öneme sahiptir çünkü Power Apps 'in yanıt şemasını anlamasına yardımcı olur. 
 
-1. Örnek bir yanıt yapıştırın. Örnek bir yanıtı yakalamanın kolay bir yolu Azure portal arama Gezgini ' dir. Arama Gezgini ' nde, istek için aynı sorguyu girmeniz gerekir, ancak sonuçları yalnızca iki belgeyle sınırlamak için **$Top = 2** ' yi ekleyin:: `search=*&$select=HotelName,Description,Address/City&$top=2`. 
+1. Örnek bir yanıt yapıştırın. Örnek bir yanıtı yakalamanın kolay bir yolu Azure portal arama Gezgini ' dir. Arama Gezgini ' nde, istek için aynı sorguyu girmeniz gerekir, ancak sonuçları yalnızca iki belgeyle sınırlamak için **$Top = 2** ' yi ekleyin:: `search=*&$select=HotelName,Description,Address/City&$top=2` . 
 
    Power Apps 'in yalnızca şemayı algılaması için bazı sonuçlara ihtiyacı vardır.
 
@@ -176,7 +176,7 @@ Bu görev için bir [sorgu API 'si anahtarına](search-security-api-keys.md#find
 
 Bu adımda, sonuçlar için bir arama kutusuyla, bir arama düğmesiyle ve bir görüntüleme alanına sahip bir Power App oluşturun. Power App, Azure Search verileri almak için son oluşturulan özel bağlayıcıya bağlanır.
 
-1. Sol tarafta **uygulamalar** > **+ Yeni uygulama** > **tuvali**' ni genişletin.
+1. Sol tarafta **uygulamalar**  >  **+ Yeni uygulama**  >  **tuvali**' ni genişletin.
 
     :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Tuval uygulaması oluşturma" border="true":::
 

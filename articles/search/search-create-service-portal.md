@@ -8,14 +8,14 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/24/2020
-ms.openlocfilehash: 988b26b319c706b97edfbd3545a525b7d685d7f1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368303"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562534"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı başlangıç: portalda bir Azure Bilişsel Arama hizmeti oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
 Azure Bilişsel Arama, bir arama deneyimini özel uygulamalara bağlamak için kullanılan tek başına kaynaktır. Bilişsel Arama, diğer Azure hizmetleriyle, ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla kolayca tümleştirilir.
 
@@ -27,11 +27,11 @@ PowerShell’i mi tercih ediyorsunuz? Azure Resource Manager [hizmet şablonunu]
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Aşağıdaki hizmet özellikleri hizmetin kullanım ömrü için düzeltilir. Daha sonra bu özelliklerden herhangi birini değiştirmek için yeni bir hizmet gerekir:
+Aşağıdaki hizmet özellikleri hizmetin kullanım ömrü boyunca sabitlenmiştir ve bunların değiştirilmesi yeni bir hizmet gerektirir. Bir hizmet oluşturduğunuzda, nasıl kullanacağınızı düşünün:
 
-* name
-* katman (ücretsiz, temel, standart)
-* bölge (bilişsel hizmetler veya veri Hizmetleri gibi ilgili hizmetlere sahip bir konum seçin)
+* ad (hizmet adları için [Bu önerileri](#name-the-service) gözden geçirin)
+* katman (ücretsiz, temel, standart [faturalandırmayı etkiler](search-sku-tier.md) ve kapasite üzerinde yukarı bir sınır ayarlar)
+* bölge (ilgili hizmetlere sahip bir konum seçin. Bilişsel hizmetler veya Azure Machine Learning tümleştirme için aynı bölgedeki Hizmetleri birlikte bulma işlemi bir gereksinimdir.
 
 ## <a name="subscribe-free-or-paid"></a>Abone olma (ücretsiz veya ücretli)
 

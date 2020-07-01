@@ -1,24 +1,22 @@
 ---
-title: "Öğretici: Azure Güvenlik Duvarı Yöneticisi önizlemesi kullanarak sanal WAN 'nizin güvenliğini sağlama"
-description: Bu öğreticide, Azure portal kullanarak sanal WAN 'nizin güvenliğini Azure Güvenlik Duvarı Yöneticisi ile nasıl sağlayacağınızı öğreneceksiniz.
+title: "Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme"
+description: Bu öğreticide, Azure portal kullanarak sanal hub 'ınızın güvenliğini Azure Güvenlik Duvarı Yöneticisi ile nasıl sağlayacağınızı öğreneceksiniz.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 05/01/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c44daa67b4029c73c57ca82d72ee0a9759dd4c2d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691031"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563667"
 ---
-# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi önizlemesi kullanarak sanal WAN 'nizin güvenliğini sağlama 
+# <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak sanal hub 'ınızı güvenli hale getirme
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Güvenlik Duvarı Yöneticisi önizlemesi 'ni kullanarak, özel IP adreslerine, Azure PaaS 'ye ve Internet 'e yönelik bulut ağ trafiğinizi güvenli hale getirmek için güvenli sanal hub 'lar oluşturabilirsiniz. Güvenlik duvarındaki trafik yönlendirme otomatikleştirilmiştir, bu nedenle Kullanıcı tanımlı yollar (UDRs) oluşturmanız gerekmez.
+Azure Güvenlik Duvarı Yöneticisi 'ni kullanarak, özel IP adreslerine, Azure PaaS 'ye ve Internet 'e yönelik bulut ağ trafiğinizi güvenli hale getirmek için güvenli sanal hub 'lar oluşturabilirsiniz. Güvenlik duvarındaki trafik yönlendirme otomatikleştirilmiştir, bu nedenle Kullanıcı tanımlı yollar (UDRs) oluşturmanız gerekmez.
 
 ![bulut ağının güvenliğini sağlama](media/secure-cloud-network/secure-cloud-network.png)
 
@@ -63,7 +61,7 @@ Ardından, bir sıçrama sunucusu için bir alt ağ oluşturun.
 Şimdi sanal ağı oluşturun.
 
 1. **İncele ve oluştur**’u seçin.
-2. **Oluştur**’u seçin.
+2. **Oluştur**'u seçin.
 
 ### <a name="create-the-secured-virtual-hub"></a>Güvenli sanal hub 'ı oluşturma
 
@@ -82,7 +80,7 @@ Güvenlik Duvarı Yöneticisi 'Ni kullanarak güvenli sanal hub 'ınızı oluşt
 5. **İleri ' yi seçin: Azure Güvenlik Duvarı**.
 6. Varsayılan **Azure Güvenlik Duvarı** **etkin** ayarını kabul edin ve ardından **İleri: güvenilen güvenlik ortağı**' nı seçin.
 7. Varsayılan **güvenilir güvenlik Iş ortağı** **devre dışı** ayarını kabul edin ve ileri ' yi seçin **: gözden geçir + oluştur**.
-8. **Oluştur**’u seçin. Dağıtımı yaklaşık 30 dakika sürer.
+8. **Oluştur**'u seçin. Dağıtımı yaklaşık 30 dakika sürer.
 
 ### <a name="connect-the-hub-and-spoke-vnets"></a>Hub ve bağlı bileşen VNET 'leri bağlama
 
@@ -95,7 +93,7 @@ Artık hub ve bağlı bileşen VNET 'leri de eşler.
 5. Hub **'lar**için **hub-01**' i seçin.
 6. **Kaynak grubu**Için, **İlt-Manager**' ı seçin.
 7. **Sanal ağ**Için **bağlı bileşen-01**' i seçin.
-8. **Tamam**’ı seçin.
+8. **Oluştur**'u seçin.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Bir güvenlik duvarı ilkesi oluşturma ve merkezinizi güvenli hale getirme
 
@@ -111,16 +109,18 @@ Bir güvenlik duvarı ilkesi, trafiği bir veya daha fazla güvenli sanal hub ü
 8. **Öncelik**için **100**yazın.
 9. **Kural toplama eyleminin** **izin ver**olduğundan emin olun.
 10. Kural **adı** için **Allow-MSFT**yazın.
-11. **Kaynak adresi**için yazın **\***.
-12. **Protokol**için **http, https**yazın.
-13. * * Hedef türünün **FQDN**olduğundan emin olun.
-14. **Hedef**için ** \*. Microsoft.com**yazın.
-15. **Add (Ekle)** seçeneğini belirleyin.
-16. Ileri 'yi seçin **: hub**.
-17. **Hub 'lar** sekmesinde **sanal hub 'ları ilişkilendir**' i seçin.
-18. **Hub-01** ' i seçin ve ardından **Ekle**' yi seçin.
-1. **İncele ve oluştur**’u seçin.
-2. **Oluştur**’u seçin.
+11. **Kaynak türü**için **IP adresi**' ni seçin.
+12. **Kaynak**için yazın **\*** .
+13. **Protokol**için **http, https**yazın.
+14. **Hedef türün** **FQDN**olduğundan emin olun.
+15. **Hedef**için ** \* . Microsoft.com**yazın.
+16. **Add (Ekle)** seçeneğini belirleyin.
+17. **İleri ' yi seçin: tehdit bilgileri**.
+18. Ileri 'yi seçin **: hub**.
+19. **Hub 'lar** sekmesinde **sanal hub 'ları ilişkilendir**' i seçin.
+20. **Hub-01** ' i seçin ve ardından **Ekle**' yi seçin.
+21. **İncele ve oluştur**’u seçin.
+22. **Oluştur**'u seçin.
 
 Bu işlem yaklaşık beş dakika veya daha uzun sürebilir.
 
@@ -130,13 +130,11 @@ Artık ağ trafiğinin güvenlik duvarınızdan yönlendirildiğinden emin olman
 
 1. Güvenlik Duvarı Yöneticisi 'nden **güvenli sanal hub 'lar**' ı seçin.
 2. **Hub-01**' i seçin.
-3. **Ayarlar**altında **yol ayarları**' nı seçin.
-4. **Internet trafiği**, **sanal ağlardan gelen trafik**altında **Azure Güvenlik Duvarı aracılığıyla gönder**' i seçin.
-5. **Azure özel trafiği**, **sanal ağlara giden trafik**altında **Azure Güvenlik Duvarı aracılığıyla gönder**' i seçin.
-6. **IP adresi ön eklerini Düzenle**' yi seçin.
-8. Iş yükü alt ağının adresi olarak **10.0.1.0/24** yazın ve **Kaydet**' i seçin.
-9. **Ayarlar**altında **Bağlantılar**' ı seçin.
+3. **Ayarlar**altında **Güvenlik Yapılandırması**' nı seçin.
+4. **Internet trafiği**altında **Azure Güvenlik Duvarı**' nı seçin.
+5. **Özel trafik**altında **Azure Güvenlik Duvarı aracılığıyla gönder**' i seçin.
 10. **Hub-ışınsal** bağlantısı bağlantısının **Internet trafiğini** **güvenli**olarak gösterdiğini doğrulayın.
+11. **Kaydet**’i seçin.
 
 
 ## <a name="test-your-firewall"></a>Güvenlik duvarınızı test etme
@@ -181,10 +179,10 @@ Bir Internet bağlantısı ile bağlantı kurulmasına izin vermek için, bir yo
 
 1. Azure portal **kaynak oluştur**' u seçin.
 2. Arama kutusuna **yol tablosu** yazın ve ardından **yol tablosu**' nu seçin.
-3. **Oluştur**’u seçin.
+3. **Oluştur**'u seçin.
 4. **Ad**için **RT-01** yazın.
 5. Kaynak grubunun ve **(US) bölge Doğu ABD** için aboneliğinizi, **İlt-Manager** ' ı seçin.
-6. **Oluştur**’u seçin.
+6. **Oluştur**'u seçin.
 7. Dağıtım tamamlandığında **RT-01** yol tablosunu seçin.
 8. **Rotalar** ' ı seçin ve ardından **Ekle**' yi seçin.
 9. **Yol adı**için, **atlayın** yazın.
@@ -204,7 +202,7 @@ Bir Internet bağlantısı ile bağlantı kurulmasına izin vermek için, bir yo
 2. Uzak bir masaüstünü, **Atsrv** sanal makinesine bağlayın ve oturum açın. Buradan, **Iş yükü-SRV** özel IP adresine bir Uzak Masaüstü bağlantısı açın.
 
 3. Internet Explorer'ı açın ve https://www.microsoft.com adresine gidin.
-4. Internet Explorer güvenlik uyarıları 'nda **Tamam** > **Kapat** ' ı seçin.
+4. **OK**  >  Internet Explorer güvenlik uyarıları 'nda Tamam**Kapat** ' ı seçin.
 
    Microsoft giriş sayfasını görmeniz gerekir.
 

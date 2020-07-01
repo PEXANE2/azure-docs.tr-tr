@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561642"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564211"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Öğretici: VMware 'de Azure Data Box Gateway sağlama
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 VMware ESXi 6,0, 6,5 veya 6,7 çalıştıran bir konak sisteminde sanal cihaz sağlama önkoşulları aşağıdaki gibidir.
 
@@ -87,7 +87,7 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
 1. Sanal cihaz görüntüsünü sisteminize kopyalayın. Bu sanal görüntüyü (iki dosya) Azure portaldan indirmiştiniz. Bu görüntüyü yordamın ilerleyen bölümlerinde kullanacağınız için kopyaladığınız konumu not edin.
 
-2. Şu URL 'deki bir tarayıcı aracılığıyla ESXi sunucusunda oturum açın: `https://<IP address of the ESXi server>`. Sanal makine oluşturmak için yönetici ayrıcalıklarınızın olması gerekir.
+2. Şu URL 'deki bir tarayıcı aracılığıyla ESXi sunucusunda oturum açın: `https://<IP address of the ESXi server>` . Sanal makine oluşturmak için yönetici ayrıcalıklarınızın olması gerekir.
 
    ![Oturum açma sayfası](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -145,7 +145,7 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
     Aynı sayfada **Add hard disk** (Sabit disk ekle) öğesine tıklayıp **Existing hard disk** (Var olan sabit disk) seçeneğini belirtin. Veri deposundaki VMDK dosyasını seçin. Bunu yaptığınızda işletim sistemi diski eklenir. 
 
-     ! Ayarları Özelleştir sayfası[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Ayarları Özelleştir sayfası](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     **New hard disk** (Yeni sabit disk) girişini görene kadar sayfayı kaydırın ve girişi genişleterek ayarları görüntüleyin. **Virtual Device Node** (Sanal Cihaz Düğümü) ayarını **IDE controller 0** (IDE denetleyicisi 0) olarak belirleyin.
 
@@ -157,8 +157,8 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
 18. **Ready to Complete** (Tamamlanmak İçin Hazır) sayfasında yeni sanal makineyle ilgili tüm ayarları gözden geçirin. CPU için 4, bellek için 8192 MB, ağ arabirimi için 1 ve Sabit disk 2 için IDE denetleyicisi 0 değerlerinin seçili olduğunu doğrulayın. **Son**'a tıklayın.
    
-    ![Sayfa tamamlamaya hazırlanıyor sayfası](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![tamamlanana kadar hazırlanıyor](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Sayfa ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+     tamamlamaya hazırlanıyor sayfası tamamlanana kadar hazırlanıyor ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Sanal makineniz sağlanır. Durumu belirten bir ileti görüntülenir ve yeni sanal makine VM listesine eklenir.
 

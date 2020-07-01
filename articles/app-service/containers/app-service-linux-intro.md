@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 891e0c18b3f95dca905fbc14b957af773135eeec
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046408"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557898"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux’ta Azure App Service’e Giriş
 
@@ -21,7 +21,7 @@ ms.locfileid: "80046408"
 
 ## <a name="languages"></a>Diller
 
-Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşitli Yerleşik görüntüleri destekler. Diller şunlardır: node. js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. En [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) son dilleri ve desteklenen sürümleri görüntülemek için ' i çalıştırın. Yerleşik görüntülerde uygulamanızın gerektirdiği çalışma zamanı desteklenmiyorsa, [kendi Docker görüntünüzü](tutorial-custom-docker-image.md) oluşturarak Kapsayıcılar için Web App’e dağıtmaya yönelik yönergeler sunulmaktadır.
+Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşitli Yerleşik görüntüleri destekler. Diller şunlardır: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)En son dilleri ve desteklenen sürümleri görüntülemek için ' i çalıştırın. Yerleşik görüntülerde uygulamanızın gerektirdiği çalışma zamanı desteklenmiyorsa, [kendi Docker görüntünüzü](tutorial-custom-docker-image.md) oluşturarak Kapsayıcılar için Web App’e dağıtmaya yönelik yönergeler sunulmaktadır.
 
 ## <a name="deployments"></a>Dağıtımlar
 
@@ -54,7 +54,7 @@ Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşit
 
 Azure portalı, yalnızca şu anda Kapsayıcılar için Web App ile kullanılabilen özellikleri gösterir. Yeni özellikler etkinleştirildikçe portalda görünmeye başlayacaktır.
 
-Linux üzerinde App Service yalnızca [ücretsiz, temel, standart ve Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service planlarında desteklenir ve [paylaşılan](https://azure.microsoft.com/pricing/details/app-service/plans/) bir katmana sahip değildir. Linux olmayan Web Apps barındırmakta olan bir App Service planında Linux Web uygulaması oluşturamazsınız.  
+Linux üzerinde App Service yalnızca [ücretsiz, temel, standart, Premium ve yalıtılmış](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service planlarında desteklenir ve [paylaşılan](https://azure.microsoft.com/pricing/details/app-service/plans/) bir katmana sahip değildir. Linux olmayan Web Apps barındırmakta olan bir App Service planında Linux Web uygulaması oluşturamazsınız.  
 
 Aynı kaynak grubu için geçerli bir sınırlamaya bağlı olarak, aynı bölgedeki Windows ve Linux uygulamalarını karıştıramazsınız.
 
@@ -65,7 +65,7 @@ Aynı kaynak grubu için geçerli bir sınırlamaya bağlı olarak, aynı bölge
 >
 >
 
-Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. Kapsayıcısını `stdout` ve `stderr` kapsayıcısından günlüğe kaydetmek Için **App Service günlükleri**altında **Uygulama günlüğünü** etkinleştirmeniz gerekir. Ayar hemen yürürlüğe girer. App Service değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
+Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. `stdout`Kapsayıcısını ve kapsayıcısından günlüğe kaydetmek için `stderr` **App Service günlükleri**altında **Uygulama günlüğünü** etkinleştirmeniz gerekir. Ayar hemen yürürlüğe girer. App Service değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
 
 SCM sitesine **Geliştirme Araçları** menüsündeki **Gelişmiş Araçlar**’dan erişebilirsiniz.
 

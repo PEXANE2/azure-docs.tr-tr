@@ -4,12 +4,12 @@ description: Azure geçişi hizmeti hakkında bilgi edinin.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d90c40447dc4928a34332685aea728b13c3775b1
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 41fcf1c4a9a59ad0cea89c8b44374cef6444558e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771266"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564124"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -20,7 +20,7 @@ Azure geçişi, Azure şirket içi sunucuları, altyapısı, uygulamaları ve ve
 - **Birleşik geçiş platformu**: Azure 'a geçişinizi başlatmak, çalıştırmak ve izlemek için tek bir portal.
 - **Araç aralığı**: değerlendirme ve geçiş için bir dizi araç. Azure geçiş araçları arasında sunucu değerlendirmesi ve Azure geçişi: sunucu geçişi bulunur. Azure geçişi, diğer Azure hizmetleri ve araçlarıyla ve bağımsız yazılım satıcısı (ISV) teklifleriyle de tümleştirilir.
 - **Değerlendirme ve geçiş**: Azure geçiş hub 'ında şunları değerlendirebileceğiniz ve geçirebilirsiniz:
-    - **Sunucular**: şirket içi sunucuları değerlendirin ve bunları Azure sanal makinelerine geçirin.
+    - **Sunucular**: şirket içi sunucuları değerlendirin ve Azure sanal makinelerine veya Azure VMware çözümüne (AVS) (Önizleme) geçirin.
     - **Veritabanları**: şirket içi veritabanlarını değerlendirin ve BUNLARı Azure SQL veritabanı 'NA veya SQL yönetilen örneği 'ne geçirin.
     - **Web uygulamaları**: şirket içi Web uygulamalarını değerlendirin ve Azure App Service Geçiş Yardımcısı kullanarak onları Azure App Service geçirin.
     - **Sanal masaüstleri**: şirket içi sanal masaüstü ALTYAPıNıZı (VDI) değerlendirin ve Azure 'Da Windows sanal masaüstüne geçirin.
@@ -60,12 +60,12 @@ Azure geçişi, çeşitli ISV teklifleriyle tümleştirilir.
 
 ## <a name="azure-migrate-server-assessment-tool"></a>Azure geçişi: Sunucu değerlendirmesi aracı
 
-Azure geçişi: Sunucu değerlendirmesi Aracı, Azure 'a geçiş için şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucuları bulur ve değerlendirir.
+Azure geçişi: Sunucu değerlendirmesi Aracı, Azure 'a geçiş için şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucuları bulur ve değerlendirir. 
 
 Araç şunları yapar:
 
 - **Azure hazırlığı**: değerlendirir şirket Içi makinelerin Azure 'a geçiş için hazır olup olmadığını belirtir.
-- **Azure boyutlandırma**: geçişten sonra Azure VM 'lerinin boyutunu tahmin eder.
+- **Azure boyutlandırma**: geçiş sonrasında Azure VM 'lerinin boyutunu veya Azure VMware düğümlerinin sayısını tahmin eder.
 - **Azure maliyet tahmini**: Azure 'da şirket içi sunucuları çalıştırmaya yönelik maliyetleri tahmin eder.
 - **Bağımlılık Analizi**: bağımlı sunucuları Azure 'a taşımak için çapraz sunucu bağımlılıklarını ve iyileştirme stratejilerini belirler. [Bağımlılık analizine](concepts-dependency-visualization.md)sahip sunucu değerlendirmesi hakkında daha fazla bilgi edinin.
 

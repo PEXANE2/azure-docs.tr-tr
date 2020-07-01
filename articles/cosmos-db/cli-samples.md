@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 46536dcaf5e8565bb621fa3b1c3ff547459816ab
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 39550c3da7a5ed129e26dec3d33f19c65d76cdfa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509432"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560525"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Azure Cosmos DB Core (SQL) API 'SI için Azure CLı örnekleri
 
 Aşağıdaki tabloda Azure Cosmos DB Core (SQL) API 'sine yönelik örnek Azure CLı betikleri bağlantıları yer almaktadır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](/cli/azure/cosmosdb)bulunabilir. Diğer Azure Cosmos DB API 'Lerine yönelik Azure CLı örnekleri için bkz., [Cassandra API](cli-samples-cassandra.md), [MongoDB API](cli-samples-mongodb.md), [gremlin API](cli-samples-gremlin.md)ve [tablo API'si](cli-samples-table.md). Tüm Azure Cosmos DB CLı betiği örnekleri [Azure Cosmos DB CLI GitHub deposunda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.
 
-| |  |
+|Görev | Description |
 |---|---|
 | [Azure Cosmos hesabı, veritabanı ve kapsayıcısı oluşturma](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| SQL (Core) API 'SI için bir Azure Cosmos DB hesabı, veritabanı ve kapsayıcı oluşturur. |
 | [Aktarım hızını değiştirme](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve kapsayıcıda RU/s 'yi güncelleştirin.|

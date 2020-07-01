@@ -3,12 +3,12 @@ title: Gelişmiş sorgu örnekleri
 description: Sütunlarla çalışma, kullanılan etiketleri listeleme ve normal ifadelerle eşleşen kaynakları de içeren bazı gelişmiş sorguları çalıştırmak için Azure Kaynak grafiğini kullanın.
 ms.date: 06/18/2020
 ms.topic: sample
-ms.openlocfilehash: 454692ab650752738700e5303e9092b23489514b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ce949eb9f718f8526ef189993d7004db152d5e22
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323046"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565626"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Gelişmiş kaynak grafiği sorgu örnekleri
 
@@ -375,7 +375,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 ## <a name="list-all-extensions-installed-on-a-virtual-machine"></a><a name="join-vmextension"></a>Bir sanal makinede yüklü olan tüm uzantıları listeleme
 
 İlk olarak, bu sorgu `extend` kimliği büyük harfle () almak için sanal makineler kaynak türünde kullanır `toupper()` , işletim sistemi adını ve türünü alır ve sanal makine boyutunu alır.
-Kaynak KIMLIĞININ büyük harfle alınması, başka bir özelliğe katılmayı hazırlamak için iyi bir yoldur. Daha sonra sorgu, `join` UZANTı kimliğini bir üst sınır ile eşleştirerek sanal makine uzantılarını almak için **tür** ile _soltouter_ olarak kullanılır `substring` . KIMLIğIN "/Extensions/" öğesinden önceki bölümü, \<ExtensionName\> sanal MAKINELER kimliğiyle aynı biçimde değil, için bu özelliği kullanırız `join` . `summarize`, `make_list` _kimliği_, _osname_, _OSType_ve _VMSize_ 'in tek bir dizi özelliğinde aynı olduğu her bir uzantının adını birleştirmek için sanal makine uzantısının adında ile birlikte kullanılır. Son olarak, `order by` daha düşük olan _Osed osname_ , **ASC**ile yapılır. , Defualt tarafından `order by` azalan şekilde belirlenir.
+Kaynak KIMLIĞININ büyük harfle alınması, başka bir özelliğe katılmayı hazırlamak için iyi bir yoldur. Daha sonra sorgu, `join` UZANTı kimliğini bir üst sınır ile eşleştirerek sanal makine uzantılarını almak için **tür** ile _soltouter_ olarak kullanılır `substring` . KIMLIğIN "/Extensions/" öğesinden önceki bölümü, \<ExtensionName\> sanal MAKINELER kimliğiyle aynı biçimde değil, için bu özelliği kullanırız `join` . `summarize`, `make_list` _kimliği_, _osname_, _OSType_ve _VMSize_ 'in tek bir dizi özelliğinde aynı olduğu her bir uzantının adını birleştirmek için sanal makine uzantısının adında ile birlikte kullanılır. Son olarak, `order by` daha düşük olan _Osed osname_ , **ASC**ile yapılır. Varsayılan olarak, `order by` azalan şekilde belirlenir.
 
 ```kusto
 Resources

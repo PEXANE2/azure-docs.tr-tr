@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 75b6629ea924ec17888ec2f981ff85ed917434c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679740"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557041"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Hızlı başlangıç: Unity örneğini HoloLens 'e dağıtma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
 >* Örneği cihaza dağıtın
 >* Örneği cihazda çalıştırın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta örnek projeyi hızlı başlangıç konumundan dağıtacağız [: Unity ile model işleme](render-model.md).
 
@@ -36,12 +36,14 @@ Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Uni
 1. *Platformu* **Evrensel Windows platformu** olarak değiştir
 1. *Hedef cihazı* **HoloLens** olarak ayarla
 1. *Mimariyi* **ARM64** olarak ayarla
-1. *Yapı türünü* **D3D proje** ![derleme ayarları olarak ayarla](./media/unity-build-settings.png)
+1. *Yapı türünü* **D3D projesi** olarak ayarla\
+    ![Derleme ayarları](./media/unity-build-settings.png)
 1. **Platforma geç** ' i seçin
 1. **Derleme** (veya ' derleme ve çalıştırma ') tuşlarına basıldığında çözümün depolanacağı bir klasör seçmeniz istenir
 1. Visual Studio ile oluşturulan **hızlı başlangıç. sln** 'yi açın
 1. Yapılandırmayı **Release** ve **ARM64** olarak değiştirme
-1. Hata ayıklayıcı modunu **uzak makine** ![çözümü yapılandırmasına geçir](media/unity-deploy-config.png)
+1. Hata ayıklayıcı modunu **uzak makineye** değiştirme\
+    ![Çözüm yapılandırması](media/unity-deploy-config.png)
 1. Çözümü oluşturma (F7)
 1. ' Hızlı başlangıç ' projesi için *özellikler > hata ayıklama* sayfasına gidin
     1. Yapılandırma *sürümünün* etkin olduğundan emin olun

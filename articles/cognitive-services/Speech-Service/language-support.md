@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 23ecfc96c8f75dbae4cfb02cc16f5e5de359c4f6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 88c116121452fb00397b8d99c21e9f02b1796f00
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362185"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85559820"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -101,27 +101,27 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 
 |Yerel Ayar  | Dil            | Cinsiyet | Ses adı | Stil desteği |
 |--|--|--|--|--|
-| `de-DE` | Almanca (Almanya)                | Kadın | "de-KatjaNeural"      | Genel |
-| `en-AU` | İngilizce (Avustralya)             | Kadın | "en-AU-NatashaNeural"    | Genel |
-| `en-CA` | İngilizce (Kanada)                | Kadın | "en-CA-ClaraNeural"      | Genel |
-| `en-GB` | İngilizce (UK)                    | Kadın | "en-GB-LibbyNeural"      | Genel |
-|         |                                 | Kadın | "en-GB-MiaNeural"        | Genel |
-| `en-US` | İngilizce (ABD)                    | Kadın | "en-US-AriaNeural"       | Genel, birden çok ses stili mevcuttur |
-|         |                                 | Erkek   | "en-US-GuyNeural"        | Genel |
-| `es-ES` | İspanyolca (İspanya)                 | Kadın | "ES-ES-ElviraNeural"     | Genel |
-| `es-MX` | İspanyolca (Meksika)                | Kadın | "es-MX-DaliaNeural"      | Genel |
-| `fr-CA` | Fransızca (Kanada)                 | Kadın | "fr-CA-SylvieNeural"     | Genel |
-| `fr-FR` | Fransızca (Fransa)                 | Kadın | "fr-FR-DeniseNeural"     | Genel |
-| `it-IT` | İtalyanca (İtalya)                 | Kadın | "It-IT-ElsaNeural"       | Genel |
-| `ja-JP` | Japonca                        | Kadın | "ja-JP-NanamiNeural"     | Genel |
-| `ko-KR` | Korece                          | Kadın | "ko-KR-SunHiNeural"      | Genel |
-| `nb-NO` | Norveççe                       | Kadın | "NB-NO-IselinNeural"     | Genel |
-| `pt-BR` | Portekizce (Brezilya)             | Kadın | "PT-BR-FranciscaNeural"  | Genel |
-| `tr-TR` | Türkçe                         | Kadın | "tr-TR-EmelNeural"       | Genel |
-| `zh-CN` | Çince (Mandarin, Basitleştirilmiş)  | Kadın | "zh-CN-XiaoxiaoNeural"   | Genel, birden çok ses stili mevcuttur |
-|         |                                 | Kadın | "zh-CN-XiaoyouNeural"    | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
-|         |                                 | Erkek   | "zh-CN-YunyangNeural"    | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
-|         |                                 | Erkek   | "zh-CN-YunyeNeural"      | Öykü anlatımı için iyileştirildi |
+| `de-DE` | Almanca (Almanya)                | Kadın | `de-DE-KatjaNeural`      | Genel |
+| `en-AU` | İngilizce (Avustralya)             | Kadın | `en-AU-NatashaNeural`    | Genel |
+| `en-CA` | İngilizce (Kanada)                | Kadın | `en-CA-ClaraNeural`      | Genel |
+| `en-GB` | İngilizce (UK)                    | Kadın | `en-GB-LibbyNeural`      | Genel |
+|         |                                 | Kadın | `en-GB-MiaNeural`        | Genel |
+| `en-US` | İngilizce (ABD)                    | Kadın | `en-US-AriaNeural`       | Genel, birden çok ses stili mevcuttur |
+|         |                                 | Erkek   | `en-US-GuyNeural`        | Genel |
+| `es-ES` | İspanyolca (İspanya)                 | Kadın | `es-ES-ElviraNeural`     | Genel |
+| `es-MX` | İspanyolca (Meksika)                | Kadın | `es-MX-DaliaNeural`      | Genel |
+| `fr-CA` | Fransızca (Kanada)                 | Kadın | `fr-CA-SylvieNeural`     | Genel |
+| `fr-FR` | Fransızca (Fransa)                 | Kadın | `fr-FR-DeniseNeural`     | Genel |
+| `it-IT` | İtalyanca (İtalya)                 | Kadın | `it-IT-ElsaNeural`       | Genel |
+| `ja-JP` | Japonca                        | Kadın | `ja-JP-NanamiNeural`     | Genel |
+| `ko-KR` | Korece                          | Kadın | `ko-KR-SunHiNeural`      | Genel |
+| `nb-NO` | Norveççe                       | Kadın | `nb-NO-IselinNeural`     | Genel |
+| `pt-BR` | Portekizce (Brezilya)             | Kadın | `pt-BR-FranciscaNeural`  | Genel |
+| `tr-TR` | Türkçe                         | Kadın | `tr-TR-EmelNeural`       | Genel |
+| `zh-CN` | Çince (Mandarin, Basitleştirilmiş)  | Kadın | `zh-CN-XiaoxiaoNeural`   | Genel, birden çok ses stili mevcuttur |
+|         |                                 | Kadın | `zh-CN-XiaoyouNeural`    | Çocuk sesi, öykü anlatımı için iyileştirilmiş |
+|         |                                 | Erkek   | `zh-CN-YunyangNeural`    | Haber okuma için iyileştirilmiş, birden fazla ses stili var |
+|         |                                 | Erkek   | `zh-CN-YunyeNeural`      | Öykü anlatımı için iyileştirildi |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`Ses olarak değiştirildi `en-US-AriaNeural` . Daha önce "Jessa" kullandıysanız, "Aria" öğesine dönüştürün.

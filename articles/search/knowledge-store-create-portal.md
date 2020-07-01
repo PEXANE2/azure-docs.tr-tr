@@ -1,24 +1,21 @@
 ---
-title: Azure portal bilgi deposu (Önizleme) oluşturma
+title: Azure portal bilgi deposu oluşturma
 titleSuffix: Azure Cognitive Search
-description: Kalıcı içerik için kullanılan bir bilgi deposu oluşturmak için veri Içeri aktarma Sihirbazı 'nı kullanın. Diğer uygulamalardan analizler için bir bilgi deposuna bağlanın veya yukarı akış işlemlerine zenginleştirilmiş içerik gönderin. Bu özellik şu anda genel önizleme aşamasındadır.
+description: Kalıcı içerik için kullanılan bir bilgi deposu oluşturmak için veri Içeri aktarma Sihirbazı 'nı kullanın. Diğer uygulamalardan analizler için bir bilgi deposuna bağlanın veya yukarı akış işlemlerine zenginleştirilmiş içerik gönderin.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 06ddb50173299bbb99518921d1589d2f15b0aa88
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/30/2020
+ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488690"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565315"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilgi deposu oluşturma
-
-> [!IMPORTANT] 
-> Bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Bilgi deposu, sonraki analizler veya aşağı akış işleme için bir içerik işleme ardışık düzeninde çıkışı devam eden bir Azure Bilişsel Arama özelliğidir. 
 
@@ -26,7 +23,7 @@ Bilgi deposu, sonraki analizler veya aşağı akış işleme için bir içerik i
 
 Bu hızlı başlangıçta, bir bilgi deposu oluşturmak için Azure bulutundaki Hizmetleri ve verileri birleştirebilirsiniz. Her şey oluşturulduktan sonra, portalda **verileri Içeri aktarma** Sihirbazı 'nı çalıştırarak tümünü bir araya getirin. Nihai sonuç orijinal metin içeridir ve portalda görüntüleyebileceğiniz AI tarafından oluşturulan içeriktir ([Depolama Gezgini](knowledge-store-view-storage-explorer.md)).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -43,7 +40,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure depolama 'da bir blob kapsayıcısı ayarlayın.
 
-1. [HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)' ye indirin. Bu veriler, bir CSV dosyasına kaydedilmiş (Kaggle.com kaynaklı) Otel gözden geçirme verileri ve tek bir otel hakkında yaklaşık 19 müşteri geri bildirimi içerir. 
+1. [HotelReviews_Free.csvindirin ](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Bu veriler, bir CSV dosyasına kaydedilmiş (Kaggle.com kaynaklı) Otel gözden geçirme verileri ve tek bir otel hakkında yaklaşık 19 müşteri geri bildirimi içerir. 
 
 1. Geçerli aboneliğinizde [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) veya [mevcut bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Azure Storage 'ı içeri aktarılacak ham içerik ve son sonuç olan bilgi deposu için kullanacaksınız.
 
@@ -55,7 +52,7 @@ Aşağıdaki adımlarda, heterojen içerik dosyalarını depolamak için Azure d
 
     ![Verileri karşıya yükleme](media/knowledge-store-create-portal/upload-command-bar.png "Otel incelemelerini karşıya yükleyin")
 
-1. İlk adımda indirdiğiniz **HotelReviews-Free. csv** dosyasını seçin.
+1. İlk adımda indirdiğiniz **HotelReviews-Free.csv** dosyasını seçin.
 
     ![Azure Blob kapsayıcısını oluşturma](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob kapsayıcısını oluşturma")
 
@@ -93,7 +90,7 @@ Artık **veri alma** Sihirbazı 'na taşımaya hazırsınız.
 
 Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri oluşturacaksınız. Kaynak veriler, çeşitli dillerdeki müşteri incelemelerinden oluşur. Bu veri kümesiyle ilgili yetenekler, anahtar tümceciği ayıklama, yaklaşım algılaması ve metin çevirisi içerir. Sonraki bir adımda bu zenginler, Azure tabloları olarak bir bilgi deposunda "yansıtılmaktadır" olacaktır.
 
-1. Bilişsel **Hizmetler Ekle**' yi genişletin. **Ücretsiz (sınırlı enzenginler)** varsayılan olarak seçilidir. Bu kaynağı, HotelReviews-Free. csv içindeki kayıt sayısı 19 ve bu ücretsiz kaynak günde en fazla 20 işlem sağladığından kullanabilirsiniz.
+1. Bilişsel **Hizmetler Ekle**' yi genişletin. **Ücretsiz (sınırlı enzenginler)** varsayılan olarak seçilidir. Bu kaynağı, HotelReviews-Free.csv içindeki kayıt sayısı 19 ve bu ücretsiz kaynak günde 20 işlem kadar izin verdiğinden kullanabilirsiniz.
 
 1. **Zenginleştirme Ekle**' yi genişletin.
 

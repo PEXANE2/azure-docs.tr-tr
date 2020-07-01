@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5d947c9f3f5aedd419662936c7007fc45a57b087
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 751fa9daabaaef05abb5df8229e84975b87cffc1
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262999"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563827"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB için Azure PowerShell örnekleri Tablo API'si
 
@@ -20,7 +20,7 @@ Aşağıdaki tabloda Tablo API'si için Azure Cosmos DB örnek Azure PowerShell 
 > [!NOTE]
 > Örnekler [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management cmdlet 'lerini kullanır. Lütfen düzenli olarak güncelleştirmeleri denetleyin `Az.CosmosDB` .
 
-| | |
+|Görev | Description |
 |---|---|
 |[Hesap ve tablo oluşturma](scripts/powershell/table/ps-table-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir Azure Cosmos hesabı ve tablosu oluşturur. |
 |[Tabloları listeleme veya al](scripts/powershell/table/ps-table-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tabloları listeleyin veya alın. |

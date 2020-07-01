@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 65e1613eb8fda934899afe692f45a38fca04bff2
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414049"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560804"
 ---
 # <a name="read-text-from-images-and-documents"></a>Görüntülerden ve belgelerden metin okuma
 
@@ -24,12 +24,11 @@ Görüntü İşleme, görüntülerden ve PDF belgelerinden yazdırılmış veya 
 
 ## <a name="read-api"></a>API 'YI oku 
 
-Görüntü İşleme [okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) , Microsoft 'un yazdırılan metni, el yazısı metin (yalnızca İngilizce), rakamları ve görüntü ve PDF belgelerinden gelen para birimi sembollerini ayıklayan en son OCR teknolojisidir. Joker karakter, görsel gürültü içeren görüntülerde metin, dijital veya taranan, dijital veya taranmış ve metin kalın görüntüleri çıkarmak için en iyi duruma getirilmiştir. Aynı görüntüde veya belgede yazdırılmış ve el yazısı metinleri (Ingilizce) ve karışık dilleri destekler. Desteklenen dillerin tam listesi [görüntü işleme Için dil desteği](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) sayfasında bulunabilir.
-
+Görüntü İşleme [okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) , Microsoft 'un yazdırılan metni (yedi dil), el yazısı metin (yalnızca İngilizce), rakamları ve görüntü ve çok sayfalı PDF belgelerinden oluşan para birimi sembollerini ayıklayan en son OCR teknolojisidir. Büyük-büyük ve çok sayfalı PDF belgelerinin karışık dillerde metin ayıklamak için en iyi duruma getirilmiştir. Aynı görüntüde veya belgede yazdırılmış ve el yazısı metinleri (Yalnızca Ingilizce) algılamanızı destekler. Desteklenen dillerin tam listesi [görüntü işleme Için dil desteği](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) sayfasında bulunabilir.
 
 ### <a name="how-it-works"></a>Nasıl çalışır?
 
-[Okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) zaman uyumsuzdur. İlk adım okuma işlemini çağırmalıdır. Okuma işlemi, girdi olarak bir görüntü veya PDF belgesi alır ve bir işlem KIMLIĞI döndürür. 
+[Okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) , 2000 sayfaya kadar olan metin ağır belgeleri destekler ve bu nedenle zaman uyumsuz olarak yürütülür. İlk adım okuma işlemini çağırmalıdır. Okuma işlemi, girdi olarak bir görüntü veya PDF belgesi alır ve bir işlem KIMLIĞI döndürür. 
 
 İkinci adım [sonuçları al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) işlemini çağırmalıdır. Bu işlem, okuma işlemi tarafından oluşturulan işlem KIMLIĞINI alır. Daha sonra, resim veya belge içinden JSON biçiminde ayıklanan metin içeriğini döndürür. JSON yanıtı, tanınan sözcüklerin orijinal satır gruplandırmaları saklar. Ayıklanan metin çizgilerini ve bunların sınırlayıcı kutu koordinatlarını içerir. Her metin satırı, tüm ayıklanan kelimeleri ve bunların koordinatlarını ve güven puanlarını içerir.
 
@@ -90,7 +89,7 @@ Ayrıca, yeni OCR özelliklerini kendi ortamınızda dağıtmanıza olanak tanı
 
 ## <a name="ocr-api"></a>OCR APı 'SI
 
-[OCR API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) eski bir tanıma modeli kullanır. Yalnızca tek görüntüleri destekler, PDF 'Ler değil ve anında yanıt döndürür. Okuma API 'sinden [daha fazla dili](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) destekler.
+[OCR API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) , daha eski bir tanıma modeli kullanır, yalnızca görüntüleri destekler ve algılanan metinle anında dönerek zaman uyumlu olarak yürütülür. Okuma API 'sinden [daha fazla dili](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

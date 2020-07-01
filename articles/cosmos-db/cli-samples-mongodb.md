@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 88b795b52955a6bd323e7a900c0cd62dab1dd2d4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 7536a2e3fc32aeb330aad52625a5946e856d6646
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262948"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556037"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API 'SI için Azure CLı örnekleri
 
@@ -21,7 +21,7 @@ Aşağıdaki tabloda Azure Cosmos DB MongoDB API 'SI için örnek Azure CLı bet
 > [!NOTE]
 > Şu anda, `*.documents.azure.com` PowerShell, CLI ve Kaynak Yöneticisi şablonlarını kullanarak, MongoDB hesapları için Azure Cosmos DB API 'sinin yalnızca 3,2 sürümünü (yani, bir uç noktasını kullanan hesaplar) oluşturabilirsiniz. Hesapların 3,6 sürümünü oluşturmak için bunun yerine Azure portal kullanın.
 
-| |  |
+|Görev | Description |
 |---|---|
 | [Azure Cosmos hesabı, veritabanı ve koleksiyonu oluşturma](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| MongoDB API 'SI için bir Azure Cosmos DB hesabı, veritabanı ve koleksiyonu oluşturur. |
 | [Aktarım hızını değiştirme](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve koleksiyonda RU/s 'yi güncelleştirin.|

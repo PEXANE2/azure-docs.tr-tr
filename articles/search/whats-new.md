@@ -1,19 +1,18 @@
 ---
-title: Yeni Özellik Duyuruları
-titleSuffix: Azure Cognitive Search
+title: Azure Bilişsel Arama yenilikleri
 description: Azure Bilişsel Arama Azure Search hizmet yeniden adlandırma özelliği de dahil olmak üzere yeni ve geliştirilmiş özelliklerin duyuruları.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 086e3cf71012f168851df1c85b19689294fe6302
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/30/2020
+ms.openlocfilehash: bca6cbe2a605131083536b3e709943fe2353f38f
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515731"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565070"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
@@ -23,23 +22,33 @@ Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlama
 
 ### <a name="june-2020"></a>Haziran 2020
 
-Azure Machine Learning Beceri, bir ının bir uç noktasını Azure Machine Learning tümleştirmede yeni yetenek türüdür Portal deneyimi, Azure Machine Learning uç noktasının Bilişsel Arama bir beceri içinde bulunmasını ve tümleştirilmesini destekler. Bulma Bilişsel Arama ve Azure ML hizmetlerinin aynı abonelikte dağıtılması gerekir. [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın.
++ [Bilgi deposu](knowledge-store-concept-intro.md) artık genel kullanıma sunulmuştur.
+
++ [Arama Hizmeti REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) , REST API 'lerinin yeni kararlı sürümüdür. Bilgi deposuna ek olarak, bu genel kullanıma sunulan sürüm, arama ilgisi ve Puanlama geliştirmeleri içerir.
+
++ Yeni ilgi derecelendirmesi algoritması artık oluşturduğunuz tüm yeni hizmetler için [BM25](https://en.wikipedia.org/wiki/Okapi_BM25) . Mevcut hizmetler için `similarity` Dizin alanları üzerinde özelliğini ayarlayarak kabul edebilirsiniz. Bu özellik genel kullanıma sunulmuştur.
+
++ Yeni Dizin Oluşturucu `executionEnvironment` , açıkça olarak ayarlanabilir `private` . Bu özellik, Özel uç noktalar üzerinden dış verilere yönelik Dizin Oluşturucu erişimini destekler ve genel kullanıma sunulmuştur.
+
++ [Azure Machine Learning (AML)](cognitive-search-aml-skill.md) , bir ıncosyonun bir uç noktasını Azure Machine Learning bütünleştirmek için yeni bir yetenek türüdür. Portal deneyimi, Azure Machine Learning uç noktasının Bilişsel Arama bir beceri içinde bulunmasını ve tümleştirilmesini destekler. Bulma Bilişsel Arama ve Azure ML hizmetlerinin aynı abonelikte dağıtılması gerekir. Bu yetenek genel kullanıma sunulmuştur. [Bu öğreticiyi](cognitive-search-tutorial-aml-custom-skill.md)kullanmaya başlayın.
 
 ### <a name="may-2020-microsoft-build"></a>Mayıs 2020 (Microsoft derleme)
 
 + [Hata ayıklama oturumları](cognitive-search-debug-session.md) özelliği şu anda önizlemededir. Hata ayıklama oturumları, beceri ile ilgili sorunları araştırmak ve çözmek için portal tabanlı bir arabirim sağlar. Hata ayıklama oturumunda oluşturulan düzeltmeler üretim becerileri kaydedilebilir. [Bu öğreticiyi](cognitive-search-tutorial-debug-sessions.md)kullanmaya başlayın.
 
-+ Güvenlik geliştirmeleri, genel İnternet üzerinden erişilemeyen [bir özel arama uç noktası (Önizleme) ayarlama](service-create-private-endpoint.md) olanağını içerir. Ayrıca, [bağlantılı güvenlik duvarı desteği (Önizleme) IÇIN IP kurallarını da yapılandırabilirsiniz](service-configure-firewall.md).
++ [, Bağlantılı güvenlik duvarı desteği IÇIN IP kuralları yapılandırarak](service-configure-firewall.md) veya [özel bir arama uç noktası Için Azure özel bağlantısı](service-create-private-endpoint.md)aracılığıyla genel İnternet 'ten bir arama hizmeti uç noktasını koruyun. Her iki özellik de genel kullanıma sunulmuştur.
 
 + Dizin oluşturmak üzere bir Azure veri kaynağıyla bağlantı kurmak için [sistem tarafından yönetilen bir kimlik (Önizleme)](search-howto-managed-identities-data-sources.md) kullanın. Azure SQL veritabanı, Azure Cosmos DB ve Azure depolama gibi Azure veri kaynaklarından içerik alan [Dizin oluşturucular](search-indexer-overview.md) için geçerlidir.
 
-+ [ScoringStatistics = Global](index-similarity-and-scoring.md#scoring-statistics) ve SessionID sorgu parametrelerini kullanarak, arama puanlarının her parça başına ve tüm parçalara göre nasıl hesaplandığından bağımsız olarak değişiklik yapın.
++ [SessionID](index-similarity-and-scoring.md) ve [scoringStatistics = Global](index-similarity-and-scoring.md#scoring-statistics)sorgu parametrelerini kullanarak, her parça için bir parça başına kadar, arama puanlarının nasıl hesaplandığından bağımsız olarak, tüm parçalar arası, Bu parametreler genel kullanıma sunulmuştur.
+
++ Daha fazla ayrıntı göstermek için bir ilgi puanı genişletmek üzere bir [Korturesmode (Önizleme)](index-similarity-and-scoring.md#featuresMode-param) sorgu parametresi ekleyin: alan başına benzerlik puanı, alan dönemi sıklığı başına ve eşleşen benzersiz belirteçlerin başına alan sayısı. Bu veri noktalarını özel Puanlama algoritmalarında kullanabilirsiniz. Bu özelliği gösteren bir örnek için bkz. [ilgiyi aramak için makine öğrenimi ekleme (LearnToRank)](https://github.com/Azure-Samples/search-ranking-tutorial).
 
 ### <a name="march-2020"></a>Mart 2020
 
 + [Yerel blob geçici silme (Önizleme)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) , Azure bilişsel arama Azure Blob depolama Dizin Oluşturucu, geçici olarak silinen bir durumda olan Blobları tanıyacak ve dizin oluşturma sırasında ilgili arama belgesini kaldıracağı anlamına gelir.
 
-+ Yeni kararlı [yönetim REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) artık kullanıma sunuldu. 
++ Yeni kararlı [yönetim REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) genel kullanıma sunulmuştur. 
 
 ### <a name="february-2020"></a>Şubat 2020
 
@@ -49,13 +58,11 @@ Azure Machine Learning Beceri, bir ının bir uç noktasını Azure Machine Lear
 
 ### <a name="january-2020"></a>Ocak 2020
 
-+ [Müşterinin yönettiği şifreleme anahtarları](search-security-manage-encryption-keys.md) artık genel kullanıma sunulmuştur. REST kullanıyorsanız, özelliğini kullanarak erişebilirsiniz `api-version=2019-05-06` . Yönetilen kod için, özellik Önizleme dışında olsa bile, doğru paket yine de [.NET SDK sürüm 8,0-Önizleme](search-dotnet-sdk-migration-version-9.md) ' dir. 
++ [Müşterinin yönettiği şifreleme anahtarları](search-security-manage-encryption-keys.md) artık genel kullanıma sunulmuştur. REST kullanıyorsanız, `api-version=2019-05-06` veya sonraki sürümünü kullanarak özelliğe erişebilirsiniz. Yönetilen kod için, özellik Önizleme dışında olsa bile, doğru paket yine de [.NET SDK sürüm 8,0-Önizleme](search-dotnet-sdk-migration-version-9.md) ' dir. 
 
 + Bir arama hizmetine özel erişim, şu anda önizleme aşamasında olan iki mekanizma aracılığıyla sunulmaktadır:
 
   + Hizmeti oluşturmak için yönetim REST API kullanarak belirli IP adreslerine erişimi kısıtlayabilirsiniz `api-version=2019-10-01-Preview` . Preview API 'sinin [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)'de yeni **ıprule** ve **networkruleset** özellikleri vardır. Bu önizleme özelliği seçili bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [yönetim REST API nasıl kullanılır](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
-
-  + Şu anda sınırlı erişimli bir önizleme aracılığıyla kullanılabilir, aynı sanal ağdaki istemcilerden gelen bağlantılar için Azure özel uç noktasını destekleyen bir Azure Search hizmeti sağlayabilirsiniz. Daha fazla bilgi için bkz. [güvenli bağlantı Için özel uç nokta oluşturma](service-create-private-endpoint.md).
 
 ### <a name="december-2019"></a>Aralık 2019
 

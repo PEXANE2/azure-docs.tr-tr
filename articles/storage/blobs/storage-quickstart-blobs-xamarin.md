@@ -7,12 +7,12 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e0845e7cdc2ce6dc57ed5a18d263f117f0c2005c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006247"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563497"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Hızlı başlangıç: Xamarin ile Azure Blob depolama istemci kitaplığı V12
 
@@ -26,11 +26,11 @@ Xamarin ile Azure Blob depolama istemci kitaplığı V12 kullanın:
 * Blob 'u cihazınıza indirin
 * Kapsayıcı silme
 
-[API başvurusu belge](/dotnet/api/azure.storage.blobs) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [paketi (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [örneği](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+[API başvuru belgeleri](/dotnet/api/azure.storage.blobs)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Örnek](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -55,7 +55,7 @@ Bu bölümde, bir projeyi Xamarin ile Azure Blob depolama istemci kitaplığı V
 **BlobQuickstartV12** dizininden:
 
 1. Düzenleyicinizde *MainPage. xaml* dosyasını açın
-1. `<ContentPage></ContentPage>` Öğeler arasındaki her şeyi kaldırın ve aşağıdaki kodla değiştirin:
+1. Öğeler arasındaki her şeyi kaldırın `<ContentPage></ContentPage>` ve aşağıdaki kodla değiştirin:
 
 ```xaml
 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
@@ -86,9 +86,9 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Şu kaynaklarla etkileşim kurmak için aşağıdaki .NET sınıflarını kullanın:
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): sınıfı `BlobServiceClient` , Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
-* [Blobcontainerclient](/dotnet/api/azure.storage.blobs.blobcontainerclient): sınıfı `BlobContainerClient` , Azure depolama kapsayıcılarını ve bloblarını değiştirmenize olanak sağlar.
-* [Blobclient](/dotnet/api/azure.storage.blobs.blobclient): sınıfı `BlobClient` , Azure Storage bloblarını değiştirmenize izin verir.
+* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): `BlobServiceClient` sınıfı, Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar.
+* [Blobcontainerclient](/dotnet/api/azure.storage.blobs.blobcontainerclient): `BlobContainerClient` sınıfı, Azure depolama kapsayıcılarını ve bloblarını değiştirmenize olanak sağlar.
+* [Blobclient](/dotnet/api/azure.storage.blobs.blobclient): `BlobClient` sınıfı, Azure Storage bloblarını değiştirmenize izin verir.
 * [Blobdownloadınfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): `BlobDownloadInfo` sınıfı, blob indirilmeden döndürülen özellikleri ve içeriği temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
@@ -151,7 +151,7 @@ protected async override void OnAppearing()
 Aşağıdaki kod parçacığı:
 
 1. Bir `MemoryStream` metin oluşturur.
-1. [Blobcontainerclient](/dotnet/api/azure.storage.blobs.blobcontainerclient) sınıfının `MemoryStream` [Uploadasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) işlevini çağırarak metni bir bloba yükler, bu da hem sınıf düzeyi değişkenini, hem de metin olarak tanımlanan dosya adını geçirerek. Bu yöntem, daha önce oluşturulmadıysa bir blob oluşturur, aksi takdirde üzerine yazar.
+1. [Blobcontainerclient](/dotnet/api/azure.storage.blobs.blobcontainerclient) sınıfının [uploadasync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) işlevini çağırarak metin dosyası adına ve metin Içine geçirerek metni bir bloba yükler `MemoryStream` . Bu yöntem, daha önce oluşturulmadıysa bir blob oluşturur, aksi takdirde üzerine yazar.
 
 Bu kodu *MainPage.xaml.cs* dosyasına ekleyin:
 
@@ -190,7 +190,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 ### <a name="download-blobs"></a>Blob’ları indirme
 
-[Downloadasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, bir Blobun ilk önce bir `Stream` `MemoryStream` ' a, sonra da metnin görüntülenebilmesi `StreamReader` için bir öğesine kopyalar.
+[Downloadasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, bir `Stream` Blobun ilk önce bir ' a, `MemoryStream` sonra da metnin görüntülenebilmesi için bir öğesine kopyalar `StreamReader` .
 
 Bu kodu *MainPage.xaml.cs* dosyasına ekleyin:
 

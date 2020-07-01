@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659930"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557065"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Hızlı başlangıç: Unity örneğini masaüstüne dağıtma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
 >* Örneği bir BILGISAYARA dağıtma
 >* Örneği bir bılgısayarda çalıştırın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta örnek projeyi hızlı başlangıç konumundan dağıtacağız [: Unity ile model işleme](render-model.md).
 
@@ -38,7 +38,7 @@ Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Uni
 1. Sol taraftaki **oynatıcı** ' yı seçin.
 1. **Evrensel Windows platformu ayarları** sekmesini seçin.
 1. **XR ayarlarını**genişletin.
-1. **Sanal Reality**'yi devre dışı bırakma destekleniyor.
+1. **Desteklenen sanal gerçeklik**devre dışı. \
     ![Oynatıcı ayarları](./media/unity-disable-xr.png)
 1. *XR ayarları*' nın üzerinde **Yayımlama ayarları**' nı genişletin.
 1. **Desteklenen cihaz ailelerinde** **Masaüstü 'nün** işaretli olduğundan emin olun.
@@ -49,13 +49,13 @@ Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Uni
 1. *Platformu* **Evrensel Windows platformu** olarak değiştirin (**PC standalone** de desteklenir ancak burada kullanılmaz, bkz. [Platform sınırlamaları](../reference/limits.md#platform-limitations)).
 1. *Hedef cihazı* **bilgisayar**olarak ayarlayın.
 1. *Mimariyi* **x86**olarak ayarlayın.
-1. *Yapı türünü* **D3D projesi**olarak ayarlayın.
+1. *Yapı türünü* **D3D projesi**olarak ayarla. \
   ![Derleme ayarları](./media/unity-build-settings-pc.png)
 1. **Platforma geç**' i seçin.
 1. **Derleme** (veya ' derleme ve çalıştırma ') tuşlarına basıldığında çözümün depolanması gereken bir klasör seçmeniz istenir.
 1. Visual Studio ile oluşturulan **hızlı başlangıç. sln** 'yi açın.
 1. Yapılandırmayı **Release** ve **x86**olarak değiştirin.
-1. Hata ayıklayıcı modunu **yerel makineye**değiştirin.
+1. Hata ayıklayıcı modunu **yerel makineye**değiştirin. \
   ![Çözüm yapılandırması](./media/unity-deploy-config-pc.png)
 1. Çözümü oluşturun (F7).
 

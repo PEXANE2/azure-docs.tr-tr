@@ -161,6 +161,10 @@
               href: concepts-read-replicas.md
             - name: Mantıksal kod çözme
               href: concepts-logical.md
+        - name: Bölgeler arasında taşıma
+          items:
+            - name: Azure portal
+              href: howto-move-regions-portal.md
     - name: Hiper Ölçek (Citus)
       items:
         - name: Düğümler

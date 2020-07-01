@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687931"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563032"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Öğretici: Azure Sanal WAN kullanarak siteden siteye bağlantı oluşturma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * VPN sitesini bir hub 'a bağlama
 > * Bir sanal ağı bir hub'a bağlama
 > * Yapılandırma dosyasını indir
-> * Sanal WAN'ınızı görüntüleme
+> * VPN ağ geçidinizi yapılandırma
 
 > [!NOTE]
 > Birden fazla siteniz varsa bu yapılandırmayı oluşturmak için [Sanal WAN iş ortağı](https://aka.ms/virtualwan) kullanmanız gerekir. Ancak ağ bağlantıları ve kendi VPN cihazınızı yapılandırma konularında deneyimliyseniz bu yapılandırmayı kendiniz oluşturabilirsiniz.
@@ -251,11 +251,20 @@ Cihazınızı yapılandırma yönergelerine ihtiyaç duyarsanız [VPN cihazı ya
 * Yeni bir sanal WAN, hem IKEv1 hem de IKEv2 destekleyebilir.
 * Sanal WAN, ilke tabanlı ve rota tabanlı VPN cihazlarını ve cihaz talimatlarını kullanabilir.
 
-## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>Sanal WAN'ınızı görüntüleme
+## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>VPN ağ geçidinizi yapılandırma
 
-1. Sanal WAN'a gidin.
-2. **Genel bakış** sayfasında, haritadaki her bir nokta bir hub 'ı temsil eder. Hub sistem durumu özetini, bağlantı durumunu ve gelen ve giden baytları görüntülemek için herhangi bir noktanın üzerine gelin.
-3. Hub 'Lar ve bağlantılar bölümünde hub durumu, VPN siteleri vb. görüntüleyebilirsiniz. Daha fazla ayrıntı için belirli bir hub adına tıklayıp VPN sitesine gidebilirsiniz.
+VPN Gateway ayarlarınızı **görüntüleme/yapılandırma**' yı seçerek istediğiniz zaman görüntüleyebilir ve yapılandırabilirsiniz.
+
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Yapılandırmayı görüntüle" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+
+**VPN Gateway Düzenle** sayfasında, aşağıdaki ayarları görebilirsiniz:
+
+* VPN Gateway genel IP adresi (Azure tarafından atanan)
+* VPN Gateway özel IP adresi (Azure tarafından atanan)
+* VPN Gateway varsayılan BGP IP adresi (Azure tarafından atanan)
+* Özel BGP IP adresi için yapılandırma seçeneği: Bu alan, APIPA (otomatik özel IP adresleme) için ayrılmıştır. Azure, 169.254.21. * ve 169.254.22. * aralıklarında BGP IP 'sini destekler.
+
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Yapılandırmayı görüntüle" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

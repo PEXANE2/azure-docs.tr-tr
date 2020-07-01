@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300581"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565509"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Hızlı başlangıç: Unity ile model Işleme
 
 Bu hızlı başlangıçta, yerleşik bir modeli Azure uzaktan Işleme (ARR) hizmetini kullanarak uzaktan işleyen bir Unity örneğinin nasıl çalıştırılacağı ele alınmaktadır.
 
-ARR API 'SI ile ilgili ayrıntılarla karşılaşmayacağız veya yeni bir Unity projesi nasıl ayarlanır? Bu konular [öğreticide ele alınmıştır: bir Unity projesini sıfırdan ayarlama](../tutorials/unity/project-setup.md).
+ARR API 'SI ile ilgili ayrıntılarla karşılaşmayacağız veya yeni bir Unity projesi nasıl ayarlanır? Bu konular [öğreticide ele alınmıştır: uzaktan işlenmiş modelleri görüntüleme](../tutorials/unity/view-remote-models/view-remote-models.md).
 
 Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
 > [!div class="checklist"]

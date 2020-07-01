@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 04418e39b1bd0a180a1f1130b2230e31050faa4b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ec39b4c6a478af22363e7ff30fee81ae3509f724
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118620"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85555871"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta e-ticaret ürün görüntüleri
 
@@ -34,7 +34,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Content Moderator abonelik anahtarı. Content Moderator hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 - Görüntü İşleme abonelik anahtarı (yukarıdaki yönergeleri de aynı şekilde).
@@ -109,7 +109,7 @@ Görüntüler [Content moderator gözden geçirme aracının](https://contentmod
 
 ## <a name="submit-a-list-of-test-images"></a>Test görüntülerinin listesini gönderme
 
-**Ana** yöntemde görebileceğiniz gibi, bu program, görüntü URL 'lerinin listesini Içeren bir _URL. txt_ dosyası Içeren bir "c:test" dizini arar. Bu dosya ve dizini oluşturun veya yolu metin dosyanıza işaret etmek üzere değiştirin. Ardından, bu dosyayı test etmek istediğiniz görüntülerin URL 'Leriyle doldurun.
+**Ana** yöntemde görebileceğiniz gibi, bu program, görüntü URL 'lerinin listesini içeren bir _Urls.txt_ dosyası Ile bir "c:test" dizini arar. Bu dosya ve dizini oluşturun veya yolu metin dosyanıza işaret etmek üzere değiştirin. Ardından, bu dosyayı test etmek istediğiniz görüntülerin URL 'Leriyle doldurun.
 
 [!code-csharp[Main: set up test directory, read lines](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=38-51)]
 

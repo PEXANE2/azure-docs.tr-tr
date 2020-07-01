@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d9300d3bbc5e6432e16f7656c7b4764df9b759cb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342655"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85558583"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>İçeri aktarılan verileri kullanarak sunucuları değerlendirme
 
@@ -179,10 +179,21 @@ Azure portal, bulma sonrasında sunucuların göründüğünü doğrulamak için
 
 Sunucu değerlendirmesi kullanarak iki tür değerlendirme oluşturabilirsiniz.
 
-**Değerlendirme türü** | **Ayrıntılar** | **Veri**
+
+**Değerlendirme türü** | **Ayrıntılar**
+--- | --- 
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. (concepts-assessment-calculation.md)
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi](concepts-azure-vmware-solution-assessment-calculation.md)
+
+### <a name="sizing-criteria"></a>Boyutlandırma ölçütü
+
+Sunucu değerlendirmesi iki boyutlandırma ölçütü seçeneği sağlar:
+
+**Boyutlandırma ölçütü** | **Ayrıntılar** | **Veri**
 --- | --- | ---
-**Performans tabanlı** | Belirtilen performans verileri değerlerini temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)**: giriş/çıkış/sanıye (IOPS) ve şirket içi disklerin verimlilik temelinde.
-**Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler. | **ÖNERILEN VM boyutu**: belirtilen sunucu boyutunu temel alır.<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
+**Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | **Azure VM değerlendirmesi**: VM boyutu ÖNERISI, CPU ve bellek kullanımı verilerini temel alır.<br/><br/> Disk türü önerisi (Standart HDD/SSD veya Premium yönetilen diskler), şirket içi disklerin ıOPS ve aktarım hızını temel alır.<br/><br/> **Azure VMware çözümü (AVS) değerlendirmesi**: AVS düğümleri ÖNERISI, CPU ve bellek kullanımı verilerini temel alır.
+**Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler. | **Azure VM değerlendirmesi**: VM boyutu önerisi, ŞIRKET içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için depolama türü ayarında neleri seçdiklerinize bağlıdır.<br/><br/> **Azure VMware çözümü (AVS) değerlendirmesi**: AVS düğümleri önerisi, ŞIRKET içi VM boyutunu temel alır.
+
 
 Bir değerlendirme çalıştırmak için:
 
@@ -191,24 +202,31 @@ Bir değerlendirme çalıştırmak için:
 
     ![Değerlendirme](./media/tutorial-assess-physical/assess.png)
 
-3. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
+3. **Sunucuları değerlendir**bölümünde, AVS değerlendirmesi gerçekleştirmek istiyorsanız değerlendirme adını belirtin ve Azure VM değerlendirmeleri veya *Azure VMware çözümü (AVS)* gerçekleştirmeyi düşünüyorsanız Azure *VM* olarak **değerlendirme** türünü seçin.
+
+    ![Değerlendirme temelleri](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
 4. **Bulma kaynağı**' nda **Azure geçişi ' ne içeri aktarma yoluyla eklenen makineler**' i seçin.
+
 5. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’yi seçin.
 
     ![Değerlendirme özellikleri](./media/tutorial-assess-physical/view-all.png)
 
-6. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
+6. **Değerlendirmek için makineleri seçmek**üzere **İleri** ' ye tıklayın. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
 7. **Gruba makine ekleme**' de gruba eklenecek sunucular ' ı seçin.
-8. Grubu oluşturmak için **değerlendirme oluştur** ' u seçin ve ardından değerlendirmeyi çalıştırın.
+8. Değerlendirme ayrıntılarını gözden geçirmek için **İleri** ' ye ve **değerlendirme oluştur** ' a tıklayın.
+9. Grubu oluşturmak için **değerlendirme oluştur** ' a tıklayın ve ardından değerlendirmeyi çalıştırın.
 
     ![Değerlendirme oluşturma](./media/tutorial-assess-physical/assessment-create.png)
 
 9. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**  >  **değerlendirmeleri**' nde görüntüleyin.
 10. Bir Microsoft Excel dosyası olarak indirmek için **dışarı aktarma değerlendirmesi** ' ni seçin.
 
-## <a name="review-an-assessment"></a>Değerlendirmeyi gözden geçirme
+**Azure VMware çözümü (AVS)** değerlendirmesi hakkında daha fazla bilgi edinmek için lütfen [buraya](how-to-create-azure-vmware-solution-assessment.md)bakın. 
 
-Bir değerlendirme şunları açıklar:
+## <a name="review-an-azure-vm-assessment"></a>Azure VM değerlendirmesini gözden geçirme
+
+Azure VM değerlendirmesi şunları açıklar:
 
 - **Azure hazırlığı**: sunucuların Azure 'a geçiş için uygun olup olmadığı.
 - **Aylık maliyet tahmini**: Azure 'da sunucuları çalıştırmaya yönelik tahmini aylık işlem ve depolama maliyetleri.
