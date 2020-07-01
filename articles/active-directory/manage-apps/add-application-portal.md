@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b89ab7e44bc71fa442f332cbba35af450f7d5155
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 4ddf754bb48bf588451f2eea595e8d1036d20b3e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760669"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85555271"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Hızlı başlangıç: Azure Active Directory kiracınıza uygulama ekleme
 
@@ -97,7 +97,7 @@ Uygulama özelliklerini düzenlemek için:
 
    - **Atanan** kullanıcılar için davranış:
 
-       | Uygulama özelliği ayarları | | | Atanan kullanıcı deneyimi | |
+       | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanan kullanıcı deneyimi | Atanan kullanıcı deneyimi |
        |---|---|---|---|---|
        | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanan kullanıcılar oturum açabilir mi? | Atanan kullanıcılar uygulamayı görebilir mi?* |
        | evet | evet | evet | evet | evet  |
@@ -111,7 +111,7 @@ Uygulama özelliklerini düzenlemek için:
 
    - **Atanmayan** kullanıcılar için davranış:
 
-       | Uygulama özelliği ayarları | | | Atanmayan kullanıcı deneyimi | |
+       | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanmayan kullanıcı deneyimi | Atanmayan kullanıcı deneyimi |
        |---|---|---|---|---|
        | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
        | evet | evet | evet | hayır  | hayır   |

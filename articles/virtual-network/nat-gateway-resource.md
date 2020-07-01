@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: db50a8938459fe063553f08c495149867ee36f43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710074"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85549632"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -325,8 +325,7 @@ Bir SNAT bağlantı noktası, 5 saniye sonra aynı hedef IP adresi ve hedef bağ
 - NSG akış günlüğü, NAT kullanılırken desteklenmez.
 - NAT birden çok sanal ağa yayılamaz.
 
-
-## <a name="feedback"></a>Geri Bildirim
+## <a name="suggestions"></a>Öneriler
 
 Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. Bir yetenek eksik mı? [NAT Için UserVoice](https://aka.ms/natuservoice)'ta daha sonra derleme yaptığımız bir durum oluşturun.
 

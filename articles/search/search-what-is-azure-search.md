@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: 9d081dea8e4a59a7b872bde8626cbb8674eebd7e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263237"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554323"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
-Azure Bilişsel Arama ([eskiden "Azure Search" olarak bilinirdi](whats-new.md#new-service-name)), Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'ler ve araçlar sağlayan bir hizmet olarak arama bulut çözümüdür. Kodunuz veya bir araç, bir dizin oluşturmak ve yüklemek için veri alımı (Dizin oluşturma) çağırır. İsteğe bağlı olarak, dizin oluşturma sırasında AI süreçlerini uygulamak için bilişsel yetenekler ekleyebilirsiniz. Bunun yapılması, arama ve diğer senaryolar için yararlı olan yeni bilgi ve yapıları ekleyebilirler.
+Azure Bilişsel Arama ([eskiden "Azure Search" olarak bilinirdi](whats-new.md#new-service-name)), Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerine zengin bir arama deneyimi eklemeye yönelik geliştiricilere API 'ler ve araçlar sağlayan bir hizmet olarak arama bulut çözümüdür. 
 
-Hizmetinizin diğer tarafında, uygulama kodunuz sorgu istekleri yayınlar ve yanıtları işler. Arama deneyimi, Azure Bilişsel Arama işlevselliği kullanılarak istemcinize, oluşturduğunuz, sahip olduğunuz ve hizmetinize depoladığınız kalıcı bir dizin üzerinde sorgu yürütme ile tanımlanmıştır.
+Özel bir çözümde, bir arama hizmeti iki birincil iş yükü arasında bulunur: içerik alımı ve sorguları. Kodunuz veya bir araç, bir şemayı tanımlar ve Azure Bilişsel Arama bir dizin yüklemek için veri alımı (Dizin oluşturma) çağırır. İsteğe bağlı olarak, dizin oluşturma sırasında AI süreçlerini uygulamak için bilişsel yetenekler ekleyebilirsiniz. Bunun yapılması, arama ve bilgi araştırma senaryolarında yararlı olan yeni bilgi ve yapılar oluşturabilir.
+
+Bir dizin varsa, uygulama kodunuz istekleri bir arama hizmetine sorgular ve yanıtları işler. Arama deneyimi, Azure Bilişsel Arama işlevselliği kullanılarak istemcinize, oluşturduğunuz, sahip olduğunuz ve hizmetinize depoladığınız kalıcı bir dizin üzerinde sorgu yürütme ile tanımlanmıştır.
 
 ![Azure Bilişsel Arama mimarisi](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Bilişsel Arama mimarisi")
 
@@ -31,7 +33,7 @@ Azure Bilişsel Arama aşağıdaki uygulama senaryoları için uygundur:
 
 + Heterojen içerik türlerini özel, tek ve aranabilir bir dizine birleştirme. Sorgular her zaman, belgeler ile oluşturduğunuz ve yüklediğiniz bir dizinin üzerinde bulunur ve Dizin her zaman Azure Bilişsel Arama hizmetinizde bulutta bulunur. Bir dizini, herhangi bir kaynak veya platformun JSON belgelerinin akışlarıyla doldurabilirsiniz. Alternatif olarak, Azure 'da kaynak olan içerik için bir dizin *Oluşturucu* kullanarak bir dizine veri çekebilirsiniz. Dizin tanımı ve yönetimi/sahipliği, Azure Bilişsel Arama kullanmanın önemli bir nedenidir.
 
-+ Ham içerik, Azure Blob depolama veya Cosmos DB gibi bir Azure veri kaynağında Office içerik türleri gibi büyük ölçekli metin, resim dosyaları veya uygulama dosyalarıdır. Yapı eklemek veya görüntü ve uygulama dosyalarından anlam çıkarmak için dizin oluşturma sırasında bilişsel becerileri uygulayabilirsiniz.
++ Ham içerik, Azure Blob depolama veya Cosmos DB gibi bir Azure veri kaynağında Office içerik türleri gibi büyük ölçekli metin, resim dosyaları veya uygulama dosyalarıdır. Yapı eklemek için dizin oluşturma sırasında bilişsel becerileri uygulayabilir veya görüntü ve uygulama dosyalarından aranabilir metin ayıklayabilirsiniz.
 
 + Aramayla ilgili özelliklerin kolay uygulanması. Azure Bilişsel Arama API 'Leri sorgu oluşturma, çok yönlü gezinme, filtreleri (coğrafi uzamsal arama dahil), eş anlamlı eşleme, typeahead sorguları ve ilgi ayarlamayı basitleştirir. Yerleşik özellikleri kullanarak, ticari Web araması altyapılarına benzer bir arama deneyimine yönelik son kullanıcı beklentilerini karşılamasını sağlayabilirsiniz.
 
@@ -53,8 +55,8 @@ Azure Bilişsel Arama aşağıdaki uygulama senaryoları için uygundur:
 
 | AI &nbsp; zenginleştirme&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Özellikler |
 |-------------------|----------|
-|Dizin oluşturma sırasında AI işleme | Görüntü ve metin analizi için [**AI zenginleştirme**](cognitive-search-concept-intro.md) , ham içerikten metin bilgilerini ayıklamak üzere bir dizin oluşturma işlem hattına uygulanabilir. [Yerleşik yeteneklere](cognitive-search-predefined-skills.md) örnek olarak optik karakter tanıma (taranmış JPEG'leri aranabilir duruma getirme), varlık tanıma (bir kuruluşu, adı veya konumu tanıma) ve anahtar ifade tanıma verilebilir. İşlem hattına ekleme yapmak için [özel yetenek kodu da yazabilirsiniz](cognitive-search-create-custom-skill-example.md). |
-| Arama olmayan senaryolarda analiz ve tüketim için zenginleştirilmiş içerik depolama | [**Bilgi deposu (Önizleme)**](knowledge-store-concept-intro.md) , bir AI tabanlı dizin oluşturma uzantısıdır. Azure depolama ile arka uç olarak, dizin oluşturma sırasında oluşturulan zenginleştirme kaydedebilirsiniz. Bu yapıtlar, daha iyi becerileri tasarlamanıza yardımcı olmak veya amorphous veya belirsiz verilerden şekil ve yapı oluşturmak için kullanılabilir. Belirli iş yüklerini veya kullanıcıları hedefleyen bu yapıların projeksiyonlarını oluşturabilirsiniz. Ayrıca ayıklanan verileri doğrudan analiz edebilir veya diğer uygulamalara yükleyebilirsiniz.<br/><br/> |
+|Dizin oluşturma sırasında AI işleme | Görüntü ve metin analizi için [**AI zenginleştirme**](cognitive-search-concept-intro.md) , ham içerikten metin bilgilerini ayıklamak üzere bir dizin oluşturma işlem hattına uygulanabilir. [Yerleşik yeteneklere](cognitive-search-predefined-skills.md) örnek olarak optik karakter tanıma (taranmış JPEG'leri aranabilir duruma getirme), varlık tanıma (bir kuruluşu, adı veya konumu tanıma) ve anahtar ifade tanıma verilebilir. İşlem hattına ekleme yapmak için [özel yetenek kodu da yazabilirsiniz](cognitive-search-create-custom-skill-example.md). Ayrıca, [Azure Machine Learning yazılan becerileri tümleştirebilirsiniz](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-aml-custom-skill). |
+| Arama olmayan senaryolarda analiz ve tüketim için zenginleştirilmiş içerik depolama | [**Bilgi deposu**](knowledge-store-concept-intro.md) , bir AI tabanlı dizin oluşturma uzantısıdır. Azure depolama ile arka uç olarak, dizin oluşturma sırasında oluşturulan zenginleştirme kaydedebilirsiniz. Bu yapıtlar, daha iyi becerileri tasarlamanıza yardımcı olmak veya amorphous veya belirsiz verilerden şekil ve yapı oluşturmak için kullanılabilir. Belirli iş yüklerini veya kullanıcıları hedefleyen bu yapıların projeksiyonlarını oluşturabilirsiniz. Ayrıca ayıklanan verileri doğrudan analiz edebilir veya diğer uygulamalara yükleyebilirsiniz.<br/><br/> |
 | Önbelleğe alınmış içerik | [**Artımlı zenginleştirme (Önizleme)**](cognitive-search-incremental-indexing-conceptual.md) işlemi, işlem hattının değişmeyen parçaları için önbelleğe alınmış içerik kullanılarak yalnızca belirli bir düzenleme tarafından değiştirilen belgelere kısıtlar. |
 
 | Veri &nbsp; içeri/dışarı dizin oluşturma | Özellikler |
@@ -129,7 +131,7 @@ Portalda birçok görev gerçekleştirileken, Azure Bilişsel Arama, arama işle
 
 |Platform |Description |
 |-----|------------|
-|[REST](/rest/api/searchservice/) | Xamarin, Java ve JavaScript gibi, programlama platformu ve dili tarafından desteklenen HTTP komutları|
+|[REST](/rest/api/searchservice/) | Java, Python ve JavaScript de dahil olmak üzere herhangi bir programlama platformu ve dili tarafından desteklenen HTTP komutları|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API’si için .NET sarmalayıcı, C# dilinde ve .NET Framework’ü hedefleyen diğer yönetilen kod dillerinde verimli kodlama sunar |
 
 ## <a name="free-trial"></a>Ücretsiz deneme sürümü

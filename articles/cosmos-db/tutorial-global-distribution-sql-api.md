@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: d50217bed3850f0e9021dda4bf1b577d006839d1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 52a76e685a9db58870c9a18b419ef725f559a969
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674491"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553000"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Öğretici: SQL API 'sini kullanarak genel dağıtım Azure Cosmos DB ayarlama
 
@@ -104,7 +104,6 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 Aşağıdaki kod, Python SDK kullanarak tercih edilen konumların nasıl ayarlanacağını gösterir:
 
 ```python
-
 connectionPolicy = documents.ConnectionPolicy()
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
 client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
@@ -130,14 +129,13 @@ Aşağıdaki kod, Java SDK kullanarak tercih edilen konumların nasıl ayarlanac
 --- 
 
 ## <a name="rest"></a>REST
-Birden çok bölgede bir veritabanı hesabı kullanılabilir duruma getirildiğinde istemciler aşağıdaki URI’de bir GET isteği gerçekleştirerek bu hesabın kullanılabilirliğini sorgulayabilir.
-
-    https://{databaseaccount}.documents.azure.com/
+Bir veritabanı hesabı birden çok bölgede kullanıma sunulduktan sonra istemciler, bu URI üzerinde bir GET isteği gerçekleştirerek kullanılabilirliğini sorgulayabilir`https://{databaseaccount}.documents.azure.com/`
 
 Hizmet, bölgelerin listesini ve çoğaltmalar için karşılık gelen Azure Cosmos DB uç nokta URI’lerini döndürür. Yanıtta geçerli yazma bölgesi belirtilir. Daha sonra istemci aşağıdaki gibi diğer tüm REST API istekleri için uygun uç noktayı seçebilir.
 
 Örnek yanıt
 
+```json
     {
         "_dbs": "//dbs/",
         "media": "//media/",
@@ -167,7 +165,7 @@ Hizmet, bölgelerin listesini ve çoğaltmalar için karşılık gelen Azure Cos
         "_ts": 0,
         "_etag": null
     }
-
+```
 
 * Tüm PUT, POST ve DELETE istekleri, belirtilen yazma URI’sine gitmelidir
 * Tüm ve diğer salt okuma istekleri (örneğin sorgular), istemci seçiminin herhangi bir uç noktasına gidebilir

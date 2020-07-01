@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6f4c18d0fb2a4414dc98100dcec85161fdda85f0
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853948"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554081"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplara (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarına nasıl oturum açmasını öğrenmek için bir kod örneği kullanırsınız.  (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
@@ -42,8 +42,8 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Ac
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->      - **Ad** bölümünde, örneğin `ASPNET-Quickstart`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
->      - `https://localhost:44368/` **Yeniden yönlendirme URI 'Si**ekleyin ve **Kaydet**' e tıklayın.
+>      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `ASPNET-Quickstart` .
+>      - `https://localhost:44368/` **Yeniden yönlendirme URI 'si**ekleyin ve **Kaydet**' e tıklayın.
 >      - Yönet bölümünün altındaki sol gezinti bölmesinden **kimlik doğrulaması** ' nı seçin.
 >          - **Örtük Izin ver** alt bölümünde **Kimlik belirteçleri**' ni seçin.
 >          - Sonra **Kaydet**' i seçin.
@@ -76,7 +76,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Ac
 
 1. Zip dosyasını kök klasöre yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) açın
 1. Çözümü Visual Studio’da açın (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
-1. Visual Studio sürümüne bağlı olarak, projeye `AppModelv2-WebApp-OpenIDConnect-DotNet` sağ tıklayıp **NuGet paketlerini geri yüklemeniz** gerekebilir
+1. Visual Studio sürümüne bağlı olarak, projeye sağ tıklayıp `AppModelv2-WebApp-OpenIDConnect-DotNet` **NuGet paketlerini geri yüklemeniz** gerekebilir
 1. Paket Yöneticisi konsolunu açın (diğer Windows-> Paket Yöneticisi konsolu > görüntüleyin) ve çalıştırın`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 
 > [!div renderon="docs"]
@@ -94,7 +94,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Ac
 >
 > > [!TIP]
 > > - *Uygulama Kimliği*, *Dizin (kiracı) Kimliği* ve *Desteklenen hesap türleri* değerlerini bulmak için **Genel bakış** sayfasına gidin
-> > - **Web. config** dosyasındaki `redirectUri` için değerinin Azure AD 'de uygulama kaydı için **tanımlanan yeniden yönlendirme URI 'sine** karşılık geldiğinden emin olun (yoksa, uygulama kaydı Için **KIMLIK doğrulama** menüsüne gidin ve **yeniden yönlendirme URI** 'sini eşleşecek şekilde güncelleştirin)
+> > - Web.configdeğerinin, `redirectUri` Azure AD 'de **Web.config** uygulama kaydı Için tanımlanan **yeniden yönlendirme URI 'sine** karşılık geldiğinden emin olun (yoksa, uygulama kaydı için **kimlik doğrulama** menüsüne gidin ve **yeniden yönlendirme URI** 'sini eşleşecek şekilde güncelleştirin)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -156,7 +156,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Konum  |  |
+> |Konum  | Description |
 > |---------|---------|
 > | `ClientId`     | Azure portalına kaydedilen uygulamaya ait Uygulama Kimliği |
 > | `Authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Çoğunlukla, genel bulut için <https://login.microsoftonline.com/{tenant}/v2.0>; burada {tenant}, kiracınızın adı, kiracınızın kimliği veya ortak uç noktaya başvuru olarak *common* değeridir (çok kiracılı uygulamalarda kullanılır) |

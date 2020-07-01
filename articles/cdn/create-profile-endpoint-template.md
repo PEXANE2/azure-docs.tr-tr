@@ -9,44 +9,48 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: bdb30fed4dadef84fe012c11893661b8d9d70325
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 39f10ed627320527a7a34fec52d540739f36e9ce
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483049"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554427"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---resource-manager-template"></a>Hızlı başlangıç: Azure CDN profili ve uç nokta Kaynak Yöneticisi şablonu oluşturma
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Hızlı başlangıç: Azure CDN profili ve uç nokta ARM şablonu oluşturma
 
-Azure Resource Manager şablonu kullanarak Azure CDN kullanmaya başlayın.  Bu şablon bir profil ve uç nokta dağıtır.
+Bir Azure Resource Manager şablonu (ARM şablonu) kullanarak Azure Content Delivery Network (CDN) ile çalışmaya başlayın. Şablon bir profil ve bir uç nokta dağıtır.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-cdn-profile-and-endpoint"></a>CDN profili ve uç noktası oluşturma
+## <a name="review-the-template"></a>Şablonu gözden geçirme
+
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/).
 
 Bu şablon, şunu oluşturacak şekilde yapılandırıldı:
 
 * Profil
 * Uç Nokta
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
-
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cdn-with-custom-origin/azuredeploy.json)
-
-:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="46-117":::
-
+:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json" range="1-125" highlight="45-117":::
 
 Şablonda bir Azure kaynağı tanımlanmıştır:
 
-**Microsoft. CDN**
-
 * **[Microsoft. CDN/profiller](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)**
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-**Azure CLI**
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. eastus): " location
@@ -62,7 +66,7 @@ az group deployment create \
 --template-uri  $templateUri
 ```
 
-**Azure PowerShell**
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -74,7 +78,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-**Azure portal**
+### <a name="portal"></a>Portal
 
 [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
 
@@ -92,7 +96,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-**Azure CLI**
+### <a name="azure-cli"></a>Azure CLI
 
 Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
@@ -101,7 +105,7 @@ Artık gerekli değilse, [az Group Delete](/cli/azure/group#az-group-delete) kom
     --name myResourceGroupCDN
 ```
 
-**Azure PowerShell**
+### <a name="powershell"></a>PowerShell
 
 Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
@@ -109,7 +113,7 @@ Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/pow
 Remove-AzResourceGroup -Name myResourceGroupCDN
 ```
 
-**Azure portal**
+### <a name="portal"></a>Portal
 
 Artık gerekli olmadığında kaynak grubunu, CDN profilini ve tüm ilgili kaynakları silin. CDN profili ve uç noktası içeren **Myresourcegroupcdn** kaynak grubunu seçin ve **Sil**' i seçin.
 

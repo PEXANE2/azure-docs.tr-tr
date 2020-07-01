@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e3674f7686679c27ad732fcaa92620703b91b5fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d22e86a37ca386d41374cf0b4811943108d293b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82112618"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553853"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
@@ -43,16 +43,16 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 > 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Azure portal Azure Active Directory için [uygulama kayıtları](https://aka.ms/MobileAppReg) dikey penceresine gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
->      - **Ad** bölümünde, örneğin `Win-App-calling-MsGraph`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
+>      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `Win-App-calling-MsGraph` .
 >      - **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
 >      - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 > 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
-> 1. **Yeniden yönlendirme URI 'lerinde** | **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümünde **https://login.microsoftonline.com/common/oauth2/nativeclient**öğesini kullanın.
+> 1. **Yeniden yönlendirme URI 'lerinde**  |  **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümünde öğesini kullanın **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > 1. **Kaydet**’i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
-> Bu hızlı başlangıçta çalışması için kod örneği için, olarak **https://login.microsoftonline.com/common/oauth2/nativeclient**bir yanıt URL 'si eklemeniz gerekir.
+> Bu hızlı başlangıçta çalışması için kod örneği için, olarak bir yanıt URL 'SI eklemeniz gerekir **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
@@ -128,7 +128,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Konumlar: ||
+> |Konumlar: | Description |
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
@@ -150,9 +150,9 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Konumlar:||
+> |Konumlar:| Description |
 > |---------|---------|
-> | `_scopes` | Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen `{ "user.read" }` kapsamları içerir. |
+> | `_scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
@@ -165,9 +165,9 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Konumlar: ||
+> |Konumlar: | Description |
 > |---------|---------|
-> | `scopes` | Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen `{ "user.read" }` kapsamları içerir. |
+> | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

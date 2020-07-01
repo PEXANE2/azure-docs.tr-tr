@@ -10,12 +10,13 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 030d5b5ad596b0d9e5eb2d636770c985b1cff5ed
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.custom: contperfq4
+ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099124"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551741"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Öğretici: şirket içi bir ortama Azure Active Directory self servis parola sıfırlama geri yazma özelliğini etkinleştirme
 
@@ -23,14 +24,14 @@ Azure Active Directory (Azure AD) self servis parola sıfırlama (SSPR) ile, kul
 
 Parola geri yazma özelliği, Azure AD 'deki parola değişikliklerini şirket içi AD DS ortamınıza geri aktarmak için kullanılabilir. Azure AD Connect, bu parola değişikliklerini Azure AD 'den mevcut bir şirket içi dizine geri göndermek için güvenli bir mekanizma sağlar.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Parola geri yazma için gerekli izinleri yapılandırın
 > * Azure AD Connect parola geri yazma seçeneğini etkinleştirin
 > * Azure AD SSPR 'de parola geri yazmayı etkinleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 

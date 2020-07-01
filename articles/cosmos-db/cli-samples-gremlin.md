@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1f927823fd7984014e2b8dd4d2ab90d83f144605
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 01e46d144c287569687bb79e7e9cb67b4923b78a
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262965"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85552905"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API için Azure CLı örnekleri
 
 Aşağıdaki tabloda Azure Cosmos DB Gremlin API 'sine yönelik örnek Azure CLı betikleri bağlantıları yer almaktadır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](/cli/azure/cosmosdb)bulunabilir. Tüm Azure Cosmos DB CLı betiği örnekleri [Azure Cosmos DB CLI GitHub deposunda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.
 
-| |  |
+|Görev | Description |
 |---|---|
 | [Azure Cosmos hesabı, veritabanı ve grafik oluşturma](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API için bir Azure Cosmos DB hesabı, veritabanı ve grafik oluşturur. |
 | [Aktarım hızını değiştirme](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir veritabanında ve grafikte RU/s 'yi güncelleştirin.|

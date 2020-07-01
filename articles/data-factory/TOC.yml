@@ -26,7 +26,7 @@
     - name: Veri fabrikası oluşturma - Resource Manager şablonu
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Güvenlik - Müşteri Tarafından Yönetilen Anahtar Şifrelemesini Etkinleştirme
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: Veri akışı oluşturma
       href: data-flow-create.md
 - name: Öğreticiler
@@ -576,7 +576,7 @@
         - name: Data Factory için yönetilen kimlik
           href: data-factory-service-identity.md
         - name: Müşteri tarafından yönetilen anahtar şifrelemesi
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: İzleme ve yönetme
       items:
         - name: Görsel olarak izleme

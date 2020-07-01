@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 94ef9b9754527bbb36ef1028f80e957da8c631dd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84688407"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85549591"
 ---
 # <a name="what-is-virtual-network-nat"></a>Sanal ağ NAT nedir?
 
@@ -144,7 +144,7 @@ Sanal ağ NAT ve NAT ağ geçidi kaynağı tüm Azure genel bulut [bölgelerinde
 
 NAT, normal destek kanalları aracılığıyla desteklenir.
 
-## <a name="feedback"></a>Geri Bildirim
+## <a name="suggestions"></a>Öneriler
 
 Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [NAT Için UserVoice](https://aka.ms/natuservoice)'ta daha sonra derleme yapmanız gerekenleri önerin ve oylayın.
 

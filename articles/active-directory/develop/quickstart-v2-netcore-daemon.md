@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 0a41165a77ff5f98a6a0bb408da62cb6c4cb35f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2be5a4ffb239b445381b5e7c84de15c0bcea371
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536089"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553916"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Hızlı başlangıç: konsol uygulamasının kimliğini kullanarak bir belirteç alın ve Microsoft Graph API 'sini çağırın
 
 Bu hızlı başlangıçta, uygulamanın kendi kimliğini kullanarak bir erişim belirteci alabilir ve sonra dizindeki [kullanıcıların listesini](https://docs.microsoft.com/graph/api/user-list) göstermek IÇIN Microsoft Graph API 'sini çağırabilmeniz için bir .NET Core uygulaması yazmayı öğreneceksiniz. Bu senaryo, kullanıcının kimliği yerine gözetimsiz, katılımsız iş veya Windows hizmeti 'nin bir uygulama kimliğiyle çalışması gereken durumlar için yararlıdır. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/dotnet-core/2.2)gerektirir.
 
@@ -51,7 +51,7 @@ Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin.
-> 1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `Daemon-console`, uygulamayı oluşturmak için **Kaydet** ' i seçin.
+> 1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `Daemon-console` , uygulamayı oluşturmak için **Kaydet** ' i seçin.
 > 1. Kaydolduktan sonra **sertifikalar & gizlilikler** menüsünü seçin.
 > 1. **İstemci gizli**dizileri altında **+ yeni istemci parolası**' nı seçin. Bir ad verin ve **Ekle**' yi seçin. Parolayı güvenli bir konuma kopyalayın. Kodunuzda kullanmak için ihtiyacınız olacak.
 > 1. Şimdi **API izinleri** menüsünü seçin **+ izin Ekle** düğmesini seçin, **Microsoft Graph**' yi seçin.
@@ -88,7 +88,7 @@ Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/
 >
 > 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
 > 1. Visual Studio- **1-Call-MSGraph\daemon-Console.sln** (isteğe bağlı) çözümünü açın.
-> 1. **AppSettings. JSON** öğesini `ClientId` `Tenant` düzenleyin ve alanların değerlerini ve `ClientSecret` aşağıdaki ile değiştirin:
+> 1. **Üzerindeappsettings.js** düzenleyin ve alanların değerlerini `ClientId` `Tenant` ve aşağıdaki gibi değiştirin `ClientSecret` :
 >
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
@@ -110,7 +110,7 @@ Bu hızlı başlangıç, [.NET Core 2,2](https://www.microsoft.com/net/download/
 > [!div renderon="docs"]
 > #### <a name="step-4-admin-consent"></a>4. Adım: yönetici onayı
 
-Bu noktada uygulamayı çalıştırmayı denerseniz, *HTTP 403-Yasak* hatası: `Insufficient privileges to complete the operation`' ı alırsınız. Bunun nedeni, *yalnızca uygulama Izinlerinin* yönetici onayı gerektirdiğinden oluşur. Bu, dizininizin genel yöneticisinin uygulamanıza onay vermesi gerektiği anlamına gelir. Rolünüze bağlı olarak aşağıdaki seçeneklerden birini belirleyin:
+Bu noktada uygulamayı çalıştırmayı denerseniz, *HTTP 403-Yasak* hatası: ' ı alırsınız `Insufficient privileges to complete the operation` . Bunun nedeni, *yalnızca uygulama Izinlerinin* yönetici onayı gerektirdiğinden oluşur. Bu, dizininizin genel yöneticisinin uygulamanıza onay vermesi gerektiği anlamına gelir. Rolünüze bağlı olarak aşağıdaki seçeneklerden birini belirleyin:
 
 ##### <a name="global-tenant-administrator"></a>Genel Kiracı Yöneticisi
 
@@ -198,7 +198,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Konumlar: ||
+> | Konumlar: | Description |
 > |---------|---------|
 > | `config.ClientSecret` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
 > | `config.ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
@@ -208,16 +208,16 @@ Daha fazla bilgi için lütfen [başvuru belgelerine `ConfidentialClientApplicat
 
 ### <a name="requesting-tokens"></a>Belirteç isteme
 
-Uygulamanın kimliğini kullanarak bir belirteç istemek için yöntemi kullanın `AcquireTokenForClient` :
+Uygulamanın kimliğini kullanarak bir belirteç istemek için `AcquireTokenForClient` yöntemi kullanın:
 
 ```csharp
 result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Konumlar:| |
+> |Konumlar:| Description |
 > |---------|---------|
-> | `scopes` | İstenen kapsamları içerir. Gizli istemciler için, istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi `{Application ID URI}/.default` içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com`). Özel Web API 'Leri için `{Application ID URI}` , Azure portalının uygulama kaydı 'Nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
+> | `scopes` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
 
 Daha fazla bilgi için lütfen [başvuru belgelerine `AcquireTokenForClient` ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) bakın
 

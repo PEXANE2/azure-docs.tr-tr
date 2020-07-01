@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 853133297567546d2e5259aee9a24ab52a6a4614
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74870148"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85552931"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sini kullanarak verileri sorgulama
 
@@ -63,11 +63,14 @@ Bu makaledeki sorgular aşağıdaki örnek belgeyi kullanır.
 Yukarıda verilen örnek aile belgesiyle aşağıdaki sorgu, kimlik alanının `WakefieldFamily` ile eşleştiği belgeleri döndürür.
 
 **Sorgu**
-    
-    db.families.find({ id: "WakefieldFamily"})
+
+```bash
+db.families.find({ id: "WakefieldFamily"})
+```
 
 **Sonuçlar**
 
+```json
     {
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
     "id": "WakefieldFamily",
@@ -107,17 +110,21 @@ Yukarıda verilen örnek aile belgesiyle aşağıdaki sorgu, kimlik alanının `
     "creationDate": 1431620462,
     "isRegistered": false
     }
+```
 
 ## <a name="example-query-2"></a><a id="examplequery2"></a>Örnek sorgu 2 
 
 Sonraki sorgu, ailedeki tüm çocukları döndürür. 
 
 **Sorgu**
-    
-    db.families.find( { id: "WakefieldFamily" }, { children: true } )
+
+```bash 
+db.families.find( { id: "WakefieldFamily" }, { children: true } )
+``` 
 
 **Sonuçlar**
 
+```json
     {
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
     "children": [
@@ -139,26 +146,35 @@ Sonraki sorgu, ailedeki tüm çocukları döndürür.
       }
     ]
     }
-
+```
 
 ## <a name="example-query-3"></a><a id="examplequery3"></a>Örnek sorgu 3 
 
 Sonraki sorgu, kayıtlı olan tüm aileleri döndürür. 
 
 **Sorgu**
-    
-    db.families.find( { "isRegistered" : true })
-**Sonuçlar** Herhangi bir belge döndürülmez. 
+
+```bash
+db.families.find( { "isRegistered" : true })
+``` 
+
+**Sonuçlar**
+
+Hiçbir belge döndürülmeyecektir. 
 
 ## <a name="example-query-4"></a><a id="examplequery4"></a>Örnek sorgu 4
 
 Sonraki sorgu, kayıtlı olmayan tüm aileleri döndürür. 
 
 **Sorgu**
-    
-    db.families.find( { "isRegistered" : false })
+
+```bash
+db.families.find( { "isRegistered" : false })
+``` 
+
 **Sonuçlar**
 
+```json
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
@@ -193,17 +209,21 @@ Sonraki sorgu, kayıtlı olmayan tüm aileleri döndürür.
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
 ## <a name="example-query-5"></a><a id="examplequery5"></a>Örnek sorgu 5
 
 Sonraki sorgu, kayıtlı olmayan ve durumu NY olan tüm aileleri döndürür. 
 
 **Sorgu**
-    
-     db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+
+```bash
+db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+``` 
 
 **Sonuçlar**
 
+```json
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
@@ -238,18 +258,21 @@ Sonraki sorgu, kayıtlı olmayan ve durumu NY olan tüm aileleri döndürür.
     "creationDate": 1431620462,
     "isRegistered": false
 }
-
+```
 
 ## <a name="example-query-6"></a><a id="examplequery6"></a>Örnek sorgu 6
 
 Sonraki sorgu, çocukları 8. sınıfta olan tüm aileleri döndürür.
 
 **Sorgu**
-  
-     db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+
+```bash
+db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+```
 
 **Sonuçlar**
 
+```json
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
@@ -284,14 +307,17 @@ Sonraki sorgu, çocukları 8. sınıfta olan tüm aileleri döndürür.
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
 ## <a name="example-query-7"></a><a id="examplequery7"></a>Örnek sorgu 7
 
 Sonraki sorgu, çocuk dizisi boyutu 3 olan tüm aileleri döndürür.
 
 **Sorgu**
-  
-      db.Family.find( {children: { $size:3} } )
+
+```bash
+db.Family.find( {children: { $size:3} } )
+```
 
 **Sonuçlar**
 

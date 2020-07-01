@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f2002414836dcb77a09f633f30ec0fcbb7981de
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 77b1794f5dde4d7e346e45c2da5d24195d69b50e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760533"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85555187"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza Galeri uygulaması ekleme
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD), Kurumsal Çoklu oturum açma ile etkinleştir
 
       **Atanan** kullanıcılar için davranış:
 
-       | Uygulama özelliği ayarları | | | Atanan kullanıcı deneyimi | |
+       | Uygulama özelliği | Uygulama özelliği | Uygulama özelliği | Atanan kullanıcı deneyimi | Atanan kullanıcı deneyimi |
        |---|---|---|---|---|
        | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanan kullanıcılar oturum açabilir mi? | Atanan kullanıcılar uygulamayı görebilir mi?* |
        | evet | evet | evet | evet | evet  |

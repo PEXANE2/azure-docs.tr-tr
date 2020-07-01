@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 50b6244e5db6f812d1f9e3d23ea5fa88ea3bebea
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456819"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554146"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: Microsoft 'a ASP.NET Core Web uygulamasına oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplara (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarına nasıl oturum açabileceğinizi öğrenmek için bir kod örneği kullanırsınız. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 >    - **Yeniden yönlendirme URI 'lerinde**, ekleyin `https://localhost:44321/signin-oidc` ve **Kaydet**' i seçin.
 >    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın `https://localhost:44321/signout-oidc` .
 >    - **Örtük onay**'ın altında **Kimlik belirteçleri**'ni işaretleyin.
->    - **Kaydet**'i seçin.
+>    - **Kaydet**’i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
@@ -79,7 +79,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının herhangi bir Azu
 > #### <a name="step-3-run-your-visual-studio-project"></a>3. Adım: Visual Studio projenizi çalıştırma
 > 1. ZIP dosyasını kök klasör içindeki bir yerel klasöre ayıklayın; Örneğin, **C:\Azure-Samples**
 > 1. Visual Studio 'da çözümü açın
-> 1. **AppSettings. JSON** dosyasını düzenleyin. `ClientId`' İ kaydettiğiniz `ClientId` uygulamanın **uygulama (istemci) kimliği** değeri ile değerini bulun ve güncelleştirin.
+> 1. Dosyadaki **appsettings.js** düzenleyin. `ClientId`' İ kaydettiğiniz `ClientId` uygulamanın **uygulama (istemci) kimliği** değeri ile değerini bulun ve güncelleştirin.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -145,7 +145,7 @@ Yöntemi, `AddAuthentication` hizmetini tarayıcı senaryolarında kullanılan v
 
 İçeren çizgi, `.AddAzureAd` uygulamanıza Microsoft Identity platform kimlik doğrulamasını ekler. Daha sonra Microsoft Identity platform uç noktası kullanılarak oturum açmak üzere yapılandırılmıştır.
 
-> |Konum  |  |
+> |Konum | Description |
 > |---------|---------|
 > | ClientId  | Azure portal kayıtlı uygulamadan uygulama (istemci) KIMLIĞI. |
 > | Yetkili | Kullanıcının kimlik doğrulaması için STS uç noktası. Genellikle, bu <https://login.microsoftonline.com/{tenant}/v2.0> genel buluta yöneliktir; burada {Tenant} kiracınızın adı, KIRACı kimliğiniz veya ortak uç noktaya yönelik bir başvuru için *ortaktır* (çok kiracılı uygulamalar için kullanılır) |

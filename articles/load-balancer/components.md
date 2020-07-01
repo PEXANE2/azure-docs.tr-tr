@@ -11,20 +11,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a055216634775254867421854aa0b456fa90c709
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84448691"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551064"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer bileşenleri
 
-Azure Load Balancer birkaç temel bileşenden oluşur. Bunlar aboneliğinizde Azure portal, Azure CLı, Azure PowerShell veya şablonlar aracılığıyla yapılandırılabilir.
+Azure Load Balancer bazı önemli bileşenleri içerir. Bu bileşenler, aboneliğinizdeki aracılığıyla yapılandırılabilir:
+
+* Azure portal
+* Azure CLI
+* Azure PowerShell
+* Resource Manager Şablonları
 
 ## <a name="frontend-ip-configuration"></a>Ön uç IP yapılandırması<a name = "frontend-ip-configurations"></a>
 
-Azure Load Balancer IP adresi. Bu, istemciler için iletişim noktasıdır. Bu IP adresleri şunlardan biri olabilir:
+Azure Load Balancer IP adresi. Bu, istemcilerle ilgili iletişim noktasıdır. Bu IP adresleri şunlardan biri olabilir:
 
 - **Genel IP adresi**
 - **Özel IP adresi**
@@ -34,7 +39,7 @@ IP adresinin doğası, oluşturulan yük dengeleyicinin **türünü** belirler. 
 |  | Genel Load Balancer  | İç Yük Dengeleyici |
 | ---------- | ---------- | ---------- |
 | Ön uç IP yapılandırması| Genel IP adresi | Özel IP adresi|
-| Açıklama | Ortak yük dengeleyici, gelen trafiğin genel IP ve bağlantı noktasını, sanal makinenin özel IP ve bağlantı noktasıyla eşleştirir. Yük dengeleyici trafiği VM 'den gelen yanıt trafiği için başka bir şekilde eşler. Yük Dengeleme kuralları uygulayarak, belirli trafik türlerini birden çok VM veya hizmet arasında dağıtabilirsiniz. Örneğin web isteği trafiğinin yükünü birden fazla web sunucusuna dağıtabilirsiniz.| İç yük dengeleyici, trafiği bir sanal ağ içindeki kaynaklara dağıtır. Azure, yük dengeli bir sanal ağın ön uç IP adreslerine erişimi kısıtlar. Ön uç IP adresleri ve sanal ağlar hiçbir şekilde doğrudan bir internet uç noktasına gösterilmez. İç iş kolu uygulamaları Azure'da çalışır ve Azure'dan veya şirket içi kaynaklardan erişim sağlanır. |
+| Description | Ortak yük dengeleyici, gelen trafiğin genel IP ve bağlantı noktasını, sanal makinenin özel IP ve bağlantı noktasıyla eşleştirir. Yük dengeleyici trafiği VM 'den gelen yanıt trafiği için başka bir şekilde eşler. Yük Dengeleme kuralları uygulayarak, belirli trafik türlerini birden çok VM veya hizmet arasında dağıtabilirsiniz. Örneğin web isteği trafiğinin yükünü birden fazla web sunucusuna dağıtabilirsiniz.| İç yük dengeleyici, trafiği bir sanal ağ içindeki kaynaklara dağıtır. Azure, yük dengeli bir sanal ağın ön uç IP adreslerine erişimi kısıtlar. Ön uç IP adresleri ve sanal ağlar hiçbir şekilde doğrudan bir internet uç noktasına gösterilmez. İç iş kolu uygulamaları Azure'da çalışır ve Azure'dan veya şirket içi kaynaklardan erişim sağlanır. |
 | Desteklenen SKU 'Lar | Temel, standart | Temel, standart |
 
 ![Katmanlı yük dengeleyici örneği](./media/load-balancer-overview/load-balancer.png)
@@ -51,7 +56,7 @@ Arka uç havuzunuzu nasıl tasarlayacağınızı düşünürken, yönetim işlem
 
 ## <a name="health-probes"></a>Sistem durumu araştırmaları
 
-Bir sistem durumu araştırması, arka uç havuzundaki örneklerin sistem durumunu tespit etmek için kullanılır. Bir Load Balancer oluştururken, bir örneğin sağlıklı olup olmadığını ve trafiği akışa almak için Load Balancer kullanabileceği bir sistem durumu araştırması yapılandırmanız gerekir.
+Bir sistem durumu araştırması, arka uç havuzundaki örneklerin sistem durumunu tespit etmek için kullanılır. Yük dengeleyici oluşturma sırasında, yük dengeleyicinin kullanması için bir sistem durumu araştırması yapılandırın.  Bu sistem durumu araştırması, bir örneğin sağlıklı olup olmadığını ve trafik alıp alamayacağını tespit eder.
 
 Sistem durumu araştırmalarının sağlıksız eşiğini tanımlayabilirsiniz. Bir araştırma yanıtlanamazsa Load Balancer sağlıksız örneklere yeni bağlantı göndermeyi durduruyor. Bir araştırma hatası varolan bağlantıları etkilemez. Bağlantı, uygulamaya kadar devam eder:
 
@@ -65,13 +70,24 @@ Temel Load Balancer HTTPS araştırmaları desteklemez. Temel Load Balancer tüm
 
 ## <a name="load-balancing-rules"></a>Yük Dengeleme kuralları
 
-Bir Load Balancer kuralı, gelen trafiğin arka uç havuzundaki **Tüm** örneklere nasıl dağıtıldığını tanımlamak için kullanılır. Yük Dengeleme kuralı, belirli bir ön uç IP yapılandırmasını ve bağlantı noktasını birden fazla arka uç IP adresine ve bağlantı noktasına eşler.
+Bir Load Balancer kuralı, gelen trafiğin arka uç havuzundaki **Tüm** örneklere nasıl dağıtıldığını tanımlamak için kullanılır. Yük Dengeleme kuralı, belirli bir ön uç IP yapılandırmasını ve bağlantı noktasını birden çok arka uç IP adresine ve bağlantı noktasına eşler.
 
-Örneğin, ön uç IP 'nizin bağlantı noktası 80 ' deki (veya başka bir bağlantı noktası) trafik, tüm arka uç örneklerinizin 80 numaralı bağlantı noktasına yönlendirilmek istiyorsanız, bunu başarmak için bir yük dengeleme kuralı kullanırsınız.
+Örneğin, ön uç IP 'nizden gelen trafiği arka uç örneklerinizin 80 numaralı bağlantı noktasına yönlendirmek için 80 numaralı bağlantı noktası için bir yük dengeleme kuralı kullanın.
 
-### <a name="high-availability-ports"></a>Yüksek kullanılabilirlik bağlantı noktaları
+<p align="center">
+  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Yük Dengeleme kuralları">
+</p>
 
-' Protocol-All ve port-0 ' ile yapılandırılmış bir Load Balancer kuralı. Bu, bir iç Standart Load Balancer tüm bağlantı noktalarına gelen tüm TCP ve UDP akışlarının yük dengelenmesi için tek bir kural sağlamayı sağlar. Yük Dengeleme kararı akış başına yapılır. Bu eylem aşağıdaki beş demet bağlantısına dayanır: 
+*Şekil: Yük Dengeleme kuralları*
+
+## <a name="high-availability-ports"></a>Yüksek kullanılabilirlik bağlantı noktaları
+
+**' Protocol-All ve port-0 '** ile yapılandırılmış bir yük dengeleyici kuralı. 
+
+Bu kural, bir iç Standart Load Balancer tüm bağlantı noktalarına gelen tüm TCP ve UDP akışlarının yük dengelenmesi için tek bir kural sağlar. 
+
+Yük Dengeleme kararı akış başına yapılır. Bu eylem aşağıdaki beş demet bağlantısına dayanır: 
+
 1. 
     en yakın kullanılabilir uç noktayı arama
   
@@ -80,21 +96,33 @@ Bir Load Balancer kuralı, gelen trafiğin arka uç havuzundaki **Tüm** örnekl
 4. hedef bağlantı noktası
 5. protokol
 
-HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçleri (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Bu özellik, çok sayıda bağlantı noktasının yük dengeli olması gerektiğinde da yardımcı olabilir.
+HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçleri (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Bu özellik, çok sayıda bağlantı noktasının yük dengeli olması gerektiğinde yardımcı olabilir.
 
-[Ha bağlantı noktaları](load-balancer-ha-ports-overview.md)hakkında daha fazla bilgi edinebilirsiniz.
+<p align="center">
+  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA bağlantı noktaları kuralları">
+</p>
+
+*Şekil: HA bağlantı noktası kuralları*
+
+[Ha bağlantı noktaları](load-balancer-ha-ports-overview.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="inbound-nat-rules"></a>Gelen NAT kuralları
 
-Gelen NAT kuralı, seçilen bir ön uç IP adresine ve bağlantı noktası birleşimine gönderilen gelen trafiği, arka uç havuzundaki **belirli** bir sanal makineye veya örneğe iletir. Bağlantı noktası iletme, Yük Dengeleme ile aynı karma tabanlı dağıtım tarafından yapılır.
+Gelen NAT kuralı, ön uç IP adresine ve bağlantı noktası birleşimine gönderilen gelen trafiği iletir. Trafik, arka uç havuzundaki **belirli** bir sanal makineye veya örneğe gönderilir. Bağlantı noktası iletme, Yük Dengeleme ile aynı karma tabanlı dağıtım tarafından yapılır.
 
 Örneğin, bir arka uç havuzundaki sanal makine örneklerinin Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) oturumlarını istiyorsanız. Aynı ön uç IP adresindeki bağlantı noktalarıyla birden çok iç uç nokta eşlenebilir. Ön uç IP adresleri, ek bir sıçrama kutusu olmadan sanal makinelerinizi uzaktan yönetmek için kullanılabilir.
 
-Sanal Makine Ölçek Kümeleri (VMSS) bağlamında gelen NAT kuralları gelen NAT havuzlarıdır. [Load Balancer bileşenleri ve VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer)hakkında daha fazla bilgi edinin.
+<p align="center">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Gelen NAT kuralları">
+</p>
+
+*Şekil: gelen NAT kuralları*
+
+Sanal Makine Ölçek Kümeleri bağlamındaki gelen NAT kuralları gelen NAT havuzlarıdır. [Load Balancer bileşenleri ve sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer)hakkında daha fazla bilgi edinin.
 
 ## <a name="outbound-rules"></a>Giden kuralları
 
-Giden bir kural, arka uç havuzu tarafından tanımlanan tüm sanal makineler veya örnekler için giden ağ adresi çevirisi 'ni (NAT) yapılandırır. Bu, arka uçtaki örneklerin internet veya diğer uç noktalara iletişim kurmasını sağlar.
+Giden bir kural, arka uç havuzu tarafından tanımlanan tüm sanal makineler veya örnekler için giden ağ adresi çevirisi 'ni (NAT) yapılandırır. Bu kural, arka uçtaki örneklerin internet veya diğer uç noktalara iletişim kurmasını sağlar.
 
 [Giden bağlantılar ve kurallar](load-balancer-outbound-connections.md)hakkında daha fazla bilgi edinin.
 

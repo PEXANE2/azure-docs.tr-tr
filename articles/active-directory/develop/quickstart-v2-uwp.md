@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 362f6d1f4e50e1cc78c8897499b9f6593096162b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536021"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553870"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
@@ -44,16 +44,16 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://aka.ms/MobileAppReg) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->      - **Ad** bölümünde, örneğin `UWP-App-calling-MsGraph`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
+>      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `UWP-App-calling-MsGraph` .
 >      - **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
 >      - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 > 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
-> 1. **Yeniden yönlendirme URI 'lerinde** | **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne **https://login.microsoftonline.com/common/oauth2/nativeclient**bakın.
+> 1. **Yeniden yönlendirme URI 'lerinde**  |  **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne bakın **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > 1. **Kaydet**’i seçin.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. Adım: Uygulamanızı yapılandırma
-> Bu hızlı başlangıçta çalışması için kod örneği için yeniden yönlendirme URI 'SI eklemeniz gerekir **https://login.microsoftonline.com/common/oauth2/nativeclient**.
+> Bu hızlı başlangıçta çalışması için kod örneği için yeniden yönlendirme URI 'SI eklemeniz gerekir **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
@@ -83,7 +83,7 @@ Bu hızlı başlangıç, bir Evrensel Windows Platformu (UWP) uygulamasının ku
 >
 > 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
 > 1. Projeyi Visual Studio'da açın. UWP SDK 'Yı yüklemek isteyip istemediğiniz sorulabilir. Bu durumda kabul edin.
-> 1. **MainPage.xaml.cs** öğesini düzenleyin ve `ClientId` alanın değerlerini değiştirin:
+> 1. **MainPage.xaml.cs** öğesini düzenleyin ve alanın değerlerini değiştirin `ClientId` :
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";
@@ -133,13 +133,13 @@ PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 
-> |Konumlar: ||
+> |Konumlar: | Description |
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
 ### <a name="requesting-tokens"></a>Belirteç isteme
 
-MSAL, UWP uygulamasında belirteçleri almak için iki yönteme sahiptir: `AcquireTokenInteractive` ve. `AcquireTokenSilent`
+MSAL, UWP uygulamasında belirteçleri almak için iki yönteme sahiptir: `AcquireTokenInteractive` ve `AcquireTokenSilent` .
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
@@ -155,13 +155,13 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |Konumlar:||
+> |Konumlar:| Description |
 > |---------|---------|
-> | `scopes` | Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen `{ "user.read" }` kapsamları içerir. |
+> | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-Başlangıç `AcquireTokenInteractive` yönteminden `AcquireTokenSilent` sonra korumalı kaynaklara erişmek için belirteçleri elde etmek için yöntemini kullanın. Bir kaynağa erişmesi gereken her seferinde kullanıcının kimlik bilgilerini doğrulamasını gerektirmek istemezsiniz. Herhangi bir kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri istediğiniz zaman
+`AcquireTokenSilent`Başlangıç yönteminden sonra korumalı kaynaklara erişmek için belirteçleri elde etmek için yöntemini kullanın `AcquireTokenInteractive` . Bir kaynağa erişmesi gereken her seferinde kullanıcının kimlik bilgilerini doğrulamasını gerektirmek istemezsiniz. Herhangi bir kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri istediğiniz zaman
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -170,9 +170,9 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Konumlar: ||
+> |Konumlar: | Description |
 > |---------|---------|
-> | `scopes` | Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen `{ "user.read" }` kapsamları içerir |
+> | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir |
 > | `firstAccount` | Önbellekteki ilk kullanıcı hesabını belirtir (MSAL, tek bir uygulamadaki birden çok kullanıcıyı destekler) |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

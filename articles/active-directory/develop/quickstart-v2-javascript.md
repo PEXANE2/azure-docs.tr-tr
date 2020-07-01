@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: d0c705ffba84b9d34f8bc3d6e4c06d4bdb90fa21
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 047e03c4fa5916119036c5e539674dc48a6c77aa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322830"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554016"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -73,10 +73,10 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 #### <a name="step-2-download-the-project"></a>2. Adım: Projeyi indirme
 
 > [!div renderon="docs"]
-> Projeyi Node. js kullanarak bir Web sunucusuyla çalıştırmak için, [temel proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
+> Node.js kullanarak projeyi bir Web sunucusuyla çalıştırmak için, [temel proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 
 > [!div renderon="portal"]
-> Node. js kullanarak projeyi bir Web sunucusu ile çalıştırma
+> Node.js kullanarak projeyi bir Web sunucusu ile çalıştırma
 
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
@@ -84,7 +84,7 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>3. Adım: JavaScript uygulamanızı yapılandırma
 >
-> *Javascriptspa* klasöründe, *AuthConfig. js*' yi düzenleyin ve `clientID` `authority` `redirectUri` altında ve değerlerini ayarlayın `msalConfig` .
+> *Javascriptspa* klasöründe *authConfig.js*düzenleyin ve `clientID` `authority` `redirectUri` altında ve değerlerini ayarlayın `msalConfig` .
 >
 > ```javascript
 >
@@ -126,7 +126,7 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 
 > [!div renderon="docs"]
 >
-> Daha sonra, aynı klasörde, ve nesnesini ayarlamak için *Graphconfig. js* dosyasını düzenleyin `graphMeEndpoint` `graphMeEndpoint` `apiConfig` .
+> Ardından, aynı klasörde, ve nesnesini ayarlamak için *graphConfig.js* dosyayı düzenleyin `graphMeEndpoint` `graphMeEndpoint` `apiConfig` .
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
 >   const graphConfig = {
@@ -148,7 +148,7 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 >
 > #### <a name="step-4-run-the-project"></a>4. Adım: projeyi çalıştırma
 
-[Node. js](https://nodejs.org/en/download/)kullanarak projeyi bir Web sunucusuyla çalıştırın:
+[Node.js](https://nodejs.org/en/download/)kullanarak projeyi bir Web sunucusuyla çalıştırın:
 
 1. Sunucuyu başlatmak için, proje dizininden aşağıdaki komutu çalıştırın:
     ```batch
@@ -167,17 +167,17 @@ Tarayıcı uygulamayı yükledikten sonra **oturum aç**' ı seçin. İlk kez ot
 
 ![Örnek JavaScript SPA 'nın çalışması: 1. SPA, oturum açma işlemini başlatır. 2. SPA, Microsoft Identity platformundan bir KIMLIK belirteci alır. 3. SPA, belirteç alma 'yı çağırır. 4. Microsoft Identity platformu, SPA 'ya bir erişim belirteci döndürür. 5. SPA, Microsoft Graph API 'sine yönelik acess belirtecini ve HTTP GET isteğini yapar. 6. Graph API SPA 'ya HTTP yanıtı döndürür.](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
-### <a name="msaljs"></a>msal. js
+### <a name="msaljs"></a>msal.js
 
-MSAL kitaplığı, kullanıcıları imzalar ve Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. Hızlı Başlangıç *dizini. html* dosyası kitaplığa bir başvuru içerir:
+MSAL kitaplığı, kullanıcıları imzalar ve Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. Hızlı Başlangıç *index.html* dosyası kitaplığa bir başvuru içerir:
 
 ```html
 <script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
 ```
 > [!TIP]
-> Önceki sürümü [msal. js yayınları](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)altındaki en son yayınlanan sürümle değiştirebilirsiniz.
+> Önceki sürümü, [MSAL.js sürümleri](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)altındaki en son yayınlanan sürümle değiştirebilirsiniz.
 
-Alternatif olarak, Node. js yüklüyse, Node. js Paket Yöneticisi (NPM) üzerinden en son sürümü indirebilirsiniz:
+Alternatif olarak, Node.js yüklüyse, en son sürümü Node.js Paket Yöneticisi (NPM) aracılığıyla indirebilirsiniz:
 
 ```batch
 npm install msal
@@ -204,7 +204,7 @@ Hızlı başlangıç kodu ayrıca MSAL kitaplığının nasıl başlatılacağı
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Konum  |  |
+> |Konum  | Description |
 > |---------|---------|
 > |`clientId`     | Azure portal kayıtlı uygulamanın uygulama KIMLIĞI.|
 > |`authority`    | Seçim Daha önce yapılandırma bölümünde açıklandığı gibi, hesap türlerini destekleyen yetkili URL 'SI. Varsayılan yetkili `https://login.microsoftonline.com/common` . |
@@ -232,7 +232,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Konum  |  |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | Seçim Oturum açma sırasında kullanıcı onayı için istenen kapsamları içerir. Örneğin, `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ). |
 
@@ -262,13 +262,13 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Konum  |  |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | API için erişim belirtecine döndürülmek istenen kapsamları içerir. Örneğin, `[ "mail.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ).|
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Kullanıcıları Microsoft Identity platform uç noktasıyla etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örnek:
+Kullanıcıları Microsoft Identity platform uç noktasıyla etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örneğin:
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.
 * İki öğeli kimlik doğrulaması gereklidir.
@@ -305,4 +305,4 @@ Bu hızlı başlangıç için uygulama oluşturmaya yönelik daha ayrıntılı b
 Belgeler, SSS, sorunlar ve daha fazlası için MSAL depoya göz atın, bkz:
 
 > [!div class="nextstepaction"]
-> [MSAL. js GitHub deposu](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [GitHub deposuMSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)

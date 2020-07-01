@@ -4,19 +4,19 @@ description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçi
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 7fcfa698b0a7e96a117b9d9663869bbec0e0079e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771317"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85550886"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Sunucu Değerlendirmesiyle VMware VM'lerini Değerlendirme
 
 Bu makalede, şirket içi VMware sanal makinelerini (VM 'Ler) [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracını kullanarak nasıl değerlenbileceğiniz gösterilmektedir.
 
 
-Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serinin ikinci saniyedir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir Azure geçişi projesi ayarlayın.
 > * VM 'Leri değerlendirmek için şirket içinde çalışan bir Azure geçiş gereci ayarlayın.
@@ -29,7 +29,7 @@ Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geç
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu serideki [ilk öğreticiyi doldurun](tutorial-prepare-vmware.md) . Bunu yapmazsanız, bu öğreticideki yönergeler çalışmaz.
 - İlk öğreticide yapmanız gerekenler şunlardır:
@@ -42,25 +42,25 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Yeni bir Azure geçişi projesini aşağıdaki şekilde ayarlayın:
 
 1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
-1. **Hizmetler** altında **Azure Geçişi**’ni seçin.
-1. **Genel bakış**bölümünde, **sunucuları değerlendir, değerlendir ve geçir**altında, **sunucuları değerlendir ve geçir**' i seçin.
+2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
+3. **Genel bakış**bölümünde, **sunucuları değerlendir, değerlendir ve geçir**altında, **sunucuları değerlendir ve geçir**' i seçin.
 
    ![Sunucuları değerlendirmek ve geçirmek için düğme](./media/tutorial-assess-vmware/assess-migrate.png)
 
-1. **Başlarken**' de **Araçlar Ekle**' yi seçin.
-1. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.     
-1. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
+4. **Başlarken**' de **Araçlar Ekle**' yi seçin.
+5. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.     
+6. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
 
    ![Proje adı ve bölgesi için kutular](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. **İleri**’yi seçin.
-1. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi**  >  **İleri**' yi seçin.
+7. **İleri**’yi seçin.
+8. **Değerlendirme Seç aracında** **Azure geçişi: Sunucu değerlendirmesi**  >  **İleri**' yi seçin.
 
    ![Sunucu değerlendirmesi aracı için seçim](./media/tutorial-assess-vmware/assessment-tool.png)
 
-1. **Geçiş aracını seç** bölümünde **Şimdilik geçiş aracı eklemeyi atla** > **İleri** seçeneğini belirleyin.
-1. **Gözden geçir + araçlar Ekle**' de ayarları gözden geçirin ve **araç ekle**' yi seçin.
-1. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin. Proje sayfasına yönlendirilirsiniz. Projeyi görmüyorsanız Azure Geçişi panosundaki **Sunuculardan** erişebilirsiniz.
+9. **Geçiş aracını seç** bölümünde **Şimdilik geçiş aracı eklemeyi atla** > **İleri** seçeneğini belirleyin.
+10. **Gözden geçir + araçlar Ekle**' de ayarları gözden geçirin ve **araç ekle**' yi seçin.
+11. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin. Proje sayfasına yönlendirilirsiniz. Projeyi görmüyorsanız Azure Geçişi panosundaki **Sunuculardan** erişebilirsiniz.
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure geçişi gereç 'yi ayarlama
 
@@ -75,8 +75,8 @@ Gereci oluşturduktan sonra Azure geçişi 'ne bağlanıp bağlanamadıktan sonr
 ### <a name="download-the-ova-template"></a>OVA şablonunu indirin
 
 1. **Geçiş hedefleri**  >  **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **bul**' u seçin.
-1. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet '** i seçin.
-1. OVA şablon dosyasını indirmek için **İndir** ' i seçin.
+2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **VMware vSphere Hiper Yöneticisi ile Evet '** i seçin.
+3. OVA şablon dosyasını indirmek için **İndir** ' i seçin.
 
    ![OVA dosyasını indirme seçimleri](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -114,13 +114,13 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
 
    ![OVF şablonu dağıtmak için menü komutu](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-1. OVF şablonu Dağıtma Sihirbazı > **kaynak**bölümünde ova dosyasının konumunu belirtin.
-1. **Ad** ve **konum**bölümünde VM için bir kolay ad belirtin. VM 'nin barındırıldığı envanter nesnesini seçin.
-1. **Konakta/kümede**, sanal makinenin çalıştırılacağı konağı veya kümeyi belirtin.
-1. **Depolama**alanında VM için depolama hedefini belirtin.
-1. **Disk Biçimi**’nde disk türünü ve boyutunu belirtin.
-1. **Ağ eşlemesinde**, sanal makinenin bağlanacağı ağı belirtin. Ağ, Azure geçişi sunucu değerlendirmesi 'ne meta veri göndermek için internet bağlantısı gerektirir.
-1. Ayarları gözden geçirip onaylayın ve ardından **son**' u seçin.
+2. OVF şablonu Dağıtma Sihirbazı > **kaynak**bölümünde ova dosyasının konumunu belirtin.
+3. **Ad** ve **konum**bölümünde VM için bir kolay ad belirtin. VM 'nin barındırıldığı envanter nesnesini seçin.
+4. **Konakta/kümede**, sanal makinenin çalıştırılacağı konağı veya kümeyi belirtin.
+5. **Depolama**alanında VM için depolama hedefini belirtin.
+6. **Disk Biçimi**’nde disk türünü ve boyutunu belirtin.
+7. **Ağ eşlemesinde**, sanal makinenin bağlanacağı ağı belirtin. Ağ, Azure geçişi sunucu değerlendirmesi 'ne meta veri göndermek için internet bağlantısı gerektirir.
+8. Ayarları gözden geçirip onaylayın ve ardından **son**' u seçin.
 
 ## <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
@@ -134,8 +134,8 @@ Gereci ilk kez ayarlayın.
 > Gereci, indirilen OVA yerine bir [PowerShell betiği](deploy-appliance-script.md) kullanarak ayarlarsanız, bu yordamın ilk iki adımı ilgili değildir.
 
 1. VSphere Istemci konsolunda VM 'ye sağ tıklayın ve ardından **Konsolu Aç**' ı seçin.
-1. Gereç için dil, saat dilimi ve parola sağlayın.
-1. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
+2. Gereç için dil, saat dilimi ve parola sağlayın.
+3. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
 
    Alternatif olarak, uygulama kısayolunu seçerek uygulamayı gereç masaüstünden açabilirsiniz.
 1. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
@@ -153,13 +153,13 @@ Gereci ilk kez ayarlayın.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
 1. **Oturum aç '** ı seçin. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
-1. Yeni sekmesinde, Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+2. Yeni sekmesinde, Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
    
    PIN ile oturum açma desteklenmez.
-1. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
-1. Azure geçişi projesinin oluşturulduğu aboneliği seçin ve ardından projeyi seçin.
-1. Gereç için bir ad belirtin. Ad 14 karakter veya daha kısa bir harf olmalıdır.
-1. **Kaydol**’u seçin.
+3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
+4. Azure geçişi projesinin oluşturulduğu aboneliği seçin ve ardından projeyi seçin.
+5. Gereç için bir ad belirtin. Ad 14 karakter veya daha kısa bir harf olmalıdır.
+6. **Kaydol**’u seçin.
 
 
 ## <a name="start-continuous-discovery"></a>Sürekli bulmayı Başlat
@@ -191,39 +191,53 @@ Bulma işlemi aşağıdaki gibi çalışmaktadır:
 Bulmadan sonra, VM 'Lerin Azure portal göründüğünü doğrulayabilirsiniz:
 
 1. Azure geçişi panosunu açın.
-1. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucuların**sayısını gösteren simgeyi seçin.
+2. **Azure geçişi-sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucuların**sayısını gösteren simgeyi seçin.
 
 ## <a name="set-up-an-assessment"></a>Değerlendirme ayarlama
 
 Azure geçişi sunucu değerlendirmesini kullanarak iki tür değerlendirme oluşturabilirsiniz:
 
-**Değerlendirmesini** | **Ayrıntılar** | **Veri**
+**Değerlendirme türü** | **Ayrıntılar**
+--- | --- 
+**Azure VM** | Şirket içi sunucularınızı Azure sanal makinelerine geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure 'a geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md)'lerinizi, [Hyper-V sanal](how-to-set-up-appliance-hyper-v.md)makinelerinizi ve [fiziksel sunucuları](how-to-set-up-appliance-physical.md) değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-assessment-calculation.md)
+**Azure VMware Çözümü (AVS)** | Şirket içi sunucularınızı [Azure VMware çözümüne (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction)geçirme değerlendirmeleri. <br/><br/> Bu değerlendirme türünü kullanarak Azure VMware çözümüne (AVS) geçiş için şirket içi [VMware VM](how-to-set-up-appliance-vmware.md) 'lerinizi değerlendirebilirsiniz. [Daha fazla bilgi edinin](concepts-azure-vmware-solution-assessment-calculation.md)
+
+Sunucu değerlendirmesi iki boyutlandırma ölçütü seçeneği sağlar:
+
+**Boyutlandırma ölçütü** | **Ayrıntılar** | **Veri**
 --- | --- | ---
-**Performans tabanlı** | Toplanan performans verilerine dayalı değerlendirmeler | **ÖNERILEN VM boyutu**: CPU ve bellek kullanım verilerine göre.<br/><br/> **Önerilen disk türü (Standart veya Premium yönetilen disk)**: Şirket ıçı disklerin IOPS ve aktarım hızına göre.
-**Şirket içi olarak** | Şirket içi boyutlandırmayı temel alan değerlendirmeler | **ÖNERILEN VM boyutu**: ŞIRKET içi VM boyutuna göre.<br/><br> **Önerilen disk türü**: değerlendirme için seçtiğiniz depolama türü ayarına göre.
+**Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | **Azure VM değerlendirmesi**: VM boyutu ÖNERISI, CPU ve bellek kullanımı verilerini temel alır.<br/><br/> Disk türü önerisi (Standart HDD/SSD veya Premium yönetilen diskler), şirket içi disklerin ıOPS ve aktarım hızını temel alır.<br/><br/> **Azure VMware çözümü (AVS) değerlendirmesi**: AVS düğümleri ÖNERISI, CPU ve bellek kullanımı verilerini temel alır.
+**Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler. | **Azure VM değerlendirmesi**: VM boyutu önerisi, ŞIRKET içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için depolama türü ayarında neleri seçdiklerinize bağlıdır.<br/><br/> **Azure VMware çözümü (AVS) değerlendirmesi**: AVS düğümleri önerisi, ŞIRKET içi VM boyutunu temel alır.
 
 ## <a name="run-an-assessment"></a>Değerlendirme çalıştırma
 
-Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
+*Azure VM değerlendirmesi* 'ni aşağıdaki şekilde çalıştırın:
 
 1. Değerlendirme oluşturmak için [en iyi uygulamaları](best-practices-assessment.md) gözden geçirin.
-1. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **değerlendir**' i seçin.
+2. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **değerlendir**' i seçin.
 
    ![Değerlendirme düğmesinin konumu](./media/tutorial-assess-vmware/assess.png)
 
-1. **Sunucuları değerlendir**bölümünde, değerlendirme için bir ad belirtin.
-1. **Tümünü görüntüle**' yi seçin ve ardından değerlendirme özelliklerini gözden geçirin.
+3. **Sunucuları değerlendir**bölümünde, değerlendirme türünü "Azure VM" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
+
+    ![Değerlendirme temelleri](./media/tutorial-assess-vmware/assess-servers-azurevm.png)
+ 
+4. **Tümünü görüntüle**' yi seçin ve ardından değerlendirme özelliklerini gözden geçirin.
 
    ![Değerlendirme özellikleri](./media/tutorial-assess-vmware/view-all.png)
 
-1. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
-1. **Gruba makine ekleme**' de gruba eklenecek VM 'ler ' i seçin.
-1. Grubu oluşturmak ve değerlendirmeyi çalıştırmak için **değerlendirme oluştur** ' u seçin.
+5. **Değerlendirmek için makineleri seçmek**üzere **İleri** ' ye tıklayın. **Grup Seç veya oluştur**' da, **Yeni oluştur**' u seçin ve bir grup adı belirtin. Bir grup, değerlendirme için bir veya daha fazla VM 'yi toplar.
+6. **Gruba makine ekleme**' de gruba eklenecek VM 'ler ' i seçin.
+7. Değerlendirme ayrıntılarını gözden geçirmek için **İleri** ' ye ve **değerlendirme oluştur** ' a tıklayın.
+8. Grubu oluşturmak ve değerlendirmeyi çalıştırmak için **değerlendirme oluştur** ' u seçin.
 
    ![Sunucuları değerlendir](./media/tutorial-assess-vmware/assessment-create.png)
 
-1. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**  >  **değerlendirmeleri**' nde görüntüleyin.
-1. Bir Excel dosyası olarak indirmek için **dışarı aktarma değerlendirmesi** ' ni seçin.
+8. Değerlendirme oluşturulduktan sonra **sunucuları**  >  **Azure geçişi: Sunucu değerlendirmesi**  >  **değerlendirmeleri**' nde görüntüleyin.
+9. Bir Excel dosyası olarak indirmek için **dışarı aktarma değerlendirmesi** ' ni seçin.
+
+Bir **Azure VMware çözümü (AVS) değerlendirmesi**çalıştırmak istiyorsanız, [burada](how-to-create-azure-vmware-solution-assessment.md)bahsedilen adımları izleyin.
+
 
 ## <a name="review-an-assessment"></a>Değerlendirmeyi gözden geçirme
 
@@ -236,20 +250,20 @@ Bir değerlendirme şunları açıklar:
 Bir değerlendirmeyi görüntülemek için:
 
 1. **Geçiş hedefleri**  >  **sunucularında** **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendirmeler** ' ı seçin.
-1. **Değerlendirmede**, açmak için bir değerlendirme seçin.
+2. **Değerlendirmede**, açmak için bir değerlendirme seçin.
 
    ![Değerlendirme özeti](./media/tutorial-assess-vmware/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>Azure hazırlığını gözden geçirme
 
 1. **Azure 'a hazırlık**bölümünde, VM 'lerin Azure 'a geçiş için hazır olup olmadığını doğrulayın.
-1. VM durumunu gözden geçirin:
+2. VM durumunu gözden geçirin:
     - **Azure Için hazırlanma**: Azure geçişi, değerlendirmede VM 'ler IÇIN bir VM boyutu ve maliyet tahminleri önermesinde kullanılır.
     - **Koşullara hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
     - **Azure için hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
     - **Hazır olma durumu bilinmiyor**: Azure geçişi, veri kullanılabilirliği sorunları nedeniyle hazırlığı değerlendiremediği zaman kullanılır.
 
-1. Bir **Azure hazırlık** durumu seçin. VM hazırlığı ayrıntıları ' nı görüntüleyebilirsiniz. Ayrıca, işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
+3. Bir **Azure hazırlık** durumu seçin. VM hazırlığı ayrıntıları ' nı görüntüleyebilirsiniz. Ayrıca, işlem, depolama ve ağ ayarları dahil olmak üzere VM ayrıntılarını görmek için ayrıntıya gidebilirsiniz.
 
 ### <a name="review-cost-details"></a>Maliyet ayrıntılarını gözden geçirin
 

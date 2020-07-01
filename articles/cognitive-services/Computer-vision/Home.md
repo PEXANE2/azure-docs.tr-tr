@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 90c2068021f1e9a173f37bdf1098edda10ab3d8d
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: cfd8dd7474cf7926ef2230e6be53a967a97645db
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413476"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554398"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -34,7 +34,7 @@ Görüntü İşleme, birçok dijital varlık yönetimi (DAM) senaryosunu güçle
 
 Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için görüntüleri çözümleyebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si tarafından sağlanır.
 
-| Eylem | Açıklama |
+| Eylem | Description |
 | ------ | ----------- |
 |**[Görsel özellikleri etiketleme](concept-tagging-images.md)**|Görüntüde görsel özellikleri, binlerce tanınabilir nesne, çok sayıda, manzara ve eylem kümesinden belirleyin ve etiketleyin. Etiketler belirsiz veya ortak olmayan bir bilgi olmadığında, API yanıtı etiketin bağlamını açıklığa kavuşturmak için ipuçları sağlar. Etiketleme yalnızca temel konu ile sınırlı kalmayıp ortam (iç mekân veya dış mekân), mobilyalar, aletler, bitkiler, hayvanlar, aksesuarlar, araçlar ve benzer öğeleri de kapsar.|
 |**[Nesneleri Algıla](concept-object-detection.md)**| Nesne algılama, etiketlemeyle benzerdir ancak API, uygulanan her bir etiket için sınırlayıcı kutu koordinatlarını döndürür. Örneğin, bir görüntü köpek, kedi ve kişi içeriyorsa, Algıla işlemi bu nesneleri görüntüdeki koordinatlarıyla birlikte listeler. Görüntüdeki nesneler arasında daha fazla ilişki işlemek için bu işlevi kullanabilirsiniz. Ayrıca, görüntüde aynı etiketin birden çok örneği olduğunu da bilmenizi sağlar.|
@@ -48,11 +48,9 @@ Görsel özellikleri ve özellikleri hakkında Öngörüler sağlamak için gör
 |**[Küçük resim oluşturma](concept-generating-thumbnails.md)**|Görüntülere uygun küçük resimler oluşturmak üzere söz konusu görüntülerin içeriklerini analiz edin. Görüntü İşleme ilk olarak yüksek kaliteli bir küçük resim oluşturur ve sonra *ilgilendiğiniz alanı*öğrenmek için görüntü içindeki nesneleri analiz eder. Görüntü İşleme sonra görüntüyü, ilgilendiğiniz alanın gereksinimlerine uyacak şekilde kırpar. Oluşturulan küçük resim, ihtiyaçlarınız doğrultusunda, özgün görüntünün en boy oranından farklı bir en boy oranı kullanılarak sunulabilir.|
 |**[İlgilendiğiniz alanı alın](concept-generating-thumbnails.md#area-of-interest)**|*İlgilendiğiniz alanın*koordinatlarını döndürmek için bir görüntünün içeriğini analiz edin. Görüntüyü kırpmak ve küçük resim oluşturmak yerine, Görüntü İşleme bölgenin sınırlayıcı kutusu koordinatlarını döndürür, böylece çağıran uygulama özgün görüntüyü istediğiniz gibi değiştirebilir.|
 
-## <a name="extract-text-from-images"></a>Görüntülerdeki metinleri ayıklama
+## <a name="detect-text-from-images"></a>Görüntülerden metin Algıla
 
-Görüntülerden görüntü okunabilir bir karakter akışına yazdırılmış ve el yazısı metinleri ayıklamak için Görüntü İşleme [okuma](concept-recognizing-text.md#read-api) API 'sini kullanabilirsiniz. Okuma API 'SI, en son modelleri kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metin ile birlikte kullanılır. Şu anda yedi farklı dil için çalışmaktadır (bkz. [dil desteği](./language-support.md)).
-
-Aynı zamanda, yazdırılan metni birkaç dilde ayıklamak için [optik karakter tanıma (OCR)](concept-recognizing-text.md) API 'sini de kullanabilirsiniz. Gerekirse, OCR tanınan metnin dönüşünü düzeltir ve her sözcüğün kare koordinatlarını sağlar. OCR, 25 dili destekler ve tanınan metnin dilini otomatik olarak algılar.
+Görüntülerden görüntü okunabilir bir karakter akışına yazdırılmış ve el yazısı metinleri ayıklamak için Görüntü İşleme [metin algılama API 'leri](concept-recognizing-text.md) API 'sini kullanabilirsiniz. Okuma API 'SI, en son modelleri kullanır ve alındılar, posterler, iş kartları, mektuplar ve beyaz tahtalar gibi çeşitli yüzeyler ve arka planlar üzerinde metin ile birlikte kullanılır. İki metin algılama API 'Leri, yazdırılan metnin [birkaç dilde](./language-support.md)ayıklanmasını destekler.
 
 ## <a name="moderate-content-in-images"></a>Görüntü içeriklerini denetleme
 
