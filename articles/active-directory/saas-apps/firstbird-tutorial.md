@@ -33,7 +33,7 @@ Bu öğreticide, Firstbird Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -104,7 +104,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Firstbird uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------- |
     | first_name | `user.givenname` |
     | last_name | `user.surname` |
@@ -126,9 +126,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -150,7 +150,7 @@ Bu bölümde, Azure çoklu oturum açma 'yı kullanarak Firstbird 'a erişim ver
 
 ## <a name="configure-firstbird-sso"></a>Firstbird SSO 'yu yapılandırma
 
-Bu adımları tamamladıktan sonra, "SSO yapılandırması" konusuna [support@firstbird.com](mailto:support@firstbird.com) sahip e-posta yoluyla bir destek isteğinde bir destek Isteğine lütfen firstbird gönderin.
+Bu adımları tamamladıktan sonra, [support@firstbird.com](mailto:support@firstbird.com) "SSO yapılandırması" konusuna sahip e-posta yoluyla bir destek isteğinde bir destek isteğine lütfen Firstbird gönderin.
 
 Firstbird daha sonra yapılandırmayı sisteme göre depolar ve hesabınız için SSO 'yu etkinleştirir. Bundan sonra, destek personelinin bir üyesi yapılandırmayı doğrulamak için sizinle iletişim kuracaktır.
 
