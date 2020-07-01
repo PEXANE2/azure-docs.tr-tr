@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b0a26b4d3f0f59f8e05c5990bbc64ee55f12f124
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307925"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604701"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Özel bir komut uygulaması yazarken hata ayıklama hataları
 
@@ -26,7 +26,7 @@ Bu makalede, özel komutlar uygulaması oluştururken hata ayıkladığınızda 
 
 [Lusıs, yazma kaynağı başına 500 uygulama kısıtlar](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits). Zaten 500 uygulamasına sahip bir yazma kaynağı kullanıyorsanız, LUSıS uygulamasının oluşturulması başarısız olabilir. 
 
-Seçili LUSıS yazma kaynağının 500 ' den küçük olduğundan emin olun. Aksi takdirde, yeni bir LUSıS yazma kaynağı oluşturabilir, başka birine geçebilir veya LUSıS uygulamalarınızı temizlemeyi deneyebilirsiniz.  
+Seçili LUSıS yazma kaynağında 500 'den az uygulama olduğundan emin olun. Aksi takdirde, yeni bir LUSıS Authoring Resource oluşturabilir, başka birine geçebilir veya LUSıS uygulamalarınızı temizlemeyi deneyebilirsiniz.  
 
 ## <a name="errors-when-deleting-an-application"></a>Uygulama silinirken hatalar oluştu
 ### <a name="cant-delete-luis-application"></a>LUSıS uygulaması silinemiyor
@@ -48,8 +48,8 @@ Kullanılırken bir parametreyi silmeye izin verilmiyor. Lütfen herhangi bir ko
 Kullanılırken bir Web uç noktası silme izniniz yok. Lütfen bir Web uç noktası kaldırılmadan önce bu Web uç noktasını kullanan tüm **çağrı Web uç noktası** eylemlerini kaldırın.
 
 ## <a name="errors-when-training-an-application"></a>Bir uygulamayı eğitmek için hatalar
-### <a name="build-in-intents"></a>Amaçlar halinde derleme
-LUSıS 'in derleme Evet/Hayır amacı vardır. Yalnızca "Yes", "Hayır" ile örnek cümleler olması eğitimin başarısız olmasına neden olur. 
+### <a name="built-in-intents"></a>Yerleşik amaçlar
+LUIN yerleşik Evet/Hayır amacı vardır. Yalnızca "Yes", "Hayır" ile örnek cümleler olması eğitimin başarısız olmasına neden olur. 
 
 | Sözcükle | Farklılıklar | 
 | ------- | --------- | 
@@ -72,7 +72,7 @@ Her komut için en az 1 örnek cümle olması gerekir.
 ### <a name="training-takes-too-long"></a>Eğitim çok uzun sürüyor
 LUSıS eğitiminin daha az örnekle hızla öğrenme amacı vardır. Çok sayıda örnek tümce eklemeyin. 
 
-Birçok örnek cümle varsa, bir parametre tanımlayın, bunları bir düzende soyut yapın ve örnek cümlelere ekleyin.
+Benzer birçok örnek cümle varsa, bir parametre tanımlayın, bunları bir düzene ekler ve örnek cümlelere ekleyin.
 
 Örneğin, aşağıdaki örnek tümceler için {araç} parametresini tanımlayabilir ve yalnızca "Book a {araç}" öğesini örnek cümlelere ekleyebilirsiniz.
 

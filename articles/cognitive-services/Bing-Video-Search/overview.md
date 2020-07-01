@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8377f0f5d586212c94bb763598b6e7a9e391073c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c52f909cf3cc77b4f5e40ee9804d0c473e575c5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382727"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601947"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Arama API'si nedir?
 
@@ -23,7 +23,7 @@ Bing Video Arama API'si, hizmet ve uygulamalarınıza video arama özellikleri e
 
 ## <a name="bing-video-search-api-features"></a>Bing Video Arama API'si özellikleri
 
-| Özellik                                                                                                                                                                                 | Açıklama                                                                                                                                                            |
+| Özellik                                                                                                                                                                                 | Description                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Gerçek zamanlı arama terimleri önerme](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | Yazılmaya başladıkları anda önerilen arama terimleri görüntülemek için [Bing Otomatik Öneri API](../bing-autosuggest/get-suggested-search-terms.md)'sini kullanarak uygulama deneyimini iyileştirin. |
 | [Video sonuçlarını filtreleme ve kısıtlama](concepts/get-videos.md#filtering-videos)                      | Sorgu parametrelerini düzenleyerek döndürülen videoları filtreleyin.                                                                                                       |
@@ -35,7 +35,7 @@ Bing Video Arama API'si, hizmet ve uygulamalarınıza video arama özellikleri e
 
 Bing Video Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSON 'u ayrıştırabilen herhangi bir programlama dilinden çağrı yapmayı kolaylaştırır. Hizmeti [REST API](csharp.md) veya [SDK](video-search-sdk-quickstart.md) kullanarak kullanabilirsiniz.
 
-1. Bing Arama API'lerine erişimi olan bir [Bilişsel Hizmetler API'si hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+1. Bing Arama API'lerine erişimi olan bir [Bilişsel Hizmetler API'si hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/free/cognitive-services/).
 2. İstekleri geçerli bir arama sorgusu ile API'ye gönderin.
 3. Döndürülen JSON iletisini ayrıştırarak API yanıtını işleyin.
 
@@ -43,8 +43,6 @@ Bing Video Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSO
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bing Video Arama API'si [Etkileşimli Tanıtım](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/) , bir arama sorgusunu nasıl özelleştireceğinizi ve Web 'de videoları nasıl araybileceğinizi gösterir.
-
-API'yi çağırmaya hazır olduğunuzda, bir [Bilişsel hizmetler API hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oluşturun. Azure aboneliğiniz yoksa ücretsiz olarak [hesap oluşturabilirsiniz](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
 İlk API isteğinizi hızlıca kullanmaya [başlamak için hızlı](csharp.md) başlangıcı kullanın.
 

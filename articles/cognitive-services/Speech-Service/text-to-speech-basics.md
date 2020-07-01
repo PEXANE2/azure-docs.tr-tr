@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 2bba1536c9d0990eb771f62d27b852ae1eb3b45c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: ddcfeaad70e6552f94f9c87b6e9cf24ed15bfba8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604624"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611484"
 ---
 # <a name="learn-the-basics-of-speech-synthesis"></a>Konuşma sensören'in temellerini öğrenin
 
@@ -29,8 +29,8 @@ Bu makalede, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kul
 * Sinir seslerini kullanma
 
 > [!TIP]
-> Hızlı başlangıçlarımızın birini tamamlamaya yönelik bir şansınız yoksa, alana 'yi başlatmanıza ve konuşma tanımayı kendiniz denemeniz önerilir.
-> * [Mikrofondan konuşmayı tanıma](quickstarts/text-to-speech.md)
+> Hızlı başlangıçlarımızın birini tamamlamaya yönelik bir şansınız yoksa, alana 'yi başlatmanıza ve metni kendinize konuşarak deneyebilirsiniz.
+> * [Konuşmayı hoparlöre sentezleme](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-csharp.md)]

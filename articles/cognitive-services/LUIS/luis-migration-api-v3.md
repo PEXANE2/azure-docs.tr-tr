@@ -2,14 +2,14 @@
 title: V3 API 'sindeki tahmin uç noktası değişiklikleri
 description: Sorgu tahmin uç noktası v3 API 'Leri değişti. Sürüm 3 uç nokta API 'Lerine nasıl geçiş yapılacağını anlamak için bu kılavuzu kullanın.
 ms.topic: how-to
-ms.date: 05/15/2020
+ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: 293cbd583e1493c5f142604457a00a8055c7a802
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338201"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610889"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
@@ -86,17 +86,7 @@ Sürümüne göre sorgulamak istiyorsanız, önce ile [API aracılığıyla yay�
 
 ### <a name="query-string-changes"></a>Sorgu dizesi değişiklikleri
 
-V3 API 'sinde farklı sorgu dizesi parametreleri vardır.
-
-|Param adı|Tür|Sürüm|Varsayılan|Amaç|
-|--|--|--|--|--|
-|`log`|boole|V2 & V3|yanlış|Sorguyu günlük dosyasında sakla. Varsayılan değer false 'dur.|
-|`query`|string|Yalnızca v3|Varsayılan değer yok-GET isteğinde gerekli|**V2 'de**, tahmin edilecek olan söylenişi `q` parametresi. <br><br>**V3 'de**, işlev `query` parametreye geçirilir.|
-|`show-all-intents`|boole|Yalnızca v3|yanlış|**Tahmin. amaçlar** nesnesindeki karşılık gelen puanı içeren tüm hedefleri döndürün. Amaçlar bir üst nesnede nesneler olarak döndürülür `intents` . Bu, bir dizide amacı bulmaya gerek kalmadan programlı erişime izin verir: `prediction.intents.give` . V2 'de, bunlar bir dizide döndürülür. |
-|`verbose`|boole|V2 & V3|yanlış|**V2 sürümünde**, true olarak ayarlandığında, tüm tahmin edilen amaçlar döndürülür. Tahmin edilen tüm amaçlar için ihtiyaç duyuyorsanız, v3 param ' ı kullanın `show-all-intents` .<br><br>**V3 'de**, bu parametre yalnızca varlık tahmini varlık meta veri ayrıntılarını sağlar.  |
-|`timezoneOffset`|string|V2|-|DatetimeV2 varlıklara uygulanan saat dilimi.|
-|`datetimeReference`|string|Yüklemesinde|-|DatetimeV2 varlıklara uygulanan [saat dilimi](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . `timezoneOffset`V2 'den değiştirilir.|
-
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ### <a name="v3-post-body"></a>V3 posta gövdesi
 

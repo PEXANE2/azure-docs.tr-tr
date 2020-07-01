@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: fcd3ab3cce74aa0ef021427904077c364de1f493
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c821df0e7cb00c73899a2694dd0b2eb6823b1d9e
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606284"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611205"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Hızlı başlangıç: Python 'da Bing yerel Iş Arama API 'sine bir sorgu gönderme
 
@@ -26,8 +26,9 @@ Bu örnek uygulama, bir arama sorgusu için API 'den gelen yerel yanıt verileri
 
 ## <a name="prerequisites"></a>Önkoşullar
 
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Python](https://www.python.org/) 2. x veya 3. x.
-* Bing Arama API'leri olan bilişsel [Hizmetler API 'si hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Bu hızlı başlangıçta [ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) yeterlidir. Ücretsiz deneme sürümünüzü etkinleştirdiğinizde sunulan API anahtarını kaydedin. Daha fazla bilgi için bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir Bing arama kaynağı oluşturun Bing arama bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
 
 ## <a name="run-the-complete-application"></a>Uygulamanın tamamını Çalıştır
 
@@ -70,4 +71,4 @@ print (json.dumps(json.loads(result), indent=4))
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Yerel Iş arama Java hızlı başlangıç](local-search-java-quickstart.md)
 - [Yerel Iş arama C# hızlı başlangıç](local-quickstart.md)
-- [Yerel Iş arama Node. js hızlı başlangıç](local-search-node-quickstart.md)
+- [Yerel Iş arama Node.js hızlı başlangıç](local-search-node-quickstart.md)

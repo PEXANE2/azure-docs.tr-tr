@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882758"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609478"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Bing Arama API'leri analiz ekleyin
 
 Bing Istatistikleri Bing Arama API'leri için analiz sağlar. Bu analizler çağrı hacmi, en çok sorgu dizeleri, coğrafi dağıtım ve daha fazlasını içerir. [Azure Portal](https://ms.portal.azure.com) Bing istatistiklerini Azure kaynağına giderek ve **Bing istatistiklerini etkinleştir**' e tıklayarak etkinleştirebilirsiniz.
 
 > [!IMPORTANT]
-> * Bing Istatistikleri ücretsiz deneme abonelikleri veya ücretsiz `F0` fiyatlandırma katmanındaki kaynaklar ile kullanılamaz.
+> * Bing Istatistikleri ücretsiz `F0` fiyatlandırma katmanındaki kaynaklarla kullanılamaz.
 > * Üçüncü taraflara dağıtmak üzere uygulamalar oluşturmak için Bing Istatistik panosu aracılığıyla mevcut herhangi bir veriyi kullanamazsınız.
 > * Bing Istatistiklerini etkinleştirmek, aboneliğinizin hızını biraz artırır. Ayrıntılar için bkz. [fiyatlandırma](https://aka.ms/bingstatisticspricing) .
 
@@ -46,7 +46,7 @@ Varsayılan olarak, grafikler ve grafikler, erişiminiz olan tüm ölçümleri v
 
 - **Kaynak kimliği**: Azure aboneliğinizi tanımlayan BENZERSIZ kaynak kimliği. Birden fazla Bing Arama API katmanına abone olduğunuzda liste birden fazla kimlik içerir. Varsayılan olarak tüm kaynaklar seçilidir.  
   
-- **Pazarlar**: sonuçların geldiği pazarlar. Örneğin, en-US (Ingilizce, Birleşik Devletler). Varsayılan olarak tüm pazarlar seçilidir. Bu `en-WW` Pazar, çağrı bir pazar belirlememe ve Bing kullanıcının pazarını belirleyemezse Bing 'in kullandığı pazardır.  
+- **Pazarlar**: sonuçların geldiği pazarlar. Örneğin, en-US (Ingilizce, Birleşik Devletler). Varsayılan olarak tüm pazarlar seçilidir. `en-WW`Bu Pazar, çağrı bir pazar belirlememe ve Bing kullanıcının pazarını belirleyemezse Bing 'in kullandığı pazardır.  
   
 - **Uç noktalar**: Bing arama API uç noktaları. Liste, ücretli aboneliğinizin bulunduğu tüm uç noktaları içerir. Varsayılan olarak, tüm uç noktalar seçilidir.  
 
@@ -86,15 +86,15 @@ Aşağıdakiler olası ölçümler ve uç nokta kısıtlamalardır.
   > [!NOTE]  
   > E-posta, telefon numarası, SSN vb. gibi gizli bilgileri kaldırmak için bazı sorgu terimleri bastırılabilir.
 
-- **Coğrafi dağıtım**: arama sonuçlarının gerçekleştiği pazarlar. Örneğin, `en-us` (ingilizce, Birleşik Devletler). Bing, belirtilmişse `mkt` pazaryı belirlemede sorgu parametresini kullanır. Aksi halde, Bing, pazarı belirlemede arayanın IP adresi gibi sinyalleri kullanır.
+- **Coğrafi dağıtım**: arama sonuçlarının gerçekleştiği pazarlar. Örneğin, `en-us` (İngilizce, Birleşik Devletler). Bing, `mkt` belirtilmişse pazaryı belirlemede sorgu parametresini kullanır. Aksi halde, Bing, pazarı belirlemede arayanın IP adresi gibi sinyalleri kullanır.
 
 - **Yanıt kodu dağıtımı**: raporlama dönemi boyunca tüm çağrıların http durum kodları.
 
 - **Çağrı kaynağı dağıtımı**: kullanıcılar tarafından kullanılan tarayıcı türleri. Örneğin, Microsoft Edge, Chrome, Safari ve FireFox. Tarayıcı dışından yapılan çağrılar (botlar, Postman veya bir konsol uygulamasından kıvrımlı kullanılması) Kitaplıklar altında gruplandırılır. Kaynak, isteğin Kullanıcı Aracısı üstbilgi değeri kullanılarak belirlenir. İstek, Kullanıcı Aracısı üstbilgisini içermiyorsa, Bing kaynağı diğer sinyallerden türemeye çalışır.  
 
-- **Güvenli arama dağıtımı**: Güvenli Arama değerlerinin dağılımı. Örneğin kapalı, orta veya katı. Belirtilmişse `safeSearch` , sorgu parametresi değerini içerir. Aksi halde, Bing değeri orta olarak belirler.  
+- **Güvenli arama dağıtımı**: Güvenli Arama değerlerinin dağılımı. Örneğin kapalı, orta veya katı. `safeSearch`Belirtilmişse, sorgu parametresi değerini içerir. Aksi halde, Bing değeri orta olarak belirler.  
 
-- **Istenen dağıtım yanıtları**: `responseFilter` sorgu parametresinde istediğiniz Web araması API yanıtı.  
+- **Istenen dağıtım yanıtları**: sorgu parametresinde ISTEDIĞINIZ Web araması API yanıtı `responseFilter` .  
 
 - **Döndürülen yanıt dağıtımı**: YANıTTA Web araması API 'nin döndürdüğü yanıtlar.
 

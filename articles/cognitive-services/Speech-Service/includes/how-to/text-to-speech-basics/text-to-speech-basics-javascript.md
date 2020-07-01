@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: d91082ae3c0ae5e501675a06b02e2f55f20ce236
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e0eff35405b0fbd5cd8ec41c9e455393f36d14f8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399552"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611483"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
-Herhangi bir şey yapabilmeniz için önce <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript konuşma SDK 'sını <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>yüklemeniz gerekir. Platformunuza bağlı olarak, aşağıdaki yönergeleri kullanın:
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node. js<span 
+Herhangi bir şey yapabilmeniz için önce <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript konuşma SDK 'sını <span class="docon docon-navigate-external x-hidden-focus"></span> </a>yüklemeniz gerekir. Platformunuza bağlı olarak, aşağıdaki yönergeleri kullanın:
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js<span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web tarayıcısı<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
@@ -36,7 +36,7 @@ import {
 } from "microsoft-cognitiveservices-speech-sdk";
 ```
 
-Hakkında `import`daha fazla bilgi için bkz. <a href="https://javascript.info/import-export" target="_blank">dışa ve <span class="docon docon-navigate-external x-hidden-focus"> </span>içeri aktarma </a>.
+Hakkında daha fazla bilgi için `import` bkz. <a href="https://javascript.info/import-export" target="_blank">dışa ve <span class="docon docon-navigate-external x-hidden-focus"></span> içeri aktarma </a>.
 
 # <a name="require"></a>[gerektirir](#tab/require)
 
@@ -45,37 +45,37 @@ const readFileSync = require("fs").readFileSync;
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-Hakkında `require`daha fazla bilgi için bkz. <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">ne gerekir? <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Hakkında daha fazla bilgi için `require` bkz. <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">ne gerektiriyor? <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 
 # <a name="script"></a>[SCRIPT](#tab/script)
 
-<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript konuşma SDK 'sı <span class="docon docon-navigate-external x-hidden-focus"></span> </a> *Microsoft. biliveservices. Speech. SDK. demeti. js* dosyasını indirip ayıklayın ve HTML dosyanıza erişilebilen bir klasöre yerleştirin.
+<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript konuşma SDK <span class="docon docon-navigate-external x-hidden-focus"></span> 'sı</a> *microsoft.cognitiveservices.speech.sdk.bundle.js* dosyasını indirip ayıklayın ve HTML dosyanıza erişilebilen bir klasöre yerleştirin.
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
 ```
 
 > [!TIP]
-> Bir Web tarayıcısını hedefliyorsanız ve `<script>` etiketini kullanıyorsanız; `sdk` ön ek gerekli değildir. `sdk` Ön ek, `require` modülü adlandırmak için kullanılan bir diğer addır.
+> Bir Web tarayıcısını hedefliyorsanız ve etiketini kullanıyorsanız, `<script>` `sdk` ön ek gerekli değildir. `sdk`Ön ek, modülü adlandırmak için kullanılan bir diğer addır `require` .
 
 ---
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)oluşturmanız gerekir. Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir oluşturmanız gerekir [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) . Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
 
 > [!NOTE]
 > Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
 
-[`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest)Şunları başlatabilmeniz için birkaç yol vardır:
+Şunları başlatabilmeniz için birkaç yol vardır [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) :
 
 * Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
 * Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bu örnekte, bir abonelik anahtarı ve [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) bölgesi kullanarak bir oluşturun. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
+Bu örnekte, bir [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) abonelik anahtarı ve bölgesi kullanarak bir oluşturun. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın. Ayrıca, bu makalenin geri kalanı için kullanabileceğiniz, farklı özelleştirmeler için değiştirdiğiniz bazı temel ortak kod oluşturabilirsiniz.
 
 ```javascript
 function synthesizeSpeech() {
@@ -85,9 +85,9 @@ function synthesizeSpeech() {
 
 ## <a name="synthesize-speech-to-a-file"></a>Konuşmayı bir dosyaya sentezleştirme
 
-Sonra, metin okuma dönüştürmeleri [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) yürüten ve hoparlörlerde, dosyalarda veya diğer çıkış akışlarına giden çıktıları yürüten bir nesne oluşturun. , [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) Önceki adımda oluşturulan [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) nesneyi params olarak kabul eder ve çıkış sonuçlarının nasıl işleneceğini [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) belirten bir nesnedir.
+Sonra, [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) metin okuma dönüştürmeleri yürüten ve hoparlörlerde, dosyalarda veya diğer çıkış akışlarına giden çıktıları yürüten bir nesne oluşturun. , [`SpeechSynthesizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?view=azure-node-latest) [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) Önceki adımda oluşturulan nesneyi params olarak kabul eder ve [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) Çıkış sonuçlarının nasıl işleneceğini belirten bir nesnedir.
 
-Başlamak için, `AudioConfig` `.wav` `fromAudioFileOutput()` statik işlevi kullanarak çıktıyı bir dosyaya otomatik olarak yazmak üzere bir oluşturun.
+Başlamak için, `AudioConfig` `.wav` statik işlevi kullanarak çıktıyı bir dosyaya otomatik olarak yazmak üzere bir oluşturun `fromAudioFileOutput()` .
 
 ```javascript
 function synthesizeSpeech() {
@@ -96,7 +96,7 @@ function synthesizeSpeech() {
 }
 ```
 
-Ardından, `SpeechSynthesizer` `speechConfig` nesne ve `audioConfig` nesneyi params olarak geçirerek bir örnek oluşturun. Daha sonra, konuşma birleştirmenin yürütülmesi ve bir dosyaya yazılması, bir metin dizesiyle çalışırken `speakTextAsync()` basittir. Sonucun doğru bir şekilde çalışması için sonuç geri çağırması `synthesizer.close()`, aslında çağırmak için gereken harika bir yerdir.
+Ardından, `SpeechSynthesizer` `speechConfig` nesne ve nesneyi params olarak geçirerek bir örnek oluşturun `audioConfig` . Daha sonra, konuşma birleştirmenin yürütülmesi ve bir dosyaya yazılması, `speakTextAsync()` bir metin dizesiyle çalışırken basittir. Sonucun doğru bir şekilde çalışması için sonuç geri çağırması, aslında çağırmak için gereken harika bir yerdir `synthesizer.close()` .
 
 ```javascript
 function synthesizeSpeech() {
@@ -111,12 +111,11 @@ function synthesizeSpeech() {
                 console.log(JSON.stringify(result));
             }
             synthesizer.close();
-        }
-    },
-    error => {
-        console.log(error);
-        synthesizer.close();
-    });
+        },
+        error => {
+            console.log(error);
+            synthesizer.close();
+        });
 }
 ```
 
@@ -124,7 +123,7 @@ Programı çalıştırın ve belirttiğiniz konuma bir sentezlenmiş `.wav` dosy
 
 ## <a name="synthesize-to-speaker-output"></a>Konuşmacı çıktısına sentezleştirme
 
-Bazı durumlarda, doğrudan sentezlenmiş konuşmayı doğrudan bir konuşmacının çıktısını almak isteyebilirsiniz. Bunu yapmak için `AudioConfig` `fromDefaultSpeakerOutput()` static işlevini kullanarak örneğini oluşturun. Bu, geçerli etkin çıkış cihazına çıkış verir.
+Bazı durumlarda, doğrudan sentezlenmiş konuşmayı doğrudan bir konuşmacının çıktısını almak isteyebilirsiniz. Bunu yapmak için `AudioConfig` static işlevini kullanarak örneğini oluşturun `fromDefaultSpeakerOutput()` . Bu, geçerli etkin çıkış cihazına çıkış verir.
 
 ```javascript
 function synthesizeSpeech() {
@@ -153,14 +152,14 @@ Konuşma uygulaması geliştirmede birçok senaryo için, büyük olasılıkla b
 
 * Özel aşağı akış Hizmetleri için arama yapabilecek bir akış olarak ortaya çıkan bayt dizisinin soyut olması.
 * Sonucu diğer API 'leri veya hizmetleriyle tümleştirin.
-* Ses verilerini değiştirin, özel `.wav` üstbilgiler yazın vb.
+* Ses verilerini değiştirin, özel üstbilgiler yazın `.wav` vb.
 
-Önceki örnekte bu değişikliği yapmak basittir. İlk olarak, daha `AudioConfig` fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için bloğu kaldırın. Sonra `SpeechSynthesizer` Oluşturucu `undefined` `AudioConfig` içinde öğesine geçirin. 
+Önceki örnekte bu değişikliği yapmak basittir. İlk `AudioConfig` olarak, daha fazla denetim için çıkış davranışını bu noktadan el ile yöneteceği için bloğu kaldırın. Sonra `undefined` `AudioConfig` Oluşturucu içinde öğesine geçirin `SpeechSynthesizer` . 
 
 > [!NOTE]
-> Yukarıdaki `undefined` konuşmacı çıktısı `AudioConfig`örneğinde olduğu gibi değil, için geçirme, geçerli etkin çıkış cihazında varsayılan olarak sesi oynamaz.
+> `undefined` `AudioConfig` Yukarıdaki konuşmacı çıktısı örneğinde olduğu gibi değil, için geçirme, geçerli etkin çıkış cihazında varsayılan olarak sesi oynamaz.
 
-Bu kez, sonucu bir [`SpeechSynthesisResult`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult?view=azure-node-latest) değişkene kaydedersiniz. `SpeechSynthesisResult.audioData` Özelliği, çıkış verilerinden `ArrayBuffer` birini döndürür. Bu `ArrayBuffer` , el ile çalışabilirsiniz.
+Bu kez, sonucu bir [`SpeechSynthesisResult`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult?view=azure-node-latest) değişkene kaydedersiniz. `SpeechSynthesisResult.audioData`Özelliği, `ArrayBuffer` Çıkış verilerinden birini döndürür. Bu, el ile çalışabilirsiniz `ArrayBuffer` .
 
 ```javascript
 function synthesizeSpeech() {
@@ -183,7 +182,7 @@ function synthesizeSpeech() {
 }
 ```
 
-Buradan, sonuçta elde edilen `ArrayBuffer` nesneyi kullanarak özel davranışları uygulayabilirsiniz.
+Buradan, sonuçta elde edilen nesneyi kullanarak özel davranışları uygulayabilirsiniz `ArrayBuffer` .
 
 ## <a name="customize-audio-format"></a>Ses biçimini Özelleştir
 
@@ -193,11 +192,11 @@ Aşağıdaki bölümde aşağıdakiler dahil olmak üzere ses çıkış öznitel
 * Örnek hız
 * Bit derinliği
 
-Ses biçimini değiştirmek için `speechSynthesisOutputFormat` `SpeechConfig` nesnesi üzerinde özelliğini kullanın. Bu özellik, çıkış `enum` biçimini seçmek [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest)için kullandığınız türünde bir tür bekliyor. Kullanılabilir [Ses biçimlerinin listesi](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest) için başvuru belgelerine bakın.
+Ses biçimini değiştirmek için `speechSynthesisOutputFormat` nesnesi üzerinde özelliğini kullanın `SpeechConfig` . Bu özellik `enum` [`SpeechSynthesisOutputFormat`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest) , çıkış biçimini seçmek için kullandığınız türünde bir tür bekliyor. Kullanılabilir [Ses biçimlerinin listesi](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?view=azure-node-latest) için başvuru belgelerine bakın.
 
-Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçenekler vardır. Tanımına göre, gibi `Raw24Khz16BitMonoPcm` ham biçimlerin ses üst bilgilerini içermediğini unutmayın. Ham biçimleri yalnızca aşağı akış uygulamanızın bir ham Bitstream kodunu çözemediğini veya bit derinliğine, örnek hızına, kanal sayısına ve vb. göre el ile üstbilgileri oluşturmayı planlıyorsanız kullanın.
+Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçenekler vardır. Tanımına göre, gibi ham biçimlerin `Raw24Khz16BitMonoPcm` Ses üst bilgilerini içermediğini unutmayın. Ham biçimleri yalnızca aşağı akış uygulamanızın bir ham Bitstream kodunu çözemediğini veya bit derinliğine, örnek hızına, kanal sayısına ve vb. göre el ile üstbilgileri oluşturmayı planlıyorsanız kullanın.
 
-Bu örnekte, `Riff24Khz16BitMonoPcm` `speechSynthesisOutputFormat` `SpeechConfig` nesnesi üzerinde ayarını yaparak Yüksek uygunluğa sahip bir biçim belirtirsiniz. Önceki bölümdeki örneğe benzer şekilde, ses `ArrayBuffer` verilerini alın ve onunla etkileşime geçin.
+Bu örnekte, `Riff24Khz16BitMonoPcm` nesnesi üzerinde ayarını yaparak Yüksek uygunluğa sahip bir biçim belirtirsiniz `speechSynthesisOutputFormat` `SpeechConfig` . Önceki bölümdeki örneğe benzer şekilde, ses `ArrayBuffer` verilerini alın ve onunla etkileşime geçin.
 
 ```javascript
 function synthesizeSpeech() {
@@ -223,14 +222,14 @@ function synthesizeSpeech() {
 }
 ```
 
-Programınızı yeniden çalıştırmak, belirtilen yola bir `.wav` dosya yazacak.
+Programınızı yeniden çalıştırmak, `.wav` belirtilen yola bir dosya yazacak.
 
 ## <a name="use-ssml-to-customize-speech-characteristics"></a>SSML 'yi kullanarak konuşma özelliklerini özelleştirme
 
 Konuşma sen, biçimlendirme dili (SSML), isteklerinizi bir XML şemasından göndererek, metin okuma çıktılarından oluşan sıklık, Söyleniş, konuşma oranı, hacim ve daha fazlasını ayarlamanıza olanak sağlar. Bu bölümde, birkaç pratik kullanım örneği gösterilmektedir, ancak daha ayrıntılı bir kılavuz için bkz. [SSML nasıl yapılır makalesi](../../../speech-synthesis-markup.md).
 
 Özelleştirme için SSML 'yi kullanmaya başlamak için, sese geçiş yapan basit bir değişiklik yaparsınız.
-İlk olarak, bu örnekte `ssml.xml`, kök proje dizininizde SSML yapılandırması için yenı bir XML dosyası oluşturun. Kök öğesi her zaman `<speak>`ve metni bir `<voice>` öğe içinde sarmalama, `name` param kullanarak sesi değiştirmenize olanak sağlar. Bu örnek, sesi erkek Ingilizce (UK) sesine dönüştürür. Bu sesin, **sinir** sesinden farklı fiyatlandırmaya ve kullanılabilirliğine sahip **Standart** bir ses olduğunu unutmayın. Desteklenen **Standart** seslerin [tam listesine](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) bakın.
+İlk olarak, bu örnekte, kök proje dizininizde SSML yapılandırması için yeni bir XML dosyası oluşturun `ssml.xml` . Kök öğesi her zaman `<speak>` ve metni bir öğe içinde sarmalama, `<voice>` param kullanarak sesi değiştirmenize olanak sağlar `name` . Bu örnek, sesi erkek Ingilizce (UK) sesine dönüştürür. Bu sesin, **sinir** sesinden farklı fiyatlandırmaya ve kullanılabilirliğine sahip **Standart** bir ses olduğunu unutmayın. Desteklenen **Standart** seslerin [tam listesine](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices) bakın.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -240,7 +239,7 @@ Konuşma sen, biçimlendirme dili (SSML), isteklerinizi bir XML şemasından gö
 </speak>
 ```
 
-Ardından, XML dosyanıza başvurmak için konuşma sensıs isteğini değiştirmeniz gerekir. İstek genellikle aynıdır, ancak `speakTextAsync()` işlevini kullanmak yerine kullanın. `speakSsmlAsync()` Bu işlev bir XML dizesi bekliyor, bu nedenle ilk olarak bir XML dosyası yüklemek için bir işlev oluşturun ve bunu bir dize olarak döndürün.
+Ardından, XML dosyanıza başvurmak için konuşma sensıs isteğini değiştirmeniz gerekir. İstek genellikle aynıdır, ancak işlevini kullanmak yerine `speakTextAsync()` kullanın `speakSsmlAsync()` . Bu işlev bir XML dizesi bekliyor, bu nedenle ilk olarak bir XML dosyası yüklemek için bir işlev oluşturun ve bunu bir dize olarak döndürün.
 
 ```javascript
 function xmlToString(filePath) {
@@ -249,7 +248,7 @@ function xmlToString(filePath) {
 }
 ```
 
-Hakkında `readFileSync`daha fazla bilgi için bkz. <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node. js dosya<span class="docon docon-navigate-external x-hidden-focus"></span>sistemi</a>. Buradan, sonuç nesnesi önceki örneklerle tamamen aynıdır.
+Hakkında daha fazla bilgi için `readFileSync` bkz. <a href="https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options" target="_blank">Node.js dosya <span class="docon docon-navigate-external x-hidden-focus"></span> sistemi</a>. Buradan, sonuç nesnesi önceki örneklerle tamamen aynıdır.
 
 ```javascript
 function synthesizeSpeech() {
@@ -275,7 +274,7 @@ function synthesizeSpeech() {
 }
 ```
 
-Çıktı işe yarar, ancak daha doğal bir şekilde ses duymayı sağlayacak birkaç basit ek değişiklik vardır. Genel konuşma hızı çok hızlıdır, bu nedenle bir etiket ekleyeceğiz ve varsayılan orandaki `<prosody>` **%90** ' a kadar olan hızı azaltabilirsiniz. Ayrıca, tümcede virgülden sonraki duraklama, çok kısa ve doğal olmayan bir soun. Bu sorunu onarmak için konuşmayı geciktirmek üzere `<break>` bir etiket ekleyin ve zaman param ' ı **200ms**olarak ayarlayın. Bu özelleştirmelerin çıktıyı nasıl etkilediğine bakmak için senmu yeniden çalıştırın.
+Çıktı işe yarar, ancak daha doğal bir şekilde ses duymayı sağlayacak birkaç basit ek değişiklik vardır. Genel konuşma hızı çok hızlıdır, bu nedenle bir `<prosody>` etiket ekleyeceğiz ve varsayılan orandaki **%90** ' a kadar olan hızı azaltabilirsiniz. Ayrıca, tümcede virgülden sonraki duraklama, çok kısa ve doğal olmayan bir soun. Bu sorunu onarmak için `<break>` konuşmayı geciktirmek üzere bir etiket ekleyin ve zaman param ' ı **200ms**olarak ayarlayın. Bu özelleştirmelerin çıktıyı nasıl etkilediğine bakmak için senmu yeniden çalıştırın.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -291,7 +290,7 @@ function synthesizeSpeech() {
 
 Sinir sesleri, derin sinir Networks tarafından desteklenen konuşma senime algoritmalardır. Bir sinir sesi kullanırken, sentezlenmiş konuşma, insan kayıtlarından neredeyse ayırt edilemez. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, sinir seslerde kullanıcılar AI sistemleriyle etkileşim kurarken büyük ölçüde dinleme performansını önemli ölçüde azaltır.
 
-Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)birini değiştirin. Ardından, için `mstts`bir XML ad alanı ekleyin ve metninizi `<mstts:express-as>` etikete sarın. Konuşma stilini `style` özelleştirmek için param 'ı kullanın. Bu örnek kullanır `cheerful`, ancak konuşma stilindeki farkı görmek `customerservice` için `chat` veya olarak ayarlamayı deneyin.
+Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)birini değiştirin. Ardından, için bir XML ad alanı ekleyin `mstts` ve metninizi etikete sarın `<mstts:express-as>` . `style`Konuşma stilini özelleştirmek için param 'ı kullanın. Bu örnek kullanır `cheerful` , ancak `customerservice` `chat` konuşma stilindeki farkı görmek için veya olarak ayarlamayı deneyin.
 
 > [!IMPORTANT]
 > Sinir sesleri **yalnızca** *Doğu ABD*, *Güney Doğu Asya*ve *Batı Avrupa* bölgelerinde oluşturulan konuşma kaynakları için desteklenir.

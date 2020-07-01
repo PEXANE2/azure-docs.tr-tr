@@ -4,23 +4,23 @@ description: Bu öğreticide, saydam bir ağ geçidi olarak yapılandırılmış
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2019
+ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dca903591c5d6805108d55163aaedc2435d9297e
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74706902"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610090"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
 
 > [!NOTE]
 > Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
 
-Bu makalede, bir kez geliştirme makinesini sanal cihaz olarak kullanmaya, ancak cihazın verileri saydam bir ağ geçidi olarak yapılandırılmış IoT Edge cihazına göndermesi yerine, doğrudan IoT Hub.
+Bu makalede, bir kez sanal cihaz olarak geliştirme sanal makinesi olarak kullanıyoruz. Ancak, IoT Hub doğrudan veri göndermek yerine, cihaz verileri saydam bir ağ geçidi olarak yapılandırılmış IoT Edge cihazına gönderir.
 
 Sanal cihaz veri gönderirken IoT Edge cihazının işlemini izliyoruz. Cihazın çalışması tamamlandığında, her şeyin beklendiği gibi çalıştığını doğrulamak için depolama hesabımızda bulunan verilere baktık.
 
@@ -30,22 +30,22 @@ Bu adım genellikle bir bulut veya cihaz geliştiricisi tarafından gerçekleşt
 
 Aşağı akış (veya yaprak) cihazının benzetimini yapmak için [Devicebandı projesini](tutorial-machine-learning-edge-03-generate-data.md) yeniden kullanın. Saydam ağ geçidine bağlanmak için iki ek şey gerekir:
 
-* Aşağı akış cihazını (Bu durumda geliştirme makinemiz) IoT Edge çalışma zamanı tarafından kullanılan sertifika yetkilisine güvenmesini sağlamak için sertifikayı kaydedin.
+* Aşağı akış IoT cihazının IoT Edge çalışma zamanı tarafından kullanılan sertifika yetkilisine güvenmesini sağlamak için sertifikayı kaydedin. Bu durumda, bir aşağı akış cihazı geliştirme sanal makinesi.
 * Sınır Ağ Geçidi tam etki alanı adını (FQDN) cihaz bağlantı dizesine ekleyin.
 
 Bu iki öğenin nasıl uygulandığını görmek için koda bakın.
 
 1. Geliştirme makinenizde Visual Studio Code açın.
 
-2. C:\\kaynak\\ıotedgeandmlsample\\Device, dosyasını açmak için **Dosya** > **klasörü aç...** öğesini kullanın.
+1. **File**  >  C: kaynak ıotedgeandmlsample Device, dosyasını açmak için dosya**klasörü aç...** öğesini kullanın \\ \\ \\ .
 
-3. Program.cs ' de InstallCertificate () yöntemine bakın.
+1. Program.cs ' de InstallCertificate () yöntemine bakın.
 
-4. Kod sertifika yolunu bulursa, sertifikayı makineye yüklemek için CertificateManager. ınstallcacert yöntemini çağırır.
+1. Kod sertifika yolunu bulursa, sertifikayı makineye yüklemek için CertificateManager. ınstallcacert yöntemini çağırır.
 
-5. Şimdi TurbofanDevice sınıfında Getımpl Ubdevice yöntemine bakın.
+1. Şimdi TurbofanDevice sınıfında Getımpl Ubdevice yöntemine bakın.
 
-6. Kullanıcı, "-g" seçeneğini kullanarak ağ geçidinin FQDN 'sini belirttiğinde, bu değer bu yönteme cihaz bağlantı dizesine eklenmiş olan gatewayFqdn olarak geçirilir.
+1. Kullanıcı, "-g" seçeneğini kullanarak ağ geçidinin FQDN 'sini belirttiğinde, bu değer bu yönteme `gatewayFqdn` Cihaz bağlantı dizesine eklenen değişken olarak geçirilir.
 
    ```csharp
    connectionString = $"{connectionString};GatewayHostName={gatewayFqdn.ToLower()}";
@@ -53,21 +53,23 @@ Bu iki öğenin nasıl uygulandığını görmek için koda bakın.
 
 ## <a name="build-and-run-leaf-device"></a>Yaprak cihaz oluşturma ve çalıştırma
 
-1. Devicebandı projesi Visual Studio Code hala açıkken, projeyi derleyin (Ctrl + Shift + B veya **Terminal** > **çalıştırma oluşturma görevi...**) ve iletişim kutusundan **Oluştur** ' u seçin.
+1. Devicebir Project Visual Studio Code hala açıkken, projeyi derleyin. **Terminal** menüsünde **derleme görevini Çalıştır** ' ı seçin ve **Oluştur**' u seçin.
 
-2. Portalda IoT Edge cihaz sanal makinenize giderek ve **DNS adı** değerini genel bakış ' dan kopyalayarak kenar ağ geçidinizin için tam etki alanı adını (FQDN) bulun.
+1. Uç ağ geçidinizin için tam etki alanı adını (FQDN), Azure portal IoT Edge cihazınıza (Linux VM) giderek ve **DNS adı** değerini genel bakış sayfasından kopyalayarak bulun.
 
-3. Visual Studio Code terminali (**Terminal** > **yeni Terminal**) açın ve aşağıdaki komutu çalıştırarak sanal makineden kopyaladığınız DNS `<edge_device_fqdn>` adıyla değiştirin:
+1. Zaten çalışmıyorsa IoT cihazınızı (Linux VM) başlatın.
+
+1. Visual Studio Code terminalini açın. **Terminal** menüsünden **yeni Terminal** ' ı seçin ve aşağıdaki komutu ÇALıŞTıRARAK `<edge_device_fqdn>` IoT Edge cihazdan kopyaladığınız DNS adıyla değiştirin (Linux VM):
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1
    ```
 
-4. Uygulama, sertifikayı geliştirme makinenize yüklemeye çalışır. Bunu yaptığınızda güvenlik uyarısını kabul edin.
+1. Uygulama, sertifikayı geliştirme makinenize yüklemeye çalışır. Bunu yaptığınızda güvenlik uyarısını kabul edin.
 
-5. IoT Hub bağlantı dizesi istendiğinde, Azure IoT Hub cihazlar panelinde üç nokta (**...**) simgesine tıklayın ve **IoT Hub bağlantı dizesini Kopyala**' yı seçin. Değeri terminale yapıştırın.
+1. IoT Hub bağlantı dizesi istendiğinde, Azure IoT Hub cihazlar panelinde üç nokta (**...**) simgesine tıklayın ve **IoT Hub bağlantı dizesini Kopyala**' yı seçin. Değeri terminale yapıştırın.
 
-6. Aşağıdakine benzer bir çıktı görürsünüz:
+1. Aşağıdakine benzer bir çıktı görürsünüz:
 
    ```output
    Found existing device: Client_001
@@ -89,13 +91,13 @@ AvroFileWriter modülünün çıktısı, IoT Edge cihazına bakarak kolayca göz
 
 1. IoT Edge sanal makinenize SSH.
 
-2. Diske yazılan dosyaları arayın.
+1. Diske yazılan dosyaları arayın.
 
    ```bash
    find /data/avrofiles -type f
    ```
 
-3. Komutun çıktısı aşağıdaki örneğe benzer şekilde görünür:
+1. Komutun çıktısı aşağıdaki örneğe benzer şekilde görünür:
 
    ```output
    /data/avrofiles/2019/4/18/22/10.avro
@@ -103,49 +105,49 @@ AvroFileWriter modülünün çıktısı, IoT Edge cihazına bakarak kolayca göz
 
    Çalıştırmanın zamanlamasına bağlı olarak birden fazla tek dosyanız olabilir.
 
-4. Zaman damgalarına dikkat edin. AvroFileWriter modülü, son değiştirilme zamanı 10 dakikadan uzun olduğunda dosyaları buluta yükler (bkz. avroFileWriter modülünde uploader.py içinde DEĞIŞTIRILEN\_dosya\_zaman aşımı).
+1. Zaman damgalarına dikkat edin. AvroFileWriter modülü, son değiştirilme zamanı 10 dakikadan uzun olduğunda dosyaları buluta yükler (bkz \_ \_ . avrofilewriter modülünde UPLOADER.py içinde değiştirilen dosya zaman aşımı).
 
-5. 10 dakika geçtikten sonra modülün dosyaları karşıya yüklemesi gerekir. Karşıya yükleme başarılı olursa, dosyaları diskten siler.
+1. 10 dakika geçtikten sonra modülün dosyaları karşıya yüklemesi gerekir. Karşıya yükleme başarılı olursa, dosyaları diskten siler.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 Verilerin yönlendirilmesini beklediğimiz depolama hesaplarına bakarak yaprak cihazımızın sonuçlarını gözlemleyebiliriz.
 
 1. Geliştirme makinesinde Visual Studio Code açın.
 
-2. Bul penceresindeki "AZURE STORAGE" panelinde, depolama hesabınızı bulmak için ağaca gidin.
+1. Bul penceresindeki "AZURE STORAGE" panelinde, depolama hesabınızı bulmak için ağaca gidin.
 
-3. **BLOB kapsayıcıları** düğümünü genişletin.
+1. **BLOB kapsayıcıları** düğümünü genişletin.
 
-4. Öğreticinin önceki bölümünde yaptığımız iş sayesinde, **ruldata** kapsayıcısının rul ile ileti içermesi gerektiğini umuz. **Ruldata** düğümünü genişletin.
+1. Öğreticinin önceki bölümünde yaptığımız iş sayesinde, **ruldata** kapsayıcısının rul ile ileti içermesi gerektiğini umuz. **Ruldata** düğümünü genişletin.
 
-5. Şöyle adlı bir veya daha fazla BLOB dosyası görürsünüz: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`.
+1. Şöyle adlı bir veya daha fazla BLOB dosyası görürsünüz: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>` .
 
-6. Dosyalardan birine sağ tıklayın ve dosyayı geliştirme makinenize kaydetmek için **blobu indir** ' i seçin.
+1. Dosyalardan birine sağ tıklayın ve dosyayı geliştirme makinenize kaydetmek için **blobu indir** ' i seçin.
 
-7. Daha sonra **uploadturbofanfiles** düğümünü genişletin. Önceki makalede, bu konumu avroFileWriter modülü tarafından karşıya yüklenen dosyalar için hedef olarak ayarlayacağız.
+1. Daha sonra **uploadturbofanfiles** düğümünü genişletin. Önceki makalede, bu konumu avroFileWriter modülü tarafından karşıya yüklenen dosyalar için hedef olarak ayarlayacağız.
 
-8. Dosyalara sağ tıklayıp **blobu indir** ' i seçerek geliştirme makinenize kaydedin.
+1. Dosyalara sağ tıklayıp **blobu indir** ' i seçerek geliştirme makinenize kaydedin.
 
 ### <a name="read-avro-file-contents"></a>Avro dosya içeriğini oku
 
 Avro dosyasını okumak ve dosyadaki iletilerin JSON dizesini döndürmek için basit bir komut satırı yardımcı programı ekledik. Bu bölümde, yükleyeceğiz ve çalıştıracağız.
 
-1. Visual Studio Code (**terminalden** > **yeni Terminal**) ' de bir Terminal açın.
+1. Visual Studio Code (**terminalden**  >  **yeni Terminal**) ' de bir Terminal açın.
 
-2. Kubavroreader 'ı Install:
+1. Kubavroreader 'ı Install:
 
    ```cmd
    pip install c:\source\IoTEdgeAndMlSample\HubAvroReader
    ```
 
-3. **Rulum verilerinden**indirdiğiniz avro dosyasını okumak için hubavroreader 'ı kullanın.
+1. **Rulum verilerinden**indirdiğiniz avro dosyasını okumak için hubavroreader 'ı kullanın.
 
    ```cmd
    hubavroreader <avro file with ath> | more
    ```
 
-4. İleti gövdesinin cihaz KIMLIĞI ve tahmin edilen RUL ile beklendiğimiz gibi göründüğünü unutmayın.
+1. İleti gövdesinin cihaz KIMLIĞI ve tahmin edilen RUL ile beklendiğimiz gibi göründüğünü unutmayın.
 
    ```json
    {
@@ -176,9 +178,9 @@ Avro dosyasını okumak ve dosyadaki iletilerin JSON dizesini döndürmek için 
    }
    ```
 
-5. **Uploadturbofanfiles**'Tan indirdiğiniz avro dosyasını geçirerek aynı komutu çalıştırın.
+1. **Uploadturbofanfiles**'Tan indirdiğiniz avro dosyasını geçirerek aynı komutu çalıştırın.
 
-6. Bu iletiler beklendiği gibi, özgün iletideki tüm algılayıcı verilerini ve işletimsel ayarları içerir. Bu veriler, Edge cihazımızda RUL modelini geliştirmek için kullanılabilir.
+1. Bu iletiler beklendiği gibi, özgün iletideki tüm algılayıcı verilerini ve işletimsel ayarları içerir. Bu veriler, Edge cihazımızda RUL modelini geliştirmek için kullanılabilir.
 
    ```json
    {
@@ -219,19 +221,19 @@ Avro dosyasını okumak ve dosyadaki iletilerin JSON dizesini döndürmek için 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uçtan uca öğretici tarafından kullanılan kaynakları keşfetmeye çalışırsanız, oluşturduğunuz kaynakları temizlemek için bitene kadar bekleyin. Devam etmeyi planlamıyorsanız, bunları silmek için aşağıdaki adımları kullanın:
+Bu uçtan uca öğretici tarafından kullanılan kaynakları keşfetmeye çalışırsanız, oluşturduğunuz kaynakları temizlemek için bitene kadar bekleyin. Aksi takdirde, bunları silmek için aşağıdaki adımları kullanın:
 
 1. Geliştirme VM 'si, IoT Edge VM, IoT Hub, depolama hesabı, Machine Learning çalışma alanı hizmeti (ve oluşturulan kaynaklar: kapsayıcı kayıt defteri, Application Insights, Anahtar Kasası, depolama hesabı) tutmak üzere oluşturulan kaynak gruplarını silin.
 
-2. [Azure not defterlerinde](https://notebooks.azure.com)makine öğrenimi projesini silin.
+1. [Azure not defterlerinde](https://notebooks.azure.com)makine öğrenimi projesini silin.
 
-3. Depoyu yerel olarak klondıysanız, yerel depoya başvuran tüm PowerShell veya VS Code pencerelerini kapatın ve sonra depo dizinini silin.
+1. Depoyu yerel olarak klondıysanız, yerel depoya başvuran tüm PowerShell veya VS Code pencerelerini kapatın ve sonra depo dizinini silin.
 
-4. Sertifikaları yerel olarak oluşturduysanız c:\\edgecercertificate klasörünü silin.
+1. Sertifikaları yerel olarak oluşturduysanız c: \\ edgecercertificate klasörünü silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, uç cihazımızı algılayıcı ve işletimsel veriler gönderen bir yaprak cihazın benzetimini yapmak için geliştirme makinemizi kullandık. Uç cihazın gerçek zamanlı işlemini inceleyerek ve sonra depolama hesabına yüklenen dosyalara bakarak, cihazdaki modüllerin yönlendirdiğini, sınıflandırıldığını, kalıcı hale getirerek ve karşıya verileri yüklediğini doğruladı.
+Bu makalede, IoT Edge cihazımız algılayıcısı ve işletimsel verileri gönderen bir yaprak cihazın benzetimini yapmak için geliştirme sanal makinesini kullandık. Cihazdaki modüllerin, sınır cihazının gerçek zamanlı işlemini inceleyerek ve depolama hesabına yüklenen dosyalara bakarak verileri yönlendirdiğini, sınıflandırdığını, kalıcı ve karşıya yüklediğini doğruladı.
 
 Aşağıdaki sayfalarda daha fazla bilgi bulabilirsiniz:
 
