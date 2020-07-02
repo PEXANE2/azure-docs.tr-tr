@@ -135,6 +135,8 @@
           href: batch-virtual-network.md
         - name: Genel IP adresleriyle havuz oluşturma
           href: create-pool-public-ip.md
+        - name: Genel IP adresleri olmadan havuz oluşturma
+          href: batch-pool-no-public-ip-address.md
         - name: Sanal dosya sistemi takma
           href: virtual-file-mount.md
         - name: Azure dosya paylaşımını bağlama

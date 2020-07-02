@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 2e2e11e1dc16fd99a82bc2fbdc7b72399bc6ae97
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: cb8b3b58f1029a722121f491d202e245300d1aee
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871933"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801021"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure Load Balancer kavramlar
 
@@ -55,9 +55,9 @@ Yük dengeleyici, TCP veya UDP veya uygulama katmanıyla doğrudan etkileşime g
 * Yük dengeleyici TCP yükü ile etkileşimde olmadığından ve TLS yük boşaltma sağladığından, kapsamlı şifrelenmiş senaryolar oluşturabilirsiniz. Yük dengeleyici kullanmak, TLS bağlantısını VM üzerinde sonlandırarak TLS uygulamaları için büyük ölçekli genişleme sağlar. Örneğin, TLS oturum anahtar kapasiteniz yalnızca, arka uç havuzuna eklediğiniz VM 'lerin türü ve sayısıyla sınırlıdır.
 
 ## <a name="load-balancer-terminology"></a>Load Balancer terminolojisi
-| Kavram | Ne anlama geliyor? | Ayrıntılı belge |
+| Konsept | Ne anlama geliyor? | Ayrıntılı belge |
 | ---------- | ---------- | ----------|
-Giden bağlantılar | Arka uç havuzundan genel IP 'lere olan akışlar ön uca eşlenir. Azure, giden bağlantıları Yük Dengeleme giden kuralı aracılığıyla genel ön uç IP adresine çevirir. Bu yapılandırmanın avantajları şunlardır. Basit yükseltme ve olağanüstü durum kurtarma, ön uç, hizmetin başka bir örneğine dinamik olarak eşlenmeye olanak sağlar. Daha kolay erişim denetim listesi (ACL) yönetimi. Hizmet ölçeği artırma veya azaltma ya da yeniden dağıtım gibi, ön uç IP 'ler olarak ifade edilen ACL 'Ler değişmez. Giden bağlantıların makinelerden daha az sayıda IP adresine dönüştürülmesi, güvenli alıcı listelerinin uygulanması yükünü azaltır.| Kaynak ağ adresi çevirisi (SNAT) ve Azure Load Balancer hakkında daha fazla bilgi edinmek için bkz. [SNAT ve Azure Load Balancer](load-balancer-outbound-connections.md#snat).
+Giden bağlantılar | Arka uç havuzundan genel IP 'lere olan akışlar ön uca eşlenir. Azure, giden bağlantıları Yük Dengeleme giden kuralı aracılığıyla genel ön uç IP adresine çevirir. Bu yapılandırmanın avantajları şunlardır. Basit yükseltme ve olağanüstü durum kurtarma, ön uç, hizmetin başka bir örneğine dinamik olarak eşlenmeye olanak sağlar. Daha kolay erişim denetim listesi (ACL) yönetimi. Hizmet ölçeği artırma veya azaltma ya da yeniden dağıtım gibi, ön uç IP 'ler olarak ifade edilen ACL 'Ler değişmez. Giden bağlantıların makinelerden daha az sayıda IP adresine dönüştürülmesi, güvenli alıcı listelerinin uygulanması yükünü azaltır.| Kaynak ağ adresi çevirisi (SNAT) ve Azure Load Balancer hakkında daha fazla bilgi edinmek için bkz. [SNAT ve Azure Load Balancer](load-balancer-outbound-connections.md).
 Kullanılabilirlik Alanları | Standart yük dengeleyici Kullanılabilirlik Alanları kullanılabildiği bölgelerde ek becerileri destekler. Bu özellikler tüm standart yük dengeleyiciler için artımlı olarak sunulur.  Kullanılabilirlik Alanları konfigürasyonları her iki tür standart yük dengeleyici için de kullanılabilir; ortak ve dahili. Bölgesel olarak yedekli bir ön uç, tüm bölgelerde aynı anda adanmış altyapı kullanarak bölge hatası. Ayrıca, belirli bir bölgenin ön uç olduğunu garanti edebilirsiniz. Bir bölgesel ön ucu, tek bir bölgedeki adanmış altyapı tarafından sunulur. Çapraz bölge yük dengelemesi, arka uç havuzu için kullanılabilir. Bir sanal ağdaki herhangi bir sanal makine kaynağı, arka uç havuzunun bir parçası olabilir. Temel yük dengeleyici bölgeleri desteklemez.| [Kullanılabilirlik alanları ilgili yetenekler hakkında ayrıntılı tartışma](load-balancer-standard-availability-zones.md) ve daha fazla bilgi Için [kullanılabilirlik alanları genel bakış](../availability-zones/az-overview.md) konusunu inceleyin.
 | HA bağlantı noktaları | Uygulamanızın ölçeğini ölçekleyerek ve son derece güvenilir hale getirmek için HA bağlantı noktası yük dengeleme kurallarını yapılandırabilirsiniz. İç yük dengeleyicinin ön uç IP 'si için kısa süreli bağlantı noktalarında akış başına Yük Dengeleme bu kurallar tarafından sağlanır. Bu özellik, tek tek bağlantı noktalarını belirtmek pratik veya istenmeyen bir kullanım dışı olduğunda faydalıdır. HA bağlantı noktaları kuralı, aktif-Pasif veya aktif-aktif n + 1 senaryoları oluşturmanıza olanak sağlar. Bu senaryolar, ağ sanal gereçlerine ve çok büyük gelen bağlantı noktası aralıkları gerektiren uygulamalara yöneliktir. Bir sistem durumu araştırması, hangi arka uçların yeni akışlar alması gerektiğini tespit etmek için kullanılabilir.  Bir bağlantı noktası aralığı senaryosuna öykünmek için bir ağ güvenlik grubu kullanabilirsiniz. Temel yük dengeleyici, HA bağlantı noktalarını desteklemiyor. | [Ha bağlantı noktalarının ayrıntılı tartışmasını](load-balancer-ha-ports-overview.md) gözden geçirin
 | Birden çok ön uç | Yük dengeleyici birden çok ön uç içeren birden çok kuralı destekler.  Standart Load Balancer, bu özelliği giden senaryolara genişletir. Giden kuralları bir gelen kuralının tersidir. Giden kuralı giden bağlantılar için bir ilişki oluşturur. Standart yük dengeleyici, bir yük dengeleme kuralı aracılığıyla bir sanal makine kaynağıyla ilişkili tüm ön uçları kullanır. Ek olarak, Yük Dengeleme kuralındaki bir parametre, giden bağlantı amaçları doğrultusunda bir yük dengeleme kuralını bastırarak hiçbiri dahil belirli ön uçlar seçimine izin verir. Karşılaştırma için temel yük dengeleyici rastgele tek bir ön uç seçer. Hangi ön uçta seçili olduğunu denetleme özelliği yoktur.|

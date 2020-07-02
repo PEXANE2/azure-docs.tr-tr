@@ -855,6 +855,8 @@
           href: incremental-snapshots.md
         - name: Geçiş ve dönüştürme
           items:
+            - name: Sunucu tarafı şifrelemesine dönüştürme
+              href: disks-ade-sse-conversion-powershell.md
             - name: Standart ve Premium arasında disk dönüştürme
               href: convert-disk-storage.md
             - name: Azure Site Recovery ile Premium depolamaya geçiş

@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: eeaab547a1f0648d2e7a59fda24454d7bfe1fadf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8948850734b310d70e7e457f075d13ade0c55619
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84754665"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805427"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory ile kimlik doğrulama
 
@@ -86,6 +86,10 @@ Bu örnekte, hizmet sorumlusunun kimliğini doğrulamak için bir parola kullan�
    ```
 
 2. Belirteç al:
+   > [!NOTE]
+   > Azure Cloud Shell kullanıyorsanız, `SecureClientSecret` sınıfı kullanılabilir değildir. 
+
+   #### <a name="poweershell"></a>[PoweerShell](#tab/powershell)
    ```powershell-interactive
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
    $secureSecretObject = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.SecureClientSecret" -ArgumentList $SecureStringPassword   
@@ -93,6 +97,17 @@ Bu örnekte, hizmet sorumlusunun kimliğini doğrulamak için bir parola kullan�
    $token=$authContext.AcquireTokenAsync("https://cognitiveservices.azure.com/", $clientCredential).Result
    $token
    ```
+   
+   #### <a name="azure-cloud-shell"></a>[Azure Cloud Shell](#tab/azure-cloud-shell)
+   ```Azure Cloud Shell
+   $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
+   $clientCredential = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential" -ArgumentList $app.ApplicationId, <YOUR_PASSWORD>
+   $token=$authContext.AcquireTokenAsync("https://cognitiveservices.azure.com/", $clientCredential).Result
+   $token
+   ``` 
+
+   ---
+
 3. Görüntü İşleme API'si çağırın:
    ```powershell-interactive
    $url = $account.Endpoint+"vision/v1.0/models"
@@ -110,7 +125,7 @@ Bilişsel hizmetler, [Azure kaynakları için yönetilen kimliklerle](https://do
 
 VM 'nizden bilişsel hizmetler kaynaklarına erişim yetkisi vermek üzere Azure kaynakları için Yönetilen kimlikler kullanabilmeniz için, VM 'de Azure kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure kaynakları için yönetilen kimliklerin nasıl etkinleştirileceği hakkında bilgi edinmek için bkz.:
 
-- [Azure portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure portalındaki](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
 - [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
 - [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)

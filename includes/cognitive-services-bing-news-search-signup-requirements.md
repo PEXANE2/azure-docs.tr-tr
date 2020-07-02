@@ -4,20 +4,16 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/19/2020
-ms.openlocfilehash: eeecea99072ff1e113e44c9991d40784db447216
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cf09408958241ea0885fedb49874a5fb49fec3e5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869293"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805482"
 ---
 ## <a name="create-an-azure-resource"></a>Azure kaynağı oluşturma
 
 Aşağıdaki Azure kaynaklarından birini oluşturarak Bing Haber Arama API'si kullanmaya başlayın:
-
-[Deneme kaynağı](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-   * Azure aboneliği gerekmez.
-   * Ücretsiz olarak yedi gün için geçerlidir. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)bir deneme anahtarı ve uç noktası kullanılabilir.
 
 [Bing Arama v7 kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
    * Kaynak silininceye kadar Azure portal ile kullanılabilir.

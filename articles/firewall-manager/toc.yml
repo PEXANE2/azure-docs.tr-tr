@@ -12,7 +12,7 @@
       href: quick-secure-virtual-hub.md
 - name: Öğreticiler
   items:
-    - name: Sanal WAN’ınızın güvenliğini sağlama - portal
+    - name: Sanal ağınızın güvenliğini sağlama - portal
       href: secure-cloud-network.md
     - name: Merkez sanal ağınızın güvenliğini sağlama - portal
       href: secure-hybrid-network.md
@@ -26,16 +26,24 @@
       href: deployment-overview.md
     - name: Güvenlik iş ortağı sağlayıcıları
       href: trusted-security-partners.md
+    - name: IP Grupları
+      href: ip-groups.md
     - name: Kural işleme mantığı
       href: rule-processing.md
     - name: Mimari seçenekleri
       href: vhubs-and-vnets.md
+    - name: Tehdit bilgileri ayarları
+      href: threat-intelligence-settings.md
+    - name: Ağ kurallarında FQDN
+      href: fqdn-filtering-network-rules.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Güvenlik iş ortağı sağlayıcılarını dağıtma
       href: deploy-trusted-security-partner.md
     - name: Güvenlik Duvarı ilkesine geçme - PowerShell
       href: migrate-to-policy.md
+    - name: DNS ayarları
+      href: dns-settings.md
 - name: Başvuru
   items:
     - name: Azure CLI

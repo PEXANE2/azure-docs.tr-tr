@@ -103,6 +103,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: Güvenlik ilkesi uygulanırken VM yanıt vermiyor
           href: unresponsive-vm-apply-security-policy.md
+        - name: Windows durma hatası - Durum Bellek Yok
+          href: troubleshoot-windows-stop-error.md
 - name: Sanal makineme bağlanılamıyor
   items:
     - name: RDP

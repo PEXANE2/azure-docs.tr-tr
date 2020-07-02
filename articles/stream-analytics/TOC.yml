@@ -30,7 +30,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 - Azure Pipelines’ta CI/CD ile dağıtma
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4 - C# UDF çalıştırma'
+    - name: 4 - C# UDF çalıştırma
       href: stream-analytics-edge-csharp-udf.md
     - name: 5 - Özel .NET seri durumdan çıkarıcı oluşturma
       href: custom-deserializer.md
@@ -82,10 +82,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'C# UDF'
+        - name: C# UDF
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Makine öğrenmesi UDF
           href: machine-learning-udf.md
+        - name: UDF ve güncelleştirmelerde hata ayıklama
+          href: debug-user-defined-functions.md
     - name: Stream Analytics işinizi iyileştirin
       items:
         - name: Akış Birimlerini anlama ve ayarlama
@@ -228,6 +230,8 @@
           href: visual-studio-code-local-run.md
         - name: Canlı verilerle yerel olarak test etme
           href: visual-studio-code-local-run-live-input.md
+        - name: İş diyagramını kullanarak sorgularda hata ayıklama
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: CI/CD işlem hattı ayarlama
           href: setup-cicd-vs-code.md
         - name: İşleri keşfetme

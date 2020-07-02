@@ -36,6 +36,10 @@
       href: create-certificate.md
     - name: Sertifika imzalama isteği oluşturma
       href: create-certificate-signing-request.md
+- name: Örnekler
+  items:
+    - name: Key Vault Kod Örnekleri
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Key Vault’u DigiCert CA ile tümleştirme

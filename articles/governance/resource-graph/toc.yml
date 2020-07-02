@@ -8,7 +8,7 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: İlk sorgunuzu çalıştırma - Azure portal
+    - name: İlk sorgunuzu çalıştırma - Portal
       displayName: 'portal, resource, graph, explorer'
       href: ./first-query-portal.md
     - name: İlk sorgunuzu çalıştırma - Azure CLI
@@ -26,6 +26,9 @@
     - name: İlk sorgunuzu çalıştırma - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: Paylaşılan sorgu oluşturma - Azure CLI
+      displayName: 'extension, docker, queries'
+      href: ./shared-query-azure-cli.md
     - name: Paylaşılan sorguyu dağıtma - ARM şablonu
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

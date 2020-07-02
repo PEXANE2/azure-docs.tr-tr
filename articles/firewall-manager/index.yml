@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 10/10/2019
-  ms.openlocfilehash: e3b98f3954ee70b5e002bb844147d4d51b1f6d9d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bf7474f1519fbd94be3de8daa15a43775a6a6a0a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508678"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85561431"
 landingContent:
 - title: Azure Güvenlik Duvarı Yöneticisi hakkında bilgi edinin
   linkLists:
@@ -31,15 +31,15 @@ landingContent:
     links:
     - text: Güvenli sanal merkez nedir?
       url: secured-virtual-hub.md
-- title: Güvenilen güvenlik iş ortakları
+- title: Güvenlik iş ortağı sağlayıcıları
   linkLists:
   - linkListType: concept
     links:
-    - text: Güvenilen güvenlik iş ortakları (önizleme) nedir?
+    - text: Güvenlik iş ortağı sağlayıcıları nedir?
       url: trusted-security-partners.md
   - linkListType: how-to-guide
     links:
-    - text: Güvenilen güvenlik iş ortağı dağıtma (önizleme)
+    - text: Güvenlik iş ortağı sağlayıcısı dağıtma
       url: deploy-trusted-security-partner.md
 - title: Azure bulut ağınızın güvenliğini sağlama
   linkLists:

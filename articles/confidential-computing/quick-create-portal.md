@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 49824b324df044ae2883ab6844dd321be27cbcbf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 905c76a3c5399ecae8acb2a18d35006306afcb2f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82149245"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801266"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure gizli bilgi işlem VM 'si dağıtma
 
@@ -84,7 +84,7 @@ Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure
    * **Kimlik doğrulama türü**: bir Linux sanal makinesi oluşturuyorsanız **SSH ortak anahtarını** seçin. 
 
         > [!NOTE]
-         > Kimlik doğrulaması için SSH ortak anahtarı veya Parola kullanabilirsiniz. SSH daha güvenlidir. SSH anahtarı oluşturma talimatları için bkz. [Azure'daki Linux VM için Linux ve Mac üzerinde SSH anahtarı oluşturma](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
+        > Kimlik doğrulaması için SSH ortak anahtarı veya Parola kullanabilirsiniz. SSH daha güvenlidir. SSH anahtarı oluşturma talimatları için bkz. [Azure'daki Linux VM için Linux ve Mac üzerinde SSH anahtarı oluşturma](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
 
     * **Kullanıcı adı**: VM için yönetici adını girin.
 

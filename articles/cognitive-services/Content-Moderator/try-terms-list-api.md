@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75382132"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800049"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>API konsolundaki Özel terim listeleriyle orta
 
@@ -77,15 +77,17 @@ Bir terim listesinde değişiklik yaptıktan sonra, gelecekteki taramalara dahil
 
 5. Listenize daha açıklayıcı meta veriler atamak için anahtar-değer çifti yer tutucuları kullanın.
 
-       {
-          "Name": "MyExclusionList",
-          "Description": "MyListDescription",
-          "Metadata": 
-          {
-             "Category": "Competitors",
-             "Type": "Exclude"
-          }
-       }
+    ```json
+    {
+        "Name": "MyExclusionList",
+        "Description": "MyListDescription",
+        "Metadata": 
+        {
+            "Category": "Competitors",
+            "Type": "Exclude"
+        }
+    }
+    ```
 
    Anahtar-değer çiftleri olarak liste meta verileri ekleyin ve gerçek koşullar değildir.
  

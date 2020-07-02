@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 5f9dbc120b301100364da61f7d8c19fa58beb5c9
-  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+  ms.openlocfilehash: 525d39eb4170927ebbf2fdee9298921093ee2aef
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/27/2020
-  ms.locfileid: "85482930"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85565594"
 highlightedContent:
   items:
   - title: Azure geliştiricileri için başlangıç kılavuzu
@@ -68,7 +68,7 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     - analytics
-    url: /azure/databricks/index.yml
+    url: /azure/databricks/
   - title: Azure Machine Learning
     summary: Deneme ve model yönetimi özelliklerine sahip uçtan uca, ölçeklenebilir, güvenilir bir platformla herkese yapay zeka olanağı sunun
     imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
@@ -677,12 +677,12 @@ productDirectory:
     - developer-tools
     url: https://docs.microsoft.com/visualstudio/
   - title: Visual Studio Code
-    summary: Bulut geliştirme için güçlü, basit bir kod düzenleyici
+    summary: Bulutta geliştirme için güçlü, basit bir kod düzenleyicisi
     imageSrc: https://docs.microsoft.com/media/logos/logo_vs-code.svg
     azureCategories:
     - developer-tools
     url: https://code.visualstudio.com/docs
-  - title: Visual Studio Online (Önizleme)
+  - title: Visual Studio Codespaces (Önizleme)
     summary: Herhangi bir yerden erişebileceğiniz, bulut ile güçlendirilmiş geliştirme ortamları
     imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
     azureCategories:

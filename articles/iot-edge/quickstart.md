@@ -4,21 +4,21 @@ description: Bu hızlı başlangıçta, IoT Edge bir cihaz oluşturmayı ve ard�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/06/2019
+ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 54efe7b5c392ad2b4cc3a0de414e04951b268508
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0476c7190dcf2ac42dafc9896540be83a938016
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78674237"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801746"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
-Kapsayıcılı kodu bir sanal IoT Edge cihazına dağıtarak Azure IoT Edge deneyin. IoT Edge, iş yüklerinizi kenarda daha fazla gönderebilmeniz için cihazlarınızda kodu uzaktan yönetmenizi sağlar. Bu hızlı başlangıçta, IoT Edge cihazınız için bir Azure sanal makinesi kullanmanızı öneririz. Bir sanal makinenin kullanılması, hızlıca bir test makinesi oluşturmanıza, önkoşulları yüklemenize ve sonra işiniz bittiğinde silmeniz sağlar.
+Kapsayıcılı kodu sanal bir Windows IoT Edge cihazına dağıtarak bu hızlı başlangıçta Azure IoT Edge deneyin. IoT Edge, iş yüklerinizi kenarda daha fazla gönderebilmeniz için cihazlarınızda kodu uzaktan yönetmenizi sağlar. Bu hızlı başlangıçta, IoT Edge cihazınız için bir Azure sanal makinesi kullanmanızı öneririz. Bir sanal makinenin kullanılması, hızlıca bir test makinesi oluşturmanıza, önkoşulları yüklemenize ve sonra işiniz bittiğinde silmeniz sağlar.
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
 ![Diyagram-cihaz ve bulut için hızlı başlangıç mimarisi](./media/quickstart/install-edge-full.png)
 
-Bu hızlı başlangıç, bir Windows sanal makinesi oluşturma ve bunu IoT Edge bir cihaz olarak yapılandırma konusunda size yol gösterir. Bu işlemin ardından Azure portalından cihazınıza bir modül dağıtabilirsiniz. Bu hızlı başlangıçta oluşturduğunuz modül; sıcaklık, nem ve basınç verileri üreten bir sensör simülasyonudur. Diğer Azure IoT Edge öğreticileri, burada iş içgörüsü için simülasyon verilerini analiz eden modüller dağıtarak yaptığınız çalışmayı temel alır.
+Bu hızlı başlangıç, bir Windows sanal makinesi oluşturma ve bunu IoT Edge bir cihaz olarak yapılandırma konusunda size yol gösterir. Daha sonra, Azure portal bir modülü cihazınıza dağıtırsınız. Bu hızlı başlangıçta kullanılan modül, sıcaklık, nem ve basınç verileri oluşturan bir sanal sensördür. Diğer Azure IoT Edge öğreticileri, iş öngörüleri için sanal verileri çözümleyen ek modüller dağıtarak, burada yaptığınız işi oluşturur.
 
 Etkin bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -57,7 +57,7 @@ Bulut kaynakları:
 
 IoT Edge cihazı:
 
-* IoT Edge cihazınız olarak görev yapacak bir Windows sanal makinesi. Bu sanal makineyi, güvenli bir parolayla değiştirerek `{password}` aşağıdaki komutu kullanarak oluşturabilirsiniz:
+* IoT Edge cihazınız olarak görev yapacak bir Windows sanal makinesi. Bu sanal makineyi, güvenli bir parolayla değiştirerek aşağıdaki komutu kullanarak oluşturabilirsiniz `{password}` :
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -66,10 +66,10 @@ IoT Edge cihazı:
   Yeni sanal makinenin oluşturulup başlatılması birkaç dakika sürebilir. Daha sonra, sanal makinenize bağlanırken kullanmak üzere bir RDP dosyası indirebilirsiniz:
 
   1. Azure portal yeni Windows sanal makinenize gidin.
-  1. **Bağlan**’ı seçin.
+  1. **Bağlan**'ı seçin.
   1. **RDP** SEKMESINDE, **RDP dosyasını indir**' i seçin.
 
-  `az vm create` Komutuyla belirttiğiniz yönetici adı ve parolayı kullanarak Windows sanal makinenize bağlanmak için bu dosyayı uzak masaüstü bağlantısı açın.
+  Komutuyla belirttiğiniz yönetici adı ve parolayı kullanarak Windows sanal makinenize bağlanmak için bu dosyayı Uzak Masaüstü Bağlantısı açın `az vm create` .
 
 > [!NOTE]
 > Bu hızlı başlangıçta basitlik için bir Windows Masaüstü sanal makinesi kullanılmaktadır. Üretim senaryolarında genel olarak hangi Windows işletim sistemlerinin kullanılabildiği hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md).
@@ -82,9 +82,9 @@ Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 
 ![Diyagram-bulutta IoT Hub 'ı oluşturma](./media/quickstart/create-iot-hub.png)
 
-IoT Hub’ın ücretsiz düzeyi bu hızlı başlangıç için kullanılabilir. IoT Hub'ı daha önce kullandıysanız ve oluşturulmuş ücretsiz hub'ınız varsa bu IoT hub'ını kullanabilirsiniz. Her aboneliğin yalnızca bir ücretsiz IoT hub’ı olabilir.
+IoT Hub’ın ücretsiz düzeyi bu hızlı başlangıç için kullanılabilir. Geçmişte IoT Hub kullandıysanız ve zaten oluşturulmuş bir hub 'ınız varsa, bu IoT Hub 'ını kullanabilirsiniz.
 
-Aşağıdaki kod, kaynak grubunda `IoTEdgeResources`ücretsiz bir **F1** hub oluşturur. IoT `{hub_name}` hub 'ınız için benzersiz bir adla değiştirin.
+Aşağıdaki kod, kaynak grubunda ücretsiz bir **F1** hub oluşturur `IoTEdgeResources` . `{hub_name}`IoT Hub 'ınız için benzersiz bir adla değiştirin.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -99,23 +99,23 @@ Yeni oluşturulan IoT hub'ına bir IoT Edge cihazı kaydedin.
 
 IoT hub'ınızla iletişim kurabilmesi amacıyla simülasyon cihazınız için bir cihaz kimliği oluşturun. Cihaz kimliği bulutta kalır ve fiziksel cihazla cihaz kimliği arasında bağlantı kurmak için benzersiz bir bağlantı dizesi kullanılır.
 
-IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğinden, bu kimliği `--edge-enabled` bayrağıyla IoT Edge bir cihaz için olacak şekilde bildirin.
+IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğinden, bu kimliği bayrağıyla IoT Edge bir cihaz için olacak şekilde bildirin `--edge-enabled` .
 
 1. Azure Cloud Shell'de aşağıdaki komutu girerek hub'ınızda **myEdgeDevice** adlı bir cihaz oluşturun.
 
    ```azurecli-interactive
-   az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
+   az iot hub device-identity create --device-id myEdgeDevice --edge-enabled --hub-name {hub_name}
    ```
 
    İothubowner ilke anahtarları hakkında bir hata alırsanız, Cloud Shell 'nizin Azure-IoT uzantısının en son sürümünü çalıştırdığından emin olun.
 
-2. Fiziksel cihazınızla IoT Hub'daki kimliği arasında bağlantı oluşturan cihaz bağlantı dizesini alın.
+2. Fiziksel cihazınızı IoT Hub içindeki kimliğiyle bağlayan cihazınız için bağlantı dizesini görüntüleyin. IoT Hub 'ınızın adını, cihazınızın adını ve iki arasındaki bağlantıların kimliğini doğrulayan paylaşılan bir anahtarı içerir.
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. JSON çıktısından `connectionString` anahtarın değerini kopyalayın ve kaydedin. Bu değer, cihaz bağlantı dizesidir. Bu bağlantı dizesini bir sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için kullanacaksınız.
+3. `connectionString`JSON çıktısından anahtarın değerini kopyalayın ve kaydedin. Bu değer, cihaz bağlantı dizesidir. Bu bağlantı dizesini bir sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için kullanacaksınız.
 
    ![CLı çıktısından bağlantı dizesini al](./media/quickstart/retrieve-connection-string.png)
 
@@ -171,7 +171,7 @@ PowerShell'i kullanarak IoT Edge çalışma zamanını indirin ve yükleyin. Cih
 
 ### <a name="view-the-iot-edge-runtime-status"></a>IoT Edge çalışma zamanı durumunu görüntüleme
 
-Çalışma zamanının başarıyla yüklendiğinden ve yapılandırıldığından emin olun.
+Çalışma zamanının başarıyla yüklendiğinden ve yapılandırıldığından emin olun. Yüklemenin tamamlanması birkaç dakika sürebilir ve IoT Edge aracı modülü başlatılır.
 
 1. IoT Edge hizmetinin durumunu kontrol edin.
 
@@ -193,22 +193,21 @@ PowerShell'i kullanarak IoT Edge çalışma zamanını indirin ve yükleyin. Cih
 
    ![Cihazınızda bir modülü görüntüleme](./media/quickstart/iotedge-list-1.png)
 
-Yüklemenin tamamlanması birkaç dakika sürebilir ve IoT Edge aracı modülü başlatılır.
-
 IoT Edge cihazınız yapılandırıldı. Bulutta dağıtılan modülleri çalıştırmak için hazır.
 
 ## <a name="deploy-a-module"></a>Modül dağıtma
 
 IoT Hub 'ye telemetri verileri gönderen bir modül dağıtmak için Azure IoT Edge cihazınızı buluttan yönetin.
+
 ![Diyagram-modülü buluttan cihaza dağıt](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>Oluşturulan verileri görüntüleme
 
-Bu hızlı başlangıçta, IoT Edge bir cihaz kaydettiniz ve IoT Edge çalışma zamanını üzerine yüklediniz. Ardından, cihazın kendisinde değişiklik yapmak zorunda kalmadan cihazda çalıştırmak üzere bir IoT Edge modülünü dağıtmak için Azure portal kullandınız.
+Bu hızlı başlangıçta, yeni bir IoT Edge cihazı oluşturdunuz ve üzerine IoT Edge çalışma zamanını yüklediniz. Ardından, cihazın kendisinde değişiklik yapmak zorunda kalmadan cihazda çalıştırmak üzere bir IoT Edge modülünü dağıtmak için Azure portal kullandınız.
 
-Bu durumda, gönderdiğiniz modül test için kullanabileceğiniz örnek veriler oluşturur. Sanal sıcaklık algılayıcı modülü, daha sonra test için kullanabileceğiniz ortam verileri oluşturur. Sanal algılayıcı hem makinenin hem de makinenin bulunduğu ortamın izlenmesini izler. Örneğin bu sensör bir sunucu odasında, fabrika sahasında veya rüzgar türbininde olabilir. İletide ortam sıcaklığı ve nemi, makine sıcaklığı ve basıncı ile bir zaman damgası bulunur. IoT Edge öğreticileri, bu modülle oluşturulan verileri analiz için test verileri olarak kullanır.
+Bu durumda, gönderdiğiniz modül daha sonra test etmek için kullanabileceğiniz örnek ortam verileri oluşturur. Sanal algılayıcı hem makinenin hem de makinenin bulunduğu ortamın izlenmesini izler. Örneğin bu sensör bir sunucu odasında, fabrika sahasında veya rüzgar türbininde olabilir. İletide ortam sıcaklığı ve nemi, makine sıcaklığı ve basıncı ile bir zaman damgası bulunur. IoT Edge öğreticileri, bu modülle oluşturulan verileri analiz için test verileri olarak kullanır.
 
 Buluttan dağıtılan modülün IoT Edge cihazınızda çalıştığından emin olun.
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3bac3cc2a5cedbd4b963a0759e6c8b940d2ca924
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 459c9f2d68d8a3a3c1b597665914146987aecdc2
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81424989"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801810"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üzerini gerektirir. Sürümü `$PSVersionTable.PSVersion` bulmak için yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üzerini gerektirir. `$PSVersionTable.PSVersion`Sürümü bulmak için yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ```azurepowershell-interactive
 Login-AzAccount
@@ -64,6 +64,13 @@ Bu cmdlet’in çıktısı, yeni oluşturulan anahtar kasasının özelliklerini
 Kasa oluşturma sonrasında Azure hesabınız bu yeni kasa üzerinde herhangi bir işlem yapmasına izin verilen tek hesaptır.
 
 ![Anahtar Kasası oluşturma komutu tamamlandıktan sonraki çıktı](../media/quick-create-powershell/output-after-creating-keyvault.png)
+
+## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Key Vault içinde gizli dizileri yönetmek için Kullanıcı hesabınıza izin verin
+
+Key Vault erişim ilkesini güncelleştirmek ve Kullanıcı hesabınıza gizli izinler vermek için Azure PowerShell set-AzKeyVaultAccessPolicy cmdlet 'ini kullanın.
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@domain.com' -PermissionsToSecrets get,set,delete
+```
 
 ## <a name="adding-a-secret-to-key-vault"></a>Key Vault’a gizli dizi ekleme
 

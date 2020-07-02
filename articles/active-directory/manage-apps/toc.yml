@@ -3,20 +3,14 @@
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Bulut uygulaması yönetimi ve çoklu oturum açma nedir?
+    - name: Uygulama yönetimi nedir?
       href: what-is-application-management.md
-    - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu nedir?
-      href: what-is-application-proxy.md
-    - name: Yaygın uygulama yönetim senaryoları
-      href: common-scenarios.md
-    - name: Uygulama sağlama nedir?
-      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Hızlı Başlangıçlar
   items:
-    - name: Galeriden bulut uygulaması ekleme
-      href: add-application-portal.md
     - name: Kurumsal uygulamalarınızı görüntüleme
       href: view-applications-portal.md
+    - name: Galeriden bulut uygulaması ekleme
+      href: add-application-portal.md
 - name: Öğreticiler
   items:
     - name: 'Tümleşik galeri uygulamaları (örneğin ServiceNow, Salesforce, Dropbox)'
@@ -32,6 +26,8 @@
   items:
     - name: Uygulama yönetimi için en iyi yöntemler
       href: application-management-fundamentals.md
+    - name: Yaygın uygulama yönetim senaryoları
+      href: common-scenarios.md
     - name: Bulut uygulamaları ve çoklu oturum açma
       items:
         - name: Bulut uygulaması tümleştirmesi planlama
@@ -80,6 +76,8 @@
       items:
         - name: Uygulama Ara Sunucusu
           href: application-proxy.md
+        - name: Şirket içi uygulamalar için uygulama ara sunucusu nedir?
+          href: what-is-application-proxy.md
         - name: Uygulama Ara Sunucusu dağıtımını planlama
           href: application-proxy-deployment-plan.md
         - name: Bağlayıcılar

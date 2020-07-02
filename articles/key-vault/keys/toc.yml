@@ -25,6 +25,8 @@
       href: hsm-protected-keys-ncipher.md
 - name: Örnekler
   items:
+    - name: Key Vault Kod Örnekleri
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json

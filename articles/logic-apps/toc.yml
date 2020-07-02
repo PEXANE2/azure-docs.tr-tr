@@ -7,12 +7,15 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Mantıksal uygulamalar oluşturma - Azure portalı
+    - name: Mantıksal uygulamalar oluşturma - Portal
       href: quickstart-create-first-logic-app-workflow.md
     - name: Mantıksal uygulamalar oluşturma - Visual Studio
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: Mantıksal uygulamalar oluşturma - Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
+    - name: Mantıksal uygulamalar oluşturma - ARM şablonu
+      displayName: Resource Manager
+      href: quickstart-create-deploy-azure-resource-manager-template.md
 - name: Öğreticiler
   items:
     - name: Zamanlamaya dayalı iş akışları oluşturma

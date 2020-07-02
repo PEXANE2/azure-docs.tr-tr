@@ -8,7 +8,7 @@
           href: partner-workloads.md
     - name: Kavramlar
       items:
-        - name: Bilgi İşlem
+        - name: İşlem
           href: concepts/mainframe-compute-azure.md
         - name: Depolama
           href: concepts/mainframe-storage-azure.md
@@ -18,6 +18,8 @@
           href: microfocus/get-started.md
         - name: Enterprise Server’ı yükleme
           href: microfocus/set-up-micro-focus-azure.md
+        - name: Enterprise Server’ı AKS’ye dağıtma
+          href: microfocus/deploy-micro-focus-enterprise-server.md
         - name: CICS BankDemo’yu çalıştırma
           href: microfocus/demo.md
         - name: Kapsayıcılarda Enterprise Server

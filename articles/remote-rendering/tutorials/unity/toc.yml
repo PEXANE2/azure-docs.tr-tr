@@ -1,6 +1,14 @@
-- name: Sıfırdan Unity projesi ayarlama
-  href: project-setup.md
-- name: Unity’de uzak varlıklarla çalışma
-  href: working-with-remote-entities.md
-- name: Ortamı ve malzemeleri değiştirme
-  href: changing-environment-and-materials.md
+- name: Genel Bakış
+  href: tutorial-landing.md
+- name: Uzaktan işlenmiş bir modeli görüntüleme
+  href: view-remote-models/view-remote-models.md
+- name: Arabirimler ve özel modeller
+  href: custom-models/custom-models.md
+- name: Modelleri düzenleme
+  href: manipulate-models/manipulate-models.md
+- name: 'Malzemeleri, ışıkları ve efektleri iyileştirme'
+  href: materials-lighting-effects/materials-lighting-effects.md
+- name: Azure Remote Rendering ve model depolamanın güvenliğini sağlama
+  href: security/security.md
+- name: Ticari kullanım için hazır bir Azure Remote Rendering uygulaması oluşturma
+  href: commercial-ready/commercial-ready.md

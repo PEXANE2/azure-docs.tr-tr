@@ -4,6 +4,14 @@
   items:
     - name: Azure Danışmanı nedir?
       href: advisor-overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Yeni öneriler için uyarıları yapılandırma
+      items:
+        - name: Azure portal
+          href: advisor-alerts-portal.md
+        - name: ARM şablonu
+          href: advisor-alerts-arm.md
 - name: Öğreticiler
   items:
     - name: Danışman'ı kullanmaya başlama
@@ -25,7 +33,7 @@
     - name: İzinler ve engellenen eylemler
       href: permissions.md
     - name: Öneriler için Uyarıları yapılandırma
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
     - name: Önerileri toplu olarak düzeltme
       href: advisor-quick-fix.md
     - name: Azure Kaynak Grafı’nda danışma verileri

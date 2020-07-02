@@ -947,6 +947,8 @@
           items:
             - name: Azure Site Recovery ile Premium depolamaya geçiş
               href: migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Sunucu tarafı şifrelemesine dönüştürme
+              href: disks-ade-sse-conversion-cli.md
             - name: Yönetilen Disklere dönüştürme
               href: convert-unmanaged-to-managed-disks.md
             - name: Standart ve Premium arasında disk dönüştürme

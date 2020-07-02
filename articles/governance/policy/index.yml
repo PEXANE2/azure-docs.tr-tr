@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/16/2020
-  ms.openlocfilehash: d3a25af9f7d8e16fbb008fd84aff6e29c57680da
-  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.date: 06/29/2020
+  ms.openlocfilehash: c066c3a7cc5b8208a61962ce4f51f7eef4be192b
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85321959"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85549948"
 landingContent:
 - title: Azure İlkesi hakkında
   linkLists:
@@ -37,13 +37,13 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: İlke atama (portal)
+    - text: İlke atama (Portal)
       url: ./assign-policy-portal.md
-    - text: İlke atama (PowerShell)
-      url: ./assign-policy-powershell.md
     - text: İlke atama (Azure CLI)
       url: ./assign-policy-azurecli.md
-    - text: İlke atama (şablon)
+    - text: İlke atama (Azure PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: İlke atama (ARM şablonu)
       url: ./assign-policy-template.md
   - linkListType: tutorial
     links:

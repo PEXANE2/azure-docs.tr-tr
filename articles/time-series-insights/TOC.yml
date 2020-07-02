@@ -117,6 +117,8 @@
       items:
         - name: Uzun Veri Türü için Destek ekleme
           href: time-series-insights-long-data-type.md
+        - name: JSON düzleştirme ve depolamasında yapılan değişiklikler
+          href: ingestion-rules-update.md
 - name: Başvuru
   items:
     - name: Time Series Insights
