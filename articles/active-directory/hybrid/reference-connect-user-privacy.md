@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60455797"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Kullanıcı gizliliği ve Azure AD Connect 
@@ -48,10 +48,10 @@ Azure AD Connect müşteriler Kullanıcı verilerini kaldırırken aşağıdaki 
 Bir kişiyle ilgili veriler, kullanıcının kaynaklandığı kaynak sistemden kaldırıldığında Azure AD Connect veritabanından otomatik olarak kaldırılır. Yöneticilerden gelen özel bir eylemin GDPR uyumlu olması gerekmez.  Ancak, Azure AD Connect verilerinin veri kaynağınıza en az iki günde eşitlendiğinden emin olmanız gerekir.
 
 ## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>Azure AD Connect yükleme günlük dosyası klasörü içeriğini silme
-**PersistedState. xml** dosyası hariç **c:\programdata\aadconnect** klasörünün içeriğini düzenli olarak denetleyin ve silin. Bu dosya, önceki Azure yüklemesinin durumunu korur ve yükseltme yüklemesi gerçekleştirildiğinde kullanılır. Bu dosya, bir kişi hakkında hiç veri içermiyor ve silinmemelidir.
+**PersistedState.Xml** dosyası dışında **c:\programdata\aadconnect** klasörünün içeriğini düzenli olarak denetleyin ve silin. Bu dosya, önceki Azure yüklemesinin durumunu korur ve yükseltme yüklemesi gerçekleştirildiğinde kullanılır. Bu dosya, bir kişi hakkında hiç veri içermiyor ve silinmemelidir.
 
 >[!IMPORTANT]
->PersistedState. xml dosyasını silmeyin.  Bu dosya, Kullanıcı bilgisi içermez ve önceki yüklemenin durumunu korur.
+>PersistedState.xml dosyasını silmeyin.  Bu dosya, Kullanıcı bilgisi içermez ve önceki yüklemenin durumunu korur.
 
 Bu dosyaları Windows Gezgini 'ni kullanarak gözden geçirebilir ve silebilirsiniz ya da gerekli eylemleri gerçekleştirmek için aşağıdaki gibi bir komut dosyası kullanabilirsiniz:
 

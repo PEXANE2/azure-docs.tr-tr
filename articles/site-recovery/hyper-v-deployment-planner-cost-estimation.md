@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60947239"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Dağıtım Planlayıcısı maliyet tahmini raporu 
@@ -119,7 +119,7 @@ Sanal makineleri el ile eklemek için:
 
     f. **Her DR tatbikatının süresi (gün)**
 
-    g. **İşletim Sistemi Türü**
+    örneğin: **İşletim Sistemi Türü**
 
     h. **Veri yedekliği**
 
@@ -167,7 +167,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Desteklenen para birimleri
 Site Recovery Dağıtım Planlayıcısı aşağıdaki para birimlerinin tümünde maliyet raporu oluşturabilir.
 
-|Para birimi|Adı||Para birimi|Adı||Para birimi|Adı|
+|Para birimi|Name||Para birimi|Name||Para birimi|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Arjantin pesosu ($)||AUD|Avustralya doları ($)||BRL|Brezilya reali (R$)|
 |CAD|Kanada doları ($)||CHF|İsviçre frangı (chf)||DKK|Danimarka kronu (kr)|

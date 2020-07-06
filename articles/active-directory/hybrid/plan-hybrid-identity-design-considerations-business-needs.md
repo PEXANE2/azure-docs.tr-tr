@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65950905"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için kimlik gereksinimlerini belirleme
@@ -29,7 +29,7 @@ Karma kimlik çözümü tasarlamanın ilk adımı, bu çözümü kullanacak iş 
 
 Artık gereksinimin ne olduğunu ve şirketin geleceğe yönelik planlama yaptığını anlamak için işletmeden bu ana yönlere gitmeniz gerekir. Karma kimlik tasarımı için uzun süreli stratejinin görünebilirliği yoksa, işin büyümesi ve değişmesi nedeniyle çözümünüzün ölçeklendirilememesi gerekir. Aşağıdaki diyagramda, karma kimlik mimarisinin ve kullanıcılar için kilitsiz olan iş yüklerinin bir örneği gösterilmektedir. Bu yalnızca, kesintisiz bir karma kimlik stratejisiyle birlikte açılabilir ve teslim edilebilir tüm yeni olasılıklarla ilgili bir örnektir. 
 
-Karma kimlik mimarisi ![karma kimlik mimarisinin parçası olan bazı bileşenler](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+Karma kimlik mimarisi ![ karma kimlik mimarisinin parçası olan bazı bileşenler](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>İş ihtiyaçlarını belirleme
 Her şirket farklı gereksinimlere sahip olacaktır, bu şirketler aynı sektörde yer alsa bile, gerçek iş gereksinimleri farklılık gösterebilir. Sektördeki en iyi uygulamalardan yararlanmaya devam edebilirsiniz, ancak bu, son olarak şirketin iş gereksinimleridir ve bu da karma kimlik tasarımı için gereksinimleri tanımlamanızı sağlar. 

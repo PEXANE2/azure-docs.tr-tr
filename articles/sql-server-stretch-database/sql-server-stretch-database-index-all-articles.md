@@ -1,6 +1,6 @@
 ---
 title: SQL Server Stretch Database hizmeti için tüm konular | Microsoft Docs
-description: SQL Server adlı Azure hizmetine yönelik tüm konuların tablosu https://azure.microsoft.com/documentation/articles/, başlık ve açıklama Stretch Database.
+description: SQL Server adlı Azure hizmetine yönelik tüm konuların tablosu https://azure.microsoft.com/documentation/articles/ , başlık ve açıklama Stretch Database.
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
@@ -14,16 +14,16 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66003019"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Azure SQL Server Stretch Database hizmeti için tüm konular
 Bu konu, Azure 'un **SQL Server Stretch Database** hizmetine doğrudan uygulanan tüm konuları listeler. Geçerli ilgilendiğiniz konuları bulmak için **CTRL + F**kullanarak bu Web sayfasında anahtar sözcükler için arama yapabilirsiniz.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 | &nbsp; | Başlık | Açıklama |
 | ---:|:--- |:--- |
 | 1 |[Stretch Database Advisor 'ı çalıştırarak Stretch Database veritabanlarını ve tabloları tanımla](sql-server-stretch-database-identify-databases.md) |Stretch Database aday olan veritabanları ve tabloları nasıl tanımlayacağınızı öğrenin. |
@@ -31,7 +31,7 @@ Bu konu, Azure 'un **SQL Server Stretch Database** hizmetine doğrudan uygulanan
 | 3 |[Stretch Database’e genel bakış](sql-server-stretch-database-overview.md) |Stretch Database’in soğuk verilerinizi şeffaf ve güvenli bir şekilde Microsoft Azure bulutuna nasıl geçirdiğini öğrenin. |
 | 4 |[Esnetme İçin Veritabanını Etkinleştirme Sihirbazını çalıştırarak kullanmaya başlama](sql-server-stretch-database-wizard.md) |Esnetme İçin Veritabanını Etkinleştirme Sihirbazını çalıştırarak, bir veritabanının Stretch Database için nasıl yapılandırılacağını öğrenin. |
 
-## <a name="enable"></a>Etkinleştirme
+## <a name="enable"></a>Etkinleştir
 | &nbsp; | Başlık | Açıklama |
 | ---:|:--- |:--- |
 | 5 |[Stretch Database‘i bir veritabanı için etkinleştirme](sql-server-stretch-database-enable-database.md) |Stretch Database için bir veritabanını yapılandırmayı öğrenin. |
@@ -55,6 +55,6 @@ Bu konu, Azure 'un **SQL Server Stretch Database** hizmetine doğrudan uygulanan
 ## <a name="backup-and-recovery"></a>Yedekleme ve kurtarma
 | &nbsp; | Başlık | Açıklama |
 | ---:|:--- |:--- |
-| 14 |[Esnetme özellikli veritabanlarını yedekleme](sql-server-stretch-database-backup.md) |Esnetme\-özellikli veritabanlarını nasıl yedekleyeceğinizi öğrenin. |
-| 15 |[Esnetme özellikli veritabanlarını geri yükleme](sql-server-stretch-database-restore.md) |Esnetme\-özellikli veritabanlarını nasıl geri yükleyeceğinizi öğrenin. |
+| 14 |[Esnetme özellikli veritabanlarını yedekleme](sql-server-stretch-database-backup.md) |Esnetme özellikli veritabanlarını nasıl yedekleyeceğinizi öğrenin \- . |
+| 15 |[Esnetme özellikli veritabanlarını geri yükleme](sql-server-stretch-database-restore.md) |Esnetme özellikli veritabanlarını nasıl geri yükleyeceğinizi öğrenin \- . |
 

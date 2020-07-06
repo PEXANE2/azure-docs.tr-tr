@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61448411"
 ---
 # <a name="deploy-a-custom-device-simulation-docker-image"></a>Özel cihaz benzetimi Docker görüntüsü dağıtma
@@ -27,7 +27,7 @@ Bu nasıl yapılır kılavuzundaki adımlarda şu adımları nasıl kullanabilec
 1. Yeni Docker görüntünüzü kullanmak için cihaz simülasyonu yapılandırma
 1. Yeni görüntüyü kullanarak benzetim çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için şunlar gerekir:
 

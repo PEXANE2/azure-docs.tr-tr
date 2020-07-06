@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60789646"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple Sanal dizisi güncelleştirme 1,1 sürüm notları
@@ -51,7 +51,7 @@ Aşağıdaki tabloda, bu sürümde düzeltilen sorunların bir özeti verilmişt
 | Hayır. | Özellik | Sorun |
 | --- | --- | --- |
 | 1 |Yedeklemeler| Bu sürüm, bulut hatalarıyla ve yüksek CPU kullanımının dayanıklılığını artırarak yedekleme hatalarının artmasıyla ilgili değişiklikler içerir.|
-| 2 |Günlüğe kaydetme| Bu sürüm, cihaz destek oturumu ayrıntılı modda olduğunda günlüğe kaydetme değişiklikleri içerir.|
+| 2 |Günlüğe Kaydetme| Bu sürüm, cihaz destek oturumu ayrıntılı modda olduğunda günlüğe kaydetme değişiklikleri içerir.|
 
 
 ## <a name="known-issues-in-update-11"></a>Güncelleştirme 1,1 ' de bilinen sorunlar

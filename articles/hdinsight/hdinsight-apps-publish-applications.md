@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64685319"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketi 'nde HDInsight uygulaması yayımlama
@@ -25,13 +25,13 @@ Daha fazla bilgi için bkz. HDInsight uygulamasıyla ilgili bu makaleler:
 * [HDInsight uygulamalarını yükler](hdinsight-apps-install-applications.md). Kümelerinize HDInsight uygulaması yüklemeyi öğrenin.
 * [Özel HDInsight uygulamalarını yükler](hdinsight-apps-install-custom-applications.md). Özel HDInsight uygulamalarını yüklemeyi ve test yapmayı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Özel uygulamanızı Market 'te göndermek için öncelikle [özel uygulamanızı oluşturun ve test](hdinsight-apps-install-custom-applications.md)edin.
 
 Geliştirici hesabınızı da kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/marketplace-publishers-guide.md) ve [bir Microsoft Geliştirici hesabı oluşturma](../marketplace/marketplace-publishers-guide.md).
 
 ## <a name="define-the-application"></a>Uygulamayı tanımlama
-Market 'te uygulamaları yayımlamayla ilgili iki adım vardır. İlk olarak bir *Createuidef. JSON* dosyası tanımlayın. Createuıdef. JSON dosyası, uygulamanızın hangi kümelerle uyumlu olduğunu gösterir. Ardından, şablonu Azure portal yayımlayın. Örnek bir createUiDef. JSON dosyası aşağıda verilmiştir:
+Market 'te uygulamaları yayımlamayla ilgili iki adım vardır. İlk olarak, dosyasında bir *createUiDef.js* tanımlayın. Dosyadaki createUiDef.js, uygulamanızın hangi kümelerle uyumlu olduğunu gösterir. Ardından, şablonu Azure portal yayımlayın. Dosyadaki bir örnek createUiDef.jsaşağıda verilmiştir:
 
 ```json
 {
@@ -44,7 +44,7 @@ Market 'te uygulamaları yayımlamayla ilgili iki adım vardır. İlk olarak bir
 }
 ```
 
-| Alan | Açıklama | Olası değerler |
+| Alan | Description | Olası değerler |
 | --- | --- | --- |
 | types |Uygulamanın uyumlu olduğu küme türleri. |Hadoop, HBase, fırtınası, Spark (veya bunların herhangi bir birleşimi) |
 | versions |Uygulamanın uyumlu olduğu HDInsight küme türleri. |3.4 |
@@ -76,8 +76,8 @@ Yükleme betiği aşağıdaki özelliklere sahip olmalıdır:
 ## <a name="package-the-application"></a>Uygulamayı paketleyin
 HDInsight uygulamanızı yüklemek için gereken tüm dosyaları içeren bir. zip dosyası oluşturun. Uygulamayı yayımlamak için. zip dosyasını kullanın. . Zip dosyası aşağıdaki dosyaları içerir:
 
-* Createuıdefinition. JSON
-* mainTemplate. JSON (bir örnek Için bkz. [özel HDInsight uygulamaları yüklemesi](hdinsight-apps-install-custom-applications.md).)
+* Üzerinde createUiDefinition.js
+* mainTemplate.js(bir örnek Için bkz. [özel HDInsight uygulamalarını yüklemeyi](hdinsight-apps-install-custom-applications.md).)
 * Tüm gerekli betikler
 
 > [!NOTE]  
@@ -91,8 +91,8 @@ HDInsight uygulaması yayımlamak için:
 3. Bir başlık girin ve ardından **yeni çözüm şablonu oluştur**' u seçin.
 4. Kuruluşunuzda henüz kaydolmadıysanız **Geliştirme Merkezi hesabı oluştur ' u seçin ve Azure programına katın**.  Daha fazla bilgi için bkz. [Microsoft Geliştirici hesabı oluşturma](../marketplace/marketplace-publishers-guide.md).
 5. Başlamak **için bazı topolojiler tanımla**' yı seçin. Bir çözüm şablonu, tüm Topolojilerine bir "üst" öğesidir. Tek bir teklifte veya çözüm şablonunda birden fazla topoloji tanımlayabilirsiniz. Bir teklif hazırlama için gönderildiğinde, tüm topolojilerle gönderilir. 
-6. Bir topoloji adı girin ve ardından öğesini seçin **+**.
-7. Yeni bir sürüm girin ve ardından öğesini seçin **+**.
+6. Bir topoloji adı girin ve ardından öğesini seçin **+** .
+7. Yeni bir sürüm girin ve ardından öğesini seçin **+** .
 8. Uygulamayı paketlediğiniz sırada oluşturduğunuz. zip dosyasını karşıya yükleyin.  
 9. **Sertifika iste**' yi seçin. Microsoft sertifika ekibi, dosyaları inceler ve topolojiyi sertifikalandırın.
 

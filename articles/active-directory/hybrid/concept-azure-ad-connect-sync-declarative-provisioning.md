@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60246273"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama
@@ -53,7 +53,7 @@ Bu resimdeki kapsam (departman = IT ve ülke = Danimarka) veya (ülke = Isveç) 
 
 Kapsam modülü aşağıdaki işlemleri destekler.
 
-| İşlem | Açıklama |
+| Çalışma | Description |
 | --- | --- |
 | EŞITTIR, NOTEQUAL |Değerin öznitelikteki değere eşit olup olmadığını değerlendiren bir dize karşılaştırması. Birden çok değerli öznitelikler için bkz. ııN ve ıSNOTıN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Değerin öznitelikteki değerden küçük olup olmadığını değerlendiren bir dize karşılaştırması. |
@@ -105,7 +105,7 @@ Dönüşümler, özniteliklerin kaynaktan hedefe nasıl akacağınızı tanımla
 
 Ayrıca **merge** ve **mergecaseduyarsızdır**. Bu seçenekler, farklı kaynaklardaki değerleri birleştirmenizi sağlar. Örneğin, çeşitli farklı ormanlardan üye veya proxyAddresses özniteliğini birleştirmek için kullanılabilir. Bu seçeneği kullandığınızda, bir nesnenin kapsamındaki tüm eşitleme kurallarının aynı birleştirme türünü kullanması gerekir. Bir bağlayıcıdan **güncelleştirme** tanımlayamazsınız ve başka bir bağlayıcıya **birleştiremezsiniz** . Deneme yaparsanız bir hata alırsınız.
 
-**Merge** ve **mergecaseduyarsız** arasındaki fark, yinelenen öznitelik değerlerini işleme işlemidir. Eşitleme altyapısı, yinelenen değerlerin hedef özniteliğe eklenmediğinden emin olmanızı sağlar. **Mergecaseduyarsız**ile yinelenen değerler yalnızca büyük/küçük harf farklılığı olmayacak. Örneğin, hedef özniteliğinde hem "SMTP:bob@contoso.com" hem de "smtp:bob@contoso.com" öğesini görmemelisiniz. **Birleştirme** yalnızca tam değerlere ve yalnızca büyük/küçük harfli bir farklılık olduğunu fark eden birden fazla değere bakıyor.
+**Merge** ve **mergecaseduyarsız** arasındaki fark, yinelenen öznitelik değerlerini işleme işlemidir. Eşitleme altyapısı, yinelenen değerlerin hedef özniteliğe eklenmediğinden emin olmanızı sağlar. **Mergecaseduyarsız**ile yinelenen değerler yalnızca büyük/küçük harf farklılığı olmayacak. Örneğin, SMTP:bob@contoso.com hedef özniteliğinde hem "" hem de "" öğesini görmemelisiniz smtp:bob@contoso.com . **Birleştirme** yalnızca tam değerlere ve yalnızca büyük/küçük harfli bir farklılık olduğunu fark eden birden fazla değere bakıyor.
 
 **Replace** seçeneği **güncelleştirmesiyle**aynıdır, ancak kullanılmaz.
 

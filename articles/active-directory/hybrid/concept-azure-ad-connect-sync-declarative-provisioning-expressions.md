@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245497"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect eşitleme: bildirim temelli sağlama Ifadelerini anlama
@@ -53,7 +53,7 @@ Bir parametre, bir bağlayıcı ya da PowerShell kullanan bir yönetici tarafın
 
 Active Directory Bağlayıcısı gelen eşitleme kuralları için aşağıdaki parametreleri sağladı:
 
-| Parametre Adı | Açıklama |
+| Parametre Adı | Yorum |
 | --- | --- |
 | Domain. NetBIOS |Şu anda içeri aktarılmakta olan etki alanının NetBIOS biçimi, örneğin FABRIKAMSALES |
 | Domain. FQDN |Şu anda içeri aktarılmakta olan etki alanının FQDN biçimi, örneğin sales.fabrikam.com |
@@ -72,19 +72,19 @@ Meta veri deposu özniteliği etki alanını, kullanıcının bulunduğu etki al
 Aşağıdaki işleçler kullanılabilir:
 
 * **Karşılaştırma**: <, <=,  <>, =, >, >=
-* **Matematik**: +,-, \*,-
+* **Matematik**: +,-, \* ,-
 * **Dize**: & (Birleştir)
 * **Mantıksal**:  &&  (ve), | | veya
 * **Değerlendirme sırası**: ()
 
-İşleçler soldan sağa değerlendirilir ve aynı değerlendirme önceliğine sahiptir. Diğer bir deyişle, \* (çarpan)-(çıkarma) öncesinde değerlendirilmez. 2\*(5 + 3), 2\*5 + 3 ile aynı değildir. Köşeli ayraçlar (), soldan sağa değerlendirme sırası uygun olmadığında değerlendirme sırasını değiştirmek için kullanılır.
+İşleçler soldan sağa değerlendirilir ve aynı değerlendirme önceliğine sahiptir. Diğer bir deyişle, \* (çarpan)-(çıkarma) öncesinde değerlendirilmez. 2 \* (5 + 3), 2 \* 5 + 3 ile aynı değildir. Köşeli ayraçlar (), soldan sağa değerlendirme sırası uygun olmadığında değerlendirme sırasını değiştirmek için kullanılır.
 
 ## <a name="multi-valued-attributes"></a>Çoklu değerli öznitelikler
 İşlevler hem tek değerli hem de birden çok değerli öznitelikler üzerinde çalışabilir. Çoklu değerli özniteliklerde, işlev her değer üzerinde çalışır ve her değere aynı işlevi uygular.
 
-Örneğin:  
+Örnek:  
 `Trim([proxyAddresses])`ProxyAddress özniteliğinde her bir değerin kırpılıp bir bölümünü yapın.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`İle @-signher değer için etki alanını ile @contoso.comdeğiştirin.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`İle her değer için @-sign etki alanını ile değiştirin @contoso.com .  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`SIP-Address ' i bulun ve değerlerden kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

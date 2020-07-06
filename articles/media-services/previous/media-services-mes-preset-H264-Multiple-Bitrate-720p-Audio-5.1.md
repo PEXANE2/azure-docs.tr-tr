@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ac21558b1480f43b398f44949e18416284c3f606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61129529"
 ---
 # <a name="h264-multiple-bitrate-720p-audio-51"></a>H264 Multiple Bitrate 720p Audio 5.1
-`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. Medya dosyanızı kodlamak istediğiniz biçimi `preset name` belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. `preset name`Medya dosyanızı kodlamak istediğiniz biçimi belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için `Media Encoder Standard` bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
   
  Bu konu, `H264 Multiple Bitrate 720p Audio 5.1` XML ve JSON biçimindeki ön ayarı gösterir.  
   
  Bu önayar, 6 GOP hizalanmış MP4 dosyası kümesi oluşturur ve 3400 kbps 'den 400 Kbps 'e ve AAC 5,1 ses olarak değişir. Bu önayar için profil, bit hızı, örnekleme oranı vb. hakkında ayrıntılı bilgi için, aşağıda tanımlanan XML veya JSON 'u inceleyin. Her öğenin anlamı ve her öğe için geçerli değerler hakkında açıklamalar için [Media Encoder Standard şemasına](media-services-mes-schema.md)bakın.  
   
 > [!NOTE]
->  Katmanlar genelinde `Width` ve `Height` değerlerini değiştirirken en boy oranının tutarlı olmaya devam ettiğinden emin olun. Örneğin: 1920x1080, 1280x720, 1080x576, 640 x 360. : 1280x720, 720x480, 640 x 360 gibi en boy oranlarından oluşan bir karışımı kullanmamalısınız.  
+>  `Width` `Height` Katmanlar genelinde ve değerlerini değiştirirken en boy oranının tutarlı olmaya devam ettiğinden emin olun. Örneğin: 1920x1080, 1280x720, 1080x576, 640 x 360. : 1280x720, 720x480, 640 x 360 gibi en boy oranlarından oluşan bir karışımı kullanmamalısınız.  
   
  XML  
   

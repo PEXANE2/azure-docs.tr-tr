@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61094666"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>.NET için Media Services SDK 'da yeniden deneme mantığı  
@@ -40,14 +40,14 @@ Aşağıdaki tabloda, .NET için Media Services SDK 'nın, geçici hatalara nede
 | Özel durum | Web Isteği | Depolama | Sorgu | Sonrasında |
 | --- | --- | --- | --- | --- |
 | Gönderdi<br/>Daha fazla bilgi için, [WebException durum kodları](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) bölümüne bakın. |Yes |Yes |Yes |Yes |
-| DataServiceClientException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Hayır |Yes |Yes |Yes |
-| DataServiceQueryException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Hayır |Yes |Yes |Yes |
-| DataServiceRequestException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Hayır |Yes |Yes |Yes |
+| DataServiceClientException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |No |Yes |Yes |Yes |
+| DataServiceQueryException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |No |Yes |Yes |Yes |
+| DataServiceRequestException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |No |Yes |Yes |Yes |
 | DataServiceTransportException |Hayır |Hayır |Yes |Yes |
-| TimeoutException |Yes |Yes |Yes |Hayır |
+| TimeoutException |Yes |Yes |Yes |No |
 | SocketException |Yes |Yes |Yes |Yes |
-| StorageException |Hayır |Yes |Hayır |Hayır |
-| IOException |Hayır |Yes |Hayır |Hayır |
+| StorageException |No |Evet |Hayır |Hayır |
+| IOException |No |Evet |Hayır |Hayır |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a>WebException durum kodları
 Aşağıdaki tabloda, yeniden deneme mantığının uygulandığı WebException hata kodlarının gösterildiği gösterilmektedir. [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) numaralandırması durum kodlarını tanımlar.  
@@ -58,13 +58,13 @@ Aşağıdaki tabloda, yeniden deneme mantığının uygulandığı WebException 
 | NameResolutionFailure |Yes |Yes |Yes |Yes |
 | ProxyNameResolutionFailure |Yes |Yes |Yes |Yes |
 | SendFailure |Yes |Yes |Yes |Yes |
-| PipelineFailure |Yes |Yes |Yes |Hayır |
-| ConnectionClosed |Yes |Yes |Yes |Hayır |
-| KeepAliveFailure |Yes |Yes |Yes |Hayır |
-| UnknownError |Yes |Yes |Yes |Hayır |
-| ReceiveFailure |Yes |Yes |Yes |Hayır |
-| Requestiptal edildi |Yes |Yes |Yes |Hayır |
-| Zaman aşımı |Yes |Yes |Yes |Hayır |
+| PipelineFailure |Yes |Yes |Yes |No |
+| ConnectionClosed |Yes |Yes |Yes |No |
+| KeepAliveFailure |Yes |Yes |Yes |No |
+| UnknownError |Yes |Yes |Yes |No |
+| ReceiveFailure |Yes |Yes |Yes |No |
+| Requestiptal edildi |Yes |Yes |Yes |No |
+| Zaman aşımı |Yes |Yes |Yes |No |
 | ProtocolError <br/>Protocolon 'da yeniden dene hatası, HTTP durum kodu işleme tarafından denetlenir. Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Yes |Yes |Yes |Yes |
 
 ### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a>HTTP hatası durum kodları
@@ -72,20 +72,20 @@ Sorgu ve SaveChanges işlemleri DataServiceClientException, DataServiceQueryExce
 
 | Durum | Web Isteği | Depolama | Sorgu | Sonrasında |
 | --- | --- | --- | --- | --- |
-| 401 |Hayır |Yes |Hayır |Hayır |
-| 403 |Hayır |Yes<br/>Daha uzun bir süre sonra yeniden denemeleri işleme. |Hayır |Hayır |
+| 401 |No |Evet |Hayır |Hayır |
+| 403 |No |Evet<br/>Daha uzun bir süre sonra yeniden denemeleri işleme. |Hayır |Hayır |
 | 408 |Yes |Yes |Yes |Yes |
 | 429 |Yes |Yes |Yes |Yes |
-| 500 |Yes |Yes |Yes |Hayır |
-| 502 |Yes |Yes |Yes |Hayır |
+| 500 |Yes |Yes |Yes |No |
+| 502 |Yes |Yes |Yes |No |
 | 503 |Yes |Yes |Yes |Yes |
-| 504 |Yes |Yes |Yes |Hayır |
+| 504 |Yes |Yes |Yes |No |
 
 .NET yeniden deneme mantığı için Media Services SDK 'nın gerçek uygulamasına göz atmak istiyorsanız bkz. [Azure-SDK-for-Media-Services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

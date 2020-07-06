@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64724108"
 ---
 # <a name="media-services-development-with-net"></a>.NET ile Media Services geliştirme 
@@ -30,7 +30,7 @@ Bu makalede, .NET kullanarak Media Services uygulamaları geliştirmeye nasıl b
 
 **Azure Media Services .NET SDK** kitaplığı, .net kullanarak Media Services karşı programlama yapmanızı sağlar. .NET ile geliştirmeyi daha da kolaylaştırmak için **Azure Media Services .NET SDK uzantıları** kitaplığı sağlanır. Bu kitaplık, .NET kodunuzu basitleştirecek bir uzantı yöntemleri ve yardımcı işlevler kümesi içerir. Her iki kitaplık da **NuGet** ve **GitHub**aracılığıyla kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Yeni veya mevcut bir Azure aboneliğinde bir Media Services hesabı. [Media Services hesabı oluşturma](media-services-portal-create-account.md)makalesine bakın.
 * İşletim sistemleri: Windows 10, Windows 7, Windows 2008 R2 veya Windows 8.
 * .NET Framework 4,5 veya üzeri.
@@ -57,13 +57,13 @@ Alternatif olarak, GitHub 'dan ([GitHub.com/Azure/Azure-SDK-for-Media-Services](
    
     4. Proje değiştirilir ve Media Services .NET SDK uzantıları, Media Services .NET SDK ve diğer bağımlı derlemeler eklenir.
 4. Bir temizleyici geliştirme ortamını yükseltmek için, NuGet paket geri yüklemeyi etkinleştirmeyi göz önünde bulundurun. Daha fazla bilgi için bkz. [NuGet paketini geri yükleme "](https://docs.nuget.org/consume/package-restore).
-5. **System. Configuration** derlemesine bir başvuru ekleyin. Bu derleme System. Configuration içerir. Yapılandırma dosyalarına erişmek için kullanılan (örneğin, App. config **) sınıf.**
+5. **System.Configurlama** derlemesine bir başvuru ekleyin. Bu derleme, System.Configurnu içerir. Yapılandırma dosyalarına erişmek için kullanılan (örneğin, App.config **) sınıf.**
    
     1. Başvuruları Yönet iletişim kutusunu kullanarak başvurular eklemek için Çözüm Gezgini proje adına sağ tıklayın. Ardından **Ekle**' ye ve ardından **başvuru...** öğesine tıklayın.
    
     2. Başvuruları Yönet iletişim kutusu görüntülenir.
-    3. .NET Framework derlemeleri altında, System. Configuration derlemesini bulun ve seçin ve **Tamam**' a basın.
-6. App. config dosyasını açın ve dosyaya bir **appSettings** bölümü ekleyin. Media Services API 'sine bağlanmak için gereken değerleri ayarlayın. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure Media Services API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
+    3. .NET Framework derlemeleri altında, System.Configurlama derlemesini bulun ve seçin ve **Tamam**' a basın.
+6. App.config dosyasını açın ve dosyaya bir **appSettings** bölümü ekleyin. Media Services API 'sine bağlanmak için gereken değerleri ayarlayın. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure Media Services API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
     **Hizmet sorumlusu** kimlik doğrulama yöntemini kullanarak bağlanmak için gereken değerleri ayarlayın.
 
@@ -79,7 +79,7 @@ Alternatif olarak, GitHub 'dan ([GitHub.com/Azure/Azure-SDK-for-Media-Services](
                 </configuration>
         ```
 
-7. **System. Configuration** başvurusunu projenize ekleyin.
+7. Projenize **System.Configuration** başvurusunu ekleyin.
 8. Program.cs dosyasının başındaki mevcut **using** deyimlerinin üzerine aşağıdaki kodu yazın:
 
     ```csharp      
@@ -141,6 +141,6 @@ Artık [AMS API 'sine bağlanabilir](media-services-use-aad-auth-to-access-ams-a
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

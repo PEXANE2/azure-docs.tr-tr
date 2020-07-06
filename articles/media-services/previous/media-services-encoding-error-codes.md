@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64709517"
 ---
 # <a name="encoding-error-codes"></a>Kodlama hata kodları
@@ -30,7 +30,7 @@ Aşağıdaki tabloda, kodlama görevi yürütülürken bir hatayla karşılaşı
 | Bilinmiyor |Görev yürütülürken bilinmeyen hata oluştu |
 | Errordownloadingınputassetmalformedcontent |Hatalı dosya adları, sıfır uzunluklu dosyalar, yanlış biçimler vb. gibi giriş varlığı indirmede oluşan hataları ele alan hata kategorisi. |
 | Errordownloadingınputassetservicefailure |Hizmet tarafında sorunları ele alan hata kategorisi; Örneğin, indirme sırasında ağ veya depolama hataları. |
-| ErrorParsingConfiguration |Görevin \<göreceği hata kategorisi: cref = "mediatask. privatedata"/> (yapılandırma) geçerli değil, örneğin yapılandırma geçerli bir sistem önayarı değil veya geçersiz XML içeriyor. |
+| ErrorParsingConfiguration |Görevin \<see cref="MediaTask.PrivateData"/> (yapılandırma) geçerli olmadığı bir hata kategorisi; Örneğin, yapılandırma geçerli bir sistem önayarı değil veya GEÇERSIZ XML içeriyor. |
 | ErrorExecutingTaskMalformedContent |Görevin, giriş medya dosyaları içindeki sorunların başarısız olmasına neden olan hata kategorisi. |
 | ErrorExecutingTaskUnsupportedFormat |Medya işlemcisinin belirtilen dosyaları işleyemediğinden oluşan hata kategorisi-medya biçimi desteklenmiyor veya yapılandırmayla eşleşmiyor. Örneğin, yalnızca video içeren bir varlıktan yalnızca ses çıkışı üretme girişimi |
 | ErrorProcessingTask |Medya işlemcisinin içerikle ilgisi olmayan görevin işlenmesi sırasında karşılaştığı diğer hataların kategorisi. |
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, kodlama görevi yürütülürken bir hatayla karşılaşı
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>İlgili makaleler:

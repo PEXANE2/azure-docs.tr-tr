@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60518446"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Bölgeler arasında Azure Data Lake Storage 1. geçirme
 
 Azure Data Lake Storage 1. yeni bölgelerde kullanılabilir hale geldiğinde, yeni bölgeden yararlanmak için bir kerelik geçiş yapmak isteyebilirsiniz. Taşımayı planlarken ve tamamladıktan sonra göz önüne almanız gerekenler hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/pricing/free-trial/).
 * **İki farklı bölgede Data Lake Storage 1. hesabı**. Daha fazla bilgi için bkz. [Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md).
 * **Azure Data Factory**. Daha fazla bilgi için bkz. [Azure Data Factory'ye giriş](../data-factory/introduction.md).
 

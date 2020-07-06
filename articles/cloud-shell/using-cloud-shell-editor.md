@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60199231"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>Azure Cloud Shell düzenleyicisini kullanma
@@ -37,13 +37,13 @@ Düzenleyiciyi kullanıcı arabirimi düğmesiyle açmak için araç çubuğunda
 
 ## <a name="closing-the-editor"></a>Düzenleyiciyi kapatma
 
-Düzenleyiciyi kapatmak için, düzenleyicinin sağ üst `...` köşesindeki eylem panelini açın ve öğesini seçin `Close editor`.
+Düzenleyiciyi kapatmak için, `...` düzenleyicinin sağ üst köşesindeki eylem panelini açın ve öğesini seçin `Close editor` .
 
 ![Düzenleyiciyi Kapat](media/using-cloud-shell-editor/close-editor.png)
 
 ## <a name="command-palette"></a>Komut paleti
 
-Komut paletini başlatmak için, düzenleyicide odak ayarlandığında `F1` anahtarı kullanın. Komut paletini açmak, eylem panelinden de yapılabilir.
+Komut paletini başlatmak için, `F1` düzenleyicide odak ayarlandığında anahtarı kullanın. Komut paletini açmak, eylem panelinden de yapılabilir.
 
 ![Cmd paleti](media/using-cloud-shell-editor/cmd-palette.png)
 
@@ -52,5 +52,5 @@ Komut paletini başlatmak için, düzenleyicide odak ayarlandığında `F1` anah
 Cloud Shell düzenleyicisinde dil vurgulama desteği, [Monako Düzenleyicisi](https://github.com/Microsoft/monaco-editor)'nin Monarch sözdizimi tanımlarının kullanımıyla olan yukarı akış işlevselliği aracılığıyla desteklenir. Katkı yapmayı öğrenmek için, [Monako katkıda bulunan kılavuzunu](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Bash için hızlı başlangıcı deneyin Cloud Shell](quickstart.md)
-[Tümleşik Cloud Shell araçlarının tam listesini görüntüleyin](features.md)
+Cloud Shell Bash [için hızlı başlangıcı deneyin](quickstart.md) 
+ [Tümleşik Cloud Shell araçlarının tam listesini görüntüleyin](features.md)

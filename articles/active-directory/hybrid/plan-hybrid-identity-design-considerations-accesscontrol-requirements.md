@@ -18,17 +18,17 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60295152"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için erişim denetimi gereksinimlerini belirleme
 Bir kuruluş, hibrit kimlik çözümünü tasarlarken, bu fırsatı kullanıcılara hazır hale getirmek için plantıkları kaynakların erişim gereksinimlerini gözden geçirmek için de kullanabilirler. Veri erişimi, her dört ve daha fazla kimlik:
 
 * Yönetim
-* Kimlik doğrulaması
+* Kimlik Doğrulaması
 * Yetkilendirme
 * Denetim
 
@@ -39,7 +39,7 @@ Aşağıdaki bölümlerde, daha fazla ayrıntı, yönetim ve denetim, karma kiml
 > 
 > 
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 Kimlik doğrulama ve yetkilendirme için farklı senaryolar vardır. Bu senaryolar, şirketin benimseeceği karma kimlik çözümü tarafından yerine getirilmesi gereken belirli gereksinimlere sahip olacaktır. Işletmeler arası (B2B) iletişimiyle ilgili senaryolar, kuruluş tarafından kullanılan kimlik doğrulama ve yetkilendirme yönteminin iş ortaklarıyla iletişim kurabildiğinden emin olmaları gerekeceğinden, BT yöneticileri için ek bir zorluk ekleyebilir. Kimlik doğrulama ve yetkilendirme gereksinimleri için tasarlama işlemi sırasında aşağıdaki soruların yanıtlanmasıyla emin olun:
 
 * Kuruluşunuz yalnızca kendi kimlik yönetimi sistemlerinde bulunan kullanıcıların kimliğini doğrular ve yetkilendirsin mi?

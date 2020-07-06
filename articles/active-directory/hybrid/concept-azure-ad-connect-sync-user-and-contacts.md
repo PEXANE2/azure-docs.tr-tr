@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60245486"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect eşitleme: kullanıcıları, grupları ve kişileri anlama
@@ -47,13 +47,13 @@ Grupları Active Directory 'den Azure AD 'ye eşitlerken önemli noktalara dikka
 
     * Grubun *ProxyAddress* özniteliği boşsa, *posta* özniteliği bir değere sahip olmalıdır
 
-    * Grubun *ProxyAddress* özniteliği boş değilse, en az bir SMTP proxy adresi değeri içermesi gerekir. İşte bazı örnekler:
+    * Grubun *ProxyAddress* özniteliği boş değilse, en az bir SMTP proxy adresi değeri içermesi gerekir. Aşağıda bazı örnekler verilmiştir:
     
       * ProxyAddress özniteliğinin değeri *{"X500:/0 = contoso. com/OU = Users/CN = testgroup"}* olan bir Active Directory grubu Azure AD 'de posta etkin olmayacak. SMTP adresi yok.
       
-      * ProxyAddress özniteliği, *{"X500:/0 = contoso. com/OU = Users/CN = testgroup", "SMTP: johntikan\@contoso.com"}* değerlerini Içeren BIR Active Directory grubu Azure AD 'de posta etkin olacak.
+      * ProxyAddress özniteliği, *{"X500:/0 = contoso. com/OU = Users/CN = testgroup", "SMTP: johntikan \@ contoso.com"}* değerlerini içeren bir ACTIVE DIRECTORY grubu Azure AD 'de posta etkin olacak.
       
-      * ProxyAddress özniteliğinde yer aldığı bir Active Directory grubu *{"X500:/0 = contoso. com/OU = Users/CN = testgroup", "SMTP: johntikan\@contoso.com"}* değerlerinin de Azure AD 'de posta etkin olacak.
+      * ProxyAddress özniteliğinde yer aldığı bir Active Directory grubu *{"X500:/0 = contoso. com/OU = Users/CN = testgroup", "SMTP: johntikan \@ contoso.com"}* DEĞERLERININ de Azure AD 'de posta etkin olacak.
 
 ## <a name="contacts"></a>Kişiler
 Bir kullanıcı farklı bir ormanda temsil eden kişilerin olması, bir GALSync çözümünün iki veya daha fazla Exchange ormanını köprülemesi durumunda bir birleşme & alma işleminden sonra yaygındır. İletişim nesnesi, posta özniteliğini kullanarak her zaman bağlayıcı alanından metadize 'ye katılıyor. Aynı posta adresine sahip bir kişi nesnesi veya Kullanıcı nesnesi zaten varsa, nesneler birlikte birleştirilir. Bu, **ad – Iletişim birleşimden içindeki**kuralında yapılandırılır. Ayrıca, **ad 'Den ' de** adlı bir kural vardır. bir öznitelik akışı ile, sabit **ilgili kişi**olan meta veri deposu özniteliğinin **Sourceobjecttype** özniteliği ile ortak iletişim kurun. Bu kural çok düşük önceliğe sahiptir, bu nedenle, herhangi bir kullanıcı nesnesi aynı meta veri deposu nesnesine katılırsa, **ad – Kullanıcı ortak ' dan** gelen kural, bu özniteliğe değer kullanıcısı katkıda bulunur. Bu kuralla, hiçbir Kullanıcı birleştirilmediyse ve en az bir kullanıcı bulunursa değer kullanıcısı varsa, bu özniteliğin değeri Ilgili kişisi olur.

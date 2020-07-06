@@ -13,24 +13,24 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65761804"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Özel bir dönüşümle kodlama-REST
 
 Azure Media Services ile kodlarken, [akış dosyaları](stream-files-tutorial-with-rest.md#create-a-transform) öğreticisinde gösterildiği gibi, sektörde en iyi uygulamaları temel alan önerilen yerleşik ön ayarlardan biriyle hızlı bir şekilde çalışmaya başlayın. Ayrıca, belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir ön ayar oluşturabilirsiniz.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Özel ön ayarlar oluşturulurken aşağıdaki noktalar geçerlidir:
 
 * AVC içeriğinde yükseklik ve genişlik değerlerinin tümü 4 ' ün katı olmalıdır.
 * Azure Media Services v3 'de, tüm kodlama bit fiyatları bit/saniye cinsinden. Bu, birim olarak kilobit/saniye kullanan v2 API 'lerimiz olan ön ayarlardan farklıdır. Örneğin, v2 'deki bit hızı 128 (kilobit/saniye) olarak belirtilmişse, v3 'de 128000 (bit/saniye) olarak ayarlanır.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - [Media Services hesabı oluşturun](create-account-cli-how-to.md). <br/>Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 - [Azure Media Services REST API'si çağrıları Için Postman 'ı yapılandırın](media-rest-apis-with-postman.md).<br/>[Azure AD belirtecini al](media-rest-apis-with-postman.md#get-azure-ad-token)konusunun son adımını izlediğinizden emin olun. 
@@ -135,7 +135,7 @@ Bu örnekte, önce ses kodlaması ve video kodlaması için iki H264Video katman
 
 Bu örnekte, daha önce tanımladığımız özel hazır ayarı temel alan bir **dönüşüm** oluşturacağız. Bir dönüşüm oluştururken önce, zaten mevcut olup olmadığını denetlemek için [Al](https://docs.microsoft.com/rest/api/media/transforms/get) ' ı kullanmalısınız. Dönüşüm varsa, yeniden kullanın. 
 
-İndirdiğiniz Postman 'ın koleksiyonunda **dönüşümler ve işler**->**Oluştur veya Güncelleştir**' i seçin.
+İndirdiğiniz Postman 'ın koleksiyonunda **dönüşümler ve işler** -> **Oluştur veya Güncelleştir**' i seçin.
 
 **PUT** http istek yöntemi şuna benzerdir:
 

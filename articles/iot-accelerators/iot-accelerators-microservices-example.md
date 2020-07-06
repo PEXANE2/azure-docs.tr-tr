@@ -8,10 +8,10 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447650"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Bir mikro hizmeti özelleştirme ve yeniden dağıtma
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Yeni Docker görüntüsünü çekme
 > * Değişiklikleri görselleştirin 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi izlemek için şunlar gerekir:
 
@@ -44,7 +44,7 @@ Bu bölümde, varsayılan IoT Hub Manager Mikro hizmet API 'sini çağırabilirs
 
 1. Uzaktan Izleme çözümünün makinenizde yerel olarak çalıştığından emin olun.
 2. Postman 'ı indirdiğiniz yeri bulun ve açın.
-3. Postman 'da GET: öğesine şunu girin: `http://localhost:8080/iothubmanager/v1/status`.
+3. Postman 'da GET: öğesine şunu girin: `http://localhost:8080/iothubmanager/v1/status` .
 4. Dönüşü görüntüleyin, "durum": "Tamam: canlı ve Iyi" seçeneğini görmeniz gerekir.
 
     ![Canlı ve Iyi Postman Iletisi](./media/iot-accelerators-microservices-example/postman-alive-well.png)
@@ -144,7 +144,7 @@ Uzaktan Izleme çözümünün yerel bir örneğini yeniden dağıtarak ve yeni d
     ```
 
 3. Postman 'ı indirdiğiniz yeri bulun ve açın.
-4. Postman 'da, GET: `http://localhost:8080/iothubmanager/v1/status`öğesine aşağıdaki isteği girin. Şimdi "durum": "Tamam: buradan yeni düzenlemeler yapıldı!" görmeniz gerekir.
+4. Postman 'da, GET: öğesine aşağıdaki isteği girin `http://localhost:8080/iothubmanager/v1/status` . Şimdi "durum": "Tamam: buradan yeni düzenlemeler yapıldı!" görmeniz gerekir.
 
 ![Burada yeni düzenlemeler Postman iletisinde yapıldı](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

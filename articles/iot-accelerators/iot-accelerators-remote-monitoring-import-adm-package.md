@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61443454"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Otomatik cihaz yönetim paketini uzaktan Izleme çözüm hızlandırıcısına aktarma
@@ -39,7 +39,7 @@ Otomatik cihaz yönetimi yapılandırmasını geliştirme ortamınızdan dışar
 
     [![Yapılandırma dosyasını indir](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
-1. JSON dosyasını **Configuration. JSON**adlı yerel bir dosya olarak kaydedin.
+1. JSON dosyasını **configuration.js**adlı yerel bir dosya olarak kaydedin.
 
 Artık otomatik cihaz yönetimi yapılandırmasını içeren bir dosyanız vardır. Sonraki bölümde, bu yapılandırmayı uzaktan Izleme çözümüne bir paket olarak içeri aktarırsınız.
 
@@ -47,9 +47,9 @@ Artık otomatik cihaz yönetimi yapılandırmasını içeren bir dosyanız vard�
 
 Otomatik cihaz yönetimi yapılandırmasını çözümünüze bir paket olarak içeri aktarmak için aşağıdaki adımları izleyin:
 
-1. Uzaktan Izleme Web Kullanıcı arabirimindeki **paketler** sayfasına gidin: ![paketler sayfası](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Uzaktan Izleme Web Kullanıcı arabirimindeki **paketler** sayfasına gidin: ![ paketler sayfası](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
-1. **+ Yeni paket**' e tıklayın, paket türü olarak **yapılandırma** ' yı seçin ve önceki bölümde kaydettiğiniz **Configuration. JSON** dosyasını seçmek için **Araştır** ' a tıklayın:
+1. **+ Yeni paket**' e tıklayın, paket türü olarak **yapılandırma** ' yı seçin ve önceki bölümde kaydettiğiniz dosya **configuration.js** seçmek için, **Araştır** ' a tıklayın:
 
     ![Yapılandırma Seç](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
 

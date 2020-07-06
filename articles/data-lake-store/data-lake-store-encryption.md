@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60878451"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. verilerin şifrelenmesi
@@ -56,7 +56,7 @@ MEK’leri yönetmek için kullanılan iki modun sağladığı özelliklerin kı
 | --- | --- | --- |
 |Veriler nasıl depolanır?|Depolanmadan önce her zaman şifrelenir.|Depolanmadan önce her zaman şifrelenir.|
 |Ana Şifreleme Anahtarı nerede depolanır?|Key Vault|Key Vault|
-|Key Vault dışında açıkta saklanan şifreleme anahtarı var mı? |Hayır|Hayır|
+|Key Vault dışında açıkta saklanan şifreleme anahtarı var mı? |No|Hayır|
 |Key Vault’tan MEK alınabilir mi?|Hayır. MEK Key Vault’ta depolandıktan sonra yalnızca şifreleme ve şifre çözme amacıyla kullanılabilir.|Hayır. MEK Key Vault’ta depolandıktan sonra yalnızca şifreleme ve şifre çözme amacıyla kullanılabilir.|
 |Key Vault örneği ve MEK kime aittir?|Data Lake Storage 1. hizmeti|Kendi Azure aboneliğiniz kapsamında bulunan Key Vault örneği size aittir. Key Vault’taki MEK, yazılım veya donanım tarafından yönetilebilir.|
 |Data Lake Storage 1. hizmeti için MEK erişimini iptal edebilir misiniz?|Hayır|Evet. Key Vault erişim denetim listelerini yönetebilir ve Data Lake Storage 1. hizmeti için hizmet kimliğine erişim denetim girdilerini kaldırabilirsiniz.|
@@ -107,7 +107,7 @@ Aşağıdaki diyagram bu kavramları göstermektedir:
 
 Müşteri tarafından yönetilen anahtarları kullanırken MEK’i döndürebilirsiniz. Müşteri tarafından yönetilen anahtarlarla Data Lake Storage 1. bir hesabı [ayarlamayı öğrenmek için bkz. Başlarken](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Data Lake Storage 1. hesabını ayarlarken kendi anahtarlarınızı kullanmayı seçtiniz. Bu seçenek, hesap oluşturulduktan sonra değiştirilemez. Aşağıdaki adımlarda, müşteri tarafından yönetilen anahtarlar kullandığınız (Key Vault'tan kendi anahtarlarınızı seçtiğiniz) varsayılır.
 

@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60780830"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API Management'ta özel önbelleğe alma
-Azure API Management hizmetinde, anahtar olarak kaynak URL 'SI kullanılarak [http yanıtı önbelleğe alma](api-management-howto-cache.md) için yerleşik destek bulunur. Anahtar, `vary-by` özellikler kullanılarak istek üstbilgileri tarafından değiştirilebilir. Bu, tüm HTTP yanıtlarının (diğer adıyla gösterimler) önbelleğe alınması için yararlıdır, ancak bazen bir gösterimin bir bölümünü önbelleğe almak için yararlıdır. Yeni [önbellek-arama-değer](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) ve [önbellek-depolama-değer](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) ilkeleri, ilke tanımlarından rastgele veri parçalarını depolama ve alma olanağı sağlar. Artık dış hizmetlerden gelen yanıtları önbelleğe sunabileceğinden, bu özellik önceden tanıtılan [gönderme isteği](/azure/api-management/api-management-advanced-policies#SendRequest) ilkesine değer de ekler.
+Azure API Management hizmetinde, anahtar olarak kaynak URL 'SI kullanılarak [http yanıtı önbelleğe alma](api-management-howto-cache.md) için yerleşik destek bulunur. Anahtar, özellikler kullanılarak istek üstbilgileri tarafından değiştirilebilir `vary-by` . Bu, tüm HTTP yanıtlarının (diğer adıyla gösterimler) önbelleğe alınması için yararlıdır, ancak bazen bir gösterimin bir bölümünü önbelleğe almak için yararlıdır. Yeni [önbellek-arama-değer](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) ve [önbellek-depolama-değer](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) ilkeleri, ilke tanımlarından rastgele veri parçalarını depolama ve alma olanağı sağlar. Artık dış hizmetlerden gelen yanıtları önbelleğe sunabileceğinden, bu özellik önceden tanıtılan [gönderme isteği](/azure/api-management/api-management-advanced-policies#SendRequest) ilkesine değer de ekler.
 
 ## <a name="architecture"></a>Mimari
 API Management hizmet, birden çok birime kadar ölçeklendirerek aynı önbelleğe alınmış verilere erişmeye devam ettiğiniz için paylaşılan bir kiracı veri önbelleği kullanır. Ancak, çok bölgeli bir dağıtımla çalışırken her bir bölgenin içinde bağımsız önbellekler vardır. Önbellek bir veri deposu olarak değerlendirilmemelidir, burada bazı bilgilerin tek kaynağı olduğu yerdir. Bunu yaptıysanız ve daha sonra çok bölgeli dağıtımdan faydalanmaya karar verdiyseniz, kullanıcılara seyahat eden kullanıcılar bu önbelleğe alınmış verilere erişimi kaybedebilir.
@@ -43,13 +43,13 @@ Bir arka uç API 'sinden aşağıdaki JSON yanıtını göz önünde bulundurun.
 }  
 ```
 
-Ve şunun gibi görünen `/userprofile/{userid}` ikincil kaynak
+Ve `/userprofile/{userid}` şunun gibi görünen ikincil kaynak
 
 ```json
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-Dahil edilecek uygun Kullanıcı bilgilerini belirlemek için, son kullanıcının kim olduğunu belirlemek API Management gerekir. Bu mekanizma uygulamaya bağımlıdır. Örnek olarak, bir `Subject` `JWT` belirteç talebini kullanıyorum. 
+Dahil edilecek uygun Kullanıcı bilgilerini belirlemek için, son kullanıcının kim olduğunu belirlemek API Management gerekir. Bu mekanizma uygulamaya bağımlıdır. Örnek olarak, `Subject` bir belirteç talebini kullanıyorum `JWT` . 
 
 ```xml
 <set-variable
@@ -65,7 +65,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-Önbellekte anahtar değerine karşılık gelen hiçbir giriş yoksa, hiçbir `userprofile` bağlam değişkeni oluşturulmaz. API Management, `choose` denetim akışı ilkesini kullanarak aramanın başarısını denetler.
+Önbellekte anahtar değerine karşılık gelen hiçbir giriş yoksa, hiçbir `userprofile` bağlam değişkeni oluşturulmaz. API Management, denetim akışı ilkesini kullanarak aramanın başarısını denetler `choose` .
 
 ```xml
 <choose>
@@ -75,7 +75,7 @@ variable-name="userprofile" />
 </choose>
 ```
 
-`userprofile` Bağlam değişkeni yoksa API Management almak IÇIN bir http isteği olması gerekir.
+`userprofile`Bağlam değişkeni yoksa API Management almak için BIR http isteği olması gerekir.
 
 ```xml
 <send-request
@@ -184,7 +184,7 @@ Bu aynı tür parça önbelleğe alma özelliği, arka uç Web sunucularında re
 ## <a name="transparent-versioning"></a>Saydam sürüm oluşturma
 Bir API 'nin birden çok farklı uygulama sürümünün tek seferde desteklenmesi yaygın bir uygulamadır. Örneğin, farklı ortamları (geliştirme, test, üretim, vb.) desteklemek veya API tüketicilerinin daha yeni sürümlere geçirilmesi için zaman kazandırmak üzere API 'nin eski sürümlerini desteklemek için. 
 
-İstemci geliştiricilerinin URL 'Leri ' dan ' a değiştirmesini istemek yerine, bu işlemleri işlemek için `/v1/customers` bir `/v2/customers` yaklaşım, bu API 'nin şu anda kullanmak istedikleri API sürümünü ve uygun arka uç URL 'sini çağırabilmesi için, istemci geliştiricilerin ' den ' den ' a kadar olan Belirli bir istemci için çağrılacak doğru arka uç URL 'sini belirlemekte, bazı yapılandırma verilerinin sorgulanmasý gerekir. Bu yapılandırma verilerini önbelleğe alarak API Management, bu aramanın performans cezası en aza indirebilir.
+İstemci geliştiricilerinin URL 'Leri ' dan ' a değiştirmesini istemek yerine, bu işlemleri işlemek için bir yaklaşım, bu `/v1/customers` `/v2/customers` API 'nin şu anda kullanmak istedikleri API sürümünü ve uygun arka uç URL 'sini çağırabilmesi için, istemci geliştiricilerin ' den ' den ' a kadar olan Belirli bir istemci için çağrılacak doğru arka uç URL 'sini belirlemekte, bazı yapılandırma verilerinin sorgulanmasý gerekir. Bu yapılandırma verilerini önbelleğe alarak API Management, bu aramanın performans cezası en aza indirebilir.
 
 İlk adım, istenen sürümü yapılandırmak için kullanılan tanımlayıcıyı belirlemektir. Bu örnekte, sürümü ürün abonelik anahtarıyla ilişkilendirmeyi seçtim. 
 

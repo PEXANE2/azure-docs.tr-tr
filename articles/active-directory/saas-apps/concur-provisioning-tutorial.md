@@ -16,17 +16,17 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60280474"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Concur yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'de Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Concur ve Azure AD 'de gerçekleştirmeniz gereken adımları gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 

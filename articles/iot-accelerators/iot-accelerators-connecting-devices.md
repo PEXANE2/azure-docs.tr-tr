@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 2a8a0bf1e63f06bbe6b6a073af6b3da8904dcaeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61450230"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Cihazınızı uzaktan Izleme çözüm hızlandırıcısına bağlama (Windows)
@@ -25,7 +25,7 @@ Kısıtlanmış cihazlarda çalışan birçok katıştırılmış uygulamada old
 
 Bir cihazın benzetimini yapmayı tercih ediyorsanız, bkz. [Yeni bir sanal cihaz oluşturma ve test](iot-accelerators-remote-monitoring-create-simulated-device.md)etme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayarak, Windows makinenize gerekli geliştirme araçları ve kitaplıklarını eklemek için [Windows geliştirme ortamınızı ayarlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) bölümündeki adımları izleyin.
 
@@ -45,7 +45,7 @@ Bir metin düzenleyicisinde **Samples/Solutions/remote_monitoring_client** klas�
 
 ## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
 
-1. Çözüm hızlandırıcısına bir cihaz eklediğinizde, `<connectionstring>` bu nasıl yapılır kılavuzunun başlangıcında not ettiğiniz cihaz bağlantı dizesiyle değiştirilecek **remote_monitoring. c** dosyasını düzenleyin.
+1. **remote_monitoring.c** `<connectionstring>` Çözüm hızlandırıcısına bir cihaz eklediğinizde, bu nasıl yapılır kılavuzunun başlangıcında not ettiğiniz cihaz bağlantı dizesiyle değiştirilecek remote_monitoring. c dosyasını düzenleyin.
 
 1. SDK 'yı ve uzaktan izleme istemci uygulamasını derlemek için [Windows 'Da C SDK oluşturma](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#build-the-c-sdk-in-windows) bölümündeki adımları izleyin.
 

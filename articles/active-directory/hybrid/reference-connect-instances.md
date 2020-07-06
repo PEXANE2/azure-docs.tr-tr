@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66298826"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: örneklerle ilgili özel konular
@@ -64,7 +64,7 @@ Azure AD Connect Azure Kamu eşitleme uç noktalarını kullandığından emin o
 
 1. Azure AD Connect yüklemesini başlatın.
 2. EULA 'Yı kabul etmeniz beklenen ilk sayfayı gördüğünüzde, devam etmeyin ancak Yükleme Sihirbazı 'nı çalışır durumda bırakın.
-3. Regedit 'i başlatın ve kayıt defteri anahtarını `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` değerine `4`değiştirin.
+3. Regedit 'i başlatın ve kayıt defteri anahtarını `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` değerine değiştirin `4` .
 4. Azure AD Connect yükleme sihirbazına dönün, EULA 'yı kabul edin ve devam edin. Yükleme sırasında, **özel yapılandırma** yükleme yolunu (hızlı yükleme değil) kullandığınızdan emin olun, ardından yüklemeye her zamanki gibi devam edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
