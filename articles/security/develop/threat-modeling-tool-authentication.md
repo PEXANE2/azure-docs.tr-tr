@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref
 ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82607835"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Güvenlik çerçevesi: kimlik doğrulaması | Karşı
@@ -28,7 +28,7 @@ ms.locfileid: "82607835"
 | Ürün/hizmet | Makale |
 | --------------- | ------- |
 | **Web uygulaması**    | <ul><li>[Web uygulamasının kimliğini doğrulamak için standart bir kimlik doğrulama mekanizması kullanmayı düşünün](#standard-authn-web-app)</li><li>[Uygulamalar başarısız kimlik doğrulama senaryolarını güvenli bir şekilde işlemelidir](#handle-failed-authn)</li><li>[Adım artırma veya Uyarlamalı kimlik doğrulamayı etkinleştirme](#step-up-adaptive-authn)</li><li>[Yönetim arabirimlerinin uygun şekilde kilitlendiğinden emin olun](#admin-interface-lockdown)</li><li>[Unutulan parola işlevlerini güvenli bir şekilde uygulayın](#forgot-pword-fxn)</li><li>[Parola ve hesap ilkesinin uygulandığından emin olun](#pword-account-policy)</li><li>[Kullanıcı adı numaralandırmasını engellemek için denetimler uygulama](#controls-username-enum)</li></ul> |
-| **Veritabanınızı** | <ul><li>[Mümkün olduğunda, SQL Server bağlanmak için Windows kimlik doğrulamasını kullanın](#win-authn-sql)</li><li>[Mümkün olduğunda SQL veritabanına bağlanmak için Azure Active Directory kimlik doğrulaması kullanın](#aad-authn-sql)</li><li>[SQL kimlik doğrulama modu kullanıldığında, hesap ve parola ilkesinin SQL Server 'da zorlandığından emin olun](#authn-account-pword)</li><li>[Kapsanan veritabanlarında SQL kimlik doğrulaması kullanma](#autn-contained-db)</li></ul> |
+| **Veritabanı** | <ul><li>[Mümkün olduğunda, SQL Server bağlanmak için Windows kimlik doğrulamasını kullanın](#win-authn-sql)</li><li>[Mümkün olduğunda SQL veritabanına bağlanmak için Azure Active Directory kimlik doğrulaması kullanın](#aad-authn-sql)</li><li>[SQL kimlik doğrulama modu kullanıldığında, hesap ve parola ilkesinin SQL Server 'da zorlandığından emin olun](#authn-account-pword)</li><li>[Kapsanan veritabanlarında SQL kimlik doğrulaması kullanma](#autn-contained-db)</li></ul> |
 | **Azure Event Hub** | <ul><li>[SaS belirteçlerini kullanarak cihaz başına kimlik doğrulama kimlik bilgileri kullanma](#authn-sas-tokens)</li></ul> |
 | **Azure Güven sınırı** | <ul><li>[Azure yöneticileri için Azure Multi-Factor Authentication etkinleştirme](#multi-factor-azure-admin)</li></ul> |
 | **Service Fabric güven sınırı** | <ul><li>[Service Fabric kümesine anonim erişimi kısıtla](#anon-access-cluster)</li><li>[İstemci-düğüm sertifikasının Service Fabric düğümden düğüme sertifikasından farklı olduğundan emin olun](#fabric-cn-nn)</li><li>[Service Fabric kümelerine yönelik istemcilerin kimliğini doğrulamak için AAD kullanma](#aad-client-fabric)</li><li>[Service Fabric sertifikalarının onaylanan bir sertifika yetkilisinden (CA) alındığından emin olun](#fabric-cert-ca)</li></ul> |
@@ -39,7 +39,7 @@ ms.locfileid: "82607835"
 | **Azure AD** | <ul><li>[Azure Active Directory tarafından desteklenen standart kimlik doğrulama senaryolarını kullanın](#authn-aad)</li><li>[Varsayılan ADAL belirteci önbelleğini ölçeklenebilir bir alternatifi ile geçersiz kılın](#adal-scalable)</li><li>[ADAL kimlik doğrulama belirteçlerinin yeniden oynamasını engellemek için TokenReplayCache 'in kullanıldığından emin olun](#tokenreplaycache-adal)</li><li>[OAuth2 istemcilerinden AAD 'ye (veya şirket içi AD) belirteç isteklerini yönetmek için ADAL kitaplıklarını kullanın](#adal-oauth2)</li></ul> |
 | **IoT alan ağ geçidi** | <ul><li>[Alan ağ geçidine bağlanan cihazların kimliğini doğrulama](#authn-devices-field)</li></ul> |
 | **IoT bulut ağ geçidi** | <ul><li>[Bulut ağ geçidine bağlanan cihazların kimlik doğrulaması yapıldığından emin olun](#authn-devices-cloud)</li><li>[Cihaz başına kimlik doğrulama kimlik bilgilerini kullan](#authn-cred)</li></ul> |
-| **Azure Storage** | <ul><li>[Yalnızca gerekli kapsayıcıların ve Blobların anonim okuma erişimi verildiğinden emin olun](#req-containers-anon)</li><li>[SAS veya SAP kullanarak Azure Storage 'da nesnelere sınırlı erişim verme](#limited-access-sas)</li></ul> |
+| **Azure Depolama** | <ul><li>[Yalnızca gerekli kapsayıcıların ve Blobların anonim okuma erişimi verildiğinden emin olun](#req-containers-anon)</li><li>[SAS veya SAP kullanarak Azure Storage 'da nesnelere sınırlı erişim verme](#limited-access-sas)</li></ul> |
 
 ## <a name="consider-using-a-standard-authentication-mechanism-to-authenticate-to-web-application"></a><a id="standard-authn-web-app"></a>Web uygulamasının kimliğini doğrulamak için standart bir kimlik doğrulama mekanizması kullanmayı düşünün
 
@@ -226,7 +226,7 @@ ms.locfileid: "82607835"
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ortam-Azure |
 | **Başvurular**              | [X. 509.440 sertifikaları ve Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
-| **Adımlar** | <p>Service Fabric, düğümlerin ve istemcilerin kimliğini doğrulamak için X. 509.440 sunucu sertifikaları kullanır.</p><p>Hizmet dokularında sertifika kullanırken göz önünde bulundurmanız gereken bazı önemli noktalar:</p><ul><li>Üretim iş yüklerini çalıştıran kümelerde kullanılan sertifikaların, doğru şekilde yapılandırılmış bir Windows Server sertifika hizmeti kullanılarak oluşturulması veya onaylanan bir sertifika yetkilisinden (CA) alınması gerekir. CA, onaylanan bir dış CA veya düzgün yönetilen bir iç ortak anahtar altyapısı (PKI) olabilir</li><li>Üretimde, MakeCert. exe gibi araçlarla oluşturulan geçici veya test sertifikalarını hiçbir şekilde kullanmayın.</li><li>Otomatik olarak imzalanan bir sertifika kullanabilirsiniz, ancak bunu yalnızca test kümeleri için ve üretimde değil</li></ul>|
+| **Adımlar** | <p>Service Fabric, düğümlerin ve istemcilerin kimliğini doğrulamak için X. 509.440 sunucu sertifikaları kullanır.</p><p>Hizmet dokularında sertifika kullanırken göz önünde bulundurmanız gereken bazı önemli noktalar:</p><ul><li>Üretim iş yüklerini çalıştıran kümelerde kullanılan sertifikaların, doğru şekilde yapılandırılmış bir Windows Server sertifika hizmeti kullanılarak oluşturulması veya onaylanan bir sertifika yetkilisinden (CA) alınması gerekir. CA, onaylanan bir dış CA veya düzgün yönetilen bir iç ortak anahtar altyapısı (PKI) olabilir</li><li>Üretimde MakeCert.exe gibi araçlarla oluşturulan geçici veya test sertifikalarını hiçbir şekilde kullanmayın</li><li>Otomatik olarak imzalanan bir sertifika kullanabilirsiniz, ancak bunu yalnızca test kümeleri için ve üretimde değil</li></ul>|
 
 ## <a name="use-standard-authentication-scenarios-supported-by-identity-server"></a><a id="standard-authn-id"></a>Kimlik sunucusu tarafından desteklenen standart kimlik doğrulama senaryolarını kullanma
 
@@ -273,7 +273,7 @@ ms.locfileid: "82607835"
 | **Adımlar** | Program MSMQ kuyruğuna bağlanırken kimlik doğrulamasını etkinleştiremezse, bir saldırgan işlenmek üzere kuyruğa anonim olarak ileti gönderebilir. Kimlik doğrulaması, başka bir programa ileti göndermek için kullanılan bir MSMQ kuyruğuna bağlanmak için kullanılmazsa, saldırgan kötü amaçlı olan anonim bir ileti gönderebilir.|
 
 ### <a name="example"></a>Örnek
-Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, ileti teslimi IÇIN bir MSMQ kuyruğuna bağlanırken WCF 'nin kimlik doğrulamasını devre dışı bırakmasına izin verir.
+`<netMsmqBinding/>`AŞAĞıDAKI WCF yapılandırma dosyasının öğesi, ileti teslimi için BIR MSMQ kuyruğuna BAĞLANıRKEN WCF 'nin kimlik doğrulamasını devre dışı bırakmasına izin verir.
 ```
 <bindings>
     <netMsmqBinding>
@@ -288,7 +288,7 @@ Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, ileti 
 Tüm gelen veya giden iletiler için, her zaman Windows etki alanı veya sertifika kimlik doğrulaması gerektirecek şekilde MSMQ 'YU yapılandırın.
 
 ### <a name="example"></a>Örnek
-Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, bir MSMQ kuyruğuna bağlanırken sertifika kimlik doğrulamasını ETKINLEŞTIRMEK için WCF 'ye yönlendirir. İstemcinin kimliği, X. 509.440 sertifikaları kullanılarak doğrulanır. İstemci sertifikası, sunucunun sertifika deposunda bulunmalıdır.
+`<netMsmqBinding/>`AŞAĞıDAKI WCF yapılandırma dosyasının öğesi, BIR MSMQ kuyruğuna bağlanırken sertifika kimlik doğrulamasını etkinleştirmek IÇIN WCF 'ye yönlendirir. İstemcinin kimliği, X. 509.440 sertifikaları kullanılarak doğrulanır. İstemci sertifikası, sunucunun sertifika deposunda bulunmalıdır.
 ```
 <bindings>
     <netMsmqBinding>
@@ -425,7 +425,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 }
 ```
 
-Bu yapılandırmanın verimliliğini test etmek için yerel OıDC korumalı uygulamanızda oturum açın ve Fiddler 'da `"/signin-oidc"` uç noktaya isteği yakalayın. Koruma gerçekleşmediği zaman, bu isteği Fiddler 'da yeniden yerleştirmek yeni bir oturum tanımlama bilgisi ayarlar. TokenReplayCache koruması eklendikten sonra istek yeniden yürütüldüğünde, uygulama aşağıdaki gibi bir özel durum oluşturur:`SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
+Bu yapılandırmanın verimliliğini test etmek için yerel OıDC korumalı uygulamanızda oturum açın ve `"/signin-oidc"` Fiddler 'da uç noktaya isteği yakalayın. Koruma gerçekleşmediği zaman, bu isteği Fiddler 'da yeniden yerleştirmek yeni bir oturum tanımlama bilgisi ayarlar. TokenReplayCache koruması eklendikten sonra istek yeniden yürütüldüğünde, uygulama aşağıdaki gibi bir özel durum oluşturur:`SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
 
 ## <a name="use-adal-libraries-to-manage-token-requests-from-oauth2-clients-to-aad-or-on-premises-ad"></a><a id="adal-oauth2"></a>OAuth2 istemcilerinden AAD 'ye (veya şirket içi AD) belirteç isteklerini yönetmek için ADAL kitaplıklarını kullanın
 
@@ -436,7 +436,7 @@ Bu yapılandırmanın verimliliğini test etmek için yerel OıDC korumalı uygu
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **Adımlar** | <p>Azure AD kimlik doğrulama kitaplığı (ADAL), istemci uygulama geliştiricilerinin kullanıcıların bulut veya şirket içi Active Directory (AD) için kolayca kimlik doğrulamasını sağlar ve ardından API çağrılarını güvenli hale getirmek için erişim belirteçleri elde eder.</p><p>ADAL, zaman uyumsuz destek, erişim belirteçleri depolayan ve belirteçleri yenileyen yapılandırılabilir bir belirteç önbelleği, bir erişim belirtecinin süresi dolarsa ve yenileme belirtecinin kullanılabildiği, otomatik belirteç yenilemesi ve daha fazlası gibi geliştiriciler için kimlik doğrulaması kolaylaştıran birçok özelliğe sahiptir.</p><p>ADAL, karmaşıklığın çoğunu işleyerek, bir geliştiricinin uygulamanızdaki iş mantığına odaklanmasını ve güvenlik uzmanı olmadan kaynakları kolayca güvenli hale getirmenize yardımcı olabilir. .NET, JavaScript (Client ve Node. js), Python, iOS, Android ve Java için ayrı kitaplıklar vardır.</p>|
+| **Adımlar** | <p>Azure AD kimlik doğrulama kitaplığı (ADAL), istemci uygulama geliştiricilerinin kullanıcıların bulut veya şirket içi Active Directory (AD) için kolayca kimlik doğrulamasını sağlar ve ardından API çağrılarını güvenli hale getirmek için erişim belirteçleri elde eder.</p><p>ADAL, zaman uyumsuz destek, erişim belirteçleri depolayan ve belirteçleri yenileyen yapılandırılabilir bir belirteç önbelleği, bir erişim belirtecinin süresi dolarsa ve yenileme belirtecinin kullanılabildiği, otomatik belirteç yenilemesi ve daha fazlası gibi geliştiriciler için kimlik doğrulaması kolaylaştıran birçok özelliğe sahiptir.</p><p>ADAL, karmaşıklığın çoğunu işleyerek, bir geliştiricinin uygulamanızdaki iş mantığına odaklanmasını ve güvenlik uzmanı olmadan kaynakları kolayca güvenli hale getirmenize yardımcı olabilir. .NET, JavaScript (istemci ve Node.js), Python, iOS, Android ve Java için ayrı kitaplıklar vardır.</p>|
 
 ## <a name="authenticate-devices-connecting-to-the-field-gateway"></a><a id="authn-devices-field"></a>Alan ağ geçidine bağlanan cihazların kimliğini doğrulama
 
@@ -455,10 +455,10 @@ Bu yapılandırmanın verimliliğini test etmek için yerel OıDC korumalı uygu
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT bulut ağ geçidi |
 | **SDL aşaması**               | Yapı |
-| **İlgili teknolojiler** | Genel, C#, Node. JS,  |
+| **İlgili teknolojiler** | Genel, C#, Node.JS,  |
 | **Öznitelikler**              | Yok, ağ geçidi seçimi-Azure IoT Hub |
 | **Başvurular**              | N/A, [.net Ile Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [IoT Hub ve Node JS ile ÇALıŞMAYA](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)başlama, [SAS ve sertifikalarla IoT 'yi güvenli hale getirme](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git deposu](https://github.com/Azure/azure-iot-sdks/) |
-| **Adımlar** | <ul><li>**Genel:** Aktarım Katmanı Güvenliği (TLS) veya IPSec kullanarak cihazın kimliğini doğrulayın. Altyapı, tam asimetrik şifrelemeyi işleyemeyen cihazlarda önceden paylaşılan anahtar (PSK) kullanmayı desteklemelidir. Azure AD, OAuth özelliğinden yararlanın.</li><li>**C#:** Bir DeviceClient örneği oluştururken, Create yöntemi, IoT Hub ile iletişim kurmak için AMQP protokolünü kullanan bir DeviceClient örneği oluşturur. HTTPS protokolünü kullanmak için, Create yönteminin protokolü belirtmenize olanak tanıyan geçersiz kılmasını kullanın. HTTPS protokolünü kullanıyorsanız, `Microsoft.AspNet.WebApi.Client` `System.Net.Http.Formatting` ad alanını dahil etmek için projenize NuGet paketini de eklemeniz gerekir.</li></ul>|
+| **Adımlar** | <ul><li>**Genel:** Aktarım Katmanı Güvenliği (TLS) veya IPSec kullanarak cihazın kimliğini doğrulayın. Altyapı, tam asimetrik şifrelemeyi işleyemeyen cihazlarda önceden paylaşılan anahtar (PSK) kullanmayı desteklemelidir. Azure AD, OAuth özelliğinden yararlanın.</li><li>**C#:** Bir DeviceClient örneği oluştururken, Create yöntemi, IoT Hub ile iletişim kurmak için AMQP protokolünü kullanan bir DeviceClient örneği oluşturur. HTTPS protokolünü kullanmak için, Create yönteminin protokolü belirtmenize olanak tanıyan geçersiz kılmasını kullanın. HTTPS protokolünü kullanıyorsanız, `Microsoft.AspNet.WebApi.Client` ad alanını dahil etmek için projenize NuGet paketini de eklemeniz gerekir `System.Net.Http.Formatting` .</li></ul>|
 
 ### <a name="example"></a>Örnek
 ```csharp
@@ -476,7 +476,7 @@ await deviceClient.SendEventAsync(message);
 ```
 
 ### <a name="example"></a>Örnek
-**Node. JS: kimlik doğrulaması**
+**Node.JS: kimlik doğrulaması**
 #### <a name="symmetric-key"></a>Simetrik anahtar
 * Azure 'da IoT Hub 'ı oluşturma
 * Cihaz kimliği kayıt defterinde bir giriş oluşturma
@@ -564,7 +564,7 @@ await deviceClient.SendEventAsync(message);
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage |
+| **Bileşen**               | Azure Depolama |
 | **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-blob |
@@ -575,7 +575,7 @@ await deviceClient.SendEventAsync(message);
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage |
+| **Bileşen**               | Azure Depolama |
 | **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok |

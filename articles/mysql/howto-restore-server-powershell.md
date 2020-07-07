@@ -8,17 +8,17 @@ ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
 ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82609094"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı sunucusunu yedekleme ve geri yükleme
 
 MySQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -26,7 +26,7 @@ Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı sunucusu](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Az. MySql PowerShell modülü önizlemedeyken, aşağıdaki komutu kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Az. MySql PowerShell modülü önizlemedeyken, aşağıdaki komutu kullanarak az PowerShell modülünden ayrı olarak yüklemelisiniz: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Az. MySql PowerShell modülü genel kullanıma sunulduğunda, bu, gelecekteki az PowerShell modülü sürümlerinin bir parçası haline gelir ve Azure Cloud Shell içinden yerel olarak kullanılabilir.
 
 PowerShell 'i yerel olarak kullanmayı seçerseniz, [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanın.
@@ -40,7 +40,7 @@ Sunucu oluşturma sırasında, sunucunuzu yerel olarak yedekli veya coğrafi ola
 > [!NOTE]
 > Bir sunucu oluşturulduktan sonra, coğrafi olarak yedekli ve yerel olarak yedekli olan artıklık türü değiştirilemez.
 
-`New-AzMySqlServer` Komutu aracılığıyla bir sunucu oluştururken, **GeoRedundantBackup** parametresi yedekleme yedekliliğe karar verir. **Etkinleştirilirse**, coğrafi olarak yedekli yedeklemeler alınır. Ya da **devre dışı**bırakılmışsa yerel olarak yedekli yedeklemeler alınır.
+Komutu aracılığıyla bir sunucu oluştururken `New-AzMySqlServer` , **GeoRedundantBackup** parametresi yedekleme yedekliliğe karar verir. **Etkinleştirilirse**, coğrafi olarak yedekli yedeklemeler alınır. Ya da **devre dışı**bırakılmışsa yerel olarak yedekli yedeklemeler alınır.
 
 Yedekleme saklama süresi **BackupRetentionDay** parametresine göre ayarlanır.
 
@@ -72,9 +72,9 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-restored -ResourceGroupName myresourcegroup -RestorePointInTime $restorePointInTime -UsePointInTimeRestore
 ```
 
-`Restore-AzMySqlServer` Cmdlet 'In **Pointintimeresıtransaction** parametre kümesi aşağıdaki parametreleri gerektirir:
+Cmdlet 'in **Pointintimeresıtransaction** parametre kümesi `Restore-AzMySqlServer` aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
 | Name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
@@ -93,7 +93,7 @@ Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VN
 
 Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, mevcut sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, MySQL için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.
 
-Coğrafi olarak yedekli bir yedekleme kullanarak bir sunucu oluşturmak için, `Restore-AzMySqlServer` komutunu **usegeorestore** parametresiyle birlikte kullanın.
+Coğrafi olarak yedekli bir yedekleme kullanarak bir sunucu oluşturmak için, `Restore-AzMySqlServer` komutunu **Usegeorestore** parametresiyle birlikte kullanın.
 
 > [!NOTE]
 > Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
@@ -114,9 +114,9 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName newresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Cmdlet 'in Georestore parametre kümesi aşağıdaki parametreleri gerektirir: **GeoRestore** `Restore-AzMySqlServer`
+Cmdlet 'in **Georestore** parametre kümesi `Restore-AzMySqlServer` aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Description  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Yeni sunucunun ait olduğu kaynak grubunun adı.|
 |Name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |

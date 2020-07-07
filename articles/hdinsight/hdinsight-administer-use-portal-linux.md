@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598507"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin
@@ -21,11 +21,11 @@ ms.locfileid: "82598507"
 
 [Azure Portal](https://portal.azure.com)kullanarak, Azure hdınsight 'ta [Apache Hadoop](https://hadoop.apache.org/) kümelerini yönetebilirsiniz. Diğer araçları kullanarak HDInsight 'ta Hadoop kümelerini yönetme hakkında bilgi için yukarıdaki sekme seçiciyi kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Portal kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya Başlama
 
 [https://portal.azure.com](https://portal.azure.com) adresinde oturum açın.
 
@@ -43,7 +43,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
 **Üst menü:**  
 
-| Öğe| Açıklama |
+| Öğe| Description |
 |---|---|
 |Taşı|Kümeyi başka bir kaynak grubuna veya başka bir aboneliğe kaydırır.|
 |Sil|Kümeyi siler. |
@@ -53,7 +53,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
   - **Sol üst menü**
 
-    | Öğe| Açıklama |
+    | Öğe| Description |
     |---|---|
     |Genel Bakış|Kümeniz için genel bilgiler sağlar.|
     |Etkinlik günlüğü|Etkinlik günlüklerini gösterir ve sorgular.|
@@ -65,12 +65,12 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
   - **Ayarlar menüsü**  
 
-    | Öğe| Açıklama |
+    | Öğe| Description |
     |---|---|
     |Küme boyutu|Küme çalışan düğümlerinin sayısını denetleyin, artırın ve azaltın. Bkz. [Ölçek Kümeleri](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Kota sınırları|Aboneliğiniz için kullanılan ve kullanılabilir çekirdekleri görüntüleyin.|
     |SSH + küme oturumu açma|Secure Shell (SSH) bağlantısı kullanarak kümeye bağlanma yönergelerini gösterir. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |Data Lake Storage Gen1|Erişim Data Lake Storage 1. yapılandırma.  Bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |Data Lake Storage 1. Nesil|Erişim Data Lake Storage 1. yapılandırma.  Bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Depolama hesapları|Depolama hesaplarını ve anahtarları görüntüleyin. Depolama hesapları, küme oluşturma işlemi sırasında yapılandırılır.|
     |Uygulamalar|HDInsight uygulamaları ekleyin/kaldırın.  Bkz. [özel HDInsight uygulamaları yüklemeyi](hdinsight-apps-install-custom-applications.md).|
     |Betik eylemleri|Kümede Bash betiklerini çalıştırın. Bkz. [betik eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).|
@@ -82,7 +82,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
   - **İzleme menüsü**
 
-    | Öğe| Açıklama |
+    | Öğe| Description |
     |---|---|
     |Uyarılar|Uyarıları ve eylemleri yönetin.|
     |Ölçümler|Azure Izleyici günlüklerinde küme ölçümlerini izleyin.|
@@ -91,7 +91,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
   - **Destek + sorun giderme menüsü**
 
-    | Öğe| Açıklama |
+    | Öğe| Description |
     |---|---|
     |Kaynak durumu|Bkz. [Azure Kaynak durumu genel bakış](../service-health/resource-health-overview.md).|
     |Yeni destek isteği|Microsoft desteği ile bir destek bileti oluşturmanıza olanak sağlar.|
@@ -100,7 +100,7 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
 
 [Küme giriş sayfasında](#homePage), **Ayarlar** ' ın altında **Özellikler**' i seçin.
 
-|Öğe | Açıklama |
+|Öğe | Description |
 |---|---|
 |Konak|Küme adı.|
 |KÜME URL 'SI|Ambarı Web arabiriminin URL 'SI.|

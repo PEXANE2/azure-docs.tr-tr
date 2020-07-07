@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594823"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP Ass/SCS için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama
@@ -164,7 +164,7 @@ ms.locfileid: "82594823"
 
 Bu makalede, bir SAP Ass örneği Kümelemeye yönelik bir seçenek olarak *Küme Paylaşılan diski* kullanarak bir Windows Yük devretme kümesine yüksek KULLANıLABILIRLIĞE sahip SAP sistemi yükleme ve yapılandırma için Azure altyapısını hazırlamak üzere gerçekleştirmeniz gereken adımlar açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeye başlamadan önce şu makaleyi gözden geçirin:
 
@@ -194,28 +194,28 @@ _**Şekil 1:** SAP yüksek kullanılabilirlik Azure Resource Manager parametrele
   Şablonlar şunları oluşturur:
 
   * **Sanal makineler**:
-    * SAP uygulama sunucusu sanal makineleri: \<sapsystemsıd\>-dı-\<Number\>
-    * YOKS/SCS kümesi sanal makineleri: \<sapsystemsıd\>-ascs-\<sayı\>
-    * DBMS kümesi: \<sapsystemsıd\>-DB-\<numarası\>
+    * SAP uygulama sunucusu sanal makineleri: \<SAPSystemSID\> -dı-\<Number\>
+    * YOKS/SCS kümesi sanal makineleri: \<SAPSystemSID\> -ascs-\<Number\>
+    * DBMS kümesi: \<SAPSystemSID\> -DB-\<Number\>
 
   * **Tüm sanal makineler için, ILIŞKILI IP adresleriyle ağ kartları**:
-    * \<Sapsystemsıd\>-NIC-dı-\<sayı\>
-    * \<Sapsystemsıd\>-NIC-ascs-\<sayı\>
-    * \<Sapsystemsıd\>-NIC-DB-\<numarası\>
+    * \<SAPSystemSID\>-NIC-dı-\<Number\>
+    * \<SAPSystemSID\>-NIC-ascs-\<Number\>
+    * \<SAPSystemSID\>-NIC-DB-\<Number\>
 
   * **Azure depolama hesapları (yalnızca yönetilmeyen diskler)**:
 
   * **Kullanılabilirlik grupları** :
-    * SAP uygulama sunucusu sanal makineleri: \<sapsystemsıd\>-avset-dı
-    * SAP ASCS/SCS kümesi sanal makineleri: \<sapsystemsıd\>-avset-ascs
-    * DBMS kümesi sanal makineleri: \<sapsystemsıd\>-avset-DB
+    * SAP uygulama sunucusu sanal makineleri: \<SAPSystemSID\> -avset-dı
+    * SAP ASCS/SCS kümesi sanal makineleri: \<SAPSystemSID\> -avset-ascs
+    * DBMS kümesi sanal makineleri: \<SAPSystemSID\> -avset-DB
 
   * **Azure iç yük dengeleyici**:
-    * YOKS/SCS örneği ve IP adresi \<sapsystemsıd\>-lb-ascs için tüm bağlantı noktalarıyla
-    * SQL Server DBMS ve IP adresi \<sapsystemsıd\>-lb-DB olan tüm bağlantı noktalarıyla
+    * YOKS/SCS örneği ve IP adresi için tüm bağlantı noktalarıyla \<SAPSystemSID\> -lb-ascs
+    * SQL Server DBMS ve IP adresi için tüm bağlantı noktalarıyla \<SAPSystemSID\> -lb-DB
 
-  * **Ağ güvenlik grubu**: \<sapsystemsid\>-NSG-ascs-0  
-    * \<Sapsystemsıd\>-ascs-0 sanal makinesine yönelik bir açık dış Uzak Masaüstü Protokolü (RDP) bağlantı noktası ile
+  * **Ağ güvenlik grubu**: \<SAPSystemSID\> -NSG-ascs-0  
+    * \<SAPSystemSID\>-Ascs-0 sanal makinesine açık bir dış Uzak Masaüstü Protokolü (RDP) bağlantı noktası ile
 
 > [!NOTE]
 > Ağ kartlarının ve Azure iç yük dengeleyicileri 'nin tüm IP adresleri varsayılan olarak dinamiktir. Onları statik IP adresleriyle değiştirin. Bunun nasıl yapılacağını makalenin ilerleyen bölümlerinde anlatmaktadır.
@@ -305,7 +305,7 @@ Ascs/SCS çok düzeyli şablonunu ayarlamak için, yönetilen diskleri kullanara
 - **Yeni veya mevcut alt ağ**: yeni bir sanal ağ ve alt ağ oluşturulup oluşturulmayacağını veya var olan bir alt ağı kullanacağınızı belirleyin. Şirket içi ağınıza bağlı bir sanal ağınız zaten varsa, **mevcut**' ı seçin.
 - **Alt ağ kimliği**: VM 'yi tanımlanmış bir alt ağa sahip olduğunuz mevcut bir VNET 'e dağıtmak istiyorsanız, söz konusu alt ağın kimliğini adlandırın. KIMLIK genellikle şöyle görünür:
 
-  /Subscriptions/\<abonelik kimliği\>/ResourceGroups/\<kaynak grubu adı\>/Providers/Microsoft.Network/virtualNetworks/\<sanal ağ adı\>/Subnets/\<alt ağ adı\>
+  /Subscriptions/ \<subscription id\> /ResourceGroups/ \<resource group name\> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name\> /Subnets/\<subnet name\>
 
 Şablon, birden çok SAP sistemini destekleyen bir Azure Load Balancer örneğini dağıtır:
 
@@ -410,7 +410,7 @@ Diğer iki sanal ana bilgisayar adını, PR1-ascs-sap ve PR1-DBMS-sap ve DNS sun
 ## <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>SAP sanal makineleri için statik IP adresleri ayarlama
 Kümenizde kullanmak üzere sanal makineleri dağıttıktan sonra, tüm sanal makineler için statik IP adresleri ayarlamanız gerekir. Bunu, Konuk işletim sisteminde değil, Azure sanal ağ yapılandırmasında yapın.
 
-1. Azure Portal, **kaynak grubu** > **ağ kartı** > **ayarları** > **IP adresi**' ni seçin.
+1. Azure Portal, **kaynak grubu**  >  **ağ kartı**  >  **ayarları**  >  **IP adresi**' ni seçin.
 2. **IP adresleri** bölmesindeki **atama**altında **statik**' ı seçin. **IP adresi** kutusuna, kullanmak istediğiniz IP adresini girin.
 
    > [!NOTE]
@@ -479,15 +479,15 @@ Gerekli iç Yük Dengeleme uç noktalarını oluşturmak için, SAP NetWeaver AB
 
 | Hizmet/Yük Dengeleme kuralı adı | Varsayılan bağlantı noktası numaraları | Somut bağlantı noktaları (örnek numarası 00 olan ASCS örneği) (10 ile) |
 | --- | --- | --- |
-| Sıraya alma sunucusu/ *lbrule3200* |32\<ınstancenumarası\> |3200 |
-| ABAP Message sunucusu/ *lbrule3600* |36\<ınstancenumarası\> |3600 |
-| İç ABAP iletisi/ *lbrule3900* |39\<ınstancenumarası\> |3900 |
-| İleti sunucusu HTTP/ *Lbrule8100* |81\<ınstancenumarası\> |8100 |
-| SAP başlatma hizmeti yoks HTTP/ *Lbrule50013* |5\<ınstancenumarası\>13 |50013 |
-| SAP başlangıç hizmeti yoks HTTPS/ *Lbrule50014* |5\<ınstancenumarası\>14 |50014 |
-| Sıraya alma çoğaltması/ *Lbrule50016* |5\<ınstancenumarası\>16 |50016 |
-| SAP Start Service ERS HTTP *Lbrule51013* |5\<ınstancenumarası\>13 |51013 |
-| SAP Start Service ERS HTTP *Lbrule51014* |5\<ınstancenumarası\>14 |51014 |
+| Sıraya alma sunucusu/ *lbrule3200* |32\<InstanceNumber\> |3200 |
+| ABAP Message sunucusu/ *lbrule3600* |36\<InstanceNumber\> |3600 |
+| İç ABAP iletisi/ *lbrule3900* |39\<InstanceNumber\> |3900 |
+| İleti sunucusu HTTP/ *Lbrule8100* |81\<InstanceNumber\> |8100 |
+| SAP başlatma hizmeti yoks HTTP/ *Lbrule50013* |5 \<InstanceNumber\> 13 |50013 |
+| SAP başlangıç hizmeti yoks HTTPS/ *Lbrule50014* |5 \<InstanceNumber\> 14 |50014 |
+| Sıraya alma çoğaltması/ *Lbrule50016* |5 \<InstanceNumber\> 16 |50016 |
+| SAP Start Service ERS HTTP *Lbrule51013* |5 \<InstanceNumber\> 13 |51013 |
+| SAP Start Service ERS HTTP *Lbrule51014* |5 \<InstanceNumber\> 14 |51014 |
 | Windows Uzaktan Yönetimi (WinRM) *Lbrule5985* | |5985 |
 | Dosya paylaşma *Lbrule445* | |445 |
 
@@ -497,15 +497,15 @@ Daha sonra, SAP NetWeaver Java SCS bağlantı noktaları için bu yük dengeleme
 
 | Hizmet/Yük Dengeleme kuralı adı | Varsayılan bağlantı noktası numaraları | Somut bağlantı noktaları (örneğin, örnek numarası 01 olan SCS örneği) (11 ile ÇÖZÜMLEYICILER) |
 | --- | --- | --- |
-| Sıraya alma sunucusu/ *lbrule3201* |32\<ınstancenumarası\> |3201 |
-| Ağ Geçidi sunucusu/ *lbrule3301* |33\<ınstancenumarası\> |3301 |
-| Java ileti sunucusu/ *lbrule3900* |39\<ınstancenumarası\> |3901 |
-| İleti sunucusu HTTP/ *Lbrule8101* |81\<ınstancenumarası\> |8101 |
-| SAP başlangıç hizmeti SCS HTTP/ *Lbrule50113* |5\<ınstancenumarası\>13 |50113 |
-| SAP başlangıç hizmeti SCS HTTPS/ *Lbrule50114* |5\<ınstancenumarası\>14 |50114 |
-| Sıraya alma çoğaltması/ *Lbrule50116* |5\<ınstancenumarası\>16 |50116 |
-| SAP Start Service ERS HTTP *Lbrule51113* |5\<ınstancenumarası\>13 |51113 |
-| SAP Start Service ERS HTTP *Lbrule51114* |5\<ınstancenumarası\>14 |51114 |
+| Sıraya alma sunucusu/ *lbrule3201* |32\<InstanceNumber\> |3201 |
+| Ağ Geçidi sunucusu/ *lbrule3301* |33\<InstanceNumber\> |3301 |
+| Java ileti sunucusu/ *lbrule3900* |39\<InstanceNumber\> |3901 |
+| İleti sunucusu HTTP/ *Lbrule8101* |81\<InstanceNumber\> |8101 |
+| SAP başlangıç hizmeti SCS HTTP/ *Lbrule50113* |5 \<InstanceNumber\> 13 |50113 |
+| SAP başlangıç hizmeti SCS HTTPS/ *Lbrule50114* |5 \<InstanceNumber\> 14 |50114 |
+| Sıraya alma çoğaltması/ *Lbrule50116* |5 \<InstanceNumber\> 16 |50116 |
+| SAP Start Service ERS HTTP *Lbrule51113* |5 \<InstanceNumber\> 13 |51113 |
+| SAP Start Service ERS HTTP *Lbrule51114* |5 \<InstanceNumber\> 14 |51114 |
 | WinRM *Lbrule5985* | |5985 |
 | Dosya paylaşma *Lbrule445* | |445 |
 
@@ -521,7 +521,7 @@ Yük dengeleyici PR1-lb-DBMS IP adresini, DBMS örneğinin sanal ana bilgisayar 
 
 SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, bağlantı noktalarının adlarını ve değerlerini varsayılan değerlerle değiştirmeniz gerekir.
 
-1. Azure Portal ** \<SID\>-lb-ascs yük dengeleyici** > **Yük Dengeleme kuralları**' nı seçin.
+1. Azure Portal ** \<SID\> -lb-ascs yük dengeleyici**  >  **Yük Dengeleme kuralları**' nı seçin.
 2. SAP ASCS veya SCS örneğine ait olan tüm yük dengeleme kuralları için şu değerleri değiştirin:
 
    * Name
@@ -724,7 +724,7 @@ Küme dosya paylaşımının tanığını yapılandırmak şu görevleri içerir
 
    _**Şekil 26:** Dosya paylaşma tanığını seçin_
 
-4. Dosya paylaşımının UNC yolunu (örneğimizde, \\domcontr-0\FSW) girin. Yapabileceğiniz değişikliklerin listesini görmek için **İleri**' yi seçin.
+4. Dosya paylaşımının UNC yolunu (örneğimizde, \\ domcontr-0\FSW) girin. Yapabileceğiniz değişikliklerin listesini görmek için **İleri**' yi seçin.
 
    ![Şekil 27: tanık paylaşımının dosya paylaşma konumunu tanımlayın][sap-ha-guide-figure-3026]
 
@@ -769,7 +769,7 @@ SAP ASCS/SCS küme paylaşma diski için SIOS Dataman küme sürümü yüklemesi
 
   _**Şekil 30:** Rol ve Özellik Ekleme Sihirbazı 'Nı kullanarak .NET Framework 3,5 yüklediğinizde yükleme ilerleme çubuğu_
 
-- Dism. exe komut satırı aracını kullanın. Bu yükleme türü için, Windows yükleme medyasında SxS dizinine erişmeniz gerekir. Yükseltilmiş bir komut isteminde şu komutu girin:
+- dism.exe komut satırı aracını kullanın. Bu yükleme türü için, Windows yükleme medyasında SxS dizinine erişmeniz gerekir. Yükseltilmiş bir komut isteminde şu komutu girin:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess

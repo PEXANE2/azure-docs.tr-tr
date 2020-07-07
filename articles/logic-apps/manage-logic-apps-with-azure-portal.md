@@ -10,17 +10,17 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598173"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Azure portal Logic Apps 'i yönetme
 
 [Azure Portal](https://portal.azure.com) veya [Visual Studio](manage-logic-apps-with-visual-studio.md)kullanarak mantıksal uygulamaları yönetebilirsiniz. Bu makalede, Azure portal mantıksal uygulamaları düzenleme, devre dışı bırakma, etkinleştirme veya silme işlemlerinin nasıl yapılacağı gösterilir. Azure Logic Apps yeni başladıysanız, bkz. [Azure Logic Apps](logic-apps-overview.md)nedir?
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -34,7 +34,7 @@ Mantıksal uygulamanızı bulup açmak için şu adımları izleyin:
 
 1. Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure Arama çubuğunda yazın `logic apps`ve **Logic Apps**seçin.
+1. Azure Arama çubuğunda yazın `logic apps` ve **Logic Apps**seçin.
 
    !["Logic Apps" bul ve Seç](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
@@ -59,7 +59,7 @@ Mantıksal uygulamanızı bulup açmak için şu adımları izleyin:
    * **Kaynak grubu**
    * **Konum**
    * **Tür** 
-   * **Abonelik adı**
+   * **Abonelik Adı**
    * **Abonelik Kimliği**
    * **Erişim uç noktası**
    * **Çalışma zamanı giden IP adresleri**
@@ -176,7 +176,7 @@ Mantıksal uygulamanızı silmek, iş akışı örneklerinizi şu yollarla etkil
 
    ![Birden çok Logic Apps silme](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
-1. Onay kutusu göründüğünde, girin `yes`ve **Sil**' i seçin.
+1. Onay kutusu göründüğünde, girin `yes` ve **Sil**' i seçin.
 
    ![Mantıksal uygulamalarınızı silmeyi onaylayın](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 

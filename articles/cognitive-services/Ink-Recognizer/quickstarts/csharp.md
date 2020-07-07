@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: c24d055f1904453d2f512a278f00e23c6fea1d9b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371372"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986083"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve C ile dijital mürekkep tanıma #
 
@@ -29,11 +29,11 @@ Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağ
 
 Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502)' da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Herhangi bir [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)sürümü.
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Newtonsoft. json ' i Visual Studio 'da bir NuGet paketi olarak yüklemek için:
+    - Visual Studio 'da bir NuGet paketi olarak Newtonsoft.Jsyüklemek için:
         1. **Çözüm Yöneticisi** 'ne sağ tıklayın
         2. **NuGet Paketlerini Yönet...** öğesine tıklayın.
         3. Paketi arayın `Newtonsoft.Json` ve yükledikten sonra
@@ -51,23 +51,23 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
     
     [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
-2. Abonelik anahtarınız ve uç noktanız için değişkenler oluşturun ve örnek JSON dosyası. Uç nokta daha sonra, API 'ye `inkRecognitionUrl` erişmek için ile birleştirilir. 
+2. Abonelik anahtarınız ve uç noktanız için değişkenler oluşturun ve örnek JSON dosyası. Uç nokta daha sonra `inkRecognitionUrl` , API 'ye erişmek için ile birleştirilir. 
 
     [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>İstek göndermek için bir işlev oluşturma
 
-1. Yukarıda oluşturulan değişkenleri alan adlı `Request` yeni bir zaman uyumsuz işlev oluşturun.
+1. Yukarıda oluşturulan değişkenleri alan adlı yeni bir zaman uyumsuz işlev oluşturun `Request` .
 
-2. İstemcinin güvenlik protokolünü ve üst bilgi bilgilerini bir `HttpClient` nesne kullanarak ayarlayın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye eklediğinizden emin olun. Ardından istek için `StringContent` bir nesne oluşturun.
+2. İstemcinin güvenlik protokolünü ve üst bilgi bilgilerini bir nesne kullanarak ayarlayın `HttpClient` . Abonelik anahtarınızı üstbilgiye eklediğinizden emin olun `Ocp-Apim-Subscription-Key` . Ardından `StringContent` istek için bir nesne oluşturun.
  
-3. İsteği ile `PutAsync()`gönderin. İstek başarılı olursa yanıtı döndürün.  
+3. İsteği ile gönderin `PutAsync()` . İstek başarılı olursa yanıtı döndürün.  
     
     [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>Mürekkep tanıma isteği gönder
 
-1. Adlı `recognizeInk()`yeni bir işlev oluşturun. İsteği oluşturun ve uç nokta, abonelik anahtarınız, `Request()` API URL 'si ve dijital mürekkep konturu verileri ile işlevi çağırarak gönderin.
+1. Adlı yeni bir işlev oluşturun `recognizeInk()` . İsteği oluşturun ve `Request()` uç nokta, abonelik anahtarınız, API URL 'si ve dijital mürekkep konturu verileri ile işlevi çağırarak gönderin.
 
 2. JSON nesnesinin serisini kaldırma ve konsola yazma. 
     
@@ -75,7 +75,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="load-your-digital-ink-data"></a>Dijital mürekkep verilerinizi yükleme
 
-Mürekkep verileri JSON dosyasını `LoadJson()` yüklemek için adlı bir işlev oluşturun. Oluşturma `JObject` ve `StreamReader` döndürme `JsonTextReader` için bir ve kullanın.
+`LoadJson()`Mürekkep VERILERI json dosyasını yüklemek için adlı bir işlev oluşturun. Oluşturma ve `StreamReader` döndürme için bir ve kullanın `JsonTextReader` `JObject` .
 
 [!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
@@ -83,7 +83,7 @@ Mürekkep verileri JSON dosyasını `LoadJson()` yüklemek için adlı bir işle
 
 1. Uygulamanızın ana yönteminde, JSON verilerinizi yukarıda oluşturulan işlevle yükleyin. 
 
-2. Yukarıda oluşturulan `recognizeInk()` işlevi çağırın. Uygulamayı `System.Console.ReadKey()` çalıştırdıktan sonra konsol penceresini açık tutmak için kullanın.
+2. `recognizeInk()`Yukarıda oluşturulan işlevi çağırın. `System.Console.ReadKey()`Uygulamayı çalıştırdıktan sonra konsol penceresini açık tutmak için kullanın.
     
     [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 

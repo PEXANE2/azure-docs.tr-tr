@@ -9,10 +9,10 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
 ms.openlocfilehash: 347f8a4cf1fb95849bcf1008e91d17878f3d01f8
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598530"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
@@ -58,7 +58,7 @@ Bir anahtar kasasını kalıcı olarak silme, Temizleme, proxy kaynağında bir 
 
 Özel durumlar şunlardır:
 - Azure aboneliği *silinebilir*olarak işaretlendiyse. Bu durumda, yalnızca hizmet gerçek silme işlemini gerçekleştirebilir ve bu işlemi zamanlanmış bir işlem olarak yapar. 
-- `--enable-purge-protection flag` Kasa üzerinde etkinleştirildiğinde. Bu durumda, Key Vault, özgün gizli nesne, nesneyi kalıcı olarak silmek için silinmek üzere işaretlendiyse, 90 gün boyunca bekleyecektir.
+- `--enable-purge-protection flag`Kasa üzerinde etkinleştirildiğinde. Bu durumda, Key Vault, özgün gizli nesne, nesneyi kalıcı olarak silmek için silinmek üzere işaretlendiyse, 90 gün boyunca bekleyecektir.
 
 ### <a name="key-vault-recovery"></a>Anahtar Kasası kurtarma
 

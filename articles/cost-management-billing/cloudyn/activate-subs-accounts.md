@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 24ff2d2b5855c2624f12c2a1523611933a426ebe
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474671"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513863"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure aboneliklerini ve hesaplarını Cloudyn ile etkinleştirme
 
@@ -65,7 +65,7 @@ Bir aboneliğe hesap güncelleştirme eklediğinizde, Cloudyn'e Azure verilerini
     2. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
     3. Kiracı kimliğini almak için Azure AD kiracınızda **Özellikler**'i seçin.
     4. Dizin Kimliği GUID’ini kopyalayın. Bu değer kiracı kimliğinizdir.
-    Daha fazla bilgi için bkz. [Kiracı kimliğini alma](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+    Daha fazla bilgi için bkz. [Kiracı kimliğini alma](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 3. Gerekirse, Ücret Kimliğinizi seçin. Ücret kimliğinizi bilmiyorsanız, bulmak için aşağıdaki adımları kullanın.
     1. Azure portalının sağ üst kısmında kullanıcı bilgilerinize tıklayın ve sonra **Faturamı görüntüle**’ye tıklayın.
     2. **Faturalama Hesabı** bölümünde **Abonelikler**’e tıklayın.

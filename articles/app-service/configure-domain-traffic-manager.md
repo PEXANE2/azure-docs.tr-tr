@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610250"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager tümleştirmeyle Azure App Service bir özel etki alanı adı yapılandırma
@@ -19,7 +19,7 @@ ms.locfileid: "82610250"
 > [!NOTE]
 > Cloud Services için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma](../cloud-services/cloud-services-custom-domain-name.md).
 
-[Azure App Service](overview.md)trafiğini dengelemek için [Azure Traffic Manager](/azure/traffic-manager/) kullandığınızda App Service uygulamasına ** \<Traffic-Manager-Endpoint>. trafficmanager.net**kullanılarak erişilebilir. Kullanıcılarınız için daha tanınabilir bir etki alanı adı sağlamak üzere App Service\.uygulamasına sahip www contoso.com gibi özel bir etki alanı adı atayabilirsiniz.
+[Azure App Service](overview.md)trafiğini dengelemek için [Azure Traffic Manager](/azure/traffic-manager/) kullandığınızda App Service uygulamasına ** \<traffic-manager-endpoint> . trafficmanager.net**kullanılarak erişilebilir. \.Kullanıcılarınız için daha tanınabilir bir etki alanı adı sağlamak üzere App Service uygulamasına sahip www contoso.com gibi özel bir etki alanı adı atayabilirsiniz.
 
 Bu makalede, [Traffic Manager](../traffic-manager/traffic-manager-overview.md)ile tümleştirilmiş App Service bir uygulamayla özel bir etki alanı adının nasıl yapılandırılacağı gösterilir.
 
@@ -51,7 +51,7 @@ Uygulamanın geçerli katmanı mavi kenarlıkla vurgulanmıştır. Uygulamanın 
 
 Uygulamanızı ölçeklendirmeniz gerekiyorsa, **Üretim** kategorisindeki fiyatlandırma katmanlarından birini seçin. Ek seçenekler için **Ek seçeneklere bakın**’a tıklayın.
 
-**Uygula**’ya tıklayın.
+**Uygula**'ya tıklayın.
 
 ## <a name="create-traffic-manager-endpoint"></a>Traffic Manager uç noktası oluşturma
 
@@ -69,7 +69,7 @@ App Service uygulamanız desteklenen bir fiyatlandırma katmanındaysa, uç nokt
 Her etki alanı sağlayıcısının özellikleri farklılık gösterdiğinden, [kök olmayan bir özel etki alanı adından](#what-about-root-domains) (örneğin, **www.contoso.com** *) uygulamanızla* tümleştirilmiş Traffic Manager etki alanı adına (**contoso.trafficmanager.net**) eşleyebilirsiniz. *from* 
 
 > [!NOTE]
-> Bir kayıt zaten kullanımda ise ve uygulamalarınızı buna preemptively bağlamanız gerekiyorsa, ek bir CNAME kaydı oluşturabilirsiniz. Örneğin, preemptively için **\.www contoso.com** 'yi uygulamanıza bağlamak için **awverify. www** öğesinden **contoso.trafficmanager.net**'e bir CNAME kaydı oluşturun. "Www" CNAME kaydını değiştirmeye\.gerek kalmadan uygulamanıza "www contoso.com" ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure App Service için etkin BIR DNS adı geçirme](manage-custom-dns-migrate-domain.md).
+> Bir kayıt zaten kullanımda ise ve uygulamalarınızı buna preemptively bağlamanız gerekiyorsa, ek bir CNAME kaydı oluşturabilirsiniz. Örneğin, preemptively için **www \. contoso.com** 'yi uygulamanıza bağlamak için **awverify. www** öğesinden **contoso.trafficmanager.net**'e bir CNAME kaydı oluşturun. " \. Www" CNAME kaydını değiştirmeye gerek kalmadan uygulamanıza "www contoso.com" ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure App Service için etkin BIR DNS adı geçirme](manage-custom-dns-migrate-domain.md).
 
 Etki alanı sağlayıcınızda DNS kayıtlarını ekleme veya değiştirme işlemi tamamlandıktan sonra, değişiklikleri kaydedin.
 
@@ -83,14 +83,14 @@ Yüksek kullanılabilirlik senaryolarında, kök etki alanından her bir uygulam
 Etki alanı adınızın kayıtları dağıtıldıktan sonra, özel etki alanı adınızın App Service uygulamanıza çözümlendiğini doğrulamak için tarayıcıyı kullanın.
 
 > [!NOTE]
-> CNAME 'nizin DNS sistemine yayılması biraz zaman alabilir. CNAME 'in kullanılabildiğini doğrulamak için gibi <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> bir hizmet kullanabilirsiniz.
+> CNAME 'nizin DNS sistemine yayılması biraz zaman alabilir. CNAME 'in kullanılabildiğini doğrulamak için gibi bir hizmet kullanabilirsiniz <a href="https://www.digwebinterface.com/">https://www.digwebinterface.com/</a> .
 > 
 > 
 
 1. Etki alanı çözümlemesi başarılı olduktan sonra [Azure portalında](https://portal.azure.com) uygulama sayfanıza geri dönün
-2. Sol gezinti bölmesinde **özel etki alanı** > **adı Ekle**' yi seçin.
+2. Sol gezinti bölmesinde **özel etki alanı**  >  **adı Ekle**' yi seçin.
 4. Daha önce eşlenen özel etki alanı adını yazın ve **Doğrula**' yı seçin.
-5. **Ana bilgisayar adı kayıt türünün** **CNAME (www\.example.com veya herhangi bir alt etki alanı)** olarak ayarlandığından emin olun.
+5. **Ana bilgisayar adı kayıt türünün** **CNAME (www \. example.com veya herhangi bir alt etki alanı)** olarak ayarlandığından emin olun.
 
 6. App Service uygulama artık bir Traffic Manager uç noktasıyla tümleştirildiği için **CNAME yapılandırması**altında Traffic Manager etki alanı adını görmeniz gerekir. Seçin ve **özel etki alanı Ekle**' ye tıklayın.
 

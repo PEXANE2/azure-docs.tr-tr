@@ -7,13 +7,13 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598428"
 ---
-# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınızı (ıSE) yönetme
+# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Tümleştirme hizmeti ortamınızı (ISE) Azure Logic Apps ile yönetme
 
 Bu makalede, [tümleştirme hizmeti ortamınız (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)için yönetim görevlerinin nasıl gerçekleştirileceği gösterilmektedir, örneğin:
 

@@ -7,15 +7,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598377"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'de Kullanıcı tanımlı işlevler
 
-Azure Stream Analytics SQL benzeri sorgu dili, akış verilerinde gerçek zamanlı analiz mantığını uygulamayı kolaylaştırır. Stream Analytics, sorgunuzda çağrılan özel işlevlerle daha fazla esneklik sağlar. Aşağıdaki kod örneği, bir parametre kabul eden `sampleFunction` adlı UDF 'dir, işin aldığı her giriş kaydı ve sonuç çıkışa yazılır `sampleResult`.
+Azure Stream Analytics SQL benzeri sorgu dili, akış verilerinde gerçek zamanlı analiz mantığını uygulamayı kolaylaştırır. Stream Analytics, sorgunuzda çağrılan özel işlevlerle daha fazla esneklik sağlar. Aşağıdaki kod örneği, `sampleFunction` bir parametre kabul eden ADLı UDF 'dir, işin aldığı her giriş kaydı ve sonuç çıkışa yazılır `sampleResult` .
 
 ```sql
 SELECT 
@@ -41,7 +41,7 @@ Makine öğrenimi modelleri, dize düzenlemeleri, karmaşık matematik hesaplama
 
 Kullanıcı tanımlı işlevler durumsuz ve dönüş değeri yalnızca skaler bir değer olabilir. Bu Kullanıcı tanımlı işlevlerden dış REST uç noktalarına çağrı yapılamaz, çünkü işinizin performansı büyük olasılıkla etkiler. 
 
-Azure Stream Analytics, tüm işlev etkinleştirmeleri ve döndürülen sonuçlar için bir kayıt yapmaz. Örneğin, yinelenebilirlik sağlamak için, işinizi eski zaman damgasından yeniden çalıştırmak aynı sonuçları yeniden üretir. bu işlevler her bir çağrı için aynı sonucu döndürmediğinden `Date.GetData()` , `Math.random()`veya gibi işlevleri kullanmayın.  
+Azure Stream Analytics, tüm işlev etkinleştirmeleri ve döndürülen sonuçlar için bir kayıt yapmaz. Örneğin, yinelenebilirlik sağlamak için, işinizi eski zaman damgasından yeniden çalıştırmak aynı sonuçları yeniden üretir `Date.GetData()` `Math.random()` . bu işlevler her bir çağrı için aynı sonucu döndürmediğinden, veya gibi işlevleri kullanmayın.  
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
 

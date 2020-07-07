@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598445"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio ile mantıksal uygulamaları yönetme
@@ -25,7 +25,7 @@ Ayrıca [Azure Portal mantıksal uygulamalarınızı da yönetebilirsiniz](manag
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -65,7 +65,7 @@ Visual Studio 'da, Azure aboneliğinizle ilişkili olan ve bulut Gezgini kullan�
 
 1. Visual Studio'yu açın. **Görünüm** menüsünde **bulut Gezgini**' ni seçin.
 
-1. Cloud Explorer 'da **Hesap yönetimi**' ni seçin. Logic Apps ile ilişkili Azure aboneliğini seçin ve ardından **Uygula**' yı seçin. Örneğin:
+1. Cloud Explorer 'da **Hesap yönetimi**' ni seçin. Logic Apps ile ilişkili Azure aboneliğini seçin ve ardından **Uygula**' yı seçin. Örnek:
 
    !["Hesap yönetimi" ni seçin](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -115,7 +115,7 @@ Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Kaynak g
 
 1. Bir konum istendiğinde, bu konuma gidin ve mantıksal uygulama tanımının Kaynak Yöneticisi şablonunu JSON (. JSON) dosya biçiminde kaydedin.
 
-   Mantıksal uygulama tanımınız Kaynak Yöneticisi şablonunun içindeki `resources` alt bölümde görüntülenir. Artık mantıksal uygulama tanımını ve Kaynak Yöneticisi şablonu Visual Studio ile düzenleyebilirsiniz. Ayrıca, şablonu bir [Azure Kaynak grubu projesi](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) olarak bir Visual Studio çözümüne ekleyebilirsiniz. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)hakkında bilgi edinin.
+   Mantıksal uygulama tanımınız `resources` Kaynak Yöneticisi şablonunun içindeki alt bölümde görüntülenir. Artık mantıksal uygulama tanımını ve Kaynak Yöneticisi şablonu Visual Studio ile düzenleyebilirsiniz. Ayrıca, şablonu bir [Azure Kaynak grubu projesi](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) olarak bir Visual Studio çözümüne ekleyebilirsiniz. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)hakkında bilgi edinin.
 
 <a name="link-integration-account"></a>
 
@@ -125,7 +125,7 @@ Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Kaynak g
 
 1. Visual Studio 'da mantıksal uygulamanızı içeren Azure Kaynak grubu projesini açın.
 
-1. Çözüm Gezgini ' de, **<Logic-app-name>. JSON** dosyasının kısayol menüsünü açın ve **Logic App Designer ile aç**' ı seçin. (Klavye: Ctrl + L)
+1. Çözüm Gezgini ' de, dosyanın kısayol menüsünde **<Logic-app-name # C1.js** açın ve **Logic App Designer ile aç**' ı seçin. (Klavye: Ctrl + L)
 
    ![Mantıksal uygulama Tasarımcısı ile mantıksal uygulamanın. json dosyasını açın](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -228,7 +228,7 @@ Mantıksal uygulama çalıştırmaları ile ilgili durumu denetlemek ve sorunlar
 
    ![Mantıksal uygulamanız için çalıştırma geçmişini açma](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için, bir çalıştırmaya çift tıklayın. Örneğin:
+1. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için, bir çalıştırmaya çift tıklayın. Örnek:
 
    ![Belirli bir çalıştırma hakkındaki bilgileri görüntüleme](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   

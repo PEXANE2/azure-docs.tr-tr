@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: mürekkep tanıyıcı REST API ve Node. js ile dijital mürekkep tanıma'
+title: 'Hızlı başlangıç: mürekkep tanıyıcı REST API ve Node.js ile dijital mürekkep tanıma'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sini kullanın.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: aa16f0cca5e60608518ff914a89a48fa8b8899c5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448138"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980024"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve JavaScript ile dijital mürekkep tanıma
 
@@ -29,7 +29,7 @@ Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağ
 
 Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905)' da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Web tarayıcısı
 - Bu hızlı başlangıç için örnek mürekkep konturu verileri [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json)'da bulunabilir.
@@ -40,7 +40,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="create-a-new-application"></a>Yeni uygulama oluşturma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni `.html` bir dosya oluşturun. Ardından daha sonra ekleyeceğiniz kod için temel HTML 'yi ekleyin.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir `.html` dosya oluşturun. Ardından daha sonra ekleyeceğiniz kod için temel HTML 'yi ekleyin.
     
     ```html
     <!DOCTYPE html>
@@ -57,9 +57,9 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
     </html>
     ```
 
-2. `<body>` Etiketi içinde, aşağıdaki HTML 'yi ekleyin:
+2. Etiketi içinde `<body>` , aşağıdaki HTML 'yi ekleyin:
     1. JSON isteğini ve yanıtını görüntülemek için iki metin alanı.
-    2. Daha sonra oluşturulacak `recognizeInk()` işlevi çağırmak için bir düğme.
+    2. `recognizeInk()`Daha sonra oluşturulacak işlevi çağırmak için bir düğme.
     
     ```HTML
     <!-- <body>-->
@@ -75,11 +75,11 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="load-the-example-json-data"></a>Örnek JSON verilerini yükleme
 
-1. `<script>` Etiket Içinde samplejson için bir değişken oluşturun. Ardından JSON dosyanızı seçebilmeniz için dosya `openFile()` Gezginini açan adlı bir JavaScript işlevi oluşturun. `Recognize ink` Düğmeye tıklandığında, bu işlevi çağırır ve dosyayı okumaya başlar.
-2. Dosyayı zaman `FileReader` uyumsuz olarak `onload()` işlemek için bir nesnenin işlevini kullanın. 
+1. Etiket içinde `<script>` sampleJson için bir değişken oluşturun. Ardından `openFile()` JSON dosyanızı seçebilmeniz için dosya gezginini açan adlı bir JavaScript işlevi oluşturun. `Recognize ink`Düğmeye tıklandığında, bu işlevi çağırır ve dosyayı okumaya başlar.
+2. `FileReader` `onload()` Dosyayı zaman uyumsuz olarak işlemek için bir nesnenin işlevini kullanın. 
     1. Dosyadaki herhangi `\n` veya `\r` karakteri boş bir dize ile değiştirin. 
-    2. Metni `JSON.parse()` geçerli JSON 'a dönüştürmek için kullanın
-    3. Uygulamadaki `request` metin kutusunu güncelleştirin. JSON `JSON.stringify()` dizesini biçimlendirmek için kullanın. 
+    2. `JSON.parse()`Metni GEÇERLI JSON 'a dönüştürmek için kullanın
+    3. `request`Uygulamadaki metin kutusunu güncelleştirin. `JSON.stringify()`JSON dizesini biçimlendirmek için kullanın. 
     
     ```javascript
     var sampleJson = "";
@@ -98,7 +98,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="send-a-request-to-the-ink-recognizer-api"></a>Mürekkep tanıyıcı API 'sine istek gönderme
 
-1. `<script>` Etiketi içinde adlı `recognizeInk()`bir işlev oluşturun. Bu işlev daha sonra API 'YI çağıracak ve sayfayı Yanıtla güncelleştirecek. Bu işlev içindeki aşağıdaki adımlardan kodu ekleyin. 
+1. Etiketi içinde `<script>` adlı bir işlev oluşturun `recognizeInk()` . Bu işlev daha sonra API 'YI çağıracak ve sayfayı Yanıtla güncelleştirecek. Bu işlev içindeki aşağıdaki adımlardan kodu ekleyin. 
         
     ```javascript
     function recognizeInk() {
@@ -106,7 +106,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
     }
     ```
 
-    1. Endpoint URL 'niz, abonelik anahtarınız ve örnek JSON için değişkenler oluşturun. Ardından API isteğini `XMLHttpRequest` göndermek için bir nesne oluşturun. 
+    1. Endpoint URL 'niz, abonelik anahtarınız ve örnek JSON için değişkenler oluşturun. Ardından `XMLHttpRequest` API isteğini göndermek için bir nesne oluşturun. 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
@@ -116,7 +116,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
         var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
-    2. `XMLHttpRequest` Nesnesi için return işlevini oluşturun. Bu işlev başarılı bir istekten API yanıtını ayrıştırır ve uygulamayı uygulamada görüntüler. 
+    2. Nesnesi için return işlevini oluşturun `XMLHttpRequest` . Bu işlev başarılı bir istekten API yanıtını ayrıştırır ve uygulamayı uygulamada görüntüler. 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -133,7 +133,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
         }
         ```
 
-    4. İstek nesnesinin `onreadystatechange` özelliği için bir işlev oluşturun. İstek nesnesinin hazırlık durumu değiştiğinde yukarıdaki geri dönüş ve hata işlevleri uygulanır.
+    4. İstek nesnesinin özelliği için bir işlev oluşturun `onreadystatechange` . İstek nesnesinin hazırlık durumu değiştiğinde yukarıdaki geri dönüş ve hata işlevleri uygulanır.
             
         ```javascript
         xhttp.onreadystatechange = function () {

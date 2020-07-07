@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594874"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>İstemci tarafına reklam ekleme
@@ -96,7 +96,7 @@ Büyük bir dosya hangi ad veya reklamları gösterileceğini belirtir. Aşağı
 
 Doğrusal ad <**doğrusal**> öğesi tarafından açıklanmıştır. Bu, ad süresini, izleme olaylarını, izleme ' yi ve bir dizi **mediafile** öğesini belirtir. İzleme olayları <**Trackingevents**> öğesi içinde belirtilmiştir ve ad sunucusunun ad görüntülenirken oluşan çeşitli olayları izlemesine izin verir. Bu durumda başlangıç, orta nokta, tamam ve Genişlet olayları izlenir. Ad görüntülendiğinde başlangıç olayı oluşur. Orta nokta olayı, ad zaman çizelgesinin en az %50 ' i görüntülenirken meydana gelir. Tüm olay, ad sonuna kadar çalıştırıldığında oluşur. Kullanıcı video oynatıcıyı tam ekran olarak genişlediğinde genişletme olayı oluşur. Clickthroughs, bir <**videotıklamalar**> öğesi Içinde <**tıklama**> öğesi ile belirtilir ve Kullanıcı ad 'ye tıkladığında görüntülenecek bir kaynağın URI 'sini belirtir. Tıklama Izlemesi, <**Videotıklamalar**> öğesi içinde de bir <**clicktracking**> öğesinde belirtilir ve Kullanıcı ad 'ye tıkladığında, oynatıcının istemesi için bir izleme kaynağı belirtir. <**mediafile**> öğeleri, bir ad 'nin belirli bir kodlamasıyla ilgili bilgileri belirtir. Birden fazla <**mediafile**> öğesi olduğunda, video oynatıcı platformun en iyi kodlamasını seçebilir.
 
-Doğrusal reklamlar belirtilen sırada gösterilebilir. Bunu yapmak için, büyük dosyaya `<Ad>` ek öğeler ekleyin ve sıra özniteliğini kullanarak sırayı belirtin. Aşağıdaki örnekte bu gösterilmektedir:
+Doğrusal reklamlar belirtilen sırada gösterilebilir. Bunu yapmak için, büyük `<Ad>` dosyaya ek öğeler ekleyin ve sıra özniteliğini kullanarak sırayı belirtin. Aşağıdaki örnekte bu gösterilmektedir:
 
 ```xml
     <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
@@ -143,7 +143,7 @@ Doğrusal reklamlar belirtilen sırada gösterilebilir. Bunu yapmak için, büy�
     </VAST>
 ```
 
-Doğrusal reklamlar da bir `<Creative>` öğede belirtilir. Aşağıdaki örnekte, doğrusal olmayan `<Creative>` bir ad açıklayan bir öğe gösterilmektedir.
+Doğrusal reklamlar da bir öğede belirtilir `<Creative>` . Aşağıdaki örnekte, `<Creative>` Doğrusal olmayan bir ad açıklayan bir öğe gösterilmektedir.
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -160,7 +160,7 @@ Doğrusal reklamlar da bir `<Creative>` öğede belirtilir. Aşağıdaki örnekt
     </Creative>
 ```
 
-<**ilişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal** dizi> öğesi içerebilir. <**Doğrusal** olmayan> öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak <bir **StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**> HTML olmayan bir kaynağı açıklar ve kaynağın nasıl görüntülendiğini belirten bir creativeType özniteliği tanımlar:
+<**ilişkisel olmayan reklamları**> öğesi, her biri doğrusal olmayan bir ad açıklayan bir veya daha fazla <**Doğrusal** dizi> öğesi içerebilir. <**Doğrusal** olmayan> öğesi, doğrusal olmayan ad için kaynağı belirtir. Kaynak <bir **StaticResource**>, bir <**Iframpaesource**> veya <**HTMLResource**> olabilir. \<**StaticResource**>HTML olmayan bir kaynak tanımlar ve kaynağın nasıl görüntülendiğini belirten bir creativeType özniteliği tanımlar:
 
 Image/gif, Image/JPEG, Image/PNG – kaynak bir HTML <**img**> etiketinde görüntülenir.
 
@@ -170,7 +170,7 @@ Application/x-Shockwave-Flash: kaynak, bir Flash oynatıcıda görüntülenir.
 
 **Idimeresource** , IFRAME içinde GÖRÜNTÜLENEBILEN bir HTML kaynağını açıklar. **HTMLResource** , bir Web sayfasına EKLENEBILEN bir HTML kodu parçasını tanımlar. **Trackingevents** izleme olaylarını ve olay gerçekleştiğinde Istek yapılacak URI 'yi belirtir. Bu örnekte, Acceptınvisyon ve daraltma olayları izlenir. **İlişkisel olmayan ads** öğesi ve alt öğeleri hakkında daha fazla bilgi için bkz. IAB.net/VAST. **Trackingevents** öğesinin, **Doğrusal** olmayan öğe yerine, **nonmetinsiz** bir öğe içinde bulunduğunu unutmayın.
 
-Yardımcı reklamlar bir `<CompanionAds>` öğesi içinde tanımlanır. `<CompanionAds>` Öğe bir veya daha fazla `<Companion>` öğe içerebilir. Her `<Companion>` öğe bir yardımcı ad açıklar ve bir, veya `<StaticResource>`içeren `<IFrameResource>`bir, `<HTMLResource>` ya da, doğrusal olmayan bir ad ile aynı şekilde belirtilmiş olabilir. Büyük bir dosya birden çok yardımcı reklam içerebilir ve oynatıcı uygulaması görüntülenecek en uygun ad ' ı seçebilir. Büyük hakkında daha fazla bilgi için bkz. çok [3,0](https://www.iab.net/media/file/VASTv3.0.pdf).
+Yardımcı reklamlar bir öğesi içinde tanımlanır `<CompanionAds>` . `<CompanionAds>`Öğe bir veya daha fazla öğe içerebilir `<Companion>` . Her `<Companion>` öğe bir yardımcı ad açıklar ve bir, veya içeren bir, ya da, doğrusal olmayan bir `<StaticResource>` `<IFrameResource>` ad ile `<HTMLResource>` aynı şekilde belirtilmiş olabilir. Büyük bir dosya birden çok yardımcı reklam içerebilir ve oynatıcı uygulaması görüntülenecek en uygun ad ' ı seçebilir. Büyük hakkında daha fazla bilgi için bkz. çok [3,0](https://www.iab.net/media/file/VASTv3.0.pdf).
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Dijital video çoklu ad çalma listesi (VMAP) dosyası kullanma
 Bir VMAP dosyası, ad sonlarının ne zaman gerçekleşeceğini, her kesmenin ne kadar süreceğine, bir kesme içinde kaç reklam gösterileceğini ve bir kesme sırasında hangi tür reklamları görüntülenebileceğini belirtmenizi sağlar. Aşağıda, tek bir ad kesmeyi tanımlayan örnek bir VMAP dosyası verilmiştir:
@@ -224,14 +224,14 @@ Bir VMAP dosyası, ad sonlarının ne zaman gerçekleşeceğini, her kesmenin ne
     </vmap:VMAP>
 ```
 
-VMAP dosyası, her biri bir `<VMAP>` ad kesmesi tanımlayan bir veya daha `<AdBreak>` fazla öğe içeren bir öğe ile başlar. Her ad kesmesi bir kesme türü, kesme KIMLIĞI ve zaman boşluğu belirtir. BreakType özniteliği, kesme sırasında yürütülebilecek ad türünü belirtir: doğrusal, doğrusal olmayan veya görüntü. Büyük ve çok yardımcı reklamlar için ads haritasını görüntüleyin. Birden çok ad türü, virgülle ayrılmış bir liste (boşluk olmadan) ile belirtilebilir. Breakıd, ad için isteğe bağlı bir tanıtıcıdır. Timekayması, ad ' ın ne zaman gösterileceğini belirtir. Aşağıdaki yollarla belirtilebilir:
+VMAP dosyası, her biri bir `<VMAP>` ad kesmesi tanımlayan bir veya daha fazla öğe içeren bir öğe ile başlar `<AdBreak>` . Her ad kesmesi bir kesme türü, kesme KIMLIĞI ve zaman boşluğu belirtir. BreakType özniteliği, kesme sırasında yürütülebilecek ad türünü belirtir: doğrusal, doğrusal olmayan veya görüntü. Büyük ve çok yardımcı reklamlar için ads haritasını görüntüleyin. Birden çok ad türü, virgülle ayrılmış bir liste (boşluk olmadan) ile belirtilebilir. Breakıd, ad için isteğe bağlı bir tanıtıcıdır. Timekayması, ad ' ın ne zaman gösterileceğini belirtir. Aşağıdaki yollarla belirtilebilir:
 
 1. Time – hh: mm: SS veya ss: DD: ss. mmm biçiminde; burada aaa milisaniyedir. Bu özniteliğin değeri, video zaman çizelgesinin başından ad kesmenin başlangıcına kadar olan süreyi belirtir.
 2. Yüzde: n% biçimindedir; burada n, ad oynatıcının oynatılması için video zaman çizelgesinin yüzdesidir
 3. Başlangıç/bitiş – bir ad, video görüntülenmeden önce veya sonra görüntülenecek şekilde belirtir
 4. Konum – canlı akış gibi ad sonlarının zamanlaması bilinmiyorsa ad sonlarının sırasını belirtir. Her ad kesmenin sırası, n 'nin bir tamsayı 1 veya daha büyük olduğu #n biçiminde belirtilir. 1 ad 'nin ilk fırsatta yürütülmesi gerektiğini belirtir, 2 ad ikinci fırsatta çalınmalıdır ve bu şekilde devam eder.
 
-`<AdBreak>` Öğesi içinde, bir <**Adsource**> öğesi olabilir. <**Adsource**> öğesi aşağıdaki öznitelikleri içerir:
+Öğesi içinde `<AdBreak>` , bir <**adsource**> öğesi olabilir. <**Adsource**> öğesi aşağıdaki öznitelikleri içerir:
 
 1. ID: ad kaynağı için bir tanımlayıcı belirtir
 2. Allowmultipliderleri: ad sonu sırasında birden fazla reklam gösterilip gösterilmeyeceğini belirten bir Boole değeri
@@ -243,7 +243,7 @@ VMAP dosyası, her biri bir `<VMAP>` ad kesmesi tanımlayan bir veya daha `<AdBr
 * `<AdTagURI>`başka bir sistemden ad yanıtına başvuran bir URI
 * `<CustomAdData>`-çok büyük olmayan yanıtı temsil eden rastgele bir dize
 
-Bu örnekte, büyük bir ad yanıtı içeren bir `<VASTAdData>` öğe ile satır içi ad yanıtı belirtilmiştir. Diğer öğeler hakkında daha fazla bilgi için bkz. [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
+Bu örnekte, büyük bir ad yanıtı içeren bir öğe ile satır içi ad yanıtı belirtilmiştir `<VASTAdData>` . Diğer öğeler hakkında daha fazla bilgi için bkz. [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap).
 
 <**Adbreak**> öğesi bir <**Trackingevents**> öğesi de içerebilir. <**Trackingevents**> öğesi, bir ad sonunun başlangıcını veya sonunu izlemenize veya ad kesmesi sırasında bir hata oluşup oluşmadığını izlemenize olanak sağlar. <**Trackingevents**> öğesi, her biri bir izleme olayı ve bir izleme URI 'si belirten bir veya daha fazla <**izleme**> öğesi içeriyor. Olası izleme olayları şunlardır:
 
@@ -325,16 +325,16 @@ Bir MAST dosyası, bir ad görüntülendiğinde tanımlayan Tetikleyicileri beli
 ```
 
 
-Bir MAST dosyası bir **Triggers** öğesi Içeren bir **mast** öğesi ile başlar. Öğesi `<triggers>` , bir ad 'nin ne zaman yürütülmesi gerektiğini tanımlayan bir veya daha fazla **tetikleyici** öğesi içerir.
+Bir MAST dosyası bir **Triggers** öğesi Içeren bir **mast** öğesi ile başlar. `<triggers>`Öğesi, bir ad 'nin ne zaman yürütülmesi gerektiğini tanımlayan bir veya daha fazla **tetikleyici** öğesi içerir.
 
-**Tetikleyici** öğesi, bir ad 'nin oynatılma başlaması gereken zaman belirten bir **startconditions** öğesi içerir. **Startconditions** öğesi bir veya daha fazla `<condition>` öğe içeriyor. Her biri `<condition>` true olarak değerlendirildiğinde bir tetikleyici başlatılır veya bir `<condition>` **startconditions** veya **endconditions** öğesi içinde olup olmadığına bağlı olarak iptal edilir. Birden çok `<condition>` öğe mevcut olduğunda, örtülü olarak değerlendirilir, true olarak değerlendirilen herhangi bir koşul tetikleyicisinin başlatılmasına neden olur. `<condition>`öğeler iç içe olabilir. Alt `<condition>` öğeler önceden ayarlandığında, örtülü ve olarak değerlendirilir, tetikleyicisinin başlatması için tüm koşulların doğru olarak değerlendirilmesi gerekir. `<condition>` Öğesi, koşulu tanımlayan aşağıdaki öznitelikleri içerir:
+**Tetikleyici** öğesi, bir ad 'nin oynatılma başlaması gereken zaman belirten bir **startconditions** öğesi içerir. **Startconditions** öğesi bir veya daha fazla `<condition>` öğe içeriyor. Her biri `<condition>` true olarak değerlendirildiğinde bir tetikleyici başlatılır veya bir `<condition>` **Startconditions** veya **endconditions** öğesi içinde olup olmadığına bağlı olarak iptal edilir. Birden çok `<condition>` öğe mevcut olduğunda, örtülü olarak değerlendirilir, true olarak değerlendirilen herhangi bir koşul tetikleyicisinin başlatılmasına neden olur. `<condition>`öğeler iç içe olabilir. Alt `<condition>` öğeler önceden ayarlandığında, örtülü ve olarak değerlendirilir, tetikleyicisinin başlatması için tüm koşulların doğru olarak değerlendirilmesi gerekir. `<condition>`Öğesi, koşulu tanımlayan aşağıdaki öznitelikleri içerir:
 
 1. **tür** – koşulun, etkinliğin veya özelliğin türünü belirtir
 2. **ad** : değerlendirme sırasında kullanılacak özelliğin veya etkinliğin adı
 3. **değer** : bir özelliğin değerlendirileceği değer
 4. **işleç** – değerlendirme sırasında kullanılacak Işlem: EQ (eşittir), NEQ (eşit değildir), GTR (daha büyük), GEQ (büyük veya eşittir), lt (küçüktür), LEQ (küçüktür veya eşittir), mod (mod)
 
-**Endconditions** öğeleri de `<condition>` içerir. Bir koşul true olarak değerlendirildiğinde tetikleyici sıfırlanır. `<trigger>` Öğesi bir veya daha fazla `<sources>` `<source>` öğe içeren bir öğesi de içerir. `<source>` Öğeleri ad yanıtının URI 'sini ve ad yanıtının türünü tanımlar. Bu örnekte, büyük bir yanıta bir URI verilir.
+**Endconditions** öğeleri de içerir `<condition>` . Bir koşul true olarak değerlendirildiğinde tetikleyici sıfırlanır. `<trigger>`Öğesi `<sources>` bir veya daha fazla öğe içeren bir öğesi de içerir `<source>` . `<source>`Öğeleri ad YANıTıNıN URI 'sini ve ad yanıtının türünü tanımlar. Bu örnekte, büyük bir yanıta bir URI verilir.
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -352,7 +352,7 @@ Bir MAST dosyası bir **Triggers** öğesi Içeren bir **mast** öğesi ile baş
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video oynatıcı kullanma-ad arabirimi tanımı (VÜCRETLI)
 VÜCRETLI, yürütülebilir ad birimlerinin bir video oynatıcı ile iletişim kurmasını sağlayan bir API 'dir. Bu, son derece etkileşimli ad deneyimlerine izin verir. Kullanıcı ad ile etkileşime geçebilir ve ad, Görüntüleyici tarafından alınan eylemlere yanıt verebilir. Örneğin, bir ad, kullanıcının daha fazla bilgi veya daha uzun bir sürümü görüntülemesine izin veren düğmeler görüntüleyebilir. Video oynatıcı, VÜCRETLI API 'yi desteklemelidir ve yürütülebilir ad, API 'YI uygulamalıdır. Bir oyuncu bir ad sunucusundan bir ad istediğinde, sunucu, VÜCRETLI ad içeren büyük bir Yanıt ile yanıt verebilir.
 
-Bir yürütülebilir ad, Adobe Flash™ veya bir Web tarayıcısında yürütülebilecek JavaScript gibi bir çalışma zamanı ortamında yürütülmesi gereken kodda oluşturulur. Bir ad sunucusu VÜCRETLI ad içeren büyük bir yanıt döndürdüğünde, `<MediaFile>` öğesindeki apiFramework özniteliğinin DEĞERI "vücretli" olmalıdır. Bu öznitelik, kapsanan ad 'nin bir VÜCRETLI yürütülebilir ad olduğunu belirtir. Tür özniteliği yürütülebilir dosyanın MIME türüne ayarlanmalıdır (örneğin, "application/x-Shockwave-Flash" veya "application/x-JavaScript"). Aşağıdaki XML kod parçacığında, VÜCRETLI yürütülebilir ad içeren büyük bir yanıttan `<MediaFile>` öğe gösterilmektedir.
+Bir yürütülebilir ad, Adobe Flash™ veya bir Web tarayıcısında yürütülebilecek JavaScript gibi bir çalışma zamanı ortamında yürütülmesi gereken kodda oluşturulur. Bir ad sunucusu VÜCRETLI ad içeren büyük bir yanıt döndürdüğünde, öğesindeki apiFramework özniteliğinin değeri `<MediaFile>` "VÜCRETLI" olmalıdır. Bu öznitelik, kapsanan ad 'nin bir VÜCRETLI yürütülebilir ad olduğunu belirtir. Tür özniteliği yürütülebilir dosyanın MIME türüne ayarlanmalıdır (örneğin, "application/x-Shockwave-Flash" veya "application/x-JavaScript"). Aşağıdaki XML kod parçacığında, `<MediaFile>` vücretli yürütülebilir ad içeren büyük bir yanıttan öğe gösterilmektedir.
 
 ```xml
     <MediaFiles>
@@ -363,7 +363,7 @@ Bir yürütülebilir ad, Adobe Flash™ veya bir Web tarayıcısında yürütül
     </MediaFiles>
 ```
 
-Yürütülebilir bir ad, `<AdParameters>` `<Linear>` veya `<NonLinear>` öğeleri içindeki öğesi çok büyük bir yanıtta kullanılarak başlatılabilir. Öğesi hakkında daha fazla bilgi için bkz. çok [3,0.](https://www.iab.net/media/file/VASTv3.0.pdf) `<AdParameters>` VÜCRETLI API hakkında daha fazla bilgi için bkz. [vücretli 2,0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
+Yürütülebilir bir ad `<AdParameters>` , veya öğeleri içindeki öğesi çok büyük `<Linear>` `<NonLinear>` bir yanıtta kullanılarak başlatılabilir. Öğesi hakkında daha fazla bilgi için `<AdParameters>` bkz. çok [3,0](https://www.iab.net/media/file/VASTv3.0.pdf). VÜCRETLI API hakkında daha fazla bilgi için bkz. [vücretli 2,0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf).
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>Ad desteğiyle Windows veya Windows Phone 8 oynatıcı uygulama
 Microsoft medya platformu: Windows 8 ve Windows Phone 8 için oynatıcı Framework, Framework kullanarak bir video oynatıcı uygulamasının nasıl uygulanacağını gösteren örnek uygulamaların bir koleksiyonunu içerir. Oynatıcı çerçevesini ve [Windows 8 Için Player Framework ve Windows Phone 8 '](https://playerframework.codeplex.com)deki örnekleri indirebilirsiniz.
@@ -530,7 +530,7 @@ Bu örnek, ad içeren bir. wmv dosyası belirterek bir orta noktadan ad zamanlam
 ```
 
 ### <a name="vastlinearcompanionpage"></a>Vastdoğrcompanionpage
-Bu örnek, bir yardımcı ad ile orta ölçekli bir ad zamanlamak için AdSchedulerPlugin 'in nasıl kullanılacağını gösterir. `<RemoteAdSource>` Öğesi, büyük dosyanın konumunu belirtir.
+Bu örnek, bir yardımcı ad ile orta ölçekli bir ad zamanlamak için AdSchedulerPlugin 'in nasıl kullanılacağını gösterir. Öğesi, büyük `<RemoteAdSource>` dosyanın konumunu belirtir.
 
 ```xml
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -552,7 +552,7 @@ Bu örnek, bir yardımcı ad ile orta ölçekli bir ad zamanlamak için AdSchedu
 ```
 
 ### <a name="vastlinearnonlinearpage"></a>Vastdoğrnondoğruz sayfası
-Bu örnek, doğrusal ve doğrusal olmayan bir ad zamanlamak için AdSchedulerPlugin kullanır. Büyük dosya konumu `<RemoteAdSource>` öğesi ile belirtilir.
+Bu örnek, doğrusal ve doğrusal olmayan bir ad zamanlamak için AdSchedulerPlugin kullanır. Büyük dosya konumu öğesi ile belirtilir `<RemoteAdSource>` .
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -574,7 +574,7 @@ Bu örnek, doğrusal ve doğrusal olmayan bir ad zamanlamak için AdSchedulerPlu
 ```
 
 ### <a name="vmappage"></a>VMAPPage
-Bu örnek, VMAP dosyası kullanarak reklamları zamanlamak için VmapSchedulerPlugin kullanır. VMAP dosyasının URI 'SI, `<VmapSchedulerPlugin>` öğesinin kaynak özniteliğinde belirtilir.
+Bu örnek, VMAP dosyası kullanarak reklamları zamanlamak için VmapSchedulerPlugin kullanır. VMAP dosyasının URI 'SI, öğesinin kaynak özniteliğinde belirtilir `<VmapSchedulerPlugin>` .
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -846,5 +846,5 @@ Aşağıdaki örnek, bir orta seviye kaplama ad zamanlamasının nasıl planlana
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

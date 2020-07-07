@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82610539"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Koşullu erişimle oturum açma sorunlarını giderme
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Koşullu Erişimle ilgili oturum açma sorunlarını giderme
 
 Bu makaledeki bilgiler, hata iletileri ve Azure AD oturum açma günlüğü kullanılarak koşullu erişimle ilgili beklenmedik oturum açma sonuçlarının giderilmesi için kullanılabilir.
 
@@ -41,7 +41,7 @@ Oturum açma kesintisini hakkında ayrıntılı bilgi almak için ikinci yöntem
 Hangi koşullu erişim ilkesinin veya ilkelerinin uygulanacağını ve bunun nedenini nasıl yapabileceğinizi öğrenmek için.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya küresel okuyucu olarak oturum açın.
-1. **Azure Active Directory** > **oturum açma**işlemlerini inceleyin.
+1. **Azure Active Directory**  >  **oturum açma**işlemlerini inceleyin.
 1. Gözden geçirilecek oturum açma için olayı bulun. Gereksiz bilgileri filtrelemek için filtre ve sütun ekleyin veya kaldırın.
    1. Kapsamı daraltmak için filtre ekleyin:
       1. Araştırmanız için özel bir olaylarınızın olduğu **BAĞıNTı kimliği** .

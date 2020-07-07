@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: f2cdaafddb14d8b69fd708e4c89a578b60e53317
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82606883"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Azure Güvenlik kıyaslamaya genel bakış
@@ -46,7 +46,7 @@ Her öneri aşağıdaki bilgileri içerir:
 - **Sorumluluk**: müşterinin veya hizmet sağlayıcının (veya her ikisinin) bu öneriyi uygulamadan sorumlu olup olmadığı. Güvenlik sorumlulukları genel bulutta paylaşılır. Bazı güvenlik denetimleri yalnızca bulut hizmeti sağlayıcısı tarafından kullanılabilir ve bu nedenle sağlayıcı bunların adreslenmesini sağlamaktan sorumludur. Bunlar genel gözlemlerdir: bazı hizmetler için sorumluluk Azure Güvenlik kıyaslaması 'nda listelenenlerden farklı olacaktır. Bu farklılıklar, bireysel hizmet için temel önerilerle açıklanmıştır. 
 - **Ayrıntılar**: önerinin ve nasıl uygulanacağı üzerine kılavuzluk eden bağlantılar için korvaale. Öneri Azure Güvenlik Merkezi tarafından destekleniyorsa, bu bilgiler de listelenecektir.
 
-Ayrıntılı geri bildiriminiz ve etkin katılım ile Azure Güvenlik kıyaslama çabasında hoş geldiniz. Azure Güvenlik kıyaslama ekibinin doğrudan girişini sağlamak istiyorsanız, lütfen formu doldurun [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark).
+Ayrıntılı geri bildiriminiz ve etkin katılım ile Azure Güvenlik kıyaslama çabasında hoş geldiniz. Azure Güvenlik kıyaslama ekibinin doğrudan girişini sağlamak istiyorsanız, lütfen formu doldurun [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark) .
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
