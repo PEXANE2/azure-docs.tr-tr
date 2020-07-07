@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454688"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
@@ -241,7 +241,7 @@ Microsoft Azure Hizmetleri, bekleyen modellerdeki bir veya daha fazla şifreleme
 
 Hizmet olarak altyapı (IaaS) özelliklerinin kullanıldığı tüm müşteriler, Azure disk şifrelemesi aracılığıyla IaaS VM 'Leri ve diskleri için bekleyen şifreleme elde edebilir. Azure disk şifrelemesi hakkında daha fazla bilgi için bkz. [Azure disk şifrelemesi belgeleri](../azure-security-disk-encryption-overview.md).
 
-#### <a name="azure-storage"></a>Azure Storage
+#### <a name="azure-storage"></a>Azure depolama
 
 Tüm Azure depolama hizmetleri (BLOB depolama, kuyruk depolama, tablo depolama ve Azure dosyaları), bekleyen sunucu tarafı şifrelemeyi destekler; Ayrıca, bazı hizmetler müşteri tarafından yönetilen anahtarları ve istemci tarafı şifrelemeyi destekler. 
 
@@ -261,13 +261,13 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 |                                  |                    | **Şifreleme modeli ve anahtar yönetimi** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı**     | **Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**             | **İstemci-yönetilen anahtarı kullanarak istemci tarafı**      |
-| **AI ve Machine Learning**      |                    |                    |                    |
+| **Yapay Zeka ve Makine Öğrenmesi**      |                    |                    |                    |
 | Azure Bilişsel Arama           | Yes                | Yes                | -                  |
 | Azure Bilişsel Hizmetler         | Yes                | Yes                | -                  |
 | Azure Machine Learning           | Yes                | Yes                | -                  |
 | Azure Machine Learning Studio    | Yes                | Önizleme, RSA 2048 bit | -               |
 | Content Moderator                | Yes                | Yes                | -                  |
-| Yüz                             | Yes                | Yes                | -                  |
+| Yüz Tanıma                             | Yes                | Yes                | -                  |
 | Language Understanding           | Yes                | Yes                | -                  |
 | Kişiselleştirme                     | Yes                | Yes                | -                  |
 | Soru-Cevap Oluşturucu                        | Yes                | Yes                | -                  |
@@ -289,15 +289,15 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | **Kapsayıcılar**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Yes                | Yes                | -                  |
 | Container Instances              | Yes                | Yes                | -                  |
-| Container Kayıt Defteri               | Yes                | Yes                | -                  |
+| Container Registry               | Yes                | Yes                | -                  |
 | **İşlem**                      |                    |                    |                    |
-| Virtual Machines                 | Yes                | Evet, RSA 2048 bit  | -                  |
+| Sanal Makineler                 | Yes                | Evet, RSA 2048 bit  | -                  |
 | Sanal makine ölçek kümesi        | Yes                | Evet, RSA 2048 bit  | -                  |
-| SAP HANA                         | Yes                | Evet, RSA 2048 bit  | -                  |
+| SAP HANA                         | Evet                | Evet, RSA 2048 bit  | -                  |
 | App Service                      | Yes                | Yes\*\*            | -                  |
 | Otomasyon                       | Yes                | Yes\*\*            | -                  |
 | Azure İşlevleri                  | Yes                | Yes\*\*            | -                  |
-| Azure Portal                     | Yes                | Yes\*\*            | -                  |
+| Azure Portalı                     | Yes                | Yes\*\*            | -                  |
 | Logic Apps                       | Yes                | Yes                | -                  |
 | Azure Yönetilen Uygulamalar       | Yes                | Yes\*\*            | -                  |
 | Service Bus                      | Yes                | Yes                | -                  |

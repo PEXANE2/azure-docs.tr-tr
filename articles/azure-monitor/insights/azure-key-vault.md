@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455487"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Izleyici 'de Azure Key Vault Analytics çözümü
@@ -50,7 +50,7 @@ Azure Key Vault çözümünü yüklemek ve yapılandırmak için aşağıdaki y�
 8. Tanılama 'nın Log Analytics çalışma alanına kaydedilmesini sağlamak için *Kaydet* ' e tıklayın.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>PowerShell kullanarak Key Vault tanılamayı etkinleştirme
-Aşağıdaki PowerShell betiği, Key Vault için kaynak günlüğünü etkinleştirmek `Set-AzDiagnosticSetting` üzere nasıl kullanılacağına ilişkin bir örnek sağlar:
+Aşağıdaki PowerShell betiği, `Set-AzDiagnosticSetting` Key Vault için kaynak günlüğünü etkinleştirmek üzere nasıl kullanılacağına ilişkin bir örnek sağlar:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -132,10 +132,10 @@ Güncelleştirilmiş çözümü kullanmak için:
 2. [Çözüm Galerisi Azure izleyici çözümlerini ekleme](../../azure-monitor/insights/solutions.md) bölümünde açıklanan işlemi kullanarak Azure Key Vault çözümü etkinleştirin
 3. Yeni veri türünü kullanmak için kaydedilen sorguları, panoları veya uyarıları güncelleştirme
    + Tür şu şekilde değişir: KeyVaults to AzureDiagnostics. Günlük Key Vault filtrelemek için ResourceType öğesini kullanabilirsiniz.
-   + Yerine şunu kullanın `KeyVaults`:`AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Yerine `KeyVaults` şunu kullanın:`AzureDiagnostics | where ResourceType'=="VAULTS"`
    + Alanlar: (alan adları büyük/küçük harfe duyarlıdır)
-   + Adında \_s, \_d veya \_g sonekine sahip olan her alan için, ilk karakteri küçük harf olarak değiştirin
-   + Adında \_o soneki olan herhangi bir alan için, veriler iç içe geçmiş alan adlarına göre tek tek alanlara bölünür. Örneğin, çağıranın UPN 'si bir alanda saklanır`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + \_Adında s, d veya g sonekine sahip olan her alan için \_ \_ , ilk karakteri küçük harf olarak değiştirin
+   + Adında o soneki olan herhangi bir alan için \_ , veriler iç içe geçmiş alan adlarına göre tek tek alanlara bölünür. Örneğin, çağıranın UPN 'si bir alanda saklanır`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + Alan Callerıpaddress, Callerıpaddress olarak değiştirildi
    + RemoteIPCountry alanı artık yok
 4. *Key Vault Analytics (kullanım dışı)* çözümünü kaldırın. PowerShell kullanıyorsanız, şunu kullanın`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`

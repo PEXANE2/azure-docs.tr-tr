@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72793228"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu
 
-Azure Bilişsel Arama, API 'de [OData ifadelerini](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) parametre olarak kullanır. En yaygın olarak, OData ifadeleri `$orderby` ve `$filter` parametreleri için kullanılır. Bu ifadeler, birden çok yan tümce, işlev ve işleç içeren karmaşık olabilir. Ancak, Azure Bilişsel Arama REST API birçok bölümünde Özellik yolları gibi basit OData ifadeleri de kullanılır. Örneğin, yol [ifadeleri, API](index-add-suggesters.md)'de alt alanları, bir [Puanlama işlevini](index-add-scoring-profiles.md), `$select` parametreyi, veya/1 & gt [sorgularında ara](query-lucene-syntax.md)alanları listelemek gibi karmaşık alanların alt alanlarına başvurmak için kullanılır.
+Azure Bilişsel Arama, API 'de [OData ifadelerini](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) parametre olarak kullanır. En yaygın olarak, OData ifadeleri `$orderby` ve parametreleri için kullanılır `$filter` . Bu ifadeler, birden çok yan tümce, işlev ve işleç içeren karmaşık olabilir. Ancak, Azure Bilişsel Arama REST API birçok bölümünde Özellik yolları gibi basit OData ifadeleri de kullanılır. Örneğin, yol ifadeleri, API 'de alt [alanları, bir](index-add-suggesters.md) [Puanlama işlevini](index-add-scoring-profiles.md), parametreyi, veya/1 & gt `$select` [sorgularında ara](query-lucene-syntax.md)alanları listelemek gibi karmaşık alanların alt alanlarına başvurmak için kullanılır.
 
 Bu makalede, bir biçimsel dilbilgisi kullanılarak bu OData ifadelerinin tüm biçimleri açıklanmaktadır. Ayrıca, dilbilgisi görsel olarak araştırmanıza yardımcı olacak [etkileşimli bir diyagram](#syntax-diagram) de vardır.
 
@@ -36,10 +36,10 @@ Bu makalede, bir biçimsel dilbilgisi kullanılarak bu OData ifadelerinin tüm b
 
 Azure Bilişsel Arama tarafından desteklenen bir EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) dilbilgisi kullanarak desteklenen OData dilinin alt kümesini açıklayabilir. Kurallar, en karmaşık ifadelerle başlayarak "yukarıdan aşağı" listelenir ve bunları daha basit ifadelere bölmek için kullanılır. En üstte Azure Bilişsel Arama REST API özgü parametrelere karşılık gelen dilbilgisi kuralları:
 
-- [`$filter`](search-query-odata-filter.md), `filter_expression` kural tarafından tanımlanır.
-- [`$orderby`](search-query-odata-orderby.md), `order_by_expression` kural tarafından tanımlanır.
-- [`$select`](search-query-odata-select.md), `select_expression` kural tarafından tanımlanır.
-- `field_path` Kural tarafından tanımlanan alan yolları. Alan yolları API 'nin tamamında kullanılır. Bir dizinin en üst düzey alanlarına veya bir ya da daha fazla [karmaşık alan](search-howto-complex-data-types.md) öncülerine sahip alt alanlara başvurabilirler.
+- [`$filter`](search-query-odata-filter.md), kural tarafından tanımlanır `filter_expression` .
+- [`$orderby`](search-query-odata-orderby.md), kural tarafından tanımlanır `order_by_expression` .
+- [`$select`](search-query-odata-select.md), kural tarafından tanımlanır `select_expression` .
+- Kural tarafından tanımlanan alan yolları `field_path` . Alan yolları API 'nin tamamında kullanılır. Bir dizinin en üst düzey alanlarına veya bir ya da daha fazla [karmaşık alan](search-howto-complex-data-types.md) öncülerine sahip alt alanlara başvurabilirler.
 
 EBNF, dilbilgisi ve kuralları arasındaki ilişkileri etkileşimli bir şekilde keşfetmenizi sağlayan gözatılabilir bir [sözdizimi diyagramıdır](https://en.wikipedia.org/wiki/Syntax_diagram) .
 

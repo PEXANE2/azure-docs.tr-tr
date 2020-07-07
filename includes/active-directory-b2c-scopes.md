@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 3ebe1ec4c0292a530e5ef2c754e9b002e931300e
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84680329"
 ---
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/) 
@@ -36,4 +36,4 @@ ms.locfileid: "84680329"
 1. **Yayımlanan kapsamları**seçin. Yayımlanan kapsamlar, bir istemci uygulamasına, Web API 'sine belirli izinler vermek için kullanılabilir.
 1. **Kapsam**için girin `demo.read` ve **Açıklama**için girin `Read access to the web API` .
 1. **Kapsam**için girin `demo.write` ve **Açıklama**için girin `Write access to the web API` .
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430896"
 ---
 # <a name="authentication-requests-and-responses"></a>Kimlik doğrulaması, istekler ve yanıtlar
@@ -23,7 +23,7 @@ Azure Key Vault JSON biçimli istekleri ve yanıtları destekler. Azure Key Vaul
 
 Bu konu, Azure Key Vault hizmetinin özelliklerini içerir. Kimlik doğrulama/yetkilendirme ve erişim belirteci alma gibi Azure REST arabirimlerini kullanma hakkında genel bilgi için bkz. [azure REST API başvurusu](https://docs.microsoft.com/rest/api/azure).
 
-## <a name="request-url"></a>İstek URL'si  
+## <a name="request-url"></a>İstek URL’si  
  Anahtar yönetim işlemleri, mevcut anahtar nesnelerinde http DELETE, GET, PATCH, PUT ve HTTP POST ve şifreleme işlemlerini kullanır. Belirli HTTP fiillerini destekleyemediği istemciler, amaçlanan fiili belirtmek için X-HTTP-REQUEST üst bilgisini kullanarak da HTTP POST kullanabilir. Normalde bir gövde gerektirmeyen istekler HTTP POST kullanılırken boş bir gövde içermelidir, örneğin DELETE yerine POST kullanılıyor.  
 
  Azure Key Vault nesneleriyle çalışmak için aşağıdaki örnek URL 'Ler verilmiştir:  
@@ -41,7 +41,7 @@ Bu konu, Azure Key Vault hizmetinin özelliklerini içerir. Kimlik doğrulama/ye
   Anahtarlar her zaman/Keys yolu altında depolanır, gizlilikler her zaman/gizlilikler yolu altında depolanır.  
 
 ## <a name="api-version"></a>API Sürümü  
- Azure Key Vault hizmeti, alt düzey istemcilerle uyumluluk sağlamak için protokol sürümü oluşturmayı destekler, ancak tüm yetenekler bu istemciler için kullanılabilir olmaz. İstemcilerin, desteklediği protokol `api-version` sürümünü belirtmek için sorgu dizesi parametresini kullanması gerekir, çünkü varsayılan yoktur.  
+ Azure Key Vault hizmeti, alt düzey istemcilerle uyumluluk sağlamak için protokol sürümü oluşturmayı destekler, ancak tüm yetenekler bu istemciler için kullanılabilir olmaz. İstemcilerin `api-version` , desteklediği protokol sürümünü belirtmek için sorgu dizesi parametresini kullanması gerekir, çünkü varsayılan yoktur.  
 
  Azure Key Vault protokol sürümleri, {YYYY} kullanarak bir tarih numaralandırma şemasını izler. {MM}. {DD} biçimi.  
 
@@ -113,5 +113,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   Yetkilendirme: istek için bir erişim belirteci almak üzere kullanılabilecek OAuth2 yetkilendirme hizmetinin adresi.  
 
--   Kaynak: yetkilendirme isteğinde kullanılacak kaynağın adı (`https://vault.azure.net`).  
+-   Kaynak: yetkilendirme isteğinde kullanılacak kaynağın adı ( `https://vault.azure.net` ).  
 

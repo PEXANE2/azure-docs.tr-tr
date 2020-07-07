@@ -3,16 +3,16 @@ title: 'Hızlı başlangıç: Azure CLI ile bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure CLı kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7d144edca0794679e67358ff820e1508736ba723
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613671"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969677"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure Blueprint tanımlama ve atama
 
-Şema oluşturma ve atama süreçlerini anlamak, ortak tutarlılık desenlerini tanımlamanızı ve Resource Manager şablonlarını, ilkelerini, güvenlik düzeyini ve daha fazlasını temel alan yeniden kullanılabilir ve hızla dağıtılabilir yapılandırmalar geliştirmenizi sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
+Şemaları oluşturmayı ve atamayı öğrenmek, ortak desenlerin tanımını Azure Resource Manager şablonları (ARM şablonları), ilke, güvenlik ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmeye olanak sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -46,14 +46,14 @@ Bu uzantı; [Windows 10 üzerinde bash](/windows/wsl/install-win10), [Cloud Shel
 
 ## <a name="create-a-blueprint"></a>Şema oluşturma
 
-Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. Abonelik için rol ve ilke atamalarını yapılandırmak üzere 'MyBlueprint' adlı bir şema oluşturacağız. Ardından bir kaynak grubu ekleyecek ve bu kaynak grubuna da bir Resource Manager şablonu ve rol ataması ekleyeceğiz.
+Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. Abonelik için rol ve ilke atamalarını yapılandırmak üzere 'MyBlueprint' adlı bir şema oluşturacağız. Daha sonra kaynak grubunda bir kaynak grubu, ARM şablonu ve rol ataması ekleyeceğiz.
 
 > [!NOTE]
 > Azure CLI kullanırken, öncelikle _şema_ nesnesi oluşturulur. Eklenecek ve parametreye sahip olan her _yapıt_ için parametrelerin önceden ilk _şema_ içinde tanımlanması gerekir.
 
 1. İlk _şema_ nesnesini oluşturun. **Parameters** parametresi, şema düzeyindeki tüm parametreleri IÇEREN bir JSON dosyası alır. Parametreler atama sırasında ayarlanır ve sonraki adımlarda eklenecek yapıtlar tarafından kullanılır.
 
-   - JSON dosyası-blueprintparms. JSON
+   - JSON dosyası-blueprintparms.json
 
      ```json
      {
@@ -115,7 +115,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      ```
 
      > [!NOTE]
-     > Şema tanımlarınızı içeri aktarırken _şema. JSON_ dosya adını kullanın.
+     > Şema tanımlarınızı içeri aktarırken _blueprint.js_ dosya adını kullanın.
      > Bu dosya adı [az şema Import](/cli/azure/ext/blueprint/blueprint#ext-blueprint-az-blueprint-import)çağrılırken kullanılır.
 
      Şema nesnesi varsayılan olarak varsayılan abonelikte oluşturulur. Yönetim grubunu belirtmek için, **ManagementGroup**parametresini kullanın. Aboneliği belirtmek için, parametre **aboneliğini**kullanın.
@@ -193,9 +193,9 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
         --parameters artifacts\policyStorageTags.json
      ```
 
-1. Kaynak grubuna şablon ekleyin. Bir Kaynak Yöneticisi şablonu için **şablon** parametresi, ŞABLONUN normal JSON bileşenlerini içerir. Şablon aynı zamanda **storageAccountType**, **tagName** ve **tagValue** şema parametrelerini şablona geçirerek hepsini yeniden kullanır. Şema parametreleri parametre **parametreleri** kullanılarak ve şablon içinde, değer eklemek için anahtar-değer ÇIFTININ kullanıldığı JSON içinde kullanılabilir. Şema ve Template parametre adları aynı olabilir.
+1. Kaynak grubuna şablon ekleyin. ARM şablonunun **şablon** parametresi, ŞABLONUN normal JSON bileşenlerini içerir. Şablon aynı zamanda **storageAccountType**, **tagName** ve **tagValue** şema parametrelerini şablona geçirerek hepsini yeniden kullanır. Şema parametreleri parametre **parametreleri** kullanılarak ve şablon içinde, değer eklemek için anahtar-değer ÇIFTININ kullanıldığı JSON içinde kullanılabilir. Şema ve Template parametre adları aynı olabilir.
 
-   - JSON Azure Resource Manager şablon dosyası-Artifacts\templatestorage.exe JSON
+   - JSON ARM şablon dosyası-artifacts\templateStorage.json
 
      ```json
      {
@@ -249,7 +249,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      }
      ```
 
-   - JSON Azure Resource Manager şablonu parametre dosyası-Artifacts\templatestorageparams.exe JSON
+   - JSON ARM şablon parametre dosyası-artifacts\templateStorageParams.json
 
      ```json
      {
@@ -303,7 +303,7 @@ az blueprint publish --blueprint-name 'MyBlueprint' --version '{BlueprintVersion
 
 1. Bir aboneliğe atayarak şema dağıtımını çalıştırın. **Katkıda bulunanlar** ve **sahipler** parametreleri, sorumluların bir dizi tanıtıcısından rol ataması verilmesini gerektirdiğinden, kendi kullanıcılarınızın, gruplarınız veya hizmet sorumluları Için **parametrelerde** kullanmak üzere objectıds 'yi toplamak için [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) kullanın.
 
-   - JSON dosyası-blueprintAssignment. JSON
+   - JSON dosyası-blueprintAssignment.json
 
      ```json
      {

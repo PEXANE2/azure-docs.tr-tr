@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
 ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202222"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
@@ -104,7 +104,7 @@ Bu bilgiler, özel bir tür uzunluğu-değer (TLV) vektörü kullanılarak aşa�
 
 Özel TLV ayrıntıları:
 
-|Alan |Uzunluk (sekizli)  |Açıklama  |
+|Alan |Uzunluk (sekizli)  |Description  |
 |---------|---------|----------|
 |Tür  |1        |PP2_TYPE_AZURE (0xEE)|
 |Uzunluk  |2      |Değer uzunluğu|

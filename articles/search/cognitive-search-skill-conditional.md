@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792039"
 ---
 # <a name="conditional-cognitive-skill"></a>Koşullu Bilişsel Beceri
@@ -72,7 +72,7 @@ Aşağıdaki öğeler bir ifadenin geçerli değerleridir:
         "= !true"
     ```
 
--   Sayısal işleçler (+,-, \*,/,%) kullanan ifadeler <br/>
+-   Sayısal işleçler (+,-, \* ,/,%) kullanan ifadeler <br/>
     Örnekler: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -85,11 +85,11 @@ Koşullu beceri değerlendirmeyi desteklediğinden, bunu küçük dönüştürme
 ## <a name="skill-inputs"></a>Beceri girişleri
 Girişler büyük/küçük harfe duyarlıdır.
 
-| Girdi   | Açıklama |
+| Giriş   | Description |
 |-------------|-------------|
-| koşul   | Bu giriş, değerlendirilecek koşulu temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Bu koşul, bir Boole değeri (*true* veya *false*) olarak değerlendirilmelidir.   <br/>  Örnekler: <br/> "= true" <br/> "= $ (/Document/Language) = = ' fr '" <br/> "= $ (/Document/Pages/\*/Language) = = $ (/Document/expectedLanguage)" <br/> |
-| whenTrue    | Bu giriş, koşul *true*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Sabitler dizeleri tek tırnak işaretleri (' ve ') olarak döndürülmelidir. <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/> |
-| whenFalse   | Bu giriş, koşul *false*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/>
+| koşul   | Bu giriş, değerlendirilecek koşulu temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Bu koşul, bir Boole değeri (*true* veya *false*) olarak değerlendirilmelidir.   <br/>  Örnekler: <br/> "= true" <br/> "= $ (/Document/Language) = = ' fr '" <br/> "= $ (/Document/Pages/ \* /Language) = = $ (/Document/expectedLanguage)" <br/> |
+| whenTrue    | Bu giriş, koşul *true*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Sabitler dizeleri tek tırnak işaretleri (' ve ') olarak döndürülmelidir. <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |
+| whenFalse   | Bu giriş, koşul *false*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/>
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 Yalnızca "çıktı" olarak adlandırılan tek bir çıktı vardır. Koşul false ise *whenfalse* veya koşul true Ise *whentrue* ise value değerini döndürür.

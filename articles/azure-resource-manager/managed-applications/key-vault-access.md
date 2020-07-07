@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458292"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Azure yönetilen uygulamalar dağıtıldığında erişim Key Vault gizliliği
@@ -30,13 +30,13 @@ Bu makalede, Key Vault yönetilen uygulamalarla çalışacak şekilde nasıl yap
 
    ![Gelişmiş erişim ilkelerini göster](./media/key-vault-access/advanced.png)
 
-1. **Şablon dağıtımı için Azure Resource Manager erişimi etkinleştir**' i seçin. Ardından **Kaydet**’i seçin.
+1. **Şablon dağıtımı için Azure Resource Manager erişimi etkinleştir**' i seçin. Sonra **Kaydet**' i seçin.
 
    ![Şablon dağıtımını etkinleştir](./media/key-vault-access/enable-template.png)
 
 ## <a name="add-service-as-contributor"></a>Hizmet katkıda bulunan olarak ekle
 
-1. **Erişim denetimi (IAM)** seçeneğini belirleyin.
+1. **Erişim denetimi (IAM)** öğesini seçin.
 
    ![Erişim denetimi seçin](./media/key-vault-access/access-control.png)
 

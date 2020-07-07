@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478974"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
@@ -20,7 +20,7 @@ Fiziksel sunucuların olağanüstü durum kurtarması için Azure 'a [Azure Site
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önkoşulları özetler.
 
@@ -35,7 +35,7 @@ Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önk
 | İşletim sistemi yerel ayarı | İngilizce (ABD)|
 | VMware vSphere PowerCLI sürümü | Gerekli değil|
 | Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V |
-| Grup ilkeleri| Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelle <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelle <br> -Dosya ekleri için güven mantığı <br> -Betik yürütmeyi aç <br> [Daha fazlasını öğrenin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+| Grup ilkeleri| Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelle <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelle <br> -Dosya ekleri için güven mantığı <br> -Betik yürütmeyi aç <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | -Önceden var olan varsayılan Web sitesi yok <br> - [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir  <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor<br>|
 | NIC türü | VMXNET3 (bir VMware sanal makinesi olarak dağıtıldığında) |
 | IP adresi türü | Statik |
@@ -47,7 +47,7 @@ Tablo, şirket içi yapılandırma sunucusu makinesini dağıtmaya yönelik önk
 Yapılandırma sunucusu yükleme dosyasının en son sürümü Site Recovery portalında kullanılabilir. Ayrıca, doğrudan [Microsoft Indirme merkezi](https://aka.ms/unifiedsetup)' nden indirilebilir.
 
 1. Azure portal oturum açın ve kurtarma hizmetleri kasanıza gidin.
-2. **Site Recovery altyapı** > **yapılandırma sunucularına** gidin (VMware & fiziksel makineleri için altında).
+2. **Site Recovery altyapı**  >  **yapılandırma sunucularına** gidin (VMware & fiziksel makineleri için altında).
 3. **+ Sunucular** düğmesine tıklayın.
 4. **Sunucu Ekle** sayfasında, kayıt anahtarını Indirmek için İndir düğmesine tıklayın. Configuration Server yüklemesi sırasında Azure Site Recovery hizmetine kaydetmek için bu anahtara ihtiyacınız vardır.
 5. Yapılandırma sunucusunun en son sürümünü indirmek için **Microsoft Azure Site Recovery Birleşik kurulum bağlantısını indirin** bağlantısına tıklayın.
@@ -71,7 +71,7 @@ Yapılandırma sunucusu yükleme dosyasının en son sürümü Site Recovery por
      ![Güvenlik duvarı](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. **Önkoşul Denetimi** menüsünde Kurulum, yüklemenin çalışabildiğinden emin olmak üzere bir denetim gerçekleştirir. **Genel saat eşitleme denetimi** hakkında bir uyarı görünürse, sistem saatindeki zamanın (**Tarih ve Saat** ayarları) saat dilimiyle aynı olduğunu doğrulayın.
 
-    ![Ön koşullar](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![Önkoşullar](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. **MySQL Yapılandırması** menüsünde, yüklü MySQL sunucu örneğinde oturum açmak için kimlik bilgileri oluşturun.
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
@@ -87,7 +87,7 @@ Yapılandırma sunucusu yükleme dosyasının en son sürümü Site Recovery por
 11. **Özet** alanındaki bilgileri gözden geçirin ve **Yükle**’ye tıklayın. Yükleme tamamlandığında bir parola oluşturulur. Çoğaltmayı etkinleştirdiğinizde bu parola gerekli olacaktır; bu yüzden kopyalayıp güvenli bir yerde saklayın.
 
 
-Kayıt tamamlandıktan sonra, sunucu kasadaki **Ayarlar** > **sunucular** dikey penceresinde görüntülenir.
+Kayıt tamamlandıktan sonra, sunucu kasadaki **Ayarlar**  >  **sunucular** dikey penceresinde görüntülenir.
 
 
 ## <a name="install-from-the-command-line"></a>Komut satırından yükler
@@ -108,7 +108,7 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 
 ### <a name="parameters"></a>Parametreler
 
-|Parametre Adı| Tür | Açıklama| Değerler|
+|Parametre Adı| Tür | Description| Değerler|
 |-|-|-|-|
 | /ServerMode|Gerekli|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
 |/InstallLocation|Gerekli|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
@@ -151,7 +151,7 @@ ProxyPassword="Password"
 Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değiştirebilirsiniz:
 
 1. Yapılandırma sunucusunda oturum açın.
-2. Masaüstünüzdeki kısayolu kullanarak Cspsconfigtool. exe ' yi başlatın.
+2. Masaüstünüzdeki kısayolu kullanarak cspsconfigtool.exe başlatın.
 3. **Kasa kaydı** sekmesine tıklayın.
 4. Portaldan yeni bir kasa kayıt dosyası indirin ve araca giriş olarak sağlayın.
 
@@ -172,7 +172,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Bir yapılandırma sunucusunu aynı kasaya yeniden kaydetme
 1. Yapılandırma sunucunuzda oturum açın.
-2. Masaüstünüzdeki kısayolu kullanarak Cspsconfigtool. exe ' yi başlatın.
+2. Masaüstünüzdeki kısayolu kullanarak cspsconfigtool.exe başlatın.
 3. **Kasa kaydı** sekmesine tıklayın.
 4. Portaldan yeni bir kayıt dosyası indirin ve araca giriş olarak sağlayın.
       ![kayıt-yapılandırma-sunucu](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
@@ -202,7 +202,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
     reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
     net stop dra
     ```
-3. Masaüstünüzdeki kısayolu kullanarak Cspsconfigtool. exe ' yi başlatın.
+3. Masaüstünüzdeki kısayolu kullanarak cspsconfigtool.exe başlatın.
 4. **Kasa kaydı** sekmesine tıklayın.
 5. Portaldan yeni bir kayıt dosyası indirin ve araca giriş olarak sağlayın.
 6. Proxy sunucusu ayrıntılarını girip **Kaydet** düğmesine tıklayın.  
@@ -217,7 +217,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
 
 ## <a name="upgrade-a-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
-Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örneğin:
+Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örnek:
 
 - 9,7, 9,8, 9,9 veya 9,10 çalıştırıyorsanız, doğrudan 9,11 'e yükseltebilirsiniz.
 - 9,6 veya önceki bir sürümünü çalıştırıyorsanız ve 9,11 sürümüne yükseltmek istiyorsanız, önce sürüm 9,7 ' ye yükseltmeniz gerekir. 9,11 öncesi.
@@ -242,7 +242,7 @@ Sunucuyu aşağıdaki gibi yükseltin:
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>Yapılandırma sunucusunu Azure portal Sil
-1. Azure Portal, kasa menüsündeki **altyapı** > **yapılandırma sunucularına** Site Recovery gidin.
+1. Azure Portal, kasa menüsündeki **altyapı**  >  **yapılandırma sunucularına** Site Recovery gidin.
 2. Yetkisini kaldırmak istediğiniz yapılandırma sunucusuna tıklayın.
 3. Yapılandırma sunucusunun ayrıntılar sayfasında **Sil** düğmesine tıklayın.
 4. Sunucu silme işlemini onaylamak için **Evet** ' e tıklayın.
@@ -303,7 +303,7 @@ Yapılandırma sunucusunda, Mobility hizmetinin, işlem sunucularının ve buna 
 
 ### <a name="renew-the-certificate"></a>Sertifikayı Yenile
 
-1. Kasada, **Site Recovery altyapı** > **yapılandırma sunucusu**' nu açın ve gerekli yapılandırma sunucusuna tıklayın.
+1. Kasada, **Site Recovery altyapı**  >  **yapılandırma sunucusu**' nu açın ve gerekli yapılandırma sunucusuna tıklayın.
 2. Süre sonu tarihi **yapılandırma sunucusu sistem durumu** altında görüntülenir
 3. **Sertifikaları yenile**' ye tıklayın. 
 

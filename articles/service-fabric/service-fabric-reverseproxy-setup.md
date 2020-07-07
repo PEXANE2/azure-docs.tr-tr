@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80476679"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy ayarlama ve yapılandırma
@@ -154,7 +154,7 @@ Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy 'yi aşağıdaki adım
 
 ## <a name="enable-reverse-proxy-on-standalone-clusters"></a>Tek başına kümelerde ters proxy 'yi etkinleştir
 
-Tek başına kümeler için, ClusterConfig. json dosyasında ters proxy 'yi etkinleştirirsiniz. Küme oluşturulurken ters proxy 'yi etkinleştirebilir veya var olan bir kümenin yapılandırmasını yükselterek. ClusterConfig. JSON dosyalarında kullanılabilen ayarlar hakkında daha fazla bilgi edinmek için bkz. [tek başına küme ayarları](./service-fabric-cluster-manifest.md).
+Tek başına kümeler için, dosyadaki ClusterConfig.jsters proxy 'yi etkinleştirirsiniz. Küme oluşturulurken ters proxy 'yi etkinleştirebilir veya var olan bir kümenin yapılandırmasını yükselterek. Dosyalar üzerinde ClusterConfig.jsbulunan ayarlar hakkında daha fazla bilgi edinmek için bkz. [tek başına küme ayarları](./service-fabric-cluster-manifest.md).
 
 Aşağıdaki adımlarda, ters proxy 'yi etkinleştirmek için kullanılacak ayarlar ve isteğe bağlı olarak, bir X. 509.440 sertifikasıyla ters proxy 'yi güvenli hale getirmek için kullanabileceğiniz ayarlar gösterilmektedir. 
 
@@ -221,7 +221,7 @@ Aşağıdaki adımlarda, ters proxy 'yi etkinleştirmek için kullanılacak ayar
 
    Tek başına bir küme için sertifika yapılandırma ve yönetme hakkında daha fazla bilgi edinmek ve ters proxy 'yi güvenli hale getirmek için kullanılan sertifikaları yapılandırma hakkında daha fazla ayrıntı için bkz. [x509 sertifika tabanlı güvenlik](./service-fabric-windows-cluster-x509-security.md).
 
-Ters proxy 'yi etkinleştirmek için ClusterConfig. JSON dosyanızı değiştirdikten sonra, değişiklikleri kümenize göndermek için [küme yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md) bölümündeki yönergeleri izleyin.
+Ters proxy 'yi etkinleştirmek için dosyadaki ClusterConfig.jsdeğiştirdikten sonra, değişiklikleri kümenize göndermek için [küme yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md) bölümündeki yönergeleri izleyin.
 
 
 ## <a name="expose-reverse-proxy-on-a-public-port-through-azure-load-balancer"></a>Azure Load Balancer aracılığıyla, genel bir bağlantı noktasında ters proxy kullanıma sunma
@@ -300,7 +300,7 @@ Aşağıdaki JSON, [Azure Resource Manager şablonları aracılığıyla ters pr
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Doku ayarlarını kullanarak ters proxy davranışını özelleştirme
 
-Ters proxy 'nin davranışını Azure 'da barındırılan kümeler için Kaynak Yöneticisi şablonundaki doku ayarları aracılığıyla veya tek başına kümeler için ClusterConfig. json dosyasında özelleştirebilirsiniz. Ters proxy davranışını denetleyen ayarlar, küme **özellikleri** bölümünde **Fabricsettings** bölümündeki [**applicationgateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) bölümünde bulunur. 
+Ters proxy 'nin davranışını Azure 'da barındırılan kümeler için Kaynak Yöneticisi şablonundaki doku ayarları aracılığıyla veya tek başına kümeler için ClusterConfig.json dosyasında özelleştirebilirsiniz. Ters proxy davranışını denetleyen ayarlar, küme **özellikleri** bölümünde **Fabricsettings** bölümündeki [**applicationgateway/http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) bölümünde bulunur. 
 
 Örneğin, **DefaultHttpRequestTimeout** değerini, ters proxy 'ye yönelik isteklerin zaman AŞıMıNı aşağıdaki JSON 'daki gibi 180 saniyeye ayarlanacak şekilde ayarlayabilirsiniz:
 

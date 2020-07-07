@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431481"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>PowerShell betiği ile Azure SYNAPSE Studio (Önizleme) bağlantı sorunlarını tanılama
@@ -29,7 +29,7 @@ Azure SYNAPSE Studio (Önizleme), bir Web API uç noktası kümesine düzgün ş
 
 Aşağıdaki bağlantıya sağ tıklayın ve "hedefi farklı kaydet" e tıklayın:
 
-- [Test-AzureSynapse. ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
+- [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 Alternatif olarak, bağlantıyı doğrudan açabilir ve açılan betik dosyasını kaydedebilirsiniz. Daha sonra değiştireolabileceğinden, yukarıdaki bağlantının adresini kaydetmeyin.
 
@@ -49,12 +49,12 @@ Sonda, bir tanılama özeti gösterilir. BILGISAYARıNıZ bir veya daha fazla u�
 
 ![Tanılama özetini gözden geçir](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
 
-Ayrıca, bu oturum için bir tanılama günlük dosyası, sorun giderme betiği ile aynı klasörde oluşturulur. Konumu "genel ipuçları" bölümünde (`D:\TestAzureSynapse_2020....log`) gösterilir. Gerekirse bu dosyayı teknik desteğe gönderebilirsiniz.
+Ayrıca, bu oturum için bir tanılama günlük dosyası, sorun giderme betiği ile aynı klasörde oluşturulur. Konumu "genel ipuçları" bölümünde ( `D:\TestAzureSynapse_2020....log` ) gösterilir. Gerekirse bu dosyayı teknik desteğe gönderebilirsiniz.
 
 Bir ağ yöneticisiyseniz ve Azure SYNAPSE Studio için güvenlik duvarı yapılandırmanızı ayarlarsanız, "Özet" bölümünün üzerinde gösterilen teknik ayrıntılar size yardımcı olabilir.
 
 * "Geçti" ile işaretlenen tüm test öğeleri (istekler), HTTP durum kodundan bağımsız olarak bağlantı testlerini geçti demektir.
- Başarısız istekler için, nedeni, veya `NamedResolutionFailure` `ConnectFailure`gibi sarı renkle gösterilir. Bu nedenler, ağ ortamınızda yanlış yapılandırma olup olmadığını belirlemenize yardımcı olabilir.
+ Başarısız istekler için, nedeni, veya gibi sarı renkle gösterilir `NamedResolutionFailure` `ConnectFailure` . Bu nedenler, ağ ortamınızda yanlış yapılandırma olup olmadığını belirlemenize yardımcı olabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

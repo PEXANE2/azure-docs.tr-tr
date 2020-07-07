@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431923"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0-sürüm notları ve geçiş kılavuzu
@@ -36,7 +36,7 @@ Key Vault sertifikaları x509 sertifikalarını yönetir ve aşağıdaki davran�
 * **.NET Framework 4.5.2** , Azure Key Vault .net kitaplığının 2,0 sürümü tarafından desteklenir
 * **.NET Standard 1,4** , Azure Key Vault .net kitaplığının 2,0 sürümü tarafından destekleniyor
 
-## <a name="namespaces"></a>Ad Alanları
+## <a name="namespaces"></a>Ad alanları
 
 * **Modeller** için ad alanı **Microsoft. Azure. Keykasasından** **Microsoft. Azure. keykasa. modellerle**değiştirilmiştir.
 * **Microsoft. Azure. Keykasası. Internal** ad alanı bırakılır.
@@ -49,15 +49,15 @@ Key Vault sertifikaları x509 sertifikalarını yönetir ve aşağıdaki davran�
 
 * *Gizli anahtar* , *secretdemeti* olarak değiştirildi
 * *Sözlük* *IDictionary* olarak değiştirildi
-* *Liste\<T>, dize [],* *ılist\<T* olarak değiştirildi>
+* *List \<T> , String [],* *IList \<T> * olarak değiştirildi
 * *Nextlist* , *NextPageLink* olarak değiştirildi
 
 ## <a name="return-types"></a>Dönüş türleri
 
-* **Keylist** ve **Secrelıst** artık *Listkeysresponsemessage* yerine *Ipage\<T>* döndürüyor
+* **Keylist** ve **Secrelıst** artık *Listkeysresponsemessage* yerine *Ipage \<T> * döndürüyor
 * Oluşturulan **Backupkeyasync** artık *değer* (yedek blob) içeren *backupkeyresult*öğesini döndürüyor. Daha önce, yöntemi sarmalanmış ve yalnızca değeri döndürdü.
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 
 * *Keyvaultclientexception* değeri *Keyvaulterrorexception* olarak değiştirildi
 * Hizmet hatası özel durumdan değiştirildi *. * *Özel durum hatası. Body. Error. Message*.

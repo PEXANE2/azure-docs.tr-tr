@@ -4,10 +4,10 @@ description: Azure hizmetlerine erişmek için Azure Service Fabric uygulama kod
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461574"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinden yararlanma
@@ -48,12 +48,12 @@ GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-0
 ```
 burada:
 
-| Öğe | Açıklama |
+| Öğe | Description |
 | ------- | ----------- |
 | `GET` | Uç noktadan veri almak istediğinizi gösteren HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | IDENTITY_ENDPOINT ortam değişkeni aracılığıyla sunulan Service Fabric uygulamalar için yönetilen kimlik uç noktası. |
-| `api-version` | Yönetilen kimlik belirteci hizmetinin API sürümünü belirten bir sorgu dizesi parametresi; Şu anda kabul edilen tek değer `2019-07-01-preview`, ve değiştirilebilir. |
-| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Bu, verilen belirtecin `aud` (hedef kitle) talebi olarak yansıtılacaktır. Bu örnek, bir uygulama KIMLIĞI URI 'SI https:\//vault.azure.net/olan Azure Key Vault erişmek için bir belirteç ister. |
+| `api-version` | Yönetilen kimlik belirteci hizmetinin API sürümünü belirten bir sorgu dizesi parametresi; Şu anda kabul edilen tek değer `2019-07-01-preview` , ve değiştirilebilir. |
+| `resource` | Hedef kaynağın uygulama KIMLIĞI URI 'sini gösteren bir sorgu dizesi parametresi. Bu, `aud` verilen belirtecin (hedef kitle) talebi olarak yansıtılacaktır. Bu örnek, bir uygulama KIMLIĞI URI 'SI https:/vault.azure.net/olan Azure Key Vault erişmek için bir belirteç ister \/ . |
 | `Secret` | Çağıranın kimliğini doğrulamak için Service Fabric Hizmetleri için Service Fabric yönetilen kimlik belirteci hizmeti için gerekli olan bir HTTP istek üst bilgisi alanı. Bu değer, IDENTITY_HEADER ortam değişkeni aracılığıyla SF çalışma zamanı tarafından sağlanır. |
 
 
@@ -70,12 +70,12 @@ Content-Type: application/json
 ```
 burada:
 
-| Öğe | Açıklama |
+| Öğe | Description |
 | ------- | ----------- |
 | `token_type` | Belirtecin türü; Bu durumda, bu belirtecin sunucu (' taşıyıcı ') belirtecin amaçlanan konusu olduğu anlamına gelen bir "taşıyıcı" erişim belirteci. |
 | `access_token` | İstenen erişim belirteci. Güvenli bir REST API çağrılırken, belirteç `Authorization` istek üst bilgisi alanına bir "taşıyıcı" belirteci olarak katıştırılır ve bu da API 'nin çağıranın kimliğini doğrulamasına izin verir. | 
-| `expires_on` | Erişim belirtecinin süre sonu zaman damgası; "1970-01-01T0:0: 0Z UTC" değerinden saniye sayısı olarak gösterilir ve belirtecin `exp` talebine karşılık gelir. Bu durumda, belirtecin süresi 2019 ' de dolar-08-08T06:10:11 + 00:00 (RFC 3339 ' de)|
-| `resource` | İsteğin `resource` sorgu dizesi parametresi aracılığıyla belirtilen erişim belirtecinin verildiği kaynak; belirtecin ' AUD ' talebine karşılık gelir. |
+| `expires_on` | Erişim belirtecinin süre sonu zaman damgası; "1970-01-01T0:0: 0Z UTC" değerinden saniye sayısı olarak gösterilir ve belirtecin talebine karşılık gelir `exp` . Bu durumda, belirtecin süresi 2019 ' de dolar-08-08T06:10:11 + 00:00 (RFC 3339 ' de)|
+| `resource` | İsteğin sorgu dizesi parametresi aracılığıyla belirtilen erişim belirtecinin verildiği kaynak `resource` ; belirtecin ' AUD ' talebine karşılık gelir. |
 
 
 ## <a name="acquiring-an-access-token-using-c"></a>C kullanarak erişim belirteci edinme #
@@ -332,7 +332,7 @@ HTTP yanıt üst bilgisinin ' durum kodu ' alanı, isteğin başarı durumunu be
 
 Bir hata oluşursa, karşılık gelen HTTP yanıt gövdesi hata ayrıntılarına sahip bir JSON nesnesi içerir:
 
-| Öğe | Açıklama |
+| Öğe | Description |
 | ------- | ----------- |
 | kod | Hata kodu. |
 | correlationId | Hata ayıklama için kullanılabilen bir bağıntı KIMLIĞI. |

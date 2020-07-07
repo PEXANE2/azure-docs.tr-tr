@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72299997"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure tablo depolama ve Visual Studio’ya bağlı hizmetleri kullanmaya başlama (bulut hizmeti projeleri)
@@ -28,7 +28,7 @@ Bu makalede, Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullana
 
 Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Hizmet, Azure bulutu içinden ve dışından kimliği doğrulanmış çağrıları kabul eden bir NoSQL veri deposu olur. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.
 
-Başlamak için önce depolama hesabınızda bir tablo oluşturmanız gerekir. Kodda bir Azure tablosu oluşturmayı ve ayrıca tablo varlıklarını ekleme, değiştirme, okuma ve okuma gibi temel tablo ve varlık işlemlerini gerçekleştirmeyi göstereceğiz. Örnekler C\# koduna yazılır ve [.NET için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
+Başlamak için önce depolama hesabınızda bir tablo oluşturmanız gerekir. Kodda bir Azure tablosu oluşturmayı ve ayrıca tablo varlıklarını ekleme, değiştirme, okuma ve okuma gibi temel tablo ve varlık işlemlerini gerçekleştirmeyi göstereceğiz. Örnekler C \# koduna yazılır ve [.net için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
 
 **Note:** Azure depolama 'ya çağrı gerçekleştiren bazı API 'Ler zaman uyumsuzdur. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](https://msdn.microsoft.com/library/hh191443.aspx) . Aşağıdaki kod zaman uyumsuz programlama yöntemlerinin kullanıldığını varsayar.
 
@@ -89,7 +89,7 @@ Tabloya bir varlık eklemek için varlığınızın özelliklerini tanımlayan b
         public string PhoneNumber { get; set; }
     }
 
-Varlıklar ile ilgili tablo işlemleri, daha önce "koddaki erişim tabloları" içinde oluşturduğunuz **Cloudtable** nesnesi kullanılarak yapılır. **Tableoperation** nesnesi yapılacak işlemi temsil eder. Aşağıdaki kod örneği, **Cloudtable** nesnesinin ve **customerentity** nesnesinin nasıl oluşturulduğunu gösterir. İşlemi hazırlamak için, müşteri varlığını tabloya eklemek üzere bir **Tableoperation** oluşturulur. Son olarak, işlem **Cloudtable. ExecuteAsync**çağrılarak yürütülür.
+Varlıklar ile ilgili tablo işlemleri, daha önce "koddaki erişim tabloları" içinde oluşturduğunuz **Cloudtable** nesnesi kullanılarak yapılır. **Tableoperation** nesnesi yapılacak işlemi temsil eder. Aşağıdaki kod örneği, **Cloudtable** nesnesinin ve **customerentity** nesnesinin nasıl oluşturulduğunu gösterir. İşlemi hazırlamak için, müşteri varlığını tabloya eklemek üzere bir **Tableoperation** oluşturulur. Son olarak, işlem **CloudTable.ExecuteAsync**çağırarak yürütülür.
 
     // Create a new customer entity.
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
@@ -104,7 +104,7 @@ Varlıklar ile ilgili tablo işlemleri, daha önce "koddaki erişim tabloları" 
 
 
 ## <a name="insert-a-batch-of-entities"></a>Toplu işlem varlık yerleştirme
-Tek bir yazma işleminde bir tabloya birden çok varlık ekleyebilirsiniz. Aşağıdaki kod örneği iki varlık nesnesi oluşturur ("Jeff Smith" ve "Ben Smith"), bunları Insert metodunu kullanarak bir **Tablebatchoperation** nesnesine ekler ve sonra **Cloudtable. executebatchasync**çağırarak işlemi başlatır.
+Tek bir yazma işleminde bir tabloya birden çok varlık ekleyebilirsiniz. Aşağıdaki kod örneği iki varlık nesnesi oluşturur ("Jeff Smith" ve "Ben Smith"), bunları Insert metodunu kullanarak bir **Tablebatchoperation** nesnesine ekler ve sonra **CloudTable.ExecuteBatchAsync**öğesini çağırarak işlemi başlatır.
 
     // Create the batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();

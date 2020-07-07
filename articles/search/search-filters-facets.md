@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792888"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir model filtresi oluşturma 
@@ -36,24 +36,24 @@ Modeller dinamiktir ve sorgu üzerinde döndürülür. Arama yanıtları, sonuç
 
 Modeller, tek değer alanları ve koleksiyonlar üzerinden hesaplanabilir. Çok yönlü gezinmede en iyi şekilde çalışan alanlar düşük kardinalite sahiptir: arama corpminizdeki belgeleri (örneğin, bir renk, ülke/bölge veya marka adı) tekrarlayan çok az sayıda benzersiz değer. 
 
-`facetable` Özniteliği öğesini olarak `true`ayarlayarak, dizin oluşturduğunuzda alan temelinde, her zaman bir alan temelinde etkinleştirilir. Ayrıca, arama uygulamanızın, son `filterable` kullanıcının seçtiği `true` modellerle ilgili alanlara filtre yapabilmesi için, bu tür alanlar için özniteliğini genellikle olarak ayarlamanız gerekir. 
+Özniteliği öğesini olarak ayarlayarak, dizin oluşturduğunuzda alan temelinde, her zaman bir alan temelinde etkinleştirilir `facetable` `true` . Ayrıca, `filterable` `true` arama uygulamanızın, son kullanıcının seçtiği modellerle ilgili alanlara filtre yapabilmesi için, bu tür alanlar için özniteliğini genellikle olarak ayarlamanız gerekir. 
 
-REST API kullanarak bir dizin oluştururken, çok yönlü gezintide kullanılabilecek olan herhangi bir [alan türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) varsayılan olarak olarak `facetable` işaretlenir:
+REST API kullanarak bir dizin oluştururken, çok yönlü gezintide kullanılabilecek olan herhangi bir [alan türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) varsayılan olarak olarak işaretlenir `facetable` :
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Sayısal alan türleri: `Edm.Int32`, `Edm.Int64`,`Edm.Double`
-+ Yukarıdaki türlerin koleksiyonları (örneğin, `Collection(Edm.String)` veya) `Collection(Edm.Double)`
++ Sayısal alan türleri: `Edm.Int32` , `Edm.Int64` ,`Edm.Double`
++ Yukarıdaki türlerin koleksiyonları (örneğin, `Collection(Edm.String)` veya `Collection(Edm.Double)` )
 
-Çok yönlü `Edm.GeographyPoint` gezinmede `Collection(Edm.GeographyPoint)` veya alanlarını kullanamazsınız. Modeller düşük önem taşıyan alanlarda en iyi şekilde çalışır. Coğrafi koordinatların çözümlenme nedeniyle, her iki ortak ordinonun kümesi, belirli bir veri kümesinde eşit olacaktır. Bu nedenle, coğrafi koordinatlara yönelik modeller desteklenmez. Konuma göre model için bir şehir veya bölge alanı gerekir.
+Çok `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` yönlü gezinmede veya alanlarını kullanamazsınız. Modeller düşük önem taşıyan alanlarda en iyi şekilde çalışır. Coğrafi koordinatların çözümlenme nedeniyle, her iki ortak ordinonun kümesi, belirli bir veri kümesinde eşit olacaktır. Bu nedenle, coğrafi koordinatlara yönelik modeller desteklenmez. Konuma göre model için bir şehir veya bölge alanı gerekir.
 
 ## <a name="set-attributes"></a>Öznitelikleri ayarla
 
-Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindeki ayrı alan tanımlarına eklenir. Aşağıdaki örnekte, düşük önem düzeyi olan alanlar, her zaman için yararlıdır,, aşağıdakilerden oluşur: `category` (otel, Motel, Hostel), `tags`ve. `rating` Bu alanlar, `filterable` tanım amaçları `facetable` için aşağıdaki örnekte açıkça ayarlanmış ve öznitelikleri vardır. 
+Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindeki ayrı alan tanımlarına eklenir. Aşağıdaki örnekte, düşük önem düzeyi olan alanlar, her zaman için yararlıdır,, aşağıdakilerden oluşur: `category` (otel, Motel, Hostel), `tags` ve `rating` . Bu alanlar, `filterable` `facetable` tanım amaçları için aşağıdaki örnekte açıkça ayarlanmış ve öznitelikleri vardır. 
 
 > [!Tip]
-> Performans ve depolama iyileştirmesi için en iyi uygulama olarak, bir model olarak asla kullanılmamalıdır. Özellikle, bir KIMLIK veya ürün adı gibi benzersiz değerler için dize alanları, çok yönlü olan gezinmede yanlışlıkla ( `"facetable": false` ve verimsiz) kullanılmasını engellemek için olarak ayarlanmalıdır.
+> Performans ve depolama iyileştirmesi için en iyi uygulama olarak, bir model olarak asla kullanılmamalıdır. Özellikle, bir KIMLIK veya ürün adı gibi benzersiz değerler için dize alanları, çok `"facetable": false` yönlü olan gezinmede yanlışlıkla (ve verimsiz) kullanılmasını engellemek için olarak ayarlanmalıdır.
 
 
 ```json
@@ -77,7 +77,7 @@ Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindek
 ```
 
 > [!Note]
-> Bu dizin tanımı [, REST API kullanılarak Azure bilişsel arama dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-rest-api)işleminden kopyalanır. Bu, alan tanımlarındaki yararlanmayan farklılıkları dışında aynıdır. `filterable` Ve `facetable` öznitelikleri `category` `tags`, `smokingAllowed`,,, ve `rating` alanlarına açıkça `parkingIncluded`eklenir. Uygulamada, `filterable` ve `facetable` REST API kullanılırken bu alanlarda varsayılan olarak etkinleştirilir. .NET SDK kullanırken, bu özniteliklerin açıkça etkinleştirilmesi gerekir.
+> Bu dizin tanımı [, REST API kullanılarak Azure bilişsel arama dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-rest-api)işleminden kopyalanır. Bu, alan tanımlarındaki yararlanmayan farklılıkları dışında aynıdır. `filterable`Ve öznitelikleri,,,, `facetable` `category` `tags` `parkingIncluded` `smokingAllowed` ve `rating` alanlarına açıkça eklenir. Uygulamada, `filterable` ve `facetable` REST API kullanılırken bu alanlarda varsayılan olarak etkinleştirilir. .NET SDK kullanırken, bu özniteliklerin açıkça etkinleştirilmesi gerekir.
 
 ## <a name="build-and-load-an-index"></a>Dizin oluşturma ve yükleme
 
@@ -98,7 +98,7 @@ var sp = new SearchParameters()
 
 ### <a name="return-filtered-results-on-click-events"></a>Tıklama olaylarına göre filtrelenmiş sonuçları döndür
 
-Son Kullanıcı bir model değerine tıkladığında, Click olayının işleyicisi kullanıcının hedefini gerçekleştirmek için bir filtre ifadesi kullanmalıdır. Bir `category` model verildiğinde, "Motel" kategorisini tıklatmak, bu türün konaklamaları seçen bir `$filter` ifadeyle uygulanır. Bir Kullanıcı yalnızca Motels gösterilmesi gerektiğini belirtmek için "Motel" öğesini tıkladığında, uygulamanın gönderdiği sonraki sorgu de kapsar `$filter=category eq 'motel'`.
+Son Kullanıcı bir model değerine tıkladığında, Click olayının işleyicisi kullanıcının hedefini gerçekleştirmek için bir filtre ifadesi kullanmalıdır. Bir `category` model verildiğinde, "Motel" kategorisini tıklatmak, `$filter` Bu türün konaklamaları seçen bir ifadeyle uygulanır. Bir Kullanıcı yalnızca Motels gösterilmesi gerektiğini belirtmek için "Motel" öğesini tıkladığında, uygulamanın gönderdiği sonraki sorgu de kapsar `$filter=category eq 'motel'` .
 
 Aşağıdaki kod parçacığı, bir Kullanıcı kategori modeli 'nden bir değer seçerse filtreye kategori ekler.
 
@@ -107,7 +107,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Kullanıcı gibi `tags`bir koleksiyon alanı için bir model değerine tıklarsa, örneğin, "Pool" değeri, uygulamanız aşağıdaki filtre sözdizimini kullanmalıdır:`$filter=tags/any(t: t eq 'pool')`
+Kullanıcı gibi bir koleksiyon alanı için bir model değerine tıklarsa `tags` , örneğin, "Pool" değeri, uygulamanız aşağıdaki filtre sözdizimini kullanmalıdır:`$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>İpuçları ve geçici çözümler
 

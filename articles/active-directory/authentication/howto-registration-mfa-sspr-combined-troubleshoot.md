@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450947"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Birleşik güvenlik bilgileri kaydı sorunlarını giderme
@@ -30,7 +30,7 @@ Birleşik kayıt için günlüğe kaydedilen olaylar, Azure AD denetim günlükl
 
 Aşağıdaki tabloda, Birleşik kayıt tarafından oluşturulan tüm denetim olayları listelenmektedir:
 
-| Etkinlik | Durum | Neden | Açıklama |
+| Etkinlik | Durum | Nedeni | Description |
 | --- | --- | --- | --- |
 | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti | Başarılı | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti. | Bu olay, bir kullanıcı kaydı başarıyla tamamladığında oluşur.|
 | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti | Hata | Kullanıcı güvenlik bilgileri kaydını iptal etti. | Bu olay, bir Kullanıcı kesme modundan kaydı iptal ettiğinde meydana gelir.|
@@ -60,7 +60,7 @@ Bir Kullanıcı yeni Birleşik deneyimde bir telefon numarası ve/veya mobil uyg
 
 Bir yönetici önizlemeyi etkinleştirirse, kullanıcılar yeni deneyimle kaydedilir ve ardından Yönetici önizlemeyi devre dışı bırakır, kullanıcılar Multi-Factor Authentication için de kayıt yaptırmayı geri alabilir.
 
-Birleşik kayıt işlemini tamamlamış bir Kullanıcı [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup), ' de geçerli self servis parola sıfırlama (SSPR) kayıt sayfasına gittiğinde, bu sayfaya erişebilmeleri için kullanıcıdan Multi-Factor Authentication gerçekleştirmesi istenir. Bu adım teknik bir bakış için beklenmektedir, ancak daha önce yalnızca SSPR için kaydolan kullanıcılar için yenidir. Bu ek adım, farklı bir güvenlik düzeyi sağlayarak kullanıcının güvenlik duruşunu iyileştirse de, Yöneticiler Multi-Factor Authentication yapabilmeleri için kullanıcılarını geri almak isteyebilir.  
+Birleşik kayıt işlemini tamamlamış bir Kullanıcı, ' de geçerli self servis parola sıfırlama (SSPR) kayıt sayfasına gittiğinde [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) , bu sayfaya erişebilmeleri için kullanıcıdan Multi-Factor Authentication gerçekleştirmesi istenir. Bu adım teknik bir bakış için beklenmektedir, ancak daha önce yalnızca SSPR için kaydolan kullanıcılar için yenidir. Bu ek adım, farklı bir güvenlik düzeyi sağlayarak kullanıcının güvenlik duruşunu iyileştirse de, Yöneticiler Multi-Factor Authentication yapabilmeleri için kullanıcılarını geri almak isteyebilir.  
 
 ### <a name="how-to-roll-back-users"></a>Kullanıcıları geri alma
 
@@ -68,7 +68,7 @@ Yönetici olarak, bir kullanıcının Multi-Factor Authentication ayarlarını s
 
 Aşağıdaki adımlar, bir kullanıcıyı veya kullanıcı grubunu geri almanıza yardımcı olur.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 1. Uygun Azure AD PowerShell modüllerini yükler. Bir PowerShell penceresinde, modülleri yüklemek için şu komutları çalıştırın:
 
@@ -150,7 +150,7 @@ Bir PowerShell penceresinde, komut dosyası ve Kullanıcı dosyası konumların�
 Kullanıcılarınız için güncelleştirilmiş deneyimi devre dışı bırakmak için şu adımları izleyin:
 
 1. Azure portal Kullanıcı Yöneticisi olarak oturum açın.
-2. **Azure Active Directory** > **Kullanıcı ayarları** > **erişim paneli Önizleme özellikleri ayarlarını yönet**' e gidin.
+2. **Azure Active Directory**  >  **Kullanıcı ayarları**  >  **erişim paneli Önizleme özellikleri ayarlarını yönet**' e gidin.
 3. **Kullanıcılar altında güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir**, seçiciyi **none**olarak ayarlayabilir ve ardından **Kaydet**' i seçin.
 
 Kullanıcılardan artık güncelleştirilmiş deneyim kullanılarak kaydolması istenmez.

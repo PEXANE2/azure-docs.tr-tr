@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 568bac3c6c80173e38d7b15de17e90cb4fbdab80
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208967"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLı ile bir kullanılabilirlik alanında Linux sanal makinesi oluşturma
@@ -72,7 +72,7 @@ Bir sanal makine oluştururken, işletim sistemi görüntüsü, disk boyutlandı
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
-VM’nin oluşturulması birkaç dakika sürebilir. VM oluşturulduktan sonra, Azure CLI VM hakkında bilgi çıkışı sağlar. VM 'nin çalıştığı kullanılabilirlik `zones` bölgesini gösteren değeri bir yere göz atın. 
+VM’nin oluşturulması birkaç dakika sürebilir. VM oluşturulduktan sonra, Azure CLI VM hakkında bilgi çıkışı sağlar. `zones`VM 'nin çalıştığı kullanılabilirlik bölgesini gösteren değeri bir yere göz atın. 
 
 ```output
 {

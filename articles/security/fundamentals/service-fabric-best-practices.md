@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461659"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric güvenliği en iyi yöntemleri
@@ -87,7 +87,7 @@ Bir [küme sertifikası](../../service-fabric/service-fabric-windows-cluster-x50
 
 Ayrıca, aşağıdaki yöntemleri izleyin:
 -   Doğru yapılandırılmış bir Windows Server sertifika hizmetini kullanarak üretim kümeleri için sertifikaları oluşturun. Ayrıca, onaylanmış bir sertifika yetkilisinden (CA) sertifikaları elde edebilirsiniz.
--   Sertifika, MakeCert. exe veya benzer bir araç kullanılarak oluşturulduysa, hiçbir şekilde üretim kümeleri için geçici veya test sertifikası kullanmayın.
+-   Sertifika MakeCert.exe veya benzer bir araç kullanılarak oluşturulduysa üretim kümeleri için hiçbir şekilde geçici veya test sertifikası kullanmayın.
 -   Test kümeleri için otomatik olarak imzalanan bir sertifika kullanın, ancak üretim kümeleri için kullanmayın.
 
 Küme güvenli değilse, herkes kümeye anonim olarak bağlanabilir ve yönetim işlemleri gerçekleştirebilir. Bu nedenle, her zaman X. 509.440 sertifikalarını veya Windows güvenliğini kullanarak üretim kümelerini güvenli hale getirin.
@@ -99,7 +99,7 @@ Service Fabric Ayrıca, uygulamalar tarafından kullanılan kaynakların güvenl
 
 -   Bir Active Directory etki alanı grubu veya Kullanıcı kullanın: bir Active Directory Kullanıcı veya grup hesabı için kimlik bilgileri altında hizmeti çalıştırın. Azure Active Directory değil, etki alanı içinde şirket içi Active Directory kullandığınızdan emin olun. Etki alanındaki bir etki alanı kullanıcısı veya grubu kullanılarak izin verilen diğer kaynaklara erişin. Örneğin, dosya paylaşımları gibi kaynaklar.
 
--   HTTP ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atama: hizmet bildirimi uç nokta kaynaklarını HTTP ile bildirdiği zaman bir hizmete **runas** ilkesi uygulamak Için **securityaccesspolicy** özelliğini belirtin. HTTP uç noktalarına ayrılan bağlantı noktaları, hizmetin altında çalıştığı RunAs Kullanıcı hesabı için doğru şekilde erişim denetimli listelerdir. İlke ayarlanmamışsa, http. sys hizmete erişemez ve istemciden gelen çağrılarla ilgili hatalara sahip olabilirsiniz.
+-   HTTP ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atama: hizmet bildirimi uç nokta kaynaklarını HTTP ile bildirdiği zaman bir hizmete **runas** ilkesi uygulamak Için **securityaccesspolicy** özelliğini belirtin. HTTP uç noktalarına ayrılan bağlantı noktaları, hizmetin altında çalıştığı RunAs Kullanıcı hesabı için doğru şekilde erişim denetimli listelerdir. İlke ayarlanmamışsa, http.sys hizmete erişemez ve istemciden gelen çağrılarla ilgili hatalara sahip olabilirsiniz.
 
 Service Fabric kümesinde güvenlik ilkeleri kullanmayı öğrenmek için bkz. [uygulamanız için güvenlik Ilkelerini yapılandırma](../../service-fabric/service-fabric-application-runas-security.md).
 

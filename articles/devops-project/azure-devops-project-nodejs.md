@@ -14,17 +14,17 @@ ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc
 ms.openlocfilehash: 7db4fa2a780a3a1f53ecd73a40c247583cb6a79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233896"
 ---
-# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Azure DevOps Starter ile Node. js için Azure Pipelines bir CI/CD işlem hattı oluşturma
+# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>Azure DevOps Starter ile Node.js için Azure Pipelines bir CI/CD işlem hattı oluşturma
 
 Bu hızlı başlangıçta, [Gatsbyjs](https://www.gatsbyjs.org/) ve Basitleştirilmiş Azure DevOps Starter oluşturma deneyimini kullanarak bir NodeJS aşamalı Web UYGULAMASı (PWA) oluşturacaksınız. İşiniz bittiğinde, Azure Pipelines ' de PWA 'niz için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı vardır. Azure DevOps Starter, geliştirme, dağıtma ve izleme için gerekenleri ayarlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Azure DevOps](https://azure.microsoft.com/services/devops/) organizasyonu.
@@ -45,11 +45,11 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
 1. Node.js örnek uygulamasını seçin.   
 
-    ![Node. js örneğini seçin](_img/azure-devops-project-nodejs/select-nodejs.png) 
+    ![Node.js örneği seçin](_img/azure-devops-project-nodejs/select-nodejs.png) 
 
-1. Varsayılan örnek çerçeve **Express.js**’dir. Seçimi **basit Node. js uygulamasıyla** değiştirin ve ardından **İleri**' yi seçin. 
+1. Varsayılan örnek çerçeve **Express.js**’dir. Seçimi **basit Node.js uygulaması** olarak değiştirip **İleri**' yi seçin. 
 
-    ![Basit Node. js uygulamasını seçin](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
+    ![Basit Node.js uygulamasını seçin](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
 
 1. Bu adımda sunulan dağıtım hedefleri, adım 2 ' de seçilen uygulama çerçevesi tarafından belirlenir. Bu örnekte, varsayılan dağıtım hedefi **Windows Web uygulamasıdır** . **Kapsayıcılar için Web App** kümeyi bırakın ve **İleri ' yi**seçin.
 
@@ -108,7 +108,7 @@ DevOps Starter, Azure Repos veya GitHub 'da bir git deposu oluşturur. Bu örnek
     rmdir Application
     ```
 
-1. Örnek bir PWA oluşturmak için Gatsby CLı kullanın. PWA `gatsby new` Sihirbazı ' nı başlatmak için terminalden çalıştırın ve başlangıç `gatsby-starter-blog` şablonunuz için öğesini seçin. Bu örneğe benzemelidir:
+1. Örnek bir PWA oluşturmak için Gatsby CLı kullanın. `gatsby new`PWA Sihirbazı ' nı başlatmak için terminalden çalıştırın ve `gatsby-starter-blog` Başlangıç şablonunuz için öğesini seçin. Bu örneğe benzemelidir:
 
     ```powershell
     c:\myproject> gatsby new
@@ -120,16 +120,16 @@ DevOps Starter, Azure Repos veya GitHub 'da bir git deposu oluşturur. Bu örnek
         (Use a different starter)
     ```
     
-1. Artık adlı `my-gatsby-project`bir klasörünüz var. Olarak `Application` yeniden adlandırın ve `Dockerfile` içine kopyalayın.
+1. Artık adlı bir klasörünüz var `my-gatsby-project` . Olarak yeniden adlandırın `Application` ve içine kopyalayın `Dockerfile` .
     
     ```powershell
     mv my-gatsby-project Application
     mv Dockerfile Application
     ```
     
-1. En sevdiğiniz düzenleyicide Dockerfile dosyasını açın ve ilk satırı ' den `FROM node:8` ' e `FROM node:12`değiştirin. Bu değişiklik, kapsayıcının 8. x yerine Node. js sürüm 12. x sürümünü kullanmasını sağlar. GatsbyJS, Node. js ' nin daha modern sürümlerini gerektirir.
+1. En sevdiğiniz düzenleyicide Dockerfile dosyasını açın ve ilk satırı ' den ' e değiştirin `FROM node:8` `FROM node:12` . Bu değişiklik, kapsayıcının sürüm 8. x yerine 12. x sürümünü Node.js kullanmasını sağlar. GatsbyJS Node.js için daha modern sürümler gerektirir.
 
-1. Daha sonra, uygulama klasöründe Package. json dosyasını açın ve [komut dosyaları alanını](https://docs.npmjs.com/files/package.json#scripts) düzenleyerek geliştirme ve üretim sunucularınızın tüm kullanılabilir ağ arabirimlerini (örneğin 0.0.0.0) ve bağlantı noktası 80 ' i dinlemesine emin olun. Bu ayarlar olmadan, Container App Service, kapsayıcının içinde çalışan Node. js uygulamanıza trafiği yönlendiremeyen bir uygulamadır. `scripts` Alan aşağıda verilmiştir. Özellikle,, ve `develop` `serve` `start` hedeflerini varsayılanlarından değiştirmek istersiniz.
+1. Ardından, uygulama klasöründeki dosya package.jsaçın ve [komut dosyaları alanını](https://docs.npmjs.com/files/package.json#scripts) düzenleyerek geliştirme ve üretim sunucularınızın tüm kullanılabilir ağ arabirimlerini (örneğin 0.0.0.0) ve bağlantı noktası 80 ' i dinlemesine emin olun. Bu ayarlar olmadan, Container App Service, kapsayıcıyı Kapsayıcınız içinde çalışan Node.js uygulamanıza yönlendiremedi. `scripts`Alan aşağıda verilmiştir. Özellikle,, `develop` `serve` ve `start` hedeflerini varsayılanlarından değiştirmek istersiniz.
 
     ```json
       "scripts": {
@@ -145,9 +145,9 @@ DevOps Starter, Azure Repos veya GitHub 'da bir git deposu oluşturur. Bu örnek
     
 ## <a name="edit-your-cicd-pipelines"></a>CI/CD işlem hatlarınızı düzenleyin
 
-1. Önceki bölümde kodu işlemeden önce, derleme ve yayın işlem hatlarınız üzerinde bazı değişiklikler yapın. ' Derleme işlem hattınızı düzenleyin ve Node. js sürüm 12. x ' i kullanmak için düğüm görevini güncelleştirin. **Görev sürümü** alanını 1. x ve **Sürüm** alanı olarak 12. x olarak ayarlayın.
+1. Önceki bölümde kodu işlemeden önce, derleme ve yayın işlem hatlarınız üzerinde bazı değişiklikler yapın. ' Derleme işlem hattınızı düzenleyin ve düğüm görevini Node.js 12. x sürümünü kullanacak şekilde güncelleştirin. **Görev sürümü** alanını 1. x ve **Sürüm** alanı olarak 12. x olarak ayarlayın.
 
-    ![Node. js ' ye 12. x ' e Güncelleştir](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
+    ![Node.js 12. x olarak güncelleştir](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
 
 1. Bu hızlı başlangıçta, birim testleri oluşturmadık ve derleme işlem hattımızda bu adımları devre dışı bıraktık. Testleri yazdığınızda, bu adımları yeniden etkinleştirebilirsiniz. **Test bağımlılıklarını yüklemek** ve **birim testlerini çalıştırmak** ve devre dışı bırakmak için sağ tıklayın.
 
@@ -182,7 +182,7 @@ Artık sürmekte olan bir derleme görmeniz gerekir. Yaptığınız değişiklik
     git push
     ```
     
-1. Bir derleme `git push` tamamlandıktan hemen sonra başlatılır. **Azure DevOps panosundan**ilerlemeyi izleyebilirsiniz.
+1. Bir derleme tamamlandıktan hemen sonra başlatılır `git push` . **Azure DevOps panosundan**ilerlemeyi izleyebilirsiniz.
 
 3. Birkaç dakika sonra, derleme ve yayın işlem hatlarınız bitirilmeli ve PWA 'nın bir kapsayıcıya dağıtılması gerekir. Yukarıdaki panodan **uygulama uç noktası** bağlantısına tıklayın ve Bloglar Için bir Gatsby Starter projesi görmeniz gerekir.
 

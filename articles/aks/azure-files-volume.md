@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207675"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde Azure dosya paylaşımıyla bir birimi el ile oluşturma ve kullanma
@@ -22,7 +22,7 @@ Kubernetes birimleri hakkında daha fazla bilgi için bkz. [AKS 'de uygulamalar 
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 
@@ -69,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Dosya paylaşımından birim olarak bağlama
 
-Azure dosya paylaşımının Pod 'a bağlanması için, kapsayıcıyı kapsayıcı belirtiminde yapılandırın. adlı `azure-files-pod.yaml` yeni bir dosya oluşturun ve aşağıdaki içeriklerle. Dosya paylaşımının veya gizli dosyanın adını değiştirdiyseniz, *PaylaşımAdı* ve *secretname*' i güncelleştirin. İsterseniz, dosya paylaşımının Pod `mountPath`'a bağlandığı yol olan öğesini güncelleştirin. Windows Server kapsayıcıları için, Windows yol kuralını kullanarak *":"* gibi bir *bağlamayolu* belirtin.
+Azure dosya paylaşımının Pod 'a bağlanması için, kapsayıcıyı kapsayıcı belirtiminde yapılandırın. adlı yeni bir dosya oluşturun ve `azure-files-pod.yaml` aşağıdaki içeriklerle. Dosya paylaşımının veya gizli dosyanın adını değiştirdiyseniz, *PaylaşımAdı* ve *secretname*' i güncelleştirin. İsterseniz, `mountPath` dosya paylaşımının Pod 'a bağlandığı yol olan öğesini güncelleştirin. Windows Server kapsayıcıları için, Windows yol kuralını kullanarak *":"* gibi bir *bağlamayolu* belirtin.
 
 ```yaml
 apiVersion: v1
@@ -98,13 +98,13 @@ spec:
       readOnly: false
 ```
 
-Pod 'u `kubectl` oluşturmak için komutunu kullanın.
+`kubectl`Pod 'u oluşturmak için komutunu kullanın.
 
 ```console
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Şimdi */mnt/Azure*konumunda bağlanmış bir Azure dosyaları paylaşımında çalışan bir pod var. Paylaşımın başarıyla takıldığını `kubectl describe pod mypod` doğrulamak için ' i kullanabilirsiniz. Aşağıdaki sıkıştırılmış örnek çıktı, kapsayıcıya takılan birimi gösterir:
+Şimdi */mnt/Azure*konumunda bağlanmış bir Azure dosyaları paylaşımında çalışan bir pod var. `kubectl describe pod mypod`Paylaşımın başarıyla takıldığını doğrulamak için ' i kullanabilirsiniz. Aşağıdaki sıkıştırılmış örnek çıktı, kapsayıcıya takılan birimi gösterir:
 
 ```
 Containers:
@@ -161,7 +161,7 @@ spec:
 
 1.8.0-1.8.4 sürümünün bir kümesini kullanıyorsanız, *RunAsUser* değeri *0*olarak ayarlanmış bir güvenlik bağlamı belirtilebilir. Pod güvenlik bağlamı hakkında daha fazla bilgi için bkz. [güvenlik bağlamını yapılandırma][kubernetes-security-context].
 
-Bağlama seçeneklerinizi güncelleştirmek için, bir *azurefile-Mount-Options-BD. YAML* dosyasını *Persistentvolume*ile oluşturun. Örneğin:
+Bağlama seçeneklerinizi güncelleştirmek için, bir *azurefile-Mount-Options-BD. YAML* dosyasını *Persistentvolume*ile oluşturun. Örnek:
 
 ```yaml
 apiVersion: v1
@@ -187,7 +187,7 @@ spec:
   - nobrl
 ```
 
-*Persistentvolume*kullanan bir *Persistentvolumeclaim* ile *azurefile-Mount-Options-PVC. YAML* dosyası oluşturun. Örneğin:
+*Persistentvolume*kullanan bir *Persistentvolumeclaim* ile *azurefile-Mount-Options-PVC. YAML* dosyası oluşturun. Örnek:
 
 ```yaml
 apiVersion: v1
@@ -203,7 +203,7 @@ spec:
       storage: 5Gi
 ```
 
-`kubectl` *Persistentvolume* ve *persistentvolumeclaim*oluşturmak için komutları kullanın.
+`kubectl` *Persistentvolume* ve *Persistentvolumeclaim*oluşturmak için komutları kullanın.
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
@@ -219,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Kalıcı olarak, *Persistentvolumeclaim* 'nize başvuracak ve pod 'nizi güncelleştiren kapsayıcı belirtimini güncelleştirin. Örneğin:
+Kalıcı olarak, *Persistentvolumeclaim* 'nize başvuracak ve pod 'nizi güncelleştiren kapsayıcı belirtimini güncelleştirin. Örnek:
 
 ```yaml
 ...

@@ -10,10 +10,10 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535103"
 ---
 # <a name="recommended-on-premises-encoders"></a>Önerilen şirket içi kodlayıcılar
@@ -94,4 +94,4 @@ Longeçekimi doğrulaması
 7. Canlı etkinliği durdur
 8. Varlık KIMLIĞINI, Canlı Arşiv için yayımlanan akış URL 'sini ve canlı kodlayıcıınızdan kullanılan ayarları ve sürümü kaydedin
 
-Son olarak, e-postayla amsstreaming@microsoft.comMedia Services kayıtlı ayarlarınızı ve canlı arşiv parametrelerini gönderin. Media Services alındıktan sonra, Live Encoder 'ınızdan örnekler üzerinde doğrulama testleri gerçekleştirir. Bu işlemle ilgili tüm sorularla Media Services başvurabilirsiniz.
+Son olarak, e-postayla Media Services kayıtlı ayarlarınızı ve canlı arşiv parametrelerini gönderin amsstreaming@microsoft.com . Media Services alındıktan sonra, Live Encoder 'ınızdan örnekler üzerinde doğrulama testleri gerçekleştirir. Bu işlemle ilgili tüm sorularla Media Services başvurabilirsiniz.

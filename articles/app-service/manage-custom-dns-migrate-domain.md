@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535698"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Etkin bir DNS adını Azure App Service geçirme
@@ -21,7 +21,7 @@ Canlı bir siteyi ve DNS etki alanı adını App Service 'e geçirdiğinizde, bu
 
 DNS çözümlemesindeki kapalı kalma süresi konusunda endişelendiğinizde, bkz. [Azure App Service bir özel DNS adını eşleme](app-service-web-tutorial-custom-domain.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır:
 
@@ -40,9 +40,9 @@ Bu nasıl yapılır:
 
 ### <a name="create-domain-verification-record"></a>Etki alanı doğrulama kaydı oluştur
 
-Etki alanı sahipliğini doğrulamak için bir TXT kaydı ekleyin. TXT kaydı _awverify 'ten eşlenir.&lt; alt etki alanı>_ _ &lt;AppName>. azurewebsites.net_. 
+Etki alanı sahipliğini doğrulamak için bir TXT kaydı ekleyin. TXT kaydı _awverify 'ten eşlenir. &lt; alt etki alanı>_ _ &lt; appname>. azurewebsites.net_. 
 
-İhtiyacınız olan TXT kaydı, geçirmek istediğiniz DNS kaydına bağlıdır. Örnekler için aşağıdaki tabloya bakın (`@` genellikle kök etki alanını temsil eder):
+İhtiyacınız olan TXT kaydı, geçirmek istediğiniz DNS kaydına bağlıdır. Örnekler için aşağıdaki tabloya bakın ( `@` genellikle kök etki alanını temsil eder):
 
 | DNS kaydı örneği | TXT ana bilgisayar | TXT değeri |
 | - | - | - |
@@ -53,10 +53,10 @@ Etki alanı sahipliğini doğrulamak için bir TXT kaydı ekleyin. TXT kaydı _a
 DNS kayıtları sayfanızda, geçirmek istediğiniz DNS adının kayıt türünü aklınızda bulabilirsiniz. App Service CNAME ve bir kayıtlardan eşleştirmeleri destekler.
 
 > [!NOTE]
-> Cloudparlaması `awverify.*` gibi bazı sağlayıcılar için geçerli bir kayıt değildir. Yalnızca `*` bunun yerine kullanın.
+> Cloudparlaması gibi bazı sağlayıcılar için `awverify.*` geçerli bir kayıt değildir. `*`Yalnızca bunun yerine kullanın.
 
 > [!NOTE]
-> Joker `*` karakter kayıtları, var olan CNAME kaydı ile alt etki alanlarını doğrulamaz. Her alt etki alanı için açıkça bir TXT kaydı oluşturmanız gerekebilir.
+> Joker karakter `*` kayıtları, var olan CNAME kaydı ile alt etki alanlarını doğrulamaz. Her alt etki alanı için açıkça bir TXT kaydı oluşturmanız gerekebilir.
 
 
 ### <a name="enable-the-domain-for-your-app"></a>Uygulamanız için etki alanını etkinleştirin
@@ -69,7 +69,7 @@ DNS kayıtları sayfanızda, geçirmek istediğiniz DNS adının kayıt türün�
 
 ![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-TXT kaydını eklediğiniz tam etki alanı adını (örneğin,) yazın `www.contoso.com`. Joker bir etki alanı (. \*contoso.com gibi) için joker karakterle eşleşen HERHANGI bir DNS adını kullanabilirsiniz. 
+TXT kaydını eklediğiniz tam etki alanı adını (örneğin,) yazın `www.contoso.com` . Joker bir etki alanı ( \* . contoso.com gibi) için joker karakterle eşleşen herhangi BIR DNS adını kullanabilirsiniz. 
 
 **Doğrula**'yı seçin.
 
@@ -109,12 +109,12 @@ Sağ üst köşedeki **X** ' i seçerek **konak adı Ekle** sayfasını kapatın
 
 Etki alanı sağlayıcınızın DNS kayıtları sayfasında yeniden eşlemek için DNS kaydını seçin.
 
-`contoso.com` Kök etki alanı örneği Için, BIR veya CNAME kaydını aşağıdaki tabloda yer alan örneklerle yeniden eşleyin: 
+`contoso.com`Kök etki alanı örneği için, bir veya CNAME kaydını aşağıdaki tabloda yer alan örneklerle yeniden eşleyin: 
 
 | FQDN örneği | Kayıt türü | Ana bilgisayar | Değer |
 | - | - | - | - |
 | contoso.com (kök) | A | `@` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
-| www\.contoso.com (Sub) | CNAME | `www` | _&lt;AppName>. azurewebsites.net_ |
+| www \. contoso.com (Sub) | CNAME | `www` | _&lt;AppName>. azurewebsites.net_ |
 | \*. contoso.com (joker karakter) | CNAME | _\*_ | _&lt;AppName>. azurewebsites.net_ |
 
 Ayarlarınızı kaydedin.
@@ -125,7 +125,7 @@ DNS sorguları, DNS yayma gerçekleştirildikten hemen sonra App Service uygulam
 
 Azure 'da bir etkin özel etki alanını abonelikler arasında veya aynı abonelik içinde geçirebilirsiniz. Ancak, kapalı kalma süresi olmayan bir geçiş, kaynak uygulama gerektirir ve hedef uygulamaya belirli bir zamanda aynı özel etki alanı atanır. Bu nedenle, iki uygulamanın aynı dağıtım birimine (dahili bir web alanı olarak da bilinir) dağıtılmadığından emin olmanız gerekir. Bir etki alanı adı, her dağıtım biriminde yalnızca bir uygulamaya atanabilir.
 
-Uygulamanızın dağıtım birimini FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net`'sinin etki alanı adına bakarak bulabilirsiniz. Kaynak uygulamayla hedef uygulama arasında dağıtım biriminin farklı olduğundan emin olun ve denetleyin. Bir uygulamanın dağıtım birimi, içindeki [App Service plana](overview-hosting-plans.md) göre belirlenir. Planı oluşturduğunuzda Azure tarafından rastgele seçilir ve değiştirilemez. Azure yalnızca aynı [kaynak grubunda *ve* aynı bölgede oluşturduğunuzda](app-service-plan-manage.md#create-an-app-service-plan)iki plan aynı dağıtım biriminde olduğundan emin olur, ancak planların farklı dağıtım birimlerinde olduğundan emin olmak için herhangi bir mantığı yoktur. Farklı bir dağıtım biriminde bir plan oluşturmanın tek yolu, farklı bir dağıtım birimi alınana kadar yeni bir kaynak grubu veya bölgede bir plan oluşturmaya devam ediyor.
+Uygulamanızın dağıtım birimini FTP/S URL 'sinin etki alanı adına bakarak bulabilirsiniz `<deployment-unit>.ftp.azurewebsites.windows.net` . Kaynak uygulamayla hedef uygulama arasında dağıtım biriminin farklı olduğundan emin olun ve denetleyin. Bir uygulamanın dağıtım birimi, içindeki [App Service plana](overview-hosting-plans.md) göre belirlenir. Planı oluşturduğunuzda Azure tarafından rastgele seçilir ve değiştirilemez. Azure yalnızca aynı [kaynak grubunda *ve* aynı bölgede oluşturduğunuzda](app-service-plan-manage.md#create-an-app-service-plan)iki plan aynı dağıtım biriminde olduğundan emin olur, ancak planların farklı dağıtım birimlerinde olduğundan emin olmak için herhangi bir mantığı yoktur. Farklı bir dağıtım biriminde bir plan oluşturmanın tek yolu, farklı bir dağıtım birimi alınana kadar yeni bir kaynak grubu veya bölgede bir plan oluşturmaya devam ediyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: b8a5f6543bc265605361b7875fad5232d428e27e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82209001"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Azure portal ile bir kullanılabilirlik alanında Windows sanal makinesi oluşturma
@@ -40,7 +40,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     ![VM boyutu seçin](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. **Ayarlar** > **yüksek kullanılabilirlik**bölümünde, **kullanılabilirlik bölgesi** açılan listesinden numaralandırılmış bölgelerden birini seçin, kalan varsayılan ayarları tutun ve **Tamam**' a tıklayın.
+5. **Ayarlar**  >  **yüksek kullanılabilirlik**bölümünde, **kullanılabilirlik bölgesi** açılan listesinden numaralandırılmış bölgelerden birini seçin, kalan varsayılan ayarları tutun ve **Tamam**' a tıklayın.
 
     ![Bir kullanılabilirlik bölgesi seçin](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 

@@ -4,10 +4,10 @@ description: Azure geçişi hizmeti hakkında sık sorulan soruların yanıtlar�
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81530326"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure geçişi: sık sorulan sorular
@@ -53,7 +53,7 @@ Ne yapmak istediğinize göre aracınızı seçin:
 
 ## <a name="which-geographies-are-supported"></a>Hangi geographıes destekleniyor?
 
-[Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
+[Genel](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government) için desteklenen coğrafyaları inceleyin.
 
 ## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
 

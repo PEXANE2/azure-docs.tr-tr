@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233474"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure tanılama uzantısı 'ndan Azure Event Hubs veri gönderme
@@ -25,7 +25,7 @@ Event Hubs 'e gönderilebilecek Konuk işletim sisteminden toplanan veriler aşa
 * Windows olay günlüğü 'nde uygulama günlükleri de dahil olmak üzere Windows olay günlükleri
 * Azure Tanılama altyapısı günlükleri
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Windows Tanılama uzantısı 1,6 veya üzeri. Desteklenen kaynaklar için [Azure tanılama uzantısı yapılandırma şeması sürümleri ve geçmiş](diagnostics-extension-versions.md) bir sürüm geçmişi ve [Azure tanılama uzantısına genel bakış](diagnostics-extension-overview.md) bölümüne bakın.
 * Event Hubs ad alanı her zaman sağlanmalıdır. Ayrıntılar için bkz. [Event Hubs ile çalışmaya başlama](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .
@@ -38,8 +38,8 @@ Azure Tanılama her zaman günlükleri ve ölçümleri bir Azure depolama hesab�
 
 | Özellik | Açıklama |
 |:---|:---|
-| Adı | Havuz için tanımlayıcı ad. Yapılandırmada, havuza hangi veri kaynaklarının gönderileceğini belirtmek için kullanılır. |
-| Url  | Olay Hub \<'ının URL 'si-hub-\>Namespace. ServiceBus.Windows.net/\<Event-hub-Name.\>          |
+| Name | Havuz için tanımlayıcı ad. Yapılandırmada, havuza hangi veri kaynaklarının gönderileceğini belirtmek için kullanılır. |
+| Url  | . Servicebus.windows.net/formundaki Olay Hub 'ının URL 'si \<event-hubs-namespace\> \<event-hub-name\> .          |
 | SharedAccessKeyName | En az **gönderme** yetkisine sahip olay hub 'ı için paylaşılan erişim ilkesinin adı. |
 | SharedAccessKey     | Olay Hub 'ı için paylaşılan erişim ilkesinden birincil veya ikincil anahtar. |
 

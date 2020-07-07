@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81534474"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
 
-Kodunuzda, belirteçlerin kimliğini doğrulamak ve almak için yeni bir genel veya gizli istemci uygulaması (veya MSAL. js için Kullanıcı Aracısı) başlatabilirsiniz. İstemci uygulamasını Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) başlatırken bir dizi yapılandırma seçeneği belirleyebilirsiniz. Bu seçenekler iki gruba ayrılır:
+Kodunuzda, belirteçlerin kimliğini doğrulamak ve almak için yeni bir genel veya gizli istemci uygulaması (veya MSAL.js için Kullanıcı Aracısı) başlatırsınız. İstemci uygulamasını Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) başlatırken bir dizi yapılandırma seçeneği belirleyebilirsiniz. Bu seçenekler iki gruba ayrılır:
 
 - Kayıt seçenekleri, şunlar dahildir:
     - Yetkili (kimlik sağlayıcısı [örneğinden](#cloud-instance) ve uygulama için oturum açma [izleyicisiyle](#authority) ve muhtemelen kiracı kimliğinde) oluşur. [audience](#application-audience)
@@ -35,10 +35,10 @@ Kodunuzda, belirteçlerin kimliğini doğrulamak ve almak için yeni bir genel v
 
 Yetkili, MSAL tarafından belirteçleri isteyebileceğini bir dizini gösteren bir URL 'dir. Ortak yetkililer şunlardır:
 
-- https\://Login.microsoftonline.com/\<kiracısı\>/, &lt;kiracı&gt; , Azure Active Directory (Azure AD) kiracısı veya bu Azure AD kiracısıyla ilişkili bir etki alanı olan kiracı kimliğidir. Yalnızca belirli bir kuruluşun kullanıcılarına oturum açmak için kullanılır.
-- https\://Login.microsoftonline.com/Common/. Kullanıcıları iş ve okul hesaplarıyla veya kişisel Microsoft hesaplarıyla oturum açmak için kullanılır.
-- https\://Login.microsoftonline.com/Organizations/. Kullanıcılara iş ve okul hesaplarıyla oturum açmak için kullanılır.
-- https\://Login.microsoftonline.com/consumers/. Kullanıcılara yalnızca kişisel Microsoft hesaplarıyla (eski adıyla Windows Live ID hesapları olarak biliniyordu) oturum açmak için kullanılır.
+- https \: //login.microsoftonline.com/ \<tenant\> /, &lt; kiracı, &gt; Azure Active Directory (Azure AD) kiracının kiracı KIMLIĞI veya bu Azure AD kiracısı ile ilişkili bir etki alanıdır. Yalnızca belirli bir kuruluşun kullanıcılarına oturum açmak için kullanılır.
+- https \: //login.microsoftonline.com/Common/. Kullanıcıları iş ve okul hesaplarıyla veya kişisel Microsoft hesaplarıyla oturum açmak için kullanılır.
+- https \: //login.microsoftonline.com/Organizations/. Kullanıcılara iş ve okul hesaplarıyla oturum açmak için kullanılır.
+- https \: //login.microsoftonline.com/consumers/. Kullanıcılara yalnızca kişisel Microsoft hesaplarıyla (eski adıyla Windows Live ID hesapları olarak biliniyordu) oturum açmak için kullanılır.
 
 Yetkili ayarının, uygulama kayıt portalında bildirildiği verilerle tutarlı olması gerekir.
 
@@ -59,11 +59,11 @@ Azure AD bulut yetkilileri iki bölümden oluşur:
 
 ## <a name="cloud-instance"></a>Bulut örneği
 
-*Örnek* , uygulamanızın Azure genel bulutundaki veya ulusal bulutlardan Kullanıcı imzalanmasını belirtmek için kullanılır. Kodunuzda MSAL kullanarak, bir sabit listesi kullanarak veya URL 'YI (bildiğiniz takdirde) [Ulusal bulut örneğine](authentication-national-cloud.md#azure-ad-authentication-endpoints) `Instance` geçirerek Azure bulut örneğini ayarlayabilirsiniz.
+*Örnek* , uygulamanızın Azure genel bulutundaki veya ulusal bulutlardan Kullanıcı imzalanmasını belirtmek için kullanılır. Kodunuzda MSAL kullanarak, bir sabit listesi kullanarak veya URL 'YI (bildiğiniz takdirde) [Ulusal bulut örneğine](authentication-national-cloud.md#azure-ad-authentication-endpoints) geçirerek Azure bulut örneğini ayarlayabilirsiniz `Instance` .
 
-Her ikisi de `Instance` `AzureCloudInstance` belirtilirse, msal.net açık bir özel durum oluşturur.
+Her ikisi de belirtilirse, MSAL.NET açık bir özel durum oluşturur `Instance` `AzureCloudInstance` .
 
-Bir örnek belirtmezseniz, uygulamanız Azure genel bulut örneğini (URL `https://login.onmicrosoftonline.com`'nin örneği) hedefleyecek.
+Bir örnek belirtmezseniz, uygulamanız Azure genel bulut örneğini (URL 'nin örneği) hedefleyecek `https://login.onmicrosoftonline.com` .
 
 ## <a name="application-audience"></a>Uygulama hedef kitlesi
 
@@ -85,15 +85,15 @@ Kodunuzda MSAL kullanarak, aşağıdaki değerlerden birini kullanarak hedef kit
 
 Hem Azure AD yetkilisi kitleyi hem de kiracı KIMLIĞINI belirtirseniz MSAL anlamlı bir özel durum oluşturur.
 
-Hedef kitle belirtmezseniz, uygulamanız Azure AD ve kişisel Microsoft hesaplarını bir hedef kitle olarak hedefleyecek. (Yani, belirtildiği gibi `common` davranır.)
+Hedef kitle belirtmezseniz, uygulamanız Azure AD ve kişisel Microsoft hesaplarını bir hedef kitle olarak hedefleyecek. (Yani, belirtildiği gibi davranır `common` .)
 
 ### <a name="effective-audience"></a>Etkin hedef kitle
 
 Uygulamanız için geçerli hedef kitle, uygulamanızda belirlediğiniz hedef kitlesinin ve uygulama kaydında belirtilen hedef kitlesinin en az (bir kesişmesi varsa) olacaktır. Aslında [uygulama kayıtları](https://aka.ms/appregistrations) deneyimi, uygulama için hedef kitleyi (desteklenen hesap türleri) belirtmenize olanak tanır. Daha fazla bilgi için bkz. [hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md).
 
 Şu anda, yalnızca kişisel Microsoft hesaplarıyla kullanıcıların oturum açması için bir uygulama almanın tek yolu bu ayarların her ikisini de yapılandırmaktır:
-- Uygulama kaydı kitlesini olarak `Work and school accounts and personal accounts`ayarlayın.
-- Kodunuzda/yapılandırmanızda bulunan hedef kitleyi (veya `AadAuthorityAudience.PersonalMicrosoftAccount` `TenantID` = "tüketiciler") olarak ayarlayın.
+- Uygulama kaydı kitlesini olarak ayarlayın `Work and school accounts and personal accounts` .
+- Kodunuzda/yapılandırmanızda bulunan hedef kitleyi `AadAuthorityAudience.PersonalMicrosoftAccount` (veya `TenantID` = "tüketiciler") olarak ayarlayın.
 
 ## <a name="client-id"></a>İstemci Kimliği
 
@@ -106,21 +106,21 @@ Yeniden yönlendirme URI 'si, kimlik sağlayıcısı 'nın güvenlik belirteçle
 ### <a name="redirect-uri-for-public-client-apps"></a>Ortak istemci uygulamaları için yeniden yönlendirme URI 'SI
 
 MSAL kullanan ortak bir istemci uygulama geliştiricisiyseniz:
-- Masaüstü veya UWP uygulamalarında kullanmak `.WithDefaultRedirectUri()` istersiniz (msal.NET 4.1 +). Bu yöntem, ortak istemci uygulamasının yeniden yönlendirme URI özelliğini genel istemci uygulamaları için önerilen varsayılan yeniden yönlendirme URI 'si olarak ayarlar.
+- `.WithDefaultRedirectUri()`Masaüstü veya UWP uygulamalarında kullanmak istersiniz (msal.NET 4.1 +). Bu yöntem, ortak istemci uygulamasının yeniden yönlendirme URI özelliğini genel istemci uygulamaları için önerilen varsayılan yeniden yönlendirme URI 'si olarak ayarlar.
 
   Platform  | Yeniden Yönlendirme URI'si
   ---------  | --------------
   Masaüstü uygulaması (.NET ILT) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
-  UWP | değeri `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. Bu, kaydolmanız gereken WebAuthenticationBroker. GetCurrentApplicationCallbackUri () sonucuna değer ayarlayarak, SSO 'yu tarayıcıda sağlar
+  UWP | değeri `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` . Bu, kaydolmanız gereken WebAuthenticationBroker. GetCurrentApplicationCallbackUri () sonucuna değer ayarlayarak, SSO 'yu tarayıcıda sağlar
   .NET Core | `https://localhost`. Bu, .NET Core 'un katıştırılmış Web görünümü için bir kullanıcı arabirimine sahip olmadığından kullanıcının etkileşimli kimlik doğrulaması için sistem tarayıcısını kullanmasına olanak sağlar.
 
-- Aracıyı desteklemeyen bir Xamarin Android ve iOS uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'SI eklemeniz gerekmez (yeniden yönlendirme URI 'SI Xamarin Android ve iOS `msal{ClientId}://auth` için otomatik olarak ayarlanır)
+- Aracıyı desteklemeyen bir Xamarin Android ve iOS uygulaması oluşturuyorsanız, yeniden yönlendirme URI 'SI eklemeniz gerekmez (yeniden yönlendirme URI 'SI `msal{ClientId}://auth` Xamarin Android ve iOS için otomatik olarak ayarlanır)
 
 - [Uygulama kayıtları](https://aka.ms/appregistrations)YENIDEN yönlendirme URI 'sini yapılandırmanız gerekir:
 
    ![Uygulama kayıtları yeniden yönlendirme URI 'SI](media/msal-client-application-configuration/redirect-uri.png)
 
-`RedirectUri` Özelliğini kullanarak YENIDEN yönlendirme URI 'sini geçersiz kılabilirsiniz (örneğin, aracılar kullanıyorsanız). Bu senaryo için yeniden yönlendirme URI 'Leri örnekleri aşağıda verilmiştir:
+Özelliğini kullanarak yeniden yönlendirme URI 'sini geçersiz kılabilirsiniz `RedirectUri` (örneğin, aracılar kullanıyorsanız). Bu senaryo için yeniden yönlendirme URI 'Leri örnekleri aşağıda verilmiştir:
 
 - `RedirectUriOnAndroid`= "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.identity.Client.Sample";
 - `RedirectUriOnIos`= $ "msauth. {Demeti. ID}://kimlik doğrulaması ";
@@ -145,4 +145,4 @@ Diğer yapılandırma seçenekleri günlüğe kaydetme ve sorun gidermeyi etkinl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Msal.NET kullanarak istemci uygulamaları örneğini](msal-net-initializing-client-applications.md)oluşturma hakkında bilgi edinin.
-[Msal. js kullanarak istemci uygulamaları örneğini](msal-js-initializing-client-applications.md)oluşturma hakkında bilgi edinin.
+[MSAL.jskullanarak istemci uygulamaları örneğini ](msal-js-initializing-client-applications.md)oluşturma hakkında bilgi edinin.

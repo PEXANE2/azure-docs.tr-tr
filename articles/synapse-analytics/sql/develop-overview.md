@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6ceec3064c5c876ca899ab58881e23913b9701
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429024"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL özellikleri için tasarım kararları ve kodlama teknikleri
@@ -28,14 +28,14 @@ Aşağıdaki makalelerde SYNAPSE SQL geliştirme için kavramlar ve tasarım kar
 |                                                          |   SQL havuzu   | İsteğe bağlı SQL |
 | -----------------------------------------------------    | ---- | ---- |
 | [Bağlantılar](connect-overview.md)                    | Yes | Yes |
-| [Kaynak sınıfları ve eşzamanlılık](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Yes    | Hayır |
-| [İşlemler](develop-transactions.md)              | Yes | Hayır |
+| [Kaynak sınıfları ve eşzamanlılık](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Evet    | Hayır |
+| [İşlemler](develop-transactions.md)              | Evet | Hayır |
 | [Kullanıcı tanımlı şemalar](develop-user-defined-schemas.md) | Yes | Yes |
-| [Tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | Yes | Hayır |
-| [Tablo dizinleri](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                           | Yes | Hayır |
-| [Tablo bölümleri](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | Yes | Hayır |
+| [Tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | Evet | Hayır |
+| [Tablo dizinleri](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                           | Evet | Hayır |
+| [Tablo bölümleri](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | Evet | Hayır |
 | [İstatistikler](develop-tables-statistics.md)            | Yes | Yes |
-| [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                                             | Yes | Hayır |
+| [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                                             | Evet | Hayır |
 | [Dış tablolar](develop-tables-external-tables.md) | Yes | Yes |
 | [CETAS](develop-tables-cetas.md)                     | Yes | Yes |
 
@@ -46,13 +46,13 @@ Aşağıda, geliştirmeye yönelik belirli kodlama tekniklerini, ipuçlarını v
 
 |                                            | SQL havuzu | İsteğe bağlı SQL |
 | ------------------------------------------ | ------------------ | ----------------------- |
-| [Saklı yordamlar](develop-stored-procedures.md)  | Yes                | Hayır                      |
-| [Etiketler](develop-label.md)                           | Yes                | Hayır                      |
+| [Saklı yordamlar](develop-stored-procedures.md)  | Evet                | Hayır                      |
+| [Etiketler](develop-label.md)                           | Evet                | Hayır                      |
 | [Görünümler](develop-views.md)                             | Yes                | Yes                     |
 | [Geçici tablolar](develop-tables-temporary.md)       | Yes                | Yes                     |
 | [Dinamik SQL](develop-dynamic-sql.md)                 | Yes                | Yes                     |
 | [Döngü](develop-loops.md)                         | Yes                | Yes                     |
-| [Seçeneklere göre gruplandırma](develop-group-by-options.md)       | Yes                | Hayır                      |
+| [Seçeneklere göre gruplandırma](develop-group-by-options.md)       | Evet                | Hayır                      |
 | [Değişken ataması](develop-variable-assignment.md) | Yes                | Yes                     |
 
 ## <a name="next-steps"></a>Sonraki adımlar

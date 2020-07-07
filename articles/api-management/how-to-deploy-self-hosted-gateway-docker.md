@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205098"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management şirket içinde barındırılan bir ağ geçidini Docker 'a dağıtma
@@ -24,7 +24,7 @@ Bu makalede, Azure API Management şirket içinde barındırılan ağ geçidi bi
 > [!NOTE]
 > Docker 'da şirket içinde barındırılan ağ geçidini barındırmak, değerlendirme ve geliştirme kullanım durumları için idealdir. Kubernetes, üretim kullanımı için önerilir. Kendi kendine barındırılan ağ geçidini Kubernetes 'e dağıtmayı öğrenmek için [Bu](how-to-deploy-self-hosted-gateway-kubernetes.md) belgeye bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 - Docker ortamı oluşturun. [Masaüstü Için Docker](https://www.docker.com/products/docker-desktop) , geliştirme ve değerlendirme amaçları için iyi bir seçenektir. Tüm Docker sürümleri, özellikleri ve Docker üzerinde kapsamlı belgeler hakkında bilgi için bkz. [Docker belgeleri](https://docs.docker.com) .
@@ -58,9 +58,9 @@ CONTAINER ID        IMAGE                                                 COMMAN
 ![Ağ Geçidi durumu](media/how-to-deploy-self-hosted-gateway-docker/status.png)
 
 > [!TIP]
-> Şirket <code>console docker container logs <gateway-name></code> içinde barındırılan ağ geçidi günlüğünün anlık görüntüsünü görüntülemek için komutunu kullanın.
+> <code>console docker container logs <gateway-name></code>Şirket içinde barındırılan ağ geçidi günlüğünün anlık görüntüsünü görüntülemek için komutunu kullanın.
 >
-> Tüm <code>docker container logs --help</code> günlük görüntüleme seçeneklerini görmek için komutunu kullanın.
+> <code>docker container logs --help</code>Tüm günlük görüntüleme seçeneklerini görmek için komutunu kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

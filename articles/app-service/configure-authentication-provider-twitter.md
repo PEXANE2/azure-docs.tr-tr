@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519904"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>App Service veya Azure Işlevleri uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma
@@ -26,7 +26,7 @@ Bu makaledeki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adres
 
 1. [Azure Portal] oturum açın ve uygulamanıza gidin. **URL**'nizi kopyalayın. Twitter uygulamanızı yapılandırmak için kullanacaksınız.
 1. [Twitter geliştiricileri] Web sitesine gidin, Twitter hesabı kimlik bilgilerinizle oturum açın ve **uygulama oluştur**' u seçin.
-1. Yeni uygulamanız için **uygulama adı** ve **uygulama açıklaması** girin. Uygulamanızın **URL** 'Sini **Web sitesi URL 'si** alanına yapıştırın. **Geri arama URL 'leri** bölümünde app SERVICE uygulamanızın https URL 'sini girin ve yolu `/.auth/login/twitter/callback`ekleyin. Örneğin, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
+1. Yeni uygulamanız için **uygulama adı** ve **uygulama açıklaması** girin. Uygulamanızın **URL** 'Sini **Web sitesi URL 'si** alanına yapıştırın. **Geri arama URL 'leri** bölümünde app SERVICE uygulamanızın https URL 'sini girin ve yolu ekleyin `/.auth/login/twitter/callback` . Örneğin, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
 1. Sayfanın alt kısmındaki en az 100 karakter yazarak **Bu uygulamanın nasıl kullanılacağını bize söyleyin**, sonra **Oluştur**' u seçin. Açılır pencerede yeniden **Oluştur** ' a tıklayın. Uygulama ayrıntıları görüntülenir.
 1. **Anahtarlar ve erişim belirteçleri** sekmesini seçin.
 
@@ -40,9 +40,9 @@ Bu makaledeki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adres
 ## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Uygulamanıza Twitter bilgilerini ekleyin
 
 1. [Azure Portal]uygulamanıza gidin.
-1. **Ayarlar** > **kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
+1. **Ayarlar**  >  **kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
 1. **Twitter**' ı seçin.
-1. Daha önce edindiğiniz `API key` ve `API secret key` değerlerini yapıştırın.
+1. `API key` `API secret key` Daha önce edindiğiniz ve değerlerini yapıştırın.
 1. **Tamam**’ı seçin.
 
    ![Mobil uygulama Twitter ayarlarının ekran görüntüsü][1]
@@ -71,5 +71,5 @@ Artık uygulamanızda kimlik doğrulaması için Twitter kullanmaya hazırsını
 
 [Twitter geliştiricileri]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[Azure portal]: https://portal.azure.com/
+[Azure portalındaki]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205072"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management şirket içinde barındırılan ağ geçidi için yerel ölçümleri ve günlükleri yapılandırma
@@ -122,7 +122,7 @@ spec:
     app: sputnik-metrics
 ```
 
-Konfigürasyonları adlı `metrics.yaml` bir dosyaya kaydedin ve her şeyi kümeye dağıtmak için aşağıdaki komutu kullanın:
+Konfigürasyonları adlı bir dosyaya kaydedin `metrics.yaml` ve her şeyi kümeye dağıtmak için aşağıdaki komutu kullanın:
 
 ```console
 kubectl apply -f metrics.yaml
@@ -136,7 +136,7 @@ NAME                                   READY   STATUS    RESTARTS   AGE
 sputnik-metrics-f6d97548f-4xnb7        2/2     Running   0          1m
 ```
 
-Hizmetlerin çalıştığından emin olmak için aşağıdaki komutu çalıştırın. StatsD hizmetini `CLUSTER-IP` ve `PORT` daha sonra da bu hizmetin gerekli olduğunu bir yere göz atın. Prometheus panosunu ve ' `EXTERNAL-IP` `PORT`u kullanarak ziyaret edebilirsiniz.
+Hizmetlerin çalıştığından emin olmak için aşağıdaki komutu çalıştırın. `CLUSTER-IP` `PORT` StatsD hizmetini ve daha sonra da bu hizmetin gerekli olduğunu bir yere göz atın. Prometheus panosunu ve ' u kullanarak ziyaret edebilirsiniz `EXTERNAL-IP` `PORT` .
 
 ```console
 kubectl get services
@@ -147,14 +147,14 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 ### <a name="configure-the-self-hosted-gateway-to-emit-metrics"></a>Ölçümleri göstermek için şirket içinde barındırılan ağ geçidini yapılandırma
 
-StatsD ve Prometheus öğelerinin her ikisi de dağıtıldığına göre, otomatik olarak barındırılan ağ geçidinin yapılandırmalarının StatsD aracılığıyla ölçümleri yayılmasına başlayabiliriz. Özellik, şirket içinde barındırılan ağ geçidi dağıtımının ConfigMap 'teki anahtar kullanılarak, `telemetry.metrics.local` ek seçeneklerle etkinleştirilebilir veya devre dışı bırakılabilir. Kullanılabilir seçeneklerin bir dökümü aşağıda verilmiştir:
+StatsD ve Prometheus öğelerinin her ikisi de dağıtıldığına göre, otomatik olarak barındırılan ağ geçidinin yapılandırmalarının StatsD aracılığıyla ölçümleri yayılmasına başlayabiliriz. Özellik, `telemetry.metrics.local` Şirket içinde barındırılan ağ geçidi dağıtımının ConfigMap 'teki anahtar kullanılarak, ek seçeneklerle etkinleştirilebilir veya devre dışı bırakılabilir. Kullanılabilir seçeneklerin bir dökümü aşağıda verilmiştir:
 
-| Alan  | Varsayılan | Açıklama |
+| Alan  | Varsayılan | Description |
 | ------------- | ------------- | ------------- |
-| Telemetri. ölçümler. yerel  | `none` | StatsD aracılığıyla günlüğe kaydetmeyi etkinleştirir. Değer `none`, `statsd`olabilir. |
+| Telemetri. ölçümler. yerel  | `none` | StatsD aracılığıyla günlüğe kaydetmeyi etkinleştirir. Değer, olabilir `none` `statsd` . |
 | Telemetri. ölçümler. Local. statsd. Endpoint  | yok | StatsD uç noktasını belirtir. |
 | Telemetri. ölçümler. Local. statsd. örnekleme  | yok | Ölçüm örnekleme hızını belirtir. Değer 0 ile 1 arasında olabilir. ör.,`0.5`|
-| Telemetri. ölçümler. yerel. statsd. Tag-Format  | yok | StatsD Dışarı Aktarıcı [etiketleme biçimi](https://github.com/prometheus/statsd_exporter#tagging-extensions). Değer,,,, olabilir `influxDB` `none` `librato` `dogStatsD` |
+| Telemetri. ölçümler. yerel. statsd. Tag-Format  | yok | StatsD Dışarı Aktarıcı [etiketleme biçimi](https://github.com/prometheus/statsd_exporter#tagging-extensions). Değer,,,, olabilir `none` `librato` `dogStatsD` `influxDB` . |
 
 Örnek bir yapılandırma aşağıda verilmiştir:
 
@@ -185,11 +185,11 @@ kubectl rollout restart deployment/<deployment-name>
 
 ### <a name="view-the-metrics"></a>Ölçümleri görüntüleme
 
-Şimdi dağıtılan ve yapılandırılmış her şey var ve şirket içinde barındırılan ağ geçidi, ölçümleri StatsD aracılığıyla raporlemelidir. Prometheus, StatsD 'daki ölçümleri alacak. Prometheus hizmetini kullanarak `EXTERNAL-IP` `PORT` Prometheus panosuna gidin. 
+Şimdi dağıtılan ve yapılandırılmış her şey var ve şirket içinde barındırılan ağ geçidi, ölçümleri StatsD aracılığıyla raporlemelidir. Prometheus, StatsD 'daki ölçümleri alacak. Prometheus hizmetini kullanarak Prometheus panosuna gidin `EXTERNAL-IP` `PORT` . 
 
 Şirket içinde barındırılan ağ geçidiyle bazı API çağrıları yapın, her şey doğru yapılandırılmışsa, aşağıdaki ölçümleri görüntüleyebilmelisiniz:
 
-| Ölçüm  | Açıklama |
+| Metric  | Açıklama |
 | ------------- | ------------- |
 | İstekler  | Dönemdeki API isteklerinin sayısı |
 | Durationınms | Ağ geçidinin isteği aldığı andan, yanıtın tamamen gönderildiği ana kadar geçen milisaniye cinsinden süre |
@@ -198,20 +198,20 @@ kubectl rollout restart deployment/<deployment-name>
 
 ## <a name="logs"></a>Günlükler
 
-Şirket içinde barındırılan ağ geçidi, varsayılan `stdout` `stderr` olarak günlüklere çıkış verir. Aşağıdaki komutu kullanarak günlükleri kolayca görüntüleyebilirsiniz:
+Şirket içinde barındırılan ağ geçidi, varsayılan olarak günlüklere çıkış verir `stdout` `stderr` . Aşağıdaki komutu kullanarak günlükleri kolayca görüntüleyebilirsiniz:
 
 ```console
 kubectl logs <pod-name>
 ```
 
-Şirket içinde barındırılan ağ geçidiniz Azure Kubernetes hizmetinde dağıtılmışsa, iş yüklerinizi toplamak `stdout` `stderr` ve Log Analytics günlükleri görüntülemek Için [kapsayıcılar için Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) 'yi etkinleştirebilirsiniz. 
+Şirket içinde barındırılan ağ geçidiniz Azure Kubernetes hizmetinde dağıtılmışsa, iş yüklerinizi toplamak ve Log Analytics günlükleri görüntülemek için [kapsayıcılar Için Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) 'yi etkinleştirebilirsiniz `stdout` `stderr` . 
 
-Şirket içinde `localsyslog`barındırılan ağ geçidi, `rfc5424`, ve `journal`gibi çeşitli protokolleri de destekler. Aşağıdaki tabloda desteklenen tüm seçenekler özetlenmektedir. 
+Şirket içinde barındırılan ağ geçidi,, ve gibi çeşitli protokolleri de `localsyslog` destekler `rfc5424` `journal` . Aşağıdaki tabloda desteklenen tüm seçenekler özetlenmektedir. 
 
-| Alan  | Varsayılan | Açıklama |
+| Alan  | Varsayılan | Description |
 | ------------- | ------------- | ------------- |
-| Telemetri. logs. std  | `text` | Standart akışlara günlük kaydını sağlar. Değer `none`, `text`,`json` |
-| Telemetri. logs. Local  | `none` | Yerel günlüğe kaydetmeye izin vermez. Değer `none`, `auto` `localsyslog`,,, `rfc5424``journal`  |
+| Telemetri. logs. std  | `text` | Standart akışlara günlük kaydını sağlar. Değer `none` , `text` ,`json` |
+| Telemetri. logs. Local  | `none` | Yerel günlüğe kaydetmeye izin vermez. Değer,, `none` , `auto` , `localsyslog` `rfc5424``journal`  |
 | Telemetri. logs. Local. localsyslog. Endpoint  | yok | Localsyslog uç noktasını belirtir.  |
 | Telemetri. logs. Local. localsyslog. tesis  | yok | Localsyslog [tesis kodunu](https://en.wikipedia.org/wiki/Syslog#Facility)belirtir. ör.,`7` 
 | Telemetri. logs. Local. rfc5424. Endpoint  | yok | Rfc5424 uç noktasını belirtir.  |

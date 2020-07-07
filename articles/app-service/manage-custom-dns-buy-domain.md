@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535715"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için bir özel etki alanı adı satın alma
@@ -18,7 +18,7 @@ App Service etki alanları doğrudan Azure 'da yönetilen en üst düzey etki al
 
 Azure VM veya Azure depolama için bkz. [Azure VM veya Azure Storage 'a App Service etki alanı atama](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage). Cloud Services için bkz. [Azure bulut hizmeti için özel etki alanı adı yapılandırma](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -59,7 +59,7 @@ App Service planı **F1** katmanında değilse, **Ölçek artırma** sayfasını
 
 Ücretsiz olmayan katmanlardan birini seçin (**D1**, **B1**, **B2**, **B3** veya **Üretim** kategorisindeki herhangi bir katmanı). Ek seçenekler için **Ek seçeneklere bakın**’a tıklayın.
 
-**Uygula**’ya tıklayın.
+**Uygula**'ya tıklayın.
 
 ![Fiyatlandırma katmanını denetleyin](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -91,7 +91,7 @@ Azure App Service etki alanları hakkında fiyatlandırma bilgileri için [App S
 
 ### <a name="configure-the-domain-purchase"></a>Etki alanı satın almayı yapılandırma
 
-**App Service etki** alanı sayfasında, **etki alanı ara** kutusuna satın almak istediğiniz etki alanı adını yazın ve yazın `Enter`. Önerilen kullanılabilir etki alanları, metin kutusunun hemen altında gösterilir. Satın almak istediğiniz bir veya daha fazla etki alanını seçin.
+**App Service etki** alanı sayfasında, **etki alanı ara** kutusuna satın almak istediğiniz etki alanı adını yazın ve yazın `Enter` . Önerilen kullanılabilir etki alanları, metin kutusunun hemen altında gösterilir. Satın almak istediğiniz bir veya daha fazla etki alanını seçin.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
@@ -106,9 +106,9 @@ Gerekli tüm alanları mümkün olduğunca fazla doğrulukta doldurmanız öneml
 
 Ardından, etki alanınız için istenen seçenekleri seçin. Açıklamalar için aşağıdaki tabloya bakın:
 
-| Ayar | Önerilen Değer | Açıklama |
+| Ayar | Önerilen Değer | Description |
 |-|-|-|
-|Gizlilik koruması | Etkinleştirme | Satın alma fiyatına _ücretsiz_olarak dahil edilen "Gizlilik Koruması" nı kabul edin. Bazı üst düzey etki alanları, gizlilik korumasını desteklemeyen kayıt şirketlerinde tarafından yönetilir ve **Gizlilik Koruması** sayfasında listelenir. |
+|Gizlilik koruması | Etkinleştir | Satın alma fiyatına _ücretsiz_olarak dahil edilen "Gizlilik Koruması" nı kabul edin. Bazı üst düzey etki alanları, gizlilik korumasını desteklemeyen kayıt şirketlerinde tarafından yönetilir ve **Gizlilik Koruması** sayfasında listelenir. |
 | Varsayılan konak adlarını ata | **www** ve**\@** | İsterseniz istenen konak adı bağlamalarını seçin. Etki alanı satın alma işlemi tamamlandığında, uygulamanıza seçili ana bilgisayar adları üzerinden erişilebilir. Uygulama [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)arkasındaysa, Traffic Manager bir kaydı desteklemediği için kök etki alanını (@) atama seçeneğini görmezsiniz. Etki alanı satın alma işlemi tamamlandıktan sonra ana bilgisayar adı atamaları üzerinde değişiklik yapabilirsiniz. |
 
 ### <a name="accept-terms-and-purchase"></a>Koşulları kabul edin ve satın alın
@@ -140,7 +140,7 @@ Ayrıca, özel **ana bilgisayar adları** bölümünde **özel etki alanları** 
 > Özel etki alanınız için **güvenli olmayan** bir etiket, henüz bir TLS/SSL sertifikasına bağlı olmadığı ve bir tarayıcıdan özel etki ALANıNA yönelik https isteğinin, tarayıcıya bağlı olarak bir hata veya uyarı alacağı anlamına gelir. TLS bağlamasını yapılandırmak için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](configure-ssl-bindings.md).
 >
 
-Ana bilgisayar adlarını test etmek için tarayıcıda listelenen ana bilgisayar adları bölümüne gidin. Yukarıdaki ekran görüntüsündeki örnekte, _kontoso.net_ ve _www\.kontoso.net_sayfasına gidin.
+Ana bilgisayar adlarını test etmek için tarayıcıda listelenen ana bilgisayar adları bölümüne gidin. Yukarıdaki ekran görüntüsündeki örnekte, _kontoso.net_ ve _www \. kontoso.net_sayfasına gidin.
 
 ## <a name="assign-hostnames-to-app"></a>Ana bilgisayar adlarını uygulamaya ata
 
@@ -168,10 +168,10 @@ Satın alınan etki alanının **App Service etki alanları** bölümünde liste
 **Konak adı ekle**'yi seçin.
 
 ### <a name="configure-hostname"></a>Ana bilgisayar adını Yapılandır
-Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örneğin:
+Konak adı **Ekle** iletişim kutusunda, App Service etki alanınızın veya herhangi bir alt etki alanının tam etki alanı adını yazın. Örnek:
 
 - kontoso.net
-- www\.kontoso.net
+- www \. kontoso.net
 - abc.kontoso.net
 
 İşiniz bittiğinde **Doğrula**' yı seçin. Ana bilgisayar adı kayıt türü sizin için otomatik olarak seçilir.
@@ -235,7 +235,7 @@ Azure 'da, bir App Service etki alanı için DNS kayıtları [Azure DNS](https:/
 
 ### <a name="open-app-service-domain"></a>App Service etki alanı aç
 
-Azure Portal, sol menüden **tüm hizmetler** > **App Service etki alanları**' nı seçin.
+Azure Portal, sol menüden **tüm hizmetler**  >  **App Service etki alanları**' nı seçin.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -255,7 +255,7 @@ App Service etki alanını satın aldıktan sonra, satın alma işlemini tam ger
 
 ### <a name="open-app-service-domain"></a>App Service etki alanı aç
 
-Azure Portal, sol menüden **tüm hizmetler** > **App Service etki alanları**' nı seçin.
+Azure Portal, sol menüden **tüm hizmetler**  >  **App Service etki alanları**' nı seçin.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -287,4 +287,4 @@ Satın alınan etki alanındaki iptal süresi dolmuşsa, **satınalmayı Iptal e
 
 ## <a name="direct-default-url-to-a-custom-directory"></a>Varsayılan URL'yi özel bir dizine yönlendirme
 
-Varsayılan olarak, App Service web isteklerini uygulama kodunuzun kök dizinine yönlendirir. Bunları gibi bir alt dizine `public`yönlendirmek için bkz. [varsayılan URL 'yi özel bir dizine yönlendirme](app-service-web-tutorial-custom-domain.md#virtualdir).
+Varsayılan olarak, App Service web isteklerini uygulama kodunuzun kök dizinine yönlendirir. Bunları gibi bir alt dizine yönlendirmek için `public` bkz. [varsayılan URL 'yi özel bir dizine yönlendirme](app-service-web-tutorial-custom-domain.md#virtualdir).

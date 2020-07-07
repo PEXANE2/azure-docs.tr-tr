@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437009"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka iş yüklerini Azure HDInsight 'a geçirme 4,0
@@ -54,7 +54,7 @@ Güncelleştirmelerin tüm listesi için, bkz. [Apache Kafka 2,0 sürüm notlar�
 
 ## <a name="kafka-client-compatibility"></a>Kafka istemci uyumluluğu
 
-Yeni Kafka aracıları eski istemcileri destekler. [TLA-35-alma Protokolü sürümü](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) , bir Kafka aracısının işlevlerini dinamik olarak belirlemek için bir mekanizma sunmuştur ve [TLA-97: IYILEŞTIRILMIŞ Kafka Istemci RPC uyumluluk ilkesi](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) , Java istemcisi için yeni bir uyumluluk ilkesi ve garantisi getirmiştir. Daha önce, bir Kafka istemcisinin aynı sürümün veya daha yeni bir sürümün aracısıyla etkileşim kurması gerekiyordu. Artık, Java istemcilerinin ve gibi `librdkafka` tla-35 ' i destekleyen diğer istemcilerin daha yeni sürümleri, daha eski istek türlerine geri dönebilir veya işlevler kullanılamıyorsa uygun hatalar oluşturabilir.
+Yeni Kafka aracıları eski istemcileri destekler. [TLA-35-alma Protokolü sürümü](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) , bir Kafka aracısının işlevlerini dinamik olarak belirlemek için bir mekanizma sunmuştur ve [TLA-97: IYILEŞTIRILMIŞ Kafka Istemci RPC uyumluluk ilkesi](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) , Java istemcisi için yeni bir uyumluluk ilkesi ve garantisi getirmiştir. Daha önce, bir Kafka istemcisinin aynı sürümün veya daha yeni bir sürümün aracısıyla etkileşim kurması gerekiyordu. Artık, Java istemcilerinin ve gibi TLA-35 ' i destekleyen diğer istemcilerin daha yeni sürümleri, `librdkafka` daha eski istek türlerine geri dönebilir veya işlevler kullanılamıyorsa uygun hatalar oluşturabilir.
 
 ![Yükseltme Kafka istemci uyumluluğu](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
 
