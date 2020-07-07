@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f87a80d5300b58b9f888d3e485d5e9dbf90c4a80
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 091129d1fbca4141e9841af6a9991d44a6663801
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608697"
+ms.locfileid: "85799199"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Öğretici: Google Cloud (G Suite) Bağlayıcısı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -129,19 +129,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-        ```https
-        google.com/a/<yourdomain.com>
-        google.com
-        https://google.com
-        https://google.com/a/<yourdomain.com>
-        ```
+    ```http
+    google.com/a/<yourdomain.com>
+    google.com
+    https://google.com
+    https://google.com/a/<yourdomain.com>
+    ```
 
     c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın: 
 
-        ```https
-        https://www.google.com
-        https://www.google.com/a/<yourdomain.com>
-        ```
+    ```http
+    https://www.google.com
+    https://www.google.com/a/<yourdomain.com>
+    ```
 
 1. **Temel SAML yapılandırması** bölümünde **Google Cloud Platform** için yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
 
@@ -149,19 +149,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
     
-        ```https
-        google.com/a/<yourdomain.com>
-        google.com
-        https://google.com
-        https://google.com/a/<yourdomain.com>
-        ```
+    ```http
+    google.com/a/<yourdomain.com>
+    google.com
+    https://google.com
+    https://google.com/a/<yourdomain.com>
+    ```
     
     c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın: 
     
-        ```https
-        https://www.google.com
-        https://www.google.com/a/<yourdomain.com>
-        ```
+    ```http
+    https://www.google.com
+    https://www.google.com/a/<yourdomain.com>
+    ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Google Cloud (G Suite) Bağlayıcısı çoklu oturum açma yapılandırmasında varlık KIMLIĞI/tanımlayıcı değeri sağlamıyor; bu nedenle, **etki alanına özel veren** seçeneğinin Işaretini kaldırdığınızda tanımlayıcı değeri olur `google.com` . **Etki alanına özel veren** seçeneğini denetederseniz, olacaktır `google.com/a/<yourdomainname.com>` . **Etki alanına özel veren** seçeneğini denetlemek/işaretini kaldırmak için, öğreticide daha sonra açıklanan **Google Cloud (G SUITE) bağlayıcı SSO 'yu yapılandırın** bölümüne gitmeniz gerekir. Daha fazla bilgi için [Google Cloud (G Suite) bağlayıcı istemci destek ekibine](https://www.google.com/contact/)başvurun.

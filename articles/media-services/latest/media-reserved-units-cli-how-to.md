@@ -15,10 +15,10 @@ ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582284"
 ---
 # <a name="scaling-media-processing"></a>Medya işlemeyi ölçeklendirme
@@ -37,7 +37,7 @@ Aşağıdaki tablo, farklı kodlama hızları arasından seçim yaparken bir kar
 | **S2**|Tek bit hızı ve çoklu bit hızı kodlaması.<br/>SD ve HD kodlaması için normal kullanım.|"H264 Single bit hızı 720p" önayar ile kodlama 6 dakikadan fazla sürer.<br/><br/>"H264 çoklu bit hızı 720p" ön ayarıyla kodlama 12 dakika sürer.|
 | **S3**|Tek bit hızı ve çoklu bit hızı kodlaması.<br/>Tam HD ve 4K çözünürlük videoları. Zamana duyarlı, kodlamayı daha hızlı bir şekilde kapatma.|"H264 Single bit hızı 1080p" ön ayarı ile kodlama işlemi yaklaşık 3 dakika sürer.<br/><br/>"H264 çoklu bit hızı 1080p" ön ayarı ile kodlama yaklaşık 8 dakika sürer.|
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 * Media Services v3 veya Video Indexer tarafından tetiklenen ses analizi ve video analizi işleri için S3 birim türü kesinlikle önerilir.
 * Paylaşılan havuz kullanılıyorsa, diğer bir deyişle, ayrılmış birimler olmadan, kodlama görevleriniz S1 RUs ile aynı performansa sahiptir. Ancak, görevlerinizin sıraya alınmış durumda harcayacağı zamana ve belirli bir zamanda yalnızca bir görevin çalıştığı zamana bir üst sınır yoktur.
@@ -47,7 +47,7 @@ Makalenin geri kalanında, MRU 'yi ölçeklendirmek için [Media Services v3 CLI
 > [!NOTE]
 > Media Services v3 veya Video Indexer ile tetiklenen Ses Analizi ve Video Analizi İşleri için hesabınıza 10 S3 MRU sağlamanız önerilir. 10 ' dan fazla S3 MRU 'a ihtiyacınız varsa [Azure Portal](https://portal.azure.com/)kullanarak bir destek bileti açın.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 [Media Services hesabı oluşturun](create-account-cli-how-to.md).
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: d2cd4e56477ea39587ce318538c9ddd84c51b03b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bc7dfcef45917081ec9ea1e97f4c36e4348dd9e7
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448115"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985284"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve Java ile dijital mürekkep tanıma
 
@@ -29,9 +29,9 @@ Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağ
 
 Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904)' da bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- [&trade; Java Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) veya üzeri.
+- [Java &trade; Development kıt (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) veya üzeri.
 
 - Bu kitaplıkları Maven deposundan içeri aktar
     - [Java paketindeki JSON](https://mvnrepository.com/artifact/org.json/json)
@@ -55,23 +55,23 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="create-a-function-to-send-requests"></a>İstek göndermek için bir işlev oluşturma
 
-1. Yukarıda oluşturulan değişkenleri alan adlı `sendRequest()` yeni bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
+1. Yukarıda oluşturulan değişkenleri alan adlı yeni bir işlev oluşturun `sendRequest()` . Ardından aşağıdaki adımları gerçekleştirin.
 
-2. API 'ye `CloseableHttpClient` istek gönderebilen bir nesne oluşturun. Uç noktanızı ve mürekkep tanıyıcı `HttpPut` URL 'sini birleştirerek isteği bir istek nesnesine gönderin.
+2. `CloseableHttpClient`API 'ye istek gönderebilen bir nesne oluşturun. `HttpPut`Uç noktanızı ve mürekkep tanıyıcı URL 'sini birleştirerek isteği bir istek nesnesine gönderin.
 
-3. `Content-Type` Üstbilgiyi `application/json`ayarlamak için `Ocp-Apim-Subscription-Key` isteğin `setHeader()` işlevini kullanın ve abonelik anahtarınızı üstbilgiye ekleyin.
+3. `setHeader()`Üstbilgiyi ayarlamak için isteğin işlevini kullanın `Content-Type` `application/json` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
 
-4. Gönderilecek verilere isteğin `setEntity()` işlevini kullanın.   
+4. `setEntity()`Gönderilecek verilere isteğin işlevini kullanın.   
 
-5. İsteği göndermek ve bir `execute()` `CloseableHttpResponse` nesnesine kaydetmek için istemcinin işlevini kullanın. 
+5. `execute()`İsteği göndermek ve bir nesnesine kaydetmek için istemcinin işlevini kullanın `CloseableHttpResponse` . 
 
-6. Yanıt içeriğini `HttpEntity` depolamak için bir nesne oluşturun. İçeriğini ile `getEntity()`alın. Yanıt boş değilse, döndürün.
+6. `HttpEntity`Yanıt içeriğini depolamak için bir nesne oluşturun. İçeriğini ile alın `getEntity()` . Yanıt boş değilse, döndürün.
     
     [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
 ## <a name="send-an-ink-recognition-request"></a>Mürekkep tanıma isteği gönder
 
-Mürekkep vuruşu verilerinizi tanımak `recognizeInk()` için adlı bir yöntem oluşturun. Uç nokta `sendRequest()` , URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan yöntemi çağırın. Sonucu alın ve konsola yazdırın.
+`recognizeInk()`Mürekkep vuruşu verilerinizi tanımak için adlı bir yöntem oluşturun. `sendRequest()`Uç nokta, URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan yöntemi çağırın. Sonucu alın ve konsola yazdırın.
 
 [!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 

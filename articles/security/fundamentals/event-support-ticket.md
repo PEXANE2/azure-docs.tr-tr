@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80548600"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Güvenlik Olayı Destek Biletini Günlüğe Kaydetme
@@ -32,7 +32,7 @@ ms.locfileid: "80548600"
 
     i. Sorun ve/veya güvenlik açığı nedir?
 
-    ii. Güvenlik açıkları için lütfen CVE (mitre.org) veya doldurulmuş CVSS3 v3 Hesaplayıcı (https://www.first.org/cvss/calculator/3.0).
+    ii. Güvenlik açıkları için lütfen CVE (mitre.org) veya doldurulmuş CVSS3 v3 Hesaplayıcı ( https://www.first.org/cvss/calculator/3.0) .
 
     iii. Bir çözüm veya azaltma var mı? Yanıt Evet ise lütfen düzeltme adımlarını belirtin.
 

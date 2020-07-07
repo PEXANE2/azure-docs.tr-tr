@@ -1,9 +1,8 @@
 ---
-title: Azure Resource Manager şablonları
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Azure Resource Manager şablonları-SQL yönetilen örneği & Azure SQL veritabanı
 description: Azure SQL veritabanı ve Azure SQL yönetilen örneği oluşturmak ve yapılandırmak için Azure Resource Manager şablonlarını kullanın.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
@@ -12,23 +11,23 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 76b9b1301a0aeee24b698b15a3871754de8ca0b9
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718810"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983648"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için Azure Resource Manager şablonları
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure Resource Manager şablonlar, altyapınızı kod olarak tanımlamanızı ve çözümlerinizi Azure SQL veritabanı ve Azure SQL yönetilen örneği için Azure bulutuna dağıtmanızı sağlar.
+Azure Resource Manager şablonları, altyapınızı kod olarak tanımlamanızı ve çözümlerinizi Azure SQL Veritabanı ile Azure SQL Yönetilen Örneği için Azure bulutuna dağıtmanızı sağlar.
 
 ## <a name="azure-sql-database"></a>[Azure SQL Veritabanı](#tab/single-database)
 
 Aşağıdaki tabloda, Azure SQL veritabanı için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
 
-| |  |
+|Bağlantı |Description|
 |---|---|
 | [SQL Veritabanı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Bu Azure Resource Manager şablonu, Azure SQL veritabanı 'nda tek bir veritabanı oluşturur ve sunucu düzeyinde IP güvenlik duvarı kurallarını yapılandırır. |
 | [Sunucu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Bu Azure Resource Manager şablonu, Azure SQL veritabanı için bir sunucu oluşturur. |
@@ -47,7 +46,7 @@ Aşağıdaki tabloda, Azure SQL veritabanı için Azure Resource Manager şablon
 
 Aşağıdaki tabloda, Azure SQL yönetilen örneği için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
 
-| |  |
+|Bağlantı|Description|
 |---|---|
 | [Yeni bir VNet 'te SQL yönetilen örneği](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Bu Azure Resource Manager şablonu, sanal ağda yeni bir yapılandırılmış Azure sanal ağı ve yönetilen örnek oluşturur. |
 | [SQL yönetilen örneği için ağ ortamı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Bu dağıtım, yönetilen örneklerinize ve diğer kaynakları yerleştirebileceğiniz (örneğin, VM 'Ler, App Service ortamları, vb.) bir tane olmak üzere iki alt ağ içeren yapılandırılmış bir Azure sanal ağı oluşturacak. Bu şablon, yönetilen örnekleri dağıtabileceğiniz, düzgün şekilde yapılandırılmış bir ağ ortamı oluşturacak. |

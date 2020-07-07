@@ -8,10 +8,10 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80545959"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Tablo depolama işlemlerini gerçekleştirme 
@@ -31,16 +31,16 @@ Bu nasıl yapılır makalesi, genel Azure Tablo depolama işlemlerini içerir. A
 
 Bu nasıl yapılır makalesi, işiniz bittiğinde kolayca kaldırabilmeniz için yeni bir kaynak grubunda yeni bir Azure depolama hesabı oluşturmayı gösterir. Bunun yerine var olan bir depolama hesabı kullanıyorsanız bunu yapabilirsiniz.
 
-Örnekler az PowerShell Modules `Az.Storage (1.1.0 or greater)` ve `Az.Resources (1.2.0 or greater)`gerektirir. Bir PowerShell penceresinde, sürümü bulmak `Get-Module -ListAvailable Az*` için öğesini çalıştırın. Hiçbir şey görüntülenmiyorsa veya yükseltmeniz gerekiyorsa, bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps).
+Örnekler az PowerShell Modules ve gerektirir `Az.Storage (1.1.0 or greater)` `Az.Resources (1.2.0 or greater)` . Bir PowerShell penceresinde, `Get-Module -ListAvailable Az*` sürümü bulmak için öğesini çalıştırın. Hiçbir şey görüntülenmiyorsa veya yükseltmeniz gerekiyorsa, bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Bu Azure özelliği PowerShell 'den kullanıldığında `Az` modülün yüklü olması gerekir. Geçerli sürümü `AzTable` , eski Azurerd modülüyle uyumlu değil.
+> Bu Azure özelliği PowerShell 'den kullanıldığında `Az` modülün yüklü olması gerekir. Geçerli sürümü, `AzTable` eski Azurerd modülüyle uyumlu değil.
 > Gerekirse [az Module 'ü yüklemeye yönelik en son yükleme yönergelerini](/powershell/azure/install-az-ps) izleyin.
 
 Azure PowerShell yüklendikten veya güncelleştirildikten sonra, varlıkları yönetmeye yönelik komutlara sahip olan, **Aztable**modülünü yüklemelisiniz. Bu modülü yüklemek için PowerShell 'i yönetici olarak çalıştırın ve **install-Module** komutunu kullanın.
 
 > [!IMPORTANT]
-> Modül adı uyumluluk nedenleriyle, bu modülü hala PowerShell Galerisi eski adı `AzureRmStorageTables` altında yayımlıyoruz. Bu belge yalnızca yeni ada başvuru oluşturacak.
+> Modül adı uyumluluk nedenleriyle, bu modülü hala PowerShell Galerisi eski adı altında yayımlıyoruz `AzureRmStorageTables` . Bu belge yalnızca yeni ada başvuru oluşturacak.
 
 ```powershell
 Install-Module AzTable
@@ -91,7 +91,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-new-table"></a>Yeni tablo oluştur
 
-Tablo oluşturmak için [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) cmdlet 'ini kullanın. Bu örnekte, tablo çağırılır `pshtesttable`.
+Tablo oluşturmak için [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) cmdlet 'ini kullanın. Bu örnekte, tablo çağırılır `pshtesttable` .
 
 ```powershell
 $tableName = "pshtesttable"

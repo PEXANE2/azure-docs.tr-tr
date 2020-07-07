@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: f91efb7f99b826b6c1db330fb480013ab2486bdc
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508267"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı ölçümleri hakkında uyarı ayarlamak için Azure portal kullanın 
@@ -25,7 +25,7 @@ Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandı
 * Web kancası çağırma
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
-* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portalındaki](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure İzleyici REST API'si](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -38,7 +38,7 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
 3. **Ölçüm uyarısı Ekle** (+ simgesi) seçeneğini belirleyin.
 
-4. **Kural oluştur** sayfası aşağıda gösterildiği gibi açılır. Gerekli bilgileri girin:
+4. **Kural oluştur** sayfası aşağıda gösterildiği gibi açılır. Gereken bilgileri doldurun:
 
    ![Ölçüm uyarısı formu Ekle](./media/howto-alert-on-metric/4-add-rule-form.png)
 

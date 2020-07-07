@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417972"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen sistem değişkenleri
@@ -26,7 +26,7 @@ Bu makalede Azure Data Factory tarafından desteklenen sistem değişkenleri aç
 ## <a name="pipeline-scope"></a>Ardışık düzen kapsamı
 Bu sistem değişkenlerine JSON işlem hattı içinde herhangi bir yerde başvurulabilir.
 
-| Değişken Adı | Açıklama |
+| Değişken Adı | Description |
 | --- | --- |
 | @pipeline(). DataFactory |İşlem hattı çalıştırmasının çalıştırıldığı veri fabrikasının adı |
 | @pipeline(). Konfigüre |İşlem hattının adı |
@@ -39,16 +39,16 @@ Bu sistem değişkenlerine JSON işlem hattı içinde herhangi bir yerde başvur
 ## <a name="schedule-trigger-scope"></a>Tetikleyici kapsamını zamanla
 Tetikleyici türü "ScheduleTrigger" ise bu sistem değişkenlerine, JSON tetikleyicisi içinde herhangi bir yerde başvurulabilir.
 
-| Değişken Adı | Açıklama |
+| Değişken Adı | Description |
 | --- | --- |
-| @trigger(). scheduledTime |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için zamanlandığı zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` sırasıyla döndürülür.|
-| @trigger(). başlangıçsaati |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için **aslında** tetikleyeceği zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` sırasıyla bu gibi bir şey döndürebilir. (Note: zaman damgası varsayılan olarak ISO 8601 biçimindedir)|
+| @trigger(). scheduledTime |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için zamanlandığı zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` sırasıyla döndürülür `2017-06-01T22:30:00Z` .|
+| @trigger(). başlangıçsaati |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için **aslında** tetikleyeceği zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken sırasıyla bu gibi bir şey döndürebilir `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` . (Note: zaman damgası varsayılan olarak ISO 8601 biçimindedir)|
 
 ## <a name="tumbling-window-trigger-scope"></a>Atlayan pencere tetikleme kapsamı
 Tetikleyici türü "TumblingWindowTrigger" ise bu sistem değişkenlerine, JSON tetikleyicisi içinde herhangi bir yerde başvurulabilir.
 (Note: zaman damgası varsayılan olarak ISO 8601 biçimindedir)
 
-| Değişken Adı | Açıklama |
+| Değişken Adı | Description |
 | --- | --- |
 | @trigger(). çıktılar. windowStartTime |Tetikleyici, işlem hattı çalıştırmasını çağırmak üzere zamanlandığında pencerenin başlangıcı. Atlayan pencere tetikleyicisi "saatlik" bir sıklık içeriyorsa, bu saat, saatin başlangıcında olur.|
 | @trigger(). çıktılar. Windowbitişsaati |Tetikleyici, işlem hattı çalıştırmasını çağırmak üzere zamanlandığında pencerenin sonu. Atlayan pencere tetikleyicisi "saatlik" bir sıklık içeriyorsa, saat sonunda saat olur.|

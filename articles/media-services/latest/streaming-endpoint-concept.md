@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582722"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
@@ -34,25 +34,25 @@ Media Services bir hesap oluşturduğunuzda, bir durdurulmuş durumda sizin içi
 
 ## <a name="naming-convention"></a>Adlandırma kuralı
 
-Akış URL 'sinin ana bilgisayar adı biçimi: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, burada `servicename` = akış uç noktası adı veya canlı olay adı.
+Akış URL 'sinin ana bilgisayar adı biçimi: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net` , burada `servicename` = akış uç noktası adı veya canlı olay adı.
 
-Varsayılan akış uç noktası `servicename` kullanılırken URL: `{accountname}-{regionname}.streaming.azure.net`olarak atlanır.
+Varsayılan akış uç noktası kullanılırken `servicename` URL: olarak atlanır `{accountname}-{regionname}.streaming.azure.net` .
 
 ### <a name="limitations"></a>Sınırlamalar
 
 * Akış uç noktası adı, en fazla 24 karakter uzunluğunda bir değer içerir.
-* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
 ## <a name="types"></a>Türler
 
-İki **akış uç noktası** türü vardır: **Standart** (Önizleme) ve **Premium**. Tür, akış uç noktası için ayırdığınız ölçek birimi sayısıyla (`scaleUnits`) tanımlanır.
+İki **akış uç noktası** türü vardır: **Standart** (Önizleme) ve **Premium**. Tür, `scaleUnits` akış uç noktası için ayırdığınız ölçek birimi sayısıyla () tanımlanır.
 
 Türler aşağıdaki tabloda açıklanmıştır:
 
-|Tür|Ölçek birimleri|Açıklama|
+|Tür|Ölçek birimleri|Description|
 |--------|--------|--------|  
-|**Standart**|0|Varsayılan akış uç noktası **Standart** bir türdür — ayarlanarak `scaleUnits`Premium türüne değiştirilebilir.|
-|**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. Bir **Premium** türüne (akış birimleri) ayarlayarak `scaleUnits` geçiş yapabilirsiniz. `scaleUnits`200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
+|**Standart**|0|Varsayılan akış uç noktası **Standart** bir türdür — ayarlanarak Premium türüne değiştirilebilir `scaleUnits` .|
+|**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. Bir **Premium** türüne `scaleUnits` (akış birimleri) ayarlayarak geçiş yapabilirsiniz. `scaleUnits`200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
 
 > [!NOTE]
 > Büyük internet kitlelerine içerik teslim etmek isteyen müşteriler için, akış uç noktasında CDN 'yi etkinleştirmenizi öneririz.
@@ -79,23 +79,23 @@ Aşamalı indirme|Yes|Yes
 
 Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları sağlar. Yeni bir akış uç noktası ve tüm özelliklerin açıklamalarını oluşturma örnekleri için bkz. [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
 
-- `accessControl`: Bu akış uç noktası için şu güvenlik ayarlarını yapılandırmak için kullanılır: Akamai Imza üst bilgisi kimlik doğrulama anahtarları ve bu uç noktaya bağlanmasına izin verilen IP adresleri. Bu özellik yalnızca false olarak ayarlandığında ayarlanabilir `cdnEnabled` .
+- `accessControl`: Bu akış uç noktası için şu güvenlik ayarlarını yapılandırmak için kullanılır: Akamai Imza üst bilgisi kimlik doğrulama anahtarları ve bu uç noktaya bağlanmasına izin verilen IP adresleri. Bu özellik yalnızca `cdnEnabled` false olarak ayarlandığında ayarlanabilir.
 
-- `cdnEnabled`: Bu akış uç noktası için Azure CDN tümleştirme özelliğinin etkin olup olmadığını gösterir (varsayılan olarak devre dışı). True olarak ayarlarsanız `cdnEnabled` aşağıdaki konfigürasyonlar devre dışı bırakılır: `customHostNames` ve. `accessControl`
+- `cdnEnabled`: Bu akış uç noktası için Azure CDN tümleştirme özelliğinin etkin olup olmadığını gösterir (varsayılan olarak devre dışı). `cdnEnabled`True olarak ayarlarsanız aşağıdaki konfigürasyonlar devre dışı bırakılır: `customHostNames` ve `accessControl` .
 
     Tüm veri merkezleri Azure CDN tümleştirmeyi desteklemez. Veri merkezinizde Azure CDN tümleştirmesinin mevcut olup olmadığını denetlemek için aşağıdaki adımları uygulayın:
 
-  - Öğesini true `cdnEnabled` olarak ayarlamayı deneyin.
-  - CDN özelliği geçerli bölgede kullanılamadığından, `HTTP Error Code 412` "akış uç noktası CdnEnabled özelliği doğru olarak ayarlanamıyor" iletisiyle döndürülen sonucu (preconditionfailed) denetleyin. "
+  - Öğesini `cdnEnabled` true olarak ayarlamayı deneyin.
+  - `HTTP Error Code 412`CDN özelliği geçerli bölgede kullanılamadığından, "akış uç noktası CdnEnabled özelliği doğru olarak ayarlanamıyor" iletisiyle döndürülen sonucu (preconditionfailed) denetleyin. "
 
     Bu hatayı alırsanız veri merkezi tarafından desteklenmez. Başka bir veri merkezini deneyin.
 
-- `cdnProfile``cdnEnabled` : True olarak ayarlandığında değerleri de geçirebilirsiniz `cdnProfile` . `cdnProfile`CDN uç nokta noktasının oluşturulacağı CDN profilinin adıdır. Var olan bir cdnProfile sağlayabilirsiniz veya yenisini kullanabilirsiniz. Değer NULL ise ve `cdnEnabled` true ise, "AzureMediaStreamingPlatformCdnProfile" varsayılan değeri kullanılır. Belirtilen `cdnProfile` zaten varsa, altında bir uç nokta oluşturulur. Profil yoksa, yeni bir profil otomatik olarak oluşturulur.
+- `cdnProfile`: `cdnEnabled` True olarak ayarlandığında değerleri de geçirebilirsiniz `cdnProfile` . `cdnProfile`CDN uç nokta noktasının oluşturulacağı CDN profilinin adıdır. Var olan bir cdnProfile sağlayabilirsiniz veya yenisini kullanabilirsiniz. Değer NULL ise ve `cdnEnabled` true ise, "AzureMediaStreamingPlatformCdnProfile" varsayılan değeri kullanılır. Belirtilen `cdnProfile` zaten varsa, altında bir uç nokta oluşturulur. Profil yoksa, yeni bir profil otomatik olarak oluşturulur.
 - `cdnProvider`: CDN etkinleştirildiğinde değerleri de geçirebilirsiniz `cdnProvider` . `cdnProvider`hangi sağlayıcının kullanılacağını denetler. Şu anda üç değer desteklenir: "StandardVerizon", "PremiumVerizon" ve "Standardadkamai". Değer sağlanmazsa ve `cdnEnabled` true ise, "StandardVerizon" kullanılır (varsayılan değer).
 - `crossSiteAccessPolicies`: Çeşitli istemciler için çapraz site erişim ilkeleri belirtmek için kullanılır. Daha fazla bilgi için bkz. [etki alanları arası ilke dosyası belirtimi](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) ve [bir hizmetin etki alanı sınırları genelinde kullanılabilir hale getirilmesi](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx). Ayarlar yalnızca Kesintisiz Akış için geçerlidir.
-- `customHostNames`: Bir akış uç noktasını, özel bir ana bilgisayar adına yönlendirilmiş trafiği kabul edecek şekilde yapılandırmak için kullanılır. Bu özellik standart ve Premium akış uç noktaları için geçerlidir ve şu durumlarda `cdnEnabled`ayarlanabilir: false.
+- `customHostNames`: Bir akış uç noktasını, özel bir ana bilgisayar adına yönlendirilmiş trafiği kabul edecek şekilde yapılandırmak için kullanılır. Bu özellik standart ve Premium akış uç noktaları için geçerlidir ve şu durumlarda ayarlanabilir `cdnEnabled` : false.
 
-    Etki alanı adının sahipliğinin Media Services tarafından onaylanması gerekir. Media Services, kullanımda olan etki alanına eklenecek bir bileşen `CName` olarak MEDIA SERVICES hesap kimliğini içeren bir kayıt isteyerek etki alanı adı sahipliğini doğrular. Örnek olarak, "sports.contoso.com" için, akış uç noktası için özel bir ana bilgisayar adı olarak kullanılmak üzere, için `<accountId>.contoso.com` bir kayıt Media Services doğrulama ana bilgisayar adlarından birine işaret etmek üzere yapılandırılmalıdır. Doğrulama ana bilgisayar adı verifydns ' den oluşur. \<mediaservices-DNS-Zone>.
+    Etki alanı adının sahipliğinin Media Services tarafından onaylanması gerekir. Media Services, `CName` kullanımda olan etki alanına eklenecek bir bileşen olarak Media Services hesap kimliğini içeren bir kayıt isteyerek etki alanı adı sahipliğini doğrular. Örnek olarak, "sports.contoso.com" için, akış uç noktası için özel bir ana bilgisayar adı olarak kullanılmak üzere, için bir kayıt `<accountId>.contoso.com` Media Services doğrulama ana bilgisayar adlarından birine işaret etmek üzere yapılandırılmalıdır. Doğrulama ana bilgisayar adı, verifydns ' den oluşur \<mediaservices-dns-zone> .
 
     Aşağıda, farklı Azure bölgeleri için doğrulama kaydında kullanılacak beklenen DNS bölgeleri verilmiştir.
   
@@ -109,11 +109,11 @@ Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları s
     - `mediaservices.chinacloudapi.cn`
     - `verifydns.mediaservices.chinacloudapi.cn`
 
-    Örneğin, "945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com `CName` " ile "verifydns.Media.Azure.net" eşleyen bir kayıt, Media Services kimliği 945a4c4e-28ea-45CD-8ccb-a519f6b700ad 'nin contoso.com etki alanının sahipliğinin sahip olduğunu kanıtlar ve bu nedenle contoso.com altında herhangi bir adın bu hesabın altındaki bir akış uç noktası için özel ana bilgisayar adı olarak kullanılmasını sağlar. Medya hizmeti KIMLIK değerini bulmak için [Azure Portal](https://portal.azure.com/) gidin ve medya hizmeti hesabınızı seçin. **Hesap kimliği** sayfanın sağ üst kısmında görünür.
+    Örneğin, `CName` "945a4c4e-28ea-45CD-8ccb-a519f6b700ad.contoso.com" ile "verifydns.Media.Azure.net" eşleyen bir kayıt, MEDIA SERVICES kimliği 945a4c4e-28ea-45CD-8ccb-a519f6b700ad 'nin contoso.com etki alanının sahipliğinin sahip olduğunu kanıtlar ve bu nedenle contoso.com altında herhangi bir adın bu hesabın altındaki bir akış uç noktası için özel ana bilgisayar adı olarak kullanılmasını sağlar. Medya hizmeti KIMLIK değerini bulmak için [Azure Portal](https://portal.azure.com/) gidin ve medya hizmeti hesabınızı seçin. **Hesap kimliği** sayfanın sağ üst kısmında görünür.
 
-    `CName` Kaydın düzgün bir şekilde doğrulanması gerekmeden özel bir ana bilgisayar adı ayarlamaya yönelik bir girişim varsa, DNS yanıtı başarısız olur ve sonra bir süre önbelleğe alınır. Uygun bir kayıt olduktan sonra, önbelleğe alınmış yanıt yeniden doğrulandıktan kadar biraz zaman alabilir. Özel etki alanı için DNS sağlayıcısına bağlı olarak, kaydın yeniden doğrulanması için birkaç dakika ile bir saate kadar her yerden zaman alır.
+    Kaydın düzgün bir şekilde doğrulanması gerekmeden özel bir ana bilgisayar adı ayarlamaya yönelik bir girişim varsa `CName` , DNS yanıtı başarısız olur ve sonra bir süre önbelleğe alınır. Uygun bir kayıt olduktan sonra, önbelleğe alınmış yanıt yeniden doğrulandıktan kadar biraz zaman alabilir. Özel etki alanı için DNS sağlayıcısına bağlı olarak, kaydın yeniden doğrulanması için birkaç dakika ile bir saate kadar her yerden zaman alır.
 
-    İle `verifydns.<mediaservices-dns-zone>`eşlendiği `CName` `sports.contoso.com` `amstest-usea.streaming.media.azure.net`öğesine ek `CName` `<accountId>.<parent domain>` olarak, özel ana bilgisayar adını (örneğin,) Media Services akış uç noktasının ana bilgisayar adı (örneğin,) ile eşleyen bir tane oluşturmanız gerekir.
+    İle eşlendiği öğesine ek olarak `CName` `<accountId>.<parent domain>` `verifydns.<mediaservices-dns-zone>` , `CName` özel ana bilgisayar adını (örneğin, `sports.contoso.com` ) Media Services akış uç noktasının ana bilgisayar adı (örneğin,) ile eşleyen bir tane oluşturmanız gerekir `amstest-usea.streaming.media.azure.net` .
 
     > [!NOTE]
     > Aynı veri merkezinde bulunan akış uç noktaları aynı özel ana bilgisayar adını paylaşamaz.
@@ -130,7 +130,7 @@ Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları s
     - Durduruluyor: durdurulmuş duruma geçiyor
     - Silme: siliniyor
 
-- `scaleUnits`: 200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** bir türe taşımanız gerekiyorsa, öğesini ayarlayın `scaleUnits`.
+- `scaleUnits`: 200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** bir türe taşımanız gerekiyorsa, öğesini ayarlayın `scaleUnits` .
 
 ## <a name="why-use-multiple-streaming-endpoints"></a>Neden birden çok akış uç noktası kullanılmalıdır?
 

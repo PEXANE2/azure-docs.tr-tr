@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81533998"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Ulusal bir bulut ortamında MSAL kullanma
@@ -29,12 +29,12 @@ Microsoft kimlik doğrulama kitaplığı (MSAL), Microsoft Dünya çapındaki bu
 Genel bulut dahil, Azure Active Directory (Azure AD) aşağıdaki Ulusal bulutlara dağıtılır:  
 
 - Azure Kamu
-- Azure Çin 21Vianet
+- Azure China 21Vianet
 - Azure Almanya
 
 Bu kılavuzda, iş ve okul hesaplarında oturum açma, erişim belirteci alma ve [Azure Kamu bulut](https://azure.microsoft.com/global-infrastructure/government/) ORTAMıNDA Microsoft Graph API 'sini çağırma işlemlerinin nasıl yapılacağı gösterilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, bu önkoşulları karşıladığınızdan emin olun.
 
@@ -66,7 +66,7 @@ Aşağıdaki öğreticilerde .NET Core 2,2 MVC web uygulamasının nasıl oluşt
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-MSAL. js uygulamanızı bağımsız bulutları için etkinleştirmek için:
+Bağımsız bulutları için MSAL.js uygulamanızı etkinleştirmek için:
 
 ### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
@@ -89,7 +89,7 @@ MSAL. js uygulamanızı bağımsız bulutları için etkinleştirmek için:
 
 - Düğüm gibi yerel bir Web sunucusu için [Proje dosyalarını indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip) .
 
-  or
+  veya
 
 - [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
 
@@ -101,7 +101,7 @@ Projenizi oluşturmak için [JavaScript öğreticisindeki](tutorial-v2-javascrip
 
 ### <a name="step-4-configure-your-javascript-spa"></a>4. Adım: JavaScript SPA 'nizi yapılandırma
 
-Proje kurulumu `index.html` sırasında oluşturulan dosyada, uygulama kayıt bilgilerini ekleyin. Aşağıdaki kodu, `<script></script>` `index.html` dosyanızın gövdesinde yer alan etiketlerin içine ekleyin:
+`index.html`Proje kurulumu sırasında oluşturulan dosyada, uygulama kayıt bilgilerini ekleyin. Aşağıdaki kodu, `<script></script>` dosyanızın gövdesinde yer alan etiketlerin içine ekleyin `index.html` :
 
 ```javascript
 const msalConfig = {
@@ -125,7 +125,7 @@ Bu kodda:
 - `Enter_the_Application_Id_here`, kaydettiğiniz uygulamanın **uygulama (istemci) kimlik** değeridir.
 - `Enter_the_Tenant_Info_Here`Aşağıdaki seçeneklerden birine ayarlanır:
     - Uygulamanız **bu kuruluş dizinindeki hesapları**destekliyorsa, bu DEĞERI Kiracı kimliği veya kiracı adı (örneğin, contoso.Microsoft.com) ile değiştirin.
-    - Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri ile `organizations`değiştirin.
+    - Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri ile değiştirin `organizations` .
 
     Tüm ulusal bulutların kimlik doğrulama uç noktalarını bulmak için bkz. [Azure AD kimlik doğrulama uç noktaları](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 
@@ -184,7 +184,7 @@ Aşağıda kapsam içeren bir grafik uç noktası örneği verilmiştir:
 
 ## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
-İOS ve macOS için MSAL, Ulusal bulutlarda belirteçleri almak için kullanılabilir, ancak oluştururken `MSALPublicClientApplication`ek yapılandırma gerektirir.
+İOS ve macOS için MSAL, Ulusal bulutlarda belirteçleri almak için kullanılabilir, ancak oluştururken ek yapılandırma gerektirir `MSALPublicClientApplication` .
 
 Örneğin, uygulamanızın ulusal bir bulutta (burada ABD devlet) çok kiracılı bir uygulama olmasını istiyorsanız şunu yazabilirsiniz:
 
@@ -207,7 +207,7 @@ MSALPublicClientApplication *application =
 
 ## <a name="swift"></a>[Swift](#tab/swift)
 
-İOS ve macOS için MSAL, Ulusal bulutlarda belirteçleri almak için kullanılabilir, ancak oluştururken `MSALPublicClientApplication`ek yapılandırma gerektirir.
+İOS ve macOS için MSAL, Ulusal bulutlarda belirteçleri almak için kullanılabilir, ancak oluştururken ek yapılandırma gerektirir `MSALPublicClientApplication` .
 
 Örneğin, uygulamanızın ulusal bir bulutta (burada ABD devlet) çok kiracılı bir uygulama olmasını istiyorsanız şunu yazabilirsiniz:
 
@@ -226,5 +226,5 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 - [Ulusal bulutlarda kimlik doğrulama](authentication-national-cloud.md)
 - [Azure Devlet Kurumları](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)
+- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure Almanya](https://docs.microsoft.com/azure/germany/)

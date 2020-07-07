@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536327"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Time Series Insights kaynakları oluşturma
@@ -24,7 +24,7 @@ Bu makalede [Azure Resource Manager şablonları](https://docs.microsoft.com/azu
 
 Time Series Insights aşağıdaki kaynakları destekler:
 
-   | Kaynak | Açıklama |
+   | Kaynak | Description |
    | --- | --- |
    | Ortam | Time Series Insights ortamı, olay aracılarından okunan, depolanan ve sorgu için kullanılabilir hale getirilen olayların mantıksal gruplandırmasıdır. Daha fazla bilgi için [Azure Time Series Insights ortamınızın planını](time-series-insights-environment-planning.md) okuyun |
    | Olay Kaynağı | Olay kaynağı, Time Series Insights tarafından ortama okuma ve olayları geri almak için gereken bir olay aracısına bağlantıdır. Şu anda desteklenen olay kaynakları IoT Hub ve Olay Hub 'ı. |
@@ -64,8 +64,8 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
      | eventHubNamespaceName | Kaynak olay hub 'ının ad alanı. |
      | eventHubName | Kaynak olay hub 'ının adı. |
      | consumerGroupName | Time Series Insights hizmetinin Olay Hub 'ından verileri okumak için kullanacağı tüketici grubunun adı. **Note:** Kaynak çekişmesini önlemek için, bu tüketici grubu Time Series Insights hizmetine ayrılmalıdır ve diğer okuyucular ile paylaşılmaz. |
-     | environmentName | Ortamın adı. Ad: `<`, `>` `%` `&`,,, `:`, `\\`, `?`, `/`ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir.|
-     | eventSourceName | Olay kaynağı alt kaynağının adı. Ad: `<`, `>` `%` `&`,,, `:`, `\\`, `?`, `/`ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir. |
+     | environmentName | Ortamın adı. Ad:,,, `<` , `>` `%` `&` `:` , `\\` , `?` , `/` ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir.|
+     | eventSourceName | Olay kaynağı alt kaynağının adı. Ad:,,, `<` , `>` `%` `&` `:` , `\\` , `?` , `/` ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir. |
 
     <div id="optional-parameters"></div>
 
@@ -77,7 +77,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
      | environmentDisplayName | Ortam adı yerine araçları veya kullanıcı arabirimlerini göstermek için isteğe bağlı bir kolay ad. |
      | environmentSkuName | Sku'nun adı. Daha fazla bilgi için [Time Series Insights fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.  |
      | Environmentskukapasitesi | SKU 'nun birim kapasitesi. Daha fazla bilgi için [Time Series Insights fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.|
-     | environmentDataRetentionTime | Ortamın olayları sorgu için kullanılabilecek en az TimeSpan değeri. Değer, örneğin `P30D` , 30 günlük bir bekletme ILKESI için ISO 8601 biçiminde belirtilmelidir. |
+     | environmentDataRetentionTime | Ortamın olayları sorgu için kullanılabilecek en az TimeSpan değeri. Değer, örneğin, `P30D` 30 günlük bir bekletme ilkesi IÇIN ıso 8601 biçiminde belirtilmelidir. |
      | eventSourceDisplayName | Araç veya olay kaynağı adı yerine kullanıcı arabirimlerinde göstermek için isteğe bağlı bir kolay ad. |
      | eventSourceTimestampPropertyName | Olay kaynağının zaman damgası olarak kullanılacak olay özelliği. TimestampPropertyName için bir değer belirtilmemişse veya null ya da boş dize belirtilmişse, olay oluşturma saati kullanılacaktır. |
      | eventSourceKeyName | Time Series Insights hizmetinin Olay Hub 'ına bağlanmak için kullanacağı paylaşılan erişim anahtarının adı. |
@@ -140,7 +140,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
       Get-AzSubscription
       ```
 
-    * Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. Kullanmak `<YourSubscriptionId>` istediğiniz Azure aboneliğinin GUID 'si ile değiştirin:
+    * Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. `<YourSubscriptionId>`Kullanmak Istediğiniz Azure aboneliğinin GUID 'si ile değiştirin:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -148,7 +148,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
 1. Mevcut değilse yeni bir kaynak grubu oluşturun.
 
-   * Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örneğin:
+   * Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örnek:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -166,7 +166,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
 1. Dağıtımı test edin.
 
-   * `Test-AzResourceGroupDeployment` Cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
+   * Cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın `Test-AzResourceGroupDeployment` . Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json

@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73100149"
 ---
 # <a name="common-issues"></a>Genel Sorunlar
@@ -42,7 +42,7 @@ sudo docker logs eventgridmodule
 
 * Modülün modüle iletişimler iletişim varsa, bağlantı noktası **4438** ' de çağrıyı yaptığınızdan ve modülün adı dağıtılan ile eşleştiğinden emin olun. 
 
-  Örneğin, Event Grid modülü **eventgridmodule** adı ile DAĞıTıLMıŞSA, URL 'niz olmalıdır **https://eventgridmodule:4438**. Büyük/küçük harf ve bağlantı noktası numarasının doğru olduğundan emin olun.
+  Örneğin, Event Grid modülü **eventgridmodule** adı ile DAĞıTıLMıŞSA, URL 'niz olmalıdır **https://eventgridmodule:4438** . Büyük/küçük harf ve bağlantı noktası numarasının doğru olduğundan emin olun.
     
 * IoT olmayan modülden ise, dağıtım sırasında Event Grid bağlantı noktasının konak makineye eşlendiğinden emin olun.
 
@@ -64,7 +64,7 @@ sudo docker logs eventgridmodule
 
 * Modülün modüle iletişimler iletişim varsa, bağlantı noktası **5888** ' de çağrıyı yaptığınızdan ve modülün adı dağıtılan ile eşleştiğinden emin olun. 
 
-  Örneğin, Event Grid modülü **eventgridmodule** adı ile DAĞıTıLMıŞSA, URL 'niz olmalıdır **http://eventgridmodule:5888**. Büyük/küçük harf ve bağlantı noktası numarasının doğru olduğundan emin olun.
+  Örneğin, Event Grid modülü **eventgridmodule** adı ile DAĞıTıLMıŞSA, URL 'niz olmalıdır **http://eventgridmodule:5888** . Büyük/küçük harf ve bağlantı noktası numarasının doğru olduğundan emin olun.
     
 * IoT olmayan modülden ise, dağıtım sırasında Event Grid bağlantı noktasının konak makineye eşlendiğinden emin olun.
 
@@ -84,7 +84,7 @@ sudo docker logs eventgridmodule
 
 Varsayılan olarak, Event Grid modülü, IoT Edge güvenlik arka plan programı tarafından verilen sertifikaları kimlik doğrulamak üzere yapılandırılmıştır. İstemcinin bu zincire kök sertifika sunduğunuzdan emin olun.
 
-İçindeki [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) **ıotsecurity** sınıfı, IoT Edge güvenlik arka plan programından sertifikaların nasıl alınacağını gösterir ve bunu giden çağrıları yapılandırmak için kullanır.
+İçindeki **ıotsecurity** sınıfı, [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) IoT Edge güvenlik arka plan programından sertifikaların nasıl alınacağını gösterir ve bunu giden çağrıları yapılandırmak için kullanır.
 
 Üretim dışı ortamındaysanız, istemci kimlik doğrulamasını kapatma seçeneğiniz vardır. Bunun nasıl yapılacağı hakkında ayrıntılı bilgi için [güvenlik ve kimlik doğrulama](security-authentication.md) bölümüne bakın.
 
@@ -108,4 +108,4 @@ Bunun tipik nedenleri şunlardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Her türlü sorunu bildirin, IoT Edge üzerinde Event Grid kullanma ile ilgili [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)öneriler.
+Her türlü sorunu bildirin, IoT Edge üzerinde Event Grid kullanma ile ilgili öneriler [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .

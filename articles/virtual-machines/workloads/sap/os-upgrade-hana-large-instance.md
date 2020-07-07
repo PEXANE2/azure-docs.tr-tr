@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192425"
 ---
 # <a name="operating-system-upgrade"></a>İşletim sistemi yükseltme
@@ -94,9 +94,9 @@ Azure HANA büyük örneklerinde (tür ı) SAP, yükseltmeden sonra önyükleneb
 #### <a name="execution-steps"></a>Yürütme adımları
 
 
-*   Komutunu `multipath -ll` yürütün.
+*   `multipath -ll`Komutunu yürütün.
 *   Boyutu yaklaşık 50G olan LUN KIMLIĞINI alın veya şu komutu kullanın:`fdisk -l | grep mapper`
-*   Dosyayı `/etc/default/grub_installdevice` satırla `/dev/mapper/<LUN ID>`güncelleştir. Örnek:/dev/mapper/3600a09803830372f483f495242534a56
+*   `/etc/default/grub_installdevice`Dosyayı satırla Güncelleştir `/dev/mapper/<LUN ID>` . Örnek:/dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >LUN KIMLIĞI sunucudan sunucuya farklılık gösterir.
 
@@ -115,11 +115,11 @@ lsmod | grep -i edac
 blacklist sb_edac
 blacklist edac_core
 ```
-Değişikliklerin yerine gelmesi için yeniden başlatma gerekiyor. Komutunu `lsmod` yürütün ve modülün çıkışta mevcut olmadığını doğrulayın.
+Değişikliklerin yerine gelmesi için yeniden başlatma gerekiyor. `lsmod`Komutunu yürütün ve modülün çıkışta mevcut olmadığını doğrulayın.
 
 
 ### <a name="kernel-parameters"></a>Çekirdek parametreleri
-   , `transparent_hugepage` `numa_balancing` `ignore_ce` , Ve `intel_idle.max_cstate` için doğru ayarların uygulandığından emin `processor.max_cstate`olun.
+   ,, Ve için doğru ayarların `transparent_hugepage` uygulandığından emin olun `numa_balancing` `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` .
 
 * intel_idle. max_cstate = 1
 * işlemci. max_cstate = 1
@@ -130,7 +130,7 @@ Değişikliklerin yerine gelmesi için yeniden başlatma gerekiyor. Komutunu `ls
 
 #### <a name="execution-steps"></a>Yürütme adımları
 
-* Bu parametreleri dosyadaki `GRB_CMDLINE_LINUX` satıra ekleyin`/etc/default/grub`
+* Bu parametreleri `GRB_CMDLINE_LINUX` dosyadaki satıra ekleyin`/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```

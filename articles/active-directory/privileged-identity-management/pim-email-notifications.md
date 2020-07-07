@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232317"
 ---
 # <a name="email-notifications-in-pim"></a>PıM 'de e-posta bildirimleri
@@ -31,10 +31,10 @@ Privileged Identity Management (PıM), bir rolün atanma veya etkinleştirilme g
 
 Hem Azure AD hem de Azure Kaynak rolleri için Privileged Identity Management gönderilen e-postaların aşağıdaki Gönderici e-posta adresi vardır:
 
-- E-posta adresi: **Azure-\@noreply Microsoft.com**
+- E-posta adresi: **Azure-noreply \@ Microsoft.com**
 - Görünen ad: Microsoft Azure
 
-Bu e-postalar konu satırında bir **PIM** öneki içerir. Bir örneği aşağıda verilmiştir:
+Bu e-postalar konu satırında bir **PIM** öneki içerir. İşte bir örnek:
 
 - PıM: Alain Charon, yedekleme okuyucusu rolüne kalıcı olarak atandı
 
@@ -51,8 +51,8 @@ Bu e-postaları Azure AD rolleri için alan rolünüz, olayınıza ve bildirimle
 | Kullanıcı | Rol etkinleştirme onay bekliyor | Rol etkinleştirme isteği tamamlandı | PıM etkin |
 | --- | --- | --- | --- |
 | Ayrıcalıklı rol yöneticisi</br>(Etkin/uygun) | Yes</br>(yalnızca açık onaylayanlar belirtilmemişse) | Evet* | Yes |
-| Güvenlik Yöneticisi</br>(Etkin/uygun) | Hayır | Evet* | Yes |
-| Genel Yönetici</br>(Etkin/uygun) | Hayır | Evet* | Yes |
+| Güvenlik Yöneticisi</br>(Etkin/uygun) | No | Evet* | Yes |
+| Genel Yönetici</br>(Etkin/uygun) | No | Evet* | Yes |
 
 \*[ **Bildirimler** ayarı](pim-how-to-change-default-settings.md#notifications) **Etkinleştir**olarak ayarlandıysa.
 
@@ -68,7 +68,7 @@ Azure AD rolleri için haftalık Privileged Identity Management Özet e-postası
 
 E-postada dört kutucuk bulunur:
 
-| Kutucuk | Açıklama |
+| Kutucuk | Description |
 | --- | --- |
 | **Etkinleştirilen kullanıcılar** | Kullanıcıların kuruluş içinde uygun rollerini etkinleştirme sayısı. |
 | **Kullanıcılar kalıcı yaptı** | Uygun atamaya sahip kullanıcıların kalıcı hale getirilme sayısı. |

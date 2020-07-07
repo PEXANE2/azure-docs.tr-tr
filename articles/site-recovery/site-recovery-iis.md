@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478297"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Çok katmanlı bir IIS tabanlı Web uygulaması için olağanüstü durum kurtarmayı ayarlama
@@ -26,7 +26,7 @@ Kritik Web uygulamaları genellikle çok katmanlı uygulamalar olarak ayarlanır
 
 Bu makalede [Azure Site Recovery](site-recovery-overview.md)kullanarak Internet INFORMATION SERVICES (IIS) tabanlı bir Web uygulamasını nasıl koruyabileceğiniz açıklanır. Makale, üç katmanlı, IIS tabanlı bir Web uygulamasını Azure 'a çoğaltmaya, olağanüstü durum kurtarma detayına ve uygulamanın yükünü Azure 'a nasıl devretireceğinizi gösteren en iyi yöntemleri içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki görevleri nasıl yapabileceğinizi öğrendiğinizden emin olun:
 
@@ -62,14 +62,14 @@ Senaryo | İkincil siteye | Azure’a
 --- | --- | ---
 Hyper-V | Yes | Yes
 VMware | Yes | Yes
-Fiziksel sunucu | Hayır | Yes
+Fiziksel sunucu | Hayır | Evet
 Azure|NA|Yes
 
 ## <a name="replicate-virtual-machines"></a>Sanal makineleri çoğaltma
 
 Tüm IIS Web grubu sanal makinelerini Azure 'a Çoğaltmaya başlamak için [Site Recovery 'de Azure 'a yük devretme testi](site-recovery-test-failover-to-azure.md)' nde yer alan yönergeleri izleyin.
 
-Statik bir IP adresi kullanıyorsanız, sanal makinenin geçirmesine istediğiniz IP adresini belirtebilirsiniz. IP adresini ayarlamak için **işlem ve ağ ayarları** > **hedef IP**sayfasına gidin.
+Statik bir IP adresi kullanıyorsanız, sanal makinenin geçirmesine istediğiniz IP adresini belirtebilirsiniz. IP adresini ayarlamak için **işlem ve ağ ayarları**  >  **hedef IP**sayfasına gidin.
 
 ![Site Recovery Işlem ve ağ bölmesinde hedef IP 'nin nasıl ayarlanacağını gösteren ekran görüntüsü](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -97,7 +97,7 @@ IIS Web grubunun düzgün çalışması için, Azure sanal makinelerinde yük de
 #### <a name="dns-update"></a>DNS güncelleştirmesi
 DNS dinamik DNS güncelleştirmesi için yapılandırılmışsa, sanal makineler genellikle DNS 'yi yeni IP adresiyle güncelleştirir. DNS 'yi sanal makinelerin yeni IP adresleriyle güncelleştirmek üzere açık bir adım eklemek istiyorsanız, DNS 'deki IP 'yi kurtarma planı gruplarında yük devretme sonrası eylem olarak [güncelleştirmek üzere bir komut dosyası](https://aka.ms/asr-dns-update) ekleyin.  
 
-#### <a name="connection-string-in-an-applications-webconfig"></a>Uygulamanın Web. config dosyasındaki bağlantı dizesi
+#### <a name="connection-string-in-an-applications-webconfig"></a>Bir uygulama web.config bağlantı dizesi
 Bağlantı dizesi, Web sitesinin iletişim kurduğu veritabanını belirtir. Bağlantı dizesi, veritabanı sanal makinesinin adını taşıyorsa yük devretme sonrası başka bir adım gerekmez. Uygulama veritabanıyla otomatik olarak iletişim kurabilir. Ayrıca, veritabanı sanal makinesi için IP adresi korunursa bağlantı dizesinin güncelleştirilmesi gerekmez. 
 
 Bağlantı dizesi bir IP adresi kullanarak veritabanı sanal makinesine başvuruyorsa, bunun yük devretme sonrası güncelleştirilmesi gerekir. Örneğin, aşağıdaki bağlantı dizesi veritabanına 127.0.1.2 IP adresiyle işaret eder:

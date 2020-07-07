@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
 ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80548666"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Market görüntüleri için güvenlik önerileri
@@ -41,9 +41,9 @@ Göndermeden önce, yansımanıza her zaman bir güvenlik açığı algılaması
 | Güvenlik                                                     | Gerekli kitaplıkların en son sürümlerini ekleyin: </br> -OpenSSL v 1.0 veya üzeri </br> -Python 2,5 veya üzeri (Python 2.6 + kesinlikle önerilir) </br> -Zaten yüklenmemişse Python pyasn1 paketi </br> -d. OpenSSL v 1,0 veya üzeri                                                                |
 | Güvenlik                                                     | Bash/Shell geçmiş girdilerini temizleyin.                                                                                                                                                                                                                                             |
 | Ağ                                                   | SSH sunucusunu varsayılan olarak dahil edin. SSH 'yi şu seçenekle SSHD config 'e canlı tut olarak ayarlayın: ClientAliveInterval 180.                                                                                                                                                        |
-| Ağ                                                   | Tüm özel ağ yapılandırmalarını görüntüden kaldırın. Resolv. conf dosyasını silin: `rm /etc/resolv.conf`.                                                                                                                                                                                |
-| Dağıtım                                                   | En son Azure Linux aracısını yükler.</br> -RPM veya Deb paketini kullanarak yükler.  </br> -El ile yükleme işlemini de kullanabilirsiniz, ancak yükleyici paketleri önerilir ve tercih edilir. </br> -Aracıyı GitHub deposundan el ile yüklüyorsanız, önce `waagent` dosyayı kopyalayın `/usr/sbin` ve (kök olarak) çalıştırın: </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Aracı yapılandırma dosyası konumunda `/etc/waagent.conf`yer alır. |
-| Dağıtım                                                   | Gerektiğinde Azure desteğinin seri konsol çıkışı ile iş ortaklarımıza sağlayabildiğini ve bulut depolamadan işletim sistemi diski bağlama için yeterli zaman aşımı sağlayıp sağlamamasını sağlayın. Aşağıdaki parametreleri görüntü çekirdeği önyükleme satırına ekleyin: `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`. |
+| Ağ                                                   | Tüm özel ağ yapılandırmalarını görüntüden kaldırın. Resolv. conf dosyasını silin: `rm /etc/resolv.conf` .                                                                                                                                                                                |
+| Dağıtım                                                   | En son Azure Linux aracısını yükler.</br> -RPM veya Deb paketini kullanarak yükler.  </br> -El ile yükleme işlemini de kullanabilirsiniz, ancak yükleyici paketleri önerilir ve tercih edilir. </br> -Aracıyı GitHub deposundan el ile yüklüyorsanız, önce `waagent` dosyayı kopyalayın `/usr/sbin` ve (kök olarak) çalıştırın: </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Aracı yapılandırma dosyası konumunda yer alır `/etc/waagent.conf` . |
+| Dağıtım                                                   | Gerektiğinde Azure desteğinin seri konsol çıkışı ile iş ortaklarımıza sağlayabildiğini ve bulut depolamadan işletim sistemi diski bağlama için yeterli zaman aşımı sağlayıp sağlamamasını sağlayın. Aşağıdaki parametreleri görüntü çekirdeği önyükleme satırına ekleyin: `console=ttyS0 earlyprintk=ttyS0 rootdelay=300` . |
 | Dağıtım                                                   | İşletim sistemi diski üzerinde takas bölümü yok. Linux Aracısı tarafından yerel kaynak diskinde oluşturma için değiştirme istenebilir.         |
 | Dağıtım                                                   | İşletim sistemi diski için tek bir kök bölüm oluşturun.      |
 | Dağıtım                                                   | yalnızca 64 bitlik işletim sistemi.                                                                                                                                                                                                                                                          |

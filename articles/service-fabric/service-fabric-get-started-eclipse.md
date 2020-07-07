@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.openlocfilehash: d37c7be65eb0c03065c095196a6fec39a2509a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193437"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi
@@ -30,12 +30,12 @@ Eclipse'te Service Fabric eklentisi yükleyebilirsiniz. Eklenti, Java hizmetleri
 > Ubuntu üzerinde, paket yükleyici (`apt` veya `apt-get`) kullanmak yerine doğrudan Eclipse sitesinden yükleme yapılmasını öneririz. Böylece, Eclipse’in en güncel sürümünü elde etmeniz sağlanır. 
 
 [Eclipse sitesinden](https://www.eclipse.org) Eclipse Neon veya sonraki bir sürümü yükleyin.  Ayrıca Buildship 2.2.1 veya sonraki bir sürümü de yükleyin (Service Fabric eklentisi, eski Buildship sürümleriyle uyumlu değildir):
--   Yüklü bileşenlerin sürümlerini denetlemek için, tutulma ' da,**tutulma** > **Yükleme ayrıntıları**hakkında **Yardım** > ' a gidin.
+-   Yüklü bileşenlerin sürümlerini denetlemek için, tutulma ' da, **Help**  >  **tutulma**  >  **Yükleme ayrıntıları**hakkında Yardım ' a gidin.
 -   Buildship’i güncelleştirmek için bkz. [Eclipse Buildship: Gradle için Eclipse Eklentileri][buildship-update].
--   Çakışan Küreler güncelleştirmelerini denetlemek ve yüklemek için bkz.**güncelleştirmeleri denetlemek**için **Yardım** > .
+-   Çakışan Küreler güncelleştirmelerini denetlemek ve yüklemek için bkz **Help**  >  .**güncelleştirmeleri denetlemek**için yardım.
 
-Service Fabric eklentisini, çakışan küreler ' de yükleyip**yeni yazılım yüklemeye** **Yardım** > ' a gidin.
-1. **Birlikte çalış** kutusuna https:\//DL.Microsoft.com/Eclipse girin.
+Service Fabric eklentisini, çakışan küreler ' de yükleyip **Help**  >  **yeni yazılım yüklemeye**Yardım ' a gidin.
+1. **Birlikte çalış** kutusuna https: \/ /DL.Microsoft.com/Eclipse girin.
 2. **Ekle**'ye tıklayın.
 
    ![Eclipse için Service Fabric eklentisi][sf-eclipse-plugin-install]
@@ -43,12 +43,12 @@ Service Fabric eklentisini, çakışan küreler ' de yükleyip**yeni yazılım y
 4. Yükleme adımlarını tamamlayın ve ardından Microsoft Yazılım Lisans Koşulları’nı kabul edin.
   
 Service Fabric eklentisi zaten yüklüyse, en yeni sürümü yükleyin. 
-1. Kullanılabilir güncelleştirmeleri denetlemek için,**tutulma** > **Yükleme ayrıntıları**hakkında **bölümüne gidin** > . 
+1. Kullanılabilir güncelleştirmeleri denetlemek için, **Help**  >  **tutulma**  >  **Yükleme ayrıntıları**hakkında bölümüne gidin. 
 2. Yüklü eklentiler listesinde Service Fabric’i seçip **Güncelleştir**’e tıklayın. Kullanılabilir güncelleştirmeler yüklenir.
 3. Service Fabric eklentisini güncelleştirdikten sonra Gradle projesini de yenileyin.  **build.gradle** öğesine sağ tıklayın ve **Yenile**’yi seçin.
 
 > [!NOTE]
-> Service Fabric eklentisi yavaş yükleniyor veya güncelleştiriliyorsa, bunun nedeni bir Eclipse ayarı olabilir. Eclipse, Eclipse örneğinize kaydedilmiş siteleri güncelleştirmek üzere tüm değişikliklere ait meta verileri toplar. Bir Service Fabric eklenti güncelleştirmesini denetleme ve yükleme işlemini hızlandırmak için **Kullanılabilir Yazılım Siteleri** bölümüne gidin. Service Fabric eklentisi konumunu işaret eden bir tane hariç tüm sitelerin onay kutularını temizleyin (https:\//DL.Microsoft.com/Eclipse/Azure/servicefabric).
+> Service Fabric eklentisi yavaş yükleniyor veya güncelleştiriliyorsa, bunun nedeni bir Eclipse ayarı olabilir. Eclipse, Eclipse örneğinize kaydedilmiş siteleri güncelleştirmek üzere tüm değişikliklere ait meta verileri toplar. Bir Service Fabric eklenti güncelleştirmesini denetleme ve yükleme işlemini hızlandırmak için **Kullanılabilir Yazılım Siteleri** bölümüne gidin. Service Fabric eklentisi konumunu işaret eden bir tane hariç tüm sitelerin onay kutularını temizleyin (https: \/ /DL.Microsoft.com/Eclipse/Azure/servicefabric).
 
 > [!NOTE]
 >Eclipse Mac bilgisayarınızda beklendiği gibi çalışmıyorsa (veya süper kullanıcı olarak çalışmanızı gerektiriyorsa), **ECLIPSE_INSTALLATION_PATH** klasörüne ve ardından **Eclipse.app/Contents/MacOS** alt klasörüne gidin. `./eclipse` öğesini çalıştırarak Eclipse’i başlatın.
@@ -56,7 +56,7 @@ Service Fabric eklentisi zaten yüklüyse, en yeni sürümü yükleyin.
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Eclipse’te Service Fabric uygulaması oluşturma
 
-1.  Tutulma ' da,**Yeni** >  **Dosya** > ' ya**gidin.** **Service Fabric Projesi**’ni seçip **İleri**’ye tıklayın.
+1.  Tutulma ' da, yeni **Dosya**' ya gidin  >  **New**  >  **Other**. **Service Fabric Projesi**’ni seçip **İleri**’ye tıklayın.
 
     ![Service Fabric Yeni Proje sayfa 1][create-application/p1]
 
@@ -102,7 +102,7 @@ Service Fabric uygulamanızı oluşturduktan sonra, yerel kümeye dağıtmak iç
 
 3.  Bağlam menüsünde, **uygulamayı dağıt**' ı tıklatın.
 4.  Dağıtım işleminin ilerlemesini konsol penceresinde izleyebilirsiniz.
-5.  Uygulamanızın çalıştığını doğrulamak için, bir tarayıcı penceresinde `http://localhost:19080/Explorer`yerel kümenizde Service Fabric Explorer açın. **Uygulamalar** düğümünü genişletin ve uygulamanızın çalıştığından emin olun. 
+5.  Uygulamanızın çalıştığını doğrulamak için, bir tarayıcı penceresinde yerel kümenizde Service Fabric Explorer açın `http://localhost:19080/Explorer` . **Uygulamalar** düğümünü genişletin ve uygulamanızın çalıştığından emin olun. 
 
 Yerel kümeyi kullanarak uygulamanızın tutulma 'da hata ayıklamanın nasıl yapılacağını öğrenmek için bkz. [tutulma 'de Java hizmetinde hata ayıklama](./service-fabric-debugging-your-application-java.md).
 
@@ -110,11 +110,11 @@ Uygulamanızı **Yayımla** komutuyla da uygulamanızı yerel kümeye dağıtabi
 
 1. Service Fabric uygulamanıza sağ tıklayın ve ardından **Service Fabric**' yı seçin.
 2. Bağlam menüsünde, **uygulamayı Yayımla...** öğesine tıklayın.
-3. **Uygulamayı Yayımla** penceresinde **Publishprofiles/Local. JSON** öğesini hedef profil olarak seçin ve **Yayımla**' ya tıklayın.
+3. **Uygulamayı Yayımla** penceresinde, hedef profil olarak **publishprofiles/Local.js** seçin ve **Yayımla**' ya tıklayın.
 
     ![Yayımla İletişim Kutusu Konumu](./media/service-fabric-get-started-eclipse/localjson.png)
 
-    Varsayılan olarak, yerel. JSON yayımlama profili yerel kümede yayımlanacak şekilde ayarlanır. Yayımlama profillerinde bulunan bağlantı ve uç nokta parametreleri hakkında daha fazla bilgi için sonraki bölüme bakın.
+    Varsayılan olarak, yayımlama profilindeki Local.jsyerel kümede yayımlanacak şekilde ayarlanır. Yayımlama profillerinde bulunan bağlantı ve uç nokta parametreleri hakkında daha fazla bilgi için sonraki bölüme bakın.
 
 ## <a name="publish-your-service-fabric-application-to-azure-with-eclipse"></a>Service Fabric uygulamanızı çakışan küreler ile Azure 'da yayımlayın
 
@@ -126,14 +126,14 @@ Uygulamanızı buluta yayımlamak için şu adımları izleyin:
     openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
     ```
 
-   PFX dosyası parola korumalı değilse, son parametre için kullanın `--passin pass:` .
+   PFX dosyası parola korumalı değilse, `--passin pass:` son parametre için kullanın.
 
-2. **Publishprofiles** dizininde **Cloud. JSON** dosyasını açın. Küme uç noktası ve güvenlik kimlik bilgilerini kümeniz için uygun şekilde yapılandırmanız gerekir.
+2. **Publishprofiles** dizininde dosyası **Cloud.js** açın. Küme uç noktası ve güvenlik kimlik bilgilerini kümeniz için uygun şekilde yapılandırmanız gerekir.
 
-   - Alan `ConnectionIPOrURL` , kümenizin IP adresini veya URL 'sini içerir. Değerin URL şeması (`https://`) içermediğini unutmayın.
-   - Varsayılan olarak, `ConnectionPort` Bu bağlantı noktasını `19080`kümeniz için değiştirmediğiniz takdirde alanın olması gerekir.
-   - Bu `ClientKey` alan, yerel makinenizde, istemci veya küme sertifikanız için özel anahtarı içeren ped biçimli bir. Pee veya. Key dosyasına işaret etmelidir.
-   - Alan `ClientCert` , yerel makinenizde, istemciniz veya kümeniz için sertifika verilerini içeren ped biçimli bir. Pee veya. CRT dosyasına işaret etmelidir. Sertifika. 
+   - `ConnectionIPOrURL`Alan, KÜMENIZIN IP adresini veya URL 'sini içerir. Değerin URL şeması () içermediğini unutmayın `https://` .
+   - Varsayılan olarak `ConnectionPort` `19080` , bu bağlantı noktasını kümeniz için değiştirmediğiniz takdirde alanın olması gerekir.
+   - Bu `ClientKey` alan, yerel makinenizde, istemci veya küme sertifikanız için özel anahtarı IÇEREN ped biçimli bir. Pee veya. Key dosyasına işaret etmelidir.
+   - `ClientCert`Alan, yerel makinenizde, istemciniz veya kümeniz için sertifika verilerini IÇEREN ped biçimli bir. Pee veya. CRT dosyasına işaret etmelidir. Sertifika. 
 
      ```bash
      {
@@ -149,12 +149,12 @@ Uygulamanızı buluta yayımlamak için şu adımları izleyin:
 
 2. Service Fabric uygulamanıza sağ tıklayın ve ardından **Service Fabric**' yı seçin.
 3. Bağlam menüsünde, **uygulamayı Yayımla...** öğesine tıklayın.
-3. **Uygulamayı Yayımla** penceresinde, hedef profil olarak **Publishprofiles/Cloud. JSON** öğesini seçin ve **Yayımla**' ya tıklayın.
+3. **Uygulamayı Yayımla** penceresinde, hedef profil olarak **publishprofiles/Cloud.js** seçin ve **Yayımla**' ya tıklayın.
 
     ![İletişim Kutusunu Yayımlama Bulutu](./media/service-fabric-get-started-eclipse/cloudjson.png)
 
 4. Konsol penceresinde Yayımla işleminin ilerlemesini izleyebilirsiniz.
-5. Uygulamanızın çalıştığını doğrulamak için, bir tarayıcı penceresinde Azure kümenizde Service Fabric Explorer açın. Yukarıdaki örnekte bu şöyle olacaktır: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. **Uygulamalar** düğümünü genişletin ve uygulamanızın çalıştığından emin olun. 
+5. Uygulamanızın çalıştığını doğrulamak için, bir tarayıcı penceresinde Azure kümenizde Service Fabric Explorer açın. Yukarıdaki örnekte bu şöyle olacaktır: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` . **Uygulamalar** düğümünü genişletin ve uygulamanızın çalıştığından emin olun. 
 
 
 Güvenli Linux kümelerinde, uygulamanız Reliable Services Hizmetleri içeriyorsa, hizmetlerinizin Service Fabric çalışma zamanı API 'Lerini çağırmak için kullanabileceği bir sertifika yapılandırmanız da gerekir. Daha fazla bilgi edinmek için bkz. [Reliable Services uygulamasını Linux kümelerinde çalışacak şekilde yapılandırma](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
@@ -165,7 +165,7 @@ Java 'da yazılmış bir Service Fabric Reliable Services uygulamasının güven
 
 Service Fabric uygulamanızı dağıtmanın alternatif bir yolu, Eclipse çalıştırma yapılandırmalarının kullanılmasıdır.
 
-1. Tutulma ' da **Çalıştır** > çalışma**yapılandırması**' na gidin.
+1. Tutulma ' da Çalıştır çalışma **Run**  >  **yapılandırması**' na gidin.
 2. **Grade Projesi** altındaki **ServiceFabricDeployer** çalıştırma yapılandırmasını seçin.
 3. Sağ bölmedeki **bağımsız değişkenler** sekmesinde, **IP**, **bağlantı noktası**, **Clientcert**ve **clientkey** parametrelerinin dağıtımınız için uygun şekilde ayarlandığından emin olun. Varsayılan olarak parametreler, aşağıdaki ekran görüntüsünde gösterildiği gibi yerel kümeye dağıtılacak şekilde ayarlanır. Uygulamanızı Azure 'da yayımlamak için, parametreleri Azure kümeniz için uç nokta ayrıntılarını ve güvenlik kimlik bilgilerini içerecek şekilde değiştirebilirsiniz. Daha fazla bilgi için bkz. önceki bölüm, [Service Fabric uygulamanızı Çakışan Küreler Azure 'Da yayımlayın](#publish-your-service-fabric-application-to-azure-with-eclipse).
 
@@ -211,7 +211,7 @@ Bir yükseltme senaryosu için, Eclips’te Service Fabric eklentisini kullanara
 
 Eclipse kullanarak uygulamanızı yükseltmek için, yinelenen bir çalıştırma yapılandırma profili oluşturabilirsiniz. Ardından, uygulamanızı gereken şekilde yükseltmek için bu profili kullanın.
 
-1.   >  **Çalıştırma****çalıştırma yapılandırması**' na gidin. Sol bölmede, **Grade Projesi** öğesinin sol tarafında bulunan küçük oka tıklayın.
+1.  **Çalıştırma**  >  **çalıştırma yapılandırması**' na gidin. Sol bölmede, **Grade Projesi** öğesinin sol tarafında bulunan küçük oka tıklayın.
 2.  **ServiceFabricDeployer**’a sağ tıklayıp **Yinelenen**’i seçin. Bu yapılandırma için **ServiceFabricUpgrader** gibi yeni bir ad girin.
 3.  Sağ paneldeki **Bağımsız Değişkenler** sekmesinde **-Pconfig='deploy'** değerini **-Pconfig='upgrade'** olarak değiştirip **Uygula**’ya tıklayın.
 

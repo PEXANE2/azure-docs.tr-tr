@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335754"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Dayanıklı İşlevler-telefon doğrulama örneğindeki insan etkileşimi
@@ -40,16 +40,16 @@ Bu makalede örnek uygulamada aşağıdaki işlevler gösterilmektedir:
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification Orchestrator işlevi
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. `CurrentUtcDateTime` Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı `winner` olduğundan emin olmak için önemlidir `Task.WhenAny`.
+> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. `CurrentUtcDateTime`Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı olduğundan emin olmak için önemlidir `winner` `Task.WhenAny` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**E4_SmsPhoneVerification** işlevi Orchestrator işlevleri için standart *function. JSON* ' i kullanır.
+**E4_SmsPhoneVerification** işlevi, Orchestrator işlevleri için *üzerinde standartfunction.js* kullanır.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/function.json)]
 
@@ -58,7 +58,7 @@ Bu makalede örnek uygulamada aşağıdaki işlevler gösterilmektedir:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. `currentUtcDateTime` Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı `winner` olduğundan emin olmak için önemlidir `context.df.Task.any`.
+> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. `currentUtcDateTime`Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı olduğundan emin olmak için önemlidir `winner` `context.df.Task.any` .
 
 ---
 
@@ -78,16 +78,16 @@ Kullanıcı dört basamaklı kod içeren bir SMS mesajı alır. Doğrulama işle
 
 **E4_SendSmsChallenge** IşLEVI, SMS iletisini son kullanıcıya dört basamaklı kodla göndermek için Twilio bağlamasını kullanır.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
 > [!NOTE]
-> Örnek kodu çalıştırmak için `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet paketini yüklemeniz gerekir.
+> `Microsoft.Azure.WebJobs.Extensions.Twilio`Örnek kodu çalıştırmak için NuGet paketini yüklemeniz gerekir.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-*Function. JSON* aşağıdaki gibi tanımlanır:
+*function.js* , aşağıdaki gibi tanımlanır:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/function.json)]
 
@@ -118,9 +118,9 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-Orchestrator işlevi, sağlanan telefon numarasını alır ve anında rastgele oluşturulan 4 basamaklı bir doğrulama kodu &mdash; IÇEREN bir SMS iletisi gönderir. örneğin, *2168*. Bu işlev, yanıt için 90 saniye bekler.
+Orchestrator işlevi, sağlanan telefon numarasını alır ve anında rastgele oluşturulan 4 basamaklı bir doğrulama kodu içeren bir SMS iletisi gönderir &mdash; . Örneğin, *2168*. Bu işlev, yanıt için 90 saniye bekler.
 
-Kodla yanıt vermek için, başka bir işlevin içinde [ `RaiseEventAsync` (.net) veya `raiseEvent` (JavaScript)](durable-functions-instance-management.md) kullanabilirsiniz veya yukarıdaki 202 yanıtında başvurulan **sendEventUrl** http post Web kancasını çağırabilirsiniz, olayın adıyla değiştirin `{eventName}` `SmsChallengeResponse`:
+Kodla yanıt vermek için, başka bir işlevin içinde [ `RaiseEventAsync` (.net) veya `raiseEvent` (JavaScript)](durable-functions-instance-management.md) kullanabilirsiniz veya yukarıdaki 202 YANıTıNDA başvurulan **sendEventUrl** http post Web kancasını çağırabilirsiniz, `{eventName}` olayın adıyla değiştirin `SmsChallengeResponse` :
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -130,7 +130,7 @@ Content-Type: application/json
 2168
 ```
 
-Bunu zamanlayıcı süresi dolmadan önce gönderirseniz, düzenleme tamamlanır ve `output` alan, başarılı bir doğrulama olduğunu belirten olarak `true`ayarlanır.
+Bunu zamanlayıcı süresi dolmadan önce gönderirseniz, düzenleme tamamlanır ve `output` alan `true` , başarılı bir doğrulama olduğunu belirten olarak ayarlanır.
 
 ```
 GET http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -144,7 +144,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-Süreölçerin süresi sona ersin veya dört kez yanlış kod girerseniz, durumu sorgulayabilir ve telefon doğrulamasının başarısız olduğunu belirten bir `false` düzenleme işlevi çıkışı görebilirsiniz.
+Süreölçerin süresi sona ersin veya dört kez yanlış kod girerseniz, durumu sorgulayabilir ve `false` Telefon doğrulamasının başarısız olduğunu belirten bir düzenleme işlevi çıkışı görebilirsiniz.
 
 ```
 HTTP/1.1 200 OK
@@ -156,7 +156,7 @@ Content-Length: 145
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu örnek Dayanıklı İşlevler, özellikle `WaitForExternalEvent` ve `CreateTimer` API 'lerin gelişmiş özelliklerini göstermiştir. Bu kullanıcıların güvenilir bir zaman aşımı sistemi uygulamak için `Task.WaitAny` ile nasıl birleştirilebileceği gördünüz, bu da genellikle gerçek kişilerle etkileşim kurma açısından kullanışlıdır. Belirli konuların ayrıntılı kapsamını sunan bir dizi makaleyi okuyarak Dayanıklı İşlevler kullanma hakkında daha fazla bilgi edinebilirsiniz.
+Bu örnek Dayanıklı İşlevler, özellikle ve API 'lerin gelişmiş özelliklerini göstermiştir `WaitForExternalEvent` `CreateTimer` . Bu `Task.WaitAny` kullanıcıların güvenilir bir zaman aşımı sistemi uygulamak için ile nasıl birleştirilebileceği gördünüz, bu da genellikle gerçek kişilerle etkileşim kurma açısından kullanışlıdır. Belirli konuların ayrıntılı kapsamını sunan bir dizi makaleyi okuyarak Dayanıklı İşlevler kullanma hakkında daha fazla bilgi edinebilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Serideki ilk makaleye git](durable-functions-bindings.md)

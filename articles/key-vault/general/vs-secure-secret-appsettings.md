@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
 ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429765"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Gizli uygulama ayarlarını bir Web uygulaması için güvenli bir şekilde Kaydet
@@ -22,7 +22,7 @@ ms.locfileid: "81429765"
 ## <a name="overview"></a>Genel Bakış
 Bu makalede, Azure uygulamaları için gizli uygulama yapılandırma ayarlarının güvenli bir şekilde nasıl kaydedileceği açıklanır.
 
-Geleneksel olarak tüm Web uygulaması yapılandırma ayarları, Web. config gibi yapılandırma dosyalarına kaydedilir. Bu uygulama, GitHub gibi genel kaynak denetimi sistemlerine bulut kimlik bilgileri gibi gizli ayarları denetlemeye yol açar. Bu arada, kaynak kodu değiştirmek ve geliştirme ayarlarını yeniden yapılandırmak için gerekli olan ek yük nedeniyle en iyi güvenlik uygulamasını izlemek zor olabilir.
+Geleneksel olarak tüm Web uygulaması yapılandırma ayarları Web.config gibi yapılandırma dosyalarına kaydedilir. Bu uygulama, GitHub gibi genel kaynak denetimi sistemlerine bulut kimlik bilgileri gibi gizli ayarları denetlemeye yol açar. Bu arada, kaynak kodu değiştirmek ve geliştirme ayarlarını yeniden yapılandırmak için gerekli olan ek yük nedeniyle en iyi güvenlik uygulamasını izlemek zor olabilir.
 
 Geliştirme sürecinin güvenli olduğundan emin olmak için, uygulama gizli ayarlarını minimum veya kaynak kodu değişikliğiyle güvenli bir şekilde kaydetmek üzere araç ve çatı kitaplıkları oluşturulmuştur.
 
@@ -87,7 +87,7 @@ Web uygulamanız zaten oluşturulmuşsa, uygulama ayarlarında veya dosyalarınd
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Key Vault URL 'nizi launchsettings. JSON dosyasına ekleyin. *KEYVAULT_ENDPOINT* ortam değişkeni adı, adım 6 ' da eklediğiniz kodda tanımlanmıştır.
+6. Key Vault URL 'nizi dosyaya launchsettings.jsekleyin. *KEYVAULT_ENDPOINT* ortam değişkeni adı, adım 6 ' da eklediğiniz kodda tanımlanmıştır.
 
     ![Key Vault URL 'sini bir proje ortamı değişkeni olarak ekleyin](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
@@ -117,7 +117,7 @@ Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyors
     </root>
     ```
 
-3. Gizli dosyayı, Web. config dosyanızda bir yapılandırma Oluşturucusu olacak şekilde tanımlayın. Bu bölümü *appSettings* bölümünden önce koyun.
+3. Gizli dosyayı Web.config dosyanızda bir yapılandırma Oluşturucusu olacak şekilde tanımlayın. Bu bölümü *appSettings* bölümünden önce koyun.
 
     ```xml
     <configBuilders>
@@ -151,7 +151,7 @@ Projeniz için bir Key Vault yapılandırmak üzere ASP.NET Core bölümündeki 
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Web. config 'de Key Vault Configuration Builder tanımlayın. Bu bölümü *appSettings* bölümünden önce koyun. Key Vault Genel Azure veya Sovereign bulutu kullanıyorsanız, *VAULTNAME* değerini Key Vault adı olacak şekilde değiştirin.
+2. Web.config Key Vault Configuration Builder tanımlayın. Bu bölümü *appSettings* bölümünden önce koyun. Key Vault Genel Azure veya Sovereign bulutu kullanıyorsanız, *VAULTNAME* değerini Key Vault adı olacak şekilde değiştirin.
 
     ```xml
     <configSections>

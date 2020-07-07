@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa50257b785af20ea3a351bd5e40885a0c39eba2
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: cee9bb5d3be6bb8fe5defaa91bce766c8a0f5c05
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605789"
+ms.locfileid: "85798978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Öğretici: IdeaScale ile tümleştirme Azure Active Directory
 
@@ -110,10 +110,10 @@ Azure AD çoklu oturum açmayı IdeaScale ile yapılandırmak için aşağıdaki
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-        ```https
-        http://<companyname>.ideascale.com
-        https://<companyname>.ideascale.com
-        ```
+    ```http
+    http://<companyname>.ideascale.com
+    https://<companyname>.ideascale.com
+    ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [IdeaScale istemci desteği ekibine](https://support.ideascale.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

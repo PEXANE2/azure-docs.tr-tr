@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80473938"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB depolama için performans ve ölçeklenebilirlik denetim listesi
@@ -36,8 +36,8 @@ Bu makale, blob Storage uygulamanızı geliştirirken izleyebileceğiniz bir den
 | &nbsp; |Ağ |[İstemci tarafı cihazların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
 | &nbsp; |Ağ |[İstemci uygulaması, depolama hesabıyla aynı bölgede mi?](#location) |
 | &nbsp; |Doğrudan istemci erişimi |[Azure Storage 'a doğrudan erişim sağlamak için paylaşılan erişim imzaları (SAS) ve çıkış noktaları arası kaynak paylaşımı (CORS) kullanıyor musunuz?](#sas-and-cors) |
-| &nbsp; |Önbelleğe alma |[Uygulamanızın önbelleğe alınması sık erişilen ve nadiren değiştirilen verilerinize mı sahip?](#reading-data) |
-| &nbsp; |Önbelleğe alma |[Uygulamanız, güncelleştirmeleri istemcide önbelleğe alarak ve daha sonra bunları daha büyük kümelere karşıya yükleyerek toplu olarak güncelleştirir mı?](#uploading-data-in-batches) |
+| &nbsp; |Önbelleğe Alma |[Uygulamanızın önbelleğe alınması sık erişilen ve nadiren değiştirilen verilerinize mı sahip?](#reading-data) |
+| &nbsp; |Önbelleğe Alma |[Uygulamanız, güncelleştirmeleri istemcide önbelleğe alarak ve daha sonra bunları daha büyük kümelere karşıya yükleyerek toplu olarak güncelleştirir mı?](#uploading-data-in-batches) |
 | &nbsp; |.NET yapılandırması |[En iyi performans için .NET Core 2,1 veya üstünü mi kullanıyorsunuz?](#use-net-core) |
 | &nbsp; |.NET yapılandırması |[İstemcinizi yeterli sayıda eşzamanlı bağlantı kullanacak şekilde yapılandırdınız mı?](#increase-default-connection-limit) |
 | &nbsp; |.NET yapılandırması |[.NET uygulamaları için, .NET 'i yeterli sayıda iş parçacığı kullanacak şekilde yapılandırdınız mı?](#increase-minimum-number-of-threads) |
@@ -151,7 +151,7 @@ Genellikle, bir Web tarayıcısı, başka bir etki alanına yazma işlemleri gib
   
 Hem SAS hem de CORS, Web uygulamanızda gereksiz yükün oluşmasını önlemenize yardımcı olabilir.  
 
-## <a name="caching"></a>Önbelleğe alma
+## <a name="caching"></a>Önbelleğe Alma
 
 Önbelleğe alma, performans açısından önemli bir rol oynar. Aşağıdaki bölümlerde, önbelleğe alma en iyi yöntemleri ele alınmaktadır.
 
@@ -236,7 +236,7 @@ Azure depolama, blob 'ları bir depolama hesabında, depolama hesapları arasın
 
 ### <a name="blob-copy-apis"></a>Blob kopyalama API 'Leri
 
-Blob 'ları depolama hesaplarına kopyalamak için [URL 'Den yerleştirme](/rest/api/storageservices/put-block-from-url) işlemini kullanın. Bu işlem, verileri herhangi bir URL kaynağından bir blok blobuna eşzamanlı olarak kopyalar. Depolama hesaplarına `Put Block from URL` veri geçirirken, işlemin kullanılması gereken bant genişliğini önemli ölçüde azaltabilir. Kopyalama işlemi hizmet tarafında gerçekleştiğinden, verileri indirmeniz ve yeniden yüklemeniz gerekmez.
+Blob 'ları depolama hesaplarına kopyalamak için [URL 'Den yerleştirme](/rest/api/storageservices/put-block-from-url) işlemini kullanın. Bu işlem, verileri herhangi bir URL kaynağından bir blok blobuna eşzamanlı olarak kopyalar. `Put Block from URL`Depolama hesaplarına veri geçirirken, işlemin kullanılması gereken bant genişliğini önemli ölçüde azaltabilir. Kopyalama işlemi hizmet tarafında gerçekleştiğinden, verileri indirmeniz ve yeniden yüklemeniz gerekmez.
 
 Aynı depolama hesabı içindeki verileri kopyalamak için [BLOB kopyalama](/rest/api/storageservices/Copy-Blob) işlemini kullanın. Verileri aynı depolama hesabı içinde kopyalamak genellikle hızla tamamlanır.  
 

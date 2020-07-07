@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80518181"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Tak ve Kullan önizleme sınırları, kotaları ve kısıtları
@@ -29,7 +29,7 @@ Genel önizleme için aşağıdaki sınırlar ve Kotalar bir IoT Hub 'ı için g
 | Cihaz başına kaydedilenebilir en fazla DCMs sayısı | 1 ||
 | En büyük arabirim/DCM dosyası boyutu | 512 KB ||
 | Bir arabirim adının en büyük boyutu | 256 karakter ||
-| Bir özellik adının en büyük boyutu  | 64 bayt, 7 düzey Derinlik (ve ilk düzey için `$iotin`ayrılmıştır) | İzin verilen karakterler: a-z, A-Z, 0-9 (ilk karakter olarak değil) ve alt çizgi. |
+| Bir özellik adının en büyük boyutu  | 64 bayt, 7 düzey Derinlik (ve ilk düzey için ayrılmıştır `$iotin` ) | İzin verilen karakterler: a-z, A-Z, 0-9 (ilk karakter olarak değil) ve alt çizgi. |
 | Bir özellik değerinin en büyük boyutu | 512 bayt ||
 | Bir komut adının en büyük boyutu | 100 bayt ||
 | Cihaz ikizi boyutu | [IoT Hub limitleriyle](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) aynı ||

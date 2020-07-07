@@ -2,7 +2,8 @@
 title: İş otomasyonu
 description: Transact-SQL (T-SQL) betiklerini bir veya daha fazla veritabanı kümesi üzerinde çalıştırmak için Iş Otomasyonu kullanma
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
@@ -10,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b27eac1a8b5989734d3451bf21c5b13dd5cc0af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220560"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984668"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Veritabanı işlerini kullanarak yönetim görevlerini otomatikleştirme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +55,8 @@ SQL Aracısı (Şirket içi ve SQL yönetilen örneğinin parçası olarak kulla
 
 | |Elastik İşler |SQL Aracısı |
 |---------|---------|---------|
-|Kapsam | Azure SQL veritabanı ve/veya veri ambarlarında iş aracısıyla aynı Azure bulutundaki tüm veritabanları. Hedefler farklı sunucularda, aboneliklerde ve/veya bölgelerde olabilir. <br><br>Hedef gruplar tek veritabanı veya veri ambarlarının yanı sıra bir sunucu, havuz veya parça eşlemesi içindeki tüm veritabanlarından (iş zamanında dinamik olarak numaralandırılır) oluşabilir. | SQL aracısıyla aynı örnekteki her bir veritabanı. |
-|Desteklenen API’ler ve Araçlar | Portal, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
+|**Kapsam** | Azure SQL veritabanı ve/veya veri ambarlarında iş aracısıyla aynı Azure bulutundaki tüm veritabanları. Hedefler farklı sunucularda, aboneliklerde ve/veya bölgelerde olabilir. <br><br>Hedef gruplar tek veritabanı veya veri ambarlarının yanı sıra bir sunucu, havuz veya parça eşlemesi içindeki tüm veritabanlarından (iş zamanında dinamik olarak numaralandırılır) oluşabilir. | SQL aracısıyla aynı örnekteki her bir veritabanı. |
+|**Desteklenen API’ler ve Araçlar** | Portal, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Aracısı İşleri
 

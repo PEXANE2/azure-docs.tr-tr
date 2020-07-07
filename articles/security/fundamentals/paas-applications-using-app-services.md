@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
 ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461676"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Azure App Service kullanarak PaaS Web ve mobil uygulamaları güvenli hale getirmek için en iyi yöntemler
@@ -41,7 +41,7 @@ Abonelik anahtarlarınızı kaybetmeniz durumunda güvenliğin ne kadar iyi oldu
 ## <a name="restrict-incoming-source-ip-addresses"></a>Gelen kaynak IP adreslerini kısıtla
 [App Service ortamlarda](../../app-service/environment/intro.md) , gelen kaynak IP adreslerini ağ güvenlik grupları (NSG 'ler) aracılığıyla kısıtlayabilmenizi sağlayan bir sanal ağ tümleştirme özelliği bulunur. Azure sanal ağları (VNet 'ler) hakkında bilginiz varsa, bu, erişimi denetlediğiniz internet olmayan, yönlendirilebilir bir ağa Azure kaynaklarınızın çoğunu yerleştirmenizi sağlayan bir özelliktir. Daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](../../app-service/web-sites-integrate-with-vnet.md).
 
-Windows üzerinde App Service için, Web. config 'i yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP güvenliği](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Windows üzerinde App Service için web.config yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP güvenliği](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233219"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Azure DevOps Starter kullanarak GitHub deposu için bir CI/CD işlem hattı oluşturma
@@ -34,10 +34,10 @@ Yapacaklarınız:
 > * Azure Pipelines CI/CD işlem hattını inceleyin
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) aracılığıyla ücretsiz bir abonelik alabilirsiniz.
-* .NET, Java, PHP, Node. js, Python veya statik Web kodu içeren bir GitHub veya dış git deposuna erişim.
+* .NET, Java, PHP, Node.js, Python veya statik Web kodu içeren bir GitHub veya dış git deposuna erişim.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
