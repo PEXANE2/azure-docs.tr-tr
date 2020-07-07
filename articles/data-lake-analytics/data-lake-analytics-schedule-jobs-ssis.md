@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71672901"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services kullanarak U-SQL işlerini zamanlama (SSIS)
 
 Bu belgede, SQL Server tümleştirme hizmeti 'ni (SSIS) kullanarak U-SQL işlerini nasıl düzenleyeceğinizi ve oluşturacağınızı öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Tümleştirme Hizmetleri Için Azure Özellik paketi](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) , Azure Data Lake Analytics hizmetine bağlanmasına yardımcı olan [Azure Data Lake Analytics görevi](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017) ve [Azure Data Lake Analytics bağlantı yöneticisini](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017) sağlar. Bu görevi kullanmak için, ' yi yüklediğinizden emin olun:
 
@@ -77,11 +77,11 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 
 2. **Numaralandırıcı yapılandırma** grubu altındaki **klasörü** , indirilen U-SQL betiklerini içeren geçici klasöre ayarlayın.
 
-3. Döngü kapsayıcısının yalnızca ile biten dosyaları `*.usql` yakaladığı şekilde, `.usql` **Numaralandırıcı yapılandırması** altındaki **dosyaları** olarak ayarlayın.
+3. Döngü kapsayıcısının yalnızca ile biten dosyaları **yakaladığı şekilde, Numaralandırıcı yapılandırması** altındaki **dosyaları** olarak ayarlayın `*.usql` `.usql` .
 
     ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. **Değişken eşlemeleri** sayfasında, her bir U-SQL dosyası için dosya adını almak üzere Kullanıcı tanımlı bir değişken ekleyin. Dosya adını almak için **dizini** 0 olarak ayarlayın. Bu örnekte, adlı `User::FileName`bir değişken tanımlayın. Bu değişken, Azure Data Lake Analytics görevinde u-SQL betik dosyası bağlantısını dinamik olarak almak ve U-SQL iş adını ayarlamak için kullanılacaktır.
+4. **Değişken eşlemeleri** sayfasında, her bir U-SQL dosyası için dosya adını almak üzere Kullanıcı tanımlı bir değişken ekleyin. Dosya adını almak için **dizini** 0 olarak ayarlayın. Bu örnekte, adlı bir değişken tanımlayın `User::FileName` . Bu değişken, Azure Data Lake Analytics görevinde u-SQL betik dosyası bağlantısını dinamik olarak almak ve U-SQL iş adını ayarlamak için kullanılacaktır.
 
     ![Dosya adını almak için Foreach döngüsü kapsayıcısını yapılandırma](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
@@ -93,14 +93,14 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
     
     Bu dosya bağlantısını oluşturmak için:
 
-   1. Dosya bağlantısı ayarında ** \<yeni bağlantı... >** seçin.
+   1. **\<New Connection...>** FileConnection ayarında öğesini seçin.
    2. **Kullanım türünü** **mevcut dosya**olarak ayarlayın ve **dosyayı** varolan herhangi bir dosyanın dosya yoluna ayarlayın.
 
        ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. **Bağlantı yöneticileri** görünümünde, hemen şimdi oluşturulan dosya bağlantısına sağ tıklayın ve **Özellikler**' i seçin.
 
-   4. **Özellikler** penceresinde, **ifadeler**' i genişletin ve **ConnectionString** öğesini foreach döngüsü kapsayıcısında tanımlanan değişkene ayarlayın (örneğin, `@[User::FileName]`).
+   4. **Özellikler** penceresinde, **ifadeler**' i genişletin ve **ConnectionString** öğesini foreach döngüsü kapsayıcısında tanımlanan değişkene ayarlayın (örneğin,) `@[User::FileName]` .
 
        ![Foreach döngüsü kapsayıcısını Yapılandır](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -111,7 +111,7 @@ SSIS paket tasarımı görünümünde, Foreach döngüsü kapsayıcısına bir *
 5. U-SQL iş adını dinamik olarak ayarlamak için **ifadeler** kullanın:
 
     1. **İfadeler** sayfasında, **JobName**için yeni bir anahtar-değer çifti ekleyin.
-    2. JobName değerini Foreach döngü kapsayıcısında tanımlanan değişkene ayarlayın, örneğin, `@[User::FileName]`.
+    2. JobName değerini Foreach döngü kapsayıcısında tanımlanan değişkene ayarlayın, örneğin, `@[User::FileName]` .
     
         ![U-SQL iş adı için SSIS Ifadesini yapılandırma](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
 

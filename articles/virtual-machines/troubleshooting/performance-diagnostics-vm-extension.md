@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057539"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows için Azure Performans Tanılama VM Uzantısı
@@ -27,7 +27,7 @@ Azure Performans Tanılama VM uzantısı, Windows VM 'lerinden Performans Tanıl
 > [!NOTE]
 > Klasik olmayan VM 'Ler için Azure portal sanal makinelerinizdeki tanılamayı çalıştırmak istiyorsanız, yeni deneyim kullanılması önerilir. Daha fazla bilgi için bkz. [Azure sanal makineler Için Performans Tanılama](performance-diagnostics.md) 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu uzantı Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 ve Windows Server 2016 üzerine yüklenebilir. Ayrıca, Windows 8.1 ve Windows 10 ' da de yüklenebilir.
 
@@ -70,7 +70,7 @@ Aşağıdaki JSON, Azure Performans Tanılama VM Uzantısı şemasını gösteri
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API sürümü.
 |yayımcı|Microsoft. Azure. performance. Diagnostics|Uzantı için yayımcı ad alanı.
-|type|AzurePerformanceDiagnostics|VM uzantısının türü.
+|tür|AzurePerformanceDiagnostics|VM uzantısının türü.
 |typeHandlerVersion|1.0|Uzantı işleyicisinin sürümü.
 |Performanslı Orceni|basit|Verilerin yakalanması için performans senaryosu. Geçerli değerler şunlardır: **Basic**, **vmslow**, **azurefiles**ve **Custom**.
 |traceDurationInSeconds|300|İzleme seçeneklerinden herhangi biri seçilirse izlemelerin süresi.
@@ -233,18 +233,18 @@ Perfinsıghts Aracı, seçilen senaryoya bağlı olarak çeşitli günlükleri, 
 
 ## <a name="view-and-share-the-results"></a>Sonuçları görüntüleme ve paylaşma
 
-Uzantının çıktısı, yükleme sırasında belirtilen depolama hesabına yüklenen ve [paylaşılan erişim imzaları (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)kullanılarak 30 gün boyunca paylaşılabilecek bir ZIP dosyasında bulunabilir. Bu ZIP dosyası tanılama günlükleri ve bulguları ve önerilerle bir rapor içerir. Çıkış ZIP dosyasına bir SAS bağlantısı, **C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics\\\<Version>** klasörü altındaki *zipfilename*_saslink. txt adlı bir metin dosyası içinde bulunabilir. Bu bağlantıya sahip olan herkes ZIP dosyasını indirebiliyor.
+Uzantının çıktısı, yükleme sırasında belirtilen depolama hesabına yüklenen ve [paylaşılan erişim imzaları (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)kullanılarak 30 gün boyunca paylaşılabilecek bir ZIP dosyasında bulunabilir. Bu ZIP dosyası tanılama günlükleri ve bulguları ve önerilerle bir rapor içerir. Çıkış ZIP dosyasına bir SAS bağlantısı, ** \\ \<version> C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics**klasörü altındaki *zipfilename*_saslink.txt adlı bir metin dosyası içinde bulunabilir. Bu bağlantıya sahip olan herkes ZIP dosyasını indirebiliyor.
 
 Destek mühendisinize yönelik destek Mühendisinize yardımcı olmak için, Microsoft bu SAS bağlantısını kullanarak tanılama verilerini indirebilir.
 
-Raporu görüntülemek için, ZIP dosyasını ayıklayın ve **Perfinsıghts Report. html** dosyasını açın.
+Raporu görüntülemek için, ZIP dosyasını ayıklayın ve **Perfinsıghts Report.html** dosyasını açın.
 
 Ayrıca, uzantıyı seçerek ZIP dosyasını doğrudan portaldan indirebilirsiniz.
 
 ![Performans Tanılama ayrıntılı durumunun ekran görüntüsü](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> Portalda görünen SAS bağlantısı bazen çalışmayabilir. Bunun nedeni, kodlama ve kod çözme işlemleri sırasında hatalı biçimlendirilmiş bir URL olabilir. Bunun yerine, bağlantıyı doğrudan VM 'deki * _saslink. txt dosyasından alabilirsiniz.
+> Portalda görünen SAS bağlantısı bazen çalışmayabilir. Bunun nedeni, kodlama ve kod çözme işlemleri sırasında hatalı biçimlendirilmiş bir URL olabilir. Bunun yerine, bağlantıyı doğrudan VM 'deki * _saslink.txt dosyasından edinebilirsiniz.
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 

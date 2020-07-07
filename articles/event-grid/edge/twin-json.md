@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992151"
 ---
 # <a name="module-twin-json-schema"></a>Module ikizi JSON şeması
@@ -21,13 +21,13 @@ ms.locfileid: "72992151"
 IoT Edge Event Grid, IoT Edge ekosistemiyle tümleştirilir ve Ikizi Module aracılığıyla konu ve abonelik oluşturmayı destekler. Ayrıca, tüm konuların ve olay aboneliklerinin geçerli durumunu, Ikizi modülündeki bildirilen özelliklere bildirir.
 
 > [!WARNING]
-> IoT Edge ekosistemindeki sınırlamalar nedeniyle, aşağıdaki JSON örnekteki tüm dizi öğeleri JSON dizeleri olarak kodlanır. Aşağıdaki `EventSubscription.Filter.EventTypes` örnekteki `EventSubscription.Filter.AdvancedFilters` ve anahtarlarına bakın.
+> IoT Edge ekosistemindeki sınırlamalar nedeniyle, aşağıdaki JSON örnekteki tüm dizi öğeleri JSON dizeleri olarak kodlanır. `EventSubscription.Filter.EventTypes` `EventSubscription.Filter.AdvancedFilters` Aşağıdaki örnekteki ve anahtarlarına bakın.
 
 ## <a name="desired-properties-json"></a>İstenen özellikler JSON
 
-* Konular bölümündeki her anahtar-değer çiftinin değeri, konu başlıkları oluştururken API üzerinde için `Topic.Properties` kullanılan JSON şemasına tamamen sahiptir.
-* **Eventabonelikler** bölümündeki her anahtar-değer çiftinin değeri, konu BAŞLıKLARı oluştururken API üzerinde için `EventSubscription.Properties` kullanılan JSON şemasına tamamen sahiptir.
-* Bir konuyu silmek için, değerini istenen özelliklerde olarak `null` ayarlayın.
+* Konular bölümündeki her anahtar-değer çiftinin değeri, `Topic.Properties` Konu başlıkları oluştururken API üzerinde için kullanılan JSON şemasına tamamen sahiptir.
+* **Eventabonelikler** bölümündeki her anahtar-değer çiftinin değeri, `EventSubscription.Properties` Konu başlıkları oluştururken API üzerinde için kullanılan JSON şemasına tamamen sahiptir.
+* Bir konuyu silmek için, değerini `null` istenen özelliklerde olarak ayarlayın.
 * Olay aboneliklerinin istenen özellikler aracılığıyla silinmesi desteklenmiyor.
 
 ```json

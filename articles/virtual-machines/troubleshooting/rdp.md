@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057281"
 ---
 # <a name="troubleshoot-rdp-issues"></a>RDP sorunlarını giderme
@@ -41,7 +41,7 @@ Bu bölümde, bir VM bağlantısı için RDP oluşturmayla ilgili aşağıdaki s
 - [Sanal makinede statik IP kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-static-ip.md)
 - [Sanal makinede NIC’nin devre dışı bırakılması kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-nic-disabled.md)
 - [Güvenli Mod’dan kaynaklanan RDP hatalarına yönelik sorun giderme](troubleshoot-rdp-safe-mode.md)
-- [Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma](disable-guest-os-firewall-windows.md)
+- [Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakın](disable-guest-os-firewall-windows.md)
 - [Konuk işletim sisteminde güvenlik duvarı kuralını etkinleştirme veya devre dışı bırakma](enable-disable-firewall-rule-guest-os.md)
 - [Konuk işletim sistemi güvenlik duvarı gelen trafiği engelliyor](guest-os-firewall-blocking-inbound-traffic.md)
 - [Konuk işletim sistemi güvenlik duvarı yanlış yapılandırılmış](guest-os-firewall-misconfigured.md) 

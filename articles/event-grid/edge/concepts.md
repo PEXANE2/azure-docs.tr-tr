@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 73309e10e88c11e639e6ac6fd3bb061e1b5c685b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992554"
 ---
 # <a name="event-grid-concepts"></a>Event Grid kavramları
 
 Bu makalede Azure Event Grid temel kavramları açıklanmaktadır.
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 
 Bir olay, sistemde gerçekleşen bir şeyi tam olarak açıklayan en düşük bilgi miktarıdır. Her olayda, olayın kaynağı, olayın gerçekleştiği süre ve benzersiz tanımlayıcı gibi yaygın bilgiler bulunur. Her olay, yalnızca belirli olay türüyle ilgili belirli bilgilere de sahiptir. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır.
 
@@ -50,7 +50,7 @@ Event Grid abonelikleri yönetme hakkında [REST API](api.md) bakın.
 
 ## <a name="event-handlers"></a>Olay işleyicileri
 
-Bir Event Grid perspektifinden olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için daha fazla işlem gerçekleştirir. Event Grid çeşitli işleyici türlerini destekler. Desteklenen bir Azure hizmetini veya kendi web kancasını işleyici olarak kullanabilirsiniz. İşleyicinin türüne bağlı olarak, Event Grid olayın teslimini güvence altına almak için farklı mekanizmalardan oluşur. Hedef olay işleyicisi bir HTTP Web kancası ise, işleyici bir durum kodu döndürdüğünde olay yeniden denenir `200 – OK`. Edge hub 'ı için, olay herhangi bir özel durum olmadan teslim edildiğinde, başarılı olarak kabul edilir.
+Bir Event Grid perspektifinden olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için daha fazla işlem gerçekleştirir. Event Grid çeşitli işleyici türlerini destekler. Desteklenen bir Azure hizmetini veya kendi web kancasını işleyici olarak kullanabilirsiniz. İşleyicinin türüne bağlı olarak, Event Grid olayın teslimini güvence altına almak için farklı mekanizmalardan oluşur. Hedef olay işleyicisi bir HTTP Web kancası ise, işleyici bir durum kodu döndürdüğünde olay yeniden denenir `200 – OK` . Edge hub 'ı için, olay herhangi bir özel durum olmadan teslim edildiğinde, başarılı olarak kabul edilir.
 
 ## <a name="security"></a>Güvenlik
 

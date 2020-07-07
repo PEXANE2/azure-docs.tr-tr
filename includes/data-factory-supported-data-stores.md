@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.openlocfilehash: 3ead267ee11cba65e20f3df2fb76d9138a080bfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73850518"
 ---
 | Kategori | Veri deposu | Kaynak olarak desteklenen | Havuz olarak desteklenen |
 |:--- |:--- |:--- |:--- |
-| **Azure** |[Azure Blob depolama](../articles/data-factory/v1/data-factory-azure-blob-connector.md) |✓ |✓ |
+| **Azure** |[Azure Blob Depolama](../articles/data-factory/v1/data-factory-azure-blob-connector.md) |✓ |✓ |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md) |✓ |✓ |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/v1/data-factory-azure-datalake-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL Veritabanı](../articles/data-factory/v1/data-factory-azure-sql-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL Veri Ambarı](../articles/data-factory/v1/data-factory-azure-sql-data-warehouse-connector.md) |✓ |✓ |
 | &nbsp; |[Azure Bilişsel Arama dizini](../articles/data-factory/v1/data-factory-azure-search-connector.md) | |✓ |
-| &nbsp; |[Azure Tablo depolama](../articles/data-factory/v1/data-factory-azure-table-connector.md) |✓ |✓ |
+| &nbsp; |[Azure Tablo Depolama](../articles/data-factory/v1/data-factory-azure-table-connector.md) |✓ |✓ |
 | **Veritabanları** |[Amazon Redshift](../articles/data-factory/v1/data-factory-amazon-redshift-connector.md) |✓ | |
 | &nbsp; |[DB2](../articles/data-factory/v1/data-factory-onprem-db2-connector.md)* |✓ | |
 | &nbsp; |[MySQL](../articles/data-factory/v1/data-factory-onprem-mysql-connector.md)* |✓ | |
@@ -37,7 +37,7 @@ ms.locfileid: "73850518"
 | &nbsp; |[FTP](../articles/data-factory/v1/data-factory-ftp-connector.md) |✓ | |
 | &nbsp; |[HDFS](../articles/data-factory/v1/data-factory-hdfs-connector.md)* |✓ | |
 | &nbsp; |[SFTP](../articles/data-factory/v1/data-factory-sftp-connector.md) |✓ | |
-| **Diğer** |[Genel HTTP](../articles/data-factory/v1/data-factory-http-connector.md) |✓ | |
+| **Diğerleri** |[Genel HTTP](../articles/data-factory/v1/data-factory-http-connector.md) |✓ | |
 | &nbsp; |[Genel OData](../articles/data-factory/v1/data-factory-odata-connector.md) |✓ | |
 | &nbsp; |[Genel ODBC](../articles/data-factory/v1/data-factory-odbc-connector.md)* |✓ | |
 | &nbsp; |[Salesforce](../articles/data-factory/v1/data-factory-salesforce-connector.md) |✓ | |

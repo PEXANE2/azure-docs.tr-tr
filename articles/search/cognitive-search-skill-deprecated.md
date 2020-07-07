@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792028"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure Bilişsel Arama kullanım dışı bilişsel yetenekler
@@ -41,13 +41,13 @@ Bunun yerine [Microsoft. beceriler. Text. Entityrecognitionbeceri](cognitive-sea
 [Varlık tanıma beceriye](cognitive-search-skill-entity-recognition.md)geçiş yapmak için, yetenek Tanımınızda aşağıdaki değişikliklerden birini veya daha fazlasını gerçekleştirmeniz gerekir. Yetenek tanımını [Update BECERI API](https://docs.microsoft.com/rest/api/searchservice/update-skillset)'sini kullanarak güncelleştirebilirsiniz.
 
 > [!NOTE]
-> Şu anda, kavram olarak Güvenirlik puanı desteklenmez. `minimumPrecision` Parametresi, `EntityRecognitionSkill` daha sonra kullanılmak üzere ve geriye dönük uyumluluk için ' de bulunur.
+> Şu anda, kavram olarak Güvenirlik puanı desteklenmez. `minimumPrecision`Parametresi, `EntityRecognitionSkill` daha sonra kullanılmak üzere ve geriye dönük uyumluluk için ' de bulunur.
 
-1. *(Gerekli)* `@odata.type` Öğesini `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` olarak `"#Microsoft.Skills.Text.EntityRecognitionSkill"`değiştirin.
+1. *(Gerekli)* Öğesini `@odata.type` olarak değiştirin `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` `"#Microsoft.Skills.Text.EntityRecognitionSkill"` .
 
-2. *(Isteğe bağlı)* `entities` Çıktıyı kullanıyorsanız, `namedEntities` `EntityRecognitionSkill` bunun yerine karmaşık koleksiyon çıktısını kullanın. Yetenek tanımında öğesini kullanarak `targetName` , adlı `entities`bir ek açıklamayla eşleme yapabilirsiniz.
+2. *(Isteğe bağlı)* Çıktıyı kullanıyorsanız, `entities` `namedEntities` bunun yerine karmaşık koleksiyon çıktısını kullanın `EntityRecognitionSkill` . Yetenek tanımında öğesini kullanarak, `targetName` adlı bir ek açıklamayla eşleme yapabilirsiniz `entities` .
 
-3. *(Isteğe bağlı)* Açıkça belirtmezseniz `categories` `EntityRecognitionSkill` ,, tarafından desteklenenlerden farklı türde Kategoriler döndürebilir `NamedEntityRecognitionSkill`. Bu davranış istenmeyen ise, `categories` parametresini açıkça ayarladığınızdan emin olun. `["Person", "Location", "Organization"]`
+3. *(Isteğe bağlı)* Açıkça belirtmezseniz,, `categories` `EntityRecognitionSkill` tarafından desteklenenlerden farklı türde Kategoriler döndürebilir `NamedEntityRecognitionSkill` . Bu davranış istenmeyen ise, parametresini açıkça ayarladığınızdan emin olun `categories` `["Person", "Location", "Organization"]` .
 
     _Örnek geçiş tanımları_
 

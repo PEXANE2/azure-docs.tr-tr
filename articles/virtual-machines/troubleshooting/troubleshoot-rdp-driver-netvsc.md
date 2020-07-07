@@ -1,6 +1,6 @@
 ---
-title: Azure 'da bir Windows 10 veya Windows Server 2016 VM 'ye uzaktan bağlandığınızda netvsc. sys sorununu giderin | Microsoft Docs
-description: Azure 'da bir Windows 10 veya Windows Server 2016 VM 'sine bağlanırken Netsvc. sys ile ilgili bir RDP sorunuyla ilgili sorunları nasıl giderebileceğinizi öğrenin.
+title: Azure 'da bir Windows 10 veya Windows Server 2016 VM 'ye uzaktan bağlandığınızda netvsc.sys sorunu giderme | Microsoft Docs
+description: Azure 'da bir Windows 10 veya Windows Server 2016 VM 'ye bağlanırken netsvc.sys ilgili bir RDP sorunuyla ilgili sorunları nasıl giderebileceğinizi öğrenin.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,13 +13,13 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057979"
 ---
-# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Netvsc. sys nedeniyle Azure 'da bir Windows 10 veya Windows Server 2016 VM 'ye uzaktan bağlanılamıyor
+# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>netvsc.sys nedeniyle Azure 'da Windows 10 veya Windows Server 2016 VM 'ye uzaktan bağlanılamıyor
 
 Bu makalede bir Hyper-V Server 2016 ana bilgisayarında Windows 10 veya Windows Server 2016 Datacenter sanal makinesine (VM) bağlandığınızda ağ bağlantısı bulunmayan bir sorunun nasıl giderileceği açıklanmaktadır.
 
@@ -31,7 +31,7 @@ Genellikle, bu sorun Windows [build 14393](https://support.microsoft.com/help/40
 
 ## <a name="cause"></a>Nedeni
 
-Yüklü netvsc. sys sistem dosyasının sürümü **10.0.14393.594** veya **10.0.15063.0**ise bu sorun oluşabilir. Netvsc. sys ' nin bu sürümleri sistemin Azure platformuyla etkileşimini engelleyebilir.
+Bu sorun, yüklü netvsc.sys sistem dosyasının sürümü **10.0.14393.594** veya **10.0.15063.0**olduğunda meydana gelebilir. Bu netvsc.sys sürümleri sistemin Azure platformuyla etkileşimini engelleyebilir.
 
 
 ## <a name="solution"></a>Çözüm
@@ -46,7 +46,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 > [!NOTE]
 > VM 'niz üzerinde seri konsol etkinleştirilmemişse, [sanal makineyi çevrimdışı olarak Onar](#repair-the-vm-offline) bölümüne gidin.
 
-1. Bir PowerShell örneğinde, dosyanın sürümünü (**c:\windows\system32\drivers\netvsc.sys**) almak için aşağıdaki komutu çalıştırın:
+1. Bir PowerShell örneğinde, dosyanın sürümünü almak için aşağıdaki komutu çalıştırın (**c:\windows\system32\drivers\netvsc.sys**):
 
    ```
    (get-childitem "$env:systemroot\system32\drivers\netvsc.sys").VersionInfo.FileVersion
@@ -54,7 +54,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 
 2. İlgili güncelleştirmeyi aynı bölgeden çalışan bir sanal makineye bağlı yeni veya mevcut bir veri diskine indirin:
 
-   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) veya sonraki bir güncelleştirme
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)   veya sonraki bir güncelleştirme
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) veya sonraki bir güncelleştirme
 
 3. Yardımcı programı diskini çalışan sanal makineden ayırın ve sonra bozuk VM 'ye bağlayın.
@@ -77,9 +77,9 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 
 4. Değişiklikler üzerinde geri almanın gerekli olması durumunda **\Windows\system32\config** klasörünün bir kopyasını oluşturun.
 
-5. Kurtarma VM 'sinde, kayıt defteri Düzenleyicisi 'ni (Regedit. exe) başlatın.
+5. Kurtarma VM 'sinde, kayıt defteri Düzenleyicisi 'ni (regedit.exe) başlatın.
 
-6. **HKEY_LOCAL_MACHINE** anahtarını seçin ve sonra menüden **Dosya** > **yükleme Hive** ' yi seçin.
+6. **HKEY_LOCAL_MACHINE** anahtarını seçin ve sonra menüden **Dosya**  >  **yükleme Hive** ' yi seçin.
 
 7. **\Windows\system32\config** klasöründeki sistem dosyasını bulun.
 
@@ -97,7 +97,7 @@ Bu adımları izlemeden önce, etkilenen VM 'nin [sistem diskinin bir anlık gö
 
 12. Uygun güncelleştirmeyi indirin:
 
-    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) veya sonraki bir güncelleştirme
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)   veya sonraki bir güncelleştirme
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) veya sonraki bir güncelleştirme
 
 13. Sistem diskini, üzerinde güncelleştirmeyi indirebileceğiniz bir kurtarma sanal makinesine veri diski olarak ekleyin.

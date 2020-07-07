@@ -16,10 +16,10 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73161202"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory için atlasme Jira ve Confluence Yönetici Kılavuzu
@@ -54,7 +54,7 @@ Jira ve Confluence yöneticileri, Azure AD 'yi kullanarak SSO 'yu etkinleştirme
 * Jira veya Confluence, şirket ağı dışında da kullanılabilir.
 * Eklenti yalnızca Jira ve Confluence 'ın şirket içi sürümü ile birlikte çalışarak.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Eklentiyi yüklemeden önce aşağıdaki bilgileri aklınızda edin:
 
@@ -95,7 +95,7 @@ Eklentiyi yüklemek için şu adımları izleyin:
 
 2. Jira/Confluence yönetim konsoluna gidin **ve eklentiler ' i seçin.**
 
-3. Microsoft İndirme Merkezi ' nden,/ [Confluence için Jira Microsoft SAML SSO eklentisi](https://www.microsoft.com/download/details.aspx?id=56503) [için Microsoft SAML SSO eklentisini](https://www.microsoft.com/download/details.aspx?id=56506)indirin.
+3. Microsoft İndirme Merkezi ' nden, Confluence için [Jira](https://www.microsoft.com/download/details.aspx?id=56506) /  [Microsoft SAML SSO eklentisi](https://www.microsoft.com/download/details.aspx?id=56503)için Microsoft SAML SSO eklentisini indirin.
 
    Eklentinin uygun sürümü arama sonuçlarında görünür.
 
@@ -113,11 +113,11 @@ Aşağıdaki görüntüde hem Jira hem de Confluence içindeki yapılandırma ek
 
 * **Meta veri URL 'si**: Azure AD 'den Federasyon meta verilerini almaya yönelik URL.
 
-* **Tanımlayıcılar**: Azure AD 'nin isteğin kaynağını doğrulamak IÇIN kullandığı URL. Azure AD 'de **tanımlayıcı** öğeyle eşlenir. Eklenti bu URL 'yi otomatik olarak https://*\<etki alanı: bağlantı noktası>* olarak türetir.
+* **Tanımlayıcılar**: Azure AD 'nin isteğin kaynağını doğrulamak IÇIN kullandığı URL. Azure AD 'de **tanımlayıcı** öğeyle eşlenir. Eklenti bu URL 'YI otomatik olarak https:///olarak türetir *\<domain:port>* .
 
-* **Yanıt URL 'si**: SAML oturum açma işlemini başlatan kimlik sağlayıcınızdaki (IDP) yanıt URL 'si. Azure AD 'de **yanıt URL 'si** öğesine eşlenir. Eklenti bu URL 'yi otomatik olarak https://*\<etki alanı: bağlantı noktası>*/plugins/servlet/SAML/autholarak türetir.
+* **Yanıt URL 'si**: SAML oturum açma işlemini başlatan kimlik sağlayıcınızdaki (IDP) yanıt URL 'si. Azure AD 'de **yanıt URL 'si** öğesine eşlenir. Eklenti bu URL 'YI otomatik olarak https:// *\<domain:port>* /plugins/servlet/SAML/autholarak türetir.
 
-* **Oturum açma URL 'si**: SAML oturum açma Işlemini Başlatan IDP 'inizdeki oturum açma URL 'si. Azure AD 'de **oturum açma** öğesiyle eşlenir. Eklenti bu URL 'yi otomatik olarak https://*\<etki alanı: bağlantı noktası>*/plugins/servlet/SAML/autholarak türetir.
+* **Oturum açma URL 'si**: SAML oturum açma Işlemini Başlatan IDP 'inizdeki oturum açma URL 'si. Azure AD 'de **oturum açma** öğesiyle eşlenir. Eklenti bu URL 'YI otomatik olarak https:// *\<domain:port>* /plugins/servlet/SAML/autholarak türetir.
 
 * **IDP VARLıK kimliği**: IDP 'nizin KULLANDıĞı varlık kimliği. Meta veri URL 'SI çözümlendiğinde bu kutu doldurulur.
 

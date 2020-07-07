@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71066762"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management ile gelişmiş istek azaltma
@@ -30,7 +30,7 @@ Tarih olarak, hız azaltma özellikleri Azure portal tanımlı belirli bir ürü
 ## <a name="custom-key-based-throttling"></a>Özel anahtar tabanlı azaltma
 
 > [!NOTE]
-> Ve `rate-limit-by-key` `quota-by-key` Ilkeleri, Azure API Management tüketim katmanında kullanılabilir değildir. 
+> `rate-limit-by-key`Ve `quota-by-key` Ilkeleri, Azure API Management tüketim katmanında kullanılabilir değildir. 
 
 Yeni [hız-limit](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) ve [Kota-anahtar](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) ilkeleri, trafik denetimine daha esnek bir çözüm sağlar. Bu yeni ilkeler, trafik kullanımını izlemek için kullanılan anahtarları belirlemek için ifadeler tanımlamanızı sağlar. Bu yöntem, bir örnek ile en kolay şekilde gösterilmiştir. 
 
@@ -48,7 +48,7 @@ Aşağıdaki ilkeler tek bir istemci IP adresini her dakikada yalnızca 10 çağ
           counter-key="@(context.Request.IpAddress)" />
 ```
 
-Internet üzerindeki tüm istemciler benzersiz bir IP adresi kullandıysanız, bu, kullanımı kullanıcıya sınırlayan etkili bir yol olabilir. Ancak, bir NAT cihazı aracılığıyla Internet 'e eriştiği için birden çok kullanıcının tek bir genel IP adresini paylaşmaları olasıdır. Buna rağmen, kimliği doğrulanmamış erişime izin veren API 'Ler `IpAddress` için en iyi seçenek olabilir.
+Internet üzerindeki tüm istemciler benzersiz bir IP adresi kullandıysanız, bu, kullanımı kullanıcıya sınırlayan etkili bir yol olabilir. Ancak, bir NAT cihazı aracılığıyla Internet 'e eriştiği için birden çok kullanıcının tek bir genel IP adresini paylaşmaları olasıdır. Buna rağmen, kimliği doğrulanmamış erişime izin veren API 'Ler için `IpAddress` en iyi seçenek olabilir.
 
 ## <a name="user-identity-throttling"></a>Kullanıcı kimliği azaltma
 Bir son kullanıcının kimliği doğrulandıysa, kullanıcıyı benzersiz bir şekilde tanımlayan bilgiler temel alınarak bir daraltma anahtarı oluşturulabilir.
@@ -59,7 +59,7 @@ Bir son kullanıcının kimliği doğrulandıysa, kullanıcıyı benzersiz bir �
     counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
 ```
 
-Bu örnek, yetkilendirme üst bilgisinin nasıl ayıklanacağını, bunu `JWT` nesnesine nasıl dönüştüreceğiniz ve kullanıcı tanımlamak için belirtecin konusunu kullanarak, bunu hız sınırlandırma anahtarı olarak kullanacak şekilde gösterir. Kullanıcı kimliği, `JWT` diğer taleplerden biri olarak ' de depolanıyorsa, bu değer bunun yerine kullanılabilir.
+Bu örnek, yetkilendirme üst bilgisinin nasıl ayıklanacağını, bunu nesnesine nasıl dönüştüreceğiniz `JWT` ve kullanıcı tanımlamak için belirtecin konusunu kullanarak, bunu hız sınırlandırma anahtarı olarak kullanacak şekilde gösterir. Kullanıcı kimliği, `JWT` diğer taleplerden biri olarak ' de depolanıyorsa, bu değer bunun yerine kullanılabilir.
 
 ## <a name="combined-policies"></a>Birleşik ilkeler
 Yeni kısıtlama ilkeleri var olan daraltma ilkelerinden daha fazla denetim sağlamasına karşın, her iki özelliği de birleştiren bir değer vardır. Ürün abonelik anahtarına göre daraltma ([çağrı hızını aboneliğe göre sınırla](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) ve [kullanım kotasını aboneliğe göre ayarla](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)), kullanım düzeylerine göre ÜCRETLENDIREREK bir API 'nin iç kullanımını etkinleştirmek için harika bir yoldur. Kullanıcı tarafından kısıtlama sağlayabilmesinin daha ayrıntılı bir denetimi, bir kullanıcının davranışının başka bir deneyim yaşamamasını önler. 

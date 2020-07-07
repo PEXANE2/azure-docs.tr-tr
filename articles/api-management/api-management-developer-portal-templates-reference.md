@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176796"
 ---
 # <a name="developer-portal-templates"></a>Geliştirici portalı şablonları
@@ -37,7 +37,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
     -   [İşlem](api-management-api-templates.md#Product)  
     -   [Kod örnekleri](api-management-api-templates.md#CodeSamples)  
         -   [Kıvr](api-management-api-templates.md#Curl)  
-        -   [, #](api-management-api-templates.md#CSharp)  
+        -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
         -   [Amaç C](api-management-api-templates.md#ObjectiveC)  
@@ -46,7 +46,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Ürünler](api-management-product-templates.md)  
     -   [Ürün listesi](api-management-product-templates.md#ProductList)  
-    -   [Ürünüyle](api-management-product-templates.md#Product)  
+    -   [Ürün](api-management-product-templates.md#Product)  
 -   [Uygulamalar](api-management-application-templates.md)  
     -   [Uygulama listesi](api-management-application-templates.md#ProductList)  
     -   [Uygulama](api-management-application-templates.md#Application)  
@@ -59,7 +59,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
     -   [Hesap bilgilerini güncelleştir](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [Sayfalar](api-management-page-templates.md)  
     -   [Oturum aç](api-management-page-templates.md#SignIn)  
-    -   [Kaydolma](api-management-page-templates.md#SignUp)  
+    -   [Kaydol](api-management-page-templates.md#SignUp)  
     -   [Sayfa bulunamadı](api-management-page-templates.md#PageNotFound)
 
 ## <a name="next-steps"></a>Sonraki adımlar  

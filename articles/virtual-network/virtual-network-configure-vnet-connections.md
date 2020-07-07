@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71099069"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Sanal ağ veya VPN bağlantılarını yapılandırma ve doğrulama
@@ -64,7 +64,7 @@ Eşleme yapılandırmasını denetlemek için aşağıdaki yöntemi kullanın:
 
 ![Sanal ağ eşleme yapılandırmasını denetleme seçimleri](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Azure PowerShell için, sanal ağ eşlemesini almak üzere [Get-Azurermvirtualnetworkeşleme](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) komutunu çalıştırın. Bir örneği aşağıda verilmiştir:
+Azure PowerShell için, sanal ağ eşlemesini almak üzere [Get-Azurermvirtualnetworkeşleme](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) komutunu çalıştırın. İşte bir örnek:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -252,13 +252,13 @@ Sanal ağ geçidinde BGP 'yi, için bir otonom sistem (AS) numarası oluşturara
 
 SKU 'nun denetlenmesi, 20 ila 30 dakika kapalı kalma süresine neden olur. Ağ geçidinin doğru SKU 'SU varsa, [set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell cmdlet 'INI kullanarak as numarasını ekleyebilirsiniz. AS numarasını yapılandırdıktan sonra, ağ geçidi için bir BGP eşi IP 'si otomatik olarak sunulacaktır.
 
-Bir AS numarasıyla ve `LocalNetworkGateway` BGP eş adresiyle el ile sağlamanız gerekir. `ASN` Ve `-BgpPeeringAddress` değerlerini [New-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) veya [set-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell komutlet kullanarak ayarlayabilirsiniz. Bazı AS numaraları Azure için ayrılmıştır ve [azure VPN Gateway Ile BGP hakkında](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)bölümünde açıklandığı gibi bunları kullanamazsınız.
+`LocalNetworkGateway`BIR as numarasıyla ve BGP eş adresiyle el ile sağlamanız gerekir. `ASN`Ve `-BgpPeeringAddress` değerlerini [New-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) veya [set-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell komutlet kullanarak ayarlayabilirsiniz. Bazı AS numaraları Azure için ayrılmıştır ve [azure VPN Gateway Ile BGP hakkında](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)bölümünde açıklandığı gibi bunları kullanamazsınız.
 
-Bağlantı nesnesi BGP 'nin etkin olması gerekir. `-EnableBGP` Değeri `$True` [New-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) veya [set-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)aracılığıyla olarak ayarlayabilirsiniz.
+Bağlantı nesnesi BGP 'nin etkin olması gerekir. `-EnableBGP`Değeri `$True` [New-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) veya [set-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)aracılığıyla olarak ayarlayabilirsiniz.
 
 ### <a name="validate-the-bgp-configuration"></a>BGP yapılandırmasını doğrulama
 
-BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, `BgpSettingsText` bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz. Örneğin:
+BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örnek:
 
 ```
 {

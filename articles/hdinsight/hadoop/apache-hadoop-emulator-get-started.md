@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73044762"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Sanal makinede öykünücü olan Apache Hadoop korumalı alan ile çalışmaya başlama
 
 Hadoop ekosistemi hakkında bilgi edinmek için bir sanal makinede Hortonçalışmalardan Apache Hadoop korumalı alanı yüklemeyi öğrenin. Korumalı alan, Hadoop, Hadoop Dağıtılmış Dosya Sistemi (bir) ve iş gönderimi hakkında bilgi edinmek için yerel bir geliştirme ortamı sağlar. Hadoop 'u tanıdıktan sonra HDInsight kümesi oluşturarak Azure 'da Hadoop kullanmaya başlayabilirsiniz. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Oracle VirtualBox](https://www.virtualbox.org/). [Buradan](https://www.virtualbox.org/wiki/Downloads)indirin ve yükleyin.
 
@@ -44,14 +44,14 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin**alt
 
     ![VirtualBox Manager normal başlangıç](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. Bir Web tarayıcısı açın ve görüntülenecek URL 'ye gidin (genellikle `http://127.0.0.1:8888`).
+1. Bir Web tarayıcısı açın ve görüntülenecek URL 'ye gidin (genellikle `http://127.0.0.1:8888` ).
 
 ## <a name="set-sandbox-passwords"></a>Korumalı alan parolalarını ayarla
 
 1. Hortonçalışmalar korumalı alanı sayfasının **Başlarken** adımından **Gelişmiş seçenekleri görüntüle**' yi seçin. SSH kullanarak korumalı alanda oturum açmak için bu sayfadaki bilgileri kullanın. Belirtilen adı ve parolayı kullanın.
 
    > [!NOTE]
-   > Yüklü bir SSH istemciniz yoksa, üzerinde **http://localhost:4200/** sanal makine tarafından belirtilen Web tabanlı SSH 'yi kullanabilirsiniz.
+   > Yüklü bir SSH istemciniz yoksa, üzerinde sanal makine tarafından belirtilen Web tabanlı SSH 'yi kullanabilirsiniz **http://localhost:4200/** .
 
     SSH kullanarak ilk kez bağlandığınızda, kök hesabın parolasını değiştirmeniz istenir. SSH kullanarak oturum açtığınızda kullanabileceğiniz yeni bir parola girin.
 
@@ -69,7 +69,7 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin**alt
 2. Kabuk başladıktan sonra, korumalı alan ile birlikte sunulan tabloları görüntülemek için aşağıdakileri kullanın:
 
         show tables;
-3. `sample_07` Tablodan 10 satır almak için aşağıdakileri kullanın:
+3. Tablodan 10 satır almak için aşağıdakileri kullanın `sample_07` :
 
         select * from sample_07 limit 10;
 

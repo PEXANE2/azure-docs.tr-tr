@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73483941"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -40,7 +40,7 @@ Bu örneği Mxyonga IoT DevKit WiFi bilgilerini ve algılayıcı durumlarını i
 
 ## <a name="provision-azure-services"></a>Azure hizmetlerini sağlama
 
-1. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...** seçeneğini belirleyin.  -  **bulut sağlama**.
+1. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...**  -  seçeneğini belirleyin. **bulut sağlama**.
 
 2. İlerleme durumu, **hoş geldiniz** panelinin **TERMINAL** sekmesi altında görüntülenir.
 
@@ -59,7 +59,7 @@ Bu örneği Mxyonga IoT DevKit WiFi bilgilerini ve algılayıcı durumlarını i
 
 ## <a name="deploy-function-app"></a>İşlev Uygulaması dağıt
 
-1. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...** seçeneğini belirleyin.  -  **bulut-dağıtım**.
+1. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...**  -  seçeneğini belirleyin. **bulut-dağıtım**.
 
 2. İşlev uygulaması kodu karşıya yükleme işleminin bitmesini bekleyin; uygulama dağıtımı *: bitti ileti işlevi* görüntülenir.
 
@@ -67,7 +67,7 @@ Bu örneği Mxyonga IoT DevKit WiFi bilgilerini ve algılayıcı durumlarını i
 
 1. Mxyongaıot DevKit 'nizi bilgisayarınıza bağlayın.
 
-2. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...** seçeneğini belirleyin.  -  **yapılandırma-cihaz-bağlantı**
+2. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...**  -  seçeneğini belirleyin. **yapılandırma-cihaz-bağlantı**
 
 3. Mxyonun IoT DevKit ' te, **bir düğme a**'ya basın ve basılı tutun, **Sıfırla** düğmesine basın ve ardından **A** düğmesine basarak masaüstü oluşturma modunu yapılandırma moduna alın.
 
@@ -83,7 +83,7 @@ Mxyonun IoT DevKit ile bilgisayarınıza bağlı:
 
 ## <a name="monitor-devkit-state-in-browser"></a>DevKit durumunu tarayıcıda izle
 
-1. Bir Web tarayıcısında, ihtiyacınız olan adım `DevKitState\web\index.html` sırasında oluşturulan dosyayı açın.
+1. Bir Web tarayıcısında, `DevKitState\web\index.html` ihtiyacınız olan adım sırasında oluşturulan dosyayı açın.
 
 2. Aşağıdaki Web sayfası görüntülenir:![İşlev uygulaması adını belirtin.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
@@ -106,7 +106,7 @@ Mxyonun IoT DevKit ile bilgisayarınıza bağlı:
 ![Örnek test yordamı](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Cihaz ikizi ham verilerini Azure Portal: IoT Hub-\> IoT cihazlarında-\> * \<cihaz\> *  - \> cihazınız ikizi ' de görebilirsiniz.
+> Cihaz ikizi ham verilerini Azure Portal: IoT Hub- \> IoT cihazları- \> *\<your device\>*  - \> Device ikizi ' de görebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72794031"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Atılacak mektup ve yeniden deneme ilkeleri
@@ -26,10 +26,10 @@ Atılacak bir harf konumu ayarlamak için bir uç noktaya teslim edilemeyen olay
 
 > [!NOTE]
 > - Bu makaledeki komutları çalıştırmadan önce depolamada bir depolama hesabı ve bir blob kapsayıcısı oluşturun.
-> - Event Grid hizmeti bu kapsayıcıda Bloblar oluşturur. Blobların adları, büyük harfli tüm harflerle Event Grid abonelik adına sahip olur. Örneğin, aboneliğin adı-blob-aboneliğim ise, atılacak mektup bloblarının adları-BLOB-ABONELIĞIM (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111 -111111111111. JSON) olacaktır. Bu davranış, Azure hizmetleri arasında durum işlemede farklılık açısından korunmamıza olanak sağlar.
+> - Event Grid hizmeti bu kapsayıcıda Bloblar oluşturur. Blobların adları, büyük harfli tüm harflerle Event Grid abonelik adına sahip olur. Örneğin, aboneliğin adı-blob-aboneliğim ise, atılacak mektup bloblarının adları-BLOB-ABONELIĞIM (myblobcontainer/MY-BLOB-SUBSCRIPTION/2019/8/8/5/111111111-1111-1111-1111-111111111111.js) olacaktır. Bu davranış, Azure hizmetleri arasında durum işlemede farklılık açısından korunmamıza olanak sağlar.
 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli-interactive
 containername=testcontainer
@@ -44,7 +44,7 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-Etkin olmayan devre dışı bırakmak için, olay aboneliği oluşturmak için komutunu yeniden çalıştırın, ancak için `deadletter-endpoint`bir değer sağlayın. Olay aboneliğini silmeniz gerekmez.
+Etkin olmayan devre dışı bırakmak için, olay aboneliği oluşturmak için komutunu yeniden çalıştırın, ancak için bir değer sağlayın `deadletter-endpoint` . Olay aboneliğini silmeniz gerekmez.
 
 > [!NOTE]
 > Yerel makinenizde Azure CLı kullanıyorsanız, Azure CLı sürüm 2.0.56 veya üstünü kullanın. Azure CLı 'nın en son sürümünü yükleme yönergeleri için bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
@@ -64,7 +64,7 @@ New-AzEventGridSubscription `
   -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
 ```
 
-Etkin olmayan devre dışı bırakmak için, olay aboneliği oluşturmak için komutunu yeniden çalıştırın, ancak için `DeadLetterEndpoint`bir değer sağlayın. Olay aboneliğini silmeniz gerekmez.
+Etkin olmayan devre dışı bırakmak için, olay aboneliği oluşturmak için komutunu yeniden çalıştırın, ancak için bir değer sağlayın `DeadLetterEndpoint` . Olay aboneliğini silmeniz gerekmez.
 
 > [!NOTE]
 > Yerel makinenizde Azure PEShell kullanıyorsanız, Azure PowerShell Version 1.1.0 veya üstünü kullanın. [Azure indirmelerinde](https://azure.microsoft.com/downloads/)en son Azure PowerShell indirin ve yükleyin.
@@ -75,7 +75,7 @@ Event Grid bir abonelik oluştururken, olayın ne kadar süreyle teslim etmesi g
 
 [Yeniden deneme zamanlamasını](delivery-and-retry.md#retry-schedule-and-duration)yapılandıramazsınız.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Olayı 1440 dakikadan farklı bir değere yaşam süresi olarak ayarlamak için şunu kullanın:
 
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Hem hem de `event-ttl` ayarlarsanız `max-deliver-attempts`, Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır.
+Hem hem de ayarlarsanız `event-ttl` `max-deliver-attempts` , Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,7 +127,7 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Hem hem de `EventTtl` ayarlarsanız `MaxDeliveryAttempt`, Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır.
+Hem hem de ayarlarsanız `EventTtl` `MaxDeliveryAttempt` , Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72753313"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de birden çok bölgenin maliyetini iyileştirme
 
-Azure Cosmos hesabınıza istediğiniz zaman bölge ekleyebilir veya kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, hesabınızla ilişkili her bölgede ayrılır. Saat başına sağlanan aktarım hızı, Azure Cosmos hesabınız için tüm veritabanları ve kapsayıcılar genelinde yapılandırılan RU/sn 'nin toplamı `T` ve veritabanı hesabınızla ilişkili Azure bölgelerinin sayısı ise `N`, belirli bir saat için Cosmos hesabınız için sağlanan toplam üretilen iş hacmi şuna eşittir:
+Azure Cosmos hesabınıza istediğiniz zaman bölge ekleyebilir veya kaldırabilirsiniz. Çeşitli Azure Cosmos veritabanları ve kapsayıcıları için yapılandırdığınız aktarım hızı, hesabınızla ilişkili her bölgede ayrılır. Saat başına sağlanan aktarım hızı, Azure Cosmos hesabınız için tüm veritabanları ve kapsayıcılar genelinde yapılandırılan RU/sn 'nin toplamı `T` ve veritabanı hesabınızla Ilişkili Azure bölgelerinin sayısı ise, `N` belirli bir saat Için Cosmos hesabınız için sağlanan toplam üretilen iş hacmi şuna eşittir:
 
 1. `T x N RU/s`Azure Cosmos hesabınız tek bir yazma bölgesiyle yapılandırıldıysa. 
 
@@ -25,7 +25,7 @@ Tek yazma bölgesinde sağlanan aktarım hızı saniyede 100 RU ile saat başın
 
 ## <a name="costs-for-multiple-write-regions"></a>Birden çok yazma bölgesinin maliyeti
 
-Çoklu ana sistemde, yazma işlemleri için net kullanılabilir ru, yazma bölgesi sayısı `N` `N` olan zamanları artırır. Tek bölge yazmalarından farklı olarak, her bölge artık yazılabilir ve çakışma çözümünü desteklemelidir. Yazarlar için iş yükü miktarı artmıştır. Maliyet Planlama noktasından, dünyanın her yerindeki yazma işlemini gerçekleştirmek `M` için bir kapsayıcıya veya veritabanı düzeyine M `RUs` sağlamanız gerekir. Daha sonra istediğiniz kadar bölge ekleyebilir ve bunları dünya genelindeki yazma işlemleri için `M` yazma işlemleri için kullanabilirsiniz. 
+Çoklu ana sistemde, yazma işlemleri için net kullanılabilir ru, `N` `N` yazma bölgesi sayısı olan zamanları artırır. Tek bölge yazmalarından farklı olarak, her bölge artık yazılabilir ve çakışma çözümünü desteklemelidir. Yazarlar için iş yükü miktarı artmıştır. Maliyet Planlama noktasından, `M` dünyanın her yerindeki yazma işlemini gerçekleştirmek için `RUs` bir kapsayıcıya veya veritabanı düzeyine M sağlamanız gerekir. Daha sonra istediğiniz kadar bölge ekleyebilir ve bunları dünya genelindeki yazma işlemleri için yazma işlemleri için kullanabilirsiniz `M` . 
 
 ### <a name="example"></a>Örnek
 

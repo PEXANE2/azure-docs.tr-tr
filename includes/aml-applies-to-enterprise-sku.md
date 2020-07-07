@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: machine-learning
 author: nibaccam
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
 ms.openlocfilehash: 6673008ad44a530c0895a4c72a00aaad2d27cabf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75527306"
 ---
-**Uygulama hedefi:** ![](media/aml-applies-to-skus/no.png)temel ![sürüm Evet](media/aml-applies-to-skus/yes.png)Enterprise Edition &nbsp; &nbsp; &nbsp; &nbsp; [Upgrade to Enterprise](../articles/machine-learning/how-to-manage-workspace.md#upgrade)(kuruluşa yükseltme) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+**Uygulama hedefi:** ![ ](media/aml-applies-to-skus/no.png)temel sürüm ![ Evet ](media/aml-applies-to-skus/yes.png) Enterprise Edition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ([kuruluşa yükseltme](../articles/machine-learning/how-to-manage-workspace.md#upgrade))

@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058213"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Linux VM cihaz adı değişikliklerinde sorun giderme
@@ -67,7 +67,7 @@ Uygulamalar, eklenen tüm diskleri bulmak ve sembolik bağlantılar oluşturmak 
         ├── lun1-part2 -> ../../../sdd2
         └── lun1-part3 -> ../../../sdd3
 
-Linux konuk hesabındaki LUN bilgileri, veya benzer bir araç kullanılarak `lsscsi` alınır:
+Linux konuk hesabındaki LUN bilgileri, `lsscsi` veya benzer bir araç kullanılarak alınır:
 
       $ sudo lsscsi
 
@@ -81,7 +81,7 @@ Linux konuk hesabındaki LUN bilgileri, veya benzer bir araç kullanılarak `lss
 
       [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
 
-Konuk LUN bilgileri, Azure depolama 'da bölüm verilerini içeren VHD 'YI bulmak için Azure abonelik meta verileri ile birlikte kullanılır. Örneğin, `az` CLI 'yi kullanabilirsiniz:
+Konuk LUN bilgileri, Azure depolama 'da bölüm verilerini içeren VHD 'YI bulmak için Azure abonelik meta verileri ile birlikte kullanılır. Örneğin, CLI 'yi kullanabilirsiniz `az` :
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
@@ -113,7 +113,7 @@ Konuk LUN bilgileri, Azure depolama 'da bölüm verilerini içeren VHD 'YI bulma
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Blkıd kullanarak FileSystem UUID 'ler bulma
 
-Uygulamalar ve betikler,/dev yolunda `blkid`sembolik bağlantılar oluşturmak için, veya benzer bilgi kaynaklarının çıktısını okur. Çıkış, sanal makineye ve ilişkili cihaz dosyasına bağlı tüm disklerin UUID 'ler gösterir:
+Uygulamalar ve betikler, `blkid` /dev yolunda sembolik bağlantılar oluşturmak için, veya benzer bilgi kaynaklarının çıktısını okur. Çıkış, sanal makineye ve ilişkili cihaz dosyasına bağlı tüm disklerin UUID 'ler gösterir:
 
     $ sudo blkid -s UUID
 
@@ -134,7 +134,7 @@ Azure Linux Aracısı udev kuralları/dev/disk/Azure yolu altında bir sembolik 
 
 Uygulamalar, önyükleme disk cihazını ve kaynak (kısa ömürlü) diski tanımlamak için bağlantıları kullanır. Azure 'da uygulamalar, bu bölümleri bulmak için/dev/disk/Azure/root-part1 veya/dev/disk/Azure-Resource-part1 yollarında görünmelidir.
 
-`blkid` Listedeki tüm ek bölümler bir veri diskinde bulunur. Uygulamalar bu bölümlerin UUID 'sini korur ve çalışma zamanında cihaz adını bulacak bir yol kullanır:
+Listedeki tüm ek bölümler `blkid` bir veri diskinde bulunur. Uygulamalar bu bölümlerin UUID 'sini korur ve çalışma zamanında cihaz adını bulacak bir yol kullanır:
 
     $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
@@ -150,7 +150,7 @@ En son Azure depolama kurallarını almak için aşağıdaki komutları çalış
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Ubuntu: UUID kullanma](https://help.ubuntu.com/community/UsingUUID)
 - [Red Hat: kalıcı adlandırma](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)

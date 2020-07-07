@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71937281"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Azure CLı kullanarak Event Grid Media Services olaylar oluşturma ve izleme
@@ -24,7 +24,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu hizmet, olay il
 
 Bu makalede, Azure CLı kullanarak Azure Media Services hesabınıza yönelik olaylara abone olabilirsiniz. Ardından, sonucu görüntülemek için olayları tetiklersiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bu makalede, olayları toplayıp görüntüleyen bir Web uygulamasına gönderirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin bir Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 - CLı 'yi yerel olarak yükleyip kullanın, bu makale için Azure CLı 2,0 veya sonraki bir sürümü gerekir. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
@@ -61,7 +61,7 @@ az account set --subscription mySubscriptionId
 
 İzlemek istediğiniz olayları Event Grid söylemek için bir makaleye abone olursunuz. Aşağıdaki örnek, oluşturduğunuz Media Services hesabına abone olur ve olay bildirimi için uç nokta olarak oluşturduğunuz Web sitesinden URL 'YI geçirir. 
 
-Olay `<event_subscription_name>` aboneliğiniz için benzersiz bir adla değiştirin. Ve `<resource_group_name>` `<ams_account_name>`için, Media Services hesabını oluştururken kullandığınız değerleri kullanın. `<endpoint_URL>`İçin, Web uygulamanızın URL 'sini sağlayın ve GIRIŞ sayfası URL 'sine `api/updates` ekleyin. Abone olurken bitiş noktasını belirterek, Event Grid olayların bu uç noktaya yönlendirilmesini işler. 
+`<event_subscription_name>`Olay aboneliğiniz için benzersiz bir adla değiştirin. `<resource_group_name>`Ve için `<ams_account_name>` , Media Services hesabını oluştururken kullandığınız değerleri kullanın. İçin, `<endpoint_URL>` Web UYGULAMANıZıN URL 'sini sağlayın ve `api/updates` GIRIŞ sayfası URL 'sine ekleyin. Abone olurken bitiş noktasını belirterek, Event Grid olayların bu uç noktaya yönlendirilmesini işler. 
 
 1. Kaynak kimliğini al
 
@@ -69,7 +69,7 @@ Olay `<event_subscription_name>` aboneliğiniz için benzersiz bir adla değişt
     amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
     ```
 
-    Örneğin:
+    Örnek:
 
     ```
     amsResourceId=$(az ams account show --name amsaccount --resource-group amsResourceGroup --query id --output tsv)
@@ -84,7 +84,7 @@ Olay `<event_subscription_name>` aboneliğiniz için benzersiz bir adla değişt
     --endpoint <endpoint_URL>
     ```
 
-    Örneğin:
+    Örnek:
 
     ```
     az eventgrid event-subscription create --source-resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
@@ -99,7 +99,7 @@ Olay `<event_subscription_name>` aboneliğiniz için benzersiz bir adla değişt
 
 Bir kodlama işi çalıştırarak Media Services hesabı için olayları tetikleyebilirsiniz. Bir dosya kodlamak ve olay göndermeye başlamak için [Bu hızlı](stream-files-dotnet-quickstart.md) başlangıcı izleyebilirsiniz. 
 
-Web uygulamanızı yeniden görüntüleyin ve buna bir abonelik doğrulama olayının gönderildiğine dikkat edin. Uç noktanın olay verilerini almak istediğini doğrulayabilmesi için Event Grid doğrulama olayını gönderir. Uç noktanın olarak `validationResponse` `validationCode`ayarlanması. Daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması Event Grid](../../event-grid/security-authentication.md). Aboneliği nasıl doğrulayacağını görmek için Web uygulaması kodunu görüntüleyebilirsiniz.
+Web uygulamanızı yeniden görüntüleyin ve buna bir abonelik doğrulama olayının gönderildiğine dikkat edin. Uç noktanın olay verilerini almak istediğini doğrulayabilmesi için Event Grid doğrulama olayını gönderir. Uç noktanın `validationResponse` olarak ayarlanması `validationCode` . Daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması Event Grid](../../event-grid/security-authentication.md). Aboneliği nasıl doğrulayacağını görmek için Web uygulaması kodunu görüntüleyebilirsiniz.
 
 > [!TIP]
 > Göz simgesini seçerek olay verilerini genişletin. Tüm olayları görüntülemek istiyorsanız, sayfayı yenilemeyin.

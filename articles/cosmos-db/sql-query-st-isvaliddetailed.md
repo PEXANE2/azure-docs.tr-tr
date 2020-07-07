@@ -8,22 +8,22 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9e640c223c2fef844b9b53e1f4afa3a5d398c8c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71349346"
 ---
 # <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
  Belirtilen GeoJSON noktası, çokgen veya LineString ifadesi geçerliyse Boole değeri içeren bir JSON değeri döndürür ve geçersiz ise, bir dize değeri olarak neden olur.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 ST_ISVALIDDETAILED(<spatial_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *spatial_expr*  
    Bir GeoJSON noktası ya da çokgen ifadesi.  
@@ -34,7 +34,7 @@ ST_ISVALIDDETAILED(<spatial_expr>)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek kullanarak `ST_ISVALIDDETAILED`geçerliliği denetleme (ayrıntılarla).  
+  Aşağıdaki örnek kullanarak geçerliliği denetleme (ayrıntılarla) `ST_ISVALIDDETAILED` .  
   
 ```sql
 SELECT ST_ISVALIDDETAILED({   

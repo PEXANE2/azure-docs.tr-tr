@@ -10,14 +10,14 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992567"
 ---
 # <a name="advanced-filtering"></a>Gelişmiş filtreleme
-Event Grid, JSON yükünde herhangi bir özellikte filtre belirtilmesine izin verir. Bu filtreler, her bir dış koşulun `AND` isteğe bağlı iç `OR` koşullara sahip olduğu koşullar kümesi olarak modellenir. Her `AND` koşul için aşağıdaki değerleri belirtirsiniz:
+Event Grid, JSON yükünde herhangi bir özellikte filtre belirtilmesine izin verir. Bu filtreler `AND` , her bir dış koşulun isteğe bağlı iç koşullara sahip olduğu koşullar kümesi olarak modellenir `OR` . Her `AND` koşul için aşağıdaki değerleri belirtirsiniz:
 
 * `OperatorType`-Karşılaştırma türü.
 * `Key`-Filtrenin uygulanacağı özelliğin JSON yolu.
@@ -50,12 +50,12 @@ Event Grid, bugün bir değer dizisinde filtrelemeyi desteklemez. Gelen bir olay
 
 ## <a name="and-or-not-semantics"></a>AND-OR-semantiğini
 
-Daha önce verilen JSON örneğinde bir dizi `AdvancedFilters` olduğunu unutmayın. Her `AdvancedFilter` dizi öğesini bir `AND` koşul olarak düşünün.
+Daha önce verilen JSON örneğinde `AdvancedFilters` bir dizi olduğunu unutmayın. Her `AdvancedFilter` dizi öğesini bir koşul olarak düşünün `AND` .
 
-Birden çok değeri destekleyen `NumberIn`işleçler (örneğin `NumberNotIn` `StringIn`,, vb.) için, her bir değer bir `OR` koşul olarak değerlendirilir. Bu nedenle, `StringBeginsWith("a", "b", "c")` ya da `a` `b` veya `c`ile başlayan herhangi bir dize değeriyle eşleşir.
+Birden çok değeri destekleyen işleçler (örneğin,, `NumberIn` `NumberNotIn` `StringIn` vb.) için, her bir değer bir koşul olarak değerlendirilir `OR` . Bu nedenle, ya `StringBeginsWith("a", "b", "c")` da veya ile başlayan herhangi bir dize değeriyle `a` eşleşir `b` `c` .
 
 > [!CAUTION]
-> NOT işleci değildir `NumberNotIn` ve `StringNotIn` `Values` alanında verilen her bir değer için ve koşulları gibi davranır.
+> NOT işleci değildir `NumberNotIn` ve `StringNotIn` alanında verilen her bir değer için ve koşulları gibi davranır `Values` .
 >
 > Bunu yapmamaları, filtrenin bir kabul etme filtresi olmasını ve filtreleme amacını ertelemesini ister.
 
@@ -69,15 +69,15 @@ Tüm dize karşılaştırmaları büyük/küçük harfe duyarlıdır. Bu davran�
 
 ## <a name="allowed-advanced-filter-keys"></a>İzin verilen gelişmiş filtre anahtarları
 
-`Key` Özelliği iyi bilinen bir en üst düzey özellik olabilir veya birden çok noktalı bir JSON yolu olabilir, burada her nokta iç içe geçmiş bir JSON nesnesine adımlamayı belirtir.
+`Key`Özelliği iyi bilinen bir en üst düzey özellik olabilir veya birden çok noktalı bir JSON yolu olabilir, burada her nokta iç içe geçmiş bir JSON nesnesine adımlamayı belirtir.
 
-Event Grid, JSONPath belirtiminin aksine, anahtardaki `$` karakter için özel anlamı yoktur.
+Event Grid `$` , JSONPath belirtiminin aksine, anahtardaki karakter için özel anlamı yoktur.
 
 ### <a name="event-grid-schema"></a>Olay Kılavuzu şeması
 
 Event Grid şemasındaki olaylar için:
 
-* Kimlik
+* ID
 * Konu başlığı
 * Özne
 * Olay türü
@@ -87,7 +87,7 @@ Event Grid şemasındaki olaylar için:
 
 ### <a name="custom-event-schema"></a>Özel olay şeması
 
-Event Grid, `Key` yük üzerinde herhangi bir zarf şemasını zorlayamasından dolayı özel olay şemasında kısıtlama yoktur.
+`Key`Event Grid, yük üzerinde herhangi bir zarf şemasını zorlayamasından dolayı özel olay şemasında kısıtlama yoktur.
 
 ## <a name="numeric-single-value-filter-examples"></a>Sayısal tek değerli filtre örnekleri
 

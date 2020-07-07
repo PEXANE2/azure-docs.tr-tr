@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176917"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API Management uygulama şablonları
@@ -74,13 +74,13 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ```  
   
 ### <a name="controls"></a>Denetimler  
- `Product list` Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
+ `Product list`Şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
   
 -   [sayfalama denetimi](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Veri modeli  
   
-|Özellik|Tür|Açıklama|  
+|Özellik|Tür|Description|  
 |--------------|----------|-----------------|  
 |`Paging`|[Sayfalama](api-management-template-data-model-reference.md#Paging) varlığı.|Uygulamalar koleksiyonu için sayfalama bilgileri.|  
 |`Applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının koleksiyonu.|Geçerli Kullanıcı tarafından görülebilen uygulamalar.|  
@@ -181,7 +181,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ```  
   
 ### <a name="controls"></a>Denetimler  
- `Application` Şablon herhangi bir [sayfa denetiminin](api-management-page-controls.md)kullanılmasına izin vermez.  
+ `Application`Şablon herhangi bir [sayfa denetiminin](api-management-page-controls.md)kullanılmasına izin vermez.  
   
 ### <a name="data-model"></a>Veri modeli  
  [Uygulama](api-management-template-data-model-reference.md#Application) varlığı.  
