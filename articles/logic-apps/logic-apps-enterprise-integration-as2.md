@@ -9,18 +9,18 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115508"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange AS2 iletileri
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps'te AS2 kurumsal tümleştirme için AS2 iletilerini gönderme ve alma
 
 > [!IMPORTANT]
 > Özgün AS2 Bağlayıcısı kullanım dışı bırakılıyor, bu nedenle bunun yerine **AS2 (v2)** bağlayıcısını kullandığınızdan emin olun. Bu sürüm özgün sürümle aynı özellikleri sağlar, Logic Apps çalışma zamanına göre yereldir ve aktarım hızı ve ileti boyutu açısından önemli performans iyileştirmeleri sağlar. Ayrıca, yerel v2 Bağlayıcısı tümleştirme hesabınıza bir bağlantı oluşturmanızı gerektirmez. Bunun yerine, Önkoşullar bölümünde açıklandığı gibi, tümleştirme hesabınızı bağlayıcıyı kullanmayı planladığınız Logic App 'e bağladığınızdan emin olun.
 
-Azure Logic Apps içinde AS2 iletilerle çalışmak için, AS2 iletişimini yönetmeye yönelik Tetikleyiciler ve eylemler sağlayan AS2 bağlayıcısını kullanabilirsiniz. Örneğin, iletileri aktarırken güvenlik ve güvenilirlik sağlamak için şu işlemleri kullanabilirsiniz:
+Azure Logic Apps'te AS2 iletileriyle çalışmak için AS2 iletişiminin yönetilmesine yönelik tetikleyiciler ve eylemler sunan AS2 bağlayıcısını kullanabilirsiniz. Örneğin, iletileri aktarırken güvenlik ve güvenilirlik sağlamak için şu işlemleri kullanabilirsiniz:
 
 * [ **AS2 kodlama** ](#encode) , dijital Imzalama ve ileti değerlendirme bildirimleri (MDN) aracılığıyla, geçiş dışı desteği sağlamaya yardımcı olan bir kodlama eylemi. Örneğin, bu eylem AS2/HTTP üstbilgilerini uygular ve yapılandırıldığında bu görevleri gerçekleştirir:
 
@@ -49,7 +49,7 @@ Azure Logic Apps içinde AS2 iletilerle çalışmak için, AS2 iletişimini yön
 
 Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygulamaya nasıl ekleneceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -69,7 +69,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
 
 <a name="encode"></a>
 
-## <a name="encode-as2-messages"></a>AS2 iletilerini kodla
+## <a name="encode-as2-messages"></a>AS2 iletilerini kodlama
 
 1. Henüz yapmadıysanız, [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -88,7 +88,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
    | **AS2** | İleti alıcısının AS2 anlaşmanız tarafından belirtilen tanımlayıcısı |
    |||
 
-   Örneğin:
+   Örnek:
 
    ![İleti kodlama özellikleri](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

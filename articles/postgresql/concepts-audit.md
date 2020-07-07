@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131235"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-tek sunucu
@@ -37,13 +37,13 @@ Azure depolama, Event Hubs veya Azure Izleyici günlüklerine günlük kaydı ay
 
 ## <a name="installing-pgaudit"></a>PgAudit yükleniyor
 
-PgAudit 'ı yüklemek için sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin `shared_preload_libraries` parametresinin bir değişikliği, sunucu yeniden başlatmanın etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)veya [REST API](/rest/api/postgresql/configurations/createorupdate)kullanarak parametreleri değiştirebilirsiniz.
+PgAudit 'ı yüklemek için sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin parametresinin bir değişikliği, `shared_preload_libraries` sunucu yeniden başlatmanın etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)veya [REST API](/rest/api/postgresql/configurations/createorupdate)kullanarak parametreleri değiştirebilirsiniz.
 
 [Azure Portal](https://portal.azure.com)kullanarak:
 
    1. PostgreSQL için Azure Veritabanı sunucunuzu seçin.
    2. Kenar çubuğunda **sunucu parametreleri**' ni seçin.
-   3. `shared_preload_libraries` Parametresi için arama yapın.
+   3. Parametresi için arama yapın `shared_preload_libraries` .
    4. **Pgaudit**öğesini seçin.
    5. Değişikliği uygulamak için sunucuyu yeniden başlatın.
 
@@ -53,7 +53,7 @@ PgAudit 'ı yüklemek için sunucunun paylaşılan önyükleme kitaplıklarına 
       ```
 
 > [!TIP]
-> Bir hata görürseniz, kaydettikten `shared_preload_libraries`sonra sunucunuzu yeniden başlattığınızdan emin olun.
+> Bir hata görürseniz, kaydettikten sonra sunucunuzu yeniden başlattığınızdan emin olun `shared_preload_libraries` .
 
 ## <a name="pgaudit-settings"></a>pgAudit ayarları
 
@@ -65,25 +65,25 @@ pgAudit oturum veya nesne denetim günlüğünü yapılandırmanızı sağlar. [
 [PgAudit](#installing-pgaudit)' i yükledikten sonra, parametrelerini günlüğe kaydetmeyi başlatacak şekilde yapılandırabilirsiniz. [Pgaudit belgeleri](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) her parametrenin tanımını sağlar. Önce parametreleri test edin ve beklenen davranışı aldığınızı onaylayın.
 
 > [!NOTE]
-> Olarak `pgaudit.log_client` ayarlandığında, günlükleri dosyaya yazılması yerine bir istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır. <br> <br>
-> `pgaudit.log_level`yalnızca açık olduğunda `pgaudit.log_client` etkindir.
+> `pgaudit.log_client`Olarak ayarlandığında, günlükleri dosyaya yazılması yerine bir istemci işlemine (psql gibi) yönlendirir. Bu ayar genellikle devre dışı bırakılmalıdır. <br> <br>
+> `pgaudit.log_level`yalnızca açık olduğunda etkindir `pgaudit.log_client` .
 
 > [!NOTE]
-> PostgreSQL için Azure veritabanı 'nda, `pgaudit.log` pgaudit belgelerinde açıklandığı şekilde `-` (eksi) işareti kısayolu kullanılarak ayarlanamaz. Tüm gereken deyim sınıfları (READ, WRITE vb.) tek tek belirtilmelidir.
+> PostgreSQL için Azure veritabanı 'nda, `pgaudit.log` `-` pgaudit belgelerinde açıklandığı şekilde (eksi) işareti kısayolu kullanılarak ayarlanamaz. Tüm gereken deyim sınıfları (READ, WRITE vb.) tek tek belirtilmelidir.
 
 ### <a name="audit-log-format"></a>Denetim günlüğü biçimi
-Her denetim girişi, günlük satırının `AUDIT:` başlangıcında yakınında gösterilir. Girişin geri kalanının biçimi [Pgaudit belgelerinde](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)ayrıntılıdır.
+Her denetim girişi, `AUDIT:` günlük satırının başlangıcında yakınında gösterilir. Girişin geri kalanının biçimi [Pgaudit belgelerinde](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)ayrıntılıdır.
 
-Denetim gereksinimlerinizi karşılamak için başka bir alana ihtiyacınız varsa, Postgres parametresini `log_line_prefix`kullanın. `log_line_prefix`Her Postgres günlük satırının başlangıcında çıktı olan bir dizedir. Örneğin, aşağıdaki `log_line_prefix` ayar zaman damgası, Kullanıcı adı, veritabanı adı ve işlem kimliği sağlar:
+Denetim gereksinimlerinizi karşılamak için başka bir alana ihtiyacınız varsa, Postgres parametresini kullanın `log_line_prefix` . `log_line_prefix`Her Postgres günlük satırının başlangıcında çıktı olan bir dizedir. Örneğin, aşağıdaki `log_line_prefix` ayar zaman damgası, Kullanıcı adı, veritabanı adı ve Işlem kimliği sağlar:
 
 ```
 t=%m u=%u db=%d pid=[%p]:
 ```
 
-Hakkında `log_line_prefix`daha fazla bilgi edinmek Için [PostgreSQL belgelerini](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)ziyaret edin.
+Hakkında daha fazla bilgi edinmek için `log_line_prefix` [PostgreSQL belgelerini](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)ziyaret edin.
 
 ### <a name="getting-started"></a>Başlarken
-Hızlıca kullanmaya başlamak için, olarak `pgaudit.log` `WRITE`ayarlayın ve çıktıyı gözden geçirmek için günlüklerinizi açın. 
+Hızlıca kullanmaya başlamak için, `pgaudit.log` olarak ayarlayın `WRITE` ve çıktıyı gözden geçirmek için günlüklerinizi açın. 
 
 ## <a name="viewing-audit-logs"></a>Denetim günlüklerini görüntüleme
 . Log dosyalarını kullanıyorsanız, denetim günlüklerinizin PostgreSQL hata günlüklerinizin bulunduğu dosyaya dahil edilir. Günlük dosyalarını Azure [portalından](howto-configure-server-logs-in-portal.md) veya [CLI](howto-configure-server-logs-using-cli.md)'dan indirebilirsiniz. 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: a8a5914b51b56fbe8b4b7b7ba331f58ec451f975
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82731892"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MySQL için Azure veritabanı işlem kaynakları için ön ödeme
@@ -48,14 +48,14 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya kısa süreli dağıtılan su
 
 Aşağıdaki tablo gerekli alanları açıklar.
 
-| Alan | Açıklama |
+| Alan | Description |
 | :------------ | :------- |
 | Abonelik   | MySQL için Azure veritabanı ayrılmış kapasite ayırması için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, MySQL için Azure veritabanı ayrılmış kapasite rezervasyonu için ön maliyetler üzerinden ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
 | Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal**çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan MySQL sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki MySQL sunucuları Için Azure veritabanı 'na uygulanır. </br></br> **Tek kaynak grubu**, rezervasyon indirimi seçili abonelikteki MySQL sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
 | Bölge | MySQL için Azure veritabanı ayrılmış kapasite rezervasyonu kapsamındaki Azure bölgesi.
 | Dağıtım türü | Ayırmasını satın almak istediğiniz MySQL için Azure veritabanı kaynak türü.
 | Performans katmanı | MySQL için Azure veritabanı sunucuları için hizmet katmanı.
-| Sözleşme Dönemi | Bir yıl
+| Terim | Bir yıl
 | Miktar | MySQL için Azure veritabanı için satın alınan işlem kaynakları miktarı ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve performans katmanındaki, ayrılan ve fatura iskontosunu alacak olan sanal çekirdekler sayısıdır. Örneğin, Doğu ABD bölgesinde 5. nesil 16 sanal çekirdeklerinin toplam işlem kapasitesine sahip bir MySQL için Azure veritabanı sunucusunu çalıştırıyorsanız veya çalıştırmayı planlıyorsanız, tüm sunucuların avantajını en üst düzeye çıkarmak için miktarı 16 olarak belirtirsiniz.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma

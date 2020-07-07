@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d9d51292c3cae9634af917819b558cdfd2fa04b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311508"
 ---
 # <a name="security-agent-authentication-methods"></a>Güvenlik Aracısı kimlik doğrulama yöntemleri
@@ -57,10 +57,10 @@ Güvenlik aracısının mevcut bir cihaz kimlik doğrulama yöntemini (otomatik 
 [Bir güvenlik Aracısı dağıtıldığında](how-to-deploy-agent.md), kimlik doğrulaması ayrıntıları bağımsız değişken olarak sağlanmalıdır.
 Bu bağımsız değişkenler aşağıdaki tabloda belgelenmiştir.
 
-|Linux parametre adı | Windows parametre adı | Toplu parametre |Açıklama|Seçenekler|
+|Linux parametre adı | Windows parametre adı | Toplu parametre |Description|Seçenekler|
 |---------------------|---------------|---------|---------------|---------------|
 |kimlik doğrulama-kimlik|Authenticationıdentity|AUI|Kimlik doğrulama kimliği| **Securitymodule** veya **cihaz**|
-|Authentication-yöntemi|AuthenticationMethod|AUD|Kimlik doğrulama Yöntemi|**SymmetricKey** veya **Selfsignedcertificate**|
+|Authentication-yöntemi|AuthenticationMethod|AUD|Kimlik doğrulama yöntemi|**SymmetricKey** veya **Selfsignedcertificate**|
 |dosya yolu|Null|f|Sertifikayı veya simetrik anahtarı içeren dosyanın mutlak tam yolu| |
 |konak adı|Ana bilgisayar adı|hn|IoT Hub FQDN 'SI|Örnek: ContosoIotHub.azure-devices.net|
 |cihaz kimliği|DeviceId|içerik|Cihaz Kimliği|Örnek: MyDevice1|
@@ -77,7 +77,7 @@ Dağıtımdan sonra kimlik doğrulama yöntemlerini değiştirmek için yapılan
 
 ### <a name="c-based-security-agent"></a>C# tabanlı güvenlik Aracısı
 
-_Authentication. config dosyasını_ aşağıdaki parametrelerle düzenleyin:
+_Authentication.config_ aşağıdaki parametrelerle düzenleyin:
 
 ```xml
 <Authentication>
@@ -92,7 +92,7 @@ _Authentication. config dosyasını_ aşağıdaki parametrelerle düzenleyin:
 
 ### <a name="c-based-security-agent"></a>C tabanlı güvenlik Aracısı
 
-_Localconfiguration. JSON öğesini_ şu parametrelerle düzenleyin:
+Aşağıdaki parametrelerle _LocalConfiguration.js'_ i düzenleyin:
 
 ```json
 "Authentication" : {

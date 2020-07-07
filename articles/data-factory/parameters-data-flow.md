@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780427"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışlarını parametreleştirme
@@ -64,31 +64,31 @@ Dize türünde bir işlem hattı ifade parametresi atarken, varsayılan olarak t
 
 ![Veri akışı parametresini ayarlama](media/data-flow/string-parameter.png "Veri akışı parametresini ayarlama")
 
-Veri akışı parametresi `stringParam` değeri `upper(column1)`olan bir işlem hattı parametresine başvuruyorsa. 
+Veri akışı parametresi `stringParam` değeri olan bir işlem hattı parametresine başvuruyorsa `upper(column1)` . 
 
 - Eğer ifadesi işaretliyse, `$stringParam` Sütun1 'nin tümü büyük harf değeri olarak değerlendirilir.
 - İfade işaretli değilse (varsayılan davranış), `$stringParam` olarak değerlendirilir`'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>Zaman damgalarına geçirme
 
-İşlem hattı ifade dilinde, gibi sistem `pipeline().TriggerTime` değişkenleri ve ' yyyy-aa `utcNow()` -gg\'T\'hh: mm: ss biçiminde dizeler olarak dönüş zaman damgası olarak işlevler. SSSSSSZ '. Bunları zaman damgası türünde veri akışı parametrelerine dönüştürmek için, istenen zaman damgasını bir `toTimestamp()` işleve dahil etmek üzere dize ilişkilendirmeyi kullanın. Örneğin, işlem hattı tetikleme süresini bir veri akışı parametresine dönüştürmek için kullanabilirsiniz `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`. 
+İşlem hattı ifade dilinde, gibi sistem değişkenleri `pipeline().TriggerTime` ve `utcNow()` ' yyyy-aa-gg \' T \' HH: mm: ss biçiminde dizeler olarak dönüş zaman damgası olarak işlevler. SSSSSSZ '. Bunları zaman damgası türünde veri akışı parametrelerine dönüştürmek için, istenen zaman damgasını bir işleve dahil etmek üzere dize ilişkilendirmeyi kullanın `toTimestamp()` . Örneğin, işlem hattı tetikleme süresini bir veri akışı parametresine dönüştürmek için kullanabilirsiniz `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
 
 ![Veri akışı parametresini ayarlama](media/data-flow/parameter-timestamp.png "Veri akışı parametresini ayarlama")
 
 > [!NOTE]
-> Veri akışları yalnızca 3 milisaniyeye kadar basamağı destekleyebilir. İşlev `left()` , ek basamakların kırpılıp kullanılamaz.
+> Veri akışları yalnızca 3 milisaniyeye kadar basamağı destekleyebilir. `left()`İşlev, ek basamakların kırpılıp kullanılamaz.
 
 #### <a name="pipeline-parameter-example"></a>Ardışık düzen parametresi örneği
 
-String türünde bir işlem hattı parametresine `intParam` başvuran bir tamsayı parametresi olduğunu varsayalım `@pipeline.parameters.pipelineParam`. 
+`intParam`String türünde bir işlem hattı parametresine başvuran bir tamsayı parametresi olduğunu varsayalım `@pipeline.parameters.pipelineParam` . 
 
 ![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-2.png "Veri akışı parametresini ayarlama")
 
-`@pipeline.parameters.pipelineParam`çalışma zamanında bir değeri `abs(1)` atandı.
+`@pipeline.parameters.pipelineParam`çalışma zamanında bir değeri atandı `abs(1)` .
 
 ![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-4.png "Veri akışı parametresini ayarlama")
 
-`$intParam` Türetilmiş sütun gibi bir ifadede başvuruluyorsa, return `1`sonucunu değerlendirir `abs(1)` . 
+`$intParam`Türetilmiş sütun gibi bir ifadede başvuruluyorsa, return sonucunu değerlendirir `abs(1)` `1` . 
 
 ![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-3.png "Veri akışı parametresini ayarlama")
 
@@ -102,9 +102,9 @@ String türünde bir işlem hattı parametresine `intParam` başvuran bir tamsay
 
 ### <a name="passing-in-a-column-name-as-a-parameter"></a>Sütun adını parametre olarak geçirme
 
-Ortak bir model, bir sütun adını parametre değeri olarak geçirmektir. Sütun veri akışı şemasında tanımlanmışsa, doğrudan dize ifadesi olarak başvurabilirsiniz. Sütun şemada tanımlanmamışsa, `byName()` işlevini kullanın. Sütununu, gibi bir atama işleviyle ilgili türe dönüştürmeyi unutmayın `toString()`.
+Ortak bir model, bir sütun adını parametre değeri olarak geçirmektir. Sütun veri akışı şemasında tanımlanmışsa, doğrudan dize ifadesi olarak başvurabilirsiniz. Sütun şemada tanımlanmamışsa, `byName()` işlevini kullanın. Sütununu, gibi bir atama işleviyle ilgili türe dönüştürmeyi unutmayın `toString()` .
 
-Örneğin, bir parametreye `columnName`göre bir dize sütununu eşlemek isterseniz, öğesinden türetilmiş bir sütun dönüşümü ekleyebilirsiniz. `toString(byName($columnName))`
+Örneğin, bir parametreye göre bir dize sütununu eşlemek isterseniz `columnName` , öğesinden türetilmiş bir sütun dönüşümü ekleyebilirsiniz `toString(byName($columnName))` .
 
 ![Sütun adını parametre olarak geçirme](media/data-flow/parameterize-column-name.png "Sütun adını parametre olarak geçirme")
 

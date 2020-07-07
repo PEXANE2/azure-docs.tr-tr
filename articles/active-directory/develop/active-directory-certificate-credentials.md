@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82690279"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
@@ -46,7 +46,7 @@ Microsoft Identity platformu onaylama 'yı hesaplamak Için, çok sayıda [JSON 
 | `iss` | Veren: client_id (istemci hizmetinin uygulama KIMLIĞI) olmalıdır |
 | `jti` | GUID: JWT KIMLIĞI |
 | `nbf` | Önünde değil: belirtecin kullanılacağı tarih. Süre, belirtecin verilme zamanına kadar 1 Ocak 1970 (1970-01-01T0:0: 0Z) UTC 'den saniye sayısı olarak gösterilir. |
-| `sub` | Konu: için `iss`olduğu gibi client_id (Istemci HIZMETININ uygulama kimliği) olmalıdır |
+| `sub` | Konu: için olduğu gibi `iss` client_id (istemci hizmetinin uygulama kimliği) olmalıdır |
 
 ### <a name="signature"></a>İmza
 
@@ -104,7 +104,7 @@ Sertifikayı tutan bir sertifika varsa şunları hesaplamanız gerekir:
 - `$base64Thumbprint`, sertifika karmasının Base64 kodlaması olan
 - `$base64Value`, sertifika ham verilerinin Base64 kodlaması olan
 
-Ayrıca, uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız gerekir (`$keyId`).
+Ayrıca, uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız gerekir ( `$keyId` ).
 
 İstemci uygulaması için Azure uygulama kaydı:
 1. Uygulama bildirimini açmak için **bildirim** ' ı seçin.
@@ -123,11 +123,11 @@ Ayrıca, uygulama bildiriminde anahtarı tanımlamak için bir GUID sağlamanız
    ```
 3. Düzenlemeleri uygulama bildiriminde kaydedin ve sonra bildirimi Microsoft Identity platform 'a yükleyin.
 
-   `keyCredentials` Özelliği çok değerli olduğundan, daha zengin anahtar yönetimi için birden fazla sertifika yükleyebilirsiniz.
+   `keyCredentials`Özelliği çok değerli olduğundan, daha zengin anahtar yönetimi için birden fazla sertifika yükleyebilirsiniz.
 
 ## <a name="code-sample"></a>Kod örneği
 
 > [!NOTE]
-> Sertifikanın karmasını kullanarak X5T üstbilgisini bir temel 64 dizesine dönüştürerek hesaplamanız gerekir. Bunu C# dilinde gerçekleştirmek için kod `System.Convert.ToBase64String(cert.GetCertHash());`.
+> Sertifikanın karmasını kullanarak X5T üstbilgisini bir temel 64 dizesine dönüştürerek hesaplamanız gerekir. Bunu C# dilinde gerçekleştirmek için kod `System.Convert.ToBase64String(cert.GetCertHash());` .
 
-[Microsoft Identity platform kullanan kod örneği .NET Core Daemon konsol uygulaması](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) , bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca `New-SelfSignedCertificate` PowerShell komutunu kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) gösterilmektedir. Ayrıca, sertifikaları oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) da kullanabilirsiniz.
+[Microsoft Identity platform kullanan kod örneği .NET Core Daemon konsol uygulaması](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) , bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini nasıl kullandığını gösterir. Ayrıca PowerShell komutunu kullanarak [kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) gösterilmektedir `New-SelfSignedCertificate` . Ayrıca, sertifikaları oluşturmak, parmak izini hesaplamak ve daha fazlasını yapmak için [uygulama oluşturma komut dosyalarını](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) da kullanabilirsiniz.

@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82779051"
 ---
 # <a name="localization"></a>Yerelleştirme #
@@ -28,11 +28,11 @@ Azure Media Player şu anda ilgili dil kodlarıyla aşağıdaki dilleri destekle
 
 | Dil            | Kod | Dil                | Kod   | Dil                | Kod         |
 |---------------------|------|-------------------------|--------|-------------------------|--------------|
-| İngilizce {varsayılan}   | tr   | Hırvatça                | hr     | Rumence                | ro           |
+| İngilizce {varsayılan}   | tr   | Hırvatça                | sa     | Rumence                | ro           |
 | Arapça              | Ar   | Macarca               | Hu     | Slovakça                  | sor           |
-| Bulgarca           | bg   | Endonezce              | id     | Slovene                 | SL           |
-| Katalanca             | yetkilisini   | İzlandaca               | is     | Sırpça-Kiril      | SR-Cyrl-CS   |
-| Çekçe               | 'ye   | İtalyanca                 | içerdiği     | Sırpça-Latin         | sr-latn-rs   |
+| Bulgarca           | bg   | Endonezce              | kimlik     | Slovene                 | SL           |
+| Katalanca             | yetkilisini   | İzlandaca               | is     | Sırpça (Kiril)      | SR-Cyrl-CS   |
+| Çekçe               | 'ye   | İtalyanca                 | içerdiği     | Sırpça (Latin)         | sr-latn-rs   |
 | Danca              | kapattığımda   | Japonca                | Sofya     | Rusça                 | ru           |
 | Almanca              | seçimini   | Kazakça                  | kk     | İsveççe                 | v           |
 | Yunanca               | seri   | Korece                  | dili     | Tayca                    | 11           |

@@ -4,10 +4,10 @@ description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki 
 ms.date: 03/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383603"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
@@ -47,7 +47,7 @@ Abonelik sahiplerinin bir şema atamasını kaldırmasını önlemeye yönelik e
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
 ```
 
-Tarafından `{assignmentMG}` tanımlanan yönetim grubu, yönetim grubu hiyerarşisinde olmalıdır ya da şema tanımının kaydedildiği yönetim grubu aynı olmalıdır.
+Tarafından tanımlanan yönetim grubu, `{assignmentMG}` Yönetim grubu hiyerarşisinde olmalıdır ya da şema tanımının kaydedildiği yönetim grubu aynı olmalıdır.
 
 Şema atamasının istek gövdesi şöyle görünür:
 
@@ -177,7 +177,7 @@ Bir şema atamasında bir [reddetme atamasında](../../../role-based-access-cont
 },
 ```
 
-**Excludedsorumlularını** açık olmalıdır, ancak **excludedadctions** girişleri, RBAC işlemlerinin joker karakter `*` eşleştirmesinin kullanımını sağlayabilir.
+**Excludedsorumlularını** açık olmalıdır, ancak **excludedadctions** girişleri, `*` RBAC işlemlerinin joker karakter eşleştirmesinin kullanımını sağlayabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

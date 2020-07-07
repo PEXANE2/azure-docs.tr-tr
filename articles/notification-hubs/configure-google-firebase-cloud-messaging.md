@@ -13,17 +13,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 1adbce654bc5c057270df9a874911731a0135034
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127461"
 ---
 # <a name="configure-google-firebase-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal bir Bildirim Hub 'ı için Google Firebase ayarlarını yapılandırma
 
 Bu makalede, Azure portal kullanarak bir Azure Notification Hub 'ı için Google Firebase Cloud Messaging (FCM) ayarlarının nasıl yapılandırılacağı gösterilmektedir.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Henüz bir Bildirim Hub 'ı oluşturmadıysanız, şimdi bir tane oluşturun. Daha fazla bilgi için [Azure Portal Azure Notification Hub 'ı oluşturma](create-notification-hub-portal.md)konusuna bakın. 
 
 ## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messaging (FCM) yapılandırma

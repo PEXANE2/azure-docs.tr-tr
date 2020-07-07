@@ -10,10 +10,10 @@ ms.author: trbye
 author: trevorbye
 ms.date: 03/18/2020
 ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80064204"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning ortamları nelerdir?
@@ -21,12 +21,12 @@ ms.locfileid: "80064204"
 
 Azure Machine Learning ortamlar, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, ortam değişkenlerini ve yazılım ayarlarını belirtir. Bunlar ayrıca çalışma zamanlarını belirtir (Python, Spark veya Docker). Ortamlar, Machine Learning çalışma alanınızda, çeşitli bilgi işlem hedefleri genelinde tekrarlanabilir, denetlenebilir ve taşınabilir makine öğrenimi iş akışlarını etkinleştiren yönetilen ve sürümlü varlıklardır.
 
-Şunları yapmak için yerel `Environment` işlem üzerinde bir nesne kullanabilirsiniz:
+`Environment`Şunları yapmak için yerel işlem üzerinde bir nesne kullanabilirsiniz:
 * Eğitim betiğinizi geliştirin.
 * Model eğitimi için Azure Machine Learning Işlem üzerindeki aynı ortamı ölçeklendirerek yeniden kullanın.
 * Modelinizi aynı ortamla dağıtın.
 
-Aşağıdaki diyagramda, Web hizmeti dağıtımları için çalışma yapılandırmanızda, `Environment` eğitim ve çıkarım ve dağıtım yapılandırmanızda tek bir nesneyi nasıl kullanabileceğiniz gösterilmektedir.
+Aşağıdaki diyagramda, `Environment` Web hizmeti dağıtımları için çalışma yapılandırmanızda, eğitim ve çıkarım ve dağıtım yapılandırmanızda tek bir nesneyi nasıl kullanabileceğiniz gösterilmektedir.
 
 ![Machine Learning iş akışındaki bir ortamın diyagramı](./media/concept-environments/ml-environment.png)
 
@@ -36,7 +36,7 @@ Ortamlar, yaygın olarak üç kategoriye ayrılabilir: *seçkin*, *Kullanıcı t
 
 Seçkin ortamlar Azure Machine Learning tarafından sağlanır ve varsayılan olarak çalışma alanınızda kullanılabilir. Çeşitli makine öğrenimi çerçeveleri ile çalışmaya başlamanıza yardımcı olması için Python paketleri ve ayarları koleksiyonlarını içerir. 
 
-Kullanıcı tarafından yönetilen ortamlarda, ortamınızı ayarlamaktan ve eğitim betiğinizin işlem hedefinde ihtiyaç duyacağı her paketi yüklemenize siz sorumlusunuz. Conda, ortamınızı denetlemez veya sizin için herhangi bir şey yüklemez. Kendi ortamınızı tanımlıyorsanız, sürümü `azureml-defaults` `>= 1.0.45` bir PIP bağımlılığı olarak listeetmeniz gerekir. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevselliği içerir.
+Kullanıcı tarafından yönetilen ortamlarda, ortamınızı ayarlamaktan ve eğitim betiğinizin işlem hedefinde ihtiyaç duyacağı her paketi yüklemenize siz sorumlusunuz. Conda, ortamınızı denetlemez veya sizin için herhangi bir şey yüklemez. Kendi ortamınızı tanımlıyorsanız, `azureml-defaults` sürümü `>= 1.0.45` bir PIP bağımlılığı olarak listeetmeniz gerekir. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevselliği içerir.
 
 Python ortamını ve komut dosyası bağımlılıklarını [yönetmek istediğinizde sistem](https://conda.io/docs/) tarafından yönetilen ortamları kullanırsınız. Hizmet, el ile yapılandırılamayan uzak işlem hedefleri üzerinde yararlarından dolayı bu tür ortamları varsayılan olarak varsayar.
 
@@ -45,7 +45,7 @@ Python ortamını ve komut dosyası bağımlılıklarını [yönetmek istediğin
 Ortamları şu şekilde oluşturabilirsiniz:
 
 * Yeni `Environment` nesneleri, seçkin bir ortam kullanarak ya da kendi bağımlılıklarınızı tanımlayarak tanımlama.
-* Çalışma alanınızdan `Environment` mevcut nesneleri kullanma. Bu yaklaşım, bağımlılıklarınız ile tutarlılık ve reproducibility sağlar.
+* `Environment`Çalışma alanınızdan mevcut nesneleri kullanma. Bu yaklaşım, bağımlılıklarınız ile tutarlılık ve reproducibility sağlar.
 * Mevcut bir Anaconda ortam tanımından içeri aktarılıyor.
 * Azure Machine Learning CLı 'yi kullanma
 
@@ -93,9 +93,9 @@ Karma ortam adına veya sürümüne bağlı değildir. Bir Python paketi ekleme 
 ![Docker görüntüleri olarak ortam önbelleğe alma diyagramı](./media/concept-environments/environment-caching.png)
 
 >[!IMPORTANT]
-> Örneğin ```numpy```, ayrılmış paket bağımlılığı olan bir ortam oluşturursanız, bu ortam, _ortam oluşturma sırasında_yüklenen paket sürümünü kullanmaya devam edecektir. Ayrıca, eşleşen tanımı olan gelecekteki tüm ortamlar eski sürümü kullanmaya devam eder. 
+> Örneğin, ayrılmış paket bağımlılığı olan bir ortam oluşturursanız, ```numpy``` Bu ortam, _ortam oluşturma sırasında_yüklenen paket sürümünü kullanmaya devam edecektir. Ayrıca, eşleşen tanımı olan gelecekteki tüm ortamlar eski sürümü kullanmaya devam eder. 
 
-Paketi güncelleştirmek için, örneğin ```numpy==1.18.1```, görüntü yeniden oluşturmayı zorlamak için bir sürüm numarası belirtin. Daha önce çalışan bir senaryoyu bozabilecek iç içe geçmiş olanlar da dahil olmak üzere yeni bağımlılıkların yükleneceğini unutmayın.
+Paketi güncelleştirmek için, örneğin, görüntü yeniden oluşturmayı zorlamak için bir sürüm numarası belirtin ```numpy==1.18.1``` . Daha önce çalışan bir senaryoyu bozabilecek iç içe geçmiş olanlar da dahil olmak üzere yeni bağımlılıkların yükleneceğini unutmayın.
 
 > [!WARNING]
 >  [Environment. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) yöntemi, önbelleğe alınmış görüntüyü, bu önbelleğe alınmış görüntüye karşılık gelen tüm ortam tanımları için ayrılmış paketleri güncelleştirmenin ve son reproducibility güncelleştirme olasılığı ile yeniden oluşturur.

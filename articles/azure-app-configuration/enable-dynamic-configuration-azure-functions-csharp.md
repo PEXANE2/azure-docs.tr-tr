@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: 0cd86aa647655f92f4ae1b5de50f506e9aad0f4e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e8f5b21189007d2b15c2ff31b778144d9a672318
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856471"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Öğretici: Azure Işlevleri uygulamasında dinamik yapılandırma kullanma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bir uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için Azure Işlevleri uygulamanızı ayarlayın.
 > * Azure Işlevleri çağrılarınız için en son yapılandırmayı ekleme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -90,15 +90,21 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     MacOS veya Linux kullanıyorsanız şu komutu çalıştırın:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. İşlevinizi test etmek için F5’e basın. İstenirse, **Azure Functions Core (CLI)** araçlarını indirmek ve yüklemek Için Visual Studio 'daki isteği kabul edin. Ayrıca, araçların HTTP isteklerini işleyebilmesi için bir güvenlik duvarı özel durumu etkinleştirmeniz gerekebilir.
 

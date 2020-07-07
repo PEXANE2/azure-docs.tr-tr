@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82112057"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Bir VM 'de Azure Linux aracısını güncelleştirme
@@ -352,7 +352,7 @@ sudo systemctl restart walinuxagent.service
 
 ## <a name="oracle-linux-6-and-oracle-linux-7"></a>Oracle Linux 6 ve Oracle Linux 7
 
-Oracle Linux için `Addons` deponun etkinleştirildiğinden emin olun. Dosyayı `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) veya `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) düzenleyip satırı `enabled=0` bu dosyada `enabled=1` **[ol6_addons]** veya **[ol7_addons]** altında olacak şekilde değiştirin.
+Oracle Linux için `Addons` deponun etkinleştirildiğinden emin olun. Dosyayı `/etc/yum.repos.d/public-yum-ol6.repo` (Oracle Linux 6) veya `/etc/yum.repos.d/public-yum-ol7.repo` (Oracle Linux) düzenleyip satırı `enabled=0` `enabled=1` Bu dosyada **[ol6_addons]** veya **[ol7_addons]** altında olacak şekilde değiştirin.
 
 Ardından, Azure Linux aracısının en son sürümünü yüklemek için şunu yazın:
 
@@ -390,15 +390,15 @@ Ardından şunu yazın:
 sudo yum update WALinuxAgent
 ```
 
-Genellikle bu tek ihtiyacınız vardır ancak bazı nedenlerle https://github.com doğrudan yüklemeniz gerekiyorsa, aşağıdaki adımları kullanın.
+Genellikle bu tek ihtiyacınız vardır ancak bazı nedenlerle doğrudan yüklemeniz gerekiyorsa https://github.com , aşağıdaki adımları kullanın.
 
 
 ## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>Dağıtım için bir aracı paketi yoksa Linux aracısını Güncelleştir
 
-Wget 'i (Red hat, CentOS ve Oracle Linux sürüm 6,4 ve 6,5) komut satırına yazarak `sudo yum install wget` , bu uygulamayı varsayılan olarak yüklemek.
+Wget 'i (Red hat, CentOS ve Oracle Linux sürüm 6,4 ve 6,5) komut satırına yazarak, bu uygulamayı varsayılan olarak yüklemek `sudo yum install wget` .
 
 ### <a name="1-download-the-latest-version"></a>1. en son sürümü indirin
-[GitHub 'Da Azure Linux aracısının](https://github.com/Azure/WALinuxAgent/releases) sürümünü bir Web sayfasında açın ve en son sürüm numarasını bulun. (Yazarak `waagent --version`geçerli sürümünüzü bulabilirsiniz.)
+[GitHub 'Da Azure Linux aracısının](https://github.com/Azure/WALinuxAgent/releases) sürümünü bir Web sayfasında açın ve en son sürüm numarasını bulun. (Yazarak geçerli sürümünüzü bulabilirsiniz `waagent --version` .)
 
 #### <a name="for-version-22x-or-later-type"></a>2.2. x veya üzeri sürümler için şunu yazın:
 ```bash
@@ -418,7 +418,7 @@ cd WALinuxAgent-2.2.14
 ### <a name="2-install-the-azure-linux-agent"></a>2. Azure Linux aracısını yükler
 
 #### <a name="for-version-22x-use"></a>2.2. x sürümü için şunu kullanın:
-Önce paketi `setuptools` yüklemeniz gerekebilir. [buraya](https://pypi.python.org/pypi/setuptools)bakın. Ardından şunu çalıştırın:
+Önce paketi yüklemeniz gerekebilir `setuptools` . [buraya](https://pypi.python.org/pypi/setuptools)bakın. Ardından şunu çalıştırın:
 
 ```bash
 sudo python setup.py install

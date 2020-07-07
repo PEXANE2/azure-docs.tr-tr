@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100915"
 ---
 # <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
@@ -27,7 +27,7 @@ Aşağıda, Microsoft Genomiks hizmeti, MSGEN kullanılırken olabilecek bazı y
 İş akışıyla ilişkili hata iletilerini şu şekilde bulabilirsiniz:
 
 1. Komut satırını kullanma ve yazma`msgen status`
-2. StandardOutput. txt içeriğini İnceleme.
+2. standardoutput.txt içeriğini İnceleme.
 
 ### <a name="1-using-the-command-line-msgen-status"></a>1. komut satırını kullanma`msgen status`
 
@@ -46,7 +46,7 @@ Gerekli üç bağımsız değişken vardır:
 
   
 * KIMLIK-iş akışı KIMLIĞI
-    * `msgen list` Komut Iş akışı kimliği türünü komutta bulabilirsiniz. Yapılandırma dosyanızın URL 'YI ve erişim anahtarlarınızı içerdiğini ve bulunduğu varsayılırsa, msgen 'i exe 'niz ile aynı konumda bulunur, komut şöyle görünür: 
+    * Komut iş akışı KIMLIĞI türünü komutta bulabilirsiniz `msgen list` . Yapılandırma dosyanızın URL 'YI ve erişim anahtarlarınızı içerdiğini ve bulunduğu varsayılırsa, msgen 'i exe 'niz ile aynı konumda bulunur, komut şöyle görünür: 
         
         ```bash
         msgen list -f "config.txt"
@@ -75,21 +75,21 @@ Gerekli üç bağımsız değişken vardır:
   > [!NOTE]
   >  Alternatif olarak, URL ve anahtarı doğrudan girmek yerine yapılandırma dosyasının yolunu dahil edebilirsiniz. Bu bağımsız değişkenleri komut satırına ve yapılandırma dosyasına eklerseniz, komut satırı bağımsız değişkenleri öncelikli olur.  
 
-İş akışı KIMLIĞI 1001 ve config. txt dosyası msgen 'i yürütülebiliri ile aynı yola yerleştirildiğinde, komut şöyle görünür:
+Workflow ID 1001 ve msgen 'i yürütülebiliri ile aynı yola yerleştirilmiş config.txt dosya için komut şöyle görünür:
 
 ```bash
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. StandardOutput. txt içeriğini inceleyin 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. standardoutput.txt içeriğini inceleyin 
 Söz konusu iş akışının çıkış kapsayıcısını bulun. MSGEN, `[workflowfilename].logs.zip` her iş akışı yürütmeden sonra bir klasör oluşturur. İçeriğini görüntülemek için klasörü sıkıştırmayı açın:
 
-* outputFileList. txt-iş akışı sırasında oluşturulan çıkış dosyalarının listesi
-* standartem. txt-Bu dosya boş.
-* StandardOutput. txt-iş akışı çalıştırılırken oluşan hatalar da dahil olmak üzere tüm üst düzey durum iletilerini günlüğe kaydeder.
-* GATK günlük dosyaları- `logs` klasördeki diğer tüm dosyalar
+* outputFileList.txt-iş akışı sırasında üretilen çıkış dosyalarının listesi
+* standarderror.txt-bu dosya boş.
+* standardoutput.txt-iş akışı çalıştırılırken oluşan hatalar da dahil olmak üzere tüm üst düzey durum iletilerini günlüğe kaydeder.
+* GATK günlük dosyaları-klasördeki diğer tüm dosyalar `logs`
 
-Sorun giderme için, StandardOutput. txt içeriğini inceleyin ve görüntülenen tüm hata iletilerini unutmayın.
+Sorun giderme için standardoutput.txt içeriğini inceleyin ve görüntülenen tüm hata iletilerini unutmayın.
 
 
 ## <a name="step-2-try-recommended-steps-for-common-errors"></a>2. Adım: sık karşılaşılan hatalar için önerilen adımları deneyin

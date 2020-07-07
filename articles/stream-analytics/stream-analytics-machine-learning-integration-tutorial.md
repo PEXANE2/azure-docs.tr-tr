@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80067084"
 ---
 # <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics ve Azure Machine Learning Studio (klasik) ile yaklaşım analizini gerçekleştirme
@@ -39,7 +39,7 @@ Aşağıdaki şekilde bu yapılandırma gösterilmektedir. Belirtildiği gibi, d
 
 ![Stream Analytics Machine Learning tümleştirmeye genel bakış](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 * Etkin bir Azure aboneliği.
@@ -55,19 +55,19 @@ Yüksek düzeyde, bu makalede gösterilen görevleri tamamlayabilmeniz için aş
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Bir depolama kapsayıcısı oluşturun ve CSV giriş dosyasını karşıya yükleyin
 Bu adım için, GitHub 'dan kullanılabilir olan gibi herhangi bir CSV dosyasını kullanabilirsiniz.
 
-1. Azure Portal, **kaynak** > **depolama** > **depolama hesabı**oluştur ' a tıklayın.
+1. Azure Portal, **kaynak**  >  **depolama**  >  **depolama hesabı**oluştur ' a tıklayın.
 
-2. Bir ad sağlayın (`samldemo` örnekte). Ad yalnızca küçük harf ve rakam kullanabilir ve Azure genelinde benzersiz olmalıdır. 
+2. Bir ad sağlayın ( `samldemo` örnekte). Ad yalnızca küçük harf ve rakam kullanabilir ve Azure genelinde benzersiz olmalıdır. 
 
 3. Mevcut bir kaynak grubu belirtin ve bir konum belirtin. Konum için, bu öğreticide oluşturulan tüm kaynakların aynı konumu kullanması önerilir.
 
     ![depolama hesabı ayrıntılarını sağlayın](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-4. Azure portal depolama hesabını seçin. Depolama hesabı dikey penceresinde **kapsayıcılar** ' a ve ardından ** + &nbsp;kapsayıcı** ' ya tıklayarak BLOB depolama alanı oluşturun.
+4. Azure portal depolama hesabını seçin. Depolama hesabı dikey penceresinde **kapsayıcılar** ' a ve ardından ** + &nbsp; kapsayıcı** ' ya tıklayarak BLOB depolama alanı oluşturun.
 
     ![Giriş için BLOB depolama kapsayıcısı oluştur](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. Kapsayıcı için bir ad sağlayın (`azuresamldemoblob` örnekte) ve **erişim türünün** **BLOB**olarak ayarlandığını doğrulayın. İşiniz bittiğinde, **Tamam**’a tıklayın.
+5. Kapsayıcı için bir ad sağlayın ( `azuresamldemoblob` örnekte) ve **erişim türünün** **BLOB**olarak ayarlandığını doğrulayın. İşiniz bittiğinde, **Tamam**’a tıklayın.
 
     ![blob kapsayıcısı ayrıntılarını belirtin](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
@@ -77,7 +77,7 @@ Bu adım için, GitHub 'dan kullanılabilir olan gibi herhangi bir CSV dosyasın
 
     ![Bir kapsayıcı için ' karşıya yükle ' düğmesi](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. **Blobu karşıya yükle** dikey penceresinde, daha önce indirdiğiniz **sampleınput. csv** dosyasını karşıya yükleyin. **BLOB türü**için **Blok Blobu** seçin ve blok boyutunu 4 MB olarak ayarlayın, bu öğretici için yeterlidir.
+8. **BLOB yükle** dikey penceresinde, daha önce indirdiğiniz **sampleinput.csv** dosyasını karşıya yükleyin. **BLOB türü**için **Blok Blobu** seçin ve blok boyutunu 4 MB olarak ayarlayın, bu öğretici için yeterlidir.
 
 9. Dikey pencerenin alt kısmındaki **karşıya yükle** düğmesine tıklayın.
 
@@ -122,9 +122,9 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
 
 1. [Azure Portal](https://portal.azure.com)gidin.  
 
-2. **Stream Analytics iş****nesnelerin interneti** >  **kaynak** > oluştur ' a tıklayın. 
+2. **Create a resource**  >  **Internet of Things**  >  **Stream Analytics iş**nesnelerin interneti kaynak oluştur ' a tıklayın. 
 
-3. İşi `azure-sa-ml-demo`adlandırın, bir abonelik belirtin, var olan bir kaynak grubu belirtin veya yeni bir tane oluşturun ve işin konumunu seçin.
+3. İşi adlandırın `azure-sa-ml-demo` , bir abonelik belirtin, var olan bir kaynak grubu belirtin veya yeni bir tane oluşturun ve işin konumunu seçin.
 
    ![Yeni Stream Analytics işi için ayarları belirtin](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
@@ -134,16 +134,16 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
 
 1. İş oluşturulduktan sonra, iş dikey penceresindeki iş **topolojisi** altında **girişler** seçeneğine tıklayın.    
 
-2. **Girişler** dikey penceresinde **akış girişi** >**BLOB depolama alanı** Ekle ' ye tıklayın.
+2. **Girişler** dikey penceresinde **akış girişi**  > **BLOB depolama alanı** Ekle ' ye tıklayın.
 
 3. **BLOB depolama** dikey penceresini şu değerlerle doldurun:
 
    
    |Alan  |Değer  |
    |---------|---------|
-   |**Girdi diğer adı** | Adı `datainput` kullanın ve **aboneliğinizden blob depolamayı Seç** ' i seçin       |
+   |**Girdi diğer adı** | Adı kullanın `datainput` ve **aboneliğinizden blob depolamayı Seç** ' i seçin       |
    |**Depolama hesabı**  |  Daha önce oluşturduğunuz depolama hesabını seçin.  |
-   |**Kapsayıcı**  | Daha önce oluşturduğunuz kapsayıcıyı seçin (`azuresamldemoblob`)        |
+   |**Kapsayıcı**  | Daha önce oluşturduğunuz kapsayıcıyı seçin ( `azuresamldemoblob` )        |
    |**Olay serileştirme biçimi**  |  **CSV** 'yi seçin       |
 
    ![Yeni Stream Analytics işi girişi ayarları](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
@@ -155,15 +155,15 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
 
 1. İş dikey penceresindeki iş **topolojisi** altında **çıktılar** seçeneğine tıklayın.  
 
-2. **Çıktılar** dikey penceresinde**BLOB depolama** **Ekle** >' ye tıklayın ve ardından diğer ada `datamloutput`sahip bir çıkış ekleyin. 
+2. **Çıktılar** dikey penceresinde BLOB depolama **Ekle**' ye tıklayın  > **Blob storage**ve ardından diğer ada sahip bir çıkış ekleyin `datamloutput` . 
 
 3. **BLOB depolama** dikey penceresini şu değerlerle doldurun:
 
    |Alan  |Değer  |
    |---------|---------|
-   |**Çıkış diğer adı** | Adı `datamloutput` kullanın ve **aboneliğinizden blob depolamayı Seç** ' i seçin       |
+   |**Çıkış diğer adı** | Adı kullanın `datamloutput` ve **aboneliğinizden blob depolamayı Seç** ' i seçin       |
    |**Depolama hesabı**  |  Daha önce oluşturduğunuz depolama hesabını seçin.  |
-   |**Kapsayıcı**  | Daha önce oluşturduğunuz kapsayıcıyı seçin (`azuresamldemoblob`)        |
+   |**Kapsayıcı**  | Daha önce oluşturduğunuz kapsayıcıyı seçin ( `azuresamldemoblob` )        |
    |**Olay serileştirme biçimi**  |  **CSV** 'yi seçin       |
 
    ![Yeni Stream Analytics iş çıktısı için ayarlar](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
@@ -172,19 +172,19 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
 
 
 ### <a name="add-the-machine-learning-function"></a>Machine Learning işlevini ekleme 
-Daha önce bir Web hizmetine Machine Learning modeli yayımladınız. Bu senaryoda, Akış Analizi işi çalıştırıldığında, her örnek tweet, yaklaşım analizi için girişten Web hizmetine gönderilir. Machine Learning Web hizmeti, bir yaklaşım (`positive`, `neutral`, veya `negative`) ve Tweet 'in pozitif olma olasılığını döndürür. 
+Daha önce bir Web hizmetine Machine Learning modeli yayımladınız. Bu senaryoda, Akış Analizi işi çalıştırıldığında, her örnek tweet, yaklaşım analizi için girişten Web hizmetine gönderilir. Machine Learning Web hizmeti, bir yaklaşım ( `positive` , `neutral` , veya `negative` ) ve Tweet 'in pozitif olma olasılığını döndürür. 
 
 Öğreticinin bu bölümünde, Stream çözümleme işinde bir işlev tanımlarsınız. İşlevi, Web hizmetine bir Tweet göndermek ve yanıtı geri almak için çağrılabilir. 
 
 1. Excel çalışma kitabında daha önce indirdiğiniz Web hizmeti URL 'SI ve API anahtarına sahip olduğunuzdan emin olun.
 
-2. İş dikey penceresine gidin > **işlevler** > **+** > **AzureML** Ekle
+2. İş dikey penceresine gidin > **işlevler**  >  **+**  >  **AzureML** Ekle
 
 3. **Azure Machine Learning işlevi** dikey penceresini şu değerlerle doldurun:
 
    |Alan  |Değer  |
    |---------|---------|
-   | **İşlev diğer adı** | Adı `sentiment` kullanın ve size URL ve anahtar girme seçeneği sunan **Azure Machine Learning işlev ayarlarını el ile sağlayın** ' ı seçin.      |
+   | **İşlev diğer adı** | Adı kullanın `sentiment` ve sıze URL ve anahtar girme seçeneği sunan **Azure Machine Learning işlev ayarlarını el ile sağlayın** ' ı seçin.      |
    | **URL**| Web hizmeti URL 'sini yapıştırın.|
    |**Anahtar** | API anahtarını yapıştırın. |
   
@@ -213,7 +213,7 @@ Stream Analytics girişi incelemek ve işlemek için bildirime dayalı SQL taban
     FROM sentiment  
     ```    
 
-    Sorgu, girişte bulunan her bir Tweet için yaklaşım`sentiment`analizini gerçekleştirmek üzere daha önce oluşturduğunuz () işlevini çağırır. 
+    Sorgu, `sentiment` girişte bulunan her bir Tweet için yaklaşım analizini gerçekleştirmek üzere daha önce oluşturduğunuz () işlevini çağırır. 
 
 4. Sorguyu kaydetmek için **Kaydet**’e tıklayın.
 
@@ -233,9 +233,9 @@ Artık Stream Analytics işini başlatabilirsiniz.
 ### <a name="check-the-output"></a>Çıktıyı denetleyin
 1. **İzleme** kutusunda etkinlik görene kadar birkaç dakika boyunca işe çalışmasına izin verin. 
 
-2. Blob depolamanın içeriğini incelemek için normalde kullandığınız bir aracınız varsa, `azuresamldemoblob` kapsayıcıyı incelemek için bu aracı kullanın. Alternatif olarak, Azure portal aşağıdaki adımları uygulayın:
+2. Blob depolamanın içeriğini incelemek için normalde kullandığınız bir aracınız varsa, kapsayıcıyı incelemek için bu aracı kullanın `azuresamldemoblob` . Alternatif olarak, Azure portal aşağıdaki adımları uygulayın:
 
-    1. Portalda `samldemo` depolama hesabını bulun ve hesap içinde `azuresamldemoblob` kapsayıcıyı bulun. Kapsayıcıda iki dosya görürsünüz: örnek arası ve Stream Analytics işi tarafından oluşturulan bir CSV dosyası içeren dosya.
+    1. Portalda `samldemo` Depolama hesabını bulun ve hesap içinde `azuresamldemoblob` kapsayıcıyı bulun. Kapsayıcıda iki dosya görürsünüz: örnek arası ve Stream Analytics işi tarafından oluşturulan bir CSV dosyası içeren dosya.
     2. Oluşturulan dosyaya sağ tıklayın ve ardından **İndir**' i seçin. 
 
    ![Blob depolamadan CSV iş çıkışını indirin](./media/stream-analytics-machine-learning-integration-tutorial/download-output-csv-file.png)  

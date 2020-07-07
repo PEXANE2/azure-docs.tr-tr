@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 5527a27ab94c350a345bb916206057069c3d16da
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82723174"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>HDInsight 'ta Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
@@ -38,7 +38,7 @@ Azure Izleyici günlük tümleştirmesi etkinleştirildikten sonra (Bu işlem bi
 
 Günlükler bir dizi örnek sorgu listeler, örneğin:
 
-| Sorgu adı                      | Açıklama                                                               |
+| Sorgu adı                      | Description                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Günümüzde kullanılabilirlik bilgisayarları    | Günlük gönderen bilgisayarların sayısını, her saat                     |
 | Sinyalleri Listele                 | Son saatin tüm bilgisayar sinyalleriyle listeleme                           |
@@ -122,5 +122,5 @@ Ayrıca, **Log Analytics çalışma alanınızdaki** **uyarılara** giderek, ön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Küme kullanılabilirliği-Apache ambarı](./hdinsight-cluster-availability.md)
-* [Azure Izleyici günlüklerini kullanma](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+* [Küme kullanılabilirliği - Apache Ambari](./hdinsight-cluster-availability.md)
+* [Azure İzleyici günlüklerini kullanma](hdinsight-hadoop-oms-log-analytics-tutorial.md)

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3d3aeecb66ba332d9c32c944d527ac3a07f2fe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920377"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Öğretici: Azure SQL hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide, Azure SQL veritabanına erişmek için bir Windows sanal makine
 > * VM’nin sistem tarafından atanan kimliğini temsil eden veritabanında içerilen kullanıcı oluşturma
 > * VM kimliğini kullanarak bir erişim belirteci alın ve Azure SQL veritabanını sorgulamak için kullanın
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -66,10 +66,10 @@ VM'nize veritabanı erişimi verme işleminin iki adımı vardır:
 
 Bu bölümde, veritabanında VM 'nin sistem tarafından atanan kimliğini temsil eden kapsanan bir kullanıcının nasıl oluşturulacağı gösterilmektedir. Bu adım için [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) gerekir. Başlamadan önce, Azure Ad tümleştirmesiyle ilgili arka plan bilgileri için aşağıdaki makaleleri gözden geçirmeniz yararlı olabilir:
 
-* [SQL Veritabanı ve SQL Veri Ambarı ile Evrensel Kimlik Doğrulaması (MFA için SSMS desteği)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-* [SQL Veritabanı veya SQL Veri Ambarı ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](/azure/sql-database/sql-database-aad-authentication-configure)
+- [SQL veritabanı ve Azure SYNAPSE Analytics ile evrensel kimlik doğrulaması (MFA için SSMS desteği)](/azure/sql-database/sql-database-ssms-mfa-authentication)
+- [SQL veritabanı veya Azure SYNAPSE Analytics ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme](/azure/sql-database/sql-database-aad-authentication-configure)
 
-SQL veritabanı, benzersiz AAD görünen adları gerektirir. Bu şekilde, yönetilen kimlik için etkinleştirilen kullanıcılar, gruplar ve hizmet sorumluları (uygulamalar) ve VM adları gibi AAD hesaplarının, görünen adlarıyla ilgili AAD 'de benzersiz olarak tanımlanması gerekir. SQL veritabanı, bu tür kullanıcıların T-SQL oluşturma işlemi sırasında AAD görünen adını denetler ve benzersiz değilse, komut belirli bir hesap için benzersiz bir AAD görünen adı sağlaması isteğinde bulunur.
+SQL DB, benzersiz AAD görünen adları gerektirir. Bu şekilde, kullanıcılar, gruplar ve hizmet sorumluları (uygulamalar) gibi AAD hesaplarının ve yönetilen kimlik için etkinleştirilen VM adlarının, görünen adlarıyla ilgili AAD 'de benzersiz olarak tanımlanması gerekir. SQL DB, bu tür kullanıcıların T-SQL oluşturma işlemi sırasında AAD görünen adını denetler ve benzersiz değilse, komut belirli bir hesap için benzersiz bir AAD görünen adı sağlaması isteğinde bulunur.
 
 **Kapsanan kullanıcı oluşturmak için:**
 
@@ -109,7 +109,7 @@ VM 'de çalışan kod artık sistem tarafından atanan yönetilen kimliği kulla
 
 Bu bölümde, VM 'nin sistem tarafından atanan yönetilen kimliğini kullanarak bir erişim belirtecinin nasıl alınacağı ve Azure SQL çağrısı için nasıl kullanılacağı gösterilmektedir. Azure SQL, Azure AD kimlik doğrulamasını yerel olarak desteklediğinden Azure kaynakları için yönetilen kimlikler kullanılarak alınan erişim belirteçlerini doğrudan kabul eder. SQL bağlantısı oluştururken **erişim belirteci** yöntemini kullanırsınız. Bu, Azure SQL’in Azure AD tümleştirmesi kapsamındadır ve bağlantı dizesinde kimlik bilgileri sağlama işleminden farklıdır.
 
-Aşağıda, bir erişim belirteci kullanarak SQL bağlantısı açmak için bir .NET kod örneği verilmiştir. Bu kodun, VM’nin sistem tarafından atanan yönetilen kimliğinin uç noktasına erişebilmesi için VM üzerinde çalıştırılması gerekir. **.NET Framework 4,6** veya üzeri ya da **.NET Core 2,2** veya üzeri, erişim belirteci metodunu kullanmak için gereklidir. AZURE-SQL-SERVERNAME ve DATABASE değerlerini uygun şekilde değiştirin. Azure SQL için kaynak KIMLIĞI ' ni aklınızda bulunur `https://database.windows.net/` .
+Aşağıda, bir erişim belirteci kullanarak SQL bağlantısı açmak için bir .NET kod örneği verilmiştir. VM 'nin sistem tarafından atanan yönetilen kimliğin uç noktasına erişebilmesi için kodun VM üzerinde çalışması gerekir. **.NET Framework 4,6** veya üzeri ya da **.NET Core 2,2** veya üzeri, erişim belirteci metodunu kullanmak için gereklidir. AZURE-SQL-SERVERNAME ve DATABASE değerlerini uygun şekilde değiştirin. Azure SQL için kaynak KIMLIĞI ' ni aklınızda bulunur `https://database.windows.net/` .
 
 ```csharp
 using System.Net;

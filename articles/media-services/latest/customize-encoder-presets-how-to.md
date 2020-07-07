@@ -13,24 +13,24 @@ ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: ebe701032e6416b3e007a28db62f5a8235bb1bb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80068039"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Özel bir dönüşümle kodlama-.NET
 
 Azure Media Services ile kodlarken, [akış dosyaları](stream-files-tutorial-with-api.md) öğreticisinde gösterildiği gibi, sektörde en iyi uygulamaları temel alan önerilen yerleşik ön ayarlardan biriyle hızlı bir şekilde çalışmaya başlayın. Ayrıca, belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir ön ayar oluşturabilirsiniz.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Özel ön ayarlar oluşturulurken aşağıdaki noktalar geçerlidir:
 
 * AVC içeriğinde yükseklik ve genişlik değerlerinin tümü 4 ' ün katı olmalıdır.
 * Azure Media Services v3 'de, tüm kodlama bit fiyatları bit/saniye cinsinden. Bu, birim olarak kilobit/saniye kullanan v2 API 'lerimiz olan ön ayarlardan farklıdır. Örneğin, v2 'deki bit hızı 128 (kilobit/saniye) olarak belirtilmişse, v3 'de 128000 (bit/saniye) olarak ayarlanır.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 [Media Services hesabı oluşturma](create-account-cli-how-to.md)
 

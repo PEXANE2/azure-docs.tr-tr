@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82786623"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
@@ -71,7 +71,7 @@ Mevcut bir Azure sanal ağına nasıl yeni HDInsight ekleneceğini saptamak içi
 
     * Ağ güvenlik grupları
 
-        Öğesini `RESOURCEGROUP` sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
+        `RESOURCEGROUP`Öğesini sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
 
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -88,7 +88,7 @@ Mevcut bir Azure sanal ağına nasıl yeni HDInsight ekleneceğini saptamak içi
 
     * Kullanıcı tanımlı yollar
 
-        Öğesini `RESOURCEGROUP` sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
+        `RESOURCEGROUP`Öğesini sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -136,7 +136,7 @@ Birleşik ağlardaki sanal ağ ve kaynaklar arasında ad çözümlemesini etkinl
 
 2. Sanal ağı özel DNS sunucusunu kullanacak şekilde yapılandırın.
 
-3. Sanal ağınız için Azure tarafından atanan DNS sonekini bulun. Bu değer değerine benzerdir `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. DNS sonekini bulma hakkında daha fazla bilgi için bkz. [özel DNS](hdinsight-create-virtual-network.md#example-dns) bölümü.
+3. Sanal ağınız için Azure tarafından atanan DNS sonekini bulun. Bu değer değerine benzerdir `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` . DNS sonekini bulma hakkında daha fazla bilgi için bkz. [özel DNS](hdinsight-create-virtual-network.md#example-dns) bölümü.
 
 4. DNS sunucuları arasında yönlendirmeyi yapılandırın. Yapılandırma, uzak ağın türüne bağlıdır.
 
@@ -168,13 +168,13 @@ Daha fazla bilgi için bkz. [VM 'ler ve rol örnekleri Için ad çözümlemesi](
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Apache Hadoop hizmetlerine doğrudan bağlanma
 
-Üzerinde `https://CLUSTERNAME.azurehdinsight.net`kümeye bağlanabilirsiniz. Bu adres, internet 'ten gelen trafiği kısıtlamak için NSG 'ler kullandıysanız ulaşılamaz olabilecek genel bir IP kullanır. Ayrıca, kümeyi bir sanal ağda dağıttığınızda özel uç nokta `https://CLUSTERNAME-int.azurehdinsight.net`kullanarak erişebilirsiniz. Bu uç nokta, küme erişimi için VNet 'in içindeki özel bir IP 'ye çözümlenir.
+Üzerinde kümeye bağlanabilirsiniz `https://CLUSTERNAME.azurehdinsight.net` . Bu adres, internet 'ten gelen trafiği kısıtlamak için NSG 'ler kullandıysanız ulaşılamaz olabilecek genel bir IP kullanır. Ayrıca, kümeyi bir sanal ağda dağıttığınızda özel uç nokta kullanarak erişebilirsiniz `https://CLUSTERNAME-int.azurehdinsight.net` . Bu uç nokta, küme erişimi için VNet 'in içindeki özel bir IP 'ye çözümlenir.
 
 Apache ambarı ve diğer Web sayfalarına sanal ağ üzerinden bağlanmak için aşağıdaki adımları kullanın:
 
 1. HDInsight küme düğümlerinin iç tam etki alanı adlarını (FQDN) öğrenmek için aşağıdaki yöntemlerden birini kullanın:
 
-    Öğesini `RESOURCEGROUP` sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
+    `RESOURCEGROUP`Öğesini sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}
@@ -194,7 +194,7 @@ Apache ambarı ve diğer Web sayfalarına sanal ağ üzerinden bağlanmak için 
     az network nic list --resource-group RESOURCEGROUP --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Döndürülen düğüm listesinde, baş düğümlerin FQDN 'sini bulun ve bu, ambarı ve diğer Web hizmetlerine bağlanmak için FQDN 'leri kullanın. Örneğin, ambarı 'na `http://<headnode-fqdn>:8080` erişmek için kullanın.
+    Döndürülen düğüm listesinde, baş düğümlerin FQDN 'sini bulun ve bu, ambarı ve diğer Web hizmetlerine bağlanmak için FQDN 'leri kullanın. Örneğin, `http://<headnode-fqdn>:8080` ambarı 'na erişmek için kullanın.
 
     > [!IMPORTANT]  
     > Baş düğümlerde barındırılan bazı hizmetler tek seferde yalnızca bir düğümde etkindir. Bir baş düğümde bir hizmete erişmeyi denerseniz ve 404 hatası döndürürse, diğer bir baş düğüme geçin.

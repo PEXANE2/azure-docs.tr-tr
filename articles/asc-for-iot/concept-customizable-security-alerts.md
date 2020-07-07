@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
 ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311631"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT için Azure Güvenlik Merkezi güvenlik uyarıları
@@ -31,7 +31,7 @@ IoT uyarıları için Azure Güvenlik Merkezi 'nin aşağıdaki listesi, beklene
 
 ## <a name="iot-hub-alerts-available-for-customization"></a>IoT Hub uyarılarını özelleştirmek için kullanılabilir
 
-| Severity | Uyarı adı | Veri kaynağı | Açıklama | Önerilen düzeltme|
+| Severity | Uyarı adı | Veri kaynağı | Description | Önerilen düzeltme|
 |---|---|---|---|---|
 | Düşük      | Özel uyarı-AMQP protokolündeki cihaz iletilerinin bulut sayısı izin verilen aralığın dışında          | IoT Hub     | Belirli bir zaman penceresi içindeki bulut-cihaz iletileri (AMQP Protokolü) sayısı, şu anda yapılandırılmış ve izin verilen aralığın dışında.||
 | Düşük      | Özel uyarı-AMQP protokolündeki cihaz iletilerine reddedilen bulut sayısı izin verilen aralığın dışında | IoT Hub     | Cihaz tarafından reddedilen bulut-cihaz iletileri (AMQP Protokolü) sayısı, belirli bir zaman penceresi içinde yapılandırılmış ve izin verilen aralığın dışında.||
@@ -51,7 +51,7 @@ IoT uyarıları için Azure Güvenlik Merkezi 'nin aşağıdaki listesi, beklene
 
 ## <a name="agent-alerts-available-for-customization"></a>Özelleştirme için kullanılabilir Aracı uyarıları
 
-| Severity | Uyarı adı | Veri kaynağı | Açıklama | Önerilen düzeltme|
+| Severity | Uyarı adı | Veri kaynağı | Description | Önerilen düzeltme|
 |---|---|---|---|---|
 | Düşük      | Özel uyarı-etkin bağlantı sayısı izin verilen aralığın dışında  | Aracı       | Belirli bir zaman penceresi içindeki etkin bağlantı sayısı, şu anda yapılandırılmış ve izin verilen aralığın dışında.|  Cihaz günlüklerini araştırın. Bağlantının nereden geldiğini öğrenin ve zararsız veya kötü amaçlı olup olmadığını öğrenin. Kötü amaçlı, olası kötü amaçlı yazılımları kaldırın ve kaynağı anlayın. Benign ise, kaynağı izin verilen bağlantı listesine ekleyin.  |
 | Düşük      | Özel uyarı-izin verilmeyen bir IP 'ye giden bağlantı oluşturuldu                             | Aracı       | İzin verilen IP listenizin dışında bir IP 'ye giden bağlantı oluşturuldu. |Cihaz günlüklerini araştırın. Bağlantının nereden geldiğini öğrenin ve zararsız veya kötü amaçlı olup olmadığını öğrenin. Kötü amaçlı, olası kötü amaçlı yazılımları kaldırın ve kaynağı anlayın. Benign ise, kaynağı izin verilen IP listesine ekleyin.                        |

@@ -8,10 +8,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127881"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Bilişsel Arama günlüklerini ve ölçümlerini Power BI ile görselleştirin
@@ -33,7 +33,7 @@ Azure Bilişsel Arama Power BI şablon uygulamasını bulabilirsiniz: [Power BI 
     1. **Arşivi bir depolama hesabına**çekin, depolama hesabı bilgilerinizi sağlayın ve **Operationlogs** ve **allölçümlerini** denetleyin
 
         ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. **Kaydet** 'i seçin
+    1. **Kaydet**’i seçin
 
 1. Günlüğe kaydetme etkinleştirildikten sonra, günlükleri ve ölçümleri oluşturmaya başlamak için arama hizmetinizi kullanın. Kapsayıcıların bu günlüklere sahip blob depolamada görünmesi bir saat kadar sürer. Arama trafiği günlükleri için bir **Öngörüler-logs-operationlogs** kapsayıcısı ve ölçümler için bir **Öngörüler-ölçümler-pt1m** kapsayıcısı görürsünüz.
 

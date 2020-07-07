@@ -4,10 +4,10 @@ description: Azure Service Fabric tek başına kümesinin sürümünü veya yap�
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790652"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric tek başına Kümeyi yükseltme ve güncelleştirme
@@ -21,7 +21,7 @@ Kümenizi, Microsoft tarafından yayımlandıklarında otomatik yapı yükseltme
 
 ## <a name="customize-configuration-settings"></a>Yapılandırma ayarlarını özelleştirme
 
-Küme ve düğüm özelliklerinin güvenilirlik düzeyi gibi *clusterConfig. JSON* dosyasında birçok farklı [yapılandırma ayarı](service-fabric-cluster-manifest.md) ayarlanabilir.  Daha fazla bilgi edinmek için [tek başına kümenin yapılandırmasını yükseltin](service-fabric-cluster-config-upgrade-windows-server.md).  Diğer birçok gelişmiş ayar de özelleştirilebilir.  Daha fazla bilgi için [Service Fabric Cluster Fabric ayarlarını](service-fabric-cluster-fabric-settings.md)okuyun.
+Küme ve düğüm özelliklerinin güvenilirlik düzeyi gibiClusterConfig.jsdosya *üzerinde* birçok farklı [yapılandırma ayarı](service-fabric-cluster-manifest.md) ayarlanabilir.  Daha fazla bilgi edinmek için [tek başına kümenin yapılandırmasını yükseltin](service-fabric-cluster-config-upgrade-windows-server.md).  Diğer birçok gelişmiş ayar de özelleştirilebilir.  Daha fazla bilgi için [Service Fabric Cluster Fabric ayarlarını](service-fabric-cluster-fabric-settings.md)okuyun.
 
 ## <a name="define-node-properties"></a>Düğüm özelliklerini tanımla
 Bazen bazı iş yüklerinin kümedeki belirli düğüm türlerinde çalışmasını sağlamak isteyebilirsiniz. Örneğin, bazı iş yükleri GPU 'Lar ya da SSD 'Ler gerektirebilir, diğerleri de olmayabilir. Kümedeki düğüm türlerinin her biri için, küme düğümlerine özel düğüm özellikleri ekleyebilirsiniz. Yerleştirme kısıtlamaları, bir veya daha fazla düğüm özelliği için seçim yapan ayrı hizmetlere eklenmiş deyimlerdir. Yerleştirme kısıtlamaları, hizmetlerin nerede çalışacağını tanımlar.

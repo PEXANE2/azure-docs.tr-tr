@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: ff829e9ffbd6d6ae0766998e62634ac873afc748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066668"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS kaynaklarının Klasik’ten Azure Resource Manager’a geçişini planlama
@@ -93,7 +93,7 @@ Daha büyük geçişlerde bulunan sorunlar aşağıda verilmiştir. Bu kapsamlı
 - **Express Route devreleri ve VPN**. Halen yetkilendirme bağlantıları olan hızlı rota ağ geçitleri kapalı kalma süresi olmadan geçirilemez. Geçici çözüm için bkz. [ExpressRoute devreleri ve ilişkili sanal ağları klasik 'dan Kaynak Yöneticisi dağıtım modeline geçirme](../../expressroute/expressroute-migration-classic-resource-manager.md).
 
 - **VM uzantıları** -sanal makine uzantıları, çalışan VM 'leri geçirmeye yönelik en büyük yol bloklarından biridir. VM uzantılarının düzeltilmesi 1-2 güne kadar sürer ve bu nedenle plana göre plan yapın.  Çalışan VM 'lerin sanal makine uzantı durumunu raporlamak için çalışan bir Azure Aracısı gerekir. Durum, çalışan bir VM için bozuk olarak geri dönerse, bu işlem geçişi durdurur. Geçişin etkinleştirilmesi için aracının kendisi çalışma sırasında olması gerekmez, ancak sanal makinede uzantılar varsa, geçişin ileri ilerlemek için hem çalışan bir aracı hem de giden internet bağlantısı (DNS ile) gerekir.
-  - Geçiş sırasında bir DNS sunucusuyla bağlantı kaybolursa, BgInfo v1 hariç tüm VM uzantıları. \* önce geçiş hazırlanmadan önce her VM 'den kaldırılmalı, ardından Azure Resource Manager GEÇIŞTEN sonra sanal makineye yeniden eklenmeleri gerekir.  **Bu yalnızca çalıştıran VM 'Ler içindir.**  VM 'Ler serbest bırakılmış olarak durdurulmuşsa, VM uzantılarının kaldırılması gerekmez. **Note:** Azure tanılama ve Güvenlik Merkezi izleme gibi birçok uzantı, geçişten sonra kendilerini yeniden yükleyerek bir sorun değildir.
+  - Geçiş sırasında bir DNS sunucusuyla bağlantı kaybolursa, BgInfo v1 hariç tüm VM uzantıları. \* önce geçiş hazırlanmadan önce her VM 'den kaldırılmalı, ardından Azure Resource Manager geçişten sonra sanal makineye yeniden eklenmeleri gerekir.  **Bu yalnızca çalıştıran VM 'Ler içindir.**  VM 'Ler serbest bırakılmış olarak durdurulmuşsa, VM uzantılarının kaldırılması gerekmez. **Note:** Azure tanılama ve Güvenlik Merkezi izleme gibi birçok uzantı, geçişten sonra kendilerini yeniden yükleyerek bir sorun değildir.
   - Ayrıca, ağ güvenlik gruplarının giden Internet erişimini kısıtmadığından emin olun. Bu durum bazı ağ güvenlik grupları yapılandırmalarında gerçekleşebilir. VM uzantılarının Azure Resource Manager 'ye geçirilmesi için giden internet erişimi (ve DNS) gereklidir.
   - BgInfo uzantısının iki sürümü vardır: v1 ve v2.  VM, Azure portal veya PowerShell kullanılarak oluşturulduysa VM 'nin üzerinde v1 uzantısı olur. Bu uzantının kaldırılması gerekmez ve geçiş API 'SI tarafından atlanacak (geçirilmez). Ancak, klasik VM yeni Azure portal oluşturulduysa, bu durum büyük olasılıkla, bu, aracının çalıştığı ve giden internet erişimi 'ne (ve DNS) sahip olan Azure Resource Manager 'ye geçirilebilen, BgInfo 'un JSON tabanlı v2 sürümüne sahip olacaktır.
   - **Düzeltme seçeneği 1**. Sanal makinelerinizin giden internet erişimi, çalışan bir DNS hizmeti ve VM 'lerde çalışan Azure aracıları olmadığını biliyorsanız, hazırlama işleminden önce geçiş işlemi kapsamında tüm VM uzantılarını kaldırın ve ardından geçişten sonra VM uzantılarını yeniden yükleyin.

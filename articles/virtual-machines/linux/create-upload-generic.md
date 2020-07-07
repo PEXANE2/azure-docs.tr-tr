@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066769"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Onaylı olmayan dağıtımlar için bilgi
@@ -24,11 +24,11 @@ Azure üzerinde çalışan tüm dağıtımların sayıda önkoşulları vardır.
 
 Azure tarafından onaylanan [dağıtımlarla bir Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)ile başlamasını öneririz. Aşağıdaki makalelerde, Azure 'da desteklenen çeşitli desteklenen Linux dağıtımlarını nasıl hazırlayacağınız gösterilmektedir:
 
-* **[CentOS tabanlı dağıtımlar](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Linux 'u kaldırma](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[CentOS Tabanlı Dağıtımlar](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES ve openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 Bu makalede, Azure 'da Linux dağıtımınızı çalıştırmaya yönelik genel rehberlik ele alınmaktadır.
@@ -39,14 +39,14 @@ Bu makalede, Azure 'da Linux dağıtımınızı çalıştırmaya yönelik genel 
 * VHD için izin verilen en büyük boyut 1.023 GB 'dir.
 * Linux sistemini yüklerken, çoğu yükleme için varsayılan olan mantıksal birim Yöneticisi (LVM) yerine standart bölümleri kullanmanızı öneririz. Standart bölümlerin kullanılması, özellikle de sorun giderme için bir işletim sistemi diski başka bir özdeş VM 'ye iliştirilmişse, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
 * UDF dosya sistemlerini bağlamak için çekirdek desteği gereklidir. Azure 'da ilk önyüklemede sağlama yapılandırması, konuğa bağlı olan UDF biçimli medya kullanılarak Linux VM 'ye geçirilir. Azure Linux Aracısı, yapılandırmasını okumak ve VM 'yi sağlamak için UDF dosya sistemini takmalıdır.
-* 2.6.37 ' den önceki Linux çekirdek sürümleri, Hyper-V üzerinde NUMA 'yı daha büyük VM boyutları ile desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve Red Hat Enterprise Linux (RHEL) 6,6 (Kernel-2.6.32-504) içinde düzeltilmiştir. 2.6.37 'den eski olan özel çekirdekler çalıştıran sistemler veya 2.6.32-504 ' den daha eski RHEL tabanlı çekirdekler, grub. conf `numa=off` içindeki çekirdek komut satırında önyükleme parametresini ayarlamış olmalıdır. Daha fazla bilgi için bkz. [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
+* 2.6.37 ' den önceki Linux çekirdek sürümleri, Hyper-V üzerinde NUMA 'yı daha büyük VM boyutları ile desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve Red Hat Enterprise Linux (RHEL) 6,6 (Kernel-2.6.32-504) içinde düzeltilmiştir. 2.6.37 'den eski olan özel çekirdekler çalıştıran sistemler veya 2.6.32-504 ' den daha eski RHEL tabanlı çekirdekler, `numa=off` grub. conf içindeki çekirdek komut satırında önyükleme parametresini ayarlamış olmalıdır. Daha fazla bilgi için bkz. [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
 * İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, aşağıdaki adımlarda açıklandığı gibi geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.
 * Azure 'daki tüm VHD 'Lerin 1 MB 'a hizalanmış bir sanal boyutu olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken, aşağıdaki adımlarda açıklandığı gibi, ham disk boyutunun dönüştürmeden önce 1 MB 'tan fazla olduğundan emin olmanız gerekir.
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Hyper-V içermeyen çekirdek modülleri yükleme
 Azure, Hyper-V hiper yöneticisinde çalışır, bu nedenle Linux bazı çekirdek modüllerinin Azure 'da çalıştırılmasını gerektirir. Hyper-V dışında oluşturulmuş bir VM varsa, sanal makine Hyper-V ortamında çalıştığını algıladıkça, Linux yükleyicileri ilk Ramdisk (ınitrd veya initramfs) Hyper-V sürücülerini içermeyebilir. Linux görüntünüzü hazırlamak için farklı bir sanallaştırma sistemi (VirtualBox, KVM vb. gibi) kullanırken, ilk Ramdisk 'de en az hv_vmbus ve hv_storvsc çekirdek modüllerinin kullanılabilmesi için ınitrd 'yi yeniden oluşturmanız gerekebilir.  Bu bilinen sorun, yukarı akış Red Hat dağıtımına ve belki de diğerlerine bağlı olarak sistemler içindir.
 
-Initrd veya initramfs görüntüsünü yeniden oluşturma mekanizması dağıtıma göre farklılık gösterebilir. Doğru yordam için dağıtım belgelerine veya desteğe başvurun.  `mkinitrd` Yardımcı programını kullanarak ınitrd 'yi yeniden oluşturmak için bir örnek aşağıda verilmiştir:
+Initrd veya initramfs görüntüsünü yeniden oluşturma mekanizması dağıtıma göre farklılık gösterebilir. Doğru yordam için dağıtım belgelerine veya desteğe başvurun.  Yardımcı programını kullanarak ınitrd 'yi yeniden oluşturmak için bir örnek aşağıda verilmiştir `mkinitrd` :
 
 1. Var olan ınitrd görüntüsünü yedekle:
 
@@ -64,21 +64,21 @@ Initrd veya initramfs görüntüsünü yeniden oluşturma mekanizması dağıtı
 ### <a name="resizing-vhds"></a>VHD 'leri yeniden boyutlandırma
 Azure üzerinde VHD görüntülerinin 1 MB 'a hizalanmış bir sanal boyutu olmalıdır.  Genellikle, Hyper-V kullanılarak oluşturulan VHD 'ler doğru şekilde hizalanmıştır.  VHD doğru hizalanmazsa, VHD 'nizden bir görüntü oluşturmaya çalıştığınızda aşağıdakine benzer bir hata iletisi alabilirsiniz.
 
-* VHD http:\//\<mystorageaccount>. blob.Core.Windows.net/VHDs/MyLinuxVM.vhd, desteklenmeyen 21475270656 baytlık bir sanal boyuta sahiptir. Boyut bir tam sayı olmalıdır (MB cinsinden).
+* VHD http: \/ / \<mystorageaccount> . blob.Core.Windows.net/VHDs/MyLinuxVM.vhd desteklenmeyen bir 21475270656 baytlık sanal boyuta sahiptir. Boyut bir tam sayı olmalıdır (MB cinsinden).
 
-Bu durumda, Hyper-V Yöneticisi konsolunu veya [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell cmdlet 'ini kullanarak VM 'yi yeniden boyutlandırın.  Bir Windows ortamında çalıştırmıyorsanız, (gerekirse) dönüştürmek ve VHD 'YI `qemu-img` yeniden boyutlandırmak için kullanmanızı öneririz.
+Bu durumda, Hyper-V Yöneticisi konsolunu veya [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell cmdlet 'ini kullanarak VM 'yi yeniden boyutlandırın.  Bir Windows ortamında çalıştırmıyorsanız, `qemu-img` (gerekirse) dönüştürmek ve VHD 'yi yeniden boyutlandırmak için kullanmanızı öneririz.
 
 > [!NOTE]
-> [QEMU-img sürümlerindeki bilinen bir hata](https://bugs.launchpad.net/qemu/+bug/1490611) vardır >= 2.2.1, hatalı BIÇIMLI bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. `qemu-img` 2.2.0 veya daha düşük ya da 2,6 ya da daha yüksek bir sürümü kullanmanızı öneririz.
+> [QEMU-img sürümlerindeki bilinen bir hata](https://bugs.launchpad.net/qemu/+bug/1490611) vardır >= 2.2.1, hatalı BIÇIMLI bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. `qemu-img`2.2.0 veya daha düşük ya da 2,6 ya da daha yüksek bir sürümü kullanmanızı öneririz.
 > 
 
-1. `qemu-img` Veya `vbox-manage` gibi araçları kullanarak VHD 'nin doğrudan yeniden boyutlandırılması, önyüklenemeyen bir VHD ile sonuçlanabilir.  Önce VHD 'YI bir ham disk görüntüsüne dönüştürmeniz önerilir.  VM görüntüsü ham disk görüntüsü olarak oluşturulduysa (KVM gibi bazı hiper Yöneticiler için varsayılan değer), bu adımı atlayabilirsiniz.
+1. Veya gibi araçları kullanarak VHD 'nin doğrudan yeniden boyutlandırılması, `qemu-img` `vbox-manage` önyüklenemeyen bir VHD ile sonuçlanabilir.  Önce VHD 'YI bir ham disk görüntüsüne dönüştürmeniz önerilir.  VM görüntüsü ham disk görüntüsü olarak oluşturulduysa (KVM gibi bazı hiper Yöneticiler için varsayılan değer), bu adımı atlayabilirsiniz.
  
     ```
     qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
     ```
 
-1. Sanal boyutun 1 MB 'a hizalanması için, disk görüntüsünün gerekli boyutunu hesaplayın.  Aşağıdaki Bash Shell betiği, disk `qemu-img info` görüntüsünün sanal boyutunu belirlemede kullanır ve ardından boyutu sonrakı 1 MB olarak hesaplar.
+1. Sanal boyutun 1 MB 'a hizalanması için, disk görüntüsünün gerekli boyutunu hesaplayın.  Aşağıdaki Bash Shell betiği, `qemu-img info` disk görüntüsünün sanal boyutunu belirlemede kullanır ve ardından boyutu sonraki 1 MB olarak hesaplar.
 
     ```bash
     rawdisk="MyLinuxVM.raw"
@@ -93,7 +93,7 @@ Bu durumda, Hyper-V Yöneticisi konsolunu veya [Resize-VHD](https://technet.micr
     echo "Rounded Size = $rounded_size"
     ```
 
-3. Yukarıda ayarlandığı gibi kullanarak `$rounded_size` ham diski yeniden boyutlandırın.
+3. Yukarıda ayarlandığı gibi kullanarak ham diski yeniden boyutlandırın `$rounded_size` .
 
     ```bash
     qemu-img resize MyLinuxVM.raw $rounded_size
@@ -142,7 +142,7 @@ Aşağıdaki düzeltme eklerinin çekirdeğe dahil olması gerekir. Bu liste tü
 * [scsi_sysfs: __scsi_remove_device iki kez yürütmeye karşı koruma](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
 ## <a name="the-azure-linux-agent"></a>Azure Linux Aracısı
-[Azure Linux Aracısı](../extensions/agent-linux.md) `waagent` , Azure 'da bir Linux sanal makinesi sağlar. [Linux Aracısı GitHub](https://github.com/Azure/WALinuxAgent)deposunda en son sürümü alabilir, sorunları değiştirebilir veya çekme istekleri gönderebilirsiniz.
+[Azure Linux Aracısı](../extensions/agent-linux.md) , `waagent` Azure 'da bir Linux sanal makinesi sağlar. [Linux Aracısı GitHub](https://github.com/Azure/WALinuxAgent)deposunda en son sürümü alabilir, sorunları değiştirebilir veya çekme istekleri gönderebilirsiniz.
 
 * Linux Aracısı Apache 2,0 lisansı altında serbest bırakılır. Birçok dağıtım, aracı için zaten RPM veya. Deb paketleri sağlıyor ve bu paketler kolayca yüklenip güncelleştirilemeyebilir.
 * Azure Linux Aracısı Python v 2.6 + gerektirir.
@@ -160,7 +160,7 @@ Aşağıdaki düzeltme eklerinin çekirdeğe dahil olması gerekir. Bu liste tü
     ```  
     rhgb quiet crashkernel=auto
     ```
-    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir. Bu `crashkernel` seçenek gerekirse yapılandırılmış olabilir, ancak bu parametrenin VM 'deki kullanılabilir bellek miktarını en az 128 MB ile azalttığını ve bu parametrenin daha küçük VM boyutları için sorunlu olabileceğini unutmayın.
+    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir. `crashkernel`Bu seçenek gerekirse yapılandırılmış olabilir, ancak bu PARAMETRENIN VM 'deki kullanılabilir bellek miktarını en az 128 MB ile azalttığını ve bu parametrenin daha küçük VM boyutları için sorunlu olabileceğini unutmayın.
 
 1. Azure Linux aracısını yükler.
   
@@ -186,7 +186,7 @@ Aşağıdaki düzeltme eklerinin çekirdeğe dahil olması gerekir. Bu liste tü
      logout
      ```  
    > [!NOTE]
-   > VirtualBox üzerinde çalıştırdıktan sonra `waagent -force -deprovision` aşağıdaki hatayla karşılaşabilirsiniz. `[Errno 5] Input/output error` Bu hata iletisi kritik değildir ve yoksayılabilir.
+   > VirtualBox üzerinde çalıştırdıktan sonra aşağıdaki hatayla karşılaşabilirsiniz `waagent -force -deprovision` `[Errno 5] Input/output error` . Bu hata iletisi kritik değildir ve yoksayılabilir.
 
 * Sanal makineyi kapatın ve VHD 'yi Azure 'a yükleyin.
 

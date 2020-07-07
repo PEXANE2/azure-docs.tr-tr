@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82738074"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Azure VM 'lerinden birincil bölgeye yeniden koruma başarısız oldu
@@ -22,14 +22,14 @@ Azure VM 'lerinden [Azure Site Recovery](site-recovery-overview.md)kullanarak bi
 1. İkincil bölgedeki VM 'Leri, birincil bölgeye çoğaltılmaya başlayacak şekilde yeniden koruyun.
 1. Yeniden koruma tamamlandıktan ve VM 'Ler çoğaltıldıktan sonra ikinciden birincil bölgeye yük devretmek için yük devretme yapabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Birincil sunucudan ikincil bölgeye sanal makine yük devretmesi uygulanmalıdır.
 - Birincil hedef site kullanılabilir olmalıdır ve bu bölgedeki kaynaklara erişebiliyor veya kaynak oluşturmanız gerekir.
 
 ## <a name="reprotect-a-vm"></a>VM 'yi yeniden koruma
 
-1. **Kasa** > **çoğaltılan öğeler**' de, yük devredilen VM 'ye sağ tıklayın ve **yeniden koru**' yı seçin. Yeniden koruma yönü ikincilden birinciye göstermelidir.
+1. **Kasa**  >  **çoğaltılan öğeler**' de, yük devredilen VM 'ye sağ tıklayın ve **yeniden koru**' yı seçin. Yeniden koruma yönü ikincilden birinciye göstermelidir.
 
    ![Yeniden koruma](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
@@ -58,21 +58,21 @@ Yeniden koruma sırasında hedef VM 'nin aşağıdaki özelliklerini özelleşti
 Varsayılan olarak, aşağıdakiler gerçekleşir:
 
 1. Yük devredilen VM 'nin çalıştığı bölgede bir önbellek depolama hesabı oluşturulur.
-1. Hedef depolama hesabı (birincil bölgedeki orijinal depolama hesabı) yoksa, yeni bir tane oluşturulur. Atanan depolama hesabı adı, ikincil VM tarafından kullanılan ve soneki olan `asr`depolama hesabının adıdır.
+1. Hedef depolama hesabı (birincil bölgedeki orijinal depolama hesabı) yoksa, yeni bir tane oluşturulur. Atanan depolama hesabı adı, ikincil VM tarafından kullanılan ve soneki olan depolama hesabının adıdır `asr` .
 1. VM 'niz yönetilen diskler kullanıyorsa, ikincil VM 'nin disklerinden çoğaltılan verileri depolamak için birincil bölgede çoğaltma yönetilen diskler oluşturulur.
 1. Hedef kullanılabilirlik kümesi yoksa, gerekirse yeniden koruma işinin bir parçası olarak yeni bir tane oluşturulur. Yeniden koruma ayarlarını özelleştirdiyseniz, seçilen küme kullanılır.
 
 Yeniden koruma işi tetikliyorsanız ve hedef VM varsa, aşağıdakiler gerçekleşir:
 
 1. Çalışıyorsa, hedef tarafı VM kapalıdır.
-1. VM yönetilen diskleri kullanıyorsa, orijinal diskin bir kopyası bir `-ASRReplica` sonek ile oluşturulur. Özgün diskler silinir. Kopyalar `-ASRReplica` , çoğaltma için kullanılır.
+1. VM yönetilen diskleri kullanıyorsa, orijinal diskin bir kopyası bir sonek ile oluşturulur `-ASRReplica` . Özgün diskler silinir. `-ASRReplica`Kopyalar, çoğaltma için kullanılır.
 1. VM, yönetilmeyen diskler kullanıyorsa, hedef sanal makinenin veri diskleri ayrılır ve çoğaltma için kullanılır. İşletim sistemi diskinin bir kopyası oluşturulur ve VM 'ye eklenir. Özgün işletim sistemi diski ayrılır ve çoğaltma için kullanılır.
 1. Yalnızca kaynak disk ve hedef disk arasındaki değişiklikler eşitlenir. Farklılıklar, her iki diski karşılaştırarak ve sonra aktarılarak hesaplanır. Yeniden korumanın tamamlanacağı tahmini süreyi bulmak için aşağıdaki onay işareti yapın.
 1. Eşitleme tamamlandıktan sonra, Delta çoğaltma başlar ve çoğaltma ilkesi ile birlikte bir kurtarma noktası oluşturulur.
 
 Yeniden koruma işi tetikliyorsanız ve hedef VM ve diskler yoksa, aşağıdakiler gerçekleşir:
 
-1. VM yönetilen diskleri kullanıyorsa, çoğaltma diskleri sonek ile `-ASRReplica` oluşturulur. Kopyalar `-ASRReplica` , çoğaltma için kullanılır.
+1. VM yönetilen diskleri kullanıyorsa, çoğaltma diskleri sonek ile oluşturulur `-ASRReplica` . `-ASRReplica`Kopyalar, çoğaltma için kullanılır.
 1. VM, yönetilmeyen diskler kullanıyorsa, çoğaltma diskleri hedef depolama hesabında oluşturulur.
 1. Tüm diskler, yük devredilen bölgeden yeni hedef bölgeye kopyalanır.
 1. Eşitleme tamamlandıktan sonra, Delta çoğaltma başlar ve çoğaltma ilkesi ile birlikte bir kurtarma noktası oluşturulur.

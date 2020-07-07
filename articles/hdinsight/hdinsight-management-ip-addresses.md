@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82778269"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
@@ -72,7 +72,7 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 | &nbsp; | Güney Kore - Güney | 52.231.203.16</br>52.231.205.214 | \*: 443 | Gelen
 | Birleşik Krallık | Batı Birleşik Krallık | 51.141.13.110</br>51.141.7.20 | \*: 443 | Gelen |
 | &nbsp; | Güney Birleşik Krallık | 51.140.47.39</br>51.140.52.16 | \*: 443 | Gelen |
-| Amerika Birleşik Devletleri | Orta ABD | 13.89.171.122</br>13.89.171.124 | \*: 443 | Gelen |
+| Birleşik Devletler | Orta ABD | 13.89.171.122</br>13.89.171.124 | \*: 443 | Gelen |
 | &nbsp; | Doğu ABD | 13.82.225.233</br>40.71.175.99 | \*: 443 | Gelen |
 | &nbsp; | Orta Kuzey ABD | 157.56.8.38</br>157.55.213.99 | \*: 443 | Gelen |
 | &nbsp; | Orta Batı ABD | 52.161.23.15</br>52.161.10.167 | \*: 443 | Gelen |

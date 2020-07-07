@@ -9,32 +9,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494665"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark makine öğrenimi işlem hattı oluşturma
 
-Apache Spark ölçeklenebilir makine öğrenme kitaplığı (MLlib), modelleme yeteneklerini dağıtılmış bir ortama getirir. Spark paketi [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) , veri çerçeveleri üzerinde oluşturulmuş bir üst düzey API kümesidir. Bu API 'Ler, pratik makine öğrenimi işlem hatlarını oluşturmanıza ve ayarlamanıza yardımcı olur.  *Spark Machine Learning* , eskı RDD tabanlı Işlem hattı API 'sini değil, bu Mllib DATAFRAME tabanlı API 'ye başvurur.
+Apache Spark ölçeklenebilir makine öğrenme kitaplığı (MLlib), modelleme yeteneklerini dağıtılmış bir ortama getirir. Spark paketi, [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) veri çerçeveleri üzerinde oluşturulmuş bir üst düzey API kümesidir. Bu API 'Ler, pratik makine öğrenimi işlem hatlarını oluşturmanıza ve ayarlamanıza yardımcı olur.  *Spark Machine Learning* , eskı RDD tabanlı Işlem hattı API 'sini değil, bu Mllib DATAFRAME tabanlı API 'ye başvurur.
 
 Machine Learning (ML) işlem hattı, birden çok makine öğrenimi algoritmasını birlikte birleştiren bir iş akışıdır. Bir dizi algoritmanın yanı sıra verileri işlemek ve öğrenmek için gereken birçok adım olabilir. İşlem hatları, bir makine öğrenimi sürecinin aşamalarını ve sıralamasını tanımlar. MLlib içinde, bir işlem hattının aşamaları, her biri bir transformatör ve bir Estimator her bir görev gerçekleştirirken belirli bir PipelineStages dizisi tarafından temsil edilir.
 
-Transformatör, `transform()` yöntemini kullanarak bir veri çerçevesini diğerine dönüştüren algoritmadır. Örneğin, bir özellik transformatörü bir veri çerçevesinin bir sütununu okuyabilir, bunu başka bir sütunla eşleyebilir ve eşlenmiş sütunuyla birlikte yeni bir veri çerçevesinin çıktısını alabilir.
+Transformatör, yöntemini kullanarak bir veri çerçevesini diğerine dönüştüren algoritmadır `transform()` . Örneğin, bir özellik transformatörü bir veri çerçevesinin bir sütununu okuyabilir, bunu başka bir sütunla eşleyebilir ve eşlenmiş sütunuyla birlikte yeni bir veri çerçevesinin çıktısını alabilir.
 
-Bir Estimator, öğrenme algoritmalarının soyutlamasıdır ve bir dönüştürücü oluşturmak için bir veri kümesine ekleme veya eğitim yapmaktan sorumludur. Bir Estimator, bir veri çerçevesini `fit()`kabul eden ve bir transformatör olan veri çerçevesini üreten adlı bir yöntemi uygular.
+Bir Estimator, öğrenme algoritmalarının soyutlamasıdır ve bir dönüştürücü oluşturmak için bir veri kümesine ekleme veya eğitim yapmaktan sorumludur. Bir Estimator `fit()` , bir veri çerçevesini kabul eden ve bir transformatör olan veri çerçevesini üreten adlı bir yöntemi uygular.
 
 Bir transformatör veya bir Estimator 'ın durum bilgisi olan her örneği, parametreleri belirtirken kullanılan kendi benzersiz tanımlayıcısına sahiptir. Her ikisi de bu parametreleri belirtmek için Tekdüzen API kullanır.
 
 ## <a name="pipeline-example"></a>İşlem hattı örneği
 
-ML işlem hattının pratik bir kullanımını göstermek için bu örnek, HDInsight kümeniz için Azure `HVAC.csv` storage veya Data Lake Storage varsayılan depolama alanında önceden yüklenmiş olarak gelen örnek veri dosyasını kullanır. Dosyanın içeriğini görüntülemek için `/HdiSamples/HdiSamples/SensorSampleData/hvac` dizine gidin. `HVAC.csv`çeşitli binalarda HVAC (*Isıtma, havalandırma ve hava*) sistemleri için hem hedef hem de gerçek sıcaklıklar içeren bir zaman kümesi içerir. Amaç, verileri veri üzerinde eğmektir ve belirli bir bina için bir tahmin sıcaklığını üretir.
+ML işlem hattının pratik bir kullanımını göstermek için bu örnek, `HVAC.csv` HDInsight kümeniz Için Azure Storage veya Data Lake Storage varsayılan depolama alanında önceden yüklenmiş olarak gelen örnek veri dosyasını kullanır. Dosyanın içeriğini görüntülemek için `/HdiSamples/HdiSamples/SensorSampleData/hvac` dizine gidin. `HVAC.csv`çeşitli binalarda HVAC (*Isıtma, havalandırma ve hava*) sistemleri için hem hedef hem de gerçek sıcaklıklar içeren bir zaman kümesi içerir. Amaç, verileri veri üzerinde eğmektir ve belirli bir bina için bir tahmin sıcaklığını üretir.
 
 Aşağıdaki kod:
 
-1. `BuildingID`, `SystemInfo` ( `LabeledDocument`Bir sistemin tanımlayıcısını ve yaşını) depolayan bir, ve `label` (bina çok sıcak ise 0,0, aksi takdirde 1,0) öğesini tanımlar.
-2. Bir satır (satır) `parseDocument` veri alan ve binasının hedef sıcaklığın gerçek sıcaklığa karşılaştırılmasıyla "etkin" olup olmadığını belirleyen özel bir Ayrıştırıcı işlevi oluşturur.
+1. `LabeledDocument` `BuildingID` , `SystemInfo` (Bir sistemin tanımlayıcısını ve yaşını) depolayan bir, ve `label` (bina çok sıcak ise 0,0, aksi takdirde 1,0) öğesini tanımlar.
+2. `parseDocument`Bir satır (satır) veri alan ve binasının hedef sıcaklığın gerçek sıcaklığa karşılaştırılmasıyla "etkin" olup olmadığını belirleyen özel bir Ayrıştırıcı işlevi oluşturur.
 3. Kaynak verileri ayıklarken ayrıştırıcısı uygular.
 4. Eğitim verileri oluşturur.
 
@@ -78,11 +78,11 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-Bu örnek işlem hattının üç aşaması vardır `Tokenizer` : `HashingTF` ve (her iki dönüştürücüler) `Logistic Regression` ve (bir Estimator).  Veri çerçevesindeki ayıklanan ve ayrıştırılmış veriler `training` , çağrıldığında `pipeline.fit(training)` işlem hattı üzerinden akar.
+Bu örnek işlem hattının üç aşaması vardır: `Tokenizer` ve `HashingTF` (her iki dönüştürücüler) ve `Logistic Regression` (bir Estimator).  Veri çerçevesindeki ayıklanan ve ayrıştırılmış veriler, `training` çağrıldığında işlem hattı üzerinden akar `pipeline.fit(training)` .
 
-1. İlk aşamada `Tokenizer`, `SystemInfo` giriş sütununu (sistem tanımlayıcısı ve yaş değerlerinden oluşan) `words` çıkış sütununa böler. Bu yeni `words` sütun, dataframe 'e eklenir. 
-2. İkinci aşama `HashingTF`, yeni `words` sütunu Özellik vektörlerine dönüştürür. Bu yeni `features` sütun, dataframe 'e eklenir. Bu ilk iki aşama dönüştürücüler ' dir. 
-3. Üçüncü aşama `LogisticRegression`bir Estimator olur ve bu nedenle işlem hattı bir `LogisticRegression.fit()` `LogisticRegressionModel`üretmek için yöntemini çağırır. 
+1. İlk aşamada, `Tokenizer` `SystemInfo` Giriş sütununu (sistem tanımlayıcısı ve yaş değerlerinden oluşan) `words` Çıkış sütununa böler. Bu yeni `words` sütun, DataFrame 'e eklenir. 
+2. İkinci aşama, `HashingTF` Yeni `words` sütunu Özellik vektörlerine dönüştürür. Bu yeni `features` sütun, DataFrame 'e eklenir. Bu ilk iki aşama dönüştürücüler ' dir. 
+3. Üçüncü aşama `LogisticRegression` bir Estimator olur ve bu nedenle işlem hattı `LogisticRegression.fit()` bir üretmek için yöntemini çağırır `LogisticRegressionModel` . 
 
 ```python
 tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-`Tokenizer` Ve `HashingTF` dönüştürücüler tarafından eklenen `words` yeni `features` ve sütunları ve `LogisticRegression` Estimator 'ın bir örneğini görmek için, özgün veri çerçevesinde bir `PipelineModel.transform()` yöntemi çalıştırın. Üretim kodunda, bir sonraki adım, eğitimi doğrulamak için bir test veri çerçevesini geçirmek olacaktır.
+`words` `features` Ve dönüştürücüler tarafından eklenen yeni ve sütunları `Tokenizer` `HashingTF` ve Estimator 'ın bir örneğini görmek Için `LogisticRegression` , `PipelineModel.transform()` özgün veri çerçevesinde bir yöntemi çalıştırın. Üretim kodunda, bir sonraki adım, eğitimi doğrulamak için bir test veri çerçevesini geçirmek olacaktır.
 
 ```python
 peek = model.transform(training)
@@ -130,7 +130,7 @@ peek.show()
 only showing top 20 rows
 ```
 
-`model` Nesne artık tahminleri yapmak için kullanılabilir. Bu makine öğrenimi uygulamasının tam örneği ve bunu çalıştırmaya yönelik adım adım yönergeler için bkz. [Azure HDInsight 'ta Machine Learning uygulamaları oluşturma Apache Spark](apache-spark-ipython-notebook-machine-learning.md).
+`model`Nesne artık tahminleri yapmak için kullanılabilir. Bu makine öğrenimi uygulamasının tam örneği ve bunu çalıştırmaya yönelik adım adım yönergeler için bkz. [Azure HDInsight 'ta Machine Learning uygulamaları oluşturma Apache Spark](apache-spark-ipython-notebook-machine-learning.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

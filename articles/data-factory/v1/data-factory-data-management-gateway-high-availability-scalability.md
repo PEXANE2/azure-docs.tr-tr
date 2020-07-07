@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80065203"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Veri Yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik (Önizleme)
@@ -183,9 +183,9 @@ Azure portal, her düğümde (CPU, bellek, ağ (gelen/giden) ve ağ geçidi dü�
 
 Ağ **geçidi** sayfasında **Gelişmiş ayarları** etkinleştirerek **ağ**(ın/out) gibi gelişmiş ölçümleri, **rol & kimlik bilgisi durumunu**ve performans ayarlaması sırasında değiştirilebilen/değiştirilebilen **eşzamanlı işleri** (çalışıyor/limit) görebilirsiniz. Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların açıklamaları verilmiştir:  
 
-İzleme özelliği | Açıklama
+İzleme özelliği | Description
 :------------------ | :---------- 
-Adı | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı.  
+Name | Ağ geçidiyle ilişkili mantıksal ağ geçidinin ve düğümlerin adı.  
 Durum | Mantıksal ağ geçidinin ve ağ geçidi düğümlerinin durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için bkz. [ağ geçidi durumu](#gateway-status) bölümü. 
 Sürüm | Mantıksal ağ geçidi ve her ağ geçidi düğümünün sürümünü gösterir. Mantıksal ağ geçidinin sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Mantıksal ağ geçidi kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal ağ geçidi ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur). 
 Kullanılabilir bellek | Bir ağ geçidi düğümündeki kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. 
@@ -211,7 +211,7 @@ Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından f
 
 Aşağıdaki tabloda, **mantıksal bir ağ geçidinin**olası durumları verilmiştir. Ağ Geçidi, ağ geçidi düğümlerinin durumlarına bağlıdır. 
 
-Durum | Açıklamalar
+Durum | Yorumlar
 :----- | :-------
 Kayıt gerekiyor | Henüz bu mantıksal ağ geçidine kayıtlı düğüm yok
 Çevrimiçi | Ağ Geçidi düğümleri çevrimiçi
@@ -238,15 +238,15 @@ Kullanılabilir bellek ve CPU iyi kullanılmadığında, ancak boşta kapasitesi
 
 ## <a name="known-issuesbreaking-changes"></a>Bilinen sorunlar/son değişiklikler
 
-- Şu anda, tek bir mantıksal ağ geçidi için en fazla dört fiziksel ağ geçidi düğümünüz olabilir. Performans nedenleriyle dörtten fazla düğüme ihtiyacınız varsa, adresine [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com)bir e-posta gönderin.
+- Şu anda, tek bir mantıksal ağ geçidi için en fazla dört fiziksel ağ geçidi düğümünüz olabilir. Performans nedenleriyle dörtten fazla düğüme ihtiyacınız varsa, adresine bir e-posta gönderin [DMGHelp@microsoft.com](mailto:DMGHelp@microsoft.com) .
 - Geçerli mantıksal ağ geçidinden geçiş yapmak için başka bir mantıksal ağ geçidindeki kimlik doğrulama anahtarı ile bir ağ geçidi düğümünü yeniden kaydetmeniz gerekmez. Yeniden kaydetmek için, düğümden ağ geçidini kaldırın, ağ geçidini yeniden yükleyin ve diğer mantıksal ağ geçidinin kimlik doğrulama anahtarına kaydolun. 
-- Tüm ağ geçidi düğümleriniz için HTTP proxy gerekliyse, diahost. exe. config ve diawp. exe. config dosyasındaki proxy 'yi ayarlayın ve tüm düğümlerin aynı diahost. exe. config ve diawıp. exe. config dosyasına sahip olduğundan emin olmak için Sunucu Yöneticisi 'ni kullanın. Ayrıntılar için bkz. [proxy ayarlarını yapılandırma](data-factory-data-management-gateway.md#configure-proxy-server-settings) bölümü. 
+- Tüm ağ geçidi düğümleriniz için HTTP proxy gerekliyse, diahost.exe.config ve diawp.exe.config ara sunucusunu ayarlayın ve tüm düğümlerin aynı diahost.exe.config ve diawip.exe.config sahip olduğundan emin olmak için Sunucu Yöneticisi 'ni kullanın. Ayrıntılar için bkz. [proxy ayarlarını yapılandırma](data-factory-data-management-gateway.md#configure-proxy-server-settings) bölümü. 
 - Ağ Geçidi Configuration Manager 'de düğümden düğüme iletişim için şifreleme modunu değiştirmek için, portaldaki tüm düğümleri hariç bir şekilde silin. Ardından, şifreleme modunu değiştirdikten sonra düğümleri geri ekleyin.
 - Düğümden düğüme iletişim kanalını şifrelemeyi seçerseniz resmi bir TLS sertifikası kullanın. Otomatik olarak imzalanan sertifika, diğer makinelerdeki sertifika yetkilisi listesinde aynı sertifikaya güvenilmeyebilir ve bağlantı sorunlarına neden olabilir. 
 - Düğüm sürümü mantıksal ağ geçidi sürümünden düşük olduğunda bir ağ geçidi düğümünü mantıksal bir ağ geçidine kaydedemezsiniz. Daha düşük bir sürüm düğümünü (indirgeme) kaydedebilmeniz için portaldan mantıksal ağ geçidinin tüm düğümlerini silin. Mantıksal bir ağ geçidinin tüm düğümlerini silerseniz, bu mantıksal ağ geçidine el ile yeni düğümler yükleyip kaydedin. Bu durumda hızlı kurulum desteklenmez.
 - Mevcut bir mantıksal ağ geçidine düğümleri yüklemek için hızlı kurulum 'u kullanamazsınız. Bu, hala bulut kimlik bilgilerini kullanıyor. Ayarlar sekmesinde, kimlik bilgilerinin ağ geçidi Configuration Manager nerede depolandığını kontrol edebilirsiniz.
 - Düğüm-düğüm Şifrelemesi etkin olan mevcut bir mantıksal ağ geçidine düğümleri yüklemek için hızlı kurulum 'u kullanamazsınız. Şifreleme modunun el ile sertifika ekleme ile aynı olması durumunda hızlı yüklemeye daha fazla seçenek yoktur. 
-- Şirket içi ortamdan bir dosya kopyası için, localhost veya yerel sürücüye tüm düğümler \\aracılığıyla erişilemese de localhost veya c:\files kullanmamalısınız. Bunun yerine, \\dosyaların konumunu belirtmek için sunucuadı \ dosyalar ' ı kullanın.
+- Şirket içi ortamdan bir dosya kopyası için, \\ localhost veya yerel sürücüye tüm düğümler aracılığıyla erişilemese de localhost veya C:\files kullanmamalısınız. Bunun yerine, \\ dosyaların konumunu belirtmek için sunucuadı \ dosyalar ' ı kullanın.
 
 
 ## <a name="rolling-back-from-the-preview"></a>Önizlemeden geri alınıyor 

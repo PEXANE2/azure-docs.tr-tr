@@ -12,10 +12,10 @@ ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385034"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı deneyimlerinin arabirimini özelleştirme
@@ -31,7 +31,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
 
@@ -46,7 +46,7 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve aboneliğinizi içeren dizini seçin. Bu dizin, Azure B2C kiracınızı içeren olandan farklı.
 3. Azure portal sol üst köşesindeki tüm hizmetler ' i seçin, **depolama hesapları**' nı arayıp seçin.
-4. **Ekle**'yi seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 5. **Kaynak grubu**altında **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve ardından **Tamam**' a tıklayın.
 6. Depolama hesabı için bir ad girin. Seçtiğiniz ad Azure’da benzersiz olmalı, uzunluğu 3 ile 24 karakter arasında olmalı ve yalnızca sayı ile küçük harf içermelidir.
 7. Depolama hesabının konumunu seçin veya varsayılan konumu kabul edin.

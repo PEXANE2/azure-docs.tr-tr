@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382907"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
@@ -23,14 +23,14 @@ Microsoft Azure Red Hat OpenShift, kümeniz adına görevleri gerçekleştirmek 
 
 [Azure Portal](https://portal.azure.com), kiracınızın portalın sağ üst köşesindeki Kullanıcı adınızın altında göründüğünden emin olun:
 
-![Kiracı 'nın sağ](./media/howto-create-tenant/tenant-callout.png) üst köşesinde listelenen portalın ekran görüntüsü yanlış kiracı görüntüleniyorsa, sağ üst köşedeki Kullanıcı adına tıklayın, ardından **Dizin Değiştir**' e tıklayın ve **tüm dizinler** listesinden doğru kiracıyı seçin.
+![Kiracı 'nın sağ üst köşesinde listelenen portalın ekran görüntüsü ](./media/howto-create-tenant/tenant-callout.png) yanlış kiracı görüntüleniyorsa, sağ üst köşedeki Kullanıcı adına tıklayın, ardından **Dizin Değiştir**' e tıklayın ve **tüm dizinler** listesinden doğru kiracıyı seçin.
 
 Azure Red Hat OpenShift kümenizde oturum açmak için yeni bir Azure Active Directory ' Owner ' kullanıcısı oluşturun.
 
 1. [Kullanıcılar-tüm kullanıcılar](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) dikey penceresine gidin.
 2. **+ Yeni Kullanıcı** ' ya tıklayarak **Kullanıcı** bölmesini açın.
 3. Bu Kullanıcı için bir **ad** girin.
-4. Sonuna `.onmicrosoft.com` eklenmiş olarak, oluşturduğunuz kiracının adına göre bir **Kullanıcı adı** oluşturun. Örneğin, `yourUserName@yourTenantName.onmicrosoft.com`. Bu Kullanıcı adını yazın. Kümenizin kümenizde oturum açması için bu gereklidir.
+4. Sonuna eklenmiş olarak, oluşturduğunuz kiracının adına göre bir **Kullanıcı adı** oluşturun `.onmicrosoft.com` . Örneğin, `yourUserName@yourTenantName.onmicrosoft.com`. Bu Kullanıcı adını yazın. Kümenizin kümenizde oturum açması için bu gereklidir.
 5. Dizin **rolü ' nü tıklatıp Dizin** rolü bölmesini **açın ve sonra** bölmenin altındaki **Tamam** ' a tıklayın.
 6. **Kullanıcı** bölmesinde, **parolayı göster** ' e tıklayın ve geçici parolayı kaydedin. İlk kez oturum açtıktan sonra, bunu sıfırlamanız istenir.
 7. Kullanıcı oluşturmak için bölmenin alt kısmındaki **Oluştur** ' a tıklayın.
@@ -61,7 +61,7 @@ Küme Yöneticisi erişimi sağlamak için bir Azure AD güvenlik grubundaki Üy
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD uygulama kaydı oluşturma
 
-`az openshift create` Komutun `--aad-client-app-id` bayrağını atlayarak, kümeyi oluşturmanın bir parçası olarak otomatik olarak BIR Azure Active Directory (Azure AD) uygulama kayıt istemcisi oluşturabilirsiniz. Bu öğreticide, Azure AD uygulama kaydını tamamlanma için nasıl oluşturacağınız gösterilmektedir.
+Komutun bayrağını atlayarak, kümeyi oluşturmanın bir parçası olarak otomatik olarak bir Azure Active Directory (Azure AD) uygulama kayıt istemcisi oluşturabilirsiniz `--aad-client-app-id` `az openshift create` . Bu öğreticide, Azure AD uygulama kaydını tamamlanma için nasıl oluşturacağınız gösterilmektedir.
 
 Kuruluşunuzda hizmet sorumlusu olarak kullanılacak bir Azure Active Directory (Azure AD) uygulama kaydı yoksa, bir tane oluşturmak için bu yönergeleri izleyin.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82787150"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric kümesini programlı olarak ölçeklendirme 
@@ -24,12 +24,12 @@ Azure 'da çalışan Service Fabric kümeleri, sanal makine ölçek kümelerinin
 
 Bir hizmet sorumlusu aşağıdaki adımlarla oluşturulabilir:
 
-1. Azure CLı 'da (`az login`) sanal makine ölçek kümesine erişimi olan bir kullanıcı olarak oturum açın
+1. Azure CLı 'da ( `az login` ) sanal makine ölçek kümesine erişimi olan bir kullanıcı olarak oturum açın
 2. Hizmet sorumlusu oluşturma`az ad sp create-for-rbac`
     1. Daha sonra kullanmak üzere AppID (' istemci KIMLIĞI ' başka bir yerde), ad, parola ve kiracı ' yı unutmayın.
     2. Ayrıca, ile görüntülenebilecek abonelik KIMLIĞINIZ gerekir`az account list`
 
-Akıcı işlem kitaplığı bu kimlik bilgilerini şu şekilde kullanarak oturum açabilir ( [Microsoft. Azure. Management. floent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) paketinde olduğu `IAzure` gibi, temel akıcı Azure türlerinin olduğunu unutmayın):
+Akıcı işlem kitaplığı bu kimlik bilgilerini şu şekilde kullanarak oturum açabilir ( `IAzure` [Microsoft. Azure. Management. floent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) paketinde olduğu gibi, temel akıcı Azure türlerinin olduğunu unutmayın):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -48,7 +48,7 @@ else
 }
 ```
 
-Oturum açıldıktan sonra, ölçek kümesi örnek sayısı aracılığıyla `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`sorgulanabilir.
+Oturum açıldıktan sonra, ölçek kümesi örnek sayısı aracılığıyla sorgulanabilir `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity` .
 
 ## <a name="scaling-out"></a>Ölçeği genişletme
 Akıcı Azure işlem SDK 'sını kullanarak, örnekleri yalnızca birkaç çağrı ile sanal makine ölçek kümesine eklenebilir
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternatif olarak, sanal makine ölçek kümesi boyutu da PowerShell cmdlet 'leri ile yönetilebilir. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss), sanal makine ölçek kümesi nesnesi alabilir. Geçerli kapasite `.sku.capacity` özelliği aracılığıyla kullanılabilir. Kapasiteyi istenen değere değiştirdikten sonra, Azure 'daki sanal makine ölçek kümesi, [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) komutla birlikte güncelleştirilebilecek.
+Alternatif olarak, sanal makine ölçek kümesi boyutu da PowerShell cmdlet 'leri ile yönetilebilir. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss), sanal makine ölçek kümesi nesnesi alabilir. Geçerli kapasite özelliği aracılığıyla kullanılabilir `.sku.capacity` . Kapasiteyi istenen değere değiştirdikten sonra, Azure 'daki sanal makine ölçek kümesi, komutla birlikte güncelleştirilebilecek [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) .
 
 Bir düğüm el ile eklenirken, ölçek kümesi şablonu yeni örnekleri Service Fabric kümesine otomatik olarak katmak için Uzantılar içerdiğinden, bir ölçek kümesi örneğinin eklenmesi, yeni bir Service Fabric düğümü başlatmak için gerekli olmalıdır. 
 
@@ -84,7 +84,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Kaldırılacak düğüm bulunduğunda, bu, devre dışı bırakılabilir ve daha önce kullanılan `FabricClient` `IAzure` örnek ile kaldırılır.
+Kaldırılacak düğüm bulunduğunda, bu, devre dışı bırakılabilir ve `FabricClient` `IAzure` daha önce kullanılan örnek ile kaldırılır.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);

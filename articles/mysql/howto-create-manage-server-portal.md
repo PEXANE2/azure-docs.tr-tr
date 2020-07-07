@@ -7,16 +7,16 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: c0bee0b628a49746a19545d14b8b8761d0e880d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062411"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı sunucusunu yönetme
 Bu makalede MySQL sunucuları için Azure veritabanı 'nı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
 
-## <a name="sign-in"></a>Oturum açma
+## <a name="sign-in"></a>Oturum açın
 [Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-server"></a>Sunucu oluşturma

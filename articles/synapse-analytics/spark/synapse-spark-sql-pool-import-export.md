@@ -9,18 +9,18 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 515fd9bfedc5bc5d3cefda2a357c351f515fb5f5
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ebf948fdb1df76cb7bcb03ee5d85f581d856524f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918729"
 ---
 # <a name="introduction"></a>Giriş
 
 Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector, Azure SYNAPSE 'te Spark havuzları (Önizleme) ve SQL havuzları arasında verileri verimli bir şekilde aktarmak için tasarlanmıştır. Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector yalnızca SQL havuzlarında çalışır, isteğe bağlı SQL ile çalışmaz.
 
-## <a name="design"></a>Tasarlama
+## <a name="design"></a>Tasarım
 
 Spark havuzları ve SQL havuzları arasında veri aktarımı, JDBC kullanılarak yapılabilir. Bununla birlikte, Spark ve SQL havuzları gibi iki Dağıtılmış Sistem, JDBC, seri veri aktarımı ile ilgili bir performans sorunu olduğunu eğilimi gösterir.
 
@@ -30,7 +30,7 @@ Azure SYNAPSE Apache Spark havuzu SYNAPSE SQL Bağlayıcısı Apache Spark için
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kimlik doğrulaması
 
-Sistemler arasında kimlik doğrulaması, Azure SYNAPSE Analytics 'te sorunsuz hale getirilir. Depolama hesabına veya veri ambarı sunucusuna erişirken kullanılacak güvenlik belirteçlerini almak için Azure Active Directory ile bağlanan bir belirteç hizmeti vardır. 
+Sistemler arasında kimlik doğrulaması, Azure SYNAPSE Analytics 'te sorunsuz hale getirilir. Depolama hesabına veya veri ambarı sunucusuna erişirken kullanılacak güvenlik belirteçlerini almak için Azure Active Directory ile bağlanan bir belirteç hizmeti vardır.
 
 Bu nedenle, depolama hesabında ve veri ambarı sunucusunda AAD kimlik doğrulaması yapılandırıldığı sürece kimlik bilgileri oluşturmanız veya bunları bağlayıcı API 'de belirtmeniz gerekmez. Aksi takdirde, SQL kimlik doğrulaması belirlenebilir. [Kullanım](#usage) bölümünde daha fazla ayrıntı bulun.
 
@@ -38,21 +38,29 @@ Bu nedenle, depolama hesabında ve veri ambarı sunucusunda AAD kimlik doğrulam
 
 - Bu bağlayıcı yalnızca Scala 'da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Veri aktarmak istediğiniz veritabanında/SQL havuzunda **db_exporter** rolün olması gerekir.
+- Veri aktarmak istediğiniz veritabanında/SQL havuzunda **db_exporter** rolün bir üyesi olmalıdır.
+- Varsayılan depolama hesabındaki Depolama Blobu veri katılımcısı rolünün bir üyesi olmalıdır.
 
-Kullanıcı oluşturmak için veritabanına bağlanın ve aşağıdaki örnekleri izleyin:
+Kullanıcı oluşturmak için SQL havuzu veritabanına bağlanın ve aşağıdaki örnekleri izleyin:
 
 ```sql
+--SQL User
 CREATE USER Mary FROM LOGIN Mary;
+
+--Azure Active Directory User
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 Rol atamak için:
 
 ```sql
+--SQL User
 EXEC sp_addrolemember 'db_exporter', 'Mary';
+
+--Azure Active Directory User
+EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 ```
 
 ## <a name="usage"></a>Kullanım
@@ -72,7 +80,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 #### <a name="read-api"></a>API 'YI oku
 
 ```scala
-val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
+val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
 Yukarıdaki API, hem Iç (yönetilen) hem de SQL havuzundaki dış tablolar için çalışacaktır.
@@ -80,17 +88,51 @@ Yukarıdaki API, hem Iç (yönetilen) hem de SQL havuzundaki dış tablolar içi
 #### <a name="write-api"></a>Yazma API 'SI
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-Burada TableType sabit olabilir. Iç veya sabitler. EXTERNAL
+Yazma API 'SI, tabloyu SQL havuzunda oluşturur ve sonra verileri yüklemek için PolyBase 'i çağırır.  Tablo SQL havuzunda yer almıyor veya "zaten var olan bir nesne var.." bildiren hata döndürülür.
+
+TableType değerleri
+
+- Sabitler. SQL havuzundaki Iç yönetilen tablo
+- SQL havuzundaki sabitler. EXTERNAL-External tablosu
+
+SQL havuzu yönetilen tablosu
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
-Depolama ve SQL Server kimlik doğrulaması yapılır
+SQL havuzu dış tablosu
+
+SQL havuzu dış tablosuna yazmak için, SQL havuzunda bir dış VERI kaynağı ve bir dış dosya BIÇIMI bulunmalıdır.  Daha fazla bilgi için SQL havuzunda [dış veri kaynağı](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [Harici dosya biçimleri](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oluşturma makalesini okuyun.  Aşağıda, SQL havuzunda dış veri kaynağı ve harici dosya biçimleri oluşturma örnekleri verilmiştir.
+
+```sql
+--For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+CREATE EXTERNAL DATA SOURCE <DataSourceName>
+WITH
+  ( LOCATION = 'abfss://...' ,
+    TYPE = HADOOP
+  ) ;
+
+CREATE EXTERNAL FILE FORMAT <FileFormatName>
+WITH (  
+    FORMAT_TYPE = PARQUET,  
+    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'  
+);
+```
+
+Depolama hesabına Azure Active Directory geçişli kimlik doğrulaması kullanılırken bir dış KIMLIK BILGISI nesnesi gerekli değildir.  Depolama hesabındaki "Depolama Blobu verileri katılımcısı" rolünün bir üyesi olduğunuzdan emin olun.
+
+```scala
+
+df.write.
+    option(Constants.DATA_SOURCE, <DataSourceName>).
+    option(Constants.FILE_FORMAT, <FileFormatName>).
+    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+
+```
 
 ### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Bir SQL havuzuna veya çalışma alanı dışında bir veritabanına veri aktardıysanız
 
@@ -114,8 +156,8 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-sql-auth-instead-of-aad"></a>AAD yerine SQL auth kullanma
@@ -127,8 +169,8 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
@@ -136,10 +178,10 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-the-pyspark-connector"></a>PySpark bağlayıcısını kullanma
@@ -166,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 Benzer şekilde, okuma senaryosunda, Scala kullanarak verileri okuyun ve geçici bir tabloya yazın ve geçici tabloyu bir veri çerçevesinde sorgulamak için PySpark içinde Spark SQL kullanın.
 
-## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>Diğer kullanıcıların çalışma alanınızda DW bağlayıcısını kullanmasına izin verme
+## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Diğer kullanıcıların, Azure SYNAPSE Apache Spark, çalışma alanınızdaki SQL bağlayıcısını SYNAPSE için kullanmasına izin verme
 
 Diğer kullanıcıların eksik izinlerini değiştirmek için, çalışma alanına bağlı ADLS 2. depolama hesabında Depolama Blobu veri sahibi olmanız gerekir. Kullanıcının çalışma alanına erişimi olduğundan ve not defterlerini çalıştırma izinlerine sahip olduğundan emin olun.
 
@@ -178,7 +220,7 @@ Diğer kullanıcıların eksik izinlerini değiştirmek için, çalışma alanı
 
 - Klasör yapısında aşağıdaki ACL 'Leri belirtin:
 
-| Klasör | / | synapse | çalışma alanı  | <workspacename> | Mini veri havuzları | <sparkpoolname>  | parlak havuzörnekleri  |
+| Klasör | / | synapse | çalışma alanı  | \<workspacename> | Mini veri havuzları | \<sparkpoolname>  | parlak havuzörnekleri  |
 |--|--|--|--|--|--|--|--|
 | Erişim Izinleri | --X | --X | --X | --X | --X | --X | -WX |
 | Varsayılan Izinler | ---| ---| ---| ---| ---| ---| ---|

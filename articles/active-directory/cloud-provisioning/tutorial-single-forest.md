@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360614"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Öğretici: tek bir Azure AD kiracısı ile tek bir ormanı tümleştirme
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bağlantı bulutu sağlam
 
 Bu öğreticide oluşturduğunuz ortamı, test için veya bulut sağlaması hakkında daha fazla bilgi almak için kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinde
 
 1. Azure AD kiracınızda yalnızca bulutta yer alan bir genel yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olması veya kullanılamaz hale gelmesi için kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.

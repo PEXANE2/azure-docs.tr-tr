@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75927851"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure portalında bir ad alanı oluşturma
@@ -33,7 +33,7 @@ Ad alanı oluşturmak için:
     4. **Abonelik**için, ad alanını oluşturmak Için bir Azure aboneliği seçin.
     5. **Kaynak grubu**için, ad alanının etkin olacağı mevcut bir kaynak grubunu seçin veya yeni bir tane oluşturun.      
     6. **Konum**için, ad alanınızı barındırılacak bölgeyi seçin.
-    7. **Oluştur**’u seçin. Artık sistem ad alanınızı oluşturur ve kullanıma açar. Sistem, hesabınıza yönelik kaynakları sağlarken birkaç dakika beklemeniz gerekebilir.
+    7. **Oluştur**'u seçin. Artık sistem ad alanınızı oluşturur ve kullanıma açar. Sistem, hesabınıza yönelik kaynakları sağlarken birkaç dakika beklemeniz gerekebilir.
    
         ![Ad alanı oluşturma](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Service Bus ad alanının başarıyla dağıtıldığını doğrulayın. Bildirimleri görmek için araç çubuğundaki **zil simgesini (Uyarılar)** seçin. Görüntüde gösterildiği gibi bildirimde **kaynak grubunun adını** seçin. Service Bus ad alanını içeren kaynak grubunu görürsünüz.
