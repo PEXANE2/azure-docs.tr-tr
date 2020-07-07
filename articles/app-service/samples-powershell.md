@@ -4,14 +4,13 @@ description: Bazı yaygın App Service senaryolarından bazıları için Azure P
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254489"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057917"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service için PowerShell örnekleri
 
@@ -25,6 +24,7 @@ Aşağıdaki tablo, Azure PowerShell kullanılarak oluşturulan PowerShell betik
 | [FTP ile uygulama oluşturma ve kod dağıtma](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bir App Service uygulaması oluşturur ve FTP kullanarak yerel bir dizinden dosya yükler. |
 | [Yerel bir git deposundan uygulama oluşturma ve kod dağıtma](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bir App Service uygulaması oluşturur ve yerel bir git deposundan kod gönderimi yapılandırır. |
 | [Bir uygulama oluşturma ve hazırlama ortamına kod dağıtma](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hazırlama kodu değişiklikleri için dağıtım yuvası olan bir App Service uygulaması oluşturur. |
+|  [Bir uygulama oluşturun ve uygulamanızı özel bir uç noktayla sunun](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Özel bir uç nokta ile App Service uygulaması oluşturur. |
 |**Uygulama yapılandırma**||
 | [Özel bir etki alanını uygulamayla eşleme](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir App Service uygulaması oluşturur ve buna özel bir etki alanı adı eşleştirir. |
 | [Uygulamaya özel bir TLS/SSL sertifikası bağlama](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir App Service uygulaması oluşturur ve özel bir etki alanı adının TLS/SSL sertifikasını buna bağlar. |

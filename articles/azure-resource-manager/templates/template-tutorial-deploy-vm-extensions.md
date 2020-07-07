@@ -5,12 +5,11 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 06d948b44064f029e00a2ef089077e9b55246545
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d44fb593cda60c8cc556ffeb5cb3b36163c6bcc3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184971"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057900"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Öğretici: ARM şablonlarıyla sanal makine uzantıları dağıtma
 
@@ -47,13 +46,13 @@ Satır içi PowerShell betiği veya bir betik dosyası kullanabilirsiniz.  Bu ö
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Dosyayı kendi konumunuzda yayımlamayı seçerseniz, daha sonra öğreticide bulunan `fileUri` öğeyi güncelleştirin.
+Dosyayı kendi konumunuzda yayımlamayı seçerseniz, `fileUri` daha sonra öğreticide bulunan öğeyi güncelleştirin.
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
 Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya**  >  **Aç dosya**' yı seçin.
 1. **Dosya adı** kutusuna aşağıdaki URL 'yi yapıştırın:
 
     ```url
@@ -72,7 +71,7 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
 
      Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri almanız yararlı olur.
 
-1. Dosya > **farklı kaydet**' **i seçerek dosyanın**bir kopyasını *azuredeploy. JSON* adlı yerel bilgisayarınıza kaydedin.
+1. Dosya farklı Kaydet ' **i seçerek dosyanın**bir kopyasını *azuredeploy.js* adı ile yerel bilgisayarınıza kaydedin  >  **Save As**.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -102,7 +101,7 @@ Aşağıdaki içeriği kullanarak var olan şablona bir sanal makine uzantısı 
 }
 ```
 
-Bu kaynak tanımı hakkında daha fazla bilgi için [uzantı başvurusuna](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions)bakın. Önemli öğeler şunlardır:
+Bu kaynak tanımı hakkında daha fazla bilgi için [uzantı başvurusuna](/azure/templates/microsoft.compute/virtualmachines/extensions)bakın. Önemli öğeler şunlardır:
 
 * **name**: Uzantı kaynağı, sanal makine nesnesinin alt kaynağı olduğundan ad alanında sanal makine adı ön ek olarak kullanılmalıdır. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md).
 * **Bağımlıdson**: sanal makineyi oluşturduktan sonra uzantı kaynağını oluşturun.
@@ -115,7 +114,7 @@ Satır içi betiği kullanmak için **Fileuris**'i kaldırın ve **commandtoexec
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Bu satır içi betik, iisstart. html içeriğini de güncelleştirir.
+Bu satır içi betik Ayrıca iisstart.html içeriğini güncelleştirir.
 
 Web sunucusuna erişebilmek için HTTP bağlantı noktasını da açmanız gerekir.
 
