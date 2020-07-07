@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629074"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory ile yeni ve değiştirilmiş dosyaları LastModifiedDate göre Kopyala
@@ -84,12 +84,12 @@ Bu şablon ilk olarak yeni ve değiştirilmiş dosyaları yalnızca öznitelikle
     ![Tetikleyici oluşturma](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 10. **Tetikleyici çalıştırma parametrelerinin** değerini aşağıda gösterildiği gibi ayarlayın ve **son**' u seçin.
-    - **FolderPath_Source** = **SourceFolder**FolderPath_Source.  Kaynak veri deposundaki klasörünüzle değiştirebilirsiniz.
-    - **Directory_Source** = **alt klasörü**.  Kaynak veri deposundaki alt klasörle değiştirebilirsiniz.
-    - **FolderPath_Destination** = **DestinationFolder**.  Hedef veri deposundaki klasörünüzle değiştirebilirsiniz.
-    - **Directory_Destination** = **alt klasörü**.  Hedef veri deposundaki alt klasörle değiştirebilirsiniz.
-    - **LastModified_From** =  **LastModified_From\@tetikleyicisi (). çıktılar. windowstarttime**.  Bu, işlem hattının son kez tetiklendiği saati belirleyen tetikleyiciden bir sistem değişkenidir.
-    - **LastModified_To** = **LastModified_To\@tetikleyicisi (). çıktılar. windowbitişsaati**.  Bu süre, işlem hattının bu kez tetiklendiği saati belirleyen tetikleyiciden bir sistem değişkenidir.
+    - **FolderPath_Source**  =  **SourceFolder**.  Kaynak veri deposundaki klasörünüzle değiştirebilirsiniz.
+    - **Directory_Source**  =  **alt klasör**.  Kaynak veri deposundaki alt klasörle değiştirebilirsiniz.
+    - **FolderPath_Destination**  =  **DestinationFolder**.  Hedef veri deposundaki klasörünüzle değiştirebilirsiniz.
+    - **Directory_Destination**  =  **alt klasör**.  Hedef veri deposundaki alt klasörle değiştirebilirsiniz.
+    - **LastModified_From**  =   ** \@ Trigger (). çıktılar. windowstarttime**.  Bu, işlem hattının son kez tetiklendiği saati belirleyen tetikleyiciden bir sistem değişkenidir.
+    - **LastModified_To**  =  ** \@ Trigger (). çıktılar. windowbitişsaati**.  Bu süre, işlem hattının bu kez tetiklendiği saati belirleyen tetikleyiciden bir sistem değişkenidir.
     
     ![Giriş parametreleri](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

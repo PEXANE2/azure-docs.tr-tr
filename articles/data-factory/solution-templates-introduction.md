@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628955"
 ---
 # <a name="templates"></a>Şablonlar
@@ -32,7 +32,7 @@ Aşağıdaki iki yolla bir şablondan Data Factory işlem hattı oluşturmaya ba
 
     ![Genel Bakış sayfasından şablon galerisini açın](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  Kaynak Gezgini 'daki yazar sekmesinde, şablon galerisini açmak **+** için **şablondan işlem hattı** ' nı seçin.
+1.  Kaynak Gezgini 'daki yazar sekmesinde, şablon **+** galerisini açmak için **şablondan işlem hattı** ' nı seçin.
 
     ![Yazar sekmesinden şablon galerisini açın](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -56,7 +56,7 @@ Data Factory, Data Factory işlem hattı şablonlarını kaydetmek için Azure R
 
     -   [Veritabanından Delta kopyası](solution-template-delta-copy-with-control-table.md)
 
-    -   \<\> Kaynaktan \<hedefe Kopyala\>
+    -   Öğesinden \<source\> öğesine Kopyala\<destination\>
 
         -   [Amazon S3 'ten Azure Data Lake Store Gen 2 ' ye kadar](solution-template-migration-s3-azure.md)
 

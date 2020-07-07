@@ -9,10 +9,10 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628921"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Azure 'da dağıtılmış SSIS paketleri ile şirket içinde ve Azure 'da dosya açma ve kaydetme
@@ -23,7 +23,7 @@ Bu makalede, Azure 'da yerel dosya sistemlerini kullanan SSIS paketlerini kaldı
 
 ## <a name="save-temporary-files"></a>Geçici dosyaları Kaydet
 
-Tek bir paket yürütmesi sırasında geçici dosyaları depolamanız ve işleyebilmeniz gerekiyorsa, paketler geçerli çalışma dizinini (`.`) veya Azure-SSIS Integration Runtime düğümlerinizin geçici klasörünü (`%TEMP%`) kullanabilir.
+Tek bir paket yürütmesi sırasında geçici dosyaları depolamanız ve işleyebilmeniz gerekiyorsa, paketler geçerli çalışma dizinini ( `.` ) veya Azure-SSIS Integration Runtime düğümlerinizin geçici klasörünü () kullanabilir `%TEMP%` .
 
 ## <a name="use-on-premises-file-shares"></a>Şirket içi dosya paylaşımlarını kullanma
 
@@ -37,7 +37,7 @@ Yerel dosya sistemlerini kullanan paketleri Azure 'da yüklerken ve kaydıradı�
 
 4. Windows kimlik doğrulaması kullanan erişim kimlik bilgilerini ayarlayarak Azure-SSIS IR, aynı sanal ağ içindeki şirket içi dosya paylaşımlarına bağlayın. Daha fazla bilgi için bkz. [Windows kimlik doğrulamasıyla veri ve dosya paylaşımlarına bağlanma](ssis-azure-connect-with-windows-auth.md).
 
-5. Paketinizdeki yerel dosya yollarını, şirket içi dosya paylaşımlarını gösteren UNC yollarına güncelleştirin. Örneğin, ' a `C:\abc.txt` güncelleştirin `\\<on-prem-server-name>\<share-name>\abc.txt`.
+5. Paketinizdeki yerel dosya yollarını, şirket içi dosya paylaşımlarını gösteren UNC yollarına güncelleştirin. Örneğin, ' a `C:\abc.txt` güncelleştirin `\\<on-prem-server-name>\<share-name>\abc.txt` .
 
 ## <a name="use-azure-file-shares"></a>Azure dosya paylaşımlarını kullanma
 
@@ -47,7 +47,7 @@ Yerel dosya sistemlerini kullanan paketleri Azure 'da yüklerken ve kaydıradı�
 
 2. Windows kimlik doğrulaması kullanan erişim kimlik bilgilerini ayarlayarak Azure-SSIS IR Azure dosyalarına bağlayın. Daha fazla bilgi için bkz. [Windows kimlik doğrulamasıyla veri ve dosya paylaşımlarına bağlanma](ssis-azure-connect-with-windows-auth.md).
 
-3. Paketinizdeki yerel dosya yollarını Azure dosyalarını gösteren UNC yollarına güncelleştirin. Örneğin, ' a `C:\abc.txt` güncelleştirin `\\<storage-account-name>.file.core.windows.net\<share-name>\abc.txt`.
+3. Paketinizdeki yerel dosya yollarını Azure dosyalarını gösteren UNC yollarına güncelleştirin. Örneğin, ' a `C:\abc.txt` güncelleştirin `\\<storage-account-name>.file.core.windows.net\<share-name>\abc.txt` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

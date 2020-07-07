@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82692295"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. kimlik doğrulaması
@@ -37,7 +37,7 @@ Aşağıdaki tabloda, son kullanıcı ve hizmetten hizmete kimlik doğrulama mek
 |Hizmetten hizmete (istemci anahtarını kullanarak)         |    **[✔ *](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔ *](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔ *](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔ *](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
 |Hizmetten hizmete (istemci sertifikası kullanarak) |    **[✔ *](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
 
-<i>* <b>✔\* </b> Simgesine tıklayın. Bu bir bağlantıdır.</i><br>
+<i>* <b>✔ \* </b> Simgesine tıklayın. Bu bir bağlantıdır.</i><br>
 <i>* * MFA Multi-Factor Authentication 'ı temsil eder</i>
 
 Kimlik doğrulaması için Azure Active Directory kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory Için kimlik doğrulama senaryoları](../active-directory/develop/authentication-scenarios.md) .

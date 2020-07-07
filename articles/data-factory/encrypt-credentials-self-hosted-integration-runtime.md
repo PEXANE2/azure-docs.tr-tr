@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
 ms.openlocfilehash: cd775c5a3bf367600a4537a9409a9bb8f902f588
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628989"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Azure Data Factory içindeki şirket içi veri depoları için kimlik bilgilerini şifreleyin
@@ -29,9 +29,9 @@ ms.locfileid: "82628989"
 Kimlik bilgileriyle bir JSON tanım dosyası geçirin <br/>Şifrelenmiş kimlik bilgileriyle bir çıktı JSON tanım dosyası oluşturmak için [**New-AzDataFactoryV2LinkedServiceEncryptedCredential**](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) cmdlet 'i. Ardından, bağlantılı hizmetleri oluşturmak için güncelleştirilmiş JSON tanımını kullanın.
 
 ## <a name="author-sql-server-linked-service"></a>Bağlı hizmet SQL Server yazar
-Aşağıdaki içeriğe sahip herhangi bir klasörde **Sqlserverlinkedservice. JSON** ADLı bir JSON dosyası oluşturun:  
+Aşağıdaki içeriğe sahip herhangi bir klasörde **SqlServerLinkedService.js** ADLı bir JSON dosyası oluşturun:  
 
-Dosyayı kaydetmeden önce,, `<password>` , ve SQL Server değerleri ile değiştirin `<servername>` `<databasename>` `<username>` Ve öğesini tümleştirme `<integration runtime name>` çalışma zamanının adıyla değiştirin. 
+`<servername>` `<databasename>` Dosyayı kaydetmeden önce,,, `<username>` ve `<password>` SQL Server değerleri ile değiştirin. Ve öğesini `<integration runtime name>` tümleştirme çalışma zamanının adıyla değiştirin. 
 
 ```json
 {
@@ -50,7 +50,7 @@ Dosyayı kaydetmeden önce,, `<password>` , ve SQL Server değerleri ile değiş
 ```
 
 ## <a name="encrypt-credentials"></a>Kimlik bilgilerini şifreleme
-Şirket içi şirket içinde barındırılan tümleştirme çalışma zamanındaki JSON yükünün gizli verilerini şifrelemek için **New-AzDataFactoryV2LinkedServiceEncryptedCredential**' ı ÇALıŞTıRıN ve JSON yükünde geçiş yapın. Bu cmdlet, kimlik bilgilerinin DPAPI kullanılarak şifrelenmesini ve şirket içinde barındırılan tümleştirme çalışma zamanı düğümüne yerel olarak depolanmasını sağlar. Kimlik bilgisine şifreli başvuruyu içeren çıkış yükü başka bir JSON dosyasına yönlendirilebilir (Bu durumda, ' encryptedLinkedService. json ').
+Şirket içi şirket içinde barındırılan tümleştirme çalışma zamanındaki JSON yükünün gizli verilerini şifrelemek için **New-AzDataFactoryV2LinkedServiceEncryptedCredential**' ı ÇALıŞTıRıN ve JSON yükünde geçiş yapın. Bu cmdlet, kimlik bilgilerinin DPAPI kullanılarak şifrelenmesini ve şirket içinde barındırılan tümleştirme çalışma zamanı düğümüne yerel olarak depolanmasını sağlar. Kimlik bilgisine şifreli başvuruyu içeren çıkış yükü başka bir JSON dosyasına yönlendirilebilir (Bu durumda, ' encryptedLinkedService.json ').
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652635"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API 'Lerini çağıran mobil uygulamaları kaydetme
@@ -50,7 +50,7 @@ Bu deneyim, uygulamanızın Microsoft Authenticator (ve Android 'de Intune Şirk
 
 Uygulama kayıt portalı, iOS ve Android uygulamaları için aracılı yanıt URI 'sini hesaplamanıza yardımcı olmak için bir önizleme deneyimi sağlar:
 
-1. Uygulama kayıt portalında **kimlik doğrulama** > ' yı seçin,**Yeni deneyimi deneyin**.
+1. Uygulama kayıt portalında **kimlik doğrulama**' yı seçin,  >  **Yeni deneyimi deneyin**.
 
    ![Yeni bir deneyim seçtiğiniz kimlik doğrulama dikey penceresi](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 

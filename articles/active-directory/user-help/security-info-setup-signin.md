@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
 ms.openlocfilehash: 7de8a5bcc2f7883b00ec25e2674b1dc6bd6871c9
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747280"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi bir oturum açma isteminden ayarlama
@@ -32,7 +32,7 @@ Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de p
 
 | Yöntem | Kullanıldığı yerler |
 | ------ | -------- |
-| Doğrulayıcı uygulama | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Authenticator uygulaması | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | Telefon görüşmeleri | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
 | Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |

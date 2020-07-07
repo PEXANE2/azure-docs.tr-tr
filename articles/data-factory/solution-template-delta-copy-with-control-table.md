@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82629043"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından Delta kopyası
@@ -114,7 +114,7 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
 
     ![Saklı yordam etkinliğini ayarlama](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
-10. ** \@{Activity (' LookupCurrentWaterMark '). Output. FirstRow. newsulu markvalue}** içeriğini yazın ve ardından **son**' u seçin.  
+10. ** \@ {Activity (' LookupCurrentWaterMark '). Output. FirstRow. Newsulu markvalue}** içeriğini yazın ve ardından **son**' u seçin.  
 
     ![Saklı yordamın parametrelerinin içeriğini yazma](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
