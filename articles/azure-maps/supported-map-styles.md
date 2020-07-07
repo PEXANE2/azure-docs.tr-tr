@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334034"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure haritalar desteklenen harita stilleri
@@ -34,7 +34,7 @@ Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita st
 **Boş** ve **blank_accessible** harita stilleri üzerinde verilerin görselleştirilmesi için boş bir tuval sağlar. **Blank_accessible** stili, temel harita görüntülenmese de haritanın konum ayrıntıları ile ekran okuyucusu güncelleştirmeleri sağlamaya devam edecektir.
 
 > [!Note]
-> Web SDK 'sında harita DIV öğesinin CSS `background-color` stilini ayarlayarak haritanın arka plan rengini değiştirebilirsiniz.
+> Web SDK 'sında harita DIV öğesinin CSS stilini ayarlayarak haritanın arka plan rengini değiştirebilirsiniz `background-color` .
 
 **Geçerli API 'Ler:**
 * Web SDK eşlemesi denetimi

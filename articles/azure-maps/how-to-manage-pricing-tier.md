@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 35e23d4d5babccb4507473826237997afec5f2cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335506"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Azure haritalar hesabınızın fiyatlandırma katmanını yönetme
@@ -25,13 +25,13 @@ Azure haritalar hesabınızın fiyatlandırma katmanını Azure portal aracılı
 
 Seçtiğiniz fiyatlandırma katmanını görüntülemek için, Ayarlar menüsünde **fiyatlandırma katmanı** seçeneğine gidin.
 
-[![Seçilen fiyatlandırma katmanını](./media/how-to-manage-pricing-tier/view-pricing-tier.png) görüntüle](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
+[![Seçilen fiyatlandırma katmanını ](./media/how-to-manage-pricing-tier/view-pricing-tier.png) görüntüle](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
 
 ## <a name="change-a-pricing-tier"></a>Fiyatlandırma katmanını değiştirme
 
 Azure haritalar hesabınızı oluşturduktan sonra, Azure haritalar hesabınızın fiyatlandırma katmanını yükseltebilir veya indirgemeniz gerekir. Yükseltmek veya alçaldüşürmek için ayarlar menüsünde **fiyatlandırma katmanı** seçeneğine gidin. Vurgulanmayan fiyatlandırma katmanını seçin. Seçtiğiniz fiyatlandırma katmanı seçeneğinizi kaydetmek için **Kaydet** düğmesini seçin.
 
-[![Fiyatlandırma katmanını](./media/how-to-manage-pricing-tier/change-pricing-tier.png) değiştirme](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
+[![Fiyatlandırma katmanını ](./media/how-to-manage-pricing-tier/change-pricing-tier.png) değiştirme](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
 
 > [!NOTE]
 > Azure haritalar hesabınız için fiyatlandırma katmanını yükseltirsiniz veya indirgemeniz durumunda yeni abonelik anahtarları veya istemci KIMLIĞI (Azure AD kimlik doğrulaması için) oluşturmanız gerekmez.

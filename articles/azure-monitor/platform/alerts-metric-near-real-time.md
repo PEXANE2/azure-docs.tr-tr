@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
 ms.openlocfilehash: c036fa3708d718d6199d27989e60b11015a1227e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585864"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarıları için desteklenen kaynaklar
@@ -30,58 +30,58 @@ Daha yeni uyarılar tarafından desteklenen Azure izleyici ölçüm kaynakların
 
 |Kaynak türü  |Desteklenen boyutlar |Çoklu kaynak uyarıları| Kullanılabilir ölçümler|
 |---------|---------|-----|----------|
-|Microsoft.ApiManagement/service | Yes| Hayır | [API Management](../../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)|
-|Microsoft. AppPlatform/yay |Hayır| Yes|
-|Microsoft. Automation/automationAccounts | Yes| Hayır | [Otomasyon Hesapları](../../azure-monitor/platform/metrics-supported.md#microsoftautomationautomationaccounts)|
-|Microsoft. Batch/batchAccounts | Yok| Hayır | [Toplu Hesaplar](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
-|Microsoft. Cache/Redsıs|Yes| Hayır |[Redis için Azure Önbelleği](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
-|Microsoft. ClassicStorage/storageAccounts/mmxclassic|Hayır|Yes|
-|Microsoft. ClassicStorage/storageAccounts/mmxclassic/blobServices|Hayır|Yes|
-|Microsoft. ClassicStorage/storageAccounts/mmxclassic/fileServices|Hayır|Yes|
-|Microsoft. ClassicStorage/storageAccounts/mmxclassic/queueServices|Hayır|Yes|
-|Microsoft. ClassicStorage/storageAccounts/mmxclassic/tableServices|Hayır|Yes| |
-|Microsoft. Biliveservices/hesapları| Yok | Hayır | [Bilişsel hizmetler](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
-|Microsoft.Compute/virtualMachines |Yes | Yes | [Virtual Machines](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
+|Microsoft.ApiManagement/service | Evet| Hayır | [API Management](../../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)|
+|Microsoft. AppPlatform/yay |Hayır| Evet|
+|Microsoft. Automation/automationAccounts | Evet| Hayır | [Otomasyon Hesapları](../../azure-monitor/platform/metrics-supported.md#microsoftautomationautomationaccounts)|
+|Microsoft.Batch/batchAccounts | Yok| No | [Toplu Hesaplar](../../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)|
+|Microsoft. Cache/Redsıs|Evet| Hayır |[Redis için Azure Önbelleği](../../azure-monitor/platform/metrics-supported.md#microsoftcacheredis)|
+|Microsoft. ClassicStorage/storageAccounts/mmxclassic|Hayır|Evet|
+|Microsoft. ClassicStorage/storageAccounts/mmxclassic/blobServices|Hayır|Evet|
+|Microsoft. ClassicStorage/storageAccounts/mmxclassic/fileServices|Hayır|Evet|
+|Microsoft. ClassicStorage/storageAccounts/mmxclassic/queueServices|Hayır|Evet|
+|Microsoft. ClassicStorage/storageAccounts/mmxclassic/tableServices|Hayır|Evet| |
+|Microsoft. Biliveservices/hesapları| Yok | No | [Bilişsel Hizmetler](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.Compute/virtualMachines |Yes | Yes | [Sanal Makineler](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
 |Microsoft.Compute/virtualMachineScaleSets |Yok | Yes |[Sanal Makine Ölçek Kümeleri](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
-|Microsoft. Containerınstance/containerGroups | Yes| Hayır | [Kapsayıcı grupları](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
-|Microsoft. ContainerService/Managedkümeler | Yes | Hayır | [Yönetilen Kümeler](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
+|Microsoft. Containerınstance/containerGroups | Evet| Hayır | [Kapsayıcı grupları](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
+|Microsoft. ContainerService/Managedkümeler | Evet | Hayır | [Yönetilen Kümeler](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Yes | Yes | |
-|Microsoft. DataFactory/DataFactory| Yes| Hayır | [Veri fabrikaları v1](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactorydatafactories)|
-|Microsoft. DataFactory/Factory |Yes | Hayır |[Veri fabrikaları v2](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactoryfactories)|
-|Microsoft. DataShare/hesapları |Hayır| Yes|
-|Microsoft. Dbformyısql/sunucuları |Yok| Hayır |[MySQL için DB](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft. DBforPostgreSQL/sunucuları |Yok | Hayır | [PostgreSQL için DB](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
-|Microsoft. Devices/IotHubs | Yok | Hayır |[IoT Hub Ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)|
-|Microsoft. Devices/provisioningServices| Yes | Hayır |[DPS ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)|
-|Microsoft. EventGrid/Domains|Hayır|Yes| |
-|Microsoft. EventGrid/konuları |Yes | Hayır |[Event Grid konuları](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
-|Microsoft. EventHub/kümeler |Yes| Hayır |[Event Hubs kümeleri](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
-|Microsoft. EventHub/ad alanları |Yes| Hayır |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
+|Microsoft. DataFactory/DataFactory| Evet| Hayır | [Veri fabrikaları v1](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactorydatafactories)|
+|Microsoft. DataFactory/Factory |Evet | Hayır |[Veri fabrikaları v2](../../azure-monitor/platform/metrics-supported.md#microsoftdatafactoryfactories)|
+|Microsoft. DataShare/hesapları |Hayır| Evet|
+|Microsoft. Dbformyısql/sunucuları |Yok| No |[MySQL için DB](../../azure-monitor/platform/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft. DBforPostgreSQL/sunucuları |Yok | No | [PostgreSQL için DB](../../azure-monitor/platform/metrics-supported.md#microsoftdbforpostgresqlservers)|
+|Microsoft. Devices/IotHubs | Yok | No |[IoT Hub Ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)|
+|Microsoft. Devices/provisioningServices| Yes | No |[DPS ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)|
+|Microsoft. EventGrid/Domains|No|Yes| |
+|Microsoft. EventGrid/konuları |Yes | No |[Event Grid Konu Başlıkları](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
+|Microsoft. EventHub/kümeler |Yes| No |[Event Hubs kümeleri](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
+|Microsoft. EventHub/ad alanları |Yes| No |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
 |Microsoft. Keykasası/kasa| Hayır |Hayır |[Kasalar](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
-|Microsoft. Logic/iş akışları |Yok | Hayır |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
-|Microsoft. MachineLearningServices/çalışma alanları|Yes| Hayır | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
-|Microsoft. NetApp/netAppAccounts/Capacityhavuzları |Yes| Hayır | [Azure NetApp kapasite havuzları](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
-|Microsoft. NetApp/netAppAccounts/Capacityhavuzları/birimleri |Yes| Hayır | [Azure NetApp birimleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
-|Microsoft. Network/Applicationgateway 'ler|Yok| Hayır |  |
-|Microsoft. Network/dnsZones | Yok| Hayır | [DNS Bölgeleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/Expressroutedevreleri | Yok | Hayır |[Express Route Devreleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
-|Microsoft. Network/loadBalancers (yalnızca standart SKU 'Lar için)| Yes| Hayır | [Yük dengeleyiciler](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
-|Microsoft. Network/Natgateway 'ler|Hayır|Yes|
-|Microsoft. Network/privateEndpoints|Hayır|Yes|
-|Microsoft. Network/privateLinkServices|Hayır|Yes|
-|Microsoft. Network/publicıpaddresses |Yok | Hayır |[Genel IP Adresleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
-|Microsoft. Network/trafficManagerProfiles | Yes | Hayır | [Traffic Manager Profilleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
-|Microsoft. Operationalınsights/çalışma alanları| Yes | Hayır | [Log Analytics çalışma alanları](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
-|Microsoft. Relay/Namespace | Yes | Hayır | [Geçişler](../../azure-monitor/platform/metrics-supported.md#microsoftrelaynamespaces)|
-|Microsoft. eşleme/peeringServices|Hayır|Yes|
-|Microsoft. Powerbiadanmış/kapasiteler | Yok | Hayır | [Kapasiteler](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
-|Microsoft. Search/searchServices |Yok|Hayır | [Arama Hizmetleri](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
-|Microsoft. ServiceBus/ad alanları |Yes| Hayır |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
-|Microsoft. SQL/Servers/Elaun havuzları |    Hayır | Yes |
-|Microsoft. SQL/Servers/veritabanları    | Hayır | Yes |
-|Microsoft. Storage/storageAccounts |Yes | Hayır | [Depolama hesapları](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft. Logic/iş akışları |Yok | No |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft. MachineLearningServices/çalışma alanları|Yes| No | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft. NetApp/netAppAccounts/Capacityhavuzları |Yes| No | [Azure NetApp kapasite havuzları](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Microsoft. NetApp/netAppAccounts/Capacityhavuzları/birimleri |Yes| No | [Azure NetApp birimleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
+|Microsoft. Network/Applicationgateway 'ler|Yok| No |  |
+|Microsoft. Network/dnsZones | Yok| No | [DNS Bölgeleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft. Network/Expressroutedevreleri | Yok | No |[Express Route Devreleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/loadBalancers (yalnızca standart SKU 'Lar için)| Yes| No | [Yük dengeleyiciler](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
+|Microsoft. Network/Natgateway 'ler|No|Yes|
+|Microsoft. Network/privateEndpoints|No|Yes|
+|Microsoft. Network/privateLinkServices|No|Yes|
+|Microsoft. Network/publicıpaddresses |Yok | No |[Genel IP Adresleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft. Network/trafficManagerProfiles | Yes | No | [Traffic Manager Profilleri](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
+|Microsoft. Operationalınsights/çalışma alanları| Yes | No | [Log Analytics çalışma alanları](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
+|Microsoft. Relay/Namespace | Yes | No | [Geçişler](../../azure-monitor/platform/metrics-supported.md#microsoftrelaynamespaces)|
+|Microsoft. eşleme/peeringServices|No|Yes|
+|Microsoft. Powerbiadanmış/kapasiteler | Yok | No | [Kapasiteler](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
+|Microsoft. Search/searchServices |Yok|No | [Arama Hizmetleri](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
+|Microsoft. ServiceBus/ad alanları |Yes| No |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
+|Microsoft. SQL/Servers/Elaun havuzları |    No | Yes |
+|Microsoft. SQL/Servers/veritabanları    | No | Yes |
+|Microsoft. Storage/storageAccounts |Yes | Hayır | [Depolama Hesapları](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft. Storage/storageAccounts/Services | Yes| Hayır | [BLOB Hizmetleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Dosya Hizmetleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [kuyruk Hizmetleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) ve [Tablo Hizmetleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
-|Microsoft. StreamAnalytics/streamingjobs |Yok| Hayır | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft. StreamAnalytics/streamingjobs |Yok| No | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 |Microsoft. Microsoft. Vmwarechoparlör basit/virtualMachines |Yes|Hayır |[CloudSimple Sanal Makineleri](../../azure-monitor/platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines)|
 |Microsoft. Web/hostingEnvironments/multiRolePools | Yes | Hayır | [Çok rollü havuzlar App Service Ortamı](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft. Web/hostingEnvironments/workerPools | Yes | Hayır | [App Service Ortamı çalışan havuzları](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|

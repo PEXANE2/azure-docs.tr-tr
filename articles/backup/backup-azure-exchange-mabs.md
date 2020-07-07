@@ -5,17 +5,17 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80421345"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Sunucusu bir Exchange Server 'ı Azure 'a yedekleme
 
 Bu makalede, Microsoft Exchange Server 'ı Azure 'a yedeklemek için Microsoft Azure Backup sunucusu 'nun (MABS) nasıl yapılandırılacağı açıklanmaktadır.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Devam etmeden önce Azure Backup Sunucusu [yüklendiğinden ve hazırlandığından](backup-azure-microsoft-azure-backup.md)emin olun.
 
@@ -53,7 +53,7 @@ MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izle
     Bu seçeneği belirledikten sonra, Exchange Server üzerinde **eseutil** komutu çalıştırılarak oluşturulan g/ç trafiğinden kaçınmak için yedek tutarlılık denetimi mabs üzerinde çalıştırılır.
 
    > [!NOTE]
-   > Bu seçeneği kullanmak için, ese. dll ve Eseutil. exe dosyalarını MABS sunucusundaki C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin dizinine kopyalamanız gerekir. Aksi takdirde, aşağıdaki hata tetiklenir:  
+   > Bu seçeneği kullanmak için, Ese.dll ve Eseutil.exe dosyalarını MABS sunucusundaki C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin dizinine kopyalamanız gerekir. Aksi takdirde, aşağıdaki hata tetiklenir:  
    > ![Eseutil hatası](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
@@ -68,10 +68,10 @@ MABS koruma aracısını Exchange sunucusuna yüklemek için şu adımları izle
 11. Kullanılabilir disk alanını gözden geçirin ve ardından **İleri**' ye tıklayın.
 12. MABS sunucusunun ilk çoğaltmayı oluşturmasının zamanı seçin ve ardından **İleri**' ye tıklayın.
 13. Tutarlılık denetimi seçeneklerini belirleyin ve ardından **İleri**' ye tıklayın.
-14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' ye tıklayın. Örneğin:
+14. Azure 'a yedeklemek istediğiniz veritabanını seçin ve ardından **İleri**' ye tıklayın. Örnek:
 
     ![Çevrimiçi koruma verilerini belirtin](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' ye tıklayın. Örneğin:
+15. **Azure Backup**için zamanlamayı tanımlayın ve ardından **İleri**' ye tıklayın. Örnek:
 
     ![Çevrimiçi Yedekleme zamanlamasını belirtin](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 

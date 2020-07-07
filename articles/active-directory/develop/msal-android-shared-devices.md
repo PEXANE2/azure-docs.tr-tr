@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550272"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android cihazlar için paylaşılan cihaz modu
@@ -35,8 +35,8 @@ Paylaşılan cihaz modu, cihazın Microsoft tarafından desteklenen yönetimini 
 
 Bir paylaşılan cihaz modu uygulaması oluşturmak için, geliştiriciler ve bulut cihaz yöneticileri birlikte çalışır:
 
-- Geliştiriciler tek hesap uygulaması yazar (çoklu hesap uygulamaları paylaşılan cihaz modunda desteklenmez), uygulamanın yapılandırmasına ekler `"shared_device_mode_supported": true` ve paylaşılan cihaz oturumu kapatma gibi şeyleri işlemek için kod yazar.
-- Cihaz yöneticileri, kimlik doğrulayıcı uygulamasını yükleyerek cihazı paylaşıma hazırlayın ve kimlik doğrulayıcı uygulamasını kullanarak cihazı paylaşılan moda ayarlar. Yalnızca [bulut aygıtı yönetici](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) rolünde olan kullanıcılar, [kimlik doğrulayıcı uygulamasını](../user-help/user-help-auth-app-overview.md)kullanarak bir cihazı paylaşılan moda yerleştirebilir. Azure Portal kurumsal rollerinizin üyeliğini: **Azure Active Directory** > **Roller ve yöneticiler** > **bulut Cihaz Yöneticisi**aracılığıyla yapılandırabilirsiniz.
+- Geliştiriciler tek hesap uygulaması yazar (çoklu hesap uygulamaları paylaşılan cihaz modunda desteklenmez), `"shared_device_mode_supported": true` uygulamanın yapılandırmasına ekler ve paylaşılan cihaz oturumu kapatma gibi şeyleri işlemek için kod yazar.
+- Cihaz yöneticileri, kimlik doğrulayıcı uygulamasını yükleyerek cihazı paylaşıma hazırlayın ve kimlik doğrulayıcı uygulamasını kullanarak cihazı paylaşılan moda ayarlar. Yalnızca [bulut aygıtı yönetici](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) rolünde olan kullanıcılar, [kimlik doğrulayıcı uygulamasını](../user-help/user-help-auth-app-overview.md)kullanarak bir cihazı paylaşılan moda yerleştirebilir. Azure Portal kurumsal rollerinizin üyeliğini: **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **bulut Cihaz Yöneticisi**aracılığıyla yapılandırabilirsiniz.
 
  Bu makalede öncelikle geliştiricilerin ne düşündüklerini ele alınmaktadır.
 
@@ -55,7 +55,7 @@ Microsoft kimlik doğrulama kitaplığı SDK 'Sı (MSAL) kullanılarak yazılan 
 
 Uygulamanız, hem kişisel cihazlarda hem de Paylaşılan cihazlarda çalışmayı destekleyecek şekilde oluşturulabilir. Uygulamanız Şu anda birden çok hesabı destekliyorsa ve paylaşılan cihaz modunu desteklemek istiyorsanız, tek hesap modu için destek ekleyin.
 
-Uygulamanızın, üzerinde çalıştığı cihaz türüne bağlı olarak davranışını değiştirmesini de isteyebilirsiniz. Tek `ISingleAccountPublicClientApplication.isSharedDevice()` hesap modunda ne zaman çalıştırılacağını öğrenmek için kullanın.
+Uygulamanızın, üzerinde çalıştığı cihaz türüne bağlı olarak davranışını değiştirmesini de isteyebilirsiniz. `ISingleAccountPublicClientApplication.isSharedDevice()`Tek hesap modunda ne zaman çalıştırılacağını öğrenmek için kullanın.
 
 Uygulamanızın bulunduğu cihaz türünü temsil eden iki farklı arabirim vardır. MSAL 'ın uygulama fabrikasından bir uygulama örneği istediğinizde, doğru uygulama nesnesi otomatik olarak sağlanır.
 
@@ -63,7 +63,7 @@ Aşağıdaki nesne modeli, alabileceğiniz nesnenin türünü ve paylaşılan bi
 
 ![ortak istemci uygulaması devralma modeli](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
 
-`PublicClientApplication` Nesne aldığınızda bir tür denetimi yapmanız ve uygun arabirime dönüştürmeniz gerekir. Aşağıdaki kod, birden çok hesap modunu veya tek hesap modunu denetler ve uygulama nesnesini uygun şekilde yayınlar:
+Nesne aldığınızda bir tür denetimi yapmanız ve uygun arabirime dönüştürmeniz gerekir `PublicClientApplication` . Aşağıdaki kod, birden çok hesap modunu veya tek hesap modunu denetler ve uygulama nesnesini uygun şekilde yayınlar:
 
 ```java
 private IPublicClientApplication mApplication;
@@ -84,7 +84,7 @@ Aşağıdaki farklar, uygulamanızın paylaşılan veya kişisel bir cihazda ça
 |  | Paylaşılan mod cihazı  | Kişisel cihaz |
 |---------|---------|---------|
 | **Hesaplar**     | Tek hesap | Birden çok hesap |
-| **Oturum açma** | Genel | Genel |
+| **Oturum Açma** | Genel | Genel |
 | **Oturumu kapatma** | Genel | Her uygulama, oturum açma 'nın uygulamada veya uygulamalar ailesinde yerel olup olmadığını denetleyebilir. |
 | **Desteklenen hesap türleri** | Yalnızca iş hesapları | Desteklenen kişisel ve iş hesapları  |
 

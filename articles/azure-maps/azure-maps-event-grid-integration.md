@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335725"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid kullanarak Azure Maps olaylarına tepki verme 
@@ -30,7 +30,7 @@ Azure Event Grid, yayımlama-abonelik modeli kullanan, tam olarak yönetilen bir
 
 Olay Kılavuzu, olay iletilerini abonelere yönlendirmek için [olay abonelikleri](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) kullanır. Azure haritalar hesabı aşağıdaki olay türlerini yayar: 
 
-| Olay türü | Açıklama |
+| Olay türü | Description |
 | ---------- | ----------- |
 | Microsoft. maps. Geofencegirildi | Alınan Koordinatlar, belirli bir bölge dışından, içindeki ' dan ' a taşındığında tetiklenir |
 | Microsoft. maps. Geofenceçıkıldı | Alınan koordinatlar belirli bir bölge içinden dışarıya taşındığında tetiklenir |
@@ -81,8 +81,8 @@ Aşağıdaki örnek, GeofenceResult için şemayı gösterir:
 Azure haritalar bölge olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı izlemelidir:
 
 * Olayları aynı olay işleyicisine yönlendirmek için birden çok abonelik yapılandırın. Olayların belirli bir kaynaktan olduğunu varsaymamak önemlidir. İletinin, beklediği kaynaktan geldiğinden emin olmak için her zaman ileti konusunu denetleyin.
-* Nesneler hakkındaki `X-Correlation-id` bilgilerinizin güncel olup olmadığını anlamak için yanıt üstbilgisindeki alanı kullanın. İletiler bir gecikmeden veya bir gecikmeden sonra gelebilir.
-* Bölge sınırı API 'sindeki bir get veya post isteği olarak `EnterAndExit`ayarlanan mod parametresi ile çağrıldığında, durumun önceki bölge API çağrısından değiştiği bölge için her bir geometri için bir Enter veya Exit olayı oluşturulur.
+* `X-Correlation-id`Nesneler hakkındaki bilgilerinizin güncel olup olmadığını anlamak için yanıt üstbilgisindeki alanı kullanın. İletiler bir gecikmeden veya bir gecikmeden sonra gelebilir.
+* Bölge sınırı API 'sindeki bir get veya post isteği olarak ayarlanan mod parametresi ile çağrıldığında `EnterAndExit` , durumun önceki bölge API çağrısından değiştiği bölge için her bir geometri için bir Enter veya Exit olayı oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

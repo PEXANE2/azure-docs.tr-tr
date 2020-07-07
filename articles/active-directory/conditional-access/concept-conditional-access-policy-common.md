@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295300"
 ---
 # <a name="common-conditional-access-policies"></a>Sık kullanılan Koşullu Erişim İlkeleri
@@ -44,7 +44,7 @@ Acil durum erişim hesapları ve neden önemli oldukları hakkında daha fazla b
 
 * [Risk Tabanlı Koşullu Erişim (Azure AD Premium P2 gerektirir)](howto-conditional-access-policy-risk.md)
 * [MFA kaydı için güvenilen konum gerektirme](howto-conditional-access-policy-registration.md)
-* [Erişimi konuma göre engelleme](howto-conditional-access-policy-location.md)
+* [Konuma göre erişimi engelle](howto-conditional-access-policy-location.md)
 * [Uyumlu cihaz gerektirme](howto-conditional-access-policy-compliant-device.md)
 * [Belirli uygulamalar haricinde erişimi engelle](howto-conditional-access-policy-block-access.md)
 

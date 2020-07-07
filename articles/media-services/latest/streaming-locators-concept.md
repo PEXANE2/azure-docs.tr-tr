@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582686"
 ---
 # <a name="streaming-locators"></a>Akış Bulucuları
@@ -27,12 +27,12 @@ ms.locfileid: "80582686"
 Bir **akış Bulucu**oluştururken bir **varlık** adı ve **akış ilkesi** adı belirtmeniz gerekir. Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 * [Varlıklar](assets-concept.md)
-* [Akış İlkeleri](streaming-policy-concept.md)
-* [İçerik Anahtar İlkeleri](content-key-policy-concept.md)
+* [Akış Ilkeleri](streaming-policy-concept.md)
+* [İçerik anahtarı Ilkeleri](content-key-policy-concept.md)
 
 Ayrıca, yalnızca kullanıcının bu saatler arasında içerik oynamasını sağlayan akış bulucuda başlangıç ve bitiş saatini belirtebilirsiniz (örneğin, 5/1/2019 arasında 5/5/2019 arasında).  
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 * **Akış Konumlandırıcı** güncelleştirilemez. 
 * Tarih saat türünde **akış Konumlandırıcı** özellikleri her zaman UTC biçimindedir.
@@ -101,8 +101,8 @@ Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](enti
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Varlıklar](assets-concept.md)
-* [Akış İlkeleri](streaming-policy-concept.md)
-* [İçerik Anahtar İlkeleri](content-key-policy-concept.md)
+* [Akış Ilkeleri](streaming-policy-concept.md)
+* [İçerik anahtarı Ilkeleri](content-key-policy-concept.md)
 * [Öğretici: .NET kullanarak videoları karşıya yükleme, kodlama ve akışla](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422598"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Azure VM sorunlarını gidermek için uzak araçları kullanma
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!NOTE]
 >* Komutun aynı sanal ağdaki bir bilgisayarda çalıştırılması gerekir.
->* DIP veya HostName, bilgisayar> değiştirmek \<için kullanılabilir.
+>* Değiştirmek için DIP veya HostName kullanılabilir \<computer> .
 >* -S parametresi, komutun sistem hesabı (yönetici izni) kullanılarak çağrıldığından emin olur.
 >* PsExec 135 ve 445 TCP bağlantı noktalarını kullanır. Sonuç olarak, iki bağlantı noktasının güvenlik duvarında açık olması gerekir.
 
@@ -212,9 +212,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 >
 >RDFE VM 'Leri için, özel bağlantı noktası 5986 ve genel bağlantı noktası olan bir uç noktaya sahip olmanız gerekir. Ayrıca, NSG 'de genel kullanıma yönelik bağlantı noktasını açmanız gerekir.
 
-1. Aynı sanal ağdaki başka bir VM 'den, kayıt defteri Düzenleyicisi 'ni (Regedit. exe) açın.
+1. Aynı sanal ağdaki başka bir VM 'den, kayıt defteri Düzenleyicisi 'ni (regedit.exe) açın.
 
-2. **Dosya** > **Connect ağ kayıt defteri**' ni seçin.
+2. **Dosya**  >  **Connect ağ kayıt defteri**' ni seçin.
 
    ![Kayıt Defteri Düzenleyicisi](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 

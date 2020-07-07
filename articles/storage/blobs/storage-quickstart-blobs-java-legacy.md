@@ -8,17 +8,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: e7986add466bc42b092763acfeceebc8a6523bbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80473993"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Hızlı başlangıç: Java V8 SDK ile Blobları yönetme
 
 Bu hızlı başlangıçta, Java kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listeleyebilir. Ayrıca kapsayıcıları oluşturur, izinleri ayarlar ve siler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
@@ -36,7 +36,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 
 Bu komut, depoyu yerel Git klasörünüze kopyalar. Projeyi açmak için, Eclipse’ı başlatın ve Karşılama ekranını kapatın. Dosya sistemi ' nden **Dosya** ' yı seçin ve ardından **projeleri açın**. **Proje niteliklerini algıla ve yapılandır** seçeneğinin belirlenmiş olduğundan emin olun. **Dizin**’i seçin ve ardından kopyalanan dizini depoladığınız konuma gidin. Kopyalanan deponun içinde **blobAzureApp** klasörünü seçin. **blobAzureApp** projesinin Eclipse projesi olarak göründüğünden emin olun ve ardından **Son**’u seçin.
 
-Proje içeri aktarmayı tamamladıktan sonra, **AzureApp. Java** ' yı açın ( **src/Main/Java**Içinde **blobquickstart. blobAzureApp** içinde bulunur) ve `storageConnectionString` dizenin içindeki `accountname` ve `accountkey` içindeki öğesini değiştirin. Sonra, uygulamayı çalıştırın. Aşağıdaki bölümlerde bu görevleri tamamlamak için gereken özel yönergeler açıklanmıştır.
+Proje içeri aktarmayı tamamladıktan sonra, **AzureApp. Java** ' yı açın ( **src/Main/Java**Içinde **blobquickstart. blobAzureApp** içinde bulunur) ve `accountname` `accountkey` dizenin içindeki ve içindeki öğesini değiştirin `storageConnectionString` . Sonra, uygulamayı çalıştırın. Aşağıdaki bölümlerde bu görevleri tamamlamak için gereken özel yönergeler açıklanmıştır.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -53,7 +53,7 @@ public static final String storageConnectionString =
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-Bu örnek uygulama, varsayılan dizininizde (Windows kullanıcıları için *C:\Users\<kullanıcı>\AppData\Local\Temp*) bir test dosyası oluşturur, bunu Blob depolamaya yükler, blobları kapsayıcıda listeler ve ardından eski ve yeni dosyaları karşılaştırabilmeniz için dosyayı yeni bir adla indirir.
+Bu örnek uygulama, varsayılan dizininizdeki bir sınama dosyası oluşturur (*C:\Users \<user> \Appdata\local\temp*, Windows kullanıcıları Için), blob depolamaya yükler, kapsayıcıdaki Blobları listeler ve ardından eski ve yeni dosyaları karşılaştırabilmeniz için dosyayı yeni bir adla indirir.
 
 Maven’i komut satırında kullanarak örneği çalıştırın. Bir kabuk açın ve kopyalanan dizininiz içindeki **blobAzureApp** öğesine gidin. Sonra `mvn compile exec:java` komutunu girin.
 
@@ -72,7 +72,7 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
-Devam etmeden önce, varsayılan dizininizi (Windows kullanıcıları için *C:\Users\<kullanıcı>\AppData\Local\Temp*) örnek dosya için kontrol edin. Blob depolamadaki dosyanın içeriğini görüntülemek için, blobun URL'sini konsol penceresinden kopyalayın ve tarayıcıya yapıştırın. Dizininizdeki örnek dosyayı Blob depolamada saklanan içerikle karşılaştırırsanız, bunların aynı olduğunu görürsünüz.
+Devam etmeden önce, örnek dosya için varsayılan dizininizi (Windows kullanıcıları için*C:\Users \<user> \Appdata\local\temp*) denetleyin. Blob depolamadaki dosyanın içeriğini görüntülemek için, blobun URL'sini konsol penceresinden kopyalayın ve tarayıcıya yapıştırın. Dizininizdeki örnek dosyayı Blob depolamada saklanan içerikle karşılaştırırsanız, bunların aynı olduğunu görürsünüz.
 
   >[!NOTE]
   >Ayrıca, Blob depolamadaki dosyaları görüntülemek için, [Azure Depolama Gezgini](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gibi bir araç da kullanabilirsiniz. Azure Depolama Gezgini, depolama hesabı bilgilerinize erişmenize olanak tanıyan ücretsiz ve platformlar arası bir araçtır.
@@ -197,5 +197,5 @@ sourceFile.deleteOnExit();
 Bu makalede, Java kullanarak dosyaları yerel bir disk ve Azure Blob depolama arasında aktarmayı öğrendiniz. Java ile çalışma hakkında daha fazla bilgi edinmek için GitHub kaynak kod depomuza devam edin.
 
 > [!div class="nextstepaction"]
-> [Java için Java API başvuru](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
-> [kodu örnekleri](../common/storage-samples-java.md)
+> [Java API başvurusu](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy) 
+>  [Java Için kod örnekleri](../common/storage-samples-java.md)

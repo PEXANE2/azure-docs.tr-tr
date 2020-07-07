@@ -13,10 +13,10 @@ ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348670"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure Uygulama yapılandırması en iyi uygulamaları
@@ -32,7 +32,7 @@ Uygulama yapılandırması anahtarları düzenlemek için iki seçenek sunar:
 
 Anahtarlarınızı gruplandırmak için bir veya iki seçenekten birini kullanabilirsiniz.
 
-*Anahtar ön ekleri* anahtarların başlangıç parçalarından oluşur. Adlarında aynı öneki kullanarak bir anahtar kümesini mantıksal olarak gruplandırabilirsiniz. Ön ekler, bir ad alanı oluşturmak için, gibi bir sınırlayıcı `/`tarafından bağlı bir URL yoluna benzer birden çok bileşen içerebilir. Bu tür hiyerarşiler, tek bir uygulama yapılandırma deposundaki birçok uygulama, bileşen hizmeti ve ortam için anahtar depolarken yararlı olur.
+*Anahtar ön ekleri* anahtarların başlangıç parçalarından oluşur. Adlarında aynı öneki kullanarak bir anahtar kümesini mantıksal olarak gruplandırabilirsiniz. Ön ekler, bir ad alanı oluşturmak için, gibi bir sınırlayıcı tarafından bağlı bir URL yoluna benzer birden çok bileşen içerebilir `/` . Bu tür hiyerarşiler, tek bir uygulama yapılandırma deposundaki birçok uygulama, bileşen hizmeti ve ortam için anahtar depolarken yararlı olur.
 
 Dikkat edilmesi gereken önemli bir şey, anahtarların ilgili ayarların değerlerini almak için uygulama kodunuzun başvurduğu şeydir. Anahtarların değişmemesi veya herhangi bir zamanda kodunuzun değiştirilmesini değiştirmeniz gerekir.
 
@@ -62,7 +62,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 Bir uygulama yapılandırma deposuna erişmek için, Azure portal kullanılabilir olan bağlantı dizesini kullanabilirsiniz. Bağlantı dizeleri kimlik bilgisi bilgilerini içerdiğinden, bu değerler gizli olarak değerlendirilir. Bu gizli dizileri Azure Key Vault depolanması gerekir ve kodunuzun bunları almak için Key Vault kimlik doğrulaması gerekir.
 
-Daha iyi bir seçenek, Azure Active Directory Yönetilen kimlikler özelliğini kullanmaktır. Yönetilen kimlikler ile, uygulama yapılandırma deponuza erişimi önyüklemek için yalnızca uygulama yapılandırma uç noktası URL 'sine ihtiyacınız vardır. URL 'YI uygulama kodunuza (örneğin, *appSettings. JSON* dosyasına) ekleyebilirsiniz. Ayrıntılar için bkz. [Azure tarafından yönetilen kimlikler Ile tümleştirme](howto-integrate-azure-managed-service-identity.md) .
+Daha iyi bir seçenek, Azure Active Directory Yönetilen kimlikler özelliğini kullanmaktır. Yönetilen kimlikler ile, uygulama yapılandırma deponuza erişimi önyüklemek için yalnızca uygulama yapılandırma uç noktası URL 'sine ihtiyacınız vardır. URL 'YI uygulama kodunuza ekleyebilirsiniz (örneğin, *appsettings.js* dosyadaki). Ayrıntılar için bkz. [Azure tarafından yönetilen kimlikler Ile tümleştirme](howto-integrate-azure-managed-service-identity.md) .
 
 ## <a name="app-or-function-access-to-app-configuration"></a>Uygulama yapılandırmasına uygulama veya işlev erişimi
 
@@ -77,7 +77,7 @@ Aşağıdaki yöntemlerden birini kullanarak Web uygulamaları veya işlevleri i
 
 Uygulama yapılandırmasına yönelik aşırı istek, azaltma veya fazla kullanım ücretlerine neden olabilir. Yapılan isteklerin sayısını azaltmak için:
 
-* Özellikle yapılandırma değerlerinizin sık değişmeme durumunda yenileme zaman aşımını artırın. Yöntemini kullanarak yeni bir yenileme zaman aşımı belirtin. [ `SetCacheExpiration` ](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration)
+* Özellikle yapılandırma değerlerinizin sık değişmeme durumunda yenileme zaman aşımını artırın. [ `SetCacheExpiration` Yöntemini](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration)kullanarak yeni bir yenileme zaman aşımı belirtin.
 
 * Tek tek tuşları izlemek yerine tek bir *Sentinel anahtarı*izleyin. Yalnızca Sentinel anahtarı değişirse tüm yapılandırmaları yenileyin. Bir örnek için bkz. [ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma](enable-dynamic-configuration-aspnet-core.md) .
 

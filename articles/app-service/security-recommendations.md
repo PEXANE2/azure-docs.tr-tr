@@ -8,10 +8,10 @@ ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546694"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service için güvenlik önerileri
@@ -20,13 +20,13 @@ Bu makale Azure App Service için güvenlik önerileri içerir. Bu önerilerin u
 
 ## <a name="general"></a>Genel
 
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 |-|-|----|
 | Güncel kalın | Desteklenen platformlar, programlama dilleri, protokoller ve çerçeveler için en son sürümleri kullanın. |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 |-|----|
 | Anonim erişimi devre dışı bırak | Anonim istekleri desteklemeniz gerekmiyorsa, anonim erişimi devre dışı bırakın. Azure App Service kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [Azure App Service kimlik doğrulama ve yetkilendirme](overview-authentication-authorization.md).|
 | Kimlik doğrulaması gerektir | Mümkün olduğunda kimlik doğrulama ve yetkilendirmeyi işlemek için kod yazmak yerine App Service kimlik doğrulama modülünü kullanın. Bkz. [Azure App Service kimlik doğrulaması ve yetkilendirme](overview-authentication-authorization.md). |
@@ -35,7 +35,7 @@ Bu makale Azure App Service için güvenlik önerileri içerir. Bu önerilerin u
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 |-|-|
 | HTTP 'yi HTTPs 'ye yönlendir | Varsayılan olarak, istemciler Web uygulamalarına hem HTTP ya da HTTPS kullanarak bağlanabilir. HTTPS SSL/TLS protokolünü kullandığından, hem şifreli hem de kimliği doğrulanmış güvenli bir bağlantı sağlamak için HTTP 'yi HTTPs 'ye yeniden yönlendirmenizi öneririz. |
 | Azure kaynaklarıyla iletişimi şifreleyin | Uygulamanız [SQL veritabanı](https://azure.microsoft.com/services/sql-database/) veya [Azure depolama](/azure/storage/)gibi Azure kaynaklarına bağlanıyorsa, bağlantı Azure 'da kalır. Bağlantı, Azure 'daki paylaşılan ağ üzerinden başladığından, her zaman tüm iletişimi şifrelemeniz gerekir. |
@@ -45,7 +45,7 @@ Bu makale Azure App Service için güvenlik önerileri içerir. Bu önerilerin u
 
 ## <a name="networking"></a>Ağ
 
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 |-|-|
 | Statik IP kısıtlamalarını kullanın | Windows üzerinde Azure App Service, uygulamanıza erişmelerine izin verilen IP adreslerinin bir listesini tanımlamanızı sağlar. İzin verilen liste, tek tek IP adreslerini veya bir alt ağ maskesi tarafından tanımlanan bir IP adresi aralığını içerebilir. Daha fazla bilgi için bkz. [Azure App Service STATIK IP kısıtlamaları](app-service-ip-restrictions.md).  |
 | Yalıtılmış fiyatlandırma katmanını kullanın | Yalıtılmış fiyatlandırma katmanı hariç tüm katmanlar, uygulamalarınızı Azure App Service paylaşılan ağ altyapısında çalıştırır. Yalıtılmış katman, uygulamalarınızı adanmış bir [App Service ortamı](environment/intro.md)içinde çalıştırarak tamamen ağ yalıtımı sağlar. Bir App Service ortamı, kendi [Azure sanal ağı](/azure/virtual-network/)Örneğinizde çalışır.|
@@ -54,7 +54,7 @@ Bu makale Azure App Service için güvenlik önerileri içerir. Bu önerilerin u
 
 ## <a name="monitoring"></a>İzleme
 
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 |-|-|
 |Azure Güvenlik Merkezi Standart katmanını kullanın | [Azure Güvenlik Merkezi](../security-center/security-center-app-services.md) , Azure App Service ile yerel olarak tümleşiktir. Değerlendirme çalıştırabilir ve güvenlik önerileri sağlayabilir. |
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298347"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
@@ -68,8 +68,8 @@ Log Analytics ağ geçidini çalıştırmak için tasarlanan bilgisayarlar aşa�
 
 Log Analytics ağ geçidi şu dillerde kullanılabilir:
 
-- Çince (Basitleştirilmiş)
-- seçenekleri yerine
+- Basitleştirilmiş Çince
+- Geleneksel Çince
 - Çekçe
 - Felemenkçe
 - İngilizce
@@ -114,16 +114,16 @@ Azure portal Log Analytics ağ geçidini almak için şu adımları izleyin:
  
    ![Log Analytics ağ geçidini indirme adımlarının ekran görüntüsü](./media/gateway/download-gateway.png)
 
-or 
+veya 
 
 1. Çalışma alanı Dikey penceresinde **Ayarlar**altında **Gelişmiş ayarlar**' ı seçin.
-1. **Bağlı kaynaklar** > **Windows Server** ' a gidin ve **Log Analytics ağ geçidini indir**' i seçin.
+1. **Bağlı kaynaklar**  >  **Windows Server** ' a gidin ve **Log Analytics ağ geçidini indir**' i seçin.
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Kurulum sihirbazını kullanarak Log Analytics ağ geçidini yükleme
 
 Kurulum Sihirbazı 'nı kullanarak bir ağ geçidi yüklemek için aşağıdaki adımları izleyin. 
 
-1. Hedef klasörden, **Log Analytics Gateway. msi**' ye çift tıklayın.
+1. Hedef klasörden **Log Analytics gateway.msi**' a çift tıklayın.
 1. **Hoş Geldiniz** sayfasında, **İleri**’yi seçin.
 
    ![Ağ Geçidi Kurulum Sihirbazı 'nda hoş geldiniz sayfasının ekran görüntüsü](./media/gateway/gateway-wizard01.png)
@@ -260,17 +260,17 @@ Tümleştirmeyi yapılandırmak için, Işletim konsolunu çalıştırdığını
 
    `netsh winhttp set proxy <proxy>:<port>`
 
-Log Analytics ile tümleştirmeyi tamamladıktan sonra, çalışırken `netsh winhttp reset proxy`değişikliği kaldırın. Ardından, Işletim konsolunda, Log Analytics ağ geçidi sunucusunu belirtmek için **proxy sunucusunu yapılandır** seçeneğini kullanın. 
+Log Analytics ile tümleştirmeyi tamamladıktan sonra, çalışırken değişikliği kaldırın `netsh winhttp reset proxy` . Ardından, Işletim konsolunda, Log Analytics ağ geçidi sunucusunu belirtmek için **proxy sunucusunu yapılandır** seçeneğini kullanın. 
 
 1. Operations Manager konsolunda, **Operations Management Suite**altında **bağlantı**' yı seçin ve ardından **proxy sunucusunu yapılandır**' ı seçin.
 
    ![Operations Manager ekran görüntüsü, proxy sunucusunu yapılandırma seçimini gösterir](./media/gateway/scom01.png)
 
-1. **Operations Management Suite 'e erişmek için bir proxy sunucusu kullan** ' ı seçin ve sonra Log Analytics ağ GEÇIDI sunucusunun IP adresini veya yük DENGELEYICININ sanal IP adresini girin. Önekiyle `http://`başlamak için dikkatli olun.
+1. **Operations Management Suite 'e erişmek için bir proxy sunucusu kullan** ' ı seçin ve sonra Log Analytics ağ GEÇIDI sunucusunun IP adresini veya yük DENGELEYICININ sanal IP adresini girin. Önekiyle başlamak için dikkatli olun `http://` .
 
    ![Proxy sunucu adresini gösteren Operations Manager ekran görüntüsü](./media/gateway/scom02.png)
 
-1. **Son**' u seçin. Operations Manager yönetim grubunuz artık ağ geçidi sunucusu üzerinden Log Analytics hizmetine iletişim kuracak şekilde yapılandırılmıştır.
+1. **Son**'u seçin. Operations Manager yönetim grubunuz artık ağ geçidi sunucusu üzerinden Log Analytics hizmetine iletişim kuracak şekilde yapılandırılmıştır.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Belirli aracıların bir ara sunucu kullanacağı Operations Manager yapılandırın
 
@@ -288,7 +288,7 @@ Belirli sunucuları veya grupları Log Analytics ağ geçidi sunucusunu kullanac
 1. **Ara** alanına **sistem sağlığı hizmeti** girin ve listeden seçin. **Tamam**’ı seçin.  
 1. **Danışman proxy ayar kuralını**arayın. 
 1. Operations Manager araç çubuğunda **geçersiz kılmalar** ' ı seçin ve ardından **sınıfın belirli bir nesnesi Için rule\override** ' ın üzerine gelin: sistem sağlığı hizmeti ve listeden bir nesne seçin.  Veya bu geçersiz kılmayı uygulamak istediğiniz sunucuların sistem sağlığı hizmeti nesnesini içeren özel bir grup oluşturun. Ardından, geçersiz kılmayı özel grubunuza uygulayın.
-1. **Geçersiz kılma özellikleri** iletişim kutusunda, **WebProxyAddress** parametresinin yanındaki **geçersiz kılma** sütununa bir onay işareti ekleyin.  **Geçersiz kılma değeri** alanına Log Analytics ağ geçidi sunucusunun URL 'sini girin. Önekiyle `http://`başlamak için dikkatli olun.  
+1. **Geçersiz kılma özellikleri** iletişim kutusunda, **WebProxyAddress** parametresinin yanındaki **geçersiz kılma** sütununa bir onay işareti ekleyin.  **Geçersiz kılma değeri** alanına Log Analytics ağ geçidi sunucusunun URL 'sini girin. Önekiyle başlamak için dikkatli olun `http://` .  
 
     >[!NOTE]
     > Kuralı etkinleştirmeniz gerekmez. Microsoft System Center Advisor Izleme sunucusu grubunu hedefleyen Microsoft System Center Advisor güvenli başvuru geçersiz kılma yönetim paketinde zaten bir geçersiz kılma ile otomatik olarak yönetiliyor.
@@ -327,7 +327,7 @@ Cmdlet 'leri kullanarak Log Analytics ağ geçidinin yapılandırma ayarlarını
 
 3. adımdaki bir hata modülün içeri aktarılmadığı anlamına gelir. PowerShell modülü bulamadığında hata ortaya çıkabilir. Modülü OMS ağ geçidi yükleme yolunda bulabilirsiniz: *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*.
 
-| **Cmdlet** | **Parametreler** | **Açıklama** | **Örneğinde** |
+| **Cmdlet** | **Parametreler** | **Açıklama** | **Örnek** |
 | --- | --- | --- | --- |  
 | `Get-OMSGatewayConfig` |Anahtar |Hizmetin yapılandırmasını alır |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |Anahtar (gerekli) <br> Değer |Hizmetin yapılandırmasını değiştirir |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
@@ -350,7 +350,7 @@ Ağ Geçidi tarafından günlüğe kaydedilen olayları toplamak için Log Analy
 
 Aşağıdaki tabloda Log Analytics ağ geçidi günlük olaylarının olay kimlikleri ve açıklamaları gösterilmektedir.
 
-| **NUMARASıNı** | **Açıklama** |
+| **ID** | **Açıklama** |
 | --- | --- |
 | 400 |Özel KIMLIĞI olmayan herhangi bir uygulama hatası. |
 | 401 |Yanlış yapılandırma. Örneğin, listenPort = bir tamsayı yerine "metin". |

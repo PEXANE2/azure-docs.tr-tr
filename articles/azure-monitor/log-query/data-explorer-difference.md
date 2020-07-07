@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
 ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585708"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Izleyici günlük sorgusu dil farklılıkları
@@ -24,7 +24,7 @@ Aşağıdaki bölümlerde, Azure Izleyici tarafından desteklenmeyen kusto sorgu
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Azure Izleyici 'de desteklenmeyen deyimler
 
-* [Diğer ad](/azure/kusto/query/aliasstatement)
+* [Ek](/azure/kusto/query/aliasstatement)
 * [Sorgu parametreleri](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Azure Izleyici 'de desteklenmeyen işlevler

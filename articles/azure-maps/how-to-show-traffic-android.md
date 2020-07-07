@@ -9,29 +9,29 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335384"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritadaki trafik verilerini gösterme Android SDK
 
 Akış verileri ve olay verileri, haritada görüntülenebilen iki trafik verisi türüdür. Bu kılavuzda her iki trafik verisi türünün nasıl görüntüleneceği gösterilmektedir. Olaylar verileri, kurulumlarını, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur. Akış verileri, yolda trafik akışı hakkında ölçümleri gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Haritada trafiği gösterebilmeniz için önce [bir Azure hesabı](quick-demo-map-app.md#create-an-account-with-azure-maps)oluşturmanız ve [bir abonelik anahtarı edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz ve bir harita yüklemeniz gerekir.
 
 ## <a name="incidents-traffic-data"></a>Olaylar trafik verileri 
 
-' İ `setTraffic` `incidents`çağırmak için aşağıdaki kitaplıkları içeri aktarmanız gerekir:
+' İ çağırmak için aşağıdaki kitaplıkları içeri aktarmanız gerekir `setTraffic` `incidents` :
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- Aşağıdaki kod parçacığı, Haritada trafik verilerinin nasıl görüntüleneceğini gösterir. `incidents` Yöntemine bir Boole değeri geçiririz ve bu yöntemi `setTraffic` yöntemine geçiyoruz. 
+ Aşağıdaki kod parçacığı, Haritada trafik verilerinin nasıl görüntüleneceğini gösterir. Yöntemine bir Boole değeri geçiririz `incidents` ve bu yöntemi yöntemine geçiyoruz `setTraffic` . 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +44,14 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ## <a name="flow-traffic-data"></a>Akış trafiği verileri
 
-Çağırmak `setTraffic` için öncelikle aşağıdaki kitaplıkları içeri aktarmanız gerekir `flow`:
+Çağırmak için öncelikle aşağıdaki kitaplıkları içeri aktarmanız gerekir `setTraffic` `flow` :
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-Trafik akışı verilerini ayarlamak için aşağıdaki kod parçacığını kullanın. Önceki bölümde bulunan koda benzer şekilde, `flow` yöntemin dönüş değerini `setTraffic` yöntemine geçiyoruz. Öğesine `flow`geçirilebilecek dört değer vardır ve her bir değer ilgili değeri döndürecek şekilde tetiklenebilir `flow` . Dönüş değeri `flow` daha sonra öğesine `setTraffic`bağımsız değişken olarak geçirilir. Şu dört değer için aşağıdaki tabloya bakın:
+Trafik akışı verilerini ayarlamak için aşağıdaki kod parçacığını kullanın. Önceki bölümde bulunan koda benzer şekilde, yöntemin dönüş değerini yöntemine geçiyoruz `flow` `setTraffic` . Öğesine geçirilebilecek dört değer vardır `flow` ve her bir değer `flow` ilgili değeri döndürecek şekilde tetiklenebilir. Dönüş değeri `flow` daha sonra öğesine bağımsız değişken olarak geçirilir `setTraffic` . Şu dört değer için aşağıdaki tabloya bakın:
 
 | | |
 | :-- | :-- |
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 Belirli bir özelliğin olaylarını almak için aşağıdaki kodu kullanabilirsiniz. Bir özelliğe tıklandığında, kod mantığı olayları denetler ve olay hakkında bir ileti oluşturur. Ayrıntılar ile ekranın alt kısmında bir ileti görüntülenir.
 
-1. İlk olarak, aşağıdaki gibi görünmesi için **res > düzeni activity_main. xml >** düzenlemeniz gerekir. , Ve `mapcontrol_zoom` değerlerini istediğiniz `mapcontrol_centerLat`değerlerle `mapcontrol_centerLng`değiştirebilirsiniz. Geri çek, yakınlaştırma düzeyi 0 ile 22 arasında bir değerdir. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar.
+1. İlk olarak, aşağıdaki gibi görünmesi için **kay > düzen > activity_main.xml**düzenlemeniz gerekir. , `mapcontrol_centerLat` `mapcontrol_centerLng` Ve `mapcontrol_zoom` değerlerini istediğiniz değerlerle değiştirebilirsiniz. Geri çek, yakınlaştırma düzeyi 0 ile 22 arasında bir değerdir. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -221,7 +221,7 @@ Belirli bir özelliğin olaylarını almak için aşağıdaki kodu kullanabilirs
    }
    ```
 
-3. Uygulamanızda yukarıdaki kodu ekledikten sonra, bir özelliğe tıklayabilir ve trafik olaylarının ayrıntılarını görebilirsiniz. **Activity_main. xml** dosyanızda kullandığınız enlem, boylam ve yakınlaştırma düzeyi değerlerine bağlı olarak, aşağıdaki görüntüye benzer sonuçlar görürsünüz:
+3. Uygulamanızda yukarıdaki kodu ekledikten sonra, bir özelliğe tıklayabilir ve trafik olaylarının ayrıntılarını görebilirsiniz. **activity_main.xml** dosyanızda kullandığınız enlem, boylam ve yakınlaştırma düzeyi değerlerine bağlı olarak, aşağıdaki görüntüye benzer sonuçlar görürsünüz:
 
    <center>
 

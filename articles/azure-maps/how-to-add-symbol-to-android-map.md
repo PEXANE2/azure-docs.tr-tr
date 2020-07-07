@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335583"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya bir sembol katmanı ekleme Android SDK
 
 Bu makalede, Azure Maps Android SDK kullanarak bir harita üzerinde sembol katmanı olarak bir veri kaynağındaki nokta verilerinin nasıl işleneceğini gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamen izlemek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
 
@@ -27,7 +27,7 @@ Bu makaledeki adımları tamamen izlemek için, bir harita yüklemek üzere [Azu
 
 Sembol katmanını kullanarak haritada bir işaretleyici eklemek için aşağıdaki adımları izleyin:
 
-1. Şu XML gibi görünmesi için **res** > **düzeni** > **activity_main. xml** ' i düzenleyin:
+1. **res**  >  **layout**  >  Şu XML gibi görünmesi için res Düzen**activity_main.xml** düzenleyin:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -50,7 +50,7 @@ Sembol katmanını kullanarak haritada bir işaretleyici eklemek için aşağıd
     </FrameLayout>
     ```
 
-2. Aşağıdaki kod parçacığını `MainActivity.java` sınıfınızın **OnCreate ()** yöntemine kopyalayın.
+2. Aşağıdaki kod parçacığını sınıfınızın **OnCreate ()** yöntemine kopyalayın `MainActivity.java` .
 
     ```Java
     mapControl.onReady(map -> {
@@ -74,7 +74,7 @@ Sembol katmanını kullanarak haritada bir işaretleyici eklemek için aşağıd
     
     Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve bunu haritaya ekler. Ardından bir nokta geometrisi içeren bir **özellik** ekler. Kırmızı bir işaret resmi, ardından sembol için simge olarak ayarlanır. Bir **sembol katmanı** , veri kaynağında kaydırılan nokta tabanlı verileri haritada sembol olarak işlemek için metin veya simgeleri kullanır. Daha sonra bir sembol katmanı oluşturulur ve veri kaynağı işlemek için iletilir ve sonra haritanın katmanlarına eklenir.
     
-    Yukarıdaki `MainActivity.java` kod parçacığını ekledikten sonra aşağıdaki gibi görünmelidir:
+    Yukarıdaki kod parçacığını ekledikten sonra `MainActivity.java` aşağıdaki gibi görünmelidir:
     
     ```Java
     package com.example.myapplication;

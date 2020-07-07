@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80300985"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Önyükleme hatası – bu önyüklenebilir bir disk değil
@@ -59,7 +59,7 @@ Bu hata iletisi, IŞLETIM sistemi önyükleme işleminin etkin bir sistem bölü
 
 1. nesil sanal makineler önce, BCD deposunu tutan işletim sistemi bölümünün *etkin*olarak işaretlendiğinden emin olmalıdır. 2. nesil bir sanal makinenize sahipseniz, sonraki nesil *durum* bayrağı kullanım dışı olduğundan, [disk bölümünü düzelten](#fix-the-disk-partition)önce atlayın.
 
-1. Yükseltilmiş bir komut istemi açın *(cmd. exe)*.
+1. Yükseltilmiş bir komut istemi açın *(cmd.exe)*.
 2. DISKPART aracını başlatmak için *DiskPart* girin.
 3. Sistemdeki diskleri listelemek ve bağlı işletim sistemi VHD 'sini tanımlamak için *liste diski* girin.
 4. Bağlı işletim sistemi VHD 'SI konumlandırıldıktan sonra, diski seçmek için *sel disk #* girin.  Bkz. Şekil 2, disk 1, bağlı işletim sistemi VHD 'si.
@@ -96,12 +96,12 @@ Bu hata iletisi, IŞLETIM sistemi önyükleme işleminin etkin bir sistem bölü
 
 ### <a name="fix-the-disk-partition"></a>Disk bölümünü çözme
 
-1. Yükseltilmiş bir komut istemi açın (cmd. exe).
+1. Yükseltilmiş bir komut istemi açın (cmd.exe).
 2. Disk (ler) de *Chkdsk* çalıştırmak ve hataları onarmak için aşağıdaki komutu kullanın:
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   '/F ' komut seçeneğinin eklenmesi diskteki tüm hataları düzeltir. Bağlı işletim sistemi VHD <DRIVE LETTER> 'sinin harfiyle değiştirdiğinizden emin olun.
+   '/F ' komut seçeneğinin eklenmesi diskteki tüm hataları düzeltir. <DRIVE LETTER>Bağlı işletim SISTEMI VHD 'sinin harfiyle değiştirdiğinizden emin olun.
 
 ### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Önerilir: VM 'yi yeniden oluşturmadan önce, seri konsolu ve bellek dökümü toplamayı etkinleştirin
 

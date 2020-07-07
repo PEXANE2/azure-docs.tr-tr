@@ -8,10 +8,10 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477677"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamında ağ konusunda dikkat edilmesi gerekenler #
@@ -43,7 +43,7 @@ ILB ASE varsa, ıLB adresinin adresi HTTP/S, FTP/S, Web dağıtımı ve uzaktan 
 Atıcı 'yi barındırmak için kullanılan alt ağın boyutu Ao dağıtıldıktan sonra değiştirilemez.  ATıCı, her bir altyapı rolü için ve her yalıtılmış App Service plan örneği için bir adres kullanır.  Ayrıca, Azure ağ tarafından oluşturulan her alt ağ için beş adres kullanılır.  App Service planı olmayan bir Ao, uygulama oluşturmadan önce 12 adres kullanır.  Bu bir ıLB Ao ise, bu Ao 'da bir uygulama oluşturmadan önce 13 adres kullanacaktır. Ao uygulamanızı ölçeklendirirseniz, altyapı rolleri, 15 ' in her katı ve App Service planı örneklerinizin 20 ' si eklenir.
 
    > [!NOTE]
-   > Alt ağda başka hiçbir şey olamaz, ancak Ao. Gelecekteki büyüme için izin veren bir adres alanı seçtiğinizden emin olun. Bu ayarı daha sonra değiştiremezsiniz. 256 adres `/24` içeren bir boyut önerilir.
+   > Alt ağda başka hiçbir şey olamaz, ancak Ao. Gelecekteki büyüme için izin veren bir adres alanı seçtiğinizden emin olun. Bu ayarı daha sonra değiştiremezsiniz. `/24`256 adres içeren bir boyut önerilir.
 
 Ölçeği artırma veya azaltma yaptığınızda, uygun boyutun yeni rolleri eklenir ve sonra iş yükleriniz geçerli boyuttan hedef boyuta geçirilir. Özgün VM 'Ler yalnızca iş yükleri geçirildikten sonra kaldırılır. 100 ASP örneklerine sahip bir AŞIRINIZ varsa, sanal makine sayısının iki katı olması gereken bir nokta olabilir.  Bu nedenle, gerek duyduğunuz değişiklikleri karşılamak için bir '/24 ' kullanılması önerilir.  
 
@@ -177,9 +177,9 @@ Gelen ve giden gereksinimler hesaba alındığı zaman, NSG 'ler Bu örnekte gö
 
 ![Gelen güvenlik kuralları][4]
 
-Varsayılan bir kural, VNet 'teki IP 'Lerin ASE alt ağıyla iletişim kurmasını sağlar. Diğer bir varsayılan kural, genel VIP olarak da bilinen yük dengeleyicinin Ao ile iletişim kurmasını sağlar. Varsayılan kuralları görmek için **Ekle** simgesinin yanındaki **varsayılan kurallar** ' ı seçin. Varsayılan kuralların önüne başka her şeyi Reddet kuralını yerleştirirseniz, VIP ve Ao arasındaki trafiği engelleyebilirsiniz. VNet 'in içinden gelen trafiği engellemek için, gelen trafiğe izin vermek üzere kendi kuralınızı ekleyin. **Herhangi** bir ve bir bağlantı noktası aralığının hedefi olan AzureLoadBalancer değerine eşit bir kaynak kullanın **\***. NSG kuralı Ao alt ağına uygulandığından, hedefte özel olması gerekmez.
+Varsayılan bir kural, VNet 'teki IP 'Lerin ASE alt ağıyla iletişim kurmasını sağlar. Diğer bir varsayılan kural, genel VIP olarak da bilinen yük dengeleyicinin Ao ile iletişim kurmasını sağlar. Varsayılan kuralları görmek için **Ekle** simgesinin yanındaki **varsayılan kurallar** ' ı seçin. Varsayılan kuralların önüne başka her şeyi Reddet kuralını yerleştirirseniz, VIP ve Ao arasındaki trafiği engelleyebilirsiniz. VNet 'in içinden gelen trafiği engellemek için, gelen trafiğe izin vermek üzere kendi kuralınızı ekleyin. **Herhangi** bir ve bir bağlantı noktası aralığının hedefi olan AzureLoadBalancer değerine eşit bir kaynak kullanın **\*** . NSG kuralı Ao alt ağına uygulandığından, hedefte özel olması gerekmez.
 
-Uygulamanıza bir IP adresi atadıysanız, bağlantı noktalarının açık kalmasını sağlayın. Bağlantı noktalarını görmek için **App Service ortamı** > **IP adresleri**' ni seçin.  
+Uygulamanıza bir IP adresi atadıysanız, bağlantı noktalarının açık kalmasını sağlayın. Bağlantı noktalarını görmek için **App Service ortamı**  >  **IP adresleri**' ni seçin.  
 
 Aşağıdaki giden kurallarında gösterilen tüm öğeler, son öğe hariç olmak üzere gereklidir. Bunlar, bu makalenin önceki kısımlarında belirtilen Ao bağımlılıklarına ağ erişimi sağlar. Bunlardan herhangi birini engellerseniz ATıCı çalışmayı durduruyor. Listedeki son öğe, ASE 'nizin sanal ağınızdaki diğer kaynaklarla iletişim kurmasını sağlar.
 
@@ -194,11 +194,11 @@ Zorlamalı tünel, VNet 'iniz içindeki yolları ayarladığınızda giden trafi
 Portalda bir AO oluşturduğunuzda, Ao ile oluşturulan alt ağda bir rota tabloları kümesi de oluşturur.  Bu yollar yalnızca giden trafiği doğrudan internet 'e göndermek için de kullanılır.  
 Aynı rotaları el ile oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portalına gidin. **Ağ** > **yolu tabloları**' nı seçin.
+1. Azure portalına gidin. **Ağ**  >  **yolu tabloları**' nı seçin.
 
 2. Sanal ağınız ile aynı bölgede yeni bir rota tablosu oluşturun.
 
-3. Yol tablosu Kullanıcı arabiriminizden, **rotalar** > **Ekle**' yi seçin.
+3. Yol tablosu Kullanıcı arabiriminizden, **rotalar**  >  **Ekle**' yi seçin.
 
 4. **Sonraki atlama türünü** **Internet** olarak ve **Adres ön ekini** **0.0.0.0/0**olarak ayarlayın. **Kaydet**’i seçin.
 

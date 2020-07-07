@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335544"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure haritalar hesabınızı yönetme
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 2. Azure portalın sol üst köşesinde bulunan **Kaynak oluştur**’u seçin.
 
-3. **Haritalar**arayın ve seçin. Ardından **Oluştur**’u seçin.
+3. **Haritalar**arayın ve seçin. Ardından **Oluştur**'u seçin.
 
 4. Yeni hesabınızın bilgilerini girin.
 

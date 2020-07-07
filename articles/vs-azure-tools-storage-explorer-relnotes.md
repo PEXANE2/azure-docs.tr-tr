@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351071"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Depolama Gezgini sürüm notları
@@ -37,17 +37,17 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
    * Bloblar
       * Düzenle + karşıya yükle için aç
       * Sürükle & bırak dahil karşıya yükleme
-      * İndirme
+      * İndir
       * Kopyala & #1249 Yapıştır
       * Sil
    * ADLS 2. blob 'Lar
       * Sürükle & bırak dahil karşıya yükleme
-      * İndirme
+      * İndir
       * Kopyala & Yapıştır
       * Klasör silme dahil silme
    * Yönetilen Diskler
       * Karşıya Yükle
-      * İndirme
+      * İndir
       * Kopyala & Yapıştır
 
    Ayrıca, tümleşik AzCopy deneyimine bazı sık istenen özellikler eklenmiştir:
@@ -99,10 +99,10 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
+   * Geçici silme
    * ADLS 2.
    * Yönetilen Diskler
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -168,7 +168,7 @@ Bu makalede, Azure Depolama Gezgini için en son sürüm notları ve önceki sü
   * Otomatik yenileme #1526
   * AzCopy 'i etkinleştir
   * AzCopy SAS süresi eklemek istediğiniz başka ayarlar varsa, lütfen görmek istediğiniz ayarı açıklayan [GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=) .
-* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Şunları yapabilirsiniz:
+* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Seçenekleriniz şunlardır:
   * Şirket içi VHD 'yi yeni bir diske yükleme
   * Bir disk indirin
   * Diskleri kaynak grupları ve bölgeler arasında Kopyala ve Yapıştır
@@ -215,10 +215,10 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
+   * Geçici silme
    * ADLS 2.
    * Yönetilen Diskler
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -242,7 +242,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
     * AzCopy SAS süresi
 
     Eklemek istediğiniz başka ayarlar varsa, lütfen [görmek istediğiniz ayarı açıklayan GitHub 'da bir sorun açın](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
-* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Şunları yapabilirsiniz:
+* Depolama Gezgini artık yönetilen diskleri desteklemektedir. Seçenekleriniz şunlardır:
     * Şirket içi VHD 'yi yeni bir diske yükleme
     * Bir disk indirin
     * Diskleri kaynak grupları ve bölgeler arasında Kopyala ve Yapıştır
@@ -289,10 +289,10 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
+   * Geçici silme
    * ADLS 2.
    * Yönetilen Diskler
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -348,9 +348,9 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
+   * Geçici silme
    * ADLS 2.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -405,9 +405,9 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
+   * Geçici silme
    * ADLS 2.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -457,9 +457,9 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
+   * Geçici silme
    * ADLS 2.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -514,8 +514,8 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+   * Geçici silme
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -586,8 +586,8 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+   * Geçici silme
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -655,8 +655,8 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+   * Geçici silme
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -710,8 +710,8 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+   * Geçici silme
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -774,8 +774,8 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Azure Stack aşağıdaki özellikleri desteklemez. Azure Stack kaynaklarla çalışırken bu özellikleri kullanma girişimi beklenmeyen hatalara neden olabilir.
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+   * Geçici silme
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -810,7 +810,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
    * İliştirmekte olduğunuz kaynağın görünen adını özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Farklı bağlantı noktaları kullanarak birden çok yerel öykünücüye ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Hızlı erişime eklenen kaynakları ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini artık geçici silme destekleniyor. Şunları yapabilirsiniz:
+* Depolama Gezgini artık geçici silme destekleniyor. Seçenekleriniz şunlardır:
    * Depolama hesabınızın blob kapsayıcıları düğümüne sağ tıklayarak bir geçici silme ilkesi yapılandırın.
    * Gezinti çubuğunun yanındaki açılan menüde bulunan "etkin ve silinen Bloblar" seçeneğini belirleyerek blob düzenleyicisinde geçici olarak silinen Blobları görüntüleyin.
    * Geçici silinen Blobları geri al.
@@ -832,7 +832,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Yanlış PIN/akıllı kart sertifikasını seçerseniz, Depolama Gezgini kararı unutmak için yeniden başlatmanız gerekir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -866,7 +866,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
    * İliştirmekte olduğunuz kaynağın görünen adını özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Farklı bağlantı noktaları kullanarak birden çok yerel öykünücüye ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Hızlı erişime eklenen kaynakları ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini artık geçici silme destekleniyor. Şunları yapabilirsiniz:
+* Depolama Gezgini artık geçici silme destekleniyor. Seçenekleriniz şunlardır:
    * Depolama hesabınızın blob kapsayıcıları düğümüne sağ tıklayarak bir geçici silme ilkesi yapılandırın.
    * Gezinti çubuğunun yanındaki açılan menüde bulunan "etkin ve silinen Bloblar" seçeneğini belirleyerek blob düzenleyicisinde geçici olarak silinen Blobları görüntüleyin.
    * Geçici silinen Blobları geri al.
@@ -888,7 +888,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Yanlış PIN/akıllı kart sertifikasını seçerseniz, Depolama Gezgini kararı unutmak için yeniden başlatmanız gerekir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -921,7 +921,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
    * İliştirmekte olduğunuz kaynağın görünen adını özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Farklı bağlantı noktaları kullanarak birden çok yerel öykünücüye ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Hızlı erişime eklenen kaynakları ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini artık geçici silme destekleniyor. Şunları yapabilirsiniz:
+* Depolama Gezgini artık geçici silme destekleniyor. Seçenekleriniz şunlardır:
    * Depolama hesabınızın blob kapsayıcıları düğümüne sağ tıklayarak bir geçici silme ilkesi yapılandırın.
    * Gezinti çubuğunun yanındaki açılan menüde bulunan "etkin ve silinen Bloblar" seçeneğini belirleyerek blob düzenleyicisinde geçici olarak silinen Blobları görüntüleyin.
    * Geçici silinen Blobları geri al.
@@ -943,7 +943,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Yanlış PIN/akıllı kart sertifikasını seçerseniz, Depolama Gezgini kararı unutmak için yeniden başlatmanız gerekir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -981,7 +981,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
    * İliştirmekte olduğunuz kaynağın görünen adını özelleştirin. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Farklı bağlantı noktaları kullanarak birden çok yerel öykünücüye ekleyin. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Hızlı erişime eklenen kaynakları ekleyin. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Depolama Gezgini artık geçici silme destekleniyor. Şunları yapabilirsiniz:
+* Depolama Gezgini artık geçici silme destekleniyor. Seçenekleriniz şunlardır:
    * Depolama hesabınızın blob kapsayıcıları düğümüne sağ tıklayarak bir geçici silme ilkesi yapılandırın.
    * Gezinti çubuğunun yanındaki açılan menüde bulunan "etkin ve silinen Bloblar" seçeneğini belirleyerek blob düzenleyicisinde geçici olarak silinen Blobları görüntüleyin.
    * Geçici silinen Blobları geri al.
@@ -1003,7 +1003,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Yanlış PIN/akıllı kart sertifikasını seçerseniz, Depolama Gezgini kararı unutmak için yeniden başlatmanız gerekir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1059,8 +1059,8 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Azure Stack aşağıdaki özellikleri desteklemez ve Azure Stack çalışırken bunları kullanmaya çalışmak beklenmeyen hatalara neden olabilir:
    * Dosya paylaşımları
    * Erişim katmanları
-   * Geçici Silme
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+   * Geçici silme
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1117,7 +1117,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Yanlış PIN/akıllı kart sertifikasını seçerseniz, Depolama Gezgini kararı unutmak için yeniden başlatmanız gerekir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1171,7 +1171,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Yanlış PIN/akıllı kart sertifikasını seçerseniz, Depolama Gezgini kararı unutmak için yeniden başlatmanız gerekir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1201,8 +1201,8 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Depolama Gezgini Visual Studio 2017 ile aynı hesap deposunu kullanmasına izin veren gelişmiş kimlik doğrulaması. Bu özelliği kullanmak için, hesaplarınızda yeniden oturum açıp filtrelenmiş aboneliklerinizi yeniden ayarlamanız gerekir.
 * AAD tarafından desteklenen Azure Stack hesapları için, ' hedef Azure Stack ' etkinleştirildiğinde Depolama Gezgini artık Azure Stack abonelikleri alacak. Artık özel bir oturum açma ortamı oluşturmanız gerekmez.
 * Daha hızlı gezintiyi sağlamak için birkaç kısayol eklenmiştir. Bunlar, çeşitli panellerin ve düzenleyicilerin arasında taşınmasına dahildir. Daha fazla ayrıntı için bkz. Görünüm menüsü.
-* Depolama Gezgini geri bildirim artık GitHub üzerinde yer alır. Sol alt kısımdaki geri bildirim düğmesine tıklayarak veya ' a giderek sorunlar sayfamıza ulaşabilirsiniz [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues). Önerilerde bulunmak, sorun bildirmek, sorular sormak veya başka bir geri bildirim formu bırakmak için ücretsiz bir fikir vardır.
-* TLS/SSL sertifikası sorunlarıyla çalışıyorsanız ve sorunlu sertifikayı bulamıyorsanız, artık komut satırından `--ignore-certificate-errors` Depolama Gezgini başlatabilirsiniz. Bu bayrağıyla başlatıldığında Depolama Gezgini, TLS/SSL sertifikası hatalarını yoksayar.
+* Depolama Gezgini geri bildirim artık GitHub üzerinde yer alır. Sol alt kısımdaki geri bildirim düğmesine tıklayarak veya ' a giderek sorunlar sayfamıza ulaşabilirsiniz [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) . Önerilerde bulunmak, sorun bildirmek, sorular sormak veya başka bir geri bildirim formu bırakmak için ücretsiz bir fikir vardır.
+* TLS/SSL sertifikası sorunlarıyla çalışıyorsanız ve sorunlu sertifikayı bulamıyorsanız, artık komut satırından Depolama Gezgini başlatabilirsiniz `--ignore-certificate-errors` . Bu bayrağıyla başlatıldığında Depolama Gezgini, TLS/SSL sertifikası hatalarını yoksayar.
 * Artık BLOB ve dosya öğeleri için bağlam menüsünde bir ' Indir ' seçeneği vardır.
 * Geliştirilmiş erişilebilirlik ve ekran okuyucu desteği. Erişilebilirlik özelliklerini kullanıyorsanız daha fazla bilgi için [Erişilebilirlik belgelerimize](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) bakın.
 * Depolama Gezgini artık elektron 1.8.3 birden fazla kullanıyor
@@ -1237,7 +1237,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Yanlış PIN/akıllı kart sertifikasını seçerseniz, Depolama Gezgini kararı unutmak için yeniden başlatmanız gerekir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1274,7 +1274,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Hesap Ayarları paneli, abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1323,7 +1323,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Hesap Ayarları paneli, abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer.exe --disable-gpu
@@ -1370,7 +1370,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Hesap Ayarları paneli, abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1434,7 +1434,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Hesap Ayarları paneli, abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1490,7 +1490,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Hesap Ayarları paneli, abonelikleri filtrelemek için kimlik bilgilerini yeniden girmeniz gerektiğini gösterebilir.
 * Blobların yeniden adlandırılması (tek tek veya yeniden adlandırılmış blob kapsayıcısı içinde) anlık görüntüleri korumaz. Blob, dosya ve varlıkların diğer tüm özellikleri ve meta verileri yeniden adlandırma sırasında korunur.
 * Azure Stack Şu anda dosya paylaşımlarını desteklemese de, bir dosya paylaşımları düğümü, ekli bir Azure Stack depolama hesabı altında görünmeye devam eder.
-* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve `--disable-gpu` anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz:
+* Depolama Gezgini tarafından kullanılan elektron kabuğu, bazı GPU (grafik işleme birimi) donanım hızlandırile sorun yaşıyor. Depolama Gezgini boş (boş) bir ana pencere görüntülüyor ise, komut satırından Depolama Gezgini başlatmayı ve anahtarı ekleyerek GPU hızlandırmasını devre dışı bırakmayı deneyebilirsiniz `--disable-gpu` :
 
     ```
     ./StorageExplorer --disable-gpu
@@ -1522,7 +1522,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 
 ### <a name="fixes"></a>Düzeltmeler
 * Bazı blob türlerinde, karşıya yükleme çakışması sırasında "Değiştir" seçeneğinin belirlenmesi bazen karşıya yükleme işleminin yeniden başlatılmasına neden olur.
-* Sürüm 0.8.15 ' de karşıya yüklemeler bazen %99 ' a kadar ceptir.
+* Sürüm 0.8.15 ' de, karşıya yüklemeler bazen %99 ' a kadar cepli.
 * Dosyaları bir dosya paylaşımında karşıya yüklerken, henüz mevcut olmayan bir dizine yüklemeyi seçtiyseniz karşıya yüklemeniz başarısız olur.
 * Depolama Gezgini, paylaşılan erişim imzaları ve tablo sorguları için yanlış zaman damgaları oluşturuyor.
 
@@ -1627,7 +1627,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Artık Azure Active Directory (AAD) tabanlı Azure Stack hesaplarında oturum açabilirsiniz.
 * Artık 32 MB 'tan Premium depolama hesaplarına arşiv dosyalarını karşıya yükleyebilirsiniz
 * Geliştirilmiş erişilebilirlik desteği
-* Artık&gt; SSL sertifikalarına bağlanarak güvenilen temel 64 kodlu X. 509.952 TLS/SSL sertifikaları ekleyebilirsiniz-&gt; sertifikaları içeri aktarın
+* Artık SSL sertifikalarına bağlanarak güvenilen temel 64 kodlu X. 509.952 TLS/SSL sertifikaları ekleyebilirsiniz &gt; - &gt; sertifikaları içeri aktarın
 
 #### <a name="fixes"></a>Düzeltmeler
 
@@ -1730,7 +1730,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 * Yeni gelişmiş alt dize aramamız sayesinde kapsama alınmış aramayı yeniden kullanıma sunduk, bu nedenle şu anda arama yapmak için iki seçeneğiniz vardır:
     * Genel arama-arama metin kutusuna bir arama terimi girmeniz yeterlidir
     * Kapsamlı arama-bir düğümün yanındaki büyüteç simgesine tıklayın, ardından yolun sonuna bir arama terimi ekleyin veya sağ tıklayıp "buradan ara" seçeneğini belirleyin.
-* Çeşitli temalar ekledik: açık (varsayılan), koyu, Yüksek Karşıtlık siyah ve Yüksek Karşıtlık beyaz. Tema tercihinizi değiştirmek için&gt; Düzenle-Temalar ' a gidin
+* Çeşitli temalar ekledik: açık (varsayılan), koyu, Yüksek Karşıtlık siyah ve Yüksek Karşıtlık beyaz. &gt;Tema tercihinizi değiştirmek Için Düzenle-Temalar ' a gidin
 * Blob ve dosya özelliklerini değiştirebilirsiniz
 * Artık kodlanmış (base64) ve kodlanmamış sıra iletilerini destekliyoruz
 * Linux 'ta artık 64 bitlik bir işletim sistemi gereklidir. Bu sürüm için yalnızca 64-bit Ubuntu 16.04.1 LTS 'yi destekliyoruz
@@ -1889,7 +1889,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 
 #### <a name="known-issues"></a>Bilinen Sorunlar
 
-* Tablolar: "1" veya "1,0" gibi bir ındexattributes sayısal değeri olan bir özelliği olan bir varlığı ekleme, oluşturma veya içeri aktarma ve Kullanıcı onu bir `Edm.String`olarak göndermeyi denediğinde, değer istemci API 'si Edm. Double olarak geri gelir
+* Tablolar: "1" veya "1,0" gibi bir ındexattributes sayısal değeri olan bir özelliği olan bir varlığı ekleme, oluşturma veya içeri aktarma ve Kullanıcı onu bir olarak göndermeyi denediğinde `Edm.String` , değer istemci API 'Si Edm. Double olarak geri gelir
 
 03/31/2016
 
@@ -1916,7 +1916,7 @@ Son olarak, dosya paylaşımları ile AzCopy kullanma desteği gelecekte sunulac
 
 * Büyük blob dosyalarının indirilmesi doğru çalışmıyor-bu sorunu ele alırken AzCopy kullanmanızı öneririz
 * Giriş klasörü bulunamazsa veya yazılamıyor ise hesap kimlik bilgileri alınmaz ve önbelleğe alınmaz
-* "1" veya "1,0" gibi bir ındexattributes sayısal değeri olan bir özelliğine sahip bir varlık ekliyor, düzenliyoruz veya içeri aktardıysanız ve Kullanıcı onu bir `Edm.String`olarak göndermeyi denediğinde, değer istemci API 'sinden Edm. Double olarak geri gelecektir.
+* "1" veya "1,0" gibi bir ındexattributes sayısal değeri olan bir özelliğine sahip bir varlık ekliyor, düzenliyoruz veya içeri aktardıysanız ve Kullanıcı onu bir olarak göndermeyi denediğinde `Edm.String` , değer ISTEMCI API 'Sinden Edm. Double olarak geri gelecektir.
 * CSV dosyalarını çok satırlı kayıtlarla içeri aktarırken, veriler chopped veya karıştırılmış alabilir
 
 02/03/2016

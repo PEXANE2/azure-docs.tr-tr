@@ -13,10 +13,10 @@ ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80585987"
 ---
 # <a name="content-key-policies"></a>İçerik Anahtar İlkeleri
@@ -47,7 +47,7 @@ Genellikle, içerik anahtarı ilkenizi [akış konumunuzla](streaming-locators-c
 
 ## <a name="example"></a>Örnek
 
-Anahtarı almak için, `GetPolicyPropertiesWithSecretsAsync` [mevcut ilke örneğinde bir imzalama anahtarı al](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) bölümünde gösterildiği gibi kullanın.
+Anahtarı almak için, `GetPolicyPropertiesWithSecretsAsync` [mevcut ilke örneğinde bir Imzalama anahtarı al](get-content-key-policy-dotnet-howto.md#get-contentkeypolicy-with-secrets) bölümünde gösterildiği gibi kullanın.
 
 ## <a name="filtering-ordering-paging"></a>Filtreleme, sıralama, sayfalama
 
@@ -55,7 +55,7 @@ Bkz. [Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](enti
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* `Datetime` Türündeki Içerik anahtarı ilkelerinin özellikleri her zaman UTC biçimindedir.
+* Türündeki Içerik anahtarı Ilkelerinin özellikleri `Datetime` her zaman UTC biçimindedir.
 * Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

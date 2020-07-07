@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
 ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80529358"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Önyükleme kullanarak HDInsight kümelerini özelleştirme
@@ -27,26 +27,26 @@ HDInsight kümeniz oluşturulurken yapılandırma dosyası ayarlarını ayarlama
 
 Örneğin, bu programlama yöntemlerini kullanarak bu dosyalardaki seçenekleri yapılandırabilirsiniz:
 
-* Clusterıdentity. xml
-* Core-site. xml
-* Gateway. xml
-* HBase-env. xml
-* HBase-site. xml
-* HDFS-site. xml
-* Hive-env. xml
-* Hive-site. xml
+* clusterIdentity.xml
+* core-site.xml
+* gateway.xml
+* hbase-env.xml
+* hbase-site.xml
+* hdfs-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred-site
-* Oozie-site. xml
-* Oozie-env. xml
-* Storm-site. xml
-* Tez-site. xml
-* webhcat-site. xml
-* Yarn-site. xml
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
+* tez-site.xml
+* webhcat-site.xml
+* yarn-site.xml
 * Server. Properties (Kafka-Broker yapılandırması)
 
 Oluşturma süresi boyunca HDInsight kümesine ek bileşenler yükleme hakkında bilgi için bkz. [betik eylemi kullanarak HDInsight kümelerini özelleştirme (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
 
@@ -85,8 +85,8 @@ New-AzHDInsightCluster `
 
 **Değişikliği doğrulamak için:**
 
-1. Kümenizin adı `https://CLUSTERNAME.azurehdinsight.net/` olduğu `CLUSTERNAME` yere gidin.
-1. Sol menüden **Hive** > **configs** > **İleri**' ye gidin.
+1. `https://CLUSTERNAME.azurehdinsight.net/`Kümenizin adı olduğu yere gidin `CLUSTERNAME` .
+1. Sol menüden **Hive**  >  **configs**  >  **İleri**' ye gidin.
 1. **Gelişmiş Hive-site**' ı genişletin.
 1. **Hive. metasarı. Client. Socket. Timeout** öğesini bulun ve değerin **90**olduğunu onaylayın.
 
@@ -147,7 +147,7 @@ Spark2 ' deki yapılandırmayı değiştirmek için örnek Kaynak Yöneticisi Ş
 
 ## <a name="appendix-powershell-sample"></a>Ek: PowerShell örneği
 
-Bu PowerShell betiği bir HDInsight kümesi oluşturur ve bir Hive ayarını özelleştirir. `$nameToken`, `$httpPassword`Ve `$sshPassword`değerlerini girdiğinizden emin olun.
+Bu PowerShell betiği bir HDInsight kümesi oluşturur ve bir Hive ayarını özelleştirir. , Ve değerlerini girdiğinizden emin olun `$nameToken` `$httpPassword` `$sshPassword` .
 
 ```powershell
 ####################################

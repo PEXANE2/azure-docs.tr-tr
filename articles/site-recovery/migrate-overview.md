@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80388908"
 ---
 # <a name="about-migration"></a>Geçiş hakkında
@@ -40,9 +40,9 @@ Site Recovery kullanarak geçirebileceğiniz özellikler şunlardır:
 - Geçiş için şirket içi makineleri Azure 'a veya Azure VM 'lerini ikincil bir bölgeye çoğaltmanız gerekir. Daha sonra VM 'yi birincil siteden ikinciye devreder ve geçiş işlemini tamamlayabilirsiniz. Yeniden çalışma işlemi yapılmaz.  
 
 
-## <a name="migration-scenarios"></a> Geçiş senaryoları
+## <a name="migration-scenarios"></a>Geçiş senaryoları
 
-**Senaryo** | **Bilgileri**
+**Senaryo** | **Ayrıntılar**
 --- | ---
 **Şirket içinden Azure'a geçirme** | Şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucuları Azure 'a geçirebilirsiniz. Bunu yapmak için tam olağanüstü durum kurtarma için yaptığınız adımlarla neredeyse aynı adımları tamamlamayın. Yalnızca Azure 'dan şirket içi siteye geri yük devredemezsiniz.
 **Azure bölgeleri arasında geçiş yapma** | Azure VM 'lerinden bir Azure bölgesinden diğerine geçiş yapabilirsiniz. Geçiş işlemi tamamlandıktan sonra, yalnızca geçirdiğiniz ikincil bölgede Azure VM 'Leri için olağanüstü durum kurtarmayı yapılandırabilirsiniz.

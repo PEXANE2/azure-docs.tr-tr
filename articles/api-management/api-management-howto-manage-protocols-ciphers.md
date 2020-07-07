@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
 ms.openlocfilehash: 7f87389016286c9f1b91abc77155be9e94005371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335877"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Azure API Management'taki protokolleri ve şifrelemeleri yönetme
@@ -27,7 +27,7 @@ Bu kılavuzda, Azure API Management örneği için protokollerin ve şifre yapı
 
 ![APıM 'de protokolleri ve şifrelemeleri yönetme](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
 

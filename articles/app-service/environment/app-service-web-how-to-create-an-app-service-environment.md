@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80477802"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Ortamı v1 oluşturma 
@@ -36,7 +36,7 @@ Değiştiremeyeceği şeyleri unutmamak önemlidir. Oluşturulduktan sonra Ao 'n
 VNet 'i seçerken ve bir alt ağ belirttiğinizde, gelecekteki büyümeye yetecek kadar büyük olduğundan emin olun. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>App Service Ortamı v1 oluşturma
-App Service ortamı v1 oluşturmak için Azure Marketi 'nde ***App Service ortamı v1***için arama yapabilir veya **kaynak** -> **Web ve mobil** -> **App Service ortamı**oluşturma ' ya gidebilirsiniz. Bir ASEv1 oluşturmak için:
+App Service ortamı v1 oluşturmak için Azure Marketi 'nde ***App Service ortamı v1***için arama yapabilir veya **kaynak**  ->  **Web ve mobil**  ->  **App Service ortamı**oluşturma ' ya gidebilirsiniz. Bir ASEv1 oluşturmak için:
 
 1. ATıCı 'nizin adını sağlayın. ATıCı için belirttiğiniz ad, Ao 'da oluşturulan uygulamalar için kullanılacaktır. Ao 'nun adı appsvcenvdemo ise, alt etki alanı adı şöyle olacaktır: *appsvcenvdemo.p.azurewebsites.net*. Bu nedenle *mytestapp*adlı bir uygulama oluşturduysanız, *mytestapp.appsvcenvdemo.p.azurewebsites.net*adresinde adreslenebilir. ASA 'nın adında boşluk kullanamazsınız. Adında büyük harfli karakterler kullanırsanız, etki alanı adı bu adın toplam küçük harfli sürümü olacaktır. ILB kullanıyorsanız Ao adınız alt etki alanında kullanılmaz, ancak bunun yerine Ao oluşturma sırasında açıkça belirtilir.
    

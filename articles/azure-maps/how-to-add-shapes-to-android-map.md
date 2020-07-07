@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335602"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya şekil ekleme Android SDK
 
 Bu makalede, Azure Maps Android SDK kullanarak bir haritada şekillerin nasıl işleneceğini gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
 
@@ -28,7 +28,7 @@ Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azur
 
 Bir çizgi **katmanını**kullanarak haritaya bir satır ekleyebilirsiniz, haritada bir satır eklemek için aşağıdaki adımları izleyin.
 
-1. **Kaynak > düzeni > activity_main. xml** ' i düzenleyerek aşağıdaki gibi görünmesini sağlayın:
+1. **Kaynak > düzeni > activity_main.xml** aşağıdaki gibi görünmesi için düzenleyin:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Bir çizgi **katmanını**kullanarak haritaya bir satır ekleyebilirsiniz, harit
     </FrameLayout>
     ```
 
-2. Aşağıdaki kod parçacığını, `MainActivity.java` sınıfınızın **OnCreate ()** metoduna kopyalayın.
+2. Aşağıdaki kod parçacığını, sınıfınızın **OnCreate ()** metoduna kopyalayın `MainActivity.java` .
 
     ```Java
     mapControl.onReady(map -> {
@@ -78,7 +78,7 @@ Bir çizgi **katmanını**kullanarak haritaya bir satır ekleyebilirsiniz, harit
     
     Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve bunu haritaya ekler. Sonra, **nokta** nesnelerinin bir listesini oluşturur. İşaret listesinden bir **LineString** oluşturulur ve veri kaynağına eklenir. **Çizgi katmanı** , harita üzerindeki bir veri kaynağında kaydırılan çizgi nesnelerini işler. Daha sonra bir çizgi katmanı oluşturulur ve veri kaynağı buna eklenir.
 
-    Yukarıdaki `MainActivity.java` kod parçacığını ekledikten sonra aşağıdaki gibi görünmelidir:
+    Yukarıdaki kod parçacığını ekledikten sonra `MainActivity.java` aşağıdaki gibi görünmelidir:
     
     ```Java
     package com.example.myapplication;
@@ -185,7 +185,7 @@ Uygulamanızı Şimdi çalıştırırsanız, haritada aşağıda görüldüğü 
 
 **Çokgen katmanı** , çokgenin alanını haritaya işlemenizi sağlar. Haritada bir çokgen eklemek için aşağıdaki adımları izleyin.
 
-1. **Kaynak > düzeni > activity_main. xml** ' i düzenleyerek aşağıdaki gibi görünmesini sağlayın:
+1. **Kaynak > düzeni > activity_main.xml** aşağıdaki gibi görünmesi için düzenleyin:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +208,7 @@ Uygulamanızı Şimdi çalıştırırsanız, haritada aşağıda görüldüğü 
     </FrameLayout>
     ```
 
-2. Aşağıdaki kod parçacığını `MainActivity.java` sınıfınızın **OnCreate ()** yöntemine kopyalayın.
+2. Aşağıdaki kod parçacığını sınıfınızın **OnCreate ()** yöntemine kopyalayın `MainActivity.java` .
 
     ```Java
     mapControl.onReady(map -> {
@@ -240,7 +240,7 @@ Uygulamanızı Şimdi çalıştırırsanız, haritada aşağıda görüldüğü 
 
     Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve bunu haritaya ekler. Daha sonra bir **nokta** nesneleri listesinden bir **Çokgen** nesnesi oluşturulur ve veri kaynağına eklenir. **Çokgen katman** , haritadaki veri kaynağında kaydırılan verileri işler. Daha sonra Çokgen alanını işlemek için bir Çokgen katman oluşturur ve veri kaynağını buna ekler. **Çizgi katmanı** , bir veri kaynağında kaydırılan çizgi nesnelerini işler. Kod parçacığının son bölümü, çokgenin ana hattını işlemek için bir çizgi katmanı oluşturur ve veri kaynağını buna ekler.
 
-    Yukarıdaki `MainActivity.java` kod parçacığını ekledikten sonra aşağıdaki gibi görünmelidir:
+    Yukarıdaki kod parçacığını ekledikten sonra `MainActivity.java` aşağıdaki gibi görünmelidir:
 
     ```Java
     package com.example.myapplication;

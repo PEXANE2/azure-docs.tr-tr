@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 05effb7d2e64c5f27acabad4b086ba27d6849cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348814"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SAP uygulamaları için SUSE Linux Enterprise Server Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
@@ -91,32 +91,32 @@ NFS sunucusu, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HA
 * Ön uç yapılandırması
   * IP adresi kısmına 10.0.0.7
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 620<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 620<strong> &lt; NR &gt; </strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;NR&gt; </strong> TCP
-    * 36<strong>&lt;NR&gt; </strong> TCP
-    * 39<strong>&lt;NR&gt; </strong> TCP
-    * 81<strong>&lt;NR&gt; </strong> TCP
-    * 5<strong>&lt;NR&gt;</strong>13 TCP
-    * 5<strong>&lt;NR&gt;</strong>14 TCP
-    * 5<strong>&lt;NR&gt;</strong>16 TCP
+    * 32<strong> &lt; NR &gt; </strong> TCP
+    * 36<strong> &lt; NR &gt; </strong> TCP
+    * 39<strong> &lt; NR &gt; </strong> TCP
+    * 81<strong> &lt; NR &gt; </strong> TCP
+    * 5<strong> &lt; NR &gt; </strong>13 TCP
+    * 5<strong> &lt; NR &gt; </strong>14 TCP
+    * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 ### <a name="ers"></a>SÖZCÜKLERI
 
 * Ön uç yapılandırması
   * IP adresi 10.0.0.8
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 621<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 621<strong> &lt; NR &gt; </strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;NR&gt; </strong> TCP
-    * 33<strong>&lt;NR&gt; </strong> TCP
-    * 5<strong>&lt;NR&gt;</strong>13 TCP
-    * 5<strong>&lt;NR&gt;</strong>14 TCP
-    * 5<strong>&lt;NR&gt;</strong>16 TCP
+    * 32<strong> &lt; NR &gt; </strong> TCP
+    * 33<strong> &lt; NR &gt; </strong> TCP
+    * 5<strong> &lt; NR &gt; </strong>13 TCP
+    * 5<strong> &lt; NR &gt; </strong>14 TCP
+    * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 * Arka uç yapılandırması
   * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
@@ -156,7 +156,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
    9. Yönetici Kullanıcı adı ve yönetici parolası  
       Makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
    10. Alt ağ KIMLIĞI  
-   VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. Kimlik genellikle/Subscriptions/**&lt;&gt;abonelik kimliği**/ResourceGroups/**&lt;kaynak grubu&gt;adı**/Providers/Microsoft.Network/virtualNetworks/**&lt;sanal ağ adı&gt;**/Subnets/**&lt;alt ağ adı&gt; ** gibi görünüyor
+   VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/** &lt; abonelik kimliği &gt; **/ResourceGroups/** &lt; kaynak grubu adı &gt; **/Providers/Microsoft.Network/virtualNetworks/** &lt; sanal ağ adı &gt; **/Subnets/** &lt; alt ağ adı &gt; ** gibi görünüyor
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 
@@ -175,7 +175,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
    SLES for SAP uygulamaları 12 SP1 kullanılır  
    Daha önce oluşturulan kullanılabilirlik kümesini seçin  
 1. Her iki sanal makineye en az bir veri diski ekleyin  
-   Veri diskleri/usr/SAP/`<SAPSID`> dizini için kullanılır
+   Veri diskleri/usr/SAP/ `<SAPSID`> dizini için kullanılır
 1. Yük dengeleyici oluşturma (iç, standart):  
    1. Ön uç IP adreslerini oluşturma
       1. YOKS için IP adresi kısmına 10.0.0.7
@@ -803,7 +803,7 @@ Aşağıdaki testler, SUSE 'in en iyi yöntemler kılavuzlarındaki test çalı�
 
 1. Test HAGetFailoverConfig, HACheckConfig ve HACheckFailoverConfig
 
-   ASCS örneğinin çalışmakta olduğu \<düğümde sapsıd>adm olarak aşağıdaki komutları çalıştırın. Komutlar hata vererek başarısız olursa, bu durum, ana bilgisayar bilgisayarınızdaki çizgilerden kaynaklanıyor olabilir. Bu bilinen bir sorundur ve SAP-SUSE-Cluster-Connector paketindeki SUSE tarafından düzeltilecektir.
+   \<sapsid>ASCS örneğinin Şu anda çalıştırıldığı düğümde aşağıdaki komutları adm olarak çalıştırın. Komutlar hata vererek başarısız olursa, bu durum, ana bilgisayar bilgisayarınızdaki çizgilerden kaynaklanıyor olabilir. Bu bilinen bir sorundur ve SAP-SUSE-Cluster-Connector paketindeki SUSE tarafından düzeltilecektir.
 
    <pre><code>nw1-cl-0:nw1adm 54> sapcontrol -nr <b>00</b> -function HAGetFailoverConfig
    
@@ -915,7 +915,7 @@ Aşağıdaki testler, SUSE 'in en iyi yöntemler kılavuzlarındaki test çalı�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   ASCS örneğini geçirmek için \<aşağıdaki komutları sapsıd>adm olarak çalıştırın.
+   \<sapsid>ASCS örneğini geçirmek için aşağıdaki komutları adm olarak çalıştırın.
 
    <pre><code>nw1-cl-0:nw1adm 55> sapcontrol -nr 00 -host nw1-ascs -user nw1adm &lt;password&gt; -function HAFailoverToNode ""
    
@@ -1034,7 +1034,7 @@ Aşağıdaki testler, SUSE 'in en iyi yöntemler kılavuzlarındaki test çalı�
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Bir sıraya alma kilidi oluşturun, örneğin işlem su01 içinde bir Kullanıcı düzenleyin. ASCS örneğinin çalıştırıldığı düğümde \<sapsıd>adm olarak aşağıdaki komutları çalıştırın. Komutlar, yoks örneğini durdurur ve yeniden başlatır. Sıraya alma sunucusu 1 mimarisi kullanılıyorsa, bu testte sıraya alma kilidinin kaybedilmesi beklenir. Sıraya alma sunucusu 2 mimarisi kullanılıyorsa, sıraya alma bekletilecektir. 
+   Bir sıraya alma kilidi oluşturun, örneğin işlem su01 içinde bir Kullanıcı düzenleyin. \<sapsid>ASCS örneğinin çalıştırıldığı düğümde aşağıdaki komutları adm olarak çalıştırın. Komutlar, yoks örneğini durdurur ve yeniden başlatır. Sıraya alma sunucusu 1 mimarisi kullanılıyorsa, bu testte sıraya alma kilidinin kaybedilmesi beklenir. Sıraya alma sunucusu 2 mimarisi kullanılıyorsa, sıraya alma bekletilecektir. 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>

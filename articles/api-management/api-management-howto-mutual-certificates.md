@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: b0ddf6dda99ee666e3052b5a70e51c7e4208a374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80347098"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management'ta istemci sertifikası kimlik doğrulamasını kullanarak arka uç hizmetlerinin güvenliğini sağlama
@@ -26,7 +26,7 @@ API Management, istemci sertifikalarını kullanarak bir API 'nin arka uç hizme
 
 API Management REST API kullanarak sertifikaları yönetme hakkında daha fazla bilgi için bkz. <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API sertifika varlığı</a>.
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"> </a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Yeni bir istemci sertifikasını karşıya yüklemek için aşağıdaki adımlar
 3. **+ Ekle** düğmesine tıklayın.
     ![İstemci sertifikası Ekle](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Sertifikaya gözatıp KIMLIĞINI ve parolasını belirtin.
-5. **Oluştur**' a tıklayın.
+5. **Oluştur**'a tıklayın.
 
 > [!NOTE]
 > Sertifika **. pfx** biçiminde olmalıdır. Otomatik olarak imzalanan sertifikalara izin verilir.
@@ -86,7 +86,7 @@ Sertifika bir API tarafından kullanılıyorsa, bir uyarı ekranı görüntülen
 
 ## <a name="self-signed-certificates"></a>Otomatik olarak imzalanan sertifikalar
 
-Otomatik olarak imzalanan sertifikalar kullanıyorsanız, API Management arka uç sistemiyle iletişim kurması için sertifika zinciri doğrulamasını devre dışı bırakmanız gerekir. Aksi takdirde, 500 hata kodu döndürür. Bunu [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) yapılandırmak için (yeni arka uç için) [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) veya (mevcut arka uç için) PowerShell cmdlet 'lerini kullanabilir ve `-SkipCertificateChainValidation` parametresini olarak `True`ayarlayabilirsiniz.
+Otomatik olarak imzalanan sertifikalar kullanıyorsanız, API Management arka uç sistemiyle iletişim kurması için sertifika zinciri doğrulamasını devre dışı bırakmanız gerekir. Aksi takdirde, 500 hata kodu döndürür. Bunu yapılandırmak için [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (yeni arka uç için) veya [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (mevcut arka uç Için) PowerShell cmdlet 'lerini kullanabilir ve `-SkipCertificateChainValidation` parametresini olarak ayarlayabilirsiniz `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

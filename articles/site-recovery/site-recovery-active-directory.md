@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546511"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory ve DNS için olağanüstü durum kurtarmayı ayarlama
@@ -22,7 +22,7 @@ Active Directory için bir olağanüstü durum kurtarma planı oluşturmak için
 
 Bu makalede, Active Directory için bir olağanüstü durum kurtarma çözümünün nasıl oluşturulacağı açıklanmaktadır. Önkoşulları ve yük devretme yönergelerini içerir. Başlamadan önce Active Directory ve Site Recovery hakkında bilgi sahibi olmanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure 'a çoğaltma yapıyorsanız abonelik, Azure sanal ağı, depolama hesabı ve kurtarma hizmetleri Kasası dahil olmak üzere [Azure kaynaklarını hazırlayın](tutorial-prepare-azure.md).
 - Tüm bileşenler için [destek gereksinimlerini](site-recovery-support-matrix-to-azure.md) gözden geçirin.
@@ -61,7 +61,7 @@ Etki alanı denetleyicisini veya DNS 'yi barındıran sanal makine için, Site R
 
 Ardından, sanal ağın DNS sunucusunu Azure 'da DNS sunucusunu kullanacak şekilde yeniden yapılandırın.
 
-:::image type="content" source="./media/site-recovery-active-directory/azure-network.png" alt-text="Azure ağı":::
+:::image type="content" source="./media/site-recovery-active-directory/azure-network.png" alt-text="Azure Ağı":::
 
 ### <a name="azure-to-azure-protection"></a>Azure 'dan Azure 'a koruma
 
@@ -108,7 +108,7 @@ Windows Server 2012 ' den başlayarak [ek korumalar Active Directory Domain Serv
 
 Azure 'a yük devretmek **VM-GenerationID** 'nin sıfırlanmasına neden olabilir. **VM 'yi sıfırlama-GenerationID** , etki alanı denetleyicisi sanal makinesi Azure 'da başladığında ek korumalar tetikler. Bu durum, etki alanı denetleyicisi sanal makinesinde oturum açabilmede önemli bir gecikmeye neden olacak.
 
-Bu etki alanı denetleyicisi yalnızca bir test yük devretmesinde kullanıldığından, sanallaştırma korumaları gerekli değildir. Etki alanı denetleyicisi sanal makinesi için **VM-GenerationID** değerinin değişmediğinden emin olmak için, aşağıdaki `DWORD` değerini şirket içi etki alanı denetleyicisinde **4** olarak değiştirebilirsiniz:
+Bu etki alanı denetleyicisi yalnızca bir test yük devretmesinde kullanıldığından, sanallaştırma korumaları gerekli değildir. Etki alanı denetleyicisi sanal makinesi için **VM-GenerationID** değerinin değişmediğinden emin olmak için, aşağıdaki değerini `DWORD` Şirket içi etki alanı denetleyicisinde **4** olarak değiştirebilirsiniz:
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
@@ -124,7 +124,7 @@ Bir test yük devretmesinin ardından sanallaştırma korumaları tetikleniyorsa
 
   :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Çağırma KIMLIĞI değişikliği":::
 
-- `SYSVOL`klasör ve `NETLOGON` paylaşımlar kullanılamıyor.
+- `SYSVOL`klasör ve `NETLOGON` Paylaşımlar kullanılamıyor.
 
   :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL klasörü paylaşma":::
 
@@ -139,7 +139,7 @@ Bir test yük devretmesinin ardından sanallaştırma korumaları tetikleniyorsa
 > [!IMPORTANT]
 > Bu bölümde açıklanan yapılandırmalardan bazıları standart veya varsayılan etki alanı denetleyicisi yapılandırması değildir. Bu değişiklikleri bir üretim etki alanı denetleyicisinde yapmak istemiyorsanız, Site Recovery yük devretme testi için ayrılmış bir etki alanı denetleyicisi oluşturabilirsiniz. Değişiklikleri yalnızca bu ayrılmış etki alanı denetleyicisinde yapın.
 
-1. Klasör ve `SYSVOL` `NETLOGON` klasörün paylaşılıp paylaşılmadığını denetlemek için komut isteminde aşağıdaki komutu çalıştırın:
+1. `SYSVOL`Klasör ve `NETLOGON` klasörün paylaşılıp paylaşılmadığını denetlemek için komut isteminde aşağıdaki komutu çalıştırın:
 
     `NET SHARE`
 
@@ -165,13 +165,13 @@ Yukarıdaki koşullar karşılanmıyorsa, büyük olasılıkla etki alanı denet
 
       PowerShell işlevlerini de kullanabilirsiniz. Daha fazla bilgi için bkz. [DFSR-SYSVOL yetkili/yetkili olmayan geri yükleme PowerShell işlevleri](/archive/blogs/thbouche/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions).
 
-1. Şirket içi etki alanı denetleyicisinde aşağıdaki kayıt defteri anahtarını **0** olarak ayarlayarak ilk eşitleme gereksinimini atlayın. `DWORD` Yoksa, **parametreleri parametreler** düğümü altında oluşturabilirsiniz.
+1. Şirket içi etki alanı denetleyicisinde aşağıdaki kayıt defteri anahtarını **0** olarak ayarlayarak ilk eşitleme gereksinimini atlayın. Yoksa `DWORD` , **parametreleri parametreler** düğümü altında oluşturabilirsiniz.
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
    Daha fazla bilgi için bkz. [DNS olay kimliği 4013 sorunlarını giderme: DNS sunucusu ad ile TÜMLEŞIK DNS bölgelerini yükleyemedi](https://support.microsoft.com/kb/2001093).
 
-1. Kullanıcı oturum açma bilgilerini doğrulamak için bir genel katalog sunucusunun kullanılabilir olması gereksinimini devre dışı bırakın. Bunu yapmak için, şirket içi etki alanı denetleyicisinde aşağıdaki kayıt defteri anahtarını **1**olarak ayarlayın. `DWORD` Yoksa, **LSA** düğümü altında oluşturabilirsiniz.
+1. Kullanıcı oturum açma bilgilerini doğrulamak için bir genel katalog sunucusunun kullanılabilir olması gereksinimini devre dışı bırakın. Bunu yapmak için, şirket içi etki alanı denetleyicisinde aşağıdaki kayıt defteri anahtarını **1**olarak ayarlayın. Yoksa `DWORD` , **LSA** düğümü altında oluşturabilirsiniz.
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
@@ -181,7 +181,7 @@ Yukarıdaki koşullar karşılanmıyorsa, büyük olasılıkla etki alanı denet
 
 Etki alanı denetleyicisi ve DNs 'yi aynı VM üzerinde çalıştırıyorsanız, bu yordamı atlayabilirsiniz.
 
-DNS, etki alanı denetleyicisiyle aynı VM 'de değilse, yük devretme testi için bir DNS sanal makinesi oluşturmanız gerekir. Yeni bir DNS sunucusu kullanabilir ve tüm gerekli bölgeleri oluşturabilirsiniz. Örneğin, Active Directory etki alanınız varsa `contoso.com`, ADıYLA `contoso.com`bir DNS bölgesi oluşturabilirsiniz. Active Directory karşılık gelen girişlerin DNS 'de aşağıdaki gibi güncelleştirilmeleri gerekir:
+DNS, etki alanı denetleyicisiyle aynı VM 'de değilse, yük devretme testi için bir DNS sanal makinesi oluşturmanız gerekir. Yeni bir DNS sunucusu kullanabilir ve tüm gerekli bölgeleri oluşturabilirsiniz. Örneğin, Active Directory etki alanınız varsa `contoso.com` , adıyla BIR DNS bölgesi oluşturabilirsiniz `contoso.com` . Active Directory karşılık gelen girişlerin DNS 'de aşağıdaki gibi güncelleştirilmeleri gerekir:
 
 1. Kurtarma planındaki diğer sanal makinelerin başlamasından önce bu ayarların yerinde olduğundan emin olun:
 

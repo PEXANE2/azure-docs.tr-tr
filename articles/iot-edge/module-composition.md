@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80545622"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin
@@ -36,7 +36,7 @@ Azure IoT Edge öğreticilerde, Azure IoT Edge portalındaki bir sihirbaza gider
 
 Yüksek düzeyde bir dağıtım bildirimi, istenen özellikleriyle yapılandırılmış bir modül TWINS listesidir. Dağıtım bildirimi, hangi modüllerin yükleneceğini ve bunların nasıl yapılandırılacağını IoT Edge bir cihaza (veya bir cihaz grubuna) bildirir. Dağıtım bildirimleri, her modül için *istenen özellikleri* içerir ikizi. IoT Edge cihazlar her bir modülün *bildirilen özelliklerini* geri bildirir.
 
-Her dağıtım bildiriminde iki modül gereklidir: `$edgeAgent`, ve. `$edgeHub` Bu modüller, IoT Edge cihazını ve üzerinde çalışan modülleri yöneten IoT Edge çalışma zamanının bir parçasıdır. Bu modüller hakkında daha fazla bilgi için bkz. [IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
+Her dağıtım bildiriminde iki modül gereklidir: `$edgeAgent` , ve `$edgeHub` . Bu modüller, IoT Edge cihazını ve üzerinde çalışan modülleri yöneten IoT Edge çalışma zamanının bir parçasıdır. Bu modüller hakkında daha fazla bilgi için bkz. [IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
 İki çalışma zamanı modülünün yanı sıra, bir IoT Edge cihazında çalıştırmak için en fazla 20 modül ekleyebilirsiniz.
 
@@ -141,7 +141,7 @@ Modüller, IoT SDK 'larını kullanarak, kendi iletileri için ModuleClient sın
 
 Kaynak özelliği aşağıdaki değerlerden herhangi biri olabilir:
 
-| Kaynak | Açıklama |
+| Kaynak | Description |
 | ------ | ----------- |
 | `/*` | Tüm modülden veya yaprak cihazlardan gelen cihazdan buluta iletiler veya ikizi değişiklik bildirimleri |
 | `/twinChangeNotifications` | Herhangi bir modülden veya yaprak cihazdan gelen herhangi bir ikizi değişikliği (bildirilen Özellikler) |
@@ -177,7 +177,7 @@ Havuz, iletilerin nereye gönderileceğini tanımlar. Yalnızca modüller ve IoT
 
 Sink özelliği aşağıdaki değerlerden herhangi biri olabilir:
 
-| Havuz | Açıklama |
+| Havuz | Description |
 | ---- | ----------- |
 | `$upstream` | İletiyi IoT Hub gönder |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | İletiyi belirli bir modülün belirli bir girdisine gönder |

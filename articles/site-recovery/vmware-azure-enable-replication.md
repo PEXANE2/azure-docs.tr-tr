@@ -7,17 +7,17 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80584140"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware VM 'Leri için Azure 'a çoğaltmayı etkinleştirme
 
 Bu makalede, şirket içi VMware sanal makinelerinin (VM) Azure 'a nasıl çoğaltılmasının nasıl etkinleştirileceği açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, sisteminizin aşağıdaki ölçütleri karşıladığı varsayılmaktadır:
 
@@ -49,7 +49,7 @@ VMware sanal makinelerini çoğalttığınızda, bu bilgileri göz önünde bulu
 
 Bu bölümdeki adımları uygulamadan önce, aşağıdaki bilgileri gözden geçirin:
 
-- Azure Site Recovery artık tüm yeni çoğaltmalar için yönetilen disklere doğrudan çoğaltılır. İşlem sunucusu, çoğaltma günlüklerini hedef bölgedeki bir önbellek depolama hesabına yazar. Bu Günlükler, adlandırma kuralına sahip olan çoğaltma tarafından yönetilen disklerde kurtarma noktaları oluşturmak için kullanılır `asrseeddisk`.
+- Azure Site Recovery artık tüm yeni çoğaltmalar için yönetilen disklere doğrudan çoğaltılır. İşlem sunucusu, çoğaltma günlüklerini hedef bölgedeki bir önbellek depolama hesabına yazar. Bu Günlükler, adlandırma kuralına sahip olan çoğaltma tarafından yönetilen disklerde kurtarma noktaları oluşturmak için kullanılır `asrseeddisk` .
 - Yönetilen disklere çoğaltma için PowerShell desteği [az. RecoveryServices Modül sürümü 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) ile başlayarak kullanılabilir
 - Yük devretme sırasında, seçtiğiniz kurtarma noktası, hedef tarafından yönetilen diski oluşturmak için kullanılır.
 - Daha önce hedef depolama hesaplarına çoğaltılmak üzere yapılandırılmış VM 'Ler etkilenmez.
@@ -57,7 +57,7 @@ Bu bölümdeki adımları uygulamadan önce, aşağıdaki bilgileri gözden geç
 
 Çoğaltmayı etkinleştirmek için şu adımları izleyin:
 
-1. 2. **Adım: uygulama** > **kaynağını**Çoğalt ' a gidin. Çoğaltmayı ilk kez etkinleştirdikten sonra ek sanal makineler için çoğaltmayı etkinleştirmek üzere kasada **+ Çoğalt** ' ı seçin.
+1. 2. **Adım: uygulama kaynağını Çoğalt**' a gidin  >  **Source**. Çoğaltmayı ilk kez etkinleştirdikten sonra ek sanal makineler için çoğaltmayı etkinleştirmek üzere kasada **+ Çoğalt** ' ı seçin.
 1. **Kaynak** sayfada > **kaynak**bölümünde yapılandırma sunucusunu seçin.
 1. **Makine türü**Için **sanal makineler** veya **fiziksel makineler**' i seçin.
 1. **vCenter/vSphere Hypervisor** bölümünde vSphere konağını yöneten vCenter sunucusunu veya konağı seçin. Fiziksel bilgisayarları çoğaltdıysanız Bu ayar ilgili değildir.
@@ -75,16 +75,16 @@ Bu bölümdeki adımları uygulamadan önce, aşağıdaki bilgileri gözden geç
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="Çoğaltma hedefi penceresini etkinleştir":::
 
-1.  > Sanal **makineler için****sanal makineler**' i seçin, çoğaltmak istediğiniz her bir sanal makineyi seçin. Yalnızca çoğaltmanın etkinleştiribileceği sanal makineleri seçebilirsiniz. Sonra **Tamam**’ı seçin. Belirli bir sanal makineyi göremiyorsanız veya seçmezseniz, bu sorunu çözmek için [Azure Portal kaynak makine listede listelenmiyor](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) bölümüne bakın.
+1. Sanal **makineler için**  >  **sanal makineler**' i seçin, çoğaltmak istediğiniz her bir sanal makineyi seçin. Yalnızca çoğaltmanın etkinleştiribileceği sanal makineleri seçebilirsiniz. Sonra **Tamam**’ı seçin. Belirli bir sanal makineyi göremiyorsanız veya seçmezseniz, bu sorunu çözmek için [Azure Portal kaynak makine listede listelenmiyor](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) bölümüne bakın.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Çoğaltmayı etkinleştir sanal makineler penceresi seçin":::
 
-1.  > Özellikler**yapılandırma özellikleri**için, işlem sunucusunun VM 'ye Site Recovery Mobility hizmetini otomatik olarak yüklemek için kullandığı hesabı seçin. **Properties** Ayrıca, veri dalgalanma desenlerinize göre çoğaltma için kullanılacak hedef yönetilen disk türünü seçin.
+1. Özellikler **Properties**  >  **yapılandırma özellikleri**için, işlem sunucusunun VM 'ye Site Recovery Mobility hizmetini otomatik olarak yüklemek için kullandığı hesabı seçin. Ayrıca, veri dalgalanma desenlerinize göre çoğaltma için kullanılacak hedef yönetilen disk türünü seçin.
 1. Varsayılan olarak, bir kaynak VM 'nin tüm diskleri çoğaltılır. Diskleri çoğaltmanın dışında tutmak için, çoğaltmak istemediğiniz disklerin **dahil** etme onay kutusunu temizleyin. Sonra **Tamam**’ı seçin. Daha sonra ek özellikleri ayarlayabilirsiniz. Diskleri dışarıda bırakma hakkında [daha fazla bilgi edinin](vmware-azure-exclude-disk.md) .
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Çoğaltmayı etkinleştir özellikleri yapılandırma penceresi":::
 
-1. Çoğaltma **ayarları** > **çoğaltma ayarlarını yapılandır**' dan doğru çoğaltma ilkesinin seçildiğini doğrulayın. **Ayarlar** > **çoğaltma ilkeleri** > _ilke adı_ > **düzenleme ayarları**' nın çoğaltma ilkesi ayarlarını değiştirebilirsiniz. Bir ilkeye uygulanan değişiklikler, çoğaltma ve yeni sanal makineler için de geçerlidir.
+1. Çoğaltma **ayarları**  >  **çoğaltma ayarlarını yapılandır**' dan doğru çoğaltma ilkesinin seçildiğini doğrulayın. **Ayarlar**  >  **çoğaltma ilkeleri**  >  _ilke adı_  >  **düzenleme ayarları**' nın çoğaltma ilkesi ayarlarını değiştirebilirsiniz. Bir ilkeye uygulanan değişiklikler, çoğaltma ve yeni sanal makineler için de geçerlidir.
 1. Sanal makineleri bir çoğaltma grubuna toplamak istiyorsanız **Çoklu VM tutarlılığını**etkinleştirin. Grup için bir ad belirtin ve ardından **Tamam**' ı seçin.
 
    > [!NOTE]
@@ -93,15 +93,15 @@ Bu bölümdeki adımları uygulamadan önce, aşağıdaki bilgileri gözden geç
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Çoğaltma penceresini etkinleştir":::
 
-1. **Çoğaltmayı etkinleştir**' i seçin. **Koruma** işinin ilerleme durumunu **Ayarlar** > **işleri** > **Site Recovery işler**' de izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştıktan sonra, sanal makine yük devretmeye hazırsa.
+1. **Çoğaltmayı etkinleştir**' i seçin. **Koruma** işinin ilerleme durumunu **Ayarlar**  >  **işleri**  >  **Site Recovery işler**' de izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştıktan sonra, sanal makine yük devretmeye hazırsa.
 
 ## <a name="view-and-manage-vm-properties"></a>VM özelliklerini görüntüleme ve yönetme
 
 Ardından, kaynak sanal makinenin özelliklerini doğrulayın. Azure VM adının [Azure sanal makine gereksinimleriyle](vmware-physical-azure-support-matrix.md#replicated-machines)uyumlu olması gerektiğini unutmayın.
 
-1. **Ayarlar** > **çoğaltılan öğeler**' e gidin ve ardından sanal makineyi seçin. **Essentials** SAYFASıNDA, sanal makinenin ayarları ve durumuyla ilgili bilgiler gösterilir.
+1. **Ayarlar**  >  **çoğaltılan öğeler**' e gidin ve ardından sanal makineyi seçin. **Essentials** SAYFASıNDA, sanal makinenin ayarları ve durumuyla ilgili bilgiler gösterilir.
 1. **Özellikler**' de VM için çoğaltma ve yük devretme bilgilerini görüntüleyebilirsiniz.
-1. **İşlem ve ağ** > **işlem özellikleri**' nde, birden çok VM özelliğini değiştirebilirsiniz.
+1. **İşlem ve ağ**  >  **işlem özellikleri**' nde, birden çok VM özelliğini değiştirebilirsiniz.
 
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="İşlem ve ağ özellikleri penceresi":::
 

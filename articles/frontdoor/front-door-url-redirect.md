@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: sharadag
 ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295469"
 ---
 # <a name="url-redirect"></a>URL yeniden yönlendirme
@@ -40,13 +40,13 @@ Yönlendirme için kullanılacak protokolü ayarlayabilirsiniz. Bu, yeniden yön
 - **Eşleştirme isteği**: Bu seçenek, gelen istek tarafından kullanılan protokolü korur. Bu nedenle, HTTP isteği HTTP olarak kalır ve HTTPS isteği HTTPS Post yeniden yönlendirmesi kalır.
 
 ## <a name="destination-host"></a>Hedef konak
-Yeniden yönlendirme yönlendirmesi yapılandırmanın bir parçası olarak, yeniden yönlendirme isteği için ana bilgisayar adı veya etki alanını da değiştirebilirsiniz. Bu alanı, yeniden yönlendirmenin URL 'sindeki ana bilgisayar adını değiştirmek ya da başka bir şekilde gelen istekten ana bilgisayar adını korumak için ayarlayabilirsiniz. Bu nedenle, bu alanı kullanarak üzerinde `https://www.contoso.com/*` gönderilen tüm istekleri öğesine `https://www.fabrikam.com/*`yeniden yönlendirebilirsiniz.
+Yeniden yönlendirme yönlendirmesi yapılandırmanın bir parçası olarak, yeniden yönlendirme isteği için ana bilgisayar adı veya etki alanını da değiştirebilirsiniz. Bu alanı, yeniden yönlendirmenin URL 'sindeki ana bilgisayar adını değiştirmek ya da başka bir şekilde gelen istekten ana bilgisayar adını korumak için ayarlayabilirsiniz. Bu nedenle, bu alanı kullanarak üzerinde gönderilen tüm istekleri öğesine yeniden `https://www.contoso.com/*` yönlendirebilirsiniz `https://www.fabrikam.com/*` .
 
 ## <a name="destination-path"></a>Hedef yol
-Yeniden yönlendirmenin bir parçası olarak bir URL 'nin yol segmentini değiştirmek istediğiniz durumlarda, bu alanı yeni yol değeri ile ayarlayabilirsiniz. Aksi takdirde, yol değerini yeniden yönlendirmenin bir parçası olarak korumayı seçebilirsiniz. Bu nedenle, bu alanı kullanarak öğesine `https://www.contoso.com/\*` gönderilen tüm istekleri öğesine `https://www.contoso.com/redirected-site`yeniden yönlendirebilirsiniz.
+Yeniden yönlendirmenin bir parçası olarak bir URL 'nin yol segmentini değiştirmek istediğiniz durumlarda, bu alanı yeni yol değeri ile ayarlayabilirsiniz. Aksi takdirde, yol değerini yeniden yönlendirmenin bir parçası olarak korumayı seçebilirsiniz. Bu nedenle, bu alanı kullanarak öğesine gönderilen tüm istekleri öğesine yeniden yönlendirebilirsiniz `https://www.contoso.com/\*` `https://www.contoso.com/redirected-site` .
 
 ## <a name="query-string-parameters"></a>Sorgu dizesi parametreleri
-Ayrıca, yeniden yönlendirilen URL 'deki sorgu dizesi parametrelerini de değiştirebilirsiniz. Gelen istek URL 'sindeki mevcut Sorgu dizelerini değiştirmek için, bu alanı ' replace ' olarak ayarlayın ve uygun değeri ayarlayın. Aksi halde, alanı ' koru ' olarak ayarlayarak özgün sorgu dizeleri kümesini koruyabilirsiniz. Örnek olarak, bu alanı kullanarak öğesine `https://www.contoso.com/foo/bar` gönderilen tüm trafiği öğesine `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F`yeniden yönlendirebilirsiniz. 
+Ayrıca, yeniden yönlendirilen URL 'deki sorgu dizesi parametrelerini de değiştirebilirsiniz. Gelen istek URL 'sindeki mevcut Sorgu dizelerini değiştirmek için, bu alanı ' replace ' olarak ayarlayın ve uygun değeri ayarlayın. Aksi halde, alanı ' koru ' olarak ayarlayarak özgün sorgu dizeleri kümesini koruyabilirsiniz. Örnek olarak, bu alanı kullanarak öğesine gönderilen tüm trafiği öğesine yeniden yönlendirebilirsiniz `https://www.contoso.com/foo/bar` `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 
 
 ## <a name="destination-fragment"></a>Hedef parça
 Hedef parça, genellikle tarayıcılar tarafından bir sayfadaki belirli bir bölüme kara olarak kullanılan ' # ' öğesinden sonra URL 'nin bölümüdür. Bu alanı yeniden yönlendirme URL 'sine bir parça eklemek için ayarlayabilirsiniz.

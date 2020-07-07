@@ -13,16 +13,16 @@ ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
 ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294380"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure Cloud Services bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
 
 > [!div class="op_single_selector"]
-> * [Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure portalındaki](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -47,13 +47,13 @@ Visual Studio 2017 sürüm 15,4 ve önceki sürümlerini kullanırken, Yayımla 
    > [!Note]
    > Uzak Masaüstü bağlantısı için gereken sertifikalar, diğer Azure işlemleri için kullandığınız sertifikalardan farklıdır. Uzaktan erişim sertifikası özel bir anahtara sahip olmalıdır.
 
-5. Listeden bir sertifika seçin veya ** &lt;oluştur... seçeneğini belirleyin. &gt;**. Yeni bir sertifika oluşturuyorsanız, istendiğinde yeni sertifika için bir kolay ad sağlayın ve **Tamam**' ı seçin. Yeni sertifika açılan liste kutusunda görünür.
+5. Listeden bir sertifika seçin veya ** &lt; Oluştur... &gt; **seçeneğini belirleyin. Yeni bir sertifika oluşturuyorsanız, istendiğinde yeni sertifika için bir kolay ad sağlayın ve **Tamam**' ı seçin. Yeni sertifika açılan liste kutusunda görünür.
 
 6. Bir Kullanıcı adı ve parola belirtin. Mevcut bir hesabı kullanamazsınız. Yeni hesap için Kullanıcı adı olarak "Yönetici" kullanmayın.
 
 7. Hesabın sona ereceği ve sonrasında Uzak Masaüstü bağlantılarının engelleneceğini belirten bir tarih seçin.
 
-8. Gerekli tüm bilgileri sağladıktan sonra **Tamam**' ı seçin. Visual Studio, seçilen sertifika kullanılarak şifrelenmiş parola dahil olmak üzere `.cscfg` , `.csdef` uzak masaüstü ayarlarını projenizin ve dosyalarınıza ekler.
+8. Gerekli tüm bilgileri sağladıktan sonra **Tamam**' ı seçin. Visual Studio, `.cscfg` `.csdef` Seçilen sertifika kullanılarak şifrelenmiş parola dahil olmak üzere, uzak masaüstü ayarlarını projenizin ve dosyalarınıza ekler.
 
 9. **İleri** düğmesini kullanarak kalan adımları tamamladıktan sonra bulut hizmetinizi yayımlamaya hazırsanız **Yayımla** ' yı seçin. Yayımlamaya hazırsanız **iptal** ' i seçin ve değişiklikleri kaydetmek isteyip Istemediğiniz sorulduğunda **Evet** yanıtını verin. Bulut hizmetinizi daha sonra bu ayarlarla yayımlayabilirsiniz.
 
@@ -86,7 +86,7 @@ Derleme aracısında Visual Studio 2017 sürüm 15,5 veya sonraki bir sürümün
 
 Azure DevOps Services ' den RDP uzantısını kullanmak için, yapı ardışık düzenine aşağıdaki ayrıntıları ekleyin:
 
-1. Dağıtımın `/p:ForceRDPExtensionOverPlugin=true` RDP EKLENTISI yerine RDP uzantısıyla çalıştığından emin olmak için MSBuild bağımsız değişkenlerine dahil edin. Örneğin:
+1. `/p:ForceRDPExtensionOverPlugin=true`Dağıtımın RDP eklentisi yerıne RDP uzantısıyla çalıştığından emin olmak Için MSBuild bağımsız değişkenlerine dahil edin. Örnek:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -97,7 +97,7 @@ Azure DevOps Services ' den RDP uzantısını kullanmak için, yapı ardışık 
 
 1. Dağıtım adımından sonra, bir **Azure PowerShell** adımı ekleyin, **görünen ad** özelliğini "Azure dağıtımı: RDP uzantısını etkinleştir" (veya başka bir uygun ad) olarak ayarlayın ve uygun Azure aboneliğinizi seçin.
 
-1. **Komut dosyası türünü** "inline" olarak ayarlayın ve aşağıdaki kodu **satır içi betik** alanına yapıştırın. (Ayrıca bu betiği kullanarak projenizde `.ps1` bir dosya oluşturabilir, **komut dosyası türünü** "betik dosyası yolu" olarak ayarlayabilir ve **betik yolunu** dosyayı işaret etmek üzere ayarlayabilirsiniz.)
+1. **Komut dosyası türünü** "inline" olarak ayarlayın ve aşağıdaki kodu **satır içi betik** alanına yapıştırın. (Ayrıca `.ps1` bu betiği kullanarak projenizde bir dosya oluşturabilir, **komut dosyası türünü** "betik dosyası yolu" olarak ayarlayabilir ve **betik yolunu** dosyayı işaret etmek üzere ayarlayabilirsiniz.)
 
     ```ps
     Param(

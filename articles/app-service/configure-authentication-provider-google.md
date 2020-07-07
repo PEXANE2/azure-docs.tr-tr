@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80519938"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>App Service veya Azure Işlevleri uygulamanızı Google oturum açma bilgilerini kullanacak şekilde yapılandırma
@@ -25,8 +25,8 @@ Bu konudaki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresin
 ## <a name="register-your-application-with-google"></a><a name="register"> </a>Uygulamanızı Google ile kaydedin
 
 1. İstemci KIMLIĞI ve istemci parolası oluşturmak için, [Google oturum açma ve sunucu tarafı uygulamaları için](https://developers.google.com/identity/sign-in/web/server-side-flow) Google belgelerini izleyin. Herhangi bir kod değişikliği yapmanız gerekmez. Yalnızca aşağıdaki bilgileri kullanın:
-    - **Yetkili JavaScript kaynakları**için `https://<app-name>.azurewebsites.net` * \<app-name>* içinde uygulamanızın adıyla birlikte kullanın.
-    - **Yetkili yeniden yönlendirme URI 'si**için `https://<app-name>.azurewebsites.net/.auth/login/google/callback`kullanın.
+    - **Yetkili JavaScript kaynakları**için ' `https://<app-name>.azurewebsites.net` de uygulamanızın adıyla birlikte kullanın *\<app-name>* .
+    - **Yetkili yeniden yönlendirme URI 'si**için kullanın `https://<app-name>.azurewebsites.net/.auth/login/google/callback` .
 1. Uygulama KIMLIĞI ve uygulama gizli anahtarı değerlerini kopyalayın.
 
     > [!IMPORTANT]
@@ -35,7 +35,7 @@ Bu konudaki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresin
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Uygulamanıza Google bilgilerini ekleyin
 
 1. [Azure portal]App Service uygulamanıza gidin.
-1. **Ayarlar** > **kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
+1. **Ayarlar**  >  **kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
 1. **Google**' ı seçin ve daha önce EDINDIĞINIZ uygulama kimliği ve uygulama gizli değerlerini yapıştırın. Uygulamanız için gereken tüm kapsamları etkinleştirin.
 1. **Tamam**’ı seçin.
 
@@ -65,5 +65,5 @@ Artık uygulamanızda kimlik doğrulaması için Google 'ı kullanmaya hazırsı
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure portal]: https://portal.azure.com/
+[Azure portalındaki]: https://portal.azure.com/
 

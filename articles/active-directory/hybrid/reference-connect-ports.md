@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331101"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Karma Kimlik için Gereken Bağlantı Noktaları ve Protokoller
@@ -31,7 +31,7 @@ Aşağıdaki belge, karma kimlik çözümü uygulamaya yönelik gereken bağlant
 ## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>Tablo 1-Azure AD Connect ve şirket içi AD
 Bu tabloda, Azure AD Connect sunucusu ile şirket içi AD arasındaki iletişim için gereken bağlantı noktaları ve protokoller açıklanmaktadır.
 
-| Protokol | Bağlantı noktaları | Açıklama |
+| Protokol | Bağlantı noktaları | Description |
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |Hedef ormanda DNS aramaları. |
 | Kerberos |88 (TCP/UDP) |AD ormanında Kerberos kimlik doğrulaması. |
@@ -46,7 +46,7 @@ Bu tabloda, Azure AD Connect sunucusu ile şirket içi AD arasındaki iletişim 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>Tablo 2-Azure AD Connect ve Azure AD
 Bu tabloda Azure AD Connect sunucusu ile Azure AD arasında iletişim için gereken bağlantı noktaları ve protokoller açıklanmaktadır.
 
-| Protokol | Bağlantı noktaları | Açıklama |
+| Protokol | Bağlantı noktaları | Description |
 | --- | --- | --- |
 | HTTP |80 (TCP) |TLS/SSL sertifikalarını doğrulamak için CRL 'Leri (sertifika Iptal listeleri) indirmek için kullanılır. |
 | HTTPS |443 (TCP) |Azure AD ile eşitlenmek için kullanılır. |
@@ -56,7 +56,7 @@ Güvenlik duvarınızda açmanız gereken URL 'Lerin ve IP adreslerinin bir list
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>Tablo 3-Azure AD Connect ve AD FS Federasyon sunucuları/WAP
 Bu tabloda, Azure AD Connect sunucusu ile AD FS Federasyon/WAP sunucuları arasındaki iletişim için gereken bağlantı noktaları ve protokoller açıklanmaktadır.  
 
-| Protokol | Bağlantı noktaları | Açıklama |
+| Protokol | Bağlantı noktaları | Description |
 | --- | --- | --- |
 | HTTP |80 (TCP) |TLS/SSL sertifikalarını doğrulamak için CRL 'Leri (sertifika Iptal listeleri) indirmek için kullanılır. |
 | HTTPS |443 (TCP) |Azure AD ile eşitlenmek için kullanılır. |
@@ -65,14 +65,14 @@ Bu tabloda, Azure AD Connect sunucusu ile AD FS Federasyon/WAP sunucuları aras�
 ## <a name="table-4---wap-and-federation-servers"></a>Tablo 4-WAP ve Federasyon sunucuları
 Bu tabloda, Federasyon sunucuları ve WAP sunucuları arasındaki iletişim için gereken bağlantı noktaları ve protokoller açıklanmaktadır.
 
-| Protokol | Bağlantı noktaları | Açıklama |
+| Protokol | Bağlantı noktaları | Description |
 | --- | --- | --- |
 | HTTPS |443 (TCP) |Kimlik doğrulaması için kullanılır. |
 
 ## <a name="table-5---wap-and-users"></a>Tablo 5-WAP ve kullanıcılar
 Bu tabloda, kullanıcılar ve WAP sunucuları arasındaki iletişim için gereken bağlantı noktaları ve protokoller açıklanmaktadır.
 
-| Protokol | Bağlantı noktaları | Açıklama |
+| Protokol | Bağlantı noktaları | Description |
 | --- | --- | --- |
 | HTTPS |443 (TCP) |Cihaz kimlik doğrulaması için kullanılır. |
 | TCP |49443 (TCP) |Sertifika kimlik doğrulaması için kullanılır. |
@@ -81,7 +81,7 @@ Bu tabloda, kullanıcılar ve WAP sunucuları arasındaki iletişim için gereke
 Aşağıdaki tablolarda, Azure AD Connect ile Azure AD arasında iletişim için gereken bağlantı noktaları ve protokoller açıklanmaktadır.
 
 ### <a name="table-6a---pass-through-authentication-with-sso"></a>Table 6a-SSO ile doğrudan kimlik doğrulama
-|Protokol|Bağlantı Noktası Numarası|Açıklama
+|Protokol|Bağlantı Noktası Numarası|Description
 | --- | --- | ---
 |HTTP|80|SSL gibi güvenlik doğrulaması için giden HTTP trafiğini etkinleştirin. Ayrıca bağlayıcı Otomatik Güncelleştirme özelliğinin düzgün çalışması için de gereklidir.
 |HTTPS|443| Özelliği etkinleştirme ve devre dışı bırakma, bağlayıcıları kaydetme, bağlayıcı güncelleştirmelerini indirme ve tüm Kullanıcı oturum açma isteklerini işleme gibi işlemler için giden HTTPS trafiğini etkinleştirin.
@@ -90,7 +90,7 @@ Bunlara ek olarak, Azure AD Connect [Azure veri MERKEZI IP aralıklarına](https
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>Tablo 6b-SSO ile parola karması eşitleme
 
-|Protokol|Bağlantı Noktası Numarası|Açıklama
+|Protokol|Bağlantı Noktası Numarası|Description
 | --- | --- | ---
 |HTTPS|443| SSO kaydını etkinleştirin (yalnızca SSO kayıt işlemi için gereklidir).
 
@@ -102,7 +102,7 @@ Aşağıdaki tablolarda Azure AD Connect Health aracıları ile Azure AD arasın
 ### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tablo 7A-(AD FS/Sync) ve Azure AD için Azure AD Connect Health aracısına yönelik bağlantı noktaları ve protokoller
 Bu tabloda, Azure AD Connect Health aracıları ile Azure AD arasında iletişim için gereken aşağıdaki giden bağlantı noktaları ve protokoller açıklanmaktadır.  
 
-| Protokol | Bağlantı noktaları | Açıklama |
+| Protokol | Bağlantı noktaları | Description |
 | --- | --- | --- |
 | HTTPS |443 (TCP) |Giden |
 | Azure Service Bus |5671 (TCP) |Giden |

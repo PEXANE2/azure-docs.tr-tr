@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334303"
 ---
 # <a name="use-the-drawing-tools-module"></a>Çizim araçları modülünü kullanma
@@ -23,7 +23,7 @@ Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül,
 
 1. Yeni bir HTML dosyası oluşturun ve [Haritayı her zamanki gibi uygulayın](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
 2. Azure haritalar çizim araçları modülünü yükleyin. Bunu iki şekilde yükleyebilirsiniz:
-    - Azure haritalar Hizmetleri modülünün küresel olarak barındırılan, Azure Content Delivery Network sürümünü kullanın. Dosyanın `<head>` öğesinde JAVASCRIPT ve CSS stil sayfasına başvuru ekleyin:
+    - Azure haritalar Hizmetleri modülünün küresel olarak barındırılan, Azure Content Delivery Network sürümünü kullanın. Dosyanın öğesinde JavaScript ve CSS stil sayfasına başvuru ekleyin `<head>` :
 
         ```html
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
@@ -34,7 +34,7 @@ Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül,
     
         > **NPM yüklemesi Azure-Maps-çizim-Araçlar**
     
-        Ardından, dosyanın `<head>` öğesinde JAVASCRIPT ve CSS stil sayfasına bir başvuru ekleyin:
+        Ardından, dosyanın öğesinde JavaScript ve CSS stil sayfasına bir başvuru ekleyin `<head>` :
 
          ```html
         <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
@@ -43,7 +43,7 @@ Azure Haritalar Web SDK 'Sı bir *çizim araçları modülü*sağlar. Bu modül,
 
 ## <a name="use-the-drawing-manager-directly"></a>Çizim yöneticisini doğrudan kullanma
 
-Çizim araçları modülü uygulamanıza yüklendikten sonra, çizim [Yöneticisi 'ni](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)kullanarak çizim ve Düzenle özelliklerini etkinleştirebilirsiniz. Çizim Yöneticisi seçeneklerini örneklarken veya alternatif olarak `drawingManager.setOptions()` işlevini kullanarak belirtebilirsiniz.
+Çizim araçları modülü uygulamanıza yüklendikten sonra, çizim [Yöneticisi 'ni](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)kullanarak çizim ve Düzenle özelliklerini etkinleştirebilirsiniz. Çizim Yöneticisi seçeneklerini örneklarken veya alternatif olarak işlevini kullanarak belirtebilirsiniz `drawingManager.setOptions()` .
 
 ### <a name="set-the-drawing-mode"></a>Çizim modunu ayarlama
 
@@ -61,7 +61,7 @@ Aşağıdaki kod, çizim Yöneticisi 'nin çizim modunun nasıl ayarlanacağı h
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çokgen çizme" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Bodepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>bir çokgen çizme</a> kalemine bakın.
+Bodepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>bir çokgen çizme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -73,7 +73,7 @@ Aşağıdaki kod, çizim Yöneticisi 'nin çizim modunun nasıl ayarlanacağı h
 * `freehand `-Koordinat, fare veya dokunma haritada sürüklendiğinde eklenir. 
 * `hybrid`-, Fare veya dokunma tıklandığında veya sürüklendiğinde koordinatlar eklenir.
 
-Aşağıdaki kod, çokgen çizim modunu sağlar ve çizim etkileşiminin bağlı olması gereken çizim etkileşiminin türünü ayarlar `freehand`. 
+Aşağıdaki kod, çokgen çizim modunu sağlar ve çizim etkileşiminin bağlı olması gereken çizim etkileşiminin türünü ayarlar `freehand` . 
 
 ```Javascript
 //Create an instance of the drawing manager and set drawing mode.
@@ -88,17 +88,17 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Ücretsiz çizim" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>ücretsiz çizim</a> kalemine bakın.
+Codepen 'da Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>ücretsiz çizim</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
 ### <a name="customizing-drawing-options"></a>Çizim seçeneklerini özelleştirme
 
-Önceki örneklerde çizim seçeneklerinin örnekleme sırasında nasıl özelleştirileceği gösterilmiştir. Ayrıca, `drawingManager.setOptions()` Işlevini kullanarak çizim Yöneticisi seçeneklerini ayarlayabilirsiniz. Aşağıda, setOptions işlevini kullanarak çizim Yöneticisi için tüm seçeneklerin özelleştirilmesini test eden bir araç verilmiştir.
+Önceki örneklerde çizim seçeneklerinin örnekleme sırasında nasıl özelleştirileceği gösterilmiştir. Ayrıca, işlevini kullanarak çizim Yöneticisi seçeneklerini ayarlayabilirsiniz `drawingManager.setOptions()` . Aşağıda, setOptions işlevini kullanarak çizim Yöneticisi için tüm seçeneklerin özelleştirilmesini test eden bir araç verilmiştir.
 
 <br/>
 
-<iframe height="685" title="Çizim yöneticisini özelleştirme" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Şekil verileri alın</a> kalemine bakın.
+<iframe height="685" title="Çizim yöneticisini özelleştirme" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Şekil verileri alın</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

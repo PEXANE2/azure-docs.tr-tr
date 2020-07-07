@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437892"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure Traffic Manager Azure App Service trafiğini denetleme
@@ -40,7 +40,7 @@ Azure Traffic Manager Azure ile kullanırken aşağıdaki noktaları aklınızda
 * Farklı bir Azure bulut hizmetiyle birlikte App Service kullanan aynı bölgedeki dağıtımlar için, karma senaryoları etkinleştirmek üzere her iki uç nokta türünü birleştirebilirsiniz.
 * Bir profilde bölge başına yalnızca bir App Service uç noktası belirtebilirsiniz. Bir bölge için uç nokta olarak bir uygulama seçtiğinizde, o bölgedeki geri kalan uygulamalar söz konusu profile yönelik seçim için kullanılamaz hale gelir.
 * Bir Azure Traffic Manager profilinde belirttiğiniz App Service uç noktaları, profilde uygulamanın Yapılandır sayfasında **etki alanı adları** bölümünün altında görüntülenir, ancak bu, yapılandırılamaz.
-* Bir profile bir uygulama ekledikten sonra, Uygulama Portalı sayfasının panosundaki **site URL 'si** , bir tane ayarladıysanız uygulamanın özel etkı alanı URL 'sini görüntüler. Aksi takdirde, Traffic Manager profil URL 'sini (örneğin, `contoso.trafficmanager.net`) görüntüler. Uygulamanın hem doğrudan etki alanı adı hem de Traffic Manager URL 'SI, **etki alanı adları** bölümünün altındaki uygulamanın yapılandırma sayfasında görünür.
+* Bir profile bir uygulama ekledikten sonra, Uygulama Portalı sayfasının panosundaki **site URL 'si** , bir tane ayarladıysanız uygulamanın özel etkı alanı URL 'sini görüntüler. Aksi takdirde, Traffic Manager profil URL 'sini (örneğin,) görüntüler `contoso.trafficmanager.net` . Uygulamanın hem doğrudan etki alanı adı hem de Traffic Manager URL 'SI, **etki alanı adları** bölümünün altındaki uygulamanın yapılandırma sayfasında görünür.
 * Özel etki alanı adlarınız beklendiği gibi çalışır, ancak uygulamalarınıza eklenmesinin yanı sıra DNS eşlemenizi Traffic Manager URL 'sine işaret etmek üzere de yapılandırmanız gerekir. App Service uygulaması için özel etki alanı ayarlama hakkında daha fazla bilgi için, bkz. [Traffic Manager tümleştirme ile Azure App Service bir özel etki alanı adı yapılandırma](configure-domain-traffic-manager.md).
 * Yalnızca standart veya Premium modda olan uygulamaları bir Azure Traffic Manager profiline ekleyebilirsiniz.
 * Bir Traffic Manager profile uygulama eklemek, uygulamanın yeniden başlatılmasına neden olur.

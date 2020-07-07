@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c07e161042a497a232cbd5e3f11128893a095381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550350"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>IoT Edge modülleri için kapsayıcı oluşturma seçeneklerini yapılandırma
@@ -52,15 +52,15 @@ IoT Edge dağıtım bildirimi JSON olarak biçimlendirilen oluşturma seçenekle
 
 Bu edgeHub örneği, kapsayıcıda gösterilen bağlantı noktalarını konak cihazdaki bir bağlantı noktasına eşlemek için **Hostconfig. PortBindings** parametresini kullanır.
 
-Visual Studio için Azure IoT Araçları uzantıları 'nı veya Visual Studio Code kullanıyorsanız, **dağıtım. Template. JSON** dosyasına oluşturma seçeneklerini JSON biçiminde yazabilirsiniz. Daha sonra, IoT Edge çözümünü derlemek veya dağıtım bildirimini oluşturmak için uzantıyı kullandığınızda, bu, JSON 'u, IoT Edge çalışma zamanının beklediği biçimde, sizin için bir dize olarak oluşturur. Örneğin:
+Visual Studio için Azure IoT Araçları uzantıları 'nı veya Visual Studio Code kullanıyorsanız, oluşturma seçeneklerini **deployment.template.js** dosyadaki JSON biçiminde yazabilirsiniz. Daha sonra, IoT Edge çözümünü derlemek veya dağıtım bildirimini oluşturmak için uzantıyı kullandığınızda, bu, JSON 'u, IoT Edge çalışma zamanının beklediği biçimde, sizin için bir dize olarak oluşturur. Örnek:
 
 ```json
 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
 ```
 
-Oluşturma seçeneklerini yazmak için bir ipucu, `docker inspect` komutunu kullanmaktır. Geliştirme işleminizin bir parçası olarak, kullanarak `docker run <container name>`modülü yerel olarak çalıştırın. Modülün istediğiniz şekilde çalışmasını istediğinizde, öğesini çalıştırın `docker inspect <container name>`. Bu komut modül ayrıntılarını JSON biçiminde verir. Yapılandırdığınız parametreleri bulun ve JSON ' ı kopyalayın. Örneğin:
+Oluşturma seçeneklerini yazmak için bir ipucu, `docker inspect` komutunu kullanmaktır. Geliştirme işleminizin bir parçası olarak, kullanarak modülü yerel olarak çalıştırın `docker run <container name>` . Modülün istediğiniz şekilde çalışmasını istediğinizde, öğesini çalıştırın `docker inspect <container name>` . Bu komut modül ayrıntılarını JSON biçiminde verir. Yapılandırdığınız parametreleri bulun ve JSON ' ı kopyalayın. Örnek:
 
-[![Docker Inceleme edgeHub](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) sonuçları](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
+[![Docker Inceleme edgeHub ](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png) sonuçları](./media/how-to-use-create-options/docker-inspect-edgehub-inline-and-expanded.png#lightbox)
 
 ## <a name="common-scenarios"></a>Yaygın senaryolar
 
@@ -75,11 +75,11 @@ Kapsayıcı oluşturma seçenekleri birçok senaryoyu etkinleştirir, ancak IoT 
 Modülünüzün IoT Edge çözümü dışındaki bir hizmetle iletişim kurması gerekiyorsa ve bunu yapmak için ileti yönlendirmeyi kullanmıyorsanız, bir ana bilgisayar bağlantı noktasını modül bağlantı noktasıyla eşlemeniz gerekir.
 
 >[!TIP]
->Aynı cihazdaki modül-modül iletişimi için bu bağlantı noktası eşlemesi gerekli değildir. A modülünün B modülünde barındırılan bir API sorgulaması gerekiyorsa, bağlantı noktası eşleştirmesi olmadan bunu yapabilir. B modülünün dockerfile içinde bir bağlantı noktasını kullanıma sunması gerekir, örneğin: `EXPOSE 8080`. Ardından A modülü, Modül B 'nin adını kullanarak API 'YI sorgulayabilir, örneğin: `http://ModuleB:8080/api`.
+>Aynı cihazdaki modül-modül iletişimi için bu bağlantı noktası eşlemesi gerekli değildir. A modülünün B modülünde barındırılan bir API sorgulaması gerekiyorsa, bağlantı noktası eşleştirmesi olmadan bunu yapabilir. B modülünün dockerfile içinde bir bağlantı noktasını kullanıma sunması gerekir, örneğin: `EXPOSE 8080` . Ardından A modülü, Modül B 'nin adını kullanarak API 'YI sorgulayabilir, örneğin: `http://ModuleB:8080/api` .
 
 İlk olarak, modül içindeki bir bağlantı noktasının bağlantıları dinlemek için açık olduğundan emin olun. Bunu, dockerfile içindeki bir [sergileme](https://docs.docker.com/engine/reference/builder/#expose) yönergesini kullanarak yapabilirsiniz. Örneğin, `EXPOSE 8080`. Gösterme yönergesi varsayılan olarak TCP protokolüne göre belirlenir veya UDP 'yi belirtebilirsiniz.
 
-Ardından, modüldeki açığa çıkarılan bağlantı noktasını konak cihazdaki bir bağlantı noktasıyla eşlemek için [Docker kapsayıcısının](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) **Hostconfig** grubundaki **portbindings** ayarını kullanın. Örneğin, modül içinde 8080 numaralı bağlantı noktasını açığa çıkardıysanız ve bunu konak cihazının 80 numaralı bağlantı noktasıyla eşlemek istiyorsanız, Template. JSON dosyasındaki oluşturma seçenekleri aşağıdaki örnekteki gibi görünür:
+Ardından, modüldeki açığa çıkarılan bağlantı noktasını konak cihazdaki bir bağlantı noktasıyla eşlemek için [Docker kapsayıcısının](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) **Hostconfig** grubundaki **portbindings** ayarını kullanın. Örneğin, modül içinde 8080 numaralı bağlantı noktasını açığa çıkardıysanız ve bunu konak cihazının 80 numaralı bağlantı noktasıyla eşlemek istiyorsanız, dosyadaki template.jsoluşturma seçenekleri aşağıdaki örnekteki gibi görünür:
 
 ```json
 "createOptions": {
@@ -109,7 +109,7 @@ Bir modülün ne kadar ana bilgisayar kaynaklarını kullanabileceğinizi bildir
 * **Memoryswap**: toplam bellek sınırı (bellek + takas). Örneğin, 536870912 bayt = 512 MB
 * **Cpuperiod**: CPU süresinin mikrosaniye cinsinden uzunluğu. Varsayılan değer 100000 ' dir; Örneğin, 25000 değeri, bir kapsayıcıyı CPU kaynaklarının %25 ' i ile sınırlandırır.
 
-Template. JSON biçiminde, bu değerler aşağıdaki örneğe benzer şekilde görünür:
+template.jsbiçiminde, bu değerler aşağıdaki örnekteki gibi görünür:
 
 ```json
 "createOptions": {

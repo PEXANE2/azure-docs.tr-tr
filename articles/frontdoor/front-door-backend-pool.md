@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293462"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure ön kapılarındaki arka uçlar ve arka uç havuzları
@@ -43,7 +43,7 @@ Bir arka uç, bir bölgedeki dağıtım örneğine eşittir. Ön kapı hem Azure
 
 Ön kapıya ait bir arka uca iletilen istekler, arka ucun hedeflenen kaynağı almak için kullandığı bir konak üstbilgisi alanı içerir. Bu alanın değeri genellikle arka uç URI 'sinden gelir ve ana bilgisayar ve bağlantı noktasına sahiptir.
 
-Örneğin, için `www.contoso.com` yapılan bir istek ana bilgisayar üst bilgisi www.contoso.com olacaktır. Arka ucunuzu yapılandırmak için Azure portal kullanırsanız, bu alan için varsayılan değer, arka ucun ana bilgisayar adıdır. Arka ucunuz contoso-westus.azurewebsites.net ise Azure portal, arka uç ana bilgisayar üst bilgisi için, tekrar doldurulmuş değer contoso-westus.azurewebsites.net olur. Ancak, bu alanı açıkça ayarlamadan Azure Resource Manager şablonları veya başka bir yöntemi kullanırsanız, ön kapı, ana bilgisayar adını konak üstbilgisinin değeri olarak gönderir. İstek www\.contoso.com için yapıldıysa ve arka ucunuz boş bir üst bilgi alanına sahip contoso-westus.azurewebsites.net Ise, ön kapı konak üstbilgisini www\.contoso.com olarak ayarlar.
+Örneğin, için yapılan bir istek `www.contoso.com` ana bilgisayar üst bilgisi www.contoso.com olacaktır. Arka ucunuzu yapılandırmak için Azure portal kullanırsanız, bu alan için varsayılan değer, arka ucun ana bilgisayar adıdır. Arka ucunuz contoso-westus.azurewebsites.net ise Azure portal, arka uç ana bilgisayar üst bilgisi için, tekrar doldurulmuş değer contoso-westus.azurewebsites.net olur. Ancak, bu alanı açıkça ayarlamadan Azure Resource Manager şablonları veya başka bir yöntemi kullanırsanız, ön kapı, ana bilgisayar adını konak üstbilgisinin değeri olarak gönderir. İstek www contoso.com için yapıldıysa \. ve arka ucunuz boş bir üst bilgi alanına sahip contoso-westus.azurewebsites.net ise, ön kapı konak üstbilgisini www contoso.com olarak ayarlar \. .
 
 Çoğu uygulama arka ucu (Azure Web Apps, BLOB depolama ve Cloud Services), ana bilgisayar üstbilgisinin arka ucun etki alanıyla eşleşmesini gerektirir. Ancak, arka ucunuza yönlendiren ön uç ana bilgisayarı, www.contoso.net gibi farklı bir konak adı kullanır.
 
@@ -67,7 +67,7 @@ Arka uç havuzu, farklı arka uçların sistem durumu araştırmaları aracılı
 ### <a name="health-probes"></a>Sistem durumu araştırmaları
 Ön kapı, yapılandırılmış arka uçlarınızın her birine düzenli HTTP/HTTPS araştırma istekleri gönderir. Araştırma istekleri, Son Kullanıcı isteklerinizin yük dengelenmesi için her bir arka ucun yakınlığını ve sistem durumunu tespit edin. Arka uç havuzu için sistem durumu araştırma ayarları, uygulama arka uçları sistem durumunu nasıl yokladığımızda tanımlar. Yük dengeleme yapılandırması için aşağıdaki ayarlar kullanılabilir:
 
-- **Yol**: arka uç havuzundaki tüm arka uçlara yönelik araştırma istekleri IÇIN kullanılan URL. Örneğin, arka uçlarınızdaki bir contoso-westus.azurewebsites.net ise ve yol/Probe/test.aspx olarak ayarlanırsa, ön kapı ortamları, protokolün HTTP olarak ayarlandığı varsayıldığında, durum araştırma isteklerini http\://contoso-westus.azurewebsites.net/Probe/test.aspx 'ye gönderir.
+- **Yol**: arka uç havuzundaki tüm arka uçlara yönelik araştırma istekleri IÇIN kullanılan URL. Örneğin, arka uçlarınızdaki bir contoso-westus.azurewebsites.net ise ve yol/Probe/test.aspx olarak ayarlanırsa, ön kapı ortamları, protokolün HTTP olarak ayarlandığı varsayıldığında, durum araştırma isteklerini http \: //contoso-westus.azurewebsites.net/Probe/test.aspx 'ye gönderir.
 
 - **Protokol**: durum araştırma Isteklerinin ön kapıdan arka uçlara http veya https protokolüyle gönderileceğini tanımlar.
 

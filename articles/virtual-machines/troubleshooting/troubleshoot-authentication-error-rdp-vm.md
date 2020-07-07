@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80420811"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure VM’ye RDP kullanarak bağlandığınızda karşılaştığınız kimlik doğrulaması hatalarını giderme
@@ -163,7 +163,7 @@ DC ve VM arasındaki iletişim iyi ise, ancak DC 'nin bir RDP oturumu açmak iç
 
 Yukarıdaki komutlar etki alanına iletişim sorununu gidermezse, bu VM 'yi etki alanına yeniden ekleyebilirsiniz. Bunu yapmak için şu adımları uygulayın:
 
-1. Aşağıdaki içeriği kullanarak Unjoın. ps1 adlı bir komut dosyası oluşturun ve ardından betiği Azure portal özel bir betik uzantısı olarak dağıtın:
+1. Aşağıdaki içeriği kullanarak Unjoin.ps1 adlı bir komut dosyası oluşturun ve ardından betiği Azure portal özel bir betik uzantısı olarak dağıtın:
 
     ```cmd
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
@@ -171,7 +171,7 @@ Yukarıdaki komutlar etki alanına iletişim sorununu gidermezse, bu VM 'yi etki
     
     Bu betik, VM 'yi etki alanından kapatıp 10 saniye sonra yeniden başlatır. Daha sonra, etki alanı tarafında bilgisayar nesnesini temizlemeniz gerekir.
 
-2.  Temizleme yapıldıktan sonra bu VM 'yi etki alanına yeniden katın. Bunu yapmak için, aşağıdaki içeriği kullanarak JoinDomain. ps1 adlı bir komut dosyası oluşturun ve ardından betiği Azure portal özel bir betik uzantısı olarak dağıtın: 
+2.  Temizleme yapıldıktan sonra bu VM 'yi etki alanına yeniden katın. Bunu yapmak için, aşağıdaki içeriği kullanarak JoinDomain.ps1 adlı bir komut dosyası oluşturun ve ardından betiği Azure portal özel bir betik uzantısı olarak dağıtın: 
 
     ```cmd
     cmd /c "netdom join <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10"

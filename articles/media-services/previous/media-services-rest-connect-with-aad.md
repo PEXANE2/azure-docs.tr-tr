@@ -15,10 +15,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
 ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295436"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>REST ile Media Services API'sine erişmek için Azure AD kimlik doğrulamasını kullanma
@@ -47,7 +47,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!IMPORTANT]
 > Şu anda Media Services Azure Access Control Hizmetleri kimlik doğrulama modelini destekler. Ancak, Access Control kimlik doğrulaması kullanım dışı olacaktır 1 Haziran 2018. Azure AD kimlik doğrulaması modeline mümkün olan en kısa sürede geçiş yapmanız önerilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 - [Azure Portal kullanarak bir Azure Media Services hesabı oluşturun](media-services-portal-create-account.md).
@@ -62,9 +62,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Media Services API 'sine erişmek için aşağıdaki veri noktalarını toplamanız gerekir.
 
-|Ayar|Örnek|Açıklama|
+|Ayar|Örnek|Description|
 |---|-------|-----|
-|Azure Active Directory kiracı etki alanı|microsoft.onmicrosoft.com|Azure AD, güvenli belirteç hizmeti (STS) uç noktası olarak şu biçim kullanılarak oluşturulmuştur: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Azure AD, kaynaklara erişmek için bir JWT yayınlar (bir erişim belirteci).|
+|Azure Active Directory kiracı etki alanı|microsoft.onmicrosoft.com|Azure AD, güvenli belirteç hizmeti (STS) uç noktası olarak şu biçim kullanılarak oluşturulmuştur: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> . Azure AD, kaynaklara erişmek için bir JWT yayınlar (bir erişim belirteci).|
 |REST API uç noktası|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Bu, uygulamanızdaki tüm Media Services REST API çağrılarının yapıldığı bitiş noktasıdır.|
 |İstemci KIMLIĞI (uygulama KIMLIĞI)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD uygulaması (istemci) KIMLIĞI. Erişim belirtecini almak için istemci KIMLIĞI gereklidir. |
 |İstemci Gizli Anahtarı|+ mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Azure AD uygulama anahtarları (istemci gizli dizisi). Erişim belirtecini almak için istemci parolası gerekir.|
@@ -115,7 +115,7 @@ Bilgileri almak için aşağıdaki adımları izleyin:
 
    ![API erişimi](./media/connect-with-rest/connect-with-rest03.png)
 
-Kodunuzda daha sonra kullanmak için, Web. config veya App. config dosyanıza AD bağlantı parametreleri için değerler ekleyebilirsiniz.
+Kodunuzda daha sonra kullanmak üzere web.config veya app.config dosyanıza AD bağlantı parametreleri için değerler ekleyebilirsiniz.
 
 > [!IMPORTANT]
 > **İstemci anahtarı** önemli bir gizli dizi ve bir anahtar kasasında veya üretimde şifrelenmiş olarak güvenli bir şekilde korunmalıdır.

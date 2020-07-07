@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
 ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294862"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager nasıl kullanılır?
@@ -34,7 +34,7 @@ Traffic Manager iki temel avantaj sağlar:
 
 ## <a name="traffic-manager-example"></a>Traffic Manager örneği
 
-Contoso Corp yeni bir iş ortağı portalı geliştirmiş. Bu portalın URL 'SI `https://partners.contoso.com/login.aspx`. Uygulama, Azure 'un üç bölgesinde barındırılır. Kullanılabilirliği artırmak ve genel performansı en üst düzeye çıkarmak için, istemci trafiğini kullanılabilir en yakın uç noktaya dağıtmak üzere Traffic Manager kullanırlar.
+Contoso Corp yeni bir iş ortağı portalı geliştirmiş. Bu portalın URL 'SI `https://partners.contoso.com/login.aspx` . Uygulama, Azure 'un üç bölgesinde barındırılır. Kullanılabilirliği artırmak ve genel performansı en üst düzeye çıkarmak için, istemci trafiğini kullanılabilir en yakın uç noktaya dağıtmak üzere Traffic Manager kullanırlar.
 
 Bu yapılandırmayı başarmak için aşağıdaki adımları tamamlarlar:
 
@@ -49,7 +49,7 @@ Bu yapılandırmayı başarmak için aşağıdaki adımları tamamlarlar:
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>İstemciler Traffic Manager kullanarak nasıl bağlanır
 
-Önceki örnekte devam edildiğinde, istemci sayfayı `https://partners.contoso.com/login.aspx`istediğinde, ISTEMCI, DNS adını çözümlemek ve bir bağlantı kurmak için aşağıdaki adımları gerçekleştirir:
+Önceki örnekte devam edildiğinde, istemci sayfayı istediğinde `https://partners.contoso.com/login.aspx` , istemci, DNS adını çözümlemek ve bir bağlantı kurmak için aşağıdaki adımları gerçekleştirir:
 
 ![Traffic Manager kullanarak bağlantı kurma][2]
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334495"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Haritaya bir çizim araçları araç çubuğu ekleme
@@ -38,7 +38,7 @@ Yukarıdaki işlevlerin tamamen çalışan kod örneği aşağıda verilmiştir:
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çizim araç çubuğu ekleme" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Çizim araç çubuğu ekleme</a> bölümüne bakın.
+Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Çizim araç çubuğu ekleme</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -62,13 +62,13 @@ Yukarıdaki işlevlerin tamamen çalışan kod örneği aşağıda verilmiştir:
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çokgen çizim aracı ekleme" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>bir çokgen çizim aracı ekleme</a> kalemine bakın.
+Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>bir çokgen çizim aracı ekleme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
 ## <a name="change-drawing-rendering-style"></a>Çizim işleme stilini değiştir
 
-Çizilen şekillerin stili, `drawingManager.getLayers()` işlevi kullanılarak çizim yöneticisinin temel katmanları alınarak özelleştirilebilir ve tek tek katmanlarda seçenekler ayarlanarak özelleştirilebilir. Şekil düzenlenirken, koordinat için görüntülenen sürükleme tutamaçları HTML işaretçilerine sahiptir. Sürükleme tutamaçlarının stili, çizim yöneticisinin `dragHandleStyle` ve `secondaryDragHandleStyle` seçeneklerine HTML işaret seçenekleri geçirerek özelleştirilebilir.  
+Çizilen şekillerin stili, işlevi kullanılarak çizim yöneticisinin temel katmanları `drawingManager.getLayers()` alınarak özelleştirilebilir ve tek tek katmanlarda seçenekler ayarlanarak özelleştirilebilir. Şekil düzenlenirken, koordinat için görüntülenen sürükleme tutamaçları HTML işaretçilerine sahiptir. Sürükleme tutamaçlarının stili, `dragHandleStyle` Çizim yöneticisinin ve SEÇENEKLERINE HTML işaret seçenekleri geçirerek özelleştirilebilir `secondaryDragHandleStyle` .  
 
 Aşağıdaki kod, çizim yöneticisinden işleme katmanlarını alır ve çizim için işleme stilini değiştirecek seçeneklerini değiştirir. Bu durumda, işaret mavi bir işaret simgesiyle işlenir. Satırlar kırmızı ve dört piksel genişliğinde olur. Çokgenler yeşil bir Fill rengine ve turuncu bir anahatta sahip olur. Daha sonra Sürükle tutamaçlarının stillerini kare simgeleri olacak şekilde değiştirir. 
 
@@ -122,7 +122,7 @@ Yukarıdaki işlevlerin tamamen çalışan kod örneği aşağıda verilmiştir:
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çizim işleme stilini değiştir" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bkz. Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io'>codepen</a>'Da <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>Çizim işleme stilini değiştirme</a> .
+Bkz. Azure <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>Change drawing rendering style</a> Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) Ile <a href='https://codepen.io'>codepen</a>'da çizim işleme stilini değiştirme.
 </iframe>
 
 

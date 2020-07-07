@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80291996"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API 'Leri kullanarak IoT Edge Stream Analytics için CI/CD uygulayın
@@ -24,7 +24,7 @@ REST API 'Ler hem Linux hem de Windows 'dan çağrılabilir. Aşağıdaki komutl
 
 ### <a name="linux"></a>Linux
 
-Linux için, veya `Curl` `Wget` komutlarını kullanabilirsiniz:
+Linux için, `Curl` veya `Wget` komutlarını kullanabilirsiniz:
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   
@@ -55,7 +55,7 @@ echo $response
  
 Stream Analytics işi oluşturmak için, Stream Analytics API 'sini kullanarak PUT metodunu çağırın.
 
-|Yöntem|İstek URL'si|
+|Yöntem|İstek URL’si|
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
@@ -142,7 +142,7 @@ Daha fazla bilgi için [API belgelerine](/rest/api/streamanalytics/stream-analyt
  
 IoT Edge üzerinde Stream Analytics işi yayımlamak için, Edge paketi yayımlama API 'sini kullanarak POST yöntemini çağırın.
 
-|Yöntem|İstek URL'si|
+|Yöntem|İstek URL’si|
 |------|-----------|
 |POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 

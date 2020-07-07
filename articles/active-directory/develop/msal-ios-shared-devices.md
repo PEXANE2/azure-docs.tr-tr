@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550259"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS cihazlar için paylaşılan cihaz modu
@@ -45,7 +45,7 @@ Bir paylaşılan cihaz modu uygulaması oluşturmak için, geliştiriciler ve bu
 
 1. [**Yalnızca genel önizleme sırasında gereklidir**] [Bulut Cihaz Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) rolüne sahip bir kullanıcının [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md) başlatması ve cihazını kuruluşa katılması gerekir.
 
-    Azure Portal kurumsal rollerinizin üyeliğini yapılandırmak için: **Azure Active Directory** > **Roller ve yöneticiler** > **bulut Cihaz Yöneticisi**
+    Azure Portal kurumsal rollerinizin üyeliğini yapılandırmak için: **Azure Active Directory**  >  **Roller ve yöneticiler**  >  **bulut Cihaz Yöneticisi**
 
 Aşağıdaki bölümler, paylaşılan cihaz modunu destekleyecek şekilde uygulamanızı güncelleştirmenize yardımcı olur.
 
@@ -90,9 +90,9 @@ Kullanıcı değişikliği üzerinde, hem önceki Kullanıcı verilerinin temizl
 
 Paylaşılan cihaz modunun algılanmasının nedeni, uygulamanız için önemlidir. Uygulama paylaşılan bir cihazda kullanıldığında, birçok uygulamanın kullanıcı deneyiminde (UX) bir değişikliği olması gerekir. Örneğin, uygulamanız zaten bir hesabı olduğundan, Firstline Worker için uygun olmayan bir "kaydolma" özelliğine sahip olabilir. Ayrıca, paylaşılan cihaz modundaysa uygulamanızın verileri işlemeye ek güvenlik eklemek isteyebilirsiniz.
 
-Uygulamasının paylaşılan `getDeviceInformationWithParameters:completionBlock:` cihaz modundaki bir `MSALPublicClientApplication` cihazda çalışıp çalışmadığını öğrenmek için içindeki API 'yi kullanın.
+`getDeviceInformationWithParameters:completionBlock:` `MSALPublicClientApplication` Uygulamasının paylaşılan cihaz modundaki bir cihazda çalışıp çalışmadığını öğrenmek için içindeki API 'yi kullanın.
 
-Aşağıdaki kod parçacıkları, `getDeviceInformationWithParameters:completionBlock:` API kullanma örneklerini gösterir.
+Aşağıdaki kod parçacıkları, API kullanma örneklerini gösterir `getDeviceInformationWithParameters:completionBlock:` .
 
 #### <a name="swift"></a>Swift
 
@@ -128,7 +128,7 @@ application.getDeviceInformation(with: nil, completionBlock: { (deviceInformatio
 
 Paylaşılan cihaz modunu desteklemeye yönelik başka bir önemli bölüm, cihazdaki kullanıcının durumunu belirler ve bir Kullanıcı değiştiyse ya da cihazda hiç Kullanıcı yoksa, uygulama verilerini temizliyordadır. Verilerin başka bir kullanıcıya sızdırılmamasını sağlamaya sorumlusunuz.
 
-API 'yi, `getCurrentAccountWithParameters:completionBlock:` cihazda Şu anda oturum açmış olan hesabı sorgulamak için kullanabilirsiniz.
+`getCurrentAccountWithParameters:completionBlock:`API 'yi, cihazda Şu anda oturum açmış olan hesabı sorgulamak için kullanabilirsiniz.
 
 #### <a name="swift"></a>Swift
 
@@ -159,7 +159,7 @@ parameters.completionBlockQueue = dispatch_get_main_queue();
 
 ### <a name="globally-sign-in-a-user"></a>Bir kullanıcı için genel olarak oturum açma
 
-Bir cihaz paylaşılan bir cihaz olarak yapılandırıldığında, uygulamanız hesapta oturum açmak için `acquireTokenWithParameters:completionBlock:` API 'yi çağırabilir. Hesap, ilk uygulama oturum açtıktan sonra cihazdaki tüm uygun uygulamalar için genel olarak kullanılabilir olacaktır.
+Bir cihaz paylaşılan bir cihaz olarak yapılandırıldığında, uygulamanız `acquireTokenWithParameters:completionBlock:` hesapta oturum açmak için API 'yi çağırabilir. Hesap, ilk uygulama oturum açtıktan sonra cihazdaki tüm uygun uygulamalar için genel olarak kullanılabilir olacaktır.
 
 #### <a name="objective-c"></a>Objective-C
 
@@ -180,7 +180,7 @@ Aşağıdaki kod, oturum açmış olan hesabı kaldırır ve önbelleğe alınm�
 > [!NOTE]
 > Aşağıdaki adım yalnızca genel önizleme sırasında gereklidir.
 
-Bu genel önizleme sürümünde, [Apple cihazları Için Microsoft ENTERPRISE SSO eklentisi](apple-sso-plugin.md) yalnızca uygulamalar için durumu temizler. Safari tarayıcısında durumu temizlemez. Kullanıcı durumunun izlemelerinin gerisinde kalmasını sağlamak için tarayıcı oturumunu el ile temizlemeniz önerilir. Herhangi bir tanımlama bilgisini temizlemek `signoutFromBrowser` için aşağıda gösterilen isteğe bağlı özelliği kullanabilirsiniz. Bu, tarayıcının cihazda kısa bir süre başlatılmasına neden olur.
+Bu genel önizleme sürümünde, [Apple cihazları Için Microsoft ENTERPRISE SSO eklentisi](apple-sso-plugin.md) yalnızca uygulamalar için durumu temizler. Safari tarayıcısında durumu temizlemez. Kullanıcı durumunun izlemelerinin gerisinde kalmasını sağlamak için tarayıcı oturumunu el ile temizlemeniz önerilir. `signoutFromBrowser`Herhangi bir tanımlama bilgisini temizlemek için aşağıda gösterilen isteğe bağlı özelliği kullanabilirsiniz. Bu, tarayıcının cihazda kısa bir süre başlatılmasına neden olur.
 
 #### <a name="swift"></a>Swift
 

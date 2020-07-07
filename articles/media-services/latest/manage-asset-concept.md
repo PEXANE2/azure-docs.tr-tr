@@ -14,10 +14,10 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582207"
 ---
 # <a name="manage-assets"></a>Varlıkları yönetme
@@ -43,9 +43,9 @@ Geliştirmeye başlamadan önce şunları gözden geçirin:
 
 Dijital dosyalar depolama alanına yüklendikten ve bir varlıkla ilişkilendirildikten sonra, Media Services kodlama, akış ve içerik iş akışlarını çözümleme için kullanılabilirler. Ortak Media Services iş akışlarından biri bir dosyayı karşıya yüklemek, kodlamak ve akışa almak. Bu bölümde genel adımlar özetlenmektedir.
 
-1. Media Services v3 API'sini kullanarak yeni bir "input" Varlığı oluşturun. Bu işlem, Media Services hesabınızla ilişkilendirilen depolama hesabında bir kapsayıcı oluşturur. API, kapsayıcı adını döndürür (örneğin, `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
+1. Media Services v3 API'sini kullanarak yeni bir "input" Varlığı oluşturun. Bu işlem, Media Services hesabınızla ilişkilendirilen depolama hesabında bir kapsayıcı oluşturur. API, kapsayıcı adını döndürür (örneğin, `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"` ).
 
-    Bir varlıkla ilişkilendirmek istediğiniz bir blob Kapsayıcınız zaten varsa, varlığı oluştururken kapsayıcı adını belirtebilirsiniz. Media Services şu anda blobları yalnızca kapsayıcı kökünde destekler ve dosya adında yol kullanılmasını desteklemez. Bu nedenle "input.mp4" gibi bir dosya adına sahip kapsayıcıları kullanabilirsiniz. Bununla birlikte, "Videolar/girişler/Input. mp4" dosya adına sahip bir kapsayıcı çalışmaz.
+    Bir varlıkla ilişkilendirmek istediğiniz bir blob Kapsayıcınız zaten varsa, varlığı oluştururken kapsayıcı adını belirtebilirsiniz. Media Services şu anda blobları yalnızca kapsayıcı kökünde destekler ve dosya adında yol kullanılmasını desteklemez. Bu nedenle "input.mp4" gibi bir dosya adına sahip kapsayıcıları kullanabilirsiniz. Bununla birlikte, "Videolar/girişler/input.mp4" dosya adına sahip bir kapsayıcı çalışmaz.
 
     Azure CLI'yi kullanarak aboneliğinizde gerekli izinlere sahip olduğunuz tüm depolama hesaplarına ve kapsayıcılara içerik yükleyebilirsiniz.
 
@@ -58,7 +58,7 @@ Dijital dosyalar depolama alanına yüklendikten ve bir varlıkla ilişkilendiri
 
     Media Services API'sini kullanarak [varlık kapsayıcısı URL'lerini listeleyebilirsiniz](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
 
-    **Assetcontainersas. listcontainersas** , ayarladığınız `expiryTime`bir [listcontainersasinput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) parametresi alır. Süre < 24 saat olarak ayarlanmalıdır.
+    **Assetcontainersas. listcontainersas** , ayarladığınız bir [Listcontainersasinput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) parametresi alır `expiryTime` . Süre < 24 saat olarak ayarlanmalıdır.
 
     [Listcontainersasınput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) , her depolama hesabı için iki depolama hesabı anahtarı olduğu için bırden çok SAS URL 'si döndürür. Depolama hesabı anahtarlarının yük devretme ve sorunsuz şekilde dönüşmesine yardımcı olduğundan bir depolama hesabının iki anahtarı vardır. İlk SAS URL 'SI ilk depolama hesabı anahtarını temsil eder ve ikinci SAS URL 'SI ikinci anahtarı temsil eder.
 3. Dosyaları varlık kapsayıcısına yüklemek için Azure depolama API 'Lerini veya SDK 'Larını (örneğin, [depolama REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) kullanın.

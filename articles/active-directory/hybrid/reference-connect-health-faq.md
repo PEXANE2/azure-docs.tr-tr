@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331072"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health sık sorulan sorular
@@ -68,10 +68,10 @@ Lisanslama bilgileri de [Azure AD fiyatlandırma sayfasında](https://aka.ms/aad
 
 | Roller | Özellikler | Almanya bulutu 'nda destekleniyor |
 | ------ | --------------- | --- |
-| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | Hayır |
+| Eşitleme için Health Connect | İzleme/öngörü/uyarılar/analiz | No |
 |  | Eşitleme hata raporu | Yes |
-| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
-| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | Hayır |
+| ADFS için Connect Health | İzleme/öngörü/uyarılar/analiz | No |
+| EKLER için Connect Health | İzleme/öngörü/uyarılar/analiz | No |
 
 Eşitleme için bağlantı durumunun aracı bağlantısının olduğundan emin olmak için lütfen [yükleme gereksinimini](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) uygun şekilde yapılandırın.
 
@@ -107,7 +107,7 @@ Evet. Devam eden işlemler için, durum aracısını giden HTTP isteklerini ilet
 
 Aracı kaydı sırasında bir proxy yapılandırmanız gerekiyorsa, Internet Explorer proxy ayarlarınızı önceden değiştirmeniz gerekebilir.
 
-1. Internet Explorer > **ayarları** > **Internet seçenekleri** > **bağlantıları** > **LAN ayarları**' nı açın.
+1. Internet Explorer > **ayarları**  >  **Internet seçenekleri**  >  **bağlantıları**  >  **LAN ayarları**' nı açın.
 2. **LAN için bir proxy sunucusu kullan**' ı seçin.
 3. HTTP ve HTTPS/Secure için farklı proxy bağlantı noktalarına sahipseniz **Gelişmiş** ' i seçin.
 
@@ -192,7 +192,7 @@ CheckForMS17-010
 
 **S: ADFS denetimlerim neden üretilmiyor?**
 
-Denetim günlüklerinin devre dışı durumda olmadığından emin olmak için lütfen <i>Get-AdfsProperties-AuditLevel</i> PowerShell cmdlet 'ini kullanın. [ADFS denetim günlükleri](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)hakkında daha fazla bilgi edinin. ADFS sunucusuna Gelişmiş denetim ayarları itilmesi durumunda, auditpol. exe ile yapılan tüm değişikliklerin üzerine yazılır (Eğer uygulama oluşturulmadıkça olay). Bu durumda, uygulama tarafından üretilen hataların ve başarısını günlüğe kaydetmek için lütfen yerel güvenlik ilkesini ayarlayın.
+Denetim günlüklerinin devre dışı durumda olmadığından emin olmak için lütfen <i>Get-AdfsProperties-AuditLevel</i> PowerShell cmdlet 'ini kullanın. [ADFS denetim günlükleri](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)hakkında daha fazla bilgi edinin. ADFS sunucusuna Gelişmiş denetim ayarları itilmesi durumunda, auditpol.exe olan tüm değişikliklerin üzerine yazılır (Eğer uygulama oluşturulmadıkça olay). Bu durumda, uygulama tarafından üretilen hataların ve başarısını günlüğe kaydetmek için lütfen yerel güvenlik ilkesini ayarlayın.
 
 **S: Aracı sertifikası, süresi dolmadan önce otomatik olarak yenilenir mi?**
 Aracı sertifikası, sona erme tarihinden itibaren otomatik olarak **6 ay** yenilenir. Yenilenmezse, lütfen aracının ağ bağlantısının kararlı olduğundan emin olun. Aracı hizmetlerini yeniden başlatın veya en son sürüme güncelleştirme de sorunu çözebilir.

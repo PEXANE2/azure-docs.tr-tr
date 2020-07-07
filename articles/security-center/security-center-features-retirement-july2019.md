@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80583228"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi özelliklerini kullanımdan kaldırma (2019 Temmuz)
@@ -53,7 +53,7 @@ Bir çalışma alanı seçtiğinizde görüntülenen olaylar panosunu kullanımd
 
 Çalışma Alanlarınızdaki önemli olaylarını görüntülemek için Azure Log Analytics 'in yerel yeteneklerini kullanmanızı öneririz.
 
-Güvenlik Merkezi 'nde özel önemli olayları oluşturduysanız, bunlar erişilebilir olacaktır. Log Analytics ' de, **çalışma alanı** > **kaydedilmiş aramaları**Seç ' e gidin. Verileriniz kaybolmaz veya değiştirilmez. Yerel önemli olayları, Log Analytics aynı ekrandan de mevcuttur.
+Güvenlik Merkezi 'nde özel önemli olayları oluşturduysanız, bunlar erişilebilir olacaktır. Log Analytics ' de, **çalışma alanı**  >  **kaydedilmiş aramaları**Seç ' e gidin. Verileriniz kaybolmaz veya değiştirilmez. Yerel önemli olayları, Log Analytics aynı ekrandan de mevcuttur.
 
 ![Çalışma alanı kaydedilmiş aramaları][3]
 

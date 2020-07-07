@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331260"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect Kullanıcı oturum açma seçenekleri
@@ -112,7 +112,7 @@ Daha fazla bilgi için bkz. [Azure AD üçüncü taraf Federasyon uyumluluğu li
 ### <a name="understanding-user-principal-name"></a>Kullanıcı asıl adını anlama
 Active Directory, varsayılan kullanıcı asıl adı (UPN) soneki, Kullanıcı hesabının oluşturulduğu etki alanının DNS adıdır. Çoğu durumda bu, Internet 'teki kuruluş etki alanı olarak kayıtlı etki alanı adıdır. Ancak, Active Directory etki alanları ve güvenleri kullanarak daha fazla UPN soneki ekleyebilirsiniz.
 
-Kullanıcının UPN 'si biçimindedir username@domain. Örneğin, "contoso.com" adlı bir etki alanı Active Directory için John adlı bir Kullanıcı "john@contoso.com" UPN 'sine sahip olabilir. Kullanıcının UPN 'si, RFC 822 ' i temel alır. UPN ve e-posta aynı biçimi paylaşsa da, bir kullanıcı için UPN değeri kullanıcının e-posta adresiyle aynı olabilir veya olmayabilir.
+Kullanıcının UPN 'si biçimindedir username@domain . Örneğin, "contoso.com" adlı bir etki alanı Active Directory için John adlı bir Kullanıcı "" UPN 'sine sahip olabilir john@contoso.com . Kullanıcının UPN 'si, RFC 822 ' i temel alır. UPN ve e-posta aynı biçimi paylaşsa da, bir kullanıcı için UPN değeri kullanıcının e-posta adresiyle aynı olabilir veya olmayabilir.
 
 ### <a name="user-principal-name-in-azure-ad"></a>Azure AD 'de Kullanıcı asıl adı
 Azure AD Connect Sihirbazı userPrincipalName özniteliğini kullanır veya Azure AD 'de Kullanıcı asıl adı olarak şirket içi olarak kullanılacak özniteliği (özel yüklemede) belirtmenize izin verir. Bu, Azure AD 'de oturum açmak için kullanılan değerdir. UserPrincipalName özniteliğinin değeri Azure AD 'de doğrulanmış bir etki alanına karşılık gelmiyorsa, Azure AD bunu varsayılan bir. onmicrosoft.com değeri ile değiştirir.
@@ -151,15 +151,15 @@ Varsayılan öznitelik userPrincipalName ' i tutmanız önemle tavsiye ederiz. B
 #### <a name="different-custom-domain-states-and-their-effect-on-the-azure-sign-in-experience"></a>Farklı özel etki alanı durumları ve bunların Azure oturum açma deneyimine etkileri
 Azure AD dizininizde özel etki alanı durumları ve şirket içinde tanımlı UPN sonekleri arasındaki ilişkiyi anlamak çok önemlidir. Azure AD Connect kullanarak eşitleme ayarlarken farklı olası Azure oturum açma deneyimlerinden ilerlim.
 
-Aşağıdaki bilgiler için, UPN 'nin bir parçası olarak şirket içi dizinde kullanılan UPN soneki contoso.com ile ilgilendiğimiz varsayıyız. Örneğin, örneğin user@contoso.com.
+Aşağıdaki bilgiler için, UPN 'nin bir parçası olarak şirket içi dizinde kullanılan UPN soneki contoso.com ile ilgilendiğimiz varsayıyız. Örneğin, örneğin user@contoso.com .
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Hızlı ayarlar/parola karması eşitleme
 
 | Durum | Kullanıcı Azure oturum açma deneyimi üzerindeki etki |
 |:---:|:--- |
-| Eklenmemiş |Bu durumda, Azure AD dizinine contoso.com için özel etki alanı eklenmedi. Soneki @contoso.com olan ŞIRKET içi UPN 'si olan kullanıcılar, Azure 'da oturum açmak için ŞIRKET içi UPN 'sini kullanamaz. Bunun yerine, varsayılan Azure AD dizini için son ek eklenerek Azure AD tarafından sunulan yeni bir UPN kullanması gerekir. Örneğin, kullanıcıları Azure AD dizini azurecontoso.onmicrosoft.com ile eşityorsanız şirket içi kullanıcıya user@contoso.com bir UPN 'si user@azurecontoso.onmicrosoft.comverilir. |
+| Eklenmemiş |Bu durumda, Azure AD dizinine contoso.com için özel etki alanı eklenmedi. Soneki olan şirket içi UPN 'si olan kullanıcılar, @contoso.com Azure 'da oturum açmak için şirket ıçı UPN 'sini kullanamaz. Bunun yerine, varsayılan Azure AD dizini için son ek eklenerek Azure AD tarafından sunulan yeni bir UPN kullanması gerekir. Örneğin, kullanıcıları Azure AD dizini azurecontoso.onmicrosoft.com ile eşityorsanız şirket içi kullanıcıya user@contoso.com BIR UPN 'si verilir user@azurecontoso.onmicrosoft.com . |
 | Doğrulanmadı |Bu durumda, Azure AD dizinine eklenen özel bir etki alanı contoso.com vardır. Ancak henüz doğrulanmamıştır. Etki alanını doğrulamadan kullanıcıları eşitlemeye devam ederseniz, kullanıcılara tıpkı "eklenmemiş" senaryosunda olduğu gibi Azure AD tarafından yeni bir UPN atanır. |
-| Doğrulanamayan |Bu durumda, UPN soneki için Azure AD 'de zaten eklenmiş ve doğrulanan özel bir etki alanı contoso.com vardır. Kullanıcılar şirket içi Kullanıcı asıl adını (örneğin user@contoso.com, Azure AD ile eşitlendikten sonra Azure 'da oturum açmak) kullanabilecek. |
+| Doğrulanamayan |Bu durumda, UPN soneki için Azure AD 'de zaten eklenmiş ve doğrulanan özel bir etki alanı contoso.com vardır. Kullanıcılar şirket içi Kullanıcı asıl adını (örneğin user@contoso.com , Azure AD ile eşitlendikten sonra Azure 'da oturum açmak) kullanabilecek. |
 
 ###### <a name="ad-fs-federation"></a>AD FS Federasyonu
 Azure AD 'de default. onmicrosoft.com etki alanı veya Azure AD 'de doğrulanmamış bir özel etki alanı ile bir Federasyon oluşturamazsınız. Azure AD Connect sihirbazını çalıştırırken, ile bir federasyon oluşturmak için doğrulanmamış bir etki alanını seçerseniz, Azure AD Connect DNS 'nizin etki alanı için barındırıldığı gerekli kayıtları ister. Daha fazla bilgi için bkz. [Federasyon için seçili Azure AD etki alanını doğrulama](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation).
@@ -168,7 +168,7 @@ Azure AD 'de default. onmicrosoft.com etki alanı veya Azure AD 'de doğrulanmam
 
 | Durum | Kullanıcı Azure oturum açma deneyiminde etki |
 |:---:|:--- |
-| Eklenmemiş |Bu durumda Azure AD Connect Azure AD dizininde UPN soneki contoso.com için eşleşen bir özel etki alanı bulmadı. Kullanıcıların şirket içi UPN (gibi user@contoso.com) ile AD FS kullanarak oturum açmasını gerekiyorsa, özel bir etki alanı contoso.com eklemeniz gerekir. |
+| Eklenmemiş |Bu durumda Azure AD Connect Azure AD dizininde UPN soneki contoso.com için eşleşen bir özel etki alanı bulmadı. Kullanıcıların şirket içi UPN (gibi) ile AD FS kullanarak oturum açmasını gerekiyorsa, özel bir etki alanı contoso.com eklemeniz gerekir user@contoso.com . |
 | Doğrulanmadı |Bu durumda Azure AD Connect, etki alanınızı daha sonraki bir aşamada nasıl doğrulayabildiğinizi öğrenmek için sizden uygun ayrıntıları ister. |
 | Doğrulanamayan |Bu durumda, başka bir eylem yapmadan yapılandırma ile devam edebilirsiniz. |
 

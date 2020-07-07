@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
 ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582976"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Güvenlik Merkezi araştırmada bulunan Kullanıcı verilerini yönetme
@@ -38,14 +38,14 @@ Okuyucu, sahip ve katkıda bulunan rolleri hakkında daha fazla bilgi edinmek i�
 ## <a name="deleting-personal-data"></a>Kişisel verileri silme
 Sahip, katkıda bulunan veya hesap yöneticisinin rolünü atayan bir güvenlik merkezi kullanıcısına araştırma bilgileri silinebilir.
 
-Bir araştırmayı silmek için Azure Resource Manager REST API bir `DELETE` istek gönderebilirsiniz:
+Bir araştırmayı silmek için `DELETE` Azure Resource Manager REST API bir istek gönderebilirsiniz:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-Giriş `incidentName` , tüm olaylar bir `GET` istek kullanılarak listelenerek bulunabilir:
+`incidentName`Giriş, tüm olaylar bir istek kullanılarak listelenerek bulunabilir `GET` :
 
 ```HTTP
 GET

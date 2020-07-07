@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80586983"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive için ağ geçidi derinlemesine bakış ve en iyi uygulamalar
@@ -30,9 +30,9 @@ Aşağıdaki diyagramda, ağ geçidinin HDInsight 'taki tüm farklı ana bilgisa
 
 HDInsight kümelerinin önüne bir ağ geçidi koymak için mosyon, hizmet bulma ve Kullanıcı kimlik doğrulaması için bir arabirim sağlamaktır. Ağ Geçidi tarafından sağlanan kimlik doğrulama mekanizmaları özellikle ESP özellikli kümeler ile ilgilidir.
 
-Hizmet bulma için, ağ geçidinin avantajı, küme içindeki her bileşene, çok sayıda eşleştirinin `clustername.azurehdinsight.net/hive2` `host:port` aksine, ağ geçidi web sitesinin () altında farklı bir uç nokta olarak erişilebilmesini sağlar.
+Hizmet bulma için, ağ geçidinin avantajı, küme içindeki her bileşene, `clustername.azurehdinsight.net/hive2` çok sayıda eşleştirinin aksine, ağ geçidi web sitesinin () altında farklı bir uç nokta olarak erişilebilmesini sağlar `host:port` .
 
-Kimlik doğrulaması için, ağ geçidi kullanıcıların `username:password` kimlik bilgisi çifti kullanarak kimlik doğrulaması yapmasına izin verir. ESP etkin kümeler için bu kimlik bilgisi kullanıcının etki alanı Kullanıcı adı ve parolası olacaktır. Ağ Geçidi aracılığıyla HDInsight kümelerine yönelik kimlik doğrulaması, istemcinin Kerberos bileti almasına gerek yoktur. Ağ Geçidi kimlik bilgilerini `username:password` kabul ettiğinden ve kullanıcının adına kullanıcının Kerberos bileti elde ettiğinden, (ESP) KÜMESINDEN farklı AA-DDS etki alanlarına katılmış istemciler de dahil olmak üzere herhangi bir istemci ana bilgisayarındaki ağ geçidine güvenli bağlantılar yapılabilir.
+Kimlik doğrulaması için, ağ geçidi kullanıcıların kimlik bilgisi çifti kullanarak kimlik doğrulaması yapmasına izin verir `username:password` . ESP etkin kümeler için bu kimlik bilgisi kullanıcının etki alanı Kullanıcı adı ve parolası olacaktır. Ağ Geçidi aracılığıyla HDInsight kümelerine yönelik kimlik doğrulaması, istemcinin Kerberos bileti almasına gerek yoktur. Ağ Geçidi `username:password` kimlik bilgilerini kabul ettiğinden ve kullanıcının adına kullanıcının Kerberos bileti elde ettiğinden, (ESP) kümesinden farklı AA-DDS etki alanlarına katılmış istemciler de dahil olmak üzere herhangi bir istemci ana bilgisayarındaki ağ geçidine güvenli bağlantılar yapılabilir.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
@@ -54,7 +54,7 @@ Kurumsal güvenlik paketi etkinleştirilmiş kümeler ' de, yeterince karmaşık
 
 Yukarıdaki davranışın bir parçası olarak karşılanması gereken performans sorunlarını azaltmak ve anlamak için birden çok havalandırma vardır. HDInsight ağ geçidi üzerinde sorgu performansı düşüşünü yaşadığınızda aşağıdaki denetim listesini kullanın:
 
-* Büyük **seçim** sorguları yürütürken **LIMIT** yan tümcesini kullanın. **LIMIT** yan tümcesi, istemci konağına bildirilen toplam satırları azaltır. **LIMIT** yan tümcesi yalnızca sonuç üretimini etkiler ve sorgu planını değiştirmez. **LIMIT** yan tümcesini sorgu planına uygulamak için yapılandırmayı `hive.limit.optimize.enable`kullanın. **Sınır** , **x, y**olan bağımsız değişken form sınırı kullanılarak bir uzaklığa birleştirilebilir.
+* Büyük **seçim** sorguları yürütürken **LIMIT** yan tümcesini kullanın. **LIMIT** yan tümcesi, istemci konağına bildirilen toplam satırları azaltır. **LIMIT** yan tümcesi yalnızca sonuç üretimini etkiler ve sorgu planını değiştirmez. **LIMIT** yan tümcesini sorgu planına uygulamak için yapılandırmayı kullanın `hive.limit.optimize.enable` . **Sınır** , **x, y**olan bağımsız değişken form sınırı kullanılarak bir uzaklığa birleştirilebilir.
 
 * **Select \* **kullanmak yerine sorguları **Seç** ' i çalıştırırken ilgilendiğiniz sütunlarınızı adlandırın. Daha az sütun seçilmesi, okunan veri miktarını düşürür.
 
@@ -72,11 +72,11 @@ Yukarıdaki davranışın bir parçası olarak karşılanması gereken performan
 
 * LLAP, sorgu sonuçlarının hızla döndürülmesi için daha sorunsuz bir deneyim sağlayabileceğiniz için, etkileşimli iş yüklerini çalıştırırken Apache Hive LLAP kullanmayı düşünün
 
-* Kullanarak `hive.server2.thrift.max.worker.threads`Hive meta veri deposu hizmeti için kullanılabilen iş parçacığı sayısını artırmayı düşünün. Bu ayar özellikle çok sayıda eşzamanlı kullanıcı tarafından kümeye sorgu gönderilirken ilgilidir
+* Kullanarak Hive meta veri deposu hizmeti için kullanılabilen iş parçacığı sayısını artırmayı düşünün `hive.server2.thrift.max.worker.threads` . Bu ayar özellikle çok sayıda eşzamanlı kullanıcı tarafından kümeye sorgu gönderilirken ilgilidir
 
 * Herhangi bir dış araçlardan gelen ağ geçidine ulaşmak için kullanılan yeniden deneme sayısını azaltın. Birden çok yeniden deneme kullanılıyorsa, bir üstel geri dönme yeniden deneme ilkesini takip etmeyi deneyin
 
-* Yapılandırma ve yapılandırma `hive.exec.compress.output` kullanarak sıkıştırma Hive 'yi `hive.exec.compress.intermediate`etkinleştirmeyi düşünün.
+* Yapılandırma ve yapılandırma kullanarak sıkıştırma Hive 'yi etkinleştirmeyi düşünün `hive.exec.compress.output` `hive.exec.compress.intermediate` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

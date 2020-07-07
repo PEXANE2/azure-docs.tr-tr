@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80283863"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Uygulama bileşenlerini anlamak için VM'ler için Azure İzleyici Map özelliğini kullanın
@@ -114,7 +114,7 @@ Varsayılan olarak, haritada son 30 dakika gösterilir. Bağımlılıkların ge�
 ![Doğrudan VM eşlemesine genel bakış](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->Ayrıca, sanal makine ölçek kümesi için **örnekler** görünümünden belirli bir örnek için bir eşlemeye erişebilirsiniz. **Ayarlar** bölümünde, **örnekler** > **öngörüleri**' ne gidin.
+>Ayrıca, sanal makine ölçek kümesi için **örnekler** görünümünden belirli bir örnek için bir eşlemeye erişebilirsiniz. **Ayarlar** bölümünde, **örnekler**  >  **öngörüleri**' ne gidin.
 
 ## <a name="view-a-map-from-azure-monitor"></a>Azure Izleyici 'den harita görüntüleme
 

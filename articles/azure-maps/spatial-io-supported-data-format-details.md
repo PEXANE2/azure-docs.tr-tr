@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334093"
 ---
 # <a name="supported-data-format-details"></a>Desteklenen veri biçimi ayrıntıları
@@ -39,7 +39,7 @@ Uzamsal GÇ modülü aşağıdaki ad alanlarından XML etiketlerini destekler.
 
 ## <a name="supported-xml-elements"></a>Desteklenen XML öğeleri
 
-Uzamsal GÇ modülü aşağıdaki XML öğelerini destekler. Desteklenmeyen herhangi bir XML etiketi, JSON nesnesine dönüştürülür. Ardından, her etiket üst şeklin veya katmanın `properties` alanına bir özellik olarak eklenecektir.
+Uzamsal GÇ modülü aşağıdaki XML öğelerini destekler. Desteklenmeyen herhangi bir XML etiketi, JSON nesnesine dönüştürülür. Ardından, her etiket `properties` üst şeklin veya katmanın alanına bir özellik olarak eklenecektir.
 
 ### <a name="kml-elements"></a>KML öğeleri
 
@@ -47,33 +47,33 @@ Uzamsal GÇ modülü aşağıdaki KML öğelerini destekler.
 
 | Öğe Adı         | Okuma    | Yazma   | Notlar                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
-| `address`            | partial | evet     | Nesne ayrıştırıldı, ancak şekil konumlandırma için kullanılmaz.                                                                    |
-| `AddressDetails`     | partial | hayır      | Nesne ayrıştırıldı, ancak şekil konumlandırma için kullanılmaz.                                                                    |
+| `address`            | kısmi | evet     | Nesne ayrıştırıldı, ancak şekil konumlandırma için kullanılmaz.                                                                    |
+| `AddressDetails`     | kısmi | hayır      | Nesne ayrıştırıldı, ancak şekil konumlandırma için kullanılmaz.                                                                    |
 | `atom:author`        | evet     | evet     |                                                                                                                            |
 | `atom:link`          | evet     | evet     |                                                                                                                            |
 | `atom:name`          | evet     | evet     |                                                                                                                            |
-| `BalloonStyle`       | partial | partial | `displayMode`desteklenmez. Öğesine dönüştürüldü `PopupTemplate`. Yazmak için, yazmak istediğiniz `popupTemplate` özelliğin özelliği olarak bir özelliği ekleyin. |
+| `BalloonStyle`       | kısmi | kısmi | `displayMode`desteklenmez. Öğesine dönüştürüldü `PopupTemplate` . Yazmak için, yazmak istediğiniz özelliğin `popupTemplate` özelliği olarak bir özelliği ekleyin. |
 | `begin`              | evet     | evet     |                                                                                                                            |
-| `color`              | evet     | evet     | Ve `#AABBGGRR` `#BBGGRR`içerir. Bir CSS renk dizesine ayrıştırıldı                                                           |
+| `color`              | evet     | evet     | `#AABBGGRR`Ve içerir `#BBGGRR` . Bir CSS renk dizesine ayrıştırıldı                                                           |
 | `colorMode`          | evet     | hayır      |                                                                                                                            |
 | `coordinates`        | evet     | evet     |                                                                                                                            |
 | `Data`               | evet     | evet     |                                                                                                                            |
 | `description`        | evet     | evet     |                                                                                                                            |
 | `displayName`        | evet     | evet     |                                                                                                                            |
 | `Document`           | evet     | evet     |                                                                                                                            |
-| `drawOrder`          | partial | hayır      | Arka üste yazılanları okuyun ve bunları sıralamak için kullanılır. 
+| `drawOrder`          | kısmi | hayır      | Arka üste yazılanları okuyun ve bunları sıralamak için kullanılır. 
 | `east`               | evet     | evet     |                                                                                                                            |
 | `end`                | evet     | evet     |                                                                                                                            |
-| `ExtendedData`       | evet     | evet     | Formun `Data` `$[dataName]`türsüz `SimpleData` , `Schema`veya ve varlık değiştirmeler desteklenir.                      |
-| `extrude`            | partial | partial | Yalnızca çokgenler için desteklenir. Farklı yüksekliklerdeki çokgenler olan MultiGeometry, bireysel özelliklere göre parçalanacaktır. Çizgi stilleri desteklenmez. Yüksekliği 0 olan çokgenler düz bir çokgen olarak oluşturulur. Okurken, Dış halkadaki ilk koordinat yüksekliği, çokgenin Height özelliği olarak eklenir. Sonra, haritada çokgeni işlemek için ilk koordinat yüksekliği kullanılacaktır. |
+| `ExtendedData`       | evet     | evet     | Formun türsüz `Data` , `SimpleData` veya `Schema` ve varlık değiştirmeler desteklenir `$[dataName]` .                      |
+| `extrude`            | kısmi | kısmi | Yalnızca çokgenler için desteklenir. Farklı yüksekliklerdeki çokgenler olan MultiGeometry, bireysel özelliklere göre parçalanacaktır. Çizgi stilleri desteklenmez. Yüksekliği 0 olan çokgenler düz bir çokgen olarak oluşturulur. Okurken, Dış halkadaki ilk koordinat yüksekliği, çokgenin Height özelliği olarak eklenir. Sonra, haritada çokgeni işlemek için ilk koordinat yüksekliği kullanılacaktır. |
 | `fill`               | evet     | evet     |                                                                                                                            |
 | `Folder`             | evet     | evet     |                                                                                                                            |
 | `GroundOverlay`      | evet     | evet     | `color`desteklenmiyor                                                                                                   |
-| `heading`            | partial | hayır      | Ayrıştırılmış ancak tarafından `SimpleDataLayer`işlenmiyor. Yalnızca verilerin şeklin özelliğinde depolanıyorsa yazar.                 |
-| `hotSpot`            | evet     | partial | Yalnızca verilerin şeklin özelliğinde depolanıyorsa yazar. Birimler yalnızca "piksel" olarak silinir.                         |
+| `heading`            | kısmi | hayır      | Ayrıştırılmış ancak tarafından işlenmiyor `SimpleDataLayer` . Yalnızca verilerin şeklin özelliğinde depolanıyorsa yazar.                 |
+| `hotSpot`            | evet     | kısmi | Yalnızca verilerin şeklin özelliğinde depolanıyorsa yazar. Birimler yalnızca "piksel" olarak silinir.                         |
 | `href`               | evet     | evet     |                                                                                                                            |
-| `Icon`               | partial | partial | Ayrıştırılmış ancak tarafından `SimpleDataLayer`işlenmiyor. Yalnızca bir URI verisi içeriyorsa şeklin Icon özelliğini yazar. Yalnızca `href` desteklenir. |
-| `IconStyle`          | partial | partial | `icon`, `heading`, `colorMode`, ve `hotspots` değerleri ayrıştırılır, ancak tarafından işlenmemektedir`SimpleDataLayer`         |
+| `Icon`               | kısmi | kısmi | Ayrıştırılmış ancak tarafından işlenmiyor `SimpleDataLayer` . Yalnızca bir URI verisi içeriyorsa şeklin Icon özelliğini yazar. Yalnızca `href` desteklenir. |
+| `IconStyle`          | kısmi | kısmi | `icon`, `heading` , `colorMode` , ve `hotspots` değerleri ayrıştırılır, ancak tarafından işlenmemektedir`SimpleDataLayer`         |
 | `innerBoundaryIs`    | evet     | evet     |                                                                                                                            |
 | `kml`                | evet     | evet     |                                                                                                                            |
 | `LabelStyle`         | hayır      | hayır      |                                                                                                                            |
@@ -83,7 +83,7 @@ Uzamsal GÇ modülü aşağıdaki KML öğelerini destekler.
 | `LineString`         | evet     | evet     |                                                                                                                            |
 | `LineStyle`          | evet     | evet     | `colorMode`desteklenmez.                                                                                         |
 | `Link`               | evet     | hayır      | Yalnızca `href` özellik ağ bağlantıları için desteklenir.                                                                   |
-| `MultiGeometry`      | partial | partial | , Okuma sırasında ayrı ayrı özelliklerle ayrılabilir.                                                                     |
+| `MultiGeometry`      | kısmi | kısmi | , Okuma sırasında ayrı ayrı özelliklerle ayrılabilir.                                                                     |
 | `name`               | evet     | evet     |                                                                                                                            |
 | `NetworkLink`        | evet     | hayır      | Bağlantıların, belgeyle aynı etki alanında olması gerekir.                                                                  |
 | `NetworkLinkControl` | hayır      | hayır      |                                                                                                                            |
@@ -92,36 +92,36 @@ Uzamsal GÇ modülü aşağıdaki KML öğelerini destekler.
 | `outerBoundaryIs`    | evet     | evet     |                                                                                                                            |
 | `outline`            | evet     | evet     |                                                                                                                            |
 | `overlayXY`          | hayır      | hayır      |                                                                                                                            |
-| `Pair`               | partial | hayır      | Yalnızca a `normal` `StyleMap` içindeki stil desteklenir. `highlight`desteklenmez.                                   |
+| `Pair`               | kısmi | hayır      | Yalnızca `normal` a içindeki stil `StyleMap` desteklenir. `highlight`desteklenmez.                                   |
 | `phoneNumber`        | evet     | evet     |                                                                                                                            |
 | `PhotoOverlay`       | hayır      | hayır      |                                                                                                                            |
 | `Placemark`          | evet     | evet     |                                                                                                                            |
 | `Point`              | evet     | evet     |                                                                                                                            |
 | `Polygon`            | evet     | evet     |                                                                                                                            |
 | `PolyStyle`          | evet     | evet     |                                                                                                                            |
-| `Region`             | partial | partial | `LatLongBox`Belge düzeyinde desteklenir.                                                                      |
+| `Region`             | kısmi | kısmi | `LatLongBox`Belge düzeyinde desteklenir.                                                                      |
 | `rotation`           | hayır      | hayır      |                                                                                                                            |
 | `rotationXY`         | hayır      | hayır      |                                                                                                                            |
 | `scale`              | hayır      | hayır      |                                                                                                                            |
 | `Schema`             | evet     | evet     |                                                                                                                            |
 | `SchemaData`         | evet     | evet     |                                                                                                                            |
-| `schemaUrl`          | partial | evet     | , Bir KMZ 'ye dahil olmayan dış belgelerden stil yüklemeyi desteklemez.                             |
+| `schemaUrl`          | kısmi | evet     | , Bir KMZ 'ye dahil olmayan dış belgelerden stil yüklemeyi desteklemez.                             |
 | `ScreenOverlay`      | hayır      | hayır      |                                                                                                                            |
 | `screenXY`           | hayır      | hayır      |                                                                                                                            |
 | `SimpleData`         | evet     | evet     |                                                                                                                            |
 | `SimpleField`        | evet     | evet     |                                                                                                                            |
 | `size`               | hayır      | hayır      |                                                                                                                            |
-| `Snippet`            | partial | partial | `maxLines`öznitelik yoksayıldı.                                                                                  |
+| `Snippet`            | kısmi | kısmi | `maxLines`öznitelik yoksayıldı.                                                                                  |
 | `south`              | evet     | evet     |                                                                                                                            |
 | `Style`              | evet     | evet     |                                                                                                                            |
-| `StyleMap`           | partial | hayır      | Yalnızca içindeki `StyleMap` normal stil desteklenir.                                                                        |
-| `styleUrl`           | partial | evet     | Dış stil URL 'Leri desteklenmez.                                                                         |
-| `text`               | evet     | evet     | `$[geDirections]` Değiştirme desteklenmiyor                                                                          |
+| `StyleMap`           | kısmi | hayır      | Yalnızca içindeki normal stil `StyleMap` desteklenir.                                                                        |
+| `styleUrl`           | kısmi | evet     | Dış stil URL 'Leri desteklenmez.                                                                         |
+| `text`               | evet     | evet     | Değiştirme `$[geDirections]` desteklenmiyor                                                                          |
 | `textColor`          | evet     | evet     |                                                                                                                            |
 | `TimeSpan`           | evet     | evet     |                                                                                                                            |
 | `TimeStamp`          | evet     | evet     |                                                                                                                            |
 | `value`              | evet     | evet     |                                                                                                                            |
-| `viewRefreshMode`    | partial | hayır      |  Bir WMS hizmetine işaret ediyorsanız, yalnızca `onStop` zemin Yerpaylaşımları için desteklenir. Eşleme taşırken `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` URL 'ye eklenir ve güncellenir.  |
+| `viewRefreshMode`    | kısmi | hayır      |  Bir WMS hizmetine işaret ediyorsanız, yalnızca `onStop` zemin Yerpaylaşımları için desteklenir. `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]`Eşleme TAŞıRKEN URL 'ye eklenir ve güncellenir.  |
 | `visibility`         | evet     | evet     |                                                                                                                            |
 | `west`               | evet     | evet     |                                                                                                                            |
 | `when`               | evet     | evet     |                                                                                                                            |
@@ -153,10 +153,10 @@ Uzamsal GÇ modülü aşağıdaki GeoRSS öğelerini destekler.
 | `atom:title`             | evet     | evet   |                                                                                                |
 | `atom:updated`           | evet     | evet   |                                                                                                |
 | `atom:uri`               | evet     | evet   |                                                                                                |
-| `geo:lat`                | evet     | hayır    | Olarak yazılmıştır `georss:point`.                                                                   |
-| `geo:lon`                | evet     | hayır    | Olarak yazılmıştır `georss:point`.                                                                   |
-| `geo:long`               | evet     | hayır    | Olarak yazılmıştır `georss:point`.                                                                   |
-| `georss:box`             | evet     | hayır    | Çokgen olarak oku ve "Rectangle" `subType` özelliği verildi                                |
+| `geo:lat`                | evet     | hayır    | Olarak yazılmıştır `georss:point` .                                                                   |
+| `geo:lon`                | evet     | hayır    | Olarak yazılmıştır `georss:point` .                                                                   |
+| `geo:long`               | evet     | hayır    | Olarak yazılmıştır `georss:point` .                                                                   |
+| `georss:box`             | evet     | hayır    | Çokgen olarak oku ve `subType` "Rectangle" özelliği verildi                                |
 | `georss:circle`          | evet     | evet   |                                                                                                |
 | `georss:elev`            | evet     | evet   |                                                                                                |
 | `georss:featurename`     | evet     | evet   |                                                                                                |
@@ -168,34 +168,34 @@ Uzamsal GÇ modülü aşağıdaki GeoRSS öğelerini destekler.
 | `georss:radius`          | evet     | evet   |                                                                                                |
 | `georss:relationshiptag` | evet     | evet   |                                                                                                |
 | `georss:where`           | evet     | evet   |                                                                                                |
-| `geourl:latitude`        | evet     | hayır    | Olarak yazılmıştır `georss:point`.                                                                   |
-| `geourl:longitude`       | evet     | hayır    | Olarak yazılmıştır `georss:point`.                                                                   |
-| `position`               | evet     | hayır    | Bazı XML akışları, GML 'yi bir `georss:where` etiketle sarmalamak yerine bir konum etiketiyle sarmalacaktır. Bu etiketi okur, ancak bir `georss:where` etiketi kullanarak yazar. |
+| `geourl:latitude`        | evet     | hayır    | Olarak yazılmıştır `georss:point` .                                                                   |
+| `geourl:longitude`       | evet     | hayır    | Olarak yazılmıştır `georss:point` .                                                                   |
+| `position`               | evet     | hayır    | Bazı XML akışları, GML 'yi bir etiketle sarmalamak yerine bir konum etiketiyle sarmalacaktır `georss:where` . Bu etiketi okur, ancak bir etiketi kullanarak yazar `georss:where` . |
 | `rss`                    | evet     | hayır    | GeoRSS, ATOM biçiminde yazılmıştır.                                                                 |
-| `rss:author`             | evet     | partial | Olarak yazılmıştır `atom:author`.                                                                 |
-| `rss:category`           | evet     | partial | Olarak yazılmıştır `atom:category`.                                                               |
+| `rss:author`             | evet     | kısmi | Olarak yazılmıştır `atom:author` .                                                                 |
+| `rss:category`           | evet     | kısmi | Olarak yazılmıştır `atom:category` .                                                               |
 | `rss:channel`            | evet     | hayır    |                                                                                                |
 | `rss:cloud`              | evet     | hayır    |                                                                                                |
 | `rss:comments`           | evet     | hayır    |                                                                                                |
-| `rss:copyright`          | evet     | partial | `atom:rights` If şeklinin zaten bir `rights` `properties` özelliği yoksa, bu şekilde yazılmıştır.       |
-| `rss:description`        | evet     | partial | `atom:content` If şeklinin zaten bir `content` `properties` özelliği yoksa, bu şekilde yazılmıştır.      |
+| `rss:copyright`          | evet     | kısmi | `atom:rights`IF şeklinin zaten bir özelliği yoksa, bu şekilde yazılmıştır `rights` `properties` .       |
+| `rss:description`        | evet     | kısmi | `atom:content`IF şeklinin zaten bir özelliği yoksa, bu şekilde yazılmıştır `content` `properties` .      |
 | `rss:docs`               | evet     | hayır    |                                                                                                |
 | `rss:enclosure`          | evet     | hayır    |                                                                                                |
 | `rss:generator`          | evet     | hayır    |                                                                                                |
-| `rss:guid`               | evet     | partial | `atom:id` If şeklinin zaten bir `id` `properties` özelliği yoksa, bu şekilde yazılmıştır.         |
-| `rss:image`              | evet     | partial | `atom:logo` If şeklinin zaten bir `logo` `properties` özelliği yoksa, bu şekilde yazılmıştır.      |
-| `rss:item`               | evet     | partial | Olarak yazılmıştır `atom:entry`.                                                                  |
+| `rss:guid`               | evet     | kısmi | `atom:id`IF şeklinin zaten bir özelliği yoksa, bu şekilde yazılmıştır `id` `properties` .         |
+| `rss:image`              | evet     | kısmi | `atom:logo`IF şeklinin zaten bir özelliği yoksa, bu şekilde yazılmıştır `logo` `properties` .      |
+| `rss:item`               | evet     | kısmi | Olarak yazılmıştır `atom:entry` .                                                                  |
 | `rss:language`           | evet     | hayır    |                                                                                                |
-| `rss:lastBuildDate`      | evet     | partial | `atom:updated` If şeklinin zaten bir `updated` `properties` özelliği yoksa, bu şekilde yazılmıştır.     |
-| `rss:link`               | evet     | partial | Olarak yazılmıştır `atom:link`.                                                                   |
-| `rss:managingEditor`     | evet     | partial | Olarak yazılmıştır `atom:contributor`.                                                            |
-| `rss:pubDate`            | evet     | partial | `atom:published` If şeklinin zaten bir `published` `properties` özelliği yoksa, bu şekilde yazılmıştır.  |
+| `rss:lastBuildDate`      | evet     | kısmi | `atom:updated`IF şeklinin zaten bir özelliği yoksa, bu şekilde yazılmıştır `updated` `properties` .     |
+| `rss:link`               | evet     | kısmi | Olarak yazılmıştır `atom:link` .                                                                   |
+| `rss:managingEditor`     | evet     | kısmi | Olarak yazılmıştır `atom:contributor` .                                                            |
+| `rss:pubDate`            | evet     | kısmi | `atom:published`IF şeklinin zaten bir özelliği yoksa, bu şekilde yazılmıştır `published` `properties` .  |
 | `rss:rating`             | evet     | hayır    |                                                                                                |
 | `rss:skipDays`           | evet     | hayır    |                                                                                                |
 | `rss:skipHours`          | evet     | hayır    |                                                                                                |
-| `rss:source`             | evet     | partial | `atom:source` İçeren olarak yazılmıştır `atom:link`.                                       |
+| `rss:source`             | evet     | kısmi | İçeren olarak yazılmıştır `atom:source` `atom:link` .                                       |
 | `rss:textInput`          | evet     | hayır    |                                                                                                |
-| `rss:title`              | evet     | partial | Olarak yazılmıştır `atom:title`.                                                                  |
+| `rss:title`              | evet     | kısmi | Olarak yazılmıştır `atom:title` .                                                                  |
 | `rss:ttl`                | evet     | hayır    |                                                                                                |
 | `rss:webMaster`          | evet     | hayır    |                                                                                                |
 
@@ -205,10 +205,10 @@ Uzamsal GÇ modülü aşağıdaki GML öğelerini destekler.
 
 | Öğe Adı            | Okuma | Yazma | Notlar                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
-| `gml:coordinates`       | evet  | hayır    | Olarak `gml:posList`yazılmıştır.                                                              |
+| `gml:coordinates`       | evet  | hayır    | Olarak yazılmıştır `gml:posList` .                                                              |
 | `gml:curveMember`       | evet  | hayır    |                                                                                        |
 | `gml:curveMembers`      | evet  | hayır    |                                                                                        |
-| `gml:Box`               | evet  | hayır    | Olarak `gml:Envelope`yazılmıştır.                                                             |
+| `gml:Box`               | evet  | hayır    | Olarak yazılmıştır `gml:Envelope` .                                                             |
 | `gml:description`       | evet  | evet   |                                                                                        |
 | `gml:Envelope`          | evet  | evet   |                                                                                        |
 | `gml:exterior`          | evet  | evet   |                                                                                        |
@@ -219,20 +219,20 @@ Uzamsal GÇ modülü aşağıdaki GML öğelerini destekler.
 | `gml:geometryMember`    | evet  | evet   |                                                                                        |
 | `gml:geometryMembers`   | evet  | evet   |                                                                                        |
 | `gml:identifier`        | evet  | evet   |                                                                                        |
-| `gml:innerBoundaryIs`   | evet  | hayır    | Kullanılarak `gml.interior`yazılmıştır.                                                          |
+| `gml:innerBoundaryIs`   | evet  | hayır    | Kullanılarak yazılmıştır `gml.interior` .                                                          |
 | `gml:interior`          | evet  | evet   |                                                                                        |
 | `gml:LinearRing`        | evet  | evet   |                                                                                        |
 | `gml:LineString`        | evet  | evet   |                                                                                        |
 | `gml:lineStringMember`  | evet  | evet   |                                                                                        |
 | `gml:lineStringMembers` | evet  | hayır    |                                                                                        |
-| `gml:MultiCurve`        | evet  | hayır    | Yalnızca üyeleri `gml:LineString` okur. Şöyle yazılmıştır`gml.MultiLineString`                  |
-| `gml:MultiGeometry`     | partial  | partial   | Yalnızca Korturecollection olarak oku.                                              |
+| `gml:MultiCurve`        | evet  | hayır    | Yalnızca `gml:LineString` üyeleri okur. Şöyle yazılmıştır`gml.MultiLineString`                  |
+| `gml:MultiGeometry`     | kısmi  | kısmi   | Yalnızca Korturecollection olarak oku.                                              |
 | `gml:MultiLineString`   | evet  | evet   |                                                                                        |
 | `gml:MultiPoint`        | evet  | evet   |                                                                                        |
 | `gml:MultiPolygon`      | evet  | evet   |                                                                                        |
-| `gml:MultiSurface`      | evet  | hayır    | Yalnızca üyeleri `gml:Polygon` okur. Şöyle yazılmıştır`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | evet  | hayır    | Yalnızca `gml:Polygon` üyeleri okur. Şöyle yazılmıştır`gml.MultiPolygon`                        |
 | `gml:name`              | evet  | evet   |                                                                                        |
-| `gml:outerBoundaryIs`   | evet  | hayır    | Kullanılarak `gml.exterior`yazılmıştır.                                                          |
+| `gml:outerBoundaryIs`   | evet  | hayır    | Kullanılarak yazılmıştır `gml.exterior` .                                                          |
 | `gml:Point`             | evet  | evet   |                                                                                        |
 | `gml:pointMember`       | evet  | evet   |                                                                                        |
 | `gml:pointMembers`      | evet  | hayır    |                                                                                        |
@@ -264,7 +264,7 @@ Uzamsal GÇ modülü aşağıdaki GPX öğelerini destekler.
 | `gpx:desc`               | evet     | evet     | Diğer XML biçimleriyle hizalamak için okundu durumunda açıklama özelliğine kopyalanmış.               |
 | `gpx:dgpsid`             | evet     | evet     |                                                                                             |
 | `gpx:ele`                | evet     | evet     |                                                                                             |
-| `gpx:extensions`         | partial | partial | Okuma sırasında stil bilgileri ayıklanır. Tüm diğer uzantılar basit bir JSON nesnesi olarak düzleştirilir. Yalnızca şekil stili bilgileri yazılır. |
+| `gpx:extensions`         | kısmi | kısmi | Okuma sırasında stil bilgileri ayıklanır. Tüm diğer uzantılar basit bir JSON nesnesi olarak düzleştirilir. Yalnızca şekil stili bilgileri yazılır. |
 | `gpx:geoidheight`        | evet     | evet     |                                                                                             |
 | `gpx:gpx`                | evet     | evet     |                                                                                             |
 | `gpx:hdop`               | evet     | evet     |                                                                                             |
@@ -287,13 +287,13 @@ Uzamsal GÇ modülü aşağıdaki GPX öğelerini destekler.
 | `gpx:vdop`               | evet     | evet     |                                                                                             |
 | `gpx:wpt`                | evet     | evet     |                                                                                             |
 | `gpx_style:color`        | evet     | evet     |                                                                                             |
-| `gpx_style:line`         | partial | partial | `color``width`,,, `opacity` `lineCap` desteklenir.                                           |
+| `gpx_style:line`         | kısmi | kısmi | `color`,,, `opacity` `width` `lineCap` desteklenir.                                           |
 | `gpx_style:opacity`      | evet     | evet     |                                                                                             |
 | `gpx_style:width`        | evet     | evet     |                                                                                             |
 | `gpxx:DisplayColor`      | evet     | hayır      | Bir şeklin rengini belirtmek için kullanılır. Yazarken, `gpx_style:line` bunun yerine Color kullanılacaktır.  |
-| `gpxx:RouteExtension`    | partial | hayır      | Tüm özellikler salt okunurdur `properties`. Yalnızca `DisplayColor` kullanılır.                     |
-| `gpxx:TrackExtension`    | partial | hayır      | Tüm özellikler salt okunurdur `properties`. Yalnızca `DisplayColor` kullanılır.                     |
-| `gpxx:WaypointExtension` | partial | hayır      | Tüm özellikler salt okunurdur `properties`. Yalnızca `DisplayColor` kullanılır.                     |
+| `gpxx:RouteExtension`    | kısmi | hayır      | Tüm özellikler salt okunurdur `properties` . Yalnızca `DisplayColor` kullanılır.                     |
+| `gpxx:TrackExtension`    | kısmi | hayır      | Tüm özellikler salt okunurdur `properties` . Yalnızca `DisplayColor` kullanılır.                     |
+| `gpxx:WaypointExtension` | kısmi | hayır      | Tüm özellikler salt okunurdur `properties` . Yalnızca `DisplayColor` kullanılır.                     |
 | `gpx:keywords`           | evet     | evet     |                                                                                             |
 | `gpx:fix`                | evet     | evet     |                                                                                             |
 
@@ -337,9 +337,9 @@ Yazarken;
 | GEOMETRYCOLLECTION D | x | x<sup>[2]</sup> | 
 | GEOMETRYCOLLECTION ZM | x<sup>[1]</sup><sup>[2]</sup> | x | 
 
-\[1\] yalnızca Z parametresi yakalanır ve konum değerinde üçüncü bir değer olarak eklenir.
+\[1 \] Yalnızca Z parametresi yakalanır ve konum değerinde üçüncü bir değer olarak eklenir.
 
-\[2\] milyon parametre yakalanmadı.
+\[2 \] milyon parametre yakalanmadı.
 
 ## <a name="delimited-spatial-data-support"></a>Sınırlandırılmış uzamsal veri desteği
 
@@ -399,7 +399,7 @@ Uzamsal verileri içeren ayrılmış bir dosyayı okurken, hangi sütunların ko
 - EDM. Double
 - float
 - double
-- number
+- sayı
 
 #### <a name="booleans"></a>Boolean
 

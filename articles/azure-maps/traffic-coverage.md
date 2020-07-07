@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333956"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure haritalar trafik kapsamı
@@ -32,7 +32,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |Kolombiya      |✓         |✓         |
 |Meksika     |✓         |✓         |
 |Peru       |✓         |✓         | 
-|Amerika Birleşik Devletleri     |✓         |✓        |
+|Birleşik Devletler     |✓         |✓        |
 |+ Porto Riko     |✓         |✓         |
 |Uruguay |✓         |✓         |
 
@@ -65,7 +65,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |Avusturya     |✓         |✓         |
 |Belarus    |✓         |✓         |
 |Belçika     |✓         |✓         |
-|Bosna Hersek    |✓         |✓         |
+|Bosna-Hersek    |✓         |✓         |
 |Bulgaristan     |✓         |✓         |
 |Hırvatistan     |✓         |✓         |
 |Çek Cumhuriyeti     |✓         |✓         |
@@ -83,8 +83,8 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |İtalya     |✓         |✓        |
 |Kazakistan    |✓         |✓        |
 |Letonya     |✓         |✓         |
-|Lesoto     |✓         |✓         |
-|Lihtenştayn      |✓         |✓         |
+|Lesotho     |✓         |✓         |
+|Liechtenstein      |✓         |✓         |
 |Litvanya     |✓         |✓         |
 |Lüksemburg     |✓         |✓         |
 |Malta     |✓         |✓         |
@@ -112,7 +112,7 @@ Ancak, haritalar tüm ülkeler veya bölgeler için aynı düzeyde bilgi ve doğ
 |+ Gibraltar     |✓         |✓         |
 |+ Guernsey & Jersey     |✓         |✓         |
 |+ Man Adası     |✓         |✓         |
-|Vatikan şehri   |✓         |✓         |
+|Vatikan   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika

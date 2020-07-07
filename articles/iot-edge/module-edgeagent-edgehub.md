@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546198"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge Aracısı ve IoT Edge hub modülünün özellikleri TWINS
@@ -29,35 +29,35 @@ Modül ikizi şunları içerir:
 
 ## <a name="edgeagent-desired-properties"></a>EdgeAgent istenen özellikleri
 
-IoT Edge Aracısı için ikizi modülü çağrılır `$edgeAgent` ve bir cihazda çalışan IoT Edge aracısı ve IoT Hub arasındaki iletişimleri koordine eder. İstenen özellikler, belirli bir cihaza tek bir aygıtın veya ölçekli dağıtımın bir parçası olarak bir dağıtım bildirimi uygulanırken ayarlanır.
+IoT Edge Aracısı için ikizi modülü çağrılır `$edgeAgent` ve bir cihazda çalışan IoT Edge Aracısı ve IoT Hub arasındaki iletişimleri koordine eder. İstenen özellikler, belirli bir cihaza tek bir aygıtın veya ölçekli dağıtımın bir parçası olarak bir dağıtım bildirimi uygulanırken ayarlanır.
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
 | schemaVersion | "1,0" olmalıdır | Yes |
 | Runtime. Type | "Docker" olmalıdır | Yes |
 | Runtime. Settings. minDockerVersion | Bu dağıtım bildirimi için gereken en düşük Docker sürümüne ayarla | Yes |
-| Runtime. Settings. loggingOptions | IoT Edge aracı kapsayıcısı için günlük seçeneklerini içeren bir strıngiingjson. [Docker günlüğü seçenekleri](https://docs.docker.com/engine/admin/logging/overview/) | Hayır |
-| Runtime. Settings. registryCredentials<br>. {Registryıd}. Kullanıcı adı | Kapsayıcı kayıt defterinin Kullanıcı adı. Azure Container Registry için, Kullanıcı adı genellikle kayıt adıdır.<br><br> Tüm özel modül görüntüleri için kayıt defteri kimlik bilgileri gereklidir. | Hayır |
-| Runtime. Settings. registryCredentials<br>. {Registryıd}. parola | Kapsayıcı kayıt defteri için parola. | Hayır |
-| Runtime. Settings. registryCredentials<br>. {Registryıd}. adres | Kapsayıcı kayıt defterinin adresi. Azure Container Registry için, adres genellikle *{Registry Name}. azurecr. IO*olur. | Hayır |  
+| Runtime. Settings. loggingOptions | IoT Edge aracı kapsayıcısı için günlük seçeneklerini içeren bir strıngiingjson. [Docker günlüğü seçenekleri](https://docs.docker.com/engine/admin/logging/overview/) | No |
+| Runtime. Settings. registryCredentials<br>. {Registryıd}. Kullanıcı adı | Kapsayıcı kayıt defterinin Kullanıcı adı. Azure Container Registry için, Kullanıcı adı genellikle kayıt adıdır.<br><br> Tüm özel modül görüntüleri için kayıt defteri kimlik bilgileri gereklidir. | No |
+| Runtime. Settings. registryCredentials<br>. {Registryıd}. parola | Kapsayıcı kayıt defteri için parola. | No |
+| Runtime. Settings. registryCredentials<br>. {Registryıd}. adres | Kapsayıcı kayıt defterinin adresi. Azure Container Registry için, adres genellikle *{Registry Name}. azurecr. IO*olur. | No |  
 | systemModules. edgeAgent. Type | "Docker" olmalıdır | Yes |
 | systemModules. edgeAgent. Settings. Image | IoT Edge aracısının görüntüsünün URI 'SI. Şu anda IoT Edge Aracısı kendisini güncelleştiremeyebilir. | Yes |
-| systemModules. edgeAgent. Settings<br>. createOptions | IoT Edge aracı kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Hayır |
+| systemModules. edgeAgent. Settings<br>. createOptions | IoT Edge aracı kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | systemModules.edgeAgent.configuration.id | Bu modülü dağıtan dağıtımın KIMLIĞI. | IoT Hub, bildirim bir dağıtım kullanılarak uygulandığında bu özelliği ayarlar. Dağıtım bildiriminin parçası değil. |
 | systemModules. edgeHub. Type | "Docker" olmalıdır | Yes |
 | systemModules. edgeHub. durumu | "Çalışıyor" olmalıdır | Yes |
 | systemModules. edgeHub. restartPolicy | "Always" olmalıdır | Yes |
 | systemModules. edgeHub. Settings. Image | IoT Edge hub 'ının görüntüsünün URI 'SI. | Yes |
-| systemModules. edgeHub. Settings<br>. createOptions | IoT Edge hub kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Hayır |
+| systemModules. edgeHub. Settings<br>. createOptions | IoT Edge hub kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | systemModules.edgeHub.configuration.id | Bu modülü dağıtan dağıtımın KIMLIĞI. | IoT Hub, bildirim bir dağıtım kullanılarak uygulandığında bu özelliği ayarlar. Dağıtım bildiriminin parçası değil. |
 | Modüler. {ModuleID}. sürüm | Bu modülün sürümünü temsil eden Kullanıcı tanımlı bir dize. | Yes |
 | Modüler. {ModuleID}. tür | "Docker" olmalıdır | Yes |
-| Modüler. {ModuleID}. durum | {"Running" \| "durduruldu"} | Yes |
-| Modüler. {ModuleID}. restartPolicy | {"hiçbir zaman \| " "başarısız \| " "sağlıksız \| " "her zaman"} | Yes |
-| Modüler. {ModuleID}. ımagepullpolicy | {"oluşturma sırasında" \| "hiçbir şekilde"} | Hayır |
-| Modüler. {ModuleID}. env | Modüle geçirilecek ortam değişkenlerinin listesi. Biçimi alır`"<name>": {"value": "<value>"}` | Hayır |
+| Modüler. {ModuleID}. durum | {"çalışıyor" \| "durduruldu"} | Yes |
+| Modüler. {ModuleID}. restartPolicy | {"hiçbir şekilde" \| "sorunlu" "sağlıksız" " \| \| her zaman"} | Yes |
+| Modüler. {ModuleID}. ımagepullpolicy | {"oluşturma sırasında" \| "hiçbir koşulda"} | No |
+| Modüler. {ModuleID}. env | Modüle geçirilecek ortam değişkenlerinin listesi. Biçimi alır`"<name>": {"value": "<value>"}` | No |
 | Modüler. {ModuleID}. Settings. image | Modül görüntüsünün URI 'SI. | Yes |
-| Modüler. {ModuleID}. Settings. createOptions | Modül kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Hayır |
+| Modüler. {ModuleID}. Settings. createOptions | Modül kapsayıcısının oluşturulmasına yönelik seçenekleri içeren bir strıngiingjson. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | Modüler. {ModuleID}. Configuration. ID | Bu modülü dağıtan dağıtımın KIMLIĞI. | IoT Hub, bildirim bir dağıtım kullanılarak uygulandığında bu özelliği ayarlar. Dağıtım bildiriminin parçası değil. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent tarafından bildirilen özellikler
@@ -78,22 +78,22 @@ Aşağıdaki tablo, istenen özelliklerden kopyalanmış olan bilgileri içermez
 | Özellik | Açıklama |
 | -------- | ----------- |
 | lastDesiredVersion | Bu tamsayı, IoT Edge Aracısı tarafından işlenen istenen özelliklerin son sürümünü ifade eder. |
-| lastDesiredStatus. Code | Bu durum kodu, IoT Edge Aracısı tarafından görülen son istenen özellikleri ifade eder. İzin verilen değerler `200` : başarılı `400` , geçersiz yapılandırma `412` , geçersiz şema sürümü `417` , istenen özellikler boş, `500` başarısız |
+| lastDesiredStatus. Code | Bu durum kodu, IoT Edge Aracısı tarafından görülen son istenen özellikleri ifade eder. İzin verilen değerler: `200` başarılı, `400` geçersiz yapılandırma, `412` Geçersiz şema sürümü, `417` istenen özellikler boş, `500` başarısız |
 | lastDesiredStatus. Description | Durumun metin açıklaması |
-| deviceHealth | `healthy`tüm modüllerin çalışma zamanı durumu ya `running` `stopped`da ise, `unhealthy` Aksi takdirde |
-| configurationHealth. {DeploymentId}. sistem durumu | `healthy`{DeploymentId} dağıtımı tarafından ayarlanan tüm modüllerin çalışma zamanı durumu ya `running` `stopped`da ise, `unhealthy` Aksi takdirde |
+| deviceHealth | `healthy`tüm modüllerin çalışma zamanı durumu ya da ise `running` `stopped` , `unhealthy` Aksi takdirde |
+| configurationHealth. {DeploymentId}. sistem durumu | `healthy`{DeploymentId} dağıtımı tarafından ayarlanan tüm modüllerin çalışma zamanı durumu ya da ise `running` `stopped` , `unhealthy` Aksi takdirde |
 | Runtime. platform. OS | Cihazda çalışan işletim sistemini raporlama |
 | Runtime. platform. Architecture | Cihazdaki CPU mimarisini raporlama |
-| systemModules. edgeAgent. runtimeStatus | IoT Edge aracısının bildirilen durumu: {"çalışıyor" \| "sağlıksız"} |
+| systemModules. edgeAgent. runtimeStatus | IoT Edge aracısının bildirilen durumu: {"çalışıyor" " \| sağlıksız"} |
 | systemModules. edgeAgent. statusDescription | IoT Edge aracısının bildirilen durumunun metin açıklaması. |
-| systemModules. edgeHub. runtimeStatus | IoT Edge hub 'ın durumu: {"Running" \| "durduruldu" \| "başarısız" \| "geri alma" \| "sağlıksız"} |
+| systemModules. edgeHub. runtimeStatus | IoT Edge hub 'ın durumu: {"Running" \| "durduruldu" \| "başarısız" " \| geri alma" \| "sağlıksız"} |
 | systemModules. edgeHub. statusDescription | Kötü durumda IoT Edge hub 'ının durumunun metin açıklaması. |
 | systemModules. edgeHub. exitCode | Kapsayıcıda çıkılırken IoT Edge hub kapsayıcısı tarafından bildirilen çıkış kodu |
 | systemModules. edgeHub. startTimeUtc | IoT Edge hub 'ın son başlatıldığı zaman |
 | systemModules. edgeHub. lastExitTimeUtc | IoT Edge hub 'ının son çıkıldığında zaman |
 | systemModules. edgeHub. lastRestartTimeUtc | IoT Edge hub 'ının son yeniden başlatılma zamanı |
 | systemModules. edgeHub. restartCount | Yeniden başlatma ilkesinin bir parçası olarak bu modülün yeniden başlatılma sayısı. |
-| Modüler. {ModuleID}. runtimeStatus | Modülün durumu: { \| "Running" "durduruldu" \| "başarısız" \| "geri alma" \| "sağlıksız"} |
+| Modüler. {ModuleID}. runtimeStatus | Modülün durumu: {"Running" \| "durduruldu" \| "başarısız" " \| geri alma" \| "sağlıksız"} |
 | Modüler. {ModuleID}. statusDescription | Uygun değilse modülün durumunun metin açıklaması. |
 | Modüler. {ModuleID}. exitCode | Kapsayıcı çıktığında modül kapsayıcısı tarafından bildirilen çıkış kodu |
 | Modüler. {ModuleID}. startTimeUtc | Modülün en son başlatıldığı zaman |
@@ -108,7 +108,7 @@ IoT Edge Hub için ikizi modülü çağrılır `$edgeHub` ve bir cihazda çalı�
 | Özellik | Açıklama | Dağıtım bildiriminde gereklidir |
 | -------- | ----------- | -------- |
 | schemaVersion | "1,0" olmalıdır | Yes |
-| yolların. Routetablename | IoT Edge hub yolunu temsil eden bir dize. Daha fazla bilgi için bkz. [yolları bildirme](module-composition.md#declare-routes). | `routes` Öğe mevcut ancak boş olabilir. |
+| yolların. Routetablename | IoT Edge hub yolunu temsil eden bir dize. Daha fazla bilgi için bkz. [yolları bildirme](module-composition.md#declare-routes). | `routes`Öğe mevcut ancak boş olabilir. |
 | storeAndForwardConfiguration. timeToLiveSecs | IoT Edge hub 'ın, IoT Hub veya yerel bir modülse, yönlendirme uç noktaları bağlantısı kesildiğinde iletileri tutacağını belirten saniye cinsinden süre. Değer herhangi bir pozitif tamsayı olabilir. | Yes |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub tarafından bildirilen özellikler
@@ -116,7 +116,7 @@ IoT Edge Hub için ikizi modülü çağrılır `$edgeHub` ve bir cihazda çalı�
 | Özellik | Açıklama |
 | -------- | ----------- |
 | lastDesiredVersion | Bu tamsayı, IoT Edge hub 'ı tarafından işlenen istenen özelliklerin son sürümünü ifade eder. |
-| lastDesiredStatus. Code | IoT Edge Merkezi tarafından görülen son istenen özelliklere başvuran durum kodu. İzin verilen değerler `200` : başarılı `400` , geçersiz yapılandırma `500` , başarısız |
+| lastDesiredStatus. Code | IoT Edge Merkezi tarafından görülen son istenen özelliklere başvuran durum kodu. İzin verilen değerler: `200` başarılı, `400` geçersiz yapılandırma, `500` başarısız |
 | lastDesiredStatus. Description | Durumun metin açıklaması. |
 | istemcinin. {Device veya ModuleID}. durum | Bu cihazın veya modülün bağlantı durumu. Olası değerler {"bağlı" \| "bağlantısı kesildi"}. Yalnızca modül kimlikleri bağlantısı kesik durumda olabilir. IoT Edge hub 'ına bağlanan aşağı akış cihazları yalnızca bağlı olduğunda görünür. |
 | istemcinin. {Device veya ModuleID}. lastConnectTime | Cihaz veya modülün bağlı olduğu son zaman. |
