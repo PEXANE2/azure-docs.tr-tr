@@ -12,10 +12,10 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e138b3513b42dda47b0a114d866d657e18e3e393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181656"
 ---
 # <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Web API 'Lerini çağıran bir Web uygulaması: genel oturum açma sırasında belirteç önbelleğinden hesapları kaldırma
@@ -26,7 +26,7 @@ Oturum kapatma, Web API 'lerini çağıran bir Web uygulaması için farklıdır
 
 ## <a name="intercept-the-callback-after-single-sign-out"></a>Çoklu oturum kapatıldıktan sonra geri çağırma işlemini kesme
 
-Oturum açan hesapla ilişkili belirteç önbelleği girişini temizlemek için, uygulamanız After `logout` olayını ele geçirebilir. Web Apps, bir belirteç önbelleğindeki her bir kullanıcı için erişim belirteçlerini depolar. Geri aramadan sonra `logout` , Web uygulamanız kullanıcıyı önbellekten kaldırabilir.
+Oturum açan hesapla ilişkili belirteç önbelleği girişini temizlemek için, uygulamanız After olayını ele geçirebilir `logout` . Web Apps, bir belirteç önbelleğindeki her bir kullanıcı için erişim belirteçlerini depolar. `logout`Geri aramadan sonra, Web uygulamanız kullanıcıyı önbellekten kaldırabilir.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 

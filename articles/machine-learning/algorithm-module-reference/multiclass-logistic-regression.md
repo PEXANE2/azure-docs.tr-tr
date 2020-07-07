@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2c62dd2591ca9ccfc4266862578279573598d0c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137782"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Birden çok Lass lojistik regresyon modülü
@@ -48,7 +48,7 @@ Birden çok Lass lojistik regresyonda, sınıflandırıcı birden fazla sonucu t
 
     Düzenleme, çok büyük katsayı değerleriyle penalizing modellerle fazla sığdırmayı engellemek için bir yöntemdir. Düzenleme, katsayı değeri ile ilişkili ceza değerini, varsayım hatası ile ilişkilendirilen ceza ekleyerek işe yarar. Aşırı katsayı değeri olan doğru bir model daha fazla olabilir, ancak daha fazla koruyucu değere sahip daha az doğru bir model daha az olabilir.
 
-     L1 ve L2 düzenleme farklı etkileri ve kullanımları vardır. L1, yüksek boyutlu verilerle çalışırken yararlı olabilecek seyrek modellere uygulanabilir. Buna karşılık L2 düzenleme, seyrek olmayan veriler için tercih edilir.  Bu algoritma, L1 ve L2 düzenleme değerlerinin doğrusal bir birleşimini destekler: Yani, `x = L1` ve `y = L2`, `ax + by = c` düzenleme koşullarının doğrusal yayılımını tanımlar.
+     L1 ve L2 düzenleme farklı etkileri ve kullanımları vardır. L1, yüksek boyutlu verilerle çalışırken yararlı olabilecek seyrek modellere uygulanabilir. Buna karşılık L2 düzenleme, seyrek olmayan veriler için tercih edilir.  Bu algoritma, L1 ve L2 düzenleme değerlerinin doğrusal bir birleşimini destekler: Yani, `x = L1` ve `y = L2` , `ax + by = c` düzenleme koşullarının doğrusal yayılımını tanımlar.
 
      L1 ve L2 koşullarına ait farklı doğrusal birleşimler, [elastik net düzenleme](https://wikipedia.org/wiki/Elastic_net_regularization)gibi lojistik regresyon modelleriyle kaldırılmıştır.
 

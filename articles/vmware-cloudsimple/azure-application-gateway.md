@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185702"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>CloudSimple özel bulut ortamındaki VMware sanal makineleri ile Azure Application Gateway kullanma
@@ -71,7 +71,7 @@ Bu için ayrıntılı yönergeler, [Azure Portal kullanarak yol tabanlı yönlen
 
 1. Aboneliğinizde ve kaynak grubunuzda bir sanal ağ oluşturun.
 2. Sanal ağınızda (adanmış alt ağ olarak kullanılmak üzere) bir alt ağ oluşturun.
-3. Standart Application Gateway oluştur (isteğe bağlı olarak WAF 'yi etkinleştir): Azure Portal giriş sayfasından, sayfanın sol üst tarafındaki **kaynak** > **ağı** > **Application Gateway** ' na tıklayın. Standart SKU 'YU ve boyutu seçin ve Azure aboneliği, kaynak grubu ve konum bilgilerini sağlayın. Gerekirse, bu uygulama ağ geçidi için yeni bir genel IP oluşturun ve sanal ağ ile uygulama ağ geçidi için ayrılmış alt ağ hakkında ayrıntılı bilgi sağlayın.
+3. Standart Application Gateway oluştur (isteğe bağlı olarak WAF 'yi etkinleştir): Azure Portal giriş sayfasından, **Resource**  >  **Networking**  >  sayfanın sol üst tarafındaki kaynak ağı**Application Gateway** ' na tıklayın. Standart SKU 'YU ve boyutu seçin ve Azure aboneliği, kaynak grubu ve konum bilgilerini sağlayın. Gerekirse, bu uygulama ağ geçidi için yeni bir genel IP oluşturun ve sanal ağ ile uygulama ağ geçidi için ayrılmış alt ağ hakkında ayrıntılı bilgi sağlayın.
 4. Sanal makineler içeren bir arka uç havuzu ekleyin ve uygulama ağ geçidinize ekleyin.
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. özel bulutunuzda bir Web sunucusu VM havuzu oluşturun ve yapılandırın

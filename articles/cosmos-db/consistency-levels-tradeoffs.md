@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82191745"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Tutarlılık, kullanılabilirlik ve performans dengeleri
@@ -67,10 +67,10 @@ Aşağıdaki tabloda, bölge genelinde kesinti olması durumunda tutarlılık mo
 |---------|---------|---------|---------|---------|
 |1|Tek veya birden çok yönetici|Herhangi bir tutarlılık düzeyi|< 240 dakika|<1 hafta|
 |>1|Tek yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|< 15 dakika|
-|>1|Tek yönetici|Sınırlanmış Eskime Durumu|*K* & *T*|< 15 dakika|
+|>1|Tek yönetici|Sınırlanmış Eskime Durumu|*K*  &  *T*|< 15 dakika|
 |>1|Tek yönetici|Güçlü|0|< 15 dakika|
 |>1|Çoklu yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|0|
-|>1|Çoklu yönetici|Sınırlanmış Eskime Durumu|*K* & *T*|0|
+|>1|Çoklu yönetici|Sınırlanmış Eskime Durumu|*K*  &  *T*|0|
 
 *K* = bir öğenin *"K"* sürümlerinin (yani Updates) sayısı.
 

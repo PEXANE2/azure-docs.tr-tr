@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508147"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Yönetilen kimliğe sahip Azure yönetilen uygulaması
@@ -46,11 +46,11 @@ Yönetilen bir kimlikle yönetilen bir uygulama oluşturmak için Azure kaynağ�
 }
 ```
 
-Şu **kimliğe**sahip bir yönetilen uygulama oluşturmanın iki yaygın yolu vardır: [createuıdefinition. JSON](./create-uidefinition-overview.md) ve [Azure Resource Manager şablonları](../templates/template-syntax.md). Basit tek oluşturma senaryolarında, daha zengin bir deneyim sağladığından, yönetilen kimliği etkinleştirmek için Createuıdefinition kullanılmalıdır. Ancak, otomatik veya birden çok yönetilen uygulama dağıtımı gerektiren gelişmiş veya karmaşık sistemlerle ilgilenirken, şablonlar kullanılabilir.
+**Kimlik**: [CreateUIDefinition.js](./create-uidefinition-overview.md) ve [Azure Resource Manager şablonlarda](../templates/template-syntax.md)yönetilen bir uygulama oluşturmanın iki yaygın yolu vardır. Basit tek oluşturma senaryolarında, daha zengin bir deneyim sağladığından, yönetilen kimliği etkinleştirmek için Createuıdefinition kullanılmalıdır. Ancak, otomatik veya birden çok yönetilen uygulama dağıtımı gerektiren gelişmiş veya karmaşık sistemlerle ilgilenirken, şablonlar kullanılabilir.
 
 ### <a name="using-createuidefinition"></a>Createuıdefinition kullanma
 
-Yönetilen bir uygulama, yönetilen kimlik ile [Createuıdefinition. JSON](./create-uidefinition-overview.md)aracılığıyla yapılandırılabilir. [Çıktılar bölümünde](./create-uidefinition-overview.md#outputs), anahtar `managedIdentity` , yönetilen uygulama şablonunun kimlik özelliğini geçersiz kılmak için kullanılabilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, tüketiciden giriş istemek için Createuıdefinition öğeleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik**Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
+Yönetilen bir uygulama, [üzerindeCreateUIDefinition.js](./create-uidefinition-overview.md)aracılığıyla yönetilen kimlik ile yapılandırılabilir. [Çıktılar bölümünde](./create-uidefinition-overview.md#outputs), anahtar, `managedIdentity` yönetilen uygulama şablonunun kimlik özelliğini geçersiz kılmak için kullanılabilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, tüketiciden giriş istemek için Createuıdefinition öğeleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik**Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
 
 ```json
 "outputs": {
@@ -130,7 +130,7 @@ Createuıdefinition yerleşik bir [yönetilen kimlik denetimini](./microsoft-man
 
 > [!NOTE]
 > Market yönetilen uygulama şablonları, Azure portal oluşturma deneyiminden geçen müşteriler için otomatik olarak oluşturulur.
-> Bu senaryolar için Createuıdefinition üzerindeki `managedIdentity` çıkış anahtarının kimliği etkinleştirmek için kullanılması gerekir.
+> Bu senaryolar için `managedIdentity` Createuıdefinition üzerindeki çıkış anahtarının kimliği etkinleştirmek için kullanılması gerekir.
 
 Yönetilen kimlik Azure Resource Manager şablonlar aracılığıyla da etkinleştirilebilir. Örnek olarak, yönetilen uygulama üzerinde **sistem tarafından atanan** kimlik etkinleştirilir. Daha karmaşık kimlik nesneleri, giriş sağlamak için Azure Resource Manager şablon parametreleri kullanılarak oluşturulabilir. Bu girişler, **Kullanıcı tarafından atanan kimlik**Ile yönetilen uygulamalar oluşturmak için kullanılabilir.
 
@@ -260,13 +260,13 @@ Yönetilen uygulamanın dağıtımını mevcut kaynaklara bağlarken, hem mevcut
 }
 ```
 
-Bu Createuıdefinition. JSON, iki alanı olan bir oluşturma kullanıcı deneyimi oluşturur. İlk alan, kullanıcının yönetilen uygulama dağıtımına bağlanan kaynak için Azure Kaynak KIMLIĞI 'ne girmesine izin verir. İkincisi, bir tüketicinin bağlantılı Azure kaynağına erişimi olan **Kullanıcı tarafından atanan kimlik** Azure kaynak kimliği 'ni girmesi içindir. Oluşturulan deneyim şöyle görünür:
+Bu CreateUIDefinition.js, iki alanı olan bir Kullanıcı oluşturma deneyimi oluşturur. İlk alan, kullanıcının yönetilen uygulama dağıtımına bağlanan kaynak için Azure Kaynak KIMLIĞI 'ne girmesine izin verir. İkincisi, bir tüketicinin bağlantılı Azure kaynağına erişimi olan **Kullanıcı tarafından atanan kimlik** Azure kaynak kimliği 'ni girmesi içindir. Oluşturulan deneyim şöyle görünür:
 
 ![İki girişi olan örnek Createuıdefinition: bir ağ arabirimi kaynak KIMLIĞI ve Kullanıcı tarafından atanan kimlik kaynak KIMLIĞI](./media/publish-managed-identity/network-interface-cuid.png)
 
 ### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>Ana şablonu bağlantılı kaynakla yazma
 
-Createuıdefinition güncellenmesinin yanı sıra, geçirilen bağlantılı kaynak KIMLIĞINI kabul etmek için ana şablonun da güncelleştirilmesi gerekir. Ana şablon yeni bir parametre ekleyerek yeni çıktıyı kabul edecek şekilde güncelleştirilemeyebilir. `managedIdentity` Çıktı, oluşturulan yönetilen uygulama şablonundaki değeri geçersiz kıldığından, ana şablona geçirilmez ve parametreler bölümüne eklenmemelidir.
+Createuıdefinition güncellenmesinin yanı sıra, geçirilen bağlantılı kaynak KIMLIĞINI kabul etmek için ana şablonun da güncelleştirilmesi gerekir. Ana şablon yeni bir parametre ekleyerek yeni çıktıyı kabul edecek şekilde güncelleştirilemeyebilir. Çıktı, `managedIdentity` oluşturulan yönetilen uygulama şablonundaki değeri geçersiz kıldığından, ana şablona geçirilmez ve parametreler bölümüne eklenmemelidir.
 
 Ağ profilini Createuıdefinition tarafından sağlanmış mevcut bir ağ arabirimine ayarlayan örnek bir ana şablon.
 
@@ -310,7 +310,7 @@ Yönetilen uygulama paketi oluşturulduktan sonra, yönetilen uygulama Azure por
 
 ## <a name="accessing-the-managed-identity-token"></a>Yönetilen kimlik belirtecine erişme
 
-Yönetilen uygulamanın belirtecine artık yayımcı kiracısından `listTokens` API aracılığıyla erişilebilir. Örnek bir istek şöyle görünebilir:
+Yönetilen uygulamanın belirtecine artık `listTokens` Yayımcı kiracısından API aracılığıyla erişilebilir. Örnek bir istek şöyle görünebilir:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -327,7 +327,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-authorizationAudience | *eşleşen* | Hedef kaynağın uygulama KIMLIĞI URI 'SI. Ayrıca verilen belirtecin `aud` (hedef kitle) talebi de vardır. Varsayılan değer "https://management.azure.com/"
+authorizationAudience | *eşleşen* | Hedef kaynağın uygulama KIMLIĞI URI 'SI. Ayrıca `aud` verilen belirtecin (hedef kitle) talebi de vardır. Varsayılan değer " https://management.azure.com/ "
 Userassignedıdentities | *eşleşen* | Belirteci almak için Kullanıcı tarafından atanan yönetilen kimliklerin listesi. Belirtilmezse, `listTokens` sistem tarafından atanan yönetilen kimliğin belirtecini döndürür.
 
 
@@ -352,7 +352,7 @@ Content-Type: application/json
 }
 ```
 
-Yanıt, `value` özelliği altında bir belirteç dizisi içerir:
+Yanıt, özelliği altında bir belirteç dizisi içerir `value` :
 
 Parametre | Açıklama
 ---|---
@@ -360,7 +360,7 @@ access_token | İstenen erişim belirteci.
 expires_in | Erişim belirtecinin geçerli olacağı saniye sayısı.
 expires_on | Erişim belirtecinin süresi dolduğu zaman aralığı. Bu, dönem içindeki saniye sayısı olarak gösterilir.
 not_before | Erişim belirteci yürürlüğe girer zaman aralığı. Bu, dönem içindeki saniye sayısı olarak gösterilir.
-authorizationAudience | Erişim `aud` belirtecinin isteği olan (hedef kitle). Bu, `listTokens` istekte sağlanmıştı.
+authorizationAudience | `aud`Erişim belirtecinin isteği olan (hedef kitle). Bu, istekte sağlanmıştı `listTokens` .
 resourceId | Verilen belirtecin Azure Kaynak KIMLIĞI. Bu, yönetilen uygulama KIMLIĞI ya da Kullanıcı tarafından atanan kimlik KIMLIĞIDIR.
 token_type | Belirtecin türü.
 

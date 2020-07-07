@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
 ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82169577"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Hızlı başlangıç: Held ile Azure Kubernetes hizmeti (AKS) üzerinde geliştirme
@@ -19,7 +19,7 @@ ms.locfileid: "82169577"
 
 Bu makalede, AKS üzerinde bir uygulamayı paketlemek ve çalıştırmak için helk 'ın nasıl kullanılacağı gösterilmektedir. Held kullanarak mevcut bir uygulamayı yükleme hakkında daha fazla bilgi için bkz. [AKS 'de Held ile mevcut uygulamaları yükleme][helm-existing].
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -94,7 +94,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
-Bu hızlı başlangıçta [Azure dev Spaces örnek deposundan örnek bir Node. js uygulaması][example-nodejs]kullanılmaktadır. Uygulamayı GitHub 'dan kopyalayın ve `dev-spaces/samples/nodejs/getting-started/webfrontend` dizine gidin.
+Bu hızlı başlangıç [, Azure dev Spaces örnek deposundan bir örnek Node.js uygulaması][example-nodejs]kullanır. Uygulamayı GitHub 'dan kopyalayın ve `dev-spaces/samples/nodejs/getting-started/webfrontend` dizine gidin.
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -138,7 +138,7 @@ docker push <acrLoginServer>/webfrontend:v1
 
 ## <a name="create-your-helm-chart"></a>Held grafiğinizi oluşturma
 
-`helm create` Komutunu kullanarak Held grafiğinizi oluşturun.
+Komutunu kullanarak Held grafiğinizi oluşturun `helm create` .
 
 ```console
 helm create webfrontend
@@ -149,7 +149,7 @@ helm create webfrontend
 * Değiştir `image.repository``<acrLoginServer>/webfrontend`
 * Değiştir `service.type``LoadBalancer`
 
-Örneğin:
+Örnek:
 
 ```yml
 # Default values for webfrontend.
@@ -168,7 +168,7 @@ service:
 ...
 ```
 
-Web `appVersion` ön `v1` ucu */grafik. YAML*'de olarak güncelleştirin. Örneğin:
+`appVersion` `v1` *Web ön ucu/grafik. YAML*'de olarak güncelleştirin. Örneğin:
 
 ```yml
 apiVersion: v2
@@ -181,7 +181,7 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>Held grafiğinizi çalıştırma
 
-Hele `helm install` grafiğinizi kullanarak uygulamanızı yüklemek için komutunu kullanın.
+`helm install`Hele grafiğinizi kullanarak uygulamanızı yüklemek için komutunu kullanın.
 
 ```console
 helm install webfrontend webfrontend/
@@ -198,7 +198,7 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Örnek uygulamayı görmek `<EXTERNAL-IP>` için kullanarak bir tarayıcıda uygulamanızın yük dengeleyicisine gidin.
+Örnek uygulamayı görmek için kullanarak bir tarayıcıda uygulamanızın yük dengeleyicisine gidin `<EXTERNAL-IP>` .
 
 ## <a name="delete-the-cluster"></a>Küme silme
 

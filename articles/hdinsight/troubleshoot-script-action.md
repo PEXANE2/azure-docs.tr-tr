@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e2a2f6abfd6b7c644e95649f3c9832e4cc986037
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188455"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Azure HDInsight 'ta betik eylemleri sorunlarını giderme
@@ -25,13 +25,13 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
 ### <a name="apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimi
 
-1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net`, Kümenizin adı `CLUSTERNAME` olan ' a gidin.
+1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
 1. Sayfanın üst kısmındaki çubuktan **Ops** girişini seçin. Bir liste, ambarı aracılığıyla kümede yapılan geçerli ve önceki işlemleri görüntüler.
 
     ![Ops seçiliyken ambarı Web UI çubuğu](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. **İşlemler** sütununda **customscriptaction çalıştıran\_** girişleri bulun. Bu girişler, betik eylemleri çalıştırıldığında oluşturulur.
+1. **İşlemler** sütununda ** \_ customscriptaction çalıştıran** girişleri bulun. Bu girişler, betik eylemleri çalıştırıldığında oluşturulur.
 
     ![Apache ambarı betik eylem işlemleri](./media/troubleshoot-script-action/ambari-script-action.png)
 
@@ -41,7 +41,7 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
 Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler küme depolama hesabında tutulur.
 
-* Depolama günlükleri ' nde `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`kullanılabilir.
+* Depolama günlükleri ' nde kullanılabilir `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` .
 
     ![Betik eylemi günlükleri](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
@@ -53,7 +53,7 @@ Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler kü
 
     * **Zookeeper düğümü**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* Karşılık gelen konağın tüm **stdout** ve **stderr** depolama hesabına yüklenir. Her betik eylemi için bir **output-\*. txt** ve **Errors-\*. txt** vardır. **Output-*. txt** dosyası, konakta çalıştırılan betiğin URI 'si hakkında bilgiler içerir. Aşağıdaki metin bu bilgilere bir örnektir:
+* Karşılık gelen konağın tüm **stdout** ve **stderr** depolama hesabına yüklenir. Her betik eylemi için bir **output- \* . txt** ve **Errors- \* . txt** vardır. **Output-*. txt** dosyası, konakta çalıştırılan betiğin URI 'si hakkında bilgiler içerir. Aşağıdaki metin bu bilgilere bir örnektir:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
@@ -84,7 +84,7 @@ ImportError: cannot import name BlobService
 
 __Neden__. Bu hata, HDInsight kümesine dahil edilen Python Azure depolama istemcisini yükseltirseniz oluşur. HDInsight, Azure Storage Client 0.20.0 gerektirir.
 
-__Çözümleme__. Bu hatayı çözmek için kullanarak `ssh`her bir küme düğümüne el ile bağlanın. Doğru depolama istemci sürümünü yeniden yüklemek için aşağıdaki komutu çalıştırın:
+__Çözümleme__. Bu hatayı çözmek için kullanarak her bir küme düğümüne el ile bağlanın `ssh` . Doğru depolama istemci sürümünü yeniden yüklemek için aşağıdaki komutu çalıştırın:
 
 ```bash
 sudo pip install azure-storage==0.20.0
@@ -112,6 +112,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

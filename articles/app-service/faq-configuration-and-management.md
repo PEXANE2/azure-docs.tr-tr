@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160009"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için yapılandırma ve yönetim SSS
@@ -105,7 +105,7 @@ Yedekleme hatasının yaygın bir nedeni, bazı dosyaların uygulama tarafından
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Nasıl yaparım? HTTP yanıtından bir üst bilgi kaldırılsın mı?
 
-HTTP yanıtından üstbilgileri kaldırmak için sitenizin Web. config dosyasını güncelleştirin. Daha fazla bilgi için bkz. [Azure Web sitelerindeki standart sunucu üstbilgilerini kaldırma](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
+HTTP yanıtından üstbilgileri kaldırmak için sitenizin web.config dosyasını güncelleştirin. Daha fazla bilgi için bkz. [Azure Web sitelerindeki standart sunucu üstbilgilerini kaldırma](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service, PCI standardı 3,0 ve 3,1 ile uyumludur mi?
 
@@ -125,7 +125,7 @@ Dağıtım yuvalarını kullanma hakkında daha fazla bilgi için bkz. [App Serv
 
 WebJob günlüklerini gözden geçirmek için:
 
-1. **Kudu Web sitenizde** (`https://*yourwebsitename*.scm.azurewebsites.net`) oturum açın.
+1. **Kudu Web sitenizde** () oturum açın `https://*yourwebsitename*.scm.azurewebsites.net` .
 2. WebJob 'u seçin.
 3. **Çıkışı geç** düğmesini seçin.
 4. Çıkış dosyasını indirmek için **indirme** bağlantısını seçin.
@@ -147,7 +147,7 @@ Bu durum, bu yana Karma Bağlantı Yöneticisi düzeltilen bir sorun nedeniyle o
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Nasıl yaparım? URL yeniden yazma kuralı eklensin mi?
 
-URL yeniden yazma kuralı eklemek için, **Wwwroot** klasöründe ilgili yapılandırma girişleriyle bir Web. config dosyası oluşturun. Daha fazla bilgi için bkz. [Azure Uygulama Hizmetleri: URL yeniden yazmayı anlama](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
+URL yeniden yazma kuralı eklemek için, **Wwwroot** klasöründe ilgili yapılandırma girişleriyle bir web.config dosyası oluşturun. Daha fazla bilgi için bkz. [Azure Uygulama Hizmetleri: URL yeniden yazmayı anlama](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>App Service gelen trafiği denetlemek Nasıl yaparım??
 
@@ -302,7 +302,7 @@ Bu koşulların hiçbiri geçerli değilse ve sorun devam ederse, bir destek ist
 
 ## <a name="how-do-i-turn-on-http-compression-for-my-content"></a>İçeriğimde HTTP sıkıştırmasını açmak Nasıl yaparım? mı?
 
-Hem statik hem de dinamik içerik türleri için sıkıştırmayı açmak üzere, uygulama düzeyi Web. config dosyasına aşağıdaki kodu ekleyin:
+Hem statik hem de dinamik içerik türleri için sıkıştırmayı açmak üzere aşağıdaki kodu uygulama düzeyi web.config dosyasına ekleyin:
 
 ```xml
 <system.webServer>

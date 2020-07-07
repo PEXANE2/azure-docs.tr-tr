@@ -4,10 +4,10 @@ description: Bu makalede, bir Service Fabric uygulaması dağıtma, kodu değiş
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195893"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell kullanarak uygulama yükseltmesini Service Fabric
@@ -29,20 +29,20 @@ Service Fabric izlenen yükseltmelerde, uygulama Yöneticisi Service Fabric uygu
 Uygulama Projesi, **Visualobjectsapplication** öğesine sağ tıklayıp **Yayımla** komutunu seçerek uygulamayı derleyin ve yayımlayın.  Daha fazla bilgi için bkz. [uygulama yükseltme öğreticisini Service Fabric](service-fabric-application-upgrade-tutorial.md).  Alternatif olarak, uygulamanızı dağıtmak için PowerShell 'i de kullanabilirsiniz.
 
 > [!NOTE]
-> PowerShell 'de Service Fabric komutlarından herhangi biri kullanılmadan önce `Connect-ServiceFabricCluster` cmdlet 'ini kullanarak kümeye bağlanmanız gerekir. Benzer şekilde, kümenin yerel makinenizde zaten ayarlandığı varsayılır. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)hakkındaki makaleye bakın.
+> PowerShell 'de Service Fabric komutlarından herhangi biri kullanılmadan önce cmdlet 'ini kullanarak kümeye bağlanmanız gerekir `Connect-ServiceFabricCluster` . Benzer şekilde, kümenin yerel makinenizde zaten ayarlandığı varsayılır. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)hakkındaki makaleye bakın.
 > 
 > 
 
 Visual Studio 'da projeyi oluşturduktan sonra, uygulama paketini ımabir görüntü oluşturmaya kopyalamak için [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) PowerShell komutunu kullanabilirsiniz. Uygulama paketini yerel olarak doğrulamak istiyorsanız, [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet 'ini kullanın. Sonraki adım, [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) cmdlet 'ini kullanarak uygulamayı Service Fabric çalışma zamanına kaydetkullanmaktır. Aşağıdaki adım, [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 'ini kullanarak uygulamanın bir örneğini başlatkullanmaktır.  Bu üç adım, Visual Studio 'da **Dağıt** menü öğesinin kullanılmasıyla benzerdir.  Sağlama tamamlandıktan sonra, tüketilen kaynakları azaltmak için, görüntü deposundan kopyalanmış uygulama paketini temizlemeniz gerekir.  Bir uygulama türü artık gerekmiyorsa, aynı nedenden dolayı bunun kaydı kaldırılmalıdır. Daha fazla bilgi için bkz. [PowerShell kullanarak uygulama dağıtma ve kaldırma](service-fabric-application-upgrade-tutorial-powershell.md) .
 
-Şimdi [kümeyi ve uygulamayı görüntülemek için Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanabilirsiniz. Uygulamanın, adres çubuğuna yazarak `http://localhost:8081/visualobjects` Internet Explorer 'da gezinilebiliyor bir Web hizmeti vardır.  Ekranda hareket eden bazı kayan görsel nesneleri görmeniz gerekir.  Ayrıca, uygulama durumunu denetlemek için [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) komutunu kullanabilirsiniz.
+Şimdi [kümeyi ve uygulamayı görüntülemek için Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanabilirsiniz. Uygulamanın, adres çubuğuna yazarak Internet Explorer 'da gezinilebiliyor bir Web hizmeti vardır `http://localhost:8081/visualobjects` .  Ekranda hareket eden bazı kayan görsel nesneleri görmeniz gerekir.  Ayrıca, uygulama durumunu denetlemek için [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) komutunu kullanabilirsiniz.
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. Adım: görsel nesneler örneğini güncelleştirme
 Adım 1 ' de dağıtılan sürümde, görsel nesnelerin döndürüleceğini fark edebilirsiniz. Bu uygulamayı görsel nesnelerin de her yerde de döndürelim.
 
-VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve StatefulVisualObjectActor.cs dosyasını açın. Bu dosya içinde yöntemine `MoveObject`gidin, yorum yapın ve açıklama ekleyin `this.State.Move()` `this.State.Move(true)`. Bu değişiklik, hizmet yükseltildikten sonra nesneleri döndürür.
+VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve StatefulVisualObjectActor.cs dosyasını açın. Bu dosya içinde yöntemine gidin `MoveObject` , yorum yapın ve açıklama ekleyin `this.State.Move()` `this.State.Move(true)` . Bu değişiklik, hizmet yükseltildikten sonra nesneleri döndürür.
 
-Ayrıca, Project **Visualobjects. ActorService**projesinin *servicemanifest. xml* dosyasını (PackageRoot altında) güncelleştirmemiz gerekir. *CodePackage* ve hizmet sürümünü 2,0 olarak ve *servicemanifest. xml* dosyasında karşılık gelen satırları güncelleştirin.
+Ayrıca, Project **Visualobjects. ActorService**'ın *ServiceManifest.xml* dosyasını (PackageRoot altında) de güncelleştirmeniz gerekir. *CodePackage* ve hizmet sürümünü 2,0 olarak ve *ServiceManifest.xml* dosyasında karşılık gelen satırları güncelleştirin.
 Bildirim dosyasının değişiklik yapması için çözüme sağ tıkladıktan sonra Visual Studio *bildirim dosyalarını Düzenle* seçeneğini kullanabilirsiniz.
 
 Değişiklikler yapıldıktan sonra, bildirim aşağıdaki gibi görünmelidir (vurgulanan bölümler değişiklikleri gösterir):
@@ -53,7 +53,7 @@ Değişiklikler yapıldıktan sonra, bildirim aşağıdaki gibi görünmelidir (
 <CodePackageName="Code" Version="2.0">
 ```
 
-Artık *ApplicationManifest. xml* dosyası ( **Visualobjects** çözümünün altındaki **visualobjects** projesi altında bulunur), **visualobjects. actorservice** projesinin 2,0 sürümüne güncelleştirilir. Ayrıca, uygulama sürümü 1.0.0.0 'den 2.0.0.0 olarak güncelleştirilir. *ApplicationManifest. xml* aşağıdaki kod parçacığı gibi görünmelidir:
+Artık *ApplicationManifest.xml* dosyası ( **Visualobjects** çözümünün altında **visualobjects** projesi altında bulunur), **visualobjects. actorservice** projesinin 2,0 sürümüne güncelleştirilir. Ayrıca, uygulama sürümü 1.0.0.0 'den 2.0.0.0 olarak güncelleştirilir. *ApplicationManifest.xml* aşağıdaki kod parçacığı gibi görünmelidir:
 
 ```xml
 <ApplicationManifestxmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VisualObjects" ApplicationTypeVersion="2.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -83,7 +83,7 @@ Artık uygulama oluşturulmuştur ve yükseltilmeye hazırdır. Yönetici olarak
 
 Uygulama paketi, Service Fabric SDK- *Samples\services\stateful\visualobjects\visualobjects\obj\x64\debug*öğesini sıkıştırdığınızda aşağıdaki göreli yol altında depolanır. Bu dizinde uygulama paketinin depolandığı bir "paket" klasörü bulmalısınız. En son derleme olduğundan emin olmak için zaman damgalarını denetleyin (yolları uygun şekilde değiştirmeniz gerekebilir).
 
-Şimdi güncelleştirilmiş uygulama paketini ımagesme Service Fabric kopyalayalim (uygulama paketlerinin Service Fabric tarafından depolandığı yer). *Applicationpackagepathınımaitstore* parametresi, uygulama paketini bulabileceği Service Fabric bilgilendirir. Güncelleştirilmiş uygulamayı aşağıdaki komutla "VisualObjects\_v2" içine yerleştirdik (yolları doğru bir şekilde değiştirmeniz gerekebilir).
+Şimdi güncelleştirilmiş uygulama paketini ımagesme Service Fabric kopyalayalim (uygulama paketlerinin Service Fabric tarafından depolandığı yer). *Applicationpackagepathınımaitstore* parametresi, uygulama paketini bulabileceği Service Fabric bilgilendirir. Güncelleştirilmiş uygulamayı aşağıdaki komutla "VisualObjects v2" içine yerleştirdik \_ (yolları doğru bir şekilde değiştirmeniz gerekebilir).
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
@@ -111,7 +111,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 ```
 
 
-Uygulama adı, *ApplicationManifest. xml* dosyasında açıklananla aynıdır. Service Fabric hangi uygulamanın yükseltildiğini belirlemek için bu adı kullanır. Zaman aşımlarını çok kısa olacak şekilde ayarlarsanız, sorunu belirten bir hata iletisiyle karşılaşabilirsiniz. Sorun giderme bölümüne bakın veya zaman aşımlarını artırın.
+Uygulama adı *ApplicationManifest.xml* dosyasında açıklananla aynıdır. Service Fabric hangi uygulamanın yükseltildiğini belirlemek için bu adı kullanır. Zaman aşımlarını çok kısa olacak şekilde ayarlarsanız, sorunu belirten bir hata iletisiyle karşılaşabilirsiniz. Sorun giderme bölümüne bakın veya zaman aşımlarını artırın.
 
 Uygulama yükseltmesi devam ettikçe, Service Fabric Explorer kullanarak veya [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) PowerShell komutunu kullanarak bunu izleyebilirsiniz: 
 

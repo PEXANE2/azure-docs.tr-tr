@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186433"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Izleyici 'de Linux aracılarında CollectD 'den veri toplama
@@ -45,12 +45,12 @@ Ayrıca, 5,5 öncesinde bir collectD sürümü kullanılıyorsa, bunun yerine a�
        </URL>
     </Plugin>
 
-CollectD yapılandırması, 26000 numaralı bağlantı`write_http` noktası üzerinden performans ölçümü verilerini Linux için Log Analytics aracısına göndermek için varsayılan eklentiyi kullanır. 
+CollectD yapılandırması, `write_http` 26000 numaralı bağlantı noktası üzerinden performans ölçümü verilerini Linux için Log Analytics aracısına göndermek için varsayılan eklentiyi kullanır. 
 
 > [!NOTE]
 > Bu bağlantı noktası, gerekirse özel tanımlı bir bağlantı noktasına yapılandırılabilir.
 
-Linux için Log Analytics Aracısı Ayrıca, CollectD ölçümleri için 26000 numaralı bağlantı noktasını dinler ve ardından bunları Azure Izleyici şeması ölçümlerine dönüştürür. Linux yapılandırması `collectd.conf`için Log Analytics Aracısı aşağıda verilmiştir.
+Linux için Log Analytics Aracısı Ayrıca, CollectD ölçümleri için 26000 numaralı bağlantı noktasını dinler ve ardından bunları Azure Izleyici şeması ölçümlerine dönüştürür. Linux yapılandırması için Log Analytics Aracısı aşağıda verilmiştir `collectd.conf` .
 
     <source>
       type http
@@ -79,7 +79,7 @@ Azure Izleyici 'de CollectD verilerinin toplanmasını yapılandırmak için tem
 
 ### <a name="configure-collectd-to-forward-data"></a>Verileri iletmek için CollectD 'yi yapılandırma 
 
-1. CollectD verilerini Linux için Log Analytics aracısına yönlendirmek için, `oms.conf` collectd 'nin yapılandırma dizinine eklenmesi gerekir. Bu dosyanın hedefi, makinenizin Linux 'a göre değişir.
+1. CollectD verilerini Linux için Log Analytics aracısına yönlendirmek için, `oms.conf` CollectD 'nin yapılandırma dizinine eklenmesi gerekir. Bu dosyanın hedefi, makinenizin Linux 'a göre değişir.
 
     CollectD yapılandırma dizininiz/etc/collectd.exe dizininde bulunuyorsa:
 
@@ -90,7 +90,7 @@ Azure Izleyici 'de CollectD verilerinin toplanmasını yapılandırmak için tem
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >5,5 'den önceki CollectD sürümleri için, içindeki `oms.conf` etiketleri yukarıda gösterildiği gibi değiştirmeniz gerekecektir.
+    >5,5 'den önceki CollectD sürümleri için, içindeki etiketleri `oms.conf` yukarıda gösterildiği gibi değiştirmeniz gerekecektir.
     >
 
 2. Collectd. conf dosyasını istenen çalışma alanının omsagent yapılandırma dizinine kopyalayın.

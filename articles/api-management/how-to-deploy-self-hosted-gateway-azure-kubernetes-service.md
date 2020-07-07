@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205124"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Azure Kubernetes Service’e dağıtma
 
 Bu makalede, Azure [Kubernetes hizmetine](https://azure.microsoft.com/services/kubernetes-service/)Azure API Management şirket içinde barındırılan ağ geçidi bileşeni dağıtma adımları sağlanmaktadır. Şirket içinde barındırılan ağ geçidini bir Kubernetes kümesine dağıtmak için bu[belgeye](how-to-deploy-self-hosted-gateway-kubernetes.md)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 - [Azure Kubernetes kümesi oluşturma](../aks/kubernetes-walkthrough-portal.md)
@@ -37,7 +37,7 @@ Bu makalede, Azure [Kubernetes hizmetine](https://azure.microsoft.com/services/k
 6. Dosyayı indirmek için **dağıtım** ' nın yanındaki **<ağ geçidi-adı>. yıml** dosya bağlantısı ' nı seçin.
 7. Bağlantı noktası eşlemelerini ve kapsayıcı adını, gereken şekilde değiştirin.
 8. Senaryonuza bağlı olarak, [hizmet türünü](https://docs.microsoft.com/azure/aks/concepts-network#services)değiştirmeniz gerekebilir. Varsayılan değer: `NodePort`.
-9. Komutu panoya kaydetmek için **Dağıt** metin kutusunun sağ ucunda bulunan Kopyala simgesini seçin. **copy** `kubectl`
+9. Komutu panoya kaydetmek için **Dağıt** metin kutusunun sağ ucunda bulunan **Kopyala** simgesini seçin `kubectl` .
 10. Komutu Terminal (veya komut) penceresine yapıştırın. Komutun indirilen ortam dosyasının geçerli dizinde mevcut olmasını beklediğini unutmayın.
 ```console
     kubectl apply -f <gateway-name>.yaml
@@ -58,7 +58,7 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 14. Azure portal geri dönüp, az önce dağıttığınız ağ geçidi düğümünün sağlıklı durum bildirimi olduğunu onaylayın.
 
 > [!TIP]
-> Şirket <code>kubectl logs <gateway-pod-name></code> içinde barındırılan ağ geçidi günlüğünün anlık görüntüsünü görüntülemek için komutunu kullanın.
+> <code>kubectl logs <gateway-pod-name></code>Şirket içinde barındırılan ağ geçidi günlüğünün anlık görüntüsünü görüntülemek için komutunu kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

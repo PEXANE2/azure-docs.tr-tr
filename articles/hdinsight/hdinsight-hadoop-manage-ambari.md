@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
 ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232862"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight kümelerini Apache Ambari Web arabiriminden yönetme
@@ -29,7 +29,7 @@ Bu belgede, bir HDInsight kümesiyle ambarı Web Kullanıcı arabirimini kullanm
 
 ## <a name="connectivity"></a>Bağlantı
 
-Ambarı Web Kullanıcı arabirimi, adresindeki `https://CLUSTERNAME.azurehdinsight.net`HDInsight kümenizde kullanılabilir; burada `CLUSTERNAME` kümenizin adıdır.
+Ambarı Web Kullanıcı arabirimi, adresindeki HDInsight kümenizde kullanılabilir; `https://CLUSTERNAME.azurehdinsight.net` burada `CLUSTERNAME` kümenizin adıdır.
 
 > [!IMPORTANT]  
 > HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Kimlik doğrulaması istendiğinde, küme oluşturulduğunda verdiğiniz yönetici hesabı adını ve parolasını kullanın. Kimlik bilgileriniz istenmezse, istemci ve Azure HDInsight kümeleri arasında bağlantı sorunu olmadığını doğrulamak için ağ ayarlarınızı denetleyin.
@@ -49,7 +49,7 @@ Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk
 
 ![Apache ambarı panosuna genel bakış](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Öğe |Açıklama |
+|Öğe |Description |
 |---|---|
 |Ambarı logosu|Kümeyi izlemek için kullanılabilecek panoyu açar.|
 |Küme adı # Ops|Devam eden ambarı işlemlerinin sayısını görüntüler. Küme adının seçilmesi veya **# Ops** , arka plan işlemlerinin bir listesini görüntüler.|
@@ -68,7 +68,7 @@ Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk
 Aşağıdaki liste, ambarı tarafından kullanılan ortak uyarı durumlarını içerir:
 
 * **Tamam**
-* **Warning**
+* **Uyarı**
 * **BAŞLATMA**
 * **BILINMEYEN**
 
@@ -153,7 +153,7 @@ Kullanıcılar, gruplar ve izinlerle çalışma desteklenir. Yerel Yönetim içi
 
 2. **Eylemler** menüsünü kullanarak yapmak istediğiniz eylemi seçin:
 
-    |Öğe |Açıklama |
+    |Öğe |Description |
     |---|---|
     |Tüm bileşenleri Başlat|Konaktaki tüm bileşenleri başlatın.|
     |Tüm bileşenleri durdur|Konaktaki tüm bileşenleri durdurun.|
@@ -161,8 +161,8 @@ Kullanıcılar, gruplar ve izinlerle çalışma desteklenir. Yerel Yönetim içi
     |Bakım modunu aç|Ana bilgisayar için uyarıları göstermez. Uyarı üreten eylemler yapıyorsanız bu mod etkinleştirilmelidir. Örneğin, bir hizmeti durdurup başlatma.|
     |Bakım modunu kapat|Ana bilgisayarı normal uyarı ' e döndürür.|
     |Durdur|Konakta Katanode veya Nodeyöneticileri sonlandırır.|
-    |Başlat|Konakta Dadtanode veya Nodeyöneticileri başlatır.|
-    |Yeniden Başlatma|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
+    |Başlangıç|Konakta Dadtanode veya Nodeyöneticileri başlatır.|
+    |Yeniden başlat|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
     |Açığa|Kümeden bir konağı kaldırır. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
     |Yeniden komisyon|Önceden yetkisi alınmış bir konağı kümeye ekler. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
 

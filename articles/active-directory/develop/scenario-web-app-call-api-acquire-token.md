@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181741"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Leri çağıran bir Web uygulaması: uygulama için belirteç alma
@@ -27,7 +27,7 @@ ms.locfileid: "82181741"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Denetleyici yöntemleri, kullanıcıların kimlik doğrulamasından geçen `[Authorize]` ve Web uygulamasını kullanmasına zorlayan bir öznitelik tarafından korunur. Microsoft Graph çağıran kod aşağıda verilmiştir:
+Denetleyici yöntemleri, `[Authorize]` kullanıcıların kimlik doğrulamasından geçen ve Web uygulamasını kullanmasına zorlayan bir öznitelik tarafından korunur. Microsoft Graph çağıran kod aşağıda verilmiştir:
 
 ```csharp
 [Authorize]
@@ -45,9 +45,9 @@ public class HomeController : Controller
 }
 ```
 
-`ITokenAcquisition` Hizmet, bağımlılık ekleme kullanılarak ASP.NET tarafından eklenir.
+`ITokenAcquisition`Hizmet, bağımlılık ekleme kullanılarak ASP.NET tarafından eklenir.
 
-Aşağıda, Microsoft Graph çağrısı yapılacak bir belirteç alan `HomeController`eylemi için basitleştirilmiş kod verilmiştir:
+Aşağıda, `HomeController` Microsoft Graph çağrısı yapılacak bir belirteç alan eylemi için basitleştirilmiş kod verilmiştir:
 
 ```csharp
 public async Task<IActionResult> Profile()
@@ -76,15 +76,15 @@ Bu gelişmiş adımlar [3-WebApp-Multi-API](https://github.com/Azure-Samples/act
 
 ASP.NET için kod ASP.NET Core gösterilen koda benzerdir:
 
-- Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` ÜYESININ Kiracı kimliğini ve Kullanıcı kimliğini ayıklar. (ASP.NET kullanımları `HttpContext.User`.)
+- Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin üyesinin kiracı KIMLIĞINI ve kullanıcı KIMLIĞINI ayıklar `ClaimsPrincipal` . (ASP.NET kullanımları `HttpContext.User` .)
 - Buradan, bir MSAL.NET `IConfidentialClientApplication` nesnesi oluşturur.
-- Son olarak, gizli istemci `AcquireTokenSilent` uygulamasının yöntemini çağırır.
+- Son olarak, `AcquireTokenSilent` Gizli istemci uygulamasının yöntemini çağırır.
 
 # <a name="java"></a>[Java](#tab/java)
 
 Java örneğinde, bir API çağıran kod [Authpagecontroller. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)Içindeki getUsersFromGraph yönteminde bulunur.
 
-Yöntemi çağrılmaya `getAuthResultBySilentFlow`çalışır. Kullanıcının daha fazla kapsam için onay sağlaması gerekiyorsa, kod kullanıcıyı sınama için `MsalInteractionRequiredException` nesneyi işler.
+Yöntemi çağrılmaya çalışır `getAuthResultBySilentFlow` . Kullanıcının daha fazla kapsam için onay sağlaması gerekiyorsa, kod `MsalInteractionRequiredException` kullanıcıyı sınama için nesneyi işler.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")

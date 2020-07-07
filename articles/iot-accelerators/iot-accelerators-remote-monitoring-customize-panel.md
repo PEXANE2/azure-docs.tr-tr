@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 694cc83ffce20a8744d7452a8f6d67c9ce23641c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187237"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimindeki panoya özel panel ekleme
@@ -24,7 +24,7 @@ Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabi
 
 Bu makaledeki örnek panel, varolan Pano sayfasında görüntülenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 
@@ -43,13 +43,13 @@ Web Kullanıcı arabirimine bir panel eklemek için paneli tanımlayan kaynak do
 
 Başlangıç yapmanız için, **src/izlenecek yol/bileşenler/sayfalar/Pano/paneller/examplePanel** klasörü şunları içeren bir paneli tanımlayan dosyaları içerir:
 
-**examplePanel. js**
+**examplePanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
 Src/ **izlenecek yol/bileşenler/sayfalar/Pano/paneller/examplePanel** klasörünü **src/Components/Pages/Dashboard/paneller** klasörüne kopyalayın.
 
-**Src/izlenecek yol/bileşenler/sayfalar/Dashboard/panel/index. js** dosyasına aşağıdaki dışarı aktarmayı ekleyin:
+**Kaynak/izlenecek yol/bileşenler/sayfalar/Pano/paneller/index.js** dosyasına aşağıdaki dışarı aktarmayı ekleyin:
 
 ```js
 export * from './examplePanel';
@@ -57,7 +57,7 @@ export * from './examplePanel';
 
 ### <a name="add-the-panel-to-the-dashboard"></a>Paneli panoya ekleme
 
-Panoyu eklemek için **src/Components/Pages/Dashboard/Dashboard. js** öğesini değiştirin.
+Paneli eklemek için **src/Components/Pages/Dashboard/dashboard.js** değiştirin.
 
 Panellerden içeri aktarmalar listesine örnek paneli ekleyin:
 
@@ -90,7 +90,7 @@ Web Kullanıcı arabirimi zaten yerel olarak çalışmıyorsa, deponun yerel kop
 npm start
 ```
 
-Önceki komut, Kullanıcı arabirimini ' de `http://localhost:3000/dashboard`yerel olarak çalıştırır. Yeni paneli görüntülemek için **Pano** sayfasına gidin.
+Önceki komut, Kullanıcı arabirimini ' de yerel olarak çalıştırır `http://localhost:3000/dashboard` . Yeni paneli görüntülemek için **Pano** sayfasına gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

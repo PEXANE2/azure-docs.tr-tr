@@ -8,10 +8,10 @@ ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: c3b1cf01cbaa8de8ec33bbf9c19ee991ae898d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82182761"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Çakışma türleri ve çözme ilkeleri
@@ -35,7 +35,7 @@ Azure Cosmos DB, yazma çakışmalarını çözmek için esnek ilke odaklı bir 
   Ekleme veya değiştirme işlemlerinde iki veya daha fazla öğe çakışırsa, çakışma çözümleme yolu için en yüksek değere sahip öğe kazanan olur. Birden çok öğe, çakışma çözümleme yolu için aynı sayısal değere sahip ise, sistem kazanan kişiyi belirler. Tüm bölgeler tek bir kazanan ile yakınsama ve taahhüt edilen öğenin aynı sürümüyle son olarak garanti edilir. Silme çakışmaları dahil edildiğinde, silinen sürüm her zaman ekleme veya değiştirme çakışmaları üzerinde kazanır. Çakışma çözümleme yolunun değeri ne olursa olsun bu sonuç oluşur.
 
   > [!NOTE]
-  > Son yazma WINS varsayılan çakışma çözümleme ilkesidir ve şu API 'Ler `_ts` için zaman damgasını KULLANıR: SQL, MongoDB, Cassandra, Gremlin ve Table. Özel sayısal özellik yalnızca SQL API 'SI için kullanılabilir.
+  > Son yazma WINS varsayılan çakışma çözümleme ilkesidir ve `_ts` Şu API 'ler için zaman damgasını kullanır: SQL, MongoDB, Cassandra, Gremlin ve Table. Özel sayısal özellik yalnızca SQL API 'SI için kullanılabilir.
 
   Daha fazla bilgi için bkz. [LWW çakışma çözümü ilkelerini kullanan örnekler](how-to-manage-conflicts.md).
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
 ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146941"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Azure Edge bölgesi önizlemesi hakkında
@@ -30,13 +30,13 @@ Edge bölgeleri için tipik kullanım örneği senaryoları şunları içerir:
 
 Üç tür Azure Edge bölgesi vardır:
 
-- Azure Edge bölgeleri
+- Azure Edge Zones
 - Taşıyıcı ile Azure Edge bölgeleri
 - Azure özel kenar bölgeleri
 
-## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure Edge bölgeleri
+## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure Edge Zones
 
-![Azure Edge bölgeleri](./media/edge-zones-overview/edge-zones.png "Azure Edge bölgeleri")
+![Azure Edge Zones](./media/edge-zones-overview/edge-zones.png "Azure Edge Zones")
 
 Azure Edge bölgeleri, Azure bölgelerindeki Azure bölgelerinden en fazla yer alan popülasyon merkezlerine yerleştirilmiş Azure 'un küçük ve küçük boyut özellikli uzantılarıdır. Azure Edge bölgeleri, gecikme süresi duyarlı ve yoğun işleme kullanan uygulamaları son kullanıcılara yakın bir şekilde çalıştırmanızı sağlayan VM 'Leri, kapsayıcıları ve seçili bir Azure hizmetleri kümesini destekler. Azure Edge bölgeleri, Microsoft Global Network 'ün bir parçasıdır. Bu kişiler, uç bölgede çalışan uygulamalar arasında kullanıcıya yakın güvenli, güvenilir, yüksek bant genişliğine bağlantı sağlar. Azure bölgelerinde çalışan Azure hizmetlerinin tam kümesini sunar. Azure Edge bölgeleri, Microsoft tarafından aittir ve çalıştırılır. Hizmetleri uç bölgelere yönetmek ve dağıtmak için aynı Azure araçları ve aynı portalın kümesini kullanabilirsiniz.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184155"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java 'da Reliable Services kullanmaya başlama
@@ -28,7 +28,7 @@ Ayarlamanız gerekirse [Mac](service-fabric-get-started-mac.md) 'e Başlarken ve
 ## <a name="basic-concepts"></a>Temel kavramlar
 Reliable Services kullanmaya başlamak için yalnızca birkaç temel kavramları anlamanız gerekir:
 
-* **Hizmet türü**: Bu hizmet uygulamanız. Bu, yazdığınız sınıf tarafından, bir ad ve sürüm `StatelessService` numarası ile birlikte kullanılan diğer kod veya bağımlılıkları genişletir.
+* **Hizmet türü**: Bu hizmet uygulamanız. Bu, yazdığınız sınıf tarafından `StatelessService` , bir ad ve sürüm numarası ile birlikte kullanılan diğer kod veya bağımlılıkları genişletir.
 * **Adlandırılmış hizmet örneği**: hizmetinizi çalıştırmak için, bir sınıf türünün nesne örneklerini oluştururken olduğu gibi, hizmet türünden adlandırılmış örnekler oluşturursunuz. Hizmet örnekleri, yazdığınız hizmet sınıfınızın olgu nesne örneklemelerinden oluşur.
 * **Hizmet ana bilgisayarı**: oluşturduğunuz adlandırılmış hizmet örneklerinin bir konak içinde çalıştırılması gerekir. Hizmet ana bilgisayarı yalnızca hizmetinizin örneklerinin çalıştırılabileceği bir işlemdir.
 * **Hizmet kaydı**: kayıt her şeyi bir araya getirir. Service Fabric çalıştırmak için hizmet türü, bir hizmet ana bilgisayarındaki Service Fabric çalışma zamanına kaydedilmelidir.  
@@ -40,7 +40,7 @@ Service Fabric bir uygulama oluşturarak başlayın. Linux için Service Fabric 
 $ yo azuresfjava
 ```
 
-**Güvenilir bir durum bilgisiz hizmeti**oluşturmak için yönergeleri izleyin. Bu öğreticide, "Merhaba Worldapplication" adlı uygulamayı ve "HelloWorld" hizmetini adlandırın. Sonuç, `HelloWorldApplication` ve `HelloWorld`için dizinleri içerir.
+**Güvenilir bir durum bilgisiz hizmeti**oluşturmak için yönergeleri izleyin. Bu öğreticide, "Merhaba Worldapplication" adlı uygulamayı ve "HelloWorld" hizmetini adlandırın. Sonuç, ve için dizinleri içerir `HelloWorldApplication` `HelloWorld` .
 
 ```bash
 HelloWorldApplication/
@@ -67,7 +67,7 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 ### <a name="service-registration"></a>Hizmet kaydı
-Hizmet türlerinin Service Fabric çalışma zamanına kayıtlı olması gerekir. Hizmet türü, `ServiceManifest.xml` ve ' i uygulayan `StatelessService`hizmet sınıfınız içinde tanımlanır. Hizmet kaydı, işlem ana giriş noktasında gerçekleştirilir. Bu örnekte, işlem ana giriş noktası şu şekilde olur `HelloWorldServiceHost.java`:
+Hizmet türlerinin Service Fabric çalışma zamanına kayıtlı olması gerekir. Hizmet türü, `ServiceManifest.xml` ve ' i uygulayan hizmet sınıfınız içinde tanımlanır `StatelessService` . Hizmet kaydı, işlem ana giriş noktasında gerçekleştirilir. Bu örnekte, işlem ana giriş noktası şu şekilde olur `HelloWorldServiceHost.java` :
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -87,7 +87,7 @@ public static void main(String[] args) throws Exception {
 
 **Merhaba Worldapplication/HelloWorld/src/statelessservice/HelloWorldService. Java**' yı açın. Bu sınıf, hizmet türünü tanımlar ve herhangi bir kodu çalıştırabilir. Service API 'SI, kodunuz için iki giriş noktası sağlar:
 
-* Uzun süre çalışan işlem iş yükleri dahil olmak üzere `runAsync()`herhangi bir iş yükünü yürütmeye başlayabileceğiniz açık uçlu bir giriş noktası yöntemi.
+* `runAsync()`Uzun süre çalışan işlem iş yükleri dahil olmak üzere herhangi bir iş yükünü yürütmeye başlayabileceğiniz açık uçlu bir giriş noktası yöntemi.
 
 ```java
 @Override
@@ -120,7 +120,7 @@ Bu düzenleme, hizmetinizi yüksek oranda kullanılabilir ve düzgün şekilde d
 `runAsync()`zaman uyumlu olarak engellenmemelidir. RunAsync uygulamanız, çalışma zamanının devam etmesine izin vermek için bir tamamlayıcı Tablefuture döndürmelidir. İş yükünüzün, bir uzun süre çalışan bir görevi, tamamlanmalı ve bu görevin tamamlanması gerekir.
 
 #### <a name="cancellation"></a>İptal
-İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve sistem iptali istediğinde mümkün olduğunca hızlı `runAsync()` bir şekilde çıkmak önemlidir. Aşağıdaki örnek, bir iptal olayının nasıl işleneceğini göstermektedir:
+İş yükünüzün iptali, belirtilen iptal belirteci tarafından düzenlenen bir işbirliği çabadır. Sistem, başlamadan önce görevin bitmesini bekler (başarılı tamamlama, iptal veya hata ile). İptal belirtecini dikkate almak, tüm işleri tamamlamak ve `runAsync()` sistem iptali istediğinde mümkün olduğunca hızlı bir şekilde çıkmak önemlidir. Aşağıdaki örnek, bir iptal olayının nasıl işleneceğini göstermektedir:
 
 ```java
 @Override
@@ -151,7 +151,7 @@ Service Fabric, durum bilgisi olan yeni bir hizmet türü sunar. Durum bilgisi o
 
 Bir sayaç değerini durum bilgisiz durumundan yüksek oranda kullanılabilir ve kalıcı olarak dönüştürmek için, hizmet taşınsa veya yeniden başlatıldığında bile, durum bilgisi olan bir hizmete ihtiyacınız vardır.
 
-HelloWorld uygulamasıyla aynı dizinde `yo azuresfjava:AddService` komutunu çalıştırarak yeni bir hizmet ekleyebilirsiniz. Çerçeveinizde "güvenilir durum bilgisi olan hizmet" seçeneğini belirleyin ve hizmeti "Merhaba Dünya durum bilgisi" olarak adlandırın. 
+HelloWorld uygulamasıyla aynı dizinde komutunu çalıştırarak yeni bir hizmet ekleyebilirsiniz `yo azuresfjava:AddService` . Çerçeveinizde "güvenilir durum bilgisi olan hizmet" seçeneğini belirleyin ve hizmeti "Merhaba Dünya durum bilgisi" olarak adlandırın. 
 
 Uygulamanızın Şu anda iki hizmeti olmalıdır: durum bilgisi olmayan hizmet HelloWorld ve durum bilgisi olan hizmet Merhaba Dünya durum bilgisi.
 
@@ -183,7 +183,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`durum bilgisiz ve durum bilgisi içermeyen hizmetlerde benzer şekilde çalışır. Ancak, durum bilgisi olan bir hizmette, platform yürütmeden `RunAsync()`önce sizin adınıza ek iş gerçekleştirir. Bu iş, güvenilir durum Yöneticisi ve güvenilir koleksiyonların kullanıma hazırlandığından emin olabilir.
+`RunAsync()`durum bilgisiz ve durum bilgisi içermeyen hizmetlerde benzer şekilde çalışır. Ancak, durum bilgisi olan bir hizmette, platform yürütmeden önce sizin adınıza ek iş gerçekleştirir `RunAsync()` . Bu iş, güvenilir durum Yöneticisi ve güvenilir koleksiyonların kullanıma hazırlandığından emin olabilir.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Güvenilir koleksiyonlar ve güvenilir durum Yöneticisi
 ```java

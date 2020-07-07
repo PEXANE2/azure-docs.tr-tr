@@ -14,10 +14,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: cde959d8e075b55cb6cbb37479ca49cdd8a8c0c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233746"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>Azure DevOps Starter kullanarak Ruby on rayları için bir CI/CD işlem hattı oluşturun
@@ -67,7 +67,7 @@ Azure DevOps Starter, Azure Pipelines veya GitHub 'da bir git deposu oluşturur.
 
 1. Depo kopyası URL 'sini görüntülemek için sağ üst köşedeki **Kopyala** ' yı seçin. Git deponuzu en sevdiğiniz IDE 'de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişiklikleri yapıp doğrudan ana dala işlemek için web tarayıcısını kullanabilirsiniz.
 
-1. Solda *uygulama/görünümler/sayfalar/Home. html. erb* dosyasına gidin ve ardından **Düzenle**' yi seçin.
+1. Solda, *uygulama/görünümler/sayfalar/home.html. erb* dosyasına gidin ve ardından **Düzenle**' yi seçin.
 
 1. Dosyada değişiklik yapın. Örneğin, div etiketlerinin birindeki bazı metinleri değiştirin.
 

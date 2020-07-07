@@ -4,10 +4,10 @@ description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek iç
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193284"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
@@ -50,7 +50,7 @@ Daha fazla bilgi için:
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-**Senaryo** | **Aracı** | **Konum**
+**Senaryo** | **Aracısı** | **Konum**
 --- | --- | ---
 **Şirket içi makineleri/iş yüklerini yedekleme** | DPM/MABS koruma Aracısı, yedeklemek istediğiniz makinelerde çalışır.<br/><br/> DPM/MABS sunucusundaki MARS Aracısı.<br/> Bu özelliği etkinleştirmek için gereken Microsoft Azure Kurtarma Hizmetleri aracısının veya Azure Backup aracısının en düşük sürümü 2.0.8719.0 ' dir.  | DPM/MABS 'nin şirket içinde çalışıyor olması gerekir.
 
@@ -58,7 +58,7 @@ Daha fazla bilgi için:
 
 DPM/MABS, aşağıdaki tabloda özetlenen şekilde dağıtılabilir.
 
-**Dağıtım** | **Destek** | **Bilgileri**
+**Dağıtım** | **Destek** | **Ayrıntılar**
 --- | --- | ---
 **Şirket içinde dağıtıldı** | Fiziksel sunucu<br/><br/>Hyper-V VM<br/><br/> VMware VM | DPM/MABS bir VMware VM olarak yüklenirse, yalnızca bu VM 'lerde çalışan VMware VM 'lerini ve iş yüklerini yedekler.
 **Azure Stack VM olarak dağıtıldı** | Yalnızca MABS | DPM, Azure Stack VM 'Leri yedeklemek için kullanılamaz.
@@ -80,7 +80,7 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 
 ## <a name="management-support"></a>Yönetim desteği
 
-**Konuda** | **Bilgileri**
+**Konuda** | **Ayrıntılar**
 --- | ---
 **Yükleme** | Tek amaçlı bir makineye DPM/MABS 'yi yükler.<br/><br/> DPM/MABS 'yi bir etki alanı denetleyicisine, uygulama sunucusu rolü yüklemesine sahip bir makineye, Microsoft Exchange Server veya System Center Operations Manager çalıştıran bir makineye veya bir küme düğümüne yüklemeyin.<br/><br/> [Tüm DPM sistem gereksinimlerini gözden geçirin](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
 **Domain** | DPM/MABS bir etki alanına katılmalıdır. Önce yüklemeyi, sonra DPM/MABS 'i bir etki alanına katın. Dağıtımdan sonra DPM/MABS 'yi yeni bir etki alanına taşıma desteklenmiyor.
@@ -92,7 +92,7 @@ Azure Backup, aşağıdaki işletim sistemlerinden herhangi birini çalıştıra
 
 Azure Stack sanal makinelerin ve iş yüklerinin yedeklemesini tek bir konumdan yönetebilmeniz için, MABS 'yi bir Azure Stack VM üzerinde dağıtabilirsiniz.
 
-**Bileşen** | **Bilgileri**
+**Bileşen** | **Ayrıntılar**
 --- | ---
 **Azure Stack VM 'de MABS** | En az a2. Azure Marketi 'nden bir Windows Server 2012 R2 veya Windows Server 2016 görüntüsü ile başlamanız önerilir.<br/><br/> MABS sanal makinesine başka bir şey yüklemeyin.
 **MABS depolaması** | MABS sanal makinesi için ayrı bir depolama hesabı kullanın. MABS üzerinde çalışan MARS aracısının bir önbellek konumu için geçici depolama ve buluttan geri yüklenen verileri tutması gerekir.
@@ -157,7 +157,7 @@ Bağlı | Süre dolma/sağlaması kaldırılmış | Diske veya Azure 'a yedeklem
 
 DPM/MABS 'e yedeklenen veriler yerel disk depolama alanında depolanır.
 
-**Depolama** | **Bilgileri**
+**Depolama** | **Ayrıntılar**
 --- | ---
 **MB** | Modern yedekleme depolaması (MB), DPM 2016/MABS v2 ve sonrasında desteklenir. MABS v1 için kullanılamaz.
 **Azure VM 'de MABS depolaması** | Veriler, DPM/MABS sanal makinesine bağlı olan ve DPM/MABS üzerinde yönetilen Azure disklerinde depolanır. DPM/MABS depolama havuzu için kullanılabilecek disk sayısı, VM 'nin boyutuyla sınırlıdır.<br/><br/> A2 VM: 4 disk; A3 VM: 8 disk; A4 VM: her disk için en fazla 1 TB boyutunda 16 disk. Bu, kullanılabilir toplam yedekleme depolama havuzunu belirler.<br/><br/> Yedekleyebileceğiniz veri miktarı, eklenen disklerin sayısına ve boyutuna bağlıdır.

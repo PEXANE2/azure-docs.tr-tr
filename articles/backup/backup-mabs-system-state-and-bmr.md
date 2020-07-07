@@ -4,10 +4,10 @@ description: Sistem durumunu yedeklemek ve çıplak kurtarma (BMR) koruması sa�
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192374"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Azure Backup Sunucusu kullanarak sistem durumunu yedekleme ve çıplak sisteme geri yükleme
@@ -43,18 +43,18 @@ Aşağıdaki tabloda neleri yedekleyebileceğiniz ve kurtarabileceğiniz özetle
 
 ## <a name="how-system-state-backup-works"></a>Sistem durumu yedeklemesinin çalışma şekli
 
-Bir sistem durumu yedeklemesi çalıştığında, yedekleme sunucusu sunucunun sistem durumunun bir yedeğini istemek için Windows Server Yedekleme ile iletişim kurar. Varsayılan olarak, yedekleme sunucusu ve Windows Server Yedekleme en fazla kullanılabilir boş alana sahip olan sürücüyü kullanır. Bu sürücü hakkındaki bilgiler *PSDataSourceConfig. xml* dosyasına kaydedilir.
+Bir sistem durumu yedeklemesi çalıştığında, yedekleme sunucusu sunucunun sistem durumunun bir yedeğini istemek için Windows Server Yedekleme ile iletişim kurar. Varsayılan olarak, yedekleme sunucusu ve Windows Server Yedekleme en fazla kullanılabilir boş alana sahip olan sürücüyü kullanır. Bu sürücüyle ilgili bilgiler *PSDataSourceConfig.xml* dosyasına kaydedilir.
 
 Yedekleme sunucusunun sistem durumu yedeklemesi için kullandığı sürücüyü özelleştirebilirsiniz:
 
 1. Korunan sunucuda *C:\Program Files\Microsoft Data Protection Manager\MABS\Datasources*dizinine gidin.
-1. Düzenlenmek üzere *PSDataSourceConfig. xml* dosyasını açın.
-1. Sürücü harfi \<için filestoprotect\> değerini değiştirin.
+1. *PSDataSourceConfig.xml* dosyasını düzenlenmek üzere açın.
+1. \<FilesToProtect\> değerini sürücü harfi için değiştirin.
 1. Dosyayı kaydedin ve kapatın.
 
 Bir koruma grubu bilgisayarın sistem durumunu korumak üzere ayarlandıysa, bir tutarlılık denetimi çalıştırın. Bir uyarı oluşturulursa, uyarıdaki **koruma grubunu değiştir** ' i seçin ve ardından sihirbazdaki sayfaları doldurun. Ardından başka bir tutarlılık denetimi çalıştırın.
 
-Koruma sunucusu bir kümedeyse, en fazla boş alana sahip olan sürücü olarak bir küme sürücüsü seçilebilir. Bu sürücü sahipliği başka bir düğüme geçiş yaptığında ve sistem durumu yedeklemesi çalışırsa, sürücü kullanılamaz ve yedekleme başarısız olur. Bu senaryoda, *PSDataSourceConfig. xml* ' yi yerel bir sürücüye işaret etmek üzere değiştirin.
+Koruma sunucusu bir kümedeyse, en fazla boş alana sahip olan sürücü olarak bir küme sürücüsü seçilebilir. Bu sürücü sahipliği başka bir düğüme geçiş yaptığında ve sistem durumu yedeklemesi çalışırsa, sürücü kullanılamaz ve yedekleme başarısız olur. Bu senaryoda *PSDataSourceConfig.xml* yerel bir sürücüye işaret etmek üzere değiştirin.
 
 Sonra, Windows Server Yedekleme restore klasörünün kökünde *WindowsImageBackup* adlı bir klasör oluşturur. Windows Server Yedekleme yedekleme oluştururken tüm veriler bu klasöre yerleştirilir. Yedekleme tamamlandığında, dosya yedekleme sunucusu bilgisayarına aktarılır. Aşağıdaki bilgileri not edin:
 
@@ -109,7 +109,7 @@ Yedekleme tamamlandığında, dosya yedekleme sunucusu bilgisayarına aktarılı
 
 Sistem durumu ve tam yedekleme için:
 
-1. Yeni Koruma Grubu Sihirbazı Oluştur ' u açmak için yedekleme sunucusu yönetici konsolu, koruma**Eylemler** > **koruma grubu oluştur**' **u seçin.** > 
+1. Yeni Koruma Grubu Sihirbazı Oluştur ' u açmak için yedekleme sunucusu Yönetici Konsolu **, koruma**  >  **Eylemler**  >  **koruma grubu oluştur**' u seçin.
 
 1. **Koruma grubu türünü seçin** sayfasında **sunucular**' ı seçin ve ardından **İleri**' yi seçin.
 
@@ -203,7 +203,7 @@ Sistemi geri yüklemek için:
 
 1. **Sistem kurtarma seçenekleri** sayfasında, **daha önce oluşturduğunuz bir sistem görüntüsünü kullanarak bilgisayarınızı geri yükle**' yi seçin.
 
-1. **Bir sistem görüntüsü yedeklemesi seçin** sayfasında, **sistem resmi** > **seçin Gelişmiş** > **ağda sistem görüntüsü ara**' yı seçin. Bir uyarı görünürse **Evet**' i seçin. Paylaşma yoluna gidin, kimlik bilgilerini girin ve kurtarma noktasını seçin. Sistem, bu kurtarma noktasında kullanılabilir olan belirli yedekleri tarar. Kullanmak istediğiniz kurtarma noktasını seçin.
+1. **Bir sistem görüntüsü yedeklemesi seçin** sayfasında, **sistem resmi seçin**  >  **Gelişmiş**  >  **ağda sistem görüntüsü ara**' yı seçin. Bir uyarı görünürse **Evet**' i seçin. Paylaşma yoluna gidin, kimlik bilgilerini girin ve kurtarma noktasını seçin. Sistem, bu kurtarma noktasında kullanılabilir olan belirli yedekleri tarar. Kullanmak istediğiniz kurtarma noktasını seçin.
 
 1. **Yedeklemenin nasıl geri yükleneceğini seçin** sayfasında, **Diskleri biçimlendir ve yeniden bölümle**' yı seçin. Sonraki sayfada, ayarları doğrulayın.
 
@@ -233,7 +233,7 @@ Yedekleme sunucusunda kurtarmayı çalıştırmak için:
 
 Windows Server Yedekleme çalıştırmak için:
 
-1. **Eylemleri** > **Recover** > **Bu**sunucuyu > kurtar**İleri ' yi**seçin.
+1. **Eylemleri**  >  **Recover**  >  **Bu sunucuyu**kurtar  >  **İleri ' yi**seçin.
 
 1. **Başka bir sunucu**seçin, **konum türünü belirtin** sayfasını seçin ve ardından **uzak paylaşılan klasör**' i seçin. Kurtarma noktasını içeren klasörün yolunu girin.
 

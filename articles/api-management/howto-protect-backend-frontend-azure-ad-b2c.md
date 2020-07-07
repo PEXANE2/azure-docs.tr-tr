@@ -15,10 +15,10 @@ ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
 ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202885"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2,0, Azure Active Directory B2C ve Azure API Management ile SPA arka ucunu koruyun
@@ -31,7 +31,7 @@ API Management, Azure Işlevleri ve Azure AD B2C ile basitleştirilmiş bir sena
 
 Derinlemesine savunma için, yeniden bitiş API 'SI içinde yeniden belirteç doğrulamak üzere EasyAuth ' i kullanırız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
 * Ön uç JS tek sayfalı uygulamayı barındırmak için bir Azure (StorageV2) Genel Amaçlı v2 depolama hesabı
 * Azure API Management örneği 
@@ -68,7 +68,7 @@ Portalda Azure AD B2C dikey penceresini açın ve aşağıdaki adımları uygula
    * Seçim API Management geliştirici portalı (Azure API Management 'yi tüketim katmanında çalıştırmadığınız müddetçe daha sonra bu senaryoya daha fazla).
 1. Tüm 3 uygulamalar için WebApp/Web API 'yi ayarlayın ve yalnızca ön uç Istemcisi için ' örtük akışa Izin ver ' öğesini Evet olarak ayarlayın.
 1. Şimdi uygulama KIMLIĞI URI 'sini ayarlayın, benzersiz bir öğe seçin ve oluşturulmakta olan hizmetle ilgili bir seçim yapın.
-1. Şimdilik yanıt URL 'leri için yer tutucuları kullanın https://localhost, bu URL 'leri daha sonra güncelleştireceğiz.
+1. Şimdilik yanıt URL 'leri için yer tutucuları kullanın https://localhost , bu URL 'leri daha sonra güncelleştireceğiz.
 1. ' Oluştur ' düğmesine tıklayın ve yukarıdaki üç uygulamanın her biri için 2-5 adımlarını yineleyin, sonra da her üç uygulama için AppID URI 'sini, adı ve uygulama KIMLIĞINI daha sonra kullanmak üzere kaydetme.
 1. Uygulamalar listesinden API Management geliştirici portalı uygulamasını açın ve *anahtarlar* sekmesini seçin (Genel altında) ve ardından ' anahtar oluştur ' düğmesine tıklayarak bir kimlik doğrulama anahtarı oluşturun
 1. Kaydet 'e tıklandıktan sonra anahtarı daha sonra kullanılmak üzere güvenli bir yere kaydedin-bu anahtarı görüntülemek ve kopyalamak için alacağınız tek şans olduğunu unutmayın.
@@ -148,12 +148,12 @@ Portalda Azure AD B2C dikey penceresini açın ve aşağıdaki adımları uygula
 5. HttpTrigger1 sekmesine dönün, ' Işlev URL 'SI Al ' seçeneğine tıklayın, ardından görüntülenen URL 'YI kopyalayın.
 
    > [!NOTE]
-   > Az önce oluşturduğunuz bağlamalar, yalnızca yeni kopyaladığınız URL 'ye anonim HTTP GET isteklerini yanıtlamak için IŞLEVLERE söyleyecektir. (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`) Artık çok basit bir yük döndürmekte olan ölçeklenebilir bir sunucusuz https API 'si sunuyoruz.
+   > Az önce oluşturduğunuz bağlamalar, yalnızca yeni kopyaladığınız URL 'ye anonim HTTP GET isteklerini yanıtlamak için IŞLEVLERE söyleyecektir. ( `https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey` ) Artık çok basit bir yük döndürmekte olan ölçeklenebilir bir sunucusuz https API 'si sunuyoruz.
    > Artık bu API 'yi yukarıdaki URL 'YI kullanarak bir Web tarayıcısından çağırmayı test edebilirsiniz. Ayrıca, URL 'nin? Code = gizli bölümünü de açabilir ve Azure Işlevlerinin bir 401 hatası döndürmesini kanıtlayabilirsiniz.
 
 ## <a name="configure-and-secure-the-function-api"></a>İşlev API 'sini yapılandırma ve koruma
 1. İşlev uygulamasındaki iki ek alanın yapılandırılması gerekir (kimlik doğrulama ve ağ kısıtlamaları).
-1. Kimlik doğrulama/yetkilendirme yapılandırmam, bu nedenle genel bakış sayfasını göstermek için işlev uygulamasının adına ( &lt;Z&gt; işlevleri simgesinin yanında) tıklayın.
+1. Kimlik doğrulama/yetkilendirme yapılandırmam, bu nedenle &lt; &gt; genel bakış sayfasını göstermek için işlev uygulamasının adına (Z işlevleri simgesinin yanında) tıklayın.
 1. Sonra ' platform özellikleri ' sekmesini seçin ve ' kimlik doğrulama/yetkilendirme ' seçeneğini belirleyin.
 1. App Service kimlik doğrulaması özelliğini açın.
 1. ' Kimlik doğrulama sağlayıcıları ' altında ' Azure Active Directory ' öğesini seçin ve yönetim modu anahtarından ' Advanced ' öğesini seçin.
@@ -257,9 +257,9 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
 1. Azure AD B2C dikey penceresini açın ve geliştirici portalı için uygulama kaydına gidin
 1. Daha önce API Management kimlik doğrulama kodu verme redirect_uri yapılandırdığınızda, ' yanıt URL 'SI ' girişini not ettiğiniz şekilde ayarlayın.
 
-   OAuth 2,0 kullanıcı yetkilendirmesi üzerinde etkin olduğuna göre `Echo API`, GELIŞTIRICI konsolu API 'yi çağırmadan önce Kullanıcı için bir erişim belirteci alır.
+   OAuth 2,0 kullanıcı yetkilendirmesi üzerinde etkin olduğuna göre, `Echo API` Geliştirici Konsolu API 'yi çağırmadan önce Kullanıcı için bir erişim belirteci alır.
 
-1. Geliştirici Portalında herhangi bir işleme `Echo API` gidin ve bunu geliştirici konsoluna getirmek için **dene** ' yi seçin.
+1. Geliştirici Portalında herhangi bir işleme gidin `Echo API` ve bunu geliştirici konsoluna getirmek Için **dene** ' yi seçin.
 1. Yeni eklediğiniz yetkilendirme sunucusuna karşılık gelen **Yetkilendirme** bölümünde yeni bir öğe olduğunu aklınızda edin.
 1. Yetkilendirme açılan listesinden **yetkilendirme kodu** ' nu seçin ve Azure AD kiracısında oturum açmanız istenir. Zaten hesapla oturum açtıysanız, bu durum istenmez.
 1. Başarılı oturum açma işleminden sonra isteğe bir `Authorization: Bearer` üst bilgi eklenir ve Base64 'te kodlanmış Azure AD B2C bir erişim belirteci olur. 
@@ -283,7 +283,7 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
 ## <a name="build-the-javascript-spa-to-consume-the-api"></a>API 'YI kullanmak için JavaScript SPA 'yı oluşturma
 1. Azure portal depolama hesapları dikey penceresini açın 
 1. Oluşturduğunuz hesabı seçin ve ayarlar bölümünden ' statik Web sitesi ' dikey penceresini seçin (' statik Web sitesi ' seçeneğini görmüyorsanız, v2 hesabı oluşturduğunuza bakın).
-1. Statik web barındırma özelliğini ' Enabled ' olarak ayarlayın ve Dizin belgesi adını ' index. html ' olarak ayarlayın ve ardından ' Kaydet 'e tıklayın.
+1. Statik web barındırma özelliğini ' Enabled ' olarak ayarlayın ve Dizin belgesi adını ' index.html ' olarak ayarlayın ve ardından ' Kaydet 'e tıklayın.
 1. Birincil uç noktanın içeriğini, bu konum ön uç sitesinin barındırıldığı yerde aklınızda olun. 
 
    > [!NOTE]
@@ -291,7 +291,7 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
 
 ## <a name="upload-the-js-spa-sample"></a>JS SPA örneğini karşıya yükle
 1. Hala depolama hesabı dikey penceresinde, blob hizmeti bölümünde ' blob ' dikey penceresini seçin ve sağ bölmede görüntülenen $web kapsayıcısına tıklayın.
-1. Aşağıdaki kodu makinenizde yerel olarak index. html olarak bir dosyaya kaydedin ve ardından index. html dosyasını $web kapsayıcısına yükleyin.
+1. Aşağıdaki kodu makinenizde index.html olarak yerel olarak bir dosyaya kaydedin ve sonra index.html dosyasını $web kapsayıcısına yükleyin.
 
    ```html
    <!doctype html>
@@ -415,7 +415,7 @@ IP kısıtlamaları paneline CıDR biçimli adres blokları eklemeniz gerekir. A
 
 ## <a name="configure-the-js-spa-for-azure-ad-b2c"></a>Azure AD B2C için JS SPA 'yı yapılandırın
 1. Artık her şeyin nerede olduğunu biliyoruz: SPA 'yı uygun API Management API adresiyle ve doğru Azure AD B2C uygulama/istemci kimlikleri ile yapılandırabiliriz
-1. Azure portal depolama dikey penceresine dönün ve index. html ' ye tıklayın ve ardından ' blobu Düzenle ' öğesini seçin 
+1. Azure portal depolama dikey penceresine dönün ve index.html 'ye ve ardından ' blobu Düzenle 'yi seçin. 
 1. Kimlik doğrulama ayrıntılarını, daha önce B2C 'de kaydettiğiniz ön uç uygulamanızla eşleşecek şekilde güncelleştirin ve ' b2cScopes ' değerlerinin API arka ucu için olduğunu unutmayın.
 1. WebApi anahtar ve API URL 'si, API işleminin API Management test bölmesinde bulunabilir.
 1. API Management dikey penceresine geri API Management bir APıM abonelik anahtarı oluşturun, ' abonelikler ' seçeneğini belirleyip ' Abonelik Ekle ' seçeneğini ve ardından kaydı kaydedin. Oluşturulan satırın yanındaki üç nokta (...) simgesine tıklanması, birincil anahtarı kopyalayabilmeniz için anahtarları gösterbilmenizi sağlar.

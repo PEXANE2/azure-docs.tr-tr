@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186178"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı Azure Güvenlik temeli
@@ -50,7 +50,7 @@ MariaDB güvenlik duvarı kuralları için Azure veritabanı 'nı yapılandırma
 
 MariaDB için Azure veritabanı için özel bağlantı yapılandırma:https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal
 
-NSG akış günlüklerini etkinleştirme: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal trafik analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+NSG akış günlüklerini etkinleştirme: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Trafik Analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -86,7 +86,7 @@ DDoS korumasını yapılandırma:https://docs.microsoft.com/azure/virtual-networ
 
 **Rehberlik**: MariaDB sunucusu Için Azure Veritabanınız özel bir uç noktayla güvenli hale geldiğinde, sanal makineleri aynı sanal ağa dağıtabilirsiniz. Daha sonra, veri sızdırma riskini azaltmak için bir ağ güvenlik grubu (NSG) yapılandırabilirsiniz. Trafik denetimi için NSG akış günlüklerini etkinleştirin ve günlükleri bir depolama hesabına gönderin. Ayrıca, NSG akış günlüklerini bir Log Analytics çalışma alanına gönderebilir ve Azure bulutunuzda trafik akışına Öngörüler sağlamak için Trafik Analizi kullanabilirsiniz. Trafik Analizi avantajlarından bazıları, ağ etkinliğini görselleştirme ve etkin noktaları belirlemek, güvenlik tehditlerini belirlemek, trafik akışı düzenlerini anlamak ve ağ yapılandırmalarını saptamak için kullanılır.
 
-NSG akış günlüklerini etkinleştirme: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal trafik analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+NSG akış günlüklerini etkinleştirme: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal Trafik Analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 
 
@@ -118,7 +118,7 @@ MariaDB için Azure veritabanı için Gelişmiş tehdit koruması nasıl yapıla
 **Rehberlik**: MariaDB örnekleri Için Azure veritabanınıza erişmesi gereken kaynaklar için, ağ güvenlik gruplarında veya Azure Güvenlik duvarında ağ erişim denetimleri tanımlamak üzere sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Hizmet etiketi adı (örneğin, SQL) belirterek. WestUs) bir kuralın uygun kaynak veya hedef alanında ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
 Note: MariaDB için Azure veritabanı "Microsoft. SQL" hizmet etiketini kullanır.
 
-Hizmet etiketlerini kullanma hakkında daha fazla bilgi için https://docs.microsoft.com/azure/virtual-network/service-tags-overview : MariaDB Için Azure veritabanı için hizmet etiketi kullanımını anlayın:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
+Hizmet etiketlerini kullanma hakkında daha fazla bilgi için: https://docs.microsoft.com/azure/virtual-network/service-tags-overview MariaDB Için Azure veritabanı için hizmet etiketi kullanımını anlayın:https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet#terminology-and-description
 
 
 
@@ -202,7 +202,7 @@ MariaDB için Azure veritabanı için Denetim günlüklerini yapılandırma ve e
 
 **Rehberlik**: denetim, güvenlik ve tanılama günlüklerine erişmek Için MariaDB örnekleri Için Azure veritabanınızda tanılama ayarlarını etkinleştirin. MariaDB denetim günlüğünü özellikle etkinleştirdiğinizden emin olun. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir. Ayrıca, Azure etkinlik günlüğü tanılama ayarlarını da etkinleştirebilir ve günlükleri aynı Log Analytics çalışma alanına veya depolama hesabına gönderebilirsiniz.
 
-MariaDB için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/mariadb/concepts-server-logs MariaDB https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme: Azure etkinlik günlüğü için tanılama ayarlarını yapılandırma:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+MariaDB için Azure veritabanı 'nda sunucu günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/mariadb/concepts-server-logs MariaDB Için Azure veritabanı için Denetim günlüklerini yapılandırma ve erişme: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure etkinlik günlüğü Için tanılama ayarlarını yapılandırma:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
 
 
@@ -896,7 +896,7 @@ Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama:https://docs.micro
 
 MariaDB sunucusu için Azure veritabanınıza erişmek üzere kullanılan Azure App Service üzerinde çalışan Azure sanal makineleri veya Web uygulamaları için, MariaDB sunucusu için Azure veritabanı 'nın kimlik bilgilerini depolamak ve almak üzere Azure Key Vault ile birlikte Yönetilen Hizmet Kimliği kullanın.  Key Vault geçici silmenin etkinleştirildiğinden emin olun.
 
-Azure Active Directory (AD) içinde otomatik olarak yönetilen bir kimlik ile Azure hizmetleri sağlamak için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar. Yönetilen kimlikleri yapılandırma: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. Azure yönetilen kimliklerle tümleştirme: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity.
+Azure Active Directory (AD) içinde otomatik olarak yönetilen bir kimlik ile Azure hizmetleri sağlamak için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar. Yönetilen kimlikleri yapılandırma: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm . Azure yönetilen kimliklerle tümleştirme: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity .
 
 
 

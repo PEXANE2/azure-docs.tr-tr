@@ -11,10 +11,10 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144078"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>İOS 'ta sertifika tabanlı kimlik doğrulamasını Azure Active Directory
@@ -73,7 +73,7 @@ Daha fazla bilgi için bkz. [AD FS oturum açma sayfasını özelleştirme](http
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Office uygulamalarıyla modern kimlik doğrulaması kullanma
 
-Modern kimlik doğrulaması etkinleştirilmiş bazı Office uygulamaları, `prompt=login` Istekleri IÇINDE Azure AD 'ye gönderilir. Varsayılan olarak, Azure AD, `prompt=login` isteği ADFS 'ye dönüştürür `wauth=usernamepassworduri` (ADFS 'Nin U/P auth 'yi yapması ISTENIR) ve `wfresh=0` (ADFS 'nin SSO durumunu yok saymasını ve yeni bir kimlik doğrulaması aramasını ister). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure AD davranışını değiştirin.
+Modern kimlik doğrulaması etkinleştirilmiş bazı Office uygulamaları `prompt=login` , istekleri Içinde Azure AD 'ye gönderilir. Varsayılan olarak, Azure AD `prompt=login` , ISTEğI ADFS 'ye dönüştürür `wauth=usernamepassworduri` (ADFS 'nin U/P auth 'yi yapması istenir) ve `wfresh=0` (ADFS 'nin SSO durumunu yok saymasını ve yeni bir kimlik doğrulaması aramasını ister). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure AD davranışını değiştirin.
 
 Varsayılan davranışı güncelleştirmek için, Federasyon etki alanı ayarlarınızda '*Promptloginbehavior*' ayarını *devre dışı*olarak ayarlayın. Bu görevi gerçekleştirmek için aşağıdaki örnekte gösterildiği gibi [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 'ini kullanabilirsiniz:
 

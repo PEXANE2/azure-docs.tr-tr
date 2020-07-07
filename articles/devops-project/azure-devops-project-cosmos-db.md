@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure DevOps Starter ile Azure Cosmos DB tarafından desteklenen Node. js uygulamalarını dağıtma'
-description: Azure DevOps Starter, Azure 'u kullanmaya başlamanızı kolaylaştırır. DevOps Starter ile, birkaç hızlı adımda Windows Web App 'e Azure Cosmos DB desteklenen Node. js uygulamanızı dağıtabilirsiniz.
+title: 'Öğretici: Azure DevOps Starter ile Azure Cosmos DB tarafından desteklenen Node.js uygulamalarını dağıtma'
+description: Azure DevOps Starter, Azure 'u kullanmaya başlamanızı kolaylaştırır. DevOps Starter sayesinde, Azure Cosmos DB tarafından desteklenen Node.js uygulamanızı birkaç hızlı adımda Windows Web uygulamasına dağıtabilirsiniz.
 ms.author: mlearned
 ms.manager: gwallace
 ms.prod: devops
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 07579cf22738e195e3e4ae7a2aa18ffeb885bbe2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233285"
 ---
-# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>DevOps Starter ile Azure Cosmos DB tarafından desteklenen Node. js uygulamalarını dağıtın
+# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>DevOps Starter ile Azure Cosmos DB tarafından desteklenen Node.js uygulamalar dağıtın
 
 Azure DevOps Starter, Azure 'da sürekli tümleştirme (CI) ve sürekli dağıtım (CD) işlem hattı oluşturabileceğiniz kolaylaştırılmış bir deneyim sunar. Bunu, mevcut kodunuzu ve git deponuzu (Depoyu) kullanarak veya örnek bir uygulama seçerek yapabilirsiniz.
 
@@ -28,7 +28,7 @@ DevOps Starter ayrıca:
 Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * Azure Cosmos DB tarafından desteklenen bir Node. js uygulaması dağıtmak için DevOps Starter kullanın
+> * Azure Cosmos DB tarafından desteklenen bir Node.js uygulamasını dağıtmak için DevOps Starter kullanın
 > * Azure DevOps ve bir Azure aboneliği yapılandırma
 > * Azure Cosmos DB inceleyin
 > * CI işlem hattını inceleme
@@ -36,11 +36,11 @@ Bu öğreticide şunları yapacaksınız:
 > * Değişiklikleri git 'e işleyin ve Azure 'a otomatik olarak dağıtın
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) ücretsiz olarak alabileceğiniz bir Azure aboneliğine ihtiyacınız vardır.
 
-## <a name="use-devops-starter-to-deploy-nodejs-app"></a>Node. js uygulamasını dağıtmak için DevOps Starter 'ı kullanma
+## <a name="use-devops-starter-to-deploy-nodejs-app"></a>Node.js uygulamasını dağıtmak için DevOps Starter 'ı kullanma
 
 DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca seçtiğiniz Azure aboneliğinde Azure Cosmos DB, Application Insights, App Service ve App Service planları gibi Azure kaynakları da oluşturur.
 
@@ -50,13 +50,13 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Çalışma zamanı olarak **Node. js** ' yi seçin ve ardından **İleri**' yi seçin. **Uygulama çerçevesi seçin**altında **Express. js**' yi seçin.
+1. Çalışma zamanı olarak **Node.js** seçin ve ardından **İleri**' yi seçin. **Uygulama çerçevesi seçin**altında **Express.js**' yi seçin.
 
 1. **Cosmos DB**Için **veritabanı ekleme** bölümünü etkinleştirin ve sonra **İleri**' yi seçin.
 
     ![Veritabanı ekleyin](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Azure DevOps Starter, **Express. js**, **örnek Node. js uygulaması**ve **SAIL. js**gibi çeşitli uygulama çerçevelerini destekler. Bu öğreticide **Express. js**kullanıyoruz.
+    Azure DevOps Starter, **Express.js**, **örnek Node.js uygulama**ve **Sail.js**gibi çeşitli uygulama çerçevelerini destekler. Bu öğreticide **Express.js**kullanırız.
 
 1. Uygulamayı dağıtmak için bir Azure hizmeti seçin ve ardından **İleri**' yi seçin. Seçenekleriniz Windows Web uygulaması, Azure Kubernetes hizmeti ve Azure Kapsayıcılar için Web App içerir. Bu öğreticide, **Windows Web App**kullanıyoruz.
 
@@ -72,7 +72,7 @@ DevOps Starter Azure Pipelines ' de bir CI/CD işlem hattı oluşturur. Yeni bir
 
 1. Azure yapılandırma alanından çıkıp **bitti**' yi seçin.
 
-1. İşlem birkaç dakika sonra tamamlanır. Azure DevOps kuruluşunuzda bir git deposunda örnek Node. js uygulaması ayarlanır. Daha sonra, Azure Cosmos DB, App Service, App Service planı ve Application Insights kaynakların yanı sıra CI/CD işlem hattı da oluşturulur. Uygulamanız daha sonra Azure 'a dağıtılır.
+1. İşlem birkaç dakika sonra tamamlanır. Azure DevOps kuruluşunuzda bir git deposunda örnek bir Node.js uygulama ayarlanır. Daha sonra, Azure Cosmos DB, App Service, App Service planı ve Application Insights kaynakların yanı sıra CI/CD işlem hattı da oluşturulur. Uygulamanız daha sonra Azure 'a dağıtılır.
 
    Tüm bu işlemler bittikten sonra, Azure DevOps başlangıç panosu Azure portal görüntülenir. Ayrıca, doğrudan Azure portal DevOps **Başlangıç panosuna** da gidebilirsiniz.
 
@@ -158,7 +158,7 @@ Artık ihtiyaç duymadığınızda oluşturduğunuz ilgili kaynakları silin. De
 Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatlarını değiştirebilirsiniz. Ayrıca bu CI/CD desenini diğer işlem hatlarınızda şablon olarak kullanabilirsiniz. Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Azure Cosmos DB tarafından desteklenen bir Node. js uygulaması dağıtmak için DevOps Starter kullanın
+> * Azure Cosmos DB tarafından desteklenen bir Node.js uygulamasını dağıtmak için DevOps Starter kullanın
 > * Azure DevOps ve bir Azure aboneliği yapılandırma 
 > * Azure Cosmos DB inceleyin
 > * CI işlem hattını inceleme

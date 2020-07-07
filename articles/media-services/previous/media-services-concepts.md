@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160231"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services kavramlar 
@@ -154,7 +154,7 @@ Bir Player tarafından bir akış istendiğinde, Media Services, bir zarf şifre
 
 Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarını, verenin ve hedef kitle parametrelerini belirtmeniz gerekir. Birincil doğrulama anahtarı, belirtecin imzalandığı anahtarı içerir ve veren, belirteci veren güvenli belirteç hizmetidir. Hedef kitle (bazen kapsam olarak adlandırılır) belirtecin amacını veya belirtecin erişim yetkisi aldığı kaynağı açıklar. Media Services anahtar teslim hizmeti, belirteçteki bu değerlerin şablondaki değerlerle eşleştiğini doğrular.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [İçeriğe karşı korumaya genel bakış](media-services-content-protection-overview.md)
 - [AES ile koruma-128](media-services-protect-with-aes128.md)
 - [PlayReady/Widevine ile koruma](media-services-protect-with-playready-widevine.md)
@@ -190,7 +190,7 @@ Aşamalı indirme, tüm dosya indirilmeden önce medya çalmaya başlayabilmeniz
 >[!NOTE]
 >Bu kaynakların aşamalı indirme için kullanılabilir olmasını istiyorsanız şifrelenmiş varlıkların şifresini çözmeniz gerekir.
 
-Kullanıcılara aşamalı indirme URL 'Leri sağlamak için, önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, size varlığın temel yolunu sağlar. Daha sonra MP4 dosyasının adını eklemeniz gerekir. Örneğin:
+Kullanıcılara aşamalı indirme URL 'Leri sağlamak için, önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, size varlığın temel yolunu sağlar. Daha sonra MP4 dosyasının adını eklemeniz gerekir. Örnek:
 
 `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
@@ -208,25 +208,25 @@ Aşağıdaki listede farklı akış biçimleri açıklanmakta ve örnekler veril
 
 {akış uç noktası adı-media services hesabı adı}.streaming.mediaservices.windows.net/{konum kimliği}/{dosya adı}.ism/Manifest
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest
 
 * MPEG DASH
 
 {akış uç noktası adı-media services hesabı adı}.streaming.mediaservices.windows.net/{konum kimliği}/{dosya adı}.ism/Manifest(format=mpd-time-csf)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = MPD-Time-CSF)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = MPD-Time-CSF)
 
 * Apple HTTP Canlı Akışı (HLS) v4
 
 {akış uç noktası adı-media services hesabı adı}.streaming.mediaservices.windows.net/{konum kimliği}/{dosya adı}.ism/Manifest(format=m3u8-aapl)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL)
 
 * Apple HTTP Canlı Akışı (HLS) v3
 
 {Akış uç noktası adı-Media Services hesap adı}. Stream. mediaservices. Windows. net/{Locator ID}/{filename}.exe (format = M3U8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL-v3)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46F6-490d-8B70-203e86b0df58/BigBuckBunny.ism/manifest (format = M3U8-AAPL-v3)
 
 ## <a name="additional-notes"></a>Ek notlar
 
@@ -235,6 +235,6 @@ http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

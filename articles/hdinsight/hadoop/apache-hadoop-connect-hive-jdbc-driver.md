@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87350bae282d9d0dccef9cb2121000f7a0473762
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195494"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight’ta JDBC sürücüsü üzerinden Apache Hive’ı sorgulama
@@ -23,7 +23,7 @@ Bir Java uygulamasından JDBC sürücüsünü nasıl kullanacağınızı öğren
 
 Hive JDBC arabirimi hakkında daha fazla bilgi için bkz. [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Hadoop kümesi An HDInsight. Bir tane oluşturmak için bkz. [Azure HDInsight kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md). Service HiveServer2 'ın çalıştığından emin olun.
 * [Java geliştirici seti (JDK) sürüm 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) veya üstü.
@@ -65,7 +65,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
 1. Kümeinizden kopyalanacak belirli dosyaları içerecek bir dizin oluşturun.
 
-2. Aşağıdaki betikte, ' ın `sshuser` küme için SSH kullanıcı hesabı adıyla değiştirin.  HDInsight `CLUSTERNAME` kümesi adıyla değiştirin.  Bir komut satırından, çalışma dizininizi önceki adımda oluşturulan bir şekilde değiştirin ve ardından bir HDInsight kümesinden dosya kopyalamak için aşağıdaki komutu girin:
+2. Aşağıdaki betikte, ' ın `sshuser` küme IÇIN SSH kullanıcı hesabı adıyla değiştirin.  `CLUSTERNAME`HDInsight kümesi adıyla değiştirin.  Bir komut satırından, çalışma dizininizi önceki adımda oluşturulan bir şekilde değiştirin ve ardından bir HDInsight kümesinden dosya kopyalamak için aşağıdaki komutu girin:
 
     ```cmd
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar,lib/curator-*.jar} .
@@ -77,7 +77,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
     ![Pencerenin sol tarafındaki sürücüler sekmesi](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
-4. **Sürücüler** iletişim kutusunun üst kısmındaki simgelerden bir sürücü oluşturmak için **+** simgeyi seçin.
+4. **Sürücüler** iletişim kutusunun üst kısmındaki simgelerden **+** bir sürücü oluşturmak için simgeyi seçin.
 
     ![SQUIRREL SQL uygulama sürücüleri simgesi](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
@@ -94,7 +94,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
    Bu ayarları kaydetmek için **Tamam ' ı** seçin.
 
-6. SQuirreL SQL penceresinin sol tarafında **diğer adlar**' ı seçin. Ardından bir bağlantı **+** diğer adı oluşturmak için simgeyi seçin.
+6. SQuirreL SQL penceresinin sol tarafında **diğer adlar**' ı seçin. Ardından **+** bir bağlantı diğer adı oluşturmak için simgeyi seçin.
 
     ![' SQUIRREL SQL yeni diğer ad Ekle iletişim kutusu '](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
@@ -104,7 +104,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
     |---|---|
     |Adı|HDInsight üzerinde Hive|
     |Sürücü|**Hive** sürücüsünü seçmek için açılan eklentiyi kullanın.|
-    |URL'si|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.|
+    |URL|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.|
     |User Name|HDInsight kümeniz için küme oturum açma hesabı adı. **Yönetici**varsayılandır.|
     |Parola|Küme oturum açma hesabının parolası.|
 
@@ -129,7 +129,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
 ## <a name="connect-from-an-example-java-application"></a>Örnek Java uygulamasından bağlanma
 
-HDInsight 'ta Hive sorgulamak için Java istemcisi kullanmanın bir örneği, adresinde [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)bulunabilir. Örneği derlemek ve çalıştırmak için depodaki yönergeleri izleyin.
+HDInsight 'ta Hive sorgulamak için Java istemcisi kullanmanın bir örneği, adresinde bulunabilir [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) . Örneği derlemek ve çalıştırmak için depodaki yönergeleri izleyin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -147,7 +147,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **Çözüm**: Bu hatayı çözmek için aşağıdaki adımları kullanın:
 
-1. SQUIRREL programından çıkın ve sonra da bilgisayarınızda SQUIRREL 'in yüklü olduğu dizine gidin `C:\Program Files\squirrel-sql-4.0.0\lib`. SQUIRREL dizininde, `lib` dizin altında, var olan Commons-codec. jar dosyasını HDInsight kümesinden indirilen ile değiştirin.
+1. SQUIRREL programından çıkın ve sonra da bilgisayarınızda SQUIRREL 'in yüklü olduğu dizine gidin `C:\Program Files\squirrel-sql-4.0.0\lib` . SQUIRREL dizininde, dizin altında, `lib` var olan Commons-codec. jar dosyasını HDInsight kümesinden indirilen ile değiştirin.
 
 1. SQUIRREL 'i yeniden başlatın. HDInsight 'ta Hive 'e bağlanılırken hata artık gerçekleşmemelidir.
 

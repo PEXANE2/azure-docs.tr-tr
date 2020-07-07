@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
 ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186643"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: küme oluşturma hataları
@@ -26,7 +26,7 @@ Bu makalede, küme oluştururken karşılaşabileceğiniz hatalara yönelik çö
 
 ### <a name="error"></a>Hata
 
-"Betik eylemi konumuna erişilemiyor URI:\<betik eylemi URL 'si"\>
+"Betik eylemi konumuna erişilemiyor URI: \<SCRIPT ACTION URL\> "
 
 #### <a name="error-message"></a>Hata iletisi
 
@@ -48,7 +48,7 @@ HDInsight hizmeti, küme oluşturma isteği kapsamında verdiğiniz betik eylemi
 
 ### <a name="error"></a>Hata
 
-"Betik eylemi konumuna erişilemiyor URI: \<SCRIPT_ACTION_URL"\>
+"Betik eylemi konumuna erişilemiyor URI: \<SCRIPT_ACTION_URL\> "
 
 #### <a name="error-message"></a>Hata iletisi
 
@@ -68,7 +68,7 @@ Karşılık gelen Azure Data Lake Storage Gen 1 hesabını kümeye ekleyin. Ayr�
 
 ### <a name="error"></a>Hata
 
-\<İstekte belirtilen '\>CUSTOMER_SPECIFIED_VM_SIZE ' VM boyutu geçersiz veya '\<role\>' rolü için desteklenmiyor. Geçerli değerler şunlardır: \<VALID_VM_SIZE_FOR_ROLE\>. "
+İstekte belirtilen ' ' VM boyutu ' \<CUSTOMER_SPECIFIED_VM_SIZE\> ' geçersiz veya ' ' rolü için desteklenmiyor \<ROLE\> . Geçerli değerler şunlardır: \<VALID_VM_SIZE_FOR_ROLE\> . "
 
 ### <a name="cause"></a>Nedeni
 
@@ -84,7 +84,7 @@ Hata iletisi, VM boyutu için geçerli değerleri listeler. Bu değerlerden biri
 
 ### <a name="error"></a>Hata
 
-"Virtualnetworkıd geçerli değil. Virtualnetworkıd '\<USER_VIRTUALNETWORKID\>' * "
+"Virtualnetworkıd geçerli değil. Virtualnetworkıd ' \<USER_VIRTUALNETWORKID\> ' * "
 
 ### <a name="cause"></a>Nedeni
 
@@ -108,11 +108,11 @@ Bir sanal ağ KIMLIĞI örneği aşağıda verilmiştir:
 
 ### <a name="error"></a>Hata
 
-"Özel betik eyleminde bir hata nedeniyle küme dağıtımı başarısız oldu. Başarısız eylemler: \<SCRIPT_NAME\>, hata ayıklamak için lütfen ambarı Kullanıcı arabirimine gidin. "
+"Özel betik eyleminde bir hata nedeniyle küme dağıtımı başarısız oldu. Başarısız eylemler: \<SCRIPT_NAME\> , hata ayıklamak için lütfen ambarı Kullanıcı arabirimine gidin. "
 
 ### <a name="cause"></a>Nedeni
 
-Küme oluşturma isteği sırasında verdiğiniz özel betik, küme başarıyla dağıtıldıktan sonra yürütülür. Bu hata kodu, SCRIPT_NAME \<\>adlı özel betiğin yürütülmesi sırasında bir hata olduğunu gösterir.
+Küme oluşturma isteği sırasında verdiğiniz özel betik, küme başarıyla dağıtıldıktan sonra yürütülür. Bu hata kodu, adlı özel betiğin yürütülmesi sırasında bir hata olduğunu gösterir \<SCRIPT_NAME\> .
 
 ### <a name="resolution"></a>Çözüm
 
@@ -124,7 +124,7 @@ Betik özel betiğinizin bulunduğu için, sorunu gidermeniz ve gerekirse betiğ
 
 ### <a name="error"></a>Hata
 
-"Veritabanı \<database_name\> \> META_STORE_TYPE meta \<veri \<deposu şeması \<sürümü\> METASTORE_MAJOR_VERSION, küme sürümü CLUSTER_VERSION\>ile uyumsuz"
+" \<META_STORE_TYPE\> Veritabanında meta veri deposu şema sürümü, \<METASTORE_MAJOR_VERSION\> \<DATABASE_NAME\> küme sürümü ile uyumsuz \<CLUSTER_VERSION\> "
 
 ### <a name="cause"></a>Nedeni
 
@@ -161,7 +161,7 @@ Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsa
 
 ### <a name="error"></a>Hata
 
-"Yönetilen kimliğin depolama hesabında izinleri yok. Lütfen depolama hesabı için yönetilen kimliğe ' Depolama Blobu veri sahibi ' rolünün atandığını doğrulayın. Depolama:/Subscriptions/ \<abonelik kimliği\> /ResourceGroups/\< kaynak grubu adı\> /Providers/Microsoft.Storage/storageAccounts/ \<depolama hesabı adı\>, yönetilen kimlik:/Subscriptions/ \<abonelik kimliği\> /ResourceGroups//\< kaynak grubu adı\> /Providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<Kullanıcı tarafından yönetilen kimlik\>adı "
+"Yönetilen kimliğin depolama hesabında izinleri yok. Lütfen depolama hesabı için yönetilen kimliğe ' Depolama Blobu veri sahibi ' rolünün atandığını doğrulayın. Depolama:/Subscriptions/ \<Subscription ID\> /ResourceGroups/ \< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\> , Managed Identity:/Subscriptions/ \<Subscription ID\> /ResourceGroups// \< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\> "
 
 ### <a name="cause"></a>Nedeni
 
@@ -182,7 +182,7 @@ Daha fazla bilgi için bkz. [Data Lake Storage 2. hesabındaki yönetilen kimlik
 
 ### <a name="error"></a>Hata
 
-"Ağ\<güvenlik grubundaki güvenlik kuralları/Subscriptions/SubscriptionID\>/resourcegroups/<kaynak grubu adı\> varsayılan/sağlayıcılar/Microsoft. ağ/networksecuritygroups/\<ağ güvenlik grubu\> adı alt ağ/Subscriptions/\<SubscriptionID\>/ResourceGroups/\<kaynak grubu adı\> RG-westeurope-VNET-TomTom-default/Providers/Microsoft. Network/virtualnetworks/\<sanal ağ adı\>/Subnets/\<alt ağ adı\> , gerekli gelen ve/veya giden bağlantılara izin vermiyor. Daha fazla bilgi için lütfen [Azure HDInsight için bir sanal ağ planlayın](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)veya desteğe başvurun. "
+"Ağ güvenlik grubundaki/Subscriptions/ \<SubscriptionID\> /resourcegroups/<kaynak grubu adı \> varsayılan/sağlayıcıları/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> alt ağ/Subscriptions/ \<SubscriptionID\> /ResourceGroups/ \<Resource Group name\> RG-westeurope-VNET-TomTom-default/Providers/Microsoft. Network/virtualnetworks//Subnets/ile yapılandırılan güvenlik kuralları, \<Virtual Network Name\> \<Subnet Name\> gerekli gelen ve/veya giden bağlantılara izin vermiyor. Daha fazla bilgi için lütfen [Azure HDInsight için bir sanal ağ planlayın](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)veya desteğe başvurun. "
 
 ### <a name="cause"></a>Nedeni
 
@@ -230,7 +230,7 @@ HDInsight hizmeti, kümeyi oluşturmaya çalışırken kümenize bağlanamaz
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hata kodu: bir ilke ihlali nedeniyle dağıtımlar başarısız oldu: ' kaynak<Resource URI>' ' ilke tarafından izin verilmedi. İlke tanımlayıcıları: ' [{"policyAssignment": {"Name": "<Policy Name> ", "ID": "/Providers/Microsoft.Management/managementGroups/<Management Group Name> Providers/Microsoft. Authorization/policyasers/<Policy Name>"}, "policydefinition":<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hata kodu: bir ilke ihlali nedeniyle dağıtımlar başarısız oldu: ' kaynak ' <Resource URI> ' ilke tarafından izin verilmedi. İlke tanımlayıcıları: ' [{"policyAssignment": {"Name": " <Policy Name> ", "ID": "/Providers/Microsoft.Management/managementGroups/ <Management Group Name> providers/Microsoft. Authorization/policyasers/ <Policy Name> "}, "policydefinition":<Policy Definition>
 
 ### <a name="cause"></a>Nedeni
 

@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a859fea121296dc977d48712c35ea3dcff798f50
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509304"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Azure CLı kullanarak MySQL VNet için Azure veritabanı hizmet uç noktaları oluşturma ve yönetme
 Sanal Ağ (VNet) hizmetleri uç noktaları ve kuralları, bir Sanal Ağın özel adres alanını MySQL için Azure Veritabanı sunucunuza genişletir. Uygun Azure komut satırı arabirimi (CLı) komutlarını kullanarak sunucunuzu yönetmek için VNet hizmet uç noktalarını ve kurallarını oluşturabilir, güncelleştirebilir, silebilir, listeleyebilir ve gösterebilirsiniz. MySQL VNet hizmet uç noktaları için Azure veritabanı 'nda sınırlamalar da dahil genel bir bakış için bkz. [MySQL Için Azure veritabanı sunucu VNET hizmet uç noktaları](concepts-data-access-and-security-vnet.md). Sanal ağ hizmeti uç noktaları, MySQL için Azure veritabanı için desteklenen tüm bölgelerde kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - [Azure CLI](/cli/azure/install-azure-cli) 'yı yükler veya tarayıcıda Azure Cloud Shell kullanın.
 - [MySQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-mysql-server-database-using-azure-cli.md).
@@ -57,7 +57,7 @@ Sanal ağlar ve Azure hizmet kaynakları aynı ağda veya farklı aboneliklerde 
 > 
 
 ### <a name="sample-script-to-create-an-azure-database-for-mysql-database-create-a-vnet-vnet-service-endpoint-and-secure-the-server-to-the-subnet-with-a-vnet-rule"></a>Örnek betik bir MySQL için Azure veritabanı veritabanı oluşturma, VNet, VNet hizmeti uç noktası oluşturma ve sunucunun alt ağa VNet kuralıyla güvenliğini sağlama
-Bu örnek betikte, vurgulanan satırları değiştirerek yönetici kullanıcı adını ve parolasını özelleştirin. `az account set --subscription` Komutta kullanılan SubscriptionID değerini kendi abonelik tanımlayıcıınızla değiştirin.
+Bu örnek betikte, vurgulanan satırları değiştirerek yönetici kullanıcı adını ve parolasını özelleştirin. Komutta kullanılan SubscriptionID değerini `az account set --subscription` kendi abonelik tanımlayıcıınızla değiştirin.
 [!code-azurecli-interactive[main](../../cli_scripts/mysql/create-mysql-server-vnet/create-mysql-server.sh?highlight=5,20 "Create an Azure Database for MySQL, VNet, VNet service endpoint, and VNet rule.")]
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme

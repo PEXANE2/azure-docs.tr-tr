@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185600"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory işlem hatlarından Spark programları çağırma
@@ -51,12 +51,12 @@ Spark etkinliğiyle Veri Fabrikası işlem hattı oluşturmak için tipik adıml
 * Depolama bağlı hizmetine başvuran bir veri kümesi oluşturun. Şu anda, üretilmekte olan bir çıktı olmasa bile bir etkinlik için çıkış veri kümesi belirtmeniz gerekir.
 * Oluşturduğunuz HDInsight bağlı hizmetine başvuran Spark etkinliğine sahip bir işlem hattı oluşturun. Etkinlik, önceki adımda oluşturduğunuz veri kümesiyle çıkış veri kümesi olarak yapılandırılır. Çıktı veri kümesi, zamanlamayı (saatlik, günlük) değil. Bu nedenle, etkinlik gerçekten bir çıkış üretmese de çıkış veri kümesini belirtmeniz gerekir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 1. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md)bölümündeki yönergeleri izleyerek genel amaçlı bir depolama hesabı oluşturun.
 
 1. HDInsight 'ta [Spark kümesi oluşturma](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)öğreticisindeki talimatları izleyerek HDInsight 'ta Spark kümesi oluşturma. Adım 1 ' de oluşturduğunuz depolama hesabını bu kümeyle ilişkilendirin.
 
-1. Konumundaki [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) **test.py** Python betik dosyasını indirin ve gözden geçirin.
+1. Konumundaki **test.py** Python betik dosyasını indirin ve gözden geçirin [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) .
 
 1. BLOB depolama alanındaki **adfspark** kapsayıcısında **test.py** **Dosya** klasörüne yükleyin. Kapsayıcısını ve klasörü yoksa, oluşturun.
 
@@ -65,7 +65,7 @@ Veri fabrikası oluşturmak için bu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. **Yeni** > **Data + Analytics**veri ve analiz > **Data Factory**seçin.
+1. **Yeni**  >  **veri ve analiz**  >  **Data Factory**seçin.
 
 1. **Yeni Veri Fabrikası** dikey penceresinde, **ad**' ın altında, **mini-mini**' i girin.
 
@@ -78,7 +78,7 @@ Veri fabrikası oluşturmak için bu adımları izleyin:
 
 1. **Panoya sabitle** onay kutusunu seçin.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
    > [!IMPORTANT]
    > Data Factory örnekleri oluşturmak için abonelik/kaynak grubu düzeyinde [Data Factory katılımcısı](../../role-based-access-control/built-in-roles.md#data-factory-contributor) rolünün üyesi olmanız gerekir.
@@ -112,7 +112,7 @@ Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu izlenece
 #### <a name="create-an-hdinsight-linked-service"></a>HDInsight bağlı hizmeti oluşturma
 Bu adımda, HDInsight Spark kümenizi Data Factory 'ye bağlamak için bir HDInsight bağlı hizmeti oluşturursunuz. HDInsight kümesi, bu örnekteki işlem hattının Spark etkinliğinde belirtilen Spark programını çalıştırmak için kullanılır.
 
-1. Data Factory düzenleyicisinde, **daha fazla** > **Yeni işlem** > **HDInsight kümesi**seçin.
+1. Data Factory düzenleyicisinde, **daha fazla**  >  **Yeni işlem**  >  **HDInsight kümesi**seçin.
 
     ![HDInsight bağlı hizmeti oluşturma](media/data-factory-spark/new-hdinsight-linked-service.png)
 
@@ -152,7 +152,7 @@ Bu adımda, HDInsight Spark kümenizi Data Factory 'ye bağlamak için bir HDIns
 ### <a name="create-the-output-dataset"></a>Çıktı veri kümesini oluşturma
 Çıktı veri kümesi, zamanlamayı (saatlik, günlük) değil. Bu nedenle, etkinlik herhangi bir çıkış üretmese de, işlem hattındaki Spark etkinliğinin çıkış veri kümesini belirtmeniz gerekir. Etkinlik için bir giriş veri kümesi belirtilmesi isteğe bağlıdır.
 
-1. Data Factory düzenleyicisinde, **daha fazla** > **Yeni veri kümesi** > **Azure Blob depolama**' yı seçin.
+1. Data Factory düzenleyicisinde, **daha fazla**  >  **Yeni veri kümesi**  >  **Azure Blob depolama**' yı seçin.
 
 1. Aşağıdaki kod parçacığını kopyalayıp Taslak-1 penceresine yapıştırın. JSON kod parçacığı, **outputdataset**adlı bir veri kümesini tanımlar. Ayrıca, sonuçların **adfspark** adlı blob kapsayıcısında ve **pyfiles/output**adlı klasörde depolandığını belirtirsiniz. Daha önce belirtildiği gibi, bu veri kümesi bir kukla veri kümesidir. Bu örnekteki Spark programı herhangi bir çıktı oluşturmaz. **Kullanılabilirlik** bölümü, çıktı veri kümesinin günlük olarak üretildiğini belirtir.
 
@@ -183,7 +183,7 @@ Bu adımda, HDInsight Spark kümenizi Data Factory 'ye bağlamak için bir HDIns
 ### <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 Bu adımda, bir HDInsightSpark etkinliği ile işlem hattı oluşturacaksınız. Şu anda, zamanlama çıktı veri kümesi tarafından yönetildiğinden, etkinlik hiçbir çıktı oluşturmasa bile bir çıktı veri kümesi oluşturmanız gerekir. Etkinlik herhangi bir girdi almazsa, girdi veri kümesi oluşturma işlemini atlayabilirsiniz. Bu nedenle, bu örnekte hiçbir giriş veri kümesi belirtilmedi.
 
-1. Data Factory düzenleyicisinde, **daha** > **Yeni işlem hattı**' nı seçin.
+1. Data Factory düzenleyicisinde, **daha**  >  **Yeni işlem hattı**' nı seçin.
 
 1. Taslak-1 penceresindeki betiği aşağıdaki komut dosyasıyla değiştirin:
 
@@ -217,14 +217,14 @@ Bu adımda, bir HDInsightSpark etkinliği ile işlem hattı oluşturacaksınız.
 
     a. **Type** özelliği **HDInsightSpark**olarak ayarlanır.
 
-    b. **RootPath** özelliği, adfspark 'ın blob kapsayıcısı olduğu ve pyfiles Bu kapsayıcıda dosya klasörü olduğu **\\adfspark pyfiles** olarak ayarlanır. Bu örnekte, BLOB depolama, Spark kümesiyle ilişkili olan bir örnektir. Dosyayı farklı bir depolama hesabına yükleyebilirsiniz. Bunu yaparsanız, bu depolama hesabını veri fabrikasına bağlamak için bir depolama bağlı hizmeti oluşturun. Daha sonra, bağlı hizmetin adını, **mini Iş linkedservice** özelliği için bir değer olarak belirtin. Bu özellik ve Spark etkinliğinin desteklediği diğer özellikler hakkında daha fazla bilgi için bkz. [Spark etkinlik özellikleri](#spark-activity-properties).
+    b. **RootPath** özelliği, adfspark 'ın blob kapsayıcısı olduğu ve pyfiles Bu kapsayıcıda dosya klasörü olduğu **adfspark \\ pyfiles** olarak ayarlanır. Bu örnekte, BLOB depolama, Spark kümesiyle ilişkili olan bir örnektir. Dosyayı farklı bir depolama hesabına yükleyebilirsiniz. Bunu yaparsanız, bu depolama hesabını veri fabrikasına bağlamak için bir depolama bağlı hizmeti oluşturun. Daha sonra, bağlı hizmetin adını, **mini Iş linkedservice** özelliği için bir değer olarak belirtin. Bu özellik ve Spark etkinliğinin desteklediği diğer özellikler hakkında daha fazla bilgi için bkz. [Spark etkinlik özellikleri](#spark-activity-properties).
 
     c. **Entryfilepath** özelliği, Python dosyası olan **test.py**olarak ayarlanır.
 
     d. **GetDebugInfo** özelliği **her zaman**olarak ayarlanır; Bu, günlük dosyalarının her zaman oluşturulduğu anlamına gelir (başarılı veya başarısız).
 
     > [!IMPORTANT]
-    > Bir sorun gidermediğiniz takdirde bu özelliği `Always` bir üretim ortamında ayarlamanıza tavsiye ederiz.
+    > `Always`Bir sorun gidermediğiniz takdirde bu özelliği bir üretim ortamında ayarlamanıza tavsiye ederiz.
 
     e. **Çıktılar** bölümünde bir çıkış veri kümesi vardır. Spark programı herhangi bir çıkış üretmese bile bir çıkış veri kümesi belirtmeniz gerekir. Çıktı veri kümesi, işlem hattı için zamanlamayı (saatlik, günlük) yürütür.
 
@@ -247,9 +247,9 @@ Bu adımda, bir HDInsightSpark etkinliği ile işlem hattı oluşturacaksınız.
 
 ### <a name="verify-the-results"></a>Sonuçları doğrulama
 
-1. ' A giderek HDInsight Spark kümeniz için Jupyter Notebook başlatın `https://CLUSTERNAME.azurehdinsight.net/jupyter`. Ayrıca, HDInsight Spark kümeniz için bir küme panosu açıp Jupyter Notebook başlatabilirsiniz.
+1. ' A giderek HDInsight Spark kümeniz için Jupyter Notebook başlatın `https://CLUSTERNAME.azurehdinsight.net/jupyter` . Ayrıca, HDInsight Spark kümeniz için bir küme panosu açıp Jupyter Notebook başlatabilirsiniz.
 
-1. Yeni bir not defteri başlatmak için **Yeni** > **pyspark** ' ı seçin.
+1. Yeni **New**  >  bir not defteri başlatmak için yeni**pyspark** ' ı seçin.
 
     ![Jupyter yeni not defteri](media/data-factory-spark/jupyter-new-book.png)
 
@@ -326,33 +326,33 @@ Aşağıdaki tabloda JSON tanımında kullanılan JSON özellikleri açıklanmak
 
 | Özellik | Açıklama | Gerekli |
 | -------- | ----------- | -------- |
-| ad | İşlem hattındaki etkinliğin adı. | Yes |
-| açıklama | Etkinliğin ne yaptığını açıklayan metin. | Hayır |
-| type | Bu özellik HDInsightSpark olarak ayarlanmalıdır. | Yes |
+| name | İşlem hattındaki etkinliğin adı. | Yes |
+| açıklama | Etkinliğin ne yaptığını açıklayan metin. | No |
+| tür | Bu özellik HDInsightSpark olarak ayarlanmalıdır. | Yes |
 | linkedServiceName | Spark programının çalıştığı HDInsight bağlı hizmetinin adı. | Yes |
 | rootPath | Spark dosyasını içeren blob kapsayıcısı ve klasörü. Dosya adı büyük/küçük harfe duyarlıdır. | Yes |
 | entryFilePath | Spark kodunun/paketinin kök klasörünün göreli yolu. | Yes |
-| Sınıf | Uygulamanın Java/Spark ana sınıfı. | Hayır |
-| değişkenlerinden | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | Hayır |
-| proxyUser | Spark programını yürütmek için kimliğe bürünmeye yönelik kullanıcı hesabı. | Hayır |
-| Mini yapılandırma | [Spark yapılandırması: uygulama özellikleri](https://spark.apache.org/docs/latest/configuration.html#available-properties)' nde listelenen Spark yapılandırma özellikleri için değerleri belirtin. | Hayır |
-| GetDebugInfo | Spark günlük dosyalarının, mini iş Linkedservice tarafından belirtilen HDInsight kümesi (veya) tarafından kullanılan depolamaya ne zaman kopyalanacağını belirtir. İzin verilen değerler None, Always veya Failure 'Tur. Varsayılan değer, Yok'tur. | Hayır |
-| Mini iş Linkedservice | Spark iş dosyasını, bağımlılıklarını ve günlüklerini tutan depolama bağlı hizmeti. Bu özellik için bir değer belirtmezseniz, HDInsight kümesiyle ilişkili depolama kullanılır. | Hayır |
+| Sınıf | Uygulamanın Java/Spark ana sınıfı. | No |
+| değişkenlerinden | Spark programına yönelik komut satırı bağımsız değişkenlerinin listesi. | No |
+| proxyUser | Spark programını yürütmek için kimliğe bürünmeye yönelik kullanıcı hesabı. | No |
+| Mini yapılandırma | [Spark yapılandırması: uygulama özellikleri](https://spark.apache.org/docs/latest/configuration.html#available-properties)' nde listelenen Spark yapılandırma özellikleri için değerleri belirtin. | No |
+| GetDebugInfo | Spark günlük dosyalarının, mini iş Linkedservice tarafından belirtilen HDInsight kümesi (veya) tarafından kullanılan depolamaya ne zaman kopyalanacağını belirtir. İzin verilen değerler None, Always veya Failure 'Tur. Varsayılan değer, Yok'tur. | No |
+| Mini iş Linkedservice | Spark iş dosyasını, bağımlılıklarını ve günlüklerini tutan depolama bağlı hizmeti. Bu özellik için bir değer belirtmezseniz, HDInsight kümesiyle ilişkili depolama kullanılır. | No |
 
 ## <a name="folder-structure"></a>Klasör yapısı
 Spark etkinliği, Pig olarak bir satır içi betiği desteklemez ve Hive etkinlikleri bunu yapmaz. Spark işleri, Pig/Hive işlerinin daha da genişletilebilir. Spark işleri için, jar paketleri (Java SıNıFYOLUNA yerleştirilmiş), Python dosyaları (PYTHONPATH üzerine yerleştirilmiş) ve diğer tüm dosyalar gibi birden çok bağımlılığı sağlayabilirsiniz.
 
 HDInsight bağlı hizmeti tarafından başvurulan blob depolamada aşağıdaki klasör yapısını oluşturun. Ardından, bağımlı dosyaları **Entryfilepath**tarafından temsil edilen kök klasördeki uygun alt klasörlere yükleyin. Örneğin, Python dosyalarını pyfiles alt klasörüne ve jar dosyalarını kök klasörün jar dosyaları dışındaki alt klasörüne yükleyin. Çalışma zamanında, Data Factory hizmeti blob depolamada aşağıdaki klasör yapısını bekler:
 
-| Yol | Açıklama | Gerekli | Tür |
+| Yol | Description | Gerekli | Tür |
 | ---- | ----------- | -------- | ---- |
-| . | Depolama bağlı hizmetindeki Spark işinin kök yolu. | Yes | Klasör |
+| . | Depolama bağlı hizmetindeki Spark işinin kök yolu. | Evet | Klasör |
 | &lt;Kullanıcı tanımlı&gt; | Spark işinin giriş dosyasına işaret eden yol. | Yes | Dosya |
-| ./jars | Bu klasördeki tüm dosyalar, kümenin Java Sınıfyoluna yüklenir ve yerleştirilir. | Hayır | Klasör |
-| ./pyFiles | Bu klasördeki tüm dosyalar, kümenin PYTHONPATH yüklenir ve bu klasöre yerleştirilir. | Hayır | Klasör |
-| ./Files | Bu klasördeki tüm dosyalar, yürütücü çalışma dizinine yüklenir ve yerleştirilir. | Hayır | Klasör |
-| ./Arşivler | Bu klasördeki tüm dosyalar sıkıştırılmamış. | Hayır | Klasör |
-| ./logs | Spark kümesindeki günlüklerin depolandığı klasör.| Hayır | Klasör |
+| ./jars | Bu klasördeki tüm dosyalar, kümenin Java Sınıfyoluna yüklenir ve yerleştirilir. | No | Klasör |
+| ./pyFiles | Bu klasördeki tüm dosyalar, kümenin PYTHONPATH yüklenir ve bu klasöre yerleştirilir. | No | Klasör |
+| ./Files | Bu klasördeki tüm dosyalar, yürütücü çalışma dizinine yüklenir ve yerleştirilir. | No | Klasör |
+| ./Arşivler | Bu klasördeki tüm dosyalar sıkıştırılmamış. | No | Klasör |
+| ./logs | Spark kümesindeki günlüklerin depolandığı klasör.| No | Klasör |
 
 HDInsight bağlı hizmeti tarafından başvurulan blob depolamada iki Spark iş dosyası içeren depolama için bir örnek aşağıda verilmiştir:
 

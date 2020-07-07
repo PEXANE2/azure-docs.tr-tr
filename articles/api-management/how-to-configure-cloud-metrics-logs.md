@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205137"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management şirket içinde barındırılan ağ geçidi için bulut ölçümlerini ve günlüklerini yapılandırma
@@ -28,11 +28,11 @@ Bu makalede, [Şirket içinde barındırılan ağ geçidi](./self-hosted-gateway
 ## <a name="metrics"></a>Ölçümler
 Varsayılan olarak, şirket içinde barındırılan ağ geçidi, [buluttaki](api-management-howto-use-azure-monitor.md)yönetilen ağ geçidiyle aynı şekilde [Azure izleyici](https://azure.microsoft.com/services/monitor/)aracılığıyla bir dizi ölçüm yayar. 
 
-Özellik, ağ geçidi dağıtımının ConfigMap içindeki `telemetry.metrics.cloud` anahtar kullanılarak etkinleştirilebilir veya devre dışı bırakılabilir. Kullanılabilir yapılandırmaların bir dökümü aşağıda verilmiştir:
+Özellik, `telemetry.metrics.cloud` ağ geçidi dağıtımının ConfigMap içindeki anahtar kullanılarak etkinleştirilebilir veya devre dışı bırakılabilir. Kullanılabilir yapılandırmaların bir dökümü aşağıda verilmiştir:
 
-| Alan  | Varsayılan | Açıklama |
+| Alan  | Varsayılan | Description |
 | ------------- | ------------- | ------------- |
-| Telemetri. ölçümler. Cloud  | `true` | Azure Izleyici aracılığıyla günlüğe kaydetmeyi etkinleştir. Değer `true`, `false`olabilir. |
+| Telemetri. ölçümler. Cloud  | `true` | Azure Izleyici aracılığıyla günlüğe kaydetmeyi etkinleştir. Değer, olabilir `true` `false` . |
 
 
 Örnek bir yapılandırma aşağıda verilmiştir:
@@ -49,7 +49,7 @@ Varsayılan olarak, şirket içinde barındırılan ağ geçidi, [buluttaki](api
 
 Şirket içinde barındırılan ağ geçidi Şu anda Azure Izleyici aracılığıyla aşağıdaki ölçümleri yayar:
 
-| Ölçüm  | Açıklama |
+| Metric  | Açıklama |
 | ------------- | ------------- |
 | İstekler  | Dönemdeki API isteklerinin sayısı |
 | Ağ Geçidi isteklerinin süresi | Ağ geçidinin isteği aldığı andan, yanıtın tamamen gönderildiği ana kadar geçen milisaniye cinsinden süre |

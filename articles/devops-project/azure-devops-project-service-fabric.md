@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: ce35f3af38b98f43ebbd0d3f42136ab8358b19a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233729"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Öğretici: Azure DevOps Starter kullanarak ASP.NET Core uygulamanızı Azure Service Fabric dağıtma
@@ -35,7 +35,7 @@ Bu öğreticide şunları yapacaksınız:
 > * Git’e değişiklikleri işleme ve Azure’a otomatik olarak dağıtma
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) aracılığıyla ücretsiz bir abonelik alabilirsiniz.
 
@@ -121,7 +121,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 Şimdi, en son çalışmalarınızı otomatik olarak Web sitenize dağıtan bir CI/CD işlemi kullanarak uygulamanızdaki bir takımla işbirliği yapmaya hazırsınız. Git deposunda yapılan her değişiklik bir derleme başlatır ve bir sürüm yaptığınız değişiklikleri Azure 'a dağıtır. Bu bölümdeki yordamı izleyin veya değişiklikleri deponuzda uygulamak için başka bir teknik kullanın. Örneğin, git deposunu en sevdiğiniz araçta veya IDE 'de kopyalayabilir ve sonra değişiklikleri bu depoya gönderebilirsiniz.
 
-1. Azure DevOps menüsünde, **kod** > **dosyaları**' nı seçin ve ardından depoya gidin.
+1. Azure DevOps menüsünde, **kod**  >  **dosyaları**' nı seçin ve ardından depoya gidin.
 
 1. *Views\home* dizinine gidin, *Index. cshtml* dosyasının yanındaki üç nokta (...) simgesini seçin ve ardından **Düzenle**' yi seçin.
 

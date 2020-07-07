@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
 ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82165697"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Izleyici günlükleri dağıtımınızı tasarlama
@@ -62,7 +62,7 @@ Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çal
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| Çarpan | Açıklama |
+| Çarpan | Description |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |
@@ -114,7 +114,7 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
 
     Bu, 2019 Mart 'tan önce oluşturulan tüm çalışma alanları için varsayılan ayardır.
 
-* **Kaynak veya çalışma alanı Izinlerini kullanın**: Bu denetim modu parçalı RBAC 'e izin verir. Kullanıcılara, yalnızca Azure `read` izni atayarak görüntüleyebileceği kaynaklarla ilişkili verilere erişim izni verilebilir. 
+* **Kaynak veya çalışma alanı Izinlerini kullanın**: Bu denetim modu parçalı RBAC 'e izin verir. Kullanıcılara, yalnızca Azure izni atayarak görüntüleyebileceği kaynaklarla ilişkili verilere erişim izni verilebilir `read` . 
 
     Bir kullanıcı çalışma alanı bağlam modunda çalışma alanına eriştiğinde, çalışma alanı izinleri geçerlidir. Bir Kullanıcı, kaynak-bağlam modundaki çalışma alanına eriştiğinde yalnızca kaynak izinleri doğrulanır ve çalışma alanı izinleri yoksayılır. Çalışma alanı izinlerinden kaldırarak ve kaynak izinlerinin tanınmasını sağlayarak bir kullanıcı için RBAC 'yi etkinleştirin.
 

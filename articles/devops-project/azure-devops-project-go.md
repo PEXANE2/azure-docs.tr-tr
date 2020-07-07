@@ -14,10 +14,10 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233134"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Azure DevOps Starter kullanarak Go için bir CI/CD işlem hattı oluşturun
@@ -64,7 +64,7 @@ DevOps Starter, Azure Repos veya GitHub 'da bir git deposu oluşturur. Depoyu g�
 
 1. Depo kopyası URL 'sini görüntülemek için sağ üst köşedeki **Kopyala** ' yı seçin. Git deponuzu en sevdiğiniz IDE 'de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişiklikleri yapıp doğrudan ana dala işlemek için web tarayıcısını kullanabilirsiniz.
 
-1. Solda, *views/index.html* dosyasına gidin ve ardından **Düzenle**' yi seçin.
+1. Solda, *Görünümler/index.html* dosyasına gidin ve ardından **Düzenle**' yi seçin.
 
 1. Dosyada değişiklik yapın. Örneğin, div etiketlerinin birindeki bazı metinleri değiştirin.
 

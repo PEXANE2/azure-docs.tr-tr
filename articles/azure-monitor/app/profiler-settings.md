@@ -7,16 +7,16 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188935"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler Yapılandır
 
 ## <a name="updated-profiler-agent"></a>Profil Oluşturucu aracısı güncelleştirildi
-Tetikleyici özellikleri, profil oluşturucu aracısının yalnızca sürüm 2,6 veya daha yeni bir sürümüyle çalışır. Bir Azure App Service çalıştırıyorsanız, aracınız otomatik olarak güncelleştirilir. Web sitenizin kudu URL 'sine giderseniz ve aşağıdaki gibi \DiagnosticServices öğesini sonuna eklemek için aracının hangi sürümünü çalıştırdığınızı görebilirsiniz: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices`. Application Insights Profiler WebJob sürümü 2,6 veya daha yeni bir sürüm olmalıdır. Web uygulamanızı yeniden başlatarak yükseltmeyi zorlayabilirsiniz. 
+Tetikleyici özellikleri, profil oluşturucu aracısının yalnızca sürüm 2,6 veya daha yeni bir sürümüyle çalışır. Bir Azure App Service çalıştırıyorsanız, aracınız otomatik olarak güncelleştirilir. Web sitenizin kudu URL 'sine giderseniz ve aşağıdaki gibi \DiagnosticServices öğesini sonuna eklemek için aracının hangi sürümünü çalıştırdığınızı görebilirsiniz: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` . Application Insights Profiler WebJob sürümü 2,6 veya daha yeni bir sürüm olmalıdır. Web uygulamanızı yeniden başlatarak yükseltmeyi zorlayabilirsiniz. 
 
 Profil oluşturucuyu bir VM veya bulut hizmetinde çalıştırıyorsanız, Windows Azure Tanılama (WAD) uzantısı sürüm 16.0.4 veya daha yeni bir sürümü yüklü olmalıdır. SANAL makinenizde oturum açarak ve şu dizine bakarak WAD 'nin sürümünü denetleyebilirsiniz: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Dizin adı, yüklü olan WAD 'nin sürümüdür. Yeni sürümler kullanılabilir olduğunda, Azure VM Aracısı WAD 'yi otomatik olarak güncelleştirir.
 
@@ -78,7 +78,7 @@ Sonraki bölümlerde bu senaryonun nasıl çalıştığı gösterilmektedir:
 
 Web uygulamanızda zaten gelen trafik varsa veya yalnızca el ile trafik oluşturmak istiyorsanız, bu bölümü atlayın ve adım 2 ' ye geçin.
 
-1. Application Insights portalında,**performans testini** **Yapılandır** > ' ı seçin. 
+1. Application Insights portalında, **Configure**  >  **performans testini**Yapılandır ' ı seçin. 
 
 1. Yeni bir performans testi başlatmak için **Yeni** düğmesini seçin.
 

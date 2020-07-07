@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192510"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop
@@ -21,7 +21,7 @@ Azure HDInsight 'ta bir Apache Hadoop kümesindeki [Apache Hadoop YARN](https://
 
 ## <a name="what-is-apache-yarn"></a>Apache YARN nedir?
 
-YARN, kaynak yönetimini uygulama zamanlama/izlemeye ayırarak birden çok programlama modelini (Apache Hadoop MapReduce) destekler. YARN, küresel *`ResourceManager`* (RM), çalışan-düğüm *nodeyöneticileri* (NMS) ve uygulama başına *applicationmaster* (AMS) kullanır. Uygulama başına, uygulamanızı RM ile çalıştırmaya yönelik kaynaklar (CPU, bellek, disk, ağ) tarafından anlaşma yapılır. RM, *kapsayıcılar*olarak verilen bu kaynakları vermek Için NMS ile birlikte çalışmaktadır. Bu, kendisine atanan kapsayıcıların, RM tarafından ilerlemesini izlemekten sorumludur. Uygulama, uygulamanın yapısına bağlı olarak çok sayıda kapsayıcı gerektirebilir.
+YARN, kaynak yönetimini uygulama zamanlama/izlemeye ayırarak birden çok programlama modelini (Apache Hadoop MapReduce) destekler. YARN *`ResourceManager`* , küresel (RM), çalışan-düğüm *nodeyöneticileri* (NMS) ve uygulama başına *applicationmaster* (AMS) kullanır. Uygulama başına, uygulamanızı RM ile çalıştırmaya yönelik kaynaklar (CPU, bellek, disk, ağ) tarafından anlaşma yapılır. RM, *kapsayıcılar*olarak verilen bu kaynakları vermek Için NMS ile birlikte çalışmaktadır. Bu, kendisine atanan kapsayıcıların, RM tarafından ilerlemesini izlemekten sorumludur. Uygulama, uygulamanın yapısına bağlı olarak çok sayıda kapsayıcı gerektirebilir.
 
 Her uygulama birden çok *uygulama denemesinden*oluşabilir. Bir uygulama başarısız olursa, yeni bir deneme olarak yeniden denenebilir. Her deneme bir kapsayıcıda çalışır. Bir kapsayıcı, bir YARN uygulaması tarafından gerçekleştirilen temel çalışma birimi için bağlam sağlar. Kapsayıcının bağlamı içinde gerçekleştirilen tüm işler, kapsayıcının verildiği tek çalışan düğümünde yapılır. Bkz. [Hadoop: Yarn uygulamaları yazma](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)veya daha fazla başvuru için [Yarn Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) .
 
@@ -48,17 +48,17 @@ Günlük toplama özelliği, uygulama günlüklerine daha belirleyici bir şekil
 /app-logs/<user>/logs/<applicationId>
 ```
 
-Yolda, `user` uygulamayı başlatan kullanıcının adıdır. , `applicationId` Yarn RM tarafından bir uygulamaya atanan benzersiz tanıtıcıdır.
+Yolda, `user` uygulamayı başlatan kullanıcının adıdır. , `applicationId` YARN RM tarafından bir uygulamaya atanan benzersiz tanıtıcıdır.
 
-Toplanan Günlükler, bir TFile dosyasında yazıldığı gibi doğrudan okunamaz, kapsayıcı tarafından dizine alınmış ikili biçimdedir. Bu günlükleri uygulamalar veya `ResourceManager` ilgilendiğiniz kapsayıcılar için düz metin olarak görüntülemek üzere Yarn GÜNLÜKLERI veya CLI araçları 'nı kullanın.
+Toplanan Günlükler, bir TFile dosyasında yazıldığı gibi doğrudan okunamaz, kapsayıcı tarafından dizine alınmış ikili biçimdedir. `ResourceManager`Bu günlükleri uygulamalar veya ilgilendiğiniz kapsayıcılar için düz metin olarak görüntülemek üzere YARN günlükleri veya CLI araçları 'nı kullanın.
 
 ## <a name="yarn-logs-in-an-esp-cluster"></a>Bir ESP kümesindeki Yarn günlükleri
 
-İki yapılandırmanın, ambarı 'nda özel `mapred-site` olarak eklenmesi gerekir.
+İki yapılandırmanın, ambarı 'nda özel olarak eklenmesi gerekir `mapred-site` .
 
-1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net`, Kümenizin adı `CLUSTERNAME` olan ' a gidin.
+1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
-1. Ambarı kullanıcı arabiriminden **MapReduce2** > **configs** > **Gelişmiş** > **özel mapred-site**bölümüne gidin.
+1. Ambarı kullanıcı arabiriminden **MapReduce2**  >  **configs**  >  **Gelişmiş**  >  **özel mapred-site**bölümüne gidin.
 
 1. Aşağıdaki özellik kümelerinden *birini* ekleyin:
 
@@ -91,7 +91,7 @@ Toplanan Günlükler, bir TFile dosyasında yazıldığı gibi doğrudan okunama
     yarn top
     ```
 
-    Günlüklerin indirileceği `APPLICATIONID` SÜTUNDAN uygulama kimliği ' ni aklınızda edin.
+    Günlüklerin indirileceği sütundan uygulama KIMLIĞI ' ni aklınızda edin `APPLICATIONID` .
 
     ```output
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -113,11 +113,11 @@ Toplanan Günlükler, bir TFile dosyasında yazıldığı gibi doğrudan okunama
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
     ```
 
-    Bu komutları &lt;çalıştırırken Application> &lt;, Kullanıcı tarafından başlatılan-uygulama>, &lt;containerıd> ve &lt;çalışan düğümü-adresi> bilgilerini belirtin.
+    &lt; &lt; Bu komutları çalıştırırken Application>, Kullanıcı tarafından başlatılan-uygulama>, &lt; containerıd> ve &lt; çalışan düğümü-adresi> bilgilerini belirtin.
 
 ### <a name="other-sample-commands"></a>Diğer örnek komutlar
 
-1. Aşağıdaki komutla tüm uygulama yöneticileri için Yarn kapsayıcıları günlüklerini indirin. Bu adım, metin biçiminde adlı `amlogs.txt` günlük dosyasını oluşturur.
+1. Aşağıdaki komutla tüm uygulama yöneticileri için Yarn kapsayıcıları günlüklerini indirin. Bu adım, metin biçiminde adlı günlük dosyasını oluşturur `amlogs.txt` .
 
     ```bash
     yarn logs -applicationId <application_id> -am ALL > amlogs.txt
@@ -151,13 +151,13 @@ Toplanan Günlükler, bir TFile dosyasında yazıldığı gibi doğrudan okunama
 
 YARN `ResourceManager` UI, küme headnode üzerinde çalışır. Bu, ambarı Web Kullanıcı arabirimi üzerinden erişilir. YARN günlüklerini görüntülemek için aşağıdaki adımları kullanın:
 
-1. Web tarayıcınızda öğesine `https://CLUSTERNAME.azurehdinsight.net`gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
+1. Web tarayıcınızda öğesine gidin `https://CLUSTERNAME.azurehdinsight.net` . CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
 
 2. Soldaki hizmetler listesinden **Yarn**' yi seçin.
 
     ![Apache ambarı Yarn hizmeti seçildi](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
-3. **Hızlı bağlantılar** açılan listesinden küme baş düğümlerinden birini seçin ve ardından öğesini seçin **`ResourceManager Log`**.
+3. **Hızlı bağlantılar** açılan listesinden küme baş düğümlerinden birini seçin ve ardından öğesini seçin **`ResourceManager Log`** .
 
     ![Apache ambarı Yarn hızlı bağlantıları](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 

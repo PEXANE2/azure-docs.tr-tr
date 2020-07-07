@@ -4,10 +4,10 @@ description: Azure Backup tarafından yedeklenen Azure dosya paylaşımlarını 
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184920"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Azure dosya paylaşma yedeklemesini REST API ile yönetme
@@ -54,7 +54,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 #### <a name="response"></a>Yanıt
 
-Adı  | Tür  |  Açıklama
+Name  | Tür  |  Description
 --- | --- | ----
 200 TAMAM |  JobResource  | Tamam
 

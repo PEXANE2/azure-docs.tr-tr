@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 90a014e44c728c1881c1fd3d9e189554ed8f44da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146339"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL veritabanınızı döküm ve geri yükleme kullanarak geçirme
 Bir PostgreSQL veritabanını bir döküm dosyasına ayıklamak ve pg_dump tarafından oluşturulan bir arşiv dosyasından PostgreSQL veritabanını geri yüklemek için [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - Üzerinde erişime ve veritabanına izin vermek için güvenlik duvarı kuralları içeren bir [PostgreSQL sunucusu Için Azure veritabanı](quickstart-create-server-database-portal.md) .
 - [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) ve [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) komut satırı yardımcı programları yüklendi
@@ -42,9 +42,9 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 --No-Owner parametresini eklemek, geri yükleme sırasında oluşturulan tüm nesnelerin,--username ile belirtilen kullanıcıya ait olmasını sağlar. Daha fazla bilgi için bkz. [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html)resmi PostgreSQL belgeleri.
 
 > [!NOTE]
-> PostgreSQL sunucunuz TLS/SSL bağlantıları gerektiriyorsa (PostgreSQL için Azure veritabanı sunucuları için varsayılan olarak açık), pg_restore aracının TLS ile bağlanacağı bir `PGSSLMODE=require` ortam değişkeni ayarlayın. TLS olmadan hata okunmayabilir`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> PostgreSQL sunucunuz TLS/SSL bağlantıları gerektiriyorsa (PostgreSQL için Azure veritabanı sunucuları için varsayılan olarak açık), `PGSSLMODE=require` pg_restore ARACıNıN TLS ile bağlanacağı bir ortam değişkeni ayarlayın. TLS olmadan hata okunmayabilir`FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
-> Windows komut satırında, pg_restore komutunu çalıştırmadan önce komutunu `SET PGSSLMODE=require` çalıştırın. Linux veya bash içinde pg_restore komutunu çalıştırmadan `export PGSSLMODE=require` önce komutunu çalıştırın.
+> Windows komut satırında, `SET PGSSLMODE=require` pg_restore komutunu çalıştırmadan önce komutunu çalıştırın. Linux veya bash içinde `export PGSSLMODE=require` pg_restore komutunu çalıştırmadan önce komutunu çalıştırın.
 >
 
 Bu örnekte, **TestDB. dump** döküm dosyasındaki verileri, **mydemoserver.Postgres.Database.Azure.com**hedef sunucusundaki **mypgsqldb** veritabanına geri yükleyin. 
@@ -61,7 +61,7 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 >
 
 ### <a name="for-the-backup"></a>Yedekleme için
-- Geri yüklemeyi hızlandırmak üzere paralel olarak gerçekleştirebilmek için-FC anahtarıyla yedeklemeyi gerçekleştirin. Örneğin:
+- Geri yüklemeyi hızlandırmak üzere paralel olarak gerçekleştirebilmek için-FC anahtarıyla yedeklemeyi gerçekleştirin. Örnek:
 
     ```
     pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
@@ -72,7 +72,7 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 
 - Varsayılan olarak zaten yapılmalıdır, ancak create INDEX deyimlerinin veri ekleme deyimlerinden sonra olduğunu doğrulamak için döküm dosyasını açın. Böyle değilse, veri eklendikten sonra CREATE INDEX deyimlerini taşıyın.
 
-- Restore ile paralel hale getirmek için-FC ve-j *#* anahtarlarıyla geri yükleyin. *#*, hedef sunucudaki çekirdekler sayısıdır. Etkiyi görmek için hedef sunucunun *#* çekirdek sayısının iki katı olarak ayarlamayı da deneyebilirsiniz. Örneğin:
+- Restore ile paralel hale getirmek için-FC ve-j anahtarlarıyla geri yükleyin *#* . *#*, hedef sunucudaki çekirdekler sayısıdır. *#* Etkiyi görmek için hedef sunucunun çekirdek sayısının iki katı olarak ayarlamayı da deneyebilirsiniz. Örnek:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
@@ -83,7 +83,7 @@ Mevcut PostgreSQL veritabanınızı PostgreSQL için Azure veritabanı 'na geçi
 - PostgreSQL için Azure veritabanı sunucusunda, geri yüklemeden önce aşağıdakileri yapmayı deneyin:
     - Geçiş sırasında bu istatistiklere gerek duyulmadığından, sorgu performansını izlemeyi devre dışı bırakın. Bunu, pg_stat_statements. Track, pg_qs. query_capture_mode ve pgms_wait_sampling. query_capture_mode 'yi NONE olarak ayarlayarak yapabilirsiniz.
 
-    - Geçişi hızlandırmak için 32 sanal çekirdek bellek için Iyileştirilmiş gibi yüksek bir işlem ve yüksek bellek SKU 'su kullanın. Geri yükleme tamamlandıktan sonra tercih ettiğiniz SKU 'nuzu kolayca azaltabilirsiniz. SKU 'nun daha yüksek olması, pg_restore komutunda karşılık gelen `-j` parametreyi artırarak elde edebilirsiniz. 
+    - Geçişi hızlandırmak için 32 sanal çekirdek bellek için Iyileştirilmiş gibi yüksek bir işlem ve yüksek bellek SKU 'su kullanın. Geri yükleme tamamlandıktan sonra tercih ettiğiniz SKU 'nuzu kolayca azaltabilirsiniz. SKU 'nun daha yüksek olması, pg_restore komutunda karşılık gelen parametreyi artırarak elde edebilirsiniz `-j` . 
 
     - Hedef sunucuda daha fazla ıOPS, geri yükleme performansını iyileştirebilir. Sunucunun depolama boyutunu artırarak daha fazla ıOPS sağlayabilirsiniz. Bu ayar geri alınamaz, ancak daha yüksek bir ıOPS 'nin gelecekte gerçek iş yükünüzün avantajına sahip olup olmadığını düşünün.
 

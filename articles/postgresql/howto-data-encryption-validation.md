@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 4672a92ceba5dc52c717f76a705d0fa508ab41fd
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82515475"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı için veri şifreleme doğrulanıyor
@@ -23,7 +23,7 @@ Bu makale, PostgreSQL için Azure veritabanı 'nda müşteri tarafından yöneti
 
 1. Müşterinin anahtarının şifreleme için kullanıldığını doğrulamak istiyorsanız aşağıdaki adımları izleyin:
 
-    * Azure Portal **Azure Key Vault** -> **anahtarlarına** gidin
+    * Azure Portal **Azure Key Vault**  ->  **anahtarlarına** gidin
     * Sunucu şifrelemesi için kullanılan anahtarı seçin.
     * **Etkin** anahtarın durumunu **Hayır**olarak ayarlayın.
   

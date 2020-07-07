@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144349"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps iletileri gönderme, alma ve toplu işleme
@@ -29,7 +29,7 @@ ms.locfileid: "82144349"
 
 Batch alıcılarınızın ve toplu iş göndericisinin aynı Azure aboneliğini *ve* Azure bölgesini paylaştığından emin olun. Böyle bir işlem yoksa, Batch sender 'ı bir diğeri tarafından görülemeyen için oluşturduğunuzda Batch alıcısını seçemezsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı ile başlayabilirsiniz](https://azure.microsoft.com/free/).
 Ya da [bir Kullandıkça Öde aboneliğine kaydolun](https://azure.microsoft.com/pricing/purchase-options/).
@@ -64,7 +64,7 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
    | **Yayın ölçütleri** | Yalnızca **satır içi** Batch modu için geçerlidir ve her toplu işi işlemeden önce yerine getirme ölçütlerini seçer: <p>- **İleti sayısı tabanlı**: Batch tarafından toplanan ileti sayısına göre toplu işi serbest bırakın. <br>- **Boyut tabanlı**: toplu işi, bu toplu işlem tarafından toplanan tüm iletiler için bayt cinsinden toplam boyuta göre serbest bırakın. <br>- **Zamanlama**: toplu işi, bir Aralık ve Sıklık belirten bir yinelenme zamanlaması temelinde serbest bırakın. Gelişmiş seçeneklerde Ayrıca bir saat dilimi seçebilir ve bir başlangıç tarihi ve saati sağlayabilirsiniz. <br>- **Tümünü Seç**: belirtilen tüm ölçütleri kullan. | 
    | **İleti sayısı** | Toplu işte toplanacak ileti sayısı (örneğin, 10 mesaj). Bir toplu işlemin sınırı 8.000 iletilerdir. | 
    | **Toplu iş boyutu** | Toplu işte toplanacak bayt cinsinden toplam boyut (örneğin, 10 MB). Bir toplu işlemin boyut sınırı 80 MB 'tır. | 
-   | **Zamanlama** | Toplu yayınlar arasındaki Aralık ve sıklık (örneğin, 10 dakika). Minimum yinelenme 60 saniye veya 1 dakikadır. Kesirli dakikalar etkin bir şekilde 1 dakikaya yuvarlanır. Bir saat dilimi veya başlangıç tarihi ve saati belirtmek için **Gelişmiş seçenekleri göster**' i seçin. | 
+   | **Zamanla** | Toplu yayınlar arasındaki Aralık ve sıklık (örneğin, 10 dakika). Minimum yinelenme 60 saniye veya 1 dakikadır. Kesirli dakikalar etkin bir şekilde 1 dakikaya yuvarlanır. Bir saat dilimi veya başlangıç tarihi ve saati belirtmek için **Gelişmiş seçenekleri göster**' i seçin. | 
    ||| 
 
    > [!NOTE]
@@ -85,11 +85,11 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
    2. Arama kutusuna filtreniz olarak "e-posta gönder" yazın.
    E-posta sağlayıcınıza bağlı olarak bir e-posta Bağlayıcısı seçin.
 
-      Örneğin, @outlook.com veya @hotmail.comgibi bir kişisel hesabınız varsa, Outlook.com bağlayıcısını seçin. Bu örnek Office 365 Outlook bağlayıcısını kullanır.
+      Örneğin, veya gibi bir kişisel hesabınız varsa, @outlook.com @hotmail.com Outlook.com bağlayıcısını seçin. Bu örnek Office 365 Outlook bağlayıcısını kullanır.
 
-   3. Şu eylemi seçin: **e-posta <e-posta *sağlayıcısı* > gönder**
+   3. Şu eylemi seçin: **e-posta <e-posta *sağlayıcısı* > Gönder**
 
-      Örneğin:
+      Örnek:
 
       ![E-posta sağlayıcınız için "e-posta gönder" eylemini seçin](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 
@@ -180,7 +180,7 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
 
    2. Dinamik içerik listesi göründüğünde **ifade**' ı seçin. 
 
-   3. İfadeyi `utcnow()`girip **Tamam**' ı seçin. 
+   3. İfadeyi girip `utcnow()` **Tamam**' ı seçin. 
 
       !["Ileti Içeriği" içinde "Ifade" i seçin, "UtcNow ()" yazın ve "Tamam" ı seçin.](./media/logic-apps-batch-process-send-receive-messages/batch-sender-details.png)
 
@@ -198,7 +198,7 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
 
    2. Dinamik içerik listesinde **İfade**’yi seçin.
    
-   3. İfadeyi `rand(1,6)`girip **Tamam**' ı seçin.
+   3. İfadeyi girip `rand(1,6)` **Tamam**' ı seçin.
 
       ![Hedef Batch için bir bölüm ayarlama](./media/logic-apps-batch-process-send-receive-messages/batch-sender-partition-advanced-options.png)
 

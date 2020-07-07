@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: c289892246cfce3ffac3f668577073a2af92511f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509559"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Ayıklama, dönüştürme ve yükleme (ETL) aracı olarak Apache Hive kullanma
@@ -75,7 +75,7 @@ Hive kullanarak verileri farklı türlerde hedeflere aktarabilirsiniz:
 * Verilerin belirli biçimlerde işlenmesini gerektiren uygulamalar veya hizmetler veya belirli bilgi yapısı türlerini içeren dosyalar.
 * Azure Cosmos DB gibi bir JSON belge deposu.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 ETL modeli genellikle şunları yapmak istediğinizde kullanılır:
 

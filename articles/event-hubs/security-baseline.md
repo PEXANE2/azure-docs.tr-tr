@@ -8,10 +8,10 @@ ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: c60c1d33954b5e12038fd66787225f4d0aeba62d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184716"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs için Azure Güvenlik temeli
@@ -38,7 +38,7 @@ Azure Event Hubs ad alanınızı güvenlik duvarları kullanarak da güvenli hal
 
 Azure Event Hubs ile sanal ağ hizmet uç noktalarını kullanma:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-Daha fazla bilgi için bkz. Azure Event Hubs Azure özel bağlantısı ile tümleştirme https://docs.microsoft.com/azure/event-hubs/private-link-service:.
+Daha fazla bilgi için bkz. Azure Event Hubs Azure özel bağlantısı ile tümleştirme: https://docs.microsoft.com/azure/event-hubs/private-link-service .
 
 Event Hubs ad alanı üzerinde sanal ağlar tümleştirmesini ve güvenlik duvarlarını etkinleştirin:https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
 
@@ -335,7 +335,7 @@ Azure Ilkesini kullanma:https://docs.microsoft.com/azure/governance/policy/tutor
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
 
-**Rehberlik**: Microsoft Azure, Azure ACTIVE DIRECTORY (ad) temelinde kaynak ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Event Hubs kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı https:\//eventhubs.Azure.net/. Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama Azure Event Hubs kaynaklarına istek yetkilendirmek için erişim belirtecini kullanabilir.
+**Rehberlik**: Microsoft Azure, Azure ACTIVE DIRECTORY (ad) temelinde kaynak ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Event Hubs kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı https: \/ /eventhubs.Azure.net/. Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama Azure Event Hubs kaynaklarına istek yetkilendirmek için erişim belirtecini kullanabilir.
 
 Event Hubs kaynaklarına erişmek için Azure AD ile bir uygulamanın kimliğini doğrulama:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -1078,7 +1078,7 @@ Iş akışı otomasyonunu yapılandırma ve Logic Apps:https://docs.microsoft.co
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini gerçekleştirin ve 60 gün içinde tüm kritik güvenlik bulgularını düzeltmeye dikkat edin
 
-**Rehberlik**: Penettim testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak Için lütfen Microsoft katılım kurallarını izleyin: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
+**Rehberlik**: Penettim testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak Için lütfen Microsoft katılım kurallarını izleyin: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 .
 Microsoft 'un yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına yönelik kırmızı ekip oluşturma ve canlı site sızma testini yürütmeye yönelik daha fazla bilgi edinebilirsiniz:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Güvenlik Merkezi izleme**: Evet

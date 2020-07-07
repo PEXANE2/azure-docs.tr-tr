@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 601194d3a8cc789c51b8e127001ab2367dceeee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82148211"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux
@@ -102,30 +102,30 @@ SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı
 * Ön uç yapılandırması
   * IP adresi 192.168.14.9
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 620<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 620<strong> &lt; NR &gt; </strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
-  * 32<strong>&lt;NR&gt; </strong> TCP
-  * 36<strong>&lt;NR&gt; </strong> TCP
-  * 39<strong>&lt;NR&gt; </strong> TCP
-  * 81<strong>&lt;NR&gt; </strong> TCP
-  * 5<strong>&lt;NR&gt;</strong>13 TCP
-  * 5<strong>&lt;NR&gt;</strong>14 TCP
-  * 5<strong>&lt;NR&gt;</strong>16 TCP
+  * 32<strong> &lt; NR &gt; </strong> TCP
+  * 36<strong> &lt; NR &gt; </strong> TCP
+  * 39<strong> &lt; NR &gt; </strong> TCP
+  * 81<strong> &lt; NR &gt; </strong> TCP
+  * 5<strong> &lt; NR &gt; </strong>13 TCP
+  * 5<strong> &lt; NR &gt; </strong>14 TCP
+  * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 ### <a name="ers"></a>SÖZCÜKLERI
 
 * Ön uç yapılandırması
   * IP adresi 192.168.14.10
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 621<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 621<strong> &lt; NR &gt; </strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
-  * 32<strong>&lt;NR&gt; </strong> TCP
-  * 33<strong>&lt;NR&gt; </strong> TCP
-  * 5<strong>&lt;NR&gt;</strong>13 TCP
-  * 5<strong>&lt;NR&gt;</strong>14 TCP
-  * 5<strong>&lt;NR&gt;</strong>16 TCP
+  * 32<strong> &lt; NR &gt; </strong> TCP
+  * 33<strong> &lt; NR &gt; </strong> TCP
+  * 5<strong> &lt; NR &gt; </strong>13 TCP
+  * 5<strong> &lt; NR &gt; </strong>14 TCP
+  * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 * Arka uç yapılandırması
   * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
@@ -263,7 +263,7 @@ Bu bölümdeki yönergeler yalnızca NFSv 4.1 protokolüyle Azure NetApp Files b
 1. NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **`defaultv4iddomain.com`** ve eşleme **hiç kimse**olarak ayarlanmıştır.  
 
     > [!IMPORTANT]
-    > VM 'de `/etc/idmapd.conf` NFS etki alanını Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`**. NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak `nobody`görüntülenir.  
+    > VM 'de NFS etki alanını `/etc/idmapd.conf` Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`** . NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak görüntülenir `nobody` .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -275,7 +275,7 @@ Bu bölümdeki yönergeler yalnızca NFSv 4.1 protokolüyle Azure NetApp Files b
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** doğrula `nfs4_disable_idmapping`. **Y**olarak ayarlanmalıdır. Bulunduğu `nfs4_disable_idmapping` dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
+4. **[A]** doğrula `nfs4_disable_idmapping` . **Y**olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -289,7 +289,7 @@ Bu bölümdeki yönergeler yalnızca NFSv 4.1 protokolüyle Azure NetApp Files b
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Parametrenin nasıl değiştirileceği `nfs4_disable_idmapping` hakkında daha fazla bilgi için bkz https://access.redhat.com/solutions/1749883..
+   Parametrenin nasıl değiştirileceği hakkında daha fazla bilgi için `nfs4_disable_idmapping` bkz https://access.redhat.com/solutions/1749883 ..
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker kümesi oluşturma
 
@@ -891,7 +891,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
 
 ## <a name="install-database"></a>Veritabanını yükleme
 
-Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. For a list of supported databases, see [SAP Note 1928533][1928533]. [Red Hat Enterprise Linux Azure VM 'lerinde yüksek kullanılabilirlik SAP HANA][sap-hana-ha].
+Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. [Red Hat Enterprise Linux Azure VM 'Lerinde yüksek kullanılabilirlik SAP HANA][sap-hana-ha] . For a list of supported databases, see [SAP Note 1928533][1928533] .
 
 1. SAP veritabanı örnek yüklemesini çalıştırma
 
@@ -925,7 +925,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
 
    SAP HANA güvenli mağazayı, SAP HANA sistem çoğaltması kurulumunun sanal adını gösterecek şekilde güncelleştirin.
 
-   Girdileri sapsıd>adm olarak \<listelemek için aşağıdaki komutu çalıştırın
+   Girdileri adm olarak listelemek için aşağıdaki komutu çalıştırın \<sapsid>
 
    ```
    hdbuserstore List
@@ -1089,7 +1089,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, tarafından `sapstart`yeniden başlatılır. Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, tarafından yeniden başlatılır `sapstart` . Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00

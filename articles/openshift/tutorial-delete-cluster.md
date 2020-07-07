@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
 ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82232147"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesini silme
@@ -29,13 +29,13 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Az
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure CLı 'yi yerel olarak çalıştırıyorsanız Azure 'da oturum açmak `az login` için öğesini çalıştırın.
+Azure CLı 'yi yerel olarak çalıştırıyorsanız `az login` Azure 'da oturum açmak için öğesini çalıştırın.
 
 ```bash
 az login
 ```
 
-Birden çok aboneliğe erişiminiz varsa, kullanmak istediğiniz abonelikle `az account set -s {subscription ID}` değiştirmeyi `{subscription ID}` çalıştırın.
+Birden çok aboneliğe erişiminiz varsa, `az account set -s {subscription ID}` kullanmak istediğiniz abonelikle değiştirmeyi çalıştırın `{subscription ID}` .
 
 ## <a name="delete-the-cluster"></a>Küme silme
 
@@ -52,7 +52,7 @@ Bu değerleri kullanarak kümenizi silin:
 az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
 ```
 
-Daha sonra kümeyi silmek isteyip istemediğinizi onaylamanız istenir. İle `y`doğruladıktan sonra, kümenin silinmesi birkaç dakika sürer. Komut tamamlandığında, tüm kaynak grubu ve içindeki tüm kaynaklar (küme dahil) silinir.
+Daha sonra kümeyi silmek isteyip istemediğinizi onaylamanız istenir. İle doğruladıktan sonra `y` , kümenin silinmesi birkaç dakika sürer. Komut tamamlandığında, tüm kaynak grubu ve içindeki tüm kaynaklar (küme dahil) silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

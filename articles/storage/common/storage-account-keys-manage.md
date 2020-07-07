@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176642"
 ---
 # <a name="manage-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yönetme
@@ -42,7 +42,7 @@ Depolama hesabı erişim anahtarlarınızı veya Bağlantı dizenizi Azure porta
 
 Hesap erişim anahtarlarınızı PowerShell ile almak için [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) komutunu çağırın.
 
-Aşağıdaki örnek ilk anahtarı alır. İkinci anahtarı almak için yerine kullanın `Value[1]` `Value[0]`. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+Aşağıdaki örnek ilk anahtarı alır. İkinci anahtarı almak için `Value[1]` yerine kullanın `Value[0]` . Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
 
 ```powershell
 $storageAccountKey = `
@@ -108,7 +108,7 @@ Depolama hesabı erişim anahtarlarınızı PowerShell ile döndürmek için:
     ```
 
 1. Yeni birincil erişim tuşunu referans olarak kullanmak için bağlantı dizelerini güncelleştirin.
-1. İkincil erişim tuşunu da aynı şekilde yeniden oluşturun. İkincil anahtarı yeniden oluşturmak için yerine anahtar `key2` adı olarak kullanın `key1`.
+1. İkincil erişim tuşunu da aynı şekilde yeniden oluşturun. İkincil anahtarı yeniden oluşturmak için `key2` yerine anahtar adı olarak kullanın `key1` .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -125,7 +125,7 @@ Depolama hesabı erişim anahtarlarınızı Azure CLı ile döndürmek için:
     ```
 
 1. Yeni birincil erişim tuşunu referans olarak kullanmak için bağlantı dizelerini güncelleştirin.
-1. İkincil erişim tuşunu da aynı şekilde yeniden oluşturun. İkincil anahtarı yeniden oluşturmak için yerine anahtar `key2` adı olarak kullanın `key1`.
+1. İkincil erişim tuşunu da aynı şekilde yeniden oluşturun. İkincil anahtarı yeniden oluşturmak için `key2` yerine anahtar adı olarak kullanın `key1` .
 
 ---
 

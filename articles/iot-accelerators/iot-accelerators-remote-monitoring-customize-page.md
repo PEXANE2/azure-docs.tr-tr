@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187271"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir sayfa ekleme
@@ -24,7 +24,7 @@ Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabi
 
 Diğer nasıl yapılır kılavuzlarında, eklediğiniz sayfaya daha fazla özellik eklemek için bu senaryo genişletilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 
@@ -51,11 +51,11 @@ Web Kullanıcı arabirimine bir sayfa eklemek için, sayfayı tanımlayan kaynak
 
 Başlangıç yapmanız için, **src/izlenecek yol/bileşenler/sayfalar/basicpage** klasörü, basit bir sayfayı tanımlayan dört dosya içerir:
 
-**basicPage. Container. js**
+**basicPage.container.js**
 
 [!code-javascript[Page container source](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.container.js?name=container "Page container source")]
 
-**basicPage. js**
+**basicPage.js**
 
 [!code-javascript[Basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.js?name=page "Basic page")]
 
@@ -63,7 +63,7 @@ Başlangıç yapmanız için, **src/izlenecek yol/bileşenler/sayfalar/basicpage
 
 [!code-javascript[Page styling](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.scss?name=styles "Page styling")]
 
-**basicPage. test. js**
+**basicPage.test.js**
 
 [!code-javascript[Test code for basic page](~/remote-monitoring-webui/src/walkthrough/components/pages/basicPage/basicPage.test.js?name=test "Test code for basic page")]
 
@@ -73,7 +73,7 @@ Yeni bir **src/Components/Pages/example** klasörü oluşturun ve bu dört dosya
 
 Yeni sayfayı Web Kullanıcı arabirimine eklemek için, varolan dosyalarda aşağıdaki değişiklikleri yapın:
 
-1. Yeni sayfa kapsayıcısını **src/Components/Pages/index. js** dosyasına ekleyin:
+1. Yeni sayfa kapsayıcısını **src/Components/Pages/index.js** dosyasına ekleyin:
 
     ```js
     export * from './example/basicPage.container';
@@ -81,7 +81,7 @@ Yeni sayfayı Web Kullanıcı arabirimine eklemek için, varolan dosyalarda aşa
 
 1. Seçim  Yeni sayfa için bir SVG simgesi ekleyin. Daha fazla bilgi için bkz. [WebUI/src/Utilities/Readme. MD](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/utilities/README.md). Varolan bir SVG dosyası kullanabilirsiniz.
 
-1. Sayfa adını, **genel/yerel ayarlar/en/Çeviriler. JSON**çeviri dosyasına ekleyin. Web Kullanıcı arabirimi Uluslararası hale getirme için [i18next](https://www.i18next.com/) kullanır.
+1. Sayfa adını çeviri dosyasına ekleyin, **genel/yerel ayarlar/en/translations.js**. Web Kullanıcı arabirimi Uluslararası hale getirme için [i18next](https://www.i18next.com/) kullanır.
 
     ```json
     "tabs": {
@@ -89,7 +89,7 @@ Yeni sayfayı Web Kullanıcı arabirimine eklemek için, varolan dosyalarda aşa
     },
     ```
 
-1. Üst düzey uygulama sayfasını tanımlayan **src/Components/App. js** dosyasını açın. Yeni sayfayı içeri aktarmalar listesine ekleyin:
+1. Üst düzey uygulama sayfasını tanımlayan **src/Components/app.js** dosyasını açın. Yeni sayfayı içeri aktarmalar listesine ekleyin:
 
     ```javascript
     // Page Components
@@ -99,7 +99,7 @@ Yeni sayfayı Web Kullanıcı arabirimine eklemek için, varolan dosyalarda aşa
     } from './pages';
     ```
 
-1. Aynı dosyada, yeni sayfayı `pagesConfig` diziye ekleyin. Yolun `to` adresini ayarlayın, daha önce eklenen SVG simgesine ve çevirilerine başvurun ve öğesini sayfanın kapsayıcısına ayarlayın `component` :
+1. Aynı dosyada, yeni sayfayı `pagesConfig` diziye ekleyin. `to`Yolun adresini ayarlayın, daha önce eklenen SVG simgesine ve çevirilerine başvurun ve öğesini `component` sayfanın kapsayıcısına ayarlayın:
 
     ```js
     const pagesConfig = [
@@ -115,7 +115,7 @@ Yeni sayfayı Web Kullanıcı arabirimine eklemek için, varolan dosyalarda aşa
     ];
     ```
 
-1. `crumbsConfig` Diziye yeni bir içerik haritaları ekleyin:
+1. Diziye yeni bir içerik haritaları ekleyin `crumbsConfig` :
 
     ```js
     const crumbsConfig = [
@@ -142,7 +142,7 @@ npm install
 npm start
 ```
 
-Önceki komut, Kullanıcı arabirimini ' de `http://localhost:3000/dashboard`yerel olarak çalıştırır.
+Önceki komut, Kullanıcı arabirimini ' de yerel olarak çalıştırır `http://localhost:3000/dashboard` .
 
 Web Kullanıcı arabiriminin yerel örneğinizi Çözüm hızlandırıcının dağıtılan bir örneğine bağlamadan, panoda hatalar görürsünüz. Bu hatalar, yeni sayfanızı test etme yeteneğinizi etkilemez.
 
@@ -154,7 +154,7 @@ Artık, site yerel olarak çalışırken kodu düzenleyebilir ve Web Kullanıcı
 
 1. **Bilgisayar** CLI 'sını kullanarak çözüm hızlandırıcının **temel** bir örneğini dağıtın. Dağıtımınızın adını ve sanal makine için verdiğiniz kimlik bilgilerini bir yere unutmayın. Daha fazla bilgi için bkz. [CLI kullanarak dağıtma](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Çözümünüzde mikro hizmetleri barındıran sanal makineye SSH erişimini etkinleştirmek için Azure portal veya [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Örneğin:
+1. Çözümünüzde mikro hizmetleri barındıran sanal makineye SSH erişimini etkinleştirmek için Azure portal veya [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Örnek:
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -162,7 +162,7 @@ Artık, site yerel olarak çalışırken kodu düzenleyebilir ve Web Kullanıcı
 
     Yalnızca test ve geliştirme sırasında SSH erişimini etkinleştirmeniz gerekir. SSH 'yi etkinleştirirseniz, [mümkün olan en kısa sürede yeniden devre dışı bırakmanız gerekir](../security/fundamentals/network-best-practices.md).
 
-1. Sanal makinenizin adını ve genel IP adresini bulmak için Azure portal veya [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Örneğin:
+1. Sanal makinenizin adını ve genel IP adresini bulmak için Azure portal veya [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) kullanın. Örnek:
 
     ```azurecli
     az resource list --resource-group {your solution name} -o table

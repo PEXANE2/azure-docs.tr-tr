@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 6f68fede0257086cc3a23fe6f7a0a3cc9466ad1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233200"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>DevOps Starter ile Azure Işlevlerine dağıtma
@@ -36,9 +36,9 @@ Bu öğreticide şunları yapacaksınız:
 >* Git 'e değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın
 >* Kaynakları temizleme
 
-Şu anda işlevler için desteklenen çalışma zamanları **.net** ve **Node. js**' dir. Kullanıyoruz. Bu öğreticinin Azure Işlevlerine dağıtılması için NET çalışma zamanı. 
+Şu anda işlevler için desteklenen çalışma zamanları **.net** ve **Node.js**. Kullanıyoruz. Bu öğreticinin Azure Işlevlerine dağıtılması için NET çalışma zamanı. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) aracılığıyla bir ücretsiz edinebilirsiniz
 

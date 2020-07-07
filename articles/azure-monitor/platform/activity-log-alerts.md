@@ -5,13 +5,13 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137714"
 ---
-# <a name="alerts-on-activity-log"></a>Etkinlik günlüğündeki uyarılar
+# <a name="alerts-on-activity-log"></a>Etkinlik günlüğü uyarıları
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -48,7 +48,7 @@ Etkinlik günlüğü uyarıları bazı yaygın seçeneklere sahiptir:
 > [!NOTE]
 > Bir abonelikte 100 ' e kadar uyarı kuralı, tek bir kaynak, kaynak grubundaki tüm kaynaklar (veya) tüm abonelik düzeyinde bir kapsam etkinliği için oluşturulabilir.
 
-Etkinlik günlüğü uyarısı etkinleştirildiğinde, eylemler veya bildirimler oluşturmak için bir eylem grubu kullanır. Eylem grubu, e-posta adresleri, Web kancası URL 'Leri veya SMS telefon numaraları gibi yeniden kullanılabilir bir bildirim alıcıları kümesidir. Alıcıların bildirim kanallarınızı merkezileştirmek ve gruplamak için birden çok uyarıdan başvurulabilirler. Etkinlik günlüğü uyarısını tanımlarken iki seçeneğiniz vardır. Şunları yapabilirsiniz:
+Etkinlik günlüğü uyarısı etkinleştirildiğinde, eylemler veya bildirimler oluşturmak için bir eylem grubu kullanır. Eylem grubu, e-posta adresleri, Web kancası URL 'Leri veya SMS telefon numaraları gibi yeniden kullanılabilir bir bildirim alıcıları kümesidir. Alıcıların bildirim kanallarınızı merkezileştirmek ve gruplamak için birden çok uyarıdan başvurulabilirler. Etkinlik günlüğü uyarısını tanımlarken iki seçeneğiniz vardır. Seçenekleriniz şunlardır:
 
 * Etkinlik günlüğü uyarısında mevcut bir eylem grubunu kullanın.
 * Yeni bir eylem grubu oluşturun.

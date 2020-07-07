@@ -4,10 +4,10 @@ description: PowerShell kullanarak Azure Backup Key Vault anahtarı ve gizli ana
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186830"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup kullanarak şifreli VM’ler için Key Vault anahtarını ve parolasını geri yükleme
@@ -16,7 +16,7 @@ Bu makalede, anahtar ve gizli anahtarı anahtar kasasında yoksa, şifrelenmiş 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Yedekleme şifreli VM 'ler** -şifrelenmiş Azure vm 'ler Azure Backup kullanılarak yedeklendi. Şifrelenmiş Azure sanal makinelerini yedekleme hakkında ayrıntılı bilgi için [PowerShell 'i kullanarak Azure VM 'lerini yedekleme ve geri yükleme makalesini yönetme](backup-azure-vms-automation.md) makalesine bakın.
 * **Azure Key Vault yapılandırma** – anahtarların ve parolaların geri yüklenmesi gereken anahtar kasasının zaten mevcut olduğundan emin olun. Anahtar Kasası yönetimi hakkında ayrıntılı bilgi [edinmek için Azure Key Vault kullanmaya başlama](../key-vault/key-vault-get-started.md) makalesine başvurun.

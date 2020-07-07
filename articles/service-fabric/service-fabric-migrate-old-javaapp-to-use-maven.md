@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204296"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Eski Java Service Fabric uygulamanızı Maven’dan Java kitaplıklarını alacak şekilde güncelleştirme
 Service Fabric Java ikilileri, Service Fabric Java SDK 'dan Maven barındırmaya taşınmıştır. **Mavencentral** kullanarak en son Java bağımlılıklarını Service Fabric getirebilirsiniz. Bu kılavuz, Maven tabanlı yapıyla uyumlu olacak şekilde Service Fabric Java SDK 'Sı için oluşturulan mevcut Java uygulamalarını güncelleştirmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. İlk olarak, var olan Java SDK 'sını kaldırın.
 

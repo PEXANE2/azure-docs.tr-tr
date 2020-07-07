@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187254"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>HDInsight 'ta Azure Data Lake Storage 1. genel bakış
@@ -73,7 +73,7 @@ Data Lake Storage 1., Hadoop ortamında bulunan açık kaynaklı bileşenlerle u
 
 ## <a name="data-lake-storage-gen1-file-system-adl"></a>Data Lake Storage 1. dosya sistemi (adl://)
 
-Hadoop ortamlarında, yeni dosya sistemi, AzureDataLakeFilesystem (adl://) aracılığıyla Data Lake Storage 1. erişebilirsiniz. Kullanan `adl://` uygulamaların ve hizmetlerin performansı, şu anda webbir 'da kullanılamayan yollarla iyileştirilebilir. Sonuç olarak, önerilen adl://kullanarak en iyi performansı elde etmek için esneklik elde edersiniz. Ya da Webbir API 'yi doğrudan kullanmaya devam ederek mevcut kodu saklayın. Azure HDInsight, Data Lake Storage 1. en iyi performansı sağlamak için AzureDataLakeFilesystem 'in tam avantajlarından yararlanır.
+Hadoop ortamlarında, yeni dosya sistemi, AzureDataLakeFilesystem (adl://) aracılığıyla Data Lake Storage 1. erişebilirsiniz. Kullanan uygulamaların ve hizmetlerin performansı, `adl://` Şu anda webbir 'da kullanılamayan yollarla iyileştirilebilir. Sonuç olarak, önerilen adl://kullanarak en iyi performansı elde etmek için esneklik elde edersiniz. Ya da Webbir API 'yi doğrudan kullanmaya devam ederek mevcut kodu saklayın. Azure HDInsight, Data Lake Storage 1. en iyi performansı sağlamak için AzureDataLakeFilesystem 'in tam avantajlarından yararlanır.
 
 Aşağıdaki URI 'yi kullanarak Data Lake Storage 1. verilerinize erişin:
 

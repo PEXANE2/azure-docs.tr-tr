@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 7aa7dea65df507c0bb35a30bf2a68049a7625137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181792"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı 'na genel bakış (MSAL)
@@ -51,7 +51,7 @@ MSAL, aşağıdakiler dahil birçok uygulama senaryosunda kullanılabilir:
 | Kitaplık | Desteklenen platformlar ve çerçeveler|
 | --- | --- |
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Evrensel Windows Platformu|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS, Ember. js veya Durandal. js gibi JavaScript/TypeScript çerçeveleri|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS, Ember.js veya Durandal.js gibi JavaScript/TypeScript çerçeveleri|
 | [Android için MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [iOS ve macOS için MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS ve macOS|
 | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows, macOS, Linux|
@@ -61,4 +61,4 @@ MSAL, aşağıdakiler dahil birçok uygulama senaryosunda kullanılabilir:
 
 Active Directory Authentication Library (ADAL), MSAL Microsoft Identity platform (v 2.0) uç noktasıyla tümleştirilebilen geliştiriciler için Azure AD (v 1.0) uç noktası ile tümleşir. V 1.0 uç noktası, kişisel hesapları değil, iş hesaplarını destekler. V 2.0 uç noktası, Microsoft kişisel hesaplarının ve iş hesaplarının tek bir kimlik doğrulama sisteminde bir birleşme noktasıdır. Ayrıca, MSAL ile Azure AD B2C için kimlik doğrulamaları da alabilirsiniz.
 
-Daha ayrıntılı bilgi için [adal.net adresinden msal.net 'e geçme](msal-net-migration.md) ve [adal. js ' den msal. js ' ye](msal-compare-msal-js-and-adal-js.md)geçme hakkında bilgi edinin.
+Daha ayrıntılı bilgi için, [adal.net adresinden msal.net 'e geçme](msal-net-migration.md) ve [ADAL.jsMSAL.js geçiş ](msal-compare-msal-js-and-adal-js.md)hakkında bilgi edinin.

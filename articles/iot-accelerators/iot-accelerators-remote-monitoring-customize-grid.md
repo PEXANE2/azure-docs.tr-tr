@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186297"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel kılavuz ekleme
@@ -24,7 +24,7 @@ Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabi
 
 Bu makaledeki örnek kılavuz, hizmetin [Uzaktan izleme çözümü Hızlandırıcısı Web UI nasıl yapılır makalesine özel bir hizmet eklemesini](iot-accelerators-remote-monitoring-customize-service.md) sağlayan hizmetten alınan verileri gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 
@@ -46,11 +46,11 @@ Web Kullanıcı arabirimine kılavuz eklemek için, Kılavuzu tanımlayan kaynak
 
 Başlangıç yapmanız için, **src/izlenecek yol/bileşenler/sayfalar/pageWithGrid/examplegrid** klasörü bir kılavuz tanımlayan dosyaları içerir:
 
-**exampleGrid. js**
+**exampleGrid.js**
 
 [!code-javascript[Example grid](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGrid.js?name=grid "Example grid")]
 
-**exampleGridConfig. js**
+**exampleGridConfig.js**
 
 [!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
 
@@ -58,7 +58,7 @@ Src/ **izlenecek yol/bileşenler/sayfalar/pageWithGrid/exampleGrid** klasörün�
 
 ### <a name="add-the-grid-to-the-page"></a>Kılavuza kılavuza ekleme
 
-Hizmet tanımlarını içeri aktarmak için **src/Components/Pages/example/basicPage. Container. js** öğesini aşağıdaki şekilde değiştirin:
+**Kaynak/bileşenler/sayfalar/örnek/basicPage.container.js** hizmet tanımlarını içeri aktarmak için aşağıdaki gibi değiştirin:
 
 ```js
 import { connect } from 'react-redux';
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => ({
 export const BasicPageContainer = translate()(connect(mapStateToProps, mapDispatchToProps)(BasicPage));
 ```
 
-Kılavuza eklemek için **src/Components/Pages/example/basicPage. js ' i** aşağıdaki gibi değiştirin:
+Kılavuza eklemek için **src/Components/Pages/example/basicPage.js** aşağıdaki gibi değiştirin:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -144,7 +144,7 @@ export class BasicPage extends Component {
 }
 ```
 
-Testleri güncelleştirmek için **src/Components/Pages/example/basicPage. test. js ' i** aşağıdaki şekilde değiştirin:
+Testleri güncelleştirmek için **src/Components/Pages/example/basicPage.test.js** aşağıdaki gibi değiştirin:
 
 ```js
 // Copyright (c) Microsoft. All rights reserved.
@@ -182,7 +182,7 @@ Web Kullanıcı arabirimi zaten yerel olarak çalışmıyorsa, deponun yerel kop
 npm start
 ```
 
-Önceki komut, Kullanıcı arabirimini ' de `http://localhost:3000/dashboard`yerel olarak çalıştırır. Hizmetten gelen ızgara görüntüleme verilerini görmek için **örnek** sayfasına gidin.
+Önceki komut, Kullanıcı arabirimini ' de yerel olarak çalıştırır `http://localhost:3000/dashboard` . Hizmetten gelen ızgara görüntüleme verilerini görmek için **örnek** sayfasına gidin.
 
 ## <a name="select-rows"></a>Satırları Seç
 
@@ -192,7 +192,7 @@ Kullanıcının kılavuzda satırları seçmesini sağlamak için iki seçenek v
 
 Bir kullanıcının aynı anda birden çok satır üzerinde işlem yapması gerekiyorsa, satırlarda onay kutularını kullanın:
 
-1. Kılavuza sunulan **Columndefs** öğesine bir **checkboxcolumn** ekleyerek satırların sabit seçimini etkinleştirin. **Checkboxcolumn** , **/src/Components/Shared/pcsGrid/pcsGrid.js**içinde tanımlanmıştır:
+1. Kılavuza sunulan **Columndefs** öğesine bir **checkboxcolumn** ekleyerek satırların sabit seçimini etkinleştirin. **Checkboxcolumn** , **/src/Components/Shared/pcsGrid/pcsGrid.js**tanımlanmıştır:
 
     ```js
     this.columnDefs = [
@@ -247,7 +247,7 @@ Bir kullanıcının aynı anda birden çok satır üzerinde işlem yapması gere
 
 Kullanıcının yalnızca tek bir satırda işlem yapması gerekiyorsa, **Columndefs**içindeki bir veya daha fazla sütun için bir geçici seçme bağlantısı yapılandırın.
 
-1. **Örnek Gridconfig. js**' de, bir **Columndef**Için **Cellrendererframework** olarak **softselectlinkrenderer** ekleyin.
+1. **exampleGridConfig.js**, bir **Columndef**Için **Cellrendererframework** olarak **softselectlinkrenderer** ekleyin.
 
     ```js
     export const exampleColumnDefs = {

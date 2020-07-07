@@ -4,10 +4,10 @@ description: C# ve .NET Core 2,0 kullanarak Service Fabric uygulaması oluşturm
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193658"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>İlk Azure Service Fabric uygulamanızı oluşturma
@@ -19,7 +19,7 @@ ms.locfileid: "82193658"
 
 Service Fabric, Linux üzerinde hem .NET Core hem de Java dillerinde hizmet oluşturmaya yönelik SDK’lar sağlar. Bu öğreticide, .NET Core 2.0 üzerinde C# kullanarak Linux için bir uygulama ve hizmet oluşturmayı öğreneceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce [Linux geliştirme ortamınızı ayarladığınızdan](service-fabric-get-started-linux.md) emin olun. Mac OS X kullanıyorsanız, [Vagrant kullanarak bir sanal makinede Linux one-box ortamı ayarlayabilirsiniz](service-fabric-get-started-mac.md).
 
 [SERVICE fabrıc CLI](service-fabric-cli.md) 'yi de yüklemek isteyeceksiniz

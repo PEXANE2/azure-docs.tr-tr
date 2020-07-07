@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 713afb7b277fba65dc4c860e8bdd6b62b4e0147d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204955"
 ---
-# <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure AD ile güvenli kimliklere hızlı bir şekilde yanıt verin
+# <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure Active Directory ile güvenli kimliklere hızla yanıt verme
 
 Özellikle hızla yanıt vermeniz ve birçok hizmete hızlı bir şekilde erişim sağlamanız gerektiğinde, günümüzün dünyanın her yerindeki çalışanlarınızı güvenli hale getirmeye çalışırken çok daha fazla görünebilir. Bu makale, sahip olduğunuz lisans türüne göre Azure AD özelliklerinin hangi sırada dağıtılacağını belirlemenize ve önceliklendirmenize yardımcı olan tüm eylemlerin kısa bir listesini sağlamak için tasarlanmıştır. Azure AD birçok özellik sunar ve kimlikleriniz için pek çok güvenlik katmanı sağlar ve hangi özelliğin ilgili olduğunu, bazen önemli bir şekilde kullanılabilir. Birçok kuruluş zaten bulutta veya hızla buluta taşınıyorsa, bu belge, kimlik bilgilerinizi birincil göz önünde bulundurarak güvenli bir şekilde dağıtmanıza olanak tanımak için tasarlanmıştır. 
 
@@ -34,7 +34,7 @@ Bu denetim listesi, aşağıdaki adımları izleyerek kuruluşunuzu hemen koruma
 - Bulut zekası kullanın.
 - Son Kullanıcı self servis hizmetini etkinleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzda yalnızca bulutunuzun veya karma kimliklerinin Azure AD 'de zaten kurulduğu varsayılmaktadır. Kimlik türünü seçme konusunda yardım için, [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin](../hybrid/choose-ad-authn.md) . 
 

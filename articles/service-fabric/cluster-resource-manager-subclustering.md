@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
 ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82183134"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>Alt kümelenmiş ölçümlerin dengelenmesi
@@ -103,7 +103,7 @@ Alt kümeleme hakkında Kaynak Yöneticisi davranışı aşağıdaki yapılandı
 * SubclusteringEnabled-parametresi, Yük Dengeleme yapılırken Kaynak Yöneticisi hesaba alt kümelendirmeyi alıp almayacağını belirler. Bu parametre kapatılmışsa, Kaynak Yöneticisi alt kümelendirmeyi yoksayacak ve küresel düzeyde en iyi dengeyi elde etmek için denenecek. Bu parametrenin varsayılan değeri false 'dur.
 * SubclusteringReportingPolicy-Kaynak Yöneticisi hiyerarşik ve kısmi çakışma alt Kümelemesi için nasıl durum raporları yayacağını belirler. Sıfır değeri, alt kümeleme hakkındaki sistem durumu raporlarının kapalı olduğu anlamına gelir, "1", sistem durumu raporlarının, alt kümeleme durumları ve "2" değeri "Tamam" durum raporları üretecektir. Bu parametre için varsayılan değer "1" değeridir.
 
-ClusterManifest. xml:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -112,7 +112,7 @@ ClusterManifest. xml:
         </Section>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
+Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template.jsClusterConfig.jsaracılığıyla:
 
 ```json
 "fabricSettings": [

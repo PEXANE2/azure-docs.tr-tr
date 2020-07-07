@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176830"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure portal içerik yayımlama  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [REST](media-services-rest-deliver-streaming-content.md)
+> * [KALANı](media-services-rest-deliver-streaming-content.md)
 > 
 > 
 
@@ -70,7 +70,7 @@ Bir bulucunun sona erme tarihini güncelleştirmek için, kullanımı bir [REST 
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Bir varlık yayımlamak için portal kullanmak üzere
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayar** > **varlıkları**' nı seçin. Yayımlamak istediğiniz varlığı seçin.
+2. **Ayar**  >  **varlıkları**' nı seçin. Yayımlamak istediğiniz varlığı seçin.
 3. **Yayımla** düğmesini seçin.
 4. Bulucu türünü seçin.
 5. **Add (Ekle)** seçeneğini belirleyin.
@@ -92,7 +92,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 * Azure portal medya oynatıcı varsayılan akış uç noktasından oynatılır. Varsayılan olmayan bir akış uç noktasından oynatmak istiyorsanız, URL'yi seçip kopyalayın ve başka bir oynatıcıya yapıştırın. Örneğin [Azure Media Player](https://aka.ms/azuremediaplayer) üzerinde videonuzu test edebilirsiniz.
 * Akış olduğunuz akış uç noktasının çalışıyor olması gerekir.  
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar

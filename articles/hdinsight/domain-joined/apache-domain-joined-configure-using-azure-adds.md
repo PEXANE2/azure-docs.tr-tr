@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seodec18,seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: 2b4756990162817087b0904a764b97526c3545d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186660"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight 'ta Azure Active Directory Domain Services olan Kurumsal Güvenlik Paketi konfigürasyonları
@@ -43,7 +43,7 @@ Yalnızca HDInsight kümelerine erişmesi gereken grupları eşitlemeyi tercih e
 
 Güvenli LDAP 'yi etkinleştirirken etki alanı adını konu adına koyun. Ve sertifikadaki Konu diğer adı. Etki alanı adınız *contoso100.onmicrosoft.com*ise, sertifikanın konu adı ve konu diğer adında tam adın bulunduğundan emin olun. Daha fazla bilgi için bkz. [Azure AD DS yönetilen etki alanı için GÜVENLI LDAP yapılandırma](../../active-directory-domain-services/tutorial-configure-ldaps.md).
 
-Aşağıdaki örnek, kendinden imzalı bir sertifika oluşturur. *Contoso100.onmicrosoft.com* etki alanı adı hem `Subject` (konu adı) hem `DnsName` de (konu alternatif adı).
+Aşağıdaki örnek, kendinden imzalı bir sertifika oluşturur. *Contoso100.onmicrosoft.com* etki alanı adı hem `Subject` (konu adı) hem de `DnsName` (konu alternatif adı).
 
 ```powershell
 $lifetime=Get-Date
@@ -64,13 +64,13 @@ Güvenli etki alanı Hizmetleri işlemlerini basitleştirmek için *Kullanıcı 
 
 Kurumsal Güvenlik Paketi, OU 'Lar ve hizmet sorumluları oluşturma gibi bazı etki alanı Hizmetleri işlemleri, HDInsight için de gereklidir. Herhangi bir abonelikte Yönetilen kimlikler oluşturabilirsiniz. Genel olarak yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md). Yönetilen kimliklerin Azure HDInsight 'ta nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure HDInsight 'Ta Yönetilen kimlikler](../hdinsight-managed-identities.md).
 
-ESP kümelerini ayarlamak için, henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. Bkz [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)..
+ESP kümelerini ayarlamak için, henüz bir tane yoksa, Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. Bkz [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) ..
 
 Ardından, **HDInsight etki alanı Hizmetleri katılımcısı** rolünü Azure AD DS **erişim denetimindeki** yönetilen kimliğe atayın. Bu rol atamasını yapmak için Azure AD DS yönetici ayrıcalıklarına sahip olmanız gerekir.
 
 ![Azure Active Directory Domain Services Access Control](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
-**HDInsight etki alanı Hizmetleri katılımcısı** rolünü atamak, bu kimliğin Azure AD DS etki alanında`on behalf of`etki alanı Hizmetleri işlemlerine uygun () erişimi olmasını sağlar. Bu işlemler OU 'Ları oluşturmayı ve silmeyi içerir.
+**HDInsight etki alanı Hizmetleri katılımcısı** rolünü atamak, bu kimliğin `on behalf of` Azure AD DS etki alanında etki alanı Hizmetleri işlemlerine uygun () erişimi olmasını sağlar. Bu işlemler OU 'Ları oluşturmayı ve silmeyi içerir.
 
 Yönetilen kimliğe rol verildiğinde Azure AD DS Yöneticisi kendisini kimin kullandığını yönetir. İlk olarak, yönetici portalda yönetilen kimliği seçer. Daha sonra **genel bakış**altında **Access Control (IAM)** öğesini seçer. Yönetici, **yönetilen kimlik operatörü** rolünü, ESP kümeleri oluşturmak isteyen kullanıcılara veya gruplara atar.
 
@@ -93,13 +93,13 @@ Azure AD DS sanal ağındaki DNS sunucularının yapılandırmasını değiştir
 
 Aynı Azure sanal ağına hem Azure AD DS örneğini hem de HDInsight kümesini yerleştirmek daha kolay. Farklı sanal ağlar kullanmayı planlıyorsanız, etki alanı denetleyicisinin HDInsight VM 'lerine görebilmesi için bu sanal ağları eşdüzey yapmanız gerekir. Daha fazla bilgi için bkz. [sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md).
 
-Sanal ağlar eşlendikten sonra, HDInsight sanal ağını özel bir DNS sunucusu kullanacak şekilde yapılandırın. Ve Azure AD DS özel IP 'lerini DNS sunucusu adresleri olarak girin. Her iki sanal ağ da aynı DNS sunucularını kullandıklarında, özel etki alanı adınız doğru IP 'ye çözümlenir ve HDInsight 'tan erişilecektir. Örneğin, etki alanı adınız ise `contoso.com`, bu adımdan sonra, `ping contoso.com` doğru Azure AD DS IP 'ye çözümlenmelidir.
+Sanal ağlar eşlendikten sonra, HDInsight sanal ağını özel bir DNS sunucusu kullanacak şekilde yapılandırın. Ve Azure AD DS özel IP 'lerini DNS sunucusu adresleri olarak girin. Her iki sanal ağ da aynı DNS sunucularını kullandıklarında, özel etki alanı adınız doğru IP 'ye çözümlenir ve HDInsight 'tan erişilecektir. Örneğin, etki alanı adınız ise `contoso.com` , bu adımdan sonra, `ping contoso.com` doğru Azure AD DS IP 'ye çözümlenmelidir.
 
 ![Eşlenmiş bir sanal ağ için özel DNS sunucuları yapılandırma](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
 HDInsight alt ağınızda Ağ güvenlik grubu (NSG) kuralları kullanıyorsanız, hem gelen hem de giden trafik için [gerekli IP 'lere](../hdinsight-management-ip-addresses.md) izin vermeniz gerekir.
 
-Ağ kurulumunuzu test etmek için HDInsight sanal ağına/alt ağına bir Windows sanal makinesi ekleyin ve etki alanı adına ping gönderin. (Bir IP 'ye çözümlenmelidir.) Azure AD DS etki alanına erişmek için **Ldp. exe** ' yi çalıştırın. Ardından, istemci ve sunucu arasında tüm gerekli RPC çağrılarının başarılı olduğunu onaylamak için bu Windows VM 'sini etki alanına katın.
+Ağ kurulumunuzu test etmek için HDInsight sanal ağına/alt ağına bir Windows sanal makinesi ekleyin ve etki alanı adına ping gönderin. (Bir IP 'ye çözümlenmelidir.) Azure AD DS etki alanına erişmek için **ldp.exe** çalıştırın. Ardından, istemci ve sunucu arasında tüm gerekli RPC çağrılarının başarılı olduğunu onaylamak için bu Windows VM 'sini etki alanına katın.
 
 Depolama hesabınıza ağ erişimini onaylamak için **nslookup** 'ı kullanın. Ya da kullanabileceğiniz herhangi bir dış veritabanı (örneğin, dış Hive meta veri deposu veya Ranger DB). Bir NSG Azure AD DS ' i güvenlik altına alıyorsa, Azure AD DS alt ağının NSG kurallarında [gerekli bağlantı noktalarına](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) izin verildiğinden emin olun. Bu Windows VM 'ye katılan etki alanı başarılı olursa, sonraki adıma devam edebilir ve ESP kümeleri oluşturabilirsiniz.
 
@@ -124,7 +124,7 @@ ESP ile bir HDInsight kümesi oluşturduğunuzda, aşağıdaki parametreleri sa�
 
 * **Küme erişim grupları**: kullanıcılarını eşitlemek istediğiniz ve kümeye erişebilen güvenlik grupları Azure AD DS 'da kullanılabilir olmalıdır. HiveUsers grubu bir örnektir. Daha fazla bilgi için bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* **LDAPS URL 'si**: bir örnektir `ldaps://contoso.com:636`.
+* **LDAPS URL 'si**: bir örnektir `ldaps://contoso.com:636` .
 
 Oluşturduğunuz yönetilen kimlik, yeni bir küme oluştururken, **Kullanıcı tarafından atanan yönetilen kimlik** listesinden seçilebilir.
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185838"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı için veri şifreleme
@@ -132,7 +132,7 @@ Bu Azure Resource Manager şablonu, MySQL için Azure veritabanı sunucusu oluş
 ### <a name="for-an-existing-server"></a>Var olan bir sunucu için
 Ayrıca, mevcut MySQL için Azure veritabanı sunucularınızda veri şifrelemeyi etkinleştirmek üzere Azure Resource Manager şablonları kullanabilirsiniz.
 
-* Daha önce bir `Uri` Özellik altında kopyaladığınız Azure Key Vault ANAHTARıNıN kaynak kimliğini Özellikler nesnesinde geçirin.
+* Daha önce bir özellik altında kopyaladığınız Azure Key Vault anahtarının kaynak KIMLIĞINI `Uri` Özellikler nesnesinde geçirin.
 
 * API sürümü olarak *2020-01-01-Preview* kullanın.
 

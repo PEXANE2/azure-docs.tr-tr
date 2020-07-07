@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195137"
 ---
 # <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>HDInsight 'ta Azure Data Lake Storage 2. genel bakış
@@ -63,7 +63,7 @@ URI şeması, SSL şifreli erişim sağlar.
 
 `<PATH>`dosya ya da dizin \ yol adı.
 
-`<FILE_SYSTEM_NAME>` Ve `<ACCOUNT_NAME>` değerleri belirtilmemişse, varsayılan dosya sistemi kullanılır. Varsayılan dosya sistemindeki dosyalar için göreli bir yol veya mutlak bir yol kullanın. Örneğin, HDInsight kümeleriyle `hadoop-mapreduce-examples.jar` birlikte gelen dosyaya aşağıdaki yollardan biri kullanılarak başvurulabilir:
+`<FILE_SYSTEM_NAME>`Ve değerleri `<ACCOUNT_NAME>` belirtilmemişse, varsayılan dosya sistemi kullanılır. Varsayılan dosya sistemindeki dosyalar için göreli bir yol veya mutlak bir yol kullanın. Örneğin, `hadoop-mapreduce-examples.jar` HDInsight kümeleriyle birlikte gelen dosyaya aşağıdaki yollardan biri kullanılarak başvurulabilir:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -71,7 +71,7 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!NOTE]
-> Dosya adı HDInsight sürüm `hadoop-examples.jar` 2,1 ve 1,6 kümelerinde bulunur. HDInsight dışındaki dosyalarla çalışırken, çoğu yardımcı programın ABFS biçimini tanımadığı ancak bunun yerine temel bir yol biçimi beklediği fark edeceksiniz `example/jars/hadoop-mapreduce-examples.jar`.
+> Dosya adı `hadoop-examples.jar` HDInsight sürüm 2,1 ve 1,6 kümelerinde bulunur. HDInsight dışındaki dosyalarla çalışırken, çoğu yardımcı programın ABFS biçimini tanımadığı ancak bunun yerine temel bir yol biçimi beklediği fark edeceksiniz `example/jars/hadoop-mapreduce-examples.jar` .
 
 Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. URI 'Si kullanma](../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
 

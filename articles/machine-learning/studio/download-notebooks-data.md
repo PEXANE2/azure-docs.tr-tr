@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
 ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208474"
 ---
 # <a name="download-notebookspreview-data"></a>Not defterlerini indir (Önizleme) verileri
@@ -25,9 +25,9 @@ Bu makalede, Not defterleri (Önizleme) verilerinin nasıl indirileceği hakkın
     ![Not defterleri sekmesine gidin!](./media/download-notebooks/notebooks-list.png)
 
 1. İndirmek istediğiniz Not defterini seçin. Jupyıter 'da açılır.
-    ![Aynı anda birden](./media/download-notebooks/select-notebook.png) çok not defterini karşıdan yüklemek için bir not defteri seçin desteklenmez.
+    ![](./media/download-notebooks/select-notebook.png)Aynı anda birden çok not defterini karşıdan yüklemek için bir not defteri seçin desteklenmez.
 
-1. **Dosyalar** -> **karşıdan yükle**' ye gidin ve bir biçim seçeneği belirleyin.
+1. **Dosyalar**  ->  **karşıdan yükle**' ye gidin ve bir biçim seçeneği belirleyin.
     ![Not defteri indirme seçenekleri](./media/download-notebooks/download-options.PNG)
 
 1. Bir seçenek belirledikten sonra Not defteri dosyası indirilmek üzere başlatılır. Görüntülenen 500 veya 502 hatalarını yoksayın, bu, indirmenize etkilermez.

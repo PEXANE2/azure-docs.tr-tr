@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187220"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Uzaktan Izleme çözüm Hızlandırıcısını yerel olarak dağıtma-IntelliJ
@@ -23,7 +23,7 @@ Bu makalede, test ve geliştirme için uzaktan Izleme çözümü hızlandırıc�
 
 Yerel makinenizde Docker 'da uzaktan Izleme çözüm hızlandırıcıyı çalıştırmak istiyorsanız, bkz. [Uzaktan izleme çözüm hızlandırıcıyı yerel olarak dağıtma-Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uzaktan Izleme çözümü Hızlandırıcısı tarafından kullanılan Azure hizmetlerini dağıtmak için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
@@ -41,9 +41,9 @@ Yerel dağıtımı tamamlamaya yönelik olarak, yerel geliştirme makinenizde a�
 * [IntelliJ SBT eklentisi](https://plugins.jetbrains.com/plugin/5007-sbt)
 * [IntelliJ SBT yürütücü eklentisi](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
 * [NGINX](https://nginx.org/en/download.html)
-* [Node. js V8](https://nodejs.org/)
+* [Node.js V8](https://nodejs.org/)
 
-Node. js V8, betiklerin Azure kaynakları oluşturmak için kullandığı bılgısayar CLı için bir önkoşuldur. Node. js ile v10 arasındaki kullanmayın.
+Node.js V8, betiklerin Azure kaynakları oluşturmak için kullandığı bılgısayar CLı için bir önkoşuldur. Node.js ile v10 arasındaki kullanmayın.
 
 > [!NOTE]
 > IntelliJ IDE, Windows ve Mac için kullanılabilir.
@@ -98,7 +98,7 @@ Gerekli Azure kaynaklarını henüz oluşturmadıysanız, şu adımları izleyin
    Betik Ayrıca yerel makinenize bir ortam değişkenleri kümesi de ekler. Her değişken adının önek **bilgisayarları**vardır. Bu ortam değişkenleri, uzaktan Izlemenin bir Azure Key Vault kaynağından yapılandırma değerlerini okumasına izin veren ayrıntılar sağlar.
 
    > [!TIP]
-   > Betik tamamlandığında, ortam değişkenlerini ** \<giriş klasörünüz\>\\adlı bir dosyaya kaydeder. PCs\\\<çözüm adı\>. env**. Bunları gelecekteki çözüm hızlandırıcılarına yönelik olarak kullanabilirsiniz. Yerel makinenizde ayarlanan tüm ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **yerel\\. env dosyasındaki\\Hizmetler\\betiklerindeki** değerleri geçersiz kılmasını unutmayın.
+   > Betik tamamlandığında, ortam değişkenlerini ** \<your home folder\> \\ . PCs \\ \<solution name\> . env**adlı bir dosyaya kaydeder. Bunları gelecekteki çözüm hızlandırıcılarına yönelik olarak kullanabilirsiniz. Yerel makinenizde ayarlanan tüm ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda ** \\ \\ yerel \\ . env dosyasındaki hizmetler betiklerindeki** değerleri geçersiz kılmasını unutmayın.
 
 1. Komut satırı ortamınızı kapatın.
 
@@ -109,7 +109,7 @@ Gerekli Azure kaynaklarını zaten oluşturduysanız, yerel makinenizde karşıl
 * **PCS_AAD_APPID**: Azure Active Directory (Azure AD) uygulama kimliği.
 * **PCS_AAD_APPSECRET**: Azure AD uygulama gizli anahtarı.
 
-Yapılandırma değerleri bu Key Vault kaynağından okunacaktır. Bu ortam değişkenleri, dağıtımdan ** \<giriş klasörünüze\>\\kaydedilebilir. PCs\\\<çözüm adı\>. env** dosyası. Yerel makinenizde ayarlanan ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **Hizmetler\\KomutDosyaları\\\\yerel. env** dosyasındaki değerleri geçersiz kıldığını unutmayın.
+Yapılandırma değerleri bu Key Vault kaynağından okunacaktır. Bu ortam değişkenleri, dağıtımdan ** \<your home folder\> \\ . PCs \\ \<solution name\> . env** dosyasına kaydedilebilir. Yerel makinenizde ayarlanan ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **Hizmetler \\ KomutDosyaları \\ yerel \\ . env** dosyasındaki değerleri geçersiz kıldığını unutmayın.
 
 Mikro hizmet tarafından gereken bazı yapılandırmalar ilk dağıtımda oluşturulmuş bir Key Vault örneğine depolanır. Anahtar kasasındaki ilgili değişkenler gerektiği şekilde değiştirilmelidir.
 
@@ -159,11 +159,11 @@ Aşağıdaki adımlarda, IntelliJ 'de uzaktan Izleme mikro hizmetlerinin nasıl 
 
 #### <a name="create-run-configurations"></a>Çalıştırma yapılandırması oluşturma
 
-1. **Düzenleme yapılandırmasını** **Çalıştır** > ' ı seçin.
-1. **Yeni yapılandırma** > **SBT görevi**Ekle ' yi seçin.
+1. **Run**  >  **Düzenleme yapılandırmasını**Çalıştır ' ı seçin.
+1. **Yeni yapılandırma**  >  **SBT görevi**Ekle ' yi seçin.
 1. **Ad**girin ve ardından **görevleri** **çalıştırma**olarak girin.
 1. Çalıştırmak istediğiniz hizmete göre **çalışma dizinini** seçin.
-1. Seçimlerinizi kaydetmek için **Uygula** > **Tamam ' ı** seçin.
+1. **Apply**  >  Seçimlerinizi kaydetmek için Uygula**Tamam ' ı** seçin.
 1. Aşağıdaki Web Hizmetleri için çalıştırma yapılandırması oluşturun:
     * WebService (services\config)
     * WebService (services\device-telemetri)
@@ -176,9 +176,9 @@ Aşağıdaki adımlarda, IntelliJ 'de uzaktan Izleme mikro hizmetlerinin nasıl 
 
 #### <a name="create-a-compound-configuration"></a>Bileşik yapılandırma oluşturma
 
-1. Tüm Hizmetleri birlikte çalıştırmak için **Yeni yapılandırma** > **bileşik**Ekle ' yi seçin.
+1. Tüm Hizmetleri birlikte çalıştırmak için **Yeni yapılandırma bileşik Ekle**' yi seçin  >  **Compound**.
 1. **Ad**girin ve ardından **SBT görevleri ekle**' yi seçin.
-1. Seçimlerinizi kaydetmek için **Uygula** > **Tamam ' ı** seçin.
+1. **Apply**  >  Seçimlerinizi kaydetmek için Uygula**Tamam ' ı** seçin.
 
 Örnek olarak, aşağıdaki görüntüde tüm SBT görevlerinin tek bir yapılandırmaya nasıl ekleneceği gösterilmektedir:
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-**Başlat** komutu tamamlandığında, tarayıcınız sayfayı adreste `http://localhost:3000/dashboard`görüntüler. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımları izleyin.
+**Başlat** komutu tamamlandığında, tarayıcınız sayfayı adreste görüntüler `http://localhost:3000/dashboard` . Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımları izleyin.
 
 ### <a name="configure-and-run-nginx"></a>NGINX 'i yapılandırma ve çalıştırma
 

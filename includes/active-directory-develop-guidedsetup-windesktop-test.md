@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,10 +15,10 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181553"
 ---
 ## <a name="test-your-code"></a>Kodunuza test etme
@@ -39,9 +39,9 @@ Uygulamanızda ilk kez oturum açtığınızda, uygulamanın profilinize erişme
 
 ### <a name="view-application-results"></a>Uygulama sonuçlarını görüntüle
 
-Oturum açtıktan sonra, Microsoft Graph API 'sine yapılan çağrı tarafından döndürülen Kullanıcı profili bilgilerini görmeniz gerekir. Sonuçlar **API çağrı sonuçları** kutusunda görüntülenir. `AcquireTokenInteractive` Veya `AcquireTokenSilent` çağrısı yoluyla elde edilen belirteç hakkındaki temel bilgiler, **belirteç bilgi** kutusunda görünür olmalıdır. Sonuçlar aşağıdaki özellikleri içerir:
+Oturum açtıktan sonra, Microsoft Graph API 'sine yapılan çağrı tarafından döndürülen Kullanıcı profili bilgilerini görmeniz gerekir. Sonuçlar **API çağrı sonuçları** kutusunda görüntülenir. Veya çağrısı yoluyla elde edilen belirteç hakkındaki temel bilgiler `AcquireTokenInteractive` `AcquireTokenSilent` , **belirteç bilgi** kutusunda görünür olmalıdır. Sonuçlar aşağıdaki özellikleri içerir:
 
-|Özellik  |Biçimlendir  |Açıklama |
+|Özellik  |Biçimlendir  |Description |
 |---------|---------|---------|
 |**Nitelen** |<span>user@domain.com</span> |Kullanıcıyı tanımlamak için kullanılan Kullanıcı adı.|
 |**Belirtecin süresi doluyor** |DateTime |Belirtecin süresinin dolacağı zaman. MSAL, belirteci gerektiği şekilde yenileyerek sona erme tarihini genişletir.|

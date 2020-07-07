@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82161524"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
@@ -91,11 +91,11 @@ availabilityResults
 
    ![İşlev ayarları ekran görüntüsü](./media/automate-custom-reports/scheduled-digest.png)
 
-6. **İşlev uygulaması** > **platform özellikleri** > **yapılandırmanızı**seçin.
+6. **İşlev uygulaması**  >  **platform özellikleri**  >  **yapılandırmanızı**seçin.
 
     ![Azure Işlevi uygulama ayarları ekran görüntüsü](./media/automate-custom-reports/config.png)
 
-7. Karşılık gelen uygun değerlerle ``AI_APP_ID`` ``AI_APP_KEY``üç yeni uygulama ayarı oluşturun, ve. ``SendGridAPI`` **Kaydet**’i seçin.
+7. Karşılık gelen uygun değerlerle üç yeni uygulama ayarı oluşturun ``AI_APP_ID`` , ``AI_APP_KEY`` ve ``SendGridAPI`` . **Kaydet**’i seçin.
 
      ![İşlev tümleştirme arabirimi ekran görüntüsü](./media/automate-custom-reports/app-settings.png)
     
@@ -136,7 +136,7 @@ Bu adımlar yalnızca önceden yapılandırılmış bir SendGrid hesabınız yok
 
      ![Ayarlar API anahtarı ekran görüntüsü](./media/automate-custom-reports/sendgrid-manage.png)
 
-3. Bu, SendGrid 'in sitesini başlatacaktır. **Ayarlar** > **API anahtarları**' nı seçin.
+3. Bu, SendGrid 'in sitesini başlatacaktır. **Ayarlar**  >  **API anahtarları**' nı seçin.
 
      ![API anahtarı uygulaması oluşturma ve görüntüleme ekran görüntüsü](./media/automate-custom-reports/function-app-15.png)
 

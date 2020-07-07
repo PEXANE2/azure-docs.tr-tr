@@ -4,10 +4,10 @@ description: Uygulamayı işaretlemeden Java tek başına aracı ile herhangi bi
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508046"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Azure Izleyici için JVM args Java tek başına Aracısı 'nı yapılandırma Application Insights
@@ -20,7 +20,7 @@ ms.locfileid: "82508046"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-Daha önce `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`bir yere JVM bağımsız değişkeni ekleyin, örneğin:
+Daha önce bir yere JVM bağımsız değişkeni ekleyin `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar` , örneğin:
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
@@ -28,13 +28,13 @@ java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.
 
 ## <a name="spring-boot-via-docker-entry-point"></a>Docker giriş noktası aracılığıyla Spring Boot
 
-*Exec* formunu kullanıyorsanız, parametresini parametre listesine parametresinden önce `"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"` `"-jar"` bir yerde ekleyin, örneğin:
+*Exec* formunu kullanıyorsanız, parametresini parametre `"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"` listesine parametresinden önce bir yerde ekleyin `"-jar"` , örneğin:
 
 ```
 ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
 ```
 
-*Kabuk* formunu kullanıyorsanız, daha önce `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`bir yere JVM bağımsız değişkeni ekleyin, örneğin:
+*Kabuk* formunu kullanıyorsanız, daha önce bir yere JVM bağımsız değişkeni ekleyin `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar` , örneğin:
 
 ```
 ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
@@ -42,9 +42,9 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
 
-### <a name="tomcat-installed-via-apt-get-or-yum"></a>Veya ile `apt-get` yüklenen Tomcat`yum`
+### <a name="tomcat-installed-via-apt-get-or-yum"></a>Veya ile yüklenen Tomcat `apt-get``yum`
 
-Veya `apt-get` `yum`aracılığıyla Tomcat yüklediyseniz, bir dosyanız `/etc/tomcat8/tomcat8.conf`olmalıdır.  Bu satırı Bu dosyanın sonuna ekleyin:
+Veya aracılığıyla Tomcat yüklediyseniz `apt-get` `yum` , bir dosyanız olmalıdır `/etc/tomcat8/tomcat8.conf` .  Bu satırı Bu dosyanın sonuna ekleyin:
 
 ```
 JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
@@ -52,20 +52,20 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW
 
 ### <a name="tomcat-installed-via-download-and-unzip"></a>Tomcat, indirme ve unzip ile yüklendi
 
-İndirme ve unzip aracılığıyla Tomcat 'i yüklediyseniz [https://tomcat.apache.org](https://tomcat.apache.org), bir dosyanız `<tomcat>/bin/catalina.sh`olmalıdır.  Aşağıdaki içerikle adlı `<tomcat>/bin/setenv.sh` aynı dizinde yeni bir dosya oluşturun:
+İndirme ve unzip aracılığıyla Tomcat 'i yüklediyseniz [https://tomcat.apache.org](https://tomcat.apache.org) , bir dosyanız olmalıdır `<tomcat>/bin/catalina.sh` .  Aşağıdaki içerikle adlı aynı dizinde yeni bir dosya oluşturun `<tomcat>/bin/setenv.sh` :
 
 ```
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
 ```
 
-Dosya `<tomcat>/bin/setenv.sh` zaten varsa, bu dosyayı değiştirip öğesine `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `CATALINA_OPTS`ekleyin.
+Dosya `<tomcat>/bin/setenv.sh` zaten varsa, bu dosyayı değiştirip `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` öğesine ekleyin `CATALINA_OPTS` .
 
 
 ## <a name="tomcat-8-windows"></a>Tomcat 8 (Windows)
 
 ### <a name="running-tomcat-from-the-command-line"></a>Komut satırından Tomcat çalıştırma
 
-Dosyayı `<tomcat>/bin/catalina.bat`bulun.  Aşağıdaki içerikle adlı `<tomcat>/bin/setenv.bat` aynı dizinde yeni bir dosya oluşturun:
+Dosyayı bulun `<tomcat>/bin/catalina.bat` .  Aşağıdaki içerikle adlı aynı dizinde yeni bir dosya oluşturun `<tomcat>/bin/setenv.bat` :
 
 ```
 set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
@@ -77,18 +77,18 @@ Tırnak işaretleri gerekli değildir, ancak bunları dahil etmek istiyorsanız,
 set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
 ```
 
-Dosya `<tomcat>/bin/setenv.bat` zaten varsa, bu dosyayı değiştirip öğesine `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `CATALINA_OPTS`ekleyin.
+Dosya `<tomcat>/bin/setenv.bat` zaten varsa, bu dosyayı değiştirip `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` öğesine ekleyin `CATALINA_OPTS` .
 
 ### <a name="running-tomcat-as-a-windows-service"></a>Windows hizmeti olarak Tomcat çalıştırma
 
-Dosyayı `<tomcat>/bin/tomcat8w.exe`bulun.  Bu çalıştırılabiliri çalıştırın ve `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `Java Options` `Java` sekmesinde altına ekleyin.
+Dosyayı bulun `<tomcat>/bin/tomcat8w.exe` .  Bu çalıştırılabiliri çalıştırın ve `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `Java Options` sekmesinde altına ekleyin `Java` .
 
 
 ## <a name="jboss-eap-7"></a>Jpatron EAP 7
 
 ### <a name="standalone-server"></a>Tek başına sunucu
 
-Dosyadaki `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `JBOSS_HOME/bin/standalone.conf` (Linux `JBOSS_HOME/bin/standalone.conf.bat` ) `JAVA_OPTS` veya (Windows) var olan ortam değişkenine ekleyin:
+`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `JAVA_OPTS` Dosyadaki `JBOSS_HOME/bin/standalone.conf` (Linux) veya (Windows) var olan ortam değişkenine ekleyin `JBOSS_HOME/bin/standalone.conf.bat` :
 
 ```java    ...
     JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar</b> -Xms1303m -Xmx1303m ..."
@@ -97,7 +97,7 @@ Dosyadaki `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `JBOS
 
 ### <a name="domain-server"></a>Etki alanı sunucusu
 
-' `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` De `JBOSS_HOME/domain/configuration/host.xml`var olan `jvm-options` öğesine ekleyin:
+`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`' De var olan öğesine ekleyin `jvm-options` `JBOSS_HOME/domain/configuration/host.xml` :
 
 ```xml
 ...
@@ -116,7 +116,7 @@ Dosyadaki `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `JBOS
 ...
 ```
 
-Tek bir konakta birden çok yönetilen sunucu çalıştırıyorsanız, her birine `applicationinsights.agent.id` `system-properties` `server`için öğesine eklemeniz gerekir:
+Tek bir konakta birden çok yönetilen sunucu çalıştırıyorsanız, `applicationinsights.agent.id` `system-properties` her birine için öğesine eklemeniz gerekir `server` :
 
 ```xml
 ...
@@ -138,7 +138,7 @@ Tek bir konakta birden çok yönetilen sunucu çalıştırıyorsanız, her birin
 ...
 ```
 
-Belirtilen `applicationinsights.agent.id` değer benzersiz olmalıdır. Her JVM işlemi kendi yerel ApplicationInsights yapılandırması ve yerel ApplicationInsights günlük dosyasına ihtiyaç duyduğunda, ApplicationInsights dizini altında bir alt dizin oluşturmak için kullanılır. Ayrıca, merkezi toplayıcıya raporlama yapıyorsanız, `applicationinsights.properties` dosya birden çok yönetilen sunucu tarafından paylaşılır ve bu nedenle, bu paylaşılan dosyadaki `applicationinsights.agent.id` `agent.id` ayarı geçersiz kılmak için belirtilen gereklidir. `applicationinsights.agent.rollup.id`, yönetilen sunucu başına `system-properties` `agent.rollup.id` ayarı geçersiz kılmanız gerekiyorsa sunucuda benzer şekilde belirtilebilir.
+Belirtilen `applicationinsights.agent.id` değer benzersiz olmalıdır. Her JVM işlemi kendi yerel ApplicationInsights yapılandırması ve yerel ApplicationInsights günlük dosyasına ihtiyaç duyduğunda, ApplicationInsights dizini altında bir alt dizin oluşturmak için kullanılır. Ayrıca, merkezi toplayıcıya raporlama yapıyorsanız, `applicationinsights.properties` dosya birden çok yönetilen sunucu tarafından paylaşılır ve bu nedenle, `applicationinsights.agent.id` `agent.id` Bu paylaşılan dosyadaki ayarı geçersiz kılmak için belirtilen gereklidir. `applicationinsights.agent.rollup.id`, `system-properties` `agent.rollup.id` yönetilen sunucu başına ayarı geçersiz kılmanız gerekiyorsa sunucuda benzer şekilde belirtilebilir.
 
 
 ## <a name="jetty-9"></a>Jetty 9
@@ -153,7 +153,7 @@ Bu satırları Ekle`start.ini`
 
 ## <a name="payara-5"></a>Payara 5
 
-' `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` De `glassfish/domains/domain1/config/domain.xml`var olan `jvm-options` öğesine ekleyin:
+`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`' De var olan öğesine ekleyin `jvm-options` `glassfish/domains/domain1/config/domain.xml` :
 
 ```xml
 ...
@@ -183,7 +183,7 @@ Bundan sonra uygulama sunucusunu kaydedin ve yeniden başlatın.
 
 ## <a name="openliberty-18"></a>OpenLiberty 18
 
-Sunucu dizininde yeni bir `jvm.options` dosya oluşturun (örneğin `<openliberty>/usr/servers/defaultServer`) ve şu satırı ekleyin:
+Sunucu dizininde yeni bir dosya oluşturun `jvm.options` (örneğin `<openliberty>/usr/servers/defaultServer` ) ve şu satırı ekleyin:
 ```
 -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
 ```

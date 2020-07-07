@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 0ccb87017f962650f099d506e1d200ab408316d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195154"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark akışa genel bakış
 
-[Apache Spark](https://spark.apache.org/) Akış, HDInsight Spark kümelerinde veri akışı işleme sağlar. Herhangi bir giriş olayının, bir düğüm hatası oluşması durumunda bile tam olarak bir kez işlenmesini güvence altına almak. Spark akışı, Azure Event Hubs dahil olmak üzere çok çeşitli kaynaklardan giriş verilerini alan uzun süredir çalışan bir işdir. Ayrıca: Azure IoT Hub, Apache Kafka, Apache flome, Twitter, `ZeroMQ`ham TCP yuvaları veya izleme Apache Hadoop Yarn dosya sistemleri. Yalnızca olay odaklı bir işlemden farklı olarak, bir Spark akışı, verileri zaman Windows 'a girdi olarak işler. Örneğin, 2 saniyelik bir dilim gibi her bir veri kümesini eşleme, azaltma, JOIN ve ayıkla işlemlerini kullanarak dönüştürür. Spark akışı daha sonra dönüştürülen verileri filesystems, veritabanları, panolar ve konsola yazar.
+[Apache Spark](https://spark.apache.org/) Akış, HDInsight Spark kümelerinde veri akışı işleme sağlar. Herhangi bir giriş olayının, bir düğüm hatası oluşması durumunda bile tam olarak bir kez işlenmesini güvence altına almak. Spark akışı, Azure Event Hubs dahil olmak üzere çok çeşitli kaynaklardan giriş verilerini alan uzun süredir çalışan bir işdir. Ayrıca: Azure IoT Hub, Apache Kafka, Apache flome, Twitter, `ZeroMQ` Ham TCP yuvaları veya izleme Apache Hadoop YARN dosya sistemleri. Yalnızca olay odaklı bir işlemden farklı olarak, bir Spark akışı, verileri zaman Windows 'a girdi olarak işler. Örneğin, 2 saniyelik bir dilim gibi her bir veri kümesini eşleme, azaltma, JOIN ve ayıkla işlemlerini kullanarak dönüştürür. Spark akışı daha sonra dönüştürülen verileri filesystems, veritabanları, panolar ve konsola yazar.
 
 ![HDInsight ve Spark streaming ile akış Işleme](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Spark akış uygulamaları, bu toplu işi işlenmek üzere göndermeden önce olayların her `micro-batch` birini toplamasını beklemeniz gerekir. Buna karşılık, olay temelli bir uygulama her olayı hemen işler. Spark akış gecikmesi genellikle birkaç saniye altında. Mikro Batch yaklaşımının avantajları daha verimli veri işleme ve daha basit toplu hesaplamalardır.
+Spark akış uygulamaları, `micro-batch` Bu toplu işi işlenmek üzere göndermeden önce olayların her birini toplamasını beklemeniz gerekir. Buna karşılık, olay temelli bir uygulama her olayı hemen işler. Spark akış gecikmesi genellikle birkaç saniye altında. Mikro Batch yaklaşımının avantajları daha verimli veri işleme ve daha basit toplu hesaplamalardır.
 
 ## <a name="introducing-the-dstream"></a>DStream 'e giriş
 
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 Elde edilen çıktı aşağıdaki çıktı gibi görünür:
 
-| value | time |
+| değer | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -167,7 +167,7 @@ DummySource her 5 saniyede bir değer oluşturduğundan ve uygulama her 30 saniy
 
 ## <a name="sliding-windows"></a>Kayan pencereler
 
-DStream 'de belirli bir süre boyunca toplu hesaplamalar yapmak için örneğin, son iki saniye boyunca ortalama bir sıcaklık almak için Spark akışına dahil edilen `sliding window` işlemleri kullanın. Kayan pencerenin süresi (pencere uzunluğu) ve pencere içeriğinin değerlendirildiği zaman aralığı (Slayt aralığı) vardır.
+DStream 'de belirli bir süre boyunca toplu hesaplamalar yapmak için örneğin, son iki saniye boyunca ortalama bir sıcaklık almak için `sliding window` Spark akışına dahil edilen işlemleri kullanın. Kayan pencerenin süresi (pencere uzunluğu) ve pencere içeriğinin değerlendirildiği zaman aralığı (Slayt aralığı) vardır.
 
 Kayan pencereler çakışabilir, örneğin, iki saniyelik uzunlukla bir pencere tanımlayabilir ve bu slaytlar her bir saniyede bir yer alabilir. Bu eylem, bir toplama hesaplaması yaptığınız her seferinde, pencerenin önceki pencerenin son bir saniyesden verileri içermeyeceği anlamına gelir. Ve sonraki bir ikinci birindeki tüm yeni verileri.
 
@@ -222,7 +222,7 @@ ssc.start()
 
 İlk dakika sonra, pencerede toplanan iki toplu işlem için altı giriş olan 12 girdi vardır.
 
-| value | time |
+| değer | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158

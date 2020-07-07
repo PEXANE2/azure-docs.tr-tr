@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189054"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
@@ -330,25 +330,25 @@ Coğrafi harita sayfası iki ana bölüm içerir:
 ### <a name="keyboard-navigation-on-the-banner"></a>Başlık üzerinde klavye gezintisi
     
 - Varsayılan olarak, başlık için coğrafi harita sayfasında bulunan seçim, "Azure DCs" filtresidir.
-- Başka bir filtreye geçmek için `Tab` ya da `Right arrow` anahtarını kullanın. Geriye doğru gitmek için `Shift+Tab` ya da `Left arrow` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
-- Seçili `Enter` filtreyi uygulamak `Down` için ya da ok tuşuna basın. Filtre seçimine ve dağıtımına dayalı olarak, harita bölümünün altındaki bir veya birden çok düğüm vurgulanır.
-- Başlık ve eşleme arasında geçiş yapmak için tuşuna `Ctrl+F6`basın.
+- Başka bir filtreye geçmek için ya da anahtarını kullanın `Tab` `Right arrow` . Geriye doğru gitmek için `Shift+Tab` ya da `Left arrow` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
+- `Enter` `Down` Seçili filtreyi uygulamak için ya da ok tuşuna basın. Filtre seçimine ve dağıtımına dayalı olarak, harita bölümünün altındaki bir veya birden çok düğüm vurgulanır.
+- Başlık ve eşleme arasında geçiş yapmak için tuşuna basın `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-map"></a>Haritada klavye gezintisi
     
-- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6`, odak harita görünümündeki vurgulanan düğümlerden birine (**Azure veri merkezi** veya **ülke/bölge**) gider.
-- Haritadaki diğer vurgulanan düğümlere geçmek için, iletme hareketi için ya `Tab` da `Right arrow` anahtarını kullanın. Geri `Shift+Tab` hareket için `Left arrow` veya anahtarını kullanın.
+- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6` , odak harita görünümündeki vurgulanan düğümlerden birine (**Azure veri merkezi** veya **ülke/bölge**) gider.
+- Haritadaki diğer vurgulanan düğümlere geçmek için, `Tab` `Right arrow` iletme hareketi için ya da anahtarını kullanın. `Shift+Tab` `Left arrow` Geri hareket için veya anahtarını kullanın.
 - Haritadaki vurgulanmış düğümleri seçmek için `Enter` veya `Down arrow` tuşunu kullanın.
-- Bu tür düğümlerin seçimi üzerinde odak, düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki**kapalı düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için ve `Right arrow` `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' `Enter` Ye basmak, **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
-- `Tab` Odak **bilgi araç kutusunda**olduğunda, odak seçili düğüm ile aynı kıta olan bitiş noktalarına taşınır. Bu uç `Right arrow` noktalar `Left arrow` arasında gezinmek için ve anahtarlarını kullanın.
-- Diğer akış uç noktalarına veya kıta kümelere gitmek için, İleri `Tab` hareket ve `Shift+Tab` geriye doğru hareket için kullanın.
-- Odak, **kıta kümeler**üzerinde olduğunda, ya `Enter` `Down` da ok tuşlarını kullanarak kıta küme içindeki uç noktaları vurgulayın. Kıta kümesinin bilgi kutusunda uç noktalar ve Kapat düğmesi ile hareket etmek için, sırasıyla ileri ve geri hareket için `Right arrow` ya `Left arrow` da tuşunu kullanın. Herhangi bir uç noktada, seçili düğümdeki `Shift+L` bağlantı satırına uç noktaya geçiş yapmak için kullanabilirsiniz. Seçili uç noktaya `Shift+L` gitmek için yeniden tuşuna basın.
+- Bu tür düğümlerin seçimi üzerinde odak, düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki**kapalı düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
+- `Tab`Odak **bilgi araç kutusunda**olduğunda, odak seçili düğüm ile aynı kıta olan bitiş noktalarına taşınır. `Right arrow` `Left arrow` Bu uç noktalar arasında gezinmek için ve anahtarlarını kullanın.
+- Diğer akış uç noktalarına veya kıta kümelere gitmek için, `Tab` İleri hareket ve `Shift+Tab` geriye doğru hareket için kullanın.
+- Odak, **kıta kümeler**üzerinde olduğunda, `Enter` ya da `Down` ok tuşlarını kullanarak kıta küme içindeki uç noktaları vurgulayın. Kıta kümesinin bilgi kutusunda uç noktalar ve Kapat düğmesi ile hareket etmek için, `Right arrow` `Left arrow` sırasıyla ileri ve geri hareket için ya da tuşunu kullanın. Herhangi bir uç noktada, `Shift+L` Seçili düğümdeki bağlantı satırına uç noktaya geçiş yapmak için kullanabilirsiniz. `Shift+L`Seçili uç noktaya gitmek için yeniden tuşuna basın.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Herhangi bir aşamada klavye gezintisi
     
 - `Esc`genişletilen seçimi daraltır.
-- `Up arrow` Anahtar, ile `Esc`aynı eylemi gerçekleştirir. `Down arrow` Anahtar, ile `Enter`aynı eylemi gerçekleştirir.
-- Yakınlaştırmak `Shift+Plus` ve `Shift+Minus` uzaklaştırmak için kullanın.
+- `Up arrow`Anahtar, ile aynı eylemi gerçekleştirir `Esc` . `Down arrow`Anahtar, ile aynı eylemi gerçekleştirir `Enter` .
+- Yakınlaştırmak ve uzaklaştırmak için kullanın `Shift+Plus` `Shift+Minus` .
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Sanal ağ topolojisi görünümündeki klavyeyi kullanarak nasıl gezinirim?
 
@@ -360,16 +360,16 @@ Sanal ağlar topolojisi sayfası iki ana bölüm içerir:
 ### <a name="keyboard-navigation-on-the-banner"></a>Başlık üzerinde klavye gezintisi
     
 - Varsayılan olarak, başlık için sanal ağlar topolojisi sayfasında bulunan seçim, "bağlı VNET" filtreidir.
-- Başka bir filtreye geçmek için, bir daha `Tab` ilerlemek için anahtarı kullanın. Geri gitmek için `Shift+Tab` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
-- Seçili `Enter` filtreyi uygulamak için basın. Filtre seçimine ve dağıtımına dayalı olarak, topoloji bölümünün altındaki bir veya birden çok düğüm (sanal ağ) vurgulanır.
-- Başlık ve topoloji arasında geçiş yapmak için tuşuna basın `Ctrl+F6`.
+- Başka bir filtreye geçmek için, bir daha ilerlemek `Tab` için anahtarı kullanın. Geri gitmek için `Shift+Tab` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
+- `Enter`Seçili filtreyi uygulamak için basın. Filtre seçimine ve dağıtımına dayalı olarak, topoloji bölümünün altındaki bir veya birden çok düğüm (sanal ağ) vurgulanır.
+- Başlık ve topoloji arasında geçiş yapmak için tuşuna basın `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Topolojide klavye gezintisi
     
-- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6`, odak, topoloji görünümündeki vurgulanan düğümlerden birine (**VNET**) gider.
-- Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, iletme hareketi `Shift+Right arrow` anahtarını kullanın. 
-- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için, `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' `Enter` Ye basmak, **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
-- Bu tür düğümlerin seçimi üzerinde, `Shift+Left arrow` anahtara basarak tüm bağlantılarını tek tek ziyaret edebilirsiniz. Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak `Shift+Right arrow` düğüme geri dönebilir.
+- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6` , odak, topoloji görünümündeki vurgulanan düğümlerden birine (**VNET**) gider.
+- Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, `Shift+Right arrow` iletme hareketi anahtarını kullanın. 
+- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için, `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
+- Bu tür düğümlerin seçimi üzerinde, anahtara basarak tüm bağlantılarını tek tek ziyaret edebilirsiniz `Shift+Left arrow` . Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak düğüme geri dönebilir `Shift+Right arrow` .
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Alt ağ topolojisi görünümündeki klavyeyi kullanarak nasıl gezinirim?
@@ -382,14 +382,14 @@ Sanal alt ağlar topolojisi sayfası iki ana bölüm içerir:
 ### <a name="keyboard-navigation-on-the-banner"></a>Başlık üzerinde klavye gezintisi
     
 - Varsayılan olarak, başlık için sanal alt ağlar topolojisi sayfasında bulunan seçim, "alt ağlar" filtreidir.
-- Başka bir filtreye geçmek için, bir daha `Tab` ilerlemek için anahtarı kullanın. Geri gitmek için `Shift+Tab` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
-- Seçili `Enter` filtreyi uygulamak için basın. Filtre seçimine ve dağıtımına dayalı olarak, topoloji bölümünün altındaki bir veya birden çok düğüm (alt ağ) vurgulanır.
-- Başlık ve topoloji arasında geçiş yapmak için tuşuna basın `Ctrl+F6`.
+- Başka bir filtreye geçmek için, bir daha ilerlemek `Tab` için anahtarı kullanın. Geri gitmek için `Shift+Tab` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
+- `Enter`Seçili filtreyi uygulamak için basın. Filtre seçimine ve dağıtımına dayalı olarak, topoloji bölümünün altındaki bir veya birden çok düğüm (alt ağ) vurgulanır.
+- Başlık ve topoloji arasında geçiş yapmak için tuşuna basın `Ctrl+F6` .
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Topolojide klavye gezintisi
     
-- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6`, odak, topoloji görünümündeki vurgulanan düğümlerden (**alt ağ**) birine taşınır.
-- Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, iletme hareketi `Shift+Right arrow` anahtarını kullanın. 
-- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için ve `Right arrow` `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' `Enter` Ye basmak, **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
-- Bu tür düğümlerin seçimi üzerinde, bir diğeri olan tüm bağlantılarını, bir, bir, tuşuna basarak `Shift+Left arrow` ziyaret edebilirsiniz. Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak `Shift+Right arrow` düğüme geri dönebilir.    
+- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6` , odak, topoloji görünümündeki vurgulanan düğümlerden (**alt ağ**) birine taşınır.
+- Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, `Shift+Right arrow` iletme hareketi anahtarını kullanın. 
+- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
+- Bu tür düğümlerin seçimi üzerinde, bir diğeri olan tüm bağlantılarını, bir, bir, tuşuna basarak ziyaret edebilirsiniz `Shift+Left arrow` . Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak düğüme geri dönebilir `Shift+Right arrow` .    
 
