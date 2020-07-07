@@ -9,10 +9,10 @@ ms.date: 06/14/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4e699707db02de07f3d1ebb7d1fa8d0575a10aa3
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67836892"
 ---
 FTP ve yerel git, bir *dağıtım kullanıcısı*kullanarak bir Azure Web uygulamasına dağıtabilir. Dağıtım kullanıcısını yapılandırdıktan sonra tüm Azure dağıtımlarınız için kullanabilirsiniz. Hesap düzeyinde dağıtım Kullanıcı adınız ve parolanız, Azure aboneliği kimlik bilgilerinizden farklı. 

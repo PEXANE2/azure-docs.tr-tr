@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67068902"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Mevcut blobları Media Services bir varlığa kopyalama
@@ -42,7 +42,7 @@ Makalede iki kod örneği gösterilmektedir:
 
 ## <a name="copy-blobs-between-two-ams-accounts"></a>Blob 'ları iki AMS hesabı arasında kopyalama  
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 İki Media Services hesabı. [Media Services hesabı oluşturma](media-services-portal-create-account.md)makalesine bakın.
 
@@ -160,7 +160,7 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>Blob 'ları bir depolama hesabından AMS hesabına kopyalama 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - Blob 'ları kopyalamak istediğiniz bir depolama hesabı.
 - Blob 'ları kopyalamak istediğiniz bir AMS hesabı.
@@ -384,6 +384,6 @@ Yapılandırılmış kapsayıcıya gelen dosyaya göre bir kodlama işi tetiklem
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

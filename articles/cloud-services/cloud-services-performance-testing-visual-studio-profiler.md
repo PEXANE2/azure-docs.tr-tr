@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70094113"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio Profiler kullanarak Azure Işlem öykünücüsünde yerel olarak bir bulut hizmetinin performansını test etme
@@ -30,7 +30,7 @@ Ayrıca, Uygulamanızı buluta dağıtmadan önce işlem öykünücüsünde yere
 Bu makale, Öykünücüde yerel olarak yapılabilen profil oluşturma için CPU örnekleme yöntemini ele almaktadır. CPU örnekleme, profil oluşturmanın çok zorsız bir yöntemdir. Belirlenmiş bir örnekleme aralığı içinde profil oluşturucu, çağrı yığınının anlık görüntüsünü alır. Veriler bir süre içinde toplanır ve bir raporda gösterilir. Bu profil oluşturma yöntemi, CPU işinin büyük bir bölümünü yoğun şekilde yoğun bir uygulamada nerede yapıldığını belirtmek için eğilimi gösterir.  Bu, uygulamanızın en çok zaman harcaacağı "etkin yol" üzerine odaklanma fırsatı sağlar.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Visual Studio 'Yu profil oluşturma için yapılandırma
-İlk olarak, profil oluşturma sırasında yararlı olabilecek birkaç Visual Studio yapılandırma seçeneği vardır. Profil oluşturma raporlarının anlamlı olması için, uygulamanız için semboller (. pdb dosyaları) ve ayrıca sistem kitaplıkları için semboller gerekir. Kullanılabilir sembol sunucularına başvurduğunuzdan emin olmak isteyeceksiniz. Bunu yapmak için, Visual Studio 'daki **Araçlar** menüsünde **Seçenekler**' i ve ardından **hata ayıklama**ve **semboller**' i seçin. Microsoft symbol sunucularının **sembol dosyası (. pdb) konumları**altında listelendiğinden emin olun.  Ayrıca, ek sembol https://referencesource.microsoft.com/symbolsdosyalarına sahip olabilecek başvuru de oluşturabilirsiniz.
+İlk olarak, profil oluşturma sırasında yararlı olabilecek birkaç Visual Studio yapılandırma seçeneği vardır. Profil oluşturma raporlarının anlamlı olması için, uygulamanız için semboller (. pdb dosyaları) ve ayrıca sistem kitaplıkları için semboller gerekir. Kullanılabilir sembol sunucularına başvurduğunuzdan emin olmak isteyeceksiniz. Bunu yapmak için, Visual Studio 'daki **Araçlar** menüsünde **Seçenekler**' i ve ardından **hata ayıklama**ve **semboller**' i seçin. Microsoft symbol sunucularının **sembol dosyası (. pdb) konumları**altında listelendiğinden emin olun.  Ayrıca https://referencesource.microsoft.com/symbols , ek sembol dosyalarına sahip olabilecek başvuru de oluşturabilirsiniz.
 
 ![Sembol seçenekleri][4]
 
@@ -83,13 +83,13 @@ Profil oluşturucuyu bir işleme iliştirmek için, **Çözümle** menüsünde *
 
 ![Profil ekle seçeneği][6]
 
-Bir çalışan rolü için WaWorkerHost. exe işlemini bulun.
+Bir çalışan rolü için WaWorkerHost.exe işlemini bulun.
 
 ![WaWorkerHost işlemi][7]
 
 Proje klasörünüz bir ağ sürücüsündeyse profil oluşturucu, profil oluşturma raporlarının kaydedileceği başka bir konum sağlamanızı ister.
 
- Ayrıca, WaIISHost. exe ' ye ekleyerek bir Web rolüne de iliştirebilirsiniz.
+ Ayrıca, WaIISHost.exe ekleyerek bir Web rolüne de iliştirebilirsiniz.
 Uygulamanızda birden çok çalışan rolü işlemi varsa, bunları ayırt etmek için Işlem işlemini kullanmanız gerekir. Işlem nesnesine erişerek ProcessId 'yi programlı bir şekilde sorgulayabilirsiniz. Örneğin, bu kodu bir roldeki RoleEntryPoint-Derived sınıfının Run yöntemine eklerseniz, hangi işlemin bağlanacağı hakkında bilgi edinmek için Işlem öykünücüsü Kullanıcı arabirimindeki günlüğe bakabilirsiniz.
 
 ```csharp
@@ -160,7 +160,7 @@ Tebrikler! Profil Oluşturucu ile çalışmaya başlayın.
 * Profil Oluşturucu menüsünde Iliştirme/Ayır seçeneği etkinleştirilmemişse, performans sihirbazını çalıştırın.
 * Uygulamanızın durumunu görüntülemek için Işlem öykünücüsü Kullanıcı arabirimini kullanın. 
 * Öykünücüdeki uygulamaları başlatırken veya profil oluşturucuyu iliştirirken sorun yaşıyorsanız, işlem öykünücüsünü kapatın ve yeniden başlatın. Bu sorunu çözmezse, yeniden başlatmayı deneyin. Bu sorun, çalışan dağıtımları askıya almak ve kaldırmak için Işlem öykünücüsünü kullanırsanız ortaya çıkabilir.
-* Komut satırından profil oluşturma komutlarından birini, özellikle de genel ayarları kullandıysanız, VSPerfClrEnv/globaloff ' ın çağrıldığından ve VsPerfMon. exe ' nin kapatıldığından emin olun.
+* Komut satırından profil oluşturma komutlarından birini, özellikle de genel ayarları kullandıysanız, VSPerfClrEnv/globaloff ' ın çağrıldığından ve VsPerfMon.exe kapatıldığından emin olun.
 * Örnekleme yapıldığında, "PRF0025: veri toplanmadı" iletisini görürsünüz, bağlı olduğunuz işlemin CPU etkinliği olduğunu kontrol edin. Herhangi bir hesaplama çalışması yapmamayan uygulamalar, hiçbir örnekleme verisi üretmeyebilir.  Herhangi bir örnekleme yapılmadan önce işlemden çıkılması da mümkündür. Profil oluşturduğunuz bir rolün run yönteminin sonlanmadığından emin olun.
 
 ## <a name="next-steps"></a>Sonraki Adımlar

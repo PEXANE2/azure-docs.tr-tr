@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
 ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67305058"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Media Services .NET ile kodlarken bir videoyu alt kırpın
@@ -26,7 +26,7 @@ Bir [işi](https://docs.microsoft.com/rest/api/media/jobs)kullanarak kodlarken v
 
 Aşağıdaki C# örneği bir varlık içinde bir kodlama işi gönderdiği bir videoyu kırpan bir iş oluşturur. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu konuda açıklanan adımları tamamlayabilmeniz için şunları yapmanız gerekir:
 

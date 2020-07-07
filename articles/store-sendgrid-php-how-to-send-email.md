@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67870905"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP 'den SendGrid e-posta hizmetini kullanma
@@ -37,7 +37,7 @@ SendGrid, özel tümleştirmeyi kolaylaştıran esnek API 'lerle birlikte güven
 * Müşteri sorgularını iletme
 * Uygulamanızdan e-posta bildirimleri
 
-Daha fazla bilgi için bkz [https://sendgrid.com][https://sendgrid.com]..
+Daha fazla bilgi için bkz. [https://sendgrid.com][https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid hesabı oluşturma
 
@@ -53,7 +53,7 @@ SMTP veya SendGrid tarafından belirtilen Web API 'sini kullanarak e-posta gönd
 
 ### <a name="smtp-api"></a>SMTP APı 'SI
 
-SendGrid SMTP API 'sini kullanarak e-posta göndermek için, PHP uygulamalarından e-posta göndermek için bileşen tabanlı bir kitaplık olan *Swift Göndericisini*kullanın. [Swift posta kitaplığı](https://swiftmailer.symfony.com/) v 5.3.0 'ı Indirebilirsiniz (Swift Göndericisini yüklemek Için [besteci] kullanın). Kitaplığı ile e-posta `Swift\_SmtpTransport`göndermek,, `Swift\_Mailer`, ve `Swift\_Message` sınıflarının örneklerini oluşturmayı, uygun özellikleri ayarlamayı ve `Swift\_Mailer::send` yöntemini çağırmayı içerir.
+SendGrid SMTP API 'sini kullanarak e-posta göndermek için, PHP uygulamalarından e-posta göndermek için bileşen tabanlı bir kitaplık olan *Swift Göndericisini*kullanın. [Swift posta kitaplığı](https://swiftmailer.symfony.com/) v 5.3.0 'ı Indirebilirsiniz (Swift Göndericisini yüklemek Için [besteci] kullanın). Kitaplığı ile e-posta göndermek,, `Swift\_SmtpTransport` `Swift\_Mailer` , ve sınıflarının örneklerini oluşturmayı `Swift\_Message` , uygun özellikleri ayarlamayı ve yöntemini çağırmayı içerir `Swift\_Mailer::send` .
 
 ```php
 <?php
@@ -239,7 +239,7 @@ Ek kod satırı aşağıdaki gibidir:
  $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
 ```
 
-Bu kod satırı, `Swift\_Message` nesnesine Attach metodunu çağırır ve bir dosyayı almak ve bir iletiye `fromPath` eklemek için `Swift\_Attachment` sınıfında static yöntemi kullanır.
+Bu kod satırı, nesnesine Attach metodunu çağırır ve bir `Swift\_Message` `fromPath` `Swift\_Attachment` dosyayı almak ve bir iletiye eklemek için sınıfında static yöntemi kullanır.
 
 ### <a name="web-api"></a>Web API
 

@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69997686"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics izlenecek yüzü redaksiyonu
@@ -67,11 +67,11 @@ Redactor ile çalışmaya başlamanın en kolay yolu GitHub 'da açık kaynak AM
 
     ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
-2. Seçim Redaksiyona eklemek istediğiniz kimliklerin bir yeni satır sınırlı listesini içeren bir ' Dance_idlist. txt ' dosyasını karşıya yükleyin. 
+2. Seçim Redaksiyona eklemek istediğiniz kimliklerin bir yeni satır sınırlı listesini içeren bir ' Dance_idlist.txt ' dosyasını karşıya yükleyin. 
 
     ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
-3. Seçim Ek açıklamalar. json dosyasında, sınırlama kutusu sınırlarını artırma gibi herhangi bir düzenleme yapın. 
+3. Seçim Dosyadaki annotations.js, sınırlayıcı kutu sınırlarını artırma gibi herhangi bir düzenleme yapın. 
 4. İlk geçişte çıkış varlığına sağ tıklayın, Redactor ' ı seçin ve **Redakct** moduyla çalıştırın. 
 
     ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
@@ -95,11 +95,11 @@ JSON ek açıklama verilerini ayrıştırmaya çalışan bir geliştiricisiyseni
     ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  FFMPEG 'yi [buradan](https://ffmpeg.org/download.html)indirin. Bu proje başlangıçta statik bağlama ile sürüm be1d324 (2016-10-04) ile geliştirilmiştir. 
-3.  FFmpeg. exe ve ffaraştırma. exe ' yi Azudüzeltici Aredactor. exe ile aynı çıkış klasörüne kopyalayın. 
+3.  ffmpeg.exe ve ffprobe.exe AzureMediaRedactor.exe ile aynı çıkış klasörüne kopyalayın. 
 
     ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
-4. Azudüzeltici Aredadctor. exe ' yi çalıştırın. 
+4. AzureMediaRedactor.exe çalıştırın. 
 
 ### <a name="use-the-tool"></a>Aracı kullanma
 
@@ -113,10 +113,10 @@ JSON ek açıklama verilerini ayrıştırmaya çalışan bir geliştiricisiyseni
     
     ![Yüz flulaştırma](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  Alt metin alanı, yüz kimlikleri ile güncelleştirilecek. "Idlist. txt" adlı bir dosya oluşturun ve bu kimlikleri yeni bir satır sınırlı listesi olarak oluşturun. 
+5.  Alt metin alanı, yüz kimlikleri ile güncelleştirilecek. Bu kimliklerle "idlist.txt" adlı bir dosya oluşturun ve yeni bir liste oluşturun. 
 
     >[!NOTE]
-    > Idlist. txt dosyası ANSI 'ye kaydedilmelidir. Not defteri 'ni kullanarak ANSI 'ye kaydedebilirsiniz.
+    > idlist.txt ANSI 'ye kaydedilmelidir. Not defteri 'ni kullanarak ANSI 'ye kaydedebilirsiniz.
     
 6.  Bu dosyayı 1. adımdaki çıkış varlığına yükleyin. Özgün videoyu da bu kıymete yükleyin ve birincil varlık olarak ayarlayın. 
 7.  Son Redaksiyonu yapılmış videoyu almak için bu varlık üzerinde redaksiyon işini "Redact" moduyla çalıştırın. 
@@ -125,7 +125,7 @@ JSON ek açıklama verilerini ayrıştırmaya çalışan bir geliştiricisiyseni
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

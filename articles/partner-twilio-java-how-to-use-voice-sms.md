@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 18e93ce18ed746612996399dc1aeb258abd26165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637218"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Java 'daki Voice ve SMS özellikleri için Twilio kullanma
@@ -28,7 +28,7 @@ Twilio, ses ve SMS uygulamaları oluşturmak için mevcut Web dillerinizi ve bec
 **Twilio Voice** , uygulamalarınızın telefon araması yapmasına ve almasına izin verir. **TWILIO SMS** , uygulamalarınızın SMS iletileri oluşturup almasına izin verir. **Twilio istemcisi** , uygulamalarınızın Mobil bağlantılar da dahil olmak üzere var olan Internet bağlantılarını kullanarak sesli iletişim kurmasını sağlar.
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio fiyatlandırması ve özel teklifler
-Twilio fiyatlandırması hakkında bilgi [Twilio fiyatlandırması][twilio_pricing]adresinde bulunabilir. Azure müşterileri özel bir [teklif][special_offer]alır: ücretsiz kredi olarak 1000 metin veya 1000 gelen dakika. Bu teklif için kaydolmak veya daha fazla bilgi edinmek için lütfen adresini ziyaret [https://ahoy.twilio.com/azure][special_offer]edin.
+Twilio fiyatlandırması hakkında bilgi [Twilio fiyatlandırması][twilio_pricing]adresinde bulunabilir. Azure müşterileri özel bir [teklif][special_offer]alır: ücretsiz kredi olarak 1000 metin veya 1000 gelen dakika. Bu teklif için kaydolmak veya daha fazla bilgi edinmek için lütfen adresini ziyaret edin [https://ahoy.twilio.com/azure][special_offer] .
 
 ## <a name="concepts"></a><a id="Concepts"></a>Kavramlar
 Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Reststeme API 'sidir. İstemci kitaplıkları birden çok dilde kullanılabilir; bir liste için bkz. [TWILIO API Libraries][twilio_libraries].
@@ -36,21 +36,21 @@ Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Restst
 Twilio API 'sinin önemli yönleri, Twilio Verbs ve Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio fiilleri
-API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt;söyleyin&gt; ** .
+API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt; söyleyin &gt; ** .
 
 Aşağıda, Twilio fiillerinin bir listesi verilmiştir.
 
-* Çevir: çağrıyı başka bir telefona bağlar. ** &lt;&gt;**
-* Topla: telefon tuş takımında girilen sayısal rakamları toplar. ** &lt;&gt;**
-* Kapat: bir çağrıyı sonlandırır. ** &lt;&gt;**
-* Oynat: bir ses dosyası çalar. ** &lt;&gt;**
-* Kuyruk: ' i çağıranlar kuyruğuna ekleyin. ** &lt;&gt;**
-* Duraklat: belirtilen saniye sayısı için sessizce bekler. ** &lt;&gt;**
-* Kayıt: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür. ** &lt;&gt;**
-* **Yeniden yönlendir&gt;: bir çağrının veya SMS denetiminin denetimini, farklı bir URL 'de twiml 'ye &lt;** aktarır.
-* Reddet: size faturalandırma olmadan Twilio numaranız için gelen çağrıyı reddeder. ** &lt;&gt;**
-* Deyin: bir çağrıda yapılan metni konuşmaya dönüştürür. ** &lt;&gt;**
-* SMS: SMS iletisi gönderir. ** &lt;&gt;**
+* ** &lt; Çevir &gt; **: çağrıyı başka bir telefona bağlar.
+* ** &lt; Topla &gt; **: telefon tuş takımında girilen sayısal rakamları toplar.
+* ** &lt; Kapat &gt; **: bir çağrıyı sonlandırır.
+* ** &lt; Oynat &gt; **: bir ses dosyası çalar.
+* ** &lt; Kuyruk &gt; **: ' i çağıranlar kuyruğuna ekleyin.
+* ** &lt; Duraklat &gt; **: belirtilen saniye sayısı için sessizce bekler.
+* ** &lt; Kayıt &gt; **: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
+* ** &lt; Yeniden &gt; yönlendir**: bir çağrının veya SMS denetiminin DENETIMINI, farklı bir URL 'de twiml 'ye aktarır.
+* ** &lt; Reddet &gt; **: size faturalandırma olmadan Twilio numaranız için gelen çağrıyı reddeder.
+* ** &lt; Deyin &gt; **: bir çağrıda yapılan metni konuşmaya dönüştürür.
+* ** &lt; SMS &gt; **: SMS iletisi gönderir.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML, bir çağrıyı veya SMS 'yi nasıl işleyebileceğini bilgilendirmek için Twilio fiillerini temel alan XML tabanlı yönergelerin bir kümesidir.
@@ -74,8 +74,8 @@ Bir Twilio hesabı almaya hazırsanız, [TRY Twilio][try_twilio]' de kaydolun. �
 Bir Twilio hesabı için kaydolduğunuzda, bir hesap KIMLIĞI ve bir kimlik doğrulama belirteci alırsınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap KIMLIĞINIZ ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci**etiketli alanlarda [Twilio konsolunda][twilio_console]görüntülenebilir.
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>Java uygulaması oluşturma
-1. Twilio JAR 'yi edinin ve Java derleme yolunuza ve WAR dağıtım derlemenize ekleyin. [https://github.com/twilio/twilio-java][twilio_java]' De, GitHub kaynaklarını indirebilir ve kendi jar 'nizi oluşturabilir veya önceden oluşturulmuş bir jar indirebilirsiniz (bağımlılıkları olan veya olmayan).
-2. JDK 'nin **CAcert** anahtar deposu 'un MD5 parmak izine sahip Equifax güvenli sertifika yetkilisi sertifikasını içerdiğinden emin olun 67: CB: 9D: C0:13:24:8A: 82:9B:, B2:1:6:1e: D1:1B: EC: D4 (seri numarası 35: de: F4: CF ve SHA1 parmak izi D2:32:09:14 f: 9D: 62:13:97:86:63:3A). Bu, Twilio API 'Lerini kullandığınızda çağrılan, [https://api.twilio.com][twilio_api_service] hizmet için sertifika YETKILISI (CA) sertifikasıdır. JDK 'nin **CAcert** anahtar deposu 'un doğru CA sertifikasını içerdiğini sağlama hakkında bilgi için bkz. [Java CA sertifika deposuna sertifika ekleme][add_ca_cert].
+1. Twilio JAR 'yi edinin ve Java derleme yolunuza ve WAR dağıtım derlemenize ekleyin. [https://github.com/twilio/twilio-java][twilio_java]' De, GitHub kaynaklarını indirebilir ve kendı jar 'nizi oluşturabilir veya önceden oluşturulmuş BIR jar indirebilirsiniz (bağımlılıkları olan veya olmayan).
+2. JDK 'nin **CAcert** anahtar deposu 'un MD5 parmak izine sahip Equifax güvenli sertifika yetkilisi sertifikasını içerdiğinden emin olun 67: CB: 9D: C0:13:24:8A: 82:9B:, B2:1:6:1e: D1:1B: EC: D4 (seri numarası 35: de: F4: CF ve SHA1 parmak izi D2:32:09:14 f: 9D: 62:13:97:86:63:3A). Bu, [https://api.twilio.com][twilio_api_service] Twilio API 'lerini kullandığınızda çağrılan, hizmet için sertifika yetkilisi (CA) sertifikasıdır. JDK 'nin **CAcert** anahtar deposu 'un doğru CA sertifikasını içerdiğini sağlama hakkında bilgi için bkz. [Java CA sertifika deposuna sertifika ekleme][add_ca_cert].
 
 Java için Twilio istemci kitaplığı 'nı kullanmaya yönelik ayrıntılı yönergeler, [Azure 'Da Java uygulamasında Twilio kullanarak nasıl telefon araması][howto_phonecall_java]yapılacağını bulabilirsiniz.
 
@@ -127,7 +127,7 @@ Aşağıda, **çağrı** sınıfını kullanarak nasıl giden bir çağrının y
     Call.creator(to, from, uri).create();
 ```
 
-**Call. Creator** metoduna geçirilen parametreler hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]..
+**Call. Creator** metoduna geçirilen parametreler hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] ..
 
 Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. Bunun yerine, TwiML yanıtı sağlamak için kendi sitenizi kullanabilirsiniz; daha fazla bilgi için bkz. [Azure 'Da Java uygulamasında TwiML yanıtları sağlama](#howto_provide_twiml_responses).
 
@@ -153,10 +153,10 @@ Aşağıda **ileti** sınıfı kullanılarak SMS iletisi gönderme gösterilmekt
     Message sms = Message.creator(to, from, body).create();
 ```
 
-**İleti. Creator** yöntemine geçirilen parametreler hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms]..
+**İleti. Creator** yöntemine geçirilen parametreler hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] ..
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Nasıl yapılır: kendi web sitenizde TwiML yanıtları sağlama
-Uygulamanız Twilio API 'sine bir çağrı başlattığında (örneğin, **Callcreator. Create** yöntemi aracılığıyla), Isteğiniz TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderilir. Yukarıdaki örnek Twilio tarafından sağlanmış URL 'YI [https://twimlets.com/message][twimlet_message_url]kullanır. (TwiML, Web Hizmetleri tarafından kullanılmak üzere tasarlanırken, tarayıcınızda TwiML 'yi görüntüleyebilirsiniz. Örneğin, boş ** &lt;bir yanıt&gt; ** öğesini görmek için tıklayın; [https://twimlets.com/message][twimlet_message_url] başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] bir ** &lt;deyin&gt; ** öğesi içeren bir ** &lt;yanıt&gt; ** öğesini görmek için tıklayın.)
+Uygulamanız Twilio API 'sine bir çağrı başlattığında (örneğin, **Callcreator. Create** yöntemi aracılığıyla), Isteğiniz TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderilir. Yukarıdaki örnek Twilio tarafından sağlanmış URL 'YI kullanır [https://twimlets.com/message][twimlet_message_url] . (TwiML, Web Hizmetleri tarafından kullanılmak üzere tasarlanırken, tarayıcınızda TwiML 'yi görüntüleyebilirsiniz. Örneğin, boş bir [https://twimlets.com/message][twimlet_message_url] ** &lt; Yanıt &gt; ** öğesini görmek için öğesine tıklayın; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] bir ** &lt; deyin &gt; ** öğesi içeren bir ** &lt; Yanıt &gt; ** öğesini görmek için tıklayın.)
 
 Twilio tarafından sağlanmış URL 'ye güvenmek yerine, HTTP yanıtlarını döndüren kendi URL sitenizi oluşturabilirsiniz. Siteyi, HTTP yanıtlarını döndüren herhangi bir dilde oluşturabilirsiniz; Bu konuda, URL 'YI bir JSP sayfasında barındırabileceksiniz varsayılmaktadır.
 
@@ -183,9 +183,9 @@ Aşağıdaki JSP sayfası, bazı metinleri belirten, birkaç duraklatan oluşan 
     </Response>
 ```
 
-**Apiversion** parametresi, Twilio ses ISTEKLERINDE (SMS istekleri değil) kullanılabilir. Twilio ses ve SMS istekleri için kullanılabilir istek parametrelerini görmek için sırasıyla bkz <https://www.twilio.com/docs/api/twiml/twilio_request> . ve <https://www.twilio.com/docs/api/twiml/sms/twilio_request>. **RoleName** ortam değişkeni, Azure dağıtımının bir parçası olarak kullanılabilir. ( **System. getenv**'den alınabilmeleri için özel ortam değişkenleri eklemek Istiyorsanız, [çeşitli rol yapılandırma ayarlarındaki][misc_role_config_settings]ortam değişkenleri bölümüne bakın.)
+**Apiversion** parametresi, Twilio ses ISTEKLERINDE (SMS istekleri değil) kullanılabilir. Twilio ses ve SMS istekleri için kullanılabilir istek parametrelerini görmek için <https://www.twilio.com/docs/api/twiml/twilio_request> sırasıyla bkz. ve <https://www.twilio.com/docs/api/twiml/sms/twilio_request> . **RoleName** ortam değişkeni, Azure dağıtımının bir parçası olarak kullanılabilir. ( **System. getenv**'den alınabilmeleri için özel ortam değişkenleri eklemek Istiyorsanız, [çeşitli rol yapılandırma ayarlarındaki][misc_role_config_settings]ortam değişkenleri bölümüne bakın.)
 
-JSP sayfanız TwiML yanıtları sağlamak üzere ayarlandıktan sonra, **Call. Creator** metoduna geçirilen URL olarak JSP sayfasının URL 'sini kullanın. Örneğin, Azure 'da barındırılan bir hizmete dağıtılan MyTwiML adlı bir Web uygulamanız varsa ve JSP sayfasının adı mytwiml. jsp ise, URL, aşağıda gösterildiği gibi **Call. Creator** öğesine geçirilebilir:
+JSP sayfanız TwiML yanıtları sağlamak üzere ayarlandıktan sonra, **Call. Creator** metoduna geçirilen URL olarak JSP sayfasının URL 'sini kullanın. Örneğin, Azure 'da barındırılan bir hizmete dağıtılan MyTwiML adlı bir Web uygulamanız varsa ve JSP sayfasının adı mytwiml.jsp ise, URL, aşağıda gösterildiği gibi **Call. Creator** öğesine geçirilebilir:
 
 ```java
     // Declare To and From numbers and the URL of your JSP page

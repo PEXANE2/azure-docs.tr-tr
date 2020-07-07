@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67672171"
 ---
 # <a name="network-monitoring-solutions"></a>Ağ izleme çözümleri 
@@ -52,7 +52,7 @@ Performans Izleyicisi NPM 'nin bir parçasıdır ve bulut, karma ve şirket içi
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure Izleyici günlüklerinde bir Ağ Performansı İzleyicisi çözümü yapılandırma](../azure-monitor/insights/network-performance-monitor.md) 
-* [Uygulama alanları](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [Kullanım örnekleri](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * Ürün güncelleştirmeleri:
   * [Şubat 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
   * [Ağustos 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
@@ -70,7 +70,7 @@ ExpressRoute için NPM, Azure özel eşleme ve Microsoft eşleme bağlantıları
 
 ![Bölge genelinde trafiği gösteren coğrafi eşleme](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma](../expressroute/how-to-npm.md)
 * [Blog gönderisi](https://aka.ms/NPMExRmonitorGA)
@@ -86,7 +86,7 @@ Hizmet bağlantısı izleme ile artık uygulamaların erişilebilirliği test ed
 * Ağdaki etkin noktaları belirleme, bu durum kötü uygulama performansına neden olabilir
 * Microsoft Office 365, Dynamics 365, Skype Kurumsal ve diğer Microsoft Hizmetleri için yerleşik testler kullanarak Office 365 uygulamalarına ulaşılabilirlik izleyin
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [İzleme hizmeti uç noktaları için Ağ Performansı İzleyicisi yapılandırma](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blog gönderisi](https://aka.ms/svcendptmonitor)

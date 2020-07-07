@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70072316"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management ilkeleri
@@ -38,7 +38,7 @@ Etkin bir ifadeye tıkladığınızda, açıklama görünümündeki imlecin bulu
 > 
 > 
 
-Yapılandırma `inbound`, `backend` `outbound`, ve `on-error`olarak bölünür. Belirtilen ilke deyimlerinin serisi bir istek ve yanıt için sırayla yürütülür.
+Yapılandırma,, ve olarak `inbound` bölünür `backend` `outbound` `on-error` . Belirtilen ilke deyimlerinin serisi bir istek ve yanıt için sırayla yürütülür.
 
 ```xml
 <policies>
@@ -58,7 +58,7 @@ Yapılandırma `inbound`, `backend` `outbound`, ve `on-error`olarak bölünür. 
 </policies> 
 ```
 
-Bir isteğin işlenmesi sırasında bir hata `inbound`oluşursa,, `backend`, veya `outbound` bölümlerindeki kalan adımlar atlanır ve yürütme `on-error` bölümündeki deyimlere atlar. `on-error` Bölümüne ilke deyimleri yerleştirerek, `context.LastError` özelliğini kullanarak hatayı gözden geçirebilir, `set-body` ilkeyi kullanarak hata yanıtını inceleyebilir ve özelleştirebilir ve bir hata oluşursa ne olacağını yapılandırabilirsiniz. Yerleşik adımlar ve ilke deyimlerinin işlenmesi sırasında ortaya çıkabilecek hatalar için hata kodları vardır. Daha fazla bilgi için bkz. [API Management Ilkelerinde hata işleme](/azure/api-management/api-management-error-handling-policies).
+Bir isteğin işlenmesi sırasında bir hata oluşursa,, `inbound` `backend` , veya bölümlerindeki kalan adımlar `outbound` atlanır ve yürütme bölümündeki deyimlere atlar `on-error` . Bölümüne ilke deyimleri yerleştirerek `on-error` , özelliğini kullanarak hatayı gözden geçirebilir `context.LastError` , ilkeyi kullanarak hata yanıtını inceleyebilir ve özelleştirebilir `set-body` ve bir hata oluşursa ne olacağını yapılandırabilirsiniz. Yerleşik adımlar ve ilke deyimlerinin işlenmesi sırasında ortaya çıkabilecek hatalar için hata kodları vardır. Daha fazla bilgi için bkz. [API Management Ilkelerinde hata işleme](/azure/api-management/api-management-error-handling-policies).
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>İlkeleri yapılandırma
 
@@ -88,15 +88,15 @@ Genel düzeyde bir ilke ve API için yapılandırılmış bir ilke varsa, her ik
 </policies>
 ```
 
-Yukarıdaki örnek ilke tanımında, daha yüksek ilkelerden `cross-domain` önce deyimin ardından `find-and-replace` ilke gelmelidir. 
+Yukarıdaki örnek ilke tanımında, `cross-domain` daha yüksek ilkelerden önce deyimin ardından `find-and-replace` ilke gelmelidir. 
 
 ### <a name="restrict-incoming-requests"></a>Gelen istekleri kısıtla
 
-Gelen istekleri belirtilen IP adreslerine kısıtlamak üzere yeni bir ifade eklemek için imleci `inbound` XML öğesinin içeriğinin içine yerleştirin ve **arayanın IP 'lerini kısıtla** bildirimine tıklayın.
+Gelen istekleri belirtilen IP adreslerine kısıtlamak üzere yeni bir ifade eklemek için imleci XML öğesinin içeriğinin içine yerleştirin `inbound` ve **arayanın IP 'lerini kısıtla** bildirimine tıklayın.
 
 ![Kısıtlama ilkeleri][policies-restrict]
 
-Bu, deyimin nasıl yapılandırılacağı hakkında rehberlik sağlayan `inbound` ÖĞESINE bir XML kod parçacığı ekler.
+Bu, `inbound` deyimin nasıl yapılandırılacağı hakkında rehberlik sağlayan öğesine BIR XML kod parçacığı ekler.
 
 ```xml
 <ip-filter action="allow | forbid">

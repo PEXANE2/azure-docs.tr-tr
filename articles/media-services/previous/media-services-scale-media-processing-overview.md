@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
 ms.openlocfilehash: 780d3ab5047bff321d0c554880ba2995bcf25524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70102904"
 ---
 # <a name="scaling-media-processing-overview"></a>Medya işlemeyi ölçeklendirmeye genel bakış 
@@ -37,7 +37,7 @@ Aşağıdaki tablo, farklı kodlama hızları arasından seçim yaparken bir kar
 | **S2**|Tek bit hızı ve çoklu bit hızı kodlaması.<br/>SD ve HD kodlaması için normal kullanım.|"H264 Single bit hızı 720p" önayar ile kodlama 6 dakikadan fazla sürer.<br/><br/>"H264 çoklu bit hızı 720p" ön ayarıyla kodlama 12 dakika sürer.|
 | **S3**|Tek bit hızı ve çoklu bit hızı kodlaması.<br/>Tam HD ve 4K çözünürlük videoları. Zamana duyarlı, kodlamayı daha hızlı bir şekilde kapatma.|"H264 Single bit hızı 1080p" ön ayarı ile kodlama işlemi yaklaşık 3 dakika sürer.<br/><br/>"H264 çoklu bit hızı 1080p" ön ayarı ile kodlama yaklaşık 8 dakika sürer.|
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 > [!IMPORTANT]
 > Bu bölümde açıklanan konuları gözden geçirin.  
 > 
@@ -59,7 +59,7 @@ Kotalar ve sınırlamalar ve bir destek biletini açma hakkında bilgi için bkz
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [Portal](media-services-portal-scale-media-processing.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [KALANı](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
@@ -71,6 +71,6 @@ Kotalar ve sınırlamalar ve bir destek biletini açma hakkında bilgi için bkz
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

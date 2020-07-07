@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
 ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67707768"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB Serisi sanal makinelere genel bakış
@@ -61,7 +61,7 @@ Aşağıdaki diyagramda, Azure Hiper Yöneticisi ve HB Serisi VM için ayrılan 
 | Azure depolama desteği       | STD + Premium (en fazla 4 disk) |
 | SRLOV RDMA için işletim sistemi desteği   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
 | Azure CycleCloud desteği    | Yes                         |
-| Azure Batch desteği         | Yes                         |
+| Azure Batch desteği         | Evet                         |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

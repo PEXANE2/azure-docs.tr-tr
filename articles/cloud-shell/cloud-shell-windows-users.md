@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67204131"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Windows kullanıcıları için Azure Cloud Shell'de PowerShell
@@ -30,13 +30,13 @@ Bu değişiklik ile, bir Windows PowerShell deneyiminde beklenildiği ile karş�
 ## <a name="file-system-case-sensitivity"></a>Dosya sistemi büyük/küçük harf duyarlılığı
 
 Dosya sistemi Windows 'da büyük/küçük harfe duyarlıdır, ancak Linux üzerinde dosya sistemi büyük/küçük harfe duyarlıdır.
-Daha `file.txt` önce `FILE.txt` ve aynı dosyada olduğu kabul edildi, ancak artık farklı dosya olarak kabul edilir.
-Dosya sisteminde uygun büyük/küçük `tab-completing` harf kullanılması gerekir.
-`tab-completing` Cmdlet adları, parametreleri ve değerleri gibi PowerShell 'e özgü deneyimler, büyük/küçük harfe duyarlı değildir.
+Daha önce `file.txt` ve `FILE.txt` aynı dosyada olduğu kabul edildi, ancak artık farklı dosya olarak kabul edilir.
+Dosya sisteminde uygun büyük/küçük harf kullanılması gerekir `tab-completing` .
+`tab-completing`Cmdlet adları, parametreleri ve değerleri gibi PowerShell 'e özgü deneyimler, büyük/küçük harfe duyarlı değildir.
 
 ## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows PowerShell diğer adları vs Linux yardımcı programları
 
-Bazı mevcut PowerShell diğer adları,,, vb. `cat`yerleşik Linux komutlarıyla`ls` `sort` `sleep`aynı ada sahiptir. PowerShell Core 6 ' da, yerleşik Linux komutlarıyla çakışan diğer adlar kaldırılmıştır.
+Bazı mevcut PowerShell diğer adları,,, `cat` `ls` `sort` vb. yerleşik Linux komutlarıyla aynı ada sahiptir `sleep` . PowerShell Core 6 ' da, yerleşik Linux komutlarıyla çakışan diğer adlar kaldırılmıştır.
 Aşağıda, kaldırılan ortak diğer adlar ve bunların eşdeğer komutları verilmiştir:  
 
 |Diğer ad kaldırıldı   |Denk komut   |
@@ -59,13 +59,13 @@ Artık Kullanıcı $HOME Dizin, oturumlarda de kalıcı hale getirilir.
 ## <a name="powershell-profile"></a>PowerShell profili
 
 Varsayılan olarak, bir kullanıcının PowerShell profili oluşturulmaz.
-Profilinizi oluşturmak için altında `PowerShell` `$HOME/.config`bir dizin oluşturun.
+Profilinizi oluşturmak için altında bir dizin oluşturun `PowerShell` `$HOME/.config` .
 
 ```azurepowershell-interactive
 mkdir (Split-Path $profile.CurrentUserAllHosts)
 ```
 
-Altında `$HOME/.config/PowerShell`, profil dosyalarınızı oluşturabilir `profile.ps1` ve/veya. `Microsoft.PowerShell_profile.ps1`
+Altında `$HOME/.config/PowerShell` , profil dosyalarınızı oluşturabilir `profile.ps1` ve/veya `Microsoft.PowerShell_profile.ps1` .
 
 ## <a name="whats-new-in-powershell-core-6"></a>PowerShell Core 6 ' daki yenilikler
 

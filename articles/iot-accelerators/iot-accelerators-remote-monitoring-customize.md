@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68608013"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Uzaktan Izleme çözüm Hızlandırıcısını özelleştirme
@@ -23,7 +23,7 @@ Bu makalede, kaynak koda nasıl erişebileceğinizi ve uzaktan Izleme çözümü
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>Kullanıcı arabirimi için yerel bir geliştirme ortamı hazırlama
 
-Uzaktan Izleme çözümü Hızlandırıcısı Kullanıcı arabirimi kodu, tepki. js çerçevesi kullanılarak uygulanır. Kaynak kodu [Azure-IoT-PCs-Remote-Monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub deposunda bulabilirsiniz.
+Uzaktan Izleme çözümü Hızlandırıcısı Kullanıcı arabirimi kodu, React.js çerçevesi kullanılarak uygulanır. Kaynak kodu [Azure-IoT-PCs-Remote-Monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub deposunda bulabilirsiniz.
 
 Kullanıcı arabiriminde değişiklik yapmak için, bir kopyasını yerel olarak çalıştırabilirsiniz. Telemetriyi alma gibi eylemleri gerçekleştirmek için yerel kopya çözümün dağıtılan örneğine bağlanır.
 
@@ -31,7 +31,7 @@ Aşağıdaki adımlarda, UI geliştirmesi için yerel bir ortam ayarlama işlemi
 
 1. **Bilgisayar** CLI 'sını kullanarak çözüm hızlandırıcının **temel** bir örneğini dağıtın. Dağıtımınızın adını ve sanal makine için verdiğiniz kimlik bilgilerini bir yere unutmayın. Daha fazla bilgi için bkz. [CLI kullanarak dağıtma](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Çözümünüzde mikro hizmetleri barındıran sanal makineye SSH erişimini etkinleştirmek için Azure portal veya Azure Cloud Shell kullanın. Örneğin:
+1. Çözümünüzde mikro hizmetleri barındıran sanal makineye SSH erişimini etkinleştirmek için Azure portal veya Azure Cloud Shell kullanın. Örnek:
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -39,14 +39,14 @@ Aşağıdaki adımlarda, UI geliştirmesi için yerel bir ortam ayarlama işlemi
 
     Yalnızca test ve geliştirme sırasında SSH erişimini etkinleştirin. SSH 'yi etkinleştirirseniz, [kullanmayı bitirdikten hemen sonra devre dışı bırakmanız gerekir](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
-1. Sanal makinenizin adını ve genel IP adresini bulmak için Azure portal veya Azure Cloud Shell kullanın. Örneğin:
+1. Sanal makinenizin adını ve genel IP adresini bulmak için Azure portal veya Azure Cloud Shell kullanın. Örnek:
 
     ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
 
-1. Sanal makinenize bağlanmak için SSH kullanın. Önceki adımda bulunan IP adresini ve çözümü dağıtmak için **bilgisayarları** çalıştırdığınızda verdiğiniz kimlik bilgilerini kullanın. `ssh` Komut Azure Cloud Shell kullanılabilir.
+1. Sanal makinenize bağlanmak için SSH kullanın. Önceki adımda bulunan IP adresini ve çözümü dağıtmak için **bilgisayarları** çalıştırdığınızda verdiğiniz kimlik bilgilerini kullanın. `ssh`Komut Azure Cloud Shell kullanılabilir.
 
 1. Yerel UX 'in bağlanmasına izin vermek için, sanal makinedeki bash kabuğu 'nda aşağıdaki komutları çalıştırın:
 
@@ -64,7 +64,7 @@ Aşağıdaki adımlarda, UI geliştirmesi için yerel bir ortam ayarlama işlemi
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-1. Bir komut isteminde, `azure-iot-pcs-remote-monitoring-webui` klasörün yerel kopyasına gidin.
+1. Bir komut isteminde, klasörün yerel kopyasına gidin `azure-iot-pcs-remote-monitoring-webui` .
 
 1. Gerekli kitaplıkları yüklemek ve Kullanıcı arabirimini yerel olarak çalıştırmak için aşağıdaki komutları çalıştırın:
 
@@ -73,13 +73,13 @@ Aşağıdaki adımlarda, UI geliştirmesi için yerel bir ortam ayarlama işlemi
     npm start
     ```
 
-1. Önceki komut, Kullanıcı arabirimini http:\//localhost: 3000/Dashboard konumunda yerel olarak çalıştırır. Site çalışırken kodu düzenleyebilir ve dinamik olarak güncelleştirme makalesine bakabilirsiniz.
+1. Önceki komut, Kullanıcı arabirimini http: \/ /localhost: 3000/Dashboard konumunda yerel olarak çalıştırır. Site çalışırken kodu düzenleyebilir ve dinamik olarak güncelleştirme makalesine bakabilirsiniz.
 
 ## <a name="customize-the-layout"></a>Düzeni özelleştirme
 
 Uzaktan Izleme çözümünde bulunan her sayfa, kaynak kodda *panel* olarak adlandırılan bir denetim kümesinden oluşur. **Pano** sayfası beş panelden oluşur: genel bakış, harita, uyarılar, telemetri ve analiz. [Bilgisayarlar-Remote-Monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub deposundaki her bir sayfayı ve bunların panellerini tanımlayan kaynak kodunu bulabilirsiniz. Örneğin, **Pano** sayfasını, yerleşimini ve sayfadaki panelleri tanımlayan kod [src/Components/Pages/Dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) klasöründe bulunur.
 
-Panolar kendi düzen ve boyutlandırlamalarını yönettiğinden, sayfanın yerleşimini kolayca değiştirebilirsiniz. `src/components/pages/dashboard/dashboard.js` Dosyadaki **PageContent** öğesinde aşağıdaki değişiklikleri yapın:
+Panolar kendi düzen ve boyutlandırlamalarını yönettiğinden, sayfanın yerleşimini kolayca değiştirebilirsiniz. Dosyadaki **PageContent** öğesinde aşağıdaki değişiklikleri yapın `src/components/pages/dashboard/dashboard.js` :
 
 * Harita ve telemetri panellerinin konumlarını değiştirin.
 * Harita ve analiz panellerinin göreli genişliklerini değiştirin.
@@ -243,9 +243,9 @@ Daha sonra her panelde farklı telemetri görüntüleyebilirsiniz:
 
 Aşağıdaki adımlarda, var olan bir paneli yineleme, değiştirme ve değiştirilen sürümü kullanma ana hatlarıyla gösterilmiştir. Adımlar bir örnek olarak **Uyarılar** panelini kullanır:
 
-1. Deponun yerel kopyasında, `src/components/pages/dashboard/panels` klasöründeki **Uyarılar** klasörünün bir kopyasını oluşturun. Yeni kopya **cust_alerts**adlandırın.
+1. Deponun yerel kopyasında, klasöründeki **Uyarılar** klasörünün bir kopyasını oluşturun `src/components/pages/dashboard/panels` . Yeni kopya **cust_alerts**adlandırın.
 
-1. **Cust_alerts** klasöründeki **alertspanel. js** dosyasında, **custalertspanel**olarak kullanılacak sınıfın adını düzenleyin:
+1. **Cust_alerts** klasöründeki **alertsPanel.js** dosyasında, **custalertspanel**olarak kullanılacak sınıfın adını düzenleyin:
 
     ```javascript
     export class CustAlertsPanel extends Component {
@@ -257,7 +257,7 @@ Aşağıdaki adımlarda, var olan bir paneli yineleme, değiştirme ve değişti
     export * from './cust_alerts';
     ```
 
-1. Dosyadaki ile `CustAlertsPanel` değiştirin `alertsPanel` `src/components/pages/dashboard/dashboard.js`
+1. `alertsPanel`Dosyadaki ile değiştirin `CustAlertsPanel` `src/components/pages/dashboard/dashboard.js` :
 
     ```javascript
     import {
@@ -308,9 +308,9 @@ Aşağıdaki ekran görüntüsünde, **Uyarılar** panelinin yeni sürümü gös
 
 ## <a name="customize-the-telemetry-chart"></a>Telemetri grafiğini özelleştirme
 
-`src/components/pages/dashboard/panels/telemtry` Klasördeki dosyalar, **Pano** sayfasında telemetri grafiğini tanımlar. Kullanıcı arabirimi, `src/services/telemetryService.js` dosyadaki çözüm arka ucundan Telemetriyi alır. Aşağıdaki adımlarda, telemetri grafiğinde görüntülenecek zaman döneminin 15 ila 5 dakikaya nasıl değiştirileceği gösterilmektedir:
+Klasördeki dosyalar, `src/components/pages/dashboard/panels/telemtry` **Pano** sayfasında telemetri grafiğini tanımlar. Kullanıcı arabirimi, dosyadaki çözüm arka ucundan Telemetriyi alır `src/services/telemetryService.js` . Aşağıdaki adımlarda, telemetri grafiğinde görüntülenecek zaman döneminin 15 ila 5 dakikaya nasıl değiştirileceği gösterilmektedir:
 
-1. `src/services/telemetryService.js` Dosyasında, **getTelemetryByDeviceIdP15M**adlı işlevi bulun. Bu işlevin kopyasını oluşturun ve kopyayı aşağıdaki şekilde değiştirin:
+1. `src/services/telemetryService.js`Dosyasında, **getTelemetryByDeviceIdP15M**adlı işlevi bulun. Bu işlevin kopyasını oluşturun ve kopyayı aşağıdaki şekilde değiştirin:
 
     ```javascript
     static getTelemetryByDeviceIdP5M(devices = []) {
@@ -335,7 +335,7 @@ Telemetri grafiği artık beş dakikalık telemetri verilerini gösterir:
 
 ## <a name="add-a-new-kpi"></a>Yeni KPI Ekle
 
-**Pano** sayfasında KPI 'lar **analiz** panelinde görüntülenir. Bu KPI 'ler `src/components/pages/dashboard/dashboard.js` dosyada hesaplanır. KPI 'ler `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` dosya tarafından işlenir. Aşağıdaki adımlarda, **Pano** sayfasında yenı bir KPI değerinin nasıl hesaplanacağı ve işlenmesi anlatılmaktadır. Gösterilen örnek, uyarı uyarıları KPI 'sinde yeni bir yüzde değişikliği eklemektir:
+**Pano** sayfasında KPI 'lar **analiz** panelinde görüntülenir. Bu KPI 'ler `src/components/pages/dashboard/dashboard.js` dosyada hesaplanır. KPI 'ler dosya tarafından işlenir `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` . Aşağıdaki adımlarda, **Pano** sayfasında yenı bir KPI değerinin nasıl hesaplanacağı ve işlenmesi anlatılmaktadır. Gösterilen örnek, uyarı uyarıları KPI 'sinde yeni bir yüzde değişikliği eklemektir:
 
 1. `src/components/pages/dashboard/dashboard.js` dosyasını açın. **InitialState** nesnesini şu şekilde bir **Warningalertschange** özelliği içerecek şekilde değiştirin:
 
@@ -435,7 +435,7 @@ Telemetri grafiği artık beş dakikalık telemetri verilerini gösterir:
       t={t} />
     ```
 
-Artık `src/components/pages/dashboard/dashboard.js` dosyadaki değişiklikleri tamamladınız. Aşağıdaki adımlarda, yeni KPI 'Yı göstermek için `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` dosyada yapılacak değişiklikler açıklanır:
+Artık dosyadaki değişiklikleri tamamladınız `src/components/pages/dashboard/dashboard.js` . Aşağıdaki adımlarda, `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` yeni KPI 'yı göstermek için dosyada yapılacak değişiklikler açıklanır:
 
 1. Aşağıdaki kod satırını, yeni KPI değerini şu şekilde almak için değiştirin:
 

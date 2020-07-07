@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109377"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Karma kimlik yaşam döngüsünü planlayın
@@ -61,7 +61,7 @@ Bu gereksinimleri tanımlarken, en azından aşağıdaki sorulara yanıt verildi
 ## <a name="synchronization-management"></a>Eşitleme yönetimi
 Tüm kimlik sağlayıcılarını getirebilmek ve bunları eşitlenmiş halde tutmak için bir Identity Manager hedeflerinden biri. Verileri bir yetkili ana kimlik sağlayıcısına göre eşitlenmiş halde tutabilirsiniz. Bir karma kimlik senaryosunda, eşitlenmiş bir yönetim modeliyle tüm Kullanıcı ve cihaz kimliklerini şirket içi sunucuda yönetebilir ve hesapları ve isteğe bağlı olarak parolaları buluta eşitleyebilirsiniz. Kullanıcı, bulutta olduğu gibi şirket içinde aynı parolayı girer ve oturum açma sırasında parola kimlik çözümü tarafından doğrulanır. Bu model bir dizin eşitleme aracı kullanır.
 
-![uygun tasarıma](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) dizin eşitlemesi karma kimlik çözümünüzün eşitlenmesi aşağıdaki soruların yanıtlanmasına dikkat edin:
+![](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)uygun tasarıma dizin eşitlemesi karma kimlik çözümünüzün eşitlenmesi aşağıdaki soruların yanıtlanmasına dikkat edin:
 *    Karma kimlik çözümü için kullanılabilen eşitleme çözümleri nelerdir?
 *    Çoklu oturum açma özellikleri kullanılabilir mi?
 *    B2B ve B2C arasında kimlik Federasyonu seçenekleri nelerdir?

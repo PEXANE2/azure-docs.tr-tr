@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70073535"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Azure API Management'ta abonelik oluşturma
@@ -25,7 +25,7 @@ API 'Leri Azure API Management aracılığıyla yayımladığınızda, abonelik 
 
 Bu makalede Azure portal abonelik oluşturma adımları anlatılmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları gerçekleştirmek için önkoşullar aşağıdaki gibidir:
 

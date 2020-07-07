@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70080611"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure sanal makineleri için performans tanılamaları
@@ -37,10 +37,10 @@ Windows 10, Windows 8, Windows 8 Enterprise, Windows 8 Pro, Windows 8.1, Windows
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Market Image), centos 6,5 [`*`], 7,6, rhel 7,2, 7,5, 8,0 [`*`], ubuntu 14,04, 16,04, 18,04, detem 8, 9, 10 [`*`], SLES 12 SP4 [`*`]
+Oracle Linux Server 6,10 [ `*` ], 7,3, 7,6, 7,5 (Oracle-Database-Ee 13,8 Market Image), CentOS 6,5 [ `*` ], 7,6, RHEL 7,2, 7,5, 8,0 [ `*` ], ubuntu 14,04, 16,04, 18,04, detem 8, 9, 10 [ `*` ], SLES 12 SP4 [ `*` ]
 
 >[!Note]
->[`*`] Lütfen [bilinen sorunlara](how-to-use-perfinsights-linux.md#known-issues) bakın
+>[ `*` ] Lütfen [bilinen sorunlara](how-to-use-perfinsights-linux.md#known-issues) bakın
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>VM 'nize performans tanılamayı yükleyip çalıştırın
 
@@ -80,13 +80,13 @@ Aşağıdaki analiz senaryoları Azure portal kullanılabilir. Sahip olduğunuz 
     Hızlı performans analizinde tüm denetimleri içerir ve yüksek kaynak tüketimini izler. Yüksek CPU, bellek ve disk kullanımı gibi genel performans sorunlarını gidermek için bu sürümü kullanın. Bu analiz, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. Daha fazla [Windows](https://aka.ms/perfinsights/vmslow) veya [Linux](https://aka.ms/perfinsightslinux/vmslow) öğrenin
 
 * **Gelişmiş performans analizi**`*`  
-    , Performans analizinde tüm denetimleri içerir ve aşağıdaki bölümlerde listelendiği gibi izlemeleri bir veya daha fazla toplar. Ek izlemeler gerektiren karmaşık sorunları gidermek için bu senaryoyu kullanın. Bu senaryonun uzun süreler için çalıştırılması, sanal makinenin boyutuna ve seçilen izleme seçeneklerine bağlı olarak tanılama çıktısının genel boyutunu artıracaktır. Bu çözümlemenin çalıştırılması, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. [Daha fazlasını öğrenin](https://aka.ms/perfinsights/advanced)
+    , Performans analizinde tüm denetimleri içerir ve aşağıdaki bölümlerde listelendiği gibi izlemeleri bir veya daha fazla toplar. Ek izlemeler gerektiren karmaşık sorunları gidermek için bu senaryoyu kullanın. Bu senaryonun uzun süreler için çalıştırılması, sanal makinenin boyutuna ve seçilen izleme seçeneklerine bağlı olarak tanılama çıktısının genel boyutunu artıracaktır. Bu çözümlemenin çalıştırılması, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. [Daha fazla bilgi edinin](https://aka.ms/perfinsights/advanced)
 
 * **Azure dosyaları Analizi**`*`  
-    Performans analizinde tüm denetimleri içerir ve bir ağ izleme ve SMB sayaçlarını yakalar. Azure dosyalarının performansı sorunlarını gidermek için bu senaryoyu kullanın. Bu çözümlemenin çalıştırılması, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. [Daha fazlasını öğrenin](https://aka.ms/perfinsights/azurefiles)
+    Performans analizinde tüm denetimleri içerir ve bir ağ izleme ve SMB sayaçlarını yakalar. Azure dosyalarının performansı sorunlarını gidermek için bu senaryoyu kullanın. Bu çözümlemenin çalıştırılması, seçilen süreye bağlı olarak 30 saniye ila 15 dakika sürer. [Daha fazla bilgi edinin](https://aka.ms/perfinsights/azurefiles)
 
 >[!Note]
->[`*`] Bu analiz senaryoları yalnızca Windows 'da desteklenir.
+>[ `*` ] Bu analiz senaryoları yalnızca Windows 'da desteklenir.
 
 ![Performans Tanılama dikey penceresinde tanılama bölmesini Çalıştır 'ın ekran görüntüsü](media/performance-diagnostics/run-diagnostics-pane.png)
 
@@ -109,7 +109,7 @@ Performans Tanılama yüklenmeye başladığı için bir bildirim görüntüleni
 Analiz tamamlandıktan sonra, aşağıdaki öğeler Azure tablolarına ve belirtilen depolama hesabındaki bir ikili büyük nesne (BLOB) kapsayıcısına yüklenir:
 
 * Çalışma hakkındaki tüm Öngörüler ve ilgili bilgiler
-* Windows üzerinde ( **PerformanceDiagnostics_yyyy-mm-dd_hh-mm-ss-fff. zip** ) bir çıktı sıkıştırılmış (. zip) dosyası ve günlük dosyaları içeren Linux 'ta bir tar Ball dosyası ( **PerformanceDiagnostics_yyyy-AA-dd_hh-mm-ss-fff. tar. gz** )
+* Linux üzerinde ( **PerformanceDiagnostics_yyyy-AA-dd_hh-mm-ss-fff. tar. gz** ), günlük dosyalarını içeren bir çıkış sıkıştırılmış (. zip) dosyası ( **PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ).
 * HTML raporu
 
 Karşıya yüklemeden sonra, Azure portal yeni bir tanılama raporu listelenir.

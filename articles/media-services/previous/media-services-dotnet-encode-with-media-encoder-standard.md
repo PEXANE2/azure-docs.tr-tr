@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69016580"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET kullanarak Media Encoder Standard bir varlık kodla  
@@ -46,9 +46,9 @@ Media Encoder Standard, [burada](https://go.microsoft.com/fwlink/?linkid=618336&
 ### <a name="input-and-output-metadata"></a>Giriş ve çıkış meta verileri
 MES kullanarak bir giriş varlığını (veya varlıkları) kodlarken, bu kodlama görevinin başarıyla tamamlanmasında bir çıkış varlığı alırsınız. Çıktı varlığı, kullandığınız kodlama ön ayarını temel alarak video, ses, küçük resim, bildirim vb. içerir.
 
-Çıktı varlığı, giriş varlığı hakkında meta veriler içeren bir dosya da içerir. Meta veri XML dosyasının adı şu biçimdedir: <asset_id>_metadata. xml (örneğin, 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. xml); burada <Asset_id>, giriş varlığının AssetId değeridir. Bu giriş meta veri XML şeması [burada](media-services-input-metadata-schema.md)açıklanmıştır.
+Çıktı varlığı, giriş varlığı hakkında meta veriler içeren bir dosya da içerir. Meta veri XML dosyasının adı şu biçimdedir: <asset_id # C1_metadata.xml (örneğin, 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml); burada <Asset_id>, giriş varlığının AssetId değeridir. Bu giriş meta veri XML şeması [burada](media-services-input-metadata-schema.md)açıklanmıştır.
 
-Çıktı varlığı Ayrıca çıkış varlığı hakkında meta veriler içeren bir dosya içerir. Meta veri XML dosyasının adı şu biçimdedir: <source_file_name>_manifest. xml (örneğin, BigBuckBunny_manifest. xml). Bu çıktı meta veri XML şeması [burada](media-services-output-metadata-schema.md)açıklanmıştır.
+Çıktı varlığı Ayrıca çıkış varlığı hakkında meta veriler içeren bir dosya içerir. Meta veri XML dosyasının adı şu biçimdedir: <source_file_name # C1_manifest.xml (örneğin, BigBuckBunny_manifest.xml). Bu çıktı meta veri XML şeması [burada](media-services-output-metadata-schema.md)açıklanmıştır.
 
 İki meta veri dosyasından birini incelemek istiyorsanız SAS Konumlandırıcı oluşturabilir ve dosyayı yerel bilgisayarınıza indirebilirsiniz. SAS Konumlandırıcı oluşturma ve Media Services .NET SDK uzantılarını kullanarak bir dosyayı indirme hakkında bir örnek bulabilirsiniz.
 
@@ -206,10 +206,10 @@ namespace MediaEncoderStandardSample
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[.Net](media-services-dotnet-generate-thumbnail-with-mes.md)
-[Media Services kodlamaya genel bakış](media-services-encode-asset.md) ile Media Encoder Standard kullanarak küçük resim oluşturma
+.NET ile Media Encoder Standard [kullanarak küçük resim oluşturma](media-services-dotnet-generate-thumbnail-with-mes.md) 
+ [Media Services kodlamaya genel bakış](media-services-encode-asset.md)
 

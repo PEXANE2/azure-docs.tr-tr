@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69015516"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>.NET çoklu bit hızına sahip akışlar oluşturmak üzere Azure Media Services’i kullanarak canlı akış gerçekleştirme
@@ -87,7 +87,7 @@ Bu makalede aşağıdakilerin nasıl gerçekleştirileceği gösterilmektedir:
 7. Maskeleme görüntülerini gösterin ve gizleyin. Reklamları başlatın ve durdurun. Uzun süre çalışan API'ler kullanılacaktır.
 8. Kanalınızı ve ilişkili tüm kaynakları temizleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir.
 
 * Bir Azure hesabı. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Ücretli Azure hizmetlerini denemek için kullanabileceğiniz krediler alırsınız. Krediler bitmiş olsa bile hesabı sürdürebilir ve Azure App Service’deki Web Apps özelliği gibi ücretsiz Azure hizmetlerinden faydalanabilirsiniz.
@@ -96,7 +96,7 @@ Bu makalede aşağıdakilerin nasıl gerçekleştirileceği gösterilmektedir:
 * Media Services .NET SDK sürüm 3.2.0.0 veya daha yeni bir sürümünü kullanmanız gerekir.
 * Bir web kamerası ve tek bit hızlı bir canlı akış gönderebilen bir kodlayıcı.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 * Canlı bir etkinlik için önerilen en uzun süre şu anda 8 saattir. Daha uzun bir süre için bir Kanal çalıştırmanız gerekiyorsa lütfen amshelp@microsoft.com adresine başvurun.
 * Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
 
@@ -506,7 +506,7 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 

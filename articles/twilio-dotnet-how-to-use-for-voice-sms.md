@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
 ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69876813"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure 'dan ses ve SMS özellikleri için Twilio kullanma
@@ -38,7 +38,7 @@ Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Restst
 Twilio API 'sinin önemli yönleri, Twilio Verbs ve Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio fiilleri
-API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt;söyleyin&gt; ** .
+API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt; söyleyin &gt; ** .
 
 Aşağıda, Twilio fiillerinin bir listesi verilmiştir.  [Twilio biçimlendirme dili belgeleri](https://www.twilio.com/docs/api/twiml)aracılığıyla diğer fiiller ve yetenekler hakkında bilgi edinin.
 
@@ -83,7 +83,7 @@ Twilio, bir dizi .NET yardımcı kitaplığı sağlar ve bu sayede Twilio REST A
 
 Twilio .NET geliştiricileri için beş kitaplık sağlar:
 
-| Kitaplık | Açıklama |
+| Kitaplık | Description |
 | --- | --- |
 | Twilio. API | Kolay bir .NET kitaplığında Twilio REST API sarmalayan çekirdek Twilio kitaplığı. Bu kitaplık .NET, Silverlight ve Windows Phone 7 ' de kullanılabilir. |
 | Twilio. TwiML | TwiML biçimlendirmesi oluşturmak için .NET kolay bir yol sağlar. |
@@ -98,7 +98,7 @@ Bu kılavuzda sağlanan örnekler Twilio. API kitaplığını kullanır.
 
 Kitaplıklar, Visual Studio 2010 ' de 2015 ' ye kadar olan [NuGet Paket Yöneticisi uzantısı kullanılarak yüklenebilir](https://www.twilio.com/docs/csharp/install) .  Kaynak kodu, kitaplıkları kullanmaya yönelik tüm belgeleri içeren bir wiki içeren [GitHub][twilio_github_repo]üzerinde barındırılır.
 
-Microsoft Visual Studio 2010, varsayılan olarak NuGet 'in 1,2 sürümünü yüklüyor. Twilio kitaplıklarını yükleme, NuGet veya üzeri sürüm 1,6 gerektirir. NuGet 'i yükleme veya güncelleştirme hakkında daha fazla bilgi [https://nuget.org/][nuget]için bkz..
+Microsoft Visual Studio 2010, varsayılan olarak NuGet 'in 1,2 sürümünü yüklüyor. Twilio kitaplıklarını yükleme, NuGet veya üzeri sürüm 1,6 gerektirir. NuGet 'i yükleme veya güncelleştirme hakkında daha fazla bilgi için bkz [https://nuget.org/][nuget] ..
 
 > [!NOTE]
 > NuGet 'in en son sürümünü yüklemek için, önce Visual Studio Uzantı Yöneticisi 'Ni kullanarak yüklü sürümü kaldırmanız gerekir. Bunu yapmak için, Visual Studio 'Yu yönetici olarak çalıştırmanız gerekir. Aksi takdirde, Kaldır düğmesi devre dışıdır.
@@ -106,7 +106,7 @@ Microsoft Visual Studio 2010, varsayılan olarak NuGet 'in 1,2 sürümünü yük
 >
 
 ### <a name="to-add-the-twilio-libraries-to-your-visual-studio-project"></a><a id="use_nuget"></a>Twilio kitaplıklarını Visual Studio projenize eklemek için:
-1. Çözümünüzü Visual Studio 'da açın.
+1. Çözümünüzü Visual Studio’da açın.
 2. **Başvurular**' a sağ tıklayın.
 3. **NuGet Paketlerini Yönet...** öğesine tıklayın.
 4. **Çevrimiçi**' e tıklayın.
@@ -139,7 +139,7 @@ var call = CallResource.Create(
     }
 ```
 
-**Callresource. Create** yöntemine geçirilen parametreler hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]..
+**Callresource. Create** yöntemine geçirilen parametreler hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] ..
 
 Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. Bunun yerine, TwiML yanıtını sağlamak için kendi sitenizi kullanabilirsiniz. Daha fazla bilgi için, bkz. [nasıl yapılır: kendi web sitenizde TwiML yanıtları sağlama](#howto_provide_twiml_responses).
 
@@ -171,10 +171,10 @@ catch (TwilioException ex)
 ```
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Nasıl yapılır: kendi web sitenizde TwiML yanıtları sağlama
-Uygulamanız Twilio API 'sine bir çağrı başlattığında (örneğin, **Callresource. Create** yöntemi-Twilio) Isteğinizi TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderir. [Nasıl yapılır: giden bir çağrının nasıl](#howto_make_call) yapılacağını, yanıtı döndürmek için Twilio tarafından sağlanmış URL [https://twimlets.com/message][twimlet_message_url] 'yi kullanır.
+Uygulamanız Twilio API 'sine bir çağrı başlattığında (örneğin, **Callresource. Create** yöntemi-Twilio) Isteğinizi TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderir. [Nasıl yapılır: giden bir çağrının nasıl](#howto_make_call) yapılacağını, [https://twimlets.com/message][twimlet_message_url] yanıtı döndürmek için Twilio tarafından sağlanmış URL 'yi kullanır.
 
 > [!NOTE]
-> TwiML, Web Hizmetleri tarafından kullanılmak üzere tasarlanırken, tarayıcınızda TwiML 'yi görüntüleyebilirsiniz. Örneğin, boş `<Response>` bir [https://twimlets.com/message][twimlet_message_url] öğeyi görmek için tıklayın; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) bir &lt;deyin&gt; öğesi `<Response>` içeren bir öğeyi görmek için tıklayın.
+> TwiML, Web Hizmetleri tarafından kullanılmak üzere tasarlanırken, tarayıcınızda TwiML 'yi görüntüleyebilirsiniz. Örneğin, boş bir [https://twimlets.com/message][twimlet_message_url] öğeyi görmek için öğesine tıklayın `<Response>` ; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) `<Response>` bir deyin öğesi içeren bir öğeyi görmek için tıklayın &lt; &gt; .
 >
 
 Twilio tarafından sağlanmış URL 'ye güvenmek yerine, HTTP yanıtlarını döndüren kendi URL sitenizi oluşturabilirsiniz. Siteyi, HTTP yanıtlarını döndüren herhangi bir dilde oluşturabilirsiniz. Bu konu, URL 'YI bir ASP.NET genel işleyicisinden barındırdığınızı varsayar.
@@ -251,7 +251,7 @@ namespace WebRole1
 }
 ```
 
-TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)..
+TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) ..
 
 TwiML yanıtları sağlamak için bir yol ayarladıktan sonra, bu URL 'YI **Callresource. Create** metoduna geçirebilirsiniz. Örneğin, bir Azure bulut hizmetine dağıtılan MyTwiML adlı bir Web uygulamanız varsa ve ASP.NET Işleyicinizin adı mytwiml. ashx ise, URL şu kod örneğinde gösterildiği gibi **Callresource. Create** öğesine geçirilebilir:
 

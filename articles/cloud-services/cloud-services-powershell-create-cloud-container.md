@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: ef9d3c7c479df9c71a855f0a243b5b9d0da947d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68359496"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Boş bir bulut hizmeti kapsayıcısı oluşturmak için bir Azure PowerShell komutu kullanın
@@ -52,4 +52,4 @@ Get-help New-AzureService
 ### <a name="next-steps"></a>Sonraki adımlar
 
 * Bulut hizmeti dağıtımını yönetmek için [Get-AzureService](/powershell/module/servicemanagement/azure/Get-AzureService?view=azuresmps-4.0.0), [Remove-AzureService](/powershell/module/servicemanagement/azure/Remove-AzureService?view=azuresmps-4.0.0)ve [set-AzureService](/powershell/module/servicemanagement/azure/set-azureservice?view=azuresmps-4.0.0) komutlarına bakın. Daha fazla bilgi için [Cloud Services 'ı yapılandırma](cloud-services-how-to-configure-portal.md) konusuna da başvurabilirsiniz.
-* Bulut hizmeti projenizi Azure 'da yayımlamak için, [arşivlenmiş bulut hizmetleri deposundaki](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery) **publishcloudservice. ps1** kod örneğine bakın.
+* Bulut hizmeti projenizi Azure 'da yayımlamak için [arşivlenmiş bulut hizmetleri deposundaki](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery) **PublishCloudService.ps1** kod örneğine bakın.

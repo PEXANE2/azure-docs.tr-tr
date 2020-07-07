@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67080481"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Bağlı fabrika çözümünün OPC UA sunucularınızdan verileri nasıl görüntülediğini özelleştirin
@@ -71,9 +71,9 @@ Belirli gereksinimlerinizi karşılayacak verileri eşleme ve toplama hakkında 
 
 ## <a name="deploy-the-changes"></a>Değişiklikleri dağıtma
 
-**Contosotopologyıdescription. JSON** dosyasında değişiklik yapmayı tamamladığınızda, bağlı fabrika çözümünü Azure hesabınıza yeniden dağıtmanız gerekir.
+Dosyadaki **ContosoTopologyDescription.js** değişiklik yapmayı bitirdiğinizde, bağlı fabrika çözümünü Azure hesabınıza yeniden dağıtmanız gerekir.
 
-**Azure IoT ile bağlantılı fabrika** deposu, çözümü yeniden oluşturup dağıtmak için kullanabileceğiniz bir **Build. ps1** PowerShell betiği içerir.
+**Azure IoT ile bağlantılı fabrika** deposu, çözümü yeniden derlemek ve dağıtmak için kullanabileceğiniz bir **build.ps1** PowerShell betiği içerir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

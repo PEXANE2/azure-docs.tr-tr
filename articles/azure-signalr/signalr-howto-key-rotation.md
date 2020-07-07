@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67565736"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Azure SignalR Hizmeti için erişim anahtarını döndürme
@@ -59,4 +59,4 @@ Bu kılavuzda, erişim anahtarlarını yeniden oluşturmayı öğrendiniz. OAuth
 > [ASP.NET Core kimliğiyle tümleştirin](./signalr-concept-authenticate-oauth.md)
 
 > [!div class="nextstepaction"]
-> [Kimlik doğrulamasıyla sunucusuz gerçek zamanlı bir uygulama oluşturma](./signalr-tutorial-authenticate-azure-functions.md)
+> [Kimlik doğrulama özelliklerine sahip sunucusuz gerçek zamanlı uygulama derleme](./signalr-tutorial-authenticate-azure-functions.md)

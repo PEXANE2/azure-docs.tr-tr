@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69016650"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure isteğe bağlı medya kodlayıcılarını karşılaştırma  
@@ -32,11 +32,11 @@ Aşağıdaki tabloda Media Encoder Standard (MES) ve Media Encoder Premium Workf
 
 |Özellik|Media Encoder Standard|Media Encoder Premium İş Akışı|
 |---|---|---|
-|Kodlama sırasında koşullu mantık Uygula<br/>(örneğin, giriş HD ise, 5,1 ses kodlayın)|Hayır|Yes|
-|Kapalı açıklamalı alt yazı|Hayır|[Evet](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® profesyonel ses kullanımı düzeltmesi](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> Iletişim zeka™|Hayır|Yes|
+|Kodlama sırasında koşullu mantık Uygula<br/>(örneğin, giriş HD ise, 5,1 ses kodlayın)|Hayır|Evet|
+|Kapalı açıklamalı alt yazı|No|[Evet](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
+|[Dolby® profesyonel ses kullanımı düzeltmesi](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> Iletişim zeka™|Hayır|Evet|
 |Tarama, ters telesine|Temel|Yayın kalitesi|
-|Siyah kenarlıkları Algıla ve Kaldır <br/>(pillarkutular, harf kutuları)|Hayır|Yes|
+|Siyah kenarlıkları Algıla ve Kaldır <br/>(pillarkutular, harf kutuları)|Hayır|Evet|
 |Küçük resim oluşturma|[Evet](media-services-dotnet-generate-thumbnail-with-mes.md)|[Evet](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
 |Videoları kırpma/kırpma ve dikiş|[Evet](media-services-advanced-encoding-with-mes.md#trim_video)|Yes|
 |Ses veya videonun Yerpaylaşımları|[Evet](media-services-advanced-encoding-with-mes.md#overlay)|[Evet](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
@@ -60,11 +60,11 @@ Aşağıdaki tabloda Media Encoder Standard (MES) ve Media Encoder Premium Workf
 | MPEG-4/MP4 |Yes |Yes |
 | Windows Media/ASF |Yes |Yes |
 | AVI (sıkıştırılmamış 8bit/10bit) |Yes |Yes |
-| 3GPP/3GPP2 |Yes |Hayır |
-| Kesintisiz Akış dosya biçimi (pff 1,3) |Yes |Hayır |
-| [Microsoft dijital video kaydı (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Yes |Hayır |
-| Matroska/webd |Yes |Hayır |
-| QuickTime (.mov) |Yes |Hayır |
+| 3GPP/3GPP2 |Evet |Hayır |
+| Kesintisiz Akış dosya biçimi (pff 1,3) |Evet |Hayır |
+| [Microsoft dijital video kaydı (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Evet |Hayır |
+| Matroska/webd |Evet |Hayır |
+| QuickTime (.mov) |Evet |Hayır |
 
 ## <a name="input-video-codecs"></a>Giriş video codec bileşenleri
 | Giriş Video Codec Bileşenleri | Media Encoder Standard | Media Encoder Premium İş Akışı |
@@ -77,68 +77,68 @@ Aşağıdaki tabloda Media Encoder Standard (MES) ve Media Encoder Premium Workf
 | MPEG-1 |Yes |Yes |
 | Windows Media videosu/VC-1 |Yes |Yes |
 | Canopus HQ/HQX |Hayır |Hayır |
-| MPEG-4 Bölüm 2 |Yes |Hayır |
-| [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |Hayır |
-| Apple ProRes 422 |Yes |Hayır |
-| Apple ProRes 422 LT |Yes |Hayır |
-| Apple ProRes 422 HQ |Yes |Hayır |
-| Apple ProRes Proxy |Yes |Hayır |
-| Apple ProRes 4444 |Yes |Hayır |
-| Apple ProRes 4444 XQ |Yes |Hayır |
+| MPEG-4 Bölüm 2 |Evet |No |
+| [Theora](https://en.wikipedia.org/wiki/Theora) |Evet |No |
+| Apple ProRes 422 |Evet |No |
+| Apple ProRes 422 LT |Evet |No |
+| Apple ProRes 422 HQ |Evet |No |
+| Apple ProRes Proxy |Evet |No |
+| Apple ProRes 4444 |Evet |No |
+| Apple ProRes 4444 XQ |Evet |No |
 | HEVC/H. 265|Ana profil|Ana ve ana 10 profili|
 
 ## <a name="input-audio-codecs"></a>Giriş sesi codec bileşenleri
 | Giriş Ses Codec Bileşenleri | Media Encoder Standard | Media Encoder Premium İş Akışı |
 | --- | --- | --- |
-| AES (SMPTE 331M ve 302M, AES3-2003) |Hayır |Yes |
-| Dolby® E |Hayır |Yes |
-| Dolby® Digital (AC3) |Hayır |Yes |
-| Dolby® Digital Plus (E-AC3) |Hayır |Yes |
+| AES (SMPTE 331M ve 302M, AES3-2003) |No |Evet |
+| Dolby® E |No |Evet |
+| Dolby® Digital (AC3) |No |Evet |
+| Dolby® Digital Plus (E-AC3) |No |Evet |
 | AAC (AAC-LC, AAC-HE ve AAC-HEv2; 5.1’e kadar) |Yes |Yes |
 | MPEG Katman 2 |Yes |Yes |
 | MP3 (MPEG-1 Ses Katmanı 3) |Yes |Yes |
 | Windows Media Ses |Yes |Yes |
 | WAV/PCM |Yes |Yes |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Yes |Hayır |
-| [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Yes |Hayır |
-| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Yes |Hayır |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Evet |No |
+| [Opus](https://en.wikipedia.org/wiki/Opus_\(audio_format\)) |Evet |No |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Evet |No |
 
 ## <a name="output-containerfile-formats"></a>Çıkış kapsayıcısı/dosya biçimleri
 | Çıkış kapsayıcısı/dosya biçimleri | Media Encoder Standard | Media Encoder Premium İş Akışı |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Hayır |Yes |
-| MXF (OP1a, XDCAM ve AS02) |Hayır |Yes |
-| DPP (AS11 dahil) |Hayır |Yes |
-| GXF |Hayır |Yes |
+| Adobe® Flash® F4V |No |Evet |
+| MXF (OP1a, XDCAM ve AS02) |No |Evet |
+| DPP (AS11 dahil) |Hayır |Evet |
+| GXF |Hayır |Evet |
 | MPEG-4/MP4 |Yes |Yes |
 | MPEG-TS |Yes |Yes |
-| Windows Media/ASF |Hayır |Yes |
-| AVI (sıkıştırılmamış 8bit/10bit) |Hayır |Yes |
-| Kesintisiz Akış dosya biçimi (pff 1,3) |Hayır |Yes |
+| Windows Media/ASF |Hayır |Evet |
+| AVI (sıkıştırılmamış 8bit/10bit) |Hayır |Evet |
+| Kesintisiz Akış dosya biçimi (pff 1,3) |Hayır |Evet |
 
 ## <a name="output-video-codecs"></a>Çıkış video codec bileşenleri
 | Çıkış video codec bileşenleri | Media Encoder Standard | Media Encoder Premium İş Akışı |
 | --- | --- | --- |
 | AVC (H., 8 bit; en fazla yüksek profile, düzey 5,2; 4K Ultra HD; AVC Içi) |Yalnızca 8 bit 4:2:0 |Yes |
-| HEVC (H. 265; 8 bit ve 10 bit;)  |Hayır |Yes |
-| Avid DNxHD (MXF biçiminde) |Hayır |Yes |
-| MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil) |Hayır |Yes |
-| MPEG-1 |Hayır |Yes |
-| Windows Media videosu/VC-1 |Hayır |Yes |
+| HEVC (H. 265; 8 bit ve 10 bit;)  |Hayır |Evet |
+| Avid DNxHD (MXF biçiminde) |Hayır |Evet |
+| MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil) |Hayır |Evet |
+| MPEG-1 |Hayır |Evet |
+| Windows Media videosu/VC-1 |Hayır |Evet |
 | JPEG küçük resim oluşturma |Yes |Yes |
 | PNG küçük resim oluşturma |Yes |Yes |
-| BMP küçük resim oluşturma |Yes |Hayır |
+| BMP küçük resim oluşturma |Evet |Hayır |
 
 ## <a name="output-audio-codecs"></a>Çıkış ses codec bileşenleri
 | Çıkış ses codec bileşenleri | Media Encoder Standard | Media Encoder Premium İş Akışı |
 | --- | --- | --- |
-| AES (SMPTE 331M ve 302M, AES3-2003) |Hayır |Yes |
-| Dolby® Digital (AC3) |Hayır |Yes |
-| Dolby® Digital Plus (E-AC3) 7,1 'e kadar |Hayır |Yes |
+| AES (SMPTE 331M ve 302M, AES3-2003) |Hayır |Evet |
+| Dolby® Digital (AC3) |Hayır |Evet |
+| Dolby® Digital Plus (E-AC3) 7,1 'e kadar |Hayır |Evet |
 | AAC (AAC-LC, AAC-HE ve AAC-HEv2; 5.1’e kadar) |Yes |Yes |
-| MPEG Katman 2 |Hayır |Yes |
-| MP3 (MPEG-1 Ses Katmanı 3) |Hayır |Yes |
-| Windows Media Ses |Hayır |Yes |
+| MPEG Katman 2 |Hayır |Evet |
+| MP3 (MPEG-1 Ses Katmanı 3) |Hayır |Evet |
+| Windows Media Ses |Hayır |Evet |
 
 >[!NOTE]
 >Dolby® Digital (AC3) olarak kodlarsanız, çıkış yalnızca bir ISO MP4 dosyasına yazılabilir.
@@ -146,7 +146,7 @@ Aşağıdaki tabloda Media Encoder Standard (MES) ve Media Encoder Premium Workf
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>İlgili makaleler:

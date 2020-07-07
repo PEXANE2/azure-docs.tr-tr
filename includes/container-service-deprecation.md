@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: c7a34256bff46247ed6c97bc2931942f631bbf09
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67188923"
 ---
 > [!WARNING]
@@ -19,7 +19,7 @@ ms.locfileid: "67188923"
 > Aşağıdaki Azure Marketi çözümlerinden birini dağıtmanız önerilir:
 >
 > * Mesosphere DC/OS
->   * [Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.enterprise-dcos?tab=Overview)
+>   * [Kurumsal](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.enterprise-dcos?tab=Overview)
 >   * [Açık kaynak sürümü](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.dcos?tab=overview)
 >
 > Kubernetes 'i kullanmak istiyorsanız bkz. [Azure Kubernetes hizmeti](https://docs.microsoft.com/azure/aks).

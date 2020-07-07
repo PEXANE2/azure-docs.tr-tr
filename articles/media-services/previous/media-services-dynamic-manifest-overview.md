@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69015861"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtreler ve dinamik bildirimler
@@ -73,14 +73,14 @@ Bildirim dosyasına bir örnek aşağıda verilmiştir:
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>Dinamik bildirimler
-İstemcinizin varsayılan varlığın bildirim dosyasında açıklanmasının daha fazla esneklik ihtiyacı olduğunda [senaryolar](media-services-dynamic-manifest-overview.md#scenarios) vardır. Örneğin:
+İstemcinizin varsayılan varlığın bildirim dosyasında açıklanmasının daha fazla esneklik ihtiyacı olduğunda [senaryolar](media-services-dynamic-manifest-overview.md#scenarios) vardır. Örnek:
 
 * Cihaza özgü: içeriği kayıttan yürütmek için kullanılan cihaz tarafından desteklenen yalnızca belirtilen çevirileri ve/veya belirtilen dil izlerini sunun ("yorumlama filtrelemesi"). 
 * Canlı bir etkinliğin alt klibini ("alt klip filtrelemesi") göstermek için bildirimi küçültün.
 * Videonun başlangıcını kırpın ("video kırpma").
 * Player 'da ("sunum penceresini ayarlama"), DVR penceresinde sınırlı bir uzunluk sağlamak için sunum penceresini (DVR) ayarlayın.
 
-Bu esnekliği sağlamak için Media Services, önceden tanımlanmış [filtreleri](media-services-dynamic-manifest-overview.md#filters)temel alarak **dinamik bildirimler** sunmaktadır.  Filtreleri tanımladıktan sonra istemcileriniz, videonuzun belirli bir işlemesini veya alt kliplerini akışa almak için bunları kullanabilir. Akış URL 'sinde filtre (ler) belirler. Filtreler, [dinamik paketleme](media-services-dynamic-packaging-overview.md)tarafından desteklenen Uyarlamalı bit hızı akış protokollerine uygulanabilir: HLS, MPEG-DASH ve kesintisiz akış. Örneğin:
+Bu esnekliği sağlamak için Media Services, önceden tanımlanmış [filtreleri](media-services-dynamic-manifest-overview.md#filters)temel alarak **dinamik bildirimler** sunmaktadır.  Filtreleri tanımladıktan sonra istemcileriniz, videonuzun belirli bir işlemesini veya alt kliplerini akışa almak için bunları kullanabilir. Akış URL 'sinde filtre (ler) belirler. Filtreler, [dinamik paketleme](media-services-dynamic-packaging-overview.md)tarafından desteklenen Uyarlamalı bit hızı akış protokollerine uygulanabilir: HLS, MPEG-DASH ve kesintisiz akış. Örnek:
 
 Filtre içeren MPEG DASH URL 'SI
 
@@ -98,7 +98,7 @@ Filtre içeren Kesintisiz Akış URL 'SI
 > 
 > 
 
-### <a name="filters"></a><a id="filters"></a>Filtreler
+### <a name="filters"></a><a id="filters"></a>FilTReleri
 İki tür varlık filtresi vardır: 
 
 * Genel filtreler (Azure Media Services hesabındaki herhangi bir varlığa uygulanabilir, hesabın kullanım ömrü vardır) ve 
@@ -192,7 +192,7 @@ Daha fazla bilgi için [Bu](https://azure.microsoft.com/blog/azure-media-service
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.

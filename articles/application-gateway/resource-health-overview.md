@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67659508"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure Application Gateway Kaynak Durumu genel bakış
 
-[Azure Kaynak Durumu](../service-health/resource-health-overview.md), kaynaklarınızı etkileyen Azure hizmeti sorunlarını tanılayıp gerekli desteği almanıza yardımcı olur. Kaynaklarınızın geçerli ve geçmiş durumu hakkında bilgi verir. Ayrıca, sorunları azaltmanıza yardımcı olacak teknik destek sağlar.
+[Azure Kaynak Durumu](../service-health/resource-health-overview.md) , kaynaklarınızı etkileyen Azure hizmeti sorunlarını tanılayıp gerekli desteği almanıza yardımcı olur. Kaynaklarınızın geçerli ve geçmiş durumu hakkında bilgi verir. Ayrıca, sorunları azaltmanıza yardımcı olacak teknik destek sağlar.
 
 Application Gateway için Kaynak Durumu, sağlıklı olup olmadığını değerlendirmek üzere ağ geçidi tarafından yayılan sinyallere bağımlıdır. Ağ Geçidi sağlıksız ise, Kaynak Durumu sorunun kaynağını belirlemede ek bilgileri analiz eder. Ayrıca, Microsoft 'un aldığı veya sorunu çözmek için yapabileceğiniz işlemleri de tanımlar.
 

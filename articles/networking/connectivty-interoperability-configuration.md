@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68335936"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure arka uç bağlantı özelliklerinde birlikte çalışabilirlik: test yapılandırması ayrıntıları
@@ -29,14 +29,14 @@ Aşağıdaki şekilde, bir bağlı bileşen sanal ağının (VNet) Azure sanal a
 
 Aşağıdaki şekilde, hub VNet 'in VNet eşleme ayrıntıları gösterilmektedir. Hub VNet 'in bağlı olan VNet 'in hub ağ geçitlerini kullanmasına izin vermek istiyorsanız, **ağ geçidi aktarımına Izin ver**' i seçin.
 
-[![iki]][2]
+[![2]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Siteden siteye VPN kullanarak dal VNet bağlantısı
 
 Azure VPN Gateway 'de VPN ağ geçitlerini kullanarak Merkez ve dal sanal ağları arasında siteden siteye VPN bağlantısı kurun. Varsayılan olarak, VPN ağ geçitleri ve Azure ExpressRoute ağ geçitleri, **65515**özel bir otonom sistem numarası (ASN) değeri kullanır. VPN Gateway ASN değerini değiştirebilirsiniz. Test kurulumunda, şube VNet VPN ağ geçidinin ASN değeri, hub ve dal sanal ağları arasındaki eBGP yönlendirmeyi desteklemek için **65516** olarak değiştirilir.
 
 
-[![03]][3]
+[![3]][3]
 
 
 ## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>ExpressRoute ve siteden siteye VPN kullanarak şirket içi konum 1 bağlantısı
@@ -160,7 +160,7 @@ Aşağıdaki şekilde, ikinci ExpressRoute devresi ve hub VNet arasındaki bağl
 
 ExpressRoute 1 hem hub VNet hem de şirket içi konum 1 ' i farklı bir Azure bölgesindeki uzak VNet 'e bağlar:
 
-[![240]][8]
+[![8]][8]
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Kademeli olarak ExpressRoute ve siteden siteye VPN bağlantısı
 

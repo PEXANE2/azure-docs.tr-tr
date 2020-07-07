@@ -9,57 +9,57 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67673125"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Azure Data Box Heavy güvenle yükleyip çalıştırın
 
 Bu makale Azure Data Box Heavy için güvenlik bilgilerini içerir.
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png)
-![okuma güvenlik bildirimi simgesi](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **önce tüm yönergeleri oku**
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png)
+ ![ okuma güvenlik bildirimi simgesi ](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **önce tüm yönergeleri oku**
 
 Azure Data Box Heavy kullanmadan önce bu makaledeki tüm güvenlik bilgilerini okuyun. Yönergeleri izlemeden hata, yangın, elektrik sarsıntı veya diğer sakatlama ya da özelliklerine zarar verebilir.
 
 ## <a name="safety-icon-conventions"></a>Güvenlik simgesi kuralları
 Data Box kurarken ve çalıştırırken gözlenecek güvenlik önlemleri gözden geçirdikten sonra bulacağınız simgeler aşağıda verilmiştir.
 
-| Simge | Açıklama |
+| Simge | Description |
 |:--- |:--- |
-| ![Danger simgesi](./media/data-box-heavy-safety/warning-icon.png) **tehlike!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olan tehlikeli bir durum belirtir. Bu sinyal sözcüğü, en Extreme durumlarla sınırlı olacaktır. |
-| ![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olabilecek tehlikeli bir durum belirtir. |
-| ![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **dikkatli!** |Önedilmediği durumlarda küçük veya orta bir yaralanmaya neden olabilecek tehlikeli bir durum belirtir. |
-| ![Bildirim simgesi](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** |Önemli kabul edilen, ancak tehlike ile ilgili olmayan bilgileri gösterir. |
-| ![Elektrik sarsıntısı simgesi](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **elektrik şok hasar** |Yüksek voltaj. |
-| ![Ağır kalınlık simgesi](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **ağır ağırlık** | |
-| ![Kullanıcı tarafından](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **hizmet içermeyen parçalar simgesi yok** |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
-| ![Güvenlik bildirimi okuma simgesi](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **ilk olarak tüm yönergeleri oku** | |
-| ![İpucu hasar simgesi](./media/data-box-heavy-safety/tip-hazard-icon.png) **İpucu rastlantı** | |
-| ![Aşırı yükleme ipucu hasar](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) simgesi **aşırı yükleme ipucu hasar** | |
-| ![Birden çok güç kaynağı](./media/data-box-heavy-safety/multiple-power-sources-icon.png) simgesi **birden çok güç kaynağı** | |
+| ![Danger simgesi ](./media/data-box-heavy-safety/warning-icon.png) **tehlike!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olan tehlikeli bir durum belirtir. Bu sinyal sözcüğü, en Extreme durumlarla sınırlı olacaktır. |
+| ![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olabilecek tehlikeli bir durum belirtir. |
+| ![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) **dikkatli!** |Önedilmediği durumlarda küçük veya orta bir yaralanmaya neden olabilecek tehlikeli bir durum belirtir. |
+| ![Bildirim simgesi ](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** |Önemli kabul edilen, ancak tehlike ile ilgili olmayan bilgileri gösterir. |
+| ![Elektrik sarsıntısı simgesi ](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **elektrik şok hasar** |Yüksek voltaj. |
+| ![Ağır kalınlık simgesi ](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **ağır ağırlık** | |
+| ![Kullanıcı tarafından ](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **No user serviceable parts** hizmet içermeyen parçalar simgesi yok |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
+| ![Güvenlik bildirimi okuma simgesi ](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **ilk olarak tüm yönergeleri oku** | |
+| ![İpucu hasar simgesi ](./media/data-box-heavy-safety/tip-hazard-icon.png) **İpucu rastlantı** | |
+| ![Aşırı yükleme ipucu hasar simgesi ](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) **aşırı yükleme ipucu hasar** | |
+| ![Birden çok güç kaynağı simgesi ](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **birden çok güç kaynağı** | |
 
 ## <a name="handling-precautions"></a>Önlemleri işleme
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!**
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!**
 
 * Crate 'i taşırken ve işlerken uygun ekipman (örneğin, palet jakı) ve kişisel koruyucu ekipman (örneğin, gloya) kullanılmalıdır.
 * Sakatlama veya özellik hasarından kaçınmak üzere cihazı kaldırmadan önce, rampa, sağlanan cıvatlarla birlikte erişebilmeniz ile güvenli hale getirilmesi gerekir.
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![ipucu hasar simgesi](./media/data-box-heavy-safety/tip-hazard-icon.png) **İpucu hasar**
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) ![ Ipucu hasar simgesi ](./media/data-box-heavy-safety/tip-hazard-icon.png) **İpucu hasar**
 
 * Potansiyel bir ipucunu veya kırıltı bir hasar oluşmasını önlemek için donatımı düz, sabit ve kararlı bir yüzeye yerleştirin.
 * Ekipmanları İnceleme, açma ve çalıştırma öncesinde, kasaların kilitli olduğunu doğrulayın.
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![elektrik sarsıntı](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![simgesi hiçbir Kullanıcı hizmet verebilir bölümü](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) yok simgesi **Uyarı!** 
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) ![ elektrik sarsıntı simgesi ](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![ hiçbir Kullanıcı hizmet verebilir bölümü yok simgesi ](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **Uyarı!** 
 
 * Zararlar için *alınan as* cihazını inceleyin. Cihaz kasası hasar görmüşse, yerini almak için [Microsoft desteği](data-box-disk-contact-microsoft-support.md) başvurun. Cihazı çalıştırmayı denemeyin. 
 * Cihaz, yetkisiz kanıtlama dayanıklı bir şekilde donatılmış. Cihazın arızalı olduğunu kuşkulanıyorsanız, bir değiştirme işlemi almak için [Microsoft desteği](data-box-disk-contact-microsoft-support.md) . Cihaza bakım yapmayı denemeyin. 
 * Cihaz, hiçbir Kullanıcı-serviceable Bölümü içermiyor. Tehlikeli voltaj, geçerli ve enerji düzeyleri içinde mevcuttur. ' İ açmayın. Cihaza bakım için Microsoft 'a döndürün.
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![ağır ağırlık simgesi](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **uyarısı!** 
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) ![ ağır ağırlık simgesi ](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **uyarısı!** 
 
 * Tam olarak yapılandırılmış bir kutu 326 kg 'a (719 lbs) ağırlık verebilir; kendiniz de kaldırma denemeyin.
 * Doğru mekanik yardım olmadan donatımı kaldırma girişiminde bulunuldu. Bu ağırlığı kaldırma girişimlerinin ciddi sakatlama neden olabileceği farkında olun.
@@ -67,11 +67,11 @@ Data Box kurarken ve çalıştırırken gözlenecek güvenlik önlemleri gözden
 * Ekipman taşıma ve kaldırma sırasında mekanik yardım veya diğer uygun yardımı kullanın.
 
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![aşırı yükleme ipucu hasar](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![simgesi ipucu hasar](./media/data-box-heavy-safety/tip-hazard-icon.png)![simgesi ağır ağırlık](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) simgesi **uyarısı!**
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) ![ aşırı yükleme ipucu hasar simgesi ](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![ İpucu hasar simgesi ](./media/data-box-heavy-safety/tip-hazard-icon.png)![ ağır ağırlık simgesi ](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **uyarısı!**
 * Data Box Heavy tablo veya çalışma alanı olarak kullanılamaz. Herhangi bir türdeki yükü eklemek, ortaya çıkabilecek veya özelliğin hasar görmesine neden olabilecek potansiyel bir hasar oluşturabilir.
 * Rafa takılan ekipman, raflar veya çalışma alanı olarak kullanılamaz. Data Box Heavy rafa takılan ekipmanın üzerine yerleştirmeyin. Genişletilmiş rafa takılan bir birime herhangi bir yük türü eklemek, yaralanma, ölüm veya ürün hasarını ortaya çıkabilecek olası bir tıp hasar oluşturabilir.
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!**
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!**
 
 * Sistem tipik bir ofis ortamında çalışacak şekilde tasarlanmıştır. Şu şekilde bir site seçin:
 
@@ -88,7 +88,7 @@ Data Box kurarken ve çalıştırırken gözlenecek güvenlik önlemleri gözden
 
 ## <a name="electrical-precautions"></a>Elektrik önlemleri
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![elektrik sarsıntı](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) simgesi **uyarısı!**
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) ![ elektrik sarsıntı simgesi ](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **uyarısı!**
 
 * Güç kaynağı kablosu ile güvenli bir elektrik dünya bağlantısı sağlayın. AC kablosu üç telli bir grounding eklentisine sahiptir (bir grounding PIN 'i olan bir tak). Bu eklenti yalnızca bir topraklanmış AC prizine uyar. Grounding PIN 'inin amacını ertelemeyin.
 * Güç kaynağı kablosu ana bağlantı kesme aygıtı olduğu için, dış cihazların cihazın yakınında bulunduğundan ve kolayca erişilebilir olduğundan emin olun.
@@ -109,17 +109,17 @@ Data Box kurarken ve çalıştırırken gözlenecek güvenlik önlemleri gözden
     - Güç kablosu, üründe işaretlenmiş olan elektrik akım derecelendirmesinin sayısından daha büyük bir elektrik derecelendirmesine sahip olmalıdır.
     - Güç kablosu, elektrik prizine uygun olan güvenlik zemin PIN 'ini veya ilgili kişiye sahip olmalıdır.
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png)![elektrik şok simgesi](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![birden çok güç kaynağı](./media/data-box-heavy-safety/multiple-power-sources-icon.png) simgesi **uyarısı!**  
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) ![ elektrik şok simgesi ](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![ birden çok güç kaynağı simgesi ](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **uyarısı!**  
 
 * Tüm AC güç kablosunu, cihazınızdan AC gücünü tamamen kaldırmak için çıkarın.
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **dikkatli!**
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) **dikkatli!**
 
 * Bu cihaz pille bir pil hücresi içeriyor. Cihaza bakım yapmayı denemeyin. Bu Cihazdaki piller Kullanıcı serviceable değildir. 
 * **Yalnızca hizmet personeli için**: pil yanlış bir türle değiştirilirse açılım riski. Yönergelere göre kullanılan piller atılamadı.
 * Lazer çevre birimleri veya cihazlar mevcuttur. Risk veya aydınlık pozlamayı ve/veya kişisel yaralamayı önlemek için herhangi bir lazer çevre birimi ya da cihazın bir düzeyini açmayın. Lazer çevre birimleri veya cihazlar serviceable değildir. Optik alıcı verici ürünü için yalnızca sertifikalı ve dereceli lazer sınıfı ı kullanın.
 
-![Bildirim simgesi](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:**
+![Bildirim simgesi ](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:**
 
 Cihazınızın doğru çalışması için ve ürün hasarı oluşmasını engellemek için:
 
@@ -141,13 +141,13 @@ Bu cihaz:
 
 Elektrik tedarik derecelendirmeleri için, birimiyle birlikte sunulan cihaz derecelendirme etiketine bakın. 
 
-![Bildirim simgesi](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** 
+![Bildirim simgesi ](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** 
 
 Cihazda yapılan değişiklikler veya değişiklikler Microsoft tarafından açıkça onaylanmamış olarak, kullanıcının cihazı çalıştırma yetkisi yok edebilir.
 
 **Kanada ve ABD:**
 
-![Bildirim simgesi](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** 
+![Bildirim simgesi ](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** 
 
 Bu ekipman test edilmiştir ve bir sınıftaki dijital bir cihaz için sınırlara uyum sağlamak üzere, FCC kuralların 15. bölümünde yer almışlardır. Bu sınırlar, ekipman ticari bir ortamda çalıştırıldığında zararlı girişim için makul bir koruma sağlamak üzere tasarlanmıştır. Bu ekipman radyo sıklığı enerjisi oluşturur ve kullanır ve yönerge kılavuzuna uygun şekilde yüklenip kullanılmayacaksa radyo iletişimine zararlı girişim yapılmasına neden olabilir. Bu ekipmanın bir yöresel alanındaki işlemi, zararlı bir girişim oluşmasına neden olur ve bu durumda kullanıcının, girişim kendi masrafına göre düzeltilmesi gerekecektir.
 
@@ -165,7 +165,7 @@ Birleşik Devletler: (800) 426-9400 Kanada: (800) 933-4750
 
 Conformity 'in AB bildiriminin bir kopyasını [isteyin](mailto:CSI_Compliance@microsoft.com) .
 
-![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!** 
+![Uyarı simgesi ](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!** 
 
 Bu bir ürün sınıfındır. Yurtiçi bir ortamda, bu ürün radyo girişimine neden olabilir ve bu durumda kullanıcının yeterli ölçüler yapması gerekebilir.
 
@@ -173,7 +173,7 @@ Bu bir ürün sınıfındır. Yurtiçi bir ortamda, bu ürün radyo girişimine 
 
 ![Pil çıkarma simgesi](./media/data-box-heavy-safety/battery-disposal-icon.png)
 
-Üründe veya pillerinde bulunan bu sembol, bu ürünün ve içerdiği tüm pillerin, ev isverünüzle birlikte atılmayacağı anlamına gelir. Bunun yerine, pil ve elektrik ve elektronik ekipmanın geri dönüştürülmesi için bunu ilgili bir koleksiyon noktasına ele almak sizin sorumluluğunuzdadır. Bu ayrı koleksiyon ve geri dönüşüm, doğal kaynakların korunmasına yardımcı olur ve pillerde ve elektrik ve elektronik ekipmanda olası tehlikeli bir etkinlik olması nedeniyle, uygun olmayan bir elden çıkarılmasından kaynaklanabilir. Pillerinizi ve elektrik ve elektronik alımlarınızı nereden kapatabileceğiniz hakkında daha fazla bilgi için lütfen yerel şehriniz/municiplik ofisiniz, ev atık servisi hizmeti veya bu ürünü satın aldığınız mağaza ekibine başvurun. WEEE hakkında daha fazla bilgi için *erecycle\@Microsoft.com* başvurun.
+Üründe veya pillerinde bulunan bu sembol, bu ürünün ve içerdiği tüm pillerin, ev isverünüzle birlikte atılmayacağı anlamına gelir. Bunun yerine, pil ve elektrik ve elektronik ekipmanın geri dönüştürülmesi için bunu ilgili bir koleksiyon noktasına ele almak sizin sorumluluğunuzdadır. Bu ayrı koleksiyon ve geri dönüşüm, doğal kaynakların korunmasına yardımcı olur ve pillerde ve elektrik ve elektronik ekipmanda olası tehlikeli bir etkinlik olması nedeniyle, uygun olmayan bir elden çıkarılmasından kaynaklanabilir. Pillerinizi ve elektrik ve elektronik alımlarınızı nereden kapatabileceğiniz hakkında daha fazla bilgi için lütfen yerel şehriniz/municiplik ofisiniz, ev atık servisi hizmeti veya bu ürünü satın aldığınız mağaza ekibine başvurun. WEEE hakkında daha fazla bilgi için *erecycle \@ Microsoft.com* başvurun.
 
 Bu ürün, para hücresi pili (lar) içerir.
 

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66427574"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Yeni bir sanal cihaz dağıtma
@@ -35,12 +35,12 @@ Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için etkin bir 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için şunlar gerekir:
 
 - [Uzaktan izleme çözümü hızlandırıcının](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2)dağıtılan bir örneği.
-- Ve komutlarını çalıştırmak için yerel bir **bash kabuğu.** `ssh` `scp` Windows 'ta **Bash** 'i yüklemenin kolay bir yolu da [Git](https://git-scm.com/download/win)'i yüklemektir.
+- Ve komutlarını çalıştırmak için yerel bir **Bash** kabuğu `ssh` `scp` . Windows 'ta **Bash** 'i yüklemenin kolay bir yolu da [Git](https://git-scm.com/download/win)'i yüklemektir.
 - [Yeni bir sanal cihaz oluşturma ve test](iot-accelerators-remote-monitoring-create-simulated-device.md)etme bölümünde açıklananlar gibi özel cihaz modeli dosyalarınız.
 
 [!INCLUDE [iot-solution-accelerators-access-vm](../../includes/iot-solution-accelerators-access-vm.md)]

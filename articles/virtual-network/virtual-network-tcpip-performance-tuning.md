@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68297778"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM 'Leri için TCP/IP performans ayarı
@@ -201,13 +201,13 @@ Aşağıda, bir pencere ölçek faktörü 3 ve pencere boyutu 65.535 için bir h
 
 #### <a name="support-for-tcp-window-scaling"></a>TCP pencere ölçeklendirmesi için destek
 
-Windows, farklı bağlantı türleri için farklı ölçekleme faktörleri ayarlayabilir. (Bağlantı sınıfları veri merkezi, internet vb.) Pencere ölçeklendirme bağlantı `Get-NetTCPConnection` türünü görüntülemek için PowerShell komutunu kullanın:
+Windows, farklı bağlantı türleri için farklı ölçekleme faktörleri ayarlayabilir. (Bağlantı sınıfları veri merkezi, internet vb.) `Get-NetTCPConnection`Pencere ölçeklendirme bağlantı türünü görüntülemek için PowerShell komutunu kullanın:
 
 ```powershell
 Get-NetTCPConnection
 ```
 
-Her bir sınıfın değerlerini `Get-NetTCPSetting` görüntülemek için PowerShell komutunu kullanabilirsiniz:
+`Get-NetTCPSetting`Her bir sınıfın değerlerini görüntülemek için PowerShell komutunu kullanabilirsiniz:
 
 ```powershell
 Get-NetTCPSetting
@@ -219,11 +219,11 @@ Windows 'daki ilk TCP pencere boyutunu ve TCP ölçeklendirme faktörünü `Set-
 Set-NetTCPSetting
 ```
 
-Bunlar için `AutoTuningLevel`geçerli TCP ayarları şunlardır:
+Bunlar için geçerli TCP ayarları şunlardır `AutoTuningLevel` :
 
 | | | | |
 |-|-|-|-|
-|**Oto Tuninglevel**|**Ölçeklendirme faktörü**|**Ölçek çarpanı**|**Maksimum pencere<br/>boyutunu hesaplama formülü**|
+|**Oto Tuninglevel**|**Ölçeklendirme faktörü**|**Ölçek çarpanı**|**<br/>Maksimum pencere boyutunu hesaplama formülü**|
 |Devre dışı|Hiçbiri|Hiçbiri|Pencere boyutu|
 |Kısıtlı|4|2 ^ 4|Pencere boyutu * (2 ^ 4)|
 |Yüksek oranda kısıtlanmış|2|2 ^ 2|Pencere boyutu * (2 ^ 2)|

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637194"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby 'de ses ve SMS özellikleri için Twilio kullanma
@@ -28,7 +28,7 @@ Twilio, ses ve SMS uygulamaları oluşturmak için mevcut Web dillerinizi ve bec
 **Twilio Voice** , uygulamalarınızın telefon araması yapmasına ve almasına izin verir. **TWILIO SMS** , uygulamalarınızın SMS iletileri oluşturup almasına izin verir. **Twilio istemcisi** , uygulamalarınızın Mobil bağlantılar da dahil olmak üzere var olan Internet bağlantılarını kullanarak sesli iletişim kurmasını sağlar.
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio fiyatlandırması ve özel teklifler
-Twilio fiyatlandırması hakkında bilgi [Twilio fiyatlandırması][twilio_pricing]adresinde bulunabilir. Azure müşterileri özel bir [teklif][special_offer]alır: ücretsiz kredi olarak 1000 metin veya 1000 gelen dakika. Bu teklif için kaydolmak veya daha fazla bilgi edinmek için lütfen adresini ziyaret [https://ahoy.twilio.com/azure][special_offer]edin.  
+Twilio fiyatlandırması hakkında bilgi [Twilio fiyatlandırması][twilio_pricing]adresinde bulunabilir. Azure müşterileri özel bir [teklif][special_offer]alır: ücretsiz kredi olarak 1000 metin veya 1000 gelen dakika. Bu teklif için kaydolmak veya daha fazla bilgi edinmek için lütfen adresini ziyaret edin [https://ahoy.twilio.com/azure][special_offer] .  
 
 ## <a name="concepts"></a><a id="Concepts"></a>Kavramlar
 Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Reststeme API 'sidir. İstemci kitaplıkları birden çok dilde kullanılabilir; bir liste için bkz. [TWILIO API Libraries][twilio_libraries].
@@ -43,23 +43,23 @@ TwiML, bir çağrıyı veya SMS 'nin nasıl işleyeceğini bildiren bir Twilio X
        <Say>Hello World</Say>
     </Response>
 
-Tüm TwiML belgelerinin kök `<Response>` öğesi vardır. Buradan, Twilio fiillerini kullanarak uygulamanızın davranışını tanımlayabilirsiniz.
+Tüm TwiML belgelerinin `<Response>` kök öğesi vardır. Buradan, Twilio fiillerini kullanarak uygulamanızın davranışını tanımlayabilirsiniz.
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML fiilleri
-Twilio fiilleri, Twilio **ne yapılacağını söyleyen**XML etiketlerdir. Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt;söyleyin&gt; ** . 
+Twilio fiilleri, Twilio **ne yapılacağını söyleyen**XML etiketlerdir. Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt; söyleyin &gt; ** . 
 
 Aşağıda, Twilio fiillerinin bir listesi verilmiştir.
 
-* Çevir: çağrıyı başka bir telefona bağlar. ** &lt;&gt;**
-* Topla: telefon tuş takımında girilen sayısal rakamları toplar. ** &lt;&gt;**
-* Kapat: bir çağrıyı sonlandırır. ** &lt;&gt;**
-* Oynat: bir ses dosyası çalar. ** &lt;&gt;**
-* Duraklat: belirtilen saniye sayısı için sessizce bekler. ** &lt;&gt;**
-* Kayıt: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür. ** &lt;&gt;**
-* **Yeniden yönlendir&gt;: bir çağrının veya SMS denetiminin denetimini, farklı bir URL 'de twiml 'ye &lt;** aktarır.
-* Reddet: Twilio numaranızı Faturalandırmadan gelen çağrıyı reddeder ** &lt;&gt;**
-* Deyin: bir çağrıda yapılan metni konuşmaya dönüştürür. ** &lt;&gt;**
-* SMS: SMS iletisi gönderir. ** &lt;&gt;**
+* ** &lt; Çevir &gt; **: çağrıyı başka bir telefona bağlar.
+* ** &lt; Topla &gt; **: telefon tuş takımında girilen sayısal rakamları toplar.
+* ** &lt; Kapat &gt; **: bir çağrıyı sonlandırır.
+* ** &lt; Oynat &gt; **: bir ses dosyası çalar.
+* ** &lt; Duraklat &gt; **: belirtilen saniye sayısı için sessizce bekler.
+* ** &lt; Kayıt &gt; **: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
+* ** &lt; Yeniden &gt; yönlendir**: bir çağrının veya SMS denetiminin DENETIMINI, farklı bir URL 'de twiml 'ye aktarır.
+* ** &lt; Reddet &gt; **: Twilio numaranızı Faturalandırmadan gelen çağrıyı reddeder
+* ** &lt; Deyin &gt; **: bir çağrıda yapılan metni konuşmaya dönüştürür.
+* ** &lt; SMS &gt; **: SMS iletisi gönderir.
 
 Twilio fiilleri, öznitelikleri ve TwiML hakkında daha fazla bilgi için bkz. [twiml][twiml]. Twilio API 'SI hakkında daha fazla bilgi için bkz. [TWILIO API][twilio_api].
 
@@ -86,7 +86,7 @@ Yeni sanal makinenize SSH ekleyin ve yeni uygulamanız için bir dizin oluşturu
     gem 'sinatra'
     gem 'thin'
 
-Komut satırı çalıştırın `bundle install`. Bu işlem yukarıdaki bağımlılıkları yükler. Ardından adlı `web.rb`bir dosya oluşturun. Bu, Web uygulamanız için kodun bulunacağı yerdir. Aşağıdaki kodu içine yapıştırın:
+Komut satırı çalıştırın `bundle install` . Bu işlem yukarıdaki bağımlılıkları yükler. Ardından adlı bir dosya oluşturun `web.rb` . Bu, Web uygulamanız için kodun bulunacağı yerdir. Aşağıdaki kodu içine yapıştırın:
 
     require 'sinatra'
 
@@ -94,14 +94,14 @@ Komut satırı çalıştırın `bundle install`. Bu işlem yukarıdaki bağıml�
         "Hello Monkey!"
     end
 
-Bu noktada komutunu `ruby web.rb -p 5000`çalıştırabilirsiniz. Bu, 5000 numaralı bağlantı noktasında küçük bir Web sunucusu kullanacaktır. Azure VM 'niz için ayarladığınız URL 'YI ziyaret ederek tarayıcınızda bu uygulamaya gözatabilmelisiniz. Web uygulamanıza tarayıcıda ulabilmeniz için, bir Twilio uygulaması oluşturmaya başlamaya hazırsınız demektir.
+Bu noktada komutunu çalıştırabilirsiniz `ruby web.rb -p 5000` . Bu, 5000 numaralı bağlantı noktasında küçük bir Web sunucusu kullanacaktır. Azure VM 'niz için ayarladığınız URL 'YI ziyaret ederek tarayıcınızda bu uygulamaya gözatabilmelisiniz. Web uygulamanıza tarayıcıda ulabilmeniz için, bir Twilio uygulaması oluşturmaya başlamaya hazırsınız demektir.
 
 ## <a name="configure-your-application-to-use-twilio"></a><a id="configure_app"></a>Uygulamanızı Twilio kullanacak şekilde yapılandırma
-Web uygulamanızı şu satırı içerecek `Gemfile` şekilde güncelleştirerek Twilio kitaplığını kullanacak şekilde yapılandırabilirsiniz:
+Web uygulamanızı `Gemfile` Şu satırı içerecek şekilde güncelleştirerek Twilio kitaplığını kullanacak şekilde yapılandırabilirsiniz:
 
     gem 'twilio-ruby'
 
-Komut satırında komutunu çalıştırın `bundle install`. Şimdi açın `web.rb` ve bu satırı en üstte dahil edin:
+Komut satırında komutunu çalıştırın `bundle install` . Şimdi açın `web.rb` ve bu satırı en üstte dahil edin:
 
     require 'twilio-ruby'
 
@@ -110,7 +110,7 @@ Artık, Web uygulamanızda Ruby için Twilio yardımcı kitaplığını kullanma
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Nasıl yapılır: giden çağrı yapma
 Aşağıda, giden bir çağrının nasıl yapılacağı gösterilmektedir. Temel kavramlar, REST API çağrısı yapmak ve TwiML oluşturmak için Ruby için Twilio yardımcı kitaplığı kullanmayı içerir. **Kimden** **ve telefon numaraları için** değerlerinizi değiştirin ve kodu çalıştırmadan önce Twilio **hesabınızın telefon numarasını** doğrulayın.
 
-Bu işlevi şu şekilde `web.md`ekleyin:
+Bu işlevi şu şekilde ekleyin `web.md` :
 
     # Set your account ID and authentication token.
     sid = "your_twilio_account_sid";
@@ -140,16 +140,16 @@ Bu işlevi şu şekilde `web.md`ekleyin:
        </Response>"
     end
 
-Bir tarayıcıda açarsanız `http://yourdomain.cloudapp.net/make_call` , telefon çağrısını yapmak IÇIN Twilio API 'sine yapılan çağrıyı tetikler. İçindeki `client.account.calls.create` ilk iki parametre oldukça kendi kendine açıklayıcıdır: çağrının sayısı `from` ve çağrının numarası. `to` 
+`http://yourdomain.cloudapp.net/make_call`Bir tarayıcıda açarsanız, telefon çağrısını yapmak Için TWILIO API 'sine yapılan çağrıyı tetikler. İçindeki ilk iki parametre `client.account.calls.create` oldukça kendi kendine açıklayıcıdır: çağrının sayısı `from` ve çağrının numarası `to` . 
 
-Üçüncü parametresi (`url`), Twilio, çağrı bağlandığında ne yapacaklarına ilişkin yönergeler almak IÇIN gereken URL 'dir. Bu durumda, basit bir TwiML belgesi döndüren`http://yourdomain.cloudapp.net`bir URL () ayarladık ve bir metin okuma yapmak için `<Say>` fiili kullanır ve çağrıyı alan kişiye "Merhaba maymun" söyleyin.
+Üçüncü parametresi ( `url` ), Twilio, çağrı bağlandığında ne yapacaklarına ilişkin yönergeler almak için gereken URL 'dir. Bu durumda, `http://yourdomain.cloudapp.net` basit bir TwiML belgesi döndüren BIR URL () ayarladık ve bir `<Say>` metin okuma yapmak için fiili kullanır ve çağrıyı alan kişiye "Merhaba maymun" söyleyin.
 
 ## <a name="how-to-receive-an-sms-message"></a><a id="howto_receive_sms"></a>Nasıl yapılır: SMS iletisi alma
 Önceki örnekte, bir **giden** telefon araması başlattık. Bu kez, **gelen** SMS iletisini işlemek için kayıt sırasında Twilio verdiği telefon numarasını kullanalım.
 
 İlk olarak, [Twilio panonuzda][twilio_account]oturum açın. Üst gezinti çubuğunda "sayılar" a tıklayın ve sonra sağladınız Twilio numarası ' na tıklayın. Yapılandırabilmeniz için iki URL görürsünüz. Bir ses Isteği URL 'SI ve SMS Istek URL 'SI. Bunlar, bir telefon araması yapıldığında veya numaraya SMS gönderildiğinde Twilio tarafından çağrı yapan URL 'lardır. URL 'Ler, "Web kancaları" olarak da bilinir.
 
-Gelen SMS iletilerini işlemek istiyoruz, bu nedenle URL 'yi şu şekilde güncelleştirelim `http://yourdomain.cloudapp.net/sms_url`. Devam edin ve sayfanın altındaki Değişiklikleri Kaydet ' e tıklayın. Şimdi, `web.rb` artık uygulamamız bu uygulamayı işleyecek şekilde programlayalım:
+Gelen SMS iletilerini işlemek istiyoruz, bu nedenle URL 'yi şu şekilde güncelleştirelim `http://yourdomain.cloudapp.net/sms_url` . Devam edin ve sayfanın altındaki Değişiklikleri Kaydet ' e tıklayın. Şimdi, artık `web.rb` uygulamamız bu uygulamayı işleyecek şekilde programlayalım:
 
     post '/sms_url' do
       "<Response>

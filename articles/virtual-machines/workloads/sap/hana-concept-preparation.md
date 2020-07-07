@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70101252"
 ---
 # <a name="disaster-recovery-principles"></a>Olağanüstü durum kurtarma ilkeleri
@@ -64,7 +64,7 @@ Sonraki adım, ikinci SAP HANA örneğini, TST HANA örneğini çalıştırdığ
 
 - [Yedekleme ve geri yükleme](hana-backup-restore.md)bölümünde açıklanan depolama anlık görüntüsü hazırlığının 2. adımını yürütün.
 - Henüz yapmadıysanız, HANA büyük örnek birimi DR birimi için ortak anahtar oluşturun. [Yedekleme ve geri yükleme](hana-backup-restore.md)bölümünde açıklanan depolama anlık görüntüsü hazırlığının 3. adımına bakın.
-- *Hanabackupcustomerdetails. txt dosyasını* yeni Hana örneğiyle koruyun ve depolamanın bağlantısının düzgün çalışıp çalışmadığını test edin.  
+- Yeni HANA örneğiyle *HANABackupCustomerDetails.txt* koruyun ve depolama ile bağlantının doğru çalışıp çalışmadığını test edin.  
 - DR Azure bölgesindeki HANA büyük örnek biriminde yeni yüklenen SAP HANA örneğini durdurun.
 - Bu PRD birimlerini çıkarın ve Azure hizmet yönetiminde SAP HANA başvurun. Depolama çoğaltma hedefi olarak çalışırken erişilebilir olmadıkları için birimler birime bağlı kalamazlar.  
 
