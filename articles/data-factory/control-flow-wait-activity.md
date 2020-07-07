@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417921"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory 'de bekleme etkinliğini Yürüt
@@ -24,7 +24,7 @@ ms.locfileid: "81417921"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -41,8 +41,8 @@ ms.locfileid: "81417921"
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | `Wait` Etkinliğin adı. | Dize | Yes
-type | **Wait**olarak ayarlanmalıdır. | Dize | Yes
+name | `Wait`Etkinliğin adı. | Dize | Yes
+tür | **Wait**olarak ayarlanmalıdır. | Dize | Yes
 Waittimeınseconds | İşlem hattının işleme devam etmeden önce bekleyeceği saniye sayısı. | Tamsayı | Yes
 
 ## <a name="example"></a>Örnek

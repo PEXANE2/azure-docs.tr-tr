@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432066"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hata kodları
@@ -55,11 +55,11 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Belirteç ile ilişkili doğru kaynak eksik. 
 
-Azure OAUTH uç noktasından bir erişim belirteci istenirken, "Resource" adlı bir parametre zorunludur. Bu değer belirteç sağlayıcısı için önemlidir çünkü belirteci amaçlanan kullanım için kapsamlanır. Bir Key Vault erişmek için **Tüm** belirteçlerin kaynağı *https\/:/Vault.keyvault.net* (sondaki eğik çizgi olmadan).
+Azure OAUTH uç noktasından bir erişim belirteci istenirken, "Resource" adlı bir parametre zorunludur. Bu değer belirteç sağlayıcısı için önemlidir çünkü belirteci amaçlanan kullanım için kapsamlanır. Bir Key Vault erişmek için **Tüm** belirteçlerin kaynağı *https: \/ /Vault.keyvault.net* (sondaki eğik çizgi olmadan).
 
 ### <a name="the-token-is-expired"></a>Belirtecin geçerliliği zaman aşımına uğradı
 
-Belirteçler Base64 kodlardır ve değerler gibi web sitelerinde kodu çözülebilir [http://jwt.calebb.net](http://jwt.calebb.net). Yukarıdaki belirtecin kodu çözülmüş:
+Belirteçler Base64 kodlardır ve değerler gibi web sitelerinde kodu çözülebilir [http://jwt.calebb.net](http://jwt.calebb.net) . Yukarıdaki belirtecin kodu çözülmüş:
 
 ```
     {
@@ -89,7 +89,7 @@ Belirteçler Base64 kodlardır ve değerler gibi web sitelerinde kodu çözüleb
 
 Bu belirteçte birçok önemli bölümü görebiliriz:
 
-- AUD (hedef kitle): belirtecin kaynağı. Bunun olduğuna dikkat edin <https://vault.azure.net>. Bu belirteç, Graph gibi bu değerle açıkça eşleşmeyen herhangi bir kaynak için çalışmayacaktır.
+- AUD (hedef kitle): belirtecin kaynağı. Bunun olduğuna dikkat edin <https://vault.azure.net> . Bu belirteç, Graph gibi bu değerle açıkça eşleşmeyen herhangi bir kaynak için çalışmayacaktır.
 - IAT (çıkarılan): belirteç verildiğinde dönem başlangıcından bu yana geçen onay işareti sayısı.
 - NBF (daha önce değil): Bu belirteç geçerli olduğunda dönem başlangıcından bu yana geçen onay işareti sayısı.
 - exp (sona erme): Bu belirtecin süresi dolduğunda dönem başlangıcından bu yana geçen onay işareti sayısı.
@@ -100,7 +100,7 @@ Her değerin, isteğin çalışması için belirteçte doğru şekilde tanımlan
 
 ### <a name="troubleshooting-401"></a>401 sorunlarını giderme
 
-istek, anahtar kasasında yapılmadan önce, belirteç oluşturma noktasından araştırılmalıdır. Belirteç istemek için genellikle kod kullanılıyor. Belirteç alındıktan sonra, Key Vault isteğine geçirilir. Kod yerel olarak çalışıyorsa, istek/yanıt yakalamak için Fiddler kullanabilirsiniz `https://login.microsoftonline.com`. İstek şöyle görünür:
+istek, anahtar kasasında yapılmadan önce, belirteç oluşturma noktasından araştırılmalıdır. Belirteç istemek için genellikle kod kullanılıyor. Belirteç alındıktan sonra, Key Vault isteğine geçirilir. Kod yerel olarak çalışıyorsa, istek/yanıt yakalamak için Fiddler kullanabilirsiniz `https://login.microsoftonline.com` . İstek şöyle görünür:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1

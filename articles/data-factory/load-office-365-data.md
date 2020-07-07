@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415809"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' den veri yükleme
@@ -26,7 +26,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin: 
+1. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin: 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -40,7 +40,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
     * **Sürüm**: **v2**'yi seçin.
     * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
 
-3. **Oluştur**’u seçin.
+3. **Oluştur**'u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz:
    
    ![Data factory giriş sayfası](./media/load-office-365-data/data-factory-home-page.png)
@@ -79,7 +79,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_Data Fa
 
     ![Yapılandırma Office 365 veri kümesi tablosu](./media/load-office-365-data/edit-dataset.png)
 
-8. Artık Office 365 veri ayıklama için ek özellikler yapılandırmaya devam etmek üzere işlem **hattı** > **kaynağı sekmesine** dönün.  Kullanıcı kapsamı ve kullanıcı kapsamı filtresi, Office 365 ' den çıkarmak istediğiniz verileri kısıtlamak için tanımlayabileceğiniz isteğe bağlı fiklardır. Bu ayarları nasıl yapılandıracağınızı öğrenmek için bkz. [Office 365 veri kümesi özellikleri](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) bölümü.
+8. Artık **pipeline**  >  Office 365 veri ayıklama için ek özellikler yapılandırmaya devam etmek üzere işlem hattı**kaynağı sekmesine** dönün.  Kullanıcı kapsamı ve kullanıcı kapsamı filtresi, Office 365 ' den çıkarmak istediğiniz verileri kısıtlamak için tanımlayabileceğiniz isteğe bağlı fiklardır. Bu ayarları nasıl yapılandıracağınızı öğrenmek için bkz. [Office 365 veri kümesi özellikleri](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) bölümü.
 
 9. Tarih filtrelerinden birini seçmeniz ve başlangıç saati ile bitiş saati değerlerini sağlamanız gerekir.
 
@@ -132,8 +132,8 @@ Soldaki **İzleyici** sekmesine gidin. El ile tetikleme tarafından tetiklenmiş
 
 Bu bağlam için ilk kez veri isteğinde bulunduğum (hangi veri tablosu ' ne erişmekte olduğunu, hangi hedef hesabın yüklendiği veri olduğunu ve veri erişim isteğini hangi kullanıcı kimliğiyle alıyorsa), durum kopyalama durumunu **devam ediyor**olarak görürsünüz ve yalnızca eylemler altındaki "Ayrıntılar" bağlantısına tıkladığınızda durumu **RequesetingConsent**olarak görürsünüz.  Veri ayıklama işleminin devam edebilmesi için, veri erişimi onaylayan grubunun bir üyesinin Privileged Access Management isteği onaylaması gerekir.
 
-_İzin isteği olarak durum:_
-![Etkinlik yürütme ayrıntıları-istek onayı](./media/load-office-365-data/activity-details-request-consent.png) 
+_İzin isteği olarak durum:_ 
+ ![ Etkinlik yürütme ayrıntıları-istek onayı](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Veri ayıklanan durum:_
 

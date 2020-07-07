@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81534321"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Ortak istemci ve gizli istemci uygulamaları
@@ -26,15 +26,15 @@ Microsoft kimlik doğrulama kitaplığı (MSAL) iki tür istemci tanımlar: gene
 - **Gizli istemci uygulamaları** sunucular üzerinde çalışan uygulamalardır (Web Apps, Web API Apps, hatta hizmet/Daemon uygulamaları). Erişimin zor olduğu kabul edilir ve bu nedenle bir uygulama gizli dizisi bulundurmaktan sorumludur. Gizli istemciler yapılandırma zamanı gizli dizilerini tutabilir. İstemcinin her örneği ayrı bir yapılandırmaya sahiptir (istemci KIMLIĞI ve istemci parolası dahil). Bu değerler, son kullanıcıların ayıklanmaları zordur. En yaygın gizli istemci bir Web uygulamasıdır. İstemci KIMLIĞI Web tarayıcısı aracılığıyla sunulur, ancak gizli dizi yalnızca arka kanalda geçirilir ve hiçbir şekilde doğrudan gösterilmez.
 
     Gizli istemci uygulamaları: <BR>
-    ![Web uygulaması](media/msal-client-applications/web-app.png) ![Web API](media/msal-client-applications/web-api.png) ![cini/hizmeti](media/msal-client-applications/daemon-service.png)
+    ![Web uygulaması ](media/msal-client-applications/web-app.png) ![ Web API ](media/msal-client-applications/web-api.png) ![ cini/hizmeti](media/msal-client-applications/daemon-service.png)
 
 - **Ortak istemci uygulamaları** , cihazlarda veya masaüstü bilgisayarlarda veya bir Web tarayıcısında çalışan uygulamalardır. Uygulama gizliliklerine güvenli bir şekilde devam etmek güvenli değildir, bu nedenle yalnızca Kullanıcı adına Web API 'Lerine erişir. (Yalnızca ortak istemci akışlarını destekler.) Ortak istemciler yapılandırma zamanı gizli dizilerini tutamaz, bu nedenle istemci gizli dizileri yok.
 
     Ortak istemci uygulamaları: <BR>
-    ![Masaüstü uygulama](media/msal-client-applications/desktop-app.png) ![tarayıcısız API](media/msal-client-applications/browserless-app.png) ![mobil uygulaması](media/msal-client-applications/mobile-app.png)
+    ![Masaüstü uygulama ](media/msal-client-applications/desktop-app.png) ![ TARAYıCıSıZ API ](media/msal-client-applications/browserless-app.png) ![ mobil uygulaması](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
-> MSAL. js ' de, ortak ve gizli istemci uygulamalarının bir ayrımı yoktur.  MSAL. js, istemci uygulamalarını, istemci kodunun bir Web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü ortak istemciler olan Kullanıcı Aracısı tabanlı uygulamalar olarak temsil eder. Tarayıcı bağlamı düzgün şekilde erişilebilir olduğundan, bu istemciler gizli dizileri depolamaz.
+> MSAL.js, ortak ve gizli istemci uygulamalarının bir ayrımı yoktur.  MSAL.js, Kullanıcı Aracısı tabanlı uygulamalar, istemci kodunun bir Web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü ortak istemciler gibi istemci uygulamalarını temsil eder. Tarayıcı bağlamı düzgün şekilde erişilebilir olduğundan, bu istemciler gizli dizileri depolamaz.
 
 ## <a name="comparing-the-client-types"></a>İstemci türlerini karşılaştırma
 Ortak istemci ve gizli istemci uygulamaları arasında bazı benzerlikler ve farklılıklar aşağıda verilmiştir:
@@ -49,4 +49,4 @@ ADAL kullandıysanız, ADAL 'nin kimlik doğrulama bağlamından farklı olarak,
 Şunları öğrenin:
 - [İstemci uygulama yapılandırma seçenekleri](msal-client-application-configuration.md)
 - [MSAL.NET kullanarak istemci uygulamaları örnekleme](msal-net-initializing-client-applications.md)
-- [MSAL. js kullanarak istemci uygulamalarını örnekleme](msal-js-initializing-client-applications.md)
+- [MSAL.jskullanarak istemci uygulamalarını örnekleme](msal-js-initializing-client-applications.md)

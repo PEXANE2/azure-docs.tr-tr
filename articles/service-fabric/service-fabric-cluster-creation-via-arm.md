@@ -4,16 +4,16 @@ description: Azure 'da Azure Resource Manager kullanarak güvenli bir Service Fa
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81458309"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Service Fabric kümesi oluşturma 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalındaki](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -26,7 +26,7 @@ Kümenin güvenliğini sağlamak için seçilen güvenlik türü (örn.: Windows
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Bu makalede, bir kümeyi dağıtmak için Service Fabric RM PowerShell veya Azure CLı modüllerini kullanın:
 
 * [Azure PowerShell 4,1 ve üzeri][azure-powershell]
@@ -63,7 +63,7 @@ Kullanılan şablon [Azure Service Fabric şablonu örnekleri üzerinde kullanı
 Aşağıdaki komut Windows veya Linux kümeleri oluşturabilir, işletim sistemini uygun şekilde belirtmeniz gerekir. PowerShell/CLı komutları Ayrıca, belirtilen *Certificateoutputfolder*'da sertifikayı da çıktı. Ancak, Sertifika klasörünün zaten oluşturulduğundan emin olun. Komut, VM SKU 'SU gibi diğer parametreleri de alır.
 
 > [!NOTE]
-> Aşağıdaki PowerShell komutu yalnızca Azure PowerShell `Az` modülüyle birlikte kullanılabilir. Azure Resource Manager PowerShell sürümünün geçerli sürümünü denetlemek için, aşağıdaki "Get-Module az" PowerShell komutunu çalıştırın. Azure Resource Manager PowerShell sürümünüzü yükseltmek için [Bu bağlantıyı](/powershell/azure/install-Az-ps) izleyin. 
+> Aşağıdaki PowerShell komutu yalnızca Azure PowerShell modülüyle birlikte kullanılabilir `Az` . Azure Resource Manager PowerShell sürümünün geçerli sürümünü denetlemek için, aşağıdaki "Get-Module az" PowerShell komutunu çalıştırın. Azure Resource Manager PowerShell sürümünüzü yükseltmek için [Bu bağlantıyı](/powershell/azure/install-Az-ps) izleyin. 
 >
 >
 

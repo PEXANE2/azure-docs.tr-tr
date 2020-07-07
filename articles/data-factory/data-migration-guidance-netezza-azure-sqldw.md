@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
 ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416451"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma 
@@ -123,7 +123,7 @@ Küçük tablolar (yani, 100 GB 'tan daha az bir birimi olan veya iki saat için
 
 Her kopyalama işinde, paralel sorgular çalıştırmak ve verileri bölümlere göre kopyalamak için aşağıdaki veri bölümü seçeneklerinden biriyle [ `parallelCopies` özellik ayarını](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) kullanarak, bazı paralellik düzeyine erişebilirsiniz:
 
-- Daha fazla verimlilik elde etmek için bir veri diliminden başlamanız önerilir.  `parallelCopies` Ayardaki değerin, Netezza sunucusundaki tablonuzdaki veri dilimi bölümlerinin toplam sayısından küçük olduğundan emin olun.  
+- Daha fazla verimlilik elde etmek için bir veri diliminden başlamanız önerilir.  `parallelCopies`Ayardaki değerin, Netezza sunucusundaki tablonuzdaki veri dilimi bölümlerinin toplam sayısından küçük olduğundan emin olun.  
 
 - Her bir veri dilimi bölümünün hacmi hala büyükse (örneğin, 10 GB veya üzeri), dinamik bir Aralık bölümüne geçiş yapmanız önerilir. Bu seçenek, bölüm sütunu, üst sınır ve alt sınır ile her bölümün birim sayısını ve bölüm sayısını tanımlamaya yönelik daha fazla esneklik sağlar.
 
@@ -151,13 +151,13 @@ Netezza sunucusundan Azure 'a veri geçiriyorsanız, sunucunun şirket güvenlik
 
 En iyi uygulama olarak, temsili bir örnek veri kümesiyle bir kavram kanıtı (POC), her kopyalama etkinliği için uygun bölüm boyutunu belirleyebilmeniz için Her bir bölümü Azure 'a iki saat içinde yüklemeniz önerilir.  
 
-Bir tabloyu kopyalamak için tek ve şirket içinde barındırılan bir IR makinesiyle tek bir kopyalama etkinliği ile başlayın. Tablodaki veri dilimi `parallelCopies` bölümlerinin sayısına göre ayarı kademeli olarak artırın. Tüm tablonun, kopyalama işinden kaynaklanan aktarım hızına bağlı olarak iki saat içinde Azure 'a yüklenip yüklenemeyeceğini öğrenin. 
+Bir tabloyu kopyalamak için tek ve şirket içinde barındırılan bir IR makinesiyle tek bir kopyalama etkinliği ile başlayın. `parallelCopies`Tablodaki veri dilimi bölümlerinin sayısına göre ayarı kademeli olarak artırın. Tüm tablonun, kopyalama işinden kaynaklanan aktarım hızına bağlı olarak iki saat içinde Azure 'a yüklenip yüklenemeyeceğini öğrenin. 
 
 Bu, iki saat içinde Azure 'a yüklenemediğinde ve şirket içinde barındırılan IR düğümünün ve veri deposunun kapasitesi tam olarak kullanılmazsa, ağınızın sınırına veya veri depolarının bant genişliği sınırına ulaşana kadar eşzamanlı kopyalama etkinliklerinin sayısını kademeli olarak artırın. 
 
 Şirket içinde barındırılan IR makinesinde CPU ve bellek kullanımını izlemeye devam edin ve CPU ve belleğin tam olarak kullanıldığını gördüğünüzde makinenin ölçeğini ölçeklendirmeye veya birden çok makineye ölçeğe hazır olun. 
 
-Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaşdığınızda, Azure Data Factory eşzamanlılık veya `parallelCopies` ayarı azaltın ya da ağ ve veri depolarının bant genişliği veya g/ç işlemleri/sn (IOPS) sınırlarını artırmayı düşünün. 
+Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaşdığınızda, Azure Data Factory eşzamanlılık veya ayarı azaltın ya da `parallelCopies` Ağ ve veri depolarının bant genişliği veya g/ç işlemleri/sn (IOPS) sınırlarını artırmayı düşünün. 
 
 
 ### <a name="estimate-your-pricing"></a>Fiyatlandırmanızı tahmin etme 
@@ -196,7 +196,7 @@ Daha fazla bilgi için aşağıdaki makalelere ve kılavuzlara bakın:
 - [ODBC bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage 2. Nesil bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SQL veri ambarı Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Azure SQL Veri Ambarı bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [Kopyalama etkinliği performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [Şirket içinde barındırılan tümleştirme çalışma zamanı HA ve ölçeklenebilirliği](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)

@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683726"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM 'de Oracle altın kapısı uygulama 
@@ -82,7 +82,7 @@ az vm availability-set create \
 
 [az vm create](/cli/azure/vm) komutuyla bir sanal makine oluşturun. 
 
-Aşağıdaki örnek, ve `myVM1` `myVM2`adlı iki sanal makine oluşturur. Varsayılan anahtar konumunda henüz yoksa SSH anahtarları oluşturun. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, ve adlı iki sanal makine oluşturur `myVM1` `myVM2` . Varsayılan anahtar konumunda henüz yoksa SSH anahtarları oluşturun. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
 #### <a name="create-myvm1-primary"></a>MyVM1 oluştur (birincil):
 
@@ -96,7 +96,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-VM oluşturulduktan sonra Azure CLı, aşağıdaki örneğe benzer bilgiler gösterir. (Öğesine göz atın `publicIpAddress`. Bu adres, sanal makineye erişmek için kullanılır.)
+VM oluşturulduktan sonra Azure CLı, aşağıdaki örneğe benzer bilgiler gösterir. (Öğesine göz atın `publicIpAddress` . Bu adres, sanal makineye erişmek için kullanılır.)
 
 ```output
 {
@@ -123,7 +123,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Oluşturulduktan sonra, ve `publicIpAddress` ' i de bir yere göz atın.
+Oluşturulduktan sonra, ve ' i de bir yere göz atın `publicIpAddress` .
 
 ### <a name="open-the-tcp-port-for-connectivity"></a>Bağlantı için TCP bağlantı noktasını açın
 
@@ -354,7 +354,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Altın Kapı yazılımını indirin
 Oracle altın kapısı yazılımını indirmek ve hazırlamak için aşağıdaki adımları izleyin:
 
-1. [Oracle altın kapısı indirme sayfasından](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html) **fbo_ggs_Linux_x64_shiphome. zip** dosyasını indirin. **Oracle Linux x86-64 Için Oracle GoldenGate 12. x. x. x**indirme başlığı altında, indirilecek bir. zip dosyaları kümesi olmalıdır.
+1. [Oracle altın kapısı indirme sayfasından](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html) **fbo_ggs_Linux_x64_shiphome.zip** dosyasını indirin. **Oracle Linux x86-64 Için Oracle GoldenGate 12. x. x. x**indirme başlığı altında, indirilecek bir. zip dosyaları kümesi olmalıdır.
 
 2. . Zip dosyalarını istemci bilgisayarınıza indirdikten sonra, dosyaları sanal makinenize kopyalamak için güvenli kopyalama Protokolü 'Nü (SCP) kullanın:
 
@@ -391,7 +391,7 @@ Bu, isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten 
    * [PuTTY 'yi indirin](https://www.putty.org/)
    * [Xwebsite 'i indirin](https://xming.en.softonic.com/)
 
-2. PuTTY ' i yükledikten sonra (örneğin, C:\Program Files\PuTTY), PuTTYgen. exe ' yi (PuTTY anahtar Oluşturucu) çalıştırın.
+2. PuTTY ' i yükledikten sonra, PuTTY klasöründe (örneğin, C:\Program Files\PuTTY) puttygen.exe (PuTTY anahtar Oluşturucu) öğesini çalıştırın.
 
 3. PuTTY anahtar Oluşturucu:
 
@@ -413,14 +413,14 @@ Bu, isteğe bağlı bir adımdır. Linux istemcisi kullanıyorsanız veya zaten 
 5. **Authorized_keys**adlı bir dosya oluşturun. Anahtarın içeriğini bu dosyaya yapıştırın ve dosyayı kaydedin.
 
    > [!NOTE]
-   > Anahtarın dizeyi `ssh-rsa`içermesi gerekir. Ayrıca, anahtarın içeriği tek satırlık bir metin olmalıdır.
+   > Anahtarın dizeyi içermesi gerekir `ssh-rsa` . Ayrıca, anahtarın içeriği tek satırlık bir metin olmalıdır.
    >  
 
-6. PuTTY’yi başlatın. **Kategori** bölmesinde **bağlantı** > **SSH** > **kimlik doğrulaması**' nı seçin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
+6. PuTTY’yi başlatın. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **kimlik doğrulaması**' nı seçin. **Kimlik doğrulaması Için özel anahtar dosyası** kutusunda, daha önce oluşturduğunuz anahtara gidin.
 
    ![Özel anahtar ayarla sayfasının ekran görüntüsü](./media/oracle-golden-gate/setprivatekey.png)
 
-7. **Kategori** bölmesinde **bağlantı** > **SSH** > **X11**' ı seçin. Ardından **X11 Iletmeyi etkinleştir** kutusunu seçin.
+7. **Kategori** bölmesinde **bağlantı**  >  **SSH**  >  **X11**' ı seçin. Ardından **X11 Iletmeyi etkinleştir** kutusunu seçin.
 
    ![Enable X11 sayfasının ekran görüntüsü](./media/oracle-golden-gate/enablex11.png)
 

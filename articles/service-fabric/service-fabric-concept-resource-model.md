@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
 ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682637"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli
@@ -50,7 +50,7 @@ Mevcut bir depolama hesabını yeniden kullanabilir veya uygulamalarınızı haz
 
 ### <a name="configure-your-storage-account"></a>Depolama hesabınızı yapılandırma
 
-Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturursunuz. Azure portal, uygulamalarınızı depolamak istediğiniz Azure depolama hesabına gidin. **Bloblar** > **Ekle kapsayıcı**seçin. 
+Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturursunuz. Azure portal, uygulamalarınızı depolamak istediğiniz Azure depolama hesabına gidin. **Bloblar**  >  **Ekle kapsayıcı**seçin. 
 
 Kümenizin içindeki kaynaklara genel erişim düzeyi **özel**olarak ayarlanarak güvenli hale getirebilirsiniz. Birden çok şekilde erişim verebilirsiniz:
 
@@ -71,7 +71,7 @@ Bu öğreticide, [Oylama örnek uygulamasını](https://github.com/Azure-Samples
 1. Visual Studio 'da, **Oylama** projesine sağ tıklayın ve ardından **paket**' i seçin.
 
    ![Paket uygulaması][PackageApplication]  
-1. *.\Service-Fabric-DotNet-quickstart\Voting\pkg\Debug* dizinine gidin. İçeriği, *Oylama. zip*adlı bir dosyaya ZIP. *ApplicationManifest. xml* dosyası ZIP dosyasının kökünde olmalıdır.
+1. *.\Service-Fabric-DotNet-quickstart\Voting\pkg\Debug* dizinine gidin. İçeriği *Voting.zip*adlı bir dosyaya ZIP. *ApplicationManifest.xml* dosyası ZIP dosyasının kökünde olmalıdır.
 
    ![ZIP uygulaması][ZipApplication]  
 1. . Zip uzantısını *. sfpkg*olarak değiştirmek için dosyayı yeniden adlandırın.
@@ -84,22 +84,22 @@ Artık uygulama hazırlanmıştır ve uygulamayı dağıtmak için Kaynak Yönet
 
 ### <a name="create-the-resource-manager-template"></a>Resource Manager şablonu oluşturma
 
-Örnek uygulama, uygulamayı dağıtmak için kullanabileceğiniz [Azure Resource Manager şablonlar](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) içerir. Şablon dosya adları *userapp. JSON* ve *Userapp. Parameters. JSON*' dir.
+Örnek uygulama, uygulamayı dağıtmak için kullanabileceğiniz [Azure Resource Manager şablonlar](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) içerir. Şablon dosya adları *UserApp.js* ve üzerinde *UserApp.Parameters.js*.
 
 > [!NOTE]
-> *Userapp. Parameters. JSON* dosyası kümenizin adıyla birlikte güncelleştirilmeleri gerekir.
+> *UserApp.Parameters.jsdosyadaki* , kümenizin adıyla birlikte güncelleştirilmeleri gerekir.
 >
 >
 
-| Parametre              | Açıklama                                 | Örnek                                                      | Açıklamalar                                                     |
+| Parametre              | Açıklama                                 | Örnek                                                      | Yorumlar                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Dağıtım yaptığınız kümenin adı | SF-cluster123                                                |                                                              |
 | uygulama            | Uygulamanın adı                 | Oylama                                                       |
-| applicationTypeName    | Uygulamanın tür adı           | VotingType                                                   | ApplicationManifest. xml ile eşleşmelidir                 |
-| applicationTypeVersion | Uygulama türü sürümü         | 1.0.0                                                        | ApplicationManifest. xml ile eşleşmelidir                 |
+| applicationTypeName    | Uygulamanın tür adı           | VotingType                                                   | ApplicationManifest.xml eşleşmelidir                 |
+| applicationTypeVersion | Uygulama türü sürümü         | 1.0.0                                                        | ApplicationManifest.xml eşleşmelidir                 |
 | HizmetAdı            | Hizmetin adı         | Oylama ~ VotingWeb                                             | ApplicationName ~ ServiceType biçiminde olmalıdır            |
-| serviceTypeName        | Hizmetin tür adı                | VotingWeb                                                    | ServiceManifest. xml ile eşleşmelidir                 |
-| appPackageUrl 'Si          | Uygulamanın BLOB depolama URL 'SI     | https:\//servicefabricapps.blob.Core.Windows.net/Apps/Voting.sfpkg | Blob depolamada uygulama paketinin URL 'SI (URL 'YI ayarlama yordamı, makalenin ilerleyen kısımlarında açıklanmıştır) |
+| serviceTypeName        | Hizmetin tür adı                | VotingWeb                                                    | ServiceManifest.xml eşleşmelidir                 |
+| appPackageUrl 'Si          | Uygulamanın BLOB depolama URL 'SI     | https: \/ /servicefabricapps.blob.Core.Windows.net/Apps/Voting.sfpkg | Blob depolamada uygulama paketinin URL 'SI (URL 'YI ayarlama yordamı, makalenin ilerleyen kısımlarında açıklanmıştır) |
 
 ```json
 {
@@ -140,7 +140,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 Aşağıdaki nedenlerden biri için zaten Service Fabric bir kümeye dağıtılmış olan bir uygulamayı yükseltebilirsiniz:
 
-* Uygulamaya yeni bir hizmet eklenir. Uygulamaya bir hizmet eklendiğinde, bir hizmet tanımının *Service-manifest. xml* ve *Application-manifest. xml* dosyalarına eklenmesi gerekir. Uygulamanın yeni bir sürümünü yansıtmak için, 1.0.0 uygulama türü sürümünü [Userapp. Parameters. JSON](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)' da 1.0.1 olarak değiştirmeniz gerekir:
+* Uygulamaya yeni bir hizmet eklenir. Uygulamaya bir hizmet eklendiğinde, bir hizmet tanımının *service-manifest.xml* ve *application-manifest.xml* dosyalara eklenmesi gerekir. Bir uygulamanın yeni bir sürümünü yansıtmak için, uygulama türü sürümünü 1.0.0 ' den 1.0.1 ' den [UserApp.Parameters.js](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)' de değiştirmeniz gerekir:
 
     ```json
     "applicationTypeVersion": {
@@ -154,7 +154,7 @@ Aşağıdaki nedenlerden biri için zaten Service Fabric bir kümeye dağıtılm
     }
     ```
 
-* Uygulamaya mevcut bir hizmetin yeni bir sürümü eklenir. Örnek olarak uygulama kodu değişiklikleri ve uygulama türü sürümü ve adı güncelleştirmeleri bulunur. Bu yükseltme için UserApp. Parameters. JSON öğesini şu şekilde güncelleştirin:
+* Uygulamaya mevcut bir hizmetin yeni bir sürümü eklenir. Örnek olarak uygulama kodu değişiklikleri ve uygulama türü sürümü ve adı güncelleştirmeleri bulunur. Bu yükseltme için UserApp.Parameters.jsşu şekilde güncelleştirin:
 
     ```json
      "applicationTypeVersion": {

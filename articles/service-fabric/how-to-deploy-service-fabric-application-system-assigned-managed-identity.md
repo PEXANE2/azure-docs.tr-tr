@@ -4,10 +4,10 @@ description: Bu makalede, bir Azure Service Fabric uygulamasına sistem tarafın
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415646"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlikle Service Fabric uygulaması dağıtma
@@ -15,7 +15,7 @@ ms.locfileid: "81415646"
 Azure Service Fabric uygulamaları için yönetilen kimlik özelliğine erişebilmek için öncelikle kümede yönetilen kimlik belirteci hizmetini etkinleştirmeniz gerekir. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, diğer sistem hizmetleri ' nin yanında bulunan **Fabric:/System/Managedıdentitytokenservice** altında çalışan Service Fabric Explorer görebilirsiniz.
 
 > [!NOTE] 
-> Yönetilen kimliklere sahip Service Fabric uygulamalarının dağıtımı API sürümü `"2019-06-01-preview"`ile başlayarak desteklenir. Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz. Desteklenen en düşük Service Fabric çalışma zamanı 6,5 CU2 UYGULAMAZSANıZ. Ek olarak, derleme/paket ortamında CU2 UYGULAMAZSANıZ veya üzeri sürümlerde SF .NET SDK 'Sı de bulunmalıdır
+> Yönetilen kimliklere sahip Service Fabric uygulamalarının dağıtımı API sürümü ile başlayarak desteklenir `"2019-06-01-preview"` . Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz. Desteklenen en düşük Service Fabric çalışma zamanı 6,5 CU2 UYGULAMAZSANıZ. Ek olarak, derleme/paket ortamında CU2 UYGULAMAZSANıZ veya üzeri sürümlerde SF .NET SDK 'Sı de bulunmalıdır
 
 ## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 
@@ -43,7 +43,7 @@ Uygulamayı sistem tarafından atanan bir yönetilen kimlikle etkinleştirmek i�
       }
     }
 ```
-Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe sahip olması için sırasıyla, yönetilen kimliği ve Service Fabric kaynak sağlayıcılarını bildirir (Azure Resource Manager.
+Bu özellik, bu kaynağın örtük () yönetilen bir kimliğe sahip olması için sırasıyla, yönetilen kimliği ve Service Fabric kaynak sağlayıcılarını bildirir (Azure Resource Manager `system assigned` .
 
 ### <a name="application-and-service-package"></a>Uygulama ve hizmet paketi
 
@@ -72,9 +72,9 @@ Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe s
         </ServiceManifestImport>
       ```
 
-    Bu öğe, uygulamanın kimliğini hizmete atar; Bu atama olmadan, hizmet uygulamanın kimliğine erişemez. Yukarıdaki kod parçacığında, `SystemAssigned` kimlik (ayrılmış bir anahtar sözcük), kolay ad `WebAdmin`altında hizmetin tanımına eşlenir.
+    Bu öğe, uygulamanın kimliğini hizmete atar; Bu atama olmadan, hizmet uygulamanın kimliğine erişemez. Yukarıdaki kod parçacığında, `SystemAssigned` kimlik (ayrılmış bir anahtar sözcük), kolay ad altında hizmetin tanımına eşlenir `WebAdmin` .
 
-3. **Kaynak** bölümündeki bir `ServiceIdentityRef` **managedıdentity** öğesi eklemek için hizmet bildirimini güncelleştirin ve bu ayar, uygulama bildirimindeki `IdentityBindingPolicy` tanımdaki ayarın değeriyle eşleşen ada sahiptir:
+3. **Kaynak** bölümündeki bir **managedıdentity** öğesi eklemek için hizmet bildirimini güncelleştirin ve bu `ServiceIdentityRef` ayar, `IdentityBindingPolicy` uygulama bildirimindeki tanımdaki ayarın değeriyle eşleşen ada sahiptir:
 
     **ServiceManifest.xml**
 
@@ -86,7 +86,7 @@ Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe s
         </ManagedIdentities>
       </Resources>
     ```
-    Bu, yukarıda açıklanan, ancak hizmet tanımının perspektifinden, bir hizmetin kimliği ile eşdeğer eşlemedir. Kimliğe, uygulama bildiriminde bildirildiği gibi kolay adı (`WebAdmin`) tarafından başvurulur.
+    Bu, yukarıda açıklanan, ancak hizmet tanımının perspektifinden, bir hizmetin kimliği ile eşdeğer eşlemedir. Kimliğe, `WebAdmin` uygulama bildiriminde bildirildiği gibi kolay adı () tarafından başvurulur.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * Azure Service Fabric [yönetilen kimlik desteğini](./concepts-managed-identity.md) gözden geçirme

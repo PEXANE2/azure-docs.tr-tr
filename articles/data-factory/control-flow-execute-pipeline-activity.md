@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415271"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory içinde işlem hattı etkinliğini yürütme
@@ -26,7 +26,7 @@ ms.locfileid: "81415271"
 
 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -66,17 +66,17 @@ ms.locfileid: "81415271"
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | İşlem hattının yürütülmesi etkinliğinin adı. | Dize | Yes
-type | : **Executepipeline**olarak ayarlanmalıdır. | Dize | Yes
+name | İşlem hattının yürütülmesi etkinliğinin adı. | Dize | Yes
+tür | : **Executepipeline**olarak ayarlanmalıdır. | Dize | Yes
 konfigüre | Bu işlem hattının çağırdığı bağımlı işlem hattına işlem hattı başvurusu. İşlem hattı başvuru nesnesi iki özelliğe sahiptir: **ReferenceName** ve **Type**. ReferenceName özelliği, başvuru işlem hattının adını belirtir. Type özelliği PipelineReference olarak ayarlanmalıdır. | PipelineReference | Yes
-parametreler | Çağrılan işlem hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | Hayır
-waitOnCompletion | Etkinlik yürütmenin bağımlı işlem hattı yürütmenin bitmesini bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | Hayır
+parametreler | Çağrılan işlem hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | No
+waitOnCompletion | Etkinlik yürütmenin bağımlı işlem hattı yürütmenin bitmesini bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | No
 
 ## <a name="sample"></a>Örnek
 Bu senaryonun iki işlem hattı vardır:
 
-- **Ana** işlem hattı-bu işlem hattı çağrılan işlem hattını çağıran bir yürütme işlem hattı etkinliğine sahiptir. Ana işlem hattı iki parametre alır: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
-- **Çağrılan işlem hattı** -bu işlem hattı, verileri bir Azure Blob kaynağından Azure Blob havuzuna kopyalayan bir kopyalama etkinliğine sahiptir. Çağrılan işlem hattı iki parametre alır: `sourceBlobContainer`, `sinkBlobContainer`.
+- **Ana** işlem hattı-bu işlem hattı çağrılan işlem hattını çağıran bir yürütme işlem hattı etkinliğine sahiptir. Ana işlem hattı iki parametre alır: `masterSourceBlobContainer` , `masterSinkBlobContainer` .
+- **Çağrılan işlem hattı** -bu işlem hattı, verileri bir Azure Blob kaynağından Azure Blob havuzuna kopyalayan bir kopyalama etkinliğine sahiptir. Çağrılan işlem hattı iki parametre alır: `sourceBlobContainer` , `sinkBlobContainer` .
 
 ### <a name="master-pipeline-definition"></a>Ana işlem hattı tanımı
 

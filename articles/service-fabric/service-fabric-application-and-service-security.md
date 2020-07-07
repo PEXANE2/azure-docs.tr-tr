@@ -4,10 +4,10 @@ description: Service Fabric 'da mikro hizmet uygulamalarının güvenli bir şek
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461438"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Uygulama ve hizmet güvenliği Service Fabric
@@ -42,7 +42,7 @@ API Management, arka uç Service Fabric hizmetlerinize zengin bir yönlendirme k
 ## <a name="manage-application-secrets"></a>Uygulama parolalarını yönetme
 Gizlilikler, depolama bağlantı dizeleri, parolalar veya düz metin olarak işlenmemelidir diğer değerler gibi herhangi bir hassas bilgi olabilir. Bu makale, anahtarları ve gizli dizileri yönetmek için Azure Key Vault kullanır. Ancak, bir uygulamadaki gizli dizileri *kullanmak* , uygulamaların herhangi bir yerde barındırılan bir kümeye dağıtılmasına olanak tanımak için bulut platformudur.
 
-Hizmet yapılandırma ayarlarını yönetmenin önerilen yolu, [hizmet yapılandırma paketleri][config-package]aracılığıyla yapılır. Yapılandırma paketleri, sistem durumu doğrulama ve otomatik geri alma ile yönetilen sıralı yükseltmeler aracılığıyla sürümlenmiş ve güncelleştirilebilir. Bu, küresel hizmet kesintisi olasılığını azalttığı için genel yapılandırma için tercih edilir. Şifrelenmiş gizli diziler özel durum değildir. Service Fabric, bir yapılandırma paketi Settings. xml dosyasındaki değerleri şifrelemek ve şifrelerini çözmek için sertifika şifrelemesini kullanan yerleşik özelliklere sahiptir.
+Hizmet yapılandırma ayarlarını yönetmenin önerilen yolu, [hizmet yapılandırma paketleri][config-package]aracılığıyla yapılır. Yapılandırma paketleri, sistem durumu doğrulama ve otomatik geri alma ile yönetilen sıralı yükseltmeler aracılığıyla sürümlenmiş ve güncelleştirilebilir. Bu, küresel hizmet kesintisi olasılığını azalttığı için genel yapılandırma için tercih edilir. Şifrelenmiş gizli diziler özel durum değildir. Service Fabric, sertifika şifrelemesini kullanarak bir yapılandırma paketindeki Settings.xml bir dosyadaki değerleri şifrelemek ve şifrelerini çözmek için yerleşik özelliklere sahiptir.
 
 Aşağıdaki diyagramda Service Fabric uygulamasındaki gizli yönetim için temel akış gösterilmektedir:
 
@@ -52,8 +52,8 @@ Bu akışta dört ana adım vardır:
 
 1. Veri şifreleme sertifikası alın.
 2. Sertifikayı kümenize yükler.
-3. Bir uygulamayı sertifikayla dağıtmakta ve bir hizmetin Settings. xml yapılandırma dosyasına eklerken gizli değerleri şifreleyin.
-4. Şifrelenmiş değerleri, aynı şifreleme sertifikasıyla şifre çözme yoluyla ayarlar. xml dosyasından okuyun. 
+3. Bir uygulamayı sertifikayla dağıtmakta ve bir hizmetin Settings.xml yapılandırma dosyasına eklerken gizli değerleri şifreleyin.
+4. Aynı şifreleme sertifikasıyla şifre çözme yoluyla Settings.xml şifrelenmiş değerleri okuyun. 
 
 [Azure Key Vault][key-vault-get-started] , sertifikalar için güvenli bir depolama konumu olarak ve Azure 'daki Service Fabric kümelerine yüklü sertifikaları almanın bir yolu olarak kullanılır. Azure 'a dağıtmayın, Service Fabric uygulamalardaki gizli dizileri yönetmek için Key Vault kullanmanız gerekmez.
 
@@ -66,7 +66,7 @@ Uygulama bildirimi, gerekli olan hizmetleri ve güvenli kaynakları çalıştır
 
 Sorumluları bildirirken, bir veya daha fazla kullanıcının birlikte yönetilmesi için her gruba eklenebilmesi için Kullanıcı grupları tanımlayabilir ve oluşturabilirsiniz. Bu, farklı hizmet giriş noktaları için birden fazla kullanıcı olduğunda ve grup düzeyinde kullanılabilen belirli ortak ayrıcalıklara sahip olmaları gerektiğinde yararlıdır.
 
-Varsayılan olarak, Service Fabric uygulamalar yapı. exe işleminin altında çalıştığı hesap altında çalışır. Service Fabric Ayrıca uygulama bildiriminde belirtilen yerel bir kullanıcı hesabı veya yerel sistem hesabı altında uygulama çalıştırma yeteneği sağlar. Daha fazla bilgi için bkz. [bir hizmeti yerel kullanıcı hesabı veya yerel sistem hesabı olarak çalıştırma](service-fabric-application-runas-security.md).  Ayrıca, [bir hizmet başlatma betiğini yerel kullanıcı veya sistem hesabı olarak da çalıştırabilirsiniz](service-fabric-run-script-at-service-startup.md).
+Varsayılan olarak, Service Fabric uygulamalar Fabric.exe işleminin altında çalıştığı hesap altında çalışır. Service Fabric Ayrıca uygulama bildiriminde belirtilen yerel bir kullanıcı hesabı veya yerel sistem hesabı altında uygulama çalıştırma yeteneği sağlar. Daha fazla bilgi için bkz. [bir hizmeti yerel kullanıcı hesabı veya yerel sistem hesabı olarak çalıştırma](service-fabric-application-runas-security.md).  Ayrıca, [bir hizmet başlatma betiğini yerel kullanıcı veya sistem hesabı olarak da çalıştırabilirsiniz](service-fabric-run-script-at-service-startup.md).
 
 Windows bağımsız kümesinde Service Fabric çalıştırırken, [Active Directory etki alanı hesapları](service-fabric-run-service-as-ad-user-or-group.md) veya [Grup yönetilen hizmet hesapları](service-fabric-run-service-as-gmsa.md)altında bir hizmet çalıştırabilirsiniz.
 

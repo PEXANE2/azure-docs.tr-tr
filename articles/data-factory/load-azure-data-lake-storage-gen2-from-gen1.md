@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
 ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415818"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Lake Storage 1. verileri Azure Data Factory ile Gen2 'a kopyalama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Lake Storage 2., [Azure Blob depolamada](../storage/blobs/storage-blobs-introduction.md)yerleşik olan büyük veri analizlerine adanmış bir dizi özellik kümesidir. Hem dosya sistemi hem de nesne depolama paradigmalarına kullanarak verilerinize arabirim atamak için kullanabilirsiniz.
+Azure Data Lake Storage 2., [Azure Blob depolamada](../storage/blobs/storage-blobs-introduction.md)yerleşik olan büyük veri analizlerine adanmış bir dizi özellik kümesidir. Bu hizmet sayesinde hem dosya sistemi hem de nesne depolama alanı yaklaşımlarını kullanarak verilerinize arabirim oluşturabilirsiniz.
 
 Şu anda Azure Data Lake Storage 1. kullanıyorsanız, Azure Data Factory kullanarak Data Lake Storage 1. verileri Gen2 'e kopyalayarak Azure Data Lake Storage 2. değerlendirebilirsiniz.
 
@@ -33,7 +33,7 @@ Azure Data Factory, genişleme, yönetilen bir veri taşıma çözümü sağlar.
 
 Bu makalede veri kopyalama aracının Azure Data Lake Storage 1. verileri Azure Data Lake Storage 2. 'e kopyalamak için Data Factory nasıl kullanılacağı gösterilmektedir. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Hesabı içindeki verileri Azure Data Lake Storage 1..
@@ -41,7 +41,7 @@ Bu makalede veri kopyalama aracının Azure Data Lake Storage 1. verileri Azure 
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol taraftaki menüden > **veri ve analiz** >  **kaynak oluştur**' u seçin**Data Factory**.
+1. Sol taraftaki menüden veri ve analiz **kaynak oluştur**' u seçin  >  **Data + Analytics**  >  **Data Factory**.
    
    ![Yeni bölmede Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -49,13 +49,13 @@ Bu makalede veri kopyalama aracının Azure Data Lake Storage 1. verileri Azure 
       
    ![Yeni Veri Fabrikası sayfası](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
  
-    * **Ad**: Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name \"loadadlsdemo\" kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin, _**adınız**_**ADFTutorialDataFactory** adını kullanın. Data Factory 'yi tekrar oluşturun. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
+    * **Ad**: Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name \" loadadlsdemo \" kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin, _**adınız**_**ADFTutorialDataFactory** adını kullanın. Data Factory 'yi tekrar oluşturun. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
     * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
     * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin. Ayrıca **Yeni oluştur** seçeneğini belirleyip bir kaynak grubunun adını girebilirsiniz. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
     * **Sürüm**: **v2**'yi seçin.
     * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda ve bölgelerde olabilir. 
 
-3. **Oluştur**’u seçin.
+3. **Oluştur**'u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz: 
    
    ![Data factory giriş sayfası](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -82,7 +82,7 @@ Bu makalede veri kopyalama aracının Azure Data Lake Storage 1. verileri Azure 
 
    a. Hesap adı için Data Lake Storage 1. seçin ve **kiracıyı**belirtin veya doğrulayın.
   
-   b. Ayarları doğrulamak için **Bağlantıyı Sına** ' yı seçin. Ardından **Son**’u seçin.
+   b. Ayarları doğrulamak için **Bağlantıyı Sına** ' yı seçin. Ardından **son**' u seçin.
   
    c. Yeni bir bağlantı oluşturulduğunu görürsünüz. **İleri**’yi seçin.
    
@@ -99,7 +99,7 @@ Bu makalede veri kopyalama aracının Azure Data Lake Storage 1. verileri Azure 
 
     ![Çıkış klasörünü belirtin](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-8. **Hedef veri deposu** sayfasında **+ Yeni bağlantı** > oluştur**Azure Data Lake Storage 2.** > **devam et**' i seçin.
+8. **Hedef veri deposu** sayfasında **+ Yeni bağlantı oluştur**  >  **Azure Data Lake Storage 2.**  >  **devam et**' i seçin.
 
     ![Hedef veri deposu sayfası](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 
@@ -180,6 +180,6 @@ Artımlı yükleme yapmak için uygun sıklık, Azure Data Lake Storage 1. için
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
-> [Azure Data Lake Storage 1. Bağlayıcısı](connector-azure-data-lake-store.md)
-> [Azure Data Lake Storage 2. Bağlayıcısı](connector-azure-data-lake-storage.md)
+> [Kopyalama etkinliğine genel bakış](copy-activity-overview.md) 
+>  [Azure Data Lake Storage 1. Bağlayıcısı](connector-azure-data-lake-store.md) 
+>  [Azure Data Lake Storage 2. Bağlayıcısı](connector-azure-data-lake-storage.md)

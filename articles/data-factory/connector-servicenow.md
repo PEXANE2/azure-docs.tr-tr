@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415345"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Data Factory kullanarak ServiceNow 'dan veri kopyalama
@@ -46,18 +46,18 @@ ServiceNow bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **ServiceNow** olarak ayarlanmalıdır | Yes |
-| endpoint | ServiceNow sunucusu 'nun (`http://<instance>.service-now.com`) uç noktası.  | Yes |
+| tür | Type özelliği: **ServiceNow** olarak ayarlanmalıdır | Yes |
+| endpoint | ServiceNow sunucusu 'nun () uç noktası `http://<instance>.service-now.com` .  | Yes |
 | authenticationType | Kullanılacak kimlik doğrulaması türü. <br/>İzin verilen değerler: **Basic**, **OAuth2** | Yes |
 | kullanıcı adı | Temel ve OAuth2 kimlik doğrulaması için ServiceNow sunucusuna bağlanmak için kullanılan Kullanıcı adı.  | Yes |
 | password | Temel ve OAuth2 kimlik doğrulaması için Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| clientId | OAuth2 kimlik doğrulaması için istemci KIMLIĞI.  | Hayır |
-| clientSecret | OAuth2 kimlik doğrulaması için istemci parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| clientId | OAuth2 kimlik doğrulaması için istemci KIMLIĞI.  | No |
+| clientSecret | OAuth2 kimlik doğrulaması için istemci parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -85,10 +85,10 @@ ServiceNow 'dan verileri kopyalamak için, veri kümesinin Type özelliğini **S
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **Servicenowobject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **Servicenowobject** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -115,19 +115,19 @@ ServiceNow 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Servicenowsource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Servicenowsource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Actual.alm_asset"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 Sorgudaki ServiceNow için şemayı ve sütunu belirtirken aşağıdaki gibi bir yere göz önünde, **kopyalama performansı ile Ilgili [performans ipuçlarına](#performance-tips) bakın**.
 
-- **Şema:** dosyayı ServiceNow `Actual` sorgusunda `Display` veya olarak belirtin. Bu, bunu doğru `sysparm_display_value` olarak parametre olarak veya [ServiceNow restalow API 'lerini](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)çağırırken false olarak görebilirsiniz. 
-- **Sütun:** şema `Actual` altındaki gerçek değer için sütun adı `[column name]_value`, şema altındaki `Display` görüntü değeri ise olur. `[column name]_display_value` Sütun adının sorguda kullanılan şemaya eşlenmesi gerektiğini aklınızda olacak şekilde ayarlayın.
+- **Şema:** `Actual` `Display` dosyayı ServiceNow sorgusunda veya olarak belirtin. Bu, bunu doğru olarak parametre olarak veya `sysparm_display_value` [ServiceNow restalow API 'lerini](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)çağırırken false olarak görebilirsiniz. 
+- **Sütun:** şema altındaki gerçek değer için sütun adı `Actual` `[column name]_value` , şema altındaki görüntü değeri ise `Display` olur `[column name]_display_value` . Sütun adının sorguda kullanılan şemaya eşlenmesi gerektiğini aklınızda olacak şekilde ayarlayın.
 
 **Örnek sorgu:** 
- `SELECT col_value FROM Actual.alm_asset` veya 
+ `SELECT col_value FROM Actual.alm_asset` VEYA 
 `SELECT col_display_value FROM Display.alm_asset`
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

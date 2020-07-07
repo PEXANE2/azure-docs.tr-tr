@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: borisb
 ms.custom: ''
 ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683480"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
@@ -154,7 +154,7 @@ Oracle parçalama öncelikle aşağıdaki bileşenlerden oluşur. [Oracle parça
 
 - Parça **veritabanları-parça veritabanları Oracle** veritabanlarlarlardır. Her veritabanı, hızlı başlatma yük devretmesi (FSFO) etkin olan bir aracı yapılandırmasında Oracle Data Guard kullanılarak çoğaltılır. Her parçada Data Guard yük devretmesini ve çoğaltmasını ayarlamanız gerekmez. Bu, paylaşılan veritabanı oluşturulduğunda otomatik olarak yapılandırılır ve dağıtılır. Belirli bir parça başarısız olursa, Oracle paylaşımı birincil sunucudan bekleme moduna otomatik olarak yük devreder.
 
-Oracle parçalı veritabanlarını iki arabirim ile dağıtabilir ve yönetebilirsiniz: Oracle Enterprise Manager Cloud Control GUI ve/veya `GDSCTL` komut satırı yardımcı programı. Bulut denetimini kullanarak kullanılabilirlik ve performans için farklı parçaları da izleyebilirsiniz. `GDSCTL DEPLOY` Komut, parçaları ve ilgili dinleyicileri otomatik olarak oluşturur. Ayrıca, bu komut, yönetici tarafından belirtilen parça düzeyinde yüksek kullanılabilirlik için kullanılan çoğaltma yapılandırmasını otomatik olarak dağıtır.
+Oracle parçalı veritabanlarını iki arabirim ile dağıtabilir ve yönetebilirsiniz: Oracle Enterprise Manager Cloud Control GUI ve/veya `GDSCTL` komut satırı yardımcı programı. Bulut denetimini kullanarak kullanılabilirlik ve performans için farklı parçaları da izleyebilirsiniz. Komut, parçaları `GDSCTL DEPLOY` ve ilgili dinleyicileri otomatik olarak oluşturur. Ayrıca, bu komut, yönetici tarafından belirtilen parça düzeyinde yüksek kullanılabilirlik için kullanılan çoğaltma yapılandırmasını otomatik olarak dağıtır.
 
 Bir veritabanını parçalara almanın farklı yolları vardır:
 

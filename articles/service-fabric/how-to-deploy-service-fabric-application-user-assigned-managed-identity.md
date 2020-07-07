@@ -4,10 +4,10 @@ description: Bu makalede, Kullanıcı tarafından atanan yönetilen kimlik ile S
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415638"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik ile Service Fabric uygulaması dağıtma
@@ -18,7 +18,7 @@ Yönetilen kimliğe sahip bir Service Fabric uygulamasını dağıtmak için, uy
 > 
 > Azure kaynağı olarak dağıtılmayan uygulamalarda Yönetilen kimlikler **olamaz** . 
 >
-> Yönetilen kimlik ile uygulama dağıtımı Service Fabric API sürümü `"2019-06-01-preview"`ile desteklenir. Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz.
+> Yönetilen kimlik ile uygulama dağıtımı Service Fabric API sürümü ile desteklenir `"2019-06-01-preview"` . Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz.
 >
 
 ## <a name="user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik
@@ -62,7 +62,7 @@ Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygu
 
 ### <a name="application-package"></a>Uygulama paketi
 
-1. Azure Resource Manager şablonundaki `managedIdentities` bölümünde tanımlanan her bir kimlik Için, **sorumlular** bölümünde uygulama bildiriminde `<ManagedIdentity>` bir etiket ekleyin. `Name` Özniteliğin, `name` `managedIdentities` bölümünde tanımlanan özellik ile eşleşmesi gerekir.
+1. Azure Resource Manager şablonundaki bölümünde tanımlanan her bir kimlik için `managedIdentities` , `<ManagedIdentity>` **sorumlular** bölümünde uygulama bildiriminde bir etiket ekleyin. `Name`Özniteliğin, `name` bölümünde tanımlanan özellik ile eşleşmesi gerekir `managedIdentities` .
 
     **ApplicationManifest.xml**
 
@@ -86,7 +86,7 @@ Yukarıdaki örnekte, Kullanıcı tarafından atanan kimliğin kaynak adı, uygu
       </ServiceManifestImport>
     ```
 
-3. **Kaynak** bölümünün içine, `ServiceIdentityRef` uygulama bildiriminin içindeki `IdentityBindingPolicy` Ile eşleşen adı taşıyan bir **managedıdentity** eklemek için hizmet bildirimini güncelleştirin:
+3. **Kaynak** bölümünün içine, uygulama bildiriminin içindeki ile eşleşen adı taşıyan bir **managedıdentity** eklemek için hizmet bildirimini güncelleştirin `ServiceIdentityRef` `IdentityBindingPolicy` :
 
     **ServiceManifest.xml**
 

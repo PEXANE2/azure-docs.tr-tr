@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
 ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429674"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric kümelerinde X. 509.440 sertifika tabanlı kimlik doğrulaması
@@ -106,8 +106,8 @@ Ortak ad tabanlı bildirimler aşağıdaki biçimlerden birini alır:
 ```
 Bildirimler sırasıyla sunucu ve küme kimliklerine başvurur; CN tabanlı bildirimlerin küme bildiriminde kendi bölümlerine sahip olduğunu ve standart ' Güvenlik ' den ayrı olduğunu unutmayın. Her iki bildiriminde da, ' name ' sertifikanın ayırt edici konu ortak adını temsil eder ve ' Value ' alanı beklenen sertifikayı aşağıdaki gibi temsil eder:
 
-- İlk durumda, bildiriminde, sunucu sertifikasının ayırt edici konusunun ortak ad öğesinin "Server. demo. System. servicefabric. Azure-int" dizesiyle eşleşmesi beklenildiği belirtilir. boş ' Value ' alanı, Sertifika zincirinin köküne sunucu sertifikasının doğrulandığı düğüm/makinede güvenildiğini belirtir; Windows 'da bu, sertifikanın ' güvenilen kök CA ' deposunda yüklü olan herhangi bir sertifikaya zincirleme alabileceği anlamına gelir;
-- İkinci durumda, bildirim, sertifikanın ortak adı "Cluster. demo. System. servicefabric. Azure-int" dizesiyle eşleşiyorsa *ve* sertifikayı doğrudan verenin Parmak Izi ' değer ' alanındaki virgülle ayrılmış girdilerden biriyle eşleşiyorsa, bir sertifikanın sunucusunun kümede bir eş düğüm olarak kabul edildiğini belirtir. (Bu kural türü, ' veren sabitleme ile ortak ad ' olarak bilinir.)
+- İlk durumda bildirimde, sunucu sertifikasının ayırt edici konusunun ortak ad öğesinin "server.demo.sysdıtem. servicefabric. Azure-int" dizesiyle eşleşmesi beklenildiği belirtilir. boş ' Value ' alanı, Sertifika zincirinin köküne sunucu sertifikasının doğrulandığı düğüm/makinede güvenildiğini belirtir; Windows 'da bu, sertifikanın ' güvenilen kök CA ' deposunda yüklü olan herhangi bir sertifikaya zincirleme alabileceği anlamına gelir;
+- İkinci durumda, bildirim, sertifikanın ortak adı "cluster.demo.sysdıtem. servicefabric. Azure-int" dizesiyle eşleşiyorsa *ve* sertifikayı doğrudan verenin parmak izi, ' değer ' alanındaki virgülle ayrılmış girdilerden biriyle eşleşiyorsa, bir sertifika sunucusunun kümedeki bir eş düğüm olarak kabul edildiğini belirtir. (Bu kural türü, ' veren sabitleme ile ortak ad ' olarak bilinir.)
 
 Her iki durumda da, sertifikanın zinciri oluşturulur ve hata-boş olması beklenir; diğer bir deyişle, iptal hataları, kısmi zincir veya zaman geçersiz güven hataları önemli olarak değerlendirilir ve sertifika doğrulaması başarısız olur. Verenler sabitleyerek, ' güvenilmeyen kök ' durumunun önemli olmayan bir hata olarak ele sunulmasına neden olur. Görünümler buna rağmen bu, küme sahibinin yetkili/kabul edilen verenler kümesini kendi PKI 'lerine kısıtlamak için daha sıkı bir doğrulama biçimidir.
 
@@ -156,7 +156,7 @@ Bir küme bildiriminden aşağıdaki alıntıyı göz önünde bulunduralım:
     </NodeType>
   </NodeTypes>
 ```
-' ClusterCertificate ' öğesi, isteğe bağlı parametreler (' X509FindValueSecondary ') veya uygun varsayılanlara sahip olanlar (' X509StoreName ') dahil olmak üzere tam şemayı gösterir; diğer bildirimlerde kısaltılmış bir form gösterilmektedir. Yukarıdaki küme sertifikası bildirimi, ' nt1vm ' türündeki düğümlerin güvenlik ayarlarının ' cc71 ' sertifikasıyla başlatıldığını belirtir. birincil olarak 1984 ' ve ' 49e2.. İkinci olarak "19d6" sertifikası; Her iki sertifikanın de, LocalMachine\'My sertifika deposunda bulunması beklenir (veya Linux eşdeğer yolu, *var/lib/sfcert*).
+' ClusterCertificate ' öğesi, isteğe bağlı parametreler (' X509FindValueSecondary ') veya uygun varsayılanlara sahip olanlar (' X509StoreName ') dahil olmak üzere tam şemayı gösterir; diğer bildirimlerde kısaltılmış bir form gösterilmektedir. Yukarıdaki küme sertifikası bildirimi, ' nt1vm ' türündeki düğümlerin güvenlik ayarlarının ' cc71 ' sertifikasıyla başlatıldığını belirtir. birincil olarak 1984 ' ve ' 49e2.. İkinci olarak "19d6" sertifikası; Her iki sertifikanın de, LocalMachine \' My sertifika deposunda bulunması beklenir (veya Linux eşdeğer yolu, *var/lib/sfcert*).
 
 #### <a name="common-name-based-certificate-presentation-declarations"></a>Ortak ad tabanlı sertifika sunumu bildirimleri
 Düğüm türü sertifikaları, aşağıda belirtildiği gibi, konu ortak adına göre de bildirilebilecek:

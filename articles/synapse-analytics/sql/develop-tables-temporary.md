@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428764"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>SYNAPSE SQL 'de geçici tablolar
@@ -33,7 +33,7 @@ SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldı
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
-Geçici tablolar, tablo adınızın bir `#`ile önek olarak eklenerek oluşturulur.  Örneğin:
+Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örnek:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -53,7 +53,7 @@ WITH
 )
 ```
 
-Geçici tablolar, tam olarak aynı yaklaşımla `CTAS` birlikte kullanılarak da oluşturulabilir:
+Geçici tablolar `CTAS` , tam olarak aynı yaklaşımla birlikte kullanılarak da oluşturulabilir:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -99,7 +99,7 @@ GROUP BY
 > 
 
 ### <a name="dropping-temporary-tables"></a>Geçici tabloları bırakma
-Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  Bununla birlikte, aynı ada sahip bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin `CREATE TABLE` başarılı olduğundan emin olmak için, ile `DROP`basit bir ön varlık denetimi kullanın: 
+Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  Bununla birlikte, aynı ada sahip bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin başarılı olduğundan emin olmak için, `CREATE TABLE` ile basit bir ön varlık denetimi kullanın `DROP` : 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -108,7 +108,7 @@ BEGIN
 END
 ```
 
-Kodlama tutarlılığı için, bu düzenin hem tablolar hem de geçici tablolar için kullanılması iyi bir uygulamadır.  Ayrıca, ile işiniz bittiğinde geçici tabloları kaldırmak `DROP TABLE` için kullanmak iyi bir fikirdir.  
+Kodlama tutarlılığı için, bu düzenin hem tablolar hem de geçici tablolar için kullanılması iyi bir uygulamadır.  Ayrıca `DROP TABLE` , ile işiniz bittiğinde geçici tabloları kaldırmak için kullanmak iyi bir fikirdir.  
 
 Saklı yordam geliştirmede, bu nesnelerin temizlendiğinden emin olmak için bir yordamın sonunda bırakma komutlarının birlikte paketlenmiştir.
 
@@ -193,7 +193,7 @@ GO
 
 Bu aşamada, oluşan tek eylem, #stats_ddl geçici tablo üreten bir saklı yordamın oluşturulması olur.  Saklı yordam zaten varsa #stats_ddl bırakır. Bu bırakma, bir oturum içinde birden fazla kez çalıştırıldığında başarısız olmamasını sağlar.  
 
-`DROP TABLE` Saklı yordamın sonunda, saklı yordam tamamlandığında, oluşturulan tablo kalır ve saklı yordamın dışında okunabilir.  
+`DROP TABLE`Saklı yordamın sonunda, saklı yordam tamamlandığında, oluşturulan tablo kalır ve saklı yordamın dışında okunabilir.  
 
 Diğer SQL Server veritabanlarının aksine, SYNAPSE SQL, geçici tabloyu onu oluşturan yordamın dışında kullanmanıza olanak sağlar.  SQL havuzu aracılığıyla oluşturulan geçici tablolar, oturum içinde **herhangi bir yerde** kullanılabilir. Sonuç olarak, aşağıdaki örnekte gösterildiği gibi daha modüler ve yönetilebilir kod elde edersiniz:
 

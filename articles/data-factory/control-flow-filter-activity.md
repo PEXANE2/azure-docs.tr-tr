@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417217"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory etkinliği filtrele
 Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre etkinliklerini kullanabilirsiniz. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -39,10 +39,10 @@ Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | `Filter` Etkinliğin adı. | Dize | Yes
-type | **Filter**olarak ayarlanmalıdır. | Dize | Yes
-koşul | Girişi filtrelemek için kullanılacak koşul. | İfadeler | Yes
-öğeler | Filtrenin uygulanması gereken giriş dizisi. | İfadeler | Yes
+name | `Filter`Etkinliğin adı. | Dize | Yes
+tür | **Filter**olarak ayarlanmalıdır. | Dize | Yes
+koşul | Girişi filtrelemek için kullanılacak koşul. | Expression | Yes
+öğeler | Filtrenin uygulanması gereken giriş dizisi. | Expression | Yes
 
 ## <a name="example"></a>Örnek
 

@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536191"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V 1.0 belirteçlerini kabul eden bir Web API 'SI için kapsamlar
@@ -25,9 +25,9 @@ OAuth2 izinleri, geliştiriciler (v 1.0) için bir Azure Active Directory (Azure
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Bir v 1.0 uygulamasının belirli OAuth2 izinlerine erişim istemek için kapsamlar
 
-Bir v 1.0 uygulamasının belirli kapsamlarına yönelik belirteçleri almak için (örneğin, Microsoft Graph API 'SI https://graph.microsoft.com)), istenen bir kaynak tanımlayıcısını ilgili kaynak için Istenen bir OAuth2 izniyle birleştirerek kapsamlar oluşturun.
+Bir v 1.0 uygulamasının belirli kapsamlarına yönelik belirteçleri almak için (örneğin, Microsoft Graph API 'SI), https://graph.microsoft.com) istenen bir kaynak tanımlayıcısını ilgili kaynak için istenen bir OAuth2 izniyle birleştirerek kapsamlar oluşturun.
 
-Örneğin, Kullanıcı adına, uygulama KIMLIĞI URI 'sinin bulunduğu bir v 1.0 Web API 'sine erişmek için `ResourceId`:
+Örneğin, Kullanıcı adına, uygulama KIMLIĞI URI 'sinin bulunduğu bir v 1.0 Web API 'sine erişmek için `ResourceId` :
 
 ```csharp
 var scopes = new [] {  ResourceId+"/user_impersonation"};
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Microsoft Graph API (https:\//Graph.Microsoft.com/) kullanarak msal.net Azure AD ile okumak ve yazmak için aşağıdaki örneklerde gösterildiği gibi kapsamların bir listesini oluşturmanız gerekir:
+Microsoft Graph API (https:/graph.microsoft.com/) kullanarak MSAL.NET Azure AD ile okumak ve yazmak için \/ Aşağıdaki örneklerde gösterildiği gibi kapsamların bir listesini oluşturmanız gerekir:
 
 ```csharp
 string ResourceId = "https://graph.microsoft.com/";
@@ -49,7 +49,7 @@ var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-Azure Resource Manager API 'sine (https:\//Management.Core.Windows.net/) karşılık gelen kapsamı yazmak için aşağıdaki kapsamı istemeniz gerekir (iki eğik çizgi).
+Azure Resource Manager API 'sine (https:/management.core.windows.net/) karşılık gelen kapsamı yazmak için \/ aşağıdaki kapsamı istemeniz gerekir (iki eğik çizgi).
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -65,7 +65,7 @@ Azure AD tarafından kullanılan mantık şunlardır:
 
 - Bir v 1.0 erişim belirtecine sahip ADAL (Azure AD v 1.0) uç noktası (tek olası), AUD = kaynağı için
 - MSAL (Microsoft Identity platform (v 2.0)) için, v 2.0 belirteçlerini kabul eden bir kaynak için erişim belirteci isteyen uç nokta`aud=resource.AppId`
-- MSAL (v 2.0 uç noktası) için, bir v 1.0 erişim belirtecini kabul eden bir kaynak için erişim belirteci isteyen (Yukarıdaki durum), Azure AD, son eğik çizgiden önce her şeyi alıp kaynak tanımlayıcısı olarak kullanarak istenen kitleyi istenen kapsamdan ayrıştırır. Bu nedenle, https:\//Database.Windows.net "https:\//Database.Windows.net/" kitlesini beklediğinde, "https:\//Database.Windows.net//.default" kapsamını istemeniz gerekir. Ayrıca bkz. GitHub sorunu [#747: kaynak URL 'sinin sondaki eğik çizgi, SQL kimlik doğrulama hatasına neden oldu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+- MSAL (v 2.0 uç noktası) için, bir v 1.0 erişim belirtecini kabul eden bir kaynak için erişim belirteci isteyen (Yukarıdaki durum), Azure AD, son eğik çizgiden önce her şeyi alıp kaynak tanımlayıcısı olarak kullanarak istenen kitleyi istenen kapsamdan ayrıştırır. Bu nedenle, https: \/ /Database.Windows.net "https:/Database.Windows.net/" kitlesini beklediğinde \/ , "https: \/ /Database.Windows.net//.default" kapsamını istemeniz gerekir. Ayrıca bkz. GitHub sorunu [#747: kaynak URL 'sinin sondaki eğik çizgi, SQL kimlik doğrulama hatasına neden oldu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Bir v 1.0 uygulamasının tüm izinlerine erişim istemek için kapsamlar
 
@@ -83,4 +83,4 @@ var scopes = [ ResourceId + "/.default"];
 
 ## <a name="scopes-to-request-for-a-client-credential-flowdaemon-app"></a>İstemci kimlik bilgileri akışı/Daemon uygulaması için istek yapılacak kapsamlar
 
-İstemci kimlik bilgileri akışı durumunda geçirilecek kapsam de olur `/.default`. Bu, Azure AD 'ye ("yöneticinin uygulamanın kaydında sahip olduğu tüm uygulama düzeyindeki izinleri) söyler.
+İstemci kimlik bilgileri akışı durumunda geçirilecek kapsam de olur `/.default` . Bu, Azure AD 'ye ("yöneticinin uygulamanın kaydında sahip olduğu tüm uygulama düzeyindeki izinleri) söyler.

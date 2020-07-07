@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415318"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory 'de Azure Işlevi etkinliği
@@ -28,12 +28,12 @@ Bu özelliğin sekiz dakikalık bir girişi ve gösterimi için aşağıdaki vid
 
 ## <a name="azure-function-linked-service"></a>Azure Işlevi bağlı hizmeti
 
-Azure işlevinin dönüş türü geçerli `JObject`bir olmalıdır. ( [Jarray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) öğesinin bir `JObject` *değil* olduğunu aklınızda bulundurun.) Diğer herhangi bir dönüş türü `JObject` başarısız olur ve Kullanıcı hata *yanıtı içeriğini başlatır geçerli bir JObject değildir*.
+Azure işlevinin dönüş türü geçerli bir olmalıdır `JObject` . ( [Jarray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) öğesinin bir *değil* olduğunu aklınızda bulundurun `JObject` .) Diğer herhangi bir dönüş türü `JObject` başarısız olur ve Kullanıcı hata *yanıtı içeriğini başlatır geçerli bir JObject değildir*.
 
 | **Özellik** | **Açıklama** | **Gerekli** |
 | --- | --- | --- |
-| type   | Type özelliği: **AzureFunction** olarak ayarlanmalıdır | evet |
-| işlev uygulaması URL 'si | Azure İşlev Uygulaması URL 'SI. Biçim `https://<accountname>.azurewebsites.net`. Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | evet |
+| tür   | Type özelliği: **AzureFunction** olarak ayarlanmalıdır | evet |
+| işlev uygulaması URL 'si | Azure İşlev Uygulaması URL 'SI. Biçim `https://<accountname>.azurewebsites.net` . Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | evet |
 | işlev anahtarı | Azure Işlevi için erişim anahtarı. İlgili işlevin **Yönet** bölümüne tıklayın ve **işlev anahtarını** ya da **ana bilgisayar anahtarını**kopyalayın. Buradan daha fazla bilgi edinebilirsiniz: [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | evet |
 |   |   |   |
 
@@ -41,28 +41,28 @@ Azure işlevinin dönüş türü geçerli `JObject`bir olmalıdır. ( [Jarray](h
 
 | **Özellik**  | **Açıklama** | **İzin verilen değerler** | **Gerekli** |
 | --- | --- | --- | --- |
-| ad  | İşlem hattındaki etkinliğin adı  | Dize | evet |
-| type  | Etkinliğin türü ' AzureFunctionActivity ' | Dize | evet |
+| name  | İşlem hattındaki etkinliğin adı  | Dize | evet |
+| tür  | Etkinliğin türü ' AzureFunctionActivity ' | Dize | evet |
 | bağlı hizmet | Karşılık gelen Azure İşlev Uygulaması için Azure Işlevi bağlı hizmeti  | Bağlı hizmet başvurusu | evet |
 | işlev adı  | Bu etkinliğin çağırdığı Azure İşlev Uygulaması işlevin adı | Dize | evet |
 | method  | İşlev çağrısı için REST API yöntemi | Dize desteklenen türler: "GET", "POST", "PUT"   | evet |
-| üst bilgi  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | Hayır |
+| üst bilgi  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | No |
 | body  | işlevin API metoduna isteğiyle birlikte gönderilen gövde  | Dize (veya dize resultType 'ı olan ifade) veya nesne.   | PUT/POST yöntemleri için gereklidir |
 |   |   |   | |
 
-İstek [yükü şeması](control-flow-web-activity.md#request-payload-schema) 'nda istek yükü şeması bölümüne bakın.
+İstek [yükü şeması](control-flow-web-activity.md#request-payload-schema)'nda istek yükü şeması   bölümüne bakın.
 
 ## <a name="routing-and-queries"></a>Yönlendirme ve sorgular
 
-Azure Işlevi etkinliği **yönlendirmeyi**destekler. Örneğin, Azure işlevinizin uç noktası `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`varsa, Azure işlevi etkinliğinde kullanmak `functionName` için. `<functionName>/<value>` Çalışma zamanında istenen `functionName` işlemi sağlamak için bu işlevi parametreleştirebilirsiniz.
+Azure Işlevi etkinliği **yönlendirmeyi**destekler. Örneğin, Azure işlevinizin uç noktası varsa, `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` `functionName` Azure işlevi etkinliğinde kullanmak için `<functionName>/<value>` . Çalışma zamanında istenen işlemi sağlamak için bu işlevi parametreleştirebilirsiniz `functionName` .
 
-Azure Işlevi etkinliği **sorguları**da destekler. Bir sorgu öğesinin bir parçası olarak eklenmelidir `functionName`. Örneğin `HttpTriggerCSharp` , işlev adı ve dahil etmek istediğiniz sorgu ise `name=hello`, bunu olarak `functionName` `HttpTriggerCSharp?name=hello`Azure işlevi etkinliğinde oluşturabilirsiniz. Değerin çalışma zamanında belirlenebilmesi için bu işlev parametreleştirilenebilir.
+Azure Işlevi etkinliği **sorguları**da destekler. Bir sorgu öğesinin bir parçası olarak eklenmelidir `functionName` . Örneğin, işlev adı `HttpTriggerCSharp` ve dahil etmek istediğiniz sorgu ise, `name=hello` bunu `functionName` olarak Azure işlevi etkinliğinde oluşturabilirsiniz `HttpTriggerCSharp?name=hello` . Değerin çalışma zamanında belirlenebilmesi için bu işlev parametreleştirilenebilir.
 
 ## <a name="timeout-and-long-running-functions"></a>Zaman aşımı ve uzun süre çalışan işlevler
 
-Ayarlarda yapılandırdığınız `functionTimeout` ayardan bağımsız olarak, 230 saniye sonra Azure işlevleri zaman aşımına uğrar. Daha fazla bilgi için [Bu makaleye](../azure-functions/functions-versions.md#timeout)bakın. Bu davranışı geçici olarak çözmek için zaman uyumsuz bir model izleyin veya Dayanıklı İşlevler kullanın. Dayanıklı İşlevler avantajı kendi durum izleme mekanizmasını sunduklarında, kendi uygulamanızı uygulamanız gerekmez.
+Ayarlarda yapılandırdığınız ayardan bağımsız olarak, 230 saniye sonra Azure Işlevleri zaman aşımına uğrar `functionTimeout` . Daha fazla bilgi için [Bu makaleye](../azure-functions/functions-versions.md#timeout)bakın. Bu davranışı geçici olarak çözmek için zaman uyumsuz bir model izleyin veya Dayanıklı İşlevler kullanın. Dayanıklı İşlevler avantajı kendi durum izleme mekanizmasını sunduklarında, kendi uygulamanızı uygulamanız gerekmez.
 
-[Bu makaledeki](../azure-functions/durable/durable-functions-overview.md)dayanıklı işlevler hakkında daha fazla bilgi edinin. [Bu örnek](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery)gibi farklı bir URI ile yanıt döndüren dayanıklı işlevi çağırmak Için bir Azure işlevi etkinliği ayarlayabilirsiniz. , `statusQueryGetUri` Işlev çalışırken HTTP durumu 202 ' i döndürdüğünden, bir Web etkinliği kullanarak işlevin durumunu yoklayabilmeniz gerekir. Yalnızca `url` alanı olarak `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`ayarlanmış bir Web etkinliği ayarlamanız yeterlidir. Dayanıklı Işlev tamamlandığında, işlevin çıktısı Web etkinliğinin çıktısı olur.
+[Bu makaledeki](../azure-functions/durable/durable-functions-overview.md)dayanıklı işlevler hakkında daha fazla bilgi edinin. [Bu örnek](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery)gibi farklı bir URI ile yanıt döndüren dayanıklı işlevi çağırmak Için bir Azure işlevi etkinliği ayarlayabilirsiniz. , `statusQueryGetUri` İşlev çalışırken http durumu 202 ' i döndürdüğünden, bir Web etkinliği kullanarak işlevin durumunu yoklayabilmeniz gerekir. Yalnızca alanı olarak ayarlanmış bir Web etkinliği ayarlamanız yeterlidir `url` `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri` . Dayanıklı Işlev tamamlandığında, işlevin çıktısı Web etkinliğinin çıktısı olur.
 
 
 ## <a name="sample"></a>Örnek

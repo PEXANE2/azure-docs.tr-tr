@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81455371"
 ---
 # <a name="virtual-appliance-scenario"></a>Sanal Gereç senaryosu
@@ -34,11 +34,11 @@ Bu, DMZ ve korumalı bir ağla standart bir çevre ağı (Ayrıca, DMZ olarak da
 |  | Artıları | Simgeler |
 | --- | --- | --- |
 | NSG |Maliyet yok. <br/>Azure RBAC Ile tümleşiktir. <br/>Kurallar, Azure Resource Manager şablonlarda oluşturulabilir. |Karmaşıklık, daha büyük ortamlarda farklılık gösterebilir. |
-| Güvenlik duvarı |Veri düzlemi üzerinde tam denetim. <br/>Güvenlik Duvarı konsolu aracılığıyla merkezi yönetim. |Güvenlik Duvarı gerecinin maliyeti. <br/>Azure RBAC ile tümleştirildi. |
+| Güvenlik Duvarı |Veri düzlemi üzerinde tam denetim. <br/>Güvenlik Duvarı konsolu aracılığıyla merkezi yönetim. |Güvenlik Duvarı gerecinin maliyeti. <br/>Azure RBAC ile tümleştirildi. |
 
 Aşağıdaki çözüm, bir çevre ağı (DMZ)/korumalı ağ senaryosu uygulamak için güvenlik duvarı sanal gereçlerini kullanır.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 Yukarıda açıklanan ortamı, aşağıdaki gibi, günümüzde bulunan farklı özellikleri kullanarak Azure 'da dağıtabilirsiniz.
 
 * **Sanal ağ (VNet)** . Bir Azure sanal ağı, şirket içi bir ağa benzer şekilde davranır ve trafik yalıtımı sağlamak ve kaygıları ayrımı için bir veya daha fazla alt ağa ayrılabilir.

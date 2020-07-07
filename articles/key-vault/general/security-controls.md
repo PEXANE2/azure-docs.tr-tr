@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429869"
 ---
 # <a name="security-controls-for-azure-key-vault"></a>Azure Key Vault için güvenlik denetimleri
@@ -26,9 +26,9 @@ Bu makalede, Azure Key Vault yerleşik olarak bulunan güvenlik denetimleri Belg
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
 | Hizmet uç noktası desteği| Yes | Sanal ağ (VNet) hizmet uç noktalarını kullanma. |
-| VNet ekleme desteği| Hayır |  |
+| VNet ekleme desteği| No |  |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Yes | VNet güvenlik duvarı kurallarını kullanma. |
-| Zorlamalı tünel desteği| Hayır |  |
+| Zorlamalı tünel desteği| No |  |
 
 ## <a name="monitoring--logging"></a>& günlüğü izleme
 

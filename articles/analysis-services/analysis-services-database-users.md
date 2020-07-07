@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454212"
 ---
 # <a name="manage-database-roles-and-users"></a>Veritabanı rollerini ve kullanıcılarını yönetme
@@ -27,7 +27,7 @@ Rol izinleri şunları içerir:
 
 Tablosal model projesi oluştururken, Visual Studio 'da Analysis Services projelerle rol Yöneticisi kullanarak roller oluşturur ve bu rollere kullanıcı veya grup ekleyebilirsiniz. Bir sunucuya dağıtıldığında, rol ve Kullanıcı üyeleri eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlet 'leri](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)veya [tablo modeli komut dosyası dili](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (tmsl) kullanın.
 
-Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid`.
+Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid` .
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio 'da rol ve Kullanıcı ekleme veya yönetme  
   
@@ -41,7 +41,7 @@ Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid`.
   
 4.  Aşağıdaki izinlerden birini seçin:  
   
-    |İzin|Açıklama|  
+    |İzin|Description|  
     |----------------|-----------------|  
     |**Yok**|Üyeler model şemasını okuyamıyor veya değiştiremezler ve verileri sorgulayamaz.|  
     |**Okuma**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
@@ -51,7 +51,7 @@ Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid`.
   
 5.  Oluşturmakta olduğunuz rolün okuma veya okuma ve Işleme izni varsa, bir DAX formülü kullanarak satır filtreleri ekleyebilirsiniz. **Satır filtreleri** sekmesine tıklayın, sonra bir tablo seçin, sonra **DAX filtresi** alanına tıklayın ve ardından bir DAX formülü yazın.
   
-6.  **Üyeler** > **dış Ekle**' ye tıklayın.  
+6.  **Üyeler**  >  **dış Ekle**' ye tıklayın.  
   
 8.  **Dış üye Ekle**' de, kiracınızdaki kullanıcıları veya grupları e-posta adresine göre Azure AD 'ye girin. Tamam ' a tıkladıktan sonra Rol Yöneticisi ' ni kapattıktan sonra, roller ve rol üyeleri tablosal Model Gezgini 'nde görünür. 
  
@@ -64,13 +64,13 @@ Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid`.
 
 Dağıtılan bir model veritabanına roller ve kullanıcılar eklemek için sunucu yöneticisi olarak sunucuya veya yönetici izinlerine sahip bir veritabanı rolünde zaten olmalıdır.
 
-1. Nesne Exporer 'da **Roller** > **Yeni rol**' e sağ tıklayın.
+1. Nesne Exporer 'da **Roller**  >  **Yeni rol**' e sağ tıklayın.
 
 2. **Rol oluştur**' da bir rol adı ve açıklama girin.
 
 3. Bir izin seçin.
 
-   |İzin|Açıklama|  
+   |İzin|Description|  
    |----------------|-----------------|  
    |**Tam denetim (yönetici)**|Üyeler model şemasını değiştirebilir, işleyebilir ve tüm verileri sorgulayabilir.| 
    |**İşlem veritabanı**|Üyeler, Işlem çalıştırabilir ve tüm işlemleri Işleyebilir. Model şeması değiştirilemiyor ve veri sorgulanamıyor.|  
@@ -120,7 +120,7 @@ Bu örnekte, B2B dış kullanıcısı ve bir grubu, satış bı veritabanı içi
 
 [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modülü, göreve özgü veritabanı yönetim cmdlet 'Leri ve tablosal model betik DILI (tmsl) sorgusu veya betiği kabul eden genel amaçlı Invoke-ASCmd cmdlet 'ini sağlar. Aşağıdaki cmdlet 'ler veritabanı rollerini ve kullanıcılarını yönetmek için kullanılır.
   
-|Cmdlet|Açıklama|
+|Cmdlet|Description|
 |------------|-----------------| 
 |[Add-Rolemebir](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Bir veritabanı rolüne üye ekleyin.| 
 |[Remove-Rolemeoda](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Bir üyeyi veritabanı rolünden kaldırın.|   

@@ -4,10 +4,10 @@ description: Aracı tabanlı VMWare geçişi için Azure geçişi çoğaltma ger
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535222"
 ---
 # <a name="replication-appliance"></a>Çoğaltma gereci
@@ -26,7 +26,7 @@ VMware VM 'Leri veya fiziksel sunucuları için aracı tabanlı geçiş ayarlad�
 
 ## <a name="appliance-deployment"></a>Gereç dağıtımı
 
-**Kullanıldığı yerler** | **Bilgileri**
+**Kullanıldığı yerler** | **Ayrıntılar**
 --- |  ---
 **VMware VM Aracısı tabanlı geçiş** | OVA şablonunu Azure geçiş hub 'ından indirir ve gereç sanal makinesini oluşturmak için vCenter Server içeri aktarabilirsiniz.
 **Fiziksel makine Aracısı tabanlı geçiş** | Bir VMware altyapınız yoksa veya bir OVA şablonu kullanarak bir VMware VM 'si oluşturmazsanız, Azure geçiş hub 'ından bir yazılım yükleyicisi indirir ve gereci makinesini kurmak için çalıştırırsınız.
@@ -58,7 +58,7 @@ TLS | TLS 1,2 etkinleştirilmelidir.
 MySQL | MySQL 'in gereç üzerinde yüklü olması gerekir.<br/> MySQL yüklenmelidir. El ile yükleyebilirsiniz veya Site Recovery gereç dağıtımı sırasında yükleyebilir.
 Diğer uygulamalar | Çoğaltma gereci üzerinde başka uygulamalar çalıştırmayın.
 Windows Server rolleri | Bu rolleri etkinleştirmeyin: <br> - Active Directory Domain Services <br>- İnternet Bilgi Hizmetleri <br> - Hyper-V
-Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazlasını öğrenin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+Grup ilkeleri | Bu grup ilkelerini etkinleştirmeyin: <br> -Komut istemine erişimi engelleyin. <br> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br> -Dosya ekleri için güven mantığı. <br> -Betik yürütmeyi açın. <br> [Daha fazla bilgi edinin](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Önceden var olan varsayılan Web sitesi yok <br> -Var olan bir Web sitesi/uygulama dinleme 443 bağlantı noktasında dinleniyor <br>- [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir
 **Ağ ayarları** |
 IP adresi türü | Statik
@@ -69,7 +69,7 @@ NIC türü | VMXNET3
 
 MySQL, çoğaltma gereç makinesinde yüklü olmalıdır. Bu yöntemlerin biri kullanılarak yüklenebilir.
 
-**Yöntem** | **Bilgileri**
+**Yöntem** | **Ayrıntılar**
 --- | ---
 El ile indir ve yükle | MySQL uygulamasını indirin & C:\Temp\ASRSetup klasörüne yerleştirip el ile yükleyin.<br/> Gereç 'yi ayarlarken, MySQL zaten yüklü olarak gösterilir.
 Çevrimiçi indirme olmadan | MySQL Yükleyici uygulamasını C:\temp\asrsetupfolder klasörüne yerleştirin. Gereci yüklerken ve MySQL 'i indirip yüklemek için tıkladığınızda, kurulum eklediğiniz yükleyiciyi kullanır.
@@ -79,7 +79,7 @@ Azure geçişi 'ne indirme ve yükleme | Gereci yüklerken ve MySQL istendiğind
 
 Çoğaltma gerecinin Azure genel bulutundaki bu URL 'lere erişmesi gerekir.
 
-**URL** | **Bilgileri**
+**URL** | **Ayrıntılar**
 --- | ---
 \*.backup.windowsazure.com | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
 \*.store.core.windows.net | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
@@ -88,15 +88,15 @@ Azure geçişi 'ne indirme ve yükleme | Gereci yüklerken ve MySQL istendiğind
 https:\//management.azure.com | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır
 *.services.visualstudio.com | Telemetri amaçları için kullanılır (isteğe bağlıdır)
 time.windows.com | Sistem ile genel saat arasındaki saat eşitlemesini denetlemek için kullanılır.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//Login.Live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.Live.com <br/> https:\//www.Microsoft.com  | Gereç kurulumunun bu URL 'Lere erişmesi gerekiyor. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır
-https:\//dev.MySQL.com/Get/downloads/MySQLInstaller/MySQL-installer-Community-5.7.20.0.msi | MySQL indirme işleminin tamamlanmasını sağlar. Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da izin verildiğinden emin olun.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.Live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.Live.com <br/> https: \/ /www.Microsoft.com  | Gereç kurulumunun bu URL 'Lere erişmesi gerekiyor. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL indirme işleminin tamamlanmasını sağlar. Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da izin verildiğinden emin olun.
 
 
 ## <a name="azure-government-url-access"></a>Azure Kamu URL 'SI erişimi
 
 Çoğaltma gerecinin Azure Kamu 'da bu URL 'lere erişmesi gerekir.
 
-**URL** | **Bilgileri**
+**URL** | **Ayrıntılar**
 --- | ---
 \*. backup.windowsazure.us | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
 \*.store.core.windows.net | Çoğaltılan veri aktarımı ve düzenlemesi için kullanılır
@@ -105,12 +105,12 @@ https:\//dev.MySQL.com/Get/downloads/MySQLInstaller/MySQL-installer-Community-5.
 https:\//management.usgovcloudapi.net | Çoğaltma yönetimi işlemleri ve düzenlemesi için kullanılır
 *.services.visualstudio.com | Telemetri amaçları için kullanılır (isteğe bağlıdır)
 time.nist.gov | Sistem ile genel saat arasındaki saat eşitlemesini denetlemek için kullanılır.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//Login.Live.com <br/> https:\//Graph.Windows.net <br/> https:\//login.windows.net <br/> https:\//www.Live.com <br/> https:\//www.Microsoft.com  | OVA ile gereç kurulumunun bu URL 'lere erişmesi gerekir. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır.
-https:\//dev.MySQL.com/Get/downloads/MySQLInstaller/MySQL-installer-Community-5.7.20.0.msi | MySQL indirme işleminin tamamlanmasını sağlar. Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da izin verildiğinden emin olun.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https: \/ /login.Live.com <br/> https: \/ /Graph.Windows.net <br/> https:\//login.windows.net <br/> https: \/ /www.Live.com <br/> https: \/ /www.Microsoft.com  | OVA ile gereç kurulumunun bu URL 'lere erişmesi gerekir. Erişim denetimi ve kimlik yönetimi için Azure Active Directory tarafından kullanılır.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL indirme işleminin tamamlanmasını sağlar. Birkaç bölgede, indirme CDN URL 'sine yeniden yönlendirilebilir. Gerekirse CDN URL 'sinin da izin verildiğinden emin olun.
 
 ## <a name="port-access"></a>Bağlantı noktası erişimi
 
-**Cihaz** | **Bağlanma**
+**Cihaz** | **Bağlantı**
 --- | ---
 VM'ler | VM 'lerde çalışan Mobility hizmeti, çoğaltma yönetimi için HTTPS 443 gelen bağlantı noktasında şirket içi çoğaltma gereci (yapılandırma sunucusu) ile iletişim kurar.<br/><br/> VM 'Ler, çoğaltma verilerini işlem sunucusuna (yapılandırma sunucusu makinesinde çalışan), HTTPS 9443 gelen bağlantı noktası üzerinden gönderir. Bu bağlantı noktası değiştirilebilir.
 Çoğaltma gereci | Çoğaltma gereci, HTTPS 443 giden bağlantı noktası üzerinden Azure ile çoğaltmayı düzenler.

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416262"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric kümenizi Dengeleme
@@ -33,7 +33,7 @@ Bu farklı düzeltme türlerinin her biri, Kaynak Yöneticisi kümesi, sıklığ
 
 Bu zamanlayıcıları yöneten yapılandırmaya örnek olarak şunlar verilebilir:
 
-ClusterManifest. xml:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -44,7 +44,7 @@ ClusterManifest. xml:
         </Section>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
+Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template.jsClusterConfig.jsaracılığıyla:
 
 ```json
 "fabricSettings": [
@@ -83,7 +83,7 @@ Dengeleme eşiği, yeniden dengelemeyi tetiklemenin ana denetimidir. Bir ölçü
 
 Dengeleme eşikleri, küme tanımının bir parçası olarak her ölçüm temelinde tanımlanır. Ölçümler hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-metrics.md)göz atın.
 
-ClusterManifest. xml
+ClusterManifest.xml
 
 ```xml
     <Section Name="MetricBalancingThresholds">
@@ -92,7 +92,7 @@ ClusterManifest. xml
     </Section>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
+Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template.jsClusterConfig.jsaracılığıyla:
 
 ```json
 "fabricSettings": [
@@ -144,7 +144,7 @@ Bu ölçüm için üç Dengeleme Eşiğimizi koruduğumuz söylüyoruz. Ayrıca,
 
 Dengeleme eşiklerine benzer şekilde, etkinlik eşikleri küme tanımı aracılığıyla ölçüm başına tanımlanır:
 
-ClusterManifest. xml
+ClusterManifest.xml
 
 ``` xml
     <Section Name="MetricActivityThresholds">
@@ -152,7 +152,7 @@ ClusterManifest. xml
     </Section>
 ```
 
-Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
+Tek başına dağıtımlar veya Azure 'da barındırılan kümeler için Template.jsClusterConfig.jsaracılığıyla:
 
 ```json
 "fabricSettings": [

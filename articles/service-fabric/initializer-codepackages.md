@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430636"
 ---
 # <a name="initializer-codepackages"></a>Başlatıcı Kod Paketleri
@@ -21,7 +21,7 @@ Bu makaleye devam etmeden önce [Service Fabric uygulama modeli][application-mod
 > [!NOTE]
 > Başlatıcı kod paketleri şu anda [Reliable Services][reliable-services-link] programlama modeli kullanılarak yazılan hizmetler için desteklenmiyor.
  
-## <a name="semantics"></a>İçeriyor
+## <a name="semantics"></a>Semantik
 
 Bir başlatıcı CodePackage 'in başarıyla tamamlanması için çalıştırılması bekleniyor **(çıkış kodu 0)**. Başarısız bir başlatıcı CodePackage, başarıyla tamamlanana kadar yeniden başlatılır. Birden fazla Başlatıcı CodePackage 'e izin verilir ve bu, hizmet paketindeki diğer kod paketleri yürütülmeye başlamadan önce, **sırasıyla** **belirtilen sırada başarılı bir** şekilde **tamamlanmasıyla**yürütülür.
 
@@ -52,7 +52,7 @@ Başlatıcı kod paketleri 'ni kullanarak tüm bir örneğe bakalım.
 >
 > Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Aşağıdaki ServiceManifest. xml, daha önce açıklanan ServiceManifest parçacığı üzerinde oluşturulur. *InitCodePackage0*, *InitCodePackage1* ve *workloadcodepackage* , kapsayıcıları temsil eden codepackages. Etkinleştirmeden sonra, *InitCodePackage0* önce yürütülür. Bir dosyaya ileti kaydeder ve çıkılıyor. Sonra, *InitCodePackage1* yürütülür ve ayrıca bir dosyaya ileti kaydeder ve çıkar. Son olarak, *Workloadcodepackage* yürütmeye başlar. Ayrıca bir iletiyi bir dosyaya kaydeder, **stdout** 'a dosyanın içeriğini çıkarır ve sonsuza kadar ping atar.
+Aşağıdaki ServiceManifest.xml daha önce açıklanan ServiceManifest parçacığı üzerinde oluşturulur. *InitCodePackage0*, *InitCodePackage1* ve *workloadcodepackage* , kapsayıcıları temsil eden codepackages. Etkinleştirmeden sonra, *InitCodePackage0* önce yürütülür. Bir dosyaya ileti kaydeder ve çıkılıyor. Sonra, *InitCodePackage1* yürütülür ve ayrıca bir dosyaya ileti kaydeder ve çıkar. Son olarak, *Workloadcodepackage* yürütmeye başlar. Ayrıca bir iletiyi bir dosyaya kaydeder, **stdout** 'a dosyanın içeriğini çıkarır ve sonsuza kadar ping atar.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ Aşağıdaki ServiceManifest. xml, daha önce açıklanan ServiceManifest parça
 </ServiceManifest>
 ```
 
-Aşağıdaki ApplicationManifest. xml, yukarıda açıklanan ServiceManifest. xml ' i temel alan bir uygulamayı açıklar. Tüm kapsayıcılar için aynı **birim** bağlama olduğunu belirtir, yani **C:\workspace onhost** , her üç kapsayıcıda **c:\workspace oncontainer dosyasına** bağlanır. Net etkisi, tüm kapsayıcıların etkinleştirildikleri sırayla aynı günlük dosyasına yazmalarıdır.
+Aşağıdaki ApplicationManifest.xml, yukarıda açıklanan ServiceManifest.xml dayalı bir uygulamayı açıklar. Tüm kapsayıcılar için aynı **birim** bağlama olduğunu belirtir, yani **C:\workspace onhost** , her üç kapsayıcıda **c:\workspace oncontainer dosyasına** bağlanır. Net etkisi, tüm kapsayıcıların etkinleştirildikleri sırayla aynı günlük dosyasına yazmalarıdır.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,7 +127,7 @@ Aşağıdaki ApplicationManifest. xml, yukarıda açıklanan ServiceManifest. xm
   </DefaultServices>
 </ApplicationManifest>
 ```
-ServicePackage başarıyla etkinleştirildikten sonra, **C:\workspace Onhost\log.txt** içerikleri aşağıdaki gibi olmalıdır.
+ServicePackage başarıyla etkinleştirildikten sonra, **C:\WorkspaceOnHost\log.txt** içerikleri aşağıdaki gibi olmalıdır.
 
 ```console
 C:\Users\test>type C:\WorkspaceOnHost\log.txt

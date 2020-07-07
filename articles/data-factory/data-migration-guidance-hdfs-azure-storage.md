@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
 ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417127"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
@@ -53,7 +53,7 @@ Daha fazla bilgi için bkz. [kopyalama etkinliği performans Kılavuzu](https://
 
 ## <a name="resilience"></a>Esnekliği
 
-Data Factory DistCp modunda, farklı esnekliği seviyeleri için farklı DistCp komut satırı parametreleri kullanabilirsiniz (örneğin, `-i` `-update`, kaynak dosya ve hedef dosya boyutu farklı olduğunda verileri yaz).
+Data Factory DistCp modunda, farklı esnekliği seviyeleri için farklı DistCp komut satırı parametreleri kullanabilirsiniz (örneğin,, `-i` `-update` kaynak dosya ve hedef dosya boyutu farklı olduğunda verileri yaz).
 
 Data Factory yerel tümleştirme çalışma zamanı modunda, tek bir kopyalama etkinliği çalıştırmasında, Data Factory yerleşik bir yeniden deneme mekanizması vardır. Veri depolarında veya temel ağdaki belirli bir geçici başarısızlık düzeyini işleyebilir. 
 
@@ -108,9 +108,9 @@ Ağ veya veri deposu geçici sorunları nedeniyle kopyalama işlerinin herhangi 
 
 ### <a name="delta-data-migration"></a>Delta verileri geçişi 
 
-Data Factory DistCp modunda, Delta veri geçişi için, kaynak dosya ve hedef dosya boyutu `-update`farklı olduğunda verileri yaz ' ı kullanabilirsiniz.
+Data Factory DistCp modunda, `-update` Delta veri geçişi için, kaynak dosya ve hedef dosya boyutu farklı olduğunda verileri yaz ' ı kullanabilirsiniz.
 
-Data Factory yerel tümleştirme modunda, yeni veya değiştirilmiş dosyaları bir süre olarak belirlemek için en iyi yol, zaman bölümlenmiş bir adlandırma kuralı kullanmaktır. 1. sırada verileriniz, dosya veya klasör adında saat dilimi bilgileriyle zaman dilimlendiğinde (örneğin, */yyyy/mm/dd/File.exe*), işlem hattı, artımlı olarak hangi dosya ve klasörlerin kopyalanacağını kolayca tanımlayabilir.
+Data Factory yerel tümleştirme modunda, yeni veya değiştirilmiş dosyaları bir süre olarak belirlemek için en iyi yol, zaman bölümlenmiş bir adlandırma kuralı kullanmaktır. , Bir dosya veya klasör adındaki (örneğin, */yyyy/mm/dd/file.csv*) Zaman dilimi bilgilerinde saat dilimleriniz, işlem hattınızda hangi dosya ve klasörlerin artımlı olarak kopyalanacağını kolayca tanımlayabilir.
 
 Alternatif olarak, LastModifiedDate ' deki veriniz zaman bölümlenmemiş değilse, Data Factory yeni veya değiştirilmiş dosyaları **LastModifiedDate** değerlerini kullanarak tanımlayabilir. Data Factory, tüm dosyaları da her bir küme değerinden büyük olan son değiştirme zaman damgasına sahip olan yeni ve güncelleştirilmiş dosyaları kopyalar. 
 

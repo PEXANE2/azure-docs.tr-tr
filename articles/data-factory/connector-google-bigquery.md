@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 6751f64706444176f0df8f8fc0c6132e76b39b2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417314"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Google BigQuery 'den veri kopyalama
@@ -38,7 +38,7 @@ Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağla
 >[!NOTE]
 >Bu Google BigQuery Bağlayıcısı, BigQuery API 'lerinin üzerine kurulmuştur. BigQuery 'nin gelen isteklerin en yüksek oranını sınırlayan ve proje temelinde uygun kotaları uyguladığı farkında olun, [kotalar & limitleri-API istekleri](https://cloud.google.com/bigquery/quotas#api_requests)' ne bakın. Hesapta çok fazla eşzamanlı istek tetiklediğinizden emin olun.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -50,10 +50,10 @@ Aşağıdaki özellikler Google BigQuery bağlı hizmeti için desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği **GoogleBigQuery**olarak ayarlanmalıdır. | Yes |
+| tür | Type özelliği **GoogleBigQuery**olarak ayarlanmalıdır. | Yes |
 | proje | Sorgu yapılacak varsayılan BigQuery projesinin proje KIMLIĞI.  | Yes |
-| additionalProjects | Erişmek için ortak BigQuery projelerinin proje kimliklerinin virgülle ayrılmış listesi.  | Hayır |
-| requestGoogleDriveScope | Google Drive 'a erişim istenip istenmediğini belirtir. Google Drive erişimine izin verilmesi, BigQuery verilerini Google Drive verileriyle birleştiren Federasyon tabloları için destek sağlar. Varsayılan değer **false** şeklindedir.  | Hayır |
+| additionalProjects | Erişmek için ortak BigQuery projelerinin proje kimliklerinin virgülle ayrılmış listesi.  | No |
+| requestGoogleDriveScope | Google Drive 'a erişim istenip istenmediğini belirtir. Google Drive erişimine izin verilmesi, BigQuery verilerini Google Drive verileriyle birleştiren Federasyon tabloları için destek sağlar. Varsayılan değer **false** şeklindedir.  | No |
 | authenticationType | Kimlik doğrulaması için kullanılan OAuth 2,0 kimlik doğrulama mekanizması. ServiceAuthentication yalnızca şirket içinde barındırılan Integration Runtime kullanılabilir. <br/>İzin verilen değerler **userauthentication** ve **serviceauthentication**' dir. Daha fazla özellik ve bu kimlik doğrulama türleri için JSON örnekleri üzerinde bu tablonun altındaki bölümlere bakın. | Yes |
 
 ### <a name="using-user-authentication"></a>Kullanıcı kimlik doğrulamasını kullanma
@@ -62,11 +62,11 @@ Aşağıdaki özellikler Google BigQuery bağlı hizmeti için desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| clientId | Yenileme belirtecini oluşturmak için kullanılan uygulamanın KIMLIĞI. | Hayır |
-| clientSecret | Yenileme belirtecini oluşturmak için kullanılan uygulamanın gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
-| refreshToken | Google 'dan edinilen ve BigQuery 'ye erişim yetkisi vermek için kullanılan yenileme belirteci. [OAuth 2,0 erişim belirteçlerini](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) ve [Bu topluluk blogunu](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)edinmeyle bir tane almayı öğrenin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
+| clientId | Yenileme belirtecini oluşturmak için kullanılan uygulamanın KIMLIĞI. | No |
+| clientSecret | Yenileme belirtecini oluşturmak için kullanılan uygulamanın gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
+| refreshToken | Google 'dan edinilen ve BigQuery 'ye erişim yetkisi vermek için kullanılan yenileme belirteci. [OAuth 2,0 erişim belirteçlerini](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) ve [Bu topluluk blogunu](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)edinmeyle bir tane almayı öğrenin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -98,12 +98,12 @@ Aşağıdaki özellikler Google BigQuery bağlı hizmeti için desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| e-posta | ServiceAuthentication için kullanılan hizmet hesabı e-posta KIMLIĞI. Bu, yalnızca şirket içinde barındırılan Integration Runtime kullanılabilir.  | Hayır |
-| Keyfilepath null | Hizmet hesabı e-posta adresinin kimliğini doğrulamak için kullanılan. p12 anahtar dosyasının tam yolu. | Hayır |
-| trustedCertPath | TLS üzerinden bağlandığınızda sunucuyu doğrulamak için kullanılan Güvenilen CA sertifikalarını içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan Integration Runtime TLS kullandığınızda ayarlanabilir. Varsayılan değer, Integration Runtime ile yüklenen CAcert. Pez dosyasıdır.  | Hayır |
-| useSystemTrustStore | Sistem güven deposundan veya belirtilen. ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
+| e-posta | ServiceAuthentication için kullanılan hizmet hesabı e-posta KIMLIĞI. Bu, yalnızca şirket içinde barındırılan Integration Runtime kullanılabilir.  | No |
+| Keyfilepath null | Hizmet hesabı e-posta adresinin kimliğini doğrulamak için kullanılan. p12 anahtar dosyasının tam yolu. | No |
+| trustedCertPath | TLS üzerinden bağlandığınızda sunucuyu doğrulamak için kullanılan Güvenilen CA sertifikalarını içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan Integration Runtime TLS kullandığınızda ayarlanabilir. Varsayılan değer, Integration Runtime ile yüklenen CAcert. Pez dosyasıdır.  | No |
+| useSystemTrustStore | Sistem güven deposundan veya belirtilen. ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer **false** şeklindedir.  | No |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -133,12 +133,12 @@ Google BigQuery 'den veri kopyalamak için, veri kümesinin Type özelliğini **
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in Type özelliği: **GoogleBigQueryObject** olarak ayarlanmalıdır | Yes |
+| tür | DataSet 'in Type özelliği: **GoogleBigQueryObject** olarak ayarlanmalıdır | Yes |
 | veri kümesi | Google BigQuery veri kümesinin adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| tableName | Tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için ve `dataset` `table`kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
+| tableName | Tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `dataset` ve kullanın `table` . | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -165,10 +165,10 @@ Google BigQuery 'den veri kopyalamak için kopyalama etkinliğindeki kaynak tür
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği **GoogleBigQuerySource**olarak ayarlanmalıdır. | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği **GoogleBigQuerySource**olarak ayarlanmalıdır. | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

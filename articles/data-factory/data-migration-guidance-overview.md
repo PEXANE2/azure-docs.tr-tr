@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416442"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Data Lake veya veri ambarınızdan verileri Azure 'a geçirmek için Azure Data Factory kullanın
@@ -52,7 +52,7 @@ Azure Data Factory, verileri bir ağ üzerinden (Internet, ER veya VPN) aktarmak
 
 Örneğin, veri geçişinizi iki hafta içinde ( *geçiş pencereniz*) tamamlamaya yönelik Azure Data Factory kullanacağınızı varsayalım. Aşağıdaki tabloda pembe/mavi kesme hattına dikkat edin. Verilen herhangi bir sütun için en düşük pembe hücre, geçiş penceresi iki haftadan en yakın olan veri boyutu/ağ bant genişliği eşleştirmesini gösterir. (Mavi hücredeki herhangi bir boyut/bant genişliği eşleştirmesi iki haftadan uzun bir çevrimiçi geçiş penceresine sahiptir.) 
 
-![çevrimiçi ve çevrimdışı](media/data-migration-guidance-overview/online-offline.png) Bu tablo, verilerinizin boyutuna ve kullanılabilir ağ bant genişliğine göre çevrimiçi geçiş (Azure Data Factory) aracılığıyla amaçlanan geçiş pencerenizi karşılayıp karşılamadığını belirlemenize yardımcı olur. Çevrimiçi geçiş penceresi iki haftadan uzun olursa çevrimdışı geçiş kullanmak isteyeceksiniz.
+![Çevrimiçi ](media/data-migration-guidance-overview/online-offline.png) ve çevrimdışı bu tablo, verilerinizin boyutuna ve kullanılabilir ağ bant genişliğine göre çevrimiçi geçiş (Azure Data Factory) aracılığıyla amaçlanan geçiş pencerenizi karşılayıp karşılamadığını belirlemenize yardımcı olur. Çevrimiçi geçiş penceresi iki haftadan uzun olursa çevrimdışı geçiş kullanmak isteyeceksiniz.
 
 > [!NOTE]
 > Çevrimiçi geçiş kullanarak, hem geçmiş veri yükleme hem de artımlı akışların tek bir araç aracılığıyla uçtan uca elde edebilirsiniz.  Bu yaklaşım sayesinde verileriniz, tüm geçiş penceresi sırasında mevcut mağaza ve yeni mağaza arasında eşitlenebilir. Bu, ETL mantığınızı yenilenen verilerle yeni depoda yeniden oluşturabileceğiniz anlamına gelir.

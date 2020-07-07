@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415041"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory kullanarak REST uç noktasından veri kopyalama
@@ -43,11 +43,11 @@ Bir REST kaynağından, desteklenen herhangi bir havuz veri deposuna veri kopyal
 > [!TIP]
 > Data Factory ' de REST bağlayıcısını yapılandırmadan önce veri alımı isteğini test etmek için, üst bilgi ve gövde gereksinimlerine yönelik API belirtimi hakkında bilgi edinin. Doğrulamak için Postman veya bir Web tarayıcısı gibi araçları kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -59,11 +59,11 @@ REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Type** özelliği **RESTService**olarak ayarlanmalıdır. | Yes |
+| tür | **Type** özelliği **RESTService**olarak ayarlanmalıdır. | Yes |
 | url | REST hizmetinin temel URL 'SI. | Yes |
-| enableServerCertificateValidation | Uç noktaya bağlanılırken sunucu tarafı TLS/SSL sertifikası doğrulanıp doğrulanmayacağı. | Hayır<br /> (varsayılan değer **true**'dur) |
+| enableServerCertificateValidation | Uç noktaya bağlanılırken sunucu tarafı TLS/SSL sertifikası doğrulanıp doğrulanmayacağı. | No<br /> (varsayılan değer **true**'dur) |
 | authenticationType | REST hizmetine bağlanmak için kullanılan kimlik doğrulaması türü. İzin verilen değerler **anonim**, **temel**, **Aadserviceprincipal** ve **managedserviceıdentity**. Daha fazla özellik ve örnekte sırasıyla aşağıdaki ilgili bölümlere bakın. | Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, bu özellik varsayılan Azure Integration Runtime kullanır. |Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, bu özellik varsayılan Azure Integration Runtime kullanır. |No |
 
 ### <a name="use-basic-authentication"></a>Temel kimlik doğrulaması kullan
 
@@ -74,7 +74,7 @@ REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | userName | REST uç noktasına erişmek için kullanılacak Kullanıcı adı. | Yes |
 | password | Kullanıcı için parola ( **Kullanıcı adı** değeri). Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** türü olarak işaretleyin. Ayrıca, [Azure Key Vault depolanan bir gizli](store-credentials-in-key-vault.md)dizi için de başvurabilirsiniz. | Yes |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -107,9 +107,9 @@ REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 | Serviceprincipalıd | Azure Active Directory uygulamasının istemci KIMLIĞINI belirtin. | Yes |
 | Servicesprincipalkey | Azure Active Directory uygulamasının anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
 | Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Yes |
-| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin, ör. `https://management.core.windows.net`| Yes |
+| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin, `https://management.core.windows.net` ör.| Yes |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -141,9 +141,9 @@ REST bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin, ör. `https://management.core.windows.net`| Yes |
+| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin, `https://management.core.windows.net` ör.| Yes |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -173,12 +173,12 @@ REST 'ten veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | DataSet 'in **Type** özelliği **restresource**olarak ayarlanmalıdır. | Yes |
-| relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Bu özellik belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. HTTP Bağlayıcısı Birleşik URL 'den verileri kopyalar: `[URL specified in linked service]/[relative URL specified in dataset]`. | Hayır |
+| tür | DataSet 'in **Type** özelliği **restresource**olarak ayarlanmalıdır. | Yes |
+| relativeUrl 'Si | Verileri içeren kaynağın göreli URL 'SI. Bu özellik belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. HTTP Bağlayıcısı Birleşik URL 'den verileri kopyalar: `[URL specified in linked service]/[relative URL specified in dataset]` . | No |
 
-,, `requestBody` Ve `paginationRules` veri `requestMethod`kümesinde `additionalHeaders`ayarlıyorsanız, hala olduğu gibi desteklenmektedir, etkinlik kaynağı ' nda yeni modeli kullanmanız önerilir.
+,, `requestMethod` `additionalHeaders` `requestBody` Ve veri kümesinde ayarlıyorsanız, `paginationRules` hala olduğu gibi desteklenmektedir, etkinlik kaynağı ' nda yeni modeli kullanmanız önerilir.
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -209,16 +209,16 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği **restsource**olarak ayarlanmalıdır. | Yes |
-| requestMethod | HTTP yöntemi. İzin verilen değerler **Al** (varsayılan) ve **Post**. | Hayır |
-| additionalHeaders | Ek HTTP istek üstbilgileri. | Hayır |
-| Istek gövdesi | HTTP isteğinin gövdesi. | Hayır |
-| Sayfaationrules | Sonraki sayfa isteklerini oluşturmak için sayfalandırma kuralları. Ayrıntılar için [sayfalandırma desteği](#pagination-support) bölümüne bakın. | Hayır |
-| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Varsayılan değer **00:01:40**' dir.  | Hayır |
-| Requestınterval | Sonraki sayfa için istek gönderilmeden önce beklenecek süre. Varsayılan değer **00:00:01** ' dir |  Hayır |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği **restsource**olarak ayarlanmalıdır. | Yes |
+| requestMethod | HTTP yöntemi. İzin verilen değerler **Al** (varsayılan) ve **Post**. | No |
+| additionalHeaders | Ek HTTP istek üstbilgileri. | No |
+| Istek gövdesi | HTTP isteğinin gövdesi. | No |
+| Sayfaationrules | Sonraki sayfa isteklerini oluşturmak için sayfalandırma kuralları. Ayrıntılar için [sayfalandırma desteği](#pagination-support) bölümüne bakın. | No |
+| httpRequestTimeout | HTTP isteğinin yanıt almak için zaman aşımı ( **TimeSpan** değeri). Bu değer, yanıt verilerinin okunması için zaman aşımı değil, yanıt almaya yönelik zaman aşımı değeridir. Varsayılan değer **00:01:40**' dir.  | No |
+| Requestınterval | Sonraki sayfa için istek gönderilmeden önce beklenecek süre. Varsayılan değer **00:00:01** ' dir |  No |
 
 >[!NOTE]
->REST Bağlayıcısı içinde `additionalHeaders`belirtilen "kabul etme" üst bilgisini yoksayar. REST Bağlayıcısı yalnızca JSON 'daki yanıtı destekliyorsa, otomatik olarak bir üst bilgisi oluşturur `Accept: application/json`.
+>REST Bağlayıcısı içinde belirtilen "kabul etme" üst bilgisini yoksayar `additionalHeaders` . REST Bağlayıcısı yalnızca JSON 'daki yanıtı destekliyorsa, otomatik olarak bir üst bilgisi oluşturur `Accept: application/json` .
 
 **Örnek 1: sayfalama ile get yöntemini kullanma**
 
@@ -309,7 +309,7 @@ Bu genel REST Bağlayıcısı aşağıdaki sayfalandırma düzenlerini destekler
 
 Sayfalandırma kurallarında **desteklenen anahtarlar** :
 
-| Anahtar | Açıklama |
+| Anahtar | Description |
 |:--- |:--- |
 | AbsoluteUrl | Sonraki isteği vermek için URL 'YI gösterir. **Mutlak URL ya da GÖRELI URL**olabilir. |
 | QueryParameters. *request_query_parameter* OR QueryParameters [' request_query_parameter '] | "request_query_parameter", bir sonraki HTTP istek URL 'sinde bir sorgu parametresi adına başvuran Kullanıcı tanımlı ' dır. |
@@ -317,12 +317,12 @@ Sayfalandırma kurallarında **desteklenen anahtarlar** :
 
 Sayfalandırma kurallarında **desteklenen değerler** :
 
-| Değer | Açıklama |
+| Değer | Description |
 |:--- |:--- |
 | Bilgisinde. *response_header* VEYA üst bilgiler [' response_header '] | "response_header", geçerli HTTP yanıtında bir üst bilgi adına başvuran Kullanıcı tanımlı, bir sonraki istek vermek için kullanılacak değerdir. |
 | "$" (Yanıt gövdesinin kökünü temsil eden) ile başlayan bir JSONPath ifadesi | Yanıt gövdesi yalnızca bir JSON nesnesi içermelidir. JSONPath ifadesi bir sonraki isteği vermek için kullanılacak tek bir temel değer döndürmelidir. |
 
-**Örneğinde**
+**Örnek:**
 
 Facebook Graph API aşağıdaki yapıda yanıtı döndürür ve bu durumda sonraki sayfanın URL 'SI disk belleğine gösterilir ***. ileri***:
 
@@ -403,15 +403,15 @@ Bu bölümde, OAuth kullanarak JSON biçimindeki Azure Data Lake Storage veriler
 3. **Bu şablonu kullan**' ı seçin.
     ![Bu şablonu kullan](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. Aşağıdaki örnekte gösterildiği gibi oluşturulan işlem hattını görürsünüz: ![işlem hattı](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. Aşağıdaki örnekte gösterildiği gibi oluşturulan işlem hattını görürsünüz: işlem ![ hattı](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
 5. **Web** etkinliği ' ni seçin. **Ayarlar**' da, verileri kopyalamak istediğiniz hizmetin oturum açma API 'sinden OAuth taşıyıcı belirtecini almak için karşılık gelen **URL**'yi, **yöntemi**, **üstbilgileri**ve **metni** belirtin. Şablondaki yer tutucu, Azure Active Directory (AAD) OAuth örneğine örnek olarak gösterilebilir. Bkz. AAD kimlik doğrulaması REST Bağlayıcısı tarafından yerel olarak desteklenir, burada yalnızca OAuth Flow için bir örnektir. 
 
     | Özellik | Açıklama |
     |:--- |:--- |:--- |
-    | URL'si |OAuth taşıyıcı belirtecini almak için URL 'yi belirtin. Örneğin buradaki örnektehttps://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | URL |OAuth taşıyıcı belirtecini almak için URL 'yi belirtin. Örneğin buradaki örnektehttps://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | Yöntem | HTTP yöntemi. İzin verilen değerler **gönderi** ve **Get**. | 
-    | Üst bilgiler | Üst bilgi, HTTP isteğindeki bir üst bilgi adına başvuran Kullanıcı tanımlı ' dır. | 
+    | Üst Bilgiler | Üst bilgi, HTTP isteğindeki bir üst bilgi adına başvuran Kullanıcı tanımlı ' dır. | 
     | Gövde | HTTP isteğinin gövdesi. | 
 
     ![İşlem hattı](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
@@ -428,7 +428,7 @@ Bu bölümde, OAuth kullanarak JSON biçimindeki Azure Data Lake Storage veriler
 7. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
    ![İşlem hattı çalıştırması](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. İşlem hattı çalıştırması başarıyla tamamlandığında, aşağıdaki örneğe benzer bir sonuç görürsünüz: ![işlem hattı çalıştırma sonucu](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. İşlem hattı çalıştırması başarıyla tamamlandığında, aşağıdaki örneğe benzer bir sonuç görürsünüz: işlem ![ hattı çalıştırma sonucu](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
 9. **Eylemler** sütununda webactivity 'Nin "çıkış" simgesine tıklayın, hizmet tarafından döndürülen access_token görürsünüz.
 

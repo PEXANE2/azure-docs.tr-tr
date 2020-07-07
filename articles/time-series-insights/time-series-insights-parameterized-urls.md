@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416989"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Parametreli URL'yi kullanarak özel görünümü paylaşma
@@ -29,11 +29,11 @@ Time Series Insights Gezgini, deneyimdeki görünümleri doğrudan URL 'den beli
 
 ## <a name="environment-id"></a>Ortam Kimliği
 
-`environmentId=<guid>` parametresi hedef ortam kimliğini belirtir. Bu, veri erişim FQDN 'sinin bir bileşenidir ve Azure portal ortama genel bakış ' ın sağ üst köşesinde bulabilirsiniz. Bundan önce `env.timeseries.azure.com`gelen her şey.
+`environmentId=<guid>` parametresi hedef ortam kimliğini belirtir. Bu, veri erişim FQDN 'sinin bir bileşenidir ve Azure portal ortama genel bakış ' ın sağ üst köşesinde bulabilirsiniz. Bundan önce gelen her şey `env.timeseries.azure.com` .
 
 Örnek bir ortam kimliği parametresi olarak `?environmentId=10000000-0000-0000-0000-100000000108` verilebilir.
 
-## <a name="time"></a>Zaman
+## <a name="time"></a>Saat
 
 Parametreli URL ile mutlak veya göreli zaman değerleri belirtebilirsiniz.
 
@@ -66,9 +66,9 @@ Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsün
 
 ### <a name="optional-parameters"></a>İsteğe bağlı parametreler
 
-`timeSeriesDefinitions=<collection of term objects>` Parametresi bir Time Series Insights görünümünde görünecek koşul koşullarını belirtir:
+`timeSeriesDefinitions=<collection of term objects>`Parametresi bir Time Series Insights görünümünde görünecek koşul koşullarını belirtir:
 
-| Parametre | URL öğesi | Açıklama |
+| Parametre | URL öğesi | Description |
 | --- | --- | --- |
 | **ada** | `\<string>` | *Dönem* adı. |
 | **Bölünmüş** | `\<string>` | *Bölme ölçütü* sütunun adı. |
@@ -77,19 +77,19 @@ Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsün
 | **useSum** | `true` | Ölçmenize yönelik Sum kullanımını belirten isteğe bağlı bir parametre. |
 
 > [!NOTE]
-> `Events` Seçili **usesum** ölçüsünde, varsayılan olarak sayı seçilidir.  
-> `Events` Seçili değilse, varsayılan olarak ortalama seçilidir. |
+> `Events`Seçili **usesum** ölçüsünde, varsayılan olarak sayı seçilidir.  
+> `Events`Seçili değilse, varsayılan olarak ortalama seçilidir. |
 
-* `multiChartStack=<true/false>` Anahtar-değer çifti grafikte yığınlama imkanı sunar.
-* `multiChartSameScale=<true/false>` Anahtar-değer çifti, isteğe bağlı bir parametre içindeki terimleri kapsayan aynı Y ekseni ölçeğini sunar.  
+* `multiChartStack=<true/false>`Anahtar-değer çifti grafikte yığınlama imkanı sunar.
+* `multiChartSameScale=<true/false>`Anahtar-değer çifti, isteğe bağlı bir parametre içindeki terimleri kapsayan aynı Y ekseni ölçeğini sunar.  
 * , `timeBucketUnit=<Unit>&timeBucketSize=<integer>` Grafiğin daha ayrıntılı veya daha yumuşak, daha toplanmış bir görünümünü sağlamak için Aralık kaydırıcısını ayarlamanıza olanak sağlar.  
-* `timezoneOffset=<integer>` Parametresi, grafiğin saat dilimini UTC 'ye bir uzaklığa göre görüntülenecek şekilde ayarlamanıza olanak sağlar.
+* `timezoneOffset=<integer>`Parametresi, grafiğin saat DILIMINI UTC 'ye bir uzaklığa göre görüntülenecek şekilde ayarlamanıza olanak sağlar.
 
-| Çift (ler) | Açıklama |
+| Çift (ler) | Description |
 | --- | --- |
 | `multiChartStack=false` | `true`Varsayılan olarak etkin olduğundan yığına geçirin `false` . |
-| `multiChartStack=false&multiChartSameScale=true` | Terimler arasında aynı Y ekseni ölçeğini kullanmak için yığın oluşturmanın etkinleştirilmesi gerekir.  Bu, `false` varsayılan olarak, geçirme `true` bu işlevselliği sunar. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Birimler = `days`, `hours`, `minutes`, `seconds`, `milliseconds`.  Her zaman birimin ilk harfini büyük yapın. </br> **TimeBucketSize**için istenen tamsayıyı geçirerek birim sayısını tanımlayın.  |
+| `multiChartStack=false&multiChartSameScale=true` | Terimler arasında aynı Y ekseni ölçeğini kullanmak için yığın oluşturmanın etkinleştirilmesi gerekir.  `false`Bu, varsayılan olarak, geçirme `true` Bu işlevselliği sunar. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Birimler = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Her zaman birimin ilk harfini büyük yapın. </br> **TimeBucketSize**için istenen tamsayıyı geçirerek birim sayısını tanımlayın.  |
 | `timezoneOffset=-<integer>` | Bu tamsayı her zaman milisaniye cinsindendir. |
 
 > [!NOTE]

@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419315"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB 'yi, 15 dakikadan kısa bir süre içinde Azure SQL veri ambarı 'na yükleyin Data Factory
@@ -44,9 +44,9 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
 >
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure Blob depolama: Bu deneme TPC-H test veri kümesini depolamak için Azure Blob depolama (GRS) kullanır.  Azure depolama hesabınız yoksa [depolama hesabı oluşturma hakkında](../../storage/common/storage-account-create.md)bilgi edinin.
-* [TPC-h](http://www.tpc.org/tpch/) verileri: test veri kümesi olarak TPC-h kullanacağız.  Bunu yapmak için, veri kümesini oluşturmanıza yardımcı `dbgen` olan TPC-H Toolkit ' i kullanmanız gerekir.  `dbgen` [TPC araçlarından](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) kaynak kodu indirebilir ve kendiniz derleyebilir ya da derlenmiş ikiliyi [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools)'dan indirebilirsiniz.  10 dosya genelinde tablo yayma için `lineitem` 1 TB düz dosya oluşturmak üzere aşağıdaki komutlarla dbgen. exe ' yi çalıştırın:
+* [TPC-h](http://www.tpc.org/tpch/) verileri: test veri kümesi olarak TPC-h kullanacağız.  Bunu yapmak için, `dbgen` veri kümesini oluşturmanıza yardımcı olan TPC-H Toolkit ' i kullanmanız gerekir.  `dbgen` [TPC araçlarından](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) kaynak kodu indirebilir ve kendiniz derleyebilir ya da derlenmiş ikiliyi [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools)'dan indirebilirsiniz.  10 dosya genelinde tablo yayma için 1 TB düz dosya oluşturmak üzere aşağıdaki komutlarla dbgen.exe çalıştırın `lineitem` :
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
@@ -77,9 +77,9 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
 
     ![Ölçek iletişim kutusu](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    Bu deneme, kaynak sınıfını kullanarak `xlargerc` VERILERI Azure SQL veri ambarı 'na yükler.
+    Bu deneme, kaynak sınıfını kullanarak verileri Azure SQL veri ambarı 'na yükler `xlargerc` .
 
-    En iyi performansı elde etmek için, `xlargerc` kaynak sınıfına ait olan bir SQL veri ambarı kullanıcısı kullanılarak kopyalama yapılması gerekir.  Bunun nasıl yapılacağını, [bir Kullanıcı kaynak sınıfı örneğini değiştirme](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)hakkında bilgi edinin.  
+    En iyi performansı elde etmek için, kaynak sınıfına ait olan bir SQL veri ambarı kullanıcısı kullanılarak kopyalama yapılması gerekir `xlargerc` .  Bunun nasıl yapılacağını, [bir Kullanıcı kaynak sınıfı örneğini değiştirme](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)hakkında bilgi edinin.  
 * Şu DDL ifadesini çalıştırarak Azure SQL veri ambarı veritabanında hedef tablo şeması oluşturun:
 
     ```SQL  
@@ -123,7 +123,7 @@ Bu makalede, kopyalama Sihirbazı 'nı kullanarak verileri Azure SQL veri ambar�
       2. Bir kaynak grubunun adını girmek için **Yeni oluştur**’u seçin.
    4. Veri fabrikası için bir **konum** seçin.
    5. Dikey pencerenin alt kısmındaki **Panoya sabitle** onay kutusunu seçin.  
-   6. **Oluştur**' a tıklayın.
+   6. **Oluştur**'a tıklayın.
 4. Oluşturma işlemi tamamlandıktan sonra, aşağıdaki görüntüde gösterildiği gibi **Data Factory** dikey penceresini görürsünüz:
 
    ![Data factory giriş sayfası](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -165,13 +165,13 @@ Bu bölümde, 1 TB TPC-H satır öğesi dosyalarını içeren Azure Blob kaynağ
     ![Kopyalama Sihirbazı-dosya biçimi ayarları](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>3. Adım: hedefi yapılandırma
-Bu bölümde, Azure SQL veri ambarı veritabanında hedef: `lineitem` tablosunun nasıl yapılandırılacağı gösterilmektedir.
+Bu bölümde, `lineitem` Azure SQL veri ambarı veritabanında hedef: tablosunun nasıl yapılandırılacağı gösterilmektedir.
 
 1. Hedef depo olarak **Azure SQL veri ambarı** ' nı seçin ve **İleri**' ye tıklayın.
 
     ![Kopyalama Sihirbazı-hedef veri deposunu seçin](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Azure SQL veri ambarı için bağlantı bilgilerini girin.  Rolün `xlargerc` üyesi olan kullanıcıyı belirttiğinizden emin olun (ayrıntılı yönergeler için **Önkoşullar** bölümüne bakın) ve **İleri**' ye tıklayın.
+2. Azure SQL veri ambarı için bağlantı bilgilerini girin.  Rolün üyesi olan kullanıcıyı belirttiğinizden emin olun `xlargerc` (ayrıntılı yönergeler için **Önkoşullar** bölümüne bakın) ve **İleri**' ye tıklayın.
 
     ![Kopyalama Sihirbazı-hedef bağlantı bilgileri](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
@@ -192,7 +192,7 @@ Bu bölümde, Azure SQL veri ambarı veritabanında hedef: `lineitem` tablosunun
 
     ![Kopyalama Sihirbazı-Özet sayfası](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-2. Dağıtım tamamlandıktan sonra kopyalama çalıştırması ilerlemesini izlemek `Click here to monitor copy pipeline` için tıklayın. **Etkinlik pencereleri** listesinde oluşturduğunuz kopyalama işlem hattını seçin.
+2. Dağıtım tamamlandıktan sonra `Click here to monitor copy pipeline` kopyalama çalıştırması ilerlemesini izlemek için tıklayın. **Etkinlik pencereleri** listesinde oluşturduğunuz kopyalama işlem hattını seçin.
 
     ![Kopyalama Sihirbazı-Özet sayfası](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 

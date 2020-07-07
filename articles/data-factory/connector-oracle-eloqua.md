@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416862"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Oracle Eloqua 'tan veri kopyalama (Önizleme)
@@ -49,15 +49,15 @@ Oracle Eloqua Linked Service için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **Eloqua** olarak ayarlanmalıdır | Yes |
-| endpoint | Eloqua sunucusunun uç noktası. Eloqua birden çok veri merkezini destekler, uç noktanızı tespit etmek için kimlik https://login.eloqua.com bilgilerinizi kullanarak oturum açın ve ardından, YENIDEN yönlendirilen URL 'den **temel URL** bölümünü, düzeniyle kopyalayın `xxx.xxx.eloqua.com`. | Yes |
-| kullanıcı adı | Eloqua hesabınızın Site adı ve Kullanıcı adı şu biçimdedir: `SiteName\Username` ör. `Eloqua\Alice`  | Yes |
+| tür | Type özelliği: **Eloqua** olarak ayarlanmalıdır | Yes |
+| endpoint | Eloqua sunucusunun uç noktası. Eloqua birden çok veri merkezini destekler, uç noktanızı tespit etmek için https://login.eloqua.com kimlik bilgilerinizi kullanarak oturum açın ve ardından, yeniden YÖNLENDIRILEN URL 'den **temel URL** bölümünü, düzeniyle kopyalayın `xxx.xxx.eloqua.com` . | Yes |
+| kullanıcı adı | Eloqua hesabınızın Site adı ve Kullanıcı adı şu biçimdedir: `SiteName\Username` ör `Eloqua\Alice` .  | Yes |
 | password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 {
@@ -84,10 +84,10 @@ Oracle Eloqua 'tan veri kopyalamak için, veri kümesinin Type özelliğini **El
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Eloquaobject** | Yes |
+| tür | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **Eloquaobject** | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
-**Örneğinde**
+**Örnek**
 
 ```json
 {
@@ -114,10 +114,10 @@ Oracle Eloqua 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak türü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği: **Eloquasource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Eloquasource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Accounts"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

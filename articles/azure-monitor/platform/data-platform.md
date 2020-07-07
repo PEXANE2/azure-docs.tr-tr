@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81457272"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Izleyici veri platformu
@@ -23,7 +23,7 @@ Günümüzün bulut ve şirket içi hizmetlere dayalı dağıtılmış uygulamal
 [Azure izleyici](../overview.md) , çeşitli kaynaklardan veri toplar ve bunları analiz, görselleştirme ve uyarı için kullanılabilecek ortak bir veri platformuna toplar. Birden fazla kaynaktaki verilerin üzerine tutarlı bir deneyim sunar. Bu, tüm izlenen kaynaklarda ve hatta verilerini Azure Izleyici 'de depolayan diğer hizmetlerden gelen verilerle birlikte ayrıntılı öngörüler sağlar.
 
 
-![Azure İzleyici'ye genel bakış](media/data-platform/overview.png)
+![Azure İzleyici’ye genel bakış](media/data-platform/overview.png)
 
 ## <a name="observability-data-in-azure-monitor"></a>Azure Izleyici 'de verileri Observability
 Ölçümler, Günlükler ve dağıtılmış izlemeler, yaygın olarak Observability 'in üç paragraf adı olarak adlandırılır. Bunlar, izlenen bir sistemin yeterli Observability sağlamak için bir izleme aracının toplaması ve analiz edilmesi gereken farklı veri türleridir. Observability birden çok ve daha fazla şekilde verilerle ilişkilendirerek ve izlenen tüm kaynak kümesi genelinde veri toplanarak elde edilebilir. Azure Izleyici birden fazla kaynaktaki verileri birlikte depoladığından, veriler ortak bir araç kümesi kullanılarak bağıntılı ve analiz edilebilir. Ayrıca, diğer hizmetlere yönelik verilerin barındırılmasına ek olarak, verileri birden çok Azure aboneliği ve kiracılar arasında da ilişkilendirir.
@@ -67,7 +67,7 @@ Aşağıdaki tabloda Azure Izleyici 'de ölçümler ve Günlükler karşılaşt�
 
 | Öznitelik  | Ölçümler | Günlükler |
 |:---|:---|:---|
-| Avantajlar | Uyarı gibi neredeyse gerçek zamanlı senaryolara sahip hafif ve yetenekli senaryolar. Sorunların hızlı algılanması için idealdir. | Zengin sorgu diliyle çözümlendi. Derin analiz ve temel nedeni tanımlama için idealdir. |
+| Yararları | Uyarı gibi neredeyse gerçek zamanlı senaryolara sahip hafif ve yetenekli senaryolar. Sorunların hızlı algılanması için idealdir. | Zengin sorgu diliyle çözümlendi. Derin analiz ve temel nedeni tanımlama için idealdir. |
 | Veriler | Yalnızca sayısal değerler | Metin veya sayısal veriler |
 | Yapı | Örnek saat, izlenen kaynak ve sayısal bir değer dahil olmak üzere standart özellikler kümesi. Bazı ölçümler, daha fazla tanım için birden çok boyut içerir. | Günlük türüne göre benzersiz özellik kümesi. |
 | Koleksiyon | Düzenli aralıklarla toplanır. | , Olayların oluşturulması için bir kayıt tetiklemesi olarak toplanabilir. |

@@ -7,10 +7,10 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81532604"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uygulamanızı FTP/S kullanarak Azure App Service dağıtma
@@ -29,7 +29,7 @@ Uygulamanızın FTP/S uç noktası zaten etkin. FTP/S dağıtımını etkinleşt
 
     ![Uygulamanızı seçin.](media/app-service-continuous-deployment/select-your-app.png)
 
-3. **Dağıtım Merkezi** > **FTP** > **panosu**' nu seçin.
+3. **Dağıtım Merkezi**  >  **FTP**  >  **panosu**' nu seçin.
 
     ![FTP panosunu aç](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -60,7 +60,7 @@ Uygulama **kimlik bilgilerini** , her bir uygulama için benzersiz olduğundan u
 >
 > - bağımlılık geri yüklemeleri (NuGet, NPM, PI ve besteci tahminleri gibi)
 > - .NET ikili dosyalarının derlenmesi
-> - Web. config dosyası oluşturma (bir [Node. js örneği](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
+> - web.config oluşturma ( [Node.js bir örnek](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
 > Bu gerekli dosyaları yerel makinenizde el ile oluşturun ve ardından uygulamanızla birlikte dağıtın.
 >
@@ -69,7 +69,7 @@ Uygulama **kimlik bilgilerini** , her bir uygulama için benzersiz olduğundan u
 
 Gelişmiş güvenlik için yalnızca TLS/SSL üzerinden FTP 'ye izin vermeniz gerekir. FTP dağıtımını kullanmıyorsanız hem FTP hem de FTPS 'yi devre dışı bırakabilirsiniz.
 
-Uygulamanızın kaynak sayfasında, [Azure Portal](https://portal.azure.com)' de, sol gezinmede **yapılandırma** > **genel ayarları** ' nı seçin.
+Uygulamanızın kaynak sayfasında, [Azure Portal](https://portal.azure.com)' de, **Configuration**  >  sol gezinmede yapılandırma**genel ayarları** ' nı seçin.
 
 Şifrelenmemiş FTP 'yi devre dışı bırakmak için, **FTPS** ' yi yalnızca **FTP durumunda**seçin. Hem FTP hem de FTPS 'yi tamamen devre dışı bırakmak için **devre dışı**seçeneğini belirleyin İşlemi tamamladıktan sonra **Kaydet**’e tıklayın. **Yalnızca FTPS**kullanıyorsanız, Web uygulamanızın **TLS/SSL ayarları** dikey penceresine giderek TLS 1,2 veya üstünü zorlayabilmeniz gerekir. TLS 1,0 ve 1,1 **yalnızca FTPS**ile desteklenmez.
 

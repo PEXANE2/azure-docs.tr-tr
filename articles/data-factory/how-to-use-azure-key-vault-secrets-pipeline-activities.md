@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417087"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
@@ -23,7 +23,7 @@ ms.locfileid: "81417087"
 
 Kimlik bilgilerini veya gizli değerleri bir Azure Key Vault saklayabilir ve etkinliklerinize geçirilecek işlem hattı yürütme sırasında kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Factory Için yönetilen kimliğin](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) nasıl çalıştığını öğrenin ve Data Factory 'nizin ilişkili bir tane olduğundan emin olun.
 
@@ -52,7 +52,7 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
     |Özellik  |Değer  |
     |---------|---------|
     |Güvenli çıkış     |True         |
-    |URL'si     |[Gizli URI değeri]? api-version = 7.0         |
+    |URL     |[Gizli URI değeri]? api-version = 7.0         |
     |Yöntem     |GET         |
     |Kimlik Doğrulaması     |MSI         |
     |Kaynak        |https://vault.azure.net       |
@@ -65,7 +65,7 @@ Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Fact
     > [!CAUTION]
     > Gizli çıkışın düz metin olarak kaydedilmesini engellemek için güvenli çıkış seçeneğini true olarak ayarlayın.  Bu değeri kullanan diğer etkinliklerin, güvenli giriş seçeneğinin true olarak ayarlanmış olması gerekir.
 
-5. Değeri başka bir etkinlikte kullanmak için şu kod ifadesini ** @activitykullanın (' Web1 '). Output. Value**.
+5. Değeri başka bir etkinlikte kullanmak için şu kod ifadesini kullanın ** @activity (' Web1 '). Output. Value**.
 
     ![Kod ifadesi](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

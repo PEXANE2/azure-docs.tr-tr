@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
 ms.openlocfilehash: 3f40ad7346219b48a38ade38b2a75ddf71940875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416409"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Amazon S3 'ten Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
@@ -94,7 +94,7 @@ Ağ veya veri deposu geçici sorunu nedeniyle kopyalama işlerinin herhangi biri
 
 ### <a name="delta-data-migration"></a>Delta verileri geçişi 
 
-AWS S3 ' deki yeni veya değiştirilmiş dosyaları tanımlamanın en iyi yolu, zaman bölümlenmiş adlandırma kuralını kullanmaktır. AWS S3 içindeki verileriniz, dosya veya klasör adında saat dilimi bilgileriyle bölümleniyorsa (örneğin,/yyyy/mm/dd/File.exe), işlem hatlarınız artımlı olarak kopyalanacak dosya/klasörleri kolayca tanımlayabilir. 
+AWS S3 ' deki yeni veya değiştirilmiş dosyaları tanımlamanın en iyi performansı, zaman bölümlenmiş adlandırma kuralını kullanmaktır. AWS S3 içindeki verileriniz, dosya veya klasör adındaki saat dilimi bilgileriyle bölümleniyorsa (örneğin,/yyyy/mm/dd/file.csv), işlem hatlarınız, artımlı olarak hangi dosya/klasörlerin kopyalanacağını kolayca tanımlayabilir. 
 
 Alternatif olarak, AWS S3 içindeki verileriniz zaman bölümlenmiş değilse, ADF, LastModifiedDate göre yeni veya değiştirilmiş dosyaları tanımlayabilir.   Bu şekilde, ADF 'nin AWS S3 ' dan tüm dosyaları taraması ve yalnızca son değiştirilme zaman damgası belirli bir değerden daha büyük olan yeni ve güncelleştirilmiş dosyayı kopyalaması gerekir.  S3 içinde çok sayıda dosyanız varsa ilk dosya taramanın, filtre koşuluyla kaç dosyanın eşleşip eşleşmediğine bakılmaksızın uzun zaman sürediğine dikkat edin.  Bu durumda, dosya taramanın paralel olarak gerçekleşebilmesi için ilk anlık görüntü geçişi için aynı ' ön ek ' ayarını kullanarak önce verileri bölümleyerek yapmanız önerilir.  
 

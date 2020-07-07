@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451440"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
@@ -61,11 +61,11 @@ Microsoft 'un parolasız kimlik doğrulama yöntemleri farklı senaryolara olana
 
 Kuruluşunuz için en iyi yöntemi seçme hakkında daha fazla bilgi için bkz. [passwordless yöntemine karar verme](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kuruluşların, passwordless dağıtımına başlamadan önce aşağıdaki önkoşulları karşılaması gerekir:
 
-| Önkoşul | Doğrulayıcı uygulama | FIDO2 güvenlik anahtarları |
+| Önkoşul | Authenticator uygulaması | FIDO2 güvenlik anahtarları |
 | --- | --- | --- |
 | [Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) Için Birleşik kayıt](howto-registration-mfa-sspr-combined.md) etkin | √ | √ |
 | [Kullanıcılar, Azure Multi-Factor Authentication 'ı gerçekleştirebilir](howto-mfa-getstarted.md) | √ | √ |
@@ -93,7 +93,7 @@ Her kimlik doğrulama yöntemi için iş gereksinimlerinizi ve kullanım örnekl
 
 Aşağıdaki tabloda bu proje sırasında uygulanacak kullanım durumları özetlenmektedir.
 
-| Alan | Açıklama |
+| Alan | Description |
 | --- | --- |
 | **Erişim** | Passwordless oturum açma, şirket ağı içindeki veya dışındaki bir kurumsal veya kişisel cihazdan kullanılabilir. |
 | **Denetim** | Kullanım verileri, yöneticilere neredeyse gerçek zamanlı olarak denetim sağlamak için kullanılabilir. <br> Kullanım verileri en az 29 günde bir veya SıEM aracı kullanıldığında şirket sistemlerine indirilir. |
@@ -118,7 +118,7 @@ Son kullanıcılara yönelik iletişimlerinizin aşağıdaki bilgileri içermesi
 - [Microsoft Authenticator uygulamasına kaydetme](howto-authentication-passwordless-phone.md)
 - [Telefonunuzla oturum açma](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft, iletişimlerinizin taslağını oluşturmanıza yardımcı olmak için Multi-Factor Authentication [iletişim şablonları](https://aka.ms/mfatemplates), self servis parola sıfırlama (SSPR) [iletişim şablonları](https://www.microsoft.com/download/details.aspx?id=56768)ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları, bu sayfadaki [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere gönderebilirsiniz.
+Microsoft, iletişimlerinizin taslağını oluşturmanıza yardımcı olmak için Multi-Factor Authentication [iletişim şablonları](https://aka.ms/mfatemplates), self servis parola sıfırlama (SSPR) [iletişim şablonları](https://www.microsoft.com/download/details.aspx?id=56768)ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) , bu sayfadaki **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere gönderebilirsiniz.
 
 ### <a name="plan-to-pilot"></a>Pilot planı
 
@@ -228,7 +228,7 @@ Aşağıdaki tabloda tipik raporlama senaryolarının bazı örnekleri verilmiş
 
 **Azure AD, en fazla 30 günlük denetim verilerini korur** ve verileri Azure Yönetim PORTALı veya API aracılığıyla analiz sistemlerinize indirmeniz için kullanılabilir hale getirir. Daha uzun bekletme yapmanız gerekiyorsa, günlükleri [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), splunk veya Sumo Logic gıbı bır SIEM aracında dışa ve kullanın. [Erişim ve kullanım raporlarınızı görüntüleme hakkında daha fazla bilgi edinin](../reports-monitoring/overview-reports.md).
 
-Kullanıcılar, ' a giderek kimlik bilgilerini kaydedebilir ve yönetebilir [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Bu bağlantı, kullanıcıları birleştirilmiş SSPR/Multi-Factor Authentication kayıt deneyimi aracılığıyla etkinleştirilen Son Kullanıcı kimlik bilgileri yönetim deneyimine yönlendirir. FIDO2 güvenlik cihazlarının Azure AD günlüğü kaydı ve Kullanıcı tarafından kimlik doğrulama yöntemlerine yapılan değişiklikler.
+Kullanıcılar, ' a giderek kimlik bilgilerini kaydedebilir ve yönetebilir [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) . Bu bağlantı, kullanıcıları birleştirilmiş SSPR/Multi-Factor Authentication kayıt deneyimi aracılığıyla etkinleştirilen Son Kullanıcı kimlik bilgileri yönetim deneyimine yönlendirir. FIDO2 güvenlik cihazlarının Azure AD günlüğü kaydı ve Kullanıcı tarafından kimlik doğrulama yöntemlerine yapılan değişiklikler.
 
 ### <a name="plan-security"></a>Plan güvenliği
 Bu dağıtım planının parçası olarak Microsoft, tüm ayrıcalıklı yönetim hesapları için passwordless kimlik doğrulamasının etkinleştirilmesini önerir.
@@ -292,7 +292,7 @@ Aşağıdaki seçtiğiniz metoda hizalanmış adımları izleyin.
 
 ### <a name="required-administrative-roles"></a>Gerekli yönetim rolleri
 
-| Azure AD rolü | Açıklama |
+| Azure AD rolü | Description |
 | --- | --- |
 | Genel Yönetici|Birleşik kayıt deneyimi uygulayabilecek en az ayrıcalıklı rol. |
 | Kimlik doğrulama Yöneticisi | Kimlik doğrulama yöntemlerini uygulayabilir ve yönetebilecek en az ayrıcalıklı rol. |
@@ -324,7 +324,7 @@ Microsoft Authenticator uygulamayı kuruluşunuzda bir passwordless kimlik doğr
 | **Hata iletisi**: bu tarayıcının veya IŞLETIM sisteminin FIDO2 güvenlik anahtarlarını desteklemediğini algıladık. | Passwordless FIDO2 güvenlik cihazları, Windows 10 sürüm 1809 veya üzeri sürümlerde yalnızca desteklenen tarayıcılarda (Microsoft Edge, Firefox sürüm 67) kaydedilebilir. |
 | **Hata iletisi**: Şirket ilkeniz, oturum açmak için farklı bir yöntem kullanmanızı gerektirir. | Kiracıda güvenlik anahtarlarının etkin olmadığından emin değil. |
 | Kullanıcı Windows 10 sürüm 1809 üzerinde güvenlik anahtarımı yönemedi | Sürüm 1809, FIDO2 anahtar satıcısı tarafından sağlanmış olan güvenlik anahtarı yönetim yazılımını kullanmanızı gerektirir. Destek için satıcıya başvurun. |
-| FIDO2 güvenlik anahtarımın bozulmuş olabileceğini sanırım, nasıl test edebilirim? | [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)' A gidin, bir test hesabı için kimlik bilgilerini girin, şüpheli güvenlik anahtarını takın, ekranın sağ **+** üst kısmındaki düğmeyi seçin, Oluştur ' a tıklayın ve oluşturma işlemi boyunca ilerleyin. Bu senaryo başarısız olursa, cihazınız bozulmuş olabilir. |
+| FIDO2 güvenlik anahtarımın bozulmuş olabileceğini sanırım, nasıl test edebilirim? | [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)' A gidin, bir test hesabı için kimlik bilgilerini girin, şüpheli güvenlik anahtarını takın, **+** ekranın sağ üst kısmındaki düğmeyi seçin, Oluştur ' a tıklayın ve oluşturma işlemi boyunca ilerleyin. Bu senaryo başarısız olursa, cihazınız bozulmuş olabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460656"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Sanal Dizisi ile ilgili en iyi deneyimler
@@ -84,7 +84,7 @@ Sanal diziniz üzerinde şunları yapabilmek istiyorsunuz
 İkinci olarak, en büyük tek ayırma olarak yerel katmanda en az daha fazla alan olması gerekir. Bu ek miktar, bir bulut anlık görüntüsünden geri yüklemeniz gereken durumlarda kullanılır. Bu örnekte, en büyük yerel ayırma 330 GB 'tır (dosya sistemi için rezervasyon dahil), bu nedenle bu işlemi 690 GB: 690 GB + 330 GB = 1020 GB 'a eklersiniz.
 Sonraki ek geri yüklemeleri gerçekleştirmemiz durumunda, alanı her zaman önceki geri yükleme işleminden serbest bırakabilirsiniz.
 
-Üçüncü olarak, yerel anlık görüntüleri depolamak için toplam yerel alanın %15 ' i için yalnızca %85 kullanılabilir olması gerekir. Bu örnekte, 1020 GB = 0,85&ast;tarafından sağlanan VERI diski TB ' nin altında olacaktır. Bu nedenle, sağlanan veri diski (1020&ast;(1/0.85)) = 1200 GB = 1,20 TB ~ 1,25 TB (en yakın dörttebirine yuvarlama) olacaktır
+Üçüncü olarak, yerel anlık görüntüleri depolamak için toplam yerel alanın %15 ' i için yalnızca %85 kullanılabilir olması gerekir. Bu örnekte, 1020 GB = 0,85 tarafından &ast; sağlanan veri DISKI TB ' nin altında olacaktır. Bu nedenle, sağlanan veri diski (1020 &ast; (1/0.85)) = 1200 GB = 1,20 TB ~ 1,25 TB (en yakın dörttebirine yuvarlama) olacaktır
 
 Düzenleme beklenmeyen büyüme ve yeni geri yüklemeler içinde, 1,25-1,5 TB 'lık bir yerel disk sağlamanız gerekir.
 
@@ -107,7 +107,7 @@ Yerel katmanda gereken toplam alan: 240 GB + 330 GB = 570 GB
 
 Geri yükleme için gereken en az yerel alan 330 GB 'dir.
 
-Toplam diskinizin %15 ' i, anlık görüntüleri yalnızca 0,85 kullanılabilir olacak şekilde depolamak için kullanılır. Bu nedenle disk boyutu (900&ast;(1/0.85)) = 1,06 TB ~ 1,25 TB (en yakın dörttebirine yuvarlama)
+Toplam diskinizin %15 ' i, anlık görüntüleri yalnızca 0,85 kullanılabilir olacak şekilde depolamak için kullanılır. Bu nedenle disk boyutu (900 &ast; (1/0.85)) = 1,06 TB ~ 1,25 TB (en yakın dörttebirine yuvarlama)
 
 Düzenleme beklenmeyen büyümeye karşı, 1,25-1,5 TB yerel disk sağlayabilirsiniz.
 
