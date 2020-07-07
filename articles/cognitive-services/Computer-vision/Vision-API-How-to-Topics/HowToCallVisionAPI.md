@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 0d2ef4af8af8ad9545277202f0aa7842ac05ea67
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84983454"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957911"
 ---
 # <a name="call-the-computer-vision-api"></a>Görüntü İşleme API’sini çağırma
 
@@ -35,7 +35,7 @@ Bu makaledeki örneklerde aşağıdaki özellikler gösterilmektedir:
 - **Seçenek 1**: kapsamlı analiz-yalnızca belirtilen modeli çözümle
 - **Seçenek 2**: gelişmiş analiz- [86-Categories taksonomi](../Category-Taxonomy.md) kullanarak ek ayrıntılar sağlamak için çözümleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e**tıklayın.
@@ -254,4 +254,4 @@ Bu hatalar, hem 1 hem de seçenek 2 senaryolarında döndürülen ek NotSupporte
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-REST API’yi kullanmak için [Görüntü İşleme API’si Başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44) bölümüne gidin.
+REST API’yi kullanmak için [Görüntü İşleme API’si Başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b) bölümüne gidin.

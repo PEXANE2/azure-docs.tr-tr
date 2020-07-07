@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115287"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961107"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 
 Bu makalede, örnek perakende verileri Azure Cosmos DB aktarmak için yerleşik jupi Not defterlerinin nasıl kullanılacağı açıklanır. Sorguları çalıştırmak, verileri çözümlemek ve sonuçları görselleştirmek için SQL ve Azure Cosmos DB Magic komutlarının nasıl kullanılacağını göreceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Cosmos hesabını oluştururken Not defteri desteğini etkinleştir](enable-notebooks.md)
 
@@ -235,7 +235,7 @@ Bu bölümde, alınan verilerde bazı sorgular çalıştıracaksınız.
 
    Çıktı, dünya haritasını farklı renklerle görüntüler. Daha hafif olan renkler, en düşük gelirle en yüksek gelire sahip ülkeleri/bölgeleri temsil eder.
 
-   ![Ülkeler/bölgeler gelir Haritası görselleştirmesi](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Ülkeler/bölgeler gelir Haritası görselleştirmesi":::
 
 1. Veri görselleştirmesinin başka bir durumunu görelim. WebsiteData kapsayıcısı, bir öğeyi görüntüleyen, sepetine eklenen ve öğeyi satın alan kullanıcıların kaydına sahiptir. Satın alınan öğelerin dönüştürme oranını çizelim. Her bir öğenin dönüştürme oranını görselleştirmek için aşağıdaki kodu yeni bir hücrede çalıştırın:
 

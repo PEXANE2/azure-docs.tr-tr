@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580573"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda TLS 'yi yapılandırma-hiper ölçek (Citus)
@@ -26,17 +26,17 @@ Benzer şekilde, Azure portal sunucunuz altındaki "bağlantı dizeleri" ayarlar
 Veritabanı Hizmetleri için PostgreSQL kullanan bazı uygulama çerçeveleri, yükleme sırasında varsayılan olarak TLS 'yi etkinleştirmez. PostgreSQL sunucunuz TLS bağlantılarını zorluyor, ancak uygulama TLS için yapılandırılmamışsa, uygulama veritabanı sunucunuza bağlanamadan başarısız olabilir. TLS bağlantılarının nasıl etkinleştirileceğini öğrenmek için uygulamanızın belgelerine başvurun.
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>TLS bağlantısı için sertifika doğrulaması gerektiren uygulamalar
-Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından (. cer) oluşturulan yerel bir sertifika dosyası gerektirir. PostgreSQL için Azure veritabanı 'na bağlanma sertifikası-hiper ölçek (Citus) konumunda https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pembulunur. Sertifika dosyasını indirin ve tercih ettiğiniz konuma kaydedin.
+Bazı durumlarda, uygulamalar güvenli bir şekilde bağlanmak için güvenilir bir sertifika yetkilisi (CA) sertifika dosyasından (. cer) oluşturulan yerel bir sertifika dosyası gerektirir. PostgreSQL için Azure veritabanı 'na bağlanma sertifikası-hiper ölçek (Citus) konumunda bulunur https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem . Sertifika dosyasını indirin ve tercih ettiğiniz konuma kaydedin.
 
 ### <a name="connect-using-psql"></a>Psql kullanarak bağlanma
-Aşağıdaki örnek, psql komut satırı yardımcı programını kullanarak Hyperscale (Citus) Düzenleyicisi düğümüne nasıl bağlanılacağını gösterir. TLS sertifikası `sslmode=verify-full` doğrulamasını zorlamak için bağlantı dizesi ayarını kullanın. Yerel sertifika dosya yolunu `sslrootcert` parametreye geçirin.
+Aşağıdaki örnek, psql komut satırı yardımcı programını kullanarak Hyperscale (Citus) Düzenleyicisi düğümüne nasıl bağlanılacağını gösterir. `sslmode=verify-full`TLS sertifikası doğrulamasını zorlamak için bağlantı dizesi ayarını kullanın. Yerel sertifika dosya yolunu `sslrootcert` parametreye geçirin.
 
 Psql bağlantı dizesinin bir örneği aşağıda verilmiştir:
 ```
 psql "sslmode=verify-full sslrootcert=DigiCertGlobalRootCA.crt.pem host=mydemoserver.postgres.database.azure.com dbname=citus user=citus password=your_pass"
 ```
 > [!TIP]
-> Geçirilen değerin, kaydettiğiniz sertifikanın dosya `sslrootcert` yolu ile eşleştiğinden emin olun.
+> Geçirilen değerin, `sslrootcert` kaydettiğiniz sertifikanın dosya yolu ile eşleştiğinden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [PostgreSQL Için Azure veritabanı-Hyperscale (Citus) güvenlik duvarı kurallarıyla](concepts-hyperscale-firewall-rules.md)güvenliği artırın.

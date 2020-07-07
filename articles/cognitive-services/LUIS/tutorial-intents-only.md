@@ -3,21 +3,21 @@ title: 'Öğretici: amaçları tahmin etme-LUO'
 description: Bu öğreticideki söylenişi (metin) temelinde bir kullanıcının amaç 'ı tahmin eden özel bir uygulama oluşturun.
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588980"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959868"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları 'nı öğrenmek için bir LUSıS uygulaması derleme
 
 Bu öğreticide, bir kullanıcının, söylenişi (metin) temelinde bir amaç tahmin eden özel bir uygulama oluşturacaksınız.
 
-**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
-> * Yeni bir uygulama oluşturma
+> * Yeni uygulama oluşturma
 > * Amaç oluşturma
 > * Örnek konuşmalar ekleme
 > * Uygulamayı eğitme
@@ -39,7 +39,7 @@ Bunlar **Amaçlar** şeklinde kategorilere ayrılır.
 |`ConfirmOrder`|Pizza sırasını onaylayın.|
 |`None`|Kullanıcının LUıN uygulamasının yanıt vermek üzere tasarlanmadığını bir şey isteyip istemediğini sorar. Bu amaç, uygulama oluşturmanın bir parçası olarak sağlanır ve silinemez. |
 
-## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
+## <a name="create-a-new-app"></a>Yeni uygulama oluşturma
 
 [!INCLUDE [Follow these steps to create a new LUIS app](includes/create-pizza-app.md)]
 
@@ -113,9 +113,8 @@ Bir utterance sınıflandırmak için, amaç bu amaca göre sınıflandırılmas
 
     `get a medium vegetarian pizza for delivery`
 
-    Bu, bir örnek ile tam olarak aynı değildir. bu nedenle, LUYA 'nın bu amaçla ne tahmin edilebilir olduğunu öğreniyor olup olmadığını görmek için iyi bir test olması gerekir.
-
-    Son sorgu dizesi parametresi konuşma **sorgusu** olan `query` öğesidir. Bu konuşma, örnek konuşmalarından hiçbiriyle aynı değil. İyi bir test olduğundan `OrderPizza` amacını en yüksek puanlı amaç olarak döndürmelidir.
+  
+    Sorgu dizesi parametresi `query` , söylenişi **sorgusu** URI 'ye geçirilir. Bu konuşma, örnek konuşmalarından hiçbiriyle aynı değil. Bu, LUOLUP olmadığını kontrol etmek için iyi bir test olmalıdır ve `OrderPizza` en üst puan hedefi olarak amacı tahmin eder.
 
     ```JSON
     {

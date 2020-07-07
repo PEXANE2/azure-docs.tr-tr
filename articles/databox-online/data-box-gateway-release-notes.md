@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561040"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway genel kullanılabilirlik sürüm notları
@@ -42,7 +42,7 @@ Aşağıdaki tabloda, sürüm çalıştıran Data Box Gateway için bilinen soru
 
 | Hayır. | Özellik | Sorun | Geçici çözüm/açıklamalar |
 | --- | --- | --- | --- |
-| **1.** |Dosya türleri | Şu dosya türleri desteklenmez: karakter dosyaları, blok dosyaları, yuvalar, kanallar, sembolik bağlantılar.  |Bu dosyaların kopyalanması, NFS paylaşımında oluşturulan 0 uzunluklu dosyalara neden olur. Bu dosyalar hata durumunda kalır ve *hata. xml*içinde de raporlanır. <br> Dizinlerin simgesel bağlantıları, dizinlerde hiçbir şekilde çevrimdışı olarak işaretlenmez. Sonuç olarak, dizinlerin çevrimdışı olduğunu ve ilişkili tüm içeriğin Azure 'a tamamen yüklendiğini gösteren dizinler üzerinde gri bir işlem görmeyebilirsiniz. |
+| **1.** |Dosya türleri | Şu dosya türleri desteklenmez: karakter dosyaları, blok dosyaları, yuvalar, kanallar, sembolik bağlantılar.  |Bu dosyaların kopyalanması, NFS paylaşımında oluşturulan 0 uzunluklu dosyalara neden olur. Bu dosyalar bir hata durumunda kalır ve *error.xml*de raporlanır. <br> Dizinlerin simgesel bağlantıları, dizinlerde hiçbir şekilde çevrimdışı olarak işaretlenmez. Sonuç olarak, dizinlerin çevrimdışı olduğunu ve ilişkili tüm içeriğin Azure 'a tamamen yüklendiğini gösteren dizinler üzerinde gri bir işlem görmeyebilirsiniz. |
 | **2.** |Silme | Bu sürümdeki bir hata nedeniyle, bir NFS paylaşma silinirse, paylaşma silinmeyebilir. Paylaşma durumu, *silme*öğesini görüntüleyecektir.  |Bu yalnızca, paylaşımın desteklenmeyen bir dosya adı kullandığı zaman gerçekleşir. |
 | **3.** |Kopyala | Veri kopyalama işlemi hata vererek başarısız oldu: istenen işlem bir dosya sistemi sınırlaması nedeniyle tamamlanamadı.  |128 KB 'den büyük dosya boyutuyla ilişkili alternatif veri akışı (ADS) desteklenmiyor.   |
 

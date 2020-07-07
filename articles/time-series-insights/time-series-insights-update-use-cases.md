@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580672"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Önizleme kullanım örnekleri
@@ -60,7 +60,7 @@ Time Series Insights depolanan verilerle etkileşimde bulunmak için üç temel 
 
   * [Azure Time Series Insights önizleme Gezgininde verileri görselleştirmeyi](time-series-insights-update-explorer.md)Inceleyerek URL 'leri ve yeni kullanıcı arabirimini paylaşma hakkında daha fazla bilgi edinin.
 
-* Başlangıç yapmanın üçüncü yolu Time Series Insights ' de depolanan verileri sorgulamak için güçlü API 'Leri kullanmaktır. Time Series Insights `from`,, ve `to` `first` `last`gibi zamana bağlı işleçlere sahiptir. ,, `average`,, Ve `min` `max` `split by` `order by` `DateHistogram`gibi toplamalara ve Dönüştürmelere sahiptir. `has`Ayrıca, `in` `and` `REGEX`,,,, ve gibi filtreleme işleçleri vardır. `or` `greater than` Tüm bu işleçler, aşağı akış uygulamalarının verilerinize yönelik ilginç eğilimleri ve desenleri hızlı bir şekilde bulmasını sağlar. Onları, anormal görselleştirmelere göre doldurmak için kullanın.
+* Başlangıç yapmanın üçüncü yolu Time Series Insights ' de depolanan verileri sorgulamak için güçlü API 'Leri kullanmaktır. Time Series Insights,, ve gibi zamana bağlı işleçlere sahiptir `from` `to` `first` `last` . ,,,, Ve gibi toplamalara ve Dönüştürmelere sahiptir `average` `min` `max` `split by` `order by` `DateHistogram` . Ayrıca,,,,, ve gibi filtreleme işleçleri vardır `has` `in` `and` `or` `greater than` `REGEX` . Tüm bu işleçler, aşağı akış uygulamalarının verilerinize yönelik ilginç eğilimleri ve desenleri hızlı bir şekilde bulmasını sağlar. Onları, anormal görselleştirmelere göre doldurmak için kullanın.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>İşletimsel analiz ve işlem verimliliğini işleme
 

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
 ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508563"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. nedir?
@@ -58,7 +58,7 @@ Veriler için Data Lake Storage 1. kapsayıcılar temelde klasörler ve dosyalar
 
 Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory (Azure AD) ve verilerinize erişimi yönetmek için erişim denetim listeleri (ACL 'Ler) kullanır.
 
-| Özellik | Açıklama |
+| Özellik | Description |
 | --- | --- |
 | Kimlik Doğrulaması |Data Lake Storage 1., Data Lake Storage 1. depolanan tüm veriler için kimlik ve erişim yönetimi için Azure AD ile tümleşir. Tümleştirme nedeniyle, çok faktörlü kimlik doğrulaması, koşullu erişim, rol tabanlı erişim denetimi, uygulama kullanımı izleme, güvenlik izleme ve uyarı gibi tüm Azure AD özelliklerinden faydaların Data Lake Storage 1.. Data Lake Storage 1., REST arabirimi içinde kimlik doğrulaması için OAuth 2,0 protokolünü destekler. [Data Lake Storage 1. kimlik doğrulaması](data-lakes-store-authentication-using-azure-active-directory.md)' na bakın.|
 | Erişim denetimi |Data Lake Storage 1., Webdapterprotocol tarafından sunulan POSIX stili izinleri destekleyerek erişim denetimi sağlar. ACL 'Leri kök klasörde, alt klasörlerde ve tek tek dosyalarda etkinleştirebilirsiniz. ACL 'Lerin Data Lake Storage 1. bağlamında nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Data Lake Storage 1. Access Control](data-lake-store-access-control.md). |

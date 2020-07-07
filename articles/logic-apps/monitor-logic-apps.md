@@ -7,13 +7,13 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82732011"
 ---
-# <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Çalışma durumunu izleyin, tetikleyici geçmişini gözden geçirin ve Azure Logic Apps uyarılarını ayarlayın
+# <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps için çalışma durumunu izleme, tetikleyici geçmişini gözden geçirme ve uyarı ayarlama
 
 [Bir mantıksal uygulama oluşturup çalıştırdıktan](../logic-apps/quickstart-create-first-logic-app-workflow.md)sonra, bu mantıksal uygulamanın çalışma durumunu, [geçmişi](#review-runs-history), [tetikleyici geçmişini](#review-trigger-history)ve performansı kontrol edebilirsiniz. Hataları veya olası diğer sorunlar hakkında bildirim almak için [uyarıları](#add-azure-alerts)ayarlayın. Örneğin, "Beş ' dan fazla çalıştırma başarısız olduğunda" bir uyarı oluşturabilirsiniz.
 
@@ -30,7 +30,7 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı bulun ve açın.
 
-   Mantıksal uygulamanızı bulmak için, ana Azure Arama kutusuna girin `logic apps`ve ardından **Logic Apps**' yi seçin.
+   Mantıksal uygulamanızı bulmak için, ana Azure Arama kutusuna girin `logic apps` ve ardından **Logic Apps**' yi seçin.
 
    !["Logic Apps" hizmetini bul ve Seç](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -96,7 +96,7 @@ Her mantıksal uygulama çalıştırması bir tetikleyici ile başlar. Tetikleyi
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı bulun ve açın.
 
-   Mantıksal uygulamanızı bulmak için, ana Azure Arama kutusuna girin `logic apps`ve ardından **Logic Apps**' yi seçin.
+   Mantıksal uygulamanızı bulmak için, ana Azure Arama kutusuna girin `logic apps` ve ardından **Logic Apps**' yi seçin.
 
    !["Logic Apps" hizmetini bul ve Seç](./media/monitor-logic-apps/find-your-logic-app.png)
 
@@ -140,7 +140,7 @@ Her mantıksal uygulama çalıştırması bir tetikleyici ile başlar. Tetikleyi
 
 Belirli ölçümleri temel alan veya mantıksal uygulamanızın eşiklerini aşan uyarıları almak için [Azure izleyici 'de uyarıları](../azure-monitor/platform/alerts-overview.md)ayarlayın. [Azure 'da ölçümler](../monitoring-and-diagnostics/monitoring-overview-metrics.md)hakkında bilgi edinin. [Azure izleyici](../log-analytics/log-analytics-overview.md)'yi kullanmadan uyarıları ayarlamak için aşağıdaki adımları izleyin.
 
-1. Mantıksal uygulama menünüzde **izleme**altında **Uyarılar** > **Yeni uyarı kuralı**' nı seçin.
+1. Mantıksal uygulama menünüzde **izleme**altında **Uyarılar**  >  **Yeni uyarı kuralı**' nı seçin.
 
    ![Mantıksal uygulamanız için bir uyarı ekleyin](./media/monitor-logic-apps/add-new-alert-rule.png)
 
@@ -162,7 +162,7 @@ Belirli ölçümleri temel alan veya mantıksal uygulamanızın eşiklerini aşa
 
    1. **Toplama türü**Için, **sayım**' ı seçin.
 
-   1. **Eşik değeri**için girin `1`.
+   1. **Eşik değeri**için girin `1` .
 
    1. **Koşul önizlemesi**altında, koşullarınızın doğru göründüğünü onaylayın.
 

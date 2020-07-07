@@ -4,10 +4,10 @@ description: Azure VMware çözümünün (AVS) kimlik ve erişim kavramları hak
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82740960"
 ---
 # <a name="azure-vmware-solution-avs-identity-concepts"></a>Azure VMware çözümü (AVS) kimlik kavramları
@@ -22,17 +22,17 @@ VCenter 'daki ayrıcalıklar CloudAdmin grubu üzerinden sağlanır. Bu grup vCe
 
 CloudAdmin ve CloudGlobalAdmin ayrıcalıkları aşağıdaki tabloda gösterilmiştir.
 
-|  Ayrıcalık kümesi           | CloudAdmin | CloudGlobalAdmin | Açıklama |
+|  Ayrıcalık kümesi           | CloudAdmin | CloudGlobalAdmin | Yorum |
 | :---                     |    :---:   |       :---:      |   :--:  |
 |  Alarmlar                  | CloudAdmin Kullanıcı, Işlem-ResourcePool ve VM 'lerdeki alarmlar için tüm alarmlar ayrıcalıklarına sahiptir.     |          --        |  -- |
 |  Otomatik dağıt             |  --  |        --        |  Microsoft, ana bilgisayar yönetimi yapar.  |
 |  Sertifikalar            |  --  |        --       |  Microsoft, sertifika yönetimi yapar.  |
 |  İçerik Kitaplığı         | Bir CloudAdmin kullanıcısının bir Içerik kitaplığındaki dosyaları oluşturma ve kullanma ayrıcalıkları vardır.    |         SSO ile etkinleştirildi.         |  Microsoft, dosyaları Içerik kitaplığındaki ESXi konaklarına dağıtır.  |
 |  Veri merkezi              |  --  |        --          |  Microsoft tüm veri merkezi işlemlerini yapar.  |
-|  Veri Deposu               | DataStore. AllocateSpace, DataStore. gözatmayı, DataStore. config, DataStore. DeleteFile, DataStore. FileManagement, DataStore. UpdateVirtualMachineMetadata     |    --    |   -- |
+|  Veri Deposu               | DataStore. AllocateSpace, DataStore. gözatıp, Datastore.Config, DataStore. DeleteFile, DataStore. FileManagement, DataStore. UpdateVirtualMachineMetadata     |    --    |   -- |
 |  ESX Aracısı Yöneticisi       |  --  |         --       |  Microsoft tüm işlemleri yapar.  |
 |  Klasör                  |  Bir CloudAdmin kullanıcısının tüm klasör ayrıcalıkları vardır.     |  --  |  --  |
-|  Genel                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. Serviceyöneticileri, Global. SetCustomField, Global. SystemTag         |                  |    |
+|  Genel                  |  Global. CancelTask, Global. GlobalTag, Global. Health, Global. LogEvent, Global. ManageCustomFields, Global. Serviceyöneticileri, Global. SetCustomField, Global.SysTıtemtag         |                  |    |
 |  Ana bilgisayar                    |  Host. HBR. HbrManagement      |        --          |  Microsoft, diğer tüm konak işlemlerini yapar.  |
 |  InventoryService        |  InventoryService. etiketleme      |        --          |  --  |
 |  Ağ                 |  Network. assign    |                  |  Microsoft, diğer tüm ağ işlemlerini yapar.  |

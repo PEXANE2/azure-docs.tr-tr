@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: da034479f110607e878a0ed26b9d487e41438e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f93eb55b888c58ad111bd67b2011ba9c996b16bb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666291"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960274"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak SYNAPSE SQL Havuzu (Önizleme) oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta SYNAPSE Studio kullanarak bir Synapse çalışma alan�
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE çalışma alanı](quickstart-create-workspace.md)
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 1. Çalışma alanları listesinden, açmak için çalışma alanının adını (veya adının bir bölümünü) yazın. Bu örnekte, **contosoanalytics**adlı bir çalışma alanı kullanacağız.
 ![Contoso adını içeren bunları göstermek üzere filtrelenmiş SYNAPSE çalışma alanlarının listesi.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
-## <a name="launch-synapse-studio"></a>SYNAPSE Studio 'Yu Başlat
+## <a name="launch-synapse-studio"></a>Synapse Studio'yu başlatma
 
 1. Çalışma alanına genel bakış ' da, SQL havuzunun oluşturulacağı konumu açmak için **SYNAPSE Studio 'Yu Başlat** ' ı seçin. Hizmet adını veya kaynak adını doğrudan arama çubuğuna yazın.
 ![Azure portal SYNAPSE çalışma alanına genel bakış ve Launch SYNAPSE Studio vurgulanmış.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
@@ -59,7 +59,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 1. **Temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
-    | Ayar | Önerilen değer | Açıklama |
+    | Ayar | Önerilen değer | Description |
     | :------ | :-------------- | :---------- |
     | **SQL havuzu adı** | contosoedw | Bu, SQL havuzunun sahip olacağı addır. |
     | **Performans düzeyi** | DW100c | Bu hızlı başlangıç için maliyetleri azaltmak üzere en küçük boyuta ayarlayın |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559531"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Izleyici aracılığıyla Media Services ölçümleri ve tanılama günlüklerini izleme
@@ -42,7 +42,7 @@ Media Services aşağıdaki kaynaklar için izleme ölçümlerini destekler:
 
 Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 
-|Ölçüm adı|Görünen ad|Açıklama|
+|Ölçüm adı|Görünen ad|Description|
 |---|---|---|
 |AssetCount|Varlık sayısı|Hesabınızdaki varlıklar.|
 |AssetQuota|Varlık kotası|Hesabınızdaki varlık kotası.|
@@ -60,7 +60,7 @@ Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 
 Aşağıdaki Media Services [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints) ölçümleri desteklenir:
 
-|Ölçüm adı|Görünen ad|Açıklama|
+|Ölçüm adı|Görünen ad|Description|
 |---|---|---|
 |İstekler|İstekler|Akış uç noktası tarafından hizmet verilen toplam HTTP isteği sayısını sağlar.|
 |Çıkış|Çıkış|Akış uç noktası başına dakika başına toplam çıkış baytı.|
@@ -92,7 +92,7 @@ Media Services aşağıdaki tanılama günlüklerini destekler:
 
 ### <a name="key-delivery"></a>Anahtar teslimi
 
-|Name|Açıklama|
+|Name|Description|
 |---|---|
 |Anahtar teslim hizmeti isteği|Anahtar teslim hizmeti istek bilgilerini gösteren Günlükler. Daha fazla bilgi için bkz. [şemalar](media-services-diagnostic-logs-schema.md).|
 

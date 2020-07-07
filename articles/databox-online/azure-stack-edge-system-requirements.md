@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 63225f6e6daa6b3cdde7aa505c117b43305a4867
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82569088"
 ---
 # <a name="azure-stack-edge-system-requirements"></a>Azure Stack Edge sistem gereksinimleri
@@ -82,9 +82,9 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 | URL kalıbı                      | Bileşen veya işlevsellik                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//MCR.Microsoft.com<br></br>https://\*. CDN.mscr.io | Microsoft Container Registry (gerekli)               |
-| https://\*. azurecr.io                     | Kişisel ve üçüncü taraf kapsayıcı kayıt defterleri (isteğe bağlı) | 
-| https://\*. Azure-Devices.net              | IoT Hub erişimi (gerekli)                             | 
+| https: \/ /MCR.Microsoft.com<br></br>https:// \* . CDN.mscr.io | Microsoft Container Registry (gerekli)               |
+| https:// \* . azurecr.io                     | Kişisel ve üçüncü taraf kapsayıcı kayıt defterleri (isteğe bağlı) | 
+| https:// \* . Azure-Devices.net              | IoT Hub erişimi (gerekli)                             | 
 
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure Kamu için ağ geçidi için URL desenleri
 
@@ -94,9 +94,9 @@ Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL dese
 
 | URL kalıbı                      | Bileşen veya işlevsellik                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//MCR.Microsoft.com<br></br>https://\*. CDN.mscr.com | Microsoft Container Registry (gerekli)               |
-| https://\*. Azure-Devices.us              | IoT Hub erişimi (gerekli)           |
-| https://\*. azurecr.us                    | Kişisel ve üçüncü taraf kapsayıcı kayıt defterleri (isteğe bağlı) | 
+| https: \/ /MCR.Microsoft.com<br></br>https:// \* . CDN.mscr.com | Microsoft Container Registry (gerekli)               |
+| https:// \* . Azure-Devices.us              | IoT Hub erişimi (gerekli)           |
+| https:// \* . azurecr.us                    | Kişisel ve üçüncü taraf kapsayıcı kayıt defterleri (isteğe bağlı) | 
 
 ## <a name="internet-bandwidth"></a>Internet bant genişliği
 

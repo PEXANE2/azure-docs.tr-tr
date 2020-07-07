@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fb24100eaebc54b98adf2f09fa3e557e4d6fa0be
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580646"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nı izleme ve ayarlama-hiper ölçek (Citus)
@@ -28,9 +28,9 @@ Hiper ölçek (Citus), bir sunucu grubundaki her bir düğüm için ölçümler 
 
 Bu ölçümler hiper ölçek (Citus) düğümleri için kullanılabilir:
 
-|Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
+|Metric|Ölçüm görünen adı|Birim|Description|
 |---|---|---|---|
-|active_connections|Etkin bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
+|active_connections|Etkin Bağlantılar|Sayı|Sunucuya etkin bağlantı sayısı.|
 |cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
 |'ye|IOPS|Sayı|[IOPS tanımına](../virtual-machines/linux/premium-storage-performance.md#iops) ve [hiper ölçekli aktarım](concepts-hyperscale-configuration-options.md) hızına bakın|
 |memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|

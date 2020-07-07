@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561037"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge için sürekli tümleştirme ve sürekli dağıtım
@@ -25,10 +25,10 @@ Bu makalede, IoT Edge çözümünüz için iki işlem hattı oluşturmak üzere 
 
 * **Azure IoT Edge derleme modülü görüntüleri** , IoT Edge çözüm kodunuzu alır ve kapsayıcı görüntülerini oluşturur.
 * **Azure IoT Edge-gönderim modülü görüntüleri** , modül görüntülerini belirttiğiniz kapsayıcı kayıt defterine gönderir.
-* **Azure IoT Edge-dağıtım bildirimi oluşturma** bir Deployment. Template. json dosyasını ve değişkenlerini alır, ardından son IoT Edge dağıtım bildirim dosyasını oluşturur.
+* **Azure IoT Edge-dağıtım bildirimini oluşturma** dosya ve değişkenlerde bir deployment.template.jsalır, ardından son IoT Edge dağıtım bildirim dosyasını oluşturur.
 * **Azure IoT Edge-IoT Edge cihazlara dağıtım** , tek/birden çok IoT Edge cihazlarına IoT Edge dağıtımları oluşturulmasına yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure Repos deposu. Bir tane yoksa, [projenizde yeni bir git deposu oluşturabilirsiniz](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav).
 * IoT Edge bir çözüm kaydedilir ve deponuza gönderilir. Bu makaleyi test etmek için yeni bir örnek çözüm oluşturmak istiyorsanız, [Visual Studio Code 'de modül geliştirme ve hata ayıklama](how-to-vs-code-develop-module.md) veya [Visual Studio 'Da C# modüllerini geliştirme ve hata](how-to-visual-studio-develop-csharp-module.md)ayıklama işlemleri bölümündeki adımları uygulayın.
@@ -54,7 +54,7 @@ Bu bölümde, yeni bir yapı işlem hattı oluşturacaksınız. Örnek IoT Edge 
 >
 >Daha fazla bilgi için bkz. [derleme işlem hattı oluşturma](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline).
 
-1. Azure DevOps kuruluşunuzda (**https:\//dev.Azure.com/{Your Organization}/**) oturum açın ve IoT Edge çözüm deponuzu içeren projeyi açın.
+1. Azure DevOps kuruluşunuzda (**https: \/ /dev.Azure.com/{Your Organization}/**) oturum açın ve IoT Edge çözüm deponuzu içeren projeyi açın.
 
    Bu makalede, **ıotedgerepo**adlı bir depo oluşturduk. Bu depo, **filtermodule**adlı bir modülün koduna sahip **IoTEdgeSolution** içerir.
 
@@ -84,7 +84,7 @@ Bu bölümde, yeni bir yapı işlem hattı oluşturacaksınız. Örnek IoT Edge 
 
      ![Yapı Aracısı havuzunu yapılandırma](./media/how-to-ci-cd/configure-env.png)
 
-5. İşlem hattınız, **Aracı işi 1**adlı bir iş ile önceden yapılandırılmış olarak gelir. İşe üç görev eklemek için**+** artı işaretini () seçin: iki kez **Azure IoT Edge** , **dosyaları** bir kez kopyalayın ve **derleme yapıtları** bir kez yayımlayın. ( **Ekle** düğmesini görmek için her görevin adının üzerine gelin.)
+5. İşlem hattınız, **Aracı işi 1**adlı bir iş ile önceden yapılandırılmış olarak gelir. **+** İşe üç görev eklemek için artı işaretini () seçin: iki kez **Azure IoT Edge** , **dosyaları** bir kez kopyalayın ve **derleme yapıtları** bir kez yayımlayın. ( **Ekle** düğmesini görmek için her görevin adının üzerine gelin.)
 
    ![Azure IoT Edge görev ekle](./media/how-to-ci-cd/add-iot-edge-task.png)
 
@@ -96,23 +96,23 @@ Bu bölümde, yeni bir yapı işlem hattı oluşturacaksınız. Örnek IoT Edge 
 
    * **Görünen ad**: varsayılan **Azure IoT Edge derleme modülü görüntülerini**kabul edin.
    * **Eylem**: varsayılan **derleme modülü görüntülerini**kabul edin.
-   * **. Template. JSON dosyası**: üç noktayı (**...**) seçin ve IoT Edge çözümünüzü içeren depodaki **Deployment. Template. JSON** dosyasına gidin.
+   * **.template.jsdosya**: üç nokta (**...**) simgesini seçin ve IoT Edge çözümünüzü içeren depodaki dosya **deployment.template.js** gidin.
    * **Varsayılan platform**: hedef IoT Edge cihazınıza göre modülleriniz için uygun platformu seçin.
-   * **Çıkış değişkenleri**: çıkış değişkenleri, Deployment. JSON dosyanızın üretilebileceği dosya yolunu yapılandırmak için kullanabileceğiniz bir başvuru adı içerir. Başvuru adını **kenar**benzeri bir şeye ayarlayın.
+   * **Çıkış değişkenleri**: çıkış değişkenleri, dosyadaki deployment.jsoluşturulacağı dosya yolunu yapılandırmak için kullanabileceğiniz bir başvuru adı içerir. Başvuru adını **kenar**benzeri bir şeye ayarlayın.
 
 
-   Bu yapılandırmalarda, modül görüntüsünü adlandırmak ve etiketlemek için `module.json` dosyada tanımlanan görüntü deposu ve etiketi kullanılır. **Derleme modülü görüntüleri** , değişkenlerin `module.json` dosyada tanımladığınız tam değerle değiştirilmesini de sağlar. Visual Studio veya Visual Studio Code içinde, gerçek değeri bir `.env` dosyada belirtmektir. Azure Pipelines, işlem **hattı değişkenleri** sekmesinde değeri ayarlarsınız. **değişkenler** sekmesini seçin ve ad ve değeri aşağıdaki şekilde yapılandırın:
+   Bu yapılandırmalarda, `module.json` Modül görüntüsünü adlandırmak ve etiketlemek için dosyada tanımlanan görüntü deposu ve etiketi kullanılır. **Derleme modülü görüntüleri** , değişkenlerin dosyada tanımladığınız tam değerle değiştirilmesini de sağlar `module.json` . Visual Studio veya Visual Studio Code içinde, gerçek değeri bir dosyada belirtmektir `.env` . Azure Pipelines, işlem **hattı değişkenleri** sekmesinde değeri ayarlarsınız. **değişkenler** sekmesini seçin ve ad ve değeri aşağıdaki şekilde yapılandırın:
 
     * **ACR_ADDRESS**: Azure Container Registry adresiniz. 
 
-    Projenizde başka değişkenlere sahipseniz, bu sekmede adı ve değeri belirtebilirsiniz. **derleme modülü görüntüleri** yalnızca `${VARIABLE}` biçimdeki değişkenleri tanır. `**/module.json` Dosyalarınızda bu biçimi kullandığınızdan emin olun.
+    Projenizde başka değişkenlere sahipseniz, bu sekmede adı ve değeri belirtebilirsiniz. **derleme modülü görüntüleri** yalnızca biçimdeki değişkenleri tanır. `${VARIABLE}` Dosyalarınızda bu biçimi kullandığınızdan emin olun `**/module.json` .
     
 7. Düzenlemek için ikinci **Azure IoT Edge** görevi seçin. Bu görev, tüm modül görüntülerini seçtiğiniz kapsayıcı kayıt defterine iter.
 
    * **Görünen ad**: eylem alanı değiştiğinde görünen ad otomatik olarak güncelleştirilir.
    * **Eylem**: **anında iletme modülü görüntülerini**seçmek için açılan listeyi kullanın.
    * **Kapsayıcı kayıt defteri türü**: modül görüntülerinizi depolamak için kullandığınız kapsayıcı kayıt defteri türünü seçin. Seçtiğiniz kayıt defteri türüne bağlı olarak, form değişir. **Azure Container Registry**öğesini seçerseniz, Azure aboneliğini ve kapsayıcı kayıt defterinizin adını seçmek için açılan listeleri kullanın. **Genel Container Registry**seçerseniz, **Yeni** ' yi seçerek bir kayıt defteri hizmet bağlantısı oluşturun.
-   * **. Template. JSON dosyası**: üç noktayı (**...**) seçin ve IoT Edge çözümünüzü içeren depodaki **Deployment. Template. JSON** dosyasına gidin.
+   * **.template.jsdosya**: üç nokta (**...**) simgesini seçin ve IoT Edge çözümünüzü içeren depodaki dosya **deployment.template.js** gidin.
    * **Varsayılan platform**: oluşturulan modül görüntüleriniz ile aynı platformu seçin.
 
    Modül görüntülerinizi barındırmak için birden çok kapsayıcı kayıt defterine sahipseniz, bu görevi çoğaltmanıza, farklı kapsayıcı kayıt defteri ' ne ve Gelişmiş ayarlar ' da **atlama modülünü** kullanarak bu belirli kayıt defteri için olmayan görüntüleri atlamanıza gerek duyarsınız.
@@ -120,13 +120,13 @@ Bu bölümde, yeni bir yapı işlem hattı oluşturacaksınız. Örnek IoT Edge 
 8. Düzenlemek için **dosyaları Kopyala** görevini seçin. Dosyaları yapıt hazırlama dizinine kopyalamak için bu görevi kullanın.
 
    * **Görünen ad**: dosyaları kopyala: bırakma klasörü.
-   * **İçerikler**: Bu bölüme `deployment.template.json` ve `**/module.json`bölümüne iki satır koyun. Bu iki dosya türü IoT Edge dağıtım bildirimi oluşturmak için girişlerdir. Yapıt hazırlama klasörüne kopyalanması ve yayın işlem hattı için yayımlanmaları gerekir.
-   * **Hedef klasör**: değişkeni `$(Build.ArtifactStagingDirectory)`koyun. Açıklama hakkında bilgi edinmek için bkz. [derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
+   * **İçerikler**: Bu bölüme ve bölümüne iki satır koyun `deployment.template.json` `**/module.json` . Bu iki dosya türü IoT Edge dağıtım bildirimi oluşturmak için girişlerdir. Yapıt hazırlama klasörüne kopyalanması ve yayın işlem hattı için yayımlanmaları gerekir.
+   * **Hedef klasör**: değişkeni koyun `$(Build.ArtifactStagingDirectory)` . Açıklama hakkında bilgi edinmek için bkz. [derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
 
 9. Düzenlemek için **derleme yapıtları Yayımla** görevini seçin. Yolun serbest bırakma işlem hattına yayınlanabilmesi için göreve yapıt hazırlama dizini yolu sağlayın.
 
    * **Görünen ad**: yayımlama yapıtı: bırak.
-   * **Yayımlanacak yol**: değişkeni `$(Build.ArtifactStagingDirectory)`koyun. Açıklama hakkında bilgi edinmek için bkz. [derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
+   * **Yayımlanacak yol**: değişkeni koyun `$(Build.ArtifactStagingDirectory)` . Açıklama hakkında bilgi edinmek için bkz. [derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) .
    * **Yapıt adı**: Drop.
    * **Yapıt yayımlama konumu**: Azure Pipelines.
 
@@ -172,7 +172,7 @@ Yeni bir işlem hattı oluşturun ve yeni bir aşama ekleyin
 
 8. **Geliştirme** aşamasında, varsayılan bir **Aracı işi**görmeniz gerekir. Aracı işiyle ilgili ayrıntıları yapılandırabilirsiniz, ancak dağıtım görevi platformun duyarsız olduğundan, **Aracı havuzunda** (veya kendi tarafından yönetilen diğer ARACıLARDAN **barındırılan VS2017** veya **barındırılan Ubuntu 1604** ) kullanabilirsiniz.
 
-9. İki görev eklemek için artı**+** işaretini () seçin. **Azure IoT Edge** iki kez arayın ve ekleyin.
+9. **+** İki görev eklemek için artı işaretini () seçin. **Azure IoT Edge** iki kez arayın ve ekleyin.
 
     ![Geliştirme için görev ekleme](./media/how-to-ci-cd/add-task-qa.png)
 
@@ -180,17 +180,17 @@ Yeni bir işlem hattı oluşturun ve yeni bir aşama ekleyin
 
     * **Görünen ad**: eylem alanı değiştiğinde görünen ad otomatik olarak güncelleştirilir.
     * **Eylem**: **dağıtım bildirimini oluştur**' u seçmek için açılan listeyi kullanın. Eylem değerini değiştirmek için görev görünen adının eşleşmesi de güncelleştirilir.
-    * **. Template. JSON dosyası**: yolu `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json`yerleştirin. Yol, derleme ardışık düzeninde yayımlanır.
+    * **Dosyaya.template.js**: yolu yerleştirin `$(System.DefaultWorkingDirectory)/Drop/drop/deployment.template.json` . Yol, derleme ardışık düzeninde yayımlanır.
     * **Varsayılan platform**: modül görüntülerini oluştururken aynı değeri seçin.
-    * **Çıkış yolu**: yolu `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json`yerleştirin. Bu yol, son IoT Edge dağıtım bildirimi dosyasıdır.
+    * **Çıkış yolu**: yolu yerleştirin `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` . Bu yol, son IoT Edge dağıtım bildirimi dosyasıdır.
 
-    Bu yapılandırma, `deployment.template.json` dosyadaki modül görüntüsü URL 'lerinin değiştirilmesini sağlar. **Dağıtım oluşturma bildirimi** Ayrıca değişkenlerin `deployment.template.json` dosyada tanımladığınız tam değerle değiştirilmesini de sağlar. VS/VS Code 'de gerçek değeri bir `.env` dosyada belirtmektir. Azure Pipelines, serbest bırakma işlem hattı değişkenleri sekmesinde değeri ayarlarsınız. değişkenler sekmesine geçin ve adı ve değeri aşağıdaki şekilde yapılandırın.
+    Bu yapılandırma, dosyadaki modül görüntüsü URL 'Lerinin değiştirilmesini sağlar `deployment.template.json` . **Dağıtım oluşturma bildirimi** Ayrıca değişkenlerin dosyada tanımladığınız tam değerle değiştirilmesini de sağlar `deployment.template.json` . VS/VS Code 'de gerçek değeri bir dosyada belirtmektir `.env` . Azure Pipelines, serbest bırakma işlem hattı değişkenleri sekmesinde değeri ayarlarsınız. değişkenler sekmesine geçin ve adı ve değeri aşağıdaki şekilde yapılandırın.
 
     * **ACR_ADDRESS**: Azure Container Registry adresiniz.
     * **ACR_PASSWORD**: Azure Container Registry parolanız.
     * **ACR_USER**: Azure Container Registry Kullanıcı adı.
 
-    Projenizde başka değişkenlere sahipseniz, bu sekmede adı ve değeri belirtebilirsiniz. **Oluşturma dağıtım bildirimi** yalnızca değişkenleri `${VARIABLE}` Flavor olarak algılayabilir, bunu `*.template.json` dosyalarınızda kullandığınızdan emin olun.
+    Projenizde başka değişkenlere sahipseniz, bu sekmede adı ve değeri belirtebilirsiniz. **Oluşturma dağıtım bildirimi** yalnızca değişkenleri Flavor olarak algılayabilir `${VARIABLE}` , bunu dosyalarınızda kullandığınızdan emin olun `*.template.json` .
 
     ![Yayın işlem hattı için değişkenleri yapılandırma](./media/how-to-ci-cd/configure-variables.png)
 
@@ -203,7 +203,7 @@ Yeni bir işlem hattı oluşturun ve yeni bir aşama ekleyin
     * **Tek/birden çok cihaz seçin**: yayın işlem hattının bir cihaza veya birden çok cihaza dağıtılmasını isteyip istemediğinizi seçin.
       * Tek bir cihaza dağıtıyorsanız **IoT Edge CIHAZ kimliğini**girin.
       * Birden çok cihaza dağıtıyorsanız, cihaz **hedefi koşulunu**belirtin. Hedef koşul, IoT Hub bir IoT Edge cihazları kümesiyle eşleşecek bir filtredir. Cihaz etiketlerini koşul olarak kullanmak istiyorsanız, ilgili cihaz etiketlerinizi IoT Hub Device ikizi ile güncelleştirmeniz gerekir. Gelişmiş ayarlarda **IoT Edge DAĞıTıM kimliğini** ve **Dağıtım önceliğini IoT Edge** güncelleştirin. Birden çok cihaz için dağıtım oluşturma hakkında daha fazla bilgi için bkz. [IoT Edge otomatik dağıtımları anlama](module-deployment-monitoring.md).
-    * Gelişmiş ayarlar ' ı genişletin, **IoT Edge DAĞıTıM kimliği**' ni seçin `$(System.TeamProject)-$(Release.EnvironmentName)`, değişkeni koyun. Bu, proje ve sürüm adını IoT Edge dağıtım KIMLIĞINIZLE eşler.
+    * Gelişmiş ayarlar ' ı genişletin, **IoT Edge DAĞıTıM kimliği**' ni seçin, değişkeni koyun `$(System.TeamProject)-$(Release.EnvironmentName)` . Bu, proje ve sürüm adını IoT Edge dağıtım KIMLIĞINIZLE eşler.
 
 12. Yeni sürüm ardışık düzeninde yaptığınız değişiklikleri kaydetmek için **Kaydet** ' i seçin. Menüden işlem **hattı** ' nı seçerek işlem hattı görünümüne dönün.
 

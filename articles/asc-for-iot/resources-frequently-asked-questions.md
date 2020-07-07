@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 1aeab1a7dcdf2b12efc268ed0d47834b24d34b87
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82734986"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>IoT için Azure Güvenlik Merkezi hakkında sık sorulan sorular
@@ -66,11 +66,11 @@ IoT Aracısı için Azure Güvenlik Merkezi, cihaz yapılandırması, davranış
 
 ## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>IoT güvenlik Aracısı için Azure Güvenlik Merkezi 'Ni nereden alabilirim?
 
-IoT güvenlik aracısına yönelik Azure Güvenlik Merkezi, 32 bit ve 64 bit Windows ve Linux sürümlerindeki GitHub 'da açık kaynaktır ve kullanılabilir: https://github.com/Azure/Azure-IoT-Security.
+IoT güvenlik aracısına yönelik Azure Güvenlik Merkezi, 32 bit ve 64 bit Windows ve Linux sürümlerindeki GitHub 'da açık kaynaktır ve kullanılabilir: https://github.com/Azure/Azure-IoT-Security .
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>IoT aracısının Azure Güvenlik Merkezi 'nin yüklendiği yer nedir?
 
-Ayrıntılı yükleme ve aracı dağıtım bilgileri GitHub 'da bulunabilir: https://github.com/Azure/Azure-IoT-Security.
+Ayrıntılı yükleme ve aracı dağıtım bilgileri GitHub 'da bulunabilir: https://github.com/Azure/Azure-IoT-Security .
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Aracının bağımlılıkları ve önkoşulları nelerdir?
 

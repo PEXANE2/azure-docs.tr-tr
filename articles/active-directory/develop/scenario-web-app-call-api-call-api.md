@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 12802ab6dcfbbe5a1c5576ab672ead864dd0b4ae
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559868"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Leri çağıran bir Web uygulaması: Web API 'SI çağırma
@@ -28,7 +28,7 @@ Korumalı bir Web API 'SI çağırmak dile ve tercih ettiğiniz çerçeveye bağ
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Eylemi için basitleştirilmiş kod aşağıda verilmiştir `HomeController`. Bu kod, Microsoft Graph çağırmak için bir belirteç alır. Microsoft Graph REST API olarak nasıl çağrılacağını göstermek için kod eklenmiştir. Microsoft Graph API URL 'SI appSettings. json dosyasında verilmiştir ve adlı `webOptions`bir değişkende okundu:
+Eylemi için basitleştirilmiş kod aşağıda verilmiştir `HomeController` . Bu kod, Microsoft Graph çağırmak için bir belirteç alır. Microsoft Graph REST API olarak nasıl çağrılacağını göstermek için kod eklenmiştir. Microsoft Graph API URL 'SI, appsettings.jsdosyasında verilmiştir ve adlı bir değişkende okundu `webOptions` :
 
 ```json
 {
@@ -117,4 +117,4 @@ def graphcall():
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretime taşıma](scenario-web-app-call-api-production.md)
+> [Üretime taşı](scenario-web-app-call-api-production.md)

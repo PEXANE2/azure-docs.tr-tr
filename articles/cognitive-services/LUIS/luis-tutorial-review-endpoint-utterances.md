@@ -3,13 +3,13 @@ title: 'Öğretici: uç nokta utterlerini gözden geçirme-LUSıS'
 description: Bu öğreticide, LUSıS 'nin emin olduğu LUSıS HTTP uç noktası aracılığıyla alınan utslarını doğrulayarak veya düzelterek uygulama tahminlerini geliştirebilirsiniz. Bazı konuşmaların amacının, diğerlerinin ise varlığının doğrulanması gerekebilir.
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 07/02/2020
+ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445942"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959063"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: uç nokta dıklarını inceleyerek, hariç tahminleri çözme
 Bu öğreticide, LUSıS HTTPS uç noktası aracılığıyla alınan ve bu LUSıS 'in eksik olduğu noktaları doğrulayarak veya düzelterek uygulama tahminlerini geliştirebilirsiniz. Zamanlanan LUSıS bakımın düzenli bir parçası olarak uç nokta utslerini incelemeniz gerekir.
@@ -35,11 +35,16 @@ Uç nokta ifadelerini gözden geçirerek, ifadenin tahmin edilen amacını doğr
 
 ## <a name="download-json-file-for-app"></a>Uygulama için JSON dosyasını indirin
 
-[Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) indirip kaydedin.
+[Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true) indirip kaydedin.
 
 ## <a name="import-json-file-for-app"></a>Uygulama için JSON dosyasını içeri aktar
 
-[!INCLUDE [Import app steps](includes/import-app-steps.md)]
+
+1. [Luu portalında](https://www.luis.ai), **uygulamalarım** sayfasında, **konuşma için + yeni uygulama**' yı seçin ve ardından **JSON olarak içeri aktarın**. Önceki adımdan kaydedilen JSON dosyasını bulun. Uygulamanın adını değiştirmeniz gerekmez. **Bitti** 'yi seçin
+
+1. Bir LUSıS uygulamasının ana bina blokları olan amaçları görmek için **Oluştur** ve **amaçlar** ' ı seçin.
+
+    :::image type="content" source="media/luis-tutorial-review-endpoint-utterances/initial-intents-in-app.png" alt-text="Sürümler sayfasından amaçlar sayfasına geçin.":::
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Uygulamaya varlık değişikliklerini uygulamak için uygulamayı eğitme
 
@@ -77,15 +82,11 @@ Doğru hizalanmış amaç için uç nokta utslerini gözden geçirin. Tüm sür�
 
 1. Portalın **Build** bölümünde sol gezinmede **uç nokta Utlerini gözden geçir** ' i seçin. Bu liste **ApplyForJob** amacı için filtrelenmiştir.
 
-    > [!div class="mx-imgBorder"]
-    > ![Sol gezintideki uç nokta ifadelerini gözden geçir düğmesinin ekran görüntüsü](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Sol gezinti aşamasında uç nokta utsliği düğmesinin ekran görüntüsü.":::
 
-    Bu utterance, `I'm looking for a job with Natural Language Processing` doğru amaç içinde değil.
+    Bu utterance, `I'm looking for a job with Natural Language Processing` doğru amaç, _Getjobınformation_içinde değil. İki amaç içindeki iş adları ve fiillerin benzerliği nedeniyle _Applyforjob_ olarak tahmin edildi.
 
-1.  Bu söyleyeni hizalamak için, söylenişi satırında doğru **hizalanmış hedefini** seçin `GetJobInformation` . Onay işaretini seçerek değiştirilen söylenişi 'i uygulamaya ekleyin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Sol gezintideki uç nokta ifadelerini gözden geçir düğmesinin ekran görüntüsü](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+1.  Bu söyleyeni hizalamak için doğru **hizalanmış hedefini** seçin `GetJobInformation` . Onay işaretini seçerek değiştirilen söylenişi 'i uygulamaya ekleyin.
 
     Bu amaca göre kalan diğer çizgileri inceleyerek, hizalanmış amacı gereken şekilde düzeltin. Hizalanmış amacı görüntülemek için bu öğreticideki ilk söylenişi tablosunu kullanın.
 
@@ -110,37 +111,37 @@ Doğru hizalanmış örnek, uygulamanın tahmininin iyileştirildiklerini doğru
             "topIntent": "GetJobInformation",
             "intents": {
                 "GetJobInformation": {
-                    "score": 0.903607249
-                },
-                "EmployeeFeedback": {
-                    "score": 0.0312187821
+                    "score": 0.901367366
                 },
                 "ApplyForJob": {
-                    "score": 0.0230276529
+                    "score": 0.0307973567
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0296942145
                 },
                 "MoveEmployee": {
-                    "score": 0.008322801
-                },
-                "Utilities.Stop": {
-                    "score": 0.004480808
+                    "score": 0.00739785144
                 },
                 "FindForm": {
-                    "score": 0.00425248267
+                    "score": 0.00449316856
+                },
+                "Utilities.Stop": {
+                    "score": 0.00417657848
                 },
                 "Utilities.StartOver": {
-                    "score": 0.004224336
+                    "score": 0.00407167152
                 },
                 "Utilities.Help": {
-                    "score": 0.00373591436
+                    "score": 0.003662492
                 },
                 "None": {
-                    "score": 0.0034621188
+                    "score": 0.00335733569
                 },
                 "Utilities.Cancel": {
-                    "score": 0.00230977475
+                    "score": 0.002225436
                 },
                 "Utilities.Confirm": {
-                    "score": 0.00112078607
+                    "score": 0.00107437756
                 }
             },
             "entities": {
@@ -156,7 +157,7 @@ Doğru hizalanmış örnek, uygulamanın tahmininin iyileştirildiklerini doğru
                                 "timex": "PRESENT_REF",
                                 "resolution": [
                                     {
-                                        "value": "2019-12-05 23:23:53"
+                                        "value": "2020-07-02 21:45:50"
                                     }
                                 ]
                             }

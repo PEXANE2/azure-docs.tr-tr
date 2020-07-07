@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
 ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84204897"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
@@ -61,7 +61,7 @@ Bir güncelleştirme dağıtımının durumunu öğrenmenizi sağlamak için uya
 
 5. Güncelleştirme dağıtımınız için uygun olan sinyali seçmek için **Koşul Ekle** ' ye tıklayın. Aşağıdaki tabloda, iki kullanılabilir sinyalin ayrıntıları gösterilmektedir.
 
-    |Sinyal adı|Boyutlar|Açıklama
+    |Sinyal adı|Boyutlar|Description
     |---|---|---|
     |`Total Update Deployment Runs`|-Güncelleştirme dağıtım adı<br>-Durum    |Bir güncelleştirme dağıtımının genel durumu hakkında uyarılar.|
     |`Total Update Deployment Machine Runs`|-Güncelleştirme dağıtım adı</br>-Durum</br>-Hedef bilgisayar</br>-Güncelleştirme dağıtımı çalıştırma KIMLIĞI    |Belirli makinelere hedeflenmiş bir güncelleştirme dağıtımının durumu hakkında uyarılar.|

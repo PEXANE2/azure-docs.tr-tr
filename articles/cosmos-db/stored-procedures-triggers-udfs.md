@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509678"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
@@ -59,14 +59,14 @@ Saklı yordamlar bir Azure Cosmos kapsayıcısı ile ilişkilendirilir ve saklı
 
 ### <a name="commit-and-rollback"></a>Yürüt ve geri al
 
-İşlemler Azure Cosmos DB JavaScript programlama modeliyle yerel olarak tümleşiktir. Bir JavaScript işlevi içinde, tüm işlemler otomatik olarak tek bir işlem altında sarmalanır. Saklı yordamdaki JavaScript mantığı herhangi bir özel durum olmadan tamamlanırsa, işlem içindeki tüm işlemler veritabanına işlenir. Ve `COMMIT TRANSACTION` ( `BEGIN TRANSACTION` ilişkisel veritabanlarına tanıdık) gibi deyimler örtük Azure Cosmos DB. Betikten özel durum varsa Azure Cosmos DB JavaScript çalışma zamanı işlemin tamamını geri alacak. Bu nedenle, bir özel durum oluşturmak Azure Cosmos DB bir içinde etkin `ROLLBACK TRANSACTION` bir şekilde eşdeğerdir.
+İşlemler Azure Cosmos DB JavaScript programlama modeliyle yerel olarak tümleşiktir. Bir JavaScript işlevi içinde, tüm işlemler otomatik olarak tek bir işlem altında sarmalanır. Saklı yordamdaki JavaScript mantığı herhangi bir özel durum olmadan tamamlanırsa, işlem içindeki tüm işlemler veritabanına işlenir. `BEGIN TRANSACTION`Ve `COMMIT TRANSACTION` (ilişkisel veritabanlarına tanıdık) gibi deyimler örtük Azure Cosmos DB. Betikten özel durum varsa Azure Cosmos DB JavaScript çalışma zamanı işlemin tamamını geri alacak. Bu nedenle, bir özel durum oluşturmak Azure Cosmos DB bir içinde etkin bir şekilde eşdeğerdir `ROLLBACK TRANSACTION` .
 
 ### <a name="data-consistency"></a>Veri tutarlılığı
 
 Saklı yordamlar ve Tetikleyiciler, her zaman bir Azure Cosmos kapsayıcısının birincil çoğaltmasında yürütülür. Bu özellik, saklı yordamlardan gelen okumaların [güçlü tutarlılık](consistency-levels-tradeoffs.md)sunmasını sağlar. Kullanıcı tanımlı işlevleri kullanan sorgular birincil veya herhangi bir ikincil çoğaltmada yürütülebilir. Saklı yordamlar ve Tetikleyiciler işlem yazma işlemlerini desteklemek için tasarlanmıştır: salt okuma mantığı, [Azure Cosmos db SQL API SDK 'ları](sql-api-dotnet-samples.md)kullanarak uygulama tarafı mantığı ve sorgular olarak en iyi şekilde uygulandığından, veritabanı aktarım hızını ortadan kaldırmaya yardımcı olur. 
 
 > [!TIP]
-> Saklı yordam veya tetikleyici içinde yürütülen sorgular, aynı betik işlemi tarafından yapılan öğelerde yapılan değişiklikleri göremeyebilir. Bu ifade `getContent().getCollection.queryDocuments()`, ve gibi tümleşik dil sorgularının yanı sıra SQL sorgularına de uygulanır `getContext().getCollection().filter()`.
+> Saklı yordam veya tetikleyici içinde yürütülen sorgular, aynı betik işlemi tarafından yapılan öğelerde yapılan değişiklikleri göremeyebilir. Bu ifade `getContent().getCollection.queryDocuments()` , ve gibi tümleşik dil sorgularının yanı sıra SQL sorgularına de uygulanır `getContext().getCollection().filter()` .
 
 ## <a name="bounded-execution"></a>Sınırlanmış yürütme
 
@@ -82,7 +82,7 @@ Azure Cosmos DB iki tür tetikleyiciyi destekler:
 
 ### <a name="pre-triggers"></a>Ön tetikleyiciler
 
-Azure Cosmos DB, bir Azure Cosmos öğesinde işlem gerçekleştirerek çağrılabilen tetikleyiciler sağlar. Örneğin, öğe oluştururken bir ön tetikleyici belirtebilirsiniz. Bu durumda öğe oluşturulmadan önce ön tetikleyici çalıştırılır. Ön tetikleyicilerin hiçbir giriş parametresi olamaz. Gerekirse özgün istekten belge gövdesini güncelleştirmek için istek nesnesi kullanılabilir. Tetikleyiciler kaydedilirken kullanıcılar birlikte çalıştırılabileceği işlemleri belirtebilir. Bir tetikleyici ile `TriggerOperation.Create`oluşturulduysa, bu tetikleyicinin değiştirme işleminde kullanılmasına izin verilmez. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
+Azure Cosmos DB, bir Azure Cosmos öğesinde işlem gerçekleştirerek çağrılabilen tetikleyiciler sağlar. Örneğin, öğe oluştururken bir ön tetikleyici belirtebilirsiniz. Bu durumda öğe oluşturulmadan önce ön tetikleyici çalıştırılır. Ön tetikleyicilerin hiçbir giriş parametresi olamaz. Gerekirse özgün istekten belge gövdesini güncelleştirmek için istek nesnesi kullanılabilir. Tetikleyiciler kaydedilirken kullanıcılar birlikte çalıştırılabileceği işlemleri belirtebilir. Tetikleyici `TriggerOperation.Create` ile oluşturulduysa, bu tetikleyicinin bir değiştirme işleminde kullanılmasına izin verilmez. Örnekler için bkz. [tetikleyici yazma](how-to-write-stored-procedures-triggers-udfs.md#triggers) makalesi.
 
 ### <a name="post-triggers"></a>Son tetikleyiciler
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790488"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bir Azure API Management hizmeti örneğini birden fazla Azure bölgesine dağıtma
@@ -61,7 +61,7 @@ Sisteminizin coğrafi dağıtımını tam olarak yararlanmak için, arka uç hiz
 
     ![API kodu Düzenleyicisi](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 
-4. Dosyanın `<inbound> </inbound>` bölümünde `set-backend` uygun bir yönlendirme `choose` ilkesi oluşturmak için, koşullu ilkelerle birlikte kullanın.
+4. `set-backend` `choose` Dosyanın bölümünde uygun bir yönlendirme ilkesi oluşturmak için, koşullu ilkelerle birlikte kullanın `<inbound> </inbound>` .
 
     Örneğin, aşağıdaki XML dosyası Batı ABD ve Doğu Asya bölgelerinde çalışır:
 
@@ -102,8 +102,8 @@ API Management, istekleri [En düşük gecikme süresine](../traffic-manager/tra
 
 1. Kendi [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)oluşturun.
 1. Özel bir etki alanı kullanıyorsanız, API Management hizmeti yerine [Traffic Manager kullanın](../traffic-manager/traffic-manager-point-internet-domain.md) .
-1. [Traffic Manager API Management bölgesel uç noktalarını yapılandırın](../traffic-manager/traffic-manager-manage-endpoints.md). Bölgesel uç noktalar, örneğin `https://<service-name>-<region>-01.regional.azure-api.net` `https://contoso-westus2-01.regional.azure-api.net`URL deseninin yerine gelmelidir.
-1. [Traffic Manager API Management bölgesel durum uç noktalarını yapılandırın](../traffic-manager/traffic-manager-monitoring.md). Bölgesel durum uç noktaları `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`, örneğin `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`URL örüntüsünün izler.
+1. [Traffic Manager API Management bölgesel uç noktalarını yapılandırın](../traffic-manager/traffic-manager-manage-endpoints.md). Bölgesel uç noktalar, örneğin URL deseninin yerine gelmelidir `https://<service-name>-<region>-01.regional.azure-api.net` `https://contoso-westus2-01.regional.azure-api.net` .
+1. [Traffic Manager API Management bölgesel durum uç noktalarını yapılandırın](../traffic-manager/traffic-manager-monitoring.md). Bölgesel durum uç noktaları, örneğin URL örüntüsünün izler `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef` .
 1. Traffic Manager [yönlendirme yöntemini](../traffic-manager/traffic-manager-routing-methods.md) belirtin.
 
 [create an api management service instance]: get-started-create-service-instance.md

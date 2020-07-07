@@ -9,26 +9,26 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: a78e2cbc6f1e33f516912911e2038a0de3ff6b99
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d78767474150bc9571b25fe1f26135d6f41d1f20
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996950"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961243"
 ---
 # <a name="what-is-custom-translator"></a>Özel Çevirmen nedir?
 
-[Özel çevirici](https://portal.customtranslator.azure.ai) , çevirmen kurumların, uygulama geliştiricilerinin ve dil hizmet sağlayıcılarının özelleştirilmiş sinir makine çevirisi (NMT) sistemleri oluşturmalarına olanak sağlayan Microsoft Translator hizmetinin bir özelliğidir. Özelleştirilmiş çeviri sistemleri, mevcut uygulamalar, iş akışları ve Web siteleri ile sorunsuz bir şekilde tümleşir. [Özel çevirmen](https://portal.customtranslator.azure.ai/) , [Microsoft Translator hub 'ının](https://hub.microsofttranslator.com/) ISTATISTIKSEL makine çevirisi (SMT) için yaptığı, ancak özel olarak sinir makine çevirisi (NMT) sistemleri için de benzer özellikler sunar.
+[Özel çevirici](https://portal.customtranslator.azure.ai) , kuruluşların, uygulama geliştiricilerinin ve dil hizmet sağlayıcılarının özelleştirilmiş sinir makine çevirisi (NMT) sistemleri oluşturmalarına olanak tanıyan bir Translator hizmeti özelliğidir. Özelleştirilmiş çeviri sistemleri, mevcut uygulamalar, iş akışları ve Web siteleri ile sorunsuz bir şekilde tümleşir. 
 
-[Özel çevirmenle](https://portal.customtranslator.azure.ai) oluşturulan çeviri sistemleri, her gün milyarlarca çeviri sağlayan bulut tabanlı, [güvenli](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), yüksek performanslı ve yüksek düzeyde ÖLÇEKLENEBILIR Microsoft Translator [metin API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla sunulmaktadır.
+[Özel çevirmenle](https://portal.customtranslator.azure.ai) oluşturulan çeviri sistemleri, her gün milyarlarca çeviri sağlayan, bulut tabanlı, [güvenli](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), yüksek performanslı, yüksek düzeyde ölçeklenebilir Azure bilişsel [hizmet Çeviricisi v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)ile kullanılabilir.
 
-Özel çevirmen üç düzine dili destekler ve doğrudan NMT için kullanılabilen dillerle eşlenir. Tüm liste için bkz. [Microsoft Translator dilleri](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Özel çevirmen üç düzine dili destekler ve doğrudan NMT için kullanılabilen dillerle eşlenir. Tüm liste için bkz. [Translator dilleri](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="features"></a>Özellikler
 
 Özel çevirmen özel çeviri sistemi oluşturup daha sonra ona erişmek için farklı özellikler sağlar.
 
-|Özellik  |Açıklama  |
+|Özellik  |Description  |
 |---------|---------|
 |[Sinir makine çevirisi teknolojisinden yararlanın](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Özel çevirici tarafından sunulan sinir makine çevirisi (NMT) özelliğinden yararlanarak çevirinizi geliştirebilirsiniz.       |
 |[İş terminolojinizi bilen yapı sistemleri](what-are-parallel-documents.md)     |  Kendi işinizde ve sektöründe kullanılan terimlerin anlayan paralel belgeler kullanarak çeviri sistemlerini özelleştirin ve oluşturun.       |
@@ -38,7 +38,7 @@ ms.locfileid: "83996950"
 
 ## <a name="get-better-translations"></a>Daha iyi çeviriler alın
 
-Microsoft Translator, 2016 içinde [sinir makine çevirisi (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) yayımlamıştır. NMT, sektör standardı [Istatistiksel makine çevirisi (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) teknolojisi üzerinden çeviri kalitesindeki önemli avanslar sağladı. NMT, tüm Tümcelerin kapsamını çevirmeden önce daha iyi yakaladığından, daha yüksek kaliteli, daha fazla insan-sounve daha akıcı Çeviriler sağlar. Özel [çevirmenleriniz](https://portal.customtranslator.azure.ai) için NMT, daha iyi çeviri kalitesi elde eden özel modelleriniz için.
+Translator, 2016 içinde [sinir makine çevirisi (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) yayımladı. NMT, sektör standardı [Istatistiksel makine çevirisi (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) teknolojisi üzerinden çeviri kalitesindeki önemli avanslar sağladı. NMT, tüm Tümcelerin kapsamını çevirmeden önce daha iyi yakaladığından, daha yüksek kaliteli, daha fazla insan-sounve daha akıcı Çeviriler sağlar. Özel [çevirmenleriniz](https://portal.customtranslator.azure.ai) için NMT, daha iyi çeviri kalitesi elde eden özel modelleriniz için.
 
 Çeviri sistemi oluşturmak için, daha önce çevrilmiş belgeleri kullanabilirsiniz. Bu belgeler, standart bir çeviri sisteminden daha iyi etki alanına özgü terminoloji ve stil içerir. Kullanıcılar ALIGN, PDF, LCL, HTML, HTM, XLF, TMX, XLıFF, TXT, DOCX ve XLSX belgelerini karşıya yükleyebilir.
 
@@ -58,7 +58,7 @@ Güvenli [özel çevirmen](https://portal.customtranslator.azure.ai) portalını
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>Tüm uygulama ve hizmetlerinize dilediğiniz zaman güvenli bir şekilde çevirin
 
-Özel sistemler sorunsuz bir şekilde erişilebilir ve herhangi bir ürüne veya iş akışına ve herhangi bir cihaza, standart REST teknolojisi aracılığıyla Translator aracılığıyla herhangi bir cihaza tümleştirilir.
+Özel sistemler sorunsuz bir şekilde erişilebilir ve herhangi bir ürün ya da iş akışına ve herhangi bir cihaza, standart REST teknolojisi aracılığıyla Translator aracılığıyla tümleştirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

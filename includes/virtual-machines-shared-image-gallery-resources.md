@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,13 +9,13 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 433e909563602a2ef32b7986959b428c9afaf9f4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82789020"
 ---
-| Kaynak | Açıklama|
+| Kaynak | Description|
 |----------|------------|
 | **Görüntü kaynağı** | Bu, bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılabilecek bir kaynaktır. Görüntü kaynağı, başka bir görüntü galerisinde [Genelleştirilmiş veya özelleştirilmiş](../articles/virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images), yönetilen bir görüntü, anlık görüntü veya görüntü sürümü olan mevcut BIR Azure VM olabilir. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |

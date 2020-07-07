@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580919"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-hiper ölçek (Citus)
@@ -32,7 +32,7 @@ Hiper ölçek (Citus) sunucu grubu güvenlik duvarı, grubun düzenleyici düğ�
 
 Güvenlik Duvarı bağlantıları engellediğinde, uygulama hatalarına neden olabilir. Örneğin PostgreSQL JDBC sürücüsünü kullanarak, aşağıdaki gibi bir hata oluşturur:
 
-> Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: Ana bilgisayar\_"123.45.67.890", Kullanıcı "citus", veritabanı "citus", SSL için pg HBA. conf girişi yok
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: \_ ana bilgisayar "123.45.67.890", Kullanıcı "citus", veritabanı "citus", SSL girişi için pg HBA. conf girdisi yok
 
 Kuralların nasıl tanımlandığını öğrenmek için bkz. [güvenlik duvarı kuralları oluşturma ve yönetme](howto-hyperscale-manage-firewall-using-portal.md) .
 
@@ -44,7 +44,7 @@ PostgreSQL için Microsoft Azure veritabanına erişim-hiper ölçek (Citus) hiz
 * **Kullanıcı yetkilendirilmemiş veya yanlış bir parola kullanıldı:** Bir kullanıcının sunucuda izinleri yoksa veya kullanılan parola yanlışsa sunucu bağlantısı reddedilir. Bir güvenlik duvarı ayarı oluşturmak, istemcilere yalnızca sunucunuza bağlanmayı denemek için bir fırsat sağlar; her istemci yine de gerekli güvenlik kimlik bilgilerini sağlamalıdır.
 
 Örneğin, bir JDBC istemcisi kullanarak aşağıdaki hata görünebilir.
-> Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: "YourUserName" kullanıcısı için parola kimlik doğrulaması başarısız oldu
+> java.util.concurrent.ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: Kullanıcı için parola kimlik doğrulaması başarısız oldu "YourUserName"
 
 * **Dinamik IP adresi:** Dinamik IP adresiyle kurulmuş bir İnternet bağlantınız varsa ve güvenlik duvarını aşmakta sorun yaşıyorsanız aşağıdaki çözümlerden birini deneyebilirsiniz:
 

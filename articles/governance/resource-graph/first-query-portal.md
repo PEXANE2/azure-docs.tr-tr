@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: ilk portal sorgunuz'
 description: Bu hızlı başlangıçta, Azure Kaynak Grafiği gezginini kullanarak Azure portal ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 1e506ee1b1c610381f300323f80c38eb6bf67caa
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148047"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958816"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
@@ -16,7 +16,7 @@ Azure Kaynak Graph 'ın gücü Azure Kaynak grafik Gezgini aracılığıyla Azur
 
 Bu hızlı başlangıçta, ilk kaynak Graph sorgunuzu çalıştırmak ve sonuçları bir panoya sabitlediğiniz Azure portal ve kaynak Graph Explorer 'ı kullandınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -90,11 +90,11 @@ Kaynak Grafiği sorgularına örnek sağlamak ve kaynak Graph Explorer 'ın Azur
 
 - [Kaynak Grafiği Gezgini-örnek Pano #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [![Örnek Pano için örnek resim #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  :::image type="content" source="./media/arge-sample1-small.png" alt-text="Örnek Pano için örnek resim #1" lightbox="./media/arge-sample1-large.png":::
 
 - [Kaynak Grafiği Gezgini-örnek Pano #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [![Örnek Pano için örnek resim #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Örnek Pano için örnek resim #2" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > Yukarıdaki örnek Pano ekran görüntülerinin sayısı ve grafikleri, Azure ortamınıza bağlı olarak farklılık gösterir.

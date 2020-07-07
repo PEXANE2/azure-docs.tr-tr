@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: d160b0ead1ceb8c41bede20cb389a360d24258f9
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82561377"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway sınırları
@@ -27,7 +27,7 @@ Microsoft Azure Data Box Gateway çözümünüzü dağıtırken ve işletirken b
 
 Aşağıdaki tabloda Data Box Gateway cihazının sınırları açıklanmaktadır.
 
-| Açıklama | Değer |
+| Description | Değer |
 |---|---|
 |Hayır. cihaz başına dosya |100.000.000 <br> Eklenmekte olan her 25.000.000 dosya için (en fazla 100.000.000 ' de maksimum sınıra sahip), 2 TB disk alanı, 8 GB RAM ve 4 çekirdek CPU eklemeniz gerekir. |
 |Hayır. cihaz başına paylaşım sayısı |24 |

@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790618"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) ile iç yük dengeleyici kullanma
@@ -23,13 +23,13 @@ Azure Kubernetes Service (AKS) uygulamasındaki uygulamalarınıza erişimi kıs
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 Mevcut bir alt ağ veya kaynak grubu kullanıyorsanız AKS kümesi hizmet sorumlusu ağ kaynaklarını yönetmek için izne ihtiyaç duyuyor. Genel olarak, temsilcili kaynaklar üzerindeki hizmet sorumlusu rolüne *ağ katılımcısı* rolünü atayın. Bir hizmet sorumlusu yerine, izinler için sistem tarafından atanmış yönetilen kimliği kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md). İzinler hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına AKS erişimi verme][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>İç yük dengeleyici oluşturma
 
-Bir iç yük dengeleyici oluşturmak için aşağıdaki örnekte gösterildiği gibi, `internal-lb.yaml` *LoadBalancer* hizmet türü ve *Azure-Yük Dengeleyici-iç* ek açıklaması ile adlı bir hizmet bildirimi oluşturun:
+Bir iç yük dengeleyici oluşturmak için `internal-lb.yaml` Aşağıdaki örnekte gösterildiği gibi, *LoadBalancer* hizmet türü ve *Azure-Yük Dengeleyici-iç* ek açıklaması ile adlı bir hizmet bildirimi oluşturun:
 
 ```yaml
 apiVersion: v1
@@ -54,7 +54,7 @@ kubectl apply -f internal-lb.yaml
 
 Düğüm kaynak grubunda bir Azure yük dengeleyici oluşturulur ve AKS kümesiyle aynı sanal ağa bağlanır.
 
-Hizmet ayrıntılarını görüntülediğinizde, iç yük dengeleyicinin IP adresi *dış IP* sütununda gösterilir. Bu bağlamda, *dış* , yük dengeleyicinin dış arabirimiyle ilişkili olduğundan, genel, HARICI bir IP adresi alır. Aşağıdaki örnekte gösterildiği gibi, IP adresinin * \<bekliyor\> * durumundan gerçek bir iç IP adresine değiştirilmesi bir veya iki dakika sürebilir:
+Hizmet ayrıntılarını görüntülediğinizde, iç yük dengeleyicinin IP adresi *dış IP* sütununda gösterilir. Bu bağlamda, *dış* , yük dengeleyicinin dış arabirimiyle ilişkili olduğundan, genel, HARICI bir IP adresi alır. *\<pending\>* Aşağıdaki örnekte gösterildiği gıbı IP adresinin gerçek bir Iç IP adresine değiştirilmesi bir veya iki dakika sürebilir:
 
 ```
 $ kubectl get service internal-app
@@ -106,7 +106,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> AKS kümeniz için hizmet sorumlusu ' nı, Azure sanal ağ kaynaklarınızın dağıtıldığı kaynak grubuna *ağ katılımcısı* rolü olarak vermeniz gerekebilir. Hizmet sorumlusunu, gibi [az aks Show][az-aks-show]ile görüntüleyin `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Rol ataması oluşturmak için [az role atama Create][az-role-assignment-create] komutunu kullanın.
+> AKS kümeniz için hizmet sorumlusu ' nı, Azure sanal ağ kaynaklarınızın dağıtıldığı kaynak grubuna *ağ katılımcısı* rolü olarak vermeniz gerekebilir. Hizmet sorumlusunu, gibi [az aks Show][az-aks-show]ile görüntüleyin `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"` . Rol ataması oluşturmak için [az role atama Create][az-role-assignment-create] komutunu kullanın.
 
 ## <a name="specify-a-different-subnet"></a>Farklı bir alt ağ belirtin
 
@@ -132,7 +132,7 @@ spec:
 
 İç yük dengeleyiciyi kullanan tüm hizmetler silindiğinde, yük dengeleyici de silinir.
 
-Ayrıca, aynı zamanda temel alınan Azure Yük dengeleyiciyi de silen gibi herhangi bir Kubernetes kaynağı `kubectl delete service internal-app`ile bir hizmeti doğrudan silebilirsiniz.
+Ayrıca, aynı `kubectl delete service internal-app` zamanda temel alınan Azure Yük dengeleyiciyi de silen gibi herhangi bir Kubernetes kaynağı ile bir hizmeti doğrudan silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

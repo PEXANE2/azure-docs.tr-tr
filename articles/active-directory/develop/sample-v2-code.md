@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 788f7eab3e547347beb4d95b523ad3c77e954687
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85477371"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
@@ -39,7 +39,7 @@ GitHub 'daki örneklere da katkıda bulunabilirsiniz. Nasıl yapılacağını ö
 
 Bu örnekler, Microsoft Identity platform ile güvenliği sağlanmış tek sayfalı bir uygulamanın nasıl yazılacağını gösterir. Bu örnekler MSAL.js sahip olan türleri kullanır.
 
-| Platform | Açıklama | Bağlantı |
+| Platform | Description | Bağlantı |
 | -------- | --------------------- | -------- |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | SPA çağrıları Microsoft Graph |[JavaScript-graphapı-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Bu resimde JavaScript logosu ](media/sample-v2-code/logo_js.png) [javascript (msal.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | SPA, kimlik doğrulama kod akışı kullanan Microsoft Graph çağırır/PKI CE |[JavaScript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |

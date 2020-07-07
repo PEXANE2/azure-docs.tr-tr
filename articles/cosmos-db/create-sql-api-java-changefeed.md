@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 8028b1f301a3c7fb4ca39c8920824091a4065118
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: ccbafcfcbf13809b84883352c5a31835c6988d51
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261962"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962705"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>SQL API Azure Cosmos DB kullanan bir Java uygulaması oluşturma ve akış işlemcisini değiştirme
 
@@ -23,7 +23,7 @@ Bu nasıl yapılır Kılavuzu, bir Azure Cosmos DB kapsayıcısına belge ekleme
 > Bu öğretici yalnızca Azure Cosmos DB Java SDK v4 içindir. Daha fazla bilgi için lütfen Azure Cosmos DB Java SDK v4 [sürüm notları](sql-api-sdk-java-v4.md), [maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4 [Performans ipuçları](performance-tips-java-sdk-v4-sql.md)ve Azure Cosmos DB Java SDK v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md) görüntüleyin. Şu anda v4 'den daha eski bir sürüm kullanıyorsanız, v4 'ye yükseltme konusunda yardım için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ' na bakın.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Cosmos DB hesabınız için URI ve anahtar
 
@@ -31,7 +31,7 @@ Bu nasıl yapılır Kılavuzu, bir Azure Cosmos DB kapsayıcısına belge ekleme
 
 * Java 8
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
 Azure Cosmos DB değişiklik akışı, belge eklemeye yanıt olarak eylemleri tetiklemeye yönelik olay odaklı bir arabirim sağlar. Bunun birçok kullanımı vardır. Örneğin, hem okuma hem de yazma bilgisi olan uygulamalarda, değişiklik akışı kullanımı, belge alındığı sırada bir kapsayıcının gerçek zamanlı **gerçekleştirilmiş bir görünümünü** oluşturmaktır. Gerçekleştirilmiş görünüm kapsayıcısı aynı verileri tutar, ancak etkili okuma için bölümlenmiş, uygulamayı hem okuma hem de yazma verimli hale getirir.
 
@@ -57,7 +57,7 @@ mvn clean package
 
 1. İlk denetim olarak bir Azure Cosmos DB hesabınızın olması gerekir. Tarayıcınızda **Azure Portal** açın, Azure Cosmos DB hesabınıza gidin ve sol bölmedeki **Veri Gezgini**' a gidin.
 
-    ![Azure Cosmos DB hesabı](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
+   :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_empty.JPG" alt-text="Azure Cosmos DB hesabı":::
 
 1. Uygulamayı terminalde aşağıdaki komutu kullanarak çalıştırın:
 
@@ -77,9 +77,7 @@ mvn clean package
     * **Inventorycontainer-pktype** -stok kaydının gerçekleştirilmiş bir görünümü, öğe üzerindeki sorgular için iyileştirilmiştir```type```
     * **Inventorycontainer-kiralamalar** -her zaman değişiklik akışı için bir kiralama kapsayıcısı gereklidir; kiralamalar değişiklik akışını okurken uygulamanın ilerlemesini izler.
 
-
-    ![Boş kapsayıcılar](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
-
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Boş kapsayıcılar":::
 
 1. Terminalde, şimdi bir istem görmeniz gerekir
 
@@ -97,7 +95,7 @@ mvn clean package
 
     Tarayıcınızda Azure portal Veri Gezgini geri dönün. **Inventorycontainer-kiralamalar** kapsayıcısının altında, içeriğini görmek için **öğeler** ' e tıklayın. Değişiklik akışı Işlemcisinin kira kapsayıcısını doldurduğuna, yani işlemcinin ```SampleHost_1``` bir çalışan tarafından **ınventorycontainer**'in bazı bölümlerinde bir kira atamasıyla karşılaşırsınız.
 
-    ![Kiralamalar](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Kiralamalar":::
 
 1. Terminalde ENTER tuşuna basın. Bu işlem, 10 belgeyi **ınventorycontainer**içine eklenecek şekilde tetikler. Her belge ekleme, değişiklik akışında JSON olarak görünür; Aşağıdaki geri çağırma kodu, JSON belgelerini gerçekleştirilmiş bir görünüme yansıtarak bu olayları işler:
 
@@ -107,15 +105,15 @@ mvn clean package
 
 1. Kodun 5-10sn çalışmasına izin verin. Ardından Azure portal Veri Gezgini geri dönüp **ınventorycontainer > öğelerine**gidin. Öğelerin envanter kapsayıcısına eklenmekte olduğunu görmeniz gerekir; bölüm anahtarına () göz önünde ```id``` .
 
-    ![Akış kapsayıcısı](media/create-sql-api-java-changefeed/cosmos_items.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Akış kapsayıcısı":::
 
 1. Şimdi Veri Gezgini ' de, **ınventorycontainer-pktype > öğelerine**gidin. Bu, bu kapsayıcıdaki öğeler, değişiklik akışı tarafından program aracılığıyla eklendiklerinden, bu kapsayıcıdaki öğelerin, **ınventorycontainer** yansıtmasının gerçekleştirilmiş görünümüdür. Bölüm anahtarına () göz önünde ```type``` . Bu gerçekleştirilmiş görünüm ```type``` , üzerinde bölümlenmiş olduğundan **ınventorycontainer** üzerinde verimsiz olacak sorgular üzerinde filtreleme için en iyi duruma getirilmiştir ```id``` .
 
-    ![Gerçekleştirilmiş görünüm](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Gerçekleştirilmiş görünüm":::
 
 1. Yalnızca tek bir çağrı kullanarak hem **ınventorycontainer** hem de **ınventorycontainer-pktype** öğesinden bir belgeyi silelim ```upsertItem()``` . İlk olarak, Azure portal Veri Gezgini göz atın. Belgeyi, ```/type == "plums"``` aşağıda kırmızı renkte olduğu gibi sileceğiz
 
-    ![Gerçekleştirilmiş görünüm](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Gerçekleştirilmiş görünüm":::
 
     Örnek kodda işlevi çağırmak için yeniden ENTER tuşuna basın ```deleteDocument()``` . Aşağıda gösterilen bu işlev, belge ```/ttl == 5``` yaşam süresi (TTL) ile 5 sn arasında olan belgenin yeni bir sürümünü kaplamıştır. 
     

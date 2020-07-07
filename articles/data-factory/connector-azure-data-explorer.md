@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
 ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82560171"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Veri Gezgini veri kopyalama
@@ -77,8 +77,8 @@ Azure Veri Gezgini bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Type** özelliği **AzureDataExplorer**olarak ayarlanmalıdır. | Yes |
-| endpoint | Biçiminde olacak şekilde `https://<clusterName>.<regionName>.kusto.windows.net`Azure Veri Gezgini kümesinin uç nokta URL 'si. | Yes |
+| tür | **Type** özelliği **AzureDataExplorer**olarak ayarlanmalıdır. | Yes |
+| endpoint | Biçiminde olacak şekilde Azure Veri Gezgini kümesinin uç nokta URL 'SI `https://<clusterName>.<regionName>.kusto.windows.net` . | Yes |
 | database | Veritabanının adı. | Yes |
 | Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority ID" olarak bilinir. Azure portal, fare işaretçisini, sağ üst köşesine getirerek alın. | Yes |
 | Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. Bu, [kusto bağlantı dizesinde](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"AAD uygulama istemci kimliği" olarak bilinir. | Yes |
@@ -115,7 +115,7 @@ Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Type** özelliği **AzureDataExplorerTable**olarak ayarlanmalıdır. | Yes |
+| tür | **Type** özelliği **AzureDataExplorerTable**olarak ayarlanmalıdır. | Yes |
 | tablo | Bağlı hizmetin başvurduğu tablonun adı. | Havuz için Evet; Kaynak için Hayır |
 
 **Veri kümesi özellikleri örneği:**
@@ -147,15 +147,15 @@ Azure Veri Gezgini 'den veri kopyalamak için, kopyalama etkinliği kaynağında
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının **Type** özelliği: **AzureDataExplorerSource** olarak ayarlanmalıdır | Yes |
+| tür | Kopyalama etkinliği kaynağının **Type** özelliği: **AzureDataExplorerSource** olarak ayarlanmalıdır | Yes |
 | sorgu | Bir [KQL biçiminde](/azure/kusto/query/)verilen salt okunurdur bir istek. Özel KQL sorgusunu başvuru olarak kullanın. | Yes |
 | queryTimeout | Sorgu isteğinin zaman aşımına uğramadan önce beklenecek bekleme süresi. Varsayılan değer 10 dakikadır (00:10:00); izin verilen en büyük değer 1 saattir (01:00:00). | No |
 | Kesilmesi | Döndürülen sonuç kümesinin kesilme edilip edilmeyeceğini belirtir. Varsayılan olarak, sonuç 500.000 kayıt veya 64 megabayt (MB) sonra kesilir. Etkinliğin doğru davranış sağlamak için kesme kesinlikle önerilir. |No |
 
 >[!NOTE]
->Varsayılan olarak, Azure Veri Gezgini kaynağı 500.000 kayıt veya 64 MB boyutunda bir boyut sınırına sahiptir. Tüm kayıtları kesme olmadan almak için sorgunuzun başlangıcında belirtebilirsiniz `set notruncation;` . Daha fazla bilgi için bkz. [sorgu sınırları](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
+>Varsayılan olarak, Azure Veri Gezgini kaynağı 500.000 kayıt veya 64 MB boyutunda bir boyut sınırına sahiptir. Tüm kayıtları kesme olmadan almak için `set notruncation;` sorgunuzun başlangıcında belirtebilirsiniz. Daha fazla bilgi için bkz. [sorgu sınırları](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[
@@ -194,11 +194,11 @@ Verileri Azure Veri Gezgini kopyalamak için kopyalama etkinliği havuzundan tü
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği havuzunun **Type** özelliği: **AzureDataExplorerSink**olarak ayarlanmalıdır. | Yes |
+| tür | Kopyalama etkinliği havuzunun **Type** özelliği: **AzureDataExplorerSink**olarak ayarlanmalıdır. | Yes |
 | ınestionmappingname | Kusto tablosundaki önceden oluşturulmuş [eşlemenin](/azure/kusto/management/mappings#csv-mapping) adı. Sütunları kaynaktan Azure Veri Gezgini eşlemek için (CSV/JSON/avro biçimleri dahil olmak üzere [tüm desteklenen kaynak depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats)için geçerlidir), kopyalama etkinliği [sütun eşlemesini](copy-activity-schema-and-type-mapping.md) (örtük olarak ada veya açıkça yapılandırılmış olarak) ve/veya Azure Veri Gezgini eşlemelerini kullanabilirsiniz. | No |
 | additionalProperties | Azure Veri Gezgini havuzu tarafından henüz ayarlanmayan alma özelliklerinden herhangi birini belirtmek için kullanılabilecek bir özellik paketi. Özel olarak, Alım etiketlerini belirtmek yararlı olabilir. Azure verilerinden daha fazla bilgi edinin [verileri araştırma belgesi](https://docs.microsoft.com/azure/data-explorer/ingestion-properties). | No |
 
-**Örneğinde**
+**Örnek:**
 
 ```json
 "activities":[

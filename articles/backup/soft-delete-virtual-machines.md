@@ -4,10 +4,10 @@ description: Sanal makinelerin geçici silme işlemlerini yedeklemelerin daha g�
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: ba00b235ea70bcc2dabbd5a91a3f7003f9bbed49
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82765779"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Sanal makineler için geçici silme
@@ -61,7 +61,7 @@ Geçici silme Şu anda Orta Batı ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fr
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>Azure PowerShell kullanarak VM 'Ler için geçici silme
 
 > [!IMPORTANT]
-> Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. En ```Install-Module -Name Az.RecoveryServices -Force``` son sürümü almak için kullanın.
+> Azure PS kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü min 2.2.0. ```Install-Module -Name Az.RecoveryServices -Force```En son sürümü almak için kullanın.
 
 Azure portal için yukarıda özetlenen şekilde, adımların sırası Azure PowerShell kullanılırken de aynıdır.
 

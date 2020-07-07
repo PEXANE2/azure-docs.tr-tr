@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733422"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Web Işleri olarak Dayanıklı İşlevler çalıştırma
@@ -17,11 +17,11 @@ Dayanıklı İşlevler, varsayılan olarak, özellikleri barındırmak için Azu
 
 [Azure işlevleri](../functions-overview.md) ve [dayanıklı işlevler](durable-functions-overview.md) uzantısı, [Web İşleri SDK 'sı](../../app-service/webjobs-sdk-how-to.md)üzerine kurulmuştur. WebJobs SDK 'daki iş Konağı, Azure Işlevlerinde çalışma zamanı ' dır. Davranışı Azure Işlevlerinde mümkün olmadığı yollarla denetmeniz gerekiyorsa, WebJobs SDK 'sını kullanarak Dayanıklı İşlevler geliştirip çalıştırabilirsiniz.
 
-Web Işleri SDK 'sının 3. x sürümünde, ana bilgisayar uygulamasının bir uygulamasıdır `IHost`ve sürüm 2. x içinde `JobHost` nesnesini kullanırsınız.
+Web Işleri SDK 'sının 3. x sürümünde, ana bilgisayar uygulamasının bir uygulamasıdır `IHost` ve sürüm 2. x içinde `JobHost` nesnesini kullanırsınız.
 
-Zincirleme Dayanıklı İşlevler örneği bir WebJobs SDK 2. x sürümünde bulunabilir: [dayanıklı işlevler deposunu](https://github.com/azure/azure-functions-durable-extension/)indirip kopyalayıp klonlayın ve *v1* dalını kullanıma alın ve *Samples\\\\webjobssdk zincirleme* klasörüne gidin.
+Zincirleme Dayanıklı İşlevler örneği bir WebJobs SDK 2. x sürümünde bulunabilir: [dayanıklı işlevler deposunu](https://github.com/azure/azure-functions-durable-extension/)indirip kopyalayıp klonlayın ve *v1* dalını kullanıma alın ve *Samples \\ webjobssdk \\ zincirleme* klasörüne gidin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede WebJobs SDK 'nın temel bilgileri, Azure Işlevleri için C# sınıf kitaplığı geliştirme ve Dayanıklı İşlevler hakkında bilgi sahibi olduğunuz varsayılmaktadır. Bu konulara giriş yapmanız gerekiyorsa, aşağıdaki kaynaklara bakın:
 
@@ -33,11 +33,11 @@ Bu makaledeki adımları gerçekleştirmek için:
 
 * **Azure geliştirme** iş yüküyle [Visual Studio 2019 ' ü yükler](https://docs.microsoft.com/visualstudio/install/) .
 
-  Zaten Visual Studio 'ya sahipseniz, ancak bu iş yüküne sahip değilseniz **Araçlar** > **Al araçlar ve Özellikler**' i seçerek iş yükünü ekleyin.
+  Zaten Visual Studio 'ya sahipseniz, ancak bu iş yüküne sahip değilseniz **Araçlar**  >  **Al araçlar ve Özellikler**' i seçerek iş yükünü ekleyin.
 
   (Bunun yerine [Visual Studio Code](https://code.visualstudio.com/) kullanabilirsiniz, ancak bazı yönergeler Visual Studio 'ya özeldir.)
 
-* [Azure Storage öykünücüsü](../../storage/common/storage-use-emulator.md) sürüm 5,2 veya üstünü yükleyip çalıştırın. Alternatif olarak, *app. config* dosyasını bir Azure depolama bağlantı dizesiyle güncelleştirin.
+* [Azure Storage öykünücüsü](../../storage/common/storage-use-emulator.md) sürüm 5,2 veya üstünü yükleyip çalıştırın. Diğer bir seçenek de *App.config* dosyayı Azure depolama bağlantı dizesiyle güncelleştirkullanmaktır.
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK sürümleri
 
@@ -47,9 +47,9 @@ Bu makalede bir WebJobs SDK 2. x projesi geliştirme (Azure Işlevleri sürüm 1
 
 Dayanıklı İşlevler Web Işleri olarak çalıştırmak için, önce bir konsol uygulaması oluşturmanız gerekir. Bir WebJobs SDK projesi, uygun NuGet paketlerinin yüklü olduğu bir konsol uygulaması projem.
 
-Visual Studio **Yeni proje** iletişim kutusunda **Windows Klasik Masaüstü** > **konsol uygulaması (.NET Framework)** seçeneğini belirleyin. Proje dosyasında, `TargetFrameworkVersion` olmalıdır `v4.6.1`.
+Visual Studio **Yeni proje** iletişim kutusunda **Windows Klasik Masaüstü**  >  **konsol uygulaması (.NET Framework)** seçeneğini belirleyin. Proje dosyasında, `TargetFrameworkVersion` olmalıdır `v4.6.1` .
 
-Visual Studio 'da Ayrıca **Cloud** > **Azure WebJob (.NET Framework)** öğesini seçerek kullanabileceğiniz bir WebJob proje şablonu vardır. Bu şablon, bazıları ihtiyaç duymayan birçok paketi de yüklüyor.
+Visual Studio 'da Ayrıca **Cloud**  >  **Azure WebJob (.NET Framework)** öğesini seçerek kullanabileceğiniz bir WebJob proje şablonu vardır. Bu şablon, bazıları ihtiyaç duymayan birçok paketi de yüklüyor.
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
@@ -61,7 +61,7 @@ Install-Package Microsoft.Extensions.Logging -version 2.0.1
 Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
 ```
 
-Ayrıca günlüğe kaydetme sağlayıcılarının olması gerekir. Aşağıdaki komutlar Azure Application Insights sağlayıcısını ve ' i yükler `ConfigurationManager`. , `ConfigurationManager` Uygulama ayarlarından Application Insights izleme anahtarını almanızı sağlar.
+Ayrıca günlüğe kaydetme sağlayıcılarının olması gerekir. Aşağıdaki komutlar Azure Application Insights sağlayıcısını ve ' i yükler `ConfigurationManager` . , `ConfigurationManager` Uygulama ayarlarından Application Insights izleme anahtarını almanızı sağlar.
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
@@ -78,7 +78,7 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 
 Konsol uygulamasını oluşturup ihtiyacınız olan NuGet paketlerini yükle, Dayanıklı İşlevler kullanmaya hazırsınız. Bunu JobHost Code kullanarak yapabilirsiniz.
 
-Dayanıklı İşlevler uzantısını kullanmak için, yönteinizdeki `UseDurableTask` `JobHostConfiguration` `Main` nesneyi çağırın:
+Dayanıklı İşlevler uzantısını kullanmak için, `UseDurableTask` `JobHostConfiguration` `Main` yönteinizdeki nesneyi çağırın:
 
 ```cs
 var config = new JobHostConfiguration();
@@ -88,9 +88,9 @@ config.UseDurableTask(new DurableTaskExtension
 };
 ```
 
-`DurableTaskExtension` Nesnesinde ayarlayabileceğiniz özelliklerin listesi için bkz. [Host. JSON](../functions-host-json.md#durabletask).
+Nesnesinde ayarlayabileceğiniz özelliklerin listesi için `DurableTaskExtension` bkz. [host.json](../functions-host-json.md#durabletask).
 
-`Main` Yöntemi, günlük sağlayıcılarını ayarlamak için de yer vardır. Aşağıdaki örnek, konsolu ve Application Insights sağlayıcılarını yapılandırır.
+`Main`Yöntemi, günlük sağlayıcılarını ayarlamak için de yer vardır. Aşağıdaki örnek, konsolu ve Application Insights sağlayıcılarını yapılandırır.
 
 ```cs
 static void Main(string[] args)
@@ -131,7 +131,7 @@ WebJobs SDK aşağıdaki Azure Işlevleri özelliklerini desteklemez:
 
 ### <a name="functionname-attribute"></a>Fonksiyonadı özniteliği
 
-Bir WebJobs SDK projesinde, işlevin Yöntem adı işlev adıdır. `FunctionName` Özniteliği yalnızca Azure işlevlerinde kullanılır.
+Bir WebJobs SDK projesinde, işlevin Yöntem adı işlev adıdır. `FunctionName`Özniteliği yalnızca Azure işlevlerinde kullanılır.
 
 ### <a name="http-trigger"></a>HTTP tetikleyicisi
 
@@ -157,7 +157,7 @@ Bir WebJobs SDK projesinde, HTTP istekleri göndermek yerine Orchestration istem
 * `RaiseEventAsync`
 * `TerminateAsync`
 
-Örnek projedeki Orchestration Client işlevi Orchestrator işlevini başlatır ve ardından 2 saniyede bir çağıran `GetStatusAsync` bir döngüye geçer:
+Örnek projedeki Orchestration Client işlevi Orchestrator işlevini başlatır ve ardından 2 saniyede bir çağıran bir döngüye geçer `GetStatusAsync` :
 
 ```cs
 string instanceId = await client.StartNewAsync(nameof(HelloSequence), input: null);
@@ -194,7 +194,7 @@ Bu bölüm, [örnek projenin](https://github.com/Azure/azure-functions-durable-e
 
     a. Bir Application Insights kaynağı oluşturun ve bunun için **genel** uygulama türünü kullanın.
 
-    b. İzleme anahtarını *app. config* dosyasına kaydedin.
+    b. İzleme anahtarını *App.config* dosyasına kaydedin.
 
 1. Projeyi çalıştırın.
 
@@ -202,11 +202,11 @@ Bu bölüm, [örnek projenin](https://github.com/Azure/azure-functions-durable-e
 
 1. Bir Web uygulaması ve depolama hesabı oluşturun.
 
-1. Web uygulamasında, depolama bağlantı dizesini adlı `AzureWebJobsStorage`bir uygulama ayarına kaydedin.
+1. Web uygulamasında, depolama bağlantı dizesini adlı bir uygulama ayarına kaydedin `AzureWebJobsStorage` .
 
 1. Bir Application Insights kaynağı oluşturun ve bunun için **genel** uygulama türünü kullanın.
 
-1. İzleme anahtarını adlı `APPINSIGHTS_INSTRUMENTATIONKEY`bir uygulama ayarına kaydedin.
+1. İzleme anahtarını adlı bir uygulama ayarına kaydedin `APPINSIGHTS_INSTRUMENTATIONKEY` .
 
 1. WebJob olarak dağıtın.
 
@@ -216,7 +216,7 @@ Bu makalede bir WebJobs SDK 2. x projesinin nasıl geliştirilmesi açıklanmakt
 
 Sunulan ana değişiklik, .NET Core 'un .NET Framework yerine kullanılması. Bir WebJobs SDK 3. x projesi oluşturmak için, bu özel durumlarla birlikte yönergeler aynıdır:
 
-1. .NET Core konsol uygulaması oluşturun. Visual Studio **Yeni proje** iletişim kutusunda **.NET Core** > **konsol uygulaması (.NET Core)** seçeneğini belirleyin. Proje dosyası olduğunu `TargetFramework` belirtir `netcoreapp2.x`.
+1. .NET Core konsol uygulaması oluşturun. Visual Studio **Yeni proje** iletişim kutusunda **.NET Core**  >  **konsol uygulaması (.NET Core)** seçeneğini belirleyin. Proje dosyası olduğunu belirtir `TargetFramework` `netcoreapp2.x` .
 
 1. Aşağıdaki paketlerin sürüm web Işleri SDK 3. x sürümünü seçin:
 
@@ -224,7 +224,7 @@ Sunulan ana değişiklik, .NET Core 'un .NET Framework yerine kullanılması. Bi
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. .NET Core yapılandırma çerçevesini kullanarak, bir *appSettings. JSON* dosyasındaki depolama bağlantı dizesini ve Application Insights izleme anahtarını ayarlayın. Bir örneği aşağıda verilmiştir:
+1. .NET Core yapılandırma çerçevesini kullanarak, dosya *üzerinde birappsettings.js* depolama bağlantı dizesi ve Application Insights izleme anahtarı ayarlayın. İşte bir örnek:
 
     ```json
         {
@@ -233,7 +233,7 @@ Sunulan ana değişiklik, .NET Core 'un .NET Framework yerine kullanılması. Bi
         }
     ```
 
-1. Bunu yapmak `Main` için yöntem kodunu değiştirin. Bir örneği aşağıda verilmiştir:
+1. `Main`Bunu yapmak için yöntem kodunu değiştirin. İşte bir örnek:
 
    ```cs
    static void Main(string[] args)

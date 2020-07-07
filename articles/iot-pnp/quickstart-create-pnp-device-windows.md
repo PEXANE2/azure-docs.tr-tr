@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3d0a054e587a8f067be33913b05d2962b970fb1a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b02455c153c6205b87a64a388d5588c3c431e0c9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321616"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963521"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Hızlı başlangıç: IoT Tak ve Kullan önizleme cihazı (Windows) oluşturmak için cihaz yetenek modeli kullanma
 
@@ -21,7 +21,7 @@ ms.locfileid: "85321616"
 
 Bir _cihaz yetenek modeli_ (DCM) IoT Tak ve kullan cihazının yeteneklerini açıklar. DCM, genellikle bir Ürün SKU 'SU ile ilişkilendirilir. DCM 'de tanımlanan yetenekler yeniden kullanılabilir arabirimler halinde düzenlenmiştir. Bir DCM 'den iskelet cihaz kodu oluşturabilirsiniz. Bu hızlı başlangıçta, DCM kullanarak IoT Tak ve Kullan cihazı oluşturmak için Windows 'ta VS Code nasıl kullanacağınız gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için yerel makinenize aşağıdaki yazılımı yüklemeniz gerekir:
 
@@ -78,7 +78,7 @@ Bu hızlı başlangıçta, Azure IoT C cihaz SDK 'sını geliştirme ortamınız
 1. Azure IoT C cihaz SDK 'Sı Vcpkg 'yi yükler:
 
     ```cmd
-    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use-prov-client]
     ```
 
 ## <a name="author-your-model"></a>Modelinizi yazma
@@ -87,7 +87,7 @@ Bu hızlı başlangıçta, var olan bir örnek cihaz yetenek modeli ve ilişkili
 
 1. `pnp_app`Yerel sürücünüzde bir klasör oluşturun. Bu klasörü cihaz modeli dosyaları ve cihaz kodu saplaması için kullanırsınız.
 
-1. [Cihaz yetenek modeli ve arabirim örnek dosyalarını](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/SampleDevice.model.json) ve [arabirim örneğini](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/EnvironmentalSensor.interface.json) indirin ve dosyaları `pnp_app` klasörüne kaydedin.
+1. [Cihaz yetenek modeli](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/SampleDevice.capabilitymodel.json) ve [arabirim örnek](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensor.interface.json) dosyalarını indirin ve `pnp_app` klasöre kaydedin.
 
     > [!TIP]
     > GitHub 'dan bir dosyayı indirmek için dosyasına gidin, **RAW**' a sağ tıklayın ve ardından **Bağlantıyı farklı kaydet**' i seçin.

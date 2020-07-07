@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562347"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark yönergeleri
@@ -62,9 +62,9 @@ Bu makalede, Azure HDInsight üzerinde Apache Spark kullanmaya yönelik çeşitl
 
 | Seçenek | Belgeler |
 |---|---|
-| Data Lake Storage Gen2 | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-| Data Lake Storage Gen1 | [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight-hadoop-use-data-lake-store.md) |
-| Azure Blob Depolama | [Azure HDInsight kümeleri ile Azure Depolama'yı kullanma](../hdinsight-hadoop-use-blob-storage.md) |
+| Data Lake Storage 2. Nesil | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+| Data Lake Storage 1. Nesil | [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight-hadoop-use-data-lake-store.md) |
+| Azure Blob Depolama Alanı | [Azure HDInsight kümeleri ile Azure Depolama'yı kullanma](../hdinsight-hadoop-use-blob-storage.md) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
