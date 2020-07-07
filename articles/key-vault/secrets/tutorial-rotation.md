@@ -1,6 +1,6 @@
 ---
-title: Tek kullanıcılı/tek parola döndürme öğreticisi
-description: Tek kullanıcılı/tek parola kimlik doğrulaması kullanan kaynaklar için gizli dizi döndürmeyi nasıl otomatikleştirebileceğinizi öğrenmek için bu öğreticiyi kullanın.
+title: Tek kimlik doğrulama kimlik bilgileri kümesine sahip kaynaklar için döndürme öğreticisi
+description: Bir kimlik doğrulama kimlik bilgileri kümesi kullanan kaynaklar için gizli dizi döndürmeyi nasıl otomatikleştirebileceğinizi öğrenmek için bu öğreticiyi kullanın.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bff8c040f4cfed612278dd83ebb354b31a3a1f3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183220"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801453"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>Tek kullanıcılı/tek parola kimlik doğrulaması kullanan kaynaklar için gizli dizi döndürmeyi otomatikleştirin
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Bir kimlik doğrulama kimlik bilgileri kümesi kullanan kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
 Azure hizmetlerinde kimlik doğrulaması yapmanın en iyi yolu [yönetilen bir kimlik](../general/managed-identity.md)kullanmaktır, ancak bir seçenek olmadığı durumlarda bazı senaryolar vardır. Bu durumlarda, erişim anahtarları veya gizli dizileri kullanılır. Erişim anahtarlarını veya gizli dizileri düzenli olarak döndürmelisiniz.
 
-Bu öğreticide, tek kullanıcılı/tek parola kimlik doğrulaması kullanan veritabanları ve hizmetler için düzenli aralıklarla yapılan gizli dizi döndürmenin nasıl otomatikleştirdiği gösterilmektedir. Özellikle, bu öğretici Azure Event Grid bildirimi tarafından tetiklenen bir işlev kullanılarak Azure Key Vault depolanan SQL Server parolalarını döndürür:
+Bu öğreticide, tek bir kimlik doğrulama kimlik bilgileri kümesi kullanan veritabanları ve hizmetler için düzenli aralıklarla yapılan gizli dizi döndürmenin nasıl otomatikleştirdiği gösterilmektedir. Özellikle, bu öğretici Azure Event Grid bildirimi tarafından tetiklenen bir işlev kullanılarak Azure Key Vault depolanan SQL Server parolalarını döndürür:
 
 ![Döndürme çözümünün diyagramı](../media/rotate1.png)
 
@@ -176,7 +176,7 @@ Tüm kodu [GitHub](https://github.com/jlichwa/azure-keyvault-basicrotation-tutor
 
 1. [GitHub](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-fn.zip)'dan işlev uygulaması ZIP dosyasını indirin.
 
-1. Simplerotationsample-FN. zip dosyasını Azure Cloud Shell karşıya yükleyin.
+1. simplerotationsample-fn.zip dosyasını Azure Cloud Shell karşıya yükleyin.
 
    ![Dosyayı karşıya yükle](../media/rotate4.png)
 1. ZIP dosyasını işlev uygulamasına dağıtmak için bu Azure CLı komutunu kullanın:
@@ -197,7 +197,7 @@ Tüm kodu [GitHub](https://github.com/jlichwa/azure-keyvault-basicrotation-tutor
 
    ![eventgrid_extension anahtarı](../media/rotate7.png)
 
-Olaylar için `SecretNearExpiry` bir `eventgrid_extension` Event Grid aboneliği oluşturmak için aşağıdaki komutta KOPYALANMıŞ anahtarı ve abonelik kimliğinizi kullanın:
+`eventgrid_extension`Olaylar için bir Event Grid aboneliği oluşturmak için aşağıdaki komutta kopyalanmış anahtarı ve ABONELIK kimliğinizi kullanın `SecretNearExpiry` :
 
 ```azurecli
 az eventgrid event-subscription create --name simplerotation-eventsubscription --source-resource-id "/subscriptions/<subscription-id>/resourceGroups/simplerotation/providers/Microsoft.KeyVault/vaults/simplerotation-kv" --endpoint "https://simplerotation-fn.azurewebsites.net/runtime/webhooks/EventGrid?functionName=SimpleRotation&code=<extension-key>" --endpoint-type WebHook --included-event-types "Microsoft.KeyVault.SecretNearExpiry"
@@ -222,7 +222,7 @@ Kısa süre sonu tarihiyle bir gizli dizi oluşturmak hemen bir olay yayımlayac
 ## <a name="test-and-verify"></a>Test ve doğrulama
 Birkaç dakika sonra `sqluser` gizli anahtar otomatik olarak döner.
 
-Gizli dizinin döndürülmeyeceğini doğrulamak için **Key Vault** > **gizli**dizi sayfasına gidin:
+Gizli dizinin döndürülmeyeceğini doğrulamak için **Key Vault**  >  **gizli**dizi sayfasına gidin:
 
 ![Gizli anahtarlara git](../media/rotate8.png)
 
@@ -250,7 +250,7 @@ Web uygulaması şu bileşenleri gerektirir:
 Web uygulamasını dağıtmak için şu adımları izleyin:
 
 1. [GitHub](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-app.zip)'dan işlev uygulaması ZIP dosyasını indirin.
-1. Simplerotationsample-App. zip dosyasını Azure Cloud Shell karşıya yükleyin.
+1. simplerotationsample-app.zip dosyasını Azure Cloud Shell karşıya yükleyin.
 1. ZIP dosyasını işlev uygulamasına dağıtmak için bu Azure CLı komutunu kullanın:
 
    ```azurecli

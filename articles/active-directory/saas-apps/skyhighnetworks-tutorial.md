@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: ufuk yüksek ağlarla tümleştirme Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve ufuk yüksek ağlarda çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: MVISION bulutu Azure AD SSO yapılandırmasıyla Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve MVISION bulutu Azure AD SSO yapılandırması arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,99 +11,78 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 92f3f101807171e71d40171dfa2bd3f006363ae0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a519ab6558db95ecf86b7595dbbb13a970460043
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090386"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85806899"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Öğretici: ufuk yüksek ağlarla tümleştirme Azure Active Directory
+# <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>Öğretici: MVISION bulutu Azure AD SSO yapılandırmasını Azure Active Directory ile tümleştirin
 
-Bu öğreticide, ufuk yüksek ağlarını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
-Azure AD ile ufuk yüksek ağlarını tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, MVISION bulutu Azure AD SSO yapılandırmasını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. MVISION bulutu Azure AD SSO yapılandırmasını Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, ufuk yüksek ağlara erişimi olan denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla yüksek ağlarda (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Azure AD 'de, MVISION bulutu Azure AD SSO yapılandırmasına erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Azure AD SSO yapılandırmasına yönelik olarak Azure AD SSO yapılandırması için otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini, ufuk yüksek ağlarla yapılandırmak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Ufuk yüksek ağlarda çoklu oturum açma etkin aboneliği
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü edinebilirsiniz.
+* MVISION bulutu Azure AD SSO yapılandırması çoklu oturum açma (SSO) etkin aboneliği.
+
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Ufuk yüksek ağlarda **SP ve ıDP** tarafından başlatılan SSO desteklenir
+* MVISION bulutu Azure AD SSO yapılandırması **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Dropbox 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve infili korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-skyhigh-networks-from-the-gallery"></a>Galeriden ufuk yüksek ağlar ekleme
+## <a name="adding-mvision-cloud-azure-ad-sso-configuration-from-the-gallery"></a>Galeriden MVISION bulutu Azure AD SSO yapılandırması ekleme
 
-Ufuk yüksek ağların Azure AD ile tümleştirilmesini yapılandırmak için, galerisindeki ufuk yüksek ağları yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+MVISION bulutu Azure AD SSO yapılandırmasının Azure AD 'ye tümleştirilmesini yapılandırmak için, galerisindeki MVISION bulutu Azure AD SSO yapılandırmasını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden ufuk yüksek ağlar eklemek için aşağıdaki adımları uygulayın:**
-
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
-
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
-
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
-
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
-
-4. Arama kutusuna, **ufuk yüksek ağlar**yazın, sonuç panelinden **ufuk yüksek ağlar** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
-
-     ![Sonuçlar listesinde ufuk yüksek ağlar](common/search-new-app.png)
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **MVision Cloud Azure AD SSO yapılandırması** yazın.
+1. Sonuçlar panelinden **MVision Cloud Azure AD SSO yapılandırması** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre ufuk yüksek ağlarla yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve en yüksek ağlardaki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+**Britta Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU MVision bulutu Azure AD SSO yapılandırmasıyla yapılandırın ve test edin. SSO 'nun çalışması için, MVISION bulutu Azure AD SSO yapılandırmasındaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD çoklu oturum açma 'yı ufuk yüksek ağlarla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+Azure AD SSO 'yu MVISION bulutu Azure AD SSO yapılandırmasıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Çoklu oturum açma ayarlarını, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Çoklu oturum açmayı yapılandırın](#configure-skyhigh-networks-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan ufuk yüksek ağlarda Britta Simon 'ın bir karşılığı olacak şekilde, **[ufuk yüksek ağlarda test kullanıcısı oluşturun](#create-skyhigh-networks-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+1. **[MVISION bulutu Azure AD SSO yapılandırma SSO](#configure-mvision-cloud-azure-ad-sso-configuration-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
+    1. MVision **[bulutu Azure AD SSO yapılandırma test kullanıcısı](#create-mvision-cloud-azure-ad-sso-configuration-test-user)** -kullanıcının Azure AD gösterimine bağlı MVision bulutu Azure AD SSO yapılandırmasında Britta Simon 'un bir karşılığı olacak şekilde.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-Azure AD çoklu oturum açma 'yı ufuk yüksek ağlarla yapılandırmak için aşağıdaki adımları uygulayın:
+1. [Azure Portal](https://portal.azure.com/), **dataköpek** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-1. [Azure Portal](https://portal.azure.com/), **ufuk yüksek ağlar** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
-
-    ![Ufuk yüksek ağlarda etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
@@ -111,30 +90,21 @@ Azure AD çoklu oturum açma 'yı ufuk yüksek ağlarla yapılandırmak için a�
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Ufuk yüksek ağlarda etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![MVISION bulutu Azure AD SSO yapılandırma etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için, [ufuk yüksek ağlar istemci destek ekibine](mailto:support@skyhighnetworks.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [MVision bulutu Azure AD SSO yapılandırma istemci destek ekibine](mailto:support@skyhighnetworks.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-7. **Ufuk yüksek ağlarını ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
+7. **MVISION bulutu 'Nı ayarla Azure AD SSO yapılandırma** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
-
-    b. Azure AD tanımlayıcısı
-
-    c. Oturum kapatma URL 'SI
-
-### <a name="configure-skyhigh-networks-single-sign-on"></a>Ufuk yüksek ağlarda çoklu oturum açmayı yapılandırma
-
-**Ufuk yüksek ağlarda** çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ve uygun kopyalanmış URL 'Leri, en [yüksek ağ desteği ekibine](mailto:support@skyhighnetworks.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -159,19 +129,19 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açmayı kullanarak, ufuk yüksek ağlara erişim izni vererek Britta Simon 'u etkinleştirin.
+Bu bölümde, MVISION bulut Azure AD SSO yapılandırmasına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **ufuk yüksek ağlar**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **MVISION bulutu Azure AD SSO yapılandırması**' nı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **ufuk yüksek ağlar**' ı seçin.
+2. Uygulamalar listesinde, **MVision bulutu Azure AD SSO yapılandırması**' nı seçin.
 
-    ![Uygulamalar listesindeki ufuk yüksek ağlar bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki MVISION bulutu Azure AD SSO yapılandırma bağlantısı](common/all-applications.png)
 
 3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
@@ -187,15 +157,21 @@ Bu bölümde, Azure çoklu oturum açmayı kullanarak, ufuk yüksek ağlara eri�
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-skyhigh-networks-test-user"></a>Ufuk yüksek ağlarda test kullanıcısı oluşturma
 
-Bu bölümde, ufuk yüksek ağlarda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Ufuk yüksek ağlarda kullanıcıları eklemek için ufuk yüksek [ağlar destek ekibi](mailto:support@skyhighnetworks.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+## <a name="configure-mvision-cloud-azure-ad-sso-configuration-sso"></a>MVISION bulutu Azure AD SSO yapılandırma SSO 'SU yapılandırma
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+**MVision bulutu Azure AD SSO yapılandırma** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' dan [MVISION bulutu Azure AD SSO yapılandırma desteği ekibine](mailto:support@skyhighnetworks.com)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+
+
+### <a name="create-mvision-cloud-azure-ad-sso-configuration-test-user"></a>MVISION bulutu Azure AD SSO yapılandırma test kullanıcısı oluşturma
+
+Bu bölümde, MVISION bulutu Azure AD SSO yapılandırması 'nda B. Simon adlı bir Kullanıcı oluşturacaksınız. MVision Cloud Azure AD SSO yapılandırma platformunda kullanıcıları eklemek için [MVision Cloud Azure AD SSO yapılandırma destek ekibi](mailto:support@skyhighnetworks.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+
+### <a name="test-sso"></a>Test SSO 'SU 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde ufuk yüksek ağlar kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ufuk yüksek ağlarda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde MVISION Cloud Azure AD SSO yapılandırma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız MVISION bulutu Azure AD SSO yapılandırmasında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
@@ -204,3 +180,7 @@ Erişim panelinde ufuk yüksek ağlar kutucuğuna tıkladığınızda, SSO 'yu a
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile Azure AD SSO yapılandırma bulutunu deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

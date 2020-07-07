@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 68d1e4e7fdf50ef3ec228b7e7ca4e620a47afb05
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d41c018e07f792fd0af4027229449d8352aa6c55
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849979"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağlama
 
@@ -38,14 +38,14 @@ Bu makalede, Visual Studio Code Azure aboneliğinizde zaten oturum açmış oldu
 
 ## <a name="download-the-function-app-settings"></a>İşlev uygulaması ayarlarını indirin
 
-[Önceki hızlı başlangıç makalesinde](functions-create-first-function-vs-code.md), Azure 'Da gerekli depolama hesabıyla birlikte bir işlev uygulaması oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu makalede, aynı hesaptaki bir depolama kuyruğuna iletiler yazarsınız. İşlevi yerel olarak çalıştırırken depolama hesabınıza bağlanmak için, uygulama ayarlarını yerel. Settings. JSON dosyasına indirmeniz gerekir. 
+[Önceki hızlı başlangıç makalesinde](functions-create-first-function-vs-code.md), Azure 'Da gerekli depolama hesabıyla birlikte bir işlev uygulaması oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu makalede, aynı hesaptaki bir depolama kuyruğuna iletiler yazarsınız. İşlevi yerel olarak çalıştırırken depolama hesabınıza bağlanmak için, uygulama ayarlarını dosyaya local.settings.jsindirmeniz gerekir. 
 
 1. F1 tuşuna basarak komut paletini açın, sonra komutunu arayıp çalıştırın `Azure Functions: Download Remote Settings....` . 
 
 1. Önceki makalede oluşturduğunuz işlev uygulamasını seçin. Var olan yerel ayarların üzerine yazmak için **Tümüne Evet** ' i seçin. 
 
     > [!IMPORTANT]  
-    > Gizli dizi içerdiğinden, Local. Settings. JSON dosyası hiçbir şekilde yayımlanmaz ve kaynak denetiminden çıkarılır.
+    > Gizli dizi içerdiğinden, dosyadaki local.settings.jshiçbir şekilde yayımlanmaz ve kaynak denetiminden çıkarılır.
 
 1. `AzureWebJobsStorage`Depolama hesabı bağlantı dizesi değeri için anahtar olan değeri kopyalayın. Çıkış bağlamasının beklendiği gibi çalıştığını doğrulamak için bu bağlantıyı kullanın.
 
@@ -57,7 +57,7 @@ Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştır
 
 Projeniz, önceden tanımlanmış bir uzantı paketleri kümesini otomatik olarak yüklediği [uzantı](functions-bindings-register.md#extension-bundles)paketlerini kullanmak üzere yapılandırılmıştır. 
 
-Uzantı demeti kullanımı, projenin kökündeki, aşağıdaki gibi görünen Host. json dosyasında etkinleştirilir:
+Uzantı demeti kullanımı, projenin kökündeki host.jsaşağıdaki gibi görünen dosya üzerinde etkinleştirilir:
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -68,7 +68,7 @@ Uzantı demeti kullanımı, projenin kökündeki, aşağıdaki gibi görünen Ho
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketleri olarak uygulanır. Depolama uzantısı paketini projenize eklemek için Terminal penceresinde aşağıdaki [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın.
 
 ```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 ```
 
 ::: zone-end
@@ -77,7 +77,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
-Işlevlerde, her bağlama türü `direction` , `type` `name` function. json dosyasında tanımlanması için bir, ve benzersiz gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
+Işlevlerde, her bağlama türü `direction` , `type` `name` dosyasında function.jstanımlanması için bir, ve benzersiz gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 

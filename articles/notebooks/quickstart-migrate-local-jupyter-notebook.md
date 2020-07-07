@@ -3,14 +3,16 @@ title: Yerel bir Jupyter Not defterini Azure Notebooks önizlemeye geçirme
 description: Bir Jupyter Not defterini hızlı bir şekilde yerel bilgisayarınızdan veya bir Web URL 'sinden Azure Notebooks önizlemeye aktarın ve işbirliği için paylaşabilirsiniz.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064334"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832126"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede yerel bir Jupyter Not defteri geçirme
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Bu hızlı başlangıçta, bir Jupyter Not defterini yerel bilgisayarınızdan veya Azure Notebooks başka bir erişilebilir dosya URL 'sinden geçirolursunuz. 
 
@@ -18,7 +20,7 @@ Kendi bilgisayarınızdaki jupi not defterlerine yalnızca sizin erişebiliyordu
 
 Yerel veya depo tabanlı not defterlerinizi Azure Notebooks geçirerek, yalnızca not defterlerinizi görüntüleyip çalıştırmak için bir tarayıcı gerektiren ortak çalışanlarla anında paylaşabilirsiniz. Azure Notebooks oturum açtıklarında de değişiklik yapabilirler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Yerel bilgisayarınızdaki veya başka bir erişilebilir dosya URL 'sindeki [Jupyter Not defteri](https://jupyter-notebook.readthedocs.io) . 
 
@@ -26,15 +28,13 @@ Yerel veya depo tabanlı not defterlerinizi Azure Notebooks geçirerek, yalnızc
 
 Bu hızlı başlangıçta, yerel bilgisayarınızdaki veya başka bir erişilebilir dosya URL 'sindeki bir not defteri geçişi gösterilmektedir. Not defterlerini bir GitHub deposundan geçirmek için bkz. [hızlı başlangıç: Not defterini kopyalama](quickstart-clone-jupyter-notebook.md).
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
-
 1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. (Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md)).
 
 1. Ortak profil sayfanızda sayfanın en üstündeki **Projelerim** ' nı seçin:
 
     ![Projelerim tarayıcı penceresinin üst kısmında bağlantı](media/quickstarts/my-projects-link.png)
 
-1. **Projelerim** sayfasında **Yeni proje** ' yi seçin (klavye kısayolu: n). Düğme yalnızca tarayıcı penceresi dar gibi **+** görünebilir:
+1. **Projelerim** sayfasında **Yeni proje** ' yi seçin (klavye kısayolu: n). Düğme yalnızca **+** tarayıcı penceresi dar gibi görünebilir:
 
     ![Projelerim sayfasında yeni proje komutu](media/quickstarts/new-project-command.png)
 
@@ -56,7 +56,7 @@ Bu hızlı başlangıçta, yerel bilgisayarınızdaki veya başka bir erişilebi
 
      ![URL açılan penceresinden karşıya yükle](media/quickstarts/upload-from-url-popup.png)
 
-1. İçeriğini ve işlemini doğrulamak için karşıya yüklenen yeni not defterinizi açın ve çalıştırın. İşiniz bittiğinde, Not defterini kapatmak için **Dosya** > **Durdur ve Kapat** ' ı seçin.
+1. İçeriğini ve işlemini doğrulamak için karşıya yüklenen yeni not defterinizi açın ve çalıştırın. İşiniz bittiğinde, **File**  >  Not defterini kapatmak için dosya**Durdur ve Kapat** ' ı seçin.
 
 1. Karşıya yüklenen Not defterinize bir bağlantı paylaşmak için, projedeki dosyaya sağ tıklayın ve **Bağlantıyı Kopyala** ' yı (klavye kısayolu: y) seçin ve ardından bu bağlantıyı uygun iletiye yapıştırın. Alternatif olarak, proje sayfasında **paylaşma** denetimini kullanarak projeyi bir bütün olarak paylaşabilirsiniz.
 

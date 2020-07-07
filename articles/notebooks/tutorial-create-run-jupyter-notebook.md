@@ -4,20 +4,20 @@ description: Veri bilimi 'nde doğrusal gerileme sürecini gösteren Azure Noteb
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e677fca9291bb5247071c3970b7db3f36a6bdceb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561746"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834140"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Öğretici: Python ile Jupyter Not defteri oluşturma ve çalıştırma
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Bu öğreticide, basit doğrusal regresyon gösteren bir bütün Jupyter Not defteri oluşturmak için Azure Notebooks kullanma işleminde size kılavuzluk eder. Bu öğreticide, farklı hücreler oluşturmayı, hücreleri çalıştırmayı ve Not defterini bir slayt gösterisi olarak sunmayı içeren Jupyter Not defteri Kullanıcı arabirimi hakkında bilgi edinin.
 
 Tamamlanan Not defteri [GitHub-Azure Notebooks örnekleri](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)üzerinde bulunabilir. Bununla birlikte, bu öğretici yeni bir proje ve boş bir not defteriyle başlar, böylece adım adım oluşturmaya deneyim sağlayabilirsiniz.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -51,26 +51,26 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-the-data-file"></a>Veri dosyası oluşturma
 
-Not defterinde oluşturduğunuz doğrusal regresyon modeli, projenizdeki *cricket_chirps. csv*adlı bir dosyadan veri çizer. Bu dosyayı [GitHub-Azure Notebooks örneklerinden](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)kopyalayarak veya doğrudan verileri girerek oluşturabilirsiniz. Aşağıdaki bölümlerde her iki yaklaşım da açıklanır.
+Not defterinde oluşturduğunuz doğrusal regresyon modeli, projenizdeki *cricket_chirps.csv*adlı bir dosyadan veri çizer. Bu dosyayı [GitHub-Azure Notebooks örneklerinden](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)kopyalayarak veya doğrudan verileri girerek oluşturabilirsiniz. Aşağıdaki bölümlerde her iki yaklaşım da açıklanır.
 
 ### <a name="upload-the-data-file"></a>Veri dosyasını karşıya yükle
 
 1. Azure Notebooks içindeki proje panonuzda, **Upload**  >  **URL 'den** karşıya yükle ' yi seçin.
-1. Açılan pencerede, **dosya URL 'sine** aşağıdaki URL 'yi girin ve **dosya adı**'nda *. csv dosyasını cricket_chirps* **bitti**' yi seçin.
+1. Açılan pencerede, **dosya URL 'sine** aşağıdaki URL 'yi girin ve **dosya adı**alanına *cricket_chirps.csv* **bitti**' yi seçin.
 
     ```url
     https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
     ```
 
-1. *Cricket_chirps. csv* dosyası artık projenizin dosya listesinde görünmelidir:
+1. *cricket_chirps.csv* dosyası artık projenizin dosya listesinde görünmelidir:
 
     ![Yeni oluşturulan CSV dosyası proje dosyası listesinde gösteriliyor](media/tutorial/csv-file-in-project.png)
 
 ### <a name="create-a-file-from-scratch"></a>Sıfırdan dosya oluşturma
 
 1. Azure Notebooks içindeki proje panonuzda **+ Yeni**  >  **boş dosya** ' yı seçin.
-1. Projenin dosya listesinde bir alan görüntülenir. *Cricket_chirps. csv* yazın ve ENTER tuşuna basın.
-1. *Cricket_chirps. csv* dosyasına sağ tıklayın ve **dosyayı Düzenle**' yi seçin.
+1. Projenin dosya listesinde bir alan görüntülenir. *cricket_chirps.csv* girin ve ENTER 'a basın.
+1. *cricket_chirps.csv* sağ tıklayın ve **dosyayı Düzenle**' yi seçin.
 1. Görüntülenen düzenleyicide aşağıdaki verileri girin:
 
     ```csv
@@ -111,12 +111,12 @@ Bir not defteri içinde, `!pip install` gerekli paketleri yüklemek için her za
 
 1. Proje panosunda **proje ayarları**' nı seçin.
 1. Görüntülenen açılan pencerede **ortam** sekmesini seçin ve **+ Ekle**' yi seçin.
-1. **Ortam kurulum adımları**altındaki ilk açılan denetimde (işlem), **requirements. txt**' yi seçin.
-1. İkinci açılan denetimde (dosya adı), *requirements. txt* (oluşturduğunuz dosya) öğesini seçin.
+1. **Ortam kurulum adımları**altındaki ilk açılan denetimde (işlem) **Requirements.txt**' yi seçin.
+1. İkinci açılan denetimde (dosya adı) *requirements.txt* (oluşturduğunuz dosya) öğesini seçin.
 1. Üçüncü açılan denetimde (Python sürümü), **Python sürüm 3,6**' yı seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
-![Requirements. txt dosyasını belirten proje ayarları ortamı sekmesi](media/tutorial/tutorial-requirements-txt.png)
+![requirements.txt bir dosya belirten proje ayarları ortamı sekmesi](media/tutorial/tutorial-requirements-txt.png)
 
 Bu kurulum adımla birlikte, projede çalıştırdığınız herhangi bir not defteri, bu paketlerin yüklendiği bir ortamda çalışır.
 
@@ -127,7 +127,7 @@ Veri dosyası hazır ve proje ortamı ayarlanmış olarak, artık Not defterini 
 1. Proje panosunda **+ Yeni**  >  **Not defteri**' ni seçin.
 1. Açılan pencerede, *Doğrusal regresyon örneği-Cricket CHIRP 'leri. ipynb* **öğesini**girin, dil için **Python 3,6** ' i seçin ve ardından **Yeni**' yi seçin.
 1. Yeni Not defteri dosya listesinde görüntülendikten sonra, Not defterini başlatmak için seçin. Yeni bir tarayıcı sekmesi otomatik olarak açılır.
-1. Ortam ayarlarında bir *requirements. txt* dosyanız olduğundan, "kapsayıcının hazırlanmasını tamamlaması bekleniyor" iletisini görürsünüz. İletiyi kapatmak için **Tamam** ' ı seçebilirsiniz ve not defterinde çalışmaya devam edebilirsiniz; Ancak, ortam tamamen ayarlanana kadar kod hücrelerini çalıştıramazsınız.
+1. Ortam ayarlarında bir *requirements.txt* dosyanız olduğundan, "kapsayıcının hazırlanmasını tamamlaması bekleniyor" iletisini görürsünüz. İletiyi kapatmak için **Tamam** ' ı seçebilirsiniz ve not defterinde çalışmaya devam edebilirsiniz; Ancak, ortam tamamen ayarlanana kadar kod hücrelerini çalıştıramazsınız.
 1. Not defteri, varsayılan olarak tek bir boş kod hücresi olan Jupyter arabiriminde açılır.
 
     [![Azure Notebooks yeni bir not defterinin ilk görünümü](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)

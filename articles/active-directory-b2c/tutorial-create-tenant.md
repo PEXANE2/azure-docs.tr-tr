@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d6b445d1e795cfb34452f48bfb5ed375f6a284e1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85385051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806859"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Öğretici: Azure Active Directory B2C kiracısı oluşturma
 
@@ -51,8 +51,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. **Dizin Oluştur** sayfasında, aşağıdakileri girin:
 
-   - **Kuruluş adı** -kuruluşunuzun adını girin.
-   - **İlk etki alanı adı** -bir etki alanı adı girin. Varsayılan olarak, bu ad *. onmicrosoft.com*eklenir. Bunu daha sonra, kuruluşunuzun zaten kullandığı bir etki alanı adı ekleyerek ' contoso.com ' gibi değiştirebilirsiniz.
+   - **Kuruluş adı** -Azure AD B2C kiracınız için bir ad girin.
+   - **İlk etki alanı adı** -Azure AD B2C kiracınız için bir etki alanı adı girin.
    - **Ülke veya bölge** -listeden ülkenizi veya bölgenizi seçin. Bu seçim daha sonra değiştirilemez.
    - **Abonelik** -listeden aboneliğinizi seçin.
    - **Kaynak grubu** -kiracıyı içerecek bir kaynak grubu seçin. Ya da **Yeni oluştur**' u seçin, kaynak grubu Için bir **ad** girin, **kaynak grubu konumunu**seçin ve ardından **Tamam**' ı seçin.

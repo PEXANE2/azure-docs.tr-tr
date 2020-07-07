@@ -1,0 +1,125 @@
+---
+title: SQL Server VM oluşturma (Azure Resource Manager şablonu)
+description: Azure Resource Manager şablonu kullanarak Azure sanal makinesi (VM) üzerinde SQL Server oluşturma hakkında bilgi edinin.
+author: MashaMSFT
+ms.topic: quickstart
+ms.custom: subject-armqs
+ms.author: mathoma
+ms.date: 06/29/2020
+ms.service: virtual-machines-sql
+ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852549"
+---
+# <a name="create-sql-server-vm-azure-resource-manager-template"></a>SQL Server VM oluşturma (Azure Resource Manager şablonu)
+
+Azure sanal makinesine (VM) bir SQL Server dağıtmak için bu Azure Resource Manager şablonunu kullanın. 
+
+[!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
+
+## <a name="prerequisites"></a>Önkoşullar
+
+SQL Server VM ARM şablonu şunları gerektirir:
+
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ve/veya [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7)'in en son sürümü. 
+- Hazırlanmış bir [sanal ağ](../../../virtual-network/quick-create-portal.md) ve [alt ağı](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)olan önceden yapılandırılmış bir [kaynak grubu](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) .
+- Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+
+
+## <a name="review-the-template"></a>Şablonu gözden geçirme
+
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/).
+
+:::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json" highlight="169-310":::
+
+Şablonda beş Azure kaynağı tanımlanmıştır: 
+
+- [Microsoft. Network/Publicıpaddresses](/azure/templates/microsoft.network/publicipaddresses): genel bir IP adresi oluşturur. 
+- [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups): bir ağ güvenlik grubu oluşturur. 
+- [Microsoft. Network/NetworkInterfaces](/azure/templates/microsoft.network/networkinterfaces): ağ arabirimini yapılandırır. 
+- [Microsoft. COMPUTE/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Azure 'da bir sanal makine oluşturur. 
+- [Microsoft. sqlvirtualmachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): sanal MAKINEYI SQL VM kaynak sağlayıcısına kaydeder. 
+
+Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine)bulabilirsiniz.
+
+
+## <a name="deploy-the-template"></a>Şablonu dağıtma
+
+1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon, tasarlanan SQL Server sürümünün yüklü olduğu bir sanal makine oluşturur ve SQL VM kaynak sağlayıcısına kaydedilir. 
+
+   [![Azure’a dağıtma](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
+
+2. Aşağıdaki değerleri seçin veya girin.
+
+    * **Abonelik**: bir Azure aboneliği seçin.
+    * **Kaynak grubu**: SQL Server VM hazırlanan kaynak grubu. 
+    * **Bölge**: bir bölge seçin.  Örneğin **Orta ABD**.
+    * **Sanal makine adı**: SQL Server sanal makine için bir ad girin. 
+    * **Sanal makine boyutu**: açılan kutudan sanal makineniz için uygun boyutu seçin.
+    * **Var olan sanal ağ adı**: SQL Server VM hazırlanan sanal ağın adını girin. 
+    * **Mevcut VNET kaynak grubu**: sanal ağınızın hazırlandığı kaynak grubunu girin. 
+    * **Mevcut alt ağ adı**: hazırlanmış alt ağınızın adı. 
+    * **Görüntü teklifi**: iş gereksinimlerinize en uygun SQL Server ve Windows Server görüntüsünü seçin. 
+    * **SQL SKU 'su**: iş gereksinimlerinize en uygun SQL Server SKU sürümünü seçin. 
+    * **Yönetici Kullanıcı adı**: sanal makinenin yöneticisinin Kullanıcı adı. 
+    * **Yönetici parolası**: VM yönetici hesabı tarafından kullanılan parola. 
+    * **Depolama Iş yükü türü**: işinizle en iyi şekilde eşleşen iş yükünün depolama türü. 
+    * **SQL veri diskleri sayısı**: veri dosyaları için kullanılan SQL Server disk sayısı.  
+    * **Veri yolu**: SQL Server veri dosyalarının yolu. 
+    * **SQL günlük diskleri sayısı**: günlük dosyaları için kullanılan SQL Server disk sayısı. 
+    * **Günlük yolu**: SQL Server günlük dosyalarının yolu. 
+    * **Konum**: tüm kaynakların konumu, bu değer varsayılan olarak kalmalıdır `[resourceGroup().location]` . 
+
+3. **İncele ve oluştur**’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
+
+Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../../azure-resource-manager/templates/deploy-powershell.md).
+
+## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
+
+Dağıtılan kaynakları denetlemek için Azure CLı ' yı kullanabilirsiniz. 
+
+
+```azurecli-interactive
+echo "Enter the resource group where your SQL Server VM exists:" &&
+read resourcegroupName &&
+az resource list --resource-group $resourcegroupName 
+```
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Artık gerekli değilse, Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silin:
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+---
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için, bkz.:
+
+> [!div class="nextstepaction"]
+> [Öğretici: ilk Azure Resource Manager şablonunuzu oluşturma ve dağıtma](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+
+SQL Server VM dağıtmanın diğer yolları için bkz.: 
+- [Azure portalındaki](create-sql-vm-portal.md)
+- [PowerShell](create-sql-vm-powershell.md)
+
+Daha fazla bilgi edinmek için bkz. [Azure VM 'lerinde SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md).

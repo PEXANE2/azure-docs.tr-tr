@@ -3,20 +3,20 @@ title: Azure Notebooks önizlemede oturum açın
 description: Hızlı bir şekilde oturum açın Azure Notebooks önizleme yapın ve bir kullanıcı kimliği ayarlayın. Bu, size kayıtlı projelere erişme ve not defterlerini başkalarıyla paylaşma olanağı sunan bir kullanıcı kimliği.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75647025"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830426"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemesi için oturum açma ve Kullanıcı KIMLIĞI ayarlama
 
-Oturum açmadan Azure Notebooks her zaman görüntüleyebilseniz de, not defterlerini çalıştırmak, kaydedilmiş projelere ve not defterlerine erişmek ve not defterlerinizi başkalarıyla paylaşmak için oturum açmanız gerekir.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-## <a name="sign-in"></a>Oturum açma
+Oturum açmadan Azure Notebooks her zaman görüntüleyebilseniz de, not defterlerini çalıştırmak, kaydedilmiş projelere ve not defterlerine erişmek ve not defterlerinizi başkalarıyla paylaşmak için oturum açmanız gerekir.
+
+## <a name="sign-in"></a>Oturum açın
 
 1. [Notebooks.Azure.com](https://notebooks.azure.com/)' un sağ üst kısmında **oturum aç** ' ı seçin.
 

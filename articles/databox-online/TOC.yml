@@ -31,6 +31,8 @@
           href: data-box-gateway-use-cases.md
     - name: Nasıl yapılır
       items:
+        - name: Güncelleştir
+          href: data-box-gateway-apply-updates.md
         - name: Yönetme
           items:
             - name: Paylaşımlar
@@ -95,7 +97,7 @@
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: Nasıl yapılır
       items:
-        - name: 'C# modülü geliştirme'
+        - name: C# modülü geliştirme
           href: azure-stack-edge-create-iot-edge-module.md
         - name: Yönetme
           items:
@@ -133,7 +135,7 @@
           href: data-box-gateway-release-notes.md
 - name: Kaynaklar
   items:
-    - name: 'Azure Stack Edge C# modülü örnekleri (.NET)'
+    - name: Azure Stack Edge C# modülü örnekleri (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
     - name: Azure Stack Edge/Data Box Gateway ürünü
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'

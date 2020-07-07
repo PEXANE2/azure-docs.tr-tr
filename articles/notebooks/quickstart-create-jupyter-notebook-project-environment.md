@@ -4,18 +4,18 @@ description: Azure Notebooks önizlemede, belirli bir yüklü paketler ve başla
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 03935b9672c25db11b91733fac1c63f1f5978b87
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c5f73b73b4bab99e07874c2d16d47da69f8026ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559741"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832908"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede özel ortamla bir proje oluşturma
 
-Azure Notebooks bir proje, belirli kurulum komutlarıyla yapılandırılabilecek bir ortamla birlikte Not defterleri, veri dosyaları, belgeler, resimler gibi bir dosya koleksiyonudur. Projeyi proje ile tanımlayarak, projeyi kendi Azure Notebooks olarak klonlayan herkes gerekli ortamı yeniden oluşturmak için gereken tüm bilgileri içerir.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks bir proje, belirli kurulum komutlarıyla yapılandırılabilecek bir ortamla birlikte Not defterleri, veri dosyaları, belgeler, resimler gibi bir dosya koleksiyonudur. Projeyi proje ile tanımlayarak, projeyi kendi Azure Notebooks olarak klonlayan herkes gerekli ortamı yeniden oluşturmak için gereken tüm bilgileri içerir.
 
 ## <a name="create-a-project"></a>Proje oluşturma
 
@@ -54,7 +54,7 @@ Azure Notebooks bir proje, belirli kurulum komutlarıyla yapılandırılabilecek
 
    | Çalışma | Description |
    | --- | --- |
-   | Requirements. txt | Python projeleri, bağımlılıklarını bir requirements. txt dosyasında tanımlar. Bu seçenekle, projenin dosya listesinden uygun dosyayı seçin ve görüntülenen ek açılan listede Python sürümünü de seçin. Gerekirse, projeye geri dönmek için **iptal** ' i seçin, dosyayı karşıya yükleyin veya oluşturun, ardından **proje ayarları**  >  **ortamı** sekmesine dönüp yeni bir adım oluşturun. Bu adımla birlikte, projede bir not defterini çalıştırmak otomatik olarak çalıştırılır`pip install -r <file>` |
+   | Requirements.txt | Python projeleri bir requirements.txt dosyasında bağımlılıklarını tanımlar. Bu seçenekle, projenin dosya listesinden uygun dosyayı seçin ve görüntülenen ek açılan listede Python sürümünü de seçin. Gerekirse, projeye geri dönmek için **iptal** ' i seçin, dosyayı karşıya yükleyin veya oluşturun, ardından **proje ayarları**  >  **ortamı** sekmesine dönüp yeni bir adım oluşturun. Bu adımla birlikte, projede bir not defterini çalıştırmak otomatik olarak çalıştırılır`pip install -r <file>` |
    | Kabuk betiği | Ortamı başlatmak için çalıştırmak istediğiniz komutları içeren bir bash kabuğu betiğini (genellikle *. sh* uzantılı bir dosya) göstermek için kullanın. |
    | Environment. yıml | Bir ortamı yönetmek için Conda kullanan bir Python projesi, bağımlılıkları tanımlayacak *ortamlar. yıml* dosyasını kullanır. Bu seçenekle, projenin dosya listesinden uygun dosyayı seçin. |
 
@@ -73,4 +73,4 @@ Azure Notebooks bir proje, belirli kurulum komutlarıyla yapılandırılabilecek
 > [Azure Notebooks projeleri yönetme ve yapılandırma](configure-manage-azure-notebooks-projects.md)
 
 > [!div class="nextstepaction"]
-> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri çalıştırma](tutorial-create-run-jupyter-notebook.md)
+> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md)

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 905c76a3c5399ecae8acb2a18d35006306afcb2f
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 3cf772fb10ee41887d76976b30e9bebaba51a2f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801266"
+ms.locfileid: "85830477"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure gizli bilgi işlem VM 'si dağıtma
 
@@ -22,7 +22,7 @@ Intel SGX tarafından desteklenen bir sanal makine (VM) oluşturmak için Azure 
 Özel yapılandırmayla gizli bir işlem sanal makinesi dağıtmaya ilgileniyorsanız, bu öğretici sizin için önerilir. Aksi takdirde, [Microsoft ticari Market için gizli bilgi işlem sanal makine dağıtım adımlarını](quick-create-marketplace.md)takip etmenizi öneririz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) .
 
@@ -127,8 +127,7 @@ ssh azureadmin@40.55.55.555
 
 Sanal makinenizin genel bakış bölümü altında, Azure portal VM 'nizin genel IP adresini bulabilirsiniz.
 
-[!div class="mx-imgBorder"]
-![Azure portalında IP adresi](media/quick-create-portal/public-ip-virtual-machine.png)
+:::image type="content" source="media/quick-create-portal/public-ip-virtual-machine.png" alt-text="Azure portalında IP adresi":::
 
 Windows üzerinde çalıştırıyorsanız ve BASH kabuğu yoksa, PuTTY gibi bir SSH istemcisi yükleyebilirsiniz.
 

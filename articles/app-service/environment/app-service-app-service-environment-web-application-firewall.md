@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684226"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833190"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service Ortamı için Web Uygulaması Güvenlik Duvarı (WAF) Yapılandırma
 ## <a name="overview"></a>Genel Bakış
@@ -89,9 +89,11 @@ WAF’nizden gelen Traffic Manager pinglerini uygulamanıza iletmek için, aşa�
 ![Web Sitesi Çevirileri][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Ağ Güvenlik Gruplarını (NSG) Kullanarak App Service Ortamına Giden Trafiğin Güvenliğini Sağlama
-Bulut Hizmetinizin VIP adresini kullanarak App Service Ortamınıza gelen trafiği yalnızca WAF’den gelecek şekilde kısıtlamaya ilişkin ayrıntılar için [Gelen Trafiği Denetleme belgelerini](app-service-app-service-environment-control-inbound-traffic.md) takip edin. TCP bağlantı noktası 80 için bu görevi gerçekleştirmeye yönelik örnek bir Powershell komutu aşağıda verilmiştir.
+Bulut Hizmetinizin VIP adresini kullanarak App Service Ortamınıza gelen trafiği yalnızca WAF’den gelecek şekilde kısıtlamaya ilişkin ayrıntılar için [Gelen Trafiği Denetleme belgelerini](app-service-app-service-environment-control-inbound-traffic.md) takip edin. Bu, TCP bağlantı noktası 80 için bu görevi gerçekleştirmeye yönelik örnek bir PowerShell komutu aşağıda verilmiştir.
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 SourceAddressPrefix değerini WAF Bulut Hizmetinin Sanal IP Adresi (VIP) ile değiştirin.
 

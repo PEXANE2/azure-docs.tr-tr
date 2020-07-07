@@ -8,16 +8,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7780bdbc92868f62e8d066d171b2a04fe06a981d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b6081e6bad1382ca2b3a8349036234c0c01cb13
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856512"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Öğretici: .NET Framework uygulamasında dinamik yapılandırmayı kullanma
 
-Uygulama yapılandırması .NET istemci kitaplığı, bir uygulamanın yeniden başlatılmasına gerek kalmadan isteğe bağlı olarak bir yapılandırma ayarları kümesinin güncelleştirilmesini destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği `IConfigurationRefresher` alarak ve sonra bu örneğe kodunuzda herhangi bir yere çağrı `Refresh` yaparak uygulanabilir.
+Uygulama yapılandırması .NET istemci kitaplığı, bir uygulamanın yeniden başlatılmasına gerek kalmadan isteğe bağlı olarak bir yapılandırma ayarları kümesinin güncelleştirilmesini destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği alarak `IConfigurationRefresher` ve sonra `Refresh` Bu örneğe kodunuzda herhangi bir yere çağrı yaparak uygulanabilir.
 
 Ayarları güncel tutmak ve yapılandırma deposuna çok fazla çağrı önlemek için, her bir ayar için bir önbellek kullanılır. Bir ayarın önbelleğe alınmış değeri sona erene kadar, yenileme işlemi değeri, değer yapılandırma deposunda değiştiği zaman bile güncelleştirmez. Her istek için varsayılan kullanım süresi 30 saniyedir, ancak gerekirse geçersiz kılınabilir.
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için .NET Framework uygulamanızı ayarlayın.
 > * Uygulamanıza en son yapılandırmayı ekleme.
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -38,7 +38,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** > **+** > **anahtar-değer** oluştur ' u seçin:
+6. **Configuration Explorer**  >  **+ Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini +**anahtar-değer** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -50,14 +50,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-a-net-framework-console-app"></a>.NET Framework konsol uygulaması oluşturma
 
-1. Visual Studio 'yu başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçin.
+1. Visual Studio 'yu başlatın ve **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)**. **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**' a tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**'a tıklayın.
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
-1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde, *Microsoft. Extensions. Configuration. AzureAppConfiguration* NuGet paketini arayın ve projenize ekleyin. Bulamıyorsanız, **ön sürümü dahil** et onay kutusunu seçin.
+1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesindeMicrosoft.Extensions.Configurma 'yı arayın ve ekleyin *. AzureAppConfiguration* NuGet paketini projenize. Bulamıyorsanız, **ön sürümü dahil** et onay kutusunu seçin.
 
 1. *Program.cs*'i açın ve .NET Core uygulama yapılandırma sağlayıcısına bir başvuru ekleyin.
 
@@ -73,7 +73,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     private static IConfigurationRefresher _refresher = null;
     ```
 
-1. Belirtilen yenileme `Main` seçenekleriyle uygulama yapılandırmasına bağlanmak için yöntemi güncelleştirin.
+1. `Main`Belirtilen yenileme seçenekleriyle uygulama yapılandırmasına bağlanmak için yöntemi güncelleştirin.
 
     ```csharp
     static void Main(string[] args)
@@ -95,12 +95,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
         PrintMessage().Wait();
     }
     ```
-    `ConfigureRefresh` Yöntemi, bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini uygulama yapılandırma deposu ile güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. `IConfigurationRefresher` Bir örneği `GetRefresher` `AddAzureAppConfiguration` yöntemine sunulan seçeneklere çağrı yöntemiyle alınabilir ve bu örnekteki `Refresh` yöntem kodunuzda herhangi bir yerde yenileme işlemini tetiklemek için kullanılabilir.
+    `ConfigureRefresh`Yöntemi, bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini uygulama yapılandırma deposu ile güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. Bir örneği `IConfigurationRefresher` `GetRefresher` yöntemine sunulan seçeneklere çağrı yöntemiyle alınabilir `AddAzureAppConfiguration` ve `Refresh` Bu örnekteki yöntem kodunuzda herhangi bir yerde yenileme işlemini tetiklemek için kullanılabilir.
 
     > [!NOTE]
-    > Yapılandırma ayarı için varsayılan önbellek süre sonu zamanı 30 saniyedir, ancak yöntem için `SetCacheExpiration` `ConfigureRefresh` bağımsız değişken olarak geçirilen seçenek başlatıcısında yöntemi çağırarak geçersiz kılınabilir.
+    > Yapılandırma ayarı için varsayılan önbellek süre sonu zamanı 30 saniyedir, ancak yöntem `SetCacheExpiration` için bağımsız değişken olarak geçirilen seçenek başlatıcısında yöntemi çağırarak geçersiz kılınabilir `ConfigureRefresh` .
 
-1. Yapılandırma verilerinin uygulama yapılandırmasından `PrintMessage()` el ile yenilenmesini tetikleyen adlı bir yöntem ekleyin.
+1. `PrintMessage()`Yapılandırma verilerinin uygulama yapılandırmasından el ile yenilenmesini tetikleyen adlı bir yöntem ekleyin.
 
     ```csharp
     private static async Task PrintMessage()
@@ -119,11 +119,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. Değişikliğin etkili olması için Visual Studio 'Yu yeniden başlatın. 
 
@@ -144,7 +148,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     ![Uygulama yerel olarak Yenile](./media/dotnet-app-run-refresh.png)
     
     > [!NOTE]
-    > Önbellek sona erme zamanı, yenileme işlemi için yapılandırmayı belirtirken `SetCacheExpiration` yöntemi kullanılarak 10 saniye olarak ayarlandığından, yapılandırma ayarı değeri yalnızca bu ayar için en son yenilemeden bu yana en az 10 saniye geçtiğinde güncelleştirilir.
+    > Önbellek sona erme zamanı, `SetCacheExpiration` yenileme işlemi için yapılandırmayı belirtirken yöntemi kullanılarak 10 saniye olarak ayarlandığından, yapılandırma ayarı değeri yalnızca bu ayar için en son yenilemeden bu yana en az 10 saniye geçtiğinde güncelleştirilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

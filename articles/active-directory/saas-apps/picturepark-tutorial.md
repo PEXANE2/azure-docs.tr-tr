@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57f412f93d9dbe2d9967c5cbc7dc50b1ee8bd61f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73177006"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801504"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Öğretici: Picturepark ile Azure Active Directory tümleştirme
 
@@ -34,7 +34,7 @@ Picturepark 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Picturepark ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -109,12 +109,11 @@ Azure AD çoklu oturum açmayı Picturepark ile yapılandırmak için aşağıda
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    |  |
-    |--|
-    | `https://<companyname>.current-picturepark.com`|
-    | `https://<companyname>.picturepark.com`|
-    | `https://<companyname>.next-picturepark.com`|
-    | |
+    ```http
+        https://<companyname>.current-picturepark.com
+        https://<companyname>.picturepark.com
+        https://<companyname>.next-picturepark.com
+    ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Picturepark istemci destek ekibine](https://picturepark.com/company/picturepark-customer-support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -166,7 +165,7 @@ Azure AD çoklu oturum açmayı Picturepark ile yapılandırmak için aşağıda
 
 5. **Joindefaultusersgroup**öğesine tıklayın.
 
-6. **Talep** metin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` kutusunda **emapostaadresi** özniteliğini ayarlamak için, yazın ve **Kaydet**' e tıklayın.
+6. **Talep** metin kutusunda **emapostaadresi** özniteliğini ayarlamak Için, yazın `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ve **Kaydet**' e tıklayın.
 
       ![Yapılandırma](./media/picturepark-tutorial/ic795065.png "Yapılandırma")
 
@@ -188,11 +187,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -240,7 +239,7 @@ Azure AD kullanıcılarının, Picturepark ortamında oturum açmasını sağlam
    
     ![Kullanıcı Oluştur](./media/picturepark-tutorial/ic795069.png "Kullanıcı Oluştur")
    
-    a. **E-posta adresi** metin kutusuna kullanıcının `BrittaSimon@contoso.com` **e-posta adresini** yazın.  
+    a. **E-posta adresi** metin kutusuna kullanıcının **e-posta adresini** yazın `BrittaSimon@contoso.com` .  
    
     b. **Parola** ve **Parolayı Onayla** metin kutularına brittasıon **parolasını** yazın. 
    
@@ -252,13 +251,13 @@ Azure AD kullanıcılarının, Picturepark ortamında oturum açmasını sağlam
    
     f. **Ülke** metin kutusunda kullanıcının **ülkesini/bölgesini** seçin.
   
-    g. **Zip** metin kutusuna şehrin **posta kodunu** yazın.
+    örneğin: **Zip** metin kutusuna şehrin **posta kodunu** yazın.
    
     h. **Şehir** metin kutusuna kullanıcının **şehir adını** yazın.
 
     i. Bir **dil**seçin.
    
-    j. **Oluştur**' a tıklayın.
+    j. **Oluştur**'a tıklayın.
 
 >[!NOTE]
 >Azure AD Kullanıcı hesapları sağlamak için, Picturepark tarafından sunulan diğer bir Picturepark Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.

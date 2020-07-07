@@ -3,23 +3,23 @@ title: Azure Notebooks önizlemeden Jupyter Not defteri projesini dışarı akta
 description: Jupyter Not defteri projesini hızlıca dışarı aktarın.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: 31e32a6ebb39429078c7c6747bc6b10f177699ac
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802726"
+ms.locfileid: "85832041"
 ---
 # <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede bir Jupyter Not defteri projesini dışarı aktarma
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
 Bu hızlı başlangıçta, diğer Jupyter Not defteri çözümlerinde kullanmak üzere bir Azure Notebooks projesi indirirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Mevcut bir Azure Notebooks projesi.
 
 ## <a name="export-an-azure-notebooks-project"></a>Azure Notebooks projesi dışarı aktarma
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md).
 
@@ -38,24 +38,14 @@ Proje dosyalarınızı indirdikten sonra, bunları diğer Jupyter Notebook çöz
 - [Azure Lab Services](#use-azure-lab-services)
 - [GitHub](#use-github)
 
-## <a name="download-the-requirements-file-used-by-azure-notebooks"></a>Azure Notebooks tarafından kullanılan gereksinimler dosyasını indirin
+## <a name="create-an-environment-for-notebooks"></a>Not defterleri için ortam oluşturma
 
-Azure Notebooks önizlemesiyle eşleşen bir ortam oluşturmak istiyorsanız, GitHub 'da sunulan **AzureNotebooksRequirements.txt** dosyasını kullanabilirsiniz.
+Azure Notebooks Önizlemeiyle eşleşen bir ortam oluşturmak istiyorsanız, GitHub 'da belirtilen komut dosyasını kullanabilirsiniz.
 
-1. Azure Notebooks [GitHub deposuna](https://github.com/microsoft/AzureNotebooks) gidin veya [dosyaya doğrudan erişebilirsiniz](https://aka.ms/aznbrequirementstxt).
-1. Azure Notebooks ortamı için paket bağımlılıklarını içeren **AzureNotebooksRequirements.txt** dosyasını indirin. 
-1. Bir komut isteminden, projeleriniz için kullanmak istediğiniz dizine gidin ve uygun paketleri yüklemek için gereksinimler dosyasını kullanın.
+1. Azure Notebooks [GitHub deposuna](https://github.com/microsoft/AzureNotebooks) gidin veya [ortam klasörüne doğrudan erişin](https://aka.ms/aznbrequirementstxt).
+1. Bir komut isteminden, projeleriniz için kullanmak istediğiniz dizine gidin.
+1. Ortam klasörü içeriğini indirin ve BENIOKU yönergelerini izleyerek Azure Notebooks paketi bağımlılıklarını yükleyin.
 
-    > [!Note]
-    > Gerekli olmasa da, genellikle aşağıda gösterildiği gibi paket yüklemesi için yeni bir sanal ortam oluşturmak istersiniz.
-
-    ```bash
-    cd your-project-dir
-    python -m venv .venv
-    python -m pip install -r AzureNotebooksRequirements.txt
-    ```
-
-Gereksinim dosyaları hakkında daha fazla bilgi için bkz. [PIN belgeleri]( https://pip.pypa.io/en/stable/user_guide/#requirements-files).
 
 ## <a name="use-notebooks-in-visual-studio-code"></a>Visual Studio Code içindeki not defterlerini kullanma
 
@@ -65,7 +55,7 @@ Gereksinim dosyaları hakkında daha fazla bilgi için bkz. [PIN belgeleri]( htt
 
 Proje dosyalarınızı [indirdikten](#export-an-azure-notebooks-project) sonra, vs Code kullanabilirsiniz. Jupi Not defterleri ile VS Code kullanan rehberlik için, Visual Studio Code öğreticilerde [Visual Studio Code jupi not defterlerine](https://code.visualstudio.com/docs/python/jupyter-support) ve [veri bilimi](https://code.visualstudio.com/docs/python/data-science-tutorial) ile çalışma bölümüne bakın.
 
-Azure Notebooks önizlemesiyle eşleşen bir ortam oluşturmak için Visual Studio Code [Azure Notebooks gereksinimlerini](#download-the-requirements-file-used-by-azure-notebooks) de kullanabilirsiniz.
+Azure Notebooks önizlemesiyle eşleşen bir ortam oluşturmak için Visual Studio Code ile [Azure Notebooks ortam betiğini](#create-an-environment-for-notebooks) de kullanabilirsiniz.
 
 ## <a name="use-notebooks-in-visual-studio-codespaces"></a>Visual Studio Codespaces içindeki not defterlerini kullanma
 
@@ -107,3 +97,11 @@ GitHub, not defterlerini (ve diğer dosyaları) depolamak, not defterlerinizi ba
 1. Proje dosyalarınızı [indirin](#export-an-azure-notebooks-project) .
 1. Not defterlerinizi depolamak için [bir GitHub deposu oluşturun](https://help.github.com/github/getting-started-with-github/create-a-repo) . 
 1. [Dosyalarınızı depoya ekleyin](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) .
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Visual Studio Code 'de Python hakkında bilgi edinin](https://code.visualstudio.com/docs/python/python-tutorial)
+- [Azure Machine Learning ve Jupyıter not defterlerini öğrenin](../machine-learning/how-to-run-jupyter-notebooks.md)
+- [Visual Studio Codespaces hakkında bilgi edinin](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)
+- [Azure Lab Services hakkında bilgi edinin](https://azure.microsoft.com/services/lab-services/)
+- [GitHub hakkında bilgi edinin](https://help.github.com/github/getting-started-with-github/)

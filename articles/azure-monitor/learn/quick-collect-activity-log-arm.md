@@ -7,25 +7,28 @@ ms.custom: subject-armqs
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: ce7c8df0fcea66d21ba2640ba26213a49efcb1c0
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 26e8c40c35b130510f1bf8ae1456cb15907b345c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601658"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851914"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Log Analytics çalışma alanına Azure etkinlik günlüğü gönderme
+
 Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir platform Günlüğliğidir. Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Bu hızlı başlangıçta, [günlük sorguları](../log-query/log-query-overview.md) ve [günlük uyarıları](../platform/alerts-log-query.md) ve [çalışma kitapları](../platform/workbooks-overview.md)gibi diğer özellikleri etkinleştirmek üzere bir Log Analytics çalışma alanı ve etkinlik günlüğünü Azure izleyici GÜNLÜKLERINE göndermek için Azure Resource Manager şablonlarının (ARM şablonları) nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Komutları yerel bilgisayarınızdan çalıştırmak için Azure CLı veya Azure PowerShell modüllerini yüklemelisiniz. Daha fazla bilgi için bkz. [Azure CLI](/cli/azure/install-azure-cli) 'yı yükleyip [Azure PowerShell yüklemesi](/powershell/azure/install-az-ps).
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirme
+
 Aşağıdaki şablon boş bir Log Analytics çalışma alanı oluşturur. Bu şablonu *CreateWorkspace.js*olarak kaydedin.
 
 ```json
@@ -130,9 +133,10 @@ Bu şablon bir kaynağı tanımlar:
 - [Microsoft. Operationalınsights/çalışma alanları](/azure/templates/microsoft.operationalinsights/workspaces)
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
+
 CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu**, **çalışmaalanıadı**ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
 
-# <a name="cli"></a>[CLI](#tab/CLI1)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli
 az login
@@ -144,7 +148,7 @@ az deployment group create \
 
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```powershell
 Connect-AzAccount
@@ -155,15 +159,16 @@ New-AzResourceGroupDeployment -Name AzureMonitorDeployment -ResourceGroupName my
 ---
 
 ### <a name="validate-the-deployment"></a>Dağıtımı doğrulama
+
 Çalışma alanının, aşağıdaki komutlardan birini kullanarak oluşturulduğunu doğrulayın. **Kaynak grubu** ve **çalışmaalanıadı** için örnek değerleri yukarıda kullandığınız değerlerle değiştirin.
 
-# <a name="cli"></a>[CLI](#tab/CLI2)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli
 az monitor log-analytics workspace show --resource-group my-workspace-01 --workspace-name my-resource-group
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```powershell
 Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-resource-group
@@ -174,6 +179,7 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 ## <a name="create-diagnostic-setting"></a>Tanılama ayarı oluşturma
 
 ### <a name="review-the-template"></a>Şablonu gözden geçirme
+
 Aşağıdaki şablon, bir Log Analytics çalışma alanına etkinlik günlüğü gönderen bir tanılama ayarı oluşturur. Bu şablonu *CreateDiagnosticSetting.js*olarak kaydedin.
 
 ```json
@@ -241,16 +247,17 @@ Bu şablon bir kaynağı tanımlar:
 - [Microsoft. Insights/diagnosticSettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
-CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](/azure-resource-manager/templates/deploy-portal) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu**, **çalışmaalanıadı**ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
 
-# <a name="cli"></a>[CLI](#tab/CLI3)
+CLı ve PowerShell kullanarak aşağıdaki örnekler gibi [BIR ARM şablonunu dağıtmak](../../azure-resource-manager/templates/deploy-portal.md) için herhangi bir standart yöntemi kullanarak şablonu dağıtın. **Kaynak grubu**, **çalışmaalanıadı**ve **konum** için örnek değerleri, ortamınız için uygun değerlerle değiştirin. Çalışma alanı adı tüm Azure abonelikleri arasında benzersiz olmalıdır.
+
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli
 az deployment sub create --name CreateDiagnosticSetting --location eastus --template-file CreateDiagnosticSetting.json --parameters settingName='Send Activity log to workspace' workspaceId='/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace-01'
 
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell3)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```powershell
 New-AzSubscriptionDeployment -Name CreateDiagnosticSetting -location eastus -TemplateFile CreateDiagnosticSetting.json -settingName="Send Activity log to workspace" -workspaceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace-01"
@@ -258,6 +265,7 @@ New-AzSubscriptionDeployment -Name CreateDiagnosticSetting -location eastus -Tem
 ---
 
 ### <a name="validate-the-deployment"></a>Dağıtımı doğrulama
+
 Aşağıdaki komutlardan birini kullanarak tanılama ayarının oluşturulduğunu doğrulayın. Abonelik ve ayar adı için örnek değerleri yukarıda kullandığınız değerlerle değiştirin.
 
 > [!NOTE]
@@ -267,13 +275,13 @@ Aşağıdaki komutlardan birini kullanarak tanılama ayarının oluşturulduğun
 az monitor diagnostic-settings show --resource '/subscriptions/00000000-0000-0000-0000-000000000000' --name 'Send Activity log to workspace'
 ```
 
-
-
 ## <a name="generate-log-data"></a>Günlük verileri oluştur
+
 Log Analytics çalışma alanına yalnızca yeni etkinlik günlüğü girdileri gönderilir, bu nedenle aboneliğinizde bir sanal makineyi başlatma veya durdurma ya da başka bir kaynağı oluşturma veya değiştirme gibi günlüğe kaydedilecek bazı eylemler gerçekleştirin. Tanılama ayarının oluşturulması ve verilerin başlangıçta çalışma alanına yazılması için birkaç dakika beklemeniz gerekebilir. Bu gecikmeden sonra, etkinlik günlüğüne yazılan tüm olaylar çalışma alanına birkaç saniye içinde gönderilir.
 
 ## <a name="retrieve-data-with-a-log-query"></a>Günlük sorgusuyla veri alma
-Çalışma alanından veri almak için Log Analytics kullanmak üzere Azure portal kullanın. Azure portal için arama yapın ve ardından **izleyici**' yi seçin. 
+
+Çalışma alanından veri almak için Log Analytics kullanmak üzere Azure portal kullanın. Azure portal için arama yapın ve ardından **izleyici**' yi seçin.
 
 ![Azure portal](media/quick-collect-activity-log/azure-portal-monitor.png)
 
@@ -294,17 +302,16 @@ Ayrıntılı özelliklerini görüntülemek için kayıtlardan birini genişleti
 ![Karmaşık sorgu](media/quick-collect-activity-log/query-02.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
+
 Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmak isteyebilirsiniz. Artık gerekli değilse, uyarı kuralını ve ilgili kaynakları silen kaynak grubunu silin. Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silmek için
 
-
- 
-# <a name="cli"></a>[CLI](#tab/CLI3)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli
 az group delete --name my-resource-group
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell3)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```powershell
 Remove-AzResourceGroup -Name my-resource-group
@@ -313,8 +320,8 @@ Remove-AzResourceGroup -Name my-resource-group
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, etkinlik günlüğünü bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdınız. Artık diğer verileri, Azure Izleyici 'deki [günlük sorgularını](../log-query/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../platform/alerts-log-query.md) ve [çalışma kitapları](../platform/workbooks-overview.md)gibi özelliklerden yararlanarak, çalışma alanına toplanacak şekilde yapılandırabilirsiniz. Daha sonra, her kaynakta gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan etkinlik günlüğündeki verileri karmaşıklama Azure kaynaklarınızdan [kaynak günlüklerini](../platform/resource-logs.md) toplamanız gerekir.
 
+Bu hızlı başlangıçta, etkinlik günlüğünü bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdınız. Artık diğer verileri, Azure Izleyici 'deki [günlük sorgularını](../log-query/log-query-overview.md) kullanarak analiz oluşturabileceğiniz ve [günlük uyarıları](../platform/alerts-log-query.md) ve [çalışma kitapları](../platform/workbooks-overview.md)gibi özelliklerden yararlanarak, çalışma alanına toplanacak şekilde yapılandırabilirsiniz. Daha sonra, her kaynakta gerçekleştirilen işlemlere ilişkin Öngörüler sağlayan etkinlik günlüğündeki verileri karmaşıklama Azure kaynaklarınızdan [kaynak günlüklerini](../platform/resource-logs.md) toplamanız gerekir.
 
 > [!div class="nextstepaction"]
 > [Azure Izleyici ile kaynak günlüklerini toplayın ve çözümleyin](tutorial-resource-logs.md)

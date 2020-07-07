@@ -10,16 +10,16 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 9772ea320ff28325ffdc8cdcb6e35947b182d1b3
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849483"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
-Azure Key Vault, özel ortak anahtar çiftiyle sertifika imzalama isteği oluşturmayı ve tercih ettiğiniz herhangi bir sertifika yetkilisi tarafından imzalanmasını almayı destekler. İç kuruluş CA 'sı veya dış genel CA olabilir. Sertifika imzalama isteği (CSR veya sertifika isteği), dijital bir sertifikanın verilmesini istemek için Kullanıcı tarafından bir sertifika yetkilisine (CA) gönderilen bir iletidir.
+Azure Key Vault, Anahtar Kasanızda tercih ettiğiniz herhangi bir sertifika yetkilisi tarafından verilen dijital sertifikayı depolamayı destekler. Seçili herhangi bir sertifika yetkilisi tarafından imzalanabilir özel ortak anahtar çiftiyle sertifika imzalama isteği oluşturulmasını destekler. İç kuruluş CA 'sı veya dış genel CA olabilir. Sertifika imzalama isteği (CSR veya sertifika isteği), dijital bir sertifikanın verilmesini istemek için Kullanıcı tarafından bir sertifika yetkilisine (CA) gönderilen bir iletidir.
 
 Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertifikaları](/azure/key-vault/certificates/about-certificates).
 

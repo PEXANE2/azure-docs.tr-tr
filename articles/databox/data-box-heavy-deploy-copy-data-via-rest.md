@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80297221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849422"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Öğretici: REST API 'Leri aracılığıyla Azure Data Box blob depolamaya veri kopyalama  
 
@@ -33,7 +33,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 1. [Öğreticiyi tamamladınız: Azure Data Box Heavy ayarlama](data-box-heavy-deploy-set-up.md).
 2. Data Box Heavy’yi teslim aldınız ve portaldaki sipariş durumu **Teslim Edildi** oldu.
 3. [Data Box BLOB depolama için sistem gereksinimlerini](data-box-system-requirements-rest.md) incelediyseniz ve desteklenen API 'Ler, SDK 'lar ve araçların sürümleriyle ilgili bilgi sahibisiniz.
-4. Data Box Heavy üzerine kopyalamak istediğiniz verilerin bulunduğu bir ana bilgisayara erişirsiniz. Konak bilgisayarınızda:
+4. Data Box Heavy üzerine kopyalamak istediğiniz verilerin bulunduğu bir ana bilgisayara erişirsiniz. Ana bilgisayarınız:
     - [Desteklenen bir işletim sistemi](data-box-system-requirements.md) çalıştırılmalıdır.
     - Yüksek hızlı bir ağa bağlı olmalıdır. En yüksek kopyalama hızları için iki adet 40 GbE bağlantı (düğüm başına bir tane) birbirine paralel olarak kullanılabilir. 40 GbE bağlantınız yoksa, en az iki tane (düğüm başına bir tane) 10 GbE bağlantınızın olması önerilir. 
 5. Ana bilgisayarınızda [AzCopy 7.1.0 indirin](https://aka.ms/azcopyforazurestack20170417) . Ana bilgisayarınızdan Azure Data Box BLOB depolama alanına veri kopyalamak için AzCopy kullanacaksınız.
@@ -92,7 +92,7 @@ Sertifikayı indirmek için Azure portal kullanın.
 
 1. Azure Portal’da oturum açın.
 2. Data Box siparişiniz sayfasına gidin ve **genel > cihaz ayrıntılarına**gidin.
-3. **Cihaz kimlik bilgileri**altında cihaza **API erişimi** ' ne gidin. **İndir**'e tıklayın. Bu eylem, ** \<sipariş adınızı>. cer** sertifika dosyasını indirir. Bu dosyayı **kaydedin** . Bu sertifikayı, cihaza bağlanmak için kullanacağınız istemci veya ana bilgisayara yüklersiniz.
+3. **Cihaz kimlik bilgileri**altında cihaza **API erişimi** ' ne gidin. **İndir**'e tıklayın. Bu eylem bir ** \<your order name> . cer** sertifika dosyasını indirir. Bu dosyayı **kaydedin** . Bu sertifikayı, cihaza bağlanmak için kullanacağınız istemci veya ana bilgisayara yüklersiniz.
 
     ![Azure portal sertifikayı indirin](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -102,7 +102,7 @@ HTTPS üzerinden Data Box blob depolamaya erişmek için cihaz için TLS/SSL ser
 
 Bazı uygulamalar için belirli bilgiler bu bölümde belirtilmiştir. Diğer uygulamalar hakkında daha fazla bilgi için, uygulamanın ve kullanılan işletim sisteminin belgelerine başvurun.
 
-`.cer` Dosyayı bir Windows veya Linux istemcisinin kök deposuna aktarmak için bu adımları izleyin. Windows sisteminde, Windows PowerShell veya Windows Server Kullanıcı arabirimini kullanarak sertifikayı içeri aktarabilir ve sisteminize yükleyebilirsiniz.
+`.cer`Dosyayı bir Windows veya Linux istemcisinin kök deposuna aktarmak için bu adımları izleyin. Windows sisteminde, Windows PowerShell veya Windows Server Kullanıcı arabirimini kullanarak sertifikayı içeri aktarabilir ve sisteminize yükleyebilirsiniz.
 
 #### <a name="use-windows-powershell"></a>Windows PowerShell kullanma
 
@@ -115,7 +115,7 @@ Bazı uygulamalar için belirli bilgiler bu bölümde belirtilmiştir. Diğer uy
 
 #### <a name="use-windows-server-ui"></a>Windows Server Kullanıcı arabirimini kullanma
 
-1.  `.cer` Dosyaya sağ tıklayın ve **sertifikayı yükler**' i seçin. Bu eylem, sertifika alma Sihirbazı 'nı başlatır.
+1.  Dosyaya sağ tıklayın `.cer` ve **sertifikayı yükler**' i seçin. Bu eylem, sertifika alma Sihirbazı 'nı başlatır.
 2.  **Depo konumu**Için **yerel makine**' yi seçin ve ardından **İleri**' ye tıklayın.
 
     ![PowerShell kullanarak sertifikayı içeri aktarma](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
@@ -137,7 +137,7 @@ Sertifikayı içeri aktarma yöntemi dağıtıma göre değişir.
 
 Ubuntu ve deni gibi birkaç tane `update-ca-certificates` komutunu kullanın.  
 
-- Base64 ile kodlanmış sertifika dosyasını bir `.crt` uzantıya sahip olacak şekilde yeniden adlandırın ve içine kopyalayın. `/usr/local/share/ca-certificates directory`
+- Base64 ile kodlanmış sertifika dosyasını bir uzantıya sahip olacak şekilde yeniden adlandırın `.crt` ve içine kopyalayın `/usr/local/share/ca-certificates directory` .
 - `update-ca-certificates` komutunu çalıştırın.
 
 RHEL, Fedora ve CentOS 'ın son sürümleri `update-ca-trust` komutunu kullanır.
@@ -197,20 +197,23 @@ Bir klasördeki tüm dosyaları Windows veya Linux 'ta blob depolamaya yüklemek
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
+`<key>`Hesap anahtarınızla değiştirin. Hesap anahtarınızı almak için Azure portal depolama hesabınıza gidin. **Ayarlar > erişim anahtarlarına**gidin, bir anahtar seçin ve AzCopy komutuna yapıştırın.
 
-Hesap `<key>` anahtarınızla değiştirin. Hesap anahtarınızı almak için Azure portal depolama hesabınıza gidin. **Ayarlar > erişim anahtarlarına**gidin, bir anahtar seçin ve AzCopy komutuna yapıştırın.
-
-Belirtilen hedef kapsayıcı mevcut değilse, AzCopy bu kapsayıcıyı oluşturur ve dosyayı kapsayıcıya yükler. Kaynak yolunu veri dizininiz için güncelleştirin ve hedef URL 'de, `data-box-storage-account-name` Data Box ilişkili depolama hesabının adıyla değiştirin.
+Belirtilen hedef kapsayıcı mevcut değilse, AzCopy bu kapsayıcıyı oluşturur ve dosyayı kapsayıcıya yükler. Kaynak yolunu veri dizininiz için güncelleştirin ve `data-box-storage-account-name` hedef URL 'de, Data Box ilişkili depolama hesabının adıyla değiştirin.
 
 Belirtilen dizinin içeriklerini Blob depolama alanına yinelemeli olarak yüklemek için `--recursive` (Linux) veya `/S` (Windows) seçeneğini belirtin. AzCopy komutunu şu seçeneklerden biriyle çalıştırdığınızda tüm alt klasörler ve bu klasörlerin dosyaları da karşıya yüklenir.
 
@@ -221,16 +224,21 @@ En son değiştirilme zamanına göre dosyaları karşıya yüklemek için AzCop
 Yalnızca hedefte bulunmayan çıkış kaynaklarını kopyalamak istiyorsanız, AzCopy komutunda `--exclude-older` ve `--exclude-newer` (Linux) veya `/XO` ve `/XN` (Windows) parametrelerini belirtin. AzCopy, yalnızca güncelleştirilmiş verileri zaman damgasına göre karşıya yükler.
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 Bağlanma veya kopyalama işlemi sırasında herhangi bir hata oluşursa bkz. [Data Box blob depolamayla ilgili sorunları giderme](data-box-troubleshoot-rest.md).
 

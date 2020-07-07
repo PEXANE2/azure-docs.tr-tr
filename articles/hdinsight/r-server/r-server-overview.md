@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 1dd716a279f7a09e7d9152ee34ff5c7bdac201dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8d164dd50ac190d2bc14fea70cde20bfdb89361
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849922"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri nedir?
 
@@ -23,7 +23,7 @@ HDInsight üzerinde ML Hizmetleri, neredeyse her boyuttaki veri kümelerinde R t
 
 Edge düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar. Edge düğümü, sunucunun çekirdekleri genelinde ScaleR paralelleştirilmiş dağıtılan işlevlerin çalıştırılmasına izin verir. Ayrıca, ScaleR 'nın Hadoop Haritası ' nı kullanarak bunları kümenin düğümleri arasında çalıştırabilirsiniz. Apache Spark işlem bağlamlarını da kullanabilirsiniz.
 
-Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. Azure 'da `operationalized` başka bir yerde de olabilirler. Özellikle, [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)ve [Web hizmeti](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)aracılığıyla.
+Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. `operationalized`Azure 'da başka bir yerde de olabilirler. Özellikle, [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)ve [Web hizmeti](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)aracılığıyla.
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight 'ta ML hizmetlerini kullanmaya başlama
 
@@ -58,7 +58,7 @@ HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
 Aşağıdaki özellikler, HDInsight üzerinde ML hizmetlerine eklenmiştir.
 
-| Özellik kategorisi | Açıklama |
+| Özellik kategorisi | Description |
 |------------------|-------------|
 | R-etkin | R 'de yazılmış çözümler için r ve betik yürütme için çalışma zamanı altyapısını içeren r için [r paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) . |
 | Python etkin | Python 'da yazılmış çözümler için Python [modülleri](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) , Python 'un açık kaynaklı bir dağıtımı ve betik yürütme için çalışma zamanı altyapısı.
@@ -92,7 +92,7 @@ HDInsight 'ta puan vermek için bir R işlevi yazın. İşlevi, depolama hesabı
 
 ### <a name="score-in-azure-machine-learning-aml"></a>Azure Machine Learning puan (AML)
 
-Azure Machine Learning kullanarak puan almak için, modelinizi bir Azure Web hizmeti olarak yayımlamak üzere [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) olarak bilinen açık kaynaklı Azure Machine Learning R paketini kullanın. Kolaylık olması için, bu paket kenar düğümüne önceden yüklenmiştir. Daha sonra, Web hizmeti için bir kullanıcı arabirimi oluşturmak üzere Azure Machine Learning ' deki olanakları kullanın ve ardından Web hizmetini Puanlama için gereken şekilde çağırın. Ardından, Web hizmeti ile kullanmak üzere ScaleR model nesnelerini eşdeğer açık kaynaklı Model nesnelerine dönüştürün. Bu dönüştürme için ensesıya tabanlı modeller `as.randomForest()` gibi ScaleR zorlama işlevlerini kullanın.
+Azure Machine Learning kullanarak puan almak için, modelinizi bir Azure Web hizmeti olarak yayımlamak üzere [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) olarak bilinen açık kaynaklı Azure Machine Learning R paketini kullanın. Kolaylık olması için, bu paket kenar düğümüne önceden yüklenmiştir. Daha sonra, Web hizmeti için bir kullanıcı arabirimi oluşturmak üzere Azure Machine Learning ' deki olanakları kullanın ve ardından Web hizmetini Puanlama için gereken şekilde çağırın. Ardından, Web hizmeti ile kullanmak üzere ScaleR model nesnelerini eşdeğer açık kaynaklı Model nesnelerine dönüştürün. `as.randomForest()`Bu dönüştürme için ensesıya tabanlı modeller gibi ScaleR zorlama işlevlerini kullanın.
 
 ### <a name="score-on-premises"></a>Şirket içi puan
 
@@ -114,7 +114,9 @@ ML Hizmetleri için kullanılabilir bellek, bir MapReduce işi çalıştırıld�
 
 ML Hizmetleri için kullanılabilir bellek, **RxHadoopMR**çağrısında bulunan Hadoop anahtarları kullanılarak değiştirilebilir:
 
-    hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
+```r
+hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"
+```
 
 ### <a name="scale-your-cluster"></a>Kümenizi ölçeklendirin
 

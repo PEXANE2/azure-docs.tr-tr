@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub’a telemetri gönderme hızlı başlangıç kılavuzu | Microsoft Docs
-description: Bu hızlı başlangıçta, bir IoT Hub 'ına sanal telemetri göndermek ve bulutta işlenmek üzere IoT Hub 'ından Telemetriyi okumak için örnek bir Xamarin Forms uygulaması çalıştırırsınız.
+description: Bu hızlı başlangıçta, bir IoT Hub 'ına sanal telemetri göndermek ve bulutta işlenmek üzere IoT Hub 'ından Telemetriyi okumak için örnek bir Xamarin. Forms uygulaması çalıştırırsınız.
 author: cmaneu
 manager: philmea
 ms.author: chmaneu
@@ -10,32 +10,32 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-ms.date: 05/20/2020
-ms.openlocfilehash: d2292a65ef25f6450d6810b50366daa622b92bc8
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.date: 07/01/2020
+ms.openlocfilehash: 4178ee38ca179f179824a13130121b997f4f5f14
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802744"
+ms.locfileid: "85807834"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-xamarin-forms"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme (Xamarin Forms)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-xamarinforms"></a>Hızlı başlangıç: bir cihazdan IoT Hub 'a telemetri gönderme (Xamarin. Forms)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT Hub, IoT cihazlarınızdan buluta depolama veya işleme amacıyla yüksek hacimlerde telemetri almanızı sağlayan bir Azure hizmetidir. Bu makalede, bir simülasyon cihazı uygulamasından IoT Hub’a telemetri göndereceksiniz. Daha sonra, bir arka uç uygulamasından verileri görüntüleyebilirsiniz.
 
-Bu makalede, IoT Hub Telemetriyi okumak üzere telemetri ve bir CLı yardımcı programı göndermek için önceden yazılmış bir Xamarin Forms uygulaması kullanılmaktadır.
+Bu makalede telemetri ve IoT Hub Telemetriyi okumak üzere bir CLı yardımcı programı göndermek için önceden yazılmış bir Xamarin. Forms uygulaması kullanılmaktadır.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure örneklerinden](https://github.com/Azure-Samples/azure-iot-samples-xamarin/archive/master.zip) kod örneğini indirin
 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/) ' nin en son sürümü veya Xamarin Forms araçları yüklü [Mac için Visual Studio](https://visualstudio.microsoft.com/) . Bu hızlı başlangıç, Visual Studio 16.6.0 ile test edilmiştir.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/) veya [Mac için Visual Studio](https://visualstudio.microsoft.com/) , Xamarin. Forms araçları ile birlikte en son sürümü yüklendi. Bu hızlı başlangıç, Visual Studio 16.6.0 ile test edilmiştir.
 
 - Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu hızlı başlangıçta bulunan cihaz örneği, 8883 bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -116,7 +116,7 @@ Aşağıdaki ekran görüntüsünde, yerel Terminal pencerenizde gördüğünüz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir IoT Hub 'ı ayarlarsınız, bir cihaz kaydettiniz, bir Xamarin Forms uygulamasından hub 'a sanal telemetri gönderdiniz ve hub 'dan Telemetriyi okuyaöğreneceksiniz. 
+Bu hızlı başlangıçta, bir IoT Hub 'ı ayarlarsınız, bir cihaz kaydettiniz, bir Xamarin. Forms uygulamasından hub 'a sanal telemetri gönderdiniz ve hub 'dan Telemetriyi okuyaöğreneceksiniz. 
 
 Bir arka uç uygulamasından simülasyon cihazınızı denetlemeyi öğrenmek için sonraki hızlı başlangıçla devam edin.
 

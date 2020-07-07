@@ -3,14 +3,16 @@ title: Azure Notebooks Preview ile bir Jupyter Not defterini GitHub 'dan kopyala
 description: Bir GitHub deposundan hızlı bir şekilde Jupyter Not defterini kopyalayın ve Azure Notebooks hesabınızda çalıştırın.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064606"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833095"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemede bir not defteri kopyalama
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Bu hızlı başlangıçta, GitHub ' da depolanan bir Jupyter Not defterini Azure Notebooks hesabına kopyalayabilirsiniz. 
 
@@ -18,12 +20,10 @@ GitHub depoları, Jupyıter Not defterleri için depolama ve sürüm denetimi sa
 
 Azure Notebooks kopya bulutta olduğundan, bu dosyayı yerel kopya yapmadan veya bilgisayarlarında Jupyıter 'ın yüklü olması gereken ortak çalışanlarla paylaşabilirsiniz. Ayrıca, bir not defterini yalnızca kendi projesi için bir başlangıç noktası olarak kopyalayabilir veya veri dosyalarını elde edebilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Yok.
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Azure bilişsel hizmetler not defterlerini Kopyala
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Ayrıntılar için bkz. [hızlı başlangıç-Azure Notebooks Için oturum açma](quickstart-sign-in-azure-notebooks.md).
 
@@ -37,7 +37,7 @@ Yok.
 
 1. Görüntülenen **GitHub deposunu karşıya yükle** ' de, aşağıdaki ayrıntıları girin veya ayarlayın ve ardından **içeri aktar**' ı seçin:
 
-   - **GitHub deposu**: Microsoft/bilişsel hizmetler-not defterleri (Bu ad, Azure bilişsel Hizmetleri Için Jupyter Not [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)defterlerini klonlar).
+   - **GitHub deposu**: Microsoft/bilişsel hizmetler-not defterleri (Bu ad, Azure bilişsel Hizmetleri Için Jupyter not defterlerini klonlar [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) ).
    - **Yinelemeli olarak Kopyala**: (işaretsiz)
    - **Proje adı**: bilişsel hizmetler kopyası
    - **Proje kimliği**: bilişsel hizmetler-Kopyala
@@ -63,7 +63,7 @@ Yok.
 
     ![GitHub 'dan kopyalanmış Jupyter Not defterini çalıştırma](media/quickstarts/clone-notebook-result.png)
 
-1. Not defterini çalıştırmayı tamamladığınızda, **Dosya** > **Kapat** ' ı ve sonra da Durdur ' u seçerek not defterini ve tarayıcı penceresini kapatın.
+1. Not defterini çalıştırmayı tamamladığınızda, **Dosya**Kapat ' ı ve sonra da Durdur ' u seçerek  >  **Close and halt** Not defterini ve tarayıcı penceresini kapatın.
 
 1. Projede tek bir not defterini paylaşmak için not defterine sağ tıklayıp **Bağlantıyı Kopyala** ' yı seçin (klavye kısayolu: y):
 

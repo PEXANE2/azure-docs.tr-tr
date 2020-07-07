@@ -3,23 +3,23 @@ title: Azure Notebooks önizlemesi için örnek Jupyıter Not defterleri
 description: Örnekler, ücretsiz Azure Notebooks bulut hizmetlerinde çalışan Jupyıter not defterlerini deneyimetmenin harika bir yoludur.
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75646322"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834004"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede örnek not defterlerini bulma ve kullanma
 
-Internet, Azure Notebooks kolayca getirebilmeniz için çok sayıda ilginç ve yararlı jupi Not defteri koleksiyonuna sahiptir. Bu makale, önemli bir örnek listesi sağlar.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Internet, Azure Notebooks kolayca getirebilmeniz için çok sayıda ilginç ve yararlı jupi Not defteri koleksiyonuna sahiptir. Bu makale, önemli bir örnek listesi sağlar.
 
 Araştırmak istediğiniz bir not defterini tanımladıktan sonra, anlamak istediğiniz bazı ayrıntılar aşağıda verilmiştir:
 
 - Bir not defteri zaten Azure Notebooks, kendi hesabınızda projenin bir kopyasını oluşturmak için Proje panosundaki **Kopyala** düğmesini kullanın.
-- Bazı Not defterleri belirli paketlerin çalıştırılmasını gerektirir. Bir not defterinin kendisinden `!pip install` paket yüklemek için ( `install.packages` Python) veya (R) kullanabilirsiniz; ancak, [uygun ortamla bir Azure Notebooks projesi de yapılandırabilirsiniz](configure-manage-azure-notebooks-projects.md).
+- Bazı Not defterleri belirli paketlerin çalıştırılmasını gerektirir. `!pip install` `install.packages` Bir not defterinin kendisinden paket yüklemek için (Python) veya (R) kullanabilirsiniz; ancak, [uygun ortamla bir Azure Notebooks projesi de yapılandırabilirsiniz](configure-manage-azure-notebooks-projects.md).
 
 ## <a name="great-sample-notebooks"></a>Harika örnek Not defterleri
 

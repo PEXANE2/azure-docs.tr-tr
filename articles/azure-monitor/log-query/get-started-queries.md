@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: f56abe2bf6ccea1f55f9b3fe94b75016d449b46b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670189"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801436"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını kullanmaya başlama
 
 > [!NOTE]
-> En az bir sanal makineden veri topluyorsanız, kendi ortamınızda bu alıştırma aracılığıyla çalışabilirsiniz. Daha sonra, çok sayıda örnek veri içeren [tanıtım ortamımuzu](https://portal.loganalytics.io/demo)kullanın.
+> En az bir sanal makineden veri topluyorsanız, kendi ortamınızda bu alıştırma aracılığıyla çalışabilirsiniz. Daha sonra, çok sayıda örnek veri içeren [tanıtım ortamımuzu](https://portal.loganalytics.io/demo)kullanın.  KQL 'de sorgu oluşturmayı zaten biliyorsanız, ancak yalnızca kaynak türlerine göre kısa bir süre önce yararlı sorgular oluşturmanız gerekiyorsa, [kaydedilen örnek sorgular bölmesine](saved-queries.md)bakın.
 
 Bu öğreticide, Azure Izleyici 'de günlük sorgularını yazmayı öğreneceksiniz. Şu şekilde nasıl yapılacağını öğretir:
 
@@ -36,12 +36,14 @@ Aşağıdaki öğreticinin video sürümüyle birlikte izleyin:
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Yeni sorgu yazma
+
 Sorgular, bir tablo adı veya *Search* komutuyla başlayabilir. Sorgu için açık bir kapsam tanımladığından ve hem sorgu performansını hem de sonuçların uygunluğunu geliştirdiğinden, bir tablo adıyla başlamanız gerekir.
 
 > [!NOTE]
 > Azure İzleyici tarafından kullanılan Kusto sorgu dili, büyük/küçük harfe duyarlıdır. Dil anahtar sözcükleri genellikle küçük harfle yazılır. Bir sorgudaki tablo veya sütun adlarını kullanırken, şema bölmesinde gösterildiği gibi doğru durumu kullandığınızdan emin olun.
 
 ### <a name="table-based-queries"></a>Tablo tabanlı sorgular
+
 Azure Izleyici, tablolardaki günlük verilerini, her biri birden çok sütundan oluşan şekilde düzenler. Tüm tablolar ve sütunlar, analiz portalında Log Analytics şema bölmesinde gösterilir. İlgilendiğiniz bir tabloyu tanımlayabilir ve ardından bir veri bölümüne göz atın:
 
 ```Kusto
@@ -55,9 +57,10 @@ Yukarıda gösterilen sorgu, belirli bir sırada *Securityevent* tablosundan 10 
 * Kanal (|) karakteri komutları ayırır, bu nedenle aşağıdaki komutun girişinde ilk bir çıkış oluşur. Herhangi bir sayıda yöneltilen öğe ekleyebilirsiniz.
 * Kanalı takip eden, tablodan belirli sayıda rastgele kayıt döndüren **Al** komutu olur.
 
-Gerçekten de geçerli olmaya devam edecek şekilde sorguyu `| take 10` çalıştırırız, ancak en fazla 10.000 sonuç döndürebilir.
+Gerçekten de geçerli olmaya devam edecek şekilde sorguyu çalıştırırız `| take 10` , ancak en fazla 10.000 sonuç döndürebilir.
 
 ### <a name="search-queries"></a>Arama sorguları
+
 Arama sorguları daha az yapılandırılmıştır ve sütunlarında belirli bir değeri içeren kayıtları bulmaya yönelik genellikle daha uygundur:
 
 ```Kusto
@@ -65,7 +68,7 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Bu sorgu, "şifreleme" tümceciğini içeren kayıtlar için *Securityevent* tablosunu arar. Bu kayıtlardan 10 kayıt döndürülür ve görüntülenir. `in (SecurityEvent)` Bölümü atlıyoruz ve yalnızca çalıştırırsanız `search "Cryptographic"`, arama *Tüm* tablolara giderek daha uzun sürer ve daha az etkili olur.
+Bu sorgu, "şifreleme" tümceciğini içeren kayıtlar için *Securityevent* tablosunu arar. Bu kayıtlardan 10 kayıt döndürülür ve görüntülenir. Bölümü atlıyoruz `in (SecurityEvent)` ve yalnızca çalıştırırsanız `search "Cryptographic"` , arama *Tüm* tablolara giderek daha uzun sürer ve daha az etkili olur.
 
 > [!WARNING]
 > Arama sorguları genellikle tablo tabanlı sorgulardan daha yavaştır, çünkü daha fazla veri işleyebilir. 
@@ -104,7 +107,7 @@ SecurityEvent
 
 Filtre koşullarını yazarken aşağıdaki ifadeleri kullanabilirsiniz:
 
-| İfadeler | Açıklama | Örnek |
+| İfade | Açıklama | Örnek |
 |:---|:---|:---|
 | == | Eşitliği denetle<br>(büyük/küçük harfe duyarlı) | `Level == 8` |
 | =~ | Eşitliği denetle<br>(büyük/küçük harf duyarsız) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
@@ -132,12 +135,14 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>Bir zaman aralığı belirtin
 
 ### <a name="time-picker"></a>Saat seçici
+
 Saat Seçici, Çalıştır düğmesinin yanında bulunur ve yalnızca son 24 saatin kayıtlarını sorgulıyoruz. Bu, tüm sorgulara uygulanan varsayılan zaman aralığıdır. Son saatin yalnızca kayıtlarını almak için _son saat_ ' i seçin ve sorguyu yeniden çalıştırın.
 
 ![Saat Seçici](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>Sorgudaki zaman filtresi
+
 Ayrıca sorguya bir zaman filtresi ekleyerek kendi zaman aralığınızı tanımlayabilirsiniz. Zaman filtresini tablo adından hemen sonra yerleştirmeniz en iyisidir: 
 
 ```Kusto
@@ -150,6 +155,7 @@ Yukarıdaki zaman filtresi `ago(30m)` "30 dakika önce" anlamına gelir, bu nede
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Proje ve genişletme: sütunları seçme ve hesaplama
+
 Sonuçlara eklenecek belirli sütunları seçmek için **projeyi** kullanın:
 
 ```Kusto

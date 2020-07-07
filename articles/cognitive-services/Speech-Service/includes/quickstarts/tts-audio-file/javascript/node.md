@@ -3,15 +3,15 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 244bd6c270b5845039c1a5cc4d1322cb928a5aa3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.author: trbye
+ms.openlocfilehash: 19c054b72f7aa2ed6108d076a48856919a01462d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806479"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85839002"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
@@ -21,7 +21,7 @@ Başlamadan önce:
 
 ## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
-Projemiz için bir çatı olarak çalışacak bir kod ekleyelim. Bir index. js dosyası oluşturun ve bu kodu ekleyin.
+Projemiz için bir çatı olarak çalışacak bir kod ekleyelim. index.js bir dosya oluşturun ve bu kodu ekleyin.
 
 , Ve değerlerini doldurduğunuzdan emin olun `subscriptionKey` `servcieRegion` `filename` .
 

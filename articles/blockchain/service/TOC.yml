@@ -62,6 +62,10 @@
       href: ethereum-logic-app.md
     - name: Azure Blok Zinciri Hizmeti’ni izleme
       href: monitor-azure-blockchain-service.md
+- name: Başvuru
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blockchain/blockchain
 - name: Kaynaklar
   items:
     - name: Azure Blok Zinciri geliştirme seti

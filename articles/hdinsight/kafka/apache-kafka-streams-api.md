@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 2885fccd95d09149ae496b80a658f34e5b697d0b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0174c40a0fada0f78cc8d52f5c45b991c3851da0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064489"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850560"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Kafka akışları API 'SI kullanma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kafka konuları yapılandırma
 > * Kodu çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight 3.6 kümesi üzerinde bir Kafka. HDInsight kümesinde Kafka oluşturma hakkında bilgi edinmek için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md) belgesi.
 
@@ -47,7 +47,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-Örnek uygulama, [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) `Streaming` dizininde konumunda bulunur. Uygulama iki dosyadan oluşur:
+Örnek uygulama, dizininde konumunda bulunur [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) `Streaming` . Uygulama iki dosyadan oluşur:
 
 * `pom.xml`: Bu dosya, proje bağımlılıklarını, Java sürümünü ve paketleme yöntemlerini tanımlar.
 * `Stream.java`: Bu dosya, akış mantığını uygular.
@@ -131,7 +131,7 @@ public class Stream
 
 Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için aşağıdaki adımları kullanın:
 
-1. Geçerli dizininizi `hdinsight-kafka-java-get-started-master\Streaming` dizinin konumuna ayarlayın ve ardından aşağıdaki komutu kullanarak bir jar paketi oluşturun:
+1. Geçerli dizininizi dizinin konumuna ayarlayın `hdinsight-kafka-java-get-started-master\Streaming` ve ardından aşağıdaki komutu kullanarak bir jar paketi oluşturun:
 
     ```cmd
     mvn clean package
@@ -139,7 +139,7 @@ Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için a
 
     Bu komut, `target/kafka-streaming-1.0-SNAPSHOT.jar` konumunda paketi oluşturur.
 
-2. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `clustername` değerini kümenizin adıyla değiştirin. `kafka-streaming-1.0-SNAPSHOT.jar` Dosyayı HDInsight kümenize kopyalamak için aşağıdaki komutu kullanın. İstendiğinde, SSH kullanıcı hesabının parolasını girin.
+2. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `clustername` değerini kümenizin adıyla değiştirin. Dosyayı HDInsight kümenize kopyalamak için aşağıdaki komutu kullanın `kafka-streaming-1.0-SNAPSHOT.jar` . İstendiğinde, SSH kullanıcı hesabının parolasını girin.
 
     ```cmd
     scp ./target/kafka-streaming-1.0-SNAPSHOT.jar sshuser@clustername-ssh.azurehdinsight.net:kafka-streaming.jar
@@ -153,13 +153,13 @@ Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için a
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Komut satırı JSON işlemcisi olan [JQ](https://stedolan.github.io/jq/)'yi yükler. Açık SSH bağlantısından yüklemek `jq`için aşağıdaki komutu girin:
+2. Komut satırı JSON işlemcisi olan [JQ](https://stedolan.github.io/jq/)'yi yükler. Açık SSH bağlantısından yüklemek için aşağıdaki komutu girin `jq` :
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. Parola değişkenini ayarlayın. Küme `PASSWORD` oturum açma parolasıyla değiştirin, ardından şu komutu girin:
+3. Parola değişkenini ayarlayın. `PASSWORD`Küme oturum açma parolasıyla değiştirin, ardından şu komutu girin:
 
     ```bash
     export password='PASSWORD'
@@ -172,7 +172,7 @@ Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için a
     ```
 
     > [!Note]  
-    > Bu işlemi küme dışından yapıyorsanız, küme adını depolamak için farklı bir yordam vardır. Azure portal küme adını küçük harf olarak alın. Ardından, aşağıdaki komutta için `<clustername>` küme adını değiştirin ve yürütün:. `export clusterName='<clustername>'`  
+    > Bu işlemi küme dışından yapıyorsanız, küme adını depolamak için farklı bir yordam vardır. Azure portal küme adını küçük harf olarak alın. Ardından, aşağıdaki komutta için küme adını değiştirin `<clustername>` ve yürütün: `export clusterName='<clustername>'` .  
 
 5. Kafka Broker konakları ve Apache Zookeeper Konakları almak için aşağıdaki komutları kullanın. İstendiğinde, küme oturum açma (yönetici) hesabı için parolayı girin.
 
@@ -232,19 +232,21 @@ Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için a
 
     Çıktı aşağıdaki metne benzer:
 
-        dwarfs  13635
-        ago     13664
-        snow    13636
-        dwarfs  13636
-        ago     13665
-        a       13803
-        ago     13666
-        a       13804
-        ago     13667
-        ago     13668
-        jumped  13640
-        jumped  13641
-   
+    ```output
+    dwarfs  13635
+    ago     13664
+    snow    13636
+    dwarfs  13636
+    ago     13665
+    a       13803
+    ago     13666
+    a       13804
+    ago     13667
+    ago     13668
+    jumped  13640
+    jumped  13641
+    ```
+
     `--from-beginning` parametresi, tüketiciyi konuda depolanan kayıtların başında başlayacak şekilde yapılandırır. Her sözcükle karşılaşıldığında sayı artar, bu nedenle konu, artan sayıyla birlikte her sözcük için birden fazla giriş içerir.
 
 4. Üreticiden çıkış yapmak için __Ctrl + C__ tuşlarını kullanın. Uygulamadan ve tüketiciden çıkış yapmak için __Ctrl + C__ tuşlarını kullanmaya devam edin.
