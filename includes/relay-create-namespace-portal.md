@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 500db9f6d299ea81b1f1b1be864df5d91ba1eae7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76020867"
 ---
 1. [Azure Portal][Azure portal] oturum açın.
-1. **Kaynak oluştur**’u seçin. Ardından, **tümleştirme** > **geçişi**' ni seçin. Listede **Geçiş**'i görmüyorsanız sağ üst köşedeki **Tümünü Gör**'ü seçin.
+1. **Kaynak oluştur**’u seçin. Ardından, **tümleştirme**  >  **geçişi**' ni seçin. Listede **Geçiş**'i görmüyorsanız sağ üst köşedeki **Tümünü Gör**'ü seçin.
 1. **Oluştur**' u seçin ve **ad** alanına bir ad alanı adı girin. Azure portal, adın kullanılabilir olup olmadığını denetler.
 1. Ad alanını oluşturmak için bir Azure aboneliği seçin.
 1. [Kaynak grubu](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)için, ad alanının yerleştirileceği mevcut bir kaynak grubunu seçin ya da yeni bir tane oluşturun.  
@@ -20,7 +20,7 @@ ms.locfileid: "76020867"
 
     ![Ad alanı oluşturma][create-namespace]
 
-1. **Oluştur**’u seçin. Azure portal, ad alanınızı oluşturur ve etkinleştirilir. Birkaç dakika sonra sistem, hesabınız için kaynakları sağlar.
+1. **Oluştur**'u seçin. Azure portal, ad alanınızı oluşturur ve etkinleştirilir. Birkaç dakika sonra sistem, hesabınız için kaynakları sağlar.
 
 ### <a name="get-management-credentials"></a>Yönetim kimlik bilgilerini alma
 
