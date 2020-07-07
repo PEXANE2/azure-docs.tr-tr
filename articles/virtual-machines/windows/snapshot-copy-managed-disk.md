@@ -10,10 +10,10 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 92957bd078c04a9bb7ac35f9d30f042a44e10764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100643"
 ---
 # <a name="create-a-snapshot"></a>Anlık görüntü oluşturma
@@ -33,7 +33,7 @@ Anlık görüntü oluşturmak için aşağıdaki adımları izleyin:
 6. Azure veri merkezi **Konumu** seçin.  
 7. **Kaynak disk**için, anlık görüntü yapılacak yönetilen diski seçin.
 8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Anlık görüntünün yüksek performanslı bir diskte depolanması gerekmiyorsa **Standard_HDD**' yi seçin.
-9. **Oluştur**’u seçin.
+9. **Oluştur**'u seçin.
 
 ## <a name="use-powershell"></a>PowerShell kullanma
 

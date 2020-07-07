@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d522d8dd20fb8e1e781f0b13ccdbc4fd98f1727c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ebc3cf8e131efbd8d315942c42325c3720586ae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80321711"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85853225"
 ---
 > [!NOTE]
-> Bu makalede, Azure IoT uzantısı'nın `azure-iot`en yeni sürümü kullanır. Eski sürüm denir. `azure-iot-cli-ext` Aynı anda yalnızca bir sürümü yüklü olmalıdır. Şu anda `az extension list` yüklenen uzantıları doğrulamak için komutu kullanabilirsiniz.
+> Bu makalede, adlı Azure IoT uzantısının en yeni sürümü kullanılmıştır `azure-iot` . Eski sürüm çağrılır `azure-cli-iot-ext` . Aynı anda yalnızca bir sürümü yüklü olmalıdır. `az extension list`Şu anda yüklü olan uzantıları doğrulamak için komutunu kullanabilirsiniz.
 >
-> Uzantının eski sürümünü kaldırmak için kullanın. `az extension remove --name azure-cli-iot-ext`
+> `az extension remove --name azure-cli-iot-ext`Uzantının eski sürümünü kaldırmak için kullanın.
 >
-> Uzantının yeni sürümünü eklemek için kullanın. `az extension add --name azure-iot` 
+> `az extension add --name azure-iot`Uzantının yeni sürümünü eklemek için kullanın. 
 >
-> Hangi uzantıları yüklediğinizi görmek için `az extension list`.
+> Yüklediğiniz uzantıları görmek için kullanın `az extension list` .
 >

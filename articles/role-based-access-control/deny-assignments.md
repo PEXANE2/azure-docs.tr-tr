@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733784"
 ---
 # <a name="understand-azure-deny-assignments"></a>Azure reddetme atamalarını anlama
@@ -54,7 +54,7 @@ Atamaları Reddet, benzer bir kalıbı rol atamaları olarak izler, ancak bazı 
  Reddetme atama aşağıdaki özelliklere sahiptir:
 
 > [!div class="mx-tableFixed"]
-> | Özellik | Gerekli | Tür | Açıklama |
+> | Özellik | Gerekli | Tür | Description |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | Yes | Dize | Reddetme atamasının görünen adı. Adlar, belirli bir kapsam için benzersiz olmalıdır. |
 > | `Description` | No | Dize | Reddetme atamasının açıklaması. |
@@ -64,15 +64,15 @@ Atamaları Reddet, benzer bir kalıbı rol atamaları olarak izler, ancak bazı 
 > | `Permissions.NotDataActions` | No | String [] | Reddetme atamasından çıkarılacak veri işlemlerini belirten dizeler dizisi. |
 > | `Scope` | No | Dize | Reddetme atamasının geçerli olduğu kapsamı belirten bir dize. |
 > | `DoNotApplyToChildScopes` | No | Boole | Reddetme atamasının alt kapsamlar için geçerli olup olmadığını belirtir. Varsayılan değer false 'dur. |
-> | `Principals[i].Id` | Yes | String [] | Reddetme atamasının uygulandığı Azure AD Principal nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. Tüm sorumluları temsil etmek için `00000000-0000-0000-0000-000000000000` boş bir GUID olarak ayarlayın. |
-> | `Principals[i].Type` | No | String [] | Sorumlular tarafından temsil edilen nesne türleri dizisi [i]. ID. tüm sorumluları `SystemDefined` temsil edecek şekilde ayarlanır. |
+> | `Principals[i].Id` | Yes | String [] | Reddetme atamasının uygulandığı Azure AD Principal nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. `00000000-0000-0000-0000-000000000000`Tüm sorumluları temsil etmek için boş BIR GUID olarak ayarlayın. |
+> | `Principals[i].Type` | No | String [] | Sorumlular tarafından temsil edilen nesne türleri dizisi [i]. ID. `SystemDefined` tüm sorumluları temsil edecek şekilde ayarlanır. |
 > | `ExcludePrincipals[i].Id` | No | String [] | Reddetme atamasının uygulanmadığından, Azure AD sorumlusu nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. |
 > | `ExcludePrincipals[i].Type` | No | String [] | Excludesorumlularını [i]. ID tarafından temsil edilen nesne türleri dizisi. |
 > | `IsSystemProtected` | No | Boole | Bu reddetme atamasının Azure tarafından oluşturulup oluşturulmayacağını veya silinemeyeceğini belirtir. Şu anda tüm reddetme atamaları sistem korumalıdır. |
 
 ## <a name="the-all-principals-principal"></a>Tüm asıl adlar
 
-Reddedilen atamaları desteklemek için, *Tüm sorumlular* adlı sistem tanımlı bir sorumlu tanıtılmıştır. Bu sorumlu, bir Azure AD dizinindeki tüm kullanıcıları, grupları, hizmet sorumlularını ve yönetilen kimlikleri temsil eder. Asıl KIMLIK sıfır bir GUID `00000000-0000-0000-0000-000000000000` ise ve asıl tür ise `SystemDefined`, sorumlu tüm sorumluları temsil eder. Azure PowerShell çıktısında, tüm sorumlular aşağıdaki gibi görünür:
+Reddedilen atamaları desteklemek için, *Tüm sorumlular* adlı sistem tanımlı bir sorumlu tanıtılmıştır. Bu sorumlu, bir Azure AD dizinindeki tüm kullanıcıları, grupları, hizmet sorumlularını ve yönetilen kimlikleri temsil eder. Asıl KIMLIK sıfır bir GUID ise `00000000-0000-0000-0000-000000000000` ve asıl tür ise `SystemDefined` , sorumlu tüm sorumluları temsil eder. Azure PowerShell çıktısında, tüm sorumlular aşağıdaki gibi görünür:
 
 ```azurepowershell
 Principals              : {
@@ -82,10 +82,10 @@ Principals              : {
                           }
 ```
 
-Tüm sorumlular, bazı kullanıcılar `ExcludePrincipals` hariç tüm sorumluları reddedecek şekilde birleştirilebilir. Tüm sorumlular aşağıdaki kısıtlamalara sahiptir:
+Tüm sorumlular, `ExcludePrincipals` bazı kullanıcılar hariç tüm sorumluları reddedecek şekilde birleştirilebilir. Tüm sorumlular aşağıdaki kısıtlamalara sahiptir:
 
-- Yalnızca içinde `Principals` kullanılabilir ve ' de `ExcludePrincipals`kullanılamaz.
-- `Principals[i].Type`olarak `SystemDefined`ayarlanmalıdır.
+- Yalnızca içinde kullanılabilir ve ' `Principals` de kullanılamaz `ExcludePrincipals` .
+- `Principals[i].Type`olarak ayarlanmalıdır `SystemDefined` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

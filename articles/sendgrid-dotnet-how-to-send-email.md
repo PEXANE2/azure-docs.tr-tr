@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.openlocfilehash: 33df6b5c8c5c16a6eb896944de05068affc2b407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062209"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Azure ile SendGrid kullanarak e-posta gönderme
 ## <a name="overview"></a>Genel Bakış
-Bu kılavuzda, Azure 'da SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Örnekler C\# dilinde yazılır ve 1,3 .NET Standard destekler. Kapsanan senaryolar, e-posta oluşturma, e-posta gönderme, ek ekleme ve çeşitli posta ve izleme ayarlarını etkinleştirme içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar][Next steps] bölümüne bakın.
+Bu kılavuzda, Azure 'da SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Örnekler C dilinde yazılır \# ve 1,3 .NET Standard destekler. Kapsanan senaryolar, e-posta oluşturma, e-posta gönderme, ek ekleme ve çeşitli posta ve izleme ayarlarını etkinleştirme içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar][Next steps] bölümüne bakın.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid e-posta hizmeti nedir?
 SendGrid, özel tümleştirmeyi kolaylaştıran esnek API 'lerle birlikte güvenilir [işlem e-posta teslimi], ölçeklenebilirlik ve gerçek zamanlı çözümlemeler sağlayan [bulut tabanlı bir e-posta hizmetidir] . Ortak SendGrid kullanım örnekleri şunları içerir:
@@ -43,7 +43,7 @@ Daha fazla bilgi için, [https://sendgrid.com](https://sendgrid.com) veya SendGr
 [SendGrid NuGet paketi](https://www.nuget.org/packages/Sendgrid) , SENDGRID API 'sini almanın ve uygulamanızı tüm bağımlılıklarla yapılandırmanın en kolay yoludur. NuGet, Microsoft Visual Studio 2015 ve üzeri sürümlerde bulunan bir Visual Studio uzantısıdır ve bu da kitaplıkları ve araçları yüklemeyi ve güncelleştirmeyi kolaylaştırır.
 
 > [!NOTE]
-> Visual Studio 2015 'den önceki bir sürümünü çalıştırıyorsanız NuGet yüklemek için, ' yi ziyaret edin [https://www.nuget.org](https://www.nuget.org)ve NuGet 'i **yükleyebilirsiniz** düğmesine tıklayın.
+> Visual Studio 2015 'den önceki bir sürümünü çalıştırıyorsanız NuGet yüklemek için, ' yi ziyaret edin [https://www.nuget.org](https://www.nuget.org) ve **NuGet 'i yükleyebilirsiniz** düğmesine tıklayın.
 >
 >
 
@@ -144,11 +144,11 @@ Aşağıdaki örneklerde, bir konsol uygulamasıyla SendGrid Web API 'sini kulla
     
 ## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Nasıl yapılır: MailHelper sınıfını kullanarak ASP .NET Core API 'sinden e-posta gönderme
 
-Aşağıdaki örnek, `MailHelper` `SendGrid.Helpers.Mail` ad alanı sınıfını kullanarak ASP .NET Core API 'sinden birden çok kişiye tek bir e-posta göndermek için kullanılabilir. Bu örnekte ASP .NET Core 1,0 kullandık. 
+Aşağıdaki örnek, `MailHelper` ad alanı sınıfını kullanarak ASP .NET Core API 'sinden birden çok kişiye tek bir e-posta göndermek için kullanılabilir `SendGrid.Helpers.Mail` . Bu örnekte ASP .NET Core 1,0 kullandık. 
 
-Bu örnekte, API anahtarı, Yukarıdaki örneklerde gösterildiği gibi Azure portal geçersiz `appsettings.json` kılınabilen dosyada depolandı.
+Bu örnekte, API anahtarı, `appsettings.json` Yukarıdaki örneklerde gösterildiği gibi Azure Portal geçersiz kılınabilen dosyada depolandı.
 
-`appsettings.json` Dosyanın içeriği şuna benzemelidir:
+Dosyanın içeriği şuna benzemelidir `appsettings.json` :
 
     {
        "Logging": {
@@ -162,7 +162,7 @@ Bu örnekte, API anahtarı, Yukarıdaki örneklerde gösterildiği gibi Azure po
      "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     }
 
-İlk olarak, aşağıdaki kodu .NET Core API projesi `Startup.cs` dosyasına eklememiz gerekir. Bu, API denetleyicisindeki bağımlılık ekleme 'yı kullanarak `SENDGRID_API_KEY` `appsettings.json` dosyadan erişebilmemiz için gereklidir. `IConfiguration` Arabirim, aşağıdaki `ConfigureServices` yönteme eklendikten sonra denetleyicinin oluşturucusuna eklenebilir. `Startup.cs` Dosya içeriği, gerekli kodu ekledikten sonra aşağıdaki gibi görünür:
+İlk olarak, aşağıdaki kodu `Startup.cs` .NET Core API projesi dosyasına eklememiz gerekir. Bu, `SENDGRID_API_KEY` `appsettings.json` API denetleyicisindeki bağımlılık ekleme 'yı kullanarak dosyadan erişebilmemiz için gereklidir. `IConfiguration`Arabirim, aşağıdaki yönteme eklendikten sonra denetleyicinin oluşturucusuna eklenebilir `ConfigureServices` . Dosya içeriği, `Startup.cs` gerekli kodu ekledikten sonra aşağıdaki gibi görünür:
 
         public IConfigurationRoot Configuration { get; }
 
@@ -173,7 +173,7 @@ Bu örnekte, API anahtarı, Yukarıdaki örneklerde gösterildiği gibi Azure po
             services.AddSingleton<IConfiguration>(Configuration);
         }
 
-Denetleyicide, `IConfiguration` arabirimden ekleme sonra, birden çok alıcıya tek bir e `CreateSingleEmailToMultipleRecipients` -posta göndermek `MailHelper` için sınıfının yöntemini kullanabiliriz. Yöntemi adlı `showAllRecipients`bir ek Boolean parametresini kabul eder. Bu parametre e-posta alıcılarının e-posta üstbilgisinin to bölümünde e-posta alıcılarının her bir e-posta adresini görüp göremeyeceğini denetlemek için kullanılabilir. Denetleyicinin örnek kodu aşağıdaki gibi olmalıdır 
+Denetleyicide, arabirimden ekleme sonra `IConfiguration` , `CreateSingleEmailToMultipleRecipients` `MailHelper` birden çok alıcıya tek bir e-posta göndermek için sınıfının yöntemini kullanabiliriz. Yöntemi adlı bir ek Boolean parametresini kabul eder `showAllRecipients` . Bu parametre e-posta alıcılarının e-posta üstbilgisinin to bölümünde e-posta alıcılarının her bir e-posta adresini görüp göremeyeceğini denetlemek için kullanılabilir. Denetleyicinin örnek kodu aşağıdaki gibi olmalıdır 
 
     using System;
     using System.Collections.Generic;
@@ -253,7 +253,7 @@ SendGrid, Azure uygulamanızda ek işlevlerden yararlanmak için kullanabileceğ
 ## <a name="next-steps"></a>Sonraki adımlar
 SendGrid e-posta hizmetinin temellerini öğrendiğinize göre, daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
-* SendGrid C\# kitaplığı deposu: [SendGrid-CSharp][sendgrid-csharp]
+* SendGrid C \# kitaplığı deposu: [SendGrid-CSharp][sendgrid-csharp]
 * SendGrid API belgeleri:<https://sendgrid.com/docs>
 
 [Next steps]: #next-steps

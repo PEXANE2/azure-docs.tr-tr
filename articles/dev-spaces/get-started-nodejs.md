@@ -1,18 +1,18 @@
 ---
-title: 'Kubernetes geliştirme alanı oluşturma: Visual Studio Code & Node. js'
+title: 'Kubernetes geliştirme alanı oluşturma: Visual Studio Code & Node.js'
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Bu öğreticide, Azure Kubernetes hizmetinde bir Node. js uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
+description: Bu öğreticide, Azure Kubernetes hizmetinde bir Node.js uygulamasını hata ayıklama ve hızla yinelemek için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
-ms.openlocfilehash: 6571e23c3ca9b67d4db3c9c7bcea1e4a3b80e4c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ee8ec8eb78ccb8a7405fd00654ee00ebba8b7c1
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240527"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854981"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturun: Azure Dev Spaces ile Visual Studio Code ve Node. js
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Bir Kubernetes geliştirme alanı oluşturma: Azure Dev Spaces ile Visual Studio Code ve Node.js
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -75,7 +75,7 @@ AKS kümenizi içeren kaynak grubuyla AKS kümesi adınızı kullanarak aşağı
    ```
 
 > [!IMPORTANT]
-> Azure Dev Spaces yapılandırma işlemi, varsa, kümedeki `azds` ad alanını kaldırır.
+> Azure Dev Spaces yapılandırma işlemi, varsa `azds` , kümedeki ad alanını kaldırır.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>VS Code için Kubernetes hata ayıklaması edinin
 Kubernetes hata ayıklaması gibi zengin özellikler VS Code kullanarak .NET Core ve Node.js geliştiricileri için kullanılabilir.
@@ -88,7 +88,7 @@ Kubernetes hata ayıklaması gibi zengin özellikler VS Code kullanarak .NET Cor
 Bu bölümde bir Node.js web uygulaması oluşturacak ve Kubernetes’teki bir kapsayıcı içinde çalıştıracaksınız.
 
 ### <a name="create-a-nodejs-web-app"></a>Node.js Web Uygulaması oluşturma
-GitHub deposunu yerel ortamınıza indirmek için [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) ' a gidip **Kopyala veya indir** ' i seçerek GitHub 'dan kod indirin. Bu kılavuzun kodu `samples/nodejs/getting-started/webfrontend` içindedir.
+GitHub [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) deposunu yerel ortamınıza indirmek için ' a gidip **Kopyala veya indir** ' i seçerek GitHub 'dan kod indirin. Bu kılavuzun kodu `samples/nodejs/getting-started/webfrontend` içindedir.
 
 ## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Docker ve Kubernetes geliştirmesi için kod hazırlama
 Şimdiye kadar, yerel olarak çalıştırılabilen temel bir web uygulamanız vardı. Şimdi uygulamanın kapsayıcısını tanımlayan varlıklar oluşturup Kubernetes’de nasıl dağıtılacağını belirleyerek uygulamayı kapsayıcılı hale getireceksiniz. Bu görev Azure Dev Spaces ile kolayca gerçekleştirilebilir: 
@@ -138,12 +138,12 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-`up` Komutun çıktısındaki hizmet için genel URL 'yi belirler. İçinde `.azds.io`biter. Yukarıdaki örnekte, genel URL olur `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Komutun çıktısındaki hizmet için genel URL 'YI belirler `up` . İçinde biter `.azds.io` . Yukarıdaki örnekte, genel URL olur `http://webfrontend.1234567890abcdef1234.eus.azds.io/` .
 
-Web uygulamanızı görmek için genel URL 'YI bir tarayıcıda açın. Ayrıca, uyarı `stdout` ve `stderr` çıkış, Web uygulamanızla etkileşime geçerek *azds Trace* Terminal penceresine akışla kaydedilir. Ayrıca, sistemde ilerlediklerinde HTTP istekleri için izleme bilgilerini görürsünüz. Bu, geliştirme sırasında karmaşık çok hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen araçlar bu istek izlemeyi sağlar.
+Web uygulamanızı görmek için genel URL 'YI bir tarayıcıda açın. Ayrıca, uyarı `stdout` ve `stderr` Çıkış, Web uygulamanızla etkileşime geçerek *azds Trace* Terminal penceresine akışla kaydedilir. Ayrıca, sistemde ilerlediklerinde HTTP istekleri için izleme bilgilerini görürsünüz. Bu, geliştirme sırasında karmaşık çok hizmet çağrılarını izlemenizi kolaylaştırır. Dev Spaces tarafından eklenen araçlar bu istek izlemeyi sağlar.
 
 > [!Note]
-> Genel URL 'nin yanı sıra, konsol çıkışında görüntülenen alternatif `http://localhost:<portnumber>` URL 'yi de kullanabilirsiniz. Localhost URL 'sini kullanırsanız, kapsayıcı yerel olarak çalışıyor, ancak aslında Azure 'da çalışıyor gibi görünebilir. Azure Dev Spaces, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak localhost bağlantı noktasını aks 'de çalışan kapsayıcıya eşler. Bu, yerel makinenizden hizmetle etkileşimde bulunmayı kolaylaştırır.
+> Genel URL 'nin yanı sıra, `http://localhost:<portnumber>` konsol çıkışında görüntülenen alternatif URL 'yi de kullanabilirsiniz. Localhost URL 'sini kullanırsanız, kapsayıcı yerel olarak çalışıyor, ancak aslında Azure 'da çalışıyor gibi görünebilir. Azure Dev Spaces, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak localhost bağlantı noktasını aks 'de çalışan kapsayıcıya eşler. Bu, yerel makinenizden hizmetle etkileşimde bulunmayı kolaylaştırır.
 
 ### <a name="update-a-content-file"></a>İçerik dosyası güncelleştirme
 Azure Dev Spaces yalnızca kodu Kubernetes’te çalıştırmaya yönelik değildir; aynı zamanda kod değişikliklerinizin buluttaki bir Kubernetes ortamında uygulandığını hızlıca ve yinelenerek görmenizi sağlar.
@@ -157,14 +157,14 @@ Azure Dev Spaces yalnızca kodu Kubernetes’te çalıştırmaya yönelik değil
 1. Dosyayı kaydedin. Birkaç dakika sonra, Terminal penceresinde çalışan kapsayıcı içindeki bir dosyanın güncelleştirildiğini söyleyen bir ileti göreceksiniz.
 1. Tarayıcınıza gidip sayfayı yenileyin. Renk güncelleştirmenizi görürsünüz.
 
-Ne oldu? HTML ve CSS gibi içerik dosyalarında düzenlemeler yapmak için Node.js işleminin yeniden başlatılması gerekmez; bu nedenle etkin bir `azds up` komutu, değiştirilmiş tüm içerik dosyalarını Azure’daki çalışan kapsayıcıya doğrudan otomatik olarak eşitler ve böylece içerik düzenlemelerinizi görmenin hızlı bir yolunu sağlar.
+Neler oldu? HTML ve CSS gibi içerik dosyalarında düzenlemeler yapmak için Node.js işleminin yeniden başlatılması gerekmez; bu nedenle etkin bir `azds up` komutu, değiştirilmiş tüm içerik dosyalarını Azure’daki çalışan kapsayıcıya doğrudan otomatik olarak eşitler ve böylece içerik düzenlemelerinizi görmenin hızlı bir yolunu sağlar.
 
 ### <a name="test-from-a-mobile-device"></a>Mobil cihazdan test etme
 webfrontend genel URL'sini kullanarak web uygulamasını bir mobil cihazdan açın. Uzun adresi el ile girmemek için URL'yi masaüstü bilgisayarınızda kopyalayıp cihazınıza gönderebilirsiniz. Web uygulaması mobil cihazınızda yüklendiğinde, kullanıcı arabiriminin küçük bir cihazda düzgün şekilde gösterilmediğini fark edersiniz.
 
 Bu sorunu gidermek için bir `viewport` meta etiketi ekleyin:
 1. `./public/index.html` dosyasını açın
-1. 6. `viewport` `head` [satırda](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6)başlayan mevcut öğeye bir meta etiketi ekleyin:
+1. `viewport` `head` [6. satırda](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6)başlayan mevcut öğeye bir meta etiketi ekleyin:
 
     ```html
     <head>
@@ -232,13 +232,13 @@ Kubernetes’te kodunuzun hatalarını ayıklamak için **F5**’e basın!
 
 ![](media/common/vscode-status-bar-url.png)
 
-Sunucu tarafı kod dosyasında ( `app.get('/api'...` [ `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)Örneğin, 13. satırda) bir kesme noktası ayarlayın. 
+Sunucu tarafı kod dosyasında `app.get('/api'...` [( `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)Örneğin, 13. satırda) bir kesme noktası ayarlayın. 
 
-    ```javascript
-    app.get('/api', function (req, res) {
-        res.send('Hello from webfrontend');
-    });
-    ```
+```javascript
+app.get('/api', function (req, res) {
+    res.send('Hello from webfrontend');
+});
+```
 
 Tarayıcı sayfasını yenileyin veya *bunu yeniden söyleyin* düğmesine basın ve kesme noktasına basmalısınız ve kod aracılığıyla ilerleyebileceğiniz
 

@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71122739"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Başlayamayabilir bulut hizmeti rollerinin sorunlarını giderme
@@ -42,13 +42,13 @@ Bir Web rolünde dağıtılan bir Web sitesine gittiğinizde ve tarayıcı aşa�
 !['/' Uygulamasında sunucu hatası.](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
 ## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Özel hataları kapatarak sorunları tanılayın
-Web rolü için Web. config, hizmeti kapalı ve yeniden dağıtmaya yönelik özel hata modunu ayarlamak üzere yapılandırılarak daha fazla hata bilgisi görüntülenebilir.
+Web rolü web.config, hizmetin kapalı ve yeniden dağıtılması için özel hata modunu ayarlamak üzere yapılandırılarak daha fazla hata bilgisi görüntülenebilir.
 
 Uzak Masaüstü kullanmadan daha fazla Tamam hata görüntülemek için:
 
 1. Çözümü Microsoft Visual Studio açın.
-2. **Çözüm Gezgini**, Web. config dosyasını bulun ve açın.
-3. Web. config dosyasında, System. Web bölümünü bulun ve aşağıdaki satırı ekleyin:
+2. **Çözüm Gezgini**, web.config dosyasını bulun ve açın.
+3. web.config dosyasında, System. Web bölümünü bulun ve aşağıdaki satırı ekleyin:
 
     ```xml
     <customErrors mode="Off" />
@@ -77,12 +77,12 @@ Web sitesine gidildiğinde artık daha açık hata iletileri geri alınacaktır:
 * Açıklama: geçerli Web isteğinin yürütülmesi sırasında işlenmeyen bir özel durum oluştu. Hata ve kodun kaynaklandığı yer hakkında daha fazla bilgi için lütfen yığın izlemesini gözden geçirin.
 * Özel durum ayrıntıları: System. ıO. FIleNotFoundException: dosya veya derleme ' Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor.
 
-Örneğin:
+Örnek:
 
 !['/' Uygulamasında açık sunucu hatası](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>İşlem öykünücüsünü kullanarak sorunları tanılama
-Eksik bağımlılıkların ve Web. config hatalarının sorunlarını tanılamak ve gidermek için Microsoft Azure işlem öykünücüsünü kullanabilirsiniz.
+Eksik bağımlılıkların ve web.config hataların sorunlarını tanılamak ve gidermek için Microsoft Azure işlem öykünücüsünü kullanabilirsiniz.
 
 Bu tanılama yöntemini kullanmanın en iyi sonucu için, temiz bir Windows yüklemesi olan bir bilgisayar veya sanal makine kullanmanız gerekir. Azure ortamının en iyi benzetimini yapmak için Windows Server 2008 R2 x64 kullanın.
 
@@ -90,8 +90,8 @@ Bu tanılama yöntemini kullanmanın en iyi sonucu için, temiz bir Windows yük
 2. Geliştirme makinesinde, bulut hizmeti projesini derleyin.
 3. Windows Gezgini 'nde, bulut hizmeti projesinin bin\debug klasörüne gidin.
 4. . CSX klasörünü ve. cscfg dosyasını, sorunları ayıklamak için kullandığınız bilgisayara kopyalayın.
-5. Temiz makinede, bir Azure SDK komut Istemi penceresi açın ve yazın `csrun.exe /devstore:start`.
-6. Komut istemine yazın `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`.
+5. Temiz makinede, bir Azure SDK komut Istemi penceresi açın ve yazın `csrun.exe /devstore:start` .
+6. Komut istemine yazın `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser` .
 7. Rol başlatıldığında, Internet Explorer 'da ayrıntılı hata bilgileri görürsünüz. Ayrıca, sorunu tanılamak için standart Windows sorun giderme araçları 'nı kullanabilirsiniz.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>IntelliTrace kullanarak sorunları tanılama
@@ -102,7 +102,7 @@ Hizmeti IntelliTrace etkin olarak dağıtmak için şu adımları izleyin:
 1. Azure SDK 1,3 veya sonraki bir sürümünün yüklü olduğunu doğrulayın.
 2. Visual Studio 'Yu kullanarak çözümü dağıtın. Dağıtım sırasında, **.NET 4 rolleri Için IntelliTrace 'ı etkinleştir** onay kutusunu işaretleyin.
 3. Örnek başladıktan sonra **Sunucu Gezgini**açın.
-4. **Azure\\Cloud Services** düğümünü genişletin ve dağıtımı bulun.
+4. **Azure \\ Cloud Services** düğümünü genişletin ve dağıtımı bulun.
 5. Rol örneklerini görene kadar dağıtımı genişletin. Örneklerden birine sağ tıklayın.
 6. **IntelliTrace günlüklerini görüntüle**' yi seçin. **IntelliTrace Özeti** açılır.
 7. Özetin özel durumlar bölümünü bulun. Özel durumlar varsa, bölüm **özel durum verileri**olarak etiketlenir.

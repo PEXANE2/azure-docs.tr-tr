@@ -8,10 +8,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71309945"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için İş Tarayıcısı’nı ve İş Görünümü’nü kullanma
@@ -19,7 +19,7 @@ Azure Data Lake Analytics hizmeti bir sorgu deposunda gönderilen işleri arşiv
 
 Varsayılan olarak, Data Lake Analytics hizmeti işleri 30 gün boyunca arşivler. Süre sonu dönemi, özelleştirilmiş süre sonu ilkesi yapılandırılarak Azure portal yapılandırılabilir. Süre dolduktan sonra iş bilgilerine erişemeyeceksiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bkz. [Visual Studio için Data Lake araçları önkoşulları](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
 ## <a name="open-the-job-browser"></a>Iş tarayıcısını açın
@@ -160,7 +160,7 @@ Visual Studio 'da>iş **Data Lake Analytics>Azure>Sunucu Gezgini** aracılığı
     İşin U-SQL betiği sorgu deposunda depolanır. Özgün U-SQL betiğini görüntüleyebilir ve gerekirse yeniden gönderebilirsiniz.
 * Kaynaklar
   
-    Sorgu deposunda depolanan iş derleme çıktılarını kaynaklar aracılığıyla bulabilirsiniz. Örneğin, Iş grafiğini, kaydettiğiniz derlemeleri vb. göstermek için kullanılan "algeköşeli. xml" öğesini bulabilirsiniz.
+    Sorgu deposunda depolanan iş derleme çıktılarını kaynaklar aracılığıyla bulabilirsiniz. Örneğin, Iş grafiğini, kaydettiğiniz derlemeleri vb. göstermek için kullanılan "algebra.xml" öğesini bulabilirsiniz.
 * Köşe yürütme görünümü
   
     Köşe yürütme ayrıntılarını gösterir. Iş profili, toplam veri okuma/yazma, çalışma zamanı, durum vb. gibi her köşe yürütme günlüğünü arşivler. Bu görünüm aracılığıyla, bir işin nasıl çalıştığı hakkında daha fazla bilgi edinebilirsiniz. Daha fazla bilgi için bkz. [Visual Studio için Data Lake araçları 'Nda köşe yürütme görünümünü kullanma](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).

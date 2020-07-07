@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058165"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Depolama kaynağı silme hatalarını giderme
@@ -24,9 +24,9 @@ Bazı senaryolarda, bir Azure Resource Manager dağıtımında bir Azure Depolam
 
 > **' StorageAccountName ' depolama hesabı silinemedi. Hata: depolama hesabı, yapıtları kullanımda olduğundan silinemiyor.**
 > 
-> **# Tanesi #/kapsayıcı silinemedi:<br>VHD 'ler: Şu anda kapsayıcıda bir kira var ve istekte HIÇBIR kira kimliği belirtilmemiş.**
+> **# Tanesi #/kapsayıcı silinemedi: <br> VHD 'ler: Şu anda kapsayıcıda bir kira var ve istekte hiçbir kıra kimliği belirtilmemiş.**
 > 
-> **# Blob 'ları silme başarısız:<br>blobname. vhd: Şu anda blob üzerinde bir kira var ve istekte HIÇBIR kira kimliği belirtilmemiş.**
+> **# Blob 'ları silme başarısız: <br> blobname. vhd: Şu anda blob üzerinde bir kira var ve istekte hiçbir kıra kimliği belirtilmemiş.**
 
 Azure VM 'lerinde kullanılan VHD 'ler, Azure 'da standart veya Premium bir depolama hesabında sayfa Blobları olarak depolanan. vhd dosyalarıdır. Azure diskleri hakkında daha fazla bilgi için bkz. [yönetilen disklere giriş](../linux/managed-disks-overview.md).
 

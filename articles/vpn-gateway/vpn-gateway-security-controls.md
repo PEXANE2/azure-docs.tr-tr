@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127862"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN Gateway için güvenlik denetimleri
@@ -34,7 +34,7 @@ Bu makale, Azure VPN Gateway yerleşik olarak bulunan güvenlik denetimlerini be
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | Bkz. [Azure izleyici günlük uyarısı](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure izleyici ölçümleri uyarısı](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | Bkz. [Azure izleyici günlük uyarısı](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)  &  [Azure izleyici ölçümleri uyarısı](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes | Etkinlik günlüğünü Azure Resource Manager. |
 | Veri düzlemi günlüğü ve denetimi | Yes | Azure Izleyici, VPN bağlantısı günlüğü ve denetimi için [etkinlik günlüklerini izler](../azure-resource-manager/management/view-activity-logs.md) . |
 
@@ -51,7 +51,7 @@ Bu makale, Azure VPN Gateway yerleşik olarak bulunan güvenlik denetimlerini be
 |---|---|--|
 | Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yok | VPN Gateway transit müşteri verileri, müşteri verilerini depolamaz |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Yes | VPN Gateway, Azure VPN ağ geçitleri ile müşteri şirket içi VPN cihazları (S2S) veya VPN istemcileri (P2S) arasında müşteri paketlerini şifreleyin. VPN ağ geçitleri Ayrıca VNet 'ten VNet 'e şifrelemeyi destekler. |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Müşteri tarafından belirtilen önceden paylaşılan anahtarlar bekleyen olarak şifrelenir; Ancak henüz CMK ile tümleştirmemelidir. |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | No | Müşteri tarafından belirtilen önceden paylaşılan anahtarlar bekleyen olarak şifrelenir; Ancak henüz CMK ile tümleştirmemelidir. |
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
 | Şifrelenmiş API çağrıları| Yes | [Azure Resource Manager](../azure-resource-manager/index.yml) ve https üzerinden  |
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: af0065db087595167ca71bb79b968cc4ad339acd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116851"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio bağlı hizmetler 'i kullanarak Web uygulamanıza Key Vault ekleme
@@ -22,9 +22,9 @@ Bu öğreticide, ASP.NET Core veya herhangi bir tür ASP.NET projesi kullanıp k
 
 Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikliklerle ilgili ayrıntılar için, bkz. [Key Vault bağlı hizmet-ASP.NET 4.7.1 projem 'A ne oldu](#how-your-aspnet-framework-project-is-modified) veya [Key Vault bağlı Service-ASP.NET Core projem Için ne oldu?](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
+- **Bir Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/)için kaydolun.
 - **Visual studio 2019 sürüm 16,3** veya üzeri ya da **Web geliştirme** Iş yükünün yüklü olduğu **Visual Studio 2017 sürümü 15,7** . [Şimdi indir](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - Visual Studio 2017 ile ASP.NET (Core değil) için, varsayılan olarak yüklenmeyen .NET Framework 4.7.1 veya sonraki bir geliştirme araçlarına sahip olmanız gerekir. Bunları yüklemek için Visual Studio Yükleyicisi başlatın, **Değiştir**' i seçin ve ardından **tek tek bileşenler**' i seçin, ardından sağ tarafta **ASP.net ve Web geliştirme**' yı genişletin ve **.NET Framework 4.7.1 geliştirme araçları**' nı seçin.
 - Bir ASP.NET 4.7.1 veya üzeri ya da ASP.NET Core 2,0 veya üzeri bir Web projesi açık.
@@ -33,7 +33,7 @@ Bağlı hizmetlerin projenizde Key Vault sağlamak üzere yaptığı değişikli
 
 Başlamadan önce, Visual Studio 'da oturum açtığınızdan emin olun. Azure aboneliğiniz için kullandığınız hesapla oturum açın. Sonra bir ASP.NET 4.7.1 veya üzeri veya ASP.NET Core 2,0 Web projesi açın ve aşağıdaki adımları uygulayın:
 
-1. **Çözüm Gezgini**' de, Key Vault desteğini eklemek istediğiniz projeye sağ tıklayın ve**bağlı hizmet** **Ekle** > ' yi seçin.
+1. **Çözüm Gezgini**' de, Key Vault desteğini eklemek istediğiniz projeye sağ tıklayın ve **Add**  >  **bağlı hizmet**Ekle ' yi seçin.
    Projenize ekleyebileceğiniz hizmetlerle birlikte Bağlı Hizmet sayfası görüntülenir.
 1. Kullanılabilir hizmetler menüsünde **Azure Key Vault Ile güvenli gizli**dizileri seçin.
 
@@ -67,7 +67,7 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
 
 1. Çözüm Gezgini, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. Bu iki **NuGet paketini bulun ve** yükleme: [Microsoft. Azure. Services. appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve .NET Core 2 için [Microsoft. Azure. keykasasını](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) veya .NET Core 3 için Microsoft[. Azure. keykasası. Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core)'u ekleyin.
 
-1. .NET Core 2 için, `Program.cs` sekmesini seçin ve program sınıfındaki `BuildWebHost` tanımı aşağıdaki şekilde değiştirin:
+1. .NET Core 2 için, sekmesini seçin `Program.cs` ve `BuildWebHost` Program sınıfındaki tanımı aşağıdaki şekilde değiştirin:
 
    ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -116,7 +116,7 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
     ```
 
 1. Daha sonra *Index.cshtml.cs* gibi sayfa dosyalarından birini açın ve aşağıdaki kodu yazın:
-   1. Bu using yönergesini kullanarak `Microsoft.Extensions.Configuration` bir başvuru ekleyin:
+   1. Bu using yönergesini kullanarak bir başvuru ekleyin `Microsoft.Extensions.Configuration` :
 
        ```csharp
        using Microsoft.Extensions.Configuration;
@@ -146,7 +146,7 @@ Artık kod içinde gizli dizilerimize erişebilirsiniz. Sonraki adımlar, ASP.NE
        }
        ```
 
-   1. Çalışma zamanında değeri doğrulamak için, parolayı bir ileti içinde göstermek `ViewData["Message"]` üzere *. cshtml* dosyasına görüntülenecek kodu ekleyin.
+   1. Çalışma zamanında değeri doğrulamak için, `ViewData["Message"]` parolayı bir ileti içinde göstermek üzere *. cshtml* dosyasına görüntülenecek kodu ekleyin.
 
       ```cshtml
           <p>@ViewData["Message"]</p>
@@ -156,15 +156,15 @@ Parolanın Key Vault başarıyla alınmadığını doğrulamak için uygulamayı
 
 ## <a name="access-your-secrets-aspnet"></a>Gizli dizilerinizdeki erişimi (ASP.NET)
 
-Yapılandırmayı, Web. config dosyasının çalışma zamanında true değeriyle değiştirilmiş `appSettings` öğede bir kukla değere sahip olacak şekilde ayarlayabilirsiniz. Daha sonra bunu `ConfigurationManager.AppSettings` veri yapısı aracılığıyla erişebilirsiniz.
+Yapılandırmayı, web.config dosyası `appSettings` çalışma zamanında true değeri ile değiştirilmiş öğede bir kukla değere sahip olacak şekilde ayarlayabilirsiniz. Daha sonra bunu veri yapısı aracılığıyla erişebilirsiniz `ConfigurationManager.AppSettings` .
 
-1. Web. config dosyanızı düzenleyin.  AppSettings etiketini bulun, bir öznitelik `configBuilders="AzureKeyVault"`ekleyin ve bir satır ekleyin:
+1. web.config dosyanızı düzenleyin.  AppSettings etiketini bulun, bir öznitelik ekleyin `configBuilders="AzureKeyVault"` ve bir satır ekleyin:
 
    ```xml
       <add key="mysecret" value="dummy"/>
    ```
 
-1. Onay değerini `About` göstermek için *HomeController.cs*içindeki metodu düzenleyin.
+1. `About`Onay değerini göstermek için *HomeController.cs*içindeki metodu düzenleyin.
 
    ```csharp
    public ActionResult About()
@@ -190,10 +190,10 @@ Key Vault, Visual Studio 'da oturum açtığınızdan farklı bir Microsoft hesa
 
 1. **Erişim ilkeleri**' ni seçin, sonra **erişim ilkesi ekleyin**ve oturum açtığınız hesabı sorumlu olarak seçin.
 
-1. Visual Studio 'da **Dosya** > **hesabı ayarları**' nı seçin.
+1. Visual Studio 'da **Dosya**  >  **hesabı ayarları**' nı seçin.
 **Tüm hesap** bölümünden **Hesap Ekle** ' yi seçin. Erişim ilkenizin sorumlusu olarak seçtiğiniz hesapla oturum açın.
 
-1. **Araçlar** > **Seçenekler**' i seçin ve **Azure hizmeti kimlik doğrulaması**' nı arayın. Ardından, Visual Studio 'ya yeni eklediğiniz hesabı seçin.
+1. **Araçlar**  >  **Seçenekler**' i seçin ve **Azure hizmeti kimlik doğrulaması**' nı arayın. Ardından, Visual Studio 'ya yeni eklediğiniz hesabı seçin.
 
 Artık uygulamanızda hata ayıklarken, Visual Studio Key Vault bulunduğu hesaba bağlanır.
 
@@ -215,9 +215,9 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 ### <a name="project-file-changes-for-aspnet-core"></a>ASP.NET Core için proje dosyası değişiklikleri
 
-- Bağlı hizmetler ItemGroup ve `ConnectedServices.json` dosyası eklendi.
+- Bağlı hizmetler ItemGroup ve dosyası eklendi `ConnectedServices.json` .
 
-### <a name="launchsettingsjson-changes-for-aspnet-core"></a>launchsettings. JSON değişiklikleri ASP.NET Core için
+### <a name="launchsettingsjson-changes-for-aspnet-core"></a>ASP.NET Core değişikliklerle ilgili launchsettings.js
 
 - Hem IIS Express profile hem de Web proje adınızla eşleşen profile aşağıdaki ortam değişkeni girdileri eklendi:
 
@@ -254,10 +254,10 @@ Bu bölümde, Key Vault bağlı hizmeti Visual Studio kullanılarak eklenirken b
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>ASP.NET Framework için proje dosya değişiklikleri
 
-- Bağlı hizmetler ItemGroup ve ConnectedServices. JSON dosyası eklendi.
+- Bağlı hizmetler ItemGroup ve dosyaya ConnectedServices.jseklendi.
 - [Eklenen başvurular](#added-references-for-aspnet-framework) bölümünde açıklanan .NET derlemelerine başvurular.
 
-### <a name="webconfig-or-appconfig-changes"></a>Web. config veya App. config değişiklikleri
+### <a name="webconfig-or-appconfig-changes"></a>web.config veya app.config değişiklikleri
 
 - Aşağıdaki yapılandırma girdileri eklendi:
 

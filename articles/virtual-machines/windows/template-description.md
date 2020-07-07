@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100541"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki sanal makineler
@@ -404,7 +404,7 @@ Yönetilen görüntüden bir sanal makine oluşturmak istiyorsanız, ImageRefere
 
 Bu uzantı kaynağı, değer sağlamak için storageName değişkenini ve tanılama değişkenlerini kullanır. Bu uzantı tarafından toplanan verileri değiştirmek istiyorsanız, wadperfcounters değişkenine daha fazla performans sayacı ekleyebilirsiniz. Ayrıca, tanılama verilerini VM disklerinin depolandığı yerden farklı bir depolama hesabına koymaya de seçim yapabilirsiniz.
 
-Bir VM 'ye yükleyebileceğiniz birçok uzantı vardır, ancak en iyi yöntem büyük olasılıkla [Özel Betik uzantısıdır](extensions-customscript.md). Örnekte, Start. ps1 adlı bir PowerShell betiği, ilk başladığında her bir VM üzerinde çalışır:
+Bir VM 'ye yükleyebileceğiniz birçok uzantı vardır, ancak en iyi yöntem büyük olasılıkla [Özel Betik uzantısıdır](extensions-customscript.md). Örnekte, start.ps1 adlı bir PowerShell betiği, ilk başladığında her bir VM üzerinde çalışır:
 
 ```json
 {
@@ -431,7 +431,7 @@ Bir VM 'ye yükleyebileceğiniz birçok uzantı vardır, ancak en iyi yöntem b�
 }
 ```
 
-Start. ps1 betiği birçok yapılandırma görevini gerçekleştirebilir. Örneğin, örnekteki sanal makinelere eklenen veri diskleri başlatılmaz; bunları başlatmak için özel bir komut dosyası kullanabilirsiniz. Yapılacak birden çok başlangıç göreviniz varsa, Azure Storage 'daki diğer PowerShell betiklerini çağırmak için Start. ps1 dosyasını kullanabilirsiniz. Örnek PowerShell kullanır, ancak kullanmakta olduğunuz işletim sisteminde bulunan herhangi bir betik yöntemini kullanabilirsiniz.
+start.ps1 betiği birçok yapılandırma görevini gerçekleştirebilir. Örneğin, örnekteki sanal makinelere eklenen veri diskleri başlatılmaz; bunları başlatmak için özel bir komut dosyası kullanabilirsiniz. Yapılacak birden çok başlangıç göreviniz varsa, Azure Storage 'daki diğer PowerShell betiklerini çağırmak için start.ps1 dosyasını kullanabilirsiniz. Örnek PowerShell kullanır, ancak kullanmakta olduğunuz işletim sisteminde bulunan herhangi bir betik yöntemini kullanabilirsiniz.
 
 Yüklü uzantıların durumunu portalda uzantılar ayarlarından görebilirsiniz:
 

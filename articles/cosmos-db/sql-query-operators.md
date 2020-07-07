@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: tisande
 ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063566"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB işleçler
@@ -21,19 +21,19 @@ Bu makalede Azure Cosmos DB tarafından desteklenen çeşitli işleçler ayrınt
 
 Aşağıdaki tabloda, iki JSON türü arasındaki SQL API 'sindeki eşitlik karşılaştırmalarının sonucu gösterilmektedir.
 
-| **Üs** | **Tanımlayan** | **Değer** | **Boole** | **Sayısından** | **Dize** | **Nesne** | **Dizi** |
+| **Üs** | **Tanımlayan** | **Null** | **Boole** | **Sayı** | **Dize** | **Nesne** | **Dizi** |
 |---|---|---|---|---|---|---|---|
 | **Tanımlayan** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
-| **Değer** | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
+| **Null** | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
 | **Boole** | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan |
-| **Sayısından** | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan |
+| **Sayı** | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan | Tanımlayan |
 | **Dize** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan | Tanımlayan |
 | **Nesne** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** | Tanımlayan |
 | **Dizi** | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | Tanımlayan | **Tamam** |
 
-`>` `>=`, `!=` `<=`,, Ve gibi karşılaştırma işleçleri için, türler arasında veya iki nesne veya dizi arasında karşılaştırma üretir `Undefined` `<`  
+,,, Ve gibi karşılaştırma işleçleri için, `>` `>=` `!=` `<` `<=` türler arasında veya iki nesne veya dizi arasında karşılaştırma üretir `Undefined` .  
 
-Skaler ifadenin sonucu ise `Undefined`, eşit `Undefined` `true`olmadığı için öğe sonuca dahil değildir.
+Skaler ifadenin sonucu ise, `Undefined` eşit olmadığı için öğe sonuca dahil değildir `Undefined` `true` .
 
 ## <a name="logical-and-or-and-not-operators"></a>Mantıksal (ve, OR ve NOT) işleçleri
 
@@ -41,22 +41,22 @@ Mantıksal işleçler Boole değerleri üzerinde çalışır. Aşağıdaki tablo
 
 **OR işleci**
 
-Koşullardan `true` biri olduğunda döndürür `true`.
+`true`Koşullardan biri olduğunda döndürür `true` .
 
-|  | **True** | **False** | **Tanımlayan** |
+|  | **Değeri** | **Yanlýþ** | **Tanımlayan** |
 | --- | --- | --- | --- |
-| **True** |True |True |True |
-| **False** |True |False |Tanımlayan |
+| **Değeri** |True |True |True |
+| **Yanlýþ** |True |False |Tanımlayan |
 | **Tanımlayan** |True |Tanımlayan |Tanımlayan |
 
 **AND işleci**
 
-Her `true` iki ifadenin de ne `true`zaman olduğunu döndürür.
+`true`Her iki ifadenin de ne zaman olduğunu döndürür `true` .
 
-|  | **True** | **False** | **Tanımlayan** |
+|  | **Değeri** | **Yanlýþ** | **Tanımlayan** |
 | --- | --- | --- | --- |
-| **True** |True |False |Tanımlayan |
-| **False** |False |False |False |
+| **Değeri** |True |False |Tanımlayan |
+| **Yanlýþ** |False |False |False |
 | **Tanımlayan** |Tanımlayan |False |Tanımlayan |
 
 **NOT işleci**
@@ -65,15 +65,15 @@ Herhangi bir Boolean ifadesinin değerini tersine çevirir.
 
 |  | **BAŞLATıLMADı** |
 | --- | --- |
-| **True** |False |
-| **False** |True |
+| **Değeri** |False |
+| **Yanlýþ** |True |
 | **Tanımlayan** |Tanımlayan |
 
-**İşleç Önceliği**
+**İşleç önceliği**
 
-Mantıksal işleçler `OR` `AND`, ve `NOT` aşağıda gösterilen öncelik düzeyine sahiptir:
+Mantıksal işleçler, `OR` `AND` ve `NOT` aşağıda gösterilen öncelik düzeyine sahiptir:
 
-| **İşleç** | **Öncelik** |
+| **Operatör** | **Priority** |
 | --- | --- |
 | **BAŞLATıLMADı** |1 |
 | **'** |2 |
@@ -81,13 +81,13 @@ Mantıksal işleçler `OR` `AND`, ve `NOT` aşağıda gösterilen öncelik düze
 
 ## <a name="-operator"></a>* işleci
 
-* Özel işleci, tüm öğeyi olduğu gibi projeler. Kullanıldığında, tek bir öngörülen alan olması gerekir. Benzer `SELECT * FROM Families f` bir sorgu geçerli, ancak `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` geçerli değil.
+* Özel işleci, tüm öğeyi olduğu gibi projeler. Kullanıldığında, tek bir öngörülen alan olması gerekir. Benzer bir sorgu `SELECT * FROM Families f` geçerli, ancak `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` geçerli değil.
 
 ## <a name="-and--operators"></a>? ve?? işleçler
 
 C# ve JavaScript gibi programlama dillerinde olduğu gibi, Koşullu ifadeler oluşturmak için üçlü (?) ve birleşim (??) işleçlerini kullanabilirsiniz.
 
-Kullanabilirsiniz. anında yeni JSON özellikleri oluşturmaya yönelik operatör. Örneğin, aşağıdaki sorgu, sınıf düzeylerini veya `elementary` `other`içine sınıflandırır:
+Kullanabilirsiniz. anında yeni JSON özellikleri oluşturmaya yönelik operatör. Örneğin, aşağıdaki sorgu, sınıf düzeylerini veya içine sınıflandırır `elementary` `other` :
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
@@ -103,7 +103,7 @@ Ayrıca, çağrılarını iç içe geçirebilirsiniz. işlecini, aşağıdaki so
 
 Diğer sorgu işleçleri gibi? başvurulan Özellikler eksikse veya karşılaştırılan türler farklıysa işleç öğeleri dışlar.
 
-??? yarı yapılandırılmış veya karma tür verilere göre sorgulama yaparken bir öğedeki özelliği etkin bir şekilde denetlemek için işleç. Örneğin, aşağıdaki sorgu varsa döndürür `lastName` veya `surname` `lastName` yoksa.
+??? yarı yapılandırılmış veya karma tür verilere göre sorgulama yaparken bir öğedeki özelliği etkin bir şekilde denetlemek için işleç. Örneğin, aşağıdaki sorgu varsa döndürür `lastName` veya yoksa `surname` `lastName` .
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -113,5 +113,5 @@ Diğer sorgu işleçleri gibi? başvurulan Özellikler eksikse veya karşılaşt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Cosmos DB .NET örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Anahtar Sözcükler](sql-query-keywords.md)
+- [Anahtar sözcükler](sql-query-keywords.md)
 - [SELECT yan tümcesi](sql-query-select.md)

@@ -4,13 +4,13 @@ description: Diğer Azure hizmetleriyle kimlik doğrulayabilecek Azure Container
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: 31dc198bfb2023684f3a9022bec5a5f50f0d9a72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115729"
 ---
-# <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances ile yönetilen kimlikler kullanma
+# <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances ile yönetilen kimlikleri kullanma
 
 Kod içinde herhangi bir gizli dizi veya kimlik bilgisi olmadan diğer Azure hizmetleriyle etkileşim kuran Azure Container Instances kod çalıştırmak için [Azure kaynakları için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) kullanın. Özelliği, Azure Active Directory otomatik olarak yönetilen bir kimlikle Azure Container Instances dağıtımı sağlar.
 
@@ -121,9 +121,9 @@ Anahtar kasasında bir erişim ilkesi ayarlamak için aşağıdaki [az keykasas�
 
 ### <a name="enable-user-assigned-identity-on-a-container-group"></a>Kapsayıcı grubunda Kullanıcı tarafından atanan kimliği etkinleştirme
 
-Microsoft 'un `azure-cli` görüntüsüne dayalı bir kapsayıcı örneği oluşturmak için aşağıdaki [az Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) komutunu çalıştırın. Bu örnek, diğer Azure hizmetlerine erişmek için Azure CLı 'yı çalıştırmak üzere etkileşimli olarak kullanabileceğiniz tek bir kapsayıcı grubu sağlar. Bu bölümde, yalnızca temel işletim sistemi kullanılır. Kapsayıcıda Azure CLı 'yı kullanma örneği için bkz. [bir kapsayıcı grubunda sistem tarafından atanan kimliği etkinleştirme](#enable-system-assigned-identity-on-a-container-group). 
+Microsoft 'un görüntüsüne dayalı bir kapsayıcı örneği oluşturmak için aşağıdaki [az Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) komutunu çalıştırın `azure-cli` . Bu örnek, diğer Azure hizmetlerine erişmek için Azure CLı 'yı çalıştırmak üzere etkileşimli olarak kullanabileceğiniz tek bir kapsayıcı grubu sağlar. Bu bölümde, yalnızca temel işletim sistemi kullanılır. Kapsayıcıda Azure CLı 'yı kullanma örneği için bkz. [bir kapsayıcı grubunda sistem tarafından atanan kimliği etkinleştirme](#enable-system-assigned-identity-on-a-container-group). 
 
-Parametresi `--assign-identity` , Kullanıcı tarafından atanan yönetilen kimliğinizi gruba geçirir. Uzun süre çalışan komut kapsayıcıyı çalışır durumda tutar. Bu örnek, anahtar kasasını oluşturmak için kullanılan kaynak grubunu kullanır, ancak farklı bir tane belirtebilirsiniz.
+`--assign-identity`Parametresi, Kullanıcı tarafından atanan yönetilen kimliğinizi gruba geçirir. Uzun süre çalışan komut kapsayıcıyı çalışır durumda tutar. Bu örnek, anahtar kasasını oluşturmak için kullanılan kaynak grubunu kullanır, ancak farklı bir tane belirtebilirsiniz.
 
 ```azurecli-interactive
 az container create \
@@ -142,7 +142,7 @@ az container show \
   --name mycontainer
 ```
 
-Çıktıda `identity` bulunan bölüm, kimliğin kapsayıcı grubunda ayarlandığını gösteren aşağıdakine benzer şekilde görünür. Altında `principalID` `userAssignedIdentities` , Azure Active Directory içinde oluşturduğunuz kimliğin hizmet sorumlusu bulunur:
+`identity`Çıktıda bulunan bölüm, kimliğin kapsayıcı grubunda ayarlandığını gösteren aşağıdakine benzer şekilde görünür. `principalID`Altında, `userAssignedIdentities` Azure Active Directory içinde oluşturduğunuz kimliğin hizmet sorumlusu bulunur:
 
 ```console
 [...]
@@ -190,7 +190,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Artık anahtar kasasında kimlik doğrulamak ve gizli dizi okumak için erişim belirtecini kullanın. Anahtar kasanızın adını URL 'de (*https:\//mykeyvault.Vault.Azure.net/..*.) değiştirdiğinizden emin olun:
+Artık anahtar kasasında kimlik doğrulamak ve gizli dizi okumak için erişim belirtecini kullanın. Anahtar kasanızın adını URL 'de (*https: \/ /mykeyvault.Vault.Azure.net/..*.) değiştirdiğinizden emin olun:
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -206,9 +206,9 @@ Yanıt, gizliliği gösteren aşağıdakine benzer şekilde görünür. Kodunuzd
 
 ### <a name="enable-system-assigned-identity-on-a-container-group"></a>Bir kapsayıcı grubunda sistem tarafından atanan kimliği etkinleştirme
 
-Microsoft 'un `azure-cli` görüntüsüne dayalı bir kapsayıcı örneği oluşturmak için aşağıdaki [az Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) komutunu çalıştırın. Bu örnek, diğer Azure hizmetlerine erişmek için Azure CLı 'yı çalıştırmak üzere etkileşimli olarak kullanabileceğiniz tek bir kapsayıcı grubu sağlar. 
+Microsoft 'un görüntüsüne dayalı bir kapsayıcı örneği oluşturmak için aşağıdaki [az Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) komutunu çalıştırın `azure-cli` . Bu örnek, diğer Azure hizmetlerine erişmek için Azure CLı 'yı çalıştırmak üzere etkileşimli olarak kullanabileceğiniz tek bir kapsayıcı grubu sağlar. 
 
-Ek `--assign-identity` değer içermeyen parametre, grupta sistem tarafından atanan yönetilen kimliği mümkün bir şekilde sunar. Kimlik, kapsayıcı grubunun kaynak grubunun kapsamına alınır. Uzun süre çalışan komut kapsayıcıyı çalışır durumda tutar. Bu örnek, kimlik kapsamındaki anahtar kasasını oluşturmak için kullanılan kaynak grubunu kullanır.
+`--assign-identity`Ek değer içermeyen parametre, grupta sistem tarafından atanan yönetilen kimliği mümkün bir şekilde sunar. Kimlik, kapsayıcı grubunun kaynak grubunun kapsamına alınır. Uzun süre çalışan komut kapsayıcıyı çalışır durumda tutar. Bu örnek, kimlik kapsamındaki anahtar kasasını oluşturmak için kullanılan kaynak grubunu kullanır.
 
 ```azurecli-interactive
 # Get the resource ID of the resource group
@@ -231,7 +231,7 @@ az container show \
   --name mycontainer
 ```
 
-Çıktıda `identity` bulunan bölüm, Azure Active Directory ' de sistem tarafından atanan bir kimliğin oluşturulduğunu gösteren aşağıdakine benzer şekilde görünür:
+`identity`Çıktıda bulunan bölüm, Azure Active Directory ' de sistem tarafından atanan bir kimliğin oluşturulduğunu gösteren aşağıdakine benzer şekilde görünür:
 
 ```console
 [...]
@@ -244,7 +244,7 @@ az container show \
 [...]
 ```
 
-Sonraki adımlarda kullanmak için, kimliğin değerine `principalId` (HIZMET asıl kimliği) bir değişken ayarlayın.
+`principalId`Sonraki adımlarda kullanmak için, kimliğin değerine (hizmet asıl kimliği) bir değişken ayarlayın.
 
 ```azurecli-interactive
 spID=$(az container show \
@@ -298,7 +298,7 @@ Gizli dizinin değeri alınır:
 
 ## <a name="enable-managed-identity-using-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak yönetilen kimliği etkinleştirme
 
-Bir [Kaynak Yöneticisi şablonu](container-instances-multi-container-group.md)kullanarak bir kapsayıcı grubundaki yönetilen bir kimliği etkinleştirmek için `identity` `Microsoft.ContainerInstance/containerGroups` nesnesinin özelliğini bir `ContainerGroupIdentity` nesne ile ayarlayın. Aşağıdaki kod parçacıkları farklı senaryolar `identity` için yapılandırılmış özelliği gösterir. [Kaynak Yöneticisi şablonu başvurusuna](/azure/templates/microsoft.containerinstance/containergroups)bakın. En az `apiVersion` bir belirtin `2018-10-01`.
+Bir [Kaynak Yöneticisi şablonu](container-instances-multi-container-group.md)kullanarak bir kapsayıcı grubundaki yönetilen bir kimliği etkinleştirmek için `identity` `Microsoft.ContainerInstance/containerGroups` nesnesinin özelliğini bir nesne ile ayarlayın `ContainerGroupIdentity` . Aşağıdaki kod parçacıkları `identity` farklı senaryolar için yapılandırılmış özelliği gösterir. [Kaynak Yöneticisi şablonu başvurusuna](/azure/templates/microsoft.containerinstance/containergroups)bakın. En az bir `apiVersion` belirtin `2018-10-01` .
 
 ### <a name="user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik
 
@@ -346,7 +346,7 @@ Bir kapsayıcı grubunda, hem sistem tarafından atanan hem de bir veya daha faz
 ## <a name="enable-managed-identity-using-yaml-file"></a>YAML dosyasını kullanarak yönetilen kimliği etkinleştirme
 
 Bir [YAML dosyası](container-instances-multi-container-yaml.md)kullanılarak dağıtılan bir kapsayıcı grubundaki yönetilen bir kimliği etkinleştirmek için aşağıdaki YAML 'yi ekleyin.
-En az `apiVersion` bir belirtin `2018-10-01`.
+En az bir `apiVersion` belirtin `2018-10-01` .
 
 ### <a name="user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik
 

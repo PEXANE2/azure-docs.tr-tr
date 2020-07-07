@@ -4,10 +4,10 @@ description: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma kullan
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062833"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Şirket içi uygulamalar için olağanüstü durum kurtarma hakkında
@@ -108,8 +108,8 @@ Aşağıdaki tabloda çoğaltma seçenekleri gösterilmektedir:
 
 | **RDS** |**Azure VM’lerini Azure’a çoğaltma** | **Hyper-V VM'lerini ikincil bir siteye çoğaltma** | **Hyper-V VM'lerini Azure'a çoğaltma** | **VMware VM'lerini ikincil bir siteye çoğaltma** | **VMware VM'lerini Azure'a çoğaltma** | **Fiziksel sunucuları ikincil bir siteye çoğaltma** | **Fiziksel sunucuları Azure'a çoğaltma** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Havuza Alınmış Sanal Masaüstü (yönetilmeyen)** |Hayır|Yes |Hayır |Yes |Hayır |Yes |Hayır |
-| **Havuza Alınmış Sanal Masaüstü (yönetilen ve UPD'siz)** |Hayır|Yes |Hayır |Yes |Hayır |Yes |Hayır |
+| **Havuza Alınmış Sanal Masaüstü (yönetilmeyen)** |Hayır|Evet |Hayır |Evet |Hayır |Evet |Hayır |
+| **Havuza Alınmış Sanal Masaüstü (yönetilen ve UPD'siz)** |Hayır|Evet |Hayır |Evet |Hayır |Evet |Hayır |
 | **Uzak uygulamalar ve Masaüstü oturumları (UPD'siz)** |Yes|Yes |Yes |Yes |Yes |Yes |Yes |
 
 RDS için olağanüstü durum kurtarma hakkında [daha fazla bilgi edinin](/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) .

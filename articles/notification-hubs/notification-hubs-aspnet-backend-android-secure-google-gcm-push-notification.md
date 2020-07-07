@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71212173"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs güvenli anında Iletme bildirimleri gönderme
@@ -65,7 +65,7 @@ Bu hedefe ulaşmak için, Android uygulamanızın anında iletme bildirimleri al
 
 Şimdi, kimlik doğrulama üst bilgisi değerini uygulamanızın paylaşılan tercihlerine kaydetmek için *oturum açma* akışını değiştirin. Benzer mekanizmalar, uygulamanın kullanıcı kimlik bilgileri gerektirmeden kullanması gereken herhangi bir kimlik doğrulama belirtecini (örneğin, OAuth belirteçleri) depolamak için kullanılabilir.
 
-1. Android uygulama projenizde, `MainActivity` sınıfının en üstüne aşağıdaki sabitleri ekleyin:
+1. Android uygulama projenizde, sınıfının en üstüne aşağıdaki sabitleri ekleyin `MainActivity` :
 
     ```java
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
@@ -86,7 +86,7 @@ Bu hedefe ulaşmak için, Android uygulamanızın anında iletme bildirimleri al
         return basicAuthHeader;
     }
     ```
-3. Aşağıdaki `import` deyimlerini `MainActivity` dosyanın üst kısmına ekleyin:
+3. Aşağıdaki `import` deyimlerini dosyanın üst kısmına ekleyin `MainActivity` :
 
     ```java
     import android.content.SharedPreferences;
@@ -94,7 +94,7 @@ Bu hedefe ulaşmak için, Android uygulamanızın anında iletme bildirimleri al
 
 Şimdi, bildirim alındığında çağrılan işleyiciyi değiştirin.
 
-1. `MyHandler` Sınıfında `OnReceive()` yöntemi şunu içerecek şekilde değiştirin:
+1. `MyHandler`Sınıfında `OnReceive()` yöntemi şunu içerecek şekilde değiştirin:
 
     ```java
     public void onReceive(Context context, Bundle bundle) {
@@ -103,7 +103,7 @@ Bu hedefe ulaşmak için, Android uygulamanızın anında iletme bildirimleri al
         retrieveNotification(secureMessageId);
     }
     ```
-2. Ardından, geri `retrieveNotification()` tutucuyu `{back-end endpoint}` dağıtım sırasında elde edilen arka uç bitiş noktasıyla değiştirerek yöntemini ekleyin:
+2. Ardından, `retrieveNotification()` `{back-end endpoint}` geri tutucuyu dağıtım sırasında elde edilen arka uç bitiş noktasıyla değiştirerek yöntemini ekleyin:
 
     ```java
     private void retrieveNotification(final String secureMessageId) {

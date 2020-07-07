@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74e1dc68aba4ba294bccca6da278d3e30e51f056
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360462"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory öznitelik eşlemeleri için ifadeler yazma
@@ -30,7 +30,7 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 
 * İfadenin tamamı, parantez içindeki bağımsız değişkenlerin ardında yer aldığı bir addan oluşan işlevler bakımından tanımlanmalıdır: <br>
   *Fonksiyonadı ( `<<argument 1>>` , `<<argument N>>` )*
-* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örneğin: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
+* İşlevleri birbirlerine iç içe yerleştirebilirsiniz. Örnek: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
 * İşlevlere üç farklı türde bağımsız değişken geçirebilirsiniz:
   
   1. Köşeli ayraçlar içine alınması gereken öznitelikler. Örneğin: [attributeName]
@@ -65,7 +65,7 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 |[Tarafta](#left)|Left işlevi bir dizenin sol tarafında belirtilen sayıda karakteri döndürür.|
 |[Orta](#mid) |Kaynak değerin alt dizesini döndürür. Alt dize, kaynak dizeden yalnızca bazı karakterleri içeren bir dizedir.|
 |[Normalizediacritika](#normalizediacritics)|Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm aksanlı karakterlerle eşdeğer, aksanlı olmayan karakterler konur.|
-|[Başlatılmadı](#not) |**Kaynağın**Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.| 
+|[Not](#not) |**Kaynağın**Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.| 
 |[RemoveDuplicates](#removeduplicates)|Removeyinelemelerini işlevi, birden çok değerli dizeyi alır ve her değerin benzersiz olduğundan emin olur.| 
 |[Değiştirin](#replace) |Dize içindeki değerleri değiştirir. | 
 |[SelectUniqueValue](#selectuniquevalue)|İfadeler kullanılarak tanımlanan benzersiz değer oluşturma kuralları olan en az iki bağımsız değişken gerektirir. İşlevi her kuralı değerlendirir ve hedef uygulamada/dizinde benzersizlik için oluşturulan değeri denetler.| 
@@ -110,7 +110,7 @@ Bu işlev, her iki parametreyi de ikili gösterimine dönüştürür ve bir bit 
 
 Diğer bir deyişle, her iki parametrenin de karşılık gelen bitlerinin 1 olduğu durumlar dışında her durumda 0 döndürür.
 
-**Örneğinde**  
+**Örnek:**  
  
  `BitAnd(&HF, &HF7)`</br>
  Onaltılık "F" ve "F7" değerinin bu değeri değerlendirmesi nedeniyle 7 döndürür.
@@ -127,7 +127,7 @@ CBool işlevi, değerlendirilen ifadeye bağlı olarak bir Boole değeri döndü
 **Açıklamalarının**  
 İfade sıfır olmayan bir değer olarak değerlendirilirse, CBool true değerini döndürür, aksi takdirde false döndürür.
 
-**Örneğinde**  
+**Örnek:**  
 `CBool([attrib1] = [attrib2])`  
 
 Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
@@ -159,7 +159,7 @@ Bir tamsayılar dizisinin değerini, Base-64 basamakları ile kodlanmış eşde�
 **Sözdizimi**  
 `str ConvertToBase64(str source)`
 
-**Örneğinde**  
+**Örnek:**  
 `ConvertToBase64("Hello world!")`  
 "Sablagwabebek Vacaadilevahiababkacea" döndürür
 
@@ -174,7 +174,7 @@ ConvertToUTF8Hex işlevi bir dizeyi UTF8 onaltılık kodlanmış bir değere dö
 **Açıklamalarının**  
 Bu işlevin çıkış biçimi Azure Active Directory tarafından, DN öznitelik biçimi olarak kullanılır.
 
-**Örneğinde**  
+**Örnek:**  
 `ConvertToUTF8Hex("Hello world!")`  
 48656C6C6F20776F726C6421 döndürür
 
@@ -198,7 +198,7 @@ CStr işlevi bir dize veri türüne dönüştürür.
 
 * değer: sayısal bir değer, başvuru özniteliği veya Boole olabilir.
 
-**Örneğinde**  
+**Örnek:**  
 `CStr([dn])`  
 "CN = ali, DC = contoso, DC = com" döndürebilir
 
@@ -210,7 +210,7 @@ DateFromNum işlevi, AD 'nin tarih biçimindeki bir değeri bir tarih saat tür�
 **Sözdizimi**  
 `dt DateFromNum(num value)`
 
-**Örneğinde**  
+**Örnek:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 2012-01-01 23:00:00 temsil eden bir tarih saat döndürür
@@ -226,7 +226,7 @@ DNComponent işlevi, soldan bir belirtilen DN bileşeninin değerini döndürür
 * DN: yorumlamaya yönelik başvuru özniteliği
 * ComponentNumber: DN 'nin döndürülecek olan bileşen
 
-**Örneğinde**  
+**Örnek:**  
 `DNComponent(CRef([dn]),1)`  
 DN "CN = ali, OU =..." ise, "ali döndürür
 
@@ -238,7 +238,7 @@ Hata işlevi özel bir hata döndürmek için kullanılır.
 **Sözdizimi**  
 `void Error(str ErrorMessage)`
 
-**Örneğinde**  
+**Örnek:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 AccountName özniteliği yoksa, nesne üzerinde bir hata oluşturur.
 
@@ -276,7 +276,7 @@ IıF işlevi, belirli bir koşula göre olası bir değer kümesinden birini dö
 * valueIfTrue: koşul true olarak değerlendirilirse döndürülen değer.
 * valueIfFalse: Koşul false olarak değerlendirilirse döndürülen değer.
 
-**Örneğinde**  
+**Örnek:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Kullanıcı bir ınters ise, "t-" bir kullanıcının diğer adını döndürür. Bu, başka bir kullanıcının diğer adını olduğu gibi döndürür.
 
@@ -299,7 +299,7 @@ InStr işlevi bir dizedeki alt dizenin ilk oluşumunu bulur
 **Açıklamalarının**  
 Alt dizenin bulunduğu konumu veya bulunmazsa 0 değerini döndürür.
 
-**Örneğinde**  
+**Örnek:**  
 `InStr("The quick brown fox","quick")`  
 Evalues 'a 5
 
@@ -317,7 +317,7 @@ Evalues 'a 5
 **Açıklamalarının**  
 Bir öznitelik için, bir null özniteliğin yokluğuna göre ifade edilir.
 
-**Örneğinde**  
+**Örnek:**  
 `IsNull([displayName])`  
 Öznitelik CS veya MV içinde yoksa, true döndürür.
 
@@ -333,7 +333,7 @@ Bir öznitelik için, bir null özniteliğin yokluğuna göre ifade edilir.
 Özniteliği için, öznitelik yoksa veya varsa ancak boş bir dize ise, bu true olarak değerlendirilir.  
 Bu işlevin tersi ısun olarak adlandırılmıştır.
 
-**Örneğinde**  
+**Örnek:**  
 `IsNullOrEmpty([displayName])`  
 Öznitelik yoksa veya CS ya da MV içindeki boş bir dize ise true döndürür.
 
@@ -348,7 +348,7 @@ Bu işlevin tersi ısun olarak adlandırılmıştır.
 **Açıklamalarının**  
 Bu işlevin tersi IsNullOrEmpty olarak adlandırılmıştır.
 
-**Örneğinde**  
+**Örnek:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
@@ -367,7 +367,7 @@ Item işlevi, birden çok değerli dize/öznitelikten bir öğe döndürür.
 
 Dizin sınırların dışında olduğunda bir hata oluşturur.
 
-**Örneğinde**  
+**Örnek:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Birincil e-posta adresini döndürür.
 
@@ -417,7 +417,7 @@ Dizedeki ilk Numchar karakterlerini içeren bir dize:
 
 Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize ile özdeş bir dize (yani, 1 parametresindeki tüm karakterleri içeren) döndürülür.
 
-**Örneğinde**  
+**Örnek:**  
 `Left("John Doe", 3)`  
 `Joh` döndürür.
 
@@ -467,7 +467,7 @@ Removeyinelemelerini işlevi, birden çok değerli dizeyi alır ve her değerin 
 **Sözdizimi**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Örneğinde**  
+**Örnek:**  
 `RemoveDuplicates([proxyAddresses])`  
 Tüm yinelenen değerlerin kaldırıldığı bir ayıklanmış proxyAddress özniteliği döndürür.
 
@@ -623,7 +623,7 @@ Trim işlevi bir dizeden baştaki ve sondaki boşlukları kaldırır.
 **Sözdizimi**  
 `str Trim(str value)`  
 
-**Örneğinde**  
+**Örnek:**  
 `Trim(" Test ")`  
 "Test" döndürür.
 
@@ -650,7 +650,7 @@ Sınırlayıcıdaki karakterlerden biri tarafından ayrılan dizedeki her karakt
 
 Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlayıcılar tarafından tanımlanan herhangi bir sözcük içermiyorsa, boş bir dize döndürülür.
 
-**Örneğinde**  
+**Örnek:**  
 `Word("The quick brown fox",3," ")`  
 "Kahverengi" döndürür
 

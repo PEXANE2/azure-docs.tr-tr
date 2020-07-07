@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82105769"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service iç işlevleri
@@ -31,7 +31,7 @@ Aşağıdaki diyagramda, SignalR hizmetini uygulama sunucunuz ile kullandığın
 
 SignalR hizmeti ile uygulama sunucusu artık kalıcı istemci bağlantılarını kabul etmiyor, bunun yerine:
 
-1. Bir `negotiate` uç nokta, her hub Için Azure SignalR HIZMETI SDK 'sı tarafından sunulur.
+1. Bir `negotiate` uç nokta, her hub Için Azure SignalR hizmeti SDK 'sı tarafından sunulur.
 1. Bu uç nokta, istemcinin anlaşma isteklerine yanıt verir ve istemcileri SignalR hizmetine yönlendirir.
 1. Sonuç olarak, istemciler SignalR hizmetine bağlanır.
 

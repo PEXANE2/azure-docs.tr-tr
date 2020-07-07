@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf2ccd93a94036c6ab5b6224456cd1f5a13239c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77619299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855021"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Hızlı başlangıç: .NET Framework uygulamasına özellik bayrakları ekleme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 .NET Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -37,20 +37,20 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Özellik **Yöneticisi** > **+ Ekle** ' yi seçerek Özellik bayrağı ekleyin `Beta`.
+6. Özellik **Yöneticisi**  >  **+ Ekle** ' yi seçerek Özellik bayrağı ekleyin `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![Beta adlı özellik bayrağını etkinleştir](media/add-beta-feature-flag.png)
 
-    Şimdilik `label` tanımsız bırakın.
+    `label`Şimdilik tanımsız bırakın.
 
 ## <a name="create-a-net-console-app"></a>.NET konsol uygulaması oluşturma
 
-1. Visual Studio 'yu başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçin.
+1. Visual Studio 'yu başlatın ve **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 
 1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)**. **İleri**’ye tıklayın.
 
-1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4,8** veya üstünü seçin. **Oluştur**' a tıklayın.
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4,8** veya üstünü seçin. **Oluştur**'a tıklayın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
@@ -71,7 +71,7 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
     using Microsoft.FeatureManagement;
     ```
 
-1. Özellik bayrakları `Main` alındıktan sonra `UseFeatureFlags` seçeneği belirterek uygulama yapılandırmasına bağlanmak için yöntemi güncelleştirin. Sonra `Beta` Özellik bayrağı etkinse bir ileti görüntüler.
+1. `Main`Özellik bayrakları alındıktan sonra seçeneği belirterek uygulama yapılandırmasına bağlanmak için yöntemi güncelleştirin `UseFeatureFlags` . Sonra `Beta` Özellik bayrağı etkinse bir ileti görüntüler.
 
     ```csharp
         public static async Task Main(string[] args)
@@ -105,11 +105,15 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 1. **ConnectionString** adlı bir ortam değişkenini uygulama yapılandırma deponuzın bağlantı dizesine ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın:
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. Değişikliğin etkili olması için Visual Studio 'Yu yeniden başlatın. 
 

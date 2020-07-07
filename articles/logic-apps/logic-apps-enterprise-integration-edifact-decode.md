@@ -1,5 +1,5 @@
 ---
-title: EDIOLGU iletilerinin kodunu çözme
+title: EDIFACT iletilerinin kodunu çözme
 description: EDI 'yi doğrulayın ve Enterprise Integration Pack Azure Logic Apps için EDIOLGU ileti kod çözücüsüyle bildirimleri oluşturun
 services: logic-apps
 ms.suite: integration
@@ -9,15 +9,15 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82106296"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps için EDIOLGU iletilerinin kodunu çözün
 
-DıBULGULAR ileti bağlayıcısıyla birlikte, EDI ve iş ortaklarına özgü özellikleri doğrulayabilir, değişiklikleri işlem kümelerine bölebilir veya tüm değişiklikleri koruyabilir ve işlenen işlemler için bildirimler oluşturabilirsiniz. Bu bağlayıcıyı kullanmak için, mantıksal uygulamanızdaki mevcut bir tetikleyiciye bağlayıcıyı eklemeniz gerekir.
+Kod Çözme EDIFACT ileti bağlayıcısıyla EDI ve iş ortağına özgü özellikleri doğrulayabilir, değişimleri işlem kümelerine ayırabilir veya değişimlerin tamamını koruyabilir ve yapılan işlemler için onaylar oluşturabilirsiniz. Bu bağlayıcıyı kullanmak için bunu mantıksal uygulamanızdaki tetikleyicilerden birine eklemeniz gerekir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -28,7 +28,7 @@ DıBULGULAR ileti bağlayıcısıyla birlikte, EDI ve iş ortaklarına özgü ö
 * Tümleştirme hesabınızda zaten tanımlanmış olan en az iki [iş ortağı](logic-apps-enterprise-integration-partners.md)
 * Tümleştirme hesabınızda zaten tanımlanmış olan bir [Ediolgu sözleşmesi](logic-apps-enterprise-integration-edifact.md)
 
-## <a name="decode-edifact-messages"></a>EDIOLGU iletilerinin kodunu çözme
+## <a name="decode-edifact-messages"></a>EDIFACT iletilerinin kodunu çözme
 
 > [!IMPORTANT]
 > EDIOLGU Bağlayıcısı yalnızca UTF-8 karakterlerini destekler.
@@ -61,11 +61,11 @@ DıBULGULAR ileti bağlayıcısıyla birlikte, EDI ve iş ortaklarına özgü ö
 
     ![Tümleştirme hesabı bağlantısı oluşturuldu](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    Örneğin:
+    Örnek:
 
     ![Kod çözme için EDIOLGU düz dosya iletisini seçin](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
-## <a name="edifact-decoder-details"></a>EDIOLGU kod çözücü ayrıntıları
+## <a name="edifact-decoder-details"></a>EDIFACT kod çözücü ayrıntıları
 
 Kod çözme EDIOLGU Bağlayıcısı şu görevleri gerçekleştirir: 
 
@@ -84,13 +84,13 @@ Kod çözme EDIOLGU Bağlayıcısı şu görevleri gerçekleştirir:
   * İşlem kümesi denetim numarasını bu gruptaki diğer işlem kümesi denetim numaralarına karşı denetler.
 * Değişimi işlem kümelerine böler veya tüm değişimi korur:
   * Değişimi işlem kümeleri olarak Böl-hata durumunda işlem kümelerini askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
-  X12 kod çözme eylemi yalnızca doğrulama `badMessages`başarısız olan işlem kümelerini çıkış yapar ve kalan işlem kümelerini olarak `goodMessages`verir.
+  X12 kod çözme eylemi yalnızca doğrulama başarısız olan işlem kümelerini çıkış yapar `badMessages` ve kalan işlem kümelerini olarak verir `goodMessages` .
   * Değişimi işlem kümeleri olarak Böl-hata durumunda değişimi askıya al: değişimi işlem kümelerine böler ve her işlem kümesini ayrıştırır. 
-  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak `badMessages`çıkarır.
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak çıkarır `badMessages` .
   * Değiş tokuş etme-işlem kümelerini askıya alma hata durumunda: değişimi koruma ve toplu tüm değişimi işleme. 
-  X12 kod çözme eylemi yalnızca doğrulama `badMessages`başarısız olan işlem kümelerini çıkış yapar ve kalan işlem kümelerini olarak `goodMessages`verir.
+  X12 kod çözme eylemi yalnızca doğrulama başarısız olan işlem kümelerini çıkış yapar `badMessages` ve kalan işlem kümelerini olarak verir `goodMessages` .
   * Değişimi koru-hata durumunda değişimi askıya al: değişimi koruma ve toplu tüm değişimi işleme. 
-  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak `badMessages`çıkarır.
+  Değişim başarısız doğrulamasında bir veya daha fazla işlem kümesi varsa, x12 kod çözme eylemi bu değişim içindeki tüm işlem kümelerini olarak çıkarır `badMessages` .
 * Teknik bir (denetim) ve/veya Işlevsel onay (yapılandırıldıysa) oluşturur.
   * Teknik bir bildirim veya CONSI ACK, alınan tüm değiş tokuş için sözdizimsel bir denetim sonucunu raporlar.
   * Bir işlevsel bildirim alınan bir değişimi veya grubu kabul eder veya reddeder

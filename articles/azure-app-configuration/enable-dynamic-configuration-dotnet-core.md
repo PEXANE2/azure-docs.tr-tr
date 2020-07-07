@@ -14,16 +14,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75433672"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856496"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Öğretici: .NET Core uygulamasında dinamik yapılandırma kullanma
 
-Uygulama yapılandırması .NET Core istemci kitaplığı, bir uygulamanın yeniden başlatılmasına yol açmadan bir yapılandırma ayarları kümesinin güncelleştirilmesini destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği `IConfigurationRefresher` alarak ve sonra bu örneğe kodunuzda herhangi bir yere çağrı `Refresh` yaparak uygulanabilir.
+Uygulama yapılandırması .NET Core istemci kitaplığı, bir uygulamanın yeniden başlatılmasına yol açmadan bir yapılandırma ayarları kümesinin güncelleştirilmesini destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği alarak `IConfigurationRefresher` ve sonra `Refresh` Bu örneğe kodunuzda herhangi bir yere çağrı yaparak uygulanabilir.
 
 Ayarları güncel tutmak ve yapılandırma deposuna çok fazla çağrı önlemek için, her bir ayar için bir önbellek kullanılır. Bir ayarın önbelleğe alınmış değeri sona erene kadar, yenileme işlemi değeri, değer yapılandırma deposunda değiştiği zaman bile güncelleştirmez. Her istek için varsayılan kullanım süresi 30 saniyedir, ancak gerekirse geçersiz kılınabilir.
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bir uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için .NET Core uygulamanızı ayarlayın.
 > * Uygulamanızdaki en son yapılandırmayı tükettin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi yapmak için [.NET Core SDK](https://dotnet.microsoft.com/download)' yi yüklemelisiniz.
 
@@ -45,7 +45,7 @@ Bu öğreticiyi yapmak için [.NET Core SDK](https://dotnet.microsoft.com/downlo
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
-*Program.cs* ' i açın ve `System.Threading.Tasks` ad alanına bir başvuru eklemek, `AddAzureAppConfiguration` yöntemde yenileme yapılandırmasını belirtmek ve `Refresh` yöntemi kullanarak el ile yenilemeyi tetiklemek için dosyayı güncelleştirin.
+*Program.cs* ' i açın ve ad alanına bir başvuru eklemek `System.Threading.Tasks` , yöntemde yenileme yapılandırmasını belirtmek `AddAzureAppConfiguration` ve yöntemi kullanarak el ile yenilemeyi tetiklemek için dosyayı güncelleştirin `Refresh` .
 
 ```csharp
 using System;
@@ -91,32 +91,42 @@ class Program
 }
 ```
 
-`ConfigureRefresh` Yöntemi, bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini uygulama yapılandırma deposu ile güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. `IConfigurationRefresher` Bir örneği `GetRefresher` `AddAzureAppConfiguration` yöntemine sunulan seçeneklere çağrı yöntemiyle alınabilir ve bu örnekteki `Refresh` yöntem kodunuzda herhangi bir yerde yenileme işlemini tetiklemek için kullanılabilir.
+`ConfigureRefresh`Yöntemi, bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini uygulama yapılandırma deposu ile güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. Bir örneği `IConfigurationRefresher` `GetRefresher` yöntemine sunulan seçeneklere çağrı yöntemiyle alınabilir `AddAzureAppConfiguration` ve `Refresh` Bu örnekteki yöntem kodunuzda herhangi bir yerde yenileme işlemini tetiklemek için kullanılabilir.
     
 > [!NOTE]
-> Yapılandırma ayarı için varsayılan önbellek süre sonu zamanı 30 saniyedir, ancak yöntem için `SetCacheExpiration` `ConfigureRefresh` bağımsız değişken olarak geçirilen seçenek başlatıcısında yöntemi çağırarak geçersiz kılınabilir.
+> Yapılandırma ayarı için varsayılan önbellek süre sonu zamanı 30 saniyedir, ancak yöntem `SetCacheExpiration` için bağımsız değişken olarak geçirilen seçenek başlatıcısında yöntemi çağırarak geçersiz kılınabilir `ConfigureRefresh` .
 
 ## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
 1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     MacOS veya Linux kullanıyorsanız şu komutu çalıştırın:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 1. Konsol uygulamasını derlemek için aşağıdaki komutu çalıştırın:
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 1. Oluşturma başarıyla tamamlandıktan sonra, uygulamayı yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/dotnet-core-app-run.png)
 
@@ -133,7 +143,7 @@ class Program
     ![Hızlı başlangıç uygulaması yerel yenileme](./media/quickstarts/dotnet-core-app-run-refresh.png)
     
     > [!NOTE]
-    > Önbellek sona erme zamanı, yenileme işlemi için yapılandırmayı belirtirken `SetCacheExpiration` yöntemi kullanılarak 10 saniye olarak ayarlandığından, yapılandırma ayarı değeri yalnızca bu ayar için en son yenilemeden bu yana en az 10 saniye geçtiğinde güncelleştirilir.
+    > Önbellek sona erme zamanı, `SetCacheExpiration` yenileme işlemi için yapılandırmayı belirtirken yöntemi kullanılarak 10 saniye olarak ayarlandığından, yapılandırma ayarı değeri yalnızca bu ayar için en son yenilemeden bu yana en az 10 saniye geçtiğinde güncelleştirilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

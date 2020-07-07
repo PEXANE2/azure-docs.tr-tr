@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: glenga
 ms.openlocfilehash: a02eadcacddc91ae9d17c50efd5e573718c41a21
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67189043"
 ---
-* [Azure Işlevleri Tetikleyicileri ve bağlamaları kavramları](../articles/azure-functions/functions-triggers-bindings.md)  
+* [Azure İşlevleri tetikleyicileri ve bağlama kavramları](../articles/azure-functions/functions-triggers-bindings.md)  
   Işlevlerin diğer hizmetlerle nasıl tümleştirildiğini öğrenin.  
 * [Azure İşlevleri geliştirici başvurusu](../articles/azure-functions/functions-reference.md)  
   Işlevler çalışma zamanı ve kodlama işlevlerine yönelik bir başvuru ve tetikleyici ve bağlamaları tanımlama hakkında daha fazla teknik bilgi sağlar.

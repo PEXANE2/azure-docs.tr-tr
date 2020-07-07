@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72385654"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS 'a yerelleştirilmiş anında iletme bildirimleri gönderme
@@ -73,7 +73,7 @@ Ardından cihazların doğru özelliğe başvuran bir şablonla kaydolmanızı s
 
 Şablonlar hakkında daha fazla bilgi için bkz. [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md) makalesi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Belirli iOS cihazlarına anında iletme bildirimlerini](notification-hubs-ios-xplat-segmented-apns-push-notification.md) doldurun ve bu öğretici doğrudan bu kodla oluşturulduğundan kodun kullanılabilir olmasını sağlayabilirsiniz.
 * Visual Studio 2019 isteğe bağlıdır.
@@ -82,7 +82,7 @@ Ardından cihazların doğru özelliğe başvuran bir şablonla kaydolmanızı s
 
 Bu bölümde, şablonları kullanarak yerelleştirilmiş son haberler göndermek üzere [son haberler göndermek için Notification Hubs kullanma] konusunda oluşturduğunuz son haberler uygulamasını değiştirirsiniz.
 
-İçinde `MainStoryboard_iPhone.storyboard`, üç dile bölünmüş bir denetim ekleyin: Ingilizce, Fransızca ve MANDARIN.
+İçinde `MainStoryboard_iPhone.storyboard` , üç dile bölünmüş bir denetim ekleyin: İngilizce, Fransızca ve MANDARIN.
 
 ![İOS UI görsel taslağı oluşturma][13]
 
@@ -92,7 +92,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
 
 ## <a name="build-the-ios-app"></a>İOS uygulamasını oluşturma
 
-1. `Notification.h`İçinde, `retrieveLocale` yöntemini ekleyin ve aşağıdaki kodda gösterildiği gibi Store ve Subscribe yöntemlerini değiştirin:
+1. İçinde, `Notification.h` `retrieveLocale` yöntemini ekleyin ve aşağıdaki kodda gösterildiği gibi Store ve Subscribe yöntemlerini değiştirin:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -103,7 +103,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
 
     - (int) retrieveLocale;
     ```
-    `Notification.m`İçinde, `locale` parametresini ekleyerek ve `storeCategoriesAndSubscribe` Kullanıcı varsayılanlarıyla depolayarak yöntemi değiştirin:
+    İçinde, `Notification.m` `storeCategoriesAndSubscribe` `locale` parametresini ekleyerek ve Kullanıcı varsayılanlarıyla depolayarak yöntemi değiştirin:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -141,7 +141,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
     }
     ```
 
-    Yerine yöntemini `registerTemplateWithDeviceToken`kullanırsınız `registerNativeWithDeviceToken`. Bir şablona kaydoldığınızda, JSON şablonunu ve ayrıca şablon için bir ad belirtmeniz gerekir (uygulama farklı şablonları kaydetmek isteyebilir). Bu haber için bildirimleri aldığınızdan emin olmak istediğiniz şekilde kategorilerinizi Etiketler olarak kaydettiğinizden emin olun.
+    Yerine yöntemini kullanırsınız `registerTemplateWithDeviceToken` `registerNativeWithDeviceToken` . Bir şablona kaydoldığınızda, JSON şablonunu ve ayrıca şablon için bir ad belirtmeniz gerekir (uygulama farklı şablonları kaydetmek isteyebilir). Bu haber için bildirimleri aldığınızdan emin olmak istediğiniz şekilde kategorilerinizi Etiketler olarak kaydettiğinizden emin olun.
 
     Kullanıcı varsayılan ayarlarından yerel ayarı almak için bir yöntem ekleyin:
 
@@ -155,13 +155,13 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
     }
     ```
 
-2. Artık `Notifications` sınıfı değiştirdiğimize göre, yeni `ViewController` `UISegmentControl`' nin kullanılmasını sağlar. Şu anda seçili olan yerel ayarı `viewDidLoad` gösterdiğinizden emin olmak için yöntemine aşağıdaki satırı ekleyin:
+2. Artık sınıfı değiştirdiğimize `Notifications` `ViewController` göre, yeni ' nin kullanılmasını sağlar `UISegmentControl` . `viewDidLoad`Şu anda seçili olan yerel ayarı gösterdiğinizden emin olmak için yöntemine aşağıdaki satırı ekleyin:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    Ardından, `subscribe` yönteyinizdeki çağrısı `storeCategoriesAndSubscribe` için aşağıdaki koda değiştirin:
+    Ardından, `subscribe` yönteyinizdeki çağrısı için `storeCategoriesAndSubscribe` aşağıdaki koda değiştirin:
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
@@ -176,7 +176,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
     }];
     ```
 
-3. Son olarak, uygulamanızın başlatıldığı sırada kaydınızı `didRegisterForRemoteNotificationsWithDeviceToken` doğru şekilde yenileyebilmeniz Için appdelegate. d uygulamanızdaki yöntemi güncelleştirmeniz gerekir. Aşağıdaki kodla bildirim `subscribe` yöntemine yönelik aramanızı değiştirin:
+3. Son olarak, `didRegisterForRemoteNotificationsWithDeviceToken` uygulamanızın başlatıldığı sırada kaydınızı doğru şekilde yenileyebilmeniz Için AppDelegate. d uygulamanızdaki yöntemi güncelleştirmeniz gerekir. `subscribe`Aşağıdaki kodla bildirim yöntemine yönelik aramanızı değiştirin:
 
     ```obj-c
     NSSet* categories = [self.notifications retrieveCategories];
@@ -194,7 +194,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
 
 ## <a name="optional-send-localized-template-notifications-from-the-device"></a>seçim Cihazdan yerelleştirilmiş şablon bildirimleri gönder
 
-Visual Studio 'ya erişiminiz yoksa veya yalnızca cihazdaki uygulamadan yerelleştirilmiş şablon bildirimlerinin gönderilmesini test etmek istiyorsanız. Yerelleştirilmiş şablon parametrelerini, önceki öğreticide tanımladığınız `SendNotificationRESTAPI` yönteme ekleyebilirsiniz.
+Visual Studio 'ya erişiminiz yoksa veya yalnızca cihazdaki uygulamadan yerelleştirilmiş şablon bildirimlerinin gönderilmesini test etmek istiyorsanız. Yerelleştirilmiş şablon parametrelerini, `SendNotificationRESTAPI` önceki öğreticide tanımladığınız yönteme ekleyebilirsiniz.
 
 ```objc
 - (void)SendNotificationRESTAPI:(NSString*)categoryTag

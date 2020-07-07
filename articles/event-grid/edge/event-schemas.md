@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73242473"
 ---
 # <a name="event-schemas"></a>Olay şemaları
@@ -56,14 +56,14 @@ Tüm olaylar aşağıdaki en üst düzey verilere sahiptir:
 
 | Özellik | Tür | Gerekli | Açıklama |
 | -------- | ---- | ----------- |-----------
-| konu başlığı | string | Hayır | Yayımlandığı konuyla eşleşmelidir. Event Grid,, belirtilmemişse yayımlandığı konunun adı ile doldurulur. |
+| konu başlığı | dize | No | Yayımlandığı konuyla eşleşmelidir. Event Grid,, belirtilmemişse yayımlandığı konunun adı ile doldurulur. |
 | Konu | string | Yes | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Yes | Bu olay kaynağı için olay türü, örneğin BlobCreated. |
 | eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| Kimlik | string | Hayır | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | Hayır | Yayımlama varlığına özgü olay verilerini yakalamak için kullanılır. |
+| ID | dize | No | Etkinliğin benzersiz tanımlayıcısı. |
+| veriler | nesne | No | Yayımlama varlığına özgü olay verilerini yakalamak için kullanılır. |
 | dataVersion | string | Yes | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
-| metadataVersion | string | Hayır | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| metadataVersion | dize | No | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 ### <a name="example--eventgrid-schema-event"></a>Örnek — EventGrid şema olayı
 

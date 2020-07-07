@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101561"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
@@ -55,7 +55,7 @@ Daha fazla bilgi için:
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Windows 10 ' un çok kiracılı barındırma haklarıyla dağıtımı
-[En son Azure PowerShell yükleyip yapılandırdığınızdan](/powershell/azure/overview)emin olun. VHD 'nizi hazırladıktan sonra `Add-AzVhd` cmdlet 'Ini kullanarak Azure depolama hesabınıza VHD 'yi aşağıdaki gibi yükleyin:
+[En son Azure PowerShell yükleyip yapılandırdığınızdan](/powershell/azure/overview)emin olun. VHD 'nizi hazırladıktan sonra cmdlet 'ini kullanarak Azure depolama hesabınıza VHD 'yi `Add-AzVhd` aşağıdaki gibi yükleyin:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Azure Resource Manager şablonu dağıtımını kullanarak dağıtma** Kaynak Yöneticisi şablonlarınız içinde, için `licenseType` ek bir parametre belirtilebilir. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md)hakkında daha fazla bilgi edinebilirsiniz. VHD 'nizi Azure 'a yükledikten sonra, işlem sağlayıcısının bir parçası olarak lisans türünü içerecek şekilde Kaynak Yöneticisi şablonu düzenleyin ve şablonunuzu normal olarak dağıtın:
+**Azure Resource Manager şablonu dağıtımını kullanarak dağıtma** Kaynak Yöneticisi şablonlarınız içinde, için ek bir parametre `licenseType` belirtilebilir. [Azure Resource Manager şablonları yazma](../../resource-group-authoring-templates.md)hakkında daha fazla bilgi edinebilirsiniz. VHD 'nizi Azure 'a yükledikten sonra, işlem sağlayıcısının bir parçası olarak lisans türünü içerecek şekilde Kaynak Yöneticisi şablonu düzenleyin ve şablonunuzu normal olarak dağıtın:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -72,13 +72,13 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
     }
 ```
 
-**PowerShell aracılığıyla dağıtma** PowerShell aracılığıyla Windows Server VM 'nizi dağıttığınızda, için `-LicenseType`ek bir parametreye sahip olursunuz. VHD 'nizi Azure 'a yükledikten sonra, kullanarak `New-AzVM` bir VM oluşturun ve lisans türünü aşağıdaki gibi belirtin:
+**PowerShell aracılığıyla dağıtma** PowerShell aracılığıyla Windows Server VM 'nizi dağıttığınızda, için ek bir parametreye sahip olursunuz `-LicenseType` . VHD 'nizi Azure 'a yükledikten sonra, kullanarak bir VM oluşturun `New-AzVM` ve lisans türünü aşağıdaki gibi belirtin:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
 ## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>VM 'nizin lisans avantajını kullanarak emin olun
-VM 'nizi PowerShell veya Kaynak Yöneticisi dağıtım yöntemiyle dağıttıktan sonra, lisans türünü aşağıdaki `Get-AzVM` gibi doğrulayın:
+VM 'nizi PowerShell veya Kaynak Yöneticisi dağıtım yöntemiyle dağıttıktan sonra, lisans türünü `Get-AzVM` aşağıdaki gibi doğrulayın:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```

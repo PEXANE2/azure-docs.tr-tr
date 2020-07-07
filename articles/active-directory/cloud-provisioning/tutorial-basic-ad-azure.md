@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360529"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Öğretici: temel Active Directory ortamı
@@ -26,7 +26,7 @@ Bu öğreticide, temel bir Active Directory ortamı oluşturma işlemi adım ad�
 Hibrit kimlik senaryolarının çeşitli yönlerini test etmek için öğreticide oluşturduğunuz ortamı kullanabilirsiniz ve bazı öğreticiler için bir önkoşul olacaktır.  Zaten mevcut bir Active Directory ortamınız varsa bunu alternatif olarak kullanabilirsiniz.  Bu bilgiler, hiç bir şey başlatmayan bireyler için sağlanır.
 
 Bu öğreticiden oluşur
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .

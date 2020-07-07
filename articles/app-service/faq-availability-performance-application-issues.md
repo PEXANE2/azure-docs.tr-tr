@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 021e680a2ca5f7c00f113c4a17421b2648ca6230
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159992"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için uygulama performansı SSS
@@ -46,20 +46,20 @@ App Service Web uygulamalarını yönetmek ve korumak için PowerShell cmdlet 'l
 
 Web uygulamanızın olay günlüklerini görüntülemek için:
 
-1. **Kudu Web sitenizde** (`https://*yourwebsitename*.scm.azurewebsites.net`) oturum açın.
-2. Menüsünde, **Hata Ayıkla konsol** > **cmd**' yi seçin.
+1. **Kudu Web sitenizde** () oturum açın `https://*yourwebsitename*.scm.azurewebsites.net` .
+2. Menüsünde, **Hata Ayıkla konsol**  >  **cmd**' yi seçin.
 3. **LogFiles** klasörünü seçin.
-4. Olay günlüklerini görüntülemek için **EventLog. xml**' nin yanındaki kurşun kalem simgesini seçin.
-5. Günlükleri indirmek için PowerShell cmdlet 'ini `Save-AzureWebSiteLog -Name webappname`çalıştırın.
+4. Olay günlüklerini görüntülemek için **eventlog.xml**yanındaki kurşun kalem simgesini seçin.
+5. Günlükleri indirmek için PowerShell cmdlet 'ini çalıştırın `Save-AzureWebSiteLog -Name webappname` .
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Web uygulamamın Kullanıcı modu bellek dökümünü Nasıl yaparım? yakalayın mi?
 
 Web uygulamanızın kullanıcı modu bellek dökümünü yakalamak için:
 
-1. **Kudu Web sitenizde** (`https://*yourwebsitename*.scm.azurewebsites.net`) oturum açın.
+1. **Kudu Web sitenizde** () oturum açın `https://*yourwebsitename*.scm.azurewebsites.net` .
 2. **Işlem Gezgini** menüsünü seçin.
-3. **W3wp. exe** Işlemini veya WebJob işleminizi sağ tıklatın.
-4. **Bellek dökümünü** > Yükle**tam dökümünü**Seç ' i seçin.
+3. **w3wp.exe** Işlemini veya WebJob işleminizi sağ tıklatın.
+4. **Bellek dökümünü yükle**  >  **tam dökümünü**Seç ' i seçin.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Web uygulamamın işlem düzeyi bilgisini Nasıl yaparım? görüntüle?
 
@@ -67,11 +67,11 @@ Web uygulamanız için işlem düzeyi bilgileri görüntülemek üzere iki seçe
 
 *   Azure portalında:
     1. Web uygulaması için **Işlem Gezginini** açın.
-    2. Ayrıntıları görmek için **W3wp. exe** işlemini seçin.
+    2. Ayrıntıları görmek için **w3wp.exe** işlemini seçin.
 *   Kudu konsolunda:
-    1. **Kudu Web sitenizde** (`https://*yourwebsitename*.scm.azurewebsites.net`) oturum açın.
+    1. **Kudu Web sitenizde** () oturum açın `https://*yourwebsitename*.scm.azurewebsites.net` .
     2. **Işlem Gezgini** menüsünü seçin.
-    3. **W3wp. exe** Işlemi için **Özellikler**' i seçin.
+    3. **w3wp.exe** Işlemi için **Özellikler**' i seçin.
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>Uygulamama gözatarken "hata 403-Bu Web uygulaması durduruldu" görüyorum. Bu sorunu nasıl çözebilirim?
 
@@ -101,14 +101,14 @@ Varsayılan olarak, Web Apps, belirlenen süre boyunca boşta kalırsa kaldırı
 Başarısız istek izlemeyi açmak için:
 
 1. Azure portal web uygulamanıza gidin.
-3. **Tüm ayarlar** > **tanılama günlükleri**' ni seçin.
+3. **Tüm ayarlar**  >  **tanılama günlükleri**' ni seçin.
 4. **Başarısız Istek izleme**için **Açık**' ı seçin.
 5. **Kaydet**’i seçin.
 6. Web uygulaması dikey penceresinde **Araçlar**' ı seçin.
 7. **Visual Studio Online**' ı seçin.
 8. Ayar **Açık**değilse **Açık**' ı seçin.
 9. **Git**' i seçin.
-10. **Web. config**' i seçin.
+10. **Web.config**seçin.
 11. System. webServer içinde, bu yapılandırmayı ekleyin (belirli bir URL 'YI yakalamak için):
 
     ```xml
@@ -142,8 +142,8 @@ Başarısız istek izlemeyi açmak için:
     </tracing>
     ```
 13. Başarısız istek izlemelerini indirmek için, [portalda](https://portal.azure.com)Web sitenize gidin.
-15. **Araçlar** > **kudu** > **Git**' i seçin.
-18. Menüsünde, **Hata Ayıkla konsol** > **cmd**' yi seçin.
+15. **Araçlar**  >  **kudu**  >  **Git**' i seçin.
+18. Menüsünde, **Hata Ayıkla konsol**  >  **cmd**' yi seçin.
 19. **LogFiles** klasörünü seçin ve ardından **W3SVC**ile başlayan bir adı olan klasörü seçin.
 20. XML dosyasını görmek için kalem simgesini seçin.
 
@@ -174,7 +174,7 @@ Bu sorun Kestrel Version 1.0.2 içinde düzeltilmiştir. Bu sürüm ASP.NET Core
 
 App Service yerel önbellek özelliğini kullanıyorsanız, App Service örneğiniz için LogFiles ve veri klasörlerinin klasör yapısı etkilenir. Yerel önbellek kullanıldığında, alt klasörler depolama günlük dosyaları ve veri klasörlerinde oluşturulur. Alt klasörler "benzersiz tanımlayıcı" ve zaman damgasını adlandırma düzenlerini kullanır. Her alt klasör, Web uygulamasının çalıştığı veya çalıştırıldığı bir VM örneğine karşılık gelir.
 
-Yerel önbellek kullanıp kullanmayacağınızı anlamak için App Service **uygulama ayarları** sekmesini kontrol edin. Yerel önbellek kullanılıyorsa, uygulama ayarı `WEBSITE_LOCAL_CACHE_OPTION` olarak `Always`ayarlanır.
+Yerel önbellek kullanıp kullanmayacağınızı anlamak için App Service **uygulama ayarları** sekmesini kontrol edin. Yerel önbellek kullanılıyorsa, uygulama ayarı `WEBSITE_LOCAL_CACHE_OPTION` olarak ayarlanır `Always` .
 
 Yerel önbellek kullanmıyorsanız ve bu sorunla karşılaşıyorsanız, bir destek isteği gönderin.
 

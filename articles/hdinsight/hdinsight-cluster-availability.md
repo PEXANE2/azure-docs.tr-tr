@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
 ms.openlocfilehash: 4b26128b794a6a667edc578f56ad0bc9fb8303a7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691145"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile küme kullanılabilirliğini izleme
@@ -23,7 +23,7 @@ Bu makalede, kümenizi izlemek ve bir bir veya daha fazla düğümden beş saat 
 
 ## <a name="dashboard"></a>Pano
 
-**Ambarı panosuna** aşağıda gösterildiği gibi, HDInsight genel bakış konusunun **küme panoları** bölümünde bulunan Azure Portal. Alternatif olarak, CLUSTERNAME öğesinin Kümenizin adı olduğu bir `https://CLUSTERNAME.azurehdinsight.net` tarayıcıda gezinilerek erişilebilir.
+**Ambarı panosuna** aşağıda gösterildiği gibi, HDInsight genel bakış konusunun **küme panoları** bölümünde bulunan Azure Portal. Alternatif olarak, `https://CLUSTERNAME.azurehdinsight.net` clustername öğesinin Kümenizin adı olduğu bir tarayıcıda gezinilerek erişilebilir.
 
 ![HDInsight kaynak portalı görünümü](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
@@ -55,7 +55,7 @@ Uyarı tanımlarının ve durumlarının listesini görüntülemek için, aşağ
 
 Ambarı aşağıdakiler dahil olmak üzere kullanılabilirliğiyle ilgili çok sayıda önceden tanımlı uyarı sunar:
 
-| Uyarı Adı                        | Açıklama   |
+| Uyarı Adı                        | Description   |
 |---|---|
 | Dadtanode sistem durumu Özeti           | Sağlıksız bir kades varsa, bu hizmet düzeyi uyarı tetiklenir|
 | Süs Yot yüksek kullanılabilirlik durumu | Bu hizmet düzeyi uyarı, etkin bir süs Code veya standby süs ODE çalışmıyorsa tetiklenir.|
@@ -80,7 +80,7 @@ Ayrıca, isteğe bağlı olarak, ambarı uyarıları için e-posta bildirimleri 
 
 ![Ambarı yönetimi bildirimleri eylemi](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Uyarı bildirimlerini yönetmek için bir iletişim kutusu açılır. İletişim kutusunun **+** alt kısmındaki öğesini seçin ve e-posta göndermek için e-posta sunucusu ayrıntılarını kullanarak, ambarı sağlamak üzere gerekli alanları doldurun.
+Uyarı bildirimlerini yönetmek için bir iletişim kutusu açılır. İletişim kutusunun alt kısmındaki öğesini seçin **+** ve e-posta göndermek için e-posta sunucusu ayrıntılarını kullanarak, ambarı sağlamak üzere gerekli alanları doldurun.
 
 > [!TIP]
 > Ambarı e-posta bildirimlerinin kurulması, birçok HDInsight kümesini yönetirken tek bir yerde uyarı almanın iyi bir yoludur.
@@ -88,6 +88,6 @@ Uyarı bildirimlerini yönetmek için bir iletişim kutusu açılır. İletişim
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](hdinsight-high-availability-linux.md)
-- [Küme kullanılabilirliği-Azure Izleyici günlükleri](./cluster-availability-monitor-logs.md)
-- [Azure Izleyici günlüklerini kullanma](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+- [Küme kullanılabilirliği - Azure İzleyici günlükleri](./cluster-availability-monitor-logs.md)
+- [Azure İzleyici günlüklerini kullanma](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [Apache Ambari e-posta bildirimleri](apache-ambari-email.md)

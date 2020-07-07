@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c7598aafea85e91f28233645d3d71bf85bf45425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82130988"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Azure DevOps Projeleri ile IoT Edge için bir CI/CD işlem hattı oluşturma
@@ -28,11 +28,11 @@ DevOps Projeleri, Azure DevOps 'da bir CI/CD işlem hattı oluşturur. Yeni bir 
 
 1. Sol bölmede, **kaynak oluştur**' u seçin ve ardından **DevOps Projeleri**arayın.  
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 ## <a name="create-a-new-application-pipeline"></a>Yeni bir uygulama işlem hattı oluşturun
 
-1. Azure IoT Edge modüllerinizin [C#](tutorial-csharp-module.md), [Node. js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) ve [Java](tutorial-java-module.md)dilinde yazılabilir. Yeni bir uygulamayı başlatmak için tercih ettiğiniz dili seçin: **.net**, **Node. js**, **Python**, **C**veya **Java**. Devam etmek için **İleri**’yi seçin.
+1. Azure IoT Edge modüllerinizi [C#](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) ve [Java](tutorial-java-module.md)'da yazılabilir. Yeni bir uygulamayı başlatmak için tercih ettiğiniz dili seçin: **.net**, **Node.js**, **Python**, **C**veya **Java**. Devam etmek için **İleri**’yi seçin.
 
    ![Yeni bir uygulama oluşturmak için dil seçin](./media/how-to-devops-project/select-language.png)
 
@@ -76,9 +76,9 @@ DevOps Projeleri, Azure Repos ' de projeniz için bir git deposu oluşturdu. Bu 
 
 2. Aşağıdaki adımlarda, kod değişikliği yapmak için Web tarayıcısının kullanımı gösterilmektedir. Bunun yerine deponuzu yerel olarak kopyalamak istiyorsanız pencerenin sağ üst kısmından **Kopyala** ' yı seçin. Visual Studio Code veya tercih ettiğiniz geliştirme aracında git deponuzu kopyalamak için belirtilen URL 'YI kullanın.
 
-3. Depo, oluşturma işleminde seçtiğiniz uygulama diline bağlı olarak **filtermodule** adlı bir modülün kodunu zaten içeriyor. **Modüller/FilterModule/Module. JSON** dosyasını açın.
+3. Depo, oluşturma işleminde seçtiğiniz uygulama diline bağlı olarak **filtermodule** adlı bir modülün kodunu zaten içeriyor. Dosya **üzerinde modüller/FilterModule/module.js** açın.
 
-   ![Modül. json dosyasını Azure Repos açın](./media/how-to-devops-project/open-module-json.png)
+   ![Azure Repos dosyasında module.jsaçın](./media/how-to-devops-project/open-module-json.png)
 
 4. Bu dosyanın **Sürüm** parametresinde [Azure DevOps derleme değişkenlerini](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) kullandığından emin olun. Bu yapılandırma, her yeni derleme çalıştırıldığında modülün yeni bir sürümünün oluşturulmasını sağlar.
 

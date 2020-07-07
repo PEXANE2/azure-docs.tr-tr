@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494521"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight üzerinde Apache Spark kümesi için bilinen sorunlar
@@ -32,7 +32,7 @@ Sorunu geçici olarak çözmek için aşağıdaki yordamı kullanın:
 
         yarn application –list
 
-    İşlerin açık adı olmayan bir etkileşimli oturumla başlatılmış olması halinde varsayılan iş adları kesin olur. [Jupyter Notebook](https://jupyter.org/)tarafından başlatılan bir oturum için iş adı ile `remotesparkmagics_*`başlar.
+    İşlerin açık adı olmayan bir etkileşimli oturumla başlatılmış olması halinde varsayılan iş adları kesin olur. [Jupyter Notebook](https://jupyter.org/)tarafından başlatılan bir oturum için iş adı ile başlar `remotesparkmagics_*` .
 
 3. Bu işleri sonlandırmak için aşağıdaki komutu çalıştırın.
 
@@ -81,17 +81,17 @@ Jupyter Not defteri dosya adlarında ASCII olmayan karakterler kullanmayın. ASC
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Daha büyük boyutlarda Not defterleri yüklenirken hata oluştu
 
-Boyutu daha büyük olan Not **`Error loading notebook`** defterlerini yüklerken bir hata görebilirsiniz.  
+**`Error loading notebook`** Boyutu daha büyük olan not defterlerini yüklerken bir hata görebilirsiniz.  
 
 **Mayı**
 
-Bu hatayı alırsanız, verileriniz bozuk veya kayıp anlamına gelmez.  Not defterleriniz hala üzerinde disk `/var/lib/jupyter`üzerinde kalır ve bunlara erişmek IÇIN kümeye SSH ekleyebilirsiniz. Bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Bu hatayı alırsanız, verileriniz bozuk veya kayıp anlamına gelmez.  Not defterleriniz hala üzerinde disk üzerinde kalır `/var/lib/jupyter` ve bunlara erişmek için KÜMEYE SSH ekleyebilirsiniz. Bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 SSH kullanarak kümeye bağlandıktan sonra, Not defterinizdeki önemli verilerin kaybolmasını engellemek için not defterlerinizi kümenizdeki yerel makinenize (SCP veya WinSCP kullanarak) bir yedekleme olarak kopyalayabilirsiniz. Daha sonra, bağlantı noktası 8001 ' de, ağ geçidine geçmeden jupi 'ye erişmek için bağlantı düğümünüz için SSH tünelini kullanabilirsiniz.  Buradan, dizüstü bilgisayarınızın çıktısını temizleyebilir ve Not defterinin boyutunu en aza indirmek için yeniden kaydedebilirsiniz.
 
 Bu hatanın gelecekte oluşmasını engellemek için bazı en iyi yöntemleri izlemeniz gerekir:
 
-* Not defteri boyutunun küçük tutulması önemlidir. Jupyter 'a geri gönderilen Spark işlerinizin tüm çıktıları not defterinde kalıcıdır.  Büyük RDD 'ler veya veri çerçeveleri üzerinde çalışmayı `.collect()` önlemek için genel olarak jupi ile en iyi uygulamadır; Bunun yerine, bir RDD 'nin içeriğine göz atmayı istiyorsanız, çıktının çok büyük olmaması `.take()` için `.sample()` veya çalıştırmayı göz önünde bulundurun.
+* Not defteri boyutunun küçük tutulması önemlidir. Jupyter 'a geri gönderilen Spark işlerinizin tüm çıktıları not defterinde kalıcıdır.  Büyük RDD 'ler veya veri çerçeveleri üzerinde çalışmayı önlemek için genel olarak jupi ile ilgili en iyi uygulamadır `.collect()` . bunun yerine, BIR RDD 'nin içeriğine gözatmak istiyorsanız `.take()` veya `.sample()` çıktınızın çok büyük olmaması için veya kullanmayı düşünün.
 * Ayrıca, bir not defterini kaydettiğinizde, boyutu azaltmak için tüm çıkış hücrelerini temizleyebilirsiniz.
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Not defteri ilk başlatması beklenenden uzun sürüyor

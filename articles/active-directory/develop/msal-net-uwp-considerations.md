@@ -14,21 +14,21 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652686"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>MSAL.NET ile Evrensel Windows Platformu kullanma konuları
 MSAL.NET ile Evrensel Windows Platformu (UWP) kullanan uygulamaların geliştiricileri, bu makalenin sunduğu kavramları göz önünde bulundurmalıdır.
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork özelliği
-Windows Çalışma Zamanı (WinRT) platformunda Boole özelliği `PublicClientApplication` `UseCorporateNetwork`vardır. Bu özellik Windows 8.1 uygulamalar ve UWP uygulamalarının, kullanıcı federe Azure Active Directory (Azure AD) kiracısına sahip bir hesapta oturum açmış olması durumunda tümleşik Windows kimlik doğrulamasından (ıWA) faydalanmalarını sağlar. İşletim sisteminde oturum açan kullanıcılar çoklu oturum açma (SSO) da kullanabilir. `UseCorporateNetwork` Özelliği ayarladığınızda, msal.net bir Web kimlik doğrulama ARACıSı (WAB) kullanır.
+Windows Çalışma Zamanı (WinRT) platformunda `PublicClientApplication` Boole özelliği vardır `UseCorporateNetwork` . Bu özellik Windows 8.1 uygulamalar ve UWP uygulamalarının, kullanıcı federe Azure Active Directory (Azure AD) kiracısına sahip bir hesapta oturum açmış olması durumunda tümleşik Windows kimlik doğrulamasından (ıWA) faydalanmalarını sağlar. İşletim sisteminde oturum açan kullanıcılar çoklu oturum açma (SSO) da kullanabilir. `UseCorporateNetwork`Özelliği ayarladığınızda, msal.net bir Web kimlik doğrulama Aracısı (WAB) kullanır.
 
 > [!IMPORTANT]
-> `UseCorporateNetwork` Özelliği true olarak ayarlamak, uygulama geliştiricisinin uygulamada IWA 'yu etkinleştirdiğinizi varsayar. IWA 'yi etkinleştirmek için:
-> - UWP uygulamanızın `Package.appxmanifest`' de, **yetenekler** sekmesinde, aşağıdaki özellikleri etkinleştirin:
+> `UseCorporateNetwork`Özelliği true olarak ayarlamak, uygulama geliştiricisinin uygulamada IWA 'yu etkinleştirdiğinizi varsayar. IWA 'yi etkinleştirmek için:
+> - UWP uygulamanızın `Package.appxmanifest` ' de, **yetenekler** sekmesinde, aşağıdaki özellikleri etkinleştirin:
 >   - **Kurumsal kimlik doğrulama**
 >   - **Özel ağlar (Istemci & sunucusu)**
 >   - **Paylaşılan Kullanıcı sertifikası**
@@ -61,7 +61,7 @@ Daha fazla bilgi için bkz. [Web kimlik doğrulama Aracısı-Fiddler](https://do
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki örnekler daha fazla bilgi sağlamaktadır.
 
-Örnek | Platform | Açıklama 
+Örnek | Platform | Description 
 |------ | -------- | -----------|
 |[Active-Directory-DotNet-Native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | MSAL.NET kullanan bir UWP istemci uygulaması. Bir Azure AD 2,0 uç noktası kullanarak kimlik doğrulaması yapan bir kullanıcının Microsoft Graph erişir. <br>![Topoloji](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[Active-Directory-Xamarin-Native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Azure AD 2,0 uç noktası aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren basit bir Xamarin Forms uygulaması. Ayrıca, Microsoft Graph nasıl erişebileceğini ve elde edilen belirtecin nasıl gösterileceğini gösterir. <br>![Topoloji](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

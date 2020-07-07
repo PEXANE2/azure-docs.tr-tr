@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
 ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82159412"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM alt sistemlerinin karma tasarımı 
@@ -93,15 +93,15 @@ Bir varlık teslim ilkesinin yapılandırması sayesinde, AMS dinamik paketleyic
 
 ## <a name="scenarios-and-samples"></a>Senaryolar ve örnekler
 
-Önceki bölümde yer alan açıklamaları temel alarak, aşağıdaki beş karma senaryo ilgili **içerik anahtarı**-**varlık teslim ilkesi** yapılandırma kombinasyonlarını kullanır (son sütunda bahsedilen örnekler tablosunu izler):
+Önceki bölümde yer alan açıklamaları temel alarak, aşağıdaki beş karma senaryo ilgili **içerik anahtarı** - **varlık teslim ilkesi** yapılandırma kombinasyonlarını kullanır (son sütunda bahsedilen örnekler tablosunu izler):
 
 |**& kaynağı barındıran içerik**|**DRM şifrelemesi**|**DRM lisansı verme**|**İçerik anahtarını yapılandır**|**Varlık teslim ilkesini yapılandırma**|**Örnek**|
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|Yes|Yes|Örnek 1|
 |AMS|AMS|Üçüncü taraf|Yes|Yes|Örnek 2|
-|AMS|Üçüncü taraf|AMS|Yes|Hayır|Örnek 3|
+|AMS|Üçüncü taraf|AMS|Evet|No|Örnek 3|
 |AMS|Üçüncü taraf|Dışarıya|Hayır|Hayır|Örnek 4|
-|Üçüncü taraf|Üçüncü taraf|AMS|Yes|Hayır|    
+|Üçüncü taraf|Üçüncü taraf|AMS|Evet|No|    
 
 Örneklerde, PlayReady koruması hem DASH hem de kesintisiz akış için geçerlidir. Aşağıdaki video URL 'Leri kesintisiz akış URL 'lardır. Karşılık gelen DASH URL 'Lerini almak için, yalnızca "(format = MPD-Time-CSF)" ekleyin. [Azure Medya test yürütücüyü](https://aka.ms/amtest) bir tarayıcıda test etmek için kullanabilirsiniz. Hangi akış protokolünü kullanacağınızı, hangi teknoloji altında kullanacağınızı yapılandırmanıza olanak tanır. IE11 ve Windows 10 ' da Microsoft Edge, EME aracılığıyla PlayReady 'yi destekler. Daha fazla bilgi için, bkz. [test aracı hakkında ayrıntılar](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
@@ -140,6 +140,6 @@ Media Services öğrenme yollarını görüntüleyin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
