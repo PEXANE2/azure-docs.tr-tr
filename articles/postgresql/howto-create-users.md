@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384356"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-tek sunucu
@@ -70,7 +70,7 @@ Sunucu Yöneticisi Kullanıcı hesabı, ek kullanıcılar oluşturmak ve bu kull
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Yönetici hesabı kullanarak, veritabanındaki nesneleri güvenli hale getirmek için ek ayrıcalıklar vermeniz gerekebilir. Veritabanı rolleri ve ayrıcalıkları hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/current/static/ddl-priv.html) bakın. Örneğin:
+4. Yönetici hesabı kullanarak, veritabanındaki nesneleri güvenli hale getirmek için ek ayrıcalıklar vermeniz gerekebilir. Veritabanı rolleri ve ayrıcalıkları hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/current/static/ddl-priv.html) bakın. Örnek:
 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;

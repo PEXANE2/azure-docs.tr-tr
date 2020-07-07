@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202405"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory E Sales Manager yeniden karması ile tümleştirin
@@ -35,7 +35,7 @@ Azure AD 'yi E Sales Manager yeniden karması ile tümleştirerek aşağıdaki a
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini E-Sales Manager yeniden karması ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -65,7 +65,7 @@ Azure AD 'nin tümleştirmesini E Sales Manager yeniden karışımına göre yap
 
     ![Azure Active Directory düğmesi][1]
 
-1. **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     !["Kurumsal uygulamalar" penceresi][2]
     
@@ -101,9 +101,9 @@ Azure portal Azure AD 'de çoklu oturum açmayı etkinleştirin ve aşağıdakil
 
     ![E Sales Manager etki alanı ve URL 'Leri yeniden karıştır çoklu oturum açma bilgileri](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. **Oturum açma URL 'si** kutusuna aşağıdaki BIÇIMDE bir URL yazın: *https://\<Server-based-URL>/\<alt etki alanı>/eSales-PC*.
+    a. **Oturum açma URL 'si** kutusuna URL 'yi şu biçimde yazın: *https:// \<Server-Based-URL> / \<sub-domain> /eSales-PC*.
 
-    b. **Tanımlayıcı** kutusuna URL 'yi şu biçimde yazın: *\<https://Server-based-URL>/\<alt etki alanı>/*.
+    b. **Tanımlayıcı** kutusuna URL 'yi şu biçimde yazın: *https:// \<Server-Based-URL> / \<sub-domain> / *.
 
     c. Bu öğreticide daha sonra kullanmak için **tanımlayıcı** değerini aklınızda yapın.
     
@@ -120,7 +120,7 @@ Azure portal Azure AD 'de çoklu oturum açmayı etkinleştirin ve aşağıdakil
 
     **Özniteliği Düzenle** penceresi açılır.
 
-1. **Ad alanı** ve **ad** değerlerini kopyalayın. * \<>/\<ad>model ad *alanında değeri oluşturun ve bu öğreticide daha sonra kullanmak üzere kaydedin.
+1. **Ad alanı** ve **ad** değerlerini kopyalayın. Değeri, düzende oluşturun *\<Namespace>/\<Name>* ve daha sonra bu öğreticide kullanmak üzere kaydedin.
 
     ![Öznitelik düzenleme penceresi](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -142,7 +142,7 @@ Azure portal Azure AD 'de çoklu oturum açmayı etkinleştirin ve aşağıdakil
 
     !["Yönetici Menüsü" komutu](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Sol bölmede, dış sistemle **sistem ayarları** > **ortak işlemi**' ni seçin.
+1. Sol bölmede, dış sistemle **sistem ayarları**  >  **ortak işlemi**' ni seçin.
 
     !["Sistem ayarları" ve "dış sistemle birlikte Işlem" bağlantıları](./media/esalesmanagerremix-tutorial/configure5.png)
     
@@ -158,7 +158,7 @@ Azure portal Azure AD 'de çoklu oturum açmayı etkinleştirin ve aşağıdakil
     
     b. **İşbirliği öğesi** bölümünde, açılan listede, **e-posta**' yı seçin.
 
-    c. **İşbirliği öğesi** kutusunda, daha önce kopyaladığınız talep değerini Azure Portal yapıştırın (yani, **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**).
+    c. **İşbirliği öğesi** kutusunda, daha önce kopyaladığınız talep değerini Azure Portal yapıştırın (yani, **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** ).
 
     d. **Veren (VARLıK kimliği)** kutusunda, daha önce Azure Portal **E-Sales Manager 'ın etki alanı ve URL 'leri yeniden karması** bölümünden kopyaladığınız tanımlayıcı değeri yapıştırın.
 
@@ -166,12 +166,12 @@ Azure portal Azure AD 'de çoklu oturum açmayı etkinleştirin ve aşağıdakil
 
     f. **Kimlik sağlayıcısı oturum açma URL** 'si kutusunda, daha önce Azure Portal kopyaladığınız SAML çoklu oturum açma hizmeti URL 'sini yapıştırın.
 
-    g. **Kimlik sağlayıcısı oturum kapatma URL 'si** kutusunda, daha önce Azure Portal kopyaladığınız oturum kapatma URL 'si değerini yapıştırın.
+    örneğin: **Kimlik sağlayıcısı oturum kapatma URL 'si** kutusunda, daha önce Azure Portal kopyaladığınız oturum kapatma URL 'si değerini yapıştırın.
 
     h. **Ayar Tamam**' ı seçin.
 
 > [!TIP]
-> Uygulamayı ayarlarken, [Azure Portal](https://portal.azure.com)önceki yönergelerin kısa bir sürümünü okuyabilirsiniz. Uygulamayı **Active Directory** > **Kurumsal uygulamalar** bölümüne ekledikten sonra, **Çoklu oturum açma** sekmesini seçin ve ardından alttaki **yapılandırma** bölümünde yer alan ekli belgelere erişin. Katıştırılmış belge özelliği hakkında daha fazla bilgi için bkz. [Azure AD Embedded belgeleri]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Uygulamayı ayarlarken, [Azure Portal](https://portal.azure.com)önceki yönergelerin kısa bir sürümünü okuyabilirsiniz. Uygulamayı **Active Directory**  >  **Kurumsal uygulamalar** bölümüne ekledikten sonra, **Çoklu oturum açma** sekmesini seçin ve ardından alttaki **yapılandırma** bölümünde yer alan ekli belgelere erişin. Katıştırılmış belge özelliği hakkında daha fazla bilgi için bkz. [Azure AD Embedded belgeleri]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
@@ -184,7 +184,7 @@ Bu bölümde, aşağıdakileri yaparak Azure portal test kullanıcısı Britta S
 
     ![Azure Active Directory bağlantısı](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. Geçerli kullanıcıların listesini göstermek için **Kullanıcılar ve gruplar** > **tüm kullanıcılar**' ı seçin.
+1. Geçerli kullanıcıların listesini göstermek için **Kullanıcılar ve gruplar**  >  **tüm kullanıcılar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
@@ -204,7 +204,7 @@ Bu bölümde, aşağıdakileri yaparak Azure portal test kullanıcısı Britta S
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri unutmayın.
 
-    d. **Oluştur**’u seçin.
+    d. **Oluştur**'u seçin.
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E-Satış Yöneticisi oluşturma test kullanıcısını yeniden karıştır
 
@@ -214,7 +214,7 @@ Bu bölümde, aşağıdakileri yaparak Azure portal test kullanıcısı Britta S
 
     ![E Sales Manager yeniden karma Yapılandırma](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. **Şirket** > **bölümlerinin ve çalışanların ayarlarının bakımını**yapın ve ardından **kayıtlı çalışanlar**' ı seçin.
+1. **Şirket**  >  **bölümlerinin ve çalışanların ayarlarının bakımını**yapın ve ardından **kayıtlı çalışanlar**' ı seçin.
 
     !["Kayıtlı çalışanlar" sekmesi](./media/esalesmanagerremix-tutorial/user1.png)
 
@@ -240,7 +240,7 @@ Bu bölümde, E-Sales Manager yeniden karışımına erişim vererek Kullanıcı
 
 ![Kullanıcı rolünü atama][200] 
 
-1. Azure Portal, **uygulamalar** görünümünü açın, **Dizin** görünümüne gidin ve ardından **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. Azure Portal, **uygulamalar** görünümünü açın, **Dizin** görünümüne gidin ve ardından **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     !["Kurumsal uygulamalar" ve "tüm uygulamalar" bağlantıları][201] 
 

@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422549"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM Konuk işletim sistemi güvenlik duvarı gelen trafiği engelliyor
@@ -53,7 +53,7 @@ Sorunu gidermek için, [Uzak araçları kullanarak](remote-tools-troubleshoot-az
 
 #### <a name="mitigation-1"></a>Risk azaltma 1
 
-1.  Azure Aracısı yüklenip sanal makinede düzgün çalışıyorsa, VM menüsünde "yalnızca yapılandırmayı Sıfırla" seçeneğini **Support + troubleshooting** > **Reset password** kullanabilirsiniz.
+1.  Azure Aracısı yüklenip sanal makinede düzgün çalışıyorsa, **Support + troubleshooting**  >  **Reset password** VM menüsünde "yalnızca yapılandırmayı Sıfırla" seçeneğini kullanabilirsiniz.
 
 2.  Bu kurtarma seçeneğini çalıştırmak şunları yapar:
 

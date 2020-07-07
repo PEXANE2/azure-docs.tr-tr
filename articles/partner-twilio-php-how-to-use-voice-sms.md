@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: f9fb250109a1c9000eae8da0d6337c96f19f0f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80410551"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>PHP 'de ses ve SMS özellikleri için Twilio kullanma
@@ -28,7 +28,7 @@ Twilio, iş iletişiminin geleceği güçleştir, geliştiricilerin uygulamalara
 **Twilio Voice** , uygulamalarınızın telefon araması yapmasına ve almasına izin verir. **TWILIO SMS** , uygulamanızın metin iletileri göndermesini ve almasını sağlar. **Twilio istemcisi** , herhangi bir telefonda, tabletten veya tarayıcıdan VoIP çağrısı yapmanıza ve WebRTC 'yi desteketmenize olanak tanır.
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio fiyatlandırması ve özel teklifler
-Azure müşterileri özel bir [teklif](https://www.twilio.com/azure)alır: Twilio hesabınızı yükselttiğinizde Twilio kredisi $10. Bu Twilio kredisi herhangi bir Twilio kullanımına uygulanabilir (telefon numaranız ve iletinizin ya da çağrı hedefinin konumuna bağlı olarak, 1.000 SMS ileti veya en fazla 1000 gelen ses dakikası alma için $10 kredi eşdeğeri). Bu Twilio kredilerini kullanın ve kullanmaya başlayın: [https://ahoy.twilio.com/azure](https://ahoy.twilio.com/azure).
+Azure müşterileri özel bir [teklif](https://www.twilio.com/azure)alır: Twilio hesabınızı yükselttiğinizde Twilio kredisi $10. Bu Twilio kredisi herhangi bir Twilio kullanımına uygulanabilir (telefon numaranız ve iletinizin ya da çağrı hedefinin konumuna bağlı olarak, 1.000 SMS ileti veya en fazla 1000 gelen ses dakikası alma için $10 kredi eşdeğeri). Bu Twilio kredilerini kullanın ve kullanmaya başlayın: [https://ahoy.twilio.com/azure](https://ahoy.twilio.com/azure) .
 
 Twilio, Kullandıkça Öde hizmetidir. Bir kurulum ücreti yoktur ve hesabınızı dilediğiniz zaman kapatabilirsiniz. Daha fazla ayrıntı için [Twilio fiyatlandırmayı][twilio_pricing]bulabilirsiniz.
 
@@ -38,20 +38,20 @@ Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Restst
 Twilio API 'sinin önemli yönleri, Twilio Verbs ve Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio fiilleri
-API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt;söyleyin&gt; ** .
+API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt; söyleyin &gt; ** .
 
 Aşağıda, Twilio fiillerinin bir listesi verilmiştir. [Twilio biçimlendirme dili belgeleri](https://www.twilio.com/docs/api/twiml)aracılığıyla diğer fiiller ve yetenekler hakkında bilgi edinin.
 
-* Çevir: çağrıyı başka bir telefona bağlar. ** &lt;&gt;**
-* Topla: telefon tuş takımında girilen sayısal rakamları toplar. ** &lt;&gt;**
-* Kapat: bir çağrıyı sonlandırır. ** &lt;&gt;**
-* Oynat: bir ses dosyası çalar. ** &lt;&gt;**
-* Duraklat: belirtilen saniye sayısı için sessizce bekler. ** &lt;&gt;**
-* Kayıt: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür. ** &lt;&gt;**
-* **Yeniden yönlendir&gt;: bir çağrının veya SMS denetiminin denetimini, farklı bir URL 'de twiml 'ye &lt;** aktarır.
-* Reddet: Twilio numaranızı Faturalandırmadan gelen çağrıyı reddeder ** &lt;&gt;**
-* Deyin: bir çağrıda yapılan metni konuşmaya dönüştürür. ** &lt;&gt;**
-* SMS: SMS iletisi gönderir. ** &lt;&gt;**
+* ** &lt; Çevir &gt; **: çağrıyı başka bir telefona bağlar.
+* ** &lt; Topla &gt; **: telefon tuş takımında girilen sayısal rakamları toplar.
+* ** &lt; Kapat &gt; **: bir çağrıyı sonlandırır.
+* ** &lt; Oynat &gt; **: bir ses dosyası çalar.
+* ** &lt; Duraklat &gt; **: belirtilen saniye sayısı için sessizce bekler.
+* ** &lt; Kayıt &gt; **: arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
+* ** &lt; Yeniden &gt; yönlendir**: bir çağrının veya SMS denetiminin DENETIMINI, farklı bir URL 'de twiml 'ye aktarır.
+* ** &lt; Reddet &gt; **: Twilio numaranızı Faturalandırmadan gelen çağrıyı reddeder
+* ** &lt; Deyin &gt; **: bir çağrıda yapılan metni konuşmaya dönüştürür.
+* ** &lt; SMS &gt; **: SMS iletisi gönderir.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML, bir çağrıyı veya SMS 'yi nasıl işleyebileceğini bilgilendirmek için Twilio fiillerini temel alan XML tabanlı yönergelerin bir kümesidir.
@@ -73,14 +73,14 @@ Bir Twilio hesabı almaya hazırsanız, [TRY Twilio][try_twilio]' de kaydolun. �
 Bir Twilio hesabı için kaydolduğunuzda, bir hesap KIMLIĞI ve bir kimlik doğrulama belirteci alırsınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap KIMLIĞINIZ ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci**etiketli alanlarda [Twilio hesabı sayfasında][twilio_account]görüntülenebilir.
 
 ## <a name="create-a-php-application"></a><a id="create_app"></a>PHP uygulaması oluşturma
-Twilio hizmetini kullanan ve Azure 'da çalışan bir PHP uygulaması, Twilio hizmetini kullanan diğer PHP uygulamasından farklı değildir. Twilio Hizmetleri REST tabanlı olmakla birlikte PHP 'den birkaç şekilde çağrılabilir. Bu makale, Twilio hizmetlerinin [GitHub 'DAN php Için Twilio kitaplığı][twilio_php]ile nasıl kullanılacağına odaklanacaktır. PHP için Twilio kitaplığını kullanma hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/libraries/php][twilio_lib_docs]..
+Twilio hizmetini kullanan ve Azure 'da çalışan bir PHP uygulaması, Twilio hizmetini kullanan diğer PHP uygulamasından farklı değildir. Twilio Hizmetleri REST tabanlı olmakla birlikte PHP 'den birkaç şekilde çağrılabilir. Bu makale, Twilio hizmetlerinin [GitHub 'DAN php Için Twilio kitaplığı][twilio_php]ile nasıl kullanılacağına odaklanacaktır. PHP için Twilio kitaplığını kullanma hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/libraries/php][twilio_lib_docs] ..
 
 Azure 'da bir Twilio/PHP uygulaması oluşturma ve dağıtmaya yönelik ayrıntılı yönergeler, [Azure 'da BIR php uygulamasında Twilio kullanarak nasıl telefon araması][howto_phonecall_php]yapılacağını bulabilirsiniz.
 
 ## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>Uygulamanızı Twilio kitaplıklarını kullanacak şekilde yapılandırma
 Uygulamanızı PHP için Twilio kitaplığını iki şekilde kullanacak şekilde yapılandırabilirsiniz:
 
-1. GitHub ([https://github.com/twilio/twilio-php][twilio_php]) ' dan php için Twilio kitaplığını Indirin ve **hizmet** dizinini uygulamanıza ekleyin.
+1. GitHub () ' dan PHP için Twilio kitaplığını indirin [https://github.com/twilio/twilio-php][twilio_php] ve **hizmet** dizinini uygulamanıza ekleyin.
    
     -VEYA-
 2. PHP için Twilio kitaplığını bir PEAR paketi olarak yükler. Aşağıdaki komutlarla yüklenebilir:
@@ -92,7 +92,7 @@ PHP için Twilio kitaplığını yükledikten sonra, kitaplığa başvurmak içi
 
         require_once 'Services/Twilio.php';
 
-Daha fazla bilgi için bkz [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme]..
+Daha fazla bilgi için bkz. [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme].
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Nasıl yapılır: giden çağrı yapma
 Aşağıda, **Services_Twilio** sınıfını kullanarak nasıl giden bir çağrının yapılacağı gösterilmektedir. Bu kod ayrıca Twilio biçimlendirme dili (TwiML) yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. **Kimden** **ve telefon numaraları için** değerlerinizi değiştirin ve kodu çalıştırmadan önce Twilio **hesabınızın telefon numarasını** doğrulayın.
@@ -172,7 +172,7 @@ Aşağıda, **Services_Twilio** SıNıFıNı kullanarak SMS iletisinin nasıl g�
     }
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Nasıl yapılır: kendi web sitenizde TwiML yanıtları sağlama
-Uygulamanız Twilio API 'sine bir çağrı başlattığında, Twilio isteği TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderir. Yukarıdaki örnek Twilio tarafından sağlanmış URL 'YI [https://twimlets.com/message][twimlet_message_url]kullanır. (TwiML, Twilio tarafından kullanılmak üzere tasarlanırken, bunu tarayıcınızda görüntüleyebilirsiniz. Örneğin, boş `<Response>` bir [https://twimlets.com/message][twimlet_message_url] öğeyi görmek için tıklayın; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] bir `<Say>` öğesi içeren `<Response>` bir öğeyi görmek için öğesine tıklayın.)
+Uygulamanız Twilio API 'sine bir çağrı başlattığında, Twilio isteği TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderir. Yukarıdaki örnek Twilio tarafından sağlanmış URL 'YI kullanır [https://twimlets.com/message][twimlet_message_url] . (TwiML, Twilio tarafından kullanılmak üzere tasarlanırken, bunu tarayıcınızda görüntüleyebilirsiniz. Örneğin, boş bir [https://twimlets.com/message][twimlet_message_url] öğeyi görmek için öğesine tıklayın `<Response>` ; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] bir öğesi içeren bir öğeyi görmek için tıklayın `<Response>` `<Say>` .)
 
 Twilio tarafından sağlanmış URL 'ye güvenmek yerine, HTTP yanıtlarını döndüren kendi sitenizi oluşturabilirsiniz. Siteyi, XML yanıtları döndüren herhangi bir dilde oluşturabilirsiniz; Bu konu, TwiML 'yi oluşturmak için PHP 'yi kullandığınız varsayılmaktadır.
 
@@ -186,7 +186,7 @@ Aşağıdaki PHP sayfası, çağrının **Merhaba Dünya** belirten TwiML yanıt
         <Say>Hello world.</Say>
     </Response>
 
-Yukarıdaki örnekte görebileceğiniz gibi, TwiML yanıtı yalnızca bir XML belgesidir. PHP için Twilio kitaplığı sizin için TwiML 'yi oluşturacak sınıfları içerir. Aşağıdaki örnek yukarıda gösterildiği gibi eşdeğer yanıtı üretir ancak PHP için Twilio kitaplığındaki **Services\_Twilio\_twiml** sınıfını kullanır:
+Yukarıdaki örnekte görebileceğiniz gibi, TwiML yanıtı yalnızca bir XML belgesidir. PHP için Twilio kitaplığı sizin için TwiML 'yi oluşturacak sınıfları içerir. Aşağıdaki örnek yukarıda gösterildiği gibi eşdeğer yanıtı üretir ancak PHP için Twilio kitaplığındaki **Services \_ Twilio \_ twiml** sınıfını kullanır:
 
     require_once('Services/Twilio.php');
 
@@ -194,9 +194,9 @@ Yukarıdaki örnekte görebileceğiniz gibi, TwiML yanıtı yalnızca bir XML be
     $response->say("Hello world.");
     print $response;
 
-TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml][twiml_reference].. 
+TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml][twiml_reference] .. 
 
-PHP sayfanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, `Services_Twilio->account->calls->create` metoda geçirilen URL olarak php sayfasının URL 'sini kullanın. Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **mytwiml** adlı bir Web uygulamanız varsa ve php sayfasının adı **mytwiml. php**ise, URL aşağıdaki örnekte gösterildiği gibi **Services_Twilio >hesap->çağrılar->oluştur** ' a geçirilebilir:
+PHP sayfanızı TwiML yanıtları sağlamak üzere ayarladıktan sonra, metoda geçirilen URL olarak PHP sayfasının URL 'sini kullanın `Services_Twilio->account->calls->create` . Örneğin, Azure 'da barındırılan bir hizmete dağıtılan **mytwiml** adlı bir Web uygulamanız varsa ve php sayfasının adı **mytwiml. php**ise, URL aşağıdaki örnekte gösterildiği gibi **Services_Twilio >hesap->çağrılar->oluştur** ' a geçirilebilir:
 
     require_once 'Services/Twilio.php';
 

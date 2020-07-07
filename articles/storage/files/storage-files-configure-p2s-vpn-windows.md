@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515321"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Azure dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma
@@ -21,7 +21,7 @@ Azure dosyaları için kullanılabilir ağ seçenekleri hakkında ayrıntılı b
 
 Makalede, Windows 'da (Windows istemcisi ve Windows Server) Noktadan siteye VPN 'yi yapılandırmaya yönelik adımlar, Azure dosya paylaşımlarını doğrudan şirket içine bağlamak için ayrıntılı olarak açıklanır. VPN üzerinden Azure Dosya Eşitleme trafiği yönlendirmek istiyorsanız lütfen bkz. [Azure dosya eşitleme proxy ve güvenlik duvarı ayarlarını yapılandırma](storage-sync-files-firewall-and-proxy.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 - Azure PowerShell modülünün en son sürümü. Azure PowerShell nasıl yükleneceğine ilişkin daha fazla bilgi için, bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps) ve işletim sisteminizi seçmek. Windows 'da Azure CLı 'yı kullanmayı tercih ediyorsanız, aşağıdaki yönergeler Azure PowerShell için sunulmuştur.
 
 - Şirket içinde bağlamak istediğiniz bir Azure dosya paylaşımıdır. Azure dosya paylaşımları, birden çok dosya paylaşımı dağıtabileceğiniz ve BLOB kapsayıcıları ya da kuyrukları gibi diğer depolama kaynaklarına ek olarak, bir paylaşılan depolama havuzunu temsil eden yönetim yapıları içindeki depolama hesaplarında dağıtılır. Azure dosya paylaşımları ve depolama hesaplarını [Azure dosya paylaşımı oluşturma](storage-how-to-create-file-share.md)bölümünde dağıtma hakkında daha fazla bilgi edinebilirsiniz.

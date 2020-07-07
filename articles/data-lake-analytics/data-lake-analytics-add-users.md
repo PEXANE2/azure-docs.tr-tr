@@ -10,16 +10,16 @@ ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.openlocfilehash: 16c503fe2d584d5f8256c65bfc49825b300f6a36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71672723"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portalında kullanıcı ekleme
 
 ## <a name="start-the-add-user-wizard"></a>Kullanıcı Ekleme Sihirbazı 'Nı başlatın
-1. Aracılığıyla https://portal.azure.comAzure Data Lake Analytics açın.
+1. Aracılığıyla Azure Data Lake Analytics açın https://portal.azure.com .
 2. **Kullanıcı Ekleme Sihirbazı**' na tıklayın.
 3. **Kullanıcı Seç** adımında, eklemek istediğiniz kullanıcıyı bulun. **Seç**' e tıklayın.
 4. **Rol Seç** adımı **Data Lake Analytics geliştirici**' yi seçin. Bu rol, U-SQL işlerini göndermek/izlemek/yönetmek için gereken en düşük izin kümesini içerir. Grup, Azure hizmetlerini yönetmeye yönelik değilse, bu role atayın.
@@ -43,7 +43,7 @@ Giriş verilerini ve çıkış verilerini içeren klasörlerde gerektiğinde "R-
 ## <a name="adding-a-user-using-powershell"></a>PowerShell kullanarak Kullanıcı ekleme
 
 1. Bu kılavuzdaki yönergeleri izleyin: [nasıl yüklenir ve yapılandırılır Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-2. [Add-AdlaJobUser. ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) PowerShell betiğini indirin.
+2. [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) PowerShell betiğini indirin.
 3. PowerShell betiğini çalıştırın. 
 
 Kullanıcı erişimini iş göndermeye, yeni iş meta verilerini görüntülemeye ve eski meta verileri görüntülemeye yönelik örnek komut:

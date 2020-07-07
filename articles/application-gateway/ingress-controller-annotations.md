@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335817"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisi için ek açıklamalar 
@@ -22,9 +22,9 @@ Kubernetes giriş kaynağına, rastgele anahtar/değer çiftleri ile açıklama 
 
 ## <a name="list-of-supported-annotations"></a>Desteklenen ek açıklamaların listesi
 
-Bir giriş kaynağının AGIC tarafından gözlenecek olması için, ile `kubernetes.io/ingress.class: azure/application-gateway` **açıklanmalıdır** . Bu durumda yalnızca AGIC, söz konusu giriş kaynağıyla birlikte çalışır.
+Bir giriş kaynağının AGIC tarafından gözlenecek olması için, ile **açıklanmalıdır** `kubernetes.io/ingress.class: azure/application-gateway` . Bu durumda yalnızca AGIC, söz konusu giriş kaynağıyla birlikte çalışır.
 
-| Ek açıklama anahtarı | Değer Türü | Varsayılan Değer | İzin Verilen Değerler
+| Ek açıklama anahtarı | Değer Türü | Varsayılan değer | İzin Verilen Değerler
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
 | [appgw.ingress.kubernetes.io/ssl-redirect](#tls-redirect) | `bool` | `false` | |
@@ -65,14 +65,14 @@ spec:
           serviceName: go-server-service
           servicePort: 80
 ```
-Yukarıdaki örnekte, ek açıklama `go-server-ingress-bkprefix` `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` ile adlı bir giriş kaynağı tanımlandık. Ek açıklama, uygulama ağ geçidine, yolu `/hello` için bir yol öneki geçersiz kılması olacak bir http ayarı oluşturmasını söyler. `/test/`
+Yukarıdaki örnekte, ek açıklama ile adlı bir giriş kaynağı tanımlandık `go-server-ingress-bkprefix` `appgw.ingress.kubernetes.io/backend-path-prefix: "/test/"` . Ek açıklama, uygulama ağ geçidine, yolu için bir yol öneki geçersiz kılması olacak bir HTTP ayarı oluşturmasını söyler `/hello` `/test/` .
 
 > [!NOTE] 
 > Yukarıdaki örnekte yalnızca bir kural tanımlanmış. Ancak, ek açıklamalar tüm giriş kaynağına uygulanabilir, bu nedenle, bir Kullanıcı birden çok kural tanımlıysa, belirtilen yolların her biri için arka uç yolu ön eki ayarlanır. Bu nedenle, bir kullanıcı farklı yol önekleri (aynı hizmet için bile) ile farklı kurallar istiyorsa farklı giriş kaynakları tanımlamanız gerekir.
 
 ## <a name="tls-redirect"></a>TLS yeniden yönlendirme
 
-Application Gateway [,](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) http url 'lerinin OTOMATIK olarak https karşılıklarına yönlendirileceği şekilde yapılandırılabilir. Bu ek açıklama mevcut olduğunda ve TLS düzgün yapılandırıldığında, Kubernetes giriş denetleyicisi [yeniden yönlendirme yapılandırması olan bir yönlendirme kuralı](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) oluşturur ve değişiklikleri Application Gateway uygular. Oluşturulan yeniden yönlendirme HTTP `301 Moved Permanently`olur.
+Application Gateway [,](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) http url 'lerinin OTOMATIK olarak https karşılıklarına yönlendirileceği şekilde yapılandırılabilir. Bu ek açıklama mevcut olduğunda ve TLS düzgün yapılandırıldığında, Kubernetes giriş denetleyicisi [yeniden yönlendirme yapılandırması olan bir yönlendirme kuralı](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) oluşturur ve değişiklikleri Application Gateway uygular. Oluşturulan yeniden yönlendirme HTTP olur `301 Moved Permanently` .
 
 ### <a name="usage"></a>Kullanım
 
@@ -206,8 +206,8 @@ spec:
 Bu ek açıklama, Application Gateway özel IP 'si üzerinde bu uç noktanın kullanıma sunulmayacağını belirtmemizi sağlar.
 
 > [!NOTE]
-> * Application Gateway aynı bağlantı noktasında birden çok IP 'yi desteklemez (örnek: 80/443). Ek açıklama `appgw.ingress.kubernetes.io/use-private-ip: "false"` ve ile diğeri ile `appgw.ingress.kubernetes.io/use-private-ip: "true"` GIRIŞ, `HTTP` Application Gateway güncelleştirmede AGC 'nin başarısız olmasına neden olur.
-> * Özel IP 'si olmayan Application Gateway için ile birlikte `appgw.ingress.kubernetes.io/use-private-ip: "true"` giriş yok sayılır. Bu işlem, uyarı ile `NoPrivateIP` ilgili giriş olayları için denetleyici günlüklerine ve giriş olaylarına yansıtılır.
+> * Application Gateway aynı bağlantı noktasında birden çok IP 'yi desteklemez (örnek: 80/443). Ek açıklama `appgw.ingress.kubernetes.io/use-private-ip: "false"` ve ile diğeri ile giriş `appgw.ingress.kubernetes.io/use-private-ip: "true"` `HTTP` , Application Gateway güncelleştirmede AGC 'nin başarısız olmasına neden olur.
+> * Özel IP 'si olmayan Application Gateway için ile birlikte giriş `appgw.ingress.kubernetes.io/use-private-ip: "true"` yok sayılır. Bu işlem, uyarı ile ilgili giriş olayları için denetleyici günlüklerine ve giriş olaylarına yansıtılır `NoPrivateIP` .
 
 
 ### <a name="usage"></a>Kullanım
@@ -237,10 +237,10 @@ spec:
 
 ## <a name="backend-protocol"></a>Arka uç Protokolü
 
-Bu ek açıklama, Application Gateway pods ile görüşülürken kullanması gereken Protokolü belirtmemizi sağlar. Desteklenen protokoller: `http`,`https`
+Bu ek açıklama, Application Gateway pods ile görüşülürken kullanması gereken Protokolü belirtmemizi sağlar. Desteklenen protokoller: `http` ,`https`
 
 > [!NOTE]
-> * Application Gateway ' de otomatik olarak imzalanan sertifikalar desteklenirken, şu anda AGIC yalnızca `https` , iyi BILINEN bir CA tarafından imzalanan sertifikayı kullanırken desteklenir.
+> * Application Gateway ' de otomatik olarak imzalanan sertifikalar desteklenirken, şu anda AGIC yalnızca, `https` iyi bilinen BIR CA tarafından imzalanan sertifikayı kullanırken desteklenir.
 > * 80 numaralı bağlantı noktasını 443 HTTPS ile kullandığınızdan emin olun.
 
 ### <a name="usage"></a>Kullanım

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348782"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
@@ -103,11 +103,11 @@ Standart katmandan bir depoyu ücretsiz katmana indirgeyemezsiniz. Ücretsiz kat
 
 Ücretsiz katmandaki yapılandırma depoları, günde 1.000 istek ile sınırlıdır. Standart katmandaki yapılandırma depoları, istek oranı saat başına 20.000 isteği aştığında geçici azaltmasına karşılaşabilir.
 
-Bir depo sınıra ulaştığında, zaman aralığı sona erene kadar yapılan tüm istekler için 429 HTTP durum kodunu döndürür. Yanıttaki `retry-after-ms` üst bilgi, isteği yeniden denemeden önce önerilen bir bekleme süresi (milisaniye cinsinden) verir.
+Bir depo sınıra ulaştığında, zaman aralığı sona erene kadar yapılan tüm istekler için 429 HTTP durum kodunu döndürür. `retry-after-ms`Yanıttaki üst bilgi, isteği yeniden denemeden önce önerilen bir bekleme süresi (milisaniye cinsinden) verir.
 
 Uygulamanız düzenli olarak HTTP durum kodu 429 yanıtlarını yaşıyorsa, yapılan istek sayısını azaltmak için yeniden tasarlamayı düşünün. Daha fazla bilgi için bkz. [uygulama yapılandırmasına yapılan Istekleri azaltma](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden mi?
 
 Şu koşullarda bir HTTP durum kodu 429 yanıtı alacaksınız:
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398469"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure özel kaynak sağlayıcılarına genel bakış
@@ -55,7 +55,7 @@ Azure özel kaynak sağlayıcıları, Azure ile uç nokta arasında bir sözleş
 
 Özellik | Gerekli | Açıklama
 ---|---|---
-ad | *Yes* | Uç nokta tanımının adı. Azure, bu adı '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/' altındaki API aracılığıyla kullanıma sunacaktır.<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName} '
+name | *Yes* | Uç nokta tanımının adı. Azure, bu adı '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/' altındaki API aracılığıyla kullanıma sunacaktır.<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName} '
 routingType | *eşleşen* | **Uç nokta**ile sözleşme türünü belirler. Belirtilmemişse, varsayılan olarak "proxy" olur.
 endpoint | *Yes* | İsteklerin yönlendirileceği uç nokta. Bu, yanıtın yanı sıra isteğin herhangi bir yan etkisini de işler.
 
@@ -82,7 +82,7 @@ endpoint | *Yes* | İsteklerin yönlendirileceği uç nokta. Bu, yanıtın yanı
 
 Yukarıdaki örnek için Azure 'a eklenen API 'Ler:
 
-HttpMethod | Örnek URI | Açıklama
+HttpMethod | Örnek URI | Description
 ---|---|---
 PUT | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? api-Version = 2018-09 -01-Preview | Yeni bir kaynak oluşturmak için Azure REST API çağrısı.
 DELETE | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? api-Version = 2018-09 -01-Preview | Mevcut bir kaynağı silmek için Azure REST API çağrısı.
@@ -112,13 +112,13 @@ GET | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sa�
 
 Yukarıdaki örnek için Azure 'a eklenen API 'Ler:
 
-HttpMethod | Örnek URI | Açıklama
+HttpMethod | Örnek URI | Description
 ---|---|---
 POST | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? api-Version = 2018-09 -01-Preview | Eylemi etkinleştirmek için Azure REST API çağrısı.
 
 ## <a name="looking-for-help"></a>Yardım aranıyor
 
-Azure özel kaynak sağlayıcısı geliştirme hakkında sorularınız varsa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)yapmayı deneyin. Benzer bir soru zaten istendi ve yanıtlamış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt ```azure-custom-providers``` almak için etiketi ekleyin!
+Azure özel kaynak sağlayıcısı geliştirme hakkında sorularınız varsa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)yapmayı deneyin. Benzer bir soru zaten istendi ve yanıtlamış olabilir, bu nedenle göndermeden önce kontrol edin. ```azure-custom-providers```Hızlı bir yanıt almak için etiketi ekleyin!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

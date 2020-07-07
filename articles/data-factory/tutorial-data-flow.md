@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 917a8d6edf04d8a160c3a6a5ac59949623dfee5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418686"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Veri akışlarını eşleme kullanarak verileri dönüştürme
@@ -32,18 +32,18 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. ADLS depolamayı *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 
-Bu öğreticide dönüştürtiğimiz dosya MoviesDB. csv ' dir ve [burada](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)bulunabilir. Dosyayı GitHub 'dan almak için, bir. csv dosyası olarak yerel olarak kaydetmek üzere içeriği istediğiniz bir metin düzenleyicisine kopyalayın. Dosyayı depolama hesabınıza yüklemek için bkz. [Azure portalı ile Blobları karşıya yükleme](../storage/blobs/storage-quickstart-blobs-portal.md). Örnekler ' Sample-Data ' adlı bir kapsayıcıya başvuracaktır.
+Bu öğreticide dönüştürtiğimiz dosya MoviesDB.csv, [burada](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)bulunabilir. Dosyayı GitHub 'dan almak için, bir. csv dosyası olarak yerel olarak kaydetmek üzere içeriği istediğiniz bir metin düzenleyicisine kopyalayın. Dosyayı depolama hesabınıza yüklemek için bkz. [Azure portalı ile Blobları karşıya yükleme](../storage/blobs/storage-quickstart-blobs-portal.md). Örnekler ' Sample-Data ' adlı bir kapsayıcıya başvuracaktır.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory UX 'i açarsınız.
 
 1. **Microsoft Edge** veya **Google Chrome**'ı açın. Şu anda Data Factory UI yalnızca Microsoft Edge ve Google Chrome Web tarayıcılarında desteklenir.
-2. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin:
+2. Sol menüde, **kaynak**  >  **Analizi**  >  **Data Factory**oluştur ' u seçin:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -62,7 +62,7 @@ Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir işlem hatt
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
 6. **Sürüm** bölümünde **V2**'yi seçin.
 7. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri Fabrikası tarafından kullanılan veri depoları (örneğin, Azure depolama ve SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
-8. **Oluştur**’u seçin.
+8. **Oluştur**'u seçin.
 9. Oluşturma işlemi tamamlandıktan sonra, Bildirim Merkezi ' nde bildirimi görürsünüz. Data Factory sayfasına gitmek için **Kaynağa Git** ' i seçin.
 10. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle**’yi seçin.
 
@@ -87,7 +87,7 @@ Bu adımda, bir veri akışı etkinliği içeren bir işlem hattı oluşturacaks
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Veri akışı tuvalinde dönüştürme mantığı oluşturma
 
-Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline gönderilir. Bu adımda, ADLS depolamada moviesDB. csv ' yi alan ve 1910 ' den 2000 ' e kadar olan Ortalama derecelendirme derecelendirmesini toplayan bir veri akışı oluşturacaksınız. Daha sonra bu dosyayı ADLS depolamasına geri yazacaksınız.
+Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline gönderilir. Bu adımda, ADLS depolamadaki moviesDB.csv alan bir veri akışı oluşturacaksınız ve 1910 'den 2000 ' e kadar olan ortalama Comedies sayısını toplayacaksınız. Daha sonra bu dosyayı ADLS depolamasına geri yazacaksınız.
 
 1. Veri akışı tuvalinde, **Kaynak Ekle** kutusuna tıklayarak bir kaynak ekleyin.
 
@@ -107,7 +107,7 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 1. Bağlı hizmet oluşturma ekranında, ADLS Gen2 Linked Service **ADLSGen2** ' yi adlandırın ve kimlik doğrulama yönteminizi belirtin. Ardından bağlantı kimlik bilgilerinizi girin. Bu öğreticide, depolama hesabımızla bağlantı kurmak için hesap anahtarı 'nı kullanıyoruz. Kimlik bilgilerinizin doğru girildiğini doğrulamak için **Bağlantıyı Sına** ' ya tıklayabilirsiniz. İşiniz bittiğinde oluştur ' a tıklayın.
 
     ![Bağlı hizmet](media/tutorial-data-flow/ls1.png)
-1. Veri kümesi oluşturma ekranına geri döndüğünüzde, dosyanın **dosya yolu** alanının altında bulunduğu yeri girin. Bu öğreticide, moviesDB. csv dosyası kapsayıcı örnek verilerinde bulunur. Dosya üst bilgileri içerdiğinden **ilk satırı üst bilgi olarak**denetleyin. Üst bilgi şemasını depolama alanındaki dosyadan doğrudan içeri aktarmak için **bağlantı/depolama alanından** seçim yapın. Bittiğinde Tamam ' a tıklayın.
+1. Veri kümesi oluşturma ekranına geri döndüğünüzde, dosyanın **dosya yolu** alanının altında bulunduğu yeri girin. Bu öğreticide, dosya moviesDB.csv kapsayıcı örnek verilerinde bulunur. Dosya üst bilgileri içerdiğinden **ilk satırı üst bilgi olarak**denetleyin. Üst bilgi şemasını depolama alanındaki dosyadan doğrudan içeri aktarmak için **bağlantı/depolama alanından** seçim yapın. Bittiğinde Tamam ' a tıklayın.
 
     ![Veri kümeleri](media/tutorial-data-flow/dataset4.png)
 1. Hata ayıklama kümeniz başlatıldıysa, kaynak dönüşümünün **veri önizleme** sekmesine gidin ve verilerin anlık görüntüsünü almak için **Yenile** ' ye tıklayın. Dönüşümün doğru yapılandırıldığını doğrulamak için veri önizlemeyi kullanabilirsiniz.
@@ -121,11 +121,11 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
     ![Filtre](media/tutorial-data-flow/filter1.png)
 1. Veri akışı ifade Oluşturucusu, çeşitli dönüşümlerde kullanılacak ifadeleri etkileşimli bir şekilde oluşturmanıza olanak tanır. İfadeler, yerleşik işlevleri, giriş şemasından sütunları ve Kullanıcı tanımlı parametreleri içerebilir. İfadelerin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [veri akışı ifade Oluşturucusu](concepts-data-flow-expression-builder.md).
 
-    Bu öğreticide, 1910 ve 2000 yılları arasında gelen tarz komedi filmlerini filtrelemek istersiniz. Yıl şu anda bir dize olduğu için ```toInteger()``` işlevi kullanarak bir tamsayıya dönüştürmeniz gerekir. 1910 ve 200-sabit yıl değerlerine göre karşılaştırmak için büyüktür veya eşittir (>=) ve küçüktür veya eşittir (<=) işleçlerini kullanın. Bu ifadeleri ve (&&) işleciyle birlikte toplayın. İfade şu şekilde gelir:
+    Bu öğreticide, 1910 ve 2000 yılları arasında gelen tarz komedi filmlerini filtrelemek istersiniz. Yıl şu anda bir dize olduğu için işlevi kullanarak bir tamsayıya dönüştürmeniz gerekir ```toInteger()``` . 1910 ve 200-sabit yıl değerlerine göre karşılaştırmak için büyüktür veya eşittir (>=) ve küçüktür veya eşittir (<=) işleçlerini kullanın. Bu ifadeleri ve (&&) işleciyle birlikte toplayın. İfade şu şekilde gelir:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Hangi filmlerin ortak olduğunu bulmak için, ' komedi ' stilini sütun tarzları içinde bulmak için ```rlike()``` işlevini kullanabilirsiniz. Şunun için yıl karşılaştırmasına sahip rlıke ifadesini birleşim:
+    Hangi filmlerin ortak olduğunu bulmak için, ```rlike()``` ' komedi ' stilini sütun tarzları içinde bulmak için işlevini kullanabilirsiniz. Şunun için yıl karşılaştırmasına sahip rlıke ifadesini birleşim:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
@@ -147,7 +147,7 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 1. **Toplamlar** sekmesine gidin. Sol metin kutusunda, toplam sütununu **Averagecomedyıderecelendirme**olarak adlandırın. Deyim Oluşturucu aracılığıyla toplama ifadesini girmek için sağ ifade kutusuna tıklayın.
 
     ![Toplama](media/tutorial-data-flow/agg3.png)
-1. Sütun **derecelendirmesinin**ortalamasını almak için ```avg()``` toplama işlevini kullanın. **Derecelendirme** bir dize olduğu ve ```avg()``` sayısal bir girişi aldığı için değeri ```toInteger()``` işlev aracılığıyla bir sayıya dönüştürmemiz gerekir. Bu ifade şöyle görünür:
+1. Sütun **derecelendirmesinin**ortalamasını almak için ```avg()``` toplama işlevini kullanın. **Derecelendirme** bir dize olduğu ve ```avg()``` sayısal bir girişi aldığı için değeri işlev aracılığıyla bir sayıya dönüştürmemiz gerekir ```toInteger()``` . Bu ifade şöyle görünür:
 
     ```avg(toInteger(Rating))```
 

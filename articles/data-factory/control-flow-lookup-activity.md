@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418010"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
@@ -32,7 +32,7 @@ Aşağıdaki veri kaynakları arama etkinliği için desteklenir. Arama etkinli�
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -54,23 +54,23 @@ Aşağıdaki veri kaynakları arama etkinliği için desteklenir. Arama etkinli�
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Adı | Açıklama | Tür | Gerekli mi?
+Name | Description | Tür | Gerekli mi?
 ---- | ----------- | ---- | --------
 veri kümesi | Arama için veri kümesi başvurusu sağlar. İlgili her bağlayıcı makalesinin **veri kümesi özellikleri** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Yes
-source | Kopyalama etkinliği kaynağıyla aynı olan veri kümesine özgü kaynak özelliklerini içerir. İlgili her bağlayıcı makalesinin **etkinlik özelliklerini kopyalama** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Yes
+kaynak | Kopyalama etkinliği kaynağıyla aynı olan veri kümesine özgü kaynak özelliklerini içerir. İlgili her bağlayıcı makalesinin **etkinlik özelliklerini kopyalama** bölümünden Ayrıntılar alın. | Anahtar/değer çifti | Yes
 yalnızca FirstRow | Yalnızca ilk satırın mi yoksa tüm satırların mi döndürülüp döndürülmeyeceğini gösterir. | Boole | Hayır. Varsayılan değer: `true`.
 
 > [!NOTE]
 > 
 > * **ByteArray** türüne sahip kaynak sütunları desteklenmez.
 > * **Yapı** veri kümesi tanımlarında desteklenmiyor. Metin biçimli dosyalar için, sütun adını sağlamak üzere üst bilgi satırını kullanın.
-> * Arama kaynağınız bir JSON dosyası ise, JSON nesnesini yeniden `jsonPathDefinition` şekillendirme ayarı desteklenmez. Tüm nesneler alınacaktır.
+> * Arama kaynağınız bir JSON dosyası ise, `jsonPathDefinition` JSON nesnesini yeniden şekillendirme ayarı desteklenmez. Tüm nesneler alınacaktır.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Sonraki bir etkinliğin arama etkinliği sonucunu kullanın
 
-Arama sonucu, etkinlik çalıştırma sonucunun `output` bölümünde döndürülür.
+Arama sonucu, `output` etkinlik çalıştırma sonucunun bölümünde döndürülür.
 
-* , (Varsayılan) olarak ayarlandığında, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. ** `firstRowOnly` `true` ** Arama sonucu sabit `firstRow` bir anahtar altında. Sonraki etkinlikteki sonucu kullanmak için, öğesinin `@{activity('MyLookupActivity').output.firstRow.TableName}`stilini kullanın.
+* **, `firstRowOnly` `true` (Varsayılan) olarak ayarlandığında**, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Arama sonucu sabit bir `firstRow` anahtar altında. Sonraki etkinlikteki sonucu kullanmak için, öğesinin stilini kullanın `@{activity('MyLookupActivity').output.firstRow.TableName}` .
 
     ```json
     {
@@ -82,7 +82,7 @@ Arama sonucu, etkinlik çalıştırma sonucunun `output` bölümünde döndürü
     }
     ```
 
-* **, Olarak `false`ayarlandığında, çıkış biçimi aşağıdaki kodda gösterildiği `firstRowOnly` **gibidir. Bir `count` alan, kaç kaydın döndürüleceğini gösterir. Ayrıntılı değerler sabit `value` bir dizi altında görüntülenir. Böyle bir durumda, arama etkinliğinin ardından bir [foreach etkinliği](control-flow-for-each-activity.md)gelir. `value` Dizisini ForEach etkinlik `items` alanına geçirin `@activity('MyLookupActivity').output.value`. `value` Dizideki öğelere erişmek için şu sözdizimini kullanın: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. `@{activity('lookupActivity').output.value[0].tablename}` bunun bir örneğidir.
+* **, `firstRowOnly` Olarak `false` ayarlandığında **, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Bir `count` alan, kaç kaydın döndürüleceğini gösterir. Ayrıntılı değerler sabit bir dizi altında görüntülenir `value` . Böyle bir durumda, arama etkinliğinin ardından bir [foreach etkinliği](control-flow-for-each-activity.md)gelir. `value`Dizisini ForEach etkinlik `items` alanına geçirin `@activity('MyLookupActivity').output.value` . Dizideki öğelere erişmek için `value` şu sözdizimini kullanın: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . `@{activity('lookupActivity').output.value[0].tablename}` bunun bir örneğidir.
 
     ```json
     {
@@ -166,7 +166,7 @@ Bu işlem hattı iki etkinlik içerir: arama ve kopyalama.
 ```
 
 ### <a name="lookup-dataset"></a>Arama veri kümesi
-**Arama** veri kümesi, **AzureStorageLinkedService** türü tarafından belirtilen Azure depolama Arama klasöründeki **SourceTable. JSON** dosyasıdır. 
+**Arama** veri kümesi, **AzureStorageLinkedService** türü tarafından belirtilen Azure depolama Arama klasöründeki **sourcetable.js** dosyası. 
 
 ```json
 {
@@ -209,7 +209,7 @@ Bu işlem hattı iki etkinlik içerir: arama ve kopyalama.
 ```
 
 ### <a name="sink-dataset-for-copy-activity"></a>Kopyalama etkinliği için **Havuz** veri kümesi
-Kopyalama etkinliği, verileri SQL tablosundan Azure Storage 'daki **CSV** klasörü içindeki **filebylookup. csv** dosyasına kopyalar. Dosya, **AzureStorageLinkedService** özelliği tarafından belirtilir. 
+Kopyalama etkinliği, verileri SQL tablosundan Azure Storage 'daki **CSV** klasöründe **filebylookup.csv** dosyasına kopyalar. Dosya, **AzureStorageLinkedService** özelliği tarafından belirtilir. 
 
 ```json
 {
@@ -262,7 +262,7 @@ Bu Azure SQL veritabanı örneği, blob depolamaya kopyalanacak verileri içerir
 }
 ```
 
-### <a name="sourcetablejson"></a>SourceTable. JSON
+### <a name="sourcetablejson"></a>Üzerinde sourcetable.js
 
 #### <a name="set-of-objects"></a>Nesne kümesi
 

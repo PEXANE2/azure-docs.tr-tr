@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
 ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193335"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows Geliştirici makinenizde Linux Service Fabric kümesi ayarlama
 
 Bu belgede, Windows geliştirme makinelerinde yerel bir Linux Service Fabric ayarlama ele alınmaktadır. Yerel bir Linux kümesi ayarlamak, Linux kümelerine hedeflenmiş ancak bir Windows makinesinde geliştirilen uygulamaları hızlı bir şekilde test etmek için kullanışlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Linux tabanlı Service Fabric kümeleri Windows üzerinde yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış bir Docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
 
 * En az 4 GB RAM
@@ -95,7 +95,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
     docker logs sftestcluster
     ```
 
-6. 5. adım başarıyla tamamlandıktan sonra, Windows ``http://localhost:19080`` 'tan bölümüne giderek Service Fabric Gezginini görebilirsiniz. Bu noktada, Windows Geliştirici makinenizden herhangi bir aracı kullanarak bu kümeye bağlanabilir ve Linux Service Fabric kümelerine hedeflenmiş uygulamayı dağıtabilirsiniz. 
+6. 5. adım başarıyla tamamlandıktan sonra, Windows 'tan bölümüne giderek ``http://localhost:19080`` Service Fabric Gezginini görebilirsiniz. Bu noktada, Windows Geliştirici makinenizden herhangi bir aracı kullanarak bu kümeye bağlanabilir ve Linux Service Fabric kümelerine hedeflenmiş uygulamayı dağıtabilirsiniz. 
 
     > [!NOTE]
     > Eclipse eklentisi Windows üzerinde şu anda desteklenmemektedir. 

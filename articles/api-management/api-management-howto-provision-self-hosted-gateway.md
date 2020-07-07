@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203140"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Azure API Management şirket içinde barındırılan ağ geçidi sağlama
 
 Azure API Management Örneğinizde bir ağ geçidi kaynağı sağlama, şirket içinde barındırılan bir ağ geçidini dağıtmak için bir önkoşuldur. Bu makalede, API Management bir ağ geçidi kaynağı sağlama adımları gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 
@@ -38,9 +38,9 @@ Azure API Management Örneğinizde bir ağ geçidi kaynağı sağlama, şirket i
 > **Bölge** , bu ağ geçidi kaynağıyla ilişkilendirilecek ağ geçidi düğümlerinin amaçlanan konumunu belirtir. Bu, herhangi bir Azure kaynağıyla ilişkili benzer bir özelliğe anlam olarak eşdeğerdir, ancak rastgele bir dize değeri atanabilir.
 
 4. İsteğe bağlı olarak, ağ geçidi kaynağı için bir **Açıklama** girin.
-5. İsteğe bağlı olarak **+** , bu ağ geçidi kaynağıyla bir veya daha fazla API Ilişkilendirmek Için **API 'ler** altında öğesini seçin.
+5. İsteğe bağlı olarak, **+** Bu ağ geçidi kaynağıyla bir veya daha fazla API ilişkilendirmek Için **API 'ler** altında öğesini seçin.
 > [!IMPORTANT]
-> Varsayılan olarak, mevcut API 'lerden hiçbiri yeni ağ geçidi kaynağıyla ilişkilendirilecektir. Bu nedenle, bunları yeni ağ geçidi aracılığıyla çağırmaya yönelik girişimler yanıt olarak `404 Resource Not Found` sonuçlanır.
+> Varsayılan olarak, mevcut API 'lerden hiçbiri yeni ağ geçidi kaynağıyla ilişkilendirilecektir. Bu nedenle, bunları yeni ağ geçidi aracılığıyla çağırmaya yönelik girişimler yanıt olarak sonuçlanır `404 Resource Not Found` .
 
 6. **Ekle**'ye tıklayın.
 

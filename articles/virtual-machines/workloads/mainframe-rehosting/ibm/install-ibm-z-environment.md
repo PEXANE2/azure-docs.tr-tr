@@ -13,10 +13,10 @@ ms.date: 04/02/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72025945"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler
@@ -39,7 +39,7 @@ Daha fazla bilgi için bkz. IBM bilgi merkezi 'nde [zd&T 'ye genel bakış](http
 
 Bu makalede, Azure 'da Z geliştirme ve test ortamı (zD&T) Enterprise Edition 'ın nasıl ayarlanacağı gösterilmektedir. Daha sonra, Azure 'da Z tabanlı ortamlar oluşturmak ve yönetmek için zD&T Enterprise Edition Web sunucusunu kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]
 > IBM, zD&T Enterprise Edition 'ın yalnızca geliştirme ve test ortamlarında yüklenmesine izin verir; üretim ortamları*değildir* .
@@ -62,11 +62,11 @@ Bu makalede, Azure 'da Z geliştirme ve test ortamı (zD&T) Enterprise Edition '
 
 3. **Bağlan** DÜĞMESI aracılığıyla VM 'Nin **genel bakış** dikey penceresinde gösterilen SSH kimlik bilgilerini alın. **SSH** sekmesini SEÇIN ve SSH oturum açma komutunu panoya kopyalayın.
 
-4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](/azure/cloud-shell/quickstart) 'nda oturum açın ve komutu yapıştırın. **\<SSH kullanıcı\>\@kimliği\<IP adresi\>** biçiminde olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
+4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](/azure/cloud-shell/quickstart) 'nda oturum açın ve komutu yapıştırın. ** \<user id\> SSH \@ biçiminde \<IP Address\> **olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Yükleme dosyasını sunucuya Kopyala
 
-Web sunucusunun yükleme dosyası **\_zdt Install\_Ee\_v 12.0.0.1. tgz**' dir. IBM tarafından sağlanan medyaya dahildir. Bu dosyayı Ubuntu sanal makinenize yüklemeniz gerekir.
+Web sunucusunun yükleme dosyası **Zdt \_ Install \_ Ee \_ v 12.0.0.1. tgz**' dir. IBM tarafından sağlanan medyaya dahildir. Bu dosyayı Ubuntu sanal makinenize yüklemeniz gerekir.
 
 1. Yeni oluşturulan görüntüde her şeyin güncel olduğundan emin olmak için komut satırından aşağıdaki komutu girin:
 
@@ -91,7 +91,7 @@ Web sunucusunun yükleme dosyası **\_zdt Install\_Ee\_v 12.0.0.1. tgz**' dir. I
 
 ## <a name="install-the-enterprise-edition"></a>Enterprise Edition 'ı yükleyin
 
-1. ZDT dizinine gidin ve aşağıdaki komutları kullanarak ZDT\_Install\_Ee\_v 12.0.0.1. tgz dosyasını açın:
+1. ZDT dizinine gidin ve \_ \_ aşağıdaki komutları kullanarak zdt Install Ee \_ v 12.0.0.1. tgz dosyasını açın:
 
     ```
     cd ZDT

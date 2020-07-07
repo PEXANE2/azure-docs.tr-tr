@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80346312"
 ---
 # <a name="download-the-results-of-a-job"></a>Bir işin sonuçlarını indir
@@ -24,7 +24,7 @@ Azure Media Services, videolarınızı işlerken (örneğin, kodlama veya çöz�
 
 Bu makalede, Java ve .NET SDK 'Ları kullanılarak sonuçların nasıl indirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 [Varlıkları Yönet](manage-asset-concept.md)' i gözden geçirin.
 

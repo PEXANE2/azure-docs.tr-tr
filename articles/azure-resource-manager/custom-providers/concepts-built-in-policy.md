@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: 00cd1d39c0110aac9ea96f73127e83197976c95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190138"
 ---
 # <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>Azure Ilkesi kullanarak özel bir sağlayıcının ilişkilendirmelerini dağıtma
@@ -29,7 +29,7 @@ Azure ilkeleri, kaynakları özel bir sağlayıcıya ilişkilenmek üzere ilişk
 
 ## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>Dağıtım ilişkilendirmelerini yerleşik ilkesini kullanma 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Özel sağlayıcının bir eylemi gerçekleştirmek için ilke kapsamında izinleri olması gerekiyorsa, ilişkilendirme kaynağının ilke dağıtımı izinleri vermeden çalışmaz.
 
 ### <a name="policy-assignment"></a>İlke ataması
@@ -39,7 +39,7 @@ Yerleşik ilkeyi kullanmak için, bir ilke ataması oluşturun ve özel bir sağ
 
 ## <a name="getting-help"></a>Yardım alma
 
-Azure özel kaynak sağlayıcıları geliştirme hakkında sorularınız varsa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)üzerinde soru sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt ```azure-custom-providers``` almak için etiketi ekleyin!
+Azure özel kaynak sağlayıcıları geliştirme hakkında sorularınız varsa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)üzerinde soru sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce kontrol edin. ```azure-custom-providers```Hızlı bir yanıt almak için etiketi ekleyin!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
@@ -9,21 +9,21 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74228172"
 ---
 Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablon bildirimleri olarak yollarsınız.
 
 1. Visual Studio'da yeni bir Visual C# konsol uygulaması oluşturun:
-    1. Menüde **Dosya** > **Yeni** > **Proje**' yi seçin.
+    1. Menüde **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
     1. **Yeni proje oluştur**' da, şablonlar listesinde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
     1. Uygulama için bir ad girin.
     1. **Çözüm**için, **çözüme Ekle**' yi seçin ve projeyi oluşturmak için **Oluştur** ' u seçin.
 
-1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu** ' nu seçin ve ardından konsol penceresinde aşağıdaki komutu çalıştırın:
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' nu seçin ve ardından konsol penceresinde aşağıdaki komutu çalıştırın:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
@@ -69,7 +69,7 @@ Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablo
 
 1. Önceki kodda, `<hub name>` ve `<connection string with full access>` yer tutucularını bildirim hub'ı adınız ve bildirim hub’ınızın panosundaki *DefaultFullSharedAccessSignature* bağlantı dizeniz ile değiştirin.
 
-1. `Main()` Yönteminde aşağıdaki satırları ekleyin:
+1. `Main()`Yönteminde aşağıdaki satırları ekleyin:
 
    ```csharp
     SendTemplateNotificationAsync();

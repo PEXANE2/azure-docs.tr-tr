@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384866"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge için modülleri geliştirmek ve hatalarını ayıklamak için Visual Studio 2019 kullanın
@@ -28,7 +28,7 @@ Visual Studio için Azure IoT Edge araçları aşağıdaki avantajları sağlar:
 
 Bu makalede, IoT Edge modüllerinizi geliştirmek için Visual Studio 2019 Azure IoT Edge araçlarının nasıl kullanılacağı gösterilmektedir. Ayrıca, projenizi Azure IoT Edge cihazınıza dağıtmayı de öğreneceksiniz. Şu anda Visual Studio 2019, C ve C# dilinde yazılan modüller için destek sağlar. Desteklenen cihaz mimarileri Windows x64 ve Linux x64 veya ARM32. Desteklenen işletim sistemleri, diller ve mimariler hakkında daha fazla bilgi için bkz. [dil ve mimari desteği](module-development.md#language-and-architecture-support).
   
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, geliştirme makineniz olarak Windows çalıştıran bir bilgisayar veya sanal makine kullandığınızı varsayar. Windows bilgisayarlarda, Windows veya Linux modülleri geliştirebilirsiniz. Windows modülleri geliştirmek için 1809/Build 17763 veya daha yeni sürümünü çalıştıran bir Windows bilgisayarı kullanın. Linux modülleri geliştirmek için, [Docker Desktop gereksinimlerini](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)karşılayan bir Windows bilgisayarı kullanın.
 
@@ -98,7 +98,7 @@ Visual Studio 'daki Azure IoT Edge proje şablonu, Azure IoT Hub Azure IoT Edge 
 
    ![Yeni Proje Oluştur](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. **IoT Edge uygulama ve Modül Ekle** penceresinde, **C# modülünü** veya **C modülünü** seçin ve ardından modül adı ve modül görüntü deponuzu belirtin. Visual Studio, modül adını **localhost: 5000/<modüllü\>** olarak doldurur. Kendi kayıt defteri bilgileriniz ile değiştirin. Test için yerel bir Docker kayıt defteri kullanıyorsanız, **localhost** sorunsuz olur. Azure Container Registry kullanırsanız, kayıt defterinizin ayarlarından oturum açma sunucusunu kullanın. Oturum açma sunucusu, ** _ \<kayıt defteri adı\>_. azurecr.io**gibi görünür. Son sonucun ** \< *kayıt defteri adı*\>gibi görünmesi için dizenin_\<\>_** **localhost: 5000** kısmını yalnızca değiştirin. azurecr.io/modül adı. Varsayılan modül adı **IotEdgeModule1**
+1. **IoT Edge uygulama ve Modül Ekle** penceresinde, **C# modülünü** veya **C modülünü** seçin ve ardından modül adı ve modül görüntü deponuzu belirtin. Visual Studio, modül adını **localhost: 5000/<modüllü \> **olarak doldurur. Kendi kayıt defteri bilgileriniz ile değiştirin. Test için yerel bir Docker kayıt defteri kullanıyorsanız, **localhost** sorunsuz olur. Azure Container Registry kullanırsanız, kayıt defterinizin ayarlarından oturum açma sunucusunu kullanın. Oturum açma sunucusu ** _\<registry name\>_ . azurecr.io**gibi görünüyor. Son sonucun ** \<*registry name*\> . azurecr.io/ _\<your module name\>_ **gibi görünmesi için dizenin **localhost: 5000** kısmını yalnızca değiştirin. Varsayılan modül adı **IotEdgeModule1**
 
    ![Uygulama ve Modül Ekle](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
@@ -108,11 +108,11 @@ Artık bir **AzureIoTEdgeApp1. Linux. amd64** projeniz veya bir **AzureIoTEdgeAp
 
 Sanal sıcaklık algılayıcısı 'nın nasıl çalıştığını görmek için [SimulatedTemperatureSensor. csproj kaynak kodunu](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)görüntüleyin.
 
-**IotEdgeModule1** projesi bir C# modülüdür ve bir .net Core 2,1 konsol uygulamasıdır. Windows kapsayıcısı veya Linux kapsayıcısı ile çalışan IoT Edge cihazınız için gereken gerekli Docker dosyalarını içerir. `module.json` Dosya, bir modülün meta verilerini açıklar. Azure IoT cihaz SDK 'sını bağımlılık olarak alan gerçek modül kodu, `Program.cs` veya `main.c` dosyasında bulunur.
+**IotEdgeModule1** projesi bir C# modülüdür ve bir .net Core 2,1 konsol uygulamasıdır. Windows kapsayıcısı veya Linux kapsayıcısı ile çalışan IoT Edge cihazınız için gereken gerekli Docker dosyalarını içerir. `module.json`Dosya, bir modülün meta verilerini açıklar. Azure IoT cihaz SDK 'sını bağımlılık olarak alan gerçek modül kodu, `Program.cs` veya `main.c` dosyasında bulunur.
 
 ## <a name="develop-your-module"></a>Modülünüzü geliştirme
 
-Çözümle birlikte gelen varsayılan modül kodu **IotEdgeModule1** > **program.cs** (C# için) veya **Main. C** (c) konumunda bulunur. Modül ve `deployment.template.json` dosya, çözümü derlemek, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül bir kaynaktan giriş almak için oluşturulmuştur (Bu durumda, verileri taklit eden **SimulatedTemperatureSensor** modülü) ve Azure IoT Hub 'yi kanal oluşturarak.
+Çözümle birlikte gelen varsayılan modül kodu **IotEdgeModule1**  >  **program.cs** (C# için) veya **Main. C** (c) konumunda bulunur. Modül ve dosya, `deployment.template.json` Çözümü derlemek, kapsayıcı Kayıt defterinize gönderebilmeniz ve herhangi bir koda dokunmadan teste başlamak için bir cihaza dağıtabilmeniz için ayarlanır. Modül bir kaynaktan giriş almak için oluşturulmuştur (Bu durumda, verileri taklit eden **SimulatedTemperatureSensor** modülü) ve Azure IoT Hub 'yi kanal oluşturarak.
 
 Modül şablonunu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenlik, cihaz yönetimi ve güvenilirlik gibi IoT çözümlerinin temel ihtiyaçlarını ele alan modüller oluşturmak için [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 'larını kullanın.
 
@@ -122,7 +122,7 @@ Modül şablonunu kendi kodunuzla özelleştirmeye hazır olduğunuzda, güvenli
 
    ![Sınır cihaz bağlantı dizesini Kopyala](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
 
-1. **Araçlar** menüsünde **Azure IoT Edge araçları** > **Kurulum IoT Edge simülatör**' ı seçin, bağlantı dizesini yapıştırın ve **Tamam**' a tıklayın.
+1. **Araçlar** menüsünde **Azure IoT Edge araçları**  >  **Kurulum IoT Edge simülatör**' ı seçin, bağlantı dizesini yapıştırın ve **Tamam**' a tıklayın.
 
    ![Uç bağlantı dizesini ayarla penceresini aç](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
 
@@ -139,7 +139,7 @@ Genellikle, birden çok modülle bir çözümün tamamında çalıştırmadan ö
 
    ![Başlangıç projesini ayarla](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
-1. Modülü çalıştırmak için **F5** tuşuna basın veya aşağıdaki düğmeye tıklayın; Bu işlem ilk defa&ndash;10 20 saniye sürebilir.
+1. Modülü çalıştırmak için **F5** tuşuna basın veya aşağıdaki düğmeye tıklayın; Bu işlem &ndash; ilk defa 10 20 saniye sürebilir.
 
    ![Modül Çalıştır](./media/how-to-visual-studio-develop-csharp-module/run-module.png)
 
@@ -147,7 +147,7 @@ Genellikle, birden çok modülle bir çözümün tamamında çalıştırmadan ö
 
    ![Modül çalışıyor](./media/how-to-visual-studio-develop-csharp-module/single-module-run.png)
 
-1. C# dilinde geliştirme yapıyorsanız, `PipeMessage()` **program.cs**işlevindeki bir kesme noktası ayarlayın. C kullanıyorsanız `InputQueue1Callback()` **Main. C**içindeki işlevde bir kesme noktası ayarlayın. Ardından, **Git Bash** veya **WSL Bash** kabuğu 'nda aşağıdaki komutu çalıştırarak bir ileti göndererek test edebilirsiniz. ( `curl` Komutu bir PowerShell veya komut isteminden çalıştıramazsınız.)
+1. C# dilinde geliştirme yapıyorsanız, Program.cs işlevindeki bir kesme noktası ayarlayın `PipeMessage()` ; **Program.cs**C kullanıyorsanız, `InputQueue1Callback()` **Main. c**içindeki işlevde bir kesme noktası ayarlayın. Ardından, **Git Bash** veya **WSL Bash** kabuğu 'nda aşağıdaki komutu çalıştırarak bir ileti göndererek test edebilirsiniz. ( `curl` Komutu bir PowerShell veya komut isteminden çalıştıramazsınız.)
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
@@ -158,7 +158,7 @@ Genellikle, birden çok modülle bir çözümün tamamında çalıştırmadan ö
     Kesme noktasının tetiklenmesi gerekir. Değişkenleri Visual Studio **Yereller** penceresinde izleyebilirsiniz.
 
    > [!TIP]
-   > Bunun yerine ileti göndermek için [Postman](https://www.getpostman.com/) veya diğer API araçlarını da kullanabilirsiniz `curl`.
+   > Bunun yerine ileti göndermek için [Postman](https://www.getpostman.com/) veya diğer API araçlarını da kullanabilirsiniz `curl` .
 
 1. Hata ayıklamayı durdurmak için **CTRL + F5** tuşlarına basın veya Durdur düğmesine tıklayın.
 
@@ -166,9 +166,9 @@ Genellikle, birden çok modülle bir çözümün tamamında çalıştırmadan ö
 
 Tek bir modülün geliştirilmesini tamamladıktan sonra, birden çok modülle bir çözümün tamamını çalıştırmak ve hatalarını ayıklamak isteyebilirsiniz.
 
-1. **Çözüm Gezgini**, çözüme sağ tıklayıp**Yeni IoT Edge modülü** **Ekle** >  **' yi** seçerek ikinci bir modül ekleyin. İkinci modülün varsayılan adı **IotEdgeModule2** ' dür ve başka bir kanal modülü olarak görev görür.
+1. **Çözüm Gezgini**, çözüme **sağ tıklayıp** **Add**  >  **Yeni IoT Edge modülü**Ekle ' yi seçerek ikinci bir modül ekleyin. İkinci modülün varsayılan adı **IotEdgeModule2** ' dür ve başka bir kanal modülü olarak görev görür.
 
-1. Dosyayı `deployment.template.json` açtığınızda **modüller** bölümüne **IotEdgeModule2** eklendiğini görürsünüz. **Rotalar** bölümünü aşağıdaki kodla değiştirin. Modül adlarınızı özelleştirdiyseniz, bu adları eşleşecek şekilde güncelleştirdiğinizden emin olun.
+1. Dosyayı açtığınızda `deployment.template.json` **modüller** bölümüne **IotEdgeModule2** eklendiğini görürsünüz. **Rotalar** bölümünü aşağıdaki kodla değiştirin. Modül adlarınızı özelleştirdiyseniz, bu adları eşleşecek şekilde güncelleştirdiğinizden emin olun.
 
     ```json
         "routes": {
@@ -192,7 +192,7 @@ Tek bir modülün geliştirilmesini tamamladıktan sonra, birden çok modülle b
 1. **AzureIoTEdgeApp1** 'in başlangıç projesi olduğundan emin olun. Modül görüntüleriniz için derlemek üzere yapılandırma olarak **Hata Ayıkla** veya **Yayınla** ' yı seçin.
 
     > [!NOTE]
-    > **Hata ayıklamayı**seçerken, Visual Studio Docker görüntülerini oluşturmak için kullanır `Dockerfile.(amd64|windows-amd64).debug` . Bu, derleme sırasında kapsayıcı görüntünde .NET Core komut satırı hata ayıklayıcısı VSDBG içerir. Üretime yönelik kullanıma yönelik IoT Edge modüller için, VSDBG olmadan kullanılan `Dockerfile.(amd64|windows-amd64)` **yayın** yapılandırmasını kullanmanızı öneririz.
+    > **Hata ayıklamayı**seçerken, Visual Studio `Dockerfile.(amd64|windows-amd64).debug` Docker görüntülerini oluşturmak için kullanır. Bu, derleme sırasında kapsayıcı görüntünde .NET Core komut satırı hata ayıklayıcısı VSDBG içerir. Üretime yönelik kullanıma yönelik IoT Edge modüller için, VSDBG olmadan kullanılan **yayın** yapılandırmasını kullanmanızı öneririz `Dockerfile.(amd64|windows-amd64)` .
 
 1. Azure Container Registry (ACR) gibi özel bir kayıt defteri kullanıyorsanız, oturum açmak için aşağıdaki Docker komutunu kullanın.  Azure portal, Kullanıcı adını ve parolayı, kayıt defterinizin **erişim tuşları** sayfasından alabilirsiniz. Yerel kayıt defteri kullanıyorsanız [yerel bir kayıt defteri çalıştırabilirsiniz](https://docs.docker.com/registry/deploying/#run-a-local-registry).
 
@@ -200,7 +200,7 @@ Tek bir modülün geliştirilmesini tamamladıktan sonra, birden çok modülle b
     docker login -u <ACR username> -p <ACR password> <ACR login server>
     ```
 
-1. Azure Container Registry gibi özel bir kayıt defteri kullanıyorsanız, kayıt defteri oturum açma bilgilerinizi dosyada `deployment.template.json`bulunan çalışma zamanı ayarlarına eklemeniz gerekir. Yer tutucuları gerçek ACR yönetici kullanıcı adınızla, parolanızla ve kayıt defteri adıyla değiştirin.
+1. Azure Container Registry gibi özel bir kayıt defteri kullanıyorsanız, kayıt defteri oturum açma bilgilerinizi dosyada bulunan çalışma zamanı ayarlarına eklemeniz gerekir `deployment.template.json` . Yer tutucuları gerçek ACR yönetici kullanıcı adınızla, parolanızla ve kayıt defteri adıyla değiştirin.
 
     ```json
           "settings": {
@@ -222,11 +222,11 @@ Tek bir modülün geliştirilmesini tamamladıktan sonra, birden çok modülle b
 
 IoT Edge cihazınızı ayarlamak için kullandığınız hızlı başlangıç makalesinde Azure portalı kullanarak bir modül dağıttınız. Ayrıca, Visual Studio için Cloud Explorer 'ı kullanarak modüller dağıtabilirsiniz. Senaryonuz için hazırlanmış bir dağıtım bildiriminiz zaten var, `deployment.json` dosya ve tüm yapmanız gereken, dağıtımı alacak bir cihaz seçin.
 
-1. Bulut Gezginini **görüntüle** > ' ye tıklayarak **Cloud Explorer** 'ı**açın.** Visual Studio 2019 ' de oturum açtığınızdan emin olun.
+1. Bulut Gezginini **görüntüle**' ye tıklayarak **Cloud Explorer** 'ı açın  >  **Cloud Explorer**. Visual Studio 2019 ' de oturum açtığınızdan emin olun.
 
 1. **Cloud Explorer**'da aboneliğinizi genişletin, Azure IoT Hub ve dağıtmak istediğiniz Azure IoT Edge cihazını bulun.
 
-1. IoT Edge cihazına sağ tıklayarak bir dağıtım oluşturun. Visual Studio çözümünüzün **yapılandırma** klasöründe bulunan platformunuz için yapılandırılmış dağıtım bildirimine gidin, örneğin `deployment.arm32v7.json`.
+1. IoT Edge cihazına sağ tıklayarak bir dağıtım oluşturun. Visual Studio çözümünüzün **yapılandırma** klasöründe bulunan platformunuz için yapılandırılmış dağıtım bildirimine gidin, örneğin `deployment.arm32v7.json` .
 
 1. **SimulatedTemperatureSensor** modülüyle ve **$edgeAgent** ve **$edgeHub**birlikte çalışan yeni modülleri görmek için Yenile düğmesine tıklayın.
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 6edb639cacc48e8b59c458bcf0ac9c9c5e07b030
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203582"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management örneğini yükseltme ve ölçeklendirme  
@@ -29,7 +29,7 @@ Her bir birimin fiyatı ve kullanılabilir Özellikler (örneğin, çok bölgeli
 >[!NOTE]
 >[Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) makalesi her katmandaki birim kapasitesini yaklaşık olarak gösterir. Daha doğru sayılar almak için API 'leriniz için gerçekçi bir senaryoya bakmanız gerekir. [Azure API Management örneği 'Nin kapasitesine](api-management-capacity.md) bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları izleyerek şunları yapmanız gerekir:
 
@@ -67,7 +67,7 @@ Herhangi bir katmana ve sürümüne yükseltebilir ve buradan indirgeme yapabili
 2. Menüden **konumlar** ' ı seçin.
 3. Ölçeklendirmek istediğiniz konuma sahip satıra tıklayın.
 4. Yeni **birim** sayısını belirtin-kaydırıcıyı kullanın veya numarayı yazın.
-5. **Uygula**’ya tıklayın.
+5. **Uygula**'ya tıklayın.
 
 ## <a name="change-your-api-management-service-tier"></a>API Management hizmet katmanınızı değiştirin
 

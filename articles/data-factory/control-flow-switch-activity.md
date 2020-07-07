@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418023"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik değiştirme
@@ -22,7 +22,7 @@ ms.locfileid: "81418023"
 
 Switch etkinliği, programlama dillerinde bir switch ifadesinin sağladığı işlevleri sağlar. Koşul değerlendirmesiyle eşleşen bir servis talebine karşılık gelen bir etkinlik kümesini değerlendirir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -69,8 +69,8 @@ Switch etkinliği, programlama dillerinde bir switch ifadesinin sağladığı i�
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | Anahtar etkinliğinin adı. | Dize | Yes
-type | *Switch* olarak ayarlanmalıdır* | Dize | Yes
+name | Anahtar etkinliğinin adı. | Dize | Yes
+tür | *Switch* olarak ayarlanmalıdır* | Dize | Yes
 ifade | Dize değeri değerlendirmesi gereken ifade | Sonuç türü dize olan ifade | Yes
 çalışmaların | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve bir etkinlik kümesi içeren servis talepleri kümesi. En az bir örnek sağlanmalıdır. 25 servis talebi için maksimum sınır vardır. | Case nesneleri dizisi | Yes
 Defaultacmize | İfade değerlendirmesi karşılanmadığı zaman yürütülen etkinlik kümesi. | Etkinlik dizisi | Yes
@@ -82,7 +82,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 > [!NOTE]
 > Bu bölüm, işlem hattını çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak Data Factory işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Switch etkinliğine sahip işlem hattı (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Switch etkinliğine sahip işlem hattı (Adfv2QuickStartPipeline.js)
 
 ```json
 {
@@ -230,7 +230,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService.js)
 
 ```json
 {
@@ -244,7 +244,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset.js)
 
 İşlem hattı **FolderPath** değerini, Işlem hattının **OutputPath1** ya da **outputPath2** parametresinin değerine ayarlar. 
 
@@ -272,7 +272,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasör
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters.json)
 
 ```json
 {

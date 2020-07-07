@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71315790"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL veritabanını dışarı aktarma
@@ -51,7 +51,7 @@ Bu adımda, **nesne ver liste** kutusunda seçili nesneleri doğrulayabilirsiniz
 
 Dışa aktarma hedefi için diğer ayarları da yapılandırabilirsiniz. Yapılandırma açıklamaları aşağıdaki tabloda listelenmiştir:
 
-|Yapılandırma|Açıklama|
+|Yapılandırma|Description|
 |-------------|-----------|
 |Hedef adı|Bu ad, dışarıya aktarılmış veritabanı kaynaklarını nereye kaydetmek istediğinizi belirtir. Derlemeler, ek dosyalar ve örnek veriler örnektir. Yerel veri kök klasörünüz altında bu ada sahip bir klasör oluşturulur.|
 |Proje dizini|Bu yol, aktarılmış U-SQL betiğini nereye kaydetmek istediğinizi tanımlar. Tüm veritabanı nesnesi tanımları bu konuma kaydedilir.|

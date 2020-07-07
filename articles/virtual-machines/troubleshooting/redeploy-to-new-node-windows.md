@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058635"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Windows sanal makinesini yeni bir Azure düğümüne yeniden dağıtma
@@ -30,7 +30,7 @@ Windows tabanlı Azure sanal makinesine (VM) yönelik uzak masaüstü (RDP) bağ
 ## <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 Makinenizde en son Azure PowerShell 1. x ' in yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview).
 
-Aşağıdaki örnek, adlı kaynak grubunda adlı `myVM` VM 'yi dağıtır `myResourceGroup`:
+Aşağıdaki örnek, adlı kaynak grubunda adlı VM 'yi dağıtır `myVM` `myResourceGroup` :
 
 ```powershell
 Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"

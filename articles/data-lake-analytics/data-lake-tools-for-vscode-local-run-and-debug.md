@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
 ms.openlocfilehash: e51b5640163546c673a1b0f61da47ccd992f27ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72030043"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL çalıştırma ve Visual Studio Code yerel olarak hata ayıklama
@@ -32,11 +32,11 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
 
    ![Bağımlılık paketlerini bulma](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
 
-   2,1 **Buildtools**'u yüklemek Için LocalRunDependency klasöründe visualcppbuildtools_full. exe ' ye tıklayın ve ardından sihirbaz yönergelerini izleyin.   
+   2,1 **Buildtools**'u yüklemek Için LocalRunDependency klasöründe visualcppbuildtools_full.exe ' a tıklayın ve ardından sihirbaz yönergelerini izleyin.   
 
     ![BuildTools 'ı yükler](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 **Win10SDK 10240**yüklemek Için, LocalRunDependency/Win10SDK_10.0.10240 _2 klasöründe sdksetup. exe ' ye tıklayın ve ardından sihirbaz yönergelerini izleyin.  
+   2,2 **Win10SDK 10240**yüklemek Için LocalRunDependency/Win10SDK_10.0.10240 _2 klasöründe sdksetup.exe ' a tıklayın ve ardından sihirbaz yönergelerini izleyin.  
 
     ![Win10SDK 10240 'yi yükler](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
@@ -59,8 +59,8 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
    ![Visual Studio Code Data Lake Araçlar yerel seçin](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. İşi gönderdikten sonra, gönderim ayrıntılarını görüntüleyebilirsiniz. Gönderim ayrıntılarını görüntülemek için **Çıkış** penceresinde **joburl** ' yi seçin. İş gönderme durumunu cmd konsolundan da görüntüleyebilirsiniz. Daha fazla iş ayrıntısı hakkında bilgi edinmek istiyorsanız cmd konsoluna **7** girin.
 
-   ![Yerel Visual Studio Code çalıştırma çıkışı](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
-   ![için Data Lake araçları Visual Studio Code yerel çalıştırma cmd durumu Data Lake araçları](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
+   ![Yerel Visual Studio Code çalıştırma çıkışı için Data Lake araçları ](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
+    ![ Visual Studio Code yerel çalıştırma cmd durumu Data Lake araçları](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
 
 
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>U-SQL işi için yerel bir hata ayıklama başlatma  

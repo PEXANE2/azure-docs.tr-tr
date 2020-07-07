@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193182"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir açılır pencere ekleyin
@@ -24,7 +24,7 @@ Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabi
 
 Bu makaledeki örnek açılır pencere, kılavuza, [Uzaktan izleme çözümü Hızlandırıcısı Web UI](iot-accelerators-remote-monitoring-customize-grid.md) ile ilgili nasıl ekleneceğini gösteren özel kılavuz ekleme kılavuzunu içeren sayfada görüntülenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 
@@ -47,11 +47,11 @@ Web Kullanıcı arabirimine bir açılır pencere eklemek için, açılır menü
 
 Başlangıç yapmanız için, **src/Walkthrough/bileşenler/Pages/Pagewithaçılır/Flyout/exampleFlyout** klasörü, bir açılır pencere tanımlayan dosyaları içerir:
 
-**exampleFlyout. Container. js**
+**exampleFlyout.container.js**
 
 [!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
-**exampleFlyout. js**
+**exampleFlyout.js**
 
 [!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
@@ -59,7 +59,7 @@ Src/ **Walkthrough/Components/Pages/Pagewithaçılır/Flyout** klasörünü **sr
 
 ### <a name="add-the-flyout-to-the-page"></a>Açılır menüyü sayfaya ekleyin
 
-Açılır menüyü eklemek için **src/Components/Pages/example/basicPage. js** öğesini değiştirin.
+' **İ/bileşenleri/sayfaları/örnek/basicPage.js** açılır menüyü eklemek için değiştirin.
 
 **Bileşenler/paylaşılan** içeri aktarmaları Için **btn** ekleyin ve **svgs** ve **ExampleFlyoutContainer**için içeri aktarmaları ekleyin:
 
@@ -133,7 +133,7 @@ Web Kullanıcı arabirimi zaten yerel olarak çalışmıyorsa, deponun yerel kop
 npm start
 ```
 
-Önceki komut, Kullanıcı arabirimini ' de `http://localhost:3000/dashboard`yerel olarak çalıştırır. **Örnek** sayfasına gidin ve **açılan menüyü aç**' a tıklayın.
+Önceki komut, Kullanıcı arabirimini ' de yerel olarak çalıştırır `http://localhost:3000/dashboard` . **Örnek** sayfasına gidin ve **açılan menüyü aç**' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

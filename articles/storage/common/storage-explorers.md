@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b02a08b7e8d8b867df820868b72a0ce14b6afa40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71670941"
 ---
 # <a name="microsoft-client-tools-for-working-with-azure-storage"></a>Azure depolama ile çalışmaya yönelik Microsoft istemci araçları
@@ -22,7 +22,7 @@ Microsoft, Azure Depolama hesabınızdaki verilerle çalışmaya yönelik çeşi
 
 | Azure depolama istemci aracı                 | Desteklenen platformlar | Blok Blobu | Sayfa Blobu | Blob Ekle | Tablolar | Kuyruklar | Dosyalar |
 |-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
-| [Azure portal](https://portal.azure.com)                    | Web                 | Yes          | Yes         | Yes           | Yes      | Yes      | Yes     |
+| [Azure portalındaki](https://portal.azure.com)                    | Web                 | Yes          | Yes         | Yes           | Yes      | Yes      | Yes     |
 | [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)          | Windows, OSX        | Yes          | Yes         | Yes           | Yes      | Yes      | Yes     |
 | [Microsoft Visual Studio bulut Gezgini](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | Yes          | Yes         | Yes           | Yes      | Yes      | Hayır      |
 

@@ -4,10 +4,10 @@ description: Bu makalede bir Service Fabric uygulaması dağıtma, kodu değişt
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195876"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Visual Studio kullanarak uygulama yükseltme öğreticisini Service Fabric
@@ -26,18 +26,18 @@ Azure Service Fabric, yalnızca değiştirilen hizmetlerin yükseltildiğini ve 
 
 ![Service Fabric uygulaması için bağlam menüsü][image1]
 
-**Yayımla** ' yı seçtiğinizde bir açılan pencere açılır ve **hedef profili** **publishprofiles\local.xml**olarak ayarlayabilirsiniz. **Yayımla**' ya tıklamadan önce pencere aşağıdaki gibi görünmelidir.
+**Yayımla** seçeneğinin belirlenmesi bir açılan pencere getirir ve **hedef profilini** **PublishProfiles\Local.xml**olarak ayarlayabilirsiniz. **Yayımla**' ya tıklamadan önce pencere aşağıdaki gibi görünmelidir.
 
 ![Service Fabric uygulaması yayımlama][image2]
 
-Artık iletişim kutusunda **Yayımla** ' ya tıklayabilirsiniz. [Kümeyi ve uygulamayı görüntülemek için Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanabilirsiniz. Görsel nesneler uygulamasının, tarayıcınızın adres çubuğuna yazarak `http://localhost:8081/visualobjects/` gidebilmeniz için bir Web hizmeti vardır.  Ekranda hareket eden 10 kayan görsel nesne görmeniz gerekir.
+Artık iletişim kutusunda **Yayımla** ' ya tıklayabilirsiniz. [Kümeyi ve uygulamayı görüntülemek için Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanabilirsiniz. Görsel nesneler uygulamasının, tarayıcınızın adres çubuğuna yazarak gidebilmeniz için bir Web hizmeti vardır `http://localhost:8081/visualobjects/` .  Ekranda hareket eden 10 kayan görsel nesne görmeniz gerekir.
 
-**Note:** `Cloud.xml` Profile (Azure Service Fabric) dağıtıyorsanız, uygulamanın **http://{servicefabricname} konumunda kullanılabilir olması gerekir. { Region}. cloudapp. Azure. com: 8081/visualobjects/**. Load Balancer `8081/TCP` yapılandırdığınızdan emin olun (Service Fabric örneğiyle aynı kaynak grubunda Load Balancer bulun).
+**Note:** `Cloud.xml`Profile (Azure Service Fabric) dağıtıyorsanız, uygulamanın **http://{ServiceFabricName} konumunda kullanılabilir olması gerekir. { Region}. cloudapp. Azure. com: 8081/visualobjects/**. `8081/TCP`Load Balancer yapılandırdığınızdan emin olun (Service Fabric örneğiyle aynı kaynak grubunda Load Balancer bulun).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. Adım: görsel nesneler örneğini güncelleştirme
 Adım 1 ' de dağıtılan sürümde, görsel nesnelerin döndürüleceğini fark edebilirsiniz. Bu uygulamayı görsel nesnelerin de her yerde de döndürelim.
 
-VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve **VisualObjectActor.cs** dosyasını açın. Bu dosya içinde yöntemine `MoveObject`gidin, yorum yapın ve açıklama ekleyin `visualObject.Move(false)` `visualObject.Move(true)`. Bu kod değişikliği, hizmet yükseltildikten sonra nesneleri döndürür.  Artık değiştirilen projeleri oluşturan **çözümü oluşturabilir (yeniden derlenemez)**. *Tümünü yeniden derle*' yi seçerseniz, tüm projelerin sürümlerini güncelleştirmeniz gerekir.
+VisualObjects çözüm içindeki VisualObjects. ActorService projesini seçin ve **VisualObjectActor.cs** dosyasını açın. Bu dosya içinde yöntemine gidin `MoveObject` , yorum yapın ve açıklama ekleyin `visualObject.Move(false)` `visualObject.Move(true)` . Bu kod değişikliği, hizmet yükseltildikten sonra nesneleri döndürür.  Artık değiştirilen projeleri oluşturan **çözümü oluşturabilir (yeniden derlenemez)**. *Tümünü yeniden derle*' yi seçerseniz, tüm projelerin sürümlerini güncelleştirmeniz gerekir.
 
 Uygulamamız da bizim için de gereklidir. **Visualobjects** projesine sağ tıkladıktan sonra sürüm değişikliği yapmak Için, Visual Studio **bildirim sürümlerini Düzenle** seçeneğini kullanabilirsiniz. Bu seçeneğin belirlenmesi, sürüm sürümleri için iletişim kutusunu aşağıdaki şekilde getirir:
 

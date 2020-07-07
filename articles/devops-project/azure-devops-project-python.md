@@ -14,17 +14,17 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, tracking-python
 ms.openlocfilehash: e148d50af39e69750c3024d98abc833e40654705
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558736"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Azure DevOps Starter ile Python için bir CI/CD işlem hattı oluşturma
 
 Bu hızlı başlangıçta, Azure Pipelines ' de Python uygulamanız için sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı ayarlamak üzere Basitleştirilmiş Azure DevOps Starter deneyimini kullanırsınız. Uygulamanızı geliştirmek, dağıtmak ve izlemek için ihtiyacınız olan her şeyi ayarlamak için Azure DevOps Starter 'ı kullanabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - Bir [Azure DevOps](https://azure.microsoft.com/services/devops/) hesabı ve kuruluşu.

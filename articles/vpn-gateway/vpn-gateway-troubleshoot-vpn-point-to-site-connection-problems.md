@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
 ms.openlocfilehash: 5a273ccad0d30ede3f0ed4ee532d61161074d304
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188302"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Sorun giderme: Azure Noktadan siteye bağlantı sorunları
@@ -44,7 +44,7 @@ Bu sorunu çözmek için şu adımları izleyin:
     | AzureClient. pfx  | Geçerli Kullanıcı \ kişisel \ sertifikalar |
     | AzureRoot. cer    | Yerel bilgisayar \ güvenilen kök sertifika yetkilileri|
 
-3. C:\Users\<kullanıcı adı> \appdata\roaming\microsoft\network\connections\cm\<GUID> adresine gidin ve sertifikayı (*. cer dosyası) Kullanıcı ve bilgisayar deposuna el ile yükleyebilirsiniz.
+3. C:\Users \AppData\Roaming\Microsoft\Network\Connections\Cm adresine \<UserName> gidin \<GUID> ve sertifikayı (*. cer dosyası) Kullanıcı ve bilgisayar deposuna el ile yükleyebilirsiniz.
 
 İstemci sertifikasını nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. [Noktadan siteye bağlantılar için sertifikaları oluşturma ve dışarı aktarma](vpn-gateway-certificates-point-to-site.md).
 
@@ -78,7 +78,7 @@ IKEv2 için Windows 10 ve Server 2016’yı hazırlamak için:
    | Windows 10 sürüm 1709 | 22 Mart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. Kayıt defteri anahtar değerini ayarlayın. Kayıt defterinde REG_DWORD `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` anahtarı oluşturun veya 1 olarak ayarlayın.
+2. Kayıt defteri anahtar değerini ayarlayın. `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload`Kayıt defterinde REG_DWORD anahtarı oluşturun veya 1 olarak ayarlayın.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN istemci hatası: alınan ileti beklenmeyen veya hatalı biçimlendirildi
 
@@ -165,10 +165,10 @@ Sanal ağınız için VPN ağ geçidine güvenmek üzere ek bir sertifika gereki
 
 VPN istemcisi yapılandırma paketini ayıklayın ve. cer dosyasını bulun. Sertifikayı yüklemek için şu adımları izleyin:
 
-1. MMC. exe ' yi açın.
+1. mmc.exe açın.
 2. **Sertifikalar** ek bileşenini ekleyin.
 3. Yerel bilgisayar için **bilgisayar** hesabını seçin.
-4. **Güvenilen kök sertifika yetkilileri** düğümüne sağ tıklayın. **Tümü-görev** > **içeri aktar**' a tıklayın ve VPN istemcisi yapılandırma paketinden ayıkladığınız. cer dosyasına gidin.
+4. **Güvenilen kök sertifika yetkilileri** düğümüne sağ tıklayın. **Tümü-görev**  >  **içeri aktar**' a tıklayın ve VPN istemcisi yapılandırma paketinden ayıkladığınız. cer dosyasına gidin.
 5. Bilgisayarı yeniden başlatın. 
 6. VPN istemcisini yüklemeyi deneyin.
 
@@ -178,7 +178,7 @@ VPN istemcisi yapılandırma paketini ayıklayın ve. cer dosyasını bulun. Ser
 
 VPN ağ geçidi değişikliklerini Azure portal kaydetmeye çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-**Sanal ağ geçidi &lt; *ağ geçidi adı*&gt;kaydedilemedi. Sertifika &lt; *sertifikası kimliği* &gt; için veriler geçersiz.**
+**Sanal ağ geçidi &lt; *ağ geçidi adı*kaydedilemedi &gt; . Sertifika &lt; *sertifikası kimliği* için veriler &gt; geçersiz.**
 
 ### <a name="cause"></a>Nedeni 
 
@@ -213,7 +213,7 @@ Sertifikadaki verilerin satır sonu (satır başı) gibi geçersiz karakterler i
 
 VPN ağ geçidi değişikliklerini Azure portal kaydetmeye çalıştığınızda aşağıdaki hata iletisini alırsınız: 
 
-**Sanal ağ geçidi &lt; *ağ geçidi adı*&gt;kaydedilemedi. Karşıya&gt; yüklemeye &lt; *çalıştığınız kaynak adı sertifikası adı* geçersiz**.
+**Sanal ağ geçidi &lt; *ağ geçidi adı*kaydedilemedi &gt; . Karşıya yüklemeye çalıştığınız kaynak adı &lt; *sertifikası adı* &gt; geçersiz**.
 
 ### <a name="cause"></a>Nedeni
 
@@ -272,7 +272,7 @@ Noktadan siteye VPN bağlantısını kaldırır ve ardından VPN istemcisini yen
 
 ### <a name="solution"></a>Çözüm
 
-Sorunu çözmek için, eski VPN istemci yapılandırma dosyalarını **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<virtualnetworkıd>** ÖĞESINDEN silin ve ardından VPN istemci yükleyicisini yeniden çalıştırın.
+Sorunu çözmek için, eski VPN istemci yapılandırma dosyalarını **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> **adresinden SILIN ve ardından VPN istemci yükleyicisini yeniden çalıştırın.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Noktadan siteye VPN istemcisi, yerel etki alanındaki kaynakların FQDN 'sini çözümleyemiyor
 
@@ -301,11 +301,11 @@ Bu sorunu çözmek için [Azure VPN Gateway 'i sıfırlayın](vpn-gateway-resetg
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hata: "iptal sunucusu çevrimdışı olduğu için iptal işlevi iptali kontrol edemedi. (Hata 0x80092013) "
 
 ### <a name="causes"></a>Nedenler
-İstemci ve http://crl3.digicert.com/ssca-sha2-g1.crl http://crl4.digicert.com/ssca-sha2-g1.crlerişemediğinde bu hata iletisi oluşur.  İptal denetiminin bu iki siteye erişimi olması gerekir.  Bu sorun genellikle ara sunucu yapılandırılmış istemcide gerçekleşir. Bazı ortamlarda, istekler proxy sunucusundan geçmezse, sınır güvenlik duvarında reddedilir.
+İstemci ve erişemediğinde bu hata iletisi oluşur http://crl3.digicert.com/ssca-sha2-g1.crl http://crl4.digicert.com/ssca-sha2-g1.crl .  İptal denetiminin bu iki siteye erişimi olması gerekir.  Bu sorun genellikle ara sunucu yapılandırılmış istemcide gerçekleşir. Bazı ortamlarda, istekler proxy sunucusundan geçmezse, sınır güvenlik duvarında reddedilir.
 
 ### <a name="solution"></a>Çözüm
 
-Proxy sunucusu ayarlarını denetleyin, istemcisinin ve http://crl3.digicert.com/ssca-sha2-g1.crl http://crl4.digicert.com/ssca-sha2-g1.crlerişiminin olduğundan emin olun.
+Proxy sunucusu ayarlarını denetleyin, istemcisinin ve erişiminin olduğundan emin olun http://crl3.digicert.com/ssca-sha2-g1.crl http://crl4.digicert.com/ssca-sha2-g1.crl .
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN Istemci hatası: RAS/VPN sunucunuzda yapılandırılan bir ilke nedeniyle bağlantı engellendi. (Hata 812)
 
@@ -339,9 +339,9 @@ NIC sürücüsünü güncelleştirin:
 4.  Windows yeni bir sürücü bulmazsa, cihaz üreticisinin Web sitesinde bir sürücü arayıp yükleme yönergelerini izleyebilirsiniz.
 5. Bilgisayarı yeniden başlatın ve bağlantıyı yeniden deneyin.
 
-## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN Istemci hatası: çevirmeli VPN bağlantısı <VPN Connection Name>, durum = VPN platformu bağlantı tetikmedi
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN Istemci hatası: çevirmeli VPN bağlantısı <VPN Connection Name> , durum = VPN platformu bağlantı tetikmedi
 
-Ayrıca, RasClient adresinden Olay Görüntüleyicisi şu hatayı görebilirsiniz: "Kullanıcı <User> , başarısız <VPN Connection Name> olan bir bağlantıyı çevirdiniz. Hatada döndürülen hata kodu 1460. "
+Ayrıca, RasClient adresinden Olay Görüntüleyicisi şu hatayı görebilirsiniz: "Kullanıcı, <User> başarısız olan bir bağlantıyı çevirdiniz <VPN Connection Name> . Hatada döndürülen hata kodu 1460. "
 
 ### <a name="cause"></a>Nedeni
 
@@ -370,7 +370,7 @@ Bu sorun, önceki VPN istemci yüklemelerinden kaynaklanabilir.
 
 ### <a name="solution"></a>Çözüm
 
-**C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<virtualnetworkıd>** 'den eski VPN ISTEMCI yapılandırma dosyalarını silip VPN istemci yükleyicisini yeniden çalıştırın. 
+Eski VPN istemci yapılandırma dosyalarını **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> ** adresınden silin ve VPN istemci yükleyicisini yeniden çalıştırın. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN istemcisi, bir süre sonra hazırda bekleme veya uyku moduna geçme
 

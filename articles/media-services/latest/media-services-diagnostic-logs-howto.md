@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382928"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Tanılama günlüklerini izleme Media Services
@@ -26,7 +26,7 @@ ms.locfileid: "80382928"
 
 Bu makalede, verileri depolama hesabına yönlendirme ve sonra verileri görüntüleme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturun](create-account-cli-how-to.md).
 - [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md)inceleyin.
@@ -73,7 +73,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Örneğin:
+Örnek:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \
@@ -96,7 +96,7 @@ Olayın depolama hesabında görünmesi için beş dakikaya kadar beklemeniz ger
 
  Artık depolama hesabında depolanmış JSON olayını görüntüleyebilirsiniz.
 
-### <a name="examples-of-pt1hjson"></a>PT1H. JSON örnekleri
+### <a name="examples-of-pt1hjson"></a>PT1H.jsörnekleri
 
 #### <a name="clear-key-delivery-log"></a>Anahtar teslim günlüğünü temizle
 

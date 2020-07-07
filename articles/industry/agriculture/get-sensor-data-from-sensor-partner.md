@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398228"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
@@ -46,7 +46,7 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
 2. **Bu sürüm 1.2.7 veya sonraki bir sürümü kullanıyorsanız a, b ve c adımlarını atlayın ve adım 3 ' e gidin.** Farmtts Kullanıcı arabiriminin sağ üst köşesindeki **Ayarlar** simgesini seçerek farmtts sürümünü denetleyebilirsiniz.
 
-      a.  **Azure Active Directory** > **uygulama kayıtlarına** git
+      a.  **Azure Active Directory**  >  **uygulama kayıtlarına** git
 
       b. Farmtts dağıtımınızın bir parçası olarak oluşturulan **uygulama kaydını** seçin. Bu, Farmtts veri hub 'ınızla aynı ada sahip olacaktır.
 
@@ -74,7 +74,7 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
     ```
 
-7. Aşağıdaki komut dosyasını çalıştırın. Betik, **Azure Active Directory** > **genel bakış** sayfasından elde edilen Kiracı kimliğini ister.
+7. Aşağıdaki komut dosyasını çalıştırın. Betik, **Azure Active Directory**  >  **genel bakış** sayfasından elde edilen Kiracı kimliğini ister.
 
     ```azurepowershell-interactive 
 

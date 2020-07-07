@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4665666fe56c208b2437a7051bbf9201383365f8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254895"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962144"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Hızlı başlangıç: SignalR hizmetini kullanarak sohbet odası oluşturma
 
@@ -28,7 +28,7 @@ Bu öğreticinin kodu [AzureSignalR-samples GitHub deposundan](https://github.co
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)'i yükler.
 * [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) GitHub deposunu indirin veya kopyalayın. 
@@ -45,14 +45,16 @@ Bu bölümde, bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.N
 
 2. Yeni klasörde, projeyi oluşturmak için aşağıdaki komutu çalıştırın:
 
-        dotnet new mvc
+    ```dotnetcli
+    dotnet new mvc
+    ```
 
 
 ## <a name="add-secret-manager-to-the-project"></a>Projeye Gizli Dizi Yöneticisi ekleme
 
 Bu bölümde, projenize [gizli yönetici aracını](https://docs.microsoft.com/aspnet/core/security/app-secrets) ekleyeceksiniz. Gizli dizi Yöneticisi Aracı, geliştirme çalışması için hassas verileri proje ağacınızdaki dışında depolar. Bu yaklaşım, kaynak kodundaki uygulama gizli anahtarlarının yanlışlıkla paylaşılmasını önlemeye yardımcı olur.
 
-1. *.csproj* dosyanızı açın. *Microsoft.Extensions.SecretManager.Tools* öğesini dahil etmek için bir `DotNetCliToolReference` öğesi ekleyin. Ayrıca, `UserSecretsId` *chattest. csproj*için aşağıdaki kodda gösterildiği gibi bir öğesi ekleyin ve dosyayı kaydedin.
+1. *.csproj* dosyanızı açın. *Microsoft.Extensions.SecretManager.Tools* öğesini dahil etmek için bir `DotNetCliToolReference` öğesi ekleyin. Ayrıca `UserSecretsId` , *chattest. csproj*için aşağıdaki kodda gösterildiği gibi bir öğesi ekleyin ve dosyayı kaydedin.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -72,13 +74,17 @@ Bu bölümde, projenize [gizli yönetici aracını](https://docs.microsoft.com/a
 
 ## <a name="add-azure-signalr-to-the-web-app"></a>Web uygulamasına Azure SignalR ekleme
 
-1. Aşağıdaki komutu çalıştırarak `Microsoft.Azure.SignalR` NuGet paketine bir başvuru ekleyin:
+1. `Microsoft.Azure.SignalR`Aşağıdaki komutu çalıştırarak NuGet paketine bir başvuru ekleyin:
 
-        dotnet add package Microsoft.Azure.SignalR
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.SignalR
+    ```
 
 2. Projenizin paketlerini geri yüklemek için aşağıdaki komutu çalıştırın:
 
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
+    ```
 
 3. Gizli bir yöneticiye *Azure: SignalR: ConnectionString* adlı bir gizli dizi ekleyin. 
 
@@ -86,7 +92,7 @@ Bu bölümde, projenize [gizli yönetici aracını](https://docs.microsoft.com/a
 
     Bu komutu *. csproj* dosyasıyla aynı dizinde çalıştırmalısınız.
 
-    ```
+    ```dotnetcli
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
@@ -105,7 +111,7 @@ Bu bölümde, projenize [gizli yönetici aracını](https://docs.microsoft.com/a
     }
     ```
 
-    Parametresi öğesine `AddAzureSignalR()`geçirilmeyen Bu kod, SignalR hizmeti kaynak bağlantı dizesinin varsayılan yapılandırma anahtarını kullanır. Varsayılan yapılandırma anahtarı *Azure: SignalR: ConnectionString*.
+    Parametresi öğesine geçirilmeyen `AddAzureSignalR()` Bu kod, SignalR hizmeti kaynak bağlantı dizesinin varsayılan yapılandırma anahtarını kullanır. Varsayılan yapılandırma anahtarı *Azure: SignalR: ConnectionString*.
 
 5. Ayrıca, *Startup.cs*' de, `Configure` çağrısını `app.UseStaticFiles()` aşağıdaki kodla değiştirerek ve dosyayı yalnızca ASP.NET Core 2 ' ye kaydederek bu yöntemi güncelleştirin.
 
@@ -136,7 +142,7 @@ SignalR 'de, bir hub, istemciden çağrılabilen bir yöntemler kümesini kullan
 * `Broadcast`: Bu yöntem bir iletiyi tüm istemcilere yayınlar.
 * `Echo`: Bu yöntem bir iletiyi çağırana geri gönderir.
 
-Her iki yöntem de `Clients` ASP.NET Core SIGNALR SDK 'nın sağladığı arabirimi kullanır. Bu arabirim, istemcilere içerik gönderebilmeniz için tüm bağlı istemcilere erişmenizi sağlar.
+Her iki yöntem de `Clients` ASP.NET Core SignalR SDK 'nın sağladığı arabirimi kullanır. Bu arabirim, istemcilere içerik gönderebilmeniz için tüm bağlı istemcilere erişmenizi sağlar.
 
 1. Proje dizininizde *Hub* adlı yeni bir klasör ekleyin. Yeni klasöre *Chat.cs* adlı yeni bir hub kod dosyası ekleyin.
 
@@ -167,11 +173,11 @@ Her iki yöntem de `Clients` ASP.NET Core SIGNALR SDK 'nın sağladığı arabir
 
 ### <a name="add-the-client-interface-for-the-web-app"></a>Web uygulaması için istemci arabirimini ekleme
 
-Bu sohbet odası uygulamasının istemci kullanıcı arabirimi, *Wwwroot* dizinindeki *index. html* adlı bir dosyadaki HTML ve JavaScript 'ten oluşur.
+Bu sohbet odası uygulamasının istemci kullanıcı arabirimi, *Wwwroot* dizinindeki *index.html* adlı bir dosyada HTML ve JavaScript 'ten oluşur.
 
-[Samples deposunun](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) *Wwwroot* klasöründen *index. html* dosyasını, *CSS* klasörünü ve *Scripts* klasörünü kopyalayın. Bunları projenizin *Wwwroot* klasörüne yapıştırın.
+[Örnek deposunun](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot) *Wwwroot* klasöründen *index.html* dosyasını, *CSS* klasörünü ve *Scripts* klasörünü kopyalayın. Bunları projenizin *Wwwroot* klasörüne yapıştırın.
 
-*İndex. html*' in ana kodu aşağıda verilmiştir: 
+*index.html*'nin ana kodu aşağıda verilmiştir: 
 
 ```javascript
 var connection = new signalR.HubConnectionBuilder()
@@ -187,7 +193,7 @@ connection.start()
     });
 ```    
 
-*İndex. html* dosyasındaki kod, Azure `HubConnectionBuilder.build()` SignalR kaynağına http bağlantısı kurmak için çağırır.
+*index.html* içindeki kod, `HubConnectionBuilder.build()` Azure SIGNALR kaynağına http bağlantısı kurmak için çağırır.
 
 Bağlantı başarılı olursa, o bağlantı `bindConnectionMessage` konumuna geçirilir ve istemciye gönderilen gelen içerik için olay işleyicileri ekler. 
 
@@ -199,7 +205,7 @@ Bu bölümde, ASP.NET Core için bir geliştirme çalışma zamanı ortamı ekle
 
 1. Projenizde *Özellikler* adlı bir klasör oluşturun.
 
-2. Aşağıdaki içerikle, *Launchsettings. JSON* adlı yeni bir dosyayı klasöre ekleyin ve dosyayı kaydedin.
+2. Klasöre aşağıdaki içerikle *launchSettings.js* adlı yeni bir dosya ekleyin ve dosyayı kaydedin.
 
     ```json
     {
@@ -224,21 +230,27 @@ Bu bölümde, ASP.NET Core için bir geliştirme çalışma zamanı ortamı ekle
 
 1. .NET Core CLI kullanarak uygulamayı derlemek için komut kabuğu 'nda aşağıdaki komutu çalıştırın:
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 2. Oluşturma başarıyla tamamlandıktan sonra, Web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     Uygulama, geliştirme çalışma zamanı profilinizde yapılandırıldığı şekilde 5000 numaralı bağlantı noktasında yerel olarak barındırılır:
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Development
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.    
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Development
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+    Application started. Press Ctrl+C to shut down.    
+    ```
 
-3. İki tarayıcı penceresi açın. Her tarayıcıda öğesine `http://localhost:5000`gidin. Adınızı girmeniz istenir. Her iki istemci için bir istemci adı girin ve **Gönder** düğmesini kullanarak ileti içeriğini her iki istemci arasında iletme sınamasını yapın.
+3. İki tarayıcı penceresi açın. Her tarayıcıda öğesine gidin `http://localhost:5000` . Adınızı girmeniz istenir. Her iki istemci için bir istemci adı girin ve **Gönder** düğmesini kullanarak ileti içeriğini her iki istemci arasında iletme sınamasını yapın.
 
     ![Azure SignalR grup sohbeti örneği](media/signalr-quickstart-dotnet-core/signalr-quickstart-complete-local.png)
 

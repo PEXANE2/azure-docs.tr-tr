@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192689"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight'ta Apache Hadoop ile Apache Ambari Hive Görünümünü Kullanma
@@ -21,7 +21,7 @@ ms.locfileid: "82192689"
 
 Apache ambarı Hive görünümünü kullanarak Hive sorgularını çalıştırmayı öğrenin. Hive görünümü, Web tarayıcınızdan Hive sorgularını yazmanıza, iyileştirmenize ve çalıştırmanıza olanak tanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -29,7 +29,7 @@ HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya ba�
 
 1. [Azure Portal](https://portal.azure.com/), kümenizi seçin.  Yönergeler için bkz. [liste ve kümeleri gösterme](../hdinsight-administer-use-portal-linux.md#showClusters) . Küme yeni bir portal görünümünde açılır.
 
-1. **Küme panolarında**, **ambarı görünümleri**' ni seçin. Kimlik doğrulaması istendiğinde, kümeyi oluştururken belirttiğiniz küme oturum açma ( `admin`varsayılan) hesap adını ve parolasını kullanın. Ayrıca, tarayıcınızda `CLUSTERNAME` , kümenizin `https://CLUSTERNAME.azurehdinsight.net/#/main/views` adı olan ' a gidebilirsiniz.
+1. **Küme panolarında**, **ambarı görünümleri**' ni seçin. Kimlik doğrulaması istendiğinde, kümeyi oluştururken belirttiğiniz küme oturum açma (varsayılan `admin` ) hesap adını ve parolasını kullanın. Ayrıca, `https://CLUSTERNAME.azurehdinsight.net/#/main/views` tarayıcınızda `CLUSTERNAME` , Kümenizin adı olan ' a gidebilirsiniz.
 
 1. Görünümler listesinden __Hive görünümü__' nü seçin.
 
@@ -60,7 +60,7 @@ HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya ba�
 
     Bu deyimler aşağıdaki işlemleri yapılır:
 
-    |Deyim | Açıklama |
+    |Deyim | Description |
     |---|---|
     |TABLOYU BıRAK|Tablonun zaten mevcut olması durumunda tabloyu ve veri dosyasını siler.|
     |DıŞ TABLO OLUŞTUR|Hive içinde yeni bir "External" tablosu oluşturur. Dış tablolar yalnızca Hive içindeki tablo tanımını depolar. Veriler özgün konumda bırakılır.|
@@ -115,7 +115,7 @@ Hive veritabanı içindeki tablolarla çalışmak için __Tablolar__ sekmesini k
 ![Apache Hive kaydedilmiş sorgular sekmesini görüntüleme](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Kayıtlı sorgular varsayılan küme depolama alanında depolanır. Kaydedilen sorguları yolun `/user/<username>/hive/scripts`altında bulabilirsiniz. Bunlar düz metin `.hql` dosyaları olarak depolanır.
+> Kayıtlı sorgular varsayılan küme depolama alanında depolanır. Kaydedilen sorguları yolun altında bulabilirsiniz `/user/<username>/hive/scripts` . Bunlar düz metin dosyaları olarak depolanır `.hql` .
 >
 > Kümeyi siler, ancak depolamayı tutarsanız, sorguları almak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) veya Data Lake Storage Explorer ( [Azure portalından](https://portal.azure.com)) gibi bir yardımcı programı kullanabilirsiniz.
 

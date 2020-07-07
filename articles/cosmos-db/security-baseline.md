@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195256"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB için Azure Güvenlik temeli
@@ -131,7 +131,7 @@ Hizmet etiketlerini kullanma hakkında daha fazla bilgi için:https://docs.micro
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
 
-**Kılavuz**: Azure ilkesiyle ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Cosmos DB örneklerinizin ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. DocumentDB" ve "Microsoft. Network" ad alanlarında Azure Ilke diğer adlarını kullanın. Ayrıca, Azure Cosmos DB için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
+**Kılavuz**: Azure ilkesiyle ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Cosmos DB örneklerinizin ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft.DocumentDB" ve "Microsoft. Network" ad alanlarında Azure Ilke diğer adlarını kullanın. Ayrıca, Azure Cosmos DB için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
 
 - Cosmos DB hesapları için Gelişmiş tehdit koruması dağıtma
 
@@ -294,7 +294,7 @@ Ayrıca, Azure Cosmos DB bazı eylemler Azure Active Directory ve hesaba özgü 
 
 Azure Cosmos DB içinde rol tabanlı erişim denetimini anlayın:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-Azure Cosmos DB eylemleri (Microsoft. DocumentDB ad alanı) kullanarak kendi özel rollerinizi oluşturun:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
+Azure Cosmos DB eylemleri (Microsoft.DocumentDB ad alanı) kullanarak kendi özel rollerinizi oluşturun:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
 Azure Active Directory yeni bir rol oluşturun:https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
@@ -504,7 +504,7 @@ Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: yoldaki tüm hassas bilgileri şifreleyin
 
-**Rehberlik**: Azure Cosmos DB tüm bağlantıları https 'yi destekler. Azure Cosmos DB ayrıca TLS 1.2 'yi destekler. En düşük TLS sürümü sunucu tarafını zorlamak mümkündür. Bunu yapmak için lütfen iletişim kurun [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).
+**Rehberlik**: Azure Cosmos DB tüm bağlantıları https 'yi destekler. Azure Cosmos DB ayrıca TLS 1.2 'yi destekler. En düşük TLS sürümü sunucu tarafını zorlamak mümkündür. Bunu yapmak için lütfen iletişim kurun [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .
 
 Cosmos DB güvenliğine genel bakış:https://docs.microsoft.com/azure/cosmos-db/database-security
 
@@ -518,7 +518,7 @@ Cosmos DB güvenliğine genel bakış:https://docs.microsoft.com/azure/cosmos-db
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-Azure Bilişsel Arama ile Azure Cosmos DB verileri dizin: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp; BC =/Azure/Cosmos-DB/breadcrumb/TOC.JSON
+Azure Bilişsel Arama ile dizin Azure Cosmos DB verileri: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp ; BC =/azure/cosmos-db/breadcrumb/toc.js
 
 Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -786,7 +786,7 @@ Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırm
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
-**Kılavuz**: Azure ilkesiyle Cosmos DB örneklerinizin standart güvenlik yapılandırmasını tanımlayın ve uygulayın. Cosmos DB örneklerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. DocumentDB" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, Azure Cosmos DB için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
+**Kılavuz**: Azure ilkesiyle Cosmos DB örneklerinizin standart güvenlik yapılandırmasını tanımlayın ve uygulayın. Cosmos DB örneklerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft.DocumentDB" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, Azure Cosmos DB için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
 
 - Cosmos DB hesapları için Gelişmiş tehdit koruması dağıtma
 
@@ -850,7 +850,7 @@ Azure Repos belgeleri: https://docs.microsoft.com/azure/devops/repos/index?view=
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: sistem yapılandırma yönetimi araçlarını dağıtma
 
-**Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. DocumentDB" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
+**Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft.DocumentDB" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
 
 Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -868,7 +868,7 @@ Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/gover
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Azure hizmetleri için otomatik yapılandırma izlemeyi uygulayın
 
-**Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. DocumentDB" ad alanındaki Azure ilke diğer adlarını kullanın. Azure Cosmos DB örneklerinizin ve ilgili kaynaklarınızın yapılandırmasını otomatik olarak zorlamak için [Denetim], [reddetme] ve [dağıtım yok] Azure Ilkesini kullanın. 
+**Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft.DocumentDB" ad alanındaki Azure ilke diğer adlarını kullanın. Azure Cosmos DB örneklerinizin ve ilgili kaynaklarınızın yapılandırmasını otomatik olarak zorlamak için [Denetim], [reddetme] ve [dağıtım yok] Azure Ilkesini kullanın. 
 
 Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

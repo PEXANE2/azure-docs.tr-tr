@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189292"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 'ta Spark kullanarak veri bilimine genel bakış
@@ -65,7 +65,7 @@ Bu not defterleri, Jupyter Not defteri sunucusunun pySpark3 çekirdeğinde çal�
 
 Bir Spark 2,0 modelinin ve Puanlama için model tüketiminin kullanıma hazır hale getirme hakkında rehberlik için, gerekli adımları bir örnek olarak göstermek üzere [Tüketim üzerinde Spark 1,6 belgesine](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) bakın. Bu örneği Spark 2,0 ' de kullanmak için Python kod dosyasını [Bu dosyayla](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)değiştirin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki yordamlar Spark 1,6 ile ilgilidir. Spark 2,0 sürümü için, yukarıda açıklanan ve daha önce bağlanılan not defterlerini kullanın.
 
@@ -108,7 +108,7 @@ NYC TAXI seyahat verileri, 173.000.000 ' den fazla ayrı ve her seyahat için ö
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Bu dosyaların% 0,1 bir örneğini aldık ve seyahat\_verilerini ve seyahat\_tarifeli havayolu CVS dosyalarını Bu izlenecek yol için giriş veri kümesi olarak kullanılacak tek bir veri kümesine katılmış. Seyahat\_verilerine ve seyahat\_tarifeli havayolu katılacak benzersiz anahtar alanlardan oluşur: medtalon, Hack\_lisans ve Pickup\_DateTime. Veri kümesinin her kaydı, bir NYC Vergileni seyahati temsil eden aşağıdaki öznitelikleri içerir:
+Bu dosyaların% 0,1 bir örneğini aldık ve seyahat \_ verilerini ve seyahat \_ tarifeli havayolu CVS dosyalarını Bu izlenecek yol için giriş veri kümesi olarak kullanılacak tek bir veri kümesine katılmış. Seyahat \_ verilerine ve seyahat tarifeli havayolu katılacak benzersiz anahtar \_ alanlardan oluşur: medtalon, Hack \_ Lisans ve Pickup \_ DateTime. Veri kümesinin her kaydı, bir NYC Vergileni seyahati temsil eden aşağıdaki öznitelikleri içerir:
 
 | Alan | Kısa açıklama |
 | --- | --- |
@@ -141,11 +141,11 @@ Bu dosyaların% 0,1 bir örneğini aldık ve seyahat\_verilerini ve seyahat\_tar
 | tip_class |İpucu sınıfı (0: $0, 1: $0-5, 2: $6-10, 3: $11-20, 4: > $20) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark kümesindeki bir Jupyter Not defterinden kod yürütme
-Jupyter Notebook Azure portal başlatabilirsiniz. Panonuzda Spark kümenizi bulun ve kümenizin yönetim sayfasına girmek için tıklayın. Spark kümesiyle ilişkili Not defterini açmak için**Jupyter Notebook** **küme panoları** -> ' na tıklayın.
+Jupyter Notebook Azure portal başlatabilirsiniz. Panonuzda Spark kümenizi bulun ve kümenizin yönetim sayfasına girmek için tıklayın. Spark kümesiyle ilişkili Not defterini açmak için Jupyter Notebook **küme panoları**' na tıklayın  ->  **Jupyter Notebook**.
 
 ![Küme panoları](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Ayrıca, jupi ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** not defterlerine erişmek için öğesine de gidebilirsiniz. Bu URL 'nin CLUSTERNAME bölümünü kendi kümenizin adıyla değiştirin. Not defterlerine erişmek için Yönetici hesabınızın parolasının olması gerekir.
+Ayrıca ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** , jupi not defterlerine erişmek için öğesine de gidebilirsiniz. Bu URL 'nin CLUSTERNAME bölümünü kendi kümenizin adıyla değiştirin. Not defterlerine erişmek için Yönetici hesabınızın parolasının olması gerekir.
 
 ![Jupyıter not defterlerine gözatıyorum](./media/spark-overview/spark-jupyter-notebook.png)
 
@@ -164,7 +164,7 @@ Artık şunları yapabilirsiniz:
 
 * Not defterine tıklayarak koda bakın.
 * Her hücreyi **SHIFT-enter**tuşlarına basarak yürütün.
-* Tüm Not defteri ' ni tıklatarak **hücre** -> **Çalıştır**' a tıklayın.
+* Tüm Not defteri ' ni tıklatarak **hücre**  ->  **Çalıştır**' a tıklayın.
 * Sorguların otomatik görselleştirilmesini kullanın.
 
 > [!TIP]

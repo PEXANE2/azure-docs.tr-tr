@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 73b958149d9d6d907785fe1c2c56b8198bb91f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351096"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
@@ -91,32 +91,32 @@ SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı
 * Ön uç yapılandırması
   * IP adresi kısmına 10.0.0.7
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 620<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 620<strong> &lt; NR &gt; </strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;NR&gt; </strong> TCP
-    * 36<strong>&lt;NR&gt; </strong> TCP
-    * 39<strong>&lt;NR&gt; </strong> TCP
-    * 81<strong>&lt;NR&gt; </strong> TCP
-    * 5<strong>&lt;NR&gt;</strong>13 TCP
-    * 5<strong>&lt;NR&gt;</strong>14 TCP
-    * 5<strong>&lt;NR&gt;</strong>16 TCP
+    * 32<strong> &lt; NR &gt; </strong> TCP
+    * 36<strong> &lt; NR &gt; </strong> TCP
+    * 39<strong> &lt; NR &gt; </strong> TCP
+    * 81<strong> &lt; NR &gt; </strong> TCP
+    * 5<strong> &lt; NR &gt; </strong>13 TCP
+    * 5<strong> &lt; NR &gt; </strong>14 TCP
+    * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 ### <a name="ers"></a>SÖZCÜKLERI
 
 * Ön uç yapılandırması
   * IP adresi 10.0.0.8
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 621<strong>&lt;NR&gt;</strong>
+  * Bağlantı noktası 621<strong> &lt; NR &gt; </strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;NR&gt; </strong> TCP
-    * 33<strong>&lt;NR&gt; </strong> TCP
-    * 5<strong>&lt;NR&gt;</strong>13 TCP
-    * 5<strong>&lt;NR&gt;</strong>14 TCP
-    * 5<strong>&lt;NR&gt;</strong>16 TCP
+    * 32<strong> &lt; NR &gt; </strong> TCP
+    * 33<strong> &lt; NR &gt; </strong> TCP
+    * 5<strong> &lt; NR &gt; </strong>13 TCP
+    * 5<strong> &lt; NR &gt; </strong>14 TCP
+    * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 * Arka uç yapılandırması
   * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
@@ -150,7 +150,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
    1. Yönetici Kullanıcı adı, yönetici parolası veya SSH anahtarı  
       Makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
    1. Alt ağ KIMLIĞI  
-   VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. Kimlik genellikle/Subscriptions/**&lt;&gt;abonelik kimliği**/ResourceGroups/**&lt;kaynak grubu&gt;adı**/Providers/Microsoft.Network/virtualNetworks/**&lt;sanal ağ adı&gt;**/Subnets/**&lt;alt ağ adı&gt; ** gibi görünüyor
+   VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/** &lt; abonelik kimliği &gt; **/ResourceGroups/** &lt; kaynak grubu adı &gt; **/Providers/Microsoft.Network/virtualNetworks/** &lt; sanal ağ adı &gt; **/Subnets/** &lt; alt ağ adı &gt; ** gibi görünüyor
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 
@@ -167,7 +167,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
    En az RHEL 7 kullanın, bu örnekte Red Hat Enterprise Linux 7,4 görüntüsü<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Daha önce oluşturulan kullanılabilirlik kümesini seçin  
 1. Her iki sanal makineye en az bir veri diski ekleyin  
-   Veri diskleri/usr/SAP/`<SAPSID`> dizini için kullanılır
+   Veri diskleri/usr/SAP/ `<SAPSID`> dizini için kullanılır
 1. Yük dengeleyici oluşturma (iç, standart):  
    1. Ön uç IP adreslerini oluşturma
       1. YOKS için IP adresi kısmına 10.0.0.7
@@ -708,7 +708,7 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
 
 ## <a name="install-database"></a>Veritabanını yükleme
 
-Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. For a list of supported databases, see [SAP Note 1928533][1928533]. [Red Hat Enterprise Linux Azure VM 'lerinde yüksek kullanılabilirlik SAP HANA][sap-hana-ha].
+Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. [Red Hat Enterprise Linux Azure VM 'Lerinde yüksek kullanılabilirlik SAP HANA][sap-hana-ha] . For a list of supported databases, see [SAP Note 1928533][1928533] .
 
 1. SAP veritabanı örnek yüklemesini çalıştırma
 
@@ -742,7 +742,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
 
    SAP HANA güvenli mağazayı, SAP HANA sistem çoğaltması kurulumunun sanal adını gösterecek şekilde güncelleştirin.
 
-   Girdileri sapsıd>adm olarak \<listelemek için aşağıdaki komutu çalıştırın
+   Girdileri adm olarak listelemek için aşağıdaki komutu çalıştırın \<sapsid>
 
    <pre><code>hdbuserstore List
    </code></pre>
@@ -895,7 +895,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
    <pre><code>[root@nw1-cl-0 ~]# pgrep ms.sapNW1 | xargs kill -9
    </code></pre>
 
-   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, tarafından `sapstart`yeniden başlatılır. Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, tarafından yeniden başlatılır `sapstart` . Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ASCS00
    [root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
