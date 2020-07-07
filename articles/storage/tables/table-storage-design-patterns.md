@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529348"
 ---
 # <a name="table-design-patterns"></a>Tablo tasarımı desenleri
@@ -41,7 +41,7 @@ Ayrıca, e-posta adresi gibi başka bir özelliğin değerine bağlı olarak bir
 Aşağıdaki iki filtre ölçütü (bir çalışan KIMLIĞI ve bir e-posta adresine göre arama), her ikisi de nokta sorguları belirler:  
 
 * $filter = (PartitionKey EQ ' Sales ') ve (RowKey EQ ' empid_000223 ')  
-* $filter = (PartitionKey EQ ' Sales ') ve (RowKey EQ 'email_jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' Sales ') ve (RowKey EQ ' email_jonesj@contoso.com ')  
 
 Bir dizi çalışan varlığı için sorgulama yaparsanız, **Rowkey**içinde uygun öneki olan varlıkları sorgulayarak, çalışan kimliği sırasında sıralanmış bir Aralık veya e-posta adresi sırasında sıralanmış bir Aralık belirleyebilirsiniz.  
 
@@ -97,7 +97,7 @@ Bu varlıklara yönelik yüksek hacimli işlemlere benimsemeyi bekleme olursunuz
 Aşağıdaki iki filtre ölçütü (bir çalışan KIMLIĞI ve bir e-posta adresine göre arama), her ikisi de nokta sorguları belirler:  
 
 * $filter = (PartitionKey EQ ' empid_Sales ') ve (RowKey EQ ' 000223 ')
-* $filter = (PartitionKey EQ ' email_Sales ') ve (RowKey EQ 'jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' email_Sales ') ve (RowKey EQ ' jonesj@contoso.com ')  
 
 Bir dizi çalışan varlığı için sorgulama yaparsanız, **Rowkey**içinde uygun öneki olan varlıkları sorgulayarak, çalışan kimliği sırasında sıralanmış bir Aralık veya e-posta adresi sırasında sıralanmış bir Aralık belirleyebilirsiniz.  
 
@@ -263,7 +263,7 @@ Tek bir nokta sorgusuyla ihtiyacınız olan tüm verileri almanızı sağlamak i
 ![Departman varlığı ve çalışan varlığı](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>Çözüm
-Verileri iki ayrı varlıkta depolamak yerine, verileri yeniden oluşturup, Bölüm varlığındaki yöneticinin ayrıntılarının bir kopyasını saklayın. Örneğin:  
+Verileri iki ayrı varlıkta depolamak yerine, verileri yeniden oluşturup, Bölüm varlığındaki yöneticinin ayrıntılarının bir kopyasını saklayın. Örnek:  
 
 ![Bölüm varlığı](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
@@ -588,7 +588,7 @@ using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Cosmos.Table.Queryable;
 ```
 
-EmployeeTable, bir TableQuery\<\<ıtableentity> döndüren bir createquery ıtableentity> () metodunu uygulayan bir cloudtable nesnesidir. Bu türden nesneler bir IQueryable uygular ve hem LINQ sorgu Ifadeleri hem de nokta gösterimi sözdizimi kullanılmasına izin verir.
+EmployeeTable, bir \<ITableEntity> tablequery döndüren CreateQuery () yöntemini uygulayan bir cloudtable nesnesidir \<ITableEntity> . Bu türden nesneler bir IQueryable uygular ve hem LINQ sorgu Ifadeleri hem de nokta gösterimi sözdizimi kullanılmasına izin verir.
 
 **WHERE** yan tümcesi içeren bir sorgu belirtilerek birden çok varlık alınıyor ve elde edilecek. Tablo taramasını önlemek için WHERE yan tümcesinde **Partitionkey** değerini her zaman dahil etmeniz ve tablo ve bölüm taramalarından kaçınmak Için **rowkey** değeri olması gerekir. Tablo hizmeti WHERE yan tümcesinde kullanılmak üzere sınırlı sayıda karşılaştırma işleci (büyüktür, büyüktür veya eşittir, küçüktür, küçüktür veya eşittir, eşittir ve eşit değildir) kümesini destekler. 
 

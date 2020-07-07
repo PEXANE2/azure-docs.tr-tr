@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 46bfab6935d08ac28ced7f392892ade6f68a0492
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530861"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Azure CLı kullanarak MariaDB VNet hizmet uç noktaları için Azure veritabanı oluşturma ve yönetme
 
 Sanal Ağ (VNet) hizmetleri uç noktaları ve kuralları, bir Sanal Ağın özel adres alanını MariaDB için Azure Veritabanı sunucunuza genişletir. Uygun Azure komut satırı arabirimi (CLı) komutlarını kullanarak sunucunuzu yönetmek için VNet hizmet uç noktalarını ve kurallarını oluşturabilir, güncelleştirebilir, silebilir, listeleyebilir ve gösterebilirsiniz. MariaDB VNet hizmet uç noktaları için Azure veritabanı 'nda sınırlamalar da dahil genel bir bakış için bkz. [MariaDB sunucu VNET hizmet uç noktaları Için Azure veritabanı](concepts-data-access-security-vnet.md). Sanal ağ hizmeti uç noktaları, MariaDB için Azure veritabanı için desteklenen tüm bölgelerde kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - [Azure CLI](/cli/azure/install-azure-cli) 'yı yükler veya tarayıcıda Azure Cloud Shell kullanın.
 - [MariaDB sunucusu ve veritabanı Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-cli.md).
@@ -57,7 +57,7 @@ Sanal ağlar ve Azure hizmet kaynakları aynı ağda veya farklı aboneliklerde 
 
 ### <a name="sample-script"></a>Örnek betik
 
-Bu örnek betik, MariaDB sunucusu için Azure veritabanı oluşturmak, VNet, VNet hizmeti uç noktası oluşturmak ve sunucunun bir VNet kuralıyla alt ağa güvenliğini sağlamak için kullanılır. Bu örnek betikte yönetici kullanıcı adını ve parolasını değiştirin. `az account set --subscription` Komutta kullanılan SubscriptionID değerini kendi abonelik tanımlayıcıınızla değiştirin.
+Bu örnek betik, MariaDB sunucusu için Azure veritabanı oluşturmak, VNet, VNet hizmeti uç noktası oluşturmak ve sunucunun bir VNet kuralıyla alt ağa güvenliğini sağlamak için kullanılır. Bu örnek betikte yönetici kullanıcı adını ve parolasını değiştirin. Komutta kullanılan SubscriptionID değerini `az account set --subscription` kendi abonelik tanımlayıcıınızla değiştirin.
 
 ```azurecli-interactive
 # To find the name of an Azure region in the CLI run this command: az account list-locations

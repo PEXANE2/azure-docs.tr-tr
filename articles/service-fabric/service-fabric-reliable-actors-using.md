@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502278"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Aktör hizmetinizde hizmet düzeyi özellikleri uygulama
 
-[Hizmet katmanlama](service-fabric-reliable-actors-platform.md#service-layering)bölümünde açıklandığı gibi, aktör hizmeti güvenilir bir hizmettir. ' Den `ActorService`türetilen kendi hizmetinizi yazabilirsiniz. Ayrıca, hizmet düzeyi özellikleri durum bilgisi olan bir hizmeti kalýtýmla aynı şekilde uygulayabilirsiniz; örneğin:
+[Hizmet katmanlama](service-fabric-reliable-actors-platform.md#service-layering)bölümünde açıklandığı gibi, aktör hizmeti güvenilir bir hizmettir. ' Den türetilen kendi hizmetinizi yazabilirsiniz `ActorService` . Ayrıca, hizmet düzeyi özellikleri durum bilgisi olan bir hizmeti kalýtýmla aynı şekilde uygulayabilirsiniz; örneğin:
 
 - Hizmet yedekleme ve geri yükleme.
 - Tüm aktörler için paylaşılan işlevsellik; Örneğin, devre kesici.
@@ -89,12 +89,12 @@ static class Program
 
 ## <a name="actor-service-methods"></a>Aktör hizmeti yöntemleri
 
-Aktör hizmeti, ( `IActorService` c#) veya ( `ActorService` Java) uygulayan (c#) veya `IService` `Service` (Java) uygular. Bu arabirim, hizmet yöntemlerinde uzak yordam çağrılarına izin veren Reliable Services uzaktan iletişim tarafından kullanılır. Hizmet uzaktan iletişim üzerinden çağrılabilen hizmet düzeyi yöntemleri içerir. Aktörleri [listelemek](service-fabric-reliable-actors-enumerate.md) ve [silmek](service-fabric-reliable-actors-delete-actors.md) için kullanabilirsiniz.
+Aktör hizmeti, (c#) veya (Java) uygulayan (c#) veya (Java) uygular `IActorService` `ActorService` `IService` `Service` . Bu arabirim, hizmet yöntemlerinde uzak yordam çağrılarına izin veren Reliable Services uzaktan iletişim tarafından kullanılır. Hizmet uzaktan iletişim üzerinden çağrılabilen hizmet düzeyi yöntemleri içerir. Aktörleri [listelemek](service-fabric-reliable-actors-enumerate.md) ve [silmek](service-fabric-reliable-actors-delete-actors.md) için kullanabilirsiniz.
 
 
 ## <a name="custom-actor-service"></a>Özel aktör hizmeti
 
-Aktör kayıt lambdası kullanarak, (C#) ve `ActorService` `FabricActorService` (Java) ' den türetilen kendi özel aktör hizmetinizi kaydedebilirsiniz. Daha sonra, (C#) veya `ActorService` `FabricActorService` (Java) devralan bir hizmet sınıfı yazarak kendi hizmet düzeyi işlevselliklerinizi uygulayabilirsiniz. Özel aktör hizmeti, (C#) veya `ActorService` `FabricActorService` (Java) içindeki tüm aktör çalışma zamanı işlevlerini devralır. Kendi hizmet yöntemlerinizi uygulamak için kullanılabilir.
+Aktör kayıt lambdası kullanarak, `ActorService` (C#) ve `FabricActorService` (Java) ' den türetilen kendi özel aktör hizmetinizi kaydedebilirsiniz. Daha sonra, `ActorService` (C#) veya `FabricActorService` (Java) devralan bir hizmet sınıfı yazarak kendi hizmet düzeyi işlevselliklerinizi uygulayabilirsiniz. Özel aktör hizmeti, `ActorService` (C#) veya `FabricActorService` (Java) içindeki tüm aktör çalışma zamanı işlevlerini devralır. Kendi hizmet yöntemlerinizi uygulamak için kullanılabilir.
 
 ```csharp
 class MyActorService : ActorService
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>Aktör yedekleme ve geri yükleme uygulama
 
-Özel bir aktör hizmeti, ' de `ActorService`zaten mevcut olan uzaktan iletişim dinleyicisinden yararlanarak aktör verilerini yedeklemek için bir yöntem sunabilir. Bir örnek için bkz. [aktörleri yedekleme ve geri yükleme](service-fabric-reliable-actors-backup-and-restore.md).
+Özel bir aktör hizmeti, ' de zaten mevcut olan uzaktan iletişim dinleyicisinden yararlanarak aktör verilerini yedeklemek için bir yöntem sunabilir `ActorService` . Bir örnek için bkz. [aktörleri yedekleme ve geri yükleme](service-fabric-reliable-actors-backup-and-restore.md).
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Remoting v2 (arabirim uyumlu) yığınını kullanan aktör
 

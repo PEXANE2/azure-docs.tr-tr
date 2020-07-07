@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
 ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79503133"
 ---
 # <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>Azure için Mobility hizmeti proxy ayarlarını Azure olağanüstü durum kurtarma ile yapılandırma
@@ -51,7 +51,7 @@ Mobility hizmeti, çoğaltmayı etkinleştirme sırasında ortam ayarlarından v
 Bu durumda, müşteri Mobility hizmeti yapılandırma dosyası ProxyInfo. conf ' de özel uygulama proxy 'si ayarları sağlar. Bu yöntem, müşterilerin yalnızca Mobility hizmeti için ara sunucu veya makinedeki geri kalan uygulamalar için bir proxy (veya proxy olmadan) Azure Site Recovery Mobility hizmeti için farklı bir ara sunucu sağlamasına olanak tanır.
 
 ## <a name="proxy-template"></a>Ara sunucu şablonu
-ProxyInfo. conf şu şablonu içerir [proxy] Adres =http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, LOGIN. microsoftonline. com, blob. Core. Windows. net. BypassList, ' *. windows.net ' gibi joker karakterleri desteklemez, ancak windows.net verme için yeterince iyidir. 
+ProxyInfo. conf şu şablonu içerir [proxy] Adres = http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure. com, LOGIN. microsoftonline. com, blob. Core. Windows. net. BypassList, ' *. windows.net ' gibi joker karakterleri desteklemez, ancak windows.net verme için yeterince iyidir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar:
 - Azure VM 'lerini çoğaltmak için [ağ kılavuzunu](site-recovery-azure-to-azure-networking-guidance.md) okuyun.

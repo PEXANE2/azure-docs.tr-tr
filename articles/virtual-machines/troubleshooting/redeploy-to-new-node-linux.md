@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 18e96f9463176b0fce04252492eea6dbede416c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79531116"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Linux sanal makinesini yeni bir Azure düğümüne yeniden dağıtma
@@ -41,7 +41,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 
-[En son Azure klasık CLI](../../cli-install-nodejs.md) 'Yı yükleyip Azure hesabınızda oturum açın. Kaynak Yöneticisi modunda olduğunuzdan emin olun (`azure config mode arm`).
+[En son Azure klasık CLI](../../cli-install-nodejs.md) 'Yı yükleyip Azure hesabınızda oturum açın. Kaynak Yöneticisi modunda olduğunuzdan emin olun ( `azure config mode arm` ).
 
 Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı VM 'yi yeniden dağıtır:
 

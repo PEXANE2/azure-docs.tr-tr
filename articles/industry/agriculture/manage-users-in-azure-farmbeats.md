@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502057"
 ---
 # <a name="manage-users"></a>Kullanıcıları yönetme
 
 Azure Farmtts, Azure Active Directory (Azure AD) örneğinin parçası olan kişilerin Kullanıcı yönetimini içerir. API 'Lere erişmek, oluşturulan haritaları görüntülemek ve grup algılayıcısı telemetrisine erişmek için Azure Farmtts örneğinize kullanıcı ekleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Farmtts yüklemesi gerekiyor. Daha fazla bilgi için bkz. [Azure Farmtts 'Yi yüklemeyin](install-azure-farmbeats.md).
 - Azure Farmtts örneğinden eklemek veya kaldırmak istediğiniz kullanıcıların e-posta kimlikleri.
@@ -69,7 +69,7 @@ Azure AD 'ye Kullanıcı eklemek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Sağ üst köşedeki hesabınızı seçin ve ardından Farmtts ile ilişkili Azure AD kiracıya geçin.
-3. **Azure Active Directory** > **kullanıcıları**' nı seçin.
+3. **Azure Active Directory**  >  **kullanıcıları**' nı seçin.
 
     Azure AD kullanıcıları listesi görüntülenir.
 
@@ -78,7 +78,7 @@ Azure AD 'ye Kullanıcı eklemek için şu adımları izleyin:
     !["Tüm kullanıcılar" bölmesi](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
 
 5. Yeni kullanıcının adını seçin ve ardından bu kullanıcı için gerekli alanları doldurun.
-6. **Oluştur**’u seçin.
+6. **Oluştur**'u seçin.
 
 Azure AD kullanıcılarını yönetme hakkında daha fazla bilgi için bkz. [Azure AD 'de Kullanıcı ekleme veya silme](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/).
 

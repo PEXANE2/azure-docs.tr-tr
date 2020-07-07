@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: ab22e9843ca133274361838eeb49abbe326588dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79502240"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Güvenlik çerçevesi: hassas veriler | Karşı 
@@ -27,13 +27,13 @@ ms.locfileid: "79502240"
 | --------------- | ------- |
 | **Makine güven sınırı** | <ul><li>[Hassas bilgiler içeriyorsa ikili dosyaların gizlenmiş olduğundan emin olun](#binaries-info)</li><li>[Kullanıcıya özgü gizli verileri korumak için şifrelenmiş dosya sistemi (EFS) kullanmayı düşünün](#efs-user)</li><li>[Dosya sisteminde uygulama tarafından depolanan hassas verilerin şifrelendiğinden emin olun](#filesystem)</li></ul> | 
 | **Web uygulaması** | <ul><li>[Gizli içeriğin tarayıcıda önbelleğe alınmadığından emin olun](#cache-browser)</li><li>[Gizli veriler içeren Web uygulamasının yapılandırma dosyalarının bölümlerini şifreleyin](#encrypt-data)</li><li>[Gizli formlarda ve girişlerde Otomatik Tamamla HTML özniteliğini açıkça devre dışı bırak](#autocomplete-input)</li><li>[Kullanıcı ekranında görüntülenen hassas verilerin maskelenmiş olduğundan emin olun](#data-mask)</li></ul> | 
-| **Veritabanınızı** | <ul><li>[Ayrıcalıklı veri pozlaması olmayan kullanıcıları sınırlamak için dinamik veri maskeleme uygulama](#dynamic-users)</li><li>[Parolaların sallaştırılmış karma biçiminde depolandığından emin olun](#salted-hash)</li><li>[Veritabanı sütunlarındaki gizli verilerin şifrelendiğinden emin olun](#db-encrypted)</li><li>[Veritabanı düzeyinde şifrelemenin (TDE) etkinleştirildiğinden emin olun](#tde-enabled)</li><li>[Veritabanı yedeklerinin şifrelendiğinden emin olun](#backup)</li></ul> | 
+| **Veritabanı** | <ul><li>[Ayrıcalıklı veri pozlaması olmayan kullanıcıları sınırlamak için dinamik veri maskeleme uygulama](#dynamic-users)</li><li>[Parolaların sallaştırılmış karma biçiminde depolandığından emin olun](#salted-hash)</li><li>[Veritabanı sütunlarındaki gizli verilerin şifrelendiğinden emin olun](#db-encrypted)</li><li>[Veritabanı düzeyinde şifrelemenin (TDE) etkinleştirildiğinden emin olun](#tde-enabled)</li><li>[Veritabanı yedeklerinin şifrelendiğinden emin olun](#backup)</li></ul> | 
 | **Web API** | <ul><li>[Web API 'siyle ilgili hassas verilerin tarayıcının depolama alanında depolanmadığından emin olun](#api-browser)</li></ul> | 
 | Azure belge DB | <ul><li>[Azure Cosmos DB depolanan hassas verileri şifreleyin](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS VM güven sınırı** | <ul><li>[Sanal makineler tarafından kullanılan diskleri şifrelemek için Azure disk şifrelemesini kullanma](#disk-vm)</li></ul> | 
 | **Service Fabric güven sınırı** | <ul><li>[Service Fabric uygulamalarında gizli dizileri şifreleyin](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Güvenlik modellemesini gerçekleştirin ve gereken yerlerde Iş birimleri/takımlar kullanın](#modeling-teams)</li><li>[Kritik varlıklarda özelliği paylaşmak için erişimi en aza indirin](#entities)</li><li>[Dynamics CRM Share özelliği ve iyi güvenlik uygulamalarıyla ilişkili riskler üzerinde Kullanıcıları eğitme](#good-practices)</li><li>[Özel durum yönetiminde yapılandırma ayrıntılarını gösteren bir geliştirme standartları kuralı ekleyin](#exception-mgmt)</li></ul> | 
-| **Azure Storage** | <ul><li>[Bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi (SSE) kullanma (Önizleme)](#sse-preview)</li><li>[Hassas verileri Azure depolama 'da depolamak için Istemci tarafı şifrelemeyi kullanma](#client-storage)</li></ul> | 
+| **Azure Depolama** | <ul><li>[Bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi (SSE) kullanma (Önizleme)](#sse-preview)</li><li>[Hassas verileri Azure depolama 'da depolamak için Istemci tarafı şifrelemeyi kullanma](#client-storage)</li></ul> | 
 | **Mobil Istemci** | <ul><li>[Telefon yerel depolama alanına yazılan hassas veya PII verilerini şifreleyin](#pii-phones)</li><li>[Son kullanıcılara dağıtmadan önce oluşturulan ikilileri gizleme](#binaries-end)</li></ul> | 
 | **WCF** | <ul><li>[ClientCredentialType 'ı sertifika veya Windows olarak ayarla](#cert)</li><li>[WCF-güvenlik modu etkin değil](#security)</li></ul> | 
 
@@ -46,7 +46,7 @@ ms.locfileid: "79502240"
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
-| **Adımlar** | , Geri çevrilmemelidir, önemli iş mantığı gibi hassas bilgiler içeriyorsa ikili dosyaların belirsizleştirilmiş olduğundan emin olun. Bu, derlemelerin ters mühendislik işlemini durdurmaktır. Gibi `CryptoObfuscator` araçlar da bu amaçla kullanılabilir. |
+| **Adımlar** | , Geri çevrilmemelidir, önemli iş mantığı gibi hassas bilgiler içeriyorsa ikili dosyaların belirsizleştirilmiş olduğundan emin olun. Bu, derlemelerin ters mühendislik işlemini durdurmaktır. Gibi Araçlar `CryptoObfuscator` da bu amaçla kullanılabilir. |
 
 ## <a name="consider-using-encrypted-file-system-efs-is-used-to-protect-confidential-user-specific-data"></a><a id="efs-user"></a>Kullanıcıya özgü gizli verileri korumak için şifrelenmiş dosya sistemi (EFS) kullanmayı düşünün
 
@@ -132,7 +132,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Nasıl yapılır: ASP.NET 2,0 ' de yapılandırma bölümlerini](https://msdn.microsoft.com/library/ff647398.aspx), [bir korumalı yapılandırma sağlayıcısı belirterek](https://msdn.microsoft.com/library/68ze1hb2.aspx), [uygulama gizli dizilerini korumak için Azure Key Vault kullanarak](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) şifreleme |
-| **Adımlar** | Web. config, appSettings. JSON gibi yapılandırma dosyaları genellikle kullanıcı adları, parolalar, veritabanı bağlantı dizeleri ve şifreleme anahtarları dahil olmak üzere hassas bilgileri tutmak için kullanılır. Bu bilgileri korumayın, uygulamanız saldırganların veya kötü niyetli kullanıcıların hesap Kullanıcı adları ve parolalar, veritabanı adları ve sunucu adları gibi hassas bilgileri elde etmesine açıktır. Dağıtım türüne (Azure/on-Prem) bağlı olarak, yapılandırma dosyalarının hassas bölümlerini, DPAPI veya Azure Key Vault gibi hizmetleri kullanarak şifreleyin. |
+| **Adımlar** | Web.config, appsettings.jsgibi yapılandırma dosyaları genellikle kullanıcı adları, parolalar, veritabanı bağlantı dizeleri ve şifreleme anahtarları dahil olmak üzere hassas bilgileri tutmak için kullanılır. Bu bilgileri korumayın, uygulamanız saldırganların veya kötü niyetli kullanıcıların hesap Kullanıcı adları ve parolalar, veritabanı adları ve sunucu adları gibi hassas bilgileri elde etmesine açıktır. Dağıtım türüne (Azure/on-Prem) bağlı olarak, yapılandırma dosyalarının hassas bölümlerini, DPAPI veya Azure Key Vault gibi hizmetleri kullanarak şifreleyin. |
 
 ## <a name="explicitly-disable-the-autocomplete-html-attribute-in-sensitive-forms-and-inputs"></a><a id="autocomplete-input"></a>Gizli formlarda ve girişlerde Otomatik Tamamla HTML özniteliğini açıkça devre dışı bırak
 
@@ -324,7 +324,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-blob |
@@ -335,7 +335,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
@@ -401,7 +401,7 @@ Uygulama bir kurumsal uygulama değilse, dosya sisteminde hangi şifreleme işle
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [.Net Için şifre gizleme](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
-| **Adımlar** | Oluşturulan ikili dosyalar (APK içindeki derlemeler), derlemelerin ters mühendislik işlemini durdurmak için karıştırılmış olmalıdır. Gibi `CryptoObfuscator` araçlar da bu amaçla kullanılabilir. |
+| **Adımlar** | Oluşturulan ikili dosyalar (APK içindeki derlemeler), derlemelerin ters mühendislik işlemini durdurmak için karıştırılmış olmalıdır. Gibi Araçlar `CryptoObfuscator` da bu amaçla kullanılabilir. |
 
 ## <a name="set-clientcredentialtype-to-certificate-or-windows"></a><a id="cert"></a>ClientCredentialType 'ı sertifika veya Windows olarak ayarla
 
