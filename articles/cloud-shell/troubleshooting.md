@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189484"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell & kısıtlamaları sorunlarını giderme
@@ -31,8 +31,8 @@ Azure Cloud Shell sorunları gidermeye yönelik bilinen çözümler şunlardır:
 
 ### <a name="error-running-azuread-cmdlets-in-powershell"></a>PowerShell 'de AzureAD cmdlet 'leri çalıştırma hatası
 
-- **Ayrıntılar**: Cloud Shell gibi `Get-AzureADUser` azuread cmdlet 'lerini çalıştırdığınızda bir hata görebilirsiniz: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`. 
-- **Çözüm**: `Connect-AzureAD` cmdlet 'ini çalıştırın. Daha önce, Cloud Shell PowerShell başlangıcında bu cmdlet 'i otomatik olarak çalıştırdık. Başlangıç süresini hızlandırmak için cmdlet artık otomatik olarak çalışmaz. PowerShell 'deki $PROFILE dosyasına ekleyerek `Connect-AzureAD` önceki davranışı geri yüklemeyi tercih edebilirsiniz.
+- **Ayrıntılar**: Cloud Shell gibi azuread cmdlet 'lerini çalıştırdığınızda `Get-AzureADUser` bir hata görebilirsiniz: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` . 
+- **Çözüm**: `Connect-AzureAD` cmdlet 'ini çalıştırın. Daha önce, Cloud Shell PowerShell başlangıcında bu cmdlet 'i otomatik olarak çalıştırdık. Başlangıç süresini hızlandırmak için cmdlet artık otomatik olarak çalışmaz. PowerShell 'deki $PROFILE dosyasına ekleyerek önceki davranışı geri yüklemeyi tercih edebilirsiniz `Connect-AzureAD` .
 
 ### <a name="early-timeouts-in-firefox"></a>FireFox 'ta erken zaman aşımları
 
@@ -41,8 +41,8 @@ Azure Cloud Shell sorunları gidermeye yönelik bilinen çözümler şunlardır:
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Kilitli ağ ortamında Cloud Shell devre dışı bırakma
 
-- **Ayrıntılar**: Yöneticiler, kullanıcıları için Cloud Shell erişimini devre dışı bırakmak isteyebilir. Cloud Shell, `ux.console.azure.com` etki alanına erişimi (portal.azure.com, shell.azure.com, Visual Studio Code Azure Hesap uzantısı ve docs.microsoft.com dahil Cloud Shell giriş noktalarına erişimi durdurabilen) kullanır. ABD kamu bulutunda giriş noktası `ux.console.azure.us`, karşılık gelen bir shell.azure.us yok.
-- **Çözüm**: ağa erişimi `ux.console.azure.com` veya `ux.console.azure.us` ağ ayarlarına erişimi ortamınıza sınırlayın. Cloud Shell simgesi yine Azure portal var, ancak hizmete başarıyla bağlanmayacak.
+- **Ayrıntılar**: Yöneticiler, kullanıcıları için Cloud Shell erişimini devre dışı bırakmak isteyebilir. Cloud Shell, `ux.console.azure.com` etki alanına erişimi (portal.Azure.com, Shell.Azure.com, Visual Studio Code Azure Hesap uzantısı ve docs.Microsoft.com dahil Cloud Shell giriş noktalarına erişimi durdurabilen) kullanır. ABD kamu bulutunda giriş noktası, `ux.console.azure.us` karşılık gelen bir Shell.Azure.us yoktur.
+- **Çözüm**: `ux.console.azure.com` ağa erişimi veya `ux.console.azure.us` ağ ayarlarına erişimi ortamınıza sınırlayın. Cloud Shell simgesi yine Azure portal var, ancak hizmete başarıyla bağlanmayacak.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Depolama Iletişim kutusu-hata: 403 RequestDisallowedByPolicy
 
@@ -54,7 +54,7 @@ Azure Cloud Shell sorunları gidermeye yönelik bilinen çözümler şunlardır:
 - **Ayrıntılar**: Azure Active Directory aboneliği kullanılırken, depolama alanı oluşturamazsınız.
 - **Çözüm**: depolama kaynakları oluşturma yeteneğine sahip bir Azure aboneliği kullanın. Azure AD abonelikleri Azure kaynakları oluşturamaz.
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminal çıkışı-hata: terminalin bağlantısı kurulamadı: WebSocket oluşturulamıyor. Yeniden `Enter` bağlanmak için basın.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminal çıkışı-hata: terminalin bağlantısı kurulamadı: WebSocket oluşturulamıyor. `Enter`Yeniden bağlanmak için basın.
 - **Ayrıntılar**: Cloud Shell Cloud Shell altyapısına WebSocket bağlantısı kurma olanağı gerektirir.
 - **Çözüm**: *. Console.Azure.com adresindeki etki alanlarına https istekleri ve WebSocket istekleri göndermeyi etkinleştirmek için ağ ayarlarınızı yapılandırdığınızdan emin olun.
 
@@ -81,12 +81,12 @@ Azure Cloud Shell sorunları gidermeye yönelik bilinen çözümler şunlardır:
 > Azure VM 'lerinin herkese açık bir IP adresi olmalıdır.
 
 - **Ayrıntılar**: WinRM Için varsayılan Windows Güvenlik Duvarı ayarları nedeniyle, Kullanıcı aşağıdaki hatayı görebilir:`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Çözüm**: hedef `Enable-AzVMPSRemoting` makinede PowerShell uzaktan iletişim özelliklerinin tüm yönlerini etkinleştirmek için ' i çalıştırın.
+- **Çözüm**: `Enable-AzVMPSRemoting` hedef makinede PowerShell uzaktan iletişim özelliklerinin tüm yönlerini etkinleştirmek için ' i çalıştırın.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir`Azure Drive 'daki sonucu güncelleştirmez
 
 - **Ayrıntılar**: varsayılan olarak, Kullanıcı deneyimini iyileştirmek için, sonuçları `dir` Azure sürücüde önbelleğe alınır.
-- **Çözüm**: bir Azure kaynağını oluşturduktan, güncelleştirdikten veya kaldırdıktan sonra, Azure sürücüsündeki `dir -force` sonuçları güncelleştirmek için ' i çalıştırın.
+- **Çözüm**: bir Azure kaynağını oluşturduktan, güncelleştirdikten veya kaldırdıktan sonra, `dir -force` Azure sürücüsündeki sonuçları güncelleştirmek için ' i çalıştırın.
 
 ## <a name="general-limitations"></a>Genel sınırlamalar
 
@@ -102,9 +102,9 @@ Cloud Shell ücretsiz bir hizmet olarak sağlanır ve genel amaçlı bilgi işle
 
 Cloud Shell oturumunuzu sağlayan makine geçicidir ve oturumunuz 20 dakika etkin kaldıktan sonra geri dönüştürülür. Cloud Shell, bir Azure dosya paylaşımının bağlanmasını gerektirir. Sonuç olarak, aboneliğiniz Cloud Shell erişmek için depolama kaynaklarını ayarlayabilmelidir. Diğer konular şunlardır:
 
-- Bağlı depolama ile, yalnızca `clouddrive` Dizin içerisindeki değişiklikler kalıcı hale getirilir. Bash 'de `$HOME` dizininiz de kalıcı hale getirilir.
+- Bağlı depolama ile, yalnızca dizin içerisindeki değişiklikler `clouddrive` kalıcı hale getirilir. Bash 'de `$HOME` dizininiz de kalıcı hale getirilir.
 - Azure dosya paylaşımları yalnızca [atanan bölgeniz](persisting-shell-storage.md#mount-a-new-clouddrive)içinden bağlanabilir.
-  - Bash içinde, bölge `env` kümesini olarak `ACC_LOCATION`bulmak için öğesini çalıştırın.
+  - Bash içinde, `env` bölge kümesini olarak bulmak için öğesini çalıştırın `ACC_LOCATION` .
 - Azure dosyaları yalnızca yerel olarak yedekli depolama ve coğrafi olarak yedekli depolama hesaplarını destekler.
 
 ### <a name="browser-support"></a>Tarayıcı desteği
@@ -128,7 +128,7 @@ Cloud Shell, etkileşimli kullanım örneklerine yöneliktir. Sonuç olarak, uzu
 
 ### <a name="user-permissions"></a>Kullanıcı izinleri
 
-İzinler, sudo erişimi olmayan normal kullanıcılar olarak ayarlanır. `$Home` Dizininizin dışındaki tüm yüklemeler kalıcı olmaz.
+İzinler, sudo erişimi olmayan normal kullanıcılar olarak ayarlanır. Dizininizin dışındaki tüm yüklemeler `$Home` kalıcı olmaz.
 
 ## <a name="bash-limitations"></a>Bash sınırlamaları
 
@@ -140,15 +140,15 @@ Bu işlemi yaparken dikkatli olun. bashrc, bunu yapmak Cloud Shell beklenmeyen h
 
 ### <a name="preview-version-of-azuread-module"></a>AzureAD modülünün önizleme sürümü
 
-`AzureAD.Standard.Preview`Şu anda, .NET Standard tabanlı bir modülün önizleme sürümü kullanılabilir. Bu modül ile `AzureAD`aynı işlevleri sağlar.
+Şu anda, `AzureAD.Standard.Preview` .NET Standard tabanlı bir modülün önizleme sürümü kullanılabilir. Bu modül ile aynı işlevleri sağlar `AzureAD` .
 
 ### <a name="sqlserver-module-functionality"></a>`SqlServer`Modül işlevselliği
 
-Cloud Shell `SqlServer` eklenen modül yalnızca PowerShell Core için ön sürüm desteğine sahiptir. Özellikle, `Invoke-SqlCmd` henüz kullanılamaz.
+`SqlServer`Cloud Shell eklenen modül yalnızca PowerShell Core için ön sürüm desteğine sahiptir. Özellikle, `Invoke-SqlCmd` henüz kullanılamaz.
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Azure sürücüsünden oluşturulan varsayılan dosya konumu
 
-Kullanıcılar, PowerShell cmdlet 'lerini kullanarak Azure sürücüsünde dosya oluşturamaz. Kullanıcılar, VIM veya nano gibi diğer araçları kullanarak yeni dosyalar oluştururken, dosyalar varsayılan `$HOME` olarak ' a kaydedilir.
+Kullanıcılar, PowerShell cmdlet 'lerini kullanarak Azure sürücüsünde dosya oluşturamaz. Kullanıcılar, VIM veya nano gibi diğer araçları kullanarak yeni dosyalar oluştururken, dosyalar varsayılan olarak ' a kaydedilir `$HOME` .
 
 ### <a name="tab-completion-can-throw-psreadline-exception"></a>Sekme tamamlama, PSReadline özel durumu oluşturabilir
 
@@ -156,11 +156,11 @@ Kullanıcının PSReadline EditMode, Emacs olarak ayarlanırsa, Kullanıcı sekm
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>İlerleme çubuğunu görüntülemeden sonra büyük boşluk
 
-Bir komut veya Kullanıcı eylemi, `Azure:` sürücüdeki sırada bir sekme gibi bir ilerleme çubuğu görüntülerse, imlecin düzgün şekilde ayarlanmamasına ve ilerleme çubuğunun daha önce olduğu bir boşluk belirme olasılığı vardır.
+Bir komut veya Kullanıcı eylemi, sürücüdeki sırada bir sekme gibi bir ilerleme çubuğu görüntülerse `Azure:` , imlecin düzgün şekilde ayarlanmamasına ve ilerleme çubuğunun daha önce olduğu bir boşluk belirme olasılığı vardır.
 
 ### <a name="random-characters-appear-inline"></a>Rastgele karakterler satır içi görünür
 
-Örneğin `5;13R`, imleç konum sırası kodları Kullanıcı girişinde görünebilir. Karakterler el ile kaldırılabilir.
+Örneğin, imleç konum sırası kodları `5;13R` Kullanıcı girişinde görünebilir. Karakterler el ile kaldırılabilir.
 
 ## <a name="personal-data-in-cloud-shell"></a>Cloud Shell kişisel veriler
 

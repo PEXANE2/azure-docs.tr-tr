@@ -3,12 +3,12 @@ title: "Hızlı başlangıç: Tüketici grubu ile bir olay hub 'ı oluşturma-Az
 description: "Hızlı başlangıç: Azure Resource Manager şablonları kullanarak bir olay hub 'ı ve bir tüketici grubuyla Event Hubs ad alanı oluşturma"
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8a1ad9a2b2ce7a8e9e5911cca18b297378a966bd
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6ddf17030da8b0ff50f10938221b9c1dba08084d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315645"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964303"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak bir olay hub 'ı oluşturma
 
@@ -18,7 +18,7 @@ Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yok.
 
@@ -94,7 +94,7 @@ Bu makalede bir Event Hubs ad alanı ve ad alanında bir olay hub 'ı oluşturdu
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Git](event-hubs-go-get-started-send.md)
 - [C (yalnızca gönderme)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (yalnızca alma)](event-hubs-storm-getstarted-receive.md)

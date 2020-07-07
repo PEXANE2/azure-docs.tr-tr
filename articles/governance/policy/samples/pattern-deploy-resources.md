@@ -3,20 +3,20 @@ title: 'Model: bir ilke tanımıyla kaynakları dağıtma'
 description: Bu Azure Ilke düzeninde, bir ilke tanımıyla kaynakların nasıl dağıtılacağı hakkında bir örnek verilmiştir.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172677"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970867"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Ilke deseninin: kaynakları dağıtma
 
-[Deployifnotexists](../concepts/effects.md#deployifnotexists) efekti, uyumlu olmayan bir kaynak oluştururken veya güncelleştirirken bir [Azure Resource Manager şablonu](../../../azure-resource-manager/templates/overview.md) dağıtmayı mümkün hale getirir. Bu yaklaşım, kaynakların oluşturulmasını devam etmesine izin vermek için [reddetme](../concepts/effects.md#deny) efektini kullanmak üzere tercih edilebilir, ancak bunları uyumlu hale getirmek için değişikliklerin yapılmasını sağlar.
+[Deployifnotexists](../concepts/effects.md#deployifnotexists) efekti, uyumlu olmayan bir kaynak oluştururken veya güncelleştirirken bir [Azure Resource Manager şablonu](../../../azure-resource-manager/templates/overview.md) (ARM şablonu) dağıtmayı mümkün hale getirir. Bu yaklaşım, kaynakların oluşturulmasını devam etmesine izin vermek için [reddetme](../concepts/effects.md#deny) efektini kullanmak üzere tercih edilebilir, ancak bunları uyumlu hale getirmek için değişikliklerin yapılmasını sağlar.
 
 ## <a name="sample-policy-definition"></a>Örnek ilke tanımı
 
-Bu ilke tanımı, oluşturulan **field** veya güncellenen kaynak `type` sayısını değerlendirmek için alan işlecini kullanır. Bu kaynak bir _Microsoft. Network/virtualNetworks_olduğunda, ilke yeni veya güncelleştirilmiş kaynağın konumunda bir ağ izleyicisi arar. Eşleşen bir ağ izleyicisi bulunamıyorsa, eksik kaynağı oluşturmak için Kaynak Yöneticisi şablonu dağıtılır.
+Bu ilke tanımı, **field** `type` oluşturulan veya güncellenen kaynak sayısını değerlendirmek için alan işlecini kullanır. Bu kaynak bir _Microsoft. Network/virtualNetworks_olduğunda, ilke yeni veya güncelleştirilmiş kaynağın konumunda bir ağ izleyicisi arar. Eşleşen bir ağ izleyicisi bulunamıyorsa, eksik kaynağı oluşturmak için ARM şablonu dağıtılır.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 
@@ -26,7 +26,7 @@ Bu ilke tanımı, oluşturulan **field** veya güncellenen kaynak `type` sayıs�
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="18-23":::
 
-**Properties. policyRule. then. Details** bloğu, Azure ilkesine **Özellikler. policyrule. If** bloğunda oluşturulan veya güncellenen kaynakla ilgili arama yapılacağını söyler. Bu örnekte, **networkWatcherRG** kaynak grubundaki bir ağ izleyicisi, yeni veya güncelleştirilmiş kaynağın konumuna eşit **alana** `location` sahip olmalıdır. İşlevinin kullanılması, **existenceCondition** 'in yeni veya güncelleştirilmiş kaynaktaki özelliklere, özellikle de `location` özelliğine erişmesini sağlar. `field()`
+**Properties. policyRule. then. Details** bloğu, Azure ilkesine **Özellikler. policyrule. If** bloğunda oluşturulan veya güncellenen kaynakla ilgili arama yapılacağını söyler. Bu örnekte, **networkWatcherRG** kaynak grubundaki bir ağ izleyicisi, **field** `location` Yeni veya güncelleştirilmiş kaynağın konumuna eşit alana sahip olmalıdır. İşlevinin kullanılması, `field()` **existenceCondition** 'in yeni veya güncelleştirilmiş kaynaktaki özelliklere, özellikle de özelliğine erişmesini sağlar `location` .
 
 #### <a name="roledefinitionids"></a>Roledefinitionıds
 

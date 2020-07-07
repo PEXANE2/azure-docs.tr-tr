@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335643"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure haritalar coğrafi kodlama kapsamı
@@ -36,13 +36,13 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Aruba                                               |                 |                |              |      ✓     |          ✓         |
 | Bahamalar                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Barbados                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Beliz                                              |                 |                |              |      ✓     |          ✓         |
+| Belize                                              |                 |                |              |      ✓     |          ✓         |
 | Bermuda                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Bolivya                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Bonaire, Sint Eustatius ve Saba                   |                 |                |              |      ✓     |          ✓         |
 | Brezilya                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Kayman Adaları                                      |                 |                |       ✓      |      ✓     |          ✓         |
+| Cayman Adaları                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Şili                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kolombiya                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kosta Rika                                          |                 |                |       ✓      |      ✓     |          ✓         |
@@ -52,16 +52,16 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Ekvador                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | El Salvador                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Falkland Adaları                                    |                 |                |              |      ✓     |          ✓         |
-| Fransız Ginesi                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Fransız Guyanası                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Grenada                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Guadalupe                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Guadeloupe                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guam                                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Guatemala                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Guyana                                              |                |             |           |      ✓     |                 |
 | Haiti                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Honduras                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Jamaika                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Martinik                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Martinique                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Meksika                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Montserrat                                          |                 |                |              |      ✓     |          ✓         |
 | Nikaragua                                           |                 |                |       ✓      |      ✓     |          ✓         |
@@ -183,7 +183,7 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Kosova                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Kırgızistan                                          |                 |                |              |      ✓     |          ✓         |
 | Letonya                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Lihtenştayn                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litvanya                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Lüksemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kuzey Makedonya                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -212,7 +212,7 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Ukrayna                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Birleşik Krallık                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Özbekistan                                          |                 |                |              |      ✓     |          ✓         |
-| Vatikan şehri                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Vatikan                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
@@ -253,7 +253,7 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Kenya                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuveyt                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Lübnan                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
-| Lesoto                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Lesotho                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Liberya                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Libya                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Madagaskar                                          |                 |                |       ✓      |      ✓     |          ✓         |
@@ -273,7 +273,7 @@ Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodl
 | Umman                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Katar                                               |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Reunion                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Rwanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
+| Ruanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Helena                                        |                 |                |              |      ✓     |          ✓         |
 | Suudi Arabistan                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Senegal                                             |                 |                |       ✓      |      ✓     |          ✓         |

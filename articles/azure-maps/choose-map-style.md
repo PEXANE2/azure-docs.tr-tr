@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: b1c5d9b5cd2b6b9bfecf8a0af79699061003eec1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335682"
 ---
 # <a name="change-the-style-of-the-map"></a>Haritanın stilini değiştirme
 
-Eşleme, eşlemeler başlatıldığında veya daha sonra haritalar `setStyle` işlevi kullanılarak ayarlanabilede birçok farklı [Stil seçeneğini](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) destekler. Bu makalede, Haritalar görünümünü özelleştirmek için bu stil seçeneklerinin nasıl kullanılacağı gösterilmektedir. Harita yüklemeden sonra bir stil ayarlamayı öğrenin ve stil seçici denetimini kullanarak yeni bir harita stili ayarlamayı öğrenin.
+Eşleme, eşlemeler başlatıldığında veya daha sonra haritalar işlevi kullanılarak ayarlanabilede birçok farklı [Stil seçeneğini](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) destekler `setStyle` . Bu makalede, Haritalar görünümünü özelleştirmek için bu stil seçeneklerinin nasıl kullanılacağı gösterilmektedir. Harita yüklemeden sonra bir stil ayarlamayı öğrenin ve stil seçici denetimini kullanarak yeni bir harita stili ayarlamayı öğrenin.
 
 ## <a name="set-the-style-options"></a>Stil seçeneklerini ayarlayın 
 
-Stil seçenekleri, daha sonra haritalar `setStyle` işlevi kullanılarak başlatıldığında veya güncelleştirilirse haritaya geçirilebilir.
+Stil seçenekleri, daha sonra haritalar işlevi kullanılarak başlatıldığında veya güncelleştirilirse haritaya geçirilebilir `setStyle` .
 
 ```javascript
 //Set the style options when creating the map.
@@ -44,7 +44,7 @@ Aşağıdaki araç, farklı stil seçeneklerinin eşlemenin nasıl işleneceğin
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="Harita stili seçenekleri" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/eYNMjPb'>harita stil seçeneklerine</a> bakın.
+Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/eYNMjPb'>harita stil seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="choose-a-base-map-style"></a>Temel harita stili seçin
@@ -54,7 +54,7 @@ En yaygın harita stili seçeneklerinden biri, stillendirilmiş temel haritanın
 ### <a name="set-base-map-style-on-map-load"></a>Harita yükünde taban harita stili ayarla
 
 
-Eşleme stili, bu `style` seçenek ayarlanarak eşleme başlatılırken belirlenebilir. Aşağıdaki kodda, eşleme `style` seçeneği başlatma sırasında olarak `grayscale_dark` ayarlanır.
+Eşleme stili, bu seçenek ayarlanarak eşleme başlatılırken belirlenebilir `style` . Aşağıdaki kodda, `style` eşleme seçeneği `grayscale_dark` başlatma sırasında olarak ayarlanır.
 
 ```javascript
 var map = new atlas.Map('map', {
@@ -66,12 +66,12 @@ var map = new atlas.Map('map', {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Harita yükte stili ayarlama' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>harita yükünün stilini ayarlama</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Harita yükte stili ayarlama' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>harita yükünün stilini ayarlama</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ### <a name="update-the-base-map-style"></a>Temel harita stilini güncelleştirme
 
- Harita stili, `setStyle` işlevi kullanılarak güncelleştirilemeyebilir ve `style` seçenek istenen harita stiline ayarlanabilir.
+ Harita stili, işlevi kullanılarak güncelleştirilemeyebilir `setStyle` ve `style` seçenek istenen harita stiline ayarlanabilir.
 
 ```javascript
 map.setStyle({ style: 'satellite' });
@@ -81,12 +81,12 @@ Aşağıdaki kodda, bir eşleme örneği yüklendikten sonra, eşleme stili, ' d
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Stili güncelleştirme' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>stili güncelleştirme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Stili güncelleştirme' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>stili güncelleştirme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ### <a name="add-the-style-picker"></a>Stil seçiciyi ekleme
 
-Stil Seçici denetimi, son kullanıcı tarafından harita stilini değiştirmek için kullanılabilecek, açılır pencere paneli ile kullanımı kolay bir düğme sağlar. Stil seçicisinin iki farklı düzen seçeneği vardır. Varsayılan olarak, stil Seçici `icons` düzeni kullanır ve tüm harita stilini yatay bir simge satırı olarak görüntüler. 
+Stil Seçici denetimi, son kullanıcı tarafından harita stilini değiştirmek için kullanılabilecek, açılır pencere paneli ile kullanımı kolay bir düğme sağlar. Stil seçicisinin iki farklı düzen seçeneği vardır. Varsayılan olarak, stil Seçici düzeni kullanır `icons` ve tüm harita stilini yatay bir simge satırı olarak görüntüler. 
 
 <center>
 
@@ -115,11 +115,11 @@ Aşağıdaki kod, Map 'e varsayılan ayarlarına sahip bir stil Seçici denetimi
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Stil seçiciyi ekleme' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>Stil seçiciyi ekleme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Stil seçiciyi ekleme' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>Stil seçiciyi ekleme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Varsayılan olarak, Azure haritalar 'ın S0 fiyatlandırma katmanını kullanırken, stil Seçici denetimi tüm kullanılabilir stilleri listeler. Bu listedeki stil sayısını azaltmak isterseniz, listede görünmesini istediğiniz stillerin bir dizisini stil seçicisinin `mapStyle` seçeneğine geçirin. S1 kullanıyorsanız ve tüm kullanılabilir stilleri göstermek istiyorsanız, stil seçicisinin `mapStyles` seçeneğini olarak `"all"`ayarlayın.
+> Varsayılan olarak, Azure haritalar 'ın S0 fiyatlandırma katmanını kullanırken, stil Seçici denetimi tüm kullanılabilir stilleri listeler. Bu listedeki stil sayısını azaltmak isterseniz, listede görünmesini istediğiniz stillerin bir dizisini `mapStyle` Stil seçicisinin seçeneğine geçirin. S1 kullanıyorsanız ve tüm kullanılabilir stilleri göstermek istiyorsanız, `mapStyles` Stil seçicisinin seçeneğini olarak ayarlayın `"all"` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

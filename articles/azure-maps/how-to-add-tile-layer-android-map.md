@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335574"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya kutucuk katmanı ekleme Android SDK
@@ -23,21 +23,21 @@ Döşeme katmanı bir sunucudan kutucukları yükler. Bu görüntüler, kutucuk 
 
 * X, Y, yakınlaştırma gösterimi-yakınlaştırma düzeyine göre x, sütun ise döşeme kılavuzundaki döşemenin satır konumudur.
 * Quadkey gösterimi-x, y, zoom bilgilerini bir kutucuk için benzersiz bir tanımlayıcı olan tek bir dize değerine birleşimi.
-* Sınırlayıcı kutusu-sınırlayıcı kutu koordinatları, [Web eşleme Hizmetleri (WMS)](https://www.opengeospatial.org/standards/wms)tarafından yaygın olarak `{west},{south},{east},{north}` kullanılan biçimde bir görüntü belirtmek için kullanılabilir.
+* Sınırlayıcı kutusu-sınırlayıcı kutu koordinatları, `{west},{south},{east},{north}` [Web eşleme HIZMETLERI (WMS)](https://www.opengeospatial.org/standards/wms)tarafından yaygın olarak kullanılan biçimde bir görüntü belirtmek için kullanılabilir.
 
 > [!TIP]
 > Bir TileLayer, haritada büyük veri kümelerini görselleştirmenin harika bir yoludur. Bir görüntüden yalnızca bir kutucuk katmanı oluşturulmayabilir, ancak vektör verileri de kutucuk katmanı olarak da oluşturulabilir. Vektör verilerini kutucuk katmanı olarak işleyerek, harita denetiminin yalnızca dosya boyutunda, temsil ettikleri vektör verilerinden çok daha küçük olabilen kutucukları yüklemesi gerekir. Bu teknik, haritada milyonlarca veri satırı oluşturması gereken birçok kişi tarafından kullanılır.
 
 Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına veya aşağıdaki parametreleri kullanan bir kutucuk URL şablonuna yönelik bir http/https URL 'SI olmalıdır: 
 
-* `{x}`-X kutucuğunun konumu. Ayrıca, `{y}` ve `{z}`gerektirir.
-* `{y}`-Kutucuğun Y konumu. Ayrıca, `{x}` ve `{z}`gerektirir.
-* `{z}`-Kutucuğun yakınlaştırma düzeyi. Ayrıca, `{x}` ve `{y}`gerektirir.
+* `{x}`-X kutucuğunun konumu. Ayrıca `{y}` , ve gerektirir `{z}` .
+* `{y}`-Kutucuğun Y konumu. Ayrıca `{x}` , ve gerektirir `{z}` .
+* `{z}`-Kutucuğun yakınlaştırma düzeyi. Ayrıca `{x}` , ve gerektirir `{y}` .
 * `{quadkey}`-Bing Haritalar kutucuk sistem adlandırma kuralına bağlı olarak, quadkey tanımlayıcısını Döşe.
-* `{bbox-epsg-3857}`-EPSG 3857 uzamsal başvuru sisteminde `{west},{south},{east},{north}` biçim içeren bir sınırlayıcı kutu dizesi.
+* `{bbox-epsg-3857}`- `{west},{south},{east},{north}` EPSG 3857 uzamsal başvuru sisteminde biçim içeren bir sınırlayıcı kutu dizesi.
 * `{subdomain}`-Alt etki alanı değeri belirtilmişse alt etki alanı değerleri için bir yer tutucu.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
 
@@ -48,7 +48,7 @@ Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azur
 
 Aşağıdaki adımları izleyerek haritaya bir kutucuk katmanı ekleyebilirsiniz.
 
-1. **Kaynak > düzeni > activity_main. xml** ' i düzenleyerek aşağıdaki gibi görünmesini sağlayın:
+1. **Kaynak > düzeni > activity_main.xml** aşağıdaki gibi görünmesi için düzenleyin:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Aşağıdaki adımları izleyerek haritaya bir kutucuk katmanı ekleyebilirsiniz
     </FrameLayout>
     ```
 
-2. Aşağıdaki kod parçacığını, `MainActivity.java` sınıfınızın **OnCreate ()** metoduna kopyalayın.
+2. Aşağıdaki kod parçacığını, sınıfınızın **OnCreate ()** metoduna kopyalayın `MainActivity.java` .
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ Aşağıdaki adımları izleyerek haritaya bir kutucuk katmanı ekleyebilirsiniz
     });
     ```
     
-    Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra bir `TileLayer` nesnesi oluşturur ve biçimlendirilen bir **xyz** kutucuğu URL 'sini `tileUrl` seçeneğe geçirir. Katman opaklığı olarak `0.8` ayarlanır ve kutucuk hizmetinden kullanılan kutucuklar 256 piksel döşeme olduğundan bu bilgiler `tileSize` seçeneğe geçirilir. Kutucuk katmanı daha sonra Haritalar katman yöneticisine geçirilir.
+    Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra bir `TileLayer` nesnesi oluşturur ve biçimlendirilen bir **xyz** kutucuğu URL 'sini seçeneğe geçirir `tileUrl` . Katman opaklığı olarak ayarlanır `0.8` ve kutucuk hizmetinden kullanılan kutucuklar 256 piksel döşeme olduğundan bu bilgiler `tileSize` seçeneğe geçirilir. Kutucuk katmanı daha sonra Haritalar katman yöneticisine geçirilir.
 
-    Yukarıdaki `MainActivity.java` kod parçacığını ekledikten sonra aşağıdaki gibi görünmelidir:
+    Yukarıdaki kod parçacığını ekledikten sonra `MainActivity.java` aşağıdaki gibi görünmelidir:
     
     ```Java
     package com.example.myapplication;

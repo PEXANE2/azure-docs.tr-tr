@@ -16,17 +16,17 @@ ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71266067"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure sanal makineleri için yüksek kullanılabilirlik SAP HANA
 
 Azure VM 'lerinde SAP HANA gibi görev açısından kritik veritabanlarını dağıtmak için çok sayıda Azure özelliği kullanabilirsiniz. Bu makalede, Azure VM 'lerinde barındırılan SAP HANA örnekleri için nasıl kullanılabilirlik elde edilecek hakkında rehberlik sunulmaktadır. Makalesinde Azure 'da SAP HANA kullanılabilirliğini artırmak için Azure altyapısını kullanarak uygulayabileceğiniz çeşitli senaryolar açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede aşağıdakiler de dahil olmak üzere Azure 'da hizmet olarak altyapı (IaaS) hakkında bilgi sahibi olduğunuz varsayılır. 
 

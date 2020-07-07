@@ -3,12 +3,12 @@ title: Azure Batch, bulutta büyük paralel işler çalıştırır
 description: Büyük ölçekli paralel ve HPC iş yükleri için Azure Batch hizmetini kullanma hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779560"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965085"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch nedir?
 
@@ -18,7 +18,7 @@ Geliştiriciler, büyük ölçekli yürütmenin gerekli olduğu SaaS uygulamalar
 
 Batch kullanımından ek ücret alınmaz. Yalnızca sanal makineler, depolama ve ağ gibi kullanılan temel kaynaklar için ödeme yaparsınız.
 
-Azure 'da Batch ve diğer HPC çözüm seçenekleri arasında bir karşılaştırma için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Azure 'da Batch ve diğer HPC çözüm seçenekleri arasında bir karşılaştırma için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).
 
 ## <a name="run-parallel-workloads"></a>Paralel iş yükleri çalıştırma
 Batch, doğası gereği paralel ("utandırıcı derecede paralel" olarak da bilinir) iş yükleriyle düzgün çalışır. Doğası gereği paralel iş yükleri, uygulamaların birbirinden bağımsız olarak çalışabildiği ve her örneğin işin bir kısmını tamamladığı iş yükleridir. Uygulamalar yürütülürken bazı ortak verilere erişebilir, ancak uygulamanın diğer örnekleri iletişim kurmazlar. Bu nedenle doğası gereği paralel iş yükleri, uygulamaları eşzamanlı çalıştırmak için kullanılabilen işlem kaynaklarının miktarına göre belirlenen büyük bir ölçekte çalışır.
@@ -34,7 +34,7 @@ Batch ile kullanabileceğiniz doğası gereği paralel iş yüklerinin bazı ör
 * Veri alımı, işleme ve ETL işlemleri
 * Yazılım testi yürütme
 
-Ayrıca, Batch kullanarak [sıkıca bağlı iş yüklerini çalıştırabilirsiniz](batch-mpi.md); bunlar, çalıştırdığınız uygulamaların birbirinden bağımsız çalışmanın aksine birbirleriyle iletişim kurması gereken iş yükleridir. Sıkıca bağlı uygulamalar normalde İleti Geçirme Arabirimi (MPI) API’sini kullanır. Sıkıca bağlı iş yüklerinizi, [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) veya Intel MPI kullanarak Batch ile çalıştırabilirsiniz. Özel [HPC](../virtual-machines/linux/sizes-hpc.md) ve [GPU bakımından iyileştirilmiş](../virtual-machines/linux/sizes-gpu.md) VM boyutları ile uygulama performansını artırın.
+Ayrıca, Batch kullanarak [sıkıca bağlı iş yüklerini çalıştırabilirsiniz](batch-mpi.md); bunlar, çalıştırdığınız uygulamaların birbirinden bağımsız çalışmanın aksine birbirleriyle iletişim kurması gereken iş yükleridir. Sıkıca bağlı uygulamalar normalde İleti Geçirme Arabirimi (MPI) API’sini kullanır. Sıkıca bağlı iş yüklerinizi, [Microsoft MPI](/message-passing-interface/microsoft-mpi) veya Intel MPI kullanarak Batch ile çalıştırabilirsiniz. Özel [HPC](../virtual-machines/linux/sizes-hpc.md) ve [GPU bakımından iyileştirilmiş](../virtual-machines/linux/sizes-gpu.md) VM boyutları ile uygulama performansını artırın.
 
 Sıkıca bağlı iş yüklerinin bazı örnekleri şunlardır:
 * Sınırlı öğe analizi
@@ -60,7 +60,7 @@ Aşağıdaki diyagramda, istemci uygulamasının yanı sıra paralel iş yükün
 ![Batch çözümü incelemesi](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|Adım  |Açıklama  |
+|Adım  |Description  |
 |---------|---------|
 |1. bu dosyaları Azure depolama hesabınıza işlemek için **giriş dosyalarını** ve **uygulamaları** karşıya yükleyin.     |Giriş dosyaları uygulamanızın işleyeceği herhangi bir veri olabilir; örneğin, finansal modelleme verileri veya dönüştürülecek video dosyaları. Uygulama dosyaları, medya kod dönüştürücüsü gibi veri işleyen betik ya da uygulamaları içerebilir.|
 |2. Batch hesabınızda işlem düğümleri için bir Batch **havuzu** , havuzda iş yükünü çalıştırmak için bir **iş** ve işteki **Görevler** oluşturun.     | Havuz düğümleri, görevlerinizi yürüten VM'lerdir. Düğümlerin sayısı ve boyutu gibi özellikleri, bir Windows veya Linux VM görüntüsünü ve sonra düğümler havuza katıldığında yüklenecek uygulamayı belirtin. [Düşük öncelikli VM’ler](batch-low-pri-vms.md) kullanarak veya iş yükü değiştikçe düğüm sayısını [otomatik ölçeklendirerek](batch-automatic-scaling.md) havuz maliyetini ve boyutunu yönetin. <br/><br/>Bir işe görev eklediğinizde, Batch hizmeti havuzundaki işlem düğümlerinde yürütülmesi için görevleri otomatik olarak zamanlar. Her görev, girdi dosyalarını işlemek için yüklediğiniz uygulamayı kullanır. |

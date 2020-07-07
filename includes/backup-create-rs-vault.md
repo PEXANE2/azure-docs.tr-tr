@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 2509bdae01fc9de5511dcd67eb95bf0d13d5cf39
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391170"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970543"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -59,3 +59,6 @@ Bir kurtarma hizmetleri Kasası oluşturmak için aşağıdaki adımları izleyi
     Kurtarma Hizmetleri kasasının oluşturulması biraz zaman alabilir. Portalın sağ üst köşesindeki **Bildirimler** alanında durum bildirimlerini izleyin. Kasanızın oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**' yi seçin.
 
      ![Yedekleme kasaları listesini yenileme](./media/backup-create-rs-vault/refresh-button.png)
+
+>[!IMPORTANT]
+> Kasadaki yedeklemeleri yapılandırmadan önce **depolama çoğaltma türü** ve **güvenlik ayarları** için varsayılan ayarları incelemenizi kesinlikle öneririz. Daha fazla bilgi için [depolama artıklığı ayarlama](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) bölümüne bakın.

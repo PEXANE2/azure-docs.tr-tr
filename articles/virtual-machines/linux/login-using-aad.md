@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
 ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80366485"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
@@ -46,7 +46,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Linux VM 'lerinde oturum a
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
 | openSUSE | openSUSE artık 42,3 |
-| Red Hat Enterprise Linux | RHEL 6, RHEL 7 | 
+| RedHat Enterprise Linux | RHEL 6, RHEL 7 | 
 | SUSE Linux Enterprise Server | SLES 12 |
 | Ubuntu Server | Ubuntu 14,04 LTS, Ubuntu Server 16,04 ve Ubuntu Server 18,04 |
 
@@ -69,10 +69,10 @@ Azure 'da Linux sanal makinelerinize yönelik Azure AD kimlik doğrulamasını e
 
 * https:\//login.microsoftonline.com
 * https:\//login.windows.net
-* https:\//Device.Login.microsoftonline.com
-* https:\//pas.Windows.net
+* https: \/ /Device.Login.microsoftonline.com
+* https: \/ /pas.Windows.net
 * https:\//management.azure.com
-* https:\//Packages.Microsoft.com
+* https: \/ /Packages.Microsoft.com
 
 > [!NOTE]
 > Şu anda Azure AD kimlik doğrulamasıyla etkinleştirilen VM 'Ler için Azure ağ güvenlik grupları yapılandırılamaz.
@@ -148,13 +148,13 @@ Ayrıca, belirli bir kullanıcının Linux sanal makinesinde oturum açması iç
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Azure AD kimlik bilgilerinizi kullanarak Azure Linux sanal makinesinde oturum açın. Parametresi `-l` , kendı Azure AD hesap adresinizi belirtmenize olanak tanır. Örnek hesabı kendi ile değiştirin. Hesap adresleri tümüyle küçük harfle girilmelidir. Örnek IP adresini önceki komuttan VM 'nizin genel IP adresi ile değiştirin.
+Azure AD kimlik bilgilerinizi kullanarak Azure Linux sanal makinesinde oturum açın. `-l`Parametresi, kendi Azure AD hesap adresinizi belirtmenize olanak tanır. Örnek hesabı kendi ile değiştirin. Hesap adresleri tümüyle küçük harfle girilmelidir. Örnek IP adresini önceki komuttan VM 'nizin genel IP adresi ile değiştirin.
 
 ```console
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-Azure AD 'de, bir kerelik kullanım koduyla oturum açmanız istenir [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Bir kerelik kullanım kodunu kopyalayıp cihaz oturum açma sayfasına yapıştırın.
+Azure AD 'de, bir kerelik kullanım koduyla oturum açmanız istenir [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) . Bir kerelik kullanım kodunu kopyalayıp cihaz oturum açma sayfasına yapıştırın.
 
 İstendiğinde, oturum açma sayfasında Azure AD oturum açma kimlik bilgilerinizi girin. 
 
@@ -162,11 +162,11 @@ Kimliği başarıyla doğrulandığında, Web tarayıcısında aşağıdaki ilet
 
 Tarayıcı penceresini kapatın, SSH istemine geri dönün ve **ENTER** tuşuna basın. 
 
-Azure Linux sanal makinesinde, atanan *VM kullanıcısı* veya *VM Yöneticisi*gibi rol izinleriyle oturum açtınız. Kullanıcı hesabınıza *Sanal Makine Yöneticisi oturum açma* rolü atanırsa, kök ayrıcalıkları gerektiren komutları çalıştırmak için `sudo` kullanabilirsiniz.
+Azure Linux sanal makinesinde, atanan *VM kullanıcısı* veya *VM Yöneticisi*gibi rol izinleriyle oturum açtınız. Kullanıcı hesabınıza *Sanal Makine Yöneticisi oturum açma* rolü atanırsa, `sudo` kök ayrıcalıkları gerektiren komutları çalıştırmak için kullanabilirsiniz.
 
 ## <a name="sudo-and-aad-login"></a>Sudo ve AAD oturumu açma
 
-Sudo 'yi ilk kez çalıştırdığınızda ikinci kez kimlik doğrulaması yapmanız istenir. Sudo çalıştırmak için tekrar kimlik doğrulaması yapmak istemiyorsanız, sudoers dosyanızı `/etc/sudoers.d/aad_admins` düzenleyebilir ve bu satırı değiştirebilirsiniz:
+Sudo 'yi ilk kez çalıştırdığınızda ikinci kez kimlik doğrulaması yapmanız istenir. Sudo çalıştırmak için tekrar kimlik doğrulaması yapmak istemiyorsanız, sudoers dosyanızı düzenleyebilir `/etc/sudoers.d/aad_admins` ve bu satırı değiştirebilirsiniz:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
@@ -200,9 +200,9 @@ Access denied
 
 Bir Web tarayıcısında kimlik doğrulama adımını başarıyla tamamlayadıysanız, yeni bir kodla hemen oturum açmanız istenebilir. Bu hata genellikle, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında bir uyumsuzluk oluşur. Bu sorunu düzeltmek için:
 
-- SSH isteminde belirttiğiniz oturum açma adının doğru olduğunu doğrulayın. Oturum açma adındaki bir yazım hatası, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında uyuşmazlık oluşmasına neden olabilir. Örneğin, *azureuser\@contoso.onmicrosoft.com*yerine *azuresuer\@contoso.onmicrosoft.com* yazdınız.
+- SSH isteminde belirttiğiniz oturum açma adının doğru olduğunu doğrulayın. Oturum açma adındaki bir yazım hatası, SSH isteminde belirttiğiniz oturum açma adı ile Azure AD 'de oturum açtığınız hesap arasında uyuşmazlık oluşmasına neden olabilir. Örneğin, *azureuser \@ contoso.onmicrosoft.com*yerine *azuresuer \@ contoso.onmicrosoft.com* yazdınız.
 - Birden çok Kullanıcı hesabınız varsa, Azure AD 'de oturum açarken tarayıcı penceresinde farklı bir kullanıcı hesabı sağlamadığınızdan emin olun.
-- Linux, büyük/küçük harfe duyarlı bir işletim sistemidir. 'Azureuser@contoso.onmicrosoft.com' Ve 'azureuser@contoso.onmicrosoft.com' arasında bir farklılık var ve bu bir uyumsuzluğa neden olabilir. SSH isteminde doğru büyük/küçük harf duyarlılığı ile UPN 'yi belirttiğinizden emin olun.
+- Linux, büyük/küçük harfe duyarlı bir işletim sistemidir. ' Azureuser@contoso.onmicrosoft.com ' Ve ' ' arasında bir farklılık var ve azureuser@contoso.onmicrosoft.com Bu bir uyumsuzluğa neden olabilir. SSH isteminde doğru büyük/küçük harf duyarlılığı ile UPN 'yi belirttiğinizden emin olun.
 
 ### <a name="other-limitations"></a>Diğer sınırlamalar
 

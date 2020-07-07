@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80336104"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure ön kapısı için Web uygulaması güvenlik duvarıyla bir IP kısıtlama kuralı yapılandırma
@@ -24,14 +24,14 @@ Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle
 
 ## <a name="configure-a-waf-policy-with-the-azure-portal"></a>Azure portal bir WAF ilkesi yapılandırma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 [Hızlı başlangıç: yüksek kullanılabilirliğe sahip bir genel Web uygulaması Için ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir Azure ön kapısı profili oluşturun.
 
 ### <a name="create-a-waf-policy"></a>WAF ilkesi oluşturma
 
 1. Azure portal, **kaynak oluştur**' u seçin, arama kutusuna **Web uygulaması güvenlik duvarı** yazın ve ardından **Web uygulaması güvenlik duvarı (WAF)** seçeneğini belirleyin.
-2. **Oluştur**’u seçin.
+2. **Oluştur**'u seçin.
 3. **BIR WAF Ilkesi oluştur** sayfasında, **temel bilgiler** sekmesini gerçekleştirmek için aşağıdaki değerleri kullanın:
    
    |Ayar  |Değer  |
@@ -58,7 +58,7 @@ Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle
    |Öncelik    |100|
    |Eşleşme türü     |IP adresi|
    |Match değişkeni|RemoteAddr|
-   |İşlem|İçermez|
+   |Çalışma|İçermez|
    |IP adresi veya aralığı|10.10.10.0/24|
    |Ardından|Trafiği reddetme|
 
@@ -83,12 +83,12 @@ Varsayılan olarak, Web uygulamanıza Internet 'ten erişilebilir. İstemcilerle
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Azure CLı ile bir WAF ilkesi yapılandırma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bir IP kısıtlama ilkesini yapılandırmaya başlamadan önce, CLı ortamınızı ayarlayın ve bir Azure ön kapısı profili oluşturun.
 
 #### <a name="set-up-the-azure-cli-environment"></a>Azure CLı ortamını ayarlama
-1. [Azure CLI](/cli/azure/install-azure-cli)'yi veya Azure Cloud Shell kullanın. Azure Cloud Shell doğrudan Azure portalının içinde çalıştırabileceğiniz ücretsiz bir Bash kabuğudur. Azure CLI, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Aşağıdaki CLı komutlarında **deneyin** düğmesini seçin ve ardından açılan Cloud Shell oturumunda Azure hesabınızda oturum açın. Oturum başladıktan sonra Azure ön kapısı `az extension add --name front-door` uzantısını eklemek için girin.
- 2. CLı 'yi Bash içinde yerel olarak kullanıyorsanız, kullanarak `az login`Azure 'da oturum açın.
+1. [Azure CLI](/cli/azure/install-azure-cli)'yi veya Azure Cloud Shell kullanın. Azure Cloud Shell doğrudan Azure portalının içinde çalıştırabileceğiniz ücretsiz bir Bash kabuğudur. Azure CLI, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Aşağıdaki CLı komutlarında **deneyin** düğmesini seçin ve ardından açılan Cloud Shell oturumunda Azure hesabınızda oturum açın. Oturum başladıktan sonra `az extension add --name front-door` Azure ön kapısı uzantısını eklemek için girin.
+ 2. CLı 'yi Bash içinde yerel olarak kullanıyorsanız, kullanarak Azure 'da oturum açın `az login` .
 
 #### <a name="create-an-azure-front-door-profile"></a>Azure ön kapı profili oluşturma
 [Hızlı başlangıç: yüksek kullanılabilirliğe sahip bir genel Web uygulaması Için ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir Azure ön kapısı profili oluşturun.
@@ -162,7 +162,7 @@ Bu örnekte, WAF ilkesi **Frontendendpoints [0]** öğesine uygulanır. WAF ilke
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>Azure PowerShell bir WAF ilkesi yapılandırma
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bir IP kısıtlama ilkesini yapılandırmaya başlamadan önce, PowerShell ortamınızı ayarlayın ve bir Azure ön kapısı profili oluşturun.
 
 #### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
@@ -212,7 +212,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ### <a name="configure-a-waf-policy"></a>WAF ilkesini yapılandırma
-Kullanarak `Get-AzResourceGroup`Azure ön kapısı profilini içeren kaynak grubunun adını bulun. Ardından, [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kullanarak bir WAF ilkesini IP kuralıyla yapılandırın.
+Kullanarak Azure ön kapısı profilini içeren kaynak grubunun adını bulun `Get-AzResourceGroup` . Ardından, [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kullanarak bir WAF ilkesini IP kuralıyla yapılandırın.
 
 ```azurepowershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `

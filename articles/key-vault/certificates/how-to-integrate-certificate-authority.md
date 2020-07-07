@@ -1,5 +1,5 @@
 ---
-title: Key Vault DigiCert sertifika yetkilisi ile tümleştirme
+title: Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme
 description: DigiCert sertifika yetkilisi ile Key Vault tümleştirme
 services: key-vault
 author: msmbaldwin
@@ -10,14 +10,14 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d6cb8d386efbcdaf053f0740d955b249c0e636b4
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84908244"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964507"
 ---
-# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault DigiCert sertifika yetkilisi ile tümleştirme
+# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault'u DigiCert Sertifika Yetkilisiyle Tümleştirme
 
 Azure Key Vault ağınız için dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza ve uygulamalar için güvenli iletişimleri etkinleştirmenize olanak tanır. Dijital sertifika, elektronik bir işlemde kimlik kanıtı oluşturmak için elektronik bir kimlik bilgileridir. 
 
@@ -27,7 +27,7 @@ Sertifikalar hakkında daha fazla genel bilgi için bkz. [Azure Key Vault sertif
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gerekir.
 * Bir Anahtar Kasası. Mevcut bir anahtar kasasını kullanabilir veya şu hızlı başlangıçlardan birindeki adımları izleyerek yeni bir tane oluşturabilirsiniz:
@@ -57,7 +57,7 @@ DigiCert CertCentral hesabından bilgi topladıktan sonra artık anahtar kasası
  ![Sertifika Özellikleri](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  **Sertifika yetkilisi oluştur** ekranında aşağıdaki değerleri seçin:
     -   **Ad**: tanımlayıcı veren bir ad ekleyin. Örnek Digiccertca
-    -   **Sağlama**: menüden DigiCert öğesini seçin.
+    -   **Sağlayıcı**: menüden DigiCert öğesini seçin.
     -   **Hesap kimliği**: DigiCert Certcentral hesap kimliğinizi girin
     -   **Hesap parolası**: DigiCert certcentral HESABıNıZDA oluşturduğunuz API anahtarını girin
     -   **Kuruluş kimliği**: DigiCert Certcentral hesabından toplanan OrgID girin 

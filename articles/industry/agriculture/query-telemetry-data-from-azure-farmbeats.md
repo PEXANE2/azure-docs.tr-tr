@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80349812"
 ---
 # <a name="query-ingested-telemetry-data"></a>Sorgusu alınan telemetri verileri
@@ -115,7 +115,7 @@ Telemetri verileri bir EventHub üzerinde alınır ve sonra işlenir ve Farmtts 
 
 TSI üzerinde verileri görselleştirmek için adımları izleyin:
 
-1. **Azure Portal** > **farmrets Datahub kaynak grubu** ' na gidin > **Time Series Insights** ortamı (TSİ-xxxx) > **veri erişim ilkeleri**' ni seçin. Okuyucu veya katkıda bulunan erişimi olan kullanıcı ekleyin.
+1. **Azure Portal**  >  **farmrets Datahub kaynak grubu** ' na gidin > **Time Series Insights** ortamı (TSİ-xxxx) > **veri erişim ilkeleri**' ni seçin. Okuyucu veya katkıda bulunan erişimi olan kullanıcı ekleyin.
 2. **Time Series Insights** ortamının (TSİ-xxxx) **genel bakış** sayfasına gidin ve **Time Series Insights Explorer URL 'sini**seçin. Artık alınan telemetrisini görselleştirebileceksiniz.
 
 Telemetriyi depolamanın, sorgulayan ve görselleştirmenin yanı sıra, TSI Power BI panosu ile tümleştirmeyi de sağlar. Daha fazla bilgi için [buraya]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi) bakın

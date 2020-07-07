@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428114"
 ---
-# <a name="best-practices-for-long-running-operations"></a>Uzun süre çalışan işlemler için en iyi uygulamalar
+# <a name="best-practices-for-long-running-operations"></a>Uzun süre çalışan işlemler için en iyi yöntemler
 
 Azure Analysis Services, *düğüm* bir sunucu kaynağının çalıştığı konak sanal makinesini temsil eder. Sunucu kaynağı farklı bir düğüme taşınırsa, uzun süre çalışan sorgular, yenileme işlemleri ve sorgu genişleme eşitlemesi gibi bazı işlemler başarısız olabilir. Bu senaryodaki yaygın hata iletileri şunları içerir:
 
 - "Uzun süreli çalışan bir XMLA isteği bulmaya çalışırken bir hata oluştu. İstek, hizmet yükseltmesi veya sunucu yeniden başlatma tarafından kesintiye uğramış olabilir. "
-- "'<guid><database>' MODELI için ' ' kimlikli iş, hiçbir güncelleştirme olmadan takıldığından dolayı yenileme isteğini iptal etme iletisi olan hizmet hatası nedeniyle iptal edildi. Bu bir iç hizmet sorunudur. Bu sorun sürekli olarak gerçekleşirse yardım almak için lütfen işi yeniden gönderin veya bir bilet dosyası yapın. "
+- "' <guid> ' Modeli için ' ' kimlikli iş <database> , hiçbir güncelleştirme olmadan takıldığından dolayı yenileme Isteğini iptal etme iletisi olan hizmet hatası nedeniyle iptal edildi. Bu bir iç hizmet sorunudur. Bu sorun sürekli olarak gerçekleşirse yardım almak için lütfen işi yeniden gönderin veya bir bilet dosyası yapın. "
 
 Uzun süre çalışan işlemlerin kesintiye uğramamasının pek çok nedeni vardır. Örneğin, Azure 'daki güncelleştirmeler: 
 - İşletim sistemi düzeltme ekleri 

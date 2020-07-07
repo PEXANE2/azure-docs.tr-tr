@@ -8,24 +8,24 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: a2a9efceed84c4c57d1ad2cae47dd4440fd4eb42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80373005"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme
 
 MySQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MySQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde, girin `az --version`. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
+> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde, girin `az --version` . Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
 
 ## <a name="set-backup-configuration"></a>Yedekleme yapılandırmasını ayarla
 
@@ -35,9 +35,9 @@ Sunucu oluşturma sırasında sunucunuzu yerel olarak yedekli yedeklemeler veya 
 > Bir sunucu oluşturulduktan sonra, coğrafi olarak yedekli ve yerel olarak yedekli olan artıklık türü değiştirilemez.
 >
 
-`az mysql server create` Komutu aracılığıyla bir sunucu oluştururken, `--geo-redundant-backup` parametresi yedekleme yedeklilik seçeneğine karar verir. İse `Enabled`, coğrafi olarak yedekli yedeklemeler alınır. Ya da `Disabled` yerel olarak yedekli yedeklemeler alınırsa. 
+Komutu aracılığıyla bir sunucu oluştururken `az mysql server create` , `--geo-redundant-backup` parametresi yedekleme yedeklilik seçeneğine karar verir. İse `Enabled` , coğrafi olarak yedekli yedeklemeler alınır. Ya da `Disabled` yerel olarak yedekli yedeklemeler alınırsa. 
 
-Yedekleme saklama süresi parametresi `--backup-retention`tarafından ayarlanır. 
+Yedekleme saklama süresi parametresi tarafından ayarlanır `--backup-retention` . 
 
 Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için bkz. [MySQL Için Azure veritabanı sunucu CLI hızlı başlangıç](quickstart-create-mysql-server-database-using-azure-cli.md).
 
@@ -64,13 +64,13 @@ Sunucuyu geri yüklemek için, Azure CLı komut isteminde aşağıdaki komutu gi
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
 ```
 
-`az mysql server restore` Komut aşağıdaki parametreleri gerektirir:
+`az mysql server restore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Description  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
-| ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, kendi yerel saat diliminizi (gibi) kullanabilirsiniz `2018-03-13T05:59:00-08:00`. UTC Zulu dili biçimini de kullanabilirsiniz. Örneğin, `2018-03-13T13:59:00Z`. |
+| name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, kendi yerel saat diliminizi (gibi) kullanabilirsiniz `2018-03-13T05:59:00-08:00` . UTC Zulu dili biçimini de kullanabilirsiniz. Örneğin, `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |
 
 Bir sunucuyu daha önceki bir zaman noktasına geri yüklediğinizde yeni bir sunucu oluşturulur. Özgün sunucu ve belirtilen zaman içindeki veritabanları yeni sunucuya kopyalanır.
@@ -79,12 +79,12 @@ Geri yüklenen sunucu için konum ve fiyatlandırma katmanı değerleri, özgün
 
 Geri yükleme işlemi tamamlandıktan sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklendiğini doğrulayın. Yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 
-Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
+Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrıca ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
 
 ## <a name="geo-restore"></a>Coğrafi geri yükleme
 Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, var olan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, MySQL için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.  
 
-Coğrafi olarak yedekli bir yedekleme kullanarak bir sunucu oluşturmak için Azure CLı `az mysql server georestore` komutunu kullanın.
+Coğrafi olarak yedekli bir yedekleme kullanarak bir sunucu oluşturmak için Azure CLı komutunu kullanın `az mysql server georestore` .
 
 > [!NOTE]
 > Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
@@ -97,19 +97,19 @@ az mysql server georestore --resource-group myresourcegroup --name mydemoserver-
 ```
 Bu komut, *myresourcegroup*öğesine ait olacak Doğu ABD *mydemoserver-geogeri yüklenen* adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. Sunucu, *myresourcegroup* kaynak grubunda de olan, coğrafi olarak yedekli olan *demosunucum*yedeğinden oluşturulur.
 
-Yeni sunucuyu var olan sunucudan farklı bir kaynak grubunda oluşturmak isterseniz, aşağıdaki örnekte olduğu gibi `--source-server` parametresi için sunucu adını niteleyebilirsiniz:
+Yeni sunucuyu var olan sunucudan farklı bir kaynak grubunda oluşturmak isterseniz, `--source-server` Aşağıdaki örnekte olduğu gibi parametresi için sunucu adını niteleyebilirsiniz:
 
 ```azurecli-interactive
 az mysql server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMySQL/servers/mydemoserver" --location eastus --sku-name GP_Gen5_8
 
 ```
 
-`az mysql server georestore` Komut aşağıdaki parametreleri gerektirir:
+`az mysql server georestore`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Önerilen değer | Açıklama  |
+| Ayar | Önerilen değer | Description  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Yeni sunucunun ait olacağı kaynak grubunun adı.|
-|ad | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
+|name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
 |source-server | mydemoserver | Coğrafi olarak yedekli yedeklemeleri kullanılan mevcut sunucunun adı. |
 |location | eastus | Yeni sunucunun konumu. |
 |sku-name| GP_Gen5_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem üretimini ve sanal çekirdek sayısını ayarlar. GP_Gen5_8, 8 sanal çekirdekte bir Genel Amaçlı, Gen 5 sunucusuyla eşlenir.|
@@ -118,7 +118,7 @@ Coğrafi geri yükleme ile yeni bir sunucu oluştururken, kaynak sunucuyla aynı
 
 Geri yükleme işlemi tamamlandıktan sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklendiğini doğrulayın. Yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 
-Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
+Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrıca ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Hizmetin [yedeklemeleri](concepts-backup.md) hakkında daha fazla bilgi edinin

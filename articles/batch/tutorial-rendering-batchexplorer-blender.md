@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117089"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964813"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Öğretici: Batch Explorer'ı kullanarak Blender sahnesi işleme
 
@@ -23,13 +23,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Birden çok çerçeve işleme
 > * İşlenen kare dosyalarını görüntüleme ve indirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.
 
-İlişkilendirilmiş depolama hesabına sahip bir Azure Batch hesabına ihtiyacınız vardır.  Batch hesabı oluşturmak için [CLI makalesi](https://docs.microsoft.com/azure/batch/quick-create-cli) gibi Batch Hızlı Başlangıç makalelerinden birine bakın.
+İlişkilendirilmiş depolama hesabına sahip bir Azure Batch hesabına ihtiyacınız vardır.  Batch hesabı oluşturmak için [CLI makalesi](./quick-create-cli.md) gibi Batch Hızlı Başlangıç makalelerinden birine bakın.
 
-Bu öğreticide belirtilen VM boyutu ve VM sayısı için en az 50 çekirdekten oluşan düşük öncelikli bir çekirdek kotası yeterli olacaktır. Varsayılan kota kullanılabilir ancak bu durumda daha küçük bir VM boyutu kullanılması gerekir ve görüntüleri işleme süreci daha uzun sürer. Artırılmış çekirdek kotası isteme işlemi [bu makalede](https://docs.microsoft.com/azure/batch/batch-quota-limit) anlatılmıştır.
+Bu öğreticide belirtilen VM boyutu ve VM sayısı için en az 50 çekirdekten oluşan düşük öncelikli bir çekirdek kotası yeterli olacaktır. Varsayılan kota kullanılabilir ancak bu durumda daha küçük bir VM boyutu kullanılması gerekir ve görüntüleri işleme süreci daha uzun sürer. Artırılmış çekirdek kotası isteme işlemi [bu makalede](./batch-quota-limit.md) anlatılmıştır.
 
 Son olarak [Batch Explorer](https://azure.github.io/BatchExplorer/)'ın yüklenmesi gerekir. Windows, OSX ve Linux sürümleri mevcuttur. Bu adım isteğe bağlıdır ancak [Blender](https://www.blender.org/download/) yüklüyse aynı örnek model görüntülenebilir.
 
@@ -139,4 +139,4 @@ Tüm görevler tamamlandığında iş tamamlanıyor olarak işaretlenir: ![İş 
 ## <a name="next-steps"></a>Sonraki adımlar
 * ‘Gallery’ (Galeri) bölümünde Batch Explorer ile kullanılabilir durumdaki işleme uygulamalarını keşfedin.
 * Her uygulama için birkaç şablon vardır ve şablon sayısı zaman içinde artacaktır.  Örneğin bir görüntüyü parçalara ayırarak bu parçaların paralel olarak işlenmesini sağlayan Blender şablonları bulunmaktadır.
-* İşleme özelliklerinin kapsamlı bir açıklaması için [buradaki](https://docs.microsoft.com/azure/batch/batch-rendering-service) makalelere bakın.
+* İşleme özelliklerinin kapsamlı bir açıklaması için [buradaki](./batch-rendering-service.md) makalelere bakın.

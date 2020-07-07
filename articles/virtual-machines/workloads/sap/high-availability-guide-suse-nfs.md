@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
 ms.openlocfilehash: 4dce0a675f5841591da00a322b72718964d382ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348866"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik
@@ -120,7 +120,7 @@ Tüm gerekli kaynakları dağıtmak için GitHub 'daki hızlı başlangıç şab
    4. Yönetici Kullanıcı adı ve yönetici parolası  
       Makinede oturum açmak için kullanılabilecek yeni bir Kullanıcı oluşturulur.
    5. Alt ağ KIMLIĞI  
-      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. Kimlik genellikle/Subscriptions/**&lt;&gt;abonelik kimliği**/ResourceGroups/**&lt;kaynak grubu&gt;adı**/Providers/Microsoft.Network/virtualNetworks/**&lt;sanal ağ adı&gt;**/Subnets/**&lt;alt ağ adı&gt; ** gibi görünüyor
+      VM 'yi tanımlanmış VM 'ye atanmış bir alt ağa sahip olduğunuz mevcut bir VNet 'e dağıtmak istiyorsanız, söz konusu alt ağın KIMLIĞINI adlandırın. KIMLIK genellikle/Subscriptions/** &lt; abonelik kimliği &gt; **/ResourceGroups/** &lt; kaynak grubu adı &gt; **/Providers/Microsoft.Network/virtualNetworks/** &lt; sanal ağ adı &gt; **/Subnets/** &lt; alt ağ adı &gt; ** gibi görünüyor
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 
@@ -571,7 +571,7 @@ Bu NFS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [Azur
      g-<b>NW2</b>_nfs ms-drbd_<b>NW2</b>_nfs:Master
    </code></pre>
 
-   `exportfs` Küme kaynaklarındaki `crossmnt` seçenek, eski SLES sürümleriyle geriye dönük uyumluluk için belgelerimizde bulunur.  
+   `crossmnt`Küme kaynaklarındaki seçenek, `exportfs` eski SLES sürümleriyle geriye dönük uyumluluk için belgelerimizde bulunur.  
 
 1. **[1]** bakım modunu devre dışı bırak
    

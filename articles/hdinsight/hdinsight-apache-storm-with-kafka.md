@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494358"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963538"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Öğretici: HDInsight üzerinde Apache Kafka ile Apache Storm kullanma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Topolojileri durdurma
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kafka konuları oluşturmayı bilme. Daha fazla bilgi için [HDInsight üzerinde Kafka hızlı başlangıcı](./kafka/apache-kafka-get-started.md) belgesine bakın.
 
@@ -81,7 +81,7 @@ Apache Storm, Apache Kafka çalışmak için birkaç bileşen sağlar. Bu öğre
 Bu bileşenler `org.apache.storm : storm-kafka` paketinde sağlanır. Storm sürümüyle eşleşen paket sürümünü kullanın. HDInsight 3.6 için, Storm sürümü 1.1.0'dır.
 Ayrıca, ek Kafka bileşenlerini içeren `org.apache.kafka : kafka_2.10` paketi de gereklidir. Kafka sürümüyle eşleşen paket sürümünü kullanın. HDInsight 3,6 için Kafka sürümü 1.1.1.
 
-Aşağıdaki XML, bir [Apache Maven](https://maven.apache.org/) projesinde bağımlılık `pom.xml` bildirimidir:
+Aşağıdaki XML, `pom.xml` bir [Apache Maven](https://maven.apache.org/) projesinde bağımlılık bildirimidir:
 
 ```xml
 <!-- Storm components for talking to Kafka -->
@@ -115,7 +115,7 @@ Aşağıdaki XML, bir [Apache Maven](https://maven.apache.org/) projesinde bağ�
 
 ## <a name="understanding-the-code"></a>Kodu anlama
 
-Bu belgede kullanılan kod, adresinde [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)bulunabilir.
+Bu belgede kullanılan kod, adresinde bulunabilir [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) .
 
 Bu öğreticide iki topoloji sağlanmaktadır:
 
@@ -128,7 +128,7 @@ Bu öğreticide iki topoloji sağlanmaktadır:
     >
     > Storm kümesini oluşturmak için bu belgedeki şablonu kullanmazsanız, betik eylemini kümenize el ile uygulamanız gerekir.
     >
-    > Betik eylemi konumunda [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) bulunur ve, fırtınası kümesinin gözetmen ve Nimbus düğümlerine uygulanır. Betik eylemlerini kullanma hakkında daha fazla bilgi için, [Betik eylemlerini kullanarak HDInsight'ı özelleştirme](hdinsight-hadoop-customize-cluster-linux.md) belgesine bakın.
+    > Betik eylemi konumunda bulunur ve, [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) fırtınası kümesinin gözetmen ve Nimbus düğümlerine uygulanır. Betik eylemlerini kullanma hakkında daha fazla bilgi için, [Betik eylemlerini kullanarak HDInsight'ı özelleştirme](hdinsight-hadoop-customize-cluster-linux.md) belgesine bakın.
 
 Topolojiler [Flux](https://storm.apache.org/releases/current/flux.html) kullanılarak tanımlanır. Flux Storm 0.10.x sürümünde kullanıma sunulmuştur ve topoloji yapılandırmasını koddan ayırmanıza olanak tanır. Flux çerçevesini kullanan Topolojiler için, topoloji YAML dosyasında tanımlanır. YAML dosyası topolojinin bir parçası olarak eklenebilir. Ayrıca, topolojiyi gönderirken kullandığınız tek başına bir dosya da olabilir. Flux, bu örnekte kullanılan çalışma zamanında değişken değiştirme özelliğini de destekler.
 
@@ -144,7 +144,7 @@ Aşağıdaki parametreler, bu topolojiler için çalışma zamanında ayarlanır
 
 * `${hdfs.write.dir}`: Verilerin yazıldığı dizin.
 
-Flox topolojileri hakkında daha fazla bilgi için bkz [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)..
+Flox topolojileri hakkında daha fazla bilgi için bkz [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html) ..
 
 ### <a name="kafka-writer"></a>Kafka-yazıcı
 
@@ -366,13 +366,13 @@ streams:
 
 Proje, topolojilerin kullandığı parametreleri geçirmek için kullanılan `dev.properties` adlı bir dosya içerir. Bu dosya şu özellikleri tanımlar:
 
-| dev.properties dosyası | Açıklama |
+| dev.properties dosyası | Description |
 | --- | --- |
 | `kafka.zookeeper.hosts` | [Apache ZooKeeper](https://zookeeper.apache.org/) , Kafka kümesi için barındırır. |
 | `kafka.broker.hosts` | Kafka aracısı konakları (çalışan düğümleri). |
 | `kafka.topic` | Topolojileri kullanan Kafka konusu. |
 | `hdfs.write.dir` | Kafka-okuyucu topolojisinin yazdığı dizin. |
-| `hdfs.url` | Storm kümesi tarafından kullanılan dosya sistemi. Azure Depolama hesapları için `wasb://` değerini kullanın. Azure Data Lake Storage 2. için değerini kullanın `abfs://`. Azure Data Lake Storage 1. için değerini kullanın `adl://`. |
+| `hdfs.url` | Storm kümesi tarafından kullanılan dosya sistemi. Azure Depolama hesapları için `wasb://` değerini kullanın. Azure Data Lake Storage 2. için değerini kullanın `abfs://` . Azure Data Lake Storage 1. için değerini kullanın `adl://` . |
 
 ## <a name="create-the-clusters"></a>Kümeleri oluşturma
 
@@ -391,11 +391,11 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Azure Resource Manager şablonu konumunda **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**bulunur. Aşağıdaki kaynakları oluşturur:
+    Azure Resource Manager şablonu konumunda bulunur **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** . Aşağıdaki kaynakları oluşturur:
 
     * Azure kaynak grubu
     * Azure Sanal Ağ
-    * Azure Depolama hesabınızın
+    * Azure Storage hesabı
     * HDInsight sürüm 3.6 üzerinde Kafka (üç çalışan düğümü)
     * HDInsight sürüm 3.6 üzerinde Storm (üç çalışan düğümü)
 
@@ -429,7 +429,7 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
 
 ## <a name="build-the-topology"></a>Topoloji oluşturma
 
-1. Geliştirme ortamınızda, projeyi konumundan [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)indirin, bir komut satırı açın ve dizini projeyi indirdiğiniz konuma değiştirin.
+1. Geliştirme ortamınızda, projeyi konumundan indirin [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka) , bir komut satırı açın ve dizini projeyi indirdiğiniz konuma değiştirin.
 
 2. **hdinsight-storm-java-kafka** dizininde, aşağıdaki komutu kullanarak projeyi derleyin ve dağıtım için paket oluşturun:
 
@@ -500,7 +500,9 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
 
     Döndürülen değer aşağıdaki metne benzer:
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```output
+    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```
 
     > [!IMPORTANT]  
     > İkiden fazla Zookeeper düğümü olsa da, istemcilere tüm konakların listesini sağlamanız gerekmez. Bir veya iki tanesi yeterlidir.
@@ -509,12 +511,14 @@ Bir Azure Sanal Ağı oluşturmak ve sonra bunun içinde Kafka ve Storm kümeler
 
 3. Proje kökündeki `dev.properties` dosyasını düzenleyin. Bu dosyadaki ilgili satırlara __Kafka__ kümesi için Aracı ve Zookeeper konaklarının bilgilerini ekleyin. Aşağıdaki örnek, önceki adımlardan alınan örnek değerler kullanılarak yapılandırılır:
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        kafka.topic: stormtopic
+    ```bash
+    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.topic: stormtopic
+    ```
 
     > [!IMPORTANT]  
-    > `hdfs.url` girdisi, Azure Depolama hesabı kullanan bir küme için yapılandırılır. Bu topolojiyi Data Lake Storage kullanan bir fırtınası kümesiyle kullanmak için bu değeri `wasb` olarak `adl`değiştirin.
+    > `hdfs.url` girdisi, Azure Depolama hesabı kullanan bir küme için yapılandırılır. Bu topolojiyi Data Lake Storage kullanan bir fırtınası kümesiyle kullanmak için bu değeri `wasb` olarak değiştirin `adl` .
 
 4. `dev.properties` dosyasını kaydedin ve ardından aşağıdaki komutu kullanarak bu dosyayı **Storm** kümesine yükleyin:
 
@@ -590,11 +594,13 @@ Kafka, verileri bir _konu_ içinde depolar. Storm topolojilerini başlatmadan ö
 
     Çıktı aşağıdaki metne benzer:
 
-        Found 173 items
-        -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
-        -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
-        -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
-        ...
+    ```output
+    Found 173 items
+      -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
+      -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
+      -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
+      ...
+    ```
 
 3. Dosyanın içeriğini görüntülemek için aşağıdaki komutu kullanın. `filename.txt` değerini dosyanın adıyla değiştirin:
 
@@ -604,13 +610,19 @@ Kafka, verileri bir _konu_ içinde depolar. Storm topolojilerini başlatmadan ö
 
     Aşağıdaki metin, örnek bir dosya içeriğidir:
 
-        four score and seven years ago
-        snow white and the seven dwarfs
-        i am at two with nature
-        snow white and the seven dwarfs
-        i am at two with nature
-        four score and seven years ago
-        an apple a day keeps the doctor away
+    > dört puan ve yedi yıl önce
+    >
+    > beyaz ve yedi Dwarfs
+    >
+    > iki ikde doğası
+    >
+    > beyaz ve yedi Dwarfs
+    >
+    > iki ikde doğası
+    >
+    > dört puan ve yedi yıl önce
+    >
+    > bir Apple a Day, Doktor 'ı korur
 
 ## <a name="stop-the-topologies"></a>Topolojileri durdurma
 

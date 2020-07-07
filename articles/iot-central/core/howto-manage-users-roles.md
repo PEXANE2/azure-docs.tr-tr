@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80365499"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>IoT Central uygulamanızdaki kullanıcıları ve rolleri yönetme
@@ -72,7 +72,7 @@ Bir uygulamayı oluşturan kullanıcı otomatik olarak **yönetici** rolüne ata
 
 **Oluşturucu** rolündeki kullanıcılar uygulamanın her bölümünü yönetebilir, ancak yönetim veya sürekli veri dışa aktarma sekmelerinde değişiklik yapamaz.
 
-### <a name="operator"></a>İşleç
+### <a name="operator"></a>Operatör
 
 **Operatör** rolündeki kullanıcılar, cihaz sistem durumunu ve durumunu izleyebilir. Cihaz şablonlarında değişiklik yapmasına veya uygulamayı yönetmeye izin verilmez. İşleçler cihaz ekleyip silebilir, cihaz kümelerini yönetebilir ve analiz ve işleri çalıştırabilir. 
 
@@ -93,7 +93,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Cihaz şablonu izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Yönetme | Görüntüle <br/> Diğer bağımlılıklar: cihaz örneklerini görüntüle  |
@@ -101,7 +101,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Cihaz örneği izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme |
 | Güncelleştirme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz gruplarını görüntüleme  |
@@ -112,7 +112,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Cihaz grupları izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme |
 | Güncelleştirme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını ve cihaz örneklerini görüntüleme   |
@@ -122,7 +122,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Cihaz bağlantısı yönetimi izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Örneği oku | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz gruplarını, cihaz örneklerini görüntüleme |
 | Örneği Yönet | Hiçbiri |
@@ -132,7 +132,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **İşler izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleme |
 | Güncelleştirme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini ve cihaz gruplarını görüntüleme |
@@ -143,7 +143,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Kurallar izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
 | Güncelleştirme | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını görüntüleme |
@@ -155,7 +155,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Uygulama ayarları izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Güncelleştirme | Görüntüle   |
@@ -165,7 +165,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Uygulama şablonu dışarı aktarma izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Dışarı Aktarma | Görüntüle <br/> Diğer bağımlılıklar: cihaz şablonlarını, cihaz örneklerini, cihaz gruplarını, panoları, veri vermeyi, marka, yardım bağlantılarını, özel rolleri, kuralları görüntüle |
@@ -173,7 +173,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Faturalandırma izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Yönetme | Hiçbiri     |
 | Tam Denetim | Yönetme |
@@ -182,7 +182,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Özel rol izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri |
 | Güncelleştirme | Görüntüle |
@@ -192,7 +192,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Kullanıcı yönetimi izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri <br/> Diğer bağımlılıklar: özel rolleri görüntüleme |
 | Ekle | Görüntüle <br/> Diğer bağımlılıklar: özel rolleri görüntüleme |
@@ -206,7 +206,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Uygulama panosu izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Güncelleştirme | Görüntüle   |
@@ -216,7 +216,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Kişisel panolar izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Güncelleştirme | Görüntüle   |
@@ -226,7 +226,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Marka, ayrıcalıklı simge ve renkler izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Güncelleştirme | Görüntüle   |
@@ -234,7 +234,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Yardım bağlantıları izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Güncelleştirme | Görüntüle   |
@@ -244,7 +244,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **Veri dışarı aktarma izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Güncelleştirme | Görüntüle   |
@@ -254,7 +254,7 @@ Kullanıcıları, yerleşik bir role eklediğiniz şekilde özel rolünüze ekle
 
 **API belirteci izinleri**
 
-| Adı | Bağımlılıklar |
+| Name | Bağımlılıklar |
 | ---- | -------- |
 | Görüntüle | Hiçbiri     |
 | Oluştur | Görüntüle   |

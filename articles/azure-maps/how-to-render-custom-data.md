@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335509"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
@@ -25,7 +25,7 @@ Bu makalede, bir raster haritasının üzerine Yerpaylaşımları sağlamak içi
 > [!Tip]
 > Azure Haritalar Web SDK 'sını kullanarak, bir Web sayfasında statik görüntü hizmetini kullanmaktan daha basit bir harita göstermek için çok daha uygun maliyetli hale gelir. Web SDK 'Sı harita kutucukları kullanır ve Kullanıcı haritayı yakınlaştırıp yakınlaşmadığı takdirde, genellikle harita yükü başına bir işlemin yalnızca bir bölümünü oluşturur. Azure Maps web SDK 'sının yatay kaydırmayı ve yakınlaştırmasını devre dışı bırakma seçenekleri olduğunu unutmayın. Ayrıca, Azure Maps web SDK 'Sı statik bir harita Web hizmetinden daha zengin bir veri görselleştirme seçenekleri kümesi sağlar.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="create-an-azure-maps-account"></a>Azure Haritalar hesabı oluşturma
 
@@ -37,13 +37,13 @@ Bu makaledeki yordamları tamamlayabilmeniz için öncelikle bir Azure Maps hesa
 > [!Note]
 > Bu bölümdeki yordam, S0 veya S1 fiyatlandırma katmanında bir Azure Maps hesabı gerektirir.
 
-Azure haritalar hesabı S0 katmanı, `pins` parametrenin yalnızca tek bir örneğini destekler. URL isteğinde belirtilen en fazla beş Pushpin (özel bir görüntüyle) oluşturmanızı sağlar.
+Azure haritalar hesabı S0 katmanı, parametrenin yalnızca tek bir örneğini destekler `pins` . URL isteğinde belirtilen en fazla beş Pushpin (özel bir görüntüyle) oluşturmanızı sağlar.
 
 Pushpın 'leri etiketlerle ve özel bir görüntüyle işlemek için şu adımları izleyin:
 
 1. İsteklerin depolayabileceği bir koleksiyon oluşturun. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin. Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. 
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Ardından **Kaydet**’i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Sonra **Kaydet**' i seçin.
     
     ![Postman 'da istek oluşturma](./media/how-to-render-custom-data/postman-new.png)
 
@@ -70,7 +70,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-2. Params ( **Parametreler** ) SEKMESINDE, post isteği URL 'si için kullanılan aşağıdaki anahtar/değer çiftlerini girin. `subscription-key` Değeri Azure Maps abonelik anahtarınızla değiştirin.
+2. Params ( **Parametreler** ) SEKMESINDE, post isteği URL 'si için kullanılan aşağıdaki anahtar/değer çiftlerini girin. `subscription-key`Değeri Azure Maps abonelik anahtarınızla değiştirin.
     
     ![Postman 'daki anahtar/değer parametreleri](./media/how-to-render-custom-data/postman-key-vals.png)
 
@@ -156,7 +156,7 @@ Ayrıca, [veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploa
    }
    ```
 
-7. Haritadaki `udId` özellikleri Işlemek Için VERI yükleme API 'sinden alınan değeri kullanın. Bunu yapmak için, önceki bölümde oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP Al metodunu seçin, {Subscription-Key} ve {UDID} değerlerini değerlerinizle değiştirin ve bir GET isteği yapmak için bu URL 'YI girin:
+7. `udId`Haritadaki özellikleri işlemek Için veri yükleme API 'sinden alınan değeri kullanın. Bunu yapmak için, önceki bölümde oluşturduğunuz koleksiyonda yeni bir sekme açın. Oluşturucu sekmesinde HTTP Al metodunu seçin, {Subscription-Key} ve {UDID} değerlerini değerlerinizle değiştirin ve bir GET isteği yapmak için bu URL 'YI girin:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -207,7 +207,7 @@ PIN 'lerin görünümünü stil değiştiricileri ekleyerek değiştirebilirsini
 
     ![Özel raptiyeler ile bir daire işleme](./media/how-to-render-custom-data/circle-custom-pins.png)
 
-2. Son adımdaki Pushpin rengini değiştirmek için "Co" stil değiştiricisini değiştirin. `pins=default|la15+50|al0.66|lc003C62|co002D62|`' A bakın, GEÇERLI renk CSS 'de #002D62 olarak belirtilir. #41d42a için değiştirmek istediğinizi varsayalım. "Ortak" belirticisinden sonra yeni renk değerini şöyle yazın: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Yeni bir GET isteği oluşturun:
+2. Son adımdaki Pushpin rengini değiştirmek için "Co" stil değiştiricisini değiştirin. ' A bakın `pins=default|la15+50|al0.66|lc003C62|co002D62|` , geçerli renk CSS 'de #002D62 olarak belirtilir. #41d42a için değiştirmek istediğinizi varsayalım. "Ortak" belirticisinden sonra yeni renk değerini şöyle yazın: `pins=default|la15+50|al0.66|lc003C62|co41D42A|` . Yeni bir GET isteği oluşturun:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4ae13dc51b4621dc3d8be39049dcade87c105cbc
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 959742ec3c0434213d19b0f92fe523671fd60f33
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262625"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964558"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>SYNAPSE SQL ile toplu yükleme
 
@@ -26,7 +26,7 @@ Artık, SYNAPSE Studio içindeki aşağıdaki alanlara basit bir sağ tıklama i
 
 - Bir ![ depolama hesabındaki bir dosya veya klasöre sağ tıklayarak çalışma alanınıza bağlı bir Azure depolama hesabındaki dosya veya klasör](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu sihirbaz, authentcation için AAD geçişli geçiş kullanan bir COPY ifadesini oluşturur. AAD kullanıcılarınızın, ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı RBAC rolüyle çalışma alanına [erişimi olmalıdır](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) .
 

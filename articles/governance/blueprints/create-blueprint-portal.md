@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç: portalda bir şema oluşturma'
 description: Bu hızlı başlangıçta, Azure portal aracılığıyla yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aac4e13ca0da73f8b7915ea6655343d5cf0b94cb
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381901"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970986"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
 
-Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonları, ilkesi, güvenliği ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler aşağıdakileri içerir:
+Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonlarına (ARM şablonları), ilkeye, güvenliğe ve daha fazlasına dayalı yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler aşağıdakileri içerir:
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -85,8 +85,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    1. **Yapıt türü**için **Azure Resource Manager şablonu** seçin, **yapıt görünen adını** **storageaccount**olarak ayarlayın ve **açıklamayı** boş bırakın.
 
-   1. Düzenleyici kutusundaki **Şablon** sekmesinde aşağıdaki Resource Manager şablonunu yapıştırın.
-      Şablonu yapıştırdıktan sonra **Parametreler** sekmesini seçin ve **storageaccounttype** ve **Location** şablon parametrelerinin algılandığını unutmayın. Her bir parametre otomatik olarak algılanır ve doldurulmuştur, ancak dinamik parametre olarak yapılandırıldı.
+   1. Düzenleyici kutusundaki **şablon** sekmesinde, aşağıdaki ARM şablonunu yapıştırın. Şablonu yapıştırdıktan sonra **Parametreler** sekmesini seçin ve **storageaccounttype** ve **Location** şablon parametrelerinin algılandığını unutmayın. Her bir parametre otomatik olarak algılanır ve doldurulmuştur, ancak dinamik parametre olarak yapılandırıldı.
 
       > [!IMPORTANT]
       > Şablonu içeri aktarıyorsanız, dosyanın yalnızca JSON olduğundan ve HTML içermediğinden emin olun. GitHub 'da bir URL 'yi işaret ederken, GitHub 'da görüntülenmek üzere bir HTML ile sarmalanmayan saf JSON dosyasını almak için **Ham** seçtiğinizden emin olun. İçeri aktarılan şablon saf JSON değilse bir hata oluşur.
@@ -140,7 +139,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
       }
       ```
 
-   1. **Storageaccounttype** onay kutusunu temizleyin ve aşağı açılan listenin yalnızca, **allowedValues**altındaki Kaynak Yöneticisi şablonuna dahil edilen değerleri içerdiğini unutmayın. Bir dinamik parametreye geri ayarlamak için kutuyu seçin.
+   1. **Storageaccounttype** onay kutusunu temizleyin ve açılan listenin yalnızca, **allowedValues**altındaki ARM şablonuna eklenen değerleri içerdiğini unutmayın. Bir dinamik parametreye geri ayarlamak için kutuyu seçin.
 
    1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 
@@ -249,7 +248,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
    > Şema tanımı sırasında kaynak grubu altına eklediğiniz her bir yapıt için, bu yapıt, ile dağıtacağınız kaynak grubu veya nesne ile hizalanacak şekilde girintilenir.
    > Parametre alma veya atama sırasında tanımlanacak hiçbir parametresi olmayan yapıtlar yalnızca bağlamsal bilgiler için listelenir.
 
-1. Azure Resource Manager şablonu **Storageaccount**' da **storageaccounttype** parametresi için **Standard_GRS** öğesini seçin.
+1. ARM şablonu **Storageaccount**sayfasında **storageaccounttype** parametresi için **Standard_GRS** öğesini seçin.
 
 1. Sayfanın altındaki bilgi kutusunu okuyun ve ardından **ata**' yı seçin.
 

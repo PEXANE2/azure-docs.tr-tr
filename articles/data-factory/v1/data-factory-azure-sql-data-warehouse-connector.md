@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419332"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SQL veri ambarı 'na veri kopyalama
@@ -70,7 +70,7 @@ Aşağıdaki tabloda, Azure SQL veri ambarı bağlı hizmetine özgü JSON öğe
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Type özelliği: **Azuresqldw** olarak ayarlanmalıdır |Yes |
+| tür |Type özelliği: **Azuresqldw** olarak ayarlanmalıdır |Yes |
 | Dizisi |ConnectionString özelliği için Azure SQL veri ambarı örneğine bağlanmak için gereken bilgileri belirtin. Yalnızca temel kimlik doğrulaması desteklenir. |Yes |
 
 > [!IMPORTANT]
@@ -98,9 +98,9 @@ Kaynak **Sqldwsource**türünde olduğunda, **typeproperties** bölümünde aşa
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Hayır |
-| sqlReaderStoredProcedureName |Kaynak tablodaki verileri okuyan saklı yordamın adı. |Saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |Hayır |
-| storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |Hayır |
+| sqlReaderQuery |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |No |
+| sqlReaderStoredProcedureName |Kaynak tablodaki verileri okuyan saklı yordamın adı. |Saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. |No |
+| storedProcedureParameters |Saklı yordamın parametreleri. |Ad/değer çiftleri. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. |No |
 
 SqlDWSource için **Sqlreaderquery** belirtilmişse, kopyalama etkinliği verileri almak için bu SORGUYU Azure SQL veri ambarı kaynağında çalıştırır.
 
@@ -144,15 +144,15 @@ GO
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. Ayrıntılar için bkz. [yinelenebilirlik bölümü](#repeatability-during-copy). |Sorgu ekstresi. |Hayır |
-| allowPolyBase |BULKıNSERT mekanizması yerine PolyBase 'in (uygun olduğunda) kullanılıp kullanılmayacağını belirtir. <br/><br/> **PolyBase 'in kullanılması, verileri SQL veri ambarı 'na yüklemek için önerilen yoldur.** Kısıtlamalar ve Ayrıntılar için bkz. [PolyBase 'ı kullanarak Azure SQL veri ambarı 'na veri yükleme](#use-polybase-to-load-data-into-azure-sql-data-warehouse) bölümüne bakın. |True <br/>False (varsayılan) |Hayır |
-| polyBaseSettings |**Allowpolybase** özelliği **true**olarak ayarlandığında belirtilenebilir bir özellik grubu. |&nbsp; |Hayır |
-| rejectValue |Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir. <br/><br/>[Dış tablo oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) konusunun **bağımsız değişkenler** bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. |0 (varsayılan), 1, 2,... |Hayır |
-| rejectType |RejectValue seçeneğinin sabit değer değeri mi yoksa yüzde olarak mı belirtilmediğini belirtir. |Değer (varsayılan), yüzde |Hayır |
+| sqlWriterCleanupScript |Bir kopyalama etkinliğinin yürütülmesi için belirli bir dilim verilerinin temizlenmesi için bir sorgu belirtin. Ayrıntılar için bkz. [yinelenebilirlik bölümü](#repeatability-during-copy). |Sorgu ekstresi. |No |
+| allowPolyBase |BULKıNSERT mekanizması yerine PolyBase 'in (uygun olduğunda) kullanılıp kullanılmayacağını belirtir. <br/><br/> **PolyBase 'in kullanılması, verileri SQL veri ambarı 'na yüklemek için önerilen yoldur.** Kısıtlamalar ve Ayrıntılar için bkz. [PolyBase 'ı kullanarak Azure SQL veri ambarı 'na veri yükleme](#use-polybase-to-load-data-into-azure-sql-data-warehouse) bölümüne bakın. |True <br/>False (varsayılan) |No |
+| polyBaseSettings |**Allowpolybase** özelliği **true**olarak ayarlandığında belirtilenebilir bir özellik grubu. |&nbsp; |No |
+| rejectValue |Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir. <br/><br/>[Dış tablo oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) konusunun **bağımsız değişkenler** bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. |0 (varsayılan), 1, 2,... |No |
+| rejectType |RejectValue seçeneğinin sabit değer değeri mi yoksa yüzde olarak mı belirtilmediğini belirtir. |Değer (varsayılan), yüzde |No |
 | rejectSampleValue |PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler. |1, 2,... |Evet, **rejectType** **ise** |
-| useTypeDefault |PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin. |True, false (varsayılan) |Hayır |
+| useTypeDefault |PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin. |True, false (varsayılan) |No |
 | writeBatchSize |Arabellek boyutu writeBatchSize ulaştığında verileri SQL tablosuna ekler |Tamsayı (satır sayısı) |Hayır (varsayılan: 10000) |
-| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |Hayır |
+| writeBatchTimeout |Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi. |timespan<br/><br/> Örnek: "00:30:00" (30 dakika). |No |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink örneği
 
@@ -169,7 +169,7 @@ GO
 * Kaynak verileriniz **Azure Blobu veya Azure Data Lake Store**ise ve biçim PolyBase ile uyumluysa, PolyBase kullanarak doğrudan Azure SQL veri ambarı 'na kopyalayabilirsiniz. Bkz. **[PolyBase 'i kullanarak doğrudan kopyalama](#direct-copy-using-polybase)** ayrıntıları.
 * Kaynak veri deponuzu ve formatı İlk olarak PolyBase tarafından desteklenmiyorsa, bunun yerine **[PolyBase özelliğini kullanarak hazırlanan kopyayı](#staged-copy-using-polybase)** kullanabilirsiniz. Ayrıca, verileri otomatik olarak PolyBase uyumlu biçime dönüştürerek ve verileri Azure Blob depolamada depolayarak daha iyi bir aktarım hızı sağlar. Daha sonra verileri SQL veri ambarı 'na yükler.
 
-Azure SQL `allowPolyBase` veri ambarı 'na veri kopyalamak Için PolyBase 'i kullanmak Azure Data Factory için aşağıdaki örnekte gösterildiği gibi özelliği **doğru** olarak ayarlayın. AllowPolyBase 'i true olarak belirlediğinizde, `polyBaseSettings` Özellik grubunu kullanarak PolyBase 'e özgü özellikleri belirtebilirsiniz. polyBaseSettings ile kullanabileceğiniz özellikler hakkında ayrıntılı bilgi edinmek için [Sqldwsink](#sqldwsink) bölümüne bakın.
+`allowPolyBase`Azure SQL veri ambarı 'na veri kopyalamak Için PolyBase 'i kullanmak Azure Data Factory için aşağıdaki örnekte gösterildiği gibi özelliği **doğru** olarak ayarlayın. AllowPolyBase 'i true olarak belirlediğinizde, özellik grubunu kullanarak PolyBase 'e özgü özellikleri belirtebilirsiniz `polyBaseSettings` . polyBaseSettings ile kullanabileceğiniz özellikler hakkında ayrıntılı bilgi edinmek için [Sqldwsink](#sqldwsink) bölümüne bakın.
 
 ```JSON
 "sink": {
@@ -194,12 +194,12 @@ SQL veri ambarı PolyBase, kaynak olarak ve belirli dosya biçimi gereksinimleri
 Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri taşıma için otomatik olarak BULKıNSERT mekanizmasına geri döner.
 
 1. **Kaynak bağlı hizmet** , **hizmet sorumlusu kimlik doğrulamasıyla**: **azurestorage** veya AzureDataLakeStore türünde.
-2. **Giriş veri kümesi** : **AzureBlob** veya **AzureDataLakeStore**ve Properties altındaki `type` biçim türü, aşağıdaki yapılandırmalarda **Orcformat**, **parquetformat**veya **TextFormat** ' dir:
+2. **Giriş veri kümesi** : **AzureBlob** veya **AzureDataLakeStore**ve Properties altındaki Biçim türü, `type` aşağıdaki yapılandırmalarda **orcformat**, **parquetformat**veya **TextFormat** ' dir:
 
    1. `rowDelimiter`**\n**olmalıdır.
    2. `nullValue`**boş dizeye** ayarlanır ("") veya `treatEmptyAsNull` **true**olarak ayarlanır.
    3. `encodingName`, **varsayılan** değer olan **UTF-8**olarak ayarlanır.
-   4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, ve `skipLineCount` belirtilmedi.
+   4. `escapeChar`, `quoteChar` , `firstRowAsHeader` , ve `skipLineCount` belirtilmedi.
    5. `compression`**sıkıştırma**, **gzip**veya **söndür**olamaz.
 
       ```JSON
@@ -220,8 +220,8 @@ Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri ta�
       ```
 
 3. İşlem hattındaki `skipHeaderLineCount` kopyalama etkinliği Için **Blobsource** veya **AzureDataLakeStore** altında bir ayar yoktur.
-4. İşlem hattındaki `sliceIdentifierColumnName` kopyalama etkinliği Için **sqldwsink** altında bir ayar yoktur. (PolyBase, tüm verilerin güncelleştirildiğini veya tek bir çalıştırmada hiçbir şey güncelleştirilmediğini garanti eder. **Yinelenebilirlik**ulaşmak için kullanabilirsiniz `sqlWriterCleanupScript`.
-5. `columnMapping` İlişkili kopyalama etkinliğinde kullanılmıyor.
+4. İşlem hattındaki `sliceIdentifierColumnName` kopyalama etkinliği Için **Sqldwsink** altında bir ayar yoktur. (PolyBase, tüm verilerin güncelleştirildiğini veya tek bir çalıştırmada hiçbir şey güncelleştirilmediğini garanti eder. **Yinelenebilirlik**ulaşmak için kullanabilirsiniz `sqlWriterCleanupScript` .
+5. `columnMapping`Ilişkili kopyalama etkinliğinde kullanılmıyor.
 
 ### <a name="staged-copy-using-polybase"></a>PolyBase kullanarak hazırlanmış kopya
 Kaynak verileriniz önceki bölümde tanıtılan ölçütlere uymazsa, verileri geçici hazırlama Azure Blob depolama (Premium Depolama olamaz) aracılığıyla kopyalamayı etkinleştirebilirsiniz. Bu durumda Azure Data Factory, PolyBase 'in veri biçimi gereksinimlerini karşılamak üzere verilerde otomatik olarak dönüştürmeler gerçekleştirir, sonra SQL veri ambarı 'na veri yüklemek için PolyBase 'i kullanır ve BLOB depolama alanındaki geçici verilerinizi en son temizleme. Hazırlama Azure blobu aracılığıyla verilerin nasıl kopyalandığı hakkında ayrıntılı bilgi için bkz. [aşamalı kopya](data-factory-copy-activity-performance.md#staged-copy) , genel olarak çalışma.
@@ -230,7 +230,7 @@ Kaynak verileriniz önceki bölümde tanıtılan ölçütlere uymazsa, verileri 
 > PolyBase ve hazırlama kullanarak şirket içi veri deposundaki verileri Azure SQL veri ambarı 'na kopyalarken, Veri Yönetimi ağ geçidi sürümünüz 2,4 altındaysa, kaynak verilerinizi doğru biçime dönüştürmek için kullanılan ağ geçidi makinenizde JRE (Java Runtime Environment) gereklidir. Böyle bir bağımlılığı önlemek için ağ geçidinizi en son sürümüne yükseltmenizi önerin.
 >
 
-Bu özelliği kullanmak için, ara BLOB depolama alanına sahip Azure depolama hesabına başvuran bir [Azure depolama bağlı hizmeti](data-factory-azure-blob-connector.md#azure-storage-linked-service) oluşturun, ardından aşağıdaki kodda gösterildiği gibi kopyalama etkinliğinin `enableStaging` ve `stagingSettings` özelliklerini belirtin:
+Bu özelliği kullanmak için, ara BLOB depolama alanına sahip Azure depolama hesabına başvuran bir [Azure depolama bağlı hizmeti](data-factory-azure-blob-connector.md#azure-storage-linked-service) oluşturun, ardından `enableStaging` `stagingSettings` aşağıdaki kodda gösterildiği gibi kopyalama etkinliğinin ve özelliklerini belirtin:
 
 ```json
 "activities":[
@@ -308,7 +308,7 @@ Data Factory, kaynak veri deposunda aynı tablo adına sahip hedef depoda tablo 
 | Sürümleri | Sürümleri |
 | Ondalık | Ondalık |
 | Sayısal | Ondalık |
-| Kayan | Kayan |
+| Float | Float |
 | Para | Para |
 | Gerçek | Gerçek |
 | Küçük para | Küçük para |
@@ -317,7 +317,7 @@ Data Factory, kaynak veri deposunda aynı tablo adına sahip hedef depoda tablo 
 | Tarih | Tarih |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Zaman | Zaman |
+| Saat | Saat |
 | DateTimeOffset | DateTimeOffset |
 | Girişin | Girişin |
 | Metin | Varchar (8000 'e kadar) |
@@ -354,7 +354,7 @@ Eşleme, [ADO.NET için SQL Server veri türü eşlemesi](https://msdn.microsoft
 | Türünde |DateTimeOffset |
 | Ondalık |Ondalık |
 | FıLESTREAM özniteliği (varbinary (max)) |Byte [] |
-| Kayan |Çift |
+| Float |Çift |
 | image |Byte [] |
 | int |Int32 |
 | etmenize |Ondalık |

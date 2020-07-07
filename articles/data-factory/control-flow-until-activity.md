@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417955"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik tarihine kadar
@@ -23,7 +23,7 @@ ms.locfileid: "81417955"
 
 Until etkinliği, programlama dillerindeki do-until döngü yapısıyla aynı işlevselliği sağlar. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz. 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -55,11 +55,11 @@ Until etkinliği, programlama dillerindeki do-until döngü yapısıyla aynı i�
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | `Until` Etkinliğin adı. | Dize | Yes
-type | To **until**olarak ayarlanmalıdır. | Dize | Yes
+name | `Until`Etkinliğin adı. | Dize | Yes
+tür | To **until**olarak ayarlanmalıdır. | Dize | Yes
 ifade | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Yes
-timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | Dize. `d.hh:mm:ss`veya `hh:mm:ss`. Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | Hayır
-Etkinlikler | İfadesi olarak `true`değerlendirilene kadar yürütülen etkinlik kümesi. | Etkinlik dizisi. |  Yes
+timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | Dize. `d.hh:mm:ss`(veya) `hh:mm:ss` . Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | No
+Etkinlikler | İfadesi olarak değerlendirilene kadar yürütülen etkinlik kümesi `true` . | Etkinlik dizisi. |  Yes
 
 ## <a name="example-1"></a>Örnek 1
 
@@ -120,7 +120,7 @@ Bu örnekte, işlem hattının iki etkinliği vardır: **until** ve **wait**. Be
 ## <a name="example-2"></a>Örnek 2 
 Bu örnekteki işlem hattı, verileri bir giriş klasöründen bir döngüde çıkış klasörüne kopyalar. Yineleme parametresinin değeri false olarak ayarlandığında veya bir dakika sonra zaman aşımına uğrarsa döngü sonlandırılır.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Until etkinliği ile işlem hattı (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Etkinlik (Adfv2QuickStartPipeline.js) ile işlem hattı
 
 ```json
 {
@@ -193,7 +193,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen bir döngüde ç�
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService.js)
 
 ```json
 {
@@ -207,7 +207,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen bir döngüde ç�
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset.js)
 İşlem hattı **FolderPath** değerini, Işlem hattının **OutputPath1** ya da **outputPath2** parametresinin değerine ayarlar. 
 
 ```json
@@ -234,7 +234,7 @@ Bu örnekteki işlem hattı, verileri bir giriş klasöründen bir döngüde ç�
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters.json)
 
 ```json
 {
