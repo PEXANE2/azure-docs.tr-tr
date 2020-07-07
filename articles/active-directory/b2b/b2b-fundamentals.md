@@ -13,10 +13,10 @@ ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f5721ef606b6ea916f5a00031c58f5e2adeb0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050858"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B en iyi uygulamaları
@@ -26,7 +26,7 @@ Bu makale, Azure Active Directory (Azure AD) ile işletmeler arası (B2B) işbir
    > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 ## <a name="b2b-recommendations"></a>B2B önerileri
-| Öneri | Açıklamalar |
+| Öneri | Yorumlar |
 | --- | --- |
 | En iyi oturum açma deneyimi için, kimlik sağlayıcılarıyla federasyona ayırın | Mümkün olduğunda, davet edilen kullanıcıların Microsoft hesapları (MSAs) veya Azure AD hesapları oluşturmaya gerek kalmadan paylaşılan uygulamalarınızda ve kaynaklarda oturum açmalarına izin vermek için doğrudan kimlik sağlayıcılarıyla federasyona ayırın. B2B Konuk kullanıcılarının Google hesaplarıyla oturum açmasını sağlamak için [Google Federation özelliğini](google-federation.md) kullanabilirsiniz. Ya da [doğrudan Federasyon (Önizleme) özelliğini](direct-federation.md) kullanarak, kimlik sağlayıcısı (ıDP) SAML 2,0 veya WS-beslenir protokolünü destekleyen herhangi bir kuruluşla doğrudan Federasyonu ayarlayabilirsiniz. |
 | Diğer yollarla kimlik doğrulaması yapamayan B2B konukları için e-posta bir kerelik geçiş kodu (Önizleme) özelliğini kullanın | [E-posta bir kerelik geçiş kodu (Önizleme)](one-time-passcode.md) özelliği, Azure AD, MICROSOFT HESABı (MSA) veya Google Federasyonu gibi diğer yollarla kimlik doğrulamasından GEÇIYORLARSA B2B Konuk kullanıcılarının kimliğini doğrular. Konuk Kullanıcı bir davetiyeyi bir davet edebilir veya paylaşılan bir kaynağa eriştiğinde, kendi e-posta adreslerine gönderilen geçici bir kod isteyebilir. Sonra oturum açmaya devam etmek için bu kodu girer. |

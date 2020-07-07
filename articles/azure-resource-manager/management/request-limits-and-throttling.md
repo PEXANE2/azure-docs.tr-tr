@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239356"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager isteklerini azaltma
@@ -25,7 +25,7 @@ Her abonelik düzeyi ve kiracı düzeyindeki işlem, azaltma sınırlarına tabi
 
 Saat başına varsayılan azaltma sınırları aşağıdaki tabloda gösterilmiştir.
 
-| Kapsam | İşlemler | Sınır |
+| Kapsam | Operations | Sınır |
 | ----- | ---------- | ------- |
 | Abonelik | okuma | 12000 |
 | Abonelik | /Delete | 15000 |
@@ -51,7 +51,7 @@ Bu bölümde, yaygın olarak kullanılan bazı kaynak sağlayıcılarının azal
 
 Microsoft. Network kaynak sağlayıcısı aşağıdaki kısıtlama sınırlarını uygular:
 
-| İşlem | Sınır |
+| Çalışma | Sınır |
 | --------- | ----- |
 | yazma/silme (PUT) | 5 dakikada 1000 |
 | okuma (GET) | 5 dakikada 10000 |
@@ -80,7 +80,7 @@ Bazı kaynak sağlayıcıları geçici bir sorunu raporlamak için 429 döndür�
 
 Yanıt üstbilgilerini inceleyerek kalan isteklerin sayısını belirleyebilirsiniz. Okuma istekleri, kalan okuma isteklerinin sayısı için üst bilgide bir değer döndürür. Yazma istekleri, kalan yazma isteklerinin sayısı için bir değer içerir. Aşağıdaki tabloda, bu değerler için inceleyebileceğiniz yanıt üstbilgileri açıklanmaktadır:
 
-| Yanıt üst bilgisi | Açıklama |
+| Yanıt üst bilgisi | Description |
 | --- | --- |
 | x-MS-ratelimit-kalan-abonelik-okumalar |Abonelik kapsamlı okuma kaldı. Bu değer, okuma işlemlerinde döndürülür. |
 | x-MS-ratelimit-kalan-abonelik-yazmaları |Abonelik kapsamlı yazmaları kaldı. Bu değer, yazma işlemlerinde döndürülür. |

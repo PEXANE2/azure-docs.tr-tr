@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055421"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Sistem Durumu Denetimi (Önizleme) çözümü ile ortamınızı iyileştirme
@@ -82,7 +82,7 @@ Devam etmeden önce farklı çalıştır hesabının aşağıdaki gereksinimleri
 4. **Genel Özellikler** sayfasında, **Farklı Çalıştır hesap türü:** listesinde **Windows** ' u seçin.
 5. **Görünen ad** metin kutusuna bir görünen ad yazın ve isteğe bağlı olarak **Açıklama** kutusuna bir açıklama yazın ve ardından **İleri**' ye tıklayın.
 6. **Dağıtım güvenliği** sayfasında **daha güvenli**' i seçin.
-7. **Oluştur**' a tıklayın.  
+7. **Oluştur**'a tıklayın.  
 
 Farklı Çalıştır hesabı oluşturuldığına göre, yönetim grubundaki yönetim sunucularını hedeflemek ve iş akışlarının kimlik bilgileri kullanılarak çalışması için önceden tanımlanmış bir Farklı Çalıştır profiliyle ilişkilendirilmesi gerekir.  
 
@@ -147,13 +147,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 System Center Operations Manager Sistem Durumu Denetimi çözümünün yönetim paketi, *Microsoft System Center Operations Manager Run Health denetim kuralı*adlı bir kural içerir. Bu kural, sistem durumu denetimini çalıştırmaktan sorumludur. Kuralı etkinleştirmek ve sıklığı yapılandırmak için aşağıdaki yordamları kullanın.
 
-Varsayılan olarak, Microsoft System Center Operations Manager çalışan sistem durumu denetim kuralı devre dışıdır. Sistem durumu denetimini çalıştırmak için, kuralı bir yönetim sunucusu üzerinde etkinleştirmeniz gerekir. Aşağıdaki adımları kullanın:
+Varsayılan olarak, Microsoft System Center Operations Manager çalışan sistem durumu denetim kuralı devre dışıdır. Sistem durumu denetimini çalıştırmak için, kuralı bir yönetim sunucusu üzerinde etkinleştirmeniz gerekir. Aşağıdaki adımları uygulayın.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Belirli bir yönetim sunucusu için kuralı etkinleştirme
 
 1. Operations Manager Işletim konsolunun **yazma** çalışma alanında, **kurallar** bölmesindeki *Microsoft System Center Operations Manager sistem durumu denetimi kuralını Çalıştır* kuralını arayın.
 2. Arama sonuçlarında, metin türünü içeren bir tane seçin *: yönetim sunucusu*.
-3. Kurala sağ tıklayın ve sonra**sınıfın belirli bir nesnesi için** **geçersiz kılmalar** > ' a tıklayın: yönetim sunucusu.
+3. Kurala sağ tıklayın ve sonra **Overrides**  >  **sınıfın belirli bir nesnesi için geçersiz kılmalar ' a tıklayın: yönetim sunucusu**.
 4.  Kullanılabilir yönetim sunucuları listesinde, kuralın çalıştırılacağı yönetim sunucusunu seçin.  Bu, farklı çalıştır hesabını ile ilişkilendirmek için daha önce yapılandırdığınız yönetim sunucusu olmalıdır.
 5.  **Etkin** parametre değeri için geçersiz kılma değerini **true** olarak değiştirdiğinizden emin olun.<br><br> ![geçersiz kılma parametresi](./media/scom-assessment/rule.png)
 
@@ -165,7 +165,7 @@ Değerlendirme, varsayılan olarak her 10.080 dakikada bir (veya yedi gün) çal
 
 1. Operations Manager konsolunun **yazma** çalışma alanında, **kurallar** bölümündeki *Microsoft System Center Operations Manager sistem durumu denetimi kuralını Çalıştır* kuralını arayın.
 2. Arama sonuçlarında, metin türünü içeren bir tane seçin *: yönetim sunucusu*.
-3. Kurala sağ tıklayın ve sonra > **sınıfın tüm nesneleri için** **kuralı geçersiz kıl**: yönetim sunucusu ' na tıklayın.
+3. Kurala sağ tıklayın ve sonra sınıfın tüm nesneleri için **kuralı geçersiz kıl**  >  **: yönetim sunucusu**' na tıklayın.
 4. **Aralık** parametre değerini istediğiniz Aralık değeri olarak değiştirin. Aşağıdaki örnekte, değer 1440 dakika (bir gün) olarak ayarlanır.<br><br> ![Interval parametresi](./media/scom-assessment/interval.png)<br>  
 
     Değer 1440 dakikadan daha kısa bir süre içinde ayarlandıysa, kural bir gün aralığında çalışır. Bu örnekte, kural Aralık değerini yoksayar ve bir günde bir sıklıkta çalışır.
@@ -208,7 +208,7 @@ Log Analytics bir sistem durumu denetimi çözümünü kullanabilmeniz için ç�
 Altyapınız için özetlenen uyumluluk değerlendirmelerini görüntüleyin ve sonra öneriler ' e gidin.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Bir odak alanı önerilerini görüntülemek ve düzeltici eylemi gerçekleştirmek için
-1. Üzerinde [https://portal.azure.com](https://portal.azure.com)Azure Portal oturum açın.
+1. Üzerinde Azure portal oturum açın [https://portal.azure.com](https://portal.azure.com) .
 2. Azure portalının sol alt köşesinde bulunan **Diğer hizmetler**'e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics**’i seçin.
 3. Log Analytics abonelikler bölmesinde bir çalışma alanı seçin ve ardından **çalışma alanı Özet** menü öğesine tıklayın.  
 4. **Genel bakış** sayfasında **System Center Operations Manager sistem durumu denetimi** kutucuğuna tıklayın.
@@ -237,9 +237,9 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
 
 3. Yoksaymak istediğiniz önerileri seçin. Sonraki yordamda RecommendationId için değerleri kullanacaksınız.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Bir ıgnorereyorum geçişleri. txt metin dosyası oluşturmak ve kullanmak için
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Bir IgnoreRecommendations.txt metin dosyası oluşturmak ve kullanmak için
 
-1. Ignorereyorumgeçişleri. txt adlı bir dosya oluşturun.
+1. IgnoreRecommendations.txt adlı bir dosya oluşturun.
 2. Log Analytics ayrı bir satırda yoksaymasını istediğiniz her öneri için her bir RecommendationId yapıştırın veya yazın, sonra dosyayı kaydedip kapatın.
 3. Log Analytics önerileri yoksaymasını istediğiniz her bilgisayarda dosyayı aşağıdaki klasöre yerleştirin.
 4. Operations Manager Management Server- *systemdrive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
@@ -258,7 +258,7 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Daha sonra yoksayılan önerilere bakmak istediğinize karar verirseniz, tüm ıgnorereyorum. txt dosyalarını kaldırın veya RecommendationIDs kaldırabilir.
+3. Daha sonra yoksayılan önerilere bakmak istediğinize karar verirseniz IgnoreRecommendations.txt dosyaları kaldırın veya RecommendationIDs kaldırabilir.
 
 ## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager Sistem Durumu Denetimi çözümü SSS
 
@@ -272,17 +272,17 @@ Yok saymak istediğiniz önerileriniz varsa, önerilerin değerlendirme sonuçla
 
 *System Center Operations Manager Sistem Durumu Denetimi çözümünü ekledikten sonra başka bir sunucu bulunursa, kontrol edilecek mi?* Evet, bulduktan sonra varsayılan olarak yedi günde bir işaretlenir.
 
-*Veri toplamayı yapan işlemin adı nedir?* Danışmanorassessment. exe
+*Veri toplamayı yapan işlemin adı nedir?* AdvisorAssessment.exe
 
-*Danışmanorassessment. exe işlemi nerede çalıştırılır?* Danışmanorassessment. exe, sistem durumu denetimi kuralının etkinleştirildiği yönetim sunucusunun HealthService işlemi altında çalışır. Bu işlemi kullanarak, tüm ortamınızı bulma işlemi uzak veri koleksiyonu aracılığıyla gerçekleştirilir.
+*AdvisorAssessment.exe işlemi nerede çalıştırılır?* AdvisorAssessment.exe, sistem durumu denetimi kuralının etkinleştirildiği yönetim sunucusunun HealthService işlemi altında çalışır. Bu işlemi kullanarak, tüm ortamınızı bulma işlemi uzak veri koleksiyonu aracılığıyla gerçekleştirilir.
 
 *Veri toplama için ne kadar sürer?* Sunucudaki veri toplama yaklaşık bir saat sürer. Birçok Operations Manager örneği veya veritabanına sahip ortamlarda daha uzun sürebilir.
 
 *Değerlendirmenin aralığını 1440 dakikadan daha kısa bir süre olarak ayarlarsanız ne yapmalıyım?* Değerlendirme, günde en fazla bir kez çalışacak şekilde önceden yapılandırılmıştır. Aralık değerini 1440 dakikadan daha kısa bir değere geçersiz kılarsınız değerlendirme, Aralık değeri olarak 1440 dakika kullanır.
 
-*Önkoşul hatalarından haberdar olup olmadığını nasıl anlarsınız?* Sistem durumu denetimi çalıştırılmışsa ve sonuçları görmüyorsanız, denetim önkoşullarının bazıları başarısız olabilir. Başarısız önkoşulları görmek için sorguları `Operation Solution=SCOMAssessment` yürütebilir `SCOMAssessmentRecommendation FocusArea=Prerequisites` ve günlük araması yapabilirsiniz.
+*Önkoşul hatalarından haberdar olup olmadığını nasıl anlarsınız?* Sistem durumu denetimi çalıştırılmışsa ve sonuçları görmüyorsanız, denetim önkoşullarının bazıları başarısız olabilir. `Operation Solution=SCOMAssessment` `SCOMAssessmentRecommendation FocusArea=Prerequisites` Başarısız önkoşulları görmek için sorguları yürütebilir ve günlük araması yapabilirsiniz.
 
-*Önkoşul hatalarında bir `Failed to connect to the SQL Instance (….).` ileti var. Sorun nedir?* Veri toplayan işlem, yönetim sunucusundaki HealthService işlemi altında çalışan Danışmanorassessment. exe. Sistem durumu denetiminin bir parçası olarak, işlem Operations Manager veritabanının bulunduğu SQL Server bağlanmaya çalışır. Bu hata, güvenlik duvarı kuralları SQL Server örneğine bağlantıyı engellediğinizde ortaya çıkabilir.
+*`Failed to connect to the SQL Instance (….).`Önkoşul hatalarında bir ileti var. Sorun nedir?* Veri toplayan işlem, yönetim sunucusundaki HealthService işlemi altında çalışır. AdvisorAssessment.exe Sistem durumu denetiminin bir parçası olarak, işlem Operations Manager veritabanının bulunduğu SQL Server bağlanmaya çalışır. Bu hata, güvenlik duvarı kuralları SQL Server örneğine bağlantıyı engellediğinizde ortaya çıkabilir.
 
 *Ne tür veriler toplanır?* Aşağıdaki veri türleri toplanır:-WMI veri-kayıt defteri verileri-EventLog veri-Windows PowerShell, SQL sorguları ve dosya bilgileri toplayıcısı aracılığıyla verileri Operations Manager.
 

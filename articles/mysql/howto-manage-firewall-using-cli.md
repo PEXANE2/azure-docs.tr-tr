@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063525"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure Güvenlik duvarı kuralları oluşturma ve yönetme
@@ -19,7 +19,7 @@ Sunucu düzeyinde güvenlik duvarı kuralları, belirli bir IP adresinden veya b
 
 Sanal ağ (VNet) kuralları, sunucunuza erişimi güvenli hale getirmek için de kullanılabilir. [Azure CLI kullanarak sanal ağ hizmet uç noktaları ve kuralları oluşturma ve yönetme](howto-manage-vnet-using-cli.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Azure CLI’yı yükleyin](https://docs.microsoft.com/cli/azure/install-azure-cli).
 * [MySQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-mysql-server-database-using-azure-cli.md).
 
@@ -42,7 +42,7 @@ Komut
     ```
    Bu komut, bir sonraki adımda kullanmak üzere bir kod verir.
 
-2. Sayfayı [https://aka.ms/devicelogin](https://aka.ms/devicelogin)açmak için bir Web tarayıcısı kullanın ve ardından kodu girin.
+2. Sayfayı açmak için bir Web tarayıcısı kullanın [https://aka.ms/devicelogin](https://aka.ms/devicelogin) ve ardından kodu girin.
 
 3. Sorulduğunda, Azure kimlik bilgilerinizi kullanarak oturum açın.
 

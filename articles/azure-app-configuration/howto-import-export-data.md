@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056875"
 ---
 # <a name="import-or-export-configuration-data"></a>Yapılandırma verilerini içeri veya dışarı aktarma
@@ -28,7 +28,7 @@ Bu makale, uygulama yapılandırmasıyla veri içeri ve dışarı aktarmaya yön
 
 1. Uygulama yapılandırma deponuza gidin ve **işlemler** menüsünden **Içeri/dışarı aktar** ' ı seçin.
 
-1. **İçeri aktar** sekmesinde **kaynak hizmeti** > **yapılandırma dosyası**' nı seçin.
+1. **İçeri aktar** sekmesinde **kaynak hizmeti**  >  **yapılandırma dosyası**' nı seçin.
 
 1. **Dil için** öğesini seçin ve istediğiniz giriş türünü seçin.
 
@@ -52,11 +52,11 @@ Uygulama yapılandırmasında depolanan yazma yapılandırması verilerini başk
 
 1. Uygulama yapılandırma deponuza gidin ve **içeri/dışarı aktar**' ı seçin.
 
-1. **Dışarı aktar** sekmesinde **hedef hizmet** > **yapılandırma dosyası**' nı seçin.
+1. **Dışarı aktar** sekmesinde **hedef hizmet**  >  **yapılandırma dosyası**' nı seçin.
 
 1. İsteğe bağlı olarak bir **ön ek** girin ve anahtarlar Için bir **etiket** ve zaman içinde bir nokta seçin.
 
-1. Bir **dosya türü** > **ayırıcısı**seçin.
+1. Bir **dosya türü**  >  **ayırıcısı**seçin.
 
 1. Dışarı aktarmayı sona bırakmak için **Uygula** ' yı seçin.
 

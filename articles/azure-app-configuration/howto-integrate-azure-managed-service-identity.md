@@ -8,10 +8,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056833"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure yönetilen kimliklerle tümleştirin
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Uygulamanızı, uygulama yapılandırmasına bağlandığınızda yönetilen bir kimlik kullanacak şekilde yapılandırın.
 > * İsteğe bağlı olarak, uygulama yapılandırma Key Vault başvurusu aracılığıyla Key Vault bağlandığınızda Uygulamanızı yönetilen bir kimlik kullanacak şekilde yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -60,7 +60,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
 1. [Azure Portal](https://portal.azure.com), **tüm kaynaklar** ' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposunu seçin.
 
-1. **Erişim denetimi (IAM)** seçeneğini belirleyin.
+1. **Erişim denetimi (IAM)** öğesini seçin.
 
 1. **Erişim denetimi** sekmesinde, **rol atama** kartı Kullanıcı arabiriminde **Ekle** ' yi seçin.
 
@@ -84,7 +84,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
 1. Uygulama yapılandırma deponuzda uç noktayı bulun. Bu URL, Azure portal mağazanın **erişim tuşları** sekmesinde listelenir.
 
-1. *AppSettings. JSON*dosyasını açın ve aşağıdaki betiği ekleyin. Parantez dahil * \<service_endpoint>*, uygulama yapılandırma deponuzu URL 'siyle değiştirin. 
+1. *appsettings.js*açın ve aşağıdaki betiği ekleyin. *\<service_endpoint>* Köşeli ayraçları dahil, uygulama yapılandırma deponuzu URL 'siyle değiştirin. 
 
     ```json
     "AppConfig": {
@@ -92,16 +92,16 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     }
     ```
 
-1. *Program.cs*'i açın ve `Azure.Identity` ve `Microsoft.Azure.Services.AppAuthentication` ad alanlarına bir başvuru ekleyin:
+1. *Program.cs*'i açın ve `Azure.Identity` ve ad alanlarına bir başvuru ekleyin `Microsoft.Azure.Services.AppAuthentication` :
 
     ```csharp-interactive
     using Azure.Identity;
     ```
 
-1. Yalnızca uygulama yapılandırmasında doğrudan depolanan değerlere erişmek istiyorsanız yöntemini değiştirerek `CreateWebHostBuilder` `config.AddAzureAppConfiguration()` yöntemi güncelleştirin.
+1. Yalnızca uygulama yapılandırmasında doğrudan depolanan değerlere erişmek istiyorsanız yöntemini `CreateWebHostBuilder` değiştirerek yöntemi güncelleştirin `config.AddAzureAppConfiguration()` .
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`, `CreateWebHostBuilder` .net Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
+    > `CreateHostBuilder``CreateWebHostBuilder`, .NET Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -133,7 +133,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     ```
     ---
 
-1. Hem uygulama yapılandırma değerlerini hem de Key Vault başvurularını kullanmak için, aşağıda gösterildiği gibi *program.cs* güncelleştirin. Bu kod, `KeyVaultClient` `AzureServiceTokenProvider` `UseAzureKeyVault` bir kullanarak yeni bir oluşturur ve bu başvuruyu yöntemine yapılan çağrıya geçirir.
+1. Hem uygulama yapılandırma değerlerini hem de Key Vault başvurularını kullanmak için, aşağıda gösterildiği gibi *program.cs* güncelleştirin. Bu kod `KeyVaultClient` , bir kullanarak yeni bir oluşturur `AzureServiceTokenProvider` ve bu başvuruyu yöntemine yapılan çağrıya geçirir `UseAzureKeyVault` .
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -202,7 +202,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-Kudu yapı sunucusuyla uygulamanız için yerel git dağıtımını etkinleştirmek üzere Cloud Shell ' de çalıştırın [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) .
+Kudu yapı sunucusuyla uygulamanız için yerel git dağıtımını etkinleştirmek üzere [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) Cloud Shell ' de çalıştırın.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -218,7 +218,7 @@ Bu komut, aşağıdaki çıktıya benzer bir işlem sağlar:
 
 ### <a name="deploy-your-project"></a>Projenizi dağıtma
 
-_Yerel Terminal penceresinde_yerel git deponuza bir Azure uzak ekleyin. _ \<URL>'yi_ , [Kudu ile yerel git 'i etkinleştirdiğinizden](#enable-local-git-with-kudu)aldığınız git uzak 'nın URL 'siyle değiştirin.
+_Yerel Terminal penceresinde_yerel git deponuza bir Azure uzak ekleyin. ' _\<url>_ In [kudu Ile yerel git 'i etkinleştirdiğinizden](#enable-local-git-with-kudu)aldığınız git uzak URL 'si ile değiştirin.
 
 ```bash
 git remote add azure <url>
@@ -230,7 +230,7 @@ Aşağıdaki komutla uygulamanızı dağıtmak için Azure uzak deposuna gönder
 git push azure master
 ```
 
-Çıkışta ASP.NET `npm install` for Node. js ve `pip install` Python için MSBuild gibi çalışma zamanına özgü Otomasyon görebilirsiniz.
+Çıkışta çalışma zamanına özgü otomasyon (örneğin, ASP.NET için MSBuild, `npm install` Node.js için ve `pip install` Python için) görebilirsiniz.
 
 ### <a name="browse-to-the-azure-web-app"></a>Azure web uygulamasına göz atma
 
@@ -244,7 +244,7 @@ http://<app_name>.azurewebsites.net
 
 .NET Framework ve Java Spring uygulama yapılandırma sağlayıcılarının yönetilen kimlik için yerleşik desteği de vardır. Bu sağlayıcılardan birini yapılandırdığınızda, deponun URL uç noktasını tam bağlantı dizesi yerine kullanabilirsiniz. 
 
-Örneğin, aşağıdaki ayarları *app. config* dosyasında belirtmek için hızlı başlangıçta oluşturulan .NET Framework konsol uygulamasını güncelleştirebilirsiniz:
+Örneğin, *App.config* dosyasında aşağıdaki ayarları belirtmek için hızlı başlangıçta oluşturulan .NET Framework konsol uygulamasını güncelleştirebilirsiniz:
 
 ```xml
     <configSections>
@@ -272,4 +272,4 @@ http://<app_name>.azurewebsites.net
 Bu öğreticide, uygulama yapılandırmasına erişimi kolaylaştırmak ve uygulamanız için kimlik bilgisi yönetimini geliştirmek üzere bir Azure yönetilen kimliği ekledik. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi için Azure CLı örneklerine devam edin.
 
 > [!div class="nextstepaction"]
-> [CLI örnekleri](./cli-samples.md)
+> [CLı örnekleri](./cli-samples.md)

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
 ms.openlocfilehash: 4969c4f10787fa9b2d601d5b12edf823d1987301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159141"
 ---
 # <a name="onboard-to-the-azure-certified-for-iot-portal"></a>IoT için Microsoft Azure Sertifikalı portalına ekleme
@@ -23,7 +23,7 @@ ms.locfileid: "80159141"
 - IoT Tak ve Kullan önizleme cihazı yetenek modellerini bulun. Bu modelleri kullanarak IoT 'ye yönelik kullanıma yönelik cihazları hızla oluşturabilir ve bunları çözümlerle tümleştirebilirsiniz.
 - Ortak depoya bir cihaz yetenek modeli yayımlayın.
 
-## <a name="sign-in"></a>Oturum açma
+## <a name="sign-in"></a>Oturum açın
 
 [IoT Portal portalında Azure sertifikası](https://aka.ms/ACFI) 'nda oturum açmak için Microsoft _iş hesabınızı_ kullanın. Portal, oturum açtığınızda Microsoft Iş Ortağı Merkezi ile üyeliğinizi denetler:
 

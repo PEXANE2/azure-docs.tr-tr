@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128061"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN tümleştirmesi ile içerik akışı
@@ -33,7 +33,7 @@ Media Services [akış uç NOKTASıNDA](streaming-endpoint-concept.md)CDN 'nin e
 
 Bu konu, [CDN tümleştirmesini](#enable-azure-cdn-integration)etkinleştirmeyi tartışır. Ayrıca, önceden getirme (etkin önbelleğe alma) ve [kaynak-yardım CDN-önceden getirme](#origin-assist-cdn-prefetch) kavramını da açıklar.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 * [Akış uç noktası](streaming-endpoint-concept.md) `hostname` ve akış URL 'si, CDN 'yi etkinleştirip etkinleştirmeksizin aynı kalır.
 * İçeriğinizi CDN ile veya CDN olmadan test etmek istiyorsanız, CDN etkin olmayan başka bir akış uç noktası oluşturun.
@@ -58,7 +58,7 @@ Azure CDN ile tümleştirme Azure Media Services standart akış uç noktaları 
 
 ## <a name="determine-if-a-dns-change-was-made"></a>DNS değişikliğinin yapıldığını belirleme
 
-Kullanarak <https://www.digwebinterface.com>bir akış uç noktasında (trafiğin Azure CDN yönlendirilmekte) DNS değişikliği yapıldığını belirleyebilirsiniz. Sonuçlarda azureedge.net etki alanı adları görürseniz, trafik artık CDN 'ye işaret ediyor.
+Kullanarak bir akış uç noktasında (trafiğin Azure CDN yönlendirilmekte) DNS değişikliği yapıldığını belirleyebilirsiniz <https://www.digwebinterface.com> . Sonuçlarda azureedge.net etki alanı adları görürseniz, trafik artık CDN 'ye işaret ediyor.
 
 ## <a name="origin-assist-cdn-prefetch"></a>Kaynak-yardımcı CDN-önceden getirme
 
@@ -71,7 +71,7 @@ Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile bi
 - Media Services kaynağı, bir sonraki nesneyi önceden getirme için CDN 'e bildirmek üzere "zeka" (Origin-yardım) içermelidir.
 - CDN, önceden getirme ve önbelleğe alma (CDN-önceden getirme bölümü) yapar. CDN 'nin bir önceden getirme veya düzenli getirme, 404 yanıtlarını işleme ve sonsuz önceden getirme döngüsünden kaçınmak için bir yol olduğunu bildirmek üzere "zeka" sahip olması gerekir.
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 *Kaynak-yardım CDN-önceden getirme* özelliğinin avantajları şunları içerir:
 
@@ -84,7 +84,7 @@ Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile bi
 
 ### <a name="how-it-works"></a>Nasıl çalışır?
 
-`Origin-Assist CDN-Prefetch` Üst BILGILER için CDN desteği (hem canlı hem de video isteğe bağlı akış Için) Akamai CDN ile doğrudan sözleşme sahibi olan müşteriler tarafından kullanılabilir. Özelliği, Akamai CDN ve Media Services kaynağı arasındaki aşağıdaki HTTP üst bilgi alışverişlerini içerir:
+Üst bilgiler için CDN desteği `Origin-Assist CDN-Prefetch` (hem canlı hem de video isteğe bağlı akış için) AKAMAI CDN ile doğrudan sözleşme sahibi olan müşteriler tarafından kullanılabilir. Özelliği, Akamai CDN ve Media Services kaynağı arasındaki aşağıdaki HTTP üst bilgi alışverişlerini içerir:
 
 |HTTP üstbilgisi|Değerler|Gönderen|Alıcı|Amaç|
 | ---- | ---- | ---- | ---- | ----- |
@@ -94,12 +94,12 @@ Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile bi
 
 Üst bilgi değişimi 'nin bir parçasını eylemde görmek için aşağıdaki adımları deneyebilirsiniz:
 
-1. Bir ses veya video segmenti veya parçası için Media Services kaynağına bir istek vermek üzere Postman veya kıvrımlı kullanın. Üst bilgiyi `CDN-Origin-Assist-Prefetch-Enabled: 1` isteğe eklediğinizden emin olun.
+1. Bir ses veya video segmenti veya parçası için Media Services kaynağına bir istek vermek üzere Postman veya kıvrımlı kullanın. Üst bilgiyi isteğe eklediğinizden emin olun `CDN-Origin-Assist-Prefetch-Enabled: 1` .
 2. Yanıtta, üst bilgiyi `CDN-Origin-Assist-Prefetch-Path` değeri olarak göreli bir yol görmeniz gerekir.
 
 ### <a name="supported-streaming-protocols"></a>Desteklenen akış protokolleri
 
-`Origin-Assist CDN-Prefetch` Özelliği, canlı ve isteğe bağlı akış için aşağıdaki akış protokollerini destekler:
+`Origin-Assist CDN-Prefetch`Özelliği, canlı ve isteğe bağlı akış için aşağıdaki akış protokollerini destekler:
 
 * HLS v3
 * HLS v4
@@ -124,9 +124,9 @@ Bu hedefe ulaşmak için, bir akış uç noktası (Origin) ve CDN 'nin el ile bi
 
 * Canlı akış için, sonraki segment veya parça henüz kullanılamıyorsa, kaynak yardımı 'nda ne olur?
 
-    Bu durumda Media Services kaynağı üst bilgi sağlamaz `CDN-Origin-Assist-Prefetch-Path` ve CDN-önceden getirme gerçekleşmeyecektir.
+    Bu durumda Media Services kaynağı `CDN-Origin-Assist-Prefetch-Path` üst bilgi sağlamaz ve CDN-önceden getirme gerçekleşmeyecektir.
 
-* Dinamik bildirim `Origin-Assist CDN-Prefetch` filtreleriyle nasıl çalışır?
+* `Origin-Assist CDN-Prefetch`Dinamik bildirim filtreleriyle nasıl çalışır?
 
     Bu özellik bildirim filtresinden bağımsız olarak çalışmaktadır. Sonraki parça bir filtre penceresinin dışında olduğunda, ham istemci bildirimine bakarak ve sonra CDN önceden getirme yanıt üst bilgisi olarak döndürüldüğünden URL 'SI yine de bulunur. Bu nedenle CDN, DASH/HLS/Düzgünleştir bildiriminden filtrelenmiş bir parçanın URL 'sini alır. Ancak, oynatıcı bu parçayı getirmek için hiçbir şekilde CDN 'ye bir GET isteği oluşturmaz, çünkü bu parça Player tarafından tutulan DASH/HLS/düzgün bildirimde yer almamaktadır (oyuncu bu parçanın varlığını bilmez).
 

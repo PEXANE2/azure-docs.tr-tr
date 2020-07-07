@@ -15,10 +15,10 @@ ms.custom:
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f8bafb04d0a5d9c6d25a7ed7e155888d492e9fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050777"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
@@ -62,9 +62,9 @@ Federasyon kimlik doğrulaması kullanıyorsanız ve Kullanıcı Azure Active Di
 
 Bu sorunu çözmek için, dış kullanıcının Yöneticisi kullanıcının hesabını Azure Active Directory eşitlemelidir.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Normalde geçerli bir\#karakter olmayan ' ' ne olur? Azure AD ile eşitleme?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>\#Normalde geçerli bir karakter olmayan ' ' ne olur? Azure AD ile eşitleme?
 
-"\#", Azure AD B2B işbirliği veya dış kullanıcılar için UPN 'de ayrılmış bir karakter olduğundan, davet edilen hesap user@contoso.com USER_CONTOSO. com # ext #@fabrikam.onmicrosoft.comolur. Bu nedenle \# , şirket Içinden gelen UPN 'ler ' de Azure Portal oturum açmasına izin verilmez. 
+" \# ", Azure AD B2B işbirliği veya dış kullanıcılar Için UPN 'de ayrılmış bir karakter olduğundan, davet edilen hesap user@contoso.com user_contoso. com # ext # olur @fabrikam.onmicrosoft.com . Bu nedenle, \# Şirket içinden gelen UPN 'ler ' de Azure Portal oturum açmasına izin verilmez. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Dış kullanıcıları eşitlenmiş bir gruba eklerken bir hata alıyorum
 

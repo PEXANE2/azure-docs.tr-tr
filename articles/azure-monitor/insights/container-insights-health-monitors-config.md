@@ -4,10 +4,10 @@ description: Bu makale, kapsayıcılar için Azure Izleyici 'de sistem durumu iz
 ms.topic: conceptual
 ms.date: 12/01/2019
 ms.openlocfilehash: 99ea6e96f5a8a486784cb3d633a6e031b60eaad7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055713"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Kapsayıcılar için Azure Izleyici durum izleyici yapılandırma kılavuzu
@@ -26,7 +26,7 @@ Belirli bir nesnenin genel sistem durumu sahip olduğu izleyicilerinin her birin
 
 ## <a name="types-of-monitors"></a>İzleyici türleri
 
-|İzleme | Açıklama | 
+|İzleyici | Description | 
 |--------|-------------|
 | Birim izleyicisi |Birim izleyicisi bir kaynağın veya uygulamanın bazı yönlerini ölçer. Bu, kaynağın performansını veya kullanılabilirliğini belirlemede bir performans sayacı denetleniyor olabilir. |
 |Toplam Izleyici | Toplama izleyicileri, tek bir sistem durumu toplu sistem durumu sağlamak için birden çok monitörü gruplar. Birim izleyicileri genellikle belirli bir toplam izleyici altında yapılandırılır. Örneğin, bir düğüm toplama izleyicisi, düğüm CPU kullanımı, bellek kullanımı ve düğüm durumunun durumunu toplar.
@@ -54,7 +54,7 @@ Kapsayıcılar için Azure Izleyici, aşağıdaki gibi yapılandırılmış bir 
 
 ### <a name="unit-monitors"></a>Birim izleyicileri
 
-|**İzleyici adı** | İzleyici türü | **Açıklama** | **Parametre** | **Deeri** |
+|**İzleyici adı** | İzleyici türü | **Açıklama** | **Parametre** | **Değer** |
 |-----------------|--------------|-----------------|---------------|-----------|
 |Düğüm bellek kullanımı |Birim izleyicisi |Bu izleyici, cadvizörü raporlanan verileri kullanarak bir düğümün bellek kullanımını dakikada bir değerlendirir. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
 |Düğüm CPU kullanımı |Birim Izleyicisi |Bu izleyici, cadvizörü tarafından bildirilen verileri kullanarak her dakikada düğümün CPU kullanımını denetler. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||

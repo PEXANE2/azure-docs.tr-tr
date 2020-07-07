@@ -8,10 +8,10 @@ ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80057009"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Kullanıcıların bir alt kümesi için bir özelliği etkinleştirmek üzere özellik filtrelerini kullanma
@@ -20,7 +20,7 @@ ms.locfileid: "80057009"
 
 Buna karşılık, _koşullu Özellik bayrağı_ Özellik bayrağının dinamik olarak etkinleştirilmesini veya devre dışı bırakılbilmesini sağlar. Uygulama, özellik bayrağı ölçütlerine bağlı olarak farklı şekilde davranmayabilir. Yeni özelliğinizi ilk başta kullanıcıların küçük bir alt kümesine göstermek istediğinizi varsayalım. Koşullu Özellik bayrağı, bazı kullanıcılar için özellik bayrağını diğerleri için devre dışı bırakarak etkinleştirmenizi sağlar. _Özellik filtreleri_ her değerlendirildiğinde Özellik bayrağının durumunu tespit edin.
 
-`Microsoft.FeatureManagement` Kitaplık iki özellik filtresi içerir:
+`Microsoft.FeatureManagement`Kitaplık iki özellik filtresi içerir:
 
 - `PercentageFilter`Özellik bayrağını bir yüzdeye göre izin vermez.
 - `TimeWindowFilter`belirli bir zaman penceresi sırasında özellik bayrağını sunar.
@@ -29,7 +29,7 @@ Ayrıca, [Microsoft. FeatureManagement. IFeatureFilter arabirimini](/dotnet/api/
 
 ## <a name="registering-a-feature-filter"></a>Özellik filtresini kaydetme
 
-Özellik filtresinin adını belirterek, `AddFeatureFilter` yöntemini çağırarak bir özellik filtresi kaydedersiniz. Örneğin, aşağıdaki kod kaydedilir `PercentageFilter`:
+Özellik `AddFeatureFilter` filtresinin adını belirterek, yöntemini çağırarak bir özellik filtresi kaydedersiniz. Örneğin, aşağıdaki kod kaydedilir `PercentageFilter` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -43,7 +43,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Bazı özellik filtrelerinin ek ayarları vardır. Örneğin, `PercentageFilter` bir yüzdeyi temel alarak bir özelliği etkinleştirir. Kullanılacak yüzdeyi tanımlayan bir ayara sahiptir.
 
-Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayrakları için yapılandırabilirsiniz. Örneğin, bir Web uygulamasına yönelik isteklerin% `PercentageFilter` 50 ' i için özellik bayrağını etkinleştirmek üzere kullanmak için şu adımları izleyin:
+Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayrakları için yapılandırabilirsiniz. Örneğin, `PercentageFilter` bir Web uygulamasına yönelik isteklerin %50 ' i için özellik bayrağını etkinleştirmek üzere kullanmak için şu adımları izleyin:
 
 1. Bir özellik bayrağıyla Web uygulaması oluşturmak için [hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme](./quickstart-feature-flag-aspnet-core.md) ' deki yönergeleri izleyin.
 
@@ -80,7 +80,7 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
 
 ## <a name="feature-filters-in-action"></a>Eylemde özellik filtreleri
 
-Bu özellik bayrağının etkilerini görmek için uygulamayı başlatın ve tarayıcınızdaki **yenileme** düğmesine birden çok kez basın. *Beta* öğesinin araç çubuğunda yaklaşık %50 ile göründüğünü görürsünüz. Bir istek alt kümesi için `PercentageFilter` *Beta* özelliğini devre dışı bıraktığında, bu süre geri kalanı gizlidir. Aşağıdaki videoda bu davranış eylemi gösterilmektedir.
+Bu özellik bayrağının etkilerini görmek için uygulamayı başlatın ve tarayıcınızdaki **yenileme** düğmesine birden çok kez basın. *Beta* öğesinin araç çubuğunda yaklaşık %50 ile göründüğünü görürsünüz. `PercentageFilter`Bir istek alt kümesi Için *Beta* özelliğini devre dışı bıraktığında, bu süre geri kalanı gizlidir. Aşağıdaki videoda bu davranış eylemi gösterilmektedir.
 
 > [!div class="mx-imgBorder"]
 > ![PercentageFilter](./media/feature-flags-percentagefilter.gif)

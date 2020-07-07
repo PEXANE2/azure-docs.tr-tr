@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239930"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API kullanarak Apache Hadoop kümeleri oluşturma
@@ -24,13 +24,13 @@ Azure Resource Manager şablonu ve Azure REST API kullanarak HDInsight kümesi o
 Azure REST API, Azure platformunda barındırılan, HDInsight kümeleri gibi yeni kaynaklar oluşturma da dahil olmak üzere yönetim işlemleri gerçekleştirmenize olanak tanır.
 
 > [!NOTE]  
-> Bu belgedeki adımlar, Azure REST API ile iletişim kurmak için [kıvrımlı (https://curl.haxx.se/) ](https://curl.haxx.se/) yardımcı program) kullanır.
+> Bu belgedeki adımlar, Azure REST API ile iletişim kurmak için [kıvrımlı ( https://curl.haxx.se/) ](https://curl.haxx.se/) yardımcı program) kullanır.
 
 ## <a name="create-a-template"></a>Şablon oluşturma
 
 Azure Resource Manager şablonlar, **kaynak grubunu** ve içindeki tüm kaynakları (HDInsight gibi) tanımlayan JSON belgelerdir. Bu şablon tabanlı yaklaşım, HDInsight için ihtiyaç duyduğunuz kaynakları tek bir şablonda tanımlamanızı sağlar.
 
-Aşağıdaki JSON belgesi, SSH kullanıcı hesabının güvenliğini sağlamak için bir parola kullanarak Linux tabanlı [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password)bir küme oluşturan öğesinden şablon ve parametre dosyalarının birleşmesi olur.
+Aşağıdaki JSON belgesi [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) , SSH kullanıcı hesabının güvenliğini sağlamak için bir parola kullanarak Linux tabanlı bir küme oluşturan öğesinden şablon ve parametre dosyalarının birleşmesi olur.
 
    ```json
    {
@@ -214,7 +214,7 @@ Bu örnek, bu belgedeki adımlarda kullanılır. **Parameters** bölümündeki �
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure aboneliğinizde oturum açın
 
-[Azure CLI ile çalışmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) bölümünde belgelenen adımları izleyin ve `az login` komutunu kullanarak aboneliğinize bağlanın.
+[Azure CLI ile çalışmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) bölümünde belgelenen adımları izleyin ve komutunu kullanarak aboneliğinize bağlanın `az login` .
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
@@ -235,10 +235,10 @@ Bu örnek, bu belgedeki adımlarda kullanılır. **Parameters** bölümündeki �
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    , `--display-name` `--homepage`, Ve `--identifier-uris` değerlerini kendi değerlerinizle değiştirin. Yeni Active Directory girişi için bir parola girin.
+    , `--display-name` `--homepage` , Ve değerlerini `--identifier-uris` kendi değerlerinizle değiştirin. Yeni Active Directory girişi için bir parola girin.
 
    > [!NOTE]  
-   > `--home-page` Ve `--identifier-uris` değerlerinin Internet 'te barındırılan gerçek bir Web sayfasına başvurması gerekmez. Benzersiz URI 'Ler olmalıdır.
+   > `--home-page`Ve `--identifier-uris` değerlerinin Internet 'te barındırılan gerçek bir Web sayfasına başvurması gerekmez. Benzersiz URI 'Ler olmalıdır.
 
    Bu komuttan döndürülen değer, yeni uygulamanın __uygulama kimliğidir__ . Bu değeri kaydedin.
 
@@ -270,7 +270,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-, `$TENANTID` `$APPID`, Ve `$PASSWORD` daha önce alınan veya kullanılan değerlere ayarlayın.
+`$TENANTID`, `$APPID` , Ve `$PASSWORD` daha önce alınan veya kullanılan değerlere ayarlayın.
 
 Bu istek başarılı olursa, bir 200 serisi yanıtı alırsınız ve yanıt gövdesi bir JSON belgesi içerir.
 
@@ -290,10 +290,10 @@ Bu istek tarafından döndürülen JSON belgesi, **access_token**adlı bir öğe
 
 Bir kaynak grubu oluşturmak için aşağıdakileri kullanın.
 
-* Hizmet `$SUBSCRIPTIONID` sorumlusu oluşturulurken ALıNAN abonelik kimliğine ayarlayın.
-* Önceki `$ACCESSTOKEN` adımda alınan erişim belirtecine ayarlayın.
-* Kaynak `DATACENTERLOCATION` grubu oluşturmak istediğiniz veri merkeziyle ve ' de kaynakları ile değiştirin. Örneğin, ' Orta Güney ABD '.
-* Bu `$RESOURCEGROUPNAME` grup için kullanmak istediğiniz ada ayarlayın:
+* `$SUBSCRIPTIONID`Hizmet sorumlusu oluşturulurken alınan ABONELIK kimliğine ayarlayın.
+* `$ACCESSTOKEN`Önceki adımda alınan erişim belirtecine ayarlayın.
+* `DATACENTERLOCATION`Kaynak grubu oluşturmak istediğiniz veri merkeziyle ve ' de kaynakları ile değiştirin. Örneğin, ' Orta Güney ABD '.
+* `$RESOURCEGROUPNAME`Bu grup için kullanmak istediğiniz ada ayarlayın:
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -304,13 +304,13 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Bu istek başarılı olursa, bir 200 serisi yanıtı alırsınız ve yanıt gövdesi, Grup hakkında bilgi içeren bir JSON belgesi içerir. `"provisioningState"` Öğesi bir değeri içerir `"Succeeded"`.
+Bu istek başarılı olursa, bir 200 serisi yanıtı alırsınız ve yanıt gövdesi, Grup hakkında bilgi içeren bir JSON belgesi içerir. `"provisioningState"`Öğesi bir değeri içerir `"Succeeded"` .
 
 ## <a name="create-a-deployment"></a>Dağıtım oluşturma
 
 Şablonu kaynak grubuna dağıtmak için aşağıdaki komutu kullanın.
 
-* Bu `$DEPLOYMENTNAME` dağıtım için kullanmak istediğiniz ada ayarlayın.
+* `$DEPLOYMENTNAME`Bu dağıtım için kullanmak istediğiniz ada ayarlayın.
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -320,7 +320,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 ```
 
 > [!NOTE]  
-> Şablonu bir dosyaya kaydettiyseniz, bunun yerine aşağıdaki komutu kullanabilirsiniz `-d "{ template and parameters}"`:
+> Şablonu bir dosyaya kaydettiyseniz, bunun yerine aşağıdaki komutu kullanabilirsiniz `-d "{ template and parameters}"` :
 >
 > `--data-binary "@/path/to/file.json"`
 
@@ -339,7 +339,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Bu komut, dağıtım işlemi hakkında bilgi içeren bir JSON belgesi döndürür. `"provisioningState"` Öğesi dağıtımın durumunu içerir. Bu öğe bir değeri içeriyorsa `"Succeeded"`, Dağıtım başarıyla tamamlanır.
+Bu komut, dağıtım işlemi hakkında bilgi içeren bir JSON belgesi döndürür. `"provisioningState"`Öğesi dağıtımın durumunu içerir. Bu öğe bir değeri içeriyorsa `"Succeeded"` , Dağıtım başarıyla tamamlanır.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 

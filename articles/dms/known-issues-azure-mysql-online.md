@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80235286"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti ile MySQL için Azure DB 'ye yönelik sınırlamalar & çevrimiçi geçiş sorunları
@@ -33,9 +33,9 @@ MySQL 'in MySQL için Azure veritabanı 'na çevrimiçi geçişlerle ilişkili b
   - MySQL Community sürümü
   - InnoDB altyapısı
 - Aynı sürüm geçişi. MySQL 5,6 ' i MySQL için Azure veritabanı 5,7 ' e geçirme desteklenmez.
-- My. ini (Windows) veya My. cnf (Unix) içinde ikili günlüğü etkinleştir
+- my.ini (Windows) veya My. cnf (Unix) ' de ikili günlüğü etkinleştir
   - Server_id herhangi bir sayıya daha büyük veya eşittir 1 olarak ayarlayın, örneğin, Server_id = 1 (yalnızca MySQL 5,6 için)
-  - Set log-bin = \<Path> (yalnızca MySQL 5,6 için)
+  - Set log-bin = \<path> (yalnızca MySQL 5,6 için)
   - Binlog_format = satırı ayarla
   - Expire_logs_days = 5 (yalnızca MySQL 5,6 için önerilir)
 - Kullanıcının ReplicationAdmin rolü olmalıdır.
@@ -93,7 +93,7 @@ Büyük nesne (LOB) sütunları, boyutu büyük büyüyerek kullanılan sütunla
 
 AWS RDS MySQL 'ten MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirmeye çalıştığınızda, aşağıdaki hatalarda gelebiliriz.
 
-- **Hata:** '{0}' Veritabanında, hedefte yabancı anahtar (ler) vardır. Hedefi düzeltin ve yeni bir veri geçişi etkinliği başlatın. Yabancı anahtar (ler) i listelemek için aşağıdaki betiği hedefle yürütün
+- **Hata:** ' {0} ' Veritabanında, hedefte yabancı anahtar (ler) vardır. Hedefi düzeltin ve yeni bir veri geçişi etkinliği başlatın. Yabancı anahtar (ler) i listelemek için aşağıdaki betiği hedefle yürütün
 
   **Kısıtlama**: şemanızda yabancı anahtarlarınız varsa, geçişin ilk yükü ve sürekli eşitlenmesi başarısız olur.
   **Geçici çözüm**: doğrudan dış anahtar betiği çıkarmak ve yabancı anahtar betiği eklemek için MySQL çalışma ekranında aşağıdaki betiği yürütün:
@@ -102,7 +102,7 @@ AWS RDS MySQL 'ten MySQL için Azure veritabanı 'na çevrimiçi geçiş gerçek
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
   ```
 
-- **Hata:** '{0}' Veritabanı sunucuda yok. Sağlanan MySQL kaynak sunucusu büyük/küçük harfe duyarlı. Lütfen veritabanı adını denetleyin.
+- **Hata:** ' {0} ' Veritabanı sunucuda yok. Sağlanan MySQL kaynak sunucusu büyük/küçük harfe duyarlı. Lütfen veritabanı adını denetleyin.
 
   **Kısıtlama**: bir MySQL veritabanını komut satırı ARABIRIMI (CLI) kullanarak Azure 'a geçirirken, kullanıcılar bu hataya gelebilir. Hizmet, kaynak sunucuda veritabanını bulamadı, bu durum yanlış veritabanı adı sağlamış olabilirsiniz veya listelenen sunucuda veritabanı yok olabilir. Note veritabanı adları büyük/küçük harfe duyarlıdır.
 

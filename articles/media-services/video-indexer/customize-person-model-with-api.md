@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: fa41fca7f8ad96cf507aa6f04059b1254c8c3961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127900"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Video Indexer API ile bir kişi modelini özelleştirme
@@ -75,7 +75,7 @@ Yanıt, hesabınızdaki tüm kişi modellerinin (belirtilen hesaptaki varsayıla
 ]
 ```
 
-Bir videoyu dizine veya [yeniden dizinlemeyi oluşturmaya](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) [yönelik bir video yüklerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) `personModelId` parametre için kişi modelinin `id` değerini kullanarak, bir video için kullanmak istediğiniz modeli seçebilirsiniz.
+Bir videoyu `id` `personModelId` dizine veya [yeniden dizinlemeyi oluşturmaya](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) [yönelik bir video yüklerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) parametre için kişi modelinin değerini kullanarak, bir video için kullanmak istediğiniz modeli seçebilirsiniz.
 
 ## <a name="update-a-face"></a>Yüz güncelleştirme
 
@@ -87,7 +87,7 @@ Daha sonra sistem, aynı yüzün aynı yüzü aynı kişi modelini paylaşan di�
 
 Yüzü güncelleştirmek için, [video yüz güncelleştirme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) API 'sini kullanın.
 
-Adlar kişi modelleri için benzersizdir, bu nedenle aynı kişi modelinde aynı `name` parametre değerini iki farklı yüz verirseniz, video Indexer yüzeyleri aynı kişi olarak görüntüler ve videonuzu yeniden atadıktan sonra bu kullanıcılara dönüştürüledirler.
+Adlar kişi modelleri için benzersizdir, bu nedenle aynı kişi modelinde aynı parametre değerini iki farklı yüz verirseniz `name` , video Indexer yüzeyleri aynı kişi olarak görüntüler ve videonuzu yeniden atadıktan sonra bu kullanıcılara dönüştürüledirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

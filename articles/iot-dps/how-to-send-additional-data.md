@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: de6bb3fe0879a69467283e93a04a355876a02cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246696"
 ---
 # <a name="how-to-transfer-a-payload-between-device-and-dps"></a>Cihaz ve DPS arasında yük aktarma
@@ -54,7 +54,7 @@ Cihazınız, DPS 'ye bir [yazmaç cihaz çağrısı](https://docs.microsoft.com/
    ```
 
 ## <a name="sdk-support"></a>SDK desteği
-Bu özellik C, C#, JAVA ve Node. js [Istemci SDK](https://docs.microsoft.com/azure/iot-dps/)'lerinde kullanılabilir.  
+Bu özellik C, C#, JAVA ve Node.js [Istemci SDK](https://docs.microsoft.com/azure/iot-dps/)'lerinde kullanılabilir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure IoT Hub ve Azure IoT Hub cihaz sağlama hizmeti için [Azure ıOT SDK 'sını]( https://github.com/Azure/azure-iot-sdks) kullanarak geliştirme

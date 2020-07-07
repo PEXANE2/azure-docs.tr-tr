@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050812"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
@@ -54,7 +54,7 @@ Kuruluş, B2B işbirliği kullanıcıları eklemek, bunları gerektiği gibi uyg
 Evet. Konuk nesneler, kuruluşunuzun genel adres listesinde (GAL) varsayılan olarak görünmez, ancak Azure Active Directory PowerShell kullanarak bunları görünür hale getirebilirsiniz. Bkz [. genel adres listesinde Konuk nesneleri görünür yapabilir miyim?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Konuk kullanıcıyı sınırlı bir yönetici yapabilir miyim?
-Kesinlikle. Daha fazla bilgi için bkz. [bir role Konuk kullanıcılar ekleme](add-guest-to-role.md).
+Elbette. Daha fazla bilgi için bkz. [bir role Konuk kullanıcılar ekleme](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Azure AD B2B işbirliği, B2B kullanıcılarının Azure portal erişmesine izin veriyor mu?
 Kullanıcılara sınırlı yönetici rolü atanmamışsa, B2B işbirliği kullanıcıları Azure portal erişim gerektirmez. Ancak, sınırlı yönetici rolüne atanan B2B işbirliği kullanıcıları portala erişebilir. Ayrıca, bu yönetici rollerinden birine atanmamış bir Konuk Kullanıcı portala erişebilse, Kullanıcı deneyimin belirli bölümlerine erişebiliyor olabilir. Konuk Kullanıcı rolü, dizinde bazı izinlere sahiptir.
@@ -64,7 +64,7 @@ Kullanıcılara sınırlı yönetici rolü atanmamışsa, B2B işbirliği kullan
 Evet! Tüm konuk ve dış kullanıcıların Azure portal erişimini engelleyen bir koşullu erişim ilkesi oluşturabilirsiniz. Bu ilkeyi yapılandırırken, yanlışlıkla üyelere ve yöneticilere erişimi engellemeyi unutmaktan emin olun.
 
 1. [Azure Portal](https://portal.azure.com/) Güvenlik Yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-2. Azure portalında **Azure Active Directory** seçeneğini belirleyin. 
+2. Azure portal **Azure Active Directory**' ni seçin. 
 3. **Yönet**altında **güvenlik**' i seçin.
 4. **Koru**altında **koşullu erişim**' i seçin. **Yeni ilke**' yi seçin.
 5. **Yeni** sayfada, **ad** metin kutusuna ilke için bir ad girin (örneğin, "konukların portala erişimini engelle").
@@ -82,8 +82,8 @@ Evet. Multi-Factor Authentication ve tüketici e-posta hesaplarının her ikisi 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Azure AD B2B işbirliği kullanıcıları için parola sıfırlamayı destekliyor musunuz?
 Azure AD kiracınız bir kullanıcının giriş dizinidir ve [Kullanıcı parolasını Azure Portal sıfırlayabilirsiniz](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) . Ancak, başka bir Azure AD dizini veya dış kimlik sağlayıcısı tarafından yönetilen bir hesapla oturum açan bir Konuk kullanıcının parolasını doğrudan sıfırlayamazsınız. Yalnızca kullanıcının giriş dizinindeki Konuk Kullanıcı veya yönetici parolayı sıfırlayabilir. Aşağıda, parola sıfırlamanın Konuk kullanıcılar için nasıl çalıştığı hakkında bazı örnekler verilmiştir:
  
-* Bir Microsoft hesabı (örneğin guestuser@live.com) ile oturum açan Konuk kullanıcılar, Microsoft hesabı self servis parola sıfırlama (SSPR) kullanarak kendi parolalarını sıfırlayabilir. [Microsoft hesabı parolanızı sıfırlama](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)bölümüne bakın.
-* Bir Google hesabı veya başka bir dış kimlik sağlayıcısı ile oturum açan Konuk kullanıcılar, kimlik sağlayıcısının SSPR metodunu kullanarak kendi parolalarını sıfırlayabilir. Örneğin, Google hesabı guestuser@gmail.com olan bir Konuk Kullanıcı parolanızı [değiştirme veya sıfırlama](https://support.google.com/accounts/answer/41078)bölümündeki yönergeleri izleyerek parolalarını sıfırlayabilir.
+* Bir Microsoft hesabı (örneğin) ile oturum açan Konuk kullanıcılar, guestuser@live.com Microsoft hesabı self servis parola sıfırlama (SSPR) kullanarak kendi parolalarını sıfırlayabilir. [Microsoft hesabı parolanızı sıfırlama](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)bölümüne bakın.
+* Bir Google hesabı veya başka bir dış kimlik sağlayıcısı ile oturum açan Konuk kullanıcılar, kimlik sağlayıcısının SSPR metodunu kullanarak kendi parolalarını sıfırlayabilir. Örneğin, Google hesabı olan bir Konuk Kullanıcı parolanızı guestuser@gmail.com [değiştirme veya sıfırlama](https://support.google.com/accounts/answer/41078)bölümündeki yönergeleri izleyerek parolalarını sıfırlayabilir.
 * Kimlik kiracısı tam zamanında (JıT) veya "viral" kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.
 
 * Konuk kullanıcının ana dizini Azure AD kiracınız ise, kullanıcının parolasını sıfırlayabilirsiniz. Örneğin, bir Kullanıcı oluşturmuş veya şirket içi Active Directory bir kullanıcıyı eşitledi ve Kullanıcıtürünü Konuk olarak ayarlamış olabilirsiniz. Bu Kullanıcı dizininizde bulunduğundan, Azure portal parolalarını sıfırlayabilirsiniz.

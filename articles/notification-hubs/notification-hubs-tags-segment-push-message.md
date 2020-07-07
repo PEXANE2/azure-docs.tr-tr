@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.openlocfilehash: 2432ac41645e373ea3a87ff7e69ef02a4e30c81d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062305"
 ---
 # <a name="routing-and-tag-expressions"></a>Yönlendirme ve etiket ifadeleri
@@ -39,7 +39,7 @@ Belirli bildirim kayıtlarını hedeflemek için tek yol, etiketleri bunlarla il
 
 ## <a name="tags"></a>Etiketler
 
-Etiket, en fazla 120 karakter uzunluğunda olabilir ve alfasayısal karakterler ve şu`_`alfasayısal olmayan karakterleri içerir: ' ', '`@`', '`#`', '`.`', '`:`', '`-`'. Aşağıdaki örnekte, belirli müzik grupları hakkında bildirim almak için kullanabileceğiniz bir uygulama gösterilmektedir. Bu senaryoda, bildirimleri yönlendirmeye yönelik basit bir yol, kayıtları aşağıdaki şekilde farklı bantları temsil eden etiketlerle etiketleyebilir:
+Etiket, en fazla 120 karakter uzunluğunda olabilir ve alfasayısal karakterler ve şu alfasayısal olmayan karakterleri içerir: ' `_` ', ' `@` ', ' `#` ', ' `.` ', ' `:` ', ' `-` '. Aşağıdaki örnekte, belirli müzik grupları hakkında bildirim almak için kullanabileceğiniz bir uygulama gösterilmektedir. Bu senaryoda, bildirimleri yönlendirmeye yönelik basit bir yol, kayıtları aşağıdaki şekilde farklı bantları temsil eden etiketlerle etiketleyebilir:
 
 ![Etiketlere genel bakış](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
@@ -47,7 +47,7 @@ Etiket, en fazla 120 karakter uzunluğunda olabilir ve alfasayısal karakterler 
 
 Etiketlere yönelik kayıtlar oluşturma hakkında daha fazla bilgi için bkz. [kayıt yönetimi](notification-hubs-push-notification-registration-management.md).
 
-`Microsoft.Azure.NotificationHubs.NotificationHubClient` [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK 'sında sınıfının bildirim gönder yöntemlerini kullanarak etiketlere bildirim gönderebilirsiniz. Node. js veya anında Iletme bildirimleri REST API 'Lerini de kullanabilirsiniz.  SDK kullanarak bir örnek aşağıda verilmiştir.
+`Microsoft.Azure.NotificationHubs.NotificationHubClient` [Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK 'sında sınıfının bildirim gönder yöntemlerini kullanarak etiketlere bildirim gönderebilirsiniz. Node.js veya anında Iletme bildirimleri REST API 'Lerini de kullanabilirsiniz.  SDK kullanarak bir örnek aşağıda verilmiştir.
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
@@ -69,7 +69,7 @@ Etiketler önceden sağlanmamalıdır ve uygulamaya özgü birden çok kavrama b
 
 Bu örnekte, Çiğdem, Beatles güncelleştirmeleriyle ilgileniyor ve Bob, Wailers güncelleştirmeleriyle ilgileniyor. Emre Ayrıca, Charlie 'in yorumlarıyla ilgileniyor ve Charlie Wailers ile ilgileniyor. Beatles 'de Charlie 'in yorumu için bir bildirim gönderildiğinde Notification Hubs hem gamze hem de Bob 'a gönderir.
 
-Etiketlerde birden çok endişeleri kodlayabilmeniz (örneğin, `band_Beatles` veya `follows_Charlie`), Etiketler basit dizelerdir ve değerlerle Özellikler değildir. Kayıt yalnızca belirli bir etiketin varlığı veya yokluğunda eşleşir.
+Etiketlerde birden çok endişeleri kodlayabilmeniz (örneğin, `band_Beatles` veya `follows_Charlie` ), Etiketler basit dizelerdir ve değerlerle Özellikler değildir. Kayıt yalnızca belirli bir etiketin varlığı veya yokluğunda eşleşir.
 
 İlgi alanı gruplarına göndermek için etiketlerin nasıl kullanılacağına ilişkin bir adım adım öğretici için bkz. [son haberler](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
@@ -82,7 +82,7 @@ Etiketleri kullanmanın başka bir yolu da belirli bir kullanıcıyla ilişkili 
 
 ![Kullanıcıları etiketleme](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-Şekilde, etiketli `user_Alice` ileti, etiketli tüm cihazlara ulaşır `user_Alice`.
+Şekilde, etiketli ileti, `user_Alice` etiketli tüm cihazlara ulaşır `user_Alice` .
 
 ## <a name="tag-expressions"></a>Etiket ifadeleri
 
@@ -96,7 +96,7 @@ Red Sox ve Cardınals arasındaki bir oyun hakkında Boston 'da herkese anımsat
 
 ![Etiket ifadeleri](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-Etiket `AND` ifadeleri (`&&`), `OR` `||`() ve `NOT` (`!`) gibi yaygın Boole işleçlerini destekler. parantez de içerebilir. Yalnızca `OR` işleçleri kullanan etiket ifadeleri 20 etikete başvurabilir; işleçleri olan `AND` ifade, ancak `OR` hiçbir işleç 10 etikete başvuramaz; Aksi halde, etiket ifadeleri 6 etiketle sınırlıdır.
+Etiket ifadeleri (), () ve () gibi yaygın Boole işleçlerini destekler `AND` `&&` `OR` `||` `NOT` `!` ; Ayrıca parantez de içerebilir. Yalnızca işleçleri kullanan etiket ifadeleri `OR` 20 etikete başvurabilir; `AND` işleçle ifade, ancak hiçbir `OR` işleç 10 etikete başvuramaz; Aksi takdirde, etiket ifadeleri 6 etiketle sınırlandırılmıştır.
 
 SDK kullanarak etiket ifadeleriyle bildirim göndermek için bir örnek aşağıda verilmiştir:
 

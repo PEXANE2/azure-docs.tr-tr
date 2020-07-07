@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: guybo
 ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066753"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD disk görüntüsünü Azure 'a oluşturma ve yükleme
 Bu makalede, OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturma ve karşıya yükleme işleminin nasıl yapılacağı gösterilir. Karşıya yükledikten sonra, Azure CLı aracılığıyla Azure 'da bir sanal makine (VM) oluşturmak için kendi görüntünüz olarak kullanabilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, aşağıdaki öğeler olduğunu varsaymaktadır:
 
 * **Azure aboneliği** -hesabınız yoksa yalnızca birkaç dakika içinde bir tane oluşturabilirsiniz. Bir MSDN aboneliğiniz varsa bkz. [Visual Studio aboneleri Için aylık Azure kredisi](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Aksi takdirde, [ücretsiz bir deneme hesabı oluşturmayı](https://azure.microsoft.com/pricing/free-trial/)öğrenin.  
@@ -47,7 +47,7 @@ Hyper-V desteği eklenen OpenBSD işletim sistemi 6,1 ' i yüklediğiniz VM 'de 
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Varsayılan olarak, `root` Kullanıcı Azure 'daki sanal makinelerde devre dışıdır. Kullanıcılar, `doas` OPENBSD VM üzerindeki komutunu kullanarak yükseltilmiş ayrıcalıklarla komutları çalıştırabilir. Doas varsayılan olarak etkindir. Daha fazla bilgi için bkz. [doas. conf](https://man.openbsd.org/doas.conf.5). 
+4. Varsayılan olarak, `root` Kullanıcı Azure 'daki sanal makinelerde devre dışıdır. Kullanıcılar, `doas` OpenBSD VM üzerindeki komutunu kullanarak yükseltilmiş ayrıcalıklarla komutları çalıştırabilir. Doas varsayılan olarak etkindir. Daha fazla bilgi için bkz. [doas. conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Azure Aracısı için önkoşulları aşağıdaki gibi yükleyip yapılandırın:
 

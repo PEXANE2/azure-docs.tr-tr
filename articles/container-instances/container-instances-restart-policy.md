@@ -4,13 +4,13 @@ description: Derleme, test veya görüntü işleme işlerinde olduğu gibi, tama
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80131503"
 ---
-# <a name="run-containerized-tasks-with-restart-policies"></a>Yeniden başlatma ilkeleriyle Kapsayıcılı görevleri çalıştırma
+# <a name="run-containerized-tasks-with-restart-policies"></a>Yeniden başlatma ilkeleriyle kapsayıcılı görevleri çalıştırma
 
 Azure Container Instances’da hızla ve kolayca kapsayıcı dağıtma olanağı, bir kapsayıcı örneğinde derleme, test ve görüntü işleme gibi tek kez çalıştırılan görevlerin yürütülmesi için cazip bir platform sağlar.
 
@@ -22,7 +22,7 @@ Bu makalede sunulan örneklerde Azure CLı kullanılır. [Yerel olarak][azure-cl
 
 Azure Container Instances ' de bir [kapsayıcı grubu](container-instances-container-groups.md) oluşturduğunuzda, üç yeniden başlatma ilkesi ayarlarından birini belirtebilirsiniz.
 
-| Yeniden başlatma ilkesi   | Açıklama |
+| Yeniden başlatma ilkesi   | Description |
 | ---------------- | :---------- |
 | `Always` | Kapsayıcı grubundaki kapsayıcılar her zaman yeniden başlatılır. Bu, kapsayıcı oluşturulurken yeniden başlatma ilkesi belirtilmezse uygulanan **varsayılan** ayardır. |
 | `Never` | Kapsayıcı grubundaki kapsayıcılar hiçbir zaman yeniden başlatılmaz. Kapsayıcılar en fazla bir kez çalışır. |
@@ -30,7 +30,7 @@ Azure Container Instances ' de bir [kapsayıcı grubu](container-instances-conta
 
 ## <a name="specify-a-restart-policy"></a>Yeniden başlatma ilkesi belirtin
 
-Yeniden başlatma ilkesi nasıl belirttiğinizde, Azure CLı, Azure PowerShell cmdlet 'leri veya Azure portal gibi kapsayıcı örneklerinizi nasıl oluşturacağınız üzerine bağlıdır. Azure CLı 'da [az Container Create][az-container-create]öğesini `--restart-policy` çağırdığınızda parametresini belirtin.
+Yeniden başlatma ilkesi nasıl belirttiğinizde, Azure CLı, Azure PowerShell cmdlet 'leri veya Azure portal gibi kapsayıcı örneklerinizi nasıl oluşturacağınız üzerine bağlıdır. Azure CLı 'da `--restart-policy` [az Container Create][az-container-create]öğesini çağırdığınızda parametresini belirtin.
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances kapsayıcıyı başlatır ve kapsayıcıdaki uygulama (veya bu durumda betik) çıkış yaptığında durdurur. Azure Container Instances, yeniden başlatma ilkesi `Never` veya `OnFailure`olan bir kapsayıcıyı durdurulduğunda, kapsayıcının durumu **sonlandırıldı**olarak ayarlanır. [Az Container Show][az-container-show] komutuyla bir kapsayıcının durumunu kontrol edebilirsiniz:
+Azure Container Instances kapsayıcıyı başlatır ve kapsayıcıdaki uygulama (veya bu durumda betik) çıkış yaptığında durdurur. Azure Container Instances, yeniden başlatma ilkesi veya olan bir kapsayıcıyı `Never` durdurulduğunda `OnFailure` , kapsayıcının durumu **sonlandırıldı**olarak ayarlanır. [Az Container Show][az-container-show] komutuyla bir kapsayıcının durumunu kontrol edebilirsiniz:
 
 ```azurecli-interactive
 az container show \

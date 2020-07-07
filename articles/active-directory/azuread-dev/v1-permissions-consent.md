@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154483"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v 1.0 uç noktasındaki izinler ve onay
@@ -102,7 +102,7 @@ Azure AD'deki uygulamalar gerekli kaynaklara veya API'lere erişim kazanmak içi
   - `Permission`kullanıcının bu verileri üzerinde işlem yapması için eyleme karşılık gelir
   - `Modifier`farklı bir iznin özelleştirmelerini anlatmak için isteğe bağlı olarak kullanılır
     
-    Örneğin:
+    Örnek:
   - Mail.Read - Kullanıcıların postayı okumasına izin verir.
   - Mail.ReadWrite - Kullanıcıların postayı yazmasına veya okumasına izin verir.
   - Mail.ReadWrite.All - Yöneticinin veya kullanıcının kuruluştaki tüm postaya erişmesine izin verir.

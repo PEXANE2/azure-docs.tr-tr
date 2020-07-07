@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
 ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127973"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Video Indexer API ile dil modelini özelleştirme
@@ -105,7 +105,7 @@ Yanıt, yeni eğitilen dil modelinde meta veriler sağlar ve bu örnek JSON çı
 }
 ```
 
-Döndürülen `id` , dil modellerini ayırt etmek için kullanılan BENZERSIZ bir kimliktir, ancak `languageModelId` video API 'leri dizine eklemek ve [yeniden dizinlemek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) için [bir video yüklemek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) için kullanılır (Ayrıca, video Indexer karşıya `linguisticModelId` yükleme/yeniden oluşturma API 'lerinde olarak da bilinir).
+Döndürülen, `id` dil modellerini ayırt etmek için kullanılan benzersiz BIR kimliktir, ancak `languageModelId` video API 'leri dizine eklemek ve [yeniden dizinlemek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) için [bir video yüklemek](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) için kullanılır (Ayrıca, `linguisticModelId` video Indexer karşıya yükleme/yeniden oluşturma API 'lerinde olarak da bilinir).
 
 ## <a name="delete-a-language-model"></a>Dil modelini silme
 
@@ -157,11 +157,11 @@ Yanıt, yeni eğitilen dil modelinde meta veriler sağlar ve bu örnek JSON çı
 }
 ```
 
-`id` Dosyanın içeriğini indirmek için yanıtta döndürülen dosyaları kullanın.
+`id`Dosyanın içeriğini indirmek için yanıtta döndürülen dosyaları kullanın.
 
 ## <a name="update-a-file-from-a-language-model"></a>Dil modelinden dosya güncelleştirme
 
-[Bir dosyayı güncelleştirme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) , belirtilen hesaptaki özel dil modelinde bir dosyanın `enable` adını ve durumunu güncelleştirmenize olanak tanır.
+[Bir dosyayı güncelleştirme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) , `enable` belirtilen hesaptaki özel dil modelinde bir dosyanın adını ve durumunu güncelleştirmenize olanak tanır.
 
 ### <a name="response"></a>Yanıt
 
@@ -177,7 +177,7 @@ Yanıt, aşağıdaki örnek JSON çıktısı biçimini izleyerek güncelleştird
 }
 ```
 
-`id` Dosyanın içeriğini indirmek için yanıtta döndürülen dosyayı kullanın.
+`id`Dosyanın içeriğini indirmek için yanıtta döndürülen dosyayı kullanın.
 
 ## <a name="get-a-specific-language-model"></a>Belirli bir dil modelini al
 
@@ -213,7 +213,7 @@ Yanıt, belirtilen dil modelinde meta veriler sağlar ve bu örnek JSON çıkı�
 }
 ```
 
-`id` Dosyanın içeriğini indirmek için yanıtta döndürülen dosyayı kullanın.
+`id`Dosyanın içeriğini indirmek için yanıtta döndürülen dosyayı kullanın.
 
 ## <a name="get-all-the-language-models"></a>Tüm dil modellerini al
 

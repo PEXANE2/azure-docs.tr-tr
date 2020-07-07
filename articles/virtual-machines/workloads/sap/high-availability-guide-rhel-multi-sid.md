@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80247444"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>SAP NetWeaver için Red Hat Enterprise Linux Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu
@@ -120,7 +120,7 @@ SAP NetWeaver yoks, SAP NetWeaver SCS ve SAP NetWeaver ERS sanal konak adı ve s
 
 Aşağıdaki listede, bu çok düzeyli küme örneği için (A) SCS ve, üç SAP sistemiyle ilgili yük dengeleyici yapılandırması gösterilmektedir. SID 'lerin her biri için her bir ASCS ve bir örnek için ayrı ön uç IP, sistem durumu araştırmaları ve yük dengeleme kuralları gerekir. YOKS/ASCS kümesinin bir parçası olan tüm VM 'Leri tek bir ıLB 'nin arka uç havuzuna atayın.  
 
-### <a name="ascs"></a>A RC2
+### <a name="ascs"></a>A PSC
 
 * Ön uç yapılandırması
   * NW1 için IP adresi: 10.3.1.50
@@ -128,17 +128,17 @@ Aşağıdaki listede, bu çok düzeyli küme örneği için (A) SCS ve, üç SAP
   * NW3 için IP adresi: 10.3.1.54
 
 * Araştırma bağlantı noktaları
-  * Bağlantı noktası<strong>&lt;620&gt;NR</strong>, bu nedenle NW1, NW2 ve NW3 araştırma bağlantı noktaları 620**00**, 620**10** ve 620**20**
+  * Bağlantı noktası 620<strong> &lt; &gt; NR</strong>, bu nedenle NW1, NW2 ve NW3 araştırma bağlantı noktaları 620**00**, 620**10** ve 620**20**
 * Yük Dengeleme kuralları-her örnek için bir tane oluşturun, diğer bir deyişle, NW1/ASCS, NW2/yoks ve NW3/yoks.
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;NR&gt; </strong> TCP
-    * 36<strong>&lt;NR&gt; </strong> TCP
-    * 39<strong>&lt;NR&gt; </strong> TCP
-    * 81<strong>&lt;NR&gt; </strong> TCP
-    * 5<strong>&lt;NR&gt;</strong>13 TCP
-    * 5<strong>&lt;NR&gt;</strong>14 TCP
-    * 5<strong>&lt;NR&gt;</strong>16 TCP
+    * 32<strong> &lt; NR &gt; </strong> TCP
+    * 36<strong> &lt; NR &gt; </strong> TCP
+    * 39<strong> &lt; NR &gt; </strong> TCP
+    * 81<strong> &lt; NR &gt; </strong> TCP
+    * 5<strong> &lt; NR &gt; </strong>13 TCP
+    * 5<strong> &lt; NR &gt; </strong>14 TCP
+    * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 ### <a name="ers"></a>SÖZCÜKLERI
 
@@ -148,15 +148,15 @@ Aşağıdaki listede, bu çok düzeyli küme örneği için (A) SCS ve, üç SAP
   * NW3 10.3.1.55 için IP adresi
 
 * Araştırma bağlantı noktası
-  * Bağlantı noktası<strong>&lt;621&gt;NR</strong>, bu nedenle NW1, NW2 ve N3 araştırma bağlantı noktaları 621**02**, 621**12** ve 621**22**
+  * Bağlantı noktası 621<strong> &lt; &gt; NR</strong>, bu nedenle NW1, NW2 ve N3 araştırma bağlantı noktaları 621**02**, 621**12** ve 621**22**
 * Yük Dengeleme kuralları-her örnek için, diğer bir deyişle, NW1/ERS, NW2/ERS ve NW3/ERS için bir tane oluşturun.
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;NR&gt; </strong> TCP
-    * 33<strong>&lt;NR&gt; </strong> TCP
-    * 5<strong>&lt;NR&gt;</strong>13 TCP
-    * 5<strong>&lt;NR&gt;</strong>14 TCP
-    * 5<strong>&lt;NR&gt;</strong>16 TCP
+    * 32<strong> &lt; NR &gt; </strong> TCP
+    * 33<strong> &lt; NR &gt; </strong> TCP
+    * 5<strong> &lt; NR &gt; </strong>13 TCP
+    * 5<strong> &lt; NR &gt; </strong>14 TCP
+    * 5<strong> &lt; NR &gt; </strong>16 TCP
 
 * Arka uç yapılandırması
   * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
@@ -191,7 +191,7 @@ Bu örnekte, sistem **NW1** zaten kümede dağıtıldığını varsaydık. Küme
 
 Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-### <a name="prerequisites"></a>Ön koşullar 
+### <a name="prerequisites"></a>Önkoşullar 
 
 > [!IMPORTANT]
 > Kümeye ek SAP sistemleri dağıtmaya yönelik yönergeleri izlemeden önce, ilk sistem dağıtımı sırasında yalnızca gerekli adımlar olduğundan, kümedeki ilk SAP sistemini dağıtmak için yönergeleri izleyin.  
@@ -206,7 +206,7 @@ Bu belgede şu şekilde varsayılmaktadır:
 
 1. Yeni dağıtılan sistem (yani, **NW2**, **NW3**) için yapılandırma ' yı [Azure Portal aracılığıyla Azure Load Balancer dağıtım](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal)yönergelerini izleyerek mevcut Azure Load Balancer ekleyin. Yapılandırmanız için IP adreslerini, durum araştırma bağlantı noktalarını, Yük Dengeleme kurallarını ayarlayın.  
 
-2. **[A]** ek SAP sistemleri için kurulum ad çözümlemesi. DNS sunucusu kullanabilir veya tüm düğümlerde değişiklik `/etc/hosts` yapabilirsiniz. Bu örnek, `/etc/hosts` dosyanın nasıl kullanılacağını gösterir.  IP adreslerini ve ana bilgisayar adlarını ortamınıza uyarlayın. 
+2. **[A]** ek SAP sistemleri için kurulum ad çözümlemesi. DNS sunucusu kullanabilir veya tüm düğümlerde değişiklik yapabilirsiniz `/etc/hosts` . Bu örnek, dosyanın nasıl kullanılacağını gösterir `/etc/hosts` .  IP adreslerini ve ana bilgisayar adlarını ortamınıza uyarlayın. 
 
     ```
     sudo vi /etc/hosts
@@ -245,7 +245,7 @@ Bu belgede şu şekilde varsayılmaktadır:
 
 4. **[A]** kümeye DAĞıTTıĞıNıZ ek SAP sistemleri için/Sapmnt/SID ve/usr/SAP/Sid/mı/SID/, dosya sistemlerine yönelik bağlama girdilerini ekleyin. Bu örnekte **NW2** ve **NW3**.  
 
-   Dosyayı `/etc/fstab` , kümeye DAĞıTTıĞıNıZ ek SAP sistemleri için dosya sistemleriyle güncelleştirin.  
+   Dosyayı `/etc/fstab` , kümeye dağıttığınız ek SAP sistemleri için dosya sistemleriyle güncelleştirin.  
 
    * Azure NetApp Files kullanıyorsanız [buradaki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation) yönergeleri izleyin  
    * GlusterFS kümesi kullanılıyorsa [buradaki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation) yönergeleri izleyin  
@@ -326,7 +326,7 @@ Bu belgede şu şekilde varsayılmaktadır:
 
    Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun.  
 
-   Daha sonra, yeni oluşturulan ERS grubunun kaynaklarının, aynı SAP sistemi için olan ASCS örneğinin yüklü olduğu küme düğümüne karşı, küme düğümünde çalıştığından emin olun.  Örneğin, üzerine `rhelmsscl1`NW2 ascs YÜKLENMIŞSE, NW2 ers grubunun üzerinde `rhelmsscl2`çalıştığından emin olun.  Gruptaki küme kaynaklarından biri için aşağıdaki komutu çalıştırarak `rhelmsscl2` NW2 ers grubunu öğesine geçirebilirsiniz: 
+   Daha sonra, yeni oluşturulan ERS grubunun kaynaklarının, aynı SAP sistemi için olan ASCS örneğinin yüklü olduğu küme düğümüne karşı, küme düğümünde çalıştığından emin olun.  Örneğin, üzerine NW2 ASCS yüklenmişse `rhelmsscl1` , NW2 ers grubunun üzerinde çalıştığından emin olun `rhelmsscl2` .  `rhelmsscl2`Gruptaki küme kaynaklarından biri için aşağıdaki komutu ÇALıŞTıRARAK NW2 ers grubunu öğesine geçirebilirsiniz: 
 
     ```
       pcs resource move fs_NW2_AERS rhelmsscl2
@@ -386,7 +386,7 @@ Bu belgede şu şekilde varsayılmaktadır:
 
 6. **[A]** /usr/SAP/sapservices dosyasını güncelleştirme
 
-   Sapinit başlangıç betiğinin örneklerinin başlamasını engellemek için, pacemaker tarafından yönetilen tüm örneklere `/usr/sap/sapservices` dosyadan açıklama eklenmelidir.  Aşağıda gösterilen örnek, SAP Systems **NW2** ve **NW3**içindir.  
+   Sapinit başlangıç betiğinin örneklerinin başlamasını engellemek için, pacemaker tarafından yönetilen tüm örneklere dosyadan açıklama eklenmelidir `/usr/sap/sapservices` .  Aşağıda gösterilen örnek, SAP Systems **NW2** ve **NW3**içindir.  
 
    ```
     # On the node where ASCS was installed, comment out the line for the ASCS instacnes
@@ -612,7 +612,7 @@ SAP yüklemenizi şu şekilde doldurun:
 Aşağıdaki testler, Red Hat 'in en iyi yöntemler kılavuzlarındaki test çalışmalarının bir alt kümesidir. Bunlar kolaylık sağlaması için dahil edilmiştir. Küme testlerinin tam listesi için aşağıdaki belgelere başvurun:
 
 * Azure NetApp Files NFS birimleri kullanıyorsanız, [SAP NetWeaver Için Azure VM 'leri yüksek kullanılabilirlik Ile RHEL, SAP uygulamaları için Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) kullanın
-* Yüksek oranda kullanılabilir `GlusterFS`KULLANıLıYORSA, [SAP NetWeaver için RHEL üzerinde SAP Için Azure VM 'lerin yüksek kullanılabilirliğini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)izleyin.  
+* Yüksek oranda kullanılabilir kullanılıyorsa `GlusterFS` , [SAP NetWeaver için RHEL üzerinde SAP Için Azure VM 'lerin yüksek kullanılabilirliğini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)izleyin.  
 
 Her zaman Red Hat en iyi yöntemler kılavuzlarını okuyun ve eklenmiş olabilecek tüm ek testleri gerçekleştirin.  
 Sunulan testler, üç adet SAP sistemi yüklü olan çok düzeyli bir küme olan iki düğümde bulunur.  
@@ -752,7 +752,7 @@ Sunulan testler, üç adet SAP sistemi yüklü olan çok düzeyli bir küme olan
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl2
    ```
 
-   Aşağıdaki komutu, en az bir ASCS örneğinin çalıştırıldığı bir düğümde kök olarak çalıştırın. Bu örnekte, NW1, NW2 ve NW3 için `rhelmsscl1`ascs örneklerinin çalıştığı üzerinde komutunu yürütüyoruz.  
+   Aşağıdaki komutu, en az bir ASCS örneğinin çalıştırıldığı bir düğümde kök olarak çalıştırın. Bu örnekte, `rhelmsscl1` NW1, NW2 ve NW3 IÇIN ASCS örneklerinin çalıştığı üzerinde komutunu yürütüyoruz.  
 
    ```
    echo c > /proc/sysrq-trigger
@@ -796,7 +796,7 @@ Sunulan testler, üç adet SAP sistemi yüklü olan çok düzeyli bir küme olan
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl1
    ```
 
-   Hatalı kaynaklar için iletiler varsa, başarısız kaynakların durumunu temizleyin. Örneğin:
+   Hatalı kaynaklar için iletiler varsa, başarısız kaynakların durumunu temizleyin. Örnek:
 
    ```
    pcs resource cleanup rsc_sap_NW1_ERS02

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128753"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Dsregcmd komutunu kullanarak cihazların sorunlarını giderme
@@ -136,7 +136,7 @@ Bu bölümde, şu anda cihazda oturum açmış olan kullanıcı için çeşitli 
 - **Çalışma yerleşimi:** -geçerli Ntuser bağlamındaki CIHAZA Azure AD kayıtlı hesapları EKLENDIYSE "Evet" olarak ayarlanır.
 - **Wamdefaultset:** -oturum açmış kullanıcı IÇIN bir WAM varsayılan webaccount OLUŞTURULDUYSA "Yes" olarak ayarlayın. Bu alan, dsreg/Status yükseltilmiş bir komut isteminden çalıştırıldığında bir hata görüntüleyebilir. 
 - **Wamdefaultauthority:** -Azure AD için "kuruluşlar" olarak ayarlanır.
-- Azure AD için **Wamdefaultıd:** -Always "https://login.microsoft.com".
+- Azure AD için **Wamdefaultıd:** -Always " https://login.microsoft.com ".
 - **Wamdefaultguid:** -varsayılan WAM webaccount için WAM sağlayıcısının (Azure AD/Microsoft hesabı) GUID 'i. 
 
 ### <a name="sample-user-state-output"></a>Örnek Kullanıcı durumu çıktısı

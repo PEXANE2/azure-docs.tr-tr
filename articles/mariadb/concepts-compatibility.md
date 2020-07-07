@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79532357"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB sürücüleri ve yönetim araçları MariaDB için Azure veritabanı ile uyumlu
@@ -28,8 +28,8 @@ Amaç, en son üç sürümü MariaDB sürücülerini destekliyoruz ve MariaDB s�
 PHP | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | SSL ile PHP 7,0 bağlantısı için, bağlantı dizesinde MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT ekleyin. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO set: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` seçenek false.
 .NET | [GitHub 'da MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [NuGet 'den yükleme paketi](https://www.nuget.org/packages/MySqlConnector/) | 0,27 ve sonrası | 0.26.5 ve öncesi |
 MySQL Bağlayıcısı/ağı | [MySQL Bağlayıcısı/ağı](https://github.com/mysql/mysql-connector-net) | 8,0, 7,0, 6,10 |  | Bir kodlama hatası, bazı UTF8 olmayan Windows sistemlerinde bağlantıların başarısız olmasına neden olabilir.
-Node.js |  [GitHub üzerinde MySQLjs](https://github.com/mysqljs/mysql/) <br> NPM 'den yükleme paketi:<br> NPM 'den Çalıştır `npm install mysql` | 2.15 | 2.14.1 ve öncesi
-GO | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 ve öncesi | Sürüm `allowNativePasswords=true` 1,3 için bağlantı dizesinde kullanın. Sürüm 1,4, bir çözüm içerir `allowNativePasswords=true` ve artık gerekli değildir.
+Node.js |  [GitHub üzerinde MySQLjs](https://github.com/mysqljs/mysql/) <br> NPM 'den yükleme paketi:<br> `npm install mysql`NPM 'den Çalıştır | 2.15 | 2.14.1 ve öncesi
+GO | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 ve öncesi | `allowNativePasswords=true`Sürüm 1,3 için bağlantı dizesinde kullanın. Sürüm 1,4, bir çözüm içerir ve `allowNativePasswords=true` artık gerekli değildir.
 Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2 | 1.2.2 ve öncesi |
 Java | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 ve öncesi |
 

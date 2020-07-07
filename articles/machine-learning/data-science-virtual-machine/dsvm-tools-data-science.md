@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80282316"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde makine öğrenimi ve veri bilimi araçları
@@ -32,7 +32,7 @@ DSVMs üzerindeki makine öğrenimi araçlarından ve kitaplıklarından bazıla
 | Desteklenen sürümler     | Windows (Conda Environment: AzureML), Linux (Conda ortamı: py36)    |
 | Tipik kullanımlar      | Genel makine öğrenimi platformu      |
 | Nasıl yapılandırılır veya yüklenir?      |  GPU desteğiyle yüklendi   |
-| Nasıl kullanılır veya çalıştırılır      | Bir Python SDK ve Azure CLı olarak. Windows sürümünde *veya* `py36` Linux Edition 'da `AzureML` Conda ortamına etkinleştirin.      |
+| Nasıl kullanılır veya çalıştırılır      | Bir Python SDK ve Azure CLı olarak. `AzureML`Windows sürümünde *veya* Linux Edition 'da Conda ortamına etkinleştirin `py36` .      |
 | Örneklere bağlantı      | Örnek jupi Not defterleri, `AzureML` Not defterleri altındaki dizine eklenir.  |
 | İlgili araçlar      | Visual Studio Code, Jupyıter   |
 
@@ -43,12 +43,12 @@ DSVMs üzerindeki makine öğrenimi araçlarından ve kitaplıklarından bazıla
 | Bu nedir?   | Bellek içi, dağıtılmış, hızlı ve ölçeklenebilir makine öğrenimini destekleyen açık kaynaklı bir AI platformu.  |
 | Desteklenen sürümler      | Linux   |
 | Tipik kullanımlar      | Genel amaçlı dağıtılmış, ölçeklenebilir makine öğrenimi   |
-| Nasıl yapılandırılır veya yüklenir?      | H2O yüklendi `/dsvm/tools/h2o`.      |
-| Nasıl kullanılır veya çalıştırılır      | X2Go kullanarak VM 'ye bağlanın. Yeni bir Terminal başlatın ve çalıştırın `java -jar /dsvm/tools/h2o/current/h2o.jar`. Sonra bir Web tarayıcısı başlatın ve ' e `http://localhost:54321`bağlanın.      |
-| Örneklere bağlantı      | Örnek, `h2o` dizin altında jupo 'DA bulunan VM 'de kullanılabilir.      |
+| Nasıl yapılandırılır veya yüklenir?      | H2O yüklendi `/dsvm/tools/h2o` .      |
+| Nasıl kullanılır veya çalıştırılır      | X2Go kullanarak VM 'ye bağlanın. Yeni bir Terminal başlatın ve çalıştırın `java -jar /dsvm/tools/h2o/current/h2o.jar` . Sonra bir Web tarayıcısı başlatın ve ' e bağlanın `http://localhost:54321` .      |
+| Örneklere bağlantı      | Örnek, dizin altında Jupo 'da bulunan VM 'de kullanılabilir `h2o` .      |
 | İlgili araçlar      | Apache Spark, MXNet, XGBoost, parlak su, derin su    |
 
-Dsvms üzerinde, DSVMs için Anaconda Python dağıtımının parçası olan popüler `scikit-learn` paket gibi diğer makine öğrenimi kitaplıkları vardır. Python, R ve Julia 'da bulunan paketlerin listesini denetlemek için ilgili paket yöneticilerini çalıştırın.
+Dsvms üzerinde, `scikit-learn` dsvms Için Anaconda Python dağıtımının parçası olan popüler paket gibi diğer makine öğrenimi kitaplıkları vardır. Python, R ve Julia 'da bulunan paketlerin listesini denetlemek için ilgili paket yöneticilerini çalıştırın.
 
 ## <a name="lightgbm"></a>LightGBM
 
@@ -57,7 +57,7 @@ Dsvms üzerinde, DSVMs için Anaconda Python dağıtımının parçası olan pop
 | Bu nedir?   | Karar ağacı algoritmalarına dayanan hızlı, dağıtılmış, yüksek performanslı gradyan-arttırma (GBDT, GBRT, GBM veya MART) çerçevesi. Bu, sıralama, sınıflandırma ve diğer birçok makine öğrenimi görevi için kullanılır.    |
 | Desteklenen sürümler      | Windows, Linux    |
 | Tipik kullanımlar      | Genel amaçlı gradyan arttırma çerçevesi      |
-| Nasıl yapılandırılır veya yüklenir?      | Windows 'ta, LightGBM bir Python paketi olarak yüklenir. Linux 'ta, komut satırı çalıştırılabilir dosyası `/opt/LightGBM/lightgbm`, R paketi yüklenir ve Python paketleri yüklenir.     |
+| Nasıl yapılandırılır veya yüklenir?      | Windows 'ta, LightGBM bir Python paketi olarak yüklenir. Linux 'ta, komut satırı çalıştırılabilir dosyası, `/opt/LightGBM/lightgbm` R paketi yüklenir ve Python paketleri yüklenir.     |
 | Örneklere bağlantı      | [LightGBM Kılavuzu](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
 | İlgili araçlar      | MXNet, XgBoost  |
 
@@ -67,7 +67,7 @@ Dsvms üzerinde, DSVMs için Anaconda Python dağıtımının parçası olan pop
 | Bu nedir?   |   R kullanarak veri madenciliği için grafik kullanıcı arabirimi.   |
 | Desteklenen sürümler     | Windows, Linux     |
 | Tipik kullanımlar      | R için genel UI veri araştırma aracı    |
-| Nasıl kullanılır veya çalıştırılır      | Bir kullanıcı arabirimi aracı olarak. Windows üzerinde, bir komut istemi başlatın, R çalıştırın ve ardından R içinde komutunu çalıştırın `rattle()`. Linux 'ta X2Go ile bağlanın, bir Terminal başlatın, R çalıştırın ve ardından R içinde çalıştırın `rattle()`. |
+| Nasıl kullanılır veya çalıştırılır      | Bir kullanıcı arabirimi aracı olarak. Windows üzerinde, bir komut istemi başlatın, R çalıştırın ve ardından R içinde komutunu çalıştırın `rattle()` . Linux 'ta X2Go ile bağlanın, bir Terminal başlatın, R çalıştırın ve ardından R içinde çalıştırın `rattle()` . |
 | Örneklere bağlantı      | [Rattle](https://togaware.com/onepager/) |
 | İlgili araçlar      |LightGBM, WEKA, XGBoost   |
 
@@ -78,7 +78,7 @@ Dsvms üzerinde, DSVMs için Anaconda Python dağıtımının parçası olan pop
 | Desteklenen sürümler     | Windows, Linux     |
 | Tipik kullanımlar      | Genel makine-öğrenme kitaplığı      |
 | Nasıl yapılandırılır veya yüklenir?      |  Windows: msi yükleyicisi<br/>Linux: apt-get |
-| Nasıl kullanılır veya çalıştırılır      | Yol üzerine bir komut satırı aracı (`C:\Program Files\VowpalWabbit\vw.exe` Windows üzerinde, `/usr/bin/vw` Linux üzerinde)    |
+| Nasıl kullanılır veya çalıştırılır      | Yol üzerine bir komut satırı aracı ( `C:\Program Files\VowpalWabbit\vw.exe` Windows üzerinde, `/usr/bin/vw` Linux üzerinde)    |
 | Örneklere bağlantı      | [VowPal Wabbit örnekleri](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
 | İlgili araçlar      |LightGBM, MXNet, XGBoost   |
 
@@ -89,7 +89,7 @@ Dsvms üzerinde, DSVMs için Anaconda Python dağıtımının parçası olan pop
 | Bu nedir?   |  Veri araştırma görevleri için makine öğrenimi algoritmalarının koleksiyonu. Algoritmalar doğrudan bir veri kümesine uygulanabilir ya da kendi Java kodınızdan çağrılabilir. WEKA, veri ön işleme, sınıflandırma, gerileme, kümeleme, ilişkilendirme kuralları ve görselleştirme için araçlar içerir. |
 | Desteklenen sürümler     | Windows, Linux     |
 | Tipik kullanımlar      | Genel makine öğrenme aracı     |
-| Nasıl kullanılır veya çalıştırılır      | Windows 'ta, **Başlat** menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın ve ardından **uygulamalar** > **geliştirme** > **WEKA**' ya gidin. |
+| Nasıl kullanılır veya çalıştırılır      | Windows 'ta, **Başlat** menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın ve ardından **uygulamalar**  >  **geliştirme**  >  **WEKA**' ya gidin. |
 | Örneklere bağlantı      | [WEKA örnekleri](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | İlgili araçlar      |LightGBM, Rattle, XGBoost   |
 
@@ -100,7 +100,7 @@ Dsvms üzerinde, DSVMs için Anaconda Python dağıtımının parçası olan pop
 | Desteklenen sürümler     | Windows, Linux     |
 | Tipik kullanımlar      | Genel makine-öğrenme kitaplığı      |
 | Nasıl yapılandırılır veya yüklenir?      |  GPU desteğiyle yüklendi   |
-| Nasıl kullanılır veya çalıştırılır      | Python kitaplığı (2,7 ve 3,5), R paketi ve yol üzerine komut satırı aracı (`C:\dsvm\tools\xgboost\bin\xgboost.exe` Windows ve `/dsvm/tools/xgboost/xgboost` Linux için) olarak    |
+| Nasıl kullanılır veya çalıştırılır      | Python kitaplığı (2,7 ve 3,5), R paketi ve yol üzerine komut satırı aracı ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` Windows ve `/dsvm/tools/xgboost/xgboost` Linux için) olarak    |
 | Örneklere bağlantılar      | Örnekler, sanal makinede, `/dsvm/tools/xgboost/demo` Linux ve `C:\dsvm\tools\xgboost\demo` Windows üzerinde bulunur.   |
 | İlgili araçlar      | LightGBM, MXNet   |
 
@@ -109,7 +109,7 @@ Dsvms üzerinde, DSVMs için Anaconda Python dağıtımının parçası olan pop
 | ------------- | ------------- |
 | Bu nedir?   | Büyük verilerde açık kaynaklı SQL sorgu altyapısı    |
 | Desteklenen DSVM sürümleri      | Windows 2019, Linux  |
-| DSVM 'de nasıl yapılandırılır ve yüklenir?      |  `/dsvm/tools/drill*` Yalnızca katıştırılmış modda yüklenir   |
+| DSVM 'de nasıl yapılandırılır ve yüklenir?      |  `/dsvm/tools/drill*`Yalnızca katıştırılmış modda yüklenir   |
 | Tipik kullanımlar      |  Ayıklama, dönüştürme, yükleme (ETL) gerekmeden yerinde veri araştırması için. CSV, JSON, ilişkisel tablolar ve Hadoop gibi farklı veri kaynaklarını ve biçimleri sorgulayın.     |
 | Kullanma ve çalıştırma      | Masaüstü kısayolu  <br/> [10 dakika içinde detaya gitmeyi kullanmaya başlayın](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | DSVM 'deki ilgili araçlar      |   Rattle, WEKA, SQL Server Management Studio      |

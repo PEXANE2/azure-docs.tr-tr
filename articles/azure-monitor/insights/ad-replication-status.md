@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055893"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Izleyici ile Active Directory çoğaltma durumunu izleme
@@ -26,7 +26,7 @@ AD Çoğaltma Durumu çözümü, tüm çoğaltma hatalarıyla ilgili Active Dire
 ## <a name="installing-and-configuring-the-solution"></a>Çözümü yükleme ve yapılandırma
 Çözümü yüklemek ve yapılandırmak için aşağıdaki bilgileri kullanın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * AD Çoğaltma Durumu çözümü, Windows için Log Analytics aracısına sahip olan (Microsoft Monitoring Agent (MMA) olarak da bilinir) yüklü .NET Framework 4.6.2 veya üzeri bir sürümü gerektirir.  Aracı System Center 2016-Operations Manager, Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.
 * Bu çözüm, Windows Server 2008 ve 2008 R2, Windows Server 2012 ve 2012 R2 ve Windows Server 2016 çalıştıran etki alanı denetleyicilerini destekler.
@@ -41,10 +41,10 @@ Etki alanı denetleyicilerinizin herhangi birine doğrudan Azure Izleyici 'ye ba
 
 1. Bilgisayarın AD Çoğaltma Durumu çözümünü kullanarak izlemek istediğiniz etki alanının bir üyesi olduğunu doğrulayın.
 2. [Windows bilgisayarını Azure izleyici 'ye bağlayın](../../azure-monitor/platform/om-agents.md) veya zaten bağlı değilse [Azure izleyici 'ye mevcut Operations Manager ortamınızı kullanarak bağlayın](../../azure-monitor/platform/om-agents.md).
-3. Bu bilgisayarda, aşağıdaki kayıt defteri anahtarını ayarlayın:<br>Anahtar: **HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName> \Solutions\ADReplication**<br>Değer: **ıstarget**<br>Değer verisi: **true**
+3. Bu bilgisayarda, aşağıdaki kayıt defteri anahtarını ayarlayın:<br>Anahtar: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\yönetim grupları \<ManagementGroupName> \Solutions\adreplication**<br>Değer: **ıstarget**<br>Değer verisi: **true**
 
    > [!NOTE]
-   > Bu değişiklikler, Microsoft Monitoring Agent hizmeti (HealthService. exe) yeniden başlatılana kadar etkili olmaz.
+   > Bu değişiklikler, Microsoft Monitoring Agent hizmeti (HealthService.exe) yeniden başlatılana kadar etkili olmaz.
    > ### <a name="install-solution"></a>Çözümü yükler
    > **Active Directory çoğaltma durumu** çözümünü Log Analytics çalışma alanınıza eklemek için [bir izleme çözümü yüklerken](solutions.md#install-a-monitoring-solution) açıklanan süreci izleyin. Başka bir yapılandırma işlemi gerekmez.
 
@@ -52,7 +52,7 @@ Etki alanı denetleyicilerinizin herhangi birine doğrudan Azure Izleyici 'ye ba
 ## <a name="ad-replication-status-data-collection-details"></a>Veri toplama ayrıntılarını AD Çoğaltma Durumu
 Aşağıdaki tabloda, verilerin AD Çoğaltma Durumu için nasıl toplandığı hakkında veri toplama yöntemleri ve diğer ayrıntılar gösterilmektedir.
 
-| platform | Doğrudan aracı | SCOM Aracısı | Azure Storage | SCOM gerekli mi? | Yönetim grubu aracılığıyla gönderilen SCOM Aracısı verileri | toplama sıklığı |
+| platform | Doğrudan aracı | SCOM Aracısı | Azure Depolama | SCOM gerekli mi? | Yönetim grubu aracılığıyla gönderilen SCOM Aracısı verileri | toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |Beş günde bir |
 
@@ -133,7 +133,7 @@ Y: Hayır, yalnızca tek bir etki alanı denetleyicisi eklenmelidir. Log Analyti
 C: Evet. Bir kayıt defteri anahtarının değerini etkinleştirmek için ayarlayabilirsiniz. Bkz. [etki alanı olmayan denetleyiciyi etkinleştirme](#enable-non-domain-controller).
 
 **S: veri toplamayı yapan işlemin adı nedir?**
-A: Danışmanorassessment. exe
+Y: AdvisorAssessment.exe
 
 **S: verilerin toplanması ne kadar sürer?**
 Y: veri toplama süresi Active Directory ortamının boyutuna bağlıdır, ancak genellikle 15 dakikadan kısa sürer.

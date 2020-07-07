@@ -8,15 +8,15 @@ ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80257419"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway birden çok site barındırma
 
-Birden çok site barındırma, bir uygulama ağ geçidinin aynı bağlantı noktasında birden fazla Web uygulaması yapılandırmanızı sağlar. Bu özellik, bir Application Gateway 'e en çok 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Aşağıdaki örnekte, Application Gateway ContosoServerPool ve FabrikamServerPool `contoso.com` adlı `fabrikam.com` iki arka uç sunucu havuzu için ve üzerinden trafiğe hizmet verir.
+Birden çok site barındırma, bir uygulama ağ geçidinin aynı bağlantı noktasında birden fazla Web uygulaması yapılandırmanızı sağlar. Bu özellik, bir Application Gateway 'e en çok 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi, kendi arka uç havuzuna yönlendirilebilir. Aşağıdaki örnekte, Application Gateway `contoso.com` `fabrikam.com` ContosoServerPool ve FabrikamServerPool adlı iki arka uç sunucu havuzu için ve üzerinden trafiğe hizmet verir.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
@@ -25,7 +25,7 @@ Birden çok site barındırma, bir uygulama ağ geçidinin aynı bağlantı nokt
 
 `http://contoso.com` için istekler ContosoServerPool’a ve `http://fabrikam.com` için istekler FabrikamServerPool’a yönlendirilir.
 
-Benzer şekilde, aynı uygulama ağ geçidi dağıtımında aynı üst etki alanının birden çok alt etki alanını barındırabilirsiniz. Örneğin, tek bir uygulama ağ `http://blog.contoso.com` geçidi `http://app.contoso.com` dağıtımını barındırabilirsiniz.
+Benzer şekilde, aynı uygulama ağ geçidi dağıtımında aynı üst etki alanının birden çok alt etki alanını barındırabilirsiniz. Örneğin, `http://blog.contoso.com` `http://app.contoso.com` tek bir uygulama ağ geçidi dağıtımını barındırabilirsiniz.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Barındırma üstbilgileri ve Sunucu Adı Belirtme (SNI)
 

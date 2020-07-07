@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80050283"
 ---
 # <a name="confidential-client-assertions"></a>Gizli istemci onayları
@@ -35,7 +35,7 @@ MSAL.NET, gizli istemci uygulamasına kimlik bilgileri veya onaylama sağlamak i
 - `.WithClientClaims()`
 
 > [!NOTE]
-> Gizli istemci için belirteçleri almak üzere `WithClientAssertion()` API kullanmak mümkün olsa da, daha gelişmiş olduğu ve yaygın olmayan çok sayıda senaryoyu işleyecek şekilde tasarlanan varsayılan olarak kullanılması önerilmez. API 'nin `.WithCertificate()` kullanılması msal.net bunu sizin için işlemesini sağlayacaktır. Bu API, gerekirse kimlik doğrulama isteğinizi özelleştirmenizi sağlar ancak tarafından `.WithCertificate()` oluşturulan varsayılan onaylama, çoğu kimlik doğrulama senaryosunda yeterli olacaktır. Bu API, MSAL.NET imzalama işlemini dahili olarak gerçekleştiremediği bazı senaryolarda geçici çözüm olarak da kullanılabilir.
+> `WithClientAssertion()`Gizli istemci için belirteçleri almak üzere API kullanmak mümkün olsa da, daha gelişmiş olduğu ve yaygın olmayan çok sayıda senaryoyu işleyecek şekilde tasarlanan varsayılan olarak kullanılması önerilmez. API 'nin kullanılması `.WithCertificate()` msal.net bunu sizin için işlemesini sağlayacaktır. Bu API, gerekirse kimlik doğrulama isteğinizi özelleştirmenizi sağlar ancak tarafından oluşturulan varsayılan onaylama, `.WithCertificate()` çoğu kimlik doğrulama senaryosunda yeterli olacaktır. Bu API, MSAL.NET imzalama işlemini dahili olarak gerçekleştiremediği bazı senaryolarda geçici çözüm olarak da kullanılabilir.
 
 ### <a name="signed-assertions"></a>İmzalı Onaylamalar
 
@@ -50,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD tarafından beklenen talepler şunlardır:
 
-Talep türü | Değer | Açıklama
+Talep türü | Değer | Description
 ---------- | ---------- | ----------
 aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "AUD" (hedef kitle) talebi, JWT 'nin hedeflenen alıcılarını tanımlar (burada Azure AD) bkz. [RFC 7519, Section 4.1.3]
 exp | Per Haz 27 2019 15:04:17 GMT + 0200 (Romanya yaz saati) | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Section 4.1.4]
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>Alternatif Yöntem
 
-Ayrıca, onaylaması sizin için oluşturmak üzere [Microsoft. IdentityModel. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) kullanma seçeneğiniz de vardır. Kod, aşağıdaki örnekte gösterildiği gibi daha zarif olacaktır:
+Ayrıca sizin için onay oluşturmak üzere [onWebTokensMicrosoft.IdentityModel.Js](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) kullanma seçeneğiniz de vardır. Kod, aşağıdaki örnekte gösterildiği gibi daha zarif olacaktır:
 
 ```csharp
         string GetSignedClientAssertion()
@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Geçirdiğiniz sözlüklerdeki taleplerden biri zorunlu taleplerden biriyle aynıysa, ek talebin değeri hesaba alınacaktır. Bu, MSAL.NET tarafından hesaplanan talepleri geçersiz kılar.
 
-Azure AD tarafından beklenen zorunlu talepler dahil olmak üzere kendi taleplerinizi sağlamak istiyorsanız, `false` `mergeWithDefaultClaims` parametresi için geçirin.
+Azure AD tarafından beklenen zorunlu talepler dahil olmak üzere kendi taleplerinizi sağlamak istiyorsanız, `false` parametresi için geçirin `mergeWithDefaultClaims` .

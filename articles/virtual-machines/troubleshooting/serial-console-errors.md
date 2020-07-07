@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80060699"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure seri konsolu 'nda sık karşılaşılan hatalar
@@ -36,11 +36,11 @@ Bu VM 'yi seri konsol ile kullanmak için gerekli izinlere sahip değilsiniz. En
 Bu VM 'de önyükleme tanılaması için kullanılan ' ' depolama hesabı bulunamadı. Bu VM için önyükleme tanılamaları 'nın etkinleştirildiğini, bu depolama hesabının silinmediğini ve bu depolama hesabına erişiminizin olduğunu doğrulayın. | VM 'niz veya sanal makine ölçek kümesi için önyükleme tanılama depolama hesabını silmediğinden emin olun
 VM 'ye yönelik seri konsol bağlantısı bir hata ile karşılaştı: ' hatalı Istek ' (400) | Önyükleme tanılama URI 'niz yanlışsa bu durum oluşabilir. Örneğin, "http://" yerine "https://" kullanılmıştır. Önyükleme tanılaması URI 'SI şu komutla düzeltilebilir:`az vm boot-diagnostics enable --name vmName --resource-group rgName --storage https://<storageAccountUri>.blob.core.windows.net/`
 Bu VM için önyükleme tanılama depolama hesabına yazmak için gerekli izinlere sahip değilsiniz. Lütfen en az sanal makine katılımcısı izninizin olduğundan emin olun | Seri konsol erişim, ön yükleme tanılama depolama hesabında katkıda bulunan düzeyinde erişim gerektirir. Daha fazla bilgi için [genel bakış sayfasına](serial-console-overview.md)bakın.
-Ön yükleme tanılama depolama hesabı * &lt;storageAccountName&gt;* için kaynak grubu belirlenemiyor. Bu VM için önyükleme tanılamaları 'nın etkinleştirildiğini ve bu depolama hesabına erişiminizin olduğunu doğrulayın. | Seri konsol erişim, ön yükleme tanılama depolama hesabında katkıda bulunan düzeyinde erişim gerektirir. Daha fazla bilgi için [genel bakış sayfasına](serial-console-overview.md)bakın.
+Ön yükleme tanılama depolama hesabı * &lt; storageAccountName &gt; *için kaynak grubu belirlenemiyor. Bu VM için önyükleme tanılamaları 'nın etkinleştirildiğini ve bu depolama hesabına erişiminizin olduğunu doğrulayın. | Seri konsol erişim, ön yükleme tanılama depolama hesabında katkıda bulunan düzeyinde erişim gerektirir. Daha fazla bilgi için [genel bakış sayfasına](serial-console-overview.md)bakın.
 Bu VM için sağlama henüz başarılı değil. Lütfen VM 'nin tam olarak dağıtıldığından emin olun ve seri konsol bağlantısını yeniden deneyin. | VM 'niz veya sanal makine ölçek kümesi hala sağlanıyor olabilir. Bir süre bekleyip yeniden deneyin.
-Web yuvası kapalı veya açılamadı. | Uygulamasına `*.console.azure.com`güvenlik duvarı erişimi eklemeniz gerekebilir. Daha ayrıntılı ancak daha uzun bir yaklaşım, çok düzenli olarak değişen [Microsoft Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)güvenlik duvarı erişimine izin vermedir.
+Web yuvası kapalı veya açılamadı. | Uygulamasına güvenlik duvarı erişimi eklemeniz gerekebilir `*.console.azure.com` . Daha ayrıntılı ancak daha uzun bir yaklaşım, çok düzenli olarak değişen [Microsoft Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)güvenlik duvarı erişimine izin vermedir.
 Seri konsol hiyerarşik ad alanları ile Azure Data Lake Storage 2. kullanılarak depolama hesabıyla birlikte çalışmaz. | Bu, hiyerarşik ad alanları ile ilgili bilinen bir sorundur. Azaltmak için, sanal makinenizin önyükleme tanılama depolama hesabının Azure Data Lake Storage 2. kullanılarak oluşturulmadığından emin olun. Bu seçenek, yalnızca depolama hesabı oluşturma sırasında ayarlanabilir. Bu sorunu azaltmak için Azure Data Lake Storage 2. etkin olmadan ayrı bir önyükleme tanılama depolama hesabı oluşturmanız gerekebilir.
-SANAL makineye yönelik seri konsol bağlantısı bir hata ile karşılaştı: ' yasak ' (SubscriptionNotEnabled)-abonelik adı tanımsız, kimlik \<aboneliği kimliği> etkin olmayan durum tanımsız | Bu sorun, bir kullanıcının ' de Cloud Shell depolama hesabı oluşturduğu abonelik devre dışı bırakılmışsa meydana gelebilir. Azaltmak için Cloud Shell başlatın ve geçerli abonelikte Cloud Shell için bir yedekleme depolama hesabı yeniden sağlamak için [gerekli adımları gerçekleştirin](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) .
+VM 'ye yönelik seri konsol bağlantısı bir hatayla karşılaştı: ' yasak ' (SubscriptionNotEnabled)-abonelik adı tanımsız, kimlik, \<subscription id> etkin olmayan durum tanımsız | Bu sorun, bir kullanıcının ' de Cloud Shell depolama hesabı oluşturduğu abonelik devre dışı bırakılmışsa meydana gelebilir. Azaltmak için Cloud Shell başlatın ve geçerli abonelikte Cloud Shell için bir yedekleme depolama hesabı yeniden sağlamak için [gerekli adımları gerçekleştirin](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Linux VM 'leri Için Azure seri konsolu](./serial-console-linux.md) hakkında daha fazla bilgi edinin

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/25/2019
 ms.author: guybo
 ms.openlocfilehash: 8899249fd284f69fa26bab8cd70aaf6a67fbb83c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066777"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure'da CentOS tabanlı bir sanal makine hazırlama
@@ -21,7 +21,7 @@ CentOS tabanlı bir Linux işletim sistemi içeren bir Azure sanal sabit diski (
 * [Azure için CentOS 7.0 + sanal makinesi hazırlama](#centos-70)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işletim sistemini zaten yüklemiş olduğunuz varsayılmaktadır. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](https://technet.microsoft.com/library/hh846766.aspx).
 
@@ -31,7 +31,7 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
 * VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**.  Hyper-V Yöneticisi 'Ni veya Convert-VHD cmdlet 'ini kullanarak diski VHD biçimine dönüştürebilirsiniz. VirtualBox kullanıyorsanız, disk oluştururken dinamik olarak ayrılan varsayılan değer tersine, **sabit boyutun** seçilmesi anlamına gelir.
 * Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız *önerilir* (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun giderme için başka bir özdeş VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
 * UDF dosya sistemlerini bağlamak için çekirdek desteği gereklidir. Azure 'da ilk önyüklemede sağlama yapılandırması, konuğa bağlı olan UDF biçimli medya aracılığıyla Linux VM 'ye geçirilir. Azure Linux Aracısı, yapılandırmasını okumak ve VM 'yi sağlamak için UDF dosya sistemini bağlayabilmelidir.
-* Linux çekirdek sürümleri 2.6.37, Hyper-V üzerinde daha büyük VM boyutlarına sahip NUMA 'yı desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve RHEL 6,6 (Kernel-2.6.32-504) içinde düzeltilmiştir. 2.6.37 'den eski olan özel çekirdekler çalıştıran sistemler veya 2.6.32-504 ' den eski RHEL tabanlı çekirdekler, grub. conf içindeki `numa=off` çekirdek komut satırında önyükleme parametresini ayarlanmalıdır. Daha fazla bilgi için bkz. Red hat [KB 436883](https://access.redhat.com/solutions/436883).
+* Linux çekirdek sürümleri 2.6.37, Hyper-V üzerinde daha büyük VM boyutlarına sahip NUMA 'yı desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve RHEL 6,6 (Kernel-2.6.32-504) içinde düzeltilmiştir. 2.6.37 'den eski olan özel çekirdekler çalıştıran sistemler veya 2.6.32-504 ' den eski RHEL tabanlı çekirdekler, `numa=off` grub. conf içindeki çekirdek komut satırında önyükleme parametresini ayarlanmalıdır. Daha fazla bilgi için bkz. Red hat [KB 436883](https://access.redhat.com/solutions/436883).
 * İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.  Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
 * Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 
@@ -47,14 +47,14 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
     sudo rpm -e --nodeps NetworkManager
     ```
 
-4. Dosyayı `/etc/sysconfig/network` oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+4. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
 
     ```console
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
-5. Dosyayı `/etc/sysconfig/network-scripts/ifcfg-eth0` oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+5. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network-scripts/ifcfg-eth0` ve aşağıdaki metni ekleyin:
 
     ```console
     DEVICE=eth0
@@ -131,7 +131,7 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
    ```
 
     > [!Note]
-    > Bu kılavuzun geri kalanı, aşağıda Azure Linux aracısını yüklemek için kullanılacak en `[openlogic]` az depoyu kullandığınızı varsayacaktır.
+    > Bu kılavuzun geri kalanı, `[openlogic]` aşağıda Azure Linux aracısını yüklemek için kullanılacak en az depoyu kullandığınızı varsayacaktır.
 
 9. Aşağıdaki satırı/etc/yum.conf öğesine ekleyin:
 
@@ -176,7 +176,7 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
 
     Walınuxagent paketi NetworkManager ve NetworkManager-GNOME paketlerini, adım 3 ' te açıklandığı şekilde kaldırıldıklarında kaldırır.
 
-13. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için, bir `/boot/grub/menu.lst` metin düzenleyicisinde açın ve varsayılan çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
+13. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için, `/boot/grub/menu.lst` bir metin düzenleyicisinde açın ve varsayılan çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
 
     ```console
     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
@@ -190,10 +190,10 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
     rhgb quiet crashkernel=auto
     ```
 
-    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir.  İsterseniz `crashkernel` seçenek, istenirse yapılandırılmış olabilir, ancak bu parametrenin VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltır ve bu da daha küçük VM boyutları üzerinde sorunlu olabilir.
+    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir.  `crashkernel`İsterseniz seçenek, istenirse yapılandırılmış olabilir, ancak bu PARAMETRENIN VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltır ve bu da daha küçük VM boyutları üzerinde sorunlu olabilir.
 
     > [!Important]
-    > CentOS 6,5 ve önceki sürümleri de çekirdek parametresini `numa=off`ayarlamış olmalıdır. Bkz. Red hat [KB 436883](https://access.redhat.com/solutions/436883).
+    > CentOS 6,5 ve önceki sürümleri de çekirdek parametresini ayarlamış olmalıdır `numa=off` . Bkz. Red hat [KB 436883](https://access.redhat.com/solutions/436883).
 
 14. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun.  Bu genellikle varsayılandır.
 
@@ -237,14 +237,14 @@ Azure için bir CentOS 7 sanal makinesinin hazırlanması, CentOS 6 ' ya çok be
 
 2. **Bağlan** ' a tıklayarak sanal makine için bir konsol penceresi açın.
 
-3. Dosyayı `/etc/sysconfig/network` oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+3. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
 
     ```console
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
-4. Dosyayı `/etc/sysconfig/network-scripts/ifcfg-eth0` oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+4. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network-scripts/ifcfg-eth0` ve aşağıdaki metni ekleyin:
 
     ```console
     DEVICE=eth0
@@ -306,7 +306,7 @@ Azure için bir CentOS 7 sanal makinesinin hazırlanması, CentOS 6 ' ya çok be
    ```
     
    > [!Note]
-   > Bu kılavuzun geri kalanı, aşağıda Azure Linux aracısını yüklemek için kullanılacak en `[openlogic]` az depoyu kullandığınızı varsayacaktır.
+   > Bu kılavuzun geri kalanı, `[openlogic]` aşağıda Azure Linux aracısını yüklemek için kullanılacak en az depoyu kullandığınızı varsayacaktır.
 
 7. Geçerli yum meta verilerini temizlemek ve tüm güncelleştirmeleri yüklemek için aşağıdaki komutu çalıştırın:
 
@@ -322,7 +322,7 @@ Azure için bir CentOS 7 sanal makinesinin hazırlanması, CentOS 6 ' ya çok be
 
     Bu komut çalıştırıldıktan sonra bir yeniden başlatma gerekli olabilir.
 
-8. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için bir metin `/etc/default/grub` düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin, örneğin:
+8. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin, örneğin:
 
     ```console
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -334,9 +334,9 @@ Azure için bir CentOS 7 sanal makinesinin hazırlanması, CentOS 6 ' ya çok be
     rhgb quiet crashkernel=auto
     ```
 
-    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir. İsterseniz `crashkernel` seçenek, istenirse yapılandırılmış olabilir, ancak bu parametrenin VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltır ve bu da daha küçük VM boyutları üzerinde sorunlu olabilir.
+    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir. `crashkernel`İsterseniz seçenek, istenirse yapılandırılmış olabilir, ancak bu PARAMETRENIN VM 'deki kullanılabilir bellek miktarını 128 MB veya daha fazla azaltır ve bu da daha küçük VM boyutları üzerinde sorunlu olabilir.
 
-9. Yukarıdaki her başına bir kez `/etc/default/grub` düzenlemenizi tamamladıktan sonra, grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
+9. Yukarıdaki her başına bir kez düzenlemenizi tamamladıktan sonra `/etc/default/grub` , grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -344,7 +344,7 @@ Azure için bir CentOS 7 sanal makinesinin hazırlanması, CentOS 6 ' ya çok be
 
 10. Görüntüyü **VMware, VirtualBox veya KVM** 'den oluşturuyorsanız: Hyper-V sürücülerinin initramfs 'ye eklendiğinden emin olun:
 
-    Düzenleme `/etc/dracut.conf`, içerik ekleme:
+    Düzenleme `/etc/dracut.conf` , içerik ekleme:
 
     ```console
     add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "

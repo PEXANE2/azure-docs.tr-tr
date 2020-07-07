@@ -9,10 +9,10 @@ description: Azure dev alanında özel bir Held deposu kullanın.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kapsayıcılar, Held
 manager: gwallace
 ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240463"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Azure Dev Spaces bir özel Held deposu kullanın
@@ -30,14 +30,14 @@ helm repo update
 
 ## <a name="add-the-chart-to-your-application"></a>Grafiği uygulamanıza ekleyin
 
-Projenizin dizinine gidin ve çalıştırın `azds prep`.
+Projenizin dizinine gidin ve çalıştırın `azds prep` .
 
 ```cmd
 azds prep --enable-ingress
 ```
 
 > [!TIP]
-> Komut `prep` , projeniz Için [bir dockerfile ve hela grafiği](../how-dev-spaces-works-prep.md#prepare-your-code) oluşturmaya çalışır. Azure Dev Spaces, kodunuzu derlemek ve çalıştırmak için bu dosyaları kullanır, ancak projenin oluşturulup çalıştırıldığını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
+> `prep`Komut, projeniz için [bir Dockerfile ve hela grafiği](../how-dev-spaces-works-prep.md#prepare-your-code) oluşturmaya çalışır. Azure Dev Spaces, kodunuzu derlemek ve çalıştırmak için bu dosyaları kullanır, ancak projenin oluşturulup çalıştırıldığını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
 
 Uygulamanızın grafik dizininde grafiğinizdeki bir [requirements. YAML][helm-requirements] dosyası oluşturun. Örneğin, uygulamanız *APP1*olarak adlandırılmışsa, *grafikler/APP1/requirements. YAML*oluşturursunuz.
 
@@ -60,7 +60,7 @@ Uygulamanızın grafik dizinine bir *TGT z* dosyası içeren bir *grafik* alt di
 
 ## <a name="run-your-application"></a>Uygulamanızı çalıştırma
 
-Projenizin kök dizinine gidin ve uygulamanızın geliştirme alanınızda başarılı bir `azds up` şekilde çalıştığını doğrulamak için çalıştırın.
+Projenizin kök dizinine gidin ve `azds up` Uygulamanızın geliştirme alanınızda başarılı bir şekilde çalıştığını doğrulamak için çalıştırın.
 
 ```cmd
 $ azds up

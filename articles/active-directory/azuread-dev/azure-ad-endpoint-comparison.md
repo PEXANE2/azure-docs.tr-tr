@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154925"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Neden Microsoft kimlik platformuna (v2.0) güncelleştirmelisiniz?
@@ -33,7 +33,7 @@ Yeni bir uygulama geliştirirken, Microsoft Identity platform (v 2.0) ve Azure A
 
 * V 1.0 uç noktası yalnızca iş ve okul hesaplarının uygulamanızda oturum açmasını sağlar (Azure AD)
 * Microsoft Identity platform uç noktası, Azure AD 'den ve hotmail.com, outlook.com ve msn.com gibi kişisel Microsoft hesaplarından (MSA) iş ve okul hesaplarının oturum açmasını sağlar.
-* Her iki uç nokta de *[tek kiracılı](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* olarak yapılandırılmış uygulamalar veya kiracıya özgü uç noktayı`https://login.microsoftonline.com/{TenantId_or_Name}`() işaret edecek şekilde yapılandırılmış *çok kiracılı* uygulamalar için Azure AD dizininin *[Konuk kullanıcılarının](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* oturum açma işlemlerini kabul eder.
+* Her iki uç nokta de *[tek kiracılı](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* olarak yapılandırılmış uygulamalar veya kiracıya özgü uç noktayı () işaret edecek şekilde yapılandırılmış *çok kiracılı* uygulamalar için Azure AD dizininin *[Konuk kullanıcılarının](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* oturum açma işlemlerini kabul eder `https://login.microsoftonline.com/{TenantId_or_Name}` .
 
 Microsoft Identity platform uç noktası, kişisel Microsoft hesaplarından ve iş ve okul hesaplarından oturum açma işlemlerini kabul eden uygulamalar yazmanıza izin verir. Bu, uygulamanızı tamamen hesap belirsiz şekilde yazmanıza olanak sağlar. Örneğin, uygulamanız [Microsoft Graph](https://graph.microsoft.io)çağırırsa, bazı ek işlevler ve veriler, SharePoint siteleri veya dizin verileri gibi iş hesapları için kullanılabilir. Ancak, [bir kullanıcının postasını okumak](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)gibi birçok eylem için aynı kod e-postaya hem kişisel hem de iş ve okul hesapları için erişebilir.
 
@@ -51,9 +51,9 @@ Uygulama kaydında doğrudan ayarlanan izinler **statiktir**. Azure portal tanı
 
 * Uygulamanın, bir süre önce erişeceğimizi tüm kaynakları bilmeleri gerekir. Rastgele sayıda kaynağa erişebilen uygulamalar oluşturmak zordur.
 
-Microsoft Identity platform uç noktası ile Azure portal uygulama kayıt bilgilerinde tanımlanan statik izinleri yoksayabilir ve izinleri artımlı olarak isteyebilirsiniz; bu da, müşterinin ek uygulama özellikleri kullandığı için en az bir izin kümesi ve zaman içinde daha fazla büyümenin daha fazla olması anlamına gelir. Bunu yapmak için, uygulama kayıt bilgilerinde önceden tanımlamaya gerek kalmadan, bir erişim belirteci istenirken, `scope` uygulamanıza gereken yeni kapsamları dahil ederek, uygulamanızın ihtiyaç duyduğu kapsamları belirtebilirsiniz. Kullanıcı henüz isteğe eklenen yeni kapsamları kabul etmediyse, yalnızca yeni izinleri onaylaması istenir. Daha fazla bilgi için bkz. [izinler, onay ve kapsamlar](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+Microsoft Identity platform uç noktası ile Azure portal uygulama kayıt bilgilerinde tanımlanan statik izinleri yoksayabilir ve izinleri artımlı olarak isteyebilirsiniz; bu da, müşterinin ek uygulama özellikleri kullandığı için en az bir izin kümesi ve zaman içinde daha fazla büyümenin daha fazla olması anlamına gelir. Bunu yapmak için, `scope` uygulama kayıt bilgilerinde önceden tanımlamaya gerek kalmadan, bir erişim belirteci istenirken, uygulamanıza gereken yeni kapsamları dahil ederek, uygulamanızın ihtiyaç duyduğu kapsamları belirtebilirsiniz. Kullanıcı henüz isteğe eklenen yeni kapsamları kabul etmediyse, yalnızca yeni izinleri onaylaması istenir. Daha fazla bilgi için bkz. [izinler, onay ve kapsamlar](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-Bir uygulamanın parametre üzerinden dinamik olarak izin istemesine izin `scope` vermek, geliştiricilerin kullanıcı deneyimi üzerinde tam denetim sahibi olmasını sağlar. Ayrıca, izin deneyiminizi ön yükleyebilir ve tek bir ilk yetkilendirme isteğindeki tüm izinleri isteyebilirsiniz. Uygulamanız çok sayıda izin gerektiriyorsa, zaman içinde uygulamanın belirli özelliklerini kullanmaya çalıştıkları için bu izinleri Kullanıcı tarafından artımlı olarak toplayabilirsiniz.
+Bir uygulamanın parametre üzerinden dinamik olarak izin istemesine izin vermek, `scope` geliştiricilerin kullanıcı deneyimi üzerinde tam denetim sahibi olmasını sağlar. Ayrıca, izin deneyiminizi ön yükleyebilir ve tek bir ilk yetkilendirme isteğindeki tüm izinleri isteyebilirsiniz. Uygulamanız çok sayıda izin gerektiriyorsa, zaman içinde uygulamanın belirli özelliklerini kullanmaya çalıştıkları için bu izinleri Kullanıcı tarafından artımlı olarak toplayabilirsiniz.
 
 Bir kuruluş adına yapılan yönetici onayı, yine de uygulama için kayıtlı statik izinler gerektirir, bu nedenle uygulamanın tamamı adına bir yöneticinin izin vermesini istiyorsanız uygulama kayıt portalındaki uygulamalar için bu izinleri ayarlamanız gerekir. Bu, kuruluş yöneticisinin uygulamayı ayarlaması için gereken döngüleri azaltır.
 
@@ -61,8 +61,8 @@ Bir kuruluş adına yapılan yönetici onayı, yine de uygulama için kayıtlı 
 
 V 1.0 uç noktasını kullanan uygulamalar için, bir uygulama **kaynak**veya belirteç alıcısı olarak davranabilir. Bir kaynak, anladığı sayıda **kapsam** veya **oAuth2Permissions** tanımlayabilir ve bu da istemci uygulamaların belirli bir kapsam kümesi için bu kaynaktan belirteç istemesine izin verir. Microsoft Graph API 'sini bir kaynak örneği olarak düşünün:
 
-* Kaynak tanımlayıcısı veya `AppID URI`:`https://graph.microsoft.com/`
-* Kapsamlar veya `oAuth2Permissions`: `Directory.Read`, `Directory.Write`vb.
+* Kaynak tanımlayıcısı veya `AppID URI` :`https://graph.microsoft.com/`
+* Kapsamlar veya `oAuth2Permissions` : `Directory.Read` , vb `Directory.Write` .
 
 Bu, Microsoft Identity platform uç noktası için doğru bir durum içerir. Bir uygulama yine de kaynak olarak davranabilir, kapsamları tanımlayabilir ve bir URI ile tanımlanabilir. İstemci uygulamaları yine de bu kapsamlara erişim isteğinde bulunabilir. Ancak, bir istemcinin bu izinleri istemesi yöntemi değişmiştir.
 
@@ -92,20 +92,20 @@ Burada **kapsam** parametresi, uygulamanın hangi kaynak ve izinlerin yetkilendi
 
 ### <a name="offline-access"></a>Çevrimdışı erişim
 
-Microsoft Identity platform uç noktasını kullanan uygulamalar, uygulamalar `offline_access` için yeni bir iyi bilinen izin kullanımını gerektirebilir. Kullanıcı uygulamayı etkin bir şekilde kullanmıyor olsa bile, bir kullanıcı adına, kaynaklara erişmesi gerekiyorsa tüm uygulamaların bu izni istemesi gerekir. `offline_access` Kapsam, kullanıcının kabul etmesi gereken **her zaman verilerinize erişmek**için izin iletişim kutularında kullanıcıya görünür. `offline_access` İzin istemek Web uygulamanızın Microsoft Identity platform uç noktasından OAuth 2,0 refresh_tokens almasını olanaklı hale kullanacaktır. Belirteçleri yenileme, uzun süreli ve genişletilmiş erişim dönemlerinde yeni OAuth 2,0 erişim belirteçleri için değiş tokuş edilebilir.
+Microsoft Identity platform uç noktasını kullanan uygulamalar, uygulamalar için yeni bir iyi bilinen izin kullanımını gerektirebilir `offline_access` . Kullanıcı uygulamayı etkin bir şekilde kullanmıyor olsa bile, bir kullanıcı adına, kaynaklara erişmesi gerekiyorsa tüm uygulamaların bu izni istemesi gerekir. Kapsam, kullanıcının `offline_access` kabul etmesi gereken **her zaman verilerinize erişmek**için izin iletişim kutularında kullanıcıya görünür. İzin istemek `offline_access` Web uygulamanızın Microsoft Identity platform uç noktasından OAuth 2,0 refresh_tokens almasını olanaklı hale kullanacaktır. Belirteçleri yenileme, uzun süreli ve genişletilmiş erişim dönemlerinde yeni OAuth 2,0 erişim belirteçleri için değiş tokuş edilebilir.
 
-Uygulamanız `offline_access` kapsam isteğinde yoksa, yenileme belirteçleri almaz. Bu, OAuth 2,0 yetkilendirme kodu akışında bir yetkilendirme kodu kullandığınızda yalnızca `/token` uç noktadan bir erişim belirteci geri alacağınız anlamına gelir. Bu erişim belirteci kısa bir süre (genellikle bir saat) için geçerli kalır, ancak sonunda süresi dolacak. Bu noktada, uygulamanızın yeni bir yetkilendirme kodu almak için kullanıcıyı `/authorize` uç noktaya yeniden yönlendirmeniz gerekir. Bu yeniden yönlendirme sırasında, Kullanıcı, uygulama türüne bağlı olarak kimlik bilgilerini yeniden veya reconsent izin vermek zorunda kalabilir.
+Uygulamanız kapsam isteğinde yoksa `offline_access` , yenileme belirteçleri almaz. Bu, OAuth 2,0 yetkilendirme kodu akışında bir yetkilendirme kodu kullandığınızda yalnızca uç noktadan bir erişim belirteci geri alacağınız anlamına gelir `/token` . Bu erişim belirteci kısa bir süre (genellikle bir saat) için geçerli kalır, ancak sonunda süresi dolacak. Bu noktada, uygulamanızın `/authorize` Yeni bir yetkilendirme kodu almak için kullanıcıyı uç noktaya yeniden yönlendirmeniz gerekir. Bu yeniden yönlendirme sırasında, Kullanıcı, uygulama türüne bağlı olarak kimlik bilgilerini yeniden veya reconsent izin vermek zorunda kalabilir.
 
-OAuth 2,0, `refresh_tokens`ve `access_tokens`hakkında daha fazla bilgi edinmek için [Microsoft Identity platform Protokolü başvurusunu](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)inceleyin.
+OAuth 2,0, ve hakkında daha fazla bilgi edinmek için `refresh_tokens` `access_tokens` [Microsoft Identity platform Protokolü başvurusunu](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)inceleyin.
 
 ### <a name="openid-profile-and-email"></a>OpenID, profile ve email
 
 Geçmişte, Microsoft Identity platform ile en temel OpenID Connect oturum açma akışı, sonuçta elde edilen *id_token*Kullanıcı hakkında çok fazla bilgi sağlayacaktır. Bir id_token talepler kullanıcının adını, tercih edilen Kullanıcı adını, e-posta adresini, nesne KIMLIĞINI ve daha fazlasını içerebilir.
 
-`openid` Kapsamın uygulamanızın erişimi için kullandığı bilgiler artık kısıtlıdır. `openid` Kapsam yalnızca uygulamanızın kullanıcıya oturum açmasını ve Kullanıcı için uygulamaya özel bir tanımlayıcı almasını sağlar. Uygulamanızdaki Kullanıcı hakkında kişisel veriler almak istiyorsanız, uygulamanızın kullanıcıdan ek izinler istemesi gerekir. İki yeni kapsam `email` ve `profile`, ek izin isteme izni sağlayacaktır.
+`openid`Kapsamın uygulamanızın erişimi için kullandığı bilgiler artık kısıtlıdır. `openid`Kapsam yalnızca uygulamanızın kullanıcıya oturum açmasını ve Kullanıcı için uygulamaya özel bir tanımlayıcı almasını sağlar. Uygulamanızdaki Kullanıcı hakkında kişisel veriler almak istiyorsanız, uygulamanızın kullanıcıdan ek izinler istemesi gerekir. İki yeni kapsam `email` ve `profile` , ek izin isteme izni sağlayacaktır.
 
-* `email` Kapsam, kullanıcının adreslenebilir bir e-posta adresi olduğu varsayıldığında, id_token `email` talep aracılığıyla uygulamanızın kullanıcının birincil e-posta adresine erişmesini sağlar.
-* `profile` Kapsam, uygulamanızın adı, tercih edilen Kullanıcı adı, nesne kimliği, vb. gibi diğer tüm temel bilgilere erişim için, id_token.
+* `email`Kapsam, `email` kullanıcının adreslenebilir bir e-posta adresi olduğu varsayıldığında, id_token talep aracılığıyla uygulamanızın kullanıcının birincil e-posta adresine erişmesini sağlar.
+* `profile`Kapsam, uygulamanızın adı, tercih edilen Kullanıcı adı, nesne kimliği, vb. gibi diğer tüm temel bilgilere erişim için, id_token.
 
 Bu kapsamlar, uygulamanızı en düşük düzeyde bir şekilde kodlarabilmeniz için, kullanıcıdan yalnızca uygulamanızın işini yapması için ihtiyaç duyacağı bilgi kümesini sormasını sağlayabilirsiniz. Bu kapsamlar hakkında daha fazla bilgi için bkz. [Microsoft Identity platform kapsam başvurusu](../develop/v2-permissions-and-consent.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
@@ -141,7 +141,7 @@ Microsoft Identity platform uç noktasıyla tümleştirebilmek istediğiniz her 
 
 ### <a name="restrictions-on-redirect-urls"></a>Yeniden yönlendirme URL 'Lerinde kısıtlamalar
 
-Microsoft Identity platformu için kaydedilen uygulamalar, sınırlı bir yeniden yönlendirme URL değerleri kümesiyle kısıtlıdır. Web uygulamaları ve hizmetleri için yeniden yönlendirme URL 'SI şemayla `https`başlamalıdır ve tüm YENIDEN yönlendirme URL değerleri tek bir DNS etki alanını paylaşmalıdır.  Kayıt sistemi, mevcut yeniden yönlendirme URL 'sinin tam DNS adını, eklediğiniz yeniden yönlendirme URL 'sinin DNS adı ile karşılaştırır. `http://localhost`yeniden yönlendirme URL 'SI olarak da desteklenir.  
+Microsoft Identity platformu için kaydedilen uygulamalar, sınırlı bir yeniden yönlendirme URL değerleri kümesiyle kısıtlıdır. Web uygulamaları ve hizmetleri için yeniden yönlendirme URL 'SI şemayla başlamalıdır `https` ve tüm yeniden YÖNLENDIRME URL değerleri tek BIR DNS etki alanını paylaşmalıdır.  Kayıt sistemi, mevcut yeniden yönlendirme URL 'sinin tam DNS adını, eklediğiniz yeniden yönlendirme URL 'sinin DNS adı ile karşılaştırır. `http://localhost`yeniden yönlendirme URL 'SI olarak da desteklenir.  
 
 Aşağıdaki koşullardan biri geçerli olduğunda DNS adı ekleme isteği başarısız olur:  
 
@@ -150,7 +150,7 @@ Aşağıdaki koşullardan biri geçerli olduğunda DNS adı ekleme isteği başa
 
 #### <a name="example-1"></a>Örnek 1
 
-Uygulamanın yeniden yönlendirme URL 'SI varsa `https://login.contoso.com`, aşağıdaki örnekte gösterildiği gıbı, DNS adının tam olarak eşleştiği bir yeniden yönlendirme URL 'si ekleyebilirsiniz:
+Uygulamanın yeniden yönlendirme URL 'SI varsa `https://login.contoso.com` , aşağıdaki örnekte gösterildiği gibi, DNS adının tam olarak eşleştiği bir yeniden yönlendirme URL 'si ekleyebilirsiniz:
 
 `https://login.contoso.com/new`
 
@@ -160,7 +160,7 @@ Ya da, aşağıdaki örnekte gösterildiği gibi login.contoso.com DNS alt etki 
 
 #### <a name="example-2"></a>Örnek 2
 
-Yeniden yönlendirme URL 'Leri olan `login-east.contoso.com` ve `login-west.contoso.com` içeren bir uygulamaya sahip olmak istiyorsanız, bu yeniden yönlendirme URL 'lerini aşağıdaki sırayla eklemeniz gerekir:
+Yeniden yönlendirme URL 'Leri olan ve içeren bir uygulamaya sahip olmak istiyorsanız `login-east.contoso.com` `login-west.contoso.com` , bu yeniden yönlendirme URL 'lerini aşağıdaki sırayla eklemeniz gerekir:
 
 `https://contoso.com`  
 `https://login-east.contoso.com`  
@@ -176,19 +176,19 @@ Bir uygulamayı Microsoft Identity platform ile kullanmak üzere nasıl kaydedec
 
 Şu anda Microsoft Identity platform uç noktası için kitaplık desteği sınırlıdır. Microsoft Identity platform uç noktasını bir üretim uygulamasında kullanmak istiyorsanız, şu seçeneklere sahip olursunuz:
 
-* Bir Web uygulaması oluşturuyorsanız, oturum açma ve belirteç doğrulama yapmak için genel kullanıma açık sunucu tarafı ara yazılımını güvenle kullanabilirsiniz. Bunlar, ASP.NET ve Node. js Passport eklentisi için OWıN OpenID Connect ara yazılımını içerir. Microsoft ara yazılımı kullanan kod örnekleri için [Microsoft Identity platform Başlarken](../develop/v2-overview.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#getting-started) bölümüne bakın.
+* Bir Web uygulaması oluşturuyorsanız, oturum açma ve belirteç doğrulama yapmak için genel kullanıma açık sunucu tarafı ara yazılımını güvenle kullanabilirsiniz. Bunlar, ASP.NET ve Node.js Passport eklentisi için OWıN OpenID Connect ara yazılımını içerir. Microsoft ara yazılımı kullanan kod örnekleri için [Microsoft Identity platform Başlarken](../develop/v2-overview.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#getting-started) bölümüne bakın.
 * Masaüstü veya mobil uygulama oluşturuyorsanız, Microsoft kimlik doğrulama kitaplıklarından birini (MSAL) kullanabilirsiniz. Bu kitaplıklar genel olarak kullanılabilir veya üretim tarafından desteklenen bir önizlemede, bunları üretim uygulamalarında kullanmak güvenlidir. Önizleme koşulları ve [kimlik doğrulama kitaplıkları](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)için kullanılabilir kitaplıklar hakkında daha fazla bilgi edinebilirsiniz.
 * Microsoft kitaplıkları tarafından kapsanmayan platformlar için, uygulama kodunuzda protokol iletileri doğrudan göndererek ve alarak Microsoft Identity platform uç noktasıyla tümleştirilebilir. OpenID Connect ve OAuth protokolleri, bu tür bir tümleştirme yapmanıza yardımcı olmak için [açıkça belgelenmiştir](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .
 * Son olarak, açık kaynaklı OpenID Connect ve OAuth kitaplıklarını Microsoft Identity platform uç noktasıyla tümleştirme için kullanabilirsiniz. Microsoft Identity platform uç noktası, değişiklik yapılmadan birçok açık kaynaklı protokol kitaplığı ile uyumlu olmalıdır. Bu tür kitaplıkların kullanılabilirliği dile ve platforma göre değişiklik gösterir. [OpenID Connect](https://openid.net/connect/) ve [OAuth 2,0](https://oauth.net/2/) Web siteleri popüler uygulamaların bir listesini tutar. Daha fazla bilgi için bkz. [Microsoft Identity platform ve Authentication kitaplıkları](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)ve Microsoft Identity platform uç noktasıyla sınanmış açık kaynaklı istemci kitaplıkları ve örnekleri listesi.
-* Başvuru için, Microsoft `.well-known` Identity platform ortak uç noktası için uç nokta `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Kiracınıza özgü verileri almak için kiracı KIMLIĞINIZLE değiştirin `common` .  
+* Başvuru için, `.well-known` Microsoft Identity platform ortak uç noktası için uç nokta `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . `common`Kiracınıza özgü verileri almak için KIRACı Kimliğinizle değiştirin.  
 
 ### <a name="protocol-changes"></a>Protokol değişiklikleri
 
 Microsoft Identity platform uç noktası SAML veya WS-Federation; desteklemez yalnızca OpenID Connect ve OAuth 2,0 ' i destekler.  V 1.0 uç noktasındaki OAuth 2,0 protokollerine yapılan önemli değişiklikleri şunlardır: 
 
-* İsteğe `email` bağlı bir talep yapılandırılmışsa **veya** istekte Scope = email belirtilmişse talep döndürülür. 
-* `scope` Parametresi, `resource` parametresi yerine artık desteklenmektedir.  
-* Birçok yanıt, OAuth 2,0 belirtimine daha uyumlu hale getirmek için değiştirilmiştir, örneğin, bir dize yerine doğru bir int `expires_in` olarak döndürülüyor.  
+* `email`İsteğe bağlı bir talep yapılandırılmışsa **veya** istekte Scope = email belirtilmişse talep döndürülür. 
+* Parametresi, `scope` parametresi yerine artık desteklenmektedir `resource` .  
+* Birçok yanıt, OAuth 2,0 belirtimine daha uyumlu hale getirmek için değiştirilmiştir, örneğin, `expires_in` bir dize yerine doğru bir int olarak döndürülüyor.  
 
 Microsoft Identity platform uç noktasında desteklenen protokol işlevselliğinin kapsamını daha iyi anlamak için bkz. [OpenID Connect ve OAuth 2,0 protokol başvurusu](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

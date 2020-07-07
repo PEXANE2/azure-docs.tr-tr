@@ -9,25 +9,25 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80258303"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLı kullanarak uzaktan Izleme çözüm Hızlandırıcısını dağıtma
 
 Bu nasıl yapılır kılavuzunda, uzaktan Izleme çözümü hızlandırıcının nasıl dağıtılacağı gösterilmektedir. Çözümü CLı kullanarak dağıtırsınız. Çözümü, azureiotsolutions.com adresindeki Web tabanlı kullanıcı arabirimini kullanarak da dağıtabilirsiniz. Bu seçenek hakkında bilgi edinmek için [Uzaktan İzleme Çözüm Hızlandırıcısı](quickstart-remote-monitoring-deploy.md) hızlı başlangıcını Dağıtma bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Uzaktan Izleme çözüm Hızlandırıcısını dağıtmak için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
 Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 
-CLı 'yı çalıştırmak için [Node. js](https://nodejs.org/) ' nin yerel makinenizde yüklü olması gerekir.
+CLı 'yı çalıştırmak için yerel makinenizde yüklü [Node.js](https://nodejs.org/) gerekir.
 
-## <a name="install-the-cli"></a>CLI’yı yükleme
+## <a name="install-the-cli"></a>CLI'yi yükleme
 
 CLı 'yı yüklemek için komut satırı ortamınızda aşağıdaki komutu çalıştırın:
 
@@ -49,7 +49,7 @@ Oturum açma işlemini gerçekleştirmek için ekrandaki yönergeleri izleyin.
 
 Çözüm hızlandırıcıyı dağıtırken, dağıtım işlemini yapılandıran çeşitli seçenekler vardır:
 
-| Seçenek | Değerler | Açıklama |
+| Seçenek | Değerler | Description |
 | ------ | ------ | ----------- |
 | SKU    | `basic`, `standard`, `local` | _Temel_ bir dağıtım test ve gösteriler için tasarlanan tüm mikro hizmetleri tek bir sanal makineye dağıtır. _Standart_ bir dağıtım üretime yöneliktir, mikro hizmetleri birkaç sanal makineye dağıtır. _Yerel_ bir dağıtım, bir Docker kapsayıcısını yerel makinenizde mikro hizmetleri çalıştıracak şekilde yapılandırır ve depolama ve Cosmos DB gibi Azure bulut hizmetlerini kullanır. |
 | Çalışma Zamanı | `dotnet`, `java` | Mikro hizmetlerin dil uygulamasını seçer. |
@@ -70,14 +70,14 @@ Temel dağıtım, Azure aboneliğinizde aşağıdaki hizmetleri oluşturur:
 
 | Sayı | Kaynak                       | Tür         | Kullanıldığı yer |
 |-------|--------------------------------|--------------|----------|
-| 1     | [Linux Sanal Makinesi](https://azure.microsoft.com/services/virtual-machines/) | Standart D1 v2  | Mikro hizmetleri barındırma |
+| 1     | [Linux sanal makinesi](https://azure.microsoft.com/services/virtual-machines/) | Standart D1 v2  | Mikro hizmetleri barındırma |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standart katman | Cihaz yönetimi ve iletişim |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standart        | Yapılandırma verilerini, kuralları, uyarıları ve diğer soğuk depolamayı depolama |  
-| 1     | [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standart        | VM ve akış denetim noktaları için depolama |
+| 1     | [Azure Depolama Hesabı](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standart        | VM ve akış denetim noktaları için depolama |
 | 1     | [Web uygulaması](https://azure.microsoft.com/services/app-service/web/)        |                 | Ön uç Web uygulaması barındırma |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Kullanıcı kimliklerini ve güvenliğini yönetme |
 | 1     | [Azure Haritalar](https://azure.microsoft.com/services/azure-maps/)        | Standart                | Varlık konumlarını görüntüleme |
-| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 birim              | Gerçek zamanlı analizi etkinleştirme |
+| 1     | [Azure Akış Analizi](https://azure.microsoft.com/services/stream-analytics/)        |   3 birim              | Gerçek zamanlı analizi etkinleştirme |
 | 1     | [Azure cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Cihazları ölçekli olarak sağlama |
 | 1     | [Azure Zaman Serisi Görüşleri](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 birim              | İleti verileri için depolama ve derin telemetri analizini mümkün |
 
@@ -98,12 +98,12 @@ Standart dağıtım, Azure aboneliğinizde aşağıdaki hizmetleri oluşturur:
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standart     | TLS üzerinden uygulama ağ geçidi |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Kullanıcı kimliklerini ve güvenliğini yönetme |
 | 1     | [Azure Haritalar](https://azure.microsoft.com/services/azure-maps/)        | Standart                | Varlık konumlarını görüntüleme |
-| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 birim              | Gerçek zamanlı analizi etkinleştirme |
+| 1     | [Azure Akış Analizi](https://azure.microsoft.com/services/stream-analytics/)        |   3 birim              | Gerçek zamanlı analizi etkinleştirme |
 | 1     | [Azure cihaz sağlama hizmeti](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Cihazları ölçekli olarak sağlama |
 | 1     | [Azure Zaman Serisi Görüşleri](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 birim              | İleti verileri için depolama ve derin telemetri analizini mümkün |
 
 > [!NOTE]
-> Bu hizmetlerin fiyatlandırma bilgilerini adresinde [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing)bulabilirsiniz. [Azure portalında](https://portal.azure.com/)aboneliğiniz için kullanım ve faturalandırma ayrıntılarını bulabilirsiniz.
+> Bu hizmetlerin fiyatlandırma bilgilerini adresinde bulabilirsiniz [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) . [Azure portalında](https://portal.azure.com/)aboneliğiniz için kullanım ve faturalandırma ayrıntılarını bulabilirsiniz.
 
 ## <a name="deploy-the-solution-accelerator"></a>Çözüm hızlandırıcısını dağıtma
 
@@ -127,14 +127,14 @@ pcs -t remotemonitoring -s standard -r java
 
 ### <a name="pcs-command-options"></a>PC komut seçenekleri
 
-Bir çözümü dağıtmak için `pcs` komutunu çalıştırdığınızda şunları yapmanız istenir:
+`pcs`Bir çözümü dağıtmak için komutunu çalıştırdığınızda şunları yapmanız istenir:
 
 - Çözümünüz için bir ad. Bu ad benzersiz olmalıdır.
 - Kullanılacak Azure aboneliği.
 - Bir konum.
 - Mikro hizmetleri barındıran sanal makinelerin kimlik bilgileri. Sorun giderme amacıyla sanal makinelere erişmek için bu kimlik bilgilerini kullanabilirsiniz.
 
-`pcs` Komut tamamlandığında, yeni çözüm HıZLANDıRıCıNıN URL 'sini görüntüler. `pcs` Komut Ayrıca, oluşturduğu IoT Hub adı `{deployment-name}-output.json` gibi bilgileri içeren bir dosya oluşturur.
+`pcs`Komut tamamlandığında, yeni çözüm hızlandırıcının URL 'sini görüntüler. `pcs`Komut Ayrıca, `{deployment-name}-output.json` oluşturduğu IoT Hub adı gibi bilgileri içeren bir dosya oluşturur.
 
 Komut satırı parametreleri hakkında daha fazla bilgi için şunu çalıştırın:
 

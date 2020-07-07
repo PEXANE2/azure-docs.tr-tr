@@ -4,10 +4,10 @@ description: Docker komutlarını çalıştırmaya gerek kalmadan Azure API 'Ler
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80051917"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Kapsayıcı görüntülerini kapsayıcı kayıt defterine aktarma
@@ -34,7 +34,7 @@ Kapsayıcı görüntülerini içeri aktarmak için bu makale, Azure CLı 'yı Az
 > Aynı kapsayıcı görüntülerini birden çok Azure bölgesinde dağıtmanız gerekiyorsa Azure Container Registry [Coğrafi çoğaltmayı](container-registry-geo-replication.md)da destekler. Bir kayıt defteri coğrafi olarak çoğaltılırken (Premium hizmet katmanı gereklidir), tek bir kayıt defterinden aynı görüntü ve etiket adları ile birden çok bölgeye hizmet verebilirsiniz.
 >
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Zaten bir Azure Container kayıt defteriniz yoksa bir kayıt defteri oluşturun. Adımlar için bkz. [hızlı başlangıç: Azure CLI kullanarak özel kapsayıcı kayıt defteri oluşturma](container-registry-get-started-azure-cli.md).
 
@@ -44,7 +44,7 @@ Bir görüntüyü Azure Container Registry 'ye aktarmak için, kimliğinizin hed
 
 ### <a name="import-from-docker-hub"></a>Docker Hub 'dan içeri aktar
 
-Örneğin, Docker Hub 'ından Multi-Architecture `hello-world:latest` görüntüsünü *myregistry*adlı bir kayıt defterine aktarmak için [az ACR Import][az-acr-import] komutunu kullanın. , `hello-world` Docker Hub 'ından resmi bir görüntü olduğundan, bu görüntü varsayılan `library` depodadır. Depo adını ve isteğe bağlı olarak `--source` Image parametresinin değerine bir etiketi ekleyin. (Bir görüntüyü, bir görüntünün belirli bir sürümünü garanti eden etiketi yerine, bildirim özetine göre belirleyebilirsiniz.)
+Örneğin, [az acr import][az-acr-import] `hello-world:latest` Docker Hub 'ından Multi-Architecture görüntüsünü *myregistry*adlı bir kayıt defterine aktarmak için az ACR Import komutunu kullanın. `hello-world`, Docker Hub 'ından resmi bir görüntü olduğundan, bu görüntü varsayılan `library` depodadır. Depo adını ve isteğe bağlı olarak Image parametresinin değerine bir etiketi ekleyin `--source` . (Bir görüntüyü, bir görüntünün belirli bir sürümünü garanti eden etiketi yerine, bildirim özetine göre belirleyebilirsiniz.)
  
 ```azurecli
 az acr import \
@@ -53,7 +53,7 @@ az acr import \
   --image hello-world:latest
 ```
 
-`az acr repository show-manifests` Komutu çalıştırarak bu görüntüyle ilişkili birden fazla bildirimin olduğunu doğrulayabilirsiniz:
+Komutu çalıştırarak bu görüntüyle ilişkili birden fazla bildirimin olduğunu doğrulayabilirsiniz `az acr repository show-manifests` :
 
 ```azurecli
 az acr repository show-manifests \
@@ -61,7 +61,7 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-Aşağıdaki örnek, Docker Hub 'daki `tensorflow` depodan ortak bir görüntü içeri aktarır:
+Aşağıdaki örnek, `tensorflow` Docker Hub 'daki depodan ortak bir görüntü içeri aktarır:
 
 ```azurecli
 az acr import \
@@ -72,7 +72,7 @@ az acr import \
 
 ### <a name="import-from-microsoft-container-registry"></a>Microsoft Container Registry içeri aktar
 
-Örneğin, Microsoft Container Registry `windows` deposundaki en son Windows Server çekirdek görüntüsünü içeri aktarın.
+Örneğin, Microsoft Container Registry deposundaki en son Windows Server çekirdek görüntüsünü içeri aktarın `windows` .
 
 ```azurecli
 az acr import \
@@ -91,7 +91,7 @@ Bir görüntüyü, tümleşik Azure Active Directory izinleri kullanarak başka 
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Aynı abonelikteki bir kayıt defterinden içeri aktarma
 
-Örneğin, bir kaynak kayıt `aci-helloworld:latest` defteri *mysourceregyıpdan* aynı Azure aboneliğindeki *myregistry* 'e ait görüntüyü içeri aktarın.
+Örneğin, `aci-helloworld:latest` bir kaynak kayıt defteri *mysourceregyıpdan* aynı Azure aboneliğindeki *myregistry* 'e ait görüntüyü içeri aktarın.
 
 ```azurecli
 az acr import \
@@ -100,7 +100,7 @@ az acr import \
   --image aci-helloworld:latest
 ```
 
-Aşağıdaki örnek, bir görüntüyü etiketi yerine manifest Digest (SHA-256 karması, olarak `sha256:...`temsil edilir) ile içe aktarır:
+Aşağıdaki örnek, bir görüntüyü etiketi yerine manifest Digest (SHA-256 karması, olarak temsil edilir) ile içe aktarır `sha256:...` :
 
 ```azurecli
 az acr import \
@@ -110,7 +110,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>Farklı bir abonelikteki kayıt defterinden içeri aktarma
 
-Aşağıdaki örnekte, *mysourceregbakanlığı* aynı Active Directory kiracısındaki *myregistry* 'den farklı bir abonelikte yer verilir. Kaynak kayıt defterinin `--registry` parametresi Ile kaynak kimliğini sağlayın. `--source` Parametresinin kayıt defteri oturum açma sunucusu adını değil yalnızca kaynak depoyu ve etiketi belirttiğinden emin olun.
+Aşağıdaki örnekte, *mysourceregbakanlığı* aynı Active Directory kiracısındaki *myregistry* 'den farklı bir abonelikte yer verilir. Kaynak kayıt defterinin parametresi ile kaynak KIMLIĞINI sağlayın `--registry` . `--source`Parametresinin kayıt defteri oturum açma sunucusu adını değil yalnızca kaynak depoyu ve etiketi belirttiğinden emin olun.
 
 ```azurecli
 az acr import \

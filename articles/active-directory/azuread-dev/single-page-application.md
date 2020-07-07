@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: adf3c5b5cd40a9ea3f07ba9c92cfc4544ca60f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154755"
 ---
 # <a name="single-page-applications"></a>Tek sayfalı uygulamalar
@@ -26,7 +26,7 @@ ms.locfileid: "80154755"
 
 Tek sayfalı uygulamalar (maça 'Lar) genellikle tarayıcıda çalışan bir JavaScript sunum katmanı (ön uç) olarak yapılandırılmıştır ve bir sunucuda çalışan ve uygulamanın iş mantığını uygulayan bir Web API arka ucu olarak yapılandırılır. Örtük yetkilendirme izni hakkında daha fazla bilgi edinmek ve Uygulama senaryonuz için doğru olup olmadığına karar vermenize yardımcı olmak için, [Azure Active Directory OAuth2 örtük izin akışını anlama](v1-oauth2-implicit-grant-flow.md)bölümüne bakın.
 
-Bu senaryoda, Kullanıcı oturum açtığında JavaScript ön ucu [JavaScript için Active Directory Authentication Library kullanır (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) ve örtük yetkilendirme, Azure AD 'den BIR kimlik belirteci (id_token) almaya izin verir. Belirteç önbelleğe alınır ve istemci, OWıN ara yazılımı kullanılarak güvenliği sağlanmış olan Web API 'SI arka ucuna çağrı yaparken, bu isteği taşıyıcı belirteç olarak isteğe iliştirir.
+Bu senaryoda, Kullanıcı oturum açtığında, JavaScript ön ucu [JavaScript (ADAL.JS) için Active Directory Authentication Library](https://github.com/AzureAD/azure-activedirectory-library-for-js) ve örtük yetkilendirme, Azure AD 'den bir kimlik belirteci (id_token) almaya izin verir. Belirteç önbelleğe alınır ve istemci, OWıN ara yazılımı kullanılarak güvenliği sağlanmış olan Web API 'SI arka ucuna çağrı yaparken, bu isteği taşıyıcı belirteç olarak isteğe iliştirir.
 
 ## <a name="diagram"></a>Diyagram
 
@@ -56,12 +56,12 @@ Uygulama kaydedildikten sonra, OAuth 2,0 örtük izin protokolünü kullanacak �
 
 ## <a name="token-expiration"></a>Belirteç süre sonu
 
-ADAL. js kullanarak şunları yapmanıza yardımcı olur:
+ADAL.js kullanmak şunları yapmanıza yardımcı olur:
 
 * Süre dolma belirtecini yenileme
 * Web API kaynağını çağırmak için erişim belirteci isteme
 
-Başarılı bir kimlik doğrulamasından sonra Azure AD, oturum oluşturmak için kullanıcının tarayıcısına bir tanımlama bilgisi yazar. Oturumun Kullanıcı ile Azure AD arasında (Kullanıcı ile Web uygulaması arasında değil) bulunduğunu not edin. Bir belirtecin süresi dolarsa, ADAL. js bu oturumu kullanarak sessizce başka bir belirteç elde eder. ADAL. js, OAuth örtük izin protokolünü kullanarak isteği göndermek ve almak için gizli bir iFrame kullanır. ADAL. js, diğer Web API kaynakları için erişim belirteçlerini sessizce almak üzere bu aynı mekanizmayı da kullanabilir, çünkü bu kaynaklar çıkış noktaları arası kaynak paylaşımı 'nı (CORS) destekler, kullanıcının dizinine kaydedilir ve oturum açma sırasında Kullanıcı tarafından gerekli izin verilir.
+Başarılı bir kimlik doğrulamasından sonra Azure AD, oturum oluşturmak için kullanıcının tarayıcısına bir tanımlama bilgisi yazar. Oturumun Kullanıcı ile Azure AD arasında (Kullanıcı ile Web uygulaması arasında değil) bulunduğunu not edin. Belirtecin süresi dolarsa, ADAL.js bu oturumu kullanarak sessizce başka bir belirteç elde eder. ADAL.js, OAuth örtük izin protokolünü kullanarak isteği göndermek ve almak için gizli bir iFrame kullanır. ADAL.js, diğer Web API kaynakları için erişim belirteçlerini sessizce almak üzere bu aynı mekanizmayı da kullanabilir, çünkü bu kaynaklar çıkış noktaları arası kaynak paylaşımı 'nı (CORS) destekler, kullanıcının dizinine kaydedilir ve oturum açma sırasında Kullanıcı tarafından gerekli izin verilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

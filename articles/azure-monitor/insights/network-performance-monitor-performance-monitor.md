@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055683"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Ağ Performansı İzleyicisi çözümü: performans izleme
@@ -94,7 +94,7 @@ Bir protokol seçmeden önce aşağıdaki bilgileri göz önünde bulundurun:
 
 Dağıtım sırasında ıCMP kullanmayı seçerseniz, varsayılan izleme kuralını düzenleyerek istediğiniz zaman TCP 'ye geçiş yapabilirsiniz.
 
-1. **Ağ performansı** > **İzleyicisi**> **Monitor** **Configure**izleyiciyi Yapılandır ' a gidin. > Ardından **varsayılan kural**' ı seçin. 
+1. **Ağ performansı**   >  **İzleyicisi**   >  **Configure**   >  **izleyiciyi**Yapılandır ' a gidin. Ardından **varsayılan kural**' ı seçin. 
 2. **Protokol** bölümüne ilerleyin ve kullanmak istediğiniz protokolü seçin. 
 3. Ayarı uygulamak için **Kaydet** ' i seçin. 
 

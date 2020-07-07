@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 012a574887d9980e0c71c3af84ff70ca8d31312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80275688"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin Yayımlanma durumunu kontrol edin
@@ -50,7 +50,7 @@ Bu adımda, önceki adımda test sürücünüzün verileri ve işlevlerini doğr
 
 Bu adımda, müşteri adayı yönetim sisteminizin müşteri adaylarını teklif kurulumunda belirtilen ayrıntılara göre alabileceği onaylanır. Bu adım yalnızca, lider yönetimi etkinleştirilmiş teklifler için geçerlidir.
 
-## <a name="certification"></a>Sertifika
+## <a name="certification"></a>Sertifikasyon
 
 Yayımlanmadan önce, Iş Ortağı Merkezi 'nde ticari Market 'e gönderilen tekliflerin sertifikalı olması gerekir. Gönderilen, [Azure Marketi sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/general-policies)yönelik bir denetim de dahil olmak üzere, daha kapsamlı bir test, bazı otomatikleştirilmiş ve diğer el ile bir kılavuz sunar Teklif gönderimlerinin, yayımlama akışında bir sonraki adıma geçmeden önce sertifika için uygun olarak işaretlenmesi gerekir.
 
