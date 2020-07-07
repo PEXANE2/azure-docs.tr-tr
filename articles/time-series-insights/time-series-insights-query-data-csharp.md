@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: 754d1b80236d138693987cccee7a218ccd96b16b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383879"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>C kullanarak Azure Time Series Insights GA ortamından veri sorgulama #
@@ -23,7 +23,7 @@ ms.locfileid: "81383879"
 Bu C# örneği, Azure Time Series Insights GA ortamlarından verileri sorgulamak için [ga sorgu API 'lerinin](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) nasıl kullanılacağını gösterir.
 
 > [!TIP]
-> ' Deki [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)GA C# kod örneklerini görüntüleyin.
+> ' Deki GA C# kod örneklerini görüntüleyin [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
 ## <a name="summary"></a>Özet
 
@@ -31,7 +31,7 @@ Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
 * [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)kullanarak Azure Active Directory aracılığıyla erişim belirteci alma.
 
-* Bu alınan erişim belirtecini sonraki sorgu API 'SI isteklerinin `Authorization` üst bilgisinde geçirme. 
+* Bu alınan erişim belirtecini `Authorization` Sonraki sorgu API 'si isteklerinin üst bilgisinde geçirme. 
 
 * Örnek, HTTP isteklerinin ' de nasıl yapıldığını gösteren bir GA sorgu API 'lerinin her birini çağırır:
     * Kullanıcının erişimi olan ortamları döndürmesi için [ortamlar API 'Si al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api)
@@ -64,9 +64,9 @@ Visual Studio 'nun en yeni sürümünü kullanmanız önerilir:
 Örnek kodun iki zorunlu bağımlılığı vardır:
 
 * [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9 paketi.
-* [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1 paketi.
+* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1 Package.
 
-**Build** > **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin.
+**Build**  >  **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin.
 
 Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak paketleri ekleyin:
 

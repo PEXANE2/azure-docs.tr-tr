@@ -4,12 +4,12 @@ description: MetaMask kullanarak bir Azure blok zinciri hizmeti ağına bağlan�
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79205104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920575"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Hızlı başlangıç: akıllı bir sözleşmeyi bağlamak ve dağıtmak için MetaMask kullanma
 
@@ -17,7 +17,7 @@ Bu hızlı başlangıçta, bir Azure blok zinciri hizmeti ağına bağlanmak ve 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Hızlı başlangıç: Azure Portal veya hızlı başlangıç kullanarak bir blok zinciri üyesi oluşturma](create-member.md) [: Azure CLI kullanarak bir Azure blok zinciri hizmeti blok zinciri üyesi](create-member-cli.md) oluşturma
 * [MetaMask Browser uzantısını](https://metamask.io) yükler
@@ -59,7 +59,7 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
 1. Tarayıcınızda `https://remix.ethereum.org` adresine gidin.
 1. **Dosya**altındaki **giriş** sekmesinde **yeni dosya** ' yı seçin.
 
-    Yeni dosyayı `simple.sol`adlandırın.
+    Yeni dosyayı adlandırın `simple.sol` .
 
     ![Dosya oluştur](./media/connect-metamask/create-file.png)
 
@@ -128,9 +128,9 @@ Yeniden karıştırma, tarayıcı tabanlı bir Solidity geliştirme ortamıdır.
 
 Remix 'in hata ayıklama bölmesi, blok zincirindeki işlemler hakkındaki ayrıntıları gösterir:
 
-    ![Debug history](./media/connect-metamask/debug.png)
+![Hata ayıklama geçmişi](./media/connect-metamask/debug.png)
 
-    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+**Basit sözleşme oluşturma** , **basit. Ekle**için işlem ve **basit. Get**öğesine çağrı yapabilirsiniz.
 
 MetaMask içinde işlem geçmişini görmek için MetaMask Browser uzantısını açın ve dağıtılan sözleşmenin ve işlemlerin günlüğü için **Geçmiş** bölümüne bakın.
 

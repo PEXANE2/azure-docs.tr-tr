@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066912"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
@@ -26,7 +26,7 @@ ms.locfileid: "80066912"
 
 Azure disk şifrelemesi, [Select Azure Linux dağıtımları](https://aka.ms/adelinux)üzerinde tam disk şifrelemesi sağlamak için Linux 'daki dm-crypt alt sisteminden yararlanır.  Bu çözüm, disk şifreleme anahtarlarını ve gizli dizileri yönetmek için Azure Key Vault ile tümleşiktir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Önkoşulların tam listesi için bkz. [Linux VM 'leri Için Azure disk şifrelemesi](../linux/disk-encryption-overview.md), özellikle aşağıdaki bölümler:
 
@@ -76,9 +76,9 @@ V 1.1 şeması önerilir ve Azure Active Directory (AAD) özellikleri gerektirme
 
 ### <a name="schema-v01-with-aad"></a>Şema v 0.1: AAD ile 
 
-0,1 şeması ve ya `AADClientID` `AADClientSecret` `AADClientCertificate`da gerektirir.
+0,1 şeması `AADClientID` ve ya da gerektirir `AADClientSecret` `AADClientCertificate` .
 
-Şunu `AADClientSecret`kullanarak:
+Şunu kullanarak `AADClientSecret` :
 
 ```json
 {
@@ -108,7 +108,7 @@ V 1.1 şeması önerilir ve Azure Active Directory (AAD) özellikleri gerektirme
 }
 ```
 
-Şunu `AADClientCertificate`kullanarak:
+Şunu kullanarak `AADClientCertificate` :
 
 ```json
 {
@@ -141,11 +141,11 @@ V 1.1 şeması önerilir ve Azure Active Directory (AAD) özellikleri gerektirme
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft. Azure. Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| tür | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 1,1, 0,1 | int |
 | (0,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (0,1 şeması) AADClientSecret | password | string |
@@ -173,7 +173,7 @@ V 1.1 şeması önerilir ve Azure Active Directory (AAD) özellikleri gerektirme
 > - Linux VM 'lerinde şifrelemeyi devre dışı bırakmak yalnızca veri birimlerinde desteklenir. İşletim sistemi birimi şifrelendiyse veri veya işletim sistemi birimlerinde desteklenmez. 
 
 >[!NOTE]
-> Ayrıca, `VolumeType` parametresi Tümü olarak ayarlandıysa, veri diskleri yalnızca düzgün şekilde bağlanmışsa şifrelenir.
+> Ayrıca `VolumeType` , parametresi Tümü olarak ayarlandıysa, veri diskleri yalnızca düzgün şekilde bağlanmışsa şifrelenir.
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 

@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80245829"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux’ta Azure App Service hakkında SSS
@@ -32,8 +32,8 @@ Tüm Docker dosyalarını [GitHub](https://github.com/azure-app-service)üzerind
 
 | Yığın           | Beklenen değer                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
-| Tomcat          | gerekli yapılandırmaların gerçekleştirileceği bir betiğin konumu (örneğin, `/home/site/deployments/tools/startup_script.sh`)          |
+| Java SE         | JAR uygulamanızı başlatma komutu (örneğin, `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
+| Tomcat          | gerekli yapılandırmaların gerçekleştirileceği bir betiğin konumu (örneğin, `/home/site/deployments/tools/startup_script.sh` )          |
 | Node.js         | PM2 yapılandırma dosyası veya betik dosyanız                                |
 | .NET Core       | derlenmiş DLL adı olarak`dotnet <myapp>.dll`                                 |
 | Ruby            | uygulamanızı başlatmak istediğiniz Ruby betiği                     |
@@ -70,7 +70,7 @@ Evet.
 
 **Web uygulamamı dağıtmak için *WebDeploy/MSDeploy* kullanabilir miyim?**
 
-Evet, `WEBSITE_WEBDEPLOY_USE_SCM` *yanlış*olarak çağrılan bir uygulama ayarı ayarlamanız gerekir.
+Evet, yanlış olarak çağrılan bir uygulama ayarı ayarlamanız gerekir `WEBSITE_WEBDEPLOY_USE_SCM` . *false*
 
 **Linux Web uygulaması kullanılırken uygulamamın git dağıtımı başarısız oluyor. Sorunu geçici olarak nasıl çözebilirim?**
 
@@ -84,13 +84,13 @@ Git dağıtımı Linux Web uygulamanıza başarısız olursa, uygulama kodunuzu 
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   `curl` Komutun bulunamadığını belirten bir hata alırsanız, önceki `curl` komutu çalıştırmadan önce kullanarak `apt-get install curl` kıvrımlı yüklediğinizden emin olun.
+   Komutun bulunamadığını belirten bir hata alırsanız `curl` , `apt-get install curl` önceki komutu çalıştırmadan önce kullanarak kıvrımlı yüklediğinizden emin olun `curl` .
 
 ## <a name="language-support"></a>Dil desteği
 
-**Node. js uygulamamda Web yuvalarını, tüm özel ayarları veya ayarlanacak konfigürasyonları kullanmak istiyorum?**
+**Node.js uygulamamda Web yuvalarını, tüm özel ayarları veya ayarlanacak konfigürasyonları kullanmak istiyorum?**
 
-Evet, sunucu `perMessageDeflate` tarafı Node. js kodunuzda devre dışı bırakın. Örneğin, socket.io kullanıyorsanız aşağıdaki kodu kullanın:
+Evet, `perMessageDeflate` sunucu tarafı Node.js kodunuzda devre dışı bırakın. Örneğin, socket.io kullanıyorsanız aşağıdaki kodu kullanın:
 
 ```nodejs
 const io = require('socket.io')(server,{
@@ -110,7 +110,7 @@ Evet, bir git dağıtımı sırasında kudu, bir PHP uygulaması dağıttığın
 
 **Kendi özel kapsayıcınızı kullanıyorum. Platformun bir SMB `/home/` dizinini dizine bağlamak istiyorum.**
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE` Ayar **belirtilmemişse** veya *true*olarak ayarlanırsa `/home/` , Dizin ölçek örnekleri arasında **paylaşılır** ve yazılan dosyalar yeniden başlatmalar arasında **kalır** . Açıkça false `WEBSITES_ENABLE_APP_SERVICE_STORAGE` olarak *false* ayarlandığında bağlama devre dışı bırakılır.
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE`Ayar **belirtilmemişse** veya *true*olarak ayarlanırsa, `/home/` Dizin ölçek örnekleri arasında **paylaşılır** ve yazılan dosyalar yeniden başlatmalar arasında **kalır** . Açıkça `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *false* olarak ayarlandığında bağlama devre dışı bırakılır.
 
 **Özel kapsayıcımın başlaması uzun sürer ve platformun başlaması bitmeden önce kapsayıcıyı yeniden başlatır.**
 
@@ -118,11 +118,11 @@ Platformun kapsayıcınızı yeniden başlatmadan önce bekleyeceği süreyi yap
 
 **Özel kayıt defteri sunucu URL 'sinin biçimi nedir?**
 
-Veya `http://` `https://`dahil olmak üzere tam kayıt defteri URL 'sini sağlayın.
+Veya dahil olmak üzere tam kayıt defteri URL 'sini sağlayın `http://` `https://` .
 
 **Özel kayıt defteri seçeneğinde görüntü adının biçimi nedir?**
 
-Özel kayıt defteri URL 'SI de dahil olmak üzere tam görüntü adını ekleyin (örneğin, myacr.azurecr.io/dotnet:latest). Özel bir bağlantı noktası kullanan görüntü adları [Portal üzerinden girilemez](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Ayarlamak `docker-custom-image-name`için [ `az` komut satırı aracını](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)kullanın.
+Özel kayıt defteri URL 'SI de dahil olmak üzere tam görüntü adını ekleyin (örneğin, myacr.azurecr.io/dotnet:latest). Özel bir bağlantı noktası kullanan görüntü adları [Portal üzerinden girilemez](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Ayarlamak için `docker-custom-image-name` [ `az` komut satırı aracını](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)kullanın.
 
 **Özel kapsayıcı Görüntümdeki birden fazla bağlantı noktasını kullanıma alabilir miyim?**
 
@@ -153,7 +153,7 @@ ACR 'yi çok Kapsayıcılı kullanmak için, **tüm kapsayıcı görüntülerini
 Aşağıdaki uygulama ayarlarını oluşturun:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (tam URL, Ex: `https://<server-name>.azurecr.io`)
+- DOCKER_REGISTRY_SERVER_URL (tam URL, Ex: `https://<server-name>.azurecr.io` )
 - DOCKER_REGISTRY_SERVER_PASSWORD (ACR ayarlarında yönetici erişimini etkinleştir)
 
 Yapılandırma dosyası içinde, ACR yansımanıza aşağıdaki örnekte olduğu gibi başvurun:
@@ -169,7 +169,7 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 
 Öncelik sırasına göre hangi kapsayıcının erişilebilir olduğunu belirlemek için kurallar aşağıda verilmiştir:
 
-- Kapsayıcı adına `WEBSITES_WEB_CONTAINER_NAME` ayarlanan uygulama ayarı
+- `WEBSITES_WEB_CONTAINER_NAME`Kapsayıcı adına ayarlanan uygulama ayarı
 - 80 veya 8080 numaralı bağlantı noktasını tanımlamak için ilk kapsayıcı
 - Yukarıdakilerin hiçbiri true ise, dosyada tanımlanan ilk kapsayıcı erişilebilir olur (gösterilir)
 

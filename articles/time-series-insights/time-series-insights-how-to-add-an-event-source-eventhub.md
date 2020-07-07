@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407452"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights ortamınıza bir olay hub 'ı olay kaynağı ekleme
@@ -25,7 +25,7 @@ Bu makalede, Azure Event Hubs verileri Azure Time Series Insights ortamınıza o
 > [!NOTE]
 > Bu makalede açıklanan adımlar, Time Series Insights GA ve Time Series Insights önizleme ortamları için de geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Time Series Insights ortamı oluşturma](./time-series-insights-update-create-environment.md)bölümünde açıklandığı gibi bir Time Series Insights ortamı oluşturun.
 - Bir olay hub'ı oluşturun. [Azure Portal kullanarak Event Hubs ad alanı ve Olay Hub 'ı oluşturun](../event-hubs/event-hubs-create.md).
@@ -50,7 +50,7 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 1. **Tüketici grupları** sayfasında, **ad**için yeni bir benzersiz değer girin.  Time Series Insights ortamında yeni bir olay kaynağı oluştururken aynı adı kullanın.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 ## <a name="add-a-new-event-source"></a>Yeni bir olay kaynağı ekleyin
 
@@ -62,7 +62,7 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
    [![Olay kaynakları altında Ekle düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
-1. Bu Time Series Insights ortamı için benzersiz olan **olay kaynağı adı** için bir değer girin, örneğin `Contoso-TSI-GA-Event-Hub-ES`.
+1. Bu Time Series Insights ortamı için benzersiz olan **olay kaynağı adı** için bir değer girin, örneğin `Contoso-TSI-GA-Event-Hub-ES` .
 
 1. **Kaynak**Için **Olay Hub**'ı ' nı seçin.
 
@@ -107,7 +107,7 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 1. Olay Hub 'ınıza eklediğiniz adanmış Time Series Insights Tüketici grubu adını ekleyin.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
    Olay kaynağı oluşturulduktan sonra, Time Series Insights ortamınızda akış verilerini otomatik olarak başlatır.
 

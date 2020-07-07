@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159226"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>IoT Tak ve Kullan önizleme cihazına bağlanma ve bunlarla etkileşim kurma
@@ -30,21 +30,21 @@ npm install
 
 ## <a name="run-the-service-samples"></a>Hizmet örneklerini çalıştırma
 
-Node. js hizmet SDK 'sının yeteneklerini araştırmak için aşağıdaki örnekleri kullanın. `IOTHUB_CONNECTION_STRING` Ortam değişkeninin kullandığınız kabukta ayarlandığından emin olun:
+Node.js hizmeti SDK 'sının yeteneklerini araştırmak için aşağıdaki örnekleri kullanın. `IOTHUB_CONNECTION_STRING`Ortam değişkeninin kullandığınız kabukta ayarlandığından emin olun:
 
 ### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Dijital ikizi alma ve arabirimleri listeleme
 
-**get_digital_twin. js** , cihazınız ile ilişkili dijital ikizi alır ve kendi bileşenini komut satırında yazdırır. Çalışan bir cihaz örneğinin başarılı olması gerekmez.
+**get_digital_twin.js** , cihazınız ile ilişkili dijital ikizi alır ve bileşenini komut satırında yazdırır. Çalışan bir cihaz örneğinin başarılı olması gerekmez.
 
-**get_digital_twin_interface_instance. js** , cihazınız ile ilişkili dijital ikizi tek bir arabirim örneğini alır ve komut satırına yazdırır. Cihaz örneğinin çalıştırılmasını gerektirmez.
+**get_digital_twin_interface_instance.js** , cihazınız ile ilişkili dijital ikizi tek bir arabirim örneğini alır ve komut satırına yazdırır. Cihaz örneğinin çalıştırılmasını gerektirmez.
 
 ### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Düğüm hizmeti SDK 'sını kullanarak özellikleri edinme ve ayarlama
 
-**update_digital_twin. js** , tam bir düzeltme eki kullanarak cihazlarınızın dijital ikizi yazılabilir bir özelliğini güncelleştirir. İsterseniz birden fazla arabirimde birden çok özelliği güncelleştirebilirsiniz. Bu işlemin başarılı olması için, cihaz örneğinin aynı anda çalışıyor olması gerekir. Başarı, cihaz örneği, bir özelliği güncelleştirme ile ilgili bir şeyi, terminalde güncelleştirilmiş bir dijital ikizi yazdırırken hizmet örneğini güncelleştiren bir şey gibi görünüyor.
+**update_digital_twin.js** , tam bir düzeltme eki kullanarak cihazlarınızın dijital ikizi yazılabilir bir özelliğini güncelleştirir. İsterseniz birden fazla arabirimde birden çok özelliği güncelleştirebilirsiniz. Bu işlemin başarılı olması için, cihaz örneğinin aynı anda çalışıyor olması gerekir. Başarı, cihaz örneği, bir özelliği güncelleştirme ile ilgili bir şeyi, terminalde güncelleştirilmiş bir dijital ikizi yazdırırken hizmet örneğini güncelleştiren bir şey gibi görünüyor.
 
 ### <a name="send-a-command-and-retrieve-the-response-using-the-node-service-sdk"></a>Düğüm hizmeti SDK 'sını kullanarak bir komut gönderin ve yanıtı alın
 
-**invoke_command. js** , cihazınızda dijital ikizi zaman uyumlu bir komutu çağırır. Bu işlemin başarılı olması için, cihaz örneğinin aynı anda çalışıyor olması gerekir. Başarı, cihaz örneği bir komutun ele aldığı bir şeyi ve hizmet istemcisini terminalde komutun sonucunu yazdırmakta olduğu gibi görünüyor.
+**invoke_command.js** , cihazlarınızın dijital ikizi bir zaman uyumlu komutunu çağırır. Bu işlemin başarılı olması için, cihaz örneğinin aynı anda çalışıyor olması gerekir. Başarı, cihaz örneği bir komutun ele aldığı bir şeyi ve hizmet istemcisini terminalde komutun sonucunu yazdırmakta olduğu gibi görünüyor.
 
 ### <a name="connect-to-the-public-repository-and-retrieve-a-model-definition-using-the-node-service-sdk"></a>Düğüm hizmeti SDK 'sını kullanarak ortak depoya bağlanma ve model tanımı alma
 
@@ -70,7 +70,7 @@ Bu örnek, **Modeldiscovery** arabirimini indirir ve bu modeli terminalde yazdı
 
 ### <a name="run-queries-in-iot-hub-based-on-capability-models-and-interfaces"></a>Yetenek modellerine ve arabirimlere göre IoT Hub sorguları çalıştırın
 
-IoT Hub sorgu dili aşağıdaki örneklerde `HAS_INTERFACE` gösterildiği `HAS_CAPABILITYMODEL` gibi ve destekler:
+IoT Hub sorgu dili `HAS_INTERFACE` `HAS_CAPABILITYMODEL` Aşağıdaki örneklerde gösterildiği gibi ve destekler:
 
 ```sql
 select * from devices where HAS_INTERFACE('id without version', version)

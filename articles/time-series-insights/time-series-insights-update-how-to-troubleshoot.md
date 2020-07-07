@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 667dee6365f38ae058e91c61c24838d8912df26a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80152679"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Önizleme ortamını tanılama ve sorunlarını giderme
@@ -92,9 +92,9 @@ Alma işleminden durdurulan olay kaynaklarını seçin, yeni anahtarı yapışt�
 Ad ve değerin aşağıdaki kurallara uygun olduğundan emin olun:
 
 * Zaman damgası Özellik adı büyük/küçük harfe duyarlıdır.
-* Olay kaynağınızdan JSON dizesi olarak gelen zaman damgası özelliği değeri biçimindedir `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Bu tür bir dizeye örnek olarak `“2008-04-12T12:53Z”`.
+* Olay kaynağınızdan JSON dizesi olarak gelen zaman damgası özelliği değeri biçimindedir `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Bu tür bir dizeye örnek olarak `“2008-04-12T12:53Z”` .
 
-Zaman damgası özelliği adınızın yakalanıp düzgün şekilde çalışmasını sağlamanın en kolay yolu Time Series Insights önizleme Gezginini kullanmaktır. Time Series Insights önizleme Gezgini ' nde, zaman damgası özellik adını girdikten sonra bir süre seçmek için grafiği kullanın. Seçime sağ tıklayın ve **olayları keşfet** seçeneğini belirleyin. İlk sütun üst bilgisi, zaman damgası özellik adıdır. Bunun yerine sözcüğün `($ts)` `Timestamp`yanına olması gerekir:
+Zaman damgası özelliği adınızın yakalanıp düzgün şekilde çalışmasını sağlamanın en kolay yolu Time Series Insights önizleme Gezginini kullanmaktır. Time Series Insights önizleme Gezgini ' nde, zaman damgası özellik adını girdikten sonra bir süre seçmek için grafiği kullanın. Seçime sağ tıklayın ve **olayları keşfet** seçeneğini belirleyin. İlk sütun üst bilgisi, zaman damgası özellik adıdır. Bunun `($ts)` yerine sözcüğün yanına olması gerekir `Timestamp` :
 
 * `(abc)`Time Series Insights, veri değerlerini dizeler olarak okuduğunu gösterir.
 * Time Series Insights, veri değerini DateTime olarak okuduğunu gösteren **Takvim** simgesi.

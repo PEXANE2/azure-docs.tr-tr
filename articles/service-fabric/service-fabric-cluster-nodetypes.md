@@ -6,15 +6,15 @@ ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
 ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82787142"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 
-[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Bir Azure Service Fabric kümesinde tanımladığınız her düğüm türü, tam olarak bir ölçek kümesi ayarlar: birden çok düğüm türü aynı ölçek kümesi tarafından yedeklenmez ve tek bir düğüm türü, birden fazla ölçek kümesi tarafından yedeklenmemelidir (çoğu durumda). Bu durum, bir düğüm türünü [dikey olarak ölçeklendirirken](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) nadir bir durumdur, ancak çoğaltmalar orijinalden yükseltilen ölçek kümesine geçirildiğinde aynı `nodeTypeRef` değere sahip iki ölçek kümesi olur.
+[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Bir Azure Service Fabric kümesinde tanımladığınız her düğüm türü, tam olarak bir ölçek kümesi ayarlar: birden çok düğüm türü aynı ölçek kümesi tarafından yedeklenmez ve tek bir düğüm türü, birden fazla ölçek kümesi tarafından yedeklenmemelidir (çoğu durumda). Bu durum, bir düğüm türünü [dikey olarak ölçeklendirirken](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) nadir bir durumdur, `nodeTypeRef` ancak çoğaltmalar orijinalden yükseltilen ölçek kümesine geçirildiğinde aynı değere sahip iki ölçek kümesi olur.
 
 Service Fabric çalışma zamanı, ölçek kümesindeki her bir sanal makineye *Microsoft. Azure. ServiceFabric* sanal makine uzantısı tarafından yüklenir. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
 
@@ -30,7 +30,7 @@ Yukarıdaki şekilde gösterildiği gibi, ölçek kümesi örnekleri 0 ' dan ba�
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Harita ölçek kümesi yük dengeleyiciler için düğüm türleri ve ölçek kümeleri
 
-Kümenizi Azure portal dağıttıysanız veya örnek Azure Resource Manager şablonunu kullandıysanız, bir kaynak grubundaki tüm kaynaklar listelenir. Her ölçek kümesi veya düğüm türü için yük dengeleyicileri görebilirsiniz. Yük dengeleyici adı şu biçimi kullanır: **lb-&lt;node tür adı&gt;**. Aşağıdaki şekilde gösterildiği gibi LB-sfcluster4doc-0 bir örnektir:
+Kümenizi Azure portal dağıttıysanız veya örnek Azure Resource Manager şablonunu kullandıysanız, bir kaynak grubundaki tüm kaynaklar listelenir. Her ölçek kümesi veya düğüm türü için yük dengeleyicileri görebilirsiniz. Yük dengeleyici adı şu biçimi kullanır: **lb- &lt; node tür adı &gt; **. Aşağıdaki şekilde gösterildiği gibi LB-sfcluster4doc-0 bir örnektir:
 
 ![Kaynaklar][Resources]
 
@@ -74,8 +74,8 @@ Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmi�
 
 | **Adı** | **İzin Verilen Değerler** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-| ad | string | Uzantı için benzersiz ad |
-| type | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode" | Önyükleme Service Fabric işletim sistemini tanımlar |
+| name | string | Uzantı için benzersiz ad |
+| tür | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode" | Önyükleme Service Fabric işletim sistemini tanımlar |
 | autoUpgradeMinorVersion | true veya false | SF çalışma zamanı alt sürümlerinin otomatik yükseltmesini etkinleştir |
 | yayımcı | Microsoft. Azure. ServiceFabric | Service Fabric uzantısı yayımcısının adı |
 | clusterEndpont | string | URI: yönetim uç noktası bağlantı noktası |

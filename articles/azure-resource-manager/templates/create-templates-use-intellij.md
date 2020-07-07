@@ -5,10 +5,10 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80153361"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ FIKRINI kullanarak ARM şablonları oluşturma ve dağıtma
@@ -21,7 +21,7 @@ IntelliJ FIKRINI kullanarak Azure 'a bir Azure Resource Manager (ARM) şablonu d
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -33,13 +33,13 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Sıfırdan şablon oluşturmak yerine, [Azure Hızlı Başlangıç Şablonları](https://azure.microsoft.com/resources/templates/)’ndan bir şablon açarsınız. Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Bu makalede kullanılan şablona [Standart depolama hesabı oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)adı verilir. Bir Azure depolama hesabı kaynağını tanımlar.
 
-1. Sağ tıklayın ve yerel bilgisayarınıza [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) ve [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) kaydedin.
+1. Sağ tıklayın ve [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) yerel bilgisayarınıza ve kaydedin [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) .
 
 1. Azure Toolkit 'niz düzgün yüklenip oturum açmışsa, IntelliJ fıkrın kenar çubuğunda Azure Explorer ' ı görmeniz gerekir. **Kaynak yönetimine** sağ tıklayın ve **dağıtım oluştur**' u seçin.
 
     ![Kaynak Yöneticisi şablonu dağıtım oluşturmak için sağ tıklayın](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. **Dağıtım adınızı**, **aboneliğinizi**, **kaynak grubunuzu**ve **bölgenizi**yapılandırma. Burada, şablonu yeni bir kaynak grubuna `testRG`dağıttık. Ardından, indirdiğiniz **kaynak şablonu** `azuredeploy.json` ve **kaynak parametreleri** `azuredeploy.parameters.json` için yol ' ı seçin.
+1. **Dağıtım adınızı**, **aboneliğinizi**, **kaynak grubunuzu**ve **bölgenizi**yapılandırma. Burada, şablonu yeni bir kaynak grubuna dağıttık `testRG` . Ardından, indirdiğiniz **kaynak şablonu** `azuredeploy.json` ve **kaynak parametreleri** için yol ' ı seçin `azuredeploy.parameters.json` .
 
     ![Kaynak Yöneticisi şablonu dağıtım oluşturmak için dosyaları seçin](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -63,11 +63,11 @@ Sıfırdan şablon oluşturmak yerine, [Azure Hızlı Başlangıç Şablonları]
 
     ![Kaynak Yöneticisi şablonu dağıtım düzenleme](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. Bu sayfadaki iki dosyayı düzenleyebilir ve değişiklikleri Azure 'a dağıtabilirsiniz. Burada, parametresi dosyalarındaki **Storageaccounttype** değerini ' dan `Standard_LRS` ' a değiştirirsiniz `Standard_GRS`. Ardından, alt kısımdaki **güncelleştirme dağıtımı** ' na tıklayın ve güncelleştirmeyi onaylayın.
+1. Bu sayfadaki iki dosyayı düzenleyebilir ve değişiklikleri Azure 'a dağıtabilirsiniz. Burada, parametresi dosyalarındaki **Storageaccounttype** değerini ' dan ' a değiştirirsiniz `Standard_LRS` `Standard_GRS` . Ardından, alt kısımdaki **güncelleştirme dağıtımı** ' na tıklayın ve güncelleştirmeyi onaylayın.
 
     ![Kaynak Yöneticisi şablonu dağıtım düzenleme](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
-1. Güncelleştirme dağıtımı tamamlandıktan sonra, portalda oluşturulan depolama hesabının değiştiğini doğrulayabilirsiniz `Standard_GRS`.
+1. Güncelleştirme dağıtımı tamamlandıktan sonra, portalda oluşturulan depolama hesabının değiştiğini doğrulayabilirsiniz `Standard_GRS` .
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

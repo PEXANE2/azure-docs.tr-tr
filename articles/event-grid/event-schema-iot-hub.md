@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393320"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub Event Grid kaynak olarak
@@ -25,7 +25,7 @@ Bu makalede, Azure IoT Hub olayları için özellikler ve şema sağlanmaktadır
 
 Azure IoT Hub aşağıdaki olay türlerini yayar:
 
-| Olay türü | Açıklama |
+| Olay türü | Description |
 | ---------- | ----------- |
 | Microsoft. Devices. DeviceCreated | Bir cihaz IoT Hub 'ına kaydedildiğinde yayımlandı. |
 | Microsoft. Devices. DeviceDeleted | IoT Hub 'ından bir cihaz silindiğinde yayımlandı. | 
@@ -146,37 +146,37 @@ DeviceCreated ve DeviceDeleted olaylarının şeması aynı yapıya sahiptir. Bu
 
 Tüm olaylar, en üst düzey verileri içerir: 
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
+| kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| veri | object | Olay verilerini IoT Hub.  |
+| veriler | nesne | Olay verilerini IoT Hub.  |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Tüm IoT Hub olayları için veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | hubName | string | Cihazın oluşturulduğu veya silindiği IoT Hub adı. |
-| deviceId | string | Cihazın benzersiz tanımlayıcısı. Bu büyük/küçük harf duyarlı dize en fazla 128 karakter uzunluğunda olabilir ve ASCII 7 bit alfasayısal karakterlerini ve şu özel karakterleri destekler: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| deviceId | string | Cihazın benzersiz tanımlayıcısı. Bu büyük/küçük harf duyarlı dize en fazla 128 karakter uzunluğunda olabilir ve ASCII 7 bit alfasayısal karakterlerini ve şu özel karakterleri destekler: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 
 Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır. 
 
 **Cihaz bağlı** ve **cihaz bağlantısı kesik** IoT Hub olayları için veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| Modül kimliği | string | Modülün benzersiz tanımlayıcısı. Bu alan yalnızca modül cihazları için çıktıdır. Bu büyük/küçük harf duyarlı dize en fazla 128 karakter uzunluğunda olabilir ve ASCII 7 bit alfasayısal karakterlerini ve şu özel karakterleri destekler: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| Deviceconnectionstateeventınfo | object | Cihaz bağlantısı durumu olay bilgileri
+| Modül kimliği | string | Modülün benzersiz tanımlayıcısı. Bu alan yalnızca modül cihazları için çıktıdır. Bu büyük/küçük harf duyarlı dize en fazla 128 karakter uzunluğunda olabilir ve ASCII 7 bit alfasayısal karakterlerini ve şu özel karakterleri destekler: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
+| Deviceconnectionstateeventınfo | nesne | Cihaz bağlantısı durumu olay bilgileri
 | sequenceNumber | string | Cihaz bağlı veya cihaz bağlantısı kesilen olayların sırasını gösteren bir sayı. En son olay, önceki olaydan daha yüksek bir sıra numarasına sahip olacaktır. Bu sayı 1 ' den fazla değişebilir, ancak kesinlikle artmaktadır. Bkz. [sıra numarası kullanımı](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 **Cihaz telemetri** IoT Hub olayında veri nesnesi, [IoT Hub ileti biçiminde](../iot-hub/iot-hub-devguide-messages-construct.md) cihazdan buluta ileti içerir ve aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | body | string | Cihazdaki iletinin içeriği. |
 | properties | string | Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu alanlar isteğe bağlıdır. |
@@ -184,9 +184,9 @@ Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır.
 
 **Oluşturulan cihaz** ve **cihaz IoT Hub silinen** olaylar için, veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| ikizi | object | Uygulama aygıtı meta verilerinin bulut temsili olan cihaz ikizi hakkında bilgiler. | 
+| ikizi | nesne | Uygulama aygıtı meta verilerinin bulut temsili olan cihaz ikizi hakkında bilgiler. | 
 | DeviceID | string | Cihazın benzersiz tanımlayıcısı ikizi. | 
 | özelliği | string | Bir cihaz ikizi güncelleştirmelerinin tutarlılığını sağlamaya yönelik bir Doğrulayıcı. Her ETag 'in cihaz ikizi başına benzersiz olması garanti edilir. |  
 | deviceEtag| string | Bir cihaz kayıt defterinde güncelleştirmelerin tutarlılığını sağlamaya yönelik bir Doğrulayıcı. Her deviceEtag 'in cihaz kayıt defteri başına benzersiz olması garanti edilir. |
@@ -195,13 +195,13 @@ Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır.
 | connectionState | string | Cihazın bağlı veya bağlantısı kesilmiş olup olmadığı. | 
 | lastActivityTime | string | Son etkinliğin ıSO8601 zaman damgası. | 
 | cloudToDeviceMessageCount | integer | Bu cihaza gönderilen cihaz iletileri için bulut sayısı. | 
-| authenticationType | string | Bu cihaz için kullanılan kimlik doğrulaması türü: `SAS`, `SelfSigned`, veya `CertificateAuthority`. |
+| authenticationType | string | Bu cihaz için kullanılan kimlik doğrulaması türü: `SAS` , `SelfSigned` , veya `CertificateAuthority` . |
 | x509Thumbprint | string | Parmak izi, bir sertifika deposundaki belirli bir sertifikayı bulmak için yaygın olarak kullanılan x509 sertifikası için benzersiz bir değerdir. Parmak izi, SHA1 algoritması kullanılarak dinamik olarak oluşturulur ve sertifikada fiziksel olarak bulunmaz. | 
 | Primaryparmak Izi | string | X509 sertifikası için birincil parmak izi. |
 | Secondaryparmak Izi | string | X509 sertifikası için ikincil parmak izi. | 
-| version | integer | Cihaz ikizi her güncelleştirildiği zaman arttırılan bir tamsayı. |
-| istediðiniz | object | Özelliklerin bir kısmı yalnızca uygulama arka ucu tarafından yazılabilir ve cihaz tarafından okunabilir. | 
-| bildirilen | object | Özelliklerin bir kısmı yalnızca cihaz tarafından yazılabilir ve uygulama arka ucu tarafından okunabilir. |
+| sürüm | integer | Cihaz ikizi her güncelleştirildiği zaman arttırılan bir tamsayı. |
+| istediðiniz | nesne | Özelliklerin bir kısmı yalnızca uygulama arka ucu tarafından yazılabilir ve cihaz tarafından okunabilir. | 
+| bildirilen | nesne | Özelliklerin bir kısmı yalnızca cihaz tarafından yazılabilir ve uygulama arka ucu tarafından okunabilir. |
 | lastUpdated | string | Son Device ikizi özelliği güncelleştirmesinin ıSO8601 zaman damgası. | 
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları

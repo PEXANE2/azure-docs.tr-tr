@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80277065"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Ortak satış ülke ve bölge kodları
@@ -48,13 +48,13 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Barbados                            | BB        |
 | Belarus                             | BY        |
 | Belçika                             | BE        |
-| Beliz                              | BZ        |
+| Belize                              | BZ        |
 | Benin                               | BJ        |
 | Bermuda                             | BM        |
 | Butan                              | BT        |
 | Bolivya                             | BO        |
 | Bonaire                             | BQ        |
-| Bosna Hersek              | BA        |
+| Bosna-Hersek              | BA        |
 | Botsvana                            | BW        |
 | Bouvet Adası                       | BV        |
 | Brezilya                              | BR        |
@@ -68,7 +68,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Kamboçya                            | KH        |
 | Kamerun                            | CM        |
 | Kanada                              | CA        |
-| Kayman Adaları                      | KY        |
+| Cayman Adaları                      | KY        |
 | Orta Afrika Cumhuriyeti            | CF        |
 | Çad                                | TD        |
 | Czechia                             | CZ        |
@@ -103,7 +103,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Fiji                                | FJ        |
 | Finlandiya                             | FI        |
 | Fransa                              | GS        |
-| Fransız Ginesi                       | GF        |
+| Fransız Guyanası                       | GF        |
 | Fransız Polinezyası                    | PF        |
 | Fransız Güney Toprakları         | The        |
 | Gabon                               | GA        |
@@ -115,7 +115,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Yunanistan                              | GR        |
 | Grönland                           | G        |
 | Grenada                             | GD        |
-| Guadalupe                          | GP        |
+| Guadeloupe                          | GP        |
 | Guam                                | GU        |
 | Guatemala                           | GT        |
 | Guernsey                            | GG        |
@@ -129,7 +129,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Macaristan                             | HU        |
 | İzlanda                             | IS        |
 | Hindistan                               | IN        |
-| Endonezya                           | Kimlik        |
+| Endonezya                           | ID        |
 | İran                                | IR        |
 | Irak                                | IQ        |
 | İrlanda                             | IE        |
@@ -149,10 +149,10 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Laos                                | LA        |
 | Letonya                              | LV        |
 | Lübnan                             | LB        |
-| Lesoto                             | LS        |
+| Lesotho                             | LS        |
 | Liberya                             | LR        |
 | Libya                               | LY        |
-| Lihtenştayn                       | LI        |
+| Liechtenstein                       | LI        |
 | Litvanya                           | LT        |
 | Lüksemburg                          | LU        |
 | Makao ÖİB                           | MO        |
@@ -163,7 +163,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Mali                                | ML        |
 | Malta                               | MT        |
 | Marshall Adaları                    | MH        |
-| Martinik                          | MQ        |
+| Martinique                          | MQ        |
 | Moritanya                          | MR        |
 | Mauritius                           | MU        |
 | Mayotte                             | YT        |
@@ -209,7 +209,7 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Reunion                             | RE        |
 | Romanya                             | RO        |
 | Rusya                              | RU        |
-| Rwanda                              | RW        |
+| Ruanda                              | RW        |
 | Saint Barthélimy                    | BL        |
 | Saint Kitts ve Nevis               | KN        |
 | Saint Lucia                         | LC        |
@@ -260,13 +260,13 @@ Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle
 | Ukrayna                             | UA        |
 | Birleşik Arap Emirlikleri                | AE        |
 | Birleşik Krallık                      | GB        |
-| Amerika Birleşik Devletleri                       | ABD        |
+| Birleşik Devletler                       | ABD        |
 | Uruguay                             | UY        |
-| ABD harici Adaları               | UM        |
+| ABD Küçük Harici Adaları               | UM        |
 | ABD Virgin Adaları                 | VI        |
 | Özbekistan                          | UZ        |
 | Vanuatu                             | Vu & lt        |
-| Vatikan şehri                        | VA        |
+| Vatikan                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
 | Wallis ve Futuna                   | WF        |

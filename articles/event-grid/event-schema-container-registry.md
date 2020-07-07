@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393355"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Container Registry
@@ -25,7 +25,7 @@ Bu makalede Container Registry olayları için özellikler ve şema sağlanmakta
 
 Azure Container Registry aşağıdaki olay türlerini yayar:
 
-| Olay türü | Açıklama |
+| Olay türü | Description |
 | ---------- | ----------- |
 | Microsoft. ContainerRegistry. ımagegönderildi | Bir görüntü gönderildiğinde tetiklenir. |
 | Microsoft. ContainerRegistry. ımagedeleted | Bir görüntü silindiğinde tetiklenir. |
@@ -157,30 +157,30 @@ Grafik silinmiş bir etkinliğin şeması, görüntü silinmiş silinen bir etki
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | BLOB depolama olay verileri. |
+| kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veriler | nesne | BLOB depolama olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| id | string | Olay KIMLIĞI. |
+| kimlik | string | Olay KIMLIĞI. |
 | timestamp | string | Olayın gerçekleştiği zaman. |
 | action | string | Belirtilen olayı kapsayan eylem. |
-| hedef | object | Etkinliğin hedefi. |
-| istek | object | Olayı oluşturan istek. |
+| hedef | nesne | Etkinliğin hedefi. |
+| istek | nesne | Olayı oluşturan istek. |
 
 Hedef nesne aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | Type | string | Başvurulan nesnenin MIME türü. |
 | size | integer | İçeriğin bayt sayısı. Length alanıyla aynı. |
@@ -188,14 +188,14 @@ Hedef nesne aşağıdaki özelliklere sahiptir:
 | length | integer | İçeriğin bayt sayısı. Boyut alanıyla aynı. |
 | depo | string | Depo adı. |
 | etiket | string | Etiket adı. |
-| ad | string | Grafik adı. |
-| version | string | Grafik sürümü. |
+| name | string | Grafik adı. |
+| sürüm | string | Grafik sürümü. |
 
 İstek nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| id | string | Olayı başlatan isteğin KIMLIĞI. |
+| kimlik | string | Olayı başlatan isteğin KIMLIĞI. |
 | addr | string | Olayı başlatan istemci bağlantısının IP veya ana bilgisayar adı ve muhtemelen bağlantı noktası. Bu değer, standart http isteğinden RemoteAddr değeridir. |
 | konak | string | Gelen isteklerde http ana bilgisayar üst bilgisi tarafından belirtilen şekilde, kayıt defteri örneğinin dışarıdan erişilebilen ana bilgisayar adı. |
 | method | string | Olayı oluşturan istek yöntemi. |

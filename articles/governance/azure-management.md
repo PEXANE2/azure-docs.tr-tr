@@ -1,16 +1,16 @@
 ---
 title: Azure yönetimine genel bakış-Azure Idare
 description: Azure Yönetim Araçları 'ndaki içeriklere yönelik bağlantılarla Azure uygulamaları ve kaynakları için yönetim bölümlerine genel bakış.
-ms.date: 05/22/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 00e42f05e07a6aba2fcada973d57c11e0ab98ca7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828156"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956348"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Azure 'da Yönetim Hizmetleri 'ne genel bakış
+# <a name="what-are-the-azure-management-areas"></a>Azure Yönetim bölgeleri nelerdir?
 
 Azure 'da idare, Azure yönetiminin bir yönüdür. Bu makalede, Azure 'da kaynaklarınızı dağıtmaya ve korumaya yönelik farklı yönetim bölgeleri ele alınmaktadır.
 
@@ -24,7 +24,7 @@ Tek bir Azure hizmeti belirli bir yönetim alanının gereksinimlerini tamamen d
 
 Aşağıdaki bölümlerde farklı yönetim alanları kısaca açıklanır ve ilgili temel Azure hizmetlerindeki ayrıntılı içeriklere yönelik bağlantılar sunulur.
 
-## <a name="monitor"></a>İzleme
+## <a name="monitor"></a>İzleyici
 
 İzleme, kaynaklarınızın performansını, sistem durumunu ve kullanılabilirliğini denetlemek için veri toplama ve çözümleme işlemidir. Etkili bir izleme stratejisi, bileşenlerin çalışmasını anlamanıza ve kullanım süresini bildirimlerle artırmaya yardımcı olur. [Azure uygulamalarını ve kaynaklarını izlerken](../monitoring/monitoring-overview.md)kullanılan farklı Hizmetleri kapsamakta olan izlemeye genel bakış konusunu okuyun.
 
@@ -52,3 +52,10 @@ Koruma, sizin denetiminizin ötesinde olan kesintilerle birlikte uygulamaların�
 
 Geçiş, şirket içinde çalışan mevcut iş yüklerini Azure bulut ortamına geçirmeyi ifade eder.
 [Azure geçişi](../migrate/migrate-overview.md) , şirket içi sanal makinelerin Azure 'a geçiş uygunluğunu değerlendirmenize yardımcı olan bir hizmettir. Azure Site Recovery sanal makineleri [Şirket içinden](../site-recovery/migrate-tutorial-on-premises-azure.md) veya [Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md)geçirir. [Azure veritabanı geçişi](../dms/dms-overview.md) , veritabanı kaynaklarını Azure veri platformları 'na geçirmeye yardımcı olur.
+
+## <a name="next-steps"></a>Sonraki Adımlar
+
+Azure Idare hakkında daha fazla bilgi edinmek için şu makalelere bakın:
+
+- Bkz. [Azure idare hub 'ı](./index.yml).
+- Bkz [. Azure Için bulut benimseme çerçevesinde idare](/azure/cloud-adoption-framework/govern/)

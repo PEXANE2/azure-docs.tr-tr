@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: b6ab34019207ccbeec5448b848e501e063707d16
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81384962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85940423"
 ---
 Bing Web Araması istemci kitaplığı, Bing Web Araması Python uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
 Kodu hemen görmek istiyor musunuz? [Python için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) örnekleri GitHub ' da kullanılabilir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bing Web Araması SDK'sı Python 2.7, 3.3, 3.4, 3.5 ve 3.6 ile uyumludur. Bu hızlı başlangıç için sanal ortam kullanmanızı öneririz.
 
 * Python 2.7, 3.3, 3.4, 3.5 veya 3.6
@@ -167,7 +167,7 @@ Yanıtta web sayfaları, görüntüler, haberler veya videolar varsa hepsinin il
 
 1. `SUBSCRIPTION_KEY` değerini geçerli bir abonelik anahtarıyla değiştirin.
 
-1. Portal `YOUR_ENDPOINT` 'daki uç nokta URL 'siyle değiştirin.
+1. `YOUR_ENDPOINT`Portal 'daki uç nokta URL 'siyle değiştirin ve "Bing/v 7.0" bölümünü uç noktadan kaldırın.
 
 1. Programı çalıştırın. Örneğin: `python your_program.py`.
 
@@ -177,7 +177,7 @@ Bing Web Araması API'si ilk çağrınızın ne olduğuna göre, şimdi birkaç 
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Bing tarafından döndürülen sonuç sayısını sınırlama
 
-Bu örnek, `count` SDK 'nın `offset` [ `search` yöntemi](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)kullanılarak döndürülen sonuç sayısını sınırlamak için ve parametrelerini kullanır. İlk sonucun `name` ve `url` değerleri yazdırılır.
+Bu örnek, `count` `offset` SDK 'nın [ `search` yöntemi](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)kullanılarak döndürülen sonuç sayısını sınırlamak için ve parametrelerini kullanır. İlk sonucun `name` ve `url` değerleri yazdırılır.
 
 1. Python projenize şu kodu ekleyin:
 
@@ -216,7 +216,7 @@ Bu örnek, `count` SDK 'nın `offset` [ `search` yöntemi](https://docs.microsof
 
 ### <a name="filter-for-news-and-freshness"></a>Haberler ve güncellik filtresi
 
-Bu örnek, `response_filter` SDK 'nın `freshness` [ `search` metodunu](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)kullanarak arama sonuçlarını filtrelemek için ve parametrelerini kullanır. Döndürülen arama sonuçları Bing'in son 24 saat içinde keşfettiği haberler ve sayfalarla sınırlıdır. İlk sonucun `name` ve `url` değerleri yazdırılır.
+Bu örnek, `response_filter` `freshness` SDK 'nın [ `search` metodunu](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)kullanarak arama sonuçlarını filtrelemek için ve parametrelerini kullanır. Döndürülen arama sonuçları Bing'in son 24 saat içinde keşfettiği haberler ve sayfalarla sınırlıdır. İlk sonucun `name` ve `url` değerleri yazdırılır.
 
 1. Python projenize şu kodu ekleyin:
 
@@ -266,7 +266,7 @@ Bu örnek, `response_filter` SDK 'nın `freshness` [ `search` metodunu](/python/
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Güvenli arama, yanıt sayısı ve yükseltme filtresini kullanma
 
-Bu örnek, SDK `answer_count`'nın `promote` [ `search` metodunu](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)kullanarak `safe_search` arama sonuçlarını filtrelemek için, ve parametrelerini kullanır. İlk sonucun `name` ve `url` değerleri görüntülenir.
+Bu örnek, `answer_count` `promote` `safe_search` SDK 'nın [ `search` metodunu](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)kullanarak arama sonuçlarını filtrelemek için, ve parametrelerini kullanır. İlk sonucun `name` ve `url` değerleri görüntülenir.
 
 1. Python projenize şu kodu ekleyin:
 

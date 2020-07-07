@@ -6,17 +6,17 @@ ms.topic: conceptual
 description: Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmak için nasıl yapılandırılacağını öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 ms.openlocfilehash: fd11b3bbd3f90b75203084ff0753c1485d57a35b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80155438"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
 
 Bu makalede, Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak üzere nasıl yapılandırılacağı gösterilmektedir. Bu makalede ayrıca, bu özel giriş denetleyicisinin HTTPS kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap][azure-account-create] oluşturabilirsiniz.
 * [Yüklü Azure CLI][az-cli].
@@ -47,7 +47,7 @@ Traefik giriş denetleyicisi HELI grafiğini içeren [resmi kararlı Held deposu
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Traefik giriş denetleyicisi için bir Kubernetes ad alanı oluşturun ve öğesini kullanarak `helm`çalıştırın.
+Traefik giriş denetleyicisi için bir Kubernetes ad alanı oluşturun ve öğesini kullanarak çalıştırın `helm` .
 
 > [!NOTE]
 > AKS kümenizde RBAC etkinleştirilmediyse, *--set RBAC. Enabled = true* parametresini kaldırın.
@@ -58,7 +58,7 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 ```
 
 > [!NOTE]
-> Yukarıdaki örnek, giriş denetleyiciniz için genel bir uç nokta oluşturur. Bunun yerine giriş denetleyicinizde özel bir uç nokta kullanmanız gerekiyorsa, *--Set Service. açıklamalarını ekleyin. " Service\\. Beta\\. Kubernetes\\. IO/Azure-Load-dengeleyici-Internal "= true* parametresi, *helk install* komutuna.
+> Yukarıdaki örnek, giriş denetleyiciniz için genel bir uç nokta oluşturur. Bunun yerine giriş denetleyicinizde özel bir uç nokta kullanmanız gerekiyorsa, *--Set Service. açıklamalarını ekleyin. " Service \\ . Beta \\ . Kubernetes \\ . IO/Azure-Load-dengeleyici-Internal "= true* parametresi, *helk install* komutuna.
 > ```console
 > helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
@@ -102,7 +102,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 * *<REPLACE_ME_WITH_HOST_SUFFIX>* tüm örneklerini traefik ile değiştirin *. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN*için etki alanınızı kullanma. 
 * *Kubernetes.io/ingress.class: traefik # özel*giriş ile *Kubernetes.io/ingress.class: traefik-azds # dev Spaces* ile değiştirin. 
 
-Aşağıda güncelleştirilmiş `values.yaml` bir dosyaya örnek verilmiştir:
+Aşağıda güncelleştirilmiş bir dosyaya örnek verilmiştir `values.yaml` :
 
 ```yaml
 # This is a YAML-formatted file.
@@ -125,13 +125,13 @@ gateway:
 
 Değişikliklerinizi kaydedin ve dosyayı kapatın.
 
-Kullanarak `azds space select`örnek uygulamanızla *geliştirme* alanı oluşturun.
+Kullanarak örnek uygulamanızla *geliştirme* alanı oluşturun `azds space select` .
 
 ```console
 azds space select -n dev -y
 ```
 
-Kullanarak `helm install`örnek uygulamayı dağıtın.
+Kullanarak örnek uygulamayı dağıtın `helm install` .
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -139,13 +139,13 @@ helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 
 Yukarıdaki örnek, örnek uygulamayı *dev* ad alanına dağıtır.
 
-Kullanarak `azds list-uris`örnek uygulamaya erişmek Için URL 'leri görüntüleyin.
+Kullanarak örnek uygulamaya erişmek için URL 'Leri görüntüleyin `azds list-uris` .
 
 ```console
 azds list-uris
 ```
 
-Aşağıdaki çıktıda, ' den `azds list-uris`örnek URL 'ler gösterilmektedir.
+Aşağıdaki çıktıda, ' den örnek URL 'Ler gösterilmektedir `azds list-uris` .
 
 ```console
 Uri                                                  Status
@@ -154,19 +154,19 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-`azds list-uris` KOMUTTAN ortak URL 'yi açarak *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *bıkesharingweb* hizmeti 'nin `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`genel URL 'si.
+Komuttan ortak URL 'yi açarak *bıkesharingweb* hizmetine gidin `azds list-uris` . Yukarıdaki örnekte, *bıkesharingweb* hizmeti 'nin Genel URL 'si `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 > [!NOTE]
 > *Bıkesharingweb* hizmeti yerine bir hata sayfası görürseniz, *values. yaml* dosyasındaki *Kubernetes.io/ingress.Class* ek açıklamasını ve **konağını güncelleştirdiğinizi** doğrulayın.
 
-Geliştirme altında `azds space select` bir alt alan oluşturmak için komutunu kullanın *dev* ve alt geliştirme alanına erişmek için URL 'leri listeleyin.
+`azds space select` *Geliştirme* altında bir alt alan oluşturmak için komutunu kullanın ve alt geliştirme alanına erişmek için URL 'leri listeleyin.
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Aşağıdaki çıktı, *azureuser1* alt geliştirme alanındaki örnek `azds list-uris` uygulamaya erişmek Için ' den örnek URL 'leri gösterir.
+Aşağıdaki çıktı, `azds list-uris` *azureuser1* alt geliştirme alanındaki örnek uygulamaya erişmek için ' den örnek URL 'leri gösterir.
 
 ```console
 Uri                                                  Status
@@ -175,7 +175,7 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Komuttan ortak URL 'yi açarak azureuser1 alt geliştirme alanında *bıkesharingweb* hizmetine gidin. *azureuser1* `azds list-uris` Yukarıdaki örnekte, *azureuser1* alt dev Space 'teki `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` *bıkesharingweb* hizmetinin genel URL 'si.
+Komuttan ortak URL 'yi açarak *azureuser1* alt geliştirme alanında *bıkesharingweb* hizmetine gidin `azds list-uris` . Yukarıdaki örnekte, *azureuser1* alt dev Space 'teki *bıkesharingweb* hizmetinin genel URL 'si `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>Traefik giriş denetleyicisini HTTPS kullanacak şekilde yapılandırma
 
@@ -189,7 +189,7 @@ helm repo update
 helm install cert-manager --namespace traefik --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Bir `letsencrypt-clusterissuer.yaml` dosya oluşturun ve e-posta alanını e-posta adresiniz ile güncelleştirin.
+Bir dosya oluşturun ve e-posta `letsencrypt-clusterissuer.yaml` alanını e-posta adresiniz ile güncelleştirin.
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -211,13 +211,13 @@ spec:
 > [!NOTE]
 > Test için, *Kümevereninizi*için kullanabileceğiniz bir [hazırlama sunucusu][letsencrypt-staging-issuer] da vardır.
 
-Uygulamak `kubectl` `letsencrypt-clusterissuer.yaml`için kullanın.
+`kubectl`Uygulamak için kullanın `letsencrypt-clusterissuer.yaml` .
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Önceki *traefik* *Clusterrole* ve *clusterrolebinding*' i KALDıRıN, sonra traefik öğesini kullanarak `helm`HTTPS kullanacak şekilde yükseltin.
+Önceki *traefik* *Clusterrole* ve *clusterrolebinding*' i KALDıRıN, sonra traefik öğesini kullanarak https kullanacak şekilde yükseltin `helm` .
 
 > [!NOTE]
 > AKS kümenizde RBAC etkinleştirilmediyse, *--set RBAC. Enabled = true* parametresini kaldırın.
@@ -261,7 +261,7 @@ az network dns record-set a remove-record \
 
 Yukarıdaki örnek, *PREVIOUS_EXTERNAL_IP*kullanmak için *MY_CUSTOM_DOMAIN* DNS bölgesindeki *bir* kaydı güncelleştirir.
 
-, *CERT-Manager* ve https kullanımına ilişkin ayrıntıları dahil etmek için [values. YAML][values-yaml] 'yi güncelleştirin. Aşağıda güncelleştirilmiş `values.yaml` bir dosyaya örnek verilmiştir:
+, *CERT-Manager* ve https kullanımına ilişkin ayrıntıları dahil etmek için [values. YAML][values-yaml] 'yi güncelleştirin. Aşağıda güncelleştirilmiş bir dosyaya örnek verilmiştir `values.yaml` :
 
 ```yaml
 # This is a YAML-formatted file.
@@ -292,7 +292,7 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-Şunu kullanarak `helm`örnek uygulamayı yükseltin:
+Şunu kullanarak örnek uygulamayı yükseltin `helm` :
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
@@ -303,13 +303,13 @@ helm upgrade bikesharingsampleapp . --namespace dev --atomic
 > [!IMPORTANT]
 > DNS değişikliklerinin tamamlanması ve örnek uygulamanızın erişilebilir olması 30 dakika veya daha uzun sürebilir.
 
-Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
+Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örnek:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernetes.io/ingress.Class* için *Traefik* ve *$ (hostsuffix)* özel etki alanınızı kullanacak şekilde güncelleştirin. Örneğin:
+Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernetes.io/ingress.Class* için *Traefik* ve *$ (hostsuffix)* özel etki alanınızı kullanacak şekilde güncelleştirin. Örnek:
 
 ```yaml
 ...
@@ -322,7 +322,7 @@ Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernete
 ...
 ```
 
-[Bıkesharingweb/Package. JSON][package-json] ' i, *URL* paketi için bir bağımlılık ile güncelleştirin.
+[Bıkesharingweb/package.js][package-json] *'yi URL* paketine yönelik bir bağımlılık ile güncelleştirin.
 
 ```json
 {
@@ -334,7 +334,7 @@ Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernete
 ...
 ```
 
-[Bıkesharingweb/lib/yardımcılar. js][helpers-js] ' de *Getapihostasync* yöntemini HTTPS kullanacak şekilde güncelleştirin:
+[Bıkesharingweb/lib/helpers.js][helpers-js] Içindeki *Getapihostasync* yöntemini HTTPS kullanacak şekilde güncelleştirin:
 
 ```javascript
 ...
@@ -351,7 +351,7 @@ Bu hatayı onarmak için [Bıkesharingweb/azds. YAML][azds-yaml] 'yi, *Kubernete
 ...
 ```
 
-`BikeSharingWeb` Dizinine gidin ve güncelleştirilmiş BikeSharingWeb hizmetinizi çalıştırmak için kullanın `azds up` .
+`BikeSharingWeb`Dizinine gidin ve `azds up` güncelleştirilmiş BikeSharingWeb hizmetinizi çalıştırmak için kullanın.
 
 ```console
 cd ../BikeSharingWeb/

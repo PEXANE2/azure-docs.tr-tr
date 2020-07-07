@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75692581"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Olay İşleyicisi Ana Bilgisayarı için bir depolama hesabı oluşturma
@@ -22,7 +22,7 @@ Olay İşleyicisi Ana Bilgisayarı, olay hub’larına ait kalıcı denetim nokt
 
     ![Kaynak menü öğesi oluşturma, Microsoft Azure portal](./media/event-hubs-create-storage/create-resource.png)
 
-2. **Depolama** > **depolama hesabı**' nı seçin.
+2. **Depolama**  >  **depolama hesabı**' nı seçin.
    
     ![Depolama hesabı seçin Microsoft Azure portal](./media/event-hubs-create-storage/select-storage-account.png)
 

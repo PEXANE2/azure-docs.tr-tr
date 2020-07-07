@@ -4,10 +4,10 @@ description: Azure Temsilcili kaynak yönetimini kullanırken, güvenlik ve eri�
 ms.date: 03/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246917"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
@@ -33,10 +33,10 @@ Yönetimi kolaylaştırmak için, müşterilerinizin kaynaklarını yönetmek i�
 
 |Grup adı  |Tür  |PrincipalId  |Rol tanımı  |Rol tanımı KIMLIĞI  |
 |---------|---------|---------|---------|---------|
-|Ları     |Kullanıcı grubu         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Değerlendirme     |Kullanıcı grubu         |\<PrincipalId\>         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|VM uzmanları     |Kullanıcı grubu         |\<PrincipalId\>         |VM Katılımcısı         |9980e02c-c2be-4d73-94E8-173b1dc7cf3c  |
-|Otomasyon     |Hizmet asıl adı (SPN)         |\<PrincipalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Ları     |Kullanıcı grubu         |\<principalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Değerlendirme     |Kullanıcı grubu         |\<principalId\>         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|VM uzmanları     |Kullanıcı grubu         |\<principalId\>         |VM Katılımcısı         |9980e02c-c2be-4d73-94E8-173b1dc7cf3c  |
+|Otomasyon     |Hizmet asıl adı (SPN)         |\<principalId\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 Bu grupları oluşturduktan sonra, gerektiğinde kullanıcıları atayabilirsiniz. Yalnızca, erişimi olması gereken kullanıcıları ekleyin. Grup üyeliğini düzenli olarak gözden geçirdiğinizden emin olun ve artık uygun veya gerekli olmayan tüm kullanıcıları kaldırın.
 

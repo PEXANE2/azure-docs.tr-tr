@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066858"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryption)
@@ -26,7 +26,7 @@ ms.locfileid: "80066858"
 
 Azure disk şifrelemesi, Windows çalıştıran Azure sanal makinelerinde tam disk şifrelemesi sağlamak için BitLocker 'ı kullanır.  Bu çözüm, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri yönetmek için Azure Key Vault ile tümleşiktir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Önkoşulların tam listesi için bkz. [Windows VM 'leri Için Azure disk şifrelemesi](../windows/disk-encryption-overview.md), özellikle aşağıdaki bölümler:
 
@@ -74,9 +74,9 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
 
 ### <a name="schema-v11-with-aad"></a>Şema v 1.1: AAD ile 
 
-1,1 şeması, veya `aadClientID` `AADClientCertificate` ya da `aadClientSecret` gerektirir ve yeni VM 'ler için önerilmez.
+1,1 şeması, `aadClientID` veya ya da `aadClientSecret` gerektirir `AADClientCertificate` ve yeni VM 'ler için önerilmez.
 
-Şunu `aadClientSecret`kullanarak:
+Şunu kullanarak `aadClientSecret` :
 
 ```json
 {
@@ -106,7 +106,7 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
 }
 ```
 
-Şunu `AADClientCertificate`kullanarak:
+Şunu kullanarak `AADClientCertificate` :
 
 ```json
 {
@@ -139,11 +139,11 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft. Azure. Security | string |
-| type | AzureDiskEncryption | string |
+| tür | AzureDiskEncryption | string |
 | typeHandlerVersion | 2,2, 1,1 | string |
 | (1,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (1,1 şeması) AADClientSecret | password | string |
@@ -164,7 +164,7 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
 Şema v 1.1 tabanlı şablon dağıtımı örneği için bkz. Azure hızlı başlangıç şablonu [201-Encrypt-Running-Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm).
 
 >[!NOTE]
-> Ayrıca, `VolumeType` parametre tümü olarak ayarlandıysa, veri diskleri yalnızca düzgün biçimlendirildiklerinde şifrelenir. 
+> Ayrıca `VolumeType` , parametre tümü olarak ayarlandıysa, veri diskleri yalnızca düzgün biçimlendirildiklerinde şifrelenir. 
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 

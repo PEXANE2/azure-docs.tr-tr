@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4b6331977cc2237801b84647e4edeb5d789cb9e8
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: c251b70d1988be82821f1e133151dae1ac6d1bc9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482471"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921291"
 ---
-# <a name="accessing-external-storage-in-synapse-sql"></a>SYNAPSE SQL 'de dış depolamaya erişme
+# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>SYNAPSE SQL 'de dış depolamaya erişme (isteğe bağlı)
 
-Bu belgede, SYNAPSE SQL 'de (isteğe bağlı ve havuzda) Azure Storage 'da depolanan dosyalardaki verileri nasıl okuyabileceğinizi açıklar. Kullanıcılar depolamaya erişmek için aşağıdaki seçeneklere sahiptir:
+Bu belgede, SYNAPSE SQL 'de (isteğe bağlı) Azure depolama 'da depolanan dosyalardaki verileri nasıl okuyabileceğinizi açıklar. Kullanıcılar depolamaya erişmek için aşağıdaki seçeneklere sahiptir:
 
 - Azure depolama 'daki dosyalar üzerinde geçici sorgular sağlayan [OPENROWSET](develop-openrowset.md) işlevi.
 - Dış dosyalar kümesinin üzerine inşa edilen önceden tanımlanmış bir veri yapısı olan [dış tablo](develop-tables-external-tables.md) .
@@ -65,9 +65,9 @@ OPENROWSET, kullanıcının bazı dış veri kaynaklarına yerleştirilmiş dosy
 
 ```sql
 SELECT * FROM
- OPENROWSET(BULK 'file/path/*.csv',
+ OPENROWSET(BULK 'file/path/*.parquet',
  DATASOURCE = MyAzureInvoices,
- FORMAT= 'csv') as rows
+ FORMAT= 'parquet') as rows
 ```
 
 DENETIM VERITABANı iznine sahip Power User, veri kaynağının URL 'sini ve kullanılması gereken kimlik bilgisini belirten, depolama ve dış VERI KAYNAĞıNA erişmek için kullanılacak VERITABANı KAPSAMLı KIMLIK BILGILERI oluşturmak zorunda olacaktır:
@@ -142,8 +142,8 @@ FROM dbo.DimProductsExternal
 ```
 
 Çağıran, verileri okumak için aşağıdaki izinlere sahip olmalıdır:
-- Dış tabloda izin SEÇIN
-- VERI KAYNAĞıNDA KIMLIK BILGISI varsa, VERITABANı KAPSAMLı KIMLIK BILGILERI izni başvurur
+- `SELECT`Dış tablodaki izin
+- `REFERENCES DATABASE SCOPED CREDENTIAL``DATA SOURCE`varsa izin`CREDENTIAL`
 
 ## <a name="permissions"></a>İzinler
 
@@ -151,13 +151,13 @@ Aşağıdaki tabloda, yukarıda listelenen işlemler için gerekli izinler liste
 
 | Sorgu | Gerekli izinler|
 | --- | --- |
-| Veri kaynağı olmadan OPENROWSET (toplu) | TOPLU yönetıcı yönetimi SQL oturum açma, \<URL> SAS korumalı depolama IÇIN KIMLIK bilgilerine sahip olmalıdır: |
-| Kimlik bilgisi olmadan veri kaynağıyla OPENROWSET (toplu) | TOPLU YÖNETICIYI YÖNET |
-| Kimlik bilgileriyle veri kaynağıyla OPENROWSET (toplu) | TOPLU YÖNETICI BAŞVURULARıNı YÖNETME VERITABANı KAPSAMLı KIMLIK BILGILERI |
-| DıŞ VERI KAYNAĞı OLUŞTUR | HERHANGI BIR DıŞ VERI KAYNAĞıNı DEĞIŞTIRME VERITABANı KAPSAMLı KIMLIK BILGILERINE BAŞVURUR |
-| DıŞ TABLO OLUŞTUR | CREATE TABLE, HERHANGI BIR ŞEMAYı DEĞIŞTIRIN, TÜM DıŞ DOSYA BIÇIMLERINI DEĞIŞTIRIN, TÜM DıŞ VERI KAYNAKLARıNı DEĞIŞTIRIN |
-| DıŞ TABLODAN SEÇIM YAPıN | TABLO SEÇ |
-| CETAS | Tablo oluşturmak için CREATE TABLE herhangi bir ŞEMAYı alter any tüm VERI kaynaklarını değiştirin ve herhangi bir HARICI dosya BIÇIMINI değiştirin. Verileri okumak için: yönetıcı Toplu IŞLEMLERI + her tablo/görünüm/işlev için, depolama üzerinde sorgu + R/W izniyle bulunan KIMLIK BILGILERI veya tablo Seç |
+| Veri kaynağı olmadan OPENROWSET (toplu) | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` , veya SQL oturum açma, \<URL> SAS korumalı depolama IÇIN kimlik bilgilerine sahip olmalıdır: |
+| Kimlik bilgisi olmadan veri kaynağıyla OPENROWSET (toplu) | `ADMINISTER BULK ADMIN`veya `ADMINISTER DATABASE BULK ADMIN` , |
+| Kimlik bilgileriyle veri kaynağıyla OPENROWSET (toplu) | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` , veya`REFERENCES DATABASE SCOPED CREDENTIAL` |
+| DıŞ VERI KAYNAĞı OLUŞTUR | `ALTER ANY EXTERNAL DATA SOURCE` ve `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| DıŞ TABLO OLUŞTUR | `CREATE TABLE`, `ALTER ANY SCHEMA` , `ALTER ANY EXTERNAL FILE FORMAT` ve`ALTER ANY EXTERNAL DATA SOURCE` |
+| DıŞ TABLODAN SEÇIM YAPıN | `SELECT TABLE` ve `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CETAS | Tablo oluşturmak için- `CREATE TABLE` , `ALTER ANY SCHEMA` , `ALTER ANY DATA SOURCE` , ve `ALTER ANY EXTERNAL FILE FORMAT` . Verileri okumak için: `ADMIN BULK OPERATIONS` `REFERENCES CREDENTIAL` `SELECT TABLE` Depolama üzerindeki her tablo/görünüm/işlev/sorgu + R/W iznine sahip |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

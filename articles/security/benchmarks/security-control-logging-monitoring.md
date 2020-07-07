@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e58df0997c62a131a3c9987369f8e076a62d6654
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408337"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Güvenlik denetimi: günlüğe kaydetme ve Izleme
@@ -76,7 +76,7 @@ Denetim, güvenlik ve tanılama günlüklerine erişmek için Azure kaynakların
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 2,5 | 6.4 | Müşteri |
+| 2.5 | 6.4 | Müşteri |
 
 Azure Izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
 
@@ -142,7 +142,7 @@ Kuruluşunuzun ihtiyaç duyduğu şekilde, DNS günlüğü çözümü için Azur
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 2,10 | 8,8 | Müşteri |
+| 2,10 | 8.8 | Müşteri |
 
 İşlem oluşturma olayını ve CommandLine alanını günlüğe kaydetmek için desteklenen tüm Azure Windows sanal makinelerinde Microsoft Monitoring Agent kullanın.   Desteklenen Azure Linux sanal makineleri için, her düğüm temelinde konsol günlüğünü el ile yapılandırabilir ve verileri depolamak için Syslog kullanabilirsiniz.  Ayrıca, Azure Izleyici Log Analytics çalışma alanını kullanarak günlükleri gözden geçirin ve Azure sanal makinelerindeki günlüğe kaydedilen verilerde sorgular gerçekleştirin. 
 

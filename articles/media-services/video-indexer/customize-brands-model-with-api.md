@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: 79c3a7934e9152a4908f895c20ee6fbdc0f360cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128004"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API ile bir markalar modeli özelleştirme
@@ -30,12 +30,12 @@ Bu konuda açıklandığı gibi, videoda algılanan özel markalar modellerini o
 Marka API 'si [oluşturma](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) yeni bir özel marka oluşturur ve belirtilen hesap Için özel markalar modeline ekler.
 
 > [!NOTE]
-> ( `enabled` Gövdesinde) ayarı true olarak belirlemek için marka listesini video Indexer için *ekleme* listesine koyar. False `enabled` olarak ayarlamak, markayı *dışlama* listesine koyar, bu nedenle video Indexer algılamıyor.
+> `enabled`(Gövdesinde) ayarı true olarak belirlemek için marka listesini video Indexer Için *ekleme* listesine koyar. `enabled`False olarak ayarlamak, markayı *dışlama* listesine koyar, bu nedenle video Indexer algılamıyor.
 
 Gövdede ayarlayabileceğiniz bazı diğer parametreler:
 
-* Bu `referenceUrl` değer, vican sayfasının bağlantısı gibi, marka için herhangi bir başvuru Web sitesi olabilir.
-* `tags` Değer, markala ilgili etiketlerin bir listesidir. Bu etiket, Video Indexer Web sitesindeki marka 'in *Kategori* alanında görüntülenir. Örneğin, "Azure" markası, "Cloud" olarak etiketlenebilir veya kategorilere ayrılmıştır.
+* `referenceUrl`Bu değer, vican sayfasının bağlantısı gibi, marka için herhangi bir başvuru Web sitesi olabilir.
+* `tags`Değer, markala ilgili etiketlerin bir listesidir. Bu etiket, Video Indexer Web sitesindeki marka 'in *Kategori* alanında görüntülenir. Örneğin, "Azure" markası, "Cloud" olarak etiketlenebilir veya kategorilere ayrılmıştır.
 
 ### <a name="response"></a>Yanıt
 
@@ -94,7 +94,7 @@ Yanıt, aşağıdaki örnekte belirtilen biçimde, aradığınız markada (marka
 ```
 
 > [!NOTE]
-> `enabled`markasının algılaması `true` video Indexer Için *dahil etme* listesinde olduğunu ve `enabled` yanlış olması için, markasının *hariç tutma* listesinde olduğunu, bu yüzden video Indexer algılayamayacağı anlamına gelir.
+> `enabled``true`markasının algılaması video Indexer Için *dahil etme* listesinde olduğunu ve `enabled` yanlış olması Için, markasının *hariç tutma* listesinde olduğunu, bu yüzden video Indexer algılayamayacağı anlamına gelir.
 
 ## <a name="update-a-specific-brand"></a>Belirli bir marka güncelleştirme
 
@@ -178,13 +178,13 @@ Yanıt, Bing markaların aşağıdaki örnekte belirtilen biçimde etkinleştiri
 ```
 
 > [!NOTE]
-> `useBuiltIn`true olarak ayarlanmakta, Bing markaların etkinleştirildiğini temsil edilir. `useBuiltin` Yanlışsa, Bing markalar devre dışıdır. Değer `state` kullanım dışı bırakıldığı için yok sayılabilir.
+> `useBuiltIn`true olarak ayarlanmakta, Bing markaların etkinleştirildiğini temsil edilir. `useBuiltin`Yanlışsa, Bing markalar devre dışıdır. `state`Değer kullanım dışı bırakıldığı için yok sayılabilir.
 
 ## <a name="update-brands-model-settings"></a>Markalar model ayarlarını Güncelleştir
 
 [Güncelleştirme markalar](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) API 'si, belirtilen hesaptaki markalar modeli ayarlarını güncelleştirir. Markalar model ayarları, Bing markalar veritabanı 'nın etkin olup olmadığını temsil eder. Bing markalar etkinleştirilmemişse, Video Indexer yalnızca belirtilen hesabın özel markalar modelinden markalar algılar.
 
-True `useBuiltIn` olarak ayarlanan bayrak, Bing markalarının etkinleştirildiği anlamına gelir. `useBuiltin` Yanlışsa, Bing markalar devre dışıdır.
+`useBuiltIn`True olarak ayarlanan bayrak, Bing markalarının etkinleştirildiği anlamına gelir. `useBuiltin`Yanlışsa, Bing markalar devre dışıdır.
 
 ### <a name="response"></a>Yanıt
 

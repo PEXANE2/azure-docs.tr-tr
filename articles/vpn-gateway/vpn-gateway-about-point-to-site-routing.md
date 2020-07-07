@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: anzaman
 ms.openlocfilehash: 4821f2eb694a36cf0570008b3e62ce39999c58d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239761"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Noktadan Siteye VPN yönlendirme hakkında
@@ -44,7 +44,7 @@ Bu örnekteki Noktadan siteye VPN Ağ Geçidi bağlantısı, başka bir sanal a�
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Erişim
+### <a name="access"></a>Access
 
 * Windows istemcileri VNet1 erişebilir
 
@@ -74,7 +74,7 @@ Windows kullanan istemciler doğrudan eşlenmiş sanal ağlara erişebilir, anca
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Erişim
+### <a name="access"></a>Access
 
 * Windows istemcileri VNet1, VNet2 ve Ile vnet4 arasında erişebilir, ancak herhangi bir topoloji değişikliklerinin etkili olması için VPN istemcisinin yeniden indirilmesi gerekir.
 
@@ -102,7 +102,7 @@ Windows veya desteklenen başka bir işletim sistemi kullanan istemciler yalnız
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Erişim
+### <a name="access"></a>Access
 
 * Windows istemcileri yalnızca VNet1 erişebilir
 
@@ -130,7 +130,7 @@ Windows veya desteklenen başka bir işletim sistemi kullanan istemciler, sitede
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Erişim
+### <a name="access"></a>Access
 
 * Windows istemcileri VNet1, VNet2 ve VNet3 erişebilir, ancak VNet2 ve VNet3 yollarının el ile eklenmesi gerekir.
 
@@ -156,7 +156,7 @@ Windows ve Windows dışı istemciler yalnızca VNet1 'e erişebilir.
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Erişim
+### <a name="access"></a>Access
 
 * Windows istemcileri yalnızca VNet1 erişebilir
 
@@ -182,7 +182,7 @@ Windows istemcileri VNet 'e ve şube ofise (site1) erişebilir, ancak site1 'e g
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Erişim
+### <a name="access"></a>Access
 
 * Windows istemcileri VNet1 ve site1 erişebilir, ancak site1 yollarının el ile eklenmesi gerekir.
 
@@ -213,7 +213,7 @@ Tüm istemciler yalnızca VNet1 erişim sağlayabilir.
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Erişim
+### <a name="access"></a>Access
 
 * Windows istemcileri yalnızca VNet1 erişebilir
 
@@ -243,7 +243,7 @@ Windows kullanan istemciler, siteden siteye VPN bağlantısı kullanılarak bağ
 
 * Windows olmayan istemcilere eklenen yollar: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Erişim
+### <a name="access"></a>Access
 
 * Windows istemcileri VNet1, VNet2, VNet3 ve site1 erişebilir, ancak VNet2, VNet3 ve site1 yollarının istemciye el ile eklenmesi gerekir.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Windows kapsayıcıları ile mevcut bir kümede Azure Dev Spaces çalıştırmayı öğrenin
 keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Windows kapsayıcıları
 ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240477"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces kullanarak Windows kapsayıcılarıyla etkileşim kurma
@@ -61,7 +61,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Örnek uygulama, Windows hizmetini kümenizde çalıştırmak için [Held 3][helm-installed] kullanır. `charts` Dizine gidin ve Held 'Yi kullanarak Windows hizmetini çalıştırın:
+Örnek uygulama, Windows hizmetini kümenizde çalıştırmak için [Held 3][helm-installed] kullanır. `charts`Dizine gidin ve Held 'yi kullanarak Windows hizmetini çalıştırın:
 
 ```console
 cd charts/
@@ -71,7 +71,7 @@ helm install windows-service . --namespace dev
 
 Yukarıdaki komut, Windows hizmetinizi *geliştirme* ad alanında çalıştırmak Için Held kullanır. *Dev*adlı bir ad alanı yoksa, oluşturulur.
 
-Windows hizmetinizin `kubectl get pods` kümenizde çalıştığını doğrulamak için komutunu kullanın. 
+`kubectl get pods`Windows hizmetinizin kümenizde çalıştığını doğrulamak için komutunu kullanın. 
 
 ```console
 $ kubectl get pods --namespace dev --watch
@@ -91,9 +91,9 @@ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 
 ## <a name="update-your-windows-service-for-dev-spaces"></a>Windows hizmetinizi geliştirme alanları için güncelleştirme
 
-Zaten çalışmakta olan kapsayıcılarla mevcut bir ad alanında dev alanlarını etkinleştirdiğinizde, dev Spaces, bu ad alanında çalışan tüm yeni kapsayıcıları dener ve etkinleştirir. Geliştirme alanları aynı zamanda, ad alanında zaten çalışmakta olan hizmet için oluşturulan yeni kapsayıcıları da dener ve yeniden dener. Geliştirme boşlukların, ad Boşlukınızda çalışan bir kapsayıcıyı eklemesini engellemek için, *proxy olmayan* üst bilgisini öğesine ekleyin `deployment.yaml`.
+Zaten çalışmakta olan kapsayıcılarla mevcut bir ad alanında dev alanlarını etkinleştirdiğinizde, dev Spaces, bu ad alanında çalışan tüm yeni kapsayıcıları dener ve etkinleştirir. Geliştirme alanları aynı zamanda, ad alanında zaten çalışmakta olan hizmet için oluşturulan yeni kapsayıcıları da dener ve yeniden dener. Geliştirme boşlukların, ad Boşlukınızda çalışan bir kapsayıcıyı eklemesini engellemek için, *proxy olmayan* üst bilgisini öğesine ekleyin `deployment.yaml` .
 
-`existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` Dosyaya ekleyin: `azds.io/no-proxy: "true"`
+`azds.io/no-proxy: "true"` `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` Dosyaya ekleyin:
 
 ```yaml
 apiVersion: apps/v1
@@ -112,7 +112,7 @@ spec:
         azds.io/no-proxy: "true"
 ```
 
-Windows `helm list` hizmetinizin dağıtımını listelemek için kullanın:
+`helm list`Windows hizmetinizin dağıtımını listelemek için kullanın:
 
 ```cmd
 $ helm list --namespace dev
@@ -120,17 +120,17 @@ NAME              REVISION  UPDATED                     STATUS      CHART       
 windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-Yukarıdaki örnekte, dağıtımınızın adı *Windows-Service*' dir. Aşağıdakileri kullanarak `helm upgrade`Windows hizmetinizi yeni yapılandırmayla güncelleştirin:
+Yukarıdaki örnekte, dağıtımınızın adı *Windows-Service*' dir. Aşağıdakileri kullanarak Windows hizmetinizi yeni yapılandırmayla güncelleştirin `helm upgrade` :
 
 ```cmd
 helm upgrade windows-service . --namespace dev
 ```
 
-Uygulamanızı `deployment.yaml`güncelleştirmenizden sonra dev Spaces, hizmetinizi denemeyecek ve bunları işaretlemecektir.
+Uygulamanızı güncelleştirmenizden sonra `deployment.yaml` dev Spaces, hizmetinizi denemeyecek ve bunları işaretlemecektir.
 
 ## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Linux uygulamanızı Azure Dev Spaces ile çalıştırma
 
-`webfrontend` Dizinine gidin ve Linux uygulamanızı kümenizde çalıştırmak `azds prep` için `azds up` ve komutlarını kullanın.
+`webfrontend`Dizinine gidin ve `azds prep` `azds up` Linux uygulamanızı kümenizde çalıştırmak için ve komutlarını kullanın.
 
 ```console
 cd ../../webfrontend-linux/
@@ -138,12 +138,12 @@ azds prep --enable-ingress
 azds up
 ```
 
-Bu `azds prep --enable-ingress` komut, uygulamanız için Helu grafiğini ve Dockerfiles 'ı oluşturur.
+Bu `azds prep --enable-ingress` komut, uygulamanız Için Helu grafiğini ve Dockerfiles 'ı oluşturur.
 
 > [!TIP]
 > Projeniz için [Dockerfile ve HELI grafiği](../how-dev-spaces-works-prep.md#prepare-your-code) , kodunuzu derlemek ve çalıştırmak için Azure dev Spaces tarafından kullanılır, ancak projenin oluşturulup çalıştırıldığını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
 
-Komut `azds up` , hizmetinizi ad alanında çalıştırır.
+`azds up`Komut, hizmetinizi ad alanında çalıştırır.
 
 ```console
 $ azds up
@@ -161,7 +161,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-Hizmetin çalışır durumda olduğunu, genel URL 'yi açarak, azds up komutunun çıktısında görüntülendiğini görebilirsiniz. Bu örnekte, genel URL olur `http://dev.webfrontend.abcdef0123.eus.azds.io/`. Bir tarayıcıda hizmete gidin ve üst kısımdaki *hakkında* ' ya tıklayın. Kapsayıcının kullandığı Windows sürümünü içeren *mywebapi* hizmetinden bir ileti görüntülendiğini doğrulayın.
+Hizmetin çalışır durumda olduğunu, genel URL 'yi açarak, azds up komutunun çıktısında görüntülendiğini görebilirsiniz. Bu örnekte, genel URL olur `http://dev.webfrontend.abcdef0123.eus.azds.io/` . Bir tarayıcıda hizmete gidin ve üst kısımdaki *hakkında* ' ya tıklayın. Kapsayıcının kullandığı Windows sürümünü içeren *mywebapi* hizmetinden bir ileti görüntülendiğini doğrulayın.
 
 ![Mywebapi 'ten Windows sürümünü gösteren örnek uygulama](../media/run-dev-spaces-windows-containers/sample-app.png)
 

@@ -1,25 +1,27 @@
 ---
-title: Azure portal bir arama uygulaması oluşturma
+title: Azure portal bir demo uygulaması oluşturma
 titleSuffix: Azure Cognitive Search
-description: İşlemsel bir Web uygulaması için HTML sayfaları ve betiği oluşturmak üzere uygulama oluşturma (Önizleme) Sihirbazı 'nı çalıştırın. Sayfa bir arama çubuğu, sonuç alanı, kenar çubuğu ve typeahead desteği içerir.
+description: İşletimsel bir Web uygulaması için HTML sayfaları ve betiği oluşturmak üzere demo uygulaması oluşturma (Önizleme) sihirbazını çalıştırın. Sayfa bir arama çubuğu, sonuç alanı, kenar çubuğu ve typeahead desteği içerir.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 07/01/2020
+ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488180"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955701"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: portalda bir arama uygulaması oluşturma (Azure Bilişsel Arama)
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: portalda bir demo uygulaması oluşturma (Azure Bilişsel Arama)
 
-Tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulaması oluşturmak için Azure portal **arama uygulaması oluşturma** Sihirbazı ' nı kullanın. Yapılandırmaya bağlı olarak, oluşturulan uygulama, uzak bir dizine canlı bağlantı ile ilk kullanımda çalışır. Varsayılan bir uygulama bir arama çubuğu, sonuç alanı, kenar çubuğu filtreleri ve typeahead desteği içerebilir.
+Bir tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulaması oluşturmak için Azure portal **tanıtım uygulaması oluşturma** Sihirbazı 'nı kullanın. Yapılandırmaya bağlı olarak, oluşturulan uygulama, uzak bir dizine yönelik canlı bir salt okuma bağlantısı ile ilk kullanımda çalışır. Varsayılan bir uygulama bir arama çubuğu, sonuç alanı, kenar çubuğu filtreleri ve typeahead desteği içerebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+Demo uygulaması, bir dizinin bir istemci uygulamasında nasıl çalıştığını görselleştirmenize yardımcı olabilir, ancak üretim senaryoları için tasarlanmamıştır. İstemci uygulamaları, oluşturulan HTML sayfasının sağlamadığı güvenlik, hata işleme ve barındırma mantığını içermelidir. Bir istemci uygulaması oluşturmaya hazırsanız, sonraki adımlar için [.NET SDK kullanarak ilk arama uygulamanızı oluşturma](tutorial-csharp-create-first-app.md) bölümüne bakın.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -45,7 +47,7 @@ Dizin kullanıma hazırsa, sonraki adıma geçin.
 
 1. Var olan dizinler listesinden *reatastate-US-Sample-Index* öğesini seçin.
 
-1. Sihirbazı başlatmak için üst kısımdaki Dizin sayfasında, **arama uygulaması oluştur (Önizleme)** öğesini seçin.
+1. Sihirbazı başlatmak için, üstteki Dizin sayfasında, **tanıtım uygulaması oluştur (Önizleme)** seçeneğini belirleyin.
 
 1. İlk sihirbaz sayfasında, Dizin tanımınıza CORS desteği eklemek için **çapraz kaynak kaynak paylaşımını (CORS) etkinleştir** ' i seçin. Bu adım isteğe bağlıdır, ancak yerel Web uygulamanız bu olmadan uzak dizine bağlanmaz.
 
@@ -85,7 +87,7 @@ Aşağıdaki ekran görüntüsünde, sihirbazda bulunan işlenmiş bir sayfayla 
 
 ## <a name="create-download-and-execute"></a>Oluşturma, indirme ve yürütme
 
-1. HTML dosyasını oluşturmak için **arama uygulaması oluştur** ' u seçin.
+1. HTML dosyasını oluşturmak için **demo uygulaması oluştur** ' u seçin.
 
 1. İstendiğinde, dosyayı indirmek için **uygulamanızı indir** ' i seçin.
 

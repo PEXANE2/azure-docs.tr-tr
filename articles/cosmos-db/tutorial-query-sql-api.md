@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Cosmos DB SQL ile sorgulama nasıl yapılır?'
-description: 'Öğretici: thw sorgu PLAYIN kullanarak Azure Cosmos DB SQL sorgularıyla sorgulama hakkında bilgi edinin'
+description: 'Öğretici: sorgu PLAYIN kullanarak Azure Cosmos DB SQL sorgularıyla sorgulama hakkında bilgi edinin'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74870080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921122"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Öğretici: SQL API’sini kullanarak Azure Cosmos DB’yi sorgulama
 
@@ -56,6 +56,7 @@ Bu makaledeki SQL sorguları aşağıdaki örnek belgeyi kullanır.
   "isRegistered": false
 }
 ```
+
 ## <a name="where-can-i-run-sql-queries"></a>SQL sorgularını nerede çalıştırabilirim?
 
 Mevcut örnek veri kümesinde sorgular çalıştıran [Sorgu oyun alanı](https://www.documentdb.com/sql/demo) ve [REST API’si ve SDK’ları](sql-api-sdk-dotnet.md) aracılığıyla, Azure portalındaki Veri Gezgini’ni kullanarak sorgular çalıştırabilirsiniz.
@@ -63,19 +64,21 @@ Mevcut örnek veri kümesinde sorgular çalıştıran [Sorgu oyun alanı](https:
 SQL sorguları hakkında daha fazla bilgi için bkz:
 * [SQL sorgusu ve SQL sözdizimi](sql-query-getting-started.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide, bir Azure Cosmos DB hesabınız ve koleksiyonunuz olduğu varsayılır. Bunlardan biri yok mu? [5 dakikalık hızlı başlangıcı](create-cosmosdb-resources-portal.md) tamamlayın.
+Bu öğreticide, bir Azure Cosmos DB hesabınız ve koleksiyonunuz olduğu varsayılır. Bu kaynaklardan hiçbiri yok mu? [5 dakikalık hızlı başlangıcı](create-cosmosdb-resources-portal.md) tamamlayın.
 
 ## <a name="example-query-1"></a>Örnek sorgu 1
 
-Yukarıda verilen örnek aile belgesiyle aşağıdaki SQL sorgusu, kimlik alanının `WakefieldFamily` ile eşleştiği belgeleri döndürür. Bu bir `SELECT *` deyimi olduğundan, sorgunun çıkışı eksiksiz JSON belgesidir:
+Yukarıdaki örnek aile belgesi verildiğinde, SQL sorgusu, KIMLIK alanının eşleştiği belgeleri döndürür `WakefieldFamily` . Bu bir `SELECT *` deyimi olduğundan, sorgunun çıkışı eksiksiz JSON belgesidir:
 
 **Sorgu**
 
+```sql
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
+```
 
 **Sonuçlar**
 
@@ -110,23 +113,34 @@ Yukarıda verilen örnek aile belgesiyle aşağıdaki SQL sorgusu, kimlik alanı
 
 ## <a name="example-query-2"></a>Örnek sorgu 2
 
-Sonraki sorgu, ailede kimlikleri `WakefieldFamily` ile eşleşen çocukların tüm adlarını, çocukların sınıfına göre sıralanmış şekilde döndürür.
+Sonraki sorgu, ailede KIMLIĞI eşleşen alt öğelerin verilen tüm adlarını `WakefieldFamily` kendi durumlarına göre sıralanmış olarak döndürür.
 
 **Sorgu**
 
+```sql
     SELECT c.givenName 
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
+```
 
 **Sonuçlar**
 
-[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
+```
+[
+    {
+        "givenName": "Jesse"
+    },
+    {
+        "givenName": "Lisa"
+    }
+]
+```
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide aşağıdakileri yaptınız:
+Bu öğreticide, aşağıdaki görevleri tamamladınız:
 
 > [!div class="checklist"]
 > * SQL kullanarak sorgulamayı öğrendiniz  

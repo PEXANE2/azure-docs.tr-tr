@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81390216"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight sanal ağ mimarisi
@@ -22,7 +22,7 @@ Bu makalede, bir HDInsight kümesini özel bir Azure sanal ağına dağıtırken
 
 Azure HDInsight kümelerinde farklı türlerde sanal makineler veya düğümler vardır. Her düğüm türü, sistem işleminde bir rol oynar. Aşağıdaki tabloda bu düğüm türleri ve bunların rolleri kümede özetlenmektedir.
 
-| Tür | Açıklama |
+| Tür | Description |
 | --- | --- |
 | Baş düğüm |  Apache Storm dışındaki tüm küme türleri için baş düğümler, dağıtılmış uygulamanın yürütülmesini yöneten süreçler barındırır. Baş düğüm aynı zamanda, SSH ve küme kaynakları genelinde çalışacak şekilde koordine ettiğiniz uygulamaları yürütebilmeniz için de düğümdür. Baş düğümlerin sayısı, tüm küme türleri için iki olarak düzeltilir. |
 | ZooKeeper düğümü | Zookeeper, veri işleme yapan düğümler arasındaki görevleri düzenler. Ayrıca baş düğümün öncü seçimi de yapar ve hangi baş düğümün belirli bir ana hizmetin çalıştığını izler. ZooKeeper düğümlerinin sayısı üç olarak düzeltilir. |
@@ -36,9 +36,9 @@ Azure HDInsight kümelerinde farklı türlerde sanal makineler veya düğümler 
 
 Kümenizdeki düğümleri adreslarken tam etki alanı adlarını (FQDN) kullanın. [AMBARı API](hdinsight-hadoop-manage-ambari-rest-api.md)'sini kullanarak kümenizdeki çeşitli düğüm türleri için FQDN 'leri edinebilirsiniz.
 
-Bu FQDN 'Ler form `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`olur.
+Bu FQDN 'Ler form olur `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` .
 
-, `<node-type-prefix>` İş düğümleri için *hn* , çalışan düğümleri için *WN* ve Zookeeper düğümleri için *Zn* olacaktır.
+, İş `<node-type-prefix>` düğümleri için *hn* , çalışan düğümleri için *WN* ve Zookeeper düğümleri için *Zn* olacaktır.
 
 Yalnızca ana bilgisayar adına ihtiyacınız varsa, FQDN 'nin yalnızca ilk kısmını kullanın:`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
@@ -71,16 +71,16 @@ Mevcut olan aşağıdaki ağ kaynakları, HDInsight ile kullanılan sanal ağ i�
 
 HDInsight kümenize üç yolla erişebilirsiniz:
 
-- Üzerinde `CLUSTERNAME.azurehdinsight.net`sanal ağın dışında bir HTTPS uç noktası.
-- Konumundaki `CLUSTERNAME-ssh.azurehdinsight.net`baş düğümüne 'a doğrudan bağlanmak için bir SSH uç noktası.
-- Sanal ağ `CLUSTERNAME-int.azurehdinsight.net`IÇINDE bir HTTPS uç noktası. Bu URL 'de`-int`"" olduğuna dikkat edin. Bu uç nokta, bu sanal ağdaki özel bir IP 'ye çözümlenir ve genel İnternet 'ten erişilemez.
+- Üzerinde sanal ağın dışında bir HTTPS uç noktası `CLUSTERNAME.azurehdinsight.net` .
+- Konumundaki baş düğümüne 'a doğrudan bağlanmak için bir SSH uç noktası `CLUSTERNAME-ssh.azurehdinsight.net` .
+- Sanal ağ içinde bir HTTPS uç noktası `CLUSTERNAME-int.azurehdinsight.net` . `-int`Bu URL 'de "" olduğuna dikkat edin. Bu uç nokta, bu sanal ağdaki özel bir IP 'ye çözümlenir ve genel İnternet 'ten erişilemez.
 
 Bu üç uç noktaya her biri bir yük dengeleyici atanır.
 
 Genel IP adresleri, sanal ağın dışından bağlantıya izin veren iki uç noktaya de sağlanır.
 
-1. Bir genel IP, kümeye internet `CLUSTERNAME.azurehdinsight.net`'ten bağlanırken kullanılacak tam etki alanı adı (FQDN) için yük dengeleyiciye atanır.
-1. İkinci genel IP adresi yalnızca SSH etki alanı adı `CLUSTERNAME-ssh.azurehdinsight.net`için kullanılır.
+1. Bir genel IP, kümeye internet 'ten bağlanırken kullanılacak tam etki alanı adı (FQDN) için yük dengeleyiciye atanır `CLUSTERNAME.azurehdinsight.net` .
+1. İkinci genel IP adresi yalnızca SSH etki alanı adı için kullanılır `CLUSTERNAME-ssh.azurehdinsight.net` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

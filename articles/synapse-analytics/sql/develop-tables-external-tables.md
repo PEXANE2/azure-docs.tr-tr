@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7c795e6077bc5a7b755a388a6f50848ad6094d48
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921798"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
@@ -96,13 +96,17 @@ data_source_name
 Veri kaynağı için Kullanıcı tanımlı adı belirtir. Ad, veritabanı içinde benzersiz olmalıdır.
 
 #### <a name="location"></a>Konum
-LOCATION = `'<prefix>://<path>'` -dış veri kaynağının bağlantı protokolünü ve yolunu sağlar. Yol, biçiminde bir kapsayıcı `'<prefix>://<path>/container'` ve biçiminde bir klasör içerebilir `'<prefix>://<path>/container/folder'` .
+LOCATION = `'<prefix>://<path>'` -dış veri kaynağının bağlantı protokolünü ve yolunu sağlar. Aşağıdaki desenler konumunda kullanılabilir:
 
 | Dış veri kaynağı        | Konum ön eki | Konum yolu                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
-| Azure Blob Depolama          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
+| Azure Blob Depolama Alanı          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
+|                             | `https`         | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
 | Azure Data Lake Store Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
 | Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+|                             | `https`         | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+
+`https:`ön ek, yoldaki alt klasörü kullanmanıza olanak sağlar.
 
 #### <a name="credential"></a>Kimlik Bilgisi
 CREDENTIAL = `<database scoped credential>` Azure depolamada kimlik doğrulaması için kullanılacak isteğe bağlı kimlik bilgileridir. Kimlik bilgisi olmayan dış veri kaynağı, ortak depolama hesabına erişebilir. 
@@ -124,7 +128,7 @@ Aşağıdaki örnek, New York veri kümesine işaret eden Azure Data Lake Gen2 i
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH
   -- Please note the abfss endpoint when your account has secure transfer enabled
-  ( LOCATION = 'abfss://newyorktaxidataset.azuredatalakestore.net' ,
+  ( LOCATION = 'abfss://data@newyorktaxidataset.dfs.core.windows.net' ,
     CREDENTIAL = ADLS_credential ,
     TYPE = HADOOP
   ) ;
@@ -300,7 +304,7 @@ Bir klasör konumu belirtirseniz, SQL isteğe bağlı bir sorgu dış tablodan s
 > [!NOTE]
 > Hadoop ve PolyBase 'in aksine, SQL isteğe bağlı alt klasörler döndürmez. Dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
 
-Bu örnekte, LOCATION = '/Webdata/' ise, bir SQL isteğe bağlı sorgusu, mydata. txt ve _hidden. txt ' den satırları döndürür. Bir alt klasörde bulunduğundan mydata2. txt ve mydata3. txt döndürmez.
+Bu örnekte, LOCATION = '/Webdata/' ise, bir SQL isteğe bağlı sorgusu, mydata.txt ve _hidden.txt satırları döndürür. Bir alt klasörde bulunduğundan mydata2.txt ve mydata3.txt döndürmez.
 
 ![Dış tablolar için özyinelemeli veriler](./media/develop-tables-external-tables/folder-traversal.png)
 
@@ -342,7 +346,7 @@ SELECT TOP 1 * FROM census_external_table
 
 Data Lake keşif yeteneklerini kullanarak artık, SQL havuzunu veya isteğe bağlı SQL 'i kullanarak bir dış tablo oluşturabilir ve sorgu üzerinde basit bir sağ tıklamayla sorgulama yapabilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı ARM erişim rolüyle çalışma alanına erişiminizin olması gerekir
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80133172"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Linux kapsayıcılarını çalıştırmak için Windows üzerinde IoT Edge kullanma
@@ -26,7 +26,7 @@ Bu makalede, Windows x64 (AMD/Intel) sisteminizdeki Linux kapsayıcıları kulla
 
 En son IoT Edge sürümüne nelerin dahil olduğu hakkında bilgi için, bkz. [Azure IoT Edge sürümler](https://github.com/Azure/azure-iotedge/releases).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Windows cihazınızın IoT Edge destekleyip desteklemediğini gözden geçirmek ve yüklemeden önce bir kapsayıcı altyapısı için hazırlamak üzere bu bölümü kullanın.
 
@@ -53,11 +53,11 @@ Bir PowerShell betiği, Azure IoT Edge güvenlik cini indirir ve yükler. Güven
 
 IoT Edge çalışma zamanını bir cihaza ilk kez yüklediğinizde, cihazı IoT Hub 'ından bir kimlikle sağlamanız gerekir. Tek bir IoT Edge cihaz, IoT Hub 'ınız tarafından sağlanan bir cihaz bağlantı dizesi kullanılarak el ile sağlanabilir. Ya da cihaz sağlama hizmeti 'ni kullanarak cihazları otomatik olarak temin edebilir, bu da birçok cihaza sahip olduğunuzda yararlı olur.
 
-[Windows 'a Azure IoT Edge çalışma zamanını yükleme](how-to-install-iot-edge-windows.md)makalesindeki farklı yükleme seçenekleri ve parametreleri hakkında daha fazla bilgi edinebilirsiniz. Docker Desktop 'ı yükledikten ve Linux kapsayıcıları için yapılandırıldıktan sonra, ana yükleme farkı Linux 'u **-containeros** parametresiyle bildiriyor. Örneğin:
+[Windows 'a Azure IoT Edge çalışma zamanını yükleme](how-to-install-iot-edge-windows.md)makalesindeki farklı yükleme seçenekleri ve parametreleri hakkında daha fazla bilgi edinebilirsiniz. Docker Desktop 'ı yükledikten ve Linux kapsayıcıları için yapılandırıldıktan sonra, ana yükleme farkı Linux 'u **-containeros** parametresiyle bildiriyor. Örnek:
 
 1. Henüz yapmadıysanız, yeni bir IoT Edge cihazı kaydedin ve cihaz bağlantı dizesini alın. Bu bölümün ilerleyen kısımlarında kullanılacak bağlantı dizesini kopyalayın. Aşağıdaki araçları kullanarak bu adımı tamamlayabilirsiniz:
 
-   * [Azure portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure portalındaki](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82783753"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
@@ -75,7 +75,7 @@ Varsayılan olarak, IoT Edge kendi yalıtılmış kapsayıcı ağında modüller
 
 **Seçenek 1: kapsayıcı altyapısı ayarlarındaki DNS sunucusunu ayarlama**
 
-Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; Bu, altyapı tarafından başlatılan tüm kapsayıcı modülleri için geçerlidir. Kullanılacak DNS sunucusunu belirten `daemon.json` adlı bir dosya oluşturun. Örneğin:
+Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; Bu, altyapı tarafından başlatılan tüm kapsayıcı modülleri için geçerlidir. `daemon.json`Kullanılacak DNS sunucusunu belirten adlı bir dosya oluşturun. Örnek:
 
 ```json
 {
@@ -85,14 +85,14 @@ Kapsayıcı altyapısı ayarlarında ortamınız için DNS sunucusunu belirtin; 
 
 Yukarıdaki örnek, DNS sunucusunu genel olarak erişilebilen bir DNS hizmetine ayarlar. Sınır cihazı bu IP ortamından erişemezse, erişilebilir olan DNS sunucusu adresi ile değiştirin.
 
-Platformunuzun doğru konumunu yerleştirin `daemon.json` :
+`daemon.json`Platformunuzun doğru konumunu yerleştirin:
 
 | Platform | Konum |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Windows kapsayıcıları ile Windows ana bilgisayarı | `C:\ProgramData\iotedge-moby\config` |
 
-Konum zaten dosya içeriyorsa `daemon.json` , **DNS** anahtarını buna ekleyin ve dosyayı kaydedin.
+Konum zaten `daemon.json` dosya içeriyorsa, **DNS** anahtarını buna ekleyin ve dosyayı kaydedin.
 
 Güncelleştirmelerin etkili olabilmesi için kapsayıcı altyapısını yeniden başlatın.
 
@@ -103,7 +103,7 @@ Güncelleştirmelerin etkili olabilmesi için kapsayıcı altyapısını yeniden
 
 **Seçenek 2: modül başına IoT Edge dağıtımında DNS sunucusunu ayarlama**
 
-Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayarlayabilirsiniz. Örneğin:
+Her modülün *createOptions* için DNS sunucusunu IoT Edge dağıtımında ayarlayabilirsiniz. Örnek:
 
 ```json
 "createOptions": {
@@ -149,7 +149,7 @@ Bu sorunu iki şekilde çözebilirsiniz:
 
 IoT Edge cihaz bir ağ geçidi cihazı olarak çalışıyorsa, 443, 5671 veya 8883 numaralı bağlantı noktasını kullanan işlemi bulup durdurmanız gerekir. Bağlantı noktası 443 hatası genellikle diğer işlemin bir Web sunucusu olduğu anlamına gelir.
 
-IoT Edge cihazını bir ağ geçidi olarak kullanmanız gerekmiyorsa, edgeHub 'ın modül oluşturma seçenekleri ' nden bağlantı noktası bağlamalarını kaldırabilirsiniz. Azure portal oluşturma seçeneklerini veya doğrudan Deployment. json dosyasını değiştirebilirsiniz.
+IoT Edge cihazını bir ağ geçidi olarak kullanmanız gerekmiyorsa, edgeHub 'ın modül oluşturma seçenekleri ' nden bağlantı noktası bağlamalarını kaldırabilirsiniz. Azure portal oluşturma seçeneklerini veya doğrudan dosyadaki deployment.js' i değiştirebilirsiniz.
 
 Azure portalında:
 
@@ -165,11 +165,11 @@ Azure portalında:
 
 6. Değişikliklerinizi kaydedin ve dağıtımı oluşturun.
 
-Deployment. json dosyasında:
+Dosyadaki deployment.js:
 
-1. IoT Edge cihazınıza uyguladığınız Deployment. json dosyasını açın.
+1. IoT Edge cihazınıza uyguladığınız dosyada deployment.jsaçın.
 
-2. EdgeAgent istenen Özellikler bölümünde `edgeHub` ayarları bulun:
+2. `edgeHub`EdgeAgent istenen Özellikler bölümünde ayarları bulun:
 
    ```json
    "edgeHub": {
@@ -183,7 +183,7 @@ Deployment. json dosyasında:
    }
    ```
 
-3. `createOptions` Satırı ve önünde `image` satırın sonundaki sondaki virgülü kaldırın:
+3. `createOptions`Satırı ve önünde satırın sonundaki sondaki virgülü kaldırın `image` :
 
    ```json
    "edgeHub": {
@@ -222,7 +222,7 @@ Bu hatayı gördüğünüzde, sanal makinenizin DNS adını yapılandırarak ve 
    ![Sanal makinenin DNS adını yapılandırın](./media/troubleshoot/configure-dns.png)
 
 3. **DNS ad etiketi** için bir değer girin ve **Kaydet**' i seçin.
-4. ** \<Dnsnamelabel\>biçiminde olması gereken yeni DNS adını kopyalayın.\< vmlocation\>. cloudapp.Azure.com**.
+4. Yeni DNS adını, biçiminde olmalıdır ** \<DNSnamelabel\> . \<vmlocation\> cloudapp.azure.com**.
 5. Sanal makinenin içinde, DNS adınızla IoT Edge çalışma zamanını ayarlamak için aşağıdaki komutu kullanın:
 
    * Linux 'ta:
@@ -241,15 +241,15 @@ Bu hatayı gördüğünüzde, sanal makinenizin DNS adını yapılandırarak ve 
 
 **Gözlemlenen davranış:**
 
-Windows 'da kullanırken `Get-WinEvent` bir EventLogException alırsınız.
+Windows 'da kullanırken bir EventLogException alırsınız `Get-WinEvent` .
 
 **Kök nedeni:**
 
-PowerShell `Get-WinEvent` komutu, belirli `ProviderName`bir günlük bulmak için bir kayıt defteri girdisini temel alır.
+`Get-WinEvent`PowerShell komutu, belirli bir günlük bulmak için bir kayıt defteri girdisini temel alır `ProviderName` .
 
 **Çözünürlüğüne**
 
-IoT Edge Daemon için bir kayıt defteri girişi ayarlayın. Aşağıdaki içerikle bir **ıotedge. reg** dosyası oluşturun ve çift tıklayarak veya `reg import iotedge.reg` komutunu kullanarak Windows kayıt defterine aktarın:
+IoT Edge Daemon için bir kayıt defteri girişi ayarlayın. Aşağıdaki içerikle bir **ıotedge. reg** dosyası oluşturun ve çift tıklayarak veya komutunu kullanarak Windows kayıt defterine aktarın `reg import iotedge.reg` :
 
 ```reg
 Windows Registry Editor Version 5.00
@@ -276,7 +276,7 @@ IoT Edge hub 'ı için **Optimizeforperformance** ortam değişkenini **false**o
 
 Azure portalında:
 
-IoT Hub, IoT Edge cihazınızı ve cihaz ayrıntıları sayfasında, **Modül** > **çalışma zamanı ayarlarını**ayarla ' yı seçin. *Yanlış*olarak ayarlanan *Optimizeforperformance* adlı IoT Edge hub modülü için bir ortam değişkeni oluşturun.
+IoT Hub, IoT Edge cihazınızı ve cihaz ayrıntıları sayfasında, **Modül**  >  **çalışma zamanı ayarlarını**ayarla ' yı seçin. *Yanlış*olarak ayarlanan *Optimizeforperformance* adlı IoT Edge hub modülü için bir ortam değişkeni oluşturun.
 
 ![OptimizeForPerformance, false olarak ayarlandı](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -300,7 +300,7 @@ Dağıtım bildiriminde:
 
 **Gözlemlenen davranış:**
 
-Özel bir IoT Edge modülü, bir 404 `Module not found` hatası ile IoT Edge hub 'ına ileti gönderemediğinde. IoT Edge Daemon, günlüklere aşağıdaki iletiyi yazdırır:
+Özel bir IoT Edge modülü, bir 404 hatası ile IoT Edge hub 'ına ileti gönderemediğinde `Module not found` . IoT Edge Daemon, günlüklere aşağıdaki iletiyi yazdırır:
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
@@ -314,7 +314,7 @@ IoT Edge Daemon, güvenlik nedenleriyle edgeHub 'a bağlanan tüm modüller içi
 
 Sürüm 1.0.7 itibariyle, tüm modül işlemlerinin bağlanmasına izin verilir. Daha fazla bilgi için bkz. [1.0.7 Release changelog](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
-1.0.7 sürümüne yükseltme yapılamıyorsa, aşağıdaki adımları izleyin. Aynı işlem KIMLIĞININ, her zaman özel IoT Edge modülü tarafından edgeHub 'a ileti göndermek için kullanıldığından emin olun. Örneğin, Docker dosyanızda `ENTRYPOINT` `CMD` komutunu kullandığınızdan emin olun. `CMD` Komut, modül için BIR işlem kimliği ve ana programı çalıştıran Bash komutu için başka BIR işlem kimliği sağlar, ancak `ENTRYPOINT` tek bir işlem kimliğine yol açar.
+1.0.7 sürümüne yükseltme yapılamıyorsa, aşağıdaki adımları izleyin. Aynı işlem KIMLIĞININ, her zaman özel IoT Edge modülü tarafından edgeHub 'a ileti göndermek için kullanıldığından emin olun. Örneğin, `ENTRYPOINT` `CMD` Docker dosyanızda komutunu kullandığınızdan emin olun. `CMD`Komut, modül için bir Işlem kimliği ve ana programı çalıştıran Bash komutu için başka bir Işlem kimliği sağlar, ancak `ENTRYPOINT` tek BIR işlem kimliğine yol açar.
 
 ## <a name="iot-edge-module-deploys-successfully-then-disappears-from-device"></a>IoT Edge modül başarıyla dağıtılır ve sonra cihazdan kaybolur
 

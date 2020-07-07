@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154738"
 ---
 # <a name="what-is-authentication"></a>Kimlik doğrulaması nedir?
@@ -71,7 +71,7 @@ Yukarıdaki örnek senaryoda uygulamaları bu iki role göre sınıflandırabili
 |[On-behalf-of akışı](v1-oauth2-on-behalf-of-flow.md) | erişim belirteci| x| x| x| |
 |[İstemci kimlik bilgileri](v1-oauth2-client-creds-grant-flow.md) | | | x (yalnızca uygulama)| | |
 
-Örtülü mod aracılığıyla yayınlanan belirteçlerin, tarayıcıya URL aracılığıyla geri geçirilme nedeniyle bir uzunluk sınırlaması vardır (burada `response_mode` `query` veya `fragment`).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur. 
+Örtülü mod aracılığıyla yayınlanan belirteçlerin, tarayıcıya URL aracılığıyla geri geçirilme nedeniyle bir uzunluk sınırlaması vardır (burada `response_mode` `query` veya `fragment` ).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur. 
 
 Temel kavramları oturttuğunuza göre okumaya devam ederek kimlik uygulaması modeli ve API, Azure AD'te sağlama ve Azure AD tarafından desteklenen yaygın senaryolar hakkında ayrıntılı bilgiler bölümlerini inceleyebilirsiniz.
 
@@ -119,7 +119,7 @@ Herhangi bir güvenlik belirtecindeki talepler belirteç türüne, kullanıcın�
 
 Aşağıdaki tabloda Azure AD tarafından düzenlenen talep türleri hakkında kısa açıklamalara yer verilmiştir. Daha ayrıntılı bilgi için bkz. Azure AD tarafından verilen [erişim belirteçleri](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) ve [Kimlik belirteçleri](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) .
 
-| İste | Açıklama |
+| İste | Description |
 | --- | --- |
 | Uygulama Kimliği | Belirteci kullanan uygulamayı tanımlar. |
 | Hedef kitle | Belirtecin gönderileceği alıcı kaynağını tanımlar. |
@@ -132,7 +132,7 @@ Aşağıdaki tabloda Azure AD tarafından düzenlenen talep türleri hakkında k
 | Verilme Zamanı | Belirtecin verilme zamanını kaydeder ve bu değer genellikle belirtecin ne kadar güncel olduğunu anlamak için kullanılır. |
 | Veren | Belirteci oluşturan STS ve Azure AD kiracısını tanımlar. |
 | Soyadı | Kullanıcının Azure AD'deki soyadını sağlar. |
-| Adı | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. |
+| Name | Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. |
 | Nesne Kimliği | Öznenin Azure AD'deki değişmez ve benzersiz tanıtıcısını içerir. |
 | Roller | Kullanıcıya verilmiş olan Azure AD Uygulama Rollerinin kolay adlarını içerir. |
 | Kapsam | İstemci uygulamasına verilmiş olan izinleri belirtir. |

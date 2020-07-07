@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80235045"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Standart Load Balancer kullanarak sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma (Önizleme)
@@ -27,7 +27,7 @@ Azure [Cloud Shell](https://shell.azure.com/bash)’den veya yerel bir Azure CLI
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure sanal ağ için IPv6 özelliğini kullanmak üzere aboneliğinizi aşağıdaki şekilde yalnızca bir kez yapılandırmanız gerekir:
 
 ```azurecli

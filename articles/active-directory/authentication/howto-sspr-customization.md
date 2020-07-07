@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54a45602b80db965e3cc79d188dd40034a320b79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394260"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory self servis parola sıfırlama için Kullanıcı deneyimini özelleştirme
@@ -56,8 +56,8 @@ Farklı yönetici rolleri ve bunların nasıl atanacağı hakkında daha fazla b
 
 Kuruluşunuz yöneticilere parola sıfırlama istekleri hakkında bildirim almak istemiyor aşağıdaki yapılandırma seçenekleri kullanılabilir:
 
-* Kullanıcıların yardım almak için kullanabileceği bir Web URL 'SI veya mailto: adresi sağlamak için yardım masası bağlantısını özelleştirin. Bu seçenek **parola sıfırlama** > **özelleştirmesi** > **özel yardım masası e-postası veya URL 'si**altındadır.
-* Tüm kullanıcılar için self servis parola sıfırlamayı etkinleştirin. Bu seçenek **parola sıfırlama** > **özellikleri**' nin altındadır. Kullanıcıların kendi parolalarını sıfırlamalarını istemiyorsanız boş bir gruba erişim kapsamını atayabilirsiniz. *Bu seçeneği önermiyoruz.*
+* Kullanıcıların yardım almak için kullanabileceği bir Web URL 'SI veya mailto: adresi sağlamak için yardım masası bağlantısını özelleştirin. Bu seçenek **parola sıfırlama**  >  **özelleştirmesi**  >  **özel yardım masası e-postası veya URL 'si**altındadır.
+* Tüm kullanıcılar için self servis parola sıfırlamayı etkinleştirin. Bu seçenek **parola sıfırlama**  >  **özellikleri**' nin altındadır. Kullanıcıların kendi parolalarını sıfırlamalarını istemiyorsanız boş bir gruba erişim kapsamını atayabilirsiniz. *Bu seçeneği önermiyoruz.*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>Oturum açma sayfası ve erişim panelini özelleştirme
 
@@ -67,12 +67,12 @@ Seçtiğiniz grafikler aşağıdaki durumlarda gösterilmektedir:
 
 * Kullanıcı Kullanıcı adını girdikten sonra
 * Kullanıcı özelleştirilmiş URL 'ye eriştiğinde:
-   * `whr` Parametresini parola sıfırlama sayfasına geçirerek, örneğin`https://login.microsoftonline.com/?whr=contoso.com`
-   * `username` Parametresini parola sıfırlama sayfasına geçirerek, örneğin`https://login.microsoftonline.com/?username=admin@contoso.com`
+   * `whr`Parametresini parola sıfırlama sayfasına geçirerek, örneğin`https://login.microsoftonline.com/?whr=contoso.com`
+   * `username`Parametresini parola sıfırlama sayfasına geçirerek, örneğin`https://login.microsoftonline.com/?username=admin@contoso.com`
 
 ### <a name="directory-name"></a>Dizin adı
 
-İşleri daha kolay bir şekilde görmek için portalda ve otomatikleştirilmiş iletişimlerdeki kuruluş adını değiştirebilirsiniz. Azure Portal dizin adı özniteliğini değiştirmek için **Azure Active Directory** > **özelliklerine**gidin. Bu kolay kuruluş adı seçeneği, aşağıdaki örneklerde olduğu gibi otomatik e-postalarda en iyi şekilde görülebilir:
+İşleri daha kolay bir şekilde görmek için portalda ve otomatikleştirilmiş iletişimlerdeki kuruluş adını değiştirebilirsiniz. Azure Portal dizin adı özniteliğini değiştirmek için **Azure Active Directory**  >  **özelliklerine**gidin. Bu kolay kuruluş adı seçeneği, aşağıdaki örneklerde olduğu gibi otomatik e-postalarda en iyi şekilde görülebilir:
 
 * E-postadaki kolay ad (örneğin, "*contoso tanıtımı adına Microsoft*")
 * E-postadaki konu satırı, örneğin "*contoso demo hesabı e-posta doğrulama kodu*"
@@ -81,7 +81,7 @@ Seçtiğiniz grafikler aşağıdaki durumlarda gösterilmektedir:
 
 Kullanıcı oturum açma olayları için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanırsanız, oturum açma sayfası [açıklaması eklemek](/windows-server/identity/ad-fs/operations/add-sign-in-page-description)için makalesindeki Kılavuzu kullanarak oturum açma sayfasına bir bağlantı ekleyebilirsiniz.
 
-Kullanıcılara, gibi SSPR iş akışını girmesi için sayfaya bir bağlantı sağlayın *https://passwordreset.microsoftonline.com*. AD FS oturum açma sayfasına bağlantı eklemek için AD FS sunucunuzda aşağıdaki komutu kullanın:
+Kullanıcılara, gibi SSPR iş akışını girmesi için sayfaya bir bağlantı sağlayın *https://passwordreset.microsoftonline.com* . AD FS oturum açma sayfasına bağlantı eklemek için AD FS sunucunuzda aşağıdaki komutu kullanın:
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwordreset.microsoftonline.com' target='_blank'>Can't access your account?</a></p>"

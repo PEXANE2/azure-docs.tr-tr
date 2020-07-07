@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 67a17373bb161e54493974ebf01e785bb1329087
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921929"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Öğretici: toplu algılama ve Power BI kullanarak anomali görselleştirin
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Batch anomali algılama için anomali algılayıcı API 'siyle Power BI Desktop tümleştirme
 > * Beklenen ve görülen değerler ve anomali algılama sınırları dahil olmak üzere verilerinizde bulunan anormallikleri görselleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * [Azure aboneliği](https://azure.microsoft.com/free/)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)ücretsiz olarak kullanılabilir.
 * Zaman serisi veri noktaları içeren bir Excel dosyası (. xlsx). Bu hızlı başlangıçta örnek veriler [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 'da bulunabilir
@@ -143,10 +143,10 @@ Ana Power BI ekranında, verileri görselleştirmek için yukarıda oluşturulan
 
 **Çağrılan işlevden** aşağıdaki alanları grafiğin **değerler** alanına ekleyin. Grafiğinizi oluşturmaya yardımcı olması için aşağıdaki ekran görüntüsünü kullanın.
 
-    * Değer
-    * Üst Üstekenar boşlukları
-    * Harf kenar boşlukları
-    * ExpectedValues
+* Değer
+* Üst Üstekenar boşlukları
+* Harf kenar boşlukları
+* ExpectedValues
 
 ![Yeni hızlı ölçü ekranının görüntüsü](../media/tutorials/chart-settings.png)
 

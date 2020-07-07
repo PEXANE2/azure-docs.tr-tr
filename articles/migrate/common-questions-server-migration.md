@@ -4,10 +4,10 @@ description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanm
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744336"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
@@ -21,7 +21,7 @@ Bu makalede, Azure geçişi: sunucu geçiş aracı hakkında sık sorulan sorula
 
 ## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Azure geçişi ile geçiş için hangi coğrafi dosyalar desteklenir?
 
-[Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
+[Genel](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government) için desteklenen coğrafyaları inceleyin.
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Aracısız VMware çoğaltması nasıl çalışır?
 
@@ -81,11 +81,11 @@ Hayır. Azure geçişi yalnızca yönetilen disklere geçişi destekler (Standar
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltması için Azure geçişi aracı 'nı kullanarak çoğaltma Nasıl yaparım? kısıtlaması yapılsın mı?  
 
-NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örneğin:
+NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örnek:
 
-NetQosPolicy içinde kullanılacak AppNamePrefix değeri "GatewayWindowsService. exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
+NetQosPolicy içinde kullanılacak AppNamePrefix "GatewayWindowsService.exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
  
-New-NetQosPolicy-Name "Kısıtımizi"-AppPathNameMatchCondition "GatewayWindowsService. exe"-kısıtlar Lerateactionbitspersecond 1MB
+New-NetQosPolicy-Name "Kısıtımizi"-AppPathNameMatchCondition "GatewayWindowsService.exe"-Kısıtımateactionbitspersecond 1MB
 
 ## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Zaten Azure 'a çoğaltılan VM 'Leri geçirebilir miyim? 
 

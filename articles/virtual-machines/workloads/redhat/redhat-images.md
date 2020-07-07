@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239868"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux görüntülerine genel bakış
@@ -45,7 +45,7 @@ az vm image list --publisher RedHat --all
 
 Azure 'da VM görüntüleri Yayımcı, teklif, SKU ve sürüm tarafından düzenlenmiştir. Yayımcının birleşimi: teklif: SKU: sürüm, URN 'nin görüntüsüdür ve kullanılacak görüntüyü benzersiz olarak tanımlar.
 
-Örneğin, `RedHat:RHEL:8-LVM:8.1.20200318` 18 Mart 2020 ' de oluşturulmuş bir RHEL 8,1 LVM bölümlenmiş görüntüsünü ifade eder.
+Örneğin, `RedHat:RHEL:8-LVM:8.1.20200318` 18 mart 2020 ' de oluşturulmuş BIR RHEL 8,1 LVM bölümlenmiş görüntüsünü ifade eder.
 
 Burada bir RHEL 8,1 VM oluşturma örneği gösterilmektedir.
 
@@ -71,7 +71,7 @@ Bu görüntü sürümü karşılaştırması, değerler bir dize olarak değil, 
 
 RHEL 6. x görüntüleri için, görüntü türleri aşağıdaki tabloda gösterilmiştir.
 
-|Yayımcı | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
+|Publisher | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
 |----------|-------|-----------|---------|--------
 |RedHat | RHEL | İkincil sürüm (örneğin, 6,9) | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 6.9.2018010506) | Tüm standart RHEL 6. x görüntüleri bu kurala uyar.
 |RedHat | RHEL-byos | RHEL-raw69 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 6.9.20181023) | Bu görüntü bir RHEL 6,9 BYOS görüntüsüdür.
@@ -80,12 +80,12 @@ RHEL 6. x görüntüleri için, görüntü türleri aşağıdaki tabloda göster
 
 ## <a name="rhel-7-image-types"></a>RHEL 7 görüntü türleri
 
-RHEL 7. x görüntüleri için birkaç farklı görüntü türü vardır. Aşağıdaki tabloda, sunduğumuz farklı görüntü kümeleri gösterilmektedir. Tam listeyi görmek için Azure CLı komutunu `az vm image list --publisher redhat --all`kullanın.
+RHEL 7. x görüntüleri için birkaç farklı görüntü türü vardır. Aşağıdaki tabloda, sunduğumuz farklı görüntü kümeleri gösterilmektedir. Tam listeyi görmek için Azure CLı komutunu kullanın `az vm image list --publisher redhat --all` .
 
 >[!NOTE]
 > Aksi belirtilmedikçe, tüm görüntüler LVM bölümlenmiş ve normal RHEL depolarına bağlanır. Yani, depolar genişletilmiş güncelleştirme desteği (EUS) değildir ve SAP için Güncelleştirme Hizmetleri (E4S) değildir. Devam ederken yalnızca LVM bölümlenmiş görüntüleri yayımlamaya devam ediyoruz ancak bu kararda geri bildirimde bulunacağız. Genişletilmiş güncelleştirme desteği ve SAP için güncelleştirme hizmetleri hakkında daha fazla bilgi için, [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata)' ne bakın.
 
-|Yayımcı | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
+|Publisher | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | İkincil sürüm (örneğin, 7,6) | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 7.6.2019102813) | 2019 Nisan 'dan önce yayımlanan görüntüler standart RHEL depolarına iliştirilir. 2019 Nisan 'dan sonra yayımlanan görüntüler, belirli bir ikincil sürümün sürüm kilitlemesini sağlamak için Red Hat 'in EUS depolarına iliştirilir. Düzenli depoların, SKU değerinde 7-LVM veya 7-RAW içeren görüntüleri kullanması gerekir (Ayrıntılar izleyin). RHEL 7,7 ve üzeri görüntüleri LVM bölümlenmiş olarak bölümlenir. Bu kategorideki diğer tüm görüntüler RAW bölümlenmiştir.
 |RedHat | RHEL | 7-HAM | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 7.6.2019102813) | Bu görüntüler RAW bölümlenmiştir (örneğin, mantıksal birimler eklenmemiş).
@@ -102,7 +102,7 @@ RHEL 7. x görüntüleri için birkaç farklı görüntü türü vardır. Aşağ
 
 RHEL 8 görüntü türleri için Ayrıntılar aşağıda verilmiştir.
 
-|Yayımcı | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
+|Publisher | Sunduğu | SKU değeri | Sürüm | Ayrıntılar
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191023) | Bu görüntüler, standart Red Hat depolarına bağlı olan RHEL 8 LVM bölümlenmiş görüntüleridir.
 |RedHat | RHEL | 8-Gen2 | RHEL Minor sürümünün birleştirilmiş değerleri ve Yayımlanma tarihi (örneğin, 8.0.20191024) | Bu görüntüler, standart Red Hat depolarına bağlı Hyper-V oluşturma 2 RHEL 8 LVM bölümlenmiş görüntüleridir. Azure 'da 2. nesil VM 'Ler hakkında daha fazla bilgi için bkz. [2. nesil sanal makineler Için destek](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
@@ -129,7 +129,7 @@ RedHat:RHEL:7-LVM:7.6.2019062414
 RedHat:RHEL:7.6:7.6.2019102813
 ```
 
-Bu durumda, `RedHat:RHEL:7.6:7.6.2019102813` varsayılan olarak EUS depolarına iliştirilir. SKU değeri 7,4 ' dir. Ve `RedHat:RHEL:7-LVM:7.6.2019062414` , varsayılan olarak EUS olmayan depolara eklenir. SKU değeri 7-LVM 'dir.
+Bu durumda, `RedHat:RHEL:7.6:7.6.2019102813` Varsayılan olarak EUS depolarına iliştirilir. SKU değeri 7,4 ' dir. Ve `RedHat:RHEL:7-LVM:7.6.2019062414` , varsayılan olarak EUS olmayan depolara eklenir. SKU değeri 7-LVM 'dir.
 
 Normal (EUS olmayan) depoları kullanmak için SKU 'da küçük bir sürüm numarası içermeyen bir görüntü kullanın.
 
