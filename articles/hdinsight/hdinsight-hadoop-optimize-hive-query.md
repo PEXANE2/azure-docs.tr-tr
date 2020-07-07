@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: c81d70577c5e7b852d315bdb91993d15624a7336
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791502"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight’ta Apache Hive sorgularını iyileştirme
 
 Azure HDInsight 'ta Apache Hive sorguları çalışabilecek çeşitli küme türleri ve teknolojiler vardır. İş yükü gereksinimleriniz için performansı iyileştirmenize yardımcı olması için uygun küme türünü seçin.
 
-Örneğin, etkileşimli sorgular için iyileştirmek `ad hoc`üzere **etkileşimli sorgu** kümesi türünü seçin. Toplu işlem olarak kullanılan Hive sorgularını iyileştirmek için Apache **Hadoop** kümesi türünü seçin. **Spark** ve **HBase** küme türleri, Hive sorguları da çalıştırabilir. Çeşitli HDInsight kümesi türlerinde Hive sorguları çalıştırma hakkında daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Hive ve HiveQL nedir?](hadoop/hdinsight-use-hive.md).
+Örneğin, etkileşimli sorgular için iyileştirmek üzere **etkileşimli sorgu** kümesi türünü seçin `ad hoc` . Toplu işlem olarak kullanılan Hive sorgularını iyileştirmek için Apache **Hadoop** kümesi türünü seçin. **Spark** ve **HBase** küme türleri, Hive sorguları da çalıştırabilir. Çeşitli HDInsight kümesi türlerinde Hive sorguları çalıştırma hakkında daha fazla bilgi için bkz. [Azure HDInsight 'ta Apache Hive ve HiveQL nedir?](hadoop/hdinsight-use-hive.md).
 
 Hadoop kümesi türündeki HDInsight kümeleri varsayılan olarak performans için en iyi duruma getirilmemiştir. Bu makalede, sorgularınızı uygulayabileceğiniz en yaygın Hive performansı iyileştirme yöntemlerinden bazıları açıklanmaktadır.
 
@@ -122,7 +122,7 @@ Daha fazla bilgi için bkz. [bölümlenmiş tablolar](https://cwiki.apache.org/c
 
 ## <a name="use-the-orcfile-format"></a>ORCFile biçimini kullanın
 
-Hive farklı dosya biçimlerini destekler. Örneğin:
+Hive farklı dosya biçimlerini destekler. Örnek:
 
 * **Metin**: varsayılan dosya biçimi ve çoğu senaryolarla birlikte kullanılır.
 * **Avro**: birlikte çalışabilirlik senaryolarında iyi sonuç verir.
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Ardından, hazırlama tablosundan ORC tablosuna veri eklersiniz. Örneğin:
+Ardından, hazırlama tablosundan ORC tablosuna veri eklersiniz. Örnek:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -198,6 +198,6 @@ Göz önünde bulundurmanız gereken daha fazla iyileştirme yöntemi vardır, �
 Bu makalede, birkaç genel Hive sorgu iyileştirme yöntemi öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [HDInsight 'ta Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
-* [Apache Hive iyileştirin](./optimize-hive-ambari.md)
+* [Apache Hive’ı iyileştirme](./optimize-hive-ambari.md)
 * [HDInsight 'ta etkileşimli sorgu kullanarak Uçuş gecikmesi verilerini çözümleme](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [HDInsight 'ta Apache Hive kullanarak Twitter verilerini çözümleme](hdinsight-analyze-twitter-data-linux.md)

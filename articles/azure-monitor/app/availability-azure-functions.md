@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
 ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791127"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
@@ -45,7 +45,7 @@ Aşağıdaki kodu Run. CSX dosyasına kopyalayın (Bu, önceden var olan kodun y
 >![Azure işlevinin Run. CSX Azure portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Uç nokta adresi için şunu kullanın: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Kaynağınız Azure Kamu veya Azure Çin gibi bir bölgede yer almadığı takdirde, bu durumda [varsayılan uç noktaları geçersiz kılma](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) ve bölgeniz Için uygun telemetri kanalı uç noktasını seçme konusunda bu makaleye başvurun.
+> Uç nokta adresi için şunu kullanın: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Kaynağınız Azure Kamu veya Azure Çin gibi bir bölgede yer almadığı takdirde, bu durumda [varsayılan uç noktaları geçersiz kılma](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) ve bölgeniz Için uygun telemetri kanalı uç noktasını seçme konusunda bu makaleye başvurun.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -160,7 +160,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Her şeyin çalıştığından emin olmak için Application Insights kaynağınızın kullanılabilirlik sekmesinde grafiğe bakabilirsiniz.
 
 > [!NOTE]
-> Runkullanılabilirliği Bilitytest. CSX içinde kendi iş mantığınızı uyguladıysanız, aşağıdaki ekran görüntülerinde olduğu gibi başarılı sonuçları görürsünüz. Bu durumda, başarısız sonuçları görürsünüz. İle `TrackAvailability()` oluşturulan testler, test adının yanında **özel** ile görünür.
+> Runkullanılabilirliği Bilitytest. CSX içinde kendi iş mantığınızı uyguladıysanız, aşağıdaki ekran görüntülerinde olduğu gibi başarılı sonuçları görürsünüz. Bu durumda, başarısız sonuçları görürsünüz. İle oluşturulan testler `TrackAvailability()` , test adının yanında **özel** ile görünür.
 
 >[!div class="mx-imgBorder"]
 >![Başarılı sonuçlarla kullanılabilirlik sekmesi](media/availability-azure-functions/availability-custom.png)

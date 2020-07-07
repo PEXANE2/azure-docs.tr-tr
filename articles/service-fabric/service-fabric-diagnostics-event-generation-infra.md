@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791825"
 ---
 # <a name="monitoring-the-cluster"></a>Kümeyi izleme
@@ -18,7 +18,7 @@ Donanımınızın ve kümenizin beklendiği gibi davranıp davranmadığını ö
 
 Service Fabric, çeşitli yapılandırılmış platform olaylarını EventStore ve çeşitli günlük kanalları aracılığıyla [Service Fabric olaylar](service-fabric-diagnostics-events.md)olarak kullanıma sunar. 
 
-Windows 'da Service Fabric olayları, Işletimsel ve veri & mesajlaşma kanalları arasında seçim yapmak için kullanılan bir `logLevelKeywordFilters` dizi ilgili olan tek bir ETW sağlayıcısından kullanılabilir. Bu, giden Service Fabric olaylarını gerektiği şekilde filtreleyebiliriz.
+Windows 'da Service Fabric olayları, `logLevelKeywordFilters` işletimsel ve veri & mesajlaşma kanalları arasında seçim yapmak için kullanılan bir dizi ilgili olan tek BIR ETW sağlayıcısından kullanılabilir. Bu, giden Service Fabric olaylarını gerektiği şekilde filtreleyebiliriz.
 
 * **İşletimsel** Service Fabric ve kümesi tarafından gerçekleştirilen bir düğümün olayları, dağıtılan yeni bir uygulama veya yükseltme geri alma vb. tarafından gerçekleştirilen üst düzey işlemler. Olayların tam listesini [buradan](service-fabric-diagnostics-event-generation-operational.md)görebilirsiniz.  
 

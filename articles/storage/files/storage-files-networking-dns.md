@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6404115e64ba0ac1f65ba1cfc8d26604f1ce9cfa
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509974"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Azure Dosyalar için DNS iletmeyi yapılandırma
@@ -38,7 +38,7 @@ Azure dosyaları için DNS iletmeyi yapılandırmak, istekleri iletmek üzere bi
 
 Bu kılavuzda, Azure depolama uç noktası için DNS iletmeyi yapılandırma adımları gösterilmektedir. bu nedenle Azure dosyalarına ek olarak, diğer tüm Azure depolama hizmetleri (Azure Blob depolama, Azure Tablo depolama, Azure kuyruk depolama, vb.) için DNS ad çözümlemesi istekleri Azure 'un özel DNS hizmetine iletilir. İsterseniz diğer Azure hizmetleri için ek uç noktalar da eklenebilir. Şirket içi DNS sunucularınızda DNS iletimi, şirket içi makine adlarını çözümlemek için sanal ağınızdaki (DFS-N sunucusu gibi) bulut kaynaklarını etkinleştirmek üzere de yapılandırılır. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure dosyalarına DNS iletmeyi ayarlayabilmeniz için önce aşağıdaki adımları tamamlamış olmanız gerekir:
 
 - Bağlamak istediğiniz bir Azure dosya paylaşımının bulunduğu depolama hesabı. Depolama hesabı ve Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
@@ -110,7 +110,7 @@ New-AzDnsForwarder `
 
 Ayrıca, birkaç ek parametre sağlamak için yararlı/gerekli bulabilirsiniz:
 
-| Parametre adı | Tür | Açıklama |
+| Parametre adı | Tür | Description |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | Varsayılan olarak, DNS sunucuları sanal ağla aynı kaynak grubuna dağıtılır. Bu istenmiyorsa, bu parametre, içine dağıtılabilmesi için alternatif bir kaynak grubu seçmenizi sağlar. |
 | `DnsForwarderRootName` | `string` | Varsayılan olarak, Azure 'da dağıtılan DNS sunucuları, `DnsFwder-*` yıldız işareti bir yineleyici tarafından doldurulduğu adlara sahiptir. Bu parametre, bu adın kökünü değiştirir (ör. `DnsFwder` ). |

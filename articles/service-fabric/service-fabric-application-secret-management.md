@@ -4,10 +4,10 @@ description: Service Fabric uygulamasındaki gizli değerlerin güvenliğini nas
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583243"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric uygulamalarında şifreli gizli dizileri yönetme
@@ -24,9 +24,9 @@ Service Fabric uygulamasında şifrelenmiş gizli dizileri kullanmak üç adımd
 * [Bir şifreleme sertifikası kurun ve Linux kümelerinde gizli dizileri şifreleyin.][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Bir uygulamada şifrelenmiş gizli dizileri belirtme
-Önceki adımda, bir sertifika ile gizli dizi şifrelemesini ve bir uygulamada kullanılmak üzere bir Base-64 kodlu dizeyi oluşturmayı açıklar. Bu Base-64 kodlu dize, bir hizmetin Settings. xml dosyasında şifrelenmiş bir [parametre][parameters-link] olarak veya bir hizmetin servicemanifest. xml dosyasında şifrelenmiş bir [ortam değişkeni][environment-variables-link] olarak belirtilebilir.
+Önceki adımda, bir sertifika ile gizli dizi şifrelemesini ve bir uygulamada kullanılmak üzere bir Base-64 kodlu dizeyi oluşturmayı açıklar. Bu temel 64 kodlu dize, bir hizmetin Settings.xml şifrelenmiş bir [parametre][parameters-link] olarak veya bir hizmetin ServiceManifest.xml şifreli bir [ortam değişkeni][environment-variables-link] olarak belirtilebilir.
 
-Hizmetinizin Settings. [parameter][parameters-link] XML yapılandırma dosyasında, `IsEncrypted` özniteliği olarak `true`ayarlanmış bir şifreli parametre belirtin:
+Hizmetinizin Settings.xml yapılandırma dosyasında, özniteliği olarak ayarlanmış şifreli bir [parametre][parameters-link] belirtin `IsEncrypted` `true` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -36,7 +36,7 @@ Hizmetinizin Settings. [parameter][parameters-link] XML yapılandırma dosyasın
   </Section>
 </Settings>
 ```
-Hizmetinizin ServiceManifest. xml dosyasında, `Type` özniteliği olarak `Encrypted`ayarlanmış bir şifrelenmiş [ortam değişkeni][environment-variables-link] belirtin:
+Hizmetinizin ServiceManifest.xml dosyasında, özniteliği olarak ayarlanmış bir şifrelenmiş [ortam değişkeni][environment-variables-link] belirtin `Type` `Encrypted` :
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -45,7 +45,7 @@ Hizmetinizin ServiceManifest. xml dosyasında, `Type` özniteliği olarak `Encry
 </CodePackage>
 ```
 
-Gizli dizi, uygulama bildiriminde bir sertifika belirtilerek Service Fabric uygulamanıza da eklenmelidir. **ApplicationManifest. xml** ' ye bir **Secretscercertificate** öğesi ekleyin ve istenen sertifikanın parmak izini ekleyin.
+Gizli dizi, uygulama bildiriminde bir sertifika belirtilerek Service Fabric uygulamanıza da eklenmelidir. **ApplicationManifest.xml** bir **secretscercertificate** öğesi ekleyin ve istenen sertifikanın parmak izini ekleyin.
 
 ```xml
 <ApplicationManifest … >
@@ -64,8 +64,8 @@ Gizli dizi, uygulama bildiriminde bir sertifika belirtilerek Service Fabric uygu
 ### <a name="inject-application-secrets-into-application-instances"></a>Uygulama örneklerine uygulama gizli dizilerini Ekle
 İdeal olarak, farklı ortamlara dağıtım mümkün olduğunca otomatikleştirilebilir. Bu, bir derleme ortamında gizli şifreleme gerçekleştirerek ve uygulama örnekleri oluştururken şifreli gizli dizileri parametre olarak sağlayarak gerçekleştirilebilir.
 
-#### <a name="use-overridable-parameters-in-settingsxml"></a>Settings. xml dosyasında geçersiz kılınabilir parametreler kullan
-Settings. xml yapılandırma dosyası, uygulama oluşturma zamanında sağlanabilen geçersiz kılınabilir parametrelere izin verir. Bir parametre `MustOverride` için değer sağlamak yerine özniteliğini kullanın:
+#### <a name="use-overridable-parameters-in-settingsxml"></a>Settings.xml geçersiz kılınabilir parametreler kullan
+Settings.xml yapılandırma dosyası, uygulama oluşturma zamanında sağlanabilen geçersiz kılınabilir parametrelere izin verir. `MustOverride`Bir parametre için değer sağlamak yerine özniteliğini kullanın:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -76,7 +76,7 @@ Settings. xml yapılandırma dosyası, uygulama oluşturma zamanında sağlanabi
 </Settings>
 ```
 
-Settings. xml ' deki değerleri geçersiz kılmak için, ApplicationManifest. xml dosyasında hizmet için bir geçersiz kılma parametresi bildirin:
+Settings.xml değerleri geçersiz kılmak için, ApplicationManifest.xml hizmet için bir geçersiz kılma parametresi bildirin:
 
 ```xml
 <ApplicationManifest ... >
@@ -105,7 +105,7 @@ PowerShell kullanarak, parametresi `New-ServiceFabricApplication` komut için bi
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-C# kullanarak uygulama parametreleri `ApplicationDescription` şöyle belirtilir: `NameValueCollection`
+C# kullanarak uygulama parametreleri `ApplicationDescription` şöyle belirtilir `NameValueCollection` :
 
 ```csharp
 FabricClient fabricClient = new FabricClient();

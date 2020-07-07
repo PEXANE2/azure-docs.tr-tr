@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592069"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
@@ -30,13 +30,13 @@ Aşağıda özetlenen yöntemlerden birini kullanarak bir kümeyi el ile ölçek
 
 Microsoft, kümeleri ölçeklendirmek için aşağıdaki yardımcı programları sağlar:
 
-|Yardımcı program | Açıklama|
+|Yardımcı program | Description|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure Klasik CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
-|[Azure portal](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
+|[Azure portalındaki](https://portal.azure.com)|HDInsight kümesi bölmesini açın, sol taraftaki menüden **küme boyutu** ' nu seçin, ardından küme boyutu bölmesinde çalışan düğümlerinin sayısını yazın ve Kaydet ' i seçin.|  
 
 ![Azure portal ölçeği kümesi seçeneği](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
@@ -80,7 +80,7 @@ Veri düğümlerinin sayısını değiştirmenin etkisi, HDInsight tarafından d
 
     Bir topolojiyi fırtınası Kullanıcı arabirimini kullanarak yeniden dengelemek için aşağıdaki adımları kullanın.
 
-    1. Web `https://CLUSTERNAME.azurehdinsight.net/stormui` tarayıcınızda açın, burada `CLUSTERNAME` , fırtınası kümenizin adıdır. İstenirse, kümeyi oluştururken belirttiğiniz HDInsight Küme Yöneticisi (yönetici) adını ve parolasını girin.
+    1. `https://CLUSTERNAME.azurehdinsight.net/stormui`Web tarayıcınızda açın, burada, `CLUSTERNAME` fırtınası kümenizin adıdır. İstenirse, kümeyi oluştururken belirttiğiniz HDInsight Küme Yöneticisi (yönetici) adını ve parolasını girin.
 
     1. Yeniden dengelemek istediğiniz topolojiyi seçin, sonra yeniden **Dengeleme** düğmesini seçin. Yeniden dengeleme işlemi yapılmadan önce gecikme girin.
 
@@ -120,13 +120,13 @@ Bir ölçek azaltma işlemi sırasında çalışan işlerinizin başarısız olm
 Bekleyen ve çalışan işlerin bir listesini görmek için, aşağıdaki adımları izleyerek YARN **Kaynak Yöneticisi Kullanıcı arabirimini**kullanabilirsiniz:
 
 1. [Azure Portal](https://portal.azure.com/), kümenizi seçin.  Küme yeni bir portal sayfasında açılır.
-2. Ana görünümden, **küme panoları** > **ambarı giriş**sayfasına gidin. Küme kimlik bilgilerinizi girin.
+2. Ana görünümden, **küme panoları**  >  **ambarı giriş**sayfasına gidin. Küme kimlik bilgilerinizi girin.
 3. Ambarı kullanıcı arabiriminden, sol taraftaki menüdeki hizmetler listesinden **Yarn** ' yi seçin.  
 4. YARN sayfasında **hızlı bağlantılar** ' ı seçin ve etkin baş düğümün üzerine gelin ve **Kaynak Yöneticisi Kullanıcı arabirimi**' ni seçin.
 
     ![Apache ambarı hızlı bağlantılar Kaynak Yöneticisi Kullanıcı arabirimi](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-Kaynak Yöneticisi Kullanıcı arabirimine doğrudan erişim sağlayabilirsiniz `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
+Kaynak Yöneticisi Kullanıcı arabirimine doğrudan erişim sağlayabilirsiniz `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` .
 
 İşlerin bir listesini geçerli durumuyla birlikte görürsünüz. Ekran görüntüsünde Şu anda çalışan bir iş vardır:
 
@@ -138,7 +138,7 @@ Kaynak Yöneticisi Kullanıcı arabirimine doğrudan erişim sağlayabilirsiniz 
 yarn application -kill <application_id>
 ```
 
-Örneğin:
+Örnek:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -148,7 +148,7 @@ yarn application -kill "application_1499348398273_0003"
 
 Bir kümenin ölçeğini ölçeklendirirseniz, HDInsight, önce ek çalışan düğümlerin yetkisini almak için Apache ambarı yönetim arabirimlerini kullanır. Düğümler, öbekler bloklarını diğer çevrimiçi çalışan düğümlerine çoğaltır. Bu tarihten sonra HDInsight, kümeyi güvenle ölçeklendirir. , Ölçeklendirme işlemi sırasında güvenli moda gider. Ölçeklendirmenin tamamlanmasının bir kez gelmesi gerekir. Ancak, bazı durumlarda,-çoğaltma altındaki dosya bloğu nedeniyle bir ölçeklendirme işlemi sırasında, bu işlem güvenli modda takıldığında.
 
-Varsayılan olarak,, her bir `dfs.replication` dosya bloğunun kaç kopyasının kullanılabilir olduğunu denetleyen 1 ayarıyla yapılandırılır. Bir dosya bloğunun her kopyası, kümenin farklı bir düğümünde depolanır.
+Varsayılan olarak,, `dfs.replication` her bir dosya bloğunun kaç kopyasının kullanılabilir olduğunu denetleyen 1 ayarıyla yapılandırılır. Bir dosya bloğunun her kopyası, kümenin farklı bir düğümünde depolanır.
 
 Beklenen blok kopyası sayısı kullanılabilir olmadığında, bu güvenli moda girer ve ambarı uyarı oluşturur. , Ölçeklendirme işlemi için güvenli mod girebilir. Çoğaltma için gereken düğüm sayısı saptanmıyorsa küme güvenli moda takılmış olabilir.
 
@@ -162,7 +162,7 @@ org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create director
 org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-`/var/log/hadoop/hdfs/` Klasörden, güvenli mod girdiği zamana yaklaşarak, küme ölçeklendiği zaman yakınında, ad düğümü günlüklerini gözden geçirebilirsiniz. Günlük dosyaları adlandırılır `Hadoop-hdfs-namenode-<active-headnode-name>.*`.
+`/var/log/hadoop/hdfs/`Klasörden, güvenli mod girdiği zamana yaklaşarak, küme ölçeklendiği zaman yakınında, ad düğümü günlüklerini gözden geçirebilirsiniz. Günlük dosyaları adlandırılır `Hadoop-hdfs-namenode-<active-headnode-name>.*` .
 
 Kök nedeni, Hive 'in sorguları çalıştırırken bir geçici dosyalara göre, IBir güvenli moda girdiğinde Hive, IBU ' ye yazamadığı için sorguları çalıştıramıyorum. Çalışma alanındaki geçici dosyalar, tek tek çalışan düğümü VM 'lerine bağlanmış yerel sürücüde bulunur. Dosyalar, en az üç çoğaltmaındaki diğer çalışan düğümleri arasında çoğaltılır.
 
@@ -171,7 +171,7 @@ Kök nedeni, Hive 'in sorguları çalıştırırken bir geçici dosyalara göre,
 HDInsight 'ın güvenli modda ayrılmasının birkaç yolu vardır:
 
 * HDInsight 'ı ölçeklendirmeden önce tüm Hive işlerini durdurun. Alternatif olarak, Hive işlerinin çalıştırıldığı ile çakışmaktan kaçınmak için ölçek azaltma sürecini zamanlayın.
-* Ölçeği ölçeklendirmeden önce, Hive `tmp` 'nin karalama dizin dosyalarını el ile temizleyin.
+* `tmp`Ölçeği ölçeklendirmeden önce, Hive 'nin karalama dizin dosyalarını el ile temizleyin.
 * HDInsight 'ı yalnızca üç çalışan düğümüne (minimum) ölçeklendirin. Bir çalışan düğümü kadar düşük bir şekilde gitmemeye özen gösterin.
 * Gerekirse güvenli moddan çıkmak için komutunu çalıştırın.
 
@@ -187,7 +187,7 @@ Bir çalışan düğümüne ölçeklendirmeden önce tüm Hive işlerini durduru
 
 Hive geçici dosyaların arkasında bırakılırsa, güvenli moddan kaçınmak için ölçeği ölçeklendirmeden önce bu dosyaları el ile temizleyebilirsiniz.
 
-1. `hive.exec.scratchdir` Yapılandırma özelliğine bakarak Hive geçici dosyaları için hangi konumun kullanıldığını kontrol edin. Bu parametre içinde `/etc/hive/conf/hive-site.xml`ayarlanır:
+1. Yapılandırma özelliğine bakarak Hive geçici dosyaları için hangi konumun kullanıldığını kontrol edin `hive.exec.scratchdir` . Bu parametre içinde ayarlanır `/etc/hive/conf/hive-site.xml` :
 
     ```xml
     <property>
@@ -262,7 +262,7 @@ Bir ölçeklendirme işlemi tamamlandıktan sonra bölge sunucuları birkaç dak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure HDInsight kümelerini otomatik ölçeklendirme](hdinsight-autoscale-clusters.md)
+* [Azure HDInsight kümelerini otomatik olarak ölçeklendirme](hdinsight-autoscale-clusters.md)
 
 HDInsight kümenizi ölçeklendirmeyle ilgili belirli bilgiler için, bkz.:
 

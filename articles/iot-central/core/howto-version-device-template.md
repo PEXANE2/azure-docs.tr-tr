@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 772521a8d3181721270d7fe4dbd11b7807c8d90e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583659"
 ---
 # <a name="create-a-new-device-template-version"></a>Yeni bir cihaz şablonu sürümü oluştur
@@ -30,7 +30,7 @@ Bir işlecin kullanabilmesi için bir sürüm güncelleştirmesi gerektirmeksizi
 
 ## <a name="versioning-rules"></a>Sürüm oluşturma kuralları
 
-Bu bölüm, cihaz şablonları için uygulanan sürüm oluşturma kurallarını özetler. Hem DCMs hem de arabirimlerin sürüm numaraları vardır. Aşağıdaki kod parçacığında bir ortam algılayıcı cihazı için DCM gösterilmektedir. DCM iki arabirime sahiptir: **Deviceınformation** ve **Environmentalalgılayıcı**. `@id` Alanların sonundaki sürüm numaralarını görebilirsiniz. Bu bilgileri IoT Central Kullanıcı arabiriminde görüntülemek için cihaz şablonu düzenleyicisinde **kimliği görüntüle** ' yi seçin.
+Bu bölüm, cihaz şablonları için uygulanan sürüm oluşturma kurallarını özetler. Hem DCMs hem de arabirimlerin sürüm numaraları vardır. Aşağıdaki kod parçacığında bir ortam algılayıcı cihazı için DCM gösterilmektedir. DCM iki arabirime sahiptir: **Deviceınformation** ve **Environmentalalgılayıcı**. Alanların sonundaki sürüm numaralarını görebilirsiniz `@id` . Bu bilgileri IoT Central Kullanıcı arabiriminde görüntülemek için cihaz şablonu düzenleyicisinde **kimliği görüntüle** ' yi seçin.
 
 ```json
 {
@@ -105,7 +105,7 @@ Bir cihaz şablonunu sürüm için:
 1. **Cihaz şablonları** sayfasına gidin.
 1. Sürüm oluşturmaya çalıştığınız cihaz şablonunu seçin.
 1. Sayfanın üst kısmındaki **Sürüm** düğmesine tıklayın ve şablona yeni bir ad verin. IoT Central, düzenleyebilmeniz için yeni bir ad önerir.
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. Artık cihaz şablonunuz taslak modunda. Arabirimlerinizin hala kilitli olduğunu görebilirsiniz. Değiştirmek istediğiniz arabirimlerin herhangi bir sürümünü kullanabilirsiniz.
 
 ## <a name="version-an-interface"></a>Bir arabirim sürümü
@@ -118,7 +118,7 @@ Bir arabirimi sürüm için:
 1. Taslak modunda olan cihaz şablonunu seçin.
 1. Sürüm ve düzenleme yapmak istediğiniz yayımlanmış modda olan arabirimi seçin.
 1. Arabirim sayfasının en üstündeki **Sürüm** düğmesine tıklayın.
-1. **Oluştur**' a tıklayın.
+1. **Oluştur**'a tıklayın.
 1. Artık arabiriminiz taslak modunda. Mevcut özelleştirmeleri ve görünümleri bozmadan arabiriminize özellikler ekleyebilir veya düzenleyebilirsiniz.
 
 ## <a name="migrate-a-device-across-versions"></a>Bir cihazı sürümler arasında geçirme

@@ -4,10 +4,10 @@ description: Azure Service Fabric 'nin temel kavramları ve ana alanlarıyla ilg
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791859"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric hakkında bilgi edinmek istiyor musunuz?
@@ -17,22 +17,22 @@ Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri paketlemey
 [Service Fabric terminoloji](service-fabric-technical-overview.md), [uygulama modeli](service-fabric-application-model.md)ve [desteklenen programlama modelleri](service-fabric-choose-framework.md) daha fazla kavram ve açıklama sağlar, ancak burada temel bilgiler verilmiştir.
 
 ### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>Tasarım Zamanı: hizmet türü, hizmet paketi ve bildirim, uygulama türü, uygulama paketi ve bildirim
-Hizmet türü, bir hizmetin kod paketlerine, veri paketlerine ve yapılandırma paketlerine atanan ad/sürümdür. Bu, bir ServiceManifest. xml dosyasında tanımlanmıştır. Hizmet türü, çalışma zamanında yüklenen yürütülebilir kod ve hizmet yapılandırma ayarlarından ve hizmet tarafından tüketilen statik verilerle oluşur.
+Hizmet türü, bir hizmetin kod paketlerine, veri paketlerine ve yapılandırma paketlerine atanan ad/sürümdür. Bu, bir ServiceManifest.xml dosyasında tanımlanmıştır. Hizmet türü, çalışma zamanında yüklenen yürütülebilir kod ve hizmet yapılandırma ayarlarından ve hizmet tarafından tüketilen statik verilerle oluşur.
 
-Hizmet paketi, hizmet türü için koda, statik verilere ve yapılandırma paketlerine başvuran hizmet türünün ServiceManifest. xml dosyasını içeren bir disk dizinidir. Örneğin, bir hizmet paketi, bir veritabanı hizmetini oluşturan koda, statik verilere ve yapılandırma paketlerine başvurabilir.
+Hizmet paketi, hizmet türü için koda, statik verilere ve yapılandırma paketlerine başvuran hizmet türünün ServiceManifest.xml dosyasını içeren bir disk dizinidir. Örneğin, bir hizmet paketi, bir veritabanı hizmetini oluşturan koda, statik verilere ve yapılandırma paketlerine başvurabilir.
 
-Uygulama türü, bir hizmet türleri koleksiyonuna atanan ad/sürümdür. Bu, bir ApplicationManifest. xml dosyasında tanımlanmıştır.
+Uygulama türü, bir hizmet türleri koleksiyonuna atanan ad/sürümdür. Bu, bir ApplicationManifest.xml dosyasında tanımlanmıştır.
 
 ![Uygulama türlerini ve hizmet türlerini Service Fabric][cluster-imagestore-apptypes]
 
-Uygulama paketi uygulama türünün ApplicationManifest. xml dosyasını içeren bir disk dizinidir ve bu, uygulama türünü oluşturan her bir hizmet türü için hizmet paketlerine başvurur. Örneğin, bir e-posta uygulama türü için uygulama paketi bir kuyruk hizmeti paketine, bir ön uç hizmet paketine ve bir veritabanı hizmeti paketine başvuru içerebilir.  
+Uygulama paketi uygulama türünün ApplicationManifest.xml dosyasını içeren bir disk dizinidir ve bu, uygulama türünü oluşturan her hizmet türü için hizmet paketlerine başvurur. Örneğin, bir e-posta uygulama türü için uygulama paketi bir kuyruk hizmeti paketine, bir ön uç hizmet paketine ve bir veritabanı hizmeti paketine başvuru içerebilir.  
 
 Uygulama paketi dizinindeki dosyalar Service Fabric kümesinin görüntü deposuna kopyalanır. Daha sonra bu uygulama türünden adlandırılmış bir uygulama oluşturabilir ve ardından küme içinde çalışır. Adlandırılmış bir uygulama oluşturduktan sonra, uygulama türünün hizmet türlerinden birinden adlandırılmış bir hizmet oluşturabilirsiniz. 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>Çalışma Zamanı: uygulamalar, hizmetler, bölümler ve çoğaltmalar adlı kümeler ve düğümler
 [Service Fabric küme](service-fabric-deploy-anywhere.md) , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Kümeler binlerce makine içerecek şekilde ölçeklendirilebilir.
 
-Bir kümenin parçası olan makine veya VM’lere düğüm denir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin yerleşim özellikleri gibi özellikleri vardır. Her makine veya VM, önyükleme sonrasında çalışmaya başlayan ve ardından iki `FabricHost.exe`yürütülebilir dosya Başlatan bir otomatik başlatma Windows hizmetine sahiptir: `Fabric.exe` ve `FabricGateway.exe`. Bu iki yürütülebilir dosya düğümü yapar. Geliştirme veya test senaryoları için, birden fazla `Fabric.exe` ve `FabricGateway.exe`birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz.
+Bir kümenin parçası olan makine veya VM’lere düğüm denir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin yerleşim özellikleri gibi özellikleri vardır. Her makine veya VM, `FabricHost.exe` önyükleme sonrasında çalışmaya başlayan ve ardından iki yürütülebilir dosya Başlatan bir otomatik başlatma Windows hizmetine sahiptir: `Fabric.exe` ve `FabricGateway.exe` . Bu iki yürütülebilir dosya düğümü yapar. Geliştirme veya test senaryoları için, birden fazla ve birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz `Fabric.exe` `FabricGateway.exe` .
 
 Adlandırılmış bir uygulama, belirli bir işlevi veya işlevleri gerçekleştiren adlandırılmış hizmetlerden oluşan bir koleksiyondur. Bir hizmet, bir bütün ve tek başına işlevi gerçekleştirir (diğer hizmetlerden bağımsız olarak başlatılabilir ve çalıştırılabilir) ve kod, yapılandırma ve verilerden oluşur. Bir uygulama paketi görüntü deposuna kopyalandıktan sonra, uygulama paketinin uygulama türünü (adını/sürümünü kullanarak) belirterek küme içinde uygulamanın bir örneğini oluşturursunuz. Her uygulama türü örneğine *doku:/MyNamedApp*gibi görünen bir URI adı atanır. Bir küme içinde, tek bir uygulama türünden birden çok adlandırılmış uygulama oluşturabilirsiniz. Farklı uygulama türlerinden adlandırılmış uygulamalar da oluşturabilirsiniz. Adlandırılmış her uygulama bağımsız olarak yönetilir ve sürümü oluşturulur.
 
@@ -75,7 +75,7 @@ Varsayılan olarak, Service Fabric Hizmetleri işlem olarak dağıtır ve etkinl
 ### <a name="reliable-actors"></a>Reliable Actors
 Reliable Services üzerine inşa edilen [güvenilir aktör](service-fabric-reliable-actors-introduction.md) çerçevesi, aktör tasarım düzenine göre sanal aktör modelini uygulayan bir uygulama çerçevesidir. Güvenilir aktör çerçevesi, aktör olarak adlandırılan tek iş parçacıklı yürütme ile bağımsız işlem ve durum birimleri kullanır. Güvenilir aktör çerçevesi, aktörler ve önceden ayarlanmış durum kalıcılığı ve genişleme yapılandırmalarına yönelik yerleşik iletişim sağlar.
 
-### <a name="aspnet-core"></a>ASP.NET Çekirdeği
+### <a name="aspnet-core"></a>ASP.NET Core
 Service Fabric Web ve API uygulamaları oluşturmak için birinci sınıf programlama modeli olarak [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) tümleştirilir.  ASP.NET Core, Service Fabric iki farklı şekilde kullanılabilir:
 
 - Konuk yürütülebilir dosyası olarak barındırılır. Bu, birincil olarak, mevcut ASP.NET Core uygulamalarını kod değişikliği olmadan Service Fabric üzerinde çalıştırmak için kullanılır.
@@ -105,7 +105,7 @@ Gerçekten bulut ölçekli hizmetler oluşturmak için, uygulamalarınızın ve 
 * [Yük devretme senaryosu](service-fabric-testability-scenarios.md#failover-test)-diğer hizmetlerden etkilenirken belirli bir hizmet bölümünü hedefleyen Chaos test senaryosunun bir sürümüdür.
 
 ## <a name="clusters"></a>Kümeler
-[Service Fabric küme](service-fabric-deploy-anywhere.md) , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Kümeler binlerce makine içerecek şekilde ölçeklendirilebilir. Bir kümenin parçası olan makineye veya VM 'ye küme düğümü denir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin yerleşim özellikleri gibi özellikleri vardır. Her makine veya VM, önyükleme sonrasında çalışmaya başlayan ve sonra `FabricHost.exe`iki yürütülebilir dosya Başlatan bir otomatik başlatma hizmetine sahiptir: Fabric. exe ve fabricgateway. exe. Bu iki yürütülebilir dosya düğümü yapar. Test senaryoları için birden fazla `Fabric.exe` ve `FabricGateway.exe`birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz.
+[Service Fabric küme](service-fabric-deploy-anywhere.md) , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Kümeler binlerce makine içerecek şekilde ölçeklendirilebilir. Bir kümenin parçası olan makineye veya VM 'ye küme düğümü denir. Her düğüme bir düğüm adı (bir dize) atanır. Düğümlerin yerleşim özellikleri gibi özellikleri vardır. Her makine veya VM, `FabricHost.exe` önyükleme sonrasında çalışmaya başlayan ve sonra iki yürütülebilir dosya Başlatan bir otomatik başlatma hizmetine sahiptir: Fabric.exe ve FabricGateway.exe. Bu iki yürütülebilir dosya düğümü yapar. Test senaryoları için birden fazla ve birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz `Fabric.exe` `FabricGateway.exe` .
 
 Service Fabric kümeler, Windows Server veya Linux çalıştıran sanal veya fiziksel makinelerde oluşturulabilir. Birbirine bağlı bir Windows Server veya Linux bilgisayar kümesine sahip olduğunuz herhangi bir ortamda Service Fabric uygulamalar dağıtabilir ve çalıştırabilirsiniz: şirket içi, Microsoft Azure veya herhangi bir bulut sağlayıcısında.
 
@@ -143,7 +143,7 @@ Service Fabric çalışma zamanının yeni sürümleri düzenli aralıklarla yay
 
 Service Fabric küme, sahip olduğunuz ancak kısmen Microsoft tarafından yönetilen bir kaynaktır. Microsoft, temel alınan işletim sistemine düzeltme eki uygulama ve kümenizde yapı yükseltmeleri gerçekleştirmeye sorumludur. Kümenizi otomatik yapı yükseltmeleri alacak şekilde ayarlayabilir, Microsoft yeni bir sürüm yayınlar veya istediğiniz desteklenen bir yapı sürümünü seçebilirsiniz. Doku ve yapılandırma yükseltmeleri Azure portal veya Kaynak Yöneticisi aracılığıyla ayarlanabilir. Daha fazla bilgi için [Service Fabric kümesini yükseltme](service-fabric-cluster-upgrade.md)makalesini okuyun. 
 
-Tek başına küme, tamamen sahip olduğunuz bir kaynaktır. Temel alınan işletim sisteminde düzeltme eki uygulama ve doku yükseltmeleri başlatma konusunda siz sorumlusunuz. Kümenizin bağlantısı varsa [https://www.microsoft.com/download](https://www.microsoft.com/download), kümenizi yeni Service Fabric çalışma zamanı paketini otomatik olarak indirip sağlayacak şekilde ayarlayabilirsiniz. Ardından yükseltmeyi başlatabilirsiniz. Kümeniz erişemıyorsa [https://www.microsoft.com/download](https://www.microsoft.com/download), internet 'e bağlı bir makineden yeni çalışma zamanı paketini el ile indirebilir ve ardından yükseltmeyi başlatabilirsiniz. Daha fazla bilgi için [tek başına Service Fabric kümesini yükseltme](service-fabric-cluster-upgrade-windows-server.md)makalesini okuyun.
+Tek başına küme, tamamen sahip olduğunuz bir kaynaktır. Temel alınan işletim sisteminde düzeltme eki uygulama ve doku yükseltmeleri başlatma konusunda siz sorumlusunuz. Kümenizin bağlantısı varsa [https://www.microsoft.com/download](https://www.microsoft.com/download) , kümenizi yeni Service Fabric çalışma zamanı paketini otomatik olarak indirip sağlayacak şekilde ayarlayabilirsiniz. Ardından yükseltmeyi başlatabilirsiniz. Kümeniz erişemıyorsa [https://www.microsoft.com/download](https://www.microsoft.com/download) , internet 'e bağlı bir makineden yeni çalışma zamanı paketini el ile indirebilir ve ardından yükseltmeyi başlatabilirsiniz. Daha fazla bilgi için [tek başına Service Fabric kümesini yükseltme](service-fabric-cluster-upgrade-windows-server.md)makalesini okuyun.
 
 ## <a name="health-monitoring"></a>Sistem durumunu izleme
 Service Fabric, belirli varlıklara uygun olmayan kümeyi ve uygulama koşullarını işaretlemek için tasarlanan bir [sistem durumu modeli](service-fabric-health-introduction.md) tanıtır (küme düğümleri ve hizmet çoğaltmaları gibi). Sistem durumu modeli, sistem durumu reporlarını (sistem bileşenleri ve Watchdogs) kullanır. Amaç kolay ve hızlı tanılama ve onarma. Hizmet yazıcılarının sistem durumunu ve [sistem durumu raporlamasını nasıl tasarlayacağınızı](service-fabric-report-health.md#design-health-reporting)düşünmesine ihtiyacı vardır. Özellikle, sorunların köke yakın olduğunu bayrakladığında, sistem durumunu etkileyebilecek herhangi bir koşul tarihinde bildirilmelidir. Sistem durumu bilgileri, hizmet çalışır duruma getirildikten sonra, hata ayıklama ve araştırma konusunda zaman ve çaba tasarrufu sağlayabilir.

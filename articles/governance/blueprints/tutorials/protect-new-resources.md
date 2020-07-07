@@ -3,16 +3,16 @@ title: 'Öğretici: kilitlerle yeni kaynakları koruma'
 description: Bu öğreticide, Azure şemaları kaynak kilitleri seçeneklerini salt okunurdur ve yeni dağıtılan kaynakları korumak için silmeyin.
 ms.date: 05/06/2020
 ms.topic: tutorial
-ms.openlocfilehash: 90ffb0f5b8c1b6d3919b05abf778c5082bfee0dc
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 738c627d350c5e11b41a65d159cf2cc7de807334
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864173"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969652"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Öğretici: Azure şemaları kaynak kilitleri ile yeni kaynakları koruma
 
-Azure şemaları [kaynak kilitleri](../concepts/resource-locking.md)ile, yeni dağıtılan _kaynakların, sahip rolü olan_ bir hesap tarafından bile üzerinde oynanarak korunmasını sağlayabilirsiniz. Bu korumayı, bir kaynak yöneticisi şablonu yapıtı tarafından oluşturulan kaynakların şema tanımlarına ekleyebilirsiniz.
+Azure şemaları [kaynak kilitleri](../concepts/resource-locking.md)ile, yeni dağıtılan _kaynakların, sahip rolü olan_ bir hesap tarafından bile üzerinde oynanarak korunmasını sağlayabilirsiniz. Bu korumayı, bir Azure Resource Manager şablonu (ARM şablonu) yapıtı tarafından oluşturulan kaynakların şeması tanımlarına ekleyebilirsiniz.
 
 Bu öğreticide, aşağıdaki adımları tamamlayacaksınız:
 
@@ -23,7 +23,7 @@ Bu öğreticide, aşağıdaki adımları tamamlayacaksınız:
 > - Yeni kaynak grubunu İncele
 > - Kilitleri kaldırmak için şema atamasını kaldırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -55,8 +55,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Kaynak grubunun altına bir şablon ekleyin:
    1. **Rgtolock** girişinin altındaki **yapıt Ekle** satırını seçin.
    1. **Yapıt türü**altında **Azure Resource Manager şablonu** ' nu seçin, **yapıt görünen adını** **storageaccount**olarak ayarlayın ve **açıklamayı** boş bırakın.
-   1. **Şablon** sekmesinde, aşağıdaki kaynak yöneticisi şablonunu düzenleyici kutusuna yapıştırın.
-      Şablonu yapıştırdıktan sonra, yapıtı şemasını Blueprint 'e eklemek için **Ekle** ' yi seçin.
+   1. **Şablon** sekmesinde, aşağıdaki ARM şablonunu düzenleyici kutusuna yapıştırın. Şablonu yapıştırdıktan sonra, yapıtı şemasını Blueprint 'e eklemek için **Ekle** ' yi seçin.
 
    ```json
    {
@@ -152,7 +151,7 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı
 
      Bu bölümde tanımlanan parametreler, tanımlandıkları yapıt için geçerlidir. Şema atama sırasında tanımlandıklarından, bu parametreler [dinamik parametrelerdir](../concepts/parameters.md#dynamic-parameters) . Her yapıt için, parametre değerini değer sütununda gördüğünüz **değere** ayarlayın.
 
-     |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
+     |Yapıt adı|Yapıt türü|Parametre adı|Değer|Description|
      |-|-|-|-|-|
      |RGtoLock kaynak grubu|Kaynak grubu|Name|Testingbpkilitleri|Şema kilitlerinin uygulanacağı yeni kaynak grubunun adını tanımlar.|
      |RGtoLock kaynak grubu|Kaynak grubu|Konum|Batı ABD 2|Şema kilitlerini uygulamak için yeni kaynak grubunun konumunu tanımlar.|
@@ -166,7 +165,7 @@ Bu adım, tanımlı kaynakları dağıtır ve seçili **kilit atamasını**yapı
 
 ## <a name="inspect-resources-deployed-by-the-assignment"></a>Atama tarafından dağıtılan kaynakları İncele
 
-Atama, _Testingbpkilitler_ kaynak grubunu ve Kaynak Yöneticisi şablonu yapıtı tarafından dağıtılan depolama hesabını oluşturur. Yeni kaynak grubu ve seçilen kilit durumu atama ayrıntıları sayfasında gösterilir.
+Atama, _Testingbpkilitler_ kaynak grubunu ve ARM şablonu yapıtı tarafından dağıtılan depolama hesabını oluşturur. Yeni kaynak grubu ve seçilen kilit durumu atama ayrıntıları sayfasında gösterilir.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemaları**arayın ve seçin.
 
@@ -188,7 +187,7 @@ Atama, _Testingbpkilitler_ kaynak grubunu ve Kaynak Yöneticisi şablonu yapıt�
 
 1. Reddetme atamasını seçin ve ardından sol taraftaki **Reddedilenler izinleri** sayfasını seçin.
 
-   Reddetme ataması **\*** , ve **eylem** yapılandırmasıyla tüm işlemleri engellemektedir, ancak **NotActions**aracılığıyla ** \*/Read** 'i dışlayarak okuma erişimine izin verir.
+   Reddetme ataması, ve eylem yapılandırmasıyla tüm işlemleri engellemektedir **\*** , **Action** ancak **NotActions**aracılığıyla ** \* /Read** 'i dışlayarak okuma erişimine izin verir.
 
 1. Azure portal içerik haritasında **Testingbpkilitler-Access Control (IAM)** öğesini seçin. Ardından sol taraftaki **genel bakış** sayfasını ve ardından **kaynak grubunu sil** düğmesini seçin. Silmeyi onaylamak için **Testingbpkilitleri** adını girin ve ardından bölmenin altındaki **Sil** ' i seçin.
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ce3916ef1155224a91c0736c3dabe907ae8d2611
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796375"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı ile Apache Hive iyileştirin
@@ -58,11 +58,11 @@ Bu değişiklikler sunucu genelindeki tüm tez işlerini etkiler. En iyi sonucu 
 
 Apache ORC ve Snappy, her ikisi de yüksek performans sunar. Ancak Hive varsayılan olarak çok az sayıda azaltıcının içerebilir ve performans sorunlarına neden olabilir.
 
-Örneğin, 50 GB bir giriş veri boyutunuz olduğunu varsayalım. Snappy sıkıştırması ile ORC biçimindeki veriler 1 GB 'dir. Hive gereken azaltıcının sayısını şu şekilde tahmin eder: (mapvıd için bayt girişi sayısı/ `hive.exec.reducers.bytes.per.reducer`).
+Örneğin, 50 GB bir giriş veri boyutunuz olduğunu varsayalım. Snappy sıkıştırması ile ORC biçimindeki veriler 1 GB 'dir. Hive gereken azaltıcının sayısını şu şekilde tahmin eder: (mapvıd için bayt girişi sayısı/ `hive.exec.reducers.bytes.per.reducer` ).
 
 Varsayılan ayarlarla Bu örnek dört azaltıcının.
 
-`hive.exec.reducers.bytes.per.reducer` Parametresi, Reducer başına işlenen bayt sayısını belirtir. Varsayılan değer 64 MB 'tır. Bu değeri ayarlamak paralellik artırır ve performansı artırabilir. Büyük olasılıkla performansı olumsuz etkileyecek çok fazla azaltıcının de üretebilirsiniz. Bu parametre, belirli veri gereksinimlerinize, sıkıştırma ayarlarınıza ve diğer çevresel faktörlere göre belirlenir.
+`hive.exec.reducers.bytes.per.reducer`Parametresi, Reducer başına işlenen bayt sayısını belirtir. Varsayılan değer 64 MB 'tır. Bu değeri ayarlamak paralellik artırır ve performansı artırabilir. Büyük olasılıkla performansı olumsuz etkileyecek çok fazla azaltıcının de üretebilirsiniz. Bu parametre, belirli veri gereksinimlerinize, sıkıştırma ayarlarınıza ve diğer çevresel faktörlere göre belirlenir.
 
 1. Parametreyi değiştirmek için Hive **yapılandırması** ' na gidin ve Ayarlar sayfasında **Reducer başına veri** parametresini bulun.
 
@@ -74,7 +74,7 @@ Varsayılan ayarlarla Bu örnek dört azaltıcının.
   
     Reducer başına 128 MB veri ile 1.024 MB 'lık bir giriş boyutu verildiğinde, sekiz azaltıcının (1024/128) vardır.
 
-1. **Reducer parametresi başına veriler** için yanlış bir değer, sorgu performansını olumsuz yönde etkileyen çok sayıda azaltıcının oluşmasına neden olabilir. Maksimum azaltıcının sayısını sınırlandırmak için uygun bir değere ayarlayın `hive.exec.reducers.max` . Varsayılan değer 1009 ' dir.
+1. **Reducer parametresi başına veriler** için yanlış bir değer, sorgu performansını olumsuz yönde etkileyen çok sayıda azaltıcının oluşmasına neden olabilir. Maksimum azaltıcının sayısını sınırlandırmak için `hive.exec.reducers.max` uygun bir değere ayarlayın. Varsayılan değer 1009 ' dir.
 
 ## <a name="enable-parallel-execution"></a>Paralel yürütmeyi etkinleştir
 
@@ -100,7 +100,7 @@ Hive, veri satırını satıra göre işler. Vektörleştirme, Hive 'yi aynı an
 
 Varsayılan olarak, Hive en iyi bir sorgu yürütme planını bulmak için bir kurallar kümesi izler. Maliyet tabanlı iyileştirme (CBO), bir sorguyu yürütmek için birden çok planı değerlendirir. Ve her plana bir maliyet atar ve ardından bir sorgu yürütmek için en ucuz planı belirler.
 
-CBO 'i etkinleştirmek için **Hive** > **configs** > **ayarları** ' na gidin ve **maliyet tabanlı İyileştiriciyi etkinleştir**' i bulun ve geçiş düğmesini **Açık**olarak değiştirin.
+CBO 'i etkinleştirmek için **Hive**  >  **configs**  >  **ayarları** ' na gidin ve **maliyet tabanlı İyileştiriciyi etkinleştir**' i bulun ve geçiş düğmesini **Açık**olarak değiştirin.
 
 ![HDInsight maliyet tabanlı iyileştirici](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -108,7 +108,7 @@ Aşağıdaki ek yapılandırma parametreleri, CBO etkin olduğunda Hive sorgu pe
 
 * `hive.compute.query.using.stats`
 
-    True olarak ayarlandığında Hive, gibi `count(*)`basit sorguları yanıtlamak için meta veri deposu içinde depolanan istatistikleri kullanır.
+    True olarak ayarlandığında Hive, gibi basit sorguları yanıtlamak için meta veri deposu içinde depolanan istatistikleri kullanır `count(*)` .
 
     ![İstatistikleri kullanarak işlem sorgusunu Apache Hive](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
 
@@ -139,7 +139,7 @@ Kullanılabilir sıkıştırma türleri şunlardır:
 | LZO | `Lzop` | LZO | `.lzo` | Dizine alınmışsa Evet |
 | Snappy | Yok | Snappy | Snappy | No |
 
-Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli olduğundan, bazı durumlarda birkaç mapas oluşturulur. Giriş verileri metin `bzip2` ise en iyi seçenektir. ORC biçimi için, Snappy en hızlı sıkıştırma seçeneğidir.
+Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli olduğundan, bazı durumlarda birkaç mapas oluşturulur. Giriş verileri metin ise `bzip2` en iyi seçenektir. ORC biçimi için, Snappy en hızlı sıkıştırma seçeneğidir.
 
 1. Ara sıkıştırmayı etkinleştirmek için Hive **yapılandırması** ' na gidin ve ardından `hive.exec.compress.intermediate` parametreyi doğru olarak ayarlayın. Varsayılan değer false'tur.
 
@@ -148,15 +148,15 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
     > [!NOTE]  
     > Ara dosyaları sıkıştırmak için, codec, yüksek bir sıkıştırma çıkışına sahip olmasa bile daha düşük CPU maliyetiyle bir sıkıştırma codec bileşeni seçin.
 
-1. Ara sıkıştırma codec bileşenini ayarlamak için, `mapred.map.output.compression.codec` `hive-site.xml` veya `mapred-site.xml` dosyasına özel özelliği ekleyin.
+1. Ara sıkıştırma codec bileşenini ayarlamak için, veya dosyasına özel özelliği ekleyin `mapred.map.output.compression.codec` `hive-site.xml` `mapred-site.xml` .
 
 1. Özel bir ayar eklemek için:
 
-    a. **Hive** > **configs** > **Advanced**Gelişmiş > **özel Hive-site**bölümüne gidin.
+    a. **Hive**  >  **configs**  >  **Gelişmiş**  >  **özel Hive-site**bölümüne gidin.
 
     b. Özel Hive sitesi bölmesinin alt kısmındaki **Özellik Ekle...** öğesini seçin.
 
-    c. Özellik Ekle penceresinde, anahtar olarak ve `mapred.map.output.compression.codec` `org.apache.hadoop.io.compress.SnappyCodec` değerini girin.
+    c. Özellik Ekle penceresinde, `mapred.map.output.compression.codec` anahtar olarak ve `org.apache.hadoop.io.compress.SnappyCodec` değerini girin.
 
     d. **Add (Ekle)** seçeneğini belirleyin.
 
@@ -165,7 +165,7 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
     Bu ayar, Snappy sıkıştırması kullanılarak ara dosyayı sıkıştırır. Özellik eklendikten sonra, özel Hive sitesi bölmesinde görünür.
 
     > [!NOTE]  
-    > Bu yordam `$HADOOP_HOME/conf/hive-site.xml` dosyayı değiştirir.
+    > Bu yordam dosyayı değiştirir `$HADOOP_HOME/conf/hive-site.xml` .
 
 ## <a name="compress-final-output"></a>Nihai çıktıyı sıkıştır
 
@@ -173,7 +173,7 @@ Son Hive çıktısı da sıkıştırılabilir.
 
 1. Son Hive çıkışını sıkıştırmak için Hive **configs** sekmesine gidin ve ardından `hive.exec.compress.output` parametreyi true olarak ayarlayın. Varsayılan değer false'tur.
 
-1. Çıkış sıkıştırma codec bileşenini seçmek için, önceki bölümün `mapred.output.compression.codec` adım 3 ' te açıklandığı gibi özel Hive-site bölmesine özel özelliği ekleyin.
+1. Çıkış sıkıştırma codec bileşenini seçmek için, `mapred.output.compression.codec` önceki bölümün adım 3 ' te açıklandığı gibi özel Hive-site bölmesine özel özelliği ekleyin.
 
     ![Özel özellik Add2 Apache Hive](./media/optimize-hive-ambari/hive-custom-property2.png)
 
@@ -197,7 +197,7 @@ Hive, her bölümü önceden tanımlamaya gerek kalmadan bir tabloya kayıt ekle
 
 1. Oluşturulacak dinamik bölüm sayısını sınırlandırmak için `hive.exec.max.dynamic.partitions` parametreyi değiştirin. Varsayılan değer 5000 ' dir.
 
-1. Düğüm başına toplam dinamik bölüm sayısını sınırlamak için değiştirin `hive.exec.max.dynamic.partitions.pernode`. Varsayılan değer 2000 ' dir.
+1. Düğüm başına toplam dinamik bölüm sayısını sınırlamak için değiştirin `hive.exec.max.dynamic.partitions.pernode` . Varsayılan değer 2000 ' dir.
 
 ## <a name="enable-local-mode"></a>Yerel modu etkinleştir
 
@@ -223,7 +223,7 @@ Aşağıdaki bölümlerde, ayarlayabileceğiniz, Hive ile ilgili ek iyileştirme
 
 Hive içindeki varsayılan JOIN türü bir *karışık birleşimdir*. Hive 'de özel mapvın girişi okur ve bir ara dosyaya bir JOIN anahtar/değer çifti yayar. Hadoop, bu çiftleri bir karışık aşamada sıralar ve birleştirir. Bu karışık aşama pahalıdır. Verilerinize göre doğru katılmayı seçmek performansı önemli ölçüde iyileştirebilir.
 
-| JOIN türü | Oluşturulurken | Nasıl | Hive ayarları | Açıklamalar |
+| JOIN türü | Oluşturulurken | Nasıl | Hive ayarları | Yorumlar |
 | --- | --- | --- | --- | --- |
 | Karışık ekleme | <ul><li>Varsayılan seçenek</li><li>Her zaman çalışma</li></ul> | <ul><li>Tablolardan birinin bir bölümünden okur</li><li>Demetler ve JOIN anahtarına göre sıralar</li><li>Her küçültme için bir demet gönderir</li><li>Düşürme, azaltma tarafında yapılır</li></ul> | Önemli Hive ayarı gerekmiyor | Her seferinde çalışma |
 | Eşleme birleşimi | <ul><li>Bir tablo, belleğe sığmayacak</li></ul> | <ul><li>Küçük tabloyu bellek karması tablosuna okur</li><li>Büyük dosyanın bir parçası aracılığıyla akışlar</li><li>Karma tablodaki her kaydı birleştirir</li><li>Birleşimler eşleştiriciyle tek başına</li></ul> | `hive.auto.confvert.join=true` | Hızlı, ancak sınırlı |
@@ -247,5 +247,5 @@ Hive yürütme altyapısını iyileştirmeye yönelik ek öneriler:
 * [Apache ambarı REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Azure HDInsight’ta Apache Hive sorgularını iyileştirme](./hdinsight-hadoop-optimize-hive-query.md)
 * [Kümeleri iyileştirme](./optimize-hive-ambari.md)
-* [Apache HBase 'i iyileştirme](./optimize-hbase-ambari.md)
-* [Apache Pig 'i iyileştirme](./optimize-pig-ambari.md)
+* [Apache HBase’i iyileştirme](./optimize-hbase-ambari.md)
+* [Apache Pig’i iyileştirme](./optimize-pig-ambari.md)

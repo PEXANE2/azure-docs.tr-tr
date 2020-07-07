@@ -8,10 +8,10 @@ ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512571"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure Dosya Eşitleme ağ değerlendirmeleri
@@ -48,7 +48,7 @@ Dosya sunucularınızı, güvenlik amacıyla en çok Internet konumundan ayırab
 
 Azure Dosya Eşitleme, hizmet etiketlerinin tanımlandığı şekilde aşağıdaki hizmetler için IP adresi aralıklarını gerektirir:
 
-| Hizmet | Açıklama | Hizmet etiketi |
+| Hizmet | Description | Hizmet etiketi |
 |---------|-------------|-------------|
 | Azure Dosya Eşitleme | Depolama eşitleme hizmeti nesnesi tarafından temsil edilen Azure Dosya Eşitleme hizmeti, verileri bir Azure dosya paylaşımıyla Windows dosya sunucusu arasında eşitlemenin temel etkinliğinden sorumludur. | `StorageSyncService` |
 | Azure Dosyaları | Azure Dosya Eşitleme aracılığıyla eşitlenen tüm veriler Azure dosya paylaşımında depolanır. Windows dosya sunucularınızda değiştirilen dosyalar Azure dosya paylaşımınıza çoğaltılır ve şirket içi dosya sunucunuzdaki katmanlı dosyalar, bir Kullanıcı istediğinde sorunsuz bir şekilde indirilir. | `Storage` |

@@ -3,12 +3,12 @@ title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864513"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970935"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
 
@@ -18,20 +18,20 @@ Blueprints, aşağıdakiler gibi çeşitli kaynak şablonlarını ve diğer yap�
 
 - Rol Atamaları
 - İlke Atamaları
-- Azure Resource Manager şablonları
+- Azure Resource Manager şablonları (ARM şablonları)
 - Kaynak Grupları
 
 Azure Blueprints hizmeti, genel olarak dağıtılmış [Azure Cosmos DB](../../cosmos-db/introduction.md) tarafından desteklenir. Şema nesneleri birden çok Azure bölgesinde çoğaltılır. Bu çoğaltma, Azure 'un kaynaklarınızı hangi bölgeden dağıttığı bağımsız olarak, şema nesneleriniz için düşük gecikme süresi, yüksek kullanılabilirlik ve tutarlı erişim sağlar.
 
-## <a name="how-its-different-from-resource-manager-templates"></a>Resource Manager şablonlarından farkı
+## <a name="how-its-different-from-arm-templates"></a>ARM şablonlarından farklı
 
-Bu hizmet, _ortam kurulumu_ aşamasında yardımcı olmak üzere tasarlanmıştır. Bu kurulum genellikle bir dizi kaynak grubu, ilke, rol ataması ve Resource Manager şablon dağıtımını içerir. Şema, bu _yapıt_ türlerinin her birini bir araya getiren ve bir CI/CD işlem hattı ile birlikte bu paketi oluşturma ve sürümü oluşturmaya olanak tanıyan bir pakettir. Sonuç olarak her biri tek bir işlem içindeki bir aboneliğe atanır ve denetlenip izlenebilir.
+Bu hizmet, _ortam kurulumu_ aşamasında yardımcı olmak üzere tasarlanmıştır. Bu kurulum genellikle kaynak grupları, ilkeler, rol atamaları ve ARM şablon dağıtımları kümesinden oluşur. Şema, bu _yapıt_ türlerinin her birini bir araya getiren ve bir CI/CD işlem hattı ile birlikte bu paketi oluşturma ve sürümü oluşturmaya olanak tanıyan bir pakettir. Sonuç olarak her biri tek bir işlem içindeki bir aboneliğe atanır ve denetlenip izlenebilir.
 
-Azure şemaları 'nda dağıtım için eklemek istediğiniz neredeyse her şey Kaynak Yöneticisi şablonuyla gerçekleştirilebilir. Ancak Resource Manager şablonu, Azure'da yerel olarak bulunan bir belge değildir, her birinin yerel ortamda veya kaynak denetiminde depolanması gerekir. Şablon bir veya daha fazla Azure kaynağının dağıtılması için kullanılır ancak bu kaynaklar dağıtıldıktan sonra kullanılan şablonla etkin bir bağlantı veya ilişki kalmaz.
+Azure şemaları 'nda dağıtım için eklemek istediğiniz neredeyse her şey ARM şablonuyla gerçekleştirilebilir. Ancak, bir ARM şablonu Azure 'da yerel olarak mevcut olmayan bir belgedir; her biri yerel olarak ya da kaynak denetiminde depolanır. Şablon bir veya daha fazla Azure kaynağının dağıtılması için kullanılır ancak bu kaynaklar dağıtıldıktan sonra kullanılan şablonla etkin bir bağlantı veya ilişki kalmaz.
 
 Azure şemaları ile şema tanımı (dağıtılması _gereken_ ) ve şema ataması _(dağıtılan)_ arasındaki ilişki korunur. Bu bağlantı dağıtımların daha iyi izlenmesini ve denetlenmesini destekler. Azure şemaları ayrıca aynı Blueprint tarafından yönetilen birçok aboneliği aynı anda yükseltebilir.
 
-Resource Manager şablonu ile şema arasında seçim yapmanıza gerek yoktur. Her şema sıfır veya daha fazla Resource Manager şablonu _yapıtı_ içerebilir. Bu destek, Azure şemaları 'nda Kaynak Yöneticisi şablonlarının bir kitaplığını geliştirme ve sürdürme için önceki çabalarının yeniden kullanılabilir olduğu anlamına gelir.
+ARM şablonuyla bir Blueprint arasında seçim yapmanız gerekmez. Her bir şema, sıfır veya daha fazla ARM şablon _yapıtlarından_oluşabilir. Bu destek, daha önceki bir ARM şablonları kitaplığı geliştirme ve bakımını yapma çabalarının Azure 'da yeniden kullanılabilir olduğunu gösterir.
 
 ## <a name="how-its-different-from-azure-policy"></a>Azure İlkesi'nden farkı
 
@@ -47,10 +47,10 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 
 Şemalar, _yapıtlardan_ meydana gelir. Azure şemaları Şu anda yapıt olarak aşağıdaki kaynakları desteklemektedir:
 
-|Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
+|Kaynak  | Hiyerarşi seçenekleri| Description  |
 |---------|---------|---------|
-|Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz yapıda düzenlemenizi sağlar ve dahil olan ilke ve rol ataması yapıtlarına ek olarak Azure Resource Manager şablonları için kapsam sınırlayıcı olarak görev yapar. |
-|Azure Resource Manager şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
+|Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz şekilde düzenlemenize olanak tanır ve dahil edilen ilke ve rol atama yapıtları ve ARM şablonları için bir kapsam sınırlayıcısı sağlar. |
+|ARM şablonu | Abonelik, Kaynak Grubu | İç içe ve bağlı şablonlar dahil olmak üzere şablonlar, karmaşık ortamları oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
 |İlke Ataması | Abonelik, Kaynak Grubu | Bir ilkenin veya girişimin, şemanın atanmış olduğu aboneliğe atanmasını sağlar. İlke veya girişim, şema tanım konumunun kapsamında olmalıdır. İlke veya girişimde parametre varsa bu parametreler şema oluşturma veya şema ataması sırasında atanır. |
 |Rol Ataması | Abonelik, Kaynak Grubu | Kaynaklarınıza her zaman doğru kişilerin doğru şekilde erişmesini sağlamak için var olan bir kullanıcıyı veya grubu yerleşik role ekleyin. Rol atamaları aboneliğin tamamı için tanımlanabilir veya şemada bulunan belirli bir kaynak grubuna yerleştirilebilir. |
 
@@ -60,9 +60,7 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 
 ### <a name="blueprint-parameters"></a>Şema parametreleri
 
-Şemalar bir ilkeye/girişime veya bir Azure Resource Manager şablonuna parametre iletebilir.
-Bir şemaya yeni bir _yapıt_ eklendiğinde yazar her bir şema ataması için tanımlı bir değer sunar veya her şema atamasının atama sırasında değer sağlamasına izin verir.
-Bu esneklik şemanın tüm kullanımları için önceden tanımlanmış bir değer tanımlama veya bu kararın atama sırasında verilmesi seçeneğini sunar.
+Planlar, parametreleri bir ilke/girişim ya da ARM şablonuna geçirebilir. Bir şemaya yeni bir _yapıt_ eklendiğinde yazar her bir şema ataması için tanımlı bir değer sunar veya her şema atamasının atama sırasında değer sağlamasına izin verir. Bu esneklik şemanın tüm kullanımları için önceden tanımlanmış bir değer tanımlama veya bu kararın atama sırasında verilmesi seçeneğini sunar.
 
 > [!NOTE]
 > Şema kendi parametrelerine sahip olabilir ancak bu özellik şu an için yalnızca şemanın portal yerine REST API ile oluşturulması durumunda kullanılabilir.
@@ -71,8 +69,8 @@ Daha fazla bilgi için bkz. [şema parametreleri](./concepts/parameters.md).
 
 ### <a name="blueprint-publishing"></a>Şema yayımlama
 
-Şema ilk oluşturulduğunda **Taslak** modunda olur. Atanmaya hazır olduğunda **Yayımlandı** durumuna alınması gerekir. Yayımlamak için bir **Sürüm** dizesi (harfler, sayılar ve kısa çizgiler, maksimum 20 karakter) ve isteğe bağlı **Değişiklik notları** tanımlanması gerekir. **Sürüm** değeri şemada daha sonra yapılacak değişikliklerin tanımlanmasını sağlar ve her sürümün ayrıca atanmasını mümkün hale getirir. Sürüm oluşturma aynı zamanda aynı şemanın farklı **Sürümlerinin** aynı aboneliğe atanabileceği anlamına da gelir. Şema üzerinde ek değişiklikler yapıldığında, **yayımlanmamış değişiklikler**olduğu gibi **yayımlanan**
-**Sürüm** yine de mevcuttur. Değişiklikler tamamlandıktan sonra güncelleştirilen şema yeni ve benzersiz bir **Sürüm** değeriyle **Yayımlanır** ve atamaya hazır hale gelir.
+Şema ilk oluşturulduğunda **Taslak** modunda olur. Atanmaya hazır olduğunda **Yayımlandı** durumuna alınması gerekir. Yayımlamak için bir **Sürüm** dizesi (harfler, sayılar ve kısa çizgiler, maksimum 20 karakter) ve isteğe bağlı **Değişiklik notları** tanımlanması gerekir. **Sürüm** değeri şemada daha sonra yapılacak değişikliklerin tanımlanmasını sağlar ve her sürümün ayrıca atanmasını mümkün hale getirir. Sürüm oluşturma aynı zamanda aynı şemanın farklı **Sürümlerinin** aynı aboneliğe atanabileceği anlamına da gelir. Şema üzerinde ek değişiklikler yapıldığında, **Published** 
+ **yayımlanmamış değişiklikler**olduğu gibi yayımlanan**Sürüm** yine de mevcuttur. Değişiklikler tamamlandıktan sonra güncelleştirilen şema yeni ve benzersiz bir **Sürüm** değeriyle **Yayımlanır** ve atamaya hazır hale gelir.
 
 ## <a name="blueprint-assignment"></a>Şema ataması
 
@@ -105,7 +103,7 @@ Bir şemayı atamak veya atamasını kaldırmak için hesabınız şu izinlere s
 
 Aşağıdaki yerleşik roller kullanılabilir:
 
-|RBAC rolü | Açıklama |
+|RBAC rolü | Description |
 |-|-|
 |[Sahibi](../../role-based-access-control/built-in-roles.md#owner) | Diğer izinlerin yanı sıra, tüm Azure Blueprint ilgili izinleri içerir. |
 |[Katkıda Bulunan](../../role-based-access-control/built-in-roles.md#contributor) | Diğer izinlerin yanı sıra, şema tanımları oluşturup silebilir, ancak şema atama izinlerine sahip değildir. |
@@ -115,7 +113,7 @@ Aşağıdaki yerleşik roller kullanılabilir:
 Bu yerleşik roller güvenlik gereksinimlerinize uygun değilse [özel rol](../../role-based-access-control/custom-roles.md) oluşturabilirsiniz.
 
 > [!NOTE]
-> Sistem tarafından atanan yönetilen kimlik kullanılıyorsa, Azure şemaları için hizmet sorumlusu, dağıtımı etkinleştirmek için atanan abonelikte **sahip** rolünü gerektirir. Portalı kullanıyorsanız bu rol dağıtım için otomatik olarak verilir ve iptal edilir. REST API kullanıyorsanız bu rolün el ile verilmesi gerekir ancak dağıtım tamamlandıktan sonra iptal işlemi otomatik olarak gerçekleştirilir. Kullanıcı tarafından atanan yönetilen kimlik kullanılıyorsa, yalnızca şema atamasını oluşturan kullanıcı, hem `Microsoft.Blueprint/blueprintAssignments/write` **sahip** hem de **şema işleci** yerleşik rollerinde bulunan izne ihtiyaç duyuyor.
+> Sistem tarafından atanan yönetilen kimlik kullanılıyorsa, Azure şemaları için hizmet sorumlusu, dağıtımı etkinleştirmek için atanan abonelikte **sahip** rolünü gerektirir. Portalı kullanıyorsanız bu rol dağıtım için otomatik olarak verilir ve iptal edilir. REST API kullanıyorsanız bu rolün el ile verilmesi gerekir ancak dağıtım tamamlandıktan sonra iptal işlemi otomatik olarak gerçekleştirilir. Kullanıcı tarafından atanan yönetilen kimlik kullanılıyorsa, yalnızca şema atamasını oluşturan kullanıcı, `Microsoft.Blueprint/blueprintAssignments/write` hem **sahip** hem de **şema işleci** yerleşik rollerinde bulunan izne ihtiyaç duyuyor.
 
 ## <a name="naming-limits"></a>Adlandırma sınırları
 

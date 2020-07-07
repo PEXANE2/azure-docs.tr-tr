@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 6f49ece874ea52227e6531193fc53b3bea525702
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796609"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Azure CLı kullanarak yönetilen görüntüden görüntü sürümüne geçiş
@@ -36,7 +36,7 @@ Bu makalede çalışırken, kaynak grubu ve VM adlarını gerektiği yerde deği
 
 ## <a name="create-an-image-definition"></a>Görüntü tanımı oluşturma
 
-Yönetilen görüntüler her zaman Genelleştirilmiş görüntüler olduğundan, genelleştirilmiş bir görüntü için kullanarak `--os-state generalized` bir görüntü tanımı oluşturacaksınız.
+Yönetilen görüntüler her zaman Genelleştirilmiş görüntüler olduğundan, genelleştirilmiş bir görüntü için kullanarak bir görüntü tanımı oluşturacaksınız `--os-state generalized` .
 
 Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. 
 
@@ -44,7 +44,7 @@ Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla
 
 Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun.
 
-Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [Genelleştirilmiş](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows`. 
+Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [Genelleştirilmiş](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows` . 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -92,7 +92,7 @@ az sig image-version create \
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Görüntü sürümünü oluştururken ekleyerek `--storage-account-type standard_zrs` görüntü sürümü çoğaltmalarınızı, bölgesel olarak [yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) alanında da saklayabilirsiniz.
+> Görüntü sürümünü oluştururken ekleyerek görüntü sürümü çoğaltmalarınızı, bölgesel olarak [yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) alanında da saklayabilirsiniz `--storage-account-type standard_zrs` .
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
 ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82581370"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>VM'ler için Azure İzleyici genel kullanıma açık (GA) sık sorulan sorular
@@ -44,17 +44,17 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Vminsıghts çözümünü yüklediğimde çalışma alanım 'daki performans sayaçlarından ne yapmam gerekir?
 
-VM'ler için Azure İzleyici çalışma alanınızda kullanılan performans sayaçlarını etkinleştirme için önceki yöntem. Geçerli sürüm, bu verileri adlı `InsightsMetrics`bir tabloda depolar. Artık kullanmanız gerekmiyorsa, çalışma alanınızda bu performans sayaçlarını devre dışı bırakmayı tercih edebilirsiniz. 
+VM'ler için Azure İzleyici çalışma alanınızda kullanılan performans sayaçlarını etkinleştirme için önceki yöntem. Geçerli sürüm, bu verileri adlı bir tabloda depolar `InsightsMetrics` . Artık kullanmanız gerekmiyorsa, çalışma alanınızda bu performans sayaçlarını devre dışı bırakmayı tercih edebilirsiniz. 
 
 >[!NOTE]
->`Perf` Tablodaki bu sayaçlara başvuran uyarı kurallarınız varsa, `InsightsMetrics` tabloda depolanan yeni verilere başvurmak için onları güncelleştirmeniz gerekir. Bu tabloya başvuran, kullanabileceğiniz günlük sorguları için belgelerimize bakın.
+>Tablodaki bu sayaçlara başvuran uyarı kurallarınız varsa `Perf` , tabloda depolanan yeni verilere başvurmak için onları güncelleştirmeniz gerekir `InsightsMetrics` . Bu tabloya başvuran, kullanabileceğiniz günlük sorguları için belgelerimize bakın.
 >
 
-Performans sayaçlarını etkin tutmaya karar verirseniz, toplanan veriler için faturalandırılır ve bu `Perf` tabloda [Log Analytics fiyatlandırması [(.https://azure.microsoft.com/pricing/details/monitor/)
+Performans sayaçlarını etkin tutmaya karar verirseniz, toplanan veriler için `Perf` faturalandırılır ve bu tabloda [Log Analytics fiyatlandırması [( https://azure.microsoft.com/pricing/details/monitor/) .
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Bu değişiklik, uyarı kurallarımı nasıl etkiler?
 
-Çalışma alanında etkinleştirilmiş performans sayaçlarını hedefleyen `Perf` tablo hedefleme [günlük uyarıları](../platform/alerts-unified-log.md) oluşturduysanız, bunun yerine `InsightsMetrics` tabloya başvurmak için bu kuralları güncelleştirmeniz gerekir. Bu `ServiceMapComputer_CL` kılavuz, ve `ServiceMapProcess_CL`kullanan tüm günlük arama kuralları için de geçerlidir çünkü bu veri kümeleri `VMComputer` ve `VMProcess` tablolarına taşınır.
+[Log alerts](../platform/alerts-unified-log.md) `Perf` Çalışma alanında etkinleştirilmiş performans sayaçlarını hedefleyen tablo hedefleme günlük uyarıları oluşturduysanız, `InsightsMetrics` bunun yerine tabloya başvurmak için bu kuralları güncelleştirmeniz gerekir. Bu kılavuz, ve kullanan tüm günlük arama kuralları için de geçerlidir `ServiceMapComputer_CL` `ServiceMapProcess_CL` çünkü bu veri kümeleri `VMComputer` ve tablolarına taşınır `VMProcess` .
 
 Bu SSS 'yi ve belgelerimizi topladığımız veri kümelerine yönelik örnek günlük arama uyarısı kuralları içerecek şekilde güncelleştireceğiz.
 
@@ -62,31 +62,31 @@ Bu SSS 'yi ve belgelerimizi topladığımız veri kümelerine yönelik örnek g�
 
 Faturalandırma, Log Analytics çalışma alanınızda alınan ve saklanan verilere göre hala devam etmektedir.
 
-Topladığımız makine düzeyindeki performans verileri aynı, `Perf` tabloda depoladığımız verilere benzer bir boyutludır ve yaklaşık olarak aynı tutara göre ücretlendirilir.
+Topladığımız makine düzeyindeki performans verileri aynı, tabloda depoladığımız verilere benzer bir boyutludır `Perf` ve yaklaşık olarak aynı tutara göre ücretlendirilir.
 
 ## <a name="what-if-i-only-want-to-use-service-map"></a>Yalnızca Hizmet Eşlemesi kullanmak istersem ne yapmalıyım?
 
 Bu çok uygundur. Yaklaşan güncelleştirme hakkında VM'ler için Azure İzleyici görüntülerken Azure portal istemler görürsünüz. Yayımlandıktan sonra, yeni sürüme güncelleştirmenizi isteyen bir istem alırsınız. Yalnızca [haritalar](vminsights-maps.md) özelliğini kullanmayı tercih ediyorsanız, yükseltmemeyi seçebilirsiniz ve VM'ler için Azure izleyici ve çalışma alanınız veya Pano kutucuğundan erişilen hizmet eşlemesi çözümünde Haritalar özelliğini kullanmaya devam edebilirsiniz.
 
-Çalışma alanınızdaki performans sayaçlarını el ile etkinleştirmeyi seçerseniz, bazı performans grafiklerimizden Azure Izleyici 'den görüntülenen verileri görebilirsiniz. Yeni çözüm yayımlandıktan sonra, `InsightsMetrics` tabloda depolanan verileri sorgulamak için performans grafiklerimizi güncelleştireceğiz. Bu grafiklerde bu tablodaki verileri görmek isterseniz, VM'ler için Azure İzleyici yeni sürümüne yükseltmeniz gerekir.
+Çalışma alanınızdaki performans sayaçlarını el ile etkinleştirmeyi seçerseniz, bazı performans grafiklerimizden Azure Izleyici 'den görüntülenen verileri görebilirsiniz. Yeni çözüm yayımlandıktan sonra, tabloda depolanan verileri sorgulamak için performans grafiklerimizi güncelleştireceğiz `InsightsMetrics` . Bu grafiklerde bu tablodaki verileri görmek isterseniz, VM'ler için Azure İzleyici yeni sürümüne yükseltmeniz gerekir.
 
-Ve `ServiceMapComputer_CL` `ServiceMapProcess_CL` ' dan veri taşıma değişiklikleri, hizmet eşlemesi ve VM'ler için Azure izleyici etkileyecektir, bu nedenle yine de bu güncelleştirme için plan yapmanız gerekir.
+Ve ' dan veri taşıma değişiklikleri `ServiceMapComputer_CL` `ServiceMapProcess_CL` , Hizmet Eşlemesi ve VM'ler için Azure izleyici etkileyecektir, bu nedenle yine de bu güncelleştirme için plan yapmanız gerekir.
 
-**Vminsıghts** çözümüne yükseltmemeyi seçerseniz, `Perf` tablodaki verilere başvuran performans çalışma kitaplarımızın eski sürümlerini sağlamaya devam edeceğiz.  
+**Vminsıghts** çözümüne yükseltmemeyi seçerseniz, tablodaki verilere başvuran performans çalışma kitaplarımızın eski sürümlerini sağlamaya devam edeceğiz `Perf` .  
 
 ## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>Hizmet Eşlemesi veri kümeleri de ınsightsölçümler ' de depolanacak mi?
 
-Her iki çözüm de kullanırsanız veri kümeleri yinelenmez. Her iki `VMComputer` teklif de içinde depolanacak veri kümelerini (eski adıyla ServiceMapComputer_CL ServiceMapProcess_CL `VMProcess` `VMConnection`), ve `VMBoundPort` topladığımız harita veri kümelerini depolamak için tabloları paylaşır.  
+Her iki çözüm de kullanırsanız veri kümeleri yinelenmez. Her iki teklif de içinde depolanacak veri kümelerini `VMComputer` (eski adıyla ServiceMapComputer_CL ServiceMapProcess_CL), `VMProcess` `VMConnection` ve `VMBoundPort` topladığımız harita veri kümelerini depolamak için tabloları paylaşır.  
 
-`InsightsMetrics` Tablo, topladığımız VM, işlem ve hizmet veri kümelerini depolar ve yalnızca VM'LER IÇIN Azure İZLEYICI ve VM öngörüleri çözümünü kullanıyorsanız doldurulur. Hizmet Eşlemesi çözümü `InsightsMetrics` tabloda veri toplamaz veya depolamaz.
+`InsightsMetrics`Tablo, topladığımız VM, işlem ve hizmet veri kümelerini depolar ve yalnızca VM'ler için Azure izleyici ve VM öngörüleri çözümünü kullanıyorsanız doldurulur. Hizmet Eşlemesi çözümü tabloda veri toplamaz veya depolamaz `InsightsMetrics` .
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>Çalışma alanım 'da Hizmet Eşlemesi ve Vminsıghts çözümlerini varsa, Double olarak ücretlendirilecektir mıyım?
 
-Hayır, iki çözüm `VMComputer` içinde depoladığımız harita veri kümelerini (eski adıyla ServiceMapComputer_CL) paylaşır `VMProcess` (eski adıyla ServiceMapProcess_CL) `VMConnection`, ve. `VMBoundPort` Çalışma alanınızda her iki çözüm de varsa bu veriler için iki ücret ödemeniz gerekmez.
+Hayır, iki çözüm içinde depoladığımız harita veri kümelerini `VMComputer` (eski adıyla ServiceMapComputer_CL) paylaşır `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort` . Çalışma alanınızda her iki çözüm de varsa bu veriler için iki ücret ödemeniz gerekmez.
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Hizmet Eşlemesi veya Vminsıghts çözümünü kaldırdığımda verilerimi kaldıracağım mi?
 
-Hayır, iki çözüm `VMComputer` içinde depoladığımız harita veri kümelerini (eski adıyla ServiceMapComputer_CL) paylaşır `VMProcess` (eski adıyla ServiceMapProcess_CL) `VMConnection`, ve. `VMBoundPort` Çözümlerden birini kaldırırsanız, bu veri kümeleri, verileri kullanan bir çözüm olduğunu ve Log Analytics çalışma alanında kaldığını fark eder. Verilerin kaldırılmadan kaldırılabilmesi için, her iki çözümü de çalışma alanınızdan kaldırmanız gerekir.
+Hayır, iki çözüm içinde depoladığımız harita veri kümelerini `VMComputer` (eski adıyla ServiceMapComputer_CL) paylaşır `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort` . Çözümlerden birini kaldırırsanız, bu veri kümeleri, verileri kullanan bir çözüm olduğunu ve Log Analytics çalışma alanında kaldığını fark eder. Verilerin kaldırılmadan kaldırılabilmesi için, her iki çözümü de çalışma alanınızdan kaldırmanız gerekir.
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Sistem durumu özelliği sınırlı genel önizlemede
 
@@ -100,15 +100,15 @@ VM'ler için Azure İzleyici GA ' de olduktan sonra bu sistem durumu özelliğin
 
 Sistem durumu özelliğini kullanan mevcut müşteriler buna erişime sahip olmaya devam eder, ancak yeni müşterilere sunulmayacaktır.  
 
-Bu özelliğe erişmek için Azure portal URL `feature.vmhealth=true` [https://portal.azure.com](https://portal.azure.com)'sine aşağıdaki özellik bayrağını ekleyebilirsiniz. Örnek `https://portal.azure.com/?feature.vmhealth=true`.
+Bu özelliğe erişmek için Azure portal URL 'sine aşağıdaki özellik bayrağını ekleyebilirsiniz `feature.vmhealth=true` [https://portal.azure.com](https://portal.azure.com) . Örnek `https://portal.azure.com/?feature.vmhealth=true` .
 
-Ayrıca, özellik bayrağını otomatik olarak ayarlayan bu kısa URL 'yi de kullanabilirsiniz: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview).
+Ayrıca, özellik bayrağını otomatik olarak ayarlayan bu kısa URL 'yi de kullanabilirsiniz: [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview) .
 
 Mevcut bir müşteri olarak, sistem sağlığı özelliğini mevcut bir çalışma alanı kurulumuna bağlı olan VM 'lerde sistem durumu işleviyle kullanmaya devam edebilirsiniz.  
 
 ## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>VM sistem durumunu şimdi bir ortamla kullanıyorum ve yeni bir ortama dağıtmak istiyorum
 
-Sistem durumu özelliğini kullanan mevcut bir müşterisiyseniz ve yeni bir dağıtım için kullanmak istiyorsanız, yönergeleri istemek için lütfen adresinden vminsights@microsoft.com bizimle iletişim kurun.
+Sistem durumu özelliğini kullanan mevcut bir müşterisiyseniz ve yeni bir dağıtım için kullanmak istiyorsanız, yönergeleri istemek için lütfen adresinden bizimle iletişim kurun vminsights@microsoft.com .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

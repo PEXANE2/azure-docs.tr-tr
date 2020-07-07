@@ -3,12 +3,12 @@ title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bff5596049a141f06f5c189f2e5673efed1ed6bf
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888151"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970833"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -31,7 +31,7 @@ ms.locfileid: "84888151"
 > - Hangi etkiyi kullanacağınızı belirleme
 > - İlke tanımını oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -53,7 +53,7 @@ Azure Ilkesiyle denetlenecek Azure kaynağı, iş gereksinimine bağlı olarak b
 Bir Azure kaynağı için özellikleri belirlemenin birçok yolu vardır. Bu öğretici için her birine bakacağız:
 
 - VS Code için Azure İlkesi uzantısı
-- Resource Manager şablonları
+- Azure Resource Manager şablonları (ARM şablonları)
   - Mevcut kaynağı dışarı aktar
   - Oluşturma deneyimi
   - Hızlı başlangıç şablonları (GitHub)
@@ -64,7 +64,7 @@ Bir Azure kaynağı için özellikleri belirlemenin birçok yolu vardır. Bu ö�
 
 [Vs Code uzantısı](../how-to/extension-for-vscode.md#search-for-and-view-resources) , ortamınızdaki kaynaklara gözatıp her kaynak üzerinde Kaynak Yöneticisi özelliklerini görmenizi sağlamak için kullanılabilir.
 
-### <a name="resource-manager-templates"></a>Resource Manager şablonları
+### <a name="arm-templates"></a>ARM şablonları
 
 Yönetmek istediğiniz özelliği içeren [Kaynak Yöneticisi şablona](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) bakmak için birkaç yol vardır.
 
@@ -144,12 +144,11 @@ Bu bilgiler bize Özellik türünü söyler ve ayrıca **supportsHttpsTrafficOnl
 
 #### <a name="quickstart-templates-on-github"></a>GitHub 'daki hızlı başlangıç şablonları
 
-GitHub 'daki [Azure hızlı başlangıç şablonlarında](https://github.com/Azure/azure-quickstart-templates) , farklı kaynaklar için oluşturulmuş yüzlerce kaynak yöneticisi şablonu vardır. Bu şablonlar, Aradığınız kaynak özelliğini bulmanın harika bir yolu olabilir. Bazı özellikler aradığınız şey gibi görünebilir, ancak başka bir şeyi de kontrol edebilirsiniz.
+GitHub 'daki [Azure hızlı başlangıç şablonlarında](https://github.com/Azure/azure-quickstart-templates) , farklı kaynaklar için oluşturulmuş yüzlerce ARM şablonu vardır. Bu şablonlar, Aradığınız kaynak özelliğini bulmanın harika bir yolu olabilir. Bazı özellikler aradığınız şey gibi görünebilir, ancak başka bir şeyi de kontrol edebilirsiniz.
 
 #### <a name="resource-reference-docs"></a>Kaynak başvuru belgeleri
 
-**SupportsHttpsTrafficOnly** 'ın doğru olduğunu doğrulamak için depolama sağlayıcısı üzerindeki [depolama hesabı kaynağı](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) için Kaynak Yöneticisi şablonu başvurusunu kontrol edin.
-Properties nesnesi geçerli parametrelerin bir listesini içerir. [Storageaccountpropertiescreateparameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) bağlantısına seçilirse, kabul edilebilir özelliklerden oluşan bir tablo gösterilir. **supportsHttpsTrafficOnly** mevcuttur ve açıklama, iş gereksinimlerini karşılayacak şekilde aradığımızda eşleşir.
+**SupportsHttpsTrafficOnly** 'ın doğru olduğunu doğrulamak için depolama sağlayıcısı üzerindeki [depolama HESABı kaynağı](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) için ARM şablonu başvurusunu kontrol edin. Properties nesnesi geçerli parametrelerin bir listesini içerir. [Storageaccountpropertiescreateparameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) bağlantısına seçilirse, kabul edilebilir özelliklerden oluşan bir tablo gösterilir. **supportsHttpsTrafficOnly** mevcuttur ve açıklama, iş gereksinimlerini karşılayacak şekilde aradığımızda eşleşir.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Manager
 
@@ -164,7 +163,7 @@ Kaynak özelliği tanımlandık, ancak bu özelliği bir [diğer adla](../concep
 Bir Azure kaynağı için diğer adları belirlemenin birkaç yolu vardır. Bu öğretici için her birine bakacağız:
 
 - VS Code için Azure İlkesi uzantısı
-- Azure CLI
+- Azure CLI’si
 - Azure PowerShell
 - Azure Kaynak Grafiği
 
@@ -175,7 +174,7 @@ VS Code uzantısının Azure Ilke uzantısı, kaynaklarınıza gözatmayı ve [d
 > [!NOTE]
 > VS Code uzantısı yalnızca Kaynak Yöneticisi modu özelliklerini gösterir ve herhangi bir [kaynak sağlayıcısı modu](../concepts/definition-structure.md#mode) özelliği görüntülemez.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı 'da, `az provider` komut grubu kaynak diğer adlarını aramak için kullanılır. Daha önce Azure kaynağı hakkında aldık ayrıntıları temel alarak **Microsoft. Storage** ad alanını filtreleyeceğiz.
 
@@ -219,7 +218,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Sonuçlar, Kaynak Yöneticisi şablonlarda görtiğimiz ve Azure Kaynak Gezgini aracılığıyla benzer şekilde görünür. Bununla birlikte, Azure Kaynak Grafiği sonuçları, diğer _adlar_ dizisinin _yansıtılasında_ [diğer ad](../concepts/definition-structure.md#aliases) ayrıntıları da içerebilir:
+Sonuçlar, ARM şablonlarında görtiğimiz ve Azure Kaynak Gezgini aracılığıyla benzer şekilde görünür. Bununla birlikte, Azure Kaynak Grafiği sonuçları, diğer _adlar_ dizisinin _yansıtılasında_ [diğer ad](../concepts/definition-structure.md#aliases) ayrıntıları da içerebilir:
 
 ```kusto
 Resources

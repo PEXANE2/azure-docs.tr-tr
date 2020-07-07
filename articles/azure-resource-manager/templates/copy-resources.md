@@ -4,10 +4,10 @@ description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Ma
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583392"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM şablonlarındaki kaynak yinelemesi
@@ -18,7 +18,7 @@ Ayrıca, [özellikleri](copy-properties.md), [değişkenleri](copy-variables.md)
 
 Bir kaynağın hiç dağıtılıp dağıtılmadığını belirtmeniz gerekiyorsa bkz. [koşul öğesi](conditional-resource-deployment.md).
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Copy öğesi aşağıdaki genel biçime sahiptir:
 
@@ -85,7 +85,7 @@ Aşağıdaki örnek, **Storagecount** parametresinde belirtilen depolama hesabı
 }
 ```
 
-Her bir kaynağın adı, döngüsünde geçerli yinelemeyi döndüren `copyIndex()` işlevini içerir. `copyIndex()` sıfır tabanlıdır. Bu nedenle, aşağıdaki örnek:
+Her bir kaynağın adı, `copyIndex()` döngüsünde geçerli yinelemeyi döndüren işlevini içerir. `copyIndex()` sıfır tabanlıdır. Bu nedenle, aşağıdaki örnek:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -109,7 +109,7 @@ Dizin değerini kaydırmak için copyIndex () işlevine bir değer geçirebilirs
 * storage2
 * storage3
 
-Dizideki her öğe arasında yineleme yapmak için, diziler ile çalışırken kopyalama işlemi faydalıdır. Yineleme sayısını `length` belirtmek ve `copyIndex` dizideki geçerli dizini almak için dizideki işlevini kullanın.
+Dizideki her öğe arasında yineleme yapmak için, diziler ile çalışırken kopyalama işlemi faydalıdır. `length`Yineleme sayısını belirtmek ve `copyIndex` dizideki geçerli dizini almak için dizideki işlevini kullanın.
 
 Aşağıdaki örnek, parametresinde belirtilen her ad için bir depolama hesabı oluşturur.
 
@@ -154,7 +154,7 @@ Dağıtılan kaynaklardan değer döndürmek istiyorsanız, [çıktılar bölüm
 
 Varsayılan olarak Kaynak Yöneticisi, kaynakları paralel olarak oluşturur. Şablondaki 800 kaynağın toplam sınırının dışında, paralel olarak dağıtılan kaynak sayısına sınır uygulanmaz. Bunların oluşturulma sırası garanti edilmez.
 
-Ancak, kaynakların sırayla dağıtılmasını belirtmek isteyebilirsiniz. Örneğin, bir üretim ortamını güncelleştirirken, yalnızca belirli bir sayının herhangi bir zamanda güncelleştirilmesini sağlamak isteyebilirsiniz. Bir kaynağın birden fazla örneğini seri olarak dağıtmak için, **seri** olarak `batchSize` ve `mode` aynı anda dağıtılacak örnek sayısına ayarlayın. Seri modda Kaynak Yöneticisi, döngüdeki önceki örneklerde bir bağımlılık oluşturur, bu nedenle, önceki toplu işlem tamamlanana kadar bir toplu işlem başlatmaz.
+Ancak, kaynakların sırayla dağıtılmasını belirtmek isteyebilirsiniz. Örneğin, bir üretim ortamını güncelleştirirken, yalnızca belirli bir sayının herhangi bir zamanda güncelleştirilmesini sağlamak isteyebilirsiniz. Bir kaynağın birden fazla örneğini seri olarak dağıtmak için, `mode` **seri** olarak ve `batchSize` aynı anda dağıtılacak örnek sayısına ayarlayın. Seri modda Kaynak Yöneticisi, döngüdeki önceki örneklerde bir bağımlılık oluşturur, bu nedenle, önceki toplu işlem tamamlanana kadar bir toplu işlem başlatmaz.
 
 Örneğin, depolama hesaplarını tek seferde bir kez dağıtmak için şunu kullanın:
 
@@ -189,7 +189,7 @@ Mode özelliği, varsayılan değer olan **Parallel**öğesini de kabul eder.
 
 ## <a name="depend-on-resources-in-a-loop"></a>Bir döngüdeki kaynaklara bağlıdır
 
-Bir kaynağın, `dependsOn` öğesini kullanarak başka bir kaynaktan sonra dağıtıldığını belirtirsiniz. Bir döngüde kaynak koleksiyonuna bağlı olan bir kaynağı dağıtmak için, Bağımlıdson öğesinde kopyalama döngüsünün adını sağlayın. Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Tam sanal makine tanımı gösterilmez. Kopyalama öğesinin adı olarak `storagecopy` ayarlanmış olduğuna ve sanal makine Için Bağımlıdson öğesinin de olarak `storagecopy`ayarlandığından emin olun.
+Bir kaynağın, öğesini kullanarak başka bir kaynaktan sonra dağıtıldığını belirtirsiniz `dependsOn` . Bir döngüde kaynak koleksiyonuna bağlı olan bir kaynağı dağıtmak için, Bağımlıdson öğesinde kopyalama döngüsünün adını sağlayın. Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Tam sanal makine tanımı gösterilmez. Kopyalama öğesinin adı olarak ayarlanmış olduğuna `storagecopy` ve sanal makine Için Bağımlıdson öğesinin de olarak ayarlandığından emin olun `storagecopy` .
 
 ```json
 {
@@ -248,7 +248,7 @@ Alt kaynak için bir kopyalama döngüsü kullanamazsınız. Genellikle başka b
   ]
 ```
 
-Birden fazla veri kümesi oluşturmak için veri fabrikası dışına taşıyın. Veri kümesi Data Factory ile aynı düzeyde olmalıdır, ancak yine de Data Factory 'nin bir alt kaynağıdır. Veri kümesi ve Veri Fabrikası arasındaki ilişkiyi tür ve ad özellikleriyle koruyabilirsiniz. Tür artık şablondaki konumundan çıkarsanamıyor, tam türü şu biçimde sağlamanız gerekir: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Birden fazla veri kümesi oluşturmak için veri fabrikası dışına taşıyın. Veri kümesi Data Factory ile aynı düzeyde olmalıdır, ancak yine de Data Factory 'nin bir alt kaynağıdır. Veri kümesi ve Veri Fabrikası arasındaki ilişkiyi tür ve ad özellikleriyle koruyabilirsiniz. Tür artık şablondaki konumundan çıkarsanamıyor, tam türü şu biçimde sağlamanız gerekir: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` .
 
 Veri fabrikasının bir örneğiyle üst/alt ilişkisi kurmak için, üst kaynak adını içeren veri kümesi için bir ad sağlayın. `{parent-resource-name}/{child-resource-name}` biçimini kullanın.
 
@@ -279,7 +279,7 @@ Aşağıdaki örnek, uygulamayı göstermektedir:
 
 Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini oluşturmak için yaygın senaryolar gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |[Depolama alanını Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Adında Dizin numarası olan birden fazla depolama hesabı dağıtır. |
 |[Seri kopyalama depolaması](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Birden çok depolama hesabını zamanında dağıtır. Ad, Dizin numarasını içerir. |

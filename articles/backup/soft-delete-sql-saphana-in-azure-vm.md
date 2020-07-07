@@ -4,10 +4,10 @@ description: Azure VM 'de SQL Server için geçici silmenin ve Azure VM iş yük
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: f1e3ecae5d643b8e32f8f4f07808d56cdc421163
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791383"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 'de SQL Server ve Azure VM iş yükleri SAP HANA için geçici silme
@@ -93,7 +93,7 @@ Azure Backup artık Azure VM 'de SQL Server için geçici silme ve Azure VM iş 
 ## <a name="soft-delete-for-sql-server-in-vm-using-azure-powershell"></a>Azure PowerShell kullanarak VM 'de SQL Server için geçici silme
 
 >[!NOTE]
->Azure PowerShell kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü en az 2.2.0. En `Install-Module -Name Az.RecoveryServices -Force` son sürümü almak için kullanın.
+>Azure PowerShell kullanarak geçici silme kullanmak için gereken az. RecoveryServices sürümü en az 2.2.0. `Install-Module -Name Az.RecoveryServices -Force`En son sürümü almak için kullanın.
 
 Azure PowerShell kullanımı için adım sırası, yukarıda özetlenen Azure portal ile aynıdır.
 

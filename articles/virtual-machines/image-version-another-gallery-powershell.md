@@ -10,10 +10,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796934"
 ---
 # <a name="copy-an-image-from-another-gallery"></a>Başka bir galerinin görüntüsünü kopyalama
@@ -39,7 +39,7 @@ Hedef Galerinizdeki bir kopyasını oluşturabilmeniz için kaynak görüntü ta
 
 [Get-AzResource](/powershell/module/az.resources/get-azresource) cmdlet 'ini kullanarak var olan galerilerle ilgili bilgileri, görüntü tanımlarını ve görüntü sürümlerini listeleyin.
 
-Sonuçlar biçimindedir `gallery\image definition\image version`.
+Sonuçlar biçimindedir `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource `
@@ -47,7 +47,7 @@ Get-AzResource `
    Format-Table -Property Name,ResourceGroupName
 ```
 
-İhtiyacınız olan tüm bilgilere sahip olduktan sonra [Get-Azgallerımageversion](/powershell/module/az.compute/get-azgalleryimageversion)kullanarak kaynak görüntü sürümünün kimliğini alabilirsiniz. Bu örnekte `1.0.0` , kaynak galerisindeki `myImageDefinition` tanımın `myGallery` görüntü sürümünü `myResourceGroup` kaynak grubunda alıyoruz.
+İhtiyacınız olan tüm bilgilere sahip olduktan sonra [Get-Azgallerımageversion](/powershell/module/az.compute/get-azgalleryimageversion)kullanarak kaynak görüntü sürümünün kimliğini alabilirsiniz. Bu örnekte, kaynak `1.0.0` `myImageDefinition` galerisindeki tanımın görüntü sürümünü `myGallery` `myResourceGroup` kaynak grubunda alıyoruz.
 
 ```azurepowershell-interactive
 $sourceImgVer = Get-AzGalleryImageVersion `
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>Görüntü sürümü oluşturma
 
-[New-Azgallerımageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak bir görüntü sürümü oluşturun. Hedef Galerinizdeki görüntü sürümünü oluşturmak için `--managed-image` parametresindeki kaynak görüntünün kimliğini geçirmeniz gerekecektir. 
+[New-Azgallerımageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak bir görüntü sürümü oluşturun. `--managed-image`Hedef Galerinizdeki görüntü sürümünü oluşturmak için parametresindeki kaynak görüntünün kimliğini geçirmeniz gerekecektir. 
 
 Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
 
@@ -147,7 +147,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Görüntünün tüm hedef bölgelere çoğaltılması biraz zaman alabilir, bu nedenle ilerlemeyi izleyebilmemiz için bir iş oluşturduk. İşin ilerlemesini görmek için, yazın `$job.State`.
+Görüntünün tüm hedef bölgelere çoğaltılması biraz zaman alabilir, bu nedenle ilerlemeyi izleyebilmemiz için bir iş oluşturduk. İşin ilerlemesini görmek için, yazın `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Görüntünüzü, görüntü sürümünü oluştururken ekleyerek bir ekleme `-StorageAccountType Premium_LRS`veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) `-StorageAccountType Standard_ZRS` tarafından Premiun depolamada da saklayabilirsiniz.
+> Görüntünüzü `-StorageAccountType Premium_LRS` , görüntü sürümünü oluştururken ekleyerek bir ekleme veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) tarafından Premiun depolamada da saklayabilirsiniz `-StorageAccountType Standard_ZRS` .
 >
 
 

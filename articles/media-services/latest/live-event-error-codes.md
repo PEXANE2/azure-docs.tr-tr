@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
 ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791060"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services canlı olay hata kodları
@@ -28,7 +28,7 @@ Bu bölümdeki tablolarda, [canlı olay](live-events-outputs-concept.md) hata ko
 
 Canlı bir olay için [Event Grid](https://docs.microsoft.com/azure/event-grid/) olaylarına abone olduğunuzda, [Liveeventconnectionreddedildi](media-services-event-schemas.md#liveeventconnectionrejected) olayından aşağıdaki hatalardan birini görebilirsiniz.
 
-| Sonuç kodu | Açıklama |
+| Sonuç kodu | Description |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Hatalı alma URL 'SI |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | IP izin verilenler listesinde kodlayıcı IP 'si yok |
@@ -46,7 +46,7 @@ Canlı bir olay için [Event Grid](https://docs.microsoft.com/azure/event-grid/)
 
 [Liveeventencoderconnected](media-services-event-schemas.md#liveeventencoderdisconnected) olayında aşağıdaki hatalardan birini görebilirsiniz.
 
-|Sonuç kodu|Açıklama|
+|Sonuç kodu|Description|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|RTMP oturumu izin verilen süre sınırı boyunca boşta kaldıktan sonra zaman aşımına uğradı.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|Video veya ses FLVTag zaman damgası, RTMP kodlayıcısından geçersizdir.|
