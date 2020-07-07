@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: cd309b7c3b37e338b1d8e69635247cc90511b34f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85204753"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
@@ -33,7 +33,7 @@ Bu öğreticideki görevler şunları içerir:
 > * VM 'Leri Active Directory etki alanına katın.
 > * VM 'Leri Windows sanal masaüstü ile kaydedin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Sanal masaüstündeki kiracı. Önceki [öğreticide](tenant-setup-azure-active-directory.md) kiracı oluşturulur.
 * [Windows sanal masaüstü PowerShell modülü](/powershell/windows-virtual-desktop/overview/).
