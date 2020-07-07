@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82615506"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Sanal Masaüstü PowerShell
@@ -22,7 +22,7 @@ ms.locfileid: "82615506"
 
 PowerShell 'i Windows sanal masaüstü ile kullanırken oluşan hataları ve sorunları gidermek için bu makaleyi kullanın. PowerShell Uzak Masaüstü Hizmetleri hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü PowerShell](/powershell/module/windowsvirtualdesktop/).
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -62,7 +62,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Neden:** -TenantName parametresi
 
-**Çözüm:** Get-RdsDiagnosticActivities with-TenantName \<tenantname>.
+**Çözüm:** Get-RdsDiagnosticActivities WITH-TenantName ile sorun \<TenantName> .
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities--Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
 
@@ -72,7 +72,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Neden:** Dağıtım anahtarı kullanılıyor.
 
-**Çözüm:** -dağıtım anahtarı yalnızca dağıtım yöneticileri tarafından kullanılabilir. Bu yöneticiler genellikle Uzak Masaüstü Hizmetleri/Windows sanal masaüstü ekibinin üyeleridir. -Deployment anahtarını-TenantName \<tenantname> ile değiştirin.
+**Çözüm:** -dağıtım anahtarı yalnızca dağıtım yöneticileri tarafından kullanılabilir. Bu yöneticiler genellikle Uzak Masaüstü Hizmetleri/Windows sanal masaüstü ekibinin üyeleridir. -Deployment anahtarını-TenantName ile değiştirin \<TenantName> .
 
 ### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: New-RdsRoleAssignment--Kullanıcı Yönetim hizmetini sorgulama yetkisine sahip değil
 

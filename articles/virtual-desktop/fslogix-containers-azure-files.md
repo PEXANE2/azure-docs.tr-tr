@@ -9,15 +9,15 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611985"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
-Windows sanal masaüstü hizmeti, FSLogix profil kapsayıcılarını bir kullanıcı profili çözümü olarak önerir. FSLogix, Windows sanal masaüstü gibi uzak bilgi işlem ortamlarında profil dolaşımını yapmak için tasarlanmıştır. Tüm kullanıcı profilini tek bir kapsayıcıda depolar. Bu kapsayıcı, oturum açma sırasında, yerel olarak desteklenen sanal sabit disk (VHD) ve Hyper-V sanal sabit diski (VHDX) kullanılarak bilgi işlem ortamına dinamik olarak eklenir. Kullanıcı profili hemen kullanılabilir olur ve sistemde tam olarak yerel bir kullanıcı profili gibi görünür. Bu makalede, FSLogix profil kapsayıcılarının Windows sanal masaüstündeki Azure dosyaları işleviyle nasıl kullanıldığı açıklanmaktadır.
+Windows sanal masaüstü hizmeti, FSLogix profil kapsayıcılarını bir kullanıcı profili çözümü olarak önerir. FSLogix, Windows Sanal Masaüstü gibi uzak bilgi işlem ortamlarında dolaşım profillerini etkinleştirme amacıyla tasarlanmıştır. Kullanıcı profilinin tamamını tek bir kapsayıcı halinde depolar. Bu kapsayıcı, oturum açma sırasında, yerel olarak desteklenen sanal sabit disk (VHD) ve Hyper-V sanal sabit diski (VHDX) kullanılarak bilgi işlem ortamına dinamik olarak eklenir. Kullanıcı profili hemen kullanılabilir olur ve sistemde tam olarak yerel bir kullanıcı profili gibi görünür. Bu makalede, FSLogix profil kapsayıcılarının Windows sanal masaüstündeki Azure dosyaları işleviyle nasıl kullanıldığı açıklanmaktadır.
 
 >[!NOTE]
 >Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
@@ -49,11 +49,11 @@ Aşağıdaki tabloda önceki Kullanıcı profili teknolojilerinin avantajları v
 
 | Teknoloji | Modern ayarlar | Win32 ayarları | İşletim sistemi ayarları | Kullanıcı verileri | Sunucu SKU 'sunda destekleniyor | Azure 'da arka uç depolama | Şirket içinde arka uç depolama | Sürüm desteği | Sonraki oturum açma zamanı |Notlar|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Kullanıcı profili diskleri (UPD)** | Yes | Yes | Yes | Yes | Yes | No | Yes | Win 7 + | Yes | |
-| **Gezici Kullanıcı profili (RUP), bakım modu** | No | Yes | Yes | Yes | Yes| No | Yes | Win 7 + | No | |
-| **Enterprise State Roaming (ESR)** | Yes | No | Yes | No | Notlara bakın | Yes | No | Win 10 | No | Sunucu SKU 'sunda işlevler ancak destekleyici Kullanıcı arabirimi yok |
-| **Kullanıcı deneyimi sanallaştırma (UE-V)** | Yes | Yes | Yes | No | Yes | No | Yes | Win 7 + | No |  |
-| **OneDrive bulut dosyaları** | Hayır | Hayır | Hayır | Yes | Notlara bakın | Notlara bakın  | Notlara bakın | Win 10 RS3 | No | Sunucu SKU 'sunda sınanmamıştır. Azure üzerinde arka uç depolama, eşitleme istemcisine bağlıdır. Arka uç depolamada şirket içi depolama için bir eşitleme istemcisi gerekir. |
+| **Kullanıcı profili diskleri (UPD)** | Yes | Yes | Yes | Yes | Yes | No | Evet | Win 7 + | Yes | |
+| **Gezici Kullanıcı profili (RUP), bakım modu** | No | Yes | Yes | Yes | Yes| No | Evet | Win 7 + | No | |
+| **Enterprise State Roaming (ESR)** | Evet | No | Evet | No | Notlara bakın | Evet | No | Win 10 | No | Sunucu SKU 'sunda işlevler ancak destekleyici Kullanıcı arabirimi yok |
+| **Kullanıcı deneyimi sanallaştırma (UE-V)** | Yes | Yes | Yes | No | Evet | No | Evet | Win 7 + | No |  |
+| **OneDrive bulut dosyaları** | Hayır | Hayır | Hayır | Evet | Notlara bakın | Notlara bakın  | Notlara bakın | Win 10 RS3 | No | Sunucu SKU 'sunda sınanmamıştır. Azure üzerinde arka uç depolama, eşitleme istemcisine bağlıdır. Arka uç depolamada şirket içi depolama için bir eşitleme istemcisi gerekir. |
 
 #### <a name="performance"></a>Performans
 

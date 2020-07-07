@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84728376"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
@@ -69,7 +69,7 @@ Parantezler tek bir ifade için isteğe bağlıdır. Üyelik kuralınız gövdes
 Bir grubu Kullanıcı veya cihazlarla otomatik olarak dolduran bir üyelik kuralı, doğru veya yanlış bir sonuç elde eden bir ikili ifadedir. Basit bir kuralın üç bölümü şunlardır:
 
 - Özellik
-- Operatör
+- İşleç
 - Değer
 
 İfade içindeki parçaların sırası, söz dizimi hatalarından kaçınmak için önemlidir.

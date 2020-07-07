@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb7778ce25fd1ff01cfd7d2e1af7991bb38b1f47
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: d47a70f2e086c5322e8ecd53cbf352c672528ebc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85605679"
+ms.locfileid: "85798922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Öğretici: Infor CloudSuite ile tümleştirme Azure Active Directory
 
@@ -109,21 +109,21 @@ Azure AD çoklu oturum açmayı Infor CloudSuite ile birlikte yapılandırmak i�
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-        ```https
-        http://mingle-sso.inforcloudsuite.com
-        http://mingle-sso.se1.inforcloudsuite.com
-        http://mingle-sso.eu1.inforcloudsuite.com
-        http://mingle-sso.se2.inforcloudsuite.com
-        ```
+    ```http
+    http://mingle-sso.inforcloudsuite.com
+    http://mingle-sso.se1.inforcloudsuite.com
+    http://mingle-sso.eu1.inforcloudsuite.com
+    http://mingle-sso.se2.inforcloudsuite.com
+    ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-        ```https
-        https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
-        https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2
-        https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2
-        https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2
-        ```
+    ```http
+    https://mingle-sso.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se1.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.se2.inforcloudsuite.com:443/sp/ACS.saml2
+    https://mingle-sso.eu1.inforcloudsuite.com:443/sp/ACS.saml2
+    ```
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -131,12 +131,12 @@ Azure AD çoklu oturum açmayı Infor CloudSuite ile birlikte yapılandırmak i�
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-        ```https
-        https://mingle-portal.inforcloudsuite.com/Tenant-Name/
-        https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/
-        https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/
-        https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/
-        ```
+    ```http
+    https://mingle-portal.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.eu1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se1.inforcloudsuite.com/Tenant-Name/
+    https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/
+    ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [CloudSuite istemci desteği ekibine](mailto:support@infor.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

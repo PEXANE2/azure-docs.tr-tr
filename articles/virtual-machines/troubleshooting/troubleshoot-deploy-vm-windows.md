@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628291"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure'da Windows sanal makinesi dağıtma sorunlarını giderme
@@ -31,7 +31,11 @@ Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Küme, istenen VM boyutunu desteklemez
-\<Properties Supporttopicıds = "123456789" resourceTags = "Windows" Productpesıd = "1234, 5678"/>
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 - İstenen VM 'nin boyutu değiştirilenemez:
     - Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun. Kaynak **grupları** > kaynak grubu ' na tıklayın **> kaynak** grubunuz > sanal **makineleriniz > sanal makineler** > **Durdur**>
@@ -40,7 +44,11 @@ Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Kümede boş kaynak yok
-\<Properties Supporttopicıds = "123456789" resourceTags = "Windows" Productpesıd = "1234, 5678"/>
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - İsteği daha sonra yeniden deneyin.
 - Yeni VM farklı bir kullanılabilirlik kümesinin parçası olabilir
     - Farklı bir kullanılabilirlik kümesinde (aynı bölgede) bir VM oluşturun.

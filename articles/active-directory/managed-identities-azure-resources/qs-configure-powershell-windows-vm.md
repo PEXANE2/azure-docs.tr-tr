@@ -16,10 +16,10 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62c4baafdd66465502bf45fe19a111e17a9539ac
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85609088"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>PowerShell kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
@@ -144,7 +144,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 
 1. Yalnızca gerekli bölümleri ("Azure 'da oturum aç", "kaynak grubu oluşturma", "ağ oluşturma grubu oluştur", "VM oluşturma") tamamlanırken aşağıdaki Azure VM hızlı başlangıçlarından birine bakın. 
   
-    "VM oluşturma" bölümüne geldiğinizde cmdlet sözdiziminde küçük bir değişiklik yapın [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) . VM 'yi `-IdentityType UserAssigned` `-IdentityID` Kullanıcı tarafından atanan bir kimlikle sağlamak için ve parametrelerini ekleyin.  ,,, `<VM NAME>` `<SUBSCRIPTION ID>` `<RESROURCE GROUP>` Ve `<USER ASSIGNED IDENTITY NAME>` değerlerini kendi değerlerinizle değiştirin.  Örneğin:
+    "VM oluşturma" bölümüne geldiğinizde cmdlet sözdiziminde küçük bir değişiklik yapın [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) . VM 'yi `-IdentityType UserAssigned` `-IdentityID` Kullanıcı tarafından atanan bir kimlikle sağlamak için ve parametrelerini ekleyin.  ,,, `<VM NAME>` `<SUBSCRIPTION ID>` `<RESROURCE GROUP>` Ve `<USER ASSIGNED IDENTITY NAME>` değerlerini kendi değerlerinizle değiştirin.  Örnek:
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."

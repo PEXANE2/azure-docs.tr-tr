@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612274"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri kopyalama veya yedekleme
@@ -39,7 +39,7 @@ Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analy
 
     ![Visual Studio Code ASA işini dışarı aktarma](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
 
-3. Farklı bir ad kullanarak işi başka bir bölgeye veya yedeklemeye yayımlamak için, sorgu Düzenleyicisi 'nde (\*. asaql) **yayımlamak üzere aboneliklerinizden Seç** ' i seçin ve yönergeleri izleyin.
+3. Farklı bir ad kullanarak işi başka bir bölgeye veya yedeklemeye yayımlamak için, sorgu Düzenleyicisi 'nde (. asaql) **yayımlamak üzere aboneliklerinizden Seç** ' i seçin \* ve yönergeleri izleyin.
 
     ![Visual Studio Code Azure 'da yayımlayın](./media/quick-create-vs-code/submit-job.png)
 
@@ -47,7 +47,7 @@ Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analy
 
 1. [Dağıtılan Azure Stream Analytics işini bir proje yönergelerine dışarı aktarma](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project)işlemini izleyin.
 
-2. Sorgu Düzenleyicisi \*'nde. asaql dosyasını açın, betik düzenleyicisinde **Azure 'a gönder** ' i seçin ve yeni bir ad kullanarak işi başka bir bölgeye veya yedeklemeye yayımlamak için yönergeleri izleyin.
+2. \*Sorgu Düzenleyicisi 'nde. asaql dosyasını açın, betik düzenleyicisinde **Azure 'a gönder** ' i seçin ve yeni bir ad kullanarak işi başka bir bölgeye veya yedeklemeye yayımlamak için yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

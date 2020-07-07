@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f1ff2247cb3b8f673f187f688e80bde8559c0a4
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 208a494c98a5f3eb22742b0ba6748efa0dd59e1a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606080"
+ms.locfileid: "85798749"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>Öğretici: hiper Anna Azure Active Directory ile tümleştirme
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Yanıt URL 'si** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
 
-    ```https
+    ```http
     https://microsoft.hyperanna.com/userservice/auth/saml
     https://anna.hyperanna.com/userservice/auth/saml
     ```
@@ -94,9 +94,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
 
-    ```https
-    `https://microsoft.hyperanna.com/
-    `https://anna.hyperanna.com/
+    ```http
+    https://microsoft.hyperanna.com/
+    https://anna.hyperanna.com/
     ```
 
 4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
 ms.openlocfilehash: 182d314b24ce082d996cb692e2a7bb35265abcfe
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628085"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Samanage 'ı yapılandırma
@@ -48,7 +48,7 @@ Uygulamanız geçirildiğinde, yönetici **kimlik bilgileri** bölümünde **Yö
 > * Samanage grupları ve grup üyeliklerini sağlama
 > * Samanage için [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/samanage-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -57,12 +57,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Profesyonel paketiyle bir [Samanage kiracısı](https://www.samanage.com/pricing/) .
 * Yönetici izinleriyle Samanage Kullanıcı hesabı.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Azure AD ve Samanage arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-samanage-to-support-provisioning-with-azure-ad"></a>2. Adım Samanage 'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
+## <a name="step-2-configure-samanage-to-support-provisioning-with-azure-ad"></a>Adım 2. Samanage 'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
 Kimlik doğrulaması için bir gizli belirteç oluşturmak için [bunu](https://help.samanage.com/s/article/Tutorial-Tokens-Authentication-for-API-Integration-1536721557657)inceleyin.
 

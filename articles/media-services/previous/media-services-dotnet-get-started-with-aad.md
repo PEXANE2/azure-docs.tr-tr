@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 8fbe8e0cbf2768af973a0ccc9e237fb770b27a74
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612308"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET ile Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulamasını kullanma
@@ -28,7 +28,7 @@ ms.locfileid: "82612308"
 
 Windowsazure. mediaservices 4.0.0.4 ile başlayan Azure Media Services, Azure Active Directory (Azure AD) tabanlı kimlik doğrulamasını destekler. Bu konuda, Microsoft .NET ile Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulamasının nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure hesabı. Ayrıntılar için bkz. [Azure Ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/).
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](media-services-portal-create-account.md)konusuna bakın.
@@ -56,7 +56,7 @@ Ayrıca, **Azureadtokenprovider** öğesinin varsayılan uygulamasını kendi uy
 ## <a name="install-and-configure-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK 'sını yükleyip yapılandırın
 
 >[!NOTE]
->Media Services .NET SDK ile Azure AD kimlik doğrulamasını kullanmak için en son [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) paketine sahip olmanız gerekir. Ayrıca, **Microsoft. IdentityModel. clients. ActiveDirectory** derlemesine bir başvuru ekleyin. Mevcut bir uygulamayı kullanıyorsanız, **Microsoft. WindowsAzure. MediaServices. Client. Common. Authentication. dll** derlemesini ekleyin.
+>Media Services .NET SDK ile Azure AD kimlik doğrulamasını kullanmak için en son [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) paketine sahip olmanız gerekir. Ayrıca, **Microsoft. IdentityModel. clients. ActiveDirectory** derlemesine bir başvuru ekleyin. Mevcut bir uygulamayı kullanıyorsanız, **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** derlemesini dahil edin.
 
 1. Visual Studio 'da yeni bir C# konsol uygulaması oluşturun.
 2. **.NET SDK Azure Media Services**yüklemek için [windowsazure. mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet paketini kullanın.

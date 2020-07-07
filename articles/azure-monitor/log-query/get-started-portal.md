@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80055614"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798264"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Öğretici: Log Analytics sorguları kullanmaya başlama
 
@@ -37,6 +37,7 @@ Bu öğreticideki adımların çoğunu tamamlayabilmeniz için, [Bu tanıtım or
 Azure Izleyici 'yi kullanarak en az bir Azure kaynağında günlük verilerini toplamak için kendi ortamınızı de kullanabilirsiniz. Bir Log Analytics çalışma alanını açmak için, Azure Izleyici sol gezinti bölmesinde **Günlükler**' i seçin. 
 
 ## <a name="understand-the-schema"></a>Şemayı anlama
+ 
 *Şema* , mantıksal kategoriler altında gruplanmış bir tablo koleksiyonudur. Tanıtım şemasında, izleme çözümlerinin çeşitli kategorileri vardır. Örneğin, **Logmanagement** kategorisi Windows ve Syslog olaylarını, performans verilerini ve aracı sinyalleri içerir.
 
 Şema tabloları, Log Analytics çalışma alanının **Tablolar** sekmesinde görüntülenir. Tablolar, her biri sütun adının yanında bulunan simgesiyle gösterilen bir veri türüne sahip sütunları içerir. Örneğin, **olay** tablosu, **bilgisayar** ve **EventCategory**gibi sayısal sütunlar gibi metin sütunları içerir.
@@ -50,6 +51,7 @@ Log Analytics **sorgu düzenleyicisinde**yeni bir boş sorgu ile açılır.
 ![Log Analytics](media/get-started-portal/homepage.png)
 
 ### <a name="write-a-query"></a>Bir sorgu yazın
+
 Azure Izleyici günlük sorguları kusto sorgu dilinin bir sürümünü kullanır. Sorgular, bir tablo adı ya da [arama](/azure/kusto/query/searchoperator) komutu ile başlayabilir. 
 
 Aşağıdaki sorgu, **olay** tablosundan tüm kayıtları alır:
@@ -86,13 +88,13 @@ Varsayılan olarak, Log Analytics sorguları son 24 saatin bir zaman aralığıy
 - Sorgu **TimeGenerated**için açıkça bir filtre ayarladıysanız, zaman seçici denetimi **sorgu olarak ayarlanır**ve çakışmayı engellemek için devre dışıdır.
 
 ### <a name="run-a-query"></a>Sorgu çalıştırma
-Bir sorgu çalıştırmak için imlecinizi sorgunun içine yerleştirin ve üstteki çubukta **Çalıştır** ' ı seçin veya **SHIFT**+**ENTER**tuşuna basın. Sorgu boş bir satır bulana kadar çalışır.
+Bir sorgu çalıştırmak için imlecinizi sorgunun içine yerleştirin ve üstteki çubukta **Çalıştır** ' ı seçin veya **SHIFT** + **ENTER**tuşuna basın. Sorgu boş bir satır bulana kadar çalışır.
 
 ## <a name="filter-results"></a>Sonuçları filtreleme
-Log Analytics sonuçları en fazla 10.000 kayıtla sınırlandırır. Gibi `Event` genel bir sorgu yararlı olacak çok fazla sonuç döndürüyor. Sorgu sonuçlarını sorgudaki tablo öğelerini kısıtlayarak veya sonuçlara açıkça bir filtre ekleyerek filtreleyebilirsiniz. Tablo öğeleri aracılığıyla filtreleme, yeni bir sonuç kümesi döndürür, ancak açık bir filtre var olan sonuç kümesi için geçerli olur.
+Log Analytics sonuçları en fazla 10.000 kayıtla sınırlandırır. Gibi genel bir sorgu `Event` yararlı olacak çok fazla sonuç döndürüyor. Sorgu sonuçlarını sorgudaki tablo öğelerini kısıtlayarak veya sonuçlara açıkça bir filtre ekleyerek filtreleyebilirsiniz. Tablo öğeleri aracılığıyla filtreleme, yeni bir sonuç kümesi döndürür, ancak açık bir filtre var olan sonuç kümesi için geçerli olur.
 
 ### <a name="filter-by-restricting-table-elements"></a>Tablo öğelerini kısıtlayarak filtrele
-Sorgudaki tablo `Event` öğelerini kısıtlayarak sorgu sonuçlarını **hata** olaylarına filtrelemek için:
+Sorgudaki `Event` tablo öğelerini kısıtlayarak sorgu sonuçlarını **hata** olaylarına filtrelemek için:
 
 1. Sorgu sonuçlarında, **Eventlevelname** sütununda **hata** olan herhangi bir kaydın yanındaki açılan oku seçin. 
    
@@ -110,7 +112,7 @@ Sorgudaki tablo `Event` öğelerini kısıtlayarak sorgu sonuçlarını **hata**
 1. Yeni sorguyu çalıştırmak için **Çalıştır** ' ı seçin.
 
 ### <a name="filter-by-explicitly-filtering-results"></a>Sonuçları açıkça filtreleyerek filtrele
-Sorgu sonuçlarını filtreleyerek `Event` sorgu sonuçlarını **hata** olaylarına göre filtrelemek için:
+Sorgu `Event` sonuçlarını filtreleyerek sorgu sonuçlarını **hata** olaylarına göre filtrelemek için:
 
 1. Sorgu sonuçlarında, **Eventlevelname**sütun başlığının yanındaki **filtre** simgesini seçin. 
    
@@ -156,6 +158,7 @@ Görünümün özelliklerini, örneğin x ve y eksenleri veya gruplandırma ve b
 Ayrıca, [işleme](/azure/kusto/query/renderoperator) işlecini kullanarak sorguda tercih edilen görünümü ayarlayabilirsiniz.
 
 ## <a name="pin-results-to-a-dashboard"></a>Sonuçları panoya sabitleme
+
 Log Analytics bir sonuç tablosu veya grafiğini paylaşılan bir Azure panosuna sabitlemek için üstteki çubukta **panoya sabitle** ' yi seçin. 
 
 ![Panoya sabitle](media/get-started-portal/pin-dashboard.png)
@@ -171,9 +174,11 @@ Paylaşılan bir panoya sabitettiğiniz tablo veya grafik aşağıdaki basitleş
 - Çok sayıda ayrık kategori içeren grafikler, daha az doldurulmuş kategorileri otomatik olarak tek bir **diğer** bin içine gruplayın.
 
 ## <a name="save-load-or-export-queries"></a>Sorguları kaydetme, yükleme veya dışarı aktarma
+
 Bir sorgu oluşturduktan sonra sorguyu veya sonuçları başkalarıyla kaydedebilir veya paylaşabilirsiniz. 
 
 ### <a name="save-queries"></a>Sorguları kaydet
+
 Bir sorguyu kaydetmek için:
 
 1. Üstteki çubukta **Kaydet** ' i seçin.

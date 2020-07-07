@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: b-juche
 ms.openlocfilehash: b763a734866dd5fed5bf0500d4d52b9324c92a79
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82614596"
 ---
 # <a name="azure-netapp-files-performance-benchmarks-for-linux"></a>Linux için Azure NetApp Files performans değerlendirmeleri
@@ -47,31 +47,31 @@ Bu grafik, saf okumayı saf yazma 'dan bir kerede %10 oranında azaltır. Deği�
 
 ## <a name="linux-scale-up"></a>Linux ölçeği artırma  
 
-Linux 5,3 çekirdeği, NFS için tek istemci genişleme ağını mümkün bir şekilde sunar`nconnect`. Bu bölümdeki grafikler, NFSv3 ile istemci tarafı bağlama seçeneğinin doğrulama testi sonuçlarını gösterir. Bu özellik SUSE (SLES12SP4 ile başlayan) ve Ubuntu (19,10 sürümü ile başlayarak) için kullanılabilir. Hem çok kanallı SMB hem de Oracle doğrudan NFS kavramıyla benzerdir.
+Linux 5,3 çekirdeği, NFS için tek istemci genişleme ağını mümkün bir şekilde sunar `nconnect` . Bu bölümdeki grafikler, NFSv3 ile istemci tarafı bağlama seçeneğinin doğrulama testi sonuçlarını gösterir. Bu özellik SUSE (SLES12SP4 ile başlayan) ve Ubuntu (19,10 sürümü ile başlayarak) için kullanılabilir. Hem çok kanallı SMB hem de Oracle doğrudan NFS kavramıyla benzerdir.
 
-Grafikler, ' nin `nconnect` avantajlarını bağlı olmayan bağlanmış bir birime karşılaştırır. Grafiklerde, FIO, US-west2 Azure bölgesindeki tek bir D32s_v3 örneğinden iş yükünü oluşturdu.
+Grafikler, ' nin avantajlarını `nconnect` bağlı olmayan bağlanmış bir birime karşılaştırır. Grafiklerde, FIO, US-west2 Azure bölgesindeki tek bir D32s_v3 örneğinden iş yükünü oluşturdu.
 
 ### <a name="linux-read-throughput"></a>Linux okuma performansı  
 
-Aşağıdaki grafiklerde, yaklaşık 3.500 MIB/s ile okunan, kabaca 2.3 X `nconnect`olan sıralı okumaları gösterilmektedir`nconnect`.
+Aşağıdaki grafiklerde, yaklaşık 3.500 MIB/s ile okunan `nconnect` , kabaca 2.3 x olan sıralı okumaları gösterilmektedir `nconnect` .
 
 ![Linux okuma performansı](../media/azure-netapp-files/performance-benchmarks-linux-read-throughput.png)  
 
 ### <a name="linux-write-throughput"></a>Linux yazma performansı  
 
-Aşağıdaki grafiklerde sıralı yazma işlemleri gösterilmektedir. Bunlar, sıralı `nconnect` yazma işlemleri için dikkat çekici bir avantajın olmadığını gösterir. 1.500 MIB/s kabaca hem sıralı yazma birimi üst sınırı hem de D32s_v3 örneği çıkış limiti.
+Aşağıdaki grafiklerde sıralı yazma işlemleri gösterilmektedir. Bunlar `nconnect` , sıralı yazma işlemleri için dikkat çekici bir avantajın olmadığını gösterir. 1.500 MIB/s kabaca hem sıralı yazma birimi üst sınırı hem de D32s_v3 örneği çıkış limiti.
 
 ![Linux yazma performansı](../media/azure-netapp-files/performance-benchmarks-linux-write-throughput.png)  
 
 ### <a name="linux-read-iops"></a>Linux okuma ıOPS 'si  
 
-Aşağıdaki grafiklerde `nconnect`, kabaca 3x olmayan, yaklaşık olarak yaklaşık 200.000 Okuma IOPS 'nin rastgele okumaları gösterilmektedir`nconnect`.
+Aşağıdaki grafiklerde `nconnect` , kabaca 3x olmayan, yaklaşık olarak yaklaşık 200.000 Okuma IOPS 'nin rastgele okumaları gösterilmektedir `nconnect` .
 
 ![Linux okuma ıOPS 'si](../media/azure-netapp-files/performance-benchmarks-linux-read-iops.png)  
 
 ### <a name="linux-write-iops"></a>Linux yazma ıOPS  
 
-Aşağıdaki grafiklerde `nconnect`, kabaca 3x olmayan, yaklaşık 135.000 Yazma IOPS 'nin rastgele yazmaları gösterilmektedir`nconnect`.
+Aşağıdaki grafiklerde `nconnect` , kabaca 3x olmayan, yaklaşık 135.000 Yazma IOPS 'nin rastgele yazmaları gösterilmektedir `nconnect` .
 
 ![Linux yazma ıOPS](../media/azure-netapp-files/performance-benchmarks-linux-write-iops.png)  
 

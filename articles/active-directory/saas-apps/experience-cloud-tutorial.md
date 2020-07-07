@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a2fd4a4649b38434d196e8f4203966efdff876
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 21428738873f60d2173df53f5b9f1d108ee5eff4
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606571"
+ms.locfileid: "85798734"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>Öğretici: deneyim bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -86,32 +86,32 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki desenleri kullanarak bir URL yazın:
     
-        ```https
-        https://<cluster>.medallia.com/sso/<company>
-        https://<cluster>.medallia.ca/sso/<company>
-        https://<cluster>.medallia.eu/sso/<company>
-        https://<cluster>.medallia.au/sso/<company>
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>
+    https://<cluster>.medallia.ca/sso/<company>
+    https://<cluster>.medallia.eu/sso/<company>
+    https://<cluster>.medallia.au/sso/<company>
+    ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki desenleri kullanarak bir URL yazın:
 
-        ```https
-        https://<cluster>.medallia.com/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do
-        https://<cluster>.medallia.au/sso/<company>/logonSubmit.do
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.ca/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.eu/sso/<company>/logonSubmit.do
+    https://<cluster>.medallia.au/sso/<company>/logonSubmit.do
+    ```
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki desenleri kullanarak bir URL yazın:
 
-        ```https
-        https://<cluster>.medallia.com/sso/<company>
-        https://<cluster>.medallia.ca/sso/<company>
-        https://<cluster>.medallia.eu/sso/<company>
-        https://<cluster>.medallia.au/sso/<company>
-        ```
+    ```http
+    https://<cluster>.medallia.com/sso/<company>
+    https://<cluster>.medallia.ca/sso/<company>
+    https://<cluster>.medallia.eu/sso/<company>
+    https://<cluster>.medallia.au/sso/<company>
+    ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [bulut istemci destek ekibine](mailto:support@medallia.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

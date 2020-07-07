@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1226d181a47f48e294d8a7da4c42467c9ade488
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b15dcb403b1caac1f317f840f15cd89a3b496705
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608654"
+ms.locfileid: "85798502"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-insuite"></a>Öğretici: ınsuite ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -84,19 +84,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
 
-        ```https
-        https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
-        https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
-        ```
+    ```http
+    https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
+    https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
+    ```
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`DreamArts_insuite_TENANTNAME`
 
     c. **Yanıt URL 'si** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
 
-        ```https
-        https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
-        https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
-        ```
+    ```http
+    https://<CUSTOMER_NAME>.m.diol.jp/cgi-bin/saml_sso.cgi
+    https://<CUSTOMER_NAME>.dacl.jp/cgi-bin/saml_sso.cgi
+    ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [ınsuite istemci desteği ekibine](mailto:e-support@dreamarts.co.jp) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

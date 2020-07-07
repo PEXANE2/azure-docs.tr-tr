@@ -14,13 +14,13 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
 ms.openlocfilehash: e706c0eeb848b6cd14a3c14de821ca59a9c52ee9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611373"
 ---
-# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory izin çerçevesi
+# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory onay çerçevesi
 
 Azure Active Directory (Azure AD) onay çerçevesi, çok kiracılı web ve yerel istemci uygulamaları geliştirmeyi kolaylaştırır. Bu uygulamalar, bir Azure AD kiracısından, uygulamanın kaydedildiği bilgisayardan farklı olan kullanıcı hesaplarına oturum açma izni verir. Ayrıca, kendi Web API 'lerinize ek olarak, Microsoft Graph API (Office 365 ' deki Azure AD, Intune ve hizmetlere erişmek için) ve diğer Microsoft Hizmetleri ' API 'Leri gibi Web API 'Lerine erişim de gerekebilir.
 
@@ -38,7 +38,7 @@ Aşağıdaki adımlarda, onay deneyiminin hem uygulama geliştiricisi hem de Kul
 
     ![Diğer uygulamalar için izinler](./media/consent-framework/permissions.png)
 
-1. Uygulamanızın izinlerinin güncelleştirildiğini, uygulamanın çalıştığını ve bir kullanıcının ilk kez kullanmak üzere olduğunu göz önünde bulundurun. İlk olarak, uygulamanın Azure AD `/authorize` uç noktasından bir yetkilendirme kodu alması gerekir. Yetkilendirme kodu daha sonra yeni bir erişim ve yenileme belirteci almak için kullanılabilir.
+1. Uygulamanızın izinlerinin güncelleştirildiğini, uygulamanın çalıştığını ve bir kullanıcının ilk kez kullanmak üzere olduğunu göz önünde bulundurun. İlk olarak, uygulamanın Azure AD uç noktasından bir yetkilendirme kodu alması gerekir `/authorize` . Yetkilendirme kodu daha sonra yeni bir erişim ve yenileme belirteci almak için kullanılabilir.
 
 1. Kullanıcının kimliği doğrulanmıyorsa, Azure AD `/authorize` uç noktası kullanıcıdan oturum açmasını ister.
 
@@ -60,7 +60,7 @@ Aşağıdaki adımlarda, onay deneyiminin hem uygulama geliştiricisi hem de Kul
       ![Açık yönetici onayı için izin verme](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > **Izin verme** düğmesi kullanılarak açık onay verilmesi şu anda adal. js kullanan tek sayfalı uygulamalar (Spa) için gereklidir. Aksi takdirde, erişim belirteci istendiğinde uygulama başarısız olur.
+   > **Izin verme** düğmesi kullanılarak açık onay verilmesi şu anda ADAL.js kullanan tek sayfalı uygulamalar (Spa) için gereklidir. Aksi takdirde, erişim belirteci istendiğinde uygulama başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

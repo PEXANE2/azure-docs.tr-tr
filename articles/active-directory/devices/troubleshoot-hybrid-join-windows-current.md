@@ -1,5 +1,5 @@
 ---
-title: Karma Azure Active Directory katılmış cihazlarda sorun giderme
+title: Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme
 description: Karma Azure Active Directory katılmış Windows 10 ve Windows Server 2016 cihazlarında sorun giderme.
 services: active-directory
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611322"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Active Directory katılmış cihazlarda sorun giderme
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Hibrit Azure Active Directory'ye katılmış cihazlarla ilgili sorunları giderme
 
 Bu makalenin içeriği, Windows 10 veya Windows Server 2016 çalıştıran cihazlar için geçerlidir.
 
@@ -132,7 +132,7 @@ JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' önceki kayıt 
 
 Ekleme hatalarıyla ilgili aşamayı ve hata kodunu bulmak için Olay Görüntüleyicisi günlüklerini kullanın.
 
-1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü** > **Microsoft** > **Windows** > **Kullanıcı cihaz kaydı** altında bulunur
+1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventIDs 304, 305, 307 olan olayları arayın.
 
 ![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -156,10 +156,10 @@ Hatanın olası nedenleri:
    - AD ormanında, cihazın ait olduğu, Azure AD 'de doğrulanmış bir etki alanı adına işaret eden geçerli bir SCP nesnesi gerekir.
    - Ayrıntıları, [hizmet bağlantı noktası yapılandırma](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)bölümünde bulabilirsiniz.
 - Bulgu uç noktasından bağlama ve bulma meta verilerini getirme hatası.
-   - Cihazın, kayıt ve yetkilendirme uç noktalarını `https://enterpriseregistration.windows.net`BULMASı için sistem bağlamına erişebilmesi gerekir.
+   - Cihazın, `https://enterpriseregistration.windows.net` kayıt ve yetkilendirme uç noktalarını bulması IÇIN sistem bağlamına erişebilmesi gerekir.
    - Şirket içi ortamda giden bir ara sunucu gerekiyorsa, BT Yöneticisi, cihazın bilgisayar hesabının giden ara sunucuya keşfedip sessizce kimlik doğrulaması yapabildiğinden emin olmalıdır.
 - Kullanıcı bölgesi uç noktasına bağlanılamadı ve bölge bulma işlemi gerçekleştirilemiyor. (Yalnızca Windows 10 sürüm 1809 ve üzeri)
-   - Cihaz, doğrulanmış etki alanı için bölge `https://login.microsoftonline.com`bulma işlemini gerçekleştirmek ve etki alanı türünü (yönetilen/Federasyon) BELIRLEYEBILMEK için sistem bağlamına erişebilmelidir.
+   - Cihaz, `https://login.microsoftonline.com` doğrulanmış etki alanı için bölge bulma işlemini gerçekleştirmek ve etki alanı türünü (yönetilen/Federasyon) belirleyebilmek IÇIN sistem bağlamına erişebilmelidir.
    - Şirket içi ortamda giden bir ara sunucu gerekiyorsa, BT Yöneticisi, cihazdaki SISTEM bağlamının giden ara sunucuya keşfedip sessizce kimlik doğrulaması yapabildiğinden emin olmalıdır.
 
 **Ortak hata kodları:**
@@ -172,7 +172,7 @@ Hatanın olası nedenleri:
    - Çözüm: daha fazla araştırmak için aşağıdaki alt hatayı bulun.
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
    - Neden: bulma Işlemi gerçekleştirilirken Işlem zaman aşımına uğradı.
-   - Çözüm: SISTEM bağlamında `https://enterpriseregistration.windows.net` erişilebilir olduğundan emin olun. Daha fazla bilgi için [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites)bölümüne bakın.
+   - Çözüm: `https://enterpriseregistration.windows.net` sistem bağlamında erişilebilir olduğundan emin olun. Daha fazla bilgi için [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites)bölümüne bakın.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
    - Neden: genel bölge bulma hatası. STS 'den etki alanı türü (yönetilen/Federasyon) saptanamadı.
    - Çözüm: daha fazla araştırmak için aşağıdaki alt hatayı bulun.
@@ -207,7 +207,7 @@ JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' DRS bulma testi
 
 Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay Görüntüleyicisi günlüklerini kullanın.
 
-1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü** > **Microsoft** > **Windows** > **Kullanıcı cihaz kaydı** altında bulunur
+1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventIDs 201 'e sahip olayları arayın
 
 ![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/5.png)
@@ -252,7 +252,7 @@ Hatanın nedenleri:
 
 Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için Olay Görüntüleyicisi günlükleri kullanın.
 
-1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü** > **Microsoft** > **Windows** > **Kullanıcı cihaz kaydı** altında bulunur
+1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventID 305 'e sahip olayları arayın
 
 ![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/3.png)
@@ -273,7 +273,7 @@ Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
    - Neden: genel ağ zaman aşımı.
-   - Çözüm: SISTEM bağlamında `https://login.microsoftonline.com` erişilebilir olduğundan emin olun. Şirket içi kimlik sağlayıcısına SISTEM bağlamında erişilebildiğinden emin olun. Daha fazla bilgi için bkz. [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites).
+   - Çözüm: `https://login.microsoftonline.com` sistem bağlamında erişilebilir olduğundan emin olun. Şirket içi kimlik sağlayıcısına SISTEM bağlamında erişilebildiğinden emin olun. Daha fazla bilgi için bkz. [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
    - Neden: kimlik doğrulama uç noktası ile bağlantı iptal edildi.
    - Çözüm: bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
@@ -282,7 +282,7 @@ Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için
    - Çözüm: istemci saati eğriliğini denetleyin. Bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
    - Neden: bağlanma girişimi `https://login.microsoftonline.com` başarısız oldu.
-   - Çözüm: ağ bağlantısını denetleyin `https://login.microsoftonline.com`.
+   - Çözüm: ağ bağlantısını denetleyin `https://login.microsoftonline.com` .
 
 ##### <a name="other-errors"></a>Diğer hatalar
 
@@ -327,7 +327,7 @@ JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' önceki kayıt 
 
 Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay Görüntüleyicisi günlüklerini kullanın.
 
-1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü** > **Microsoft** > **Windows** > **Kullanıcı cihaz kaydı** altında bulunur
+1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü**  >  **Microsoft**  >  **Windows**  >  **Kullanıcı cihaz kaydı** altında bulunur
 2. Aşağıdaki EventIDs 204 'e sahip olayları arayın
 
 ![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/4.png)
@@ -363,10 +363,10 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 
 - **WININET_E_TIMEOUT** (0x80072EE2/-2147012894)
    - Neden: cihaz DRS 'ye kaydettirilmeye çalışılırken genel ağ zaman aşımı
-   - Çözüm: ağ bağlantısını kontrol edin `https://enterpriseregistration.windows.net`.
+   - Çözüm: ağ bağlantısını kontrol edin `https://enterpriseregistration.windows.net` .
 - **WININET_E_NAME_NOT_RESOLVED** (0x80072EE7/-2147012889)
    - Neden: sunucu adı veya adresi çözümlenemedi.
-   - Çözüm: ağ bağlantısını kontrol edin `https://enterpriseregistration.windows.net`. Ana bilgisayar adı için DNS çözümlemenin, n/w ve cihazda doğru olduğundan emin olun.
+   - Çözüm: ağ bağlantısını kontrol edin `https://enterpriseregistration.windows.net` . Ana bilgisayar adı için DNS çözümlemenin, n/w ve cihazda doğru olduğundan emin olun.
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
    - Neden: sunucu bağlantısı anormal olarak sonlandırıldı.
    - Çözüm: bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
@@ -387,9 +387,9 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. Adım: günlükleri ve iletişim Microsoft Desteği toplayın
 
-Auth. zip dosyasını şuradan indirin[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Dosya Auth.zip şuradan indirin[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Dosyaları sıkıştırmasını açın ve dahil edilen **Start-Auth. txt** ve **stop-Auth. txt** dosyalarını **Start-Auth. cmd** ve **stop-Auth. cmd**olarak yeniden adlandırın.
+1. Dosyaları sıkıştırmasını açın ve eklenen dosyaları **start-auth.txt** yeniden adlandırın ve **Start-Auth. cmd** ve **stop-auth. cmd**' ye **stop-auth.txt** .
 1. Yükseltilmiş bir komut isteminden **Start-Auth. cmd**' yi çalıştırın.
 1. Sorun kullanıcısı ile başka bir oturuma geçiş yapmak için anahtar hesabını kullanın.
 1. Sorunu yeniden üretin.

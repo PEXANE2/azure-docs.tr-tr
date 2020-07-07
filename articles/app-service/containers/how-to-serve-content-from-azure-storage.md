@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
 ms.openlocfilehash: 9a5a38ea32d927f50fb9ddbebe3e1c3533e6fcc0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82625332"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux üzerinde App Service Azure Storage 'tan içerik sunma
@@ -20,7 +20,7 @@ ms.locfileid: "82625332"
 
 Bu kılavuzda, Linux üzerinde App Service Azure Storage 'ın nasıl ekleneceği gösterilmektedir. Avantajlar, güvenli içerik, içerik taşınabilirlik, kalıcı depolama, birden çok uygulamaya erişim ve birden fazla aktarım yöntemi içerir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 veya üzeri).
 - [Linux uygulamasında](https://docs.microsoft.com/azure/app-service/containers/)mevcut bir App Service.
@@ -38,7 +38,7 @@ Bu kılavuzda, Linux üzerinde App Service Azure Storage 'ın nasıl ekleneceği
 - Azure depolama, Web uygulamanıza **dahil değildir** ve ayrı olarak faturalandırılır. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage)hakkında daha fazla bilgi edinin.
 
 > [!WARNING]
-> Azure Blob depolama kullanan App Service yapılandırma, Şubat 2020 ' de salt okunabilir hale gelir. [Daha fazlasını öğrenin](https://github.com/Azure/app-service-linux-docs/blob/master/BringYourOwnStorage/mounting_azure_blob.md)
+> Azure Blob depolama kullanan App Service yapılandırma, Şubat 2020 ' de salt okunabilir hale gelir. [Daha fazla bilgi edinin](https://github.com/Azure/app-service-linux-docs/blob/master/BringYourOwnStorage/mounting_azure_blob.md)
 >
 
 ## <a name="configure-your-app-with-azure-storage"></a>Uygulamanızı Azure Storage ile yapılandırma
@@ -68,9 +68,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-azure-storage-in-docker-compose"></a>Docker Compose 'de Azure Storage 'ı kullanma
 
-Azure depolama, özel kimlik kullanarak çok Kapsayıcılı uygulamalarla bağlanabilir. Özel kimlik adını görüntülemek için çalıştırın [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+Azure depolama, özel kimlik kullanarak çok Kapsayıcılı uygulamalarla bağlanabilir. Özel kimlik adını görüntülemek için çalıştırın [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list) .
 
-*Docker-Compose. yıml* dosyanızda, `volumes` seçeneğini ile `custom-id`eşleyin. Örneğin:
+*Docker-Compose. yıml* dosyanızda, `volumes` seçeneğini ile eşleyin `custom-id` . Örnek:
 
 ```yaml
 wordpress:

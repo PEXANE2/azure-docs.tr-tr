@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
 ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82627594"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS ile SQL Server Agent işleri ADF 'ye geçirme
@@ -33,13 +33,13 @@ Genel olarak, geçerli iş adımı türlerindeki seçili SQL Aracısı işleri i
 
 |SQL Aracısı iş nesnesi  |ADF kaynağı  |Notlar|
 |---------|---------|---------|
-|SQL Aracısı işi|konfigüre     |*>iş adı için \< *işlem hattının adı oluşturulacak. <br> <br> Yerleşik aracı işleri geçerli değildir: <li> SSIS sunucu bakım Işi <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
-|SSIS iş adımı|SSIS paketi yürütme etkinliği|<li> Etkinliğin adı \<adım adı> olacaktır. <li> İş adımında kullanılan ara sunucu hesabı, bu etkinliğin Windows kimlik doğrulaması olarak geçirilir. <li> İş adımında tanımlanan *32 bit çalışma zamanı kullanımı* hariç *yürütme seçenekleri* , geçiş sırasında yok sayılır. <li> İş adımında tanımlanan *doğrulama* , geçiş sırasında yok sayılacak.|
-|schedule      |zamanlama tetikleyicisi        |Zamanlama tetikleyicisi adı, *Zamanlama adı>\<için oluşturulur *. <br> <br> SQL Aracısı iş zamanlamasında aşağıdaki seçenekler, geçişte yok sayılacak: <li> İkinci düzey Aralık. <li> *SQL Server Agent başladığında otomatik olarak Başlat* <li> *CPU 'Ları her boşta duruma geldiğinde Başlat* <li> *hafta içi* ve *hafta sonu günü*<time zone> <br> Aşağıda, SQL Aracısı iş zamanlaması ADF zamanlama tetikleyicisine geçirildikten sonra farklılıklar verilmiştir: <li> ADF zamanlama tetikleyicisi sonraki çalıştırma, öncül tarafından tetiklenen çalıştırmanın yürütme durumundan bağımsızdır. <li> ADF zamanlama tetikleyicisi yineleme yapılandırması, SQL Aracısı işinde günlük sıklığından farklıdır.|
+|SQL Aracısı işi|konfigüre     |İşlem hattının adı *Için \<job name> oluşturulur *. <br> <br> Yerleşik aracı işleri geçerli değildir: <li> SSIS sunucu bakım Işi <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
+|SSIS iş adımı|SSIS paketi yürütme etkinliği|<li> Etkinliğin adı olacaktır \<step name> . <li> İş adımında kullanılan ara sunucu hesabı, bu etkinliğin Windows kimlik doğrulaması olarak geçirilir. <li> İş adımında tanımlanan *32 bit çalışma zamanı kullanımı* hariç *yürütme seçenekleri* , geçiş sırasında yok sayılır. <li> İş adımında tanımlanan *doğrulama* , geçiş sırasında yok sayılacak.|
+|schedule      |zamanlama tetikleyicisi        |Zamanlama tetikleyicisinin adı *Için \<schedule name> oluşturulur *. <br> <br> SQL Aracısı iş zamanlamasında aşağıdaki seçenekler, geçişte yok sayılacak: <li> İkinci düzey Aralık. <li> *SQL Server Agent başladığında otomatik olarak Başlat* <li> *CPU 'Ları her boşta duruma geldiğinde Başlat* <li> *hafta içi* ve *hafta sonu günü*<time zone> <br> Aşağıda, SQL Aracısı iş zamanlaması ADF zamanlama tetikleyicisine geçirildikten sonra farklılıklar verilmiştir: <li> ADF zamanlama tetikleyicisi sonraki çalıştırma, öncül tarafından tetiklenen çalıştırmanın yürütme durumundan bağımsızdır. <li> ADF zamanlama tetikleyicisi yineleme yapılandırması, SQL Aracısı işinde günlük sıklığından farklıdır.|
 
 - Yerel çıkış klasöründe Azure Resource Manager (ARM) şablonları oluşturun ve doğrudan veya sonraki bir sürüme el ile dağıtın. ADF Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [Microsoft. DataFactory kaynak türleri](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede açıklanan özellik SQL Server Management Studio sürüm 18,5 veya üstünü gerektirir. SSMS 'nin en son sürümünü almak için bkz. [Download SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
 
@@ -57,8 +57,8 @@ Bu makalede açıklanan özellik SQL Server Management Studio sürüm 18,5 veya 
     1. Kaynak klasör yolunu güncelleştirme. Geçerli yollar, paketlerin klasör yolları veya üst klasör yollarıdır.
     1. Hedef klasör yolunu güncelleştirme. Varsayılan, 1. adımda seçilen varsayılan depolama hesabının göreli yoludur.
     1. Seçili eşlemeyi **silme eşlemesi**aracılığıyla silin.
-![Step2](media/how-to-migrate-ssis-job-ssms/step2.png)
-![Step2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![Step2 ](media/how-to-migrate-ssis-job-ssms/step2.png)
+ ![ Step2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. Geçirilecek geçerli işleri seçin ve ilgili *yürütülen SSIS paketi etkinliğinin*ayarlarını yapılandırın.
 

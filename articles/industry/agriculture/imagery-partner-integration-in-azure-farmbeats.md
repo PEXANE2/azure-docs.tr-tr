@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613294"
 ---
 # <a name="imagery-partner-integration"></a>Görüntüleme iş ortağı tümleştirmesi
@@ -91,7 +91,7 @@ Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereke
 
 **Üst bilgi** | **Açıklama ve örnek**
 --- | ---
-İçerik Türü  | İstek biçimi (Content-Type: Application/<format>). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
+İçerik Türü  | İstek biçimi (Content-Type: Application/ <format> ). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
 Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <erişim-belirteç>
 Kabul Et  | Yanıt biçimi. Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
 
