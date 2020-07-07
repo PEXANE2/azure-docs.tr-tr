@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 439a904c4e70a6e7e9633757c6d89fd3ce0a3a90
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 46a421ca9ab8efc69775966504fa393be9efba04
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608747"
+ms.locfileid: "85799930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Öğretici: Hudon ile tümleştirme Azure Active Directory
 
@@ -111,18 +111,18 @@ Azure AD çoklu oturum açmayı Hudon ile yapılandırmak için aşağıdaki ad�
 
     a. **Tanımlayıcı** metin kutusuna bir URL yazın:
 
-        ```https
-        https://login.huddle.net
-        https://login.huddle.com
-        ```
+    ```http
+    https://login.huddle.net
+    https://login.huddle.com
+    ```
 
     b. **Yanıt URL** 'si metin kutusuna bir URL yazın:
 
-        ```https
-        https://login.huddle.net/saml/browser-sso
-        https://login.huddle.com/saml/browser-sso
-        https://login.huddle.com/saml/idp-initiated-sso
-        ```
+    ```http
+    https://login.huddle.net/saml/browser-sso
+    https://login.huddle.com/saml/browser-sso
+    https://login.huddle.com/saml/idp-initiated-sso
+    ```
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
@@ -130,127 +130,127 @@ Azure AD çoklu oturum açmayı Hudon ile yapılandırmak için aşağıdaki ad�
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-        ```https
-        https://<customsubdomain>.huddle.com
-        https://us.huddle.com
+    ```http
+    https://<customsubdomain>.huddle.com
+    https://us.huddle.com
         ```
 
     > [!NOTE]
-    > Oturum açma URL 'SI değeri gerçek değil. Bu değeri, gerçek oturum açma URL 'siyle güncelleştirin. Bu değeri almak için [Hudon istemci destek ekibine](https://huddle.zendesk.com) başvurun.
+    > The Sign-on URL value is not real. Update this value with the actual Sign-On URL. Contact [Huddle Client support team](https://huddle.zendesk.com) to get this value.
 
-6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
+6. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Certificate (Base64)** from the given options as per your requirement and save it on your computer.
 
-    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
-7. **Hudon 'U ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
+7. On the **Set up Huddle** section, copy the appropriate URL(s) as per your requirement.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Copy configuration URLs](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
+    a. Login URL
 
-    b. Azure AD tanımlayıcısı
+    b. Azure Ad Identifier
 
-    c. Oturum kapatma URL 'SI
+    c. Logout URL
 
-### <a name="configure-huddle-single-sign-on"></a>Hudon çoklu oturum açmayı yapılandırma
+### Configure Huddle Single Sign-On
 
-Şirket içinde çoklu oturum **açma 'yı yapılandırmak** için, indirilen **sertifikayı (Base64)** ve Azure Portal olan uygun URL 'leri, [hudon 'un destek ekibine](https://huddle.zendesk.com/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+To configure single sign-on on **Huddle** side, you need to send the downloaded **Certificate (Base64)** and appropriate copied URLs from Azure portal to [Huddle support team](https://huddle.zendesk.com/). They set this setting to have the SAML SSO connection set properly on both sides.
 
 > [!NOTE]
-> Çoklu oturum açma 'nın, Hudon desteği ekibi tarafından etkinleştirilmesi gerekir. Yapılandırma tamamlandığında bir bildirim alırsınız.
+> Single sign-on needs to be enabled by the Huddle support team. You get a notification when the configuration has been completed.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
+### Create an Azure AD test user
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. In the Azure portal, in the left pane, select **Azure Active Directory**, select **Users**, and then select **All users**.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    ![The "Users and groups" and "All users" links](common/users.png)
 
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+2. Select **New user** at the top of the screen.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![New user Button](common/new-user.png)
 
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
+3. In the User properties, perform the following steps.
 
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
+    ![The User dialog box](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. In the **Name** field enter **BrittaSimon**.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
+    For example, BrittaSimon@contoso.com
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Select **Show password** check box, and then write down the value that's displayed in the Password box.
 
-    d. **Oluştur**'a tıklayın.
+    d. Click **Create**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### Assign the Azure AD test user
 
-Bu bölümde, Hudon 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'ı etkinleştirin.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Huddle.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **hudta**' yı seçin.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Huddle**.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise applications blade](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Hudon**' u seçin.
+2. In the applications list, select **Huddle**.
 
-    ![Uygulamalar listesindeki Hudon bağlantısı](common/all-applications.png)
+    ![The Huddle link in the Applications list](common/all-applications.png)
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+3. In the menu on the left, select **Users and groups**.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+    ![The "Users and groups" link](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. Click the **Add user** button, then select **Users and groups** in the **Add Assignment** dialog.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![The Add Assignment pane](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+5. In the **Users and groups** dialog select **Britta Simon** in the Users list, then click the **Select** button at the bottom of the screen.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+6. If you are expecting any role value in the SAML assertion then in the **Select Role** dialog select the appropriate role for the user from the list, then click the **Select** button at the bottom of the screen.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+7. In the **Add Assignment** dialog click the **Assign** button.
 
-### <a name="create-huddle-test-user"></a>Hudani test kullanıcısı oluşturma
+### Create Huddle test user
 
-Azure AD kullanıcılarının hudta 'da oturum açmasını sağlamak için, Hudon 'a sağlanması gerekir. Hudta durumunda, sağlama el ile gerçekleştirilen bir görevdir.
+To enable Azure AD users to log in to Huddle, they must be provisioned into Huddle. In the case of Huddle, provisioning is a manual task.
 
-**Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları uygulayın:**
+**To configure user provisioning, perform the following steps:**
 
-1. **Hudamın** şirket sitenizde yönetici olarak oturum açın.
+1. Log in to your **Huddle** company site as administrator.
 
-2. **Çalışma alanı**' na tıklayın.
+2. Click **Workspace**.
 
-3. Kişileri ** \> davet et**' e tıklayın.
+3. Click **People \> Invite People**.
 
     ![People](./media/huddle-tutorial/ic787838.png "People")
 
-4. **Yeni davet oluştur** bölümünde aşağıdaki adımları uygulayın:
+4. In the **Create a new invitation** section, perform the following steps:
   
-    ![Yeni davet](./media/huddle-tutorial/ic787839.png "Yeni davet")
+    ![New Invitation](./media/huddle-tutorial/ic787839.png "New Invitation")
   
-    a. **Kişileri katılmaya davet etmek için bir takım seçin** listesinde **ekip**' i seçin.
+    a. In the **Choose a team to invite people to join** list, select **team**.
 
-    b. Metin kutusuna davet etmek istediğiniz **kişilerin e-posta adresini girmek** için, içinde sağlamak istediğiniz geçerli BIR Azure AD hesabının **e-posta adresini** yazın.
+    b. Type the **Email Address** of a valid Azure AD account you want to provision in to **Enter email address for people you'd like to invite** textbox.
 
-    c. **Davet et**' e tıklayın.
+    c. Click **Invite**.
 
     > [!NOTE]
-    > Azure AD hesap tutucusu, hesabı etkin olmadan önce onaylamaya yönelik bir bağlantı içeren bir e-posta alır.
+    > The Azure AD account holder will receive an email including a link to confirm the account before it becomes active.
 
 > [!NOTE]
-> Azure AD Kullanıcı hesapları sağlamak için Hudon 'un sunduğu diğer Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
+> You can use any other Huddle user account creation tools or APIs provided by Huddle to provision Azure AD user accounts.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+### Test single sign-on
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Erişim panelinde Hudta kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız zaman içinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+When you click the Huddle tile in the Access Panel, you should be automatically signed in to the Huddle for which you set up SSO. For more information about the Access Panel, see [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## Additional Resources
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

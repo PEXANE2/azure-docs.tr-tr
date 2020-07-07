@@ -2,14 +2,14 @@
 title: Öğretici-coğrafi olarak çoğaltılan kayıt defteri oluşturma
 description: Bir Azure Container Registry oluşturun, coğrafi çoğaltma yapılandırın, bir Docker görüntüsü hazırlayın ve bunu kayıt defterine dağıtın. Üç bölümden oluşan bir serinin birinci bölümü.
 ms.topic: tutorial
-ms.date: 04/30/2017
+ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 159426b7258d83fc28fc7d126c064167bbe00975
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693237"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799479"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi çoğaltmalı Azure Container Registry’yi hazırlama
 
@@ -37,53 +37,66 @@ Azure Cloud Shell, bu öğreticideki her adımı tamamlamak için gerekli olan D
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
+Bu öğreticide, Premium hizmet katmanında bir Azure Kapsayıcı kayıt defteri gerekir. Yeni bir Azure Container Registry oluşturmak için bu bölümdeki adımları izleyin.
+
+> [!TIP]
+> Daha önce bir kayıt defteri oluşturduysanız ve yükseltmeniz gerekiyorsa bkz. [katmanları değiştirme](container-registry-skus.md#changing-tiers). 
+
 [Azure Portal](https://portal.azure.com) oturum açın.
 
 Azure Container Registry **kaynak kapsayıcıları oluştur**' u seçin  >  **Containers**  >  **Azure Container Registry**.
 
-![Azure portalında kapsayıcı kayıt defteri oluşturma][tut-portal-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Azure portalında kapsayıcı kayıt defteri oluşturma":::
 
-Aşağıdaki ayarlarla yeni kayıt defterinizi yapılandırın:
+Yeni kayıt defterinizi aşağıdaki ayarlarla yapılandırın. **Temel bilgiler** sekmesinde:
 
 * **Kayıt defteri adı**: Azure’da genel olarak benzersiz olan ve 5-50 alfasayısal karakterden oluşan bir kayıt defteri adı oluşturun
 * **Kaynak grubu**: **Yeni oluştur** > `myResourceGroup`
 * **Konum**:`West US`
-* **Yönetici Kullanıcı**: `Enable` (kapsayıcılar için Web App görüntüleri çekmek için gereklidir)
 * **SKU**: `Premium` (coğrafi çoğaltma için gereklidir)
 
-**Oluştur**’u seçerek ACR örneğini dağıtın.
+Kayıt defteri örneğini oluşturmak için **gözden geçir + oluştur** seçeneğini belirleyip **Oluştur** ' u seçin.
 
-![Azure portalında kapsayıcı kayıt defteri oluşturma][tut-portal-02]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Azure portal bir kapsayıcı kayıt defteri yapılandırma":::
 
 Bu öğreticinin geri kalan aşamalarında, seçtiğiniz kapsayıcı **Kayıt defteri adı** için yer tutucu olarak `<acrName>` kullanacağız.
 
 > [!TIP]
 > Azure Container Registry genellikle birden fazla kapsayıcı konağında kullanılan uzun ömürlü kaynaklar olduğundan, kayıt defterinizi kendi kaynak grubunda oluşturmanızı öneririz. Coğrafi çoğaltmalı kayıt defterleri ve web kancaları yapılandırılırken bu ek kaynaklar aynı kaynak grubuna yerleştirilir.
->
 
 ## <a name="configure-geo-replication"></a>Coğrafi çoğaltmayı yapılandırma
 
 Premium kayıt defterine sahip olduğunuza göre coğrafi çoğaltmayı yapılandırabilirsiniz. Sonraki öğreticide iki bölgede çalıştırılacak şekilde yapılandıracağınız web uygulamanız, en yakın kayıt defterinden kapsayıcı görüntülerini çeker.
 
-Azure portalında yeni kapsayıcı kayıt defterinize gidin ve **HİZMETLER** bölümünden **Çoğaltmalar**’ı seçin:
+Azure portal yeni kapsayıcı Kayıt defterinize gidin ve **Hizmetler**bölümünden **çoğaltmalar** ' ı seçin:
 
-![Azure portalı kapsayıcı kayıt defteri kullanıcı arabirimindeki Çoğaltmalar][tut-portal-03]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Azure portalı kapsayıcı kayıt defteri kullanıcı arabirimindeki Çoğaltmalar":::
 
 Coğrafi çoğaltma için uygun Azure bölgelerinin yeşil altıgenlerle temsil edildiği bir harita görüntülenir:
 
- ![Azure portalındaki bölge haritası][tut-map-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure portalındaki bölge haritası":::
 
 Yeşil altıgeni seçip ardından **Çoğaltma oluştur** bölümünden **Oluştur**’u seçerek Doğu ABD bölgesine kayıt defterinizi çoğaltın:
 
- ![Azure portalında çoğaltma oluşturmaya yönelik kullanıcı arabirimi][tut-portal-04]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure portalında çoğaltma oluşturmaya yönelik kullanıcı arabirimi":::
 
 Çoğaltma tamamlandığında portal her iki bölge için de *Hazır* durumunu gösterir. Çoğaltma durumunu yenilemek için **Yenile** düğmesini kullanın. Çoğaltmaların oluşturulması ve eşitlenmesi bir dakika kadar sürebilir.
 
-![Azure portalında çoğaltma durumuna yönelik kullanıcı arabirimi][tut-portal-05]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure portalında çoğaltma durumuna yönelik kullanıcı arabirimi":::
+
+
+## <a name="enable-admin-account"></a>Yönetici hesabını etkinleştir
+
+Sonraki öğreticilerde, kayıt defterinden doğrudan Kapsayıcılar için Web App bir kapsayıcı görüntüsü dağıtırsınız. Bu özelliği etkinleştirmek için kayıt defterinin [yönetici hesabını](container-registry-authentication.md#admin-account)da etkinleştirmeniz gerekir.
+
+Azure portal yeni kapsayıcı Kayıt defterinize gidin ve **Ayarlar**altında **erişim anahtarları** ' nı seçin. **Yönetici kullanıcı** altında **Etkinleştir**’i seçin.
+
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Yönetici hesabını Azure portal etkinleştirme":::
+
 
 ## <a name="container-registry-login"></a>Kapsayıcı kayıt defterinde oturum açma
 
-Coğrafi çoğaltmayı yapılandırdığınıza göre, bir kapsayıcı görüntüsü oluşturun ve kayıt defterinize gönderin. Görüntüleri göndermeden önce ACR örneğinizde oturum açmanız gerekir.
+Coğrafi çoğaltmayı yapılandırdığınıza göre, bir kapsayıcı görüntüsü oluşturun ve kayıt defterinize gönderin. Görüntüleri göndermeden önce kayıt defterinizde oturum açmalısınız.
 
 Kimlik doğrulaması yapmak ve kayıt defterinize yönelik kimlik bilgilerini önbelleğe almak için [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) komutunu kullanın. `<acrName>` değerini, önceden oluşturduğunuz kayıt defterinin adıyla değiştirin.
 
@@ -97,7 +110,7 @@ Bu komut tamamlandığında `Login Succeeded` iletisini döndürür.
 
 Bu öğreticideki örnek, [ASP.NET Core][aspnet-core] ile oluşturulmuş küçük bir web uygulamasını içerir. Uygulama, Azure Container Registry tarafından görüntünün dağıtıldığı kaynak bölgeyi görüntüleyen bir HTML sayfası görevi görür.
 
-![Tarayıcıda gösterilen öğretici uygulama][tut-app-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Tarayıcıda gösterilen öğretici uygulama":::
 
 Örneği yerel bir dizine ve `cd` öğesini şu dizine indirmek için git kullanın:
 
@@ -228,15 +241,6 @@ Görüntülere yerel olarak hizmet vermek için coğrafi çoğaltma kullanarak k
 
 > [!div class="nextstepaction"]
 > [Azure Container Registry’den web uygulaması dağıtma](container-registry-tutorial-deploy-app.md)
-
-<!-- IMAGES -->
-[tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png
-[tut-portal-02]: ./media/container-registry-tutorial-prepare-registry/tut-portal-02.png
-[tut-portal-03]: ./media/container-registry-tutorial-prepare-registry/tut-portal-03.png
-[tut-portal-04]: ./media/container-registry-tutorial-prepare-registry/tut-portal-04.png
-[tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
-[tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
-[tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip

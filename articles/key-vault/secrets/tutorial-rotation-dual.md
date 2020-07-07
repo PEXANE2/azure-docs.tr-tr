@@ -1,6 +1,6 @@
 ---
-title: Çift kimlik bilgisi döndürme öğreticisi
-description: Çift kimlik bilgisi kimlik doğrulaması kullanan kaynaklar için gizli dizi döndürmeyi nasıl otomatikleştirebileceğinizi öğrenmek için bu öğreticiyi kullanın.
+title: İki kimlik bilgileri kümesi olan kaynaklar için döndürme öğreticisi
+description: İki kimlik doğrulama kimlik doğrulaması kümesini kullanan kaynaklar için gizli dizi döndürmeyi nasıl otomatikleştirebileceğinizi öğrenmek için bu öğreticiyi kullanın.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 9ab8a35808f94c04c1d57cd18a8d45b5a59c5160
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85487032"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800706"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-dual-credential-authentication"></a>Çift kimlik bilgisi kimlik doğrulaması kullanan kaynaklar için gizli dizi döndürmeyi otomatikleştirin
+# <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>İki kimlik doğrulama kimlik kümesi içeren kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
 Azure hizmetlerinde kimlik doğrulaması yapmanın en iyi yolu [yönetilen bir kimlik](../general/managed-identity.md)kullanmaktır, ancak bir seçenek olmadığı durumlarda bazı senaryolar vardır. Bu durumlarda, erişim tuşları veya parolalar kullanılır. Erişim anahtarları ve parolalar sıklıkla döndürülmelidir.
 
-Bu öğreticide, Çift kimlik bilgisi kimlik doğrulaması kullanan veritabanları ve hizmetler için düzenli aralıklarla gizli dizi döndürmenin nasıl otomatikleştirdiği gösterilmektedir. Özellikle, bu öğretici, Azure Event Grid bildirimi tarafından tetiklenen bir işlevi kullanarak Azure Key Vault depolanan Azure depolama hesabı anahtarlarını, gizli dizi olarak döndürür. :
+Bu öğreticide, iki kimlik doğrulama kimlik doğrulaması kümesini kullanan veritabanları ve hizmetler için düzenli aralıklarla yapılan gizli dizi döndürmenin nasıl otomatikleştirdiği gösterilmektedir. Özellikle, bu öğretici, Azure Event Grid bildirimi tarafından tetiklenen bir işlevi kullanarak Azure Key Vault depolanan Azure depolama hesabı anahtarlarını, gizli dizi olarak döndürür. :
 
 > [!NOTE]
 > Depolama hesabı anahtarları, depolama hesabına temsilci erişimi için paylaşılan erişim imza belirteçleri sağlanarak Key Vault otomatik olarak yönetilebilir. Erişim anahtarı ile depolama hesabı bağlantı dizesi gerektiren hizmetler vardır ve bu senaryo için bu çözüm önerilir
@@ -35,7 +35,7 @@ Yukarıdaki çözümde, Azure Key Vault depolama hesabı ayrı erişim anahtarla
 1. İşlev uygulaması alternatif anahtarı (en son dışında) tanımlar ve depolama hesabı 'nı yeniden oluşturmak için çağırır
 1. İşlev uygulaması, yeni bir parola Azure Key Vault için yeni bir anahtar ekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault
 * İki Azure depolama hesabı
@@ -47,7 +47,7 @@ Mevcut anahtar kasası ve depolama hesaplarınız yoksa, aşağıdaki dağıtım
 
 1. **Kaynak grubu**altında **Yeni oluştur**' u seçin. Grubu **akvdönüşü** olarak adlandırın ve **Tamam**' a tıklayın.
 1. **Gözden geçir + oluştur**' u seçin.
-1. **Oluştur** ' u seçin
+1. **Oluştur**’u seçin
 
     ![Kaynak grubu oluşturma](../media/secrets/rotation-dual/dual-rotation-1.png)
 
@@ -91,7 +91,7 @@ Daha sonra, diğer gerekli bileşenlere ek olarak, sistem tarafından yönetilen
 1. **Gizli adı**alanına erişim anahtarlarının depolanacağı gizli adı yazın
 1. **Depo URL 'si**içinde, Işlev kodu GitHub Location () yazın **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git**
 1. **Gözden geçir + oluştur**' u seçin.
-1. **Oluştur** ' u seçin
+1. **Oluştur**’u seçin
 
    ![Gözden geçir + oluştur](../media/secrets/rotation-dual/dual-rotation-2.png)
 
@@ -165,7 +165,7 @@ Mevcut işleve dönme için ek depolama hesabı anahtarları eklenmesi şunları
 1. **İşlev uygulaması adına**, işlev uygulama adını yazın
 1. **Gizli adı**alanına erişim anahtarlarının depolanacağı gizli adı yazın
 1. **Gözden geçir + oluştur**' u seçin.
-1. **Oluştur** ' u seçin
+1. **Oluştur**’u seçin
 
    ![Gözden geçir + oluştur](../media/secrets/rotation-dual/dual-rotation-7.png)
 
@@ -203,7 +203,7 @@ az storage account keys list -n akvrotationstorage
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>Key Vault çift kimlik bilgisi döndürme işlevlerini kullanılabilir
 
-- [Depolama hesabı](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
+- [Depolama Hesabı](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin

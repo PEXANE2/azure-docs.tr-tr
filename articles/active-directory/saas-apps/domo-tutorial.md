@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba0bdd58dfcadf4c524e9c386aac94628f77c8a
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 7a791fb2e40e46c1081dbb50a85af780d45f528e
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608794"
+ms.locfileid: "85799539"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-domo"></a>Öğretici: Domo ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -87,19 +87,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-        ```https
-        https://<companyname>.domo.com` |
-        https://<companyname>.beta.domo.com` |
-        https://<companyname>.demo.domo.com` |
-        https://<companyname>.dev.domo.com` |
-        https://<companyname>.fastage1.domo.com` |
-        https://<companyname>.frdev.domo.com` |
-        https://<companyname>.gastage.domo.com` |
-        https://<companyname>.load.domo.com` |
-        https://<companyname>.local.domo.com` |
-        https://<companyname>.qa.domo.com` |
-        https://<companyname>.stage.domo.com` |
-        ```
+    ```http
+    https://<companyname>.domo.com
+    https://<companyname>.beta.domo.com
+    https://<companyname>.demo.domo.com
+    https://<companyname>.dev.domo.com
+    https://<companyname>.fastage1.domo.com
+    https://<companyname>.frdev.domo.com
+    https://<companyname>.gastage.domo.com
+    https://<companyname>.load.domo.com
+    https://<companyname>.local.domo.com
+    https://<companyname>.qa.domo.com
+    https://<companyname>.stage.domo.com
+    ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Domo istemci desteği ekibine](mailto:support@domo.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1cc89beb1e704428fdb4e10868e72e837804d3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765552"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799914"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>Öğretici: hub planlayıcısı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Merkez planlayıcısı 'n
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -43,8 +43,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Merkez planlayıcısı **SP** tarafından başlatılan SSO 'yu destekler
-* Hub Planner 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Merkez planlayıcısı **SP** tarafından başlatılan SSO 'yu destekler.
+* Hub Planner 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-hub-planner-from-the-gallery"></a>Galeriden hub planlayıcısı ekleme
 
@@ -85,9 +85,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.hubplanner.com`
 
-    b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.hubplanner.com/sso/metadata`
+    b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://app.hubplanner.com/sso/metadata`
 
-    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.hubplanner.com/sso/callback`
+    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Merkez planlayıcısı istemci destek ekibine](mailto:hello@hubplanner.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -133,9 +133,29 @@ Bu bölümde, B. Simon 'u, hub Planner 'a erişim vererek Azure çoklu oturum a�
 
 **Merkez planlayıcısı** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'leri Azure Portal [hub planlayıcısı destek ekibine](mailto:hello@hubplanner.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
+### <a name="install-the-extension-in-hub-planner"></a>Uzantıyı Merkez planlayıcısı 'nda yükler
+
+SSO işlevselliğini etkinleştirmek için, önce uzantıyı etkinleştirmeniz gerekir. Hesap sahibi veya eşdeğer izinlerle, şu adımları izleyin:
+
+1. **Ayarlar**' a gidin.
+1. Kenar menüsünde **Uzantıları Yönet**  >  **Ekle/Kaldır**Uzantılar ' ı seçin.
+1. Çoklu oturum açma uzantısını bulun ve ekleme veya ücretsiz deneyin.
+1. İstendiğinde hüküm ve koşulları kabul edin ve **Şimdi Ekle**' yi seçin.
+
+### <a name="enable-sso"></a>SSO etkinleştirme
+
+Uzantı etkinleştirildikten sonra, hesabınız için SSO 'yu etkinleştirmeniz gerekir. 
+
+1. **Ayarlar**' a gidin.
+1. Yan menüden **kimlik doğrulaması**' nı seçin.
+1. **SSO (çoklu oturum açma)** seçeneğini belirleyin.
+1. Aşağıdaki görüntüde gösterildiği gibi ek kimlik doğrulama bilgilerini girin ve ardından **Kaydet**' i seçin.
+
+![SSO ayarlarının ekran görüntüsü](media/hub-planner-tutorial/sso-settings.png)
+
 ### <a name="create-hub-planner-test-user"></a>Merkez planlayıcısı test kullanıcısı oluşturma
 
-Bu bölümde, hub planlayıcısı 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. Merkez planlayıcısı platformunda kullanıcıları eklemek için [Merkez planlayıcısı destek ekibi](mailto:hello@hubplanner.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Diğer kullanıcıları eklemek istiyorsanız, **Ayarlar**  >  **Kaynakları Yönet** ' e gidin ve buradan Kullanıcı ekleyin. E-posta adreslerini eklediğinizden ve davet ettiğinizden emin olun. Davet edildikten sonra bir e-posta alır ve SSO aracılığıyla girebilecektir. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

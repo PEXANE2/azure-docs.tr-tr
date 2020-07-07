@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c6e36bdbb3d58878e6afa28610ab2b214f47de20
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76988269"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800734"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Öğretici: Tek sayfalı Video Arama uygulaması
 Bing Video Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan video sonuçları almanızı sağlar. Bu öğreticide, Bing arama API'sini kullanarak sayfada arama sonuçlarını görüntüleyen tek sayfalı bir Web uygulaması oluşturuyoruz. Uygulama HTML, CSS ve JavaScript bileşenlerini içeriyor.
@@ -100,7 +100,7 @@ Aşağıdaki şekilde sorgu metin kutusu ile aramayı tanımlayan seçenekler g�
 
 HTML formu, adları aşağıda gösterilen öğeleri içerir:
 
-|Öğe|Açıklama|
+|Öğe|Description|
 |-|-|
 | `where` | Aramada kullanılan pazarı (konum ve dil) seçmek için açılan menü. |
 | `query` | Arama terimlerinin girileceği metin alanı. |
@@ -138,7 +138,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-Örneğin, gerçek bir `SafeSearch` API çağrısındaki parametresi, veya `strict` `moderate` `moderate` varsayılan olarak olabilir.
+Örneğin, `SafeSearch` gerçek bır API çağrısındaki parametresi `strict` , veya varsayılan olarak olabilir `moderate` `moderate` .
 
 ## <a name="performing-the-request"></a>İsteği gerçekleştirme
 Sorgu, seçenekler dizesi ve API anahtarı verili durumdayken, `BingWebSearch` işlevi Bing Arama uç noktasına isteği yöneltmek için bir `XMLHttpRequest` nesnesi kullanır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
@@ -308,7 +308,7 @@ Arama sonuçları JSON yanıtında en üst düzey `value` nesnesi olarak döndü
 
 Bing Haber Arama API'si, her biri kendi üst düzey nesnesinin içinde olmak üzere en çok dört farklı türde ilgili sonuç döndürür. Bunlar:
 
-|İlişki|Açıklama|
+|İlişki|Description|
 |-|-|
 |`pivotSuggestions`|Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir.|
 |`queryExpansions`|Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.|
@@ -393,15 +393,18 @@ Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu ar
 
 Öğretici uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından komut penceresinde aşağıdaki komutu yürütün:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Sonra, HTML dosyasındaki Bing Web Araması uç noktasını şöyle değiştirin:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Sonra, HTML dosyasındaki Bing Web Araması uç noktasını şu şekilde değiştirin: \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Son olarak, aşağıdaki komutla CORS ara sunucusunu başlatın:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Öğretici uygulamasını kullanırken komut penceresini açık bırakın; pencere kapatılırsa ara sunucu durdurulur. Arama sonuçlarının altındaki genişletilebilir HTTP Üst Bilgileri bölümünde artık `X-MSEdge-ClientID` üst bilgisini (diğerleriyle birlikte) görebilir ve bunun her istekte aynı olduğunu doğrulayabilirsiniz.
 

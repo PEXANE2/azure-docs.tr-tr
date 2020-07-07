@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec9349d8ed330a00a64922a44f99910f9eeeb0df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a2d4799966e070f7c50c39c350456b594664c9a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136457"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800684"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Öğretici: Qlik Sense Enterprise 'ı Azure Active Directory tümleştirme
 
@@ -32,7 +32,7 @@ Bu öğreticide, Qlik Sense Enterprise 'ı Azure Active Directory (Azure AD) ile
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -87,11 +87,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı** metin kutusunda, aşağıdaki düzenin birini kullanarak bir URL yazın:
 
-    | |
-    |--|
-    | `https://<Fully Qualified Domain Name>.qlikpoc.com`|
-    | `https://<Fully Qualified Domain Name>.qliksense.com`|
-    | |
+    ```http
+    https://<Fully Qualified Domain Name>.qlikpoc.com
+    https://<Fully Qualified Domain Name>.qliksense.com
+    ```
 
     c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
@@ -112,9 +111,9 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**' a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -143,7 +142,7 @@ Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum a�
 
     ![QlikSense][qs24]
 
-    a. Bir metin düzenleyicisinde Azure portal indirmiş olduğunuz FederationMetaData. xml dosyasını açın.
+    a. Bir metin düzenleyicisinde Azure portal indirdiğiniz FederationMetaData.xml dosyasını açın.
 
     b. **RoleDescriptor**değerini arayın.  Dört giriş vardır (açma ve kapama öğesi etiketlerinin iki çifti).
 
@@ -191,9 +190,9 @@ Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum a�
 
     e. **SAML IDP meta verileri** , daha önce **Azure AD yapılandırması 'Ndan Federasyon meta verilerini düzenleme** bölümünde düzenlenen dosyadır.  **IDP meta verilerini karşıya yüklemeden önce,** Azure AD Ile Qlik Sense sunucusu arasında düzgün işlem yapıldığından emin olmak için dosyanın düzenlenmesi gerekir.  **Lütfen dosya düzenlenmediyse yukarıdaki yönergelere bakın.**  Dosya düzenlendiyse, gözden geçirme düğmesine tıklayın ve sanal proxy yapılandırmasına yüklemek için düzenlenmiş meta veri dosyasını seçin.
 
-    f. Azure AD 'nin Qlik Sense sunucusuna gönderdiği **Kullanıcı** kimliğini temsıl eden SAML özniteliği için öznitelik adı veya şema başvurusu girin.  Şema başvuru bilgileri, Azure Uygulama ekranları yapılandırması ' nda bulunabilir.  Name özniteliğini kullanmak için, girin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    f. Azure AD 'nin Qlik Sense sunucusuna gönderdiği **Kullanıcı** kimliğini temsıl eden SAML özniteliği için öznitelik adı veya şema başvurusu girin.  Şema başvuru bilgileri, Azure Uygulama ekranları yapılandırması ' nda bulunabilir.  Name özniteliğini kullanmak için, girin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
-    g. Azure AD aracılığıyla Qlik Sense sunucusunda kimlik doğrulaması yaparken kullanıcılara eklenecek **Kullanıcı dizini** için değeri girin.  Sabit kodlanmış değerler **köşeli ayraç []** ile çevrelenmelidir.  Azure AD SAML onaylama 'da gönderilen bir özniteliği kullanmak için, bu metin kutusuna köşeli ayraçlar **olmadan** özniteliğin adını girin.
+    örneğin: Azure AD aracılığıyla Qlik Sense sunucusunda kimlik doğrulaması yaparken kullanıcılara eklenecek **Kullanıcı dizini** için değeri girin.  Sabit kodlanmış değerler **köşeli ayraç []** ile çevrelenmelidir.  Azure AD SAML onaylama 'da gönderilen bir özniteliği kullanmak için, bu metin kutusuna köşeli ayraçlar **olmadan** özniteliğin adını girin.
 
     h. **SAML imzalama algoritması** , sanal proxy yapılandırması için hizmet sağlayıcısını (Bu örnekte Qlik Sense Server) sertifika imzalama olarak ayarlar.  Qlik Sense sunucusu Microsoft Iyileştirilmiş RSA ve AES şifreleme sağlayıcısı kullanılarak oluşturulan bir güvenilen sertifika kullanıyorsa, SAML imzalama algoritmasını **SHA-256**olarak değiştirin.
 

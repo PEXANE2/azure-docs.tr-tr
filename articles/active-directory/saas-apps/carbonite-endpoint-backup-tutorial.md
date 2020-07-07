@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f77f00870af7b9d1788d96391264bdf9b4ee73c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b3c8062bf40e8c97e93f237237dcd7c6923d59dd
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607710"
+ms.locfileid: "85799656"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Öğretici: Carbonite uç nokta yedeklemesini Azure Active Directory ile tümleştirme
 
@@ -84,28 +84,28 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     a. **Tanımlayıcı** metin kutusuna aşağıdaki URL 'lerden birini yazın:
 
-        ```https
-        https://red-us.mysecuredatavault.com
-        https://red-apac.mysecuredatavault.com
-        https://red-fr.mysecuredatavault.com
-        https://red-emea.mysecuredatavault.com
-        https://kamino.mysecuredatavault.com
-        ```
+    ```http
+    https://red-us.mysecuredatavault.com
+    https://red-apac.mysecuredatavault.com
+    https://red-fr.mysecuredatavault.com
+    https://red-emea.mysecuredatavault.com
+    https://kamino.mysecuredatavault.com
+    ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki URL 'lerden birini yazın:
 
-        ```https
-        https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx
-        https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx
-        https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx
-        https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx
-        ```
+    ```http
+    https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx
+    ```
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
     **Oturum açma URL 'si** metin kutusuna aşağıdaki URL 'lerden birini yazın:
 
-    ```https
+    ```http
     https://red-us.mysecuredatavault.com/
     https://red-apac.mysecuredatavault.com/
     https://red-fr.mysecuredatavault.com/

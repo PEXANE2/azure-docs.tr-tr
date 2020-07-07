@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 128c4d1699e6e243a5c1c1573892efa516adade1
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160203"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Öğretici: Periscope verileriyle tümleştirme Azure Active Directory
 
@@ -34,7 +34,7 @@ Periscope verilerini Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Periscope verileriyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -107,10 +107,10 @@ Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşa
 
     a. **Oturum açma URL 'si** metin kutusuna URL 'lerden herhangi birini yazın:
     
-    | |
-    |--|
-    | `https://app.periscopedata.com/` |
-    | `https://app.periscopedata.com/app/<SITENAME>` |
+    ```https
+    https://app.periscopedata.com/
+    https://app.periscopedata.com/app/<SITENAME>
+    ```
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://app.periscopedata.com/<SITENAME>/sso`
 
@@ -125,7 +125,7 @@ Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşa
 
 1. Farklı bir Web tarayıcısı penceresinde, Periscope verilerinde yönetici olarak oturum açın.
 
-2. Sol alt taraftaki dişli menüsünü açın ve **faturalandırma** > **güvenlik** menüsünü açın ve aşağıdaki adımları gerçekleştirin. Bu ayarlara yalnızca yöneticiler erişebilir.
+2. Sol alt taraftaki dişli menüsünü açın ve **faturalandırma**  >  **güvenlik** menüsünü açın ve aşağıdaki adımları gerçekleştirin. Bu ayarlara yalnızca yöneticiler erişebilir.
 
     ![Periscope verileri yapılandırma bilgileri](./media/periscope-data-tutorial/configure01.png)
 
@@ -141,7 +141,7 @@ Azure AD çoklu oturum açmayı Periscope verileriyle yapılandırmak için aşa
 
     f. XML dosyasının ilk etiketini bulun, **EntityId** değerini kopyalayın ve **veren** metin kutusuna yapıştırın.
 
-    g. SAML protokolüyle **ıdpssodescriptor** etiketini bulur. Bu bölüm içinde, **Use = imzalamayı**Içeren etiket **KeyDescriptor** ' ı bulun. **X509Certificate** değerini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
+    örneğin: SAML protokolüyle **ıdpssodescriptor** etiketini bulur. Bu bölüm içinde, **Use = imzalamayı**Içeren etiket **KeyDescriptor** ' ı bulun. **X509Certificate** değerini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
 
     h. Birden çok boşluk içeren siteler **varsayılan alandan** açılan varsayılan alanı seçebilir. Bu, yeni kullanıcıların ilk kez Periscope verilerinde oturum açtıklarında eklendiği ve Active Directory çoklu oturum açma yoluyla sağlandığı zaman bir alandır.
 
@@ -167,12 +167,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**' a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -220,7 +220,7 @@ Azure AD kullanıcılarının Periscope verilerinde oturum açmasını sağlamak
 
     b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
 
-    c. **E-posta** metin kutusuna, **\@brittasıon contoso.com**gibi kullanıcının e-postasını girin.
+    c. **E-posta** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
 
     d. **Ekle**' ye tıklayın.
 

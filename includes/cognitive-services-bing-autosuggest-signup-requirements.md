@@ -4,20 +4,16 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
-ms.openlocfilehash: 01dabff80f0c7e46e183a05a000251797d490e32
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: f12fbe3ea9fa07c5ba8498a1f0b846a72647f5da
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929544"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805529"
 ---
 ## <a name="create-an-azure-resource"></a>Azure kaynağı oluşturma
 
 Aşağıdaki Azure kaynaklarından birini oluşturarak Bing Otomatik Öneri API'si kullanmaya başlayın.
-
-### <a name="trial-resource"></a>[Deneme kaynağı](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-   * Azure aboneliği gerekmez.
-   * Ücretsiz olarak yedi gün için geçerlidir. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)bir deneme anahtarı ve uç noktası kullanılabilir.
 
 ### <a name="bing-autosuggest-resource"></a>[Bing Otomatik Öneri kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)
    * Kaynak silininceye kadar Azure portal ile kullanılabilir.

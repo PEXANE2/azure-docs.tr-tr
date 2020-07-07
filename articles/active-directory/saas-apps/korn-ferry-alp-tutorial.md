@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab11c4fe957ab81dde3fb4f75a4dd82a6d4e5d2
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 83efecea84073020e87b25a83a3a26c6d25ea08c
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608730"
+ms.locfileid: "85799773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>Öğretici: Korn Fraz ALP ile tümleştirme Azure Active Directory
 
@@ -108,19 +108,19 @@ Azure AD çoklu oturum açmayı Korn Fraz ALP ile yapılandırmak için aşağı
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-        ```https
-        https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
-        https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
-        https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
-        ```
+    ```http
+    https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+    https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+    https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+    ```
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
-        ```https
-        https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
-        https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
-        https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
-        ```
+    ```http
+    https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+    https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+    https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+    ```
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Korn Fraz ALP istemci destek ekibine](mailto:noreply@kornferry.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

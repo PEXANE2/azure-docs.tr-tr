@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318633"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Öğretici: Azure DevOps Starter kullanarak ASP.NET uygulamanızı ve Azure SQL veritabanı kodunuzu dağıtın
@@ -33,10 +33,10 @@ Bu öğreticide şunları yapacaksınız:
 > * CI işlem hattını inceleme
 > * CD işlem hattını inceleme
 > * Azure Repos değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın
-> * Azure SQL veritabanı 'na bağlanma 
+> * Azure SQL Veritabanı'na bağlanma 
 > * Kaynakları temizleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) aracılığıyla ücretsiz bir abonelik alabilirsiniz.
 
@@ -140,7 +140,7 @@ DevOps Starter, Azure DevOps kuruluşunuzdan Azure aboneliğinize dağıtım yap
 
 1. Yayın tamamlandıktan sonra, değişikliklerinizi doğrulamak için uygulamanızı yenileyin.
 
-## <a name="connect-to-azure-sql-database"></a>Azure SQL veritabanı 'na bağlanma
+## <a name="connect-to-azure-sql-database"></a>Azure SQL Veritabanı'na bağlanma
 
 Azure SQL veritabanı 'na bağlanmak için uygun izinlere sahip olmanız gerekir.
 
@@ -184,7 +184,7 @@ Ekibinizin gereksinimlerine uygun olarak bu derleme ve yayın işlem hatlarını
 > * CI işlem hattını inceleme
 > * CD işlem hattını inceleme
 > * Azure Repos değişiklikleri işleyin ve Azure 'a otomatik olarak dağıtın
-> * Azure SQL veritabanı 'na bağlanma 
+> * Azure SQL Veritabanı'na bağlanma 
 > * Kaynakları temizleme
 
 CI/CD işlem hattı hakkında daha fazla bilgi edinmek için bkz.:
