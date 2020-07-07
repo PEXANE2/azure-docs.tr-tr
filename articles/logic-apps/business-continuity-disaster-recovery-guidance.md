@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437710"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps için iş sürekliliği ve olağanüstü durum kurtarma
@@ -100,7 +100,7 @@ Veri ağ geçidi kaynağı, mantıksal uygulama kaynağınız gibi bir konum vey
 
 Birincil ve ikincil konumlarınızı, bu konumlardaki mantıksal uygulama örneklerinizin bu rolleri oynayabilmesi için ayarlayabilirsiniz:
 
-| Birincil-ikincil rol | Açıklama |
+| Birincil-ikincil rol | Description |
 |------------------------|-------------|
 | *Etkin-etkin* | Her iki konumdaki birincil ve ikincil mantıksal uygulama örnekleri şu desenlerden birini izleyerek istekleri etkin bir şekilde işler: <p><p>- *Yük Dengeleme*: her iki örneğin, her bir örneğe bir uç nokta dinlemesi ve gerektiğinde trafiği yük dengelemesi sağlayabilirsiniz. <p>- *Rekabet tüketicileri*: örneklerin bir kuyruktan iletiler için rekabet etmesi için her iki örneğin birden rekabet eden tüketici işlevi görmesini sağlayabilirsiniz. Bir örnek başarısız olursa, diğer örnek iş yükünü devralır. |
 | *Aktif-pasif* | Birincil mantıksal uygulama örneği, ikincil örnek pasif iken (devre dışı veya etkin değil) tüm iş yükünü etkin bir şekilde işler. İkincil bir sinyal bekler veya hata nedeniyle, birincil kullanım dışı veya çalışmayan bir sinyal bekler ve iş yükünü etkin örnek olarak alır. |
@@ -234,7 +234,7 @@ Aynı verileri sürekli olarak okumayı önlemek için mantıksal uygulamanızı
 
 * Sunucu, hizmet veya sistem tarafı durumuyla çalışan Logic Apps, sunucu, hizmet veya sistem tarafında bulunan özellik değerlerini veya ayarları kullanır.
 
-  Örneğin, bir veritabanından bir satırı okuyan sorgu tabanlı bir tetikleyici, satırda ayarlanmış bir `isRead` sütun olmasını gerektirir. `FALSE` Tetikleyici her bir satırı okuduğunda, mantıksal uygulama `isRead` sütunu ' dan `FALSE` ' a değiştirerek bu satırı güncelleştirir. `TRUE`
+  Örneğin, bir veritabanından bir satırı okuyan sorgu tabanlı bir tetikleyici, satırda ayarlanmış bir sütun olmasını gerektirir `isRead` `FALSE` . Tetikleyici her bir satırı okuduğunda, mantıksal uygulama sütunu ' dan ' a değiştirerek bu satırı güncelleştirir `isRead` `FALSE` `TRUE` .
 
   Bu sunucu tarafı yaklaşımı, mantıksal uygulama iletiyi işlerken bir tetikleyicinin bir iletiyi okuyabileceği ve kilitleyebildiği sıraya alma semantiğine sahip Service Bus kuyrukları veya konuları için benzer şekilde çalışır. Mantıksal uygulama işlemeyi bitirdiğinde, tetikleyici iletiyi kuyruktan veya konudan siler.
 

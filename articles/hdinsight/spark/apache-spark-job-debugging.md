@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 75f8c1f77a372d3b9b9e9a5582927f24b99fe9ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190223"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight üzerinde çalışan Apache Spark işlerinin hatasını ayıklama
@@ -21,7 +21,7 @@ Bu makalede, HDInsight kümelerinde çalışan Apache Spark işlerin nasıl izle
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     ![Azure portal YARN Kullanıcı arabirimini başlatın](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için **küme panoları**altında, **ambarı giriş** ' i seçin. Ambarı kullanıcı arabiriminden, etkin kaynak yöneticisi > **Kaynak Yöneticisi Kullanıcı arabirimine**> **Yarn** > **hızlı bağlantılar** ' a gidin.
+   > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için **küme panoları**altında, **ambarı giriş** ' i seçin. Ambarı kullanıcı arabiriminden, **YARN**  >  etkin kaynak yöneticisi > **Kaynak Yöneticisi Kullanıcı arabirimine**> Yarn**hızlı bağlantılar** ' a gidin.
 
 2. Jupiter not defterlerini kullanarak Spark işini başlattığınız için, uygulamanın **remoteparlak mıknatıcs** (not defterlerinden başlatılan tüm uygulamaların adı) adına sahip olması gerekir. İş hakkında daha fazla bilgi edinmek için uygulama adına karşı uygulama KIMLIĞI ' ni seçin. Bu eylem uygulama görünümünü başlatır.
 
@@ -98,7 +98,7 @@ Bir iş tamamlandıktan sonra, işle ilgili bilgiler Spark geçmiş sunucusunda 
     ![Spark geçmiş sunucusu Azure portal Başlat](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark geçmişini Başlat Sunucu1")
 
    > [!TIP]  
-   > Alternatif olarak, aynı zamanda, ambarı kullanıcı arabiriminden Spark geçmiş sunucusu kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için genel bakış dikey penceresinden, **küme panoları**altında, **ambarı giriş** ' i seçin. Ambarı kullanıcı arabiriminden **Spark2** > **hızlı bağlantılar** > **Spark2 geçmiş sunucusu kullanıcı arabirimi**' ne gidin.
+   > Alternatif olarak, aynı zamanda, ambarı kullanıcı arabiriminden Spark geçmiş sunucusu kullanıcı arabirimini de başlatabilirsiniz. Ambarı Kullanıcı arabirimini başlatmak için genel bakış dikey penceresinden, **küme panoları**altında, **ambarı giriş** ' i seçin. Ambarı kullanıcı arabiriminden **Spark2**  >  **hızlı bağlantılar**  >  **Spark2 geçmiş sunucusu kullanıcı arabirimi**' ne gidin.
 
 2. Listelenen tüm tamamlanmış uygulamaları görürsünüz. Daha fazla bilgi için bir uygulamanın ayrıntısına gitmek üzere bir uygulama KIMLIĞI seçin.
 

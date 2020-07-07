@@ -8,22 +8,22 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8fbddbe82ae13585b8259a66dffaeef8024baf5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71349369"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
  Belirtilen GeoJSON noktası, çokgen veya LineString ifadesinin geçerli olup olmadığını gösteren bir Boole değeri döndürür.  
   
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
   
 ```sql
 ST_ISVALID(<spatial_expr>)  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Bağımsız değişkenler
   
 *spatial_expr*  
    Bir GeoJSON noktası, çokgen veya LineString ifadesi.  

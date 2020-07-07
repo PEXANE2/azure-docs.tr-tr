@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431299"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
@@ -22,7 +22,7 @@ Bu makaleye devam etmeden önce [Service Fabric uygulama modeli][application-mod
 > RunToCompletion semantiği Şu anda [Reliable Services][reliable-services-link] programlama modeli kullanılarak yazılan hizmetler için desteklenmez.
  
 ## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion semantiği ve belirtimi
-[ServiceManifest içeri aktarılırken][application-and-service-manifests-link]RunToCompletion semantiği bir **ExecutionPolicy** olarak belirtilebilir. Belirtilen ilke, ServiceManifest 'i kapsayan tüm kod paketleri tarafından devralınır. Aşağıdaki ApplicationManifest. xml kod parçacığı bir örnek sağlar.
+[ServiceManifest içeri aktarılırken][application-and-service-manifests-link]RunToCompletion semantiği bir **ExecutionPolicy** olarak belirtilebilir. Belirtilen ilke, ServiceManifest 'i kapsayan tüm kod paketleri tarafından devralınır. Aşağıdaki ApplicationManifest.xml kod parçacığı bir örnek sağlar.
 
 ```xml
 <ServiceManifestImport>
@@ -47,7 +47,7 @@ RunToCompletion semantiğini kullanarak komple bir örneğe bakalım.
 >
 > Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Aşağıdaki ServiceManifest. xml, kapsayıcıları temsil eden iki CodePackage içeren bir ServicePackage 'i açıklar. *RunToCompletionCodePackage1* yalnızca **stdout** 'a bir ileti kaydeder ve çıkılıyor. *RunToCompletionCodePackage2* bir süre için geri döngü adresine ping atar ve sonra **0**, **1** veya **2**çıkış kodu ile çıkar.
+Aşağıdaki ServiceManifest.xml, kapsayıcıları temsil eden iki CodePackage oluşan bir ServicePackage 'i açıklar. *RunToCompletionCodePackage1* yalnızca **stdout** 'a bir ileti kaydeder ve çıkılıyor. *RunToCompletionCodePackage2* bir süre için geri döngü adresine ping atar ve sonra **0**, **1** veya **2**çıkış kodu ile çıkar.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ Aşağıdaki ServiceManifest. xml, kapsayıcıları temsil eden iki CodePackage 
 </ServiceManifest>
 ```
 
-Aşağıdaki ApplicationManifest. xml, yukarıda açıklanan ServiceManifest. xml ' i temel alan bir uygulamayı açıklar. **OnFailure**yeniden başlatma Ilkesiyle *Windowsruntocompletionservicepackage* için **runtocompletion** **ExecutionPolicy** öğesini belirtir. *Windowsruntocompletionservicepackage*'in etkinleştirilmesinden sonra, bileşen kod paketleri başlatılır. *RunToCompletionCodePackage1* ilk etkinleştirme sırasında başarıyla çıkış olmalıdır. Bununla birlikte, *RunToCompletionCodePackage2* başarısız olabilir **(sıfır olmayan çıkış kodu)**, bu durumda yeniden başlatma ilkesi **OnFailure**olduğundan yeniden başlatılır.
+Aşağıdaki ApplicationManifest.xml, yukarıda açıklanan ServiceManifest.xml dayalı bir uygulamayı açıklar. **OnFailure**yeniden başlatma Ilkesiyle *Windowsruntocompletionservicepackage* için **runtocompletion** **ExecutionPolicy** öğesini belirtir. *Windowsruntocompletionservicepackage*'in etkinleştirilmesinden sonra, bileşen kod paketleri başlatılır. *RunToCompletionCodePackage1* ilk etkinleştirme sırasında başarıyla çıkış olmalıdır. Bununla birlikte, *RunToCompletionCodePackage2* başarısız olabilir **(sıfır olmayan çıkış kodu)**, bu durumda yeniden başlatma ilkesi **OnFailure**olduğundan yeniden başlatılır.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

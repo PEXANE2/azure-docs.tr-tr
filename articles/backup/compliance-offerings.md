@@ -4,10 +4,10 @@ description: Azure Backup için uyumluluk tekliflerinin Özeti
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: da25c6b9b8206ebd2e7ca1a3d90ec88a6efe04b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80423125"
 ---
 # <a name="azure-backup-compliance-offerings"></a>Azure Backup uyumluluk teklifleri
@@ -33,9 +33,9 @@ Azure Backup hizmeti kullanılırken hizmetinizin düzenlenmiş olduğundan emin
 
 * [DoD DıŞA L2, L4, L5](https://docs.microsoft.com/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide)
 * [FedRAMP](https://docs.microsoft.com/microsoft-365/compliance/offering-fedramp)
-* [FıPS 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)
+* [FIPS 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)
 
-## <a name="industry"></a>Endüstri
+## <a name="industry"></a>Sektör
 
 * [HIPAA](https://docs.microsoft.com/microsoft-365/compliance/offering-hipaa-hitech)
 * [HıTRUST](https://docs.microsoft.com/microsoft-365/compliance/offering-hitrust)

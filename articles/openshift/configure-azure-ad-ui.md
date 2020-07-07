@@ -9,10 +9,10 @@ ms.author: asabbour
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc
 ms.openlocfilehash: 6b6248aac35c22b9ffd2cd95df41e84986356259
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82205319"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma (portal)
@@ -24,7 +24,7 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Az
 Kümenin **OAuth geri çağırma URL 'sini** oluşturun ve bunu unutmayın. Kaynak grubunuzun adı ve **Aro-Cluster** ' i kümenizin **adıyla değiştirdiğinizden emin** olun.
 
 > [!NOTE]
-> OAuth `AAD` geri çağırma URL 'sindeki bölüm, daha sonra kurulumunu yaptığınız OAuth kimlik sağlayıcısı adıyla eşleşmelidir.
+> `AAD`OAuth geri çağırma URL 'sindeki bölüm, daha sonra kurulumunu yaptığınız OAuth kimlik sağlayıcısı adıyla eşleşmelidir.
 
 ```azurecli-interactive
 domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
@@ -58,7 +58,7 @@ Uygulama geliştiricileri, kendi uygulamalarına hangi talepler gönderilmesini 
 * Azure AD 'nin belirteçlerde döndürdüğü belirli taleplerin davranışını değiştirin.
 * Uygulamanız için özel talepler ekleyin ve erişin.
 
-OpenShift 'i `email` talebi kullanacak ve `upn` Azure Active Directory tarafından döndürülen kimlik belirtecinin parçası `upn` olarak ekleyerek tercih edilen Kullanıcı adını ayarlamak için yapılandıracağız.
+OpenShift 'i `email` talebi kullanacak ve `upn` `upn` Azure ACTIVE DIRECTORY tarafından döndürülen kimlik belirtecinin parçası olarak ekleyerek tercih edilen Kullanıcı adını ayarlamak için yapılandıracağız.
 
 **Belirteç yapılandırması (Önizleme)** bölümüne gidin ve **Isteğe bağlı talep Ekle**' ye tıklayın. **Kimlik** ' i seçin ve ardından **e-posta** ve **UPN** taleplerini denetleyin.
 
@@ -72,7 +72,7 @@ Bir Azure Active Directory (Azure AD) kiracısında kayıtlı uygulamalar, varsa
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID kimlik doğrulamasını yapılandırma
 
-`kubeadmin` Kimlik bilgilerini alın. `kubeadmin` Kullanıcı parolasını bulmak için aşağıdaki komutu çalıştırın.
+`kubeadmin`Kimlik bilgilerini alın. Kullanıcı parolasını bulmak için aşağıdaki komutu çalıştırın `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -80,7 +80,7 @@ az aro list-credentials \
   --resource-group aro-rg
 ```
 
-Aşağıdaki örnek çıktı, parolasının içinde `kubeadminPassword`olacağını gösterir.
+Aşağıdaki örnek çıktı, parolasının içinde olacağını gösterir `kubeadminPassword` .
 
 ```json
 {
@@ -98,14 +98,14 @@ Aşağıdaki komutu çalıştırarak küme konsolu URL 'sini bulabilirsiniz, ş�
     --query "consoleProfile.url" -o tsv
 ```
 
-Konsol URL 'sini bir tarayıcıda başlatın ve `kubeadmin` kimlik bilgilerini kullanarak oturum açın.
+Konsol URL 'sini bir tarayıcıda başlatın ve kimlik bilgilerini kullanarak oturum açın `kubeadmin` .
 
 **Yönetim**' e gidin, **küme ayarları**' na tıklayın ve ardından **genel yapılandırma** sekmesini seçin. **OAuth**Seç ' e gidin.
 
 Aşağı kaydırarak **kimlik sağlayıcıları** altında **Ekle** ' yi seçin ve **OpenID Connect**' i seçin.
 ![Kimlik sağlayıcıları açılan listesinden OpenID Connect ' i seçin](media/aro4-oauth-idpdrop.png)
 
-Adı **AAD**olarak, **ISTEMCI kimliğini** **uygulama kimliği** ve **istemci parolası**olarak girin. **Veren URL 'si** şöyle biçimlendirilir: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. Yer tutucusunu, daha önce aldığınız kiracı KIMLIĞIYLE değiştirin.
+Adı **AAD**olarak, **ISTEMCI kimliğini** **uygulama kimliği** ve **istemci parolası**olarak girin. **Veren URL 'si** şöyle biçimlendirilir: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Yer tutucusunu, daha önce aldığınız kiracı KIMLIĞIYLE değiştirin.
 
 ![OAuth ayrıntılarını doldur](media/aro4-oauth-idp-1.png)
 

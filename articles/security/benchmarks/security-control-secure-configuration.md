@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: e3d43239dabe75bc2b25319945c2c6b08d726d2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193114"
 ---
 # <a name="security-control-secure-configuration"></a>Güvenlik denetimi: güvenli yapılandırma
@@ -124,7 +124,7 @@ Kodunuzu özel Azure ilkeleri, Azure Resource Manager şablonları ve Istenen du
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 7,7 | 5,4 | Müşteri |
+| 7,7 | 5.4 | Müşteri |
 
 Azure Ilkesi 'ni kullanarak Azure kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure kaynaklarınızın ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak üzere Azure Ilke diğer adlarını kullanın. Ayrıca, belirli kaynaklarınızla ilgili yerleşik ilke tanımlarından da yararlanabilirsiniz.  Ayrıca, Azure Otomasyonu ' nu yapılandırma değişikliklerini dağıtmak için de kullanabilirsiniz.
 
@@ -136,7 +136,7 @@ Azure Ilkesi 'ni kullanarak Azure kaynakları için standart güvenlik yapıland
 
 | Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 7,8 | 5,4 | Müşteri |
+| 7,8 | 5.4 | Müşteri |
 
 Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde Istenen durum yapılandırması (DSC) düğümleri için bir yapılandırma yönetim hizmetidir. Makineleri kolayca ekleyebilir, bunlara bildirime dayalı yapılandırmalara atayabilir ve her makinenin, belirttiğiniz istenen duruma göre uyumluluğunu gösteren raporları görüntüleyebilirsiniz. 
 

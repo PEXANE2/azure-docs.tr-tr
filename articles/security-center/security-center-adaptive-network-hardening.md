@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
 ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80385087"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma
@@ -39,7 +39,7 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Uyarlamalı ağ sağlamlaştırma uyarılarını ve kurallarını görüntüle
 
-1. Güvenlik Merkezi 'nde **ağ** -> **Uyarlamalı ağ sağlamlaştırma**' ı seçin. Ağ VM 'Leri üç ayrı sekme altında listelenir:
+1. Güvenlik Merkezi 'nde **ağ**  ->  **Uyarlamalı ağ sağlamlaştırma**' ı seçin. Ağ VM 'Leri üç ayrı sekme altında listelenir:
    * **Sağlıksız kaynaklar**: Şu anda Uyarlamalı ağ sağlamlaştırma algoritması çalıştırılarak tetiklenen önerilere ve uyarılara sahip VM 'ler vardır. 
    * **Sağlıklı kaynaklar**: uyarılar ve öneriler olmadan VM 'ler.
    * **Taranmamış kaynaklar**: aşağıdaki nedenlerden biri nedeniyle Uyarlamalı ağ sağlamlaştırma algoritması üzerinde çalıştırılamaz VM 'ler:
@@ -119,7 +119,7 @@ Güvenlik Merkezi 'nin önerilmeyen bir "izin verme" kuralı ekleyebilirsiniz.
 
 1. **Kural Ekle** ' ye tıklayın (sol üst köşede bulunur).
 
-   ![Kural Ekle](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
+   ![kural ekleme](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
 
 1. **Yeni kural** penceresinde, ayrıntıları girin ve **Ekle**' ye tıklayın.
 

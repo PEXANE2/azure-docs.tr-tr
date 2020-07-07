@@ -14,17 +14,17 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72298799"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure Blob Depolama ve Visual Studio’ya bağlı hizmetleri kullanmaya başlama (bulut hizmeti projeleri)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, Visual Studio Cloud Services projesindeki Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra Azure Blob Storage 'ı kullanmaya nasıl başlacağınız açıklanır. Blob kapsayıcılarının nasıl erişebileceğini ve oluşturulacağını ve Blobları karşıya yükleme, listeleme ve indirme gibi genel görevlerin nasıl gerçekleştirileceğini göstereceğiz. Örnekler C\# dilinde yazılır ve [.net Için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
+Bu makalede, Visual Studio Cloud Services projesindeki Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra Azure Blob Storage 'ı kullanmaya nasıl başlacağınız açıklanır. Blob kapsayıcılarının nasıl erişebileceğini ve oluşturulacağını ve Blobları karşıya yükleme, listeleme ve indirme gibi genel görevlerin nasıl gerçekleştirileceğini göstereceğiz. Örnekler C dilinde yazılır \# ve [.net Için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
 
 Azure Blob depolama, dünyanın her yerinden HTTP veya HTTPS aracılığıyla erişilebilen büyük miktarda yapılandırılmamış veriyi depolamaya yönelik bir hizmettir. Tek bir blob herhangi bir boyutta olabilir. Blob 'lar görüntüler, ses ve video dosyaları, ham veriler ve belge dosyaları gibi şeyler olabilir.
 

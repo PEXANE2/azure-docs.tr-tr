@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 8cb74a020590fc55dcd1f046ba667be3d6640b3e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203752"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Güvenlik çerçevesi: Iletişim güvenliği | Karşı 
@@ -31,8 +31,8 @@ ms.locfileid: "82203752"
 | **Azure Data Factory** | <ul><li>[Şirket içi SQL Server Azure Data Factory için bağlanırken veri yönetimi ağ geçidini kullanın](#sqlserver-factory)</li></ul> |
 | **Kimlik Sunucusu** | <ul><li>[Kimlik sunucusuna giden tüm trafiğin HTTPS bağlantısı üzerinden olduğundan emin olun](#identity-https)</li></ul> |
 | **Web uygulaması** | <ul><li>[SSL, TLS ve DTLS bağlantılarında kimlik doğrulamak için kullanılan X. 509.440 sertifikalarını doğrulayın](#x509-ssltls)</li><li>[Azure App Service 'de özel etki alanı için TLS/SSL sertifikası yapılandırma](#ssl-appservice)</li><li>[HTTPS bağlantısı üzerinden tüm trafiği Azure App Service zorla](#appservice-https)</li><li>[HTTP Strict Transport Security 'yi (HSTS) etkinleştir](#http-hsts)</li></ul> |
-| **Veritabanınızı** | <ul><li>[SQL Server bağlantı şifrelemesini ve sertifika doğrulamayı sağlayın](#sqlserver-validation)</li><li>[SQL Server 'a şifreli iletişim zorla](#encrypted-sqlserver)</li></ul> |
-| **Azure Storage** | <ul><li>[Azure depolama ile iletişimin HTTPS üzerinden olduğundan emin olun](#comm-storage)</li><li>[HTTPS etkinleştirilmemişse blob indirildikten sonra MD5 karmasını doğrula](#md5-https)</li><li>[Azure dosya paylaşımlarına geçiş sırasında veri şifrelemeyi sağlamak için SMB 3,0 ile uyumlu istemci kullanma](#smb-shares)</li></ul> |
+| **Veritabanı** | <ul><li>[SQL Server bağlantı şifrelemesini ve sertifika doğrulamayı sağlayın](#sqlserver-validation)</li><li>[SQL Server 'a şifreli iletişim zorla](#encrypted-sqlserver)</li></ul> |
+| **Azure Depolama** | <ul><li>[Azure depolama ile iletişimin HTTPS üzerinden olduğundan emin olun](#comm-storage)</li><li>[HTTPS etkinleştirilmemişse blob indirildikten sonra MD5 karmasını doğrula](#md5-https)</li><li>[Azure dosya paylaşımlarına geçiş sırasında veri şifrelemeyi sağlamak için SMB 3,0 ile uyumlu istemci kullanma](#smb-shares)</li></ul> |
 | **Mobil Istemci** | <ul><li>[Sertifika sabitleme Uygula](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[HTTPS güvenli aktarım kanalını etkinleştir](#https-transport)</li><li>[WCF: Ileti güvenliği koruma düzeyini EncryptAndSign olarak ayarla](#message-protection)</li><li>[WCF: WCF hizmetinizi çalıştırmak için en az ayrıcalıklı bir hesap kullanın](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[HTTPS bağlantısı üzerinden tüm trafiği Web API 'Lerine zorla](#webapi-https)</li></ul> |
@@ -115,7 +115,7 @@ ms.locfileid: "82203752"
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | EnvironmentType-Azure |
 | **Başvurular**              | [Azure App Service HTTPS 'ye zorla](../../app-service/configure-ssl-bindings.md#enforce-https) |
-| **Adımlar** | <p>Azure, Azure Uygulama Hizmetleri için, *. azurewebsites.net etki alanı için bir joker sertifikaya sahip HTTPS 'yi zaten etkinleştirse de HTTPS 'yi zorlamaz. Ziyaretçiler, uygulamanın güvenliğini tehlikeye atabilecek ve bu nedenle HTTPS 'nin açıkça zorlanmasına neden olan HTTP kullanarak uygulamaya erişmeye devam edebilir. ASP.NET MVC uygulamalarının, güvenli olmayan bir HTTP isteğini HTTPS üzerinden yeniden gönderilmesine zorlayan [RequireHttps filtresini](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) kullanması gerekir.</p><p>Alternatif olarak, Azure App Service dahil edilen URL yeniden yazma modülü HTTPS 'yi zorlamak için kullanılabilir. URL yeniden yazma modülü, geliştiricilerin, istekler uygulamanıza gönderilmeden önce gelen isteklere uygulanan kurallar tanımlamasına olanak sağlar. URL yeniden yazma kuralları, uygulamanın kökünde depolanan bir Web. config dosyasında tanımlanmıştır</p>|
+| **Adımlar** | <p>Azure, Azure Uygulama Hizmetleri için, *. azurewebsites.net etki alanı için bir joker sertifikaya sahip HTTPS 'yi zaten etkinleştirse de HTTPS 'yi zorlamaz. Ziyaretçiler, uygulamanın güvenliğini tehlikeye atabilecek ve bu nedenle HTTPS 'nin açıkça zorlanmasına neden olan HTTP kullanarak uygulamaya erişmeye devam edebilir. ASP.NET MVC uygulamalarının, güvenli olmayan bir HTTP isteğini HTTPS üzerinden yeniden gönderilmesine zorlayan [RequireHttps filtresini](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) kullanması gerekir.</p><p>Alternatif olarak, Azure App Service dahil edilen URL yeniden yazma modülü HTTPS 'yi zorlamak için kullanılabilir. URL yeniden yazma modülü, geliştiricilerin, istekler uygulamanıza gönderilmeden önce gelen isteklere uygulanan kurallar tanımlamasına olanak sağlar. URL yeniden yazma kuralları, uygulamanın kökünde depolanan bir web.config dosyasında tanımlanır</p>|
 
 ### <a name="example"></a>Örnek
 Aşağıdaki örnek, tüm gelen trafiği HTTPS kullanacak şekilde zorlayan temel bir URL yeniden yazma kuralı içerir
@@ -137,7 +137,7 @@ Aşağıdaki örnek, tüm gelen trafiği HTTPS kullanacak şekilde zorlayan teme
   </system.webServer>
 </configuration>
 ```
-Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yeniden yönlendirme) HTTP durum kodunu döndürerek işe yarar. 301, isteği ziyaretçi isteğiyle aynı URL 'ye yönlendirir, ancak isteğin HTTP bölümünü HTTPS ile değiştirir. Örneğin, `HTTP://contoso.com` öğesine `HTTPS://contoso.com`yeniden yönlendirilir. 
+Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yeniden yönlendirme) HTTP durum kodunu döndürerek işe yarar. 301, isteği ziyaretçi isteğiyle aynı URL 'ye yönlendirir, ancak isteğin HTTP bölümünü HTTPS ile değiştirir. Örneğin, `HTTP://contoso.com` öğesine yeniden yönlendirilir `HTTPS://contoso.com` . 
 
 ## <a name="enable-http-strict-transport-security-hsts"></a><a id="http-hsts"></a>HTTP Strict Transport Security 'yi (HSTS) etkinleştir
 
@@ -148,7 +148,7 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [OWASP HTTP katı taşıma güvenlik sayfası](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) |
-| **Adımlar** | <p>HTTP katı aktarım güvenliği (HSTS), bir Web uygulaması tarafından özel yanıt üst bilgisi kullanılarak belirtilen bir katılım güvenlik geliştirmedir. Desteklenen bir tarayıcı bu üstbilgiyi aldıktan sonra tarayıcı, tüm iletişimin HTTP üzerinden belirtilen etki alanına gönderilmesini engeller ve bunun yerine tüm iletişimleri HTTPS üzerinden gönderir. Ayrıca, tarayıcılarda istemler aracılığıyla HTTPS tıklamasını önler.</p><p>HSTS uygulamak için aşağıdaki yanıt üst bilgisinin kodda veya yapılandırmada genel olarak bir Web sitesi için yapılandırılması gerekir. Katı-aktarım-güvenlik: en yüksek yaş = 300; ıncludealt etki alanları, aşağıdaki tehditleri ele alır:</p><ul><li>Kullanıcı yer işaretleri veya el `https://example.com` ile türler ve bir noktadan adam saldırgana TABIDIR: HSTS, hedef etki alanı için http isteklerini OTOMATIK olarak https 'ye yönlendirir</li><li>Tamamen HTTPS olarak kullanılması amaçlanan Web uygulaması HTTP bağlantılarını yanlışlıkla içerir veya http üzerinden içerik sunar: HSTS, hedef etki alanı için HTTP isteklerini otomatik olarak HTTPS 'ye yönlendirir</li><li>Orta noktadan adam saldırgan, geçersiz bir sertifika kullanarak bir kurban kullanıcısının trafiğini kesmeye çalışır ve kullanıcı hatalı sertifikayı kabul eder: HSTS, kullanıcının geçersiz sertifika iletisini geçersiz kılmasına izin vermez</li></ul>|
+| **Adımlar** | <p>HTTP katı aktarım güvenliği (HSTS), bir Web uygulaması tarafından özel yanıt üst bilgisi kullanılarak belirtilen bir katılım güvenlik geliştirmedir. Desteklenen bir tarayıcı bu üstbilgiyi aldıktan sonra tarayıcı, tüm iletişimin HTTP üzerinden belirtilen etki alanına gönderilmesini engeller ve bunun yerine tüm iletişimleri HTTPS üzerinden gönderir. Ayrıca, tarayıcılarda istemler aracılığıyla HTTPS tıklamasını önler.</p><p>HSTS uygulamak için aşağıdaki yanıt üst bilgisinin kodda veya yapılandırmada genel olarak bir Web sitesi için yapılandırılması gerekir. Katı-aktarım-güvenlik: en yüksek yaş = 300; ıncludealt etki alanları, aşağıdaki tehditleri ele alır:</p><ul><li>Kullanıcı yer işaretleri veya el ile türler `https://example.com` ve bir noktadan adam saldırgana tabidir: HSTS, hedef etki alanı IÇIN http isteklerini otomatik olarak https 'ye yönlendirir</li><li>Tamamen HTTPS olarak kullanılması amaçlanan Web uygulaması HTTP bağlantılarını yanlışlıkla içerir veya http üzerinden içerik sunar: HSTS, hedef etki alanı için HTTP isteklerini otomatik olarak HTTPS 'ye yönlendirir</li><li>Orta noktadan adam saldırgan, geçersiz bir sertifika kullanarak bir kurban kullanıcısının trafiğini kesmeye çalışır ve kullanıcı hatalı sertifikayı kabul eder: HSTS, kullanıcının geçersiz sertifika iletisini geçersiz kılmasına izin vermez</li></ul>|
 
 ## <a name="ensure-sql-server-connection-encryption-and-certificate-validation"></a><a id="sqlserver-validation"></a>SQL Server bağlantı şifrelemesini ve sertifika doğrulamayı sağlayın
 
@@ -159,7 +159,7 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 | **İlgili teknolojiler** | SQL Azure  |
 | **Öznitelikler**              | SQL sürümü-V12 |
 | **Başvurular**              | [SQL veritabanı için güvenli bağlantı dizeleri yazma konusunda en iyi yöntemler](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
-| **Adımlar** | <p>SQL veritabanı ile istemci uygulaması arasındaki tüm iletişimler, daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS) ile her zaman şifrelenir. SQL veritabanı şifrelenmemiş bağlantıları desteklemiyor. Uygulama kodu veya araçlarıyla sertifikaları doğrulamak için, açıkça şifreli bir bağlantı isteyin ve sunucu sertifikalarına güvenmeyin. Uygulama kodunuz veya araçlarınız şifreli bir bağlantı isteğinde yoksa, yine de şifreli bağlantılar almaya devam eder</p><p>Ancak, bunlar sunucu sertifikalarını doğrulayamayabilir ve bu nedenle "ortadaki adam" saldırılarına maruz kalabilir. ADO.NET uygulama kodu ile sertifikaları doğrulamak için veritabanı bağlantı `Encrypt=True` dizesinde `TrustServerCertificate=False` ve ayarlayın. Sertifikaları SQL Server Management Studio aracılığıyla doğrulamak için sunucuya Bağlan iletişim kutusunu açın. Bağlantı Özellikleri sekmesindeki bağlantıyı şifreleyin öğesine tıklayın</p>|
+| **Adımlar** | <p>SQL veritabanı ile istemci uygulaması arasındaki tüm iletişimler, daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS) ile her zaman şifrelenir. SQL veritabanı şifrelenmemiş bağlantıları desteklemiyor. Uygulama kodu veya araçlarıyla sertifikaları doğrulamak için, açıkça şifreli bir bağlantı isteyin ve sunucu sertifikalarına güvenmeyin. Uygulama kodunuz veya araçlarınız şifreli bir bağlantı isteğinde yoksa, yine de şifreli bağlantılar almaya devam eder</p><p>Ancak, bunlar sunucu sertifikalarını doğrulayamayabilir ve bu nedenle "ortadaki adam" saldırılarına maruz kalabilir. ADO.NET uygulama kodu ile sertifikaları doğrulamak için `Encrypt=True` `TrustServerCertificate=False` veritabanı bağlantı dizesinde ve ayarlayın. Sertifikaları SQL Server Management Studio aracılığıyla doğrulamak için sunucuya Bağlan iletişim kutusunu açın. Bağlantı Özellikleri sekmesindeki bağlantıyı şifreleyin öğesine tıklayın</p>|
 
 ## <a name="force-encrypted-communication-to-sql-server"></a><a id="encrypted-sqlserver"></a>SQL Server 'a şifreli iletişim zorla
 
@@ -169,14 +169,14 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | OnPrem |
 | **Öznitelikler**              | SQL sürümü-MsSQL2016, SQL sürüm-MsSQL2012, SQL sürümü-MsSQL2014 |
-| **Başvurular**              | [Veritabanı altyapısına şifreli bağlantıları etkinleştir](https://msdn.microsoft.com/library/ms191192)  |
+| **Başvurular**              | [Veritabanı Altyapısı İçin Şifreli Bağlantıları Etkinleştirme](https://msdn.microsoft.com/library/ms191192)  |
 | **Adımlar** | TLS şifrelemesini etkinleştirmek, SQL Server ve uygulama örnekleri arasında ağlar arasında aktarılan verilerin güvenliğini artırır. |
 
 ## <a name="ensure-that-communication-to-azure-storage-is-over-https"></a><a id="comm-storage"></a>Azure depolama ile iletişimin HTTPS üzerinden olduğundan emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Dağıtım |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
@@ -187,7 +187,7 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-blob |
@@ -209,12 +209,12 @@ Bu kural, Kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL aşaması**               | Yapı |  
 | **İlgili teknolojiler** | Genel, Windows Phone |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Sertifika ve ortak anahtar sabitleme](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) |
-| **Adımlar** | <p>Sertifika, savunma ve ortadaki adam (MITD) saldırılarına karşı savunma. Sabitleme, bir konağın beklenen x509 sertifikası veya ortak anahtarla ilişkilendirilmesi işlemidir. Bir sertifika veya ortak anahtar bir konak için bilindikten veya görüldüğünde, sertifika veya ortak anahtar ana bilgisayara ilişkilendirilir veya ' sabitlenmiş ' olur. </p><p>Bu nedenle, bir saldırgan TLS MITı saldırısı yapmayı denediğinde, TLS el sıkışması sırasında saldırganın sunucusundan gelen anahtar, sabitlenmiş sertifikanın anahtarından farklı olur ve istek atılır ve bu sayede, ServicePointManager 'ın `ServerCertificateValidationCallback` temsilcisi uygulayarak Mitd sertifika sabitlenmesini önler.</p>|
+| **Adımlar** | <p>Sertifika, savunma ve ortadaki adam (MITD) saldırılarına karşı savunma. Sabitleme, bir konağın beklenen x509 sertifikası veya ortak anahtarla ilişkilendirilmesi işlemidir. Bir sertifika veya ortak anahtar bir konak için bilindikten veya görüldüğünde, sertifika veya ortak anahtar ana bilgisayara ilişkilendirilir veya ' sabitlenmiş ' olur. </p><p>Bu nedenle, bir saldırgan TLS MITı saldırısı yapmayı denediğinde, TLS el sıkışması sırasında saldırganın sunucusundan gelen anahtar, sabitlenmiş sertifikanın anahtarından farklı olur ve istek atılır ve bu sayede, ServicePointManager 'ın temsilcisi uygulayarak MITD sertifika sabitlenmesini önler `ServerCertificateValidationCallback` .</p>|
 
 ### <a name="example"></a>Örnek
 ```csharp
@@ -302,10 +302,10 @@ namespace CertificatePinningExample
 | **İlgili teknolojiler** | .NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Adımlar** | <ul><li>**Açıklama:** Koruma düzeyi "none" olarak ayarlandığında ileti korumasını devre dışı bırakır. Gizlilik ve bütünlük uygun ayar düzeyiyle elde edilir.</li><li>**ÖNERI**<ul><li>ne `Mode=None` zaman-ileti korumasını devre dışı bırakır</li><li>`Mode=Sign` -imzalar, ancak iletiyi şifrelemez; veri bütünlüğü önemli olduğunda kullanılmalıdır</li><li>`Mode=EncryptAndSign` iletiyi imzalar ve şifreler</li></ul></li></ul><p>Şifrelemeyi kapatmayı ve yalnızca gizlilik olmadan bilgilerin bütünlüğünü doğrulamanız gerektiğinde iletinizi imzalamayı düşünün. Bu, özgün göndereni doğrulamanız gereken ancak önemli verilerin iletilmemiş olduğu işlemler veya hizmet sözleşmeleri için yararlı olabilir. Koruma düzeyini azalttıktan sonra iletinin kişisel veri içermediğinden emin olun.</p>|
+| **Adımlar** | <ul><li>**Açıklama:** Koruma düzeyi "none" olarak ayarlandığında ileti korumasını devre dışı bırakır. Gizlilik ve bütünlük uygun ayar düzeyiyle elde edilir.</li><li>**ÖNERI**<ul><li>ne zaman `Mode=None` -ileti korumasını devre dışı bırakır</li><li>`Mode=Sign`-imzalar, ancak iletiyi şifrelemez; veri bütünlüğü önemli olduğunda kullanılmalıdır</li><li>`Mode=EncryptAndSign`iletiyi imzalar ve şifreler</li></ul></li></ul><p>Şifrelemeyi kapatmayı ve yalnızca gizlilik olmadan bilgilerin bütünlüğünü doğrulamanız gerektiğinde iletinizi imzalamayı düşünün. Bu, özgün göndereni doğrulamanız gereken ancak önemli verilerin iletilmemiş olduğu işlemler veya hizmet sözleşmeleri için yararlı olabilir. Koruma düzeyini azalttıktan sonra iletinin kişisel veri içermediğinden emin olun.</p>|
 
 ### <a name="example"></a>Örnek
-Hizmeti ve işlemi yalnızca iletiyi imzalamak için yapılandırmak aşağıdaki örneklerde gösterilmiştir. Hizmet sözleşmesi örneği `ProtectionLevel.Sign`: aşağıda, hizmet sözleşmesi düzeyinde ProtectionLevel. Sign kullanmanın bir örneği verilmiştir: 
+Hizmeti ve işlemi yalnızca iletiyi imzalamak için yapılandırmak aşağıdaki örneklerde gösterilmiştir. Hizmet sözleşmesi örneği `ProtectionLevel.Sign` : aşağıda, hizmet sözleşmesi düzeyinde ProtectionLevel. Sign kullanmanın bir örneği verilmiştir: 
 ```
 [ServiceContract(Protection Level=ProtectionLevel.Sign] 
 public interface IService 
@@ -315,7 +315,7 @@ public interface IService
 ```
 
 ### <a name="example"></a>Örnek
-İşlem sözleşmesi örneği `ProtectionLevel.Sign` (ayrıntılı denetim için): aşağıda, OperationContract düzeyinde kullanılmasına `ProtectionLevel.Sign` bir örnek verilmiştir:
+İşlem sözleşmesi örneği `ProtectionLevel.Sign` (ayrıntılı denetim için): aşağıda, OperationContract düzeyinde kullanılmasına bir örnek verilmiştir `ProtectionLevel.Sign` :
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 

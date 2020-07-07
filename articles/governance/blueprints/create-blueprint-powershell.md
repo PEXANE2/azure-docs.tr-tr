@@ -3,18 +3,18 @@ title: 'Hızlı başlangıç: PowerShell ile bir şema oluşturma'
 description: Bu hızlı başlangıçta, PowerShell kullanarak yapıtlar oluşturmak, tanımlamak ve dağıtmak için Azure şemaları kullanırsınız.
 ms.date: 05/06/2020
 ms.topic: quickstart
-ms.openlocfilehash: 79feafa48d5d180949b8a23163f2ee9b686e6076
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b881731dfdcaf9e9e016d1437e51dbd5c1a7488a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864122"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970510"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Hızlı başlangıç: PowerShell ile Azure Blueprint tanımlama ve atama
 
-Şema oluşturma ve atama süreçlerini anlamak, ortak tutarlılık desenlerini tanımlamanızı ve Resource Manager şablonlarını, ilkelerini, güvenlik düzeyini ve daha fazlasını temel alan yeniden kullanılabilir ve hızla dağıtılabilir yapılandırmalar geliştirmenizi sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
+Şemaları oluşturmayı ve atamayı öğrenmek, ortak desenlerin tanımını Azure Resource Manager şablonları (ARM şablonları), ilke, güvenlik ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmeye olanak sağlar. Bu öğreticide kuruluşunuzda aşağıdakiler gibi şema oluşturma, yayımlama ve atama konusundaki yaygın görevlerin bazılarını yerine getirmek için Azure Blueprints'i kullanmayı öğreneceksiniz:
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -24,14 +24,14 @@ Zaten yüklü değilse, PowerShell Galerisi **az** . Blueprint modülünü yükl
 
 ## <a name="create-a-blueprint"></a>Şema oluşturma
 
-Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. Abonelik için rol ve ilke atamalarını yapılandırmak üzere 'MyBlueprint' adlı bir şema oluşturacağız. Ardından bir kaynak grubu ekleyecek ve bu kaynak grubuna da bir Resource Manager şablonu ve rol ataması ekleyeceğiz.
+Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. Abonelik için rol ve ilke atamalarını yapılandırmak üzere 'MyBlueprint' adlı bir şema oluşturacağız. Daha sonra kaynak grubunda bir kaynak grubu, ARM şablonu ve rol ataması ekleyeceğiz.
 
 > [!NOTE]
 > PowerShell _kullanırken, öncelikle şema nesnesi oluşturulur_ . Eklenecek ve parametreye sahip olan her _yapıt_ için parametrelerin önceden ilk _şema_ içinde tanımlanması gerekir.
 
 1. İlk _şema_ nesnesini oluşturun. **Blueprintfile** parametresi, şema, oluşturulacak kaynak grupları ve tüm şema düzeyi parametrelerinin özelliklerini içeren bir JSON dosyası alır. Parametreler atama sırasında ayarlanır ve sonraki adımlarda eklenecek yapıtlar tarafından kullanılır.
 
-   - JSON dosyası-Blueprint. JSON
+   - JSON dosyası-blueprint.json
 
      ```json
      {
@@ -101,12 +101,12 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      ```
 
      > [!NOTE]
-     > Şema tanımlarınızı programlama yoluyla oluştururken _şema. JSON_ dosya adını kullanın.
+     > Şema tanımlarınızı programlı olarak oluştururken _blueprint.js_ dosya adı kullanın.
      > Bu dosya adı, [Import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact)çağrılırken kullanılır.
 
      Şema nesnesi varsayılan olarak varsayılan abonelikte oluşturulur. Yönetim grubunu belirtmek için, ' **ManagementGroupId**parametresini kullanın. Aboneliği belirtmek için, **SubscriptionID**parametresini kullanın.
 
-1. Abonelikte rol ataması ekleyin. **Artifactfile** , yapıt _türünü_ tanımlar, Özellikler rol tanımı tanımlayıcısına hizalanır ve asıl kimlikler bir değer dizisi olarak geçirilir. Aşağıdaki örnekte belirtilen rolün verildiği sorumlu kimlikleri, şema ataması sırasında ayarlanan bir parametreyle yapılandırılmıştır. Bu örnek, bir GUID 'SI ile _katkıda_ bulunan yerleşik rolünü kullanır `b24988ac-6180-42a0-ab88-20f7382dd24c`.
+1. Abonelikte rol ataması ekleyin. **Artifactfile** , yapıt _türünü_ tanımlar, Özellikler rol tanımı tanımlayıcısına hizalanır ve asıl kimlikler bir değer dizisi olarak geçirilir. Aşağıdaki örnekte belirtilen rolün verildiği sorumlu kimlikleri, şema ataması sırasında ayarlanan bir parametreyle yapılandırılmıştır. Bu örnek, bir GUID 'SI ile _katkıda_ bulunan yerleşik rolünü kullanır `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
    - JSON dosyası-\artifacts\roleContributor.json
 
@@ -127,7 +127,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'roleContributor' -ArtifactFile .\artifacts\roleContributor.json
      ```
 
-1. Abonelikte ilke ataması ekleyin. **Artifactfile** , yapıt _türünü_ , bir ilkeye veya girişim tanımına hizalamakta olan özellikleri tanımlar ve ilke atamasını, şema ataması sırasında yapılandırmak üzere tanımlanan şema parametrelerini kullanacak şekilde yapılandırır. Bu örnekte, GUID 'SI ile birlikte _Apply etiketi ve varsayılan değerini kaynak grupları_ yerleşik İlkesi kullanır `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Abonelikte ilke ataması ekleyin. **Artifactfile** , yapıt _türünü_ , bir ilkeye veya girişim tanımına hizalamakta olan özellikleri tanımlar ve ilke atamasını, şema ataması sırasında yapılandırmak üzere tanımlanan şema parametrelerini kullanacak şekilde yapılandırır. Bu örnekte, GUID 'SI ile birlikte _Apply etiketi ve varsayılan değerini kaynak grupları_ yerleşik İlkesi kullanır `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
    - JSON dosyası-\artifacts\policyTags.json
 
@@ -157,7 +157,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyTags' -ArtifactFile .\artifacts\policyTags.json
      ```
 
-1. Abonelikte Depolama etiketi için (_storageAccountType_ parametresini yeniden kullanarak) başka bir ilke ataması ekleyin. Bu ek ilke ataması yapıtı, şemada tanımlanan bir parametrenin birden fazla yapıt tarafından kullanılabileceğini gösterir. Örnekte kaynak grubunda etiket ayarlamak için **storageAccountType** kullanılmıştır. Bu değer, bir sonraki adımda oluşturulan depolama hesabıyla ilgili bilgi sağlar. Bu örnekte, GUID 'SI ile birlikte _Apply etiketi ve varsayılan değerini kaynak grupları_ yerleşik İlkesi kullanır `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Abonelikte Depolama etiketi için (_storageAccountType_ parametresini yeniden kullanarak) başka bir ilke ataması ekleyin. Bu ek ilke ataması yapıtı, şemada tanımlanan bir parametrenin birden fazla yapıt tarafından kullanılabileceğini gösterir. Örnekte kaynak grubunda etiket ayarlamak için **storageAccountType** kullanılmıştır. Bu değer, bir sonraki adımda oluşturulan depolama hesabıyla ilgili bilgi sağlar. Bu örnekte, GUID 'SI ile birlikte _Apply etiketi ve varsayılan değerini kaynak grupları_ yerleşik İlkesi kullanır `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` .
 
    - JSON dosyası-\artifacts\policyStorageTags.json
 
@@ -187,9 +187,9 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. Kaynak grubuna şablon ekleyin. Bir Kaynak Yöneticisi şablonu için **TemplateFile** , ŞABLONUN normal JSON bileşenini içerir. Şablon aynı zamanda **storageAccountType**, **tagName** ve **tagValue** şema parametrelerini şablona geçirerek hepsini yeniden kullanır. Şema parametreleri parametre **Templateparameterfile** parametresi kullanılarak ve şablon içinde, değer eklemek için anahtar-değer ÇIFTININ kullanıldığı JSON içinde kullanılabilir. Şema ve Template parametre adları aynı olabilir.
+1. Kaynak grubuna şablon ekleyin. ARM şablonuna yönelik **TemplateFile** , ŞABLONUN normal JSON bileşenini içerir. Şablon aynı zamanda **storageAccountType**, **tagName** ve **tagValue** şema parametrelerini şablona geçirerek hepsini yeniden kullanır. Şema parametreleri parametre **Templateparameterfile** parametresi kullanılarak ve şablon içinde, değer eklemek için anahtar-değer ÇIFTININ kullanıldığı JSON içinde kullanılabilir. Şema ve Template parametre adları aynı olabilir.
 
-   - JSON Azure Resource Manager şablon dosyası-\Artifacts\templatestorage.exe
+   - JSON ARM şablon dosyası-\artifacts\templateStorage.json
 
      ```json
      {
@@ -243,7 +243,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      }
      ```
 
-   - JSON Azure Resource Manager şablonu parametre dosyası-\Artifacts\templatestorageparamms.exe
+   - JSON ARM şablon parametre dosyası-\artifacts\templateStorageParams.json
 
      ```json
      {
@@ -270,9 +270,9 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
      New-AzBlueprintArtifact -Blueprint $blueprint -Type TemplateArtifact -Name 'templateStorage' -TemplateFile .\artifacts\templateStorage.json -TemplateParameterFile .\artifacts\templateStorageParams.json -ResourceGroupName storageRG
      ```
 
-1. Rol atamasını kaynak grubuna ekleyin. Yukarıdaki rol ataması girişine benzer şekilde aşağıdaki örnekte de **Sahip** rolü için tanımlayıcı kullanılır ve şemadan farklı bir parametre sunulur. Bu örnek, GUID 'SI ile _sahip_ yerleşik rolünü kullanır `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
+1. Rol atamasını kaynak grubuna ekleyin. Yukarıdaki rol ataması girişine benzer şekilde aşağıdaki örnekte de **Sahip** rolü için tanımlayıcı kullanılır ve şemadan farklı bir parametre sunulur. Bu örnek, GUID 'SI ile _sahip_ yerleşik rolünü kullanır `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` .
 
-   - JSON dosyası-\Artifacts\roleowner.exe
+   - JSON dosyası-\artifacts\roleOwner.json
 
      ```json
      {
@@ -305,11 +305,11 @@ Publish-AzBlueprint -Blueprint $blueprint -Version '{BlueprintVersion}'
 
 ## <a name="assign-a-blueprint"></a>Şema atama
 
-Şema, PowerShell kullanılarak yayımlandıktan sonra bir aboneliğe atanabilir. Oluşturduğunuz şemayı yönetim grubu hiyerarşinizdeki aboneliklerden birine atayın. Şema bir aboneliğe kaydedilirse, bu aboneliğe yalnızca atanabilir. **Şema** parametresi, atanacak şema öğesini belirtir. Ad, konum, kimlik, kilit ve şema parametreleri sağlamak için `New-AzBlueprintAssignment` cmdlet 'Inde eşleşen PowerShell parametrelerini kullanın veya bunları **ATAMADOSYASı** parametresi json dosyasında belirtin.
+Şema, PowerShell kullanılarak yayımlandıktan sonra bir aboneliğe atanabilir. Oluşturduğunuz şemayı yönetim grubu hiyerarşinizdeki aboneliklerden birine atayın. Şema bir aboneliğe kaydedilirse, bu aboneliğe yalnızca atanabilir. **Şema** parametresi, atanacak şema öğesini belirtir. Ad, konum, kimlik, kilit ve şema parametreleri sağlamak için cmdlet 'inde eşleşen PowerShell parametrelerini kullanın `New-AzBlueprintAssignment` veya bunları **ATAMADOSYASı** parametresi json dosyasında belirtin.
 
 1. Bir aboneliğe atayarak şema dağıtımını çalıştırın. **Katkıda bulunanlar** ve **sahipler** parametreleri, sorumluların bir dizi tanıtıcısından rol atanmasına izin verilmesini gerektirdiğinden, kendi kullanıcılarınızın, gruplarınızın veya hizmet sorumlularınızın **Atamadosyasında** kullanmak üzere objectıds 'yi toplamak için [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) kullanın.
 
-   - JSON dosyası-blueprintAssignment. JSON
+   - JSON dosyası-blueprintAssignment.json
 
      ```json
      {
@@ -362,7 +362,7 @@ Publish-AzBlueprint -Blueprint $blueprint -Version '{BlueprintVersion}'
    - Kullanıcı tarafından atanan yönetilen kimlik
 
      Bir şema ataması, [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md)de kullanabilir.
-     Bu durumda, JSON atama dosyasının **kimlik** kısmı aşağıdaki şekilde değişir. , `{tenantId}` `{subscriptionId}`,, Ve `{userIdentity}` ' ı tenantıd, SubscriptionID, kaynak grubu adı ve Kullanıcı tarafından atanan yönetilen kimliğinizin adı ile değiştirin. `{yourRG}`
+     Bu durumda, JSON atama dosyasının **kimlik** kısmı aşağıdaki şekilde değişir. ,,, Ve ' ı `{tenantId}` `{subscriptionId}` `{yourRG}` `{userIdentity}` tenantıd, SubscriptionID, kaynak grubu adı ve Kullanıcı tarafından atanan yönetilen kimliğinizin adı ile değiştirin.
 
      ```json
      "identity": {

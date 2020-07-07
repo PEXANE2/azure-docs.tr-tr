@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72392195"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Sinyal açıklayıcı ses parçaları
@@ -25,7 +25,7 @@ Görsel açıdan görme istemcilerinin, konuşmayı dinleyerek video kaydını i
 
 Bu makalede, bir videoyu kodlama, çıktı varlığına açıklayıcı ses içeren bir salt ses MP4 dosyasını (AAC codec) karşıya yükleme ve açıklama sesini dahil etmek için. ISM dosyasını düzenleme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturun](create-account-cli-how-to.md).
 - [Azure CLI Ile Access Azure Media Services API 'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
@@ -48,7 +48,7 @@ Aşağıdaki işlev şu eylemleri gerçekleştirir:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-Oluşturulan giriş varlığının adını diğer yöntemlere geçirmeniz gerekiyorsa, ' den `Name` `CreateInputAssetAsync`döndürülen varlık nesnesindeki özelliği kullandığınızdan emin olun, örneğin, inputAsset.Name. 
+Oluşturulan giriş varlığının adını diğer yöntemlere geçirmeniz gerekiyorsa, ' `Name` den döndürülen varlık nesnesindeki özelliği kullandığınızdan emin olun, `CreateInputAssetAsync` örneğin, inputAsset.Name. 
 
 ## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Kodlama işinin sonucunu depolamak için bir çıkış varlığı oluşturma
 
@@ -56,7 +56,7 @@ Oluşturulan giriş varlığının adını diğer yöntemlere geçirmeniz gereki
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-Oluşturulan çıkış varlığının adını diğer yöntemlere geçirmeniz gerekiyorsa, ' den `Name` `CreateIOutputAssetAsync`döndürülen varlık nesnesindeki özelliği kullandığınızdan emin olun, örneğin, outputAsset.Name. 
+Oluşturulan çıkış varlığının adını diğer yöntemlere geçirmeniz gerekiyorsa, ' `Name` den döndürülen varlık nesnesindeki özelliği kullandığınızdan emin olun, `CreateIOutputAssetAsync` örneğin, outputAsset.Name. 
 
 Bu makale söz konusu olduğunda, `outputAsset.Name` değeri `SubmitJobAsync` ve `UploadAudioIntoOutputAsset` işlevlerine geçirin.
 
@@ -127,7 +127,7 @@ private static async Task UpoadAudioIntoOutputAsset(
 }
 ```
 
-`UpoadAudioIntoOutputAsset` İşleve yapılan çağrıya bir örnek aşağıda verilmiştir:
+İşleve yapılan çağrıya bir örnek aşağıda verilmiştir `UpoadAudioIntoOutputAsset` :
 
 ```csharp
 await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName, outputAsset.Name, "audio_description.m4a");
@@ -142,7 +142,7 @@ Kodlama işiniz bittiğinde, çıkış varlığı kodlama işi tarafından oluş
 1. Kapsayıcıda. ISM dosyasını bulun ve **blobu Düzenle** ' ye tıklayın (sağ pencerede). 
 1. Açıklayıcı ses içeren karşıya yüklenen salt-tek MP4 dosyası (AAC codec) hakkındaki bilgileri ekleyerek ve tamamlandığında **Kaydet** ' e basarak. ISM dosyasını düzenleyin.
 
-    Açıklayıcı ses izlerini bildirmek için. ISM dosyasına "Erişilebilirlik" ve "rol" parametreleri eklemeniz gerekir. Ses açıklaması olarak bir ses izini bildirmek üzere bu parametreleri doğru bir şekilde ayarlamak sizin sorumluluğunuzdadır. Örneğin, aşağıdaki örnekte `<param name="accessibility" value="description" />` gösterildiği `<param name="role" value="alternate" />` gibi belirli bir ses izi için. ISM dosyası ekleyin.
+    Açıklayıcı ses izlerini bildirmek için. ISM dosyasına "Erişilebilirlik" ve "rol" parametreleri eklemeniz gerekir. Ses açıklaması olarak bir ses izini bildirmek üzere bu parametreleri doğru bir şekilde ayarlamak sizin sorumluluğunuzdadır. Örneğin, `<param name="accessibility" value="description" />` `<param name="role" value="alternate" />` Aşağıdaki örnekte gösterildiği gibi belirli bir ses izi için. ISM dosyası ekleyin.
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -233,7 +233,7 @@ Bu makalede, akışı test etmek için Azure Media Player kullanılmaktadır.
 > [!NOTE]
 > Oynatıcı bir https sitesinde barındırılıyorsa, "https" URL’sini güncelleştirdiğinizden emin olun.
 
-1. Bir Web tarayıcısı açın ve adresine [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)gidin.
+1. Bir Web tarayıcısı açın ve adresine gidin [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. **URL:** kutusunda, uygulamanızdan ALDıĞıNıZ akış URL değerlerinden birini yapıştırın. 
  
      URL 'yi HLS, Dash veya kesintisiz biçimde yapıştırabilir ve Azure Media Player cihazınızda otomatik olarak kayıttan yürütmek için uygun bir akış protokolüne geçiş yapar.

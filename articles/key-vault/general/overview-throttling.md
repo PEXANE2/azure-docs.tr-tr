@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432092"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault azaltma yönergeleri
@@ -41,7 +41,7 @@ Yukarıdakilerden hala gereksinimlerinizi karşılamadığını fark ediyorsanı
 
 | Kasa adı | Kasa bölgesi | Nesne türü (gizli, anahtar veya sertifika) | İşlemler * | Anahtar türü | Anahtar uzunluğu veya eğrisi | HSM anahtarı?| Sabit durum RPS gerekli | Gerekli en yüksek RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | Hayır | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Anahtar | İşaret | EC | P-256 | No | 200 | 1000 |
 
 \*Olası değerlerin tam listesi için bkz. [Azure Key Vault işlemler](/rest/api/keyvault/key-operations).
 

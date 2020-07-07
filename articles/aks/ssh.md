@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 70ebcb1f340ba28cf80ad3e24a464aad5584b3a4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82207165"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Bakım veya sorun giderme amacıyla SSH ile Azure Kubernetes Service (AKS) kümesi düğümlerine bağlanma
@@ -25,7 +25,7 @@ Varsayılan olarak, SSH anahtarları alınır veya oluşturulur, ardından bir A
 
 Bu makalede ayrıca bir SSH anahtarınız olduğunu varsaymaktadır. [MacOS veya Linux][ssh-nix] veya [WINDOWS][ssh-windows]kullanarak bir SSH anahtarı oluşturabilirsiniz. Anahtar çiftini oluşturmak için PuTTY gen kullanırsanız, anahtar çiftini varsayılan PuTTy özel anahtar biçimi (. PPK dosyası) yerine bir OpenSSH biçiminde kaydedin.
 
-Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>SSH erişimi için sanal makine ölçek kümesi tabanlı AKS kümelerini yapılandırma
 
@@ -149,7 +149,7 @@ AKS düğümüne bir SSH bağlantısı oluşturmak için AKS kümenizde bir yard
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Terminal oturumu kapsayıcıya bağlandıktan sonra, şunu kullanarak `apt-get`bir SSH istemcisi yüklersiniz:
+1. Terminal oturumu kapsayıcıya bağlandıktan sonra, şunu kullanarak bir SSH istemcisi yüklersiniz `apt-get` :
 
     ```console
     apt-get update && apt-get install openssh-client -y

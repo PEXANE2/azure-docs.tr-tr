@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 28eeb446e55213f1ffa0a638878f6432fd15a05a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72392247"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase üzerinde Apache Phoenix sorguları çalıştırmak için Apache Zeppelin kullanma
@@ -23,13 +23,13 @@ Apache Zeppelin, etkileşimli veri analizlerini ve SQL ve Scala gibi dilleri kul
 
 HDInsight kullanıcıları, Phoenix tablolarını sorgulamak için Apache Zeppelin kullanabilirler. Apache Zeppelin, HDInsight kümesiyle tümleşiktir ve bunu kullanmak için başka bir adım yoktur. JDBC yorumlayıcı ile Zeppelin Not defteri oluşturmanız ve Phoenix SQL sorgularınızı yazmaya başlamanız yeterlidir
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama](./apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin notunun oluşturulması
 
-1. Aşağıdaki `CLUSTERNAME` URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin`'deki kümenizin adıyla değiştirin. Sonra URL 'YI bir Web tarayıcısına girin. Küme oturum açma kullanıcı adınızı ve parolanızı girin.
+1. `CLUSTERNAME`AŞAĞıDAKI URL 'deki kümenizin adıyla değiştirin `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Sonra URL 'YI bir Web tarayıcısına girin. Küme oturum açma kullanıcı adınızı ve parolanızı girin.
 
 1. Zeppelin sayfasında **Yeni dekont oluştur**' u seçin.
 

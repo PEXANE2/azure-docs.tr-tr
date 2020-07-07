@@ -7,10 +7,10 @@ ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72750416"
 ---
 # <a name="legal-notices"></a>Yasal Uyarılar
@@ -19,7 +19,7 @@ Microsoft ve tüm katkıda bulunanlar, [Creative Commons Attribution 4,0 Uluslar
 
 Belgelerde sözü geçen Microsoft, Windows, Microsoft Azure ve/veya diğer Microsoft ürünleri, ABD’de ve/veya diğer ülkelerde Microsoft’un ticari ya da tescilli ticari markaları olabilir.
 Bu projeye yönelik lisanslar ile Microsoft adları, logoları ya da ticari markalarından herhangi birini kullanma hakkı tanınmaz.
-Microsoft 'un genel ticari marka yönergeleri adresinde [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)bulunabilir.
+Microsoft 'un genel ticari marka yönergeleri adresinde bulunabilir [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653) .
 
 Gizlilik bilgilerini şurada bulabilirsiniz:[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 

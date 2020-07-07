@@ -17,10 +17,10 @@ ms.date: 06/11/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c7e72718e13106b9d895921a2335f1525a7b88c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763134"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>Çoklu oturum açma için tek tıklamayla uygulama yapılandırması
@@ -37,7 +37,7 @@ Tek tıklamayla SSO özelliği, SAML protokolünü destekleyen Azure Market uygu
 - Daha verimli ve doğru SSO yapılandırması.
 - Kurulum için ortak iletişim veya destek gerekmez. Uygulama, SAML yapılandırması için Kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - SSO ile yapılandırılacak uygulamanın etkin bir aboneliği. Yönetici kimlik bilgilerine de ihtiyacınız vardır.
 - Uygulamalarım Microsoft 'un tarayıcıda yüklü olan **güvenli oturum açma uzantısı** . Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulamalara erişme ve bunları kullanma](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).

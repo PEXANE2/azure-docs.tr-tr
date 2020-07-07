@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/27/2020
 ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80383999"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde işlem yoğunluğu yoğun iş yükleri için GPU 'ları kullanma
@@ -24,7 +24,7 @@ Grafik işleme birimleri (GPU 'Lar) genellikle grafik ve görselleştirme iş y�
 
 Bu makalede, GPU 'ları destekleyen düğümlere sahip mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümeniz Kubernetes 1,10 veya sonraki bir sürümü çalıştırmalıdır. Bu gereksinimleri karşılayan bir AKS kümesine ihtiyacınız varsa, [BIR aks kümesi oluşturmak](#create-an-aks-cluster)için bu makalenin ilk bölümüne bakın.
 
-Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
@@ -36,7 +36,7 @@ Minimum gereksinimleri (GPU etkin düğüm ve Kubernetes sürüm 1,10 veya üzer
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturun. Aşağıdaki örnek tek bir düğümü olan bir küme oluşturur `Standard_NC6`:
+Şimdi [az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturun. Aşağıdaki örnek tek bir düğümü olan bir küme oluşturur `Standard_NC6` :
 
 ```azurecli-interactive
 az aks create \
@@ -129,7 +129,7 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Artık GPU 'Ların zamanlanabilen olduğunu onaylamak için [kubectl açıkla node][kubectl-describe] komutunu kullanın. *Kapasite* bölümünün altında, GPU olarak `nvidia.com/gpu:  1`listelemelidir.
+Artık GPU 'Ların zamanlanabilen olduğunu onaylamak için [kubectl açıkla node][kubectl-describe] komutunu kullanın. *Kapasite* bölümünün altında, GPU olarak listelemelidir `nvidia.com/gpu:  1` .
 
 Aşağıdaki sıkıştırılmış örnek, *aks-nodepool1-18821093-0*adlı düğümde bir GPU 'nun kullanılabildiğini göstermektedir:
 
@@ -185,7 +185,7 @@ Non-terminated Pods:         (9 in total)
 
 GPU 'YU eylemde görmek için uygun kaynak isteğiyle GPU özellikli bir iş yükü zamanlayın. Bu örnekte, [Mnist veri kümesine](http://yann.lecun.com/exdb/mnist/)karşı bir [TensorFlow](https://www.tensorflow.org/) işi çalıştıralim.
 
-*Samples-TF-mnist-demo. YAML* adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Aşağıdaki iş bildirimi bir kaynak sınırı içerir `nvidia.com/gpu: 1`:
+*Samples-TF-mnist-demo. YAML* adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Aşağıdaki iş bildirimi bir kaynak sınırı içerir `nvidia.com/gpu: 1` :
 
 > [!NOTE]
 > Sürücülere çağrı yaparken bir sürüm uyumsuzluğu hatası alırsanız (örneğin, CUDA sürücü sürümü CUDA çalışma zamanı sürümü için yetersizse), NVıDıA sürücü matrisi uyumluluk grafiğini gözden geçirin.[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
@@ -222,7 +222,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>GPU etkin iş yükünün durumunu ve çıkışını görüntüleme
 
-`--watch` Bağımsız değişkenle [kubectl Get Jobs][kubectl-get] komutunu kullanarak işin ilerlemesini izleyin. Önce görüntüyü çekmek ve veri kümesini işlemek birkaç dakika sürebilir. *Tamamlamalar* sütununda *1/1*' ı gösteriyorsa, iş başarıyla tamamlanmıştır. `kubetctl --watch` *CTRL-C*ile komuttan çıkın:
+Bağımsız değişkenle [kubectl Get Jobs][kubectl-get] komutunu kullanarak işin ilerlemesini izleyin `--watch` . Önce görüntüyü çekmek ve veri kümesini işlemek birkaç dakika sürebilir. *Tamamlamalar* sütununda *1/1*' ı gösteriyorsa, iş başarıyla tamamlanmıştır. `kubetctl --watch` *CTRL-C*ile komuttan çıkın:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -242,7 +242,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Şimdi Pod günlüklerini görüntülemek için [kubectl logs][kubectl-logs] komutunu kullanın. Aşağıdaki örnek Pod günlükleri uygun GPU cihazının bulunduğunu onaylayın `Tesla K80`. Kendi Pod 'niz için ad belirtin:
+Şimdi Pod günlüklerini görüntülemek için [kubectl logs][kubectl-logs] komutunu kullanın. Aşağıdaki örnek Pod günlükleri uygun GPU cihazının bulunduğunu onaylayın `Tesla K80` . Kendi Pod 'niz için ad belirtin:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432131"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama
@@ -26,7 +26,7 @@ Bu makalede, bir App Service uygulaması için yönetilen kimlik oluşturma ve A
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu kılavuzu gerçekleştirmek için aşağıdaki kaynaklara sahip olmanız gerekir. 
 
@@ -54,7 +54,7 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygu
 
     ![](../media/managed-identity-system-assigned.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Bu hızlı başlangıç, Azure CLı sürüm 2.0.4 veya üstünü gerektirir. Geçerli sürümünüzü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
@@ -77,7 +77,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-Bir sonraki bölümde gerekli olacak `PrincipalId`' ı bir yere unutmayın.
+Bir `PrincipalId` sonraki bölümde gerekli olacak ' ı bir yere unutmayın.
 
 ```json
 {
@@ -102,7 +102,7 @@ Bir sonraki bölümde gerekli olacak `PrincipalId`' ı bir yere unutmayın.
 
     ![](../media/managed-identity-access-policy.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Uygulamanıza anahtar kasanıza erişim izni vermek için, yukarıda not ettiğiniz **PrincipalId** 'ye sahip **ObjectID** parametresini sağlayarak Azure CLI [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu kullanın.
 

@@ -4,10 +4,10 @@ description: Bu makalede, Azure Red Hat OpenShift ve Red Hat OpenShift sürüm 4
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82196445"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Azure ve Red Hat OpenShift v4 kümenizi izlemeyi durdurma
@@ -39,13 +39,13 @@ Azure Red Hat OpenShift ve Red Hat OpenShift sürüm 4. x kümesini izlemeyi etk
 
     `helm delete azmon-containers-release-1`
 
-    Bu işlem, yayını kümeden kaldırır. `helm list` Komutunu çalıştırarak doğrulayabilirsiniz:
+    Bu işlem, yayını kümeden kaldırır. Komutunu çalıştırarak doğrulayabilirsiniz `helm list` :
 
     ```
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Held, sildikten sonra bile yayınlarınızı izliyorsa, bir kümenin geçmişini denetleyebilir ve hatta ile `helm rollback`bir yayını geri alabilirsiniz.
+Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Held, sildikten sonra bile yayınlarınızı izliyorsa, bir kümenin geçmişini denetleyebilir ve hatta ile bir yayını geri alabilirsiniz `helm rollback` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

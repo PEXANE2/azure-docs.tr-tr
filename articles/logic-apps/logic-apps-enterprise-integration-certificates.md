@@ -9,13 +9,13 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450165"
 ---
-# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Sertifikaları kullanarak B2B iletileri için güvenliği geliştirme
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Sertifika kullanarak B2B iletilerinin güvenliğini artırma
 
 B2B iletişimini gizli tutmanız gerektiğinde, tümleştirme hesabınıza sertifikalar ekleyerek kurumsal tümleştirme uygulamalarınızda ve özellikle mantıksal uygulamalarda B2B iletişimi için güvenliği artırabilirsiniz. Sertifikalar, elektronik iletişimlerdeki katılımcılar için kimlikleri denetleyen ve bu yollarla iletişimin güvenliğini sağlamanıza yardımcı olan dijital belgelerdir:
 
@@ -44,7 +44,7 @@ B2B özelliklerine sahip Logic Apps 'te *ortak bir sertifika* kullanmak için ö
 
 3. **Sertifikalar**altında **Ekle**' yi seçin. **Sertifika ekle**' nin altında, sertifikanız için bu ayrıntıları sağlayın. İşiniz bittiğinde **Tamam**’ı seçin.
 
-   | Özellik | Değer | Açıklama | 
+   | Özellik | Değer | Description | 
    |----------|-------|-------------|
    | **Adı** | <*Sertifika adı*> | Bu örnekte, sertifikanızın adı "publicCert" | 
    | **Sertifika türü** | Ortak | Sertifikanızın türü |
@@ -83,13 +83,13 @@ Oluşturduğunuz [anlaşmalarda](logic-apps-enterprise-integration-agreements.md
 
 5. **Sertifikalar**altında **Ekle**' yi seçin. **Sertifika ekle**' nin altında, sertifikanız için bu ayrıntıları sağlayın. İşiniz bittiğinde **Tamam**’ı seçin.
 
-   | Özellik | Değer | Açıklama | 
+   | Özellik | Değer | Description | 
    |----------|-------|-------------|
    | **Adı** | <*Sertifika adı*> | Bu örnekte, sertifikanızın adı "privateCert" | 
    | **Sertifika türü** | Özel | Sertifikanızın türü |
    | **Sertifika** | <*sertifika-dosya adı*> | Karşıya yüklemek istediğiniz sertifika dosyasını bulmak ve seçmek için, **sertifika** kutusunun yanındaki klasör simgesini seçin. Özel anahtar için bir Anahtar Kasası kullanırken, karşıya yüklenen dosya ortak sertifika olacaktır. | 
-   | **Kaynak grubu** | <*Integration-Account-Resource-Group*> | Bu örnekte "MyResourceGroup" olan tümleştirme hesabınızın kaynak grubu | 
-   | **Key Vault** | <*Anahtar Kasası adı*> | Azure anahtar kasasının adı |
+   | **Kaynak Grubu** | <*Integration-Account-Resource-Group*> | Bu örnekte "MyResourceGroup" olan tümleştirme hesabınızın kaynak grubu | 
+   | **Anahtar Kasası** | <*Anahtar Kasası adı*> | Azure anahtar kasasının adı |
    | **Anahtar adı** | <*anahtar adı*> | Anahtarınızın adı |
    ||||
 

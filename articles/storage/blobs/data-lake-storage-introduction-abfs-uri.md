@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437124"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage 2. Nesil URI'sini kullanma
@@ -27,13 +27,13 @@ Adres eklemek istediğiniz Data Lake Storage 2. yetenekli **Hesap, hesap** oluş
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Düzen tanımlayıcısı**: `abfs` protokol, düzen tanımlayıcısı olarak kullanılır. Daha önce Güvenli Yuva Katmanı (SSL), bağlantı olarak bilinen bir Aktarım Katmanı Güvenliği (TLS) ile veya bunlarla bağlanma seçeneğiniz vardır. Bir `abfss` TLS bağlantısıyla bağlanmak için kullanın.
+1. **Düzen tanımlayıcısı**: `abfs` protokol, düzen tanımlayıcısı olarak kullanılır. Daha önce Güvenli Yuva Katmanı (SSL), bağlantı olarak bilinen bir Aktarım Katmanı Güvenliği (TLS) ile veya bunlarla bağlanma seçeneğiniz vardır. `abfss`BIR TLS bağlantısıyla bağlanmak için kullanın.
 
 2. **Dosya sistemi**: dosya ve klasörleri tutan ana konum. Bu, Azure depolama Blobları hizmetindeki kapsayıcılarla aynıdır.
 
 3. **Hesap adı**: oluşturma sırasında depolama hesabınıza verilen ad.
 
-4. **Yollar**: dizin yapısının eğik çizgi sınırlı`/`() temsili.
+4. **Yollar**: dizin yapısının eğik çizgi sınırlı ( `/` ) temsili.
 
 5. **Dosya adı**: tek dosyanın adı. Bir dizinin adreslenmesi durumunda bu parametre isteğe bağlıdır.
 
@@ -41,11 +41,11 @@ Ancak, adres eklemek istediğiniz hesap, hesap oluşturma sırasında varsayıla
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **Yol**: dizin yapısının eğik çizgi sınırlı`/`() temsili.
+1. **Yol**: dizin yapısının eğik çizgi sınırlı ( `/` ) temsili.
 
 2. **Dosya adı**: tek dosyanın adı.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

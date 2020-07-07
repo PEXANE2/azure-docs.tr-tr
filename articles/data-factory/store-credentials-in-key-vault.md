@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451695"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Kimlik bilgilerini Azure Key Vault içinde depola
@@ -25,7 +25,7 @@ Veri depoları için kimlik bilgilerini saklayabilir ve bir [Azure Key Vault](..
 
 Şu anda, özel etkinlik dışındaki tüm etkinlik türleri bu özelliği destekler. Özellikle bağlayıcı yapılandırması için, Ayrıntılar için [her bağlayıcı konusunun](copy-activity-overview.md#supported-data-stores-and-formats) "bağlı hizmet özellikleri" bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu özellik, Data Factory tarafından yönetilen kimliği kullanır. [Data Factory Için yönetilen kimliğin](data-factory-service-identity.md) nasıl çalıştığını öğrenin ve Data Factory 'nizin ilişkili bir tane olduğundan emin olun.
 
@@ -44,12 +44,12 @@ Azure Key Vault bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği: **AzureKeyVault**olarak ayarlanmalıdır. | Yes |
+| tür | Type özelliği: **AzureKeyVault**olarak ayarlanmalıdır. | Yes |
 | baseUrl | Azure Key Vault URL 'sini belirtin. | Yes |
 
 **Yazma Kullanıcı arabirimini kullanma:**
 
-**Bağlantı** -> **bağlı hizmetleri** -> **Yeni**' yi seçin. Yeni bağlı hizmet ' de, "Azure Key Vault" araması yapın ve seçin:
+**Bağlantı**  ->  **bağlı hizmetleri**  ->  **Yeni**' yi seçin. Yeni bağlı hizmet ' de, "Azure Key Vault" araması yapın ve seçin:
 
 ![Arama Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -77,9 +77,9 @@ Aşağıdaki özellikler, bağlantılı hizmette bir Anahtar Kasası gizliliğin
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Alanın Type özelliği: **AzureKeyVaultSecret**olarak ayarlanmalıdır. | Yes |
+| tür | Alanın Type özelliği: **AzureKeyVaultSecret**olarak ayarlanmalıdır. | Yes |
 | secretName | Azure Key Vault ' deki gizli dizi adı. | Yes |
-| Gizlidizisürümü | Azure Key Vault ' deki gizli dizi sürümü.<br/>Belirtilmemişse, her zaman gizli dizinin en son sürümünü kullanır.<br/>Belirtilmişse, belirtilen sürüme de sahiptir.| Hayır |
+| Gizlidizisürümü | Azure Key Vault ' deki gizli dizi sürümü.<br/>Belirtilmemişse, her zaman gizli dizinin en son sürümünü kullanır.<br/>Belirtilmişse, belirtilen sürüme de sahiptir.| No |
 | mağaza | Kimlik bilgisini depolamak için kullandığınız Azure Key Vault bağlı bir hizmete başvurur. | Yes |
 
 **Yazma Kullanıcı arabirimini kullanma:**

@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431884"
 ---
 # <a name="design-tables-using-synapse-sql"></a>SYNAPSE SQL kullanarak tabloları tasarlama
@@ -27,27 +27,27 @@ Aşağıdaki tabloda SQL havuzu ile ilgili konular ve isteğe bağlı SQL karş�
 
 | Konu başlığı                                                        | SQL havuzu | İsteğe bağlı SQL |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
-| [Tablo kategorisini belirleme](#determine-table-category)        | Yes                | Hayır                      |
+| [Tablo kategorisini belirleme](#determine-table-category)        | Evet                | Hayır                      |
 | [Şema adları](#schema-names)                                | Yes                | Yes                     |
-| [Tablo adları](#table-names)                                  | Yes                | Hayır                      |
-| [Tablo kalıcılığı](#table-persistence)                      | Yes                | Hayır                      |
-| [Normal tablo](#regular-table)                              | Yes                | Hayır                      |
+| [Tablo adları](#table-names)                                  | Evet                | Hayır                      |
+| [Tablo kalıcılığı](#table-persistence)                      | Evet                | Hayır                      |
+| [Normal tablo](#regular-table)                              | Evet                | Hayır                      |
 | [Geçici tablo](#temporary-table)                          | Yes                | Yes                     |
 | [Dış tablo](#external-table)                            | Yes                | Yes                     |
 | [Veri türleri](#data-types)                                    | Yes                | Yes                     |
-| [Dağıtılmış tablolar](#distributed-tables)                    | Yes                | Hayır                      |
-| [Karma dağıtılmış tablolar](#hash-distributed-tables)          | Yes                | Hayır                      |
-| [Çoğaltılmış tablolar](#replicated-tables)                      | Yes                | Hayır                      |
-| [Hepsini bir kez deneme tabloları](#round-robin-tables)                    | Yes                | Hayır                      |
-| [Tablolar için ortak dağıtım yöntemleri](#common-distribution-methods-for-tables) | Yes                | Hayır                      |
+| [Dağıtılmış tablolar](#distributed-tables)                    | Evet                | Hayır                      |
+| [Karma dağıtılmış tablolar](#hash-distributed-tables)          | Evet                | Hayır                      |
+| [Çoğaltılmış tablolar](#replicated-tables)                      | Evet                | Hayır                      |
+| [Hepsini bir kez deneme tabloları](#round-robin-tables)                    | Evet                | Hayır                      |
+| [Tablolar için ortak dağıtım yöntemleri](#common-distribution-methods-for-tables) | Evet                | Hayır                      |
 | [Bölümler](#partitions)                                    | Yes                | Yes                     |
-| [Columnstore dizinleri](#columnstore-indexes)                  | Yes                | Hayır                      |
+| [Columnstore dizinleri](#columnstore-indexes)                  | Evet                | Hayır                      |
 | [İstatistikler](#statistics)                                    | Yes                | Yes                     |
-| [Birincil anahtar ve benzersiz anahtar](#primary-key-and-unique-key)    | Yes                | Hayır                      |
-| [Tablo oluşturma komutları](#commands-for-creating-tables) | Yes                | Hayır                      |
-| [Veri ambarıyla kaynak verileri hizalama](#aligning-source-data-with-the-data-warehouse) | Yes                | Hayır                      |
-| [Desteklenmeyen tablo özellikleri](#unsupported-table-features)    | Yes                | Hayır                      |
-| [Tablo boyutu sorguları](#table-size-queries)                    | Yes                | Hayır                      |
+| [Birincil anahtar ve benzersiz anahtar](#primary-key-and-unique-key)    | Evet                | Hayır                      |
+| [Tablo oluşturma komutları](#commands-for-creating-tables) | Evet                | Hayır                      |
+| [Veri ambarıyla kaynak verileri hizalama](#aligning-source-data-with-the-data-warehouse) | Evet                | Hayır                      |
+| [Desteklenmeyen tablo özellikleri](#unsupported-table-features)    | Evet                | Hayır                      |
+| [Tablo boyutu sorguları](#table-size-queries)                    | Evet                | Hayır                      |
 
 ## <a name="determine-table-category"></a>Tablo kategorisini belirleme
 
@@ -207,7 +207,7 @@ BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve zorunlu KıLıNMAYAN her ikisi de k
 
 Yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesinin sonuçlarıyla bir tablo oluşturup doldurabilirsiniz. Aşağıda tablo oluşturmak için T-SQL komutları verilmiştir.
 
-| T-SQL ekstresi | Açıklama |
+| T-SQL ekstresi | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
 | [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Dış tablo oluşturur. Tablonun tanımı SQL havuzunda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Storage depolanır. |

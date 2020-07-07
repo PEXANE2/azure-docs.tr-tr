@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437501"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Hyper-V VM'leri için ikincil bir şirket içi siteye olağanüstü durum kurtarma ayarlama
@@ -29,7 +29,7 @@ Bu makalede System Center Virtual Machine Manager (VMM) bulutlarında yönetilen
 > * Sanal makine için çoğaltmayı etkinleştirme
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu senaryoyu tamamlamak için:
 
@@ -64,7 +64,7 @@ VMM'yi şu şekilde hazırlayın:
 
 Neleri çoğaltmak istediğinizi ve bunları nereye çoğaltacağınızı seçin.
 
-1. **1. Adım: altyapı** > **koruma hedefini**hazırlama ' ya **Site Recovery** > tıklayın.
+1. **Site Recovery**  >  **1. Adım: altyapı**  >  **koruma hedefini**hazırlama ' ya Site Recovery tıklayın.
 2. **Kurtarma sitesine**'yi ve **Evet, Hyper-V ile**'yi seçin.
 3. Hyper-V konaklarını yönetmek için VMM kullandığınızı belirtmek üzere **Evet**'i seçin.
 4. İkincil bir VMM sunucunuz varsa **Evet**'i seçin. Çoğaltmayı tek bir VMM sunucusu üzerindeki bulutlar arasında dağıtıyorsanız **Hayır**'ı seçin. Ardından **Tamam**'a tıklayın.
@@ -74,7 +74,7 @@ Neleri çoğaltmak istediğinizi ve bunları nereye çoğaltacağınızı seçin
 
 Azure Site Recovery Sağlayıcısı'nı VMM sunucularına yükleyin ve kasadaki sunucuları keşfedip kaydedin.
 
-1. **Altyapı** > **kaynağını**hazırla ' ya tıklayın.
+1. **Altyapı kaynağını hazırla**' ya tıklayın  >  **Source**.
 2. **Kaynağı ayarla** kısmında, bir VMM sunucusu eklemek için **+ VMM**'ye tıklayın.
 3. **Sunucu Ekle** bölümünde **Sunucu türü** olarak **System Center VMM sunucusu** girişinin olduğundan emin olun.
 4. Azure Site Recovery Sağlayıcısı yükleme dosyasını indirin.
@@ -98,21 +98,21 @@ Azure Site Recovery Sağlayıcısı'nı VMM sunucularına yükleyin ve kasadaki 
 6. **Kasa adı** alanında, sunucunun kayıtlı olduğu kasanın adını doğrulayın. **İleri**’ye tıklayın.
 7. **Ara Sunucu Bağlantısı** bölümünde VMM sunucusunda çalışan Sağlayıcı'nın Azure'a nasıl bağlanacağını belirleyin.
    - Sağlayıcıyı doğrudan veya bir ara sunucu üzerinden internete bağlanacak şekilde ayarlayabilirsiniz. Ara sunucu ayarlarını gereken şekilde yapın.
-   - Bir ara sunucu kullanıyorsanız belirtilen ara sunucu kimlik bilgileriyle otomatik olarak bir VMM Farklı Çalıştır hesabı (DRAProxyAccount) oluşturulur. Bu hesabın kimlik doğrulamasını başarıyla gerçekleştirebilmesi için ara sunucuyu yapılandırın. RunAs hesabı ayarları, VMM konsolu > **ayarları** > **güvenlik** > **Farklı Çalıştır hesapları**' nda değiştirilebilir.
+   - Bir ara sunucu kullanıyorsanız belirtilen ara sunucu kimlik bilgileriyle otomatik olarak bir VMM Farklı Çalıştır hesabı (DRAProxyAccount) oluşturulur. Bu hesabın kimlik doğrulamasını başarıyla gerçekleştirebilmesi için ara sunucuyu yapılandırın. RunAs hesabı ayarları, VMM konsolu > **ayarları**  >  **güvenlik**  >  **Farklı Çalıştır hesapları**' nda değiştirilebilir.
    - Değişiklikleri güncelleştirmek için VMM hizmetini yeniden başlatın.
 8. **Kayıt Anahtarı** kısmında indirdiğiniz ve VMM sunucusuna kopyaladığınız anahtarı seçin.
 9. Şifreleme ayarı, bu senaryo için geçerli değildir. 
 10. **Sunucu adı** alanında, kasadaki VMM sunucusunu tanımlamak için bir kolay ad belirtin. Bir kümede VMM küme rolünün adını belirtin.
 11. **Bulut meta verilerini eşitle** bölümünde VMM sunucusundaki tüm bulutlar için meta verileri eşitlemek isteyip istemediğinizi seçin. Bu eylemin her sunucuda yalnızca bir kez gerçekleştirilmesi gerekir. Tüm bulutları eşitlemek istemiyorsanız bu ayarı işaretlemeden geçebilirsiniz. VMM konsolunun bulut özellikleri sayfasından her bulutu ayrı bir şekilde eşitleyebilirsiniz.
-12. İşlemi tamamlamak için **İleri**'ye tıklayın. Kayıttan sonra Site Recovery, VMM sunucusundan meta verileri alır. Sunucu, kasadaki **sunucular** > **VMM sunucuları** ' nda görüntülenir.
-13. Sunucu kasada göründükten sonra **kaynak** > **hazırlama kaynağı** ' nda VMM sunucusunu seçin ve Hyper-V konağının bulunduğu bulutu seçin. Ardından **Tamam**'a tıklayın.
+12. İşlemi tamamlamak için **İleri**'ye tıklayın. Kayıttan sonra Site Recovery, VMM sunucusundan meta verileri alır. Sunucu, kasadaki **sunucular**  >  **VMM sunucuları** ' nda görüntülenir.
+13. Sunucu kasada göründükten sonra **kaynak**  >  **hazırlama kaynağı** ' nda VMM sunucusunu seçin ve Hyper-V konağının bulunduğu bulutu seçin. Ardından **Tamam**'a tıklayın.
 
 
 ## <a name="set-up-the-target-environment"></a>Hedef ortamı ayarlama
 
 Hedef VMM sunucusunu ve bulutu seçin:
 
-1. **Altyapı** > **hedefini**hazırla ' ya tıklayın ve hedef VMM sunucusunu seçin.
+1. **Altyapı hedefini hazırla**' ya tıklayın  >  **Target**ve hedef VMM sunucusunu seçin.
 2. Site Recovery ile eşitlenmiş olana VMM bulutları görüntülenir. Hedef bulutu seçin.
 
    ![Hedef](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
@@ -122,7 +122,7 @@ Hedef VMM sunucusunu ve bulutu seçin:
 
 Başlamadan önce ilkeyi kullanan tüm konakların aynı işletim sistemine sahip olduğundan emin olun. Konaklar farklı Windows Server sürümlerini çalıştırıyorsa birden fazla çoğaltma ilkesi oluşturmanız gerekir.
 
-1. Yeni bir çoğaltma ilkesi oluşturmak için **altyapıyı** > hazırla**çoğaltma ayarları** > **+ Oluştur ve ilişkilendir**' e tıklayın.
+1. Yeni bir çoğaltma ilkesi oluşturmak için **altyapıyı hazırla**  >  **çoğaltma ayarları**  >  **+ Oluştur ve ilişkilendir**' e tıklayın.
 2. **Ilke oluştur ve ilişkilendir**bölümünde bir ilke adı belirtin. Kaynak ve hedef türü **Hyper-V** olmalıdır.
 3. **Hyper-V konak sürümü** alanında konakta çalışan işletim sistemini seçin.
 4. **Kimlik doğrulaması türü** ve **Kimlik doğrulaması bağlantı noktası** alanlarında birincil ve kurtarma amaçlı Hyper-V konağı sunucuları arasındaki trafiğe nasıl kimlik doğrulaması uygulanacağını belirtin.
@@ -145,7 +145,7 @@ Başlamadan önce ilkeyi kullanan tüm konakların aynı işletim sistemine sahi
 
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 
-1. **Uygulama** > **kaynağını**Çoğalt ' a tıklayın. 
+1. **Uygulama kaynağını Çoğalt**' a tıklayın  >  **Source**. 
 2. **Kaynak** bölümünde VMM sunucusunu ve çoğaltmak istediğiniz Hyper-V konaklarının bulunduğu bulutu seçin. Ardından **Tamam**'a tıklayın.
 3. **Hedef** bölümünde ikincil VMM sunucusunu ve bulutu doğrulayın.
 4. **Sanal makineler** bölümündeki listeden korumak istediğiniz VM'leri seçin.

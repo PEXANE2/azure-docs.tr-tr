@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72792210"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Bilişsel Arama eşzamanlılık yönetimi
@@ -20,7 +20,7 @@ ms.locfileid: "72792210"
 Dizinler ve veri kaynakları gibi Azure Bilişsel Arama kaynaklarını yönetirken kaynakların güvenli bir şekilde güncelleştirilmesi önemlidir. özellikle de, kaynaklar uygulamanızın farklı bileşenleriyle aynı anda erişilir. İki istemci eşzamanlı olarak bir kaynağı her zaman koordine etmeden güncelleştirdiğinde, yarış koşulları mümkündür. Bunu engellemek için Azure Bilişsel Arama, *iyimser eşzamanlılık modeli*sunar. Bir kaynakta kilit yok. Bunun yerine, yanlışlıkla üzerine yazılmalardan kaçınacak istekleri oluşturabilmeniz için kaynak sürümünü tanımlayan her kaynak için bir ETag vardır.
 
 > [!Tip]
-> [Örnek bir C# çözümünde](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) kavramsal kod, eşzamanlılık denetiminin Azure bilişsel arama 'da nasıl çalıştığını açıklar. Kod, eşzamanlılık denetimini çağıran koşullar oluşturur. [Aşağıdaki kod parçasının](#samplecode) okunması büyük olasılıkla çoğu geliştirici için yeterlidir, ancak çalıştırmak istiyorsanız, hizmet adını ve bir yönetici API anahtarını eklemek için appSettings. JSON öğesini düzenleyin. Hizmet URL 'SI verildiğinde `http://myservice.search.windows.net`, hizmet adı. `myservice`
+> [Örnek bir C# çözümünde](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) kavramsal kod, eşzamanlılık denetiminin Azure bilişsel arama 'da nasıl çalıştığını açıklar. Kod, eşzamanlılık denetimini çağıran koşullar oluşturur. [Aşağıdaki kod parçasının](#samplecode) okunması büyük olasılıkla çoğu geliştirici için yeterlidir, ancak çalıştırmak istiyorsanız, hizmet adını ve yönetici API anahtarını eklemek için appsettings.js' yi düzenleyin. Hizmet URL 'SI verildiğinde `http://myservice.search.windows.net` , hizmet adı `myservice` .
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -216,6 +216,6 @@ ETags veya AccessCondition nesnelerini içerecek şekilde aşağıdaki örnekler
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Ortak http istek ve yanıt üst bilgileri](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[http durum kodları](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[Dizin işlemleri (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Ortak http isteği ve yanıt üst bilgileri](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+ [Http durum kodları](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
+ [Dizin işlemleri (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
