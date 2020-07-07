@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73953193"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure için Visual Studio IoT Hub cihaz yönetimi için Cloud Explorer 'ı kullanma
@@ -59,7 +58,7 @@ Visual Studio 2017 için Visual Studio Yükleyicisi bulut Gezgini bileşeni yaln
 
 ## <a name="sign-in-to-access-your-hub"></a>Hub 'ınıza erişmek için oturum açın
 
-1. Visual Studio 'da bulut Gezgini 'ni açmak için**bulut Gezginini** **görüntüle** > ' yi seçin.
+1. Visual Studio 'da bulut Gezgini **View**'ni  >  açmak için**bulut Gezginini** görüntüle ' yi seçin.
 
 1. Aboneliklerinizi göstermek için hesap yönetimi simgesini seçin.
 
@@ -89,9 +88,9 @@ Bir cihaz ikizi düzenlemek için aşağıdaki adımları uygulayın:
 
 1. Cihazınıza sağ tıklayın ve **cihaz Ikizi Düzenle**' yi seçin.
 
-   Bir **Azure-IoT-Device-ikizi. JSON** dosyası, Device ikizi içeriğiyle açılır.
+   **azure-iot-device-twin.js** bir dosya, Device ikizi içeriğiyle açılır.
 
-1. **Etiketlerin** veya özelliklerin bazı düzenlemeleri yapın **.** **Azure-IoT-Device-ikizi. JSON** dosyasında istenen alanlar.
+1. **Etiket** veya özelliklerde bazı düzenlemeler yapın **. istenen** alanlar dosyada **azure-iot-device-twin.js** .
 
 1. Cihaz ikizi güncelleştirmek için **CTRL + S** tuşlarına basın.
 

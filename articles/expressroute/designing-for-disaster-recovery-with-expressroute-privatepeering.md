@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74076696"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma için tasarlama
@@ -64,7 +63,7 @@ Aşağıdaki tekniklerden birini kullanarak bir ExpressRoute devresini tercih et
 
 Aşağıdaki diyagramda, daha belirgin yol tanıtımı kullanılarak ExpressRoute yol seçiminin etkili bir şekilde kullanılması gösterilmektedir. Gösterilen örnekte, contoso şirket içi/24 IP aralığı, tercih edilen yol (ExpressRoute 1) aracılığıyla iki/25 adres aralığı ve tek yönlü yol (ExpressRoute 2) aracılığıyla/24 olarak tanıtıldığında.
 
-[![iki]][2]
+[![2]][2]
 
 /25,/24 ile karşılaştırıldığında daha belirgin olduğundan, Azure, 10.1.11.0/24 ' e gidecek trafiği normal durumda ExpressRoute 1 üzerinden gönderir. ExpressRoute 1 bağlantılarının her ikisi de kapalıysa, VNet 10.1.11.0/24 yol tanıtımını yalnızca ExpressRoute 2 aracılığıyla görebilir; Bu nedenle, bu hata durumunda bekleme devresi kullanılır.
 
@@ -72,7 +71,7 @@ Aşağıdaki diyagramda, daha belirgin yol tanıtımı kullanılarak ExpressRout
 
 Aşağıdaki ekran görüntüsünde, Azure portal aracılığıyla bir ExpressRoute bağlantısının ağırlığını yapılandırma gösterilmektedir.
 
-[![03]][3]
+[![3]][3]
 
 Aşağıdaki diyagramda bağlantı ağırlığı kullanılarak ExpressRoute yol seçiminin etkili bir şekilde kullanılması gösterilmektedir. Varsayılan bağlantı ağırlığı 0 ' dır. Aşağıdaki örnekte, ExpressRoute 1 bağlantısının ağırlığı 100 olarak yapılandırılır. VNet birden fazla ExpressRoute bağlantı hattı üzerinden tanıtılan bir rota önekini aldığında, VNet en yüksek ağırlığa sahip bağlantıyı tercih eder.
 
@@ -104,7 +103,7 @@ Aşağıdaki diyagramda gösterilen örneği ele alalım. Örnekte, contoso iki 
 
 Olağanüstü durum kurtarmanın nasıl mimarilerimiz, çapraz konuma çapraz konum (region1/Region2 to Location2/location1) trafiğinin nasıl yönlendirildiğini etkiler. Çapraz bölge konumu trafiğini farklı yollarla yönlendiren iki farklı olağanüstü durum mimarilerine göz atalım.
 
-### <a name="scenario-1"></a>Senaryo 1
+### <a name="scenario-1"></a>1\. Senaryo
 
 İlk senaryoda, bir Azure bölgesi ve şirket içi ağ arasındaki tüm trafiğin, sabit durumdaki yerel ExpressRoute bağlantı hattı üzerinden akışı gibi olağanüstü durum kurtarma tasarlayalim. Yerel ExpressRoute bağlantı hattı başarısız olursa, Azure ile şirket içi ağ arasındaki tüm trafik akışları için uzak ExpressRoute devresi kullanılır.
 
@@ -114,9 +113,9 @@ Aşağıdaki diyagramda Senaryo 1 gösterilmektedir. Diyagramda yeşil çizgiler
 
 Şirket içi ağa bağlı trafik için yerel eşleme konumu ExpressRoute 'a bağlantıyı tercih etmek üzere sanal ağları etkilemek için bağlantı ağırlığı kullanarak senaryoyu mimARDA dağıtabilirsiniz. Çözümü tamamlayabilmeniz için, simetrik trafik akışının tersine çevrilmiş olduğundan emin olmanız gerekir. Bir ExpressRoute devresini tercih etmek için BGP yönlendiricileriniz (Şirket içi tarafında ExpressRoute devrelerinin sonlandırıldığı) arasında IGP oturumunda yerel tercihi kullanabilirsiniz. Çözüm aşağıdaki diyagramda gösterilmiştir. 
 
-[![240]][8]
+[![8]][8]
 
-### <a name="scenario-2"></a>Senaryo 2
+### <a name="scenario-2"></a>2\. Senaryo
 
 Senaryo 2 aşağıdaki diyagramda gösterilmiştir. Diyagramda yeşil çizgiler, VNet1 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Mavi çizgiler, VNet2 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Düzenli durumda (diyagramdaki düz satırlarda), sanal ağlar ve şirket içi konumlar arasındaki tüm trafik, en bölüm için Microsoft omurga aracılığıyla akar ve şirket içi konumlar arasındaki bağlantı, yalnızca hata durumunda (diyagramdaki noktalı çizgiler) bir ExpressRoute üzerinden akar.
 
@@ -124,7 +123,7 @@ Senaryo 2 aşağıdaki diyagramda gösterilmiştir. Diyagramda yeşil çizgiler,
 
 Çözüm aşağıdaki diyagramda gösterilmiştir. Gösterildiği gibi, VNET yol seçimini etkilemek için, daha belirgin yol (seçenek 1) veya as-Path önüne (seçenek 2) kullanarak senaryoyu mimARDA dağıtabilirsiniz. Azure bağlı trafiği için şirket içi ağ yolu seçimini etkilemek için, şirket içi konum arasındaki iç yönü daha az tercih edilen şekilde yapılandırmanız gerekir. Bağlı olan bağlantıyı, şirket içi ağ içinde kullanılan yönlendirme protokolüne bağlı olarak tercih ettiğiniz şekilde yapılandırırsınız. Yerel tercihi IOP veya ölçümle (OSPF veya SIS) ile birlikte kullanabilirsiniz.
 
-[![(]][10]
+[![10]][10]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

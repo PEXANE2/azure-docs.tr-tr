@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890950"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Uzaktan Izleme çözüm hızlandırıcıyı yerel olarak dağıtma-Visual Studio Code
@@ -37,7 +36,7 @@ Yerel dağıtımı tamamlamaya yönelik olarak, yerel geliştirme makinenizde a�
 * [NGINX](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [VS Code C# uzantısı](https://code.visualstudio.com/docs/languages/csharp)
-* [Node. js V8](https://nodejs.org/) -bu yazılım, betiklerin Azure kaynakları oluşturmak IÇIN KULLANDıĞı bilgisayar CLI için bir önkoşuldur. Node. js ile v10 arasındaki kullanma
+* [Node.js V8](https://nodejs.org/) -bu yazılım, betiklerin Azure kaynakları oluşturmak IÇIN KULLANDıĞı bilgisayar CLI için bir önkoşuldur. Node.js ile v10 arasındaki kullanma
 
 > [!NOTE]
 > Visual Studio Code, Windows, Mac ve Ubuntu için kullanılabilir.
@@ -64,7 +63,7 @@ Aşağıdaki adımlarda, Visual Studio Code 'de uzaktan Izleme mikro hizmetlerin
 1. Visual Studio Code'u başlatın.
 1. VS Code, **Azure-IoT-PCs-Remote-Monitoring-DotNet** klasörünü açın.
 1. **Azure-IoT-PCs-Remote-Monitoring-DotNet** klasöründe **. vscode** adlı yeni bir klasör oluşturun.
-1. '. **JSON** ve **Tasks. JSON** dosyalarını services\scripts\local\launch\ıdesettings\vscode konumundan yeni oluşturduğunuz **. vscode** klasörüne kopyalayın.
+1. Services\scripts\local\launch\ıdesettings\vscode konumundaki **launch.js** ve **tasks.js** dosyalarını yeni oluşturduğunuz **. vscode** klasörüne kopyalayın.
 1. VS Code **Hata Ayıkla panelini** açın ve **tüm mikro hizmetler yapılandırmasını Çalıştır** ' a çalıştırın. Bu yapılandırma, Docker 'da cihaz benzetimi mikro hizmetini çalıştırır ve hata ayıklayıcıda diğer mikro hizmetleri çalıştırır.
 
 Çalıştırma hatası, hata ayıklama konsolundaki **tüm mikro soervıces** çalıştırma sırasında aşağıdaki gibi görünür:
@@ -80,7 +79,7 @@ npm install
 npm start
 ```
 
-Başlangıç tamamlandığında tarayıcınızda **http:\//localhost: 3000/Dashboard**sayfası görüntülenir. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımı izleyin.
+Başlangıç tamamlandığında tarayıcınızda **http: \/ /localhost: 3000/Dashboard**sayfası görüntülenir. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımı izleyin.
 
 ### <a name="configure-and-run-nginx"></a>NGıNX 'i yapılandırma ve çalıştırma
 
@@ -93,7 +92,7 @@ Yerel makinenizde çalışan Web uygulamasını ve mikro hizmetleri bağlamak i�
 
 ### <a name="connect-to-the-dashboard"></a>Panoya Bağlan
 
-Uzaktan Izleme çözümü panosuna erişmek için tarayıcınızda http:\//localhost: 9000 adresine gidin.
+Uzaktan Izleme çözümü panosuna erişmek için tarayıcınızda http: \/ /localhost: 9000 adresine gidin.
 
 ## <a name="clean-up"></a>Temizleme
 

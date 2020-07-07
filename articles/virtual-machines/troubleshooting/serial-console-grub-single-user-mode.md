@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
 ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70883935"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma
@@ -53,16 +52,16 @@ VM önyüklemesi yapamıyor, dağıtımlar genellikle sizi otomatik olarak tek k
 
 ### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Bir parolayı sıfırlamak veya eklemek için tek kullanıcılı modu kullanma
 Tek Kullanıcı modundayken, aşağıdakileri yaparak sudo ayrıcalıklarına sahip yeni bir kullanıcı ekleyin:
-1. Bir `useradd <username>` Kullanıcı eklemek için ' i çalıştırın.
-1. Yeni `sudo usermod -a -G sudo <username>` Kullanıcı kök ayrıcalıklarına izin vermek için ' i çalıştırın.
-1. Yeni `passwd <username>` kullanıcının parolasını ayarlamak için kullanın. Daha sonra yeni kullanıcı olarak oturum açabilirsiniz.
+1. `useradd <username>`Bir kullanıcı eklemek için ' i çalıştırın.
+1. `sudo usermod -a -G sudo <username>`Yeni Kullanıcı kök ayrıcalıklarına izin vermek için ' i çalıştırın.
+1. `passwd <username>`Yeni kullanıcının parolasını ayarlamak için kullanın. Daha sonra yeni kullanıcı olarak oturum açabilirsiniz.
 
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Red Hat Enterprise Linux erişimi (RHEL)
 RHEL normal şekilde önyükleme yapamıyor, sizi otomatik olarak tek kullanıcı moduna bırakır. Ancak, tek kullanıcılı mod için kök erişimi ayarlamadıysanız, kök parolanız yoktur ve oturum açamazsınız. Geçici bir çözüm vardır ("RHEL 'de tek kullanıcı moduna el Ile girme" bölümüne bakın), ancak başlangıçta kök erişimi ayarlamanızı öneririz.
 
 ### <a name="grub-access-in-rhel"></a>RHEL 'de GRUB erişimi
-RHEL, kutudan çıkar seçeneğiyle birlikte gelir. GRUB girmek için çalıştırarak `sudo reboot`sanal makinenizi yeniden başlatın ve ardından herhangi bir tuşa basın. GRUB bölmesi görüntülenmelidir. Aksi takdirde, aşağıdaki satırların GRUB dosyanızda (`/etc/default/grub`) bulunduğundan emin olun:
+RHEL, kutudan çıkar seçeneğiyle birlikte gelir. GRUB girmek için çalıştırarak sanal makinenizi yeniden başlatın `sudo reboot` ve ardından herhangi bir tuşa basın. GRUB bölmesi görüntülenmelidir. Aksi takdirde, aşağıdaki satırların GRUB dosyanızda () bulunduğundan emin olun `/etc/default/grub` :
 
 **RHEL 8 için**
 
@@ -91,8 +90,8 @@ Kök kullanıcı varsayılan olarak devre dışıdır. RHEL 'de tek kullanıcıl
 1. Aşağıdaki işlemleri gerçekleştirerek kök kullanıcı için parolayı etkinleştirin:
     * Çalıştır `passwd root` (güçlü bir kök parolası ayarlayın).
 1. Kök kullanıcının aşağıdakileri yaparak yalnızca ttyS0 aracılığıyla oturum açabildiğinden emin olun:  
-    a. Öğesini `edit /etc/ssh/sshd_config`çalıştırın ve Permitrootlogın 'in olarak `no`ayarlandığından emin olun.  
-    b. Yalnızca `edit /etc/securetty file` ttyS0 aracılığıyla oturum açmaya izin vermek için çalıştırın.
+    a. `edit /etc/ssh/sshd_config`Öğesini çalıştırın ve Permitrootlogın 'in olarak ayarlandığından emin olun `no` .  
+    b. `edit /etc/securetty file`Yalnızca ttyS0 aracılığıyla oturum açmaya izin vermek için çalıştırın.
 
 Artık sistem tek kullanıcı modunda önyükleniyorsa, kök parolasıyla oturum açabilirsiniz.
 
@@ -127,26 +126,26 @@ Yukarıdaki yönergeleri kullanarak GRUB ve kök erişim ayarladıysanız, aşa�
 1. Çekirdek satırını bulun. Azure 'da *linux16*ile başlar.
 1. Satırın sonunda, satırın sonuna *RD. Break* ekleyin. Çekirdek çizgi ve *RD. Break*arasında bir boşluk bırakın.
 
-    Bu eylem, [Red Hat belgelerinde](https://aka.ms/rhel7rootpassword)açıklandığı gibi, denetim öğesinden `initramfs` öğesine `systemd`geçirilmeden önce önyükleme işlemini keser.
+    Bu eylem, `initramfs` `systemd` [Red Hat belgelerinde](https://aka.ms/rhel7rootpassword)açıklandığı gibi, denetim öğesinden öğesine geçirilmeden önce önyükleme işlemini keser.
 1. Çıkmak için CTRL + X tuşlarına basın ve uygulanan ayarlarla yeniden başlatın.
 
    ' Yi yeniden başlattıktan sonra, salt bir dosya sistemi ile acil durum moduna bırakılmışız. 
    
-1. Kabukta kök dosya sistemini `mount -o remount,rw /sysroot` okuma/yazma izinleriyle yeniden bağlamak için girin.
-1. Tek kullanıcılı modda önyükleme yaptıktan sonra, `chroot /sysroot` `sysroot` Jail 'e geçiş yapmak için girin.
-1. Artık kökte olursunuz. Önceki yönergeleri girerek `passwd` ve ardından tek kullanıcılı mod girmek için kök parolanızı sıfırlayabilirsiniz. 
-1. İşiniz bittiğinde yeniden başlatmak için girin `reboot -f` .
+1. Kabukta `mount -o remount,rw /sysroot` kök dosya sistemini okuma/yazma izinleriyle yeniden bağlamak için girin.
+1. Tek kullanıcılı modda önyükleme yaptıktan sonra, `chroot /sysroot` Jail 'e geçiş yapmak için girin `sysroot` .
+1. Artık kökte olursunuz. `passwd`Önceki yönergeleri girerek ve ardından tek kullanıcılı mod girmek için kök parolanızı sıfırlayabilirsiniz. 
+1. İşiniz bittiğinde `reboot -f` yeniden başlatmak için girin.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
-> Önceki yönergelerden çalıştırılması sizi acil durum kabuğuna bırakır, böylece, Düzenle `fstab`gibi görevleri de gerçekleştirebilirsiniz. Bununla birlikte, genellikle kök parolanızı sıfırlamanıza ve tek kullanıcılı mod girmek için kullanmanızı öneririz.
+> Önceki yönergelerden çalıştırılması sizi acil durum kabuğuna bırakır, böylece, Düzenle gibi görevleri de gerçekleştirebilirsiniz `fstab` . Bununla birlikte, genellikle kök parolanızı sıfırlamanıza ve tek kullanıcılı mod girmek için kullanmanızı öneririz.
 
 ## <a name="access-for-centos"></a>CentOS erişimi
 Red Hat Enterprise Linux benzer şekilde, CentOS 'daki tek kullanıcılı mod, GRUB ve kök kullanıcının etkinleştirilmesini gerektirir.
 
 ### <a name="grub-access-in-centos"></a>CentOS 'da GRUB erişimi
-CentOS, kutudan çıkan GRUB ile birlikte gelir. GRUB girmek için, girerek `sudo reboot`sanal makinenizi yeniden başlatın ve ardından herhangi bir tuşa basın. Bu eylem, GRUB bölmesini görüntüler.
+CentOS, kutudan çıkan GRUB ile birlikte gelir. GRUB girmek için, girerek sanal makinenizi yeniden başlatın `sudo reboot` ve ardından herhangi bir tuşa basın. Bu eylem, GRUB bölmesini görüntüler.
 
 ### <a name="single-user-mode-in-centos"></a>CentOS 'da tek kullanıcılı mod
 CentOS 'da tek kullanıcılı modu etkinleştirmek için, önceki RHEL yönergelerini izleyin.
@@ -160,10 +159,10 @@ GRUB 'ye erişmek için VM 'yi önyüklerken ESC tuşuna basın ve basılı tutu
 Varsayılan olarak, Ubuntu görüntüleri, GRUB bölmesini otomatik olarak görüntülemeyebilir. Aşağıdakileri yaparak ayarı değiştirebilirsiniz:
 1. Bir metin düzenleyicisinde */etc/default/grub.d/50-cloudimg-Settings.cfg* dosyasını açın.
 
-1. `GRUB_TIMEOUT` Değeri sıfır olmayan bir değerle değiştirin.
+1. `GRUB_TIMEOUT`Değeri sıfır olmayan bir değerle değiştirin.
 1. Bir metin düzenleyicisinde */etc/default/grub*öğesini açın.
-1. `GRUB_HIDDEN_TIMEOUT=1` Satırı açıklama.
-1. Bir `GRUB_TIMEOUT_STYLE=menu` satır olduğundan emin olun.
+1. `GRUB_HIDDEN_TIMEOUT=1`Satırı açıklama.
+1. Bir satır olduğundan emin olun `GRUB_TIMEOUT_STYLE=menu` .
 1. `sudo update-grub` öğesini çalıştırın.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 'da tek kullanıcılı mod
@@ -175,14 +174,14 @@ Ubuntu normal şekilde önyükleme yapamıyor, sizi otomatik olarak tek kullanı
 1. Bu ayarlarla yeniden başlatmak için CTRL + X tuşlarına basın ve tek kullanıcı modunu girin.
 
 ### <a name="use-grub-to-invoke-bash-in-ubuntu"></a>Ubuntu 'da Bash 'i çağırmak için GRUB kullanma
-Yukarıdaki yönergeleri tamamladıktan sonra, Ubuntu sanal makinenizde tek kullanıcılı moda erişemediği bir durum (unutulmuş root parolası gibi) olabilir. Çekirdekten sistem init yerine init olarak çalışacağını `/bin/bash` de söyleyebilirsiniz. Bu eylem size bir bash kabuğu sağlar ve sistem bakımını sağlar. Aşağıdaki yönergeleri kullanın:
+Yukarıdaki yönergeleri tamamladıktan sonra, Ubuntu sanal makinenizde tek kullanıcılı moda erişemediği bir durum (unutulmuş root parolası gibi) olabilir. Çekirdekten `/bin/bash` sistem init yerine init olarak çalışacağını de söyleyebilirsiniz. Bu eylem size bir bash kabuğu sağlar ve sistem bakımını sağlar. Aşağıdaki yönergeleri kullanın:
 
 1. GRUB 'de, önyükleme girdinizi (Ubuntu girişi) düzenlemek için E tuşuna basın.
 
 1. *Linux*ile başlayan satırı bulun ve ardından *ro*' ı arayın.
 1. *Ro* 'yi *RW init =/bin/Bash*ile değiştirin.
 
-    Bu eylem, dosya sisteminizi okuma-yazma olarak takar ve init `/bin/bash` işlemi olarak kullanır.
+    Bu eylem, dosya sisteminizi okuma-yazma olarak takar ve `/bin/bash` init işlemi olarak kullanır.
 1. Bu ayarlarla yeniden başlatmak için CTRL + X tuşlarına basın.
 
 ## <a name="access-for-coreos"></a>CoreOS erişimi
@@ -206,10 +205,10 @@ SLES 12 SP3 + ' un daha yeni görüntüleri, sistem acil durum modunda önyükle
 ### <a name="grub-access-in-suse-sles"></a>SUSE SLES 'de GRUB erişimi
 SLES 'deki GRUB erişimi, YaST aracılığıyla bir önyükleme yükleyicisi yapılandırması gerektirir. Yapılandırmayı oluşturmak için aşağıdakileri yapın:
 
-1. SLES sanal makinenizde oturum açmak ve ardından çalıştırmak `sudo yast bootloader`için SSH kullanın. Tab tuşuna basın, ENTER tuşuna basın ve ardından menüde gezinmek için ok tuşlarını kullanın.
+1. SLES sanal makinenizde oturum açmak ve ardından çalıştırmak için SSH kullanın `sudo yast bootloader` . Tab tuşuna basın, ENTER tuşuna basın ve ardından menüde gezinmek için ok tuşlarını kullanın.
 
 1. **Çekirdek parametreleri**' ne gidin ve ardından **seri konsolunu kullan** onay kutusunu seçin.
-1. Konsol `serial --unit=0 --speed=9600 --parity=no` bağımsız değişkenlerine **Console** ekleyin.
+1. `serial --unit=0 --speed=9600 --parity=no` **Konsol** bağımsız değişkenlerine ekleyin.
 1. Ayarlarınızı kaydetmek ve çıkmak için F10 tuşuna basın.
 1. GRUB girmek için sanal makinenizi yeniden başlatın ve önyükleme sırası sırasında, GRUB bölmesini görüntülenmesini sağlamak için herhangi bir tuşa basın.
 
@@ -227,13 +226,13 @@ SLES normal önyükleme yapamıyor, otomatik olarak acil durum kabuğu 'na bıra
 1. Bu ayarlarla yeniden başlatmak için CTRL + X tuşlarına basın ve acil durum kabuğunu girin.
 
    > [!NOTE]
-   > Bu eylem, bir salt okuma dosya sistemiyle sizi acil durum kabuğu 'na bırakır. Herhangi bir dosyayı düzenlemek için dosya sistemini okuma-yazma izinleriyle yeniden bağlayın. Bunu yapmak için, kabuğa girin `mount -o remount,rw /` .
+   > Bu eylem, bir salt okuma dosya sistemiyle sizi acil durum kabuğu 'na bırakır. Herhangi bir dosyayı düzenlemek için dosya sistemini okuma-yazma izinleriyle yeniden bağlayın. Bunu yapmak için, `mount -o remount,rw /` kabuğa girin.
 
 ## <a name="access-for-oracle-linux"></a>Oracle Linux için erişim
 Red Hat Enterprise Linux benzer şekilde, Oracle Linux tek kullanıcılı mod, GRUB ve kök kullanıcının etkinleştirilmesini gerektirir.
 
 ### <a name="grub-access-in-oracle-linux"></a>Oracle Linux erişim
-Oracle Linux, kutudan çıkan GRUB ile birlikte gelir. GRUB girmek için çalıştırarak `sudo reboot`sanal makinenizi yeniden başlatın ve ardından ESC tuşuna basın. Bu eylem, GRUB bölmesini görüntüler. GRUB bölmesi görüntülenmiyorsa, `GRUB_TERMINAL` satır değerinin *seri konsol* (yani, `GRUB_TERMINAL="serial console"`) içerdiğinden emin olun. GRUB ile `grub2-mkconfig -o /boot/grub/grub.cfg`yeniden derleyin.
+Oracle Linux, kutudan çıkan GRUB ile birlikte gelir. GRUB girmek için çalıştırarak sanal makinenizi yeniden başlatın `sudo reboot` ve ardından ESC tuşuna basın. Bu eylem, GRUB bölmesini görüntüler. GRUB bölmesi görüntülenmiyorsa, `GRUB_TERMINAL` satır değerinin *seri konsol* (yani,) içerdiğinden emin olun `GRUB_TERMINAL="serial console"` . GRUB ile yeniden derleyin `grub2-mkconfig -o /boot/grub/grub.cfg` .
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux tek kullanıcılı mod
 Oracle Linux çoklu Kullanıcı modunu etkinleştirmek için, önceki RHEL yönergelerini izleyin.

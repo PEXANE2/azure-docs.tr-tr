@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73827425"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış
@@ -73,11 +72,11 @@ IoT hub'ı cihaz komut bildirim sağlar.
 ## <a name="machine-learning"></a>Machine Learning
 Machine Learning bileşeni gerçek uçak motorlarından toplanan verilerden türetilmiş bir model kullanır. [Azureiotsolutions.com][lnk-azureiotsolutions] sayfasındaki çözümünüzün kutucuğundaki Machine Learning çalışma alanına gidebilirsiniz. Çözüm **Hazır** durumda olduğunda kutucuk kullanılabilir.
 
-Machine Learning modeli, IoT Çözüm Hızlandırıcısı Hizmetleri aracılığıyla toplanan telemetriyle çalışmayı gösteren bir şablon olarak kullanılabilir. Microsoft, genel kullanıma sunulan veri<sup>\[\]1</sup>' i temel alan uçak altyapısının [regresyon modelini][lnk_regression_model] ve modelin nasıl kullanılacağına ilişkin adım adım yönergeler oluşturdu.
+Machine Learning modeli, IoT Çözüm Hızlandırıcısı Hizmetleri aracılığıyla toplanan telemetriyle çalışmayı gösteren bir şablon olarak kullanılabilir. Microsoft, genel kullanıma sunulan veri<sup> \[ 1 \] </sup>' i temel alan uçak altyapısının [regresyon modelini][lnk_regression_model] ve modelin nasıl kullanılacağına ilişkin adım adım yönergeler oluşturdu.
 
 Azure IoT Tahmine Dayalı Bakım çözümü, bu şablondan oluşturulan regresyon modelini kullanır. Model Azure aboneliğinize dağıtılır ve otomatik olarak oluşturulan bir API aracılığıyla kullanılabilir hale getirilir. Çözüm, 4 (Toplam 100 toplam) altyapıya yönelik test verilerinin bir alt kümesini ve 4 (Toplam 21 toplam) algılayıcı veri akışı içerir. Bu veriler, eğitilmiş modelden doğru bir sonuç elde etmek için yeterlidir.
 
-*\[1\] A. Saxena ve K. Goebel (2008). "Turbofan motor düşme simülasyon veri kümesi", NASA Ames Prognostics veri deposu (https://c3.nasa.gov/dashlink/resources/139/), NASA Ames Research Center, Moffett alanı, CA*
+*\[1 \] A. Saxena ve K. Goebel (2008). "Turbofan motor düşme simülasyon veri kümesi", NASA Ames Prognostics veri deposu ( https://c3.nasa.gov/dashlink/resources/139/) , NASA Ames Research Center, Moffett alanı, CA*
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Tahmine Dayalı Bakım çözüm hızlandırıcısının temel bileşenlerini gördüğünüze göre bunları özelleştirmek isteyebilirsiniz.

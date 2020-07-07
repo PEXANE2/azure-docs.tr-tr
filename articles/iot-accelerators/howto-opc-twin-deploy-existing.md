@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73824113"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>OPC Ikizi 'yi mevcut bir projeye dağıtma
@@ -52,7 +51,7 @@ cd azure-iiot-components
 
    Çıktı, genel uç noktanın URL 'sini içerir. 
 
-3. Betik başarıyla tamamlandıktan sonra `.env` dosyayı kaydetmek isteyip istemediğinizi seçin.  Konsol veya geliştirme `.env` ve hata ayıklama için modülleri dağıtma gibi araçları kullanarak bulut uç noktasına bağlanmak istiyorsanız ortam dosyasına ihtiyacınız vardır.
+3. Betik başarıyla tamamlandıktan sonra dosyayı kaydetmek isteyip istemediğinizi seçin `.env` .  `.env`Konsol veya geliştirme ve hata ayıklama için modülleri dağıtma gibi araçları kullanarak bulut uç noktasına bağlanmak istiyorsanız ortam dosyasına ihtiyacınız vardır.
 
 ## <a name="troubleshooting-deployment-failures"></a>Dağıtım hatalarıyla ilgili sorunları giderme
 

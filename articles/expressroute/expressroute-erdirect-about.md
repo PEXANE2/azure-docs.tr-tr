@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083598"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct hakkında
@@ -26,7 +25,7 @@ ExpressRoute Direct 'in sağladığı temel özellikler dahil, ancak bunlarla s�
 
 ## <a name="onboard-to-expressroute-direct"></a>ExpressRoute Direct 'e ekleme
 
-ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak için aşağıdaki ayrıntılar dahil olmak üzere <ExpressRouteDirect@microsoft.com> abonelik Kimliğinizle bir e-posta gönderin:
+ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak için aşağıdaki ayrıntılar dahil olmak üzere abonelik KIMLIĞINIZLE bir e-posta gönderin <ExpressRouteDirect@microsoft.com> :
 
 * **ExpressRoute Direct** ile başarmak için kullandığınız senaryolar
 * Konum tercihleri-tüm konumların tam listesi için [Iş ortakları ve eşleme konumları](expressroute-locations-providers.md) bölümüne bakın
@@ -39,7 +38,7 @@ ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydol
 | --- | --- |
 | Mevcut altyapıya hızlı ekleme ve bağlantı sağlamak için hizmet sağlayıcılarını kullanır | 100 Gbps/10 Gbps altyapısı ve tüm katmanların tam yönetimi gerekir
 | Ethernet ve MPLS dahil yüzlerce sağlayıcı ile tümleşir | Düzenlenen sektörler ve çok büyük veri alımı için doğrudan/ayrılmış kapasite |
-| 50 Mbps 'den 10 Gbps 'ye devre SKU 'Ları | Müşteri, 100 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gb/sn</li></ul> Müşteri, 10 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| 50 Mbps 'den 10 Gbps 'ye devre SKU 'Ları | Müşteri, 100 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> Müşteri, 10 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 | Tek kiracı için iyileştirildi | Birden çok iş birimi ve birden çok iş ortamı ile tek bir kiracı için iyileştirildi
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute doğrudan devreleri
@@ -57,7 +56,7 @@ ExpressRoute Direct, Azure depolama ve diğer büyük veri Hizmetleri için geni
 | **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
 | --- | --- |
 | **Abone olunan bant genişliği**: 200 Gbps | **Abone olunan bant genişliği**: 20 Gbps |
-| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gb/sn</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 

@@ -8,10 +8,9 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74048370"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Azure portal kullanarak Web uygulaması güvenlik duvarı kurallarını özelleştirme
@@ -44,7 +43,7 @@ Kuralları devre dışı bıraktığınızda bir veya daha fazla kural grubu alt
    1. Devre dışı bırakmak istediğiniz kuralları veya kural gruplarını arayın.
    2. Devre dışı bırakmak istediğiniz kuralların onay kutularını seçin. 
    3. Seçili kurallar için sayfanın üst kısmındaki (etkinleştir/devre dışı bırak) eylemi seçin.
-   2. **Kaydet**’i seçin. 
+   2. **Kaydet**'i seçin. 
 
 ![Değişiklikleri kaydetme][3]
 

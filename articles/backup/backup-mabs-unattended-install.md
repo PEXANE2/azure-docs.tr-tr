@@ -4,10 +4,9 @@ description: Azure Backup Sunucusu v2 'yi sessizce yüklemek için bir PowerShel
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172238"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Katılımsız Azure Backup Sunucusu yüklemesi çalıştırma
@@ -18,9 +17,9 @@ Azure Backup Sunucusu v1 yüklüyorsanız bu adımlar uygulanmaz.
 
 ## <a name="install-backup-server"></a>Yedekleme sunucusunu yükler
 
-1. Azure Backup Sunucusu v2 veya üstünü barındıran sunucuda bir metin dosyası oluşturun. (Dosyayı Not defteri 'nde veya başka bir metin düzenleyicisinde oluşturabilirsiniz.) Dosyayı MABSSetup. ini olarak kaydedin.
+1. Azure Backup Sunucusu v2 veya üstünü barındıran sunucuda bir metin dosyası oluşturun. (Dosyayı Not defteri 'nde veya başka bir metin düzenleyicisinde oluşturabilirsiniz.) Dosyayı MABSSetup.ini olarak kaydedin.
 
-2. Aşağıdaki kodu MABSSetup. ini dosyasına yapıştırın. Köşeli ayracın içindeki metni (\< \>), ortamınızdaki değerlerle değiştirin. Aşağıdaki metin bir örnektir:
+2. Aşağıdaki kodu MABSSetup.ini dosyasına yapıştırın. Köşeli ayracın içindeki metni ( \< \> ), ortamınızdaki değerlerle değiştirin. Aşağıdaki metin bir örnektir:
 
    ```text
    [OPTIONS]

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083985"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>CSP ile Azure 'da VMware olağanüstü durum kurtarma için çok kiracılı desteğe genel bakış
@@ -120,7 +119,7 @@ Olağanüstü durum kurtarma işlemlerini yalnızca yük devretme yapılıncaya 
 
 1. Daha önce oluşturduğunuz kasadaki Azure portal, vCenter sunucusunu, oluşturduğunuz vCenter hesabını kullanarak yapılandırma sunucusuna kaydedin.
 2. Her zamanki işleme göre Site Recovery için "altyapıyı hazırla" işlemini sona erdirin.
-3. VM 'Ler artık çoğaltılmaya hazırdır. **Çoğaltma** > için yalnızca kiracının VM 'lerinin görüntülendiğini doğrulayın**Select sanal makineler**.
+3. VM 'Ler artık çoğaltılmaya hazırdır. **Çoğaltma**için yalnızca kiracının VM 'lerinin görüntülendiğini doğrulayın  >  **Select sanal makineler**.
 
 ## <a name="dedicated-hosting-solution"></a>Adanmış barındırma çözümü
 

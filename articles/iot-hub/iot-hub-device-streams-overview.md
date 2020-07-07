@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890465"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Cihaz akışlarını IoT Hub (Önizleme)
@@ -22,7 +21,7 @@ Azure IoT Hub *cihaz akışları* , çok sayıda buluttan cihaza iletişim senar
 
 Cihaz akışlarını IoT Hub kullanarak, cihazlar güvenli kalır ve yalnızca IoT Hub 'ın 443 numaralı bağlantı noktası üzerinden akış uç noktasına giden TCP bağlantılarını açması gerekecektir. Bir akış kurulduktan sonra, hizmet tarafı ve cihaz tarafı uygulamaların her biri, bir WebSocket istemci nesnesine bir diğerine ham bayt gönderme ve alma için programlı erişim sağlar. Bu tünelle sunulan güvenilirlik ve sipariş garantisi TCP ile aynıdır.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 IoT Hub cihaz akışları aşağıdaki avantajları sağlar:
 
@@ -82,7 +81,7 @@ Bir cihaz akışının cihaz ve hizmet tarafları, IoT Hub ve akış uç noktas�
 
 !["Cihaz akış uç noktaları"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-Alternatif olarak, uç nokta bilgileri hub 'ın Özellikler bölümü, özellikle `property.hostname` ve `property.deviceStreams` anahtarları altında Azure CLI kullanılarak alınabilir.
+Alternatif olarak, uç nokta bilgileri hub 'ın Özellikler bölümü, özellikle ve anahtarları altında Azure CLı kullanılarak alınabilir `property.hostname` `property.deviceStreams` .
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
@@ -106,7 +105,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 Bu makalenin başlangıcında belirtildiği gibi, cihazınız cihaz akışları başlatma işlemi sırasında akış uç noktası IoT Hub giden bir bağlantı oluşturur. Cihazdaki veya ağındaki güvenlik duvarlarınız, bağlantı noktası 443 üzerinden akış ağ geçidine giden bağlantıya izin vermelidir (iletişim, TLS kullanılarak şifrelenmiş bir WebSocket bağlantısı üzerinden yapılır).
 
-Cihaz akış uç noktasının ana bilgisayar adı, genel bakış sekmesinin altındaki Azure IoT Hub portalında bulunabilir. !["cihaz akış uç noktaları"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+Cihaz akış uç noktasının ana bilgisayar adı, genel bakış sekmesinin altındaki Azure IoT Hub portalında bulunabilir. ![ " Cihaz akış uç noktaları "](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
 Alternatif olarak, Azure CLı kullanarak bu bilgileri bulabilirsiniz:
 
@@ -132,7 +131,7 @@ IoT Hub cihaz akışı etkinlikleri için Azure Izleyici günlüklerini yapılan
 
     !["Cihaz akışları günlüklerini etkinleştir"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
-3. Artık, IoT Hub portalınızdaki *Günlükler* sekmesinden cihaz akışları günlüklerine erişebilirsiniz. Cihaz akışı etkinlik günlükleri `AzureDiagnostics` tabloda görüntülenir ve olur. `Category=DeviceStreams`
+3. Artık, IoT Hub portalınızdaki *Günlükler* sekmesinden cihaz akışları günlüklerine erişebilirsiniz. Cihaz akışı etkinlik günlükleri tabloda görüntülenir ve olur `AzureDiagnostics` `Category=DeviceStreams` .
 
    Aşağıda gösterildiği gibi, hedef cihazın kimliği ve işlemin sonucu da günlüklerde bulunur.
 
@@ -168,7 +167,7 @@ Yankı örnekleri aşağıda verilmiştir:
 
 * [C# hizmeti ve hizmet programı](quickstart-device-streams-echo-csharp.md)
 
-* [Node. js hizmet programı](quickstart-device-streams-echo-nodejs.md)
+* [Node.js hizmet programı](quickstart-device-streams-echo-nodejs.md)
 
 * [C cihaz programı](quickstart-device-streams-echo-c.md)
 
@@ -204,7 +203,7 @@ Yerel ara sunucu programlarının tercih ettiğiniz dilde nasıl çalıştırıl
 
 * [C# hizmeti ve hizmet programı](quickstart-device-streams-proxy-csharp.md)
 
-* [Node. js hizmet programı](quickstart-device-streams-proxy-nodejs.md)
+* [Node.js hizmet programı](quickstart-device-streams-proxy-nodejs.md)
 
 * [C cihaz programı](quickstart-device-streams-proxy-c.md)
 

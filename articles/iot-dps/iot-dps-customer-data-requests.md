@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890645"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Müşteri verileri istek özelliklerinin Özeti
+# <a name="summary-of-customer-data-request-features"></a>Müşteri verileri isteme özelliklerinin özeti
 
 Azure IoT Hub cihaz sağlama hizmeti, kurumsal müşterilere yönelik sorunsuz, otomatik sıfır dokunma özellikli bir bulut hizmetidir ve cihazda başlayan ve bulut ile biten güvenlikle birlikte cihazların Azure IoT Hub için sorunsuz REST API bir şekilde otomatik olarak bir şekilde sağlanmasına olanak sağlar.
 
@@ -62,6 +61,6 @@ REST API 'Leri kullanarak kayıtlar ve kayıt kayıtları için dışarı aktarm
 
 ## <a name="links-to-additional-documentation"></a>Ek belgelere bağlantılar
 
-Cihaz sağlama hizmeti API 'Leri için tam belgeler adresinde [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps)bulunur.
+Cihaz sağlama hizmeti API 'Leri için tam belgeler adresinde bulunur [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps) .
 
 Azure IoT Hub [müşteri verileri isteği özellikleri](../iot-hub/iot-hub-customer-data-requests.md).

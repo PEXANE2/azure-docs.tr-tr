@@ -20,19 +20,18 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113242"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Bilişsel Arama OData toplama işleçleri `any` ve`all`
 
-Azure Bilişsel Arama ile kullanmak üzere bir [OData filtresi ifadesi](query-odata-filter-orderby-syntax.md) yazarken, genellikle koleksiyon alanlarını filtrelemek yararlı olur. `any` Ve `all` işleçlerini kullanarak bunu elde edebilirsiniz.
+Azure Bilişsel Arama ile kullanmak üzere bir [OData filtresi ifadesi](query-odata-filter-orderby-syntax.md) yazarken, genellikle koleksiyon alanlarını filtrelemek yararlı olur. Ve işleçlerini kullanarak bunu elde edebilirsiniz `any` `all` .
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), veya `any` `all`kullanan bir OData ifadesinin dilbilgisini tanımlar.
+Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), veya kullanan bir OData ifadesinin dilbilgisini tanımlar `any` `all` .
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -56,27 +55,27 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 Koleksiyonları filtreleyerek üç ifade biçimi vardır.
 
 - Koleksiyon alanı üzerinde ilk iki yineleme, bir lambda ifadesi biçiminde verilen bir koşulu koleksiyonun her öğesine uygulayarak.
-  - ' İ kullanan `all` bir `true` ifade, koşulun her öğe için true olması halinde döndürür.
-  - Deyimi, koleksiyonun `any` en `true` az bir öğesi için true ise, döndüren bir ifade döndürür.
-- Koleksiyon filtresinin üçüncü biçimi, bir koleksiyon `any` alanının boş olup olmadığını test etmek için lambda ifadesi olmadan kullanılır. Koleksiyonda herhangi bir öğe varsa, döndürür `true`. Koleksiyon boşsa, döndürür `false`.
+  - ' İ kullanan bir ifade, `all` `true` koşulun her öğe için true olması halinde döndürür.
+  - Deyimi, `any` `true` koleksiyonun en az bir öğesi için true ise, döndüren bir ifade döndürür.
+- Koleksiyon filtresinin üçüncü biçimi, `any` bir koleksiyon alanının boş olup olmadığını test etmek için lambda ifadesi olmadan kullanılır. Koleksiyonda herhangi bir öğe varsa, döndürür `true` . Koleksiyon boşsa, döndürür `false` .
 
 Bir koleksiyon filtresindeki **lambda ifadesi** , bir programlama dilindeki Döngünün gövdesi gibidir. Yineleme sırasında koleksiyonun geçerli öğesini tutan **Aralık değişkeni**olarak adlandırılan bir değişkeni tanımlar. Ayrıca, koleksiyondaki her öğe için Aralık değişkenine uygulanacak filtre ölçütü olan başka bir Boolean ifadesi tanımlar.
 
 ## <a name="examples"></a>Örnekler
 
-`tags` Alanı tam olarak "WiFi" dizesini içeren belgeleri eşleştir:
+`tags`Alanı tam olarak "WiFi" dizesini içeren belgeleri eşleştir:
 
     tags/any(t: t eq 'wifi')
 
-`ratings` Alandaki her öğenin 3 ila 5 (dahil) arasında olduğu belgeleri eşleştirin:
+Alandaki her öğenin `ratings` 3 ila 5 (dahil) arasında olduğu belgeleri eşleştirin:
 
     ratings/all(r: r ge 3 and r le 5)
 
-`locations` Alandaki coğrafi koordinatların herhangi birinin verilen çokgen içinde olduğu belgeleri eşleştirin:
+Alandaki coğrafi koordinatların herhangi birinin `locations` verilen çokgen içinde olduğu belgeleri eşleştirin:
 
     locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
 
-`rooms` Alanın boş olduğu belgeleri eşleştir:
+Alanın boş olduğu belgeleri Eşleştir `rooms` :
 
     not rooms/any()
 

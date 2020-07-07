@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70881035"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure ayrılmış HSM fiziksel güvenliği
@@ -55,7 +54,7 @@ HSM 'ler, müşteri tarafından oluşturulan bir sanal ağ için sağlanır. Bu 
 
 Hizmetin yüksek kullanılabilirlik ve güvenlik ve desteklenebilirlik gibi tüm temel kavramlarının cihaz sağlama, uygulama tasarımı veya dağıtımdan önce iyi anlaşıldığından emin olmanız önerilir.
 
-* [Yüksek Kullanılabilirlik](high-availability.md)
+* [Yüksek kullanılabilirlik](high-availability.md)
 * [Ağ](networking.md)
 * [Desteklenebilirlik](supportability.md)
 * [İzleme](monitoring.md)

@@ -11,10 +11,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73667661"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory Işlevleri ve sistem değişkenleri
@@ -56,12 +55,12 @@ Veri fabrikasındaki işlevleri, sistem değişkenleriyle birlikte aşağıdaki 
 
 1. Veri seçimi sorgularını belirtme ( [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinin başvurduğu bağlayıcı makalelerine bakın.
    
-   Data Factory işlevini çağırma söz dizimi: ** $$ \<** veri seçim sorguları ve etkinlik ve veri kümelerinde diğer özellikler için işlev>.  
+   Data Factory işlevini çağırma söz dizimi: **$$\<function>** veri seçim sorguları ve etkinlik ve veri kümelerinde diğer özellikler için:.  
 2. Etkinlik girişleri koleksiyonundaki Data Factory işlevleriyle giriş bağımlılıklarını belirtme.
    
     $ $ giriş bağımlılığı ifadelerini belirtmek için gerekli değildir.     
 
-Aşağıdaki örnekte, bir JSON dosyasındaki **Sqlreaderquery** özelliği, `Text.Format` işlev tarafından döndürülen bir değere atanır. Bu örnek ayrıca, etkinlik çalıştırma penceresinin başlangıç saatini temsil eden **Windowstart**adlı bir sistem değişkeni kullanır.
+Aşağıdaki örnekte, bir JSON dosyasındaki **Sqlreaderquery** özelliği, işlev tarafından döndürülen bir değere atanır `Text.Format` . Bu örnek ayrıca, etkinlik çalıştırma penceresinin başlangıç saatini temsil eden **Windowstart**adlı bir sistem değişkeni kullanır.
 
 ```json
 {
@@ -77,9 +76,9 @@ Aşağıdaki tablolar Azure Data Factory içindeki tüm işlevleri listeler:
 
 | Kategori | İşlev | Parametreler | Açıklama |
 | --- | --- | --- | --- |
-| Zaman |AddHours (X, Y) |X: DateTime <br/><br/>Y: int |Verilen saat X 'e Y saat ekler. <br/><br/>Örnek: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Zaman |AddMinutes (X, Y) |X: DateTime <br/><br/>Y: int |X 'e Y dakika ekler.<br/><br/>Örnek: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Zaman |Saat başı (X) |X: DateTime |X 'in saat bileşeniyle temsil edilen saatin başlangıç saatini alır. <br/><br/>Örnek: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Saat |AddHours (X, Y) |X: DateTime <br/><br/>Y: int |Verilen saat X 'e Y saat ekler. <br/><br/>Örnek: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Saat |AddMinutes (X, Y) |X: DateTime <br/><br/>Y: int |X 'e Y dakika ekler.<br/><br/>Örnek: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Saat |Saat başı (X) |X: DateTime |X 'in saat bileşeniyle temsil edilen saatin başlangıç saatini alır. <br/><br/>Örnek: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Tarih |AddDays (X, Y) |X: DateTime<br/><br/>Y: int |X 'e Y gün ekler. <br/><br/>Örnek: 9/15/2013 12:00:00 PM + 2 gün = 9/17/2013 12:00:00 PM.<br/><br/>Y 'yi negatif bir sayı olarak belirterek gün sayısı çıkarabilirsiniz.<br/><br/>Örnek: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Tarih |Addaylar (X, Y) |X: DateTime<br/><br/>Y: int |X 'e Y ayları ekler.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Y 'yi negatif bir sayı olarak belirterek ayı de çıkarabilirsiniz.<br/><br/>Örnek: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Tarih |Addçeyrekler (X, Y) |X: DateTime <br/><br/>Y: int |X ' e * 3 ay ekler.<br/><br/>Örnek: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
@@ -94,10 +93,10 @@ Aşağıdaki tablolar Azure Data Factory içindeki tüm işlevleri listeler:
 | Tarih |StartOfDay (X) |X: DateTime |X parametresinin gün bileşeni tarafından temsil edilen günün başlangıcını alır.<br/><br/>Örnek: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
 | DateTime |(X) kaynağından |X: dize |X dizesini bir tarih saatine ayrıştırır. |
 | DateTime |Ticks (X) |X: DateTime |X parametresinin ticks özelliğini alır. Tek bir değer 100 nanosaniye değerine eşittir. Bu özelliğin değeri 12:00:00 gece yarısından beri geçen saat sayısını temsil eder, 1 Ocak 0001. |
-| Metin |Biçim (X) |X: String değişkeni |Metni biçimlendirir (kaçış `\\'` `'` karakteri birleşimini kullanın).|
+| Metin |Biçim (X) |X: String değişkeni |Metni biçimlendirir ( `\\'` kaçış karakteri birleşimini kullanın `'` ).|
 
 > [!IMPORTANT]
-> Bir işlevi başka bir işlev içinde kullanırken, iç işlev için önek kullanmanız **$$** gerekmez. Örneğin: \\$ $Text. Format (' partitionkey eq ' my_pkey_filter_value\\' ve rowkey Ge \\' {0: YYYY-AA-GG SS: DD: SS}\\' ', Time. AddHours (daestart,-6)). Bu örnekte, **$$** önekin **Time. AddHours** işlevi için kullanılmadığını fark edersiniz. 
+> Bir işlevi başka bir işlev içinde kullanırken, **$$** iç işlev için önek kullanmanız gerekmez. Örneğin: $ $Text. Format (' PartitionKey EQ \\ ' my_pkey_filter_value \\ ' ve rowkey Ge \\ ' {0: YYYY-AA-GG SS: DD: SS} \\ ' ', Time. AddHours (daestart,-6)). Bu örnekte, **$$** önekin **Time. AddHours** işlevi için kullanılmadığını fark edersiniz. 
 
 #### <a name="example"></a>Örnek
 Aşağıdaki örnekte, Hive etkinliğinin giriş ve çıkış parametreleri, `Text.Format` Function ve Fedestart sistem değişkeni kullanılarak belirlenir. 

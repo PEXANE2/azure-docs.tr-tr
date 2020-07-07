@@ -8,10 +8,9 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73516870"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Azure Application Gateway Web uygulaması güvenlik duvarı için bot korumasını yapılandırma (Önizleme)
@@ -21,7 +20,7 @@ Bu makalede, Azure portal kullanarak Application Gateway için Azure Web uygulam
 WAF 'niz için yönetilen bir bot koruma kuralı kümesini, bilinen kötü amaçlı IP adreslerinden gelen istekleri engellemek veya günlüğe kaydetmek için etkinleştirebilirsiniz. IP adresleri Microsoft Threat Intelligence akışından kaynaklıdır. Intelligent Security Graph, Microsoft Threat Intelligence 'ı güçlendirir ve Azure Güvenlik Merkezi dahil birden çok hizmet tarafından kullanılır.
 
 > [!NOTE]
-> Bot koruma kuralı kümesi şu anda genel önizleme aşamasındadır ve bir önizleme hizmet düzeyi sözleşmesi ile sunulmaktadır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bölümüne bakın.
+> Bot koruma kuralı kümesi şu anda genel önizleme aşamasındadır ve bir önizleme hizmet düzeyi sözleşmesi ile sunulmaktadır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bölümüne bakın   .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,7 +30,7 @@ WAF 'niz için yönetilen bir bot koruma kuralı kümesini, bilinen kötü amaç
 
 1. Daha önce oluşturduğunuz **temel** ilke sayfasında, **Ayarlar**' ın altında **kurallar**' ı seçin.  
 
-2. Ayrıntılar sayfasında, **kuralları** Yönet bölümünün altında, açılan menüden, bot koruma kuralının onay kutusunu seçin ve ardından **Kaydet**' i seçin.
+2. Ayrıntılar sayfasında, **Kuralları Yönet**   bölümünün altında, açılan menüden, bot koruma kuralının onay kutusunu seçin ve ardından **Kaydet**' i seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Bot koruması](../media/bot-protection/bot-protection.png)

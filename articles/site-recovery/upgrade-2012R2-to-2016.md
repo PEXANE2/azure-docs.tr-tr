@@ -9,10 +9,9 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
 ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73954416"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Windows Server Server/System Center 2012 R2 VMM 'yi Windows Server/VMM 2016 'ye yükseltme 
@@ -42,10 +41,10 @@ Yükseltmeden önce şunları göz önünde bulabilirsiniz:-
 
 - System Center 2012 R2 VMM kullanıyorsanız, 
 
-    - VMM 'deki veritabanı bilgilerini denetleyin: **VMM konsol** -> **ayarları** -> **genel** -> **veritabanı bağlantısı**
+    - VMM 'deki veritabanı bilgilerini denetleyin: **VMM konsol**  ->  **ayarları**  ->  **genel**  ->  **veritabanı bağlantısı**
     - System Center Virtual Machine Manager Aracısı hizmeti için kullanılan hizmet hesaplarını denetleme
     - VMM veritabanının yedeğine sahip olduğunuzdan emin olun.
-    - Dahil edilen SCVMM sunucularının veritabanı adını aklınızda edin. Bu işlem, **VMM konsol** -> **ayarları** -> **genel** -> **veritabanı bağlantısı** ' na gidilerek yapılabilir
+    - Dahil edilen SCVMM sunucularının veritabanı adını aklınızda edin. Bu işlem, **VMM konsol**  ->  **ayarları**  ->  **genel**  ->  **veritabanı bağlantısı** ' na gidilerek yapılabilir
     - Hem 2012R2 birincil hem de kurtarma VMM sunucularının VMM KIMLIĞINI aklınızda edin. VMM KIMLIĞI, "HKLM: \ SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup" kayıt defterinden bulunabilir.
     - Kümeye eklediğiniz yeni SCN 'ler, daha önce olduğu gibi adlara sahip olduğundan emin olun. 
 
@@ -75,7 +74,7 @@ Windows sever 2012 R2 konaklarınızı yükseltmeden önce, SCVMM 2012 R2 'yi SC
 
 1.  Denetim Masası-> programlar-> programlar ve Özellikler->Microsoft Azure Site Recovery ' a giderek ASR sağlayıcısını kaldırın ve Kaldır ' a tıklayın.
 2. [SCVMM veritabanını koruma ve işletim sistemini yükseltme](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. **Program Ekle Kaldır**' da **VMM** > **Kaldır**' ı seçin. b. **Özellikleri Kaldır**' ı seçin ve ardından V**mm YÖNETIM sunucusu ve VMM konsolu**' nu seçin. c. **Veritabanı seçenekleri**' nde **veritabanını sakla**' yı seçin. d. Özeti gözden geçirin ve **Kaldır**' a tıklayın.
+3. **Program Ekle Kaldır**' da **VMM**  >  **Kaldır**' ı seçin. b. **Özellikleri Kaldır**' ı seçin ve ardından V**mm YÖNETIM sunucusu ve VMM konsolu**' nu seçin. c. **Veritabanı seçenekleri**' nde **veritabanını sakla**' yı seçin. d. Özeti gözden geçirin ve **Kaldır**' a tıklayın.
 
 4. [VMM 2016 'yi yükler](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. **Yapılar** sekmesinin altındaki her BIR konağın SCVMM 'yi başlatın ve durumunu denetleyin. en son durumu almak için **Yenile** 'ye tıklayın. Durumu "Ilgilenilmesi gerekiyor" olarak görmeniz gerekir. 

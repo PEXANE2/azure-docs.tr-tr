@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74122193"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için yük devretme ve düzeltme eki uygulama
@@ -59,13 +58,13 @@ Tam veri eşitlemesi işlem tekrardan önce yapıldığından, standart veya Pre
 
 ## <a name="additional-cache-load"></a>Ek önbellek yükü
 
-Yük devretme gerçekleştiğinde, standart ve Premium önbellekler verileri bir düğümden diğerine çoğaltmalıdır. Bu çoğaltma, sunucu belleğinde ve CPU 'da bazı yük artışına neden olur. Önbellek örneği zaten yüklüyse, istemci uygulamaları daha fazla gecikme yaşar. Olağanüstü durumlarda, istemci uygulamaları zaman aşımı özel durumları alabilir. Bu ek yükün etkisini azaltmaya yardımcı olmak için önbelleğin `maxmemory-reserved` ayarını [yapılandırın](cache-configure.md#memory-policies) .
+Yük devretme gerçekleştiğinde, standart ve Premium önbellekler verileri bir düğümden diğerine çoğaltmalıdır. Bu çoğaltma, sunucu belleğinde ve CPU 'da bazı yük artışına neden olur. Önbellek örneği zaten yüklüyse, istemci uygulamaları daha fazla gecikme yaşar. Olağanüstü durumlarda, istemci uygulamaları zaman aşımı özel durumları alabilir. Bu ek yükün etkisini azaltmaya yardımcı olmak için önbelleğin ayarını [yapılandırın](cache-configure.md#memory-policies) `maxmemory-reserved` .
 
 ## <a name="how-does-a-failover-affect-my-client-application"></a>Yük devretme istemci uygulamamı nasıl etkiler?
 
 İstemci uygulaması tarafından görülen hataların sayısı, yük devretme sırasında o bağlantıda kaç işlemin beklendiğini gösterir. Bağlantılarını kapatan düğüm üzerinden yönlendirilen herhangi bir bağlantı, hataları görürler. Birçok istemci kitaplığı, bağlantı kesme sırasında zaman aşımı özel durumları, bağlantı özel durumları veya yuva özel durumları dahil farklı hata türleri oluşturabilir. Özel durumların sayısı ve türü, isteğin, önbellek bağlantılarını kapatışında, isteğin bulunduğu yere bağlıdır. Örneğin, bir istek gönderen ancak yük devretme gerçekleştiğinde yanıt almamış bir işlem zaman aşımı özel durumu alabilir. Kapalı bağlantı nesnesindeki yeni istekler, yeniden bağlantı başarıyla gerçekleşene kadar bağlantı özel durumları alıyor.
 
-Çoğu istemci kitaplığı, bu şekilde yapılandırıldıysa önbelleğe yeniden bağlanmaya çalışır. Ancak, öngörülemeyen hatalar bazen kitaplık nesnelerini kurtarılamaz bir duruma yerleştirebilir. Hatalar önceden yapılandırılmış bir süreden daha uzun süre devam ediyorsa bağlantı nesnesi yeniden oluşturulmalıdır. Microsoft.NET ve diğer nesne yönelimli dillerde, uygulamayı yeniden başlatmadan bağlantıyı yeniden oluşturmak, [\<yavaş T\> kalıbı](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)kullanılarak gerçekleştirilebilir.
+Çoğu istemci kitaplığı, bu şekilde yapılandırıldıysa önbelleğe yeniden bağlanmaya çalışır. Ancak, öngörülemeyen hatalar bazen kitaplık nesnelerini kurtarılamaz bir duruma yerleştirebilir. Hatalar önceden yapılandırılmış bir süreden daha uzun süre devam ediyorsa bağlantı nesnesi yeniden oluşturulmalıdır. Microsoft.NET ve diğer nesne yönelimli dillerde, uygulamayı yeniden başlatmadan bağlantıyı yeniden oluşturmak [yavaş bir \<T\> model](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)kullanılarak gerçekleştirilebilir.
 
 ### <a name="how-do-i-make-my-application-resilient"></a>Uygulamamı dayanıklı hale getirmek Nasıl yaparım??
 

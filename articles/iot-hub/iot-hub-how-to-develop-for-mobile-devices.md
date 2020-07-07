@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
 ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68883089"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK 'larını kullanarak mobil cihazlar için geliştirme
@@ -36,7 +35,7 @@ Bu belgemalar, bir iOS cihazında cihaz uygulaması veya hizmet uygulaması geli
 
 Azure IoT Hub SDK 'Ları, iOS geliştirmesi için bir dizi amaç-C CocoaPod kitaplıklarını yayınlar.  CocoaPod kitaplıklarının en son listesini görmek için bkz. [Cocoapods IoT for Microsoft Azure](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md).  İlgili kitaplıklar XCode projenize eklendikten sonra, IoT Hub ilgili kodu yazmanın iki yolu vardır:
 
-* Amaç C işlevi: projeniz hedef-C dilinde yazılmışsa, API 'Leri doğrudan Azure IoT Hub C SDK 'dan çağırabilirsiniz.  Projeniz Swift 'ta yazılmışsa, işlevinizi oluşturmadan önce ' yi `@objc func` çağırabilir ve c veya amaç-c kodu kullanarak Azure IoT Hub ile ilgili tüm Logics yazılmasına devam edebilirsiniz.  [Örnek depoda](https://github.com/Azure-Samples/azure-iot-samples-ios), her ikisini de gösteren bir örnek kümesi.  
+* Amaç C işlevi: projeniz hedef-C dilinde yazılmışsa, API 'Leri doğrudan Azure IoT Hub C SDK 'dan çağırabilirsiniz.  Projeniz Swift 'ta yazılmışsa, `@objc func` işlevinizi oluşturmadan önce ' yi çağırabilir ve c veya amaç-c kodu kullanarak Azure IoT Hub ile ilgili tüm Logics yazılmasına devam edebilirsiniz.  [Örnek depoda](https://github.com/Azure-Samples/azure-iot-samples-ios), her ikisini de gösteren bir örnek kümesi.  
 
 * C örnekleri ekleme: bir C cihaz uygulaması yazdıysanız, bunu doğrudan XCode projenizde başvurabilirsiniz:
     * Xcode ' dan Xcode projenize Sample. c dosyasını ekleyin.  

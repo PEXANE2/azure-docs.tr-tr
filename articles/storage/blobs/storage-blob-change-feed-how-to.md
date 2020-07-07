@@ -9,10 +9,9 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74111862"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob depolama 'da değişiklik akışını işleme (Önizleme)
@@ -26,7 +25,7 @@ Değişiklik akışı hakkında daha fazla bilgi edinmek için bkz. [Azure Blob 
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Blob değişiklik akışı işlemci kitaplığını al
 
-1. Visual Studio 'da, NuGet paket kaynaklarınıza `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` URL 'yi ekleyin. 
+1. Visual Studio 'da, `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` NuGet paket kaynaklarınıza URL 'yi ekleyin. 
 
    Nasıl yapılacağını öğrenmek için bkz. [paket kaynakları](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
 

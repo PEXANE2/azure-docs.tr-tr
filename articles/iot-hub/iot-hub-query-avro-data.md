@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73605611"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics kullanarak avro verilerini sorgulama
@@ -56,7 +55,7 @@ Bu bölümde, verileri diğer depolara veya veri depolarına kolayca yerleştire
 
 6. Visual Studio 'da bir U-SQL projesi oluşturun.
 
-   ! U-SQL projesi oluşturma] (./Media/iot-hub-Query-avro-Data/Query-avro-Data-6.png)
+   ! U-SQL projesi oluşturma] (./Media/iot-hub-Query-avro-Data/query-avro-data-6.png)
 
 7. Aşağıdaki betiğin içeriğini yeni oluşturulan dosyaya yapıştırın. Vurgulanan üç bölümü değiştirin: Data Lake Analytics hesabınız, ilişkili DLL dosyası yolları ve depolama hesabınız için doğru yol.
 
@@ -163,7 +162,7 @@ Bu bölümde, verileri diğer depolara veya veri depolarına kolayca yerleştire
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    Çıktı, `SELECT` komutta her öğe için bir sütun görüntüler.
+    Çıktı, komutta her öğe için bir sütun görüntüler `SELECT` .
 
     ![Her öğe için bir sütun gösteren çıktı](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 

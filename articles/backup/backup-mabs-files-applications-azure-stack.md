@@ -4,10 +4,9 @@ description: Azure Stack dosyalarını ve uygulamaları Azure Stack ortamınıza
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172328"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack dosya ve uygulamaları yedekleme
@@ -40,7 +39,7 @@ Azure Stack sanal makinelerdeki dosyaları korumak üzere Azure Backup Sunucusu 
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. **Grup üyelerini seçin** ekranında, alt öğeleri listesini **+** genişletmek için tıklayın. Korumak istediğiniz tüm öğeler için onay kutusunu işaretleyin. Tüm öğeler seçildikten sonra **İleri**' ye tıklayın.
+3. **Grup üyelerini seçin** ekranında, alt **+** öğeleri listesini genişletmek için tıklayın. Korumak istediğiniz tüm öğeler için onay kutusunu işaretleyin. Tüm öğeler seçildikten sonra **İleri**' ye tıklayın.
 
     ![Yeni Koruma Grubu Sihirbazı açılır](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 

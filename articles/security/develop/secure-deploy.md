@@ -14,10 +14,9 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68934881"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar dağıtma
@@ -25,10 +24,10 @@ Bu makalede, bulut için uygulama dağıtırken göz önünde bulundurmanız ger
 
 Aşağıdaki SDL aşamaları bu makalede ele alınmıştır:
 
-- Yayınla
+- Sürüm
 - Yanıt
 
-## <a name="release"></a>Yayınla
+## <a name="release"></a>Sürüm
 Yayın aşamasının odağı, bir projeyi ortak yayın için Read.
 Bu, daha sonra gerçekleşebilecek yayın sonrası bakım görevlerini ve adres güvenliği güvenlik açıklarını etkili bir şekilde gerçekleştirmenin planlama yollarını içerir.
 

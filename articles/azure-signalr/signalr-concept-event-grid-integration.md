@@ -9,10 +9,9 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74158200"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Azure SignalR Hizmeti olaylarına yanıt verme
@@ -63,5 +62,5 @@ Daha fazla bilgi için bkz. [SignalR hizmeti olayları şeması](../event-grid/e
 Event Grid hakkında daha fazla bilgi edinin ve Azure SignalR hizmeti olaylarına bir deneme verin:
 
 > [!div class="nextstepaction"]
-> [Event Grid Azure SignalR hizmeti](./signalr-howto-event-grid-integration.md)
-> ile örnek bir tümleştirme deneyin[Event Grid](../event-grid/overview.md)
+> [Azure SignalR hizmeti](./signalr-howto-event-grid-integration.md) 
+>  ile örnek Event Grid tümleştirmeyi deneyin [Event Grid hakkında](../event-grid/overview.md)

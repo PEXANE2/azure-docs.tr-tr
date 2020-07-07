@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73820127"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Bağlı fabrika çözüm Hızlandırıcısını yapılandırma
@@ -61,11 +60,11 @@ Topolojideki her düğüm, aşağıdakileri tanımlayan ortak bir özellikler k�
 
 ## <a name="topology-configuration-file"></a>Topoloji yapılandırma dosyası
 
-Önceki bölümde listelenen özellikleri yapılandırmak için, bağlı fabrika çözümü [Contosotopologyıdescription. JSON](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)adlı bir yapılandırma dosyası kullanır.
+Önceki bölümde listelenen özellikleri yapılandırmak için, bağlı fabrika çözümü [üzerindeContosoTopologyDescription.js](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)adlı bir yapılandırma dosyası kullanır.
 
-Bu dosyayı `WebApp/Contoso/Topology` klasördeki çözüm kaynak kodunda bulabilirsiniz.
+Bu dosyayı klasördeki çözüm kaynak kodunda bulabilirsiniz `WebApp/Contoso/Topology` .
 
-Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandırma dosyasının bir ana hattı gösterilmektedir:
+Aşağıdaki kod parçacığında yapılandırma dosyasının bir ana hattı gösterilmektedir `ContosoTopologyDescription.json` :
 
 ```json
 {
@@ -85,7 +84,7 @@ Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandır
 }
 ```
 
-, `<global_configuration>`, Ve `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` öğesinin ortak özellikleri şunlardır:
+,, Ve öğesinin ortak özellikleri  `<global_configuration>` `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` şunlardır:
 
 * **Ad** (tür dizesi)
 
@@ -99,11 +98,11 @@ Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandır
 
   Panoda topoloji düğümü hakkında bilgi gösterildiğinde gösterilecek bir görüntünün yolu.
 
-* **Oeegenel**, **oeeperformance**, **oeeavailability**, **oeequality**, **Kpi1**, **Kpi2** (tür `<performance_definition>`)
+* **Oeegenel**, **oeeperformance**, **oeeavailability**, **oeequality**, **Kpi1**, **Kpi2** (tür `<performance_definition>` )
 
   Bu özellikler, uyarı oluşturmak için kullanılan işletimsel şeklin en küçük, hedef ve maxhayvan değerlerini tanımlar. Bu özellikler ayrıca bir uyarı algılandığında yürütülecek eylemleri tanımlar.
 
-`<factory_configuration>` Ve `<production_line_configuration>` öğelerinin bir özelliği vardır:
+`<factory_configuration>`Ve `<production_line_configuration>` öğelerinin bir özelliği vardır:
 
 * **GUID** (tür dizesi)
 
@@ -111,7 +110,7 @@ Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandır
 
 `<factory_configuration>`bir özelliğine sahiptir:
 
-* **Konum** (tür `<location_definition>`)
+* **Konum** (tür `<location_definition>` )
 
   Fabrikasının bulunduğu yeri belirtir.
 
@@ -122,7 +121,7 @@ Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandır
   Bu özellik OPC UA sunucusunun OPC UA uygulama URI 'sine ayarlanmalıdır.
   OPC UA belirtimi tarafından genel olarak benzersiz olması gerektiğinden, bu özellik istasyon topolojisi düğümünü belirlemek için kullanılır.
 
-* OPC UA düğümlerinin dizisi olan **Opcnodes**(tür `<opc_node_description>`)
+* OPC UA düğümlerinin dizisi olan **Opcnodes**(tür `<opc_node_description>` )
 
 `<location_definition>`özellikleri vardır:
 
@@ -156,11 +155,11 @@ Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandır
 
   Değerin ulaşabileceği üst eşik değeri. Geçerli değer bu eşiğin üstünde ise, bir uyarı oluşturulur.
 
-* **Minimumalertactions** (tür `<alert_action>`)
+* **Minimumalertactions** (tür `<alert_action>` )
 
   En az bir uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
 
-* **Maximumalertactions** (tür `<alert_action>`)
+* **Maximumalertactions** (tür `<alert_action>` )
 
   Maksimum uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
 
@@ -246,11 +245,11 @@ Aşağıdaki kod parçacığında `ContosoTopologyDescription.json` yapılandır
 
   Geçerli değer bu değerin üzerine yükselirse, en fazla bir uyarı oluşturulur.
 
-* **Minimumalertactions** (tür `<alert_action>`)
+* **Minimumalertactions** (tür `<alert_action>` )
 
   En az bir uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
 
-* **Maximumalertactions** (tür `<alert_action>`)
+* **Maximumalertactions** (tür `<alert_action>` )
 
   Maksimum uyarıya yanıt olarak alınabilecek eylem kümesini tanımlar.
 
@@ -262,9 +261,9 @@ Yapılandırma dosyasında kullanılan tüm özellikler, kullanıldıkları ayar
 
 ### <a name="visual-appearance"></a>Görsel görünüm
 
-Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örneklere şunlar dahildir:
+Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örnekler arasında şunlar yer almaktadır:
 
-* Adı
+* Name
 * Açıklama
 * Görüntü
 * Konum
@@ -282,7 +281,7 @@ Bağlı fabrika simülasyonu için OEE/KPI rakamları şu şekilde parametreleş
 * Hesaplamaya dahil edilecek OPC UA düğüm değerleri.
 * Şekil telemetri değerlerinden nasıl hesaplanır.
 
-Bağlı fabrika, [http://www.oeefoundation.org](http://www.oeefoundation.org)tarafından yayımlanan OEE formüllerini kullanır.
+Bağlı fabrika, tarafından yayımlanan OEE formüllerini kullanır [http://www.oeefoundation.org](http://www.oeefoundation.org) .
 
 İstasyonlardaki OPC UA düğüm nesneleri OEE/KPI hesaplamasında kullanım için etiketlemeyi etkinleştirir. **İlgi** özelliği, OPC UA düğüm değerinin kullanılması gereken OEE/KPI şeklini belirtir. **Opcode** özelliği değerin hesaplamada nasıl ekleneceğini tanımlar.
 
@@ -311,9 +310,9 @@ Telemetri verilerinin bağlı fabrikaya nasıl yapılacağı hakkında daha fazl
 
 ## <a name="example-how-kpi1-is-calculated"></a>Örnek: KPI1 nasıl hesaplanır?
 
-`ContosoTopologyDescription.json` Dosyadaki yapılandırma, OEE/KPI rakamlarını nasıl hesaplanacağını denetler. Aşağıdaki örnek, bu dosyadaki özelliklerin KPI1 hesaplamasını denetleme şeklini gösterir.
+Dosyadaki yapılandırma, `ContosoTopologyDescription.json` OEE/KPI rakamlarını nasıl hesaplanacağını denetler. Aşağıdaki örnek, bu dosyadaki özelliklerin KPI1 hesaplamasını denetleme şeklini gösterir.
 
-Bağlı fabrika KPI1, son bir saat içinde başarıyla üretilmiş ürünlerin sayısını ölçmek için kullanılır. Bağlı fabrika simülasyonu içindeki her istasyon (OPC UA sunucusu), bu KPI 'Yı hesaplamak için telemetri`NodeId: "ns=2;i=385"`sağlayan bir OPC UA node () sağlar.
+Bağlı fabrika KPI1, son bir saat içinde başarıyla üretilmiş ürünlerin sayısını ölçmek için kullanılır. Bağlı fabrika simülasyonu içindeki her istasyon (OPC UA sunucusu) `NodeId: "ns=2;i=385"` , bu KPI 'yı hesaplamak için telemetri sağlayan BIR OPC UA node () sağlar.
 
 Bu OPC UA düğümünün yapılandırması aşağıdaki kod parçacığına benzer şekilde görünür:
 

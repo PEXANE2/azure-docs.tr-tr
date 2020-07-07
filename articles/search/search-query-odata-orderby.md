@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113152"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $orderby söz dizimi
 
  Azure Bilişsel Arama arama sonuçları için özel bir sıralama düzeni uygulamak üzere [OData **$OrderBy** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$OrderBy** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$OrderBy** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 **$OrderBy** parametresi, en fazla 32 **sıra ölçütü yan tümceleri**olan virgülle ayrılmış bir liste kabul eder. Order by yan tümcesinin sözdizimi aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) tarafından açıklanmıştır:
 
@@ -50,15 +49,15 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 > [!NOTE]
 > Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
-Her yan tümce sıralama ölçütlerine sahiptir ve isteğe bağlı olarak bir sıralama yönü`asc` (artan veya `desc` azalan için) izler. Bir yön belirtmezseniz, varsayılan değer artan olur. Sıralama ölçütü, bir `sortable` alanın yolu veya ya da [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) işlevlerine yapılan bir çağrı olabilir.
+Her yan tümce sıralama ölçütlerine sahiptir ve isteğe bağlı olarak bir sıralama yönü ( `asc` artan veya `desc` azalan için) izler. Bir yön belirtmezseniz, varsayılan değer artan olur. Sıralama ölçütü, bir alanın yolu veya ya da `sortable` işlevlerine yapılan bir çağrı olabilir [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) .
 
-Birden çok belge aynı sıralama ölçütlerine sahip ise ve `search.score` işlev kullanılmazsa (örneğin, bir sayısal `Rating` alana göre sıralarsanız ve hepsi 4 derecelendirmesine sahipseniz), bu siteler belge puanına göre azalan sırada bozulur. Belge puanları aynı olduğunda (örneğin, istekte tam metin arama sorgusu belirtilmediğinde), bağlı belgelerin göreli sıralaması belirsiz olur.
+Birden çok belge aynı sıralama ölçütlerine sahip ise ve `search.score` işlev kullanılmazsa (örneğin, bir sayısal alana göre sıralarsanız `Rating` ve hepsi 4 derecelendirmesine sahipseniz), bu siteler belge puanına göre azalan sırada bozulur. Belge puanları aynı olduğunda (örneğin, istekte tam metin arama sorgusu belirtilmediğinde), bağlı belgelerin göreli sıralaması belirsiz olur.
 
-Birden çok sıralama ölçütü belirtebilirsiniz. İfadelerin sırası, son sıralama düzenini belirler. Örneğin, derecelendirmeye göre azalan sırada sıralama yapmak için sözdizimi olur `$orderby=search.score() desc,Rating desc`.
+Birden çok sıralama ölçütü belirtebilirsiniz. İfadelerin sırası, son sıralama düzenini belirler. Örneğin, derecelendirmeye göre azalan sırada sıralama yapmak için sözdizimi olur `$orderby=search.score() desc,Rating desc` .
 
-`geo.distance` **$OrderBy** ' deki sözdizimi **$Filter**' deki ile aynıdır. $Orderby kullanılırken `geo.distance` , **$orderby**geçerli olduğu alan türünde `Edm.GeographyPoint` olmalıdır ve ayrıca olmalıdır `sortable`.
+`geo.distance` **$OrderBy** ' deki sözdizimi **$Filter**' deki ile aynıdır. $Orderby kullanılırken `geo.distance` , **$orderby**geçerli olduğu alan türünde olmalıdır `Edm.GeographyPoint` ve ayrıca olmalıdır `sortable` .
 
-$Orderby ' de `search.score` için **$orderby** sözdizimi `search.score()`. İşlev `search.score` herhangi bir parametre almaz.
+`search.score` **$OrderBy** ' de için sözdizimi `search.score()` . İşlev `search.score` herhangi bir parametre almaz.
 
 ## <a name="examples"></a>Örnekler
 

@@ -20,31 +20,30 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113110"
 ---
-# <a name="odata-searchin-function-in-azure-cognitive-search"></a>Azure `search.in` bilişsel arama 'de OData işlevi
+# <a name="odata-searchin-function-in-azure-cognitive-search"></a>`search.in`Azure bilişsel arama 'de OData işlevi
 
 [OData filtre ifadelerinde](query-odata-filter-orderby-syntax.md) yaygın bir senaryo, her bir belgedeki tek bir alanın olası birçok değerden birine eşit olup olmadığını denetlemenize olanak tanır. Örneğin, bu, bir veya daha fazla asıl kimliği içeren bir alanı, sorguyu veren kullanıcıyı temsil eden bir asıl kimlik listesine göre denetleyerek, bazı uygulamalar [güvenlik kırpması](search-security-trimming-for-azure-search.md) uygular. Bunun gibi bir sorgu yazmanın bir yolu, [`eq`](search-query-odata-comparison-operators.md) ve [`or`](search-query-odata-logical-operators.md) işleçlerini kullanmaktır:
 
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
 
-Ancak, `search.in` işlevini kullanarak bunu yazmanın daha kısa bir yolu vardır:
+Ancak, işlevini kullanarak bunu yazmanın daha kısa bir yolu vardır `search.in` :
 
     group_ids/any(g: search.in(g, '123, 456, 789'))
 
 > [!IMPORTANT]
-> Daha kısa ve kolay okunması yanı sıra, kullanmak `search.in` da [performans avantajları](#bkmk_performance) sağlar ve filtreye dahil edilecek yüzlerce veya hatta binlerce değer olduğunda [filtrelerin belirli boyut sınırlamalarını](search-query-odata-filter.md#bkmk_limits) önler. Bu nedenle, daha karmaşık bir eşitlik ifadesi `search.in` birleşimi yerine kullanmanızı kesinlikle öneririz.
+> Daha kısa ve kolay okunması yanı sıra, kullanmak `search.in` da [performans avantajları](#bkmk_performance) sağlar ve filtreye dahil edilecek yüzlerce veya hatta binlerce değer olduğunda [filtrelerin belirli boyut sınırlamalarını](search-query-odata-filter.md#bkmk_limits) önler. Bu nedenle, `search.in` daha karmaşık bir eşitlik ifadesi birleşimi yerine kullanmanızı kesinlikle öneririz.
 
 > [!NOTE]
-> OData standardının 4,01 sürümü yakın zamanda, Azure bilişsel arama `search.in` işlevi gibi benzer davranışa sahip olan [ `in` işlecini](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)kullanıma sunmuştur. Ancak, Azure Bilişsel Arama bu işleci desteklemez, bu nedenle bunun yerine `search.in` işlevini kullanmanız gerekir.
+> OData standardının 4,01 sürümü yakın zamanda, Azure Bilişsel Arama işlevi gibi benzer davranışa sahip olan [ `in` işlecini](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)kullanıma sunmuştur `search.in` . Ancak, Azure Bilişsel Arama bu işleci desteklemez, bu nedenle `search.in` bunun yerine işlevini kullanmanız gerekir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `search.in` işlevin dilbilgisini tanımlar:
+Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) işlevin dilbilgisini tanımlar `search.in` :
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -61,9 +60,9 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 > [!NOTE]
 > Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
-İşlevi `search.in` , belirli bir dize alanı veya Aralık değişkeninin belirli bir değer listesinden birine eşit olup olmadığını sınar. Değişken ile listedeki her bir değer arasındaki eşitlik, `eq` işleçle aynı şekilde, büyük/küçük harf duyarlı bir biçimde belirlenir. Bu nedenle, gibi `search.in(myfield, 'a, b, c')` bir ifade ile `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`eşdeğerdir, ancak `search.in` bunun dışında daha iyi performans elde edilir.
+`search.in`İşlevi, belirli bir dize alanı veya Aralık değişkeninin belirli bir değer listesinden birine eşit olup olmadığını sınar. Değişken ile listedeki her bir değer arasındaki eşitlik, işleçle aynı şekilde, büyük/küçük harf duyarlı bir biçimde belirlenir `eq` . Bu nedenle, gibi bir ifade `search.in(myfield, 'a, b, c')` ile eşdeğerdir `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'` , ancak bunun dışında `search.in` daha iyi performans elde edilir.
 
-`search.in` İşlevin iki aşırı yüklemesi vardır:
+İşlevin iki aşırı yüklemesi vardır `search.in` :
 
 - `search.in(variable, valueList)`
 - `search.in(variable, valueList, delimiters)`
@@ -72,15 +71,15 @@ Parametreler aşağıdaki tabloda tanımlanmıştır:
 
 | Parametre adı | Tür | Açıklama |
 | --- | --- | --- |
-| `variable` | `Edm.String` | Bir dize alanı başvurusu (veya bir `search.in` `any` veya `all` ifadesi içinde kullanıldığı durumda bir dize koleksiyonu alanı üzerinde bir Aralık değişkeni). |
-| `valueList` | `Edm.String` | `variable` Parametresiyle eşleştirilecek bir değer listesi içeren bir dize. `delimiters` Parametresi belirtilmemişse, varsayılan sınırlayıcılar boşluk ve virgüldür. |
-| `delimiters` | `Edm.String` | `valueList` Parametre ayrıştırılırken her karakterin ayırıcı olarak kabul edildiği bir dize. Bu parametrenin varsayılan değeri, `' ,'` aralarında boşluk ve/veya virgüller içeren tüm değerlerin ayrılacağı anlamına gelir. Değerleriniz bu karakterleri içerdiğinden boşluklar ve virgüller dışında ayırıcılar kullanmanız gerekiyorsa, bu parametre gibi alternatif sınırlayıcılar `'|'` belirtebilirsiniz. |
+| `variable` | `Edm.String` | Bir dize alanı başvurusu (veya bir veya ifadesi içinde kullanıldığı durumda bir dize koleksiyonu alanı üzerinde bir Aralık değişkeni `search.in` `any` `all` ). |
+| `valueList` | `Edm.String` | Parametresiyle eşleştirilecek bir değer listesi içeren bir dize `variable` . `delimiters`Parametresi belirtilmemişse, varsayılan sınırlayıcılar boşluk ve virgüldür. |
+| `delimiters` | `Edm.String` | Parametre ayrıştırılırken her karakterin ayırıcı olarak kabul edildiği bir dize `valueList` . Bu parametrenin varsayılan değeri, aralarında `' ,'` boşluk ve/veya virgüller içeren tüm değerlerin ayrılacağı anlamına gelir. Değerleriniz bu karakterleri içerdiğinden boşluklar ve virgüller dışında ayırıcılar kullanmanız gerekiyorsa, bu parametre gibi alternatif sınırlayıcılar belirtebilirsiniz `'|'` . |
 
 <a name="bkmk_performance"></a>
 
 ### <a name="performance-of-searchin"></a>Performansı`search.in`
 
-Kullanırsanız `search.in`, ikinci parametre yüzlerce veya binlerce değerin listesini içerdiğinde alt ikinci yanıt süresini de bekleyebilir. İzin verilen en büyük istek boyutuyla sınırlı olsanız da, geçirebilmeniz `search.in`gereken öğe sayısı üzerinde açık bir sınır yoktur. Ancak, değer sayısı arttıkça gecikme artar.
+Kullanırsanız `search.in` , ikinci parametre yüzlerce veya binlerce değerin listesini içerdiğinde alt ikinci yanıt süresini de bekleyebilir. İzin `search.in` verilen en büyük istek boyutuyla sınırlı olsanız da, geçirebilmeniz gereken öğe sayısı üzerinde açık bir sınır yoktur. Ancak, değer sayısı arttıkça gecikme artar.
 
 ## <a name="examples"></a>Örnekler
 

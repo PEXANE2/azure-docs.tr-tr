@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70860311"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell penceresini kullanma
@@ -48,7 +47,7 @@ Pencerenin sol üst kısmındaki Ayarlar simgesine tıklayın, ardından "yazı 
 Pencerenin sol üst kısmındaki dosyaları karşıya yükle/indir simgesine tıklayın ve ardından karşıya yükle veya indir ' i seçin.  
 ![Dosyaları karşıya yükle/indir](media/using-the-shell-window/uploaddownload.png)
 * Dosyaları karşıya yüklemek için, yerel bilgisayarınızdaki dosyaya gitmek üzere açılan pencereyi kullanın, istediğiniz dosyayı seçin ve "Aç" düğmesine tıklayın.  Dosya `/home/user` dizine yüklenir.
-* Dosya indirmek için, tam dosya yolunu açılır pencereye (yani, varsayılan olarak gösterilen `/home/user` dizin altındaki bir yol) girin ve "İndir" düğmesini seçin.  
+* Dosya indirmek için, tam dosya yolunu açılır pencereye (yani, `/home/user` Varsayılan olarak gösterilen dizin altındaki bir yol) girin ve "İndir" düğmesini seçin.  
 > [!NOTE] 
 > Dosyalar ve dosya yolları Cloud Shell için büyük/küçük harfe duyarlıdır. Dosya yolunuzda büyük küçük harfe göz atın.
 

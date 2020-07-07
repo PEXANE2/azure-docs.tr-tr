@@ -4,10 +4,9 @@ description: Azure Backup Sunucusu yeni özellikler hakkında bilgi edinin. Bu m
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172371"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Sunucusu’na depolama alanı ekleme
@@ -36,7 +35,7 @@ Backup Server v2 veya üzeri, depolama birimlerini kabul eder. Bir birim ekledi�
 
 Disk depolaması, yedekleme sunucusu v2 veya sonraki sürümleri birimler ile kullanmak, depolama üzerinde denetimi korumanıza yardımcı olabilir. Birim tek bir disk olabilir. Ancak, daha sonra depolamayı genişletmek istiyorsanız, depolama alanları kullanılarak oluşturulan bir diskten bir birim oluşturun. Bu, yedekleme depolaması için birimi genişletmek istediğinizde yardımcı olabilir. Bu bölümde, bu kurulumla bir birim oluşturmak için en iyi yöntemler sunulmaktadır.
 
-1. Sunucu Yöneticisi, **dosya ve depolama hizmetleri** > **birimleri** > **depolama havuzları**' nı seçin. **FIZIKSEL diskler**altında **Yeni depolama havuzu**' nu seçin.
+1. Sunucu Yöneticisi, **dosya ve depolama hizmetleri**  >  **birimleri**  >  **depolama havuzları**' nı seçin. **FIZIKSEL diskler**altında **Yeni depolama havuzu**' nu seçin.
 
     ![Yeni bir depolama havuzu oluştur](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
@@ -119,7 +118,7 @@ Yedekleme sunucusu ile eski depolamayı kullanmak istiyorsanız, eski depolamay�
 
 Disk depolama eklemek için:
 
-1. Yönetici Konsolu **Yönetim** > **disk depolama** > **Ekle**' yi seçin.
+1. Yönetici Konsolu **Yönetim**  >  **disk depolama**  >  **Ekle**' yi seçin.
 
     ![Disk Depolama iletişim kutusu Ekle](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 

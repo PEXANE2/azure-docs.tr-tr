@@ -16,10 +16,9 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74073866"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux aracısını anlama ve kullanma
@@ -48,7 +47,7 @@ Microsoft Azure Linux Aracısı (waagent) Linux & FreeBSD sağlamasını ve Azur
   * Ağ arabirimi adının kararlılığını sağlar
 * **Çekirdek**
   
-  * Sanal NUMA 'yı yapılandırır (çekirdek <`2.6.37`için devre dışı bırak)
+  * Sanal NUMA 'yı yapılandırır (çekirdek <için devre dışı bırak `2.6.37` )
   * /Dev/random için Hyper-V entropi kullanır
   * Kök cihaz (uzak olabilir) için SCSI zaman aşımlarını yapılandırır
 * **Tanılama**
@@ -170,7 +169,7 @@ Default: y
 Bu, kullanıcının aracıdaki sağlama işlevini etkinleştirmesine veya devre dışı bırakmasına olanak sağlar. Geçerli değerler şunlardır "y" veya "n". Sağlama devre dışıysa, görüntüdeki SSH ana bilgisayarı ve Kullanıcı anahtarları korunur ve Azure sağlama API 'sinde belirtilen yapılandırma yok sayılır.
 
 > [!NOTE]
-> Parametresi `Provisioning.Enabled` , sağlama için Cloud-Init kullanan Ubuntu bulut görüntülerinde varsayılan olarak "n" değerine sahiptir.
+> `Provisioning.Enabled`Parametresi, sağlama için Cloud-init kullanan Ubuntu bulut görüntülerinde varsayılan olarak "n" değerine sahiptir.
 > 
 > 
 
@@ -195,7 +194,7 @@ Yeni anahtar çiftinin şifreleme türü, sağlama. SshHostKeyPairType girişi t
 Type: String  
 Default: rsa
 ```
-Bu, sanal makinede SSH Daemon tarafından desteklenen bir şifreleme algoritması türüne ayarlanabilir. Genellikle desteklenen değerler "RSA", "dsa" ve "ECDSA" dir. Windows üzerinde "Putty. exe", "ECDSA" desteklemez. Bu nedenle, bir Linux dağıtımına bağlanmak için Windows üzerinde Putty. exe kullanmayı düşünüyorsanız, "RSA" veya "dsa" kullanın.
+Bu, sanal makinede SSH Daemon tarafından desteklenen bir şifreleme algoritması türüne ayarlanabilir. Genellikle desteklenen değerler "RSA", "dsa" ve "ECDSA" dir. Windows üzerinde "putty.exe", "ECDSA" desteklemez. Bu nedenle, bir Linux dağıtımına bağlanmak için Windows üzerinde putty.exe kullanmayı planlıyorsanız, "RSA" veya "dsa" kullanın.
 
 **Sağlama. MonitorHostName:**  
 ```
@@ -211,7 +210,7 @@ Default: n
 ```
 Ayarlanırsa, waagent CustomData 'ın Base64 'ten kodunu çözer.
 
-**Sağlama. ExecuteCustomData**  
+**CuteCustomDataProvisioning.Exe**  
 ```
 Type: Boolean  
 Default: n

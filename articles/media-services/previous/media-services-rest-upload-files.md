@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888593"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST kullanarak Media Services hesabına dosya yükleme  
@@ -48,7 +47,7 @@ Bu öğreticide, bir dosya ve onunla ilişkili başka bir işlemi karşıya yük
 - Ayrıca, [rest makalesine MEDIA SERVICES API 'sine erişmek Için Azure AD kimlik doğrulamasını kullanma](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) konusunu gözden geçirin.
 - [Media Services REST API çağrılarında Postman yapılandırma](media-rest-apis-with-postman.md)bölümünde açıklandığı gibi **Postman** 'ı yapılandırın.
 
-## <a name="considerations"></a>Dikkat edilmesi gerekenler
+## <a name="considerations"></a>Önemli noktalar
 
 Media Services REST API kullanılırken aşağıdaki noktalar geçerlidir:
  
@@ -72,8 +71,8 @@ Bu öğretici için Postman 'ı ayarlama adımları için bkz. [Postman 'ı yap�
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-import-env.png)
 2. **Mediafilename** ortam değişkeni için değeri belirtin.
 
-    Karşıya yüklemeyi planladığınız medyanın dosya adını belirtin. Bu örnekte, Bigbuckpaskalya. mp4 'yi karşıya yükleyeceğiz. 
-3. **Azudüzeltici Aservices. postman_environment. JSON** dosyasını inceleyin. Koleksiyondaki neredeyse tüm işlemlerin bir "test" betiği yürütmesini görürsünüz. Betikler yanıt tarafından döndürülen bazı değerleri alır ve uygun ortam değişkenlerini ayarlar.
+    Karşıya yüklemeyi planladığınız medyanın dosya adını belirtin. Bu örnekte, BigBuckBunny.mp4 yükleyeceğiz. 
+3. Dosyadaki **AzureMediaServices.postman_environment.js** inceleyin. Koleksiyondaki neredeyse tüm işlemlerin bir "test" betiği yürütmesini görürsünüz. Betikler yanıt tarafından döndürülen bazı değerleri alır ve uygun ortam değişkenlerini ayarlar.
 
     Örneğin, ilk işlem bir erişim belirteci alır ve diğer tüm işlemlerde kullanılan **accesstoken** ortam değişkeninde ayarlanır.
 
@@ -87,7 +86,7 @@ Bu öğretici için Postman 'ı ayarlama adımları için bkz. [Postman 'ı yap�
         ]
     }
     ```
-4. **Postman** penceresinin sol tarafında 1 ' e tıklayın **. AAD kimlik doğrulama belirteci** -> Al**hizmet sorumlusu için Azure AD belirteci alın**.
+4. **Postman** penceresinin sol tarafında 1 ' e tıklayın **. AAD kimlik doğrulama belirteci al**  ->  **hizmet sorumlusu için Azure AD belirteci alın**.
 
     URL bölümü **Azureadstsendpoint** ortam değişkeniyle doldurulmuştur (öğreticide daha önce, koleksiyonu destekleyen ortam değişkenlerinin değerlerini ayarlarsınız).
 
@@ -110,7 +109,7 @@ Blob depolamaya herhangi bir dosyayı yüklemeden önce, bir varlığa yazma iç
 
 ### <a name="create-an-access-policy"></a>Erişim ilkesi oluşturma
 
-1. **AccessPolicy** -> **Karşıya yüklemek için AccessPolicy oluştur AccessPolicy**öğesini seçin.
+1. **AccessPolicy**  ->  **Karşıya yüklemek için AccessPolicy oluştur AccessPolicy**öğesini seçin.
 2. **Gönder**’e basın.
 
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-access-policy.png)
@@ -131,7 +130,7 @@ Bu örnekte, şifrelenmemiş bir varlık oluşturuyoruz.
 
 ### <a name="create-an-asset"></a>Varlık oluşturma
 
-1.  -> **Varlık oluştur varlık**' **ı seçin.**
+1. **Assets**  ->  **Varlık oluştur varlık**' ı seçin.
 2. **Gönder**’e basın.
 
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-create-asset.png)
@@ -152,7 +151,7 @@ SAS URL 'SI aşağıdaki biçime sahiptir:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
-### <a name="considerations"></a>Dikkat edilmesi gerekenler
+### <a name="considerations"></a>Önemli noktalar
 
 Bazı dikkate alınması gereken noktalar vardır:
 
@@ -162,7 +161,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 ### <a name="create-a-sas-locator"></a>SAS Bulucu oluşturma
 
-1. **Bulucu** -> **oluşturma SAS Bulucu**seçin.
+1. **Bulucu**  ->  **oluşturma SAS Bulucu**seçin.
 2. **Gönder**’e basın.
 
     "Test" betiği, belirttiğiniz medya dosyası adına ve SAS Bulucu bilgilerine göre "karşıya yükleme URL 'sini" oluşturur ve uygun ortam değişkenini ayarlar.
@@ -173,7 +172,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 ### <a name="overview"></a>Genel Bakış
 
-Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kapsayıcısına yüklemek için Azure Blob API 'Lerini kullanarak bazı kodlar yazmanız gerekir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Azure Depolama REST API’sini kullanma](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Blobu koy](https://docs.microsoft.com/rest/api/storageservices/put-blob)
@@ -186,7 +185,7 @@ Karşıya yükleme URL 'sine sahip olduğunuza göre, artık dosyanızı SAS kap
 Karşıya yükleme isteği **AzureMedia** koleksiyonunun bir parçası değil. 
 
 Yeni bir istek oluşturun ve ayarlayın:
-1. Yeni **+** bir istek sekmesi oluşturmak için ' a basın.
+1. **+** Yeni bir istek sekmesi oluşturmak için ' a basın.
 2. **{{Uploadurl}}** **öğesini seçerek URL** 'ye yapıştırın.
 2. **Yetkilendirme** sekmesini olduğu gibi bırakın (bunu **taşıyıcı belirtece**ayarlamayın).
 3. **Üstbilgiler** sekmesinde, şunu belirtin: **anahtar**: "x-MS-blob-türü" ve **değer**: "blockblob".
@@ -200,7 +199,7 @@ Yeni bir istek oluşturun ve ayarlayın:
 
 Dosya karşıya yüklendikten sonra, varlığınızdan ilişkili BLOB depolama alanına yüklediğiniz medya dosyası için varlık içinde bir meta veri oluşturmanız gerekir.
 
-1. **Assetfiles** -> **createfileınfos**öğesini seçin.
+1. **Assetfiles**  ->  **createfileınfos**öğesini seçin.
 2. **Gönder**’e basın.
 
     ![Dosyayı karşıya yükleme](./media/media-services-rest-upload-files/postman-create-file-info.png)
@@ -211,7 +210,7 @@ Dosyanın yüklenmesi ve meta verilerinin ayarlanmış olması gerekir.
 
 Dosyanın başarıyla karşıya yüklendiğini doğrulamak için, [assetdosyasını](https://docs.microsoft.com/rest/api/media/operations/assetfile) sorgulamak ve **contentfilesize** (veya diğer ayrıntılar) ' ı yeni varlık içinde görmeyi beklediğiniz gibi karşılaştırmak isteyebilirsiniz. 
 
-Örneğin, aşağıdaki **Get** işlemi, varlık dosyanız için dosya verilerini (veya büyük küçük harf, Bigbuckpaskalya. mp4 dosyası) getirir. Sorgu daha önce ayarladığınız [ortam değişkenlerini](postman-environment.md) kullanıyor.
+Örneğin, aşağıdaki **Get** işlemi, varlık dosyanız için dosya verilerini (veya BigBuckBunny.mp4 dosyası) getirir. Sorgu daha önce ayarladığınız [ortam değişkenlerini](postman-environment.md) kullanıyor.
 
     {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
 

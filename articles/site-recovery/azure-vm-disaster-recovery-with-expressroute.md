@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73954094"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure VM 'lerinde ExpressRoute 'ı olağanüstü durum kurtarma ile tümleştirme
@@ -104,7 +103,7 @@ Genellikle kurumsal dağıtımlar, internet ve şirket içi sitelere harici bağ
 
 #### <a name="spoke-to-hub"></a>Uçtan merkeze
 
-**Yön** | **Ayar** | **Durumunda**
+**Yön** | **Ayar** | **Durum**
 --- | --- | ---
 Uçtan merkeze | Sanal ağ adresine izin ver | Etkin
 Uçtan merkeze | İletilen trafiğe izin ver | Etkin
@@ -115,7 +114,7 @@ Uçtan merkeze | Ağ geçitlerini kaldır 'ı kullan | Etkin
 
 #### <a name="hub-to-spoke"></a>Merkezden uca
 
-**Yön** | **Ayar** | **Durumunda**
+**Yön** | **Ayar** | **Durum**
 --- | --- | ---
 Merkezden uca | Sanal ağ adresine izin ver | Etkin
 Merkezden uca | İletilen trafiğe izin ver | Etkin

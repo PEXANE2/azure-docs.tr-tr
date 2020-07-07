@@ -20,17 +20,16 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113109"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $select söz dizimi
 
  Azure Bilişsel Arama arama sonuçlarına dahil edilecek alanları seçmek için [OData **$Select** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$Select** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$Select** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 **$Select** parametresi, her belge için hangi alanların sorgu sonuç kümesinde döndürüleceğini belirler. Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) **$Select** parametresi için dilbilgisini tanımlar:
 
@@ -52,16 +51,16 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 **$Select** parametresi iki şekilde gelir:
 
-1. Tüm alınabilir alanların döndürülmesi`*`gerektiğini belirten tek bir yıldız () veya
+1. `*`Tüm alınabilir alanların döndürülmesi gerektiğini belirten tek bir yıldız () veya
 1. Alan yollarının virgülle ayrılmış bir listesi, hangi alanların döndürüleceğini tanımlar.
 
 İkinci formu kullanırken, yalnızca listede alınabilir alanları belirtebilirsiniz.
 
-Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyorsanız, tüm alınabilir alt alanlar sorgu sonuç kümesine dahil edilir. Örneğin `Address` , dizininizin, `Street` `City`, ve `Country` tüm alınabilir alt alanlar içeren bir alanı olduğunu varsayalım. `Address` **$Select**belirtirseniz, sorgu sonuçları üç alt alanı da içerir.
+Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyorsanız, tüm alınabilir alt alanlar sorgu sonuç kümesine dahil edilir. Örneğin, dizininizin `Address` `Street` ,, `City` ve `Country` tüm alınabilir alt alanlar içeren bir alanı olduğunu varsayalım. `Address` **$Select**belirtirseniz, sorgu sonuçları üç alt alanı da içerir.
 
 ## <a name="examples"></a>Örnekler
 
-Sonuçlara ve `HotelId` `City` alt `HotelName`alanına, `Rating` ve en üst düzey alanları ekleyin `Address`:
+`HotelId` `HotelName` `Rating` Sonuçlara ve alt alanına, ve en üst düzey alanları ekleyin `City` `Address` :
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +77,7 @@ Sonuçlara ve `HotelId` `City` alt `HotelName`alanına, `Rating` ve en üst düz
 }
 ```
 
-`HotelName` Sonuçlarda en üst düzey alanı, tüm alt alanlarını `Address`ve `Type` `BaseRate` `Rooms` koleksiyondaki her bir nesnenin ve alt alanlarını dahil edin:
+`HotelName`Sonuçlarda en üst düzey alanı, tüm alt alanlarını `Address` ve `Type` `BaseRate` koleksiyondaki her bir nesnenin ve alt alanlarını `Rooms` dahil edin:
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 

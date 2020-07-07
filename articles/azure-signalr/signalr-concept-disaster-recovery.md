@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73747655"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Dayanıklılık ve olağanüstü durum kurtarma
@@ -51,14 +50,14 @@ Bunu iki şekilde yapabilirsiniz:
 
 ### <a name="through-config"></a>Yapılandırma üzerinden
 
-Adlı `Azure:SignalR:ConnectionString`bir yapılandırma girişinde, SignalR hizmeti bağlantı dizesinin ortam değişkenleri/uygulama ayarları/Web. cofıg aracılığıyla nasıl ayarlanacağını zaten bilmelisiniz.
+Adlı bir yapılandırma girişinde, SignalR hizmeti bağlantı dizesinin ortam değişkenleri/uygulama ayarları/Web. cofıg aracılığıyla nasıl ayarlanacağını zaten bilmelisiniz `Azure:SignalR:ConnectionString` .
 Birden çok uç noktalarınız varsa, bunları aşağıdaki biçimde birden çok yapılandırma girişi halinde ayarlayabilirsiniz:
 
 ```
 Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
-`<name>` Uç noktanın adı ve `<role>` rolü (birincil veya ikincil) bulunur.
+`<name>`Uç noktanın adı ve `<role>` rolü (birincil veya ikincil) bulunur.
 Ad isteğe bağlıdır, ancak yönlendirme davranışını birden fazla uç nokta arasında daha fazla özelleştirmek istiyorsanız yararlı olacaktır.
 
 ### <a name="through-code"></a>Kod aracılığıyla
@@ -106,11 +105,11 @@ Birincil örnek aşağı doğru olduğunda (ve bir süre sonra kurtarıldığın
 
 Aşağıdaki diyagramlarda, SignalR hizmetinde yük devretme işlemlerinin nasıl yapılacağı gösterilmektedir:
 
-Yük devretmeden önce yük devretmeden ![önce Fig. 1](media/signalr-concept-disaster-recovery/before-failover.png)
+Yük devretmeden önce yük devretmeden önce Fig. 1 ![](media/signalr-concept-disaster-recovery/before-failover.png)
 
-Yük devretmenin ardından yük devretmeden ![sonra Fig. 2](media/signalr-concept-disaster-recovery/after-failover.png)
+Yük devretmenin ardından yük devretmeden sonra Fig. 2 ![](media/signalr-concept-disaster-recovery/after-failover.png)
 
-Fig. 3 birincil kurtardıktan sonra birincil ![kısa zamandan sonra kısa bir süre](media/signalr-concept-disaster-recovery/after-recover.png)
+Fig. 3 birincil ![ kurtardıktan sonra birincil kısa zamandan sonra kısa bir süre](media/signalr-concept-disaster-recovery/after-recover.png)
 
 Yalnızca birincil uygulama sunucusu ve SignalR hizmetinin çevrimiçi trafiğe sahip olması durumunda (mavi renkli), normal olarak görebilirsiniz.
 Yük devretmeden sonra, ikincil App Server ve SignalR hizmeti de etkin hale gelir.

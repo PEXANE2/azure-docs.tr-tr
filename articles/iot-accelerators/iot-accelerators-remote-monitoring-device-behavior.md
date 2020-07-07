@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890856"
 ---
 # <a name="implement-the-device-model-behavior"></a>Cihaz modeli davranışını uygulama
@@ -61,9 +60,9 @@ Aşağıdaki örnekte, sanal bir chilcihaz için cihaz durumu nesnesinin tanım�
 }
 ```
 
-`InitialState` Bölümünde tanımlandığı gibi, sanal cihazın durumu Simülasyon hizmeti tarafından bellekte tutulur. Durum bilgileri, **Chiller-01-State. js**' de tanımlanan `main` işleve giriş olarak geçirilir. Bu örnekte, Simülasyon hizmeti her beş saniyede bir **Chiller-01-State. js** dosyasını çalıştırır. Betik, sanal cihazın durumunu değiştirebilir.
+Bölümünde tanımlandığı gibi, sanal cihazın durumu `InitialState` Simülasyon hizmeti tarafından bellekte tutulur. Durum bilgileri, `main` **chiller-01-state.js**tanımlı işleve giriş olarak geçirilir. Bu örnekte, Simülasyon hizmeti her beş saniyede bir **chiller-01-state.js** dosyasını çalıştırır. Betik, sanal cihazın durumunu değiştirebilir.
 
-Aşağıda tipik `main` bir işlevin ana hattı gösterilmektedir:
+Aşağıda tipik bir işlevin ana hattı gösterilmektedir `main` :
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -76,15 +75,15 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` Parametresi aşağıdaki özelliklere sahiptir:
+`context`Parametresi aşağıdaki özelliklere sahiptir:
 
 - `currentTime`biçim içeren bir dize olarak`yyyy-MM-dd'T'HH:mm:sszzz`
 - `deviceId`, örneğin`Simulated.Chiller.123`
 - `deviceModel`, örneğin`Chiller`
 
-`state` Parametresi, cihaz benzetimi hizmeti tarafından korunan cihazın durumunu içerir. Bu değer, önceki `state` çağrısının döndürdüğü nesnedir `main`.
+Parametresi, cihaz `state` benzetimi hizmeti tarafından korunan cihazın durumunu içerir. Bu değer, `state` önceki çağrısının döndürdüğü nesnedir `main` .
 
-Aşağıdaki örnek, Simülasyon hizmeti tarafından sürdürülen cihaz durumunu `main` işlemek için yönteminin tipik bir uygulamasını gösterir:
+Aşağıdaki örnek, `main` Simülasyon hizmeti tarafından sürdürülen cihaz durumunu işlemek için yönteminin tipik bir uygulamasını gösterir:
 
 ```javascript
 // Default state
@@ -156,7 +155,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-GitHub üzerinde [Chiller-01-State. js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) ' nin tamamını görüntüleyebilirsiniz.
+Tüm [chiller-01-state.js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) GitHub üzerinde görüntüleyebilirsiniz.
 
 ## <a name="method-behavior"></a>Yöntem davranışı
 
@@ -187,9 +186,9 @@ Aşağıdaki örnek, sanal bir chilcihaz tarafından desteklenen yöntemlerin li
 
 Her yöntemin, yönteminin davranışını uygulayan ilişkili bir JavaScript dosyası vardır.
 
-Şema `InitialState` bölümünde tanımlandığı gibi, sanal cihazın durumu Simülasyon hizmeti tarafından bellekte tutulur. Durum bilgileri, yöntemi çağrıldığında JavaScript dosyasında tanımlanan `main` işleve giriş olarak geçirilir. Betik, sanal cihazın durumunu değiştirebilir.
+Şema bölümünde tanımlandığı gibi, sanal cihazın durumu `InitialState` Simülasyon hizmeti tarafından bellekte tutulur. Durum bilgileri, `main` yöntemi çağrıldığında JavaScript dosyasında tanımlanan işleve giriş olarak geçirilir. Betik, sanal cihazın durumunu değiştirebilir.
 
-Aşağıda tipik `main` bir işlevin ana hattı gösterilmektedir:
+Aşağıda tipik bir işlevin ana hattı gösterilmektedir `main` :
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -197,15 +196,15 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` Parametresi aşağıdaki özelliklere sahiptir:
+`context`Parametresi aşağıdaki özelliklere sahiptir:
 
 - `currentTime`biçim içeren bir dize olarak`yyyy-MM-dd'T'HH:mm:sszzz`
 - `deviceId`, örneğin`Simulated.Chiller.123`
 - `deviceModel`, örneğin`Chiller`
 
-`state` Parametresi, cihaz benzetimi hizmeti tarafından korunan cihazın durumunu içerir.
+Parametresi, cihaz `state` benzetimi hizmeti tarafından korunan cihazın durumunu içerir.
 
-`properties` Parametresi, IoT Hub cihaz ikizi rapor edilen özellikler olarak yazılmış cihazın özelliklerini içerir.
+`properties`Parametresi, IoT Hub cihaz ikizi rapor edilen özellikler olarak yazılmış cihazın özelliklerini içerir.
 
 Yöntemi davranışını uygulamaya yardımcı olmak için kullanabileceğiniz üç genel işlev vardır:
 
@@ -213,7 +212,7 @@ Yöntemi davranışını uygulamaya yardımcı olmak için kullanabileceğiniz �
 - `updateProperty`tek bir cihaz özelliğini güncelleştirmek için.
 - `sleep`uzun süre çalışan bir görevin benzetimini yapmak için yürütmeyi duraklatmak için.
 
-Aşağıdaki örnek, **IncreasePressure-method. js** betiğinin benzetimli chilcihazlar tarafından kullanılan kısaltılmış bir sürümünü göstermektedir:
+Aşağıdaki örnek, **IncreasePressure-method.js** betiğinin benzetimli chilcihazları tarafından kullanılan kısaltılmış bir sürümünü göstermektedir:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -252,7 +251,7 @@ function main(context, previousState, previousProperties) {
 
 Durum ve Yöntem betikleri çalıştırmak için cihaz benzetimi hizmeti tarafından kullanılan JavaScript Yorumlayıcısına bir hata ayıklayıcı eklemek mümkün değildir. Ancak, bilgileri hizmet günlüğünde günlüğe kaydedebilirsiniz. Yerleşik `log()` işlevi, işlev yürütmeyi izlemek ve hata ayıklamak için bilgileri kaydetmenizi sağlar.
 
-Bir sözdizimi hatası varsa yorumlayıcı başarısız olur ve hizmet günlüğüne bir `Jint.Runtime.JavaScriptException` giriş yazar.
+Bir sözdizimi hatası varsa yorumlayıcı başarısız olur ve `Jint.Runtime.JavaScriptException` hizmet günlüğüne bir giriş yazar.
 
 GitHub 'da [hizmeti yerel olarak çalıştırma](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) makalesi, cihaz benzetimi hizmetini yerel olarak nasıl çalıştıracağınızı gösterir. Hizmeti yerel olarak çalıştırmak, sanal cihazlarınızda buluta dağıtmadan önce sanal cihazlarınızın hatalarını ayıklamayı kolaylaştırır.
 

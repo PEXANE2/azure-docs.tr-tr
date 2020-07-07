@@ -10,10 +10,9 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73847531"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Yönetim SDK 'sının sürümlerini yükseltme
@@ -31,18 +30,18 @@ Azure Search .NET Yönetim SDK 'sının 2. sürümü önceki sürümlerden bazı
 ## <a name="whats-new-in-version-2"></a>Sürüm 2 ' deki yenilikler
 Azure Search .NET Yönetim SDK 'sının 2. sürümü, genel olarak kullanılan Azure Search yönetimi REST API sürümünü önceki SDK sürümleri, özellikle 2015-08-19 olarak hedefler. SDK 'nın üzerinde yapılan değişiklikler, SDK 'nın kullanılabilirliğini geliştirmek için kesinlikle istemci tarafı değişikliklerdir. Bu değişiklikler şunları içerir:
 
-* `Services.CreateOrUpdate`ve zaman uyumsuz sürümleri artık sağlamayı `SearchService` otomatik olarak yoklamıştır ve hizmet sağlama tamamlanana kadar geri dönmez. Bu, sizi bir tür yoklama kodu yazmak zorunda kalmanızı sağlar.
+* `Services.CreateOrUpdate`ve zaman uyumsuz sürümleri artık sağlamayı otomatik olarak `SearchService` yoklamıştır ve hizmet sağlama tamamlanana kadar geri dönmez. Bu, sizi bir tür yoklama kodu yazmak zorunda kalmanızı sağlar.
 * Hizmet sağlamayı hala el ile yoklamak istiyorsanız yeni `Services.BeginCreateOrUpdate` yöntemini veya zaman uyumsuz sürümlerinden birini kullanabilirsiniz.
-* SDK 'ya `Services.Update` yeni yöntemler ve zaman uyumsuz sürümler eklenmiştir. Bu yöntemler, bir hizmetin artımlı güncelleştirilmesini desteklemek için HTTP PATCH kullanır. Örneğin, artık yalnızca istenen `SearchService` `partitionCount` ve `replicaCount` özellikleri içeren bu yöntemlere bir örnek geçirerek bir hizmeti ölçeklendirebilirsiniz. Çağırma `Services.Get`, döndürülme `SearchService`ve geçirme `Services.CreateOrUpdate` gibi eski yöntem desteklenmeye devam eder, ancak artık gerekli değildir. 
+* `Services.Update`SDK 'ya yeni yöntemler ve zaman uyumsuz sürümler eklenmiştir. Bu yöntemler, bir hizmetin artımlı güncelleştirilmesini desteklemek için HTTP PATCH kullanır. Örneğin, artık `SearchService` yalnızca istenen ve özellikleri içeren bu yöntemlere bir örnek geçirerek bir hizmeti ölçeklendirebilirsiniz `partitionCount` `replicaCount` . Çağırma `Services.Get` , döndürülme ve geçirme gibi eski Yöntem `SearchService` `Services.CreateOrUpdate` desteklenmeye devam eder, ancak artık gerekli değildir. 
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
-İlk olarak, NuGet ' i paket `Microsoft.Azure.Management.Search` Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
+İlk olarak, NuGet ' i `Microsoft.Azure.Management.Search` Paket Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
 
 NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin. Kodunuzun nasıl yapılandırıldığına bağlı olarak, başarıyla yeniden oluşturulabilir. Öyleyse başlamaya hazırsınız demektir!
 
-Derlemeniz başarısız olursa, bunun nedeni bazı SDK arabirimlerini (örneğin, birim testi amaçları için) uygulamış olmanız olabilir. Bunu çözmek için gibi yeni yöntemleri uygulamanız gerekir `BeginCreateOrUpdateWithHttpMessagesAsync`.
+Derlemeniz başarısız olursa, bunun nedeni bazı SDK arabirimlerini (örneğin, birim testi amaçları için) uygulamış olmanız olabilir. Bunu çözmek için gibi yeni yöntemleri uygulamanız gerekir `BeginCreateOrUpdateWithHttpMessagesAsync` .
 
 Herhangi bir derleme hatasını düzelttikten sonra, isterseniz yeni işlevlerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz. SDK 'daki yeni özellikler [sürüm 2 ' deki](#WhatsNew)Yenilikler bölümünde ayrıntılı olarak açıklanmıştır.
 

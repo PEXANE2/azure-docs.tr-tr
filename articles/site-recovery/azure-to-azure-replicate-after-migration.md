@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74159121"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure'a geçişten sonra Azure VM'leri için olağanüstü durumdan kurtarmayı ayarlama 
@@ -45,7 +44,7 @@ Site Recovery Mobility hizmetinin 9.7.0.0 'den önceki bir sürümünü çalış
 #### <a name="validate-the-installation"></a>Yüklemeyi doğrulama
 Aracının yüklenip yüklenmediğini denetlemek için:
 
-1. Azure VM 'de, C:\WindowsAzure\Packages klasöründe, WaAppAgent. exe dosyasını görmeniz gerekir.
+1. Azure VM 'de, C:\WindowsAzure\Packages klasöründe WaAppAgent.exe dosyasını görmeniz gerekir.
 2. Dosyaya sağ tıklayın ve **Özellikler**' de **Ayrıntılar** sekmesini seçin.
 3. **Ürün sürümü** alanının 2.6.1198.718 veya üzeri olduğunu doğrulayın.
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73663182"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>İkincil siteye Hyper-V çoğaltması için test sonuçları
@@ -175,10 +174,10 @@ Tablo, dağıtımda ölçülen performans ölçümlerini ve sayaçlarını özet
 | CPU |\Processor(_Total)\% Processor Time |
 | Kullanılabilir bellek |\Bellek\kullanılabilir MBayt |
 | IOPS |\Fiziksel disk (_Total) \Disk aktarımı/sn |
-| VM okuma (ıOPS) işlemi/sn |\Hyper-V sanal depolama cihazı (\<VHD>) \Okuma Işlemi/sn |
-| VM yazma (ıOPS) işlemi/sn |\Hyper-V sanal depolama cihazı (\<VHD>) \Yazma Işlemleri/sn |
-| VM okuma performansı |\Hyper-V sanal depolama cihazı (\<VHD>) \Okunan bayt/sn |
-| VM yazma performansı |\Hyper-V sanal depolama cihazı (\<VHD>) \Yazma bayt/sn |
+| VM okuma (ıOPS) işlemi/sn |\Hyper-V sanal depolama cihazı ( \<VHD> ) \ okuma işlemi/sn |
+| VM yazma (ıOPS) işlemi/sn |\Hyper-V sanal depolama cihazı ( \<VHD> ) \Yazma işlemleri/sn |
+| VM okuma performansı |\Hyper-V sanal depolama cihazı ( \<VHD> ) \Okunan bayt/sn |
+| VM yazma performansı |\Hyper-V sanal depolama cihazı ( \<VHD> ) \Yazılan bayt/sn |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

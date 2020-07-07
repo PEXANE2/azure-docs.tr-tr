@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74082595"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>İkincil şirket içi sitenize çoğaltılan Hyper-V VM 'lerinin yükünü devreder ve geri devreder
@@ -52,8 +51,8 @@ Hyper-V VM 'Leri için düzenli veya planlı yük devretme çalıştırabilirsin
   Bu yordamda, düzenli bir yük devretmenin nasıl çalıştırılacağı açıklanmaktadır.
 
 
-1. **Ayarlar** > **çoğaltılan öğeler** ' de **Yük devretme**> VM ' ye tıklayın.
-1. Yük devretmeyi tetiklemeden önce Site Recovery kaynak VM 'Leri kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce makineyi Kapat ' ı** seçin. Site Recovery, yük devretmeyi tetiklemeden önce ikincil siteye gönderilmemiş olan şirket içi verileri de eşitlemeye çalışacaktır. Yük devretme işleminin başarısız olması durumunda bile devam ettiğini unutmayın. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+1. **Ayarlar**  >  **çoğaltılan öğeler** ' de **Yük devretme**> VM ' ye tıklayın.
+1. Yük devretmeyi tetiklemeden önce Site Recovery kaynak VM 'Leri kapatmayı denemek istiyorsanız, **yük devretmeye başlamadan önce makineyi Kapat ' ı** seçin. Site Recovery, yük devretmeyi tetiklemeden önce ikincil siteye gönderilmemiş olan şirket içi verileri de eşitlemeye çalışacaktır. Yük devretme işleminin başarısız olması durumunda bile devam ettiğini unutmayın. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 2. Artık ikincil VMM bulutunda VM 'yi görebilmelisiniz.
 3. VM 'yi doğruladıktan sonra, yük devretmeyi **yürütün** . Bu, tüm kullanılabilir kurtarma noktalarını siler.
 

@@ -8,10 +8,9 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74184263"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer hakkında SSS (Önizleme)
@@ -22,7 +21,7 @@ Bu, Azure Internet Analyzer için SSS-ek sorularınız varsa, [geri bildirim for
 
 Önizleme, müşteriler arasından seçim yapmak için kullanılabilir. Önizlemeye katılmakla ilgileniyorsanız lütfen aşağıdakileri yapın:
 
-1. [Azure Portal](https://ms.portal.azure.com) oturum açın.
+1. [Azure portalında](https://ms.portal.azure.com) oturum açın.
 2. **Abonelikler** sayfasına gidin.
 3. Internet Analyzer 'ı ile kullanmayı planladığınız Azure aboneliğine tıklayın.
 4. Abonelik için **kaynak sağlayıcıları** ayarlarına gidin.

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74132953"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM’lerinin ikincil bir siteye olağanüstü durum kurtarmasını gerçekleştirmeye yönelik destek matrisi
@@ -24,7 +23,7 @@ Bu makalede, System Center Virtual Machine Manager (VMM) bulutlarında yönetile
 
 ## <a name="host-servers"></a>Ana bilgisayar sunucuları
 
-**İşletim sistemi** | **Bilgileri**
+**İşletim sistemi** | **Ayrıntılar**
 --- | ---
 Windows Server 2012 R2 | Sunucular en son güncelleştirmeleri çalıştırıyor olmalıdır.
 Windows Server 2016 |  Windows Server 2016 ve 2012 R2 ana bilgisayarlarının karışımından oluşan VMM 2016 bulutları şu anda desteklenmemektedir.<br/><br/> System Center 2012 R2 VMM 2012 R2 'den System Center 2016 'e yükseltilen dağıtımlar Şu anda desteklenmemektedir.
@@ -53,14 +52,14 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 
 **Yapılandırma** | **Destek**  
 --- | --- 
-Konak-NIC Grubu oluşturma | Yes 
-Konak-VLAN | Yes 
-Ana bilgisayar-IPv4 | Yes 
+Konak-NIC Grubu oluşturma | Evet 
+Konak-VLAN | Evet 
+Ana bilgisayar-IPv4 | Evet 
 Ana bilgisayar-IPv6 | Hayır 
 Konuk VM-NIC ekibi oluşturma | Hayır
-Konuk VM-IPv4 | Yes
+Konuk VM-IPv4 | Evet
 Konuk VM-IPv6 | Hayır
-Konuk VM-Windows/Linux-statik IP adresi | Yes
+Konuk VM-Windows/Linux-statik IP adresi | Evet
 Konuk VM-çoklu NIC | Yes
 
 
@@ -70,30 +69,30 @@ Konuk VM-çoklu NIC | Yes
 
 **Depolama (ana bilgisayar)** | **Destek**
 --- | --- 
-NFS | Yok
-SMB 3.0 |  Yes
-SAN (ISCSı) | Yes
-Çoklu yol (MPIO) | Yes
+NFS | YOK
+SMB 3.0 |  Evet
+SAN (ISCSı) | Evet
+Çoklu yol (MPIO) | Evet
 
 ### <a name="guest-or-physical-server-storage"></a>Konuk veya fiziksel sunucu depolaması
 
 **Yapılandırma** | **Destek**
 --- | --- | 
-VMDK |  Yok
+VMDK |  YOK
 VHD/VHDX | Evet (16 diske kadar)
-Gen 2 VM | Yes
+Gen 2 VM | Evet
 Paylaşılan küme diski | Hayır
 Şifrelenmiş disk | Hayır
-UEFı| Yok
+UEFı| YOK
 NFS | Hayır
 SMB 3.0 | Hayır
-RDM | Yok
-Disk > 1 TB | Yes
-Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes
-Depolama Alanları | Yes
+RDM | YOK
+Disk > 1 TB | Evet
+Dizili disk > 1 TB olan birim<br/><br/> LVM | Evet
+Depolama Alanları | Evet
 Dinamik disk Ekle/Kaldır | Hayır
-Diski hariç tutma | Yes
-Çoklu yol (MPIO) | Yes
+Diski hariç tutma | Evet
+Çoklu yol (MPIO) | Evet
 
 ## <a name="vaults"></a>Kasalar
 
@@ -106,7 +105,7 @@ Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma (abonelikl
 
 Sağlayıcı, VMM sunucuları arasındaki iletişimleri koordine eder. 
 
-**Sürümü** | **Güncelleştirmeler**
+**En son** | **Güncelleştirmeler**
 --- | --- 
 5.1.19 ([portaldan kullanılabilir](https://aka.ms/downloaddra) | [En son özellikler ve düzeltmeler](https://support.microsoft.com/kb/3155002)
 

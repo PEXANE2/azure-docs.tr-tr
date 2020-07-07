@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74158164"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>SignalR hizmetini birden çok örnek ile ölçeklendirme
@@ -22,9 +21,9 @@ En son SignalR hizmeti SDK 'Sı, SignalR hizmet örnekleri için birden çok uç
 
 Anahtar `Azure:SignalR:ConnectionString` veya `Azure:SignalR:ConnectionString:` SignalR hizmeti bağlantı dizesi ile yapılandırma.
 
-`Azure:SignalR:ConnectionString:`Anahtar ile `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`başlıyorsa, burada `Name` ve `EndpointType` `ServiceEndpoint` nesnesinin özellikleri, ve koddan erişilebilir olmalıdır.
+Anahtar ile başlıyorsa, `Azure:SignalR:ConnectionString:` `Azure:SignalR:ConnectionString:{Name}:{EndpointType}` burada `Name` ve `EndpointType` nesnesinin özellikleri, `ServiceEndpoint` ve koddan erişilebilir olmalıdır.
 
-Aşağıdaki `dotnet` komutları kullanarak birden çok örnek bağlantı dizesi ekleyebilirsiniz:
+Aşağıdaki komutları kullanarak birden çok örnek bağlantı dizesi ekleyebilirsiniz `dotnet` :
 
 ```batch
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
@@ -60,7 +59,7 @@ Varsayılan olarak SDK, son noktaları almak için [Defaultendpointrouter](https
 #### <a name="default-behavior"></a>Varsayılan davranış 
 1. İstemci isteği yönlendirme
 
-    Uygulama sunucusuyla `/negotiate` istemci olduğunda. Varsayılan olarak SDK, kullanılabilir hizmet uç noktaları kümesinden bir uç noktayı **rastgele seçer** .
+    `/negotiate`Uygulama sunucusuyla istemci olduğunda. Varsayılan olarak SDK, kullanılabilir hizmet uç noktaları kümesinden bir uç noktayı **rastgele seçer** .
 
 2. Sunucu iletisi yönlendirme
 
@@ -69,7 +68,7 @@ Varsayılan olarak SDK, son noktaları almak için [Defaultendpointrouter](https
 #### <a name="customize-routing-algorithm"></a>Yönlendirme algoritmasını özelleştirme
 İletilerin gitmesi gereken uç noktaları belirlemek için özel bilginiz varsa, kendi yönlendiricinizi oluşturabilirsiniz.
 
-Bir özel yönlendirici aşağıda, ile `east-` başlayan gruplar her zaman adlı `east`bir uç noktaya git örneği olarak tanımlanmıştır:
+Bir özel yönlendirici aşağıda, ile başlayan gruplar `east-` her zaman adlı bir uç noktaya git örneği olarak tanımlanmıştır `east` :
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -133,9 +132,9 @@ services.AddSignalR()
 
 Anahtar `Azure:SignalR:ConnectionString` veya `Azure:SignalR:ConnectionString:` SignalR hizmeti bağlantı dizesi ile yapılandırma.
 
-`Azure:SignalR:ConnectionString:`Anahtar ile `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`başlıyorsa, burada `Name` ve `EndpointType` `ServiceEndpoint` nesnesinin özellikleri, ve koddan erişilebilir olmalıdır.
+Anahtar ile başlıyorsa, `Azure:SignalR:ConnectionString:` `Azure:SignalR:ConnectionString:{Name}:{EndpointType}` burada `Name` ve `EndpointType` nesnesinin özellikleri, `ServiceEndpoint` ve koddan erişilebilir olmalıdır.
 
-Öğesine `web.config`birden çok örnek bağlantı dizesi ekleyebilirsiniz:
+Öğesine birden çok örnek bağlantı dizesi ekleyebilirsiniz `web.config` :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -173,7 +172,7 @@ app.MapAzureSignalR(
 
 ### <a name="how-to-customize-router"></a>Yönlendirici nasıl özelleştirilir?
 
-ASP.NET SignalR ve ASP.NET Core SignalR arasındaki tek fark, için `GetNegotiateEndpoint`http bağlam türüdür. ASP.NET SignalR için, bu, [ıowincontext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19) türüdür.
+ASP.NET SignalR ve ASP.NET Core SignalR arasındaki tek fark, için http bağlam türüdür `GetNegotiateEndpoint` . ASP.NET SignalR için, bu, [ıowincontext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19) türüdür.
 
 Aşağıda ASP.NET SignalR için özel anlaşma örneği verilmiştir:
 
@@ -215,23 +214,23 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 ## <a name="configuration-in-cross-region-scenarios"></a>Bölgeler arası senaryolarda yapılandırma
 
-Nesne `ServiceEndpoint` , veya `secondary`değerine `EndpointType` `primary` sahip bir özelliğe sahiptir.
+`ServiceEndpoint`Nesne, `EndpointType` veya değerine sahip bir özelliğe `primary` sahiptir `secondary` .
 
-`primary`uç noktalar, istemci trafiği almak için tercih edilen uç noktalardır ve daha güvenilir ağ bağlantılarına sahip olduğu kabul edilir; `secondary` uç noktalar, daha az güvenilir ağ bağlantılarına sahip olduğu kabul edilir ve yalnızca, istemci trafiği için sunucu trafiği almak için değil, bir yayın iletileri almak için kullanılır.
+`primary`uç noktalar, istemci trafiği almak için tercih edilen uç noktalardır ve daha güvenilir ağ bağlantılarına sahip olduğu kabul edilir; `secondary`uç noktalar, daha az güvenilir ağ bağlantılarına sahip olduğu kabul edilir ve yalnızca, istemci trafiği için sunucu trafiği almak için değil, bir yayın iletileri almak için kullanılır.
 
-Bölgeler arası durumlarda ağ kararsız olabilir. *Doğu ABD*bulunan bir uygulama sunucusu için, aynı *Doğu ABD* bölgesinde yer alan SignalR hizmeti uç noktası, olarak `primary` `secondary`işaretlenen diğer bölgelerde ve uç noktalar olarak yapılandırılabilir. Bu yapılandırmada, diğer bölgelerdeki hizmet uç noktaları bu *Doğu ABD* App Server 'dan iletiler **alabilir** , ancak bu uygulama sunucusuna hiçbir **çapraz bölge** istemcisi yönlendirilmeyecektir. Mimari aşağıdaki diyagramda gösterilmiştir:
+Bölgeler arası durumlarda ağ kararsız olabilir. *Doğu ABD*bulunan bir uygulama sunucusu için, aynı *Doğu ABD* bölgesinde yer alan SignalR hizmeti uç noktası, `primary` olarak işaretlenen diğer bölgelerde ve uç noktalar olarak yapılandırılabilir `secondary` . Bu yapılandırmada, diğer bölgelerdeki hizmet uç noktaları bu *Doğu ABD* App Server 'dan iletiler **alabilir** , ancak bu uygulama sunucusuna hiçbir **çapraz bölge** istemcisi yönlendirilmeyecektir. Mimari aşağıdaki diyagramda gösterilmiştir:
 
 ![Çapraz coğrafi bölgeler](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-Bir istemci, varsayılan `/negotiate` yönlendirici ile App Server ile ÇALıŞTıĞıNDA, SDK, kullanılabilir `primary` uç noktalar kümesinden bir uç noktayı **rastgele seçer** . Birincil uç nokta kullanılabilir olmadığında, SDK, tüm kullanılabilir `secondary` uç noktalardan **rastgele seçer** . Uç nokta, sunucu ve hizmet uç noktası arasındaki bağlantı etkin olduğunda **kullanılabilir** olarak işaretlenir.
+Bir istemci, `/negotiate` varsayılan yönlendirici ile App Server ile çalıştığında, SDK, kullanılabilir uç noktalar kümesinden bir uç noktayı **rastgele seçer** `primary` . Birincil uç nokta kullanılabilir olmadığında, SDK, tüm kullanılabilir uç noktalardan **rastgele seçer** `secondary` . Uç nokta, sunucu ve hizmet uç noktası arasındaki bağlantı etkin olduğunda **kullanılabilir** olarak işaretlenir.
 
-Bölgeler arası senaryoda, bir istemci *Doğu ABD*içinde barındırılan uygulama `/negotiate` sunucusunu denediğinde, varsayılan olarak her zaman aynı bölgede bulunan `primary` uç noktayı döndürür. Tüm *Doğu ABD* uç noktaları kullanılabilir olmadığında, istemci diğer bölgelerdeki uç noktalara yönlendirilir. Aşağıdaki yük devretme bölümünde senaryo ayrıntılı olarak açıklanmaktadır.
+Bölgeler arası senaryoda, bir istemci `/negotiate` *Doğu ABD*içinde barındırılan uygulama sunucusunu denediğinde, varsayılan olarak her zaman `primary` aynı bölgede bulunan uç noktayı döndürür. Tüm *Doğu ABD* uç noktaları kullanılabilir olmadığında, istemci diğer bölgelerdeki uç noktalara yönlendirilir. Aşağıdaki yük devretme bölümünde senaryo ayrıntılı olarak açıklanmaktadır.
 
 ![Normal anlaşma](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 
 ## <a name="fail-over"></a>Yük devretme
 
-Tüm `primary` uç noktalar kullanılabilir olmadığında, istemci, kullanılabilir `/negotiate` `secondary` uç noktalardan seçer. Bu yük devretme mekanizması her bir uç noktanın en az bir uygulama `primary` sunucusu için uç nokta olarak sunması gerekir.
+Tüm `primary` uç noktalar kullanılabilir olmadığında, istemci, `/negotiate` kullanılabilir `secondary` uç noktalardan seçer. Bu yük devretme mekanizması her bir uç noktanın `primary` en az bir uygulama sunucusu için uç nokta olarak sunması gerekir.
 
 ![Yük devretme](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
 

@@ -13,10 +13,9 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68841381"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) ayarlama
@@ -83,7 +82,7 @@ Artık pakete sahip olduğunuza göre, bunları Azure 'da sanal makinenize yükl
 6. Oluşturduğunuz Azure VM dizinine yükleme işlemini başlatın ve bu, zD&T için görüntü depolaması haline gelir.
 
     > [!NOTE]
-    > Adcdtools ' ın bulunduğundan emin olun **. XML** , **Home/myuserıd/zdt/adcd/nov2017** dizinine yükleme bölümüne dahildir. Buna daha sonra ihtiyacınız olacak.
+    > **ADCDTOOLS.XML** **Home/MYUSERıD/zdt/adcd/nov2017** dizinine yükleme konumuna eklendiğinden emin olun. Buna daha sonra ihtiyacınız olacak.
 
 7. Dosyaların karşıya yüklenmesini bekleyin, bu işlem Azure bağlantınıza bağlı olarak biraz zaman alabilir.
 
@@ -105,7 +104,7 @@ Sonraki adım, zD&T 'leri karşıya yüklenen paketleri kullanacak şekilde yap�
         /opt/ibm/zDT/bin/startServer
     ```
 2. Komutun URL çıkışını ve Web sunucusuna erişmek için bu URL 'yi kullanın. Şuna benzer:
-     > https://(VM adınız veya IP adresiniz): 9443/ZDTMC/index. html
+     > https://(VM adınız veya IP adresiniz): 9443/ZDTMC/index.html
      >
      > Web erişiminizin 9443 numaralı bağlantı noktasını kullandığını unutmayın. Web sunucusunda oturum açmak için bunu kullanın. ZD&T için Kullanıcı KIMLIĞI **zdtadmin** ve parola **paroladır**.
 

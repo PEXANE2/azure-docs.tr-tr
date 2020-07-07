@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73890882"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Uzaktan Izleme çözüm Hızlandırıcısını yerel olarak dağıtma-Visual Studio
@@ -37,7 +36,7 @@ Yerel dağıtımı tamamlamaya yönelik olarak, yerel geliştirme makinenizde a�
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/)
 * [NGINX](https://nginx.org/en/download.html)
-* [Node. js V8](https://nodejs.org/) -bu yazılım, betiklerin Azure kaynakları oluşturmak IÇIN KULLANDıĞı bilgisayar CLI için bir önkoşuldur. Node. js ile v10 arasındaki kullanmayın.
+* [Node.js V8](https://nodejs.org/) -bu yazılım, betiklerin Azure kaynakları oluşturmak IÇIN KULLANDıĞı bilgisayar CLI için bir önkoşuldur. Node.js ile v10 arasındaki kullanmayın.
 
 > [!NOTE]
 > Visual Studio, Windows ve Mac için kullanılabilir.
@@ -96,7 +95,7 @@ npm install
 npm start
 ```
 
-Başlangıç tamamlandığında tarayıcınızda **http:\//localhost: 3000/Dashboard**sayfası görüntülenir. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımı izleyin.
+Başlangıç tamamlandığında tarayıcınızda **http: \/ /localhost: 3000/Dashboard**sayfası görüntülenir. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımı izleyin.
 
 ### <a name="configure-and-run-nginx"></a>NGıNX 'i yapılandırma ve çalıştırma
 
@@ -109,7 +108,7 @@ Yerel makinenizde çalışan Web uygulamasını ve mikro hizmetleri bağlamak i�
 
 ### <a name="connect-to-the-dashboard"></a>Panoya Bağlan
 
-Uzaktan Izleme çözümü panosuna erişmek için tarayıcınızda http:\//localhost: 9000 adresine gidin.
+Uzaktan Izleme çözümü panosuna erişmek için tarayıcınızda http: \/ /localhost: 9000 adresine gidin.
 
 ## <a name="clean-up"></a>Temizleme
 

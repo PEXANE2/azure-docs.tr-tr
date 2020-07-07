@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888858"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit cihazını uzaktan Izleme çözüm hızlandırıcısına bağlama
@@ -36,7 +35,7 @@ Uzaktan Izleme örneğini VS Code açmak için:
 
 1. IoT DevKit 'in bilgisayarınızda bulunmadığından emin olun. Önce VS Code başlatın ve ardından DevKit 'i bilgisayarınıza bağlayın.
 
-1. Komut `F1` paletini açmak için tıklayın, yazın ve **Azure IoT cihaz çalışma ekranı ' nı seçin: örnekleri aç...**. Ardından, pano olarak **IoT DevKit** ' i seçin.
+1. `F1`Komut paletini açmak için tıklayın, yazın ve **Azure IoT cihaz çalışma ekranı ' nı seçin: örnekleri aç...**. Ardından, pano olarak **IoT DevKit** ' i seçin.
 
 1. **Uzaktan izlemeyi** bulun ve **örneği aç**' a tıklayın. Proje klasörünü gösteren yeni bir VS Code penceresi açılır:
 
@@ -51,7 +50,7 @@ IoT Hub cihaz bağlantı dizesini DevKit cihazınızda yapılandırmak için:
     * Düğme **A**tuşunu basılı tutun.
     * **Sıfırla** düğmesini gönderin ve serbest bırakın.
 
-1. Ekranda, DevKit KIMLIĞI ve `Configuration`görüntülenir.
+1. Ekranda, DevKit KIMLIĞI ve görüntülenir `Configuration` .
 
     ![IoT DevKit yapılandırma modu](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
@@ -63,7 +62,7 @@ IoT Hub cihaz bağlantı dizesini DevKit cihazınızda yapılandırmak için:
 
 Cihaz kodunu derlemek ve karşıya yüklemek için:
 
-1. ' `F1` E basarak komut paletini açın, Azure IoT cihaz çalışma ekranı ' nı yazın ve seçin **: Cihaz kodunu karşıya yükle**:
+1. `F1`' E basarak komut paletini açın, Azure IoT cihaz çalışma ekranı ' nı yazın ve seçin **: Cihaz kodunu karşıya yükle**:
 
 1. VS Code kodu derler ve DevKit cihazınıza yükler:
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74082660"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V'den Azure'a olağanüstü durum kurtarma mimarisi
@@ -27,7 +26,7 @@ Hyper-V konakları, isteğe bağlı olarak System Center Virtual Machine Manager
 
 Aşağıdaki tablo ve grafik, Hyper-V konakları VMM tarafından yönetilmediğinde Azure 'a Hyper-V çoğaltması için kullanılan bileşenlerin üst düzey bir görünümünü sağlar.
 
-**Bileşen** | **Gereksinim** | **Bilgileri**
+**Bileşen** | **Gereksinim** | **Ayrıntılar**
 --- | --- | ---
 **Azure** | Bir Azure aboneliği, Azure depolama hesabı ve Azure ağı. | Şirket içi VM iş yüklerinden çoğaltılan veriler depolama hesabında depolanır. Azure VM 'Ler, şirket içi sitenizden yük devretme gerçekleştiğinde çoğaltılan iş yükü verileriyle oluşturulur.<br/><br/> Azure VM’leri oluşturulduğunda Azure sanal ağına bağlanır.
 **Hyper-V** | Site Recovery dağıtımı sırasında Hyper-v konakları ve kümeleri Hyper-V sitelerine toplamanız gerekir. Azure Site Recovery sağlayıcısı ve kurtarma hizmetleri aracısını her bir tek başına Hyper-V konağına veya her Hyper-V küme düğümüne yüklersiniz. | Sağlayıcı, İnternet üzerinden Site Recovery hizmetiyle gerçekleştirilen çoğaltma işlemini düzenler ve yönetir. Kurtarma Hizmetleri aracısı, veri çoğaltma işlemini gerçekleştirir.<br/><br/> Sağlayıcı ve aracı arasındaki iletişimler şifrelenir ve güvence altına alınır. Azure depolama alanında çoğaltılan veriler de şifrelenir.
@@ -43,7 +42,7 @@ Aşağıdaki tablo ve grafik, Hyper-V konakları VMM tarafından yönetilmediği
 
 Aşağıdaki tablo ve grafik, Hyper-V konakları VMM bulutlarında yönetilmiyorsa Azure 'a Hyper-V çoğaltması için kullanılan bileşenlerin üst düzey bir görünümünü sağlar.
 
-**Bileşen** | **Gereksinim** | **Bilgileri**
+**Bileşen** | **Gereksinim** | **Ayrıntılar**
 --- | --- | ---
 **Azure** | Bir Azure aboneliği, Azure depolama hesabı ve Azure ağı. | Şirket içi VM iş yüklerinden çoğaltılan veriler depolama hesabında depolanır. Şirket içi sitenizden yük devretme gerçekleştiğinde, çoğaltılan verilerle Azure VM 'Leri oluşturulur.<br/><br/> Azure VM’leri oluşturulduğunda Azure sanal ağına bağlanır.
 **VMM sunucusu** | VMM sunucusu, Hyper-V konakları içeren bir veya daha fazla bulut içerir. | Site Recovery sağlayıcıyı VMM sunucusuna yükleyerek, Site Recovery çoğaltmayı düzenleyebilir ve sunucuyu kurtarma hizmetleri kasasına kaydedebilirsiniz.
@@ -69,7 +68,7 @@ Aşağıdaki tablo ve grafik, Hyper-V konakları VMM bulutlarında yönetilmiyor
 1. Azure portalında veya şirket içinde bir Hyper-V VM’si için koruma etkinleştirdikten sonra, **Korumayı etkinleştir** başlatılır.
 2. İş, makinenin önkoşullarla uyumlu olup olmadığını denetler, ardından, çoğaltmayı daha önce yapılandırdığınız ayarları uygulamak üzere [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) çağırır.
 3. İş, tam bir VM çoğaltması başlatmak için [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) yöntemini çağırarak ilk çoğaltmayı başlatır ve VM’lerin sanal disklerini Azure’a gönderir.
-4. İşi **işler** sekmesinde izleyebilirsiniz.      ![İş listesi](media/hyper-v-azure-architecture/image1.png) ![korumayı etkinleştirme detaya gitme](media/hyper-v-azure-architecture/image2.png)
+4. İşi **işler** sekmesinde izleyebilirsiniz.      ![İşler listesi ](media/hyper-v-azure-architecture/image1.png) ![ Korumayı etkinleştirme detaya gitme](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>İlk veri çoğaltma
@@ -113,7 +112,7 @@ Aşağıdaki tablo ve grafik, Hyper-V konakları VMM bulutlarında yönetilmiyor
 
 Bir çoğaltma hatası meydana gelirse, yerleşik yeniden deneme işlevi vardır. Yeniden deneme, tabloda açıklandığı şekilde sınıflandırıldı.
 
-**Kategori** | **Bilgileri**
+**Kategori** | **Ayrıntılar**
 --- | ---
 **Kurtarılamaz hatalar** | Yeniden deneme yapılmaya çalışılmaz. VM durumu **Kritik** olacaktır ve yönetici müdahalesi gerekir.<br/><br/> Bu hatalara örnek olarak bozuk bir VHD zinciri, çoğaltma sanal makinesi için geçersiz bir durum, ağ kimlik doğrulama hataları, yetkilendirme hataları ve VM bulunamadı hataları (tek başına Hyper-V sunucuları için) sayılabilir.
 **Kurtarılabilir hatalar** | Yeniden deneme aralığını ilk denemenin başlangıcına göre 1, 2, 4, 8 ve 10 dakika artıran bir üstel geri çekme kullanılarak her çoğaltma aralığında yeniden denemeler gerçekleşir. Hata devam ederse, 30 dakikada bir yeniden deneyin. Bunlara örnek olarak ağ hataları, yetersiz disk hataları ve düşük bellek koşulları dahildir.

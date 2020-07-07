@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74168373"
 ---
 # <a name="add-an-email-action"></a>E-posta eylemi ekleme
@@ -49,7 +48,7 @@ Mevcut bir kurala e-posta eylemi eklemek için aşağıdaki adımları izleyin:
 
 1. **Kural durumunun** **etkin**olarak ayarlandığından emin olun.
 
-1. **Uygula**’ya tıklayın.
+1. **Uygula**'ya tıklayın.
 
 ## <a name="create-a-new-rule"></a>Yeni kural oluşturma
 
@@ -77,7 +76,7 @@ Yeni bir kural oluştururken e-posta eylemi eklemek için aşağıdaki adımlar�
 
 1. **Kural durumunun** **etkin**olarak ayarlandığından emin olun.
 
-1. **Uygula**’ya tıklayın.
+1. **Uygula**'ya tıklayın.
 
 Bir e-posta eylemiyle ilgili kuralınız artık etkinleştirilmiştir. Eylemin her tetiklenişinde alıcılara yeni bir e-posta gönderilir.
 
@@ -160,9 +159,9 @@ Aşağıdaki adımlarda, HTML e-posta şablonunun nasıl düzenleneceği göster
 
     Örneğin, Java kodunda:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
-1. Şablondaki parametreler biçimini alır `${...}`. Bir parametreyi silmek için gerekli satırı silin. Bir parametre eklemek için, eklenecek değere sahip bir satır ekleyin.
+1. Şablondaki parametreler biçimini alır `${...}` . Bir parametreyi silmek için gerekli satırı silin. Bir parametre eklemek için, eklenecek değere sahip bir satır ekleyin.
 
-1. Görüntü veya özel metin eklemek için, EmailTemplate. HTML dosyasını doğrudan güncelleştirin.
+1. Görüntü veya özel metin eklemek için EmailTemplate.HTML dosyasını doğrudan güncelleştirin.
 
 ## <a name="throttling"></a>Azaltma
 

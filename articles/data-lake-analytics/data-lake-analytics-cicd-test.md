@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70913955"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics kodunuzu test etme
@@ -41,21 +40,21 @@ U-SQL betiklerini test ettiğinizde, test giriş dosyaları gerekir. Test verile
 
 ![Visual Studio için Data Lake araçları--proje testi veri kaynağını yapılandırma](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-U-SQL test `Initialize()` SDK 'sında arabirimini çağırdığınızda, test projesinin çalışma dizini altında geçici bir yerel veri kök klasörü oluşturulur. U-SQL betik test çalışmalarını çalıştırmadan önce, test veri kaynağı klasöründeki tüm dosyalar ve klasörler geçici yerel veri kök klasörüne kopyalanır. Test veri klasörü yolunu noktalı virgülle ayırarak daha fazla test veri kaynağı klasörü ekleyebilirsiniz.
+`Initialize()`U-SQL test SDK 'sında arabirimini çağırdığınızda, test projesinin çalışma dizini altında geçici bir yerel veri kök klasörü oluşturulur. U-SQL betik test çalışmalarını çalıştırmadan önce, test veri kaynağı klasöründeki tüm dosyalar ve klasörler geçici yerel veri kök klasörüne kopyalanır. Test veri klasörü yolunu noktalı virgülle ayırarak daha fazla test veri kaynağı klasörü ekleyebilirsiniz.
 
 ### <a name="manage-the-database-environment-for-testing"></a>Test için veritabanı ortamını yönetme
 
-U-SQL komut dosyalarınız U-SQL veritabanı nesneleriyle kullanıyorsa veya sorgulardaysa, U-SQL test çalışmalarını çalıştırmadan önce veritabanı ortamını başlatmalısınız. Saklı yordamlar çağrılırken bu yaklaşım gerekli olabilir. U `Initialize()` -SQL test SDK 'sindeki arabirim, u-SQL projesi tarafından başvurulan tüm veritabanlarını, test projesinin çalışma dizinindeki geçici yerel veri kök klasörüne dağıtmanıza yardımcı olur.
+U-SQL komut dosyalarınız U-SQL veritabanı nesneleriyle kullanıyorsa veya sorgulardaysa, U-SQL test çalışmalarını çalıştırmadan önce veritabanı ortamını başlatmalısınız. Saklı yordamlar çağrılırken bu yaklaşım gerekli olabilir. `Initialize()`U-SQL test SDK 'sindeki arabirim, u-SQL projesi tarafından başvurulan tüm veritabanlarını, test projesinin çalışma dizinindeki geçici yerel veri kök klasörüne dağıtmanıza yardımcı olur.
 
 U-SQL projesi için U-SQL veritabanı proje başvurularını yönetme hakkında daha fazla bilgi için, bkz. [u-SQL veritabanı projesine başvuru](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
 
 ### <a name="verify-test-results"></a>Test sonuçlarını doğrula
 
-`Run()` Arabirim bir iş yürütme sonucu döndürür. *0* başarılı anlamına gelir ve *1* hata anlamına gelir. Çıkışları doğrulamak için C# onaylama işlevlerini de kullanabilirsiniz.
+`Run()`Arabirim bir iş yürütme sonucu döndürür. *0* başarılı anlamına gelir ve *1* hata anlamına gelir. Çıkışları doğrulamak için C# onaylama işlevlerini de kullanabilirsiniz.
 
 ### <a name="run-test-cases-in-visual-studio"></a>Visual Studio 'da test çalışmalarını çalıştırma
 
-Bir U-SQL betiği test projesi, C# birim testi çerçevesinin üzerine kurulmuştur. Projeyi derledikten sonra, **Test** > **Windows** > **Test Gezgini**' ni seçin. Test **Gezgini**'nden test çalışmalarını çalıştırabilirsiniz. Alternatif olarak, birim testinizde. cs dosyasına sağ tıklayın ve **Testleri Çalıştır**' ı seçin.
+Bir U-SQL betiği test projesi, C# birim testi çerçevesinin üzerine kurulmuştur. Projeyi derledikten sonra, **Test**  >  **Windows**  >  **Test Gezgini**' ni seçin. Test **Gezgini**'nden test çalışmalarını çalıştırabilirsiniz. Alternatif olarak, birim testinizde. cs dosyasına sağ tıklayın ve **Testleri Çalıştır**' ı seçin.
 
 ## <a name="test-c-udos"></a>C# UDOs 'yi test etme
 
@@ -108,7 +107,7 @@ UıDO işlevlerini çağırırsanız, C# onay işlevlerini kullanarak şema ve s
 
 ### <a name="run-test-cases-in-visual-studio"></a>Visual Studio 'da test çalışmalarını çalıştırma
 
-Projeyi derledikten sonra, **Test** > **Windows** > **Test Gezgini**' ni seçin. Test **Gezgini**'nden test çalışmalarını çalıştırabilirsiniz. Alternatif olarak, birim testinizde. cs dosyasına sağ tıklayın ve **Testleri Çalıştır**' ı seçin.
+Projeyi derledikten sonra, **Test**  >  **Windows**  >  **Test Gezgini**' ni seçin. Test **Gezgini**'nden test çalışmalarını çalıştırabilirsiniz. Alternatif olarak, birim testinizde. cs dosyasına sağ tıklayın ve **Testleri Çalıştır**' ı seçin.
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Azure Pipelines 'de test çalışmalarını çalıştırma<a name="run-test-cases-in-azure-devops"></a>
 
@@ -116,7 +115,7 @@ Hem **U-SQL betik testi projeleri** hem de **c# Udo test projeleri** , c# birim 
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Azure Pipelines 'de U-SQL test çalışmalarını çalıştırma
 
-U-SQL testi için, yapı bilgisayarınıza yüklediğinizden emin `CPPSDK` olun ve `CPPSDK` yolu ' ye `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`geçirin.
+U-SQL testi için, yapı bilgisayarınıza yüklediğinizden emin olun `CPPSDK` ve `CPPSDK` yolu ' ye geçirin `USqlScriptTestRunner(cppSdkFolderFullPath: @"")` .
 
 #### <a name="what-is-cppsdk"></a>CPPSDK nedir?
 
@@ -132,11 +131,11 @@ Azure Pipelines CPPSDK bağımlılığını hazırlamanın en yaygın yolu aşa�
 
 1. CPPSDK kitaplıklarını içeren klasörü ZIP.
 
-1. Kaynak denetim sisteminize. zip dosyasını iade edin. . Zip dosyası, bir `.gitignore` dosya nedeniyle dosyaların yoksayılmaması IÇIN CPPSDK klasörü altındaki tüm kitaplıkları iade almanızı sağlar.
+1. Kaynak denetim sisteminize. zip dosyasını iade edin. . Zip dosyası, bir dosya nedeniyle dosyaların yoksayılmaması için CPPSDK klasörü altındaki tüm kitaplıkları iade almanızı sağlar `.gitignore` .
 
 1. Derleme ardışık düzeninde. zip dosyasını açın.
 
-1. Yapı `USqlScriptTestRunner` bilgisayarında bu zip 'lenmiş bir klasöre işaret edin.
+1. `USqlScriptTestRunner`Yapı bilgisayarında bu zip 'lenmiş bir klasöre işaret edin.
 
 ### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>Azure Pipelines C# UDO test çalışmalarını çalıştırma
 

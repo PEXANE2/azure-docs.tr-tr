@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73936039"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM olağanüstü durum kurtarma için kapasiteyi planlayın 
@@ -101,7 +100,7 @@ Aracı iki modda çalıştırabilirsiniz:
 
    f. **Disk kapasitesi kullanımı (%)** bölümünde ortalama kullanımı belirtin.
 
-   g. **Günlük veri değişim oranı (%)** içinde, bir kaynak sunucunun günlük veri değişim hızını belirtin.
+   örneğin: **Günlük veri değişim oranı (%)** içinde, bir kaynak sunucunun günlük veri değişim hızını belirtin.
 
    h. **Azure VM boyutunu eşleme**' de, eşlemek ISTEDIĞINIZ Azure VM boyutunu girin. Bunu el ile yapmak istemiyorsanız, **Işlem IaaS VM**'lerini seçin. El ile bir ayar girin ve ardından **IaaS VM 'leri**seçerseniz, el ile ayarının üzerine yazılabilir. İşlem işlemi, Azure VM boyutuyla en iyi eşleşmeyi otomatik olarak tanımlar.
 

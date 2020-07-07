@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73648447"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>U-SQL ve Spark veri biçimleri arasındaki farkları anlayın
@@ -43,7 +42,7 @@ Bu dönüşümden sonra, [Azure Data Lake Storage 1. dosyalarında depolanan ver
 - Veri semantiği dosya kopyalanırken kopya bayt düzeyinde gerçekleşir. Bu nedenle [Azure Data Lake Storage 2.](../storage/blobs/data-lake-storage-introduction.md) hesapta aynı verilerin görünmesi gerekir. Ancak Spark bazı karakterleri farklı yorumlayabilir. Örneğin, bir CSV dosyasındaki satır sınırlayıcısı için farklı bir varsayılan kullanabilir.
     Ayrıca, yazılı verileri (tablolardan) kopyalıyorsanız, Parquet ve Spark, yazılan bazı değerler (örneğin, bir float) için farklı duyarlığa ve ölçeğe sahip olabilir ve null değerleri farklı şekilde işleyebilir. Örneğin, U-SQL null değerleri için C# semantiğini, Spark ise null değerler için üç değerli mantığa sahiptir.
 
-- Veri organizasyonu (bölümlendirme) U-SQL tabloları iki düzey bölümlendirme sağlar. Dış düzey (`PARTITIONED BY`) değere göre ve genellikle klasör hiyerarşileri kullanarak Hive/Spark bölümlendirme düzenine eşlenir. Null değerlerinin doğru klasöre eşlendiğinden emin olmanız gerekir. U-SQL içindeki`DISTRIBUTED BY`iç düzey () 4 dağıtım şeması sunar: hepsini bir kez deneme, Aralık, karma ve doğrudan karma.
+- Veri organizasyonu (bölümlendirme) U-SQL tabloları iki düzey bölümlendirme sağlar. Dış düzey ( `PARTITIONED BY` ) değere göre ve genellikle klasör hiyerarşileri kullanarak Hive/Spark bölümlendirme düzenine eşlenir. Null değerlerinin doğru klasöre eşlendiğinden emin olmanız gerekir. `DISTRIBUTED BY`U-SQL içindeki iç düzey () 4 dağıtım şeması sunar: hepsini bir kez deneme, Aralık, karma ve doğrudan karma.
     Hive/Spark tabloları yalnızca U-SQL ' den farklı bir karma işlevi kullanarak değer bölümleme veya karma bölümlendirme desteği destekler. U-SQL tablo verilerinizin çıktısını aldığınızda, muhtemelen yalnızca Spark için değer bölümlemesini eşleyebilir ve son Spark sorgularınıza bağlı olarak veri düzeninizi daha fazla ayarlamaya gerek olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

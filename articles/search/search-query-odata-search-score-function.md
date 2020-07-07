@@ -20,23 +20,22 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113129"
 ---
-# <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Azure `search.score` bilişsel arama 'de OData işlevi
+# <a name="odata-searchscore-function-in-azure-cognitive-search"></a>`search.score`Azure bilişsel arama 'de OData işlevi
 
-Azure Bilişsel Arama [ **$OrderBy** parametresi](search-query-odata-orderby.md)olmadan bir sorgu gönderdiğinizde, geri gelen sonuçlar ilgi puanı tarafından azalan düzende sıralanır. **$OrderBy**kullandığınızda bile, uygunluk puanı varsayılan olarak bu özellikleri bölmek için kullanılacaktır. Ancak, bazen bir ilk sıralama ölçütü olarak ilgi puanı ve diğer bazı kriterleri bağlama kesici olarak kullanmak faydalıdır. `search.score` İşlevi bunu yapmanıza olanak sağlar.
+Azure Bilişsel Arama [ **$OrderBy** parametresi](search-query-odata-orderby.md)olmadan bir sorgu gönderdiğinizde, geri gelen sonuçlar ilgi puanı tarafından azalan düzende sıralanır. **$OrderBy**kullandığınızda bile, uygunluk puanı varsayılan olarak bu özellikleri bölmek için kullanılacaktır. Ancak, bazen bir ilk sıralama ölçütü olarak ilgi puanı ve diğer bazı kriterleri bağlama kesici olarak kullanmak faydalıdır. `search.score`İşlevi bunu yapmanıza olanak sağlar.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
-$Orderby ' de `search.score` için **$orderby** sözdizimi `search.score()`. İşlev `search.score` hiçbir parametre almaz. **$OrderBy** parametresindeki diğer yan tümcelerde `asc` olduğu `desc` gibi, veya sıralama düzeni tanımlayıcısıyla birlikte kullanılabilir. Sıralama ölçütü listesinde herhangi bir yerde görünebilir.
+`search.score` **$OrderBy** ' de için sözdizimi `search.score()` . İşlev `search.score` hiçbir parametre almaz. `asc` `desc` **$OrderBy** parametresindeki diğer yan tümcelerde olduğu gibi, veya sıralama düzeni tanımlayıcısıyla birlikte kullanılabilir. Sıralama ölçütü listesinde herhangi bir yerde görünebilir.
 
 ## <a name="example"></a>Örnek
 
-Oteller `search.score` ve ardından, aynı derecelendirmelere `rating`sahip iki otel arasında, en yakın bir değer olacak şekilde, ve daha sonra verilen koordinatlardan uzaklıktan artan düzende bir şekilde sıralayın.
+Oteller `search.score` ve `rating` ardından, aynı derecelendirmelere sahip iki otel arasında, en yakın bir değer olacak şekilde, ve daha sonra verilen koordinatlardan uzaklıktan artan düzende bir şekilde sıralayın.
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 

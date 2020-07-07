@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888829"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Uzaktan Izleme çözüm Hızlandırıcısını yerel olarak dağıtma-Docker
@@ -36,7 +35,7 @@ Yerel dağıtımı tamamlamaya yönelik olarak, yerel geliştirme makinenizde a�
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Visual Studio](https://visualstudio.microsoft.com/) -mikro hizmetlerde değişiklik yapmayı planlıyorsanız.
-* [Node. js V8](https://nodejs.org/) -bu yazılım, betiklerin Azure kaynakları oluşturmak IÇIN KULLANDıĞı bilgisayar CLI için bir önkoşuldur. Node. js ile v10 arasındaki kullanmayın.
+* [Node.js V8](https://nodejs.org/) -bu yazılım, betiklerin Azure kaynakları oluşturmak IÇIN KULLANDıĞı bilgisayar CLI için bir önkoşuldur. Node.js ile v10 arasındaki kullanmayın.
 
 > [!NOTE]
 > Bu araçlar, Windows, Linux ve iOS gibi birçok platformda mevcuttur.
@@ -63,14 +62,14 @@ Yerel Docker kapsayıcılarında çalışan mikro hizmetlerin Azure bulut hizmet
 docker run --rm -ti library/alpine ping google.com
 ```
 
-Çözüm hızlandırıcıyı çalıştırmak için komut satırı ortamınızda **\\hizmetler betikleri\\yerel** klasörüne gidin ve şu komutu çalıştırın:
+Çözüm hızlandırıcıyı çalıştırmak için komut satırı ortamınızda **Hizmetler \\ betikleri \\ Yerel** klasörüne gidin ve şu komutu çalıştırın:
 
 ```cmd/sh
 docker-compose up
 ```
 
 > [!NOTE] 
-> Çalıştırmadan önce Docker ile [yerel bir sürücü paylaştığınızdan](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) emin olun `docker-compose up`.
+> Çalıştırmadan önce Docker ile [yerel bir sürücü paylaştığınızdan](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) emin olun `docker-compose up` .
 
 Bu komutu ilk kez çalıştırdığınızda Docker, kapsayıcıları yerel olarak oluşturmak için Docker Hub 'ından mikro hizmet görüntülerini indirir. Aşağıdaki çalışmalarda Docker Kapsayıcıları hemen çalıştırır.
 
@@ -83,7 +82,7 @@ docker rm <list_of_containers>
 docker rmi <list_of_images>
 ```
 
-Kapsayıcılardan günlükleri görüntülemek için ayrı bir Shell kullanabilirsiniz. İlk olarak, `docker ps` komutunu kullanarak kapsayıcı kimliğini bulun. Ardından, `docker logs {container-id} --tail 1000` belirtilen kapsayıcının son 1000 girişlerini görüntülemek için kullanın.
+Kapsayıcılardan günlükleri görüntülemek için ayrı bir Shell kullanabilirsiniz. İlk olarak, komutunu kullanarak kapsayıcı KIMLIĞINI bulun `docker ps` . Ardından `docker logs {container-id} --tail 1000` , belirtilen kapsayıcının son 1000 girişlerini görüntülemek için kullanın.
 
 ### <a name="start-the-stream-analytics-job"></a>Stream Analytics işini Başlat
 
@@ -96,13 +95,13 @@ Stream Analytics işini başlatmak için aşağıdaki adımları izleyin:
 
 ### <a name="connect-to-the-dashboard"></a>Panoya Bağlan
 
-Uzaktan Izleme çözümü panosuna erişmek için tarayıcınızda sayfasına `http://localhost:8080` gidin. Artık Web Kullanıcı arabirimini ve yerel mikro hizmetleri kullanabilirsiniz.
+Uzaktan Izleme çözümü panosuna erişmek için tarayıcınızda sayfasına gidin `http://localhost:8080` . Artık Web Kullanıcı arabirimini ve yerel mikro hizmetleri kullanabilirsiniz.
 
 ## <a name="clean-up"></a>Temizleme
 
 Gereksiz ücretlerden kaçınmak için, testlerinizi bitirdiğinizde Azure aboneliğinizden bulut hizmetlerini kaldırın. Hizmetleri kaldırmak için [Azure Portal](https://ms.portal.azure.com) gidin ve **Start. cmd** betiğinin oluşturulduğu kaynak grubunu silin.
 
-Docker `docker-compose down --rmi all` görüntülerini kaldırmak ve yerel makinenizde boş alan boşaltmak için komutunu kullanın. Ayrıca, kaynak kodu GitHub 'dan Klonladığınız zaman oluşturulan uzaktan Izleme deposunun yerel kopyasını da silebilirsiniz.
+`docker-compose down --rmi all`Docker görüntülerini kaldırmak ve yerel makinenizde boş alan boşaltmak için komutunu kullanın. Ayrıca, kaynak kodu GitHub 'dan Klonladığınız zaman oluşturulan uzaktan Izleme deposunun yerel kopyasını da silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
