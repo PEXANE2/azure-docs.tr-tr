@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82129094"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
@@ -94,7 +94,7 @@ Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet sınırları](https://do
 
 Uygulamanız kapalı kalma süresini işleyememesi durumunda yüksek kullanılabilirlik geçiş senaryoları için en iyi yöntemleri izlemeniz gerekir.  Karmaşık iş sürekliliği planlama, olağanüstü durum kurtarma ve en yüksek çalışma süresi, bu belgenin kapsamı dışındadır.  Daha fazla bilgi edinmek için [Azure Kubernetes Service 'te (AKS) iş sürekliliği ve olağanüstü durum kurtarma Için en iyi uygulamalar](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) hakkında daha fazla bilgi edinin.
 
-Karmaşık uygulamalar için genellikle her seferinde değil zaman içinde geçiş yapabilirsiniz. Bu, eski ve yeni ortamların ağ üzerinden iletişim kurması gerekebilecek anlamına gelir. Daha önce iletişim kurmak `ClusterIP` için Hizmetleri kullanan uygulamaların tür `LoadBalancer` olarak açığa çıkarılması ve güvenli bir şekilde sağlanması gerekebilir.
+Karmaşık uygulamalar için genellikle her seferinde değil zaman içinde geçiş yapabilirsiniz. Bu, eski ve yeni ortamların ağ üzerinden iletişim kurması gerekebilecek anlamına gelir. Daha önce `ClusterIP` iletişim kurmak için Hizmetleri kullanan uygulamaların tür olarak açığa çıkarılması `LoadBalancer` ve güvenli bir şekilde sağlanması gerekebilir.
 
 Geçişi gerçekleştirmek için, istemcileri AKS üzerinde çalışan yeni hizmetlere işaret etmek isteyeceksiniz. DNS 'yi, AKS kümenizin önünde bulunan Load Balancer işaret etmek üzere güncelleştirerek trafiği yeniden yönlendirmenizi öneririz.
 
@@ -158,9 +158,9 @@ Bazı açık kaynaklı araçlar, yönetilen diskler oluşturmanıza ve birimleri
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Küme yapılandırmanızın dağıtımı
 
-AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattınızı kullanmanızı öneririz. [Uygulamalarınızı derlemek ve AKS 'e dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)için Azure Pipelines kullanabilirsiniz. Mevcut dağıtım görevlerinizi kopyalayın ve yeni AKS `kubeconfig` kümesine işaret edin.
+AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattınızı kullanmanızı öneririz. [Uygulamalarınızı derlemek ve AKS 'e dağıtmak](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)için Azure Pipelines kullanabilirsiniz. Mevcut dağıtım görevlerinizi kopyalayın ve `kubeconfig` Yeni AKS kümesine işaret edin.
 
-Bu mümkün değilse, mevcut Kubernetes kümenizdeki kaynak tanımlarını dışarı aktarın ve ardından bunları AKS 'e uygulayın. Nesneleri dışarı aktarmak `kubectl` için ' i kullanabilirsiniz.
+Bu mümkün değilse, mevcut Kubernetes kümenizdeki kaynak tanımlarını dışarı aktarın ve ardından bunları AKS 'e uygulayın. `kubectl`Nesneleri dışarı aktarmak için ' i kullanabilirsiniz.
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml

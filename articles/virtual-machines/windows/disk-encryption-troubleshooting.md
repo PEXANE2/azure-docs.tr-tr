@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085697"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure disk şifrelemesi sorun giderme kılavuzu
@@ -39,7 +39,7 @@ Uygulanan tüm ağ güvenlik grubu ayarları, uç noktanın disk şifrelemesi i�
 Şifreleme, [Azure AD kimlik bilgileriyle](disk-encryption-windows-aad.md#)etkinleştirildiğinde, hedef VM hem Azure Active Directory uç noktalarına hem de Key Vault uç noktalarına bağlantı kurulmasına izin vermelidir. Geçerli Azure Active Directory kimlik doğrulama uç noktaları, [Office 365 URL 'leri ve IP adresi aralıkları](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) belgelerinin 56 ve 59 bölümlerinde saklanır. Key Vault yönergeler, [bir güvenlik duvarının arkasındaki Azure Key Vault erişme](../../key-vault/general/access-behind-firewall.md)hakkındaki belgelerde sunulmaktadır.
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
-VM, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilemeyen IP adresini (`169.254.169.254`) kullanan [Azure örnek meta veri hizmeti](../windows/instance-metadata-service.md) uç noktasına erişebilmelidir.  Yerel HTTP trafiğini bu adrese dönüştüren ara sunucu (örneğin, X-Iletilmiş-for üstbilgisi ekleme) desteklenmez.
+VM, yalnızca VM içinden erişilebilen, iyi bilinen yönlendirilemeyen IP adresini () kullanan [Azure örnek meta veri hizmeti](../windows/instance-metadata-service.md) uç noktasına erişebilmelidir `169.254.169.254` .  Yerel HTTP trafiğini bu adrese dönüştüren ara sunucu (örneğin, X-Iletilmiş-for üstbilgisi ekleme) desteklenmez.
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Windows Server 2016 Server Core sorunlarını giderme
 
@@ -64,7 +64,7 @@ Bu sorunu geçici olarak çözmek için, aşağıdaki dört dosyayı bir Windows
 
 1. Birimleri denetlemek için DiskPart 'ı kullanın ve ardından devam edin.  
 
-Örneğin:
+Örnek:
 
 ```
 DISKPART> list vol

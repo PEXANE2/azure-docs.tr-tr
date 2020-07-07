@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
 ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085374"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure 'dan bir Windows VHD indirin
@@ -29,7 +29,7 @@ VHD 'yi başka VM 'Ler oluşturmak için görüntü olarak kullanmak için VM 'y
 1. Önceden yapmadıysanız, [Azure portal](https://portal.azure.com/)da oturum açın
 2. [VM 'ye bağlanın](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 3. VM 'de yönetici olarak komut Istemi penceresini açın.
-4. Dizini *%windir%\system32\sysprep* olarak değiştirin ve Sysprep. exe ' yi çalıştırın.
+4. Dizini *%windir%\system32\sysprep* olarak değiştirin ve sysprep.exe çalıştırın.
 5. Sistem Hazırlama Aracı iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **genelleştirilemedi** ' ın seçili olduğundan emin olun.
 6. Kapalı Seçenekler ' de, **kapatın**' i seçin ve ardından **Tamam**' a tıklayın. 
 

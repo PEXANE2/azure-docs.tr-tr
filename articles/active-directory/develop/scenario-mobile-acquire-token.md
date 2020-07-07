@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098909"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama için belirteç alın
@@ -28,7 +28,7 @@ Uygulamanız korunan Web API 'Lerini çağırabilmeniz için bir erişim belirte
 
 Bir belirteç istediğinizde, bir kapsam tanımlamanız gerekir. Kapsam, uygulamanızın erişebileceği verileri belirler.
 
-Kapsam tanımlamanın en kolay yolu, istenen Web API 'sini kapsam `App ID URI` `.default`ile birleştirmenin bir yoludur. Bu tanım, uygulamanızın portalda ayarlanan tüm kapsamları gerektirip gerektirmediğini Microsoft Identity platformunu söyler.
+Kapsam tanımlamanın en kolay yolu, istenen Web API 'sini kapsam ile birleştirmenin bir yoludur `App ID URI` `.default` . Bu tanım, uygulamanızın portalda ayarlanan tüm kapsamları gerektirip gerektirmediğini Microsoft Identity platformunu söyler.
 
 ### <a name="android"></a>Android
 ```Java
@@ -49,7 +49,7 @@ var scopes = new [] {"https://graph.microsoft.com/.default"};
 
 ### <a name="acquire-tokens-via-msal"></a>Belirteçleri MSAL aracılığıyla alma
 
-MSAL, uygulamaların belirteçleri sessizce ve etkileşimli olarak almasına izin verir. Veya `AcquireTokenInteractive()`öğesini çağırdığınızda `AcquireTokenSilent()` , msal istenen kapsamlar için bir erişim belirteci döndürür. Doğru model, sessiz bir istek yapmak ve sonra etkileşimli bir isteğe geri dönmelidir.
+MSAL, uygulamaların belirteçleri sessizce ve etkileşimli olarak almasına izin verir. `AcquireTokenSilent()`Veya `AcquireTokenInteractive()` öğesini çağırdığınızda, msal istenen kapsamlar için bir erişim belirteci döndürür. Doğru model, sessiz bir istek yapmak ve sonra etkileşimli bir isteğe geri dönmelidir.
 
 #### <a name="android"></a>Android
 
@@ -145,7 +145,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 }
 ```
 
-MSAL dönerse `MSALErrorInteractionRequired`belirteçleri etkileşimli olarak almaya çalışın:
+MSAL dönerse `MSALErrorInteractionRequired` belirteçleri etkileşimli olarak almaya çalışın:
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
@@ -207,11 +207,11 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET 'de zorunlu parametreler
 
-`AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir: `scopes`. `scopes` Parametresi, bir belirtecin gerekli olduğu kapsamları tanımlayan dizeleri numaralandırır. Belirteç Microsoft Graph için ise, her bir Microsoft Graph API 'sinin API başvurusunda gerekli kapsamları bulabilirsiniz. Başvurunun "Izinler" bölümüne gidin.
+`AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir: `scopes` . `scopes`Parametresi, bir belirtecin gerekli olduğu kapsamları tanımlayan dizeleri numaralandırır. Belirteç Microsoft Graph için ise, her bir Microsoft Graph API 'sinin API başvurusunda gerekli kapsamları bulabilirsiniz. Başvurunun "Izinler" bölümüne gidin.
 
 Örneğin, [kullanıcının kişilerini listelemek](https://docs.microsoft.com/graph/api/user-list-contacts)Için "User. Read", "Contacts. Read" kapsamını kullanın. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
-Android 'de, kullanarak `PublicClientApplicationBuilder`uygulamayı oluştururken üst etkinliği belirtebilirsiniz. Bu sırada üst etkinliği belirtmezseniz, daha sonra aşağıdaki bölümde olduğu gibi kullanarak `.WithParentActivityOrWindow` belirtebilirsiniz. Üst etkinliği belirtirseniz, belirteç, etkileşimden sonra bu üst etkinliğe geri alınır. Bunu belirtmezseniz, `.ExecuteAsync()` çağrı bir özel durum oluşturur.
+Android 'de, kullanarak uygulamayı oluştururken üst etkinliği belirtebilirsiniz `PublicClientApplicationBuilder` . Bu sırada üst etkinliği belirtmezseniz, daha sonra `.WithParentActivityOrWindow` aşağıdaki bölümde olduğu gibi kullanarak belirtebilirsiniz. Üst etkinliği belirtirseniz, belirteç, etkileşimden sonra bu üst etkinliğe geri alınır. Bunu belirtmezseniz, `.ExecuteAsync()` çağrı bir özel durum oluşturur.
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET içinde belirli isteğe bağlı parametreler
 
@@ -219,24 +219,24 @@ Aşağıdaki bölümlerde MSAL.NET içinde isteğe bağlı parametreler açıkla
 
 ##### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()` Parametresi, bir istem belirterek kullanıcıyla etkileşimi denetler.
+`WithPrompt()`Parametresi, bir istem belirterek kullanıcıyla etkileşimi denetler.
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
 Sınıfı aşağıdaki sabitleri tanımlar:
 
-- `SelectAccount`güvenlik belirteci hizmetini (STS) hesap seçimi iletişim kutusunu sunacak şekilde zorlar. İletişim kutusu, kullanıcının oturumu olan hesapları içerir. Kullanıcının farklı kimlikler arasında seçim yapmasına izin vermek istediğinizde bu seçeneği kullanabilirsiniz. Bu seçenek, MSAL 'in kimlik `prompt=select_account` sağlayıcısına gönderilmesini sağlar.
+- `SelectAccount`güvenlik belirteci hizmetini (STS) hesap seçimi iletişim kutusunu sunacak şekilde zorlar. İletişim kutusu, kullanıcının oturumu olan hesapları içerir. Kullanıcının farklı kimlikler arasında seçim yapmasına izin vermek istediğinizde bu seçeneği kullanabilirsiniz. Bu seçenek, MSAL 'in `prompt=select_account` kimlik sağlayıcısına gönderilmesini sağlar.
 
-    `SelectAccount` Bu varsayılan değerdir ve kullanılabilir bilgilere göre olası en iyi deneyimi etkin bir şekilde sunar. Kullanılabilir bilgiler hesap, Kullanıcı için bir oturumun varlığı ve bu şekilde devam edebilir. Bunu yapmak için iyi bir nedeniniz yoksa, bu varsayılanı değiştirmeyin.
-- `Consent`daha önce izin verilse bile kullanıcıdan izin vermenizi ister. Bu durumda, MSAL kimlik sağlayıcısına `prompt=consent` gönderilir.
+    `SelectAccount`Bu varsayılan değerdir ve kullanılabilir bilgilere göre olası en iyi deneyimi etkin bir şekilde sunar. Kullanılabilir bilgiler hesap, Kullanıcı için bir oturumun varlığı ve bu şekilde devam edebilir. Bunu yapmak için iyi bir nedeniniz yoksa, bu varsayılanı değiştirmeyin.
+- `Consent`daha önce izin verilse bile kullanıcıdan izin vermenizi ister. Bu durumda, MSAL `prompt=consent` kimlik sağlayıcısına gönderilir.
 
-    Kuruluşun yönetimi, kullanıcıların uygulamayı her `Consent` kullandıklarında onay iletişim kutusunu görmesini gerektiren güvenlik odaklı uygulamalarda sabiti kullanmak isteyebilirsiniz.
+    Kuruluşun yönetimi, `Consent` kullanıcıların uygulamayı her kullandıklarında onay iletişim kutusunu görmesini gerektiren güvenlik odaklı uygulamalarda sabiti kullanmak isteyebilirsiniz.
 - `ForceLogin`istem gerekli olmasa bile, hizmetin kullanıcıdan kimlik bilgilerini sormasını sağlar.
 
-    Bu seçenek, belirteç alımı başarısız olursa ve kullanıcının yeniden oturum açmasını istiyorsanız yararlı olabilir. Bu durumda, MSAL kimlik sağlayıcısına `prompt=login` gönderilir. Bu seçeneği, kuruluş yönetimi 'nin, kullanıcının uygulamanın belirli bölümlerine her erişirken oturum açmasını gerektiren güvenlik odaklı uygulamalarda kullanmak isteyebilirsiniz.
+    Bu seçenek, belirteç alımı başarısız olursa ve kullanıcının yeniden oturum açmasını istiyorsanız yararlı olabilir. Bu durumda, MSAL `prompt=login` kimlik sağlayıcısına gönderilir. Bu seçeneği, kuruluş yönetimi 'nin, kullanıcının uygulamanın belirli bölümlerine her erişirken oturum açmasını gerektiren güvenlik odaklı uygulamalarda kullanmak isteyebilirsiniz.
 - `Never`yalnızca .NET 4,5 ve Windows Çalışma Zamanı (WinRT) içindir. Bu sabit kullanıcıya sormaz, ancak gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener. Daha fazla bilgi için bkz. [msal.NET ile Web tarayıcıları kullanma](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers).
 
-    Bu seçenek başarısız olursa, bir `AcquireTokenInteractive` UI etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur. Daha sonra başka bir `Prompt` parametre kullanmanız gerekir.
+    Bu seçenek başarısız olursa, `AcquireTokenInteractive` BIR UI etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur. Daha sonra başka bir parametre kullanmanız gerekir `Prompt` .
 - `NoPrompt`kimlik sağlayıcısına bir istem göndermez.
 
     Bu seçenek yalnızca Azure Active Directory B2C düzenleme profili ilkeleri için yararlıdır. Daha fazla bilgi için bkz. [B2C özellikleri](https://aka.ms/msal-net-b2c-specificities).
@@ -255,7 +255,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>Diğer isteğe bağlı parametreler
 
-İçin `AcquireTokenInteractive`diğer isteğe bağlı parametreler hakkında daha fazla bilgi edinmek için bkz. [Acquiretokenınteractiveparameterbuilder için başvuru belgeleri](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+İçin diğer isteğe bağlı parametreler hakkında daha fazla bilgi edinmek için `AcquireTokenInteractive` bkz. [Acquiretokenınteractiveparameterbuilder için başvuru belgeleri](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
 
 ### <a name="acquire-tokens-via-the-protocol"></a>Protokol aracılığıyla belirteçleri alma
 

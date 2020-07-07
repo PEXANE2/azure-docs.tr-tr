@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
 ms.openlocfilehash: 3197ac3033c6550b72bdfdf39fd23c55dda20d90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134240"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için kuruluşa göre yeni relik yapılandırma
@@ -35,7 +35,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için kuruluş
 > * Kuruluşa göre yeni relik 'de gruplar ve grup üyelikleri sağlama
 > * Kuruluşa göre yeni depoda [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -43,12 +43,12 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
 * Kullanıcılarınız tarafından kullanıcılarınızın erişimini istediğiniz bir veya daha fazla hesap. 
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Sağlama dağıtımınızı planlayın
 1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
 2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
 3. [Kuruluşa göre Azure AD ve yeni relik arasında eşlenecek](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)verileri belirleme. 
 
-## <a name="step-2-configure-new-relic-by-organization-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için kuruluşa göre yeni relik yapılandırma
+## <a name="step-2-configure-new-relic-by-organization-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için kuruluşa göre yeni relik yapılandırma
 
 Kuruluşunuzda SCıM ve SSO 'yu yapılandırmak için hesap temsilcinizle çalışın veya support.newrelic.com adresinden destek alın. Hesap temsilcinizi şu şekilde belirtmeniz gerekir:
 
@@ -99,7 +99,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, kiracı `https://scim-provisioning.service.newrelic.com/scim/v2` URL 'sini girin. **Gizli belirteçte**daha önce alınan SCIM kimlik doğrulama belirteci değerini girin. Azure AD 'nin yeni bir relik 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, yeni relik hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://scim-provisioning.service.newrelic.com/scim/v2` kiracı URL 'sini girin. **Gizli belirteçte**daha önce alınan SCIM kimlik doğrulama belirteci değerini girin. Azure AD 'nin yeni bir relik 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, yeni relik hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![alınıyor](./media/new-relic-by-organization-provisioning-tutorial/provisioning.png)
 

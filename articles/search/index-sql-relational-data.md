@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82117578"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Azure Bilişsel Arama içeri ve dışarı dizinlemeye yönelik ilişkisel SQL verilerini modelleme
@@ -84,7 +84,7 @@ Beklenen arama deneyimini sunmak için, veri kümesi Azure Bilişsel Arama 'daki
     GO
     ```
 
-2. İç içe bir sorgunun çıkışını içeren yeni *Odalar* alanının eklenmesiyle, üst`SELECT * from dbo.Hotels$`tablodaki () tüm alanlardan oluşan bir görünüm oluşturun. Çıktıyı JSON olarak `SELECT * from dbo.Rooms$` yapılara **YÖNELIK bir JSON otomatik** yan tümcesi. 
+2. `SELECT * from dbo.Hotels$`İç içe bir sorgunun çıkışını içeren yeni *Odalar* alanının eklenmesiyle, üst tablodaki () tüm alanlardan oluşan bir görünüm oluşturun. Çıktıyı JSON olarak yapılara **yönelik BIR JSON otomatik** yan tümcesi `SELECT * from dbo.Rooms$` . 
 
      ```sql
    CREATE VIEW [dbo].[HotelRooms]
@@ -100,7 +100,7 @@ Beklenen arama deneyimini sunmak için, veri kümesi Azure Bilişsel Arama 'daki
 
    ![Hoteloda görünümü](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms görünümü")
 
-1. Satır `SELECT * FROM dbo.HotelRooms` kümesini almak için çalıştırın. Bu sorgu, her otel için bir tane olmak üzere, bir JSON koleksiyonu olarak ilişkili Oda bilgileriyle 50 satırı döndürür. 
+1. `SELECT * FROM dbo.HotelRooms`Satır kümesini almak için çalıştırın. Bu sorgu, her otel için bir tane olmak üzere, bir JSON koleksiyonu olarak ilişkili Oda bilgileriyle 50 satırı döndürür. 
 
    ![Hoteloda görünümündeki satır kümesi](media/index-sql-relational-data/hotelrooms-rowset.png "Hoteloda görünümündeki satır kümesi")
 

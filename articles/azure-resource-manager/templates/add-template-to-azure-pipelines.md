@@ -4,10 +4,10 @@ description: Kaynak Yöneticisi şablonlarını dağıtmak üzere Visual Studio 
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084660"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM şablonlarını Azure Pipelines ile tümleştirme
@@ -16,7 +16,7 @@ Visual Studio, Azure Resource Manager (ARM) şablonları oluşturmaya ve bunlar�
 
 Azure Pipelines şablonları dağıtmanın iki yolu vardır:
 
-* **Azure PowerShell betiği çalıştıran görev ekleyin**. Visual Studio projesinde (Deploy-AzureResourceGroup. ps1) bulunan aynı betiği kullandığınız için, bu seçeneğin geliştirme yaşam döngüsü genelinde tutarlılık sağlama avantajı vardır. Betik aşamaları, projenizdeki Kaynak Yöneticisi erişebileceği bir depolama hesabına ait yapıtlardan oluşur. Yapıtlar, projenizdeki bağlantılı şablonlar, betikler ve uygulama ikilileri gibi öğelerdir. Ardından, komut dosyası şablonu dağıtır.
+* **Azure PowerShell betiği çalıştıran görev ekleyin**. Visual Studio projesinde (Deploy-AzureResourceGroup.ps1) bulunan aynı betiği kullandığınız için, bu seçeneğin geliştirme yaşam döngüsü genelinde tutarlılık sağlama avantajı vardır. Betik aşamaları, projenizdeki Kaynak Yöneticisi erişebileceği bir depolama hesabına ait yapıtlardan oluşur. Yapıtlar, projenizdeki bağlantılı şablonlar, betikler ve uygulama ikilileri gibi öğelerdir. Ardından, komut dosyası şablonu dağıtır.
 
 * **Görevleri kopyalamak ve dağıtmak için görevler ekleyin**. Bu seçenek, proje betiğine uygun bir alternatif sağlar. Ardışık düzende iki görev yapılandırırsınız. Bir görev, yapıtları ve diğer görevi şablonu dağıtır.
 
@@ -72,21 +72,21 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-Görevi olarak `AzurePowerShell@3`ayarladığınızda, işlem hattı, bağlantının kimliğini doğrulamak Için Azurerd modülünden komutlar kullanır. Varsayılan olarak, Visual Studio projesindeki PowerShell betiği Azurerd modülünü kullanır. Betiğinizi [az Module](/powershell/azure/new-azureps-module-az)kullanacak şekilde güncelleştirdiyseniz, görevi olarak `AzurePowerShell@4`ayarlayın.
+Görevi olarak ayarladığınızda `AzurePowerShell@3` , işlem hattı, bağlantının kimliğini doğrulamak Için Azurerd modülünden komutlar kullanır. Varsayılan olarak, Visual Studio projesindeki PowerShell betiği Azurerd modülünü kullanır. Betiğinizi [az Module](/powershell/azure/new-azureps-module-az)kullanacak şekilde güncelleştirdiyseniz, görevi olarak ayarlayın `AzurePowerShell@4` .
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-İçin `azureSubscription`, oluşturduğunuz hizmet bağlantısının adını belirtin.
+İçin `azureSubscription` , oluşturduğunuz hizmet bağlantısının adını belirtin.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-İçin `scriptPath`, işlem hattı dosyasından betiğe göreli yol belirtin. Yolu görmek için deponuza bakabilirsiniz.
+İçin `scriptPath` , işlem hattı dosyasından betiğe göreli yol belirtin. Yolu görmek için deponuza bakabilirsiniz.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -154,13 +154,13 @@ Aşağıdaki YAML, [Azure dosya kopyalama görevini](/azure/devops/pipelines/tas
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır. , `SourcePath` İşlem hattı dosyasına göre yapıtların konumunu gösterir. Bu örnekte, dosyalar, projenin adı olan adlı `AzureResourceGroup1` bir klasörde bulunur.
+Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır. , İşlem `SourcePath` hattı dosyasına göre yapıtların konumunu gösterir. Bu örnekte, dosyalar, projenin adı olan adlı bir klasörde bulunur `AzureResourceGroup1` .
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-İçin `azureSubscription`, oluşturduğunuz hizmet bağlantısının adını belirtin.
+İçin `azureSubscription` , oluşturduğunuz hizmet bağlantısının adını belirtin.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -194,7 +194,7 @@ Aşağıdaki YAML, [Azure Resource Manager şablonu dağıtım görevini](https:
 
 Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır.
 
-- `deploymentScope`:, Ve seçeneklerinden dağıtım kapsamını seçin: `Management Group`, `Subscription` ve. `Resource Group` Bu kılavuzda **kaynak grubunu** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](deploy-rest.md#deployment-scope).
+- `deploymentScope`:, Ve seçeneklerinden dağıtım kapsamını seçin: `Management Group` , `Subscription` ve `Resource Group` . Bu kılavuzda **kaynak grubunu** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](deploy-rest.md#deployment-scope).
 
 - `ConnectedServiceName`: Oluşturduğunuz hizmet bağlantısının adını belirtin.
 
@@ -204,14 +204,14 @@ Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır
 
 - `subscriptionName`: Hedef abonelik KIMLIĞINI belirtin. Bu özellik yalnızca kaynak grubu dağıtım kapsamı ve abonelik Dağıtım kapsamı için geçerlidir.
 
-- `resourceGroupName`ve `location`: dağıtmak istediğiniz kaynak grubunun adını ve konumunu belirtin. Görev, mevcut değilse kaynak grubunu oluşturur.
+- `resourceGroupName`ve `location` : dağıtmak istediğiniz kaynak grubunun adını ve konumunu belirtin. Görev, mevcut değilse kaynak grubunu oluşturur.
 
     ```yaml
     resourceGroupName: '<resource-group-name>'
     location: '<location>'
     ```
 
-Dağıtım görevi, adlı `WebSite.json` bir şablona ve Web sitesi. Parameters. JSON adlı parametreler dosyasına bağlanır. Şablon ve parametre dosyalarınızın adlarını kullanın.
+Dağıtım görevi adlı bir şablona `WebSite.json` ve üzerinde WebSite.parameters.jsadlı parametreler dosyasına bağlanır. Şablon ve parametre dosyalarınızın adlarını kullanın.
 
 Artık görevlerin nasıl oluşturulduğunu anladığınıza göre, işlem hattını düzenleme adımlarını inceleyelim.
 

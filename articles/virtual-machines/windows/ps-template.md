@@ -8,10 +8,10 @@ ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cafe28be1d7c08c24b728de2476cb2210c6e5bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098331"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Kaynak Yöneticisi şablonundan Windows sanal makinesi oluşturma
@@ -50,9 +50,9 @@ New-AzResourceGroupDeployment `
 
 ```
 
-PowerShell 'i Azure Cloud Shell yerine yerel olarak yükleyip kullanmayı tercih ederseniz, bu öğretici Azure PowerShell modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bir bağlantı oluşturmak için öğesini `Connect-AzAccount` de çalıştırmanız gerekir.
+PowerShell 'i Azure Cloud Shell yerine yerel olarak yükleyip kullanmayı tercih ederseniz, bu öğretici Azure PowerShell modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
 
-Önceki örnekte, GitHub 'da depolanan bir şablon belirttiniz. Ayrıca, `--template-file` bir şablon indirebilir veya oluşturabilir ve parametresi ile yerel yolu belirtebilirsiniz.
+Önceki örnekte, GitHub 'da depolanan bir şablon belirttiniz. Ayrıca, bir şablon indirebilir veya oluşturabilir ve parametresi ile yerel yolu belirtebilirsiniz `--template-file` .
 
 Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 

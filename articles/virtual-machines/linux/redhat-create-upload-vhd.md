@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
 ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084320"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure'da Red Hat tabanlı bir sanal makine hazırlama
@@ -20,7 +20,7 @@ Bu makalede, Azure 'da kullanmak üzere bir Red Hat Enterprise Linux (RHEL) sana
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Hyper-V Yöneticisi 'nden Red Hat tabanlı bir sanal makine hazırlama
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL görüntüsünü bir sanal sabit diske (VHD) yüklediğinizi varsaymış olursunuz. Hyper-V Yöneticisi 'Ni bir işletim sistemi görüntüsü yüklemek için kullanma hakkında daha fazla ayrıntı için bkz. [Hyper-v rolünü yüklemek ve bir sanal makineyi yapılandırmak](https://technet.microsoft.com/library/hh846766.aspx).
 
 **RHEL yükleme notları**
@@ -43,12 +43,12 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
    
         # sudo rpm -e --nodeps NetworkManager
 
-1. `/etc/sysconfig/network` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. `/etc/sysconfig/network-scripts/ifcfg-eth0` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network-scripts/ifcfg-eth0` ve aşağıdaki metni ekleyin:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -72,11 +72,11 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Walınuxagent paketi, `WALinuxAgent-<version>`Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
+1. Walınuxagent paketi, `WALinuxAgent-<version>` Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, bir `/boot/grub/menu.lst` metin düzenleyicisinde açın ve varsayılan çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/boot/grub/menu.lst` bir metin düzenleyicisinde açın ve varsayılan çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -125,7 +125,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
         # logout
 
-1. Hyper-V Yöneticisi 'nde **eylem** > **Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
+1. **Action**  >  Hyper-V Yöneticisi 'nde eylem**Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Hyper-V Yöneticisi 'nden bir RHEL 7 sanal makinesi hazırlama
@@ -134,12 +134,12 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
 1. **Bağlan** ' a tıklayarak sanal makine için bir konsol penceresi açın.
 
-1. `/etc/sysconfig/network` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. `/etc/sysconfig/network-scripts/ifcfg-eth0` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network-scripts/ifcfg-eth0` ve aşağıdaki metni ekleyin:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -158,7 +158,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, bir `/etc/default/grub` metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -168,15 +168,15 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
    
     Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir. İsterseniz, `crashkernel` seçeneğini yapılandırılmış olarak bırakabilirsiniz. Bu parametrenin, sanal makinedeki kullanılabilir bellek miktarını 128 MB veya daha fazla azalttığını ve bu, daha küçük sanal makine boyutlarında sorunlu olabileceğini unutmayın.
 
-1. Düzenlemesini `/etc/default/grub`tamamladıktan sonra, grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
+1. Düzenlemesini tamamladıktan sonra `/etc/default/grub` , grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-1. SSH sunucusunun yüklü olduğundan ve önyükleme zamanında başlayacak şekilde yapılandırıldığından emin olun, genellikle varsayılan değer olan. Aşağıdaki `/etc/ssh/sshd_config` satırı içerecek şekilde değiştirin:
+1. SSH sunucusunun yüklü olduğundan ve önyükleme zamanında başlayacak şekilde yapılandırıldığından emin olun, genellikle varsayılan değer olan. `/etc/ssh/sshd_config`Aşağıdaki satırı içerecek şekilde değiştirin:
 
         ClientAliveInterval 180
 
-1. Walınuxagent paketi, `WALinuxAgent-<version>`Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
+1. Walınuxagent paketi, `WALinuxAgent-<version>` Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -210,7 +210,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
         # logout
 
-1. Hyper-V Yöneticisi 'nde **eylem** > **Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
+1. **Action**  >  Hyper-V Yöneticisi 'nde eylem**Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>KVM 'den Red Hat tabanlı bir sanal makine hazırlama
@@ -237,12 +237,12 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
 1. QCOW2 görüntüsünden KVM 'de bir sanal makine oluşturun. Disk türünü **QCOW2**olarak ayarlayın ve sanal ağ arabirimi cihaz modelini **Virtio**olarak ayarlayın. Ardından, sanal makineyi başlatın ve kök olarak oturum açın.
 
-1. `/etc/sysconfig/network` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. `/etc/sysconfig/network-scripts/ifcfg-eth0` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network-scripts/ifcfg-eth0` ve aşağıdaki metni ekleyin:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -266,7 +266,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için, bir `/boot/grub/menu.lst` metin düzenleyicisinde açın ve varsayılan çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için, `/boot/grub/menu.lst` bir metin düzenleyicisinde açın ve varsayılan çekirdeğin aşağıdaki parametreleri içerdiğinden emin olun:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
@@ -281,7 +281,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
 1. Initramfs 'ye Hyper-V modülleri ekleyin:  
 
-    Aşağıdaki `/etc/dracut.conf`içeriği düzenleyin ve ekleyin:
+    `/etc/dracut.conf`Aşağıdaki içeriği düzenleyin ve ekleyin:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -302,7 +302,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. Walınuxagent paketi, `WALinuxAgent-<version>`Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
+1. Walınuxagent paketi, `WALinuxAgent-<version>` Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
@@ -339,7 +339,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 1. QCOW2 görüntüsünü VHD biçimine dönüştürün.
 
 > [!NOTE]
-> QEMU-img sürümlerindeki bilinen bir hata vardır >= 2.2.1, hatalı biçimli bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. QEMU-img 2.2.0 veya Lower ya da 2,6 veya üzeri bir sürümü kullanmanız önerilir. Başvuru: https://bugs.launchpad.net/qemu/+bug/1490611.
+> QEMU-img sürümlerindeki bilinen bir hata vardır >= 2.2.1, hatalı biçimli bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. QEMU-img 2.2.0 veya Lower ya da 2,6 veya üzeri bir sürümü kullanmanız önerilir. Başvuru: https://bugs.launchpad.net/qemu/+bug/1490611 .
 >
 
 
@@ -388,12 +388,12 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
 1. QCOW2 görüntüsünden KVM 'de bir sanal makine oluşturun. Disk türünü **QCOW2**olarak ayarlayın ve sanal ağ arabirimi cihaz modelini **Virtio**olarak ayarlayın. Ardından, sanal makineyi başlatın ve kök olarak oturum açın.
 
-1. `/etc/sysconfig/network` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. `/etc/sysconfig/network-scripts/ifcfg-eth0` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network-scripts/ifcfg-eth0` ve aşağıdaki metni ekleyin:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -412,7 +412,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için bir metin `/etc/default/grub` düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -422,13 +422,13 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
    
     Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir. İsterseniz, `crashkernel` seçeneğini yapılandırılmış olarak bırakabilirsiniz. Bu parametrenin, sanal makinedeki kullanılabilir bellek miktarını 128 MB veya daha fazla azalttığını ve bu, daha küçük sanal makine boyutlarında sorunlu olabileceğini unutmayın.
 
-1. Düzenlemesini `/etc/default/grub`tamamladıktan sonra, grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
+1. Düzenlemesini tamamladıktan sonra `/etc/default/grub` , grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
 
 1. Hyper-V modüllerini initramfs içine ekleyin.
 
-    İçeriği `/etc/dracut.conf` düzenleyin ve ekleyin:
+    `/etc/dracut.conf`İçeriği düzenleyin ve ekleyin:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -449,7 +449,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. Walınuxagent paketi, `WALinuxAgent-<version>`Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
+1. Walınuxagent paketi, `WALinuxAgent-<version>` Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -490,7 +490,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 1. QCOW2 görüntüsünü VHD biçimine dönüştürün.
 
 > [!NOTE]
-> QEMU-img sürümlerindeki bilinen bir hata vardır >= 2.2.1, hatalı biçimli bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. QEMU-img 2.2.0 veya Lower ya da 2,6 veya üzeri bir sürümü kullanmanız önerilir. Başvuru: https://bugs.launchpad.net/qemu/+bug/1490611.
+> QEMU-img sürümlerindeki bilinen bir hata vardır >= 2.2.1, hatalı biçimli bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. QEMU-img 2.2.0 veya Lower ya da 2,6 veya üzeri bir sürümü kullanmanız önerilir. Başvuru: https://bugs.launchpad.net/qemu/+bug/1490611 .
 >
 
 
@@ -517,7 +517,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>VMware 'den Red Hat tabanlı bir sanal makine hazırlama
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz varsayılmaktadır. VMware 'de bir işletim sisteminin nasıl yükleneceğine ilişkin ayrıntılar için bkz. [VMware Konuk Işletim sistemi yükleme kılavuzu](https://partnerweb.vmware.com/GOSIG/home.html).
 
 * Linux işletim sistemini yüklediğinizde, genellikle çoğu yükleme için varsayılan olan LVM yerine standart bölümler kullanmanızı öneririz. Bu, özellikle de bir işletim sistemi diskinin sorun gidermeye yönelik başka bir sanal makineye eklenmesi gerekiyorsa, kopyalanmış sanal makineyle LVM adı çakışmalarını önler. Tercih edilen durumlarda LVM veya RAID, veri disklerinde kullanılabilir.
@@ -534,7 +534,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. `/etc/sysconfig/network-scripts/ifcfg-eth0` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network-scripts/ifcfg-eth0` ve aşağıdaki metni ekleyin:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -558,11 +558,11 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Walınuxagent paketi, `WALinuxAgent-<version>`Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
+1. Walınuxagent paketi, `WALinuxAgent-<version>` Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için bir metin `/etc/default/grub` düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -574,7 +574,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
 1. Initramfs 'ye Hyper-V modülleri ekleyin:
 
-    Aşağıdaki `/etc/dracut.conf`içeriği düzenleyin ve ekleyin:
+    `/etc/dracut.conf`Aşağıdaki içeriği düzenleyin ve ekleyin:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -582,7 +582,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
         # dracut -f -v
 
-1. SSH sunucusunun yüklü olduğundan ve önyükleme zamanında başlayacak şekilde yapılandırıldığından emin olun, genellikle varsayılan değer olan. Aşağıdaki `/etc/ssh/sshd_config` satırı içerecek şekilde değiştirin:
+1. SSH sunucusunun yüklü olduğundan ve önyükleme zamanında başlayacak şekilde yapılandırıldığından emin olun, genellikle varsayılan değer olan. `/etc/ssh/sshd_config`Aşağıdaki satırı içerecek şekilde değiştirin:
 
     ClientAliveInterval 180
 
@@ -619,7 +619,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 1. Sanal makineyi kapatın ve VMDK dosyasını bir. vhd dosyasına dönüştürün.
 
 > [!NOTE]
-> QEMU-img sürümlerindeki bilinen bir hata vardır >= 2.2.1, hatalı biçimli bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. QEMU-img 2.2.0 veya Lower ya da 2,6 veya üzeri bir sürümü kullanmanız önerilir. Başvuru: https://bugs.launchpad.net/qemu/+bug/1490611.
+> QEMU-img sürümlerindeki bilinen bir hata vardır >= 2.2.1, hatalı biçimli bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. QEMU-img 2.2.0 veya Lower ya da 2,6 veya üzeri bir sürümü kullanmanız önerilir. Başvuru: https://bugs.launchpad.net/qemu/+bug/1490611 .
 >
 
 
@@ -646,12 +646,12 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>VMware 'den RHEL 7 sanal makinesini hazırlama
-1. `/etc/sysconfig/network` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. `/etc/sysconfig/network-scripts/ifcfg-eth0` Dosyayı oluşturun veya düzenleyin ve aşağıdaki metni ekleyin:
+1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network-scripts/ifcfg-eth0` ve aşağıdaki metni ekleyin:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -670,7 +670,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, bir `/etc/default/grub` metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -680,13 +680,13 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
    
     Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir. İsterseniz, `crashkernel` seçeneğini yapılandırılmış olarak bırakabilirsiniz. Bu parametrenin, sanal makinedeki kullanılabilir bellek miktarını 128 MB veya daha fazla azalttığını ve bu, daha küçük sanal makine boyutlarında sorunlu olabileceğini unutmayın.
 
-1. Düzenlemesini `/etc/default/grub`tamamladıktan sonra, grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
+1. Düzenlemesini tamamladıktan sonra `/etc/default/grub` , grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 1. Initramfs 'ye Hyper-V modülleri ekleyin.
 
-    Düzenleme `/etc/dracut.conf`, içerik ekleme:
+    Düzenleme `/etc/dracut.conf` , içerik ekleme:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
@@ -694,11 +694,11 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
         # dracut -f -v
 
-1. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun. Bu ayar genellikle varsayılandır. Aşağıdaki `/etc/ssh/sshd_config` satırı içerecek şekilde değiştirin:
+1. SSH sunucusunun, önyükleme zamanında başlayacak şekilde yüklendiğinden ve yapılandırıldığından emin olun. Bu ayar genellikle varsayılandır. `/etc/ssh/sshd_config`Aşağıdaki satırı içerecek şekilde değiştirin:
 
         ClientAliveInterval 180
 
-1. Walınuxagent paketi, `WALinuxAgent-<version>`Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
+1. Walınuxagent paketi, `WALinuxAgent-<version>` Red Hat ekstralar deposuna gönderildi. Aşağıdaki komutu çalıştırarak ek özellikler deposunu etkinleştirin:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -735,7 +735,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 1. Sanal makineyi kapatın ve VMDK dosyasını VHD biçimine dönüştürün.
 
 > [!NOTE]
-> QEMU-img sürümlerindeki bilinen bir hata vardır >= 2.2.1, hatalı biçimli bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. QEMU-img 2.2.0 veya Lower ya da 2,6 veya üzeri bir sürümü kullanmanız önerilir. Başvuru: https://bugs.launchpad.net/qemu/+bug/1490611.
+> QEMU-img sürümlerindeki bilinen bir hata vardır >= 2.2.1, hatalı biçimli bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. QEMU-img 2.2.0 veya Lower ya da 2,6 veya üzeri bir sürümü kullanmanız önerilir. Başvuru: https://bugs.launchpad.net/qemu/+bug/1490611 .
 >
 
 
@@ -898,7 +898,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
 1. Sanal makineyi başlatın. Yükleme Kılavuzu göründüğünde, önyükleme seçeneklerini yapılandırmak için **Tab** tuşuna basın.
 
-1. Önyükleme `inst.ks=<the location of the kickstart file>` seçeneklerinin sonuna yazın ve **ENTER**tuşuna basın.
+1. `inst.ks=<the location of the kickstart file>`Önyükleme seçeneklerinin sonuna yazın ve **ENTER**tuşuna basın.
 
 1. Yüklemenin bitmesini bekleyin. İşlem tamamlandığında, sanal makine otomatik olarak kapatılır. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 
@@ -911,7 +911,7 @@ Linux görüntünüzü hazırlamak için farklı bir sanallaştırma sistemi (ya
 
 Bu sorunu çözmek için, ınitramfs 'ye Hyper-V modülleri ekleyin ve yeniden oluşturun:
 
-Aşağıdaki `/etc/dracut.conf`içeriği düzenleyin ve ekleyin:
+`/etc/dracut.conf`Aşağıdaki içeriği düzenleyin ve ekleyin:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
 ms.openlocfilehash: fc47e1f4fbdb48e6e0abc1f2a7e32127b0325f47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82130964"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS koruması standardına genel bakış
@@ -33,10 +33,10 @@ Azure DDoS koruması, uygulama tasarımı en iyi uygulamaları ile birlikte, DDo
 |Otomatik saldırı azaltmaları                    |Yes                                   |Yes                                           |
 |Kullanılabilirlik garantisi                          |Azure Bölgesi                          |Uygulama                                   |
 |Risk azaltma ilkeleri                             |Azure trafik bölgesi birimi için ayarlandı |Uygulama trafiği birimi için ayarlanmış          |
-|Ölçümler & uyarılar                                |Hayır                                    |Gerçek zamanlı saldırı ölçümleri Azure Izleyici aracılığıyla kaynak günlüklerini &                                 |
-|Risk azaltma raporları                              |Hayır                                    |Saldırı sonrası risk azaltma raporları                |
-|Risk azaltma akış günlükleri                            |Hayır                                    |SıEM tümleştirmesi için NRT günlük akışı           |
-|Risk azaltma ilkesi özelleştirmesi                 |Hayır                                    |DDoS uzmanlarına katılın                           |
+|Ölçümler & uyarılar                                |No                                    |Gerçek zamanlı saldırı ölçümleri Azure Izleyici aracılığıyla kaynak günlüklerini &                                 |
+|Risk azaltma raporları                              |No                                    |Saldırı sonrası risk azaltma raporları                |
+|Risk azaltma akış günlükleri                            |No                                    |SıEM tümleştirmesi için NRT günlük akışı           |
+|Risk azaltma ilkesi özelleştirmesi                 |No                                    |DDoS uzmanlarına katılın                           |
 |Destek                                         |En iyi çaba                           |Etkin bir saldırı sırasında DDoS uzmanlarına erişim|
 |SLA                                             |Azure Bölgesi                          |Uygulama garantisi & maliyet koruması       |
 |Fiyatlandırma                                         |Ücretsiz                                  |Aylık & kullanımı tabanlı                         |

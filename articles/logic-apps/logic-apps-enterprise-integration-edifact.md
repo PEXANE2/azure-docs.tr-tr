@@ -9,13 +9,13 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: c9d80ccac311b02d8734663d99a37804f8280771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115542"
 ---
-# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange EDIOLGU iletileri
+# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps'te B2B kurumsal tümleştirme için EDIFACT iletilerini gönderme ve alma
 
 Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDIOLGU sözleşmesi oluşturmanız ve bu sözleşmeyi tümleştirme hesabınızda depolamanız gerekir. Bir EDIOLGU anlaşması oluşturma adımları aşağıda verilmiştir.
 
@@ -63,7 +63,7 @@ Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDI
 
    | Özellik | Açıklama |
    | --- | --- |
-   | Adı |Sözleşmenin adı |
+   | Name |Sözleşmenin adı |
    | Anlaşma türü | EDIOLGU olmalıdır |
    | Ana bilgisayar ortağı |Bir anlaşmanın hem ana bilgisayar hem de Konuk iş ortağı olması gerekir. Ana bilgisayar ortağı, sözleşmeyi yapılandıran kuruluşu temsil eder. |
    | Ana bilgisayar kimliği |Ana bilgisayar ortağı için bir tanımlayıcı |

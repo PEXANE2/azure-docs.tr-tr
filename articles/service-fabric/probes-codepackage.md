@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137595"
 ---
 # <a name="liveness-probe"></a>Lizleştirme araştırması
@@ -21,7 +21,7 @@ Bu makaleye devam etmeden önce [Service Fabric uygulama modeliyle][application-
 > [!NOTE]
 > Lizleştirme araştırması yalnızca NAT ağ modundaki kapsayıcılar için desteklenir.
 
-## <a name="semantics"></a>İçeriyor
+## <a name="semantics"></a>Semantik
 Kapsayıcı başına yalnızca bir lizleştirme araştırması belirtebilir ve bu alanları kullanarak davranışını kontrol edebilirsiniz:
 
 * `initialDelaySeconds`: Kapsayıcı başladıktan sonra araştırmayı yürütmeye başlamak için saniye cinsinden ilk gecikme. Desteklenen değer **int**'tir. Varsayılan değer 0 ' dır ve minimum 0 ' dır.
@@ -40,15 +40,15 @@ Ayrıca, Service Fabric **Deployedservicepackage**üzerinde aşağıdaki araşt�
 
 * `OK`: Yoklama **, başarılı bir şekilde ayarlanan**değer için başarılı oldu.
 
-* `Error`: Kapsayıcı yeniden başlatılmadan önce araştırma **FailureCount** ==  **FailureThreshold**.
+* `Error`: Kapsayıcı yeniden başlatılmadan önce araştırma **FailureCount**  ==   **FailureThreshold**.
 
 * `Warning`: 
-    * Araştırma başarısız olur ve **FailureCount** < **FailureThreshold**. Bu sistem durumu raporu, **FailureCount** , **FailureThreshold** veya **başarılı eşikte**ayarlanan değere ulaşıncaya kadar kalır.
+    * Araştırma başarısız olur ve **FailureCount**  <  **FailureThreshold**. Bu sistem durumu raporu, **FailureCount** , **FailureThreshold** veya **başarılı eşikte**ayarlanan değere ulaşıncaya kadar kalır.
     * Hatadan sonra başarılı olduğunda, uyarı, art arda güncelleştirilmiş başarıları ile kalır.
 
 ## <a name="specifying-a-liveness-probe"></a>Bir lizliği araştırması belirtme
 
-**Servicemanifestımport**altındaki ApplicationManifest. xml dosyasında bir araştırma belirtebilirsiniz.
+**Servicemanifestımport**altındaki ApplicationManifest.xml dosyasında bir araştırma belirtebilirsiniz.
 
 Araştırma, aşağıdakilerden herhangi biri olabilir:
 

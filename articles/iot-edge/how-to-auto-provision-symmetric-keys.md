@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131022"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Simetrik anahtar kanıtlama kullanarak bir IoT Edge cihazı oluşturma ve sağlama
@@ -28,7 +28,7 @@ Bu makalede, aşağıdaki adımlarla bir IoT Edge cihazında simetrik anahtar ka
 
 Simetrik anahtar kanıtlama, cihaz sağlama hizmeti örneğiyle bir cihazın kimliğini doğrulamaya yönelik basit bir yaklaşımdır. Bu kanıtlama yöntemi, cihaz sağlama için yeni olan veya katı güvenlik gereksinimleri olmayan geliştiriciler için bir "Hello World" deneyimini temsil eder. [TPM](../iot-dps/concepts-tpm-attestation.md) veya [X. 509.440 sertifikaları](../iot-dps/concepts-security.md#x509-certificates) kullanan cihaz kanıtlama daha güvenlidir ve daha sıkı güvenlik gereksinimleri için kullanılmalıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin bir IoT Hub
 * Fiziksel veya sanal cihaz
@@ -43,7 +43,7 @@ Cihaz sağlama hizmetini çalıştırdıktan sonra, genel bakış sayfasından *
 
 Her bir cihazı tanımlamak için benzersiz bir kayıt KIMLIĞI tanımlanmalıdır. MAC adresi, seri numarası veya cihazdan herhangi bir benzersiz bilgi kullanabilirsiniz.
 
-Bu örnekte, bir kayıt KIMLIĞI için aşağıdaki dizeyi oluşturan bir MAC adresi ve seri numarası birleşimini kullanıyoruz: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
+Bu örnekte, bir kayıt KIMLIĞI için aşağıdaki dizeyi oluşturan bir MAC adresi ve seri numarası birleşimini kullanıyoruz: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6` .
 
 Cihazınız için benzersiz bir kayıt KIMLIĞI oluşturun. Geçerli karakterler küçük harfli alfasayısal ve tire ('-').
 
@@ -81,7 +81,7 @@ DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme f�
 
    1. Cihazların ilk kez sağlama istemesi durumunda **cihaz verilerinin yeniden hazırlanması için nasıl işleneceğini** seçin.
 
-   1. İsterseniz **Ilk cihaz Ikizi durumuna** bir etiket değeri ekleyin. Modül dağıtımı için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
+   1. İsterseniz **Ilk cihaz Ikizi durumuna** bir etiket değeri ekleyin. Modül dağıtımı için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örnek:
 
       ```json
       {
@@ -185,7 +185,7 @@ provisioning:
       symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-, `<SCOPE_ID>` `<REGISTRATION_ID>`, Ve `<SYMMETRIC_KEY>` için yer tutucu değerlerini daha önce topladığınız verilerle değiştirin. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
+,, Ve için yer tutucu değerlerini `<SCOPE_ID>` `<REGISTRATION_ID>` `<SYMMETRIC_KEY>` daha önce topladığınız verilerle değiştirin. **Sağlama:** satırının önünde boşluk olmadığından ve iç içe yerleştirilmiş öğelerin iki boşlukla girintilendiğinden emin olun.
 
 ### <a name="windows-device"></a>Windows cihazı
 
@@ -204,9 +204,9 @@ Windows üzerinde IoT Edge yükleme hakkında daha ayrıntılı bilgi için IoT 
 
 1. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
 
-1. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Otomatik sağlama kullanma `-Dps` bayrağını kullanmadığınız takdirde, komut, Windows kapsayıcılarıyla el ile sağlamayı varsayılan olarak belirler.
+1. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Otomatik sağlama kullanma bayrağını kullanmadığınız takdirde, komut, Windows kapsayıcılarıyla el ile sağlamayı varsayılan olarak belirler `-Dps` .
 
-   , `{scope_id}` `{registration_id}`, Ve `{symmetric_key}` için yer tutucu değerlerini daha önce topladığınız verilerle değiştirin.
+   ,, Ve için yer tutucu değerlerini `{scope_id}` `{registration_id}` `{symmetric_key}` daha önce topladığınız verilerle değiştirin.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

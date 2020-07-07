@@ -1,5 +1,5 @@
 ---
-title: EDIOLGU iletilerini kodla
+title: EDIFACT iletilerini kodlama
 description: Enterprise Integration Pack ile Azure Logic Apps için, EDI 'yı doğrulayın ve EDIOLGU ileti Kodlayıcısı ile XML oluşturun
 services: logic-apps
 ms.suite: integration
@@ -9,16 +9,16 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82106534"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps için EDIOLGU iletilerini kodla
 
-DıOLGU ileti bağlayıcısını kodlayın, EDI ve iş ortaklarına özgü özellikleri doğrulayabilir, her bir işlem kümesi için bir XML belgesi oluşturabilir ve teknik onay, Işlevsel bildirim veya her ikisini de isteyebilirsiniz.
-Bu bağlayıcıyı kullanmak için, mantıksal uygulamanızdaki mevcut bir tetikleyiciye bağlayıcıyı eklemeniz gerekir.
+Encode EDIFACT ileti bağlayıcısını kullanarak EDI ve iş ortağına özgü özellikleri doğrulayabilir, her bir işlem kümesi için bir XML belgesi oluşturabilir ve Teknik Bilgi, İşlevsel Bilgi veya ikisi için birden talepte bulunabilirsiniz.
+Bu bağlayıcıyı kullanmak için bunu mantıksal uygulamanızdaki tetikleyicilerden birine eklemeniz gerekir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -29,7 +29,7 @@ Bu bağlayıcıyı kullanmak için, mantıksal uygulamanızdaki mevcut bir tetik
 * Tümleştirme hesabınızda zaten tanımlanmış olan en az iki [iş ortağı](logic-apps-enterprise-integration-partners.md)
 * Tümleştirme hesabınızda zaten tanımlanmış olan bir [Ediolgu sözleşmesi](logic-apps-enterprise-integration-edifact.md)
 
-## <a name="encode-edifact-messages"></a>EDIOLGU iletilerini kodla
+## <a name="encode-edifact-messages"></a>EDIFACT iletilerini kodlama
 
 > [!IMPORTANT]
 > EDIOLGU Bağlayıcısı yalnızca UTF-8 karakterlerini destekler.
@@ -74,7 +74,7 @@ EDIOLGU iletilerini kimliklere göre kodlamayı tercih ederseniz, bir gönderen 
 
 ![Gönderen ve alıcı için kimlikler sağlayın, kodlanacak XML iletisini seçin](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-details"></a>EDIOLGU kodlama ayrıntıları
+## <a name="edifact-encode-details"></a>EDIFACT ile kodlama ayrıntıları
 
 Encode EDIOLGU Bağlayıcısı şu görevleri gerçekleştirir: 
 

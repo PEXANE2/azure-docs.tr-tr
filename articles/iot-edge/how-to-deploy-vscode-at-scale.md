@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134370"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Visual Studio Code kullanarak ölçekli IoT Edge modülleri dağıtma
@@ -24,7 +24,7 @@ Daha fazla bilgi için bkz. [tek cihazlarda veya ölçekte IoT Edge otomatik da�
 
 Bu makalede Visual Studio Code ve IoT uzantısını ayarlarsınız. Daha sonra, IoT Edge bir cihaz kümesine modül dağıtmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) .
 * IoT Edge çalışma zamanı yüklü [IoT Edge bir cihaz](how-to-register-device.md#register-with-visual-studio-code) .
@@ -145,9 +145,9 @@ Etiketleri cihaz ikizi yapılandırırsınız. Etiketlere sahip bir cihaz ikizi 
 }
 ```
 
-Dağıtım için hedef koşul, etiket değerlerinden biriyle eşleşen bir ifade içeriyorsa, bu cihaz bir dağıtım alır `tag.location.building = '20'`.
+Dağıtım için hedef koşul, etiket değerlerinden biriyle eşleşen bir ifade içeriyorsa, bu cihaz bir dağıtım alır `tag.location.building = '20'` .
 
-Belirli bir cihazı etiketlerinden veya diğer değerlerinden bağımsız olarak hedeflemek istiyorsanız, yalnızca hedef koşul `deviceId` için ' i belirtmeniz yeterlidir.
+Belirli bir cihazı etiketlerinden veya diğer değerlerinden bağımsız olarak hedeflemek istiyorsanız, yalnızca hedef koşul için ' i belirtmeniz yeterlidir `deviceId` .
 
 Aşağıda bazı örnekler verilmiştir:
 
@@ -222,8 +222,8 @@ Dağıtım bildirimini yapılandırdıktan ve cihaz ikizi içinde Etiketler yap�
 
   | Parametre | Açıklama |
   | --- | --- |
-  | Dağıtım KIMLIĞI | IoT Hub 'ında oluşturulacak dağıtımın adı. Dağıtımınıza 128 küçük harflerden oluşan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`. |
-  | Hedef koşul | Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir hedef koşul girin.Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir.Örneğin, `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
+  | Dağıtım KIMLIĞI | IoT Hub 'ında oluşturulacak dağıtımın adı. Dağıtımınıza 128 küçük harflerden oluşan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /` . |
+  | Hedef koşul | Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir hedef koşul girin.Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir.Örneğin, `tags.environment='test' and properties.reported.devicemodel='4000x'` . |
   | Öncelik |  Pozitif bir tamsayı. Aynı cihaza iki veya daha fazla dağıtım hedeflenirse, öncelik için en yüksek sayısal değere sahip dağıtım uygulanır. |
 
   Önceliği belirttikten sonra, Terminal aşağıdaki gösterimi benzer bir çıktı görüntülemelidir:

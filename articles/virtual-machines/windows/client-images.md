@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083283"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure’da geliştirme/test senaryoları için Windows istemcisini kullanma
@@ -21,8 +21,8 @@ Azure 'da, uygun bir Visual Studio (eski adıyla MSDN) aboneliğine sahip olduğ
 ![Azure portal görüntü ayrıntıları](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> Azure Galerisi 'nde Windows 10 Pro ve Windows 10 Pro N görüntüsü için lütfen Azure Portal [Azure 'da çok kiracılı barındırma hakları](windows-desktop-multitenant-hosting-deployment.md)
->![Pro görüntü ayrıntıları ile Windows 10 ' u Dağıtma bölümüne bakın](./media/client-images/windows-client-pro-images.png) 
+> Azure Galerisi 'nde Windows 10 Pro ve Windows 10 Pro N görüntüsü için lütfen Azure Portal [Azure 'da çok kiracılı barındırma hakları](windows-desktop-multitenant-hosting-deployment.md) 
+> ![ Pro görüntü ayrıntıları ile Windows 10 ' u Dağıtma bölümüne bakın](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>Abonelik uygunluğu

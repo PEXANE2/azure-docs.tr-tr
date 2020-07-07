@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
 ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082926"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# ve Kaynak Yöneticisi şablonu kullanarak bir Azure sanal makinesini dağıtma
@@ -28,14 +28,14 @@ Bu adımların uygulanması yaklaşık 10 dakika sürer.
 Bu adımda, Visual Studio 'nun yüklü olduğundan ve şablonu dağıtmak için kullanılan bir konsol uygulaması oluşturduğunuzdan emin olursunuz.
 
 1. Henüz yapmadıysanız, [Visual Studio 'yu](https://docs.microsoft.com/visualstudio/install/install-visual-studio)yükleyemezsiniz. Iş yükleri sayfasında **.net masaüstü geliştirme** ' yi seçin ve ardından **yükler**' i tıklatın. Özet içinde, **.NET Framework 4-4,6 geliştirme araçlarının** sizin için otomatik olarak seçili olduğunu görebilirsiniz. Visual Studio 'Yu önceden yüklediyseniz, Visual Studio başlatıcısı 'nı kullanarak .NET iş yükünü ekleyebilirsiniz.
-2. Visual Studio 'da **Dosya** > **Yeni** > **Proje**' ye tıklayın.
-3. **Şablonlar** > **Visual C#**' de **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
+2. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayın.
+3. **Şablonlar**  >  **Visual C#**' de **konsol uygulaması (.NET Framework)** seçeneğini belirleyin, projenin adı için *myDotnetProject* girin, projenin konumunu seçin ve ardından **Tamam**' a tıklayın.
 
 ## <a name="install-the-packages"></a>Paketleri yükler
 
 NuGet paketleri, bu adımları tamamlaması için gereken kitaplıkları yüklemenin en kolay yoludur. Visual Studio 'da ihtiyacınız olan kitaplıkları almak için şu adımları uygulayın:
 
-1. **Araçlar** > **NuGet Paket Yöneticisi**' ne ve ardından **Paket Yöneticisi konsolu**' na tıklayın.
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**' ne ve ardından **Paket Yöneticisi konsolu**' na tıklayın.
 2. Konsola şu komutları yazın:
 
     ```powershell
@@ -49,7 +49,7 @@ Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir 
 
 ### <a name="create-the-template-file"></a>Şablon dosyası oluşturma
 
-1. Çözüm Gezgini ' de, *myDotnetProject* > **Add** > **Yeni öğe**Ekle ' ye sağ tıklayın ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. *Createvmtemplate. JSON*dosyasını adlandırın ve ardından **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, *myDotnetProject*yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item**ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *CreateVMTemplate.js*olarak adlandırın ve ardından **Ekle**' ye tıklayın.
 2. Bu JSON kodunu oluşturduğunuz dosyaya ekleyin:
 
     ```json
@@ -155,13 +155,13 @@ Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir 
     }
     ```
 
-3. CreateVMTemplate. json dosyasını kaydedin.
+3. CreateVMTemplate.jsdosyaya kaydedin.
 
 ### <a name="create-the-parameters-file"></a>Parametreler dosyası oluşturma
 
 Şablondaki kaynak parametrelerinin değerlerini belirtmek için değerleri içeren bir parametre dosyası oluşturursunuz.
 
-1. Çözüm Gezgini ' de, *myDotnetProject* > **Add** > **Yeni öğe**Ekle ' ye sağ tıklayın ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. *Parameters. JSON*dosyasını adlandırın ve ardından **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, *myDotnetProject*yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item**ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *Parameters.js*olarak adlandırın ve ardından **Ekle**' ye tıklayın.
 2. Bu JSON kodunu oluşturduğunuz dosyaya ekleyin:
 
     ```json
@@ -175,13 +175,13 @@ Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir 
     }
     ```
 
-4. Parameters. json dosyasını kaydedin.
+4. Parameters.jsdosyaya kaydedin.
 
 ### <a name="create-the-authorization-file"></a>Yetkilendirme dosyasını oluşturma
 
 Bir şablonu dağıtabilmeniz için önce bir [Active Directory Hizmet sorumlusuna](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)erişiminizin olduğundan emin olun. Hizmet sorumlusu ' ndan Azure Resource Manager kimlik doğrulaması için bir belirteç elde edersiniz. Ayrıca, yetkilendirme dosyasında ihtiyaç duyduğunuz uygulama KIMLIĞI, kimlik doğrulama anahtarı ve kiracı KIMLIĞINI de kaydetmeniz gerekir.
 
-1. Çözüm Gezgini ' de, *myDotnetProject* > **Add** > **Yeni öğe**Ekle ' ye sağ tıklayın ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, *myDotnetProject*yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item**ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
 2. Şu yetkilendirme özelliklerini ekleyin:
 
     ```
@@ -195,7 +195,7 @@ Bir şablonu dağıtabilmeniz için önce bir [Active Directory Hizmet sorumlusu
     graphURL=https://graph.microsoft.com/
     ```
 
-    Abonelik ** &lt;kimliği&gt; ** , abonelik tanımlayıcıınız, ** &lt;uygulama kimliği&gt; ** Active Directory uygulama tanımlayıcısı, ** &lt;kimlik doğrulama anahtarı&gt; ** ve ** &lt;kiracı tanımlayıcısı ile Kiracı kimliği&gt; ** ile değiştirin.
+    Abonelik ** &lt; kimliği &gt; ** , abonelik tanımlayıcıınız, uygulama ** &lt; kimliği &gt; ** Active Directory uygulama tanımlayıcısı, ** &lt; kimlik doğrulama &gt; anahtarı** ve kiracı tanımlayıcısı ile ** &lt; Kiracı kimliği &gt; ** ile değiştirin.
 
 3. Azureauth. Properties dosyasını kaydedin.
 4. Windows adlandırılmış AZURE_AUTH_LOCATION içinde, oluşturduğunuz yetkilendirme dosyasının tam yolu ile bir ortam değişkeni ayarlayın, örneğin, aşağıdaki PowerShell komutunu kullanabilirsiniz:

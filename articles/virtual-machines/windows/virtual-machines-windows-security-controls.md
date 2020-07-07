@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ac1ed9ac25d65d0391175fc6d43b48048da74926
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101595"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Windows Sanal Makineleri için güvenlik denetimleri
@@ -36,7 +36,7 @@ Bu makalede, Windows Sanal Makineleri yerleşik olarak bulunan güvenlik denetim
 |---|---|--|
 | Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | [Azure 'da bir Windows sanal makinesini izleyin ve güncelleştirin](tutorial-monitoring.md). |
 | Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes |  |
-| Veri düzlemi günlüğü ve denetimi | Hayır |  |
+| Veri düzlemi günlüğü ve denetimi | No |  |
 
 ## <a name="identity"></a>Kimlik
 
@@ -61,7 +61,7 @@ Bu makalede, Windows Sanal Makineleri yerleşik olarak bulunan güvenlik denetim
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yes |  | 
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet |  | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

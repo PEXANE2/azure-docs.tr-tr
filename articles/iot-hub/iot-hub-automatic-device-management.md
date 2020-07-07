@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025076"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portal kullanarak otomatik IoT cihazı ve modül yönetimi
@@ -65,7 +65,7 @@ Bir yapılandırma oluşturmak için beş adım vardır. Aşağıdaki bölümler
 
 ### <a name="name-and-label"></a>Ad ve etiket
 
-1. Yapılandırmanıza en fazla 128 harf olan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
+1. Yapılandırmanıza en fazla 128 harf olan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /` .
 
 2. Yapılandırmalarınızı izlemeye yardımcı olmak için Etiketler ekleyin. Etiketler, yapılandırmanızı tanımlayan **ad**ve **değer** çiftleridir. Örneğin `HostPlatform, Linux` veya `Version, 3.0.1` olabilir.
 
@@ -75,7 +75,7 @@ Bir yapılandırma oluşturmak için beş adım vardır. Aşağıdaki bölümler
 
 Bu bölüm, hedeflenen cihazda veya modül TWINS 'de ayarlanacak içeriği tanımlar. Her ayar kümesi için iki giriş vardır. Birincisi, ayarlanacak ikizi özellikleri içindeki JSON bölümünün yolu olan ikizi yoludur.  İkincisi, bu bölüme eklenecek JSON içeridir. 
 
-Örneğin, ikizi yolunu ayarlayabilir `properties.desired.chiller-water` ve ardından aşağıdaki JSON içeriğini sağlayabilirsiniz: 
+Örneğin, ikizi yolunu ayarlayabilir `properties.desired.chiller-water` ve ardından AŞAĞıDAKI JSON içeriğini sağlayabilirsiniz: 
 
 ```json
 {
@@ -87,11 +87,11 @@ Bu bölüm, hedeflenen cihazda veya modül TWINS 'de ayarlanacak içeriği tanı
 ![İkizi yolunu ve içeriğini ayarlama](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
 
 
-Ayrıca, tüm ikizi yolunu belirterek ve değer parantez olmadan değeri sağlayarak tek tek ayarları ayarlayabilirsiniz. Örneğin, ikizi yolu `properties.desired.chiller-water.temperature`ile içeriği olarak `66`ayarlayın. Daha sonra basınç özelliği için yeni bir ikizi ayarı oluşturun. 
+Ayrıca, tüm ikizi yolunu belirterek ve değer parantez olmadan değeri sağlayarak tek tek ayarları ayarlayabilirsiniz. Örneğin, ikizi yolu ile `properties.desired.chiller-water.temperature` içeriği olarak ayarlayın `66` . Daha sonra basınç özelliği için yeni bir ikizi ayarı oluşturun. 
 
 İki veya daha fazla yapılandırma aynı ikizi yolunu hedefliyorsanız, en yüksek öncelikli yapılandırmadan içerik uygulanır (adım 4 ' te öncelik tanımlanmıştır).
 
-Varolan bir özelliği kaldırmak istiyorsanız, özelliği değerini belirtin `null`.
+Varolan bir özelliği kaldırmak istiyorsanız, özelliği değerini belirtin `null` .
 
 **Cihaz Ekle Ikizi ayarlama** veya **Modül Ekle ikizi ayarını**seçerek ek ayarlar ekleyebilirsiniz.
 
@@ -105,7 +105,7 @@ Her yapılandırmanın en fazla beş özel ölçümü olabilir.
 
 2. **Ölçüm ölçütü**için bir sorgu girin.  Sorgu, Device ikizi tarafından bildirilen özellikleri temel alır.  Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-Örneğin:
+Örnek:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -120,7 +120,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız, ' ı seçin `moduleId` `devices.modules`. Örneğin:
+Yapılandırılmış modüller üzerinde raporlamak için bir ölçüm oluşturuyorsanız, ' ı seçin `moduleId` `devices.modules` . Örnek:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -139,7 +139,7 @@ Birden çok yapılandırma aynı cihazı veya modülü hedefleyebilir, çünkü 
 
 2. Hangi cihazların veya modüllerin bu yapılandırmaya hedefleneceğini belirleyen bir **hedef koşul** girin. Koşul, ikizi Tags veya ikizi tarafından bildirilen özellikleri temel alır ve ifade biçimiyle eşleşmelidir. 
 
-   Otomatik cihaz yapılandırması için, hedef olarak yalnızca etiketi veya bildirilen özelliği belirtebilirsiniz. Örneğin `tags.environment='test'` veya `properties.reported.chillerProperties.model='4000x'` olabilir. Tüm cihazları hedeflemek `*` için öğesini belirtebilirsiniz. 
+   Otomatik cihaz yapılandırması için, hedef olarak yalnızca etiketi veya bildirilen özelliği belirtebilirsiniz. Örneğin `tags.environment='test'` veya `properties.reported.chillerProperties.model='4000x'` olabilir. `*`Tüm cihazları hedeflemek için öğesini belirtebilirsiniz. 
    
    Otomatik modül yapılandırması için, IoT Hub 'ına kayıtlı modüllerdeki etiketleri veya bildirilen özellikleri belirtmek için bir sorgu kullanın. Örneğin `from devices.modules where tags.environment='test'` veya `from devices.modules where properties.reported.chillerProperties.model='4000x'` olabilir. Joker karakter tüm modülleri hedeflemek için kullanılamaz. 
 

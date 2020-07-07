@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: 6ecf0f047fe353d94ca901118d1f434e33e9c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100575"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Azure 'da bir Windows sanal makinesini etiketleme
@@ -24,7 +24,7 @@ PowerShell aracılığıyla etiket oluşturmak, eklemek ve silmek için önce [P
 
  
 
-İlk olarak `Get-AzVM` cmdlet üzerinden bir sanal makineye gidin.
+İlk olarak cmdlet üzerinden bir sanal makineye gidin `Get-AzVM` .
 
         PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
 
@@ -39,7 +39,7 @@ Sanal makineniz zaten etiketler içeriyorsa, kaynağınızın tüm etiketlerini 
 
 PowerShell aracılığıyla Etiketler eklemek istiyorsanız `Set-AzResource` komutunu kullanabilirsiniz. Bkz. Etiketler PowerShell aracılığıyla güncelleştirilirken, Etiketler bir bütün olarak güncelleştirilir. Bu nedenle, zaten etiketlere sahip olan bir kaynağa bir etiket ekliyorsanız, kaynağa yerleştirilmesini istediğiniz tüm etiketleri dahil etmeniz gerekir. Aşağıda, PowerShell cmdlet 'Leri aracılığıyla bir kaynağa ek etiketlerin nasıl ekleneceği gösterilmektedir.
 
-Bu ilk cmdlet, `Get-AzResource` ve `Tags` özelliğini kullanarak *mytestvm* üzerinde yer alan tüm etiketleri *$Tags* değişkenine ayarlar.
+Bu ilk cmdlet, ve özelliğini kullanarak *Mytestvm* üzerinde yer alan tüm etiketleri *$Tags* değişkenine ayarlar `Get-AzResource` `Tags` .
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
@@ -56,7 +56,7 @@ Bu ilk cmdlet, `Get-AzResource` ve `Tags` özelliğini kullanarak *mytestvm* üz
     Environment   Production
 ```
 
-Üçüncü komut *$Tags* değişkenine ek bir etiket ekler. Yeni anahtar/değer çiftini **+=** *$Tags* listesine eklemek için öğesinin kullanımını dikkate alın.
+Üçüncü komut *$Tags* değişkenine ek bir etiket ekler. **+=** Yeni anahtar/değer çiftini *$Tags* listesine eklemek için öğesinin kullanımını dikkate alın.
 
         PS C:\> $tags += @{Location="MyLocation"}
 

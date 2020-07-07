@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137629"
 ---
 # <a name="two-class-logistic-regression-module"></a>İki sınıf lojistik regresyon modülü
@@ -55,7 +55,7 @@ Bu modeli eğitebilmeniz için etiket veya sınıf sütunu içeren bir veri küm
   
     -   Buna karşılık L2 düzenleme, seyrek olmayan veriler için tercih edilir.  
   
-     Bu algoritma, L1 ve L2 düzenleme değerlerinin doğrusal bir birleşimini destekler: Yani, <code>x = L1</code> ve <code>y = L2</code>ise düzenleme koşullarının doğrusal <code>ax + by = c</code> yayılımını tanımlar.  
+     Bu algoritma, L1 ve L2 düzenleme değerlerinin doğrusal bir birleşimini destekler: Yani, ve ise <code>x = L1</code> <code>y = L2</code> <code>ax + by = c</code> düzenleme koşullarının doğrusal yayılımını tanımlar.  
   
     > [!NOTE]
     >  L1 ve L2 düzenleme hakkında daha fazla bilgi edinmek istiyor musunuz? Aşağıdaki makalede, L1 ve L2 düzenleme 'in nasıl farklı olduğu ve model sığdırmayı nasıl etkilediği hakkında bir tartışma sunulmaktadır: lojistik regresyon ve sinir ağ modelleri için kod örnekleri, [Machine Learning Için L1 ve L2 düzenleme](https://msdn.microsoft.com/magazine/dn904675.aspx)  

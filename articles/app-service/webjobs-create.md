@@ -9,10 +9,10 @@ ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82085153"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service Web Işleri ile arka plan görevleri çalıştırma
@@ -51,7 +51,7 @@ Aşağıdaki dosya türleri desteklenir:
 * . sh (Bash kullanarak)
 * . php (PHP kullanarak)
 * . Kopyala (Python kullanarak)
-* . js (node. js kullanarak)
+* . js (Node.js kullanarak)
 * . jar (Java kullanarak)
 
 ## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a>Sürekli WebJob oluşturma
@@ -75,10 +75,10 @@ when making changes in one don't forget the other two.
 
    ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Ayar      | Örnek değer   | Açıklama  |
+   | Ayar      | Örnek değer   | Description  |
    | ------------ | ----------------- | ------------ |
    | **Adı** | myContinuousWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
-   | **Karşıya dosya yükleme** | ConsoleApp. zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
+   | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Sürekli | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Ölçek** | Çoklu örnek | Yalnızca sürekli WebJobs için kullanılabilir. Programın veya betiğin tüm örneklerde mı yoksa yalnızca bir örnek üzerinde mi çalışacağını belirler. Birden çok örnek üzerinde çalıştırma seçeneği ücretsiz veya paylaşılan [fiyatlandırma katmanlarına](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)uygulanmaz. | 
 
@@ -113,10 +113,10 @@ when making changes in one don't forget the other two.
 
    ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Ayar      | Örnek değer   | Açıklama  |
+   | Ayar      | Örnek değer   | Description  |
    | ------------ | ----------------- | ------------ |
    | **Adı** | myTriggeredWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir.|
-   | **Karşıya dosya yükleme** | ConsoleApp. zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
+   | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Diğini | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Tetikleyiciler** | El ile | |
 
@@ -151,10 +151,10 @@ when making changes in one don't forget the other two.
 
    ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Ayar      | Örnek değer   | Açıklama  |
+   | Ayar      | Örnek değer   | Description  |
    | ------------ | ----------------- | ------------ |
    | **Adı** | myScheduledWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
-   | **Karşıya dosya yükleme** | ConsoleApp. zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
+   | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Diğini | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Tetikleyiciler** | Zamanlanan | Zamanlamanın güvenilir bir şekilde çalışması için Always On özelliğini etkinleştirin. Her zaman açık, yalnızca temel, standart ve Premium fiyatlandırma katmanlarında kullanılabilir.|
    | **CRON İfadesi** | 0 0/20 * * * * | [Cron ifadeleri](#ncrontab-expressions) aşağıdaki bölümde açıklanmıştır. |
@@ -167,7 +167,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB ifadeleri
 
-Portala bir [Ncrontab ifadesi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) girebilir veya WebJob *. zip* dosyanızın köküne bir `settings.job` dosya ekleyebilirsiniz, örneğin, aşağıdaki örnekte olduğu gibi:
+Portala bir [Ncrontab ifadesi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) girebilir veya `settings.job` WebJob *. zip* dosyanızın köküne bir dosya ekleyebilirsiniz, örneğin, aşağıdaki örnekte olduğu gibi:
 
 ```json
 {

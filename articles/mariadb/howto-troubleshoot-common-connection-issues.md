@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: 521853fd361007159d7e497eb7e7c1f3d200731c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101459"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı bağlantı sorunlarını giderme
@@ -47,7 +47,7 @@ Uygulama, MariaDB için Azure veritabanı 'na kalıcı olarak bağlanamıyorsa, 
 
 * Güvenlik duvarı yapılandırması: MariaDB sunucusu veya istemci tarafı güvenlik duvarı için Azure veritabanı bağlantıları engelliyor.
 * İstemci tarafında ağ yeniden yapılandırması: yeni bir IP adresi veya bir ara sunucu eklendi.
-* Kullanıcı hatası: Örneğin, bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik * \@ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
+* Kullanıcı hatası: Örneğin, bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik * \@ ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
 

@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100898"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanı bağlantı sorunlarını giderme
@@ -48,7 +48,7 @@ Uygulama, MySQL için Azure veritabanı 'na kalıcı olarak bağlanamazsa, genel
 
 * Sunucu güvenlik duvarı yapılandırması: MySQL Server güvenlik duvarı için Azure veritabanı 'nın, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
 * İstemci güvenlik duvarı yapılandırması: istemcinizdeki güvenlik duvarı, veritabanı sunucunuza yönelik bağlantılara izin vermelidir. Bazı güvenlik duvarlarındaki MySQL gibi uygulama adlarının yanı sıra, izin verilmeyen sunucunun IP adreslerine ve bağlantı noktalarına izin verilmesi gerekir.
-* Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik * \@ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
+* Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik * \@ ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
 

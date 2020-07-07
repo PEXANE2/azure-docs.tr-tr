@@ -9,10 +9,10 @@ ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098535"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>PowerShell kullanarak VM 'Leri yakınlık yerleşimi gruplarına dağıtma
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Sanal makineyi oluşturmak için [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) kullandığınızda `-ProximityPlacementGroup $ppg.Id` yakınlık yerleşimi grubu kimliğine başvurmak için kullanarak YAKıNLıK yerleşimi grubunda bir VM oluşturun.
+`-ProximityPlacementGroup $ppg.Id`Sanal makineyi oluşturmak Için [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) kullandığınızda YAKıNLıK yerleşimi grubu kimliğine başvurmak için kullanarak yakınlık YERLEŞIMI grubunda bir VM oluşturun.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -96,7 +96,7 @@ Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 
 
 ## <a name="availability-sets"></a>Kullanılabilirlik Kümeleri
-Ayrıca, yakınlık yerleşimi grubunuzda bir kullanılabilirlik kümesi oluşturabilirsiniz. Bir kullanılabilirlik kümesi `-ProximityPlacementGroup` oluşturmak için [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) cmdlet 'i ile aynı parametreyi kullanın ve kullanılabilirlik kümesinde oluşturulan tüm VM 'lerin aynı yakınlık yerleştirme grubunda de oluşturulması gerekir.
+Ayrıca, yakınlık yerleşimi grubunuzda bir kullanılabilirlik kümesi oluşturabilirsiniz. `-ProximityPlacementGroup`Bir kullanılabilirlik kümesi oluşturmak Için [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) cmdlet 'i ile aynı parametreyi kullanın ve kullanılabilirlik kümesinde oluşturulan tüm VM 'lerin aynı yakınlık yerleştirme grubunda de oluşturulması gerekir.
 
 Bir yakınlık yerleşimi grubuna var olan bir kullanılabilirlik kümesi eklemek veya kaldırmak için, önce kullanılabilirlik kümesindeki tüm VM 'Leri durdurmanız gerekir. 
 
@@ -146,7 +146,7 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>Ölçek kümeleri
 
-Ayrıca, yakınlık yerleştirme grubunuzda bir ölçek kümesi de oluşturabilirsiniz. Bir ölçek kümesi `-ProximityPlacementGroup` oluşturmak için [New-azvmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) ile aynı parametreyi kullanın ve tüm örnekler aynı yakınlık yerleşimi grubunda oluşturulur.
+Ayrıca, yakınlık yerleştirme grubunuzda bir ölçek kümesi de oluşturabilirsiniz. `-ProximityPlacementGroup`Bir ölçek kümesi oluşturmak Için [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) ile aynı parametreyi kullanın ve tüm örnekler aynı yakınlık yerleşimi grubunda oluşturulur.
 
 
 Bir yakınlık yerleşimi grubuna var olan bir ölçek kümesi eklemek veya kaldırmak için, önce ölçek kümesini durdurmanız gerekir. 

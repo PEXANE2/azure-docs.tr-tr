@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134422"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure portal kullanarak ölçekli IoT Edge modüllerini dağıtın
@@ -55,7 +55,7 @@ Dağıtım oluşturmak için beş adım vardır. Aşağıdaki bölümler her bir
 
 ### <a name="step-1-name-and-label"></a>1. Adım: adı ve etiketi
 
-1. Dağıtımınıza 128 küçük harflerden oluşan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`.
+1. Dağıtımınıza 128 küçük harflerden oluşan benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /` .
 1. Dağıtımlarınızın izlenmesine yardımcı olmak için anahtar-değer çiftleri olarak Etiketler ekleyebilirsiniz. Örneğin, **Hostplatform** ve **Linux**veya **Version** ve **3.0.1**.
 1. Sonraki adıma geçmek için **modüller** ' i seçin.
 
@@ -115,7 +115,7 @@ Azure Stream Analytics bir modül eklemek için aşağıdaki adımları izleyin:
 
 Bir dağıtıma modül ekledikten sonra, bu adı seçerek **güncelleştirme IoT Edge modülü** sayfasını açabilirsiniz. Bu sayfada modül ayarlarını, ortam değişkenlerini, oluşturma seçeneklerini ve ikizi modülünü düzenleyebilirsiniz. Market 'ten bir modül eklediyseniz, bu parametrelerin bazıları zaten doldurulmuş olabilir.
 
-Katmanlı bir dağıtım oluşturuyorsanız, aynı cihazları hedefleyen diğer dağıtımlarda var olan bir modül yapılandırıyorsanız. Modül ikizi diğer sürümlerin üzerine yazmadan güncelleştirmek için, **module Ikizi ayarları** sekmesini açın. modülün istenen özelliklerinde bir alt bölüm için benzersiz ada sahip yeni bir **Modül ikizi özelliği** oluşturun. Örneğin `properties.desired.settings`,. Yalnızca `properties.desired` alanın içinde Özellikler tanımlarsanız, daha düşük öncelikli dağıtımlarda tanımlanan modül için istenen özelliklerin üzerine yazılır.
+Katmanlı bir dağıtım oluşturuyorsanız, aynı cihazları hedefleyen diğer dağıtımlarda var olan bir modül yapılandırıyorsanız. Modül ikizi diğer sürümlerin üzerine yazmadan güncelleştirmek için, **module Ikizi ayarları** sekmesini açın. modülün istenen özelliklerinde bir alt bölüm için benzersiz ada sahip yeni bir **Modül ikizi özelliği** oluşturun. Örneğin, `properties.desired.settings` . Yalnızca alanın içinde Özellikler tanımlarsanız `properties.desired` , daha düşük öncelikli dağıtımlarda tanımlanan modül için istenen özelliklerin üzerine yazılır.
 
 ![Katmanlı dağıtım için Module ikizi özelliğini ayarla](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -125,7 +125,7 @@ Yapılandırılmış bir dağıtım için tüm modülleriniz olduktan sonra Iler
 
 ### <a name="step-3-routes"></a>3. Adım: rotalar
 
-Rotalar, modüllerin bir dağıtım içindeki birbirleriyle nasıl iletişim kuracağını tanımlar. Varsayılan olarak, sihirbaz, **yukarı akış** adlı bir yol sağlar ve **/ileti/\* **olarak tanımlanır $upstream. Bu, herhangi bir modülle çıkış iletilerinin IoT Hub 'ınıza gönderildiği anlamına gelir.  
+Rotalar, modüllerin bir dağıtım içindeki birbirleriyle nasıl iletişim kuracağını tanımlar. Varsayılan olarak, sihirbaz, **yukarı akış** adlı bir yol sağlar ve **/ileti/olarak tanımlanır \* $upstream**. Bu, herhangi bir modülle çıkış iletilerinin IoT Hub 'ınıza gönderildiği anlamına gelir.  
 
 Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgilerle ekleyin veya güncelleştirin, ardından inceleme bölümüne devam etmek için **İleri** ' yi seçin.
 
@@ -139,7 +139,7 @@ Bilgileri [Declare rotalarındaki](module-composition.md#declare-routes)bilgiler
 
 1. **Ölçüm ölçütü**için bir sorgu girin. Sorgu IoT Edge hub modülünün ikizi [bildirilen özelliklerini](module-edgeagent-edgehub.md#edgehub-reported-properties)temel alır. Ölçüm, sorgu tarafından döndürülen satır sayısını temsil eder.
 
-   Örneğin:
+   Örnek:
 
    ```sql
    SELECT deviceId FROM devices

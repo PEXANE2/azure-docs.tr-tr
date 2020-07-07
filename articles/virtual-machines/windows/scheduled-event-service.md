@@ -8,10 +8,10 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82099606"
 ---
 # <a name="monitoring-scheduled-events"></a>İzleme Zamanlanan Olaylar
@@ -29,7 +29,7 @@ Bu makalede, Log Analytics için bakım Zamanlanan Olaylar yakalama konusunda si
 
 ![Olay yaşam döngüsünü gösteren diyagram](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örnekte, bir [kullanılabilirlik kümesinde bir Windows sanal makinesi](tutorial-availability-sets.md)oluşturmanız gerekecektir. Zamanlanan Olaylar, kullanılabilirlik kümesi, bulut hizmeti, sanal makine ölçek kümesi veya tek başına VM 'lerdeki sanal makinelerin hiçbirini etkileyebilecek değişiklikler hakkında bildirimler sağlar. Kullanılabilirlik kümesindeki diğer tüm VM 'lerin olaylarını almak için, toplayıcı olarak görev yapacak VM 'lerden birinde zamanlanan olayları yoklayan bir [hizmet](https://github.com/microsoft/AzureScheduledEventsService) çalıştıracağız.    
 
@@ -58,7 +58,7 @@ New-AzVm `
 
 [GitHub](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip)'dan projenin yükleme. zip dosyasını indirin.
 
-**Mycollectorvm** ' ye bağlanın ve. zip dosyasını sanal makineye kopyalayın ve tüm dosyaları ayıklayın. VM 'niz üzerinde bir PowerShell istemi açın. İsteminizi içeren `SchService.ps1`klasöre taşıyın, örneğin: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`ve hizmeti ayarlayın.
+**Mycollectorvm** ' ye bağlanın ve. zip dosyasını sanal makineye kopyalayın ve tüm dosyaları ayıklayın. VM 'niz üzerinde bir PowerShell istemi açın. İsteminizi içeren klasöre taşıyın `SchService.ps1` , örneğin: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>` ve hizmeti ayarlayın.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -78,7 +78,7 @@ Hizmet durumunu doğrulayın ve çalıştığından emin olun.
 .\SchService.ps1 -status  
 ```
 
-Bu, döndürmelidir `Running`.
+Bu, döndürmelidir `Running` .
 
 Hizmet artık zamanlanan tüm olaylar için her 10 saniyede bir yoklama başlatacak ve bakımı hızlandırmak için olayları onaylacaktır.  Dondurma, yeniden başlatma, yeniden dağıtma ve preempt, zamanlama olayları tarafından yakalanan olaylardır. Olayı onaylamadan önce bazı azaltmaları tetiklemek için betiği genişletebilirsiniz.
 
@@ -95,7 +95,7 @@ Olaylar zamanlama olay hizmeti tarafından yakalandıktan sonra, olay durumu, ol
 >
 > Ayarladığımızda Windows 'u seçtik, ancak Linux 'ta benzer bir çözüm tasarlayabilirsiniz.
 
-Herhangi bir noktada, ve `–stop` `–remove`anahtarlarını kullanarak zamanlanan olay hizmetini durdurabilir/kaldırabilirsiniz.
+Herhangi bir noktada, ve anahtarlarını kullanarak zamanlanan olay hizmetini durdurabilir/kaldırabilirsiniz `–stop` `–remove` .
 
 ## <a name="connect-to-the-workspace"></a>Çalışma alanına bağlan
 
@@ -156,7 +156,7 @@ Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için
 
 1. **Yeni uyarı kuralı**'nı seçin. 
 1. **Kural oluştur** sayfasında `collectorworkspace` **kaynak**olarak bırakın.
-1. **Koşul**' ın altında, *müşteri günlüğü <login undefined>aramasının her seferinde *girişi seçin. **Sinyal mantığını Yapılandır** sayfası açılır.
+1. **Koşul**' ın altında, *müşteri günlüğü <login undefined> aramasının her seferinde *girişi seçin. **Sinyal mantığını Yapılandır** sayfası açılır.
 1. **Eşik değeri**altında *0* girin ve **bitti**' yi seçin.
 1. **Eylemler**altında **eylem grubu oluştur**' u seçin. **Eylem grubu Ekle** sayfası açılır.
 1. **Eylem grubu adı**' nda, *Myactiongroup*yazın.

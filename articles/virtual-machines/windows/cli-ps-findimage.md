@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083374"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Azure PowerShell ile Azure Market'te Windows VM görüntülerini bulma
@@ -30,7 +30,7 @@ Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/) storefront, [A
 
 Bu tablo, belirtilen Yayımcılar ve teklifler için kullanılabilir SKU 'ların bir alt kümesini gösterir.
 
-| Yayımcı | Sunduğu | Sku |
+| Publisher | Sunduğu | Sku |
 |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2019-veri merkezi |
 | MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
@@ -82,7 +82,7 @@ Daha sonra, seçilen bir SKU için, dağıtılacak sürümleri listelemek için 
     Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
     ```
     
-`Get-AzVMImage` Komutun çıktısından, yeni bir sanal makine dağıtmak için bir sürüm görüntüsü seçebilirsiniz.
+`Get-AzVMImage`Komutun çıktısından, yeni bir sanal makine dağıtmak için bir sürüm görüntüsü seçebilirsiniz.
 
 Aşağıdaki örnek komutların ve çıktıların tam dizisini gösterir:
 
@@ -170,17 +170,17 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Artık seçili yayımcı, teklif, SKU ve sürümü bir URN (:) ile ayrılmış değerler) ile birleştirebilirsiniz. [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet `--image` 'ini kullanarak BIR VM oluşturduğunuzda bu urn parametresini parametresiyle geçirin. Görüntünün en son sürümünü almak için, isteğe bağlı olarak URN 'deki sürüm numarasını "en son" ile değiştirebilirsiniz.
+Artık seçili yayımcı, teklif, SKU ve sürümü bir URN (:) ile ayrılmış değerler) ile birleştirebilirsiniz. `--image` [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'INI kullanarak bir VM oluşturduğunuzda bu urn parametresini parametresiyle geçirin. Görüntünün en son sürümünü almak için, isteğe bağlı olarak URN 'deki sürüm numarasını "en son" ile değiştirebilirsiniz.
 
-Bir sanal makineyi Kaynak Yöneticisi şablonuyla dağıtırsanız, `imageReference` Özellikler içinde görüntü parametrelerini ayrı olarak ayarlarsınız. Bkz. [şablon başvurusu](/azure/templates/microsoft.compute/virtualmachines).
+Bir sanal makineyi Kaynak Yöneticisi şablonuyla dağıtırsanız, Özellikler içinde görüntü parametrelerini ayrı olarak ayarlarsınız `imageReference` . Bkz. [şablon başvurusu](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Plan özelliklerini görüntüle
 
-Bir görüntünün satın alma planı bilgilerini görüntülemek için `Get-AzVMImage` cmdlet 'ini çalıştırın. Çıktıda `PurchasePlan` özelliği yoksa `null`, görüntü, programlı dağıtımdan önce kabul etmeniz gereken koşulları içerir.  
+Bir görüntünün satın alma planı bilgilerini görüntülemek için `Get-AzVMImage` cmdlet 'ini çalıştırın. `PurchasePlan`Çıktıda özelliği yoksa `null` , görüntü, programlı dağıtımdan önce kabul etmeniz gereken koşulları içerir.  
 
-Örneğin, *Windows Server 2016 Datacenter* görüntüsünün ek terimleri yoktur, bu nedenle `PurchasePlan` bilgiler şu şekilde olur: `null`
+Örneğin, *Windows Server 2016 Datacenter* görüntüsünün ek terimleri yoktur, bu nedenle `PurchasePlan` bilgiler şu şekilde olur `null` :
 
 ```powershell
 $version = "2016.127.20170406"
@@ -206,7 +206,7 @@ DataDiskImages   : []
 
 ```
 
-Aşağıdaki örnekte, aşağıdaki `PurchasePlan` özelliklere sahip *veri bilimi sanal makinesi-Windows 2016* görüntüsü için benzer bir komut gösterilmektedir: `name`, `product`, ve `publisher`. Bazı görüntülerin de bir `promotion code` özelliği vardır. Bu görüntüyü dağıtmak için, koşulları kabul etmek ve programlı dağıtımı etkinleştirmek için aşağıdaki bölümlere bakın.
+Aşağıdaki örnekte, aşağıdaki özelliklere sahip *veri bilimi sanal makinesi-Windows 2016* görüntüsü için benzer bir komut gösterilmektedir `PurchasePlan` : `name` , `product` , ve `publisher` . Bazı görüntülerin de bir `promotion code` özelliği vardır. Bu görüntüyü dağıtmak için, koşulları kabul etmek ve programlı dağıtımı etkinleştirmek için aşağıdaki bölümlere bakın.
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -316,7 +316,7 @@ Daha sonra VM yapılandırmasını ağ yapılandırma nesneleriyle birlikte `New
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Temel görüntü bilgilerini kullanarak `New-AzVM` cmdlet 'le hızlı bir şekilde sanal makine oluşturmak için bkz. [PowerShell ile Windows sanal makinesi oluşturma](quick-create-powershell.md).
+Temel görüntü bilgilerini kullanarak cmdlet 'le hızlı bir şekilde sanal makine oluşturmak için `New-AzVM` bkz. [PowerShell ile Windows sanal makinesi oluşturma](quick-create-powershell.md).
 
 
 [Tam olarak yapılandırılmış bir sanal makine oluşturmak](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)Için bir PowerShell betiği örneğine bakın.

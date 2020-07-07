@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: fbd0d65624852737c424128e9125b8370b870d4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133937"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLı ile Azure IoT Edge modülleri dağıtma
@@ -24,7 +24,7 @@ ms.locfileid: "82133937"
 
 Bu makalede, bir JSON dağıtım bildiriminin nasıl oluşturulacağı ve dağıtım IoT Edge bir cihaza gönderimi için bu dosyanın nasıl kullanılacağı gösterilir. Paylaşılan etiketlerine göre birden çok cihazı hedefleyen bir dağıtım oluşturma hakkında bilgi için bkz. [IoT Edge modüllerini ölçeklendirerek dağıtma ve izleme](how-to-deploy-cli-at-scale.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-using-cli.md) .
 * IoT Edge çalışma zamanı yüklü [IoT Edge bir cihaz](how-to-register-device.md#register-with-the-azure-cli) .
@@ -112,7 +112,7 @@ Azure CLı kullanarak modüller dağıtmak için dağıtım bildirimini yerel ol
 
 Modül bilgileriyle yapılandırdığınız dağıtım bildirimini uygulayarak modülleri cihazınıza dağıtırsınız.
 
-Dizinleri dağıtım bildirimin kaydedildiği klasöre değiştirin. VS Code IoT Edge şablonlarından birini kullandıysanız dosyayı değil `deployment.json` `deployment.template.json` çözüm dizininizin **config** klasöründeki dosyasını kullanın.
+Dizinleri dağıtım bildirimin kaydedildiği klasöre değiştirin. VS Code IoT Edge şablonlarından birini kullandıysanız dosyayı `deployment.json` değil çözüm dizininizin **config** klasöründeki dosyasını kullanın `deployment.template.json` .
 
 Yapılandırmayı IoT Edge bir cihaza uygulamak için aşağıdaki komutu kullanın:
 

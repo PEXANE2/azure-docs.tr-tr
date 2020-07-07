@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131031"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Windows üzerinde sanal TPM ile sanal bir IoT Edge cihaz oluşturma ve sağlama
@@ -31,7 +31,7 @@ Bu makalede, aşağıdaki adımlarla sanal bir IoT Edge cihazında otomatik sağ
 > [!TIP]
 > Bu makalede, sanal cihazlarda TPM kanıtlaması kullanılarak otomatik sağlama testi açıklanır, ancak fiziksel TPM donanımı de kullanılırken bunun çoğu geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Windows geliştirme makinesi. Bu makalede Windows 10 kullanılır.
 * Etkin bir IoT Hub.
@@ -65,9 +65,9 @@ Tek bir kaydı oluşturduğunuzda, Windows geliştirme makinenizdeki sanal bir T
 
 Sanal cihaz ve bireysel Kayıt Kılavuzu:
 
-* [C](../iot-dps/quick-create-simulated-device.md)
+* [,](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
-* [, #](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
+* [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 
@@ -100,9 +100,9 @@ Windows üzerinde IoT Edge yükleme hakkında daha ayrıntılı bilgi için IoT 
 
 1. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
 
-1. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler. El ile `-Dps` sağlama yerine cihaz sağlama hizmetini kullanmak için bayrağını kullanın.
+1. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler. `-Dps`El ile sağlama yerine cihaz sağlama hizmetini kullanmak için bayrağını kullanın.
 
-   Ve `{scope_id}` `{registration_id}` için yer tutucu değerlerini daha önce topladığınız verilerle değiştirin.
+   Ve için yer tutucu değerlerini `{scope_id}` `{registration_id}` daha önce topladığınız verilerle değiştirin.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `

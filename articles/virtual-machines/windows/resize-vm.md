@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
 ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82099895"
 ---
 # <a name="resize-a-windows-vm"></a>Bir Windows VM'yi yeniden boyutlandırma
@@ -56,7 +56,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-İstediğiniz boyut listelenmemişse, VM 'yi serbest bırakmak, yeniden boyutlandırmak ve VM 'yi yeniden başlatmak için aşağıdaki komutları çalıştırın. ** \<Newvmsize>** öğesini istediğiniz boyutla değiştirin.
+İstediğiniz boyut listelenmemişse, VM 'yi serbest bırakmak, yeniden boyutlandırmak ve VM 'yi yeniden başlatmak için aşağıdaki komutları çalıştırın. İstediğiniz **\<newVMsize>** boyutla değiştirin.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/12/2019
 ms.author: cynthn
 ms.openlocfilehash: b0947d1cc4e53763c0f31444b8f3d27ba45b19a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82096420"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Genelleştirilmiş bir VHD'yi karşıya yükleme ve Azure’da yeni VM’ler oluştururken kullanma
@@ -38,7 +38,7 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 > 
 
 1. Windows sanal makinesinde oturum açın.
-2. Yönetici olarak Komut İstemi penceresini açın. Dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe`.
+2. Yönetici olarak Komut İstemi penceresini açın. Dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe` .
 3. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **Genelleştir** onay kutusunun etkinleştirildiğinden emin olun.
 4. **Kapalı seçenekleri**Için, **kapanıyor**' ı seçin.
 5. **Tamam**’ı seçin.

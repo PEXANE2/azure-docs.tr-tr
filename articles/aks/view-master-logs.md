@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128964"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Kubernetes ana düğüm günlüklerini etkinleştirme ve inceleme
@@ -39,7 +39,7 @@ Aşağıdaki örnek Portal ekran görüntüsü *Tanılama ayarları* penceresini
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS kümesinde bir test Pod 'u zamanlama
 
-Bazı günlükler oluşturmak için AKS kümenizde yeni bir pod oluşturun. Aşağıdaki örnek YAML bildirimi, temel bir NGıNX örneği oluşturmak için kullanılabilir. Seçtiğiniz düzenleyicide adlı `nginx.yaml` bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
+Bazı günlükler oluşturmak için AKS kümenizde yeni bir pod oluşturun. Aşağıdaki örnek YAML bildirimi, temel bir NGıNX örneği oluşturmak için kullanılabilir. Seçtiğiniz düzenleyicide adlı bir dosya oluşturun `nginx.yaml` ve aşağıdaki içeriği yapıştırın:
 
 ```yaml
 apiVersion: v1
@@ -104,10 +104,10 @@ Günlük verilerinizi sorgulama ve filtreleme hakkında daha fazla bilgi için b
 
 Günlük verilerini çözümlemeye yardımcı olması için aşağıdaki tabloda her bir olay için kullanılan şemanın ayrıntıları verilmiştir:
 
-| Alan adı               | Açıklama |
+| Alan adı               | Description |
 |--------------------------|-------------|
 | *RESOURCEID*             | Günlüğü üreten Azure kaynağı |
-| *time*                   | Günlüğün karşıya yüklendiği zaman damgası |
+| *ışınızda*                   | Günlüğün karşıya yüklendiği zaman damgası |
 | *alan*               | Günlüğü oluşturan kapsayıcı/bileşen adı |
 | *operationName*          | Her zaman *Microsoft. ContainerService/Managedkümeler/diagnosticLogs/Read* |
 | *Properties. log*         | Bileşenden alınan günlüğün tam metni |
@@ -117,7 +117,7 @@ Günlük verilerini çözümlemeye yardımcı olması için aşağıdaki tabloda
 
 ## <a name="log-roles"></a>Günlük rolleri
 
-| Rol                     | Açıklama |
+| Rol                     | Description |
 |--------------------------|-------------|
 | *aksService*             | Denetim düzlemi işlemi için denetim günlüğünde görünen ad (hcpService 'ten) |
 | *MasterClient*           | MasterClientCertificate için denetim günlüğünde görünen ad, az aks Get-Credentials öğesinden aldığınız sertifika |

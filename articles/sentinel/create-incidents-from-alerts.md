@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: 1593b96ae8412632120e8977635a4193996ca88d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82025127"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Microsoft Güvenlik uyarılarından otomatik olarak olay oluştur
@@ -28,7 +28,7 @@ Microsoft Cloud App Security ve Azure Gelişmiş tehdit koruması gibi Azure Sen
 
 Azure Sentinel 'i, bağlı bir Microsoft Güvenlik çözümünde her uyarı tetiklendiğinde bu makaledeki yönergeleri uygulayarak otomatik olarak olaylar oluşturacak şekilde yapılandırabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Güvenlik hizmeti uyarılarından olay oluşturmayı etkinleştirmek için [Microsoft güvenlik çözümlerini bağlamanız](connect-data-sources.md#data-connection-methods) gerekir.
 
 ## <a name="using-microsoft-security-incident-creation-analytic-rules"></a>Microsoft güvenlik olayı oluşturma analitik kurallarını kullanma

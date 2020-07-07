@@ -11,10 +11,10 @@ ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
 ms.openlocfilehash: 11e16453cc2a6044c4b153bd1556d85545ff9625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086632"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Kuyruk depolama için güvenlik önerileri
@@ -27,7 +27,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Azure Resource Manager dağıtım modelini kullanma | Üst erişim denetimi (RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, gizli dizi Azure Key Vault erişimi, Azure depolama verilerine ve kaynaklarına erişim için Azure AD tabanlı kimlik doğrulaması ve yetkilendirme gibi önemli güvenlik geliştirmeleri için Azure Resource Manager dağıtım modelini kullanarak yeni depolama hesapları oluşturun. Mümkünse, Azure Resource Manager kullanmak için klasik dağıtım modelini kullanan mevcut depolama hesaplarını geçirin. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](/azure/azure-resource-manager/resource-group-overview). | - |
 | Tüm depolama hesaplarınızda **Güvenli aktarım gerekli** seçeneğini etkinleştirin | **Güvenli aktarım gerekli** seçeneğini etkinleştirdiğinizde, depolama hesabında yapılan tüm isteklerin güvenli bağlantılar üzerinden gerçekleşmesi gerekir. HTTP üzerinden yapılan tüm istekler başarısız olur. Daha fazla bilgi için bkz. [Azure Storage 'da güvenli aktarım gerektir](../common/storage-require-secure-transfer.md). | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
@@ -36,7 +36,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Kuyruk verilerine erişim yetkisi vermek için Azure Active Directory (Azure AD) kullanın | Azure AD, istekleri kuyruk depolamaya yetkilendirmek için paylaşılan anahtar üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md). | - |
 | RBAC aracılığıyla bir Azure AD güvenlik sorumlusuna izin atarken en az ayrıcalık sorumlusunu göz önünde bulundurun | Bir Kullanıcı, Grup veya uygulamaya bir rol atarken, bu güvenlik sorumlusuna yalnızca onların görevlerini gerçekleştirmesi için gerekli olan izinleri verin. Kaynaklara erişimi kısıtlamak, verilerinizin yanlışlıkla ve kötü amaçlı olarak kötüye kullanımını önlemeye yardımcı olur. | - |
@@ -48,9 +48,9 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 
 ## <a name="networking"></a>Ağ
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| Güvenlik duvarı kurallarını etkinleştir | Depolama hesabınıza erişimi, belirtilen IP adreslerinden veya aralıklarından kaynaklanan isteklerle veya bir Azure sanal ağı 'ndaki (VNet) bir alt ağ listesinden oluşan isteklerle sınırlamak için güvenlik duvarı kurallarını yapılandırın. Güvenlik duvarı kurallarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure dosya eşitleme proxy ve güvenlik duvarı ayarları](../files/storage-sync-files-firewall-and-proxy.md). | - |
+| Güvenlik duvarı kurallarını etkinleştirme | Depolama hesabınıza erişimi, belirtilen IP adreslerinden veya aralıklarından kaynaklanan isteklerle veya bir Azure sanal ağı 'ndaki (VNet) bir alt ağ listesinden oluşan isteklerle sınırlamak için güvenlik duvarı kurallarını yapılandırın. Güvenlik duvarı kurallarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure dosya eşitleme proxy ve güvenlik duvarı ayarları](../files/storage-sync-files-firewall-and-proxy.md). | - |
 | Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin ver | İstekler bir Azure sanal ağı (VNet) içinde veya izin verilen ortak IP adreslerinden bir hizmetten kaynaklanmadığı takdirde, depolama hesabınız için Güvenlik Duvarı kurallarının etkinleştirilmesi, varsayılan olarak gelen istekleri engeller. Engellenen istekler diğer Azure hizmetlerinden, Azure portal, günlük ve ölçüm hizmetlerinden ve bu şekilde devam eder. Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin vermek için bir özel durum ekleyerek diğer Azure hizmetlerinden gelen isteklere izin verebilirsiniz. Güvenilen Microsoft Hizmetleri için bir özel durum ekleme hakkında daha fazla bilgi için bkz. [Azure dosya eşitleme proxy ve güvenlik duvarı ayarları](../files/storage-sync-files-firewall-and-proxy.md).| - |
 | Özel uç noktaları kullanma | Özel bir uç nokta, Azure sanal ağınızdan (VNet) depolama hesabına özel bir IP adresi atar. VNet ve depolama hesabı arasındaki tüm trafiğin özel bir bağlantı üzerinden güvenliğini sağlar. Özel uç noktalar hakkında daha fazla bilgi için bkz. [Azure özel uç nokta kullanarak bir depolama hesabına özel olarak bağlanma](../../private-link/create-private-endpoint-storage-portal.md). | - |
 | VNet hizmet etiketlerini kullanma | Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir. Azure depolama tarafından desteklenen hizmet etiketleri hakkında daha fazla bilgi için bkz. [Azure hizmet etiketlerine genel bakış](../../virtual-network/service-tags-overview.md). Giden ağ kuralları oluşturmak için hizmet etiketlerinin nasıl kullanılacağını gösteren bir öğretici için bkz. [PaaS kaynaklarına erişimi kısıtlama](../../virtual-network/tutorial-restrict-network-access-to-resources.md). | - |
@@ -58,11 +58,11 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 
 ## <a name="loggingmonitoring"></a>Günlüğe kaydetme/Izleme
 
-| Öneri | Açıklamalar | Güvenlik Merkezi |
+| Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | İsteklerin nasıl yetkilendirildiğini izleme | Azure depolama 'ya karşı yapılan her isteği nasıl yetkilendirdiğini izlemek için Azure depolama günlüğü 'nü etkinleştirin. Günlükler, bir isteğin bir OAuth 2,0 belirteci kullanılarak, paylaşılan anahtar kullanılarak veya paylaşılan erişim imzası (SAS) kullanılarak yapılıp yapılmadığını belirtir. Daha fazla bilgi için bkz. [Azure Storage Analytics günlüğü](../common/storage-analytics-logging.md). | - |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Güvenlik belgeleri](https://docs.microsoft.com//azure/security/)
+- [Azure güvenlik belgeleri](https://docs.microsoft.com//azure/security/)
 - [Güvenli Geliştirme belgeleri](https://docs.microsoft.com/azure/security/develop/).
