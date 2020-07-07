@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f5d0e9a851c41fa88461ed790ad3fe4e89d0fa21
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563253"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957148"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -53,22 +53,24 @@ Form tanıyıcı Ayrıca &mdash; , restoranlar, gaz istasyonları, perakende vb.
 
 Form tanıyıcı, yüksek tanımlı optik karakter tanıma (OCR) kullanarak metin ve tablo yapısını (metinle ilişkili satır ve sütun numaraları) de ayıklayabilir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Formlarınızın verilerini ayıklamaya başlamak için hızlı başlangıcı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
 
-* Özel-formlarınızı modelize eğitme
-  * Etiketler olmadan eğitme
-    * [Hızlı başlangıç: kıvrımlı ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama](quickstarts/curl-train-extract.md)
-    * [Hızlı başlangıç: Python ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama](quickstarts/python-train-extract.md)
-  * Etiketlerle eğitme
-    * [Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme](quickstarts/label-tool.md)
-    * [REST API ve Python kullanarak etiketli form tanıyıcı modelini eğitme](quickstarts/python-labeled-data.md)
-* Önceden oluşturulmuş alındılar-ABD satış makbuzlarından veri ayıklama
-  * [Hızlı başlangıç: kıvrımlı kullanarak alış verilerini ayıklama](quickstarts/curl-receipts.md)
-  * [Hızlı başlangıç: Python kullanarak alış verilerini ayıklama](quickstarts/python-receipts.md)
-* Düzen-formlardan metin ve tablo yapısını Ayıkla
-  * [Hızlı başlangıç: Python kullanarak düzen verilerini ayıklama](quickstarts/python-layout.md)
+* [İstemci kitaplığı hızlı başlangıç](./quickstarts/client-library.md) (tüm diller, birden çok senaryo)
+* Web UI hızlı başlangıçlarını
+  * [Etiketlerle eğitme-örnek etiketleme aracı](quickstarts/label-tool.md)
+* REST hızlı başlangıç
+  * Özel modeller eğitme ve form verilerini ayıklama
+    * [Etiketler olmadan eğitme](quickstarts/curl-train-extract.md)
+    * [Etiketler olmadan eğitme-Python](quickstarts/python-train-extract.md)
+    * [Etiketlerle eğitme-Python](quickstarts/python-labeled-data.md)
+  * ABD satış makbuzlarından veri ayıklama
+    * [Alma verilerini ayıklama-kıvrımlı](quickstarts/curl-receipts.md)
+    * [Alma verilerini Ayıkla-Python](quickstarts/python-receipts.md)
+  * Formdan metin ve tablo yapısını Ayıkla
+    * [Düzen verilerini ayıklama-Python](quickstarts/python-layout.md)
+
 
 ### <a name="review-the-rest-apis"></a>REST API 'Leri gözden geçirme
 

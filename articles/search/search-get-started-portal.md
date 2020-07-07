@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 2829f451b90a20c5ad399796b0485c6e533bbb23
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 28eb88a40139352b475851003a1092954a97ef64
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562291"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954324"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -275,4 +275,4 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 Bir tarayıcıda çalışan kullanıma yönelik bir Web uygulaması oluşturmak için Portal Sihirbazı 'nı kullanın. Bu Sihirbazı, az önce oluşturduğunuz küçük dizinde deneyebilir veya daha zengin bir arama deneyimi için yerleşik örnek veri kümelerinden birini kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Portalda arama uygulaması oluşturma](search-create-app-portal.md)
+> [Portalda demo uygulaması oluşturma](search-create-app-portal.md)

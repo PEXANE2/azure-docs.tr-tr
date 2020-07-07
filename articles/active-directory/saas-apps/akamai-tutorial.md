@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9135873b61abf5a5ebd0d9c4d7f52ae314ee12
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 8fef2d7e3afb0cdda3c3c3e2506b39ba542e0760
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675683"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956894"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -87,7 +87,7 @@ Akamai EAA uygulaması, Azure AD portalında ayrı ayrı ayarlanır. Yönetici, 
 
 ![Tümleştirme senaryosu 2](./media/header-akamai-tutorial/scenario2.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -102,7 +102,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 #### <a name="important"></a>Önemli
 
-Aşağıda listelenen tüm kurulum, **tümleştirme senaryosu 1** ve **Senaryo 2**için aynıdır. **Tümleştirme senaryosu 2** Için, Akamai EAA 'DA tek IDP 'yi kurun ve URL ÖZELLIĞININ uygulama URL 'sine işaret etmek için değiştirilmesi gerekir.
+Aşağıda listelenen tüm kurulum, **tümleştirme senaryosu 1** ve **Senaryo 2**için aynıdır. **Tümleştirme senaryosu 2** Için, Akamai EAA 'da tek BIR IDP ayarlamanız gerekır ve URL ÖZELLIĞININ uygulama URL 'sine işaret etmek için değiştirilmesi gerekir.
 
 ![Önemli](./media/header-akamai-tutorial/important.png)
 
@@ -280,7 +280,7 @@ Akamai üst bilgi tabanlı kimlik doğrulaması
 
     ![Akamai yapılandırma](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Kimlik doğrulaması
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 1. **Kimlik doğrulama** sekmesini seçin.
 
@@ -344,7 +344,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     ![Akamai yapılandırma](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Kimlik doğrulaması
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 **Kaydet ' e tıklayın ve hizmetler 'e gidin**.
 
@@ -406,7 +406,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     e. Bağlayıcının konumunu belirtin ve bağlayıcıyı seçin.
 
-#### <a name="authentication"></a>Kimlik doğrulaması
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kaydet ' **e tıklayın ve hizmetlere gidin**.
 

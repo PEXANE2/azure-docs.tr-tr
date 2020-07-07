@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918930"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verilerinde anomali algılama
 
@@ -45,7 +45,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Hesabınız yoksa bir [Azure aboneliği](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure Event Hubs ad alanı](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) ve Olay Hub 'ı.
 
@@ -61,7 +61,7 @@ Ad alanı ve Olay Hub 'ı oluşturma hakkında bilgi için bkz. Azure Event Hubs
 
 Bu bölümde, [Azure Portal](https://portal.azure.com/)kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure Portal, **kaynak** > **Analizi** > oluştur**Azure Databricks**' u seçin.
+1. Azure Portal, **kaynak**  >  **Analizi**oluştur  >  **Azure Databricks**' u seçin.
 
     ![Azure portal databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -72,11 +72,11 @@ Bu bölümde, [Azure Portal](https://portal.azure.com/)kullanarak bir Azure Data
     |---------|---------|
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın        |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
-    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../../azure-resource-manager/management/overview.md). |
+    |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../../azure-resource-manager/management/overview.md). |
     |**Konum**     | **Doğu ABD 2** veya diğer kullanılabilir bölgelerden birini seçin. Bölge kullanılabilirliği için [bölgeye göre sunulan Azure hizmetleri](https://azure.microsoft.com/regions/services/) bölümüne bakın.        |
     |**Fiyatlandırma Katmanı**     |  **Standart** veya **Premium** arasında seçim yapın. **Deneme sürümünü**seçme. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-    **Oluştur**’u seçin.
+    **Oluştur**'u seçin.
 
 4. Çalışma alanının oluşturulması birkaç dakika sürer. 
 
@@ -96,7 +96,7 @@ Bu bölümde, [Azure Portal](https://portal.azure.com/)kullanarak bir Azure Data
 
    * Küme için bir ad girin.
    * Bu makalede, **5,2** çalışma zamanına sahip bir küme oluşturun. **5,3** çalışma zamanı seçmeyin.
-   * **Etkinliksizlik süresi dolduktan sonra \_ \_ Sonlandır** onay kutusunun seçili olduğundan emin olun. Küme kullanılmıyorsa kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
+   * ** \_ \_ Etkinliksizlik süresi dolduktan sonra Sonlandır** onay kutusunun seçili olduğundan emin olun. Küme kullanılmıyorsa kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
 
      **Küme oluştur**’u seçin. 
 4. Küme oluşturma birkaç dakika sürer. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
@@ -123,7 +123,7 @@ Twitter uygulaması için aldığınız değerleri kaydedin. Öğreticinin sonra
 
 Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerini kullanırsınız. Azure Event Hubs’a verileri okuyup yazmak için de [Apache Spark Event Hubs bağlayıcısını](https://github.com/Azure/azure-event-hubs-spark) kullanırsınız. Kümenizin parçası olarak bu API’leri kullanmak için, Azure Databricks’e bunları kitaplıklar olarak ekler ve sonra Spark kümenizle ilişkilendirirsiniz. Aşağıdaki yönergeler, çalışma alanınızdaki **paylaşılan** klasöre kitaplıkların nasıl ekleneceğini gösterir.
 
-1. Azure Databricks çalışma alanında **Çalışma Alanı**’nı seçin ve sonra **Paylaşılan**’a sağ tıklayın. Bağlam menüsünden**kitaplık** **Oluştur** > ' u seçin.
+1. Azure Databricks çalışma alanında **Çalışma Alanı**’nı seçin ve sonra **Paylaşılan**’a sağ tıklayın. Bağlam menüsünden kitaplık **Oluştur**' u seçin  >  **Library**.
 
    ![Kitaplık Ekle iletişim kutusu](../media/tutorials/databricks-add-library-option.png "Kitaplık Ekle iletişim kutusu")
 
@@ -134,7 +134,7 @@ Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerin
 
      ![Maven koordinatları sağlama](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "Maven koordinatları sağlama")
 
-3. **Oluştur**’u seçin.
+3. **Oluştur**'u seçin.
 
 4. Kitaplığı eklediğiniz klasörü seçin ve sonra kitaplık adını seçin.
 
@@ -155,22 +155,22 @@ Bu öğreticide, Azure bilişsel [Hizmetler anomali algılayıcı API 'lerini](.
 
 2. **+ Kaynak oluştur**’u seçin.
 
-3. Azure Marketi altında **AI + Machine Learning** > **Tüm** > bilişsel hizmetler ' i seçin **-daha fazla** > **anomali algılayıcısı**. Ya da [Bu bağlantıyı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) kullanarak doğrudan **Oluştur** iletişim kutusuna gidebilirsiniz.
+3. Azure Marketi altında **AI + Machine Learning**tüm bilişsel hizmetler ' i seçin  >  **See all**  >  **-daha fazla**  >  **anomali algılayıcısı**. Ya da [Bu bağlantıyı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) kullanarak doğrudan **Oluştur** iletişim kutusuna gidebilirsiniz.
 
     ![Anomali algılayıcı kaynağı oluşturma](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "Anomali algılayıcı kaynağı oluşturma")
 
 4. **Oluştur** iletişim kutusunda aşağıdaki değerleri sağlayın:
 
-    |Değer |Açıklama  |
+    |Değer |Description  |
     |---------|---------|
-    |Adı     | Anomali algılayıcı kaynağı için bir ad.        |
+    |Name     | Anomali algılayıcı kaynağı için bir ad.        |
     |Abonelik     | Kaynağın ilişkilendirileceği Azure aboneliği.        |
     |Konum     | Bir Azure konumu.        |
     |Fiyatlandırma katmanı     | Hizmet için bir fiyatlandırma katmanı. Anomali algılayıcı fiyatlandırması hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
     |Kaynak grubu     | Yeni bir kaynak grubu oluşturmak veya var olan bir kaynak grubunu seçmek isteyip istemediğinizi belirtin.        |
 
 
-     **Oluştur**’u seçin.
+     **Oluştur**'u seçin.
 
 5. Kaynak oluşturulduktan sonra, **genel bakış** sekmesinden, ekran görüntüsünde gösterildiği gibi, **uç nokta** URL 'sini kopyalayıp kaydedin. Ardından **erişim anahtarlarını göster**' i seçin.
 
@@ -195,7 +195,7 @@ Bu bölümde, Databricks çalışma alanında aşağıdaki adlarla iki not defte
 
     ![Databricks 'te Not defteri oluşturma](../media/tutorials/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
 
-    **Oluştur**’u seçin.
+    **Oluştur**'u seçin.
 
 3. **AnalyzeTweetsFromEventHub** not defterini oluşturma adımlarını yineleyin.
 
@@ -300,6 +300,7 @@ pool.shutdown()
 
 Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aşağıdaki kod parçacığında gösterildiği gibi bir çıktı görürsünüz. Çıkışdaki her bir olay, Event Hubs zaman damgasının ve "LIKE" sayısının bir birleşimidir.
 
+```output
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
     Sent event: {"timestamp":"2019-04-24T09:38:48.000Z","favorite":1}
@@ -318,6 +319,7 @@ Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aş
 
     ...
     ...
+```
 
 ## <a name="read-tweets-from-event-hubs"></a>Event Hubs’tan tweet’leri okuma
 
@@ -423,16 +425,18 @@ object AnomalyDetector extends Serializable {
 
 Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aşağıdaki kod parçacığında gösterildiği gibi bir çıktı görürsünüz.
 
-    import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
-    import java.net.URL
-    import java.sql.Timestamp
-    import com.google.gson.{Gson, GsonBuilder, JsonParser}
-    import javax.net.ssl.HttpsURLConnection
-    defined class Point
-    defined class Series
-    defined class AnomalySingleResponse
-    defined class AnomalyBatchResponse
-    defined object AnomalyDetector
+```scala
+import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
+import java.net.URL
+import java.sql.Timestamp
+import com.google.gson.{Gson, GsonBuilder, JsonParser}
+import javax.net.ssl.HttpsURLConnection
+defined class Point
+defined class Series
+defined class AnomalySingleResponse
+defined class AnomalyBatchResponse
+defined object AnomalyDetector
+```
 
 Ardından ileride kullanılmak üzere bir toplama işlevi hazırlayın.
 ```scala
@@ -495,11 +499,13 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 Not defterlerini çalıştırmak için **SHIFT + ENTER** tuşlarına basın. Aşağıdaki kod parçacığında gösterildiği gibi bir çıktı görürsünüz.
 
-    import org.apache.spark.sql.Row
-    import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
-    import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
-    import scala.collection.immutable.ListMap
-    defined class AnomalyDetectorAggregationFunction
+```scala
+import org.apache.spark.sql.Row
+import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
+import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
+import scala.collection.immutable.ListMap
+defined class AnomalyDetectorAggregationFunction
+```
 
 Daha sonra anomali algılama için Olay Hub 'ından veri yükleyin. Yer tutucusunu, daha önce oluşturduğunuz Azure Event Hubs için olan değerlerle değiştirin.
 
@@ -680,7 +686,7 @@ Bu öğreticide, ayrıntı düzeyi saatlik olarak, ihtiyacınız olan ayrıntı 
 
 ![Databricks kümesini durdurma](../media/tutorials/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Küme oluşturma sırasında **işlem yapılmadan sonra \_ \_ sonlandırma** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Küme oluşturma sırasında ** \_ \_ Işlem yapılmadan sonra sonlandırma** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

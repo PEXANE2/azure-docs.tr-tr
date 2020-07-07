@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a040eb6db84c0e20be0f73a8e541ec824b2710c1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 966ca099c44ba8b0f2d3241c391f4d7a101afb26
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666399"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955106"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL Havuzu (Önizleme) oluşturma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, Azure portal kullanarak bir Synapse çalışma alanı
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE çalışma alanı](./quickstart-create-workspace.md)
@@ -46,7 +46,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 ![Yeni bir SQL havuzu oluşturmak için komutu etrafında kırmızı bir kutu ile SYNAPSE çalışma alanına genel bakış.](media/quickstart-create-sql-pool/create-sql-pool-portal-01.png)
 2. **Temel bilgiler** sekmesinde aşağıdaki ayrıntıları girin:
 
-    | Ayar | Önerilen değer | Açıklama |
+    | Ayar | Önerilen değer | Description |
     | :------ | :-------------- | :---------- |
     | **SQL havuzu adı** | Geçerli bir ad | SQL havuzunun adı. |
     | **Performans düzeyi** | DW100c | Bu hızlı başlangıç için maliyetleri azaltmak üzere en küçük boyuta ayarla |
@@ -61,7 +61,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 ![SQL havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
 5. **İncele ve oluştur**’u seçin.
-6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun. **Oluştur**’u seçin.
+6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun. **Oluştur**'u seçin.
 ![SQL havuzu akış oluşturma-ayarları gözden geçirme sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
 7. Bu noktada kaynak sağlama akışı başlar.

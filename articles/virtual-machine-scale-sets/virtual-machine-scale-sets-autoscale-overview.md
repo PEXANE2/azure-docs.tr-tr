@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 05/29/2018
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 90777b8303f2d31168e489c8e2a7ca3a779a11e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 11207dceb29c779c081c140ee8cd362d8a217acf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856747"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleriyle otomatik ölçeklendirmeye genel bakış
 Bir Azure sanal makine ölçek kümesi, uygulamanızı çalıştıran VM örneği sayısını otomatik olarak artırabilir veya azaltabilir. Bu otomatik ve esnek davranış, uygulamanızın performansını izlemek ve iyileştirmek için yönetim ek yükünü azaltır. Olumlu bir müşteri deneyimi için kabul edilebilir performansı tanımlayan kurallar oluşturun. Bu tanımlı eşikler karşılandığında, otomatik ölçeklendirme kuralları, ölçek ayarlarınızın kapasitesini ayarlamak için işlem alır. Ayrıca, ölçek kümesi kapasitesini sabit saatlerde otomatik olarak artırmak veya azaltmak için de olayları zamanlayabilirsiniz. Bu makale, hangi performans ölçümlerinin kullanılabilir olduğunu ve hangi eylemlerin otomatik ölçeklendirmeyi gerçekleştirebileceklerini bir genel bakış sağlar.
@@ -33,7 +33,7 @@ VM örneklerinizin kullanabildiği yerleşik ana bilgisayar ölçümlerinin bulu
 
 Konak tabanlı ölçümleri kullanan otomatik ölçeklendirme kuralları aşağıdaki araçlarla oluşturulabilir:
 
-- [Azure portal](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure portalındaki](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure şablonu](tutorial-autoscale-template.md)
@@ -81,12 +81,12 @@ Belirli bir ölçümü izlemek için otomatik ölçeklendirme kuralları oluştu
 
 Otomatik ölçeklendirme kuralları, ölçümler aşağıdaki işleçlerden biriyle tanımlanan eşiğe göre karşılaştırıldığında tetiklenir:
 
-| İşleç                 |
+| Operatör                 |
 |--------------------------|
 | Büyüktür             |
-| Büyüktür veya eşittir |
+| Büyük veya eşittir |
 | Küçüktür                |
-| Küçüktür veya eşittir    |
+| Küçük veya eşittir    |
 | Eşittir                 |
 | Eşit değildir             |
 

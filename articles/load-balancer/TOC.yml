@@ -103,6 +103,8 @@
           displayName: ARM
     - name: İç Load Balancer yapılandırma
       items:
+        - name: Azure portal
+          href: tutorial-load-balancer-standard-internal-portal.md
         - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
@@ -121,8 +123,6 @@
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: İç Load Balancer için Yüksek Kullanılabilirliğe Sahip Bağlantı Noktalarını Yapılandırma
-      href: load-balancer-configure-ha-ports.md
     - name: Bölgeler arasında taşıma
       items:
         - name: Dış yük dengeleyici - Portal

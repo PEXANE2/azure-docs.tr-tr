@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921944"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Öğretici: Özel Arama web sayfası oluşturma
 
@@ -60,11 +60,11 @@ Bing Özel Arama örneği oluşturmak için:
 
 Sonuçlara dahil etmek istediğiniz web sitelerini veya URL'leri **Etkin** sekmesine girin.
 
-1.       **Yapılandırma** sayfasında **Etkin** sekmesine tıklayın ve aramanıza dahil etmek istediğiniz bir veya daha fazla web sitesinin URL'sini girin.
+1. **Yapılandırma** sayfasında **Etkin** sekmesine tıklayın ve aramanıza dahil etmek istediğiniz bir veya daha fazla web sitesinin URL'sini girin.
 
     ![Tanım Düzenleyicisi etkin sekmesinin ekran görüntüsü](../media/customSrchEditor.png)
 
-2.       Örneğinizin sonuç döndürdüğünü doğrulamak için sağ taraftaki önizleme bölmesine bir sorgu girin. Bing yalnızca dizine eklenmiş genel web sitelerinden sonuç döndürür.
+2. Örneğinizin sonuç döndürdüğünü doğrulamak için sağ taraftaki önizleme bölmesine bir sorgu girin. Bing yalnızca dizine eklenmiş genel web sitelerinden sonuç döndürür.
 
 ## <a name="add-blocked-entries"></a>Engellenen girişleri ekleme
 

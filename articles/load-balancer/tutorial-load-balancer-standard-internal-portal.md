@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 918a7700df6b5be3ebca7949875127e42f8d3a91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8fcef13fbe41ac26b2a31d6871896428649eaa1
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75780384"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920860"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Öğretici: Azure portal standart yük dengeleyici ile iç trafik yükünü dengeleme
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 İsterseniz, bu adımları Portal yerine [Azure CLI](load-balancer-get-started-ilb-arm-cli.md) veya [Azure PowerShell](load-balancer-get-started-ilb-arm-ps.md) kullanarak yapabilirsiniz.
 
-Bu öğreticiyi kullanarak adımları uygulamak için Azure portal ' de oturum açın [https://portal.azure.com](https://portal.azure.com).
+Bu öğreticiyi kullanarak adımları uygulamak için Azure portal ' de oturum açın [https://portal.azure.com](https://portal.azure.com) .
 
 ## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>VNet, arka uç sunucuları ve test VM 'si oluşturma
 
@@ -38,26 +38,26 @@ Bu öğreticiyi kullanarak adımları uygulamak için Azure portal ' de oturum a
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-1. Portalın sol üst kısmında **kaynak** > oluştur**ağ** > **sanal ağ**' ı seçin.
+1. Portalın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **sanal ağ**' ı seçin.
    
 1. **Sanal ağ oluştur** bölmesinde şu değerleri yazın veya seçin:
    
    - **Ad**: **myvnet**yazın.
    - **ResourceGroup**: **Yeni oluştur**' u seçin ve **Myresourcegrouplb**girin ve **Tamam**' ı seçin. 
-   - **Alt ağ** > **adı**: **mybackendsubnet**yazın.
+   - **Alt ağ**  >  **Ad**: **Mybackendsubnet**yazın.
    
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
    ![Sanal ağ oluşturma](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-1. Portalın sol üst tarafında, **kaynak** > oluştur**işlem** > **Windows Server 2016 Datacenter**' u seçin. 
+1. Portalın sol üst tarafında, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2016 Datacenter**' u seçin. 
    
 1. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
-   - **Abonelik** > **kaynak grubu**: açılır ve **myresourcegrouplb**' ı seçin.
-   - **Örnek ayrıntıları** > **sanal makine adı**: tür **MyVM1**.
-   - **Örnek ayrıntıları** > **bölgesi**: **Doğu ABD 2**seçin.
+   - **Abonelik**  >  **Kaynak grubu**: açılır ve **Myresourcegrouplb**' ı seçin.
+   - **Örnek ayrıntıları**  >  **Sanal makine adı**: **MyVM1**yazın.
+   - **Örnek ayrıntıları**  >  **Bölge**: **Doğu ABD 2**seçin.
   
    
 1. **Ağ** sekmesini seçin veya **Sonraki: diskler**' i ve sonra **İleri: ağ**' ı seçin. 
@@ -74,7 +74,7 @@ Bu öğreticiyi kullanarak adımları uygulamak için Azure portal ' de oturum a
 
    
    
-1. **Yönetim** sekmesini seçin veya **İleri** > **Yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
+1. **Yönetim** sekmesini seçin veya **İleri**  >  **Yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
    
 1. **İncele ve oluştur**’u seçin.
    
@@ -88,7 +88,7 @@ Bu öğreticiyi kullanarak adımları uygulamak için Azure portal ' de oturum a
 
 Portalı kullanarak standart bir iç yük dengeleyici oluşturun. Oluşturduğunuz ad ve IP adresi, yük dengeleyicinin ön ucu olarak otomatik olarak yapılandırılır.
 
-1. Portalın sol üst tarafında, **kaynak** > oluştur**ağ** > **Load Balancer**' ı seçin.
+1. Portalın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **Load Balancer**' ı seçin.
    
 2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
@@ -96,7 +96,7 @@ Portalı kullanarak standart bir iç yük dengeleyici oluşturun. Oluşturduğun
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna *Myresourcegrouplb* yazın.|
-    | Adı                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Bölge         | **Doğu ABD 2**’yi seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart**' ı seçin.                          |
@@ -150,7 +150,7 @@ Yük dengeleyicinin VM durumunu izlemesine izin vermek için, bir sistem durumu 
    - **Ad**: **myhealtharaştırması**yazın.
    - **Protokol**: açılır ve **http**' yi seçin. 
    - **Bağlantı noktası**: **80**yazın. 
-   - **Yol**: varsayılan **/** URI için kabul edin. Bu değeri başka bir URI ile değiştirebilirsiniz. 
+   - **Yol**: **/** varsayılan URI için kabul edin. Bu değeri başka bir URI ile değiştirebilirsiniz. 
    - **Aralık**: **15**yazın. Aralık, yoklama denemeleri arasındaki saniye sayısıdır.
    - **Sağlıksız eşik**: tür **2**. Bu değer, bir VM 'nin sağlıksız olduğu kabul edilmeden önce oluşan ardışık yoklama hatalarının sayısıdır.
    
@@ -180,6 +180,8 @@ Yük dengeleyici kuralı, trafiğin sanal makinelere nasıl dağıtıldığını
    - **Arka uç havuzu**: **mybackendpool**' u seçin.
    - **Durum araştırması**: **myhealtharaştırması**' ni seçin. 
    
+Azure portal kullanarak [yüksek kullanılabilirlik bağlantı noktalarını](load-balancer-ha-ports-overview.md) yapılandırmak Için, **ha bağlantı noktaları** onay kutusunu seçin. Seçildiğinde, ilişkili bağlantı noktası ve protokol yapılandırması otomatik olarak doldurulur. 
+
 1. **Tamam**’ı seçin.
    
    ![Yük dengeleyici kuralı ekleme](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)

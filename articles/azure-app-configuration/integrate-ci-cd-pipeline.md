@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4b1b9e2360f4ae1cf428133006ed08327b10cdef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 47af78e562329a7221dcba865fc7304543a282df
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790771"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856772"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD işlem hattıyla tümleştirme
 
@@ -32,7 +32,7 @@ Aşağıdaki örnek, uygulama yapılandırma verilerinin hızlı başlangıçlar
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Yerel olarak oluşturursanız, henüz yapmadıysanız [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi indirip yükleyin.
 
@@ -48,7 +48,7 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](https://docs.micr
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. *Program.cs*'i açın ve yöntemi çağırarak `CreateWebHostBuilder` `config.AddJsonFile()` , bu JSON dosyasını kullanmak için yöntemi güncelleştirin.  `System.Reflection` Ad alanını da ekleyin.
+1. *Program.cs*'i açın ve yöntemi çağırarak, bu `CreateWebHostBuilder` json dosyasını kullanmak için yöntemi güncelleştirin `config.AddJsonFile()` .  `System.Reflection`Ad alanını da ekleyin.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -69,25 +69,35 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](https://docs.micr
 1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. 
     Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     MacOS veya Linux kullanıyorsanız şu komutu çalıştırın:
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. .NET Core CLI kullanarak uygulamayı derlemek için komut kabuğu 'nda aşağıdaki komutu çalıştırın:
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 3. Oluşturma başarıyla tamamlandıktan sonra, Web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
-4. Bir tarayıcı penceresi açın ve yerel olarak `http://localhost:5000`barındırılan Web uygulaması IÇIN varsayılan URL olan adresine gidin.
+4. Bir tarayıcı penceresi açın ve `http://localhost:5000` yerel olarak barındırılan Web uygulaması için varsayılan URL olan adresine gidin.
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/aspnet-core-app-launch-local.png)
 
