@@ -10,12 +10,11 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: c84e36f668a9b5cd7fdb61103300d971fdf6c0fa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 62cbaec3e4eaffb9ff3b29e97516ed7e039b38ff
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563081"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028111"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak metin ve düzen bilgilerini ayıklama
 
@@ -23,14 +22,14 @@ Bu hızlı başlangıçta, form belgelerinden metin düzeni bilgilerini ve tablo
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
 - Form belgesi. Bu hızlı başlangıç için [örnek veri kümesinden](https://go.microsoft.com/fwlink/?linkid=2090451) bir görüntü indirebilirsiniz.
 
 > [!NOTE]
-> Bu hızlı başlangıçta yerel olarak depolanmış bir belge kullanılmaktadır. URL ile erişilen uzak dosyaları kullanmayı öğrenin ' i kullanmak için [başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)bakın.
+> Bu hızlı başlangıçta yerel olarak depolanmış bir belge kullanılmaktadır. URL ile erişilen uzak dosyaları kullanmayı öğrenin ' i kullanmak için [başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)bakın.
 
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
@@ -39,7 +38,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 ## <a name="analyze-the-form-layout"></a>Form yerleşimini çözümle
 
-Düzeni çözümlemeye başlamak için aşağıdaki Python betiğini kullanarak Düzen API 'sini **[Çözümle](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** ' yi çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
+Düzeni çözümlemeye başlamak için aşağıdaki Python betiğini kullanarak Düzen API 'sini **[Çözümle](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)** ' yi çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `<Endpoint>`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
 1. `<path to your form>`Yerel form belgenizin yoluyla değiştirin.
@@ -90,7 +89,7 @@ https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e
 
 ## <a name="get-the-layout-results"></a>Düzen sonuçlarını al
 
-**Düzen çözümleme** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **[düzenleme düzeni sonucunu al](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API 'sini çağırın. Aşağıdaki kodu Python betiğinizin altına ekleyin. Bu kod, işlem KIMLIĞI değerini yeni bir API çağrısında kullanır. Bu betik, sonuçlar kullanılabilir olana kadar, API 'YI düzenli aralıklarla çağırır. Bir saniye veya daha fazla Aralık öneririz.
+**Düzen çözümleme** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **[düzenleme düzeni sonucunu al](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** API 'sini çağırın. Aşağıdaki kodu Python betiğinizin altına ekleyin. Bu kod, işlem KIMLIĞI değerini yeni bir API çağrısında kullanır. Bu betik, sonuçlar kullanılabilir olana kadar, API 'YI düzenli aralıklarla çağırır. Bir saniye veya daha fazla Aralık öneririz.
 
 ```python
 n_tries = 10
@@ -283,4 +282,4 @@ Aşağıdaki fatura görüntüsüne ve buna karşılık gelen JSON çıktısına
 Bu hızlı başlangıçta, bir faturaya ait metin yerleşimini ayıklamak için Python ile REST API adlı form tanıyıcıyı kullandınız. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için başvuru belgelerine bakın.
 
 > [!div class="nextstepaction"]
-> [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)
+> [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)

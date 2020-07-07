@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,16 +8,15 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 01c1c7c0bdf8e55b002b73682407a3e03ee30b8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 95f0e542022f64a5a5bf7d7009c79382e25392df
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085798"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "86035739"
 ---
-App Service planında bir [Web uygulaması](../articles/app-service/containers/app-service-linux-intro.md) oluşturun. `myAppServicePlan` 
+App Service planında bir [Web uygulaması](../articles/app-service/containers/app-service-linux-intro.md) oluşturun `myAppServicePlan` . 
 
-Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `RUBY|2.3` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanlarını görmek için öğesini [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)çalıştırın. 
+Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı `RUBY|2.6.2` olarak ayarlanmıştır. Desteklenen tüm çalışma zamanlarını görmek için öğesini çalıştırın [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) . 
 
 ```azurecli-interactive
 # Bash

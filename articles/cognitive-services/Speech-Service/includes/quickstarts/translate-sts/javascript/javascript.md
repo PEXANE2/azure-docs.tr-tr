@@ -4,14 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 88d03e5b8090687930f729e3d55be1ece392ec30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: abd34ddf39bd8e64740d3edd4a2bf4f44851c07e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85839097"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035596"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
@@ -41,7 +40,7 @@ Klasörde `index.html` adlı yeni bir dosya oluşturun ve bu dosyayı bir metin 
 Web sayfasını bir web sunucusunda barındırmak istiyorsanız, tanıtım uygulamanız için isteğe bağlı olarak bir belirteç kaynağı sağlayabilirsiniz.
 Bu şekilde, abonelik anahtarınız hiçbir zaman sunucunuzdan çıkmaz ve kullanıcılar bir yetkilendirme kodu girmeden konuşma özelliklerini kullanabilir.
 
-`token.php` adlı yeni bir dosya oluşturun. Bu örnekte web sunucunuzun PHP betik oluşturma dilini desteklediği varsayılmaktadır. Aşağıdaki kodu girin:
+`token.php` adlı yeni bir dosya oluşturun. Bu örnekte, Web sunucunuzun, kıvrımlı özellikli PHP komut dosyası dilini desteklediğini varsaydık. Aşağıdaki kodu girin:
 
 ```php
 <?php
@@ -67,11 +66,11 @@ echo curl_exec($ch);
 
 ## <a name="build-and-run-the-sample-locally"></a>Örneği yerel olarak derleyin ve çalıştırın
 
-Uygulamayı başlatmak için, index.html dosyasına çift tıklayın veya index.html dosyasını sık kullandığınız web tarayıcısıyla açın. Bu, abonelik anahtarınızı ve [bölgenizi](../../../../regions.md) girmenizi ve giriş metninin sentiğini tetiklemeyi sağlayan basıt bir GUI sunacaktır.
+Uygulamayı başlatmak için, index.html dosyasına çift tıklayın veya index.html dosyasını sık kullandığınız web tarayıcısıyla açın. Bu, abonelik anahtarınızı ve [bölgenizi](../../../../regions.md) girmenizi ve giriş konuşmanın metin dökümünü tetiklemeyi sağlayan basıt bir GUI sunacaktır.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Web sunucusu aracılığıyla örnek derleme ve çalıştırma
 
-Uygulamanızı başlatmak için, en sevdiğiniz web tarayıcınızı açın ve klasörü barındırın bulunduğu genel URL 'ye işaret edin, [bölgenizi](../../../../regions.md)girin ve giriş metninde sensit öğesini tetikleyin. Yapılandırılırsa, belirteç kaynağınızdan bir belirteç alır.
+Uygulamanızı başlatmak için, en sevdiğiniz web tarayıcınızı açın ve klasörü barındırın bulunduğu genel URL 'ye işaret edin, [bölgenizi](../../../../regions.md)girin ve giriş konuşmanın metin dökümünü tetikleyin. Yapılandırılırsa, belirteç kaynağınızdan bir belirteç alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

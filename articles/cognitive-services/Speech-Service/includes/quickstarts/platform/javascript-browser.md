@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: fa8bf79c047911ca283bf60261bba0cbdd6816a7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 53cabaec21daafb910b958bb4b573dd033ca6283
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980202"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035616"
 ---
 Bu kılavuzda, bir Web sayfasıyla kullanılmak üzere JavaScript için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir.
 
@@ -27,11 +26,12 @@ Yeni, boş bir klasör oluşturun. Örneği bir web sunucusunda barındırmak is
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>JavaScript için Konuşma SDK’sını bu klasöre çıkarın
 
-Konuşma SDK’sını [.zip paketi](https://aka.ms/csspeech/jsbrowserpackage) olarak indirin ve yeni oluşturulan klasöre çıkarın. Bu, aşağıdaki dört dosyanın dağıtılmasına neden olur:
+Konuşma SDK’sını [.zip paketi](https://aka.ms/csspeech/jsbrowserpackage) olarak indirin ve yeni oluşturulan klasöre çıkarın. Bu, beş dosyanın dağıtılmasına neden olur:
 * `microsoft.cognitiveservices.speech.sdk.bundle.js`Konuşma SDK 'sının okunabilir bir sürümü.
 * `microsoft.cognitiveservices.speech.sdk.bundle.js.map`SDK kodunda hata ayıklamak için kullanılan bir eşleme dosyası.
 * `microsoft.cognitiveservices.speech.sdk.bundle.d.ts`TypeScript ile kullanılacak nesne tanımları
 * `microsoft.cognitiveservices.speech.sdk.bundle-min.js`Konuşma SDK 'sının küçültülmüş bir sürümü.
+* `speech-processor.js`Bazı tarayıcılarda performansı artırmak için kod.
 
 ## <a name="create-an-indexhtml-page"></a>Bir index.html sayfası oluşturma
 

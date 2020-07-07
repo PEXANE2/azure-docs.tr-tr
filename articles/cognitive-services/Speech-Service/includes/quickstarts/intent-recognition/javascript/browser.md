@@ -4,12 +4,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 13f641c2e5baf02cd7f6f200a5b1965ea9a44c55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 4889d9b0f142206bf26a69f275cb60598fba577f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85838763"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035448"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
@@ -245,7 +244,7 @@ Bu kodu model eklemenin altına ekleyin:
 Web sayfasını bir web sunucusunda barındırmak istiyorsanız, tanıtım uygulamanız için isteğe bağlı olarak bir belirteç kaynağı sağlayabilirsiniz.
 Bu şekilde, abonelik anahtarınız hiçbir zaman sunucunuzdan çıkmaz ve kullanıcılar bir yetkilendirme kodu girmeden konuşma özelliklerini kullanabilir.
 
-`token.php` adlı yeni bir dosya oluşturun. Bu örnekte web sunucunuzun PHP betik oluşturma dilini desteklediği varsayılmaktadır. Aşağıdaki kodu girin:
+`token.php` adlı yeni bir dosya oluşturun. Bu örnekte, Web sunucunuzun, kıvrımlı özellikli PHP komut dosyası dilini desteklediğini varsaydık. Aşağıdaki kodu girin:
 
 ```php
 <?php

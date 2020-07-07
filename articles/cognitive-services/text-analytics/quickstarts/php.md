@@ -8,14 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: fd8b1d0ea1562bd1f390815f9d7228bd6b2801eb
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: 0402ed6177ca7f9d10cbb7d2a81352af0108b828
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610923"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027950"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için PHP kullanma
 <a name="HOLTop"></a>
@@ -24,13 +23,13 @@ Bu makalede, [dil algılama](#Detect), yaklaşım [Çözümleme](#SentimentAnaly
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dili algılama
+## <a name="detect-language"></a>Dil algılama
 
 Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) kullanarak bir metin belgesinin dilini algılar.
 

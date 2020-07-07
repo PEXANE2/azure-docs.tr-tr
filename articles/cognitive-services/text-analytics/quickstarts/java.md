@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 68095a86d3593349a356a6ee44e3f75ab5726979
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: d6278452eda0a6a043654d90519374a741caf76a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611008"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027980"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Hızlı başlangıç: Azure Metin Analizi bilişsel hizmetini çağırmak için Java kullanma
 <a name="HOLTop"></a>
@@ -25,7 +24,7 @@ Bu makalede, Java ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?Link
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -33,7 +32,7 @@ Ayrıca kayıt sırasında oluşturulan [uç nokta ve erişim anahtarı](../../c
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Dili algılama
+## <a name="detect-language"></a>Dil algılama
 
 Dil Algılama API 'SI, [Dili algıla yöntemini](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)kullanarak bir metin belgesinin dilini algılar.
 

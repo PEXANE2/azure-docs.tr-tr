@@ -8,12 +8,11 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 537dabe09c41012b9e15998ce3af8198dcfb62d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80245783"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027724"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
 
@@ -31,7 +30,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core uygulaması için uygulama ayarları
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** > **Create** > **anahtar değeri** oluştur ' u seçin:
+6. **Configuration Explorer**  >  **Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini**anahtar değeri** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -60,10 +59,10 @@ Gizli dizi Yöneticisi 'ni kullanmak için `UserSecretsId` *. csproj* dosyanıza
 
 1. *. Csproj* dosyasını açın.
 
-1.  Burada gösterildiği `UserSecretsId` gibi bir öğe ekleyin. Aynı GUID 'i kullanabilir veya bu değeri kendi kendinizinkini kullanarak değiştirebilirsiniz.
+1.  `UserSecretsId`Burada gösterildiği gibi bir öğe ekleyin. Aynı GUID 'i kullanabilir veya bu değeri kendi kendinizinkini kullanarak değiştirebilirsiniz.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`, `CreateWebHostBuilder` .net Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
+    > `CreateHostBuilder``CreateWebHostBuilder`, .NET Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
     
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
     
@@ -106,7 +105,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-1. Aşağıdaki komutu çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet paketine bir başvuru ekleyin:
+1. `Microsoft.Azure.AppConfiguration.AspNetCore`Aşağıdaki komutu çalıştırarak NuGet paketine bir başvuru ekleyin:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
@@ -129,7 +128,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     ```
 
     > [!IMPORTANT]
-    > Bazı kabuklar, tırnak içine alınmadığı takdirde bağlantı dizesini keser. `dotnet user-secrets` Komutun çıktısının tüm bağlantı dizesini belirttiğinden emin olun. Aksi takdirde, bağlantı dizesini tırnak içine alarak komutu yeniden çalıştırın.
+    > Bazı kabuklar, tırnak içine alınmadığı takdirde bağlantı dizesini keser. `dotnet user-secrets`Komutun çıktısının tüm bağlantı dizesini belirttiğinden emin olun. Aksi takdirde, bağlantı dizesini tırnak içine alarak komutu yeniden çalıştırın.
 
     Gizli dizi Yöneticisi yalnızca Web uygulamasını yerel olarak test etmek için kullanılır. Uygulama [Azure App Service](https://azure.microsoft.com/services/app-service/web)dağıtıldığında, bağlantı dizesini depolamak Için gizli yönetici yerine App Service **bağlantı dizeleri** uygulama ayarını kullanın.
 
@@ -141,10 +140,10 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. Yöntemini çağırarak `CreateWebHostBuilder` `config.AddAzureAppConfiguration()` uygulama yapılandırmasını kullanmak için yöntemi güncelleştirin.
+1. Yöntemini `CreateWebHostBuilder` çağırarak uygulama yapılandırmasını kullanmak için yöntemi güncelleştirin `config.AddAzureAppConfiguration()` .
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`, `CreateWebHostBuilder` .net Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
+    > `CreateHostBuilder``CreateWebHostBuilder`, .NET Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -175,7 +174,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
     ---
 
-1. /Views/Home ' a gidin ve *Index. cshtml*dosyasını açın. * <app root>* İçeriğini şu kodla değiştirin:
+1. * <app root> /Views/Home* ' a gidin ve *Index. cshtml*dosyasını açın. İçeriğini şu kodla değiştirin:
 
     ```HTML
     @using Microsoft.Extensions.Configuration
@@ -187,14 +186,14 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
         }
         h1 {
             color: @Configuration["TestApp:Settings:FontColor"];
-            font-size: @Configuration["TestApp:Settings:FontSize"];
+            font-size: @Configuration["TestApp:Settings:FontSize"]px;
         }
     </style>
 
     <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-1. /Views/Shared ' a gidin ve *_Layout. cshtml*dosyasını açın. * <app root>* İçeriğini şu kodla değiştirin:
+1. * <app root> /Views/Shared* ' a gidin ve *_Layout. cshtml*dosyasını açın. İçeriğini şu kodla değiştirin:
 
     ```HTML
     <!DOCTYPE html>
@@ -235,7 +234,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     dotnet run
     ```
 
-1. Yerel makinenizde çalışıyorsanız, ' ye `http://localhost:5000`gitmek için bir tarayıcı kullanın. Bu, yerel olarak barındırılan Web uygulamasının varsayılan URL 'sidir.  
+1. Yerel makinenizde çalışıyorsanız, ' ye gitmek için bir tarayıcı kullanın `http://localhost:5000` . Bu, yerel olarak barındırılan Web uygulamasının varsayılan URL 'sidir.  
 
 Azure Cloud Shell çalışıyorsanız, *Web önizleme* düğmesini ve ardından *Yapılandır*' ı seçin.  
 

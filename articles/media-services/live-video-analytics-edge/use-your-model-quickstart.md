@@ -3,12 +3,11 @@ title: Kendi modelinizi kullanarak canlı videoyu çözümleyin-Azure
 description: Bu hızlı başlangıçta, (benzetimli) bir IP kamerasından canlı video akışını çözümlemek için bilgisayar vizyonu uygularsınız.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 73b8f83b9e3c450612c742a831ac800343b3bbbc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
-ms.translationtype: MT
+ms.openlocfilehash: e19c5bd6b44f9a4dd225f6a849ee9aaf62fa6273
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816693"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027673"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Hızlı başlangıç: kendi modelinizi kullanarak canlı videoyu çözümleyin
 
@@ -190,7 +189,7 @@ Aşağıdaki iletilerde, canlı video analizi modülü, uygulama özelliklerini 
 
 ### <a name="mediasessionestablished-event"></a>Mediasessionkurulduğu olayı
 
-Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü, rtspsim-live55 kapsayıcısında çalışan RTSP sunucusuna bağlanmaya çalışır. Bağlantı başarılı olursa, aşağıdaki olay yazdırılır. Olay türü `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü, rtspsim-live555 kapsayıcısında çalışan RTSP sunucusuna bağlanmaya çalışır. Bağlantı başarılı olursa, aşağıdaki olay yazdırılır. Olay türü `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:

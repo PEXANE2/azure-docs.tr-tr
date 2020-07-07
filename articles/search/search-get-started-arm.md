@@ -9,26 +9,27 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/20/2020
-ms.openlocfilehash: 670cebe1c0f1c9002e33b729d0db9ee9f9a01283
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.openlocfilehash: 2579249cc088063d98bb101c7a5b5118e4b07722
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682536"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027061"
 ---
-# <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Bilişsel Arama dağıtma
+# <a name="quickstart-deploy-cognitive-search-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Bilişsel Arama dağıtma
 
-Bu makalede, Azure portal Azure Bilişsel Arama kaynağını dağıtmak için Kaynak Yöneticisi şablonu kullanma işleminde size yol gösterilir.
+Bu makalede, Azure portal bir Azure Bilişsel Arama kaynağı dağıtmak için bir Azure Resource Manager şablonu (ARM şablonu) kullanma işleminde size yol gösterilir.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ortamınız önkoşulları karşılıyorsa ve ARM şablonlarını kullanma hakkında bilginiz varsa, **Azure 'A dağıt** düğmesini seçin. Şablon Azure portal açılır.
+
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-a-cognitive-search-service"></a>Bilişsel Arama hizmeti oluşturma
-
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+## <a name="review-the-template"></a>Şablonu gözden geçirme
 
 Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
@@ -36,15 +37,15 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 
 Bu şablonda tanımlanan Azure kaynağı:
 
-- [Microsoft. Search/searchServices](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchServices): Azure bilişsel arama hizmeti oluşturma
+- [Microsoft. Search/searchServices](/azure/templates/Microsoft.Search/searchServices): Azure bilişsel arama hizmeti oluşturma
 
-### <a name="deploy-the-template"></a>Şablonu dağıtma
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Bilişsel Arama kaynağı oluşturur.
 
-[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
+[![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
-Portal, kolayca parametre değerleri sağlamanıza olanak tanıyan bir form görüntüler. Bazı parametreler şablondaki varsayılan değerlerle önceden doldurulur. Aboneliğiniz, kaynak grubunuz, konumunuz ve hizmet adınızı sağlamanız gerekir. Bilişsel hizmetler 'i bir [AI zenginleştirme](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) ardışık düzeninde kullanmak istiyorsanız, örneğin ikili resim dosyalarını metin için çözümlemek üzere, hem bilişsel arama hem de bilişsel hizmetler sunan bir konum seçin. Her iki hizmetin de AI zenginleştirme iş yükleri için aynı bölgede olması gerekir. Formu tamamladıktan sonra, hüküm ve koşulları kabul etmeniz ve sonra dağıtımınızı tamamlayabilmeniz için satın al düğmesini seçmeniz gerekir.
+Portal, kolayca parametre değerleri sağlamanıza olanak tanıyan bir form görüntüler. Bazı parametreler şablondaki varsayılan değerlerle önceden doldurulur. Aboneliğiniz, kaynak grubunuz, konumunuz ve hizmet adınızı sağlamanız gerekir. Bilişsel hizmetler 'i bir [AI zenginleştirme](cognitive-search-concept-intro.md) ardışık düzeninde kullanmak istiyorsanız, örneğin ikili resim dosyalarını metin için çözümlemek üzere, hem bilişsel arama hem de bilişsel hizmetler sunan bir konum seçin. Her iki hizmetin de AI zenginleştirme iş yükleri için aynı bölgede olması gerekir. Formu tamamladıktan sonra, hüküm ve koşulları kabul etmeniz ve sonra dağıtımınızı tamamlayabilmeniz için satın al düğmesini seçmeniz gerekir.
 
 > [!div class="mx-imgBorder"]
 > ![Şablon Azure portal görüntüleme](./media/search-get-started-arm/arm-portalscrnsht.png)
@@ -59,11 +60,9 @@ Diğer Bilişsel Arama hızlı başlangıçler ve öğreticiler bu hızlı başl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir Bilişsel Arama hizmeti oluşturdunuz ve dağıtımı doğruladı. Bilişsel Arama ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta ARM şablonunu kullanarak bir Bilişsel Arama hizmeti oluşturdunuz ve dağıtımı doğruladı. Bilişsel Arama ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
 
- - [Azure bilişsel arama genel bakışını](https://docs.microsoft.com/azure/search/search-what-is-azure-search) okuyun
- - Arama hizmetiniz için [bir dizin oluşturma](https://docs.microsoft.com/azure/search/search-get-started-portal)
- - Portal Sihirbazı 'nı kullanarak [bir arama uygulaması oluşturma](https://docs.microsoft.com/azure/search/search-create-app-portal)
- - Verilerden bilgi ayıklamak için [bir beceri oluşturun](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob)
-
-
+- [Azure bilişsel arama genel bakışını](search-what-is-azure-search.md)okuyun.
+- Arama hizmetiniz için [bir dizin oluşturun](search-get-started-portal.md) .
+- Portal Sihirbazı 'nı kullanarak [bir demo uygulaması oluşturun](search-create-app-portal.md) .
+- Verilerden bilgi ayıklamak için [bir beceri oluşturun](cognitive-search-quickstart-blob.md) .

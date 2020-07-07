@@ -8,12 +8,11 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 92b88c84650227e43755e6e34d09cc26003457dc
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
-ms.translationtype: MT
+ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800588"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027214"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure sanal WAN hakkında
 
@@ -124,9 +123,9 @@ Konum bilgileri için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-
 
 Yol tablolarında ilişkilendirme ve yayma özellikleri artık vardır. Önceden var olan bir yol tablosu, bu özelliklere sahip olmayan bir yol tablosudur. Hub yönlendirmesinde önceden varolan yollar varsa ve yeni özellikleri kullanmak istiyorsanız, aşağıdakileri göz önünde bulundurun:
 
-* **Sanal hub 'da önceden mevcut yollara sahip standart sanal WAN müşterileri**: yeni yol tablosu yeteneklerini kullanmak için, Azure Portal ' deki Hub için yönlendirme bölümünde bulunan ön mevcut yolları silin ve ardından hub Için yol tabloları bölümünde yeni rota tabloları oluşturmayı deneyin.
+* **Sanal hub 'da önceden var olan yollara sahip standart sanal WAN müşterileri**: yeni yol tablosu yeteneklerini kullanmak Için lütfen Azure 'daki dışarı aktarmak Için 3 Ağustos 'tan tamamlanana kadar bekleyin. Azure portal Hub için yönlendirme bölümünde önceden var olan yollara sahipseniz, önce bunları silmeniz ve ardından yeni rota tabloları oluşturmaya (Azure portal Hub için yönlendirme tabloları bölümünde kullanılabilir) denemeniz gerekir.
 
-* **Sanal hub 'da önceden var olan yolların bulunduğu temel sanal WAN müşterileri**: yeni yol tablosu yeteneklerini kullanmak Için Azure portalında hub 'ın yönlendirme bölümünde bulunan ön mevcut yolları silin ve ardından temel sanal WAN 'Nizi standart sanal WAN 'a **yükseltin** . Bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
+* **Sanal hub 'da önceden var olan yollara sahip temel sanal WAN müşterileri**: yeni yol tablosu yeteneklerini kullanmak Için lütfen Azure 'daki dışarı aktarmak Için 3 Ağustos 'tan sonra tamamlanana kadar bekleyin. Azure portal Hub için yönlendirme bölümünde önceden mevcut olan yollar varsa öncelikle bunları silmeniz ve ardından temel sanal WAN 'ınızı standart sanal WAN 'a **yükseltmeniz** gerekir. Bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>SSS
 

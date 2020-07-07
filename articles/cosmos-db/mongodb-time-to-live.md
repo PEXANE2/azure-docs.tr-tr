@@ -7,12 +7,11 @@ ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
-ms.openlocfilehash: 0fe0c9e41a5787a963920d300cd99ecaf8803019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 74c140f2fa08fb49235c0503ea5812e047185f8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262778"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023508"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'siyle verilerde süre sonu
 
@@ -74,7 +73,7 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 Belge başına TTL özelliği Azure Cosmos DB MongoDB için API 'SI ile etkinleştirilebilir.
 
-![Portalda belge başına TTL özelliği etkinleştirmenin ekran görüntüsü](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="Portalda belge başına TTL özelliği etkinleştirmenin ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Cosmos DB verileri yaşam süresi ile otomatik olarak sona erer](../cosmos-db/time-to-live.md)

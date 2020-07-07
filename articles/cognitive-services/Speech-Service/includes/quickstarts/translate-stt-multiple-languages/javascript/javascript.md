@@ -4,14 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ed9e60eccf5d5c44f89ec72895ccb98b1d304faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: af65ae6b71b12b55745951895f424e7c5fd0c950
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85838798"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035528"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
@@ -41,7 +40,7 @@ Klasörde `index.html` adlı yeni bir dosya oluşturun ve bu dosyayı bir metin 
 Web sayfasını bir web sunucusunda barındırmak istiyorsanız, tanıtım uygulamanız için isteğe bağlı olarak bir belirteç kaynağı sağlayabilirsiniz.
 Bu şekilde, abonelik anahtarınız hiçbir zaman sunucunuzdan çıkmaz ve kullanıcılar bir yetkilendirme kodu girmeden konuşma özelliklerini kullanabilir.
 
-`token.php` adlı yeni bir dosya oluşturun. Bu örnekte web sunucunuzun PHP betik oluşturma dilini desteklediği varsayılmaktadır. Aşağıdaki kodu girin:
+`token.php` adlı yeni bir dosya oluşturun. Bu örnekte, Web sunucunuzun, kıvrımlı özellikli PHP komut dosyası dilini desteklediğini varsaydık. Aşağıdaki kodu girin:
 
 ```php
 <?php

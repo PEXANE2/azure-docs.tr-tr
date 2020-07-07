@@ -10,12 +10,11 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: d9bb6ef7629d236120660912daaad82ad18b8480
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: b177063d4e50a310534ffa4c04557543c3354249
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563092"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028083"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API ve Python kullanarak etiketli form tanıyıcı modelini eğitme
 
@@ -23,14 +22,14 @@ Bu hızlı başlangıçta, el ile etiketlenmiş verileri olan özel bir modeli e
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
 - Aynı türde en az altı biçim kümesi. Bu verileri modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
 
 > [!NOTE]
-> Bu hızlı başlangıç, URL tarafından erişilen uzak belgeleri kullanır. Bunun yerine yerel dosyaları kullanmak için [başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)bakın.
+> Bu hızlı başlangıç, URL tarafından erişilen uzak belgeleri kullanır. Bunun yerine yerel dosyaları kullanmak için [başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)bakın.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
@@ -65,8 +64,8 @@ Tüm bu dosyalar aynı alt klasörü kaplamalıdır ve aşağıdaki biçimde olm
 
 Hizmetin etiketli eğitim için karşılık gelen giriş dosyalarını göz önünde bulundurmasını sağlamak üzere OCR sonuç dosyaları gerekir. Belirli bir kaynak formun OCR sonuçlarını almak için aşağıdaki adımları izleyin:
 
-1. Okuma düzeni kapsayıcısında, istek gövdesinin bir parçası olarak giriş dosyasını içeren **[Düzen çözümleme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API 'sini çağırın. Yanıtın **Işlem konumu** üst BILGISINDE bulunan kimliği kaydedin.
-1. Önceki adımdan alınan işlem KIMLIĞINI kullanarak, çözüm **[Düzenleme sonucunu al](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API 'sini çağırın.
+1. Okuma düzeni kapsayıcısında, istek gövdesinin bir parçası olarak giriş dosyasını içeren **[Düzen çözümleme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)** API 'sini çağırın. Yanıtın **Işlem konumu** üst BILGISINDE bulunan kimliği kaydedin.
+1. Önceki adımdan alınan işlem KIMLIĞINI kullanarak, çözüm **[Düzenleme sonucunu al](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** API 'sini çağırın.
 1. Yanıtı alın ve içeriği bir dosyaya yazın. Her kaynak formu için, karşılık gelen OCR dosyası eklenmiş özgün dosya adına sahip olmalıdır `.ocr.json` . OCR JSON çıktısı aşağıdaki biçimde olmalıdır. Tam bir örnek için [örnek OCR dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) bakın. 
 
     ```json
@@ -197,7 +196,7 @@ Her kaynak formu için, karşılık gelen etiket dosyası eklenmiş özgün dosy
 
 ## <a name="train-a-model-using-labeled-data"></a>Etiketli verileri kullanarak bir modeli eğitme
 
-Etiketli verilerle bir modeli eğiteetmek için aşağıdaki python kodunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
+Etiketli verilerle bir modeli eğiteetmek için aşağıdaki python kodunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `<Endpoint>`Form tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
 1. `<SAS URL>`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
@@ -561,4 +560,4 @@ Bu senaryonun müşterilerimiz için önemli olduğunu anladık ve gelecekte bun
 Bu hızlı başlangıçta, el ile etiketlenmiş verilerle bir modeli eğitmek için Python ile REST API form tanıyıcıyı kullanmayı öğrendiniz. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için API başvuru belgelerine bakın.
 
 > [!div class="nextstepaction"]
-> [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
