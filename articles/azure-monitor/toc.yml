@@ -389,6 +389,8 @@
               href: log-query/unify-app-resource-data.md
         - name: Örnekler ve yönergeler
           items:
+            - name: Örnek sorgular
+              href: log-query/saved-queries.md
             - name: Günlük sorgusu örnekleri
               href: log-query/examples.md
             - name: Akıllı analiz örnekleri
@@ -1125,6 +1127,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: Uygulama verilerini kullanan pano
               href: learn/tutorial-app-dashboards.md
+            - name: Log Analytics Panosu’nu yükseltme
+              href: log-query/dashboard-upgrade.md
         - name: Grafana'ya veri gönderme
           href: platform/grafana-plugin.md
     - name: Özel veri koleksiyonu ve analiz
@@ -1200,6 +1204,10 @@
           href: app/custom-endpoints.md
         - name: Azure İşlevleri
           href: app/azure-functions-supported-features.md
+        - name: Sürüm notları
+          items:
+            - name: Web uygulaması uzantısı
+              href: app/web-app-extension-release-notes.md
         - name: Veri modeli
           items:
             - name: Genel Bakış

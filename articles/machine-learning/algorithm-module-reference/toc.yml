@@ -146,6 +146,10 @@
       href: preprocess-text.md
     - name: Görünmeyen Dirichlet Ayırması
       href: latent-dirichlet-allocation.md
+    - name: Vowpal Wabbit Modelini Puanlama
+      href: score-vowpal-wabbit-model.md
+    - name: Vowpal Wabbit Modelini Eğitme
+      href: train-vowpal-wabbit-model.md
 - name: Görüntü işleme
   items:
     - name: Görüntü Dönüşümü Uygulama

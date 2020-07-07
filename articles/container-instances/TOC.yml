@@ -86,6 +86,8 @@
           href: container-instances-start-command.md
         - name: Komut yürütme (exec)
           href: container-instances-exec.md
+        - name: Kurulum kapsayıcısı (init) çalıştırma
+          href: container-instances-init-container.md
         - name: Yönetilen kimlik kullanma (önizleme)
           href: container-instances-managed-identity.md
         - name: GPU kaynaklarını kullanma (önizleme)

@@ -3,5 +3,7 @@
 - name: Sık Sorulan Sorular
   expanded: true
   items:
+    - name: SRE ve Kodlama
+      href: code.md
     - name: SRE ve DevOps
       href: devops.md

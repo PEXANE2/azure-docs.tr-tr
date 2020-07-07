@@ -208,14 +208,14 @@
       items:
         - name: SQL Database nedir?
           href: database/sql-database-paas-overview.md
+        - name: Yenilikler
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Tek veritabanları
           href: database/single-database-overview.md
         - name: Esnek havuzlar
           href: database/elastic-pool-overview.md
         - name: Mantıksal SQL sunucuları
           href: database/logical-servers.md
-        - name: Sürüm notları
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Hizmet Katmanları
           items:
             - name: Sunucusuz
@@ -654,13 +654,13 @@
       items:
         - name: SQL Yönetilen Örnek nedir?
           href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: Yenilikler
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
         - name: Örnek havuzları
           href: managed-instance/instance-pools-overview.md
         - name: Sık sorulan sorular
           displayName: faq
           href: managed-instance/frequently-asked-questions-faq.md
-        - name: Sürüm notları
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
     - name: Hızlı Başlangıçlar
       href: managed-instance/quickstart-content-reference-guide.md
       items:
@@ -883,92 +883,99 @@
           items:
             - name: SQL Server VM nedir?
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: Belge değişiklikleri
+            - name: Yenilikler
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: Hızlı Başlangıçlar
           items:
-            - name: SQL VM Oluşturma - Portal
+            - name: SQL VM oluşturma
+              items: null
+            - name: Portal
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
-            - name: SQL VM Oluşturma - PowerShell
+            - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+            - name: ARM şablonu
+              href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: Kavramlar
           items:
-            - name: En iyi uygulamalar
-              items:
-                - name: Performans için en iyi yöntemler
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
-                - name: Güvenlikle ilgili dikkat edilmesi gerekenler
-                  href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: Uygulama desenleri
-                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: İş Sürekliliği
               items:
-                - name: Yüksek kullanılabilirlik seçenekleri
+                - name: Genel Bakış
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-                - name: AlwaysOn kullanılabilirlik grubu
-                  href: virtual-machines/windows/availability-group-overview.md
                 - name: Yedekleme ve geri yükleme
                   href: virtual-machines/windows/backup-restore.md
-                - name: SQL Server 2014 için otomatik yedekleme
-                  href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: SQL Server 2016+ için otomatik yedekleme
-                  href: virtual-machines/windows/automated-backup.md
+                - name: Yedekleme için Azure Depolama
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: AlwaysOn kullanılabilirlik grubu
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: Yük devretme kümesi örneği
+                  href: virtual-machines/windows/failover-cluster-instance-overview.md
+            - name: En iyi uygulamalar
+              items:
+                - name: Performans
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: Güvenlik
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: Küme yapılandırması
+                  href: virtual-machines/windows/hadr-cluster-best-practices.md
+                - name: Uygulama desenleri
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Yönetim
               items:
                 - name: Ayrılmış konak
                   href: virtual-machines/windows/dedicated-host.md
-                - name: Azure portal ile
-                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: SQL 2008 ve R2 için genişletilmiş destek
                   href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
-                - name: Bir VM’ye bağlanma
-                  href: virtual-machines/windows/ways-to-connect-to-sql.md
-                - name: Depolama alanını yapılandırma
+        - name: Nasıl yapılır kılavuzları
+          items:
+            - name: SQL Server VM’sine bağlanma
+              href: virtual-machines/windows/ways-to-connect-to-sql.md
+            - name: SQL Server VM’si oluşturma
+              items:
+                - name: Portalı kullanma
+                  href: virtual-machines/windows/create-sql-vm-portal.md
+                - name: Azure PowerShell kullanma
+                  href: virtual-machines/windows/create-sql-vm-powershell.md
+            - name: Yönetme
+              items:
+                - name: Azure portal ile
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
+                - name: Lisans modeli
+                  displayName: 'ahb, ahub, payg, change, modify, update'
+                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+                - name: Sürüm
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Depolama
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Azure Anahtar Kasası Tümleştirme
+                  href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: SQL VM RP ile kaydolma
+                  displayName: 'resource provider, registration'
+                  items:
+                    - name: Tek VM
+                      href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                    - name: Birden fazla VM'yi toplu kaydetme
+                      href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
                 - name: Yönetim görevlerini otomatik hale getirme
                   items:
                     - name: SQL Server IaaS Aracısı Uzantısını kullanma
                       href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                     - name: Otomatik Düzeltme Eki Uygulama
                       href: virtual-machines/windows/automated-patching.md
-                    - name: Azure Key Vault Tümleştirme Yapılandırması
-                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
-        - name: Nasıl yapılır kılavuzları
-          items:
-            - name: SQL VM oluşturma
-              items:
-                - name: Portalı kullanma
-                  href: virtual-machines/windows/create-sql-vm-portal.md
-                - name: Azure PowerShell kullanma
-                  href: virtual-machines/windows/create-sql-vm-powershell.md
-            - name: SQL VM RP ile kaydolma
-              displayName: 'resource provider, registration'
-              items:
-                - name: Tek VM
-                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
-                - name: Birden fazla VM'yi toplu kaydetme
-                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-            - name: Yönetme
-              items:
-                - name: Lisanslama modeli
-                  displayName: 'ahb, ahub, payg, change, modify, update'
-                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Sürüm
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-edition.md
-                - name: Sürüm
-                  displayName: 'change, modify, update'
-                  href: virtual-machines/windows/change-sql-server-version.md
-                - name: Yedekleme ve geri yükleme için Azure Depolama
-                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
             - name: Geçiş
               items:
                 - name: SQL Server veritabanından VM'ye
                   href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
                 - name: Yeni bir bölgeye yönelik VM
                   href: virtual-machines/windows/move-sql-vm-different-region.md
-            - name: Yüksek Kullanılabilirliği Yapılandırma
+            - name: İş sürekliliği
               items:
+                - name: Yedekleme ve geri yükleme
+                  items:
+                    - name: Otomatik yedekleme (SQL 2016+)
+                      href: virtual-machines/windows/automated-backup.md
+                    - name: Otomatik yedekleme (SQL 2014)
+                      href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: AlwaysOn kullanılabilirlik grubu
                   items:
                     - name: Azure SQL VM CLI
@@ -989,12 +996,30 @@
                           href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                         - name: Yük dengeleyici - Azure PowerShell
                           href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                - name: Yük Devretme Kümesi Örneği
+                - name: Yük devretme kümesi örneği (FCI)
                   items:
-                    - name: Depolama Alanları Doğrudan ile
-                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
-                    - name: Premium Dosya Paylaşımı ile
-                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: VM’yi FCI için hazırlama
+                      href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
+                    - name: FCI oluşturma
+                      items:
+                        - name: Azure paylaşılan diskleri (SQL2019+)
+                          href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
+                        - name: Depolama Alanları Doğrudan (Win2016+)
+                          href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                        - name: Premium dosya paylaşımı (Win2012+)
+                          href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: Dağıtılmış Ağ Adı (DNN)
+                      items:
+                        - name: FCI için DNN oluşturma
+                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
+                        - name: DNN ile özellik birlikte çalışabilirliği
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                        - name: FCI DNN ve SQL Server özellikleri
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                - name: Bağlantı yapılandırma
+                  items:
+                    - name: Sanal Ağ Adı (VNN)
+                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: Başvuru
           items:
             - name: Azure PowerShell

@@ -7,10 +7,14 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Hizmet oluşturma - Portal
-      href: quickstart-create-data-migration-service-portal.md
-    - name: Karma modda hizmet oluşturma - Portal
-      href: quickstart-create-data-migration-service-hybrid-portal.md
+    - name: Hizmet oluşturma
+      items:
+        - name: Portal
+          href: quickstart-create-data-migration-service-portal.md
+        - name: ARM şablonu
+          href: create-dms-resource-manager-template.md
+        - name: hibrit modda (Portal)
+          href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Kavramlar
   items:
     - name: Ön koşullar

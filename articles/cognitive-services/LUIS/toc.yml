@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: Kavramlar
   items:
+    - name: Yapay zeka
+      href: artificial-intelligence.md
     - name: Geliştirme yaşam döngüsü
       href: luis-concept-app-iteration.md
     - name: Uygulamanızı planlama

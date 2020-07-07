@@ -1005,7 +1005,7 @@
               href: performance-tips-async-java.md
             - name: Zaman uyumlu Java SDK v2
               href: performance-tips-java.md
-            - name: Zaman uyumsuz Java SDK v2
+            - name: Sorun Gidermek - Zaman uyumsuz Java SDK v2
               href: troubleshoot-java-async-sdk.md
         - name: Performans testi - örnek uygulama
           href: performance-testing.md

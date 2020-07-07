@@ -200,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: Klasik depolama alanı kaynaklarını silerken karşılaşılan hatalar
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: Azure’da bir VM oluşturduğunuzda VHD desteklenmez
+      href: vhd-not-supported-vm-azure.md
     - name: İç içe geçmiş sanallaştırma kullanımı
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: VM Performans sorunları

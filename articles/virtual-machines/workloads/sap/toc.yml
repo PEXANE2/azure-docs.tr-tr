@@ -261,6 +261,14 @@
       href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
     - name: 'Azure Data Factory, SAP HANA ve Business Warehouse veri tümleştirmesi sunar'
       href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+- name: SAP Çözümleri için Azure İzleyici
+  items:
+    - name: SAP Çözümleri için Azure İzleyici’ye Genel Bakış
+      href: azure-monitor-overview.md
+    - name: SAP Çözümleri için Azure İzleyici Sağlayıcıları
+      href: azure-monitor-providers.md
+    - name: SAP Çözümleri için Azure İzleyici Hakkında SSS
+      href: azure-monitor-faq.md
 - name: Başvuru
   items:
     - name: Azure CLI

@@ -1,2 +1,4 @@
-- name: Maya üzerinde Fiziksel Temelli İşleme malzemelerini ayarlama
+- name: Autodesk Maya üzerinde Fiziksel Temelli İşleme malzemelerini ayarlama
   href: maya-material-setup.md
+- name: Autodesk 3DSMax üzerinde Fiziksel Temelli İşleme malzemelerini ayarlama
+  href: 3dsmax-material-setup.md

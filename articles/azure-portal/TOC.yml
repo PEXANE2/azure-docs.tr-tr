@@ -43,8 +43,8 @@
       items:
         - name: Azure destek isteği oluşturma
           href: supportability/how-to-create-azure-support-request.md
-        - name: Destek isteği için dosyaları karşıya yükleme
-          href: supportability/how-to-use-file-uploader.md
+        - name: Azure destek isteğini yönetme
+          href: supportability/how-to-manage-azure-support-request.md
         - name: Kota artışı isteme
           items:
             - name: İşlem vCPU sınırını artırma

@@ -165,7 +165,7 @@
               href: service-fabric-concepts-partitioning.md
             - name: Durum bilgisi olan hizmetleri yeniden yapılandırma
               href: service-fabric-concepts-reconfiguration.md
-            - name: 'Reliable Services yaşam döngüsü - C#'
+            - name: Reliable Services yaşam döngüsü - C#
               href: service-fabric-reliable-services-lifecycle.md
             - name: Reliable Services yaşam döngüsü - Java
               href: service-fabric-reliable-services-lifecycle-java.md
@@ -222,6 +222,8 @@
               href: service-fabric-manifest-example-container-app.md
         - name: Barındırma modeli
           href: service-fabric-hosting-model.md
+        - name: Barındırma etkinleştirme ve devre dışı bırakma yaşam döngüsü hakkında gelişmiş konular
+          href: service-fabric-hosting-lifecycle.md
         - name: Uygulama güvenliği
           href: service-fabric-application-and-service-security.md
         - name: Hizmet durumu
@@ -404,13 +406,13 @@
           href: service-fabric-get-started-containers.md
         - name: Linux kapsayıcı uygulaması
           href: service-fabric-get-started-containers-linux.md
-        - name: 'Windows’da C# Reliable Services uygulaması'
+        - name: Windows’da C# Reliable Services uygulaması
           href: service-fabric-reliable-services-quick-start.md
         - name: Linux’ta Java Reliable Services uygulaması
           href: service-fabric-reliable-services-quick-start-java.md
-        - name: 'Linux’ta C# Reliable Services uygulaması'
+        - name: Linux’ta C# Reliable Services uygulaması
           href: service-fabric-create-your-first-linux-application-with-csharp.md
-        - name: 'Windows’da C# Reliable Actors uygulaması'
+        - name: Windows’da C# Reliable Actors uygulaması
           href: service-fabric-reliable-actors-get-started.md
         - name: Linux’ta Java Reliable Actors uygulaması
           href: service-fabric-create-your-first-linux-application-with-java.md
@@ -448,13 +450,13 @@
               items:
                 - name: Reliable Services özelliğiyle iletişim kurma
                   href: service-fabric-reliable-services-communication.md
-                - name: 'Uzaktan Hizmet İletişimi - C#'
+                - name: Uzaktan Hizmet İletişimi - C#
                   href: service-fabric-reliable-services-communication-remoting.md
                 - name: Uzaktan Hizmet İletişimi - Java
                   href: service-fabric-reliable-services-communication-remoting-java.md
                 - name: WCF
                   href: service-fabric-reliable-services-communication-wcf.md
-                - name: 'Güvenli iletişim - C#'
+                - name: Güvenli iletişim - C#
                   href: service-fabric-reliable-services-secure-communication.md
                 - name: Güvenli iletişim - Java
                   href: service-fabric-reliable-services-secure-communication-java.md
@@ -561,7 +563,7 @@
           items:
             - name: VS Code'u kullanmaya başlama
               href: service-fabric-get-started-vs-code.md
-            - name: 'VS Code ile C# Service Fabric uygulamaları geliştirme'
+            - name: VS Code ile C# Service Fabric uygulamaları geliştirme
               href: service-fabric-develop-csharp-applications-with-vs-code.md
             - name: VS Code ile Java Service Fabric uygulamaları geliştirme
               href: service-fabric-develop-java-applications-with-vs-code.md

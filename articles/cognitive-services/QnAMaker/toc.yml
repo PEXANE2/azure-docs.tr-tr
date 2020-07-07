@@ -28,6 +28,8 @@
       href: Quickstarts/batch-testing.md
 - name: Kavramlar
   items:
+    - name: Bilgi bankanızı planlama
+      href: Concepts/plan.md
     - name: Azure kaynakları
       href: Concepts/azure-resources.md
     - name: Diğer kişilerle birlikte çalışma

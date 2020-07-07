@@ -99,6 +99,10 @@
     - name: Konuk Yapılandırması ile VM’leri denetleme
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: Güvenlik
+      items:
+        - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: VS Code için Azure İlkesi uzantısı
